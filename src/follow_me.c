@@ -1030,13 +1030,21 @@ void SetFollowerSprite(u8 spriteIndex)
     clone = *GetObjectEventTemplateByLocalIdAndMap(gSaveBlock2Ptr->follower.map.id, gSaveBlock2Ptr->follower.map.number, gSaveBlock2Ptr->follower.map.group);
     clone.graphicsId = newGraphicsId;
     clone.movementType = 0; // Make sure new follower sprite can't move on its own
+    clone.localId = OBJ_EVENT_ID_FOLLOW_ME;
     gSaveBlock2Ptr->follower.objId = TrySpawnObjectEventTemplate(&clone, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, clone.x, clone.y);
-    follower = &gObjectEvents[GetFollowerMapObjId()];
-    newSpriteId = follower->spriteId;
-    *follower = backupFollower;
-    follower->spriteId = newSpriteId;
-    MoveObjectEventToMapCoords(follower, follower->currentCoords.x, follower->currentCoords.y);
-    ObjectEventTurn(follower, follower->facingDirection);
+    if (gSaveBlock2Ptr->follower.objId != OBJECT_EVENTS_COUNT)
+    {
+        follower = &gObjectEvents[GetFollowerMapObjId()];
+        newSpriteId = follower->spriteId;
+        *follower = backupFollower;
+        follower->spriteId = newSpriteId;
+        MoveObjectEventToMapCoords(follower, follower->currentCoords.x, follower->currentCoords.y);
+        ObjectEventTurn(follower, follower->facingDirection);
+    }
+    else
+    {
+        gSaveBlock2Ptr->follower.inProgress = FALSE;
+    }
 }
 
 void FollowMe_WarpSetEnd(void)
@@ -1079,6 +1087,7 @@ void CreateFollowerAvatar(void)
     clone.x = player->currentCoords.x - 7;
     clone.y = player->currentCoords.y - 7;
     clone.movementType = 0; //Doesn't get to move on its own
+    clone.localId = OBJ_EVENT_ID_FOLLOW_ME;
 
     switch (GetPlayerFacingDirection())
     {
@@ -1142,6 +1151,8 @@ static void TurnNPCIntoFollower(u8 localId, u16 followerFlags, u8 setScript)
             gSaveBlock2Ptr->follower.flags = followerFlags;
             gSaveBlock2Ptr->follower.createSurfBlob = 0;
             gSaveBlock2Ptr->follower.comeOutDoorStairs = 0;
+            follower->localId = OBJ_EVENT_ID_FOLLOW_ME;
+            FlagSet(flag);
 
             if (!(gSaveBlock2Ptr->follower.flags & FOLLOWER_FLAG_CAN_BIKE) //Follower can't bike
             &&  TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_BIKE)) //Player on bike
