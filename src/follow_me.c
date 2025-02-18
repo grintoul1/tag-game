@@ -60,6 +60,7 @@ static void Task_BindSurfBlobToFollower(u8 taskId);
 static void SetUpSurfBlobFieldEffect(struct ObjectEvent* npc);
 static void SetSurfDismount(void);
 static void Task_FinishSurfDismount(u8 taskId);
+void SetFollowerSurfSpriteAfterDive(void);
 static void Task_FollowerOutOfDoor(u8 taskId);
 static void Task_FollowerHandleIndoorStairs(u8 taskId);
 static void Task_FollowerHandleEscalator(u8 taskId);
@@ -247,6 +248,7 @@ void FollowMe(struct ObjectEvent* npc, u8 state, bool8 ignoreScriptActive)
             gTasks[taskId].data[0] = 0;
             gTasks[taskId].data[2] = follower->currentCoords.x;
             gTasks[taskId].data[3] = follower->currentCoords.y;
+            TryUpdateFollowerSpriteUnderwater();
             goto RESET;
         }
         else if (gSaveBlock2Ptr->follower.comeOutDoorStairs == 2)
@@ -729,6 +731,12 @@ static void Task_FinishSurfDismount(u8 taskId)
     gPlayerAvatar.preventStep = FALSE;
 }
 
+void SetFollowerSurfSpriteAfterDive(void)
+{
+    SetFollowerSprite(FOLLOWER_SPRITE_INDEX_SURF);
+    gSaveBlock2Ptr->follower.createSurfBlob = 2;
+}
+
 static u8 GetPlayerFaceToDoorDirection(struct ObjectEvent* player, struct ObjectEvent* follower)
 {
     s16 delta_x = player->currentCoords.x - follower->currentCoords.x;
@@ -1184,6 +1192,7 @@ enum
 	GoLeft,
 	GoRight
 };
+
 void FollowerPositionFix(u8 offset)
 {
     u8 playerObjId = GetPlayerMapObjId();
