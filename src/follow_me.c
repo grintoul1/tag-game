@@ -1363,3 +1363,64 @@ void CheckPlayerHasFollower(void)
 {
     gSpecialVar_Result = gSaveBlock2Ptr->follower.inProgress;
 }
+
+// follow me script commands
+void ScriptSetFollower(struct ScriptContext *ctx)
+{
+    u8 localId = ScriptReadByte(ctx);
+    u16 flags = ScriptReadHalfword(ctx);
+    u8 setScript = ScriptReadByte(ctx);
+    u16 battlePartner = ScriptReadHalfword(ctx);
+
+    gSaveBlock2Ptr->follower.battlePartner = battlePartner;
+    SetUpFollowerSprite(localId, flags, setScript);
+}
+
+void ScriptDestroyFollower(struct ScriptContext *ctx)
+{
+    gSaveBlock2Ptr->follower.battlePartner = 0;
+    DestroyFollower();
+    if (OW_FOLLOWERS_ENABLED == TRUE) {
+        UpdateFollowingPokemon();
+    }
+}
+
+void ScriptFaceFollower(struct ScriptContext *ctx)
+{
+    PlayerFaceFollowerSprite();
+}
+
+void ScriptCheckFollower(struct ScriptContext *ctx)
+{
+    CheckPlayerHasFollower();
+}
+
+void ScriptUpdateFollowingMon(struct ScriptContext *ctx)
+{
+    if (OW_FOLLOWERS_ENABLED == TRUE) {
+        UpdateFollowingPokemon();
+    }
+}
+
+void ScriptBallFollowingMon(struct ScriptContext *ctx)
+{
+    u16 species;
+    bool8 shiny;
+    u8 form;
+
+    if (OW_POKEMON_OBJECT_EVENTS == FALSE
+     || OW_FOLLOWERS_ENABLED == FALSE
+     || !GetFollowerInfo(&species, &form, &shiny)
+     || SpeciesToGraphicsInfo(species, form) == NULL
+     || (gMapHeader.mapType == MAP_TYPE_INDOOR && SpeciesToGraphicsInfo(species, form)->oam->size > ST_OAM_SIZE_2)
+     || FlagGet(FLAG_TEMP_HIDE_FOLLOWER)
+     || gSaveBlock2Ptr->follower.inProgress
+     || !FlagGet(FLAG_SYS_POKEMON_GET))
+    {
+        return;
+    }
+    else
+    {
+        ReturnFollowingMonToBall();
+    }
+}

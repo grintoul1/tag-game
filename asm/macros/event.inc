@@ -1901,7 +1901,7 @@
 	.else
 		.set setScript, FALSE
 	.endif
-    .byte 0xe5
+    callnative ScriptSetFollower
     .byte \localId
     .2byte \flags
 	.byte setScript
@@ -1917,27 +1917,27 @@
     
     @ Remove the following NPC (assumes there will only ever be one).
     .macro destroyfollower
-    .byte 0xe6
+    callnative ScriptDestroyFollower
     .endm
     
     @ Makes the player and follower face one another.
     .macro facefollower
-    .byte 0xe7
+    callnative ScriptFaceFollower
     .endm
     
     @ Checks if you have a follower. returns the result to VAR_RESULT.
     .macro checkfollower
-    .byte 0xe8
+    callnative ScriptCheckFollower
     .endm
 
 	@ Updates Pokemon follower.
 	.macro updatefollowingmon
-    .byte 0xe9
+    callnative ScriptUpdateFollowingMon
     .endm
 
 	@ Returns Pokemon follower to ball.
 	.macro ballfollowingmon
-	.byte 0xea
+    callnative ScriptBallFollowingMon
 	delay 16
 	.endm
 
