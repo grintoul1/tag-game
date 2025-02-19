@@ -4110,7 +4110,7 @@ static void FieldCallback_Surf(void)
 
 static bool8 SetUpFieldMove_Surf(void)
 {
-    if (!CheckFollowerFlag(FOLLOWER_FLAG_CAN_SURF))
+    if (!CheckFollowerFlag(FOLLOW_ME_FLAG_CAN_SURF))
         return FALSE;
 
     if (PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
@@ -4132,7 +4132,7 @@ static void DisplayCantUseSurfMessage(void)
 
 static bool8 SetUpFieldMove_Fly(void)
 {
-    if (!CheckFollowerFlag(FOLLOWER_FLAG_CAN_LEAVE_ROUTE))
+    if (!CheckFollowerFlag(FOLLOW_ME_FLAG_CAN_LEAVE_ROUTE))
         return FALSE;
 
     if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
@@ -4156,7 +4156,7 @@ static bool8 SetUpFieldMove_Waterfall(void)
 {
     s16 x, y;
 
-    if (!CheckFollowerFlag(FOLLOWER_FLAG_CAN_WATERFALL))
+    if (!CheckFollowerFlag(FOLLOW_ME_FLAG_CAN_WATERFALL))
         return FALSE;
 
     GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
@@ -4177,7 +4177,7 @@ static void FieldCallback_Dive(void)
 
 static bool8 SetUpFieldMove_Dive(void)
 {
-    if (!CheckFollowerFlag(FOLLOWER_FLAG_CAN_DIVE))
+    if (!CheckFollowerFlag(FOLLOW_ME_FLAG_CAN_DIVE))
         return FALSE;
 
     gFieldEffectArguments[1] = TrySetDiveWarp();

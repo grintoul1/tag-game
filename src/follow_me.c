@@ -149,7 +149,7 @@ void FollowMe_TryRemoveFollowerOnWhiteOut(void)
 {
     if (gSaveBlock2Ptr->follower.inProgress)
     {
-        if (gSaveBlock2Ptr->follower.flags & FOLLOWER_FLAG_CLEAR_ON_WHITE_OUT)
+        if (gSaveBlock2Ptr->follower.flags & FOLLOW_ME_FLAG_CLEAR_ON_WHITE_OUT)
             gSaveBlock2Ptr->follower.inProgress = FALSE;
         else
             FollowMe_WarpSetEnd();
@@ -471,7 +471,7 @@ u8 DetermineFollowerState(struct ObjectEvent* follower, u8 state, u8 direction)
         RETURN_STATE(MOVEMENT_ACTION_SLIDE_DOWN, direction);
     case MOVEMENT_ACTION_PLAYER_RUN_DOWN ... MOVEMENT_ACTION_PLAYER_RUN_RIGHT:
         //Running frames
-        if (gSaveBlock2Ptr->follower.flags & FOLLOWER_FLAG_HAS_RUNNING_FRAMES)
+        if (gSaveBlock2Ptr->follower.flags & FOLLOW_ME_FLAG_HAS_RUNNING_FRAMES)
             RETURN_STATE(MOVEMENT_ACTION_PLAYER_RUN_DOWN, direction);
 
         RETURN_STATE(MOVEMENT_ACTION_WALK_FAST_DOWN, direction);
@@ -485,7 +485,7 @@ u8 DetermineFollowerState(struct ObjectEvent* follower, u8 state, u8 direction)
     // run slow
     #ifdef MOVEMENT_ACTION_RUN_DOWN_SLOW
     case MOVEMENT_ACTION_RUN_DOWN_SLOW ... MOVEMENT_ACTION_RUN_RIGHT_SLOW:
-        if (gSaveBlock2Ptr->follower.flags & FOLLOWER_FLAG_HAS_RUNNING_FRAMES)
+        if (gSaveBlock2Ptr->follower.flags & FOLLOW_ME_FLAG_HAS_RUNNING_FRAMES)
             RETURN_STATE(MOVEMENT_ACTION_RUN_DOWN_SLOW, direction);
 
         RETURN_STATE(MOVEMENT_ACTION_WALK_NORMAL_DOWN, direction);
@@ -974,7 +974,7 @@ bool8 FollowerCanBike(void)
 {
     if (!gSaveBlock2Ptr->follower.inProgress)
         return TRUE;
-    else if (gSaveBlock2Ptr->follower.flags & FOLLOWER_FLAG_CAN_BIKE)
+    else if (gSaveBlock2Ptr->follower.flags & FOLLOW_ME_FLAG_CAN_BIKE)
         return TRUE;
     else
         return FALSE;
@@ -995,7 +995,7 @@ void FollowMe_HandleBike(void)
 
 void FollowMe_HandleSprite(void)
 {
-    if (gSaveBlock2Ptr->follower.flags & FOLLOWER_FLAG_CAN_BIKE)
+    if (gSaveBlock2Ptr->follower.flags & FOLLOW_ME_FLAG_CAN_BIKE)
     {
         if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
             SetFollowerSprite(FOLLOWER_SPRITE_INDEX_MACH_BIKE);
@@ -1170,7 +1170,7 @@ static void TurnNPCIntoFollower(u8 localId, u16 followerFlags, u8 setScript)
             follower->localId = OBJ_EVENT_ID_FOLLOW_ME;
             FlagSet(flag);
 
-            if (!(gSaveBlock2Ptr->follower.flags & FOLLOWER_FLAG_CAN_BIKE) //Follower can't bike
+            if (!(gSaveBlock2Ptr->follower.flags & FOLLOW_ME_FLAG_CAN_BIKE) //Follower can't bike
             &&  TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_BIKE)) //Player on bike
                 SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_ON_FOOT); //Dismmount Bike
         }
