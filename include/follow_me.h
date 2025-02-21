@@ -3,8 +3,6 @@
 
 #include "constants/follow_me.h"
 
-#define DEFAULT_FOLLOWER_LOCAL_ID 0xFD
-
 #define MOVEMENT_INVALID 0xFE
 
 enum FollowerSpriteTypes

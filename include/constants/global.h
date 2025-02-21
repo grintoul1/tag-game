@@ -172,6 +172,7 @@
 #define CONNECTION_DIVE     5
 #define CONNECTION_EMERGE   6
 
+// Follow Me
 #define SIDEWAYS_STAIRS_IMPLEMENTED         FALSE
 #define POST_BATTLE_FOLLOWER_FIX            FALSE   //if you experience the follower de-syncing with the player after battle, set to TRUE
 
