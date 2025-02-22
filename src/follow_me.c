@@ -62,7 +62,7 @@ static void Task_FollowerHandleEscalator(u8 taskId);
 static void Task_FollowerHandleEscalatorFinish(u8 taskId);
 static void CalculateFollowerEscalatorTrajectoryUp(struct Task *task);
 static void CalculateFollowerEscalatorTrajectoryDown(struct Task *task);
-static void TurnNPCIntoFollower(u8 localId, u16 followerFlags, u8 setScript);
+static void TurnNPCIntoFollower(u8 localId, u16 followerFlags, u8 setScript, const u8 *script);
 
 // Const Data
 static const struct FollowerSpriteGraphics gFollowerAlternateSprites[] =
@@ -146,8 +146,7 @@ void FollowMe_TryRemoveFollowerOnWhiteOut(void)
     {
         if (gSaveBlock2Ptr->follower.flags & FOLLOW_ME_FLAG_CLEAR_ON_WHITE_OUT)
         {
-            gSaveBlock2Ptr->follower.inProgress = FALSE;
-            gSaveBlock2Ptr->follower.battlePartner = 0;
+            memset(&gSaveBlock2Ptr->follower, 0, sizeof(gSaveBlock2Ptr->follower));
         }
         else
             FollowMe_WarpSetEnd();
@@ -1059,8 +1058,7 @@ void SetFollowerSprite(u8 spriteIndex)
     }
     else
     {
-        gSaveBlock2Ptr->follower.inProgress = FALSE; // Cancel the following because couldn't load sprite
-        gSaveBlock2Ptr->follower.battlePartner = 0;
+        memset(&gSaveBlock2Ptr->follower, 0, sizeof(gSaveBlock2Ptr->follower));
     }
 }
 
@@ -1123,8 +1121,7 @@ void CreateFollowerAvatar(void)
     gSaveBlock2Ptr->follower.objId = TrySpawnObjectEventTemplate(&clone, gSaveBlock2Ptr->follower.map.number, gSaveBlock2Ptr->follower.map.group, clone.x, clone.y);
     if (gSaveBlock2Ptr->follower.objId == OBJECT_EVENTS_COUNT)
     {
-        gSaveBlock2Ptr->follower.inProgress = FALSE; // Cancel the following because couldn't load sprite
-        gSaveBlock2Ptr->follower.battlePartner = 0;
+        memset(&gSaveBlock2Ptr->follower, 0, sizeof(gSaveBlock2Ptr->follower));
     }
 
     if (gMapHeader.mapType == MAP_TYPE_UNDERWATER)
@@ -1133,7 +1130,7 @@ void CreateFollowerAvatar(void)
     gObjectEvents[gSaveBlock2Ptr->follower.objId].invisible = TRUE;
 }
 
-static void TurnNPCIntoFollower(u8 localId, u16 followerFlags, u8 setScript)
+static void TurnNPCIntoFollower(u8 localId, u16 followerFlags, u8 setScript, const u8 *ptr)
 {
     struct ObjectEvent* follower;
     u8 eventObjId;
@@ -1155,7 +1152,7 @@ static void TurnNPCIntoFollower(u8 localId, u16 followerFlags, u8 setScript)
             gSprites[follower->spriteId].callback = MovementType_None; // MovementType_None
             SetObjEventTemplateMovementType(localId, 0);
             if (setScript == TRUE)
-                script = (const u8 *)ReadWord(0);
+                script = ptr;
             else
                 script = GetObjectEventScriptPointerByObjectEventId(eventObjId);
 
@@ -1177,6 +1174,9 @@ static void TurnNPCIntoFollower(u8 localId, u16 followerFlags, u8 setScript)
             if (!(gSaveBlock2Ptr->follower.flags & FOLLOW_ME_FLAG_CAN_BIKE) // Follower can't bike
             &&  TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_BIKE)) // Player on bike
                 SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_ON_FOOT); // Dismmount Bike
+
+            if (!TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_ON_FOOT))
+                FollowMe_HandleSprite(); // Set the follower sprite to match the player state
         }
     }
 }
@@ -1301,30 +1301,35 @@ bool8 FollowerComingThroughDoor(void)
     return FALSE;
 }
 
-//////////////////SCRIPTING////////////////////
-//@Details: Sets up the follow me feature.
-//@Input:    local id - NPC to start following player.
-//            flags - Follower flags.
-void SetUpFollowerSprite(u8 localId, u16 flags, u8 setScript)
+// Follow Me script commands
+
+void ScriptSetFollower(struct ScriptContext *ctx)
 {
-    TurnNPCIntoFollower(localId, flags, setScript);
+    u8 localId = ScriptReadByte(ctx);
+    u16 flags = ScriptReadHalfword(ctx);
+    u8 setScript = ScriptReadByte(ctx);
+    u16 battlePartner = ScriptReadHalfword(ctx);
+    const u8 *script = (const u8 *)ScriptReadWord(ctx);
+
+    gSaveBlock2Ptr->follower.battlePartner = battlePartner;
+    TurnNPCIntoFollower(localId, flags, setScript, script);
 }
 
-//@Details: Ends the follow me feature.
-void DestroyFollower(void)
+void ScriptDestroyFollower(struct ScriptContext *ctx)
 {
     if (gSaveBlock2Ptr->follower.inProgress)
     {
         gSaveBlock2Ptr->follower.warpEnd = 0; // In case a follower warp had not yet finished.
         RemoveObjectEvent(&gObjectEvents[gSaveBlock2Ptr->follower.objId]);
         FlagSet(gSaveBlock2Ptr->follower.flag);
-        gSaveBlock2Ptr->follower.inProgress = FALSE;
-        gSaveBlock2Ptr->follower.battlePartner = 0;
+        memset(&gSaveBlock2Ptr->follower, 0, sizeof(gSaveBlock2Ptr->follower));
+    }
+    if (OW_FOLLOWERS_ENABLED == TRUE) {
+        UpdateFollowingPokemon();
     }
 }
 
-//@Details: Faces the player and the follower sprite towards each other.
-void PlayerFaceFollowerSprite(void)
+void ScriptFaceFollower(struct ScriptContext *ctx)
 {
     if (gSaveBlock2Ptr->follower.inProgress)
     {
@@ -1362,41 +1367,9 @@ void PlayerFaceFollowerSprite(void)
     }
 }
 
-//@Details: Checks if the player is being followed.
-//@Returns: LastResult: 0 if the Player isn't being followed. 1 otherwise.
-void CheckPlayerHasFollower(void)
-{
-    gSpecialVar_Result = gSaveBlock2Ptr->follower.inProgress;
-}
-
-// follow me script commands
-void ScriptSetFollower(struct ScriptContext *ctx)
-{
-    u8 localId = ScriptReadByte(ctx);
-    u16 flags = ScriptReadHalfword(ctx);
-    u8 setScript = ScriptReadByte(ctx);
-    u16 battlePartner = ScriptReadHalfword(ctx);
-
-    gSaveBlock2Ptr->follower.battlePartner = battlePartner;
-    SetUpFollowerSprite(localId, flags, setScript);
-}
-
-void ScriptDestroyFollower(struct ScriptContext *ctx)
-{
-    DestroyFollower();
-    if (OW_FOLLOWERS_ENABLED == TRUE) {
-        UpdateFollowingPokemon();
-    }
-}
-
-void ScriptFaceFollower(struct ScriptContext *ctx)
-{
-    PlayerFaceFollowerSprite();
-}
-
 void ScriptCheckFollower(struct ScriptContext *ctx)
 {
-    CheckPlayerHasFollower();
+    gSpecialVar_Result = gSaveBlock2Ptr->follower.inProgress;
 }
 
 void ScriptUpdateFollowingMon(struct ScriptContext *ctx)

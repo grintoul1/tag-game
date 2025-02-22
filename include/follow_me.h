@@ -14,13 +14,7 @@ enum FollowerSpriteTypes
     FOLLOWER_SPRITE_INDEX_UNDERWATER,
 };
 
-// Exported Functions
-void SetUpFollowerSprite(u8 localId, u16 flags, u8 setScript);
-void DestroyFollower(void);
-void PlayerFaceFollowerSprite(void);
-void CheckPlayerHasFollower(void);
 bool8 FollowerComingThroughDoor(void);
-
 u8 GetFollowerObjectId(void);
 u8 GetFollowerLocalId(void);
 const u8* GetFollowerScriptPointer(void);
