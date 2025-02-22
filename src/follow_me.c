@@ -143,7 +143,10 @@ void FollowMe_TryRemoveFollowerOnWhiteOut(void)
     if (gSaveBlock2Ptr->follower.inProgress)
     {
         if (gSaveBlock2Ptr->follower.flags & FOLLOW_ME_FLAG_CLEAR_ON_WHITE_OUT)
+        {
             gSaveBlock2Ptr->follower.inProgress = FALSE;
+            gSaveBlock2Ptr->follower.battlePartner = 0;
+        }
         else
             FollowMe_WarpSetEnd();
     }
@@ -1055,6 +1058,7 @@ void SetFollowerSprite(u8 spriteIndex)
     else
     {
         gSaveBlock2Ptr->follower.inProgress = FALSE; // Cancel the following because couldn't load sprite
+        gSaveBlock2Ptr->follower.battlePartner = 0;
     }
 }
 
@@ -1116,7 +1120,10 @@ void CreateFollowerAvatar(void)
     // Create NPC and store ID
     gSaveBlock2Ptr->follower.objId = TrySpawnObjectEventTemplate(&clone, gSaveBlock2Ptr->follower.map.number, gSaveBlock2Ptr->follower.map.group, clone.x, clone.y);
     if (gSaveBlock2Ptr->follower.objId == OBJECT_EVENTS_COUNT)
+    {
         gSaveBlock2Ptr->follower.inProgress = FALSE; // Cancel the following because couldn't load sprite
+        gSaveBlock2Ptr->follower.battlePartner = 0;
+    }
 
     if (gMapHeader.mapType == MAP_TYPE_UNDERWATER)
         gSaveBlock2Ptr->follower.createSurfBlob = 0;
@@ -1310,6 +1317,7 @@ void DestroyFollower(void)
         RemoveObjectEvent(&gObjectEvents[gSaveBlock2Ptr->follower.objId]);
         FlagSet(gSaveBlock2Ptr->follower.flag);
         gSaveBlock2Ptr->follower.inProgress = FALSE;
+        gSaveBlock2Ptr->follower.battlePartner = 0;
     }
 }
 
@@ -1373,7 +1381,6 @@ void ScriptSetFollower(struct ScriptContext *ctx)
 
 void ScriptDestroyFollower(struct ScriptContext *ctx)
 {
-    gSaveBlock2Ptr->follower.battlePartner = 0;
     DestroyFollower();
     if (OW_FOLLOWERS_ENABLED == TRUE) {
         UpdateFollowingPokemon();
