@@ -1941,6 +1941,12 @@
 	delay 16
 	.endm
 
+    @ Changes the battle partner of the existing follower.
+    .macro changefollowerbattler battlePartner:req
+    callnative ScriptChangeFollowerBattlePartner
+    .2byte \battlePartner
+    .endm
+
 
 @ Supplementary
 
