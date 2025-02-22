@@ -687,6 +687,25 @@ static void OpponentHandleChoosePokemon(u32 battler)
         *(gBattleStruct->AI_monToSwitchIntoId + battler) = PARTY_SIZE;
         *(gBattleStruct->monToSwitchIntoId + battler) = chosenMonId;
     }
+    
+    if(BATTLE_TWO_VS_ONE_OPPONENT
+     && (GetBattlerSide(battler)) == B_SIDE_OPPONENT
+     && CountAIAliveNonEggMonsExcept(chosenMonId) == 0)
+    {
+        if (gBattleStruct->multi2v1sentoutlast == TRUE)
+        {
+            gAbsentBattlerFlags |= 1u << battler;
+            gHitMarker &= ~HITMARKER_FAINTED(battler);
+            BtlController_EmitLinkStandbyMsg(battler, BUFFER_A, LINK_STANDBY_MSG_ONLY, FALSE);
+            MarkBattlerForControllerExec(battler);
+            return;
+        }
+        else
+        {
+            DebugPrintf("SET VALUE");
+            gBattleStruct->multi2v1sentoutlast = TRUE;
+        }
+    }
     #if TESTING
     TestRunner_Battle_CheckSwitch(battler, chosenMonId);
     #endif // TESTING
