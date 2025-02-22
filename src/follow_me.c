@@ -30,6 +30,8 @@
 Known Issues:
     -follower gets messed up if you go into a map with a maximum number of event objects
         -inherits incorrect palette, may get directionally confused
+
+    -follower animation can get messed up when sideways hopping with Acro Bike
 */
 
 struct FollowerSpriteGraphics
