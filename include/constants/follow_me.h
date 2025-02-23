@@ -1,6 +1,7 @@
 #ifndef GUARD_CONSTANTS_FOLLOW_ME_H
 #define GUARD_CONSTANTS_FOLLOW_ME_H
 
+// Follow Me Flags
 #define FOLLOW_ME_FLAG_HAS_RUNNING_FRAMES    0x1
 #define FOLLOW_ME_FLAG_CAN_BIKE              0x2
 #define FOLLOW_ME_FLAG_CAN_LEAVE_ROUTE       0x4     // teleport, dig, fly, etc
@@ -13,7 +14,7 @@
 #define FOLLOW_ME_FLAG_ALL_WATER             FOLLOW_ME_FLAG_CAN_SURF | FOLLOW_ME_FLAG_CAN_WATERFALL | FOLLOW_ME_FLAG_CAN_DIVE
 #define FOLLOW_ME_FLAG_ALL                   FOLLOW_ME_FLAG_ALL_LAND | FOLLOW_ME_FLAG_ALL_WATER | FOLLOW_ME_FLAG_CLEAR_ON_WHITE_OUT
 
-//For ease of use in setfollower macro while scripting
+// Shorter flag names for ease of use in setfollower script macro
 #define FM_RUNNING                          FOLLOW_ME_FLAG_HAS_RUNNING_FRAMES
 #define FM_BIKE                             FOLLOW_ME_FLAG_CAN_BIKE
 #define FM_LEAVE_ROUTE                      FOLLOW_ME_FLAG_CAN_LEAVE_ROUTE
@@ -44,6 +45,10 @@
 
 // If set to TRUE, the player will turn to face the follower when they exit a doorway.
 #define FACE_FOLLOWER_ON_DOOR_EXIT          TRUE
+
+
+#define SIDEWAYS_STAIRS_IMPLEMENTED         FALSE
+#define POST_BATTLE_FOLLOWER_FIX            TRUE   //if you experience the follower de-syncing with the player after battle, set to TRUE
 
 
 #endif // GUARD_CONSTANTS_FOLLOW_ME_H

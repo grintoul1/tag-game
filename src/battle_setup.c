@@ -1333,11 +1333,6 @@ u8 GetTrainerBattleMode(void)
     return sTrainerBattleMode;
 }
 
-bool8 GetFollowerPartner(void)
-{
-    return gSaveBlock2Ptr->follower.battlePartner;
-}
-
 bool8 GetTrainerFlag(void)
 {
     if (InBattlePyramid())
