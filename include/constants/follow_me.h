@@ -27,28 +27,4 @@
 #define FM_ALL_WATER                        FOLLOW_ME_FLAG_ALL_WATER
 #define FM_ALL                              FOLLOW_ME_FLAG_ALL
 
-
-// Replace the 0 with a flag in order to use that flag to toggle whether the Player's party
-// will be automatically healed after every follower partner battle.
-// If you want this to always be active without using a flag, replace 0 with ALWAYS.
-#define F_FLAG_HEAL_AFTER_FOLLOWER_BATTLE   0
-
-// Replace the 0 with a flag in order to use that flag to toggle whether the follower partner will join you for wild battles.
-// If you want this to always be active without using a flag, replace 0 with ALWAYS.
-#define F_FLAG_PARTNER_WILD_BATTLES         0
-
-// If set to TRUE, two wild Pokemon will show up to the partner battle instead of just one.
-#define FOLLOWER_WILD_BATTLE_VS_2           TRUE
-
-// If set to TRUE, a preview of the player's and partner's teams will be shown before every trainer battle.
-#define FOLLOWER_PARTY_PREVIEW              TRUE
-
-// If set to TRUE, the player will turn to face the follower when they exit a doorway.
-#define FACE_FOLLOWER_ON_DOOR_EXIT          TRUE
-
-
-#define SIDEWAYS_STAIRS_IMPLEMENTED         TRUE
-#define POST_BATTLE_FOLLOWER_FIX            FALSE   //if you experience the follower de-syncing with the player after battle, set to TRUE
-
-
 #endif // GUARD_CONSTANTS_FOLLOW_ME_H
