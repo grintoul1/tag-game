@@ -1156,7 +1156,7 @@ static void TurnNPCIntoFollower(u8 localId, u16 followerFlags, u8 setScript, con
             else
                 script = GetObjectEventScriptPointerByObjectEventId(eventObjId);
 
-            flag = GetObjectEventTemplateByLocalIdAndMap(follower->localId, follower->mapNum, follower->mapGroup)->flagId;
+            flag = GetObjectEventFlagIdByLocalIdAndMap(follower->localId, follower->mapNum, follower->mapGroup);
             gSaveBlock2Ptr->follower.inProgress = TRUE;
             gSaveBlock2Ptr->follower.objId = eventObjId;
             gSaveBlock2Ptr->follower.graphicsId = follower->graphicsId;
