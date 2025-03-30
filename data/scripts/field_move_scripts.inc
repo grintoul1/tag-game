@@ -298,7 +298,7 @@ EventScript_UseWaterfall::
 	goto_if_eq VAR_RESULT, NO, EventScript_EndWaterfall
 	msgbox Text_MonUsedWaterfall, MSGBOX_DEFAULT
 	call FollowerIntoPlayerScript
-    callnative HideFollower
+	callnative HideFollower
 	dofieldeffect FLDEFF_USE_WATERFALL
 	callnative FollowMe_WarpSetEnd
 	goto EventScript_EndWaterfall
@@ -375,7 +375,7 @@ EventScript_CantSurface::
 	end
 
 EventScript_EndSurface::
-    callnative SetFollowerSurfSpriteAfterDive
+	callnative SetFollowerSurfSpriteAfterDive
 	releaseall
 	end
 
@@ -415,7 +415,7 @@ FollowerPositionFixScript::
 	callnative FollowerTrainerSightingPositionFix
 FollowerPositionFixScriptReturn:
 	return
-    
+	
 FollowerIntoPlayerScript::
 	setvar 0x8000 0x0
 	callnative FollowerIntoPlayer
@@ -426,7 +426,7 @@ FollowerIntoPlayerScript::
 	setvar 0x8000 0x1
 	callnative FollowerIntoPlayer
 	return
-    
+	
 WalkCall:
 	compare VAR_RESULT 0x0
 	call_if_eq WalkDownCall
@@ -454,19 +454,19 @@ WalkLeftCall:
 WalkRightCall:
 	applymovement 0x8005 WalkRight
 	return
-    
+	
 WalkDown:
-    walk_down
-    step_end 
+	walk_down
+	step_end 
 
 WalkUp:
-    walk_up
-    step_end
+	walk_up
+	step_end
 
 WalkLeft:
-    walk_left
-    step_end
+	walk_left
+	step_end
 
 WalkRight:
-    walk_right
-    step_end
+	walk_right
+	step_end
