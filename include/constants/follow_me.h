@@ -47,8 +47,8 @@
 #define FACE_FOLLOWER_ON_DOOR_EXIT          TRUE
 
 
-#define SIDEWAYS_STAIRS_IMPLEMENTED         FALSE
-#define POST_BATTLE_FOLLOWER_FIX            TRUE   //if you experience the follower de-syncing with the player after battle, set to TRUE
+#define SIDEWAYS_STAIRS_IMPLEMENTED         TRUE
+#define POST_BATTLE_FOLLOWER_FIX            FALSE   //if you experience the follower de-syncing with the player after battle, set to TRUE
 
 
 #endif // GUARD_CONSTANTS_FOLLOW_ME_H
