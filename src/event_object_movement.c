@@ -2097,7 +2097,7 @@ void UpdateFollowingPokemon(void)
      || (gMapHeader.mapType == MAP_TYPE_INDOOR && SpeciesToGraphicsInfo(species, form)->oam->size > ST_OAM_SIZE_2)
      || FlagGet(FLAG_TEMP_HIDE_FOLLOWER)
 #if OW_ENABLE_NPC_FOLLOWERS
-     || gSaveBlock3Ptr->follower.inProgress
+     || gSaveBlock3Ptr->NPCfollower.inProgress
 #endif
      )
     {

@@ -4042,7 +4042,7 @@ static void Task_HideFollowerForTeleport(u8 taskId)
     task = &gTasks[taskId];
     if (taskState == 0)
     {
-        if (!gSaveBlock3Ptr->follower.inProgress)
+        if (!gSaveBlock3Ptr->NPCfollower.inProgress)
         {
             DestroyTask(taskId);
         }
@@ -4075,7 +4075,7 @@ static void Task_HideFollowerForTeleport(u8 taskId)
         {
             SetFollowerSprite(FOLLOWER_SPRITE_INDEX_NORMAL);
             follower->invisible = TRUE;
-            gSaveBlock3Ptr->follower.comeOutDoorStairs = 0; // In case the follower was still coming out of a door.
+            gSaveBlock3Ptr->NPCfollower.comeOutDoorStairs = 0; // In case the follower was still coming out of a door.
             DestroyTask(taskId);
         }
     }
@@ -7581,7 +7581,7 @@ static void Task_WaitAfterMultiPartnerPartySlideIn(u8 taskId)
 
     // data[0] used as a timer afterwards rather than the x pos
 #if OW_ENABLE_NPC_FOLLOWERS
-    if (gSaveBlock3Ptr->follower.battlePartner) {
+    if (gSaveBlock3Ptr->NPCfollower.battlePartner) {
         if (++data[0] == 128)
             Task_ClosePartyMenu(taskId);
     }

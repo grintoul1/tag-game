@@ -175,14 +175,14 @@ struct Time
     /*0x04*/ s8 seconds;
 };
 
-struct FollowerMapData
+struct NPCFollowerMapData
 {
     u8 id;
     u8 number;
     u8 group;
 };
 
-struct Follower
+struct NPCFollower
 {
     u8 inProgress:1;
     u8 warpEnd:1;
@@ -191,7 +191,7 @@ struct Follower
     u8 objId;
     u8 currentSprite;
     u8 delayedState;
-    struct FollowerMapData map;
+    struct NPCFollowerMapData map;
     struct Coords16 log;
     const u8 *script;
     u16 flag;
@@ -207,7 +207,7 @@ struct SaveBlock3
     struct Time fakeRTC;
 #endif
 #if OW_ENABLE_NPC_FOLLOWERS
-    struct Follower follower;
+    struct NPCFollower NPCfollower;
 #endif
 };
 

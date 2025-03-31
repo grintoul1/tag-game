@@ -390,10 +390,10 @@ static void Task_BattleStart(u8 taskId)
         {
 #if OW_ENABLE_NPC_FOLLOWERS
             // Load the partner party if the NPC follower should participate.
-            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gSaveBlock3Ptr->follower.battlePartner)
+            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gSaveBlock3Ptr->NPCfollower.battlePartner)
             {
                 SavePlayerParty();
-                gPartnerTrainerId = TRAINER_PARTNER(gSaveBlock3Ptr->follower.battlePartner);
+                gPartnerTrainerId = TRAINER_PARTNER(gSaveBlock3Ptr->NPCfollower.battlePartner);
                 FillPartnerParty(gPartnerTrainerId);
             }
 #endif
@@ -479,7 +479,7 @@ static void DoStandardWildBattle(bool32 isDouble)
     gMain.savedCallback = CB2_EndWildBattle;
     gBattleTypeFlags = 0;
 #if OW_ENABLE_NPC_FOLLOWERS
-    if (gSaveBlock3Ptr->follower.inProgress && gSaveBlock3Ptr->follower.battlePartner && OW_FLAG_PARTNER_WILD_BATTLES != 0
+    if (gSaveBlock3Ptr->NPCfollower.inProgress && gSaveBlock3Ptr->NPCfollower.battlePartner && OW_FLAG_PARTNER_WILD_BATTLES != 0
      && (FlagGet(OW_FLAG_PARTNER_WILD_BATTLES) || OW_FLAG_PARTNER_WILD_BATTLES == ALWAYS))
     {
         gBattleTypeFlags |= BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_DOUBLE;
@@ -560,9 +560,9 @@ static void DoBattlePikeWildBattle(void)
 static void DoTrainerBattle(void)
 {
 #if OW_ENABLE_NPC_FOLLOWERS
-    if (gSaveBlock3Ptr->follower.battlePartner) {
+    if (gSaveBlock3Ptr->NPCfollower.battlePartner) {
         SavePlayerParty();
-        gPartnerTrainerId = TRAINER_PARTNER(gSaveBlock3Ptr->follower.battlePartner);
+        gPartnerTrainerId = TRAINER_PARTNER(gSaveBlock3Ptr->NPCfollower.battlePartner);
         FillPartnerParty(gPartnerTrainerId);
     }
 #endif
@@ -741,7 +741,7 @@ static void CB2_EndWildBattle(void)
     ResetOamRange(0, 128);
     
 #if OW_ENABLE_NPC_FOLLOWERS
-    if (gSaveBlock3Ptr->follower.battlePartner && OW_FLAG_PARTNER_WILD_BATTLES != 0
+    if (gSaveBlock3Ptr->NPCfollower.battlePartner && OW_FLAG_PARTNER_WILD_BATTLES != 0
      && (FlagGet(OW_FLAG_PARTNER_WILD_BATTLES) || OW_FLAG_PARTNER_WILD_BATTLES == ALWAYS))
     {
         LoadLastThreeMons();
@@ -1383,7 +1383,7 @@ void BattleSetup_StartTrainerBattle(void)
 {
     if (gNoOfApproachingTrainers == 2) {
 #if OW_ENABLE_NPC_FOLLOWERS
-        if (gSaveBlock3Ptr->follower.battlePartner) {
+        if (gSaveBlock3Ptr->NPCfollower.battlePartner) {
             gBattleTypeFlags = (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TRAINER);
         }
         else {
@@ -1395,7 +1395,7 @@ void BattleSetup_StartTrainerBattle(void)
     }
     else {
 #if OW_ENABLE_NPC_FOLLOWERS
-        if (gSaveBlock3Ptr->follower.battlePartner) {
+        if (gSaveBlock3Ptr->NPCfollower.battlePartner) {
             gBattleTypeFlags = (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TRAINER);
             gTrainerBattleOpponent_B = 0xFFFF;
         }
@@ -1496,7 +1496,7 @@ static void CB2_EndTrainerBattle(void)
     HandleBattleVariantEndParty();
 
 #if OW_ENABLE_NPC_FOLLOWERS
-    if (gSaveBlock3Ptr->follower.battlePartner)
+    if (gSaveBlock3Ptr->NPCfollower.battlePartner)
         LoadLastThreeMons();
 #endif
 
