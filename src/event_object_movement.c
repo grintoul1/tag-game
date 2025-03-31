@@ -10645,16 +10645,6 @@ bool8 MovementAction_EmoteDoubleExclamationMark_Step0(struct ObjectEvent *object
     return TRUE;
 }
 
-u16 GetMiniStepCount(u8 speed)
-{
-    return (u16)sStepTimes[speed];
-}
-
-void RunMiniStep(struct Sprite *sprite, u8 speed, u8 currentFrame)
-{
-    sNpcStepFuncTables[speed][currentFrame](sprite, sprite->data[3]);
-}
-
 bool8 PlayerIsUnderWaterfall(struct ObjectEvent *objectEvent)
 {
     s16 x;

@@ -552,33 +552,6 @@ static u8 ReturnFollowerDelayedState(u8 direction)
     return newState + direction;
 }
 
-#define LEDGE_FRAMES_MULTIPLIER 2
-
-void FollowMe_Ledges(struct ObjectEvent* npc, struct Sprite* sprite, u16* ledgeFramesTbl)
-{
-    u8 speed;
-    u16 frameCount;
-    u8 currentFrame;
-    struct ObjectEvent* follower = &gObjectEvents[GetFollowerMapObjId()];
-
-    if (!gSaveBlock3Ptr->follower.inProgress)
-        return;
-
-    if (follower == npc)
-        speed = gPlayerAvatar.runningState ? 3 : 1;
-    else
-        speed = 0;
-
-    // Calculate the frames for the jump
-    frameCount = GetMiniStepCount(speed) * LEDGE_FRAMES_MULTIPLIER;   // in event_object_movement.c
-    ledgeFramesTbl[sprite->data[4]] = frameCount;
-
-    // Call the step shifter
-    currentFrame = sprite->data[6] / LEDGE_FRAMES_MULTIPLIER;
-    // stepspeeds[speed][currentFrame](sprite, sprite->data[3]);
-    RunMiniStep(sprite, speed, currentFrame);   // in event_object_movement.c
-}
-
 bool8 FollowMe_IsCollisionExempt(struct ObjectEvent* obstacle, struct ObjectEvent* collider)
 {
     struct ObjectEvent* follower = &gObjectEvents[GetFollowerMapObjId()];

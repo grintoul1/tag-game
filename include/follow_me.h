@@ -25,7 +25,6 @@ void FollowMe_SetIndicatorToComeOutDoor(void);
 void FollowMe_SetIndicatorToRecreateSurfBlob(void);
 void FollowMe_TryRemoveFollowerOnWhiteOut(void);
 void FollowMe(struct ObjectEvent* npc, u8 state, bool8 ignoreScriptActive);
-void FollowMe_Ledges(struct ObjectEvent* npc, struct Sprite* obj, u16* ledgeFramesTbl);
 bool8 FollowMe_IsCollisionExempt(struct ObjectEvent* obstacle, struct ObjectEvent* collider);
 void FollowMe_FollowerToWater(void);
 void FollowMe_BindToSurfBlobOnReloadScreen(void);
