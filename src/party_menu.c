@@ -4033,12 +4033,14 @@ bool8 FieldCallback_PrepareFadeInForTeleport(void)
 }
 
 #if OW_ENABLE_NPC_FOLLOWERS
+#define taskState       task->data[0]
+
 static void Task_HideFollowerForTeleport(u8 taskId)
 {
     struct ObjectEvent *follower = &gObjectEvents[GetFollowerMapObjId()];
     struct Task *task;
     task = &gTasks[taskId];
-    if (task->data[0] == 0)
+    if (taskState == 0)
     {
         if (!gSaveBlock3Ptr->follower.inProgress)
         {
@@ -4064,10 +4066,10 @@ static void Task_HideFollowerForTeleport(u8 taskId)
                     ObjectEventSetHeldMovement(follower, MOVEMENT_ACTION_WALK_NORMAL_LEFT);
                     break;
             }
-            task->data[0]++;
+            taskState++;
         }
     }
-    if (task->data[0] == 1)
+    if (taskState == 1)
     {
         if (ObjectEventClearHeldMovementIfFinished(follower))
         {
@@ -4078,6 +4080,8 @@ static void Task_HideFollowerForTeleport(u8 taskId)
         }
     }
 }
+
+#undef taskState
 #endif
 
 static void Task_FieldMoveWaitForFade(u8 taskId)

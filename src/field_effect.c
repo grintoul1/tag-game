@@ -1445,6 +1445,8 @@ static void Task_UseFly(u8 taskId)
     }
 }
 
+#undef taskState
+
 static void FieldCallback_FlyIntoMap(void)
 {
     Overworld_PlaySpecialMapMusic();
@@ -1460,6 +1462,8 @@ static void FieldCallback_FlyIntoMap(void)
     gFieldCallback = NULL;
 }
 
+#define taskState       task->data[0]
+
 static void Task_FlyIntoMap(u8 taskId)
 {
 #if OW_ENABLE_NPC_FOLLOWERS
@@ -1468,16 +1472,16 @@ static void Task_FlyIntoMap(u8 taskId)
 #endif
     struct Task *task;
     task = &gTasks[taskId];
-    if (task->data[0] == 0)
+    if (taskState == 0)
     {
         if (gPaletteFade.active)
         {
             return;
         }
         FieldEffectStart(FLDEFF_FLY_IN);
-        task->data[0]++;
+        taskState++;
     }
-    if (task->data[0] == 1)
+    if (taskState == 1)
     {
         if (!FieldEffectActiveListContains(FLDEFF_FLY_IN))
         {
@@ -1491,27 +1495,27 @@ static void Task_FlyIntoMap(u8 taskId)
                 ObjectEventSetHeldMovement(follower, MOVEMENT_ACTION_WALK_NORMAL_DOWN); // Follower takes a step SOUTH
             }
 #endif
-            task->data[0]++;
+            taskState++;
         }
     }
-    if (task->data[0] == 2)
+    if (taskState == 2)
     {
 #if OW_ENABLE_NPC_FOLLOWERS
         if (gSaveBlock3Ptr->follower.inProgress && ObjectEventClearHeldMovementIfFinished(follower))
         {
             ObjectEventTurn(follower, DIR_NORTH); // Follower faces the player
             gSaveBlock3Ptr->follower.warpEnd = 0;
-            task->data[0]++;
+            taskState++;
         }
         else if (!gSaveBlock3Ptr->follower.inProgress)
         {
 #endif
-            task->data[0]++;
+            taskState++;
 #if OW_ENABLE_NPC_FOLLOWERS
         }
 #endif
     }
-    if (task->data[0] == 3)
+    if (taskState == 3)
     {
         UnlockPlayerFieldControls();
         UnfreezeObjectEvents();
