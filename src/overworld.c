@@ -443,7 +443,9 @@ static void Overworld_ResetStateAfterWhiteOut(void)
         VarSet(VAR_SHOULD_END_ABNORMAL_WEATHER, 0);
         VarSet(VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_NONE);
     }
+#if OW_ENABLE_NPC_FOLLOWERS
     FollowMe_TryRemoveFollowerOnWhiteOut();
+#endif
 }
 
 static void UpdateMiscOverworldStates(void)
@@ -1505,10 +1507,11 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
             PlayerStep(inputStruct.dpadDirection, newKeys, heldKeys);
         }
     }
-    
+#if OW_ENABLE_NPC_FOLLOWERS
     // if stop running but keep holding B -> fix follower frame
     if (PlayerHasFollower() && IsPlayerOnFoot() && IsPlayerStandingStill())
         ObjectEventSetHeldMovement(&gObjectEvents[GetFollowerObjectId()], GetFaceDirectionAnimNum(gObjectEvents[GetFollowerObjectId()].facingDirection));
+#endif
 }
 
 void CB1_Overworld(void)
@@ -2035,7 +2038,9 @@ static bool32 ReturnToFieldLocal(u8 *state)
     case 1:
         InitViewGraphics();
         TryLoadTrainerHillEReaderPalette();
+#if OW_ENABLE_NPC_FOLLOWERS
         FollowMe_BindToSurfBlobOnReloadScreen();
+#endif
         (*state)++;
         break;
     case 2:
@@ -2236,7 +2241,9 @@ static void InitObjectEventsLocal(void)
     TrySpawnObjectEvents(0, 0);
     UpdateFollowingPokemon();
     TryRunOnWarpIntoMapScript();
+#if OW_ENABLE_NPC_FOLLOWERS
     FollowMe_HandleSprite();
+#endif
 }
 
 static void InitObjectEventsReturnToField(void)

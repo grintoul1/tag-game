@@ -440,13 +440,15 @@ void CB2_InitBattle(void)
     AllocateBattleSpritesData();
     AllocateMonSpritesGfx();
     RecordedBattle_ClearFrontierPassFlag();
-
-    if (gSaveBlock2Ptr->follower.battlePartner && FOLLOWER_PARTY_PREVIEW == FALSE)
+#if OW_ENABLE_NPC_FOLLOWERS
+    if (gSaveBlock3Ptr->follower.battlePartner && OW_NPC_FOLLOWER_PARTY_PREVIEW == FALSE)
     {
         CB2_InitBattleInternal();
         gBattleCommunication[MULTIUSE_STATE] = 0;
     }
-    else if (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+    else 
+#endif
+    if (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
         if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
         {
@@ -5652,11 +5654,13 @@ static void ReturnFromBattleToOverworld(void)
     m4aSongNumStop(SE_LOW_HEALTH);
     SetMainCallback2(gMain.savedCallback);
 
-    // if you experience the follower de-syncing with the player after battle, set POST_BATTLE_FOLLOWER_FIX to TRUE in include/constants/global.h
-    #if POST_BATTLE_FOLLOWER_FIX
+#if OW_ENABLE_NPC_FOLLOWERS
+    // if you experience the follower de-syncing with the player after battle, set OW_POST_BATTLE_NPC_FOLLOWER_FIX to TRUE in include/config/overworld.h
+    #if OW_POST_BATTLE_NPC_FOLLOWER_FIX
         FollowMe_WarpSetEnd();
         gObjectEvents[GetFollowerObjectId()].invisible = TRUE;
     #endif
+#endif
 }
 
 void RunBattleScriptCommands_PopCallbacksStack(void)

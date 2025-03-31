@@ -215,8 +215,8 @@ void LoadLastThreeMons(void)
         SetBoxMonData(&gPlayerParty[i].box, MON_DATA_STATUS, &data);
     }
 
-    if (F_FLAG_HEAL_AFTER_FOLLOWER_BATTLE != 0
-     && (FlagGet(F_FLAG_HEAL_AFTER_FOLLOWER_BATTLE) || F_FLAG_HEAL_AFTER_FOLLOWER_BATTLE == ALWAYS))
+    if (OW_FLAG_HEAL_AFTER_FOLLOWER_BATTLE != 0
+     && (FlagGet(OW_FLAG_HEAL_AFTER_FOLLOWER_BATTLE) || OW_FLAG_HEAL_AFTER_FOLLOWER_BATTLE == ALWAYS))
     {
         HealPlayerParty();
     }

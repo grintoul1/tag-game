@@ -1133,9 +1133,11 @@ bool8 TryDoDoubleWildBattle(void)
     if (GetSafariZoneFlag()
       || (B_DOUBLE_WILD_REQUIRE_2_MONS == TRUE && GetMonsStateToDoubles() != PLAYER_HAS_TWO_USABLE_MONS))
         return FALSE;
-    if (gSaveBlock2Ptr->follower.battlePartner && F_FLAG_PARTNER_WILD_BATTLES != 0
-     && (FlagGet(F_FLAG_PARTNER_WILD_BATTLES) || F_FLAG_PARTNER_WILD_BATTLES == ALWAYS) && FOLLOWER_WILD_BATTLE_VS_2 == TRUE)
+#if OW_ENABLE_NPC_FOLLOWERS
+    if (gSaveBlock3Ptr->follower.battlePartner && OW_FLAG_PARTNER_WILD_BATTLES != 0
+     && (FlagGet(OW_FLAG_PARTNER_WILD_BATTLES) || OW_FLAG_PARTNER_WILD_BATTLES == ALWAYS) && OW_NPC_FOLLOWER_WILD_BATTLE_VS_2 == TRUE)
         return TRUE;
+#endif
     else if (B_FLAG_FORCE_DOUBLE_WILD != 0 && FlagGet(B_FLAG_FORCE_DOUBLE_WILD))
         return TRUE;
     else if (B_DOUBLE_WILD_CHANCE != 0 && ((Random() % 100) + 1 <= B_DOUBLE_WILD_CHANCE))

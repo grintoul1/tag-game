@@ -13,9 +13,10 @@ static void StartTeleportFieldEffect(void);
 
 bool8 SetUpFieldMove_Teleport(void)
 {
+#if OW_ENABLE_NPC_FOLLOWERS
     if (!CheckFollowerFlag(FOLLOW_ME_FLAG_CAN_LEAVE_ROUTE))
         return FALSE;
-        
+#endif
     if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
     {
         gFieldCallback2 = FieldCallback_PrepareFadeInForTeleport;

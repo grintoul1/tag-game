@@ -243,7 +243,11 @@ void ItemUseOutOfBattle_Bike(u8 taskId)
         DisplayCannotDismountBikeMessage(taskId, tUsingRegisteredKeyItem);
     else
     {
-        if (Overworld_IsBikingAllowed() == TRUE && IsBikingDisallowedByPlayer() == 0 && FollowerCanBike())
+        if (Overworld_IsBikingAllowed() == TRUE && IsBikingDisallowedByPlayer() == 0
+#if OW_ENABLE_NPC_FOLLOWERS
+         && FollowerCanBike()
+#endif
+         )
         {
             sItemUseOnFieldCB = ItemUseOnFieldCB_Bike;
             SetUpItemUseOnFieldCallback(taskId);
@@ -260,7 +264,9 @@ static void ItemUseOnFieldCB_Bike(u8 taskId)
     else // ACRO_BIKE
         GetOnOffBike(PLAYER_AVATAR_FLAG_ACRO_BIKE);
     
+#if OW_ENABLE_NPC_FOLLOWERS
     FollowMe_HandleBike();
+#endif
     ScriptUnfreezeObjectEvents();
     UnlockPlayerFieldControls();
     DestroyTask(taskId);
@@ -1054,8 +1060,10 @@ static void ItemUseOnFieldCB_EscapeRope(u8 taskId)
 
 bool8 CanUseDigOrEscapeRopeOnCurMap(void)
 {
+#if OW_ENABLE_NPC_FOLLOWERS
     if (!CheckFollowerFlag(FOLLOW_ME_FLAG_CAN_LEAVE_ROUTE))
         return FALSE;
+#endif
     if (gMapHeader.allowEscaping)
         return TRUE;
     else

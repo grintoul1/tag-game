@@ -1386,7 +1386,9 @@ void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 gender)
     gPlayerAvatar.spriteId = objectEvent->spriteId;
     gPlayerAvatar.gender = gender;
     SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_CONTROLLABLE | PLAYER_AVATAR_FLAG_ON_FOOT);
+#if OW_ENABLE_NPC_FOLLOWERS
     CreateFollowerAvatar();
+#endif
 }
 
 void SetPlayerInvisibility(bool8 invisible)
@@ -1636,8 +1638,9 @@ static void CreateStopSurfingTask(u8 direction)
     taskId = CreateTask(Task_StopSurfingInit, 0xFF);
     gTasks[taskId].data[0] = direction;
     Task_StopSurfingInit(taskId);
-
+#if OW_ENABLE_NPC_FOLLOWERS
     PrepareFollowerDismountSurf();
+#endif
 }
 
 static void Task_StopSurfingInit(u8 taskId)
