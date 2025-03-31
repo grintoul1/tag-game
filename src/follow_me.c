@@ -1131,6 +1131,9 @@ static void TurnNPCIntoFollower(u8 localId, u16 followerFlags, u8 setScript, con
         if (gObjectEvents[eventObjId].localId == localId)
         {
             follower = &gObjectEvents[eventObjId];
+            flag = GetObjectEventFlagIdByLocalIdAndMap(follower->localId, follower->mapNum, follower->mapGroup);
+            if (flag == 0) // If the NPC does not have an event flag, don't create follower
+                return;
             follower->movementType = MOVEMENT_TYPE_NONE; // Doesn't get to move on its own anymore
             gSprites[follower->spriteId].callback = MovementType_None; // MovementType_None
             SetObjEventTemplateMovementType(localId, 0);
@@ -1139,7 +1142,6 @@ static void TurnNPCIntoFollower(u8 localId, u16 followerFlags, u8 setScript, con
             else
                 script = GetObjectEventScriptPointerByObjectEventId(eventObjId);
 
-            flag = GetObjectEventFlagIdByLocalIdAndMap(follower->localId, follower->mapNum, follower->mapGroup);
             gSaveBlock3Ptr->NPCfollower.inProgress = TRUE;
             gSaveBlock3Ptr->NPCfollower.objId = eventObjId;
             gSaveBlock3Ptr->NPCfollower.graphicsId = follower->graphicsId;
