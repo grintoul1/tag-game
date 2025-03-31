@@ -1462,7 +1462,11 @@ static void FieldCallback_FlyIntoMap(void)
     gFieldCallback = NULL;
 }
 
-#define taskState       task->data[0]
+#define taskState               task->data[0]
+#define tWaitPaletteFadeIn      0
+#define tWaitFieldEffectEnd     1
+#define tNPCFollowerFacePlayer  2
+#define tTaskEnd                3
 
 static void Task_FlyIntoMap(u8 taskId)
 {
@@ -1472,7 +1476,7 @@ static void Task_FlyIntoMap(u8 taskId)
 #endif
     struct Task *task;
     task = &gTasks[taskId];
-    if (taskState == 0)
+    if (taskState == tWaitPaletteFadeIn)
     {
         if (gPaletteFade.active)
         {
@@ -1481,7 +1485,7 @@ static void Task_FlyIntoMap(u8 taskId)
         FieldEffectStart(FLDEFF_FLY_IN);
         taskState++;
     }
-    if (taskState == 1)
+    if (taskState == tWaitFieldEffectEnd)
     {
         if (!FieldEffectActiveListContains(FLDEFF_FLY_IN))
         {
@@ -1498,7 +1502,7 @@ static void Task_FlyIntoMap(u8 taskId)
             taskState++;
         }
     }
-    if (taskState == 2)
+    if (taskState == tNPCFollowerFacePlayer)
     {
 #if OW_ENABLE_NPC_FOLLOWERS
         if (gSaveBlock3Ptr->NPCfollower.inProgress && ObjectEventClearHeldMovementIfFinished(follower))
@@ -1515,7 +1519,7 @@ static void Task_FlyIntoMap(u8 taskId)
         }
 #endif
     }
-    if (taskState == 3)
+    if (taskState == tTaskEnd)
     {
         UnlockPlayerFieldControls();
         UnfreezeObjectEvents();
