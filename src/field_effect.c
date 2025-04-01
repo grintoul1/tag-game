@@ -1849,7 +1849,9 @@ static bool8 EscalatorWarpIn_Init(struct Task *task)
     ObjectEventSetHeldMovement(objectEvent, GetFaceDirectionMovementAction(DIR_EAST));
     PlayerGetDestCoords(&x, &y);
     behavior = MapGridGetMetatileBehaviorAt(x, y);
-    EscalatorMoveFollowerFinish();
+#if OW_ENABLE_NPC_FOLLOWERS
+    EscalatorMoveFollowerNPCFinish();
+#endif
     task->tState++;
     task->data[1] = 16;
 
