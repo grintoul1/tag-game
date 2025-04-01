@@ -266,6 +266,15 @@ u8 MovementAction_FlyUp_Step1(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_Fly_Finish(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_FlyDown_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_FlyDown_Step1(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_SurfStillDown_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_SurfStillDown_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_SurfStillUp_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_SurfStillUp_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_SurfStillLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_SurfStillLeft_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_SurfStillRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_SurfStillRight_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_FaceUp[])(struct ObjectEvent *, struct Sprite *);
@@ -429,6 +438,10 @@ u8 (*const gMovementActionFuncs_FlyUp[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_FlyDown[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_EmoteX[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_EmoteDoubleExclMark[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_SurfStillDown[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_SurfStillUp[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_SurfStillLeft[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_SurfStillRight[])(struct ObjectEvent *, struct Sprite *);
 
 u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *) = {
     [MOVEMENT_ACTION_FACE_DOWN] = gMovementActionFuncs_FaceDown,
@@ -593,6 +606,10 @@ u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *)
     [MOVEMENT_ACTION_EMOTE_DOUBLE_EXCL_MARK] = gMovementActionFuncs_EmoteDoubleExclMark,
     [MOVEMENT_ACTION_EXIT_POKEBALL] = gMovementActionFuncs_ExitPokeball,
     [MOVEMENT_ACTION_ENTER_POKEBALL] = gMovementActionFuncs_EnterPokeball,
+    [MOVEMENT_ACTION_SURF_STILL_DOWN] = gMovementActionFuncs_SurfStillDown,
+    [MOVEMENT_ACTION_SURF_STILL_UP] = gMovementActionFuncs_SurfStillUp,
+    [MOVEMENT_ACTION_SURF_STILL_LEFT] = gMovementActionFuncs_SurfStillLeft,
+    [MOVEMENT_ACTION_SURF_STILL_RIGHT] = gMovementActionFuncs_SurfStillRight,
 };
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *) = {
@@ -1553,4 +1570,28 @@ u8 (*const gMovementActionFuncs_EmoteX[])(struct ObjectEvent *, struct Sprite *)
 u8 (*const gMovementActionFuncs_EmoteDoubleExclMark[])(struct ObjectEvent *, struct Sprite *) = {
     MovementAction_EmoteDoubleExclamationMark_Step0,
     MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_SurfStillDown[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_SurfStillDown_Step0,
+    MovementAction_SurfStillDown_Step1,
+    MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_SurfStillUp[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_SurfStillUp_Step0,
+    MovementAction_SurfStillUp_Step1,
+    MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_SurfStillLeft[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_SurfStillLeft_Step0,
+    MovementAction_SurfStillLeft_Step1,
+    MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_SurfStillRight[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_SurfStillRight_Step0,
+    MovementAction_SurfStillRight_Step1,
+    MovementAction_PauseSpriteAnim,
 };
