@@ -4037,7 +4037,7 @@ bool8 FieldCallback_PrepareFadeInForTeleport(void)
 
 static void Task_HideFollowerForTeleport(u8 taskId)
 {
-    struct ObjectEvent *follower = &gObjectEvents[GetFollowerMapObjId()];
+    struct ObjectEvent *follower = &gObjectEvents[GetFollowerNPCMapObjId()];
     struct Task *task;
     task = &gTasks[taskId];
     if (taskState == 0)
@@ -4048,10 +4048,10 @@ static void Task_HideFollowerForTeleport(u8 taskId)
         }
         else
         {
-            u8 followerObjId = GetFollowerObjectId();
+            u8 followerObjId = GetFollowerNPCObjectId();
             follower->singleMovementActive = FALSE;
             follower->heldMovementActive = FALSE;
-            switch (DetermineFollowerDirection(&gObjectEvents[gPlayerAvatar.objectEventId], &gObjectEvents[followerObjId]))
+            switch (DetermineFollowerNPCDirection(&gObjectEvents[gPlayerAvatar.objectEventId], &gObjectEvents[followerObjId]))
             {
                 case DIR_NORTH:
                     ObjectEventSetHeldMovement(follower, MOVEMENT_ACTION_WALK_NORMAL_UP);
@@ -4073,7 +4073,7 @@ static void Task_HideFollowerForTeleport(u8 taskId)
     {
         if (ObjectEventClearHeldMovementIfFinished(follower))
         {
-            SetFollowerSprite(FOLLOWER_SPRITE_INDEX_NORMAL);
+            SetFollowerNPCSprite(FOLLOWER_NPC_SPRITE_INDEX_NORMAL);
             follower->invisible = TRUE;
             gSaveBlock3Ptr->NPCfollower.comeOutDoorStairs = 0; // In case the follower was still coming out of a door.
             DestroyTask(taskId);
@@ -4122,7 +4122,7 @@ static void FieldCallback_Surf(void)
 static bool8 SetUpFieldMove_Surf(void)
 {
 #if OW_ENABLE_NPC_FOLLOWERS
-    if (!CheckFollowerFlag(FOLLOWER_NPC_FLAG_CAN_SURF))
+    if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF))
         return FALSE;
 #endif
     if (PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
@@ -4145,7 +4145,7 @@ static void DisplayCantUseSurfMessage(void)
 static bool8 SetUpFieldMove_Fly(void)
 {
 #if OW_ENABLE_NPC_FOLLOWERS
-    if (!CheckFollowerFlag(FOLLOWER_NPC_FLAG_CAN_LEAVE_ROUTE))
+    if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_LEAVE_ROUTE))
         return FALSE;
 #endif
     if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
@@ -4170,7 +4170,7 @@ static bool8 SetUpFieldMove_Waterfall(void)
     s16 x, y;
 
 #if OW_ENABLE_NPC_FOLLOWERS
-    if (!CheckFollowerFlag(FOLLOWER_NPC_FLAG_CAN_WATERFALL))
+    if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_WATERFALL))
         return FALSE;
 #endif
     GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
@@ -4192,7 +4192,7 @@ static void FieldCallback_Dive(void)
 static bool8 SetUpFieldMove_Dive(void)
 {
 #if OW_ENABLE_NPC_FOLLOWERS
-    if (!CheckFollowerFlag(FOLLOWER_NPC_FLAG_CAN_DIVE))
+    if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_DIVE))
         return FALSE;
 #endif
     gFieldEffectArguments[1] = TrySetDiveWarp();

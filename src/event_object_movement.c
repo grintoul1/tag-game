@@ -1262,7 +1262,7 @@ u8 GetObjectEventIdByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroupId)
     if (localId < OBJ_EVENT_ID_FOLLOWER) {
 #if OW_ENABLE_NPC_FOLLOWERS
         if (localId == OBJ_EVENT_ID_NPC_FOLLOWER)
-            return GetFollowerObjectId();
+            return GetFollowerNPCObjectId();
         else
 #endif
             return GetObjectEventIdByLocalIdAndMapInternal(localId, mapNum, mapGroupId);
@@ -2523,7 +2523,7 @@ void RemoveObjectEventsOutsideView(void)
             // such as Wally's Ralts catch sequence
             if (objectEvent->active && !objectEvent->isPlayer && objectEvent->localId != OBJ_EVENT_ID_FOLLOWER
 #if OW_ENABLE_NPC_FOLLOWERS
-             && i != GetFollowerObjectId()
+             && i != GetFollowerNPCObjectId()
 #endif
              )
                 RemoveObjectEventIfOutsideView(objectEvent);
@@ -6045,7 +6045,7 @@ static bool8 DoesObjectCollideWithObjectAt(struct ObjectEvent *objectEvent, s16 
         curObject = &gObjectEvents[i];
         if (curObject->active && (curObject->movementType != MOVEMENT_TYPE_FOLLOW_PLAYER || objectEvent != &gObjectEvents[gPlayerAvatar.objectEventId]) && curObject != objectEvent
 #if OW_ENABLE_NPC_FOLLOWERS
-         && !FollowMe_IsCollisionExempt(curObject, objectEvent)
+         && !FollowerNPC_IsCollisionExempt(curObject, objectEvent)
 #endif
          )
         {
@@ -6196,7 +6196,7 @@ bool8 ObjectEventSetHeldMovement(struct ObjectEvent *objectEvent, u8 movementAct
     objectEvent->heldMovementFinished = FALSE;
     gSprites[objectEvent->spriteId].sActionFuncId = 0;
 #if OW_ENABLE_NPC_FOLLOWERS
-    FollowMe(objectEvent, movementActionId, FALSE);
+    NPCFollow(objectEvent, movementActionId, FALSE);
 #endif
     return FALSE;
 }
