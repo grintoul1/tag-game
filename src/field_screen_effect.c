@@ -11,7 +11,7 @@
 #include "field_screen_effect.h"
 #include "field_special_scene.h"
 #include "field_weather.h"
-#include "follow_me.h"
+#include "follower_npc.h"
 #include "gpu_regs.h"
 #include "io_reg.h"
 #include "link.h"
