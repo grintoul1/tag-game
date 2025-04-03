@@ -3255,8 +3255,6 @@ static const u8 *GetObjectEventScriptPointerByLocalIdAndMap(u8 localId, u8 mapNu
 {
     if (localId == OBJ_EVENT_ID_FOLLOWER)
         return EventScript_Follower;
-    else if (localId == OBJ_EVENT_ID_FOLLOW_ME)
-        return GetFollowerScriptPointer();
     return GetObjectEventTemplateByLocalIdAndMap(localId, mapNum, mapGroup)->script;
 }
 
