@@ -10725,10 +10725,7 @@ bool8 MovementAction_SurfStillUp_Step1(struct ObjectEvent *objectEvent, struct S
 
 bool8 MovementAction_SurfStillLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    if (objectEvent->directionOverwrite)
-        InitMovementSurfStill(objectEvent, sprite, objectEvent->directionOverwrite, MOVE_SPEED_FAST_1);
-    else
-        InitMovementSurfStill(objectEvent, sprite, DIR_WEST, MOVE_SPEED_FAST_1);
+    InitMovementSurfStill(objectEvent, sprite, DIR_WEST, MOVE_SPEED_FAST_1);
     sprite->animPaused = TRUE;
     return MovementAction_SurfStillLeft_Step1(objectEvent, sprite);
 }
@@ -10745,10 +10742,7 @@ bool8 MovementAction_SurfStillLeft_Step1(struct ObjectEvent *objectEvent, struct
 
 bool8 MovementAction_SurfStillRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    if (objectEvent->directionOverwrite)
-        InitMovementSurfStill(objectEvent, sprite, objectEvent->directionOverwrite, MOVE_SPEED_FAST_1);
-    else
-        InitMovementSurfStill(objectEvent, sprite, DIR_EAST, MOVE_SPEED_FAST_1);
+    InitMovementSurfStill(objectEvent, sprite, DIR_EAST, MOVE_SPEED_FAST_1);
     sprite->animPaused = TRUE;
     return MovementAction_SurfStillRight_Step1(objectEvent, sprite);
 }
