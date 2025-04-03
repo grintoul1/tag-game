@@ -554,11 +554,6 @@ static void DoBattlePikeWildBattle(void)
 
 static void DoTrainerBattle(void)
 {
-    if (gSaveBlock2Ptr->follower.battlePartner) {
-        SavePlayerParty();
-        gPartnerTrainerId = TRAINER_PARTNER(gSaveBlock2Ptr->follower.battlePartner);
-        FillPartnerParty(gPartnerTrainerId);
-    }
     CreateBattleStartTask(GetTrainerBattleTransition(), 0);
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
     IncrementGameStat(GAME_STAT_TRAINER_BATTLES);
