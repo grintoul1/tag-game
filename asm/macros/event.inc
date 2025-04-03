@@ -2527,7 +2527,7 @@
 	checkfollower
 	goto_if_eq VAR_RESULT, TRUE, 1f
 	ballfollowingmon
-    callnative ScriptSetFollower
+    callnative ScriptSetFollowerNPC
 	.if \script == 0
 		.set setScript, FALSE
     .else
@@ -2544,17 +2544,17 @@
     
     @ Remove the following NPC (assumes there will only ever be one).
     .macro destroyfollower
-    callnative ScriptDestroyFollower
+    callnative ScriptDestroyFollowerNPC
     .endm
     
     @ Makes the player and follower face one another.
     .macro facefollower
-    callnative ScriptFaceFollower
+    callnative ScriptFaceFollowerNPC
     .endm
     
     @ Checks if you have a follower. returns the result to VAR_RESULT.
     .macro checkfollower
-    callnative ScriptCheckFollower
+    callnative ScriptCheckFollowerNPC
     .endm
 
 	@ Updates Pokemon follower.
@@ -2570,6 +2570,6 @@
 
     @ Changes the battle partner of the existing follower.
     .macro changefollowerbattler battlePartner:req
-    callnative ScriptChangeFollowerBattlePartner
+    callnative ScriptChangeFollowerNPCBattlePartner
     .2byte \battlePartner
     .endm
