@@ -369,6 +369,7 @@ static void PlayerLogCoordinates(struct ObjectEvent* player)
 u8 DetermineFollowerNPCState(struct ObjectEvent* follower, u8 state, u8 direction)
 {
     u8 newState = MOVEMENT_INVALID;
+#if SIDEWAYS_STAIRS_IMPLEMENTED
         u8 collision = COLLISION_NONE;
         s16 followerX = follower->currentCoords.x;
         s16 followerY = follower->currentCoords.y;
@@ -377,6 +378,7 @@ u8 DetermineFollowerNPCState(struct ObjectEvent* follower, u8 state, u8 directio
 
         MoveCoords(direction, &followerX, &followerY);
         nextBehavior = MapGridGetMetatileBehaviorAt(followerX, followerY);
+#endif
         follower->facingDirectionLocked = FALSE;
 
     // Follower won't do delayed movement until player does a movement.
@@ -394,6 +396,7 @@ u8 DetermineFollowerNPCState(struct ObjectEvent* follower, u8 state, u8 directio
     // Clear ice tile stuff
     follower->disableAnim = FALSE;
 
+#if SIDEWAYS_STAIRS_IMPLEMENTED
         // Clear overwrite movement
         follower->directionOverwrite = DIR_NONE;
 
@@ -408,6 +411,7 @@ u8 DetermineFollowerNPCState(struct ObjectEvent* follower, u8 state, u8 directio
             follower->directionOverwrite = GetRightSideStairsDirection(direction);
             break;
         }
+#endif
 
     switch (state) 
     {
