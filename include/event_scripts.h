@@ -647,4 +647,10 @@ extern const u8 EventScript_VsSeekerChargingDone[];
 extern const u8 Common_Movement_FollowerSafeStart[];
 extern const u8 Common_Movement_FollowerSafeEnd[];
 
+extern const u8 Common_Movement_WalkFasterUpHide[];
+extern const u8 Common_Movement_WalkFasterDownHide[];
+extern const u8 Common_Movement_WalkFasterRightHide[];
+extern const u8 Common_Movement_WalkFasterLeftHide[];
+
+
 #endif // GUARD_EVENT_SCRIPTS_H
