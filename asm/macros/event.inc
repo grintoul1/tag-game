@@ -2523,8 +2523,8 @@
 
 	@ Sets an NPC up to follow the player.
 	@ If you want to specify a battle partner without specifying a custom script, you can set the script parameter to 0.
-    .macro setfollower localId:req, flags:req, script=0, battlePartner=0
-	checkfollower
+    .macro setfollowernpc localId:req, flags:req, script=0, battlePartner=0
+	checkfollowernpc
 	goto_if_eq VAR_RESULT, TRUE, 1f
 	ballfollowingmon
     callnative ScriptSetFollowerNPC
@@ -2542,17 +2542,17 @@
 	1:
     .endm
     
-    @ Remove the following NPC (assumes there will only ever be one).
-    .macro destroyfollower
+    @ Removes the NPC follower (assumes there will only ever be one).
+    .macro destroyfollowernpc
     callnative ScriptDestroyFollowerNPC
     .endm
     
-    @ Makes the player and follower face one another.
-    .macro facefollower
+    @ Makes the player and NPC follower face one another.
+    .macro facefollowernpc
     callnative ScriptFaceFollowerNPC
     .endm
 
-    @ Makes the follower NPC walk into the player and get hidden.
+    @ Makes the NPC follower walk into the player and get hidden.
     @ Optionally, you can set the walk speed for the movement:
     @ 0 = Slow
     @ 1 = Normal (default)
@@ -2565,8 +2565,8 @@
     callnative HideNPCFollower
     .endm
     
-    @ Checks if you have a follower. returns the result to VAR_RESULT.
-    .macro checkfollower
+    @ Checks if you have an NPC follower. Returns the result to VAR_RESULT.
+    .macro checkfollowernpc
     callnative ScriptCheckFollowerNPC
     .endm
 
@@ -2581,7 +2581,7 @@
 	delay 16
 	.endm
 
-    @ Changes the battle partner of the existing follower.
+    @ Changes the battle partner of the existing NPC follower.
     .macro changefollowerbattler battlePartner:req
     callnative ScriptChangeFollowerNPCBattlePartner
     .2byte \battlePartner
