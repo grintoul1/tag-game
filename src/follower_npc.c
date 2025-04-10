@@ -1620,6 +1620,16 @@ void ScriptFaceFollowerNPC(struct ScriptContext *ctx)
 #endif
 }
 
+#if OW_ENABLE_NPC_FOLLOWERS
+static const u8 *FollowerNPCHideMovementsSpeedTable[][4] = 
+{
+    [DIR_SOUTH] = {Common_Movement_WalkDownSlow, Common_Movement_WalkDown, Common_Movement_WalkDownFast, Common_Movement_WalkDownFaster},
+    [DIR_NORTH] = {Common_Movement_WalkUpSlow, Common_Movement_WalkUp, Common_Movement_WalkUpFast, Common_Movement_WalkUpFaster},
+    [DIR_WEST] = {Common_Movement_WalkLeftSlow, Common_Movement_WalkLeft, Common_Movement_WalkLeftFast, Common_Movement_WalkLeftFaster},
+    [DIR_EAST] = {Common_Movement_WalkRightSlow, Common_Movement_WalkRight, Common_Movement_WalkRightFast, Common_Movement_WalkRightFaster}
+};
+#endif
+
 void ScriptHideNPCFollower(struct ScriptContext *ctx)
 {
 #if OW_ENABLE_NPC_FOLLOWERS
@@ -1629,59 +1639,11 @@ void ScriptHideNPCFollower(struct ScriptContext *ctx)
     if (gSaveBlock3Ptr->NPCfollower.inProgress && npc->invisible == FALSE)
     {
         u8 direction = DetermineFollowerNPCDirection(&gObjectEvents[gPlayerAvatar.objectEventId], npc);
-        const u8 *movementScript;
 
         if (walkSpeed > 3)
             walkSpeed = 3;
 
-        switch (direction)
-        {
-            case DIR_NORTH:
-                if (walkSpeed == 0)
-                    movementScript = Common_Movement_WalkUpSlow;
-                else if (walkSpeed == 1)
-                    movementScript = Common_Movement_WalkUp;
-                else if (walkSpeed == 2)
-                    movementScript = Common_Movement_WalkUpFast;
-                else if (walkSpeed == 3)
-                    movementScript = Common_Movement_WalkUpFaster;
-                break;
-            case DIR_SOUTH:
-                if (walkSpeed == 0)
-                    movementScript = Common_Movement_WalkDownSlow;
-                else if (walkSpeed == 1)
-                    movementScript = Common_Movement_WalkDown;
-                else if (walkSpeed == 2)
-                    movementScript = Common_Movement_WalkDownFast;
-                else if (walkSpeed == 3)
-                    movementScript = Common_Movement_WalkDownFaster;
-                break;
-            case DIR_EAST:
-                if (walkSpeed == 0)
-                    movementScript = Common_Movement_WalkRightSlow;
-                else if (walkSpeed == 1)
-                    movementScript = Common_Movement_WalkRight;
-                else if (walkSpeed == 2)
-                    movementScript = Common_Movement_WalkRightFast;
-                else if (walkSpeed == 3)
-                    movementScript = Common_Movement_WalkRightFaster;
-                break;
-            case DIR_WEST:
-                if (walkSpeed == 0)
-                    movementScript = Common_Movement_WalkLeftSlow;
-                else if (walkSpeed == 1)
-                    movementScript = Common_Movement_WalkLeft;
-                else if (walkSpeed == 2)
-                    movementScript = Common_Movement_WalkLeftFast;
-                else if (walkSpeed == 3)
-                    movementScript = Common_Movement_WalkLeftFaster;
-                break;
-            default:
-                movementScript = NULL;
-                break;
-        }
-
-        ScriptMovement_StartObjectMovementScript(OBJ_EVENT_ID_NPC_FOLLOWER, npc->mapGroup, npc->mapNum, movementScript);
+        ScriptMovement_StartObjectMovementScript(OBJ_EVENT_ID_NPC_FOLLOWER, npc->mapGroup, npc->mapNum, FollowerNPCHideMovementsSpeedTable[direction][walkSpeed]);
         gSaveBlock3Ptr->NPCfollower.warpEnd = FNPC_WARP_REAPPEAR;
     }
 #endif
