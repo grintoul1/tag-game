@@ -11,6 +11,7 @@
 #include "field_weather.h"
 #include "fieldmap.h"
 #include "fldeff.h"
+#include "follower_npc.h"
 #include "gpu_regs.h"
 #include "main.h"
 #include "mirage_tower.h"
@@ -1388,7 +1389,7 @@ static void Task_UseFly(u8 taskId)
         }
         else
         {
-            FollowerNPCWalkIntoPlayerForLeaveRoute(follower);
+            FollowerNPCWalkIntoPlayerForLeaveMap();
             taskState++;
         }
     }
@@ -1396,7 +1397,7 @@ static void Task_UseFly(u8 taskId)
     {
         if (ObjectEventClearHeldMovementIfFinished(follower))
         {
-            FollowerNPCHideForLeaveRoute(follower);
+            FollowerNPCHideForLeaveMap(follower);
             taskState++;
         }
 #endif
@@ -1471,7 +1472,7 @@ static void Task_FlyIntoMap(u8 taskId)
         if (!FieldEffectActiveListContains(FLDEFF_FLY_IN))
         {
 #if OW_ENABLE_NPC_FOLLOWERS
-        FollowerNPCReappearAfterLeaveRoute(follower, player);
+        FollowerNPCReappearAfterLeaveMap(follower, player);
 #endif
             taskState++;
         }
@@ -1481,7 +1482,7 @@ static void Task_FlyIntoMap(u8 taskId)
 #if OW_ENABLE_NPC_FOLLOWERS
         if (gSaveBlock3Ptr->NPCfollower.inProgress && ObjectEventClearHeldMovementIfFinished(follower))
         {
-            FollowerNPCFaceAfterLeaveRoute();
+            FollowerNPCFaceAfterLeaveMap();
             taskState++;
         }
         else if (!gSaveBlock3Ptr->NPCfollower.inProgress)
@@ -2073,12 +2074,26 @@ static bool8 LavaridgeGymB1FWarpEffect_Init(struct Task *task, struct ObjectEven
     task->data[1] = 1;
     task->data[0]++;
     if (objectEvent->localId == OBJ_EVENT_ID_PLAYER) // Hide follower before warping
+    {
         HideFollowerForFieldEffect();
+#if OW_ENABLE_NPC_FOLLOWERS
+        if (gSaveBlock3Ptr->NPCfollower.inProgress && gObjectEvents[GetFollowerNPCMapObjId()].invisible == FALSE)
+        {
+            FollowerNPCWalkIntoPlayerForLeaveMap();
+            CreateTask(Task_HideNPCFollowerAfterMovementFinish, 2);
+        }
+#endif
+    }
     return TRUE;
 }
 
 static bool8 LavaridgeGymB1FWarpEffect_CameraShake(struct Task *task, struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
+#if OW_ENABLE_NPC_FOLLOWERS
+    if (FindTaskIdByFunc(Task_HideNPCFollowerAfterMovementFinish) != TASK_NONE)
+        return FALSE;
+#endif
+
     SetCameraPanning(0, task->data[1]);
     task->data[1] = -task->data[1];
     task->data[2]++;
@@ -2266,12 +2281,26 @@ static bool8 LavaridgeGym1FWarpEffect_Init(struct Task *task, struct ObjectEvent
     objectEvent->fixedPriority = 1;
     task->data[0]++;
     if (objectEvent->localId == OBJ_EVENT_ID_PLAYER) // Hide follower before warping
+    {
         HideFollowerForFieldEffect();
+#if OW_ENABLE_NPC_FOLLOWERS
+        if (gSaveBlock3Ptr->NPCfollower.inProgress && gObjectEvents[GetFollowerNPCMapObjId()].invisible == FALSE)
+        {
+            FollowerNPCWalkIntoPlayerForLeaveMap();
+            CreateTask(Task_HideNPCFollowerAfterMovementFinish, 2);
+        }
+#endif
+    }
     return FALSE;
 }
 
 static bool8 LavaridgeGym1FWarpEffect_AshPuff(struct Task *task, struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
+#if OW_ENABLE_NPC_FOLLOWERS
+    if (FindTaskIdByFunc(Task_HideNPCFollowerAfterMovementFinish) != TASK_NONE)
+        return FALSE;
+#endif
+
     if (ObjectEventClearHeldMovementIfFinished(objectEvent))
     {
         if (task->data[1] > 3)
@@ -2380,7 +2409,7 @@ static void EscapeRopeWarpOutEffect_HideFollower(struct Task *task)
         }
         else
         {
-            FollowerNPCWalkIntoPlayerForLeaveRoute(follower);
+            FollowerNPCWalkIntoPlayerForLeaveMap();
             task->data[3]++;
         }
     }
@@ -2388,7 +2417,7 @@ static void EscapeRopeWarpOutEffect_HideFollower(struct Task *task)
     {
         if (ObjectEventClearHeldMovementIfFinished(follower))
         {
-            FollowerNPCHideForLeaveRoute(follower);
+            FollowerNPCHideForLeaveMap(follower);
             task->tState++;
         }
     }
@@ -2488,7 +2517,7 @@ static void EscapeRopeWarpInEffect_Spin(struct Task *task)
     if (task->data[3] == 1)
     {
 #if OW_ENABLE_NPC_FOLLOWERS
-        FollowerNPCReappearAfterLeaveRoute(follower, player);
+        FollowerNPCReappearAfterLeaveMap(follower, player);
 #endif
         task->data[3]++;
     }
@@ -2497,7 +2526,7 @@ static void EscapeRopeWarpInEffect_Spin(struct Task *task)
 #if OW_ENABLE_NPC_FOLLOWERS
         if (gSaveBlock3Ptr->NPCfollower.inProgress && ObjectEventClearHeldMovementIfFinished(follower))
         {
-            FollowerNPCFaceAfterLeaveRoute();
+            FollowerNPCFaceAfterLeaveMap();
             task->data[3]++;
         }
         else if (!gSaveBlock3Ptr->NPCfollower.inProgress)
@@ -2717,7 +2746,7 @@ static void TeleportWarpInFieldEffect_SpinGround(struct Task *task)
         if ((++task->data[2]) > 4 && task->data[14] == player->facingDirection)
         {
 #if OW_ENABLE_NPC_FOLLOWERS
-        FollowerNPCReappearAfterLeaveRoute(follower, player);
+        FollowerNPCReappearAfterLeaveMap(follower, player);
 #endif
             task->data[3] = 1;
         }
@@ -2727,7 +2756,7 @@ static void TeleportWarpInFieldEffect_SpinGround(struct Task *task)
 #if OW_ENABLE_NPC_FOLLOWERS
         if (gSaveBlock3Ptr->NPCfollower.inProgress && ObjectEventClearHeldMovementIfFinished(follower))
         {
-            FollowerNPCFaceAfterLeaveRoute();
+            FollowerNPCFaceAfterLeaveMap();
             task->data[3]++;
         }
         else if (!gSaveBlock3Ptr->NPCfollower.inProgress)
