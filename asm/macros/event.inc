@@ -2510,3 +2510,268 @@
 	compare \a, \b
 	cant_see_if 5
 	.endm
+
+	@ ============================ @
+	@ ITEM DESCRIPTION HEADER MACROS
+	@ Used with OW_SHOW_ITEM_DESCRIPTIONS config
+	.macro showitemdescription
+	callnative ScriptShowItemDescription, requests_effects=1
+	.byte 0
+	.endm
+
+	.macro showberrydescription
+	callnative ScriptShowItemDescription, requests_effects=1
+	.byte 1
+	.endm
+
+	.macro hideitemdescription
+	callnative ScriptHideItemDescription, requests_effects=1
+	.endm
+
+	@ Remove all of specified item from the player's bag and return the number of removed items to VAR_RESULT
+	.macro removeallitem itemId:req
+	callnative ScrCmd_removeallitem, requests_effects=1
+	.2byte \itemId
+	.endm
+
+	@ Stores the position of the given object in destX and destY. Mode CURRENT_POSITION will take the object's current position. Mode TEMPLATE_POSITION will take the object's template position.
+	.macro getobjectxy localId:req, posType:req, destX:req, destY:req
+	callnative ScrCmd_getobjectxy, requests_effects=1
+	.2byte \localId
+	.2byte \posType
+	.2byte \destX
+	.2byte \destY
+	.endm
+
+	.macro getobjecttemplatexy localId:req, posType = TEMPLATE_POSITION, destX:req, destY:req
+	callnative ScrCmd_getobjectxy, requests_effects=1
+	.2byte \localId
+	.2byte \posType
+	.2byte \destX
+	.2byte \destY
+	.endm
+
+	.macro getobjectcurrentxy localId:req, posType = CURRENT_POSITION, destX:req, destY:req
+	callnative ScrCmd_getobjectxy, requests_effects=1
+	.2byte \localId
+	.2byte \posType
+	.2byte \destX
+	.2byte \destY
+	.endm
+
+	@ Return TRUE to dest if there is an object at the position x and y.
+	.macro checkobjectat x:req, y:req, dest = VAR_RESULT
+	callnative ScrCmd_checkobjectat, requests_effects=1
+	.2byte \x
+	.2byte \y
+	.2byte \dest
+	.endm
+
+	@ Returns the state of the Pokedex Seen Flag to VAR_RESULT for the Pokemon with speciesId
+	.macro getseenmon species:req
+	callnative Scrcmd_getsetpokedexflag, requests_effects=1
+	.2byte \species
+	.2byte FLAG_GET_SEEN
+	.endm
+
+	@ Returns the state of the Pokedex Caught Flag to VAR_RESULT for the Pokemon with speciesId
+	.macro getcaughtmon species:req
+	callnative Scrcmd_getsetpokedexflag, requests_effects=1
+	.2byte \species
+	.2byte FLAG_GET_CAUGHT
+	.endm
+
+	@ Sets the Pokedex Seen Flag for the Pokemon with speciesId
+	.macro setseenmon species:req
+	callnative Scrcmd_getsetpokedexflag, requests_effects=1
+	.2byte \species
+	.2byte FLAG_SET_SEEN
+	.endm
+
+	@ Sets the Pokedex Caught Flag for the Pokemon with speciesId
+	.macro setcaughtmon species:req
+	callnative Scrcmd_getsetpokedexflag, requests_effects=1
+	.2byte \species
+	.2byte FLAG_SET_CAUGHT
+	.endm
+
+	@ Check if the Player has speciesId in their party. OPEN_PARTY_SCREEN will have the player select a mon from their party. NO_PARTY_SCREEN will automatically check every mon in the player's party.
+	.macro checkspecies speciesId:req, mode=NO_PARTY_SCREEN
+	.if \mode == OPEN_PARTY_SCREEN
+		special ChoosePartyMon
+		waitstate
+		callnative Scrcmd_checkspecies_choose, requests_effects=1
+		.2byte \speciesId
+	.else
+		callnative Scrcmd_checkspecies, requests_effects=1
+		.2byte \speciesId
+	.endif
+	.endm
+
+	.macro checkspecies_choose speciesId:req
+	checkspecies \speciesId, OPEN_PARTY_SCREEN
+	.endm
+
+	@ Gets the facing direction of a given event object and stores it in the variable dest.
+	.macro getobjectfacingdirection localId:req, dest:req
+	callnative Scrcmd_getobjectfacingdirection, requests_effects=1
+	.2byte \localId
+	.2byte \dest
+	.endm
+
+	@ Hides any follower Pokémon if present, putting them into their Poké Ball; by default waits for their movement to finish.
+	.macro hidefollower wait=1
+	callnative ScrFunc_hidefollower
+	.2byte \wait
+	.endm
+
+	.macro increasedifficulty
+	callnative Script_IncreaseDifficulty, requests_effects=1
+	.endm
+
+	.macro decreasedifficulty
+	callnative Script_DecreaseDifficulty, requests_effects=1
+	.endm
+
+	.macro getdifficulty var:req
+	callnative Script_GetDifficulty, requests_effects=1
+	.endm
+
+	.macro setdifficulty difficulty:req
+	callnative Script_SetDifficulty, requests_effects=1
+	.byte \difficulty
+	.endm
+    
+	.macro forcesave
+	callnative Script_ForceSaveGame
+	waitstate
+	.endm
+
+	@ Makes the trainer unable to see the player if executed.
+	@ This is a no-op if the player interacts with the trainer.
+	.macro cant_see_if, condition:req
+	callnative Script_EndTrainerCanSeeIf, requests_effects=1
+	.byte \condition
+	.endm
+
+	.macro cant_see
+	cant_see_if_unset 0 @ flag 0 is always FALSE.
+	.endm
+
+	.macro cant_see_if_unset, flag:req
+	checkflag \flag
+	cant_see_if FALSE
+	.endm
+
+	.macro cant_see_if_set, flag:req
+	checkflag \flag
+	cant_see_if TRUE
+	.endm
+
+	.macro cant_see_if_trainerflag_unset, trainer:req
+	checktrainerflag \trainer
+	cant_see_if FALSE
+	.endm
+
+	.macro cant_see_if_trainerflag_set, trainer:req
+	checktrainerflag \trainer
+	cant_see_if TRUE
+	.endm
+
+	.macro cant_see_if_lt, a:req, b:req
+	compare \a, \b
+	cant_see_if 0
+	.endm
+
+	.macro cant_see_if_eq, a:req, b:req
+	compare \a, \b
+	cant_see_if 1
+	.endm
+
+	.macro cant_see_if_gt, a:req, b:req
+	compare \a, \b
+	cant_see_if 2
+	.endm
+
+	.macro cant_see_if_le, a:req, b:req
+	compare \a, \b
+	cant_see_if 3
+	.endm
+
+	.macro cant_see_if_ge, a:req, b:req
+	compare \a, \b
+	cant_see_if 4
+	.endm
+
+	.macro cant_see_if_ne, a:req, b:req
+	compare \a, \b
+	cant_see_if 5
+	.endm
+
+@ Follower NPCs
+
+	@ Sets an NPC up to follow the player.
+	@ If you want to specify a battle partner without specifying a custom script, you can set the script parameter to 0.
+    .macro setfollowernpc localId:req, flags:req, script=0, battlePartner=0
+	checkfollowernpc
+	goto_if_eq VAR_RESULT, TRUE, 1f
+	ballfollowingmon
+    callnative ScriptSetFollowerNPC
+	.if \script == 0
+		.set setScript, FALSE
+    .else
+		.set setScript, TRUE
+	.endif
+    .byte \localId
+    .2byte \flags
+	.byte setScript
+	.2byte \battlePartner
+	.4byte \script
+	updatefollowingmon
+	1:
+    .endm
+    
+    @ Removes the NPC follower (assumes there will only ever be one).
+    .macro destroyfollowernpc
+    callnative ScriptDestroyFollowerNPC
+    .endm
+    
+    @ Makes the player and NPC follower face one another.
+    .macro facefollowernpc
+    callnative ScriptFaceFollowerNPC
+    .endm
+
+    @ Makes the NPC follower walk into the player and get hidden.
+    @ Optionally, you can set the walk speed for the movement:
+    @ 0 = Slow
+    @ 1 = Normal (default)
+    @ 2 = Fast
+    @ 3 = Faster
+    .macro hidefollowernpc speed=1
+    callnative ScriptHideNPCFollower
+    .byte \speed
+    waitmovement OBJ_EVENT_ID_NPC_FOLLOWER
+    callnative HideNPCFollower
+    .endm
+    
+    @ Checks if you have an NPC follower. Returns the result to VAR_RESULT.
+    .macro checkfollowernpc
+    callnative ScriptCheckFollowerNPC
+    .endm
+
+	@ Updates Pokemon follower.
+	.macro updatefollowingmon
+    callnative ScriptUpdateFollowingMon
+    .endm
+
+	@ Returns Pokemon follower to ball.
+	.macro ballfollowingmon
+    callnative ScriptBallFollowingMon
+	delay 16
+	.endm
+
+    @ Changes the battle partner of the existing NPC follower.
+    .macro changefollowerbattler battlePartner:req
+    callnative ScriptChangeFollowerNPCBattlePartner
+    .2byte \battlePartner
+    .endm
