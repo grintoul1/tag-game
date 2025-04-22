@@ -270,10 +270,10 @@
 #define OBJ_EVENT_GFX_VAR_E  (OBJ_EVENT_GFX_VARS + 0xE)
 #define OBJ_EVENT_GFX_VAR_F  (OBJ_EVENT_GFX_VARS + 0xF)
 
-#define OBJ_EVENT_MON               (1u << 14)
-#define OBJ_EVENT_MON_SHINY         (1u << 13)
-#define OBJ_EVENT_MON_FEMALE        (1u << 12)
-#define OBJ_EVENT_MON_SPECIES_MASK  (~(7u << 12))
+#define OBJ_EVENT_MON               (1u << 15)
+#define OBJ_EVENT_MON_SHINY         (1u << 14)
+#define OBJ_EVENT_MON_FEMALE        (1u << 13)
+#define OBJ_EVENT_MON_SPECIES_MASK  (~(7u << 13))
 
 // Used to call a specific species' follower graphics. Useful for static encounters.
 #define OBJ_EVENT_GFX_SPECIES(name)                 (SPECIES_##name + OBJ_EVENT_MON)
@@ -314,6 +314,7 @@
 #define OBJ_EVENT_ID_PLAYER 0xFF
 #define OBJ_EVENT_ID_CAMERA 0x7F
 #define OBJ_EVENT_ID_FOLLOWER 0xFE
+#define OBJ_EVENT_ID_NPC_FOLLOWER 0xFD
 
 // Object event local ids referenced in C files
 #define LOCALID_ROUTE111_PLAYER_FALLING 45

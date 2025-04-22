@@ -3,14 +3,14 @@
 
 ASSUMPTIONS
 {
-    ASSUME(GetMoveEffect(MOVE_TELEKINESIS) == EFFECT_TELEKINESIS);
+    ASSUME(gMovesInfo[MOVE_TELEKINESIS].effect == EFFECT_TELEKINESIS);
 }
 
 SINGLE_BATTLE_TEST("Telekinesis makes the target unable to avoid any attacks made against it")
 {
     GIVEN {
-        ASSUME(GetMoveEffect(MOVE_MINIMIZE) == EFFECT_MINIMIZE); // Raises evs by 2
-        ASSUME(GetMoveAccuracy(MOVE_SCREECH) < 100);
+        ASSUME(gMovesInfo[MOVE_MINIMIZE].effect == EFFECT_MINIMIZE); // Raises evs by 2
+        ASSUME(gMovesInfo[MOVE_SCREECH].accuracy < 100);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WYNAUT);
     } WHEN {
@@ -47,7 +47,7 @@ SINGLE_BATTLE_TEST("Telekinesis ends after 3 turns")
 SINGLE_BATTLE_TEST("Telekinesis makes the target immune to Ground-type attacks")
 {
     GIVEN {
-        ASSUME(GetMoveType(MOVE_BULLDOZE) == TYPE_GROUND);
+        ASSUME(gMovesInfo[MOVE_BULLDOZE].type == TYPE_GROUND);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WYNAUT);
     } WHEN {

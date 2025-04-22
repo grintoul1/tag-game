@@ -825,3 +825,14 @@ const struct Tileset gTileset_UnionRoom =
     .metatileAttributes = gMetatileAttributes_UnionRoom,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_team_aqua_magma =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_team_aqua_magma,
+    .palettes = gTilesetPalettes_team_aqua_magma,
+    .metatiles = gMetatiles_team_aqua_magma,
+    .metatileAttributes = gMetatileAttributes_team_aqua_magma,
+    .callback = NULL,
+};

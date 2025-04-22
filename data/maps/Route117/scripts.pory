@@ -1,0 +1,428 @@
+raw `
+.set LOCALID_DAYCARE_MAN, 3
+.set LOCALID_DAYCARE_MON_0, 25
+.set LOCALID_DAYCARE_MON_1, 26
+.set LOCALID_ANNA, 19
+.set LOCALID_LYDIA, 9
+.set LOCALID_ISAAC, 10
+.set LOCALID_DYLAN, 8
+.set LOCALID_MARIA, 17
+.set LOCALID_MELINA, 24
+.set LOCALID_DEREK, 17
+.set LOCALID_BRANDI, 22
+.set LOCALID_AISHA, 23
+
+
+Route117_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route117_OnTransition
+	.byte 0
+
+Route117_OnTransition:
+	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call Route117_EventScript_TryMoveDayCareMan
+	@ set flags for OW daycare mons
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	getdaycaregfx VAR_OBJ_GFX_ID_0, VAR_OBJ_GFX_ID_1, VAR_TEMP_0, VAR_TEMP_1
+	switch VAR_RESULT
+	case 2, Route117_EventScript_ShowDaycareMon1
+	case 1, Route117_EventScript_ShowDaycareMon0
+	end
+
+Route117_EventScript_ShowDaycareMon1:
+	@ set pokemon movement type based on compatibility
+	special SetDaycareCompatibilityString
+	call_if_eq VAR_RESULT, PARENTS_INCOMPATIBLE, Route117_EventScript_DaycareMonIncompatible
+	@ Don't do anything if PARENTS_LOW_COMPATIBILITY
+	call_if_eq VAR_RESULT, PARENTS_MED_COMPATIBILITY, Route117_EventScript_DaycareMonMedCompatibility
+	call_if_eq VAR_RESULT, PARENTS_MAX_COMPATIBILITY, Route117_EventScript_DaycareMonMaxCompatibility
+	clearflag FLAG_TEMP_2
+Route117_EventScript_ShowDaycareMon0:
+	clearflag FLAG_TEMP_1
+	end
+
+Route117_EventScript_DaycareMonIncompatible: @ mons never face each other
+	setobjectmovementtype LOCALID_DAYCARE_MON_0, MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT
+	setobjectmovementtype LOCALID_DAYCARE_MON_1, MOVEMENT_TYPE_FACE_DOWN_UP_AND_RIGHT
+	return
+
+Route117_EventScript_DaycareMonMedCompatibility: @ down and towards each other
+	setobjectmovementtype LOCALID_DAYCARE_MON_0, MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT
+	setobjectmovementtype LOCALID_DAYCARE_MON_1, MOVEMENT_TYPE_FACE_DOWN_AND_LEFT
+	return
+
+Route117_EventScript_DaycareMonMaxCompatibility: @ facing; walk in place
+	setobjectmovementtype LOCALID_DAYCARE_MON_0, MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT
+	setobjectmovementtype LOCALID_DAYCARE_MON_1, MOVEMENT_TYPE_WALK_IN_PLACE_LEFT
+	return
+
+Route117_EventScript_TryMoveDayCareMan::
+	goto_if_unset FLAG_PENDING_DAYCARE_EGG, Route117_EventScript_StopMoveDayCareMan
+	setobjectxyperm LOCALID_DAYCARE_MAN, 47, 6
+Route117_EventScript_StopMoveDayCareMan::
+	return
+
+Route117_EventScript_Woman::
+	msgbox Route117_Text_ArentTheseFlowersPretty, MSGBOX_NPC
+	end
+
+Route117_EventScript_LittleBoy::
+	msgbox Route117_Text_AirIsTastyHere, MSGBOX_NPC
+	end
+
+Route117_EventScript_Girl::
+	msgbox Route117_Text_DayCarePokemonHadNewMove, MSGBOX_NPC
+	end
+
+Route117_EventScript_RouteSignVerdanturf::
+	msgbox Route117_Text_RouteSignVerdanturf, MSGBOX_SIGN
+	end
+
+Route117_EventScript_RouteSignMauville::
+	msgbox Route117_Text_RouteSignMauville, MSGBOX_SIGN
+	end
+
+Route117_EventScript_DayCareSign::
+	msgbox Route117_Text_DayCareSign, MSGBOX_SIGN
+	end
+
+Route117_EventScript_Isaac::
+	msgbox Route117_Text_IsaacPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route117_EventScript_RegisterIsaac::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route117_Text_IsaacRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_ISAAC_1
+	release
+	end
+
+Route117_EventScript_RematchIsaac::
+	trainerbattle_rematch TRAINER_ISAAC_1, Route117_Text_IsaacRematchIntro, Route117_Text_IsaacRematchDefeat
+	msgbox Route117_Text_IsaacPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route117_EventScript_LydiaIsaac::
+lockall
+setvar VAR_0x8008, LOCALID_LYDIA
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_TWINS, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route117_Text_LydiaIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_ISAAC
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_MALE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route117_Text_IsaacIntro MSGBOX_AUTOCLOSE
+goto Route117_EventScript_LydiaIsaacDoMultiBattle
+releaseall
+end
+
+Route117_EventScript_LydiaIsaacDoMultiBattle::
+playbgm MUS_ROUTE110, TRUE
+multi_2p_vs_2 TRAINER_LYDIA_1, Route117_Text_LydiaDefeat, TRAINER_ISAAC_1, Route117_Text_IsaacDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route117_EventScript_LydiaIsaacVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route117_EventScript_LydiaIsaacVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route117_Text_LydiaPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route117_Text_IsaacPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE117_STATE, 1
+end
+
+Route117_EventScript_Lydia::
+	msgbox Route117_Text_LydiaPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route117_EventScript_RegisterLydia::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route117_Text_LydiaRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_LYDIA_1
+	release
+	end
+
+Route117_EventScript_RematchLydia::
+	trainerbattle_rematch TRAINER_LYDIA_1, Route117_Text_LydiaRematchIntro, Route117_Text_LydiaRematchDefeat
+	msgbox Route117_Text_LydiaPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route117_EventScript_DylanMaria::
+lockall
+setvar VAR_0x8008, LOCALID_DYLAN
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_MALE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route117_Text_DylanIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_MARIA
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route117_Text_MariaIntro MSGBOX_AUTOCLOSE
+goto Route117_EventScript_DylanMariaDoMultiBattle
+releaseall
+end
+
+Route117_EventScript_DylanMariaDoMultiBattle::
+playbgm MUS_ROUTE110, TRUE
+multi_2p_vs_2 TRAINER_DYLAN_1, Route117_Text_DylanDefeat, TRAINER_MARIA_1, Route117_Text_MariaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route117_EventScript_DylanMariaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route117_EventScript_DylanMariaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route117_Text_DylanPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route117_Text_MariaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE117_STATE, 1
+end
+
+Route117_EventScript_Dylan::
+	msgbox Route117_Text_DylanPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route117_EventScript_RegisterDylan::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route117_Text_DylanRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_DYLAN_1
+	release
+	end
+
+Route117_EventScript_MelinaDerek::
+lockall
+setvar VAR_0x8008, LOCALID_MELINA
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route117_Text_MelinaIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_DEREK
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route117_Text_DerekIntro MSGBOX_AUTOCLOSE
+goto Route117_EventScript_MelinaDerekDoMultiBattle
+releaseall
+end
+
+Route117_EventScript_MelinaDerekDoMultiBattle::
+playbgm MUS_ROUTE110, TRUE
+multi_2p_vs_2 TRAINER_MELINA, Route117_Text_MelinaDefeat, TRAINER_DEREK, Route117_Text_DerekDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route117_EventScript_MelinaDerekVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route117_EventScript_MelinaDerekVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route117_Text_MelinaPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route117_Text_DerekPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE117_STATE, 1
+end
+
+Route117_EventScript_RematchDylan::
+	trainerbattle_rematch TRAINER_DYLAN_1, Route117_Text_DylanRematchIntro, Route117_Text_DylanRematchDefeat
+	msgbox Route117_Text_DylanPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route117_EventScript_Maria::
+	msgbox Route117_Text_MariaPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route117_EventScript_RegisterMaria::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route117_Text_MariaRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_MARIA_1
+	release
+	end
+
+Route117_EventScript_RematchMaria::
+	trainerbattle_rematch TRAINER_MARIA_1, Route117_Text_MariaRematchIntro, Route117_Text_MariaRematchDefeat
+	msgbox Route117_Text_MariaPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route117_EventScript_Derek::
+	msgbox Route117_Text_DerekPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route117_EventScript_AnnaMeg::
+lockall
+setvar VAR_0x8008, LOCALID_ANNA
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_TWINS, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route117_Text_AnnaIntro MSGBOX_AUTOCLOSE
+goto Route117_EventScript_AnnaMegDoMultiBattle
+releaseall
+end
+
+Route117_EventScript_AnnaMegDoMultiBattle::
+playbgm MUS_ROUTE110, TRUE
+multi_2p_vs_1 TRAINER_ANNA_AND_MEG_1, Route117_Text_AnnaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route117_EventScript_AnnaMegVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route117_EventScript_AnnaMegVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route117_Text_AnnaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE117_STATE, 1
+end
+
+Route117_EventScript_Anna::
+	msgbox Route117_Text_AnnaPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route117_EventScript_RegisterAnna::
+	msgbox Route117_Text_AnnaAndMegRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_ANNA_AND_MEG_1
+	release
+	end
+
+Route117_EventScript_RematchAnna::
+	trainerbattle_rematch_double TRAINER_ANNA_AND_MEG_1, Route117_Text_AnnaRematchIntro, Route117_Text_AnnaRematchDefeat, Route117_Text_AnnaRematchNotEnoughMons
+	msgbox Route117_Text_AnnaPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route117_EventScript_Meg::
+	msgbox Route117_Text_MegPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route117_EventScript_RegisterMeg::
+	msgbox Route117_Text_AnnaAndMegRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_ANNA_AND_MEG_1
+	release
+	end
+
+Route117_EventScript_RematchMeg::
+	trainerbattle_rematch_double TRAINER_ANNA_AND_MEG_1, Route117_Text_MegRematchIntro, Route117_Text_MegRematchDefeat, Route117_Text_MegRematchNotEnoughMons
+	msgbox Route117_Text_MegPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route117_EventScript_Melina::
+	msgbox Route117_Text_MelinaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route117_EventScript_BrandiAisha::
+lockall
+setvar VAR_0x8008, LOCALID_BRANDI
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route117_Text_BrandiIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_AISHA
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route117_Text_AishaIntro MSGBOX_AUTOCLOSE
+goto Route117_EventScript_BrandiAishaDoMultiBattle
+releaseall
+end
+
+Route117_EventScript_BrandiAishaDoMultiBattle::
+playbgm MUS_ROUTE110, TRUE
+multi_2p_vs_2 TRAINER_BRANDI, Route117_Text_BrandiDefeat, TRAINER_AISHA, Route117_Text_AishaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route117_EventScript_BrandiAishaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route117_EventScript_BrandiAishaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route117_Text_BrandiPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route117_Text_AishaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE117_STATE, 1
+end
+
+Route117_EventScript_Brandi::
+	msgbox Route117_Text_BrandiPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route117_EventScript_Aisha::
+	msgbox Route117_Text_AishaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route117_Text_DayCarePokemonHadNewMove:
+	.string "I left my POKéMON at the DAY CARE.\p"
+	.string "When I got it back, it had a new move\n"
+	.string "that I didn't teach it.\l"
+	.string "I was really, really surprised.$"
+
+Route117_Text_ArentTheseFlowersPretty:
+	.string "What do you think?\n"
+	.string "Aren't these flowers pretty?\p"
+	.string "I planted them all!$"
+
+Route117_Text_AirIsTastyHere:
+	.string "The air is tasty here!$"
+
+Route117_Text_RouteSignVerdanturf:
+	.string "ROUTE 117\n"
+	.string "{LEFT_ARROW} VERDANTURF TOWN$"
+
+Route117_Text_RouteSignMauville:
+	.string "ROUTE 117\n"
+	.string "{RIGHT_ARROW} MAUVILLE CITY$"
+
+Route117_Text_DayCareSign:
+	.string "POKéMON DAY CARE\n"
+	.string "“Let us raise your POKéMON.”$"
+`

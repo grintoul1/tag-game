@@ -867,7 +867,7 @@ static void Task_StartWiredCableClubBattle(u8 taskId)
 
         SetLinkBattleTypeFlags(gSpecialVar_0x8004);
         CleanupOverworldWindowsAndTilemaps();
-        TRAINER_BATTLE_PARAM.opponentA = TRAINER_LINK_OPPONENT;
+        gTrainerBattleOpponent_A = TRAINER_LINK_OPPONENT;
         SetMainCallback2(CB2_InitBattle);
         gMain.savedCallback = CB2_ReturnFromCableClubBattle;
         DestroyTask(taskId);
@@ -933,7 +933,7 @@ static void Task_StartWirelessCableClubBattle(u8 taskId)
         gLinkPlayers[0].linkType = LINKTYPE_BATTLE;
         SetLinkBattleTypeFlags(gSpecialVar_0x8004);
         CleanupOverworldWindowsAndTilemaps();
-        TRAINER_BATTLE_PARAM.opponentA = TRAINER_LINK_OPPONENT;
+        gTrainerBattleOpponent_A = TRAINER_LINK_OPPONENT;
         SetMainCallback2(CB2_InitBattle);
         gMain.savedCallback = CB2_ReturnFromCableClubBattle;
         DestroyTask(taskId);

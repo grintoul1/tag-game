@@ -277,7 +277,7 @@ SINGLE_BATTLE_TEST("Defiant activates before White Herb")
 SINGLE_BATTLE_TEST("Defiant activates for each stat that is lowered")
 {
     GIVEN {
-        ASSUME(GetMoveEffect(MOVE_TICKLE) == EFFECT_TICKLE);
+        ASSUME(gMovesInfo[MOVE_TICKLE].effect == EFFECT_TICKLE);
         PLAYER(SPECIES_MANKEY) { Ability(ABILITY_DEFIANT); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {

@@ -17,7 +17,6 @@
 #include "main.h"
 #include "mystery_gift.h"
 #include "menu.h"
-#include "move.h"
 #include "overworld.h"
 #include "palette.h"
 #include "pokedex.h"

@@ -83,10 +83,9 @@ static void FormChangeTimeUpdate()
     for (i = 0; i < PARTY_SIZE; i++)
     {
         struct Pokemon *mon = &gPlayerParty[i];
-        u32 targetSpecies = GetFormChangeTargetSpecies(mon, FORM_CHANGE_TIME_OF_DAY, 0);
-        u32 currentSpecies = GetMonData(mon, MON_DATA_SPECIES);
+        u16 targetSpecies = GetFormChangeTargetSpecies(mon, FORM_CHANGE_TIME_OF_DAY, 0);
 
-        if (targetSpecies != currentSpecies)
+        if (targetSpecies != SPECIES_NONE)
         {
             SetMonData(mon, MON_DATA_SPECIES, &targetSpecies);
             CalculateMonStats(mon);

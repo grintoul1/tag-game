@@ -46,7 +46,7 @@ Optional fields for Pokemon:
           (Order does not matter)
     - EVs (252 HP / 128 Spe / 48 Def, defaults to all 0, is not capped at 512 total)
           (Order does not matter)
-    - Ball (Poke Ball or ITEM_POKE_BALL, defaults to Poke Ball)
+    - Ball (Poke Ball or ITEM_POKE_BALL, defaults to Poke Ball
     - Happiness (Number between 1 and 255)
     - Nature (Rash or NATURE_RASH, defaults to Hardy)
     - Shiny (Yes/No, defaults to No)
@@ -189,10 +189,10 @@ Zubat
 Level: 36
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GABRIELLE_1 ===
-Name: GABRIELLE
-Class: Pkmn Breeder
-Pic: Pokemon Breeder F
+=== TRAINER_PYRE_MAGMAGRUNT2 ===
+Name: Grunt
+Class: Team Magma
+Pic: Magma Grunt M
 Gender: Female
 Music: Female
 Double Battle: No
@@ -425,8 +425,8 @@ Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_MT_PYRE_1 ===
-Name: GRUNT
-Class: Team Aqua
+Name: Grunt
+Class: Team Aqua Mixed
 Pic: Aqua Grunt M
 Gender: Male
 Music: Aqua
@@ -438,9 +438,9 @@ Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_MT_PYRE_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Name: Grunt
+Class: Team Magma Mixed
+Pic: Magma Grunt F
 Gender: Male
 Music: Aqua
 Double Battle: No
@@ -451,9 +451,9 @@ Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_MT_PYRE_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Name: Grunt
+Class: Team Aqua Mixed
+Pic: Aqua Grunt F
 Gender: Male
 Music: Aqua
 Double Battle: No
@@ -541,10 +541,28 @@ Golbat
 Level: 34
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-=== TRAINER_ZANDER ===
-Name: ZANDER
-Class: Black Belt
-Pic: Black Belt
+=== TRAINER_MATT_PETALBURG_WOODS ===
+Name: MATT
+Class: Aqua Admin
+Pic: Aqua Admin M
+Gender: Male
+Music: Aqua
+Items: Super Potion
+Double Battle: No
+AI: Basic Trainer
+
+Mightyena
+Level: 34
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+Golbat
+Level: 34
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_PYRE_AQUAGRUNT1 ===
+Name: Grunt
+Class: Team Aqua
+Pic: Aqua Grunt M
 Gender: Male
 Music: Intense
 Double Battle: No
@@ -555,6 +573,23 @@ Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_SHELLY_WEATHER_INSTITUTE ===
+Name: SHELLY
+Class: Aqua Admin
+Pic: Aqua Admin F
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Basic Trainer
+
+Carvanha
+Level: 28
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+Mightyena
+Level: 28
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_SHELLY_PETALBURG_WOODS ===
 Name: SHELLY
 Class: Aqua Admin
 Pic: Aqua Admin F
@@ -592,9 +627,9 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 Name: ARCHIE
 Class: Aqua Leader
 Pic: Aqua Leader Archie
+Mugshot: Blue
 Gender: Male
 Music: Aqua
-Items: Super Potion / Super Potion
 Double Battle: No
 AI: Basic Trainer
 
@@ -610,10 +645,10 @@ Sharpedo
 Level: 43
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
-=== TRAINER_LEAH ===
-Name: LEAH
-Class: Hex Maniac
-Pic: Hex Maniac
+=== TRAINER_PYRE_AQUAGRUNT2 ===
+Name: Grunt
+Class: Team Aqua
+Pic: Aqua Grunt F
 Gender: Female
 Music: Suspicious
 Double Battle: No
@@ -716,12 +751,12 @@ Roselia
 Level: 26
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
-=== TRAINER_ROSE_3 ===
-Name: ROSE
-Class: Aroma Lady
-Pic: Aroma Lady
-Gender: Female
-Music: Female
+=== TRAINER_MATT_MT_PYRE ===
+Name: Matt
+Class: Aqua Admin Mixed
+Pic: Aqua Admin M
+Gender: Male
+Music: Male
 Double Battle: No
 AI: Check Bad Move
 
@@ -737,12 +772,12 @@ Roselia
 Level: 28
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
-=== TRAINER_ROSE_4 ===
-Name: ROSE
-Class: Aroma Lady
-Pic: Aroma Lady
-Gender: Female
-Music: Female
+=== TRAINER_TABITHA_MT_PYRE ===
+Name: Tabitha
+Class: Magma Admin Mixed
+Pic: Magma Admin
+Gender: Male
+Music: Male
 Double Battle: No
 AI: Check Bad Move
 
@@ -1092,12 +1127,13 @@ Marill
 Level: 26
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
-=== TRAINER_LOLA_3 ===
-Name: LOLA
-Class: Tuber F
-Pic: Tuber F
-Gender: Female
-Music: Girl
+=== TRAINER_ARCHIE_MT_PYRE ===
+Name: Archie
+Class: Aqua Leader
+Pic: Aqua Leader Archie
+Mugshot: Blue
+Gender: Male
+Music: Aqua
 Double Battle: No
 AI: Check Bad Move
 
@@ -1109,12 +1145,13 @@ Marill
 Level: 29
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
-=== TRAINER_LOLA_4 ===
-Name: LOLA
-Class: Tuber F
-Pic: Tuber F
-Gender: Female
-Music: Girl
+=== TRAINER_MAXIE_MT_PYRE ===
+Name: Maxie
+Class: Magma Leader
+Pic: Magma Leader Maxie
+Mugshot: Blue
+Gender: Male
+Music: Magma
 Double Battle: No
 AI: Check Bad Move
 
@@ -2015,10 +2052,23 @@ Shuppet
 Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_VALERIE_1 ===
-Name: VALERIE
-Class: Hex Maniac
-Pic: Hex Maniac
+=== TRAINER_PYRE_AQUAGRUNT3 ===
+Name: Grunt
+Class: Team Aqua Mixed
+Pic: Aqua Grunt F
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Check Bad Move
+
+Sableye
+Level: 32
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_PYRE_AQUAGRUNT4 ===
+Name: Grunt
+Class: Team Aqua Mixed
+Pic: Aqua Grunt M
 Gender: Female
 Music: Suspicious
 Double Battle: No
@@ -2041,10 +2091,27 @@ Shuppet
 Level: 32
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-=== TRAINER_VALERIE_2 ===
-Name: VALERIE
-Class: Hex Maniac
-Pic: Hex Maniac
+=== TRAINER_PYRE_MAGMAGRUNT5 ===
+Name: Grunt
+Class: Team Magma
+Pic: Magma Grunt F
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Check Bad Move
+
+Sableye
+Level: 31
+IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+
+Spoink
+Level: 31
+IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+
+=== TRAINER_PYRE_MAGMAGRUNT6 ===
+Name: Grunt
+Class: Team Magma Mixed
+Pic: Magma Grunt M
 Gender: Female
 Music: Suspicious
 Double Battle: No
@@ -3612,10 +3679,10 @@ Slugma
 Level: 23
 IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
 
-=== TRAINER_BERNIE_1 ===
-Name: BERNIE
-Class: Kindler
-Pic: Kindler
+=== TRAINER_GRUNT_ROUTE_114_1 ===
+Name: Grunt
+Class: Team Magma
+Pic: Magma Grunt M
 Gender: Male
 Music: Hiker
 Double Battle: No
@@ -3760,11 +3827,11 @@ Nuzleaf
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_SHANE ===
-Name: SHANE
-Class: Camper
-Pic: Camper
-Gender: Male
+=== TRAINER_GRUNT_ROUTE_114_6 ===
+Name: Grunt
+Class: Team Magma
+Pic: Magma Grunt F
+Gender: Female
 Music: Male
 Double Battle: No
 AI: Check Bad Move
@@ -4151,10 +4218,10 @@ Girafarig
 Level: 36
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_WILLIAM ===
-Name: WILLIAM
-Class: Psychic
-Pic: Psychic M
+=== TRAINER_PYRE_MAGMAGRUNT1 ===
+Name: Grunt
+Class: Team Magma
+Pic: Magma Grunt M
 Gender: Male
 Music: Intense
 Double Battle: No
@@ -4791,6 +4858,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 === TRAINER_ROXANNE_1 ===
 Name: ROXANNE
 Class: Leader
+Mugshot: Pink
 Pic: Leader Roxanne
 Gender: Female
 Music: Female
@@ -4825,40 +4893,69 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 === TRAINER_BRAWLY_1 ===
 Name: BRAWLY
 Class: Leader
+Mugshot: Blue
 Pic: Leader Brawly
 Gender: Male
 Music: Male
-Items: Super Potion / Super Potion
 Double Battle: No
 AI: Basic Trainer
 
-Machop
-Level: 16
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Karate Chop
-- Low Kick
-- Seismic Toss
-- Bulk Up
+Kubfu @ Iapapa Berry
+Level: 30
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Brick Break
+- Faint Attack
+- Zen Headbutt
+- Mega Punch
 
-Meditite
-Level: 16
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Focus Punch
-- Light Screen
-- Reflect
-- Bulk Up
+Poliwhirl @ Wise Glasses
+Level: 30
+Ability: Water Absorb
+IVs: 30 HP / 31 Atk / 31 Def / 30 SpA / 31 SpD / 31 Spe
+- Bubble Beam
+- Ice Beam
+- Superpower
+- Hidden Power
 
-Makuhita @ Sitrus Berry
-Level: 19
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Arm Thrust
-- Vital Throw
-- Reversal
-- Bulk Up
+Lopunny @ Eject Button
+Level: 29
+Ability: Limber
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Drain Punch
+- Retaliate
+- Headbutt
+
+Hitmontop @ Muscle Band
+Level: 28
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Mach Punch
+- Fake Out
+- Counter
+- Rock Slide
+
+Combusken @ Expert Belt
+Level: 28
+Ability: Speed Boost
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Incinerate
+- Thunder Punch
+- Double Kick
+- Work Up
+
+Scraggy @ Eviolite
+Level: 29
+Ability: Shed Skin
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Rock Tomb
+- Rest
+- Brick Break
+- Faint Attack
 
 === TRAINER_WATTSON_1 ===
 Name: WATTSON
 Class: Leader
+Mugshot: Yellow
 Pic: Leader Wattson
 Gender: Male
 Music: Male
@@ -4901,6 +4998,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 === TRAINER_FLANNERY_1 ===
 Name: FLANNERY
 Class: Leader
+Mugshot: Purple
 Pic: Leader Flannery
 Gender: Female
 Music: Female
@@ -4943,6 +5041,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 === TRAINER_NORMAN_1 ===
 Name: NORMAN
 Class: Leader
+Mugshot: Green
 Pic: Leader Norman
 Gender: Male
 Music: Male
@@ -4985,6 +5084,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 === TRAINER_WINONA_1 ===
 Name: WINONA
 Class: Leader
+Mugshot: Green
 Pic: Leader Winona
 Gender: Female
 Music: Female
@@ -5035,6 +5135,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 === TRAINER_TATE_AND_LIZA_1 ===
 Name: TATE&LIZA
 Class: Leader
+Mugshot: Pink
 Pic: Leader Tate And Liza
 Gender: Male
 Music: Female
@@ -5077,6 +5178,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 === TRAINER_JUAN_1 ===
 Name: JUAN
 Class: Leader
+Mugshot: Blue
 Pic: Leader Juan
 Gender: Male
 Music: Male
@@ -5941,11 +6043,11 @@ Level: 39
 IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
 
 === TRAINER_CALVIN_1 ===
-Name: CALVIN
-Class: Youngster
-Pic: Youngster
+Name: MATT
+Class: Aqua Admin
+Pic: Aqua Admin M
 Gender: Male
-Music: Male
+Music: Magma
 Double Battle: No
 AI: Check Bad Move
 
@@ -6118,11 +6220,11 @@ Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CALVIN_2 ===
-Name: CALVIN
-Class: Youngster
-Pic: Youngster
+Name: TABITHA
+Class: Magma Admin
+Pic: Magma Admin
 Gender: Male
-Music: Male
+Music: Magma
 Double Battle: No
 AI: Check Bad Move
 
@@ -8590,11 +8692,11 @@ Lombre
 Level: 17
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_NANCY ===
-Name: NANCY
-Class: Picnicker
-Pic: Picnicker
-Gender: Female
+=== TRAINER_GRUNT_ROUTE_114_5 ===
+Name: Grunt
+Class: Team Magma
+Pic: Magma Grunt M
+Gender: Male
 Music: Girl
 Double Battle: No
 AI: Check Bad Move
@@ -8645,10 +8747,10 @@ Swablu
 Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CEDRIC ===
-Name: CEDRIC
-Class: Psychic
-Pic: Psychic M
+=== TRAINER_PYRE_MAGMAGRUNT3 ===
+Name: Grunt
+Class: Team Magma Mixed
+Pic: Magma Grunt F
 Gender: Male
 Music: Intense
 Double Battle: No
@@ -9510,9 +9612,13 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Treecko
+Skitty @ Sitrus Berry
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Fake Out
+- Sucker Punch
+- Icy Wind
+- Encore
 
 === TRAINER_BRENDAN_ROUTE_110_MUDKIP ===
 Name: BRENDAN
@@ -9565,9 +9671,13 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 
-Torchic
+Skitty @ Sitrus Berry
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Fake Out
+- Sucker Punch
+- Icy Wind
+- Encore
 
 === TRAINER_BRENDAN_ROUTE_110_TREECKO ===
 Name: BRENDAN
@@ -9620,9 +9730,13 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Mudkip
+Skitty @ Sitrus Berry
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Fake Out
+- Sucker Punch
+- Icy Wind
+- Encore
 
 === TRAINER_BRENDAN_ROUTE_110_TORCHIC ===
 Name: BRENDAN
@@ -9675,9 +9789,13 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Treecko
+Skitty @ Sitrus Berry
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Fake Out
+- Sucker Punch
+- Icy Wind
+- Encore
 
 === TRAINER_MAY_ROUTE_110_MUDKIP ===
 Name: MAY
@@ -9730,9 +9848,13 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Torchic
+Skitty @ Sitrus Berry
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Fake Out
+- Sucker Punch
+- Icy Wind
+- Encore
 
 === TRAINER_MAY_ROUTE_110_TREECKO ===
 Name: MAY
@@ -9785,9 +9907,13 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Mudkip
+Skitty @ Sitrus Berry
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Fake Out
+- Sucker Punch
+- Icy Wind
+- Encore
 
 === TRAINER_MAY_ROUTE_110_TORCHIC ===
 Name: MAY
@@ -10518,10 +10644,10 @@ Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_MT_PYRE_4 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
-Gender: Female
+Name: Grunt
+Class: Team Magma Mixed
+Pic: Magma Grunt M
+Gender: Male
 Music: Aqua
 Double Battle: No
 AI: Check Bad Move
@@ -11004,6 +11130,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Name: MAXIE
 Class: Magma Leader
 Pic: Magma Leader Maxie
+Mugshot: Blue
 Gender: Male
 Music: Magma
 Items: Super Potion / Super Potion
@@ -11026,6 +11153,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 Name: MAXIE
 Class: Magma Leader
 Pic: Magma Leader Maxie
+Mugshot: Blue
 Gender: Male
 Music: Magma
 Items: Super Potion / Super Potion
@@ -11485,11 +11613,11 @@ Geodude
 Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_LENNY ===
-Name: LENNY
-Class: Hiker
-Pic: Hiker
-Gender: Male
+=== TRAINER_GRUNT_ROUTE_114_3 ===
+Name: Grunt
+Class: Team Magma
+Pic: Magma Grunt F
+Gender: Female
 Music: Hiker
 Double Battle: No
 AI: Check Bad Move
@@ -11502,10 +11630,10 @@ Machop
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_LUCAS_1 ===
-Name: LUCAS
-Class: Hiker
-Pic: Hiker
+=== TRAINER_GRUNT_ROUTE_114_2 ===
+Name: Grunt
+Class: Team Magma
+Pic: Magma Grunt M
 Gender: Male
 Music: Hiker
 Double Battle: No
@@ -11727,13 +11855,13 @@ Golem
 Level: 33
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-=== TRAINER_DEZ_AND_LUKE ===
-Name: DEZ & LUKE
-Class: Young Couple
-Pic: Young Couple
+=== TRAINER_PYRE_MAGMAGRUNT4 ===
+Name: Grunt
+Class: Team Magma
+Pic: Magma Grunt M
 Gender: Male
 Music: Girl
-Double Battle: Yes
+Double Battle: No
 AI: Check Bad Move
 
 Delcatty
@@ -13203,10 +13331,10 @@ Aron
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_ANGELINA ===
-Name: ANGELINA
-Class: Picnicker
-Pic: Picnicker
+=== TRAINER_GRUNT_ROUTE_114_4 ===
+Name: Grunt
+Class: Team Magma
+Pic: Magma Grunt F
 Gender: Female
 Music: Girl
 Double Battle: No
@@ -13431,11 +13559,12 @@ Numel
 Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_MAGMA_HIDEOUT_13 ===
-Name: GRUNT
-Class: Team Magma
-Pic: Magma Grunt M
-Gender: Male
+=== TRAINER_COURTNEY_MAGMA_HIDEOUT ===
+Name: Courtney
+Class: Magma Admin
+Pic: Magma Admin F
+Mugshot: Blue
+Gender: Female
 Music: Magma
 Double Battle: No
 AI: Check Bad Move
@@ -13487,6 +13616,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Name: TABITHA
 Class: Magma Admin
 Pic: Magma Admin
+Mugshot: Blue
 Gender: Male
 Music: Magma
 Double Battle: No

@@ -148,7 +148,7 @@
 #define VAR_ROUTE133_STATE                               0x4080 // Unused Var
 #define VAR_ROUTE134_STATE                               0x4081 // Unused Var
 #define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
-#define VAR_UNUSED_0x4083                                0x4083 // Unused Var
+#define VAR_MTCHIMNEY_STATE                              0x4083 // Mt Chimney state
 #define VAR_BIRCH_LAB_STATE                              0x4084
 #define VAR_PETALBURG_GYM_STATE                          0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman
 #define VAR_CONTEST_HALL_STATE                           0x4086
@@ -156,13 +156,13 @@
 #define VAR_CONTEST_TYPE                                 0x4088
 #define VAR_SECRET_BASE_INITIALIZED                      0x4089
 #define VAR_CONTEST_PRIZE_PICKUP                         0x408A
-#define VAR_UNUSED_0x408B                                0x408B // Unused Var
+#define VAR_RUSTBOROCITY_GYM_STATE                       0x408B // Used for Rustboro gym trainers
 #define VAR_LITTLEROOT_HOUSES_STATE_BRENDAN              0x408C
 #define VAR_LITTLEROOT_RIVAL_STATE                       0x408D
 #define VAR_BOARD_BRINEY_BOAT_STATE                      0x408E
 #define VAR_DEVON_CORP_3F_STATE                          0x408F
 #define VAR_BRINEY_HOUSE_STATE                           0x4090
-#define VAR_UNUSED_0x4091                                0x4091 // Unused Var
+#define VAR_MAUVILLECITY_GYM_STATE                       0x4091 // Used for Mauville gym trainers
 #define VAR_LITTLEROOT_INTRO_STATE                       0x4092
 #define VAR_MAUVILLE_GYM_STATE                           0x4093
 #define VAR_LILYCOVE_MUSEUM_2F_STATE                     0x4094
@@ -264,11 +264,11 @@
 #define VAR_ROXANNE_CALL_STEP_COUNTER                    0x40F4
 #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
-#define VAR_UNUSED_0x40F7                                0x40F7 // Unused Var
-#define VAR_UNUSED_0x40F8                                0x40F8 // Unused Var
-#define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
-#define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
-#define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
+#define VAR_LAVARIDGE_GYM_STATE                          0x40F7 // Lavaridge Gym trainers state
+#define VAR_MAGMAHIDEOUT_STATE                           0x40F8 // Magma Hideout state
+#define VAR_MAGMAHIDEOUT_SHELLY_STATE                    0x40F9 // Magma Hideout Shelly state
+#define VAR_FOLLOWER_AQUA_HIDEOUT_TABITHA                0x40FA // AHO Tabitha follower state
+#define VAR_AQUAHIDEOUT_STATE                            0x40FB // Unused Var
 #define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
 #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
 #define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
@@ -301,7 +301,7 @@
 #define VAR_MON_BOX_ID                0x8012
 #define VAR_MON_BOX_POS               0x8013
 #define VAR_UNUSED_0x8014             0x8014
-#define VAR_TRAINER_BATTLE_OPPONENT_A 0x8015 // Alias of TRAINER_BATTLE_PARAM.opponentA
+#define VAR_TRAINER_BATTLE_OPPONENT_A 0x8015 // Alias of gTrainerBattleOpponent_A
 
 #define SPECIAL_VARS_END              0x8015
 
@@ -323,17 +323,5 @@
 #define VAR_TEMP_FRONTIER_TUTOR_ID         VAR_TEMP_E
 
 #define VAR_TEMP_TRANSFERRED_SPECIES  VAR_TEMP_1
-
-#if TESTING
-#define TESTING_VARS_START             0x9000
-#define TESTING_VAR_DIFFICULTY         (TESTING_VARS_START + 0x0)
-#define TESTING_VAR_UNUSED_1           (TESTING_VARS_START + 0x1)
-#define TESTING_VAR_UNUSED_2           (TESTING_VARS_START + 0x2)
-#define TESTING_VAR_UNUSED_3           (TESTING_VARS_START + 0x3)
-#define TESTING_VAR_UNUSED_4           (TESTING_VARS_START + 0x4)
-#define TESTING_VAR_UNUSED_5           (TESTING_VARS_START + 0x5)
-#define TESTING_VAR_UNUSED_6           (TESTING_VARS_START + 0x6)
-#define TESTING_VAR_UNUSED_7           (TESTING_VARS_START + 0x7)
-#endif // TESTING
 
 #endif // GUARD_CONSTANTS_VARS_H

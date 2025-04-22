@@ -1,11 +1,10 @@
 #include "global.h"
-#include "battle_main.h"
 #include "data.h"
-#include "decoration.h"
-#include "item.h"
-#include "move.h"
-#include "pokeball.h"
 #include "pokemon_icon.h"
+#include "decoration.h"
+#include "battle_main.h"
+#include "item.h"
+#include "pokeball.h"
 
 // The purpose of this struct is for outside applications to be
 // able to access parts of the ROM or its save file, like a public API.

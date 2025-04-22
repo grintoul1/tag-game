@@ -1403,11 +1403,11 @@ static void PrepareOneTrainer(bool8 difficult)
         }
     } while (i != gSaveBlock2Ptr->frontier.curChallengeBattleNum - 1);
 
-    TRAINER_BATTLE_PARAM.opponentA = trainerId;
+    gTrainerBattleOpponent_A = trainerId;
     gFacilityTrainers = gBattleFrontierTrainers;
-    SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.opponentA, 0);
+    SetBattleFacilityTrainerGfxId(gTrainerBattleOpponent_A, 0);
     if (gSaveBlock2Ptr->frontier.curChallengeBattleNum < NUM_PIKE_ROOMS)
-        gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum - 1] = TRAINER_BATTLE_PARAM.opponentA;
+        gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum - 1] = gTrainerBattleOpponent_A;
 }
 
 static void PrepareTwoTrainers(void)
@@ -1429,10 +1429,10 @@ static void PrepareTwoTrainers(void)
         }
     } while (i != gSaveBlock2Ptr->frontier.curChallengeBattleNum - 1);
 
-    TRAINER_BATTLE_PARAM.opponentA = trainerId;
-    SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.opponentA, 0);
+    gTrainerBattleOpponent_A = trainerId;
+    SetBattleFacilityTrainerGfxId(gTrainerBattleOpponent_A, 0);
     if (gSaveBlock2Ptr->frontier.curChallengeBattleNum <= NUM_PIKE_ROOMS)
-        gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum - 1] = TRAINER_BATTLE_PARAM.opponentA;
+        gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum - 1] = gTrainerBattleOpponent_A;
 
     do
     {
@@ -1445,10 +1445,10 @@ static void PrepareTwoTrainers(void)
         }
     } while (i != gSaveBlock2Ptr->frontier.curChallengeBattleNum);
 
-    TRAINER_BATTLE_PARAM.opponentB = trainerId;
-    SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.opponentB, 1);
+    gTrainerBattleOpponent_B = trainerId;
+    SetBattleFacilityTrainerGfxId(gTrainerBattleOpponent_B, 1);
     if (gSaveBlock2Ptr->frontier.curChallengeBattleNum < NUM_PIKE_ROOMS)
-        gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum - 2] = TRAINER_BATTLE_PARAM.opponentB;
+        gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum - 2] = gTrainerBattleOpponent_B;
 }
 
 static void ClearPikeTrainerIds(void)
@@ -1463,13 +1463,13 @@ static void BufferTrainerIntro(void)
 {
     if (gSpecialVar_0x8005 == 0)
     {
-        if (TRAINER_BATTLE_PARAM.opponentA < FRONTIER_TRAINERS_COUNT)
-            FrontierSpeechToString(gFacilityTrainers[TRAINER_BATTLE_PARAM.opponentA].speechBefore);
+        if (gTrainerBattleOpponent_A < FRONTIER_TRAINERS_COUNT)
+            FrontierSpeechToString(gFacilityTrainers[gTrainerBattleOpponent_A].speechBefore);
     }
     else if (gSpecialVar_0x8005 == 1)
     {
-        if (TRAINER_BATTLE_PARAM.opponentB < FRONTIER_TRAINERS_COUNT)
-            FrontierSpeechToString(gFacilityTrainers[TRAINER_BATTLE_PARAM.opponentB].speechBefore);
+        if (gTrainerBattleOpponent_B < FRONTIER_TRAINERS_COUNT)
+            FrontierSpeechToString(gFacilityTrainers[gTrainerBattleOpponent_B].speechBefore);
     }
 }
 
@@ -1615,7 +1615,7 @@ static void InitPikeChallenge(void)
     if (!(gSaveBlock2Ptr->frontier.winStreakActiveFlags & sWinStreakFlags[lvlMode]))
         gSaveBlock2Ptr->frontier.pikeWinStreaks[lvlMode] = 0;
 
-    TRAINER_BATTLE_PARAM.opponentA = 0;
+    gTrainerBattleOpponent_A = 0;
     gBattleOutcome = 0;
 }
 

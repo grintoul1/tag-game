@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME(GetMoveEffect(MOVE_TOXIC) == EFFECT_TOXIC);
+    ASSUME(gMovesInfo[MOVE_TOXIC].effect == EFFECT_TOXIC);
 }
 
 SINGLE_BATTLE_TEST("Toxic inflicts bad poison")
