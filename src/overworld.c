@@ -6,6 +6,7 @@
 #include "bg.h"
 #include "cable_club.h"
 #include "clock.h"
+#include "dexnav.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
@@ -21,7 +22,6 @@
 #include "field_weather.h"
 #include "fieldmap.h"
 #include "fldeff.h"
-#include "follower_npc.h"
 #include "gpu_regs.h"
 #include "heal_location.h"
 #include "io_reg.h"
@@ -66,13 +66,14 @@
 #include "vs_seeker.h"
 #include "frontier_util.h"
 #include "constants/abilities.h"
-#include "constants/event_object_movement.h"
 #include "constants/layouts.h"
 #include "constants/map_types.h"
 #include "constants/region_map_sections.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+
+STATIC_ASSERT((B_FLAG_FOLLOWERS_DISABLED == 0 || OW_FOLLOWERS_ENABLED), FollowersFlagAssignedWithoutEnablingThem);
 
 struct CableClubPlayer
 {
@@ -448,9 +449,6 @@ static void Overworld_ResetStateAfterWhiteOut(void)
         VarSet(VAR_SHOULD_END_ABNORMAL_WEATHER, 0);
         VarSet(VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_NONE);
     }
-    #if OW_ENABLE_NPC_FOLLOWERS
-    FollowerNPC_TryRemoveFollowerOnWhiteOut();
-#endif
 }
 
 static void UpdateMiscOverworldStates(void)
@@ -843,6 +841,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     LoadObjEventTemplatesFromHeader();
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
+    ResetDexNavSearch();
     ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
 #if FREE_MATCH_CALL == FALSE
@@ -907,6 +906,7 @@ static void LoadMapFromWarp(bool32 a1)
     CheckLeftFriendsSecretBase();
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
+    ResetDexNavSearch();
     ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
 #if FREE_MATCH_CALL == FALSE
@@ -1112,86 +1112,6 @@ static bool16 ShouldLegendaryMusicPlayAtLocation(struct WarpData *warp)
     return FALSE;
 }
 
-static bool16 ShouldDroughtMusicPlayAtLocation(struct WarpData *warp)
-{
-    if (!FlagGet(FLAG_ABNORMAL_WEATHER_SUN))
-        return FALSE;
-    if (warp->mapGroup == 0)
-    {
-        switch (warp->mapNum)
-        {
-        case MAP_NUM(LITTLEROOT_TOWN):
-        case MAP_NUM(OLDALE_TOWN):
-        case MAP_NUM(PETALBURG_CITY):
-        case MAP_NUM(RUSTBORO_CITY):
-        case MAP_NUM(DEWFORD_TOWN):
-        case MAP_NUM(SLATEPORT_CITY):
-        case MAP_NUM(MAUVILLE_CITY):
-        case MAP_NUM(VERDANTURF_TOWN):
-        case MAP_NUM(FALLARBOR_TOWN):
-        case MAP_NUM(LAVARIDGE_TOWN):
-        case MAP_NUM(FORTREE_CITY):
-        case MAP_NUM(PACIFIDLOG_TOWN):
-        case MAP_NUM(LILYCOVE_CITY):
-        case MAP_NUM(MOSSDEEP_CITY):
-        case MAP_NUM(SOOTOPOLIS_CITY):
-        case MAP_NUM(EVER_GRANDE_CITY):
-        case MAP_NUM(ROUTE101):
-        case MAP_NUM(ROUTE102):
-        case MAP_NUM(ROUTE103):
-        case MAP_NUM(ROUTE104):
-        case MAP_NUM(ROUTE105):
-        case MAP_NUM(ROUTE106):
-        case MAP_NUM(ROUTE107):
-        case MAP_NUM(ROUTE108):
-        case MAP_NUM(ROUTE109):
-        case MAP_NUM(ROUTE110):
-        case MAP_NUM(ROUTE111):
-        case MAP_NUM(ROUTE112):
-        case MAP_NUM(ROUTE113):
-        case MAP_NUM(ROUTE114):
-        case MAP_NUM(ROUTE115):
-        case MAP_NUM(ROUTE116):
-        case MAP_NUM(ROUTE117):
-        case MAP_NUM(ROUTE118):
-        case MAP_NUM(ROUTE119):
-        case MAP_NUM(ROUTE120):
-        case MAP_NUM(ROUTE121):
-        case MAP_NUM(ROUTE122):
-        case MAP_NUM(ROUTE123):
-        case MAP_NUM(ROUTE100):
-        case MAP_NUM(ROUTE124):
-        case MAP_NUM(ROUTE125):
-        case MAP_NUM(ROUTE126):
-        case MAP_NUM(ROUTE127):
-        case MAP_NUM(ROUTE128):
-        case MAP_NUM(ROUTE129):
-        case MAP_NUM(ROUTE130):
-        case MAP_NUM(ROUTE131):
-        case MAP_NUM(ROUTE132):
-        case MAP_NUM(ROUTE133):
-        case MAP_NUM(ROUTE134):
-            return TRUE;
-        default:
-            if (VarGet(VAR_SOOTOPOLIS_CITY_STATE) < 4)
-                return FALSE;
-        }
-    }
-    if (warp->mapGroup == 24)
-    {
-        switch (warp->mapNum)
-        {
-            case MAP_NUM(JAGGED_PASS):
-            case MAP_NUM(MT_CHIMNEY):
-            case MAP_NUM(MT_PYRE_EXTERIOR):
-            case MAP_NUM(MT_PYRE_SUMMIT):
-            return TRUE;
-        }
-    }
-    return FALSE;
-}
-
-
 static bool16 NoMusicInSotopolisWithLegendaries(struct WarpData *warp)
 {
     if (VarGet(VAR_SKY_PILLAR_STATE) != 1)
@@ -1236,8 +1156,6 @@ u16 GetLocationMusic(struct WarpData *warp)
     if (NoMusicInSotopolisWithLegendaries(warp) == TRUE)
         return MUS_NONE;
     else if (ShouldLegendaryMusicPlayAtLocation(warp) == TRUE)
-        return MUS_ABNORMAL_WEATHER;
-    else if (ShouldDroughtMusicPlayAtLocation(warp) == TRUE)
         return MUS_ABNORMAL_WEATHER;
     else if (IsInflitratedSpaceCenter(warp) == TRUE)
         return MUS_ENCOUNTER_MAGMA;
@@ -1609,11 +1527,6 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
             PlayerStep(inputStruct.dpadDirection, newKeys, heldKeys);
         }
     }
-    #if OW_ENABLE_NPC_FOLLOWERS
-    // if stop running but keep holding B -> fix follower frame
-    if (PlayerHasFollowerNPC() && IsPlayerOnFoot() && IsPlayerStandingStill())
-        ObjectEventSetHeldMovement(&gObjectEvents[GetFollowerNPCObjectId()], GetFaceDirectionAnimNum(gObjectEvents[GetFollowerNPCObjectId()].facingDirection));
-#endif
 }
 
 void CB1_Overworld(void)
@@ -2145,9 +2058,6 @@ static bool32 ReturnToFieldLocal(u8 *state)
     case 1:
         InitViewGraphics();
         TryLoadTrainerHillEReaderPalette();
-        #if OW_ENABLE_NPC_FOLLOWERS
-        FollowerNPC_BindToSurfBlobOnReloadScreen();
-#endif
         (*state)++;
         break;
     case 2:
@@ -2330,9 +2240,6 @@ static void InitObjectEventsLink(void)
     ResetObjectEvents();
     TrySpawnObjectEvents(0, 0);
     TryRunOnWarpIntoMapScript();
-    #if OW_ENABLE_NPC_FOLLOWERS
-    FollowerNPC_HandleSprite();
-#endif
 }
 
 static void InitObjectEventsLocal(void)
@@ -3107,7 +3014,7 @@ static void ZeroObjectEvent(struct ObjectEvent *objEvent)
 // conflict with the usual Event Object struct, thus the definitions.
 #define linkGender(obj) obj->singleMovementActive
 // not even one can reference *byte* aligned bitfield members...
-#define linkDirection(obj) ((u8 *)obj)[offsetof(typeof(*obj), fieldEffectSpriteId) - 1] // -> rangeX
+#define linkDirection(obj) ((u8 *)obj)[offsetof(typeof(*obj), range)] // -> rangeX
 
 static void SpawnLinkPlayerObjectEvent(u8 linkPlayerId, s16 x, s16 y, u8 gender)
 {
@@ -3441,7 +3348,7 @@ static u8 ReformatItemDescription(u16 item, u8 *dest)
     u8 count = 0;
     u8 numLines = 1;
     u8 maxChars = 32;
-    u8 *desc = (u8 *)gItemsInfo[item].description;
+    u8 *desc = (u8 *)ItemId_GetDescription(item);
 
     while (*desc != EOS)
     {
@@ -3481,6 +3388,9 @@ static u8 ReformatItemDescription(u16 item, u8 *dest)
 void ScriptShowItemDescription(struct ScriptContext *ctx)
 {
     u8 headerType = ScriptReadByte(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
     struct WindowTemplate template;
     u16 item = gSpecialVar_0x8006;
     u8 textY;
@@ -3520,6 +3430,8 @@ void ScriptShowItemDescription(struct ScriptContext *ctx)
 
 void ScriptHideItemDescription(struct ScriptContext *ctx)
 {
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE);
+
     DestroyItemIconSprite();
 
     if (!GetSetItemObtained(gSpecialVar_0x8006, FLAG_GET_ITEM_OBTAINED))

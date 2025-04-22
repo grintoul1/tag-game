@@ -2,7 +2,7 @@ Route102_Text_CalvinIntro:
 	.string "If you have POKéMON with you, then\n"
 	.string "you're an official POKéMON TRAINER!\l"
 	.string "You can't say no to my challenge!$"
-	
+
 Route102_Text_CalvinDefeated:
 	.string "Arrgh, I lost…\n"
 	.string "I should have trained mine more…$"
@@ -1786,44 +1786,55 @@ Route113_Text_WyattPostBattle:
 	.string "Aren't you just the coolest?\n"
 	.string "Humph!$"
 
-Route114_Text_Grunt_Route_114_3Intro:
-	.string "How the heck did you get here?!$"
+Route114_Text_LennyIntro:
+	.string "Yodelayhihoo!\p"
+	.string "… …\p"
+	.string "You're supposed to shout\n"
+	.string "“yodelayhihoo” since it doesn't\l"
+	.string "echo here!$"
 
-Route114_Text_Grunt_Route_114_3Defeat:
-	.string "How the heck are you so strong?!$"
+Route114_Text_LennyDefeat:
+	.string "Yodelayhihoo!$"
 
-Route114_Text_Grunt_Route_114_3PostBattle:
-	.string "You will never stop Team Magma!$"
+Route114_Text_LennyPostBattle:
+	.string "When I was a wee tyke, I believed there\n"
+	.string "was someone copying me and shouting\l"
+	.string "back, “Yodelayhihoo.”$"
 
-Route114_Text_Grunt_Route_114_2Intro:
-	.string "Meddling in Team Magma's affairs is a\n"
-	.string "very bad idea.$"
+Route114_Text_LucasIntro:
+	.string "If you're not prepared, you shouldn't\n"
+	.string "be up in the mountains!$"
 
-Route114_Text_Grunt_Route_114_2Defeat:
-	.string "You won't get away with this!$"
+Route114_Text_LucasDefeat:
+	.string "The mountains are unforgiving…$"
 
-Route114_Text_Grunt_Route_114_2PostBattle:
-	.string "I hope they don't dock my pay because\n"
-	.string "of this!$"
+Route114_Text_LucasPostBattle:
+	.string "In the winter, mountains turn deadly\n"
+	.string "with blizzards and avalanches.$"
 
-Route114_Text_Grunt_Route_114_6Intro:
-	.string "Sorry kids, Tabitha's orders!$"
+Route114_Text_ShaneIntro:
+	.string "Camping's fun! You can fish, roast\n"
+	.string "marshmallows, and tell spooky stories!\p"
+	.string "But the best of all are the POKéMON\n"
+	.string "battles!$"
 
-Route114_Text_Grunt_Route_114_6Defeat:
+Route114_Text_ShaneDefeat:
 	.string "Way too strong!$"
 
-Route114_Text_Grunt_Route_114_6PostBattle:
-	.string "Tabitha will punish us for this!$"
+Route114_Text_ShanePostBattle:
+	.string "I think it's great that I can go\n"
+	.string "camping with my POKéMON.$"
 
-Route114_Text_Grunt_Route_114_5Intro:
-	.string "I don't know how you made it this\n"
-	.string "far, but this is the end of the line!$"
+Route114_Text_NancyIntro:
+	.string "I need to exercise after a meal.\n"
+	.string "Let's have a match!$"
 
-Route114_Text_Grunt_Route_114_5Defeat:
+Route114_Text_NancyDefeat:
 	.string "Oh, no!$"
 
-Route114_Text_Grunt_Route_114_5PostBattle:
-	.string "We're gonna get it in the neck now!$"
+Route114_Text_NancyPostBattle:
+	.string "I just had a tasty meal.\n"
+	.string "I'm getting drowsy…$"
 
 Route114_Text_SteveIntro:
 	.string "Ufufufufufu…\n"
@@ -1855,15 +1866,18 @@ Route114_Text_StevePostRematch:
 	.string "When I see POKéMON battling, I get all\n"
 	.string "shivery and shaky…$"
 
-Route114_Text_Grunt_Route_114_1Intro:
-	.string "Beat it kids, Team Magma have\n"
-	.string "important business in Meteor Falls.$"
+Route114_Text_BernieIntro:
+	.string "If you're lighting a campfire,\n"
+	.string "make sure you have water handy.$"
 
-Route114_Text_Grunt_Route_114_1Defeat:
-	.string "Just who are you!$"
+Route114_Text_BernieDefeat:
+	.string "Thanks for dousing my fire!$"
 
-Route114_Text_Grunt_Route_114_1PostBattle:
-	.string "Just get out of here!$"
+Route114_Text_BerniePostBattle:
+	.string "You really do have to be careful with\n"
+	.string "any sort of fire in a forest.\p"
+	.string "Don't ever underestimate the power\n"
+	.string "of fire.$"
 
 Route114_Text_BernieRegister:
 	.string "You set my spirit on fire.\n"
@@ -1969,16 +1983,17 @@ Route114_Text_CharlottePostBattle:
 	.string "I adore cute ones that have a quirk\n"
 	.string "or two!$"
 
-Route114_Text_Grunt_Route_114_4Intro:
-	.string "Well then, you're going to have to\n"
-	.string "disappear, quickly!$"
+Route114_Text_AngelinaIntro:
+	.string "Have you made your POKéMON evolve\n"
+	.string "very much?$"
 
-Route114_Text_Grunt_Route_114_4Defeat:
-	.string "Maybe we will disappear instead!$"
+Route114_Text_AngelinaDefeat:
+	.string "Oh, I see.\n"
+	.string "That's good to know.$"
 
-Route114_Text_Grunt_Route_114_4PostBattle:
-	.string "My faith in Team Magma's vision will\n"
-	.string "never disappear!$"
+Route114_Text_AngelinaPostBattle:
+	.string "Some POKéMON change so much when\n"
+	.string "they evolve, it's startling!$"
 
 Route115_Text_TimothyIntro:
 	.string "Hm…\n"

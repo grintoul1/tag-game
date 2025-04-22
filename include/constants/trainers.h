@@ -108,8 +108,7 @@
 #define TRAINER_PIC_LEAF                  90
 #define TRAINER_PIC_RS_BRENDAN            91
 #define TRAINER_PIC_RS_MAY                92
-#define TRAINER_PIC_MAGMA_ADMIN_F         93
-#define TRAINER_PIC_COUNT                 94
+#define TRAINER_PIC_COUNT                 93
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
@@ -120,12 +119,6 @@
 #define TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY      5
 #define TRAINER_BACK_PIC_WALLY                  6
 #define TRAINER_BACK_PIC_STEVEN                 7
-#define TRAINER_BACK_PIC_MAGMA_LEADER_MAXIE     8
-#define TRAINER_BACK_PIC_AQUA_LEADER_ARCHIE     9
-#define TRAINER_BACK_PIC_AQUA_ADMIN_M           10
-#define TRAINER_BACK_PIC_AQUA_ADMIN_F           11
-#define TRAINER_BACK_PIC_MAGMA_ADMIN            12
-#define TRAINER_BACK_PIC_MAGMA_ADMIN_F          13
 
 #define FACILITY_CLASS_HIKER                 0x0
 #define FACILITY_CLASS_AQUA_GRUNT_M          0x1
@@ -358,11 +351,7 @@
 #define TRAINER_CLASS_PIKE_QUEEN     0x3f
 #define TRAINER_CLASS_PYRAMID_KING   0x40
 #define TRAINER_CLASS_RS_PROTAG      0x41
-#define TRAINER_CLASS_TEAM_AQUA_MIXED 0x42
-#define TRAINER_CLASS_TEAM_MAGMA_MIXED 0x43
-#define TRAINER_CLASS_AQUA_ADMIN_MIXED 0x44
-#define TRAINER_CLASS_MAGMA_ADMIN_MIXED 0x45
-#define TRAINER_CLASS_COUNT          0x46
+#define TRAINER_CLASS_COUNT          0x42
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

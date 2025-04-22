@@ -138,9 +138,6 @@ static const u8 sGenericMulchDesc[]   = _("A fertilizer that\n"
                                           "is unsuitable for\n"
                                           "local soil.");
 
-static const u8 sRepellentDesc[]      = _("Repels weak wild\n"
-                                        "Pokémon.");
-
 const struct Item gItemsInfo[] =
 {
     [ITEM_NONE] =
@@ -1929,23 +1926,6 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_RareCandy,
         .effect = gItemEffect_RareCandy,
         .flingPower = 30,
-        .iconPic = gItemIcon_RareCandy,
-        .iconPalette = gItemIconPalette_RareCandy,
-    },
-
-    [ITEM_INFINITE_CANDY] =
-    {
-        .name = _("Infinite Candy"),
-        .price = 0,
-        .importance = 1,
-        .description = COMPOUND_STRING(
-            "Raises the level\n"
-            "of a Pokémon by\n"
-            "one."),
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_InfiniteCandy,
-        .effect = gItemEffect_RareCandy,
         .iconPic = gItemIcon_RareCandy,
         .iconPalette = gItemIconPalette_RareCandy,
     },
@@ -13510,6 +13490,8 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Adamant Crystal"),
         .price = 0,
+        .holdEffect = HOLD_EFFECT_ADAMANT_ORB,
+        .holdEffectParam = 20,
         .description = COMPOUND_STRING(
             "A large, glowing gem\n"
             "that lets Dialga\n"
@@ -13526,6 +13508,8 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Griseous Core"),
         .price = 0,
+        .holdEffect = HOLD_EFFECT_GRISEOUS_ORB,
+        .holdEffectParam = 20,
         .description = COMPOUND_STRING(
             "A large, glowing gem\n"
             "that lets Giratina\n"
@@ -13542,6 +13526,8 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Lustrous Globe"),
         .price = 0,
+        .holdEffect = HOLD_EFFECT_LUSTROUS_ORB,
+        .holdEffectParam = 20,
         .description = COMPOUND_STRING(
             "A large, glowing gem\n"
             "that lets Palkia\n"
@@ -14113,33 +14099,4 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_PokeshiDoll,
         .iconPalette = gItemIconPalette_PokeshiDoll,
     },
-
-    [ITEM_POKE_VIAL] =
-    {
-        .name = _("Poké Vial"),
-        .price = 0,
-        .description = COMPOUND_STRING(
-            "Restores party\n"
-            "entirely."),
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_PokeVial,
-        .iconPic = gItemIcon_LargePotion,
-        .iconPalette = gItemIconPalette_FullRestore,
-    },
-
-    [ITEM_REPELLENT] =
-    {
-        .name = _("Repellent"),
-        .price = 0,
-        .description = sRepellentDesc,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Repellent,
-        .iconPic = gItemIcon_Repel,
-        .iconPalette = gItemIconPalette_MaxRepel,
-    },
-}; 
-
+};

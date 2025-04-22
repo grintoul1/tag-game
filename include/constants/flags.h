@@ -656,35 +656,35 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_MARY_DEFEATED      0x264 // Petalburg Gym trainer
-#define FLAG_RANDALL_DEFEATED   0x265 // Petalburg Gym trainer
-#define FLAG_GEORGE_DEFEATED    0x266 // Petalburg Gym trainer
-#define FLAG_ALEXIA_DEFEATED    0x267 // Petalburg Gym trainer
-#define FLAG_PARKER_DEFEATED    0x268 // Petalburg Gym trainer
-#define FLAG_BERKE_DEFEATED     0x269 // Petalburg Gym trainer
-#define FLAG_JODY_DEFEATED      0x26A // Petalburg Gym trainer
-#define FLAG_HIDE_ROUTE_111_AQUA_1  0x26B // Hides Aqua grunts blocking R112
-#define FLAG_HIDE_ROUTE_111_AQUA_2  0x26C // Hides single Aqua grunt that talks about Tabitha on way to Mt Chimney
-#define FLAG_HIDE_ROUTE_118_AQUA  0x26D // Hides single Aqua grunt that blocks R118 West (in case a skip found)
-#define FLAG_HIDE_ROUTE_121_TEAM_MAGMA_GRUNTS  0x26E // Hides R121 east exit Magma grunts
-#define FLAG_HIDE_MT_PYRE_1F_GRUNTS  0x26F // Hides grunts blocking exit to Mt Pyre exterior
-#define FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_MAGMA  0x270 // Hides Team Magma on Mt Pyre summit
-#define FLAG_HIDE_ROUTE_111_TEAM_MAGMA  0x271 // Hides Magma grunts blocking R111
-#define FLAG_MT_PYRE_ARCHIE_DEFEATED  0x272 // Checks if Archie fought on Mt Pyre
-#define FLAG_MT_PYRE_MAXIE_DEFEATED  0x273 // Checks if Maxie fought on Mt Pyre
-#define FLAG_HIDE_FORTREE_SHELLY  0x274 // Hides Fortree Shelly
-#define FLAG_HIDE_JAGGED_PASS_SHELLY  0x275 // Hides Jagged Pass Shelly
-#define FLAG_HIDE_MAGMA_HIDEOUT_SHELLY  0x276 // Hides Magma Hideout Shelly
-#define FLAG_HIDE_MAGMA_HIDEOUT_COURTNEY  0x277 // Hides Magma Hideout Courtney
-#define FLAG_HIDE_MAGMA_HIDEOUT_EMMIE  0x278 // Hides Magma Hideout Emmie
-#define FLAG_ABNORMAL_WEATHER_SUN  0x279 // Intense sun after MHO
-#define FLAG_HIDE_JAGGED_PASS_MAXIE  0x27A // Jagged Pass Maxie, Tabitha, Courtney
-#define FLAG_HIDE_AQUA_HIDEOUT_TABITHA  0x27B // Hides AHO Tabitha
-#define FLAG_FOLLOWER_AQUA_HIDEOUT_TABITHA  0x27C // Unused Flag
-#define FLAG_HIDE_AQUA_HIDEOUT_SHELLY  0x27D // Hides AHO Shelly
-#define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_EMMIE  0x27E // Hides May's house Emmie
-#define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_EMMIE  0x27F // Hide's Brendan's house Emmie
-#define FLAG_HIDE_LITTLEROOT_TOWN_EMMIE  0x280 // Hides Littleroot Emmie
+#define FLAG_UNUSED_0x264  0x264 // Unused Flag
+#define FLAG_UNUSED_0x265  0x265 // Unused Flag
+#define FLAG_UNUSED_0x266  0x266 // Unused Flag
+#define FLAG_UNUSED_0x267  0x267 // Unused Flag
+#define FLAG_UNUSED_0x268  0x268 // Unused Flag
+#define FLAG_UNUSED_0x269  0x269 // Unused Flag
+#define FLAG_UNUSED_0x26A  0x26A // Unused Flag
+#define FLAG_UNUSED_0x26B  0x26B // Unused Flag
+#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
+#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
+#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
+#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
+#define FLAG_UNUSED_0x270  0x270 // Unused Flag
+#define FLAG_UNUSED_0x271  0x271 // Unused Flag
+#define FLAG_UNUSED_0x272  0x272 // Unused Flag
+#define FLAG_UNUSED_0x273  0x273 // Unused Flag
+#define FLAG_UNUSED_0x274  0x274 // Unused Flag
+#define FLAG_UNUSED_0x275  0x275 // Unused Flag
+#define FLAG_UNUSED_0x276  0x276 // Unused Flag
+#define FLAG_UNUSED_0x277  0x277 // Unused Flag
+#define FLAG_UNUSED_0x278  0x278 // Unused Flag
+#define FLAG_UNUSED_0x279  0x279 // Unused Flag
+#define FLAG_UNUSED_0x27A  0x27A // Unused Flag
+#define FLAG_UNUSED_0x27B  0x27B // Unused Flag
+#define FLAG_UNUSED_0x27C  0x27C // Unused Flag
+#define FLAG_UNUSED_0x27D  0x27D // Unused Flag
+#define FLAG_UNUSED_0x27E  0x27E // Unused Flag
+#define FLAG_UNUSED_0x27F  0x27F // Unused Flag
+#define FLAG_UNUSED_0x280  0x280 // Unused Flag
 #define FLAG_UNUSED_0x281  0x281 // Unused Flag
 #define FLAG_UNUSED_0x282  0x282 // Unused Flag
 #define FLAG_UNUSED_0x283  0x283 // Unused Flag
@@ -1387,7 +1387,7 @@
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 
-#define FLAG_CYCLING_ROAD_CLEAR                     (SYSTEM_FLAGS + 0x21) // Removes R110 North partner block
+#define FLAG_UNUSED_0x881                           (SYSTEM_FLAGS + 0x21) // Unused Flag
 #define FLAG_UNUSED_0x882                           (SYSTEM_FLAGS + 0x22) // Unused Flag
 #define FLAG_UNUSED_0x883                           (SYSTEM_FLAGS + 0x23) // Unused Flag
 #define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag
@@ -1659,5 +1659,17 @@
 #define FLAG_TEMP_REGICE_PUZZLE_FAILED          FLAG_TEMP_3
 #define FLAG_TEMP_HIDE_FOLLOWER                 FLAG_TEMP_E
 #define FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE FLAG_TEMP_11
+
+#if TESTING
+#define TESTING_FLAGS_START                     0x5000
+#define TESTING_FLAG_SLEEP_CLAUSE               (TESTING_FLAGS_START + 0x0)
+#define TESTING_FLAG_UNUSED_1                   (TESTING_FLAGS_START + 0x1)
+#define TESTING_FLAG_UNUSED_2                   (TESTING_FLAGS_START + 0x2)
+#define TESTING_FLAG_UNUSED_3                   (TESTING_FLAGS_START + 0x3)
+#define TESTING_FLAG_UNUSED_4                   (TESTING_FLAGS_START + 0x4)
+#define TESTING_FLAG_UNUSED_5                   (TESTING_FLAGS_START + 0x5)
+#define TESTING_FLAG_UNUSED_6                   (TESTING_FLAGS_START + 0x6)
+#define TESTING_FLAG_UNUSED_7                   (TESTING_FLAGS_START + 0x7)
+#endif // TESTING
 
 #endif // GUARD_CONSTANTS_FLAGS_H

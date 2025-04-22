@@ -131,8 +131,3 @@ Movement_PkmnCenterNurse_Bow:
 Movement_PkmnCenterNurse_Turn:
 	walk_in_place_faster_left
 	step_end
-
-PokeVialHealScript::
-	special HealPlayerParty
-	releaseall
-	end

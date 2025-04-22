@@ -131,7 +131,7 @@
 
 #define FEATURE_FLAG_ASSERT(flag, id) STATIC_ASSERT(flag > TEMP_FLAGS_END || flag == 0, id)
 
-#ifndef NDEBUG
+// NOTE: This uses hardware timers 2 and 3; this will not work during active link connections or with the eReader
 static inline void CycleCountStart()
 {
     REG_TM2CNT_H = 0;
@@ -154,7 +154,6 @@ static inline u32 CycleCountEnd()
     // return result
     return REG_TM2CNT_L | (REG_TM3CNT_L << 16u);
 }
-#endif
 
 struct Coords8
 {
@@ -200,32 +199,6 @@ struct Time
     /*0x04*/ s8 seconds;
 };
 
-struct NPCFollowerMapData
-{
-    u8 id;
-    u8 number;
-    u8 group;
-};
-
-struct NPCFollower
-{
-    u8 inProgress:1;
-    u8 warpEnd:1;
-    u8 createSurfBlob:3;
-    u8 comeOutDoorStairs:3;
-    u8 objId;
-    u8 currentSprite;
-    u8 delayedState;
-    struct NPCFollowerMapData map;
-    struct Coords16 log;
-    const u8 *script;
-    u16 flag;
-    u16 graphicsId;
-    u16 flags;
-    u8 locked;
-    u8 battlePartner; // If you have more than 255 total battle partners defined, change this to a u16
-};
-
 #include "constants/items.h"
 #define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
 
@@ -234,13 +207,14 @@ struct SaveBlock3
 #if OW_USE_FAKE_RTC
     struct Time fakeRTC;
 #endif
-#if OW_ENABLE_NPC_FOLLOWERS
-    struct NPCFollower NPCfollower;
-#endif
 #if OW_SHOW_ITEM_DESCRIPTIONS == OW_ITEM_DESCRIPTIONS_FIRST_TIME
     u8 itemFlags[ITEM_FLAGS_COUNT];
 #endif
-};
+#if USE_DEXNAV_SEARCH_LEVELS == TRUE
+    u8 dexNavSearchLevels[NUM_SPECIES];
+#endif
+    u8 dexNavChain;
+}; /* max size 1624 bytes */
 
 extern struct SaveBlock3 *gSaveBlock3Ptr;
 
