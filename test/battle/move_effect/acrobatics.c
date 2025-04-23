@@ -3,8 +3,8 @@
 
 ASSUMPTIONS
 {
-    ASSUME(GetMoveEffect(MOVE_ACROBATICS) == EFFECT_ACROBATICS);
-    ASSUME(GetMoveType(MOVE_ACROBATICS) == TYPE_FLYING);
+    ASSUME(gMovesInfo[MOVE_ACROBATICS].effect == EFFECT_ACROBATICS);
+    ASSUME(gMovesInfo[MOVE_ACROBATICS].type == TYPE_FLYING);
 }
 
 SINGLE_BATTLE_TEST("Acrobatics doubles in power if the user has no held item", s16 damage)

@@ -212,6 +212,7 @@ static void ShowContestPainting(void)
         gMain.state++;
         break;
     case 2:
+        SeedRng(gMain.vblankCounter1);
         InitKeys();
         InitContestPaintingWindow();
         gMain.state++;
@@ -594,3 +595,4 @@ static void CreateContestPaintingPicture(u8 contestWinnerId, bool8 isForArtist)
     InitPaintingMonOamData(contestWinnerId);
     LoadContestPaintingFrame(contestWinnerId, isForArtist);
 }
+

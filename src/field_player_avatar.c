@@ -94,8 +94,7 @@ static bool8 PlayerAnimIsMultiFrameStationaryAndStateNotTurning(void);
 static bool8 PlayerIsAnimActive(void);
 static bool8 PlayerCheckIfAnimFinishedOrInactive(void);
 
-static void PlayerWalkSlowStairs(u8 direction);
-static void UNUSED PlayerWalkSlow(u8 direction);
+static void PlayerWalkSlow(u8 direction);
 static void PlayerRunSlow(u8 direction);
 static void PlayerRun(u8);
 static void PlayerNotOnBikeCollide(u8);
@@ -252,7 +251,7 @@ static bool8 (*const sArrowWarpMetatileBehaviorChecks[])(u8) =
     [DIR_EAST - 1]  = MetatileBehavior_IsEastArrowWarp,
 };
 
-static const u8 sRivalAvatarGfxIds[][GENDER_COUNT] =
+static const u8 sRivalAvatarGfxIds[][2] =
 {
     [PLAYER_AVATAR_STATE_NORMAL]     = {OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL,     OBJ_EVENT_GFX_RIVAL_MAY_NORMAL},
     [PLAYER_AVATAR_STATE_MACH_BIKE]  = {OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE,  OBJ_EVENT_GFX_RIVAL_MAY_MACH_BIKE},
@@ -265,7 +264,7 @@ static const u8 sRivalAvatarGfxIds[][GENDER_COUNT] =
     [PLAYER_AVATAR_STATE_VSSEEKER]   = {OBJ_EVENT_GFX_RIVAL_BRENDAN_FIELD_MOVE, OBJ_EVENT_GFX_RIVAL_MAY_FIELD_MOVE},
 };
 
-static const u8 sPlayerAvatarGfxIds[][GENDER_COUNT] =
+static const u8 sPlayerAvatarGfxIds[][2] =
 {
     [PLAYER_AVATAR_STATE_NORMAL]     = {OBJ_EVENT_GFX_BRENDAN_NORMAL,     OBJ_EVENT_GFX_MAY_NORMAL},
     [PLAYER_AVATAR_STATE_MACH_BIKE]  = {OBJ_EVENT_GFX_BRENDAN_MACH_BIKE,  OBJ_EVENT_GFX_MAY_MACH_BIKE},
@@ -500,7 +499,7 @@ static bool8 DoForcedMovement(u8 direction, void (*moveFunc)(u8))
     {
         playerAvatar->runningState = MOVING;
         moveFunc(direction);
-#if OW_ENABLE_NPC_FOLLOWERS
+        #if OW_ENABLE_NPC_FOLLOWERS
         if (gSaveBlock3Ptr->NPCfollower.inProgress 
          && gObjectEvents[GetFollowerNPCObjectId()].invisible == FALSE 
          && FindTaskIdByFunc(Task_MoveNPCFollowerAfterForcedMovement) == TASK_NONE)
@@ -673,25 +672,23 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
             return;
         }
     }
-    
-    gPlayerAvatar.creeping = FALSE;
+
     if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
     {
-        if (FlagGet(DN_FLAG_SEARCHING) && (heldKeys & A_BUTTON))
+        if((heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH))
         {
-            gPlayerAvatar.creeping = TRUE;
-            PlayerWalkSlow(direction);
+            PlayerWalkFaster(direction);
+            return;
         }
         else
         {
-            // speed 2 is fast, same speed as running
+            // same speed as running
             PlayerWalkFast(direction);
+            return;
         }
-        return;
     }
-
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH)
-     && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0 && !FollowerNPCComingThroughDoor())
+    && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0 && !FollowerNPCComingThroughDoor())
     {
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
             PlayerRunSlow(direction);
@@ -701,15 +698,10 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
         return;
     }
-    else if (FlagGet(DN_FLAG_SEARCHING) && (heldKeys & A_BUTTON))
-    {
-        gPlayerAvatar.creeping = TRUE;
-        PlayerWalkSlow(direction);
-    }
     else
     {
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
-            PlayerWalkSlowStairs(direction);
+            PlayerWalkSlow(direction);
         else
             PlayerWalkNormal(direction);
     }
@@ -787,7 +779,7 @@ static bool8 CanStopSurfing(s16 x, s16 y, u8 direction)
      || GetObjectEventIdByPosition(x, y, 3) == GetFollowerNPCObjectId()
 #endif
      ))
-    {
+         {
         CreateStopSurfingTask(direction);
         return TRUE;
     }
@@ -1028,14 +1020,8 @@ void PlayerSetAnimId(u8 movementActionId, u8 copyableMovement)
     }
 }
 
-// slow stairs (from FRLG--faster than slow)
-static void PlayerWalkSlowStairs(u8 direction)
-{
-    PlayerSetAnimId(GetWalkSlowStairsMovementAction(direction), 2);
-}
-
 // slow
-static void UNUSED PlayerWalkSlow(u8 direction)
+static void PlayerWalkSlow(u8 direction)
 {
     PlayerSetAnimId(GetWalkSlowMovementAction(direction), 2);
 }
@@ -1074,7 +1060,7 @@ void PlayerOnBikeCollide(u8 direction)
 {
     PlayCollisionSoundIfNotFacingWarp(direction);
     PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(direction), COPY_MOVE_WALK);
-#if OW_ENABLE_NPC_FOLLOWERS
+    #if OW_ENABLE_NPC_FOLLOWERS
     // Edge case: If the player stops at the top of a mud slide, but the NPC follower is still on a mud slide tile,
     // move the follower into the player and hide them.
     if (gSaveBlock3Ptr->NPCfollower.inProgress)
@@ -1272,8 +1258,6 @@ u8 player_get_pos_including_state_based_drift(s16 *x, s16 *y)
 
 u8 GetPlayerFacingDirection(void)
 {
-    Script_RequestEffects(SCREFF_V1);
-
     return gObjectEvents[gPlayerAvatar.objectEventId].facingDirection;
 }
 
@@ -1483,7 +1467,7 @@ void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 gender)
     gPlayerAvatar.spriteId = objectEvent->spriteId;
     gPlayerAvatar.gender = gender;
     SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_CONTROLLABLE | PLAYER_AVATAR_FLAG_ON_FOOT);
-#if OW_ENABLE_NPC_FOLLOWERS
+    #if OW_ENABLE_NPC_FOLLOWERS
     CreateFollowerNPCAvatar();
 #endif
 }
@@ -1735,7 +1719,7 @@ static void CreateStopSurfingTask(u8 direction)
     taskId = CreateTask(Task_StopSurfingInit, 0xFF);
     gTasks[taskId].data[0] = direction;
     Task_StopSurfingInit(taskId);
-#if OW_ENABLE_NPC_FOLLOWERS
+    #if OW_ENABLE_NPC_FOLLOWERS
     PrepareFollowerNPCDismountSurf();
 #endif
 }

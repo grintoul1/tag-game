@@ -36,7 +36,6 @@ extern const u8 EventScript_TryDoDoubleTrainerBattle[];
 extern const u8 EventScript_TryDoNormalTrainerBattle[];
 extern const u8 EventScript_TryDoDoubleRematchBattle[];
 extern const u8 EventScript_TryDoRematchBattle[];
-extern const u8 EventScript_ObjectApproachPlayer[];
 
 extern const u8 BerryTreeScript[];
 
@@ -652,16 +651,6 @@ extern const u8 EventScript_VsSeekerChargingDone[];
 extern const u8 Common_Movement_FollowerSafeStart[];
 extern const u8 Common_Movement_FollowerSafeEnd[];
 
-extern const u8 EventScript_CancelMessageBox[];
-extern const u8 Common_EventScript_ShowPokemonCenterSign[];
-extern const u8 Common_EventScript_ShowPokemartSign[];
-// DexNav
-extern const u8 EventScript_StartDexNavBattle[];
-extern const u8 EventScript_NotFoundNearby[];
-extern const u8 EventScript_PokemonGotAway[];
-extern const u8 EventScript_LostSignal[];
-extern const u8 EventScript_TooDark[];
-extern const u8 EventScript_MovedTooFast[];
 extern const u8 Common_Movement_WalkUpSlow[];
 extern const u8 Common_Movement_WalkDownSlow[];
 extern const u8 Common_Movement_WalkRightSlow[];
@@ -683,5 +672,8 @@ extern const u8 Common_Movement_FaceDown[];
 extern const u8 Common_Movement_FaceRight[];
 extern const u8 Common_Movement_FaceLeft[];
 
+extern const u8 EventScript_CancelMessageBox[];
+extern const u8 Common_EventScript_ShowPokemonCenterSign[];
+extern const u8 Common_EventScript_ShowPokemartSign[];
 
 #endif // GUARD_EVENT_SCRIPTS_H

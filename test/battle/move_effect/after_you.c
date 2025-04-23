@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME(GetMoveEffect(MOVE_AFTER_YOU) == EFFECT_AFTER_YOU);
+    ASSUME(gMovesInfo[MOVE_AFTER_YOU].effect == EFFECT_AFTER_YOU);
 }
 
 DOUBLE_BATTLE_TEST("After You makes the target move after user")
@@ -112,7 +112,7 @@ DOUBLE_BATTLE_TEST("After You doesn't fail if the turn order remains the same af
 DOUBLE_BATTLE_TEST("After You ignores the effects of Quash")
 {
     GIVEN {
-        ASSUME(GetMoveEffect(MOVE_QUASH) == EFFECT_QUASH);
+        ASSUME(gMovesInfo[MOVE_QUASH].effect == EFFECT_QUASH);
         PLAYER(SPECIES_WOBBUFFET) { Speed(4); }
         PLAYER(SPECIES_WYNAUT) { Speed(1); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(2); }

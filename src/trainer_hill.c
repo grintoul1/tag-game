@@ -90,6 +90,7 @@ struct
 } static const sTrainerClassesAndMusic[] =
 {
     {TRAINER_CLASS_TEAM_AQUA, TRAINER_ENCOUNTER_MUSIC_AQUA},
+    {TRAINER_CLASS_TEAM_AQUA_MIXED, TRAINER_ENCOUNTER_MUSIC_AQUA},
     {TRAINER_CLASS_AQUA_ADMIN, TRAINER_ENCOUNTER_MUSIC_AQUA},
     {TRAINER_CLASS_AQUA_LEADER, TRAINER_ENCOUNTER_MUSIC_AQUA},
     {TRAINER_CLASS_AROMA_LADY, TRAINER_ENCOUNTER_MUSIC_FEMALE},
@@ -111,6 +112,7 @@ struct
     {TRAINER_CLASS_BUG_MANIAC, TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
     {TRAINER_CLASS_CAMPER, TRAINER_ENCOUNTER_MUSIC_MALE},
     {TRAINER_CLASS_KINDLER, TRAINER_ENCOUNTER_MUSIC_HIKER},
+    {TRAINER_CLASS_TEAM_MAGMA, TRAINER_ENCOUNTER_MUSIC_MAGMA},
     {TRAINER_CLASS_TEAM_MAGMA, TRAINER_ENCOUNTER_MUSIC_MAGMA},
     {TRAINER_CLASS_MAGMA_ADMIN, TRAINER_ENCOUNTER_MUSIC_MAGMA},
     {TRAINER_CLASS_MAGMA_LEADER, TRAINER_ENCOUNTER_MUSIC_MAGMA},
@@ -210,14 +212,6 @@ static const struct TrainerHillChallenge *const sChallengeData[NUM_TRAINER_HILL_
     [HILL_MODE_VARIETY] = &sChallenge_Variety,
     [HILL_MODE_UNIQUE]  = &sChallenge_Unique,
     [HILL_MODE_EXPERT]  = &sChallenge_Expert,
-};
-
-static const struct TrainerHillFloor *const sFloorData[NUM_TRAINER_HILL_MODES] =
-{
-    [HILL_MODE_NORMAL]  = &sFloors_Normal[0],
-    [HILL_MODE_VARIETY] = &sFloors_Variety[0],
-    [HILL_MODE_UNIQUE]  = &sFloors_Unique[0],
-    [HILL_MODE_EXPERT]  = &sFloors_Expert[0],
 };
 
 // Unused.
@@ -365,14 +359,20 @@ void FreeTrainerHillBattleStruct(void)
 static void SetUpDataStruct(void)
 {
 #if FREE_TRAINER_HILL == FALSE
-    if (sHillData != NULL) return;
+    if (sHillData == NULL)
+    {
+        sHillData = AllocZeroed(sizeof(*sHillData));
+        sHillData->floorId = gMapHeader.mapLayoutId - LAYOUT_TRAINER_HILL_1F;
 
-    sHillData = AllocZeroed(sizeof(*sHillData));
-    sHillData->floorId = gMapHeader.mapLayoutId - LAYOUT_TRAINER_HILL_1F;
-
-    CpuCopy32(sChallengeData[gSaveBlock1Ptr->trainerHill.mode], &sHillData->challenge, sizeof(sHillData->challenge));
-    CpuCopy32(sFloorData[gSaveBlock1Ptr->trainerHill.mode], &sHillData->floors, sizeof(sHillData->floors));
-#endif // FREE_TRAINER_HILL
+        // This copy depends on the floor data for each challenge being directly after the
+        // challenge header data, and for the field 'floors' in sHillData to come directly
+        // after the field 'challenge'.
+        // e.g. for HILL_MODE_NORMAL, it will copy sChallenge_Normal to sHillData->challenge and
+        // it will copy sFloors_Normal to sHillData->floors
+        CpuCopy32(sChallengeData[gSaveBlock1Ptr->trainerHill.mode], &sHillData->challenge, sizeof(sHillData->challenge) + sizeof(sHillData->floors));
+        TrainerHillDummy();
+    }
+#endif //FREE_TRAINER_HILL
 }
 
 static void FreeDataStruct(void)
@@ -864,7 +864,7 @@ void SetHillTrainerFlag(void)
 
     for (i = 0; i < HILL_TRAINERS_PER_FLOOR; i++)
     {
-        if (gSaveBlock2Ptr->frontier.trainerIds[i] == TRAINER_BATTLE_PARAM.opponentA)
+        if (gSaveBlock2Ptr->frontier.trainerIds[i] == gTrainerBattleOpponent_A)
         {
             gSaveBlock2Ptr->frontier.trainerFlags |= 1u << (trainerIndexStart + i);
             break;
@@ -875,7 +875,7 @@ void SetHillTrainerFlag(void)
     {
         for (i = 0; i < HILL_TRAINERS_PER_FLOOR; i++)
         {
-            if (gSaveBlock2Ptr->frontier.trainerIds[i] == TRAINER_BATTLE_PARAM.opponentB)
+            if (gSaveBlock2Ptr->frontier.trainerIds[i] == gTrainerBattleOpponent_B)
             {
                 gSaveBlock2Ptr->frontier.trainerFlags |= 1u << (trainerIndexStart + i);
                 break;
@@ -922,14 +922,14 @@ static void CreateNPCTrainerHillParty(u16 trainerId, u8 firstMonId)
 void FillHillTrainerParty(void)
 {
     ZeroEnemyPartyMons();
-    CreateNPCTrainerHillParty(TRAINER_BATTLE_PARAM.opponentA, 0);
+    CreateNPCTrainerHillParty(gTrainerBattleOpponent_A, 0);
 }
 
 void FillHillTrainersParties(void)
 {
     ZeroEnemyPartyMons();
-    CreateNPCTrainerHillParty(TRAINER_BATTLE_PARAM.opponentA, 0);
-    CreateNPCTrainerHillParty(TRAINER_BATTLE_PARAM.opponentB, PARTY_SIZE / 2);
+    CreateNPCTrainerHillParty(gTrainerBattleOpponent_A, 0);
+    CreateNPCTrainerHillParty(gTrainerBattleOpponent_B, PARTY_SIZE / 2);
 }
 
 // This function is unused, but my best guess is

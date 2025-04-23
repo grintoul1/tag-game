@@ -38,7 +38,6 @@
 Known Issues:
     -follower gets messed up if you go into a map with a maximum number of event objects
         -inherits incorrect palette, may get directionally confused
-
     -follower animation can get messed up when sideways hopping with Acro Bike
 */
 
@@ -379,18 +378,16 @@ static void PlayerLogCoordinates(struct ObjectEvent *player)
 u8 DetermineFollowerNPCState(struct ObjectEvent *follower, u8 state, u8 direction)
 {
     u8 newState = MOVEMENT_INVALID;
+    u8 collision = COLLISION_NONE;
+    s16 followerX = follower->currentCoords.x;
+    s16 followerY = follower->currentCoords.y;
+    u8 currentBehavior = MapGridGetMetatileBehaviorAt(followerX, followerY);
+    u8 nextBehavior;
     u8 noSpecialAnimFrames = (GetFollowerNPCSprite() == gSaveBlock3Ptr->NPCfollower.graphicsId);
-#if SIDEWAYS_STAIRS_IMPLEMENTED
-        u8 collision = COLLISION_NONE;
-        s16 followerX = follower->currentCoords.x;
-        s16 followerY = follower->currentCoords.y;
-        u8 currentBehavior = MapGridGetMetatileBehaviorAt(followerX, followerY);
-        u8 nextBehavior;
 
-        MoveCoords(direction, &followerX, &followerY);
-        nextBehavior = MapGridGetMetatileBehaviorAt(followerX, followerY);
-#endif
-    
+    MoveCoords(direction, &followerX, &followerY);
+    nextBehavior = MapGridGetMetatileBehaviorAt(followerX, followerY);
+
     if (FindTaskIdByFunc(Task_MoveNPCFollowerAfterForcedMovement) == TASK_NONE)
         follower->facingDirectionLocked = FALSE;
 
@@ -409,22 +406,20 @@ u8 DetermineFollowerNPCState(struct ObjectEvent *follower, u8 state, u8 directio
     // Clear ice tile stuff
     follower->disableAnim = FALSE;
 
-#if SIDEWAYS_STAIRS_IMPLEMENTED
-        // Clear overwrite movement
-        follower->directionOverwrite = DIR_NONE;
+    // Clear overwrite movement
+    follower->directionOverwrite = DIR_NONE;
 
-        // Sideways stairs checks
-        collision = GetSidewaysStairsCollision(follower, direction, currentBehavior, nextBehavior, collision);
-        switch (collision)
-        {
-        case COLLISION_SIDEWAYS_STAIRS_TO_LEFT:
-            follower->directionOverwrite = GetLeftSideStairsDirection(direction);
-            break;
-        case COLLISION_SIDEWAYS_STAIRS_TO_RIGHT:
-            follower->directionOverwrite = GetRightSideStairsDirection(direction);
-            break;
-        }
-#endif
+    // Sideways stairs checks
+    collision = GetSidewaysStairsCollision(follower, direction, currentBehavior, nextBehavior, collision);
+    switch (collision)
+    {
+    case COLLISION_SIDEWAYS_STAIRS_TO_LEFT:
+        follower->directionOverwrite = GetLeftSideStairsDirection(direction);
+        break;
+    case COLLISION_SIDEWAYS_STAIRS_TO_RIGHT:
+        follower->directionOverwrite = GetRightSideStairsDirection(direction);
+        break;
+    }
 
     switch (state) 
     {
@@ -455,7 +450,7 @@ u8 DetermineFollowerNPCState(struct ObjectEvent *follower, u8 state, u8 directio
         // Handle ice tile (some walking animation) -  Set a bit to freeze the follower's animation
         if (MetatileBehavior_IsIce(follower->currentMetatileBehavior) || MetatileBehavior_IsTrickHouseSlipperyFloor(follower->currentMetatileBehavior))
             follower->disableAnim = TRUE;
-            
+
         // Handle surfing
         if (gSaveBlock3Ptr->NPCfollower.currentSprite == FOLLOWER_NPC_SPRITE_INDEX_SURF && GetFollowerNPCSprite() == gSaveBlock3Ptr->NPCfollower.graphicsId)
             RETURN_STATE(MOVEMENT_ACTION_SURF_STILL_DOWN, direction);
@@ -484,22 +479,22 @@ u8 DetermineFollowerNPCState(struct ObjectEvent *follower, u8 state, u8 directio
     case MOVEMENT_ACTION_ACRO_POP_WHEELIE_DOWN ... MOVEMENT_ACTION_ACRO_POP_WHEELIE_RIGHT:
         if (noSpecialAnimFrames)
             return MOVEMENT_ACTION_NONE;
-            
+
         RETURN_STATE(MOVEMENT_ACTION_ACRO_POP_WHEELIE_DOWN, direction);
     case MOVEMENT_ACTION_ACRO_END_WHEELIE_FACE_DOWN ... MOVEMENT_ACTION_ACRO_END_WHEELIE_FACE_RIGHT:
         if (noSpecialAnimFrames)
             return MOVEMENT_ACTION_NONE;
-            
+
         RETURN_STATE(MOVEMENT_ACTION_ACRO_END_WHEELIE_FACE_DOWN, direction);
     case MOVEMENT_ACTION_ACRO_WHEELIE_HOP_FACE_DOWN ... MOVEMENT_ACTION_ACRO_WHEELIE_HOP_FACE_RIGHT:
         if (noSpecialAnimFrames)
             return MOVEMENT_ACTION_NONE;
-            
+
         RETURN_STATE(MOVEMENT_ACTION_ACRO_WHEELIE_HOP_FACE_DOWN, direction);
     case MOVEMENT_ACTION_ACRO_WHEELIE_HOP_DOWN ... MOVEMENT_ACTION_ACRO_WHEELIE_HOP_RIGHT:
         if (noSpecialAnimFrames)
             RETURN_STATE(MOVEMENT_ACTION_JUMP_DOWN, direction);
-            
+
         RETURN_STATE(MOVEMENT_ACTION_ACRO_WHEELIE_HOP_DOWN, direction);
     case MOVEMENT_ACTION_ACRO_WHEELIE_JUMP_DOWN ... MOVEMENT_ACTION_ACRO_WHEELIE_JUMP_RIGHT:
         // Ledge jump
@@ -525,12 +520,12 @@ u8 DetermineFollowerNPCState(struct ObjectEvent *follower, u8 state, u8 directio
     case MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_DOWN ... MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_RIGHT:
         if (noSpecialAnimFrames)
             return MOVEMENT_ACTION_NONE;
-            
+
         RETURN_STATE(MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_DOWN, direction);
     case MOVEMENT_ACTION_ACRO_POP_WHEELIE_MOVE_DOWN ... MOVEMENT_ACTION_ACRO_POP_WHEELIE_MOVE_RIGHT:
         if (noSpecialAnimFrames)
             RETURN_STATE(MOVEMENT_ACTION_WALK_FAST_DOWN, direction);
-            
+
         RETURN_STATE(MOVEMENT_ACTION_ACRO_POP_WHEELIE_MOVE_DOWN, direction);
     case MOVEMENT_ACTION_ACRO_WHEELIE_MOVE_DOWN ... MOVEMENT_ACTION_ACRO_WHEELIE_MOVE_RIGHT:
         if (noSpecialAnimFrames)
@@ -540,7 +535,7 @@ u8 DetermineFollowerNPCState(struct ObjectEvent *follower, u8 state, u8 directio
     case MOVEMENT_ACTION_ACRO_END_WHEELIE_MOVE_DOWN ... MOVEMENT_ACTION_ACRO_END_WHEELIE_MOVE_RIGHT:
         if (noSpecialAnimFrames)
             RETURN_STATE(MOVEMENT_ACTION_WALK_FAST_DOWN, direction);
-            
+
         RETURN_STATE(MOVEMENT_ACTION_ACRO_END_WHEELIE_MOVE_DOWN, direction);
 
     // Sliding
@@ -571,13 +566,11 @@ u8 DetermineFollowerNPCState(struct ObjectEvent *follower, u8 state, u8 directio
         }
 
     // Run slow
-    #ifdef MOVEMENT_ACTION_RUN_DOWN_SLOW
     case MOVEMENT_ACTION_RUN_DOWN_SLOW ... MOVEMENT_ACTION_RUN_RIGHT_SLOW:
         if (gSaveBlock3Ptr->NPCfollower.flags & FOLLOWER_NPC_FLAG_HAS_RUNNING_FRAMES)
             RETURN_STATE(MOVEMENT_ACTION_RUN_DOWN_SLOW, direction);
 
         RETURN_STATE(MOVEMENT_ACTION_WALK_NORMAL_DOWN, direction);
-    #endif
 
     default:
         return MOVEMENT_INVALID;
@@ -704,7 +697,7 @@ void Task_MoveNPCFollowerAfterForcedMovement(u8 taskId)
         // Lock follower facing direction for muddy slope.
         if (follower->currentMetatileBehavior == MB_MUDDY_SLOPE)
             follower->facingDirectionLocked = TRUE;
-            
+
         if (TryDoMetatileBehaviorForcedMovement() == 0)
             gTasks[taskId].tState = NPC_INTO_PLAYER;
         return;
@@ -1283,6 +1276,7 @@ void CreateFollowerNPCAvatar(void)
     if (gSaveBlock3Ptr->NPCfollower.objId == OBJECT_EVENTS_COUNT)
     {
         memset(&gSaveBlock3Ptr->NPCfollower, 0, sizeof(gSaveBlock3Ptr->NPCfollower));
+        return;
     }
 
     if (gMapHeader.mapType == MAP_TYPE_UNDERWATER)
@@ -1310,15 +1304,15 @@ static void TurnNPCIntoFollower(u8 localId, u16 followerFlags, u8 setScript, con
         {
             follower = &gObjectEvents[eventObjId];
             flag = GetObjectEventFlagIdByLocalIdAndMap(follower->localId, follower->mapNum, follower->mapGroup);
-            if (flag == 0) // If the NPC does not have an event flag, don't create follower
+            if (flag == 0) // If the object does not have an event flag, don't create follower.
                 return;
-            follower->movementType = MOVEMENT_TYPE_NONE; // Doesn't get to move on its own anymore
-            gSprites[follower->spriteId].callback = MovementType_None; // MovementType_None
+            follower->movementType = MOVEMENT_TYPE_NONE; // Doesn't get to move on its own anymore.
+            gSprites[follower->spriteId].callback = MovementType_None;
             SetObjEventTemplateMovementType(localId, 0);
             if (setScript == TRUE)
-                script = ptr;
+                script = ptr; // Set the custom script.
             else
-                script = GetObjectEventScriptPointerByObjectEventId(eventObjId);
+                script = GetObjectEventScriptPointerByObjectEventId(eventObjId); // Use the object's original script.
 
             gSaveBlock3Ptr->NPCfollower.inProgress = TRUE;
             gSaveBlock3Ptr->NPCfollower.objId = eventObjId;
@@ -1332,14 +1326,14 @@ static void TurnNPCIntoFollower(u8 localId, u16 followerFlags, u8 setScript, con
             gSaveBlock3Ptr->NPCfollower.createSurfBlob = FNPC_SURF_BLOB_NONE;
             gSaveBlock3Ptr->NPCfollower.comeOutDoorStairs = FNPC_DOOR_NONE;
             follower->localId = OBJ_EVENT_ID_NPC_FOLLOWER;
-            FlagSet(flag);
+            FlagSet(flag); // Set the original object's flag to remove it.
 
             if (!(gSaveBlock3Ptr->NPCfollower.flags & FOLLOWER_NPC_FLAG_CAN_BIKE) // Follower can't bike
             &&  TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_BIKE)) // Player on bike
                 SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_ON_FOOT); // Dismmount Bike
 
             if (!TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_ON_FOOT))
-                FollowerNPC_HandleSprite(); // Set the follower sprite to match the player state
+                FollowerNPC_HandleSprite(); // Set the follower sprite to match the player state.
         }
     }
 }
@@ -1454,7 +1448,7 @@ void FollowerNPCFaceAfterLeaveMap(void)
 void Task_HideNPCFollowerAfterMovementFinish(u8 taskId)
 {
     struct ObjectEvent *npcFollower = &gObjectEvents[GetFollowerNPCMapObjId()];
-    
+
     if (ObjectEventClearHeldMovementIfFinished(npcFollower) != 0)
     {
         HideNPCFollower();
@@ -1485,7 +1479,7 @@ void FollowerNPCPositionFix(u8 offset)
 
     if (!gSaveBlock3Ptr->NPCfollower.inProgress)
         return;
-    
+
     if (gSaveBlock3Ptr->NPCfollower.comeOutDoorStairs != FNPC_DOOR_NONE || gObjectEvents[followerObjid].invisible)
     {
         gSaveBlock3Ptr->NPCfollower.comeOutDoorStairs = FNPC_DOOR_NONE;
@@ -1692,7 +1686,7 @@ void ScriptFaceFollowerNPC(struct ScriptContext *ctx)
 }
 
 #if OW_ENABLE_NPC_FOLLOWERS
-static const u8 *const FollowerNPCHideMovementsSpeedTable[][4] =
+static const u8 *const FollowerNPCHideMovementsSpeedTable[][4] = 
 {
     [DIR_SOUTH] = {Common_Movement_WalkDownSlow, Common_Movement_WalkDown, Common_Movement_WalkDownFast, Common_Movement_WalkDownFaster},
     [DIR_NORTH] = {Common_Movement_WalkUpSlow, Common_Movement_WalkUp, Common_Movement_WalkUpFast, Common_Movement_WalkUpFaster},
@@ -1734,31 +1728,6 @@ void ScriptUpdateFollowingMon(struct ScriptContext *ctx)
         UpdateFollowingPokemon();
 #endif
 #endif
-}
-
-void ScriptBallFollowingMon(struct ScriptContext *ctx)
-{
-    u16 species;
-    bool8 shiny;
-    u8 form;
-
-    if (OW_POKEMON_OBJECT_EVENTS == FALSE
-     || OW_FOLLOWERS_ENABLED == FALSE
-     || !GetFollowerInfo(&species, &form, &shiny)
-     || SpeciesToGraphicsInfo(species, form) == NULL
-     || (gMapHeader.mapType == MAP_TYPE_INDOOR && SpeciesToGraphicsInfo(species, form)->oam->size > ST_OAM_SIZE_2)
-     || FlagGet(FLAG_TEMP_HIDE_FOLLOWER)
-#if OW_ENABLE_NPC_FOLLOWERS
-     || gSaveBlock3Ptr->NPCfollower.inProgress
-#endif
-     )
-    {
-        return;
-    }
-    else
-    {
-        ReturnFollowingMonToBall();
-    }
 }
 
 void ScriptChangeFollowerNPCBattlePartner(struct ScriptContext *ctx)

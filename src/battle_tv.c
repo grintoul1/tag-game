@@ -774,7 +774,7 @@ void BattleTv_SetDataBasedOnMove(u16 move, u16 weatherFlags, struct DisableStruc
         tvPtr->side[atkSide].wishMonId = gBattlerPartyIndexes[gBattlerAttacker] + 1;
         tvPtr->side[atkSide].wishMoveSlot = moveSlot;
     }
-    if (GetMoveEffect(move) == EFFECT_EXPLOSION)
+    if (gMovesInfo[move].effect == EFFECT_EXPLOSION)
     {
         tvPtr->side[atkSide ^ BIT_SIDE].explosionMonId = gBattlerPartyIndexes[gBattlerAttacker] + 1;
         tvPtr->side[atkSide ^ BIT_SIDE].explosionMoveSlot = moveSlot;
@@ -782,11 +782,10 @@ void BattleTv_SetDataBasedOnMove(u16 move, u16 weatherFlags, struct DisableStruc
         tvPtr->side[atkSide ^ BIT_SIDE].explosion = TRUE;
     }
 
-    u32 movePower = GetMovePower(move);
-    AddMovePoints(PTS_REFLECT,      move, movePower, 0);
-    AddMovePoints(PTS_LIGHT_SCREEN, move, movePower, 0);
-    AddMovePoints(PTS_WATER_SPORT,  move, 0,         0);
-    AddMovePoints(PTS_MUD_SPORT,    move, 0,         0);
+    AddMovePoints(PTS_REFLECT,      move, gMovesInfo[move].power, 0);
+    AddMovePoints(PTS_LIGHT_SCREEN, move, gMovesInfo[move].power, 0);
+    AddMovePoints(PTS_WATER_SPORT,  move, 0,                        0);
+    AddMovePoints(PTS_MUD_SPORT,    move, 0,                        0);
 }
 
 void BattleTv_SetDataBasedOnAnimation(u8 animationId)
@@ -929,12 +928,12 @@ static void AddMovePoints(u8 caseId, u16 arg1, u8 arg2, u8 arg3)
     {
     case PTS_MOVE_EFFECT: // arg1 -> move slot, arg2 -> move
     {
-        u8 baseFromEffect = gBattleMoveEffects[GetMoveEffect(arg2)].battleTvScore;
+        u8 baseFromEffect = gBattleMoveEffects[gMovesInfo[arg2].effect].battleTvScore;
 
         // Various cases to add/remove points
-        if (GetMoveRecoil(arg2) > 0)
+        if (gMovesInfo[arg2].recoil > 0)
             baseFromEffect++; // Recoil moves
-        if (GetMoveEffect(arg2) == EFFECT_RAPID_SPIN)
+        if (gMovesInfo[arg2].effect == EFFECT_RAPID_SPIN)
             baseFromEffect++;
         if (MoveHasAdditionalEffect(arg2, MOVE_EFFECT_SP_ATK_MINUS_2) || MoveHasAdditionalEffect(arg2, MOVE_EFFECT_ATK_DEF_DOWN))
             baseFromEffect += 2; // Overheat, Superpower, etc.
@@ -1007,7 +1006,7 @@ static void AddMovePoints(u8 caseId, u16 arg1, u8 arg2, u8 arg3)
 #define power arg2
     case PTS_WATER_SPORT:
         // If used fire move during Water Sport
-        if (tvPtr->pos[defSide][0].waterSportMonId != -(tvPtr->pos[defSide][1].waterSportMonId) && GetMoveType(move) == TYPE_FIRE)
+        if (tvPtr->pos[defSide][0].waterSportMonId != -(tvPtr->pos[defSide][1].waterSportMonId) && gMovesInfo[move].type == TYPE_FIRE)
         {
             if (tvPtr->pos[defSide][0].waterSportMonId != 0)
             {
@@ -1023,7 +1022,7 @@ static void AddMovePoints(u8 caseId, u16 arg1, u8 arg2, u8 arg3)
         break;
     case PTS_MUD_SPORT:
         // If used Electric move during Mud Sport
-        if (tvPtr->pos[defSide][0].mudSportMonId != -(tvPtr->pos[defSide][1].mudSportMonId) && GetMoveType(move) == TYPE_ELECTRIC)
+        if (tvPtr->pos[defSide][0].mudSportMonId != -(tvPtr->pos[defSide][1].mudSportMonId) && gMovesInfo[move].type == TYPE_ELECTRIC)
         {
             if (tvPtr->pos[defSide][0].mudSportMonId != 0)
             {
@@ -1039,7 +1038,7 @@ static void AddMovePoints(u8 caseId, u16 arg1, u8 arg2, u8 arg3)
         break;
     case PTS_REFLECT:
         // If hit Reflect with damaging physical move
-        if (IsBattleMovePhysical(move) && power != 0 && tvPtr->side[defSide].reflectMonId != 0)
+        if (IS_MOVE_PHYSICAL(move) && power != 0 && tvPtr->side[defSide].reflectMonId != 0)
         {
             u32 id = (tvPtr->side[defSide].reflectMonId - 1) * 4;
             movePoints->points[defSide][id + tvPtr->side[defSide].reflectMoveSlot] += sPointsArray[caseId][0];
@@ -1047,7 +1046,7 @@ static void AddMovePoints(u8 caseId, u16 arg1, u8 arg2, u8 arg3)
         break;
     case PTS_LIGHT_SCREEN:
         // If hit Light Screen with damaging special move
-        if (IsBattleMoveSpecial(move) && power != 0 && tvPtr->side[defSide].lightScreenMonId != 0)
+        if (IS_MOVE_SPECIAL(move) && power != 0 && tvPtr->side[defSide].lightScreenMonId != 0)
         {
             u32 id = (tvPtr->side[defSide].lightScreenMonId - 1) * 4;
             movePoints->points[defSide][id + tvPtr->side[defSide].lightScreenMoveSlot] += sPointsArray[caseId][0];
@@ -1228,7 +1227,7 @@ static void TrySetBattleSeminarShow(void)
         return;
     else if (gBattleTypeFlags & (BATTLE_TYPE_PALACE | BATTLE_TYPE_PIKE | BATTLE_TYPE_PYRAMID))
         return;
-    else if (IsBattleMoveStatus(gBattleMons[gBattlerAttacker].moves[gMoveSelectionCursor[gBattlerAttacker]]))
+    else if (IS_MOVE_STATUS(gBattleMons[gBattlerAttacker].moves[gMoveSelectionCursor[gBattlerAttacker]]))
         return;
 
     i = 0;
@@ -1243,7 +1242,7 @@ static void TrySetBattleSeminarShow(void)
     if (sVariableDmgMoves[i] != TABLE_END)
         return;
 
-    dmgByMove[gMoveSelectionCursor[gBattlerAttacker]] = gBattleStruct->moveDamage[gBattlerTarget]; // TODO: Not sure
+    dmgByMove[gMoveSelectionCursor[gBattlerAttacker]] = gBattleMoveDamage;
     currMoveSaved = gCurrentMove;
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
@@ -1255,13 +1254,13 @@ static void TrySetBattleSeminarShow(void)
             damageCalcData.battlerAtk = gBattlerAttacker;
             damageCalcData.battlerDef = gBattlerTarget;
             damageCalcData.move = gCurrentMove;
-            damageCalcData.moveType = GetMoveType(gCurrentMove);
+            damageCalcData.moveType = gMovesInfo[gCurrentMove].type;
             damageCalcData.isCrit = FALSE;
             damageCalcData.randomFactor = FALSE;
             damageCalcData.updateFlags = FALSE;
-            gBattleStruct->moveDamage[gBattlerTarget] = CalculateMoveDamage(&damageCalcData, powerOverride);
-            dmgByMove[i] = gBattleStruct->moveDamage[gBattlerTarget];
-            if (dmgByMove[i] == 0 && !(gBattleStruct->moveResultFlags[gBattlerTarget] & MOVE_RESULT_NO_EFFECT))
+            gBattleMoveDamage = CalculateMoveDamage(&damageCalcData, powerOverride);
+            dmgByMove[i] = gBattleMoveDamage;
+            if (dmgByMove[i] == 0 && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
                 dmgByMove[i] = 1;
         }
     }
@@ -1291,13 +1290,13 @@ static void TrySetBattleSeminarShow(void)
         }
     }
 
-    gBattleStruct->moveDamage[gBattlerTarget] = dmgByMove[gMoveSelectionCursor[gBattlerAttacker]];
+    gBattleMoveDamage = dmgByMove[gMoveSelectionCursor[gBattlerAttacker]];
     gCurrentMove = currMoveSaved;
 }
 
 static bool8 ShouldCalculateDamage(u16 moveId, s32 *dmg, u16 *powerOverride)
 {
-    if (IsBattleMoveStatus(moveId))
+    if (IS_MOVE_STATUS(moveId))
     {
         *dmg = 0;
         return FALSE;

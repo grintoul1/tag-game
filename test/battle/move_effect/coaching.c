@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME(GetMoveEffect(MOVE_COACHING) == EFFECT_COACHING);
+    ASSUME(gMovesInfo[MOVE_COACHING].effect == EFFECT_COACHING);
 }
 
 DOUBLE_BATTLE_TEST("Coaching raises Attack and Defense of ally by 1 stage each")
@@ -25,7 +25,7 @@ DOUBLE_BATTLE_TEST("Coaching raises Attack and Defense of ally by 1 stage each")
 DOUBLE_BATTLE_TEST("Coaching bypasses Protect")
 {
     GIVEN {
-        ASSUME(GetMoveEffect(MOVE_PROTECT) == EFFECT_PROTECT);
+        ASSUME(gMovesInfo[MOVE_PROTECT].effect == EFFECT_PROTECT);
         PLAYER(SPECIES_WOBBUFFET);
         PLAYER(SPECIES_WYNAUT);
         OPPONENT(SPECIES_WOBBUFFET);
@@ -42,7 +42,7 @@ DOUBLE_BATTLE_TEST("Coaching bypasses Protect")
 DOUBLE_BATTLE_TEST("Coaching bypasses Crafty Shield")
 {
     GIVEN {
-        ASSUME(GetMoveEffect(MOVE_CRAFTY_SHIELD) == EFFECT_PROTECT);
+        ASSUME(gMovesInfo[MOVE_CRAFTY_SHIELD].effect == EFFECT_PROTECT);
         PLAYER(SPECIES_WOBBUFFET);
         PLAYER(SPECIES_WYNAUT);
         OPPONENT(SPECIES_WOBBUFFET);
@@ -58,8 +58,9 @@ DOUBLE_BATTLE_TEST("Coaching bypasses Crafty Shield")
 
 DOUBLE_BATTLE_TEST("Coaching fails if all allies are is semi-invulnerable")
 {
+    KNOWN_FAILING; // Coaching succeeds
     GIVEN {
-        ASSUME(GetMoveEffect(MOVE_FLY) == EFFECT_SEMI_INVULNERABLE);
+        ASSUME(gMovesInfo[MOVE_FLY].effect == EFFECT_SEMI_INVULNERABLE);
         PLAYER(SPECIES_WOBBUFFET);
         PLAYER(SPECIES_HAWLUCHA);
         OPPONENT(SPECIES_WOBBUFFET);

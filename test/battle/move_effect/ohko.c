@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME(GetMoveEffect(MOVE_SHEER_COLD) == EFFECT_OHKO);
+    ASSUME(gMovesInfo[MOVE_SHEER_COLD].effect == EFFECT_OHKO);
 }
 
 SINGLE_BATTLE_TEST("Sheer Cold doesn't affect Ice-type Pokémon")
@@ -24,7 +24,7 @@ SINGLE_BATTLE_TEST("Sheer Cold doesn't affect Ice-type Pokémon")
 SINGLE_BATTLE_TEST("OHKO moves can hit semi-invulnerable mons when the user has No-Guard")
 {
     GIVEN {
-        ASSUME(GetMoveEffect(MOVE_SHEER_COLD) == EFFECT_OHKO);
+        ASSUME(gMovesInfo[MOVE_SHEER_COLD].effect == EFFECT_OHKO);
         PLAYER(SPECIES_WOBBUFFET) { Ability(ABILITY_NO_GUARD); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {

@@ -14,7 +14,7 @@
 #define FOLLOWER_NPC_FLAG_ALL_WATER             FOLLOWER_NPC_FLAG_CAN_SURF | FOLLOWER_NPC_FLAG_CAN_WATERFALL | FOLLOWER_NPC_FLAG_CAN_DIVE
 #define FOLLOWER_NPC_FLAG_ALL                   FOLLOWER_NPC_FLAG_ALL_LAND | FOLLOWER_NPC_FLAG_ALL_WATER | FOLLOWER_NPC_FLAG_CLEAR_ON_WHITE_OUT
 
-// Shorter flag names for ease of use in setfollowernpc script macro
+// Shorter flag names for ease of use in setfollower script macro
 #define FNPC_RUNNING                          FOLLOWER_NPC_FLAG_HAS_RUNNING_FRAMES
 #define FNPC_BIKE                             FOLLOWER_NPC_FLAG_CAN_BIKE
 #define FNPC_LEAVE_ROUTE                      FOLLOWER_NPC_FLAG_CAN_LEAVE_ROUTE
@@ -26,5 +26,10 @@
 #define FNPC_ALL_LAND                         FOLLOWER_NPC_FLAG_ALL_LAND
 #define FNPC_ALL_WATER                        FOLLOWER_NPC_FLAG_ALL_WATER
 #define FNPC_ALL                              FOLLOWER_NPC_FLAG_ALL
+#define FNPC_EMMIE                            FOLLOWER_NPC_FLAG_CAN_BIKE | FOLLOWER_NPC_FLAG_CAN_LEAVE_ROUTE | FOLLOWER_NPC_FLAG_CAN_SURF | FOLLOWER_NPC_FLAG_CAN_WATERFALL | FOLLOWER_NPC_FLAG_CAN_DIVE
+
+
+#define FNPC_NONE   0
+#define FNPC_ALWAYS 2
 
 #endif // GUARD_CONSTANTS_FOLLOWER_NPC_H

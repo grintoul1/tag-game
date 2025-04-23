@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME(GetMoveEffect(MOVE_HYPNOSIS) == EFFECT_SLEEP);
+    ASSUME(gMovesInfo[MOVE_HYPNOSIS].effect == EFFECT_SLEEP);
 }
 
 SINGLE_BATTLE_TEST("Hypnosis inflicts 1-3 turns of sleep")

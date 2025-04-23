@@ -127,14 +127,14 @@ static void SetVerdanturfTentPrize(void)
 
 static void SetVerdanturfTentTrainerGfx(void)
 {
-    TRAINER_BATTLE_PARAM.opponentA = (u32)((Random() % 255) * 5) / 64;
-    SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.opponentA, 0);
+    gTrainerBattleOpponent_A = (u32)((Random() % 255) * 5) / 64;
+    SetBattleFacilityTrainerGfxId(gTrainerBattleOpponent_A, 0);
 }
 
 static void BufferVerdanturfTentTrainerIntro(void)
 {
-    if (TRAINER_BATTLE_PARAM.opponentA < FRONTIER_TRAINERS_COUNT)
-        FrontierSpeechToString(gFacilityTrainers[TRAINER_BATTLE_PARAM.opponentA].speechBefore);
+    if (gTrainerBattleOpponent_A < FRONTIER_TRAINERS_COUNT)
+        FrontierSpeechToString(gFacilityTrainers[gTrainerBattleOpponent_A].speechBefore);
 }
 
 static void SaveVerdanturfTentChallenge(void)
@@ -218,7 +218,7 @@ static void GiveFallarborTentPrize(void)
 
 static void BufferFallarborTentTrainerName(void)
 {
-    GetFrontierTrainerName(gStringVar1, TRAINER_BATTLE_PARAM.opponentA);
+    GetFrontierTrainerName(gStringVar1, gTrainerBattleOpponent_A);
 }
 
 void CallSlateportTentFunction(void)
@@ -375,8 +375,8 @@ static void GenerateOpponentMons(void)
             }
         } while (i != gSaveBlock2Ptr->frontier.curChallengeBattleNum);
 
-        TRAINER_BATTLE_PARAM.opponentA = trainerId;
-        monSet = gFacilityTrainers[TRAINER_BATTLE_PARAM.opponentA].monSet;
+        gTrainerBattleOpponent_A = trainerId;
+        monSet = gFacilityTrainers[gTrainerBattleOpponent_A].monSet;
         while (monSet[numMons] != 0xFFFF)
             numMons++;
         if (numMons > 8)
@@ -385,9 +385,9 @@ static void GenerateOpponentMons(void)
     }
 
     if (gSaveBlock2Ptr->frontier.curChallengeBattleNum < TENT_STAGES_PER_CHALLENGE - 1)
-        gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum] = TRAINER_BATTLE_PARAM.opponentA;
+        gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum] = gTrainerBattleOpponent_A;
 
-    monSet = gFacilityTrainers[TRAINER_BATTLE_PARAM.opponentA].monSet;
+    monSet = gFacilityTrainers[gTrainerBattleOpponent_A].monSet;
     i = 0;
     while (i != FRONTIER_PARTY_SIZE)
     {

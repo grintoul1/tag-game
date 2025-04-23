@@ -8896,7 +8896,7 @@ static void SpriteCB_AnimSpriteOnTargetSideCentre(struct Sprite *sprite)
 
     if (!sprite->data[0])
     {
-        if (IsBattlerAlly(gBattleAnimAttacker, target))
+        if (IsAlly(gBattleAnimAttacker, target))
         {
             if (IsDoubleBattle())
                 InitSpritePosToAnimAttackersCentre(sprite, FALSE);
@@ -9072,7 +9072,7 @@ static void SpriteCB_DragonEnergyShot(struct Sprite* sprite)
     u8 def1 = gBattleAnimTarget;
     u8 def2 = BATTLE_PARTNER(def1);
 
-    if (!IsDoubleBattle() || IsBattlerAlly(gBattleAnimAttacker, gBattleAnimTarget))
+    if (!IsDoubleBattle() || IsAlly(gBattleAnimAttacker, gBattleAnimTarget))
         y = GetBattlerSpriteCoord(def1, BATTLER_COORD_Y_PIC_OFFSET);
     else
     {
@@ -9172,7 +9172,7 @@ static void SpriteCB_GlacialLance(struct Sprite* sprite)
 
     sprite->data[0] = gBattleAnimArgs[6];
 
-    if (!IsDoubleBattle() || IsBattlerAlly(gBattleAnimAttacker, gBattleAnimTarget))
+    if (!IsDoubleBattle() || IsAlly(gBattleAnimAttacker, gBattleAnimTarget))
     {
         sprite->data[2] = GetBattlerSpriteCoord(def1, BATTLER_COORD_X_2) + gBattleAnimArgs[2]; //Converge on target
         sprite->data[4] = GetBattlerSpriteCoord(def1, BATTLER_COORD_Y_PIC_OFFSET) + gBattleAnimArgs[3];
@@ -9267,15 +9267,21 @@ void AnimTask_DynamaxGrowth(u8 taskId) // from CFRU
 
 void AnimTask_GetWeatherToSet(u8 taskId)
 {
-    if (MoveHasAdditionalEffect(gCurrentMove, MOVE_EFFECT_SUN))
-        gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_SUN;
-    else if (MoveHasAdditionalEffect(gCurrentMove, MOVE_EFFECT_RAIN))
-        gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_RAIN;
-    else if (MoveHasAdditionalEffect(gCurrentMove, MOVE_EFFECT_SANDSTORM))
-        gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_SANDSTORM;
-    else if (MoveHasAdditionalEffect(gCurrentMove, MOVE_EFFECT_HAIL))
-        gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_HAIL;
-
+    switch (gMovesInfo[gCurrentMove].argument)
+    {
+        case MAX_EFFECT_SUN:
+            gBattleAnimArgs[ARG_RET_ID] = 1;
+            break;
+        case MAX_EFFECT_RAIN:
+            gBattleAnimArgs[ARG_RET_ID] = 2;
+            break;
+        case MAX_EFFECT_SANDSTORM:
+            gBattleAnimArgs[ARG_RET_ID] = 3;
+            break;
+        case MAX_EFFECT_HAIL:
+            gBattleAnimArgs[ARG_RET_ID] = 4;
+            break;
+    }
     DestroyAnimVisualTask(taskId);
 }
 

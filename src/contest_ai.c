@@ -758,7 +758,7 @@ static void ContestAICmd_get_move_effect(void)
 {
     u16 move = gContestMons[eContestAI.contestantId].moves[eContestAI.nextMoveIndex];
 
-    eContestAI.scriptResult = GetMoveContestEffect(move);
+    eContestAI.scriptResult = gMovesInfo[move].contestEffect;
     gAIScriptPtr += 1;
 }
 
@@ -786,7 +786,7 @@ static void ContestAICmd_get_move_effect_type(void)
 {
     u16 move = gContestMons[eContestAI.contestantId].moves[eContestAI.nextMoveIndex];
 
-    eContestAI.scriptResult = gContestEffects[GetMoveContestEffect(move)].effectType;
+    eContestAI.scriptResult = gContestEffects[gMovesInfo[move].contestEffect].effectType;
     gAIScriptPtr += 1;
 }
 
@@ -814,12 +814,12 @@ static void ContestAICmd_check_most_appealing_move(void)
 {
     int i;
     u16 move = gContestMons[eContestAI.contestantId].moves[eContestAI.nextMoveIndex];
-    u8 appeal = gContestEffects[GetMoveContestEffect(move)].appeal;
+    u8 appeal = gContestEffects[gMovesInfo[move].contestEffect].appeal;
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         u16 newMove = gContestMons[eContestAI.contestantId].moves[i];
-        if (newMove != 0 && appeal < gContestEffects[GetMoveContestEffect(newMove)].appeal)
+        if (newMove != 0 && appeal < gContestEffects[gMovesInfo[newMove].contestEffect].appeal)
             break;
     }
 
@@ -845,12 +845,12 @@ static void ContestAICmd_check_most_jamming_move(void)
 {
     int i;
     u16 move = gContestMons[eContestAI.contestantId].moves[eContestAI.nextMoveIndex];
-    u8 jam = gContestEffects[GetMoveContestEffect(move)].jam;
+    u8 jam = gContestEffects[gMovesInfo[move].contestEffect].jam;
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         u16 newMove = gContestMons[eContestAI.contestantId].moves[i];
-        if (newMove != MOVE_NONE && jam < gContestEffects[GetMoveContestEffect(newMove)].jam)
+        if (newMove != MOVE_NONE && jam < gContestEffects[gMovesInfo[newMove].contestEffect].jam)
             break;
     }
 
@@ -876,7 +876,7 @@ static void ContestAICmd_get_num_move_hearts(void)
 {
     u16 move = gContestMons[eContestAI.contestantId].moves[eContestAI.nextMoveIndex];
 
-    eContestAI.scriptResult = gContestEffects[GetMoveContestEffect(move)].appeal / 10;
+    eContestAI.scriptResult = gContestEffects[gMovesInfo[move].contestEffect].appeal / 10;
     gAIScriptPtr += 1;
 }
 
@@ -924,7 +924,7 @@ static void ContestAICmd_get_num_move_jam_hearts(void)
 {
     u16 move = gContestMons[eContestAI.contestantId].moves[eContestAI.nextMoveIndex];
 
-    eContestAI.scriptResult = gContestEffects[GetMoveContestEffect(move)].jam / 10;
+    eContestAI.scriptResult = gContestEffects[gMovesInfo[move].contestEffect].jam / 10;
     gAIScriptPtr += 1;
 }
 
@@ -1203,7 +1203,7 @@ static void ContestAICmd_get_used_combo_starter(void)
     u8 contestant = GetContestantIdByTurn(gAIScriptPtr[1]);
 
     if (IsContestantAllowedToCombo(contestant))
-        result = GetMoveContestComboStarter(eContestantStatus[contestant].prevMove) ? TRUE : FALSE;
+        result = gMovesInfo[eContestantStatus[contestant].prevMove].contestComboStarterId ? TRUE : FALSE;
 
     eContestAI.scriptResult = result;
     gAIScriptPtr += 2;
@@ -1409,7 +1409,7 @@ static void ContestAICmd_get_used_moves_effect(void)
     u8 round = gAIScriptPtr[2];
     u16 move = eContest.moveHistory[round][contestant];
 
-    eContestAI.scriptResult = GetMoveContestEffect(move);
+    eContestAI.scriptResult = gMovesInfo[move].contestEffect;
     gAIScriptPtr += 3;
 }
 
@@ -1509,7 +1509,7 @@ static void ContestAICmd_get_used_moves_effect_type(void)
     u8 round = gAIScriptPtr[2];
     u16 move = eContest.moveHistory[round][contestant];
 
-    eContestAI.scriptResult = gContestEffects[GetMoveContestEffect(move)].effectType;
+    eContestAI.scriptResult = gContestEffects[gMovesInfo[move].contestEffect].effectType;
     gAIScriptPtr += 3;
 }
 
@@ -1748,7 +1748,7 @@ static void ContestAICmd_check_user_has_move(void)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         #ifdef BUGFIX
-        u16 move = GetMoveContestEffect(gContestMons[eContestAI.contestantId].moves[i]);
+        u16 move = gMovesInfo[gContestMons[eContestAI.contestantId].moves[i]].contestEffect;
         #else
         u16 move = gContestMons[eContestAI.contestantId].moves[i];
         #endif

@@ -7,7 +7,7 @@ SINGLE_BATTLE_TEST("Being underground causes the target to take double damage fr
     PARAMETRIZE { useDig = FALSE; }
     PARAMETRIZE { useDig = TRUE; }
     GIVEN {
-        ASSUME(MoveDamagesUnderground(MOVE_EARTHQUAKE));
+        ASSUME(gMovesInfo[MOVE_EARTHQUAKE].damagesUnderground);
         PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(2); }
     } WHEN {

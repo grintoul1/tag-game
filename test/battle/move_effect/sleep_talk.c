@@ -3,10 +3,10 @@
 
 ASSUMPTIONS
 {
-    ASSUME(GetMoveEffect(MOVE_SLEEP_TALK) == EFFECT_SLEEP_TALK);
-    ASSUME(IsMoveSleepTalkBanned(MOVE_RAZOR_WIND));
-    ASSUME(IsMoveSleepTalkBanned(MOVE_FLY));
-    ASSUME(IsMoveSleepTalkBanned(MOVE_DIG));
+    ASSUME(gMovesInfo[MOVE_SLEEP_TALK].effect == EFFECT_SLEEP_TALK);
+    ASSUME(gMovesInfo[MOVE_RAZOR_WIND].sleepTalkBanned == TRUE);
+    ASSUME(gMovesInfo[MOVE_FLY].sleepTalkBanned == TRUE);
+    ASSUME(gMovesInfo[MOVE_DIG].sleepTalkBanned == TRUE);
 }
 
 SINGLE_BATTLE_TEST("Sleep Talk fails if not asleep")
@@ -94,8 +94,8 @@ SINGLE_BATTLE_TEST("Sleep Talk can use moves while choiced into Sleep Talk")
 SINGLE_BATTLE_TEST("Sleep Talk fails if user is taunted")
 {
     GIVEN {
-        ASSUME(GetMoveEffect(MOVE_TAUNT) == EFFECT_TAUNT);
-        ASSUME(GetMoveCategory(MOVE_SLEEP_TALK) == DAMAGE_CATEGORY_STATUS);
+        ASSUME(gMovesInfo[MOVE_TAUNT].effect == EFFECT_TAUNT);
+        ASSUME(gMovesInfo[MOVE_SLEEP_TALK].category == DAMAGE_CATEGORY_STATUS);
         PLAYER(SPECIES_WOBBUFFET) { Status1(STATUS1_SLEEP); Moves(MOVE_SLEEP_TALK, MOVE_TACKLE, MOVE_FLY, MOVE_DIG); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -113,7 +113,7 @@ DOUBLE_BATTLE_TEST("Sleep Talk calls move and that move may be redirected by Lig
 {
     PASSES_RANDOMLY(1, 2, RNG_RANDOM_TARGET);
     GIVEN {
-        ASSUME(GetMoveType(MOVE_SPARK) == TYPE_ELECTRIC);
+        ASSUME(gMovesInfo[MOVE_SPARK].type == TYPE_ELECTRIC);
         PLAYER(SPECIES_WOBBUFFET) { Status1(STATUS1_SLEEP); Moves(MOVE_SLEEP_TALK, MOVE_SPARK, MOVE_FLY, MOVE_DIG); }
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
@@ -132,7 +132,7 @@ DOUBLE_BATTLE_TEST("Sleep Talk calls move and that move may be redirected by Sto
 {
     PASSES_RANDOMLY(1, 2, RNG_RANDOM_TARGET);
     GIVEN {
-        ASSUME(GetMoveType(MOVE_WATER_GUN) == TYPE_WATER);
+        ASSUME(gMovesInfo[MOVE_WATER_GUN].type == TYPE_WATER);
         PLAYER(SPECIES_WOBBUFFET) { Status1(STATUS1_SLEEP); Moves(MOVE_SLEEP_TALK, MOVE_WATER_GUN, MOVE_FLY, MOVE_DIG); }
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);

@@ -48,7 +48,7 @@ BattleScript_UseItemMessage:
 	return
 
 BattleScript_ItemRestoreHPRet:
-	clearmoveresultflags MOVE_RESULT_NO_EFFECT
+	bichalfword gMoveResultFlags, MOVE_RESULT_NO_EFFECT
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
 	healthbarupdate BS_SCRIPTING
 	datahpupdate BS_SCRIPTING
@@ -69,7 +69,7 @@ BattleScript_ItemRestoreHPEnd:
 
 BattleScript_ItemRestoreHP_Party::
 	jumpifbyte CMP_EQUAL, gBattleCommunication, TRUE, BattleScript_ItemRestoreHP_SendOutRevivedBattler
-	clearmoveresultflags MOVE_RESULT_NO_EFFECT
+	bichalfword gMoveResultFlags, MOVE_RESULT_NO_EFFECT
 	printstring STRINGID_ITEMRESTOREDSPECIESHEALTH
 	waitmessage B_WAIT_TIME_LONG
 	return
@@ -195,13 +195,13 @@ BattleScript_TryNicknameCaughtMon::
 	printstring STRINGID_GIVENICKNAMECAPTURED
 	waitstate
 	setbyte gBattleCommunication, 0
-	trygivecaughtmonnick
-	givecaughtmon BattleScript_SuccessBallThrowEnd
+	trygivecaughtmonnick BattleScript_GiveCaughtMonEnd
+	givecaughtmon
 	printfromtable gCaughtMonStringIds
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_SuccessBallThrowEnd
 BattleScript_GiveCaughtMonEnd::
-	givecaughtmon BattleScript_SuccessBallThrowEnd
+	givecaughtmon
 BattleScript_SuccessBallThrowEnd::
 	setbyte gBattleOutcome, B_OUTCOME_CAUGHT
 	finishturn

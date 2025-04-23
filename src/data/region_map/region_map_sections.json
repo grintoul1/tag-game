@@ -129,6 +129,14 @@
       "height": 2
     },
     {
+      "map_section": "MAPSEC_ROUTE_100",
+      "name": "ROUTE 100",
+      "x": 5,
+      "y": 9,
+      "width": 1,
+      "height": 1
+    },
+    {
       "map_section": "MAPSEC_ROUTE_101",
       "name": "ROUTE 101",
       "x": 4,

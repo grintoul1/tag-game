@@ -2,8 +2,8 @@
 #include "test/battle.h"
 
 ASSUMPTIONS {
-    ASSUME(GetMoveEffect(MOVE_HAIL) == EFFECT_HAIL);
-    ASSUME(GetMoveEffect(MOVE_SNOWSCAPE) == EFFECT_SNOWSCAPE);
+    ASSUME(gMovesInfo[MOVE_HAIL].effect == EFFECT_HAIL);
+    ASSUME(gMovesInfo[MOVE_SNOWSCAPE].effect == EFFECT_SNOWSCAPE);
 }
 
 SINGLE_BATTLE_TEST("Ice Body prevents damage from hail")

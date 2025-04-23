@@ -43,6 +43,7 @@
 static void OpponentHandleLoadMonSprite(u32 battler);
 static void OpponentHandleSwitchInAnim(u32 battler);
 static void OpponentHandleDrawTrainerPic(u32 battler);
+static void OpponentHandleTrainerSlide(u32 battler);
 static void OpponentHandleTrainerSlideBack(u32 battler);
 static void OpponentHandleMoveAnimation(u32 battler);
 static void OpponentHandlePrintString(u32 battler);
@@ -100,6 +101,10 @@ static void (*const sOpponentBufferCommands[CONTROLLER_CMDS_COUNT])(u32 battler)
     [CONTROLLER_CHOSENMONRETURNVALUE]     = BtlController_Empty,
     [CONTROLLER_ONERETURNVALUE]           = BtlController_Empty,
     [CONTROLLER_ONERETURNVALUE_DUPLICATE] = BtlController_Empty,
+    [CONTROLLER_CLEARUNKVAR]              = BtlController_HandleClearUnkVar,
+    [CONTROLLER_SETUNKVAR]                = BtlController_HandleSetUnkVar,
+    [CONTROLLER_CLEARUNKFLAG]             = BtlController_HandleClearUnkFlag,
+    [CONTROLLER_TOGGLEUNKFLAG]            = BtlController_HandleToggleUnkFlag,
     [CONTROLLER_HITANIMATION]             = BtlController_HandleHitAnimation,
     [CONTROLLER_CANTSWITCH]               = BtlController_Empty,
     [CONTROLLER_PLAYSE]                   = BtlController_HandlePlaySE,
@@ -432,7 +437,7 @@ static u32 OpponentGetTrainerPicId(u32 battlerId)
     {
         trainerPicId = GetSecretBaseTrainerPicIndex();
     }
-    else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN)
+    else if (gTrainerBattleOpponent_A == TRAINER_FRONTIER_BRAIN)
     {
         trainerPicId = GetFrontierBrainTrainerPicIndex();
     }
@@ -441,13 +446,13 @@ static u32 OpponentGetTrainerPicId(u32 battlerId)
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
         {
             if (battlerId == 1)
-                trainerPicId = GetTrainerHillTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
+                trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
             else
-                trainerPicId = GetTrainerHillTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentB);
+                trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_B);
         }
         else
         {
-            trainerPicId = GetTrainerHillTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
+            trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
         }
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
@@ -455,13 +460,13 @@ static u32 OpponentGetTrainerPicId(u32 battlerId)
         if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TOWER_LINK_MULTI))
         {
             if (battlerId == 1)
-                trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
+                trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
             else
-                trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentB);
+                trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_B);
         }
         else
         {
-            trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
+            trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
         }
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
@@ -471,13 +476,13 @@ static u32 OpponentGetTrainerPicId(u32 battlerId)
     else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
         if (battlerId != 1)
-            trainerPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB);
+            trainerPicId = GetTrainerPicFromId(gTrainerBattleOpponent_B);
         else
-            trainerPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA);
+            trainerPicId = GetTrainerPicFromId(gTrainerBattleOpponent_A);
     }
     else
     {
-        trainerPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA);
+        trainerPicId = GetTrainerPicFromId(gTrainerBattleOpponent_A);
     }
 
     return trainerPicId;
@@ -503,7 +508,7 @@ static void OpponentHandleDrawTrainerPic(u32 battler)
     BtlController_HandleDrawTrainerPic(battler, trainerPicId, TRUE, xPos, 40, -1);
 }
 
-void OpponentHandleTrainerSlide(u32 battler)
+static void OpponentHandleTrainerSlide(u32 battler)
 {
     u32 trainerPicId = OpponentGetTrainerPicId(battler);
     BtlController_HandleTrainerSlide(battler, trainerPicId);
@@ -560,7 +565,7 @@ static void OpponentHandleChooseMove(u32 battler)
             default:
                 {
                     u16 chosenMove = moveInfo->moves[chosenMoveId];
-                    if (GetBattlerMoveTargetType(battler, chosenMove) & MOVE_TARGET_USER)
+                    if (GetBattlerMoveTargetType(battler, chosenMove) & (MOVE_TARGET_USER_OR_SELECTED | MOVE_TARGET_USER))
                         gBattlerTarget = battler;
                     if (GetBattlerMoveTargetType(battler, chosenMove) & MOVE_TARGET_BOTH)
                     {
@@ -595,7 +600,7 @@ static void OpponentHandleChooseMove(u32 battler)
             move = moveInfo->moves[chosenMoveId];
         } while (move == MOVE_NONE);
 
-        if (GetBattlerMoveTargetType(battler, move) & MOVE_TARGET_USER)
+        if (GetBattlerMoveTargetType(battler, move) & (MOVE_TARGET_USER_OR_SELECTED | MOVE_TARGET_USER))
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (chosenMoveId) | (battler << 8));
         else if (IsDoubleBattle())
         {
@@ -604,7 +609,7 @@ static void OpponentHandleChooseMove(u32 battler)
             } while (!CanTargetBattler(battler, target, move));
 
             // Don't bother to loop through table if the move can't attack ally
-            if (B_WILD_NATURAL_ENEMIES == TRUE && !(GetBattlerMoveTargetType(battler, move) & MOVE_TARGET_BOTH))
+            if (B_WILD_NATURAL_ENEMIES == TRUE && !(gMovesInfo[move].target & MOVE_TARGET_BOTH))
             {
                 u16 i, speciesAttacker, speciesTarget, isPartnerEnemy = FALSE;
                 static const u16 naturalEnemies[][2] =
@@ -680,7 +685,7 @@ static void OpponentHandleChoosePokemon(u32 battler)
     // Switching out
     else if (gBattleStruct->AI_monToSwitchIntoId[battler] == PARTY_SIZE)
     {
-        chosenMonId = GetMostSuitableMonToSwitchInto(battler, SWITCH_AFTER_KO);
+        chosenMonId = GetMostSuitableMonToSwitchInto(battler, TRUE);
         if (chosenMonId == PARTY_SIZE)
         {
             s32 battler1, battler2, firstId, lastId;

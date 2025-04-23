@@ -13,7 +13,7 @@ static void StartTeleportFieldEffect(void);
 
 bool8 SetUpFieldMove_Teleport(void)
 {
-#if OW_ENABLE_NPC_FOLLOWERS
+    #if OW_ENABLE_NPC_FOLLOWERS
     if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_LEAVE_ROUTE))
         return FALSE;
 #endif

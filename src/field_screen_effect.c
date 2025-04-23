@@ -295,7 +295,7 @@ void FieldCB_DefaultWarpExit(void)
     Overworld_PlaySpecialMapMusic();
     WarpFadeInScreen();
     SetUpWarpExitTask();
-#if OW_ENABLE_NPC_FOLLOWERS
+    #if OW_ENABLE_NPC_FOLLOWERS
     FollowerNPC_WarpSetEnd();
 #endif
     LockPlayerFieldControls();
@@ -346,7 +346,7 @@ static void Task_ExitDoor(u8 taskId)
     switch (task->tState)
     {
     case 0:
-#if OW_ENABLE_NPC_FOLLOWERS
+    #if OW_ENABLE_NPC_FOLLOWERS
         HideNPCFollower();
 #endif
         SetPlayerVisibility(FALSE);
@@ -378,7 +378,7 @@ static void Task_ExitDoor(u8 taskId)
     case 3:
         if (task->data[1] < 0 || gTasks[task->data[1]].isActive != TRUE)
         {
-#if OW_ENABLE_NPC_FOLLOWERS
+            #if OW_ENABLE_NPC_FOLLOWERS
             FollowerNPC_SetIndicatorToComeOutDoor();
             FollowerNPC_WarpSetEnd();
 #endif
@@ -402,7 +402,7 @@ static void Task_ExitNonAnimDoor(u8 taskId)
     switch (task->tState)
     {
     case 0:
-#if OW_ENABLE_NPC_FOLLOWERS
+    #if OW_ENABLE_NPC_FOLLOWERS
         HideNPCFollower();
 #endif
         SetPlayerVisibility(FALSE);
@@ -423,7 +423,7 @@ static void Task_ExitNonAnimDoor(u8 taskId)
     case 2:
         if (IsPlayerStandingStill())
         {
-#if OW_ENABLE_NPC_FOLLOWERS
+            #if OW_ENABLE_NPC_FOLLOWERS
             FollowerNPC_SetIndicatorToComeOutDoor();
             FollowerNPC_WarpSetEnd();
 #endif
@@ -715,7 +715,7 @@ void Task_WarpAndLoadMap(u8 taskId)
 
 void Task_DoDoorWarp(u8 taskId)
 {
-#if OW_ENABLE_NPC_FOLLOWERS
+    #if OW_ENABLE_NPC_FOLLOWERS
     if (gSaveBlock3Ptr->NPCfollower.inProgress) {
         struct Task *task = &gTasks[taskId];
         s16 *x = &task->data[2];
@@ -725,7 +725,7 @@ void Task_DoDoorWarp(u8 taskId)
 
         switch (task->data[0])
         {
-        case 0:
+            case 0:
             if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH))
                 SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_ON_FOOT); //Stop running
 
@@ -799,7 +799,7 @@ void Task_DoDoorWarp(u8 taskId)
 
         switch (task->tState)
         {
-        case 0:
+            case 0:
             FreezeObjectEvents();
             PlayerGetDestCoords(x, y);
             PlaySE(GetDoorSoundEffect(*x, *y - 1));
@@ -847,7 +847,7 @@ void Task_DoDoorWarp(u8 taskId)
             task->tState = 0;
             task->func = Task_WarpAndLoadMap;
             break;
-        }
+                }
 #if OW_ENABLE_NPC_FOLLOWERS
     }
 #endif
@@ -1136,7 +1136,7 @@ static void Task_SpinEnterWarp(u8 taskId)
     case 1:
         if (WaitForWeatherFadeIn() && IsPlayerSpinEntranceActive() != TRUE)
         {
-#if OW_ENABLE_NPC_FOLLOWERS
+            #if OW_ENABLE_NPC_FOLLOWERS
             FollowerNPC_WarpSetEnd();
 #endif
             UnfreezeObjectEvents();
