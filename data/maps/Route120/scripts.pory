@@ -1,0 +1,682 @@
+raw `
+.set LOCALID_BRIDGE_KECLEON, 29
+.set LOCALID_STEVEN, 30
+.set LOCALID_BRIDGE_KECLEON_SHADOW, 35  @ They use a second object which is identical to Kecleon but has a reflection palette tag for the bridge shadow
+.set LOCALID_CHIP, 24
+.set LOCALID_JEFFREY, 15
+.set LOCALID_KEIGO, 33
+.set LOCALID_RILEY, 34
+.set LOCALID_LORENZO, 13
+.set LOCALID_JENNA, 14
+.set LOCALID_CALLIE, 41
+.set LOCALID_JENNIFER, 23
+.set LOCALID_ROBERT, 12
+.set LOCALID_CLARISSA, 25
+.set LOCALID_ANGELICA, 26
+.set LOCALID_COLIN, 42
+
+Route120_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, Route120_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Route120_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Route120_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route120_OnFrame
+	.byte 0
+
+Route120_OnResume:
+	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, Route120_EventScript_RemoveKecleonObject
+	end
+
+Route120_OnFrame:
+	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	end
+
+Route120_EventScript_RemoveKecleonObject::
+	call_if_eq VAR_0x8009, 0, Route120_EventScript_RemoveBridgeKecleon
+	call_if_eq VAR_0x8009, 1, Route120_EventScript_RemoveKecleon
+	call_if_eq VAR_0x8009, 2, Route120_EventScript_RemoveKecleon
+	call_if_eq VAR_0x8009, 3, Route120_EventScript_RemoveKecleon
+	call_if_eq VAR_0x8009, 4, Route120_EventScript_RemoveKecleon
+	call_if_eq VAR_0x8009, 5, Route120_EventScript_RemoveKecleon
+	return
+
+Route120_EventScript_RemoveBridgeKecleon::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject LOCALID_BRIDGE_KECLEON
+	removeobject LOCALID_BRIDGE_KECLEON_SHADOW
+	return
+
+Route120_EventScript_RemoveKecleon::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
+
+Route120_OnLoad:
+	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_unset FLAG_REGI_DOORS_OPENED, Route120_EventScript_CloseAncientTomb
+	call_if_set FLAG_RECEIVED_DEVON_SCOPE, Route120_EventScript_SetBridgeClearMetatiles
+	call_if_unset FLAG_RECEIVED_DEVON_SCOPE, Route120_EventScript_SetBridgeKecleonMovement
+	end
+
+Route120_EventScript_CloseAncientTomb::
+	setmetatile 7, 54, METATILE_General_RockWall_RockBase, TRUE
+	setmetatile 7, 55, METATILE_General_RockWall_SandBase, TRUE
+	return
+
+Route120_EventScript_SetBridgeClearMetatiles::
+	setmetatile 13, 15, METATILE_Fortree_WoodBridge1_Top, FALSE
+	setmetatile 12, 16, METATILE_Fortree_WoodBridge1_Bottom, FALSE
+	setmetatile 12, 17, METATILE_General_ReflectiveWater, FALSE
+	setmetatile 13, 17, METATILE_General_ReflectiveWater, FALSE
+	return
+
+Route120_EventScript_SetBridgeKecleonMovement::
+	setobjectmovementtype LOCALID_BRIDGE_KECLEON_SHADOW, MOVEMENT_TYPE_FACE_RIGHT
+	return
+
+Route120_OnTransition:
+	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call GabbyAndTy_EventScript_UpdateLocation
+	call Route120_EventScript_SetWeather
+	end
+
+Route120_EventScript_SetWeather::
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	goto_if_le VAR_TEMP_1, 14, Route120_EventScript_SetSunnyWeather
+	goto_if_le VAR_TEMP_1, 60, Route120_EventScript_TrySetRainyWeather
+	goto_if_ge VAR_TEMP_1, 61, Route120_EventScript_SetCloudyWeather
+	return
+
+Route120_EventScript_SetCloudyWeather::
+	setweather WEATHER_SUNNY_CLOUDS
+	return
+
+Route120_EventScript_SetSunnyWeather::
+	setweather WEATHER_SUNNY
+	return
+
+Route120_EventScript_TrySetRainyWeather::
+	goto_if_le VAR_TEMP_0, 7, Route120_EventScript_SetRainyWeather
+	goto_if_le VAR_TEMP_0, 19, Route120_EventScript_SetSunnyWeather
+	goto Route120_EventScript_SetRainyWeather
+	end
+
+Route120_EventScript_SetRainyWeather::
+	setweather WEATHER_RAIN
+	return
+
+Route120_EventScript_BerryBeauty::
+	lock
+	faceplayer
+	dotimebasedevents
+	goto_if_set FLAG_DAILY_ROUTE_120_RECEIVED_BERRY, Route120_EventScript_ReceivedBerry
+	msgbox Route120_Text_BerriesExpressionOfLoveIsntIt, MSGBOX_YESNO
+	call_if_eq VAR_RESULT, YES, Route120_EventScript_BerryLove
+	call_if_eq VAR_RESULT, NO, Route120_EventScript_BerryNotLove
+	specialvar VAR_RESULT, GetPlayerTrainerIdOnesDigit
+	switch VAR_RESULT
+	case 0, Route120_EventScript_GiveFigyBerry
+	case 5, Route120_EventScript_GiveFigyBerry
+	case 1, Route120_EventScript_GiveWikiBerry
+	case 6, Route120_EventScript_GiveWikiBerry
+	case 2, Route120_EventScript_GiveMagoBerry
+	case 7, Route120_EventScript_GiveMagoBerry
+	case 3, Route120_EventScript_GiveAguavBerry
+	case 8, Route120_EventScript_GiveAguavBerry
+	case 4, Route120_EventScript_GiveIapapaBerry
+	case 9, Route120_EventScript_GiveIapapaBerry
+	end
+
+Route120_EventScript_GiveFigyBerry::
+	setvar VAR_0x8004, ITEM_FIGY_BERRY
+	goto Route120_EventScript_GiveBerry
+	end
+
+Route120_EventScript_GiveWikiBerry::
+	setvar VAR_0x8004, ITEM_WIKI_BERRY
+	goto Route120_EventScript_GiveBerry
+	end
+
+Route120_EventScript_GiveMagoBerry::
+	setvar VAR_0x8004, ITEM_MAGO_BERRY
+	goto Route120_EventScript_GiveBerry
+	end
+
+Route120_EventScript_GiveAguavBerry::
+	setvar VAR_0x8004, ITEM_AGUAV_BERRY
+	goto Route120_EventScript_GiveBerry
+	end
+
+Route120_EventScript_GiveIapapaBerry::
+	setvar VAR_0x8004, ITEM_IAPAPA_BERRY
+	goto Route120_EventScript_GiveBerry
+	end
+
+Route120_EventScript_GiveBerry::
+	giveitem VAR_0x8004
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_DAILY_ROUTE_120_RECEIVED_BERRY
+	msgbox Route120_Text_BerryIsRareRaiseItWithCare, MSGBOX_DEFAULT
+	release
+	end
+
+Route120_EventScript_ReceivedBerry::
+	msgbox Route120_Text_IllGetMoreBerriesFromBerryMaster, MSGBOX_DEFAULT
+	release
+	end
+
+Route120_EventScript_BerryLove::
+	msgbox Route120_Text_YesYouUnderstand, MSGBOX_DEFAULT
+	return
+
+Route120_EventScript_BerryNotLove::
+	msgbox Route120_Text_MakeYourOwnImpressions, MSGBOX_DEFAULT
+	return
+
+Route120_EventScript_Steven::
+	lock
+	faceplayer
+	goto_if_set FLAG_NOT_READY_FOR_BATTLE_ROUTE_120, Route120_EventScript_StevenAskReadyForBattle
+	msgbox Route120_Text_StevenGreeting, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route120_EventScript_StevenNotReady
+	goto Route120_EventScript_StevenBattleKecleon
+	end
+
+Route120_EventScript_StevenNotReady::
+	msgbox Route120_Text_StevenIllWaitHere, MSGBOX_DEFAULT
+	setflag FLAG_NOT_READY_FOR_BATTLE_ROUTE_120
+	release
+	end
+
+Route120_EventScript_StevenAskReadyForBattle::
+	msgbox Route120_Text_StevenReadyForBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route120_EventScript_StevenNotReady
+	goto Route120_EventScript_StevenBattleKecleon
+	end
+
+Route120_EventScript_StevenBattleKecleon::
+	msgbox Route120_Text_StevenShowMeYourPower, MSGBOX_DEFAULT
+	closemessage
+	call_if_eq VAR_FACING, DIR_EAST, Route120_EventScript_PlayerApproachKecleonEast
+	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	delay 20
+	msgbox Route120_Text_StevenUsedDevonScope, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_BRIDGE_KECLEON, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	applymovement LOCALID_BRIDGE_KECLEON, Movement_KecleonAppears
+	waitmovement 0
+	waitse
+	playmoncry SPECIES_KECLEON, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_KECLEON, 30
+	setvar VAR_0x8009, 0
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, Route120_EventScript_RemoveBridgeKecleonPostBattle
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, Route120_EventScript_RemoveBridgeKecleonPostBattle
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, Route120_EventScript_RemoveBridgeKecleonPostBattle
+	goto Route120_EventScript_StevenGiveDeconScope
+	end
+
+Route120_EventScript_RemoveBridgeKecleonPostBattle::
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject LOCALID_BRIDGE_KECLEON
+	removeobject LOCALID_BRIDGE_KECLEON_SHADOW
+	fadescreenswapbuffers FADE_FROM_BLACK
+	goto Route120_EventScript_StevenGiveDeconScope
+	end
+
+Route120_EventScript_StevenGiveDeconScope::
+	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox Route120_Text_StevenGiveDevonScope, MSGBOX_DEFAULT
+	giveitem ITEM_DEVON_SCOPE
+	setflag FLAG_RECEIVED_DEVON_SCOPE
+	msgbox Route120_Text_StevenGoodbye, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	delay 50
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	removeobject LOCALID_STEVEN
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setmetatile 13, 15, METATILE_Fortree_WoodBridge1_Top, FALSE
+	setmetatile 12, 16, METATILE_Fortree_WoodBridge1_Bottom, FALSE
+	setmetatile 12, 17, METATILE_General_ReflectiveWater, FALSE
+	setmetatile 13, 17, METATILE_General_ReflectiveWater, FALSE
+	special DrawWholeMapView
+	release
+	end
+
+Route120_EventScript_PlayerApproachKecleonNorth::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	return
+
+Route120_EventScript_PlayerApproachKecleonEast::
+	applymovement OBJ_EVENT_ID_PLAYER, Route120_Movement_ApproachKecleonEast
+	waitmovement 0
+	return
+
+Route120_Movement_ApproachKecleonEast:
+	face_down
+	step_end
+
+Route120_EventScript_BridgeKecleon::
+	msgbox Kecleon_Text_SomethingUnseeable, MSGBOX_NPC
+	end
+
+Route120_EventScript_RouteSignFortree::
+	msgbox Route120_Text_RouteSignFortree, MSGBOX_SIGN
+	end
+
+Route120_EventScript_RouteSign121::
+	msgbox Route120_Text_RouteSign121, MSGBOX_SIGN
+	end
+
+Route120_EventScript_ColinAngelica::
+lockall
+setvar VAR_0x8008, LOCALID_COLIN
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route120_Text_ColinIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_ANGELICA
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route120_Text_AngelicaIntro MSGBOX_AUTOCLOSE
+goto Route120_EventScript_ColinAngelicaDoMultiBattle
+releaseall
+end
+
+Route120_EventScript_ColinAngelicaDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_COLIN, Route120_Text_ColinDefeat, TRAINER_ANGELICA, Route120_Text_AngelicaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route120_EventScript_ColinAngelicaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route120_EventScript_ColinAngelicaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route120_Text_ColinPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route120_Text_AngelicaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE120_STATE, 1
+end
+
+Route120_EventScript_Colin::
+	msgbox Route120_Text_ColinPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route120_EventScript_ClarissaRobert::
+lockall
+setvar VAR_0x8008, LOCALID_CLARISSA
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route120_Text_ClarissaIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_ROBERT
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route120_Text_RobertIntro MSGBOX_AUTOCLOSE
+goto Route120_EventScript_ClarissaRobertDoMultiBattle
+releaseall
+end
+
+Route120_EventScript_ClarissaRobertDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_CLARISSA, Route120_Text_ClarissaDefeat, TRAINER_ROBERT_1, Route120_Text_RobertDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route120_EventScript_ClarissaRobertVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route120_EventScript_ClarissaRobertVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route120_Text_ClarissaPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route120_Text_RobertPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE120_STATE, 1
+end
+
+Route120_EventScript_Robert::
+	msgbox Route120_Text_RobertPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route120_EventScript_RegisterRobert::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route120_Text_RobertRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_ROBERT_1
+	release
+	end
+
+Route120_EventScript_RematchRobert::
+	trainerbattle_rematch TRAINER_ROBERT_1, Route120_Text_RobertRematchIntro, Route120_Text_RobertRematchDefeat
+	msgbox Route120_Text_RobertPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route120_EventScript_JennaLorenzo::
+lockall
+setvar VAR_0x8008, LOCALID_JENNA
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route120_Text_JennaIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_LORENZO
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_MALE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route120_Text_LorenzoIntro MSGBOX_AUTOCLOSE
+goto Route120_EventScript_JennaLorenzoDoMultiBattle
+releaseall
+end
+
+Route120_EventScript_JennaLorenzoDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_JENNA, Route120_Text_JennaDefeat, TRAINER_LORENZO, Route120_Text_LorenzoDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route120_EventScript_JennaLorenzoVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route120_EventScript_JennaLorenzoVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route120_Text_JennaPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route120_Text_LorenzoPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE120_STATE, 1
+end
+
+Route120_EventScript_Lorenzo::
+	msgbox Route120_Text_LorenzoPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route120_EventScript_Jenna::
+	msgbox Route120_Text_JennaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route120_EventScript_ChipJeffrey::
+lockall
+setvar VAR_0x8008, LOCALID_CHIP
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_HIKER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route120_Text_ChipIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_JEFFREY
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route120_Text_JeffreyIntro MSGBOX_AUTOCLOSE
+goto Route120_EventScript_ChipJeffreyDoMultiBattle
+releaseall
+end
+
+Route120_EventScript_ChipJeffreyDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_CHIP, Route120_Text_ChipDefeat, TRAINER_JEFFREY_1, Route120_Text_JeffreyDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route120_EventScript_ChipJeffreyVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route120_EventScript_ChipJeffreyVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route120_Text_ChipPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route120_Text_JeffreyPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE120_STATE, 1
+end
+
+Route120_EventScript_Jeffrey::
+	msgbox Route120_Text_JeffreyPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route120_EventScript_RegisterJeffrey::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route120_Text_JeffreyRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_JEFFREY_1
+	release
+	end
+
+Route120_EventScript_RematchJeffrey::
+	trainerbattle_rematch TRAINER_JEFFREY_1, Route120_Text_JeffreyRematchIntro, Route120_Text_JeffreyRematchDefeat
+	msgbox Route120_Text_JeffreyPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route120_EventScript_Jennifer::
+	msgbox Route120_Text_JenniferPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route120_EventScript_Chip::
+	msgbox Route120_Text_ChipPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route120_EventScript_Clarissa::
+	msgbox Route120_Text_ClarissaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route120_EventScript_Angelica::
+	msgbox Route120_Text_AngelicaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route120_EventScript_KeigoRiley::
+lockall
+setvar VAR_0x8008, LOCALID_KEIGO
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route120_Text_KeigoIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_RILEY
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route120_Text_RileyIntro MSGBOX_AUTOCLOSE
+goto Route120_EventScript_KeigoRileyDoMultiBattle
+releaseall
+end
+
+Route120_EventScript_KeigoRileyDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_KEIGO, Route120_Text_KeigoDefeat, TRAINER_RILEY, Route120_Text_RileyDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route120_EventScript_KeigoRileyVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route120_EventScript_KeigoRileyVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route120_Text_KeigoPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route120_Text_RileyPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE120_STATE, 1
+end
+
+Route120_EventScript_Keigo::
+	msgbox Route120_Text_KeigoPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route120_EventScript_Riley::
+	msgbox Route120_Text_RileyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route120_EventScript_Leonel::
+	trainerbattle_single TRAINER_LEONEL, Route120_Text_LeonelIntro, Route120_Text_LeonelDefeat
+	msgbox Route120_Text_LeonelPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route120_EventScript_JenniferCallie::
+lockall
+setvar VAR_0x8008, LOCALID_JENNIFER
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route120_Text_JenniferIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_CALLIE
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route120_Text_CallieIntro MSGBOX_AUTOCLOSE
+goto Route120_EventScript_JenniferCallieDoMultiBattle
+releaseall
+end
+
+Route120_EventScript_JenniferCallieDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_JENNIFER, Route120_Text_JenniferDefeat, TRAINER_CALLIE, Route120_Text_CallieDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route120_EventScript_JenniferCallieVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route120_EventScript_JenniferCallieVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route120_Text_JenniferPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route120_Text_CalliePostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE120_STATE, 1
+end
+
+Route120_EventScript_Callie::
+	msgbox Route120_Text_CalliePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route120_Text_StevenGreeting:
+	.string "STEVEN: Hm? {PLAYER}{KUN}, hi.\n"
+	.string "It's been a while.\p"
+	.string "There's something here that you can't\n"
+	.string "see, right?\p"
+	.string "Now, if I were to use this device on\n"
+	.string "the invisible obstacle…\p"
+	.string "No, no. Rather than describing it,\n"
+	.string "I should just show you.\l"
+	.string "That would be more fun.\p"
+	.string "{PLAYER}{KUN}, are your POKéMON ready for\n"
+	.string "battle?$"
+
+Route120_Text_StevenIllWaitHere:
+	.string "STEVEN: No?\p"
+	.string "I'll wait here, so you can get ready.$"
+
+Route120_Text_StevenReadyForBattle:
+	.string "STEVEN: {PLAYER}{KUN}, are your POKéMON\n"
+	.string "ready for battle?$"
+
+Route120_Text_StevenShowMeYourPower:
+	.string "STEVEN: {PLAYER}{KUN}, show me your true\n"
+	.string "power as a TRAINER!$"
+
+Route120_Text_StevenUsedDevonScope:
+	.string "STEVEN used the DEVON SCOPE.\p"
+	.string "An invisible POKéMON became completely\n"
+	.string "visible!\p"
+	.string "The startled POKéMON attacked!$"
+
+Route120_Text_StevenGiveDevonScope:
+	.string "STEVEN: I see…\n"
+	.string "Your battle style is intriguing.\p"
+	.string "Your POKéMON have obviously grown\n"
+	.string "since I first met you in DEWFORD.\p"
+	.string "I'd like you to have this\n"
+	.string "DEVON SCOPE.\p"
+	.string "Who knows, there may be other\n"
+	.string "concealed POKéMON.$"
+
+Route120_Text_StevenGoodbye:
+	.string "STEVEN: {PLAYER}{KUN}.\p"
+	.string "I enjoy seeing POKéMON and TRAINERS\n"
+	.string "who strive together.\p"
+	.string "I think you're doing great.\p"
+	.string "Well, let's meet again somewhere.$"
+
+Kecleon_Text_SomethingUnseeable:
+	.string "Something unseeable is in the way.$"
+
+Kecleon_Text_WantToUseDevonScope:
+	.string "Something unseeable is in the way.\p"
+	.string "Want to use the DEVON SCOPE?$"
+
+Kecleon_Text_UseDevonScopeMonAttacked:
+	.string "{PLAYER} used the DEVON SCOPE.\p"
+	.string "An invisible POKéMON became completely\n"
+	.string "visible!\p"
+	.string "The startled POKéMON attacked!$"
+
+Route120_Text_RouteSignFortree:
+	.string "ROUTE 120\n"
+	.string "{LEFT_ARROW} FORTREE CITY$"
+
+Route120_Text_RouteSign121:
+	.string "{RIGHT_ARROW} ROUTE 121\n"
+	.string "{LEFT_ARROW} ROUTE 120$"
+`

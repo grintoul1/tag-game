@@ -1,0 +1,513 @@
+raw `
+.set LOCALID_DAVIS, 42
+.set LOCALID_JAZMYN, 41
+.set LOCALID_JACKI, 30
+.set LOCALID_FREDERICK, 39
+.set LOCALID_BRAXTON, 9
+.set LOCALID_WENDY, 8
+.set LOCALID_MIU, 28
+.set LOCALID_YUKI, 27
+.set LOCALID_VIOLET, 26
+.set LOCALID_CAMERON, 29
+.set LOCALID_ALBERTO, 38
+.set LOCALID_FERNANDO, 37
+.set LOCALID_ED, 36
+.set LOCALID_KINDRA, 31
+.set LOCALID_KAYLEY, 35
+.set LOCALID_JONAS, 34
+
+Route123_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route123_OnTransition
+	.byte 0
+
+Route123_OnTransition:
+	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	special SetRoute123Weather
+	end
+
+Route123_EventScript_GigaDrainGirl::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_TM_GIGA_DRAIN, Route123_EventScript_ReceivedGigaDrain
+	msgbox Route123_Text_LoveGrassMonsHaveAny, MSGBOX_DEFAULT
+	special IsGrassTypeInParty
+	goto_if_eq VAR_RESULT, FALSE, Route123_EventScript_NoGrassMons
+	msgbox Route123_Text_YouLikeGrassMonsTooHaveThis, MSGBOX_DEFAULT
+	giveitem ITEM_TM_GIGA_DRAIN
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_RECEIVED_TM_GIGA_DRAIN
+	msgbox Route123_Text_CheckTreesWithMyGrassMon, MSGBOX_DEFAULT
+	release
+	end
+
+Route123_EventScript_NoGrassMons::
+	release
+	end
+
+Route123_EventScript_ReceivedGigaDrain::
+	msgbox Route123_Text_CheckTreesWithMyGrassMon, MSGBOX_DEFAULT
+	release
+	end
+
+Route123_EventScript_RouteSign::
+	msgbox Route123_Text_RouteSign, MSGBOX_SIGN
+	end
+
+Route123_EventScript_RouteSignMtPyre::
+	msgbox Route123_Text_RouteSignMtPyre, MSGBOX_SIGN
+	end
+
+Route123_EventScript_BerryMastersHouseSign::
+	msgbox Route123_Text_BerryMastersHouse, MSGBOX_SIGN
+	end
+
+Route123_EventScript_BraxtonWendy::
+lockall
+setvar VAR_0x8008, LOCALID_BRAXTON
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route123_Text_BraxtonIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_WENDY
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route123_Text_WendyIntro MSGBOX_AUTOCLOSE
+goto Route123_EventScript_BraxtonWendyDoMultiBattle
+releaseall
+end
+
+Route123_EventScript_BraxtonWendyDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_BRAXTON, Route123_Text_BraxtonDefeat, TRAINER_WENDY, Route123_Text_WendyDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route123_EventScript_BraxtonWendyVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route123_EventScript_BraxtonWendyVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route123_Text_BraxtonPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route123_Text_WendyPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE123_STATE, 1
+end
+
+Route123_EventScript_Wendy::
+	msgbox Route123_Text_WendyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_Braxton::
+	msgbox Route123_Text_BraxtonPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_Violet::
+	msgbox Route123_Text_VioletPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_CameronViolet::
+lockall
+setvar VAR_0x8008, LOCALID_CAMERON
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_CameronIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_VIOLET
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route123_Text_VioletIntro MSGBOX_AUTOCLOSE
+goto Route123_EventScript_CameronVioletDoMultiBattle
+releaseall
+end
+
+Route123_EventScript_CameronVioletDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_CAMERON_1, Route123_Text_CameronDefeat, TRAINER_VIOLET, Route123_Text_VioletDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route123_EventScript_CameronVioletVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route123_EventScript_CameronVioletVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_CameronPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route123_Text_VioletPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE123_STATE, 1
+end
+
+Route123_EventScript_Cameron::
+	msgbox Route123_Text_CameronPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route123_EventScript_RegisterCameron::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route123_Text_CameronRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_CAMERON_1
+	release
+	end
+
+Route123_EventScript_RematchCameron::
+	trainerbattle_rematch TRAINER_CAMERON_1, Route123_Text_CameronRematchIntro, Route123_Text_CameronRematchDefeat
+	msgbox Route123_Text_CameronPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_Jacki::
+	msgbox Route123_Text_JackiPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route123_EventScript_RegisterJacki::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route123_Text_JackiRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_JACKI_1
+	release
+	end
+
+Route123_EventScript_RematchJacki::
+	trainerbattle_rematch TRAINER_JACKI_1, Route123_Text_JackiRematchIntro, Route123_Text_JackiRematchDefeat
+	msgbox Route123_Text_JackiPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_YukiMiu::
+lockall
+setvar VAR_0x8008, LOCALID_YUKI
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_TWINS, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_YukiIntro MSGBOX_AUTOCLOSE
+goto Route123_EventScript_YukiMiuDoMultiBattle
+releaseall
+end
+
+Route123_EventScript_YukiMiuDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_1 TRAINER_MIU_AND_YUKI, Route123_Text_YukiDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route123_EventScript_YukiMiuVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route123_EventScript_YukiMiuVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_YukiPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE123_STATE, 1
+end
+
+Route123_EventScript_Miu::
+	msgbox Route123_Text_MiuPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_Yuki::
+	msgbox Route123_Text_YukiPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_KindraEd::
+lockall
+setvar VAR_0x8008, LOCALID_KINDRA
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_KindraIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_ED
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route123_Text_EdIntro MSGBOX_AUTOCLOSE
+goto Route123_EventScript_KindraEdDoMultiBattle
+releaseall
+end
+
+Route123_EventScript_KindraEdDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_KINDRA, Route123_Text_KindraDefeat, TRAINER_ED, Route123_Text_EdDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route123_EventScript_KindraEdVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route123_EventScript_KindraEdVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_KindraPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route123_Text_EdPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE123_STATE, 1
+end
+
+Route123_EventScript_Kindra::
+	msgbox Route123_Text_KindraPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_JackiFrederick::
+lockall
+setvar VAR_0x8008, LOCALID_JACKI
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_JackiIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_FREDERICK
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route123_Text_FrederickIntro MSGBOX_AUTOCLOSE
+goto Route123_EventScript_JackiFrederickDoMultiBattle
+releaseall
+end
+
+Route123_EventScript_JackiFrederickDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_JACKI_1, Route123_Text_JackiDefeat, TRAINER_FREDRICK, Route123_Text_FrederickDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route123_EventScript_JackiFrederickVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route123_EventScript_JackiFrederickVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_JackiPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route123_Text_FrederickPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE123_STATE, 1
+end
+
+Route123_EventScript_Frederick::
+	msgbox Route123_Text_FrederickPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_FernandoAlberto::
+lockall
+setvar VAR_0x8008, LOCALID_FERNANDO
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_FernandoIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_ALBERTO
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route123_Text_AlbertoIntro MSGBOX_AUTOCLOSE
+goto Route123_EventScript_FernandoAlbertoDoMultiBattle
+releaseall
+end
+
+Route123_EventScript_FernandoAlbertoDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_FERNANDO_1, Route123_Text_FernandoDefeat, TRAINER_ALBERTO, Route123_Text_AlbertoDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route123_EventScript_FernandoAlbertoVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route123_EventScript_FernandoAlbertoVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_FernandoPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route123_Text_AlbertoPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE123_STATE, 1
+end
+
+Route123_EventScript_Alberto::
+	msgbox Route123_Text_AlbertoPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_Ed::
+	msgbox Route123_Text_EdPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_JonasKayley::
+lockall
+setvar VAR_0x8008, LOCALID_JONAS
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_JonasIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_KAYLEY
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route123_Text_KayleyIntro MSGBOX_AUTOCLOSE
+goto Route123_EventScript_JonasKayleyDoMultiBattle
+releaseall
+end
+
+Route123_EventScript_JonasKayleyDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_JONAS, Route123_Text_JonasDefeat, TRAINER_KAYLEY, Route123_Text_KayleyDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route123_EventScript_JonasKayleyVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route123_EventScript_JonasKayleyVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_JonasPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route123_Text_KayleyPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE123_STATE, 1
+end
+
+Route123_EventScript_Kayley::
+	msgbox Route123_Text_KayleyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_Jonas::
+	msgbox Route123_Text_JonasPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_Jazmyn::
+	msgbox Route123_Text_JazmynPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_DavisJazmyn::
+lockall
+setvar VAR_0x8008, LOCALID_DAVIS
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_MALE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_DavisIntro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_JAZMYN
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route123_Text_JazmynIntro MSGBOX_AUTOCLOSE
+goto Route123_EventScript_DavisJazmynDoMultiBattle
+releaseall
+end
+
+Route123_EventScript_DavisJazmynDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_DAVIS, Route123_Text_DavisDefeat, TRAINER_JAZMYN, Route123_Text_JazmynDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route123_EventScript_DavisJazmynVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route123_EventScript_DavisJazmynVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route123_Text_DavisPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route123_Text_JazmynPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE123_STATE, 1
+end
+
+Route123_EventScript_Davis::
+	msgbox Route123_Text_DavisPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route123_EventScript_Fernando::
+	msgbox Route123_Text_FernandoPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route123_EventScript_RegisterFernando::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route123_Text_FernandoRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_FERNANDO_1
+	release
+	end
+
+Route123_EventScript_RematchFernando::
+	trainerbattle_rematch TRAINER_FERNANDO_1, Route123_Text_FernandoRematchIntro, Route123_Text_FernandoRematchDefeat
+	msgbox Route123_Text_FernandoPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route123_Text_LoveGrassMonsHaveAny:
+	.string "I love GRASS-type POKéMON!\p"
+	.string "Do you have any GRASS-type POKéMON?$"
+
+Route123_Text_YouLikeGrassMonsTooHaveThis:
+	.string "Oh?\p"
+	.string "You like GRASS-type POKéMON, too,\n"
+	.string "don't you?\p"
+	.string "I'm so happy, you can have this!\n"
+	.string "It's a token of our friendship.$"
+
+Route123_Text_CheckTreesWithMyGrassMon:
+	.string "I check trees with my GRASS-type\n"
+	.string "POKéMON. I'm like a tree doctor.$"
+
+Route123_Text_RouteSign:
+	.string "{RIGHT_ARROW} ROUTE 123\n"
+	.string "{LEFT_ARROW} ROUTE 118$"
+
+Route123_Text_RouteSignMtPyre:
+	.string "{UP_ARROW} MT. PYRE\n"
+	.string "“Forbidden to the faint of heart.”$"
+
+Route123_Text_BerryMastersHouse:
+	.string "BERRY MASTER'S HOUSE$"
+
+`
