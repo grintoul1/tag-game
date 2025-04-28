@@ -10,16 +10,8 @@ static const struct SpriteFrameImage sPicTable_BrendanAcroBike[] = {
     overworld_ascending_frames(gObjectEventPic_BrendanAcroBike, 4, 4),
 };
 
-static const struct SpriteFrameImage sPicTable_Green[] = {
-    overworld_ascending_frames(gObjectEventPic_Green, 2, 4),
-};
-
 static const struct SpriteFrameImage sPicTable_GreenNormal[] = {
-    overworld_ascending_frames(gObjectEventPic_GreenNormal, 2, 4),
-};
-
-static const struct SpriteFrameImage sPicTable_GreenRunning[] = {
-    overworld_ascending_frames(gObjectEventPic_GreenRunning, 2, 4),
+    overworld_ascending_frames(gObjectEventPic_GreenNormalRunning, 4, 2),
 };
 
 static const struct SpriteFrameImage sPicTable_GreenMachBike[] = {
