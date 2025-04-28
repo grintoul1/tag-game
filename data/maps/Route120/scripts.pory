@@ -28,7 +28,6 @@ Route120_OnResume:
 	end
 
 Route120_OnFrame:
-	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 	end
 
 Route120_EventScript_RemoveKecleonObject::

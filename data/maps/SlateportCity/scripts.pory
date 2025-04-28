@@ -72,7 +72,6 @@ SlateportCity_EventScript_MoveScottLeft::
 	return
 
 SlateportCity_OnFrame:
-	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 	map_script_2 VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 1, SlateportCity_EventScript_ScottScene
 	.2byte 0
 

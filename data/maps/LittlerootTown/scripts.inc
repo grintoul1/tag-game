@@ -1039,9 +1039,9 @@ LittlerootTown_EventScript_EmmieIntroduction::
 # 520 "data/maps/LittlerootTown/scripts.pory"
 	call LittlerootTown_EventScript_SendSkittyParty
 # 521 "data/maps/LittlerootTown/scripts.pory"
-	givemon SPECIES_SQUAWKABILLY, 5
+	givemon SPECIES_EEVEE, 5
 # 522 "data/maps/LittlerootTown/scripts.pory"
-	call LittlerootTown_EventScript_SendSquawkabillyParty
+	call LittlerootTown_EventScript_SendEeveeParty
 # 523 "data/maps/LittlerootTown/scripts.pory"
 	goto LittlerootTown_EventScript_SetReceivedRunningShoes
 # 524 "data/maps/LittlerootTown/scripts.pory"
@@ -1119,9 +1119,9 @@ LittlerootTown_EventScript_ReceivedSkittyFanfare::
 # 560 "data/maps/LittlerootTown/scripts.pory"
 
 # 561 "data/maps/LittlerootTown/scripts.pory"
-LittlerootTown_EventScript_SendSquawkabillyParty::
+LittlerootTown_EventScript_SendEeveeParty::
 # 562 "data/maps/LittlerootTown/scripts.pory"
-	call LittlerootTown_EventScript_ReceivedSquawkabillyFanfare
+	call LittlerootTown_EventScript_ReceivedEeveeFanfare
 # 563 "data/maps/LittlerootTown/scripts.pory"
 	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
 # 564 "data/maps/LittlerootTown/scripts.pory"
@@ -1131,19 +1131,19 @@ LittlerootTown_EventScript_SendSquawkabillyParty::
 # 566 "data/maps/LittlerootTown/scripts.pory"
 
 # 567 "data/maps/LittlerootTown/scripts.pory"
-LittlerootTown_EventScript_ReceivedSquawkabillyFanfare::
+LittlerootTown_EventScript_ReceivedEeveeFanfare::
 # 568 "data/maps/LittlerootTown/scripts.pory"
-	bufferspeciesname STR_VAR_2, SPECIES_SQUAWKABILLY
+	bufferspeciesname STR_VAR_2, SPECIES_EEVEE
 # 569 "data/maps/LittlerootTown/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
 # 570 "data/maps/LittlerootTown/scripts.pory"
-	message LittlerootTown_Text_ObtainedSquawkabilly
+	message LittlerootTown_Text_ObtainedEevee
 # 571 "data/maps/LittlerootTown/scripts.pory"
 	waitmessage
 # 572 "data/maps/LittlerootTown/scripts.pory"
 	waitfanfare
 # 573 "data/maps/LittlerootTown/scripts.pory"
-	bufferspeciesname STR_VAR_1, SPECIES_SQUAWKABILLY
+	bufferspeciesname STR_VAR_1, SPECIES_EEVEE
 # 574 "data/maps/LittlerootTown/scripts.pory"
 	return
 # 575 "data/maps/LittlerootTown/scripts.pory"
@@ -1161,9 +1161,9 @@ LittlerootTown_Text_ObtainedSkitty:
 # 581 "data/maps/LittlerootTown/scripts.pory"
 
 # 582 "data/maps/LittlerootTown/scripts.pory"
-LittlerootTown_Text_ObtainedSquawkabilly:
+LittlerootTown_Text_ObtainedEevee:
 # 583 "data/maps/LittlerootTown/scripts.pory"
-	.string "{PLAYER} obtained a Squawkabilly.$"
+	.string "{PLAYER} obtained a Eevee.$"
 # 584 "data/maps/LittlerootTown/scripts.pory"
 
 # 585 "data/maps/LittlerootTown/scripts.pory"
@@ -2059,7 +2059,7 @@ LittlerootTown_EventScript_GiveRunningShoes::
 # 1030 "data/maps/LittlerootTown/scripts.pory"
 	closemessage
 # 1031 "data/maps/LittlerootTown/scripts.pory"
-	setfollower 9, FNPC_EMMIE, Common_EventScript_Emmie, PARTNER_EMMIE
+	setfollower 9, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
 # 1032 "data/maps/LittlerootTown/scripts.pory"
 	return
 # 1033 "data/maps/LittlerootTown/scripts.pory"

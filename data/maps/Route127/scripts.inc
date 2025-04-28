@@ -43,120 +43,118 @@ Route127_OnLoad:
 # 22 "data/maps/Route127/scripts.pory"
 Route127_OnFrame:
 # 23 "data/maps/Route127/scripts.pory"
-	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
-# 24 "data/maps/Route127/scripts.pory"
 	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
-# 25 "data/maps/Route127/scripts.pory"
+# 24 "data/maps/Route127/scripts.pory"
 	.2byte 0
+# 25 "data/maps/Route127/scripts.pory"
+
 # 26 "data/maps/Route127/scripts.pory"
-
-# 27 "data/maps/Route127/scripts.pory"
 Route127_EventScript_Camden::
-# 28 "data/maps/Route127/scripts.pory"
+# 27 "data/maps/Route127/scripts.pory"
 	trainerbattle_single TRAINER_CAMDEN, Route127_Text_CamdenIntro, Route127_Text_CamdenDefeat
-# 29 "data/maps/Route127/scripts.pory"
+# 28 "data/maps/Route127/scripts.pory"
 	msgbox Route127_Text_CamdenPostBattle, MSGBOX_AUTOCLOSE
+# 29 "data/maps/Route127/scripts.pory"
+	end
 # 30 "data/maps/Route127/scripts.pory"
-	end
+
 # 31 "data/maps/Route127/scripts.pory"
-
-# 32 "data/maps/Route127/scripts.pory"
 Route127_EventScript_Donny::
-# 33 "data/maps/Route127/scripts.pory"
+# 32 "data/maps/Route127/scripts.pory"
 	trainerbattle_single TRAINER_DONNY, Route127_Text_DonnyIntro, Route127_Text_DonnyDefeat
-# 34 "data/maps/Route127/scripts.pory"
+# 33 "data/maps/Route127/scripts.pory"
 	msgbox Route127_Text_DonnyPostBattle, MSGBOX_AUTOCLOSE
+# 34 "data/maps/Route127/scripts.pory"
+	end
 # 35 "data/maps/Route127/scripts.pory"
-	end
+
 # 36 "data/maps/Route127/scripts.pory"
-
-# 37 "data/maps/Route127/scripts.pory"
 Route127_EventScript_Jonah::
-# 38 "data/maps/Route127/scripts.pory"
+# 37 "data/maps/Route127/scripts.pory"
 	trainerbattle_single TRAINER_JONAH, Route127_Text_JonahIntro, Route127_Text_JonahDefeat
-# 39 "data/maps/Route127/scripts.pory"
+# 38 "data/maps/Route127/scripts.pory"
 	msgbox Route127_Text_JonahPostBattle, MSGBOX_AUTOCLOSE
+# 39 "data/maps/Route127/scripts.pory"
+	end
 # 40 "data/maps/Route127/scripts.pory"
-	end
+
 # 41 "data/maps/Route127/scripts.pory"
-
-# 42 "data/maps/Route127/scripts.pory"
 Route127_EventScript_Henry::
-# 43 "data/maps/Route127/scripts.pory"
+# 42 "data/maps/Route127/scripts.pory"
 	trainerbattle_single TRAINER_HENRY, Route127_Text_HenryIntro, Route127_Text_HenryDefeat
-# 44 "data/maps/Route127/scripts.pory"
+# 43 "data/maps/Route127/scripts.pory"
 	msgbox Route127_Text_HenryPostBattle, MSGBOX_AUTOCLOSE
+# 44 "data/maps/Route127/scripts.pory"
+	end
 # 45 "data/maps/Route127/scripts.pory"
-	end
+
 # 46 "data/maps/Route127/scripts.pory"
-
-# 47 "data/maps/Route127/scripts.pory"
 Route127_EventScript_Roger::
-# 48 "data/maps/Route127/scripts.pory"
+# 47 "data/maps/Route127/scripts.pory"
 	trainerbattle_single TRAINER_ROGER, Route127_Text_RogerIntro, Route127_Text_RogerDefeat
-# 49 "data/maps/Route127/scripts.pory"
+# 48 "data/maps/Route127/scripts.pory"
 	msgbox Route127_Text_RogerPostBattle, MSGBOX_AUTOCLOSE
+# 49 "data/maps/Route127/scripts.pory"
+	end
 # 50 "data/maps/Route127/scripts.pory"
-	end
+
 # 51 "data/maps/Route127/scripts.pory"
-
-# 52 "data/maps/Route127/scripts.pory"
 Route127_EventScript_Aidan::
-# 53 "data/maps/Route127/scripts.pory"
+# 52 "data/maps/Route127/scripts.pory"
 	trainerbattle_single TRAINER_AIDAN, Route127_Text_AidanIntro, Route127_Text_AidanDefeat
-# 54 "data/maps/Route127/scripts.pory"
+# 53 "data/maps/Route127/scripts.pory"
 	msgbox Route127_Text_AidanPostBattle, MSGBOX_AUTOCLOSE
+# 54 "data/maps/Route127/scripts.pory"
+	end
 # 55 "data/maps/Route127/scripts.pory"
-	end
+
 # 56 "data/maps/Route127/scripts.pory"
-
-# 57 "data/maps/Route127/scripts.pory"
 Route127_EventScript_Athena::
-# 58 "data/maps/Route127/scripts.pory"
+# 57 "data/maps/Route127/scripts.pory"
 	trainerbattle_single TRAINER_ATHENA, Route127_Text_AthenaIntro, Route127_Text_AthenaDefeat
-# 59 "data/maps/Route127/scripts.pory"
+# 58 "data/maps/Route127/scripts.pory"
 	msgbox Route127_Text_AthenaPostBattle, MSGBOX_AUTOCLOSE
+# 59 "data/maps/Route127/scripts.pory"
+	end
 # 60 "data/maps/Route127/scripts.pory"
-	end
+
 # 61 "data/maps/Route127/scripts.pory"
-
-# 62 "data/maps/Route127/scripts.pory"
 Route127_EventScript_Koji::
-# 63 "data/maps/Route127/scripts.pory"
+# 62 "data/maps/Route127/scripts.pory"
 	trainerbattle_single TRAINER_KOJI_1, Route127_Text_KojiIntro, Route127_Text_KojiDefeat, Route127_EventScript_RegisterKoji
-# 64 "data/maps/Route127/scripts.pory"
+# 63 "data/maps/Route127/scripts.pory"
 	specialvar VAR_RESULT, ShouldTryRematchBattle
-# 65 "data/maps/Route127/scripts.pory"
+# 64 "data/maps/Route127/scripts.pory"
 	goto_if_eq VAR_RESULT, TRUE, Route127_EventScript_RematchKoji
-# 66 "data/maps/Route127/scripts.pory"
+# 65 "data/maps/Route127/scripts.pory"
 	msgbox Route127_Text_KojiPostBattle, MSGBOX_DEFAULT
+# 66 "data/maps/Route127/scripts.pory"
+	release
 # 67 "data/maps/Route127/scripts.pory"
-	release
+	end
 # 68 "data/maps/Route127/scripts.pory"
-	end
+
 # 69 "data/maps/Route127/scripts.pory"
-
-# 70 "data/maps/Route127/scripts.pory"
 Route127_EventScript_RegisterKoji::
-# 71 "data/maps/Route127/scripts.pory"
+# 70 "data/maps/Route127/scripts.pory"
 	special PlayerFaceTrainerAfterBattle
-# 72 "data/maps/Route127/scripts.pory"
+# 71 "data/maps/Route127/scripts.pory"
 	waitmovement 0
-# 73 "data/maps/Route127/scripts.pory"
+# 72 "data/maps/Route127/scripts.pory"
 	msgbox Route127_Text_KojiRegister, MSGBOX_DEFAULT
-# 74 "data/maps/Route127/scripts.pory"
+# 73 "data/maps/Route127/scripts.pory"
 	register_matchcall TRAINER_KOJI_1
-# 75 "data/maps/Route127/scripts.pory"
+# 74 "data/maps/Route127/scripts.pory"
 	release
-# 76 "data/maps/Route127/scripts.pory"
+# 75 "data/maps/Route127/scripts.pory"
 	end
-# 77 "data/maps/Route127/scripts.pory"
+# 76 "data/maps/Route127/scripts.pory"
 
-# 78 "data/maps/Route127/scripts.pory"
+# 77 "data/maps/Route127/scripts.pory"
 Route127_EventScript_RematchKoji::
-# 79 "data/maps/Route127/scripts.pory"
+# 78 "data/maps/Route127/scripts.pory"
 	trainerbattle_rematch TRAINER_KOJI_1, Route127_Text_KojiRematchIntro, Route127_Text_KojiRematchDefeat
-# 80 "data/maps/Route127/scripts.pory"
+# 79 "data/maps/Route127/scripts.pory"
 	msgbox Route127_Text_KojiPostRematch, MSGBOX_AUTOCLOSE
-# 81 "data/maps/Route127/scripts.pory"
+# 80 "data/maps/Route127/scripts.pory"
 	end

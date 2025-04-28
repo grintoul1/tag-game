@@ -37,7 +37,6 @@ Route110_EventScript_SaveCyclingMusic::
 	return
 
 Route110_OnFrame:
-	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 	map_script_2 VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_BeginCylcingRoadChallenge
 	.2byte 0
 

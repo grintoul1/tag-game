@@ -2,15 +2,16 @@ raw `
 .set LOCALID_DAYCARE_MAN, 3
 .set LOCALID_DAYCARE_MON_0, 25
 .set LOCALID_DAYCARE_MON_1, 26
+.set LOCALID_MEG, 18
 .set LOCALID_ANNA, 19
 .set LOCALID_LYDIA, 9
 .set LOCALID_ISAAC, 10
 .set LOCALID_DYLAN, 8
-.set LOCALID_MARIA, 17
-.set LOCALID_MELINA, 24
+.set LOCALID_MARIA, 16
+.set LOCALID_MELINA, 23
 .set LOCALID_DEREK, 17
-.set LOCALID_BRANDI, 22
-.set LOCALID_AISHA, 23
+.set LOCALID_BRANDI, 21
+.set LOCALID_AISHA, 22
 
 
 Route117_MapScripts::
@@ -287,9 +288,10 @@ Route117_EventScript_Derek::
 
 Route117_EventScript_AnnaMeg::
 lockall
-setvar VAR_0x8008, LOCALID_ANNA
+setvar VAR_0x8008, LOCALID_MEG
 playse SE_PIN
 applymovement VAR_0x8008, Common_Movement_ExclamationMark
+applymovement LOCALID_ANNA, Common_Movement_ExclamationMark
 waitmovement 0
 playbgm MUS_ENCOUNTER_TWINS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp

@@ -111,7 +111,7 @@
 #line 47
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 48
-        .trainerPic = TRAINER_BACK_PIC_LEAF,
+        .trainerPic = TRAINER_BACK_PIC_GREEN,
         .encounterMusic_gender =
 #line 49
 F_TRAINER_FEMALE | 

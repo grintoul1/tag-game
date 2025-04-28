@@ -685,8 +685,8 @@
 #define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_EMMIE  0x27E // Hides May's house Emmie
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_EMMIE  0x27F // Hide's Brendan's house Emmie
 #define FLAG_HIDE_LITTLEROOT_TOWN_EMMIE  0x280 // Hides Littleroot Emmie
-#define FLAG_UNUSED_0x281  0x281 // Unused Flag
-#define FLAG_UNUSED_0x282  0x282 // Unused Flag
+#define FLAG_HIDE_PETALBURG_GYM_CUTSCENE_EMMIE  0x281 // Hides Petalburg Gym cutscene Emmie
+#define FLAG_HIDE_PETALBURG_CITY_CUTSCENE_EMMIE  0x282 // Unused Flag
 #define FLAG_UNUSED_0x283  0x283 // Unused Flag
 #define FLAG_UNUSED_0x284  0x284 // Unused Flag
 #define FLAG_UNUSED_0x285  0x285 // Unused Flag

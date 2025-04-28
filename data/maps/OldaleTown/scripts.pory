@@ -44,7 +44,11 @@ OldaleTown_EventScript_MartEmployee::
 	goto_if_set FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_ExplainPotion
 	goto_if_set FLAG_TEMP_1, OldaleTown_EventScript_ExplainPotion
 	setflag FLAG_TEMP_1
-	msgbox OldaleTown_Text_IWorkAtPokemonMart, MSGBOX_DEFAULT
+	msgbox OldaleTown_Text_ThisIsAPokemonMart, MSGBOX_DEFAULT
+	giveitem ITEM_POTION
+	goto_if_eq VAR_RESULT, FALSE, OldaleTown_EventScript_BagIsFull
+	msgbox OldaleTown_Text_PotionExplanation, MSGBOX_DEFAULT
+	setflag FLAG_RECEIVED_POTION_OLDALE
 	closemessage
 	end
 

@@ -109,7 +109,8 @@
 #define TRAINER_PIC_RS_BRENDAN            91
 #define TRAINER_PIC_RS_MAY                92
 #define TRAINER_PIC_MAGMA_ADMIN_F         93
-#define TRAINER_PIC_COUNT                 94
+#define TRAINER_PIC_GREEN                 94
+#define TRAINER_PIC_COUNT                 95
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
@@ -126,6 +127,7 @@
 #define TRAINER_BACK_PIC_AQUA_ADMIN_F           11
 #define TRAINER_BACK_PIC_MAGMA_ADMIN            12
 #define TRAINER_BACK_PIC_MAGMA_ADMIN_F          13
+#define TRAINER_BACK_PIC_GREEN                  14
 
 #define FACILITY_CLASS_HIKER                 0x0
 #define FACILITY_CLASS_AQUA_GRUNT_M          0x1

@@ -111,13 +111,11 @@ MauvilleCity_EventScript_BattleWallyPrompt::
 	call_if_eq VAR_RESULT, YES, MauvilleCity_EventScript_BattleWally
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_EventScript_DeclineWallyBattle
 	closemessage
-	switch VAR_FACING
-	case DIR_NORTH, MauvilleCity_EventScript_WallyAndUncleExitNorth
-	case DIR_EAST, MauvilleCity_EventScript_WallyAndUncleExitEast
 	end
 
 MauvilleCity_EventScript_WallyAndUncleExitNorth::
 	applymovement OBJ_EVENT_ID_PLAYER, MauvilleCity_Movement_PlayerWatchWallyExitNorth1
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MauvilleCity_Movement_PlayerWatchWallyExitNorth1
 	applymovement LOCALID_WALLY, MauvilleCity_Movement_WallyExitNorth1
 	applymovement LOCALID_WALLYS_UNCLE, MauvilleCity_Movement_WallysUncleExitNorth1
 	waitmovement 0
@@ -203,7 +201,14 @@ MauvilleCity_EventScript_ScottExitEast::
 
 MauvilleCity_EventScript_BattleWally::
 	msgbox MauvilleCity_Text_WallyHereICome, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_WALLY_MAUVILLE, MauvilleCity_Text_WallyDefeat
+	multi_2p_vs_1 TRAINER_WALLY_MAUVILLE, MauvilleCity_Text_WallyDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, MauvilleCity_EventScript_WallyVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+MauvilleCity_EventScript_WallyVictory::
 	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	msgbox MauvilleCity_Text_WallyIllGoBackToVerdanturf, MSGBOX_DEFAULT
@@ -213,7 +218,12 @@ MauvilleCity_EventScript_BattleWally::
 	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	msgbox MauvilleCity_Text_UncleNoNeedToBeDown, MSGBOX_DEFAULT
-	return
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_WALLY
+	removeobject LOCALID_WALLYS_UNCLE
+	fadescreen FADE_FROM_BLACK
+	releaseall
+	end
 
 MauvilleCity_EventScript_DeclineWallyBattle::
 	setflag FLAG_DECLINED_WALLY_BATTLE_MAUVILLE

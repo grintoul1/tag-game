@@ -518,8 +518,8 @@ LittlerootTown_EventScript_EmmieIntroduction::
 	call LittlerootTown_EventScript_SendStuffulParty
 	givemon SPECIES_SKITTY, 5, ITEM_MOON_STONE, ITEM_POKE_BALL, , 1
 	call LittlerootTown_EventScript_SendSkittyParty
-	givemon SPECIES_SQUAWKABILLY, 5
-	call LittlerootTown_EventScript_SendSquawkabillyParty
+	givemon SPECIES_EEVEE, 5
+	call LittlerootTown_EventScript_SendEeveeParty
 	goto LittlerootTown_EventScript_SetReceivedRunningShoes
 	end
 
@@ -558,19 +558,19 @@ LittlerootTown_EventScript_ReceivedSkittyFanfare::
 	bufferspeciesname STR_VAR_1, SPECIES_SKITTY
 	return
 
-LittlerootTown_EventScript_SendSquawkabillyParty::
-	call LittlerootTown_EventScript_ReceivedSquawkabillyFanfare
+LittlerootTown_EventScript_SendEeveeParty::
+	call LittlerootTown_EventScript_ReceivedEeveeFanfare
 	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, LittlerootTown_EventScript_NicknameEmmiePokemon
 	return
 
-LittlerootTown_EventScript_ReceivedSquawkabillyFanfare::
-	bufferspeciesname STR_VAR_2, SPECIES_SQUAWKABILLY
+LittlerootTown_EventScript_ReceivedEeveeFanfare::
+	bufferspeciesname STR_VAR_2, SPECIES_EEVEE
 	playfanfare MUS_OBTAIN_ITEM
-	message LittlerootTown_Text_ObtainedSquawkabilly
+	message LittlerootTown_Text_ObtainedEevee
 	waitmessage
 	waitfanfare
-	bufferspeciesname STR_VAR_1, SPECIES_SQUAWKABILLY
+	bufferspeciesname STR_VAR_1, SPECIES_EEVEE
 	return
 
 LittlerootTown_Text_ObtainedStufful:
@@ -579,8 +579,8 @@ LittlerootTown_Text_ObtainedStufful:
 LittlerootTown_Text_ObtainedSkitty:
 	.string "{PLAYER} obtained a Skitty.$"
 
-LittlerootTown_Text_ObtainedSquawkabilly:
-	.string "{PLAYER} obtained a Squawkabilly.$"
+LittlerootTown_Text_ObtainedEevee:
+	.string "{PLAYER} obtained a Eevee.$"
 
 LittlerootTown_EventScript_SetHomeDoorCoordsMale::
 	setvar VAR_0x8009, 5
@@ -1028,7 +1028,7 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	waitmovement 0
 	msgbox LittlerootTown_Text_EmmieHowExciting, MSGBOX_DEFAULT
 	closemessage
-	setfollower 9, FNPC_EMMIE, Common_EventScript_Emmie, PARTNER_EMMIE
+	setfollower 9, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
 	return
 
 LittlerootTown_Text_OurNewHomeLetsGoInside:

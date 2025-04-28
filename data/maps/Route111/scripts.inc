@@ -126,7 +126,6 @@ Route111_EventScript_HidePlayerForMirageTower::
 	end
 
 Route111_OnFrame:
-	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 	map_script_2 VAR_MIRAGE_TOWER_STATE, 1, Route111_EventScript_MirageTowerDisappear
 	.2byte 0
 

@@ -96,19 +96,11 @@ MauvilleCity_Gym_EventScript_Wattson::
 goto_if_set FLAG_BADGE03_GET, MauvilleCity_Gym_EventScript_WattsonPostBattle
 lockall
 setvar VAR_0x8008, LOCALID_WATTSON
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
+applymovement VAR_0x8008, Common_Movement_FacePlayer
 waitmovement 0
 playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
 msgbox MauvilleCity_Gym_Text_WattsonIntro MSGBOX_AUTOCLOSE
-msgbox MauvilleCity_Gym_Text_ReadyToFight MSGBOX_YESNO
-goto_if_eq VAR_RESULT, YES, MauvilleCity_Gym_EventScript_WattsonDoMultiBattle
-msgbox MauvilleCity_Gym_Text_ComeBackWhenReady, MSGBOX_DEFAULT
-closemessage
-applymovement OBJ_EVENT_ID_PLAYER, MauvilleCity_Gym_Movement_Wattson_NotReady
-waitmovement 0
+goto MauvilleCity_Gym_EventScript_WattsonDoMultiBattle
 playbgm MUS_GYM, TRUE
 releaseall
 end
