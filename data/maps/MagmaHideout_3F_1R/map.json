@@ -7,36 +7,36 @@
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_UNDERGROUND",
-  "allow_cycling": true,
-  "allow_escaping": true,
+  "allow_cycling": false,
+  "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
-      "x": 2,
-      "y": 7,
+      "x": 6,
+      "y": 10,
       "elevation": 4,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "5",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "NULL",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "MagmaHideout_3F_1R_EventScript_Grunt9",
       "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
-      "x": 21,
-      "y": 21,
+      "x": 7,
+      "y": 11,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "4",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "NULL",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "MagmaHideout_3F_1R_EventScript_Grunt16",
       "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
     },
@@ -73,10 +73,22 @@
       "x": 23,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_MAGMA_HIDEOUT_2F_1R",
-      "dest_warp_id": "2"
+      "dest_map": "MAP_MAGMA_HIDEOUT_2F_2R",
+      "dest_warp_id": "1"
     }
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_MAGMAHIDEOUT_STATE",
+      "var_value": "5",
+      "script": "MagmaHideout_3F_1R_EventScript_Grunt9Grunt16"
+    }
+  ],
+  "bg_events": [
+
+  ]
 }

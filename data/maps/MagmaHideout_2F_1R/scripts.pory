@@ -1,0 +1,185 @@
+raw `
+
+.set LOCALID_GRUNT3, 4
+.set LOCALID_GRUNT14, 3
+.set LOCALID_GRUNT5, 2
+.set LOCALID_GRUNT4, 1
+
+MagmaHideout_2F_1R_MapScripts::
+	.byte 0
+
+MagmaHideout_2F_1R_EventScript_Grunt14Grunt3::
+lockall
+setvar VAR_0x8008, LOCALID_GRUNT14
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_MAGMA, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox MagmaHideout_2F_1R_Text_Grunt14Intro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_GRUNT3
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_MAGMA, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox MagmaHideout_2F_1R_Text_Grunt3Intro MSGBOX_AUTOCLOSE
+goto MagmaHideout_2F_1R_EventScript_Grunt14Grunt3_ChoosePartyForMultiBattle
+releaseall
+end
+
+MagmaHideout_2F_1R_EventScript_Grunt14Grunt3_ChoosePartyForMultiBattle::
+special SavePlayerParty
+fadescreen FADE_TO_BLACK
+special ChooseHalfPartyForBattle
+waitstate
+goto_if_ne VAR_RESULT, 0, MagmaHideout_2F_1R_EventScript_Grunt14Grunt3DoMultiBattle
+goto MagmaHideout_2F_1R_EventScript_Grunt14Grunt3_ChoosePartyForMultiBattle
+closemessage
+releaseall
+end
+
+MagmaHideout_2F_1R_EventScript_Grunt14Grunt3DoMultiBattle::
+playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_14, MagmaHideout_2F_1R_Text_Grunt14Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_3, MagmaHideout_2F_1R_Text_Grunt3Defeat, PARTNER_SHELLY
+special LoadPlayerParty
+switch VAR_RESULT
+case 1, MagmaHideout_2F_1R_EventScript_Grunt14Grunt3Victory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+MagmaHideout_2F_1R_EventScript_Grunt14Grunt3Victory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox MagmaHideout_2F_1R_Text_Grunt14PostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox MagmaHideout_2F_1R_Text_Grunt3PostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_MAGMAHIDEOUT_STATE, 1
+end
+
+MagmaHideout_2F_1R_EventScript_Grunt14::
+	msgbox MagmaHideout_2F_1R_Text_Grunt14PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+MagmaHideout_2F_1R_EventScript_Grunt3::
+	msgbox MagmaHideout_2F_1R_Text_Grunt3PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+MagmaHideout_2F_1R_EventScript_Grunt5Grunt4::
+lockall
+setvar VAR_0x8008, LOCALID_GRUNT5
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_MAGMA, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox MagmaHideout_2F_1R_Text_Grunt5Intro MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_GRUNT4
+playse SE_PIN
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_MAGMA, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox MagmaHideout_2F_1R_Text_Grunt4Intro MSGBOX_AUTOCLOSE
+goto MagmaHideout_2F_1R_EventScript_Grunt5Grunt4_ChoosePartyForMultiBattle
+releaseall
+end
+
+MagmaHideout_2F_1R_EventScript_Grunt5Grunt4_ChoosePartyForMultiBattle::
+special SavePlayerParty
+fadescreen FADE_TO_BLACK
+special ChooseHalfPartyForBattle
+waitstate
+goto_if_ne VAR_RESULT, 0, MagmaHideout_2F_1R_EventScript_Grunt5Grunt4DoMultiBattle
+goto MagmaHideout_2F_1R_EventScript_Grunt5Grunt4_ChoosePartyForMultiBattle
+closemessage
+releaseall
+end
+
+MagmaHideout_2F_1R_EventScript_Grunt5Grunt4DoMultiBattle::
+playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_5, MagmaHideout_2F_1R_Text_Grunt5Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_4, MagmaHideout_2F_1R_Text_Grunt4Defeat, PARTNER_SHELLY
+special LoadPlayerParty
+switch VAR_RESULT
+case 1, MagmaHideout_2F_1R_EventScript_Grunt5Grunt4Victory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+MagmaHideout_2F_1R_EventScript_Grunt5Grunt4Victory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox MagmaHideout_2F_1R_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox MagmaHideout_2F_1R_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_MAGMAHIDEOUT_STATE, 1
+end
+
+MagmaHideout_2F_1R_EventScript_Grunt4::
+	msgbox MagmaHideout_2F_1R_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+MagmaHideout_2F_1R_EventScript_Grunt5::
+	msgbox MagmaHideout_2F_1R_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+MagmaHideout_2F_1R_Text_Grunt14Intro:
+	.string "What, what, what?\p"
+	.string "Only TEAM MAGMA members are supposed\n"
+	.string "to be in here!\p"
+	.string "But you're not dressed in TEAM MAGMA's\n"
+	.string "uniform…\p"
+	.string "You rouse my suspicion!\n"
+	.string "Battle with me!$"
+
+MagmaHideout_2F_1R_Text_Grunt14Defeat:
+	.string "Aiyiyi…\n"
+	.string "My pride as a TEAM MAGMA member…$"
+
+MagmaHideout_2F_1R_Text_Grunt14PostBattle:
+	.string "If you suffer from chills, you should\n"
+	.string "join TEAM MAGMA.$"
+
+MagmaHideout_2F_1R_Text_Grunt3Intro:
+	.string "Hold it right there!\p"
+	.string "You don't really expect me to keep\n"
+	.string "my trap shut and let you waltz by me?$"
+
+MagmaHideout_2F_1R_Text_Grunt3Defeat:
+	.string "Ooh wow!\n"
+	.string "I concede!$"
+
+MagmaHideout_2F_1R_Text_Grunt3PostBattle:
+	.string "Maybe it would've been better if I did\n"
+	.string "just let you go unchallenged…$"
+
+MagmaHideout_2F_1R_Text_Grunt4Intro:
+	.string "Ahah!\n"
+	.string "An intruder!$"
+
+MagmaHideout_2F_1R_Text_Grunt4Defeat:
+	.string "Graaah!$"
+
+MagmaHideout_2F_1R_Text_Grunt4PostBattle:
+	.string "I've already lost.\p"
+	.string "Do I really need to keep running\n"
+	.string "around in a circle?$"
+
+MagmaHideout_2F_1R_Text_Grunt5Intro:
+	.string "Oh, oh!\n"
+	.string "An intruder!$"
+
+MagmaHideout_2F_1R_Text_Grunt5Defeat:
+	.string "Mutter…$"
+
+MagmaHideout_2F_1R_Text_Grunt5PostBattle:
+	.string "Actually, I'm no expert at battling…$"
+
+`

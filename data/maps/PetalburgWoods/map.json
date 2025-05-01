@@ -12,7 +12,7 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
@@ -42,8 +42,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-      "x": 26,
-      "y": 17,
+      "x": 16,
+      "y": 38,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -54,17 +54,17 @@
       "flag": "FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
-      "x": 26,
-      "y": 20,
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "x": 17,
+      "y": 38,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE"
+      "flag": "FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -120,33 +120,33 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
-      "x": 7,
-      "y": 32,
+      "x": 43,
+      "y": 17,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
+      "trainer_type": "NULL",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "PetalburgWoods_EventScript_Lyle",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
-      "x": 4,
-      "y": 14,
+      "x": 41,
+      "y": 17,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_UP_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
+      "trainer_type": "NULL",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "PetalburgWoods_EventScript_James",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_3",
-      "x": 30,
+      "x": 24,
       "y": 34,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -173,7 +173,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
       "x": 33,
-      "y": 5,
+      "y": 7,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -226,26 +226,49 @@
       "elevation": 0,
       "dest_map": "MAP_ROUTE104",
       "dest_warp_id": "7"
+    },
+    {
+      "x": 34,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE104",
+      "dest_warp_id": "8"
+    },
+    {
+      "x": 35,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE104",
+      "dest_warp_id": "9"
     }
   ],
   "coord_events": [
     {
       "type": "trigger",
-      "x": 26,
-      "y": 23,
+      "x": 16,
+      "y": 37,
       "elevation": 3,
       "var": "VAR_PETALBURG_WOODS_STATE",
-      "var_value": "0",
-      "script": "PetalburgWoods_EventScript_DevonResearcherLeft"
+      "var_value": "1",
+      "script": "PetalburgWoods_EventScript_MattShelly"
     },
     {
       "type": "trigger",
-      "x": 27,
-      "y": 23,
+      "x": 42,
+      "y": 17,
       "elevation": 3,
       "var": "VAR_PETALBURG_WOODS_STATE",
       "var_value": "0",
-      "script": "PetalburgWoods_EventScript_DevonResearcherRight"
+      "script": "PetalburgWoods_EventScript_JamesLyle"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 37,
+      "elevation": 3,
+      "var": "VAR_PETALBURG_WOODS_STATE",
+      "var_value": "1",
+      "script": "PetalburgWoods_EventScript_MattShelly"
     }
   ],
   "bg_events": [

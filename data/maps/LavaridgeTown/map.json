@@ -252,10 +252,10 @@
     },
     {
       "type": "hidden_item",
-      "x": 4,
+      "x": 3,
       "y": 5,
       "elevation": 3,
-      "item": "ITEM_ICE_HEAL",
+      "item": "ITEM_MYSTIC_WATER",
       "flag": "FLAG_HIDDEN_ITEM_LAVARIDGE_TOWN_ICE_HEAL"
     }
   ]

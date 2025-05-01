@@ -1,0 +1,9 @@
+raw `
+Route122_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route122_OnTransition
+	.byte 0
+
+Route122_OnTransition:
+	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	end
+`
