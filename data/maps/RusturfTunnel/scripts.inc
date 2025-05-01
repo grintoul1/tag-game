@@ -3,13 +3,13 @@
 # 2 "data/maps/RusturfTunnel/scripts.pory"
 .equ LOCALID_WANDAS_BF, 1
 # 3 "data/maps/RusturfTunnel/scripts.pory"
-.set LOCALID_BRINEY, 5
+@.set LOCALID_BRINEY, 5
 # 4 "data/maps/RusturfTunnel/scripts.pory"
-.set LOCALID_GRUNT, 6
+@.set LOCALID_GRUNT, 6
 # 5 "data/maps/RusturfTunnel/scripts.pory"
-.set LOCALID_PEEKO, 7
+@.set LOCALID_PEEKO, 7
 # 6 "data/maps/RusturfTunnel/scripts.pory"
-.equ LOCALID_WANDA, 10
+.equ LOCALID_WANDA, 6
 # 7 "data/maps/RusturfTunnel/scripts.pory"
 
 # 8 "data/maps/RusturfTunnel/scripts.pory"
@@ -35,19 +35,19 @@ RusturfTunnel_OnFrame:
 # 18 "data/maps/RusturfTunnel/scripts.pory"
 RusturfTunnel_OnTransition:
 # 19 "data/maps/RusturfTunnel/scripts.pory"
-	call_if_eq VAR_RUSTURF_TUNNEL_STATE, 2, RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos
+	@call_if_eq VAR_RUSTURF_TUNNEL_STATE, 2, RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos
 # 20 "data/maps/RusturfTunnel/scripts.pory"
 	end
 # 21 "data/maps/RusturfTunnel/scripts.pory"
 
 # 22 "data/maps/RusturfTunnel/scripts.pory"
-RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos::
+@RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos::
 # 23 "data/maps/RusturfTunnel/scripts.pory"
-	setobjectxyperm LOCALID_PEEKO, 13, 4
+	@setobjectxyperm LOCALID_PEEKO, 13, 4
 # 24 "data/maps/RusturfTunnel/scripts.pory"
-	setobjectxyperm LOCALID_GRUNT, 13, 5
+	@setobjectxyperm LOCALID_GRUNT, 13, 5
 # 25 "data/maps/RusturfTunnel/scripts.pory"
-	return
+	@return
 # 26 "data/maps/RusturfTunnel/scripts.pory"
 
 # 27 "data/maps/RusturfTunnel/scripts.pory"
@@ -549,31 +549,31 @@ RusturfTunnel_EventScript_TunnelBlockagePos3::
 # 275 "data/maps/RusturfTunnel/scripts.pory"
 
 # 276 "data/maps/RusturfTunnel/scripts.pory"
-RusturfTunnel_EventScript_AquaGruntBackUp::
+@RusturfTunnel_EventScript_AquaGruntBackUp::
 # 277 "data/maps/RusturfTunnel/scripts.pory"
-	lockall
+	@lockall
 # 278 "data/maps/RusturfTunnel/scripts.pory"
-	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	@setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 # 279 "data/maps/RusturfTunnel/scripts.pory"
-	msgbox RusturfTunnel_Text_ComeAndGetSome, MSGBOX_DEFAULT
+	@msgbox RusturfTunnel_Text_ComeAndGetSome, MSGBOX_DEFAULT
 # 280 "data/maps/RusturfTunnel/scripts.pory"
-	closemessage
+	@closemessage
 # 281 "data/maps/RusturfTunnel/scripts.pory"
-	applymovement LOCALID_GRUNT, RusturfTunnel_Movement_GruntAndPeekoBackUp
+	@applymovement LOCALID_GRUNT, RusturfTunnel_Movement_GruntAndPeekoBackUp
 # 282 "data/maps/RusturfTunnel/scripts.pory"
-	applymovement LOCALID_PEEKO, RusturfTunnel_Movement_GruntAndPeekoBackUp
+	@applymovement LOCALID_PEEKO, RusturfTunnel_Movement_GruntAndPeekoBackUp
 # 283 "data/maps/RusturfTunnel/scripts.pory"
-	waitmovement 0
+	@waitmovement 0
 # 284 "data/maps/RusturfTunnel/scripts.pory"
-	copyobjectxytoperm LOCALID_GRUNT
+	@copyobjectxytoperm LOCALID_GRUNT
 # 285 "data/maps/RusturfTunnel/scripts.pory"
-	copyobjectxytoperm LOCALID_PEEKO
+	@copyobjectxytoperm LOCALID_PEEKO
 # 286 "data/maps/RusturfTunnel/scripts.pory"
-	setvar VAR_RUSTURF_TUNNEL_STATE, 3
+	@setvar VAR_RUSTURF_TUNNEL_STATE, 3
 # 287 "data/maps/RusturfTunnel/scripts.pory"
-	releaseall
+	@releaseall
 # 288 "data/maps/RusturfTunnel/scripts.pory"
-	end
+	@end
 # 289 "data/maps/RusturfTunnel/scripts.pory"
 
 # 290 "data/maps/RusturfTunnel/scripts.pory"
@@ -609,91 +609,91 @@ RusturfTunnel_EventScript_Peeko::
 # 305 "data/maps/RusturfTunnel/scripts.pory"
 
 # 306 "data/maps/RusturfTunnel/scripts.pory"
-RusturfTunnel_EventScript_Grunt::
+@RusturfTunnel_EventScript_Grunt::
 # 307 "data/maps/RusturfTunnel/scripts.pory"
-	lock
+	@lock
 # 308 "data/maps/RusturfTunnel/scripts.pory"
-	faceplayer
+	@faceplayer
 # 309 "data/maps/RusturfTunnel/scripts.pory"
-	playbgm MUS_ENCOUNTER_AQUA, FALSE
+	@playbgm MUS_ENCOUNTER_AQUA, FALSE
 # 310 "data/maps/RusturfTunnel/scripts.pory"
-	msgbox RusturfTunnel_Text_GruntIntro, MSGBOX_DEFAULT
+	@msgbox RusturfTunnel_Text_GruntIntro, MSGBOX_DEFAULT
 # 311 "data/maps/RusturfTunnel/scripts.pory"
-	trainerbattle_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, RusturfTunnel_Text_GruntDefeat
+	@trainerbattle_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, RusturfTunnel_Text_GruntDefeat
 # 312 "data/maps/RusturfTunnel/scripts.pory"
-	msgbox RusturfTunnel_Text_GruntTakePackage, MSGBOX_DEFAULT
+	@msgbox RusturfTunnel_Text_GruntTakePackage, MSGBOX_DEFAULT
 # 313 "data/maps/RusturfTunnel/scripts.pory"
-	giveitem ITEM_DEVON_PARTS
+	@giveitem ITEM_DEVON_PARTS
 # 314 "data/maps/RusturfTunnel/scripts.pory"
-	closemessage
+	@closemessage
 # 315 "data/maps/RusturfTunnel/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PushPlayerAsideForGrunt
+	@applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PushPlayerAsideForGrunt
 # 316 "data/maps/RusturfTunnel/scripts.pory"
-	applymovement LOCALID_GRUNT, RusturfTunnel_Movement_GruntEscape
+	@applymovement LOCALID_GRUNT, RusturfTunnel_Movement_GruntEscape
 # 317 "data/maps/RusturfTunnel/scripts.pory"
-	waitmovement 0
+	@waitmovement 0
 # 318 "data/maps/RusturfTunnel/scripts.pory"
-	removeobject LOCALID_GRUNT
+	@removeobject LOCALID_GRUNT
 # 319 "data/maps/RusturfTunnel/scripts.pory"
-	delay 50
+	@delay 50
 # 320 "data/maps/RusturfTunnel/scripts.pory"
-	addobject LOCALID_BRINEY
+	@addobject LOCALID_BRINEY
 # 321 "data/maps/RusturfTunnel/scripts.pory"
-	applymovement LOCALID_BRINEY, RusturfTunnel_Movement_BrineyApproachPeeko1
+	@applymovement LOCALID_BRINEY, RusturfTunnel_Movement_BrineyApproachPeeko1
 # 322 "data/maps/RusturfTunnel/scripts.pory"
-	waitmovement 0
+	@waitmovement 0
 # 323 "data/maps/RusturfTunnel/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerMoveAsideForBriney
+	@applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerMoveAsideForBriney
 # 324 "data/maps/RusturfTunnel/scripts.pory"
-	applymovement LOCALID_BRINEY, RusturfTunnel_Movement_BrineyApproachPeeko2
+	@applymovement LOCALID_BRINEY, RusturfTunnel_Movement_BrineyApproachPeeko2
 # 325 "data/maps/RusturfTunnel/scripts.pory"
-	waitmovement 0
+	@waitmovement 0
 # 326 "data/maps/RusturfTunnel/scripts.pory"
-	msgbox RusturfTunnel_Text_PeekoGladToSeeYouSafe, MSGBOX_DEFAULT
+	@msgbox RusturfTunnel_Text_PeekoGladToSeeYouSafe, MSGBOX_DEFAULT
 # 327 "data/maps/RusturfTunnel/scripts.pory"
-	applymovement LOCALID_BRINEY, Common_Movement_FacePlayer
+	@applymovement LOCALID_BRINEY, Common_Movement_FacePlayer
 # 328 "data/maps/RusturfTunnel/scripts.pory"
-	waitmovement 0
+	@waitmovement 0
 # 329 "data/maps/RusturfTunnel/scripts.pory"
-	message RusturfTunnel_Text_ThankYouLetsGoHomePeeko
+	@message RusturfTunnel_Text_ThankYouLetsGoHomePeeko
 # 330 "data/maps/RusturfTunnel/scripts.pory"
-	waitmessage
+	@waitmessage
 # 331 "data/maps/RusturfTunnel/scripts.pory"
-	waitse
+	@waitse
 # 332 "data/maps/RusturfTunnel/scripts.pory"
-	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
+	@playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
 # 333 "data/maps/RusturfTunnel/scripts.pory"
-	waitbuttonpress
+	@waitbuttonpress
 # 334 "data/maps/RusturfTunnel/scripts.pory"
-	waitmoncry
+	@waitmoncry
 # 335 "data/maps/RusturfTunnel/scripts.pory"
-	closemessage
+	@closemessage
 # 336 "data/maps/RusturfTunnel/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBrineyExit
+	@applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBrineyExit
 # 337 "data/maps/RusturfTunnel/scripts.pory"
-	applymovement LOCALID_BRINEY, RusturfTunnel_Movement_BrineyExit
+	@applymovement LOCALID_BRINEY, RusturfTunnel_Movement_BrineyExit
 # 338 "data/maps/RusturfTunnel/scripts.pory"
-	applymovement LOCALID_PEEKO, RusturfTunnel_Movement_PeekoExit
+	@applymovement LOCALID_PEEKO, RusturfTunnel_Movement_PeekoExit
 # 339 "data/maps/RusturfTunnel/scripts.pory"
-	waitmovement 0
+	@waitmovement 0
 # 340 "data/maps/RusturfTunnel/scripts.pory"
-	removeobject LOCALID_BRINEY
+	@removeobject LOCALID_BRINEY
 # 341 "data/maps/RusturfTunnel/scripts.pory"
-	removeobject LOCALID_PEEKO
+	@removeobject LOCALID_PEEKO
 # 342 "data/maps/RusturfTunnel/scripts.pory"
-	clearflag FLAG_DEVON_GOODS_STOLEN
+	@clearflag FLAG_DEVON_GOODS_STOLEN
 # 343 "data/maps/RusturfTunnel/scripts.pory"
-	setflag FLAG_RECOVERED_DEVON_GOODS
+	@setflag FLAG_RECOVERED_DEVON_GOODS
 # 344 "data/maps/RusturfTunnel/scripts.pory"
-	setvar VAR_RUSTBORO_CITY_STATE, 4
+	@setvar VAR_RUSTBORO_CITY_STATE, 4
 # 345 "data/maps/RusturfTunnel/scripts.pory"
-	setvar VAR_BRINEY_HOUSE_STATE, 1
+	@setvar VAR_BRINEY_HOUSE_STATE, 1
 # 346 "data/maps/RusturfTunnel/scripts.pory"
-	setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
+	@setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
 # 347 "data/maps/RusturfTunnel/scripts.pory"
-	release
+	@release
 # 348 "data/maps/RusturfTunnel/scripts.pory"
-	end
+	@end
 # 349 "data/maps/RusturfTunnel/scripts.pory"
 
 # 350 "data/maps/RusturfTunnel/scripts.pory"

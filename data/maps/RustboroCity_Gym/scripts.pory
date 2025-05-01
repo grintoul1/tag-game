@@ -18,12 +18,7 @@ playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
 msgbox RustboroCity_Gym_Text_RoxanneIntro MSGBOX_AUTOCLOSE
-msgbox RustboroCity_Gym_Text_ReadyToFight MSGBOX_YESNO
-goto_if_eq VAR_RESULT, YES, RustboroCity_Gym_EventScript_RoxanneDoMultiBattle
-msgbox RustboroCity_Gym_Text_ComeBackWhenReady, MSGBOX_DEFAULT
-closemessage
-applymovement OBJ_EVENT_ID_PLAYER, RustboroCity_Gym_Movement_Roxanne_NotReady
-waitmovement 0
+goto RustboroCity_Gym_EventScript_RoxanneDoMultiBattle
 playbgm MUS_GYM, TRUE
 releaseall
 end
@@ -38,8 +33,6 @@ special SetCB2WhiteOut
 waitstate
 
 RustboroCity_Gym_EventScript_RoxanneVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
 addvar VAR_RUSTBOROCITY_GYM_STATE, 1
 goto RustboroCity_Gym_EventScript_RoxanneDefeated
 end

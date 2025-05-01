@@ -36,7 +36,7 @@ MauvilleCity_BikeShop_EventScript_YesFar::
 	end
 
 MauvilleCity_BikeShop_EventScript_GetMachBike::
-	msgbox MauvilleCity_BikeShop_Text_ChoseMachBike, MSGBOX_DEFAULT
+	msgbox MauvilleCity_BikeShop_Text_ExplainBikesChooseWhichOne, MSGBOX_DEFAULT
 	giveitem ITEM_MACH_BIKE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	goto MauvilleCity_BikeShop_EventScript_ComeBackToSwitchBikes
@@ -50,13 +50,15 @@ MauvilleCity_BikeShop_EventScript_GetAcroBike::
 	end
 
 MauvilleCity_BikeShop_EventScript_ComeBackToSwitchBikes::
-	msgbox MauvilleCity_BikeShop_Text_ComeBackToSwitchBikes, MSGBOX_DEFAULT
-	special SwapRegisteredBike
+	msgbox MauvilleCity_BikeShop_Text_EnjoyBikes, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
 
 MauvilleCity_BikeShop_EventScript_AskSwitchBikes::
-	msgbox MauvilleCity_BikeShop_Text_WantToSwitchBikes
+	msgbox MauvilleCity_BikeShop_Text_WantToSwitchBikes, MSGBOX_DEFAULT
+	closemessage
+	release
 	end
 
 @ If the player does not have a bike on them Rydel assumes its stored in the PC
@@ -188,21 +190,17 @@ MauvilleCity_BikeShop_Text_GuessYouDontNeedBike:
 	.string "and I'll gift you one of my bikes.$"
 
 MauvilleCity_BikeShop_Text_ExplainBikesChooseWhichOne:
-	.string "RYDEL: Hm, hm… … … … …\p"
+	.string "RYDEL: Hm, okay… two… I see… … …\p"
 	.string "You're saying that you came all this\n"
 	.string "way from Littleroot?\p"
-	.string "My goodness!\n"
-	.string "That's ridiculously far!\p"
+	.string "My goodness, that's ridiculously far!\p"
 	.string "If you had one of my bikes, you could\n"
 	.string "go anywhere easily while feeling the\l"
 	.string "gentle caress of the wind!\p"
-	.string "I'll tell you what!\n"
-	.string "I'll give you a Mach Bike!\p"
-	.string "Oh, wait a second!\p"
+	.string "I'll tell you what, I'll give you each\n"
+	.string "a Mach Bike!\p"
 	.string "The Mach Bike is for cyclists who want\n"
-	.string "to feel the wind with their bodies!\p"
-	.string "And an Acro Bike is for those who\n"
-	.string "prefer technical rides!\p"
+	.string "to feel the wind with their bodies!$"
 
 MauvilleCity_BikeShop_Text_ChoseMachBike:
 	.string "{PLAYER} chose the MACH BIKE.$"
@@ -216,7 +214,11 @@ MauvilleCity_BikeShop_Text_ComeBackToSwitchBikes:
 
 MauvilleCity_BikeShop_Text_WantToSwitchBikes:
 	.string "RYDEL: I hope you are enjoying your\n"
-	.string "Mach Bike!$"
+	.string "Mach Bikes!$"
+
+MauvilleCity_BikeShop_Text_EnjoyBikes:
+	.string "RYDEL: I hope you enjoy your Mach\n"
+	.string "Bikes!$"
 
 MauvilleCity_BikeShop_Text_IllSwitchBikes:
 	.string "RYDEL: Okay, no problem!\n"

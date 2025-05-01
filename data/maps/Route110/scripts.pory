@@ -635,18 +635,23 @@ Route110_EventScript_RivalScene::
 
 Route110_EventScript_NorthBlock::
 	lockall
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FacePlayer
 	waitmovement 0
-	applymovement LOCALID_RIVAL, Common_Movement_Delay48
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	delay 30
 	msgbox Route110_Text_LetsCycleHome, MSGBOX_DEFAULT
+	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER Route110_Movement_NorthBlock
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER Route110_Movement_NorthBlock
 	waitmovement 0
 	releaseall
 	end
 
 Route110_Movement_NorthBlock:
+
 	walk_up
 	step_end
 

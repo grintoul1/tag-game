@@ -115,8 +115,6 @@ special SetCB2WhiteOut
 waitstate
 
 MauvilleCity_Gym_EventScript_WattsonVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
 addvar VAR_MAUVILLECITY_GYM_STATE, 1
 goto MauvilleCity_Gym_EventScript_WattsonDefeated
 end
