@@ -2,9 +2,14 @@
 EventScript_CutTree::
 	lockall
 	goto_if_unset FLAG_BADGE01_GET, EventScript_CheckTreeCantCut
+	checkpartymove MOVE_CUT
+	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckTreeCantCut
 	setfieldeffectargument 0, VAR_RESULT
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	buffermovename STR_VAR_2, MOVE_CUT
+	msgbox Text_WantToCut, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_CancelCut
+	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
 	closemessage
 EventScript_CutTreeCommon:
 	isfollowerfieldmoveuser VAR_0x8004
@@ -60,9 +65,14 @@ EventScript_UseRockSmash::
 EventScript_RockSmash::
 	lockall
 	goto_if_unset FLAG_BADGE03_GET, EventScript_CantSmashRock
+	checkpartymove MOVE_ROCK_SMASH
+	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSmashRock
 	setfieldeffectargument 0, VAR_RESULT
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	buffermovename STR_VAR_2, MOVE_ROCK_SMASH
+	msgbox Text_WantToSmash, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_CancelSmash
+	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
 	closemessage
 EventScript_RockSmashCommon:
 	@ check if follower should use the field move
@@ -217,7 +227,11 @@ EventScript_StrengthBoulder::
 	lockall
 	goto_if_unset FLAG_BADGE04_GET, EventScript_CantStrength
 	goto_if_set FLAG_SYS_USE_STRENGTH, EventScript_CheckActivatedBoulder
+	checkpartymove MOVE_STRENGTH
+	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantStrength
 	setfieldeffectargument 0, VAR_RESULT
+	msgbox Text_WantToStrength, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_CancelStrength
 	closemessage
 	dofieldeffect FLDEFF_USE_STRENGTH
 	waitstate
@@ -258,24 +272,31 @@ Text_WantToStrength:
 	.string "Would you like to use STRENGTH?$"
 
 Text_MonUsedStrength:
-	.string "Boulders may now be moved!$"
+	.string "{STR_VAR_1} used STRENGTH!\p"
+	.string "{STR_VAR_1}'s STRENGTH made it\n"
+	.string "possible to move boulders around!$"
 
 Text_CantStrength:
 	.string "It's a big boulder, but a POKéMON\n"
 	.string "may be able to push it aside.$"
 
 Text_StrengthActivated:
-	.string "Strength made it possible to move\n"
+	.string "STRENGTH made it possible to move\n"
 	.string "boulders around.$"
 
 EventScript_UseWaterfall::
 	lockall
+	checkpartymove MOVE_WATERFALL
+	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantWaterfall
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
+	msgbox Text_WantToWaterfall, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_EndWaterfall
+	msgbox Text_MonUsedWaterfall, MSGBOX_DEFAULT
 	hidefollowernpc
 	dofieldeffect FLDEFF_USE_WATERFALL
-	goto EventScript_EndWaterfall
 	callnative FollowerNPC_WarpSetEnd
+	goto EventScript_EndWaterfall
 
 EventScript_CannotUseWaterfall::
 	lockall
@@ -300,12 +321,15 @@ Text_MonUsedWaterfall:
 
 EventScript_UseDive::
 	lockall
+	checkpartymove MOVE_DIVE
+	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantDive
 	copyvar 0x8004 VAR_RESULT
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
 	setfieldeffectargument 1, 1
 	msgbox Text_WantToDive, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndDive
+	msgbox Text_MonUsedDive, MSGBOX_DEFAULT
 	hidefollowernpc
 	setfieldeffectargument 0, VAR_0x8004
 	setfieldeffectargument 1, 1
@@ -324,11 +348,14 @@ EventScript_EndDive::
 
 EventScript_UseDiveUnderwater::
 	lockall
+	checkpartymove MOVE_DIVE
+	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSurface
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
 	setfieldeffectargument 1, 1
 	msgbox Text_WantToSurface, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndSurface
+	msgbox Text_MonUsedDive, MSGBOX_DEFAULT
 	hidefollowernpc
 	dofieldeffect FLDEFF_USE_DIVE
 	goto EventScript_EndSurface
@@ -399,3 +426,20 @@ EventScript_FailSweetScent::
 
 Text_FailSweetScent:
 	.string "Looks like there's nothing here…$"
+
+EventScript_UseDefog::
+	lockall
+	bufferpartymonnick STR_VAR_1, VAR_RESULT
+	buffermovename STR_VAR_2, MOVE_DEFOG
+	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
+	closemessage
+	isfollowerfieldmoveuser VAR_0x8004
+	setfieldeffectargument 3, VAR_0x8004 @ skip pose if so
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	call_if_eq VAR_0x8004, TRUE, EventScript_FollowerFieldMove
+	waitmovement 0
+	setfieldeffectargument 0, VAR_RESULT
+	dofieldeffect FLDEFF_DEFOG
+	waitstate
+	releaseall
+	end

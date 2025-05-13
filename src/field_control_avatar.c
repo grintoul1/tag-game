@@ -4,6 +4,7 @@
 #include "coord_event_weather.h"
 #include "daycare.h"
 #include "debug.h"
+#include "dexnav.h"
 #include "faraway_island.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -92,7 +93,7 @@ void FieldClearPlayerInput(struct FieldInput *input)
     input->heldDirection2 = FALSE;
     input->tookStep = FALSE;
     input->pressedBButton = FALSE;
-    input->input_field_1_0 = FALSE;
+    input->pressedRButton = FALSE;
     input->input_field_1_1 = FALSE;
     input->input_field_1_2 = FALSE;
     input->input_field_1_3 = FALSE;
@@ -117,6 +118,8 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
                 input->pressedAButton = TRUE;
             if (newKeys & B_BUTTON)
                 input->pressedBButton = TRUE;
+            if (newKeys & R_BUTTON && !FlagGet(DN_FLAG_SEARCHING))
+                input->pressedRButton = TRUE;
         }
 
         if (heldKeys & (DPAD_UP | DPAD_DOWN | DPAD_LEFT | DPAD_RIGHT))
@@ -223,7 +226,14 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         ShowStartMenu();
         return TRUE;
     }
+    
+    if (input->tookStep && TryFindHiddenPokemon())
+        return TRUE;
+    
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
+        return TRUE;
+    
+    if (input->pressedRButton && TryStartDexNavSearch())
         return TRUE;
 
     if(input->input_field_1_2 && DEBUG_OVERWORLD_MENU && !DEBUG_OVERWORLD_IN_MENU)
@@ -231,6 +241,13 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         PlaySE(SE_WIN_OPEN);
         FreezeObjectEvents();
         Debug_ShowMainMenu();
+        return TRUE;
+    }
+
+    if (CanTriggerSpinEvolution())
+    {
+        ResetSpinTimer();
+        TrySpecialOverworldEvo(); // Special vars set in CanTriggerSpinEvolution.
         return TRUE;
     }
 
@@ -266,7 +283,7 @@ static u16 GetPlayerCurMetatileBehavior(int runningState)
 static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatileBehavior, u8 direction)
 {
     const u8 *script = GetInteractionScript(position, metatileBehavior, direction);
-    if (script == NULL)
+    if (script == NULL || Script_HasNoEffect(script))
         return FALSE;
 
     // Don't play interaction sound for certain scripts.
@@ -382,11 +399,9 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
     gSpecialVar_Facing = direction;
 
     if (InTrainerHill() == TRUE)
-    script = GetTrainerHillTrainerScript();
-    #if OW_ENABLE_NPC_FOLLOWERS
-    else if (objectEventId == GetFollowerNPCObjectId())
+        script = GetTrainerHillTrainerScript();
+    else if (PlayerHasFollowerNPC() && objectEventId == GetFollowerNPCObjectId())
         script = GetFollowerNPCScriptPointer();
-#endif
     else
         script = GetObjectEventScriptPointerByObjectEventId(objectEventId);
 
@@ -492,6 +507,20 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return EventScript_Questionnaire;
     if (MetatileBehavior_IsTrainerHillTimer(metatileBehavior) == TRUE)
         return EventScript_TrainerHillTimer;
+    if (MetatileBehavior_IsPokeMartSign(metatileBehavior) == TRUE)
+    {
+        if(direction != DIR_NORTH)
+            return NULL;
+        SetMsgSignPostAndVarFacing(direction);
+        return Common_EventScript_ShowPokemartSign;
+    }
+    if (MetatileBehavior_IsPokemonCenterSign(metatileBehavior) == TRUE)
+    {
+        if(direction != DIR_NORTH)
+            return NULL;
+        SetMsgSignPostAndVarFacing(direction);
+        return Common_EventScript_ShowPokemonCenterSign;
+    }
 
     elevation = position->elevation;
     if (elevation == MapGridGetElevationAt(position->x, position->y))
@@ -532,16 +561,13 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
 static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metatileBehavior, u8 direction)
 {
     if (FlagGet(FLAG_BADGE05_GET) == TRUE && PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE
-#if OW_ENABLE_NPC_FOLLOWERS
      && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF)
-#endif
-     )        return EventScript_UseSurf;
+     )
+        return EventScript_UseSurf;
 
-     if (MetatileBehavior_IsWaterfall(metatileBehavior) == TRUE
-     #if OW_ENABLE_NPC_FOLLOWERS
-          && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_WATERFALL)
-     #endif
-          )
+    if (MetatileBehavior_IsWaterfall(metatileBehavior) == TRUE
+     && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_WATERFALL)
+     )
     {
         if (FlagGet(FLAG_BADGE08_GET) == TRUE && IsPlayerSurfingNorth() == TRUE)
             return EventScript_UseWaterfall;
@@ -553,10 +579,9 @@ static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metati
 
 static bool32 TrySetupDiveDownScript(void)
 {
-    #if OW_ENABLE_NPC_FOLLOWERS
     if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_DIVE))
         return FALSE;
-#endif
+
     if (FlagGet(FLAG_BADGE07_GET) && TrySetDiveWarp() == 2)
     {
         ScriptContext_SetupScript(EventScript_UseDive);
@@ -567,10 +592,9 @@ static bool32 TrySetupDiveDownScript(void)
 
 static bool32 TrySetupDiveEmergeScript(void)
 {
-    #if OW_ENABLE_NPC_FOLLOWERS
     if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_DIVE))
         return FALSE;
-#endif
+
     if (FlagGet(FLAG_BADGE07_GET) && gMapHeader.mapType == MAP_TYPE_UNDERWATER && TrySetDiveWarp() == 1)
     {
         ScriptContext_SetupScript(EventScript_UseDiveUnderwater);
@@ -600,7 +624,12 @@ static bool8 TryStartCoordEventScript(struct MapPosition *position)
 
     if (script == NULL)
         return FALSE;
-    ScriptContext_SetupScript(script);
+
+    struct ScriptContext ctx;
+    if (!RunScriptImmediatelyUntilEffect(SCREFF_V1 | SCREFF_HARDWARE, script, &ctx))
+        return FALSE;
+
+    ScriptContext_ContinueScript(&ctx);
     return TRUE;
 }
 

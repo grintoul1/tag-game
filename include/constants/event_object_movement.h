@@ -355,7 +355,5 @@
 #define COPY_MOVE_JUMP2          8
 #define COPY_MOVE_EMPTY_1        9
 #define COPY_MOVE_EMPTY_2       10
-#define COPY_MOVE_ACRO_MOVE     11
-#define COPY_MOVE_MACH_MOVE     12
 
 #endif // GUARD_CONSTANTS_EVENT_OBJECT_MOVEMENT_H

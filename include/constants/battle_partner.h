@@ -10,5 +10,6 @@
 #define PARTNER_SHELLY              5
 #define PARTNER_ARCHIE              6
 #define PARTNER_MAXIE               7
+#define PARTNER_COUNT               8
 
 #endif  // GUARD_CONSTANTS_BATTLE_PARTNERS_H

@@ -18,6 +18,7 @@ void AllocateBattleResources(void)
         InitTrainerHillBattleStruct();
 
     gBattleStruct = AllocZeroed(sizeof(*gBattleStruct));
+    gAiBattleData = AllocZeroed(sizeof(*gAiBattleData));
 
 #if B_FLAG_SKY_BATTLE
     gBattleStruct->isSkyBattle = FlagGet(B_FLAG_SKY_BATTLE);
@@ -25,7 +26,6 @@ void AllocateBattleResources(void)
 
     gBattleResources = AllocZeroed(sizeof(*gBattleResources));
     gBattleResources->secretBase = AllocZeroed(sizeof(*gBattleResources->secretBase));
-    gBattleResources->flags = AllocZeroed(sizeof(*gBattleResources->flags));
     gBattleResources->battleScriptsStack = AllocZeroed(sizeof(*gBattleResources->battleScriptsStack));
     gBattleResources->battleCallbackStack = AllocZeroed(sizeof(*gBattleResources->battleCallbackStack));
     gBattleResources->beforeLvlUp = AllocZeroed(sizeof(*gBattleResources->beforeLvlUp));
@@ -56,9 +56,9 @@ void FreeBattleResources(void)
     if (gBattleResources != NULL)
     {
         FREE_AND_SET_NULL(gBattleStruct);
+        FREE_AND_SET_NULL(gAiBattleData);
 
         FREE_AND_SET_NULL(gBattleResources->secretBase);
-        FREE_AND_SET_NULL(gBattleResources->flags);
         FREE_AND_SET_NULL(gBattleResources->battleScriptsStack);
         FREE_AND_SET_NULL(gBattleResources->battleCallbackStack);
         FREE_AND_SET_NULL(gBattleResources->beforeLvlUp);
@@ -98,19 +98,19 @@ void AdjustFriendshipOnBattleFaint(u8 battler)
     if (gBattleMons[opposingBattlerId].level > gBattleMons[battler].level)
     {
         if (gBattleMons[opposingBattlerId].level - gBattleMons[battler].level > 29)
-            AdjustFriendship(&gPlayerParty[gBattlerPartyIndexes[battler]], FRIENDSHIP_EVENT_FAINT_LARGE);
+            AdjustFriendship(GetBattlerMon(battler), FRIENDSHIP_EVENT_FAINT_LARGE);
         else
-            AdjustFriendship(&gPlayerParty[gBattlerPartyIndexes[battler]], FRIENDSHIP_EVENT_FAINT_SMALL);
+            AdjustFriendship(GetBattlerMon(battler), FRIENDSHIP_EVENT_FAINT_SMALL);
     }
     else
     {
-        AdjustFriendship(&gPlayerParty[gBattlerPartyIndexes[battler]], FRIENDSHIP_EVENT_FAINT_SMALL);
+        AdjustFriendship(GetBattlerMon(battler), FRIENDSHIP_EVENT_FAINT_SMALL);
     }
 }
 
 void SwitchPartyOrderInGameMulti(u8 battler, u8 arg1)
 {
-    if (GetBattlerSide(battler) != B_SIDE_OPPONENT)
+    if (IsOnPlayerSide(battler))
     {
         s32 i;
         for (i = 0; i < (int)ARRAY_COUNT(gBattlePartyCurrentOrder); i++)

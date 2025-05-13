@@ -27,6 +27,13 @@ static const struct FollowerNPCSpriteGraphics gFollowerNPCAlternateSprites[] =
         .surfId = OBJ_EVENT_GFX_RIVAL_BRENDAN_SURFING,
         .underwaterId = OBJ_EVENT_GFX_BRENDAN_UNDERWATER,
     },
+    {
+        .normalId = OBJ_EVENT_GFX_GREEN_NORMAL,
+        .machBikeId = OBJ_EVENT_GFX_GREEN_MACH_BIKE,
+        .acroBikeId = OBJ_EVENT_GFX_GREEN_ACRO_BIKE,
+        .surfId = OBJ_EVENT_GFX_GREEN_SURFING,
+        .underwaterId = OBJ_EVENT_GFX_GREEN_UNDERWATER,
+    },
 
 };
 

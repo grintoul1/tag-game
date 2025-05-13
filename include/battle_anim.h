@@ -38,7 +38,7 @@ struct BattleAnimBgData
 struct BattleAnimBackground
 {
     const u32 *image;
-    const u32 *palette;
+    const u16 *palette;
     const u32 *tilemap;
 };
 
@@ -82,7 +82,7 @@ void LoadMoveBg(u16 bgId);
 // battle_intro.c
 void SetAnimBgAttribute(u8 bgId, u8 attributeId, u8 value);
 void DrawBattlerOnBg(int bgId, u8 x, u8 y, u8 battlerPosition, u8 paletteId, u8 *tiles, u16 *tilemap, u16 tilesOffset);
-void HandleIntroSlide(u8 terrainId);
+void HandleIntroSlide(u8 environmentId);
 int GetAnimBgAttribute(u8 bgId, u8 attributeId);
 
 // battle_anim_mons.c
@@ -165,7 +165,6 @@ void Trade_MoveSelectedMonToTarget(struct Sprite *sprite);
 void DestroyAnimVisualTaskAndDisableBlend(u8 taskId);
 void DestroySpriteAndFreeResources_(struct Sprite *sprite);
 void SetBattlerSpriteYOffsetFromOtherYScale(u8 spriteId, u8 otherSpriteId);
-u8 GetBattlerAtPosition(u8 position);
 void ConvertPosDataToTranslateLinearData(struct Sprite *sprite);
 void InitAnimFastLinearTranslationWithSpeedAndPos(struct Sprite *sprite);
 
@@ -241,7 +240,7 @@ bool32 IsCriticalCapture(void);
 
 // battle_anim_utility_funcs.c
 void InitStatsChangeAnimation(u8);
-void StartMonScrollingBgMask(u8 taskId, int unused, u16 scrollSpeed, u8 battler, bool8 includePartner, u8 numFadeSteps, u8 fadeStepDelay, u8 duration, const u32 *gfx, const u32 *tilemap, const u32 *palette);
+void StartMonScrollingBgMask(u8 taskId, int unused, u16 scrollSpeed, u8 battler, bool8 includePartner, u8 numFadeSteps, u8 fadeStepDelay, u8 duration, const u32 *gfx, const u32 *tilemap, const u16 *palette);
 
 // battle_anim_effects_1.c
 void AnimFalseSwipeSlice_Step3(struct Sprite *);
@@ -267,6 +266,7 @@ void AnimConversion(struct Sprite *sprite);
 void AnimCuttingSlice(struct Sprite *sprite);
 void AnimThoughtBubble(struct Sprite *sprite);
 void AnimTranslateLinearSingleSineWave(struct Sprite *sprite);
+void AnimTeraStarstormStars(struct Sprite *sprite);
 void AnimGrantingStars(struct Sprite *sprite);
 void AnimFollowMeFinger(struct Sprite *sprite);
 extern const union AnimCmd *const gRazorLeafParticleAnimTable[];
@@ -434,7 +434,7 @@ extern const struct OamData gOamData_AffineOff_ObjBlend_16x32;
 extern const struct OamData gOamData_AffineDouble_ObjBlend_32x8;
 
 extern const struct CompressedSpriteSheet gBattleAnimPicTable[];
-extern const struct CompressedSpritePalette gBattleAnimPaletteTable[];
+extern const struct SpritePalette gBattleAnimPaletteTable[];
 
 extern const struct SpriteTemplate gWaterHitSplatSpriteTemplate;
 
@@ -464,6 +464,7 @@ void AnimElectricPuff(struct Sprite *sprite);
 void AnimSparkElectricityFlashing(struct Sprite *sprite);
 void AnimGrowingShockWaveOrb(struct Sprite *sprite);
 void AnimElectricity(struct Sprite *);
+void AnimTask_VoltSwitch(struct Sprite* sprite);
 extern const union AffineAnimCmd *const gAffineAnims_GrowingElectricOrb[];
 extern const union AffineAnimCmd *const gAffineAnims_FlashingSpark[];
 extern const union AnimCmd *const gAnims_ThunderboltOrb[];

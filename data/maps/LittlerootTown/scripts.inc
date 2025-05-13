@@ -2059,7 +2059,7 @@ LittlerootTown_EventScript_GiveRunningShoes::
 # 1030 "data/maps/LittlerootTown/scripts.pory"
 	closemessage
 # 1031 "data/maps/LittlerootTown/scripts.pory"
-	setfollower 9, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
+	setfollowernpc 9, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
 # 1032 "data/maps/LittlerootTown/scripts.pory"
 	return
 # 1033 "data/maps/LittlerootTown/scripts.pory"

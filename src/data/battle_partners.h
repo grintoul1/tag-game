@@ -9,7 +9,7 @@
 #line 1 "src/data/battle_partners.party"
 
 #line 1
-    [PARTNER_NONE] =
+    [DIFFICULTY_NORMAL][PARTNER_NONE] =
     {
 #line 3
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
@@ -24,7 +24,7 @@
         },
     },
 #line 8
-    [PARTNER_STEVEN] =
+    [DIFFICULTY_NORMAL][PARTNER_STEVEN] =
     {
 #line 9
         .trainerName = _("STEVEN"),
@@ -104,7 +104,7 @@
         },
     },
 #line 45
-    [PARTNER_EMMIE] =
+    [DIFFICULTY_NORMAL][PARTNER_EMMIE] =
     {
 #line 46
         .trainerName = _("EMMIE"),
@@ -186,7 +186,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 82
-    [PARTNER_TABITHA] =
+    [DIFFICULTY_NORMAL][PARTNER_TABITHA] =
     {
 #line 83
         .trainerName = _("Tabitha"),
@@ -266,7 +266,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 119
-    [PARTNER_MATT] =
+    [DIFFICULTY_NORMAL][PARTNER_MATT] =
     {
 #line 120
         .trainerName = _("Matt"),
@@ -346,7 +346,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 156
-    [PARTNER_SHELLY] =
+    [DIFFICULTY_NORMAL][PARTNER_SHELLY] =
     {
 #line 157
         .trainerName = _("Shelly"),
@@ -428,7 +428,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 193
-    [PARTNER_ARCHIE] =
+    [DIFFICULTY_NORMAL][PARTNER_ARCHIE] =
     {
 #line 194
         .trainerName = _("Archie"),
@@ -508,7 +508,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 230
-    [PARTNER_MAXIE] =
+    [DIFFICULTY_NORMAL][PARTNER_MAXIE] =
     {
 #line 231
         .trainerName = _("Maxie"),

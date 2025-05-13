@@ -12,6 +12,7 @@
 #include "gpu_regs.h"
 #include "graphics.h"
 #include "main.h"
+#include "malloc.h"
 #include "m4a.h"
 #include "palette.h"
 #include "pokemon.h"
@@ -112,7 +113,7 @@ EWRAM_DATA static u16 sSoundAnimFramesToWait = 0;
 EWRAM_DATA static u8 sMonAnimTaskIdArray[2] = {0};
 EWRAM_DATA u8 gAnimMoveTurn = 0;
 EWRAM_DATA static u8 sAnimBackgroundFadeState = 0;
-EWRAM_DATA u16 gAnimMoveIndex = 0; // Set but unused.
+EWRAM_DATA u16 gAnimMoveIndex = 0;
 EWRAM_DATA u8 gBattleAnimAttacker = 0;
 EWRAM_DATA u8 gBattleAnimTarget = 0;
 EWRAM_DATA u16 gAnimBattlerSpecies[MAX_BATTLERS_COUNT] = {0};
@@ -303,7 +304,7 @@ void DoMoveAnim(u16 move)
     // Make sure the anim target of moves hitting everyone is at the opposite side.
     if (GetBattlerMoveTargetType(gBattlerAttacker, move) & MOVE_TARGET_FOES_AND_ALLY && IsDoubleBattle())
     {
-        while (GetBattlerSide(gBattleAnimAttacker) == GetBattlerSide(gBattleAnimTarget))
+        while (IsBattlerAlly(gBattleAnimAttacker, gBattleAnimTarget))
         {
             if (++gBattleAnimTarget >= MAX_BATTLERS_COUNT)
                 gBattleAnimTarget = 0;
@@ -369,12 +370,7 @@ void LaunchBattleAnimation(u32 animType, u32 animId)
         InitPrioritiesForVisibleBattlers();
         UpdateOamPriorityInAllHealthboxes(0, sAnimHideHpBoxes);
         for (i = 0; i < MAX_BATTLERS_COUNT; i++)
-        {
-            if (GetBattlerSide(i) != B_SIDE_PLAYER)
-                gAnimBattlerSpecies[i] = GetMonData(&gEnemyParty[gBattlerPartyIndexes[i]], MON_DATA_SPECIES);
-            else
-                gAnimBattlerSpecies[i] = GetMonData(&gPlayerParty[gBattlerPartyIndexes[i]], MON_DATA_SPECIES);
-        }
+            gAnimBattlerSpecies[i] = GetMonData(GetBattlerMon(i), MON_DATA_SPECIES);
     }
     else
     {
@@ -509,7 +505,7 @@ static void Cmd_loadspritegfx(void)
     sBattleAnimScriptPtr++;
     index = T1_READ_16(sBattleAnimScriptPtr);
     LoadCompressedSpriteSheetUsingHeap(&gBattleAnimPicTable[GET_TRUE_SPRITE_INDEX(index)]);
-    LoadCompressedSpritePaletteUsingHeap(&gBattleAnimPaletteTable[GET_TRUE_SPRITE_INDEX(index)]);
+    LoadSpritePalette(&gBattleAnimPaletteTable[GET_TRUE_SPRITE_INDEX(index)]);
     sBattleAnimScriptPtr += 2;
     AddSpriteIndex(GET_TRUE_SPRITE_INDEX(index));
     sAnimFramesToWait = 1;
@@ -567,7 +563,7 @@ static u8 GetBattleAnimMoveTargets(u8 battlerArgIndex, u8 *targets)
     case MOVE_TARGET_BOTH: // all opponents
         for (i = 0; i < gBattlersCount; i++)
         {
-            if (i != ignoredTgt && !IsAlly(i, ignoredTgt) && IS_ALIVE_AND_PRESENT(i))
+            if (i != ignoredTgt && !IsBattlerAlly(i, ignoredTgt) && IS_ALIVE_AND_PRESENT(i))
                 targets[numTargets++] = i + MAX_BATTLERS_COUNT;
         }
         break;
@@ -1521,7 +1517,7 @@ static void Cmd_fadetobgfromset(void)
 
     if (IsContest())
         gTasks[taskId].tBackgroundId = bg3;
-    else if (GetBattlerSide(gBattleAnimTarget) == B_SIDE_PLAYER)
+    else if (IsOnPlayerSide(gBattleAnimTarget))
         gTasks[taskId].tBackgroundId = bg2;
     else
         gTasks[taskId].tBackgroundId = bg1;
@@ -1570,23 +1566,21 @@ void LoadMoveBg(u16 bgId)
 {
     if (IsContest())
     {
+        void *decompressionBuffer = Alloc(0x800);
         const u32 *tilemap = gBattleAnimBackgroundTable[bgId].tilemap;
-        void *dmaSrc;
-        void *dmaDest;
 
-        LZDecompressWram(tilemap, gDecompressionBuffer);
-        RelocateBattleBgPal(GetBattleBgPaletteNum(), (void *)gDecompressionBuffer, 0x100, FALSE);
-        dmaSrc = gDecompressionBuffer;
-        dmaDest = (void *)BG_SCREEN_ADDR(26);
-        DmaCopy32(3, dmaSrc, dmaDest, 0x800);
+        LZDecompressWram(tilemap, decompressionBuffer);
+        RelocateBattleBgPal(GetBattleBgPaletteNum(), decompressionBuffer, 0x100, FALSE);
+        DmaCopy32(3, decompressionBuffer, (void *)BG_SCREEN_ADDR(26), 0x800);
         LZDecompressVram(gBattleAnimBackgroundTable[bgId].image, (void *)BG_SCREEN_ADDR(4));
-        LoadCompressedPalette(gBattleAnimBackgroundTable[bgId].palette, BG_PLTT_ID(GetBattleBgPaletteNum()), PLTT_SIZE_4BPP);
+        LoadPalette(gBattleAnimBackgroundTable[bgId].palette, BG_PLTT_ID(GetBattleBgPaletteNum()), PLTT_SIZE_4BPP);
+        Free(decompressionBuffer);
     }
     else
     {
         LZDecompressVram(gBattleAnimBackgroundTable[bgId].tilemap, (void *)BG_SCREEN_ADDR(26));
         LZDecompressVram(gBattleAnimBackgroundTable[bgId].image, (void *)BG_CHAR_ADDR(2));
-        LoadCompressedPalette(gBattleAnimBackgroundTable[bgId].palette, BG_PLTT_ID(2), PLTT_SIZE_4BPP);
+        LoadPalette(gBattleAnimBackgroundTable[bgId].palette, BG_PLTT_ID(2), PLTT_SIZE_4BPP);
     }
 }
 
@@ -1650,7 +1644,7 @@ s8 BattleAnimAdjustPanning(s8 pan)
 {
     if (!IsContest() && gBattleSpritesDataPtr->healthBoxesData[gBattleAnimAttacker].statusAnimActive)
     {
-        if (GetBattlerSide(gBattleAnimAttacker) != B_SIDE_PLAYER)
+        if (!IsOnPlayerSide(gBattleAnimAttacker))
             pan = SOUND_PAN_TARGET;
         else
             pan = SOUND_PAN_ATTACKER;
@@ -1660,9 +1654,9 @@ s8 BattleAnimAdjustPanning(s8 pan)
         if (gBattleAnimAttacker != gBattleAnimTarget || gBattleAnimAttacker != 2 || pan != SOUND_PAN_TARGET)
             pan *= -1;
     }
-    else if (GetBattlerSide(gBattleAnimAttacker) == B_SIDE_PLAYER)
+    else if (IsOnPlayerSide(gBattleAnimAttacker))
     {
-        if (GetBattlerSide(gBattleAnimTarget) == B_SIDE_PLAYER)
+        if (IsOnPlayerSide(gBattleAnimTarget))
         {
             if (pan == SOUND_PAN_TARGET)
                 pan = SOUND_PAN_ATTACKER;
@@ -1670,7 +1664,7 @@ s8 BattleAnimAdjustPanning(s8 pan)
                 pan *= -1;
         }
     }
-    else if (GetBattlerSide(gBattleAnimTarget) == B_SIDE_OPPONENT)
+    else if (!IsOnPlayerSide(gBattleAnimTarget))
     {
         if (pan == SOUND_PAN_ATTACKER)
             pan = SOUND_PAN_TARGET;
@@ -1692,14 +1686,14 @@ s8 BattleAnimAdjustPanning2(s8 pan)
 {
     if (!IsContest() && gBattleSpritesDataPtr->healthBoxesData[gBattleAnimAttacker].statusAnimActive)
     {
-        if (GetBattlerSide(gBattleAnimAttacker) != B_SIDE_PLAYER)
+        if (!IsOnPlayerSide(gBattleAnimAttacker))
             pan = SOUND_PAN_TARGET;
         else
             pan = SOUND_PAN_ATTACKER;
     }
     else
     {
-        if (GetBattlerSide(gBattleAnimAttacker) != B_SIDE_PLAYER || IsContest())
+        if (!IsOnPlayerSide(gBattleAnimAttacker) || IsContest())
             pan = -pan;
     }
     return pan;
@@ -2113,7 +2107,7 @@ static void Cmd_splitbgprio_foes(void)
     sBattleAnimScriptPtr += 2;
 
     // Apply only if the attacking the opposing side
-    if (GetBattlerSide(gBattleAnimAttacker) != GetBattlerSide(gBattleAnimTarget))
+    if (!IsBattlerAlly(gBattleAnimAttacker, gBattleAnimTarget))
     {
         if (wantedBattler != ANIM_ATTACKER)
             battlerId = gBattleAnimTarget;
@@ -2163,8 +2157,7 @@ static void Cmd_teamattack_moveback(void)
     sBattleAnimScriptPtr += 2;
 
     // Apply to double battles when attacking own side
-    if (!IsContest() && IsDoubleBattle()
-     && GetBattlerSide(gBattleAnimAttacker) == GetBattlerSide(gBattleAnimTarget))
+    if (!IsContest() && IsDoubleBattle() && IsBattlerAlly(gBattleAnimAttacker, gBattleAnimTarget))
     {
         if (wantedBattler == ANIM_ATTACKER)
         {
@@ -2201,7 +2194,7 @@ static void Cmd_teamattack_movefwd(void)
 
     // Apply to double battles when attacking own side
     if (!IsContest() && IsDoubleBattle()
-     && GetBattlerSide(gBattleAnimAttacker) == GetBattlerSide(gBattleAnimTarget))
+     && IsBattlerAlly(gBattleAnimAttacker, gBattleAnimTarget))
     {
         if (wantedBattler == ANIM_ATTACKER)
         {
@@ -2230,7 +2223,7 @@ static void Cmd_jumpifmovetypeequal(void)
 {
     const u8 *type = sBattleAnimScriptPtr + 1;
     sBattleAnimScriptPtr += 2;
-    if (*type != GetMoveType(gCurrentMove))
+    if (*type != GetBattleMoveType(gCurrentMove))
         sBattleAnimScriptPtr += 4;
     else
         sBattleAnimScriptPtr = T2_READ_PTR(sBattleAnimScriptPtr);
@@ -2243,7 +2236,7 @@ static void Cmd_createdragondartsprite(void)
     u8 argVar;
     u8 argsCount;
     s16 subpriority;
-    struct Pokemon *party = GetBattlerParty(gBattleAnimAttacker);
+    struct Pokemon *mon = GetBattlerMon(gBattleAnimAttacker);
 
     sBattleAnimScriptPtr++;
 
@@ -2260,15 +2253,15 @@ static void Cmd_createdragondartsprite(void)
 
     subpriority = GetSubpriorityForMoveAnim(argVar);
 
-    if (GetMonData(&party[gBattlerPartyIndexes[gBattleAnimAttacker]], MON_DATA_SPECIES) == SPECIES_DRAGAPULT)
+    if (GetMonData(mon, MON_DATA_SPECIES) == SPECIES_DRAGAPULT)
     {
         template.tileTag = ANIM_TAG_DREEPY;
-        if (IsMonShiny(&party[gBattlerPartyIndexes[gBattleAnimAttacker]]) == TRUE)
+        if (IsMonShiny(mon) == TRUE)
             template.paletteTag = ANIM_TAG_DREEPY_SHINY;
         else
             template.paletteTag = ANIM_TAG_DREEPY;
         template.oam = &gOamData_AffineOff_ObjNormal_32x32;
-        if (GetBattlerSide(gBattleAnimAttacker) == B_SIDE_OPPONENT)
+        if (!IsOnPlayerSide(gBattleAnimAttacker))
             template.anims = gAnims_DreepyMissileOpponent;
         else
             template.anims = gAnims_DreepyMissilePlayer;
@@ -2278,7 +2271,7 @@ static void Cmd_createdragondartsprite(void)
         template.tileTag = ANIM_TAG_AIR_WAVE;
         template.paletteTag = ANIM_TAG_DREEPY;
         template.oam = &gOamData_AffineOff_ObjNormal_32x16;
-        if (GetBattlerSide(gBattleAnimAttacker) == B_SIDE_OPPONENT)
+        if (!IsOnPlayerSide(gBattleAnimAttacker))
             template.anims = gAnims_DreepyMissileOpponentNotDrag;
         else
             template.anims = gAnims_DreepyMissilePlayer;
