@@ -1190,18 +1190,7 @@ extern void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount);
 
 void BattleSetup_StartTrainerBattle(void)
 {
-    s32 i;
-    u16 trainerId=0;
-    if (trainerId == TRAINER_EMMIE_1
-            || trainerId == TRAINER_EMMIE_2
-            || trainerId == TRAINER_EMMIE_3)
-    {
-        ZeroEnemyPartyMons();
-        FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0, 5);
-        for (i = 0; i < 5; i++)
-            CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-    }
-    else if (gNoOfApproachingTrainers == 2)
+    if (gNoOfApproachingTrainers == 2)
     {
         if (FollowerNPCIsBattlePartner())
             gBattleTypeFlags = (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TRAINER);

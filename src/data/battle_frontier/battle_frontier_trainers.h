@@ -377,25 +377,25 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechLose = {EC_WORD_OH_DEAR, EC_WORD_I_AM, EC_WORD_SO, EC_WORD_SORRY, EC_WORD_ABOUT, EC_WORD_THIS},
         .monSet = (const u16[]){FRONTIER_MONS_SCHOOL_KID_1}
     },
-    [FRONTIER_TRAINER_MARISA] = {
-        .facilityClass = FACILITY_CLASS_PKMN_BREEDER_F,
-        .trainerName = _("MARISA"),
+    [FRONTIER_TRAINER_EMMIE_1] = {
+        .facilityClass = FACILITY_CLASS_PKMN_TRAINER_2,
+        .trainerName = _("Emmie"),
         .speechBefore = {EC_WORD_I, EC_WORD_PROMISE, EC_WORD_TO, EC_WORD_BATTLE, EC_WORD_SERIOUSLY, EC_EMPTY_WORD},
         .speechWin = {EC_WORD_PROMISE, EC_WORD_ME, EC_WORD_YOU, EC_WORD_WILL, EC_WORD_DO, EC_WORD_BETTER},
         .speechLose = {EC_WORD_PROMISE, EC_WORD_ME, EC_WORD_ANOTHER, EC_WORD_BATTLE, EC_WORD_PLEASE, EC_WORD_EXCL},
         .monSet = (const u16[]){FRONTIER_MONS_CAMPER_PICNICKER_1}
     },
-    [FRONTIER_TRAINER_LEWIS] = {
-        .facilityClass = FACILITY_CLASS_BUG_CATCHER,
-        .trainerName = _("LEWIS"),
+    [FRONTIER_TRAINER_EMMIE_2] = {
+        .facilityClass = FACILITY_CLASS_PKMN_TRAINER_2,
+        .trainerName = _("Emmie"),
         .speechBefore = {EC_WORD_A_LITTLE, EC_WORD_BUG, EC_WORD_IS, EC_WORD_SCARY, EC_WORD_QUES, EC_WORD_HAHAHA},
         .speechWin = {EC_WORD_LOOK, EC_WORD_LOOK, EC_WORD_EXCL, EC_WORD_A, EC_WORD_SCARY, EC_WORD_BUG},
         .speechLose = {EC_WORD_OH, EC_WORD_A, EC_WORD_BUG, EC_WORD_ISN_T, EC_WORD_SCARY, EC_WORD_ELLIPSIS},
         .monSet = (const u16[]){FRONTIER_MONS_BUG_CATCHER_1_EXTRA(METAPOD, KAKUNA)}
     },
-    [FRONTIER_TRAINER_YOSHI] = {
-        .facilityClass = FACILITY_CLASS_BUG_CATCHER,
-        .trainerName = _("YOSHI"),
+    [FRONTIER_TRAINER_EMMIE_3] = {
+        .facilityClass = FACILITY_CLASS_PKMN_TRAINER_2,
+        .trainerName = _("Emmie"),
         .speechBefore = {EC_WORD_BUG, EC_WORD_POKEMON, EC_WORD_MAKE, EC_WORD_ME, EC_WORD_FEELING, EC_WORD_LOVEY_DOVEY},
         .speechWin = {EC_WORD_BUG, EC_WORD_POKEMON, EC_WORD_ARE, EC_WORD_THE, EC_WORD_BEST, EC_WORD_EXCL},
         .speechLose = {EC_WORD_YOU_RE, EC_WORD_IGNORANT, EC_WORD_ABOUT, EC_WORD_BUG, EC_WORD_POKEMON, EC_EMPTY_WORD},

@@ -677,7 +677,11 @@ Common_EventScript_UpdateBrineyLocation::
 	return
 
 Common_EventScript_Emmie::
-	trainerbattle_double TRAINER_EMMIE_1, Route102_Text_WallyIDidIt, Route102_Text_WallyIDidIt, Route102_Text_WallyIDidIt
+	changefollowerbattler PARTNER_NONE
+	setvar VAR_0x8004, SPECIAL_BATTLE_EMMIE
+	setvar VAR_0x8005, TRAINER_EMMIE_1
+	special DoSpecialTrainerBattle	
+	changefollowerbattler PARTNER_EMMIE
 	end
 
 EventScript_SetBrineyLocation_House::

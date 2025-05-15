@@ -2106,6 +2106,7 @@ void DoSpecialTrainerBattle(void)
             gBattleScripting.specialTrainerBattleType = 0xFF;
         break;
     case SPECIAL_BATTLE_EMMIE:
+    (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_1);
     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER;
     FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0, 5);
         for (i = 0; i < 5; i++)
@@ -2113,7 +2114,7 @@ void DoSpecialTrainerBattle(void)
             gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
     CreateTask(Task_StartBattleAfterTransition, 1);
         PlayMapChosenOrBattleBGM(471);
-        BattleTransition_StartOnField(GetSpecialBattleTransition(B_TRANSITION_MUGSHOT));
+        BattleTransition_StartOnField(GetTrainerBattleTransition());
         break;
     }
 }
