@@ -11,7 +11,7 @@
 # 6 "data/maps/PetalburgCity/scripts.pory"
 .set LOCALID_SCOTT, 9
 # 7 "data/maps/PetalburgCity/scripts.pory"
-.set LOCALID_CUTSCENE_EMMIE, 15
+.set LOCALID_CUTSCENE_EMMIE, 11
 # 8 "data/maps/PetalburgCity/scripts.pory"
 
 # 9 "data/maps/PetalburgCity/scripts.pory"

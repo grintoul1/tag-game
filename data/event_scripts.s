@@ -677,6 +677,7 @@ Common_EventScript_UpdateBrineyLocation::
 	return
 
 Common_EventScript_Emmie::
+	trainerbattle_double TRAINER_EMMIE_1, Route102_Text_WallyIDidIt, Route102_Text_WallyIDidIt, Route102_Text_WallyIDidIt
 	end
 
 EventScript_SetBrineyLocation_House::

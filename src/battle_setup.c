@@ -1070,9 +1070,7 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
             TRAINER_BATTLE_PARAM.opponentB = LocalIdToPyramidTrainerId(gSpecialVar_LastTalked);
         }
         return EventScript_TryDoNormalTrainerBattle;
-    case TRAINER_BATTLE_SET_TRAINER_A:
-        return sTrainerBattleEndScript;
-    case TRAINER_BATTLE_SET_TRAINER_B:
+    case TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE:
         return sTrainerBattleEndScript;
     case TRAINER_BATTLE_HILL:
         if (gApproachingTrainerId == 0)
@@ -1186,9 +1184,24 @@ void ClearTrainerFlag(u16 trainerId)
     FlagClear(TRAINER_FLAGS_START + trainerId);
 }
 
+extern void CopyMon(void *dest, void *src, size_t size);
+
+extern void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount);
+
 void BattleSetup_StartTrainerBattle(void)
 {
-    if (gNoOfApproachingTrainers == 2)
+    s32 i;
+    u16 trainerId=0;
+    if (trainerId == TRAINER_EMMIE_1
+            || trainerId == TRAINER_EMMIE_2
+            || trainerId == TRAINER_EMMIE_3)
+    {
+        ZeroEnemyPartyMons();
+        FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0, 5);
+        for (i = 0; i < 5; i++)
+            CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+    }
+    else if (gNoOfApproachingTrainers == 2)
     {
         if (FollowerNPCIsBattlePartner())
             gBattleTypeFlags = (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TRAINER);
@@ -1207,7 +1220,6 @@ void BattleSetup_StartTrainerBattle(void)
             gBattleTypeFlags = (BATTLE_TYPE_TRAINER);
         }
     }
-
     if (InBattlePyramid())
     {
         VarSet(VAR_TEMP_PLAYING_PYRAMID_MUSIC, 0);
@@ -1477,6 +1489,9 @@ void PlayTrainerEncounterMusic(void)
             break;
         case TRAINER_ENCOUNTER_MUSIC_RICH:
             music = MUS_ENCOUNTER_RICH;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_PKMN_TRAINER_2:
+            music = MUS_NONE;
             break;
         default:
             music = MUS_ENCOUNTER_SUSPICIOUS;

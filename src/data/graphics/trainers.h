@@ -221,7 +221,7 @@ const u32 gTrainerFrontPic_May[] = INCBIN_U32("graphics/trainers/front_pics/may.
 const u16 gTrainerPalette_May[] = INCBIN_U16("graphics/trainers/palettes/may.gbapal");
 
 const u32 gTrainerFrontPic_Green[] = INCBIN_U32("graphics/trainers/front_pics/green.4bpp.lz");
-const u16 gTrainerPalette_Green[] = INCBIN_U16("graphics/trainers/palettes/green.gbapal.lz");
+const u16 gTrainerPalette_Green[] = INCBIN_U16("graphics/trainers/palettes/green.gbapal");
 
 const u32 gTrainerFrontPic_BugCatcher[] = INCBIN_U32("graphics/trainers/front_pics/bug_catcher.4bpp.lz");
 const u16 gTrainerPalette_BugCatcher[] = INCBIN_U16("graphics/trainers/front_pics/bug_catcher.gbapal");
@@ -297,9 +297,9 @@ const u8 gTrainerBackPic_AquaLeaderArchie[] = INCBIN_U8("graphics/trainers/back_
 
 const u16 gTrainerBackPicPalette_Red[] = INCBIN_U16("graphics/trainers/back_pics/red.gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCBIN_U16("graphics/trainers/back_pics/leaf.gbapal");
-const u16 gTrainerBackPicPalette_Green[] = INCBIN_U16("graphics/trainers/back_pics/green.gbapal.lz");
-const u16 gTrainerBackPicPalette_MagmaLeaderMaxie[] = INCBIN_U16("graphics/trainers/back_pics/magma_leader_maxie.gbapal.lz");
-const u16 gTrainerBackPicPalette_AquaLeaderArchie[] = INCBIN_U16("graphics/trainers/back_pics/aqua_leader_archie.gbapal.lz");
+const u16 gTrainerBackPicPalette_Green[] = INCBIN_U16("graphics/trainers/back_pics/green.gbapal");
+const u16 gTrainerBackPicPalette_MagmaLeaderMaxie[] = INCBIN_U16("graphics/trainers/back_pics/magma_leader_maxie.gbapal");
+const u16 gTrainerBackPicPalette_AquaLeaderArchie[] = INCBIN_U16("graphics/trainers/back_pics/aqua_leader_archie.gbapal");
 
 // The first two parameters invoke a front pic and palette by
 // calling a "TRAINER_PIC" constant (e.g. TRAINER_PIC_HIKER), and

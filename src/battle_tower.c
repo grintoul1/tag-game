@@ -2105,6 +2105,16 @@ void DoSpecialTrainerBattle(void)
         if (gSpecialVar_0x8005 & MULTI_BATTLE_CHOOSE_MONS) // Skip mons restoring(done in the script)
             gBattleScripting.specialTrainerBattleType = 0xFF;
         break;
+    case SPECIAL_BATTLE_EMMIE:
+    gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER;
+    FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0, 5);
+        for (i = 0; i < 5; i++)
+            CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+    CreateTask(Task_StartBattleAfterTransition, 1);
+        PlayMapChosenOrBattleBGM(471);
+        BattleTransition_StartOnField(GetSpecialBattleTransition(B_TRANSITION_MUGSHOT));
+        break;
     }
 }
 
@@ -2956,6 +2966,9 @@ void TryHideBattleTowerReporter(void)
 }
 
 #define STEVEN_OTID 61226
+#define EMMIE_OTID 99999
+
+extern void CopyMon(void *dest, void *src, size_t size);
 
 void FillPartnerParty(u16 trainerId)
 {
@@ -2967,7 +2980,63 @@ void FillPartnerParty(u16 trainerId)
     u8 trainerName[(PLAYER_NAME_LENGTH * 3) + 1];
     s32 ball = -1;
     enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(trainerId);
+    u8 nickname[POKEMON_NAME_LENGTH * 2];
     SetFacilityPtrsGetLevel();
+    if (trainerId == TRAINER_PARTNER(PARTNER_EMMIE))
+    {
+        for (i = 0; i < 3 && i < gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].partySize; i++)
+            {
+                const struct TrainerMon *partyData = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].party;
+                const u8 *partnerName = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName;
+                for (k = 0; partnerName[k] != EOS && k < 3; k++)
+                {
+                    if (k == 0)
+                    {
+                        firstIdPart = partnerName[k];
+                        secondIdPart = partnerName[k];
+                        thirdIdPart = partnerName[k];
+                    }
+                    else if (k == 1)
+                    {
+                        secondIdPart = partnerName[k];
+                        thirdIdPart = partnerName[k];
+                    }
+                    else if (k == 2)
+                    {
+                        thirdIdPart = partnerName[k];
+                    }
+                }
+            otID = EMMIE_OTID;
+
+            personality = Random32();
+            if (partyData[i].gender == TRAINER_MON_MALE)
+                personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[i].species);
+            else if (partyData[i].gender == TRAINER_MON_FEMALE)
+                personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
+            ModifyPersonalityForNature(&personality, GetMonData(&gPlayerParty[i+3], MON_DATA_HIDDEN_NATURE, NULL));
+            CopyMon(&gPlayerParty[i+3], &gPlayerParty[i+3], sizeof(*&gPlayerParty[i+3]));
+            
+            j = GetMonData(&gPlayerParty[i+3], MON_DATA_MAX_HP, NULL);
+            SetMonData(&gPlayerParty[i + 3], MON_DATA_HP, &j);
+            j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE1, NULL)].pp;
+            SetMonData(&gPlayerParty[i + 3], MON_DATA_PP1, &j);
+            j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE2, NULL)].pp;
+            SetMonData(&gPlayerParty[i + 3], MON_DATA_PP2, &j);
+            j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE3, NULL)].pp;
+            SetMonData(&gPlayerParty[i + 3], MON_DATA_PP3, &j);
+            j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE4, NULL)].pp;
+            SetMonData(&gPlayerParty[i + 3], MON_DATA_PP4, &j);
+            
+            // Currently included just to get rid of "variable not used" error...
+            if (GetMonData(&gPlayerParty[i+3], MON_DATA_NICKNAME, nickname) != SPECIES_NONE)
+            {
+                GetMonData(&gPlayerParty[i+3], MON_DATA_NICKNAME, nickname);
+                SetMonData(&gPlayerParty[i + 3], MON_DATA_NICKNAME, nickname);
+            }
+            }
+    }
+
+    else
 
     if (trainerId > TRAINER_PARTNER(PARTNER_NONE))
     {

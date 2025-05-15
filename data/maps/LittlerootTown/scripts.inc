@@ -991,7 +991,7 @@ LittlerootTown_EventScript_GiveRunningShoesTrigger::
 # 496 "data/maps/LittlerootTown/scripts.pory"
 	checkplayergender
 # 497 "data/maps/LittlerootTown/scripts.pory"
-	applymovement LOCALID_EMMIE, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterDown
 # 498 "data/maps/LittlerootTown/scripts.pory"
 	waitmovement 0
 # 499 "data/maps/LittlerootTown/scripts.pory"

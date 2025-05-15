@@ -17,7 +17,8 @@
 #define PARTY_LAYOUT_DOUBLE          1
 #define PARTY_LAYOUT_MULTI           2
 #define PARTY_LAYOUT_MULTI_SHOWCASE  3  // The layout during the screen that appears just before a multi battle
-#define PARTY_LAYOUT_COUNT           4
+#define PARTY_LAYOUT_MIRROR          4  // The layout during the screen that appears just before Emmie mirror battle
+#define PARTY_LAYOUT_COUNT           5
 #define KEEP_PARTY_LAYOUT            0xFF
 
 #define PARTY_MENU_TYPE_FIELD                     0

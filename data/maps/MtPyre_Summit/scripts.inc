@@ -1005,9 +1005,6 @@ MtPyre_Summit_EventScript_Grunt_Mt_Pyre_3Grunt_Mt_Pyre_4Victory::
 
 MtPyre_Summit_EventScript_MattTabitha::
 	lockall
-	setobjectmovementtype LOCALID_TABITHA, MOVEMENT_TYPE_FACE_LEFT
-	setobjectmovementtype LOCALID_MATT, MOVEMENT_TYPE_FACE_RIGHT
-	waitmovement 0
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
 	msgbox MtPyre_Summit_Text_TabithaAllYouGot, MSGBOX_DEFAULT
 	closemessage

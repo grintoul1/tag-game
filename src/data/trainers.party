@@ -890,13 +890,14 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Sand Attack
 - Poison Sting
 
-=== TRAINER_DUSTY_2 ===
-Name: DUSTY
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
-Double Battle: No
+=== TRAINER_EMMIE_1 ===
+Name: Emmie
+Class: Pkmn Trainer 2
+Pic: Green
+Gender: Female
+Mugshot: Pink
+Music: Pkmn Trainer 2
+Double Battle: Yes
 AI: Check Bad Move
 
 Sandslash
@@ -907,13 +908,14 @@ IVs: 7 HP / 7 Atk / 7 Def / 7 SpA / 7 SpD / 7 Spe
 - Sand Attack
 - Poison Sting
 
-=== TRAINER_DUSTY_3 ===
-Name: DUSTY
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
-Double Battle: No
+=== TRAINER_EMMIE_2 ===
+Name: Emmie
+Class: Pkmn Trainer 2
+Pic: Green
+Gender: Female
+Mugshot: Pink
+Music: Pkmn Trainer 2
+Double Battle: Yes
 AI: Check Bad Move
 
 Sandslash
@@ -924,13 +926,14 @@ IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
 - Sand Attack
 - Poison Sting
 
-=== TRAINER_DUSTY_4 ===
-Name: DUSTY
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
-Double Battle: No
+=== TRAINER_EMMIE_3 ===
+Name: Emmie
+Class: Pkmn Trainer 2
+Pic: Green
+Gender: Female
+Mugshot: Pink
+Music: Pkmn Trainer 2
+Double Battle: Yes
 AI: Check Bad Move
 
 Sandslash
@@ -9845,6 +9848,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 Name: MAY
 Class: Rival
 Pic: May
+Mugshot: Pink
 Gender: Female
 Music: Female
 Double Battle: No
