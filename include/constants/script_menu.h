@@ -98,8 +98,8 @@
 #define MULTI_FRONTIER_GAMBLER_BET         87
 #define MULTI_TENT                         88
 #define MULTI_PYRE_FIGHT                   89 // Used to choose which evil team leader is fought on Mt Pyre summit
-#define MULTI_UNUSED_SSTIDAL_2             90 //
-#define MULTI_UNUSED_SSTIDAL_3             91 //
+#define MULTI_EMMIE_ARE_YOU_READY          90 // Used to choose whether player is ready to fight Emmie or whether more information needed
+#define MULTI_EMMIE_INFORMATION            91 // Used to choose which information the player needs about the Emmie battles
 #define MULTI_UNUSED_SSTIDAL_4             92 //
 #define MULTI_FOSSIL                       93
 #define MULTI_YESNO                        94

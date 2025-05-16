@@ -307,6 +307,10 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_EMMIE
 	clearflag FLAG_HIDE_PETALBURG_GYM_CUTSCENE_EMMIE
 	setflag FLAG_HIDE_PETALBURG_CITY_CUTSCENE_EMMIE
+	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
+	clearflag FLAG_EMMIE_BATTLE_1
+	clearflag FLAG_EMMIE_BATTLE_2
+	clearflag FLAG_EMMIE_BATTLE_3
 	destroyfollowernpc
 	call EventScript_ResetAllBerries
 	end

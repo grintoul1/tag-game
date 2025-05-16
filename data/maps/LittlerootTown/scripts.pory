@@ -516,7 +516,7 @@ LittlerootTown_EventScript_EmmieIntroduction::
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
 	givemon SPECIES_STUFFUL, 5, ITEM_NONE, ITEM_POKE_BALL, , 0
 	call LittlerootTown_EventScript_SendStuffulParty
-	givemon SPECIES_SKITTY, 5, ITEM_MOON_STONE, ITEM_POKE_BALL, , 1
+	givemon SPECIES_SKITTY, 5, ITEM_MOON_STONE, ITEM_POKE_BALL
 	call LittlerootTown_EventScript_SendSkittyParty
 	givemon SPECIES_EEVEE, 5
 	call LittlerootTown_EventScript_SendEeveeParty
@@ -1007,6 +1007,9 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	waitfanfare
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	msgbox LittlerootTown_Text_ExplainRunningShoes, MSGBOX_DEFAULT
+	msgbox LittlerootTown_Text_TakeFishingRod, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_SUPER_ROD
 	msgbox LittlerootTown_Text_SoWillYourSister, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterDown
@@ -1069,13 +1072,17 @@ LittlerootTown_Text_ExplainRunningShoes:
 	.string "“Slip on these RUNNING SHOES and race\n"
 	.string "in the great outdoors!”$"
 
+LittlerootTown_Text_TakeFishingRod:
+	.string "Your father left this at home too.\n"
+	.string "You may as well have it!$"
+
 LittlerootTown_Text_SoWillYourSister:
 	.string "… … … … … … … …\n"
 	.string "… … … … … … … …\p"
 	.string "To think that you have your very own\n"
 	.string "POKéMON now…\p"
-	.string "Your father will be overjoyed.\n"
-	.string "So will your sister!\p"
+	.string "Your father will be overjoyed., and so\n"
+	.string "will your sister!\p"
 	.string "She's been so excited to take you out\n"
 	.string "to see the world.$"
 

@@ -49,7 +49,7 @@ Route110_SeasideCyclingRoadNorthEntrance_EventScript_BikeCheck::
 # 25 "data/maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.pory"
 	call_if_eq VAR_RESULT, 2, Route110_SeasideCyclingRoadNorthEntrance_EventScript_OnMachBike
 # 26 "data/maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.pory"
-	goto_if_eq VAR_RESULT, 0, Route110_SeasideCyclingRoadNorthEntrance_EventScript_NoBike
+	goto_if_lt VAR_RESULT, 2, Route110_SeasideCyclingRoadNorthEntrance_EventScript_NoBike
 # 27 "data/maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.pory"
 	setflag FLAG_SYS_CYCLING_ROAD
 # 28 "data/maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.pory"

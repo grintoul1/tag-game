@@ -47,6 +47,8 @@ waitmovement 0
 removeobject LOCALID_MATT
 removeobject LOCALID_SHELLY
 addvar VAR_PETALBURG_WOODS_STATE, 1
+setvar VAR_EMMIE_BATTLE_STATE, 1
+setflag FLAG_EMMIE_BATTLE_1
 end
 
 PetalburgWoods_EventScript_DevonResearcherLeft::

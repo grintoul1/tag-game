@@ -95,6 +95,7 @@ RusturfTunnel_EventScript_BoyfriendApproachWanda2::
 
 RusturfTunnel_EventScript_BoyfriendApproachWanda3::
 	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, RusturfTunnel_Movement_PlayerWatchBoyfriend
 	applymovement LOCALID_WANDAS_BF, RusturfTunnel_Movement_BoyfriendApproachWanda
 	waitmovement 0
 	applymovement LOCALID_WANDA, Common_Movement_WalkInPlaceFasterDown
@@ -130,6 +131,7 @@ RusturfTunnel_EventScript_WandaAndBoyfriendExit1::
 
 RusturfTunnel_EventScript_WandaAndBoyfriendExit::
 	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchWandaExit
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, RusturfTunnel_Movement_PlayerWatchWandaExit
 	applymovement LOCALID_WANDA, RusturfTunnel_Movement_WandaExit
 	applymovement LOCALID_WANDAS_BF, RusturfTunnel_Movement_WandasBoyfriendExit
 	waitmovement 0

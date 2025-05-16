@@ -1567,7 +1567,7 @@ PetalburgCity_Text_GymSign:
 # 784 "data/maps/PetalburgCity/scripts.pory"
 	.string "PETALBURG CITY POKéMON GYM\n"
 # 785 "data/maps/PetalburgCity/scripts.pory"
-	.string "LEADER: NORMAN\l"
+	.string "Leader: NORMAN\l"
 # 786 "data/maps/PetalburgCity/scripts.pory"
 	.string "“A man in pursuit of power!”$"
 # 787 "data/maps/PetalburgCity/scripts.pory"

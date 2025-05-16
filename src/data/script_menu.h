@@ -575,17 +575,18 @@ static const struct MenuAction MultichoiceList_PyreLeaderChoice[] =
     {gText_PyreMaxie},
 };
 
-static const struct MenuAction MultichoiceList_UnusedSSTidal2[] =
+static const struct MenuAction MultichoiceList_EmmieAreYouReady[] =
 {
-    {gText_SouthernIsland},
-    {gText_FarawayIsland},
+    {gText_Battle},
+    {gText_Info},
     {gText_Exit},
 };
 
-static const struct MenuAction MultichoiceList_UnusedSSTidal3[] =
+static const struct MenuAction MultichoiceList_EmmieInformation[] =
 {
-    {gText_BirthIsland},
-    {gText_FarawayIsland},
+    {gText_BattleRules},
+    {gText_Items},
+    {gText_PokemonNature},
     {gText_Exit},
 };
 
@@ -880,8 +881,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FRONTIER_GAMBLER_BET]       = MULTICHOICE(MultichoiceList_FrontierGamblerBet),
     [MULTI_TENT]                       = MULTICHOICE(MultichoiceList_Tent),
     [MULTI_PYRE_FIGHT]                 = MULTICHOICE(MultichoiceList_PyreLeaderChoice),
-    [MULTI_UNUSED_SSTIDAL_2]           = MULTICHOICE(MultichoiceList_UnusedSSTidal2),
-    [MULTI_UNUSED_SSTIDAL_3]           = MULTICHOICE(MultichoiceList_UnusedSSTidal3),
+    [MULTI_EMMIE_ARE_YOU_READY]        = MULTICHOICE(MultichoiceList_EmmieAreYouReady),
+    [MULTI_EMMIE_INFORMATION]          = MULTICHOICE(MultichoiceList_EmmieInformation),
     [MULTI_UNUSED_SSTIDAL_4]           = MULTICHOICE(MultichoiceList_UnusedSSTidal4),
     [MULTI_FOSSIL]                     = MULTICHOICE(MultichoiceList_Fossil),
     [MULTI_YESNO]                      = MULTICHOICE(MultichoiceList_YesNo),

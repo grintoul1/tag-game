@@ -1305,7 +1305,7 @@ MauvilleCity_Text_GymSign:
 # 653 "data/maps/MauvilleCity/scripts.pory"
 	.string "MAUVILLE CITY POKéMON GYM\n"
 # 654 "data/maps/MauvilleCity/scripts.pory"
-	.string "LEADER: WATTSON\l"
+	.string "Leader: WATTSON\l"
 # 655 "data/maps/MauvilleCity/scripts.pory"
 	.string "“The cheerfully electrifying man!”$"
 # 656 "data/maps/MauvilleCity/scripts.pory"

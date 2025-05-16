@@ -677,12 +677,305 @@ Common_EventScript_UpdateBrineyLocation::
 	return
 
 Common_EventScript_Emmie::
+	faceplayer
+	end
+
+Common_EventScript_EmmieBattle::
+	lockall
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FacePlayer
+	waitmovement 0
+	call_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_PlayerFaceEmmie1
+	call_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_PlayerFaceEmmie2
+	call_if_set FLAG_EMMIE_BATTLE_3, Common_EventScript_PlayerFaceEmmie3
+	waitmovement 0
+	call_if_unset FLAG_EMMIE_BATTLE_INTRO_GIVEN, Common_EventScript_EmmieBattleIntroduction
+	setflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
+	message Common_Text_EmmieBattleAreYouReady 
+	multichoice 25, 4, MULTI_EMMIE_ARE_YOU_READY, 1
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq Common_EventScript_EmmieDoBattle
+	compare VAR_RESULT, 1
+	goto_if_eq Common_EventScript_EmmieInformation
+	compare VAR_RESULT, 2
+	goto_if_eq Common_EventScript_EmmieEnd
+	goto Common_EventScript_EmmieEnd
+	releaseall
+	end
+
+Common_EventScript_PlayerFaceEmmie1:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	return
+
+Common_EventScript_PlayerFaceEmmie2:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	return
+
+Common_EventScript_PlayerFaceEmmie3:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	return
+
+Common_EventScript_EmmieBattleIntroduction::
+	call_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieBattleIntroduction1
+	call_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_EmmieBattleIntroduction2
+	call_if_set FLAG_EMMIE_BATTLE_3, Common_EventScript_EmmieBattleIntroduction3
+	return
+
+Common_EventScript_EmmieBattleIntroduction1::
+	msgbox Common_Text_EmmieBattleIntro1, MSGBOX_DEFAULT
+	return
+
+Common_EventScript_EmmieBattleIntroduction2::
+	msgbox Common_Text_EmmieBattleIntro2, MSGBOX_DEFAULT
+	return
+
+Common_EventScript_EmmieBattleIntroduction3::
+	msgbox Common_Text_EmmieBattleIntro3, MSGBOX_DEFAULT
+	return
+
+Common_EventScript_PlayerFaceEmmieNorth::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	return
+
+Common_EventScript_PlayerFaceEmmieEast::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	return
+
+Common_EventScript_PlayerFaceEmmieSouth::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	return
+
+Common_EventScript_PlayerFaceEmmieWest::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	return
+
+Common_EventScript_EmmieDoBattle::
+	goto_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieBattle1
+	goto_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_EmmieBattle2
+	goto_if_set FLAG_EMMIE_BATTLE_3, Common_EventScript_EmmieBattle3
+	releaseall
+	end
+
+Common_EventScript_EmmieInformation::
+	message Common_Text_EmmieWhatDoYouNeedToKnow
+	multichoice 25, 4, MULTI_EMMIE_INFORMATION, 1
+	compare VAR_RESULT, 0
+	goto_if_eq Common_EventScript_EmmieRules
+	compare VAR_RESULT, 1
+	goto_if_eq Common_EventScript_EmmieItems
+	compare VAR_RESULT, 2
+	goto_if_eq Common_EventScript_EmmieNatures
+	compare VAR_RESULT, 3
+	goto_if_eq Common_EventScript_EmmieBattle
+	releaseall
+	end
+
+Common_EventScript_EmmieEnd::
+	msgbox Common_Text_EmmieComeBackWhenReady, MSGBOX_DEFAULT
+	goto_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieBattleNotReady1
+	goto_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_EmmieBattleNotReady2
+	goto_if_set FLAG_EMMIE_BATTLE_3, Common_EventScript_EmmieBattleNotReady3
+	releaseall
+	end
+
+Common_EventScript_EmmieBattleNotReady1:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkDown
+	waitmovement 0
+	releaseall
+	end
+
+Common_EventScript_EmmieBattleNotReady2:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkDown
+	waitmovement 0
+	releaseall
+	end
+
+Common_EventScript_EmmieBattleNotReady3:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkDown
+	waitmovement 0
+	releaseall
+	end
+
+Common_EventScript_PlayerNotReadyNorth::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkUp
+	waitmovement 0
+	return
+
+Common_EventScript_PlayerNotReadyEast::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkRight
+	waitmovement 0
+	return
+
+Common_EventScript_PlayerNotReadySouth::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkDown
+	waitmovement 0
+	return
+
+Common_EventScript_PlayerNotReadyWest::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkLeft
+	waitmovement 0
+	return
+
+
+Common_Text_EmmieComeBackWhenReady:
+	.string "Emmie: Okay, come back here when you\n"
+	.string "are ready!$"
+
+Common_EventScript_EmmieRules::
+	goto_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieRules1
+	goto_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_EmmieRules2
+	goto_if_set FLAG_EMMIE_BATTLE_3, Common_EventScript_EmmieRules3
+	releaseall
+	end
+
+Common_EventScript_EmmieRules1::
+	msgbox Common_Text_EmmieBattleRules1, MSGBOX_DEFAULT
+	goto Common_EventScript_EmmieInformation
+	end
+
+Common_EventScript_EmmieRules2::
+	msgbox Common_Text_EmmieBattleRules2, MSGBOX_DEFAULT
+	goto Common_EventScript_EmmieInformation
+	end
+
+Common_EventScript_EmmieRules3::
+	msgbox Common_Text_EmmieBattleRules3, MSGBOX_DEFAULT
+	goto Common_EventScript_EmmieInformation
+	end
+
+Common_Text_EmmieBattleRules1:
+	.string "BATTLE 1 RULES TEXT$"
+
+Common_Text_EmmieBattleRules2:
+	.string "BATTLE 2 RULES TEXT$"
+
+Common_Text_EmmieBattleRules3:
+	.string "BATTLE 3 RULES TEXT$"
+
+Common_Text_EmmieBattleIntro1:
+	.string "BATTLE 1 INTRO TEXT$"
+
+Common_Text_EmmieBattleIntro2:
+	.string "BATTLE 2 INTRO TEXT$"
+
+Common_Text_EmmieBattleIntro3:
+	.string "BATTLE 3 INTRO TEXT$"
+
+Common_EventScript_EmmieItems::
+	goto_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieItems1
+	goto_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_EmmieItems2
+	goto_if_set FLAG_EMMIE_BATTLE_3, Common_EventScript_EmmieItems3
+	releaseall
+	end
+
+Common_EventScript_EmmieItems1::
+	msgbox Common_Text_EmmieBattleItems1, MSGBOX_DEFAULT
+	goto Common_EventScript_EmmieInformation
+	end
+
+Common_EventScript_EmmieItems2::
+	msgbox Common_Text_EmmieBattleItems2, MSGBOX_DEFAULT
+	goto Common_EventScript_EmmieInformation
+	end
+
+Common_EventScript_EmmieItems3::
+	msgbox Common_Text_EmmieBattleItems3, MSGBOX_DEFAULT
+	goto Common_EventScript_EmmieInformation
+	end
+
+Common_Text_EmmieBattleItems1:
+	.string "BATTLE 1 ITEMS TEXT$"
+
+Common_Text_EmmieBattleItems2:
+	.string "BATTLE 2 ITEMS TEXT$"
+
+Common_Text_EmmieBattleItems3:
+	.string "BATTLE 3 ITEMS TEXT$"
+
+Common_EventScript_EmmieNatures::
+	goto_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieNatures1
+	goto_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_EmmieNatures2
+	goto_if_set FLAG_EMMIE_BATTLE_3, Common_EventScript_EmmieNatures3
+	releaseall
+	end
+
+Common_EventScript_EmmieNatures1::
+	msgbox Common_Text_EmmieBattleNatures1, MSGBOX_DEFAULT
+	goto Common_EventScript_EmmieInformation
+	end
+
+Common_EventScript_EmmieNatures2::
+	msgbox Common_Text_EmmieBattleNatures2, MSGBOX_DEFAULT
+	goto Common_EventScript_EmmieInformation
+	end
+
+Common_EventScript_EmmieNatures3::
+	msgbox Common_Text_EmmieBattleNatures3, MSGBOX_DEFAULT
+	goto Common_EventScript_EmmieInformation
+	end
+
+Common_Text_EmmieBattleNatures1:
+	.string "BATTLE 1 NATURES TEXT$"
+
+Common_Text_EmmieBattleNatures2:
+	.string "BATTLE 2 NATURES TEXT$"
+
+Common_Text_EmmieBattleNatures3:
+	.string "BATTLE 3 NATURES TEXT$"
+
+Common_EventScript_EmmieBattle1::
 	changefollowerbattler PARTNER_NONE
 	setvar VAR_0x8004, SPECIAL_BATTLE_EMMIE
 	setvar VAR_0x8005, TRAINER_EMMIE_1
-	special DoSpecialTrainerBattle	
+	special DoSpecialTrainerBattle
+	clearflag FLAG_EMMIE_BATTLE_1
+	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
+	setvar VAR_EMMIE_BATTLE_STATE, 0
 	changefollowerbattler PARTNER_EMMIE
 	end
+
+Common_EventScript_EmmieBattle2::
+	changefollowerbattler PARTNER_NONE
+	setvar VAR_0x8004, SPECIAL_BATTLE_EMMIE
+	setvar VAR_0x8005, TRAINER_EMMIE_2
+	special DoSpecialTrainerBattle
+	clearflag FLAG_EMMIE_BATTLE_2
+	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
+	setvar VAR_EMMIE_BATTLE_STATE, 0
+	changefollowerbattler PARTNER_EMMIE
+	end
+
+Common_EventScript_EmmieBattle3::
+	changefollowerbattler PARTNER_NONE
+	setvar VAR_0x8004, SPECIAL_BATTLE_EMMIE
+	setvar VAR_0x8005, TRAINER_EMMIE_3
+	special DoSpecialTrainerBattle
+	clearflag FLAG_EMMIE_BATTLE_3
+	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
+	setvar VAR_EMMIE_BATTLE_STATE, 0
+	changefollowerbattler PARTNER_EMMIE
+	end
+
+Common_Text_EmmieBattleAreYouReady:
+	.string "Emmie: Hey, are you ready, or do you\n"
+	.string "need some information about our battle?$"
+
+Common_Text_EmmieWhatDoYouNeedToKnow:
+	.string "What do you want to know?$"
 
 EventScript_SetBrineyLocation_House::
 	setvar VAR_BRINEY_LOCATION, 1

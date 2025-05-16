@@ -809,7 +809,7 @@ LavaridgeTown_Text_GymSign:
 # 405 "data/maps/LavaridgeTown/scripts.pory"
 	.string "LAVARIDGE TOWN POKéMON GYM\n"
 # 406 "data/maps/LavaridgeTown/scripts.pory"
-	.string "LEADER: FLANNERY\l"
+	.string "Leader: FLANNERY\l"
 # 407 "data/maps/LavaridgeTown/scripts.pory"
 	.string "“One with a fiery passion that burns!”$"
 # 408 "data/maps/LavaridgeTown/scripts.pory"

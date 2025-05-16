@@ -39,7 +39,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_SetMovingBoxes::
 # 20 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	return
 # 21 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
-
+	
 # 22 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 LittlerootTown_BrendansHouse_1F_EventScript_CheckShowShoesManual::
 # 23 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"

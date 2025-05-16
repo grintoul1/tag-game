@@ -266,7 +266,7 @@
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
 #define VAR_LAVARIDGE_GYM_STATE                          0x40F7 // Lavaridge Gym trainers state
 #define VAR_MAGMAHIDEOUT_STATE                           0x40F8 // Magma Hideout state
-#define VAR_MAGMAHIDEOUT_SHELLY_STATE                    0x40F9 // Magma Hideout Shelly state
+#define VAR_EMMIE_BATTLE_STATE                           0x40F9 // Determines whether Emmie battle triggers should activate
 #define VAR_FOLLOWER_AQUA_HIDEOUT_TABITHA                0x40FA // AHO Tabitha follower state
 #define VAR_AQUAHIDEOUT_STATE                            0x40FB // Unused Var
 #define VAR_UNUSED_0x40FC                                0x40FC // Unused Var

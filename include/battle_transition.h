@@ -13,6 +13,7 @@ extern const struct SpritePalette gSpritePalette_Pokeball;
 enum {
     MUGSHOT_COLOR_NONE,
     MUGSHOT_COLOR_PURPLE,
+    MUGSHOT_COLOR_RED,
     MUGSHOT_COLOR_GREEN,
     MUGSHOT_COLOR_PINK,
     MUGSHOT_COLOR_BLUE,

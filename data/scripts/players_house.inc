@@ -1,6 +1,7 @@
 @ Local IDs are the same for both players houses
 .set LOCALID_MOM, 1
 .set LOCALID_DAD, 5
+.set LOCALID_EMMIE, 8
 .set LOCALID_MOM_2F, 14
 
 PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet::
@@ -35,6 +36,15 @@ PlayersHouse_1F_EventScript_MomFacePlayerMovingInFemale::
 PlayersHouse_1F_Movement_PlayerWalkIn:
 	walk_up
 	step_end
+
+PlayersHouse_1F_EventScript_Emmie::
+	lockall
+	applymovement LOCALID_EMMIE, Common_Movement_FacePlayer
+	msgbox PlayersHouse_1F_Text_EmmieWhereDoISleep MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_EMMIE, Common_Movement_FaceOriginalDirection
+	releaseall
+	end
 
 PlayersHouse_1F_EventScript_MomGoSeeRoom::
 	msgbox PlayersHouse_1F_Text_ArentYouInterestedInRoom, MSGBOX_DEFAULT
@@ -678,3 +688,10 @@ PlayersHouse_1F_Movement_PlayerApproachTVForLatiFemale:
 EventScript_RunningShoesManual::
 	msgbox PlayersHouse_1F_Text_RunningShoesManual, MSGBOX_SIGN
 	end
+
+PlayersHouse_1F_Text_EmmieWhereDoISleep:
+	.string "Emmie: Hey, {PLAYER}!\p"
+	.string "Mom's really keen on you setting\n"
+	.string "that clock huh…\p"
+	.string "Meanwhile, I have no idea where she\n"
+	.string "is expecting me to sleep!$"

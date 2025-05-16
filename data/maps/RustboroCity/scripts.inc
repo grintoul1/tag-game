@@ -2489,7 +2489,7 @@ RustboroCity_Text_GymSign:
 # 1245 "data/maps/RustboroCity/scripts.pory"
 	.string "RUSTBORO CITY POKéMON GYM\n"
 # 1246 "data/maps/RustboroCity/scripts.pory"
-	.string "LEADER: ROXANNE\p"
+	.string "Leader: ROXANNE\p"
 # 1247 "data/maps/RustboroCity/scripts.pory"
 	.string "“The ROCK-loving honors student!”$"
 # 1248 "data/maps/RustboroCity/scripts.pory"

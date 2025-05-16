@@ -1325,7 +1325,7 @@ DewfordTown_Text_GymSign:
 # 663 "data/maps/DewfordTown/scripts.pory"
 	.string "DEWFORD TOWN POKéMON GYM\n"
 # 664 "data/maps/DewfordTown/scripts.pory"
-	.string "LEADER: BRAWLY\l"
+	.string "Leader: BRAWLY\l"
 # 665 "data/maps/DewfordTown/scripts.pory"
 	.string "“A big wave in fighting!”$"
 # 666 "data/maps/DewfordTown/scripts.pory"

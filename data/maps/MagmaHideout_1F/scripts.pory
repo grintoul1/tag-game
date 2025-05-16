@@ -10,11 +10,9 @@ MagmaHideout_1F_MapScripts::
 
 MagmaHideout_1F_OnTransition:
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 0
-	goto_if_lt VAR_MAGMAHIDEOUT_SHELLY_STATE, 1, MagmaHideout_1F_EventScript_GetShellyPosition
 	end
 
 MagmaHideout_1F_OnWarp:
-	goto_if_lt VAR_MAGMAHIDEOUT_SHELLY_STATE, 1, MagmaHideout_1F_EventScript_GetShellyPosition
 	end
 
 MagmaHideout_1F_EventScript_GetShellyPosition::

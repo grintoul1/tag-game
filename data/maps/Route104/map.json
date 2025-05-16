@@ -581,6 +581,24 @@
       "var": "VAR_ROUTE104_STATE",
       "var_value": "0",
       "script": "Route104_EventScript_HaleyBilly"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 54,
+      "elevation": 0,
+      "var": "VAR_EMMIE_BATTLE_STATE",
+      "var_value": "1",
+      "script": "Common_EventScript_EmmieBattle"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 54,
+      "elevation": 0,
+      "var": "VAR_EMMIE_BATTLE_STATE",
+      "var_value": "1",
+      "script": "Common_EventScript_EmmieBattle"
     }
   ],
   "bg_events": [

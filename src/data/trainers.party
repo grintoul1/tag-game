@@ -546,6 +546,7 @@ Name: MATT
 Class: Aqua Admin
 Pic: Aqua Admin M
 Gender: Male
+Mugshot: Red
 Music: Aqua
 Items: Super Potion
 Double Battle: No
@@ -627,7 +628,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 Name: ARCHIE
 Class: Aqua Leader
 Pic: Aqua Leader Archie
-Mugshot: Blue
+Mugshot: Red
 Gender: Male
 Music: Aqua
 Double Battle: No
@@ -776,7 +777,7 @@ IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 Name: Tabitha
 Class: Magma Admin Mixed
 Pic: Magma Admin
-Mugshot: Blue
+Mugshot: Purple
 Gender: Male
 Music: Male
 Double Battle: No
@@ -1135,7 +1136,7 @@ IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 Name: Archie
 Class: Aqua Leader
 Pic: Aqua Leader Archie
-Mugshot: Blue
+Mugshot: Red
 Gender: Male
 Music: Aqua
 Double Battle: No
@@ -9474,6 +9475,7 @@ Class: Magma Admin
 Pic: Magma Admin
 Gender: Male
 Music: Magma
+Mugshot: Blue
 Double Battle: No
 AI: Check Bad Move
 
@@ -11060,6 +11062,7 @@ Name: TABITHA
 Class: Magma Admin
 Pic: Magma Admin
 Gender: Male
+Mugshot: Blue
 Music: Magma
 Double Battle: No
 AI: Basic Trainer
@@ -11136,7 +11139,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Name: MAXIE
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Mugshot: Blue
+Mugshot: Red
 Gender: Male
 Music: Magma
 Items: Super Potion / Super Potion

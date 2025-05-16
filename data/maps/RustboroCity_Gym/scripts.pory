@@ -10,10 +10,6 @@ RustboroCity_Gym_MapScripts::
 RustboroCity_Gym_EventScript_Roxanne::
 goto_if_set FLAG_BADGE01_GET, RustboroCity_Gym_EventScript_RoxannePostBattle
 lockall
-setvar VAR_0x8008, LOCALID_ROXANNE
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
 playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0

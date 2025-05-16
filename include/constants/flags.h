@@ -687,10 +687,10 @@
 #define FLAG_HIDE_LITTLEROOT_TOWN_EMMIE  0x280 // Hides Littleroot Emmie
 #define FLAG_HIDE_PETALBURG_CITY_CUTSCENE_EMMIE  0x281 // Hides Petalburg cutscene Emmie
 #define FLAG_HIDE_PETALBURG_GYM_CUTSCENE_EMMIE  0x282 // Hides Petalburg cutscene Emmie
-#define FLAG_UNUSED_0x283  0x283 // Unused Flag
-#define FLAG_UNUSED_0x284  0x284 // Unused Flag
-#define FLAG_UNUSED_0x285  0x285 // Unused Flag
-#define FLAG_UNUSED_0x286  0x286 // Unused Flag
+#define FLAG_EMMIE_BATTLE_INTRO_GIVEN  0x283 // Determines Emmie battle intro already given
+#define FLAG_EMMIE_BATTLE_1  0x284 // Determines Emmie battle 1
+#define FLAG_EMMIE_BATTLE_2  0x285 // Determines Emmie battle 2
+#define FLAG_EMMIE_BATTLE_3  0x286 // Determines Emmie battle 3
 #define FLAG_UNUSED_0x287  0x287 // Unused Flag
 #define FLAG_UNUSED_0x288  0x288 // Unused Flag
 #define FLAG_UNUSED_0x289  0x289 // Unused Flag

@@ -27,7 +27,7 @@ Route110_SeasideCyclingRoadSouthEntrance_EventScript_BikeCheck::
 # 14 "data/maps/Route110_SeasideCyclingRoadSouthEntrance/scripts.pory"
 	specialvar VAR_RESULT, GetPlayerAvatarBike
 # 15 "data/maps/Route110_SeasideCyclingRoadSouthEntrance/scripts.pory"
-	goto_if_eq VAR_RESULT, 0, Route110_SeasideCyclingRoadSouthEntrance_EventScript_NoBike
+	goto_if_lt VAR_RESULT, 2, Route110_SeasideCyclingRoadSouthEntrance_EventScript_NoBike
 # 16 "data/maps/Route110_SeasideCyclingRoadSouthEntrance/scripts.pory"
 	setflag FLAG_SYS_CYCLING_ROAD
 # 17 "data/maps/Route110_SeasideCyclingRoadSouthEntrance/scripts.pory"
