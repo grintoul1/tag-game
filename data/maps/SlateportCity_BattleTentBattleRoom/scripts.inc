@@ -101,6 +101,7 @@ SlateportCity_BattleTentBattleRoom_EventScript_EnterRoom::
 # 51 "data/maps/SlateportCity_BattleTentBattleRoom/scripts.pory"
 	removeobject LOCALID_OPPONENT
 # 52 "data/maps/SlateportCity_BattleTentBattleRoom/scripts.pory"
+	delay 1
 	addobject LOCALID_OPPONENT
 # 53 "data/maps/SlateportCity_BattleTentBattleRoom/scripts.pory"
 	applymovement LOCALID_OPPONENT, SlateportCity_BattleTentBattleRoom_Movement_OpponentEnter

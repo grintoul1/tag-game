@@ -81,7 +81,7 @@ struct RectangularSpiralLine
 {
     u8 state;
     s16 position;
-    u8 moveIdx;
+    u8 moveIndex;
     s16 reboundPosition;
     bool8 outward;
 };
@@ -1395,6 +1395,7 @@ static void InitPatternWeaveTransition(struct Task *task)
     sTransitionData->WIN0V = DISPLAY_HEIGHT;
     sTransitionData->BLDCNT = BLDCNT_TGT1_BG0 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_ALL;
     sTransitionData->BLDALPHA = BLDALPHA_BLEND(task->tBlendTarget2, task->tBlendTarget1);
+    UpdateShadowColor(RGB_GRAY);
 
     for (i = 0; i < DISPLAY_HEIGHT; i++)
         gScanlineEffectRegBuffers[1][i] = DISPLAY_WIDTH;
@@ -2481,7 +2482,9 @@ static bool8 Mugshot_WaitPlayerSlide(struct Task *task)
             SetVBlankCallback(VBlankCB_MugshotsFadeOut);
         }
         else
-        return FALSE;
+        {
+            return FALSE;
+        } 
     }
     else
     {
@@ -2501,7 +2504,9 @@ static bool8 Mugshot_WaitPlayerSlide(struct Task *task)
             SetVBlankCallback(VBlankCB_MugshotsFadeOut);
         }
         else
-        return FALSE;
+        {
+            return FALSE;
+        } 
     }
     return FALSE;
 }
@@ -3279,28 +3284,28 @@ static bool8 RectangularSpiral_Init(struct Task *task)
     // Line starting in top left
     sRectangularSpiralLines[0].state = SPIRAL_INWARD_START;
     sRectangularSpiralLines[0].position = -1;
-    sRectangularSpiralLines[0].moveIdx = 1;
+    sRectangularSpiralLines[0].moveIndex = 1;
     sRectangularSpiralLines[0].reboundPosition = 308;
     sRectangularSpiralLines[0].outward = FALSE;
 
     // Line starting in bottom right
     sRectangularSpiralLines[1].state = SPIRAL_INWARD_START;
     sRectangularSpiralLines[1].position = -1;
-    sRectangularSpiralLines[1].moveIdx = 1;
+    sRectangularSpiralLines[1].moveIndex = 1;
     sRectangularSpiralLines[1].reboundPosition = 308;
     sRectangularSpiralLines[1].outward = FALSE;
 
     // Line starting in top right
     sRectangularSpiralLines[2].state = SPIRAL_INWARD_START;
     sRectangularSpiralLines[2].position = -3;
-    sRectangularSpiralLines[2].moveIdx = 1;
+    sRectangularSpiralLines[2].moveIndex = 1;
     sRectangularSpiralLines[2].reboundPosition = 307;
     sRectangularSpiralLines[2].outward = FALSE;
 
     // Line starting in bottom left
     sRectangularSpiralLines[3].state = SPIRAL_INWARD_START;
     sRectangularSpiralLines[3].position = -3;
-    sRectangularSpiralLines[3].moveIdx = 1;
+    sRectangularSpiralLines[3].moveIndex = 1;
     sRectangularSpiralLines[3].reboundPosition = 307;
     sRectangularSpiralLines[3].outward = FALSE;
 
@@ -3363,7 +3368,7 @@ static bool16 UpdateRectangularSpiralLine(const s16 * const *moveDataTable, stru
     // Has spiral finished?
     // Note that most move data arrays endsin SPIRAL_END but it is
     // only ever reached on the final array of spiraling outward.
-    if (moveData[line->moveIdx] == SPIRAL_END)
+    if (moveData[line->moveIndex] == SPIRAL_END)
         return FALSE;
 
     // Presumably saving data for debug.
@@ -3394,21 +3399,21 @@ static bool16 UpdateRectangularSpiralLine(const s16 * const *moveDataTable, stru
 
     // Below check is never true.
     // SPIRAL_END was already checked, and position is never >= 640
-    if (line->position >= 640 || moveData[line->moveIdx] == SPIRAL_END)
+    if (line->position >= 640 || moveData[line->moveIndex] == SPIRAL_END)
         return FALSE;
 
-    if (!line->outward && moveData[line->moveIdx] == SPIRAL_REBOUND)
+    if (!line->outward && moveData[line->moveIndex] == SPIRAL_REBOUND)
     {
         // Line has reached the final point of spiraling inward.
         // Time to flip and start spiraling outward.
         line->outward = TRUE;
-        line->moveIdx = 1;
+        line->moveIndex = 1;
         line->position = line->reboundPosition;
         line->state = SPIRAL_OUTWARD_START;
     }
 
     // Reached move target, advance to next movement.
-    if (line->position == moveData[line->moveIdx])
+    if (line->position == moveData[line->moveIndex])
     {
         line->state++;
         if (line->outward == TRUE)
@@ -3418,7 +3423,7 @@ static bool16 UpdateRectangularSpiralLine(const s16 * const *moveDataTable, stru
                 // Still spiraling outward, loop back to the first state
                 // but use the second set of move targets.
                 // For example, the 28 in sRectangularSpiral_Major_OutwardUp
-                line->moveIdx++;
+                line->moveIndex++;
                 line->state = SPIRAL_OUTWARD_START;
             }
         }
@@ -3429,7 +3434,7 @@ static bool16 UpdateRectangularSpiralLine(const s16 * const *moveDataTable, stru
                 // Still spiraling inward, loop back to the first state
                 // but use the second set of move targets.
                 // For example, the 275 in sRectangularSpiral_Major_InwardRight
-                line->moveIdx++;
+                line->moveIndex++;
                 line->state = SPIRAL_INWARD_START;
             }
         }
@@ -4039,6 +4044,8 @@ static void VBlankCB_AngledWipes(void)
 #define tFadeFromGrayIncrement data[5]
 #define tDelayTimer            data[6]
 #define tBlend                 data[7]
+#define tBldCntSaved           data[8]
+#define tShadowColor           data[9]
 
 static void CreateIntroTask(s16 fadeToGrayDelay, s16 fadeFromGrayDelay, s16 numFades, s16 fadeToGrayIncrement, s16 fadeFromGrayIncrement)
 {
@@ -4066,17 +4073,28 @@ void Task_BattleTransition_Intro(u8 taskId)
 
 static bool8 TransitionIntro_FadeToGray(struct Task *task)
 {
+    u8 paletteNum = IndexOfSpritePaletteTag(TAG_WEATHER_START);
+    u16 index = OBJ_PLTT_ID(paletteNum) + SHADOW_COLOR_INDEX;
     if (task->tDelayTimer == 0 || --task->tDelayTimer == 0)
     {
         task->tDelayTimer = task->tFadeToGrayDelay;
         task->tBlend += task->tFadeToGrayIncrement;
         if (task->tBlend > 16)
             task->tBlend = 16;
+        if (paletteNum < 16)
+            task->tShadowColor = gPlttBufferFaded[index];
         BlendPalettes(PALETTES_ALL, task->tBlend, RGB(11, 11, 11));
+        if (paletteNum < 16)
+            gPlttBufferFaded[index] = task->tShadowColor;
     }
     if (task->tBlend >= 16)
     {
         // Fade to gray complete, start fade back
+        // Save BLDCNT and turn off targets temporarily
+        task->tBldCntSaved = GetGpuReg(REG_OFFSET_BLDCNT);
+        SetGpuReg(REG_OFFSET_BLDCNT, task->tBldCntSaved & ~BLDCNT_TGT2_BG_ALL);
+        if (paletteNum < 16)
+            gPlttBufferFaded[index] = RGB(11, 11, 11);
         task->tState++;
         task->tDelayTimer = task->tFadeFromGrayDelay;
     }
@@ -4087,11 +4105,19 @@ static bool8 TransitionIntro_FadeFromGray(struct Task *task)
 {
     if (task->tDelayTimer == 0 || --task->tDelayTimer == 0)
     {
+        u8 paletteNum = IndexOfSpritePaletteTag(TAG_WEATHER_START);
         task->tDelayTimer = task->tFadeFromGrayDelay;
         task->tBlend -= task->tFadeFromGrayIncrement;
         if (task->tBlend < 0)
             task->tBlend = 0;
         BlendPalettes(PALETTES_ALL, task->tBlend, RGB(11, 11, 11));
+        // Restore BLDCNT
+        SetGpuReg(REG_OFFSET_BLDCNT, task->tBldCntSaved);
+        if (paletteNum < 16)
+        {
+            u16 index = OBJ_PLTT_ID(paletteNum) + SHADOW_COLOR_INDEX;
+            gPlttBufferFaded[index] = task->tShadowColor;
+        }
     }
     if (task->tBlend == 0)
     {
@@ -4384,6 +4410,7 @@ static bool8 FrontierLogoWave_Init(struct Task *task)
     LZ77UnCompVram(sFrontierLogo_Tileset, tileset);
     LoadPalette(sFrontierLogo_Palette, BG_PLTT_ID(15), sizeof(sFrontierLogo_Palette));
     sTransitionData->cameraY = 0;
+    UpdateShadowColor(RGB_GRAY);
 
     task->tState++;
     return FALSE;
