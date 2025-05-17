@@ -10,6 +10,7 @@ raw `
 .set LOCALID_WINSTON, 24
 .set LOCALID_GINA, 22
 .set LOCALID_MIA, 23
+.set LOCALID_CUTSCENE_EMMIE, 35
 
 Route104_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route104_OnFrame
@@ -363,12 +364,17 @@ Route104_EventScript_Girl2::
 Route104_EventScript_SailToDewford::
 	setobjectsubpriority LOCALID_BRINEY_R104, MAP_ROUTE104, 0
 	setobjectsubpriority OBJ_EVENT_ID_PLAYER, MAP_ROUTE104, 0
+	setobjectsubpriority LOCALID_CUTSCENE_EMMIE, MAP_ROUTE104, 0
 	applymovement LOCALID_BRINEY_R104, Route104_Movement_BrineyBoardBoat
 	waitmovement 0
 	removeobject LOCALID_BRINEY_R104
 	applymovement OBJ_EVENT_ID_PLAYER, Route104_Movement_PlayerBoardBoat
 	waitmovement 0
 	hideobjectat OBJ_EVENT_ID_PLAYER, MAP_ROUTE104
+	applymovement LOCALID_CUTSCENE_EMMIE, Route104_Movement_EmmieBoardBoat
+	waitmovement 0
+	removeobject LOCALID_CUTSCENE_EMMIE
+	setflag FLAG_HIDE_ROUTE_104_EMMIE
 	call Common_EventScript_PlayBrineysBoatMusic
 	goto Route104_EventScript_SailToDewfordNoCall
 	end
@@ -400,9 +406,13 @@ Route104_EventScript_SailToDewfordDadCalls::
 
 Route104_EventScript_ArriveInDewford::
 	delay 50
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Route104_Movement_PlayerExitBoat
 	applymovement OBJ_EVENT_ID_PLAYER, Route104_Movement_PlayerExitBoat
 	waitmovement 0
 	call Common_EventScript_StopBrineysBoatMusic
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_DEWFORD_TOWN
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Route104_Movement_EmmieExitBoat
+	waitmovement 0
 	showobjectat OBJ_EVENT_ID_PLAYER, MAP_DEWFORD_TOWN
 	applymovement OBJ_EVENT_ID_PLAYER, Route104_Movement_PlayerMoveForBriney
 	waitmovement 0
@@ -837,6 +847,19 @@ Route104_Movement_PlayerBoardBoat:
 	walk_left
 	walk_down
 	walk_down
+	step_end
+
+Route104_Movement_EmmieBoardBoat:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	step_end
+
+Route104_Movement_EmmieExitBoat:
+	walk_left
+	walk_left
+	walk_in_place_faster_right
 	step_end
 
 Route104_Movement_PlayerExitBoat:

@@ -19,9 +19,9 @@
 # 10 "data/maps/DewfordTown/scripts.pory"
 
 # 11 "data/maps/DewfordTown/scripts.pory"
-.equ LOCALID_BOAT_R104, 7
+.equ LOCALID_BOAT_R104, 6
 # 12 "data/maps/DewfordTown/scripts.pory"
-.equ LOCALID_BRINEY_R104, 8
+.equ LOCALID_BRINEY_R104, 7
 # 13 "data/maps/DewfordTown/scripts.pory"
 
 # 14 "data/maps/DewfordTown/scripts.pory"

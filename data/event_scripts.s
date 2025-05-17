@@ -757,9 +757,20 @@ Common_EventScript_PlayerFaceEmmieWest::
 	return
 
 Common_EventScript_EmmieDoBattle::
+	specialvar VAR_EMMIE_PARTY_SIZE, CalculatePlayerPartyCount
+	vgoto_if_ne VAR_EMMIE_PARTY_SIZE, 6, Common_EventScript_EmmieNotEnoughMons
 	goto_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieBattle1
 	goto_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_EmmieBattle2
 	goto_if_set FLAG_EMMIE_BATTLE_3, Common_EventScript_EmmieBattle3
+	releaseall
+	end
+
+Common_EventScript_EmmieNotEnoughMons::
+	msgbox Common_Text_EmmieNotEnoughMons, MSGBOX_DEFAULT
+	closemessage
+	goto_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieBattleNotReady1
+	goto_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_EmmieBattleNotReady2
+	goto_if_set FLAG_EMMIE_BATTLE_3, Common_EventScript_EmmieBattleNotReady3
 	releaseall
 	end
 
@@ -857,8 +868,18 @@ Common_EventScript_EmmieRules3::
 	goto Common_EventScript_EmmieInformation
 	end
 
+Common_Text_EmmieNotEnoughMons:
+	.string "Sorry, {PLAYER}, the deal is we do this with\n"
+	.string "six Pokémon each.\p"
+	.string "Let's go fill our party, then we can\n"
+	.string "come back and have our battle!$"
+
 Common_Text_EmmieBattleRules1:
-	.string "BATTLE 1 RULES TEXT$"
+	.string "We will both take the same six Pokémon\n"
+	.string "into battle, including movesets.\p"
+	.string "My team will be fully levelled and healed,\n"
+	.string "but I will use my own choice of items and\l"
+	.string "natures.$"
 
 Common_Text_EmmieBattleRules2:
 	.string "BATTLE 2 RULES TEXT$"
@@ -867,7 +888,25 @@ Common_Text_EmmieBattleRules3:
 	.string "BATTLE 3 RULES TEXT$"
 
 Common_Text_EmmieBattleIntro1:
-	.string "BATTLE 1 INTRO TEXT$"
+	.string "Emmie: Hey, {PLAYER}, hold up a minute!\p"
+	.string "You've really grown a lot since we left\n"
+	.string "home, but I made mom a promise.\p"
+	.string "Before we ask Mr. Briney to take us to\n"
+	.string "sea, I need to know that you can hold\l"
+	.string "your own so far away from home.\p"
+	.string "So, it's time to see if you can stand\n"
+	.string "up to your big sis!\p"
+	.string "Let me explain how this battle will work.\p"
+	.string "Whichever six Pokémon you bring to the\n"
+	.string "battle, I will use the same six Pokémon.\p"
+	.string "Huh, what's that? How will I get the\n"
+	.string "same Pokemon?\p"
+	.string "{PLAYER}, you should know by now that as\n"
+	.string "your big sister, I'm capable of things\l"
+	.string "beyond your comprehension, okay?\p"
+	.string "Let me know when you are ready, and until\n"
+	.string "then just ask for any extra information\l"
+	.string "that you want to know!$"
 
 Common_Text_EmmieBattleIntro2:
 	.string "BATTLE 2 INTRO TEXT$"
@@ -898,7 +937,10 @@ Common_EventScript_EmmieItems3::
 	end
 
 Common_Text_EmmieBattleItems1:
-	.string "BATTLE 1 ITEMS TEXT$"
+	.string "For this battle, my team will hold the\n"
+	.string "following items in this order:\p"
+	.string "Focus Sash; Iron Ball; Eject Button;\n"
+	.string "Lagging Tail; Sitrus Berry; Sticky Barb.$"
 
 Common_Text_EmmieBattleItems2:
 	.string "BATTLE 2 ITEMS TEXT$"
@@ -929,7 +971,10 @@ Common_EventScript_EmmieNatures3::
 	end
 
 Common_Text_EmmieBattleNatures1:
-	.string "BATTLE 1 NATURES TEXT$"
+	.string "My Pokémon's will have the following\n"
+	.string "natures in this order:\p"
+	.string "Relaxed; Serious; Brave; Sassy; Bashful;\n"
+	.string "Quiet.$"
 
 Common_Text_EmmieBattleNatures2:
 	.string "BATTLE 2 NATURES TEXT$"
@@ -942,10 +987,13 @@ Common_EventScript_EmmieBattle1::
 	setvar VAR_0x8004, SPECIAL_BATTLE_EMMIE
 	setvar VAR_0x8005, TRAINER_EMMIE_1
 	special DoSpecialTrainerBattle
+	waitstate
 	clearflag FLAG_EMMIE_BATTLE_1
 	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
 	setvar VAR_EMMIE_BATTLE_STATE, 0
 	changefollowerbattler PARTNER_EMMIE
+	msgbox Common_Text_EmmieBattleVictory1, MSGBOX_DEFAULT
+	closemessage
 	end
 
 Common_EventScript_EmmieBattle2::
@@ -953,10 +1001,13 @@ Common_EventScript_EmmieBattle2::
 	setvar VAR_0x8004, SPECIAL_BATTLE_EMMIE
 	setvar VAR_0x8005, TRAINER_EMMIE_2
 	special DoSpecialTrainerBattle
+	waitstate
 	clearflag FLAG_EMMIE_BATTLE_2
 	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
 	setvar VAR_EMMIE_BATTLE_STATE, 0
 	changefollowerbattler PARTNER_EMMIE
+	msgbox Common_Text_EmmieBattleVictory2, MSGBOX_DEFAULT
+	closemessage
 	end
 
 Common_EventScript_EmmieBattle3::
@@ -964,11 +1015,29 @@ Common_EventScript_EmmieBattle3::
 	setvar VAR_0x8004, SPECIAL_BATTLE_EMMIE
 	setvar VAR_0x8005, TRAINER_EMMIE_3
 	special DoSpecialTrainerBattle
+	waitstate
 	clearflag FLAG_EMMIE_BATTLE_3
 	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
 	setvar VAR_EMMIE_BATTLE_STATE, 0
 	changefollowerbattler PARTNER_EMMIE
+	msgbox Common_Text_EmmieBattleVictory3, MSGBOX_DEFAULT
+	closemessage
 	end
+
+Common_Text_EmmieBattleVictory1:
+	.string "Emmie: Wow, good stuff {PLAYER}!\p"
+	.string "You're more than ready. Let's continue\n"
+	.string "and speak to Mr. Briney!$"
+
+Common_Text_EmmieBattleVictory2:
+	.string "Emmie: Wow, good stuff {PLAYER}!\p"
+	.string "You're more than ready. Let's continue\n"
+	.string "and speak to Mr. Briney!$"
+
+Common_Text_EmmieBattleVictory3:
+	.string "Emmie: Wow, good stuff {PLAYER}!\p"
+	.string "You're more than ready. Let's continue\n"
+	.string "and speak to Mr. Briney!$"
 
 Common_Text_EmmieBattleAreYouReady:
 	.string "Emmie: Hey, are you ready, or do you\n"

@@ -311,6 +311,7 @@ EventScript_ResetAllMapFlags::
 	clearflag FLAG_EMMIE_BATTLE_1
 	clearflag FLAG_EMMIE_BATTLE_2
 	clearflag FLAG_EMMIE_BATTLE_3
+	setflag FLAG_HIDE_ROUTE_104_EMMIE
 	destroyfollowernpc
 	call EventScript_ResetAllBerries
 	end

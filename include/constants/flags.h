@@ -691,7 +691,7 @@
 #define FLAG_EMMIE_BATTLE_1  0x284 // Determines Emmie battle 1
 #define FLAG_EMMIE_BATTLE_2  0x285 // Determines Emmie battle 2
 #define FLAG_EMMIE_BATTLE_3  0x286 // Determines Emmie battle 3
-#define FLAG_UNUSED_0x287  0x287 // Unused Flag
+#define FLAG_HIDE_ROUTE_104_EMMIE  0x287 // Hides Emmie used for Mr Briney's boat cutscene
 #define FLAG_UNUSED_0x288  0x288 // Unused Flag
 #define FLAG_UNUSED_0x289  0x289 // Unused Flag
 #define FLAG_UNUSED_0x28A  0x28A // Unused Flag
