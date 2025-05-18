@@ -122,7 +122,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route117_Text_IsaacIntro MSGBOX_AUTOCLOSE
+msgbox Route117_Text_IsaacIntro, MSGBOX_AUTOCLOSE
 goto Route117_EventScript_LydiaIsaacDoMultiBattle
 releaseall
 end
@@ -181,7 +181,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_GIRL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route117_Text_MariaIntro MSGBOX_AUTOCLOSE
+msgbox Route117_Text_MariaIntro, MSGBOX_AUTOCLOSE
 goto Route117_EventScript_DylanMariaDoMultiBattle
 releaseall
 end
@@ -235,7 +235,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route117_Text_DerekIntro MSGBOX_AUTOCLOSE
+msgbox Route117_Text_DerekIntro, MSGBOX_AUTOCLOSE
 goto Route117_EventScript_MelinaDerekDoMultiBattle
 releaseall
 end
@@ -296,7 +296,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_TWINS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
-msgbox Route117_Text_AnnaIntro MSGBOX_AUTOCLOSE
+msgbox Route117_Text_AnnaIntro, MSGBOX_AUTOCLOSE
 goto Route117_EventScript_AnnaMegDoMultiBattle
 releaseall
 end
@@ -370,7 +370,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route117_Text_AishaIntro MSGBOX_AUTOCLOSE
+msgbox Route117_Text_AishaIntro, MSGBOX_AUTOCLOSE
 goto Route117_EventScript_BrandiAishaDoMultiBattle
 releaseall
 end

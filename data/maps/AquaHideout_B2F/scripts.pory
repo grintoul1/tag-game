@@ -94,7 +94,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_AQUA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox AquaHideout_1F_Text_Grunt1Intro MSGBOX_AUTOCLOSE
+msgbox AquaHideout_1F_Text_Grunt1Intro, MSGBOX_AUTOCLOSE
 goto AquaHideout_B2F_EventScript_Grunt4Grunt1DoMultiBattle
 releaseall
 end
@@ -144,7 +144,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_AQUA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox AquaHideout_B2F_Text_Grunt8Intro MSGBOX_AUTOCLOSE
+msgbox AquaHideout_B2F_Text_Grunt8Intro, MSGBOX_AUTOCLOSE
 goto AquaHideout_B2F_EventScript_Grunt6Grunt8DoMultiBattle
 releaseall
 end

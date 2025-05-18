@@ -909,7 +909,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_HIKER, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route104_Text_DarianIntro MSGBOX_AUTOCLOSE
+msgbox Route104_Text_DarianIntro, MSGBOX_AUTOCLOSE
 goto Route104_EventScript_IvanDarianDoMultiBattle
 releaseall
 end
@@ -954,7 +954,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 waitmovement 0
-msgbox Route104_Text_BillyIntro MSGBOX_AUTOCLOSE
+msgbox Route104_Text_BillyIntro, MSGBOX_AUTOCLOSE
 goto Route104_EventScript_HaleyBillyDoMultiBattle
 releaseall
 end
@@ -1069,7 +1069,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
-msgbox Route104_Text_WinstonIntro MSGBOX_AUTOCLOSE
+msgbox Route104_Text_WinstonIntro, MSGBOX_AUTOCLOSE
 goto Route104_EventScript_CindyWinstonDoMultiBattle
 releaseall
 end
@@ -1137,7 +1137,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_TWINS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route104_Text_GinaIntro MSGBOX_AUTOCLOSE
+msgbox Route104_Text_GinaIntro, MSGBOX_AUTOCLOSE
 goto Route104_EventScript_GinaMiaDoMultiBattle
 releaseall
 end

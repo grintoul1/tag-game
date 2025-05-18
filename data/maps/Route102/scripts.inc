@@ -93,7 +93,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 47 "data/maps/Route102/scripts.pory"
 waitmovement 0
 # 48 "data/maps/Route102/scripts.pory"
-msgbox Route102_Text_RickIntro MSGBOX_AUTOCLOSE
+msgbox Route102_Text_RickIntro, MSGBOX_AUTOCLOSE
 # 49 "data/maps/Route102/scripts.pory"
 goto Route102_EventScript_CalvinRickDoMultiBattle
 # 50 "data/maps/Route102/scripts.pory"
@@ -199,7 +199,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 100 "data/maps/Route102/scripts.pory"
 waitmovement 0
 # 101 "data/maps/Route102/scripts.pory"
-msgbox Route102_Text_TianaIntro MSGBOX_AUTOCLOSE
+msgbox Route102_Text_TianaIntro, MSGBOX_AUTOCLOSE
 # 102 "data/maps/Route102/scripts.pory"
 goto Route102_EventScript_AllenTianaDoMultiBattle
 # 103 "data/maps/Route102/scripts.pory"

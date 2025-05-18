@@ -22,7 +22,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MAGMA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox MtPyre_3F_Text_Pyre_MagmaGrunt2Intro MSGBOX_AUTOCLOSE
+msgbox MtPyre_3F_Text_Pyre_MagmaGrunt2Intro, MSGBOX_AUTOCLOSE
 goto MtPyre_3F_EventScript_Pyre_MagmaGrunt1Pyre_MagmaGrunt2DoMultiBattle
 releaseall
 end

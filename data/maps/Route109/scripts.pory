@@ -422,7 +422,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_HIKER, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
-msgbox Route109_Text_HueyIntro MSGBOX_AUTOCLOSE
+msgbox Route109_Text_HueyIntro, MSGBOX_AUTOCLOSE
 goto Route109_EventScript_EdmondHueyDoMultiBattle
 releaseall
 end
@@ -489,7 +489,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_TWINS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route109_Text_ChandlerIntro MSGBOX_AUTOCLOSE
+msgbox Route109_Text_ChandlerIntro, MSGBOX_AUTOCLOSE
 goto Route109_EventScript_LolaChandlerDoMultiBattle
 releaseall
 end
@@ -577,7 +577,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_TWINS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
-msgbox Route109_Text_RickyIntro MSGBOX_AUTOCLOSE
+msgbox Route109_Text_RickyIntro, MSGBOX_AUTOCLOSE
 goto Route109_EventScript_HaileyRickyDoMultiBattle
 releaseall
 end

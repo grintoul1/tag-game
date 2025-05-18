@@ -112,7 +112,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MAGMA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route114_Text_Grunt_Route_114_4Intro MSGBOX_AUTOCLOSE
+msgbox Route114_Text_Grunt_Route_114_4Intro, MSGBOX_AUTOCLOSE
 goto Route114_EventScript_Grunt_Route_114_3Grunt_Route_114_4DoMultiBattle
 releaseall
 end
@@ -165,7 +165,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MAGMA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route114_Text_Grunt_Route_114_6Intro MSGBOX_AUTOCLOSE
+msgbox Route114_Text_Grunt_Route_114_6Intro, MSGBOX_AUTOCLOSE
 goto Route114_EventScript_Grunt_Route_114_5Grunt_Route_114_6DoMultiBattle
 releaseall
 end
@@ -210,7 +210,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_GIRL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route114_Text_CharlotteIntro MSGBOX_AUTOCLOSE
+msgbox Route114_Text_CharlotteIntro, MSGBOX_AUTOCLOSE
 goto Route114_EventScript_SteveCharlotteDoMultiBattle
 releaseall
 end
@@ -269,7 +269,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MAGMA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route114_Text_Grunt_Route_114_2Intro MSGBOX_AUTOCLOSE
+msgbox Route114_Text_Grunt_Route_114_2Intro, MSGBOX_AUTOCLOSE
 goto Route114_EventScript_Grunt_Route_114_1Grunt_Route_114_2DoMultiBattle
 releaseall
 end
@@ -329,7 +329,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_TWINS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 waitmovement 0
-msgbox Route114_Text_IvyIntro MSGBOX_AUTOCLOSE
+msgbox Route114_Text_IvyIntro, MSGBOX_AUTOCLOSE
 goto Route114_EventScript_IvyTyraDoMultiBattle
 releaseall
 end
@@ -383,7 +383,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_HIKER, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route114_Text_ClaudeIntro MSGBOX_AUTOCLOSE
+msgbox Route114_Text_ClaudeIntro, MSGBOX_AUTOCLOSE
 goto Route114_EventScript_KaiClaudeDoMultiBattle
 releaseall
 end

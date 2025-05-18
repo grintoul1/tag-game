@@ -51,7 +51,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 26 "data/maps/MtPyre_6F/scripts.pory"
 waitmovement 0
 # 27 "data/maps/MtPyre_6F/scripts.pory"
-msgbox MtPyre_6F_Text_Pyre_MagmaGrunt3Intro MSGBOX_AUTOCLOSE
+msgbox MtPyre_6F_Text_Pyre_MagmaGrunt3Intro, MSGBOX_AUTOCLOSE
 # 28 "data/maps/MtPyre_6F/scripts.pory"
 goto MtPyre_6F_EventScript_Pyre_AquaGrunt3Pyre_MagmaGrunt3DoMultiBattle
 # 29 "data/maps/MtPyre_6F/scripts.pory"

@@ -459,7 +459,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 230 "data/maps/Route118/scripts.pory"
 waitmovement 0
 # 231 "data/maps/Route118/scripts.pory"
-msgbox Route118_Text_WadeIntro MSGBOX_AUTOCLOSE
+msgbox Route118_Text_WadeIntro, MSGBOX_AUTOCLOSE
 # 232 "data/maps/Route118/scripts.pory"
 goto Route118_EventScript_BarnyWadeDoMultiBattle
 # 233 "data/maps/Route118/scripts.pory"
@@ -541,7 +541,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 271 "data/maps/Route118/scripts.pory"
 waitmovement 0
 # 272 "data/maps/Route118/scripts.pory"
-msgbox Route118_Text_DaltonIntro MSGBOX_AUTOCLOSE
+msgbox Route118_Text_DaltonIntro, MSGBOX_AUTOCLOSE
 # 273 "data/maps/Route118/scripts.pory"
 goto Route118_EventScript_ChesterDaltonDoMultiBattle
 # 274 "data/maps/Route118/scripts.pory"
@@ -677,7 +677,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 339 "data/maps/Route118/scripts.pory"
 waitmovement 0
 # 340 "data/maps/Route118/scripts.pory"
-msgbox Route118_Text_RoseIntro MSGBOX_AUTOCLOSE
+msgbox Route118_Text_RoseIntro, MSGBOX_AUTOCLOSE
 # 341 "data/maps/Route118/scripts.pory"
 goto Route118_EventScript_DeandreRoseDoMultiBattle
 # 342 "data/maps/Route118/scripts.pory"

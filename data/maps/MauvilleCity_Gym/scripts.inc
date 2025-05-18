@@ -201,7 +201,7 @@ waitmovement 0
 # 101 "data/maps/MauvilleCity_Gym/scripts.pory"
 playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
 # 102 "data/maps/MauvilleCity_Gym/scripts.pory"
-msgbox MauvilleCity_Gym_Text_WattsonIntro MSGBOX_AUTOCLOSE
+msgbox MauvilleCity_Gym_Text_WattsonIntro, MSGBOX_AUTOCLOSE
 # 103 "data/maps/MauvilleCity_Gym/scripts.pory"
 goto MauvilleCity_Gym_EventScript_WattsonDoMultiBattle
 # 104 "data/maps/MauvilleCity_Gym/scripts.pory"
@@ -507,7 +507,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 254 "data/maps/MauvilleCity_Gym/scripts.pory"
 waitmovement 0
 # 255 "data/maps/MauvilleCity_Gym/scripts.pory"
-msgbox MauvilleCity_Gym_Text_VivianIntro MSGBOX_AUTOCLOSE
+msgbox MauvilleCity_Gym_Text_VivianIntro, MSGBOX_AUTOCLOSE
 # 256 "data/maps/MauvilleCity_Gym/scripts.pory"
 goto MauvilleCity_Gym_EventScript_KirkVivianDoMultiBattle
 # 257 "data/maps/MauvilleCity_Gym/scripts.pory"
@@ -597,7 +597,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 299 "data/maps/MauvilleCity_Gym/scripts.pory"
 waitmovement 0
 # 300 "data/maps/MauvilleCity_Gym/scripts.pory"
-msgbox MauvilleCity_Gym_Text_AngeloIntro MSGBOX_AUTOCLOSE
+msgbox MauvilleCity_Gym_Text_AngeloIntro, MSGBOX_AUTOCLOSE
 # 301 "data/maps/MauvilleCity_Gym/scripts.pory"
 goto MauvilleCity_Gym_EventScript_ShawnAngeloDoMultiBattle
 # 302 "data/maps/MauvilleCity_Gym/scripts.pory"

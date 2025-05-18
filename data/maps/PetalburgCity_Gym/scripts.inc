@@ -297,7 +297,7 @@ lockall
 # 149 "data/maps/PetalburgCity_Gym/scripts.pory"
 playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
 # 150 "data/maps/PetalburgCity_Gym/scripts.pory"
-msgbox PetalburgCity_Gym_Text_NormanIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_NormanIntro, MSGBOX_AUTOCLOSE
 # 151 "data/maps/PetalburgCity_Gym/scripts.pory"
 goto PetalburgCity_Gym_EventScript_NormanDoMultiBattle
 # 152 "data/maps/PetalburgCity_Gym/scripts.pory"
@@ -1859,7 +1859,7 @@ lockall
 # 930 "data/maps/PetalburgCity_Gym/scripts.pory"
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 # 931 "data/maps/PetalburgCity_Gym/scripts.pory"
-msgbox PetalburgCity_Gym_Text_RandallIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_RandallIntro, MSGBOX_AUTOCLOSE
 # 932 "data/maps/PetalburgCity_Gym/scripts.pory"
 goto PetalburgCity_Gym_EventScript_RandallDoMultiBattle
 # 933 "data/maps/PetalburgCity_Gym/scripts.pory"
@@ -1941,7 +1941,7 @@ lockall
 # 971 "data/maps/PetalburgCity_Gym/scripts.pory"
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 # 972 "data/maps/PetalburgCity_Gym/scripts.pory"
-msgbox PetalburgCity_Gym_Text_ParkerIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_ParkerIntro, MSGBOX_AUTOCLOSE
 # 973 "data/maps/PetalburgCity_Gym/scripts.pory"
 goto PetalburgCity_Gym_EventScript_ParkerDoMultiBattle
 # 974 "data/maps/PetalburgCity_Gym/scripts.pory"
@@ -2023,7 +2023,7 @@ lockall
 # 1012 "data/maps/PetalburgCity_Gym/scripts.pory"
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 # 1013 "data/maps/PetalburgCity_Gym/scripts.pory"
-msgbox PetalburgCity_Gym_Text_GeorgeIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_GeorgeIntro, MSGBOX_AUTOCLOSE
 # 1014 "data/maps/PetalburgCity_Gym/scripts.pory"
 goto PetalburgCity_Gym_EventScript_GeorgeDoMultiBattle
 # 1015 "data/maps/PetalburgCity_Gym/scripts.pory"
@@ -2105,7 +2105,7 @@ lockall
 # 1053 "data/maps/PetalburgCity_Gym/scripts.pory"
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 # 1054 "data/maps/PetalburgCity_Gym/scripts.pory"
-msgbox PetalburgCity_Gym_Text_BerkeIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_BerkeIntro, MSGBOX_AUTOCLOSE
 # 1055 "data/maps/PetalburgCity_Gym/scripts.pory"
 goto PetalburgCity_Gym_EventScript_BerkeDoMultiBattle
 # 1056 "data/maps/PetalburgCity_Gym/scripts.pory"
@@ -2187,7 +2187,7 @@ lockall
 # 1094 "data/maps/PetalburgCity_Gym/scripts.pory"
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 # 1095 "data/maps/PetalburgCity_Gym/scripts.pory"
-msgbox PetalburgCity_Gym_Text_MaryIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_MaryIntro, MSGBOX_AUTOCLOSE
 # 1096 "data/maps/PetalburgCity_Gym/scripts.pory"
 goto PetalburgCity_Gym_EventScript_MaryDoMultiBattle
 # 1097 "data/maps/PetalburgCity_Gym/scripts.pory"
@@ -2269,7 +2269,7 @@ lockall
 # 1135 "data/maps/PetalburgCity_Gym/scripts.pory"
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 # 1136 "data/maps/PetalburgCity_Gym/scripts.pory"
-msgbox PetalburgCity_Gym_Text_AlexiaIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_AlexiaIntro, MSGBOX_AUTOCLOSE
 # 1137 "data/maps/PetalburgCity_Gym/scripts.pory"
 goto PetalburgCity_Gym_EventScript_AlexiaDoMultiBattle
 # 1138 "data/maps/PetalburgCity_Gym/scripts.pory"
@@ -2351,7 +2351,7 @@ lockall
 # 1176 "data/maps/PetalburgCity_Gym/scripts.pory"
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 # 1177 "data/maps/PetalburgCity_Gym/scripts.pory"
-msgbox PetalburgCity_Gym_Text_JodyIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_JodyIntro, MSGBOX_AUTOCLOSE
 # 1178 "data/maps/PetalburgCity_Gym/scripts.pory"
 goto PetalburgCity_Gym_EventScript_JodyDoMultiBattle
 # 1179 "data/maps/PetalburgCity_Gym/scripts.pory"

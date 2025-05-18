@@ -147,7 +147,7 @@ PetalburgCity_Gym_Movement_WallyExitGym:
 PetalburgCity_Gym_EventScript_NormanBattle::
 lockall
 playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
-msgbox PetalburgCity_Gym_Text_NormanIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_NormanIntro, MSGBOX_AUTOCLOSE
 goto PetalburgCity_Gym_EventScript_NormanDoMultiBattle
 playbgm MUS_GYM, TRUE
 releaseall
@@ -928,7 +928,7 @@ faceplayer
 goto_if_set FLAG_RANDALL_DEFEATED, PetalburgCity_Gym_EventScript_Randall2
 lockall
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_RandallIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_RandallIntro, MSGBOX_AUTOCLOSE
 goto PetalburgCity_Gym_EventScript_RandallDoMultiBattle
 releaseall
 end
@@ -969,7 +969,7 @@ faceplayer
 goto_if_set FLAG_PARKER_DEFEATED, PetalburgCity_Gym_EventScript_Parker2
 lockall
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_ParkerIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_ParkerIntro, MSGBOX_AUTOCLOSE
 goto PetalburgCity_Gym_EventScript_ParkerDoMultiBattle
 releaseall
 end
@@ -1010,7 +1010,7 @@ faceplayer
 goto_if_set FLAG_GEORGE_DEFEATED, PetalburgCity_Gym_EventScript_George2
 lockall
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_GeorgeIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_GeorgeIntro, MSGBOX_AUTOCLOSE
 goto PetalburgCity_Gym_EventScript_GeorgeDoMultiBattle
 releaseall
 end
@@ -1051,7 +1051,7 @@ faceplayer
 goto_if_set FLAG_BERKE_DEFEATED, PetalburgCity_Gym_EventScript_Berke2
 lockall
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_BerkeIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_BerkeIntro, MSGBOX_AUTOCLOSE
 goto PetalburgCity_Gym_EventScript_BerkeDoMultiBattle
 releaseall
 end
@@ -1092,7 +1092,7 @@ faceplayer
 goto_if_set FLAG_MARY_DEFEATED, PetalburgCity_Gym_EventScript_Mary2
 lockall
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_MaryIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_MaryIntro, MSGBOX_AUTOCLOSE
 goto PetalburgCity_Gym_EventScript_MaryDoMultiBattle
 releaseall
 end
@@ -1133,7 +1133,7 @@ faceplayer
 goto_if_set FLAG_ALEXIA_DEFEATED, PetalburgCity_Gym_EventScript_Alexia2
 lockall
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_AlexiaIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_AlexiaIntro, MSGBOX_AUTOCLOSE
 goto PetalburgCity_Gym_EventScript_AlexiaDoMultiBattle
 releaseall
 end
@@ -1174,7 +1174,7 @@ faceplayer
 goto_if_set FLAG_JODY_DEFEATED, PetalburgCity_Gym_EventScript_Jody2
 lockall
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_JodyIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgCity_Gym_Text_JodyIntro, MSGBOX_AUTOCLOSE
 goto PetalburgCity_Gym_EventScript_JodyDoMultiBattle
 releaseall
 end

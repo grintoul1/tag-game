@@ -266,7 +266,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_GIRL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox JaggedPass_Text_DianaIntro MSGBOX_AUTOCLOSE
+msgbox JaggedPass_Text_DianaIntro, MSGBOX_AUTOCLOSE
 goto JaggedPass_EventScript_EricDianaDoMultiBattle
 releaseall
 end
@@ -352,7 +352,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox JaggedPass_Text_JulioIntro MSGBOX_AUTOCLOSE
+msgbox JaggedPass_Text_JulioIntro, MSGBOX_AUTOCLOSE
 goto JaggedPass_EventScript_AutumnJulioDoMultiBattle
 releaseall
 end

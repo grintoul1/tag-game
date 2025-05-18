@@ -32,7 +32,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MAGMA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox MagmaHideout_2F_2R_Text_Grunt6Intro MSGBOX_AUTOCLOSE
+msgbox MagmaHideout_2F_2R_Text_Grunt6Intro, MSGBOX_AUTOCLOSE
 goto MagmaHideout_2F_2R_EventScript_Grunt15Grunt6_ChoosePartyForMultiBattle
 releaseall
 end
@@ -86,7 +86,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MAGMA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox MagmaHideout_2F_2R_Text_Grunt8Intro MSGBOX_AUTOCLOSE
+msgbox MagmaHideout_2F_2R_Text_Grunt8Intro, MSGBOX_AUTOCLOSE
 goto MagmaHideout_2F_2R_EventScript_Grunt7Grunt8_ChoosePartyForMultiBattle
 releaseall
 end

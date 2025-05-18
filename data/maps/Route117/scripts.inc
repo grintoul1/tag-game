@@ -247,7 +247,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 124 "data/maps/Route117/scripts.pory"
 waitmovement 0
 # 125 "data/maps/Route117/scripts.pory"
-msgbox Route117_Text_IsaacIntro MSGBOX_AUTOCLOSE
+msgbox Route117_Text_IsaacIntro, MSGBOX_AUTOCLOSE
 # 126 "data/maps/Route117/scripts.pory"
 goto Route117_EventScript_LydiaIsaacDoMultiBattle
 # 127 "data/maps/Route117/scripts.pory"
@@ -365,7 +365,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 183 "data/maps/Route117/scripts.pory"
 waitmovement 0
 # 184 "data/maps/Route117/scripts.pory"
-msgbox Route117_Text_MariaIntro MSGBOX_AUTOCLOSE
+msgbox Route117_Text_MariaIntro, MSGBOX_AUTOCLOSE
 # 185 "data/maps/Route117/scripts.pory"
 goto Route117_EventScript_DylanMariaDoMultiBattle
 # 186 "data/maps/Route117/scripts.pory"
@@ -473,7 +473,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 237 "data/maps/Route117/scripts.pory"
 waitmovement 0
 # 238 "data/maps/Route117/scripts.pory"
-msgbox Route117_Text_DerekIntro MSGBOX_AUTOCLOSE
+msgbox Route117_Text_DerekIntro, MSGBOX_AUTOCLOSE
 # 239 "data/maps/Route117/scripts.pory"
 goto Route117_EventScript_MelinaDerekDoMultiBattle
 # 240 "data/maps/Route117/scripts.pory"
@@ -595,7 +595,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 298 "data/maps/Route117/scripts.pory"
 waitmovement 0
 # 299 "data/maps/Route117/scripts.pory"
-msgbox Route117_Text_AnnaIntro MSGBOX_AUTOCLOSE
+msgbox Route117_Text_AnnaIntro, MSGBOX_AUTOCLOSE
 # 300 "data/maps/Route117/scripts.pory"
 goto Route117_EventScript_AnnaMegDoMultiBattle
 # 301 "data/maps/Route117/scripts.pory"
@@ -743,7 +743,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 372 "data/maps/Route117/scripts.pory"
 waitmovement 0
 # 373 "data/maps/Route117/scripts.pory"
-msgbox Route117_Text_AishaIntro MSGBOX_AUTOCLOSE
+msgbox Route117_Text_AishaIntro, MSGBOX_AUTOCLOSE
 # 374 "data/maps/Route117/scripts.pory"
 goto Route117_EventScript_BrandiAishaDoMultiBattle
 # 375 "data/maps/Route117/scripts.pory"

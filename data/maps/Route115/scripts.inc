@@ -257,7 +257,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 129 "data/maps/Route115/scripts.pory"
 waitmovement 0
 # 130 "data/maps/Route115/scripts.pory"
-msgbox Route115_Text_MarleneIntro MSGBOX_AUTOCLOSE
+msgbox Route115_Text_MarleneIntro, MSGBOX_AUTOCLOSE
 # 131 "data/maps/Route115/scripts.pory"
 goto Route115_EventScript_HectorMarleneDoMultiBattle
 # 132 "data/maps/Route115/scripts.pory"
@@ -367,7 +367,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 184 "data/maps/Route115/scripts.pory"
 waitmovement 0
 # 185 "data/maps/Route115/scripts.pory"
-msgbox Route115_Text_NobIntro MSGBOX_AUTOCLOSE
+msgbox Route115_Text_NobIntro, MSGBOX_AUTOCLOSE
 # 186 "data/maps/Route115/scripts.pory"
 goto Route115_EventScript_AlixNobDoMultiBattle
 # 187 "data/maps/Route115/scripts.pory"

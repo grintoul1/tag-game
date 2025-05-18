@@ -24,7 +24,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MAGMA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox MtPyre_6F_Text_Pyre_MagmaGrunt3Intro MSGBOX_AUTOCLOSE
+msgbox MtPyre_6F_Text_Pyre_MagmaGrunt3Intro, MSGBOX_AUTOCLOSE
 goto MtPyre_6F_EventScript_Pyre_AquaGrunt3Pyre_MagmaGrunt3DoMultiBattle
 releaseall
 end

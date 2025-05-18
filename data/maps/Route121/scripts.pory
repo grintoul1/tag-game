@@ -131,7 +131,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route121_Text_WalterIntro MSGBOX_AUTOCLOSE
+msgbox Route121_Text_WalterIntro, MSGBOX_AUTOCLOSE
 goto Route121_EventScript_VanessaWalterDoMultiBattle
 releaseall
 end
@@ -187,7 +187,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_TWINS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
-msgbox Route121_Text_KateIntro MSGBOX_AUTOCLOSE
+msgbox Route121_Text_KateIntro, MSGBOX_AUTOCLOSE
 goto Route121_EventScript_KateJoyDoMultiBattle
 releaseall
 end
@@ -258,7 +258,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route121_Text_TammyIntro MSGBOX_AUTOCLOSE
+msgbox Route121_Text_TammyIntro, MSGBOX_AUTOCLOSE
 goto Route121_EventScript_CaleTammyDoMultiBattle
 releaseall
 end
@@ -299,7 +299,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 waitmovement 0
-msgbox Route121_Text_MylesIntro MSGBOX_AUTOCLOSE
+msgbox Route121_Text_MylesIntro, MSGBOX_AUTOCLOSE
 goto Route121_EventScript_PatMylesDoMultiBattle
 releaseall
 end
@@ -352,7 +352,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_COOL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route121_Text_CristinIntro MSGBOX_AUTOCLOSE
+msgbox Route121_Text_CristinIntro, MSGBOX_AUTOCLOSE
 goto Route121_EventScript_MarcelCristinDoMultiBattle
 releaseall
 end

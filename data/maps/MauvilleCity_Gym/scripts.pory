@@ -99,7 +99,7 @@ setvar VAR_0x8008, LOCALID_WATTSON
 applymovement VAR_0x8008, Common_Movement_FacePlayer
 waitmovement 0
 playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
-msgbox MauvilleCity_Gym_Text_WattsonIntro MSGBOX_AUTOCLOSE
+msgbox MauvilleCity_Gym_Text_WattsonIntro, MSGBOX_AUTOCLOSE
 goto MauvilleCity_Gym_EventScript_WattsonDoMultiBattle
 playbgm MUS_GYM, TRUE
 releaseall
@@ -252,7 +252,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox MauvilleCity_Gym_Text_VivianIntro MSGBOX_AUTOCLOSE
+msgbox MauvilleCity_Gym_Text_VivianIntro, MSGBOX_AUTOCLOSE
 goto MauvilleCity_Gym_EventScript_KirkVivianDoMultiBattle
 releaseall
 end
@@ -297,7 +297,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox MauvilleCity_Gym_Text_AngeloIntro MSGBOX_AUTOCLOSE
+msgbox MauvilleCity_Gym_Text_AngeloIntro, MSGBOX_AUTOCLOSE
 goto MauvilleCity_Gym_EventScript_ShawnAngeloDoMultiBattle
 releaseall
 end

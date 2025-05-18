@@ -1821,7 +1821,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 911 "data/maps/Route104/scripts.pory"
 waitmovement 0
 # 912 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_DarianIntro MSGBOX_AUTOCLOSE
+msgbox Route104_Text_DarianIntro, MSGBOX_AUTOCLOSE
 # 913 "data/maps/Route104/scripts.pory"
 goto Route104_EventScript_IvanDarianDoMultiBattle
 # 914 "data/maps/Route104/scripts.pory"
@@ -1911,7 +1911,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 # 956 "data/maps/Route104/scripts.pory"
 waitmovement 0
 # 957 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_BillyIntro MSGBOX_AUTOCLOSE
+msgbox Route104_Text_BillyIntro, MSGBOX_AUTOCLOSE
 # 958 "data/maps/Route104/scripts.pory"
 goto Route104_EventScript_HaleyBillyDoMultiBattle
 # 959 "data/maps/Route104/scripts.pory"
@@ -2141,7 +2141,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 1071 "data/maps/Route104/scripts.pory"
 waitmovement 0
 # 1072 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_WinstonIntro MSGBOX_AUTOCLOSE
+msgbox Route104_Text_WinstonIntro, MSGBOX_AUTOCLOSE
 # 1073 "data/maps/Route104/scripts.pory"
 goto Route104_EventScript_CindyWinstonDoMultiBattle
 # 1074 "data/maps/Route104/scripts.pory"
@@ -2277,7 +2277,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 1139 "data/maps/Route104/scripts.pory"
 waitmovement 0
 # 1140 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_GinaIntro MSGBOX_AUTOCLOSE
+msgbox Route104_Text_GinaIntro, MSGBOX_AUTOCLOSE
 # 1141 "data/maps/Route104/scripts.pory"
 goto Route104_EventScript_GinaMiaDoMultiBattle
 # 1142 "data/maps/Route104/scripts.pory"

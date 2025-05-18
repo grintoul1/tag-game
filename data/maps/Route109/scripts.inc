@@ -847,7 +847,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 424 "data/maps/Route109/scripts.pory"
 waitmovement 0
 # 425 "data/maps/Route109/scripts.pory"
-msgbox Route109_Text_HueyIntro MSGBOX_AUTOCLOSE
+msgbox Route109_Text_HueyIntro, MSGBOX_AUTOCLOSE
 # 426 "data/maps/Route109/scripts.pory"
 goto Route109_EventScript_EdmondHueyDoMultiBattle
 # 427 "data/maps/Route109/scripts.pory"
@@ -981,7 +981,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 491 "data/maps/Route109/scripts.pory"
 waitmovement 0
 # 492 "data/maps/Route109/scripts.pory"
-msgbox Route109_Text_ChandlerIntro MSGBOX_AUTOCLOSE
+msgbox Route109_Text_ChandlerIntro, MSGBOX_AUTOCLOSE
 # 493 "data/maps/Route109/scripts.pory"
 goto Route109_EventScript_LolaChandlerDoMultiBattle
 # 494 "data/maps/Route109/scripts.pory"
@@ -1157,7 +1157,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 579 "data/maps/Route109/scripts.pory"
 waitmovement 0
 # 580 "data/maps/Route109/scripts.pory"
-msgbox Route109_Text_RickyIntro MSGBOX_AUTOCLOSE
+msgbox Route109_Text_RickyIntro, MSGBOX_AUTOCLOSE
 # 581 "data/maps/Route109/scripts.pory"
 goto Route109_EventScript_HaileyRickyDoMultiBattle
 # 582 "data/maps/Route109/scripts.pory"

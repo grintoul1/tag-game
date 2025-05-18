@@ -535,7 +535,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 268 "data/maps/JaggedPass/scripts.pory"
 waitmovement 0
 # 269 "data/maps/JaggedPass/scripts.pory"
-msgbox JaggedPass_Text_DianaIntro MSGBOX_AUTOCLOSE
+msgbox JaggedPass_Text_DianaIntro, MSGBOX_AUTOCLOSE
 # 270 "data/maps/JaggedPass/scripts.pory"
 goto JaggedPass_EventScript_EricDianaDoMultiBattle
 # 271 "data/maps/JaggedPass/scripts.pory"
@@ -707,7 +707,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 354 "data/maps/JaggedPass/scripts.pory"
 waitmovement 0
 # 355 "data/maps/JaggedPass/scripts.pory"
-msgbox JaggedPass_Text_JulioIntro MSGBOX_AUTOCLOSE
+msgbox JaggedPass_Text_JulioIntro, MSGBOX_AUTOCLOSE
 # 356 "data/maps/JaggedPass/scripts.pory"
 goto JaggedPass_EventScript_AutumnJulioDoMultiBattle
 # 357 "data/maps/JaggedPass/scripts.pory"

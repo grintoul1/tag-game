@@ -67,7 +67,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 34 "data/maps/FortreeCity_Gym/scripts.pory"
 waitmovement 0
 # 35 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_WinonaIntro MSGBOX_AUTOCLOSE
+msgbox FortreeCity_Gym_Text_WinonaIntro, MSGBOX_AUTOCLOSE
 # 36 "data/maps/FortreeCity_Gym/scripts.pory"
 goto FortreeCity_Gym_EventScript_WinonaDoMultiBattle
 # 37 "data/maps/FortreeCity_Gym/scripts.pory"
@@ -231,7 +231,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 116 "data/maps/FortreeCity_Gym/scripts.pory"
 waitmovement 0
 # 117 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_AshleyIntro MSGBOX_AUTOCLOSE
+msgbox FortreeCity_Gym_Text_AshleyIntro, MSGBOX_AUTOCLOSE
 # 118 "data/maps/FortreeCity_Gym/scripts.pory"
 goto FortreeCity_Gym_EventScript_JaredAshleyDoMultiBattle
 # 119 "data/maps/FortreeCity_Gym/scripts.pory"
@@ -321,7 +321,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 161 "data/maps/FortreeCity_Gym/scripts.pory"
 waitmovement 0
 # 162 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_FlintIntro MSGBOX_AUTOCLOSE
+msgbox FortreeCity_Gym_Text_FlintIntro, MSGBOX_AUTOCLOSE
 # 163 "data/maps/FortreeCity_Gym/scripts.pory"
 goto FortreeCity_Gym_EventScript_EdwardoFlintDoMultiBattle
 # 164 "data/maps/FortreeCity_Gym/scripts.pory"
@@ -427,7 +427,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 214 "data/maps/FortreeCity_Gym/scripts.pory"
 waitmovement 0
 # 215 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_HumbertoIntro MSGBOX_AUTOCLOSE
+msgbox FortreeCity_Gym_Text_HumbertoIntro, MSGBOX_AUTOCLOSE
 # 216 "data/maps/FortreeCity_Gym/scripts.pory"
 goto FortreeCity_Gym_EventScript_DariusHumbertoDoMultiBattle
 # 217 "data/maps/FortreeCity_Gym/scripts.pory"

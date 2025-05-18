@@ -263,7 +263,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route116_Text_JoeyIntro MSGBOX_AUTOCLOSE
+msgbox Route116_Text_JoeyIntro, MSGBOX_AUTOCLOSE
 goto Route116_EventScript_JoseJoeyDoMultiBattle
 releaseall
 end
@@ -308,7 +308,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_GIRL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 waitmovement 0
-msgbox Route116_Text_JaniceIntro MSGBOX_AUTOCLOSE
+msgbox Route116_Text_JaniceIntro, MSGBOX_AUTOCLOSE
 goto Route116_EventScript_JerryJaniceDoMultiBattle
 releaseall
 end
@@ -431,7 +431,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_TWINS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route116_Text_SarahIntro MSGBOX_AUTOCLOSE
+msgbox Route116_Text_SarahIntro, MSGBOX_AUTOCLOSE
 goto Route116_EventScript_DawsonSarahDoMultiBattle
 releaseall
 end
@@ -476,7 +476,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_HIKER, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route116_Text_ClarkIntro MSGBOX_AUTOCLOSE
+msgbox Route116_Text_ClarkIntro, MSGBOX_AUTOCLOSE
 goto Route116_EventScript_DevanClarkDoMultiBattle
 releaseall
 end
@@ -521,7 +521,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_GIRL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route116_Text_KarenIntro MSGBOX_AUTOCLOSE
+msgbox Route116_Text_KarenIntro, MSGBOX_AUTOCLOSE
 goto Route116_EventScript_JohnsonKarenDoMultiBattle
 releaseall
 end

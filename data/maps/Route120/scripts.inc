@@ -603,7 +603,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 302 "data/maps/Route120/scripts.pory"
 waitmovement 0
 # 303 "data/maps/Route120/scripts.pory"
-msgbox Route120_Text_AngelicaIntro MSGBOX_AUTOCLOSE
+msgbox Route120_Text_AngelicaIntro, MSGBOX_AUTOCLOSE
 # 304 "data/maps/Route120/scripts.pory"
 goto Route120_EventScript_ColinAngelicaDoMultiBattle
 # 305 "data/maps/Route120/scripts.pory"
@@ -693,7 +693,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 347 "data/maps/Route120/scripts.pory"
 waitmovement 0
 # 348 "data/maps/Route120/scripts.pory"
-msgbox Route120_Text_RobertIntro MSGBOX_AUTOCLOSE
+msgbox Route120_Text_RobertIntro, MSGBOX_AUTOCLOSE
 # 349 "data/maps/Route120/scripts.pory"
 goto Route120_EventScript_ClarissaRobertDoMultiBattle
 # 350 "data/maps/Route120/scripts.pory"
@@ -811,7 +811,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 # 406 "data/maps/Route120/scripts.pory"
 waitmovement 0
 # 407 "data/maps/Route120/scripts.pory"
-msgbox Route120_Text_LorenzoIntro MSGBOX_AUTOCLOSE
+msgbox Route120_Text_LorenzoIntro, MSGBOX_AUTOCLOSE
 # 408 "data/maps/Route120/scripts.pory"
 goto Route120_EventScript_JennaLorenzoDoMultiBattle
 # 409 "data/maps/Route120/scripts.pory"
@@ -909,7 +909,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 455 "data/maps/Route120/scripts.pory"
 waitmovement 0
 # 456 "data/maps/Route120/scripts.pory"
-msgbox Route120_Text_JeffreyIntro MSGBOX_AUTOCLOSE
+msgbox Route120_Text_JeffreyIntro, MSGBOX_AUTOCLOSE
 # 457 "data/maps/Route120/scripts.pory"
 goto Route120_EventScript_ChipJeffreyDoMultiBattle
 # 458 "data/maps/Route120/scripts.pory"
@@ -1059,7 +1059,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 530 "data/maps/Route120/scripts.pory"
 waitmovement 0
 # 531 "data/maps/Route120/scripts.pory"
-msgbox Route120_Text_RileyIntro MSGBOX_AUTOCLOSE
+msgbox Route120_Text_RileyIntro, MSGBOX_AUTOCLOSE
 # 532 "data/maps/Route120/scripts.pory"
 goto Route120_EventScript_KeigoRileyDoMultiBattle
 # 533 "data/maps/Route120/scripts.pory"
@@ -1167,7 +1167,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 584 "data/maps/Route120/scripts.pory"
 waitmovement 0
 # 585 "data/maps/Route120/scripts.pory"
-msgbox Route120_Text_CallieIntro MSGBOX_AUTOCLOSE
+msgbox Route120_Text_CallieIntro, MSGBOX_AUTOCLOSE
 # 586 "data/maps/Route120/scripts.pory"
 goto Route120_EventScript_JenniferCallieDoMultiBattle
 # 587 "data/maps/Route120/scripts.pory"

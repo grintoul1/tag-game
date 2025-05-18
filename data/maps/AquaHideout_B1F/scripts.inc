@@ -199,7 +199,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 100 "data/maps/AquaHideout_B1F/scripts.pory"
 waitmovement 0
 # 101 "data/maps/AquaHideout_B1F/scripts.pory"
-msgbox AquaHideout_B1F_Text_Grunt2Intro MSGBOX_AUTOCLOSE
+msgbox AquaHideout_B1F_Text_Grunt2Intro, MSGBOX_AUTOCLOSE
 # 102 "data/maps/AquaHideout_B1F/scripts.pory"
 goto AquaHideout_B1F_EventScript_Grunt7Grunt2DoMultiBattle
 # 103 "data/maps/AquaHideout_B1F/scripts.pory"
@@ -303,7 +303,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 152 "data/maps/AquaHideout_B1F/scripts.pory"
 waitmovement 0
 # 153 "data/maps/AquaHideout_B1F/scripts.pory"
-msgbox AquaHideout_B1F_Text_Grunt3Intro MSGBOX_AUTOCLOSE
+msgbox AquaHideout_B1F_Text_Grunt3Intro, MSGBOX_AUTOCLOSE
 # 154 "data/maps/AquaHideout_B1F/scripts.pory"
 goto AquaHideout_B1F_EventScript_Grunt5Grunt3DoMultiBattle
 # 155 "data/maps/AquaHideout_B1F/scripts.pory"

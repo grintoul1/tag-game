@@ -547,7 +547,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 274 "data/maps/Route110/scripts.pory"
 waitmovement 0
 # 275 "data/maps/Route110/scripts.pory"
-msgbox Route110_Text_AbigailIntro MSGBOX_AUTOCLOSE
+msgbox Route110_Text_AbigailIntro, MSGBOX_AUTOCLOSE
 # 276 "data/maps/Route110/scripts.pory"
 goto Route110_EventScript_AnthonyAbigailDoMultiBattle
 # 277 "data/maps/Route110/scripts.pory"
@@ -673,7 +673,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 337 "data/maps/Route110/scripts.pory"
 waitmovement 0
 # 338 "data/maps/Route110/scripts.pory"
-msgbox Route110_Text_JacobIntro MSGBOX_AUTOCLOSE
+msgbox Route110_Text_JacobIntro, MSGBOX_AUTOCLOSE
 # 339 "data/maps/Route110/scripts.pory"
 goto Route110_EventScript_JasmineJacobDoMultiBattle
 # 340 "data/maps/Route110/scripts.pory"
@@ -799,7 +799,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 400 "data/maps/Route110/scripts.pory"
 waitmovement 0
 # 401 "data/maps/Route110/scripts.pory"
-msgbox Route110_Text_KalebIntro MSGBOX_AUTOCLOSE
+msgbox Route110_Text_KalebIntro, MSGBOX_AUTOCLOSE
 # 402 "data/maps/Route110/scripts.pory"
 goto Route110_EventScript_IsabelKalebDoMultiBattle
 # 403 "data/maps/Route110/scripts.pory"
@@ -939,7 +939,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 # 470 "data/maps/Route110/scripts.pory"
 waitmovement 0
 # 471 "data/maps/Route110/scripts.pory"
-msgbox Route110_Text_EdwinIntro MSGBOX_AUTOCLOSE
+msgbox Route110_Text_EdwinIntro, MSGBOX_AUTOCLOSE
 # 472 "data/maps/Route110/scripts.pory"
 goto Route110_EventScript_JosephEdwinDoMultiBattle
 # 473 "data/maps/Route110/scripts.pory"
@@ -1029,7 +1029,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 515 "data/maps/Route110/scripts.pory"
 waitmovement 0
 # 516 "data/maps/Route110/scripts.pory"
-msgbox Route110_Text_BenjaminIntro MSGBOX_AUTOCLOSE
+msgbox Route110_Text_BenjaminIntro, MSGBOX_AUTOCLOSE
 # 517 "data/maps/Route110/scripts.pory"
 goto Route110_EventScript_AlyssaBenjaminDoMultiBattle
 # 518 "data/maps/Route110/scripts.pory"

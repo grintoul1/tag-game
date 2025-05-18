@@ -53,7 +53,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 27 "data/maps/MagmaHideout_2F_1R/scripts.pory"
 waitmovement 0
 # 28 "data/maps/MagmaHideout_2F_1R/scripts.pory"
-msgbox MagmaHideout_2F_1R_Text_Grunt3Intro MSGBOX_AUTOCLOSE
+msgbox MagmaHideout_2F_1R_Text_Grunt3Intro, MSGBOX_AUTOCLOSE
 # 29 "data/maps/MagmaHideout_2F_1R/scripts.pory"
 goto MagmaHideout_2F_1R_EventScript_Grunt14Grunt3_ChoosePartyForMultiBattle
 # 30 "data/maps/MagmaHideout_2F_1R/scripts.pory"
@@ -175,7 +175,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 88 "data/maps/MagmaHideout_2F_1R/scripts.pory"
 waitmovement 0
 # 89 "data/maps/MagmaHideout_2F_1R/scripts.pory"
-msgbox MagmaHideout_2F_1R_Text_Grunt4Intro MSGBOX_AUTOCLOSE
+msgbox MagmaHideout_2F_1R_Text_Grunt4Intro, MSGBOX_AUTOCLOSE
 # 90 "data/maps/MagmaHideout_2F_1R/scripts.pory"
 goto MagmaHideout_2F_1R_EventScript_Grunt5Grunt4_ChoosePartyForMultiBattle
 # 91 "data/maps/MagmaHideout_2F_1R/scripts.pory"

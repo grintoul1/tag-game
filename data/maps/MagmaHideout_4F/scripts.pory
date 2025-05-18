@@ -74,7 +74,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MAGMA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox MagmaHideout_4F_Text_Grunt12Intro MSGBOX_AUTOCLOSE
+msgbox MagmaHideout_4F_Text_Grunt12Intro, MSGBOX_AUTOCLOSE
 goto MagmaHideout_4F_EventScript_Grunt11Grunt12_ChoosePartyForMultiBattle
 releaseall
 end

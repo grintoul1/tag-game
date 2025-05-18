@@ -144,7 +144,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox LavaridgeTown_Gym_1F_Text_ColeIntro MSGBOX_AUTOCLOSE
+msgbox LavaridgeTown_Gym_1F_Text_ColeIntro, MSGBOX_AUTOCLOSE
 goto LavaridgeTown_Gym_1F_EventScript_GeraldColeDoMultiBattle
 releaseall
 end
@@ -204,7 +204,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox LavaridgeTown_Gym_1F_Text_AxleIntro MSGBOX_AUTOCLOSE
+msgbox LavaridgeTown_Gym_1F_Text_AxleIntro, MSGBOX_AUTOCLOSE
 goto LavaridgeTown_Gym_1F_EventScript_DanielleAxleDoMultiBattle
 releaseall
 end

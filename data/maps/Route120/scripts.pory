@@ -300,7 +300,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_COOL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route120_Text_AngelicaIntro MSGBOX_AUTOCLOSE
+msgbox Route120_Text_AngelicaIntro, MSGBOX_AUTOCLOSE
 goto Route120_EventScript_ColinAngelicaDoMultiBattle
 releaseall
 end
@@ -345,7 +345,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route120_Text_RobertIntro MSGBOX_AUTOCLOSE
+msgbox Route120_Text_RobertIntro, MSGBOX_AUTOCLOSE
 goto Route120_EventScript_ClarissaRobertDoMultiBattle
 releaseall
 end
@@ -404,7 +404,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 waitmovement 0
-msgbox Route120_Text_LorenzoIntro MSGBOX_AUTOCLOSE
+msgbox Route120_Text_LorenzoIntro, MSGBOX_AUTOCLOSE
 goto Route120_EventScript_JennaLorenzoDoMultiBattle
 releaseall
 end
@@ -453,7 +453,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route120_Text_JeffreyIntro MSGBOX_AUTOCLOSE
+msgbox Route120_Text_JeffreyIntro, MSGBOX_AUTOCLOSE
 goto Route120_EventScript_ChipJeffreyDoMultiBattle
 releaseall
 end
@@ -528,7 +528,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route120_Text_RileyIntro MSGBOX_AUTOCLOSE
+msgbox Route120_Text_RileyIntro, MSGBOX_AUTOCLOSE
 goto Route120_EventScript_KeigoRileyDoMultiBattle
 releaseall
 end
@@ -582,7 +582,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route120_Text_CallieIntro MSGBOX_AUTOCLOSE
+msgbox Route120_Text_CallieIntro, MSGBOX_AUTOCLOSE
 goto Route120_EventScript_JenniferCallieDoMultiBattle
 releaseall
 end

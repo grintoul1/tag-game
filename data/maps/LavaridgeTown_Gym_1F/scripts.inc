@@ -291,7 +291,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 146 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 waitmovement 0
 # 147 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
-msgbox LavaridgeTown_Gym_1F_Text_ColeIntro MSGBOX_AUTOCLOSE
+msgbox LavaridgeTown_Gym_1F_Text_ColeIntro, MSGBOX_AUTOCLOSE
 # 148 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 goto LavaridgeTown_Gym_1F_EventScript_GeraldColeDoMultiBattle
 # 149 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
@@ -411,7 +411,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 206 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 waitmovement 0
 # 207 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
-msgbox LavaridgeTown_Gym_1F_Text_AxleIntro MSGBOX_AUTOCLOSE
+msgbox LavaridgeTown_Gym_1F_Text_AxleIntro, MSGBOX_AUTOCLOSE
 # 208 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 goto LavaridgeTown_Gym_1F_EventScript_DanielleAxleDoMultiBattle
 # 209 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"

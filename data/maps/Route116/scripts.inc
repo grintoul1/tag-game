@@ -529,7 +529,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 265 "data/maps/Route116/scripts.pory"
 waitmovement 0
 # 266 "data/maps/Route116/scripts.pory"
-msgbox Route116_Text_JoeyIntro MSGBOX_AUTOCLOSE
+msgbox Route116_Text_JoeyIntro, MSGBOX_AUTOCLOSE
 # 267 "data/maps/Route116/scripts.pory"
 goto Route116_EventScript_JoseJoeyDoMultiBattle
 # 268 "data/maps/Route116/scripts.pory"
@@ -619,7 +619,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 # 310 "data/maps/Route116/scripts.pory"
 waitmovement 0
 # 311 "data/maps/Route116/scripts.pory"
-msgbox Route116_Text_JaniceIntro MSGBOX_AUTOCLOSE
+msgbox Route116_Text_JaniceIntro, MSGBOX_AUTOCLOSE
 # 312 "data/maps/Route116/scripts.pory"
 goto Route116_EventScript_JerryJaniceDoMultiBattle
 # 313 "data/maps/Route116/scripts.pory"
@@ -865,7 +865,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 433 "data/maps/Route116/scripts.pory"
 waitmovement 0
 # 434 "data/maps/Route116/scripts.pory"
-msgbox Route116_Text_SarahIntro MSGBOX_AUTOCLOSE
+msgbox Route116_Text_SarahIntro, MSGBOX_AUTOCLOSE
 # 435 "data/maps/Route116/scripts.pory"
 goto Route116_EventScript_DawsonSarahDoMultiBattle
 # 436 "data/maps/Route116/scripts.pory"
@@ -955,7 +955,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 478 "data/maps/Route116/scripts.pory"
 waitmovement 0
 # 479 "data/maps/Route116/scripts.pory"
-msgbox Route116_Text_ClarkIntro MSGBOX_AUTOCLOSE
+msgbox Route116_Text_ClarkIntro, MSGBOX_AUTOCLOSE
 # 480 "data/maps/Route116/scripts.pory"
 goto Route116_EventScript_DevanClarkDoMultiBattle
 # 481 "data/maps/Route116/scripts.pory"
@@ -1045,7 +1045,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 523 "data/maps/Route116/scripts.pory"
 waitmovement 0
 # 524 "data/maps/Route116/scripts.pory"
-msgbox Route116_Text_KarenIntro MSGBOX_AUTOCLOSE
+msgbox Route116_Text_KarenIntro, MSGBOX_AUTOCLOSE
 # 525 "data/maps/Route116/scripts.pory"
 goto Route116_EventScript_JohnsonKarenDoMultiBattle
 # 526 "data/maps/Route116/scripts.pory"

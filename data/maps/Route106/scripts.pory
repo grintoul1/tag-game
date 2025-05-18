@@ -41,7 +41,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_HIKER, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route106_Text_ElliotIntro MSGBOX_AUTOCLOSE
+msgbox Route106_Text_ElliotIntro, MSGBOX_AUTOCLOSE
 goto Route106_EventScript_NedElliotDoMultiBattle
 releaseall
 end

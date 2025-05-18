@@ -272,7 +272,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_COOL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route110_Text_AbigailIntro MSGBOX_AUTOCLOSE
+msgbox Route110_Text_AbigailIntro, MSGBOX_AUTOCLOSE
 goto Route110_EventScript_AnthonyAbigailDoMultiBattle
 releaseall
 end
@@ -335,7 +335,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route110_Text_JacobIntro MSGBOX_AUTOCLOSE
+msgbox Route110_Text_JacobIntro, MSGBOX_AUTOCLOSE
 goto Route110_EventScript_JasmineJacobDoMultiBattle
 releaseall
 end
@@ -398,7 +398,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route110_Text_KalebIntro MSGBOX_AUTOCLOSE
+msgbox Route110_Text_KalebIntro, MSGBOX_AUTOCLOSE
 goto Route110_EventScript_IsabelKalebDoMultiBattle
 releaseall
 end
@@ -468,7 +468,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 waitmovement 0
-msgbox Route110_Text_EdwinIntro MSGBOX_AUTOCLOSE
+msgbox Route110_Text_EdwinIntro, MSGBOX_AUTOCLOSE
 goto Route110_EventScript_JosephEdwinDoMultiBattle
 releaseall
 end
@@ -513,7 +513,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_COOL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route110_Text_BenjaminIntro MSGBOX_AUTOCLOSE
+msgbox Route110_Text_BenjaminIntro, MSGBOX_AUTOCLOSE
 goto Route110_EventScript_AlyssaBenjaminDoMultiBattle
 releaseall
 end

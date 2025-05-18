@@ -29,7 +29,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 15 "data/maps/RustboroCity_Gym/scripts.pory"
 waitmovement 0
 # 16 "data/maps/RustboroCity_Gym/scripts.pory"
-msgbox RustboroCity_Gym_Text_RoxanneIntro MSGBOX_AUTOCLOSE
+msgbox RustboroCity_Gym_Text_RoxanneIntro, MSGBOX_AUTOCLOSE
 # 17 "data/maps/RustboroCity_Gym/scripts.pory"
 goto RustboroCity_Gym_EventScript_RoxanneDoMultiBattle
 # 18 "data/maps/RustboroCity_Gym/scripts.pory"
@@ -193,7 +193,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 # 97 "data/maps/RustboroCity_Gym/scripts.pory"
 waitmovement 0
 # 98 "data/maps/RustboroCity_Gym/scripts.pory"
-msgbox RustboroCity_Gym_Text_TommyIntro MSGBOX_AUTOCLOSE
+msgbox RustboroCity_Gym_Text_TommyIntro, MSGBOX_AUTOCLOSE
 # 99 "data/maps/RustboroCity_Gym/scripts.pory"
 goto RustboroCity_Gym_EventScript_JoshTommyDoMultiBattle
 # 100 "data/maps/RustboroCity_Gym/scripts.pory"

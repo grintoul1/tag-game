@@ -207,7 +207,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 104 "data/maps/Route113/scripts.pory"
 waitmovement 0
 # 105 "data/maps/Route113/scripts.pory"
-msgbox Route113_Text_LungIntro MSGBOX_AUTOCLOSE
+msgbox Route113_Text_LungIntro, MSGBOX_AUTOCLOSE
 # 106 "data/maps/Route113/scripts.pory"
 goto Route113_EventScript_LaoLungDoMultiBattle
 # 107 "data/maps/Route113/scripts.pory"
@@ -317,7 +317,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 159 "data/maps/Route113/scripts.pory"
 waitmovement 0
 # 160 "data/maps/Route113/scripts.pory"
-msgbox Route113_Text_TiaIntro MSGBOX_AUTOCLOSE
+msgbox Route113_Text_TiaIntro, MSGBOX_AUTOCLOSE
 # 161 "data/maps/Route113/scripts.pory"
 goto Route113_EventScript_ToriTiaDoMultiBattle
 # 162 "data/maps/Route113/scripts.pory"
@@ -417,7 +417,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 209 "data/maps/Route113/scripts.pory"
 waitmovement 0
 # 210 "data/maps/Route113/scripts.pory"
-msgbox Route113_Text_SophieIntro MSGBOX_AUTOCLOSE
+msgbox Route113_Text_SophieIntro, MSGBOX_AUTOCLOSE
 # 211 "data/maps/Route113/scripts.pory"
 goto Route113_EventScript_CobySophieDoMultiBattle
 # 212 "data/maps/Route113/scripts.pory"

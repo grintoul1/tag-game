@@ -83,7 +83,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 42 "data/maps/MtPyre_2F/scripts.pory"
 waitmovement 0
 # 43 "data/maps/MtPyre_2F/scripts.pory"
-msgbox MtPyre_2F_Text_Pyre_AquaGrunt2Intro MSGBOX_AUTOCLOSE
+msgbox MtPyre_2F_Text_Pyre_AquaGrunt2Intro, MSGBOX_AUTOCLOSE
 # 44 "data/maps/MtPyre_2F/scripts.pory"
 goto MtPyre_2F_EventScript_Pyre_AquaGrunt1Pyre_AquaGrunt2DoMultiBattle
 # 45 "data/maps/MtPyre_2F/scripts.pory"
@@ -165,7 +165,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 83 "data/maps/MtPyre_2F/scripts.pory"
 waitmovement 0
 # 84 "data/maps/MtPyre_2F/scripts.pory"
-msgbox MtPyre_2F_Text_Pyre_MagmaGrunt5Intro MSGBOX_AUTOCLOSE
+msgbox MtPyre_2F_Text_Pyre_MagmaGrunt5Intro, MSGBOX_AUTOCLOSE
 # 85 "data/maps/MtPyre_2F/scripts.pory"
 goto MtPyre_2F_EventScript_Pyre_MagmaGrunt4Pyre_MagmaGrunt5DoMultiBattle
 # 86 "data/maps/MtPyre_2F/scripts.pory"

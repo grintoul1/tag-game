@@ -228,7 +228,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_HIKER, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
-msgbox Route118_Text_WadeIntro MSGBOX_AUTOCLOSE
+msgbox Route118_Text_WadeIntro, MSGBOX_AUTOCLOSE
 goto Route118_EventScript_BarnyWadeDoMultiBattle
 releaseall
 end
@@ -269,7 +269,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
-msgbox Route118_Text_DaltonIntro MSGBOX_AUTOCLOSE
+msgbox Route118_Text_DaltonIntro, MSGBOX_AUTOCLOSE
 goto Route118_EventScript_ChesterDaltonDoMultiBattle
 releaseall
 end
@@ -337,7 +337,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_GIRL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route118_Text_RoseIntro MSGBOX_AUTOCLOSE
+msgbox Route118_Text_RoseIntro, MSGBOX_AUTOCLOSE
 goto Route118_EventScript_DeandreRoseDoMultiBattle
 releaseall
 end

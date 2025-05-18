@@ -447,7 +447,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 224 "data/maps/Route103/scripts.pory"
 waitmovement 0
 # 225 "data/maps/Route103/scripts.pory"
-msgbox Route103_Text_AmyIntro MSGBOX_AUTOCLOSE
+msgbox Route103_Text_AmyIntro, MSGBOX_AUTOCLOSE
 # 226 "data/maps/Route103/scripts.pory"
 goto Route103_EventScript_AmyLivDoMultiBattle
 # 227 "data/maps/Route103/scripts.pory"
@@ -583,7 +583,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 292 "data/maps/Route103/scripts.pory"
 waitmovement 0
 # 293 "data/maps/Route103/scripts.pory"
-msgbox Route103_Text_MiguelIntro MSGBOX_AUTOCLOSE
+msgbox Route103_Text_MiguelIntro, MSGBOX_AUTOCLOSE
 # 294 "data/maps/Route103/scripts.pory"
 goto Route103_EventScript_AndrewMiguelDoMultiBattle
 # 295 "data/maps/Route103/scripts.pory"
@@ -709,7 +709,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 355 "data/maps/Route103/scripts.pory"
 waitmovement 0
 # 356 "data/maps/Route103/scripts.pory"
-msgbox Route103_Text_RhettIntro MSGBOX_AUTOCLOSE
+msgbox Route103_Text_RhettIntro, MSGBOX_AUTOCLOSE
 # 357 "data/maps/Route103/scripts.pory"
 goto Route103_EventScript_MarcosRhettDoMultiBattle
 # 358 "data/maps/Route103/scripts.pory"

@@ -135,7 +135,7 @@ DewfordTown_Gym_EventScript_StopCountingTrainers::
 DewfordTown_Gym_EventScript_Brawly2::
 lockall
 playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
-msgbox DewfordTown_Gym_Text_BrawlyIntro MSGBOX_AUTOCLOSE
+msgbox DewfordTown_Gym_Text_BrawlyIntro, MSGBOX_AUTOCLOSE
 goto DewfordTown_Gym_EventScript_BrawlyDoMultiBattle
 msgbox DewfordTown_Gym_Text_ComeBackWhenReady, MSGBOX_DEFAULT
 closemessage
@@ -240,7 +240,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_HIKER, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox DewfordTown_Gym_Text_BrendenIntro MSGBOX_AUTOCLOSE
+msgbox DewfordTown_Gym_Text_BrendenIntro, MSGBOX_AUTOCLOSE
 goto DewfordTown_Gym_EventScript_LauraBrendenDoMultiBattle
 releaseall
 end
@@ -299,7 +299,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
-msgbox DewfordTown_Gym_Text_TakaoIntro MSGBOX_AUTOCLOSE
+msgbox DewfordTown_Gym_Text_TakaoIntro, MSGBOX_AUTOCLOSE
 goto DewfordTown_Gym_EventScript_CristianTakaoDoMultiBattle
 releaseall
 end
@@ -349,7 +349,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
-msgbox DewfordTown_Gym_Text_JocelynIntro MSGBOX_AUTOCLOSE
+msgbox DewfordTown_Gym_Text_JocelynIntro, MSGBOX_AUTOCLOSE
 goto DewfordTown_Gym_EventScript_LilithJocelynDoMultiBattle
 releaseall
 end

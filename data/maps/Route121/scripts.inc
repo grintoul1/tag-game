@@ -265,7 +265,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 133 "data/maps/Route121/scripts.pory"
 waitmovement 0
 # 134 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_WalterIntro MSGBOX_AUTOCLOSE
+msgbox Route121_Text_WalterIntro, MSGBOX_AUTOCLOSE
 # 135 "data/maps/Route121/scripts.pory"
 goto Route121_EventScript_VanessaWalterDoMultiBattle
 # 136 "data/maps/Route121/scripts.pory"
@@ -377,7 +377,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 189 "data/maps/Route121/scripts.pory"
 waitmovement 0
 # 190 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_KateIntro MSGBOX_AUTOCLOSE
+msgbox Route121_Text_KateIntro, MSGBOX_AUTOCLOSE
 # 191 "data/maps/Route121/scripts.pory"
 goto Route121_EventScript_KateJoyDoMultiBattle
 # 192 "data/maps/Route121/scripts.pory"
@@ -519,7 +519,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 260 "data/maps/Route121/scripts.pory"
 waitmovement 0
 # 261 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_TammyIntro MSGBOX_AUTOCLOSE
+msgbox Route121_Text_TammyIntro, MSGBOX_AUTOCLOSE
 # 262 "data/maps/Route121/scripts.pory"
 goto Route121_EventScript_CaleTammyDoMultiBattle
 # 263 "data/maps/Route121/scripts.pory"
@@ -601,7 +601,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 # 301 "data/maps/Route121/scripts.pory"
 waitmovement 0
 # 302 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_MylesIntro MSGBOX_AUTOCLOSE
+msgbox Route121_Text_MylesIntro, MSGBOX_AUTOCLOSE
 # 303 "data/maps/Route121/scripts.pory"
 goto Route121_EventScript_PatMylesDoMultiBattle
 # 304 "data/maps/Route121/scripts.pory"
@@ -707,7 +707,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 354 "data/maps/Route121/scripts.pory"
 waitmovement 0
 # 355 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_CristinIntro MSGBOX_AUTOCLOSE
+msgbox Route121_Text_CristinIntro, MSGBOX_AUTOCLOSE
 # 356 "data/maps/Route121/scripts.pory"
 goto Route121_EventScript_MarcelCristinDoMultiBattle
 # 357 "data/maps/Route121/scripts.pory"

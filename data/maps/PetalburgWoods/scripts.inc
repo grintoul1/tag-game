@@ -53,7 +53,7 @@ applymovement VAR_0x8008, Common_Movement_WalkInPlaceFasterUp
 # 27 "data/maps/PetalburgWoods/scripts.pory"
 waitmovement 0
 # 28 "data/maps/PetalburgWoods/scripts.pory"
-msgbox PetalburgWoods_Text_ShellyIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgWoods_Text_ShellyIntro, MSGBOX_AUTOCLOSE
 # 29 "data/maps/PetalburgWoods/scripts.pory"
 goto PetalburgWoods_EventScript_MattShellyDoMultiBattle
 # 30 "data/maps/PetalburgWoods/scripts.pory"
@@ -673,7 +673,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 337 "data/maps/PetalburgWoods/scripts.pory"
 waitmovement 0
 # 338 "data/maps/PetalburgWoods/scripts.pory"
-msgbox PetalburgWoods_Text_LyleIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgWoods_Text_LyleIntro, MSGBOX_AUTOCLOSE
 # 339 "data/maps/PetalburgWoods/scripts.pory"
 goto PetalburgWoods_EventScript_JamesLyleDoMultiBattle
 # 340 "data/maps/PetalburgWoods/scripts.pory"

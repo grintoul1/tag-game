@@ -129,7 +129,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 65 "data/maps/LavaridgeTown_Gym_B1F/scripts.pory"
 waitmovement 0
 # 66 "data/maps/LavaridgeTown_Gym_B1F/scripts.pory"
-msgbox LavaridgeTown_Gym_B1F_Text_KeeganIntro MSGBOX_AUTOCLOSE
+msgbox LavaridgeTown_Gym_B1F_Text_KeeganIntro, MSGBOX_AUTOCLOSE
 # 67 "data/maps/LavaridgeTown_Gym_B1F/scripts.pory"
 goto LavaridgeTown_Gym_B1F_EventScript_JeffKeeganDoMultiBattle
 # 68 "data/maps/LavaridgeTown_Gym_B1F/scripts.pory"

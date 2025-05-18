@@ -125,7 +125,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 63 "data/maps/MagmaHideout_1F/scripts.pory"
 waitmovement 0
 # 64 "data/maps/MagmaHideout_1F/scripts.pory"
-msgbox MagmaHideout_1F_Text_Grunt2Intro MSGBOX_AUTOCLOSE
+msgbox MagmaHideout_1F_Text_Grunt2Intro, MSGBOX_AUTOCLOSE
 # 65 "data/maps/MagmaHideout_1F/scripts.pory"
 goto MagmaHideout_1F_EventScript_Grunt1Grunt2_ChoosePartyForMultiBattle
 # 66 "data/maps/MagmaHideout_1F/scripts.pory"

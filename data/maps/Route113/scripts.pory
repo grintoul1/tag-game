@@ -102,7 +102,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route113_Text_LungIntro MSGBOX_AUTOCLOSE
+msgbox Route113_Text_LungIntro, MSGBOX_AUTOCLOSE
 goto Route113_EventScript_LaoLungDoMultiBattle
 releaseall
 end
@@ -157,7 +157,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_TWINS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
-msgbox Route113_Text_TiaIntro MSGBOX_AUTOCLOSE
+msgbox Route113_Text_TiaIntro, MSGBOX_AUTOCLOSE
 goto Route113_EventScript_ToriTiaDoMultiBattle
 releaseall
 end
@@ -207,7 +207,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_GIRL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route113_Text_SophieIntro MSGBOX_AUTOCLOSE
+msgbox Route113_Text_SophieIntro, MSGBOX_AUTOCLOSE
 goto Route113_EventScript_CobySophieDoMultiBattle
 releaseall
 end

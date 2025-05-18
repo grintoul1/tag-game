@@ -92,7 +92,7 @@ MtChimney_EventScript_EmmiePositionForMaxieFightEast::
 	call_if_eq VAR_TEMP_3, 11, MtChimney_EventScript_EmmiePositionForMaxieFightEast2
 	return
 
-MtChimney_EventScript_EmmiePositionForMaxieFightEast1:
+MtChimney_EventScript_EmmiePositionForMaxieFightEast1::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtChimney_Movement_EmmiePositionForMaxieFightEast1
 	waitmovement 0
 	return
@@ -102,7 +102,7 @@ MtChimney_Movement_EmmiePositionForMaxieFightEast1:
 	face_up
 	step_end
 
-MtChimney_EventScript_EmmiePositionForMaxieFightEast2:
+MtChimney_EventScript_EmmiePositionForMaxieFightEast2::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtChimney_Movement_EmmiePositionForMaxieFightEast2
 	waitmovement 0
 	return
@@ -116,7 +116,6 @@ MtChimney_Movement_EmmiePositionForMaxieFightEast2:
 
 MtChimney_EventScript_Maxie::
 	lockall
-	playbgm MUS_ENCOUNTER_MAGMA, FALSE
 	call_if_eq VAR_FACING, DIR_EAST, MtChimney_EventScript_EmmiePositionForMaxieFightEast
 	call_if_eq VAR_FACING, DIR_NORTH, MtChimney_EventScript_EmmiePositionForMaxieFightNorth
 	msgbox MtChimney_Text_MeteoriteWillActivateVolcano, MSGBOX_DEFAULT
@@ -564,7 +563,6 @@ MtChimney_EventScript_BusyAquaGrunt3::
 
 MtChimney_EventScript_Tabitha::
 lockall
-playse SE_PIN
 applymovement LOCALID_TABITHA, Common_Movement_ExclamationMark
 waitmovement 0
 playbgm MUS_ENCOUNTER_MAGMA, TRUE
@@ -576,13 +574,13 @@ releaseall
 end
 
 MtChimney_EventScript_TabithaDoMultiBattle::
-playbgm MUS_MT_CHIMNEY, TRUE
-multi_2p_vs_1 TRAINER_TABITHA_MT_CHIMNEY, MtChimney_Text_TabithaDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, MtChimney_EventScript_TabithaVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_MT_CHIMNEY, TRUE
+	multi_2p_vs_1 TRAINER_TABITHA_MT_CHIMNEY, MtChimney_Text_TabithaDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, MtChimney_EventScript_TabithaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 MtChimney_EventScript_TabithaVictory::
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
@@ -612,14 +610,14 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MAGMA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 waitmovement 0
-msgbox MtChimney_Text_Grunt2Intro MSGBOX_AUTOCLOSE
+msgbox MtChimney_Text_Grunt2Intro, MSGBOX_AUTOCLOSE
 goto MtChimney_EventScript_Grunt1Grunt2DoMultiBattle
 releaseall
 end
 
 MtChimney_EventScript_Grunt1Grunt2DoMultiBattle::
 playbgm MUS_MT_CHIMNEY, TRUE
-multi_2p_vs_2 TRAINER_GRUNT_MT_CHIMNEY_1, MtChimney_Text_Grunt1Defeat, TRAINER_GRUNT_MT_CHIMNEY_2, MtChimney_Text_Grunt2Defeat, PARTNER_EMMIE
+multi_2p_vs_1 TRAINER_GRUNT_MT_CHIMNEY_1, MtChimney_Text_Grunt1Defeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MtChimney_EventScript_Grunt1Grunt2Victory
 fadescreen FADE_TO_BLACK

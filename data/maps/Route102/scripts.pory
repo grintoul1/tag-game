@@ -45,7 +45,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route102_Text_RickIntro MSGBOX_AUTOCLOSE
+msgbox Route102_Text_RickIntro, MSGBOX_AUTOCLOSE
 goto Route102_EventScript_CalvinRickDoMultiBattle
 releaseall
 end
@@ -98,7 +98,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_GIRL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route102_Text_TianaIntro MSGBOX_AUTOCLOSE
+msgbox Route102_Text_TianaIntro, MSGBOX_AUTOCLOSE
 goto Route102_EventScript_AllenTianaDoMultiBattle
 releaseall
 end

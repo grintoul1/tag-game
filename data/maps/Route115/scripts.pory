@@ -127,7 +127,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_GIRL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route115_Text_MarleneIntro MSGBOX_AUTOCLOSE
+msgbox Route115_Text_MarleneIntro, MSGBOX_AUTOCLOSE
 goto Route115_EventScript_HectorMarleneDoMultiBattle
 releaseall
 end
@@ -182,7 +182,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route115_Text_NobIntro MSGBOX_AUTOCLOSE
+msgbox Route115_Text_NobIntro, MSGBOX_AUTOCLOSE
 goto Route115_EventScript_AlixNobDoMultiBattle
 releaseall
 end

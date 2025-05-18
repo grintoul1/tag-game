@@ -85,7 +85,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 43 "data/maps/Route106/scripts.pory"
 waitmovement 0
 # 44 "data/maps/Route106/scripts.pory"
-msgbox Route106_Text_ElliotIntro MSGBOX_AUTOCLOSE
+msgbox Route106_Text_ElliotIntro, MSGBOX_AUTOCLOSE
 # 45 "data/maps/Route106/scripts.pory"
 goto Route106_EventScript_NedElliotDoMultiBattle
 # 46 "data/maps/Route106/scripts.pory"

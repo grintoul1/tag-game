@@ -159,7 +159,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 80 "data/maps/Route123/scripts.pory"
 waitmovement 0
 # 81 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_WendyIntro MSGBOX_AUTOCLOSE
+msgbox Route123_Text_WendyIntro, MSGBOX_AUTOCLOSE
 # 82 "data/maps/Route123/scripts.pory"
 goto Route123_EventScript_BraxtonWendyDoMultiBattle
 # 83 "data/maps/Route123/scripts.pory"
@@ -265,7 +265,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 133 "data/maps/Route123/scripts.pory"
 waitmovement 0
 # 134 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_VioletIntro MSGBOX_AUTOCLOSE
+msgbox Route123_Text_VioletIntro, MSGBOX_AUTOCLOSE
 # 135 "data/maps/Route123/scripts.pory"
 goto Route123_EventScript_CameronVioletDoMultiBattle
 # 136 "data/maps/Route123/scripts.pory"
@@ -403,7 +403,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 202 "data/maps/Route123/scripts.pory"
 waitmovement 0
 # 203 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_YukiIntro MSGBOX_AUTOCLOSE
+msgbox Route123_Text_YukiIntro, MSGBOX_AUTOCLOSE
 # 204 "data/maps/Route123/scripts.pory"
 goto Route123_EventScript_YukiMiuDoMultiBattle
 # 205 "data/maps/Route123/scripts.pory"
@@ -495,7 +495,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 248 "data/maps/Route123/scripts.pory"
 waitmovement 0
 # 249 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_EdIntro MSGBOX_AUTOCLOSE
+msgbox Route123_Text_EdIntro, MSGBOX_AUTOCLOSE
 # 250 "data/maps/Route123/scripts.pory"
 goto Route123_EventScript_KindraEdDoMultiBattle
 # 251 "data/maps/Route123/scripts.pory"
@@ -585,7 +585,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 293 "data/maps/Route123/scripts.pory"
 waitmovement 0
 # 294 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_FrederickIntro MSGBOX_AUTOCLOSE
+msgbox Route123_Text_FrederickIntro, MSGBOX_AUTOCLOSE
 # 295 "data/maps/Route123/scripts.pory"
 goto Route123_EventScript_JackiFrederickDoMultiBattle
 # 296 "data/maps/Route123/scripts.pory"
@@ -675,7 +675,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 338 "data/maps/Route123/scripts.pory"
 waitmovement 0
 # 339 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_AlbertoIntro MSGBOX_AUTOCLOSE
+msgbox Route123_Text_AlbertoIntro, MSGBOX_AUTOCLOSE
 # 340 "data/maps/Route123/scripts.pory"
 goto Route123_EventScript_FernandoAlbertoDoMultiBattle
 # 341 "data/maps/Route123/scripts.pory"
@@ -773,7 +773,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 387 "data/maps/Route123/scripts.pory"
 waitmovement 0
 # 388 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_KayleyIntro MSGBOX_AUTOCLOSE
+msgbox Route123_Text_KayleyIntro, MSGBOX_AUTOCLOSE
 # 389 "data/maps/Route123/scripts.pory"
 goto Route123_EventScript_JonasKayleyDoMultiBattle
 # 390 "data/maps/Route123/scripts.pory"
@@ -879,7 +879,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 440 "data/maps/Route123/scripts.pory"
 waitmovement 0
 # 441 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_JazmynIntro MSGBOX_AUTOCLOSE
+msgbox Route123_Text_JazmynIntro, MSGBOX_AUTOCLOSE
 # 442 "data/maps/Route123/scripts.pory"
 goto Route123_EventScript_DavisJazmynDoMultiBattle
 # 443 "data/maps/Route123/scripts.pory"

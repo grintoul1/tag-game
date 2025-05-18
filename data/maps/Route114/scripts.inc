@@ -227,7 +227,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 114 "data/maps/Route114/scripts.pory"
 waitmovement 0
 # 115 "data/maps/Route114/scripts.pory"
-msgbox Route114_Text_Grunt_Route_114_4Intro MSGBOX_AUTOCLOSE
+msgbox Route114_Text_Grunt_Route_114_4Intro, MSGBOX_AUTOCLOSE
 # 116 "data/maps/Route114/scripts.pory"
 goto Route114_EventScript_Grunt_Route_114_3Grunt_Route_114_4DoMultiBattle
 # 117 "data/maps/Route114/scripts.pory"
@@ -333,7 +333,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 167 "data/maps/Route114/scripts.pory"
 waitmovement 0
 # 168 "data/maps/Route114/scripts.pory"
-msgbox Route114_Text_Grunt_Route_114_6Intro MSGBOX_AUTOCLOSE
+msgbox Route114_Text_Grunt_Route_114_6Intro, MSGBOX_AUTOCLOSE
 # 169 "data/maps/Route114/scripts.pory"
 goto Route114_EventScript_Grunt_Route_114_5Grunt_Route_114_6DoMultiBattle
 # 170 "data/maps/Route114/scripts.pory"
@@ -423,7 +423,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 212 "data/maps/Route114/scripts.pory"
 waitmovement 0
 # 213 "data/maps/Route114/scripts.pory"
-msgbox Route114_Text_CharlotteIntro MSGBOX_AUTOCLOSE
+msgbox Route114_Text_CharlotteIntro, MSGBOX_AUTOCLOSE
 # 214 "data/maps/Route114/scripts.pory"
 goto Route114_EventScript_SteveCharlotteDoMultiBattle
 # 215 "data/maps/Route114/scripts.pory"
@@ -541,7 +541,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 271 "data/maps/Route114/scripts.pory"
 waitmovement 0
 # 272 "data/maps/Route114/scripts.pory"
-msgbox Route114_Text_Grunt_Route_114_2Intro MSGBOX_AUTOCLOSE
+msgbox Route114_Text_Grunt_Route_114_2Intro, MSGBOX_AUTOCLOSE
 # 273 "data/maps/Route114/scripts.pory"
 goto Route114_EventScript_Grunt_Route_114_1Grunt_Route_114_2DoMultiBattle
 # 274 "data/maps/Route114/scripts.pory"
@@ -661,7 +661,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 # 331 "data/maps/Route114/scripts.pory"
 waitmovement 0
 # 332 "data/maps/Route114/scripts.pory"
-msgbox Route114_Text_IvyIntro MSGBOX_AUTOCLOSE
+msgbox Route114_Text_IvyIntro, MSGBOX_AUTOCLOSE
 # 333 "data/maps/Route114/scripts.pory"
 goto Route114_EventScript_IvyTyraDoMultiBattle
 # 334 "data/maps/Route114/scripts.pory"
@@ -769,7 +769,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 385 "data/maps/Route114/scripts.pory"
 waitmovement 0
 # 386 "data/maps/Route114/scripts.pory"
-msgbox Route114_Text_ClaudeIntro MSGBOX_AUTOCLOSE
+msgbox Route114_Text_ClaudeIntro, MSGBOX_AUTOCLOSE
 # 387 "data/maps/Route114/scripts.pory"
 goto Route114_EventScript_KaiClaudeDoMultiBattle
 # 388 "data/maps/Route114/scripts.pory"

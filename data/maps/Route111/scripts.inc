@@ -536,7 +536,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_GIRL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route111_Text_HeidiIntro MSGBOX_AUTOCLOSE
+msgbox Route111_Text_HeidiIntro, MSGBOX_AUTOCLOSE
 goto Route111_EventScript_BeauHeidiDoMultiBattle
 releaseall
 end
@@ -581,7 +581,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
-msgbox Route111_Text_DrewIntro MSGBOX_AUTOCLOSE
+msgbox Route111_Text_DrewIntro, MSGBOX_AUTOCLOSE
 goto Route111_EventScript_BeckyDrewDoMultiBattle
 releaseall
 end
@@ -644,7 +644,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_GIRL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route111_Text_IreneIntro MSGBOX_AUTOCLOSE
+msgbox Route111_Text_IreneIntro, MSGBOX_AUTOCLOSE
 goto Route111_EventScript_TravisIreneDoMultiBattle
 releaseall
 end
@@ -698,7 +698,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_COOL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route111_Text_BrookeIntro MSGBOX_AUTOCLOSE
+msgbox Route111_Text_BrookeIntro, MSGBOX_AUTOCLOSE
 goto Route111_EventScript_WiltonBrookeDoMultiBattle
 releaseall
 end
@@ -775,7 +775,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_GIRL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route111_Text_BiancaIntro MSGBOX_AUTOCLOSE
+msgbox Route111_Text_BiancaIntro, MSGBOX_AUTOCLOSE
 goto Route111_EventScript_HaydenBiancaDoMultiBattle
 releaseall
 end
@@ -828,7 +828,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route111_Text_TyronIntro MSGBOX_AUTOCLOSE
+msgbox Route111_Text_TyronIntro, MSGBOX_AUTOCLOSE
 goto Route111_EventScript_CelinaTyronDoMultiBattle
 releaseall
 end
@@ -877,7 +877,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_HIKER, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox Route111_Text_DustyIntro MSGBOX_AUTOCLOSE
+msgbox Route111_Text_DustyIntro, MSGBOX_AUTOCLOSE
 goto Route111_EventScript_BryanDustyDoMultiBattle
 releaseall
 end
@@ -922,7 +922,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
-msgbox Route111_Text_BrandenIntro MSGBOX_AUTOCLOSE
+msgbox Route111_Text_BrandenIntro, MSGBOX_AUTOCLOSE
 goto Route111_EventScript_CeliaBrandenDoMultiBattle
 releaseall
 end

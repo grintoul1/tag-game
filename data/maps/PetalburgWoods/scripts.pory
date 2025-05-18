@@ -25,7 +25,7 @@ applymovement VAR_0x8008, Common_Movement_WalkInPlaceFasterUp
 setvar VAR_0x8008, LOCALID_SHELLY
 applymovement VAR_0x8008, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
-msgbox PetalburgWoods_Text_ShellyIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgWoods_Text_ShellyIntro, MSGBOX_AUTOCLOSE
 goto PetalburgWoods_EventScript_MattShellyDoMultiBattle
 releaseall
 end
@@ -335,7 +335,7 @@ waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
-msgbox PetalburgWoods_Text_LyleIntro MSGBOX_AUTOCLOSE
+msgbox PetalburgWoods_Text_LyleIntro, MSGBOX_AUTOCLOSE
 goto PetalburgWoods_EventScript_JamesLyleDoMultiBattle
 releaseall
 end

@@ -273,7 +273,7 @@ lockall
 # 137 "data/maps/DewfordTown_Gym/scripts.pory"
 playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
 # 138 "data/maps/DewfordTown_Gym/scripts.pory"
-msgbox DewfordTown_Gym_Text_BrawlyIntro MSGBOX_AUTOCLOSE
+msgbox DewfordTown_Gym_Text_BrawlyIntro, MSGBOX_AUTOCLOSE
 # 139 "data/maps/DewfordTown_Gym/scripts.pory"
 goto DewfordTown_Gym_EventScript_BrawlyDoMultiBattle
 # 140 "data/maps/DewfordTown_Gym/scripts.pory"
@@ -483,7 +483,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 242 "data/maps/DewfordTown_Gym/scripts.pory"
 waitmovement 0
 # 243 "data/maps/DewfordTown_Gym/scripts.pory"
-msgbox DewfordTown_Gym_Text_BrendenIntro MSGBOX_AUTOCLOSE
+msgbox DewfordTown_Gym_Text_BrendenIntro, MSGBOX_AUTOCLOSE
 # 244 "data/maps/DewfordTown_Gym/scripts.pory"
 goto DewfordTown_Gym_EventScript_LauraBrendenDoMultiBattle
 # 245 "data/maps/DewfordTown_Gym/scripts.pory"
@@ -601,7 +601,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 301 "data/maps/DewfordTown_Gym/scripts.pory"
 waitmovement 0
 # 302 "data/maps/DewfordTown_Gym/scripts.pory"
-msgbox DewfordTown_Gym_Text_TakaoIntro MSGBOX_AUTOCLOSE
+msgbox DewfordTown_Gym_Text_TakaoIntro, MSGBOX_AUTOCLOSE
 # 303 "data/maps/DewfordTown_Gym/scripts.pory"
 goto DewfordTown_Gym_EventScript_CristianTakaoDoMultiBattle
 # 304 "data/maps/DewfordTown_Gym/scripts.pory"
@@ -701,7 +701,7 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 351 "data/maps/DewfordTown_Gym/scripts.pory"
 waitmovement 0
 # 352 "data/maps/DewfordTown_Gym/scripts.pory"
-msgbox DewfordTown_Gym_Text_JocelynIntro MSGBOX_AUTOCLOSE
+msgbox DewfordTown_Gym_Text_JocelynIntro, MSGBOX_AUTOCLOSE
 # 353 "data/maps/DewfordTown_Gym/scripts.pory"
 goto DewfordTown_Gym_EventScript_LilithJocelynDoMultiBattle
 # 354 "data/maps/DewfordTown_Gym/scripts.pory"
