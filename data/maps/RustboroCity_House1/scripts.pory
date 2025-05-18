@@ -39,7 +39,7 @@ RustboroCity_House1_EventScript_NotRequestedMon::
 	bufferspeciesname STR_VAR_1, VAR_0x8009
 	msgbox RustboroCity_House1_Text_DoesntLookLikeMonToMe, MSGBOX_DEFAULT
 	release
-	end
+	end 
 
 RustboroCity_House1_EventScript_TradeCompleted::
 	msgbox RustboroCity_House1_Text_AnyPokemonCanBeCute, MSGBOX_DEFAULT
