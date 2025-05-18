@@ -23,7 +23,6 @@ JaggedPass_OnFrame:
 	.2byte 0
 
 JaggedPass_OnWarp:
-	call_if_set FLAG_ABNORMAL_WEATHER_SUN, JaggedPass_EventScript_SetWeatherIntenseSun
 	end
 
 JaggedPass_OnResume:

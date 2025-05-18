@@ -9,7 +9,6 @@ raw `
 .set LOCALID_JODY, 7
 .set LOCALID_WALLY, 10
 .set LOCALID_WALLYS_DAD, 11
-.set LOCALID_CUTSCENE_EMMIE, 12
 
 PetalburgCity_Gym_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, PetalburgCity_Gym_OnLoad
@@ -56,7 +55,6 @@ PetalburgCity_Gym_OnTransition:
 
 PetalburgCity_Gym_EventScript_MoveWallyToEntrance::
 	setobjectxyperm LOCALID_WALLY, 5, 108
-	setobjectxyperm LOCALID_CUTSCENE_EMMIE, 3, 108
 	return
 
 PetalburgCity_Gym_EventScript_MoveNormanToEntrance::
@@ -77,8 +75,21 @@ PetalburgCity_Gym_EventScript_DontMoveNormanToFront::
 
 PetalburgCity_Gym_OnWarp:
 	map_script_2 VAR_PETALBURG_GYM_STATE, 0, PetalburgCity_Gym_EventScript_TurnPlayerNorth
+	map_script_2 VAR_PETALBURG_GYM_STATE, 0, PetalburgCity_Gym_EventScript_EmmiePositionBeforeWally
 	map_script_2 VAR_PETALBURG_GYM_STATE, 1, PetalburgCity_Gym_EventScript_TurnPlayerNorth
+	map_script_2 VAR_PETALBURG_GYM_STATE, 1, PetalburgCity_Gym_EventScript_EmmiePositionAfterWally
 	.2byte 0
+
+PetalburgCity_Gym_EventScript_EmmiePositionBeforeWally::
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 5, 111
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_PETALBURG_CITY_GYM
+	return
+
+PetalburgCity_Gym_EventScript_EmmiePositionAfterWally::
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 3, 108
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_PETALBURG_CITY_GYM
+	return
+
 
 PetalburgCity_Gym_EventScript_TurnPlayerNorth::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
@@ -91,9 +102,8 @@ PetalburgCity_Gym_OnFrame:
 
 PetalburgCity_Gym_EventScript_EnterRoom2::
 	lockall
-	addobject LOCALID_CUTSCENE_EMMIE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp3
-	applymovement LOCALID_CUTSCENE_EMMIE, Common_Movement_WalkUp3
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkUp3
 	waitmovement 0
 	delay 40
 	msgbox PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon, MSGBOX_DEFAULT
@@ -108,16 +118,15 @@ PetalburgCity_Gym_EventScript_ReturnFromWallyTutorial::
 	msgbox PetalburgCity_Gym_Text_WallyThankYouBye, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-	applymovement LOCALID_CUTSCENE_EMMIE, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterDown
 	applymovement LOCALID_WALLY, PetalburgCity_Gym_Movement_WallyExitGym
 	waitmovement 0
 	playse SE_EXIT
 	removeobject LOCALID_WALLY
 	setflag FLAG_HIDE_PETALBURG_CITY_WALLY
-	setflag FLAG_HIDE_PETALBURG_GYM_CUTSCENE_EMMIE
 	delay 30
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	applymovement LOCALID_CUTSCENE_EMMIE, Common_Movement_WalkInPlaceFasterUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox PetalburgCity_Gym_Text_DadGoCollectBadges, MSGBOX_DEFAULT
 	giveitem ITEM_ACRO_BIKE
@@ -228,9 +237,7 @@ PetalburgCity_Gym_EventScript_BeginWallyTutorial::
 	setvar VAR_PETALBURG_GYM_STATE, 1
 	setvar VAR_PETALBURG_CITY_STATE, 2
 	clearflag FLAG_HIDE_PETALBURG_CITY_WALLY
-	clearflag FLAG_HIDE_PETALBURG_CITY_CUTSCENE_EMMIE
 	clearflag FLAG_HIDE_PETALBURG_GYM_WALLY
-	clearflag FLAG_HIDE_PETALBURG_GYM_CUTSCENE_EMMIE
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
 	special InitBirchState
 	warp MAP_PETALBURG_CITY, 15, 9

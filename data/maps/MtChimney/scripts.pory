@@ -42,6 +42,9 @@ MtChimney_EventScript_ShellyBusyFighting::
 MtChimney_EventScript_ArchieMaxieFight::
 	lockall
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
 	msgbox MtChimney_Text_ArchieDontDoThis, MSGBOX_DEFAULT
 	closemessage
 	playse SE_NOT_EFFECTIVE
@@ -53,6 +56,8 @@ MtChimney_EventScript_ArchieMaxieFight::
 	applymovement LOCALID_ARCHIE, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox MtChimney_Text_ArchiePleaseStopMaxie, MSGBOX_DEFAULT
 	closemessage
@@ -72,9 +77,48 @@ MtChimney_EventScript_Archie::
 	releaseall
 	end
 
+MtChimney_EventScript_EmmiePositionForMaxieFightNorth::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtChimney_Movement_EmmiePositionForMaxieFightNorth
+	return
+	
+MtChimney_Movement_EmmiePositionForMaxieFightNorth:
+	walk_up
+	face_right
+	step_end
+
+MtChimney_EventScript_EmmiePositionForMaxieFightEast::
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 12, MtChimney_EventScript_EmmiePositionForMaxieFightEast1
+	call_if_eq VAR_TEMP_3, 11, MtChimney_EventScript_EmmiePositionForMaxieFightEast2
+	return
+
+MtChimney_EventScript_EmmiePositionForMaxieFightEast1:
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtChimney_Movement_EmmiePositionForMaxieFightEast1
+	waitmovement 0
+	return
+
+MtChimney_Movement_EmmiePositionForMaxieFightEast1:
+	walk_right
+	face_up
+	step_end
+
+MtChimney_EventScript_EmmiePositionForMaxieFightEast2:
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtChimney_Movement_EmmiePositionForMaxieFightEast2
+	waitmovement 0
+	return
+
+MtChimney_Movement_EmmiePositionForMaxieFightEast2:
+	walk_down
+	walk_right
+	walk_right
+	face_up
+	step_end
+
 MtChimney_EventScript_Maxie::
 	lockall
 	playbgm MUS_ENCOUNTER_MAGMA, FALSE
+	call_if_eq VAR_FACING, DIR_EAST, MtChimney_EventScript_EmmiePositionForMaxieFightEast
+	call_if_eq VAR_FACING, DIR_NORTH, MtChimney_EventScript_EmmiePositionForMaxieFightNorth
 	msgbox MtChimney_Text_MeteoriteWillActivateVolcano, MSGBOX_DEFAULT
 	applymovement LOCALID_MAXIE, Common_Movement_FacePlayer
 	waitmovement 0
@@ -101,23 +145,20 @@ MtChimney_EventScript_MaxieVictory::
 	msgbox MtChimney_Text_MaxieYouHaventSeenLastOfMagma, MSGBOX_DEFAULT
 	closemessage
 	delay 30
-	fadescreen FADE_TO_BLACK
+	call_if_eq VAR_FACING, DIR_EAST, MtChimney_EventScript_EmmieMoveForMaxie
+	call_if_eq VAR_FACING, DIR_NORTH, MtChimney_EventScript_PlayerMoveForMaxie
 	removeobject LOCALID_MAXIE
 	removeobject LOCALID_MAGMA_GRUNT_1
 	removeobject LOCALID_TABITHA
 	removeobject LOCALID_MAGMA_GRUNT_2
 	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
 	playbgm MUS_MT_CHIMNEY, TRUE
-	fadescreen FADE_FROM_BLACK
 	call_if_eq VAR_FACING, DIR_EAST, MtChimney_EventScript_ArchieApproachPlayerEast
 	call_if_eq VAR_FACING, DIR_NORTH, MtChimney_EventScript_ArchieApproachPlayerNorth
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox MtChimney_Text_ArchieThankYou, MSGBOX_DEFAULT
 	closemessage
 	giveitem ITEM_HM_SURF
-	playfanfare MUS_OBTAIN_TMHM
-	waitfanfare
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_ARCHIE
 	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
@@ -130,13 +171,71 @@ MtChimney_EventScript_MaxieVictory::
 	releaseall
 	end
 
+MtChimney_EventScript_EmmieMoveForMaxie::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtChimney_Movement_MoveForMaxie
+	applymovement LOCALID_MAXIE, MtChimney_Movement_MaxieExit
+	applymovement LOCALID_TABITHA, MtChimney_Movement_TabithaExit
+	waitmovement 0
+	return
+
+MtChimney_EventScript_PlayerMoveForMaxie::
+	applymovement OBJ_EVENT_ID_PLAYER, MtChimney_Movement_MoveForMaxie
+	applymovement LOCALID_MAXIE, MtChimney_Movement_MaxieExit
+	applymovement LOCALID_TABITHA, MtChimney_Movement_TabithaExit
+	waitmovement 0
+	return
+
+MtChimney_Movement_MaxieExit:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+MtChimney_Movement_TabithaExit:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+MtChimney_Movement_MoveForMaxie:
+	face_left
+	lock_facing_direction
+	walk_right
+	unlock_facing_direction
+	walk_slow_left
+	walk_slow_left
+	step_end
+
 MtChimney_EventScript_ArchieApproachPlayerEast::
 	applymovement LOCALID_ARCHIE, MtChimney_Movement_ArchieApproachPlayerEast
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	return
 
 MtChimney_EventScript_ArchieApproachPlayerNorth::
 	applymovement LOCALID_ARCHIE, MtChimney_Movement_ArchieApproachPlayerNorth
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	return
 
@@ -219,7 +318,8 @@ MtChimney_Movement_ArchieApproachPlayerEast:
 
 MtChimney_Movement_ArchieExitEast:
 	walk_left
-	walk_down
+	walk_left
+	walk_left
 	walk_down
 	walk_down
 	walk_down
@@ -231,12 +331,13 @@ MtChimney_Movement_ArchieExitEast:
 MtChimney_Movement_ArchieApproachPlayerNorth:
 	walk_down
 	walk_right
-	walk_right
 	step_end
 
 MtChimney_Movement_ArchieExitNorth:
 	walk_left
 	walk_left
+	walk_left
+	walk_down
 	walk_down
 	walk_down
 	walk_down
@@ -463,14 +564,13 @@ MtChimney_EventScript_BusyAquaGrunt3::
 
 MtChimney_EventScript_Tabitha::
 lockall
-setvar VAR_0x8008, LOCALID_TABITHA
 playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
+applymovement LOCALID_TABITHA, Common_Movement_ExclamationMark
 waitmovement 0
 playbgm MUS_ENCOUNTER_MAGMA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 waitmovement 0
-msgbox MtChimney_Text_TabithaIntro MSGBOX_AUTOCLOSE
+msgbox MtChimney_Text_TabithaIntro, MSGBOX_AUTOCLOSE
 goto MtChimney_EventScript_TabithaDoMultiBattle
 releaseall
 end
@@ -816,7 +916,7 @@ MtChimney_Text_ArchieThankYou:
 	.string "Ah, it doesn't matter.\p"
 	.string "We will remain vigilant and keep up\n"
 	.string "our pursuit of TEAM MAGMA.\p"
-	.string "As thanks, please take the HM for\n"
+	.string "As thanks, please take this, the HM for\n"
 	.string "Surf.\p"
 	.string "{PLAYER}, we shall meet again!$"
 
@@ -979,8 +1079,8 @@ MtChimney_Text_SawyerPostRematch:
 	.string "I'm overdressed for these parts.$"
 
 MtChimney_Text_ArchieDontDoThis:
-	.string "Archie: Maxie! You must not go\n"
-	.string "through with this!$"
+	.string "Archie: Maxie! You must not go through\n"
+	.string "with this!$"
 
 Mtchimney_Text_MaxieCannotStopMe:
 	.string "Maxie: Fufufu… Now, now Archie…\n"

@@ -117,7 +117,6 @@ Route111_EventScript_SetMirageTowerGone::
 	return
 
 Route111_OnWarp:
-	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 	map_script_2 VAR_MIRAGE_TOWER_STATE, 1, Route111_EventScript_HidePlayerForMirageTower
 	.2byte 0
 
@@ -299,6 +298,9 @@ Route111_EventScript_WinstratesNotReady::
 
 Route111_EventScript_BattleWinstrates::
 	applymovement OBJ_EVENT_ID_PLAYER, Route111_Movement_MakeSpaceForWinstrates
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_4, 116, Route111_EventScript_EmmieMakeSpaceForWinstrates1
+	call_if_eq VAR_TEMP_4, 115, Route111_EventScript_EmmieMakeSpaceForWinstrates2
 	applymovement LOCALID_VICTOR, Route111_Movement_Winstrate1_StartBattle
 	waitmovement 0
 	call Route111_EventScript_OpenWinstrateDoor
@@ -317,7 +319,20 @@ Route111_EventScript_BattleWinstrates::
 	special SetCB2WhiteOut
 	waitstate
 
-	Route111_EventScript_VictorVictoriaVictory::
+Route111_EventScript_EmmieMakeSpaceForWinstrates1::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Route111_Movement_EmmieMakeSpaceForWinstrates
+	return
+
+Route111_EventScript_EmmieMakeSpaceForWinstrates2::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Route111_Movement_MakeSpaceForWinstrates
+	return
+
+Route111_Movement_EmmieMakeSpaceForWinstrates:
+	walk_right
+	walk_in_place_faster_up
+	step_end
+
+Route111_EventScript_VictorVictoriaVictory::
 	applymovement LOCALID_VICTOR, Common_Movement_WalkInPlaceFasterUp
 	applymovement LOCALID_VICTORIA, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
@@ -399,7 +414,7 @@ Route111_Movement_MakeSpaceForWinstrates:
 
 Route111_Movement_Winstrate1_StartBattle:
 	walk_down
-	walk_left
+	walk_right
 	walk_in_place_faster_down
 	step_end
 
@@ -408,7 +423,7 @@ Route111_Movement_Winstrate2_StartBattle:
 	step_end
 
 Route111_Movement_Winstrate1_EndBattle:
-	walk_right
+	walk_left
 	walk_up
 	walk_up
 	step_end
@@ -1020,7 +1035,7 @@ Route111_Text_ViviPostBattle:
 	.string "Vivi: This stinks…$"
 
 Route111_Text_VickyIntro:
-	.string "Vicky: Hohoho... So you defeater my\n"
+	.string "Vicky: Hohoho... So you defeated my\n"
 	.string "daughter and her husband.\p"
 	.string "No matter... You won't defeat\n"
 	.string "both youth and experience!$"
@@ -1149,8 +1164,7 @@ Route111_Text_Aqua_4:
 Route111_Text_Aqua_5:
 	.string "Team Magma's Tabitha just came through\n"
 	.string "here and trounced us!\p"
-	.string "He was making his way up to Mt.\n"
-	.string "Chimney.$"
+	.string "He was making his way up to Mt. Chimney.$"
 
 Route111_Text_Magma_1:
 	.string "Beat it kids!$"

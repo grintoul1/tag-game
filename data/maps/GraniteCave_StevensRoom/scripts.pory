@@ -25,12 +25,9 @@ GraniteCave_StevensRoom_EventScript_Steven::
 	setflag FLAG_REGISTERED_STEVEN_POKENAV
 	msgbox GraniteCave_StevensRoom_Text_IveGotToHurryAlong, MSGBOX_DEFAULT
 	closemessage
-	call_if_eq VAR_FACING, DIR_NORTH, GraniteCave_StevensRoom_EventScript_StevenExitNorth
-	call_if_eq VAR_FACING, DIR_SOUTH, GraniteCave_StevensRoom_EventScript_StevenExitSouth
-	call_if_eq VAR_FACING, DIR_WEST, GraniteCave_StevensRoom_EventScript_StevenExitWestEast
-	call_if_eq VAR_FACING, DIR_EAST, GraniteCave_StevensRoom_EventScript_StevenExitWestEast
-	playse SE_EXIT
+	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_STEVEN
+	fadescreen FADE_FROM_BLACK
 	release
 	end
 

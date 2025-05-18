@@ -11,6 +11,9 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	lock
 	applymovement LOCALID_CAPT_STERN, Common_Movement_FacePlayer
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 11, SlateportCity_OceanicMuseum_2F_EventScript_EmmieApproachStern
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
 	waitmovement 0
 	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYouForTheParts, MSGBOX_DEFAULT
 	closemessage
@@ -28,8 +31,10 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	playse SE_PIN
 	applymovement LOCALID_CAPT_STERN, Common_Movement_ExclamationMark
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox SlateportCity_OceanicMuseum_2F_Text_SternWhoAreYou, MSGBOX_DEFAULT
 	msgbox SlateportCity_OceanicMuseum_2F_Text_WereTeamAqua, MSGBOX_DEFAULT
@@ -57,6 +62,11 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	releaseall
 	end
 
+SlateportCity_OceanicMuseum_2F_EventScript_EmmieApproachStern::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SlateportCity_OceanicMuseum_2F_Movement_EmmieApproachStern
+	waitmovement 0
+	return
+
 SlateportCity_OceanicMuseum_2F_EventScript_ArchieDoMultiBattle::
 	playbgm MUS_ENCOUNTER_AQUA, TRUE
 	multi_2p_vs_1 TRAINER_ARCHIE, SlateportCity_OceanicMuseum_2F_Text_ArchieDefeat, PARTNER_EMMIE
@@ -77,6 +87,7 @@ SlateportCity_OceanicMuseum_2F_EventScript_ArchieVictory::
 	delay 30
 	setflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	msgbox SlateportCity_OceanicMuseum_2F_Text_SternThankYouForSavingUs, MSGBOX_DEFAULT
 	setvar VAR_0x8004, ITEM_DEVON_PARTS
@@ -219,7 +230,12 @@ SlateportCity_OceanicMuseum_2F_Movement_GruntMoveForArchie:
 	delay_16
 	delay_8
 	walk_down
-	walk_in_place_faster_up
+	face_right
+	step_end
+
+SlateportCity_OceanicMuseum_2F_Movement_EmmieApproachStern:
+	walk_up
+	walk_right
 	step_end
 
 SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample1::

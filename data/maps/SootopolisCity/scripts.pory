@@ -162,7 +162,6 @@ SootopolisCity_EventScript_SetExpertBlockCaveEntrance::
 	return
 
 SootopolisCity_OnWarp:
-	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 5, SootopolisCity_EventScript_PlayerFaceLegendaries
 	.2byte 0
 

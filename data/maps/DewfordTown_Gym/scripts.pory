@@ -134,20 +134,11 @@ DewfordTown_Gym_EventScript_StopCountingTrainers::
 
 DewfordTown_Gym_EventScript_Brawly2::
 lockall
-setvar VAR_0x8008, LOCALID_BRAWLY
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
 playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
 msgbox DewfordTown_Gym_Text_BrawlyIntro MSGBOX_AUTOCLOSE
-msgbox DewfordTown_Gym_Text_ReadyToFight MSGBOX_YESNO
-goto_if_eq VAR_RESULT, YES, DewfordTown_Gym_EventScript_BrawlyDoMultiBattle
+goto DewfordTown_Gym_EventScript_BrawlyDoMultiBattle
 msgbox DewfordTown_Gym_Text_ComeBackWhenReady, MSGBOX_DEFAULT
 closemessage
-applymovement OBJ_EVENT_ID_PLAYER, DewfordTown_Gym_Movement_Brawly_NotReady
-waitmovement 0
 playbgm MUS_GYM, TRUE
 releaseall
 end

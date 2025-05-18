@@ -4,11 +4,11 @@ raw `
 .set LOCALID_WALLYS_DAD, 5
 .set LOCALID_GYM_BOY, 8
 .set LOCALID_SCOTT, 9
-.set LOCALID_CUTSCENE_EMMIE, 11
 
 PetalburgCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, PetalburgCity_OnFrame
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, PetalburgCity_OnWarp
 	.byte 0
 
 PetalburgCity_OnTransition:
@@ -37,13 +37,22 @@ PetalburgCity_OnFrame:
 	map_script_2 VAR_PETALBURG_CITY_STATE, 4, PetalburgCity_EventScript_WalkToWallyHouse
 	.2byte 0
 
+PetalburgCity_OnWarp:
+	map_script_2 VAR_PETALBURG_CITY_STATE, 2, PetalburgCity_EventScript_WallyTutorialEmmiePosition
+	.2byte 0
+
+PetalburgCity_EventScript_WallyTutorialEmmiePosition::
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 14, 9
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_PETALBURG_CITY
+	end
+
 PetalburgCity_EventScript_WallyTutorial::
 	lockall
 	special SavePlayerParty
 	special LoadWallyZigzagoon
 	applymovement LOCALID_WALLY, PetalburgCity_Movement_WallyTutorialWally
 	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_WallyTutorialPlayer
-	applymovement LOCALID_CUTSCENE_EMMIE, PetalburgCity_Movement_WallyTutorialEmmie
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, PetalburgCity_Movement_WallyTutorialEmmie
 	waitmovement 0
 	msgbox Route102_Text_WatchMeCatchPokemon, MSGBOX_DEFAULT
 	special StartWallyTutorialBattle
@@ -57,7 +66,6 @@ PetalburgCity_EventScript_WallyTutorial::
 	setvar VAR_PETALBURG_CITY_STATE, 3
 	fadedefaultbgm
 	clearflag FLAG_DONT_TRANSITION_MUSIC
-	setflag FLAG_HIDE_PETALBURG_CITY_CUTSCENE_EMMIE
 	special LoadPlayerParty
 	setvar VAR_PETALBURG_GYM_STATE, 1
 	warp MAP_PETALBURG_CITY_GYM, 4, 108

@@ -1971,7 +1971,7 @@ Route114_Text_CharlottePostBattle:
 
 Route114_Text_Grunt_Route_114_4Intro:
 	.string "Well then, you're going to have to\n"
-	.string "disappear, quickly!$"
+	.string "disappear, and quickly!$"
 
 Route114_Text_Grunt_Route_114_4Defeat:
 	.string "Maybe we will disappear instead!$"

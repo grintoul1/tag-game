@@ -231,6 +231,9 @@ SlateportCity_OceanicMuseum_1F_Text_WouldYouLikeToEnter:
 	.string "Would you like to enter?$"
 
 SlateportCity_OceanicMuseum_1F_Text_PleaseEnjoyYourself:
+	.string "This charming man in a bandana just\n"
+	.string "came in and paid everybody's entry for\l"
+	.string "the next week!\p"
 	.string "Please enjoy yourself.$"
 
 SlateportCity_OceanicMuseum_1F_Text_NotEnoughMoney:
