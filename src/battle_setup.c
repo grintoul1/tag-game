@@ -772,7 +772,7 @@ u8 GetWildBattleTransition(void)
 
 u8 GetTrainerBattleTransition(void)
 {
-    u8 minPartyCount;
+    u8 minPartyCount = 1;
     u8 transitionType;
     u8 enemyLevel;
     u8 playerLevel;
@@ -802,6 +802,11 @@ u8 GetTrainerBattleTransition(void)
         minPartyCount = 2; // double battles always at least have 2 Pokémon.
     else
         minPartyCount = 1;
+        break;
+    case TRAINER_BATTLE_TYPE_DOUBLES:
+        minPartyCount = 2; // double battles always at least have 2 Pokémon.
+        break;
+    }
 
     transitionType = GetBattleTransitionTypeByMap();
     enemyLevel = GetSumOfEnemyPartyLevel(trainerId, minPartyCount);
