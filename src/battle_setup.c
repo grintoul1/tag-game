@@ -798,9 +798,9 @@ u8 GetTrainerBattleTransition(void)
         || trainerClass == TRAINER_CLASS_MAGMA_ADMIN_MIXED)
             return B_TRANSITION_AQUA_MAGMA;
 
-    if (IsTrainerDoubleBattle(trainerId))
-        minPartyCount = 2; // double battles always at least have 2 Pokémon.
-    else
+    switch (GetTrainerBattleType(trainerId))
+    {
+    case TRAINER_BATTLE_TYPE_SINGLES:
         minPartyCount = 1;
         break;
     case TRAINER_BATTLE_TYPE_DOUBLES:

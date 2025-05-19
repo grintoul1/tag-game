@@ -81,7 +81,7 @@ RustboroCity_House1_EventScript_NotRequestedMon::
 # 41 "data/maps/RustboroCity_House1/scripts.pory"
 	release
 # 42 "data/maps/RustboroCity_House1/scripts.pory"
-	end
+	end 
 # 43 "data/maps/RustboroCity_House1/scripts.pory"
 
 # 44 "data/maps/RustboroCity_House1/scripts.pory"
