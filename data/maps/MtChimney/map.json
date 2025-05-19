@@ -475,15 +475,6 @@
       "var": "VAR_MTCHIMNEY_STATE",
       "var_value": "2",
       "script": "MtChimney_EventScript_ArchieMaxieFight"
-    },
-    {
-      "type": "trigger",
-      "x": 12,
-      "y": 6,
-      "elevation": 0,
-      "var": "VAR_MTCHIMNEY_STATE",
-      "var_value": "3",
-      "script": "MtChimney_EventScript_Maxie"
     }
   ],
   "bg_events": [

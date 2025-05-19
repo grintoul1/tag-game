@@ -78,10 +78,34 @@ MtChimney_EventScript_Archie::
 	end
 
 MtChimney_EventScript_EmmiePositionForMaxieFightNorth::
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtChimney_Movement_EmmiePositionForMaxieFightNorth
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 12, MtChimney_EventScript_EmmiePositionForMaxieFightNorth1
+	call_if_eq VAR_TEMP_3, 14, MtChimney_EventScript_EmmiePositionForMaxieFightNorth2
+	return
+
+MtChimney_EventScript_EmmiePositionForMaxieFightNorth1:
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtChimney_Movement_EmmiePositionForMaxieFightNorth1
+	waitmovement 0
+	return
+
+MtChimney_EventScript_EmmiePositionForMaxieFightNorth2:
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtChimney_Movement_EmmiePositionForMaxieFightNorth2
+	applymovement OBJ_EVENT_ID_PLAYER, MtChimney_Movement_PlayerPositionForMaxieFightNorth2
+	waitmovement 0
 	return
 	
-MtChimney_Movement_EmmiePositionForMaxieFightNorth:
+MtChimney_Movement_EmmiePositionForMaxieFightNorth1:
+	walk_up
+	face_right
+	step_end
+
+MtChimney_Movement_EmmiePositionForMaxieFightNorth2:
+	walk_left
+	face_up
+	step_end
+
+MtChimney_Movement_PlayerPositionForMaxieFightNorth2:
+	walk_left
 	walk_up
 	face_right
 	step_end
