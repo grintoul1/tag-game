@@ -88,11 +88,9 @@ Route104_MrBrineysHouse_EventScript_SailToDewford::
 	setvar VAR_RUSTBORO_CITY_STATE, 8
 	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 	setflag FLAG_HIDE_ROUTE_104_RIVAL
-	clearflag FLAG_HIDE_ROUTE_104_EMMIE
 	warp MAP_ROUTE104, 13, 51
 	waitstate
 	msgbox Route104_MrBrineysHouse_Text_ArrivedInDewford, MSGBOX_DEFAULT
-	setflag FLAG_HIDE_ROUTE_104_EMMIE
 	giveitem ITEM_LETTER
 	releaseall
 	end

@@ -427,5 +427,5 @@ Route121_Text_MagmaGrunt1:
 
 Route121_Text_MagmaGrunt2:
 	.string "Nobody goes through this area while\n"
-	.string "Team Magma operate in Mt. Pyre!$"
+	.string "Team Magma operates at Mt. Pyre!$"
 `

@@ -668,6 +668,12 @@ EverGrandeCity_HallOfFame_EventScript_ResetEliteFour::
 	setvar VAR_ELITE_4_STATE, 0
 	return
 
+Common_EventScript_MultibattleWipe::
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+	end
+
 Common_EventScript_UpdateBrineyLocation::
 	goto_if_unset FLAG_RECEIVED_POKENAV, Common_EventScript_NopReturn
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, Common_EventScript_NopReturn
@@ -691,7 +697,7 @@ Common_EventScript_EmmieBattle::
 	call_if_unset FLAG_EMMIE_BATTLE_INTRO_GIVEN, Common_EventScript_EmmieBattleIntroduction
 	setflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
 	message Common_Text_EmmieBattleAreYouReady 
-	multichoice 25, 4, MULTI_EMMIE_ARE_YOU_READY, 1
+	multichoice 25, 3, MULTI_EMMIE_ARE_YOU_READY, 1
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_EmmieDoBattle
@@ -709,7 +715,18 @@ Common_EventScript_PlayerFaceEmmie1:
 	return
 
 Common_EventScript_PlayerFaceEmmie2:
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3,VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 15, Common_EventScript_PlayerFaceEmmie2West
+	call_if_eq VAR_TEMP_3, 16, Common_EventScript_PlayerFaceEmmie2South
+	return
+
+Common_EventScript_PlayerFaceEmmie2West:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
+	return
+
+Common_EventScript_PlayerFaceEmmie2South:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
 	return
 
@@ -720,7 +737,7 @@ Common_EventScript_PlayerFaceEmmie3:
 
 Common_EventScript_EmmieBattleIntroduction::
 	call_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieBattleIntroduction1
-	call_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_EmmieBattleIntroduction2
+	goto_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_EmmieBattleIntroduction2
 	call_if_set FLAG_EMMIE_BATTLE_3, Common_EventScript_EmmieBattleIntroduction3
 	return
 
@@ -730,6 +747,28 @@ Common_EventScript_EmmieBattleIntroduction1::
 
 Common_EventScript_EmmieBattleIntroduction2::
 	msgbox Common_Text_EmmieBattleIntro2, MSGBOX_DEFAULT
+	closemessage
+	getobjectcurrentxy OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 16, Common_EventScript_EmmieIntroductionMoveAwayFromHideout
+	setflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
+	releaseall
+	end
+
+Common_EventScript_EmmieIntroductionMoveAwayFromHideout::
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 15, Common_EventScript_EmmieIntroductionMoveAwayFromHideout1
+	call_if_eq VAR_TEMP_3, 16, Common_EventScript_EmmieIntroductionMoveAwayFromHideout2
+	waitmovement 0
+	return
+
+Common_EventScript_EmmieIntroductionMoveAwayFromHideout1:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkRight
+	return
+
+Common_EventScript_EmmieIntroductionMoveAwayFromHideout2:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkUp
 	return
 
 Common_EventScript_EmmieBattleIntroduction3::
@@ -757,11 +796,29 @@ Common_EventScript_PlayerFaceEmmieWest::
 	return
 
 Common_EventScript_EmmieDoBattle::
+	goto_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieBattleTeamCheck1
+	goto_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_EmmieBattleTeamCheck2
+	goto_if_set FLAG_EMMIE_BATTLE_3, Common_EventScript_EmmieBattleTeamCheck3
+	end
+
+Common_EventScript_EmmieBattleTeamCheck1::
 	specialvar VAR_EMMIE_PARTY_SIZE, CalculatePlayerPartyCount
 	vgoto_if_ne VAR_EMMIE_PARTY_SIZE, 6, Common_EventScript_EmmieNotEnoughMons
-	goto_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieBattle1
-	goto_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_EmmieBattle2
-	goto_if_set FLAG_EMMIE_BATTLE_3, Common_EventScript_EmmieBattle3
+	goto Common_EventScript_EmmieBattle1
+	releaseall
+	end
+
+Common_EventScript_EmmieBattleTeamCheck2::
+	specialvar VAR_EMMIE_PARTY_SIZE, CalculatePlayerPartyCount
+	vgoto_if_ne VAR_EMMIE_PARTY_SIZE, 4, Common_EventScript_EmmieNotEnoughMons
+	goto Common_EventScript_EmmieBattle2
+	releaseall
+	end
+
+Common_EventScript_EmmieBattleTeamCheck3::
+	specialvar VAR_EMMIE_PARTY_SIZE, CalculatePlayerPartyCount
+	vgoto_if_ne VAR_EMMIE_PARTY_SIZE, 6, Common_EventScript_EmmieNotEnoughMons
+	goto Common_EventScript_EmmieBattle3
 	releaseall
 	end
 
@@ -776,17 +833,46 @@ Common_EventScript_EmmieNotEnoughMons::
 
 Common_EventScript_EmmieInformation::
 	message Common_Text_EmmieWhatDoYouNeedToKnow
-	multichoice 25, 4, MULTI_EMMIE_INFORMATION, 1
+	multichoice 25, 3, MULTI_EMMIE_INFORMATION, 1
 	compare VAR_RESULT, 0
-	goto_if_eq Common_EventScript_EmmieRules
+	goto_if_eq Common_EventScript_EmmieTeam
 	compare VAR_RESULT, 1
-	goto_if_eq Common_EventScript_EmmieItems
+	goto_if_eq Common_EventScript_EmmieRules
 	compare VAR_RESULT, 2
-	goto_if_eq Common_EventScript_EmmieNatures
+	goto_if_eq Common_EventScript_EmmieItems
 	compare VAR_RESULT, 3
+	goto_if_eq Common_EventScript_EmmieNatures
+	compare VAR_RESULT, 4
 	goto_if_eq Common_EventScript_EmmieBattle
 	releaseall
 	end
+	
+Common_EventScript_EmmieTeam::
+	call_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieTeam1
+	call_if_set FLAG_EMMIE_BATTLE_2, Common_EventScript_EmmieTeam2
+	call_if_set FLAG_EMMIE_BATTLE_3, Common_EventScript_EmmieTeam1
+	return
+
+Common_EventScript_EmmieTeam1::
+	msgbox Common_Text_EmmieTeam1, MSGBOX_DEFAULT
+	goto Common_EventScript_EmmieInformation
+	return
+
+Common_EventScript_EmmieTeam2::
+	msgbox Common_Text_EmmieTeam2, MSGBOX_DEFAULT
+	goto Common_EventScript_EmmieInformation
+	return
+
+Common_Text_EmmieTeam1:
+	.string "For this battle, my team of 6 will\n"
+	.string "be the same as yours.$"
+
+Common_Text_EmmieTeam2:
+	.string "For this battle, my party begin with a\n"
+	.string "MON1, MON2, and MON3.\p"
+	.string "My final 3 Pokémon will be the same as\n"
+	.string "the 3 you take into battle, in the same\l"
+	.string "order.$"
 
 Common_EventScript_EmmieEnd::
 	msgbox Common_Text_EmmieComeBackWhenReady, MSGBOX_DEFAULT
@@ -804,10 +890,7 @@ Common_EventScript_EmmieBattleNotReady1:
 	end
 
 Common_EventScript_EmmieBattleNotReady2:
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkDown
-	waitmovement 0
-	releaseall
+	goto Common_EventScript_EmmieIntroductionMoveAwayFromHideout
 	end
 
 Common_EventScript_EmmieBattleNotReady3:
@@ -878,11 +961,15 @@ Common_Text_EmmieBattleRules1:
 	.string "We will both take the same six Pokémon\n"
 	.string "into battle, including movesets.\p"
 	.string "My team will be fully levelled and healed,\n"
-	.string "but I will use my own choice of items and\l"
-	.string "natures.$"
+	.string "but I will use my own choice of items\l"
+	.string "and natures.$"
 
 Common_Text_EmmieBattleRules2:
-	.string "BATTLE 2 RULES TEXT$"
+	.string "I will take in three Pokémon of my own,\n"
+	.string "then the same three that you choose.\p"
+	.string "My team will be fully levelled and healed,\n"
+	.string "but I will use my own choice of items\l"
+	.string "and natures.$"
 
 Common_Text_EmmieBattleRules3:
 	.string "BATTLE 3 RULES TEXT$"
@@ -909,7 +996,13 @@ Common_Text_EmmieBattleIntro1:
 	.string "that you want to know!$"
 
 Common_Text_EmmieBattleIntro2:
-	.string "BATTLE 2 INTRO TEXT$"
+	.string "This time my party will contain 3\n"
+	.string "Pokémon of my choosing.\p"
+	.string "The other 3 will match those you choose\n"
+	.string "to take in alongside Shelly.\p"
+	.string "Prepare your party and return here\n"
+	.string "when you are ready, or if you want\l"
+	.string "more information on the battle.$"
 
 Common_Text_EmmieBattleIntro3:
 	.string "BATTLE 3 INTRO TEXT$"
@@ -943,7 +1036,10 @@ Common_Text_EmmieBattleItems1:
 	.string "Lagging Tail; Sitrus Berry; Sticky Barb.$"
 
 Common_Text_EmmieBattleItems2:
-	.string "BATTLE 2 ITEMS TEXT$"
+	.string "For this battle, my team will hold the\n"
+	.string "following items in this order:\p"
+	.string "ITEM 1; ITEM 2; ITEM 3;\n"
+	.string "ITEM 4; ITEM 5; ITEM 6.$"
 
 Common_Text_EmmieBattleItems3:
 	.string "BATTLE 3 ITEMS TEXT$"
@@ -977,7 +1073,10 @@ Common_Text_EmmieBattleNatures1:
 	.string "Quiet.$"
 
 Common_Text_EmmieBattleNatures2:
-	.string "BATTLE 2 NATURES TEXT$"
+	.string "My Pokémon's will have the following\n"
+	.string "natures in this order:\p"
+	.string "NATURE; NATURE; NATURE; NATURE; NATURE;\n"
+	.string "NATURE.$"
 
 Common_Text_EmmieBattleNatures3:
 	.string "BATTLE 3 NATURES TEXT$"
@@ -997,7 +1096,7 @@ Common_EventScript_EmmieBattle1::
 	end
 
 Common_EventScript_EmmieBattle2::
-	changefollowerbattler PARTNER_NONE
+	changefollowerbattler PARTNER_SHELLY
 	setvar VAR_0x8004, SPECIAL_BATTLE_EMMIE
 	setvar VAR_0x8005, TRAINER_EMMIE_2
 	special DoSpecialTrainerBattle
@@ -1030,9 +1129,13 @@ Common_Text_EmmieBattleVictory1:
 	.string "and speak to Mr. Briney!$"
 
 Common_Text_EmmieBattleVictory2:
-	.string "Emmie: Wow, good stuff {PLAYER}!\p"
-	.string "You're more than ready. Let's continue\n"
-	.string "and speak to Mr. Briney!$"
+	.string "Emmie: Okay, I can't deny that you're\n"
+	.string "capable of taking care of yourself.\p"
+	.string "I'm going to come inside and will wait\n"
+	.string "by the entrance.\p"
+	.string "The moment I start to worry, I'm going\n"
+	.string "to come in and get you out.\p"
+	.string "Shelly, we will see you inside.$"
 
 Common_Text_EmmieBattleVictory3:
 	.string "Emmie: Wow, good stuff {PLAYER}!\p"

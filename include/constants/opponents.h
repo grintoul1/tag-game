@@ -52,7 +52,7 @@
 #define TRAINER_FOSTER                       46
 #define TRAINER_EMMIE_1                      47
 #define TRAINER_EMMIE_2                      48
-#define TRAINER_EMMIE_3                     49
+#define TRAINER_EMMIE_3                      49
 #define TRAINER_DUSTY_5                      50
 #define TRAINER_GABBY_AND_TY_1               51
 #define TRAINER_GABBY_AND_TY_2               52

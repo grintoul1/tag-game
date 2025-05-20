@@ -383,7 +383,6 @@ Route104_EventScript_SailToDewford::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Route104_Movement_EmmieBoardBoat
 	waitmovement 0
 	hideobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_ROUTE104
-	setflag FLAG_HIDE_ROUTE_104_EMMIE
 	call Common_EventScript_PlayBrineysBoatMusic
 	goto Route104_EventScript_SailToDewfordNoCall
 	end

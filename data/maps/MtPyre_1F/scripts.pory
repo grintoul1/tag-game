@@ -11,10 +11,12 @@ MtPyre_1F_OnTransition::
 
 MtPyre_1F_EventScript_Grunts_Fight::
 	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
 	waitmovement 0
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	applymovement LOCALID_PYRE_AQUAGRUNT4, Common_Movement_ExclamationMark
 	applymovement LOCALID_PYRE_MAGMAGRUNT6, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -50,11 +52,11 @@ MtPyre_1F_EventScript_Grunts_Fight::
 	call_if_eq VAR_TEMP_2, 4, MtPyre1F_EventScript_Grunts_Fight_C
 	end
 
-
 MtPyre1F_EventScript_Grunts_Fight_A::
-	applymovement LOCALID_PYRE_AQUAGRUNT4, MtPyre_1F_Movement_Grunt_Advance_A
-	applymovement LOCALID_PYRE_MAGMAGRUNT6, MtPyre_1F_Movement_Grunt_Advance_A
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement LOCALID_PYRE_AQUAGRUNT4, MtPyre_1F_Movement_Grunt_Advance_B
+	applymovement LOCALID_PYRE_MAGMAGRUNT6, MtPyre_1F_Movement_Grunt_Advance_B
+	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_1F_Movement_EmmieStepBack
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtPyre_1F_Movement_MoveForEmmie
 	waitmovement 0
 	multi_2p_vs_2 TRAINER_PYRE_MAGMAGRUNT6, MtPyre_1F_Text_Pyre_MagmaGrunt6Defeat, TRAINER_PYRE_AQUAGRUNT4, MtPyre_1F_Text_Pyre_AquaGrunt4Defeat, PARTNER_EMMIE
 	switch VAR_RESULT
@@ -66,6 +68,7 @@ MtPyre1F_EventScript_Grunts_Fight_A::
 MtPyre1F_EventScript_Grunts_Fight_B::
 	applymovement LOCALID_PYRE_AQUAGRUNT4, MtPyre_1F_Movement_Grunt_Advance_B
 	applymovement LOCALID_PYRE_MAGMAGRUNT6, MtPyre_1F_Movement_Grunt_Advance_B
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
 	multi_2p_vs_2 TRAINER_PYRE_AQUAGRUNT4, MtPyre_1F_Text_Pyre_AquaGrunt4Defeat, TRAINER_PYRE_MAGMAGRUNT6, MtPyre_1F_Text_Pyre_MagmaGrunt6Defeat, PARTNER_EMMIE
@@ -78,9 +81,9 @@ MtPyre1F_EventScript_Grunts_Fight_B::
 MtPyre1F_EventScript_Grunts_Fight_C::
 	applymovement LOCALID_PYRE_AQUAGRUNT4, MtPyre_1F_Movement_Grunt_Advance_C
 	applymovement LOCALID_PYRE_MAGMAGRUNT6, MtPyre_1F_Movement_Grunt_Advance_C
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtPyre_1F_Movement_EmmieStepBack
+	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_1F_Movement_MoveForEmmie
 	waitmovement 0
-
 	multi_2p_vs_2 TRAINER_PYRE_AQUAGRUNT4, MtPyre_1F_Text_Pyre_AquaGrunt4Defeat, TRAINER_PYRE_MAGMAGRUNT6, MtPyre_1F_Text_Pyre_MagmaGrunt6Defeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MtPyre_1F_EventScript_Pyre_AquaGrunt4Pyre_MagmaGrunt6Victory
@@ -143,6 +146,25 @@ MtPyre_1F_EventScript_Pyre_MagmaGrunt6::
 
 MtPyre_1F_Movement_PlayerWalkDown:
 	walk_down
+	step_end
+
+MtPyre_1F_Movement_MoveTowardsGrunts:
+	emote_exclamation_mark
+	walk_down
+	walk_right
+	step_end
+
+MtPyre_1F_Movement_MoveForEmmie:
+	emote_exclamation_mark
+	walk_down
+	face_right
+	step_end
+	
+MtPyre_1F_Movement_EmmieStepBack:
+	emote_exclamation_mark
+	lock_facing_direction
+	walk_slow_left
+	unlock_facing_direction
 	step_end
 
 MtPyre_1F_Movement_Grunt_Advance_A:

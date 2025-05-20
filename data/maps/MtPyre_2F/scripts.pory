@@ -188,7 +188,7 @@ MtPyre_2F_Text_Pyre_AquaGrunt2Defeat:
 	.string "This will hold us up even more!$"
 
 MtPyre_2F_Text_Pyre_AquaGrunt2PostBattle:
-	.string "We can't let Team Magma get any\n"
+	.string "We can't let Team Magma get any further\n"
 	.string "ahead of us!$"
 
 MtPyre_2F_Text_Pyre_AquaGrunt1Intro:

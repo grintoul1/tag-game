@@ -2122,10 +2122,28 @@ void DoSpecialTrainerBattle(void)
 
     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER;
     FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0, 6);
+    if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
+    {
         for (i = 0; i < 6; i++)
             CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
             gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
-
+    }
+    if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
+    {
+        for (i = 3; i < 6; i++)
+        {
+            CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+            gBattleTypeFlags = BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
+            gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY);
+            FillPartnerParty(gPartnerTrainerId);
+        }
+    }
+    if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
+    {
+        for (i = 0; i < 6; i++)
+            CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+    }
     if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
     {
         for (i = 0; i < 5; i++)
@@ -2141,6 +2159,7 @@ void DoSpecialTrainerBattle(void)
             j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
             SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
         }
+        
         j = NATURE_RELAXED;
         SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
         j = NATURE_SERIOUS;
@@ -2169,6 +2188,31 @@ void DoSpecialTrainerBattle(void)
     }
     else if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
     {
+        j = SPECIES_TORNADUS;
+            SetMonData(&gEnemyParty[0], MON_DATA_SPECIES, &j);
+        j = SPECIES_THUNDURUS;
+            SetMonData(&gEnemyParty[1], MON_DATA_SPECIES, &j);
+        j = SPECIES_LANDORUS;
+            SetMonData(&gEnemyParty[2], MON_DATA_SPECIES, &j);
+        j = 0;
+            SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &j);
+        j = 0;
+            SetMonData(&gEnemyParty[1], MON_DATA_ABILITY_NUM, &j);
+        j = 0;
+            SetMonData(&gEnemyParty[2], MON_DATA_ABILITY_NUM, &j);
+        j = NATURE_SERIOUS;
+            SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
+        j = NATURE_TIMID;
+            SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
+        j = NATURE_BRAVE;
+            SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
+        j = MOVE_TAILWIND;
+            SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &j);
+        j = MOVE_TAUNT;
+            SetMonData(&gEnemyParty[1], MON_DATA_MOVE1, &j);
+        j = MOVE_U_TURN;
+            SetMonData(&gEnemyParty[2], MON_DATA_MOVE1, &j);
+
         for (i = 0; i < 6; i++)
         {
             j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
@@ -2182,12 +2226,6 @@ void DoSpecialTrainerBattle(void)
             j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
             SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
         }
-        j = NATURE_RELAXED;
-        SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_SERIOUS;
-        SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_BRAVE;
-        SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
         j = NATURE_SASSY;
         SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
         j = NATURE_BASHFUL;
@@ -2195,12 +2233,6 @@ void DoSpecialTrainerBattle(void)
         j = NATURE_QUIET;
         SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
 
-        j = ITEM_FOCUS_SASH;
-        SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_IRON_BALL;
-        SetMonData(&gEnemyParty[1], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_EJECT_BUTTON;
-        SetMonData(&gEnemyParty[2], MON_DATA_HELD_ITEM, &j);
         j = ITEM_LAGGING_TAIL;
         SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
         j = ITEM_SITRUS_BERRY;
@@ -2251,7 +2283,18 @@ void DoSpecialTrainerBattle(void)
     }
     
     CreateTask(Task_StartBattleAfterTransition, 1);
+    if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
+    {
+        PlayMapChosenOrBattleBGM(481);
+    }
+    if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
+    {
         PlayMapChosenOrBattleBGM(471);
+    }
+    if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
+    {
+        PlayMapChosenOrBattleBGM(481);
+    }
         BattleTransition_StartOnField(GetTrainerBattleTransition());
         break;
     }

@@ -379,7 +379,7 @@ MtPyre_2F_Text_Pyre_AquaGrunt2Defeat:
 # 190 "data/maps/MtPyre_2F/scripts.pory"
 MtPyre_2F_Text_Pyre_AquaGrunt2PostBattle:
 # 191 "data/maps/MtPyre_2F/scripts.pory"
-	.string "We can't let Team Magma get any\n"
+	.string "We can't let Team Magma get any further\n"
 # 192 "data/maps/MtPyre_2F/scripts.pory"
 	.string "ahead of us!$"
 # 193 "data/maps/MtPyre_2F/scripts.pory"

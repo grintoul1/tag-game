@@ -78,7 +78,7 @@ MtPyre_6F_Text_Pyre_AquaGrunt3Defeat:
 	.string "Whoa, whoa… Enough already…$"
 
 MtPyre_6F_Text_Pyre_AquaGrunt3PostBattle:
-	.string "Just what are you even doing here?$"
+	.string "What are you even doing here?$"
 
 MtPyre_6F_Text_ValerieRegister:
 	.string "Fufufu… I lost the match, but…\n"

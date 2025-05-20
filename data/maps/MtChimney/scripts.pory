@@ -140,6 +140,7 @@ MtChimney_Movement_EmmiePositionForMaxieFightEast2:
 
 MtChimney_EventScript_Maxie::
 	lockall
+	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterRight
 	call_if_eq VAR_FACING, DIR_EAST, MtChimney_EventScript_EmmiePositionForMaxieFightEast
 	call_if_eq VAR_FACING, DIR_NORTH, MtChimney_EventScript_EmmiePositionForMaxieFightNorth
 	msgbox MtChimney_Text_MeteoriteWillActivateVolcano, MSGBOX_DEFAULT
@@ -168,16 +169,17 @@ MtChimney_EventScript_MaxieVictory::
 	msgbox MtChimney_Text_MaxieYouHaventSeenLastOfMagma, MSGBOX_DEFAULT
 	closemessage
 	delay 30
-	call_if_eq VAR_FACING, DIR_EAST, MtChimney_EventScript_EmmieMoveForMaxie
-	call_if_eq VAR_FACING, DIR_NORTH, MtChimney_EventScript_PlayerMoveForMaxie
+	getobjectcurrentxy OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 12, MtChimney_EventScript_EmmieMoveForMaxie
+	call_if_eq VAR_TEMP_3, 13, MtChimney_EventScript_PlayerMoveForMaxie
 	removeobject LOCALID_MAXIE
 	removeobject LOCALID_MAGMA_GRUNT_1
 	removeobject LOCALID_TABITHA
 	removeobject LOCALID_MAGMA_GRUNT_2
 	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
 	playbgm MUS_MT_CHIMNEY, TRUE
-	call_if_eq VAR_FACING, DIR_EAST, MtChimney_EventScript_ArchieApproachPlayerEast
-	call_if_eq VAR_FACING, DIR_NORTH, MtChimney_EventScript_ArchieApproachPlayerNorth
+	call_if_eq VAR_TEMP_3, 12, MtChimney_EventScript_ArchieApproachPlayerEast
+	call_if_eq VAR_TEMP_3, 13, MtChimney_EventScript_ArchieApproachPlayerNorth
 	waitmovement 0
 	msgbox MtChimney_Text_ArchieThankYou, MSGBOX_DEFAULT
 	closemessage
@@ -196,6 +198,7 @@ MtChimney_EventScript_MaxieVictory::
 
 MtChimney_EventScript_EmmieMoveForMaxie::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtChimney_Movement_MoveForMaxie
+	applymovement OBJ_EVENT_ID_PLAYER, MtChimney_Movement_MoveForMaxieOtherFaceLeft
 	applymovement LOCALID_MAXIE, MtChimney_Movement_MaxieExit
 	applymovement LOCALID_TABITHA, MtChimney_Movement_TabithaExit
 	waitmovement 0
@@ -203,6 +206,7 @@ MtChimney_EventScript_EmmieMoveForMaxie::
 
 MtChimney_EventScript_PlayerMoveForMaxie::
 	applymovement OBJ_EVENT_ID_PLAYER, MtChimney_Movement_MoveForMaxie
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtChimney_Movement_MoveForMaxieOtherFaceLeft
 	applymovement LOCALID_MAXIE, MtChimney_Movement_MaxieExit
 	applymovement LOCALID_TABITHA, MtChimney_Movement_TabithaExit
 	waitmovement 0
@@ -222,6 +226,13 @@ MtChimney_Movement_MaxieExit:
 	walk_down
 	walk_down
 	walk_down
+	step_end
+
+MtChimney_Movement_MoveForMaxieOtherFaceLeft:
+	delay_16
+	delay_16
+	delay_16
+	face_left
 	step_end
 
 MtChimney_Movement_TabithaExit:
@@ -252,13 +263,10 @@ MtChimney_Movement_MoveForMaxie:
 MtChimney_EventScript_ArchieApproachPlayerEast::
 	applymovement LOCALID_ARCHIE, MtChimney_Movement_ArchieApproachPlayerEast
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
 	return
 
 MtChimney_EventScript_ArchieApproachPlayerNorth::
 	applymovement LOCALID_ARCHIE, MtChimney_Movement_ArchieApproachPlayerNorth
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	return
 

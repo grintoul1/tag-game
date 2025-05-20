@@ -159,7 +159,7 @@ MtPyre_6F_Text_Pyre_AquaGrunt3Defeat:
 # 80 "data/maps/MtPyre_6F/scripts.pory"
 MtPyre_6F_Text_Pyre_AquaGrunt3PostBattle:
 # 81 "data/maps/MtPyre_6F/scripts.pory"
-	.string "Just what are you even doing here?$"
+	.string "What are you even doing here?$"
 # 82 "data/maps/MtPyre_6F/scripts.pory"
 
 # 83 "data/maps/MtPyre_6F/scripts.pory"

@@ -30,8 +30,6 @@ FortreeCity_Gym_EventScript_Winona2:
 lockall
 setvar VAR_0x8008, LOCALID_WINONA
 playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
 msgbox FortreeCity_Gym_Text_WinonaIntro, MSGBOX_AUTOCLOSE
 goto FortreeCity_Gym_EventScript_WinonaDoMultiBattle
 closemessage

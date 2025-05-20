@@ -24,6 +24,9 @@ FortreeCity_EventScript_Shelly::
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	waitfieldeffect FLDEFF_NPCFLY_OUT
 	addobject LOCALID_SHELLY
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 24, FortreeCity_EventScript_EmmieMoveForShelly1
+	call_if_eq VAR_TEMP_3, 25, FortreeCity_EventScript_EmmieMoveForShelly2
 	applymovement LOCALID_SHELLY, FortreeCity_Movement_ShellyApproachPlayer
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
@@ -39,10 +42,36 @@ FortreeCity_EventScript_Shelly::
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
 	removeobject LOCALID_SHELLY
+	delay 15
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, FortreeCity_Movement_EmmieReturnToPlayer
+	waitmovement 0
 	setflag FLAG_HIDE_FORTREE_SHELLY
 	clearflag FLAG_HIDE_JAGGED_PASS_SHELLY
 	addvar VAR_FORTREE_CITY_STATE, 1 
 	end
+
+FortreeCity_Movement_EmmieReturnToPlayer:
+	walk_up
+	face_right
+	step_end
+
+FortreeCity_EventScript_EmmieMoveForShelly1::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, FortreeCity_Movement_EmmieMoveForShelly1
+	return
+
+FortreeCity_Movement_EmmieMoveForShelly1:
+	walk_down
+	face_up
+	step_end
+
+FortreeCity_EventScript_EmmieMoveForShelly2::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, FortreeCity_Movement_EmmieMoveForShelly2
+	return
+
+FortreeCity_Movement_EmmieMoveForShelly2:
+	walk_left
+	face_up
+	step_end
 
 FortreeCity_Movement_ShellyApproachPlayer:
 	walk_right

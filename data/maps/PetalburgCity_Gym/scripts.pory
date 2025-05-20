@@ -163,8 +163,6 @@ special SetCB2WhiteOut
 waitstate
 
 PetalburgCity_Gym_EventScript_NormanVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
 addvar VAR_PETALBURG_GYM_STATE, 1
 goto PetalburgCity_Gym_EventScript_NormanDefeated
 end

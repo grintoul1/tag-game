@@ -7,9 +7,9 @@
 # 4 "data/maps/PetalburgCity/scripts.pory"
 .set LOCALID_WALLYS_DAD, 5
 # 5 "data/maps/PetalburgCity/scripts.pory"
-.set LOCALID_GYM_BOY, 8
+.set LOCALID_GYM_BOY, 7
 # 6 "data/maps/PetalburgCity/scripts.pory"
-.set LOCALID_SCOTT, 9
+.set LOCALID_SCOTT, 8
 # 7 "data/maps/PetalburgCity/scripts.pory"
 
 # 8 "data/maps/PetalburgCity/scripts.pory"

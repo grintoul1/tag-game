@@ -528,6 +528,7 @@ Name: MATT
 Class: Aqua Admin
 Pic: Aqua Admin M
 Gender: Male
+Mugshot: Red
 Music: Aqua
 Items: Super Potion
 Battle Type: Singles
@@ -577,6 +578,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Name: SHELLY
 Class: Aqua Admin
 Pic: Aqua Admin F
+Mugshot: Red
 Gender: Female
 Music: Aqua
 Battle Type: Singles
@@ -594,6 +596,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Name: SHELLY
 Class: Aqua Admin
 Pic: Aqua Admin F
+Mugshot: Red
 Gender: Female
 Music: Aqua
 Battle Type: Singles
@@ -611,6 +614,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Name: SHELLY
 Class: Aqua Admin
 Pic: Aqua Admin F
+Mugshot: Red
 Gender: Female
 Music: Aqua
 Battle Type: Singles
@@ -5009,7 +5013,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 === TRAINER_FLANNERY_1 ===
 Name: FLANNERY
 Class: Leader
-Mugshot: Purple
+Mugshot: Red
 Pic: Leader Flannery
 Gender: Female
 Music: Female
@@ -11145,7 +11149,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Name: MAXIE
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Mugshot: Red
+Mugshot: Blue
 Gender: Male
 Music: Magma
 Items: Super Potion / Super Potion
@@ -13676,6 +13680,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Name: MAXIE
 Class: Magma Leader
 Pic: Magma Leader Maxie
+Mugshot: Blue
 Gender: Male
 Music: Magma
 Battle Type: Singles

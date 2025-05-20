@@ -153,8 +153,6 @@ special SetCB2WhiteOut
 waitstate
 
 DewfordTown_Gym_EventScript_BrawlyVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
 addvar VAR_DEWFORD_TOWN_STATE, 1
 goto DewfordTown_Gym_EventScript_BrawlyDefeated
 end

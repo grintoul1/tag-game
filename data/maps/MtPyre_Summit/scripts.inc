@@ -52,6 +52,7 @@ MtPyre_Summit_EventScript_TeamAquaTrigger2::
 MtPyre_Summit_EventScript_ArchieAndMaxie::
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerApproachLeaders
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtPyre_Summit_Movement_PlayerApproachLeaders
 	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterDown
 	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
@@ -119,6 +120,7 @@ MtPyre_Summit_EventScript_ArchieFight::
 	applymovement LOCALID_MAXIE, MtPyre_Summit_Movement_ArchieFight_MaxieApproachArchie
 	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieFight_ArchieApproachPlayer
 	applymovement LOCALID_MATT, MtPyre_Summit_Movement_ArchieFight_MattApproachPlayer
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtPyre_Summit_Movement_ArchieFight_EmmiePosition
 	waitmovement 0
 	msgbox MtPyre_Summit_Text_ArchieFight_ErrorOfYourWays, MSGBOX_DEFAULT
 	goto MtPyre_Summit_EventScript_ArchieFightBattle
@@ -160,6 +162,7 @@ MtPyre_Summit_EventScript_ArchieDefeated::
 	waitmovement 0
 	applymovement LOCALID_MATT, MtPyre_Summit_Movement_ArchieFight_MattPushPlayer
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_ArchieFight_PlayerPushedLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
 	waitmovement 0
 	msgbox MtPyre_Summit_Text_ArchieFight_MattWeHaveWhatWeCameFor, MSGBOX_DEFAULT
 	closemessage
@@ -181,10 +184,12 @@ MtPyre_Summit_EventScript_ArchieDefeated::
 	delay 20
 	applymovement LOCALID_TABITHA, MtPyre_Summit_Movement_ArchieFight_TabithaApproachMaxie
 	waitmovement 0
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceFasterRight
 	msgbox MtPyre_Summit_Text_ArchieFight_MaxieReturnToBase, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_MAXIE, Common_Movement_FaceDown
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
 	waitmovement 0
 	msgbox MtPyre_Summit_Text_ArchieFight_MaxieDontFollowUs, MSGBOX_DEFAULT
 	closemessage
@@ -205,6 +210,11 @@ MtPyre_Summit_EventScript_ArchieDefeated::
 	setflag FLAG_RECEIVED_RED_OR_BLUE_ORB
 	releaseall
 	end
+
+MtPyre_Summit_Movement_ArchieFight_EmmiePosition:
+	walk_slow_left
+	face_up
+	step_end
 
 MtPyre_Summit_Movement_ArchieFight_ArchiePushMaxie:
 	walk_fast_left
@@ -310,6 +320,7 @@ MtPyre_Summit_EventScript_MaxieFight::
 	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_MaxieFight_ArchieApproachMaxie
 	applymovement LOCALID_MAXIE, MtPyre_Summit_Movement_MaxieFight_MaxieApproachPlayer
 	applymovement LOCALID_TABITHA, MtPyre_Summit_Movement_MaxieFight_TabithaApproachPlayer
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtPyre_Summit_Movement_MaxieFight_EmmiePosition
 	waitmovement 0
 	msgbox MtPyre_Summit_Text_MaxieFight_EliminateYouBoth, MSGBOX_DEFAULT
 	goto MtPyre_Summit_EventScript_MaxieFightBattle
@@ -351,6 +362,7 @@ MtPyre_Summit_EventScript_MaxieDefeated::
 	waitmovement 0
 	applymovement LOCALID_TABITHA, MtPyre_Summit_Movement_MaxieFight_TabithaPushPlayer
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_MaxieFight_PlayerPushedRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceLeft
 	waitmovement 0
 	msgbox MtPyre_Summit_Text_MaxieFight_TabithaWeHaveWhatWeCameFor, MSGBOX_DEFAULT
 	closemessage
@@ -372,10 +384,13 @@ MtPyre_Summit_EventScript_MaxieDefeated::
 	delay 20
 	applymovement LOCALID_MATT, MtPyre_Summit_Movement_MaxieFight_MattApproachArchie
 	waitmovement 0
+	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
 	msgbox MtPyre_Summit_Text_MaxieFight_ArchieReturnToBase, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_ARCHIE, Common_Movement_FaceDown
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
 	waitmovement 0
 	msgbox MtPyre_Summit_Text_MaxieFight_ArchieDontFollowUs, MSGBOX_DEFAULT
 	closemessage
@@ -396,6 +411,11 @@ MtPyre_Summit_EventScript_MaxieDefeated::
 	setflag FLAG_RECEIVED_RED_OR_BLUE_ORB
 	releaseall
 	end
+
+MtPyre_Summit_Movement_MaxieFight_EmmiePosition:
+	walk_slow_right
+	face_up
+	step_end
 
 MtPyre_Summit_Movement_MaxieFight_MaxiePushArchie:
 	walk_fast_right
@@ -454,8 +474,8 @@ MtPyre_Summit_Movement_MaxieFight_MattApproachArchie:
 
 
 MtPyre_Summit_Text_MaxieFight_YouCannotStopMe:
-	.string "Maxie: Foolish child! You cannot\n"
-	.string "stop me.$"
+	.string "Maxie: Foolish child! You cannot stop\n"
+	.string "me.$"
 
 MtPyre_Summit_Text_MaxieFight_EliminateYouBoth:
 	.string "Maxie: I will eliminate you both\n"
@@ -582,6 +602,7 @@ MtPyre_Summit_EventScript_OldLadyApproachPlayer1::
 	applymovement LOCALID_OLD_LADY, MtPyre_Summit_Movement_OldLadyApproachPlayer1
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
 	waitmovement 0
 	return
 
@@ -589,6 +610,7 @@ MtPyre_Summit_EventScript_OldLadyApproachPlayer2::
 	applymovement LOCALID_OLD_LADY, MtPyre_Summit_Movement_OldLadyApproachPlayer2
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceLeft
 	waitmovement 0
 	return
 
@@ -1005,6 +1027,10 @@ MtPyre_Summit_EventScript_Grunt_Mt_Pyre_3Grunt_Mt_Pyre_4Victory::
 
 MtPyre_Summit_EventScript_MattTabitha::
 	lockall
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 22, MtPyre_Summit_EventScript_MattTabithaEmmiePositionA
+	call_if_eq VAR_TEMP_3, 23, MtPyre_Summit_EventScript_MattTabithaEmmiePositionB
+	call_if_eq VAR_TEMP_3, 24, MtPyre_Summit_EventScript_MattTabithaEmmiePositionC
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
 	msgbox MtPyre_Summit_Text_TabithaAllYouGot, MSGBOX_DEFAULT
 	closemessage
@@ -1048,19 +1074,20 @@ MtPyre_Summit_EventScript_MattTabitha::
 	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
-	playse SE_PIN
 	call_if_eq VAR_TEMP_2, 22, MtPyre_Summit_EventScript_MattTabithaFight_A
 	call_if_eq VAR_TEMP_2, 23, MtPyre_Summit_EventScript_MattTabithaFight_B
 	call_if_eq VAR_TEMP_2, 24, MtPyre_Summit_EventScript_MattTabithaFight_C
 	end
 
 MtPyre_Summit_EventScript_MattTabithaFight_A::
+	msgbox MtPyre_Summit_Text_CantBeatBothOfUs, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
 	applymovement LOCALID_MATT, MtPyre_Summit_Movement_MattApproachPlayer_A
 	applymovement LOCALID_TABITHA, MtPyre_Summit_Movement_TabithaApproachPlayer_A
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	waitmovement 0
-	msgbox MtPyre_Summit_Text_CantBeatBothOfUs, MSGBOX_DEFAULT
-	closemessage
 	playbgm MUS_MT_PYRE_EXTERIOR, TRUE
 	multi_2p_vs_2 TRAINER_TABITHA_MT_PYRE, MtPyre_Summit_Text_Tabitha_Mt_PyreDefeat, TRAINER_MATT_MT_PYRE, MtPyre_Summit_Text_Matt_Mt_PyreDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
@@ -1084,6 +1111,28 @@ MtPyre_Summit_EventScript_Matt_Mt_PyreTabitha_Mt_PyreVictory_A::
 	addvar VAR_MT_PYRE_STATE, 1
 	end
 
+MtPyre_Summit_EventScript_MattTabithaEmmiePositionA::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtPyre_Summit_Movement_MattTabithaEmmiePositionA
+	return
+
+MtPyre_Summit_EventScript_MattTabithaEmmiePositionB::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtPyre_Summit_Movement_MattTabithaEmmiePositionA
+	return
+
+MtPyre_Summit_EventScript_MattTabithaEmmiePositionC::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtPyre_Summit_Movement_MattTabithaEmmiePositionC
+	return
+
+MtPyre_Summit_Movement_MattTabithaEmmiePositionA:
+	walk_right
+	walk_up
+	step_end
+
+MtPyre_Summit_Movement_MattTabithaEmmiePositionC:
+	walk_left
+	walk_up
+	step_end
+
 MtPyre_Summit_Movement_AdminReturnToPosition:
 	walk_up
 	step_end
@@ -1091,11 +1140,13 @@ MtPyre_Summit_Movement_AdminReturnToPosition:
 MtPyre_Summit_Movement_TabithaReturnToPosition:
 	walk_up
 	walk_right
+	face_left
 	step_end
 
 MtPyre_Summit_Movement_MattReturnToPosition:
 	walk_up
 	walk_left
+	face_right
 	step_end
 
 MtPyre_Summit_Movement_MattApproachPlayer_A:
@@ -1108,12 +1159,14 @@ MtPyre_Summit_Movement_TabithaApproachPlayer_A:
 	step_end
 
 MtPyre_Summit_EventScript_MattTabithaFight_B::
+	msgbox MtPyre_Summit_Text_CantBeatBothOfUs, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
 	applymovement LOCALID_MATT, MtPyre_Summit_Movement_MattApproachPlayer_B
 	applymovement LOCALID_TABITHA, MtPyre_Summit_Movement_TabithaApproachPlayer_B
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	waitmovement 0
-	msgbox MtPyre_Summit_Text_CantBeatBothOfUs, MSGBOX_DEFAULT
-	closemessage
 	playbgm MUS_MT_PYRE_EXTERIOR, TRUE
 	multi_2p_vs_2 TRAINER_TABITHA_MT_PYRE, MtPyre_Summit_Text_Tabitha_Mt_PyreDefeat, TRAINER_MATT_MT_PYRE, MtPyre_Summit_Text_Matt_Mt_PyreDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
@@ -1129,7 +1182,7 @@ MtPyre_Summit_EventScript_Matt_Mt_PyreTabitha_Mt_PyreVictory_B::
 	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox MtPyre_Summit_Text_Tabitha_Mt_PyrePostBattle, MSGBOX_AUTOCLOSE
-	applymovement LOCALID_MATT, MtPyre_Summit_Movement_AdminReturnToPosition
+	applymovement LOCALID_MATT, MtPyre_Summit_Movement_MattReturnToPosition
 	applymovement LOCALID_TABITHA, MtPyre_Summit_Movement_AdminReturnToPosition
 	waitmovement 0
 	applymovement LOCALID_MATT, Common_Movement_FaceOriginalDirection
@@ -1138,21 +1191,24 @@ MtPyre_Summit_EventScript_Matt_Mt_PyreTabitha_Mt_PyreVictory_B::
 	end
 
 MtPyre_Summit_Movement_MattApproachPlayer_B:
+	walk_right
 	walk_down
 	step_end
 
 MtPyre_Summit_Movement_TabithaApproachPlayer_B:
-	walk_down
+	walk_slow_down
 	step_end
 
 
 MtPyre_Summit_EventScript_MattTabithaFight_C::
+	msgbox MtPyre_Summit_Text_CantBeatBothOfUs, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
 	applymovement LOCALID_MATT, MtPyre_Summit_Movement_MattApproachPlayer_C
 	applymovement LOCALID_TABITHA, MtPyre_Summit_Movement_TabithaApproachPlayer_C
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	waitmovement 0
-	msgbox MtPyre_Summit_Text_CantBeatBothOfUs, MSGBOX_DEFAULT
-	closemessage
 	playbgm MUS_MT_PYRE_EXTERIOR, TRUE
 	multi_2p_vs_2 TRAINER_TABITHA_MT_PYRE, MtPyre_Summit_Text_Tabitha_Mt_PyreDefeat, TRAINER_MATT_MT_PYRE, MtPyre_Summit_Text_Matt_Mt_PyreDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
@@ -1270,8 +1326,8 @@ MtPyre_Summit_Text_Tabitha_Mt_PyrePostBattle:
 	.string "a chance against Maxie this time!$"
 
 MtPyre_Summit_Text_Grunt1Intro:
-	.string "The boss and Maxie are fighting it\n"
-	.string "out up ahead too!$"
+	.string "The boss and Maxie are fighting it out\n"
+	.string "up ahead too!$"
 
 MtPyre_Summit_Text_Grunt1Defeat:
 	.string "Interrupting them isn't smart…$"
@@ -1289,14 +1345,14 @@ MtPyre_Summit_Text_Grunt3Defeat:
 	.string "Team Magma first…$"
 
 MtPyre_Summit_Text_Grunt3PostBattle:
-	.string "I wouldn't want to find myself\n"
-	.string "in the middle of that!$"
+	.string "I wouldn't want to find myself in the\n"
+	.string "middle of that!$"
 
 MtPyre_Summit_Text_Grunt2Intro:
 	.string "You…\n"
 	.string "We saw you at Mt Chimney.\p"
-	.string "You don't belong to either team,\n"
-	.string "so why would you be here?$"
+	.string "You don't belong to either team, so why\n"
+	.string "would you be here?$"
 
 MtPyre_Summit_Text_Grunt2Defeat:
 	.string "If you're going to mess with anyone,\n"

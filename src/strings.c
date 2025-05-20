@@ -543,6 +543,7 @@ const u8 gText_SwapNumber[] = _("SWAP: NUMBER");
 const u8 gText_SwapNotes[] = _("SWAP: NOTES");
 const u8 gText_BattleBasics[] = _("BATTLE BASICS");
 const u8 gText_PokemonNature[] = _("POKéMON NATURE");
+const u8 gText_Team[] = _("TEAM");
 const u8 gText_PokemonMoves[] = _("POKéMON MOVES");
 const u8 gText_Underpowered[] = _("UNDERPOWERED");
 const u8 gText_WhenInDanger[] = _("WHEN IN DANGER");

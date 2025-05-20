@@ -685,13 +685,13 @@
 #define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_EMMIE  0x27E // Hides May's house Emmie
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_EMMIE  0x27F // Hide's Brendan's house Emmie
 #define FLAG_HIDE_LITTLEROOT_TOWN_EMMIE  0x280 // Hides Littleroot Emmie
-#define FLAG_HIDE_PETALBURG_CITY_CUTSCENE_EMMIE  0x281 // Hides Petalburg cutscene Emmie
-#define FLAG_HIDE_PETALBURG_GYM_CUTSCENE_EMMIE  0x282 // Hides Petalburg cutscene Emmie
+#define FLAG_HIDE_JAGGED_PASS_EMMIE  0x281 // Hides Jagged Pass Emmie
+#define FLAG_JAGGED_PASS_SHELLY_INTRO_GIVEN  0x282 // Unused Flag
 #define FLAG_EMMIE_BATTLE_INTRO_GIVEN  0x283 // Determines Emmie battle intro already given
 #define FLAG_EMMIE_BATTLE_1  0x284 // Determines Emmie battle 1
 #define FLAG_EMMIE_BATTLE_2  0x285 // Determines Emmie battle 2
 #define FLAG_EMMIE_BATTLE_3  0x286 // Determines Emmie battle 3
-#define FLAG_HIDE_ROUTE_104_EMMIE  0x287 // Hides Emmie used for Mr Briney's boat cutscene
+#define FLAG_EMMIE_BATTLE_2_DEFEATED  0x287 // Unused Flag
 #define FLAG_UNUSED_0x288  0x288 // Unused Flag
 #define FLAG_UNUSED_0x289  0x289 // Unused Flag
 #define FLAG_UNUSED_0x28A  0x28A // Unused Flag

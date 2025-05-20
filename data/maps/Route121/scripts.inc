@@ -857,4 +857,4 @@ Route121_Text_MagmaGrunt2:
 # 429 "data/maps/Route121/scripts.pory"
 	.string "Nobody goes through this area while\n"
 # 430 "data/maps/Route121/scripts.pory"
-	.string "Team Magma operate in Mt. Pyre!$"
+	.string "Team Magma operates at Mt. Pyre!$"

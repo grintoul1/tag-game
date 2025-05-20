@@ -584,6 +584,7 @@ static const struct MenuAction MultichoiceList_EmmieAreYouReady[] =
 
 static const struct MenuAction MultichoiceList_EmmieInformation[] =
 {
+    {gText_Team},
     {gText_BattleRules},
     {gText_Items},
     {gText_PokemonNature},

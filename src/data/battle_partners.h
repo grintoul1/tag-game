@@ -364,23 +364,25 @@ F_TRAINER_FEMALE |
         {
             {
 #line 163
-            .species = SPECIES_METANG,
+            .species = SPECIES_MAGEARNA,
             .gender = TRAINER_MON_RANDOM_GENDER,
+#line 163
+            .heldItem = ITEM_SHUCA_BERRY,
 #line 167
             .ev = TRAINER_PARTY_EVS(0, 252, 252, 0, 6, 0),
 #line 166
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 0, 31, 31),
 #line 165
-            .lvl = 42,
+            .lvl = 50,
 #line 164
-            .nature = NATURE_BRAVE,
+            .nature = NATURE_QUIET,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 168
+                MOVE_TRICK_ROOM,
+                MOVE_MOONBLAST,
                 MOVE_LIGHT_SCREEN,
-                MOVE_PSYCHIC,
-                MOVE_REFLECT,
-                MOVE_METAL_CLAW,
+                MOVE_FLASH_CANNON,
             },
             },
             {

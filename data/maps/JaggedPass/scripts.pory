@@ -23,7 +23,7 @@ JaggedPass_OnFrame:
 	.2byte 0
 
 JaggedPass_OnWarp:
-	end
+	.2byte 0
 
 JaggedPass_OnResume:
 	setstepcallback STEP_CB_ASH
@@ -162,23 +162,183 @@ JaggedPass_EventScript_ConcealHideoutEntrance::
 
 JaggedPass_EventScript_ShellyTrigger::
 	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
 	waitmovement 0
+	applymovement LOCALID_SHELLY, Common_Movement_FaceLeft
 	msgbox JaggedPass_Text_ShellyThanksForComing, MSGBOX_DEFAULT
 	closemessage
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 15, JaggedPass_EventScript_EmmieApproachShelly1
+	msgbox JaggedPass_Text_EmmieNoWayTrustingYou, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_QuestionMark
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, JaggedPass_EventScript_EmmieArchieDefeated
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, JaggedPass_EventScript_EmmieMaxieDefeated
 	addvar VAR_JAGGED_PASS_STATE, 1
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
+	setflag FLAG_EMMIE_BATTLE_2
+	setflag FLAG_JAGGED_PASS_SHELLY_INTRO_GIVEN
+	addvar VAR_EMMIE_BATTLE_STATE, 1
+	goto Common_EventScript_EmmieBattle
 	releaseall
 	end
 
+JaggedPass_EventScript_EmmieArchieDefeated:
+	msgbox JaggedPass_Text_EmmieOnlyWayIWillAgreeArchieDefeated, MSGBOX_DEFAULT
+	closemessage
+	return
+
+JaggedPass_EventScript_EmmieMaxieDefeated:
+	msgbox JaggedPass_Text_EmmieOnlyWayIWillAgreeArchieDefeated, MSGBOX_DEFAULT
+	closemessage
+	return
+
+JaggedPass_Text_EmmieOnlyWayIWillAgreeArchieDefeated:
+	.string "Emmie: I'm sorry, what? You'll be okay by\n"
+	.string "yourself?\p"
+	.string "You have grown a lot since we left home,\n"
+	.string "and in fairness you held your own on\l"
+	.string "Mt Pyre, but that was alongside Maxie.\p"
+	.string "Okay, the only way I will agree to this\n"
+	.string "is if the two of you can beat me.\p"
+	.string "{PLAYER}, in all honesty I went easy on\n"
+	.string "you outside Mr Briney's house.\p"
+	.string "This time, for your own good, I'm not\n"
+	.string "going to hold back.$"
+
+JaggedPass_Text_EmmieOnlyWayIWillAgreeMaxieDefeated:
+	.string "Emmie: I'm sorry, what? You'll be okay by\n"
+	.string "yourself?\p"
+	.string "You have grown a lot since we left home,\n"
+	.string "and in fairness you held your own on\l"
+	.string "Mt Pyre, but that was alongside Archie.\p"
+	.string "Okay, the only way I will agree to this\n"
+	.string "is if the two of you can beat me.\p"
+	.string "{PLAYER}, in all honesty I went easy on\n"
+	.string "you outside Mr Briney's house.\p"
+	.string "This time, for your own good, I'm not\n"
+	.string "going to hold back.$"
+
+JaggedPass_EventScript_EmmieApproachShelly1::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, JaggedPass_Movement_EmmieApproachShelly1
+	waitmovement 0
+	return
+
+JaggedPass_Text_EmmieNoWayTrustingYou:
+	.string "Emmie: There's no way I'm trusting you to\n"
+	.string "take care of {PLAYER} after what I've seen\l"
+	.string "Team Aqua do.$"
+
+JaggedPass_Movement_EmmieApproachShelly1:
+	walk_down
+	walk_right
+	step_end
+
 JaggedPass_EventScript_Shelly::
 	lockall
-	applymovement LOCALID_SHELLY, Common_Movement_FacePlayer
-	msgbox JaggedPass_Text_ShellyThanksForComing, MSGBOX_DEFAULT
-	closemessage
-	addvar VAR_JAGGED_PASS_STATE, 1
+	goto_if_set FLAG_EMMIE_BATTLE_2_DEFEATED, JaggedPass_EventScript_ShellySeeYouInside
+	goto_if_set FLAG_JAGGED_PASS_SHELLY_INTRO_GIVEN, JaggedPass_EventScript_ShellyLetsGetThisOver
+	call_if_eq VAR_FACING, DIR_WEST, JaggedPass_EventScript_PlayerApproachShellyWest
+	call_if_eq VAR_FACING, DIR_NORTH, JaggedPass_EventScript_PlayerApproachShellyNorth
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 19, JaggedPass_EventScript_EmmieApproachShellyStart1
+	call_if_eq VAR_TEMP_3, 18, JaggedPass_EventScript_EmmieApproachShellyStart2
+	call_if_eq VAR_TEMP_3, 17, JaggedPass_EventScript_EmmieApproachShellyStart3
+	call_if_eq VAR_TEMP_3, 16, JaggedPass_EventScript_EmmieApproachShellyStart4
+	waitmovement 0
+	goto JaggedPass_EventScript_ShellyTrigger
 	releaseall
 	end
+
+JaggedPass_EventScript_ShellyLetsGetThisOver::
+	faceplayer
+	msgbox JaggedPass_Text_ShellyLetsGetThisOver, MSGBOX_DEFAULT
+	closemessage
+	end
+
+JaggedPass_EventScript_ShellySeeYouInside::
+	faceplayer
+	msgbox JaggedPass_Text_ShellySeeYouInside, MSGBOX_DEFAULT
+	closemessage
+	end
+
+JaggedPass_Text_ShellyLetsGetThisOver:
+	.string "Shelly: We really haven't got time for\n"
+	.string "this. Let's get it over and done with.$"
+
+JaggedPass_Text_ShellySeeYouInside:
+	.string "Shelly: Hurry up and go inside. I will\n"
+	.string "see you in there.$"
+
+JaggedPass_EventScript_EmmieApproachShellyStart1::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, JaggedPass_Movement_EmmieApproachShellyStart1
+	return
+
+JaggedPass_EventScript_EmmieApproachShellyStart2::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, JaggedPass_Movement_EmmieApproachShellyStart2
+	return
+
+JaggedPass_EventScript_EmmieApproachShellyStart3::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, JaggedPass_Movement_EmmieApproachShellyStart3
+	return
+
+JaggedPass_EventScript_EmmieApproachShellyStart4::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, JaggedPass_Movement_EmmieApproachShellyStart4
+	return
+
+JaggedPass_Movement_EmmieApproachShellyStart1:
+	walk_left
+	walk_down
+	walk_left
+	walk_left
+	face_right
+	step_end
+
+JaggedPass_Movement_EmmieApproachShellyStart2:
+	walk_down
+	walk_up
+	walk_left
+	walk_left
+	face_right
+	step_end
+
+JaggedPass_Movement_EmmieApproachShellyStart3:
+	walk_up
+	walk_left
+	face_right
+	step_end
+
+JaggedPass_Movement_EmmieApproachShellyStart4:
+	walk_down
+	walk_up
+	face_right
+	step_end
+
+JaggedPass_EventScript_PlayerApproachShellyNorth::
+	applymovement OBJ_EVENT_ID_PLAYER, JaggedPass_Movement_PlayerApproachShellyNorth
+	return
+	
+JaggedPass_EventScript_PlayerApproachShellyWest::
+	applymovement OBJ_EVENT_ID_PLAYER, JaggedPass_Movement_PlayerApproachShellyWest
+	return
+
+JaggedPass_Movement_PlayerApproachShellyNorth:
+	walk_left
+	walk_up
+	step_end
+
+JaggedPass_Movement_PlayerApproachShellyWest:
+	walk_down
+	walk_left
+	walk_left
+	walk_up
+	step_end
 
 JaggedPass_EventScript_OpenMagmaHideout::
 	lockall
@@ -397,8 +557,7 @@ JaggedPass_Text_ShellyThanksForComing:
 	.string "you are used to working as a team.\p"
 	.string "However, I'd appreciate it if you would\n"
 	.string "let me accompany {PLAYER} through the\l"
-	.string "hideout, and you wait at the entrance.\p"
-	.string "Anyway, I'll see you inside.$"
+	.string "hideout, and you wait at the entrance.$"
 
 JaggedPass_Text_EricIntro:
 	.string "MT. CHIMNEY's JAGGED PASS…\p"

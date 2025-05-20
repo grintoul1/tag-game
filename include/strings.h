@@ -856,6 +856,7 @@ extern const u8 gText_RecordCorner[];
 extern const u8 gText_BerryCrush3[];
 extern const u8 gText_Blank[];
 extern const u8 gText_BattleRules[];
+extern const u8 gText_Team[];
 extern const u8 gText_JudgeMind[];
 extern const u8 gText_JudgeSkill[];
 extern const u8 gText_JudgeBody[];
