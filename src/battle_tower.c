@@ -2133,7 +2133,7 @@ void DoSpecialTrainerBattle(void)
         for (i = 3; i < 6; i++)
         {
             CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-            gBattleTypeFlags = BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
+            gBattleTypeFlags = BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
             gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY);
             FillPartnerParty(gPartnerTrainerId);
         }
