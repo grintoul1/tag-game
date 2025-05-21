@@ -2120,20 +2120,21 @@ void DoSpecialTrainerBattle(void)
         (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_3);
     }
 
-    gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER;
+    gBattleTypeFlags = BATTLE_TYPE_TRAINER;
     FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0, 6);
     if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
     {
         for (i = 0; i < 6; i++)
             CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER;
     }
     if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
     {
         for (i = 3; i < 6; i++)
         {
             CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-            gBattleTypeFlags = BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
+            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
+            (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
             gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY);
             FillPartnerParty(gPartnerTrainerId);
         }
@@ -2142,7 +2143,7 @@ void DoSpecialTrainerBattle(void)
     {
         for (i = 0; i < 6; i++)
             CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER;
     }
     if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
     {

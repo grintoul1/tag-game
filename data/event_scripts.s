@@ -1096,11 +1096,34 @@ Common_EventScript_EmmieBattle1::
 	end
 
 Common_EventScript_EmmieBattle2::
-	changefollowerbattler PARTNER_SHELLY
-	setvar VAR_0x8004, SPECIAL_BATTLE_EMMIE
-	setvar VAR_0x8005, TRAINER_EMMIE_2
-	special DoSpecialTrainerBattle
+	goto Common_EventScript_EmmieBattle2ChoosePartyForMultiBattle
+	end
+
+
+Common_EventScript_EmmieBattle2ChoosePartyForMultiBattle::
+	special SavePlayerParty
+	fadescreen FADE_TO_BLACK
+	special ChooseHalfPartyForBattle
 	waitstate
+	goto_if_ne VAR_RESULT, 0, Common_EventScript_EmmieBattle2DoMultiBattle
+	special LoadPlayerParty
+	goto Common_EventScript_EmmieBattle2ChoosePartyForMultiBattle
+	end
+
+Common_EventScript_EmmieBattle2DoMultiBattle::
+	playbgm MUS_PETALBURG_WOODS, TRUE
+	multi_2_vs_1 TRAINER_EMMIE_2, Common_Text_EmmieBattleDefeat2, PARTNER_SHELLY
+	switch VAR_RESULT
+	case 1, Common_EventScript_EmmieBattleVictory2
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+Common_Text_EmmieBattleDefeat2:
+	.string "Impressive. I can't deny how strong\n"
+	.string "you have become.$"
+
+Common_EventScript_EmmieBattleVictory2::
 	clearflag FLAG_EMMIE_BATTLE_2
 	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
 	setvar VAR_EMMIE_BATTLE_STATE, 0

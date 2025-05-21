@@ -929,6 +929,46 @@ Music: Pkmn Trainer 2
 Battle Type: Doubles
 AI: Check Bad Move
 
+Thundurus
+Level: 30
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Taunt
+- Slash
+- Sand Attack
+- Poison Sting
+
+Tornadus
+Level: 30
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Tailwind
+- Slash
+- Sand Attack
+- Poison Sting
+
+Landorus
+Level: 30
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dig
+- Slash
+- Sand Attack
+- Poison Sting
+
+Sandslash
+Level: 30
+IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
+- Dig
+- Slash
+- Sand Attack
+- Poison Sting
+
+Sandslash
+Level: 30
+IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
+- Dig
+- Slash
+- Sand Attack
+- Poison Sting
+
 Sandslash
 Level: 30
 IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe

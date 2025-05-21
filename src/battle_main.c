@@ -1887,7 +1887,7 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
 u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer *trainer, bool32 firstTrainer, u32 battleTypeFlags)
 {
     u32 personalityValue;
-    s32 i;
+    s32 i, j;
     u8 monsCount;
     if (battleTypeFlags & BATTLE_TYPE_TRAINER && !(battleTypeFlags & (BATTLE_TYPE_FRONTIER
                                                                         | BATTLE_TYPE_EREADER_TRAINER
@@ -2017,6 +2017,70 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 ball = gTrainerClasses[trainer->trainerClass].ball ?: ITEM_POKE_BALL;
                 SetMonData(&party[i], MON_DATA_POKEBALL, &ball);
             }
+        }
+    if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
+        {
+            for (i = 3; i < 6; i++)
+            {
+                CopyMon(&gEnemyParty[i], &gPlayerParty[i-3], sizeof(*&gPlayerParty[i-3]));
+                gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
+                (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
+                gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY);
+                FillPartnerParty(gPartnerTrainerId);
+            }
+        }
+        {
+            j = SPECIES_TORNADUS;
+                SetMonData(&gEnemyParty[0], MON_DATA_SPECIES, &j);
+            j = SPECIES_THUNDURUS;
+                SetMonData(&gEnemyParty[1], MON_DATA_SPECIES, &j);
+            j = SPECIES_LANDORUS;
+                SetMonData(&gEnemyParty[2], MON_DATA_SPECIES, &j);
+            j = 0;
+                SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &j);
+            j = 0;
+                SetMonData(&gEnemyParty[1], MON_DATA_ABILITY_NUM, &j);
+            j = 0;
+                SetMonData(&gEnemyParty[2], MON_DATA_ABILITY_NUM, &j);
+            j = NATURE_SERIOUS;
+                SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_TIMID;
+                SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_BRAVE;
+                SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
+            j = MOVE_TAILWIND;
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &j);
+            j = MOVE_TAUNT;
+                SetMonData(&gEnemyParty[1], MON_DATA_MOVE1, &j);
+            j = MOVE_U_TURN;
+                SetMonData(&gEnemyParty[2], MON_DATA_MOVE1, &j);
+
+            for (i = 0; i < 6; i++)
+            {
+                j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+            }
+            j = NATURE_SASSY;
+            SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_BASHFUL;
+            SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_QUIET;
+            SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
+
+            j = ITEM_LAGGING_TAIL;
+            SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_SITRUS_BERRY;
+            SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_STICKY_BARB;
+            SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
         }
     }
 
