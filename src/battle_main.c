@@ -2028,8 +2028,6 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY);
                 FillPartnerParty(gPartnerTrainerId);
             }
-        }
-        {
             j = SPECIES_TORNADUS;
                 SetMonData(&gEnemyParty[0], MON_DATA_SPECIES, &j);
             j = SPECIES_THUNDURUS;
