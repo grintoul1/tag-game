@@ -682,6 +682,10 @@ Common_EventScript_UpdateBrineyLocation::
 	goto_if_unset FLAG_HIDE_ROUTE_109_MR_BRINEY, EventScript_SetBrineyLocation_Route109
 	return
 
+Common_EventScript_Shelly::
+	faceplayer
+	end
+
 Common_EventScript_Emmie::
 	faceplayer
 	end
@@ -810,8 +814,10 @@ Common_EventScript_EmmieBattleTeamCheck1::
 
 Common_EventScript_EmmieBattleTeamCheck2::
 	specialvar VAR_EMMIE_PARTY_SIZE, CalculatePlayerPartyCount
-	vgoto_if_ne VAR_EMMIE_PARTY_SIZE, 4, Common_EventScript_EmmieNotEnoughMons
-	goto Common_EventScript_EmmieBattle2
+	vgoto_if_eq VAR_EMMIE_PARTY_SIZE, 4, Common_EventScript_EmmieBattle2
+	vgoto_if_eq VAR_EMMIE_PARTY_SIZE, 5, Common_EventScript_EmmieBattle2
+	vgoto_if_eq VAR_EMMIE_PARTY_SIZE, 6, Common_EventScript_EmmieBattle2
+	goto Common_EventScript_EmmieNotEnoughMons
 	releaseall
 	end
 
@@ -1001,7 +1007,7 @@ Common_Text_EmmieBattleIntro2:
 	.string "The other 3 will match those you choose\n"
 	.string "to take in alongside Shelly.\p"
 	.string "Prepare your party and return here\n"
-	.string "when you are ready, or if you want\l"
+	.string "when you are ready or if you want\l"
 	.string "more information on the battle.$"
 
 Common_Text_EmmieBattleIntro3:
@@ -1089,7 +1095,7 @@ Common_EventScript_EmmieBattle1::
 	waitstate
 	clearflag FLAG_EMMIE_BATTLE_1
 	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
-	setvar VAR_EMMIE_BATTLE_STATE, 0
+	setvar VAR_EMMIE_BATTLE_STATE, 2
 	changefollowerbattler PARTNER_EMMIE
 	msgbox Common_Text_EmmieBattleVictory1, MSGBOX_DEFAULT
 	closemessage
@@ -1126,7 +1132,8 @@ Common_Text_EmmieBattleDefeat2:
 Common_EventScript_EmmieBattleVictory2::
 	clearflag FLAG_EMMIE_BATTLE_2
 	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
-	setvar VAR_EMMIE_BATTLE_STATE, 0
+	setflag FLAG_EMMIE_BATTLE_2_DEFEATED
+	setvar VAR_EMMIE_BATTLE_STATE, 4
 	changefollowerbattler PARTNER_EMMIE
 	msgbox Common_Text_EmmieBattleVictory2, MSGBOX_DEFAULT
 	closemessage

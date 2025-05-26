@@ -1,6 +1,7 @@
 raw `
 .set LOCALID_GRUNT1, 1
 .set LOCALID_GRUNT2, 3
+.set LOCALID_EMMIE, 8
 .set LOCALID_SHELLY, 7
 
 MagmaHideout_1F_MapScripts::
@@ -15,34 +16,147 @@ MagmaHideout_1F_OnTransition:
 MagmaHideout_1F_OnWarp:
 	end
 
-MagmaHideout_1F_EventScript_GetShellyPosition::
-	getplayerxy VAR_TEMP_2, VAR_TEMP_3
-	goto_if_eq VAR_TEMP_2, 10, MagmaHideout_1F_EventScript_SetShellyPositionA
-	goto_if_eq VAR_TEMP_2, 25, MagmaHideout_1F_EventScript_SetShellyPositionB
-	goto_if_eq VAR_TEMP_2, 31, MagmaHideout_1F_EventScript_SetShellyPositionC
-	end
-
-MagmaHideout_1F_EventScript_SetShellyPositionA::
+MagmaHideout_1F_EventScript_FirstEntrance::
 	setobjectxyperm LOCALID_SHELLY, 10, 34
+	applymovement LOCALID_SHELLY, Common_Movement_FaceUp
 	waitmovement 0
-	end
-
-MagmaHideout_1F_EventScript_SetShellyPositionB::
-	setobjectxyperm LOCALID_SHELLY, 25, 34
-	waitmovement 0
-	end
-
-MagmaHideout_1F_EventScript_SetShellyPositionC::
-	setobjectxyperm LOCALID_SHELLY, 31, 3
-	waitmovement 0
-	end
-
-MagmaHideout_1F_EventScript_AddShelly::
-	lockall
 	addobject LOCALID_SHELLY
-	delay 15
-	releaseall
+	applymovement OBJ_EVENT_ID_PLAYER, MagmaHideout_1F_Movement_PlayerEnterHideout
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MagmaHideout_1F_Movement_EmmieEnterHideout
+	applymovement LOCALID_SHELLY, MagmaHideout_1F_Movement_ShellyEnterHideout
+	waitmovement 0
+	msgbox MagmaHideout_1F_Text_ShellyWelcomeToHideout, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
+	msgbox MagmaHideout_1F_Text_EmmieBeRightHere, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
+	setobjectxyperm LOCALID_SHELLY, 11, 31
+	addobject LOCALID_EMMIE
+	clearflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
+	destroyfollowernpc
+	setfollowernpc 7, FNPC_WHITE_OUT, Common_EventScript_Shelly, PARTNER_SHELLY
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
+	setflag FLAG_HIDE_JAGGED_PASS_SHELLY
+	addvar VAR_FOLLOWER_MAGMA_HIDEOUT_SHELLY, 1
 	end
+
+MagmaHideout_1F_EventScript_LaterEntrance::
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	goto_if_eq VAR_TEMP_4, 31, MagmaHideout_1F_EventScript_LeavingHideout
+	goto_if_eq VAR_TEMP_4, 33, MagmaHideout_1F_EventScript_EnteringHideout
+	end
+
+MagmaHideout_1F_EventScript_LeavingHideout::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterDown
+ 	waitmovement 0
+	msgbox MagmaHideout_1F_Text_ShellyDontBeLong, MSGBOX_DEFAULT
+	closemessage 
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MagmaHideout_1F_Movement_ShellyWaiting
+	waitmovement 0
+	addobject LOCALID_SHELLY
+	destroyfollowernpc
+	applymovement OBJ_EVENT_ID_PLAYER, MagmaHideout_1F_Movement_PlayerLeaving
+	applymovement LOCALID_EMMIE, MagmaHideout_1F_Movement_EmmieLeaving
+	waitmovement 0
+	setfollowernpc 8, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
+	clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
+	end
+
+MagmaHideout_1F_EventScript_EnteringHideout::
+	applymovement OBJ_EVENT_ID_PLAYER, MagmaHideout_1F_Movement_PlayerEnterHideout
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MagmaHideout_1F_Movement_EmmieEnterHideout
+	applymovement LOCALID_SHELLY, MagmaHideout_1F_Movement_ShellyRejoin
+	waitmovement 0
+	applymovement LOCALID_SHELLY, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox MagmaHideout_1F_Text_ShellyThanksForComingBack, MSGBOX_DEFAULT
+	closemessage
+	addobject LOCALID_EMMIE
+	destroyfollowernpc
+	setfollowernpc 7, FNPC_WHITE_OUT, Common_EventScript_Shelly, PARTNER_SHELLY
+	clearflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
+	end
+
+MagmaHideout_1F_Movement_ShellyJoinPlayer:
+	walk_left
+	face_up
+	step_end
+	
+MagmaHideout_1F_Text_ShellyThanksForComingBack:
+	.string "Shelly: Thanks for coming back. Let's\n"
+	.string "press on.$"
+
+MagmaHideout_1F_Movement_ShellyRejoin:
+	delay_16
+	delay_16
+	delay_16
+	walk_left
+	face_up
+	step_end
+
+MagmaHideout_1F_Movement_PlayerLeaving:
+	delay_16
+	walk_down
+	step_end
+
+MagmaHideout_1F_Movement_EmmieLeaving:
+	walk_right
+	walk_down
+	step_end
+
+MagmaHideout_1F_Movement_ShellyWaiting:
+	walk_right
+	face_left
+	step_end 
+
+MagmaHideout_1F_Text_ShellyDontBeLong:
+	.string "Shelly: You need to leave?\p"
+	.string "Okay, just don't be long, we may not\n"
+	.string "have much time.$"
+
+MagmaHideout_1F_EventScript_Emmie::
+	faceplayer
+	msgbox MagmaHideout_1F_Text_EmmieBeRightHere, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_EMMIE, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+
+MagmaHideout_1F_Text_EmmieBeRightHere:
+.string "{PLAYER}, I'll be waiting here for you,\n"
+.string "and we can leave any time you want.$"
+
+MagmaHideout_1F_Text_ShellyWelcomeToHideout:
+	.string "Shelly: Welcome to the Magma Hideout.\p"
+	.string "I don't know what we may face up ahead,\n"
+	.string "but if we stick together we will be okay.$"
+
+MagmaHideout_1F_Movement_PlayerEnterHideout:
+	walk_up
+	walk_up
+	face_down
+	step_end
+
+MagmaHideout_1F_Movement_EmmieEnterHideout:
+	walk_up
+	walk_up
+	walk_left
+	face_right
+	step_end
+
+MagmaHideout_1F_Movement_ShellyEnterHideout:
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
 
 MagmaHideout_1F_EventScript_Grunt1Grunt2::
 lockall

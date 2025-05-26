@@ -338,7 +338,7 @@
       "y": 19,
       "elevation": 0,
       "var": "VAR_EMMIE_BATTLE_STATE",
-      "var_value": "1",
+      "var_value": "3",
       "script": "Common_EventScript_EmmieBattle"
     }
   ],

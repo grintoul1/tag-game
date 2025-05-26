@@ -6,8 +6,7 @@ raw `
 .set LOCALID_TABITHA, 5
 .set LOCALID_MAXIE, 6
 .set LOCALID_GROUDON_SLEEPING, 7
-.set LOCALID_SHELLY, 9
-.set LOCALID_EMMIE, 10
+.set LOCALID_EMMIE, 9
 
 MagmaHideout_4F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MagmaHideout_4F_OnTransition
@@ -250,7 +249,7 @@ MagmaHideout_4F_Text_ShellyTabithaMove:
 	.string "Do yourself a favour and move!$"
 
 MagmaHideout_4F_Text_CourtneyNotAlone:
-	.string "Courtney: Oh, but he isn't alone!$"
+	.string "????: Oh, but he isn't alone!$"
 
 MagmaHideout_4F_Text_ShellyCourtney:
 	.string "Shelly: Courtney!$"
@@ -272,8 +271,8 @@ MagmaHideout_4F_Text_ShellyCourtneyMove:
 	.string "Shelly: Courtney, move out of my way.$"
 
 MagmaHideout_4F_Text_CourtneyYoureGoingNowhere:
-	.string "Courtney: I don't think so. You're\n"
-	.string "not going anywhere!$"
+	.string "Courtney: I don't think so. You're not\n"
+	.string "going anywhere!$"
 
 MagmaHideout_4F_Text_TabithaLooksLikeYoureCaught:
 	.string "Tabitha: It looks like you're caught\n"
@@ -295,8 +294,8 @@ MagmaHideout_4F_Text_ShellyMustLeave:
 	.string "I need to tell Archie what has happened\n"
 	.string "and I strongly suggest you leave too.\p"
 	.string "You may have taken on Maxie before, but\n"
-	.string "now that he wields the power of Groudon,\l"
-	.string "he's unstoppable.\p"
+	.string "now he wields the power of Groudon,\l"
+	.string "meaning he's unstoppable.\p"
 	.string "Our interests aligned today, but you\n"
 	.string "must understand that Team Aqua has no\l"
 	.string "choice but to retaliate.\p"
@@ -318,7 +317,6 @@ MagmaHideout_4F_Text_EmmieLetsGo:
 MagmaHideout_4F_EventScript_CourtneyTabitha::
 	lockall
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
-	addobject LOCALID_SHELLY
 	playse SE_NOT_EFFECTIVE
 	applymovement OBJ_EVENT_ID_PLAYER, MagmaHideout_4F_Movement_PlayerKnockedBack
 	waitmovement 0
@@ -326,27 +324,27 @@ MagmaHideout_4F_EventScript_CourtneyTabitha::
 	closemessage
 	playse SE_PIN
 	applymovement LOCALID_TABITHA, Common_Movement_WalkSlowDown
-	applymovement LOCALID_SHELLY, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_SHELLY, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_ShellyThatWasLow, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_SHELLY, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_ShellyAreYouOkay, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_SHELLY, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_ShellyTabithaMove, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	applymovement LOCALID_SHELLY, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	setobjectxyperm LOCALID_COURTNEY, 22, 2
 	playse SE_PIN
-	applymovement LOCALID_SHELLY, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_QuestionMark
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_CourtneyNotAlone, MSGBOX_DEFAULT
 	closemessage
@@ -354,7 +352,7 @@ MagmaHideout_4F_EventScript_CourtneyTabitha::
 	applymovement LOCALID_COURTNEY, MagmaHideout_4F_Movement_CourtneyApproachShelly
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_SHELLY, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_ShellyCourtney, MSGBOX_DEFAULT
 	closemessage
@@ -366,7 +364,7 @@ MagmaHideout_4F_EventScript_CourtneyTabitha::
 	setobjectxyperm LOCALID_COURTNEY, 20, 6
 	applymovement LOCALID_COURTNEY, Common_Movement_WalkInPlaceFasterDown
 	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceFasterDown
-	applymovement LOCALID_SHELLY, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterDown
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	delay 30
@@ -411,21 +409,21 @@ MagmaHideout_4F_EventScript_CourtneyTabitha::
 	delay 30
 	applymovement LOCALID_COURTNEY, Common_Movement_WalkInPlaceFasterLeft
 	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceFasterRight
-	applymovement LOCALID_SHELLY, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterLeft
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_TabithaYoureTooLate, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_SHELLY, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_ShellyNeedToTellArchie, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_SHELLY, Common_Movement_WalkRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkRight
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_ShellyCourtneyMove, MSGBOX_DEFAULT
 	closemessage
 	playse SE_NOT_EFFECTIVE
-	applymovement LOCALID_SHELLY, MagmaHideout_4F_Movement_ShellyKnockedBack
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MagmaHideout_4F_Movement_ShellyKnockedBack
 	waitmovement 0
 	applymovement LOCALID_TABITHA, Common_Movement_WalkSlowDown
 	applymovement LOCALID_COURTNEY, Common_Movement_WalkSlowLeft
@@ -477,7 +475,7 @@ MagmaHideout_4F_EventScript_CourtneyTabithaVictory::
 	applymovement LOCALID_COURTNEY, MagmaHideout_4F_Movement_CourtneyKnockedBack
 	waitmovement 0
 	delay 8
-	applymovement LOCALID_SHELLY, Common_Movement_WalkSlowRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkSlowRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkSlowUp
 	waitmovement 0
 	applymovement LOCALID_COURTNEY, Common_Movement_WalkInPlaceFasterLeft
@@ -488,21 +486,23 @@ MagmaHideout_4F_EventScript_CourtneyTabithaVictory::
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_TabithaPostBattle, MSGBOX_AUTOCLOSE
 	closemessage
-	applymovement LOCALID_SHELLY, MagmaHideout_4F_Movement_ShellyApproachPlayer
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MagmaHideout_4F_Movement_ShellyApproachPlayer
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_ShellyMustLeave, MSGBOX_AUTOCLOSE
 	closemessage
-	applymovement LOCALID_SHELLY, MagmaHideout_4F_Movement_ShellyExit
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MagmaHideout_4F_Movement_ShellyExit
 	applymovement LOCALID_COURTNEY, MagmaHideout_4F_Movement_CourtneyMoveForShelly
 	waitmovement 0
 	delay 100
 	fadescreen FADE_TO_BLACK
 	setobjectxyperm LOCALID_TABITHA, 17, 5
 	setobjectxyperm LOCALID_COURTNEY, 20, 5
-	removeobject LOCALID_SHELLY
+	destroyfollowernpc
+	setvar VAR_FOLLOWER_MAGMA_HIDEOUT_SHELLY, 2
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_COURTNEY
-	clearflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
+	clearflag FLAG_HIDE_MAGMA_HIDEOUT_4F_EMMIE
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
 	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
 	addobject LOCALID_EMMIE
 	fadescreen FADE_FROM_BLACK
@@ -511,6 +511,7 @@ MagmaHideout_4F_EventScript_CourtneyTabithaVictory::
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_EmmieLetsGo, MSGBOX_DEFAULT
 	closemessage
+	setfollowernpc 9, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
 	addvar VAR_MAGMAHIDEOUT_STATE, 1
 	releaseall
 	end

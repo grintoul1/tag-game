@@ -170,6 +170,8 @@ JaggedPass_EventScript_ShellyTrigger::
 	closemessage
 	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
 	call_if_eq VAR_TEMP_3, 15, JaggedPass_EventScript_EmmieApproachShelly1
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
 	msgbox JaggedPass_Text_EmmieNoWayTrustingYou, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
@@ -182,9 +184,10 @@ JaggedPass_EventScript_ShellyTrigger::
 	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, JaggedPass_EventScript_EmmieMaxieDefeated
 	addvar VAR_JAGGED_PASS_STATE, 1
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
 	setflag FLAG_EMMIE_BATTLE_2
 	setflag FLAG_JAGGED_PASS_SHELLY_INTRO_GIVEN
-	addvar VAR_EMMIE_BATTLE_STATE, 1
+	setvar VAR_EMMIE_BATTLE_STATE, 3
 	goto Common_EventScript_EmmieBattle
 	releaseall
 	end
@@ -205,8 +208,8 @@ JaggedPass_Text_EmmieOnlyWayIWillAgreeArchieDefeated:
 	.string "You have grown a lot since we left home,\n"
 	.string "and in fairness you held your own on\l"
 	.string "Mt Pyre, but that was alongside Maxie.\p"
-	.string "Okay, the only way I will agree to this\n"
-	.string "is if the two of you can beat me.\p"
+	.string "… Okay. The only way I will agree to \n"
+	.string "this is if the two of you can beat me.\p"
 	.string "{PLAYER}, in all honesty I went easy on\n"
 	.string "you outside Mr Briney's house.\p"
 	.string "This time, for your own good, I'm not\n"
@@ -218,8 +221,8 @@ JaggedPass_Text_EmmieOnlyWayIWillAgreeMaxieDefeated:
 	.string "You have grown a lot since we left home,\n"
 	.string "and in fairness you held your own on\l"
 	.string "Mt Pyre, but that was alongside Archie.\p"
-	.string "Okay, the only way I will agree to this\n"
-	.string "is if the two of you can beat me.\p"
+	.string "… Okay. The only way I will agree to \n"
+	.string "this is if the two of you can beat me.\p"
 	.string "{PLAYER}, in all honesty I went easy on\n"
 	.string "you outside Mr Briney's house.\p"
 	.string "This time, for your own good, I'm not\n"
@@ -551,8 +554,8 @@ JaggedPass_Text_ShellyThanksForComing:
 	.string "Pokémon Groudon has been found here.\p"
 	.string "After holding your own in the company\n"
 	.string "of Archie and Maxie on Mt. Pyre,\p"
-	.string "I'm confident we find out what's going\n"
-	.string "on in there if we work together.\p"
+	.string "I'm confident we will find out what's\n"
+	.string "going on in there if we work together.\p"
 	.string "Emmie, I understand that the two of\n"
 	.string "you are used to working as a team.\p"
 	.string "However, I'd appreciate it if you would\n"

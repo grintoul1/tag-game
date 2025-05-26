@@ -691,8 +691,8 @@
 #define FLAG_EMMIE_BATTLE_1  0x284 // Determines Emmie battle 1
 #define FLAG_EMMIE_BATTLE_2  0x285 // Determines Emmie battle 2
 #define FLAG_EMMIE_BATTLE_3  0x286 // Determines Emmie battle 3
-#define FLAG_EMMIE_BATTLE_2_DEFEATED  0x287 // Unused Flag
-#define FLAG_UNUSED_0x288  0x288 // Unused Flag
+#define FLAG_EMMIE_BATTLE_2_DEFEATED  0x287 // Determines Emmie battle 2 defeated
+#define FLAG_HIDE_MAGMA_HIDEOUT_4F_EMMIE  0x288 // Hides Magma Hideout 4F Emmie
 #define FLAG_UNUSED_0x289  0x289 // Unused Flag
 #define FLAG_UNUSED_0x28A  0x28A // Unused Flag
 #define FLAG_UNUSED_0x28B  0x28B // Unused Flag
