@@ -3395,7 +3395,7 @@ u8 CopyMonToPC(struct Pokemon *mon)
     {
         for (boxPos = 0; boxPos < IN_BOX_COUNT; boxPos++)
         {
-            struct BoxPokemon* checkingMon = GetBoxedMonPtr(boxNo, boxPos);
+            struct BoxPokemon *checkingMon = GetBoxedMonPtr(boxNo, boxPos);
             if (GetBoxMonData(checkingMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE)
             {
                 MonRestorePP(mon);
@@ -3840,14 +3840,14 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
         holdEffect = 0;
     #endif //FREE_ENIGMA_BERRY
     else
-        holdEffect = ItemId_GetHoldEffect(heldItem);
+        holdEffect = GetItemHoldEffect(heldItem);
 
     // Skip using the item if it won't do anything
-    if (ItemId_GetEffect(item) == NULL && item != ITEM_ENIGMA_BERRY_E_READER)
+    if (GetItemEffect(item) == NULL && item != ITEM_ENIGMA_BERRY_E_READER)
         return TRUE;
 
     // Get item effect
-    itemEffect = ItemId_GetEffect(item);
+    itemEffect = GetItemEffect(item);
 
     // Do item effect
     for (i = 0; i < ITEM_EFFECT_ARG_START; i++)
@@ -3874,7 +3874,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
             if ((itemEffect[i] & ITEM3_LEVEL_UP)
              && GetMonData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL)
             {
-                u8 param = ItemId_GetHoldEffectParam(item);
+                u8 param = GetItemHoldEffectParam(item);
                 dataUnsigned = 0;
 
                 if (param == 0) // Rare Candy
@@ -4303,7 +4303,7 @@ u8 GetItemEffectParamOffset(u32 battler, u16 itemId, u8 effectByte, u8 effectBit
 
     offset = ITEM_EFFECT_ARG_START;
 
-    temp = ItemId_GetEffect(itemId);
+    temp = GetItemEffect(itemId);
 
     if (temp != NULL && !temp && itemId != ITEM_ENIGMA_BERRY_E_READER)
         return 0;
@@ -4439,7 +4439,7 @@ u8 *UseStatIncreaseItem(u16 itemId)
     }
     else
     {
-        itemEffect = ItemId_GetEffect(itemId);
+        itemEffect = GetItemEffect(itemId);
     }
 
     gPotentialItemEffectBattler = gBattlerInMenuId;
@@ -4534,7 +4534,7 @@ bool32 DoesMonMeetAdditionalConditions(struct Pokemon *mon, const struct Evoluti
             partnerHoldEffect = 0;
         #endif //FREE_ENIGMA_BERRY
         else
-            partnerHoldEffect = ItemId_GetHoldEffect(partnerHeldItem);
+            partnerHoldEffect = GetItemHoldEffect(partnerHeldItem);
     }
     else
     {
@@ -4693,7 +4693,6 @@ bool32 DoesMonMeetAdditionalConditions(struct Pokemon *mon, const struct Evoluti
             {
                 currentCondition = TRUE;
             }
-
             break;
         case IF_KNOWS_MOVE_TYPE:
             for (j = 0; j < MAX_MON_MOVES; j++)
@@ -4767,6 +4766,7 @@ bool32 DoesMonMeetAdditionalConditions(struct Pokemon *mon, const struct Evoluti
         case IF_USED_MOVE_X_TIMES:
             if (evolutionTracker >= params[i].arg2)
                 currentCondition = TRUE;
+            break;
         // Gen 9
         case IF_DEFEAT_X_WITH_ITEMS:
             if (evolutionTracker >= params[i].arg3)
@@ -4842,7 +4842,7 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
         holdEffect = 0;
     #endif //FREE_ENIGMA_BERRY
     else
-        holdEffect = ItemId_GetHoldEffect(heldItem);
+        holdEffect = GetItemHoldEffect(heldItem);
 
     // Prevent evolution with Everstone, unless we're just viewing the party menu with an evolution item
     if (holdEffect == HOLD_EFFECT_PREVENT_EVOLVE
@@ -5294,7 +5294,7 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
     }
     else
     {
-        holdEffect = ItemId_GetHoldEffect(heldItem);
+        holdEffect = GetItemHoldEffect(heldItem);
     }
 
     if (species && species != SPECIES_EGG)
@@ -5374,11 +5374,11 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
     }
     else
     {
-        holdEffect = ItemId_GetHoldEffect(heldItem);
+        holdEffect = GetItemHoldEffect(heldItem);
     }
 
-    stat = ItemId_GetSecondaryId(heldItem);
-    bonus = ItemId_GetHoldEffectParam(heldItem);
+    stat = GetItemSecondaryId(heldItem);
+    bonus = GetItemHoldEffectParam(heldItem);
 
     for (i = 0; i < NUM_STATS; i++)
     {
@@ -6445,7 +6445,7 @@ static bool8 ShouldSkipFriendshipChange(void)
 #define ALLOC_FAIL_STRUCT (1 << 1)
 #define GFX_MANAGER_ACTIVE 0xA3 // Arbitrary value
 
-static void InitMonSpritesGfx_Battle(struct MonSpritesGfxManager* gfx)
+static void InitMonSpritesGfx_Battle(struct MonSpritesGfxManager *gfx)
 {
     u16 i, j;
     for (i = 0; i < gfx->numSprites; i++)
@@ -6458,7 +6458,7 @@ static void InitMonSpritesGfx_Battle(struct MonSpritesGfxManager* gfx)
     }
 }
 
-static void InitMonSpritesGfx_FullParty(struct MonSpritesGfxManager* gfx)
+static void InitMonSpritesGfx_FullParty(struct MonSpritesGfxManager *gfx)
 {
     u16 i, j;
     for (i = 0; i < gfx->numSprites; i++)
@@ -7114,9 +7114,9 @@ void UpdateDaysPassedSinceFormChange(u16 days)
     }
 }
 
-u32 CheckDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler)
+u32 CheckDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, enum MonState state)
 {
-    u32 moveType = GetDynamicMoveType(mon, move, battler, NULL);
+    u32 moveType = GetDynamicMoveType(mon, move, battler, state);
     if (moveType != TYPE_NONE)
         return moveType;
     return GetMoveType(move);
