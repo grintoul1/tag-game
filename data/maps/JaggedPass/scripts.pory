@@ -23,7 +23,13 @@ JaggedPass_OnFrame:
 	.2byte 0
 
 JaggedPass_OnWarp:
+	map_script_2 VAR_JAGGED_PASS_STATE, 6, JaggedPass_EventScript_GroudonReleasedAddEmmie
 	.2byte 0
+
+JaggedPass_EventScript_GroudonReleasedAddEmmie::
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 15, 19
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_JAGGED_PASS
+	end
 
 JaggedPass_OnResume:
 	setstepcallback STEP_CB_ASH

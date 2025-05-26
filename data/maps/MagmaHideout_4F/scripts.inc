@@ -501,7 +501,7 @@ MagmaHideout_4F_Text_ShellyTabithaMove:
 # 251 "data/maps/MagmaHideout_4F/scripts.pory"
 MagmaHideout_4F_Text_CourtneyNotAlone:
 # 252 "data/maps/MagmaHideout_4F/scripts.pory"
-	.string "Courtney: Oh, but he isn't alone!$"
+	.string "????: Oh, but he isn't alone!$"
 # 253 "data/maps/MagmaHideout_4F/scripts.pory"
 
 # 254 "data/maps/MagmaHideout_4F/scripts.pory"
@@ -545,9 +545,9 @@ MagmaHideout_4F_Text_ShellyCourtneyMove:
 # 273 "data/maps/MagmaHideout_4F/scripts.pory"
 MagmaHideout_4F_Text_CourtneyYoureGoingNowhere:
 # 274 "data/maps/MagmaHideout_4F/scripts.pory"
-	.string "Courtney: I don't think so. You're\n"
+	.string "Courtney: I don't think so. You're not\n"
 # 275 "data/maps/MagmaHideout_4F/scripts.pory"
-	.string "not going anywhere!$"
+	.string "going anywhere!$"
 # 276 "data/maps/MagmaHideout_4F/scripts.pory"
 
 # 277 "data/maps/MagmaHideout_4F/scripts.pory"
@@ -591,9 +591,9 @@ MagmaHideout_4F_Text_ShellyMustLeave:
 # 296 "data/maps/MagmaHideout_4F/scripts.pory"
 	.string "You may have taken on Maxie before, but\n"
 # 297 "data/maps/MagmaHideout_4F/scripts.pory"
-	.string "now that he wields the power of Groudon,\l"
+	.string "now he wields the power of Groudon,\l"
 # 298 "data/maps/MagmaHideout_4F/scripts.pory"
-	.string "he's unstoppable.\p"
+	.string "meaning he's unstoppable.\p"
 # 299 "data/maps/MagmaHideout_4F/scripts.pory"
 	.string "Our interests aligned today, but you\n"
 # 300 "data/maps/MagmaHideout_4F/scripts.pory"
@@ -1117,13 +1117,13 @@ MagmaHideout_4F_EventScript_MaxieVictory::
 # 559 "data/maps/MagmaHideout_4F/scripts.pory"
 	playse SE_PIN
 # 560 "data/maps/MagmaHideout_4F/scripts.pory"
-	applymovement LOCALID_EMMIE, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_QuestionMark
 # 561 "data/maps/MagmaHideout_4F/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 # 562 "data/maps/MagmaHideout_4F/scripts.pory"
 	waitmovement 0
 # 563 "data/maps/MagmaHideout_4F/scripts.pory"
-	applymovement LOCALID_EMMIE, Common_Movement_WalkInPlaceFasterUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
 # 564 "data/maps/MagmaHideout_4F/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 565 "data/maps/MagmaHideout_4F/scripts.pory"
@@ -1171,7 +1171,7 @@ MagmaHideout_4F_EventScript_MaxieVictory::
 # 586 "data/maps/MagmaHideout_4F/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 587 "data/maps/MagmaHideout_4F/scripts.pory"
-	applymovement LOCALID_EMMIE, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterRight
 # 588 "data/maps/MagmaHideout_4F/scripts.pory"
 	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceFasterLeft
 # 589 "data/maps/MagmaHideout_4F/scripts.pory"

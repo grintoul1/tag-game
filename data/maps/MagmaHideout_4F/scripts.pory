@@ -557,10 +557,10 @@ MagmaHideout_4F_EventScript_MaxieVictory::
 	msgbox MagmaHideout_4F_Text_MaxieGroudonLeave, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
-	applymovement LOCALID_EMMIE, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_QuestionMark
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	waitmovement 0
-	applymovement LOCALID_EMMIE, Common_Movement_WalkInPlaceFasterUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	delay 30
@@ -584,7 +584,7 @@ MagmaHideout_4F_EventScript_MaxieVictory::
 	waitstate
 	delay 30
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	applymovement LOCALID_EMMIE, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	delay 30
