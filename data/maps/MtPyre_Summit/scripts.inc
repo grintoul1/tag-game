@@ -13,6 +13,7 @@ MtPyre_Summit_MapScripts::
 	.byte 0
 
 MtPyre_Summit_OnTransition:
+	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 	call_if_eq VAR_MT_PYRE_STATE, 10, MtPyre_Summit_EventScript_SetArchieMaxiePositions
 	call_if_lt VAR_MT_PYRE_STATE, 9, MtPyre_Summit_EventScript_SetArchieMaxieFightingPositions
 	end
@@ -179,6 +180,7 @@ MtPyre_Summit_EventScript_ArchieDefeated::
 	removeobject LOCALID_GRUNT_4
 	setflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
 	setflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
+	setvar VAR_LEVEL_CAP, 70
 	fadedefaultbgm
 	fadescreen FADE_FROM_BLACK
 	delay 20
@@ -204,6 +206,7 @@ MtPyre_Summit_EventScript_ArchieDefeated::
 	fadedefaultbgm
 	fadescreen FADE_FROM_BLACK
 	setvar VAR_MT_PYRE_STATE, 9
+	setrespawn HEAL_LOCATION_MAUVILLE_CITY @Prevents skipping Winona split by wiping to Lavaridge Town
 	call MtPyre_Summit_EventScript_OldLadyApproachPlayer1
 	msgbox MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis, MSGBOX_DEFAULT
 	giveitem ITEM_MAGMA_EMBLEM
@@ -379,6 +382,7 @@ MtPyre_Summit_EventScript_MaxieDefeated::
 	removeobject LOCALID_GRUNT_4
 	setflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
 	setflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_MAGMA
+	setvar VAR_LEVEL_CAP, 70
 	fadedefaultbgm
 	fadescreen FADE_FROM_BLACK
 	delay 20
@@ -401,10 +405,11 @@ MtPyre_Summit_EventScript_MaxieDefeated::
 	setflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
 	clearflag FLAG_HIDE_ROUTE_111_TEAM_MAGMA
 	setflag FLAG_HIDE_ROUTE_121_TEAM_MAGMA_GRUNTS
-	clearflag FLAG_MT_PYRE_MAXIE_DEFEATED
+	setflag FLAG_MT_PYRE_MAXIE_DEFEATED
 	fadedefaultbgm
 	fadescreen FADE_FROM_BLACK
 	setvar VAR_MT_PYRE_STATE, 9
+	setrespawn HEAL_LOCATION_MAUVILLE_CITY @Prevents skipping Winona split by wiping to Lavaridge Town
 	call MtPyre_Summit_EventScript_OldLadyApproachPlayer2
 	msgbox MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis, MSGBOX_DEFAULT
 	giveitem ITEM_MAGMA_EMBLEM

@@ -154,6 +154,7 @@ waitstate
 
 DewfordTown_Gym_EventScript_BrawlyVictory::
 addvar VAR_DEWFORD_TOWN_STATE, 1
+setvar VAR_LEVEL_CAP, 46
 goto DewfordTown_Gym_EventScript_BrawlyDefeated
 end
 

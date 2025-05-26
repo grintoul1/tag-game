@@ -682,6 +682,10 @@ Common_EventScript_UpdateBrineyLocation::
 	goto_if_unset FLAG_HIDE_ROUTE_109_MR_BRINEY, EventScript_SetBrineyLocation_Route109
 	return
 
+Common_EventScript_Tabitha::
+	faceplayer
+	end
+
 Common_EventScript_Shelly::
 	faceplayer
 	end

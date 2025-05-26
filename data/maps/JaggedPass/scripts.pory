@@ -5,10 +5,9 @@ raw `
 .set LOCALID_AUTUMN, 6
 .set LOCALID_JULIO, 7
 .set LOCALID_SHELLY, 8
-.set LOCALID_EMMIE, 9
-.set LOCALID_MAXIE, 10
-.set LOCALID_TABITHA, 11
-.set LOCALID_COURTNEY, 12
+.set LOCALID_MAXIE, 9
+.set LOCALID_TABITHA, 10
+.set LOCALID_COURTNEY, 11
 
 JaggedPass_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, JaggedPass_OnResume
@@ -29,6 +28,8 @@ JaggedPass_OnWarp:
 JaggedPass_EventScript_GroudonReleasedAddEmmie::
 	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 15, 19
 	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_JAGGED_PASS
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_EAST
 	end
 
 JaggedPass_OnResume:
@@ -69,7 +70,6 @@ JaggedPass_OnLoad:
 
 JaggedPass_EventScript_GroudonReleased::
 	lockall
-	setobjectxyperm LOCALID_EMMIE, 17, 19
 	goto JaggedPass_EventScript_MaxieSpeech
 	releaseall
 	end
@@ -77,8 +77,6 @@ JaggedPass_EventScript_GroudonReleased::
 JaggedPass_EventScript_MaxieSpeech::
 	lockall
 	delay 20
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	applymovement LOCALID_EMMIE, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox JaggedPass_Text_MaxieTabithaGoToLilycove, MSGBOX_DEFAULT

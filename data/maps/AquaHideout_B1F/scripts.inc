@@ -199,9 +199,9 @@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 # 100 "data/maps/AquaHideout_B1F/scripts.pory"
 waitmovement 0
 # 101 "data/maps/AquaHideout_B1F/scripts.pory"
-msgbox AquaHideout_B1F_Text_Grunt2Intro, MSGBOX_AUTOCLOSE
+msgbox AquaHideout_B1F_Text_Grunt2Intro MSGBOX_AUTOCLOSE
 # 102 "data/maps/AquaHideout_B1F/scripts.pory"
-goto AquaHideout_B1F_EventScript_Grunt7Grunt2DoMultiBattle
+goto AquaHideout_B1F_EventScript_Grunt7Grunt2_ChoosePartyForMultiBattle
 # 103 "data/maps/AquaHideout_B1F/scripts.pory"
 releaseall
 # 104 "data/maps/AquaHideout_B1F/scripts.pory"
@@ -209,282 +209,330 @@ end
 # 105 "data/maps/AquaHideout_B1F/scripts.pory"
 
 # 106 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_EventScript_Grunt7Grunt2DoMultiBattle::
+AquaHideout_B1F_EventScript_Grunt7Grunt2_ChoosePartyForMultiBattle::
 # 107 "data/maps/AquaHideout_B1F/scripts.pory"
-playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+special SavePlayerParty
 # 108 "data/maps/AquaHideout_B1F/scripts.pory"
-multi_2p_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_7, AquaHideout_B1F_Text_Grunt7Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_2, AquaHideout_B1F_Text_Grunt2Defeat, PARTNER_TABITHA
+fadescreen FADE_TO_BLACK
 # 109 "data/maps/AquaHideout_B1F/scripts.pory"
-switch VAR_RESULT
+special ChooseHalfPartyForBattle
 # 110 "data/maps/AquaHideout_B1F/scripts.pory"
-case 1, AquaHideout_B1F_EventScript_Grunt7Grunt2Victory
+waitstate
 # 111 "data/maps/AquaHideout_B1F/scripts.pory"
-fadescreen FADE_TO_BLACK
+goto_if_ne VAR_RESULT, 0, AquaHideout_B1F_EventScript_Grunt7Grunt2DoMultiBattle
 # 112 "data/maps/AquaHideout_B1F/scripts.pory"
-special SetCB2WhiteOut
+goto AquaHideout_B1F_EventScript_Grunt7Grunt2_ChoosePartyForMultiBattle
 # 113 "data/maps/AquaHideout_B1F/scripts.pory"
-waitstate
+closemessage
 # 114 "data/maps/AquaHideout_B1F/scripts.pory"
-
-# 115 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_EventScript_Grunt7Grunt2Victory::
-# 116 "data/maps/AquaHideout_B1F/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-# 117 "data/maps/AquaHideout_B1F/scripts.pory"
-waitmovement 0
-# 118 "data/maps/AquaHideout_B1F/scripts.pory"
-msgbox AquaHideout_B1F_Text_Grunt7PostBattle, MSGBOX_AUTOCLOSE
-# 119 "data/maps/AquaHideout_B1F/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-# 120 "data/maps/AquaHideout_B1F/scripts.pory"
-waitmovement 0
-# 121 "data/maps/AquaHideout_B1F/scripts.pory"
-msgbox AquaHideout_B1F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
-# 122 "data/maps/AquaHideout_B1F/scripts.pory"
-addvar VAR_AQUAHIDEOUT_STATE, 1
-# 123 "data/maps/AquaHideout_B1F/scripts.pory"
-end
-# 124 "data/maps/AquaHideout_B1F/scripts.pory"
-
-# 125 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_EventScript_Grunt2::
-# 126 "data/maps/AquaHideout_B1F/scripts.pory"
-	msgbox AquaHideout_B1F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
-# 127 "data/maps/AquaHideout_B1F/scripts.pory"
-	end
-# 128 "data/maps/AquaHideout_B1F/scripts.pory"
-
-# 129 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_EventScript_Grunt2Defeated::
-# 130 "data/maps/AquaHideout_B1F/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
-# 131 "data/maps/AquaHideout_B1F/scripts.pory"
-	waitmovement 0
-# 132 "data/maps/AquaHideout_B1F/scripts.pory"
-	msgbox AquaHideout_B1F_Text_Grunt2PostBattle, MSGBOX_DEFAULT
-# 133 "data/maps/AquaHideout_B1F/scripts.pory"
-	release
-# 134 "data/maps/AquaHideout_B1F/scripts.pory"
-	end
-# 135 "data/maps/AquaHideout_B1F/scripts.pory"
-
-# 136 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_EventScript_Grunt5Grunt3::
-# 137 "data/maps/AquaHideout_B1F/scripts.pory"
-lockall
-# 138 "data/maps/AquaHideout_B1F/scripts.pory"
-setvar VAR_0x8008, LOCALID_GRUNT5
-# 139 "data/maps/AquaHideout_B1F/scripts.pory"
-playse SE_PIN
-# 140 "data/maps/AquaHideout_B1F/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 141 "data/maps/AquaHideout_B1F/scripts.pory"
-waitmovement 0
-# 142 "data/maps/AquaHideout_B1F/scripts.pory"
-playbgm MUS_ENCOUNTER_AQUA, TRUE
-# 143 "data/maps/AquaHideout_B1F/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 144 "data/maps/AquaHideout_B1F/scripts.pory"
-waitmovement 0
-# 145 "data/maps/AquaHideout_B1F/scripts.pory"
-msgbox AquaHideout_B1F_Text_Grunt5Intro MSGBOX_AUTOCLOSE
-# 146 "data/maps/AquaHideout_B1F/scripts.pory"
-setvar VAR_0x8008, LOCALID_GRUNT3
-# 147 "data/maps/AquaHideout_B1F/scripts.pory"
-playse SE_PIN
-# 148 "data/maps/AquaHideout_B1F/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 149 "data/maps/AquaHideout_B1F/scripts.pory"
-waitmovement 0
-# 150 "data/maps/AquaHideout_B1F/scripts.pory"
-playbgm MUS_ENCOUNTER_AQUA, TRUE
-# 151 "data/maps/AquaHideout_B1F/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 152 "data/maps/AquaHideout_B1F/scripts.pory"
-waitmovement 0
-# 153 "data/maps/AquaHideout_B1F/scripts.pory"
-msgbox AquaHideout_B1F_Text_Grunt3Intro, MSGBOX_AUTOCLOSE
-# 154 "data/maps/AquaHideout_B1F/scripts.pory"
-goto AquaHideout_B1F_EventScript_Grunt5Grunt3DoMultiBattle
-# 155 "data/maps/AquaHideout_B1F/scripts.pory"
 releaseall
-# 156 "data/maps/AquaHideout_B1F/scripts.pory"
+# 115 "data/maps/AquaHideout_B1F/scripts.pory"
 end
-# 157 "data/maps/AquaHideout_B1F/scripts.pory"
+# 116 "data/maps/AquaHideout_B1F/scripts.pory"
 
-# 158 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_EventScript_Grunt5Grunt3DoMultiBattle::
-# 159 "data/maps/AquaHideout_B1F/scripts.pory"
+# 117 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_EventScript_Grunt7Grunt2DoMultiBattle::
+# 118 "data/maps/AquaHideout_B1F/scripts.pory"
 playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-# 160 "data/maps/AquaHideout_B1F/scripts.pory"
-multi_2p_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_5, AquaHideout_B1F_Text_Grunt5Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_3, AquaHideout_B1F_Text_Grunt3Defeat, PARTNER_TABITHA
-# 161 "data/maps/AquaHideout_B1F/scripts.pory"
+# 119 "data/maps/AquaHideout_B1F/scripts.pory"
+multi_2_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_7, AquaHideout_B1F_Text_Grunt7Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_2, AquaHideout_B1F_Text_Grunt2Defeat, PARTNER_TABITHA
+# 120 "data/maps/AquaHideout_B1F/scripts.pory"
+special LoadPlayerParty
+# 121 "data/maps/AquaHideout_B1F/scripts.pory"
 switch VAR_RESULT
-# 162 "data/maps/AquaHideout_B1F/scripts.pory"
-case 1, AquaHideout_B1F_EventScript_Grunt5Grunt3Victory
-# 163 "data/maps/AquaHideout_B1F/scripts.pory"
+# 122 "data/maps/AquaHideout_B1F/scripts.pory"
+case 1, AquaHideout_B1F_EventScript_Grunt7Grunt2Victory
+# 123 "data/maps/AquaHideout_B1F/scripts.pory"
 fadescreen FADE_TO_BLACK
-# 164 "data/maps/AquaHideout_B1F/scripts.pory"
+# 124 "data/maps/AquaHideout_B1F/scripts.pory"
 special SetCB2WhiteOut
-# 165 "data/maps/AquaHideout_B1F/scripts.pory"
+# 125 "data/maps/AquaHideout_B1F/scripts.pory"
 waitstate
-# 166 "data/maps/AquaHideout_B1F/scripts.pory"
+# 126 "data/maps/AquaHideout_B1F/scripts.pory"
 
-# 167 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_EventScript_Grunt5Grunt3Victory::
-# 168 "data/maps/AquaHideout_B1F/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 169 "data/maps/AquaHideout_B1F/scripts.pory"
+# 127 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_EventScript_Grunt7Grunt2Victory::
+# 128 "data/maps/AquaHideout_B1F/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+# 129 "data/maps/AquaHideout_B1F/scripts.pory"
 waitmovement 0
-# 170 "data/maps/AquaHideout_B1F/scripts.pory"
-msgbox AquaHideout_B1F_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
-# 171 "data/maps/AquaHideout_B1F/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 172 "data/maps/AquaHideout_B1F/scripts.pory"
+# 130 "data/maps/AquaHideout_B1F/scripts.pory"
+msgbox AquaHideout_B1F_Text_Grunt7PostBattle, MSGBOX_AUTOCLOSE
+# 131 "data/maps/AquaHideout_B1F/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+# 132 "data/maps/AquaHideout_B1F/scripts.pory"
 waitmovement 0
-# 173 "data/maps/AquaHideout_B1F/scripts.pory"
-msgbox AquaHideout_B1F_Text_Grunt3PostBattle, MSGBOX_AUTOCLOSE
-# 174 "data/maps/AquaHideout_B1F/scripts.pory"
+# 133 "data/maps/AquaHideout_B1F/scripts.pory"
+msgbox AquaHideout_B1F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
+# 134 "data/maps/AquaHideout_B1F/scripts.pory"
 addvar VAR_AQUAHIDEOUT_STATE, 1
-# 175 "data/maps/AquaHideout_B1F/scripts.pory"
+# 135 "data/maps/AquaHideout_B1F/scripts.pory"
 end
-# 176 "data/maps/AquaHideout_B1F/scripts.pory"
+# 136 "data/maps/AquaHideout_B1F/scripts.pory"
 
-# 177 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_EventScript_Grunt3::
-# 178 "data/maps/AquaHideout_B1F/scripts.pory"
-	msgbox AquaHideout_B1F_Text_Grunt3PostBattle, MSGBOX_AUTOCLOSE
-# 179 "data/maps/AquaHideout_B1F/scripts.pory"
+# 137 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_EventScript_Grunt2::
+# 138 "data/maps/AquaHideout_B1F/scripts.pory"
+	msgbox AquaHideout_B1F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
+# 139 "data/maps/AquaHideout_B1F/scripts.pory"
 	end
+# 140 "data/maps/AquaHideout_B1F/scripts.pory"
+
+# 141 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_EventScript_Grunt2Defeated::
+# 142 "data/maps/AquaHideout_B1F/scripts.pory"
+	special PlayerFaceTrainerAfterBattle
+# 143 "data/maps/AquaHideout_B1F/scripts.pory"
+	waitmovement 0
+# 144 "data/maps/AquaHideout_B1F/scripts.pory"
+	msgbox AquaHideout_B1F_Text_Grunt2PostBattle, MSGBOX_DEFAULT
+# 145 "data/maps/AquaHideout_B1F/scripts.pory"
+	release
+# 146 "data/maps/AquaHideout_B1F/scripts.pory"
+	end
+# 147 "data/maps/AquaHideout_B1F/scripts.pory"
+
+# 148 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_EventScript_Grunt5Grunt3::
+# 149 "data/maps/AquaHideout_B1F/scripts.pory"
+lockall
+# 150 "data/maps/AquaHideout_B1F/scripts.pory"
+setvar VAR_0x8008, LOCALID_GRUNT5
+# 151 "data/maps/AquaHideout_B1F/scripts.pory"
+playse SE_PIN
+# 152 "data/maps/AquaHideout_B1F/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 153 "data/maps/AquaHideout_B1F/scripts.pory"
+waitmovement 0
+# 154 "data/maps/AquaHideout_B1F/scripts.pory"
+playbgm MUS_ENCOUNTER_AQUA, TRUE
+# 155 "data/maps/AquaHideout_B1F/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 156 "data/maps/AquaHideout_B1F/scripts.pory"
+waitmovement 0
+# 157 "data/maps/AquaHideout_B1F/scripts.pory"
+msgbox AquaHideout_B1F_Text_Grunt5Intro MSGBOX_AUTOCLOSE
+# 158 "data/maps/AquaHideout_B1F/scripts.pory"
+setvar VAR_0x8008, LOCALID_GRUNT3
+# 159 "data/maps/AquaHideout_B1F/scripts.pory"
+playse SE_PIN
+# 160 "data/maps/AquaHideout_B1F/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 161 "data/maps/AquaHideout_B1F/scripts.pory"
+waitmovement 0
+# 162 "data/maps/AquaHideout_B1F/scripts.pory"
+playbgm MUS_ENCOUNTER_AQUA, TRUE
+# 163 "data/maps/AquaHideout_B1F/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 164 "data/maps/AquaHideout_B1F/scripts.pory"
+waitmovement 0
+# 165 "data/maps/AquaHideout_B1F/scripts.pory"
+msgbox AquaHideout_B1F_Text_Grunt3Intro MSGBOX_AUTOCLOSE
+# 166 "data/maps/AquaHideout_B1F/scripts.pory"
+goto AquaHideout_B1F_EventScript_Grunt5Grunt3_ChoosePartyForMultiBattle
+# 167 "data/maps/AquaHideout_B1F/scripts.pory"
+releaseall
+# 168 "data/maps/AquaHideout_B1F/scripts.pory"
+end
+# 169 "data/maps/AquaHideout_B1F/scripts.pory"
+
+# 170 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_EventScript_Grunt5Grunt3_ChoosePartyForMultiBattle::
+# 171 "data/maps/AquaHideout_B1F/scripts.pory"
+special SavePlayerParty
+# 172 "data/maps/AquaHideout_B1F/scripts.pory"
+fadescreen FADE_TO_BLACK
+# 173 "data/maps/AquaHideout_B1F/scripts.pory"
+special ChooseHalfPartyForBattle
+# 174 "data/maps/AquaHideout_B1F/scripts.pory"
+waitstate
+# 175 "data/maps/AquaHideout_B1F/scripts.pory"
+goto_if_ne VAR_RESULT, 0, AquaHideout_B1F_EventScript_Grunt5Grunt3DoMultiBattle
+# 176 "data/maps/AquaHideout_B1F/scripts.pory"
+goto AquaHideout_B1F_EventScript_Grunt5Grunt3_ChoosePartyForMultiBattle
+# 177 "data/maps/AquaHideout_B1F/scripts.pory"
+closemessage
+# 178 "data/maps/AquaHideout_B1F/scripts.pory"
+releaseall
+# 179 "data/maps/AquaHideout_B1F/scripts.pory"
+end
 # 180 "data/maps/AquaHideout_B1F/scripts.pory"
 
 # 181 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_EventScript_Grunt3Defeated::
+AquaHideout_B1F_EventScript_Grunt5Grunt3DoMultiBattle::
 # 182 "data/maps/AquaHideout_B1F/scripts.pory"
-	msgbox AquaHideout_B1F_Text_Grunt3PostBattle, MSGBOX_DEFAULT
+playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
 # 183 "data/maps/AquaHideout_B1F/scripts.pory"
-	release
+multi_2_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_5, AquaHideout_B1F_Text_Grunt5Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_3, AquaHideout_B1F_Text_Grunt3Defeat, PARTNER_TABITHA
 # 184 "data/maps/AquaHideout_B1F/scripts.pory"
-	end
+special LoadPlayerParty
 # 185 "data/maps/AquaHideout_B1F/scripts.pory"
-
+switch VAR_RESULT
 # 186 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_EventScript_Grunt5::
+case 1, AquaHideout_B1F_EventScript_Grunt5Grunt3Victory
 # 187 "data/maps/AquaHideout_B1F/scripts.pory"
-	msgbox AquaHideout_B1F_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
+fadescreen FADE_TO_BLACK
 # 188 "data/maps/AquaHideout_B1F/scripts.pory"
-	end
+special SetCB2WhiteOut
 # 189 "data/maps/AquaHideout_B1F/scripts.pory"
-
+waitstate
 # 190 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_EventScript_Grunt7::
+
 # 191 "data/maps/AquaHideout_B1F/scripts.pory"
-	msgbox AquaHideout_B1F_Text_Grunt7PostBattle, MSGBOX_AUTOCLOSE
+AquaHideout_B1F_EventScript_Grunt5Grunt3Victory::
 # 192 "data/maps/AquaHideout_B1F/scripts.pory"
-	end
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 193 "data/maps/AquaHideout_B1F/scripts.pory"
-
+waitmovement 0
 # 194 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_Text_Grunt2Intro:
+msgbox AquaHideout_B1F_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
 # 195 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "If you want to know the secret about\n"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 196 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "our HIDEOUT, you have me to beat!$"
+waitmovement 0
 # 197 "data/maps/AquaHideout_B1F/scripts.pory"
-
+msgbox AquaHideout_B1F_Text_Grunt3PostBattle, MSGBOX_AUTOCLOSE
 # 198 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_Text_Grunt2Defeat:
+addvar VAR_AQUAHIDEOUT_STATE, 1
 # 199 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "I can't win at all…$"
+end
 # 200 "data/maps/AquaHideout_B1F/scripts.pory"
 
 # 201 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_Text_Grunt2PostBattle:
+AquaHideout_B1F_EventScript_Grunt3::
 # 202 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "Our HIDEOUT's secret?\p"
+	msgbox AquaHideout_B1F_Text_Grunt3PostBattle, MSGBOX_AUTOCLOSE
 # 203 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "Well, let's just say…\n"
+	end
 # 204 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "There's a submarine at the far end!\p"
-# 205 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "But, by now…\n"
-# 206 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "Kekekeke…$"
-# 207 "data/maps/AquaHideout_B1F/scripts.pory"
 
+# 205 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_EventScript_Grunt3Defeated::
+# 206 "data/maps/AquaHideout_B1F/scripts.pory"
+	msgbox AquaHideout_B1F_Text_Grunt3PostBattle, MSGBOX_DEFAULT
+# 207 "data/maps/AquaHideout_B1F/scripts.pory"
+	release
 # 208 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_Text_Grunt3Intro:
+	end
 # 209 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "Fuel supply loaded A-OK!\n"
+
 # 210 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "In-cruise snacks loaded A-OK!\p"
+AquaHideout_B1F_EventScript_Grunt5::
 # 211 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "Nothing left to do but KO a pesky\n"
+	msgbox AquaHideout_B1F_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
 # 212 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "meddler!$"
+	end
 # 213 "data/maps/AquaHideout_B1F/scripts.pory"
 
 # 214 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_Text_Grunt3Defeat:
+AquaHideout_B1F_EventScript_Grunt7::
 # 215 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "I took a serious licking!$"
+	msgbox AquaHideout_B1F_Text_Grunt7PostBattle, MSGBOX_AUTOCLOSE
 # 216 "data/maps/AquaHideout_B1F/scripts.pory"
-
+	end
 # 217 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_Text_Grunt3PostBattle:
+
 # 218 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "Humph!\n"
+AquaHideout_B1F_Text_Grunt2Intro:
 # 219 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "This was supposed to happen!\p"
+	.string "If you want to know the secret about\n"
 # 220 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "My mission was to just hold you up!$"
+	.string "our HIDEOUT, you have me to beat!$"
 # 221 "data/maps/AquaHideout_B1F/scripts.pory"
 
 # 222 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_Text_Grunt5Intro:
+AquaHideout_B1F_Text_Grunt2Defeat:
 # 223 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "Yawn… Keeping watch over the\n"
+	.string "I can't win at all…$"
 # 224 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "HIDEOUT bores me. I'll take you on.$"
+
 # 225 "data/maps/AquaHideout_B1F/scripts.pory"
-
+AquaHideout_B1F_Text_Grunt2PostBattle:
 # 226 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_Text_Grunt5Defeat:
+	.string "Our HIDEOUT's secret?\p"
 # 227 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "Yawn…\n"
+	.string "Well, let's just say…\n"
 # 228 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "Oh, I lost…$"
+	.string "There's a submarine at the far end!\p"
 # 229 "data/maps/AquaHideout_B1F/scripts.pory"
-
+	.string "But, by now…\n"
 # 230 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_Text_Grunt5PostBattle:
+	.string "Kekekeke…$"
 # 231 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "If you scurry too much, other TEAM\n"
+
 # 232 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "AQUA members might get you.$"
+AquaHideout_B1F_Text_Grunt3Intro:
 # 233 "data/maps/AquaHideout_B1F/scripts.pory"
-
+	.string "Fuel supply loaded A-OK!\n"
 # 234 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_Text_Grunt7Intro:
+	.string "In-cruise snacks loaded A-OK!\p"
 # 235 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "Hey!\n"
+	.string "Nothing left to do but KO a pesky\n"
 # 236 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "You there!\p"
+	.string "meddler!$"
 # 237 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "Which do you think is cooler?\n"
+
 # 238 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "TEAM AQUA's uniform or TEAM MAGMA's?$"
+AquaHideout_B1F_Text_Grunt3Defeat:
 # 239 "data/maps/AquaHideout_B1F/scripts.pory"
-
+	.string "I took a serious licking!$"
 # 240 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_Text_Grunt7Defeat:
-# 241 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "I lost in a cool way…$"
-# 242 "data/maps/AquaHideout_B1F/scripts.pory"
 
+# 241 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_Text_Grunt3PostBattle:
+# 242 "data/maps/AquaHideout_B1F/scripts.pory"
+	.string "Humph!\n"
 # 243 "data/maps/AquaHideout_B1F/scripts.pory"
-AquaHideout_B1F_Text_Grunt7PostBattle:
+	.string "This was supposed to happen!\p"
 # 244 "data/maps/AquaHideout_B1F/scripts.pory"
-	.string "If you have a cool uniform, you look\n"
+	.string "My mission was to just hold you up!$"
 # 245 "data/maps/AquaHideout_B1F/scripts.pory"
+
+# 246 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_Text_Grunt5Intro:
+# 247 "data/maps/AquaHideout_B1F/scripts.pory"
+	.string "Yawn… Keeping watch over the\n"
+# 248 "data/maps/AquaHideout_B1F/scripts.pory"
+	.string "HIDEOUT bores me. I'll take you on.$"
+# 249 "data/maps/AquaHideout_B1F/scripts.pory"
+
+# 250 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_Text_Grunt5Defeat:
+# 251 "data/maps/AquaHideout_B1F/scripts.pory"
+	.string "Yawn…\n"
+# 252 "data/maps/AquaHideout_B1F/scripts.pory"
+	.string "Oh, I lost…$"
+# 253 "data/maps/AquaHideout_B1F/scripts.pory"
+
+# 254 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_Text_Grunt5PostBattle:
+# 255 "data/maps/AquaHideout_B1F/scripts.pory"
+	.string "If you scurry too much, other TEAM\n"
+# 256 "data/maps/AquaHideout_B1F/scripts.pory"
+	.string "AQUA members might get you.$"
+# 257 "data/maps/AquaHideout_B1F/scripts.pory"
+
+# 258 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_Text_Grunt7Intro:
+# 259 "data/maps/AquaHideout_B1F/scripts.pory"
+	.string "Hey!\n"
+# 260 "data/maps/AquaHideout_B1F/scripts.pory"
+	.string "You there!\p"
+# 261 "data/maps/AquaHideout_B1F/scripts.pory"
+	.string "Which do you think is cooler?\n"
+# 262 "data/maps/AquaHideout_B1F/scripts.pory"
+	.string "TEAM AQUA's uniform or TEAM MAGMA's?$"
+# 263 "data/maps/AquaHideout_B1F/scripts.pory"
+
+# 264 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_Text_Grunt7Defeat:
+# 265 "data/maps/AquaHideout_B1F/scripts.pory"
+	.string "I lost in a cool way…$"
+# 266 "data/maps/AquaHideout_B1F/scripts.pory"
+
+# 267 "data/maps/AquaHideout_B1F/scripts.pory"
+AquaHideout_B1F_Text_Grunt7PostBattle:
+# 268 "data/maps/AquaHideout_B1F/scripts.pory"
+	.string "If you have a cool uniform, you look\n"
+# 269 "data/maps/AquaHideout_B1F/scripts.pory"
 	.string "good even in a loss, don't you think?$"

@@ -29,7 +29,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-      "x": 14,
+      "x": 13,
       "y": 11,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -42,16 +42,29 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
-      "x": 21,
-      "y": 3,
+      "x": 14,
+      "y": 10,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_HIDE_AQUA_HIDEOUT_TABITHA"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GREEN_NORMAL",
+      "x": 12,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AquaHideout_1F_EventScript_Emmie",
+      "flag": "FLAG_HIDE_AQUA_HIDEOUT_EMMIE"
     }
   ],
   "warp_events": [
@@ -74,38 +87,20 @@
     {
       "type": "trigger",
       "x": 13,
-      "y": 12,
+      "y": 11,
       "elevation": 0,
       "var": "VAR_FOLLOWER_AQUA_HIDEOUT_TABITHA",
-      "var_value": "2",
-      "script": "NULL"
-    },
-    {
-      "type": "trigger",
-      "x": 14,
-      "y": 12,
-      "elevation": 0,
-      "var": "VAR_FOLLOWER_AQUA_HIDEOUT_TABITHA",
-      "var_value": "2",
-      "script": "NULL"
+      "var_value": "1",
+      "script": "AquaHideout_1F_EventScript_LaterEntrance"
     },
     {
       "type": "trigger",
       "x": 13,
-      "y": 13,
+      "y": 11,
       "elevation": 0,
       "var": "VAR_FOLLOWER_AQUA_HIDEOUT_TABITHA",
-      "var_value": "1",
-      "script": "NULL"
-    },
-    {
-      "type": "trigger",
-      "x": 14,
-      "y": 13,
-      "elevation": 0,
-      "var": "VAR_FOLLOWER_AQUA_HIDEOUT_TABITHA",
-      "var_value": "1",
-      "script": "NULL"
+      "var_value": "0",
+      "script": "AquaHideout_1F_EventScript_FirstEntrance"
     }
   ],
   "bg_events": [

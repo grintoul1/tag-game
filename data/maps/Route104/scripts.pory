@@ -434,6 +434,7 @@ Route104_EventScript_ArriveInDewford::
 	clearflag FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN
 	call Common_EventScript_StopBrineysBoatMusic
 	setflag FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT
+	setrespawn HEAL_LOCATION_DEWFORD_TOWN
 	hideobjectat LOCALID_BOAT_R104, MAP_ROUTE104
 	copyvar VAR_BRINEY_LOCATION, VAR_0x8008
 	resetobjectsubpriority OBJ_EVENT_ID_NPC_FOLLOWER, MAP_ROUTE104

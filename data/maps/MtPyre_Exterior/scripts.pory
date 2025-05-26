@@ -4,6 +4,7 @@ MtPyre_Exterior_MapScripts::
 	.byte 0
 
 MtPyre_Exterior_OnTransition:
+	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 	call MtPyre_Exterior_EventScript_CheckEnterFromSummit
 	end
 

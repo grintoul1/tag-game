@@ -1,4 +1,7 @@
 raw `
+.set LOCALID_TABITHA, 3
+.set LOCALID_EMMIE, 4
+
 AquaHideout_1F_MapScripts::
 	.byte 0
 
@@ -11,6 +14,152 @@ AquaHideout_1F_EventScript_HideoutEntranceGrunt1::
 	msgbox AquaHideout_1F_Text_OurBossIsSnatchingSomething, MSGBOX_DEFAULT
 	release
 	end
+
+AquaHideout_1F_EventScript_FirstEntrance::
+	setobjectxyperm LOCALID_SHELLY, 10, 34
+	applymovement LOCALID_SHELLY, Common_Movement_FaceUp
+	waitmovement 0
+	addobject LOCALID_SHELLY
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, AquaHideout_1F_Movement_PlayerEnterHideout
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, AquaHideout_1F_Movement_EmmieEnterHideout
+	applymovement LOCALID_TABITHA, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox AquaHideout_1F_Text_EmmieYouAgain, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox AquaHideout_1F_Text_TabithaKnewYouWouldCome, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox AquaHideout_1F_Text_EmmieYoureOneToTalk, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox AquaHideout_1F_Text_TabithaNotHereForALecture, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_TABITHA, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox AquaHideout_1F_Text_TabithaIveWatchedYou, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_QuestionMark
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_TABITHA, Common_Movement_FaceLeft
+	waitmovement 0
+	msgbox AquaHideout_1F_Text_EmmieHeDidWhat, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	waitmovement 0
+	msgbox AquaHideout_1F_Text_TabithaTemporaryTruce, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox AquaHideout_1F_Text_EmmieDontLikeThis, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	waitmovement 0
+	msgbox AquaHideout_1F_Text_TabithaThatSettlesIt, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox AquaHideout_1F_Text_EmmieBeRightHere, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	applymovement LOCALID_TABITHA, AquaHideout_1F_Movement_TabithaJoin
+	waitmovement 0
+	addobject LOCALID_EMMIE
+	clearflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
+	destroyfollowernpc
+	setfollowernpc 3, FNPC_WHITE_OUT, Common_EventScript_Tabitha, PARTNER_TABITHA
+	setflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
+	setflag FLAG_HIDE_AQUA_HIDEOUT_B2F_EMMIE
+	addvar VAR_FOLLOWER_AQUA_HIDEOUT_TABITHA, 1
+	end
+
+AquaHideout_1F_EventScript_LaterEntrance::
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	goto_if_eq VAR_TEMP_4, 10, AquaHideout_1F_EventScript_LeavingHideout
+	goto_if_eq VAR_TEMP_4, 12, AquaHideout_1F_EventScript_EnteringHideout
+	end
+
+AquaHideout_1F_EventScript_LeavingHideout::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterDown
+ 	waitmovement 0
+	msgbox AquaHideout_1F_Text_TabithaDontBeLong, MSGBOX_DEFAULT
+	closemessage 
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, AquaHideout_1F_Movement_TabithaWaiting
+	waitmovement 0
+	addobject LOCALID_TABITHA
+	destroyfollowernpc
+	applymovement OBJ_EVENT_ID_PLAYER, AquaHideout_1F_Movement_PlayerLeaving
+	applymovement LOCALID_EMMIE, AquaHideout_1F_Movement_EmmieLeaving
+	waitmovement 0
+	setfollowernpc 4, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
+	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
+	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
+	end
+
+AquaHideout_1F_EventScript_EnteringHideout::
+	applymovement OBJ_EVENT_ID_PLAYER, AquaHideout_1F_Movement_PlayerEnterHideout
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, AquaHideout_1F_Movement_EmmieEnterHideout
+	applymovement LOCALID_TABITHA, AquaHideout_1F_Movement_TabithaRejoin
+	waitmovement 0
+	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox AquaHideout_1F_Text_TabithaThanksForComingBack, MSGBOX_DEFAULT
+	closemessage
+	addobject LOCALID_EMMIE
+	destroyfollowernpc
+	setfollowernpc 3, FNPC_WHITE_OUT, Common_EventScript_Tabitha, PARTNER_TABITHA
+	clearflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
+	setflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
+	end
+
+AquaHideout_1F_EventScript_Emmie::
+	faceplayer
+	msgbox AquaHideout_1F_Text_EmmieBeRightHere, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_EMMIE, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+
+AquaHideout_1F_Movement_PlayerEnterHideout:
+	walk_up
+	walk_up
+	face_down
+	step_end
+
+AquaHideout_1F_Movement_EmmieEnterHideout:
+	walk_up
+	walk_up
+	walk_left
+	face_right
+	step_end
+
+AquaHideout_1F_Text_TabithaThanksForComingBack:
+	.string "Tabitha: Thanks for coming back. Hurry\n"
+	.string "up, let's get moving.$"
+
+AquaHideout_1F_Movement_TabithaJoin:
+	delay_16
+	walk_left
+	face_up
+	step_end
+
+AquaHideout_1F_Movement_TabithaRejoin:
+	delay_16
+	delay_16
+	delay_16
+	walk_left
+	face_up
+	step_end
 
 AquaHideout_1F_EventScript_MagmaHideoutHint1::
 	msgbox AquaHideout_1F_Text_WhereMightMagmaHideoutBe, MSGBOX_DEFAULT
@@ -49,6 +198,90 @@ AquaHideout_1F_EventScript_Grunt1Defeated::
 	msgbox AquaHideout_1F_Text_Grunt1PostBattle, MSGBOX_DEFAULT
 	release
 	end
+
+AquaHideout_1F_Movement_PlayerLeaving:
+	delay_16
+	walk_down
+	step_end
+
+AquaHideout_1F_Movement_EmmieLeaving:
+	walk_right
+	walk_down
+	step_end
+
+AquaHideout_1F_Movement_TabithaWaiting:
+	walk_right
+	face_left
+	step_end 
+
+AquaHideout_1F_Text_TabithaDontBeLong:
+	.string "Tabitha: You need to leave?\p"
+	.string "Tick, tock… We haven't got all day you\n"
+	.string "know… I'll be waiting here.$"
+
+AquaHideout_1F_Text_EmmieBeRightHere:
+	.string "Emmie: {PLAYER}, I'll be waiting here for\n"
+	.string "you, and we can leave any time you want.$"
+
+AquaHideout_1F_Text_TabithaThatSettlesIt:
+	.string "Tabitha: That settles it then!\p"
+	.string "Emmie, you wait here, and I'll have\n"
+	.string "{PLAYER} back in no time.\p"
+	.string "Hehe… What's the matter, don't you trust\n"
+	.string "me?$"
+
+AquaHideout_1F_Text_EmmieDontLikeThis:
+	.string "Emmie: I don't like this one bit, but\n"
+	.string "I know what you are going to say.\p"
+	.string "You've proven yourself capable and I\n"
+	.string "trust that you will be okay.$"
+
+AquaHideout_1F_Text_TabithaTemporaryTruce:
+	.string "Tabitha: Oh quit fussing. {PLAYER} is fine,\n"
+	.string "barely a singed hair.\p"
+	.string "Anyway, as you know, I'm not against\n"
+	.string "forging alliances when necessary.\p"
+	.string "So how about we call a temporary truce\n"
+	.string "and find out what's going on in here?$"
+
+AquaHideout_1F_Text_EmmieHeDidWhat:
+	.string "Emmie: They did what?\p"
+	.string "Well you certainly kept quiet about that\n"
+	.string "little detail!$"
+
+AquaHideout_1F_Text_TabithaNotHereForALecture:
+	.string "Tabitha: Save it. I'm not interested in\n"
+	.string "the whinges of a child.\p"
+	.string "What I am interested in are your\n"
+	.string "battling skills.$"
+
+AquaHideout_1F_Text_TabithaIveWatchedYou:
+	.string "{PLAYER}, I've watched you handle yourself\n"
+	.string "in battle with Maxie and Archie.\p"
+	.string "Courtney and I even had you backed up\n"
+	.string "against a pit of magma in the heart of\l"
+	.string "a volcano and you didn't give in.$"
+
+AquaHideout_1F_Text_EmmieYoureOneToTalk:
+	.string "Emmie: You're one to talk. Have you felt\n"
+	.string "how hot it is outside?\p"
+	.string "You're both as bad as each other and you\n"
+	.string "leave only destruction wherever you go!$"
+
+AquaHideout_1F_Text_TabithaKnewYouWouldCome:
+	.string "Tabitha: Heh… Surprised are we?\p"
+	.string "I knew if I waited here you would turn\n"
+	.string "up sooner or later.\p"
+	.string "We both heard Shelly talk of retaliation\n"
+	.string "back at our hideout, and Maxie wants me\l"
+	.string "to uncover Team Aqua's plans.\p"
+	.string "We heard about Team Aqua stealing that\n"
+	.string "submarine from Slateport City.\p"
+	.string "After Mt. Pyre it doesn't take a genius\n"
+	.string "to work out their goal.$"
+
+AquaHideout_1F_Text_EmmieYouAgain:
+	.string "Emmie: You again?$"
 
 AquaHideout_1F_Text_OurBossIsSnatchingSomething:
 	.string "What? What? What do you want with \n"

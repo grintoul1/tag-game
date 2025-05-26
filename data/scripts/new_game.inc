@@ -313,6 +313,8 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_JAGGED_PASS_EMMIE
 	clearflag FLAG_EMMIE_BATTLE_2_DEFEATED
 	clearflag FLAG_JAGGED_PASS_SHELLY_INTRO_GIVEN
+	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
+	setflag FLAG_HIDE_AQUA_HIDEOUT_B2F_EMMIE
 	destroyfollowernpc
 	call EventScript_ResetAllBerries
 	end

@@ -68,6 +68,7 @@ special SetCB2WhiteOut
 waitstate
 
 LavaridgeTown_Gym_1F_EventScript_FlanneryVictory::
+setvar VAR_LEVEL_CAP, 65
 goto LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated
 end
 

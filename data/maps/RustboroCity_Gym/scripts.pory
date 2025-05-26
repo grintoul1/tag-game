@@ -30,6 +30,7 @@ waitstate
 
 RustboroCity_Gym_EventScript_RoxanneVictory::
 addvar VAR_RUSTBOROCITY_GYM_STATE, 1
+setvar VAR_LEVEL_CAP, 38
 goto RustboroCity_Gym_EventScript_RoxanneDefeated
 end
 

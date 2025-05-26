@@ -99,826 +99,828 @@ FortreeCity_Gym_EventScript_WinonaVictory::
 # 50 "data/maps/FortreeCity_Gym/scripts.pory"
 addvar VAR_FORTREE_CITY_STATE, 1
 # 51 "data/maps/FortreeCity_Gym/scripts.pory"
-goto FortreeCity_Gym_EventScript_WinonaDefeated
+setvar VAR_LEVEL_CAP, 73
 # 52 "data/maps/FortreeCity_Gym/scripts.pory"
-end
+goto FortreeCity_Gym_EventScript_WinonaDefeated
 # 53 "data/maps/FortreeCity_Gym/scripts.pory"
-
+end
 # 54 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_Winona::
+
 # 55 "data/maps/FortreeCity_Gym/scripts.pory"
-	goto_if_unset FLAG_BADGE06_GET, FortreeCity_Gym_EventScript_Winona2
+FortreeCity_Gym_EventScript_Winona::
 # 56 "data/maps/FortreeCity_Gym/scripts.pory"
-	goto_if_unset FLAG_RECEIVED_TM_AERIAL_ACE, FortreeCity_Gym_EventScript_GiveAerialAce2
+	goto_if_unset FLAG_BADGE06_GET, FortreeCity_Gym_EventScript_Winona2
 # 57 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_WinonaPostBattle, MSGBOX_DEFAULT
+	goto_if_unset FLAG_RECEIVED_TM_AERIAL_ACE, FortreeCity_Gym_EventScript_GiveAerialAce2
 # 58 "data/maps/FortreeCity_Gym/scripts.pory"
-	release
+	msgbox FortreeCity_Gym_Text_WinonaPostBattle, MSGBOX_DEFAULT
 # 59 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
+	release
 # 60 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	end
 # 61 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_WinonaDefeated::
+
 # 62 "data/maps/FortreeCity_Gym/scripts.pory"
-	message FortreeCity_Gym_Text_ReceivedFeatherBadge
+FortreeCity_Gym_EventScript_WinonaDefeated::
 # 63 "data/maps/FortreeCity_Gym/scripts.pory"
-	waitmessage
+	message FortreeCity_Gym_Text_ReceivedFeatherBadge
 # 64 "data/maps/FortreeCity_Gym/scripts.pory"
-	call Common_EventScript_PlayGymBadgeFanfare
+	waitmessage
 # 65 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_ExplainFeatherBadgeTakeThis, MSGBOX_DEFAULT
+	call Common_EventScript_PlayGymBadgeFanfare
 # 66 "data/maps/FortreeCity_Gym/scripts.pory"
-	setflag FLAG_DEFEATED_FORTREE_GYM
+	msgbox FortreeCity_Gym_Text_ExplainFeatherBadgeTakeThis, MSGBOX_DEFAULT
 # 67 "data/maps/FortreeCity_Gym/scripts.pory"
-	setflag FLAG_BADGE06_GET
+	setflag FLAG_DEFEATED_FORTREE_GYM
 # 68 "data/maps/FortreeCity_Gym/scripts.pory"
-	setflag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
+	setflag FLAG_BADGE06_GET
 # 69 "data/maps/FortreeCity_Gym/scripts.pory"
-	setflag FLAG_HIDE_FORTREE_SHELLY
+	setflag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
 # 70 "data/maps/FortreeCity_Gym/scripts.pory"
-	setflag FLAG_HIDE_ROUTE_111_TEAM_MAGMA
+	setflag FLAG_HIDE_FORTREE_SHELLY
 # 71 "data/maps/FortreeCity_Gym/scripts.pory"
-	setvar VAR_0x8008, 6
+	setflag FLAG_HIDE_ROUTE_111_TEAM_MAGMA
 # 72 "data/maps/FortreeCity_Gym/scripts.pory"
-	call Common_EventScript_SetGymTrainers
+	setvar VAR_0x8008, 6
 # 73 "data/maps/FortreeCity_Gym/scripts.pory"
-	call FortreeCity_Gym_EventScript_GiveAerialAce
+	call Common_EventScript_SetGymTrainers
 # 74 "data/maps/FortreeCity_Gym/scripts.pory"
-	closemessage
+	call FortreeCity_Gym_EventScript_GiveAerialAce
 # 75 "data/maps/FortreeCity_Gym/scripts.pory"
-	release
+	closemessage
 # 76 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
+	release
 # 77 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	end
 # 78 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_GiveAerialAce2::
+
 # 79 "data/maps/FortreeCity_Gym/scripts.pory"
-	giveitem ITEM_TM_AERIAL_ACE
+FortreeCity_Gym_EventScript_GiveAerialAce2::
 # 80 "data/maps/FortreeCity_Gym/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-# 81 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_ExplainAerialAce, MSGBOX_DEFAULT
-# 82 "data/maps/FortreeCity_Gym/scripts.pory"
-	setflag FLAG_RECEIVED_TM_AERIAL_ACE
-# 83 "data/maps/FortreeCity_Gym/scripts.pory"
-	release
-# 84 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
-# 85 "data/maps/FortreeCity_Gym/scripts.pory"
-
-# 86 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_GiveAerialAce::
-# 87 "data/maps/FortreeCity_Gym/scripts.pory"
 	giveitem ITEM_TM_AERIAL_ACE
-# 88 "data/maps/FortreeCity_Gym/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-# 89 "data/maps/FortreeCity_Gym/scripts.pory"
+# 81 "data/maps/FortreeCity_Gym/scripts.pory"
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+# 82 "data/maps/FortreeCity_Gym/scripts.pory"
 	msgbox FortreeCity_Gym_Text_ExplainAerialAce, MSGBOX_DEFAULT
-# 90 "data/maps/FortreeCity_Gym/scripts.pory"
+# 83 "data/maps/FortreeCity_Gym/scripts.pory"
 	setflag FLAG_RECEIVED_TM_AERIAL_ACE
+# 84 "data/maps/FortreeCity_Gym/scripts.pory"
+	release
+# 85 "data/maps/FortreeCity_Gym/scripts.pory"
+	end
+# 86 "data/maps/FortreeCity_Gym/scripts.pory"
+
+# 87 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_EventScript_GiveAerialAce::
+# 88 "data/maps/FortreeCity_Gym/scripts.pory"
+	giveitem ITEM_TM_AERIAL_ACE
+# 89 "data/maps/FortreeCity_Gym/scripts.pory"
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+# 90 "data/maps/FortreeCity_Gym/scripts.pory"
+	msgbox FortreeCity_Gym_Text_ExplainAerialAce, MSGBOX_DEFAULT
 # 91 "data/maps/FortreeCity_Gym/scripts.pory"
-	return
+	setflag FLAG_RECEIVED_TM_AERIAL_ACE
 # 92 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	return
 # 93 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_WinonaRematch::
+
 # 94 "data/maps/FortreeCity_Gym/scripts.pory"
-	trainerbattle_rematch_double TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaPreRematch, FortreeCity_Gym_Text_WinonaRematchDefeat, FortreeCity_Gym_Text_WinonaRematchNeedTwoMons
+FortreeCity_Gym_EventScript_WinonaRematch::
 # 95 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_WinonaPostRematch, MSGBOX_AUTOCLOSE
+	trainerbattle_rematch_double TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaPreRematch, FortreeCity_Gym_Text_WinonaRematchDefeat, FortreeCity_Gym_Text_WinonaRematchNeedTwoMons
 # 96 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
+	msgbox FortreeCity_Gym_Text_WinonaPostRematch, MSGBOX_AUTOCLOSE
 # 97 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	end
 # 98 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_JaredAshley::
+
 # 99 "data/maps/FortreeCity_Gym/scripts.pory"
-lockall
+FortreeCity_Gym_EventScript_JaredAshley::
 # 100 "data/maps/FortreeCity_Gym/scripts.pory"
-setvar VAR_0x8008, LOCALID_JARED
+lockall
 # 101 "data/maps/FortreeCity_Gym/scripts.pory"
-playse SE_PIN
+setvar VAR_0x8008, LOCALID_JARED
 # 102 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
+playse SE_PIN
 # 103 "data/maps/FortreeCity_Gym/scripts.pory"
-waitmovement 0
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
 # 104 "data/maps/FortreeCity_Gym/scripts.pory"
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
+waitmovement 0
 # 105 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
 # 106 "data/maps/FortreeCity_Gym/scripts.pory"
-waitmovement 0
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 107 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_JaredIntro MSGBOX_AUTOCLOSE
+waitmovement 0
 # 108 "data/maps/FortreeCity_Gym/scripts.pory"
-setvar VAR_0x8008, LOCALID_ASHLEY
+msgbox FortreeCity_Gym_Text_JaredIntro MSGBOX_AUTOCLOSE
 # 109 "data/maps/FortreeCity_Gym/scripts.pory"
-playse SE_PIN
+setvar VAR_0x8008, LOCALID_ASHLEY
 # 110 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
+playse SE_PIN
 # 111 "data/maps/FortreeCity_Gym/scripts.pory"
-waitmovement 0
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
 # 112 "data/maps/FortreeCity_Gym/scripts.pory"
-playbgm MUS_ENCOUNTER_GIRL, TRUE
+waitmovement 0
 # 113 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+playbgm MUS_ENCOUNTER_GIRL, TRUE
 # 114 "data/maps/FortreeCity_Gym/scripts.pory"
-waitmovement 0
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 115 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_AshleyIntro, MSGBOX_AUTOCLOSE
+waitmovement 0
 # 116 "data/maps/FortreeCity_Gym/scripts.pory"
-goto FortreeCity_Gym_EventScript_JaredAshleyDoMultiBattle
+msgbox FortreeCity_Gym_Text_AshleyIntro, MSGBOX_AUTOCLOSE
 # 117 "data/maps/FortreeCity_Gym/scripts.pory"
-releaseall
+goto FortreeCity_Gym_EventScript_JaredAshleyDoMultiBattle
 # 118 "data/maps/FortreeCity_Gym/scripts.pory"
-end
+releaseall
 # 119 "data/maps/FortreeCity_Gym/scripts.pory"
-
+end
 # 120 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_JaredAshleyDoMultiBattle::
+
 # 121 "data/maps/FortreeCity_Gym/scripts.pory"
-playbgm MUS_GYM, TRUE
+FortreeCity_Gym_EventScript_JaredAshleyDoMultiBattle::
 # 122 "data/maps/FortreeCity_Gym/scripts.pory"
-multi_2p_vs_2 TRAINER_JARED, FortreeCity_Gym_Text_JaredDefeat, TRAINER_ASHLEY, FortreeCity_Gym_Text_AshleyDefeat, PARTNER_EMMIE
+playbgm MUS_GYM, TRUE
 # 123 "data/maps/FortreeCity_Gym/scripts.pory"
-switch VAR_RESULT
+multi_2p_vs_2 TRAINER_JARED, FortreeCity_Gym_Text_JaredDefeat, TRAINER_ASHLEY, FortreeCity_Gym_Text_AshleyDefeat, PARTNER_EMMIE
 # 124 "data/maps/FortreeCity_Gym/scripts.pory"
-case 1, FortreeCity_Gym_EventScript_JaredAshleyVictory
+switch VAR_RESULT
 # 125 "data/maps/FortreeCity_Gym/scripts.pory"
-fadescreen FADE_TO_BLACK
+case 1, FortreeCity_Gym_EventScript_JaredAshleyVictory
 # 126 "data/maps/FortreeCity_Gym/scripts.pory"
-special SetCB2WhiteOut
+fadescreen FADE_TO_BLACK
 # 127 "data/maps/FortreeCity_Gym/scripts.pory"
-waitstate
+special SetCB2WhiteOut
 # 128 "data/maps/FortreeCity_Gym/scripts.pory"
-
+waitstate
 # 129 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_JaredAshleyVictory::
+
 # 130 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+FortreeCity_Gym_EventScript_JaredAshleyVictory::
 # 131 "data/maps/FortreeCity_Gym/scripts.pory"
-waitmovement 0
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 132 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_JaredPostBattle, MSGBOX_AUTOCLOSE
+waitmovement 0
 # 133 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+msgbox FortreeCity_Gym_Text_JaredPostBattle, MSGBOX_AUTOCLOSE
 # 134 "data/maps/FortreeCity_Gym/scripts.pory"
-waitmovement 0
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 135 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_AshleyPostBattle, MSGBOX_AUTOCLOSE
+waitmovement 0
 # 136 "data/maps/FortreeCity_Gym/scripts.pory"
-addvar VAR_FORTREE_CITY_STATE, 1
+msgbox FortreeCity_Gym_Text_AshleyPostBattle, MSGBOX_AUTOCLOSE
 # 137 "data/maps/FortreeCity_Gym/scripts.pory"
-end
+addvar VAR_FORTREE_CITY_STATE, 1
 # 138 "data/maps/FortreeCity_Gym/scripts.pory"
-
+end
 # 139 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_Jared::
+
 # 140 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_JaredPostBattle, MSGBOX_AUTOCLOSE
+FortreeCity_Gym_EventScript_Jared::
 # 141 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
+	msgbox FortreeCity_Gym_Text_JaredPostBattle, MSGBOX_AUTOCLOSE
 # 142 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	end
 # 143 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_EdwardoFlint::
+
 # 144 "data/maps/FortreeCity_Gym/scripts.pory"
-lockall
+FortreeCity_Gym_EventScript_EdwardoFlint::
 # 145 "data/maps/FortreeCity_Gym/scripts.pory"
-setvar VAR_0x8008, LOCALID_EDWARDO
-# 146 "data/maps/FortreeCity_Gym/scripts.pory"
-playse SE_PIN
-# 147 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 148 "data/maps/FortreeCity_Gym/scripts.pory"
-waitmovement 0
-# 149 "data/maps/FortreeCity_Gym/scripts.pory"
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-# 150 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 151 "data/maps/FortreeCity_Gym/scripts.pory"
-waitmovement 0
-# 152 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_EdwardoIntro MSGBOX_AUTOCLOSE
-# 153 "data/maps/FortreeCity_Gym/scripts.pory"
-setvar VAR_0x8008, LOCALID_FLINT
-# 154 "data/maps/FortreeCity_Gym/scripts.pory"
-playse SE_PIN
-# 155 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 156 "data/maps/FortreeCity_Gym/scripts.pory"
-waitmovement 0
-# 157 "data/maps/FortreeCity_Gym/scripts.pory"
-playbgm MUS_ENCOUNTER_MALE, TRUE
-# 158 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-# 159 "data/maps/FortreeCity_Gym/scripts.pory"
-waitmovement 0
-# 160 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_FlintIntro, MSGBOX_AUTOCLOSE
-# 161 "data/maps/FortreeCity_Gym/scripts.pory"
-goto FortreeCity_Gym_EventScript_EdwardoFlintDoMultiBattle
-# 162 "data/maps/FortreeCity_Gym/scripts.pory"
-releaseall
-# 163 "data/maps/FortreeCity_Gym/scripts.pory"
-end
-# 164 "data/maps/FortreeCity_Gym/scripts.pory"
-
-# 165 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_EdwardoFlintDoMultiBattle::
-# 166 "data/maps/FortreeCity_Gym/scripts.pory"
-playbgm MUS_GYM, TRUE
-# 167 "data/maps/FortreeCity_Gym/scripts.pory"
-multi_2p_vs_2 TRAINER_EDWARDO, FortreeCity_Gym_Text_EdwardoDefeat, TRAINER_FLINT, FortreeCity_Gym_Text_FlintDefeat, PARTNER_EMMIE
-# 168 "data/maps/FortreeCity_Gym/scripts.pory"
-switch VAR_RESULT
-# 169 "data/maps/FortreeCity_Gym/scripts.pory"
-case 1, FortreeCity_Gym_EventScript_EdwardoFlintVictory
-# 170 "data/maps/FortreeCity_Gym/scripts.pory"
-fadescreen FADE_TO_BLACK
-# 171 "data/maps/FortreeCity_Gym/scripts.pory"
-special SetCB2WhiteOut
-# 172 "data/maps/FortreeCity_Gym/scripts.pory"
-waitstate
-# 173 "data/maps/FortreeCity_Gym/scripts.pory"
-
-# 174 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_EdwardoFlintVictory::
-# 175 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 176 "data/maps/FortreeCity_Gym/scripts.pory"
-waitmovement 0
-# 177 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_EdwardoPostBattle, MSGBOX_AUTOCLOSE
-# 178 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-# 179 "data/maps/FortreeCity_Gym/scripts.pory"
-waitmovement 0
-# 180 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_FlintPostBattle, MSGBOX_AUTOCLOSE
-# 181 "data/maps/FortreeCity_Gym/scripts.pory"
-addvar VAR_FORTREE_CITY_STATE, 1
-# 182 "data/maps/FortreeCity_Gym/scripts.pory"
-end
-# 183 "data/maps/FortreeCity_Gym/scripts.pory"
-
-# 184 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_Edwardo::
-# 185 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_EdwardoPostBattle, MSGBOX_AUTOCLOSE
-# 186 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
-# 187 "data/maps/FortreeCity_Gym/scripts.pory"
-
-# 188 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_Flint::
-# 189 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_FlintPostBattle, MSGBOX_AUTOCLOSE
-# 190 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
-# 191 "data/maps/FortreeCity_Gym/scripts.pory"
-
-# 192 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_Ashley::
-# 193 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_AshleyPostBattle, MSGBOX_AUTOCLOSE
-# 194 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
-# 195 "data/maps/FortreeCity_Gym/scripts.pory"
-
-# 196 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_DariusHumberto::
-# 197 "data/maps/FortreeCity_Gym/scripts.pory"
 lockall
-# 198 "data/maps/FortreeCity_Gym/scripts.pory"
-setvar VAR_0x8008, LOCALID_DARIUS
-# 199 "data/maps/FortreeCity_Gym/scripts.pory"
+# 146 "data/maps/FortreeCity_Gym/scripts.pory"
+setvar VAR_0x8008, LOCALID_EDWARDO
+# 147 "data/maps/FortreeCity_Gym/scripts.pory"
 playse SE_PIN
-# 200 "data/maps/FortreeCity_Gym/scripts.pory"
+# 148 "data/maps/FortreeCity_Gym/scripts.pory"
 applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 201 "data/maps/FortreeCity_Gym/scripts.pory"
+# 149 "data/maps/FortreeCity_Gym/scripts.pory"
 waitmovement 0
-# 202 "data/maps/FortreeCity_Gym/scripts.pory"
+# 150 "data/maps/FortreeCity_Gym/scripts.pory"
 playbgm MUS_ENCOUNTER_INTENSE, TRUE
-# 203 "data/maps/FortreeCity_Gym/scripts.pory"
+# 151 "data/maps/FortreeCity_Gym/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 204 "data/maps/FortreeCity_Gym/scripts.pory"
+# 152 "data/maps/FortreeCity_Gym/scripts.pory"
 waitmovement 0
-# 205 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_DariusIntro MSGBOX_AUTOCLOSE
-# 206 "data/maps/FortreeCity_Gym/scripts.pory"
-setvar VAR_0x8008, LOCALID_HUMBERTO
-# 207 "data/maps/FortreeCity_Gym/scripts.pory"
+# 153 "data/maps/FortreeCity_Gym/scripts.pory"
+msgbox FortreeCity_Gym_Text_EdwardoIntro MSGBOX_AUTOCLOSE
+# 154 "data/maps/FortreeCity_Gym/scripts.pory"
+setvar VAR_0x8008, LOCALID_FLINT
+# 155 "data/maps/FortreeCity_Gym/scripts.pory"
 playse SE_PIN
-# 208 "data/maps/FortreeCity_Gym/scripts.pory"
+# 156 "data/maps/FortreeCity_Gym/scripts.pory"
 applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 209 "data/maps/FortreeCity_Gym/scripts.pory"
+# 157 "data/maps/FortreeCity_Gym/scripts.pory"
 waitmovement 0
-# 210 "data/maps/FortreeCity_Gym/scripts.pory"
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-# 211 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 212 "data/maps/FortreeCity_Gym/scripts.pory"
+# 158 "data/maps/FortreeCity_Gym/scripts.pory"
+playbgm MUS_ENCOUNTER_MALE, TRUE
+# 159 "data/maps/FortreeCity_Gym/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+# 160 "data/maps/FortreeCity_Gym/scripts.pory"
 waitmovement 0
-# 213 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_HumbertoIntro, MSGBOX_AUTOCLOSE
-# 214 "data/maps/FortreeCity_Gym/scripts.pory"
-goto FortreeCity_Gym_EventScript_DariusHumbertoDoMultiBattle
-# 215 "data/maps/FortreeCity_Gym/scripts.pory"
+# 161 "data/maps/FortreeCity_Gym/scripts.pory"
+msgbox FortreeCity_Gym_Text_FlintIntro, MSGBOX_AUTOCLOSE
+# 162 "data/maps/FortreeCity_Gym/scripts.pory"
+goto FortreeCity_Gym_EventScript_EdwardoFlintDoMultiBattle
+# 163 "data/maps/FortreeCity_Gym/scripts.pory"
 releaseall
-# 216 "data/maps/FortreeCity_Gym/scripts.pory"
+# 164 "data/maps/FortreeCity_Gym/scripts.pory"
 end
-# 217 "data/maps/FortreeCity_Gym/scripts.pory"
+# 165 "data/maps/FortreeCity_Gym/scripts.pory"
 
-# 218 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_DariusHumbertoDoMultiBattle::
-# 219 "data/maps/FortreeCity_Gym/scripts.pory"
+# 166 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_EventScript_EdwardoFlintDoMultiBattle::
+# 167 "data/maps/FortreeCity_Gym/scripts.pory"
 playbgm MUS_GYM, TRUE
-# 220 "data/maps/FortreeCity_Gym/scripts.pory"
-multi_2p_vs_2 TRAINER_DARIUS, FortreeCity_Gym_Text_DariusDefeat, TRAINER_HUMBERTO, FortreeCity_Gym_Text_HumbertoDefeat, PARTNER_EMMIE
-# 221 "data/maps/FortreeCity_Gym/scripts.pory"
+# 168 "data/maps/FortreeCity_Gym/scripts.pory"
+multi_2p_vs_2 TRAINER_EDWARDO, FortreeCity_Gym_Text_EdwardoDefeat, TRAINER_FLINT, FortreeCity_Gym_Text_FlintDefeat, PARTNER_EMMIE
+# 169 "data/maps/FortreeCity_Gym/scripts.pory"
 switch VAR_RESULT
-# 222 "data/maps/FortreeCity_Gym/scripts.pory"
-case 1, FortreeCity_Gym_EventScript_DariusHumbertoVictory
-# 223 "data/maps/FortreeCity_Gym/scripts.pory"
+# 170 "data/maps/FortreeCity_Gym/scripts.pory"
+case 1, FortreeCity_Gym_EventScript_EdwardoFlintVictory
+# 171 "data/maps/FortreeCity_Gym/scripts.pory"
 fadescreen FADE_TO_BLACK
-# 224 "data/maps/FortreeCity_Gym/scripts.pory"
+# 172 "data/maps/FortreeCity_Gym/scripts.pory"
 special SetCB2WhiteOut
-# 225 "data/maps/FortreeCity_Gym/scripts.pory"
+# 173 "data/maps/FortreeCity_Gym/scripts.pory"
 waitstate
-# 226 "data/maps/FortreeCity_Gym/scripts.pory"
+# 174 "data/maps/FortreeCity_Gym/scripts.pory"
 
-# 227 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_DariusHumbertoVictory::
-# 228 "data/maps/FortreeCity_Gym/scripts.pory"
+# 175 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_EventScript_EdwardoFlintVictory::
+# 176 "data/maps/FortreeCity_Gym/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 229 "data/maps/FortreeCity_Gym/scripts.pory"
+# 177 "data/maps/FortreeCity_Gym/scripts.pory"
 waitmovement 0
-# 230 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_DariusPostBattle, MSGBOX_AUTOCLOSE
-# 231 "data/maps/FortreeCity_Gym/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 232 "data/maps/FortreeCity_Gym/scripts.pory"
+# 178 "data/maps/FortreeCity_Gym/scripts.pory"
+msgbox FortreeCity_Gym_Text_EdwardoPostBattle, MSGBOX_AUTOCLOSE
+# 179 "data/maps/FortreeCity_Gym/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+# 180 "data/maps/FortreeCity_Gym/scripts.pory"
 waitmovement 0
-# 233 "data/maps/FortreeCity_Gym/scripts.pory"
-msgbox FortreeCity_Gym_Text_HumbertoPostBattle, MSGBOX_AUTOCLOSE
-# 234 "data/maps/FortreeCity_Gym/scripts.pory"
+# 181 "data/maps/FortreeCity_Gym/scripts.pory"
+msgbox FortreeCity_Gym_Text_FlintPostBattle, MSGBOX_AUTOCLOSE
+# 182 "data/maps/FortreeCity_Gym/scripts.pory"
 addvar VAR_FORTREE_CITY_STATE, 1
-# 235 "data/maps/FortreeCity_Gym/scripts.pory"
+# 183 "data/maps/FortreeCity_Gym/scripts.pory"
 end
+# 184 "data/maps/FortreeCity_Gym/scripts.pory"
+
+# 185 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_EventScript_Edwardo::
+# 186 "data/maps/FortreeCity_Gym/scripts.pory"
+	msgbox FortreeCity_Gym_Text_EdwardoPostBattle, MSGBOX_AUTOCLOSE
+# 187 "data/maps/FortreeCity_Gym/scripts.pory"
+	end
+# 188 "data/maps/FortreeCity_Gym/scripts.pory"
+
+# 189 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_EventScript_Flint::
+# 190 "data/maps/FortreeCity_Gym/scripts.pory"
+	msgbox FortreeCity_Gym_Text_FlintPostBattle, MSGBOX_AUTOCLOSE
+# 191 "data/maps/FortreeCity_Gym/scripts.pory"
+	end
+# 192 "data/maps/FortreeCity_Gym/scripts.pory"
+
+# 193 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_EventScript_Ashley::
+# 194 "data/maps/FortreeCity_Gym/scripts.pory"
+	msgbox FortreeCity_Gym_Text_AshleyPostBattle, MSGBOX_AUTOCLOSE
+# 195 "data/maps/FortreeCity_Gym/scripts.pory"
+	end
+# 196 "data/maps/FortreeCity_Gym/scripts.pory"
+
+# 197 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_EventScript_DariusHumberto::
+# 198 "data/maps/FortreeCity_Gym/scripts.pory"
+lockall
+# 199 "data/maps/FortreeCity_Gym/scripts.pory"
+setvar VAR_0x8008, LOCALID_DARIUS
+# 200 "data/maps/FortreeCity_Gym/scripts.pory"
+playse SE_PIN
+# 201 "data/maps/FortreeCity_Gym/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 202 "data/maps/FortreeCity_Gym/scripts.pory"
+waitmovement 0
+# 203 "data/maps/FortreeCity_Gym/scripts.pory"
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+# 204 "data/maps/FortreeCity_Gym/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 205 "data/maps/FortreeCity_Gym/scripts.pory"
+waitmovement 0
+# 206 "data/maps/FortreeCity_Gym/scripts.pory"
+msgbox FortreeCity_Gym_Text_DariusIntro MSGBOX_AUTOCLOSE
+# 207 "data/maps/FortreeCity_Gym/scripts.pory"
+setvar VAR_0x8008, LOCALID_HUMBERTO
+# 208 "data/maps/FortreeCity_Gym/scripts.pory"
+playse SE_PIN
+# 209 "data/maps/FortreeCity_Gym/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 210 "data/maps/FortreeCity_Gym/scripts.pory"
+waitmovement 0
+# 211 "data/maps/FortreeCity_Gym/scripts.pory"
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+# 212 "data/maps/FortreeCity_Gym/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 213 "data/maps/FortreeCity_Gym/scripts.pory"
+waitmovement 0
+# 214 "data/maps/FortreeCity_Gym/scripts.pory"
+msgbox FortreeCity_Gym_Text_HumbertoIntro, MSGBOX_AUTOCLOSE
+# 215 "data/maps/FortreeCity_Gym/scripts.pory"
+goto FortreeCity_Gym_EventScript_DariusHumbertoDoMultiBattle
+# 216 "data/maps/FortreeCity_Gym/scripts.pory"
+releaseall
+# 217 "data/maps/FortreeCity_Gym/scripts.pory"
+end
+# 218 "data/maps/FortreeCity_Gym/scripts.pory"
+
+# 219 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_EventScript_DariusHumbertoDoMultiBattle::
+# 220 "data/maps/FortreeCity_Gym/scripts.pory"
+playbgm MUS_GYM, TRUE
+# 221 "data/maps/FortreeCity_Gym/scripts.pory"
+multi_2p_vs_2 TRAINER_DARIUS, FortreeCity_Gym_Text_DariusDefeat, TRAINER_HUMBERTO, FortreeCity_Gym_Text_HumbertoDefeat, PARTNER_EMMIE
+# 222 "data/maps/FortreeCity_Gym/scripts.pory"
+switch VAR_RESULT
+# 223 "data/maps/FortreeCity_Gym/scripts.pory"
+case 1, FortreeCity_Gym_EventScript_DariusHumbertoVictory
+# 224 "data/maps/FortreeCity_Gym/scripts.pory"
+fadescreen FADE_TO_BLACK
+# 225 "data/maps/FortreeCity_Gym/scripts.pory"
+special SetCB2WhiteOut
+# 226 "data/maps/FortreeCity_Gym/scripts.pory"
+waitstate
+# 227 "data/maps/FortreeCity_Gym/scripts.pory"
+
+# 228 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_EventScript_DariusHumbertoVictory::
+# 229 "data/maps/FortreeCity_Gym/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 230 "data/maps/FortreeCity_Gym/scripts.pory"
+waitmovement 0
+# 231 "data/maps/FortreeCity_Gym/scripts.pory"
+msgbox FortreeCity_Gym_Text_DariusPostBattle, MSGBOX_AUTOCLOSE
+# 232 "data/maps/FortreeCity_Gym/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 233 "data/maps/FortreeCity_Gym/scripts.pory"
+waitmovement 0
+# 234 "data/maps/FortreeCity_Gym/scripts.pory"
+msgbox FortreeCity_Gym_Text_HumbertoPostBattle, MSGBOX_AUTOCLOSE
+# 235 "data/maps/FortreeCity_Gym/scripts.pory"
+addvar VAR_FORTREE_CITY_STATE, 1
 # 236 "data/maps/FortreeCity_Gym/scripts.pory"
-
+end
 # 237 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_Humberto::
+
 # 238 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_HumbertoPostBattle, MSGBOX_AUTOCLOSE
+FortreeCity_Gym_EventScript_Humberto::
 # 239 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
+	msgbox FortreeCity_Gym_Text_HumbertoPostBattle, MSGBOX_AUTOCLOSE
 # 240 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	end
 # 241 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_Darius::
+
 # 242 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_DariusPostBattle, MSGBOX_AUTOCLOSE
+FortreeCity_Gym_EventScript_Darius::
 # 243 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
+	msgbox FortreeCity_Gym_Text_DariusPostBattle, MSGBOX_AUTOCLOSE
 # 244 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	end
 # 245 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_GymGuide::
+
 # 246 "data/maps/FortreeCity_Gym/scripts.pory"
-	lock
+FortreeCity_Gym_EventScript_GymGuide::
 # 247 "data/maps/FortreeCity_Gym/scripts.pory"
-	faceplayer
+	lock
 # 248 "data/maps/FortreeCity_Gym/scripts.pory"
-	goto_if_set FLAG_DEFEATED_FORTREE_GYM, FortreeCity_Gym_EventScript_GymGuidePostVictory
+	faceplayer
 # 249 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT
+	goto_if_set FLAG_DEFEATED_FORTREE_GYM, FortreeCity_Gym_EventScript_GymGuidePostVictory
 # 250 "data/maps/FortreeCity_Gym/scripts.pory"
-	release
+	msgbox FortreeCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT
 # 251 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
-# 252 "data/maps/FortreeCity_Gym/scripts.pory"
-
-# 253 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_GymGuidePostVictory::
-# 254 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_GymGuidePostVictory, MSGBOX_DEFAULT
-# 255 "data/maps/FortreeCity_Gym/scripts.pory"
 	release
+# 252 "data/maps/FortreeCity_Gym/scripts.pory"
+	end
+# 253 "data/maps/FortreeCity_Gym/scripts.pory"
+
+# 254 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_EventScript_GymGuidePostVictory::
+# 255 "data/maps/FortreeCity_Gym/scripts.pory"
+	msgbox FortreeCity_Gym_Text_GymGuidePostVictory, MSGBOX_DEFAULT
 # 256 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
+	release
 # 257 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	end
 # 258 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_LeftGymStatue::
+
 # 259 "data/maps/FortreeCity_Gym/scripts.pory"
-	lockall
+FortreeCity_Gym_EventScript_LeftGymStatue::
 # 260 "data/maps/FortreeCity_Gym/scripts.pory"
-	goto_if_set FLAG_BADGE06_GET, FortreeCity_Gym_EventScript_GymStatueCertified
-# 261 "data/maps/FortreeCity_Gym/scripts.pory"
-	goto FortreeCity_Gym_EventScript_GymStatue
-# 262 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
-# 263 "data/maps/FortreeCity_Gym/scripts.pory"
-
-# 264 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_RightGymStatue::
-# 265 "data/maps/FortreeCity_Gym/scripts.pory"
 	lockall
-# 266 "data/maps/FortreeCity_Gym/scripts.pory"
+# 261 "data/maps/FortreeCity_Gym/scripts.pory"
 	goto_if_set FLAG_BADGE06_GET, FortreeCity_Gym_EventScript_GymStatueCertified
-# 267 "data/maps/FortreeCity_Gym/scripts.pory"
+# 262 "data/maps/FortreeCity_Gym/scripts.pory"
 	goto FortreeCity_Gym_EventScript_GymStatue
+# 263 "data/maps/FortreeCity_Gym/scripts.pory"
+	end
+# 264 "data/maps/FortreeCity_Gym/scripts.pory"
+
+# 265 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_EventScript_RightGymStatue::
+# 266 "data/maps/FortreeCity_Gym/scripts.pory"
+	lockall
+# 267 "data/maps/FortreeCity_Gym/scripts.pory"
+	goto_if_set FLAG_BADGE06_GET, FortreeCity_Gym_EventScript_GymStatueCertified
 # 268 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
+	goto FortreeCity_Gym_EventScript_GymStatue
 # 269 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	end
 # 270 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_GymStatueCertified::
+
 # 271 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_GymStatueCertified, MSGBOX_DEFAULT
+FortreeCity_Gym_EventScript_GymStatueCertified::
 # 272 "data/maps/FortreeCity_Gym/scripts.pory"
-	releaseall
+	msgbox FortreeCity_Gym_Text_GymStatueCertified, MSGBOX_DEFAULT
 # 273 "data/maps/FortreeCity_Gym/scripts.pory"
-	end
-# 274 "data/maps/FortreeCity_Gym/scripts.pory"
-
-# 275 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_EventScript_GymStatue::
-# 276 "data/maps/FortreeCity_Gym/scripts.pory"
-	msgbox FortreeCity_Gym_Text_GymStatue, MSGBOX_DEFAULT
-# 277 "data/maps/FortreeCity_Gym/scripts.pory"
 	releaseall
-# 278 "data/maps/FortreeCity_Gym/scripts.pory"
+# 274 "data/maps/FortreeCity_Gym/scripts.pory"
 	end
+# 275 "data/maps/FortreeCity_Gym/scripts.pory"
+
+# 276 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_EventScript_GymStatue::
+# 277 "data/maps/FortreeCity_Gym/scripts.pory"
+	msgbox FortreeCity_Gym_Text_GymStatue, MSGBOX_DEFAULT
+# 278 "data/maps/FortreeCity_Gym/scripts.pory"
+	releaseall
 # 279 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	end
 # 280 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_GymGuideAdvice:
+
 # 281 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Yo, how's it going, CHAMPION-\n"
+FortreeCity_Gym_Text_GymGuideAdvice:
 # 282 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "bound {PLAYER}?\p"
+	.string "Yo, how's it going, CHAMPION-\n"
 # 283 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "FORTREE GYM LEADER WINONA is\n"
+	.string "bound {PLAYER}?\p"
 # 284 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "a master of FLYING-type POKéMON.\p"
+	.string "FORTREE GYM LEADER WINONA is\n"
 # 285 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "She's waiting at the back of this GYM,\n"
+	.string "a master of FLYING-type POKéMON.\p"
 # 286 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "behind the rotating doors.\p"
+	.string "She's waiting at the back of this GYM,\n"
 # 287 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "She's waiting for new challengers\n"
+	.string "behind the rotating doors.\p"
 # 288 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "who are trying to take wing!\p"
+	.string "She's waiting for new challengers\n"
 # 289 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Okay, go for it!$"
+	.string "who are trying to take wing!\p"
 # 290 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "Okay, go for it!$"
 # 291 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_GymGuidePostVictory:
+
 # 292 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "You did it!\n"
+FortreeCity_Gym_Text_GymGuidePostVictory:
 # 293 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "You've achieved liftoff!$"
+	.string "You did it!\n"
 # 294 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "You've achieved liftoff!$"
 # 295 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_JaredIntro:
+
 # 296 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Behold the elegant battle style of\n"
+FortreeCity_Gym_Text_JaredIntro:
 # 297 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "BIRD POKéMON!$"
+	.string "Behold the elegant battle style of\n"
 # 298 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "BIRD POKéMON!$"
 # 299 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_JaredDefeat:
+
 # 300 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "You…\n"
+FortreeCity_Gym_Text_JaredDefeat:
 # 301 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "You're strong…$"
+	.string "You…\n"
 # 302 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "You're strong…$"
 # 303 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_JaredPostBattle:
+
 # 304 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "A TRAINER has to be smart to keep\n"
+FortreeCity_Gym_Text_JaredPostBattle:
 # 305 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "up with unexpected turns of events.\p"
+	.string "A TRAINER has to be smart to keep\n"
 # 306 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Do you have the smarts to get to\n"
+	.string "up with unexpected turns of events.\p"
 # 307 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "our LEADER?$"
+	.string "Do you have the smarts to get to\n"
 # 308 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "our LEADER?$"
 # 309 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_EdwardoIntro:
+
 # 310 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "The lovers of BIRD POKéMON aspire\n"
+FortreeCity_Gym_Text_EdwardoIntro:
 # 311 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "to join this GYM.\p"
+	.string "The lovers of BIRD POKéMON aspire\n"
 # 312 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "As a member of the FORTREE GYM,\n"
+	.string "to join this GYM.\p"
 # 313 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "I'm not allowed to lose!$"
+	.string "As a member of the FORTREE GYM,\n"
 # 314 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "I'm not allowed to lose!$"
 # 315 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_EdwardoDefeat:
+
 # 316 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "It was too much of a load for me\n"
+FortreeCity_Gym_Text_EdwardoDefeat:
 # 317 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "to bear…$"
+	.string "It was too much of a load for me\n"
 # 318 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "to bear…$"
 # 319 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_EdwardoPostBattle:
+
 # 320 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "The world is huge, and there are\n"
+FortreeCity_Gym_Text_EdwardoPostBattle:
 # 321 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "countless tough TRAINERS.\p"
+	.string "The world is huge, and there are\n"
 # 322 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "I'm going to keep training and make\n"
+	.string "countless tough TRAINERS.\p"
 # 323 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "myself even stronger.$"
+	.string "I'm going to keep training and make\n"
 # 324 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "myself even stronger.$"
 # 325 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_FlintIntro:
+
 # 326 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "There's no need for WINONA, our GYM\n"
+FortreeCity_Gym_Text_FlintIntro:
 # 327 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "LEADER, to deal with you!\p"
+	.string "There's no need for WINONA, our GYM\n"
 # 328 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "I'm plenty good enough for you!$"
+	.string "LEADER, to deal with you!\p"
 # 329 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "I'm plenty good enough for you!$"
 # 330 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_FlintDefeat:
+
 # 331 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "WINONA, I…\n"
+FortreeCity_Gym_Text_FlintDefeat:
 # 332 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "I lost!$"
+	.string "WINONA, I…\n"
 # 333 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "I lost!$"
 # 334 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_FlintPostBattle:
+
 # 335 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "WINONA is cute and she's strong.\n"
+FortreeCity_Gym_Text_FlintPostBattle:
 # 336 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "She's the ultimate LEADER!\p"
+	.string "WINONA is cute and she's strong.\n"
 # 337 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Blush…$"
+	.string "She's the ultimate LEADER!\p"
 # 338 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "Blush…$"
 # 339 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_AshleyIntro:
+
 # 340 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "WINONA taught me personally!\n"
+FortreeCity_Gym_Text_AshleyIntro:
 # 341 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "You can't beat me easily!$"
+	.string "WINONA taught me personally!\n"
 # 342 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "You can't beat me easily!$"
 # 343 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_AshleyDefeat:
+
 # 344 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "I was beaten…$"
+FortreeCity_Gym_Text_AshleyDefeat:
 # 345 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "I was beaten…$"
 # 346 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_AshleyPostBattle:
+
 # 347 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Thanks to WINONA, the people of\n"
+FortreeCity_Gym_Text_AshleyPostBattle:
 # 348 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "FORTREE can live without fear.$"
+	.string "Thanks to WINONA, the people of\n"
 # 349 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "FORTREE can live without fear.$"
 # 350 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_HumbertoIntro:
+
 # 351 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "When WINONA takes to battle, her face\n"
+FortreeCity_Gym_Text_HumbertoIntro:
 # 352 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "shines with beautiful determination…\p"
+	.string "When WINONA takes to battle, her face\n"
 # 353 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "I'm not letting you witness that\n"
+	.string "shines with beautiful determination…\p"
 # 354 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "lovely sight!$"
+	.string "I'm not letting you witness that\n"
 # 355 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "lovely sight!$"
 # 356 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_HumbertoDefeat:
+
 # 357 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Urk!\n"
+FortreeCity_Gym_Text_HumbertoDefeat:
 # 358 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "I couldn't stop you.$"
+	.string "Urk!\n"
 # 359 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "I couldn't stop you.$"
 # 360 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_HumbertoPostBattle:
+
 # 361 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "You'd better watch it!\n"
+FortreeCity_Gym_Text_HumbertoPostBattle:
 # 362 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Don't get distracted staring at WINONA\l"
+	.string "You'd better watch it!\n"
 # 363 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "or you'll go crashing down in a heap!$"
+	.string "Don't get distracted staring at WINONA\l"
 # 364 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "or you'll go crashing down in a heap!$"
 # 365 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_DariusIntro:
+
 # 366 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "You'd better know that there are all\n"
+FortreeCity_Gym_Text_DariusIntro:
 # 367 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "sorts of FLYING-type POKéMON.\p"
+	.string "You'd better know that there are all\n"
 # 368 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "You do know that, right?$"
+	.string "sorts of FLYING-type POKéMON.\p"
 # 369 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "You do know that, right?$"
 # 370 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_DariusDefeat:
+
 # 371 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "You seem to know your stuff!$"
+FortreeCity_Gym_Text_DariusDefeat:
 # 372 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "You seem to know your stuff!$"
 # 373 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_DariusPostBattle:
+
 # 374 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Sure, you beat me all right.\n"
+FortreeCity_Gym_Text_DariusPostBattle:
 # 375 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "But you'd better watch it! Our LEADER\l"
+	.string "Sure, you beat me all right.\n"
 # 376 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "WINONA's POKéMON are all business.$"
+	.string "But you'd better watch it! Our LEADER\l"
 # 377 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "WINONA's POKéMON are all business.$"
 # 378 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_WinonaIntro:
+
 # 379 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "I am WINONA. I am the LEADER of\n"
+FortreeCity_Gym_Text_WinonaIntro:
 # 380 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "the FORTREE POKéMON GYM.\p"
+	.string "I am WINONA. I am the LEADER of\n"
 # 381 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "I have become one with BIRD POKéMON\n"
+	.string "the FORTREE POKéMON GYM.\p"
 # 382 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "and have soared the skies…\p"
+	.string "I have become one with BIRD POKéMON\n"
 # 383 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "However grueling the battle, we have\n"
+	.string "and have soared the skies…\p"
 # 384 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "triumphed with grace…\p"
+	.string "However grueling the battle, we have\n"
 # 385 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Witness the elegant choreography\n"
+	.string "triumphed with grace…\p"
 # 386 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "of BIRD POKéMON and I!$"
+	.string "Witness the elegant choreography\n"
 # 387 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "of BIRD POKéMON and I!$"
 # 388 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_WinonaDefeat:
+
 # 389 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Never before have I seen a TRAINER\n"
+FortreeCity_Gym_Text_WinonaDefeat:
 # 390 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "command POKéMON with more grace\l"
+	.string "Never before have I seen a TRAINER\n"
 # 391 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "than I…\p"
+	.string "command POKéMON with more grace\l"
 # 392 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "In recognition of your prowess,\n"
+	.string "than I…\p"
 # 393 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "I present to you this GYM BADGE.$"
+	.string "In recognition of your prowess,\n"
 # 394 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "I present to you this GYM BADGE.$"
 # 395 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_ReceivedFeatherBadge:
+
 # 396 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "{PLAYER} received the FEATHER BADGE\n"
+FortreeCity_Gym_Text_ReceivedFeatherBadge:
 # 397 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "from WINONA.$"
+	.string "{PLAYER} received the FEATHER BADGE\n"
 # 398 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "from WINONA.$"
 # 399 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_ExplainFeatherBadgeTakeThis:
+
 # 400 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "With the FEATHER BADGE, all POKéMON up\n"
+FortreeCity_Gym_Text_ExplainFeatherBadgeTakeThis:
 # 401 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "to LV 70, even those received through\l"
+	.string "With the FEATHER BADGE, all POKéMON up\n"
 # 402 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "trades, will obey your every command.\p"
+	.string "to LV 70, even those received through\l"
 # 403 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "You will also be able to use\n"
+	.string "trades, will obey your every command.\p"
 # 404 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "the HM move FLY outside of battle.\p"
+	.string "You will also be able to use\n"
 # 405 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "And this…\n"
+	.string "the HM move FLY outside of battle.\p"
 # 406 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "This is a gift from me.$"
+	.string "And this…\n"
 # 407 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "This is a gift from me.$"
 # 408 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_ExplainAerialAce:
+
 # 409 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "TM40 contains AERIAL ACE.\p"
+FortreeCity_Gym_Text_ExplainAerialAce:
 # 410 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Its speed…\n"
+	.string "TM40 contains AERIAL ACE.\p"
 # 411 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "No POKéMON should be able to avoid it.\p"
+	.string "Its speed…\n"
 # 412 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "… … … … … …$"
+	.string "No POKéMON should be able to avoid it.\p"
 # 413 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "… … … … … …$"
 # 414 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_RegisteredWinona:
+
 # 415 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Registered GYM LEADER WINONA\n"
+FortreeCity_Gym_Text_RegisteredWinona:
 # 416 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "in the POKéNAV.$"
+	.string "Registered GYM LEADER WINONA\n"
 # 417 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "in the POKéNAV.$"
 # 418 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_WinonaPostBattle:
+
 # 419 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Though I fell to you, I will remain\n"
+FortreeCity_Gym_Text_WinonaPostBattle:
 # 420 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "devoted to BIRD POKéMON.$"
+	.string "Though I fell to you, I will remain\n"
 # 421 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "devoted to BIRD POKéMON.$"
 # 422 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_GymStatue:
+
 # 423 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "FORTREE CITY POKéMON GYM$"
+FortreeCity_Gym_Text_GymStatue:
 # 424 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "FORTREE CITY POKéMON GYM$"
 # 425 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_GymStatueCertified:
+
 # 426 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "FORTREE CITY POKéMON GYM\p"
+FortreeCity_Gym_Text_GymStatueCertified:
 # 427 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "WINONA'S CERTIFIED TRAINERS:\n"
+	.string "FORTREE CITY POKéMON GYM\p"
 # 428 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "{PLAYER}$"
+	.string "WINONA'S CERTIFIED TRAINERS:\n"
 # 429 "data/maps/FortreeCity_Gym/scripts.pory"
-
+	.string "{PLAYER}$"
 # 430 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_WinonaPreRematch:
+
 # 431 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "WINONA: We humans can never escape\n"
+FortreeCity_Gym_Text_WinonaPreRematch:
 # 432 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "gravity's pull on the ground.\p"
-# 433 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "But by striving for excellence,\n"
-# 434 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "we have the power to soar!\p"
-# 435 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "You have scaled the pinnacle as\n"
-# 436 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "the reigning CHAMPION.\p"
-# 437 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Please, allow me to see your power\n"
-# 438 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "at full flight!$"
-# 439 "data/maps/FortreeCity_Gym/scripts.pory"
-
-# 440 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_WinonaRematchDefeat:
-# 441 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "I failed to reach your height again…$"
-# 442 "data/maps/FortreeCity_Gym/scripts.pory"
-
-# 443 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_WinonaPostRematch:
-# 444 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "WINONA: Even though I have lost,\n"
-# 445 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "the wings of my heart remain unbroken.\p"
-# 446 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "I can rise and soar again and\n"
-# 447 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "yet again.\p"
-# 448 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "I am convinced of it!$"
-# 449 "data/maps/FortreeCity_Gym/scripts.pory"
-
-# 450 "data/maps/FortreeCity_Gym/scripts.pory"
-FortreeCity_Gym_Text_WinonaRematchNeedTwoMons:
-# 451 "data/maps/FortreeCity_Gym/scripts.pory"
 	.string "WINONA: We humans can never escape\n"
-# 452 "data/maps/FortreeCity_Gym/scripts.pory"
+# 433 "data/maps/FortreeCity_Gym/scripts.pory"
 	.string "gravity's pull on the ground.\p"
-# 453 "data/maps/FortreeCity_Gym/scripts.pory"
+# 434 "data/maps/FortreeCity_Gym/scripts.pory"
 	.string "But by striving for excellence,\n"
-# 454 "data/maps/FortreeCity_Gym/scripts.pory"
+# 435 "data/maps/FortreeCity_Gym/scripts.pory"
 	.string "we have the power to soar!\p"
-# 455 "data/maps/FortreeCity_Gym/scripts.pory"
+# 436 "data/maps/FortreeCity_Gym/scripts.pory"
 	.string "You have scaled the pinnacle as\n"
-# 456 "data/maps/FortreeCity_Gym/scripts.pory"
+# 437 "data/maps/FortreeCity_Gym/scripts.pory"
 	.string "the reigning CHAMPION.\p"
-# 457 "data/maps/FortreeCity_Gym/scripts.pory"
+# 438 "data/maps/FortreeCity_Gym/scripts.pory"
 	.string "Please, allow me to see your power\n"
+# 439 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "at full flight!$"
+# 440 "data/maps/FortreeCity_Gym/scripts.pory"
+
+# 441 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_Text_WinonaRematchDefeat:
+# 442 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "I failed to reach your height again…$"
+# 443 "data/maps/FortreeCity_Gym/scripts.pory"
+
+# 444 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_Text_WinonaPostRematch:
+# 445 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "WINONA: Even though I have lost,\n"
+# 446 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "the wings of my heart remain unbroken.\p"
+# 447 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "I can rise and soar again and\n"
+# 448 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "yet again.\p"
+# 449 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "I am convinced of it!$"
+# 450 "data/maps/FortreeCity_Gym/scripts.pory"
+
+# 451 "data/maps/FortreeCity_Gym/scripts.pory"
+FortreeCity_Gym_Text_WinonaRematchNeedTwoMons:
+# 452 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "WINONA: We humans can never escape\n"
+# 453 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "gravity's pull on the ground.\p"
+# 454 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "But by striving for excellence,\n"
+# 455 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "we have the power to soar!\p"
+# 456 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "You have scaled the pinnacle as\n"
+# 457 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "the reigning CHAMPION.\p"
 # 458 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "at full flight!\p"
+	.string "Please, allow me to see your power\n"
 # 459 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Oh, no… Do you have but one\n"
+	.string "at full flight!\p"
 # 460 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "POKéMON with you?\p"
+	.string "Oh, no… Do you have but one\n"
 # 461 "data/maps/FortreeCity_Gym/scripts.pory"
-	.string "Please return with two POKéMON\n"
+	.string "POKéMON with you?\p"
 # 462 "data/maps/FortreeCity_Gym/scripts.pory"
+	.string "Please return with two POKéMON\n"
+# 463 "data/maps/FortreeCity_Gym/scripts.pory"
 	.string "at the very least.$"

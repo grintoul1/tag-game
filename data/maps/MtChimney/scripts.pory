@@ -192,6 +192,7 @@ MtChimney_EventScript_MaxieVictory::
 	clearflag FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO
 	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
 	clearflag FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
+	setvar VAR_LEVEL_CAP, 58
 	fadescreen FADE_FROM_BLACK
 	releaseall
 	end

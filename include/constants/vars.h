@@ -271,7 +271,7 @@
 #define VAR_AQUAHIDEOUT_STATE                            0x40FB // Unused Var
 #define VAR_EMMIE_PARTY_SIZE                             0x40FC // Unused Var
 #define VAR_FOLLOWER_MAGMA_HIDEOUT_SHELLY                0x40FD // MHO Shelly follower state
-#define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
+#define VAR_LEVEL_CAP                                    0x40FE // Level Caps
 #define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
 
 #define VARS_END                                         0x40FF

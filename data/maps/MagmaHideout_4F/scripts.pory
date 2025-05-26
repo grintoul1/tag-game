@@ -621,6 +621,7 @@ MagmaHideout_4F_EventScript_MaxieVictory::
 	clearflag FLAG_HIDE_JAGGED_PASS_MAXIE
 	addvar VAR_MAGMAHIDEOUT_STATE, 1
 	addvar VAR_JAGGED_PASS_STATE, 1
+	setvar VAR_LEVEL_CAP, 75
 	warp MAP_JAGGED_PASS, 16, 19
 	waitstate
 	releaseall
@@ -728,8 +729,8 @@ MagmaHideout_4F_Text_MaxieAwakenGroudon:
 	.string "Show me the full extent of your power!$"
 
 MagmaHideout_4F_Text_MaxieMomentsAway1:
-	.string "Maxie: {PLAYER}, Emmie… It appears on\n"
-	.string "this occasion your timing is off.\p"
+	.string "Maxie: {PLAYER}, Emmie… It appears on this\n"
+	.string "occasion your timing is off.\p"
 	.string "You bear witness to the rebirth of the\n"
 	.string "legendary Pokémon Groudon.\p"
 	.string "With its power on our side, Team Magma's\n"

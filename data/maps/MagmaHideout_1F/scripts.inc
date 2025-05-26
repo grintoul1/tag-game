@@ -263,9 +263,9 @@ MagmaHideout_1F_EventScript_Emmie::
 # 132 "data/maps/MagmaHideout_1F/scripts.pory"
 MagmaHideout_1F_Text_EmmieBeRightHere:
 # 133 "data/maps/MagmaHideout_1F/scripts.pory"
-.string "{PLAYER}, I'll be waiting here for you,\n"
+.string "Emmie: {PLAYER}, I'll be waiting here for\n"
 # 134 "data/maps/MagmaHideout_1F/scripts.pory"
-.string "and we can leave any time you want.$"
+.string "you, and we can leave any time you want.$"
 # 135 "data/maps/MagmaHideout_1F/scripts.pory"
 
 # 136 "data/maps/MagmaHideout_1F/scripts.pory"

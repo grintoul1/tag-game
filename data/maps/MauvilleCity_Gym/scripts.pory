@@ -116,6 +116,8 @@ waitstate
 
 MauvilleCity_Gym_EventScript_WattsonVictory::
 addvar VAR_MAUVILLECITY_GYM_STATE, 1
+setvar VAR_LEVEL_CAP, 35
+setrespawn HEAL_LOCATION_MAUVILLE_CITY
 goto MauvilleCity_Gym_EventScript_WattsonDefeated
 end
 

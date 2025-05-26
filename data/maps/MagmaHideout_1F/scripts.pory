@@ -130,8 +130,8 @@ MagmaHideout_1F_EventScript_Emmie::
 	waitmovement 0
 
 MagmaHideout_1F_Text_EmmieBeRightHere:
-.string "{PLAYER}, I'll be waiting here for you,\n"
-.string "and we can leave any time you want.$"
+.string "Emmie: {PLAYER}, I'll be waiting here for\n"
+.string "you, and we can leave any time you want.$"
 
 MagmaHideout_1F_Text_ShellyWelcomeToHideout:
 	.string "Shelly: Welcome to the Magma Hideout.\p"
