@@ -225,178 +225,186 @@ MtPyre_2F_EventScript_Mark::
 # 113 "data/maps/MtPyre_2F/scripts.pory"
 MtPyre_2F_EventScript_Pyre_MagmaGrunt4::
 # 114 "data/maps/MtPyre_2F/scripts.pory"
-	msgbox MtPyre_2F_Text_Pyre_MagmaGrunt4PostBattle, MSGBOX_AUTOCLOSE
+	faceplayer
 # 115 "data/maps/MtPyre_2F/scripts.pory"
-	end
+	msgbox MtPyre_2F_Text_Pyre_MagmaGrunt4PostBattle, MSGBOX_AUTOCLOSE
 # 116 "data/maps/MtPyre_2F/scripts.pory"
-
+	end
 # 117 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_EventScript_Pyre_MagmaGrunt5::
+
 # 118 "data/maps/MtPyre_2F/scripts.pory"
-	msgbox MtPyre_2F_Text_Pyre_MagmaGrunt5PostBattle, MSGBOX_AUTOCLOSE
+MtPyre_2F_EventScript_Pyre_MagmaGrunt5::
 # 119 "data/maps/MtPyre_2F/scripts.pory"
-	end
+	faceplayer
 # 120 "data/maps/MtPyre_2F/scripts.pory"
-
+	msgbox MtPyre_2F_Text_Pyre_MagmaGrunt5PostBattle, MSGBOX_AUTOCLOSE
 # 121 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_EventScript_Pyre_AquaGrunt2::
+	end
 # 122 "data/maps/MtPyre_2F/scripts.pory"
-	msgbox MtPyre_2F_Text_Pyre_AquaGrunt2PostBattle, MSGBOX_AUTOCLOSE
+
 # 123 "data/maps/MtPyre_2F/scripts.pory"
-	end
+MtPyre_2F_EventScript_Pyre_AquaGrunt2::
 # 124 "data/maps/MtPyre_2F/scripts.pory"
-
+	faceplayer
 # 125 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_EventScript_Pyre_AquaGrunt1::
+	msgbox MtPyre_2F_Text_Pyre_AquaGrunt2PostBattle, MSGBOX_AUTOCLOSE
 # 126 "data/maps/MtPyre_2F/scripts.pory"
-	msgbox MtPyre_2F_Text_Pyre_AquaGrunt1PostBattle, MSGBOX_AUTOCLOSE
-# 127 "data/maps/MtPyre_2F/scripts.pory"
 	end
-# 128 "data/maps/MtPyre_2F/scripts.pory"
+# 127 "data/maps/MtPyre_2F/scripts.pory"
 
+# 128 "data/maps/MtPyre_2F/scripts.pory"
+MtPyre_2F_EventScript_Pyre_AquaGrunt1::
 # 129 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_MemoriesOfSkitty:
+	faceplayer
 # 130 "data/maps/MtPyre_2F/scripts.pory"
-	.string "Memories of my darling SKITTY…\n"
+	msgbox MtPyre_2F_Text_Pyre_AquaGrunt1PostBattle, MSGBOX_AUTOCLOSE
 # 131 "data/maps/MtPyre_2F/scripts.pory"
-	.string "My eyes overflow thinking about it.$"
+	end
 # 132 "data/maps/MtPyre_2F/scripts.pory"
 
 # 133 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_TumbledFromFloorAbove:
+MtPyre_2F_Text_MemoriesOfSkitty:
 # 134 "data/maps/MtPyre_2F/scripts.pory"
-	.string "Ooch, ouch… I fell down here after\n"
+	.string "Memories of my darling SKITTY…\n"
 # 135 "data/maps/MtPyre_2F/scripts.pory"
-	.string "getting jumped by Team Magma.\p"
+	.string "My eyes overflow thinking about it.$"
 # 136 "data/maps/MtPyre_2F/scripts.pory"
-	.string "Problem is I'm now too scared to\n"
-# 137 "data/maps/MtPyre_2F/scripts.pory"
-	.string "jump down again…$"
-# 138 "data/maps/MtPyre_2F/scripts.pory"
 
+# 137 "data/maps/MtPyre_2F/scripts.pory"
+MtPyre_2F_Text_TumbledFromFloorAbove:
+# 138 "data/maps/MtPyre_2F/scripts.pory"
+	.string "Ooch, ouch… I fell down here after\n"
 # 139 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_MarkIntro:
+	.string "getting jumped by Team Magma.\p"
 # 140 "data/maps/MtPyre_2F/scripts.pory"
-	.string "Hey! Are you searching for POKéMON?\n"
+	.string "Problem is I'm now too scared to\n"
 # 141 "data/maps/MtPyre_2F/scripts.pory"
-	.string "You came along after me! You're rude!$"
+	.string "jump down again…$"
 # 142 "data/maps/MtPyre_2F/scripts.pory"
 
 # 143 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_MarkDefeat:
+MtPyre_2F_Text_MarkIntro:
 # 144 "data/maps/MtPyre_2F/scripts.pory"
-	.string "Ayieeeeh!\n"
+	.string "Hey! Are you searching for POKéMON?\n"
 # 145 "data/maps/MtPyre_2F/scripts.pory"
-	.string "I'm sorry, forgive me, please!$"
+	.string "You came along after me! You're rude!$"
 # 146 "data/maps/MtPyre_2F/scripts.pory"
 
 # 147 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_MarkPostBattle:
+MtPyre_2F_Text_MarkDefeat:
 # 148 "data/maps/MtPyre_2F/scripts.pory"
-	.string "People don't come here often, so\n"
+	.string "Ayieeeeh!\n"
 # 149 "data/maps/MtPyre_2F/scripts.pory"
-	.string "I thought there'd be rare POKéMON.$"
+	.string "I'm sorry, forgive me, please!$"
 # 150 "data/maps/MtPyre_2F/scripts.pory"
 
 # 151 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_Pyre_MagmaGrunt4Intro:
+MtPyre_2F_Text_MarkPostBattle:
 # 152 "data/maps/MtPyre_2F/scripts.pory"
-	.string "We fell through a hole chasing Matt\n"
+	.string "People don't come here often, so\n"
 # 153 "data/maps/MtPyre_2F/scripts.pory"
-	.string "and now my leg is all messed up!$"
+	.string "I thought there'd be rare POKéMON.$"
 # 154 "data/maps/MtPyre_2F/scripts.pory"
 
 # 155 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_Pyre_MagmaGrunt4Defeat:
+MtPyre_2F_Text_Pyre_MagmaGrunt4Intro:
 # 156 "data/maps/MtPyre_2F/scripts.pory"
-	.string "Kick a man when he's down why don't you!$"
+	.string "We fell through a hole chasing Matt\n"
 # 157 "data/maps/MtPyre_2F/scripts.pory"
-
+	.string "and now my leg is all messed up!$"
 # 158 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_Pyre_MagmaGrunt4PostBattle:
+
 # 159 "data/maps/MtPyre_2F/scripts.pory"
-	.string "Ugh, just beat it already!$"
+MtPyre_2F_Text_Pyre_MagmaGrunt4Defeat:
 # 160 "data/maps/MtPyre_2F/scripts.pory"
-
+	.string "Kick a man when he's down why don't you!$"
 # 161 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_LukeNotEnoughMons:
+
 # 162 "data/maps/MtPyre_2F/scripts.pory"
-	.string "LUKE: If you want to take me on,\n"
+MtPyre_2F_Text_Pyre_MagmaGrunt4PostBattle:
 # 163 "data/maps/MtPyre_2F/scripts.pory"
-	.string "bring some more POKéMON.\p"
+	.string "Ugh, just beat it already!$"
 # 164 "data/maps/MtPyre_2F/scripts.pory"
-	.string "If you don't, I won't be able to show\n"
+
 # 165 "data/maps/MtPyre_2F/scripts.pory"
-	.string "off to my girl how cool I am!$"
+MtPyre_2F_Text_LukeNotEnoughMons:
 # 166 "data/maps/MtPyre_2F/scripts.pory"
-
+	.string "LUKE: If you want to take me on,\n"
 # 167 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_Pyre_MagmaGrunt5Intro:
+	.string "bring some more POKéMON.\p"
 # 168 "data/maps/MtPyre_2F/scripts.pory"
-	.string "Get a load of this guy!\p"
+	.string "If you don't, I won't be able to show\n"
 # 169 "data/maps/MtPyre_2F/scripts.pory"
-	.string "Why do I always get paired up with the\n"
+	.string "off to my girl how cool I am!$"
 # 170 "data/maps/MtPyre_2F/scripts.pory"
-	.string "weakest people?!$"
+
 # 171 "data/maps/MtPyre_2F/scripts.pory"
-
+MtPyre_2F_Text_Pyre_MagmaGrunt5Intro:
 # 172 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_Pyre_MagmaGrunt5Defeat:
+	.string "Get a load of this guy!\p"
 # 173 "data/maps/MtPyre_2F/scripts.pory"
-	.string "Maybe I could use a breather too…$"
+	.string "Why do I always get paired up with the\n"
 # 174 "data/maps/MtPyre_2F/scripts.pory"
-
+	.string "weakest people?!$"
 # 175 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_Pyre_MagmaGrunt5PostBattle:
+
 # 176 "data/maps/MtPyre_2F/scripts.pory"
-	.string "I guess I got over-confident.$"
+MtPyre_2F_Text_Pyre_MagmaGrunt5Defeat:
 # 177 "data/maps/MtPyre_2F/scripts.pory"
-
+	.string "Maybe I could use a breather too…$"
 # 178 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_DezNotEnoughMons:
+
 # 179 "data/maps/MtPyre_2F/scripts.pory"
-	.string "DEZ: If you want to challenge us, you\n"
+MtPyre_2F_Text_Pyre_MagmaGrunt5PostBattle:
 # 180 "data/maps/MtPyre_2F/scripts.pory"
-	.string "should bring at least two POKéMON.\p"
+	.string "I guess I got over-confident.$"
 # 181 "data/maps/MtPyre_2F/scripts.pory"
-	.string "My boyfriend's strong.\n"
+
 # 182 "data/maps/MtPyre_2F/scripts.pory"
-	.string "Just one POKéMON won't do at all.$"
+MtPyre_2F_Text_DezNotEnoughMons:
 # 183 "data/maps/MtPyre_2F/scripts.pory"
-
+	.string "DEZ: If you want to challenge us, you\n"
 # 184 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_Pyre_AquaGrunt2Intro:
+	.string "should bring at least two POKéMON.\p"
 # 185 "data/maps/MtPyre_2F/scripts.pory"
-	.string "We have fallen behind Team Magma!$"
+	.string "My boyfriend's strong.\n"
 # 186 "data/maps/MtPyre_2F/scripts.pory"
-
+	.string "Just one POKéMON won't do at all.$"
 # 187 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_Pyre_AquaGrunt2Defeat:
-# 188 "data/maps/MtPyre_2F/scripts.pory"
-	.string "This will hold us up even more!$"
-# 189 "data/maps/MtPyre_2F/scripts.pory"
 
+# 188 "data/maps/MtPyre_2F/scripts.pory"
+MtPyre_2F_Text_Pyre_AquaGrunt2Intro:
+# 189 "data/maps/MtPyre_2F/scripts.pory"
+	.string "We have fallen behind Team Magma!$"
 # 190 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_Pyre_AquaGrunt2PostBattle:
+
 # 191 "data/maps/MtPyre_2F/scripts.pory"
-	.string "We can't let Team Magma get any further\n"
+MtPyre_2F_Text_Pyre_AquaGrunt2Defeat:
 # 192 "data/maps/MtPyre_2F/scripts.pory"
-	.string "ahead of us!$"
+	.string "This will hold us up even more!$"
 # 193 "data/maps/MtPyre_2F/scripts.pory"
 
 # 194 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_Pyre_AquaGrunt1Intro:
+MtPyre_2F_Text_Pyre_AquaGrunt2PostBattle:
 # 195 "data/maps/MtPyre_2F/scripts.pory"
-	.string "Hey, you!$"
+	.string "We can't let Team Magma get any further\n"
 # 196 "data/maps/MtPyre_2F/scripts.pory"
-
+	.string "ahead of us!$"
 # 197 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_Pyre_AquaGrunt1Defeat:
-# 198 "data/maps/MtPyre_2F/scripts.pory"
-	.string "…$"
-# 199 "data/maps/MtPyre_2F/scripts.pory"
 
+# 198 "data/maps/MtPyre_2F/scripts.pory"
+MtPyre_2F_Text_Pyre_AquaGrunt1Intro:
+# 199 "data/maps/MtPyre_2F/scripts.pory"
+	.string "Hey, you!$"
 # 200 "data/maps/MtPyre_2F/scripts.pory"
-MtPyre_2F_Text_Pyre_AquaGrunt1PostBattle:
+
 # 201 "data/maps/MtPyre_2F/scripts.pory"
+MtPyre_2F_Text_Pyre_AquaGrunt1Defeat:
+# 202 "data/maps/MtPyre_2F/scripts.pory"
+	.string "…$"
+# 203 "data/maps/MtPyre_2F/scripts.pory"
+
+# 204 "data/maps/MtPyre_2F/scripts.pory"
+MtPyre_2F_Text_Pyre_AquaGrunt1PostBattle:
+# 205 "data/maps/MtPyre_2F/scripts.pory"
 	.string "This and Team Magma is too much!$"

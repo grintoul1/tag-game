@@ -72,6 +72,7 @@ Route115_EventScript_Koichi::
 	end
 
 Route115_EventScript_Nob::
+	faceplayer
 	msgbox Route115_Text_NobPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -152,16 +153,17 @@ addvar VAR_ROUTE115_STATE, 1
 end
 
 Route115_EventScript_Hector::
+	faceplayer
 	msgbox Route115_Text_HectorPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route115_EventScript_Kyra::
-	trainerbattle_single TRAINER_KYRA, Route115_Text_KyraIntro, Route115_Text_KyraDefeat
+	faceplayer
 	msgbox Route115_Text_KyraPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route115_EventScript_Jaiden::
-	trainerbattle_single TRAINER_JAIDEN, Route115_Text_JaidenIntro, Route115_Text_JaidenDefeat
+	faceplayer
 	msgbox Route115_Text_JaidenPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -207,15 +209,17 @@ addvar VAR_ROUTE115_STATE, 1
 end
 
 Route115_EventScript_Alix::
+	faceplayer
 	msgbox Route115_Text_AlixPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route115_EventScript_Helene::
-	trainerbattle_single TRAINER_HELENE, Route115_Text_HeleneIntro, Route115_Text_HeleneDefeat
+	faceplayer
 	msgbox Route115_Text_HelenePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route115_EventScript_Marlene::
+	faceplayer
 	msgbox Route115_Text_MarlenePostBattle, MSGBOX_AUTOCLOSE
 	end
 

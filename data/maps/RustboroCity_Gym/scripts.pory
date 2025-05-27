@@ -121,10 +121,12 @@ addvar VAR_RUSTBOROCITY_GYM_STATE, 1
 end
 
 RustboroCity_Gym_EventScript_Josh::
+	faceplayer
 	msgbox RustboroCity_Gym_Text_JoshPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 RustboroCity_Gym_EventScript_Tommy::
+	faceplayer
 	msgbox RustboroCity_Gym_Text_TommyPostBattle, MSGBOX_AUTOCLOSE
 	end
 

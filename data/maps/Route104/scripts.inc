@@ -1871,587 +1871,587 @@ end
 # 936 "data/maps/Route104/scripts.pory"
 Route104_EventScript_Ivan::
 # 937 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_IvanPostBattle, MSGBOX_AUTOCLOSE
+	faceplayer
 # 938 "data/maps/Route104/scripts.pory"
-	end
+	msgbox Route104_Text_IvanPostBattle, MSGBOX_AUTOCLOSE
 # 939 "data/maps/Route104/scripts.pory"
-
+	end
 # 940 "data/maps/Route104/scripts.pory"
-Route104_EventScript_HaleyBilly::
+
 # 941 "data/maps/Route104/scripts.pory"
-lockall
+Route104_EventScript_HaleyBilly::
 # 942 "data/maps/Route104/scripts.pory"
-setvar VAR_0x8008, LOCALID_HALEY
-# 943 "data/maps/Route104/scripts.pory"
-playse SE_PIN
-# 944 "data/maps/Route104/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 945 "data/maps/Route104/scripts.pory"
-waitmovement 0
-# 946 "data/maps/Route104/scripts.pory"
-playbgm MUS_ENCOUNTER_GIRL, TRUE
-# 947 "data/maps/Route104/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-# 948 "data/maps/Route104/scripts.pory"
-waitmovement 0
-# 949 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_HaleyIntro MSGBOX_AUTOCLOSE
-# 950 "data/maps/Route104/scripts.pory"
-setvar VAR_0x8008, LOCALID_BILLY
-# 951 "data/maps/Route104/scripts.pory"
-playse SE_PIN
-# 952 "data/maps/Route104/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 953 "data/maps/Route104/scripts.pory"
-waitmovement 0
-# 954 "data/maps/Route104/scripts.pory"
-playbgm MUS_ENCOUNTER_MALE, TRUE
-# 955 "data/maps/Route104/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-# 956 "data/maps/Route104/scripts.pory"
-waitmovement 0
-# 957 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_BillyIntro, MSGBOX_AUTOCLOSE
-# 958 "data/maps/Route104/scripts.pory"
-goto Route104_EventScript_HaleyBillyDoMultiBattle
-# 959 "data/maps/Route104/scripts.pory"
-releaseall
-# 960 "data/maps/Route104/scripts.pory"
-end
-# 961 "data/maps/Route104/scripts.pory"
-
-# 962 "data/maps/Route104/scripts.pory"
-Route104_EventScript_HaleyBillyDoMultiBattle::
-# 963 "data/maps/Route104/scripts.pory"
-playbgm MUS_ROUTE110, TRUE
-# 964 "data/maps/Route104/scripts.pory"
-multi_2p_vs_2 TRAINER_HALEY_1, Route104_Text_HaleyDefeat, TRAINER_BILLY, Route104_Text_BillyDefeat, PARTNER_EMMIE
-# 965 "data/maps/Route104/scripts.pory"
-switch VAR_RESULT
-# 966 "data/maps/Route104/scripts.pory"
-case 1, Route104_EventScript_HaleyBillyVictory
-# 967 "data/maps/Route104/scripts.pory"
-fadescreen FADE_TO_BLACK
-# 968 "data/maps/Route104/scripts.pory"
-special SetCB2WhiteOut
-# 969 "data/maps/Route104/scripts.pory"
-waitstate
-# 970 "data/maps/Route104/scripts.pory"
-
-# 971 "data/maps/Route104/scripts.pory"
-Route104_EventScript_HaleyBillyVictory::
-# 972 "data/maps/Route104/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-# 973 "data/maps/Route104/scripts.pory"
-waitmovement 0
-# 974 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_HaleyPostBattle, MSGBOX_AUTOCLOSE
-# 975 "data/maps/Route104/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-# 976 "data/maps/Route104/scripts.pory"
-waitmovement 0
-# 977 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_BillyPostBattle, MSGBOX_AUTOCLOSE
-# 978 "data/maps/Route104/scripts.pory"
-addvar VAR_ROUTE104_STATE, 1
-# 979 "data/maps/Route104/scripts.pory"
-end
-# 980 "data/maps/Route104/scripts.pory"
-
-# 981 "data/maps/Route104/scripts.pory"
-Route104_EventScript_Billy::
-# 982 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_BillyPostBattle, MSGBOX_AUTOCLOSE
-# 983 "data/maps/Route104/scripts.pory"
-	end
-# 984 "data/maps/Route104/scripts.pory"
-
-# 985 "data/maps/Route104/scripts.pory"
-Route104_EventScript_Haley::
-# 986 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_HaleyPostBattle, MSGBOX_DEFAULT
-# 987 "data/maps/Route104/scripts.pory"
-	release
-# 988 "data/maps/Route104/scripts.pory"
-	end
-# 989 "data/maps/Route104/scripts.pory"
-
-# 990 "data/maps/Route104/scripts.pory"
-Route104_EventScript_TryRegisterHaleyAfterBattle::
-# 991 "data/maps/Route104/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
-# 992 "data/maps/Route104/scripts.pory"
-	waitmovement 0
-# 993 "data/maps/Route104/scripts.pory"
-	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterHaleyAfterBattle
-# 994 "data/maps/Route104/scripts.pory"
-	release
-# 995 "data/maps/Route104/scripts.pory"
-	end
-# 996 "data/maps/Route104/scripts.pory"
-
-# 997 "data/maps/Route104/scripts.pory"
-Route104_EventScript_RegisterHaleyAfterBattle::
-# 998 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_HaleyRegister2, MSGBOX_DEFAULT
-# 999 "data/maps/Route104/scripts.pory"
-	register_matchcall TRAINER_HALEY_1
-# 1000 "data/maps/Route104/scripts.pory"
-	release
-# 1001 "data/maps/Route104/scripts.pory"
-	end
-# 1002 "data/maps/Route104/scripts.pory"
-
-# 1003 "data/maps/Route104/scripts.pory"
-Route104_EventScript_TryRegisterHaley::
-# 1004 "data/maps/Route104/scripts.pory"
-	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterHaley
-# 1005 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_HaleyPostBattle, MSGBOX_DEFAULT
-# 1006 "data/maps/Route104/scripts.pory"
-	release
-# 1007 "data/maps/Route104/scripts.pory"
-	end
-# 1008 "data/maps/Route104/scripts.pory"
-
-# 1009 "data/maps/Route104/scripts.pory"
-Route104_EventScript_RegisterHaley::
-# 1010 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_HaleyRegister1, MSGBOX_DEFAULT
-# 1011 "data/maps/Route104/scripts.pory"
-	register_matchcall TRAINER_HALEY_1
-# 1012 "data/maps/Route104/scripts.pory"
-	release
-# 1013 "data/maps/Route104/scripts.pory"
-	end
-# 1014 "data/maps/Route104/scripts.pory"
-
-# 1015 "data/maps/Route104/scripts.pory"
-Route104_EventScript_RematchHaley::
-# 1016 "data/maps/Route104/scripts.pory"
-	trainerbattle_rematch TRAINER_HALEY_1, Route104_Text_HaleyRematchIntro, Route104_Text_HaleyRematchDefeat
-# 1017 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_HaleyPostRematch, MSGBOX_AUTOCLOSE
-# 1018 "data/maps/Route104/scripts.pory"
-	end
-# 1019 "data/maps/Route104/scripts.pory"
-
-# 1020 "data/maps/Route104/scripts.pory"
-Route104_EventScript_Winston::
-# 1021 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_WinstonPostBattle, MSGBOX_DEFAULT
-# 1022 "data/maps/Route104/scripts.pory"
-	release
-# 1023 "data/maps/Route104/scripts.pory"
-	end
-# 1024 "data/maps/Route104/scripts.pory"
-
-# 1025 "data/maps/Route104/scripts.pory"
-Route104_EventScript_TryRegisterWinstonAfterBattle::
-# 1026 "data/maps/Route104/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
-# 1027 "data/maps/Route104/scripts.pory"
-	waitmovement 0
-# 1028 "data/maps/Route104/scripts.pory"
-	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterWinstonAfterBattle
-# 1029 "data/maps/Route104/scripts.pory"
-	release
-# 1030 "data/maps/Route104/scripts.pory"
-	end
-# 1031 "data/maps/Route104/scripts.pory"
-
-# 1032 "data/maps/Route104/scripts.pory"
-Route104_EventScript_RegisterWinstonAfterBattle::
-# 1033 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_WinstonRegister2, MSGBOX_DEFAULT
-# 1034 "data/maps/Route104/scripts.pory"
-	register_matchcall TRAINER_WINSTON_1
-# 1035 "data/maps/Route104/scripts.pory"
-	release
-# 1036 "data/maps/Route104/scripts.pory"
-	end
-# 1037 "data/maps/Route104/scripts.pory"
-
-# 1038 "data/maps/Route104/scripts.pory"
-Route104_EventScript_TryRegisterWinston::
-# 1039 "data/maps/Route104/scripts.pory"
-	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterWinston
-# 1040 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_WinstonPostBattle, MSGBOX_DEFAULT
-# 1041 "data/maps/Route104/scripts.pory"
-	release
-# 1042 "data/maps/Route104/scripts.pory"
-	end
-# 1043 "data/maps/Route104/scripts.pory"
-
-# 1044 "data/maps/Route104/scripts.pory"
-Route104_EventScript_RegisterWinston::
-# 1045 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_WinstonRegister1, MSGBOX_DEFAULT
-# 1046 "data/maps/Route104/scripts.pory"
-	register_matchcall TRAINER_WINSTON_1
-# 1047 "data/maps/Route104/scripts.pory"
-	release
-# 1048 "data/maps/Route104/scripts.pory"
-	end
-# 1049 "data/maps/Route104/scripts.pory"
-
-# 1050 "data/maps/Route104/scripts.pory"
-Route104_EventScript_RematchWinston::
-# 1051 "data/maps/Route104/scripts.pory"
-	trainerbattle_rematch TRAINER_WINSTON_1, Route104_Text_WinstonRematchIntro, Route104_Text_WinstonRematchDefeat
-# 1052 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_WinstonPostRematch, MSGBOX_AUTOCLOSE
-# 1053 "data/maps/Route104/scripts.pory"
-	end
-# 1054 "data/maps/Route104/scripts.pory"
-
-# 1055 "data/maps/Route104/scripts.pory"
-Route104_EventScript_CindyWinston::
-# 1056 "data/maps/Route104/scripts.pory"
 lockall
-# 1057 "data/maps/Route104/scripts.pory"
-setvar VAR_0x8008, LOCALID_CINDY
-# 1058 "data/maps/Route104/scripts.pory"
+# 943 "data/maps/Route104/scripts.pory"
+setvar VAR_0x8008, LOCALID_HALEY
+# 944 "data/maps/Route104/scripts.pory"
 playse SE_PIN
-# 1059 "data/maps/Route104/scripts.pory"
+# 945 "data/maps/Route104/scripts.pory"
 applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 1060 "data/maps/Route104/scripts.pory"
+# 946 "data/maps/Route104/scripts.pory"
 waitmovement 0
-# 1061 "data/maps/Route104/scripts.pory"
+# 947 "data/maps/Route104/scripts.pory"
 playbgm MUS_ENCOUNTER_GIRL, TRUE
-# 1062 "data/maps/Route104/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 1063 "data/maps/Route104/scripts.pory"
+# 948 "data/maps/Route104/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+# 949 "data/maps/Route104/scripts.pory"
 waitmovement 0
-# 1064 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_CindyIntro MSGBOX_AUTOCLOSE
-# 1065 "data/maps/Route104/scripts.pory"
-setvar VAR_0x8008, LOCALID_WINSTON
-# 1066 "data/maps/Route104/scripts.pory"
+# 950 "data/maps/Route104/scripts.pory"
+msgbox Route104_Text_HaleyIntro MSGBOX_AUTOCLOSE
+# 951 "data/maps/Route104/scripts.pory"
+setvar VAR_0x8008, LOCALID_BILLY
+# 952 "data/maps/Route104/scripts.pory"
 playse SE_PIN
-# 1067 "data/maps/Route104/scripts.pory"
+# 953 "data/maps/Route104/scripts.pory"
 applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 1068 "data/maps/Route104/scripts.pory"
+# 954 "data/maps/Route104/scripts.pory"
 waitmovement 0
-# 1069 "data/maps/Route104/scripts.pory"
+# 955 "data/maps/Route104/scripts.pory"
 playbgm MUS_ENCOUNTER_MALE, TRUE
-# 1070 "data/maps/Route104/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 1071 "data/maps/Route104/scripts.pory"
+# 956 "data/maps/Route104/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+# 957 "data/maps/Route104/scripts.pory"
 waitmovement 0
-# 1072 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_WinstonIntro, MSGBOX_AUTOCLOSE
-# 1073 "data/maps/Route104/scripts.pory"
-goto Route104_EventScript_CindyWinstonDoMultiBattle
-# 1074 "data/maps/Route104/scripts.pory"
+# 958 "data/maps/Route104/scripts.pory"
+msgbox Route104_Text_BillyIntro, MSGBOX_AUTOCLOSE
+# 959 "data/maps/Route104/scripts.pory"
+goto Route104_EventScript_HaleyBillyDoMultiBattle
+# 960 "data/maps/Route104/scripts.pory"
 releaseall
-# 1075 "data/maps/Route104/scripts.pory"
+# 961 "data/maps/Route104/scripts.pory"
 end
-# 1076 "data/maps/Route104/scripts.pory"
+# 962 "data/maps/Route104/scripts.pory"
 
-# 1077 "data/maps/Route104/scripts.pory"
-Route104_EventScript_CindyWinstonDoMultiBattle::
-# 1078 "data/maps/Route104/scripts.pory"
+# 963 "data/maps/Route104/scripts.pory"
+Route104_EventScript_HaleyBillyDoMultiBattle::
+# 964 "data/maps/Route104/scripts.pory"
 playbgm MUS_ROUTE110, TRUE
-# 1079 "data/maps/Route104/scripts.pory"
-multi_2p_vs_2 TRAINER_CINDY_1, Route104_Text_CindyDefeat, TRAINER_WINSTON_1, Route104_Text_WinstonDefeat, PARTNER_EMMIE
-# 1080 "data/maps/Route104/scripts.pory"
+# 965 "data/maps/Route104/scripts.pory"
+multi_2p_vs_2 TRAINER_HALEY_1, Route104_Text_HaleyDefeat, TRAINER_BILLY, Route104_Text_BillyDefeat, PARTNER_EMMIE
+# 966 "data/maps/Route104/scripts.pory"
 switch VAR_RESULT
-# 1081 "data/maps/Route104/scripts.pory"
-case 1, Route104_EventScript_CindyWinstonVictory
-# 1082 "data/maps/Route104/scripts.pory"
+# 967 "data/maps/Route104/scripts.pory"
+case 1, Route104_EventScript_HaleyBillyVictory
+# 968 "data/maps/Route104/scripts.pory"
 fadescreen FADE_TO_BLACK
-# 1083 "data/maps/Route104/scripts.pory"
+# 969 "data/maps/Route104/scripts.pory"
 special SetCB2WhiteOut
-# 1084 "data/maps/Route104/scripts.pory"
+# 970 "data/maps/Route104/scripts.pory"
 waitstate
-# 1085 "data/maps/Route104/scripts.pory"
+# 971 "data/maps/Route104/scripts.pory"
 
-# 1086 "data/maps/Route104/scripts.pory"
-Route104_EventScript_CindyWinstonVictory::
-# 1087 "data/maps/Route104/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 1088 "data/maps/Route104/scripts.pory"
+# 972 "data/maps/Route104/scripts.pory"
+Route104_EventScript_HaleyBillyVictory::
+# 973 "data/maps/Route104/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+# 974 "data/maps/Route104/scripts.pory"
 waitmovement 0
-# 1089 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_CindyPostBattle, MSGBOX_AUTOCLOSE
-# 1090 "data/maps/Route104/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 1091 "data/maps/Route104/scripts.pory"
+# 975 "data/maps/Route104/scripts.pory"
+msgbox Route104_Text_HaleyPostBattle, MSGBOX_AUTOCLOSE
+# 976 "data/maps/Route104/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+# 977 "data/maps/Route104/scripts.pory"
 waitmovement 0
-# 1092 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_WinstonPostBattle, MSGBOX_AUTOCLOSE
-# 1093 "data/maps/Route104/scripts.pory"
+# 978 "data/maps/Route104/scripts.pory"
+msgbox Route104_Text_BillyPostBattle, MSGBOX_AUTOCLOSE
+# 979 "data/maps/Route104/scripts.pory"
 addvar VAR_ROUTE104_STATE, 1
-# 1094 "data/maps/Route104/scripts.pory"
+# 980 "data/maps/Route104/scripts.pory"
 end
-# 1095 "data/maps/Route104/scripts.pory"
+# 981 "data/maps/Route104/scripts.pory"
 
-# 1096 "data/maps/Route104/scripts.pory"
-Route104_EventScript_Cindy::
-# 1097 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_CindyPostBattle, MSGBOX_DEFAULT
-# 1098 "data/maps/Route104/scripts.pory"
-	release
-# 1099 "data/maps/Route104/scripts.pory"
+# 982 "data/maps/Route104/scripts.pory"
+Route104_EventScript_Billy::
+# 983 "data/maps/Route104/scripts.pory"
+	faceplayer
+# 984 "data/maps/Route104/scripts.pory"
+	msgbox Route104_Text_BillyPostBattle, MSGBOX_AUTOCLOSE
+# 985 "data/maps/Route104/scripts.pory"
 	end
-# 1100 "data/maps/Route104/scripts.pory"
+# 986 "data/maps/Route104/scripts.pory"
 
-# 1101 "data/maps/Route104/scripts.pory"
-Route104_EventScript_TryRegisterCindyAfterBattle::
-# 1102 "data/maps/Route104/scripts.pory"
+# 987 "data/maps/Route104/scripts.pory"
+Route104_EventScript_Haley::
+# 988 "data/maps/Route104/scripts.pory"
+	faceplayer
+# 989 "data/maps/Route104/scripts.pory"
+	msgbox Route104_Text_HaleyPostBattle, MSGBOX_DEFAULT
+# 990 "data/maps/Route104/scripts.pory"
+	release
+# 991 "data/maps/Route104/scripts.pory"
+	end
+# 992 "data/maps/Route104/scripts.pory"
+
+# 993 "data/maps/Route104/scripts.pory"
+Route104_EventScript_TryRegisterHaleyAfterBattle::
+# 994 "data/maps/Route104/scripts.pory"
 	special PlayerFaceTrainerAfterBattle
-# 1103 "data/maps/Route104/scripts.pory"
+# 995 "data/maps/Route104/scripts.pory"
 	waitmovement 0
-# 1104 "data/maps/Route104/scripts.pory"
-	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterCindyAfterBattle
-# 1105 "data/maps/Route104/scripts.pory"
+# 996 "data/maps/Route104/scripts.pory"
+	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterHaleyAfterBattle
+# 997 "data/maps/Route104/scripts.pory"
 	release
-# 1106 "data/maps/Route104/scripts.pory"
+# 998 "data/maps/Route104/scripts.pory"
 	end
-# 1107 "data/maps/Route104/scripts.pory"
+# 999 "data/maps/Route104/scripts.pory"
 
-# 1108 "data/maps/Route104/scripts.pory"
-Route104_EventScript_RegisterCindyAfterBattle::
-# 1109 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_CindyRegister2, MSGBOX_DEFAULT
-# 1110 "data/maps/Route104/scripts.pory"
-	register_matchcall TRAINER_CINDY_1
-# 1111 "data/maps/Route104/scripts.pory"
+# 1000 "data/maps/Route104/scripts.pory"
+Route104_EventScript_RegisterHaleyAfterBattle::
+# 1001 "data/maps/Route104/scripts.pory"
+	msgbox Route104_Text_HaleyRegister2, MSGBOX_DEFAULT
+# 1002 "data/maps/Route104/scripts.pory"
+	register_matchcall TRAINER_HALEY_1
+# 1003 "data/maps/Route104/scripts.pory"
 	release
-# 1112 "data/maps/Route104/scripts.pory"
+# 1004 "data/maps/Route104/scripts.pory"
 	end
-# 1113 "data/maps/Route104/scripts.pory"
+# 1005 "data/maps/Route104/scripts.pory"
 
-# 1114 "data/maps/Route104/scripts.pory"
-Route104_EventScript_TryRegisterCindy::
-# 1115 "data/maps/Route104/scripts.pory"
-	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterCindy
-# 1116 "data/maps/Route104/scripts.pory"
+# 1006 "data/maps/Route104/scripts.pory"
+Route104_EventScript_TryRegisterHaley::
+# 1007 "data/maps/Route104/scripts.pory"
+	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterHaley
+# 1008 "data/maps/Route104/scripts.pory"
+	msgbox Route104_Text_HaleyPostBattle, MSGBOX_DEFAULT
+# 1009 "data/maps/Route104/scripts.pory"
+	release
+# 1010 "data/maps/Route104/scripts.pory"
+	end
+# 1011 "data/maps/Route104/scripts.pory"
+
+# 1012 "data/maps/Route104/scripts.pory"
+Route104_EventScript_RegisterHaley::
+# 1013 "data/maps/Route104/scripts.pory"
+	msgbox Route104_Text_HaleyRegister1, MSGBOX_DEFAULT
+# 1014 "data/maps/Route104/scripts.pory"
+	register_matchcall TRAINER_HALEY_1
+# 1015 "data/maps/Route104/scripts.pory"
+	release
+# 1016 "data/maps/Route104/scripts.pory"
+	end
+# 1017 "data/maps/Route104/scripts.pory"
+
+# 1018 "data/maps/Route104/scripts.pory"
+Route104_EventScript_RematchHaley::
+# 1019 "data/maps/Route104/scripts.pory"
+	trainerbattle_rematch TRAINER_HALEY_1, Route104_Text_HaleyRematchIntro, Route104_Text_HaleyRematchDefeat
+# 1020 "data/maps/Route104/scripts.pory"
+	msgbox Route104_Text_HaleyPostRematch, MSGBOX_AUTOCLOSE
+# 1021 "data/maps/Route104/scripts.pory"
+	end
+# 1022 "data/maps/Route104/scripts.pory"
+
+# 1023 "data/maps/Route104/scripts.pory"
+Route104_EventScript_Winston::
+# 1024 "data/maps/Route104/scripts.pory"
+	faceplayer
+# 1025 "data/maps/Route104/scripts.pory"
+	msgbox Route104_Text_WinstonPostBattle, MSGBOX_DEFAULT
+# 1026 "data/maps/Route104/scripts.pory"
+	release
+# 1027 "data/maps/Route104/scripts.pory"
+	end
+# 1028 "data/maps/Route104/scripts.pory"
+
+# 1029 "data/maps/Route104/scripts.pory"
+Route104_EventScript_TryRegisterWinstonAfterBattle::
+# 1030 "data/maps/Route104/scripts.pory"
+	special PlayerFaceTrainerAfterBattle
+# 1031 "data/maps/Route104/scripts.pory"
+	waitmovement 0
+# 1032 "data/maps/Route104/scripts.pory"
+	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterWinstonAfterBattle
+# 1033 "data/maps/Route104/scripts.pory"
+	release
+# 1034 "data/maps/Route104/scripts.pory"
+	end
+# 1035 "data/maps/Route104/scripts.pory"
+
+# 1036 "data/maps/Route104/scripts.pory"
+Route104_EventScript_RegisterWinstonAfterBattle::
+# 1037 "data/maps/Route104/scripts.pory"
+	msgbox Route104_Text_WinstonRegister2, MSGBOX_DEFAULT
+# 1038 "data/maps/Route104/scripts.pory"
+	register_matchcall TRAINER_WINSTON_1
+# 1039 "data/maps/Route104/scripts.pory"
+	release
+# 1040 "data/maps/Route104/scripts.pory"
+	end
+# 1041 "data/maps/Route104/scripts.pory"
+
+# 1042 "data/maps/Route104/scripts.pory"
+Route104_EventScript_TryRegisterWinston::
+# 1043 "data/maps/Route104/scripts.pory"
+	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterWinston
+# 1044 "data/maps/Route104/scripts.pory"
+	msgbox Route104_Text_WinstonPostBattle, MSGBOX_DEFAULT
+# 1045 "data/maps/Route104/scripts.pory"
+	release
+# 1046 "data/maps/Route104/scripts.pory"
+	end
+# 1047 "data/maps/Route104/scripts.pory"
+
+# 1048 "data/maps/Route104/scripts.pory"
+Route104_EventScript_RegisterWinston::
+# 1049 "data/maps/Route104/scripts.pory"
+	msgbox Route104_Text_WinstonRegister1, MSGBOX_DEFAULT
+# 1050 "data/maps/Route104/scripts.pory"
+	register_matchcall TRAINER_WINSTON_1
+# 1051 "data/maps/Route104/scripts.pory"
+	release
+# 1052 "data/maps/Route104/scripts.pory"
+	end
+# 1053 "data/maps/Route104/scripts.pory"
+
+# 1054 "data/maps/Route104/scripts.pory"
+Route104_EventScript_RematchWinston::
+# 1055 "data/maps/Route104/scripts.pory"
+	trainerbattle_rematch TRAINER_WINSTON_1, Route104_Text_WinstonRematchIntro, Route104_Text_WinstonRematchDefeat
+# 1056 "data/maps/Route104/scripts.pory"
+	msgbox Route104_Text_WinstonPostRematch, MSGBOX_AUTOCLOSE
+# 1057 "data/maps/Route104/scripts.pory"
+	end
+# 1058 "data/maps/Route104/scripts.pory"
+
+# 1059 "data/maps/Route104/scripts.pory"
+Route104_EventScript_CindyWinston::
+# 1060 "data/maps/Route104/scripts.pory"
+lockall
+# 1061 "data/maps/Route104/scripts.pory"
+setvar VAR_0x8008, LOCALID_CINDY
+# 1062 "data/maps/Route104/scripts.pory"
+playse SE_PIN
+# 1063 "data/maps/Route104/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 1064 "data/maps/Route104/scripts.pory"
+waitmovement 0
+# 1065 "data/maps/Route104/scripts.pory"
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+# 1066 "data/maps/Route104/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 1067 "data/maps/Route104/scripts.pory"
+waitmovement 0
+# 1068 "data/maps/Route104/scripts.pory"
+msgbox Route104_Text_CindyIntro MSGBOX_AUTOCLOSE
+# 1069 "data/maps/Route104/scripts.pory"
+setvar VAR_0x8008, LOCALID_WINSTON
+# 1070 "data/maps/Route104/scripts.pory"
+playse SE_PIN
+# 1071 "data/maps/Route104/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 1072 "data/maps/Route104/scripts.pory"
+waitmovement 0
+# 1073 "data/maps/Route104/scripts.pory"
+playbgm MUS_ENCOUNTER_MALE, TRUE
+# 1074 "data/maps/Route104/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 1075 "data/maps/Route104/scripts.pory"
+waitmovement 0
+# 1076 "data/maps/Route104/scripts.pory"
+msgbox Route104_Text_WinstonIntro, MSGBOX_AUTOCLOSE
+# 1077 "data/maps/Route104/scripts.pory"
+goto Route104_EventScript_CindyWinstonDoMultiBattle
+# 1078 "data/maps/Route104/scripts.pory"
+releaseall
+# 1079 "data/maps/Route104/scripts.pory"
+end
+# 1080 "data/maps/Route104/scripts.pory"
+
+# 1081 "data/maps/Route104/scripts.pory"
+Route104_EventScript_CindyWinstonDoMultiBattle::
+# 1082 "data/maps/Route104/scripts.pory"
+playbgm MUS_ROUTE110, TRUE
+# 1083 "data/maps/Route104/scripts.pory"
+multi_2p_vs_2 TRAINER_CINDY_1, Route104_Text_CindyDefeat, TRAINER_WINSTON_1, Route104_Text_WinstonDefeat, PARTNER_EMMIE
+# 1084 "data/maps/Route104/scripts.pory"
+switch VAR_RESULT
+# 1085 "data/maps/Route104/scripts.pory"
+case 1, Route104_EventScript_CindyWinstonVictory
+# 1086 "data/maps/Route104/scripts.pory"
+fadescreen FADE_TO_BLACK
+# 1087 "data/maps/Route104/scripts.pory"
+special SetCB2WhiteOut
+# 1088 "data/maps/Route104/scripts.pory"
+waitstate
+# 1089 "data/maps/Route104/scripts.pory"
+
+# 1090 "data/maps/Route104/scripts.pory"
+Route104_EventScript_CindyWinstonVictory::
+# 1091 "data/maps/Route104/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 1092 "data/maps/Route104/scripts.pory"
+waitmovement 0
+# 1093 "data/maps/Route104/scripts.pory"
+msgbox Route104_Text_CindyPostBattle, MSGBOX_AUTOCLOSE
+# 1094 "data/maps/Route104/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 1095 "data/maps/Route104/scripts.pory"
+waitmovement 0
+# 1096 "data/maps/Route104/scripts.pory"
+msgbox Route104_Text_WinstonPostBattle, MSGBOX_AUTOCLOSE
+# 1097 "data/maps/Route104/scripts.pory"
+addvar VAR_ROUTE104_STATE, 1
+# 1098 "data/maps/Route104/scripts.pory"
+end
+# 1099 "data/maps/Route104/scripts.pory"
+
+# 1100 "data/maps/Route104/scripts.pory"
+Route104_EventScript_Cindy::
+# 1101 "data/maps/Route104/scripts.pory"
+	faceplayer
+# 1102 "data/maps/Route104/scripts.pory"
 	msgbox Route104_Text_CindyPostBattle, MSGBOX_DEFAULT
-# 1117 "data/maps/Route104/scripts.pory"
+# 1103 "data/maps/Route104/scripts.pory"
 	release
-# 1118 "data/maps/Route104/scripts.pory"
+# 1104 "data/maps/Route104/scripts.pory"
 	end
-# 1119 "data/maps/Route104/scripts.pory"
+# 1105 "data/maps/Route104/scripts.pory"
 
-# 1120 "data/maps/Route104/scripts.pory"
-Route104_EventScript_RegisterCindy::
-# 1121 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_CindyRegister1, MSGBOX_DEFAULT
-# 1122 "data/maps/Route104/scripts.pory"
+# 1106 "data/maps/Route104/scripts.pory"
+Route104_EventScript_TryRegisterCindyAfterBattle::
+# 1107 "data/maps/Route104/scripts.pory"
+	special PlayerFaceTrainerAfterBattle
+# 1108 "data/maps/Route104/scripts.pory"
+	waitmovement 0
+# 1109 "data/maps/Route104/scripts.pory"
+	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterCindyAfterBattle
+# 1110 "data/maps/Route104/scripts.pory"
+	release
+# 1111 "data/maps/Route104/scripts.pory"
+	end
+# 1112 "data/maps/Route104/scripts.pory"
+
+# 1113 "data/maps/Route104/scripts.pory"
+Route104_EventScript_RegisterCindyAfterBattle::
+# 1114 "data/maps/Route104/scripts.pory"
+	msgbox Route104_Text_CindyRegister2, MSGBOX_DEFAULT
+# 1115 "data/maps/Route104/scripts.pory"
 	register_matchcall TRAINER_CINDY_1
-# 1123 "data/maps/Route104/scripts.pory"
+# 1116 "data/maps/Route104/scripts.pory"
 	release
-# 1124 "data/maps/Route104/scripts.pory"
+# 1117 "data/maps/Route104/scripts.pory"
 	end
-# 1125 "data/maps/Route104/scripts.pory"
+# 1118 "data/maps/Route104/scripts.pory"
 
+# 1119 "data/maps/Route104/scripts.pory"
+Route104_EventScript_TryRegisterCindy::
+# 1120 "data/maps/Route104/scripts.pory"
+	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterCindy
+# 1121 "data/maps/Route104/scripts.pory"
+	msgbox Route104_Text_CindyPostBattle, MSGBOX_DEFAULT
+# 1122 "data/maps/Route104/scripts.pory"
+	release
+# 1123 "data/maps/Route104/scripts.pory"
+	end
+# 1124 "data/maps/Route104/scripts.pory"
+
+# 1125 "data/maps/Route104/scripts.pory"
+Route104_EventScript_RegisterCindy::
 # 1126 "data/maps/Route104/scripts.pory"
-Route104_EventScript_RematchCindy::
+	msgbox Route104_Text_CindyRegister1, MSGBOX_DEFAULT
 # 1127 "data/maps/Route104/scripts.pory"
-	trainerbattle_rematch TRAINER_CINDY_1, Route104_Text_CindyRematchIntro, Route104_Text_CindyRematchDefeat
+	register_matchcall TRAINER_CINDY_1
 # 1128 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_CindyPostRematch, MSGBOX_AUTOCLOSE
+	release
 # 1129 "data/maps/Route104/scripts.pory"
 	end
 # 1130 "data/maps/Route104/scripts.pory"
 
 # 1131 "data/maps/Route104/scripts.pory"
-Route104_EventScript_GinaMia::
+Route104_EventScript_RematchCindy::
 # 1132 "data/maps/Route104/scripts.pory"
-lockall
+	trainerbattle_rematch TRAINER_CINDY_1, Route104_Text_CindyRematchIntro, Route104_Text_CindyRematchDefeat
 # 1133 "data/maps/Route104/scripts.pory"
-setvar VAR_0x8008, LOCALID_GINA
+	msgbox Route104_Text_CindyPostRematch, MSGBOX_AUTOCLOSE
 # 1134 "data/maps/Route104/scripts.pory"
-playse SE_PIN
-# 1135 "data/maps/Route104/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 1136 "data/maps/Route104/scripts.pory"
-waitmovement 0
-# 1137 "data/maps/Route104/scripts.pory"
-playbgm MUS_ENCOUNTER_TWINS, TRUE
-# 1138 "data/maps/Route104/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 1139 "data/maps/Route104/scripts.pory"
-waitmovement 0
-# 1140 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_GinaIntro, MSGBOX_AUTOCLOSE
-# 1141 "data/maps/Route104/scripts.pory"
-goto Route104_EventScript_GinaMiaDoMultiBattle
-# 1142 "data/maps/Route104/scripts.pory"
-releaseall
-# 1143 "data/maps/Route104/scripts.pory"
-end
-# 1144 "data/maps/Route104/scripts.pory"
-
-# 1145 "data/maps/Route104/scripts.pory"
-Route104_EventScript_GinaMiaDoMultiBattle::
-# 1146 "data/maps/Route104/scripts.pory"
-playbgm MUS_ROUTE110, TRUE
-# 1147 "data/maps/Route104/scripts.pory"
-multi_2p_vs_1 TRAINER_GINA_AND_MIA_1, Route104_Text_GinaDefeat, PARTNER_EMMIE
-# 1148 "data/maps/Route104/scripts.pory"
-switch VAR_RESULT
-# 1149 "data/maps/Route104/scripts.pory"
-case 1, Route104_EventScript_GinaMiaVictory
-# 1150 "data/maps/Route104/scripts.pory"
-fadescreen FADE_TO_BLACK
-# 1151 "data/maps/Route104/scripts.pory"
-special SetCB2WhiteOut
-# 1152 "data/maps/Route104/scripts.pory"
-waitstate
-# 1153 "data/maps/Route104/scripts.pory"
-
-# 1154 "data/maps/Route104/scripts.pory"
-Route104_EventScript_GinaMiaVictory::
-# 1155 "data/maps/Route104/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 1156 "data/maps/Route104/scripts.pory"
-waitmovement 0
-# 1157 "data/maps/Route104/scripts.pory"
-msgbox Route104_Text_GinaPostBattle, MSGBOX_AUTOCLOSE
-# 1158 "data/maps/Route104/scripts.pory"
-addvar VAR_ROUTE104_STATE, 1
-# 1159 "data/maps/Route104/scripts.pory"
-end
-# 1160 "data/maps/Route104/scripts.pory"
-
-# 1161 "data/maps/Route104/scripts.pory"
-Route104_EventScript_Gina::
-# 1162 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_GinaPostBattle, MSGBOX_DEFAULT
-# 1163 "data/maps/Route104/scripts.pory"
-	release
-# 1164 "data/maps/Route104/scripts.pory"
 	end
+# 1135 "data/maps/Route104/scripts.pory"
+
+# 1136 "data/maps/Route104/scripts.pory"
+Route104_EventScript_GinaMia::
+# 1137 "data/maps/Route104/scripts.pory"
+lockall
+# 1138 "data/maps/Route104/scripts.pory"
+setvar VAR_0x8008, LOCALID_GINA
+# 1139 "data/maps/Route104/scripts.pory"
+playse SE_PIN
+# 1140 "data/maps/Route104/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 1141 "data/maps/Route104/scripts.pory"
+waitmovement 0
+# 1142 "data/maps/Route104/scripts.pory"
+playbgm MUS_ENCOUNTER_TWINS, TRUE
+# 1143 "data/maps/Route104/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 1144 "data/maps/Route104/scripts.pory"
+waitmovement 0
+# 1145 "data/maps/Route104/scripts.pory"
+msgbox Route104_Text_GinaIntro, MSGBOX_AUTOCLOSE
+# 1146 "data/maps/Route104/scripts.pory"
+goto Route104_EventScript_GinaMiaDoMultiBattle
+# 1147 "data/maps/Route104/scripts.pory"
+releaseall
+# 1148 "data/maps/Route104/scripts.pory"
+end
+# 1149 "data/maps/Route104/scripts.pory"
+
+# 1150 "data/maps/Route104/scripts.pory"
+Route104_EventScript_GinaMiaDoMultiBattle::
+# 1151 "data/maps/Route104/scripts.pory"
+playbgm MUS_ROUTE110, TRUE
+# 1152 "data/maps/Route104/scripts.pory"
+multi_2p_vs_1 TRAINER_GINA_AND_MIA_1, Route104_Text_GinaDefeat, PARTNER_EMMIE
+# 1153 "data/maps/Route104/scripts.pory"
+switch VAR_RESULT
+# 1154 "data/maps/Route104/scripts.pory"
+case 1, Route104_EventScript_GinaMiaVictory
+# 1155 "data/maps/Route104/scripts.pory"
+fadescreen FADE_TO_BLACK
+# 1156 "data/maps/Route104/scripts.pory"
+special SetCB2WhiteOut
+# 1157 "data/maps/Route104/scripts.pory"
+waitstate
+# 1158 "data/maps/Route104/scripts.pory"
+
+# 1159 "data/maps/Route104/scripts.pory"
+Route104_EventScript_GinaMiaVictory::
+# 1160 "data/maps/Route104/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 1161 "data/maps/Route104/scripts.pory"
+waitmovement 0
+# 1162 "data/maps/Route104/scripts.pory"
+msgbox Route104_Text_GinaPostBattle, MSGBOX_AUTOCLOSE
+# 1163 "data/maps/Route104/scripts.pory"
+addvar VAR_ROUTE104_STATE, 1
+# 1164 "data/maps/Route104/scripts.pory"
+end
 # 1165 "data/maps/Route104/scripts.pory"
 
 # 1166 "data/maps/Route104/scripts.pory"
-Route104_EventScript_Mia::
+Route104_EventScript_Gina::
 # 1167 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_MiaPostBattle, MSGBOX_DEFAULT
+	faceplayer
 # 1168 "data/maps/Route104/scripts.pory"
-	release
+	msgbox Route104_Text_GinaPostBattle, MSGBOX_DEFAULT
 # 1169 "data/maps/Route104/scripts.pory"
-	end
+	release
 # 1170 "data/maps/Route104/scripts.pory"
-
-# 1171 "data/maps/Route104/scripts.pory"
-Route104_EventScript_Darian::
-# 1172 "data/maps/Route104/scripts.pory"
-	msgbox Route104_Text_DarianPostBattle, MSGBOX_AUTOCLOSE
-# 1173 "data/maps/Route104/scripts.pory"
 	end
+# 1171 "data/maps/Route104/scripts.pory"
+
+# 1172 "data/maps/Route104/scripts.pory"
+Route104_EventScript_Mia::
+# 1173 "data/maps/Route104/scripts.pory"
+	faceplayer
 # 1174 "data/maps/Route104/scripts.pory"
-
+	msgbox Route104_Text_MiaPostBattle, MSGBOX_DEFAULT
 # 1175 "data/maps/Route104/scripts.pory"
-Route104_Text_BrineyLivesInSeasideCottage:
+	release
 # 1176 "data/maps/Route104/scripts.pory"
-	.string "That seaside cottage is where\n"
+	end
 # 1177 "data/maps/Route104/scripts.pory"
-	.string "MR. BRINEY lives.\p"
+
 # 1178 "data/maps/Route104/scripts.pory"
-	.string "He was once a mighty sailor who never\n"
+Route104_EventScript_Darian::
 # 1179 "data/maps/Route104/scripts.pory"
-	.string "feared the sea, however stormy.$"
+	faceplayer
 # 1180 "data/maps/Route104/scripts.pory"
-
+	msgbox Route104_Text_DarianPostBattle, MSGBOX_AUTOCLOSE
 # 1181 "data/maps/Route104/scripts.pory"
-Route104_Text_WhatsItLikeAtBottomOfSea:
+	end
 # 1182 "data/maps/Route104/scripts.pory"
-	.string "The sea, huh?\p"
+
 # 1183 "data/maps/Route104/scripts.pory"
-	.string "I wonder what it's like at the bottom\n"
+Route104_Text_BrineyLivesInSeasideCottage:
 # 1184 "data/maps/Route104/scripts.pory"
-	.string "of the sea?$"
+	.string "That seaside cottage is where\n"
 # 1185 "data/maps/Route104/scripts.pory"
-
+	.string "MR. BRINEY lives.\p"
 # 1186 "data/maps/Route104/scripts.pory"
-Route104_Text_ThrowBallAtWeakenedPokemon:
+	.string "He was once a mighty sailor who never\n"
 # 1187 "data/maps/Route104/scripts.pory"
-	.string "If you're going to throw a POKé BALL,\n"
+	.string "feared the sea, however stormy.$"
 # 1188 "data/maps/Route104/scripts.pory"
-	.string "weaken the wild POKéMON first.\p"
+
 # 1189 "data/maps/Route104/scripts.pory"
-	.string "It will be easier to catch if it's been\n"
+Route104_Text_WhatsItLikeAtBottomOfSea:
 # 1190 "data/maps/Route104/scripts.pory"
-	.string "poisoned, burned, or lulled to sleep.$"
+	.string "The sea, huh?\p"
 # 1191 "data/maps/Route104/scripts.pory"
-
+	.string "I wonder what it's like at the bottom\n"
 # 1192 "data/maps/Route104/scripts.pory"
-Route104_Text_OnlyThrowBallAtWildPokemon:
+	.string "of the sea?$"
 # 1193 "data/maps/Route104/scripts.pory"
-	.string "You're a thief if you try to steal\n"
+
 # 1194 "data/maps/Route104/scripts.pory"
-	.string "someone else's POKéMON.\p"
+Route104_Text_ThrowBallAtWeakenedPokemon:
 # 1195 "data/maps/Route104/scripts.pory"
-	.string "You should throw POKé BALLS only at\n"
+	.string "If you're going to throw a POKé BALL,\n"
 # 1196 "data/maps/Route104/scripts.pory"
-	.string "wild POKéMON.$"
+	.string "weaken the wild POKéMON first.\p"
 # 1197 "data/maps/Route104/scripts.pory"
-
+	.string "It will be easier to catch if it's been\n"
 # 1198 "data/maps/Route104/scripts.pory"
-Route104_Text_ImNotATrainer:
+	.string "poisoned, burned, or lulled to sleep.$"
 # 1199 "data/maps/Route104/scripts.pory"
-	.string "Oh, no, I'm not a TRAINER.\p"
+
 # 1200 "data/maps/Route104/scripts.pory"
-	.string "But that's right, if TRAINERS lock eyes,\n"
+Route104_Text_OnlyThrowBallAtWildPokemon:
 # 1201 "data/maps/Route104/scripts.pory"
-	.string "it's a challenge to battle.\p"
+	.string "You're a thief if you try to steal\n"
 # 1202 "data/maps/Route104/scripts.pory"
-	.string "If you don't want to battle, stay out\n"
+	.string "someone else's POKéMON.\p"
 # 1203 "data/maps/Route104/scripts.pory"
-	.string "of their sight.$"
+	.string "You should throw POKé BALLS only at\n"
 # 1204 "data/maps/Route104/scripts.pory"
-
+	.string "wild POKéMON.$"
 # 1205 "data/maps/Route104/scripts.pory"
-Route104_Text_LikeFillingMouthWithSeedsTakeThis:
+
 # 1206 "data/maps/Route104/scripts.pory"
-	.string "I like filling my mouth with seeds,\n"
+Route104_Text_ImNotATrainer:
 # 1207 "data/maps/Route104/scripts.pory"
-	.string "then spitting them out fast!\p"
+	.string "Oh, no, I'm not a TRAINER.\p"
 # 1208 "data/maps/Route104/scripts.pory"
-	.string "You can have this, so you try it out!\p"
+	.string "But that's right, if TRAINERS lock eyes,\n"
 # 1209 "data/maps/Route104/scripts.pory"
-	.string "Use it on a POKéMON, and it will learn\n"
+	.string "it's a challenge to battle.\p"
 # 1210 "data/maps/Route104/scripts.pory"
-	.string "a move for firing seeds rapidly.$"
+	.string "If you don't want to battle, stay out\n"
 # 1211 "data/maps/Route104/scripts.pory"
-
+	.string "of their sight.$"
 # 1212 "data/maps/Route104/scripts.pory"
-Route104_Text_TMsAreOneTimeUse:
-# 1213 "data/maps/Route104/scripts.pory"
-	.string "A word of advice!\p"
-# 1214 "data/maps/Route104/scripts.pory"
-	.string "A TM, TECHNICAL MACHINE, is good only\n"
-# 1215 "data/maps/Route104/scripts.pory"
-	.string "for one-time use.\p"
-# 1216 "data/maps/Route104/scripts.pory"
-	.string "Once you use it, it's gone.\n"
-# 1217 "data/maps/Route104/scripts.pory"
-	.string "Think twice before using it!$"
-# 1218 "data/maps/Route104/scripts.pory"
 
+# 1213 "data/maps/Route104/scripts.pory"
+Route104_Text_LikeFillingMouthWithSeedsTakeThis:
+# 1214 "data/maps/Route104/scripts.pory"
+	.string "I like filling my mouth with seeds,\n"
+# 1215 "data/maps/Route104/scripts.pory"
+	.string "then spitting them out fast!\p"
+# 1216 "data/maps/Route104/scripts.pory"
+	.string "You can have this, so you try it out!\p"
+# 1217 "data/maps/Route104/scripts.pory"
+	.string "Use it on a POKéMON, and it will learn\n"
+# 1218 "data/maps/Route104/scripts.pory"
+	.string "a move for firing seeds rapidly.$"
 # 1219 "data/maps/Route104/scripts.pory"
-Route104_Text_DontNeedThisTakeIt:
+
 # 1220 "data/maps/Route104/scripts.pory"
-	.string "This FLOWER SHOP started selling\n"
+Route104_Text_TMsAreOneTimeUse:
 # 1221 "data/maps/Route104/scripts.pory"
-	.string "saplings recently.\p"
+	.string "A word of advice!\p"
 # 1222 "data/maps/Route104/scripts.pory"
-	.string "It made me so happy, I went overboard\n"
+	.string "A TM, TECHNICAL MACHINE, is good only\n"
 # 1223 "data/maps/Route104/scripts.pory"
-	.string "shopping.\p"
+	.string "for one-time use.\p"
 # 1224 "data/maps/Route104/scripts.pory"
-	.string "I don't need this WHITE HERB anymore.\n"
+	.string "Once you use it, it's gone.\n"
 # 1225 "data/maps/Route104/scripts.pory"
-	.string "Would you take it, please?$"
+	.string "Think twice before using it!$"
 # 1226 "data/maps/Route104/scripts.pory"
 
 # 1227 "data/maps/Route104/scripts.pory"
-Route104_Text_FlowerShopSellingSaplings:
+Route104_Text_DontNeedThisTakeIt:
 # 1228 "data/maps/Route104/scripts.pory"
 	.string "This FLOWER SHOP started selling\n"
 # 1229 "data/maps/Route104/scripts.pory"
@@ -2459,246 +2459,262 @@ Route104_Text_FlowerShopSellingSaplings:
 # 1230 "data/maps/Route104/scripts.pory"
 	.string "It made me so happy, I went overboard\n"
 # 1231 "data/maps/Route104/scripts.pory"
-	.string "shopping. Where should I put them?$"
+	.string "shopping.\p"
 # 1232 "data/maps/Route104/scripts.pory"
-
+	.string "I don't need this WHITE HERB anymore.\n"
 # 1233 "data/maps/Route104/scripts.pory"
-Route104_Text_MrBrineysCottage:
+	.string "Would you take it, please?$"
 # 1234 "data/maps/Route104/scripts.pory"
-	.string "MR. BRINEY'S COTTAGE$"
+
 # 1235 "data/maps/Route104/scripts.pory"
-
+Route104_Text_FlowerShopSellingSaplings:
 # 1236 "data/maps/Route104/scripts.pory"
-Route104_Text_RouteSignPetalburg:
+	.string "This FLOWER SHOP started selling\n"
 # 1237 "data/maps/Route104/scripts.pory"
-	.string "ROUTE 1O4\n"
+	.string "saplings recently.\p"
 # 1238 "data/maps/Route104/scripts.pory"
-	.string "{RIGHT_ARROW} PETALBURG CITY$"
+	.string "It made me so happy, I went overboard\n"
 # 1239 "data/maps/Route104/scripts.pory"
-
+	.string "shopping. Where should I put them?$"
 # 1240 "data/maps/Route104/scripts.pory"
-Route104_Text_RouteSignRustboro:
+
 # 1241 "data/maps/Route104/scripts.pory"
-	.string "ROUTE 1O4\n"
+Route104_Text_MrBrineysCottage:
 # 1242 "data/maps/Route104/scripts.pory"
-	.string "{UP_ARROW} RUSTBORO CITY$"
+	.string "MR. BRINEY'S COTTAGE$"
 # 1243 "data/maps/Route104/scripts.pory"
 
 # 1244 "data/maps/Route104/scripts.pory"
-Route104_Text_PrettyPetalFlowShop:
+Route104_Text_RouteSignPetalburg:
 # 1245 "data/maps/Route104/scripts.pory"
-	.string "PRETTY PETAL FLOWER SHOP$"
+	.string "ROUTE 1O4\n"
 # 1246 "data/maps/Route104/scripts.pory"
-
+	.string "{RIGHT_ARROW} PETALBURG CITY$"
 # 1247 "data/maps/Route104/scripts.pory"
-Route104_Text_TrainerTipsDoubleBattles:
+
 # 1248 "data/maps/Route104/scripts.pory"
-	.string "TRAINER TIPS\p"
+Route104_Text_RouteSignRustboro:
 # 1249 "data/maps/Route104/scripts.pory"
-	.string "In the HOENN region there are pairs\n"
+	.string "ROUTE 1O4\n"
 # 1250 "data/maps/Route104/scripts.pory"
-	.string "of TRAINERS who challenge others\l"
+	.string "{UP_ARROW} RUSTBORO CITY$"
 # 1251 "data/maps/Route104/scripts.pory"
-	.string "for 2-on-2 POKéMON battles called\l"
+
 # 1252 "data/maps/Route104/scripts.pory"
-	.string "DOUBLE BATTLES.\p"
+Route104_Text_PrettyPetalFlowShop:
 # 1253 "data/maps/Route104/scripts.pory"
-	.string "In a DOUBLE BATTLE, the TRAINER must\n"
+	.string "PRETTY PETAL FLOWER SHOP$"
 # 1254 "data/maps/Route104/scripts.pory"
-	.string "send out two POKéMON, the one at the\l"
+
 # 1255 "data/maps/Route104/scripts.pory"
-	.string "left of the list and the top one.\l"
+Route104_Text_TrainerTipsDoubleBattles:
 # 1256 "data/maps/Route104/scripts.pory"
-	.string "Watch how POKéMON are lined up.$"
+	.string "TRAINER TIPS\p"
 # 1257 "data/maps/Route104/scripts.pory"
-
+	.string "In the HOENN region there are pairs\n"
 # 1258 "data/maps/Route104/scripts.pory"
-Route104_Text_MayWeShouldRegister:
+	.string "of TRAINERS who challenge others\l"
 # 1259 "data/maps/Route104/scripts.pory"
-	.string "MAY: Oh, hi, {PLAYER}{KUN}!\p"
+	.string "for 2-on-2 POKéMON battles called\l"
 # 1260 "data/maps/Route104/scripts.pory"
-	.string "DEVON upgraded your POKéNAV with\n"
+	.string "DOUBLE BATTLES.\p"
 # 1261 "data/maps/Route104/scripts.pory"
-	.string "the MATCH CALL system, huh?\p"
+	.string "In a DOUBLE BATTLE, the TRAINER must\n"
 # 1262 "data/maps/Route104/scripts.pory"
-	.string "We should register each other so we\n"
+	.string "send out two POKéMON, the one at the\l"
 # 1263 "data/maps/Route104/scripts.pory"
-	.string "can get in contact anytime.$"
+	.string "left of the list and the top one.\l"
 # 1264 "data/maps/Route104/scripts.pory"
-
+	.string "Watch how POKéMON are lined up.$"
 # 1265 "data/maps/Route104/scripts.pory"
-Route104_Text_RegisteredMay:
-# 1266 "data/maps/Route104/scripts.pory"
-	.string "{PLAYER} registered MAY\n"
-# 1267 "data/maps/Route104/scripts.pory"
-	.string "in the POKéNAV.$"
-# 1268 "data/maps/Route104/scripts.pory"
 
+# 1266 "data/maps/Route104/scripts.pory"
+Route104_Text_MayWeShouldRegister:
+# 1267 "data/maps/Route104/scripts.pory"
+	.string "MAY: Oh, hi, {PLAYER}{KUN}!\p"
+# 1268 "data/maps/Route104/scripts.pory"
+	.string "DEVON upgraded your POKéNAV with\n"
 # 1269 "data/maps/Route104/scripts.pory"
-Route104_Text_MayHowsYourPokedex:
+	.string "the MATCH CALL system, huh?\p"
 # 1270 "data/maps/Route104/scripts.pory"
-	.string "MAY: Oh, by the way, {PLAYER}{KUN},\n"
+	.string "We should register each other so we\n"
 # 1271 "data/maps/Route104/scripts.pory"
-	.string "how's your POKéDEX coming along?$"
+	.string "can get in contact anytime.$"
 # 1272 "data/maps/Route104/scripts.pory"
 
 # 1273 "data/maps/Route104/scripts.pory"
-Route104_Text_MayMinesDecentLetsBattle:
+Route104_Text_RegisteredMay:
 # 1274 "data/maps/Route104/scripts.pory"
-	.string "Mine's looking pretty decent.\n"
+	.string "{PLAYER} registered MAY\n"
 # 1275 "data/maps/Route104/scripts.pory"
-	.string "So…\l"
+	.string "in the POKéNAV.$"
 # 1276 "data/maps/Route104/scripts.pory"
-	.string "How about a little battle?$"
+
 # 1277 "data/maps/Route104/scripts.pory"
-
+Route104_Text_MayHowsYourPokedex:
 # 1278 "data/maps/Route104/scripts.pory"
-Route104_Text_MayHaventRaisedPokemon:
+	.string "MAY: Oh, by the way, {PLAYER}{KUN},\n"
 # 1279 "data/maps/Route104/scripts.pory"
-	.string "MAY: Oh, what's the matter?\p"
+	.string "how's your POKéDEX coming along?$"
 # 1280 "data/maps/Route104/scripts.pory"
-	.string "Haven't you caught or raised your\n"
+
 # 1281 "data/maps/Route104/scripts.pory"
-	.string "POKéMON very much?\p"
+Route104_Text_MayMinesDecentLetsBattle:
 # 1282 "data/maps/Route104/scripts.pory"
-	.string "That's not very good for a TRAINER!$"
+	.string "Mine's looking pretty decent.\n"
 # 1283 "data/maps/Route104/scripts.pory"
-
+	.string "So…\l"
 # 1284 "data/maps/Route104/scripts.pory"
-Route104_Text_MayLetsBattle:
+	.string "How about a little battle?$"
 # 1285 "data/maps/Route104/scripts.pory"
-	.string "MAY: So, what do you think?\n"
-# 1286 "data/maps/Route104/scripts.pory"
-	.string "How about a little battle here?$"
-# 1287 "data/maps/Route104/scripts.pory"
 
+# 1286 "data/maps/Route104/scripts.pory"
+Route104_Text_MayHaventRaisedPokemon:
+# 1287 "data/maps/Route104/scripts.pory"
+	.string "MAY: Oh, what's the matter?\p"
 # 1288 "data/maps/Route104/scripts.pory"
-Route104_Text_MayIntro:
+	.string "Haven't you caught or raised your\n"
 # 1289 "data/maps/Route104/scripts.pory"
-	.string "MAY: You just became a TRAINER,\n"
+	.string "POKéMON very much?\p"
 # 1290 "data/maps/Route104/scripts.pory"
-	.string "{PLAYER}{KUN}. I'm not going to lose!$"
+	.string "That's not very good for a TRAINER!$"
 # 1291 "data/maps/Route104/scripts.pory"
 
 # 1292 "data/maps/Route104/scripts.pory"
-Route104_Text_MayDefeat:
+Route104_Text_MayLetsBattle:
 # 1293 "data/maps/Route104/scripts.pory"
-	.string "Yikes!\n"
+	.string "MAY: So, what do you think?\n"
 # 1294 "data/maps/Route104/scripts.pory"
-	.string "You're better than I expected!$"
+	.string "How about a little battle here?$"
 # 1295 "data/maps/Route104/scripts.pory"
 
 # 1296 "data/maps/Route104/scripts.pory"
-Route104_Text_MayPostBattle:
+Route104_Text_MayIntro:
 # 1297 "data/maps/Route104/scripts.pory"
-	.string "MAY: I can tell you've gotten pretty\n"
+	.string "MAY: You just became a TRAINER,\n"
 # 1298 "data/maps/Route104/scripts.pory"
-	.string "good with the way you handle POKéMON.\p"
+	.string "{PLAYER}{KUN}. I'm not going to lose!$"
 # 1299 "data/maps/Route104/scripts.pory"
-	.string "But instead of only making them\n"
+
 # 1300 "data/maps/Route104/scripts.pory"
-	.string "battle, you should be like MR. BRINEY.\p"
+Route104_Text_MayDefeat:
 # 1301 "data/maps/Route104/scripts.pory"
-	.string "It's important to become friends with\n"
+	.string "Yikes!\n"
 # 1302 "data/maps/Route104/scripts.pory"
-	.string "POKéMON, too.$"
+	.string "You're better than I expected!$"
 # 1303 "data/maps/Route104/scripts.pory"
 
 # 1304 "data/maps/Route104/scripts.pory"
-Route104_Text_BrendanWeShouldRegister:
+Route104_Text_MayPostBattle:
 # 1305 "data/maps/Route104/scripts.pory"
-	.string "BRENDAN: Oh, hey, {PLAYER}!\p"
+	.string "MAY: I can tell you've gotten pretty\n"
 # 1306 "data/maps/Route104/scripts.pory"
-	.string "Cool, you had DEVON install the MATCH\n"
+	.string "good with the way you handle POKéMON.\p"
 # 1307 "data/maps/Route104/scripts.pory"
-	.string "CALL system on your POKéNAV!\p"
+	.string "But instead of only making them\n"
 # 1308 "data/maps/Route104/scripts.pory"
-	.string "Let's register each other in our\n"
+	.string "battle, you should be like MR. BRINEY.\p"
 # 1309 "data/maps/Route104/scripts.pory"
-	.string "POKéNAVS so we can keep in touch.$"
+	.string "It's important to become friends with\n"
 # 1310 "data/maps/Route104/scripts.pory"
-
+	.string "POKéMON, too.$"
 # 1311 "data/maps/Route104/scripts.pory"
-Route104_Text_RegisteredBrendan:
-# 1312 "data/maps/Route104/scripts.pory"
-	.string "{PLAYER} registered BRENDAN\n"
-# 1313 "data/maps/Route104/scripts.pory"
-	.string "in the POKéNAV.$"
-# 1314 "data/maps/Route104/scripts.pory"
 
+# 1312 "data/maps/Route104/scripts.pory"
+Route104_Text_BrendanWeShouldRegister:
+# 1313 "data/maps/Route104/scripts.pory"
+	.string "BRENDAN: Oh, hey, {PLAYER}!\p"
+# 1314 "data/maps/Route104/scripts.pory"
+	.string "Cool, you had DEVON install the MATCH\n"
 # 1315 "data/maps/Route104/scripts.pory"
-Route104_Text_BrendanHowsYourPokedex:
+	.string "CALL system on your POKéNAV!\p"
 # 1316 "data/maps/Route104/scripts.pory"
-	.string "BRENDAN: {PLAYER}, how's your POKéDEX?\n"
+	.string "Let's register each other in our\n"
 # 1317 "data/maps/Route104/scripts.pory"
-	.string "Have you filled in any pages yet?$"
+	.string "POKéNAVS so we can keep in touch.$"
 # 1318 "data/maps/Route104/scripts.pory"
 
 # 1319 "data/maps/Route104/scripts.pory"
-Route104_Text_BrendanDoingGreatLetsBattle:
+Route104_Text_RegisteredBrendan:
 # 1320 "data/maps/Route104/scripts.pory"
-	.string "Me, I'm doing great!\p"
+	.string "{PLAYER} registered BRENDAN\n"
 # 1321 "data/maps/Route104/scripts.pory"
-	.string "Want to check out how good I am with\n"
+	.string "in the POKéNAV.$"
 # 1322 "data/maps/Route104/scripts.pory"
-	.string "a battle?$"
+
 # 1323 "data/maps/Route104/scripts.pory"
-
+Route104_Text_BrendanHowsYourPokedex:
 # 1324 "data/maps/Route104/scripts.pory"
-Route104_Text_BrendanNoConfidence:
+	.string "BRENDAN: {PLAYER}, how's your POKéDEX?\n"
 # 1325 "data/maps/Route104/scripts.pory"
-	.string "BRENDAN: What's the matter? Don't have\n"
+	.string "Have you filled in any pages yet?$"
 # 1326 "data/maps/Route104/scripts.pory"
-	.string "any confidence in your POKéMON?$"
-# 1327 "data/maps/Route104/scripts.pory"
 
+# 1327 "data/maps/Route104/scripts.pory"
+Route104_Text_BrendanDoingGreatLetsBattle:
 # 1328 "data/maps/Route104/scripts.pory"
-Route104_Text_BrendanLetsBattle:
+	.string "Me, I'm doing great!\p"
 # 1329 "data/maps/Route104/scripts.pory"
-	.string "BRENDAN: What's up?\n"
+	.string "Want to check out how good I am with\n"
 # 1330 "data/maps/Route104/scripts.pory"
-	.string "Want to have a battle with me?$"
+	.string "a battle?$"
 # 1331 "data/maps/Route104/scripts.pory"
 
 # 1332 "data/maps/Route104/scripts.pory"
-Route104_Text_BrendanIntro:
+Route104_Text_BrendanNoConfidence:
 # 1333 "data/maps/Route104/scripts.pory"
-	.string "BRENDAN: I know you just became\n"
+	.string "BRENDAN: What's the matter? Don't have\n"
 # 1334 "data/maps/Route104/scripts.pory"
-	.string "a TRAINER, but I won't go easy!$"
+	.string "any confidence in your POKéMON?$"
 # 1335 "data/maps/Route104/scripts.pory"
 
 # 1336 "data/maps/Route104/scripts.pory"
-Route104_Text_BrendanDefeat:
+Route104_Text_BrendanLetsBattle:
 # 1337 "data/maps/Route104/scripts.pory"
-	.string "Hmm…\n"
+	.string "BRENDAN: What's up?\n"
 # 1338 "data/maps/Route104/scripts.pory"
-	.string "You're pretty good.$"
+	.string "Want to have a battle with me?$"
 # 1339 "data/maps/Route104/scripts.pory"
 
 # 1340 "data/maps/Route104/scripts.pory"
-Route104_Text_BrendanPostBattle:
+Route104_Text_BrendanIntro:
 # 1341 "data/maps/Route104/scripts.pory"
-	.string "BRENDAN: You've gotten pretty decent\n"
+	.string "BRENDAN: I know you just became\n"
 # 1342 "data/maps/Route104/scripts.pory"
-	.string "at handling POKéMON.\p"
+	.string "a TRAINER, but I won't go easy!$"
 # 1343 "data/maps/Route104/scripts.pory"
-	.string "But, you know, you shouldn't just be\n"
+
 # 1344 "data/maps/Route104/scripts.pory"
-	.string "making POKéMON battle.\p"
+Route104_Text_BrendanDefeat:
 # 1345 "data/maps/Route104/scripts.pory"
-	.string "Like MR. BRINEY, it's important to\n"
+	.string "Hmm…\n"
 # 1346 "data/maps/Route104/scripts.pory"
-	.string "become friends with your POKéMON.$"
+	.string "You're pretty good.$"
 # 1347 "data/maps/Route104/scripts.pory"
 
 # 1348 "data/maps/Route104/scripts.pory"
-Route104_Text_Reporters:
+Route104_Text_BrendanPostBattle:
 # 1349 "data/maps/Route104/scripts.pory"
-	.string "We are covering an ongoing incident\n"
+	.string "BRENDAN: You've gotten pretty decent\n"
 # 1350 "data/maps/Route104/scripts.pory"
-	.string "with Team Aqua and a missing Wingull.\p"
+	.string "at handling POKéMON.\p"
 # 1351 "data/maps/Route104/scripts.pory"
-	.string "Apologies but we cannot let you\n"
+	.string "But, you know, you shouldn't just be\n"
 # 1352 "data/maps/Route104/scripts.pory"
+	.string "making POKéMON battle.\p"
+# 1353 "data/maps/Route104/scripts.pory"
+	.string "Like MR. BRINEY, it's important to\n"
+# 1354 "data/maps/Route104/scripts.pory"
+	.string "become friends with your POKéMON.$"
+# 1355 "data/maps/Route104/scripts.pory"
+
+# 1356 "data/maps/Route104/scripts.pory"
+Route104_Text_Reporters:
+# 1357 "data/maps/Route104/scripts.pory"
+	.string "We are covering an ongoing incident\n"
+# 1358 "data/maps/Route104/scripts.pory"
+	.string "with Team Aqua and a missing Wingull.\p"
+# 1359 "data/maps/Route104/scripts.pory"
+	.string "Apologies but we cannot let you\n"
+# 1360 "data/maps/Route104/scripts.pory"
 	.string "through at this time.$"

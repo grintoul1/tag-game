@@ -1,210 +1,282 @@
 # 1 "data/maps/Route124/scripts.pory"
 
 # 2 "data/maps/Route124/scripts.pory"
-Route124_MapScripts::
+	.set LOCALID_GRACE, 4
 # 3 "data/maps/Route124/scripts.pory"
-	map_script MAP_SCRIPT_ON_TRANSITION, Route124_OnTransition
+	.set LOCALID_DECLAN, 11
 # 4 "data/maps/Route124/scripts.pory"
-	.byte 0
+
 # 5 "data/maps/Route124/scripts.pory"
-
+Route124_MapScripts::
 # 6 "data/maps/Route124/scripts.pory"
-Route124_OnTransition:
+	map_script MAP_SCRIPT_ON_TRANSITION, Route124_OnTransition
 # 7 "data/maps/Route124/scripts.pory"
-	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	.byte 0
 # 8 "data/maps/Route124/scripts.pory"
-	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
+
 # 9 "data/maps/Route124/scripts.pory"
-	end
+Route124_OnTransition:
 # 10 "data/maps/Route124/scripts.pory"
-
+	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 # 11 "data/maps/Route124/scripts.pory"
-Route124_EventScript_HuntersHouseSign::
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
 # 12 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_HuntersHouse, MSGBOX_SIGN
+	end
 # 13 "data/maps/Route124/scripts.pory"
-	end
+
 # 14 "data/maps/Route124/scripts.pory"
-
+Route124_EventScript_HuntersHouseSign::
 # 15 "data/maps/Route124/scripts.pory"
-Route124_EventScript_Spencer::
+	msgbox Route124_Text_HuntersHouse, MSGBOX_SIGN
 # 16 "data/maps/Route124/scripts.pory"
-	trainerbattle_single TRAINER_SPENCER, Route124_Text_SpencerIntro, Route124_Text_SpencerDefeat
+	end
 # 17 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_SpencerPostBattle, MSGBOX_AUTOCLOSE
+
 # 18 "data/maps/Route124/scripts.pory"
-	end
+Route124_EventScript_Spencer::
 # 19 "data/maps/Route124/scripts.pory"
-
+	faceplayer
 # 20 "data/maps/Route124/scripts.pory"
-Route124_EventScript_Roland::
+	msgbox Route124_Text_SpencerPostBattle, MSGBOX_AUTOCLOSE
 # 21 "data/maps/Route124/scripts.pory"
-	trainerbattle_single TRAINER_ROLAND, Route124_Text_RolandIntro, Route124_Text_RolandDefeat
+	end
 # 22 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_RolandPostBattle, MSGBOX_AUTOCLOSE
+
 # 23 "data/maps/Route124/scripts.pory"
-	end
+Route124_EventScript_Roland::
 # 24 "data/maps/Route124/scripts.pory"
-
+	faceplayer
 # 25 "data/maps/Route124/scripts.pory"
-Route124_EventScript_Jenny::
+	msgbox Route124_Text_RolandPostBattle, MSGBOX_AUTOCLOSE
 # 26 "data/maps/Route124/scripts.pory"
-	trainerbattle_single TRAINER_JENNY_1, Route124_Text_JennyIntro, Route124_Text_JennyDefeat, Route124_EventScript_RegisterJenny
+	end
 # 27 "data/maps/Route124/scripts.pory"
-	specialvar VAR_RESULT, ShouldTryRematchBattle
+
 # 28 "data/maps/Route124/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route124_EventScript_RematchJenny
+Route124_EventScript_Jenny::
 # 29 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_JennyPostBattle, MSGBOX_DEFAULT
+	faceplayer
 # 30 "data/maps/Route124/scripts.pory"
-	release
+	msgbox Route124_Text_JennyPostBattle, MSGBOX_DEFAULT
 # 31 "data/maps/Route124/scripts.pory"
-	end
+	release
 # 32 "data/maps/Route124/scripts.pory"
-
+	end
 # 33 "data/maps/Route124/scripts.pory"
-Route124_EventScript_RegisterJenny::
+
 # 34 "data/maps/Route124/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
+Route124_EventScript_RegisterJenny::
 # 35 "data/maps/Route124/scripts.pory"
-	waitmovement 0
+	special PlayerFaceTrainerAfterBattle
 # 36 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_JennyRegister, MSGBOX_DEFAULT
+	waitmovement 0
 # 37 "data/maps/Route124/scripts.pory"
-	register_matchcall TRAINER_JENNY_1
+	msgbox Route124_Text_JennyRegister, MSGBOX_DEFAULT
 # 38 "data/maps/Route124/scripts.pory"
-	release
+	register_matchcall TRAINER_JENNY_1
 # 39 "data/maps/Route124/scripts.pory"
-	end
+	release
 # 40 "data/maps/Route124/scripts.pory"
-
+	end
 # 41 "data/maps/Route124/scripts.pory"
-Route124_EventScript_RematchJenny::
+
 # 42 "data/maps/Route124/scripts.pory"
-	trainerbattle_rematch TRAINER_JENNY_1, Route124_Text_JennyRematchIntro, Route124_Text_JennyRematchDefeat
+Route124_EventScript_RematchJenny::
 # 43 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_JennyPostRematch, MSGBOX_AUTOCLOSE
+	trainerbattle_rematch TRAINER_JENNY_1, Route124_Text_JennyRematchIntro, Route124_Text_JennyRematchDefeat
 # 44 "data/maps/Route124/scripts.pory"
-	end
+	msgbox Route124_Text_JennyPostRematch, MSGBOX_AUTOCLOSE
 # 45 "data/maps/Route124/scripts.pory"
-
+	end
 # 46 "data/maps/Route124/scripts.pory"
-Route124_EventScript_Grace::
+
 # 47 "data/maps/Route124/scripts.pory"
-	trainerbattle_single TRAINER_GRACE, Route124_Text_GraceIntro, Route124_Text_GraceDefeat
+Route124_EventScript_GraceDeclan::
 # 48 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_GracePostBattle, MSGBOX_AUTOCLOSE
+lockall
 # 49 "data/maps/Route124/scripts.pory"
-	end
+playse SE_PIN
 # 50 "data/maps/Route124/scripts.pory"
-
+applymovement  LOCALID_DECLAN, Common_Movement_ExclamationMark
 # 51 "data/maps/Route124/scripts.pory"
-Route124_EventScript_Chad::
+waitmovement 0
 # 52 "data/maps/Route124/scripts.pory"
-	trainerbattle_single TRAINER_CHAD, Route124_Text_ChadIntro, Route124_Text_ChadDefeat
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
 # 53 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_ChadPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 54 "data/maps/Route124/scripts.pory"
-	end
+waitmovement 0
 # 55 "data/maps/Route124/scripts.pory"
-
+msgbox Route124_Text_GraceIntro MSGBOX_AUTOCLOSE
 # 56 "data/maps/Route124/scripts.pory"
-Route124_EventScript_Lila::
+playse SE_PIN
 # 57 "data/maps/Route124/scripts.pory"
-	trainerbattle_double TRAINER_LILA_AND_ROY_1, Route124_Text_LilaIntro, Route124_Text_LilaDefeat, Route124_Text_LilaNotEnoughMons, Route124_EventScript_RegisterLila
+applymovement  LOCALID_DECLAN, Common_Movement_ExclamationMark
 # 58 "data/maps/Route124/scripts.pory"
-	specialvar VAR_RESULT, ShouldTryRematchBattle
+waitmovement 0
 # 59 "data/maps/Route124/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route124_EventScript_RematchLila
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
 # 60 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_LilaPostBattle, MSGBOX_DEFAULT
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 61 "data/maps/Route124/scripts.pory"
-	release
+waitmovement 0
 # 62 "data/maps/Route124/scripts.pory"
-	end
+msgbox Route124_Text_DeclanIntro MSGBOX_AUTOCLOSE
 # 63 "data/maps/Route124/scripts.pory"
-
+goto Route124_EventScript_GraceDeclanDoMultiBattle
 # 64 "data/maps/Route124/scripts.pory"
-Route124_EventScript_RegisterLila::
+releaseall
 # 65 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_LilaRoyRegister, MSGBOX_DEFAULT
+end
 # 66 "data/maps/Route124/scripts.pory"
-	register_matchcall TRAINER_LILA_AND_ROY_1
+
 # 67 "data/maps/Route124/scripts.pory"
-	release
+Route124_EventScript_GraceDeclanDoMultiBattle::
 # 68 "data/maps/Route124/scripts.pory"
-	end
+playbgm MUS_SURF, TRUE
 # 69 "data/maps/Route124/scripts.pory"
-
+multi_2p_vs_2 TRAINER_GRACE, Route124_Text_GraceDefeat, TRAINER_DECLAN, Route124_Text_DeclanDefeat, PARTNER_EMMIE
 # 70 "data/maps/Route124/scripts.pory"
-Route124_EventScript_RematchLila::
+switch VAR_RESULT
 # 71 "data/maps/Route124/scripts.pory"
-	trainerbattle_rematch_double TRAINER_LILA_AND_ROY_1, Route124_Text_LilaRematchIntro, Route124_Text_LilaRematchDefeat, Route124_Text_LilaRematchNotEnoughMons
+case 1, Route124_EventScript_GraceDeclanVictory
 # 72 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_LilaPostRematch, MSGBOX_AUTOCLOSE
+fadescreen FADE_TO_BLACK
 # 73 "data/maps/Route124/scripts.pory"
-	end
+special SetCB2WhiteOut
 # 74 "data/maps/Route124/scripts.pory"
-
+waitstate
 # 75 "data/maps/Route124/scripts.pory"
-Route124_EventScript_Roy::
+
 # 76 "data/maps/Route124/scripts.pory"
-	trainerbattle_double TRAINER_LILA_AND_ROY_1, Route124_Text_RoyIntro, Route124_Text_RoyDefeat, Route124_Text_RoyNotEnoughMons, Route124_EventScript_RegisterRoy
+Route124_EventScript_GraceDeclanVictory::
 # 77 "data/maps/Route124/scripts.pory"
-	specialvar VAR_RESULT, ShouldTryRematchBattle
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 78 "data/maps/Route124/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route124_EventScript_RematchRoy
+waitmovement 0
 # 79 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_RoyPostBattle, MSGBOX_DEFAULT
+msgbox Route124_Text_GracePostBattle, MSGBOX_AUTOCLOSE
 # 80 "data/maps/Route124/scripts.pory"
-	release
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 81 "data/maps/Route124/scripts.pory"
-	end
+waitmovement 0
 # 82 "data/maps/Route124/scripts.pory"
-
+msgbox Route124_Text_DeclanPostBattle, MSGBOX_AUTOCLOSE
 # 83 "data/maps/Route124/scripts.pory"
-Route124_EventScript_RegisterRoy::
+addvar VAR_ROUTE124_STATE, 1
 # 84 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_LilaRoyRegister, MSGBOX_DEFAULT
+end
 # 85 "data/maps/Route124/scripts.pory"
-	register_matchcall TRAINER_LILA_AND_ROY_1
+
 # 86 "data/maps/Route124/scripts.pory"
-	release
+Route124_EventScript_Grace::
 # 87 "data/maps/Route124/scripts.pory"
-	end
+	faceplayer
 # 88 "data/maps/Route124/scripts.pory"
-
+	msgbox Route124_Text_GracePostBattle, MSGBOX_AUTOCLOSE
 # 89 "data/maps/Route124/scripts.pory"
-Route124_EventScript_RematchRoy::
+	end
 # 90 "data/maps/Route124/scripts.pory"
-	trainerbattle_rematch_double TRAINER_LILA_AND_ROY_1, Route124_Text_RoyRematchIntro, Route124_Text_RoyRematchDefeat, Route124_Text_RoyRematchNotEnoughMons
+
 # 91 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_RoyPostRematch, MSGBOX_AUTOCLOSE
+Route124_EventScript_Chad::
 # 92 "data/maps/Route124/scripts.pory"
-	end
+	faceplayer
 # 93 "data/maps/Route124/scripts.pory"
-
+	msgbox Route124_Text_ChadPostBattle, MSGBOX_AUTOCLOSE
 # 94 "data/maps/Route124/scripts.pory"
-Route124_EventScript_Declan::
+	end
 # 95 "data/maps/Route124/scripts.pory"
-	trainerbattle_single TRAINER_DECLAN, Route124_Text_DeclanIntro, Route124_Text_DeclanDefeat
+
 # 96 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_DeclanPostBattle, MSGBOX_AUTOCLOSE
+Route124_EventScript_Lila::
 # 97 "data/maps/Route124/scripts.pory"
-	end
+	faceplayer
 # 98 "data/maps/Route124/scripts.pory"
-
+	msgbox Route124_Text_LilaPostBattle, MSGBOX_DEFAULT
 # 99 "data/maps/Route124/scripts.pory"
-Route124_EventScript_Isabella::
+	release
 # 100 "data/maps/Route124/scripts.pory"
-	trainerbattle_single TRAINER_ISABELLA, Route124_Text_IsabellaIntro, Route124_Text_IsabellaDefeat
-# 101 "data/maps/Route124/scripts.pory"
-	msgbox Route124_Text_IsabellaPostBattle, MSGBOX_AUTOCLOSE
-# 102 "data/maps/Route124/scripts.pory"
 	end
-# 103 "data/maps/Route124/scripts.pory"
+# 101 "data/maps/Route124/scripts.pory"
 
+# 102 "data/maps/Route124/scripts.pory"
+Route124_EventScript_RegisterLila::
+# 103 "data/maps/Route124/scripts.pory"
+	msgbox Route124_Text_LilaRoyRegister, MSGBOX_DEFAULT
 # 104 "data/maps/Route124/scripts.pory"
-Route124_Text_HuntersHouse:
+	register_matchcall TRAINER_LILA_AND_ROY_1
 # 105 "data/maps/Route124/scripts.pory"
+	release
+# 106 "data/maps/Route124/scripts.pory"
+	end
+# 107 "data/maps/Route124/scripts.pory"
+
+# 108 "data/maps/Route124/scripts.pory"
+Route124_EventScript_RematchLila::
+# 109 "data/maps/Route124/scripts.pory"
+	trainerbattle_rematch_double TRAINER_LILA_AND_ROY_1, Route124_Text_LilaRematchIntro, Route124_Text_LilaRematchDefeat, Route124_Text_LilaRematchNotEnoughMons
+# 110 "data/maps/Route124/scripts.pory"
+	msgbox Route124_Text_LilaPostRematch, MSGBOX_AUTOCLOSE
+# 111 "data/maps/Route124/scripts.pory"
+	end
+# 112 "data/maps/Route124/scripts.pory"
+
+# 113 "data/maps/Route124/scripts.pory"
+Route124_EventScript_Roy::
+# 114 "data/maps/Route124/scripts.pory"
+	faceplayer
+# 115 "data/maps/Route124/scripts.pory"
+	msgbox Route124_Text_RoyPostBattle, MSGBOX_DEFAULT
+# 116 "data/maps/Route124/scripts.pory"
+	release
+# 117 "data/maps/Route124/scripts.pory"
+	end
+# 118 "data/maps/Route124/scripts.pory"
+
+# 119 "data/maps/Route124/scripts.pory"
+Route124_EventScript_RegisterRoy::
+# 120 "data/maps/Route124/scripts.pory"
+	msgbox Route124_Text_LilaRoyRegister, MSGBOX_DEFAULT
+# 121 "data/maps/Route124/scripts.pory"
+	register_matchcall TRAINER_LILA_AND_ROY_1
+# 122 "data/maps/Route124/scripts.pory"
+	release
+# 123 "data/maps/Route124/scripts.pory"
+	end
+# 124 "data/maps/Route124/scripts.pory"
+
+# 125 "data/maps/Route124/scripts.pory"
+Route124_EventScript_RematchRoy::
+# 126 "data/maps/Route124/scripts.pory"
+	trainerbattle_rematch_double TRAINER_LILA_AND_ROY_1, Route124_Text_RoyRematchIntro, Route124_Text_RoyRematchDefeat, Route124_Text_RoyRematchNotEnoughMons
+# 127 "data/maps/Route124/scripts.pory"
+	msgbox Route124_Text_RoyPostRematch, MSGBOX_AUTOCLOSE
+# 128 "data/maps/Route124/scripts.pory"
+	end
+# 129 "data/maps/Route124/scripts.pory"
+
+# 130 "data/maps/Route124/scripts.pory"
+Route124_EventScript_Declan::
+# 131 "data/maps/Route124/scripts.pory"
+	faceplayer
+# 132 "data/maps/Route124/scripts.pory"
+	msgbox Route124_Text_DeclanPostBattle, MSGBOX_AUTOCLOSE
+# 133 "data/maps/Route124/scripts.pory"
+	end
+# 134 "data/maps/Route124/scripts.pory"
+
+# 135 "data/maps/Route124/scripts.pory"
+Route124_EventScript_Isabella::
+# 136 "data/maps/Route124/scripts.pory"
+	faceplayer
+# 137 "data/maps/Route124/scripts.pory"
+	msgbox Route124_Text_IsabellaPostBattle, MSGBOX_AUTOCLOSE
+# 138 "data/maps/Route124/scripts.pory"
+	end
+# 139 "data/maps/Route124/scripts.pory"
+
+# 140 "data/maps/Route124/scripts.pory"
+Route124_Text_HuntersHouse:
+# 141 "data/maps/Route124/scripts.pory"
 	.string "HUNTER'S HOUSE$"

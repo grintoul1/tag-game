@@ -151,194 +151,202 @@ Route102_Movement_CalvinRick_NotReady:
 # 76 "data/maps/Route102/scripts.pory"
 Route102_EventScript_Calvin::
 # 77 "data/maps/Route102/scripts.pory"
-	msgbox Route102_Text_CalvinPostBattle, MSGBOX_AUTOCLOSE
+	faceplayer
 # 78 "data/maps/Route102/scripts.pory"
-	end
+	msgbox Route102_Text_CalvinPostBattle, MSGBOX_AUTOCLOSE
 # 79 "data/maps/Route102/scripts.pory"
-
+	end
 # 80 "data/maps/Route102/scripts.pory"
-Route102_EventScript_Rick::
+
 # 81 "data/maps/Route102/scripts.pory"
-	msgbox Route102_Text_RickPostBattle, MSGBOX_AUTOCLOSE
+Route102_EventScript_Rick::
 # 82 "data/maps/Route102/scripts.pory"
-	end
+	faceplayer
 # 83 "data/maps/Route102/scripts.pory"
-
+	msgbox Route102_Text_RickPostBattle, MSGBOX_AUTOCLOSE
 # 84 "data/maps/Route102/scripts.pory"
-Route102_EventScript_AllenTiana::
+	end
 # 85 "data/maps/Route102/scripts.pory"
-lockall
+
 # 86 "data/maps/Route102/scripts.pory"
-setvar VAR_0x8008, LOCALID_ALLEN
+Route102_EventScript_AllenTiana::
 # 87 "data/maps/Route102/scripts.pory"
-playse SE_PIN
+lockall
 # 88 "data/maps/Route102/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
+setvar VAR_0x8008, LOCALID_ALLEN
 # 89 "data/maps/Route102/scripts.pory"
-waitmovement 0
-# 90 "data/maps/Route102/scripts.pory"
-playbgm MUS_ENCOUNTER_MALE, TRUE
-# 91 "data/maps/Route102/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 92 "data/maps/Route102/scripts.pory"
-waitmovement 0
-# 93 "data/maps/Route102/scripts.pory"
-msgbox Route102_Text_AllenIntro MSGBOX_AUTOCLOSE
-# 94 "data/maps/Route102/scripts.pory"
-setvar VAR_0x8008, LOCALID_TIANA
-# 95 "data/maps/Route102/scripts.pory"
 playse SE_PIN
-# 96 "data/maps/Route102/scripts.pory"
+# 90 "data/maps/Route102/scripts.pory"
 applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 97 "data/maps/Route102/scripts.pory"
+# 91 "data/maps/Route102/scripts.pory"
 waitmovement 0
-# 98 "data/maps/Route102/scripts.pory"
-playbgm MUS_ENCOUNTER_GIRL, TRUE
-# 99 "data/maps/Route102/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 100 "data/maps/Route102/scripts.pory"
-waitmovement 0
-# 101 "data/maps/Route102/scripts.pory"
-msgbox Route102_Text_TianaIntro, MSGBOX_AUTOCLOSE
-# 102 "data/maps/Route102/scripts.pory"
-goto Route102_EventScript_AllenTianaDoMultiBattle
-# 103 "data/maps/Route102/scripts.pory"
-releaseall
-# 104 "data/maps/Route102/scripts.pory"
-end
-# 105 "data/maps/Route102/scripts.pory"
-
-# 106 "data/maps/Route102/scripts.pory"
-Route102_EventScript_AllenTianaDoMultiBattle::
-# 107 "data/maps/Route102/scripts.pory"
-playbgm MUS_ROUTE101, TRUE
-# 108 "data/maps/Route102/scripts.pory"
-multi_2p_vs_2 TRAINER_ALLEN, Route102_Text_AllenDefeated, TRAINER_TIANA, Route102_Text_TianaDefeated, PARTNER_EMMIE
-# 109 "data/maps/Route102/scripts.pory"
-switch VAR_RESULT
-# 110 "data/maps/Route102/scripts.pory"
-case 1, Route102_EventScript_AllenTianaVictory
-# 111 "data/maps/Route102/scripts.pory"
-fadescreen FADE_TO_BLACK
-# 112 "data/maps/Route102/scripts.pory"
-special SetCB2WhiteOut
-# 113 "data/maps/Route102/scripts.pory"
-waitstate
-# 114 "data/maps/Route102/scripts.pory"
-
-# 115 "data/maps/Route102/scripts.pory"
-Route102_EventScript_AllenTianaVictory::
-# 116 "data/maps/Route102/scripts.pory"
+# 92 "data/maps/Route102/scripts.pory"
+playbgm MUS_ENCOUNTER_MALE, TRUE
+# 93 "data/maps/Route102/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 117 "data/maps/Route102/scripts.pory"
+# 94 "data/maps/Route102/scripts.pory"
 waitmovement 0
-# 118 "data/maps/Route102/scripts.pory"
-msgbox Route102_Text_AllenPostBattle, MSGBOX_AUTOCLOSE
-# 119 "data/maps/Route102/scripts.pory"
+# 95 "data/maps/Route102/scripts.pory"
+msgbox Route102_Text_AllenIntro MSGBOX_AUTOCLOSE
+# 96 "data/maps/Route102/scripts.pory"
+setvar VAR_0x8008, LOCALID_TIANA
+# 97 "data/maps/Route102/scripts.pory"
+playse SE_PIN
+# 98 "data/maps/Route102/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 99 "data/maps/Route102/scripts.pory"
+waitmovement 0
+# 100 "data/maps/Route102/scripts.pory"
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+# 101 "data/maps/Route102/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 120 "data/maps/Route102/scripts.pory"
+# 102 "data/maps/Route102/scripts.pory"
 waitmovement 0
-# 121 "data/maps/Route102/scripts.pory"
-msgbox Route102_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
-# 122 "data/maps/Route102/scripts.pory"
-addvar VAR_ROUTE102_STATE, 1
-# 123 "data/maps/Route102/scripts.pory"
+# 103 "data/maps/Route102/scripts.pory"
+msgbox Route102_Text_TianaIntro, MSGBOX_AUTOCLOSE
+# 104 "data/maps/Route102/scripts.pory"
+goto Route102_EventScript_AllenTianaDoMultiBattle
+# 105 "data/maps/Route102/scripts.pory"
+releaseall
+# 106 "data/maps/Route102/scripts.pory"
 end
+# 107 "data/maps/Route102/scripts.pory"
+
+# 108 "data/maps/Route102/scripts.pory"
+Route102_EventScript_AllenTianaDoMultiBattle::
+# 109 "data/maps/Route102/scripts.pory"
+playbgm MUS_ROUTE101, TRUE
+# 110 "data/maps/Route102/scripts.pory"
+multi_2p_vs_2 TRAINER_ALLEN, Route102_Text_AllenDefeated, TRAINER_TIANA, Route102_Text_TianaDefeated, PARTNER_EMMIE
+# 111 "data/maps/Route102/scripts.pory"
+switch VAR_RESULT
+# 112 "data/maps/Route102/scripts.pory"
+case 1, Route102_EventScript_AllenTianaVictory
+# 113 "data/maps/Route102/scripts.pory"
+fadescreen FADE_TO_BLACK
+# 114 "data/maps/Route102/scripts.pory"
+special SetCB2WhiteOut
+# 115 "data/maps/Route102/scripts.pory"
+waitstate
+# 116 "data/maps/Route102/scripts.pory"
+
+# 117 "data/maps/Route102/scripts.pory"
+Route102_EventScript_AllenTianaVictory::
+# 118 "data/maps/Route102/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 119 "data/maps/Route102/scripts.pory"
+waitmovement 0
+# 120 "data/maps/Route102/scripts.pory"
+msgbox Route102_Text_AllenPostBattle, MSGBOX_AUTOCLOSE
+# 121 "data/maps/Route102/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 122 "data/maps/Route102/scripts.pory"
+waitmovement 0
+# 123 "data/maps/Route102/scripts.pory"
+msgbox Route102_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
 # 124 "data/maps/Route102/scripts.pory"
-
+addvar VAR_ROUTE102_STATE, 1
 # 125 "data/maps/Route102/scripts.pory"
-Route102_EventScript_Tiana::
+end
 # 126 "data/maps/Route102/scripts.pory"
-	msgbox Route102_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
+
 # 127 "data/maps/Route102/scripts.pory"
-	end
+Route102_EventScript_Tiana::
 # 128 "data/maps/Route102/scripts.pory"
-
+	faceplayer
 # 129 "data/maps/Route102/scripts.pory"
-Route102_EventScript_Allen::
+	msgbox Route102_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
 # 130 "data/maps/Route102/scripts.pory"
-	msgbox Route102_Text_AllenPostBattle, MSGBOX_AUTOCLOSE
-# 131 "data/maps/Route102/scripts.pory"
 	end
+# 131 "data/maps/Route102/scripts.pory"
+
 # 132 "data/maps/Route102/scripts.pory"
-
+Route102_EventScript_Allen::
 # 133 "data/maps/Route102/scripts.pory"
-Route102_Text_WatchMeCatchPokemon:
+	faceplayer
 # 134 "data/maps/Route102/scripts.pory"
-	.string "WALLY: {PLAYER}…\n"
+	msgbox Route102_Text_AllenPostBattle, MSGBOX_AUTOCLOSE
 # 135 "data/maps/Route102/scripts.pory"
-	.string "POKéMON hide in tall grass like this,\l"
+	end
 # 136 "data/maps/Route102/scripts.pory"
-	.string "don't they?\p"
-# 137 "data/maps/Route102/scripts.pory"
-	.string "Please watch me and see if I can\n"
-# 138 "data/maps/Route102/scripts.pory"
-	.string "catch one properly.\p"
-# 139 "data/maps/Route102/scripts.pory"
-	.string "…Whoa!$"
-# 140 "data/maps/Route102/scripts.pory"
 
+# 137 "data/maps/Route102/scripts.pory"
+Route102_Text_WatchMeCatchPokemon:
+# 138 "data/maps/Route102/scripts.pory"
+	.string "WALLY: {PLAYER}…\n"
+# 139 "data/maps/Route102/scripts.pory"
+	.string "POKéMON hide in tall grass like this,\l"
+# 140 "data/maps/Route102/scripts.pory"
+	.string "don't they?\p"
 # 141 "data/maps/Route102/scripts.pory"
-Route102_Text_WallyIDidIt:
+	.string "Please watch me and see if I can\n"
 # 142 "data/maps/Route102/scripts.pory"
-	.string "WALLY: I did it… It's my…\n"
+	.string "catch one properly.\p"
 # 143 "data/maps/Route102/scripts.pory"
-	.string "My POKéMON!$"
+	.string "…Whoa!$"
 # 144 "data/maps/Route102/scripts.pory"
 
 # 145 "data/maps/Route102/scripts.pory"
-Route102_Text_LetsGoBack:
+Route102_Text_WallyIDidIt:
 # 146 "data/maps/Route102/scripts.pory"
-	.string "{PLAYER}, thank you!\n"
+	.string "WALLY: I did it… It's my…\n"
 # 147 "data/maps/Route102/scripts.pory"
-	.string "Let's go back to the GYM!$"
+	.string "My POKéMON!$"
 # 148 "data/maps/Route102/scripts.pory"
 
 # 149 "data/maps/Route102/scripts.pory"
-Route102_Text_ImNotVeryTall:
+Route102_Text_LetsGoBack:
 # 150 "data/maps/Route102/scripts.pory"
-	.string "I'm…not very tall, so I sink right\n"
+	.string "{PLAYER}, thank you!\n"
 # 151 "data/maps/Route102/scripts.pory"
-	.string "into tall grass.\p"
+	.string "Let's go back to the GYM!$"
 # 152 "data/maps/Route102/scripts.pory"
-	.string "The grass goes up my nose and…\n"
-# 153 "data/maps/Route102/scripts.pory"
-	.string "Fwafwafwafwafwa…\p"
-# 154 "data/maps/Route102/scripts.pory"
-	.string "Fwatchoo!$"
-# 155 "data/maps/Route102/scripts.pory"
 
+# 153 "data/maps/Route102/scripts.pory"
+Route102_Text_ImNotVeryTall:
+# 154 "data/maps/Route102/scripts.pory"
+	.string "I'm…not very tall, so I sink right\n"
+# 155 "data/maps/Route102/scripts.pory"
+	.string "into tall grass.\p"
 # 156 "data/maps/Route102/scripts.pory"
-Route102_Text_CatchWholeBunchOfPokemon:
+	.string "The grass goes up my nose and…\n"
 # 157 "data/maps/Route102/scripts.pory"
-	.string "I'm going to catch a whole bunch of\n"
+	.string "Fwafwafwafwafwa…\p"
 # 158 "data/maps/Route102/scripts.pory"
-	.string "POKéMON!$"
+	.string "Fwatchoo!$"
 # 159 "data/maps/Route102/scripts.pory"
 
 # 160 "data/maps/Route102/scripts.pory"
-Route102_Text_RouteSignOldale:
+Route102_Text_CatchWholeBunchOfPokemon:
 # 161 "data/maps/Route102/scripts.pory"
-	.string "ROUTE 102\n"
+	.string "I'm going to catch a whole bunch of\n"
 # 162 "data/maps/Route102/scripts.pory"
-	.string "{RIGHT_ARROW} OLDALE TOWN$"
+	.string "POKéMON!$"
 # 163 "data/maps/Route102/scripts.pory"
 
 # 164 "data/maps/Route102/scripts.pory"
-Route102_Text_RouteSignPetalburg:
+Route102_Text_RouteSignOldale:
 # 165 "data/maps/Route102/scripts.pory"
 	.string "ROUTE 102\n"
 # 166 "data/maps/Route102/scripts.pory"
-	.string "{LEFT_ARROW} PETALBURG CITY$"
+	.string "{RIGHT_ARROW} OLDALE TOWN$"
 # 167 "data/maps/Route102/scripts.pory"
 
 # 168 "data/maps/Route102/scripts.pory"
-Route102_Text_ReadyToFight:
+Route102_Text_RouteSignPetalburg:
 # 169 "data/maps/Route102/scripts.pory"
-	.string "Are you ready?$"
+	.string "ROUTE 102\n"
 # 170 "data/maps/Route102/scripts.pory"
-
+	.string "{LEFT_ARROW} PETALBURG CITY$"
 # 171 "data/maps/Route102/scripts.pory"
-Route102_Text_ComeBackWhenReady:
+
 # 172 "data/maps/Route102/scripts.pory"
+Route102_Text_ReadyToFight:
+# 173 "data/maps/Route102/scripts.pory"
+	.string "Are you ready?$"
+# 174 "data/maps/Route102/scripts.pory"
+
+# 175 "data/maps/Route102/scripts.pory"
+Route102_Text_ComeBackWhenReady:
+# 176 "data/maps/Route102/scripts.pory"
 	.string "Come back when you're ready.$"

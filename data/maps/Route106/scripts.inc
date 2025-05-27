@@ -135,52 +135,56 @@ end
 # 68 "data/maps/Route106/scripts.pory"
 Route106_EventScript_Elliot::
 # 69 "data/maps/Route106/scripts.pory"
-	msgbox Route106_Text_ElliotPostBattle, MSGBOX_DEFAULT
+	faceplayer
 # 70 "data/maps/Route106/scripts.pory"
-	release
+	msgbox Route106_Text_ElliotPostBattle, MSGBOX_DEFAULT
 # 71 "data/maps/Route106/scripts.pory"
-	end
-# 72 "data/maps/Route106/scripts.pory"
-
-# 73 "data/maps/Route106/scripts.pory"
-Route106_EventScript_ElliotRegisterMatchCallAfterBattle::
-# 74 "data/maps/Route106/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
-# 75 "data/maps/Route106/scripts.pory"
-	waitmovement 0
-# 76 "data/maps/Route106/scripts.pory"
-	msgbox Route106_Text_ElliotRegister, MSGBOX_DEFAULT
-# 77 "data/maps/Route106/scripts.pory"
-	register_matchcall TRAINER_ELLIOT_1
-# 78 "data/maps/Route106/scripts.pory"
 	release
+# 72 "data/maps/Route106/scripts.pory"
+	end
+# 73 "data/maps/Route106/scripts.pory"
+
+# 74 "data/maps/Route106/scripts.pory"
+Route106_EventScript_ElliotRegisterMatchCallAfterBattle::
+# 75 "data/maps/Route106/scripts.pory"
+	special PlayerFaceTrainerAfterBattle
+# 76 "data/maps/Route106/scripts.pory"
+	waitmovement 0
+# 77 "data/maps/Route106/scripts.pory"
+	msgbox Route106_Text_ElliotRegister, MSGBOX_DEFAULT
+# 78 "data/maps/Route106/scripts.pory"
+	register_matchcall TRAINER_ELLIOT_1
 # 79 "data/maps/Route106/scripts.pory"
-	end
+	release
 # 80 "data/maps/Route106/scripts.pory"
-
+	end
 # 81 "data/maps/Route106/scripts.pory"
-Route106_EventScript_ElliotRematch::
+
 # 82 "data/maps/Route106/scripts.pory"
-	msgbox Route106_Text_ElliotRematchPostBattle, MSGBOX_AUTOCLOSE
+Route106_EventScript_ElliotRematch::
 # 83 "data/maps/Route106/scripts.pory"
-	end
+	msgbox Route106_Text_ElliotRematchPostBattle, MSGBOX_AUTOCLOSE
 # 84 "data/maps/Route106/scripts.pory"
-
-# 85 "data/maps/Route106/scripts.pory"
-Route106_EventScript_Ned::
-# 86 "data/maps/Route106/scripts.pory"
-	trainerbattle_single TRAINER_NED, Route106_Text_NedIntro, Route106_Text_NedDefeated
-# 87 "data/maps/Route106/scripts.pory"
-	msgbox Route106_Text_NedPostBattle, MSGBOX_AUTOCLOSE
-# 88 "data/maps/Route106/scripts.pory"
 	end
-# 89 "data/maps/Route106/scripts.pory"
+# 85 "data/maps/Route106/scripts.pory"
 
+# 86 "data/maps/Route106/scripts.pory"
+Route106_EventScript_Ned::
+# 87 "data/maps/Route106/scripts.pory"
+	faceplayer
+# 88 "data/maps/Route106/scripts.pory"
+	trainerbattle_single TRAINER_NED, Route106_Text_NedIntro, Route106_Text_NedDefeated
+# 89 "data/maps/Route106/scripts.pory"
+	msgbox Route106_Text_NedPostBattle, MSGBOX_AUTOCLOSE
 # 90 "data/maps/Route106/scripts.pory"
-Route106_Text_TrainerTips:
+	end
 # 91 "data/maps/Route106/scripts.pory"
-	.string "TRAINER TIPS\p"
+
 # 92 "data/maps/Route106/scripts.pory"
-	.string "Advice on catching POKéMON with a ROD:\n"
+Route106_Text_TrainerTips:
 # 93 "data/maps/Route106/scripts.pory"
+	.string "TRAINER TIPS\p"
+# 94 "data/maps/Route106/scripts.pory"
+	.string "Advice on catching POKéMON with a ROD:\n"
+# 95 "data/maps/Route106/scripts.pory"
 	.string "Press the A Button if you get a bite.$"

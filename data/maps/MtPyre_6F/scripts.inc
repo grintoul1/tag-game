@@ -101,118 +101,122 @@ end
 # 51 "data/maps/MtPyre_6F/scripts.pory"
 MtPyre_6F_EventScript_Pyre_AquaGrunt3::
 # 52 "data/maps/MtPyre_6F/scripts.pory"
-	msgbox MtPyre_6F_Text_Pyre_AquaGrunt3PostBattle, MSGBOX_DEFAULT
+	faceplayer
 # 53 "data/maps/MtPyre_6F/scripts.pory"
-	release
+	msgbox MtPyre_6F_Text_Pyre_AquaGrunt3PostBattle, MSGBOX_DEFAULT
 # 54 "data/maps/MtPyre_6F/scripts.pory"
-	end
-# 55 "data/maps/MtPyre_6F/scripts.pory"
-
-# 56 "data/maps/MtPyre_6F/scripts.pory"
-MtPyre_6F_EventScript_RegisterValerie::
-# 57 "data/maps/MtPyre_6F/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
-# 58 "data/maps/MtPyre_6F/scripts.pory"
-	waitmovement 0
-# 59 "data/maps/MtPyre_6F/scripts.pory"
-	msgbox MtPyre_6F_Text_ValerieRegister, MSGBOX_DEFAULT
-# 60 "data/maps/MtPyre_6F/scripts.pory"
-	register_matchcall TRAINER_VALERIE_3
-# 61 "data/maps/MtPyre_6F/scripts.pory"
 	release
+# 55 "data/maps/MtPyre_6F/scripts.pory"
+	end
+# 56 "data/maps/MtPyre_6F/scripts.pory"
+
+# 57 "data/maps/MtPyre_6F/scripts.pory"
+MtPyre_6F_EventScript_RegisterValerie::
+# 58 "data/maps/MtPyre_6F/scripts.pory"
+	special PlayerFaceTrainerAfterBattle
+# 59 "data/maps/MtPyre_6F/scripts.pory"
+	waitmovement 0
+# 60 "data/maps/MtPyre_6F/scripts.pory"
+	msgbox MtPyre_6F_Text_ValerieRegister, MSGBOX_DEFAULT
+# 61 "data/maps/MtPyre_6F/scripts.pory"
+	register_matchcall TRAINER_VALERIE_3
 # 62 "data/maps/MtPyre_6F/scripts.pory"
-	end
+	release
 # 63 "data/maps/MtPyre_6F/scripts.pory"
-
+	end
 # 64 "data/maps/MtPyre_6F/scripts.pory"
-MtPyre_6F_EventScript_RematchValerie::
+
 # 65 "data/maps/MtPyre_6F/scripts.pory"
-	trainerbattle_rematch TRAINER_VALERIE_3, MtPyre_6F_Text_ValerieRematchIntro, MtPyre_6F_Text_ValerieRematchDefeat
+MtPyre_6F_EventScript_RematchValerie::
 # 66 "data/maps/MtPyre_6F/scripts.pory"
-	msgbox MtPyre_6F_Text_ValeriePostRematch, MSGBOX_AUTOCLOSE
+	trainerbattle_rematch TRAINER_VALERIE_3, MtPyre_6F_Text_ValerieRematchIntro, MtPyre_6F_Text_ValerieRematchDefeat
 # 67 "data/maps/MtPyre_6F/scripts.pory"
-	end
+	msgbox MtPyre_6F_Text_ValeriePostRematch, MSGBOX_AUTOCLOSE
 # 68 "data/maps/MtPyre_6F/scripts.pory"
-
-# 69 "data/maps/MtPyre_6F/scripts.pory"
-MtPyre_6F_EventScript_Pyre_MagmaGrunt3::
-# 70 "data/maps/MtPyre_6F/scripts.pory"
-	msgbox MtPyre_6F_Text_Pyre_MagmaGrunt3PostBattle, MSGBOX_AUTOCLOSE
-# 71 "data/maps/MtPyre_6F/scripts.pory"
 	end
+# 69 "data/maps/MtPyre_6F/scripts.pory"
+
+# 70 "data/maps/MtPyre_6F/scripts.pory"
+MtPyre_6F_EventScript_Pyre_MagmaGrunt3::
+# 71 "data/maps/MtPyre_6F/scripts.pory"
+	faceplayer
 # 72 "data/maps/MtPyre_6F/scripts.pory"
-
+	msgbox MtPyre_6F_Text_Pyre_MagmaGrunt3PostBattle, MSGBOX_AUTOCLOSE
 # 73 "data/maps/MtPyre_6F/scripts.pory"
-MtPyre_6F_Text_Pyre_AquaGrunt3Intro:
+	end
 # 74 "data/maps/MtPyre_6F/scripts.pory"
-	.string "Hey! You kids need to stay out of\n"
+
 # 75 "data/maps/MtPyre_6F/scripts.pory"
-	.string "this!$"
+MtPyre_6F_Text_Pyre_AquaGrunt3Intro:
 # 76 "data/maps/MtPyre_6F/scripts.pory"
-
+	.string "Hey! You kids need to stay out of\n"
 # 77 "data/maps/MtPyre_6F/scripts.pory"
-MtPyre_6F_Text_Pyre_AquaGrunt3Defeat:
+	.string "this!$"
 # 78 "data/maps/MtPyre_6F/scripts.pory"
-	.string "Whoa, whoa… Enough already…$"
+
 # 79 "data/maps/MtPyre_6F/scripts.pory"
-
+MtPyre_6F_Text_Pyre_AquaGrunt3Defeat:
 # 80 "data/maps/MtPyre_6F/scripts.pory"
-MtPyre_6F_Text_Pyre_AquaGrunt3PostBattle:
+	.string "Whoa, whoa… Enough already…$"
 # 81 "data/maps/MtPyre_6F/scripts.pory"
-	.string "What are you even doing here?$"
+
 # 82 "data/maps/MtPyre_6F/scripts.pory"
-
+MtPyre_6F_Text_Pyre_AquaGrunt3PostBattle:
 # 83 "data/maps/MtPyre_6F/scripts.pory"
-MtPyre_6F_Text_ValerieRegister:
+	.string "What are you even doing here?$"
 # 84 "data/maps/MtPyre_6F/scripts.pory"
-	.string "Fufufu… I lost the match, but…\n"
+
 # 85 "data/maps/MtPyre_6F/scripts.pory"
-	.string "I have this little ability…\p"
+MtPyre_6F_Text_ValerieRegister:
 # 86 "data/maps/MtPyre_6F/scripts.pory"
-	.string "Without ever laying my hands on\n"
+	.string "Fufufu… I lost the match, but…\n"
 # 87 "data/maps/MtPyre_6F/scripts.pory"
-	.string "your POKéNAV… Hiyah!$"
+	.string "I have this little ability…\p"
 # 88 "data/maps/MtPyre_6F/scripts.pory"
-
+	.string "Without ever laying my hands on\n"
 # 89 "data/maps/MtPyre_6F/scripts.pory"
-MtPyre_6F_Text_ValerieRematchIntro:
+	.string "your POKéNAV… Hiyah!$"
 # 90 "data/maps/MtPyre_6F/scripts.pory"
-	.string "Behind you…\n"
+
 # 91 "data/maps/MtPyre_6F/scripts.pory"
-	.string "What is it…$"
+MtPyre_6F_Text_ValerieRematchIntro:
 # 92 "data/maps/MtPyre_6F/scripts.pory"
-
+	.string "Behind you…\n"
 # 93 "data/maps/MtPyre_6F/scripts.pory"
-MtPyre_6F_Text_ValerieRematchDefeat:
+	.string "What is it…$"
 # 94 "data/maps/MtPyre_6F/scripts.pory"
-	.string "Something faded away…$"
+
 # 95 "data/maps/MtPyre_6F/scripts.pory"
-
+MtPyre_6F_Text_ValerieRematchDefeat:
 # 96 "data/maps/MtPyre_6F/scripts.pory"
-MtPyre_6F_Text_ValeriePostRematch:
+	.string "Something faded away…$"
 # 97 "data/maps/MtPyre_6F/scripts.pory"
-	.string "The POKéMON at rest here…\n"
+
 # 98 "data/maps/MtPyre_6F/scripts.pory"
-	.string "Sometimes, they play…$"
+MtPyre_6F_Text_ValeriePostRematch:
 # 99 "data/maps/MtPyre_6F/scripts.pory"
-
+	.string "The POKéMON at rest here…\n"
 # 100 "data/maps/MtPyre_6F/scripts.pory"
-MtPyre_6F_Text_Pyre_MagmaGrunt3Intro:
+	.string "Sometimes, they play…$"
 # 101 "data/maps/MtPyre_6F/scripts.pory"
-	.string "Can't you see we're in the middle\n"
+
 # 102 "data/maps/MtPyre_6F/scripts.pory"
-	.string "of something!$"
+MtPyre_6F_Text_Pyre_MagmaGrunt3Intro:
 # 103 "data/maps/MtPyre_6F/scripts.pory"
-
+	.string "Can't you see we're in the middle\n"
 # 104 "data/maps/MtPyre_6F/scripts.pory"
-MtPyre_6F_Text_Pyre_MagmaGrunt3Defeat:
+	.string "of something!$"
 # 105 "data/maps/MtPyre_6F/scripts.pory"
-	.string "Well that's one way to end things…$"
-# 106 "data/maps/MtPyre_6F/scripts.pory"
 
+# 106 "data/maps/MtPyre_6F/scripts.pory"
+MtPyre_6F_Text_Pyre_MagmaGrunt3Defeat:
 # 107 "data/maps/MtPyre_6F/scripts.pory"
-MtPyre_6F_Text_Pyre_MagmaGrunt3PostBattle:
+	.string "Well that's one way to end things…$"
 # 108 "data/maps/MtPyre_6F/scripts.pory"
-	.string "You're not with either team…\n"
+
 # 109 "data/maps/MtPyre_6F/scripts.pory"
+MtPyre_6F_Text_Pyre_MagmaGrunt3PostBattle:
+# 110 "data/maps/MtPyre_6F/scripts.pory"
+	.string "You're not with either team…\n"
+# 111 "data/maps/MtPyre_6F/scripts.pory"
 	.string "What's your stake in all this?$"

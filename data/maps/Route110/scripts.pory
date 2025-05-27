@@ -220,15 +220,17 @@ Route110_EventScript_TimmyEdwardVictory::
 	end
 
 Route110_EventScript_Edward::
+	faceplayer
 	msgbox Route110_Text_EdwardPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route110_EventScript_Jaclyn::
-	trainerbattle_single TRAINER_JACLYN, Route110_Text_JaclynIntro, Route110_Text_JaclynDefeated
+	faceplayer
 	msgbox Route110_Text_JaclynPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route110_EventScript_Edwin::
+	faceplayer
 	msgbox Route110_Text_EdwinPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -247,11 +249,12 @@ Route110_EventScript_EdwinRematch::
 	end
 
 Route110_EventScript_Dale::
-	trainerbattle_single TRAINER_DALE, Route110_Text_DaleIntro, Route110_Text_DaleDefeated
+	faceplayer
 	msgbox Route110_Text_DalePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route110_EventScript_Jacob::
+	faceplayer
 	msgbox Route110_Text_JacobPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -297,10 +300,12 @@ addvar VAR_ROUTE110_STATE, 1
 end
 
 Route110_EventScript_Anthony::
+	faceplayer
 	msgbox Route110_Text_AnthonyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route110_EventScript_Benjamin::
+	faceplayer
 	msgbox Route110_Text_BenjaminPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -360,10 +365,12 @@ addvar VAR_ROUTE110_STATE, 1
 end
 
 Route110_EventScript_Jasmine::
+	faceplayer
 	msgbox Route110_Text_JasminePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route110_EventScript_Abigail::
+	faceplayer
 	msgbox Route110_Text_AbigailPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -423,6 +430,7 @@ addvar VAR_ROUTE110_STATE, 1
 end
 
 Route110_EventScript_Isabel::
+	faceplayer
 	msgbox Route110_Text_IsabelPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -441,6 +449,7 @@ Route110_EventScript_IsabelRematch::
 	end
 
 Route110_EventScript_Timmy::
+	faceplayer
 	msgbox Route110_Text_TimmyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -448,6 +457,7 @@ Route110_EventScript_Unused::
 	end
 
 Route110_EventScript_Kaleb::
+	faceplayer
 	msgbox Route110_Text_KalebPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -493,6 +503,7 @@ addvar VAR_ROUTE110_STATE, 1
 end
 
 Route110_EventScript_Joseph::
+	faceplayer
 	msgbox Route110_Text_JosephPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -538,6 +549,7 @@ addvar VAR_ROUTE110_STATE, 1
 end
 
 Route110_EventScript_Alyssa::
+	faceplayer
 	msgbox Route110_Text_AlyssaPostBattle, MSGBOX_AUTOCLOSE
 	end
 

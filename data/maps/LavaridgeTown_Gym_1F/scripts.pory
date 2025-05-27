@@ -167,6 +167,7 @@ addvar VAR_LAVARIDGE_GYM_STATE, 1
 end
 
 LavaridgeTown_Gym_1F_EventScript_Cole::
+	faceplayer
 	msgbox LavaridgeTown_Gym_1F_Text_ColePostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -178,10 +179,12 @@ LavaridgeTown_Gym_EventScript_CheckTrainerScript::
 	end
 
 LavaridgeTown_Gym_1F_EventScript_Axle::
+	faceplayer
 	msgbox LavaridgeTown_Gym_1F_Text_AxlePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 LavaridgeTown_Gym_B1F_EventScript_Keegan::
+	faceplayer
 	msgbox LavaridgeTown_Gym_B1F_Text_KeeganPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -231,6 +234,7 @@ addvar VAR_LAVARIDGE_GYM_STATE, 1
 end
 
 LavaridgeTown_Gym_1F_EventScript_Danielle::
+	faceplayer
 	msgbox LavaridgeTown_Gym_1F_Text_DaniellePostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -239,18 +243,22 @@ LavaridgeTown_Gym_1F_EventScript_End::
 	end
 
 LavaridgeTown_Gym_1F_EventScript_Gerald::
+	faceplayer
 	msgbox LavaridgeTown_Gym_1F_Text_GeraldPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 LavaridgeTown_Gym_B1F_EventScript_Jace::
+	faceplayer
 	msgbox LavaridgeTown_Gym_B1F_Text_JacePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 LavaridgeTown_Gym_B1F_EventScript_Jeff::
+	faceplayer
 	msgbox LavaridgeTown_Gym_B1F_Text_JeffPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 LavaridgeTown_Gym_B1F_EventScript_Eli::
+	faceplayer
 	msgbox LavaridgeTown_Gym_B1F_Text_EliPostBattle, MSGBOX_AUTOCLOSE
 	end
 

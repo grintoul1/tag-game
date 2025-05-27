@@ -111,18 +111,22 @@ MtPyre_2F_EventScript_Mark::
 	end
 
 MtPyre_2F_EventScript_Pyre_MagmaGrunt4::
+	faceplayer
 	msgbox MtPyre_2F_Text_Pyre_MagmaGrunt4PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MtPyre_2F_EventScript_Pyre_MagmaGrunt5::
+	faceplayer
 	msgbox MtPyre_2F_Text_Pyre_MagmaGrunt5PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MtPyre_2F_EventScript_Pyre_AquaGrunt2::
+	faceplayer
 	msgbox MtPyre_2F_Text_Pyre_AquaGrunt2PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MtPyre_2F_EventScript_Pyre_AquaGrunt1::
+	faceplayer
 	msgbox MtPyre_2F_Text_Pyre_AquaGrunt1PostBattle, MSGBOX_AUTOCLOSE
 	end
 

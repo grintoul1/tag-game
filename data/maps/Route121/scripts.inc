@@ -225,636 +225,656 @@ Route121_Movement_Grunt3Exit:
 # 113 "data/maps/Route121/scripts.pory"
 Route121_EventScript_Vanessa::
 # 114 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_VanessaPostBattle, MSGBOX_AUTOCLOSE
+	faceplayer
 # 115 "data/maps/Route121/scripts.pory"
-	end
+	msgbox Route121_Text_VanessaPostBattle, MSGBOX_AUTOCLOSE
 # 116 "data/maps/Route121/scripts.pory"
-
+	end
 # 117 "data/maps/Route121/scripts.pory"
-Route121_EventScript_VanessaWalter::
+
 # 118 "data/maps/Route121/scripts.pory"
-lockall
+Route121_EventScript_VanessaWalter::
 # 119 "data/maps/Route121/scripts.pory"
-setvar VAR_0x8008, LOCALID_VANESSA
-# 120 "data/maps/Route121/scripts.pory"
-playse SE_PIN
-# 121 "data/maps/Route121/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 122 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 123 "data/maps/Route121/scripts.pory"
-playbgm MUS_ENCOUNTER_TWINS, TRUE
-# 124 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 125 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 126 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_VanessaIntro MSGBOX_AUTOCLOSE
-# 127 "data/maps/Route121/scripts.pory"
-setvar VAR_0x8008, LOCALID_WALTER
-# 128 "data/maps/Route121/scripts.pory"
-playse SE_PIN
-# 129 "data/maps/Route121/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 130 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 131 "data/maps/Route121/scripts.pory"
-playbgm MUS_ENCOUNTER_MALE, TRUE
-# 132 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 133 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 134 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_WalterIntro, MSGBOX_AUTOCLOSE
-# 135 "data/maps/Route121/scripts.pory"
-goto Route121_EventScript_VanessaWalterDoMultiBattle
-# 136 "data/maps/Route121/scripts.pory"
-releaseall
-# 137 "data/maps/Route121/scripts.pory"
-end
-# 138 "data/maps/Route121/scripts.pory"
-
-# 139 "data/maps/Route121/scripts.pory"
-Route121_EventScript_VanessaWalterDoMultiBattle::
-# 140 "data/maps/Route121/scripts.pory"
-playbgm MUS_ROUTE120, TRUE
-# 141 "data/maps/Route121/scripts.pory"
-multi_2p_vs_2 TRAINER_VANESSA, Route121_Text_VanessaDefeat, TRAINER_WALTER_1, Route121_Text_WalterDefeat, PARTNER_EMMIE
-# 142 "data/maps/Route121/scripts.pory"
-switch VAR_RESULT
-# 143 "data/maps/Route121/scripts.pory"
-case 1, Route121_EventScript_VanessaWalterVictory
-# 144 "data/maps/Route121/scripts.pory"
-fadescreen FADE_TO_BLACK
-# 145 "data/maps/Route121/scripts.pory"
-special SetCB2WhiteOut
-# 146 "data/maps/Route121/scripts.pory"
-waitstate
-# 147 "data/maps/Route121/scripts.pory"
-
-# 148 "data/maps/Route121/scripts.pory"
-Route121_EventScript_VanessaWalterVictory::
-# 149 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 150 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 151 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_VanessaPostBattle, MSGBOX_AUTOCLOSE
-# 152 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 153 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 154 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_WalterPostBattle, MSGBOX_AUTOCLOSE
-# 155 "data/maps/Route121/scripts.pory"
-addvar VAR_ROUTE121_STATE, 1
-# 156 "data/maps/Route121/scripts.pory"
-end
-# 157 "data/maps/Route121/scripts.pory"
-
-# 158 "data/maps/Route121/scripts.pory"
-Route121_EventScript_Walter::
-# 159 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_WalterPostBattle, MSGBOX_DEFAULT
-# 160 "data/maps/Route121/scripts.pory"
-	release
-# 161 "data/maps/Route121/scripts.pory"
-	end
-# 162 "data/maps/Route121/scripts.pory"
-
-# 163 "data/maps/Route121/scripts.pory"
-Route121_EventScript_RegisterWalter::
-# 164 "data/maps/Route121/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
-# 165 "data/maps/Route121/scripts.pory"
-	waitmovement 0
-# 166 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_WalterRegister, MSGBOX_DEFAULT
-# 167 "data/maps/Route121/scripts.pory"
-	register_matchcall TRAINER_WALTER_1
-# 168 "data/maps/Route121/scripts.pory"
-	release
-# 169 "data/maps/Route121/scripts.pory"
-	end
-# 170 "data/maps/Route121/scripts.pory"
-
-# 171 "data/maps/Route121/scripts.pory"
-Route121_EventScript_RematchWalter::
-# 172 "data/maps/Route121/scripts.pory"
-	trainerbattle_rematch TRAINER_WALTER_1, Route121_Text_WalterRematchIntro, Route121_Text_WalterRematchDefeat
-# 173 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_WalterPostRematch, MSGBOX_AUTOCLOSE
-# 174 "data/maps/Route121/scripts.pory"
-	end
-# 175 "data/maps/Route121/scripts.pory"
-
-# 176 "data/maps/Route121/scripts.pory"
-Route121_EventScript_Tammy::
-# 177 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_TammyPostBattle, MSGBOX_AUTOCLOSE
-# 178 "data/maps/Route121/scripts.pory"
-	end
-# 179 "data/maps/Route121/scripts.pory"
-
-# 180 "data/maps/Route121/scripts.pory"
-Route121_EventScript_KateJoy::
-# 181 "data/maps/Route121/scripts.pory"
 lockall
-# 182 "data/maps/Route121/scripts.pory"
-setvar VAR_0x8008, LOCALID_KATE
-# 183 "data/maps/Route121/scripts.pory"
+# 120 "data/maps/Route121/scripts.pory"
+setvar VAR_0x8008, LOCALID_VANESSA
+# 121 "data/maps/Route121/scripts.pory"
 playse SE_PIN
-# 184 "data/maps/Route121/scripts.pory"
+# 122 "data/maps/Route121/scripts.pory"
 applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 185 "data/maps/Route121/scripts.pory"
-applymovement LOCALID_JOY, Common_Movement_ExclamationMark
-# 186 "data/maps/Route121/scripts.pory"
+# 123 "data/maps/Route121/scripts.pory"
 waitmovement 0
-# 187 "data/maps/Route121/scripts.pory"
+# 124 "data/maps/Route121/scripts.pory"
 playbgm MUS_ENCOUNTER_TWINS, TRUE
-# 188 "data/maps/Route121/scripts.pory"
+# 125 "data/maps/Route121/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 126 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 127 "data/maps/Route121/scripts.pory"
+msgbox Route121_Text_VanessaIntro MSGBOX_AUTOCLOSE
+# 128 "data/maps/Route121/scripts.pory"
+setvar VAR_0x8008, LOCALID_WALTER
+# 129 "data/maps/Route121/scripts.pory"
+playse SE_PIN
+# 130 "data/maps/Route121/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 131 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 132 "data/maps/Route121/scripts.pory"
+playbgm MUS_ENCOUNTER_MALE, TRUE
+# 133 "data/maps/Route121/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 134 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 135 "data/maps/Route121/scripts.pory"
+msgbox Route121_Text_WalterIntro, MSGBOX_AUTOCLOSE
+# 136 "data/maps/Route121/scripts.pory"
+goto Route121_EventScript_VanessaWalterDoMultiBattle
+# 137 "data/maps/Route121/scripts.pory"
+releaseall
+# 138 "data/maps/Route121/scripts.pory"
+end
+# 139 "data/maps/Route121/scripts.pory"
+
+# 140 "data/maps/Route121/scripts.pory"
+Route121_EventScript_VanessaWalterDoMultiBattle::
+# 141 "data/maps/Route121/scripts.pory"
+playbgm MUS_ROUTE120, TRUE
+# 142 "data/maps/Route121/scripts.pory"
+multi_2p_vs_2 TRAINER_VANESSA, Route121_Text_VanessaDefeat, TRAINER_WALTER_1, Route121_Text_WalterDefeat, PARTNER_EMMIE
+# 143 "data/maps/Route121/scripts.pory"
+switch VAR_RESULT
+# 144 "data/maps/Route121/scripts.pory"
+case 1, Route121_EventScript_VanessaWalterVictory
+# 145 "data/maps/Route121/scripts.pory"
+fadescreen FADE_TO_BLACK
+# 146 "data/maps/Route121/scripts.pory"
+special SetCB2WhiteOut
+# 147 "data/maps/Route121/scripts.pory"
+waitstate
+# 148 "data/maps/Route121/scripts.pory"
+
+# 149 "data/maps/Route121/scripts.pory"
+Route121_EventScript_VanessaWalterVictory::
+# 150 "data/maps/Route121/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 151 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 152 "data/maps/Route121/scripts.pory"
+msgbox Route121_Text_VanessaPostBattle, MSGBOX_AUTOCLOSE
+# 153 "data/maps/Route121/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 154 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 155 "data/maps/Route121/scripts.pory"
+msgbox Route121_Text_WalterPostBattle, MSGBOX_AUTOCLOSE
+# 156 "data/maps/Route121/scripts.pory"
+addvar VAR_ROUTE121_STATE, 1
+# 157 "data/maps/Route121/scripts.pory"
+end
+# 158 "data/maps/Route121/scripts.pory"
+
+# 159 "data/maps/Route121/scripts.pory"
+Route121_EventScript_Walter::
+# 160 "data/maps/Route121/scripts.pory"
+	faceplayer
+# 161 "data/maps/Route121/scripts.pory"
+	msgbox Route121_Text_WalterPostBattle, MSGBOX_DEFAULT
+# 162 "data/maps/Route121/scripts.pory"
+	release
+# 163 "data/maps/Route121/scripts.pory"
+	end
+# 164 "data/maps/Route121/scripts.pory"
+
+# 165 "data/maps/Route121/scripts.pory"
+Route121_EventScript_RegisterWalter::
+# 166 "data/maps/Route121/scripts.pory"
+	special PlayerFaceTrainerAfterBattle
+# 167 "data/maps/Route121/scripts.pory"
+	waitmovement 0
+# 168 "data/maps/Route121/scripts.pory"
+	msgbox Route121_Text_WalterRegister, MSGBOX_DEFAULT
+# 169 "data/maps/Route121/scripts.pory"
+	register_matchcall TRAINER_WALTER_1
+# 170 "data/maps/Route121/scripts.pory"
+	release
+# 171 "data/maps/Route121/scripts.pory"
+	end
+# 172 "data/maps/Route121/scripts.pory"
+
+# 173 "data/maps/Route121/scripts.pory"
+Route121_EventScript_RematchWalter::
+# 174 "data/maps/Route121/scripts.pory"
+	trainerbattle_rematch TRAINER_WALTER_1, Route121_Text_WalterRematchIntro, Route121_Text_WalterRematchDefeat
+# 175 "data/maps/Route121/scripts.pory"
+	msgbox Route121_Text_WalterPostRematch, MSGBOX_AUTOCLOSE
+# 176 "data/maps/Route121/scripts.pory"
+	end
+# 177 "data/maps/Route121/scripts.pory"
+
+# 178 "data/maps/Route121/scripts.pory"
+Route121_EventScript_Tammy::
+# 179 "data/maps/Route121/scripts.pory"
+	faceplayer
+# 180 "data/maps/Route121/scripts.pory"
+	msgbox Route121_Text_TammyPostBattle, MSGBOX_AUTOCLOSE
+# 181 "data/maps/Route121/scripts.pory"
+	end
+# 182 "data/maps/Route121/scripts.pory"
+
+# 183 "data/maps/Route121/scripts.pory"
+Route121_EventScript_KateJoy::
+# 184 "data/maps/Route121/scripts.pory"
+lockall
+# 185 "data/maps/Route121/scripts.pory"
+setvar VAR_0x8008, LOCALID_KATE
+# 186 "data/maps/Route121/scripts.pory"
+playse SE_PIN
+# 187 "data/maps/Route121/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 188 "data/maps/Route121/scripts.pory"
+applymovement LOCALID_JOY, Common_Movement_ExclamationMark
 # 189 "data/maps/Route121/scripts.pory"
 waitmovement 0
 # 190 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_KateIntro, MSGBOX_AUTOCLOSE
+playbgm MUS_ENCOUNTER_TWINS, TRUE
 # 191 "data/maps/Route121/scripts.pory"
-goto Route121_EventScript_KateJoyDoMultiBattle
-# 192 "data/maps/Route121/scripts.pory"
-releaseall
-# 193 "data/maps/Route121/scripts.pory"
-end
-# 194 "data/maps/Route121/scripts.pory"
-
-# 195 "data/maps/Route121/scripts.pory"
-Route121_EventScript_KateJoyDoMultiBattle::
-# 196 "data/maps/Route121/scripts.pory"
-playbgm MUS_ROUTE120, TRUE
-# 197 "data/maps/Route121/scripts.pory"
-multi_2p_vs_1 TRAINER_KATE_AND_JOY, Route121_Text_KateDefeat, PARTNER_EMMIE
-# 198 "data/maps/Route121/scripts.pory"
-switch VAR_RESULT
-# 199 "data/maps/Route121/scripts.pory"
-case 1, Route121_EventScript_KateJoyVictory
-# 200 "data/maps/Route121/scripts.pory"
-fadescreen FADE_TO_BLACK
-# 201 "data/maps/Route121/scripts.pory"
-special SetCB2WhiteOut
-# 202 "data/maps/Route121/scripts.pory"
-waitstate
-# 203 "data/maps/Route121/scripts.pory"
-
-# 204 "data/maps/Route121/scripts.pory"
-Route121_EventScript_KateJoyVictory::
-# 205 "data/maps/Route121/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 206 "data/maps/Route121/scripts.pory"
+# 192 "data/maps/Route121/scripts.pory"
 waitmovement 0
-# 207 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_KatePostBattle, MSGBOX_AUTOCLOSE
-# 208 "data/maps/Route121/scripts.pory"
-addvar VAR_ROUTE121_STATE, 1
-# 209 "data/maps/Route121/scripts.pory"
+# 193 "data/maps/Route121/scripts.pory"
+msgbox Route121_Text_KateIntro, MSGBOX_AUTOCLOSE
+# 194 "data/maps/Route121/scripts.pory"
+goto Route121_EventScript_KateJoyDoMultiBattle
+# 195 "data/maps/Route121/scripts.pory"
+releaseall
+# 196 "data/maps/Route121/scripts.pory"
 end
+# 197 "data/maps/Route121/scripts.pory"
+
+# 198 "data/maps/Route121/scripts.pory"
+Route121_EventScript_KateJoyDoMultiBattle::
+# 199 "data/maps/Route121/scripts.pory"
+playbgm MUS_ROUTE120, TRUE
+# 200 "data/maps/Route121/scripts.pory"
+multi_2p_vs_1 TRAINER_KATE_AND_JOY, Route121_Text_KateDefeat, PARTNER_EMMIE
+# 201 "data/maps/Route121/scripts.pory"
+switch VAR_RESULT
+# 202 "data/maps/Route121/scripts.pory"
+case 1, Route121_EventScript_KateJoyVictory
+# 203 "data/maps/Route121/scripts.pory"
+fadescreen FADE_TO_BLACK
+# 204 "data/maps/Route121/scripts.pory"
+special SetCB2WhiteOut
+# 205 "data/maps/Route121/scripts.pory"
+waitstate
+# 206 "data/maps/Route121/scripts.pory"
+
+# 207 "data/maps/Route121/scripts.pory"
+Route121_EventScript_KateJoyVictory::
+# 208 "data/maps/Route121/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 209 "data/maps/Route121/scripts.pory"
+waitmovement 0
 # 210 "data/maps/Route121/scripts.pory"
-
+msgbox Route121_Text_KatePostBattle, MSGBOX_AUTOCLOSE
 # 211 "data/maps/Route121/scripts.pory"
-Route121_EventScript_Kate::
+addvar VAR_ROUTE121_STATE, 1
 # 212 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_KatePostBattle, MSGBOX_AUTOCLOSE
+end
 # 213 "data/maps/Route121/scripts.pory"
-	end
-# 214 "data/maps/Route121/scripts.pory"
 
+# 214 "data/maps/Route121/scripts.pory"
+Route121_EventScript_Kate::
 # 215 "data/maps/Route121/scripts.pory"
-Route121_EventScript_Joy::
+	faceplayer
 # 216 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_JoyPostBattle, MSGBOX_AUTOCLOSE
+	msgbox Route121_Text_KatePostBattle, MSGBOX_AUTOCLOSE
 # 217 "data/maps/Route121/scripts.pory"
 	end
 # 218 "data/maps/Route121/scripts.pory"
 
 # 219 "data/maps/Route121/scripts.pory"
-Route121_EventScript_Jessica::
+Route121_EventScript_Joy::
 # 220 "data/maps/Route121/scripts.pory"
-	trainerbattle_single TRAINER_JESSICA_1, Route121_Text_JessicaIntro, Route121_Text_JessicaDefeat, Route121_EventScript_RegisterJessica
+	faceplayer
 # 221 "data/maps/Route121/scripts.pory"
-	specialvar VAR_RESULT, ShouldTryRematchBattle
+	msgbox Route121_Text_JoyPostBattle, MSGBOX_AUTOCLOSE
 # 222 "data/maps/Route121/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route121_EventScript_RematchJessica
+	end
 # 223 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_JessicaPostBattle, MSGBOX_DEFAULT
+
 # 224 "data/maps/Route121/scripts.pory"
-	release
+Route121_EventScript_Jessica::
 # 225 "data/maps/Route121/scripts.pory"
-	end
+	trainerbattle_single TRAINER_JESSICA_1, Route121_Text_JessicaIntro, Route121_Text_JessicaDefeat, Route121_EventScript_RegisterJessica
 # 226 "data/maps/Route121/scripts.pory"
-
+	specialvar VAR_RESULT, ShouldTryRematchBattle
 # 227 "data/maps/Route121/scripts.pory"
-Route121_EventScript_RegisterJessica::
+	goto_if_eq VAR_RESULT, TRUE, Route121_EventScript_RematchJessica
 # 228 "data/maps/Route121/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
+	msgbox Route121_Text_JessicaPostBattle, MSGBOX_DEFAULT
 # 229 "data/maps/Route121/scripts.pory"
-	waitmovement 0
-# 230 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_JessicaRegister, MSGBOX_DEFAULT
-# 231 "data/maps/Route121/scripts.pory"
-	register_matchcall TRAINER_JESSICA_1
-# 232 "data/maps/Route121/scripts.pory"
 	release
-# 233 "data/maps/Route121/scripts.pory"
+# 230 "data/maps/Route121/scripts.pory"
 	end
-# 234 "data/maps/Route121/scripts.pory"
+# 231 "data/maps/Route121/scripts.pory"
 
+# 232 "data/maps/Route121/scripts.pory"
+Route121_EventScript_RegisterJessica::
+# 233 "data/maps/Route121/scripts.pory"
+	special PlayerFaceTrainerAfterBattle
+# 234 "data/maps/Route121/scripts.pory"
+	waitmovement 0
 # 235 "data/maps/Route121/scripts.pory"
-Route121_EventScript_RematchJessica::
+	msgbox Route121_Text_JessicaRegister, MSGBOX_DEFAULT
 # 236 "data/maps/Route121/scripts.pory"
-	trainerbattle_rematch TRAINER_JESSICA_1, Route121_Text_JessicaRematchIntro, Route121_Text_JessicaRematchDefeat
+	register_matchcall TRAINER_JESSICA_1
 # 237 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_JessicaPostRematch, MSGBOX_AUTOCLOSE
+	release
 # 238 "data/maps/Route121/scripts.pory"
 	end
 # 239 "data/maps/Route121/scripts.pory"
 
 # 240 "data/maps/Route121/scripts.pory"
-Route121_EventScript_Cale::
+Route121_EventScript_RematchJessica::
 # 241 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_CalePostBattle, MSGBOX_AUTOCLOSE
+	trainerbattle_rematch TRAINER_JESSICA_1, Route121_Text_JessicaRematchIntro, Route121_Text_JessicaRematchDefeat
 # 242 "data/maps/Route121/scripts.pory"
-	end
+	msgbox Route121_Text_JessicaPostRematch, MSGBOX_AUTOCLOSE
 # 243 "data/maps/Route121/scripts.pory"
-
+	end
 # 244 "data/maps/Route121/scripts.pory"
-Route121_EventScript_CaleTammy::
+
 # 245 "data/maps/Route121/scripts.pory"
-lockall
+Route121_EventScript_Cale::
 # 246 "data/maps/Route121/scripts.pory"
-setvar VAR_0x8008, LOCALID_CALE
+	faceplayer
 # 247 "data/maps/Route121/scripts.pory"
-playse SE_PIN
+	msgbox Route121_Text_CalePostBattle, MSGBOX_AUTOCLOSE
 # 248 "data/maps/Route121/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	end
 # 249 "data/maps/Route121/scripts.pory"
-waitmovement 0
+
 # 250 "data/maps/Route121/scripts.pory"
-playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+Route121_EventScript_CaleTammy::
 # 251 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+lockall
 # 252 "data/maps/Route121/scripts.pory"
-waitmovement 0
+setvar VAR_0x8008, LOCALID_CALE
 # 253 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_CaleIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
 # 254 "data/maps/Route121/scripts.pory"
-setvar VAR_0x8008, LOCALID_TAMMY
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
 # 255 "data/maps/Route121/scripts.pory"
-playse SE_PIN
+waitmovement 0
 # 256 "data/maps/Route121/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 257 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 258 "data/maps/Route121/scripts.pory"
 playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+# 257 "data/maps/Route121/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 258 "data/maps/Route121/scripts.pory"
+waitmovement 0
 # 259 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+msgbox Route121_Text_CaleIntro MSGBOX_AUTOCLOSE
 # 260 "data/maps/Route121/scripts.pory"
-waitmovement 0
+setvar VAR_0x8008, LOCALID_TAMMY
 # 261 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_TammyIntro, MSGBOX_AUTOCLOSE
+playse SE_PIN
 # 262 "data/maps/Route121/scripts.pory"
-goto Route121_EventScript_CaleTammyDoMultiBattle
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
 # 263 "data/maps/Route121/scripts.pory"
-releaseall
+waitmovement 0
 # 264 "data/maps/Route121/scripts.pory"
-end
+playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
 # 265 "data/maps/Route121/scripts.pory"
-
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 266 "data/maps/Route121/scripts.pory"
-Route121_EventScript_CaleTammyDoMultiBattle::
+waitmovement 0
 # 267 "data/maps/Route121/scripts.pory"
-playbgm MUS_ROUTE120, TRUE
+msgbox Route121_Text_TammyIntro, MSGBOX_AUTOCLOSE
 # 268 "data/maps/Route121/scripts.pory"
-multi_2p_vs_2 TRAINER_CALE, Route121_Text_CaleDefeat, TRAINER_TAMMY, Route121_Text_TammyDefeat, PARTNER_EMMIE
+goto Route121_EventScript_CaleTammyDoMultiBattle
 # 269 "data/maps/Route121/scripts.pory"
-switch VAR_RESULT
+releaseall
 # 270 "data/maps/Route121/scripts.pory"
-case 1, Route121_EventScript_CaleTammyVictory
+end
 # 271 "data/maps/Route121/scripts.pory"
-fadescreen FADE_TO_BLACK
+
 # 272 "data/maps/Route121/scripts.pory"
-special SetCB2WhiteOut
+Route121_EventScript_CaleTammyDoMultiBattle::
 # 273 "data/maps/Route121/scripts.pory"
-waitstate
+playbgm MUS_ROUTE120, TRUE
 # 274 "data/maps/Route121/scripts.pory"
-
+multi_2p_vs_2 TRAINER_CALE, Route121_Text_CaleDefeat, TRAINER_TAMMY, Route121_Text_TammyDefeat, PARTNER_EMMIE
 # 275 "data/maps/Route121/scripts.pory"
-Route121_EventScript_CaleTammyVictory::
+switch VAR_RESULT
 # 276 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+case 1, Route121_EventScript_CaleTammyVictory
 # 277 "data/maps/Route121/scripts.pory"
-waitmovement 0
+fadescreen FADE_TO_BLACK
 # 278 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_CalePostBattle, MSGBOX_AUTOCLOSE
+special SetCB2WhiteOut
 # 279 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitstate
 # 280 "data/maps/Route121/scripts.pory"
-waitmovement 0
+
 # 281 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_TammyPostBattle, MSGBOX_AUTOCLOSE
+Route121_EventScript_CaleTammyVictory::
 # 282 "data/maps/Route121/scripts.pory"
-addvar VAR_ROUTE121_STATE, 1
-# 283 "data/maps/Route121/scripts.pory"
-end
-# 284 "data/maps/Route121/scripts.pory"
-
-# 285 "data/maps/Route121/scripts.pory"
-Route121_EventScript_PatMyles::
-# 286 "data/maps/Route121/scripts.pory"
-lockall
-# 287 "data/maps/Route121/scripts.pory"
-setvar VAR_0x8008, LOCALID_PAT
-# 288 "data/maps/Route121/scripts.pory"
-playse SE_PIN
-# 289 "data/maps/Route121/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 290 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 291 "data/maps/Route121/scripts.pory"
-playbgm MUS_ENCOUNTER_GIRL, TRUE
-# 292 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-# 293 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 294 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_PatIntro MSGBOX_AUTOCLOSE
-# 295 "data/maps/Route121/scripts.pory"
-setvar VAR_0x8008, LOCALID_MYLES
-# 296 "data/maps/Route121/scripts.pory"
-playse SE_PIN
-# 297 "data/maps/Route121/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 298 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 299 "data/maps/Route121/scripts.pory"
-playbgm MUS_ENCOUNTER_MALE, TRUE
-# 300 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-# 301 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 302 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_MylesIntro, MSGBOX_AUTOCLOSE
-# 303 "data/maps/Route121/scripts.pory"
-goto Route121_EventScript_PatMylesDoMultiBattle
-# 304 "data/maps/Route121/scripts.pory"
-releaseall
-# 305 "data/maps/Route121/scripts.pory"
-end
-# 306 "data/maps/Route121/scripts.pory"
-
-# 307 "data/maps/Route121/scripts.pory"
-Route121_EventScript_PatMylesDoMultiBattle::
-# 308 "data/maps/Route121/scripts.pory"
-playbgm MUS_ROUTE120, TRUE
-# 309 "data/maps/Route121/scripts.pory"
-multi_2p_vs_2 TRAINER_PAT, Route121_Text_PatDefeat, TRAINER_MYLES, Route121_Text_MylesDefeat, PARTNER_EMMIE
-# 310 "data/maps/Route121/scripts.pory"
-switch VAR_RESULT
-# 311 "data/maps/Route121/scripts.pory"
-case 1, Route121_EventScript_PatMylesVictory
-# 312 "data/maps/Route121/scripts.pory"
-fadescreen FADE_TO_BLACK
-# 313 "data/maps/Route121/scripts.pory"
-special SetCB2WhiteOut
-# 314 "data/maps/Route121/scripts.pory"
-waitstate
-# 315 "data/maps/Route121/scripts.pory"
-
-# 316 "data/maps/Route121/scripts.pory"
-Route121_EventScript_PatMylesVictory::
-# 317 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-# 318 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 319 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_PatPostBattle, MSGBOX_AUTOCLOSE
-# 320 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-# 321 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 322 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_MylesPostBattle, MSGBOX_AUTOCLOSE
-# 323 "data/maps/Route121/scripts.pory"
-addvar VAR_ROUTE121_STATE, 1
-# 324 "data/maps/Route121/scripts.pory"
-end
-# 325 "data/maps/Route121/scripts.pory"
-
-# 326 "data/maps/Route121/scripts.pory"
-Route121_EventScript_Myles::
-# 327 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_MylesPostBattle, MSGBOX_AUTOCLOSE
-# 328 "data/maps/Route121/scripts.pory"
-	end
-# 329 "data/maps/Route121/scripts.pory"
-
-# 330 "data/maps/Route121/scripts.pory"
-Route121_EventScript_Pat::
-# 331 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_PatPostBattle, MSGBOX_AUTOCLOSE
-# 332 "data/maps/Route121/scripts.pory"
-	end
-# 333 "data/maps/Route121/scripts.pory"
-
-# 334 "data/maps/Route121/scripts.pory"
-Route121_EventScript_Marcel::
-# 335 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_MarcelPostBattle, MSGBOX_AUTOCLOSE
-# 336 "data/maps/Route121/scripts.pory"
-	end
-# 337 "data/maps/Route121/scripts.pory"
-
-# 338 "data/maps/Route121/scripts.pory"
-Route121_EventScript_MarcelCristin::
-# 339 "data/maps/Route121/scripts.pory"
-lockall
-# 340 "data/maps/Route121/scripts.pory"
-setvar VAR_0x8008, LOCALID_MARCEL
-# 341 "data/maps/Route121/scripts.pory"
-playse SE_PIN
-# 342 "data/maps/Route121/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 343 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 344 "data/maps/Route121/scripts.pory"
-playbgm MUS_ENCOUNTER_COOL, TRUE
-# 345 "data/maps/Route121/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 346 "data/maps/Route121/scripts.pory"
+# 283 "data/maps/Route121/scripts.pory"
 waitmovement 0
-# 347 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_MarcelIntro MSGBOX_AUTOCLOSE
-# 348 "data/maps/Route121/scripts.pory"
-setvar VAR_0x8008, LOCALID_CRISTIN
-# 349 "data/maps/Route121/scripts.pory"
-playse SE_PIN
-# 350 "data/maps/Route121/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 351 "data/maps/Route121/scripts.pory"
-waitmovement 0
-# 352 "data/maps/Route121/scripts.pory"
-playbgm MUS_ENCOUNTER_COOL, TRUE
-# 353 "data/maps/Route121/scripts.pory"
+# 284 "data/maps/Route121/scripts.pory"
+msgbox Route121_Text_CalePostBattle, MSGBOX_AUTOCLOSE
+# 285 "data/maps/Route121/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 354 "data/maps/Route121/scripts.pory"
+# 286 "data/maps/Route121/scripts.pory"
 waitmovement 0
-# 355 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_CristinIntro, MSGBOX_AUTOCLOSE
-# 356 "data/maps/Route121/scripts.pory"
-goto Route121_EventScript_MarcelCristinDoMultiBattle
-# 357 "data/maps/Route121/scripts.pory"
-releaseall
-# 358 "data/maps/Route121/scripts.pory"
+# 287 "data/maps/Route121/scripts.pory"
+msgbox Route121_Text_TammyPostBattle, MSGBOX_AUTOCLOSE
+# 288 "data/maps/Route121/scripts.pory"
+addvar VAR_ROUTE121_STATE, 1
+# 289 "data/maps/Route121/scripts.pory"
 end
-# 359 "data/maps/Route121/scripts.pory"
+# 290 "data/maps/Route121/scripts.pory"
 
-# 360 "data/maps/Route121/scripts.pory"
-Route121_EventScript_MarcelCristinDoMultiBattle::
-# 361 "data/maps/Route121/scripts.pory"
+# 291 "data/maps/Route121/scripts.pory"
+Route121_EventScript_PatMyles::
+# 292 "data/maps/Route121/scripts.pory"
+lockall
+# 293 "data/maps/Route121/scripts.pory"
+setvar VAR_0x8008, LOCALID_PAT
+# 294 "data/maps/Route121/scripts.pory"
+playse SE_PIN
+# 295 "data/maps/Route121/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 296 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 297 "data/maps/Route121/scripts.pory"
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+# 298 "data/maps/Route121/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+# 299 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 300 "data/maps/Route121/scripts.pory"
+msgbox Route121_Text_PatIntro MSGBOX_AUTOCLOSE
+# 301 "data/maps/Route121/scripts.pory"
+setvar VAR_0x8008, LOCALID_MYLES
+# 302 "data/maps/Route121/scripts.pory"
+playse SE_PIN
+# 303 "data/maps/Route121/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 304 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 305 "data/maps/Route121/scripts.pory"
+playbgm MUS_ENCOUNTER_MALE, TRUE
+# 306 "data/maps/Route121/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+# 307 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 308 "data/maps/Route121/scripts.pory"
+msgbox Route121_Text_MylesIntro, MSGBOX_AUTOCLOSE
+# 309 "data/maps/Route121/scripts.pory"
+goto Route121_EventScript_PatMylesDoMultiBattle
+# 310 "data/maps/Route121/scripts.pory"
+releaseall
+# 311 "data/maps/Route121/scripts.pory"
+end
+# 312 "data/maps/Route121/scripts.pory"
+
+# 313 "data/maps/Route121/scripts.pory"
+Route121_EventScript_PatMylesDoMultiBattle::
+# 314 "data/maps/Route121/scripts.pory"
 playbgm MUS_ROUTE120, TRUE
-# 362 "data/maps/Route121/scripts.pory"
-multi_2p_vs_2 TRAINER_MARCEL, Route121_Text_MarcelDefeat, TRAINER_CRISTIN_1, Route121_Text_CristinDefeat, PARTNER_EMMIE
-# 363 "data/maps/Route121/scripts.pory"
+# 315 "data/maps/Route121/scripts.pory"
+multi_2p_vs_2 TRAINER_PAT, Route121_Text_PatDefeat, TRAINER_MYLES, Route121_Text_MylesDefeat, PARTNER_EMMIE
+# 316 "data/maps/Route121/scripts.pory"
 switch VAR_RESULT
-# 364 "data/maps/Route121/scripts.pory"
-case 1, Route121_EventScript_MarcelCristinVictory
-# 365 "data/maps/Route121/scripts.pory"
+# 317 "data/maps/Route121/scripts.pory"
+case 1, Route121_EventScript_PatMylesVictory
+# 318 "data/maps/Route121/scripts.pory"
 fadescreen FADE_TO_BLACK
-# 366 "data/maps/Route121/scripts.pory"
+# 319 "data/maps/Route121/scripts.pory"
 special SetCB2WhiteOut
-# 367 "data/maps/Route121/scripts.pory"
+# 320 "data/maps/Route121/scripts.pory"
 waitstate
+# 321 "data/maps/Route121/scripts.pory"
+
+# 322 "data/maps/Route121/scripts.pory"
+Route121_EventScript_PatMylesVictory::
+# 323 "data/maps/Route121/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+# 324 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 325 "data/maps/Route121/scripts.pory"
+msgbox Route121_Text_PatPostBattle, MSGBOX_AUTOCLOSE
+# 326 "data/maps/Route121/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+# 327 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 328 "data/maps/Route121/scripts.pory"
+msgbox Route121_Text_MylesPostBattle, MSGBOX_AUTOCLOSE
+# 329 "data/maps/Route121/scripts.pory"
+addvar VAR_ROUTE121_STATE, 1
+# 330 "data/maps/Route121/scripts.pory"
+end
+# 331 "data/maps/Route121/scripts.pory"
+
+# 332 "data/maps/Route121/scripts.pory"
+Route121_EventScript_Myles::
+# 333 "data/maps/Route121/scripts.pory"
+	faceplayer
+# 334 "data/maps/Route121/scripts.pory"
+	msgbox Route121_Text_MylesPostBattle, MSGBOX_AUTOCLOSE
+# 335 "data/maps/Route121/scripts.pory"
+	end
+# 336 "data/maps/Route121/scripts.pory"
+
+# 337 "data/maps/Route121/scripts.pory"
+Route121_EventScript_Pat::
+# 338 "data/maps/Route121/scripts.pory"
+	faceplayer
+# 339 "data/maps/Route121/scripts.pory"
+	msgbox Route121_Text_PatPostBattle, MSGBOX_AUTOCLOSE
+# 340 "data/maps/Route121/scripts.pory"
+	end
+# 341 "data/maps/Route121/scripts.pory"
+
+# 342 "data/maps/Route121/scripts.pory"
+Route121_EventScript_Marcel::
+# 343 "data/maps/Route121/scripts.pory"
+	faceplayer
+# 344 "data/maps/Route121/scripts.pory"
+	msgbox Route121_Text_MarcelPostBattle, MSGBOX_AUTOCLOSE
+# 345 "data/maps/Route121/scripts.pory"
+	end
+# 346 "data/maps/Route121/scripts.pory"
+
+# 347 "data/maps/Route121/scripts.pory"
+Route121_EventScript_MarcelCristin::
+# 348 "data/maps/Route121/scripts.pory"
+lockall
+# 349 "data/maps/Route121/scripts.pory"
+setvar VAR_0x8008, LOCALID_MARCEL
+# 350 "data/maps/Route121/scripts.pory"
+playse SE_PIN
+# 351 "data/maps/Route121/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 352 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 353 "data/maps/Route121/scripts.pory"
+playbgm MUS_ENCOUNTER_COOL, TRUE
+# 354 "data/maps/Route121/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 355 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 356 "data/maps/Route121/scripts.pory"
+msgbox Route121_Text_MarcelIntro MSGBOX_AUTOCLOSE
+# 357 "data/maps/Route121/scripts.pory"
+setvar VAR_0x8008, LOCALID_CRISTIN
+# 358 "data/maps/Route121/scripts.pory"
+playse SE_PIN
+# 359 "data/maps/Route121/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 360 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 361 "data/maps/Route121/scripts.pory"
+playbgm MUS_ENCOUNTER_COOL, TRUE
+# 362 "data/maps/Route121/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 363 "data/maps/Route121/scripts.pory"
+waitmovement 0
+# 364 "data/maps/Route121/scripts.pory"
+msgbox Route121_Text_CristinIntro, MSGBOX_AUTOCLOSE
+# 365 "data/maps/Route121/scripts.pory"
+goto Route121_EventScript_MarcelCristinDoMultiBattle
+# 366 "data/maps/Route121/scripts.pory"
+releaseall
+# 367 "data/maps/Route121/scripts.pory"
+end
 # 368 "data/maps/Route121/scripts.pory"
 
 # 369 "data/maps/Route121/scripts.pory"
-Route121_EventScript_MarcelCristinVictory::
+Route121_EventScript_MarcelCristinDoMultiBattle::
 # 370 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+playbgm MUS_ROUTE120, TRUE
 # 371 "data/maps/Route121/scripts.pory"
-waitmovement 0
+multi_2p_vs_2 TRAINER_MARCEL, Route121_Text_MarcelDefeat, TRAINER_CRISTIN_1, Route121_Text_CristinDefeat, PARTNER_EMMIE
 # 372 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_MarcelPostBattle, MSGBOX_AUTOCLOSE
+switch VAR_RESULT
 # 373 "data/maps/Route121/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+case 1, Route121_EventScript_MarcelCristinVictory
 # 374 "data/maps/Route121/scripts.pory"
-waitmovement 0
+fadescreen FADE_TO_BLACK
 # 375 "data/maps/Route121/scripts.pory"
-msgbox Route121_Text_CristinPostBattle, MSGBOX_AUTOCLOSE
+special SetCB2WhiteOut
 # 376 "data/maps/Route121/scripts.pory"
-addvar VAR_ROUTE121_STATE, 1
+waitstate
 # 377 "data/maps/Route121/scripts.pory"
-end
+
 # 378 "data/maps/Route121/scripts.pory"
-
+Route121_EventScript_MarcelCristinVictory::
 # 379 "data/maps/Route121/scripts.pory"
-Route121_EventScript_Cristin::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 380 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_CristinPostBattle, MSGBOX_DEFAULT
+waitmovement 0
 # 381 "data/maps/Route121/scripts.pory"
-	release
+msgbox Route121_Text_MarcelPostBattle, MSGBOX_AUTOCLOSE
 # 382 "data/maps/Route121/scripts.pory"
-	end
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 383 "data/maps/Route121/scripts.pory"
-
+waitmovement 0
 # 384 "data/maps/Route121/scripts.pory"
-Route121_EventScript_RegisterCristin::
+msgbox Route121_Text_CristinPostBattle, MSGBOX_AUTOCLOSE
 # 385 "data/maps/Route121/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
+addvar VAR_ROUTE121_STATE, 1
 # 386 "data/maps/Route121/scripts.pory"
-	waitmovement 0
+end
 # 387 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_CristinRegister, MSGBOX_DEFAULT
+
 # 388 "data/maps/Route121/scripts.pory"
-	register_matchcall TRAINER_CRISTIN_1
+Route121_EventScript_Cristin::
 # 389 "data/maps/Route121/scripts.pory"
-	release
+	faceplayer
 # 390 "data/maps/Route121/scripts.pory"
-	end
+	msgbox Route121_Text_CristinPostBattle, MSGBOX_DEFAULT
 # 391 "data/maps/Route121/scripts.pory"
-
+	release
 # 392 "data/maps/Route121/scripts.pory"
-Route121_EventScript_RematchCristin::
-# 393 "data/maps/Route121/scripts.pory"
-	trainerbattle_rematch TRAINER_CRISTIN_1, Route121_Text_CristinRematchIntro, Route121_Text_CristinRematchDefeat
-# 394 "data/maps/Route121/scripts.pory"
-	msgbox Route121_Text_CristinPostRematch, MSGBOX_AUTOCLOSE
-# 395 "data/maps/Route121/scripts.pory"
 	end
+# 393 "data/maps/Route121/scripts.pory"
+
+# 394 "data/maps/Route121/scripts.pory"
+Route121_EventScript_RegisterCristin::
+# 395 "data/maps/Route121/scripts.pory"
+	special PlayerFaceTrainerAfterBattle
 # 396 "data/maps/Route121/scripts.pory"
-
+	waitmovement 0
 # 397 "data/maps/Route121/scripts.pory"
-Route121_Text_OkayMoveOutToMtPyre:
+	msgbox Route121_Text_CristinRegister, MSGBOX_DEFAULT
 # 398 "data/maps/Route121/scripts.pory"
-	.string "Okay!\n"
+	register_matchcall TRAINER_CRISTIN_1
 # 399 "data/maps/Route121/scripts.pory"
-	.string "We're to move out to MT. PYRE!$"
+	release
 # 400 "data/maps/Route121/scripts.pory"
-
+	end
 # 401 "data/maps/Route121/scripts.pory"
-Route121_Text_AheadLoomsMtPyre:
-# 402 "data/maps/Route121/scripts.pory"
-	.string "Ahead looms MT. PYRE…\p"
-# 403 "data/maps/Route121/scripts.pory"
-	.string "It is a natural monument to the spirits \n"
-# 404 "data/maps/Route121/scripts.pory"
-	.string "of departed POKéMON…$"
-# 405 "data/maps/Route121/scripts.pory"
 
+# 402 "data/maps/Route121/scripts.pory"
+Route121_EventScript_RematchCristin::
+# 403 "data/maps/Route121/scripts.pory"
+	trainerbattle_rematch TRAINER_CRISTIN_1, Route121_Text_CristinRematchIntro, Route121_Text_CristinRematchDefeat
+# 404 "data/maps/Route121/scripts.pory"
+	msgbox Route121_Text_CristinPostRematch, MSGBOX_AUTOCLOSE
+# 405 "data/maps/Route121/scripts.pory"
+	end
 # 406 "data/maps/Route121/scripts.pory"
-Route121_Text_MtPyrePierSign:
+
 # 407 "data/maps/Route121/scripts.pory"
-	.string "MT. PYRE PIER\p"
+Route121_Text_OkayMoveOutToMtPyre:
 # 408 "data/maps/Route121/scripts.pory"
-	.string "…The sign is old and worn out.\n"
+	.string "Okay!\n"
 # 409 "data/maps/Route121/scripts.pory"
-	.string "The words are barely legible…$"
+	.string "We're to move out to MT. PYRE!$"
 # 410 "data/maps/Route121/scripts.pory"
 
 # 411 "data/maps/Route121/scripts.pory"
-Route121_Text_SafariZoneSign:
+Route121_Text_AheadLoomsMtPyre:
 # 412 "data/maps/Route121/scripts.pory"
-	.string "“Filled with rare POKéMON!”\n"
+	.string "Ahead looms MT. PYRE…\p"
 # 413 "data/maps/Route121/scripts.pory"
-	.string "SAFARI ZONE$"
+	.string "It is a natural monument to the spirits \n"
 # 414 "data/maps/Route121/scripts.pory"
-
+	.string "of departed POKéMON…$"
 # 415 "data/maps/Route121/scripts.pory"
-Route121_Text_AquaGrunt1:
-# 416 "data/maps/Route121/scripts.pory"
-	.string "Beat it kid!$"
-# 417 "data/maps/Route121/scripts.pory"
 
+# 416 "data/maps/Route121/scripts.pory"
+Route121_Text_MtPyrePierSign:
+# 417 "data/maps/Route121/scripts.pory"
+	.string "MT. PYRE PIER\p"
 # 418 "data/maps/Route121/scripts.pory"
-Route121_Text_AquaGrunt2:
+	.string "…The sign is old and worn out.\n"
 # 419 "data/maps/Route121/scripts.pory"
-	.string "Team Aqua control this area!$"
+	.string "The words are barely legible…$"
 # 420 "data/maps/Route121/scripts.pory"
 
 # 421 "data/maps/Route121/scripts.pory"
-Route121_Text_AquaGrunt3:
+Route121_Text_SafariZoneSign:
 # 422 "data/maps/Route121/scripts.pory"
-	.string "We're standing guard until the boss\n"
+	.string "“Filled with rare POKéMON!”\n"
 # 423 "data/maps/Route121/scripts.pory"
-	.string "tells us to stand down!$"
+	.string "SAFARI ZONE$"
 # 424 "data/maps/Route121/scripts.pory"
 
 # 425 "data/maps/Route121/scripts.pory"
-Route121_Text_MagmaGrunt1:
+Route121_Text_AquaGrunt1:
 # 426 "data/maps/Route121/scripts.pory"
-	.string "Team Magma have this area under control!$"
+	.string "Beat it kid!$"
 # 427 "data/maps/Route121/scripts.pory"
 
 # 428 "data/maps/Route121/scripts.pory"
-Route121_Text_MagmaGrunt2:
+Route121_Text_AquaGrunt2:
 # 429 "data/maps/Route121/scripts.pory"
-	.string "Nobody goes through this area while\n"
+	.string "Team Aqua control this area!$"
 # 430 "data/maps/Route121/scripts.pory"
+
+# 431 "data/maps/Route121/scripts.pory"
+Route121_Text_AquaGrunt3:
+# 432 "data/maps/Route121/scripts.pory"
+	.string "We're standing guard until the boss\n"
+# 433 "data/maps/Route121/scripts.pory"
+	.string "tells us to stand down!$"
+# 434 "data/maps/Route121/scripts.pory"
+
+# 435 "data/maps/Route121/scripts.pory"
+Route121_Text_MagmaGrunt1:
+# 436 "data/maps/Route121/scripts.pory"
+	.string "Team Magma have this area under control!$"
+# 437 "data/maps/Route121/scripts.pory"
+
+# 438 "data/maps/Route121/scripts.pory"
+Route121_Text_MagmaGrunt2:
+# 439 "data/maps/Route121/scripts.pory"
+	.string "Nobody goes through this area while\n"
+# 440 "data/maps/Route121/scripts.pory"
 	.string "Team Magma operates at Mt. Pyre!$"

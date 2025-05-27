@@ -458,10 +458,12 @@ addvar VAR_JAGGED_PASS_STATE, 1
 end
 
 JaggedPass_EventScript_Eric::
+	faceplayer
 	msgbox JaggedPass_Text_EricPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 JaggedPass_EventScript_Diana::
+	faceplayer
 	msgbox JaggedPass_Text_DianaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -499,6 +501,7 @@ JaggedPass_EventScript_EthanRematch::
 	end
 
 JaggedPass_EventScript_Julio::
+	faceplayer
 	msgbox JaggedPass_Text_JulioPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -544,6 +547,7 @@ addvar VAR_JAGGED_PASS_STATE, 1
 end
 
 JaggedPass_EventScript_Autumn::
+	faceplayer
 	msgbox JaggedPass_Text_AutumnPostBattle, MSGBOX_AUTOCLOSE
 	end
 

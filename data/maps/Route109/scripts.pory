@@ -447,14 +447,17 @@ addvar VAR_ROUTE109_STATE, 1
 end
 
 Route109_EventScript_Huey::
+	faceplayer
 	msgbox Route109_Text_HueyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route109_EventScript_Edmond::
+	faceplayer
 	msgbox Route109_Text_EdmondPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route109_EventScript_Ricky::
+	faceplayer
 	msgbox Route109_Text_RickyPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -514,6 +517,7 @@ addvar VAR_ROUTE109_STATE, 1
 end
 
 Route109_EventScript_Lola::
+	faceplayer
 	msgbox Route109_Text_LolaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -557,6 +561,7 @@ Route109_EventScript_Mel::
 	end
 
 Route109_EventScript_Chandler::
+	faceplayer
 	msgbox Route109_Text_ChandlerPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -602,6 +607,7 @@ addvar VAR_ROUTE109_STATE, 1
 end
 
 Route109_EventScript_Hailey::
+	faceplayer
 	msgbox Route109_Text_HaileyPostBattle, MSGBOX_AUTOCLOSE
 	end
 

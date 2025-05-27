@@ -74,10 +74,12 @@ Route102_Movement_CalvinRick_NotReady:
 	step_end
 
 Route102_EventScript_Calvin::
+	faceplayer
 	msgbox Route102_Text_CalvinPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route102_EventScript_Rick::
+	faceplayer
 	msgbox Route102_Text_RickPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -123,10 +125,12 @@ addvar VAR_ROUTE102_STATE, 1
 end
 
 Route102_EventScript_Tiana::
+	faceplayer
 	msgbox Route102_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route102_EventScript_Allen::
+	faceplayer
 	msgbox Route102_Text_AllenPostBattle, MSGBOX_AUTOCLOSE
 	end
 

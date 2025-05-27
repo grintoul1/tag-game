@@ -183,6 +183,7 @@ Route118_Movement_StevenExit2:
 	step_end
 
 Route118_EventScript_Rose::
+	faceplayer
 	msgbox Route118_Text_RosePostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -201,10 +202,12 @@ Route118_EventScript_RematchRose::
 	end
 
 Route118_EventScript_Barny::
+	faceplayer
 	msgbox Route118_Text_BarnyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route118_EventScript_Wade::
+	faceplayer
 	msgbox Route118_Text_WadePostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -291,6 +294,7 @@ addvar VAR_ROUTE118_STATE, 1
 end
 
 Route118_EventScript_Dalton::
+	faceplayer
 	msgbox Route118_Text_DaltonPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -309,11 +313,12 @@ Route118_EventScript_RematchDalton::
 	end
 
 Route118_EventScript_Perry::
-	trainerbattle_single TRAINER_PERRY, Route118_Text_PerryIntro, Route118_Text_PerryDefeat
+	faceplayer
 	msgbox Route118_Text_PerryPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route118_EventScript_Chester::
+	faceplayer
 	msgbox Route118_Text_ChesterPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -359,6 +364,7 @@ addvar VAR_ROUTE118_STATE, 1
 end
 
 Route118_EventScript_Deandre::
+	faceplayer
 	msgbox Route118_Text_DeandrePostBattle, MSGBOX_AUTOCLOSE
 	end
 

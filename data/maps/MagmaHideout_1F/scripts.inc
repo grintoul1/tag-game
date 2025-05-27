@@ -427,84 +427,88 @@ end
 # 214 "data/maps/MagmaHideout_1F/scripts.pory"
 MagmaHideout_1F_EventScript_Grunt1::
 # 215 "data/maps/MagmaHideout_1F/scripts.pory"
-	msgbox MagmaHideout_1F_Text_Grunt1PostBattle, MSGBOX_AUTOCLOSE
+	faceplayer
 # 216 "data/maps/MagmaHideout_1F/scripts.pory"
-	end
+	msgbox MagmaHideout_1F_Text_Grunt1PostBattle, MSGBOX_AUTOCLOSE
 # 217 "data/maps/MagmaHideout_1F/scripts.pory"
-
-# 218 "data/maps/MagmaHideout_1F/scripts.pory"
-MagmaHideout_1F_EventScript_Grunt2::
-# 219 "data/maps/MagmaHideout_1F/scripts.pory"
-	msgbox MagmaHideout_1F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
-# 220 "data/maps/MagmaHideout_1F/scripts.pory"
 	end
+# 218 "data/maps/MagmaHideout_1F/scripts.pory"
+
+# 219 "data/maps/MagmaHideout_1F/scripts.pory"
+MagmaHideout_1F_EventScript_Grunt2::
+# 220 "data/maps/MagmaHideout_1F/scripts.pory"
+	faceplayer
 # 221 "data/maps/MagmaHideout_1F/scripts.pory"
-
+	msgbox MagmaHideout_1F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
 # 222 "data/maps/MagmaHideout_1F/scripts.pory"
-MagmaHideout_1F_Text_Grunt1Intro:
+	end
 # 223 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "When TEAM MAGMA has roll call, we get\n"
+
 # 224 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "important guarding assignments in\l"
+MagmaHideout_1F_Text_Grunt1Intro:
 # 225 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "the order that we line up.\p"
+	.string "When TEAM MAGMA has roll call, we get\n"
 # 226 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "That's why I'm stuck off in this corner.\n"
+	.string "important guarding assignments in\l"
 # 227 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "I'm always late to roll call!$"
+	.string "the order that we line up.\p"
 # 228 "data/maps/MagmaHideout_1F/scripts.pory"
-
+	.string "That's why I'm stuck off in this corner.\n"
 # 229 "data/maps/MagmaHideout_1F/scripts.pory"
-MagmaHideout_1F_Text_Grunt1Defeat:
+	.string "I'm always late to roll call!$"
 # 230 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "I'm always late for training sessions,\n"
+
 # 231 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "too!\p"
+MagmaHideout_1F_Text_Grunt1Defeat:
 # 232 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "I hate to say it, but I'm wimpy…$"
+	.string "I'm always late for training sessions,\n"
 # 233 "data/maps/MagmaHideout_1F/scripts.pory"
-
+	.string "too!\p"
 # 234 "data/maps/MagmaHideout_1F/scripts.pory"
-MagmaHideout_1F_Text_Grunt1PostBattle:
+	.string "I hate to say it, but I'm wimpy…$"
 # 235 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "Okay, I'll try to put a little more\n"
+
 # 236 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "effort into things from now on…$"
+MagmaHideout_1F_Text_Grunt1PostBattle:
 # 237 "data/maps/MagmaHideout_1F/scripts.pory"
-
+	.string "Okay, I'll try to put a little more\n"
 # 238 "data/maps/MagmaHideout_1F/scripts.pory"
-MagmaHideout_1F_Text_Grunt2Intro:
+	.string "effort into things from now on…$"
 # 239 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "Our leader told us to dig into\n"
+
 # 240 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "MT. CHIMNEY, so we dug and dug.\p"
+MagmaHideout_1F_Text_Grunt2Intro:
 # 241 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "And in the course of digging, we came\n"
+	.string "Our leader told us to dig into\n"
 # 242 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "across something that blew our minds!\p"
+	.string "MT. CHIMNEY, so we dug and dug.\p"
 # 243 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "What did we find?\p"
+	.string "And in the course of digging, we came\n"
 # 244 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "Fuhahaha!\n"
+	.string "across something that blew our minds!\p"
 # 245 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "I'll tell you if you beat me!$"
+	.string "What did we find?\p"
 # 246 "data/maps/MagmaHideout_1F/scripts.pory"
-
+	.string "Fuhahaha!\n"
 # 247 "data/maps/MagmaHideout_1F/scripts.pory"
-MagmaHideout_1F_Text_Grunt2Defeat:
+	.string "I'll tell you if you beat me!$"
 # 248 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "Arrgh!\n"
-# 249 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "Taken down!$"
-# 250 "data/maps/MagmaHideout_1F/scripts.pory"
 
+# 249 "data/maps/MagmaHideout_1F/scripts.pory"
+MagmaHideout_1F_Text_Grunt2Defeat:
+# 250 "data/maps/MagmaHideout_1F/scripts.pory"
+	.string "Arrgh!\n"
 # 251 "data/maps/MagmaHideout_1F/scripts.pory"
-MagmaHideout_1F_Text_Grunt2PostBattle:
+	.string "Taken down!$"
 # 252 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "I won't tell you after all.\n"
+
 # 253 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "You'll find out when you get there!\p"
+MagmaHideout_1F_Text_Grunt2PostBattle:
 # 254 "data/maps/MagmaHideout_1F/scripts.pory"
-	.string "It'd be better if you saved surprises\n"
+	.string "I won't tell you after all.\n"
 # 255 "data/maps/MagmaHideout_1F/scripts.pory"
+	.string "You'll find out when you get there!\p"
+# 256 "data/maps/MagmaHideout_1F/scripts.pory"
+	.string "It'd be better if you saved surprises\n"
+# 257 "data/maps/MagmaHideout_1F/scripts.pory"
 	.string "to the end, don't you think?$"

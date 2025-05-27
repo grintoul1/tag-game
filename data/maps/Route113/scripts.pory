@@ -127,6 +127,7 @@ addvar VAR_ROUTE113_STATE, 1
 end
 
 Route113_EventScript_Lao::
+	faceplayer
 	msgbox Route113_Text_LaoPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -145,6 +146,7 @@ Route113_EventScript_RematchLao::
 	end
 
 Route113_EventScript_Lung::
+	faceplayer
 	msgbox Route113_Text_LungPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -179,14 +181,17 @@ addvar VAR_ROUTE113_STATE, 1
 end
 
 Route113_EventScript_Tori::
+	faceplayer
 	msgbox Route113_Text_ToriPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route113_EventScript_Tia::
+	faceplayer
 	msgbox Route113_Text_TiaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route113_EventScript_Sophie::
+	faceplayer
 	msgbox Route113_Text_SophiePostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -232,6 +237,7 @@ addvar VAR_ROUTE113_STATE, 1
 end
 
 Route113_EventScript_Coby::
+	faceplayer
 	msgbox Route113_Text_CobyPostBattle, MSGBOX_AUTOCLOSE
 	end
 

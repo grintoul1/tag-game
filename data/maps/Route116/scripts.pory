@@ -288,6 +288,7 @@ addvar VAR_ROUTE116_STATE, 1
 end
 
 Route116_EventScript_Jose::
+	faceplayer
 	msgbox Route116_Text_JosePostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -333,6 +334,7 @@ addvar VAR_ROUTE116_STATE, 1
 end
 
 Route116_EventScript_Jerry::
+	faceplayer
 	msgbox Route116_Text_JerryPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -368,14 +370,17 @@ Route116_EventScript_RematchJerry::
 	end
 
 Route116_EventScript_Clark::
+	faceplayer
 	msgbox Route116_Text_ClarkPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route116_EventScript_Janice::
+	faceplayer
 	msgbox Route116_Text_JanicePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route116_EventScript_Karen::
+	faceplayer
 	msgbox Route116_Text_KarenPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -411,6 +416,7 @@ Route116_EventScript_RematchKaren::
 	end
 
 Route116_EventScript_Sarah::
+	faceplayer
 	msgbox Route116_Text_SarahPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -456,6 +462,7 @@ addvar VAR_ROUTE116_STATE, 1
 end
 
 Route116_EventScript_Dawson::
+	faceplayer
 	msgbox Route116_Text_DawsonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -501,6 +508,7 @@ addvar VAR_ROUTE116_STATE, 1
 end
 
 Route116_EventScript_Devan::
+	faceplayer
 	msgbox Route116_Text_DevanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -546,6 +554,7 @@ addvar VAR_ROUTE116_STATE, 1
 end
 
 Route116_EventScript_Johnson::
+	faceplayer
 	msgbox Route116_Text_JohnsonPostBattle, MSGBOX_AUTOCLOSE
 	end
 

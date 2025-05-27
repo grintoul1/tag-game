@@ -205,6 +205,7 @@ DewfordTown_Gym_EventScript_BrawlyRematch::
 	end
 
 DewfordTown_Gym_EventScript_Takao::
+	faceplayer
 	msgbox DewfordTown_Gym_Text_TakaoPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -214,6 +215,7 @@ DewfordTown_Gym_EventScript_TakaoBrightenRoom::
 	end
 
 DewfordTown_Gym_EventScript_Jocelyn::
+	faceplayer
 	msgbox DewfordTown_Gym_Text_JocelynPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -264,6 +266,7 @@ addvar VAR_DEWFORD_TOWN_STATE, 1
 end
 
 DewfordTown_Gym_EventScript_Laura::
+	faceplayer
 	msgbox DewfordTown_Gym_Text_LauraPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -273,6 +276,7 @@ DewfordTown_Gym_EventScript_LauraBrightenRoom::
 	end
 
 DewfordTown_Gym_EventScript_Brenden::
+	faceplayer
 	msgbox DewfordTown_Gym_Text_BrendenPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -323,6 +327,7 @@ addvar VAR_DEWFORD_TOWN_STATE, 1
 end
 
 DewfordTown_Gym_EventScript_Cristian::
+	faceplayer
 	msgbox DewfordTown_Gym_Text_CristianPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -373,6 +378,7 @@ addvar VAR_DEWFORD_TOWN_STATE, 1
 end
 
 DewfordTown_Gym_EventScript_Lilith::
+	faceplayer
 	msgbox DewfordTown_Gym_Text_LilithPostBattle, MSGBOX_AUTOCLOSE
 	end
 

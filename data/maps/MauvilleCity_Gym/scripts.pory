@@ -279,6 +279,7 @@ addvar VAR_MAUVILLECITY_GYM_STATE, 1
 end
 
 MauvilleCity_Gym_EventScript_Kirk::
+	faceplayer
 	msgbox MauvilleCity_Gym_Text_KirkPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -324,6 +325,7 @@ addvar VAR_MAUVILLECITY_GYM_STATE, 1
 end
 
 MauvilleCity_Gym_EventScript_Shawn::
+	faceplayer
 	msgbox MauvilleCity_Gym_Text_ShawnPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -333,10 +335,12 @@ MauvilleCity_Gym_EventScript_Ben::
 	end
 
 MauvilleCity_Gym_EventScript_Vivian::
+	faceplayer
 	msgbox MauvilleCity_Gym_Text_VivianPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MauvilleCity_Gym_EventScript_Angelo::
+	faceplayer
 	msgbox MauvilleCity_Gym_Text_AngeloPostBattle, MSGBOX_AUTOCLOSE
 	end
 

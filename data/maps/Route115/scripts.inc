@@ -147,322 +147,330 @@ Route115_EventScript_Koichi::
 # 74 "data/maps/Route115/scripts.pory"
 Route115_EventScript_Nob::
 # 75 "data/maps/Route115/scripts.pory"
-	msgbox Route115_Text_NobPostBattle, MSGBOX_DEFAULT
+	faceplayer
 # 76 "data/maps/Route115/scripts.pory"
-	release
+	msgbox Route115_Text_NobPostBattle, MSGBOX_DEFAULT
 # 77 "data/maps/Route115/scripts.pory"
-	end
+	release
 # 78 "data/maps/Route115/scripts.pory"
-
+	end
 # 79 "data/maps/Route115/scripts.pory"
-Route115_EventScript_RegisterNob::
+
 # 80 "data/maps/Route115/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
+Route115_EventScript_RegisterNob::
 # 81 "data/maps/Route115/scripts.pory"
-	waitmovement 0
-# 82 "data/maps/Route115/scripts.pory"
-	msgbox Route115_Text_NobRegister, MSGBOX_DEFAULT
-# 83 "data/maps/Route115/scripts.pory"
-	register_matchcall TRAINER_NOB_1
-# 84 "data/maps/Route115/scripts.pory"
-	release
-# 85 "data/maps/Route115/scripts.pory"
-	end
-# 86 "data/maps/Route115/scripts.pory"
-
-# 87 "data/maps/Route115/scripts.pory"
-Route115_EventScript_RematchNob::
-# 88 "data/maps/Route115/scripts.pory"
-	trainerbattle_rematch TRAINER_NOB_1, Route115_Text_NobRematchIntro, Route115_Text_NobRematchDefeat
-# 89 "data/maps/Route115/scripts.pory"
-	msgbox Route115_Text_NobPostRematch, MSGBOX_AUTOCLOSE
-# 90 "data/maps/Route115/scripts.pory"
-	end
-# 91 "data/maps/Route115/scripts.pory"
-
-# 92 "data/maps/Route115/scripts.pory"
-Route115_EventScript_Cyndy::
-# 93 "data/maps/Route115/scripts.pory"
-	trainerbattle_single TRAINER_CYNDY_1, Route115_Text_CyndyIntro, Route115_Text_CyndyDefeat, Route115_EventScript_RegisterCyndy
-# 94 "data/maps/Route115/scripts.pory"
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-# 95 "data/maps/Route115/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route115_EventScript_RematchCyndy
-# 96 "data/maps/Route115/scripts.pory"
-	msgbox Route115_Text_CyndyPostBattle, MSGBOX_DEFAULT
-# 97 "data/maps/Route115/scripts.pory"
-	release
-# 98 "data/maps/Route115/scripts.pory"
-	end
-# 99 "data/maps/Route115/scripts.pory"
-
-# 100 "data/maps/Route115/scripts.pory"
-Route115_EventScript_RegisterCyndy::
-# 101 "data/maps/Route115/scripts.pory"
 	special PlayerFaceTrainerAfterBattle
-# 102 "data/maps/Route115/scripts.pory"
+# 82 "data/maps/Route115/scripts.pory"
 	waitmovement 0
-# 103 "data/maps/Route115/scripts.pory"
-	msgbox Route115_Text_CyndyRegister, MSGBOX_DEFAULT
-# 104 "data/maps/Route115/scripts.pory"
-	register_matchcall TRAINER_CYNDY_1
-# 105 "data/maps/Route115/scripts.pory"
+# 83 "data/maps/Route115/scripts.pory"
+	msgbox Route115_Text_NobRegister, MSGBOX_DEFAULT
+# 84 "data/maps/Route115/scripts.pory"
+	register_matchcall TRAINER_NOB_1
+# 85 "data/maps/Route115/scripts.pory"
 	release
+# 86 "data/maps/Route115/scripts.pory"
+	end
+# 87 "data/maps/Route115/scripts.pory"
+
+# 88 "data/maps/Route115/scripts.pory"
+Route115_EventScript_RematchNob::
+# 89 "data/maps/Route115/scripts.pory"
+	trainerbattle_rematch TRAINER_NOB_1, Route115_Text_NobRematchIntro, Route115_Text_NobRematchDefeat
+# 90 "data/maps/Route115/scripts.pory"
+	msgbox Route115_Text_NobPostRematch, MSGBOX_AUTOCLOSE
+# 91 "data/maps/Route115/scripts.pory"
+	end
+# 92 "data/maps/Route115/scripts.pory"
+
+# 93 "data/maps/Route115/scripts.pory"
+Route115_EventScript_Cyndy::
+# 94 "data/maps/Route115/scripts.pory"
+	trainerbattle_single TRAINER_CYNDY_1, Route115_Text_CyndyIntro, Route115_Text_CyndyDefeat, Route115_EventScript_RegisterCyndy
+# 95 "data/maps/Route115/scripts.pory"
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+# 96 "data/maps/Route115/scripts.pory"
+	goto_if_eq VAR_RESULT, TRUE, Route115_EventScript_RematchCyndy
+# 97 "data/maps/Route115/scripts.pory"
+	msgbox Route115_Text_CyndyPostBattle, MSGBOX_DEFAULT
+# 98 "data/maps/Route115/scripts.pory"
+	release
+# 99 "data/maps/Route115/scripts.pory"
+	end
+# 100 "data/maps/Route115/scripts.pory"
+
+# 101 "data/maps/Route115/scripts.pory"
+Route115_EventScript_RegisterCyndy::
+# 102 "data/maps/Route115/scripts.pory"
+	special PlayerFaceTrainerAfterBattle
+# 103 "data/maps/Route115/scripts.pory"
+	waitmovement 0
+# 104 "data/maps/Route115/scripts.pory"
+	msgbox Route115_Text_CyndyRegister, MSGBOX_DEFAULT
+# 105 "data/maps/Route115/scripts.pory"
+	register_matchcall TRAINER_CYNDY_1
 # 106 "data/maps/Route115/scripts.pory"
-	end
+	release
 # 107 "data/maps/Route115/scripts.pory"
-
+	end
 # 108 "data/maps/Route115/scripts.pory"
-Route115_EventScript_RematchCyndy::
+
 # 109 "data/maps/Route115/scripts.pory"
-	trainerbattle_rematch TRAINER_CYNDY_1, Route115_Text_CyndyRematchIntro, Route115_Text_CyndyRematchDefeat
+Route115_EventScript_RematchCyndy::
 # 110 "data/maps/Route115/scripts.pory"
-	msgbox Route115_Text_CyndyPostRematch, MSGBOX_AUTOCLOSE
+	trainerbattle_rematch TRAINER_CYNDY_1, Route115_Text_CyndyRematchIntro, Route115_Text_CyndyRematchDefeat
 # 111 "data/maps/Route115/scripts.pory"
-	end
+	msgbox Route115_Text_CyndyPostRematch, MSGBOX_AUTOCLOSE
 # 112 "data/maps/Route115/scripts.pory"
-
+	end
 # 113 "data/maps/Route115/scripts.pory"
-Route115_EventScript_HectorMarlene::
+
 # 114 "data/maps/Route115/scripts.pory"
-lockall
+Route115_EventScript_HectorMarlene::
 # 115 "data/maps/Route115/scripts.pory"
-setvar VAR_0x8008, LOCALID_HECTOR
-# 116 "data/maps/Route115/scripts.pory"
-playse SE_PIN
-# 117 "data/maps/Route115/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 118 "data/maps/Route115/scripts.pory"
-waitmovement 0
-# 119 "data/maps/Route115/scripts.pory"
-playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
-# 120 "data/maps/Route115/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-# 121 "data/maps/Route115/scripts.pory"
-waitmovement 0
-# 122 "data/maps/Route115/scripts.pory"
-msgbox Route115_Text_HectorIntro MSGBOX_AUTOCLOSE
-# 123 "data/maps/Route115/scripts.pory"
-setvar VAR_0x8008, LOCALID_MARLENE
-# 124 "data/maps/Route115/scripts.pory"
-playse SE_PIN
-# 125 "data/maps/Route115/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 126 "data/maps/Route115/scripts.pory"
-waitmovement 0
-# 127 "data/maps/Route115/scripts.pory"
-playbgm MUS_ENCOUNTER_GIRL, TRUE
-# 128 "data/maps/Route115/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-# 129 "data/maps/Route115/scripts.pory"
-waitmovement 0
-# 130 "data/maps/Route115/scripts.pory"
-msgbox Route115_Text_MarleneIntro, MSGBOX_AUTOCLOSE
-# 131 "data/maps/Route115/scripts.pory"
-goto Route115_EventScript_HectorMarleneDoMultiBattle
-# 132 "data/maps/Route115/scripts.pory"
-releaseall
-# 133 "data/maps/Route115/scripts.pory"
-end
-# 134 "data/maps/Route115/scripts.pory"
-
-# 135 "data/maps/Route115/scripts.pory"
-Route115_EventScript_HectorMarleneDoMultiBattle::
-# 136 "data/maps/Route115/scripts.pory"
-playbgm MUS_ROUTE110, TRUE
-# 137 "data/maps/Route115/scripts.pory"
-multi_2p_vs_2 TRAINER_HECTOR, Route115_Text_HectorDefeat, TRAINER_MARLENE, Route115_Text_MarleneDefeat, PARTNER_EMMIE
-# 138 "data/maps/Route115/scripts.pory"
-switch VAR_RESULT
-# 139 "data/maps/Route115/scripts.pory"
-case 1, Route115_EventScript_HectorMarleneVictory
-# 140 "data/maps/Route115/scripts.pory"
-fadescreen FADE_TO_BLACK
-# 141 "data/maps/Route115/scripts.pory"
-special SetCB2WhiteOut
-# 142 "data/maps/Route115/scripts.pory"
-waitstate
-# 143 "data/maps/Route115/scripts.pory"
-
-# 144 "data/maps/Route115/scripts.pory"
-Route115_EventScript_HectorMarleneVictory::
-# 145 "data/maps/Route115/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-# 146 "data/maps/Route115/scripts.pory"
-waitmovement 0
-# 147 "data/maps/Route115/scripts.pory"
-msgbox Route115_Text_HectorPostBattle, MSGBOX_AUTOCLOSE
-# 148 "data/maps/Route115/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-# 149 "data/maps/Route115/scripts.pory"
-waitmovement 0
-# 150 "data/maps/Route115/scripts.pory"
-msgbox Route115_Text_MarlenePostBattle, MSGBOX_AUTOCLOSE
-# 151 "data/maps/Route115/scripts.pory"
-addvar VAR_ROUTE115_STATE, 1
-# 152 "data/maps/Route115/scripts.pory"
-end
-# 153 "data/maps/Route115/scripts.pory"
-
-# 154 "data/maps/Route115/scripts.pory"
-Route115_EventScript_Hector::
-# 155 "data/maps/Route115/scripts.pory"
-	msgbox Route115_Text_HectorPostBattle, MSGBOX_AUTOCLOSE
-# 156 "data/maps/Route115/scripts.pory"
-	end
-# 157 "data/maps/Route115/scripts.pory"
-
-# 158 "data/maps/Route115/scripts.pory"
-Route115_EventScript_Kyra::
-# 159 "data/maps/Route115/scripts.pory"
-	trainerbattle_single TRAINER_KYRA, Route115_Text_KyraIntro, Route115_Text_KyraDefeat
-# 160 "data/maps/Route115/scripts.pory"
-	msgbox Route115_Text_KyraPostBattle, MSGBOX_AUTOCLOSE
-# 161 "data/maps/Route115/scripts.pory"
-	end
-# 162 "data/maps/Route115/scripts.pory"
-
-# 163 "data/maps/Route115/scripts.pory"
-Route115_EventScript_Jaiden::
-# 164 "data/maps/Route115/scripts.pory"
-	trainerbattle_single TRAINER_JAIDEN, Route115_Text_JaidenIntro, Route115_Text_JaidenDefeat
-# 165 "data/maps/Route115/scripts.pory"
-	msgbox Route115_Text_JaidenPostBattle, MSGBOX_AUTOCLOSE
-# 166 "data/maps/Route115/scripts.pory"
-	end
-# 167 "data/maps/Route115/scripts.pory"
-
-# 168 "data/maps/Route115/scripts.pory"
-Route115_EventScript_AlixNob::
-# 169 "data/maps/Route115/scripts.pory"
 lockall
-# 170 "data/maps/Route115/scripts.pory"
-setvar VAR_0x8008, LOCALID_ALIX
-# 171 "data/maps/Route115/scripts.pory"
+# 116 "data/maps/Route115/scripts.pory"
+setvar VAR_0x8008, LOCALID_HECTOR
+# 117 "data/maps/Route115/scripts.pory"
 playse SE_PIN
-# 172 "data/maps/Route115/scripts.pory"
+# 118 "data/maps/Route115/scripts.pory"
 applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 173 "data/maps/Route115/scripts.pory"
+# 119 "data/maps/Route115/scripts.pory"
 waitmovement 0
-# 174 "data/maps/Route115/scripts.pory"
+# 120 "data/maps/Route115/scripts.pory"
+playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+# 121 "data/maps/Route115/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+# 122 "data/maps/Route115/scripts.pory"
+waitmovement 0
+# 123 "data/maps/Route115/scripts.pory"
+msgbox Route115_Text_HectorIntro MSGBOX_AUTOCLOSE
+# 124 "data/maps/Route115/scripts.pory"
+setvar VAR_0x8008, LOCALID_MARLENE
+# 125 "data/maps/Route115/scripts.pory"
+playse SE_PIN
+# 126 "data/maps/Route115/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 127 "data/maps/Route115/scripts.pory"
+waitmovement 0
+# 128 "data/maps/Route115/scripts.pory"
 playbgm MUS_ENCOUNTER_GIRL, TRUE
-# 175 "data/maps/Route115/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-# 176 "data/maps/Route115/scripts.pory"
-waitmovement 0
-# 177 "data/maps/Route115/scripts.pory"
-msgbox Route115_Text_AlixIntro MSGBOX_AUTOCLOSE
-# 178 "data/maps/Route115/scripts.pory"
-setvar VAR_0x8008, LOCALID_NOB
-# 179 "data/maps/Route115/scripts.pory"
-playse SE_PIN
-# 180 "data/maps/Route115/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 181 "data/maps/Route115/scripts.pory"
-waitmovement 0
-# 182 "data/maps/Route115/scripts.pory"
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-# 183 "data/maps/Route115/scripts.pory"
+# 129 "data/maps/Route115/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-# 184 "data/maps/Route115/scripts.pory"
+# 130 "data/maps/Route115/scripts.pory"
 waitmovement 0
-# 185 "data/maps/Route115/scripts.pory"
-msgbox Route115_Text_NobIntro, MSGBOX_AUTOCLOSE
-# 186 "data/maps/Route115/scripts.pory"
-goto Route115_EventScript_AlixNobDoMultiBattle
-# 187 "data/maps/Route115/scripts.pory"
+# 131 "data/maps/Route115/scripts.pory"
+msgbox Route115_Text_MarleneIntro, MSGBOX_AUTOCLOSE
+# 132 "data/maps/Route115/scripts.pory"
+goto Route115_EventScript_HectorMarleneDoMultiBattle
+# 133 "data/maps/Route115/scripts.pory"
 releaseall
-# 188 "data/maps/Route115/scripts.pory"
+# 134 "data/maps/Route115/scripts.pory"
 end
-# 189 "data/maps/Route115/scripts.pory"
+# 135 "data/maps/Route115/scripts.pory"
 
-# 190 "data/maps/Route115/scripts.pory"
-Route115_EventScript_AlixNobDoMultiBattle::
-# 191 "data/maps/Route115/scripts.pory"
+# 136 "data/maps/Route115/scripts.pory"
+Route115_EventScript_HectorMarleneDoMultiBattle::
+# 137 "data/maps/Route115/scripts.pory"
 playbgm MUS_ROUTE110, TRUE
-# 192 "data/maps/Route115/scripts.pory"
-multi_2p_vs_2 TRAINER_ALIX, Route115_Text_AlixDefeat, TRAINER_NOB_1, Route115_Text_NobDefeat, PARTNER_EMMIE
-# 193 "data/maps/Route115/scripts.pory"
+# 138 "data/maps/Route115/scripts.pory"
+multi_2p_vs_2 TRAINER_HECTOR, Route115_Text_HectorDefeat, TRAINER_MARLENE, Route115_Text_MarleneDefeat, PARTNER_EMMIE
+# 139 "data/maps/Route115/scripts.pory"
 switch VAR_RESULT
-# 194 "data/maps/Route115/scripts.pory"
-case 1, Route115_EventScript_AlixNobVictory
-# 195 "data/maps/Route115/scripts.pory"
+# 140 "data/maps/Route115/scripts.pory"
+case 1, Route115_EventScript_HectorMarleneVictory
+# 141 "data/maps/Route115/scripts.pory"
 fadescreen FADE_TO_BLACK
-# 196 "data/maps/Route115/scripts.pory"
+# 142 "data/maps/Route115/scripts.pory"
 special SetCB2WhiteOut
-# 197 "data/maps/Route115/scripts.pory"
+# 143 "data/maps/Route115/scripts.pory"
 waitstate
-# 198 "data/maps/Route115/scripts.pory"
+# 144 "data/maps/Route115/scripts.pory"
 
-# 199 "data/maps/Route115/scripts.pory"
-Route115_EventScript_AlixNobVictory::
-# 200 "data/maps/Route115/scripts.pory"
+# 145 "data/maps/Route115/scripts.pory"
+Route115_EventScript_HectorMarleneVictory::
+# 146 "data/maps/Route115/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-# 201 "data/maps/Route115/scripts.pory"
+# 147 "data/maps/Route115/scripts.pory"
 waitmovement 0
-# 202 "data/maps/Route115/scripts.pory"
-msgbox Route115_Text_AlixPostBattle, MSGBOX_AUTOCLOSE
-# 203 "data/maps/Route115/scripts.pory"
+# 148 "data/maps/Route115/scripts.pory"
+msgbox Route115_Text_HectorPostBattle, MSGBOX_AUTOCLOSE
+# 149 "data/maps/Route115/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-# 204 "data/maps/Route115/scripts.pory"
+# 150 "data/maps/Route115/scripts.pory"
 waitmovement 0
-# 205 "data/maps/Route115/scripts.pory"
-msgbox Route115_Text_NobPostBattle, MSGBOX_AUTOCLOSE
-# 206 "data/maps/Route115/scripts.pory"
+# 151 "data/maps/Route115/scripts.pory"
+msgbox Route115_Text_MarlenePostBattle, MSGBOX_AUTOCLOSE
+# 152 "data/maps/Route115/scripts.pory"
 addvar VAR_ROUTE115_STATE, 1
-# 207 "data/maps/Route115/scripts.pory"
+# 153 "data/maps/Route115/scripts.pory"
 end
+# 154 "data/maps/Route115/scripts.pory"
+
+# 155 "data/maps/Route115/scripts.pory"
+Route115_EventScript_Hector::
+# 156 "data/maps/Route115/scripts.pory"
+	faceplayer
+# 157 "data/maps/Route115/scripts.pory"
+	msgbox Route115_Text_HectorPostBattle, MSGBOX_AUTOCLOSE
+# 158 "data/maps/Route115/scripts.pory"
+	end
+# 159 "data/maps/Route115/scripts.pory"
+
+# 160 "data/maps/Route115/scripts.pory"
+Route115_EventScript_Kyra::
+# 161 "data/maps/Route115/scripts.pory"
+	faceplayer
+# 162 "data/maps/Route115/scripts.pory"
+	msgbox Route115_Text_KyraPostBattle, MSGBOX_AUTOCLOSE
+# 163 "data/maps/Route115/scripts.pory"
+	end
+# 164 "data/maps/Route115/scripts.pory"
+
+# 165 "data/maps/Route115/scripts.pory"
+Route115_EventScript_Jaiden::
+# 166 "data/maps/Route115/scripts.pory"
+	faceplayer
+# 167 "data/maps/Route115/scripts.pory"
+	msgbox Route115_Text_JaidenPostBattle, MSGBOX_AUTOCLOSE
+# 168 "data/maps/Route115/scripts.pory"
+	end
+# 169 "data/maps/Route115/scripts.pory"
+
+# 170 "data/maps/Route115/scripts.pory"
+Route115_EventScript_AlixNob::
+# 171 "data/maps/Route115/scripts.pory"
+lockall
+# 172 "data/maps/Route115/scripts.pory"
+setvar VAR_0x8008, LOCALID_ALIX
+# 173 "data/maps/Route115/scripts.pory"
+playse SE_PIN
+# 174 "data/maps/Route115/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 175 "data/maps/Route115/scripts.pory"
+waitmovement 0
+# 176 "data/maps/Route115/scripts.pory"
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+# 177 "data/maps/Route115/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+# 178 "data/maps/Route115/scripts.pory"
+waitmovement 0
+# 179 "data/maps/Route115/scripts.pory"
+msgbox Route115_Text_AlixIntro MSGBOX_AUTOCLOSE
+# 180 "data/maps/Route115/scripts.pory"
+setvar VAR_0x8008, LOCALID_NOB
+# 181 "data/maps/Route115/scripts.pory"
+playse SE_PIN
+# 182 "data/maps/Route115/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 183 "data/maps/Route115/scripts.pory"
+waitmovement 0
+# 184 "data/maps/Route115/scripts.pory"
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+# 185 "data/maps/Route115/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+# 186 "data/maps/Route115/scripts.pory"
+waitmovement 0
+# 187 "data/maps/Route115/scripts.pory"
+msgbox Route115_Text_NobIntro, MSGBOX_AUTOCLOSE
+# 188 "data/maps/Route115/scripts.pory"
+goto Route115_EventScript_AlixNobDoMultiBattle
+# 189 "data/maps/Route115/scripts.pory"
+releaseall
+# 190 "data/maps/Route115/scripts.pory"
+end
+# 191 "data/maps/Route115/scripts.pory"
+
+# 192 "data/maps/Route115/scripts.pory"
+Route115_EventScript_AlixNobDoMultiBattle::
+# 193 "data/maps/Route115/scripts.pory"
+playbgm MUS_ROUTE110, TRUE
+# 194 "data/maps/Route115/scripts.pory"
+multi_2p_vs_2 TRAINER_ALIX, Route115_Text_AlixDefeat, TRAINER_NOB_1, Route115_Text_NobDefeat, PARTNER_EMMIE
+# 195 "data/maps/Route115/scripts.pory"
+switch VAR_RESULT
+# 196 "data/maps/Route115/scripts.pory"
+case 1, Route115_EventScript_AlixNobVictory
+# 197 "data/maps/Route115/scripts.pory"
+fadescreen FADE_TO_BLACK
+# 198 "data/maps/Route115/scripts.pory"
+special SetCB2WhiteOut
+# 199 "data/maps/Route115/scripts.pory"
+waitstate
+# 200 "data/maps/Route115/scripts.pory"
+
+# 201 "data/maps/Route115/scripts.pory"
+Route115_EventScript_AlixNobVictory::
+# 202 "data/maps/Route115/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+# 203 "data/maps/Route115/scripts.pory"
+waitmovement 0
+# 204 "data/maps/Route115/scripts.pory"
+msgbox Route115_Text_AlixPostBattle, MSGBOX_AUTOCLOSE
+# 205 "data/maps/Route115/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+# 206 "data/maps/Route115/scripts.pory"
+waitmovement 0
+# 207 "data/maps/Route115/scripts.pory"
+msgbox Route115_Text_NobPostBattle, MSGBOX_AUTOCLOSE
 # 208 "data/maps/Route115/scripts.pory"
-
+addvar VAR_ROUTE115_STATE, 1
 # 209 "data/maps/Route115/scripts.pory"
-Route115_EventScript_Alix::
+end
 # 210 "data/maps/Route115/scripts.pory"
-	msgbox Route115_Text_AlixPostBattle, MSGBOX_AUTOCLOSE
+
 # 211 "data/maps/Route115/scripts.pory"
-	end
+Route115_EventScript_Alix::
 # 212 "data/maps/Route115/scripts.pory"
-
+	faceplayer
 # 213 "data/maps/Route115/scripts.pory"
-Route115_EventScript_Helene::
+	msgbox Route115_Text_AlixPostBattle, MSGBOX_AUTOCLOSE
 # 214 "data/maps/Route115/scripts.pory"
-	trainerbattle_single TRAINER_HELENE, Route115_Text_HeleneIntro, Route115_Text_HeleneDefeat
+	end
 # 215 "data/maps/Route115/scripts.pory"
-	msgbox Route115_Text_HelenePostBattle, MSGBOX_AUTOCLOSE
+
 # 216 "data/maps/Route115/scripts.pory"
-	end
+Route115_EventScript_Helene::
 # 217 "data/maps/Route115/scripts.pory"
-
+	faceplayer
 # 218 "data/maps/Route115/scripts.pory"
-Route115_EventScript_Marlene::
+	msgbox Route115_Text_HelenePostBattle, MSGBOX_AUTOCLOSE
 # 219 "data/maps/Route115/scripts.pory"
-	msgbox Route115_Text_MarlenePostBattle, MSGBOX_AUTOCLOSE
-# 220 "data/maps/Route115/scripts.pory"
 	end
+# 220 "data/maps/Route115/scripts.pory"
+
 # 221 "data/maps/Route115/scripts.pory"
-
+Route115_EventScript_Marlene::
 # 222 "data/maps/Route115/scripts.pory"
-Route115_Text_NeverKnowWhenCavePokemonWillAppear:
+	faceplayer
 # 223 "data/maps/Route115/scripts.pory"
-	.string "Exploring a cave isn't like walking\n"
+	msgbox Route115_Text_MarlenePostBattle, MSGBOX_AUTOCLOSE
 # 224 "data/maps/Route115/scripts.pory"
-	.string "on a road.\p"
+	end
 # 225 "data/maps/Route115/scripts.pory"
-	.string "You never know when wild POKéMON will\n"
-# 226 "data/maps/Route115/scripts.pory"
-	.string "appear. It's full of suspense.$"
-# 227 "data/maps/Route115/scripts.pory"
 
+# 226 "data/maps/Route115/scripts.pory"
+Route115_Text_NeverKnowWhenCavePokemonWillAppear:
+# 227 "data/maps/Route115/scripts.pory"
+	.string "Exploring a cave isn't like walking\n"
 # 228 "data/maps/Route115/scripts.pory"
-Route115_Text_RouteSignRustboro:
+	.string "on a road.\p"
 # 229 "data/maps/Route115/scripts.pory"
-	.string "ROUTE 115\n"
+	.string "You never know when wild POKéMON will\n"
 # 230 "data/maps/Route115/scripts.pory"
-	.string "{DOWN_ARROW} RUSTBORO CITY$"
+	.string "appear. It's full of suspense.$"
 # 231 "data/maps/Route115/scripts.pory"
 
 # 232 "data/maps/Route115/scripts.pory"
-Route115_Text_MeteorFallsSign:
+Route115_Text_RouteSignRustboro:
 # 233 "data/maps/Route115/scripts.pory"
-	.string "METEOR FALLS\n"
+	.string "ROUTE 115\n"
 # 234 "data/maps/Route115/scripts.pory"
+	.string "{DOWN_ARROW} RUSTBORO CITY$"
+# 235 "data/maps/Route115/scripts.pory"
+
+# 236 "data/maps/Route115/scripts.pory"
+Route115_Text_MeteorFallsSign:
+# 237 "data/maps/Route115/scripts.pory"
+	.string "METEOR FALLS\n"
+# 238 "data/maps/Route115/scripts.pory"
 	.string "FALLARBOR TOWN THROUGH HERE$"

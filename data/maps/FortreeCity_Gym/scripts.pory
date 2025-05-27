@@ -138,6 +138,7 @@ addvar VAR_FORTREE_CITY_STATE, 1
 end
 
 FortreeCity_Gym_EventScript_Jared::
+	faceplayer
 	msgbox FortreeCity_Gym_Text_JaredPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -183,14 +184,17 @@ addvar VAR_FORTREE_CITY_STATE, 1
 end
 
 FortreeCity_Gym_EventScript_Edwardo::
+	faceplayer
 	msgbox FortreeCity_Gym_Text_EdwardoPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 FortreeCity_Gym_EventScript_Flint::
+	faceplayer
 	msgbox FortreeCity_Gym_Text_FlintPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 FortreeCity_Gym_EventScript_Ashley::
+	faceplayer
 	msgbox FortreeCity_Gym_Text_AshleyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -236,10 +240,12 @@ addvar VAR_FORTREE_CITY_STATE, 1
 end
 
 FortreeCity_Gym_EventScript_Humberto::
+	faceplayer
 	msgbox FortreeCity_Gym_Text_HumbertoPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 FortreeCity_Gym_EventScript_Darius::
+	faceplayer
 	msgbox FortreeCity_Gym_Text_DariusPostBattle, MSGBOX_AUTOCLOSE
 	end
 

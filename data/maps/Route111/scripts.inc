@@ -512,10 +512,12 @@ Route111_EventScript_RockSmashTipFatMan::
 	end
 
 Route111_EventScript_Drew::
+	faceplayer
 	msgbox Route111_Text_DrewPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route111_EventScript_Heidi::
+	faceplayer
 	msgbox Route111_Text_HeidiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -561,6 +563,7 @@ addvar VAR_ROUTE111_STATE, 1
 end
 
 Route111_EventScript_Beau::
+	faceplayer
 	msgbox Route111_Text_BeauPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -606,10 +609,12 @@ addvar VAR_ROUTE111_STATE, 1
 end
 
 Route111_EventScript_Becky::
+	faceplayer
 	msgbox Route111_Text_BeckyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route111_EventScript_Dusty::
+	faceplayer
 	msgbox Route111_Text_DustyPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -669,15 +674,17 @@ addvar VAR_ROUTE111_STATE, 1
 end
 
 Route111_EventScript_Travis::
+	faceplayer
 	msgbox Route111_Text_TravisPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route111_EventScript_Irene::
+	faceplayer
 	msgbox Route111_Text_IrenePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route111_EventScript_Daisuke::
-	trainerbattle_single TRAINER_DAISUKE, Route111_Text_DaisukeIntro, Route111_Text_DaisukeDefeat
+	faceplayer
 	msgbox Route111_Text_DaisukePostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -723,6 +730,7 @@ addvar VAR_ROUTE111_STATE, 1
 end
 
 Route111_EventScript_Wilton::
+	faceplayer
 	msgbox Route111_Text_WiltonPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -741,6 +749,7 @@ Route111_EventScript_RematchWilton::
 	end
 
 Route111_EventScript_Brooke::
+	faceplayer
 	msgbox Route111_Text_BrookePostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -800,14 +809,17 @@ addvar VAR_ROUTE111_STATE, 1
 end
 
 Route111_EventScript_Hayden::
+	faceplayer
 	msgbox Route111_Text_HaydenPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route111_EventScript_Bianca::
+	faceplayer
 	msgbox Route111_Text_BiancaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route111_EventScript_Tyron::
+	faceplayer
 	msgbox Route111_Text_TyronPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -853,10 +865,12 @@ addvar VAR_ROUTE111_STATE, 1
 end
 
 Route111_EventScript_Celina::
+	faceplayer
 	msgbox Route111_Text_CelinaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route111_EventScript_Celia::
+	faceplayer
 	msgbox Route111_Text_CeliaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -902,6 +916,7 @@ addvar VAR_ROUTE111_STATE, 1
 end
 
 Route111_EventScript_Bryan::
+	faceplayer
 	msgbox Route111_Text_BryanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -983,6 +998,7 @@ Route111_EventScript_MagmaGrunt4::
 	end
 
 Route111_EventScript_Branden::
+	faceplayer
 	msgbox Route111_Text_BrandenPostBattle, MSGBOX_AUTOCLOSE
 	end
 

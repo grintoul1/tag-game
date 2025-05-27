@@ -212,10 +212,12 @@ addvar VAR_MAGMAHIDEOUT_STATE, 1
 end
 
 MagmaHideout_1F_EventScript_Grunt1::
+	faceplayer
 	msgbox MagmaHideout_1F_Text_Grunt1PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MagmaHideout_1F_EventScript_Grunt2::
+	faceplayer
 	msgbox MagmaHideout_1F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
 	end
 

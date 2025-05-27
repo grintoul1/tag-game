@@ -49,6 +49,7 @@ addvar VAR_MT_PYRE_STATE, 1
 end
 
 MtPyre_6F_EventScript_Pyre_AquaGrunt3::
+	faceplayer
 	msgbox MtPyre_6F_Text_Pyre_AquaGrunt3PostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -67,6 +68,7 @@ MtPyre_6F_EventScript_RematchValerie::
 	end
 
 MtPyre_6F_EventScript_Pyre_MagmaGrunt3::
+	faceplayer
 	msgbox MtPyre_6F_Text_Pyre_MagmaGrunt3PostBattle, MSGBOX_AUTOCLOSE
 	end
 

@@ -137,14 +137,17 @@ addvar VAR_ROUTE114_STATE, 1
 end
 
 Route114_EventScript_Grunt_Route_114_3::
+	faceplayer
 	msgbox Route114_Text_Grunt_Route_114_3PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route114_EventScript_Grunt_Route_114_2::
+	faceplayer
 	msgbox Route114_Text_Grunt_Route_114_2PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route114_EventScript_Grunt_Route_114_6::
+	faceplayer
 	msgbox Route114_Text_Grunt_Route_114_6PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -190,6 +193,7 @@ addvar VAR_ROUTE114_STATE, 1
 end
 
 Route114_EventScript_Grunt_Route_114_5::
+	faceplayer
 	msgbox Route114_Text_Grunt_Route_114_5PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -235,6 +239,7 @@ addvar VAR_ROUTE114_STATE, 1
 end
 
 Route114_EventScript_Steve::
+	faceplayer
 	msgbox Route114_Text_StevePostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -294,6 +299,7 @@ addvar VAR_ROUTE114_STATE, 1
 end
 
 Route114_EventScript_Grunt_Route_114_1::
+	faceplayer
 	msgbox Route114_Text_Grunt_Route_114_1PostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -312,6 +318,7 @@ Route114_EventScript_RematchBernie::
 	end
 
 Route114_EventScript_Claude::
+	faceplayer
 	msgbox Route114_Text_ClaudePostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -351,18 +358,22 @@ addvar VAR_ROUTE114_STATE, 1
 end
 
 Route114_EventScript_Tyra::
+	faceplayer
 	msgbox Route114_Text_TyraPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route114_EventScript_Ivy::
+	faceplayer
 	msgbox Route114_Text_IvyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route114_EventScript_Grunt_Route_114_4::
+	faceplayer
 	msgbox Route114_Text_Grunt_Route_114_4PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route114_EventScript_Charlotte::
+	faceplayer
 	msgbox Route114_Text_CharlottePostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -408,6 +419,7 @@ addvar VAR_ROUTE114_STATE, 1
 end
 
 Route114_EventScript_Kai::
+	faceplayer
 	msgbox Route114_Text_KaiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
