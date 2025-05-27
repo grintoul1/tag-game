@@ -1423,7 +1423,7 @@ bool8 ScrCmd_setobjectxy(struct ScriptContext *ctx)
 
     // Don't do follower NPC post-warp position set after setobjectxy.
     if (localId == OBJ_EVENT_ID_NPC_FOLLOWER)
-    SetFollowerNPCData(FNPC_DATA_COME_OUT_DOOR, FNPC_DOOR_NO_POS_SET);
+        SetFollowerNPCData(FNPC_DATA_COME_OUT_DOOR, FNPC_DOOR_NO_POS_SET);
 
     TryMoveObjectEventToMapCoords(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, x, y);
     return FALSE;
