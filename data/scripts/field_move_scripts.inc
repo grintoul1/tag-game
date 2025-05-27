@@ -294,12 +294,9 @@ Text_MonUsedWaterfall:
 
 EventScript_UseDive::
 	lockall
-	checkpartymove MOVE_DIVE
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantDive
-	copyvar 0x8004 VAR_RESULT
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	setfieldeffectargument 0, VAR_RESULT
-	setfieldeffectargument 1, 1
+	goto_if_unset FLAG_BADGE07_GET, EventScript_CantDive
+	checkitem ITEM_HM_DIVE
+	goto_if_eq VAR_RESULT, FALSE, EventScript_CantDive
 	msgbox Text_WantToDive, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndDive
 	hidefollowernpc
@@ -320,11 +317,9 @@ EventScript_EndDive::
 
 EventScript_UseDiveUnderwater::
 	lockall
-	checkpartymove MOVE_DIVE
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSurface
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	setfieldeffectargument 0, VAR_RESULT
-	setfieldeffectargument 1, 1
+	goto_if_unset FLAG_BADGE07_GET, EventScript_CantSurface
+	checkitem ITEM_HM_DIVE
+	goto_if_eq VAR_RESULT, FALSE, EventScript_CantSurface
 	msgbox Text_WantToSurface, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndSurface
 	hidefollowernpc

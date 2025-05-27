@@ -24,9 +24,15 @@
       "direction": "emerge"
     }
   ],
-  "object_events": [],
-  "warp_events": [],
-  "coord_events": [],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "hidden_item",
@@ -62,8 +68,8 @@
     },
     {
       "type": "hidden_item",
-      "x": 70,
-      "y": 64,
+      "x": 52,
+      "y": 72,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
       "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_124_HEART_SCALE_1"

@@ -517,7 +517,7 @@
 #define TRAINER_CONOR                       511
 #define TRAINER_EDWIN_1                     512
 #define TRAINER_HECTOR                      513
-#define TRAINER_TABITHA_MOSSDEEP            514
+#define TRAINER_COURTNEY_MOSSDEEP            514
 #define TRAINER_EDWIN_2                     515
 #define TRAINER_EDWIN_3                     516
 #define TRAINER_EDWIN_4                     517
@@ -593,7 +593,7 @@
 #define TRAINER_GRUNT_SPACE_CENTER_4        587
 #define TRAINER_GRUNT_SPACE_CENTER_5        588
 #define TRAINER_GRUNT_SPACE_CENTER_6        589
-#define TRAINER_GRUNT_SPACE_CENTER_7        590
+#define TRAINER_TABITHA_MOSSDEEP        590
 #define TRAINER_MACEY                       591
 #define TRAINER_BRENDAN_RUSTBORO_TREECKO    592
 #define TRAINER_BRENDAN_RUSTBORO_MUDKIP     593

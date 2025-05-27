@@ -1,4 +1,17 @@
 raw `
+	.set LOCALID_PRESTON, 2
+	.set LOCALID_MAURA, 4
+	.set LOCALID_BLAKE, 3
+	.set LOCALID_SAMANTHA, 5
+	.set LOCALID_VIRGIL, 6
+	.set LOCALID_NATE, 17
+	.set LOCALID_HANNAH, 7
+	.set LOCALID_SYLVIA, 18
+	.set LOCALID_KATHLEEN, 28
+	.set LOCALID_NICHOLAS, 32
+	.set LOCALID_CLIFFORD, 25
+	.set LOCALID_MACEY, 27
+
 MossdeepCity_Gym_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_Gym_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, MossdeepCity_Gym_OnLoad
@@ -54,10 +67,31 @@ MossdeepCity_Gym_EventScript_SetSwitch4Metatiles::
 	setmetatile 5, 24, METATILE_RSMossdeepGym_Switch_Down, TRUE
 	end
 
+MossdeepCity_Gym_EventScript_TateAndLiza2::
+lockall
+playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
+msgbox MossdeepCity_Gym_Text_TateAndLizaIntro MSGBOX_AUTOCLOSE
+goto MossdeepCity_Gym_EventScript_TateAndLizaDoMultiBattle
+playbgm MUS_GYM, TRUE
+releaseall
+end
+
+MossdeepCity_Gym_EventScript_TateAndLizaDoMultiBattle::
+playbgm MUS_GYM, TRUE
+multi_2p_vs_1 TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, MossdeepCity_Gym_EventScript_TateAndLizaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+MossdeepCity_Gym_EventScript_TateAndLizaVictory::
+setvar VAR_LEVEL_CAP, 65
+goto MossdeepCity_Gym_EventScript_TateAndLizaDefeated
+end
+
 MossdeepCity_Gym_EventScript_TateAndLiza::
-	trainerbattle_double TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaIntro, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MossdeepCity_Gym_EventScript_TateAndLizaDefeated, NO_MUSIC
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, MossdeepCity_Gym_EventScript_TateAndLizaRematch
+	goto_if_unset FLAG_BADGE07_GET, MossdeepCity_Gym_EventScript_TateAndLiza2
 	goto_if_unset FLAG_RECEIVED_TM_CALM_MIND, MossdeepCity_Gym_EventScript_GiveCalmMind2
 	msgbox MossdeepCity_Gym_Text_TateAndLizaPostBattle, MSGBOX_DEFAULT
 	release
@@ -71,11 +105,9 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
 	setflag FLAG_DEFEATED_MOSSDEEP_GYM
 	setflag FLAG_BADGE07_GET
 	setflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
-	clearflag FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY
 	clearflag FLAG_UNKNOWN_0x393
 	setvar VAR_0x8008, 7
 	call Common_EventScript_SetGymTrainers
-	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
@@ -86,12 +118,6 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
 	call MossdeepCity_Gym_EventScript_GiveCalmMind
 	closemessage
 	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox MossdeepCity_Gym_Text_RegisteredTateAndLiza, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL
 	release
 	end
 
@@ -209,63 +235,301 @@ MossdeepCity_Gym_EventScript_WarpToEntrance::
 	releaseall
 	end
 
+MossdeepCity_Gym_EventScript_PrestonMaura::
+lockall
+delay 4
+playse SE_PIN
+applymovement LOCALID_PRESTON, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_PrestonIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_MAURA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_MauraIntro MSGBOX_AUTOCLOSE
+goto MossdeepCity_Gym_EventScript_PrestonMauraDoMultiBattle
+releaseall
+end
+
+MossdeepCity_Gym_EventScript_PrestonMauraDoMultiBattle::
+playbgm MUS_GYM, TRUE
+multi_2p_vs_2 TRAINER_PRESTON, MossdeepCity_Gym_Text_PrestonDefeat, TRAINER_MAURA, MossdeepCity_Gym_Text_MauraDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, MossdeepCity_Gym_EventScript_PrestonMauraVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+MossdeepCity_Gym_EventScript_PrestonMauraVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_PrestonPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_MauraPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_MOSSDEEP_CITY_GYM_STATE, 1
+end
+
+MossdeepCity_Gym_EventScript_BlakeSamantha::
+lockall
+playse SE_PIN
+applymovement LOCALID_BLAKE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_BlakeIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_SAMANTHA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_SamanthaIntro MSGBOX_AUTOCLOSE
+goto MossdeepCity_Gym_EventScript_BlakeSamanthaDoMultiBattle
+releaseall
+end
+
+MossdeepCity_Gym_EventScript_BlakeSamanthaDoMultiBattle::
+playbgm MUS_GYM, TRUE
+multi_2p_vs_2 TRAINER_BLAKE, MossdeepCity_Gym_Text_BlakeDefeat, TRAINER_SAMANTHA, MossdeepCity_Gym_Text_SamanthaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, MossdeepCity_Gym_EventScript_BlakeSamanthaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+MossdeepCity_Gym_EventScript_BlakeSamanthaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_BlakePostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_SamanthaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_MOSSDEEP_CITY_GYM_STATE, 1
+end
+
+MossdeepCity_Gym_EventScript_VirgilNate::
+lockall
+delay 4
+playse SE_PIN
+applymovement LOCALID_VIRGIL, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_VirgilIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_NATE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_NateIntro MSGBOX_AUTOCLOSE
+goto MossdeepCity_Gym_EventScript_VirgilNateDoMultiBattle
+releaseall
+end
+
+MossdeepCity_Gym_EventScript_VirgilNateDoMultiBattle::
+playbgm MUS_GYM, TRUE
+multi_2p_vs_2 TRAINER_VIRGIL, MossdeepCity_Gym_Text_VirgilDefeat, TRAINER_NATE, MossdeepCity_Gym_Text_NateDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, MossdeepCity_Gym_EventScript_VirgilNateVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+MossdeepCity_Gym_EventScript_VirgilNateVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_VirgilPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_NatePostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_MOSSDEEP_CITY_GYM_STATE, 1
+end
+
+MossdeepCity_Gym_EventScript_HannahSylvia::
+lockall
+delay 4
+playse SE_PIN
+applymovement LOCALID_HANNAH, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_HannahIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_SYLVIA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_SylviaIntro MSGBOX_AUTOCLOSE
+goto MossdeepCity_Gym_EventScript_HannahSylviaDoMultiBattle
+releaseall
+end
+
+MossdeepCity_Gym_EventScript_HannahSylviaDoMultiBattle::
+playbgm MUS_GYM, TRUE
+multi_2p_vs_2 TRAINER_HANNAH, MossdeepCity_Gym_Text_HannahDefeat, TRAINER_SYLVIA, MossdeepCity_Gym_Text_SylviaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, MossdeepCity_Gym_EventScript_HannahSylviaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+MossdeepCity_Gym_EventScript_HannahSylviaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_HannahPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_SylviaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_MOSSDEEP_CITY_GYM_STATE, 1
+end
+
+MossdeepCity_Gym_EventScript_KathleenNicholas::
+lockall
+delay 4
+playse SE_PIN
+applymovement LOCALID_KATHLEEN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_KathleenIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_NICHOLAS, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_NicholasIntro MSGBOX_AUTOCLOSE
+goto MossdeepCity_Gym_EventScript_KathleenNicholasDoMultiBattle
+releaseall
+end
+
+MossdeepCity_Gym_EventScript_KathleenNicholasDoMultiBattle::
+playbgm MUS_GYM, TRUE
+multi_2p_vs_2 TRAINER_KATHLEEN, MossdeepCity_Gym_Text_KathleenDefeat, TRAINER_NICHOLAS, MossdeepCity_Gym_Text_NicholasDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, MossdeepCity_Gym_EventScript_KathleenNicholasVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+MossdeepCity_Gym_EventScript_KathleenNicholasVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_KathleenPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_NicholasPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_MOSSDEEP_CITY_GYM_STATE, 1
+end
+
+MossdeepCity_Gym_EventScript_CliffordMacey::
+lockall
+playse SE_PIN
+applymovement LOCALID_CLIFFORD, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_CliffordIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_MACEY, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_MaceyIntro MSGBOX_AUTOCLOSE
+goto MossdeepCity_Gym_EventScript_CliffordMaceyDoMultiBattle
+releaseall
+end
+
+MossdeepCity_Gym_EventScript_CliffordMaceyDoMultiBattle::
+playbgm MUS_GYM, TRUE
+multi_2p_vs_2 TRAINER_CLIFFORD, MossdeepCity_Gym_Text_CliffordDefeat, TRAINER_MACEY, MossdeepCity_Gym_Text_MaceyDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, MossdeepCity_Gym_EventScript_CliffordMaceyVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+MossdeepCity_Gym_EventScript_CliffordMaceyVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_CliffordPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox MossdeepCity_Gym_Text_MaceyPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_MOSSDEEP_CITY_GYM_STATE, 1
+end
+
 MossdeepCity_Gym_EventScript_Preston::
-	trainerbattle_single TRAINER_PRESTON, MossdeepCity_Gym_Text_PrestonIntro, MossdeepCity_Gym_Text_PrestonDefeat
+	faceplayer
 	msgbox MossdeepCity_Gym_Text_PrestonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MossdeepCity_Gym_EventScript_Virgil::
-	trainerbattle_single TRAINER_VIRGIL, MossdeepCity_Gym_Text_VirgilIntro, MossdeepCity_Gym_Text_VirgilDefeat
+	faceplayer
 	msgbox MossdeepCity_Gym_Text_VirgilPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MossdeepCity_Gym_EventScript_Blake::
-	trainerbattle_single TRAINER_BLAKE, MossdeepCity_Gym_Text_BlakeIntro, MossdeepCity_Gym_Text_BlakeDefeat
+	faceplayer
 	msgbox MossdeepCity_Gym_Text_BlakePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MossdeepCity_Gym_EventScript_Hannah::
-	trainerbattle_single TRAINER_HANNAH, MossdeepCity_Gym_Text_HannahIntro, MossdeepCity_Gym_Text_HannahDefeat
+	faceplayer
 	msgbox MossdeepCity_Gym_Text_HannahPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MossdeepCity_Gym_EventScript_Samantha::
-	trainerbattle_single TRAINER_SAMANTHA, MossdeepCity_Gym_Text_SamanthaIntro, MossdeepCity_Gym_Text_SamanthaDefeat
+	faceplayer
 	msgbox MossdeepCity_Gym_Text_SamanthaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MossdeepCity_Gym_EventScript_Maura::
-	trainerbattle_single TRAINER_MAURA, MossdeepCity_Gym_Text_MauraIntro, MossdeepCity_Gym_Text_MauraDefeat
+	faceplayer
 	msgbox MossdeepCity_Gym_Text_MauraPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MossdeepCity_Gym_EventScript_Sylvia::
-	trainerbattle_single TRAINER_SYLVIA, MossdeepCity_Gym_Text_SylviaIntro, MossdeepCity_Gym_Text_SylviaDefeat
+	faceplayer
 	msgbox MossdeepCity_Gym_Text_SylviaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MossdeepCity_Gym_EventScript_Nate::
-	trainerbattle_single TRAINER_NATE, MossdeepCity_Gym_Text_NateIntro, MossdeepCity_Gym_Text_NateDefeat
+	faceplayer
 	msgbox MossdeepCity_Gym_Text_NatePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MossdeepCity_Gym_EventScript_Macey::
-	trainerbattle_single TRAINER_MACEY, MossdeepCity_Gym_Text_MaceyIntro, MossdeepCity_Gym_Text_MaceyDefeat
+	faceplayer
 	msgbox MossdeepCity_Gym_Text_MaceyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MossdeepCity_Gym_EventScript_Clifford::
-	trainerbattle_single TRAINER_CLIFFORD, MossdeepCity_Gym_Text_CliffordIntro, MossdeepCity_Gym_Text_CliffordDefeat
+	faceplayer
 	msgbox MossdeepCity_Gym_Text_CliffordPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MossdeepCity_Gym_EventScript_Nicholas::
-	trainerbattle_single TRAINER_NICHOLAS, MossdeepCity_Gym_Text_NicholasIntro, MossdeepCity_Gym_Text_NicholasDefeat
+	faceplayer
 	msgbox MossdeepCity_Gym_Text_NicholasPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MossdeepCity_Gym_EventScript_Kathleen::
-	trainerbattle_single TRAINER_KATHLEEN, MossdeepCity_Gym_Text_KathleenIntro, MossdeepCity_Gym_Text_KathleenDefeat
+	faceplayer
 	msgbox MossdeepCity_Gym_Text_KathleenPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -320,6 +584,7 @@ MossdeepCity_Gym_EventScript_YellowFloorSwitch::
 	turnrotatingtileobjects
 	waitmovement 0
 	freerotatingtilepuzzle
+	goto_if_eq VAR_MOSSDEEP_CITY_GYM_STATE, 0, MossdeepCity_Gym_EventScript_PrestonMaura
 	end
 
 MossdeepCity_Gym_EventScript_BlueFloorSwitch::
@@ -332,6 +597,7 @@ MossdeepCity_Gym_EventScript_BlueFloorSwitch::
 	turnrotatingtileobjects
 	waitmovement 0
 	freerotatingtilepuzzle
+	goto_if_eq VAR_MOSSDEEP_CITY_GYM_STATE, 2, MossdeepCity_Gym_EventScript_VirgilNate
 	end
 
 MossdeepCity_Gym_EventScript_GreenFloorSwitch::
@@ -356,6 +622,7 @@ MossdeepCity_Gym_EventScript_PurpleFloorSwitch::
 	turnrotatingtileobjects
 	waitmovement 0
 	freerotatingtilepuzzle
+	goto_if_eq VAR_MOSSDEEP_CITY_GYM_STATE, 4, MossdeepCity_Gym_EventScript_KathleenNicholas
 	end
 
 MossdeepCity_Gym_EventScript_RedFloorSwitch::
@@ -368,6 +635,7 @@ MossdeepCity_Gym_EventScript_RedFloorSwitch::
 	turnrotatingtileobjects
 	waitmovement 0
 	freerotatingtilepuzzle
+	goto_if_eq VAR_MOSSDEEP_CITY_GYM_STATE, 3, MossdeepCity_Gym_EventScript_HannahSylvia
 	end
 
 MossdeepCity_Gym_Text_GymGuideAdvice:

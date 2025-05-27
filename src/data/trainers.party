@@ -9519,11 +9519,11 @@ Seviper
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_TABITHA_MOSSDEEP ===
-Name: TABITHA
+=== TRAINER_COURTNEY_MOSSDEEP ===
+Name: Courtney
 Class: Magma Admin
-Pic: Magma Admin
-Gender: Male
+Pic: Magma Admin F
+Gender: Female
 Music: Magma
 Mugshot: Blue
 Battle Type: Singles
@@ -10977,8 +10977,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_GRUNT_SPACE_CENTER_5 ===
 Name: GRUNT
 Class: Team Magma
-Pic: Magma Grunt M
-Gender: Male
+Pic: Magma Grunt F
+Gender: Female
 Music: Magma
 Battle Type: Singles
 AI: Check Bad Move
@@ -10990,8 +10990,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_GRUNT_SPACE_CENTER_6 ===
 Name: GRUNT
 Class: Team Magma
-Pic: Magma Grunt M
-Gender: Male
+Pic: Magma Grunt F
+Gender: Female
 Music: Magma
 Battle Type: Singles
 AI: Check Bad Move
@@ -11000,14 +11000,19 @@ Mightyena
 Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_SPACE_CENTER_7 ===
-Name: GRUNT
-Class: Team Magma
-Pic: Magma Grunt M
+=== TRAINER_TABITHA_MOSSDEEP ===
+Name: Tabitha
+Class: Magma Admin
+Pic: Magma Admin
+Mugshot: Blue
 Gender: Male
 Music: Magma
 Battle Type: Singles
 AI: Check Bad Move
+
+Baltoy
+Level: 32
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Baltoy
 Level: 32
