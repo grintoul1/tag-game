@@ -6,6 +6,7 @@ MossdeepCity_StevensHouse_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, MossdeepCity_StevensHouse_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_StevensHouse_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_StevensHouse_OnFrame
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, MossdeepCity_StevensHouse_OnWarp
 	.byte 0
 
 MossdeepCity_StevensHouse_OnLoad:
@@ -20,10 +21,19 @@ MossdeepCity_StevensHouse_OnTransition:
 	call_if_eq VAR_STEVENS_HOUSE_STATE, 2, MossdeepCity_StevensHouse_EventScript_SetStevenPos
 	end
 
+MossdeepCity_StevensHouse_EventScript_EmmiePos::
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 4, 7
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_MOSSDEEP_CITY_STEVENS_HOUSE
+	return
+
 MossdeepCity_StevensHouse_EventScript_SetStevenPos::
 	setobjectxyperm LOCALID_STEVEN, 6, 5
 	setobjectmovementtype LOCALID_STEVEN, MOVEMENT_TYPE_FACE_UP
 	return
+
+MossdeepCity_StevensHouse_OnWarp:
+	map_script_2 VAR_STEVENS_HOUSE_STATE, 1, MossdeepCity_StevensHouse_EventScript_EmmiePos
+	.2byte 0
 
 MossdeepCity_StevensHouse_OnFrame:
 	map_script_2 VAR_STEVENS_HOUSE_STATE, 1, MossdeepCity_StevensHouse_EventScript_StevenGivesDive

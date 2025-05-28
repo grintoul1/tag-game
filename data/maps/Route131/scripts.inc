@@ -11,7 +11,7 @@ Route131_MapScripts::
 # 6 "data/maps/Route131/scripts.pory"
 Route131_OnTransition:
 # 7 "data/maps/Route131/scripts.pory"
-	call_if_ge VAR_SOOTOPOLIS_CITY_STATE, 4, Route131_EventScript_CheckSetAbnormalWeather
+	call_if_set FLAG_ABNORMAL_WEATHER_RAIN, Common_EventScript_SetWeatherIntenseRain
 # 8 "data/maps/Route131/scripts.pory"
 	call Route131_EventScript_SetLayout
 # 9 "data/maps/Route131/scripts.pory"

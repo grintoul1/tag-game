@@ -27,6 +27,7 @@ SootopolisCity_MapScripts::
 
 SootopolisCity_OnLoad:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	call_if_unset FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, SootopolisCity_EventScript_LockGymDoor
 	goto_if_unset FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, SootopolisCity_EventScript_LegendariesNotArrived
 	call_if_unset FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, SootopolisCity_EventScript_LockHouseDoors
@@ -53,11 +54,15 @@ SootopolisCity_EventScript_LockGymDoor::
 
 SootopolisCity_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	setflag FLAG_VISITED_SOOTOPOLIS_CITY
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 1, SootopolisCity_EventScript_HideMapNamePopup
 	call_if_eq VAR_SKY_PILLAR_STATE, 1, SootopolisCity_EventScript_HideMapNamePopup
 	call SootopolisCity_EventScript_SetWeather
 	call SootopolisCity_EventScript_SetLayout
+	call_if_lt VAR_SOOTOPOLIS_CITY_STATE, 3, SootopolisCity_EventScript_SetArchieMaxiePos
+	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 3, SootopolisCity_EventScript_SetStevenPos
+	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 4, SootopolisCity_EventScript_SetStevenPos
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 1, SootopolisCity_EventScript_SetBattleSpectators
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 2, SootopolisCity_EventScript_SetBattleSpectators
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 3, SootopolisCity_EventScript_SetBattleSpectators
@@ -70,6 +75,24 @@ SootopolisCity_OnTransition:
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 6, SootopolisCity_EventScript_SetExpertBlockCaveEntrance
 	end
 
+SootopolisCity_EventScript_SetArchieMaxiePos::
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SootopolisCity_EventScript_ArchieDefeatedPos
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SootopolisCity_EventScript_MaxieDefeatedPos
+	return
+
+SootopolisCity_EventScript_SetStevenPos::
+	setobjectxyperm LOCALID_STEVEN, 31, 33
+	return
+
+SootopolisCity_EventScript_ArchieDefeatedPos::
+	setflag FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
+	return
+
+SootopolisCity_EventScript_MaxieDefeatedPos::
+	setflag FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
+	setobjectxyperm LOCALID_MAXIE, 31, 33
+	return
+
 SootopolisCity_EventScript_HideMapNamePopup::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	return
@@ -77,6 +100,8 @@ SootopolisCity_EventScript_HideMapNamePopup::
 SootopolisCity_EventScript_SetBattleSpectators::
 	setobjectxyperm LOCALID_KIRI, 13, 48
 	setobjectxyperm LOCALID_BOY_1, 46, 32
+	setobjectxyperm LOCALID_BOY_2, 19, 36
+	setobjectxyperm LOCALID_STEVEN, 20, 35
 	setobjectxyperm LOCALID_NINJA_BOY, 48, 41
 	setobjectxyperm LOCALID_WOMAN_1, 45, 43
 	setobjectmovementtype LOCALID_KIRI, MOVEMENT_TYPE_FACE_UP
@@ -181,6 +206,7 @@ SootopolisCity_EventScript_PlayerFaceLegendaries2::
 
 SootopolisCity_OnResume:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	setdivewarp MAP_UNDERWATER_SOOTOPOLIS_CITY, 9, 6
 	end
 
@@ -927,6 +953,8 @@ SootopolisCity_EventScript_StevenHelpedWallace::
 	end
 
 SootopolisCity_EventScript_StevenLeadPlayerCaveOfOrigin::
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 21, SootopolisCity_EventScript_EmmieApproachSteven
 	msgbox SootopolisCity_Text_InvolvedWithCrisisComeWithMe, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_FACING, DIR_WEST, SootopolisCity_EventScript_StartWalkToCaveOfOriginWest
@@ -935,18 +963,22 @@ SootopolisCity_EventScript_StevenLeadPlayerCaveOfOrigin::
 	closemessage
 	applymovement LOCALID_STEVEN, SootopolisCity_Movement_StevenWalkToCaveOfOrigin
 	applymovement OBJ_EVENT_ID_PLAYER, SootopolisCity_Movement_PlayerWalkToCaveOfOrigin
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SootopolisCity_Movement_EmmieWalkToCaveOfOrigin
 	waitmovement 0
 	delay 120
 	applymovement LOCALID_EXPERT, SootopolisCity_Movement_ExpertMoveAside
 	waitmovement 0
 	applymovement LOCALID_STEVEN, SootopolisCity_Movement_StevenArriveCaveEntrance
 	applymovement OBJ_EVENT_ID_PLAYER, SootopolisCity_Movement_PlayerArriveCaveEntrance
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SootopolisCity_Movement_EmmieArriveCaveEntrance
 	waitmovement 0
 	msgbox SootopolisCity_Text_HereWereAreHelpWallace, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN
 	applymovement OBJ_EVENT_ID_PLAYER, SootopolisCity_Movement_PlayerEnterCaveOfOrigin
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SootopolisCity_Movement_PlayerEnterCaveOfOrigin
 	waitmovement 0
+	setflag FLAG_HIDE_CAVE_OF_ORIGIN_B1F_LEADERS
 	warp MAP_CAVE_OF_ORIGIN_ENTRANCE, 9, 20
 	waitstate
 	end
@@ -960,11 +992,22 @@ SootopolisCity_EventScript_StartWalkToCaveOfOriginWest::
 SootopolisCity_EventScript_StartWalkToCaveOfOriginNorth::
 	applymovement LOCALID_STEVEN, SootopolisCity_Movement_StevenStartWalkToCaveOfOrigin
 	applymovement OBJ_EVENT_ID_PLAYER, SootopolisCity_Movement_PlayerStartWalkToCaveOfOriginNorth
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SootopolisCity_Movement_EmmieStartWalkToCaveOfOriginNorth
 	waitmovement 0
 	return
 
+SootopolisCity_EventScript_EmmieApproachSteven::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SootopolisCity_Movement_EmmieApproachSteven
+	waitmovement 0
+	return
+
+SootopolisCity_Movement_EmmieApproachSteven:
+	walk_down
+	walk_left
+	face_up
+	step_end
+
 SootopolisCity_Movement_StevenStartWalkToCaveOfOrigin:
-	walk_up
 	walk_up
 	walk_up
 	walk_right
@@ -1044,7 +1087,6 @@ SootopolisCity_Movement_PlayerStartWalkToCaveOfOriginNorth:
 	walk_up
 	walk_up
 	walk_up
-	walk_up
 	walk_right
 	walk_up
 	walk_up
@@ -1067,6 +1109,43 @@ SootopolisCity_Movement_PlayerStartWalkToCaveOfOriginNorth:
 	walk_left
 	walk_left
 	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+SootopolisCity_Movement_EmmieStartWalkToCaveOfOriginNorth:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	walk_up
 	walk_up
 	walk_up
@@ -1191,6 +1270,59 @@ SootopolisCity_Movement_PlayerWalkToCaveOfOrigin:
 	walk_right
 	step_end
 
+SootopolisCity_Movement_EmmieWalkToCaveOfOrigin:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	step_end
+
 SootopolisCity_Movement_ExpertMoveAside:
 	walk_slow_left
 	walk_in_place_faster_right
@@ -1217,6 +1349,19 @@ SootopolisCity_Movement_PlayerArriveCaveEntrance:
 	walk_right
 	walk_right
 	walk_up
+	walk_up
+	walk_up
+	walk_in_place_faster_right
+	step_end
+
+SootopolisCity_Movement_EmmieArriveCaveEntrance:
+	delay_16
+	delay_16
+	delay_16
+	delay_8
+	walk_right
+	walk_right
+	walk_right
 	walk_up
 	walk_up
 	walk_in_place_faster_right

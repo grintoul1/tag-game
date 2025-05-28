@@ -1,12 +1,35 @@
 raw `
 .set LOCALID_WALLACE, 1
+.set LOCALID_MAXIE, 3
+.set LOCALID_ARCHIE, 2
 
 CaveOfOrigin_B1F_MapScripts::
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, CaveOfOrigin_B1F_OnWarp
 	.byte 0
+
+CaveOfOrigin_B1F_OnWarp:
+	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 2, CaveOfOrigin_B1F_EventScript_SetEvilLeaderVars
+	.byte 0
+
+CaveOfOrigin_B1F_EventScript_SetEvilLeaderVars::
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, CaveOfOrigin_B1F_EventScript_ArchieMtPyreVars
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, CaveOfOrigin_B1F_EventScript_MaxieMtPyreVars
+	end
+
+CaveOfOrigin_B1F_EventScript_ArchieMtPyreVars::
+	setvar VAR_0x8004, LOCALID_ARCHIE
+	setvar VAR_0x8005, LOCALID_MAXIE
+	return
+
+CaveOfOrigin_B1F_EventScript_MaxieMtPyreVars::
+	setvar VAR_0x8004, LOCALID_MAXIE
+	setvar VAR_0x8005, LOCALID_ARCHIE
+	return
 
 CaveOfOrigin_B1F_EventScript_Wallace::
 	lock
 	faceplayer
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FacePlayer
 	msgbox CaveOfOrigin_B1F_Text_WallaceStory, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterUp
@@ -49,8 +72,78 @@ CaveOfOrigin_B1F_EventScript_DontRemember::
 	waitmessage
 	goto CaveOfOrigin_B1F_EventScript_WheresRayquaza
 
+CaveOfOrigin_B1F_EventScript_PanToAction::
+	applymovement OBJ_EVENT_ID_CAMERA, CaveOfOrigin_B1F_Movement_PanToAction
+	waitmovement 0
+	return
+
+CaveOfOrigin_B1F_EventScript_PanToActionWest::
+	applymovement OBJ_EVENT_ID_CAMERA, CaveOfOrigin_B1F_Movement_PanToActionWest
+	waitmovement 0
+	return
+
 CaveOfOrigin_B1F_EventScript_AtSkyPillar::
 	msgbox CaveOfOrigin_B1F_Text_WellHeadToSkyPillar, MSGBOX_DEFAULT
+	closemessage
+	delay 8
+	special SpawnCameraObject
+	call_if_eq VAR_FACING, DIR_EAST, CaveOfOrigin_B1F_EventScript_PanToAction
+	call_if_eq VAR_FACING, DIR_WEST, CaveOfOrigin_B1F_EventScript_PanToActionWest
+	special RemoveCameraObject
+	delay 30
+	playse SE_EXIT
+	addobject VAR_0x8005
+	delay 16
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterUp
+	applymovement VAR_0x8005, CaveOfOrigin_B1F_Movement_EvilLeaderApproachPlayer
+	waitmovement 0 
+	playse SE_EXIT
+	addobject VAR_0x8004
+	delay 16
+	applymovement VAR_0x8004, CaveOfOrigin_B1F_Movement_GoodLeaderApproachPlayer
+	waitmovement 0 
+	applymovement VAR_0x8005, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, CaveOfOrigin_B1F_EventScript_MaxieSkyPillarYouSay
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, CaveOfOrigin_B1F_EventScript_ArchieSkyPillarYouSay
+	applymovement VAR_0x8005, Common_Movement_FaceRight
+	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, CaveOfOrigin_B1F_EventScript_ArchieCantYouSee
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, CaveOfOrigin_B1F_EventScript_MaxieCantYouSee
+	applymovement VAR_0x8005, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, CaveOfOrigin_B1F_EventScript_MaxieLackConviction
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, CaveOfOrigin_B1F_EventScript_ArchieLackConviction
+	applymovement VAR_0x8005, CaveOfOrigin_B1F_Movement_EvilLeaderLeave1
+	waitmovement 0
+	playse SE_NOT_EFFECTIVE
+	applymovement VAR_0x8004, CaveOfOrigin_B1F_Movement_GoodLeaderKnockedBack
+	waitmovement 0
+	applymovement VAR_0x8005, CaveOfOrigin_B1F_Movement_EvilLeaderLeave2
+	waitmovement 0
+	playse SE_EXIT
+	removeobject VAR_0x8005
+	delay 16
+	applymovement VAR_0x8004, Common_Movement_WalkSlowDown
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, CaveOfOrigin_B1F_EventScript_ArchieThisIsntGood
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, CaveOfOrigin_B1F_EventScript_MaxieThisIsntGood
+	applymovement VAR_0x8004, CaveOfOrigin_B1F_Movement_GoodLeaderLeave
+	waitmovement 0
+	playse SE_EXIT
+	removeobject VAR_0x8004
+	delay 8
+	special SpawnCameraObject
+	call_if_eq VAR_FACING, DIR_EAST, CaveOfOrigin_B1F_EventScript_ReturnFromAction
+	call_if_eq VAR_FACING, DIR_WEST, CaveOfOrigin_B1F_EventScript_ReturnFromActionWest
+	special RemoveCameraObject
+	delay 30
+	call_if_eq VAR_FACING, DIR_WEST CaveOfOrigin_B1F_EventScript_FaceDirectionsWest
+	call_if_eq VAR_FACING, DIR_EAST CaveOfOrigin_B1F_EventScript_FaceDirectionsEast
+	msgbox CaveOfOrigin_B1F_Text_WellHeadToSkyPillar2, MSGBOX_DEFAULT
 	closemessage
 	playse SE_EXIT
 	fadescreenspeed FADE_TO_BLACK, 4
@@ -58,9 +151,181 @@ CaveOfOrigin_B1F_EventScript_AtSkyPillar::
 	setvar VAR_SOOTOPOLIS_CITY_STATE, 3
 	removeobject LOCALID_WALLACE
 	clearflag FLAG_HIDE_SKY_PILLAR_WALLACE
+	setflag FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
+	setflag FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
 	fadescreen FADE_FROM_BLACK
 	release
 	end
+
+CaveOfOrigin_B1F_EventScript_ReturnFromAction::
+	applymovement OBJ_EVENT_ID_CAMERA, CaveOfOrigin_B1F_Movement_ReturnFromAction
+	waitmovement 0
+	return
+
+CaveOfOrigin_B1F_EventScript_ReturnFromActionWest::
+	applymovement OBJ_EVENT_ID_CAMERA, CaveOfOrigin_B1F_Movement_ReturnFromActionWest
+	waitmovement 0
+	return
+
+CaveOfOrigin_B1F_EventScript_FaceDirectionsWest:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceLeft
+	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	return
+
+CaveOfOrigin_B1F_EventScript_FaceDirectionsEast:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	return
+
+CaveOfOrigin_B1F_Movement_GoodLeaderLeave:
+	walk_right
+	walk_up
+	step_end
+
+CaveOfOrigin_B1F_EventScript_MaxieThisIsntGood::
+	msgbox CaveOfOrigin_B1F_Text_MaxieThisIsntGood, MSGBOX_AUTOCLOSE
+	return
+
+CaveOfOrigin_B1F_Text_MaxieThisIsntGood:
+	.string "Maxie: This is bad.\n"
+	.string "Archie isn't prepared to give up.\p"
+	.string "I have to go after him.$"
+
+CaveOfOrigin_B1F_EventScript_ArchieThisIsntGood::
+	msgbox CaveOfOrigin_B1F_Text_ArchieThisIsntGood, MSGBOX_AUTOCLOSE
+	return
+
+CaveOfOrigin_B1F_Text_ArchieThisIsntGood:
+	.string "Archie: This is bad.\n"
+	.string "Maxie isn't prepared to give up.\p"
+	.string "I have to go after him.$"
+
+CaveOfOrigin_B1F_Movement_EvilLeaderLeave2:
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+CaveOfOrigin_B1F_Movement_GoodLeaderKnockedBack:
+	face_down
+	lock_facing_direction
+	walk_fast_up
+	unlock_facing_direction
+	step_end
+
+CaveOfOrigin_B1F_Movement_EvilLeaderLeave1:
+	walk_up
+	walk_right
+	step_end
+
+CaveOfOrigin_B1F_EventScript_MaxieLackConviction::
+	msgbox CaveOfOrigin_B1F_Text_MaxieLackConviction, MSGBOX_AUTOCLOSE
+	return
+
+CaveOfOrigin_B1F_EventScript_ArchieLackConviction::
+	msgbox CaveOfOrigin_B1F_Text_ArchieLackConviction, MSGBOX_AUTOCLOSE
+	return
+
+CaveOfOrigin_B1F_Text_MaxieLackConviction:
+	.string "Maxie: You lack conviction, Archie.\p"
+	.string "This is why Team Aqua will never prevail\n"
+	.string "over Team Magma.$"
+
+CaveOfOrigin_B1F_Text_ArchieLackConviction:
+	.string "Archie: You lack conviction, Maxie.\p"
+	.string "This is why Team Magma will never prevail\n"
+	.string "over Team Aqua.$"
+
+CaveOfOrigin_B1F_EventScript_ArchieCantYouSee::
+	msgbox CaveOfOrigin_B1F_Text_ArchieCantYouSee, MSGBOX_AUTOCLOSE
+	return
+
+CaveOfOrigin_B1F_EventScript_MaxieCantYouSee::
+	msgbox CaveOfOrigin_B1F_Text_MaxieCantYouSee, MSGBOX_AUTOCLOSE
+	return
+
+CaveOfOrigin_B1F_Text_ArchieCantYouSee:
+	.string "Archie: Maxie, can't you see what our\n"
+	.string "actions have already led to?\p"
+	.string "Our visions were misguided and order\n"
+	.string "must be restored.\p"
+	.string "It's time for us to stand aside and let\n"
+	.string "this chaos come to an end.$"
+
+CaveOfOrigin_B1F_Text_MaxieCantYouSee:
+	.string "Maxie: Archie, can't you see what our\n"
+	.string "actions have already led to?\p"
+	.string "Our visions were misguided and order\n"
+	.string "must be restored.\p"
+	.string "It's time for us to stand aside and let\n"
+	.string "this chaos come to an end.$"
+
+CaveOfOrigin_B1F_EventScript_MaxieSkyPillarYouSay::
+	msgbox CaveOfOrigin_B1F_Text_MaxieSkyPillarYouSay, MSGBOX_AUTOCLOSE
+	closemessage
+	return
+
+CaveOfOrigin_B1F_EventScript_ArchieSkyPillarYouSay::
+	msgbox CaveOfOrigin_B1F_Text_ArchieSkyPillarYouSay, MSGBOX_AUTOCLOSE
+	closemessage
+	return
+
+CaveOfOrigin_B1F_Text_MaxieSkyPillarYouSay:
+	.string "Maxie: Sky Pillar, you say?\p"
+	.string "A third legendary Pokémon, capable of\n"
+	.string "controlling the effects of the others…\p"
+	.string "Team Magma's vision may not yet be lost.$"
+
+CaveOfOrigin_B1F_Text_ArchieSkyPillarYouSay:
+	.string "Archie: Sky Pillar, you say?\p"
+	.string "A third legendary Pokémon, capable of\n"
+	.string "controlling the effects of the others…\p"
+	.string "Team Aqua's vision may not yet be lost.$"
+
+CaveOfOrigin_B1F_Movement_GoodLeaderApproachPlayer:
+	walk_down
+	walk_left
+	step_end
+
+CaveOfOrigin_B1F_Movement_EvilLeaderApproachPlayer:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	step_end
+
+CaveOfOrigin_B1F_Movement_PanToAction:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+CaveOfOrigin_B1F_Movement_PanToActionWest:
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_up
+	walk_up
+	step_end
+
+CaveOfOrigin_B1F_Movement_ReturnFromAction:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+CaveOfOrigin_B1F_Movement_ReturnFromActionWest:
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_down
+	walk_down
+	step_end
 
 CaveOfOrigin_B1F_Text_WallaceStory:
 	.string "Ah, so you are {PLAYER}{KUN}?\n"
@@ -113,10 +378,12 @@ CaveOfOrigin_B1F_Text_CantYouRememberSomehow:
 	.string "Can't you remember somehow?$"
 
 CaveOfOrigin_B1F_Text_WellHeadToSkyPillar:
-	.string "WALLACE: The SKY PILLAR?\p"
+	.string "WALLACE: The Sky Pillar?\p"
 	.string "That's it!\n"
-	.string "It must be the SKY PILLAR!\p"
+	.string "It must be the Sky Pillar!$"
+
+CaveOfOrigin_B1F_Text_WellHeadToSkyPillar2:
 	.string "{PLAYER}{KUN}, there's not a moment to lose!\n"
-	.string "We'll head to the SKY PILLAR right away!$"
+	.string "We'll head to the Sky Pillar right away!$"
 
 `

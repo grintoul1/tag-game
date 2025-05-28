@@ -67,6 +67,7 @@ Route104_OnTransition:
 # 34 "data/maps/Route104/scripts.pory"
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 # 35 "data/maps/Route104/scripts.pory"
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	call Common_EventScript_SetupRivalGfxId
 # 36 "data/maps/Route104/scripts.pory"
 	call Route104_EventScript_TrySetRivalPos

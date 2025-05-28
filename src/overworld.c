@@ -1124,7 +1124,7 @@ static bool16 ShouldLegendaryMusicPlayAtLocation(struct WarpData *warp)
 
 static bool16 ShouldDroughtMusicPlayAtLocation(struct WarpData *warp)
 {
-    if (!FlagGet(FLAG_ABNORMAL_WEATHER_SUN))
+    if (!FlagGet(FLAG_ABNORMAL_WEATHER_SUN) && !FlagGet(FLAG_ABNORMAL_WEATHER_RAIN))
         return FALSE;
     if (warp->mapGroup == 0)
     {

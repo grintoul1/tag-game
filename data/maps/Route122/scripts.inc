@@ -13,4 +13,6 @@ Route122_OnTransition:
 # 7 "data/maps/Route122/scripts.pory"
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 # 8 "data/maps/Route122/scripts.pory"
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
+# 9 "data/maps/Route122/scripts.pory"
 	end

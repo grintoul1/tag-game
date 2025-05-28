@@ -47,8 +47,8 @@
   "bg_events": [
     {
       "type": "hidden_item",
-      "x": 30,
-      "y": 17,
+      "x": 23,
+      "y": 16,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
       "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_126_HEART_SCALE"

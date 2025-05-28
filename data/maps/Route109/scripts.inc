@@ -35,6 +35,7 @@ Route109_OnTransition:
 # 18 "data/maps/Route109/scripts.pory"
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 # 19 "data/maps/Route109/scripts.pory"
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	end
 # 20 "data/maps/Route109/scripts.pory"
 

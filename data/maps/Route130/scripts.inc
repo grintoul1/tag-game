@@ -11,7 +11,7 @@ Route130_MapScripts::
 # 6 "data/maps/Route130/scripts.pory"
 Route130_OnTransition:
 # 7 "data/maps/Route130/scripts.pory"
-	call_if_ge VAR_SOOTOPOLIS_CITY_STATE, 4, Route130_EventScript_CheckSetAbnormalWeather
+	call_if_set FLAG_ABNORMAL_WEATHER_RAIN, Common_EventScript_SetWeatherIntenseRain
 # 8 "data/maps/Route130/scripts.pory"
 	specialvar VAR_RESULT, IsMirageIslandPresent
 # 9 "data/maps/Route130/scripts.pory"

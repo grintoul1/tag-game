@@ -1,4 +1,13 @@
 raw `
+	.set LOCALID_DONNY, 2
+	.set LOCALID_CAMDEN, 1
+	.set LOCALID_ATHENA, 10
+	.set LOCALID_AIDAN, 8
+	.set LOCALID_ROGER, 6
+	.set LOCALID_JONAH, 5
+	.set LOCALID_KOJI, 9
+	.set LOCALID_HENRY, 7
+
 Route127_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route127_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Route127_OnLoad
@@ -15,6 +24,7 @@ Route127_OnTransition:
 
 Route127_OnLoad:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_127_NORTH, AbnormalWeather_EventScript_PlaceTilesRoute127North
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_127_SOUTH, AbnormalWeather_EventScript_PlaceTilesRoute127South
 	end
@@ -23,45 +33,199 @@ Route127_OnFrame:
 	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
 	.2byte 0
 
+Route127_EventScript_DonnyCamden::
+lockall
+playse SE_PIN
+applymovement LOCALID_DONNY, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route127_Text_DonnyIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_CAMDEN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route127_Text_CamdenIntro MSGBOX_AUTOCLOSE
+goto Route127_EventScript_DonnyCamdenDoMultiBattle
+releaseall
+end
+
+Route127_EventScript_DonnyCamdenDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_DONNY, Route127_Text_DonnyDefeat, TRAINER_CAMDEN, Route127_Text_CamdenDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route127_EventScript_DonnyCamdenVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route127_EventScript_DonnyCamdenVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route127_Text_DonnyPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route127_Text_CamdenPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE127_STATE, 1
+end
+
+Route127_EventScript_AidanAthena::
+lockall
+playse SE_PIN
+applymovement LOCALID_AIDAN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route127_Text_AidanIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_ATHENA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route127_Text_AthenaIntro MSGBOX_AUTOCLOSE
+goto Route127_EventScript_AidanAthenaDoMultiBattle
+releaseall
+end
+
+Route127_EventScript_AidanAthenaDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_AIDAN, Route127_Text_AidanDefeat, TRAINER_ATHENA, Route127_Text_AthenaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route127_EventScript_AidanAthenaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route127_EventScript_AidanAthenaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route127_Text_AidanPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route127_Text_AthenaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE127_STATE, 1
+end
+
+Route127_EventScript_RogerJonah::
+lockall
+playse SE_PIN
+applymovement LOCALID_ROGER, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_HIKER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route127_Text_RogerIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_JONAH, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_HIKER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route127_Text_JonahIntro MSGBOX_AUTOCLOSE
+goto Route127_EventScript_RogerJonahDoMultiBattle
+releaseall
+end
+
+Route127_EventScript_RogerJonahDoMultiBattle::
+playbgm MUS_ROUTE122, TRUE
+multi_2p_vs_2 TRAINER_ROGER, Route127_Text_RogerDefeat, TRAINER_JONAH, Route127_Text_JonahDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route127_EventScript_RogerJonahVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route127_EventScript_RogerJonahVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route127_Text_RogerPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route127_Text_JonahPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE127_STATE, 1
+end
+
+Route127_EventScript_KojiHenry::
+lockall
+playse SE_PIN
+applymovement LOCALID_KOJI, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route127_Text_KojiIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_HENRY, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_HIKER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route127_Text_HenryIntro MSGBOX_AUTOCLOSE
+goto Route127_EventScript_KojiHenryDoMultiBattle
+releaseall
+end
+
+Route127_EventScript_KojiHenryDoMultiBattle::
+playbgm MUS_ROUTE122, TRUE
+multi_2p_vs_2 TRAINER_KOJI_1, Route127_Text_KojiDefeat, TRAINER_HENRY, Route127_Text_HenryDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route127_EventScript_KojiHenryVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route127_EventScript_KojiHenryVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route127_Text_KojiPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route127_Text_HenryPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE127_STATE, 1
+end
+
 Route127_EventScript_Camden::
-	trainerbattle_single TRAINER_CAMDEN, Route127_Text_CamdenIntro, Route127_Text_CamdenDefeat
+	faceplayer
 	msgbox Route127_Text_CamdenPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route127_EventScript_Donny::
-	trainerbattle_single TRAINER_DONNY, Route127_Text_DonnyIntro, Route127_Text_DonnyDefeat
+	faceplayer
 	msgbox Route127_Text_DonnyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route127_EventScript_Jonah::
-	trainerbattle_single TRAINER_JONAH, Route127_Text_JonahIntro, Route127_Text_JonahDefeat
+	faceplayer
 	msgbox Route127_Text_JonahPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route127_EventScript_Henry::
-	trainerbattle_single TRAINER_HENRY, Route127_Text_HenryIntro, Route127_Text_HenryDefeat
+	faceplayer
 	msgbox Route127_Text_HenryPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route127_EventScript_Roger::
-	trainerbattle_single TRAINER_ROGER, Route127_Text_RogerIntro, Route127_Text_RogerDefeat
+	faceplayer
 	msgbox Route127_Text_RogerPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route127_EventScript_Aidan::
-	trainerbattle_single TRAINER_AIDAN, Route127_Text_AidanIntro, Route127_Text_AidanDefeat
+	faceplayer
 	msgbox Route127_Text_AidanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route127_EventScript_Athena::
-	trainerbattle_single TRAINER_ATHENA, Route127_Text_AthenaIntro, Route127_Text_AthenaDefeat
+	faceplayer
 	msgbox Route127_Text_AthenaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route127_EventScript_Koji::
-	trainerbattle_single TRAINER_KOJI_1, Route127_Text_KojiIntro, Route127_Text_KojiDefeat, Route127_EventScript_RegisterKoji
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route127_EventScript_RematchKoji
+	faceplayer
 	msgbox Route127_Text_KojiPostBattle, MSGBOX_DEFAULT
 	release
 	end
