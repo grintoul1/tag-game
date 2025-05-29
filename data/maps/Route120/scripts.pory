@@ -24,6 +24,7 @@ Route120_MapScripts::
 
 Route120_OnResume:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, Route120_EventScript_RemoveKecleonObject
 	end
 
@@ -54,6 +55,7 @@ Route120_EventScript_RemoveKecleon::
 
 Route120_OnLoad:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	call_if_unset FLAG_REGI_DOORS_OPENED, Route120_EventScript_CloseAncientTomb
 	call_if_set FLAG_RECEIVED_DEVON_SCOPE, Route120_EventScript_SetBridgeClearMetatiles
 	call_if_unset FLAG_RECEIVED_DEVON_SCOPE, Route120_EventScript_SetBridgeKecleonMovement
@@ -77,6 +79,7 @@ Route120_EventScript_SetBridgeKecleonMovement::
 
 Route120_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	call GabbyAndTy_EventScript_UpdateLocation
 	call Route120_EventScript_SetWeather
 	end
@@ -325,6 +328,7 @@ addvar VAR_ROUTE120_STATE, 1
 end
 
 Route120_EventScript_Colin::
+	faceplayer
 	msgbox Route120_Text_ColinPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -370,6 +374,7 @@ addvar VAR_ROUTE120_STATE, 1
 end
 
 Route120_EventScript_Robert::
+	faceplayer
 	msgbox Route120_Text_RobertPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -429,10 +434,12 @@ addvar VAR_ROUTE120_STATE, 1
 end
 
 Route120_EventScript_Lorenzo::
+	faceplayer
 	msgbox Route120_Text_LorenzoPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route120_EventScript_Jenna::
+	faceplayer
 	msgbox Route120_Text_JennaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -478,6 +485,7 @@ addvar VAR_ROUTE120_STATE, 1
 end
 
 Route120_EventScript_Jeffrey::
+	faceplayer
 	msgbox Route120_Text_JeffreyPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -496,18 +504,22 @@ Route120_EventScript_RematchJeffrey::
 	end
 
 Route120_EventScript_Jennifer::
+	faceplayer
 	msgbox Route120_Text_JenniferPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route120_EventScript_Chip::
+	faceplayer
 	msgbox Route120_Text_ChipPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route120_EventScript_Clarissa::
+	faceplayer
 	msgbox Route120_Text_ClarissaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route120_EventScript_Angelica::
+	faceplayer
 	msgbox Route120_Text_AngelicaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -553,15 +565,17 @@ addvar VAR_ROUTE120_STATE, 1
 end
 
 Route120_EventScript_Keigo::
+	faceplayer
 	msgbox Route120_Text_KeigoPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route120_EventScript_Riley::
+	faceplayer
 	msgbox Route120_Text_RileyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route120_EventScript_Leonel::
-	trainerbattle_single TRAINER_LEONEL, Route120_Text_LeonelIntro, Route120_Text_LeonelDefeat
+	faceplayer
 	msgbox Route120_Text_LeonelPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -607,6 +621,7 @@ addvar VAR_ROUTE120_STATE, 1
 end
 
 Route120_EventScript_Callie::
+	faceplayer
 	msgbox Route120_Text_CalliePostBattle, MSGBOX_AUTOCLOSE
 	end
 

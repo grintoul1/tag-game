@@ -8,6 +8,7 @@ Route112_MapScripts::
 
 Route112_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	clearflag FLAG_FORCE_MIRAGE_TOWER_VISIBLE
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 0
 	end

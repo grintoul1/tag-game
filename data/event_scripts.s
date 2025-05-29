@@ -1267,6 +1267,11 @@ Common_EventScript_SetWeatherIntenseSun::
 	doweather
 	return
 
+Common_EventScript_SetWeatherIntenseRain::
+	setweather WEATHER_DOWNPOUR
+	doweather
+	return
+
 Common_EventScript_PlayGymBadgeFanfare::
 	playfanfare MUS_OBTAIN_BADGE
 	waitfanfare

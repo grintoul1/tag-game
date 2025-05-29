@@ -22,6 +22,7 @@ Route123_MapScripts::
 
 Route123_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	special SetRoute123Weather
 	end
 
@@ -103,14 +104,17 @@ addvar VAR_ROUTE123_STATE, 1
 end
 
 Route123_EventScript_Wendy::
+	faceplayer
 	msgbox Route123_Text_WendyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route123_EventScript_Braxton::
+	faceplayer
 	msgbox Route123_Text_BraxtonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route123_EventScript_Violet::
+	faceplayer
 	msgbox Route123_Text_VioletPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -156,6 +160,7 @@ addvar VAR_ROUTE123_STATE, 1
 end
 
 Route123_EventScript_Cameron::
+	faceplayer
 	msgbox Route123_Text_CameronPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -174,6 +179,7 @@ Route123_EventScript_RematchCameron::
 	end
 
 Route123_EventScript_Jacki::
+	faceplayer
 	msgbox Route123_Text_JackiPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -222,10 +228,12 @@ addvar VAR_ROUTE123_STATE, 1
 end
 
 Route123_EventScript_Miu::
+	faceplayer
 	msgbox Route123_Text_MiuPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route123_EventScript_Yuki::
+	faceplayer
 	msgbox Route123_Text_YukiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -271,6 +279,7 @@ addvar VAR_ROUTE123_STATE, 1
 end
 
 Route123_EventScript_Kindra::
+	faceplayer
 	msgbox Route123_Text_KindraPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -316,6 +325,7 @@ addvar VAR_ROUTE123_STATE, 1
 end
 
 Route123_EventScript_Frederick::
+	faceplayer
 	msgbox Route123_Text_FrederickPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -361,10 +371,12 @@ addvar VAR_ROUTE123_STATE, 1
 end
 
 Route123_EventScript_Alberto::
+	faceplayer
 	msgbox Route123_Text_AlbertoPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route123_EventScript_Ed::
+	faceplayer
 	msgbox Route123_Text_EdPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -410,14 +422,17 @@ addvar VAR_ROUTE123_STATE, 1
 end
 
 Route123_EventScript_Kayley::
+	faceplayer
 	msgbox Route123_Text_KayleyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route123_EventScript_Jonas::
+	faceplayer
 	msgbox Route123_Text_JonasPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route123_EventScript_Jazmyn::
+	faceplayer
 	msgbox Route123_Text_JazmynPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -463,10 +478,12 @@ addvar VAR_ROUTE123_STATE, 1
 end
 
 Route123_EventScript_Davis::
+	faceplayer
 	msgbox Route123_Text_DavisPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route123_EventScript_Fernando::
+	faceplayer
 	msgbox Route123_Text_FernandoPostBattle, MSGBOX_DEFAULT
 	release
 	end

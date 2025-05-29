@@ -32,66 +32,66 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
-      "x": 28,
-      "y": 16,
+      "x": 32,
+      "y": 13,
       "elevation": 1,
-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_UP_RIGHT",
-      "movement_range_x": 3,
-      "movement_range_y": 4,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "Route129_EventScript_Chase",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
-      "x": 10,
-      "y": 14,
+      "x": 2,
+      "y": 13,
       "elevation": 1,
-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_DOWN_LEFT_UP",
-      "movement_range_x": 5,
-      "movement_range_y": 2,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "Route129_EventScript_Allison",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
       "x": 13,
-      "y": 22,
+      "y": 23,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "5",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "Route129_EventScript_Tisha",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
-      "x": 35,
-      "y": 9,
+      "x": 32,
+      "y": 15,
       "elevation": 1,
-      "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "Route129_EventScript_Reed",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
       "x": 13,
-      "y": 27,
+      "y": 25,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "5",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "Route129_EventScript_Clarence",
       "flag": "0"
     }
@@ -100,7 +100,51 @@
 
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 32,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_ROUTE129_STATE",
+      "var_value": "0",
+      "script": "Route129_EventScript_ChaseReed"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_ROUTE129_STATE",
+      "var_value": "1",
+      "script": "Route129_EventScript_TishaClarence"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_ROUTE129_STATE",
+      "var_value": "2",
+      "script": "Route129_EventScript_AllisonBattle"
+    },
+    {
+      "type": "trigger",
+      "x": 33,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_ROUTE128_STATE",
+      "var_value": "2",
+      "script": "Route129_EventScript_EmmieMeetSteven"
+    },
+    {
+      "type": "trigger",
+      "x": 33,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_ROUTE128_STATE",
+      "var_value": "0",
+      "script": "Route129_EventScript_EmmieCheckSootopolis"
+    }
   ],
   "bg_events": [
 

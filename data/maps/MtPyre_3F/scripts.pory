@@ -47,6 +47,7 @@ addvar VAR_MT_PYRE_STATE, 1
 end
 
 MtPyre_3F_EventScript_Pyre_MagmaGrunt1::
+	faceplayer
 	msgbox MtPyre_3F_Text_Pyre_MagmaGrunt1PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -56,6 +57,7 @@ MtPyre_3F_EventScript_Kayla::
 	end
 
 MtPyre_3F_EventScript_Pyre_MagmaGrunt2::
+	faceplayer
 	msgbox MtPyre_3F_Text_Pyre_MagmaGrunt2PostBattle, MSGBOX_DEFAULT
 	release
 	end

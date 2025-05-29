@@ -20,6 +20,7 @@ Route116_MapScripts::
 
 Route116_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	call_if_set FLAG_RECOVERED_DEVON_GOODS, Route116_EventScript_SetWandasBoyfriendPos
 	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_116_NORTH, AbnormalWeather_StartGroudonWeather
@@ -32,6 +33,7 @@ Route116_EventScript_SetWandasBoyfriendPos::
 
 Route116_OnLoad:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_116_NORTH, AbnormalWeather_EventScript_PlaceTilesRoute116North
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_116_SOUTH, AbnormalWeather_EventScript_PlaceTilesRoute116South
 	end
@@ -288,6 +290,7 @@ addvar VAR_ROUTE116_STATE, 1
 end
 
 Route116_EventScript_Jose::
+	faceplayer
 	msgbox Route116_Text_JosePostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -333,6 +336,7 @@ addvar VAR_ROUTE116_STATE, 1
 end
 
 Route116_EventScript_Jerry::
+	faceplayer
 	msgbox Route116_Text_JerryPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -368,14 +372,17 @@ Route116_EventScript_RematchJerry::
 	end
 
 Route116_EventScript_Clark::
+	faceplayer
 	msgbox Route116_Text_ClarkPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route116_EventScript_Janice::
+	faceplayer
 	msgbox Route116_Text_JanicePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route116_EventScript_Karen::
+	faceplayer
 	msgbox Route116_Text_KarenPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -411,6 +418,7 @@ Route116_EventScript_RematchKaren::
 	end
 
 Route116_EventScript_Sarah::
+	faceplayer
 	msgbox Route116_Text_SarahPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -456,6 +464,7 @@ addvar VAR_ROUTE116_STATE, 1
 end
 
 Route116_EventScript_Dawson::
+	faceplayer
 	msgbox Route116_Text_DawsonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -501,6 +510,7 @@ addvar VAR_ROUTE116_STATE, 1
 end
 
 Route116_EventScript_Devan::
+	faceplayer
 	msgbox Route116_Text_DevanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -546,6 +556,7 @@ addvar VAR_ROUTE116_STATE, 1
 end
 
 Route116_EventScript_Johnson::
+	faceplayer
 	msgbox Route116_Text_JohnsonPostBattle, MSGBOX_AUTOCLOSE
 	end
 

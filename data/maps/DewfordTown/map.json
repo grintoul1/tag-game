@@ -128,13 +128,6 @@
       "elevation": 0,
       "dest_map": "MAP_DEWFORD_TOWN_HOUSE2",
       "dest_warp_id": "0"
-    },
-    {
-      "x": 0,
-      "y": 10,
-      "elevation": 0,
-      "dest_map": "MAP_PETALBURG_CITY",
-      "dest_warp_id": "6"
     }
   ],
   "coord_events": [

@@ -315,6 +315,7 @@ EventScript_ResetAllMapFlags::
 	clearflag FLAG_JAGGED_PASS_SHELLY_INTRO_GIVEN
 	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
 	setflag FLAG_HIDE_AQUA_HIDEOUT_B2F_EMMIE
+	setflag FLAG_HIDE_CAVE_OF_ORIGIN_B1F_LEADERS
 	destroyfollowernpc
 	call EventScript_ResetAllBerries
 	end

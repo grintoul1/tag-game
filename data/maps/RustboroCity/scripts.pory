@@ -13,6 +13,7 @@ RustboroCity_MapScripts::
 
 RustboroCity_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	setflag FLAG_VISITED_RUSTBORO_CITY
 	call Common_EventScript_SetupRivalGfxId
 	call_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_HideMapNamePopup

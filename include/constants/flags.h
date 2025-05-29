@@ -695,8 +695,8 @@
 #define FLAG_HIDE_MAGMA_HIDEOUT_4F_EMMIE  0x288 // Hides Magma Hideout 4F Emmie
 #define FLAG_HIDE_AQUA_HIDEOUT_EMMIE  0x289 // Hides AHO Emmie
 #define FLAG_HIDE_AQUA_HIDEOUT_B2F_EMMIE  0x28A // Hides AHO B2F Emmie
-#define FLAG_UNUSED_0x28B  0x28B // Unused Flag
-#define FLAG_UNUSED_0x28C  0x28C // Unused Flag
+#define FLAG_ABNORMAL_WEATHER_RAIN  0x28B // Intense rain after SFC
+#define FLAG_HIDE_CAVE_OF_ORIGIN_B1F_LEADERS  0x28C // Hides COO Archie and Maxie
 #define FLAG_UNUSED_0x28D  0x28D // Unused Flag
 #define FLAG_UNUSED_0x28E  0x28E // Unused Flag
 #define FLAG_UNUSED_0x28F  0x28F // Unused Flag

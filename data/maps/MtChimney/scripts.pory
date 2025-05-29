@@ -623,6 +623,7 @@ addvar VAR_MTCHIMNEY_STATE, 1
 end
 
 MtChimney_EventScript_Tabitha2::
+	faceplayer
 	msgbox MtChimney_Text_TabithaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -668,6 +669,7 @@ addvar VAR_MTCHIMNEY_STATE, 1
 end
 
 MtChimney_EventScript_Grunt2::
+	faceplayer
 	msgbox MtChimney_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -772,6 +774,7 @@ MtChimney_EventScript_Shirley::
 	end
 
 MtChimney_EventScript_Grunt1::
+	faceplayer
 	msgbox MtChimney_Text_Grunt1PostBattle, MSGBOX_AUTOCLOSE
 	end
 

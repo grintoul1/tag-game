@@ -13,6 +13,7 @@ Route103_MapScripts::
 
 Route103_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	call Common_EventScript_SetupRivalGfxId
 	call ProfBirch_EventScript_UpdateLocation
 	end
@@ -209,7 +210,7 @@ Route103_EventScript_RouteSign::
 	end
 
 Route103_EventScript_Daisy::
-	trainerbattle_single TRAINER_DAISY, Route103_Text_DaisyIntro, Route103_Text_DaisyDefeated
+	faceplayer
 	msgbox Route103_Text_DaisyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -244,6 +245,7 @@ addvar VAR_ROUTE103_STATE, 1
 end
 
 Route103_EventScript_Amy::
+	faceplayer
 	msgbox Route103_Text_AmyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -259,6 +261,7 @@ Route103_EventScript_AmyRematch::
 	end
 
 Route103_EventScript_Liv::
+	faceplayer
 	msgbox Route103_Text_LivPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -315,10 +318,12 @@ addvar VAR_ROUTE103_STATE, 1
 end
 
 Route103_EventScript_Andrew::
+	faceplayer
 	msgbox Route103_Text_AndrewPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route103_EventScript_Miguel::
+	faceplayer
 	msgbox Route103_Text_MiguelPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -378,20 +383,22 @@ addvar VAR_ROUTE103_STATE, 1
 end
 
 Route103_EventScript_Marcos::
+	faceplayer
 	msgbox Route103_Text_MarcosPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route103_EventScript_Rhett::
+	faceplayer
 	msgbox Route103_Text_RhettPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route103_EventScript_Pete::
-	trainerbattle_single TRAINER_PETE, Route103_Text_PeteIntro, Route103_Text_PeteDefeated
+	faceplayer
 	msgbox Route103_Text_PetePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route103_EventScript_Isabelle::
-	trainerbattle_single TRAINER_ISABELLE, Route103_Text_IsabelleIntro, Route103_Text_IsabelleDefeated
+	faceplayer
 	msgbox Route103_Text_IsabellePostBattle, MSGBOX_AUTOCLOSE
 	end
 

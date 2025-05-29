@@ -97,164 +97,168 @@ end
 # 49 "data/maps/MtPyre_3F/scripts.pory"
 MtPyre_3F_EventScript_Pyre_MagmaGrunt1::
 # 50 "data/maps/MtPyre_3F/scripts.pory"
-	msgbox MtPyre_3F_Text_Pyre_MagmaGrunt1PostBattle, MSGBOX_AUTOCLOSE
+	faceplayer
 # 51 "data/maps/MtPyre_3F/scripts.pory"
-	end
+	msgbox MtPyre_3F_Text_Pyre_MagmaGrunt1PostBattle, MSGBOX_AUTOCLOSE
 # 52 "data/maps/MtPyre_3F/scripts.pory"
-
+	end
 # 53 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_EventScript_Kayla::
+
 # 54 "data/maps/MtPyre_3F/scripts.pory"
-	trainerbattle_single TRAINER_KAYLA, MtPyre_3F_Text_KaylaIntro, MtPyre_3F_Text_KaylaDefeat
+MtPyre_3F_EventScript_Kayla::
 # 55 "data/maps/MtPyre_3F/scripts.pory"
-	msgbox MtPyre_3F_Text_KaylaPostBattle, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_KAYLA, MtPyre_3F_Text_KaylaIntro, MtPyre_3F_Text_KaylaDefeat
 # 56 "data/maps/MtPyre_3F/scripts.pory"
-	end
+	msgbox MtPyre_3F_Text_KaylaPostBattle, MSGBOX_AUTOCLOSE
 # 57 "data/maps/MtPyre_3F/scripts.pory"
-
+	end
 # 58 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_EventScript_Pyre_MagmaGrunt2::
+
 # 59 "data/maps/MtPyre_3F/scripts.pory"
-	msgbox MtPyre_3F_Text_Pyre_MagmaGrunt2PostBattle, MSGBOX_DEFAULT
+MtPyre_3F_EventScript_Pyre_MagmaGrunt2::
 # 60 "data/maps/MtPyre_3F/scripts.pory"
-	release
+	faceplayer
 # 61 "data/maps/MtPyre_3F/scripts.pory"
-	end
+	msgbox MtPyre_3F_Text_Pyre_MagmaGrunt2PostBattle, MSGBOX_DEFAULT
 # 62 "data/maps/MtPyre_3F/scripts.pory"
-
-# 63 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_EventScript_RegisterGabrielle::
-# 64 "data/maps/MtPyre_3F/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
-# 65 "data/maps/MtPyre_3F/scripts.pory"
-	waitmovement 0
-# 66 "data/maps/MtPyre_3F/scripts.pory"
-	msgbox MtPyre_3F_Text_GabrielleRegister, MSGBOX_DEFAULT
-# 67 "data/maps/MtPyre_3F/scripts.pory"
-	register_matchcall TRAINER_GABRIELLE_2
-# 68 "data/maps/MtPyre_3F/scripts.pory"
 	release
+# 63 "data/maps/MtPyre_3F/scripts.pory"
+	end
+# 64 "data/maps/MtPyre_3F/scripts.pory"
+
+# 65 "data/maps/MtPyre_3F/scripts.pory"
+MtPyre_3F_EventScript_RegisterGabrielle::
+# 66 "data/maps/MtPyre_3F/scripts.pory"
+	special PlayerFaceTrainerAfterBattle
+# 67 "data/maps/MtPyre_3F/scripts.pory"
+	waitmovement 0
+# 68 "data/maps/MtPyre_3F/scripts.pory"
+	msgbox MtPyre_3F_Text_GabrielleRegister, MSGBOX_DEFAULT
 # 69 "data/maps/MtPyre_3F/scripts.pory"
-	end
+	register_matchcall TRAINER_GABRIELLE_2
 # 70 "data/maps/MtPyre_3F/scripts.pory"
-
+	release
 # 71 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_EventScript_RematchGabrielle::
-# 72 "data/maps/MtPyre_3F/scripts.pory"
-	trainerbattle_rematch TRAINER_GABRIELLE_2, MtPyre_3F_Text_GabrielleRematchIntro, MtPyre_3F_Text_GabrielleRematchDefeat
-# 73 "data/maps/MtPyre_3F/scripts.pory"
-	msgbox MtPyre_3F_Text_GabriellePostRematch, MSGBOX_AUTOCLOSE
-# 74 "data/maps/MtPyre_3F/scripts.pory"
 	end
+# 72 "data/maps/MtPyre_3F/scripts.pory"
+
+# 73 "data/maps/MtPyre_3F/scripts.pory"
+MtPyre_3F_EventScript_RematchGabrielle::
+# 74 "data/maps/MtPyre_3F/scripts.pory"
+	trainerbattle_rematch TRAINER_GABRIELLE_2, MtPyre_3F_Text_GabrielleRematchIntro, MtPyre_3F_Text_GabrielleRematchDefeat
 # 75 "data/maps/MtPyre_3F/scripts.pory"
-
+	msgbox MtPyre_3F_Text_GabriellePostRematch, MSGBOX_AUTOCLOSE
 # 76 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_Text_Pyre_MagmaGrunt1Intro:
+	end
 # 77 "data/maps/MtPyre_3F/scripts.pory"
-	.string "Hehehe! I'm feeling good after we\n"
+
 # 78 "data/maps/MtPyre_3F/scripts.pory"
-	.string "battered Team Aqua downstairs!$"
+MtPyre_3F_Text_Pyre_MagmaGrunt1Intro:
 # 79 "data/maps/MtPyre_3F/scripts.pory"
-
+	.string "Hehehe! I'm feeling good after we\n"
 # 80 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_Text_Pyre_MagmaGrunt1Defeat:
+	.string "battered Team Aqua downstairs!$"
 # 81 "data/maps/MtPyre_3F/scripts.pory"
-	.string "Welp…$"
+
 # 82 "data/maps/MtPyre_3F/scripts.pory"
-
+MtPyre_3F_Text_Pyre_MagmaGrunt1Defeat:
 # 83 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_Text_Pyre_MagmaGrunt1PostBattle:
+	.string "Welp…$"
 # 84 "data/maps/MtPyre_3F/scripts.pory"
-	.string "Thanks for bursting my bubble!$"
+
 # 85 "data/maps/MtPyre_3F/scripts.pory"
-
+MtPyre_3F_Text_Pyre_MagmaGrunt1PostBattle:
 # 86 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_Text_KaylaIntro:
+	.string "Thanks for bursting my bubble!$"
 # 87 "data/maps/MtPyre_3F/scripts.pory"
-	.string "Ahahahaha!\p"
+
 # 88 "data/maps/MtPyre_3F/scripts.pory"
-	.string "This is no place for children, least\n"
+MtPyre_3F_Text_KaylaIntro:
 # 89 "data/maps/MtPyre_3F/scripts.pory"
-	.string "of all you!$"
+	.string "Ahahahaha!\p"
 # 90 "data/maps/MtPyre_3F/scripts.pory"
-
+	.string "This is no place for children, least\n"
 # 91 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_Text_KaylaDefeat:
+	.string "of all you!$"
 # 92 "data/maps/MtPyre_3F/scripts.pory"
-	.string "I lost that cleanly…$"
+
 # 93 "data/maps/MtPyre_3F/scripts.pory"
-
+MtPyre_3F_Text_KaylaDefeat:
 # 94 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_Text_KaylaPostBattle:
+	.string "I lost that cleanly…$"
 # 95 "data/maps/MtPyre_3F/scripts.pory"
-	.string "This means my training is still not\n"
+
 # 96 "data/maps/MtPyre_3F/scripts.pory"
-	.string "enough…\p"
+MtPyre_3F_Text_KaylaPostBattle:
 # 97 "data/maps/MtPyre_3F/scripts.pory"
-	.string "I've got to keep working toward the\n"
+	.string "This means my training is still not\n"
 # 98 "data/maps/MtPyre_3F/scripts.pory"
-	.string "summit…\p"
+	.string "enough…\p"
 # 99 "data/maps/MtPyre_3F/scripts.pory"
-	.string "Go, me!$"
+	.string "I've got to keep working toward the\n"
 # 100 "data/maps/MtPyre_3F/scripts.pory"
-
+	.string "summit…\p"
 # 101 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_Text_Pyre_MagmaGrunt2Intro:
+	.string "Go, me!$"
 # 102 "data/maps/MtPyre_3F/scripts.pory"
-	.string "Why have you come here?$"
+
 # 103 "data/maps/MtPyre_3F/scripts.pory"
-
+MtPyre_3F_Text_Pyre_MagmaGrunt2Intro:
 # 104 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_Text_Pyre_MagmaGrunt2Defeat:
+	.string "Why have you come here?$"
 # 105 "data/maps/MtPyre_3F/scripts.pory"
-	.string "So you just want to cause us problems?$"
+
 # 106 "data/maps/MtPyre_3F/scripts.pory"
-
+MtPyre_3F_Text_Pyre_MagmaGrunt2Defeat:
 # 107 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_Text_Pyre_MagmaGrunt2PostBattle:
+	.string "So you just want to cause us problems?$"
 # 108 "data/maps/MtPyre_3F/scripts.pory"
-	.string "Team Aqua and now you kids?$"
+
 # 109 "data/maps/MtPyre_3F/scripts.pory"
-
+MtPyre_3F_Text_Pyre_MagmaGrunt2PostBattle:
 # 110 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_Text_GabrielleRegister:
+	.string "Team Aqua and now you kids?$"
 # 111 "data/maps/MtPyre_3F/scripts.pory"
-	.string "I would like to see your POKéMON\n"
+
 # 112 "data/maps/MtPyre_3F/scripts.pory"
-	.string "when they grow up some more…\p"
+MtPyre_3F_Text_GabrielleRegister:
 # 113 "data/maps/MtPyre_3F/scripts.pory"
-	.string "Please, I need to see your POKéNAV.$"
+	.string "I would like to see your POKéMON\n"
 # 114 "data/maps/MtPyre_3F/scripts.pory"
-
+	.string "when they grow up some more…\p"
 # 115 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_Text_GabrielleRematchIntro:
+	.string "Please, I need to see your POKéNAV.$"
 # 116 "data/maps/MtPyre_3F/scripts.pory"
-	.string "Oh, it's you…\p"
+
 # 117 "data/maps/MtPyre_3F/scripts.pory"
-	.string "Have you come to show me your grown\n"
+MtPyre_3F_Text_GabrielleRematchIntro:
 # 118 "data/maps/MtPyre_3F/scripts.pory"
-	.string "POKéMON?$"
+	.string "Oh, it's you…\p"
 # 119 "data/maps/MtPyre_3F/scripts.pory"
-
+	.string "Have you come to show me your grown\n"
 # 120 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_Text_GabrielleRematchDefeat:
+	.string "POKéMON?$"
 # 121 "data/maps/MtPyre_3F/scripts.pory"
-	.string "How amazing!\n"
-# 122 "data/maps/MtPyre_3F/scripts.pory"
-	.string "You are a special person.$"
-# 123 "data/maps/MtPyre_3F/scripts.pory"
 
+# 122 "data/maps/MtPyre_3F/scripts.pory"
+MtPyre_3F_Text_GabrielleRematchDefeat:
+# 123 "data/maps/MtPyre_3F/scripts.pory"
+	.string "How amazing!\n"
 # 124 "data/maps/MtPyre_3F/scripts.pory"
-MtPyre_3F_Text_GabriellePostRematch:
+	.string "You are a special person.$"
 # 125 "data/maps/MtPyre_3F/scripts.pory"
-	.string "POKéMON no longer of this world.\n"
+
 # 126 "data/maps/MtPyre_3F/scripts.pory"
-	.string "POKéMON that are with you now.\p"
+MtPyre_3F_Text_GabriellePostRematch:
 # 127 "data/maps/MtPyre_3F/scripts.pory"
-	.string "And the POKéMON that you will meet\n"
+	.string "POKéMON no longer of this world.\n"
 # 128 "data/maps/MtPyre_3F/scripts.pory"
-	.string "in the future…\p"
+	.string "POKéMON that are with you now.\p"
 # 129 "data/maps/MtPyre_3F/scripts.pory"
-	.string "They are all to be equally cherished.\n"
+	.string "And the POKéMON that you will meet\n"
 # 130 "data/maps/MtPyre_3F/scripts.pory"
+	.string "in the future…\p"
+# 131 "data/maps/MtPyre_3F/scripts.pory"
+	.string "They are all to be equally cherished.\n"
+# 132 "data/maps/MtPyre_3F/scripts.pory"
 	.string "I see that you've remembered that.$"

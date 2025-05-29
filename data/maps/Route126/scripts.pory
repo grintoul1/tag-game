@@ -1,4 +1,13 @@
 raw `
+	.set LOCALID_PABLO, 7
+	.set LOCALID_SIENNA, 6
+	.set LOCALID_BRENDA, 4
+	.set LOCALID_NIKKI, 3
+	.set LOCALID_DEAN, 2
+	.set LOCALID_BARRY, 1
+	.set LOCALID_LEONARDO, 9
+	.set LOCALID_ISOBEL, 8
+
 Route126_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route126_OnTransition
 	.byte 0
@@ -8,45 +17,199 @@ Route126_OnTransition:
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
 	end
 
+Route126_EventScript_NikkiBrenda::
+lockall
+playse SE_PIN
+applymovement LOCALID_NIKKI, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route126_Text_NikkiIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_BRENDA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route126_Text_BrendaIntro MSGBOX_AUTOCLOSE
+goto Route126_EventScript_NikkiBrendaDoMultiBattle
+releaseall
+end
+
+Route126_EventScript_NikkiBrendaDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_NIKKI, Route126_Text_NikkiDefeat, TRAINER_BRENDA, Route126_Text_BrendaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route126_EventScript_NikkiBrendaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route126_EventScript_NikkiBrendaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route126_Text_NikkiPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route126_Text_BrendaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE126_STATE, 1
+end
+
+Route126_EventScript_DeanBarry::
+lockall
+playse SE_PIN
+applymovement LOCALID_DEAN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route126_Text_DeanIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_BARRY, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route126_Text_BarryIntro MSGBOX_AUTOCLOSE
+goto Route126_EventScript_DeanBarryDoMultiBattle
+releaseall
+end
+
+Route126_EventScript_DeanBarryDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_DEAN, Route126_Text_DeanDefeat, TRAINER_BARRY, Route126_Text_BarryDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route126_EventScript_DeanBarryVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route126_EventScript_DeanBarryVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route126_Text_DeanPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route126_Text_BarryPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE126_STATE, 1
+end
+
+Route126_EventScript_LeonardoIsobel::
+lockall
+playse SE_PIN
+applymovement LOCALID_LEONARDO, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route126_Text_LeonardoIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_ISOBEL, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route126_Text_IsobelIntro MSGBOX_AUTOCLOSE
+goto Route126_EventScript_LeonardoIsobelDoMultiBattle
+releaseall
+end
+
+Route126_EventScript_LeonardoIsobelDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_LEONARDO, Route126_Text_LeonardoDefeat, TRAINER_ISOBEL, Route126_Text_IsobelDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route126_EventScript_LeonardoIsobelVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route126_EventScript_LeonardoIsobelVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox Route126_Text_LeonardoPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox Route126_Text_IsobelPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE126_STATE, 1
+end
+
+Route126_EventScript_PabloSienna::
+lockall
+playse SE_PIN
+applymovement LOCALID_PABLO, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route126_Text_PabloIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_SIENNA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route126_Text_SiennaIntro MSGBOX_AUTOCLOSE
+goto Route126_EventScript_PabloSiennaDoMultiBattle
+releaseall
+end
+
+Route126_EventScript_PabloSiennaDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_PABLO_1, Route126_Text_PabloDefeat, TRAINER_SIENNA, Route126_Text_SiennaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route126_EventScript_PabloSiennaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route126_EventScript_PabloSiennaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route126_Text_PabloPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route126_Text_SiennaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE126_STATE, 1
+end
+
 Route126_EventScript_Barry::
-	trainerbattle_single TRAINER_BARRY, Route126_Text_BarryIntro, Route126_Text_BarryDefeat
+	faceplayer
 	msgbox Route126_Text_BarryPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route126_EventScript_Dean::
-	trainerbattle_single TRAINER_DEAN, Route126_Text_DeanIntro, Route126_Text_DeanDefeat
+	faceplayer
 	msgbox Route126_Text_DeanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route126_EventScript_Nikki::
-	trainerbattle_single TRAINER_NIKKI, Route126_Text_NikkiIntro, Route126_Text_NikkiDefeat
+	faceplayer
 	msgbox Route126_Text_NikkiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route126_EventScript_Brenda::
-	trainerbattle_single TRAINER_BRENDA, Route126_Text_BrendaIntro, Route126_Text_BrendaDefeat
+	faceplayer
 	msgbox Route126_Text_BrendaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route126_EventScript_Leonardo::
-	trainerbattle_single TRAINER_LEONARDO, Route126_Text_LeonardoIntro, Route126_Text_LeonardoDefeat
+	faceplayer
 	msgbox Route126_Text_LeonardoPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route126_EventScript_Isobel::
-	trainerbattle_single TRAINER_ISOBEL, Route126_Text_IsobelIntro, Route126_Text_IsobelDefeat
+	faceplayer
 	msgbox Route126_Text_IsobelPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route126_EventScript_Sienna::
-	trainerbattle_single TRAINER_SIENNA, Route126_Text_SiennaIntro, Route126_Text_SiennaDefeat
+	faceplayer
 	msgbox Route126_Text_SiennaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route126_EventScript_Pablo::
-	trainerbattle_single TRAINER_PABLO_1, Route126_Text_PabloIntro, Route126_Text_PabloDefeat, Route126_EventScript_RegisterPablo
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route126_EventScript_RematchPablo
+	faceplayer
 	msgbox Route126_Text_PabloPostBattle, MSGBOX_DEFAULT
 	release
 	end

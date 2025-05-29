@@ -53,6 +53,7 @@ MagmaHideout_4F_Movement_MaxieLookAround:
 	step_end
 
 MagmaHideout_4F_EventScript_Grunt11::
+	faceplayer
 	msgbox MagmaHideout_4F_Text_Grunt11PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -110,6 +111,7 @@ addvar VAR_MAGMAHIDEOUT_STATE, 1
 end
 
 MagmaHideout_4F_EventScript_Grunt12::
+	faceplayer
 	msgbox MagmaHideout_4F_Text_Grunt12PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -641,10 +643,12 @@ MagmaHideout_4F_Movement_AdminApproachMaxie:
 
 
 MagmaHideout_4F_EventScript_Courtney::
+	faceplayer
 	msgbox MagmaHideout_4F_Text_CourtneyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MagmaHideout_4F_EventScript_Tabitha::
+	faceplayer
 	msgbox MagmaHideout_4F_Text_TabithaPostBattle, MSGBOX_AUTOCLOSE
 	end
 

@@ -17,6 +17,7 @@ Route105_OnLoad:
 # 9 "data/maps/Route105/scripts.pory"
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 # 10 "data/maps/Route105/scripts.pory"
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	call_if_unset FLAG_REGI_DOORS_OPENED, Route105_CloseRegiEntrance
 # 11 "data/maps/Route105/scripts.pory"
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_105_NORTH, AbnormalWeather_EventScript_PlaceTilesRoute105North
@@ -41,6 +42,7 @@ Route105_OnTransition:
 # 21 "data/maps/Route105/scripts.pory"
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 # 22 "data/maps/Route105/scripts.pory"
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
 # 23 "data/maps/Route105/scripts.pory"
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_105_NORTH, AbnormalWeather_StartKyogreWeather

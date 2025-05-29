@@ -1,4 +1,13 @@
 raw `
+	.set LOCALID_GRACE, 4
+	.set LOCALID_DECLAN, 11
+	.set LOCALID_LILA, 9
+	.set LOCALID_ROY, 10
+	.set LOCALID_CHAD, 5
+	.set LOCALID_JENNY, 3
+	.set LOCALID_ISABELLA, 12
+	.set LOCALID_ROLAND, 2
+
 Route124_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route124_OnTransition
 	.byte 0
@@ -13,19 +22,17 @@ Route124_EventScript_HuntersHouseSign::
 	end
 
 Route124_EventScript_Spencer::
-	trainerbattle_single TRAINER_SPENCER, Route124_Text_SpencerIntro, Route124_Text_SpencerDefeat
+	faceplayer
 	msgbox Route124_Text_SpencerPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route124_EventScript_Roland::
-	trainerbattle_single TRAINER_ROLAND, Route124_Text_RolandIntro, Route124_Text_RolandDefeat
+	faceplayer
 	msgbox Route124_Text_RolandPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route124_EventScript_Jenny::
-	trainerbattle_single TRAINER_JENNY_1, Route124_Text_JennyIntro, Route124_Text_JennyDefeat, Route124_EventScript_RegisterJenny
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route124_EventScript_RematchJenny
+	faceplayer
 	msgbox Route124_Text_JennyPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -43,20 +50,125 @@ Route124_EventScript_RematchJenny::
 	msgbox Route124_Text_JennyPostRematch, MSGBOX_AUTOCLOSE
 	end
 
+Route124_EventScript_GraceDeclan::
+lockall
+playse SE_PIN
+applymovement LOCALID_GRACE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route124_Text_GraceIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_DECLAN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route124_Text_DeclanIntro MSGBOX_AUTOCLOSE
+goto Route124_EventScript_GraceDeclanDoMultiBattle
+releaseall
+end
+
+Route124_EventScript_GraceDeclanDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_GRACE, Route124_Text_GraceDefeat, TRAINER_DECLAN, Route124_Text_DeclanDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route124_EventScript_GraceDeclanVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route124_EventScript_GraceDeclanVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route124_Text_GracePostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route124_Text_DeclanPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE124_STATE, 1
+end
+
 Route124_EventScript_Grace::
-	trainerbattle_single TRAINER_GRACE, Route124_Text_GraceIntro, Route124_Text_GraceDefeat
+	faceplayer
 	msgbox Route124_Text_GracePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route124_EventScript_Chad::
-	trainerbattle_single TRAINER_CHAD, Route124_Text_ChadIntro, Route124_Text_ChadDefeat
+	faceplayer
 	msgbox Route124_Text_ChadPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route124_EventScript_ChadJenny::
+lockall
+playse SE_PIN
+applymovement LOCALID_CHAD, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route124_Text_ChadIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_JENNY, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route124_Text_JennyIntro MSGBOX_AUTOCLOSE
+goto Route124_EventScript_ChadJennyDoMultiBattle
+releaseall
+end
+
+Route124_EventScript_ChadJennyDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_CHAD, Route124_Text_ChadDefeat, TRAINER_JENNY_1, Route124_Text_JennyDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route124_EventScript_ChadJennyVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route124_EventScript_ChadJennyVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route124_Text_ChadPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route124_Text_JennyPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE124_STATE, 1
+end
+
+Route124_EventScript_LilaRoy::
+lockall
+playse SE_PIN
+applymovement LOCALID_LILA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route124_Text_LilaIntro MSGBOX_AUTOCLOSE
+goto Route124_EventScript_LilaRoyDoMultiBattle
+releaseall
+end
+
+Route124_EventScript_LilaRoyDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_1 TRAINER_LILA_AND_ROY_1, Route124_Text_LilaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route124_EventScript_LilaRoyVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route124_EventScript_LilaRoyVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route124_Text_LilaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE124_STATE, 1
+end
+
 Route124_EventScript_Lila::
-	trainerbattle_double TRAINER_LILA_AND_ROY_1, Route124_Text_LilaIntro, Route124_Text_LilaDefeat, Route124_Text_LilaNotEnoughMons, Route124_EventScript_RegisterLila
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route124_EventScript_RematchLila
+	faceplayer
 	msgbox Route124_Text_LilaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -73,9 +185,7 @@ Route124_EventScript_RematchLila::
 	end
 
 Route124_EventScript_Roy::
-	trainerbattle_double TRAINER_LILA_AND_ROY_1, Route124_Text_RoyIntro, Route124_Text_RoyDefeat, Route124_Text_RoyNotEnoughMons, Route124_EventScript_RegisterRoy
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route124_EventScript_RematchRoy
+	faceplayer
 	msgbox Route124_Text_RoyPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -92,12 +202,51 @@ Route124_EventScript_RematchRoy::
 	end
 
 Route124_EventScript_Declan::
-	trainerbattle_single TRAINER_DECLAN, Route124_Text_DeclanIntro, Route124_Text_DeclanDefeat
+	faceplayer
 	msgbox Route124_Text_DeclanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route124_EventScript_IsabellaRoland::
+lockall
+playse SE_PIN
+applymovement  LOCALID_ISABELLA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route124_Text_IsabellaIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_ROLAND, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route124_Text_RolandIntro MSGBOX_AUTOCLOSE
+goto Route124_EventScript_IsabellaRolandDoMultiBattle
+releaseall
+end
+
+Route124_EventScript_IsabellaRolandDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_ISABELLA, Route124_Text_IsabellaDefeat, TRAINER_ROLAND, Route124_Text_RolandDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route124_EventScript_IsabellaRolandVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route124_EventScript_IsabellaRolandVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route124_Text_IsabellaPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route124_Text_RolandPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE124_STATE, 1
+end
+
 Route124_EventScript_Isabella::
-	trainerbattle_single TRAINER_ISABELLA, Route124_Text_IsabellaIntro, Route124_Text_IsabellaDefeat
+	faceplayer
 	msgbox Route124_Text_IsabellaPostBattle, MSGBOX_AUTOCLOSE
 	end
 

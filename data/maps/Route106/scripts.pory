@@ -8,6 +8,7 @@ Route106_MapScripts::
 
 Route106_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	end
 
 Route106_EventScript_TrainerTipsSign::
@@ -66,6 +67,7 @@ addvar VAR_ROUTE106_STATE, 1
 end
 
 Route106_EventScript_Elliot::
+	faceplayer
 	msgbox Route106_Text_ElliotPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -83,6 +85,7 @@ Route106_EventScript_ElliotRematch::
 	end
 
 Route106_EventScript_Ned::
+	faceplayer
 	trainerbattle_single TRAINER_NED, Route106_Text_NedIntro, Route106_Text_NedDefeated
 	msgbox Route106_Text_NedPostBattle, MSGBOX_AUTOCLOSE
 	end

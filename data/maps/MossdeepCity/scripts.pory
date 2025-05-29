@@ -12,6 +12,7 @@ MossdeepCity_MapScripts::
 
 MossdeepCity_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_1
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_2
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_3

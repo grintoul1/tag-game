@@ -31,15 +31,15 @@
     {
       "local_id": "LOCALID_SEAFLOOR_CAVERN_ARCHIE",
       "graphics_id": "OBJ_EVENT_GFX_ARCHIE",
-      "x": 9,
+      "x": 17,
       "y": 42,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
+      "script": "SeafloorCavern_Room9_EventScript_Archie",
       "flag": "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE"
     },
     {
@@ -110,6 +110,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
       "flag": "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_ASLEEP"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "x": 12,
+      "y": 28,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SeafloorCavern_Room9_EventScript_ShellyPostBattle",
+      "flag": "FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "x": 11,
+      "y": 27,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SeafloorCavern_Room9_EventScript_MattPostBattle",
+      "flag": "FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS"
     }
   ],
   "warp_events": [
@@ -124,12 +150,12 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 17,
-      "y": 42,
-      "elevation": 3,
+      "x": 12,
+      "y": 22,
+      "elevation": 0,
       "var": "VAR_SEAFLOOR_CAVERN_STATE",
-      "var_value": "0",
-      "script": "SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre"
+      "var_value": "2",
+      "script": "SeafloorCavern_Room9_EventScript_ShellyMatt"
     }
   ],
   "bg_events": [

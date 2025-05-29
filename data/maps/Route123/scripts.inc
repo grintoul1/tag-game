@@ -47,441 +47,441 @@ Route123_OnTransition:
 # 24 "data/maps/Route123/scripts.pory"
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 # 25 "data/maps/Route123/scripts.pory"
-	special SetRoute123Weather
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 # 26 "data/maps/Route123/scripts.pory"
-	end
+	special SetRoute123Weather
 # 27 "data/maps/Route123/scripts.pory"
-
+	end
 # 28 "data/maps/Route123/scripts.pory"
-Route123_EventScript_GigaDrainGirl::
+
 # 29 "data/maps/Route123/scripts.pory"
-	lock
+Route123_EventScript_GigaDrainGirl::
 # 30 "data/maps/Route123/scripts.pory"
-	faceplayer
+	lock
 # 31 "data/maps/Route123/scripts.pory"
-	goto_if_set FLAG_RECEIVED_TM_GIGA_DRAIN, Route123_EventScript_ReceivedGigaDrain
+	faceplayer
 # 32 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_LoveGrassMonsHaveAny, MSGBOX_DEFAULT
+	goto_if_set FLAG_RECEIVED_TM_GIGA_DRAIN, Route123_EventScript_ReceivedGigaDrain
 # 33 "data/maps/Route123/scripts.pory"
-	special IsGrassTypeInParty
+	msgbox Route123_Text_LoveGrassMonsHaveAny, MSGBOX_DEFAULT
 # 34 "data/maps/Route123/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Route123_EventScript_NoGrassMons
+	special IsGrassTypeInParty
 # 35 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_YouLikeGrassMonsTooHaveThis, MSGBOX_DEFAULT
+	goto_if_eq VAR_RESULT, FALSE, Route123_EventScript_NoGrassMons
 # 36 "data/maps/Route123/scripts.pory"
-	giveitem ITEM_TM_GIGA_DRAIN
+	msgbox Route123_Text_YouLikeGrassMonsTooHaveThis, MSGBOX_DEFAULT
 # 37 "data/maps/Route123/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	giveitem ITEM_TM_GIGA_DRAIN
 # 38 "data/maps/Route123/scripts.pory"
-	setflag FLAG_RECEIVED_TM_GIGA_DRAIN
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 39 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_CheckTreesWithMyGrassMon, MSGBOX_DEFAULT
+	setflag FLAG_RECEIVED_TM_GIGA_DRAIN
 # 40 "data/maps/Route123/scripts.pory"
-	release
-# 41 "data/maps/Route123/scripts.pory"
-	end
-# 42 "data/maps/Route123/scripts.pory"
-
-# 43 "data/maps/Route123/scripts.pory"
-Route123_EventScript_NoGrassMons::
-# 44 "data/maps/Route123/scripts.pory"
-	release
-# 45 "data/maps/Route123/scripts.pory"
-	end
-# 46 "data/maps/Route123/scripts.pory"
-
-# 47 "data/maps/Route123/scripts.pory"
-Route123_EventScript_ReceivedGigaDrain::
-# 48 "data/maps/Route123/scripts.pory"
 	msgbox Route123_Text_CheckTreesWithMyGrassMon, MSGBOX_DEFAULT
+# 41 "data/maps/Route123/scripts.pory"
+	release
+# 42 "data/maps/Route123/scripts.pory"
+	end
+# 43 "data/maps/Route123/scripts.pory"
+
+# 44 "data/maps/Route123/scripts.pory"
+Route123_EventScript_NoGrassMons::
+# 45 "data/maps/Route123/scripts.pory"
+	release
+# 46 "data/maps/Route123/scripts.pory"
+	end
+# 47 "data/maps/Route123/scripts.pory"
+
+# 48 "data/maps/Route123/scripts.pory"
+Route123_EventScript_ReceivedGigaDrain::
 # 49 "data/maps/Route123/scripts.pory"
-	release
+	msgbox Route123_Text_CheckTreesWithMyGrassMon, MSGBOX_DEFAULT
 # 50 "data/maps/Route123/scripts.pory"
-	end
+	release
 # 51 "data/maps/Route123/scripts.pory"
-
+	end
 # 52 "data/maps/Route123/scripts.pory"
-Route123_EventScript_RouteSign::
+
 # 53 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_RouteSign, MSGBOX_SIGN
+Route123_EventScript_RouteSign::
 # 54 "data/maps/Route123/scripts.pory"
-	end
+	msgbox Route123_Text_RouteSign, MSGBOX_SIGN
 # 55 "data/maps/Route123/scripts.pory"
-
+	end
 # 56 "data/maps/Route123/scripts.pory"
-Route123_EventScript_RouteSignMtPyre::
+
 # 57 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_RouteSignMtPyre, MSGBOX_SIGN
+Route123_EventScript_RouteSignMtPyre::
 # 58 "data/maps/Route123/scripts.pory"
-	end
+	msgbox Route123_Text_RouteSignMtPyre, MSGBOX_SIGN
 # 59 "data/maps/Route123/scripts.pory"
-
+	end
 # 60 "data/maps/Route123/scripts.pory"
-Route123_EventScript_BerryMastersHouseSign::
+
 # 61 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_BerryMastersHouse, MSGBOX_SIGN
+Route123_EventScript_BerryMastersHouseSign::
 # 62 "data/maps/Route123/scripts.pory"
-	end
+	msgbox Route123_Text_BerryMastersHouse, MSGBOX_SIGN
 # 63 "data/maps/Route123/scripts.pory"
-
+	end
 # 64 "data/maps/Route123/scripts.pory"
-Route123_EventScript_BraxtonWendy::
+
 # 65 "data/maps/Route123/scripts.pory"
-lockall
+Route123_EventScript_BraxtonWendy::
 # 66 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_BRAXTON
-# 67 "data/maps/Route123/scripts.pory"
-playse SE_PIN
-# 68 "data/maps/Route123/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 69 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 70 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_COOL, TRUE
-# 71 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-# 72 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 73 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_BraxtonIntro MSGBOX_AUTOCLOSE
-# 74 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_WENDY
-# 75 "data/maps/Route123/scripts.pory"
-playse SE_PIN
-# 76 "data/maps/Route123/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 77 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 78 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_COOL, TRUE
-# 79 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-# 80 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 81 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_WendyIntro, MSGBOX_AUTOCLOSE
-# 82 "data/maps/Route123/scripts.pory"
-goto Route123_EventScript_BraxtonWendyDoMultiBattle
-# 83 "data/maps/Route123/scripts.pory"
-releaseall
-# 84 "data/maps/Route123/scripts.pory"
-end
-# 85 "data/maps/Route123/scripts.pory"
-
-# 86 "data/maps/Route123/scripts.pory"
-Route123_EventScript_BraxtonWendyDoMultiBattle::
-# 87 "data/maps/Route123/scripts.pory"
-playbgm MUS_ROUTE120, TRUE
-# 88 "data/maps/Route123/scripts.pory"
-multi_2p_vs_2 TRAINER_BRAXTON, Route123_Text_BraxtonDefeat, TRAINER_WENDY, Route123_Text_WendyDefeat, PARTNER_EMMIE
-# 89 "data/maps/Route123/scripts.pory"
-switch VAR_RESULT
-# 90 "data/maps/Route123/scripts.pory"
-case 1, Route123_EventScript_BraxtonWendyVictory
-# 91 "data/maps/Route123/scripts.pory"
-fadescreen FADE_TO_BLACK
-# 92 "data/maps/Route123/scripts.pory"
-special SetCB2WhiteOut
-# 93 "data/maps/Route123/scripts.pory"
-waitstate
-# 94 "data/maps/Route123/scripts.pory"
-
-# 95 "data/maps/Route123/scripts.pory"
-Route123_EventScript_BraxtonWendyVictory::
-# 96 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-# 97 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 98 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_BraxtonPostBattle, MSGBOX_AUTOCLOSE
-# 99 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-# 100 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 101 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_WendyPostBattle, MSGBOX_AUTOCLOSE
-# 102 "data/maps/Route123/scripts.pory"
-addvar VAR_ROUTE123_STATE, 1
-# 103 "data/maps/Route123/scripts.pory"
-end
-# 104 "data/maps/Route123/scripts.pory"
-
-# 105 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Wendy::
-# 106 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_WendyPostBattle, MSGBOX_AUTOCLOSE
-# 107 "data/maps/Route123/scripts.pory"
-	end
-# 108 "data/maps/Route123/scripts.pory"
-
-# 109 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Braxton::
-# 110 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_BraxtonPostBattle, MSGBOX_AUTOCLOSE
-# 111 "data/maps/Route123/scripts.pory"
-	end
-# 112 "data/maps/Route123/scripts.pory"
-
-# 113 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Violet::
-# 114 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_VioletPostBattle, MSGBOX_AUTOCLOSE
-# 115 "data/maps/Route123/scripts.pory"
-	end
-# 116 "data/maps/Route123/scripts.pory"
-
-# 117 "data/maps/Route123/scripts.pory"
-Route123_EventScript_CameronViolet::
-# 118 "data/maps/Route123/scripts.pory"
 lockall
-# 119 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_CAMERON
-# 120 "data/maps/Route123/scripts.pory"
+# 67 "data/maps/Route123/scripts.pory"
+setvar VAR_0x8008, LOCALID_BRAXTON
+# 68 "data/maps/Route123/scripts.pory"
 playse SE_PIN
-# 121 "data/maps/Route123/scripts.pory"
+# 69 "data/maps/Route123/scripts.pory"
 applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 122 "data/maps/Route123/scripts.pory"
+# 70 "data/maps/Route123/scripts.pory"
 waitmovement 0
-# 123 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-# 124 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 125 "data/maps/Route123/scripts.pory"
+# 71 "data/maps/Route123/scripts.pory"
+playbgm MUS_ENCOUNTER_COOL, TRUE
+# 72 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+# 73 "data/maps/Route123/scripts.pory"
 waitmovement 0
-# 126 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_CameronIntro MSGBOX_AUTOCLOSE
-# 127 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_VIOLET
-# 128 "data/maps/Route123/scripts.pory"
+# 74 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_BraxtonIntro MSGBOX_AUTOCLOSE
+# 75 "data/maps/Route123/scripts.pory"
+setvar VAR_0x8008, LOCALID_WENDY
+# 76 "data/maps/Route123/scripts.pory"
 playse SE_PIN
-# 129 "data/maps/Route123/scripts.pory"
+# 77 "data/maps/Route123/scripts.pory"
 applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 130 "data/maps/Route123/scripts.pory"
+# 78 "data/maps/Route123/scripts.pory"
 waitmovement 0
-# 131 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_GIRL, TRUE
-# 132 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 133 "data/maps/Route123/scripts.pory"
+# 79 "data/maps/Route123/scripts.pory"
+playbgm MUS_ENCOUNTER_COOL, TRUE
+# 80 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+# 81 "data/maps/Route123/scripts.pory"
 waitmovement 0
-# 134 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_VioletIntro, MSGBOX_AUTOCLOSE
-# 135 "data/maps/Route123/scripts.pory"
-goto Route123_EventScript_CameronVioletDoMultiBattle
-# 136 "data/maps/Route123/scripts.pory"
+# 82 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_WendyIntro, MSGBOX_AUTOCLOSE
+# 83 "data/maps/Route123/scripts.pory"
+goto Route123_EventScript_BraxtonWendyDoMultiBattle
+# 84 "data/maps/Route123/scripts.pory"
 releaseall
-# 137 "data/maps/Route123/scripts.pory"
+# 85 "data/maps/Route123/scripts.pory"
 end
-# 138 "data/maps/Route123/scripts.pory"
+# 86 "data/maps/Route123/scripts.pory"
 
-# 139 "data/maps/Route123/scripts.pory"
-Route123_EventScript_CameronVioletDoMultiBattle::
-# 140 "data/maps/Route123/scripts.pory"
+# 87 "data/maps/Route123/scripts.pory"
+Route123_EventScript_BraxtonWendyDoMultiBattle::
+# 88 "data/maps/Route123/scripts.pory"
 playbgm MUS_ROUTE120, TRUE
-# 141 "data/maps/Route123/scripts.pory"
-multi_2p_vs_2 TRAINER_CAMERON_1, Route123_Text_CameronDefeat, TRAINER_VIOLET, Route123_Text_VioletDefeat, PARTNER_EMMIE
-# 142 "data/maps/Route123/scripts.pory"
+# 89 "data/maps/Route123/scripts.pory"
+multi_2p_vs_2 TRAINER_BRAXTON, Route123_Text_BraxtonDefeat, TRAINER_WENDY, Route123_Text_WendyDefeat, PARTNER_EMMIE
+# 90 "data/maps/Route123/scripts.pory"
 switch VAR_RESULT
-# 143 "data/maps/Route123/scripts.pory"
-case 1, Route123_EventScript_CameronVioletVictory
-# 144 "data/maps/Route123/scripts.pory"
+# 91 "data/maps/Route123/scripts.pory"
+case 1, Route123_EventScript_BraxtonWendyVictory
+# 92 "data/maps/Route123/scripts.pory"
 fadescreen FADE_TO_BLACK
-# 145 "data/maps/Route123/scripts.pory"
+# 93 "data/maps/Route123/scripts.pory"
 special SetCB2WhiteOut
-# 146 "data/maps/Route123/scripts.pory"
+# 94 "data/maps/Route123/scripts.pory"
 waitstate
-# 147 "data/maps/Route123/scripts.pory"
+# 95 "data/maps/Route123/scripts.pory"
 
-# 148 "data/maps/Route123/scripts.pory"
-Route123_EventScript_CameronVioletVictory::
-# 149 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 150 "data/maps/Route123/scripts.pory"
+# 96 "data/maps/Route123/scripts.pory"
+Route123_EventScript_BraxtonWendyVictory::
+# 97 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+# 98 "data/maps/Route123/scripts.pory"
 waitmovement 0
-# 151 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_CameronPostBattle, MSGBOX_AUTOCLOSE
-# 152 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 153 "data/maps/Route123/scripts.pory"
+# 99 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_BraxtonPostBattle, MSGBOX_AUTOCLOSE
+# 100 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+# 101 "data/maps/Route123/scripts.pory"
 waitmovement 0
-# 154 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_VioletPostBattle, MSGBOX_AUTOCLOSE
-# 155 "data/maps/Route123/scripts.pory"
+# 102 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_WendyPostBattle, MSGBOX_AUTOCLOSE
+# 103 "data/maps/Route123/scripts.pory"
 addvar VAR_ROUTE123_STATE, 1
-# 156 "data/maps/Route123/scripts.pory"
+# 104 "data/maps/Route123/scripts.pory"
 end
+# 105 "data/maps/Route123/scripts.pory"
+
+# 106 "data/maps/Route123/scripts.pory"
+Route123_EventScript_Wendy::
+# 107 "data/maps/Route123/scripts.pory"
+	faceplayer
+# 108 "data/maps/Route123/scripts.pory"
+	msgbox Route123_Text_WendyPostBattle, MSGBOX_AUTOCLOSE
+# 109 "data/maps/Route123/scripts.pory"
+	end
+# 110 "data/maps/Route123/scripts.pory"
+
+# 111 "data/maps/Route123/scripts.pory"
+Route123_EventScript_Braxton::
+# 112 "data/maps/Route123/scripts.pory"
+	faceplayer
+# 113 "data/maps/Route123/scripts.pory"
+	msgbox Route123_Text_BraxtonPostBattle, MSGBOX_AUTOCLOSE
+# 114 "data/maps/Route123/scripts.pory"
+	end
+# 115 "data/maps/Route123/scripts.pory"
+
+# 116 "data/maps/Route123/scripts.pory"
+Route123_EventScript_Violet::
+# 117 "data/maps/Route123/scripts.pory"
+	faceplayer
+# 118 "data/maps/Route123/scripts.pory"
+	msgbox Route123_Text_VioletPostBattle, MSGBOX_AUTOCLOSE
+# 119 "data/maps/Route123/scripts.pory"
+	end
+# 120 "data/maps/Route123/scripts.pory"
+
+# 121 "data/maps/Route123/scripts.pory"
+Route123_EventScript_CameronViolet::
+# 122 "data/maps/Route123/scripts.pory"
+lockall
+# 123 "data/maps/Route123/scripts.pory"
+setvar VAR_0x8008, LOCALID_CAMERON
+# 124 "data/maps/Route123/scripts.pory"
+playse SE_PIN
+# 125 "data/maps/Route123/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 126 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 127 "data/maps/Route123/scripts.pory"
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+# 128 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 129 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 130 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_CameronIntro MSGBOX_AUTOCLOSE
+# 131 "data/maps/Route123/scripts.pory"
+setvar VAR_0x8008, LOCALID_VIOLET
+# 132 "data/maps/Route123/scripts.pory"
+playse SE_PIN
+# 133 "data/maps/Route123/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 134 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 135 "data/maps/Route123/scripts.pory"
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+# 136 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 137 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 138 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_VioletIntro, MSGBOX_AUTOCLOSE
+# 139 "data/maps/Route123/scripts.pory"
+goto Route123_EventScript_CameronVioletDoMultiBattle
+# 140 "data/maps/Route123/scripts.pory"
+releaseall
+# 141 "data/maps/Route123/scripts.pory"
+end
+# 142 "data/maps/Route123/scripts.pory"
+
+# 143 "data/maps/Route123/scripts.pory"
+Route123_EventScript_CameronVioletDoMultiBattle::
+# 144 "data/maps/Route123/scripts.pory"
+playbgm MUS_ROUTE120, TRUE
+# 145 "data/maps/Route123/scripts.pory"
+multi_2p_vs_2 TRAINER_CAMERON_1, Route123_Text_CameronDefeat, TRAINER_VIOLET, Route123_Text_VioletDefeat, PARTNER_EMMIE
+# 146 "data/maps/Route123/scripts.pory"
+switch VAR_RESULT
+# 147 "data/maps/Route123/scripts.pory"
+case 1, Route123_EventScript_CameronVioletVictory
+# 148 "data/maps/Route123/scripts.pory"
+fadescreen FADE_TO_BLACK
+# 149 "data/maps/Route123/scripts.pory"
+special SetCB2WhiteOut
+# 150 "data/maps/Route123/scripts.pory"
+waitstate
+# 151 "data/maps/Route123/scripts.pory"
+
+# 152 "data/maps/Route123/scripts.pory"
+Route123_EventScript_CameronVioletVictory::
+# 153 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 154 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 155 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_CameronPostBattle, MSGBOX_AUTOCLOSE
+# 156 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 157 "data/maps/Route123/scripts.pory"
-
+waitmovement 0
 # 158 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Cameron::
+msgbox Route123_Text_VioletPostBattle, MSGBOX_AUTOCLOSE
 # 159 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_CameronPostBattle, MSGBOX_DEFAULT
+addvar VAR_ROUTE123_STATE, 1
 # 160 "data/maps/Route123/scripts.pory"
-	release
+end
 # 161 "data/maps/Route123/scripts.pory"
-	end
+
 # 162 "data/maps/Route123/scripts.pory"
-
+Route123_EventScript_Cameron::
 # 163 "data/maps/Route123/scripts.pory"
-Route123_EventScript_RegisterCameron::
+	faceplayer
 # 164 "data/maps/Route123/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
+	msgbox Route123_Text_CameronPostBattle, MSGBOX_DEFAULT
 # 165 "data/maps/Route123/scripts.pory"
-	waitmovement 0
-# 166 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_CameronRegister, MSGBOX_DEFAULT
-# 167 "data/maps/Route123/scripts.pory"
-	register_matchcall TRAINER_CAMERON_1
-# 168 "data/maps/Route123/scripts.pory"
 	release
-# 169 "data/maps/Route123/scripts.pory"
+# 166 "data/maps/Route123/scripts.pory"
 	end
-# 170 "data/maps/Route123/scripts.pory"
+# 167 "data/maps/Route123/scripts.pory"
 
+# 168 "data/maps/Route123/scripts.pory"
+Route123_EventScript_RegisterCameron::
+# 169 "data/maps/Route123/scripts.pory"
+	special PlayerFaceTrainerAfterBattle
+# 170 "data/maps/Route123/scripts.pory"
+	waitmovement 0
 # 171 "data/maps/Route123/scripts.pory"
-Route123_EventScript_RematchCameron::
+	msgbox Route123_Text_CameronRegister, MSGBOX_DEFAULT
 # 172 "data/maps/Route123/scripts.pory"
-	trainerbattle_rematch TRAINER_CAMERON_1, Route123_Text_CameronRematchIntro, Route123_Text_CameronRematchDefeat
+	register_matchcall TRAINER_CAMERON_1
 # 173 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_CameronPostRematch, MSGBOX_AUTOCLOSE
+	release
 # 174 "data/maps/Route123/scripts.pory"
 	end
 # 175 "data/maps/Route123/scripts.pory"
 
 # 176 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Jacki::
+Route123_EventScript_RematchCameron::
 # 177 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_JackiPostBattle, MSGBOX_DEFAULT
+	trainerbattle_rematch TRAINER_CAMERON_1, Route123_Text_CameronRematchIntro, Route123_Text_CameronRematchDefeat
 # 178 "data/maps/Route123/scripts.pory"
-	release
+	msgbox Route123_Text_CameronPostRematch, MSGBOX_AUTOCLOSE
 # 179 "data/maps/Route123/scripts.pory"
 	end
 # 180 "data/maps/Route123/scripts.pory"
 
 # 181 "data/maps/Route123/scripts.pory"
-Route123_EventScript_RegisterJacki::
+Route123_EventScript_Jacki::
 # 182 "data/maps/Route123/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
+	faceplayer
 # 183 "data/maps/Route123/scripts.pory"
-	waitmovement 0
+	msgbox Route123_Text_JackiPostBattle, MSGBOX_DEFAULT
 # 184 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_JackiRegister, MSGBOX_DEFAULT
-# 185 "data/maps/Route123/scripts.pory"
-	register_matchcall TRAINER_JACKI_1
-# 186 "data/maps/Route123/scripts.pory"
 	release
+# 185 "data/maps/Route123/scripts.pory"
+	end
+# 186 "data/maps/Route123/scripts.pory"
+
 # 187 "data/maps/Route123/scripts.pory"
-	end
+Route123_EventScript_RegisterJacki::
 # 188 "data/maps/Route123/scripts.pory"
-
+	special PlayerFaceTrainerAfterBattle
 # 189 "data/maps/Route123/scripts.pory"
-Route123_EventScript_RematchJacki::
+	waitmovement 0
 # 190 "data/maps/Route123/scripts.pory"
-	trainerbattle_rematch TRAINER_JACKI_1, Route123_Text_JackiRematchIntro, Route123_Text_JackiRematchDefeat
+	msgbox Route123_Text_JackiRegister, MSGBOX_DEFAULT
 # 191 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_JackiPostRematch, MSGBOX_AUTOCLOSE
+	register_matchcall TRAINER_JACKI_1
 # 192 "data/maps/Route123/scripts.pory"
-	end
+	release
 # 193 "data/maps/Route123/scripts.pory"
-
+	end
 # 194 "data/maps/Route123/scripts.pory"
-Route123_EventScript_YukiMiu::
+
 # 195 "data/maps/Route123/scripts.pory"
-lockall
+Route123_EventScript_RematchJacki::
 # 196 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_YUKI
+	trainerbattle_rematch TRAINER_JACKI_1, Route123_Text_JackiRematchIntro, Route123_Text_JackiRematchDefeat
 # 197 "data/maps/Route123/scripts.pory"
-playse SE_PIN
+	msgbox Route123_Text_JackiPostRematch, MSGBOX_AUTOCLOSE
 # 198 "data/maps/Route123/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	end
 # 199 "data/maps/Route123/scripts.pory"
-waitmovement 0
+
 # 200 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_TWINS, TRUE
+Route123_EventScript_YukiMiu::
 # 201 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 202 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 203 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_YukiIntro, MSGBOX_AUTOCLOSE
-# 204 "data/maps/Route123/scripts.pory"
-goto Route123_EventScript_YukiMiuDoMultiBattle
-# 205 "data/maps/Route123/scripts.pory"
-releaseall
-# 206 "data/maps/Route123/scripts.pory"
-end
-# 207 "data/maps/Route123/scripts.pory"
-
-# 208 "data/maps/Route123/scripts.pory"
-Route123_EventScript_YukiMiuDoMultiBattle::
-# 209 "data/maps/Route123/scripts.pory"
-playbgm MUS_ROUTE120, TRUE
-# 210 "data/maps/Route123/scripts.pory"
-multi_2p_vs_1 TRAINER_MIU_AND_YUKI, Route123_Text_YukiDefeat, PARTNER_EMMIE
-# 211 "data/maps/Route123/scripts.pory"
-switch VAR_RESULT
-# 212 "data/maps/Route123/scripts.pory"
-case 1, Route123_EventScript_YukiMiuVictory
-# 213 "data/maps/Route123/scripts.pory"
-fadescreen FADE_TO_BLACK
-# 214 "data/maps/Route123/scripts.pory"
-special SetCB2WhiteOut
-# 215 "data/maps/Route123/scripts.pory"
-waitstate
-# 216 "data/maps/Route123/scripts.pory"
-
-# 217 "data/maps/Route123/scripts.pory"
-Route123_EventScript_YukiMiuVictory::
-# 218 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 219 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 220 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_YukiPostBattle, MSGBOX_AUTOCLOSE
-# 221 "data/maps/Route123/scripts.pory"
-addvar VAR_ROUTE123_STATE, 1
-# 222 "data/maps/Route123/scripts.pory"
-end
-# 223 "data/maps/Route123/scripts.pory"
-
-# 224 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Miu::
-# 225 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_MiuPostBattle, MSGBOX_AUTOCLOSE
-# 226 "data/maps/Route123/scripts.pory"
-	end
-# 227 "data/maps/Route123/scripts.pory"
-
-# 228 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Yuki::
-# 229 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_YukiPostBattle, MSGBOX_AUTOCLOSE
-# 230 "data/maps/Route123/scripts.pory"
-	end
-# 231 "data/maps/Route123/scripts.pory"
-
-# 232 "data/maps/Route123/scripts.pory"
-Route123_EventScript_KindraEd::
-# 233 "data/maps/Route123/scripts.pory"
 lockall
-# 234 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_KINDRA
-# 235 "data/maps/Route123/scripts.pory"
+# 202 "data/maps/Route123/scripts.pory"
+setvar VAR_0x8008, LOCALID_YUKI
+# 203 "data/maps/Route123/scripts.pory"
 playse SE_PIN
-# 236 "data/maps/Route123/scripts.pory"
+# 204 "data/maps/Route123/scripts.pory"
 applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 237 "data/maps/Route123/scripts.pory"
+# 205 "data/maps/Route123/scripts.pory"
 waitmovement 0
-# 238 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
-# 239 "data/maps/Route123/scripts.pory"
+# 206 "data/maps/Route123/scripts.pory"
+playbgm MUS_ENCOUNTER_TWINS, TRUE
+# 207 "data/maps/Route123/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 240 "data/maps/Route123/scripts.pory"
+# 208 "data/maps/Route123/scripts.pory"
 waitmovement 0
+# 209 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_YukiIntro, MSGBOX_AUTOCLOSE
+# 210 "data/maps/Route123/scripts.pory"
+goto Route123_EventScript_YukiMiuDoMultiBattle
+# 211 "data/maps/Route123/scripts.pory"
+releaseall
+# 212 "data/maps/Route123/scripts.pory"
+end
+# 213 "data/maps/Route123/scripts.pory"
+
+# 214 "data/maps/Route123/scripts.pory"
+Route123_EventScript_YukiMiuDoMultiBattle::
+# 215 "data/maps/Route123/scripts.pory"
+playbgm MUS_ROUTE120, TRUE
+# 216 "data/maps/Route123/scripts.pory"
+multi_2p_vs_1 TRAINER_MIU_AND_YUKI, Route123_Text_YukiDefeat, PARTNER_EMMIE
+# 217 "data/maps/Route123/scripts.pory"
+switch VAR_RESULT
+# 218 "data/maps/Route123/scripts.pory"
+case 1, Route123_EventScript_YukiMiuVictory
+# 219 "data/maps/Route123/scripts.pory"
+fadescreen FADE_TO_BLACK
+# 220 "data/maps/Route123/scripts.pory"
+special SetCB2WhiteOut
+# 221 "data/maps/Route123/scripts.pory"
+waitstate
+# 222 "data/maps/Route123/scripts.pory"
+
+# 223 "data/maps/Route123/scripts.pory"
+Route123_EventScript_YukiMiuVictory::
+# 224 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 225 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 226 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_YukiPostBattle, MSGBOX_AUTOCLOSE
+# 227 "data/maps/Route123/scripts.pory"
+addvar VAR_ROUTE123_STATE, 1
+# 228 "data/maps/Route123/scripts.pory"
+end
+# 229 "data/maps/Route123/scripts.pory"
+
+# 230 "data/maps/Route123/scripts.pory"
+Route123_EventScript_Miu::
+# 231 "data/maps/Route123/scripts.pory"
+	faceplayer
+# 232 "data/maps/Route123/scripts.pory"
+	msgbox Route123_Text_MiuPostBattle, MSGBOX_AUTOCLOSE
+# 233 "data/maps/Route123/scripts.pory"
+	end
+# 234 "data/maps/Route123/scripts.pory"
+
+# 235 "data/maps/Route123/scripts.pory"
+Route123_EventScript_Yuki::
+# 236 "data/maps/Route123/scripts.pory"
+	faceplayer
+# 237 "data/maps/Route123/scripts.pory"
+	msgbox Route123_Text_YukiPostBattle, MSGBOX_AUTOCLOSE
+# 238 "data/maps/Route123/scripts.pory"
+	end
+# 239 "data/maps/Route123/scripts.pory"
+
+# 240 "data/maps/Route123/scripts.pory"
+Route123_EventScript_KindraEd::
 # 241 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_KindraIntro MSGBOX_AUTOCLOSE
+lockall
 # 242 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_ED
+setvar VAR_0x8008, LOCALID_KINDRA
 # 243 "data/maps/Route123/scripts.pory"
 playse SE_PIN
 # 244 "data/maps/Route123/scripts.pory"
@@ -491,532 +491,566 @@ waitmovement 0
 # 246 "data/maps/Route123/scripts.pory"
 playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
 # 247 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 248 "data/maps/Route123/scripts.pory"
 waitmovement 0
 # 249 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_EdIntro, MSGBOX_AUTOCLOSE
+msgbox Route123_Text_KindraIntro MSGBOX_AUTOCLOSE
 # 250 "data/maps/Route123/scripts.pory"
-goto Route123_EventScript_KindraEdDoMultiBattle
+setvar VAR_0x8008, LOCALID_ED
 # 251 "data/maps/Route123/scripts.pory"
-releaseall
+playse SE_PIN
 # 252 "data/maps/Route123/scripts.pory"
-end
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
 # 253 "data/maps/Route123/scripts.pory"
-
+waitmovement 0
 # 254 "data/maps/Route123/scripts.pory"
-Route123_EventScript_KindraEdDoMultiBattle::
+playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
 # 255 "data/maps/Route123/scripts.pory"
-playbgm MUS_ROUTE120, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 256 "data/maps/Route123/scripts.pory"
-multi_2p_vs_2 TRAINER_KINDRA, Route123_Text_KindraDefeat, TRAINER_ED, Route123_Text_EdDefeat, PARTNER_EMMIE
+waitmovement 0
 # 257 "data/maps/Route123/scripts.pory"
-switch VAR_RESULT
+msgbox Route123_Text_EdIntro, MSGBOX_AUTOCLOSE
 # 258 "data/maps/Route123/scripts.pory"
-case 1, Route123_EventScript_KindraEdVictory
+goto Route123_EventScript_KindraEdDoMultiBattle
 # 259 "data/maps/Route123/scripts.pory"
-fadescreen FADE_TO_BLACK
-# 260 "data/maps/Route123/scripts.pory"
-special SetCB2WhiteOut
-# 261 "data/maps/Route123/scripts.pory"
-waitstate
-# 262 "data/maps/Route123/scripts.pory"
-
-# 263 "data/maps/Route123/scripts.pory"
-Route123_EventScript_KindraEdVictory::
-# 264 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 265 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 266 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_KindraPostBattle, MSGBOX_AUTOCLOSE
-# 267 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 268 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 269 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_EdPostBattle, MSGBOX_AUTOCLOSE
-# 270 "data/maps/Route123/scripts.pory"
-addvar VAR_ROUTE123_STATE, 1
-# 271 "data/maps/Route123/scripts.pory"
-end
-# 272 "data/maps/Route123/scripts.pory"
-
-# 273 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Kindra::
-# 274 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_KindraPostBattle, MSGBOX_AUTOCLOSE
-# 275 "data/maps/Route123/scripts.pory"
-	end
-# 276 "data/maps/Route123/scripts.pory"
-
-# 277 "data/maps/Route123/scripts.pory"
-Route123_EventScript_JackiFrederick::
-# 278 "data/maps/Route123/scripts.pory"
-lockall
-# 279 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_JACKI
-# 280 "data/maps/Route123/scripts.pory"
-playse SE_PIN
-# 281 "data/maps/Route123/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 282 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 283 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_GIRL, TRUE
-# 284 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 285 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 286 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_JackiIntro MSGBOX_AUTOCLOSE
-# 287 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_FREDERICK
-# 288 "data/maps/Route123/scripts.pory"
-playse SE_PIN
-# 289 "data/maps/Route123/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 290 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 291 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_COOL, TRUE
-# 292 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 293 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 294 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_FrederickIntro, MSGBOX_AUTOCLOSE
-# 295 "data/maps/Route123/scripts.pory"
-goto Route123_EventScript_JackiFrederickDoMultiBattle
-# 296 "data/maps/Route123/scripts.pory"
 releaseall
-# 297 "data/maps/Route123/scripts.pory"
+# 260 "data/maps/Route123/scripts.pory"
 end
-# 298 "data/maps/Route123/scripts.pory"
+# 261 "data/maps/Route123/scripts.pory"
 
-# 299 "data/maps/Route123/scripts.pory"
-Route123_EventScript_JackiFrederickDoMultiBattle::
-# 300 "data/maps/Route123/scripts.pory"
+# 262 "data/maps/Route123/scripts.pory"
+Route123_EventScript_KindraEdDoMultiBattle::
+# 263 "data/maps/Route123/scripts.pory"
 playbgm MUS_ROUTE120, TRUE
-# 301 "data/maps/Route123/scripts.pory"
-multi_2p_vs_2 TRAINER_JACKI_1, Route123_Text_JackiDefeat, TRAINER_FREDRICK, Route123_Text_FrederickDefeat, PARTNER_EMMIE
-# 302 "data/maps/Route123/scripts.pory"
+# 264 "data/maps/Route123/scripts.pory"
+multi_2p_vs_2 TRAINER_KINDRA, Route123_Text_KindraDefeat, TRAINER_ED, Route123_Text_EdDefeat, PARTNER_EMMIE
+# 265 "data/maps/Route123/scripts.pory"
 switch VAR_RESULT
-# 303 "data/maps/Route123/scripts.pory"
-case 1, Route123_EventScript_JackiFrederickVictory
-# 304 "data/maps/Route123/scripts.pory"
+# 266 "data/maps/Route123/scripts.pory"
+case 1, Route123_EventScript_KindraEdVictory
+# 267 "data/maps/Route123/scripts.pory"
 fadescreen FADE_TO_BLACK
-# 305 "data/maps/Route123/scripts.pory"
+# 268 "data/maps/Route123/scripts.pory"
 special SetCB2WhiteOut
-# 306 "data/maps/Route123/scripts.pory"
+# 269 "data/maps/Route123/scripts.pory"
 waitstate
+# 270 "data/maps/Route123/scripts.pory"
+
+# 271 "data/maps/Route123/scripts.pory"
+Route123_EventScript_KindraEdVictory::
+# 272 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 273 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 274 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_KindraPostBattle, MSGBOX_AUTOCLOSE
+# 275 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 276 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 277 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_EdPostBattle, MSGBOX_AUTOCLOSE
+# 278 "data/maps/Route123/scripts.pory"
+addvar VAR_ROUTE123_STATE, 1
+# 279 "data/maps/Route123/scripts.pory"
+end
+# 280 "data/maps/Route123/scripts.pory"
+
+# 281 "data/maps/Route123/scripts.pory"
+Route123_EventScript_Kindra::
+# 282 "data/maps/Route123/scripts.pory"
+	faceplayer
+# 283 "data/maps/Route123/scripts.pory"
+	msgbox Route123_Text_KindraPostBattle, MSGBOX_AUTOCLOSE
+# 284 "data/maps/Route123/scripts.pory"
+	end
+# 285 "data/maps/Route123/scripts.pory"
+
+# 286 "data/maps/Route123/scripts.pory"
+Route123_EventScript_JackiFrederick::
+# 287 "data/maps/Route123/scripts.pory"
+lockall
+# 288 "data/maps/Route123/scripts.pory"
+setvar VAR_0x8008, LOCALID_JACKI
+# 289 "data/maps/Route123/scripts.pory"
+playse SE_PIN
+# 290 "data/maps/Route123/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 291 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 292 "data/maps/Route123/scripts.pory"
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+# 293 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 294 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 295 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_JackiIntro MSGBOX_AUTOCLOSE
+# 296 "data/maps/Route123/scripts.pory"
+setvar VAR_0x8008, LOCALID_FREDERICK
+# 297 "data/maps/Route123/scripts.pory"
+playse SE_PIN
+# 298 "data/maps/Route123/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 299 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 300 "data/maps/Route123/scripts.pory"
+playbgm MUS_ENCOUNTER_COOL, TRUE
+# 301 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 302 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 303 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_FrederickIntro, MSGBOX_AUTOCLOSE
+# 304 "data/maps/Route123/scripts.pory"
+goto Route123_EventScript_JackiFrederickDoMultiBattle
+# 305 "data/maps/Route123/scripts.pory"
+releaseall
+# 306 "data/maps/Route123/scripts.pory"
+end
 # 307 "data/maps/Route123/scripts.pory"
 
 # 308 "data/maps/Route123/scripts.pory"
-Route123_EventScript_JackiFrederickVictory::
+Route123_EventScript_JackiFrederickDoMultiBattle::
 # 309 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 310 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 311 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_JackiPostBattle, MSGBOX_AUTOCLOSE
-# 312 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 313 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 314 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_FrederickPostBattle, MSGBOX_AUTOCLOSE
-# 315 "data/maps/Route123/scripts.pory"
-addvar VAR_ROUTE123_STATE, 1
-# 316 "data/maps/Route123/scripts.pory"
-end
-# 317 "data/maps/Route123/scripts.pory"
-
-# 318 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Frederick::
-# 319 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_FrederickPostBattle, MSGBOX_AUTOCLOSE
-# 320 "data/maps/Route123/scripts.pory"
-	end
-# 321 "data/maps/Route123/scripts.pory"
-
-# 322 "data/maps/Route123/scripts.pory"
-Route123_EventScript_FernandoAlberto::
-# 323 "data/maps/Route123/scripts.pory"
-lockall
-# 324 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_FERNANDO
-# 325 "data/maps/Route123/scripts.pory"
-playse SE_PIN
-# 326 "data/maps/Route123/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 327 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 328 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-# 329 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 330 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 331 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_FernandoIntro MSGBOX_AUTOCLOSE
-# 332 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_ALBERTO
-# 333 "data/maps/Route123/scripts.pory"
-playse SE_PIN
-# 334 "data/maps/Route123/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 335 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 336 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-# 337 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 338 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 339 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_AlbertoIntro, MSGBOX_AUTOCLOSE
-# 340 "data/maps/Route123/scripts.pory"
-goto Route123_EventScript_FernandoAlbertoDoMultiBattle
-# 341 "data/maps/Route123/scripts.pory"
-releaseall
-# 342 "data/maps/Route123/scripts.pory"
-end
-# 343 "data/maps/Route123/scripts.pory"
-
-# 344 "data/maps/Route123/scripts.pory"
-Route123_EventScript_FernandoAlbertoDoMultiBattle::
-# 345 "data/maps/Route123/scripts.pory"
 playbgm MUS_ROUTE120, TRUE
-# 346 "data/maps/Route123/scripts.pory"
-multi_2p_vs_2 TRAINER_FERNANDO_1, Route123_Text_FernandoDefeat, TRAINER_ALBERTO, Route123_Text_AlbertoDefeat, PARTNER_EMMIE
-# 347 "data/maps/Route123/scripts.pory"
+# 310 "data/maps/Route123/scripts.pory"
+multi_2p_vs_2 TRAINER_JACKI_1, Route123_Text_JackiDefeat, TRAINER_FREDRICK, Route123_Text_FrederickDefeat, PARTNER_EMMIE
+# 311 "data/maps/Route123/scripts.pory"
 switch VAR_RESULT
-# 348 "data/maps/Route123/scripts.pory"
-case 1, Route123_EventScript_FernandoAlbertoVictory
-# 349 "data/maps/Route123/scripts.pory"
+# 312 "data/maps/Route123/scripts.pory"
+case 1, Route123_EventScript_JackiFrederickVictory
+# 313 "data/maps/Route123/scripts.pory"
 fadescreen FADE_TO_BLACK
-# 350 "data/maps/Route123/scripts.pory"
+# 314 "data/maps/Route123/scripts.pory"
 special SetCB2WhiteOut
-# 351 "data/maps/Route123/scripts.pory"
+# 315 "data/maps/Route123/scripts.pory"
 waitstate
-# 352 "data/maps/Route123/scripts.pory"
+# 316 "data/maps/Route123/scripts.pory"
 
-# 353 "data/maps/Route123/scripts.pory"
-Route123_EventScript_FernandoAlbertoVictory::
-# 354 "data/maps/Route123/scripts.pory"
+# 317 "data/maps/Route123/scripts.pory"
+Route123_EventScript_JackiFrederickVictory::
+# 318 "data/maps/Route123/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 355 "data/maps/Route123/scripts.pory"
+# 319 "data/maps/Route123/scripts.pory"
 waitmovement 0
-# 356 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_FernandoPostBattle, MSGBOX_AUTOCLOSE
-# 357 "data/maps/Route123/scripts.pory"
+# 320 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_JackiPostBattle, MSGBOX_AUTOCLOSE
+# 321 "data/maps/Route123/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 358 "data/maps/Route123/scripts.pory"
+# 322 "data/maps/Route123/scripts.pory"
 waitmovement 0
-# 359 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_AlbertoPostBattle, MSGBOX_AUTOCLOSE
-# 360 "data/maps/Route123/scripts.pory"
+# 323 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_FrederickPostBattle, MSGBOX_AUTOCLOSE
+# 324 "data/maps/Route123/scripts.pory"
 addvar VAR_ROUTE123_STATE, 1
-# 361 "data/maps/Route123/scripts.pory"
+# 325 "data/maps/Route123/scripts.pory"
 end
+# 326 "data/maps/Route123/scripts.pory"
+
+# 327 "data/maps/Route123/scripts.pory"
+Route123_EventScript_Frederick::
+# 328 "data/maps/Route123/scripts.pory"
+	faceplayer
+# 329 "data/maps/Route123/scripts.pory"
+	msgbox Route123_Text_FrederickPostBattle, MSGBOX_AUTOCLOSE
+# 330 "data/maps/Route123/scripts.pory"
+	end
+# 331 "data/maps/Route123/scripts.pory"
+
+# 332 "data/maps/Route123/scripts.pory"
+Route123_EventScript_FernandoAlberto::
+# 333 "data/maps/Route123/scripts.pory"
+lockall
+# 334 "data/maps/Route123/scripts.pory"
+setvar VAR_0x8008, LOCALID_FERNANDO
+# 335 "data/maps/Route123/scripts.pory"
+playse SE_PIN
+# 336 "data/maps/Route123/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 337 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 338 "data/maps/Route123/scripts.pory"
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+# 339 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 340 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 341 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_FernandoIntro MSGBOX_AUTOCLOSE
+# 342 "data/maps/Route123/scripts.pory"
+setvar VAR_0x8008, LOCALID_ALBERTO
+# 343 "data/maps/Route123/scripts.pory"
+playse SE_PIN
+# 344 "data/maps/Route123/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 345 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 346 "data/maps/Route123/scripts.pory"
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+# 347 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 348 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 349 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_AlbertoIntro, MSGBOX_AUTOCLOSE
+# 350 "data/maps/Route123/scripts.pory"
+goto Route123_EventScript_FernandoAlbertoDoMultiBattle
+# 351 "data/maps/Route123/scripts.pory"
+releaseall
+# 352 "data/maps/Route123/scripts.pory"
+end
+# 353 "data/maps/Route123/scripts.pory"
+
+# 354 "data/maps/Route123/scripts.pory"
+Route123_EventScript_FernandoAlbertoDoMultiBattle::
+# 355 "data/maps/Route123/scripts.pory"
+playbgm MUS_ROUTE120, TRUE
+# 356 "data/maps/Route123/scripts.pory"
+multi_2p_vs_2 TRAINER_FERNANDO_1, Route123_Text_FernandoDefeat, TRAINER_ALBERTO, Route123_Text_AlbertoDefeat, PARTNER_EMMIE
+# 357 "data/maps/Route123/scripts.pory"
+switch VAR_RESULT
+# 358 "data/maps/Route123/scripts.pory"
+case 1, Route123_EventScript_FernandoAlbertoVictory
+# 359 "data/maps/Route123/scripts.pory"
+fadescreen FADE_TO_BLACK
+# 360 "data/maps/Route123/scripts.pory"
+special SetCB2WhiteOut
+# 361 "data/maps/Route123/scripts.pory"
+waitstate
 # 362 "data/maps/Route123/scripts.pory"
 
 # 363 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Alberto::
+Route123_EventScript_FernandoAlbertoVictory::
 # 364 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_AlbertoPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 365 "data/maps/Route123/scripts.pory"
-	end
+waitmovement 0
 # 366 "data/maps/Route123/scripts.pory"
-
+msgbox Route123_Text_FernandoPostBattle, MSGBOX_AUTOCLOSE
 # 367 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Ed::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 368 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_EdPostBattle, MSGBOX_AUTOCLOSE
+waitmovement 0
 # 369 "data/maps/Route123/scripts.pory"
-	end
+msgbox Route123_Text_AlbertoPostBattle, MSGBOX_AUTOCLOSE
 # 370 "data/maps/Route123/scripts.pory"
-
-# 371 "data/maps/Route123/scripts.pory"
-Route123_EventScript_JonasKayley::
-# 372 "data/maps/Route123/scripts.pory"
-lockall
-# 373 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_JONAS
-# 374 "data/maps/Route123/scripts.pory"
-playse SE_PIN
-# 375 "data/maps/Route123/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 376 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 377 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
-# 378 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 379 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 380 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_JonasIntro MSGBOX_AUTOCLOSE
-# 381 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_KAYLEY
-# 382 "data/maps/Route123/scripts.pory"
-playse SE_PIN
-# 383 "data/maps/Route123/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-# 384 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 385 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_GIRL, TRUE
-# 386 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 387 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 388 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_KayleyIntro, MSGBOX_AUTOCLOSE
-# 389 "data/maps/Route123/scripts.pory"
-goto Route123_EventScript_JonasKayleyDoMultiBattle
-# 390 "data/maps/Route123/scripts.pory"
-releaseall
-# 391 "data/maps/Route123/scripts.pory"
-end
-# 392 "data/maps/Route123/scripts.pory"
-
-# 393 "data/maps/Route123/scripts.pory"
-Route123_EventScript_JonasKayleyDoMultiBattle::
-# 394 "data/maps/Route123/scripts.pory"
-playbgm MUS_ROUTE120, TRUE
-# 395 "data/maps/Route123/scripts.pory"
-multi_2p_vs_2 TRAINER_JONAS, Route123_Text_JonasDefeat, TRAINER_KAYLEY, Route123_Text_KayleyDefeat, PARTNER_EMMIE
-# 396 "data/maps/Route123/scripts.pory"
-switch VAR_RESULT
-# 397 "data/maps/Route123/scripts.pory"
-case 1, Route123_EventScript_JonasKayleyVictory
-# 398 "data/maps/Route123/scripts.pory"
-fadescreen FADE_TO_BLACK
-# 399 "data/maps/Route123/scripts.pory"
-special SetCB2WhiteOut
-# 400 "data/maps/Route123/scripts.pory"
-waitstate
-# 401 "data/maps/Route123/scripts.pory"
-
-# 402 "data/maps/Route123/scripts.pory"
-Route123_EventScript_JonasKayleyVictory::
-# 403 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 404 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 405 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_JonasPostBattle, MSGBOX_AUTOCLOSE
-# 406 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 407 "data/maps/Route123/scripts.pory"
-waitmovement 0
-# 408 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_KayleyPostBattle, MSGBOX_AUTOCLOSE
-# 409 "data/maps/Route123/scripts.pory"
 addvar VAR_ROUTE123_STATE, 1
-# 410 "data/maps/Route123/scripts.pory"
+# 371 "data/maps/Route123/scripts.pory"
 end
+# 372 "data/maps/Route123/scripts.pory"
+
+# 373 "data/maps/Route123/scripts.pory"
+Route123_EventScript_Alberto::
+# 374 "data/maps/Route123/scripts.pory"
+	faceplayer
+# 375 "data/maps/Route123/scripts.pory"
+	msgbox Route123_Text_AlbertoPostBattle, MSGBOX_AUTOCLOSE
+# 376 "data/maps/Route123/scripts.pory"
+	end
+# 377 "data/maps/Route123/scripts.pory"
+
+# 378 "data/maps/Route123/scripts.pory"
+Route123_EventScript_Ed::
+# 379 "data/maps/Route123/scripts.pory"
+	faceplayer
+# 380 "data/maps/Route123/scripts.pory"
+	msgbox Route123_Text_EdPostBattle, MSGBOX_AUTOCLOSE
+# 381 "data/maps/Route123/scripts.pory"
+	end
+# 382 "data/maps/Route123/scripts.pory"
+
+# 383 "data/maps/Route123/scripts.pory"
+Route123_EventScript_JonasKayley::
+# 384 "data/maps/Route123/scripts.pory"
+lockall
+# 385 "data/maps/Route123/scripts.pory"
+setvar VAR_0x8008, LOCALID_JONAS
+# 386 "data/maps/Route123/scripts.pory"
+playse SE_PIN
+# 387 "data/maps/Route123/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 388 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 389 "data/maps/Route123/scripts.pory"
+playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+# 390 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+# 391 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 392 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_JonasIntro MSGBOX_AUTOCLOSE
+# 393 "data/maps/Route123/scripts.pory"
+setvar VAR_0x8008, LOCALID_KAYLEY
+# 394 "data/maps/Route123/scripts.pory"
+playse SE_PIN
+# 395 "data/maps/Route123/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 396 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 397 "data/maps/Route123/scripts.pory"
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+# 398 "data/maps/Route123/scripts.pory"
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+# 399 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 400 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_KayleyIntro, MSGBOX_AUTOCLOSE
+# 401 "data/maps/Route123/scripts.pory"
+goto Route123_EventScript_JonasKayleyDoMultiBattle
+# 402 "data/maps/Route123/scripts.pory"
+releaseall
+# 403 "data/maps/Route123/scripts.pory"
+end
+# 404 "data/maps/Route123/scripts.pory"
+
+# 405 "data/maps/Route123/scripts.pory"
+Route123_EventScript_JonasKayleyDoMultiBattle::
+# 406 "data/maps/Route123/scripts.pory"
+playbgm MUS_ROUTE120, TRUE
+# 407 "data/maps/Route123/scripts.pory"
+multi_2p_vs_2 TRAINER_JONAS, Route123_Text_JonasDefeat, TRAINER_KAYLEY, Route123_Text_KayleyDefeat, PARTNER_EMMIE
+# 408 "data/maps/Route123/scripts.pory"
+switch VAR_RESULT
+# 409 "data/maps/Route123/scripts.pory"
+case 1, Route123_EventScript_JonasKayleyVictory
+# 410 "data/maps/Route123/scripts.pory"
+fadescreen FADE_TO_BLACK
 # 411 "data/maps/Route123/scripts.pory"
-
+special SetCB2WhiteOut
 # 412 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Kayley::
+waitstate
 # 413 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_KayleyPostBattle, MSGBOX_AUTOCLOSE
+
 # 414 "data/maps/Route123/scripts.pory"
-	end
+Route123_EventScript_JonasKayleyVictory::
 # 415 "data/maps/Route123/scripts.pory"
-
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 416 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Jonas::
+waitmovement 0
 # 417 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_JonasPostBattle, MSGBOX_AUTOCLOSE
+msgbox Route123_Text_JonasPostBattle, MSGBOX_AUTOCLOSE
 # 418 "data/maps/Route123/scripts.pory"
-	end
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 419 "data/maps/Route123/scripts.pory"
-
+waitmovement 0
 # 420 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Jazmyn::
+msgbox Route123_Text_KayleyPostBattle, MSGBOX_AUTOCLOSE
 # 421 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_JazmynPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE123_STATE, 1
 # 422 "data/maps/Route123/scripts.pory"
-	end
+end
 # 423 "data/maps/Route123/scripts.pory"
 
 # 424 "data/maps/Route123/scripts.pory"
-Route123_EventScript_DavisJazmyn::
+Route123_EventScript_Kayley::
 # 425 "data/maps/Route123/scripts.pory"
-lockall
+	faceplayer
 # 426 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_DAVIS
+	msgbox Route123_Text_KayleyPostBattle, MSGBOX_AUTOCLOSE
 # 427 "data/maps/Route123/scripts.pory"
-playse SE_PIN
+	end
 # 428 "data/maps/Route123/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
+
 # 429 "data/maps/Route123/scripts.pory"
-waitmovement 0
+Route123_EventScript_Jonas::
 # 430 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_MALE, TRUE
+	faceplayer
 # 431 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	msgbox Route123_Text_JonasPostBattle, MSGBOX_AUTOCLOSE
 # 432 "data/maps/Route123/scripts.pory"
-waitmovement 0
+	end
 # 433 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_DavisIntro MSGBOX_AUTOCLOSE
+
 # 434 "data/maps/Route123/scripts.pory"
-setvar VAR_0x8008, LOCALID_JAZMYN
+Route123_EventScript_Jazmyn::
 # 435 "data/maps/Route123/scripts.pory"
-playse SE_PIN
+	faceplayer
 # 436 "data/maps/Route123/scripts.pory"
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	msgbox Route123_Text_JazmynPostBattle, MSGBOX_AUTOCLOSE
 # 437 "data/maps/Route123/scripts.pory"
-waitmovement 0
+	end
 # 438 "data/maps/Route123/scripts.pory"
-playbgm MUS_ENCOUNTER_COOL, TRUE
+
 # 439 "data/maps/Route123/scripts.pory"
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+Route123_EventScript_DavisJazmyn::
 # 440 "data/maps/Route123/scripts.pory"
-waitmovement 0
+lockall
 # 441 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_JazmynIntro, MSGBOX_AUTOCLOSE
+setvar VAR_0x8008, LOCALID_DAVIS
 # 442 "data/maps/Route123/scripts.pory"
-goto Route123_EventScript_DavisJazmynDoMultiBattle
+playse SE_PIN
 # 443 "data/maps/Route123/scripts.pory"
-releaseall
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
 # 444 "data/maps/Route123/scripts.pory"
-end
+waitmovement 0
 # 445 "data/maps/Route123/scripts.pory"
-
+playbgm MUS_ENCOUNTER_MALE, TRUE
 # 446 "data/maps/Route123/scripts.pory"
-Route123_EventScript_DavisJazmynDoMultiBattle::
-# 447 "data/maps/Route123/scripts.pory"
-playbgm MUS_ROUTE120, TRUE
-# 448 "data/maps/Route123/scripts.pory"
-multi_2p_vs_2 TRAINER_DAVIS, Route123_Text_DavisDefeat, TRAINER_JAZMYN, Route123_Text_JazmynDefeat, PARTNER_EMMIE
-# 449 "data/maps/Route123/scripts.pory"
-switch VAR_RESULT
-# 450 "data/maps/Route123/scripts.pory"
-case 1, Route123_EventScript_DavisJazmynVictory
-# 451 "data/maps/Route123/scripts.pory"
-fadescreen FADE_TO_BLACK
-# 452 "data/maps/Route123/scripts.pory"
-special SetCB2WhiteOut
-# 453 "data/maps/Route123/scripts.pory"
-waitstate
-# 454 "data/maps/Route123/scripts.pory"
-
-# 455 "data/maps/Route123/scripts.pory"
-Route123_EventScript_DavisJazmynVictory::
-# 456 "data/maps/Route123/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-# 457 "data/maps/Route123/scripts.pory"
+# 447 "data/maps/Route123/scripts.pory"
 waitmovement 0
-# 458 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_DavisPostBattle, MSGBOX_AUTOCLOSE
-# 459 "data/maps/Route123/scripts.pory"
+# 448 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_DavisIntro MSGBOX_AUTOCLOSE
+# 449 "data/maps/Route123/scripts.pory"
+setvar VAR_0x8008, LOCALID_JAZMYN
+# 450 "data/maps/Route123/scripts.pory"
+playse SE_PIN
+# 451 "data/maps/Route123/scripts.pory"
+applymovement VAR_0x8008, Common_Movement_ExclamationMark
+# 452 "data/maps/Route123/scripts.pory"
+waitmovement 0
+# 453 "data/maps/Route123/scripts.pory"
+playbgm MUS_ENCOUNTER_COOL, TRUE
+# 454 "data/maps/Route123/scripts.pory"
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 460 "data/maps/Route123/scripts.pory"
+# 455 "data/maps/Route123/scripts.pory"
 waitmovement 0
-# 461 "data/maps/Route123/scripts.pory"
-msgbox Route123_Text_JazmynPostBattle, MSGBOX_AUTOCLOSE
-# 462 "data/maps/Route123/scripts.pory"
-addvar VAR_ROUTE123_STATE, 1
-# 463 "data/maps/Route123/scripts.pory"
+# 456 "data/maps/Route123/scripts.pory"
+msgbox Route123_Text_JazmynIntro, MSGBOX_AUTOCLOSE
+# 457 "data/maps/Route123/scripts.pory"
+goto Route123_EventScript_DavisJazmynDoMultiBattle
+# 458 "data/maps/Route123/scripts.pory"
+releaseall
+# 459 "data/maps/Route123/scripts.pory"
 end
+# 460 "data/maps/Route123/scripts.pory"
+
+# 461 "data/maps/Route123/scripts.pory"
+Route123_EventScript_DavisJazmynDoMultiBattle::
+# 462 "data/maps/Route123/scripts.pory"
+playbgm MUS_ROUTE120, TRUE
+# 463 "data/maps/Route123/scripts.pory"
+multi_2p_vs_2 TRAINER_DAVIS, Route123_Text_DavisDefeat, TRAINER_JAZMYN, Route123_Text_JazmynDefeat, PARTNER_EMMIE
 # 464 "data/maps/Route123/scripts.pory"
-
+switch VAR_RESULT
 # 465 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Davis::
+case 1, Route123_EventScript_DavisJazmynVictory
 # 466 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_DavisPostBattle, MSGBOX_AUTOCLOSE
+fadescreen FADE_TO_BLACK
 # 467 "data/maps/Route123/scripts.pory"
-	end
+special SetCB2WhiteOut
 # 468 "data/maps/Route123/scripts.pory"
-
+waitstate
 # 469 "data/maps/Route123/scripts.pory"
-Route123_EventScript_Fernando::
+
 # 470 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_FernandoPostBattle, MSGBOX_DEFAULT
+Route123_EventScript_DavisJazmynVictory::
 # 471 "data/maps/Route123/scripts.pory"
-	release
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 472 "data/maps/Route123/scripts.pory"
-	end
+waitmovement 0
 # 473 "data/maps/Route123/scripts.pory"
-
+msgbox Route123_Text_DavisPostBattle, MSGBOX_AUTOCLOSE
 # 474 "data/maps/Route123/scripts.pory"
-Route123_EventScript_RegisterFernando::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 475 "data/maps/Route123/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
+waitmovement 0
 # 476 "data/maps/Route123/scripts.pory"
-	waitmovement 0
+msgbox Route123_Text_JazmynPostBattle, MSGBOX_AUTOCLOSE
 # 477 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_FernandoRegister, MSGBOX_DEFAULT
+addvar VAR_ROUTE123_STATE, 1
 # 478 "data/maps/Route123/scripts.pory"
-	register_matchcall TRAINER_FERNANDO_1
+end
 # 479 "data/maps/Route123/scripts.pory"
-	release
+
 # 480 "data/maps/Route123/scripts.pory"
-	end
+Route123_EventScript_Davis::
 # 481 "data/maps/Route123/scripts.pory"
-
+	faceplayer
 # 482 "data/maps/Route123/scripts.pory"
-Route123_EventScript_RematchFernando::
+	msgbox Route123_Text_DavisPostBattle, MSGBOX_AUTOCLOSE
 # 483 "data/maps/Route123/scripts.pory"
-	trainerbattle_rematch TRAINER_FERNANDO_1, Route123_Text_FernandoRematchIntro, Route123_Text_FernandoRematchDefeat
-# 484 "data/maps/Route123/scripts.pory"
-	msgbox Route123_Text_FernandoPostRematch, MSGBOX_AUTOCLOSE
-# 485 "data/maps/Route123/scripts.pory"
 	end
-# 486 "data/maps/Route123/scripts.pory"
+# 484 "data/maps/Route123/scripts.pory"
 
+# 485 "data/maps/Route123/scripts.pory"
+Route123_EventScript_Fernando::
+# 486 "data/maps/Route123/scripts.pory"
+	faceplayer
 # 487 "data/maps/Route123/scripts.pory"
-Route123_Text_LoveGrassMonsHaveAny:
+	msgbox Route123_Text_FernandoPostBattle, MSGBOX_DEFAULT
 # 488 "data/maps/Route123/scripts.pory"
-	.string "I love GRASS-type POKéMON!\p"
+	release
 # 489 "data/maps/Route123/scripts.pory"
-	.string "Do you have any GRASS-type POKéMON?$"
+	end
 # 490 "data/maps/Route123/scripts.pory"
 
 # 491 "data/maps/Route123/scripts.pory"
-Route123_Text_YouLikeGrassMonsTooHaveThis:
+Route123_EventScript_RegisterFernando::
 # 492 "data/maps/Route123/scripts.pory"
-	.string "Oh?\p"
+	special PlayerFaceTrainerAfterBattle
 # 493 "data/maps/Route123/scripts.pory"
-	.string "You like GRASS-type POKéMON, too,\n"
+	waitmovement 0
 # 494 "data/maps/Route123/scripts.pory"
-	.string "don't you?\p"
+	msgbox Route123_Text_FernandoRegister, MSGBOX_DEFAULT
 # 495 "data/maps/Route123/scripts.pory"
-	.string "I'm so happy, you can have this!\n"
+	register_matchcall TRAINER_FERNANDO_1
 # 496 "data/maps/Route123/scripts.pory"
-	.string "It's a token of our friendship.$"
+	release
 # 497 "data/maps/Route123/scripts.pory"
-
+	end
 # 498 "data/maps/Route123/scripts.pory"
-Route123_Text_CheckTreesWithMyGrassMon:
+
 # 499 "data/maps/Route123/scripts.pory"
-	.string "I check trees with my GRASS-type\n"
+Route123_EventScript_RematchFernando::
 # 500 "data/maps/Route123/scripts.pory"
-	.string "POKéMON. I'm like a tree doctor.$"
+	trainerbattle_rematch TRAINER_FERNANDO_1, Route123_Text_FernandoRematchIntro, Route123_Text_FernandoRematchDefeat
 # 501 "data/maps/Route123/scripts.pory"
-
+	msgbox Route123_Text_FernandoPostRematch, MSGBOX_AUTOCLOSE
 # 502 "data/maps/Route123/scripts.pory"
-Route123_Text_RouteSign:
+	end
 # 503 "data/maps/Route123/scripts.pory"
-	.string "{RIGHT_ARROW} ROUTE 123\n"
+
 # 504 "data/maps/Route123/scripts.pory"
-	.string "{LEFT_ARROW} ROUTE 118$"
+Route123_Text_LoveGrassMonsHaveAny:
 # 505 "data/maps/Route123/scripts.pory"
-
+	.string "I love GRASS-type POKéMON!\p"
 # 506 "data/maps/Route123/scripts.pory"
-Route123_Text_RouteSignMtPyre:
+	.string "Do you have any GRASS-type POKéMON?$"
 # 507 "data/maps/Route123/scripts.pory"
-	.string "{UP_ARROW} MT. PYRE\n"
-# 508 "data/maps/Route123/scripts.pory"
-	.string "“Forbidden to the faint of heart.”$"
-# 509 "data/maps/Route123/scripts.pory"
 
+# 508 "data/maps/Route123/scripts.pory"
+Route123_Text_YouLikeGrassMonsTooHaveThis:
+# 509 "data/maps/Route123/scripts.pory"
+	.string "Oh?\p"
 # 510 "data/maps/Route123/scripts.pory"
-Route123_Text_BerryMastersHouse:
+	.string "You like GRASS-type POKéMON, too,\n"
 # 511 "data/maps/Route123/scripts.pory"
+	.string "don't you?\p"
+# 512 "data/maps/Route123/scripts.pory"
+	.string "I'm so happy, you can have this!\n"
+# 513 "data/maps/Route123/scripts.pory"
+	.string "It's a token of our friendship.$"
+# 514 "data/maps/Route123/scripts.pory"
+
+# 515 "data/maps/Route123/scripts.pory"
+Route123_Text_CheckTreesWithMyGrassMon:
+# 516 "data/maps/Route123/scripts.pory"
+	.string "I check trees with my GRASS-type\n"
+# 517 "data/maps/Route123/scripts.pory"
+	.string "POKéMON. I'm like a tree doctor.$"
+# 518 "data/maps/Route123/scripts.pory"
+
+# 519 "data/maps/Route123/scripts.pory"
+Route123_Text_RouteSign:
+# 520 "data/maps/Route123/scripts.pory"
+	.string "{RIGHT_ARROW} ROUTE 123\n"
+# 521 "data/maps/Route123/scripts.pory"
+	.string "{LEFT_ARROW} ROUTE 118$"
+# 522 "data/maps/Route123/scripts.pory"
+
+# 523 "data/maps/Route123/scripts.pory"
+Route123_Text_RouteSignMtPyre:
+# 524 "data/maps/Route123/scripts.pory"
+	.string "{UP_ARROW} MT. PYRE\n"
+# 525 "data/maps/Route123/scripts.pory"
+	.string "“Forbidden to the faint of heart.”$"
+# 526 "data/maps/Route123/scripts.pory"
+
+# 527 "data/maps/Route123/scripts.pory"
+Route123_Text_BerryMastersHouse:
+# 528 "data/maps/Route123/scripts.pory"
 	.string "BERRY MASTER'S HOUSE$"

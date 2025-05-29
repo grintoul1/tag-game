@@ -381,6 +381,7 @@ addvar VAR_AQUAHIDEOUT_STATE, 1
 end
 
 AquaHideout_B2F_EventScript_Grunt4::
+	faceplayer
 	msgbox AquaHideout_B2F_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -443,10 +444,12 @@ addvar VAR_AQUAHIDEOUT_STATE, 1
 end
 
 AquaHideout_B2F_EventScript_Grunt6::
+	faceplayer
 	msgbox AquaHideout_B2F_Text_Grunt6PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 AquaHideout_B2F_EventScript_Grunt8::
+	faceplayer
 	msgbox AquaHideout_B2F_Text_Grunt8PostBattle, MSGBOX_AUTOCLOSE
 	end
 

@@ -135,6 +135,7 @@ addvar VAR_AQUAHIDEOUT_STATE, 1
 end
 
 AquaHideout_B1F_EventScript_Grunt2::
+	faceplayer
 	msgbox AquaHideout_B1F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -199,6 +200,7 @@ addvar VAR_AQUAHIDEOUT_STATE, 1
 end
 
 AquaHideout_B1F_EventScript_Grunt3::
+	faceplayer
 	msgbox AquaHideout_B1F_Text_Grunt3PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -208,10 +210,12 @@ AquaHideout_B1F_EventScript_Grunt3Defeated::
 	end
 
 AquaHideout_B1F_EventScript_Grunt5::
+	faceplayer
 	msgbox AquaHideout_B1F_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 AquaHideout_B1F_EventScript_Grunt7::
+	faceplayer
 	msgbox AquaHideout_B1F_Text_Grunt7PostBattle, MSGBOX_AUTOCLOSE
 	end
 

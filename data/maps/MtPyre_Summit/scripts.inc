@@ -14,6 +14,7 @@ MtPyre_Summit_MapScripts::
 
 MtPyre_Summit_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	call_if_eq VAR_MT_PYRE_STATE, 10, MtPyre_Summit_EventScript_SetArchieMaxiePositions
 	call_if_lt VAR_MT_PYRE_STATE, 9, MtPyre_Summit_EventScript_SetArchieMaxieFightingPositions
 	end
@@ -933,10 +934,12 @@ MtPyre_Summit_Movement_MaxieApproachArchie2:
 	step_end
 
 MtPyre_Summit_EventScript_Grunt1::
+	faceplayer
 	msgbox MtPyre_Summit_Text_Grunt1PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MtPyre_Summit_EventScript_Grunt2::
+	faceplayer
 	msgbox MtPyre_Summit_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -982,10 +985,12 @@ MtPyre_Summit_EventScript_Grunt_Mt_Pyre_1Grunt_Mt_Pyre_2Victory::
 	end
 
 MtPyre_Summit_EventScript_Grunt3::
+	faceplayer
 	msgbox MtPyre_Summit_Text_Grunt3PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MtPyre_Summit_EventScript_Grunt4::
+	faceplayer
 	msgbox MtPyre_Summit_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -1273,11 +1278,13 @@ MtPyre_Summit_Movement_TabithaKnockedBack:
 	step_end
 
 MtPyre_Summit_EventScript_Matt::
+	faceplayer
 	msgbox MtPyre_Summit_Text_Matt_Mt_PyrePostBattle, MSGBOX_DEFAULT
 	closemessage
 	end
 
 MtPyre_Summit_EventScript_Tabitha::
+	faceplayer
 	msgbox MtPyre_Summit_Text_Tabitha_Mt_PyrePostBattle, MSGBOX_DEFAULT
 	closemessage
 	end

@@ -9,11 +9,13 @@ FortreeCity_MapScripts::
 
 FortreeCity_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	setflag FLAG_VISITED_FORTREE_CITY
 	end
 
 FortreeCity_OnResume:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	setstepcallback STEP_CB_FORTREE_BRIDGE
 	end
 

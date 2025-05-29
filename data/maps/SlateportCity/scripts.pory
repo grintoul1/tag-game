@@ -29,6 +29,7 @@ SlateportCity_MapScripts::
 
 SlateportCity_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	setvar VAR_SLATEPORT_MUSEUM_1F_STATE, 0
 	call SlateportCity_EventScript_EnterSlateport
 	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_MovePeopleForSternInterview

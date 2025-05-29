@@ -315,6 +315,7 @@ PetalburgWoods_EventScript_Sign2::
 	end
 
 PetalburgWoods_EventScript_Lyle::
+	faceplayer
 	msgbox PetalburgWoods_Text_ImOutOfPokeBalls, MSGBOX_AUTOCLOSE
 	end
 
@@ -360,6 +361,7 @@ addvar VAR_PETALBURG_WOODS_STATE, 1
 end
 
 PetalburgWoods_EventScript_James::
+	faceplayer
 	msgbox PetalburgWoods_Text_PeopleRespectYou, MSGBOX_DEFAULT
 	release
 	end

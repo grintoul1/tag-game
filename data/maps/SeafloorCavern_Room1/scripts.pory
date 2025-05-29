@@ -1,14 +1,56 @@
 raw `
+.set LOCALID_GRUNT1, 4
+.set LOCALID_GRUNT2, 5
+
 SeafloorCavern_Room1_MapScripts::
 	.byte 0
 
+SeafloorCavern_Room1_EventScript_Grunt1Grunt2::
+lockall
+playse SE_PIN
+applymovement LOCALID_GRUNT1, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_AQUA, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SeafloorCavern_Room1_Text_Grunt1Intro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_GRUNT2, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_AQUA, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SeafloorCavern_Room1_Text_Grunt2Intro MSGBOX_AUTOCLOSE
+goto SeafloorCavern_Room1_EventScript_Grunt1Grunt2DoMultiBattle
+releaseall
+end
+
+SeafloorCavern_Room1_EventScript_Grunt1Grunt2DoMultiBattle::
+playbgm MUS_MT_CHIMNEY, TRUE
+multi_2p_vs_2 TRAINER_GRUNT_SEAFLOOR_CAVERN_1, SeafloorCavern_Room1_Text_Grunt1Defeat, TRAINER_GRUNT_SEAFLOOR_CAVERN_2, SeafloorCavern_Room1_Text_Grunt2Defeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, SeafloorCavern_Room1_EventScript_Grunt1Grunt2Victory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+SeafloorCavern_Room1_EventScript_Grunt1Grunt2Victory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SeafloorCavern_Room1_Text_Grunt1PostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SeafloorCavern_Room1_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_SEAFLOOR_CAVERN_STATE, 1
+end
+
 SeafloorCavern_Room1_EventScript_Grunt1::
-	trainerbattle_single TRAINER_GRUNT_SEAFLOOR_CAVERN_1, SeafloorCavern_Room1_Text_Grunt1Intro, SeafloorCavern_Room1_Text_Grunt1Defeat
+	faceplayer
 	msgbox SeafloorCavern_Room1_Text_Grunt1PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 SeafloorCavern_Room1_EventScript_Grunt2::
-	trainerbattle_single TRAINER_GRUNT_SEAFLOOR_CAVERN_2, SeafloorCavern_Room1_Text_Grunt2Intro, SeafloorCavern_Room1_Text_Grunt2Defeat
+	faceplayer
 	msgbox SeafloorCavern_Room1_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
 	end
 

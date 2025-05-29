@@ -191,6 +191,7 @@ AquaHideout_1F_EventScript_SlateportHint2::
 	end
 
 AquaHideout_1F_EventScript_Grunt1::
+	faceplayer
 	msgbox AquaHideout_1F_Text_Grunt1PostBattle, MSGBOX_AUTOCLOSE
 	end
 

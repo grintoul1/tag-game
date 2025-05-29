@@ -19,6 +19,7 @@ Route121_MapScripts::
 
 Route121_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	end
 
 Route121_EventScript_Woman::
@@ -111,6 +112,7 @@ Route121_Movement_Grunt3Exit:
 	step_end
 
 Route121_EventScript_Vanessa::
+	faceplayer
 	msgbox Route121_Text_VanessaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -156,6 +158,7 @@ addvar VAR_ROUTE121_STATE, 1
 end
 
 Route121_EventScript_Walter::
+	faceplayer
 	msgbox Route121_Text_WalterPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -174,6 +177,7 @@ Route121_EventScript_RematchWalter::
 	end
 
 Route121_EventScript_Tammy::
+	faceplayer
 	msgbox Route121_Text_TammyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -209,10 +213,12 @@ addvar VAR_ROUTE121_STATE, 1
 end
 
 Route121_EventScript_Kate::
+	faceplayer
 	msgbox Route121_Text_KatePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route121_EventScript_Joy::
+	faceplayer
 	msgbox Route121_Text_JoyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -238,6 +244,7 @@ Route121_EventScript_RematchJessica::
 	end
 
 Route121_EventScript_Cale::
+	faceplayer
 	msgbox Route121_Text_CalePostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -324,14 +331,17 @@ addvar VAR_ROUTE121_STATE, 1
 end
 
 Route121_EventScript_Myles::
+	faceplayer
 	msgbox Route121_Text_MylesPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route121_EventScript_Pat::
+	faceplayer
 	msgbox Route121_Text_PatPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route121_EventScript_Marcel::
+	faceplayer
 	msgbox Route121_Text_MarcelPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -377,6 +387,7 @@ addvar VAR_ROUTE121_STATE, 1
 end
 
 Route121_EventScript_Cristin::
+	faceplayer
 	msgbox Route121_Text_CristinPostBattle, MSGBOX_DEFAULT
 	release
 	end

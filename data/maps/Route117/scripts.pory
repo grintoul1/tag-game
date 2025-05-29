@@ -20,6 +20,7 @@ Route117_MapScripts::
 
 Route117_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 	call Route117_EventScript_TryMoveDayCareMan
 	@ set flags for OW daycare mons
 	setflag FLAG_TEMP_1
@@ -88,6 +89,7 @@ Route117_EventScript_DayCareSign::
 	end
 
 Route117_EventScript_Isaac::
+	faceplayer
 	msgbox Route117_Text_IsaacPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -147,6 +149,7 @@ addvar VAR_ROUTE117_STATE, 1
 end
 
 Route117_EventScript_Lydia::
+	faceplayer
 	msgbox Route117_Text_LydiaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -206,6 +209,7 @@ addvar VAR_ROUTE117_STATE, 1
 end
 
 Route117_EventScript_Dylan::
+	faceplayer
 	msgbox Route117_Text_DylanPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -265,6 +269,7 @@ Route117_EventScript_RematchDylan::
 	end
 
 Route117_EventScript_Maria::
+	faceplayer
 	msgbox Route117_Text_MariaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -283,6 +288,7 @@ Route117_EventScript_RematchMaria::
 	end
 
 Route117_EventScript_Derek::
+	faceplayer
 	msgbox Route117_Text_DerekPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -318,6 +324,7 @@ addvar VAR_ROUTE117_STATE, 1
 end
 
 Route117_EventScript_Anna::
+	faceplayer
 	msgbox Route117_Text_AnnaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -334,6 +341,7 @@ Route117_EventScript_RematchAnna::
 	end
 
 Route117_EventScript_Meg::
+	faceplayer
 	msgbox Route117_Text_MegPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -350,6 +358,7 @@ Route117_EventScript_RematchMeg::
 	end
 
 Route117_EventScript_Melina::
+	faceplayer
 	msgbox Route117_Text_MelinaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -395,10 +404,12 @@ addvar VAR_ROUTE117_STATE, 1
 end
 
 Route117_EventScript_Brandi::
+	faceplayer
 	msgbox Route117_Text_BrandiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route117_EventScript_Aisha::
+	faceplayer
 	msgbox Route117_Text_AishaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
