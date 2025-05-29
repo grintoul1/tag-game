@@ -97,7 +97,7 @@ Route128_EventScript_KyogreAwakenedScene::
 # 49 "data/maps/Route128/scripts.pory"
 	msgbox Route128_Text_MaxieDoYouUnderstandNow, MSGBOX_DEFAULT
 # 50 "data/maps/Route128/scripts.pory"
-	closemessage
+	closemessage 
 # 51 "data/maps/Route128/scripts.pory"
 	applymovement LOCALID_MAXIE, Route128_Movement_MaxieApproachPlayer
 # 52 "data/maps/Route128/scripts.pory"
