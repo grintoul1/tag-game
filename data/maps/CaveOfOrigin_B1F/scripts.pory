@@ -153,6 +153,7 @@ CaveOfOrigin_B1F_EventScript_AtSkyPillar::
 	clearflag FLAG_HIDE_SKY_PILLAR_WALLACE
 	setflag FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
 	setflag FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
+	setvar VAR_ROUTE128_STATE, 3
 	fadescreen FADE_FROM_BLACK
 	release
 	end

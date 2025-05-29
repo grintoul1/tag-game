@@ -1,4 +1,13 @@
 raw `
+.set LOCALID_HERMAN, 2
+.set LOCALID_SUSIE, 3
+.set LOCALID_IAN, 6
+.set LOCALID_RELI, 5
+.set LOCALID_RICHARD, 1
+.set LOCALID_KARA, 4
+.set LOCALID_KEVIN, 7
+.set LOCALID_TALIA, 8
+
 Route131_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route131_OnTransition
 	.byte 0
@@ -12,47 +21,193 @@ Route131_EventScript_SetLayout::
 	setmaplayoutindex LAYOUT_ROUTE131_SKY_PILLAR
 	return
 
+Route131_EventScript_KevinTalia::
+lockall
+playse SE_PIN
+applymovement LOCALID_KEVIN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route131_Text_KevinIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_TALIA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route131_Text_TaliaIntro MSGBOX_AUTOCLOSE
+goto Route131_EventScript_KevinTaliaDoMultiBattle
+releaseall
+end
+
+Route131_EventScript_KevinTaliaDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_KEVIN, Route131_Text_KevinDefeat, TRAINER_TALIA, Route131_Text_TaliaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route131_EventScript_KevinTaliaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route131_EventScript_KevinTaliaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route131_Text_KevinPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route131_Text_TaliaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE131_STATE, 1
+end
+
+Route131_EventScript_KaraRichard::
+lockall
+playse SE_PIN
+applymovement LOCALID_KARA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route131_Text_KaraIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_RICHARD, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route131_Text_RichardIntro MSGBOX_AUTOCLOSE
+goto Route131_EventScript_KaraRichardDoMultiBattle
+releaseall
+end
+
+Route131_EventScript_KaraRichardDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_KARA, Route131_Text_KaraDefeat, TRAINER_RICHARD, Route131_Text_RichardDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route131_EventScript_KaraRichardVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route131_EventScript_KaraRichardVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route131_Text_KaraPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route131_Text_RichardPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE131_STATE, 1
+end
+
+Route131_EventScript_ReliIan::
+lockall
+playse SE_PIN
+applymovement  LOCALID_RELI, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route131_Text_ReliIntro MSGBOX_AUTOCLOSE
+goto Route131_EventScript_ReliIanDoMultiBattle
+releaseall
+end
+
+Route131_EventScript_ReliIanDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_1 TRAINER_RELI_AND_IAN, Route131_Text_ReliDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route131_EventScript_ReliIanVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route131_EventScript_ReliIanVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route131_Text_ReliPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE131_STATE, 1
+end
+
+Route131_EventScript_HermanSusie::
+lockall
+playse SE_PIN
+applymovement LOCALID_HERMAN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route131_Text_HermanIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_SUSIE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route131_Text_SusieIntro MSGBOX_AUTOCLOSE
+goto Route131_EventScript_HermanSusieDoMultiBattle
+releaseall
+end
+
+Route131_EventScript_HermanSusieDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_HERMAN, Route131_Text_HermanDefeat, TRAINER_SUSIE, Route131_Text_SusieDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route131_EventScript_HermanSusieVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route131_EventScript_HermanSusieVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route131_Text_HermanPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route131_Text_SusiePostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE131_STATE, 1
+end
+
 Route131_EventScript_CheckSetAbnormalWeather::
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
 	return
 
 Route131_EventScript_Richard::
-	trainerbattle_single TRAINER_RICHARD, Route131_Text_RichardIntro, Route131_Text_RichardDefeat
+	faceplayer
 	msgbox Route131_Text_RichardPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route131_EventScript_Herman::
-	trainerbattle_single TRAINER_HERMAN, Route131_Text_HermanIntro, Route131_Text_HermanDefeat
+	faceplayer
 	msgbox Route131_Text_HermanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route131_EventScript_Susie::
-	trainerbattle_single TRAINER_SUSIE, Route131_Text_SusieIntro, Route131_Text_SusieDefeat
+	faceplayer
 	msgbox Route131_Text_SusiePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route131_EventScript_Kara::
-	trainerbattle_single TRAINER_KARA, Route131_Text_KaraIntro, Route131_Text_KaraDefeat
+	faceplayer
 	msgbox Route131_Text_KaraPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route131_EventScript_Reli::
-	trainerbattle_double TRAINER_RELI_AND_IAN, Route131_Text_ReliIntro, Route131_Text_ReliDefeat, Route131_Text_ReliNotEnoughMons
+	faceplayer
 	msgbox Route131_Text_ReliPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route131_EventScript_Ian::
-	trainerbattle_double TRAINER_RELI_AND_IAN, Route131_Text_IanIntro, Route131_Text_IanDefeat, Route131_Text_IanNotEnoughMons
+	faceplayer
 	msgbox Route131_Text_IanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route131_EventScript_Talia::
-	trainerbattle_single TRAINER_TALIA, Route131_Text_TaliaIntro, Route131_Text_TaliaDefeat
+	faceplayer
 	msgbox Route131_Text_TaliaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route131_EventScript_Kevin::
-	trainerbattle_single TRAINER_KEVIN, Route131_Text_KevinIntro, Route131_Text_KevinDefeat
+	faceplayer
 	msgbox Route131_Text_KevinPostBattle, MSGBOX_AUTOCLOSE
 	end
 
