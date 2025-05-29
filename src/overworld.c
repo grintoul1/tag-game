@@ -1130,57 +1130,57 @@ static bool16 ShouldDroughtMusicPlayAtLocation(struct WarpData *warp)
     {
         switch (warp->mapNum)
         {
-        case MAP_NUM(LITTLEROOT_TOWN):
-        case MAP_NUM(OLDALE_TOWN):
-        case MAP_NUM(PETALBURG_CITY):
-        case MAP_NUM(RUSTBORO_CITY):
-        case MAP_NUM(DEWFORD_TOWN):
-        case MAP_NUM(SLATEPORT_CITY):
-        case MAP_NUM(MAUVILLE_CITY):
-        case MAP_NUM(VERDANTURF_TOWN):
-        case MAP_NUM(FALLARBOR_TOWN):
-        case MAP_NUM(LAVARIDGE_TOWN):
-        case MAP_NUM(FORTREE_CITY):
-        case MAP_NUM(PACIFIDLOG_TOWN):
-        case MAP_NUM(LILYCOVE_CITY):
-        case MAP_NUM(MOSSDEEP_CITY):
-        case MAP_NUM(SOOTOPOLIS_CITY):
-        case MAP_NUM(EVER_GRANDE_CITY):
-        case MAP_NUM(ROUTE101):
-        case MAP_NUM(ROUTE102):
-        case MAP_NUM(ROUTE103):
-        case MAP_NUM(ROUTE104):
-        case MAP_NUM(ROUTE105):
-        case MAP_NUM(ROUTE106):
-        case MAP_NUM(ROUTE107):
-        case MAP_NUM(ROUTE108):
-        case MAP_NUM(ROUTE109):
-        case MAP_NUM(ROUTE110):
-        case MAP_NUM(ROUTE111):
-        case MAP_NUM(ROUTE112):
-        case MAP_NUM(ROUTE113):
-        case MAP_NUM(ROUTE114):
-        case MAP_NUM(ROUTE115):
-        case MAP_NUM(ROUTE116):
-        case MAP_NUM(ROUTE117):
-        case MAP_NUM(ROUTE118):
-        case MAP_NUM(ROUTE119):
-        case MAP_NUM(ROUTE120):
-        case MAP_NUM(ROUTE121):
-        case MAP_NUM(ROUTE122):
-        case MAP_NUM(ROUTE123):
-        case MAP_NUM(ROUTE100):
-        case MAP_NUM(ROUTE124):
-        case MAP_NUM(ROUTE125):
-        case MAP_NUM(ROUTE126):
-        case MAP_NUM(ROUTE127):
-        case MAP_NUM(ROUTE128):
-        case MAP_NUM(ROUTE129):
-        case MAP_NUM(ROUTE130):
-        case MAP_NUM(ROUTE131):
-        case MAP_NUM(ROUTE132):
-        case MAP_NUM(ROUTE133):
-        case MAP_NUM(ROUTE134):
+        case MAP_NUM(MAP_LITTLEROOT_TOWN):
+        case MAP_NUM(MAP_OLDALE_TOWN):
+        case MAP_NUM(MAP_PETALBURG_CITY):
+        case MAP_NUM(MAP_RUSTBORO_CITY):
+        case MAP_NUM(MAP_DEWFORD_TOWN):
+        case MAP_NUM(MAP_SLATEPORT_CITY):
+        case MAP_NUM(MAP_MAUVILLE_CITY):
+        case MAP_NUM(MAP_VERDANTURF_TOWN):
+        case MAP_NUM(MAP_FALLARBOR_TOWN):
+        case MAP_NUM(MAP_LAVARIDGE_TOWN):
+        case MAP_NUM(MAP_FORTREE_CITY):
+        case MAP_NUM(MAP_PACIFIDLOG_TOWN):
+        case MAP_NUM(MAP_LILYCOVE_CITY):
+        case MAP_NUM(MAP_MOSSDEEP_CITY):
+        case MAP_NUM(MAP_SOOTOPOLIS_CITY):
+        case MAP_NUM(MAP_EVER_GRANDE_CITY):
+        case MAP_NUM(MAP_ROUTE101):
+        case MAP_NUM(MAP_ROUTE102):
+        case MAP_NUM(MAP_ROUTE103):
+        case MAP_NUM(MAP_ROUTE104):
+        case MAP_NUM(MAP_ROUTE105):
+        case MAP_NUM(MAP_ROUTE106):
+        case MAP_NUM(MAP_ROUTE107):
+        case MAP_NUM(MAP_ROUTE108):
+        case MAP_NUM(MAP_ROUTE109):
+        case MAP_NUM(MAP_ROUTE110):
+        case MAP_NUM(MAP_ROUTE111):
+        case MAP_NUM(MAP_ROUTE112):
+        case MAP_NUM(MAP_ROUTE113):
+        case MAP_NUM(MAP_ROUTE114):
+        case MAP_NUM(MAP_ROUTE115):
+        case MAP_NUM(MAP_ROUTE116):
+        case MAP_NUM(MAP_ROUTE117):
+        case MAP_NUM(MAP_ROUTE118):
+        case MAP_NUM(MAP_ROUTE119):
+        case MAP_NUM(MAP_ROUTE120):
+        case MAP_NUM(MAP_ROUTE121):
+        case MAP_NUM(MAP_ROUTE122):
+        case MAP_NUM(MAP_ROUTE123):
+        case MAP_NUM(MAP_ROUTE100):
+        case MAP_NUM(MAP_ROUTE124):
+        case MAP_NUM(MAP_ROUTE125):
+        case MAP_NUM(MAP_ROUTE126):
+        case MAP_NUM(MAP_ROUTE127):
+        case MAP_NUM(MAP_ROUTE128):
+        case MAP_NUM(MAP_ROUTE129):
+        case MAP_NUM(MAP_ROUTE130):
+        case MAP_NUM(MAP_ROUTE131):
+        case MAP_NUM(MAP_ROUTE132):
+        case MAP_NUM(MAP_ROUTE133):
+        case MAP_NUM(MAP_ROUTE134):
             return TRUE;
         default:
             if (VarGet(VAR_SOOTOPOLIS_CITY_STATE) < 4)
@@ -1191,10 +1191,10 @@ static bool16 ShouldDroughtMusicPlayAtLocation(struct WarpData *warp)
     {
         switch (warp->mapNum)
         {
-            case MAP_NUM(JAGGED_PASS):
-            case MAP_NUM(MT_CHIMNEY):
-            case MAP_NUM(MT_PYRE_EXTERIOR):
-            case MAP_NUM(MT_PYRE_SUMMIT):
+            case MAP_NUM(MAP_JAGGED_PASS):
+            case MAP_NUM(MAP_MT_CHIMNEY):
+            case MAP_NUM(MAP_MT_PYRE_EXTERIOR):
+            case MAP_NUM(MAP_MT_PYRE_SUMMIT):
             return TRUE;
         }
     }
