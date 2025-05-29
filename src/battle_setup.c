@@ -44,6 +44,7 @@
 #include "item.h"
 #include "constants/battle_frontier.h"
 #include "constants/battle_setup.h"
+#include "constants/event_objects.h"
 #include "constants/game_stat.h"
 #include "constants/items.h"
 #include "constants/songs.h"
@@ -677,7 +678,7 @@ u8 BattleSetup_GetEnvironmentId(void)
         if (MetatileBehavior_IsBridgeOverWater(tileBehavior) == TRUE)
             return BATTLE_ENVIRONMENT_WATER;
     }
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE113) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE113))
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE113) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE113))
         return BATTLE_ENVIRONMENT_SAND;
     if (GetSavedWeather() == WEATHER_SANDSTORM)
         return BATTLE_ENVIRONMENT_SAND;
@@ -1024,7 +1025,7 @@ void SetMapVarsToTrainerA(void)
 
 void SetMapVarsToTrainerB(void)
 {
-    if (TRAINER_BATTLE_PARAM.objEventLocalIdB != 0)
+    if (TRAINER_BATTLE_PARAM.objEventLocalIdB != LOCALID_NONE)
     {
         gSpecialVar_LastTalked = TRAINER_BATTLE_PARAM.objEventLocalIdB;
         gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(TRAINER_BATTLE_PARAM.objEventLocalIdB, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
