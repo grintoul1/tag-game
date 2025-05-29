@@ -33,7 +33,7 @@ Route128_EventScript_KyogreAwakenedScene::
 	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox Route128_Text_MaxieDoYouUnderstandNow, MSGBOX_DEFAULT
-	closemessage
+	closemessage 
 	applymovement LOCALID_MAXIE, Route128_Movement_MaxieApproachPlayer
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
