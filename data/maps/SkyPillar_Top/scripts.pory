@@ -120,7 +120,6 @@ SkyPillar_Top_Text_TabithaDefeat:
 SkyPillar_Top_Movement_TabithaMattKnockedBack:
 	lock_facing_direction
 	walk_fast_left
-	walk_fast_left
 	unlock_facing_direction
 	step_end
 
@@ -194,8 +193,8 @@ SkyPillar_Top_EventScript_MattTabitha::
 	end
 
 SkyPillar_Top_EventScript_MattTabithaDoMultiBattle::
-	playbgm MUS_NONE, TRUE
-	multi_2p_vs_2 TRAINER_MATT_SKY_PILLAR, SkyPillar_Top_Text_MattDefeat, TRAINER_TABITHA_SKY_PILLAR, SkyPillar_Top_Text_TabithaDefeat, PARTNER_EMMIE
+	playbgm MUS_MT_CHIMNEY, TRUE
+	multi_2p_vs_2 TRAINER_TABITHA_SKY_PILLAR, SkyPillar_Top_Text_TabithaDefeat, TRAINER_MATT_SKY_PILLAR, SkyPillar_Top_Text_MattDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, SkyPillar_Top_EventScript_MattTabithaVictory
 	fadescreen FADE_TO_BLACK
@@ -249,7 +248,7 @@ SkyPillar_Top_Text_CourtneyNoInterruptions:
 
 SkyPillar_Top_Movement_PlayerApproachShelly:
 	walk_right
-	walk_slow_up
+	walk_up
 	walk_slow_up
 	step_end
 
@@ -307,7 +306,7 @@ SkyPillar_Top_EventScript_ShellyCourtney::
 	end
 
 SkyPillar_Top_EventScript_CourtneyShellyDoMultiBattle::
-	playbgm MUS_NONE, TRUE
+	playbgm MUS_MT_CHIMNEY, TRUE
 	setobjectmovementtype LOCALID_SKYPILLAR_COURTNEY, MOVEMENT_TYPE_FACE_DOWN
 	setobjectmovementtype LOCALID_SKYPILLAR_SHELLY, MOVEMENT_TYPE_FACE_DOWN
 	multi_2p_vs_2 TRAINER_SHELLY_SKY_PILLAR, SkyPillar_Top_Text_ShellyDefeat, TRAINER_COURTNEY_SKY_PILLAR, SkyPillar_Top_Text_CourtneyDefeat, PARTNER_EMMIE
@@ -318,7 +317,7 @@ SkyPillar_Top_EventScript_CourtneyShellyDoMultiBattle::
 	waitstate
 
 SkyPillar_Top_EventScript_CourtneyShellyVictory::
-	playse SE_PIN
+	playse SE_NOT_EFFECTIVE
 	applymovement LOCALID_SKYPILLAR_COURTNEY, SkyPillar_Top_Movement_CourtneyShellyKnockedBack
 	applymovement LOCALID_SKYPILLAR_SHELLY, SkyPillar_Top_Movement_CourtneyShellyKnockedBack
 	waitmovement 0

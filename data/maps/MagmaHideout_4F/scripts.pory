@@ -513,7 +513,7 @@ MagmaHideout_4F_EventScript_CourtneyTabithaVictory::
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_EmmieLetsGo, MSGBOX_DEFAULT
 	closemessage
-	setfollowernpc 9, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
+	setfollowernpc 9, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	addvar VAR_MAGMAHIDEOUT_STATE, 1
 	releaseall
 	end

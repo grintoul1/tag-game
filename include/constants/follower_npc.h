@@ -23,6 +23,7 @@
 #define FNPC_DIVE                             FOLLOWER_NPC_FLAG_CAN_DIVE
 #define FNPC_WHITE_OUT                        FOLLOWER_NPC_FLAG_CLEAR_ON_WHITE_OUT
 
+#define FNPC_ALL_NO_WHITEOUT                  FOLLOWER_NPC_FLAG_ALL_LAND | FOLLOWER_NPC_FLAG_ALL_WATER
 #define FNPC_ALL_LAND                         FOLLOWER_NPC_FLAG_ALL_LAND
 #define FNPC_ALL_WATER                        FOLLOWER_NPC_FLAG_ALL_WATER
 #define FNPC_ALL                              FOLLOWER_NPC_FLAG_ALL

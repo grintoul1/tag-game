@@ -26273,7 +26273,7 @@ F_TRAINER_FEMALE |
 #line 10500
         .aiFlags = AI_FLAG_BASIC_TRAINER,
 #line 10496
-        .mugshotColor = MUGSHOT_COLOR_PURPLE,
+        .mugshotColor = MUGSHOT_COLOR_BLUE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -26305,7 +26305,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_HELIOLISK,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10511
-            .heldItem = ITEM_SAFETY_GOGGLES,
+            .heldItem = ITEM_SILK_SCARF,
 #line 10515
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10514
@@ -26562,7 +26562,7 @@ F_TRAINER_FEMALE |
 #line 10613
         .aiFlags = AI_FLAG_BASIC_TRAINER,
 #line 10609
-        .mugshotColor = MUGSHOT_COLOR_PURPLE,
+        .mugshotColor = MUGSHOT_COLOR_BLUE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -26656,7 +26656,7 @@ F_TRAINER_FEMALE |
 #line 10650
         .aiFlags = AI_FLAG_BASIC_TRAINER,
 #line 10646
-        .mugshotColor = MUGSHOT_COLOR_PURPLE,
+        .mugshotColor = MUGSHOT_COLOR_RED,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26705,7 +26705,7 @@ F_TRAINER_FEMALE |
 #line 10669
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_FORCE_SETUP_FIRST_TURN,
 #line 10664
-        .mugshotColor = MUGSHOT_COLOR_PURPLE,
+        .mugshotColor = MUGSHOT_COLOR_RED,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {

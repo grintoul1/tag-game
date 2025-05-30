@@ -102,7 +102,7 @@ AquaHideout_1F_EventScript_LeavingHideout::
 	applymovement OBJ_EVENT_ID_PLAYER, AquaHideout_1F_Movement_PlayerLeaving
 	applymovement LOCALID_EMMIE, AquaHideout_1F_Movement_EmmieLeaving
 	waitmovement 0
-	setfollowernpc 4, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
+	setfollowernpc 4, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
 	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
 	end

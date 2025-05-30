@@ -238,7 +238,7 @@ AquaHideout_B2F_EventScript_SubmarineEscape::
 	waitmovement 0
 	msgbox AquaHideout_B2F_Text_EmmieLetsGo, MSGBOX_DEFAULT
 	closemessage
-	setfollowernpc 9, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
+	setfollowernpc 9, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	setobjectmovementtype LOCALID_SHELLY, MOVEMENT_TYPE_FACE_DOWN
 	setflag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE
 	setflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA

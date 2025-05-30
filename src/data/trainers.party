@@ -10493,7 +10493,7 @@ IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
 Name: Tabitha
 Class: Magma Admin
 Pic: Magma Admin
-Mugshot: Purple
+Mugshot: Blue
 Gender: Male
 Music: Cool
 Battle Type: Singles
@@ -10508,7 +10508,7 @@ Ability: Sand Stream
 - Crunch
 - Stone Edge
 
-Heliolisk @ Safety Goggles
+Heliolisk @ Silk Scarf
 Level: 86
 Modest Nature
 Ability: Sand Veil
@@ -10606,7 +10606,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Name: Matt
 Class: Aqua Admin
 Pic: Aqua Admin M
-Mugshot: Purple
+Mugshot: Blue
 Gender: Male
 Music: Cool
 Battle Type: Singles
@@ -10643,7 +10643,7 @@ Ability: Pressure
 Name: Courtney
 Class: Magma Admin
 Pic: Magma Admin F
-Mugshot: Purple
+Mugshot: Red
 Gender: Female
 Music: Cool
 Battle Type: Singles
@@ -10661,7 +10661,7 @@ IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
 Name: Shelly
 Class: Aqua Admin
 Pic: Aqua Admin F
-Mugshot: Purple
+Mugshot: Red
 Gender: Female
 Music: Cool
 Items: Full Restore

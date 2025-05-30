@@ -1033,7 +1033,7 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	waitmovement 0
 	msgbox LittlerootTown_Text_EmmieHowExciting, MSGBOX_DEFAULT
 	closemessage
-	setfollowernpc 9, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
+	setfollowernpc 9, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	return
 
 LittlerootTown_Text_OurNewHomeLetsGoInside:
