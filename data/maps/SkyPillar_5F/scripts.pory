@@ -1,14 +1,21 @@
 raw `
 SkyPillar_5F_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, CaveHole_CheckFallDownHole
 	map_script MAP_SCRIPT_ON_TRANSITION, SkyPillar_5F_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, SkyPillar_5F_SetHoleWarp
 	.byte 0
 
 SkyPillar_5F_OnTransition:
-	call_if_lt VAR_SKY_PILLAR_STATE, 2, SkyPillar_5F_EventScript_CleanFloor
+	call_if_lt VAR_SKY_PILLAR_STATE, 8, SkyPillar_5F_EventScript_CleanFloor
 	return
 
 SkyPillar_5F_EventScript_CleanFloor::
 	setmaplayoutindex LAYOUT_SKY_PILLAR_5F_CLEAN
 	return
+
+SkyPillar_5F_SetHoleWarp:
+	setstepcallback STEP_CB_CRACKED_FLOOR
+	setholewarp MAP_SKY_PILLAR_4F
+	end
 
 `

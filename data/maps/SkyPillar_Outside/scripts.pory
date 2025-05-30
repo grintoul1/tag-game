@@ -30,15 +30,10 @@ SkyPillar_Outside_EventScript_OpenDoor::
 	return
 
 SkyPillar_Outside_OnFrame:
-	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 3, SkyPillar_Outside_EventScript_WallaceScene
 	.2byte 0
 
 SkyPillar_Outside_EventScript_WallaceScene::
 	lockall
-	applymovement LOCALID_WALLACE, SkyPillar_Outside_Movement_WallaceApproachPlayer
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
 	msgbox SkyPillar_Outside_Text_OpenedDoorToSkyPillar, MSGBOX_DEFAULT
 	closemessage
 	delay 30
@@ -51,9 +46,6 @@ SkyPillar_Outside_EventScript_WallaceScene::
 	delay 40
 	msgbox SkyPillar_Outside_Text_EarthquakeNotMomentToWaste, MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, SkyPillar_Outside_Movement_PlayerClimbSkyPillar
-	applymovement LOCALID_WALLACE, SkyPillar_Outside_Movement_WallaceClimbSkyPillar
-	waitmovement 0
 	setvar VAR_0x8004, 1   @ vertical pan
 	setvar VAR_0x8005, 3   @ horizontal pan
 	setvar VAR_0x8006, 20  @ num shakes
@@ -134,6 +126,8 @@ SkyPillar_Outside_Movement_PlayerClimbSkyPillar:
 	step_end
 
 SkyPillar_Outside_EventScript_Wallace::
+	faceplayer
+	goto SkyPillar_Outside_EventScript_WallaceScene
 	end
 
 SkyPillar_Outside_EventScript_ClosedDoor::
@@ -148,8 +142,7 @@ SkyPillar_Outside_Text_OpenedDoorToSkyPillar:
 	.string "In my haste, I didn't notice that\n"
 	.string "I'd left you behind!\p"
 	.string "I've opened the locked door of\n"
-	.string "the SKY PILLAR.\p"
-	.string "{PLAYER}{KUN}, let's be on our way!$"
+	.string "the SKY PILLAR.$"
 
 SkyPillar_Outside_Text_EarthquakeNotMomentToWaste:
 	.string "WALLACE: It's an earthquake!\p"

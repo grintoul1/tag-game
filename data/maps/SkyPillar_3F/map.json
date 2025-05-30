@@ -15,30 +15,32 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_SKYPILLAR_MAGMAGRUNT4",
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
       "x": 6,
       "y": 3,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_RUN_IN_PLACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_JOG_IN_PLACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_SKY_PILLAR_EVIL_TEAMS"
     },
     {
+      "local_id": "LOCALID_SKYPILLAR_AQUAGRUNT4",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
       "x": 8,
       "y": 3,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_RUN_IN_PLACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_JOG_IN_PLACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_SKY_PILLAR_EVIL_TEAMS"
     }
   ],
   "warp_events": [
@@ -64,6 +66,16 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 3,
+      "elevation": 0,
+      "var": "VAR_SKY_PILLAR_STATE",
+      "var_value": "3",
+      "script": "SkyPillar_3F_EventScript_SkyPillar_AquaGrunt4SkyPillar_MagmaGrunt4"
+    }
+  ],
   "bg_events": []
 }

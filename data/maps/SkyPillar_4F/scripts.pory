@@ -6,9 +6,15 @@ SkyPillar_4F_MapScripts::
 	.byte 0
 
 SkyPillar_4F_OnTransition:
-	call_if_lt VAR_SKY_PILLAR_STATE, 2, SkyPillar_4F_EventScript_CleanFloor
+	call_if_lt VAR_SKY_PILLAR_STATE, 8, SkyPillar_4F_EventScript_CleanFloor
 	copyvar VAR_ICE_STEP_COUNT, 1
+	call_if_gt VAR_SKY_PILLAR_STATE, 2, SkyPillar_4F_EventScript_GruntMovements
 	end
+
+SkyPillar_4F_EventScript_GruntMovements::
+	setobjectmovementtype LOCALID_SKYPILLAR_AQUAGRUNT3, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectmovementtype LOCALID_SKYPILLAR_MAGMAGRUNT3, MOVEMENT_TYPE_FACE_LEFT
+	return
 
 SkyPillar_4F_EventScript_CleanFloor::
 	setmaplayoutindex LAYOUT_SKY_PILLAR_4F_CLEAN
@@ -18,5 +24,79 @@ SkyPillar_4F_SetHoleWarp:
 	setstepcallback STEP_CB_CRACKED_FLOOR
 	setholewarp MAP_SKY_PILLAR_3F
 	end
+
+SkyPillar_4F_Text_SkyPillar_AquaGrunt3Intro:
+	.string "There's a whole lot of noise coming from\n"
+	.string "the top!$"
+
+SkyPillar_4F_Text_SkyPillar_MagmaGrunt3Intro:
+	.string "Team Aqua and now you? This whole\n"
+	.string "situation is a total mess!$"
+
+SkyPillar_4F_Text_SkyPillar_AquaGrunt3Defeat:
+	.string "I wish I could see what was happening\n"
+	.string "up there…$"
+
+SkyPillar_4F_Text_SkyPillar_MagmaGrunt3Defeat:
+	.string "What am I even doing here?$"
+
+SkyPillar_4F_Text_SkyPillar_AquaGrunt3PostBattle:
+	.string "Whatever is happening up there, I know\n"
+	.string "Archie will come out on top.$"
+
+SkyPillar_4F_Text_SkyPillar_MagmaGrunt3PostBattle:
+	.string "I'd go for a lie down if this place\n"
+	.string "weren't so filthy…$"
+
+SkyPillar_4F_EventScript_SkyPillar_AquaGrunt3::
+	faceplayer
+	msgbox SkyPillar_4F_Text_SkyPillar_AquaGrunt3PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+SkyPillar_4F_EventScript_SkyPillar_MagmaGrunt3::
+	faceplayer
+	msgbox SkyPillar_4F_Text_SkyPillar_MagmaGrunt3PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+SkyPillar_4F_EventScript_SkyPillar_AquaGrunt3SkyPillar_MagmaGrunt3::
+lockall
+playse SE_PIN
+applymovement LOCALID_SKYPILLAR_AQUAGRUNT3, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_AQUA, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SkyPillar_4F_Text_SkyPillar_AquaGrunt3Intro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_SKYPILLAR_MAGMAGRUNT3, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_MAGMA, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SkyPillar_4F_Text_SkyPillar_MagmaGrunt3Intro MSGBOX_AUTOCLOSE
+goto SkyPillar_4F_EventScript_SkyPillar_AquaGrunt3SkyPillar_MagmaGrunt3DoMultiBattle
+releaseall
+end
+
+SkyPillar_4F_EventScript_SkyPillar_AquaGrunt3SkyPillar_MagmaGrunt3DoMultiBattle::
+setobjectmovementtype LOCALID_SKYPILLAR_AQUAGRUNT3, MOVEMENT_TYPE_FACE_RIGHT
+setobjectmovementtype LOCALID_SKYPILLAR_MAGMAGRUNT3, MOVEMENT_TYPE_FACE_LEFT
+playbgm MUS_MT_CHIMNEY, TRUE
+multi_2p_vs_2 TRAINER_GRUNT_AQUA_SKY_PILLAR_3, SkyPillar_4F_Text_SkyPillar_AquaGrunt3Defeat, TRAINER_GRUNT_MAGMA_SKY_PILLAR_3, SkyPillar_4F_Text_SkyPillar_MagmaGrunt3Defeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, SkyPillar_4F_EventScript_SkyPillar_AquaGrunt3SkyPillar_MagmaGrunt3Victory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+SkyPillar_4F_EventScript_SkyPillar_AquaGrunt3SkyPillar_MagmaGrunt3Victory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SkyPillar_4F_Text_SkyPillar_AquaGrunt3PostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SkyPillar_4F_Text_SkyPillar_MagmaGrunt3PostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_SKY_PILLAR_STATE, 1
+end
 
 `

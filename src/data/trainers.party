@@ -10086,10 +10086,10 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Light Screen
 - Shadow Ball
 
-=== TRAINER_ISAAC_2 ===
-Name: ISAAC
-Class: Pkmn Breeder
-Pic: Pokemon Breeder M
+=== TRAINER_GRUNT_MAGMA_SKY_PILLAR_1 ===
+Name: Grunt
+Class: Team Magma Mixed
+Pic: Magma Grunt M
 Gender: Male
 Music: Male
 Battle Type: Singles
@@ -10119,12 +10119,12 @@ Makuhita
 Level: 22
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
-=== TRAINER_ISAAC_3 ===
-Name: ISAAC
-Class: Pkmn Breeder
-Pic: Pokemon Breeder M
-Gender: Male
-Music: Male
+=== TRAINER_GRUNT_MAGMA_SKY_PILLAR_2 ===
+Name: Grunt
+Class: Team Magma Mixed
+Pic: Magma Grunt F
+Gender: Female
+Music: Female
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -10152,12 +10152,12 @@ Hariyama
 Level: 25
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
-=== TRAINER_ISAAC_4 ===
-Name: ISAAC
-Class: Pkmn Breeder
-Pic: Pokemon Breeder M
-Gender: Male
-Music: Male
+=== TRAINER_GRUNT_MAGMA_SKY_PILLAR_3 ===
+Name: Grunt
+Class: Team Magma Mixed
+Pic: Magma Grunt F
+Gender: Female
+Music: Female
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -10282,12 +10282,12 @@ Sandslash
 Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_LYDIA_2 ===
-Name: LYDIA
-Class: Pkmn Breeder
-Pic: Pokemon Breeder F
-Gender: Female
-Music: Female
+=== TRAINER_GRUNT_MAGMA_SKY_PILLAR_4 ===
+Name: Grunt
+Class: Team Magma Mixed
+Pic: Magma Grunt M
+Gender: Male
+Music: Male
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -10315,12 +10315,12 @@ Goldeen
 Level: 22
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
-=== TRAINER_LYDIA_3 ===
-Name: LYDIA
-Class: Pkmn Breeder
-Pic: Pokemon Breeder F
-Gender: Female
-Music: Female
+=== TRAINER_GRUNT_AQUA_SKY_PILLAR_1 ===
+Name: Grunt
+Class: Team Aqua Mixed
+Pic: Aqua Grunt M
+Gender: Male
+Music: Male
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -10348,10 +10348,10 @@ Goldeen
 Level: 25
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
-=== TRAINER_LYDIA_4 ===
-Name: LYDIA
-Class: Pkmn Breeder
-Pic: Pokemon Breeder F
+=== TRAINER_GRUNT_AQUA_SKY_PILLAR_2 ===
+Name: Grunt
+Class: Team Aqua Mixed
+Pic: Aqua Grunt F
 Gender: Female
 Music: Female
 Battle Type: Singles
@@ -10456,7 +10456,6 @@ Class: Pkmn Ranger
 Pic: Pokemon Ranger M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Singles
 AI: Basic Trainer
 
@@ -10464,13 +10463,12 @@ Cacturne
 Level: 39
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-=== TRAINER_JACKSON_2 ===
-Name: JACKSON
-Class: Pkmn Ranger
-Pic: Pokemon Ranger M
+=== TRAINER_GRUNT_AQUA_SKY_PILLAR_3 ===
+Name: Grunt
+Class: Team Aqua Mixed
+Pic: Aqua Grunt M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Singles
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 
@@ -10478,13 +10476,12 @@ Breloom
 Level: 31
 IVs: 7 HP / 7 Atk / 7 Def / 7 SpA / 7 SpD / 7 Spe
 
-=== TRAINER_JACKSON_3 ===
-Name: JACKSON
-Class: Pkmn Ranger
-Pic: Pokemon Ranger M
+=== TRAINER_GRUNT_AQUA_SKY_PILLAR_4 ===
+Name: Grunt
+Class: Team Aqua Mixed
+Pic: Aqua Grunt F
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Singles
 AI: Basic Trainer
 
@@ -10492,19 +10489,42 @@ Breloom
 Level: 34
 IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
 
-=== TRAINER_JACKSON_4 ===
-Name: JACKSON
-Class: Pkmn Ranger
-Pic: Pokemon Ranger M
+=== TRAINER_TABITHA_SKY_PILLAR ===
+Name: Tabitha
+Class: Magma Admin
+Pic: Magma Admin
+Mugshot: Purple
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Singles
-AI: Check Bad Move / Try To Faint / Force Setup First Turn
+AI: Basic Trainer
 
-Breloom
-Level: 37
-IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+Tyranitar @ Eject Pack
+Level: 87
+Sassy Nature
+Ability: Sand Stream
+- High Horsepower
+- Superpower
+- Crunch
+- Stone Edge
+
+Heliolisk @ Safety Goggles
+Level: 86
+Modest Nature
+Ability: Sand Veil
+- Focus Blast
+- Thunderbolt
+- Weather Ball
+- Hyper Voice
+
+Landorus @ Yache Berry
+Level: 86
+Mild Nature
+Ability: Sand Force
+- Earth Power
+- Iron Tail
+- Weather Ball
+- Rock Slide
 
 === TRAINER_JACKSON_5 ===
 Name: JACKSON
@@ -10582,31 +10602,50 @@ Roselia
 Level: 38
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-=== TRAINER_CATHERINE_2 ===
-Name: CATHERINE
-Class: Pkmn Ranger
-Pic: Pokemon Ranger F
-Gender: Female
+=== TRAINER_MATT_SKY_PILLAR ===
+Name: Matt
+Class: Aqua Admin
+Pic: Aqua Admin M
+Mugshot: Purple
+Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Singles
-AI: Check Bad Move / Try To Faint / Force Setup First Turn
+AI: Basic Trainer
 
-Gloom
-Level: 30
-IVs: 7 HP / 7 Atk / 7 Def / 7 SpA / 7 SpD / 7 Spe
+Ninetales-Alola @ Eject Button
+Level: 87
+Timid Nature
+Ability: Snow Warning
+- Moonblast
+- Ice Beam
+- Weather Ball
+- Aurora Veil
 
-Roselia
-Level: 30
-IVs: 7 HP / 7 Atk / 7 Def / 7 SpA / 7 SpD / 7 Spe
+Mamoswine @ Never-Melt Ice
+Level: 86
+Adamant Nature
+Ability: Snow Cloak
+- High Horsepower
+- Icicle Crash
+- Rock Slide
+- Hard Press
 
-=== TRAINER_CATHERINE_3 ===
-Name: CATHERINE
-Class: Pkmn Ranger
-Pic: Pokemon Ranger F
+Articuno @ Charti Berry
+Level: 86
+Bold Nature
+Ability: Pressure
+- Air Slash
+- Freeze-Dry
+- Weather Ball
+- Extrasensory
+
+=== TRAINER_COURTNEY_SKY_PILLAR ===
+Name: Courtney
+Class: Magma Admin
+Pic: Magma Admin F
+Mugshot: Purple
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Singles
 AI: Basic Trainer
 
@@ -10618,10 +10657,11 @@ Roselia
 Level: 33
 IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
 
-=== TRAINER_CATHERINE_4 ===
-Name: CATHERINE
-Class: Pkmn Ranger
-Pic: Pokemon Ranger F
+=== TRAINER_SHELLY_SKY_PILLAR ===
+Name: Shelly
+Class: Aqua Admin
+Pic: Aqua Admin F
+Mugshot: Purple
 Gender: Female
 Music: Cool
 Items: Full Restore
@@ -11304,7 +11344,7 @@ Numel
 Level: 15
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_HALEY_2 ===
+=== TRAINER_MAXIE_SKY_PILLAR ===
 Name: HALEY
 Class: Lass
 Pic: Lass
@@ -11313,30 +11353,77 @@ Music: Female
 Battle Type: Singles
 AI: Check Bad Move
 
-Lombre
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Rayquaza @ Dragon Gem
+Level: 87
+Timid Nature
+Ability: Air Lock
+- Draco Meteor
+- Tailwind
+- Flamethrower
+- Focus Blast
 
-Shroomish
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Charizard @ Charizardite Y
+Level: 87
+Modest Nature
+Ability: Blaze
+- Heat Wave
+- Air Slash
+- Solar Beam
+- Dragon Pulse
 
-=== TRAINER_HALEY_3 ===
-Name: HALEY
-Class: Lass
-Pic: Lass
+Torkoal @ Fire Gem
+Level: 86
+Sassy Nature
+Ability: Shell Armor
+- Protect
+- Eruption
+- Solar Beam
+- Earth Power
+
+Lilligant @ Focus Sash
+Level: 86
+Timid Nature
+Ability: Chlorophyll
+- After You
+- Leaf Storm
+- Weather Ball
+- Synthesis
+
+=== TRAINER_ARCHIE_SKY_PILLAR ===
+Name: Archie
+Class: Aqua Leader
+Pic: Aqua Leader Archie
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Check Bad Move
 
-Lombre
-Level: 29
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Rayquaza @ Dragon Gem
+Level: 87
+Timid Nature
+Ability: Air Lock
+- Draco Meteor
+- Tailwind
+- Flamethrower
+- Focus Blast
 
-Breloom
-Level: 29
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Swampert @ Swampertite
+Level: 87
+Adamant Nature
+Ability: Torrent
+- Liquidation
+- Ice Punch
+- High Horsepower
+- Poison Jab
+
+Archaludon @ Assault Vest
+Level: 86
+Relaxed Nature
+Ability: Stamina
+- Body Press
+- Flash Cannon
+- Electro Shot
+- Dragon Pulse
 
 === TRAINER_HALEY_4 ===
 Name: HALEY

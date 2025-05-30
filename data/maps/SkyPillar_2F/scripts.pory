@@ -6,9 +6,15 @@ SkyPillar_2F_MapScripts::
 	.byte 0
 
 SkyPillar_2F_OnTransition:
-	call_if_lt VAR_SKY_PILLAR_STATE, 2, SkyPillar_2F_EventScript_CleanFloor
+	call_if_lt VAR_SKY_PILLAR_STATE, 8, SkyPillar_2F_EventScript_CleanFloor
 	copyvar VAR_ICE_STEP_COUNT, 1
+	call_if_gt VAR_SKY_PILLAR_STATE, 1, SkyPillar_2F_EventScript_GruntMovements
 	end
+
+SkyPillar_2F_EventScript_GruntMovements::
+	setobjectmovementtype LOCALID_SKYPILLAR_AQUAGRUNT2, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectmovementtype LOCALID_SKYPILLAR_MAGMAGRUNT2, MOVEMENT_TYPE_FACE_LEFT
+	return
 
 SkyPillar_2F_EventScript_CleanFloor::
 	setmaplayoutindex LAYOUT_SKY_PILLAR_2F_CLEAN
@@ -18,5 +24,78 @@ SkyPillar_2F_SetHoleWarp:
 	setstepcallback STEP_CB_CRACKED_FLOOR
 	setholewarp MAP_SKY_PILLAR_1F
 	end
+
+SkyPillar_2F_Text_SkyPillar_AquaGrunt2Intro:
+	.string "The ground around us began to\n"
+	.string "crumble when we started battling!$"
+
+SkyPillar_2F_Text_SkyPillar_MagmaGrunt2Intro:
+	.string "A slight tremor isn't enough\n"
+	.string "to make me hold back!$"
+
+SkyPillar_2F_Text_SkyPillar_AquaGrunt2Defeat:
+	.string "Maybe now I won't fall through the floor…$"
+
+SkyPillar_2F_Text_SkyPillar_MagmaGrunt2Defeat:
+	.string "Okay, now I need to take a break!$"
+
+SkyPillar_2F_Text_SkyPillar_AquaGrunt2PostBattle:
+	.string "Please, don't do anything to disturb the\n"
+	.string "floor any more!$"
+
+SkyPillar_2F_Text_SkyPillar_MagmaGrunt2PostBattle:
+	.string "Now I'm stuck here having to listen to\n"
+	.string "her…$"
+
+SkyPillar_2F_EventScript_SkyPillar_AquaGrunt2::
+	faceplayer
+	msgbox SkyPillar_2F_Text_SkyPillar_AquaGrunt2PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+SkyPillar_2F_EventScript_SkyPillar_MagmaGrunt2::
+	faceplayer
+	msgbox SkyPillar_2F_Text_SkyPillar_MagmaGrunt2PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+SkyPillar_2F_EventScript_SkyPillar_AquaGrunt2SkyPillar_MagmaGrunt2::
+lockall
+playse SE_PIN
+applymovement LOCALID_SKYPILLAR_AQUAGRUNT2, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_AQUA, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SkyPillar_2F_Text_SkyPillar_AquaGrunt2Intro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_SKYPILLAR_MAGMAGRUNT2, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_MAGMA, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SkyPillar_2F_Text_SkyPillar_MagmaGrunt2Intro MSGBOX_AUTOCLOSE
+goto SkyPillar_2F_EventScript_SkyPillar_AquaGrunt2SkyPillar_MagmaGrunt2DoMultiBattle
+releaseall
+end
+
+SkyPillar_2F_EventScript_SkyPillar_AquaGrunt2SkyPillar_MagmaGrunt2DoMultiBattle::
+setobjectmovementtype LOCALID_SKYPILLAR_AQUAGRUNT2, MOVEMENT_TYPE_FACE_RIGHT
+setobjectmovementtype LOCALID_SKYPILLAR_MAGMAGRUNT2, MOVEMENT_TYPE_FACE_LEFT
+playbgm MUS_MT_CHIMNEY, TRUE
+multi_2p_vs_2 TRAINER_GRUNT_AQUA_SKY_PILLAR_2, SkyPillar_2F_Text_SkyPillar_AquaGrunt2Defeat, TRAINER_GRUNT_MAGMA_SKY_PILLAR_2, SkyPillar_2F_Text_SkyPillar_MagmaGrunt2Defeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, SkyPillar_2F_EventScript_SkyPillar_AquaGrunt2SkyPillar_MagmaGrunt2Victory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+SkyPillar_2F_EventScript_SkyPillar_AquaGrunt2SkyPillar_MagmaGrunt2Victory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SkyPillar_2F_Text_SkyPillar_AquaGrunt2PostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SkyPillar_2F_Text_SkyPillar_MagmaGrunt2PostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_SKY_PILLAR_STATE, 1
+end
 
 `

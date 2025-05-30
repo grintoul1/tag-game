@@ -1,7 +1,7 @@
 {
   "id": "MAP_SKY_PILLAR_2F",
   "name": "SkyPillar_2F",
-  "layout": "LAYOUT_SKY_PILLAR_2F",
+  "layout": "LAYOUT_SKY_PILLAR_2F_CLEAN",
   "music": "MUS_MT_CHIMNEY",
   "region_map_section": "MAPSEC_SKY_PILLAR",
   "requires_flash": false,
@@ -15,30 +15,32 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_SKYPILLAR_MAGMAGRUNT2",
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
-      "x": 2,
-      "y": 12,
+      "x": 13,
+      "y": 8,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_RUN_IN_PLACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_JOG_IN_PLACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "SkyPillar_2F_EventScript_SkyPillar_MagmaGrunt2",
+      "flag": "FLAG_HIDE_SKY_PILLAR_EVIL_TEAMS"
     },
     {
+      "local_id": "LOCALID_SKYPILLAR_AQUAGRUNT2",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
-      "x": 0,
-      "y": 12,
+      "x": 11,
+      "y": 8,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_RUN_IN_PLACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_JOG_IN_PLACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "SkyPillar_2F_EventScript_SkyPillar_AquaGrunt2",
+      "flag": "FLAG_HIDE_SKY_PILLAR_EVIL_TEAMS"
     }
   ],
   "warp_events": [
@@ -57,6 +59,16 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_SKY_PILLAR_STATE",
+      "var_value": "1",
+      "script": "SkyPillar_2F_EventScript_SkyPillar_AquaGrunt2SkyPillar_MagmaGrunt2"
+    }
+  ],
   "bg_events": []
 }

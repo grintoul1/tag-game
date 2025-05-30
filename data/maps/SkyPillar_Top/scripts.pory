@@ -1,5 +1,4 @@
 raw `
-.set LOCALID_RAYQUAZA_SLEEPING, 1
 
 SkyPillar_Top_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, SkyPillar_Top_OnResume
@@ -18,9 +17,47 @@ SkyPillar_Top_EventScript_TryRemoveRayquaza::
 	return
 
 SkyPillar_Top_OnTransition:
-	call_if_lt VAR_SKY_PILLAR_STATE, 2, SkyPillar_Top_EventScript_SetCleanLayout
-	call_if_ge VAR_SKY_PILLAR_STATE, 2, SkyPillar_Top_EventScript_TryShowRayquaza
+	call_if_lt VAR_SKY_PILLAR_STATE, 8, SkyPillar_Top_EventScript_SetCleanLayout
+	call_if_ge VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_TryShowRayquaza
+	call_if_eq VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_MattTabithaPos
+	call_if_eq VAR_SKY_PILLAR_STATE, 5, SkyPillar_Top_EventScript_ShellyCourtneyPos
+	call_if_ge VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_LeaderVars
+	call_if_ge VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_LeaderPos
 	end
+
+SkyPillar_Top_EventScript_LeaderPos::
+	setobjectxyperm VAR_0x8003, 12, 10
+	setobjectmovementtype VAR_0x8003, MOVEMENT_TYPE_FACE_UP
+	return
+
+SkyPillar_Top_EventScript_LeaderVars::
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieVars
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieVars
+	return
+
+SkyPillar_Top_EventScript_MaxieVars::
+	setvar VAR_0x8002, LOCALID_SKYPILLAR_MAXIE
+	setvar VAR_0x8003, LOCALID_SKYPILLAR_ARCHIE
+	return
+
+SkyPillar_Top_EventScript_ArchieVars::
+	setvar VAR_0x8002, LOCALID_SKYPILLAR_ARCHIE
+	setvar VAR_0x8003, LOCALID_SKYPILLAR_MAXIE
+	return
+
+SkyPillar_Top_EventScript_MattTabithaPos::
+	setobjectxyperm LOCALID_SKYPILLAR_MATT, 12, 21
+	setobjectxyperm LOCALID_SKYPILLAR_TABITHA, 12, 19
+	setobjectmovementtype LOCALID_SKYPILLAR_MATT, MOVEMENT_TYPE_JOG_IN_PLACE_UP
+	setobjectmovementtype LOCALID_SKYPILLAR_TABITHA, MOVEMENT_TYPE_JOG_IN_PLACE_DOWN
+	setobjectmovementtype LOCALID_SKYPILLAR_SHELLY, MOVEMENT_TYPE_JOG_IN_PLACE_LEFT
+	setobjectmovementtype LOCALID_SKYPILLAR_COURTNEY, MOVEMENT_TYPE_JOG_IN_PLACE_RIGHT
+	return
+
+SkyPillar_Top_EventScript_ShellyCourtneyPos::
+	setobjectmovementtype LOCALID_SKYPILLAR_SHELLY, MOVEMENT_TYPE_JOG_IN_PLACE_LEFT
+	setobjectmovementtype LOCALID_SKYPILLAR_COURTNEY, MOVEMENT_TYPE_JOG_IN_PLACE_RIGHT
+	return
 
 SkyPillar_Top_EventScript_SetCleanLayout::
 	setmaplayoutindex LAYOUT_SKY_PILLAR_TOP_CLEAN
@@ -42,6 +79,306 @@ SkyPillar_Top_OnWarp:
 SkyPillar_Top_EventScript_RayquazaFaceDown::
 	turnobject LOCALID_RAYQUAZA_SLEEPING, DIR_SOUTH
 	end
+
+SkyPillar_Top_Movement_EmmieApproachMatt:
+	walk_left
+	walk_down
+	face_left
+	step_end
+
+SkyPillar_Top_Text_MattLeaveWellAlone:
+	.string "Matt: You two, again!\p"
+	.string "You just don't know when to quit\n"
+	.string "do you?$"
+
+SkyPillar_Top_Text_TabithaTenacious:
+	.string "Tabitha: Heh… Tenacious aren't you…$"
+
+SkyPillar_Top_Text_MattBeenHereBefore:
+	.string "Matt: We've been here before…\p"
+	.string "Let's get it right this time.$"
+
+SkyPillar_Top_Text_TabithaWhyNot:
+	.string "Tabitha: Sure, why not?$"
+
+SkyPillar_Top_Movement_TabithaApproachPlayer:
+	walk_slow_down
+	face_right
+	step_end
+
+SkyPillar_Top_Text_TabithaNotLikePyre:
+	.string "Tabitha: Hehehe… This isn't going to\n"
+	.string "end like Mt Pyre!$"
+
+SkyPillar_Top_Text_MattDefeat:
+	.string "I concede. Team Aqua may never be able\n"
+	.string "to hold you back…$"
+
+SkyPillar_Top_Text_TabithaDefeat:
+	.string "Hehe… Hehehehe…$"
+
+SkyPillar_Top_Movement_TabithaMattKnockedBack:
+	lock_facing_direction
+	walk_fast_left
+	walk_fast_left
+	unlock_facing_direction
+	step_end
+
+SkyPillar_Top_Text_MattPostBattle:
+	.string "Matt: Whatever happens now is beyond\n"
+	.string "my control.$"
+
+SkyPillar_Top_Text_TabithaPostBattle:
+	.string "Tabitha: Nothing you say or do will\n"
+	.string "ever weaken my faith in Maxie…$"
+
+SkyPillar_Top_Movement_MattReturnToPosition:
+	walk_up
+	walk_up
+	walk_right
+	face_down
+	step_end
+
+SkyPillar_Top_Movement_TabithaReturnToPosition:
+	walk_slow_up
+	face_down
+	step_end
+
+SkyPillar_Top_Text_EmmieNearlyThere:
+	.string "Emmie: C'mon, {PLAYER}, we're almost\n"
+	.string "there!$"
+
+SkyPillar_Top_EventScript_MattTabitha::
+	lockall
+	playbgm MUS_ENCOUNTER_AQUA, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SkyPillar_Top_Movement_EmmieApproachMatt
+	waitmovement 0
+	setobjectmovementtype LOCALID_SKYPILLAR_MATT, MOVEMENT_TYPE_FACE_UP
+	setobjectmovementtype LOCALID_SKYPILLAR_TABITHA, MOVEMENT_TYPE_FACE_DOWN
+	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_FaceRight
+	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_FaceRight
+	waitmovement 0
+	playse SE_PIN
+	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_ExclamationMark
+	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_MattLeaveWellAlone, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_TabithaTenacious, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_FaceDown
+	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_MattBeenHereBefore, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_TabithaWhyNot, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SKYPILLAR_TABITHA, SkyPillar_Top_Movement_TabithaApproachPlayer
+	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_WalkSlowRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkSlowLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkSlowLeft
+	waitmovement 0
+	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_TabithaNotLikePyre, MSGBOX_DEFAULT
+	closemessage
+	goto SkyPillar_Top_EventScript_MattTabithaDoMultiBattle
+	releaseall
+	end
+
+SkyPillar_Top_EventScript_MattTabithaDoMultiBattle::
+	playbgm MUS_NONE, TRUE
+	multi_2p_vs_2 TRAINER_MATT_SKY_PILLAR, SkyPillar_Top_Text_MattDefeat, TRAINER_TABITHA_SKY_PILLAR, SkyPillar_Top_Text_TabithaDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, SkyPillar_Top_EventScript_MattTabithaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+SkyPillar_Top_EventScript_MattTabithaVictory::
+	playse SE_NOT_EFFECTIVE
+	applymovement LOCALID_SKYPILLAR_TABITHA, SkyPillar_Top_Movement_TabithaMattKnockedBack
+	applymovement LOCALID_SKYPILLAR_MATT, SkyPillar_Top_Movement_TabithaMattKnockedBack
+	waitmovement 0
+	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_MattPostBattle, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_TabithaPostBattle, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SKYPILLAR_MATT, SkyPillar_Top_Movement_MattReturnToPosition
+	applymovement LOCALID_SKYPILLAR_TABITHA, SkyPillar_Top_Movement_TabithaReturnToPosition
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkSlowLeft
+	waitmovement 0
+	setobjectmovementtype LOCALID_SKYPILLAR_MATT, MOVEMENT_TYPE_FACE_DOWN
+	setobjectmovementtype LOCALID_SKYPILLAR_TABITHA, MOVEMENT_TYPE_FACE_DOWN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_EmmieNearlyThere, MSGBOX_DEFAULT
+	closemessage
+	addvar VAR_SKY_PILLAR_STATE, 1
+	end
+
+SkyPillar_Top_EventScript_Matt::
+	faceplayer
+	msgbox SkyPillar_Top_Text_MattPostBattle, MSGBOX_DEFAULT
+	closemessage
+	end
+
+SkyPillar_Top_EventScript_Tabitha::
+	faceplayer
+	msgbox SkyPillar_Top_Text_TabithaPostBattle, MSGBOX_DEFAULT
+	closemessage
+	end
+
+SkyPillar_Top_Text_CourtneyNoInterruptions:
+	.string "Courtney: Maxie instructed me that\n"
+	.string "there are to be no interruptions.\p"
+	.string "Nobody makes me break a promise with\n"
+	.string "Maxie, especially not you Shelly!$"
+
+SkyPillar_Top_Movement_PlayerApproachShelly:
+	walk_right
+	walk_slow_up
+	walk_slow_up
+	step_end
+
+SkyPillar_Top_Movement_EmmieApproachCourtney:
+	walk_up
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+SkyPillar_Top_Text_ShellyShouldHaveKnown:
+	.string "Shelly: I should have known you two\n"
+	.string "would turn up sooner or later…\p"
+	.string "I trust that Archie knows what's\n"
+	.string "best, and every time you show up,\l"
+	.string "things only ever get worse…$"
+
+SkyPillar_Top_Text_CourtneySpeechless:
+	.string "Courtney: … … … … … …$"
+
+SkyPillar_Top_EventScript_ShellyCourtney::
+	lockall
+	setobjectmovementtype LOCALID_SKYPILLAR_COURTNEY, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectmovementtype LOCALID_SKYPILLAR_SHELLY, MOVEMENT_TYPE_FACE_LEFT
+	applymovement OBJ_EVENT_ID_PLAYER, SkyPillar_Top_Movement_PlayerApproachShelly
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SkyPillar_Top_Movement_EmmieApproachCourtney
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MAGMA, TRUE
+	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_CourtneyNoInterruptions, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_FaceDown
+	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_FaceDown
+	waitmovement 0
+	playse SE_PIN
+	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_ExclamationMark
+	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_ShellyShouldHaveKnown, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_FaceRight
+	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_FaceLeft
+	waitmovement 0
+	delay 30
+	msgbox SkyPillar_Top_Text_CourtneySpeechless, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_WalkDown
+	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_WalkDown
+	waitmovement 0
+	goto SkyPillar_Top_EventScript_CourtneyShellyDoMultiBattle
+	releaseall
+	end
+
+SkyPillar_Top_EventScript_CourtneyShellyDoMultiBattle::
+	playbgm MUS_NONE, TRUE
+	setobjectmovementtype LOCALID_SKYPILLAR_COURTNEY, MOVEMENT_TYPE_FACE_DOWN
+	setobjectmovementtype LOCALID_SKYPILLAR_SHELLY, MOVEMENT_TYPE_FACE_DOWN
+	multi_2p_vs_2 TRAINER_SHELLY_SKY_PILLAR, SkyPillar_Top_Text_ShellyDefeat, TRAINER_COURTNEY_SKY_PILLAR, SkyPillar_Top_Text_CourtneyDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, SkyPillar_Top_EventScript_CourtneyShellyVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+SkyPillar_Top_EventScript_CourtneyShellyVictory::
+	playse SE_PIN
+	applymovement LOCALID_SKYPILLAR_COURTNEY, SkyPillar_Top_Movement_CourtneyShellyKnockedBack
+	applymovement LOCALID_SKYPILLAR_SHELLY, SkyPillar_Top_Movement_CourtneyShellyKnockedBack
+	waitmovement 0
+	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_ShellyPostBattle, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_CourtneyPostBattle, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkSlowRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_EmmieThisIsIt, MSGBOX_DEFAULT
+	closemessage
+	addvar VAR_SKY_PILLAR_STATE, 1
+	end
+
+SkyPillar_Top_EventScript_Shelly::
+	faceplayer
+	msgbox SkyPillar_Top_Text_ShellyPostBattle, MSGBOX_DEFAULT
+	closemessage
+	end
+
+SkyPillar_Top_EventScript_Courtney::
+	faceplayer
+	msgbox SkyPillar_Top_Text_CourtneyPostBattle, MSGBOX_DEFAULT
+	closemessage
+	end
+
+SkyPillar_Top_Text_ShellyDefeat:
+	.string "Maybe I was wrong about you…\n"
+	.string "Perhaps you are the answer…$"
+
+SkyPillar_Top_Text_CourtneyDefeat:
+	.string "Maxie trusted me and I've let\n"
+	.string "him down…$"
+
+SkyPillar_Top_Text_EmmieThisIsIt:
+	.string "Emmie: We made it, {PLAYER}.\n"
+	.string "Archie and Maxie are up ahead.\p"
+	.string "Once we get involved, there's no\n"
+	.string "turning back.\p"
+	.string "We better make sure we're prepared\n"
+	.string "before we go any further.$"
+
+SkyPillar_Top_Text_CourtneyPostBattle:
+	.string "Courtney: Please! You can't interrupt\n"
+	.string "Maxie now, this is too important!$"
+
+SkyPillar_Top_Text_ShellyPostBattle:
+	.string "Shelly: There really is no stopping\n"
+	.string "you two is there…$"
+
+SkyPillar_Top_Movement_CourtneyShellyKnockedBack:
+	lock_facing_direction
+	walk_fast_up
+	unlock_facing_direction
+	step_end
 
 SkyPillar_Top_EventScript_Rayquaza::
 	lockall

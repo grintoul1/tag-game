@@ -697,7 +697,7 @@
 #define FLAG_HIDE_AQUA_HIDEOUT_B2F_EMMIE  0x28A // Hides AHO B2F Emmie
 #define FLAG_ABNORMAL_WEATHER_RAIN  0x28B // Intense rain after SFC
 #define FLAG_HIDE_CAVE_OF_ORIGIN_B1F_LEADERS  0x28C // Hides COO Archie and Maxie
-#define FLAG_UNUSED_0x28D  0x28D // Unused Flag
+#define FLAG_HIDE_SKY_PILLAR_EVIL_TEAMS  0x28D // Hides Sky Pillar Team Aqua and Team Magma
 #define FLAG_UNUSED_0x28E  0x28E // Unused Flag
 #define FLAG_UNUSED_0x28F  0x28F // Unused Flag
 #define FLAG_UNUSED_0x290  0x290 // Unused Flag

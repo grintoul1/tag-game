@@ -146,7 +146,7 @@ MtPyre_Summit_EventScript_ArchieFight_NoRunningNow::
 
 MtPyre_Summit_EventScript_ArchieFightDoMultiBattle::
 	playbgm MUS_MT_PYRE_EXTERIOR, TRUE
-	multi_2_vs_1 TRAINER_ARCHIE_MT_PYRE, MtPyre_Summit_Text_ArchieDefeat, PARTNER_MAXIE
+	multi_2_vs_1 TRAINER_ARCHIE_MT_PYRE, MtPyre_Summit_Text_ArchieDefeat, PARTNER_MAXIE_MT_PYRE
 	switch VAR_RESULT
 	case 1, MtPyre_Summit_EventScript_ArchieDefeated
 	fadescreen FADE_TO_BLACK
@@ -348,7 +348,7 @@ MtPyre_Summit_EventScript_MaxieFight_NoRunningNow::
 
 MtPyre_Summit_EventScript_MaxieFightDoMultiBattle::
 	playbgm MUS_MT_PYRE_EXTERIOR, TRUE
-	multi_2_vs_1 TRAINER_MAXIE_MT_PYRE, MtPyre_Summit_Text_MaxieDefeat, PARTNER_ARCHIE
+	multi_2_vs_1 TRAINER_MAXIE_MT_PYRE, MtPyre_Summit_Text_MaxieDefeat, PARTNER_ARCHIE_MT_PYRE
 	switch VAR_RESULT
 	case 1, MtPyre_Summit_EventScript_MaxieDefeated
 	fadescreen FADE_TO_BLACK

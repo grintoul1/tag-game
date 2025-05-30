@@ -190,7 +190,7 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 - Solar Beam
 - Dragon Claw
 
-=== PARTNER_ARCHIE ===
+=== PARTNER_ARCHIE_MT_PYRE ===
 Name: Archie
 Class: Aqua Leader
 Pic: Aqua Leader Archie
@@ -227,7 +227,81 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 - Solar Beam
 - Dragon Claw
 
-=== PARTNER_MAXIE ===
+=== PARTNER_MAXIE_MT_PYRE ===
+Name: Maxie
+Class: Magma Leader
+Pic: Magma Leader Maxie
+Gender: Male
+Music: Male
+
+Metang
+Brave Nature
+Level: 42
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 Def / 6 SpA
+- Light Screen
+- Psychic
+- Reflect
+- Metal Claw
+
+Skarmory
+Impish Nature
+Level: 43
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 6 SpA / 252 SpD
+- Toxic
+- Aerial Ace
+- Protect
+- Steel Wing
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+=== PARTNER_ARCHIE_SKY_PILLAR ===
+Name: Archie
+Class: Aqua Leader
+Pic: Aqua Leader Archie
+Gender: Male
+Music: Male
+
+Metang
+Brave Nature
+Level: 42
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 Def / 6 SpA
+- Light Screen
+- Psychic
+- Reflect
+- Metal Claw
+
+Skarmory
+Impish Nature
+Level: 43
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 6 SpA / 252 SpD
+- Toxic
+- Aerial Ace
+- Protect
+- Steel Wing
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+=== PARTNER_MAXIE_SKY_PILLAR ===
 Name: Maxie
 Class: Magma Leader
 Pic: Magma Leader Maxie

@@ -3169,53 +3169,56 @@ void FillPartnerParty(u16 trainerId)
     {
         for (i = 0; i < 3 && i < gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].partySize; i++)
             {
+            if (GetMonData(&gPlayerParty[i+3], MON_DATA_SPECIES, NULL) != SPECIES_NONE)
+                {
                 const struct TrainerMon *partyData = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].party;
                 const u8 *partnerName = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName;
                 for (k = 0; partnerName[k] != EOS && k < 3; k++)
-                {
+                    {
                     if (k == 0)
-                    {
-                        firstIdPart = partnerName[k];
-                        secondIdPart = partnerName[k];
-                        thirdIdPart = partnerName[k];
-                    }
+                        {
+                            firstIdPart = partnerName[k];
+                            secondIdPart = partnerName[k];
+                            thirdIdPart = partnerName[k];
+                        }
                     else if (k == 1)
-                    {
-                        secondIdPart = partnerName[k];
-                        thirdIdPart = partnerName[k];
-                    }
+                        {
+                            secondIdPart = partnerName[k];
+                            thirdIdPart = partnerName[k];
+                        }
                     else if (k == 2)
+                        {
+                            thirdIdPart = partnerName[k];
+                        }
+                    }
+                otID = EMMIE_OTID;
+
+                personality = Random32();
+                if (partyData[i].gender == TRAINER_MON_MALE)
+                    personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[i].species);
+                else if (partyData[i].gender == TRAINER_MON_FEMALE)
+                    personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
+                ModifyPersonalityForNature(&personality, GetMonData(&gPlayerParty[i+3], MON_DATA_HIDDEN_NATURE, NULL));
+                CopyMon(&gPlayerParty[i+3], &gPlayerParty[i+3], sizeof(*&gPlayerParty[i+3]));
+                
+                j = GetMonData(&gPlayerParty[i+3], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gPlayerParty[i + 3], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gPlayerParty[i + 3], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gPlayerParty[i + 3], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gPlayerParty[i + 3], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gPlayerParty[i + 3], MON_DATA_PP4, &j);
+                
+                // Currently included just to get rid of "variable not used" error...
+                if (GetMonData(&gPlayerParty[i+3], MON_DATA_NICKNAME, nickname) != SPECIES_NONE)
                     {
-                        thirdIdPart = partnerName[k];
+                    GetMonData(&gPlayerParty[i+3], MON_DATA_NICKNAME, nickname);
+                    SetMonData(&gPlayerParty[i + 3], MON_DATA_NICKNAME, nickname);
                     }
                 }
-            otID = EMMIE_OTID;
-
-            personality = Random32();
-            if (partyData[i].gender == TRAINER_MON_MALE)
-                personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[i].species);
-            else if (partyData[i].gender == TRAINER_MON_FEMALE)
-                personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
-            ModifyPersonalityForNature(&personality, GetMonData(&gPlayerParty[i+3], MON_DATA_HIDDEN_NATURE, NULL));
-            CopyMon(&gPlayerParty[i+3], &gPlayerParty[i+3], sizeof(*&gPlayerParty[i+3]));
-            
-            j = GetMonData(&gPlayerParty[i+3], MON_DATA_MAX_HP, NULL);
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_HP, &j);
-            j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE1, NULL)].pp;
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_PP1, &j);
-            j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE2, NULL)].pp;
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_PP2, &j);
-            j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE3, NULL)].pp;
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_PP3, &j);
-            j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE4, NULL)].pp;
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_PP4, &j);
-            
-            // Currently included just to get rid of "variable not used" error...
-            if (GetMonData(&gPlayerParty[i+3], MON_DATA_NICKNAME, nickname) != SPECIES_NONE)
-            {
-                GetMonData(&gPlayerParty[i+3], MON_DATA_NICKNAME, nickname);
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_NICKNAME, nickname);
-            }
             }
     }
 
