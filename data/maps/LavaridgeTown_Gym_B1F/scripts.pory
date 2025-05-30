@@ -1,7 +1,5 @@
 raw `
-.equ LOCALID_JACE, 3
 .equ LOCALID_KEEGAN, 1
-.equ LOCALID_JEFF, 2
 .equ LOCALID_ELI, 4
 
 LavaridgeTown_Gym_B1F_MapScripts::

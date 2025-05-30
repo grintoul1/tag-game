@@ -12,7 +12,7 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "local_id": "LOCALID_RUSTURF_TUNNEL_WANDAS_BF",
@@ -81,6 +81,7 @@
       "flag": "FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2"
     },
     {
+      "local_id": "LOCALID_RUSTURF_TUNNEL_WANDA",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
       "x": 25,
       "y": 4,
@@ -146,7 +147,5 @@
       "script": "RusturfTunnel_EventScript_TunnelBlockagePos3"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

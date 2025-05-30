@@ -78,9 +78,7 @@
       "flag": "0"
     }
   ],
-  "warp_events": [
-
-  ],
+  "warp_events": [],
   "coord_events": [
     {
       "type": "trigger",
@@ -101,7 +99,5 @@
       "script": "Route130_EventScript_KatieSantiago"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

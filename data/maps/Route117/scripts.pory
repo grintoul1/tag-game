@@ -1,5 +1,4 @@
 raw `
-.set LOCALID_DAYCARE_MAN, 3
 .set LOCALID_DAYCARE_MON_0, 25
 .set LOCALID_DAYCARE_MON_1, 26
 .set LOCALID_MEG, 18
@@ -12,7 +11,6 @@ raw `
 .set LOCALID_DEREK, 17
 .set LOCALID_BRANDI, 21
 .set LOCALID_AISHA, 22
-
 
 Route117_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route117_OnTransition
