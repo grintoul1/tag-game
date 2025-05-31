@@ -479,7 +479,7 @@ AquaHideout_B2F_EventScript_SubmarineEscape::
 # 240 "data/maps/AquaHideout_B2F/scripts.pory"
 	closemessage
 # 241 "data/maps/AquaHideout_B2F/scripts.pory"
-	setfollowernpc 9, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
+	setfollowernpc 9, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 # 242 "data/maps/AquaHideout_B2F/scripts.pory"
 	setobjectmovementtype LOCALID_SHELLY, MOVEMENT_TYPE_FACE_DOWN
 # 243 "data/maps/AquaHideout_B2F/scripts.pory"

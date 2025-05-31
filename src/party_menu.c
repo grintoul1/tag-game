@@ -521,6 +521,16 @@ static void ShowMoveSelectWindow(u8 slot);
 static void Task_HandleWhichMoveInput(u8 taskId);
 static void Task_HideFollowerNPCForTeleport(u8);
 
+static const u8 gPartySlotToMultiPartySlot[] =
+{
+    [0] = 0,
+    [1] = 2,
+    [2] = 3,
+    [3] = 1,
+    [4] = 4,
+    [5] = 5,
+};
+
 // static const data
 #include "data/party_menu.h"
 
@@ -7625,7 +7635,6 @@ u8 GetPartyIdFromBattlePartyId(u8 battlePartyId)
     }
     return 0;
 }
-
 static void UpdatePartyToBattleOrder(void)
 {
     struct Pokemon *partyBuffer = Alloc(sizeof(gPlayerParty));

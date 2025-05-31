@@ -1910,12 +1910,22 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
     return size;
 }
 
+static const u8 gPartySlotToMultiPartySlot[] =
+{
+    [0] = 0,
+    [1] = 2,
+    [2] = 3,
+    [3] = 1,
+    [4] = 4,
+    [5] = 5,
+};
+
 static void SetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId)
 {
     struct BattlePokemon *battlePokemon = (struct BattlePokemon *)&gBattleResources->bufferA[battler][3];
     struct MovePpInfo *moveData = (struct MovePpInfo *)&gBattleResources->bufferA[battler][3];
     s32 i;
-
+    
     switch (gBattleResources->bufferA[battler][1])
     {
     case REQUEST_ALL_BATTLE:

@@ -131,7 +131,7 @@ MagmaHideout_1F_EventScript_LeavingHideout::
 # 66 "data/maps/MagmaHideout_1F/scripts.pory"
 	waitmovement 0
 # 67 "data/maps/MagmaHideout_1F/scripts.pory"
-	setfollowernpc 8, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
+	setfollowernpc 8, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 # 68 "data/maps/MagmaHideout_1F/scripts.pory"
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 # 69 "data/maps/MagmaHideout_1F/scripts.pory"

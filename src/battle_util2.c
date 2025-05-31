@@ -108,6 +108,16 @@ void AdjustFriendshipOnBattleFaint(u8 battler)
     }
 }
 
+static const u8 gPartySlotToMultiPartySlot[] =
+{
+    [0] = 0,
+    [1] = 2,
+    [2] = 3,
+    [3] = 1,
+    [4] = 4,
+    [5] = 5,
+};
+
 void SwitchPartyOrderInGameMulti(u8 battler, u8 arg1)
 {
     if (IsOnPlayerSide(battler))
@@ -115,7 +125,7 @@ void SwitchPartyOrderInGameMulti(u8 battler, u8 arg1)
         s32 i;
         for (i = 0; i < (int)ARRAY_COUNT(gBattlePartyCurrentOrder); i++)
             gBattlePartyCurrentOrder[i] = *(i + (u8 *)(gBattleStruct->battlerPartyOrders));
-
+            
         SwitchPartyMonSlots(GetPartyIdFromBattlePartyId(gBattlerPartyIndexes[battler]), GetPartyIdFromBattlePartyId(arg1));
 
         for (i = 0; i < (int)ARRAY_COUNT(gBattlePartyCurrentOrder); i++)

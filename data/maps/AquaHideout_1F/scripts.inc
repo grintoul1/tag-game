@@ -207,7 +207,7 @@ AquaHideout_1F_EventScript_LeavingHideout::
 # 104 "data/maps/AquaHideout_1F/scripts.pory"
 	waitmovement 0
 # 105 "data/maps/AquaHideout_1F/scripts.pory"
-	setfollowernpc 4, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
+	setfollowernpc 4, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 # 106 "data/maps/AquaHideout_1F/scripts.pory"
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
 # 107 "data/maps/AquaHideout_1F/scripts.pory"

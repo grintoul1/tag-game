@@ -1029,7 +1029,7 @@ MagmaHideout_4F_EventScript_CourtneyTabithaVictory::
 # 515 "data/maps/MagmaHideout_4F/scripts.pory"
 	closemessage
 # 516 "data/maps/MagmaHideout_4F/scripts.pory"
-	setfollowernpc 9, FNPC_ALL, Common_EventScript_Emmie, PARTNER_EMMIE
+	setfollowernpc 9, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 # 517 "data/maps/MagmaHideout_4F/scripts.pory"
 	addvar VAR_MAGMAHIDEOUT_STATE, 1
 # 518 "data/maps/MagmaHideout_4F/scripts.pory"
