@@ -1202,7 +1202,7 @@ static bool16 ShouldDroughtMusicPlayAtLocation(struct WarpData *warp)
 
 static bool16 NoMusicInSotopolisWithLegendaries(struct WarpData *warp)
 {
-    if (VarGet(VAR_SKY_PILLAR_STATE) != 1)
+    if (VarGet(VAR_SKY_PILLAR_STATE) != 1 && VarGet(VAR_SKY_PILLAR_STATE) != 7)
         return FALSE;
     else if (warp->mapGroup != MAP_GROUP(MAP_SOOTOPOLIS_CITY))
         return FALSE;

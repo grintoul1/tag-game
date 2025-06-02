@@ -320,7 +320,7 @@ EventScript_UseDiveUnderwater::
 	checkitem ITEM_HM_DIVE
 	goto_if_eq VAR_RESULT, FALSE, EventScript_CantSurface
 	msgbox Text_WantToSurface, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, EventScript_EndSurface
+	goto_if_eq VAR_RESULT, NO, EventScript_NoSurface
 	hidefollowernpc
 	dofieldeffect FLDEFF_USE_DIVE
 	goto EventScript_EndSurface

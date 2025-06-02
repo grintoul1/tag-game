@@ -100,7 +100,7 @@ SootopolisCity_EventScript_SetLayout::
 	goto_if_eq VAR_SOOTOPOLIS_CITY_STATE, 2, SootopolisCity_EventScript_SetLegendariesLayout
 	goto_if_eq VAR_SOOTOPOLIS_CITY_STATE, 3, SootopolisCity_EventScript_SetLegendariesLayout
 	goto_if_eq VAR_SOOTOPOLIS_CITY_STATE, 4, SootopolisCity_EventScript_SetLegendariesLayout
-	goto_if_le VAR_SKY_PILLAR_STATE, 1, SootopolisCity_EventScript_SetLegendariesLayout
+	goto_if_le VAR_SKY_PILLAR_STATE, 7, SootopolisCity_EventScript_SetLegendariesLayout
 	return
 
 SootopolisCity_EventScript_SetNormalLayout::
@@ -170,12 +170,18 @@ SootopolisCity_EventScript_SetExpertBlockCaveEntrance::
 	return
 
 SootopolisCity_OnWarp:
+	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 5, SootopolisCity_EventScript_NoMusic
 	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 5, SootopolisCity_EventScript_PlayerFaceLegendaries
 	.2byte 0
 
+SootopolisCity_EventScript_NoMusic::
+	playbgm MUS_NONE, FALSE
+	end
+
+
 SootopolisCity_EventScript_PlayerFaceLegendaries::
 	call_if_eq VAR_SKY_PILLAR_STATE, 1, SootopolisCity_EventScript_PlayerFaceLegendaries1
-	call_if_eq VAR_SKY_PILLAR_STATE, 2, SootopolisCity_EventScript_PlayerFaceLegendaries2
+	call_if_eq VAR_SKY_PILLAR_STATE, 7, SootopolisCity_EventScript_PlayerFaceLegendaries2
 	end
 
 SootopolisCity_EventScript_PlayerFaceLegendaries1::
@@ -184,7 +190,6 @@ SootopolisCity_EventScript_PlayerFaceLegendaries1::
 
 SootopolisCity_EventScript_PlayerFaceLegendaries2::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
-	setvar VAR_SKY_PILLAR_STATE, 3
 	return
 
 SootopolisCity_OnResume:
@@ -195,7 +200,7 @@ SootopolisCity_OnResume:
 
 SootopolisCity_OnFrame:
 	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 1, SootopolisCity_EventScript_StartLegendariesScene
-	map_script_2 VAR_SKY_PILLAR_STATE, 1, SootopolisCity_EventScript_StartRayquazaScene
+	map_script_2 VAR_SKY_PILLAR_STATE, 7, SootopolisCity_EventScript_StartRayquazaScene
 	.2byte 0
 
 @ If not at PokeCenter, assumed to have arrived via Dive
@@ -541,6 +546,7 @@ SootopolisCity_EventScript_RayquazaSceneFromPokeCenter::
 	special WaitWeather
 	waitstate
 	clearflag FLAG_SYS_WEATHER_CTRL
+	clearflag FLAG_ABNORMAL_WEATHER_RAIN
 	addvar VAR_SKY_PILLAR_STATE, 1
 	clearflag FLAG_LEGENDARIES_IN_SOOTOPOLIS
 	fadenewbgm MUS_SOOTOPOLIS
@@ -594,6 +600,7 @@ SootopolisCity_EventScript_RayquazaSceneFromDive::
 	special WaitWeather
 	waitstate
 	clearflag FLAG_SYS_WEATHER_CTRL
+	clearflag FLAG_ABNORMAL_WEATHER_RAIN
 	addvar VAR_SKY_PILLAR_STATE, 1
 	clearflag FLAG_LEGENDARIES_IN_SOOTOPOLIS
 	fadenewbgm MUS_SURF
@@ -1521,7 +1528,6 @@ SootopolisCity_EventScript_MaxieArchieLeave::
 	setflag FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE
 	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
 	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
-	setvar VAR_MT_PYRE_STATE, 2
 	warpsilent MAP_SOOTOPOLIS_CITY, 31, 34
 	waitstate
 	releaseall
@@ -1756,7 +1762,7 @@ SootopolisCity_Text_KyogreCalmDown:
 
 SootopolisCity_Text_TryingMeaninglessToPokemon:
 	.string "ARCHIE: KYOGRE and GROUDON both\n"
-	.string "flew off to who knows where.\p"
+	.string "went off to who knows where.\p"
 	.string "The weather in HOENN has returned\n"
 	.string "to its normal state…\p"
 	.string "Haha…\n"

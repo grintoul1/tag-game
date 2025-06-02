@@ -2,53 +2,291 @@ raw `
 SootopolisCity_Gym_B1F_MapScripts::
 	.byte 0
 
+SootopolisCity_Gym_B1F_EventScript_AndreaConnieFallDown::
+	playse SE_ICE_BREAK
+	setmetatile 9, 19, METATILE_SootopolisGym_Ice_Broken, TRUE
+	special DrawWholeMapView
+	delay 16
+	setvar VAR_ICE_STEP_COUNT, 0
+	end
+
+SootopolisCity_Gym_B1F_EventScript_OliviaBriannaFallDown::
+	playse SE_ICE_BREAK
+	setmetatile 5, 14, METATILE_SootopolisGym_Ice_Broken, TRUE
+	special DrawWholeMapView
+	delay 16
+	setvar VAR_ICE_STEP_COUNT, 0
+	end
+
+SootopolisCity_Gym_B1F_EventScript_CrissyBethanyFallDown::
+	playse SE_ICE_BREAK
+	setmetatile 11, 9, METATILE_SootopolisGym_Ice_Broken, TRUE
+	special DrawWholeMapView
+	delay 16
+	setvar VAR_ICE_STEP_COUNT, 0
+	end
+
+SootopolisCity_Gym_B1F_Movement_FallDown::
+	set_invisible
+	step_end
+
+SootopolisCity_Gym_B1F_EventScript_AndreaConnie::
+lockall
+playse SE_PIN
+applymovement LOCALID_ANDREA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_AndreaIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_CONNIE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_ConnieIntro MSGBOX_AUTOCLOSE
+goto SootopolisCity_Gym_B1F_EventScript_AndreaConnieDoMultiBattle
+releaseall
+end
+
+SootopolisCity_Gym_B1F_EventScript_AndreaConnieDoMultiBattle::
+playbgm MUS_GYM, TRUE
+multi_2p_vs_2 TRAINER_ANDREA, SootopolisCity_Gym_B1F_Text_AndreaDefeat, TRAINER_CONNIE, SootopolisCity_Gym_B1F_Text_ConnieDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, SootopolisCity_Gym_B1F_EventScript_AndreaConnieVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+SootopolisCity_Gym_B1F_EventScript_AndreaConnieVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_AndreaPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_ConniePostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_SOOTOPOLIS_CITY_GYM_STATE, 1
+playse SE_ICE_BREAK
+setmetatile 9, 19, METATILE_SootopolisGym_Ice_Broken, TRUE
+special DrawWholeMapView
+delay 16
+setvar VAR_ICE_STEP_COUNT, 0
+end
+
+SootopolisCity_Gym_B1F_EventScript_DaphneAnnika::
+lockall
+playse SE_PIN
+applymovement LOCALID_DAPHNE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_DaphneIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_ANNIKA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_AnnikaIntro MSGBOX_AUTOCLOSE
+goto SootopolisCity_Gym_B1F_EventScript_DaphneAnnikaDoMultiBattle
+releaseall
+end
+
+SootopolisCity_Gym_B1F_EventScript_DaphneAnnikaDoMultiBattle::
+playbgm MUS_GYM, TRUE
+multi_2p_vs_2 TRAINER_DAPHNE, SootopolisCity_Gym_B1F_Text_DaphneDefeat, TRAINER_ANNIKA, SootopolisCity_Gym_B1F_Text_AnnikaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, SootopolisCity_Gym_B1F_EventScript_DaphneAnnikaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+SootopolisCity_Gym_B1F_EventScript_DaphneAnnikaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_DaphnePostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_AnnikaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_SOOTOPOLIS_CITY_GYM_STATE, 1
+end
+
+SootopolisCity_Gym_B1F_EventScript_OliviaBrianna::
+lockall
+playse SE_PIN
+applymovement LOCALID_OLIVIA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_OliviaIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_BRIANNA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_BriannaIntro MSGBOX_AUTOCLOSE
+goto SootopolisCity_Gym_B1F_EventScript_OliviaBriannaDoMultiBattle
+releaseall
+end
+
+SootopolisCity_Gym_B1F_EventScript_OliviaBriannaDoMultiBattle::
+playbgm MUS_GYM, TRUE
+multi_2p_vs_2 TRAINER_OLIVIA, SootopolisCity_Gym_B1F_Text_OliviaDefeat, TRAINER_BRIANNA, SootopolisCity_Gym_B1F_Text_BriannaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, SootopolisCity_Gym_B1F_EventScript_OliviaBriannaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+SootopolisCity_Gym_B1F_EventScript_OliviaBriannaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_OliviaPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_BriannaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_SOOTOPOLIS_CITY_GYM_STATE, 1
+playse SE_ICE_BREAK
+setmetatile 5, 14, METATILE_SootopolisGym_Ice_Broken, TRUE
+special DrawWholeMapView
+delay 16
+setvar VAR_ICE_STEP_COUNT, 0
+end
+
+SootopolisCity_Gym_B1F_EventScript_CrissyBethany::
+lockall
+playse SE_PIN
+applymovement LOCALID_CRISSY, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_CrissyIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_BETHANY, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_BethanyIntro MSGBOX_AUTOCLOSE
+goto SootopolisCity_Gym_B1F_EventScript_CrissyBethanyDoMultiBattle
+releaseall
+end
+
+SootopolisCity_Gym_B1F_EventScript_CrissyBethanyDoMultiBattle::
+playbgm MUS_GYM, TRUE
+multi_2p_vs_2 TRAINER_CRISSY, SootopolisCity_Gym_B1F_Text_CrissyDefeat, TRAINER_BETHANY, SootopolisCity_Gym_B1F_Text_BethanyDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, SootopolisCity_Gym_B1F_EventScript_CrissyBethanyVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+SootopolisCity_Gym_B1F_EventScript_CrissyBethanyVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_CrissyPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_BethanyPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_SOOTOPOLIS_CITY_GYM_STATE, 1
+playse SE_ICE_BREAK
+setmetatile 11, 9, METATILE_SootopolisGym_Ice_Broken, TRUE
+special DrawWholeMapView
+delay 16
+setvar VAR_ICE_STEP_COUNT, 0
+end
+
+SootopolisCity_Gym_B1F_EventScript_TiffanyBridget::
+lockall
+playse SE_PIN
+applymovement LOCALID_TIFFANY, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_TiffanyIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_BRIDGET, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_BridgetIntro MSGBOX_AUTOCLOSE
+goto SootopolisCity_Gym_B1F_EventScript_TiffanyBridgetDoMultiBattle
+releaseall
+end
+
+SootopolisCity_Gym_B1F_EventScript_TiffanyBridgetDoMultiBattle::
+playbgm MUS_GYM, TRUE
+multi_2p_vs_2 TRAINER_TIFFANY, SootopolisCity_Gym_B1F_Text_TiffanyDefeat, TRAINER_BRIDGET, SootopolisCity_Gym_B1F_Text_BridgetDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, SootopolisCity_Gym_B1F_EventScript_TiffanyBridgetVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+SootopolisCity_Gym_B1F_EventScript_TiffanyBridgetVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_TiffanyPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox SootopolisCity_Gym_B1F_Text_BridgetPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_SOOTOPOLIS_CITY_GYM_STATE, 1
+end
+
 SootopolisCity_Gym_B1F_EventScript_Andrea::
-	trainerbattle_single TRAINER_ANDREA, SootopolisCity_Gym_B1F_Text_AndreaIntro, SootopolisCity_Gym_B1F_Text_AndreaDefeat
+	faceplayer
 	msgbox SootopolisCity_Gym_B1F_Text_AndreaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 SootopolisCity_Gym_B1F_EventScript_Crissy::
-	trainerbattle_single TRAINER_CRISSY, SootopolisCity_Gym_B1F_Text_CrissyIntro, SootopolisCity_Gym_B1F_Text_CrissyDefeat
+	faceplayer
 	msgbox SootopolisCity_Gym_B1F_Text_CrissyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 SootopolisCity_Gym_B1F_EventScript_Brianna::
-	trainerbattle_single TRAINER_BRIANNA, SootopolisCity_Gym_B1F_Text_BriannaIntro, SootopolisCity_Gym_B1F_Text_BriannaDefeat
+	faceplayer
 	msgbox SootopolisCity_Gym_B1F_Text_BriannaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 SootopolisCity_Gym_B1F_EventScript_Connie::
-	trainerbattle_single TRAINER_CONNIE, SootopolisCity_Gym_B1F_Text_ConnieIntro, SootopolisCity_Gym_B1F_Text_ConnieDefeat
+	faceplayer
 	msgbox SootopolisCity_Gym_B1F_Text_ConniePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 SootopolisCity_Gym_B1F_EventScript_Bridget::
-	trainerbattle_single TRAINER_BRIDGET, SootopolisCity_Gym_B1F_Text_BridgetIntro, SootopolisCity_Gym_B1F_Text_BridgetDefeat
+	faceplayer
 	msgbox SootopolisCity_Gym_B1F_Text_BridgetPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 SootopolisCity_Gym_B1F_EventScript_Olivia::
-	trainerbattle_single TRAINER_OLIVIA, SootopolisCity_Gym_B1F_Text_OliviaIntro, SootopolisCity_Gym_B1F_Text_OliviaDefeat
+	faceplayer
 	msgbox SootopolisCity_Gym_B1F_Text_OliviaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 SootopolisCity_Gym_B1F_EventScript_Tiffany::
-	trainerbattle_single TRAINER_TIFFANY, SootopolisCity_Gym_B1F_Text_TiffanyIntro, SootopolisCity_Gym_B1F_Text_TiffanyDefeat
+	faceplayer
 	msgbox SootopolisCity_Gym_B1F_Text_TiffanyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 SootopolisCity_Gym_B1F_EventScript_Bethany::
-	trainerbattle_single TRAINER_BETHANY, SootopolisCity_Gym_B1F_Text_BethanyIntro, SootopolisCity_Gym_B1F_Text_BethanyDefeat
+	faceplayer
 	msgbox SootopolisCity_Gym_B1F_Text_BethanyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 SootopolisCity_Gym_B1F_EventScript_Annika::
-	trainerbattle_single TRAINER_ANNIKA, SootopolisCity_Gym_B1F_Text_AnnikaIntro, SootopolisCity_Gym_B1F_Text_AnnikaDefeat
+	faceplayer
 	msgbox SootopolisCity_Gym_B1F_Text_AnnikaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 SootopolisCity_Gym_B1F_EventScript_Daphne::
-	trainerbattle_single TRAINER_DAPHNE, SootopolisCity_Gym_B1F_Text_DaphneIntro, SootopolisCity_Gym_B1F_Text_DaphneDefeat
+	faceplayer
 	msgbox SootopolisCity_Gym_B1F_Text_DaphnePostBattle, MSGBOX_AUTOCLOSE
 	end
 

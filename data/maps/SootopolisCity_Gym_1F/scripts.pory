@@ -11,13 +11,32 @@ SootopolisCity_Gym_1F_OnTransition:
 	end
 
 SootopolisCity_Gym_1F_OnResume:
-	setstepcallback STEP_CB_SOOTOPOLIS_ICE
 	end
 
 SootopolisCity_Gym_1F_OnLoad:
 	call SootopolisCity_Gym_1F_EventScript_CheckSetStairMetatiles
 	special SetSootopolisGymCrackedIceMetatiles
 	end
+
+SootopolisCity_Gym_1F_EventScript_Juan::
+lockall
+goto_if_set FLAG_BADGE08_GET, SootopolisCity_Gym_1F_EventScript_Juan2
+playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox SootopolisCity_Gym_1F_Text_JuanIntro MSGBOX_AUTOCLOSE
+goto SootopolisCity_Gym_1F_EventScript_JuanDoMultiBattle
+releaseall
+end
+
+SootopolisCity_Gym_1F_EventScript_JuanDoMultiBattle::
+playbgm MUS_GYM, TRUE
+multi_2p_vs_1 TRAINER_JUAN_1, SootopolisCity_Gym_1F_Text_JuanDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, SootopolisCity_Gym_1F_EventScript_JuanDefeated
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
 
 SootopolisCity_Gym_1F_EventScript_CheckSetStairMetatiles::
 	goto_if_lt VAR_ICE_STEP_COUNT, 8, SootopolisCity_Gym_1F_EventScript_StopCheckingStairs  @ All stairs ice
@@ -80,12 +99,8 @@ SootopolisCity_Gym_1F_Movement_FallThroughIce:
 	set_invisible
 	step_end
 
-SootopolisCity_Gym_1F_EventScript_Juan::
-	trainerbattle_single TRAINER_JUAN_1, SootopolisCity_Gym_1F_Text_JuanIntro, SootopolisCity_Gym_1F_Text_JuanDefeat, SootopolisCity_Gym_1F_EventScript_JuanDefeated, NO_MUSIC
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_Gym_1F_EventScript_JuanRematch
+SootopolisCity_Gym_1F_EventScript_Juan2::
 	goto_if_unset FLAG_RECEIVED_TM_WATER_PULSE, SootopolisCity_Gym_1F_EventScript_GiveWaterPulse2
-	goto_if_unset FLAG_BADGE06_GET, SootopolisCity_Gym_1F_EventScript_GoGetFortreeBadge
 	msgbox SootopolisCity_Gym_1F_Text_JuanPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -107,12 +122,7 @@ SootopolisCity_Gym_1F_EventScript_JuanDefeated::
 	call SootopolisCity_Gym_1F_EventScript_GiveWaterPulse
 	closemessage
 	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox SootopolisCity_Gym_1F_Text_RegisteredJuan, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_JUAN_MATCH_CALL
+	addvar VAR_SOOTOPOLIS_CITY_GYM_STATE, 1
 	release
 	end
 
