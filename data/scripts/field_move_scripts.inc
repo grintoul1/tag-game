@@ -209,7 +209,6 @@ Text_CantSmash:
 
 EventScript_StrengthBoulder::
 	lockall
-	goto_if_unset FLAG_BADGE04_GET, EventScript_CantStrength
 	goto_if_set FLAG_SYS_USE_STRENGTH, EventScript_CheckActivatedBoulder
 	setfieldeffectargument 0, VAR_RESULT
 	dofieldeffect FLDEFF_USE_STRENGTH
