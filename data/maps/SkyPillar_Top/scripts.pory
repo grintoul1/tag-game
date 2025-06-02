@@ -18,45 +18,36 @@ SkyPillar_Top_EventScript_TryRemoveRayquaza::
 
 SkyPillar_Top_OnTransition:
 	call_if_lt VAR_SKY_PILLAR_STATE, 8, SkyPillar_Top_EventScript_SetCleanLayout
-	call_if_ge VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_TryShowRayquaza
+	call_if_eq VAR_SKY_PILLAR_STATE, 7, SkyPillar_Top_EventScript_SetWeather
+	call_if_ge VAR_SKY_PILLAR_STATE, 7, SkyPillar_Top_EventScript_HideRayquaza
+	call_if_ge VAR_SKY_PILLAR_STATE, 9, SkyPillar_Top_EventScript_TryShowRayquaza
 	call_if_eq VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_MattTabithaPos
-	call_if_eq VAR_SKY_PILLAR_STATE, 5, SkyPillar_Top_EventScript_ShellyCourtneyPos
 	call_if_ge VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_LeaderVars
 	call_if_ge VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_LeaderPos
 	end
 
+SkyPillar_Top_EventScript_HideRayquaza::
+	removeobject LOCALID_SKYPILLAR_RAYQUAZA_STILL
+	return
+
+SkyPillar_Top_EventScript_SetWeather:
+	setweather WEATHER_ABNORMAL
+	doweather
+	return
+
+SkyPillar_Top_EventScript_MattTabithaPos::
+	setobjectxyperm LOCALID_SKYPILLAR_MATT, 12, 21
+	setobjectxyperm LOCALID_SKYPILLAR_TABITHA, 12, 19
+	return
+
 SkyPillar_Top_EventScript_LeaderPos::
-	setobjectxyperm VAR_0x8003, 12, 10
+	setobjectxyperm VAR_0x8003, 12, 9
 	setobjectmovementtype VAR_0x8003, MOVEMENT_TYPE_FACE_UP
 	return
 
 SkyPillar_Top_EventScript_LeaderVars::
 	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieVars
 	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieVars
-	return
-
-SkyPillar_Top_EventScript_MaxieVars::
-	setvar VAR_0x8002, LOCALID_SKYPILLAR_MAXIE
-	setvar VAR_0x8003, LOCALID_SKYPILLAR_ARCHIE
-	return
-
-SkyPillar_Top_EventScript_ArchieVars::
-	setvar VAR_0x8002, LOCALID_SKYPILLAR_ARCHIE
-	setvar VAR_0x8003, LOCALID_SKYPILLAR_MAXIE
-	return
-
-SkyPillar_Top_EventScript_MattTabithaPos::
-	setobjectxyperm LOCALID_SKYPILLAR_MATT, 12, 21
-	setobjectxyperm LOCALID_SKYPILLAR_TABITHA, 12, 19
-	setobjectmovementtype LOCALID_SKYPILLAR_MATT, MOVEMENT_TYPE_JOG_IN_PLACE_UP
-	setobjectmovementtype LOCALID_SKYPILLAR_TABITHA, MOVEMENT_TYPE_JOG_IN_PLACE_DOWN
-	setobjectmovementtype LOCALID_SKYPILLAR_SHELLY, MOVEMENT_TYPE_JOG_IN_PLACE_LEFT
-	setobjectmovementtype LOCALID_SKYPILLAR_COURTNEY, MOVEMENT_TYPE_JOG_IN_PLACE_RIGHT
-	return
-
-SkyPillar_Top_EventScript_ShellyCourtneyPos::
-	setobjectmovementtype LOCALID_SKYPILLAR_SHELLY, MOVEMENT_TYPE_JOG_IN_PLACE_LEFT
-	setobjectmovementtype LOCALID_SKYPILLAR_COURTNEY, MOVEMENT_TYPE_JOG_IN_PLACE_RIGHT
 	return
 
 SkyPillar_Top_EventScript_SetCleanLayout::
@@ -75,6 +66,691 @@ SkyPillar_Top_EventScript_ShowRayquaza::
 SkyPillar_Top_OnWarp:
 	map_script_2 VAR_SKY_PILLAR_STATE, 0, SkyPillar_Top_EventScript_RayquazaFaceDown
 	.2byte 0
+
+SkyPillar_Top_EventScript_MaxieVars::
+	setvar VAR_0x8002, LOCALID_SKYPILLAR_MAXIE
+	setvar VAR_0x8003, LOCALID_SKYPILLAR_ARCHIE
+	return
+
+SkyPillar_Top_EventScript_ArchieVars::
+	setvar VAR_0x8002, LOCALID_SKYPILLAR_ARCHIE
+	setvar VAR_0x8003, LOCALID_SKYPILLAR_MAXIE
+	return
+
+SkyPillar_Top_EventScript_Finale::
+	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_WalkUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER SkyPillar_Top_Movement_FinaleEmmieApproach
+	waitmovement 0
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_FinaleCameraPanToAction
+	waitmovement 0
+	special RemoveCameraObject
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_FinaleMaxieMusic
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_FinaleArchieMusic
+	delay 30
+	applymovement VAR_0x8003, Common_Movement_WalkUp
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchiePleadWithMaxie
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxiePleadWithArchie
+	delay 30
+	playse SE_NOT_EFFECTIVE
+	applymovement VAR_0x8003, SkyPillar_Top_Movement_FinaleGoodLeaderPushedBack
+	waitmovement 0
+	applymovement VAR_0x8002, Common_Movement_WalkSlowDown
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieFailToSee
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieFailToSee
+	fadeoutbgm 1
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_FinaleCameraPanToAction
+	waitmovement 0
+	special RemoveCameraObject
+	applymovement VAR_0x8002, Common_Movement_WalkUp
+	waitmovement 0
+	delay 20
+	applymovement LOCALID_RAYQUAZA_SLEEPING, SkyPillar_Top_Movement_RayquazaStir
+	waitmovement 0
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	waitmoncry
+	playse SE_BALL_THROW
+	waitse
+	playse SE_BALL_BOUNCE_1
+	applymovement LOCALID_RAYQUAZA_SLEEPING, SkyPillar_Top_Movement_RayquazaEnterPokeball
+	waitmovement 0
+	removeobject LOCALID_RAYQUAZA_SLEEPING
+	delay 40
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_FinaleCameraPanFromAction
+	waitmovement 0
+	special RemoveCameraObject
+	applymovement VAR_0x8002, Common_Movement_WalkDown
+	waitmovement 0
+	setweather WEATHER_RAIN_THUNDERSTORM
+	doweather
+	special WaitWeather
+	waitstate
+	delay 360
+	setweather WEATHER_DROUGHT
+	doweather
+	special WaitWeather
+	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieSeeHowControl
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieSeeHowControl
+	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0 
+	delay 30
+	playse SE_BALL_BOUNCE_2
+	waitse
+	playse SE_BALL_OPEN
+	applymovement LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE_INVISIBLE, SkyPillar_Top_Movement_RayquazaExitPokeball
+	waitmovement 0
+	addobject LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	delay 40
+	setweather WEATHER_NONE
+	doweather
+	special WaitWeather
+	waitstate
+	delay 30
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_FinaleCameraPanFromAction
+	waitmovement 0
+	special RemoveCameraObject
+	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieWeWillSubdue
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieWeWillSubdue
+	delay 12
+	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchiePleaseHelp
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxiePleaseHelp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SkyPillar_Top_Movement_EmmieApproachPlayer
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_EmmieDefeatedMaxie
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_EmmieDefeatedArchie
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchieSoYoullHelp
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxieSoYoullHelp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkSlowUp
+	applymovement VAR_0x8003, SkyPillar_Top_Movement_GoodLeaderMoveForPlayer
+	waitmovement 0
+	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieYouStillDefy
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieYouStillDefy
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	delay 40
+	applymovement VAR_0x8002, Common_Movement_WalkSlowDown
+	applymovement VAR_0x8003, SkyPillar_Top_Movement_GoodLeaderApproachEvilLeader
+	waitmovement 0
+	goto_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_Maxie_ChoosePartyForMultiBattle
+	goto_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_Archie_ChoosePartyForMultiBattle
+	releaseall
+	end
+
+SkyPillar_Top_EventScript_Archie_ChoosePartyForMultiBattle::
+	special SavePlayerParty
+	fadescreen FADE_TO_BLACK
+	special ChooseHalfPartyForBattle
+	waitstate
+	goto_if_ne VAR_RESULT, 0, SkyPillar_Top_EventScript_ArchieDoMultiBattle
+	msgbox SkyPillar_Top_Text_ArchieYouWillNotStopMe, MSGBOX_AUTOCLOSE
+	goto SkyPillar_Top_EventScript_Archie_ChoosePartyForMultiBattle
+	closemessage
+
+SkyPillar_Top_EventScript_ArchieDoMultiBattle::
+	playbgm MUS_NONE, TRUE
+	multi_2_vs_1 TRAINER_ARCHIE_SKY_PILLAR, SkyPillar_Top_Text_EvilLeaderDefeat, PARTNER_MAXIE_SKY_PILLAR
+	special LoadPlayerParty
+	switch VAR_RESULT
+	case 1, SkyPillar_Top_EventScript_FinaleVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+SkyPillar_Top_EventScript_Maxie_ChoosePartyForMultiBattle::
+	special SavePlayerParty
+	fadescreen FADE_TO_BLACK
+	special ChooseHalfPartyForBattle
+	waitstate
+	goto_if_ne VAR_RESULT, 0, SkyPillar_Top_EventScript_MaxieDoMultiBattle
+	msgbox SkyPillar_Top_Text_MaxieYouWillNotStopMe, MSGBOX_AUTOCLOSE
+	goto SkyPillar_Top_EventScript_Maxie_ChoosePartyForMultiBattle
+	closemessage
+
+SkyPillar_Top_EventScript_MaxieDoMultiBattle::
+	playbgm MUS_NONE, TRUE
+	multi_2_vs_1 TRAINER_MAXIE_SKY_PILLAR, SkyPillar_Top_Text_EvilLeaderDefeat, PARTNER_ARCHIE_SKY_PILLAR
+	special LoadPlayerParty
+	switch VAR_RESULT
+	case 1, SkyPillar_Top_EventScript_FinaleVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+SkyPillar_Top_EventScript_FinaleVictory::
+	playse SE_NOT_EFFECTIVE
+	applymovement VAR_0x8002, SkyPillar_Top_Movement_EvilLeaderKnockedBack
+	applymovement VAR_0x8003, Common_Movement_FaceUp
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieHowCanThisBe
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieHowCanThisBe
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 3  @ shake delay
+	special ShakeCamera
+	waitstate
+	waitse
+	delay 40
+	playse SE_PIN
+	applymovement VAR_0x8002, Common_Movement_QuestionMark
+	applymovement VAR_0x8003, Common_Movement_QuestionMark
+	waitmovement 0
+	applymovement VAR_0x8002, Common_Movement_FaceRight
+	applymovement VAR_0x8003, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
+	delay 40
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 2  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 5  @ shake delay
+	special ShakeCamera
+	waitstate
+	waitmoncry
+	applymovement LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE, SkyPillar_Top_Movement_RayquazaFlyOff
+	waitmovement 0
+	removeobject LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE
+	removeobject LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE_INVISIBLE
+	delay 40
+	setweather WEATHER_ABNORMAL
+	doweather
+	special WaitWeather
+	waitstate
+	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
+	applymovement VAR_0x8003, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieLostControl
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieLostControl
+	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchieDoYouSee
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxieDoYouSee
+	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieBeenMisguided
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieBeenMisguided
+	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchieThankYou
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxieThankYou
+	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchieComeMaxie
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxieComeArchie
+	playse SE_EXIT
+	fadescreenspeed FADE_TO_BLACK, 4
+	addvar VAR_SKY_PILLAR_STATE, 1
+	removeobject LOCALID_SKYPILLAR_ARCHIE
+	removeobject LOCALID_SKYPILLAR_MAXIE
+	removeobject LOCALID_SKYPILLAR_TABITHA
+	removeobject LOCALID_SKYPILLAR_SHELLY
+	removeobject LOCALID_SKYPILLAR_MATT
+	removeobject LOCALID_SKYPILLAR_COURTNEY
+	setvar VAR_SOOTOPOLIS_CITY_STATE, 5
+	setflag FLAG_HIDE_SKY_PILLAR_EVIL_TEAMS
+	setflag 
+	fadescreen FADE_FROM_BLACK
+	releaseall
+	end
+
+SkyPillar_Top_Text_EvilLeaderDefeat:
+	.string "This should not be possible!$"
+
+SkyPillar_Top_Text_ArchieComeMaxie:
+	.string "Archie: Come, Maxie.\p"
+	.string "This situation is of our creation.\p"
+	.string "It is our responsibility to ensure\n"
+	.string "it comes to a close.$"
+
+SkyPillar_Top_Text_MaxieComeArchie:
+	.string "Maxie: Come, Archie.\p"
+	.string "This situation is of our creation.\p"
+	.string "It is our responsibility to ensure\n"
+	.string "it comes to a close.$"
+
+SkyPillar_Top_EventScript_MaxieComeArchie::
+	msgbox SkyPillar_Top_Text_MaxieComeArchie, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_ArchieComeMaxie::
+	msgbox SkyPillar_Top_Text_ArchieComeMaxie, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_Text_ArchieThankYou:
+	.string "Archie: {PLAYER}, thank you, I don't\n"
+	.string "believe that I could have defeated\l"
+	.string "Maxie and that Pokémon alone.\p"
+	.string "It's time for me to return to\n"
+	.string "Sootopolis.\p"
+	.string "I expect that you will be close\n"
+	.string "behind, as you always are.$"
+
+SkyPillar_Top_Text_MaxieThankYou:
+	.string "Maxie: {PLAYER}, thank you, I don't\n"
+	.string "believe that I could have defeated\l"
+	.string "Maxie and that Pokémon alone.\p"
+	.string "It's time for me to return to\n"
+	.string "Sootopolis.\p"
+	.string "I expect that you will be close\n"
+	.string "behind, as you always are.$"
+
+SkyPillar_Top_EventScript_MaxieThankYou::
+	msgbox SkyPillar_Top_Text_MaxieThankYou, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_ArchieThankYou::
+	msgbox SkyPillar_Top_Text_ArchieThankYou, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_Text_ArchieBeenMisguided:
+	.string "Archie: Could it really be that I\n"
+	.string "have been misguided all this time…?$"
+
+SkyPillar_Top_Text_MaxieBeenMisguided:
+	.string "Maxie: Could it really be that I\n"
+	.string "have been misguided all this time…?$"
+
+SkyPillar_Top_EventScript_MaxieBeenMisguided::
+	msgbox SkyPillar_Top_Text_MaxieBeenMisguided, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_ArchieBeenMisguided::
+	msgbox SkyPillar_Top_Text_ArchieBeenMisguided, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_Text_ArchieDoYouSee:
+	.string "Archie: Do you see now, Maxie?\p"
+	.string "We have tampered with forces beyond\n"
+	.string "our control and our understanding.\p"
+	.string "Our only hope is for that Pokémon\n"
+	.string "to be heading to Sootopolis and\l"
+	.string "putting an end to this chaos.$"
+
+SkyPillar_Top_Text_MaxieDoYouSee:
+	.string "Maxie: Do you see now, Archie?\p"
+	.string "We have tampered with forces beyond\n"
+	.string "our control and our understanding.\p"
+	.string "Our only hope is for that Pokémon\n"
+	.string "to be heading to Sootopolis and\l"
+	.string "putting an end to this chaos.$"
+
+SkyPillar_Top_EventScript_MaxieDoYouSee::
+	msgbox SkyPillar_Top_Text_MaxieDoYouSee, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_ArchieDoYouSee::
+	msgbox SkyPillar_Top_Text_ArchieDoYouSee, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_Text_ArchieLostControl:
+	.string "Archie: What is this…\n"
+	.string "My control is broken?\p"
+	.string "First Kyogre, and now here too…$"
+
+SkyPillar_Top_Text_MaxieLostControl:
+	.string "Maxie: What is this…\n"
+	.string "My control is broken?\p"
+	.string "First Groudon, and now here too…$"
+
+SkyPillar_Top_EventScript_MaxieLostControl::
+	msgbox SkyPillar_Top_Text_MaxieLostControl, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_ArchieLostControl::
+	msgbox SkyPillar_Top_Text_ArchieLostControl, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_Text_ArchieHowCanThisBe:
+	.string "Archie: How can this be?!\p"
+	.string "Even with the power of this\n"
+	.string "Pokémon, I am still defeated?\p"
+	.string "This changes nothing. As long\n"
+	.string "as I still… … …$"
+
+SkyPillar_Top_Text_MaxieHowCanThisBe:
+	.string "Maxie: How can this be?!\p"
+	.string "Even with the power of this\n"
+	.string "Pokémon, I am still defeated?\p"
+	.string "This changes nothing. As long\n"
+	.string "as I still… … …$"
+
+SkyPillar_Top_EventScript_MaxieHowCanThisBe::
+	msgbox SkyPillar_Top_Text_MaxieHowCanThisBe, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_ArchieHowCanThisBe::
+	msgbox SkyPillar_Top_Text_ArchieHowCanThisBe, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_Movement_EvilLeaderKnockedBack:
+	lock_facing_direction
+	walk_fast_up
+	walk_fast_up
+	unlock_facing_direction
+	delay_16
+	delay_16
+	walk_slow_down
+	delay_16
+	walk_in_place_fast_down
+	step_end
+
+SkyPillar_Top_Movement_GoodLeaderApproachEvilLeader:
+	walk_slow_up
+	face_left
+	step_end
+
+SkyPillar_Top_Text_ArchieYouWillNotStopMe:
+	.string "Archie: You will not stop me.$"
+
+SkyPillar_Top_Text_MaxieYouWillNotStopMe:
+	.string "Maxie: You will not stop me.$"
+
+SkyPillar_Top_Text_ArchieYouStillDefy:
+	.string "Archie: Even now you still defy me?\p"
+	.string "It matters not. I will shape the world\n"
+	.string "into one of Team Aqua's design.\p"
+	.string "You will not stand in my way.$"
+
+SkyPillar_Top_Text_MaxieYouStillDefy:
+	.string "Maxie: Even now you still defy me?\p"
+	.string "It matters not. I will shape the world\n"
+	.string "into one of Team Magma's design.\p"
+	.string "You will not stand in my way.$"
+
+SkyPillar_Top_EventScript_MaxieYouStillDefy::
+	msgbox SkyPillar_Top_Text_MaxieYouStillDefy, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_ArchieYouStillDefy::
+	msgbox SkyPillar_Top_Text_ArchieYouStillDefy, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_Movement_GoodLeaderMoveForPlayer:
+	walk_slow_right
+	face_up
+	step_end
+
+SkyPillar_Top_Text_ArchieSoYoullHelp:
+	.string "Archie: So you will help me?\p"
+	.string "… … … … … …\n"
+	.string "… … … … … …\p"
+	.string "Thank you.\p"
+	.string "Okay, let's do this.$"
+
+SkyPillar_Top_Text_MaxieSoYoullHelp:
+	.string "Maxie: So you will help me?\p"
+	.string "… … … … … …\n"
+	.string "… … … … … …\p"
+	.string "Thank you.\p"
+	.string "Okay, let's do this.$"
+
+SkyPillar_Top_EventScript_ArchieSoYoullHelp::
+	msgbox SkyPillar_Top_Text_ArchieSoYoullHelp, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_MaxieSoYoullHelp::
+	msgbox SkyPillar_Top_Text_MaxieSoYoullHelp, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_EmmieDefeatedMaxie::
+	msgbox SkyPillar_Top_Text_EmmieDefeatedMaxie, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_EmmieDefeatedArchie::
+	msgbox SkyPillar_Top_Text_EmmieDefeatedArchie, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_Text_EmmieDefeatedArchie:
+	.string "Emmie: {PLAYER}, you've got this.\p"
+	.string "Together we've defeated Archie even\n"
+	.string "when he had the power of Kyogre\l"
+	.string "on his side.\p"
+	.string "You've also tackled both Team Aqua\n"
+	.string "and Team Magma without my help.\p"
+	.string "After watching you and Archie\n"
+	.string "defeat Maxie on Mt Pyre, I know\l"
+	.string "that you can succeed here too.\p"
+	.string "Help Maxie defeat Archie and all\n"
+	.string "this can finally end.\p"
+	.string "I believe in you!$"
+
+SkyPillar_Top_Text_EmmieDefeatedMaxie:
+	.string "Emmie: {PLAYER}, you've got this.\p"
+	.string "Together we've defeated Maxie even\n"
+	.string "when he had the power of Groudon\l"
+	.string "on his side.\p"
+	.string "You've also tackled both Team Aqua\n"
+	.string "and Team Magma without my help.\p"
+	.string "After watching you and Maxie\n"
+	.string "defeat Archie on Mt Pyre, I know\l"
+	.string "that you can succeed here too.\p"
+	.string "Help Archie defeat Maxie and all\n"
+	.string "this can finally end.\p"
+	.string "I believe in you!$"
+
+SkyPillar_Top_Movement_EmmieApproachPlayer:
+	walk_up
+	walk_in_place_fast_right
+	step_end
+
+SkyPillar_Top_Text_MaxiePleaseHelp:
+	.string "Maxie: {PLAYER}, Archie is refusing\n"
+	.string "to listen to reason.\p"
+	.string "He is hell bent on using this Pokémon\n"
+	.string "to defeat Groudon and control Kyogre.\p"
+	.string "This world we have created was not \n"
+	.string "part of my design.\p"
+	.string "I accept that I hold equal blame with\n"
+	.string "Archie, but I see now that we were\l"
+	.string "playing with forces beyond our control.\p"
+	.string "I know that you do not trust me, but\n"
+	.string "trust that I also want to stop Archie.\p"
+	.string "Please, help me stop Archie and together\n"
+	.string "we can put an end to all this.$"
+
+SkyPillar_Top_Text_ArchiePleaseHelp:
+	.string "Archie: {PLAYER}, Maxie is refusing\n"
+	.string "to listen to reason.\p"
+	.string "He is hell bent on using this Pokémon\n"
+	.string "to defeat Kyogre and control Groudon.\p"
+	.string "This world we have created was not \n"
+	.string "part of my design.\p"
+	.string "I accept that I hold equal blame with\n"
+	.string "Maxie, but I see now that we were\l"
+	.string "playing with forces beyond our control.\p"
+	.string "I know that you do not trust me, but\n"
+	.string "trust that I also want to stop Maxie.\p"
+	.string "Please, help me stop Maxie and together\n"
+	.string "we can put an end to all this.$"
+
+SkyPillar_Top_EventScript_ArchiePleaseHelp::
+	msgbox SkyPillar_Top_Text_ArchiePleaseHelp, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_MaxiePleaseHelp::
+	msgbox SkyPillar_Top_Text_MaxiePleaseHelp, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_Text_ArchieWeWillSubdue:
+	.string "Archie: Together we will subdue Groudon\n"
+	.string "and restrain the power of Kyogre.$"
+
+SkyPillar_Top_Text_MaxieWeWillSubdue:
+	.string "Maxie: Together we will subdue Kyogre\n"
+	.string "and restrain the power of Groudon.$"
+
+SkyPillar_Top_EventScript_MaxieWeWillSubdue::
+	msgbox SkyPillar_Top_Text_MaxieWeWillSubdue, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_ArchieWeWillSubdue::
+	msgbox SkyPillar_Top_Text_ArchieWeWillSubdue, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_Movement_RayquazaExitPokeball:
+	exit_pokeball
+	set_invisible
+	step_end
+
+SkyPillar_Top_Text_MaxieSeeHowControl:
+	.string "Maxie: See how this Pokémon eliminates\n"
+	.string "the effects of the weather distortion.\p"
+	.string "With its power, I can control Groudon's\n"
+	.string "abilities.$"
+
+
+SkyPillar_Top_Text_ArchieSeeHowControl:
+	.string "Archie: See how this Pokémon eliminates\n"
+	.string "the effects of the weather distortion.\p"
+	.string "With its power, I can control Kyogre's\n"
+	.string "abilities.$"
+
+SkyPillar_Top_EventScript_MaxieSeeHowControl::
+	msgbox SkyPillar_Top_Text_MaxieSeeHowControl, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_ArchieSeeHowControl::
+	msgbox SkyPillar_Top_Text_ArchieSeeHowControl, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_Movement_FinaleCameraPanFromAction:
+	walk_slow_down
+	walk_slow_down
+	step_end
+
+SkyPillar_Top_Movement_RayquazaEnterPokeball:
+	enter_pokeball
+	step_end
+
+SkyPillar_Top_EventScript_MaxieFailToSee::
+	msgbox SkyPillar_Top_Text_MaxieFailToSee, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_ArchieFailToSee::
+	msgbox SkyPillar_Top_Text_ArchieFailToSee, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_Text_ArchieFailToSee:
+	.string "Archie: As ever, Maxie, you fail to see\n"
+	.string "the bigger picture.\p"
+	.string "With the power of this Pokémon, Team\n"
+	.string "Aqua's world may not yet be lost.\p"
+	.string "Observe…$"
+
+SkyPillar_Top_Text_MaxieFailToSee:
+	.string "Maxie: As ever, Archie, you fail to see\n"
+	.string "the bigger picture.\p"
+	.string "With the power of this Pokémon, Team\n"
+	.string "Magma's world may not yet be lost.\p"
+	.string "Observe…$"
+
+SkyPillar_Top_Movement_FinaleGoodLeaderPushedBack:
+	lock_facing_direction
+	walk_fast_down
+	walk_fast_down
+	unlock_facing_direction
+	delay_16
+	step_end
+
+SkyPillar_Top_EventScript_ArchiePleadWithMaxie::
+	msgbox SkyPillar_Top_Text_ArchiePleadWithMaxie, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_EventScript_MaxiePleadWithArchie::
+	msgbox SkyPillar_Top_Text_MaxiePleadWithArchie, MSGBOX_DEFAULT
+	closemessage
+	return
+
+SkyPillar_Top_Text_MaxiePleadWithArchie:
+	.string "Maxie: Archie, please, this has gone\n"
+	.string "too far.\p"
+	.string "This world we have created… This is\n"
+	.string "not the world Team Magma dreamed of.\p"
+	.string "This cannot be what you and Team Aqua\n"
+	.string "want either?\p"
+	.string "The imbalance we have brought to the\n"
+	.string "region must come to an end, but this\l"
+	.string "isn't the way!$"
+
+SkyPillar_Top_Text_ArchiePleadWithMaxie:
+	.string "Archie: Maxie, please, this has gone\n"
+	.string "too far.\p"
+	.string "This world we have created… This is\n"
+	.string "not the world Team Aqua dreamed of.\p"
+	.string "This cannot be what you and Team Magma\n"
+	.string "want either?\p"
+	.string "The imbalance we have brought to the\n"
+	.string "region must come to an end, but this\l"
+	.string "isn't the way!$"
+
+SkyPillar_Top_Movement_FinaleCameraPanToAction:
+	walk_slow_up
+	walk_slow_up
+	step_end
+
+SkyPillar_Top_EventScript_FinaleMaxieMusic::
+	playbgm MUS_ENCOUNTER_MAGMA, TRUE
+	return
+
+SkyPillar_Top_EventScript_FinaleArchieMusic::
+	playbgm MUS_ENCOUNTER_AQUA, TRUE
+	return
+
+SkyPillar_Top_Movement_FinaleEmmieApproach:
+	walk_up
+	walk_left
+	face_up
+	step_end
 
 SkyPillar_Top_EventScript_RayquazaFaceDown::
 	turnobject LOCALID_RAYQUAZA_SLEEPING, DIR_SOUTH

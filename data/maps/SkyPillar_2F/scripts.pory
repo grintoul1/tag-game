@@ -8,13 +8,7 @@ SkyPillar_2F_MapScripts::
 SkyPillar_2F_OnTransition:
 	call_if_lt VAR_SKY_PILLAR_STATE, 8, SkyPillar_2F_EventScript_CleanFloor
 	copyvar VAR_ICE_STEP_COUNT, 1
-	call_if_gt VAR_SKY_PILLAR_STATE, 1, SkyPillar_2F_EventScript_GruntMovements
 	end
-
-SkyPillar_2F_EventScript_GruntMovements::
-	setobjectmovementtype LOCALID_SKYPILLAR_AQUAGRUNT2, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectmovementtype LOCALID_SKYPILLAR_MAGMAGRUNT2, MOVEMENT_TYPE_FACE_LEFT
-	return
 
 SkyPillar_2F_EventScript_CleanFloor::
 	setmaplayoutindex LAYOUT_SKY_PILLAR_2F_CLEAN

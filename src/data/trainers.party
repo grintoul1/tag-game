@@ -11345,11 +11345,12 @@ Level: 15
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_MAXIE_SKY_PILLAR ===
-Name: HALEY
-Class: Lass
-Pic: Lass
-Gender: Female
-Music: Female
+Name: Maxie
+Class: Magma Leader
+Pic: Magma Leader Maxie
+Mugshot: Blue
+Gender: Male
+Music: Male
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -11393,8 +11394,9 @@ Ability: Chlorophyll
 Name: Archie
 Class: Aqua Leader
 Pic: Aqua Leader Archie
-Gender: Female
-Music: Female
+Mugshot: Red
+Gender: Male
+Music: Male
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -11410,7 +11412,7 @@ Ability: Air Lock
 Swampert @ Swampertite
 Level: 87
 Adamant Nature
-Ability: Torrent
+Ability: Damp
 - Liquidation
 - Ice Punch
 - High Horsepower

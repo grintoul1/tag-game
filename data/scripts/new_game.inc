@@ -316,6 +316,8 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
 	setflag FLAG_HIDE_AQUA_HIDEOUT_B2F_EMMIE
 	setflag FLAG_HIDE_CAVE_OF_ORIGIN_B1F_LEADERS
+	clearflag FLAG_HIDE_SKY_PILLAR_EVIL_TEAMS
+	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_CUTSCENE_INVISIBLE
 	destroyfollowernpc
 	call EventScript_ResetAllBerries
 	end

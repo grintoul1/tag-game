@@ -1085,7 +1085,7 @@ SootopolisCity_EventScript_RayquazaSceneFromPokeCenter::
 # 543 "data/maps/SootopolisCity/scripts.pory"
 	clearflag FLAG_SYS_WEATHER_CTRL
 # 544 "data/maps/SootopolisCity/scripts.pory"
-	setvar VAR_SKY_PILLAR_STATE, 3
+	addvar VAR_SKY_PILLAR_STATE, 1
 # 545 "data/maps/SootopolisCity/scripts.pory"
 	clearflag FLAG_LEGENDARIES_IN_SOOTOPOLIS
 # 546 "data/maps/SootopolisCity/scripts.pory"
@@ -1191,7 +1191,7 @@ SootopolisCity_EventScript_RayquazaSceneFromDive::
 # 596 "data/maps/SootopolisCity/scripts.pory"
 	clearflag FLAG_SYS_WEATHER_CTRL
 # 597 "data/maps/SootopolisCity/scripts.pory"
-	setvar VAR_SKY_PILLAR_STATE, 2
+	addvar VAR_SKY_PILLAR_STATE, 1
 # 598 "data/maps/SootopolisCity/scripts.pory"
 	clearflag FLAG_LEGENDARIES_IN_SOOTOPOLIS
 # 599 "data/maps/SootopolisCity/scripts.pory"

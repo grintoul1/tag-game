@@ -1,6 +1,12 @@
 raw `
 Route132_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route132_OnTransition
 	.byte 0
+
+Route132_OnTransition:
+	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
+	end
 
 Route132_EventScript_Gilbert::
 	trainerbattle_single TRAINER_GILBERT, Route132_Text_GilbertIntro, Route132_Text_GilbertDefeat

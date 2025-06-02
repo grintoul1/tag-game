@@ -5,13 +5,7 @@ SkyPillar_1F_MapScripts::
 
 SkyPillar_1F_OnTransition:
 	call_if_lt VAR_SKY_PILLAR_STATE, 8, SkyPillar_1F_EventScript_CleanFloor
-	call_if_gt VAR_SKY_PILLAR_STATE, 0, SkyPillar_1F_EventScript_GruntMovements
 	end
-
-SkyPillar_1F_EventScript_GruntMovements::
-	setobjectmovementtype LOCALID_SKYPILLAR_AQUAGRUNT1, MOVEMENT_TYPE_FACE_UP
-	setobjectmovementtype LOCALID_SKYPILLAR_MAGMAGRUNT1, MOVEMENT_TYPE_FACE_DOWN
-	return
 
 SkyPillar_1F_EventScript_CleanFloor::
 	setmaplayoutindex LAYOUT_SKY_PILLAR_1F_CLEAN
