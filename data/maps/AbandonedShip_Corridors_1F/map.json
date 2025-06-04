@@ -16,10 +16,10 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "x": 17,
-      "y": 7,
+      "x": 11,
+      "y": 3,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -28,20 +28,42 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_CHARLIE",
       "graphics_id": "OBJ_EVENT_GFX_TUBER_M",
-      "x": 5,
-      "y": 10,
+      "x": 9,
+      "y": 8,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_LEFT_DOWN_RIGHT",
-      "movement_range_x": 4,
-      "movement_range_y": 7,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "AbandonedShip_Corridors_1F_EventScript_Charlie",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_DUNCAN",
+      "graphics_id": "OBJ_EVENT_GFX_SAILOR",
+      "x": 11,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbandonedShip_Corridors_B1F_EventScript_Duncan",
       "flag": "0"
     }
   ],
   "warp_events": [
+    {
+      "x": 10,
+      "y": 11,
+      "elevation": 3,
+      "dest_map": "MAP_ABANDONED_SHIP_DECK",
+      "dest_warp_id": "2"
+    },
     {
       "x": 9,
       "y": 11,
@@ -50,57 +72,50 @@
       "dest_warp_id": "2"
     },
     {
-      "x": 8,
-      "y": 11,
-      "elevation": 3,
-      "dest_map": "MAP_ABANDONED_SHIP_DECK",
-      "dest_warp_id": "2"
-    },
-    {
-      "x": 0,
+      "x": 2,
       "y": 11,
       "elevation": 3,
       "dest_map": "MAP_ABANDONED_SHIP_DECK",
       "dest_warp_id": "3"
     },
     {
-      "x": 1,
+      "x": 3,
       "y": 11,
       "elevation": 3,
       "dest_map": "MAP_ABANDONED_SHIP_DECK",
       "dest_warp_id": "3"
     },
     {
-      "x": 11,
-      "y": 9,
+      "x": 13,
+      "y": 10,
       "elevation": 3,
       "dest_map": "MAP_ABANDONED_SHIP_ROOMS_1F",
       "dest_warp_id": "0"
     },
     {
-      "x": 14,
-      "y": 9,
+      "x": 16,
+      "y": 10,
       "elevation": 3,
       "dest_map": "MAP_ABANDONED_SHIP_ROOMS_1F",
       "dest_warp_id": "3"
     },
     {
-      "x": 11,
-      "y": 3,
+      "x": 13,
+      "y": 4,
       "elevation": 3,
       "dest_map": "MAP_ABANDONED_SHIP_ROOMS_1F",
       "dest_warp_id": "2"
     },
     {
-      "x": 14,
-      "y": 3,
+      "x": 16,
+      "y": 4,
       "elevation": 3,
       "dest_map": "MAP_ABANDONED_SHIP_ROOMS_1F",
       "dest_warp_id": "4"
     },
     {
-      "x": 3,
-      "y": 9,
+      "x": 5,
+      "y": 10,
       "elevation": 3,
       "dest_map": "MAP_ABANDONED_SHIP_ROOMS2_1F",
       "dest_warp_id": "0"
@@ -120,13 +135,23 @@
       "dest_warp_id": "6"
     },
     {
-      "x": 3,
-      "y": 3,
+      "x": 5,
+      "y": 4,
       "elevation": 3,
       "dest_map": "MAP_ABANDONED_SHIP_ROOMS2_1F",
       "dest_warp_id": "2"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_ABANDONED_SHIP_STATE",
+      "var_value": "0",
+      "script": "AbandonedShip_Corridors_1F_EventScript_CharlieDuncan"
+    }
+  ],
   "bg_events": []
 }

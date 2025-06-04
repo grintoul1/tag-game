@@ -37,8 +37,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
-      "x": 115,
-      "y": 30,
+      "x": 109,
+      "y": 29,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
       "movement_range_x": 0,
@@ -50,8 +50,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
-      "x": 115,
-      "y": 28,
+      "x": 109,
+      "y": 27,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
       "movement_range_x": 0,
@@ -144,7 +144,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
-      "x": 101,
+      "x": 95,
       "y": 27,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
@@ -157,7 +157,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
-      "x": 101,
+      "x": 95,
       "y": 25,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
@@ -169,13 +169,11 @@
       "flag": "0"
     }
   ],
-  "warp_events": [
-
-  ],
+  "warp_events": [],
   "coord_events": [
     {
       "type": "trigger",
-      "x": 101,
+      "x": 95,
       "y": 26,
       "elevation": 0,
       "var": "VAR_ROUTE128_BATTLE_STATE",
@@ -184,8 +182,8 @@
     },
     {
       "type": "trigger",
-      "x": 115,
-      "y": 29,
+      "x": 109,
+      "y": 28,
       "elevation": 0,
       "var": "VAR_ROUTE128_BATTLE_STATE",
       "var_value": "1",

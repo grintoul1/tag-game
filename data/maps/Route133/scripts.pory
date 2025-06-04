@@ -8,38 +8,155 @@ Route133_OnTransition:
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
 	end
 
+Route133_EventScript_MollieConor::
+lockall
+playse SE_PIN
+applymovement LOCALID_MOLLIE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_FEMALE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route133_Text_MollieIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_CONOR, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_MALE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route133_Text_ConorIntro MSGBOX_AUTOCLOSE
+goto Route133_EventScript_MollieConorDoMultiBattle
+releaseall
+end
+
+Route133_EventScript_MollieConorDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_MOLLIE, Route133_Text_MollieDefeat, TRAINER_CONOR, Route133_Text_ConorDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route133_EventScript_MollieConorVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route133_EventScript_MollieConorVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route133_Text_MolliePostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route133_Text_ConorPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE134_STATE, 1
+end
+
+Route133_EventScript_BeckWarren::
+lockall
+playse SE_PIN
+applymovement LOCALID_BECK, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route133_Text_BeckIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_WARREN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route133_Text_WarrenIntro MSGBOX_AUTOCLOSE
+goto Route133_EventScript_BeckWarrenDoMultiBattle
+releaseall
+end
+
+Route133_EventScript_BeckWarrenDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_BECK, Route133_Text_BeckDefeat, TRAINER_WARREN, Route133_Text_WarrenDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route133_EventScript_BeckWarrenVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route133_EventScript_BeckWarrenVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route133_Text_BeckPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route133_Text_WarrenPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE134_STATE, 1
+end
+
+Route133_EventScript_FranklinDebra::
+lockall
+playse SE_PIN
+applymovement LOCALID_FRANKLIN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route133_Text_FranklinIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_DEBRA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route133_Text_DebraIntro MSGBOX_AUTOCLOSE
+goto Route133_EventScript_FranklinDebraDoMultiBattle
+releaseall
+end
+
+Route133_EventScript_FranklinDebraDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_FRANKLIN, Route133_Text_FranklinDefeat, TRAINER_DEBRA, Route133_Text_DebraDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route133_EventScript_FranklinDebraVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route133_EventScript_FranklinDebraVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route133_Text_FranklinPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route133_Text_DebraPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE132_STATE, 1
+end
+
 Route133_EventScript_Franklin::
-	trainerbattle_single TRAINER_FRANKLIN, Route133_Text_FranklinIntro, Route133_Text_FranklinDefeat
+	faceplayer
 	msgbox Route133_Text_FranklinPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route133_EventScript_Debra::
-	trainerbattle_single TRAINER_DEBRA, Route133_Text_DebraIntro, Route133_Text_DebraDefeat
+	faceplayer
 	msgbox Route133_Text_DebraPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route133_EventScript_Linda::
-	trainerbattle_single TRAINER_LINDA, Route133_Text_LindaIntro, Route133_Text_LindaDefeat
+	faceplayer
 	msgbox Route133_Text_LindaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route133_EventScript_Warren::
-	trainerbattle_single TRAINER_WARREN, Route133_Text_WarrenIntro, Route133_Text_WarrenDefeat
+	faceplayer
 	msgbox Route133_Text_WarrenPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route133_EventScript_Beck::
-	trainerbattle_single TRAINER_BECK, Route133_Text_BeckIntro, Route133_Text_BeckDefeat
+	faceplayer
 	msgbox Route133_Text_BeckPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route133_EventScript_Mollie::
-	trainerbattle_single TRAINER_MOLLIE, Route133_Text_MollieIntro, Route133_Text_MollieDefeat
+	faceplayer
 	msgbox Route133_Text_MolliePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route133_EventScript_Conor::
-	trainerbattle_single TRAINER_CONOR, Route133_Text_ConorIntro, Route133_Text_ConorDefeat
+	faceplayer
 	msgbox Route133_Text_ConorPostBattle, MSGBOX_AUTOCLOSE
 	end
 

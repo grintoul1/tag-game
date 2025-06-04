@@ -447,7 +447,7 @@ end
 # 224 "data/maps/Route128/scripts.pory"
 Route128_EventScript_KatelynIsaiahDoMultiBattle::
 # 225 "data/maps/Route128/scripts.pory"
-playbgm MUS_ROUTE122, TRUE
+playbgm MUS_SURF, TRUE
 # 226 "data/maps/Route128/scripts.pory"
 multi_2p_vs_2 TRAINER_KATELYN_1, Route128_Text_KatelynDefeat, TRAINER_ISAIAH_1, Route128_Text_IsaiahDefeat, PARTNER_EMMIE
 # 227 "data/maps/Route128/scripts.pory"
@@ -631,7 +631,7 @@ end
 # 316 "data/maps/Route128/scripts.pory"
 Route128_EventScript_HarrisonCarleeDoMultiBattle::
 # 317 "data/maps/Route128/scripts.pory"
-playbgm MUS_ROUTE122, TRUE
+playbgm MUS_SURF, TRUE
 # 318 "data/maps/Route128/scripts.pory"
 multi_2p_vs_2 TRAINER_HARRISON, Route128_Text_HarrisonDefeat, TRAINER_CARLEE, Route128_Text_CarleeDefeat, PARTNER_EMMIE
 # 319 "data/maps/Route128/scripts.pory"

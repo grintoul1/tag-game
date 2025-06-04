@@ -6,8 +6,47 @@ AbandonedShip_Corridors_1F_EventScript_Youngster::
 	msgbox AbandonedShip_Corridors_1F_Text_IsntItFunHere, MSGBOX_NPC
 	end
 
+AbandonedShip_Corridors_1F_EventScript_CharlieDuncan::
+lockall
+playse SE_PIN
+applymovement LOCALID_CHARLIE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_MALE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox AbandonedShip_Corridors_1F_Text_CharlieIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_DUNCAN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_HIKER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox AbandonedShip_Corridors_B1F_Text_DuncanIntro MSGBOX_AUTOCLOSE
+goto AbandonedShip_Corridors_1F_EventScript_CharlieDuncanDoMultiBattle
+releaseall
+end
+
+AbandonedShip_Corridors_1F_EventScript_CharlieDuncanDoMultiBattle::
+playbgm MUS_ABANDONED_SHIP, TRUE
+multi_2p_vs_2 TRAINER_CHARLIE, AbandonedShip_Corridors_1F_Text_CharlieDefeat, TRAINER_DUNCAN, AbandonedShip_Corridors_B1F_Text_DuncanDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, AbandonedShip_Corridors_1F_EventScript_CharlieDuncanVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+AbandonedShip_Corridors_1F_EventScript_CharlieDuncanVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox AbandonedShip_Corridors_1F_Text_CharliePostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox AbandonedShip_Corridors_B1F_Text_DuncanPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ABANDONED_SHIP_STATE, 1
+end
+
 AbandonedShip_Corridors_1F_EventScript_Charlie::
-	trainerbattle_single TRAINER_CHARLIE, AbandonedShip_Corridors_1F_Text_CharlieIntro, AbandonedShip_Corridors_1F_Text_CharlieDefeat
+	faceplayer
 	msgbox AbandonedShip_Corridors_1F_Text_CharliePostBattle, MSGBOX_AUTOCLOSE
 	end
 

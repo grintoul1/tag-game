@@ -693,6 +693,19 @@ Common_EventScript_Shelly::
 	faceplayer
 	end
 
+Common_EventScript_NotEligibleToParticipate::
+	lockall
+	faceplayer
+	msgbox Common_Text_NotEligibleToParticipate, MSGBOX_AUTOCLOSE
+	releaseall
+	end
+
+Common_Text_NotEligibleToParticipate:
+	.string "My apologies, however you are not\n"
+	.string "eligible to participate.\p"
+	.string "Your arrangements involve battling\n"
+	.string "the Frontier Brains directly.$"
+
 Common_EventScript_Emmie::
 	faceplayer
 	end

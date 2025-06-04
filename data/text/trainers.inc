@@ -473,7 +473,7 @@ Route105_Text_BeverlyIntro:
 Route105_Text_BeverlyDefeated:
 	.string "I'm floating…$"
 
-Route105_Text_PostBattle:
+Route105_Text_BeverlyPostBattle:
 	.string "Your body weight is reduced to just\n"
 	.string "one tenth in the water.\p"
 	.string "That would make me…\n"

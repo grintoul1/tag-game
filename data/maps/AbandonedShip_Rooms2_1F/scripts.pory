@@ -2,10 +2,37 @@ raw `
 AbandonedShip_Rooms2_1F_MapScripts::
 	.byte 0
 
+AbandonedShip_Rooms2_1F_EventScript_KiraDan::
+lockall
+playse SE_PIN
+applymovement LOCALID_KIRA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_GIRL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox AbandonedShip_Rooms2_1F_Text_KiraIntro MSGBOX_AUTOCLOSE
+goto AbandonedShip_Rooms2_1F_EventScript_KiraDanDoMultiBattle
+releaseall
+end
+
+AbandonedShip_Rooms2_1F_EventScript_KiraDanDoMultiBattle::
+playbgm MUS_ABANDONED_SHIP, TRUE
+multi_2p_vs_1 TRAINER_KIRA_AND_DAN_1, AbandonedShip_Rooms2_1F_Text_KiraDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, AbandonedShip_Rooms2_1F_EventScript_KiraDanVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+AbandonedShip_Rooms2_1F_EventScript_KiraDanVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox AbandonedShip_Rooms2_1F_Text_KiraPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ABANDONED_SHIP_STATE, 1
+end
+
 AbandonedShip_Rooms2_1F_EventScript_Dan::
-	trainerbattle_double TRAINER_KIRA_AND_DAN_1, AbandonedShip_Rooms2_1F_Text_DanIntro, AbandonedShip_Rooms2_1F_Text_DanDefeat, AbandonedShip_Rooms2_1F_Text_DanNotEnoughMons, AbandonedShip_Rooms2_1F_EventScript_RegisterDan
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, AbandonedShip_Rooms2_1F_EventScript_DanRematch
+	faceplayer
 	msgbox AbandonedShip_Rooms2_1F_Text_DanPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -22,9 +49,7 @@ AbandonedShip_Rooms2_1F_EventScript_DanRematch::
 	end
 
 AbandonedShip_Rooms2_1F_EventScript_Kira::
-	trainerbattle_double TRAINER_KIRA_AND_DAN_1, AbandonedShip_Rooms2_1F_Text_KiraIntro, AbandonedShip_Rooms2_1F_Text_KiraDefeat, AbandonedShip_Rooms2_1F_Text_KiraNotEnoughMons, AbandonedShip_Rooms2_1F_EventScript_RegisterKira
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, AbandonedShip_Rooms2_1F_EventScript_KiraRematch
+	faceplayer
 	msgbox AbandonedShip_Rooms2_1F_Text_KiraPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -40,13 +65,52 @@ AbandonedShip_Rooms2_1F_EventScript_KiraRematch::
 	msgbox AbandonedShip_Rooms2_1F_Text_KiraPostRematch, MSGBOX_AUTOCLOSE
 	end
 
+AbandonedShip_Rooms2_1F_EventScript_GarrisonJani::
+lockall
+playse SE_PIN
+applymovement LOCALID_GARRISON, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_HIKER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox AbandonedShip_Rooms2_1F_Text_GarrisonIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_JANI, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_TWINS, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox AbandonedShip_Rooms2_1F_Text_JaniIntro MSGBOX_AUTOCLOSE
+goto AbandonedShip_Rooms2_1F_EventScript_GarrisonJaniDoMultiBattle
+releaseall
+end
+
+AbandonedShip_Rooms2_1F_EventScript_GarrisonJaniDoMultiBattle::
+playbgm MUS_ABANDONED_SHIP, TRUE
+multi_2p_vs_2 TRAINER_GARRISON, AbandonedShip_Rooms2_1F_Text_GarrisonDefeat, TRAINER_JANI, AbandonedShip_Rooms2_1F_Text_JaniDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, AbandonedShip_Rooms2_1F_EventScript_GarrisonJaniVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+AbandonedShip_Rooms2_1F_EventScript_GarrisonJaniVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox AbandonedShip_Rooms2_1F_Text_GarrisonPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox AbandonedShip_Rooms2_1F_Text_JaniPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ABANDONED_SHIP_STATE, 1
+end
+
 AbandonedShip_Rooms2_1F_EventScript_Jani::
-	trainerbattle_single TRAINER_JANI, AbandonedShip_Rooms2_1F_Text_JaniIntro, AbandonedShip_Rooms2_1F_Text_JaniDefeat
+	faceplayer
 	msgbox AbandonedShip_Rooms2_1F_Text_JaniPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 AbandonedShip_Rooms2_1F_EventScript_Garrison::
-	trainerbattle_single TRAINER_GARRISON, AbandonedShip_Rooms2_1F_Text_GarrisonIntro, AbandonedShip_Rooms2_1F_Text_GarrisonDefeat
+	faceplayer
 	msgbox AbandonedShip_Rooms2_1F_Text_GarrisonPostBattle, MSGBOX_AUTOCLOSE
 	end
 

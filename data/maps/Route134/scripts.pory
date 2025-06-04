@@ -13,48 +13,243 @@ Route134_OnResume:
 	setdivewarp MAP_UNDERWATER_ROUTE134, 8, 6
 	end
 
+Route134_EventScript_LaurelJack::
+lockall
+playse SE_PIN
+applymovement LOCALID_LAUREL, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route134_Text_LaurelIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_JACK, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route134_Text_JackIntro MSGBOX_AUTOCLOSE
+goto Route134_EventScript_LaurelJackDoMultiBattle
+releaseall
+end
+
+Route134_EventScript_LaurelJackDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_LAUREL, Route134_Text_LaurelDefeat, TRAINER_JACK, Route134_Text_JackDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route134_EventScript_LaurelJackVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route134_EventScript_LaurelJackVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route134_Text_LaurelPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route134_Text_JackPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE132_STATE, 1
+end
+
+Route134_EventScript_AaronMarley::
+lockall
+playse SE_PIN
+applymovement LOCALID_AARON, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route134_Text_AaronIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_MARLEY, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route134_Text_MarleyIntro MSGBOX_AUTOCLOSE
+goto Route134_EventScript_AaronMarleyDoMultiBattle
+releaseall
+end
+
+Route134_EventScript_AaronMarleyDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_AARON, Route134_Text_AaronDefeat, TRAINER_MARLEY, Route134_Text_MarleyDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route134_EventScript_AaronMarleyVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route134_EventScript_AaronMarleyVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route134_Text_AaronPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route134_Text_MarleyPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE132_STATE, 1
+end
+
+Route134_EventScript_AlexKelvin::
+lockall
+playse SE_PIN
+applymovement LOCALID_ALEX, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route134_Text_AlexIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_KELVIN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_HIKER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route134_Text_KelvinIntro MSGBOX_AUTOCLOSE
+goto Route134_EventScript_AlexKelvinDoMultiBattle
+releaseall
+end
+
+Route134_EventScript_AlexKelvinDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_ALEX, Route134_Text_AlexDefeat, TRAINER_KELVIN, Route134_Text_KelvinDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route134_EventScript_AlexKelvinVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route134_EventScript_AlexKelvinVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route134_Text_AlexPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route134_Text_KelvinPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE132_STATE, 1
+end
+
+Route134_EventScript_HudsonLinda::
+lockall
+playse SE_PIN
+applymovement LOCALID_HUDSON, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_HIKER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route134_Text_HudsonIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_LINDA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_HIKER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route133_Text_LindaIntro MSGBOX_AUTOCLOSE
+goto Route134_EventScript_HudsonLindaDoMultiBattle
+releaseall
+end
+
+Route134_EventScript_HudsonLindaDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_HUDSON, Route134_Text_HudsonDefeat, TRAINER_LINDA, Route133_Text_LindaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route134_EventScript_HudsonLindaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route134_EventScript_HudsonLindaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route134_Text_HudsonPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route133_Text_LindaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE134_STATE, 1
+end
+
+Route134_EventScript_ReynaHitoshi::
+lockall
+playse SE_PIN
+applymovement LOCALID_REYNA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route134_Text_ReynaIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_HITOSHI, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route134_Text_HitoshiIntro MSGBOX_AUTOCLOSE
+goto Route134_EventScript_ReynaHitoshiDoMultiBattle
+releaseall
+end
+
+Route134_EventScript_ReynaHitoshiDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_REYNA, Route134_Text_ReynaDefeat, TRAINER_HITOSHI, Route134_Text_HitoshiDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route134_EventScript_ReynaHitoshiVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route134_EventScript_ReynaHitoshiVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route134_Text_ReynaPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route134_Text_HitoshiPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE134_STATE, 1
+end
+
 Route134_EventScript_Jack::
-	trainerbattle_single TRAINER_JACK, Route134_Text_JackIntro, Route134_Text_JackDefeat
+	faceplayer
 	msgbox Route134_Text_JackPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route134_EventScript_Laurel::
-	trainerbattle_single TRAINER_LAUREL, Route134_Text_LaurelIntro, Route134_Text_LaurelDefeat
+	faceplayer
 	msgbox Route134_Text_LaurelPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route134_EventScript_Alex::
-	trainerbattle_single TRAINER_ALEX, Route134_Text_AlexIntro, Route134_Text_AlexDefeat
+	faceplayer
 	msgbox Route134_Text_AlexPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route134_EventScript_Aaron::
-	trainerbattle_single TRAINER_AARON, Route134_Text_AaronIntro, Route134_Text_AaronDefeat
+	faceplayer
 	msgbox Route134_Text_AaronPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route134_EventScript_Hitoshi::
-	trainerbattle_single TRAINER_HITOSHI, Route134_Text_HitoshiIntro, Route134_Text_HitoshiDefeat
+	faceplayer
 	msgbox Route134_Text_HitoshiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route134_EventScript_Hudson::
-	trainerbattle_single TRAINER_HUDSON, Route134_Text_HudsonIntro, Route134_Text_HudsonDefeat
+	faceplayer
 	msgbox Route134_Text_HudsonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route134_EventScript_Reyna::
-	trainerbattle_single TRAINER_REYNA, Route134_Text_ReynaIntro, Route134_Text_ReynaDefeat
+	faceplayer
 	msgbox Route134_Text_ReynaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route134_EventScript_Marley::
-	trainerbattle_single TRAINER_MARLEY, Route134_Text_MarleyIntro, Route134_Text_MarleyDefeat
+	faceplayer
 	msgbox Route134_Text_MarleyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route134_EventScript_Kelvin::
-	trainerbattle_single TRAINER_KELVIN, Route134_Text_KelvinIntro, Route134_Text_KelvinDefeat
+	faceplayer
 	msgbox Route134_Text_KelvinPostBattle, MSGBOX_AUTOCLOSE
 	end
 

@@ -25,7 +25,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "BattleFrontier_BattleFactoryLobby_EventScript_SinglesAttendant",
+      "script": "Common_EventScript_NotEligibleToParticipate",
       "flag": "0"
     },
     {
@@ -91,7 +91,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "BattleFrontier_BattleFactoryLobby_EventScript_DoublesAttendant",
+      "script": "Common_EventScript_NotEligibleToParticipate",
       "flag": "0"
     }
   ],
@@ -116,7 +116,7 @@
     {
       "type": "sign",
       "x": 2,
-      "y": 7,
+      "y": 4,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "BattleFrontier_BattleFactoryLobby_EventScript_ShowSinglesResults"
@@ -124,7 +124,7 @@
     {
       "type": "sign",
       "x": 11,
-      "y": 7,
+      "y": 4,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "BattleFrontier_BattleFactoryLobby_EventScript_ShowDoublesResults"
@@ -132,7 +132,7 @@
     {
       "type": "sign",
       "x": 9,
-      "y": 4,
+      "y": 3,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "BattleFrontier_BattleFactoryLobby_EventScript_RulesBoard"

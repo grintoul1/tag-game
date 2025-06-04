@@ -103,7 +103,7 @@ AbandonedShip_Corridors_B1F_EventScript_DoorIsUnlocked::
 # 52 "data/maps/AbandonedShip_Corridors_B1F/scripts.pory"
 AbandonedShip_Corridors_B1F_EventScript_Duncan::
 # 53 "data/maps/AbandonedShip_Corridors_B1F/scripts.pory"
-	trainerbattle_single TRAINER_DUNCAN, AbandonedShip_Corridors_B1F_Text_DuncanIntro, AbandonedShip_Corridors_B1F_Text_DuncanDefeat
+	faceplayer
 # 54 "data/maps/AbandonedShip_Corridors_B1F/scripts.pory"
 	msgbox AbandonedShip_Corridors_B1F_Text_DuncanPostBattle, MSGBOX_AUTOCLOSE
 # 55 "data/maps/AbandonedShip_Corridors_B1F/scripts.pory"

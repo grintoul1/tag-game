@@ -699,7 +699,7 @@
 #define FLAG_HIDE_CAVE_OF_ORIGIN_B1F_LEADERS  0x28C // Hides COO Archie and Maxie
 #define FLAG_HIDE_SKY_PILLAR_EVIL_TEAMS  0x28D // Hides Sky Pillar Team Aqua and Team Magma
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_CUTSCENE_INVISIBLE  0x28E // Unused Flag
-#define FLAG_UNUSED_0x28F  0x28F // Unused Flag
+#define FLAG_HIDE_SOOTOPOLIS_SCOTT  0x28F // Hides Sootopolis Scott
 #define FLAG_UNUSED_0x290  0x290 // Unused Flag
 #define FLAG_UNUSED_0x291  0x291 // Unused Flag
 #define FLAG_UNUSED_0x292  0x292 // Unused Flag

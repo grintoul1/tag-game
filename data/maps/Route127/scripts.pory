@@ -93,7 +93,7 @@ releaseall
 end
 
 Route127_EventScript_AidanAthenaDoMultiBattle::
-playbgm MUS_SURF, TRUE
+playbgm MUS_ROUTE122, TRUE
 multi_2p_vs_2 TRAINER_AIDAN, Route127_Text_AidanDefeat, TRAINER_ATHENA, Route127_Text_AthenaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route127_EventScript_AidanAthenaVictory

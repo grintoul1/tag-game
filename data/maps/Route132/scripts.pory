@@ -8,43 +8,199 @@ Route132_OnTransition:
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
 	end
 
+Route132_EventScript_GilbertDana::
+lockall
+playse SE_PIN
+applymovement LOCALID_GILBERT, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route132_Text_GilbertIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_DANA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_SWIMMER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route132_Text_DanaIntro MSGBOX_AUTOCLOSE
+goto Route132_EventScript_GilbertDanaDoMultiBattle
+releaseall
+end
+
+Route132_EventScript_GilbertDanaDoMultiBattle::
+playbgm MUS_SURF, TRUE
+multi_2p_vs_2 TRAINER_GILBERT, Route132_Text_GilbertDefeat, TRAINER_DANA, Route132_Text_DanaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route132_EventScript_GilbertDanaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route132_EventScript_GilbertDanaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route132_Text_GilbertPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route132_Text_DanaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE134_STATE, 1
+end
+
+Route132_EventScript_PaxtonMakayla::
+lockall
+playse SE_PIN
+applymovement LOCALID_PAXTON, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_MALE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route132_Text_PaxtonIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_MAKAYLA, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_FEMALE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route132_Text_MakaylaIntro MSGBOX_AUTOCLOSE
+goto Route132_EventScript_PaxtonMakaylaDoMultiBattle
+releaseall
+end
+
+Route132_EventScript_PaxtonMakaylaDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_PAXTON, Route132_Text_PaxtonDefeat, TRAINER_MAKAYLA, Route132_Text_MakaylaDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route132_EventScript_PaxtonMakaylaVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route132_EventScript_PaxtonMakaylaVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route132_Text_PaxtonPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route132_Text_MakaylaPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE134_STATE, 1
+end
+
+Route132_EventScript_RonaldKiyo::
+lockall
+playse SE_PIN
+applymovement LOCALID_RONALD, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_HIKER, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route132_Text_RonaldIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_KIYO, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_INTENSE, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route132_Text_KiyoIntro MSGBOX_AUTOCLOSE
+goto Route132_EventScript_RonaldKiyoDoMultiBattle
+releaseall
+end
+
+Route132_EventScript_RonaldKiyoDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_RONALD, Route132_Text_RonaldDefeat, TRAINER_KIYO, Route132_Text_KiyoDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route132_EventScript_RonaldKiyoVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route132_EventScript_RonaldKiyoVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route132_Text_RonaldPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route132_Text_KiyoPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE132_STATE, 1
+end
+
+Route132_EventScript_JonathanDarcy::
+lockall
+playse SE_PIN
+applymovement LOCALID_JONATHAN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route132_Text_JonathanIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_DARCY, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route132_Text_DarcyIntro MSGBOX_AUTOCLOSE
+goto Route132_EventScript_JonathanDarcyDoMultiBattle
+releaseall
+end
+
+Route132_EventScript_JonathanDarcyDoMultiBattle::
+playbgm MUS_ROUTE120, TRUE
+multi_2p_vs_2 TRAINER_JONATHAN, Route132_Text_JonathanDefeat, TRAINER_DARCY, Route132_Text_DarcyDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, Route132_EventScript_JonathanDarcyVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+Route132_EventScript_JonathanDarcyVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox Route132_Text_JonathanPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox Route132_Text_DarcyPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_ROUTE132_STATE, 1
+end
+
 Route132_EventScript_Gilbert::
-	trainerbattle_single TRAINER_GILBERT, Route132_Text_GilbertIntro, Route132_Text_GilbertDefeat
+	faceplayer
 	msgbox Route132_Text_GilbertPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route132_EventScript_Dana::
-	trainerbattle_single TRAINER_DANA, Route132_Text_DanaIntro, Route132_Text_DanaDefeat
+	faceplayer
 	msgbox Route132_Text_DanaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route132_EventScript_Ronald::
-	trainerbattle_single TRAINER_RONALD, Route132_Text_RonaldIntro, Route132_Text_RonaldDefeat
+	faceplayer
 	msgbox Route132_Text_RonaldPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route132_EventScript_Kiyo::
-	trainerbattle_single TRAINER_KIYO, Route132_Text_KiyoIntro, Route132_Text_KiyoDefeat
+	faceplayer
 	msgbox Route132_Text_KiyoPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route132_EventScript_Paxton::
-	trainerbattle_single TRAINER_PAXTON, Route132_Text_PaxtonIntro, Route132_Text_PaxtonDefeat
+	faceplayer
 	msgbox Route132_Text_PaxtonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route132_EventScript_Darcy::
-	trainerbattle_single TRAINER_DARCY, Route132_Text_DarcyIntro, Route132_Text_DarcyDefeat
+	faceplayer
 	msgbox Route132_Text_DarcyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route132_EventScript_Jonathan::
-	trainerbattle_single TRAINER_JONATHAN, Route132_Text_JonathanIntro, Route132_Text_JonathanDefeat
+	faceplayer
 	msgbox Route132_Text_JonathanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route132_EventScript_Makayla::
-	trainerbattle_single TRAINER_MAKAYLA, Route132_Text_MakaylaIntro, Route132_Text_MakaylaDefeat
+	faceplayer
 	msgbox Route132_Text_MakaylaPostBattle, MSGBOX_AUTOCLOSE
 	end
 

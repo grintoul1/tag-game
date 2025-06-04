@@ -55,8 +55,139 @@ SootopolisCity_OnTransition:
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 3, SootopolisCity_EventScript_CheckSetEnterCaveOfOriginObjPos
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 4, SootopolisCity_EventScript_SetExitCaveOfOriginObjPos
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 5, SootopolisCity_EventScript_SetOutsideGymObjPos
-	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 6, SootopolisCity_EventScript_SetExpertBlockCaveEntrance
+	call_if_ge VAR_SOOTOPOLIS_CITY_STATE, 6, SootopolisCity_EventScript_SetExpertBlockCaveEntrance
 	end
+
+SootopolisCity_EventScript_WallaceGoFrontier::
+	lockall
+	playse SE_PIN
+	applymovement LOCALID_SOOTOPOLIS_WALLACE, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement LOCALID_SOOTOPOLIS_WALLACE, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_QuestionMark
+	addobject LOCALID_SOOTOPOLIS_SCOTT
+	waitmovement 0
+	msgbox SootopolisCity_Text_WallaceComeHere, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SOOTOPOLIS_WALLACE, Common_Movement_WalkSlowRight
+	applymovement OBJ_EVENT_ID_PLAYER, SootopolisCity_Movement_PlayerApproachWallace
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SootopolisCity_Movement_EmmieApproachWallace
+	waitmovement 0
+	applymovement LOCALID_SOOTOPOLIS_WALLACE, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox SootopolisCity_Text_WallaceMadeAnArrangement, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SOOTOPOLIS_WALLACE, Common_Movement_FaceDown
+	applymovement LOCALID_SOOTOPOLIS_SCOTT, Common_Movement_WalkSlowRight
+	waitmovement 0
+	msgbox SootopolisCity_Text_ScottExplanation, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SOOTOPOLIS_WALLACE, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox SootopolisCity_Text_WallaceYouWillNeedThis, MSGBOX_DEFAULT
+	closemessage
+	fadescreenspeed FADE_TO_BLACK, 4
+	removeobject LOCALID_SOOTOPOLIS_SCOTT
+	removeobject LOCALID_SOOTOPOLIS_WALLACE
+	setflag FLAG_LANDMARK_BATTLE_FRONTIER
+	setflag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
+	setvar VAR_SOOTOPOLIS_CITY_STATE, 6
+	delay 30
+	fadescreen FADE_FROM_BLACK
+	releaseall
+	end
+
+
+SootopolisCity_Text_WallaceYouWillNeedThis:
+	.string "Wallace: So, there you have it.\p"
+	.string "I have marked the location of the\n"
+	.string "Battle Frontier in your Pokénav.\p"
+	.string "This means you will be able to fly there\n"
+	.string "directly.\p"
+	.string "I strongly recommend you get some final\n"
+	.string "training in before your challenge.\p"
+	.string "I wish you the best of luck, and I\n"
+	.string "expect to see you in the Champion's\l"
+	.string "Room very soon.\p"
+	.string "Farewell!$"
+
+SootopolisCity_Text_ScottExplanation:
+	.string "Scott: Hello again, remember me?\p"
+	.string "I run an invite-only facility called\n"
+	.string "the Battle Frontier on the outskirts\l"
+	.string "of Hoenn.\p"
+	.string "Trainers of elite callibre are invited\n"
+	.string "to tackle the seven facilities, each of\l"
+	.string "which comes with its own gimmick.\p"
+	.string "Usually competitors must battle their\n"
+	.string "way through each facility.\p"
+	.string "However, as a favour to Wallace, I have\n"
+	.string "arranged for the senior trainer of each\l"
+	.string "facility to battle you immediately.\p"
+	.string "These trainers are known as the seven\n"
+	.string "Frontier Brains.\p"
+	.string "They're no pushover. After all, I hand\n"
+	.string "picked them!\p"
+	.string "You can challenge them in any order you\n"
+	.string "like, and you will be able to leave and\l"
+	.string "return as you see fit.\p"
+	.string "Upon defeat, each will gift you an item\n"
+	.string "in recognition of your achievement.\p"
+	.string "They await your arrival in their\n"
+	.string "facilities, and let me warn you\l"
+	.string "they're ready for you!\p"
+	.string "Hahaha… I wish you the very best\n"
+	.string "of luck.$"
+
+SootopolisCity_Text_WallaceMadeAnArrangement:
+	.string "Wallace: Firstly, allow me to\n"
+	.string "congratulate you on defeating Juan.\p"
+	.string "My former mentor is certainly no\n"
+	.string "pushover.\p"
+	.string "Together you have collected the\n"
+	.string "eight Pokémon League gym badges.\p"
+	.string "This means you are now eligible to\n"
+	.string "challenge the Elite Four.\p"
+	.string "Before rushing into things however,\n"
+	.string "you may wish to make appropriate\l"
+	.string "preparations.\p"
+	.string "As thanks for your efforts in resolving\n"
+	.string "the events here in Sootopolis, I have\l"
+	.string "made a special arrangement for you.\p"
+	.string "There are another group of trainers, who\n"
+	.string "are a cut above Hoenn's Gym Leaders.\p"
+	.string "You may wish to train with them prior to\n"
+	.string "your challenge, and who knows, perhaps\l"
+	.string "you will gain something by doing so.\p"
+	.string "I will allow Scott here to explain\n"
+	.string "further.$"
+
+SootopolisCity_Movement_EmmieApproachWallace:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+SootopolisCity_Movement_PlayerApproachWallace:
+	walk_slow_left
+	walk_slow_left
+	step_end
+
+SootopolisCity_Text_WallaceComeHere:
+	.string "Wallace: {PLAYER}, Emmie, join me\n"
+	.string "for a moment, please.$"
+
+SootopolisCity_EventScript_SetWallacePosition::
+	setobjectxyperm LOCALID_SOOTOPOLIS_WALLACE, 27, 33
+	addobject LOCALID_SOOTOPOLIS_WALLACE
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER 32, 33
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_SOOTOPOLIS_CITY
+	setobjectmovementtype LOCALID_SOOTOPOLIS_WALLACE, MOVEMENT_TYPE_FACE_RIGHT
+	return
 
 SootopolisCity_EventScript_SetArchieMaxiePos::
 	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SootopolisCity_EventScript_ArchieDefeatedPos
@@ -171,6 +302,7 @@ SootopolisCity_EventScript_SetExpertBlockCaveEntrance::
 
 SootopolisCity_OnWarp:
 	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 5, SootopolisCity_EventScript_NoMusic
+	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 7, SootopolisCity_EventScript_SetWallacePosition
 	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 5, SootopolisCity_EventScript_PlayerFaceLegendaries
 	.2byte 0
 
@@ -200,6 +332,7 @@ SootopolisCity_OnResume:
 
 SootopolisCity_OnFrame:
 	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 1, SootopolisCity_EventScript_StartLegendariesScene
+	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 7, SootopolisCity_EventScript_WallaceGoFrontier
 	map_script_2 VAR_SKY_PILLAR_STATE, 7, SootopolisCity_EventScript_StartRayquazaScene
 	.2byte 0
 

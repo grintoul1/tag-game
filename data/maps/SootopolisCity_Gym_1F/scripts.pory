@@ -114,17 +114,23 @@ SootopolisCity_Gym_1F_EventScript_JuanDefeated::
 	setflag FLAG_BADGE08_GET
 	setflag FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS
 	setflag FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
-	setflag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
-	setvar VAR_SOOTOPOLIS_CITY_STATE, 6
+	setvar VAR_SOOTOPOLIS_CITY_STATE, 7
 	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_MAN_1
 	setvar VAR_0x8008, 8
 	call Common_EventScript_SetGymTrainers
 	call SootopolisCity_Gym_1F_EventScript_GiveWaterPulse
 	closemessage
+	msgbox SootopolisCity_Gym_1F_Text_StepOutside, MSGBOX_DEFAULT
+	closemessage
 	delay 30
 	addvar VAR_SOOTOPOLIS_CITY_GYM_STATE, 1
+	warpsilent MAP_SOOTOPOLIS_CITY, 31, 33
 	release
 	end
+
+SootopolisCity_Gym_1F_Text_StepOutside:
+	.string "Juan: Now, if you step outside, I believe\n"
+	.string "somebody may be waiting for you.$"
 
 SootopolisCity_Gym_1F_EventScript_GiveWaterPulse::
 	giveitem ITEM_TM_WATER_PULSE

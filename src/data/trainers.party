@@ -2866,8 +2866,8 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_LUIS ===
 Name: LUIS
-Class: Swimmer M
-Pic: Swimmer M
+Class: Sailor
+Pic: Sailor
 Gender: Male
 Music: Swimmer
 Battle Type: Singles
@@ -16283,9 +16283,16 @@ Music: Male
 Battle Type: Singles
 AI: Basic Trainer
 
-Beldum
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Regirock
+Level: 95
+
+Regigigas
+Level: 95
+
+Regieleki
+Level: 95
+
+
 
 === TRAINER_ANDRES_2 ===
 Name: ANDRES
