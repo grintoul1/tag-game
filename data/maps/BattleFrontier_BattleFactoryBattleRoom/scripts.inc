@@ -4,11 +4,67 @@
 @ The graphics of the opponent are represented with VAR_OBJ_GFX_ID_0, which will ultimately be set by factory_setopponentgfx.
 
 BattleFrontier_BattleFactoryBattleRoom_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattleFactoryBattleRoom_OnTransition
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattleFactoryBattleRoom_OnWarp
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleFactoryBattleRoom_OnFrame
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattleFactoryBattleRoom_OnWarp
 	.byte 0
 
+BattleFrontier_BattleFactoryBattleRoom_OnFrame:
+	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattleFactoryBattleRoom_EventScript_NolandBattle
+	.2byte 0
+
+BattleFrontier_BattleFactoryBattleRoom_OnWarp:
+	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattleFactoryBattleRoom_EventScript_EmmiePos
+	.2byte 0
+
+BattleFrontier_BattleFactoryBattleRoom_EventScript_EmmiePos::
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 4, 7
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_EAST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_BATTLE_FRONTIER_BATTLE_FACTORY_BATTLE_ROOM
+	end
+
+BattleFrontier_BattleFactoryBattleRoom_EventScript_NolandBattle::
+	lockall
+	applymovement LOCALID_NOLAND, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox BattleFrontier_BattleFactoryBattleRoom_Text_NolandBestOfLuck, MSGBOX_AUTOCLOSE
+	goto BattleFrontier_BattleFactoryBattleRoom_EventScript_NolandDoMultiBattle
+	releaseall 
+	end
+
+BattleFrontier_BattleFactoryBattleRoom_EventScript_NolandDoMultiBattle::
+	playbgm MUS_B_FACTORY, TRUE
+	multi_2p_vs_1 TRAINER_NOLAND, BattleFrontier_BattleFactoryBattleRoom_Text_NolandDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, BattleFrontier_BattleFactoryBattleRoom_EventScript_NolandVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+BattleFrontier_BattleFactoryBattleRoom_Text_NolandDefeat:
+	.string "Wow, impressive stuff!$"
+
+BattleFrontier_BattleFactoryBattleRoom_EventScript_NolandVictory::
+	applymovement LOCALID_NOLAND, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox BattleFrontier_BattleFactoryBattleRoom_Text_NolandCongratulationsTakeThis, MSGBOX_AUTOCLOSE
+	giveitem ITEM_POKE_BALL
+	setflag FLAG_HIDE_BATTLE_FACTORY_LOBBY_NOLAND
+	warp MAP_BATTLE_FRONTIER_OUTSIDE_WEST, 11, 39
+	releaseall
+	end
+
+BattleFrontier_BattleFactoryBattleRoom_Text_NolandCongratulationsTakeThis:
+	.string "Noland: Congratulations, that was a\n"
+	.string "blast!\p"
+	.string "As a reward for your victory, please\n"
+	.string "take this SOME ITEM.\p"
+	.string "Best of luck against the Elite Four, I\n"
+	.string "think you stand a strong chance!$"
+
+BattleFrontier_BattleFactoryBattleRoom_Text_NolandBestOfLuck:
+	.string "Noland: Alright, best of luck, kids!$"
+	
 BattleFrontier_BattleFactoryBattleRoom_OnTransition:
 	frontier_settrainers
 	checkplayergender
@@ -23,10 +79,6 @@ BattleFrontier_BattleFactoryBattleRoom_EventScript_SetUpFactoryHeadObj::
 	call BattleFrontier_EventScript_SetBrainObjectGfx
 	setobjectxyperm LOCALID_FACTORY_BATTLE_OPPONENT, 7, 9
 	end
-
-BattleFrontier_BattleFactoryBattleRoom_OnWarp:
-	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattleFactoryBattleRoom_EventScript_HideObjects
-	.2byte 0
 
 BattleFrontier_BattleFactoryBattleRoom_EventScript_HideObjects::
 	setvar VAR_TEMP_1, 1
@@ -43,10 +95,6 @@ BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxMale::
 BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxFemale::
 	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
 	return
-
-BattleFrontier_BattleFactoryBattleRoom_OnFrame:
-	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattleFactoryBattleRoom_EventScript_EnterRoom
-	.2byte 0
 
 BattleFrontier_BattleFactoryBattleRoom_EventScript_EnterRoomFactoryHeadBattle::
 	msgbox BattleFrontier_BattleFactoryBattleRoom_Text_GetAMoveOn, MSGBOX_DEFAULT

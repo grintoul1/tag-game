@@ -107,6 +107,41 @@ BattleFrontier_BattleFactoryLobby_EventScript_ResumeChallenge::
 	setvar VAR_0x8006, 2
 	goto BattleFrontier_BattleFactoryLobby_EventScript_EnterChallenge
 
+BattleFrontier_BattleFactoryLobby_EventScript_Noland::
+	lock
+	faceplayer
+	msgbox BattleFrontier_BattleFactoryLobby_Text_NolandWelcomeToBattleFactory, MSGBOX_AUTOCLOSE
+	message BattleFrontier_BattleFactoryLobby_Text_NolandWhatDoYouSay
+	yesnobox 20, 8
+	compare VAR_RESULT, 1
+	goto_if_eq BattleFrontier_BattleFactoryLobby_EventScript_TriggerNolandBattle
+	msgbox BattleFrontier_BattleFactoryLobby_Text_NolandComeBackIfChangeMind, MSGBOX_AUTOCLOSE
+	end
+
+BattleFrontier_BattleFactoryLobby_EventScript_TriggerNolandBattle::
+	msgbox BattleFrontier_BattleFactoryLobby_Text_NolandComeWithMe, MSGBOX_AUTOCLOSE
+	warpsilent MAP_BATTLE_FRONTIER_BATTLE_FACTORY_BATTLE_ROOM, 4, 6
+	end
+
+BattleFrontier_BattleFactoryLobby_Text_NolandComeWithMe:
+	.string "Noland: Fantastic! Please, follow me!$"
+
+BattleFrontier_BattleFactoryLobby_Text_NolandComeBackIfChangeMind:
+	.string "Okay. Come back if you change your mind!$"
+
+BattleFrontier_BattleFactoryLobby_Text_NolandWhatDoYouSay:
+	.string "So, what do you say?$"
+
+BattleFrontier_BattleFactoryLobby_Text_NolandWelcomeToBattleFactory:
+	.string "Noland: Welcome to the Battle Factory,\n"
+	.string "I've been waiting for you to arrive!\p"
+	.string "Scott tells me you are preparing to\n"
+	.string "challenge the Elite Four.\p"
+	.string "If you're looking to get some final\n"
+	.string "training in then I'm your man.\p"
+	.string "If you can defeat me, I'll gift you\n"
+	.string "SOME ITEM.$"
+
 BattleFrontier_BattleFactoryLobby_EventScript_SinglesAttendant::
 	lock
 	faceplayer

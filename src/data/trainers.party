@@ -16197,9 +16197,10 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Shadow Ball
 
 === TRAINER_ANABEL ===
-Name: ANABEL
+Name: Anabel
 Class: Salon Maiden
 Pic: Salon Maiden Anabel
+Mugshot: Red
 Gender: Female
 Music: Male
 Battle Type: Singles
@@ -16210,9 +16211,10 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_TUCKER ===
-Name: TUCKER
+Name: Tucker
 Class: Dome Ace
 Pic: Dome Ace Tucker
+Mugshot: Red
 Gender: Male
 Music: Male
 Battle Type: Singles
@@ -16223,9 +16225,10 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_SPENSER ===
-Name: SPENSER
+Name: Spenser
 Class: Palace Maven
 Pic: Palace Maven Spenser
+Mugshot: Red
 Gender: Male
 Music: Male
 Battle Type: Singles
@@ -16236,9 +16239,10 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRETA ===
-Name: GRETA
+Name: Greta
 Class: Arena Tycoon
 Pic: Arena Tycoon Greta
+Mugshot: Red
 Gender: Female
 Music: Male
 Battle Type: Singles
@@ -16249,22 +16253,74 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_NOLAND ===
-Name: NOLAND
+Name: Noland
 Class: Factory Head
 Pic: Factory Head Noland
+Mugshot: Red
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
 
-Beldum
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Regigigas @ Liechi Berry
+Level: 97
+Adamant Nature
+Ability: Slow Start
+- Facade
+- Zen Headbutt
+- Avalanche
+- Drain Punch
+
+Regirock @ Chople Berry
+Level: 95
+Impish Nature
+Ability: Clear Body
+- Stone Edge
+- Hammer Arm
+- Explosion
+- Stealth Rock
+
+Regieleki @ Electric Gem
+Level: 97
+Timid Nature
+Ability: Transistor
+- Thunder Cage
+- Volt Switch
+- Reflect
+- Light Screen
+
+Registeel @ Steel Gem
+Level: 95
+Bold Nature
+Ability: Clear Body
+- Hard Press
+- Body Press
+- Iron Defense
+- Protect
+
+Regidrago @ Custap Berry
+Level: 96
+Hasty Nature
+Ability: Dragon's Maw
+- Draco Meteor
+- Crunch
+- Reversal
+- Earth Power
+
+Regice @ Life Orb
+Level: 95
+Modest Nature
+Ability: Clear Body
+- Zap Cannon
+- Ice Beam
+- Snowscape
+- Ancient Power
 
 === TRAINER_LUCY ===
 Name: LUCY
 Class: Pike Queen
 Pic: Pike Queen Lucy
+Mugshot: Red
 Gender: Female
 Music: Male
 Battle Type: Singles
@@ -16275,24 +16331,68 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRANDON ===
-Name: BRANDON
+Name: Brandon
 Class: Pyramid King
 Pic: Pyramid King Brandon
+Mugshot: Red
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
 
-Regirock
+Regigigas @ Liechi Berry
+Level: 97
+Adamant Nature
+Ability: Slow Start
+- Facade
+- Zen Headbutt
+- Avalanche
+- Drain Punch
+
+Regirock @ Chople Berry
 Level: 95
+Impish Nature
+Ability: Clear Body
+- Stone Edge
+- Hammer Arm
+- Explosion
+- Stealth Rock
 
-Regigigas
+Regieleki @ Electric Gem
+Level: 97
+Timid Nature
+Ability: Transistor
+- Thunder Cage
+- Volt Switch
+- Reflect
+- Light Screen
+
+Registeel @ Steel Gem
 Level: 95
+Bold Nature
+Ability: Clear Body
+- Hard Press
+- Body Press
+- Iron Defense
+- Protect
 
-Regieleki
+Regidrago @ Custap Berry
+Level: 96
+Hasty Nature
+Ability: Dragon's Maw
+- Draco Meteor
+- Crunch
+- Reversal
+- Earth Power
+
+Regice @ Life Orb
 Level: 95
-
-
+Modest Nature
+Ability: Clear Body
+- Zap Cannon
+- Ice Beam
+- Snowscape
+- Ancient Power
 
 === TRAINER_ANDRES_2 ===
 Name: ANDRES
