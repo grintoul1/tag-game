@@ -1,13 +1,68 @@
 BattleFrontier_BattlePikeRoomNormal_MapScripts::
-	map_script MAP_SCRIPT_ON_RESUME, BattleFrontier_BattlePikeRoom_OnResume
-	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattlePikeRoom_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattlePikeRoomNormal_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattlePikeRoom_OnWarp
 	.byte 0
 
 BattleFrontier_BattlePikeRoomNormal_OnFrame:
-	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattlePikeRoomNormal_EventScript_EnterRoom
+	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattlePikeRoomNormal_EventScript_LucyBattle
 	.2byte 0
+
+
+BattleFrontier_BattlePikeRoom_OnWarp:
+	map_script_2 VAR_TEMP_4, 0, BattleFrontier_BattlePikeRoomNormal_EventScript_EmmiePos
+	.2byte 0
+
+BattleFrontier_BattlePikeRoomNormal_EventScript_EmmiePos::
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 3, 6
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_NORTH
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_NORMAL
+	end
+
+BattleFrontier_BattlePikeRoomNormal_EventScript_LucyBattle::
+	lockall
+	applymovement LOCALID_LUCY, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox BattleFrontier_BattlePikeRoomNormal_Text_LucyBestOfLuck, MSGBOX_AUTOCLOSE
+	goto BattleFrontier_BattlePikeRoomNormal_EventScript_LucyDoMultiBattle
+	releaseall 
+	end
+
+BattleFrontier_BattlePikeRoomNormal_EventScript_LucyDoMultiBattle::
+	playbgm MUS_B_PIKE, TRUE
+	multi_2p_vs_1 TRAINER_LUCY, BattleFrontier_BattlePikeRoomNormal_Text_LucyDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, BattleFrontier_BattlePikeRoomNormal_EventScript_LucyVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+BattleFrontier_BattlePikeRoomNormal_Text_LucyDefeat:
+	.string "Not half bad…$"
+
+BattleFrontier_BattlePikeRoomNormal_EventScript_LucyVictory::
+	applymovement LOCALID_LUCY, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox BattleFrontier_BattlePikeRoomNormal_Text_LucyCongratulationsTakeThis, MSGBOX_AUTOCLOSE
+	giveitem ITEM_LEFTOVERS
+	setflag FLAG_HIDE_BATTLE_PIKE_LOBBY_LUCY
+	warp MAP_BATTLE_FRONTIER_OUTSIDE_WEST, 42, 28
+	releaseall
+	end
+
+BattleFrontier_BattlePikeRoomNormal_Text_LucyCongratulationsTakeThis:
+	.string "Lucy: You've got potential, I'll give\n"
+	.string "you that.\p"
+	.string "As promised, please take these Leftovers\n"
+	.string "as a reward for your victory.\p"
+	.string "I believe you've got what it takes to\n"
+	.string "give the Elite Four a run for their money.\p"
+	.string "Good luck.$"
+
+BattleFrontier_BattlePikeRoomNormal_Text_LucyBestOfLuck:
+	.string "Lucy: I hope you're ready.\p"
+	.string "Scott chose the Frontier Brains\n"
+	.string "because we don't hold back!$"
 
 BattleFrontier_BattlePikeRoomNormal_EventScript_EnterRoom::
 	setvar VAR_TEMP_0, 1

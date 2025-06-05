@@ -321,6 +321,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_CUTSCENE_INVISIBLE
 	clearflag FLAG_HIDE_BATTLE_FACTORY_LOBBY_NOLAND
 	setflag FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS
+	clearflag FLAG_HIDE_BATTLE_PIKE_LOBBY_LUCY
 	destroyfollowernpc
 	call EventScript_ResetAllBerries
 	end

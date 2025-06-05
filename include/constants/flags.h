@@ -700,9 +700,9 @@
 #define FLAG_HIDE_SKY_PILLAR_EVIL_TEAMS  0x28D // Hides Sky Pillar Team Aqua and Team Magma
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_CUTSCENE_INVISIBLE  0x28E // Unused Flag
 #define FLAG_HIDE_SOOTOPOLIS_SCOTT  0x28F // Hides Sootopolis Scott
-#define FLAG_HIDE_BATTLE_FACTORY_LOBBY_NOLAND  0x290 // Unused Flag
-#define FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS  0x291 // Unused Flag
-#define FLAG_UNUSED_0x292  0x292 // Unused Flag
+#define FLAG_HIDE_BATTLE_FACTORY_LOBBY_NOLAND  0x290 // Hides Noland
+#define FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS  0x291 // Hides various Frontier objects
+#define FLAG_HIDE_BATTLE_PIKE_LOBBY_LUCY  0x292 // Hides Lucy
 #define FLAG_UNUSED_0x293  0x293 // Unused Flag
 #define FLAG_UNUSED_0x294  0x294 // Unused Flag
 #define FLAG_UNUSED_0x295  0x295 // Unused Flag

@@ -14,6 +14,38 @@ BattleFrontier_BattlePikeLobby_OnWarp:
 	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattlePikeLobby_EventScript_TurnPlayerNorth
 	.2byte 0
 
+BattleFrontier_BattlePikeLobby_EventScript_Lucy::
+	lock
+	faceplayer
+	msgbox BattleFrontier_BattlePikeLobby_Text_LucyWelcomeToBattlePike, MSGBOX_AUTOCLOSE
+	message BattleFrontier_BattlePikeLobby_Text_LucyWhatDoYouSay
+	yesnobox 20, 8
+	compare VAR_RESULT, 1
+	goto_if_eq BattleFrontier_BattlePikeLobby_EventScript_TriggerLucyBattle
+	msgbox BattleFrontier_BattlePikeLobby_Text_LucyComeBackIfChangeMind, MSGBOX_AUTOCLOSE
+	end
+
+BattleFrontier_BattlePikeLobby_EventScript_TriggerLucyBattle::
+	msgbox BattleFrontier_BattlePikeLobby_Text_LucyComeWithMe, MSGBOX_AUTOCLOSE
+	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_NORMAL, 4, 6
+	end
+
+BattleFrontier_BattlePikeLobby_Text_LucyComeWithMe:
+	.string "Lucy: You're on. Come with me.$"
+
+BattleFrontier_BattlePikeLobby_Text_LucyComeBackIfChangeMind:
+	.string "Okay. If anything changes, let me know.$"
+
+BattleFrontier_BattlePikeLobby_Text_LucyWhatDoYouSay:
+	.string "So, reckon you're up to the challenge?$"
+
+BattleFrontier_BattlePikeLobby_Text_LucyWelcomeToBattlePike:
+	.string "Lucy: Welcome to the Battle Pike.\p"
+	.string "I gather that you're here to toughen\n"
+	.string "up for the Elite Four.\p"
+	.string "I'll cut to the chase.\p"
+	.string "Beat me and I'll gift you a Leftovers.$"
+
 BattleFrontier_BattlePikeLobby_EventScript_TurnPlayerNorth::
 	setvar VAR_TEMP_1, 1
 	turnobject LOCALID_PLAYER, DIR_NORTH
