@@ -9,6 +9,67 @@ BattleFrontier_BattleArenaBattleRoom_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, BattleFrontier_BattleArenaBattleRoom_OnResume
 	.byte 0
 
+BattleFrontier_BattleArenaBattleRoom_OnWarp:
+	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattleArenaBattleRoom_EventScript_EmmiePos
+	.2byte 0
+
+BattleFrontier_BattleArenaBattleRoom_OnFrame:
+	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattleArenaBattleRoom_EventScript_GretaBattle
+	.2byte 0
+
+BattleFrontier_BattleArenaBattleRoom_EventScript_EmmiePos::
+	special OffsetCameraForBattle
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 5, 5
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_EAST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_BATTLE_FRONTIER_BATTLE_ARENA_BATTLE_ROOM
+	end
+
+BattleFrontier_BattleArenaBattleRoom_EventScript_GretaBattle::
+	lockall
+	applymovement LOCALID_GRETA, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox BattleFrontier_BattleArenaBattleRoom_Text_GretaBestOfLuck, MSGBOX_AUTOCLOSE
+	goto BattleFrontier_BattleArenaBattleRoom_EventScript_GretaDoMultiBattle
+	releaseall 
+	end
+
+BattleFrontier_BattleArenaBattleRoom_EventScript_GretaDoMultiBattle::
+	playbgm MUS_B_ARENA, TRUE
+	multi_2p_vs_1 TRAINER_GRETA, BattleFrontier_BattleArenaBattleRoom_Text_GretaDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, BattleFrontier_BattleArenaBattleRoom_EventScript_GretaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+BattleFrontier_BattleArenaBattleRoom_Text_GretaDefeat:
+	.string "Hah! I wasn't expecting that!$"
+
+BattleFrontier_BattleArenaBattleRoom_EventScript_GretaVictory::
+	applymovement LOCALID_GRETA, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox BattleFrontier_BattleArenaBattleRoom_Text_GretaCongratulationsTakeThis, MSGBOX_AUTOCLOSE
+	giveitem ITEM_ABILITY_PATCH
+	setflag FLAG_HIDE_BATTLE_ARENA_LOBBY_GRETA
+	playse SE_EXIT
+	warp MAP_BATTLE_FRONTIER_OUTSIDE_EAST, 39, 30
+	releaseall
+	end
+
+BattleFrontier_BattleArenaBattleRoom_Text_GretaCongratulationsTakeThis:
+	.string "Greta: Wow, you kids are really something\n"
+	.string "special!\p"
+	.string "A deal is a deal. Please take this\n"
+	.string "Ability Patch.\p"
+	.string "You're more than ready for the Elite\n"
+	.string "Four.\p"
+	.string "Go get 'em!$"
+
+BattleFrontier_BattleArenaBattleRoom_Text_GretaBestOfLuck:
+	.string "Greta: You'd better give me your\n"
+	.string "best shot!$"
+
 BattleFrontier_BattleArenaBattleRoom_OnResume:
 	special OffsetCameraForBattle
 	end
@@ -31,10 +92,6 @@ BattleFrontier_BattleArenaBattleRoom_EventScript_SetPlayerGfxMale::
 BattleFrontier_BattleArenaBattleRoom_EventScript_SetPlayerGfxFemale::
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
 	return
-
-BattleFrontier_BattleArenaBattleRoom_OnFrame:
-	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattleArenaBattleRoom_EventScript_EnterRoom
-	.2byte 0
 
 BattleFrontier_BattleArenaBattleRoom_EventScript_EnterRoom::
 	lockall
@@ -455,10 +512,6 @@ BattleFrontier_BattleArenaBattleRoom_Movement_WalkInPlaceDown:
 BattleFrontier_BattleArenaBattleRoom_Movement_WalkInPlaceRight2:
 	walk_in_place_faster_right
 	step_end
-
-BattleFrontier_BattleArenaBattleRoom_OnWarp:
-	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattleArenaBattleRoom_EventScript_SetUpRoomObjects
-	.2byte 0
 
 BattleFrontier_BattleArenaBattleRoom_EventScript_SetUpRoomObjects::
 	hideobjectat LOCALID_ARENA_BATTLE_PLAYER, MAP_BATTLE_FRONTIER_BATTLE_ARENA_BATTLE_ROOM

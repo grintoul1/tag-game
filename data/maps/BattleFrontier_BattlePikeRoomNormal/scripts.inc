@@ -46,6 +46,7 @@ BattleFrontier_BattlePikeRoomNormal_EventScript_LucyVictory::
 	msgbox BattleFrontier_BattlePikeRoomNormal_Text_LucyCongratulationsTakeThis, MSGBOX_AUTOCLOSE
 	giveitem ITEM_LEFTOVERS
 	setflag FLAG_HIDE_BATTLE_PIKE_LOBBY_LUCY
+	playse SE_EXIT
 	warp MAP_BATTLE_FRONTIER_OUTSIDE_WEST, 42, 28
 	releaseall
 	end

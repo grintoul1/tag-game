@@ -26,7 +26,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
     },
     {
       "local_id": "LOCALID_ARENA_BATTLE_BLACK_BELT_2",
@@ -40,7 +40,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
     },
     {
       "local_id": "LOCALID_ARENA_BATTLE_BLACK_BELT_3",
@@ -54,7 +54,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
     },
     {
       "local_id": "LOCALID_ARENA_BATTLE_BLACK_BELT_4",
@@ -68,7 +68,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
     },
     {
       "local_id": "LOCALID_ARENA_BATTLE_ATTENDANT",
@@ -82,7 +82,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
@@ -95,7 +95,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
     },
     {
       "local_id": "LOCALID_ARENA_BATTLE_OPPONENT",
@@ -109,7 +109,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
     },
     {
       "local_id": "LOCALID_ARENA_BATTLE_PLAYER",
@@ -123,7 +123,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
     },
     {
       "local_id": "LOCALID_ARENA_BATTLE_ANNOUNCER",
@@ -137,6 +137,20 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
+    },
+    {
+      "local_id": "LOCALID_GRETA",
+      "graphics_id": "OBJ_EVENT_GFX_GRETA",
+      "x": 10,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
       "flag": "0"
     }
   ],

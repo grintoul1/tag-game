@@ -120,6 +120,7 @@ BattleFrontier_BattleFactoryLobby_EventScript_Noland::
 
 BattleFrontier_BattleFactoryLobby_EventScript_TriggerNolandBattle::
 	msgbox BattleFrontier_BattleFactoryLobby_Text_NolandComeWithMe, MSGBOX_AUTOCLOSE
+	playse SE_EXIT
 	warpsilent MAP_BATTLE_FRONTIER_BATTLE_FACTORY_BATTLE_ROOM, 4, 6
 	end
 
@@ -140,7 +141,7 @@ BattleFrontier_BattleFactoryLobby_Text_NolandWelcomeToBattleFactory:
 	.string "If you're looking to get some final\n"
 	.string "training in then I'm your man.\p"
 	.string "If you can defeat me, I'll gift you\n"
-	.string "SOME ITEM.$"
+	.string "an Assault Vest.$"
 
 BattleFrontier_BattleFactoryLobby_EventScript_SinglesAttendant::
 	lock

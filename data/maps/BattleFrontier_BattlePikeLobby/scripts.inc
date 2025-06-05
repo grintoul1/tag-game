@@ -27,6 +27,7 @@ BattleFrontier_BattlePikeLobby_EventScript_Lucy::
 
 BattleFrontier_BattlePikeLobby_EventScript_TriggerLucyBattle::
 	msgbox BattleFrontier_BattlePikeLobby_Text_LucyComeWithMe, MSGBOX_AUTOCLOSE
+	playse SE_EXIT
 	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_NORMAL, 4, 6
 	end
 

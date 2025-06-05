@@ -32,8 +32,65 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxFemale::
 	return
 
 BattleFrontier_BattlePalaceBattleRoom_OnFrame:
-	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattlePalaceBattleRoom_EventScript_EnterRoom
+	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattlePalaceBattleRoom_EventScript_SpenserBattle
 	.2byte 0
+
+BattleFrontier_BattlePalaceBattleRoom_OnWarp:
+	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattlePalaceBattleRoom_EventScript_EmmiePos
+	.2byte 0
+
+BattleFrontier_BattlePalaceBattleRoom_EventScript_EmmiePos::
+	special OffsetCameraForBattle
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 5, 4
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_EAST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_BATTLE_FRONTIER_BATTLE_PALACE_BATTLE_ROOM
+	end
+
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SpenserBattle::
+	lockall
+	applymovement LOCALID_SPENSER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox BattleFrontier_BattlePalaceBattleRoom_Text_SpenserBestOfLuck, MSGBOX_AUTOCLOSE
+	goto BattleFrontier_BattlePalaceBattleRoom_EventScript_SpenserDoMultiBattle
+	releaseall 
+	end
+
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SpenserDoMultiBattle::
+	playbgm MUS_B_PALACE, TRUE
+	multi_2p_vs_1 TRAINER_SPENSER, BattleFrontier_BattlePalaceBattleRoom_Text_SpenserDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, BattleFrontier_BattlePalaceBattleRoom_EventScript_SpenserVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+BattleFrontier_BattlePalaceBattleRoom_Text_SpenserDefeat:
+	.string "What a fascinating battle style!$"
+
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SpenserVictory::
+	applymovement LOCALID_SPENSER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox BattleFrontier_BattlePalaceBattleRoom_Text_SpenserCongratulationsTakeThis, MSGBOX_AUTOCLOSE
+	giveitem ITEM_EJECT_PACK
+	setflag FLAG_HIDE_BATTLE_PALACE_LOBBY_SPENSER
+	playse SE_EXIT
+	warp MAP_BATTLE_FRONTIER_OUTSIDE_EAST, 39, 30
+	releaseall
+	end
+
+BattleFrontier_BattlePalaceBattleRoom_Text_SpenserCongratulationsTakeThis:
+	.string "Spenser: Ho ho ho! Magnificent!\p"
+	.string "I haven't enjoyed a battle quite like\n"
+	.string "that in a very long time.\p"
+	.string "In recognition of your victory, please\n"
+	.string "take this Eject Pack.\p"
+	.string "I will watch your career with great\n"
+	.string "interest. Good luck!$"
+
+BattleFrontier_BattlePalaceBattleRoom_Text_SpenserBestOfLuck:
+	.string "Spenser: You better not hold back.\p"
+	.string "If you give an inch, I'll take a mile!$"
 
 BattleFrontier_BattlePalaceBattleRoom_EventScript_EnterRoom::
 	showobjectat LOCALID_PALACE_BATTLE_PLAYER, MAP_BATTLE_FRONTIER_BATTLE_PALACE_BATTLE_ROOM
@@ -282,10 +339,6 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_DoPalaceBattle::
 	special HealPlayerParty
 	frontier_resetsketch
 	return
-
-BattleFrontier_BattlePalaceBattleRoom_OnWarp:
-	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetUpRoomObjects
-	.2byte 0
 
 BattleFrontier_BattlePalaceBattleRoom_EventScript_SetUpRoomObjects::
 	hideobjectat LOCALID_PALACE_BATTLE_PLAYER, MAP_BATTLE_FRONTIER_BATTLE_PALACE_BATTLE_ROOM

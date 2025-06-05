@@ -26,7 +26,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
     },
     {
       "local_id": "LOCALID_PALACE_BATTLE_OPPONENT",
@@ -40,7 +40,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
     },
     {
       "local_id": "LOCALID_PALACE_BATTLE_ATTENDANT",
@@ -54,7 +54,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
     },
     {
       "local_id": "LOCALID_PALACE_DUSCLOPS",
@@ -68,7 +68,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
     },
     {
       "local_id": "LOCALID_PALACE_AZURILL",
@@ -82,6 +82,20 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
+    },
+    {
+      "local_id": "LOCALID_SPENSER",
+      "graphics_id": "OBJ_EVENT_GFX_SPENSER",
+      "x": 9,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
       "flag": "0"
     }
   ],

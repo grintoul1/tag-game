@@ -12,6 +12,42 @@ BattleFrontier_BattleArenaLobby_EventScript_TurnPlayerNorth::
 	turnobject LOCALID_PLAYER, DIR_NORTH
 	end
 
+BattleFrontier_BattleArenaLobby_EventScript_Greta::
+	lock
+	faceplayer
+	msgbox BattleFrontier_BattleArenaLobby_Text_GretaWelcomeToBattleArena, MSGBOX_AUTOCLOSE
+	message BattleFrontier_BattleArenaLobby_Text_GretaWhatDoYouSay
+	yesnobox 20, 8
+	compare VAR_RESULT, 1
+	goto_if_eq BattleFrontier_BattleArenaLobby_EventScript_TriggerGretaBattle
+	msgbox BattleFrontier_BattleArenaLobby_Text_GretaComeBackIfChangeMind, MSGBOX_AUTOCLOSE
+	end
+
+BattleFrontier_BattleArenaLobby_EventScript_TriggerGretaBattle::
+	msgbox BattleFrontier_BattleArenaLobby_Text_GretaComeWithMe, MSGBOX_AUTOCLOSE
+	playse SE_EXIT
+	warpsilent MAP_BATTLE_FRONTIER_BATTLE_ARENA_BATTLE_ROOM, 5, 6
+	end
+
+BattleFrontier_BattleArenaLobby_Text_GretaComeWithMe:
+	.string "Greta: Awesome, let's go!$"
+
+BattleFrontier_BattleArenaLobby_Text_GretaComeBackIfChangeMind:
+	.string "No worries! Come back if you change your\n"
+	.string "mind.$"
+
+BattleFrontier_BattleArenaLobby_Text_GretaWhatDoYouSay:
+	.string "So, want to give it a shot?$"
+
+BattleFrontier_BattleArenaLobby_Text_GretaWelcomeToBattleArena:
+	.string "Greta: Hey! Welcome to the Battle\n"
+	.string "Arena!\p"
+	.string "I hear that you're here to prepare for\n"
+	.string "the Elite Four?\p"
+	.string "Well, you've come to the right place!\p"
+	.string "If you can beat me in battle, I'll\n"
+	.string "give you an Ability Patch!$"
+
 BattleFrontier_BattleArenaLobby_OnFrame:
 	map_script_2 VAR_TEMP_CHALLENGE_STATUS, 0, BattleFrontier_BattleArenaLobby_EventScript_GetChallengeStatus
 	map_script_2 VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_SAVING, BattleFrontier_BattleArenaLobby_EventScript_QuitWithoutSaving

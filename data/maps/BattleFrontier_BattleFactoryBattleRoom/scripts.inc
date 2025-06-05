@@ -17,6 +17,7 @@ BattleFrontier_BattleFactoryBattleRoom_OnWarp:
 	.2byte 0
 
 BattleFrontier_BattleFactoryBattleRoom_EventScript_EmmiePos::
+	special OffsetCameraForBattle
 	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 4, 7
 	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_EAST
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
@@ -48,8 +49,9 @@ BattleFrontier_BattleFactoryBattleRoom_EventScript_NolandVictory::
 	applymovement LOCALID_NOLAND, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox BattleFrontier_BattleFactoryBattleRoom_Text_NolandCongratulationsTakeThis, MSGBOX_AUTOCLOSE
-	giveitem ITEM_POKE_BALL
+	giveitem ITEM_ASSAULT_VEST
 	setflag FLAG_HIDE_BATTLE_FACTORY_LOBBY_NOLAND
+	playse SE_EXIT
 	warp MAP_BATTLE_FRONTIER_OUTSIDE_WEST, 11, 39
 	releaseall
 	end
@@ -58,7 +60,7 @@ BattleFrontier_BattleFactoryBattleRoom_Text_NolandCongratulationsTakeThis:
 	.string "Noland: Congratulations, that was a\n"
 	.string "blast!\p"
 	.string "As a reward for your victory, please\n"
-	.string "take this SOME ITEM.\p"
+	.string "take this Assault Vest.\p"
 	.string "Best of luck against the Elite Four, I\n"
 	.string "think you stand a strong chance!$"
 

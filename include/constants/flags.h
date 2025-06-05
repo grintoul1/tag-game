@@ -703,11 +703,11 @@
 #define FLAG_HIDE_BATTLE_FACTORY_LOBBY_NOLAND  0x290 // Hides Noland
 #define FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS  0x291 // Hides various Frontier objects
 #define FLAG_HIDE_BATTLE_PIKE_LOBBY_LUCY  0x292 // Hides Lucy
-#define FLAG_UNUSED_0x293  0x293 // Unused Flag
-#define FLAG_UNUSED_0x294  0x294 // Unused Flag
-#define FLAG_UNUSED_0x295  0x295 // Unused Flag
-#define FLAG_UNUSED_0x296  0x296 // Unused Flag
-#define FLAG_UNUSED_0x297  0x297 // Unused Flag
+#define FLAG_HIDE_BATTLE_ARENA_LOBBY_GRETA  0x293 // Hides Greta
+#define FLAG_HIDE_BATTLE_TOWER_LOBBY_ANABEL  0x294 // Hides Anabel
+#define FLAG_HIDE_BATTLE_PALACE_LOBBY_SPENSER  0x295 // Hides Spenser
+#define FLAG_HIDE_BATTLE_PYRAMID_LOBBY_BRANDON  0x296 // Hides Brandon
+#define FLAG_HIDE_BATTLE_DOME_LOBBY_TUCKER  0x297 // Hides Tucker
 #define FLAG_UNUSED_0x298  0x298 // Unused Flag
 #define FLAG_UNUSED_0x299  0x299 // Unused Flag
 #define FLAG_UNUSED_0x29A  0x29A // Unused Flag

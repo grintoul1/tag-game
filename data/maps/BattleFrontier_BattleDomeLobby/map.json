@@ -25,7 +25,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "BattleFrontier_BattleDomeLobby_EventScript_SinglesAttendant",
+      "script": "Common_EventScript_NotEligibleToParticipate",
       "flag": "0"
     },
     {
@@ -91,8 +91,21 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "BattleFrontier_BattleDomeLobby_EventScript_DoublesAttendant",
+      "script": "Common_EventScript_NotEligibleToParticipate",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TUCKER",
+      "x": 11,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BattleFrontier_BattleDomeLobby_EventScript_Tucker",
+      "flag": "FLAG_HIDE_BATTLE_DOME_LOBBY_TUCKER"
     }
   ],
   "warp_events": [
@@ -116,7 +129,7 @@
     {
       "type": "sign",
       "x": 4,
-      "y": 10,
+      "y": 9,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "BattleFrontier_BattleDomeLobby_EventScript_ShowSinglesResults"
@@ -124,7 +137,7 @@
     {
       "type": "sign",
       "x": 7,
-      "y": 10,
+      "y": 9,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "BattleFrontier_BattleDomeLobby_EventScript_ShowPrevTourneyTree"
@@ -132,7 +145,7 @@
     {
       "type": "sign",
       "x": 18,
-      "y": 10,
+      "y": 9,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "BattleFrontier_BattleDomeLobby_EventScript_ShowDoublesResults"
@@ -140,7 +153,7 @@
     {
       "type": "sign",
       "x": 15,
-      "y": 10,
+      "y": 9,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "BattleFrontier_BattleDomeLobby_EventScript_RulesBoard"

@@ -21,6 +21,44 @@ BattleFrontier_BattlePyramidLobby_OnFrame:
 	map_script_2 VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_LOST, BattleFrontier_BattlePyramidLobby_EventScript_LostChallenge
 	.2byte 0
 
+BattleFrontier_BattlePyramidLobby_EventScript_Brandon::
+	lock
+	faceplayer
+	msgbox BattleFrontier_BattlePyramidLobby_Text_BrandonWelcomeToBattlePyramid, MSGBOX_AUTOCLOSE
+	message BattleFrontier_BattlePyramidLobby_Text_BrandonWhatDoYouSay
+	yesnobox 20, 8
+	compare VAR_RESULT, 1
+	goto_if_eq BattleFrontier_BattlePyramidLobby_EventScript_TriggerBrandonBattle
+	msgbox BattleFrontier_BattlePyramidLobby_Text_BrandonComeBackIfChangeMind, MSGBOX_AUTOCLOSE
+	end
+
+BattleFrontier_BattlePyramidLobby_EventScript_TriggerBrandonBattle::
+	msgbox BattleFrontier_BattlePyramidLobby_Text_BrandonComeWithMe, MSGBOX_AUTOCLOSE
+	playse SE_EXIT
+	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PYRAMID_TOP, 17, 9
+	end
+
+BattleFrontier_BattlePyramidLobby_Text_BrandonComeWithMe:
+	.string "Brandon: As you wish.\p"
+	.string "Please, follow me.$"
+
+BattleFrontier_BattlePyramidLobby_Text_BrandonComeBackIfChangeMind:
+	.string "As you wish. Should your courage\n"
+	.string "return, I will be waiting.$"
+
+BattleFrontier_BattlePyramidLobby_Text_BrandonWhatDoYouSay:
+	.string "So, feeling brave?$"
+
+BattleFrontier_BattlePyramidLobby_Text_BrandonWelcomeToBattlePyramid:
+	.string "Brandon: Hah! I heard that new\n"
+	.string "challengers may make an appearance.\p"
+	.string "I'm Brandon and I welcome you to the\n"
+	.string "Battle Pyramid.\p"
+	.string "The Pyramid will make a fine training\n"
+	.string "ground for your Elite Four challenge.\p"
+	.string "If you are able to overpower me, then\n"
+	.string "I will gift you a Focus Sash.$"
+
 BattleFrontier_BattlePyramidLobby_EventScript_GetChallengeStatus::
 	frontier_getstatus
 	end

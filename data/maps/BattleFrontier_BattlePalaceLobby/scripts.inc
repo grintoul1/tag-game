@@ -12,6 +12,44 @@ BattleFrontier_BattlePalaceLobby_EventScript_TurnPlayerNorth::
 	turnobject LOCALID_PLAYER, DIR_NORTH
 	end
 
+BattleFrontier_BattlePalaceLobby_EventScript_Spenser::
+	lock
+	faceplayer
+	msgbox BattleFrontier_BattlePalaceLobby_Text_SpenserWelcomeToBattlePalace, MSGBOX_AUTOCLOSE
+	message BattleFrontier_BattlePalaceLobby_Text_SpenserWhatDoYouSay
+	yesnobox 20, 8
+	compare VAR_RESULT, 1
+	goto_if_eq BattleFrontier_BattlePalaceLobby_EventScript_TriggerSpenserBattle
+	msgbox BattleFrontier_BattlePalaceLobby_Text_SpenserComeBackIfChangeMind, MSGBOX_AUTOCLOSE
+	end
+
+BattleFrontier_BattlePalaceLobby_EventScript_TriggerSpenserBattle::
+	msgbox BattleFrontier_BattlePalaceLobby_Text_SpenserComeWithMe, MSGBOX_AUTOCLOSE
+	playse SE_EXIT
+	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PALACE_BATTLE_ROOM, 5, 5
+	end
+
+BattleFrontier_BattlePalaceLobby_Text_SpenserComeWithMe:
+	.string "Spenser: That's the right answer!\p"
+	.string "Please, come with me.$"
+
+BattleFrontier_BattlePalaceLobby_Text_SpenserComeBackIfChangeMind:
+	.string "Ho ho ho… Okay. I'll be ready if you\n"
+	.string "change your minds.$"
+
+BattleFrontier_BattlePalaceLobby_Text_SpenserWhatDoYouSay:
+	.string "So, think you've got what it takes?$"
+
+BattleFrontier_BattlePalaceLobby_Text_SpenserWelcomeToBattlePalace:
+	.string "Spenser: Ho ho ho… So you decided\n"
+	.string "to show your faces then?\p"
+	.string "My name is Spenser. Welcome to the\n"
+	.string "Battle Palace!\p"
+	.string "I'll whip you kids into shape for your\n"
+	.string "Elite Four challenge in no time.\p"
+	.string "If you can manage to beat me, I'll\n"
+	.string "even give you an Eject pack!$"
+
 BattleFrontier_BattlePalaceLobby_OnFrame:
 	map_script_2 VAR_TEMP_CHALLENGE_STATUS, 0, BattleFrontier_BattlePalaceLobby_EventScript_GetChallengeStatus
 	map_script_2 VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_SAVING, BattleFrontier_BattlePalaceLobby_EventScript_QuitWithoutSaving

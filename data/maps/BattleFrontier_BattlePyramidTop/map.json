@@ -25,7 +25,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "3",
-      "script": "BattleFrontier_BattlePyramidTop_EventScript_Attendant",
+      "script": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS",
       "flag": "0"
     },
     {
@@ -47,7 +47,7 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 17,
+      "x": 20,
       "y": 9,
       "elevation": 4,
       "var": "VAR_TEMP_2",

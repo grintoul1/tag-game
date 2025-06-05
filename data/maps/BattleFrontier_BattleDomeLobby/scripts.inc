@@ -25,6 +25,44 @@ BattleFrontier_BattleDomeLobby_OnFrame:
 	map_script_2 VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_LOST, BattleFrontier_BattleDomeLobby_EventScript_LostChallenge
 	.2byte 0
 
+BattleFrontier_BattleDomeLobby_EventScript_Tucker::
+	lock
+	faceplayer
+	msgbox BattleFrontier_BattleDomeLobby_Text_TuckerWelcomeToBattleDome, MSGBOX_AUTOCLOSE
+	message BattleFrontier_BattleDomeLobby_Text_TuckerWhatDoYouSay
+	yesnobox 20, 8
+	compare VAR_RESULT, 1
+	goto_if_eq BattleFrontier_BattleDomeLobby_EventScript_TriggerTuckerBattle
+	msgbox BattleFrontier_BattleDomeLobby_Text_TuckerComeBackIfChangeMind, MSGBOX_AUTOCLOSE
+	end
+
+BattleFrontier_BattleDomeLobby_EventScript_TriggerTuckerBattle::
+	msgbox BattleFrontier_BattleDomeLobby_Text_TuckerComeWithMe, MSGBOX_AUTOCLOSE
+	playse SE_EXIT
+	warpsilent MAP_BATTLE_FRONTIER_BATTLE_DOME_BATTLE_ROOM, 6, 6
+	end
+
+BattleFrontier_BattleDomeLobby_Text_TuckerComeWithMe:
+	.string "Tucker: Perfect! Let's get ready to\n"
+	.string "rumble!$"
+
+BattleFrontier_BattleDomeLobby_Text_TuckerComeBackIfChangeMind:
+	.string "A shame! Come find me once your\n"
+	.string "nerves have settled.$"
+
+BattleFrontier_BattleDomeLobby_Text_TuckerWhatDoYouSay:
+	.string "So, ready to hit the stage?$"
+
+BattleFrontier_BattleDomeLobby_Text_TuckerWelcomeToBattleDome:
+	.string "Tucker: Welcome to the Battle Dome!\p"
+	.string "I'm Dome Ace Tucker, and I hope\n"
+	.string "you're ready to put on a show!\p"
+	.string "We'll have you ready for Ever Grande\n"
+	.string "before you know what's hit you.\p"
+	.string "If you are able to beat me in a\n"
+	.string "battle, I'll present you with a\l"
+	.string "Choice item of your choosing!$"
+
 BattleFrontier_BattleDomeLobby_EventScript_GetChallengeStatus::
 	frontier_getstatus
 	end

@@ -4,7 +4,7 @@ BattleFrontier_BattleTowerBattleRoom_MapScripts::
 	.byte 0
 
 BattleFrontier_BattleTowerBattleRoom_OnWarp:
-	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattleTowerBattleRoom_EventScript_SetUpObjects
+	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattleTowerBattleRoom_EventScript_EmmiePos
 	.2byte 0
 
 BattleFrontier_BattleTowerBattleRoom_EventScript_SetUpObjects::
@@ -13,8 +13,59 @@ BattleFrontier_BattleTowerBattleRoom_EventScript_SetUpObjects::
 	end
 
 BattleFrontier_BattleTowerBattleRoom_OnFrame:
-	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattleTowerBattleRoom_EventScript_EnterRoom
+	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelBattle
 	.2byte 0
+
+BattleFrontier_BattleTowerBattleRoom_EventScript_EmmiePos::
+	special OffsetCameraForBattle
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 2, 4
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_EAST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_BATTLE_FRONTIER_BATTLE_TOWER_BATTLE_ROOM
+	end
+
+BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelBattle::
+	lockall
+	applymovement LOCALID_ANABEL, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox BattleFrontier_BattleTowerBattleRoom_Text_AnabelBestOfLuck, MSGBOX_AUTOCLOSE
+	goto BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelDoMultiBattle
+	releaseall 
+	end
+
+BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelDoMultiBattle::
+	playbgm MUS_B_TOWER, TRUE
+	multi_2p_vs_1 TRAINER_ANABEL, BattleFrontier_BattleTowerBattleRoom_Text_AnabelDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+BattleFrontier_BattleTowerBattleRoom_Text_AnabelDefeat:
+	.string "You've got a promising future ahead of you!$"
+
+BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelVictory::
+	applymovement LOCALID_ANABEL, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox BattleFrontier_BattleTowerBattleRoom_Text_AnabelCongratulationsTakeThis, MSGBOX_AUTOCLOSE
+	giveitem ITEM_EJECT_BUTTON
+	setflag FLAG_HIDE_BATTLE_TOWER_LOBBY_ANABEL
+	playse SE_EXIT
+	warp MAP_BATTLE_FRONTIER_OUTSIDE_EAST, 39, 30
+	releaseall
+	end
+
+BattleFrontier_BattleTowerBattleRoom_Text_AnabelCongratulationsTakeThis:
+	.string "Anabel: You've got heart kids!\p"
+	.string "To celebrate your win, please take this\n"
+	.string "Eject Button.\p"
+	.string "Good luck with the Elite Four, I'll be\n"
+	.string "rooting for you!$"
+
+BattleFrontier_BattleTowerBattleRoom_Text_AnabelBestOfLuck:
+	.string "Anabel: Alright, give me everything\n"
+	.string "you've got!$"
 
 BattleFrontier_BattleTowerBattleRoom_EventScript_EnterRoom::
 	setvar VAR_TEMP_0, 1

@@ -38,8 +38,96 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxFemale::
 	return
 
 BattleFrontier_BattleDomeBattleRoom_OnFrame:
-	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattleDomeBattleRoom_EventScript_EnterRoom
+	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattleDomeBattleRoom_EventScript_TuckerBattle
 	.2byte 0
+
+BattleFrontier_BattleDomeBattleRoom_OnWarp:
+	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattleDomeBattleRoom_EventScript_EmmiePos
+	.2byte 0
+
+BattleFrontier_BattleDomeBattleRoom_EventScript_EmmiePos::
+	special OffsetCameraForBattle
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 6, 7
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_EAST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_BATTLE_FRONTIER_BATTLE_DOME_BATTLE_ROOM
+	end
+
+BattleFrontier_BattleDomeBattleRoom_EventScript_TuckerBattle::
+	lockall
+	applymovement LOCALID_TUCKER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox BattleFrontier_BattleDomeBattleRoom_Text_TuckerBestOfLuck, MSGBOX_AUTOCLOSE
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_TuckerDoMultiBattle
+	releaseall 
+	end
+
+BattleFrontier_BattleDomeBattleRoom_EventScript_TuckerDoMultiBattle::
+	playbgm MUS_B_DOME, TRUE
+	multi_2p_vs_1 TRAINER_TUCKER, BattleFrontier_BattleDomeBattleRoom_Text_TuckerDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, BattleFrontier_BattleDomeBattleRoom_EventScript_TuckerVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+BattleFrontier_BattleDomeBattleRoom_Text_TuckerDefeat:
+	.string "You successfully stolen the show!$"
+
+BattleFrontier_BattleDomeBattleRoom_EventScript_TuckerVictory::
+	applymovement LOCALID_TUCKER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox BattleFrontier_BattleDomeBattleRoom_Text_TuckerCongratulationsTakeThis, MSGBOX_AUTOCLOSE
+	message BattleFrontier_BattleDomeBattleRoom_Text_TuckerChooseCarefully
+	multichoice 25, 4, MULTI_CHOICE_ITEM, 1
+	compare VAR_RESULT, 0
+	call_if_eq BattleFrontier_BattleDomeBattleRoom_EventScript_GiveChoiceBand
+	compare VAR_RESULT, 1
+	call_if_eq BattleFrontier_BattleDomeBattleRoom_EventScript_GiveChoiceSpecs
+	compare VAR_RESULT, 2
+	call_if_eq BattleFrontier_BattleDomeBattleRoom_EventScript_GiveChoiceScarf
+	msgbox BattleFrontier_BattleDomeBattleRoom_Text_TuckerGoodLuck, MSGBOX_AUTOCLOSE
+	setflag FLAG_HIDE_BATTLE_DOME_LOBBY_TUCKER
+	playse SE_EXIT
+	warp MAP_BATTLE_FRONTIER_OUTSIDE_WEST, 19, 18
+	releaseall
+	end
+
+BattleFrontier_BattleDomeBattleRoom_Text_TuckerGoodLuck:
+	.string "Tucker: A wise choice. Good luck\n"
+	.string "with your Elite Four challenge!$"
+
+BattleFrontier_BattleDomeBattleRoom_EventScript_GiveChoiceBand::
+	giveitem ITEM_CHOICE_BAND
+	return
+
+BattleFrontier_BattleDomeBattleRoom_EventScript_GiveChoiceSpecs::
+	giveitem ITEM_CHOICE_SPECS
+	return
+
+BattleFrontier_BattleDomeBattleRoom_EventScript_GiveChoiceScarf::
+	giveitem ITEM_CHOICE_SCARF
+	return
+
+BattleFrontier_BattleDomeBattleRoom_Text_TuckerChooseCarefully:
+	.string "Choose carefully, this is a one-time\n"
+	.string "offer!$"
+
+BattleFrontier_BattleDomeBattleRoom_Text_TuckerCongratulationsTakeThis:
+	.string "Tucker: Hah! It appears I have been\n"
+	.string "upstaged!\p"
+	.string "That truly was quite the performance. I\n"
+	.string "couldn't take my eyes off you!\p"
+	.string "As promised, please choose between\n"
+	.string "the Choice Band, Specs, or Scarf.$"
+	.string "I will watch your career with great\n"
+	.string "interest. Good luck!$"
+
+BattleFrontier_BattleDomeBattleRoom_Text_TuckerBestOfLuck:
+	.string "Tucker: Folks it's time for the main\n"
+	.string "event!\p"
+	.string "Don't blink, you're not going to want\n"
+	.string "to miss a second!$"
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_EnterRoom::
 	lockall
@@ -455,10 +543,6 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_DoDomeBattle::
 	special HealPlayerParty
 	dome_resetsketch
 	return
-
-BattleFrontier_BattleDomeBattleRoom_OnWarp:
-	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattleDomeBattleRoom_EventScript_SetUpObjects
-	.2byte 0
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_SetUpObjects::
 	hideobjectat LOCALID_DOME_PLAYER, MAP_BATTLE_FRONTIER_BATTLE_DOME_BATTLE_ROOM

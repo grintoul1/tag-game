@@ -9,6 +9,43 @@ BattleFrontier_BattleTowerLobby_OnResume:
 	special TryHideBattleTowerReporter
 	end
 
+BattleFrontier_BattleTowerLobby_EventScript_Anabel::
+	lock
+	faceplayer
+	msgbox BattleFrontier_BattleTowerLobby_Text_AnabelWelcomeToBattleTower, MSGBOX_AUTOCLOSE
+	message BattleFrontier_BattleTowerLobby_Text_AnabelWhatDoYouSay
+	yesnobox 20, 8
+	compare VAR_RESULT, 1
+	goto_if_eq BattleFrontier_BattleTowerLobby_EventScript_TriggerAnabelBattle
+	msgbox BattleFrontier_BattleTowerLobby_Text_AnabelComeBackIfChangeMind, MSGBOX_AUTOCLOSE
+	end
+
+BattleFrontier_BattleTowerLobby_EventScript_TriggerAnabelBattle::
+	msgbox BattleFrontier_BattleTowerLobby_Text_AnabelComeWithMe, MSGBOX_AUTOCLOSE
+	playse SE_EXIT
+	warpsilent MAP_BATTLE_FRONTIER_BATTLE_TOWER_BATTLE_ROOM, 2, 5
+	end
+
+BattleFrontier_BattleTowerLobby_Text_AnabelComeWithMe:
+	.string "Anabel: That's the spirit, follow me!$"
+
+BattleFrontier_BattleTowerLobby_Text_AnabelComeBackIfChangeMind:
+	.string "That's fine. I'll be waiting if you\n"
+	.string "change your mind!$"
+
+BattleFrontier_BattleTowerLobby_Text_AnabelWhatDoYouSay:
+	.string "Feeling confident?$"
+
+BattleFrontier_BattleTowerLobby_Text_AnabelWelcomeToBattleTower:
+	.string "Anabel: We have new challengers here at\n"
+	.string "the Battle Tower!\p"
+	.string "So, you need to get some training in\n"
+	.string "before you go to Ever Grande?\p"
+	.string "Then this is the perfect place for\n"
+	.string "you!\p"
+	.string "Defeat me and you'll get your hands on\n"
+	.string "an Eject Button.$"
+
 BattleFrontier_BattleTowerLobby_OnTransition:
 	call BattleFrontier_BattleTowerLobby_EventScript_ShowOrHideReporter
 	apprentice_shouldcheckgone
