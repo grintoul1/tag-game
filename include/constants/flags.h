@@ -708,7 +708,7 @@
 #define FLAG_HIDE_BATTLE_PALACE_LOBBY_SPENSER  0x295 // Hides Spenser
 #define FLAG_HIDE_BATTLE_PYRAMID_LOBBY_BRANDON  0x296 // Hides Brandon
 #define FLAG_HIDE_BATTLE_DOME_LOBBY_TUCKER  0x297 // Hides Tucker
-#define FLAG_UNUSED_0x298  0x298 // Unused Flag
+#define FLAG_HIDE_VICTORY_ROAD_VITO  0x298 // Hides Vito
 #define FLAG_UNUSED_0x299  0x299 // Unused Flag
 #define FLAG_UNUSED_0x29A  0x29A // Unused Flag
 #define FLAG_UNUSED_0x29B  0x29B // Unused Flag

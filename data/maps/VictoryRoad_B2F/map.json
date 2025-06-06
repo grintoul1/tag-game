@@ -15,54 +15,58 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_VITO",
       "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-      "x": 15,
-      "y": 6,
+      "x": 6,
+      "y": 26,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "VictoryRoad_B2F_EventScript_Vito",
-      "flag": "0"
+      "flag": "FLAG_HIDE_VICTORY_ROAD_VITO"
     },
     {
+      "local_id": "LOCALID_OWEN",
       "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-      "x": 43,
-      "y": 14,
+      "x": 2,
+      "y": 19,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "4",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "VictoryRoad_B2F_EventScript_Owen",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_CAROLINE",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
       "x": 2,
       "y": 17,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "VictoryRoad_B2F_EventScript_Caroline",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_JULIE",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
       "x": 35,
-      "y": 22,
+      "y": 5,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "VictoryRoad_B2F_EventScript_Julie",
       "flag": "0"
     },
@@ -80,29 +84,17 @@
       "flag": "FLAG_ITEM_VICTORY_ROAD_B2F_FULL_HEAL"
     },
     {
+      "local_id": "LOCALID_DIANNE",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
-      "x": 25,
-      "y": 18,
+      "x": 33,
+      "y": 5,
       "elevation": 4,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "VictoryRoad_B2F_EventScript_Dianne",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-      "x": 25,
-      "y": 21,
-      "elevation": 4,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
-      "script": "VictoryRoad_B2F_EventScript_Felix",
       "flag": "0"
     }
   ],
@@ -136,7 +128,26 @@
       "dest_warp_id": "6"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 34,
+      "y": 5,
+      "elevation": 4,
+      "var": "VAR_VICTORY_ROAD_1F_STATE",
+      "var_value": "3",
+      "script": "VictoryRoad_B2F_EventScript_DianneJulie"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 18,
+      "elevation": 4,
+      "var": "VAR_VICTORY_ROAD_1F_STATE",
+      "var_value": "4",
+      "script": "VictoryRoad_B2F_EventScript_CarolineOwen"
+    }
+  ],
   "bg_events": [
     {
       "type": "hidden_item",

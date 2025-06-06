@@ -2,28 +2,145 @@ raw `
 VictoryRoad_B1F_MapScripts::
 	.byte 0
 
+VictoryRoad_B1F_EventScript_ShannonSamuel::
+lockall
+playse SE_PIN
+applymovement LOCALID_SHANNON, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox VictoryRoad_B1F_Text_ShannonIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_SAMUEL, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox VictoryRoad_B1F_Text_SamuelIntro MSGBOX_AUTOCLOSE
+goto VictoryRoad_B1F_EventScript_ShannonSamuelDoMultiBattle
+releaseall
+end
+
+VictoryRoad_B1F_EventScript_ShannonSamuelDoMultiBattle::
+playbgm MUS_VICTORY_ROAD, TRUE
+multi_2p_vs_2 TRAINER_SHANNON, VictoryRoad_B1F_Text_ShannonDefeat, TRAINER_SAMUEL, VictoryRoad_B1F_Text_SamuelDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, VictoryRoad_B1F_EventScript_ShannonSamuelVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+VictoryRoad_B1F_EventScript_ShannonSamuelVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox VictoryRoad_B1F_Text_ShannonPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox VictoryRoad_B1F_Text_SamuelPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_VICTORY_ROAD_1F_STATE, 1
+end
+
 VictoryRoad_B1F_EventScript_Samuel::
-	trainerbattle_single TRAINER_SAMUEL, VictoryRoad_B1F_Text_SamuelIntro, VictoryRoad_B1F_Text_SamuelDefeat
+	faceplayer
 	msgbox VictoryRoad_B1F_Text_SamuelPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 VictoryRoad_B1F_EventScript_Shannon::
-	trainerbattle_single TRAINER_SHANNON, VictoryRoad_B1F_Text_ShannonIntro, VictoryRoad_B1F_Text_ShannonDefeat
+	faceplayer
 	msgbox VictoryRoad_B1F_Text_ShannonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+VictoryRoad_B1F_EventScript_MitchellMichelle::
+lockall
+playse SE_PIN
+applymovement LOCALID_MITCHELL, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox VictoryRoad_B1F_Text_MitchellIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_MICHELLE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox VictoryRoad_B1F_Text_MichelleIntro MSGBOX_AUTOCLOSE
+goto VictoryRoad_B1F_EventScript_MitchellMichelleDoMultiBattle
+releaseall
+end
+
+VictoryRoad_B1F_EventScript_MitchellMichelleDoMultiBattle::
+playbgm MUS_VICTORY_ROAD, TRUE
+multi_2p_vs_2 TRAINER_MITCHELL, VictoryRoad_B1F_Text_MitchellDefeat, TRAINER_MICHELLE, VictoryRoad_B1F_Text_MichelleDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, VictoryRoad_B1F_EventScript_MitchellMichelleVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+VictoryRoad_B1F_EventScript_MitchellMichelleVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox VictoryRoad_B1F_Text_MitchellPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox VictoryRoad_B1F_Text_MichellePostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_VICTORY_ROAD_1F_STATE, 1
+end
+
+VictoryRoad_B1F_EventScript_FelixHalle::
+lockall
+playse SE_PIN
+applymovement LOCALID_FELIX, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox VictoryRoad_B2F_Text_FelixIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_HALLE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox VictoryRoad_B1F_Text_HalleIntro MSGBOX_AUTOCLOSE
+goto VictoryRoad_B1F_EventScript_FelixHalleDoMultiBattle
+releaseall
+end
+
+VictoryRoad_B1F_EventScript_FelixHalleDoMultiBattle::
+playbgm MUS_VICTORY_ROAD, TRUE
+multi_2p_vs_2 TRAINER_FELIX, VictoryRoad_B2F_Text_FelixDefeat, TRAINER_HALLE, VictoryRoad_B1F_Text_HalleDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, VictoryRoad_B1F_EventScript_FelixHalleVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+VictoryRoad_B1F_EventScript_FelixHalleVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox VictoryRoad_B2F_Text_FelixPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox VictoryRoad_B1F_Text_HallePostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_VICTORY_ROAD_1F_STATE, 1
+end
+
 VictoryRoad_B1F_EventScript_Michelle::
-	trainerbattle_single TRAINER_MICHELLE, VictoryRoad_B1F_Text_MichelleIntro, VictoryRoad_B1F_Text_MichelleDefeat
+	faceplayer
 	msgbox VictoryRoad_B1F_Text_MichellePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 VictoryRoad_B1F_EventScript_Mitchell::
-	trainerbattle_single TRAINER_MITCHELL, VictoryRoad_B1F_Text_MitchellIntro, VictoryRoad_B1F_Text_MitchellDefeat
+	faceplayer
 	msgbox VictoryRoad_B1F_Text_MitchellPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 VictoryRoad_B1F_EventScript_Halle::
-	trainerbattle_single TRAINER_HALLE, VictoryRoad_B1F_Text_HalleIntro, VictoryRoad_B1F_Text_HalleDefeat
+	faceplayer
 	msgbox VictoryRoad_B1F_Text_HallePostBattle, MSGBOX_AUTOCLOSE
 	end
 

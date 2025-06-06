@@ -6,8 +6,6 @@ VictoryRoad_1F_MapScripts::
 	.byte 0
 
 VictoryRoad_1F_OnTransition:
-	call_if_eq VAR_VICTORY_ROAD_1F_STATE, 1, VictoryRoad_1F_EventScript_SetEntranceWallyPos1
-	call_if_eq VAR_VICTORY_ROAD_1F_STATE, 2, VictoryRoad_1F_EventScript_SetEntranceWallyPos2
 	end
 
 VictoryRoad_1F_EventScript_SetEntranceWallyPos1::
@@ -22,6 +20,7 @@ VictoryRoad_1F_EventScript_SetEntranceWallyPos2::
 
 VictoryRoad_1F_EventScript_WallyBattleTrigger1::
 	lockall
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	setvar VAR_0x8008, 1
 	addobject LOCALID_WALLY_ENTRANCE
 	applymovement LOCALID_WALLY_ENTRANCE, VictoryRoad_1F_Movement_WallyApproachPlayer1
@@ -31,6 +30,7 @@ VictoryRoad_1F_EventScript_WallyBattleTrigger1::
 
 VictoryRoad_1F_EventScript_WallyBattleTrigger2::
 	lockall
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	setvar VAR_0x8008, 2
 	addobject LOCALID_WALLY_ENTRANCE
 	applymovement LOCALID_WALLY_ENTRANCE, VictoryRoad_1F_Movement_WallyApproachPlayer2
@@ -42,12 +42,25 @@ VictoryRoad_1F_EventScript_WallyEntranceBattle::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_WALLY_VR_1, VictoryRoad_1F_Text_WallyEntranceDefeat
-	msgbox VictoryRoad_1F_Text_WallyPostEntranceBattle, MSGBOX_DEFAULT
-	clearflag FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY
+	goto VictoryRoad_B1F_EventScript_WallyDoMultiBattle
+	releaseall
+	end
+
+VictoryRoad_B1F_EventScript_WallyDoMultiBattle::
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	multi_2p_vs_1 TRAINER_WALLY_VR_1, VictoryRoad_1F_Text_WallyEntranceDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, VictoryRoad_B1F_EventScript_WallyVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+VictoryRoad_B1F_EventScript_WallyVictory::
+	msgbox VictoryRoad_1F_Text_WallyPostEntranceBattle, MSGBOX_AUTOCLOSE
 	copyobjectxytoperm LOCALID_WALLY_ENTRANCE
 	setflag FLAG_DEFEATED_WALLY_VICTORY_ROAD
-	copyvar VAR_VICTORY_ROAD_1F_STATE, VAR_0x8008
+	addvar VAR_VICTORY_ROAD_1F_STATE, 1
+	playbgm MUS_VICTORY_ROAD, TRUE
 	releaseall
 	end
 
@@ -96,28 +109,106 @@ VictoryRoad_1F_EventScript_RematchWally::
 	msgbox VictoryRoad_1F_Text_WallyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+VictoryRoad_1F_EventScript_AlbertHope::
+lockall
+playse SE_PIN
+applymovement LOCALID_ALBERT, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox VictoryRoad_1F_Text_AlbertIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_HOPE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox VictoryRoad_1F_Text_HopeIntro MSGBOX_AUTOCLOSE
+goto VictoryRoad_1F_EventScript_AlbertHopeDoMultiBattle
+releaseall
+end
+
+VictoryRoad_1F_EventScript_AlbertHopeDoMultiBattle::
+playbgm MUS_VICTORY_ROAD, TRUE
+multi_2p_vs_2 TRAINER_ALBERT, VictoryRoad_1F_Text_AlbertDefeat, TRAINER_HOPE, VictoryRoad_1F_Text_HopeDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, VictoryRoad_1F_EventScript_AlbertHopeVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+VictoryRoad_1F_EventScript_AlbertHopeVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox VictoryRoad_1F_Text_AlbertPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox VictoryRoad_1F_Text_HopePostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_VICTORY_ROAD_1F_STATE, 1
+end
+
+VictoryRoad_1F_EventScript_KatelynnQuincy::
+lockall
+playse SE_PIN
+applymovement LOCALID_KATELYNN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox VictoryRoad_1F_Text_KatelynnIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_QUINCY, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox VictoryRoad_1F_Text_QuincyIntro MSGBOX_AUTOCLOSE
+goto VictoryRoad_1F_EventScript_KatelynnQuincyDoMultiBattle
+releaseall
+end
+
+VictoryRoad_1F_EventScript_KatelynnQuincyDoMultiBattle::
+playbgm MUS_VICTORY_ROAD, TRUE
+multi_2p_vs_2 TRAINER_KATELYNN, VictoryRoad_1F_Text_KatelynnDefeat, TRAINER_QUINCY, VictoryRoad_1F_Text_QuincyDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, VictoryRoad_1F_EventScript_KatelynnQuincyVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+VictoryRoad_1F_EventScript_KatelynnQuincyVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox VictoryRoad_1F_Text_KatelynnPostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox VictoryRoad_1F_Text_QuincyPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_VICTORY_ROAD_1F_STATE, 1
+end
+
 VictoryRoad_1F_EventScript_Edgar::
-	trainerbattle_single TRAINER_EDGAR, VictoryRoad_1F_Text_EdgarIntro, VictoryRoad_1F_Text_EdgarDefeat
+	faceplayer
 	msgbox VictoryRoad_1F_Text_EdgarPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 VictoryRoad_1F_EventScript_Albert::
-	trainerbattle_single TRAINER_ALBERT, VictoryRoad_1F_Text_AlbertIntro, VictoryRoad_1F_Text_AlbertDefeat
+	faceplayer
 	msgbox VictoryRoad_1F_Text_AlbertPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 VictoryRoad_1F_EventScript_Hope::
-	trainerbattle_single TRAINER_HOPE, VictoryRoad_1F_Text_HopeIntro, VictoryRoad_1F_Text_HopeDefeat
+	faceplayer
 	msgbox VictoryRoad_1F_Text_HopePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 VictoryRoad_1F_EventScript_Quincy::
-	trainerbattle_single TRAINER_QUINCY, VictoryRoad_1F_Text_QuincyIntro, VictoryRoad_1F_Text_QuincyDefeat
+	faceplayer
 	msgbox VictoryRoad_1F_Text_QuincyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 VictoryRoad_1F_EventScript_Katelynn::
-	trainerbattle_single TRAINER_KATELYNN, VictoryRoad_1F_Text_KatelynnIntro, VictoryRoad_1F_Text_KatelynnDefeat
+	faceplayer
 	msgbox VictoryRoad_1F_Text_KatelynnPostBattle, MSGBOX_AUTOCLOSE
 	end
 

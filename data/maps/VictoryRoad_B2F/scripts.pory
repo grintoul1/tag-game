@@ -2,40 +2,151 @@ raw `
 VictoryRoad_B2F_MapScripts::
 	.byte 0
 
+VictoryRoad_B2F_EventScript_DianneJulie::
+lockall
+playse SE_PIN
+applymovement LOCALID_DIANNE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox VictoryRoad_B2F_Text_DianneIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_JULIE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox VictoryRoad_B2F_Text_JulieIntro MSGBOX_AUTOCLOSE
+goto VictoryRoad_B2F_EventScript_DianneJulieDoMultiBattle
+releaseall
+end
+
+VictoryRoad_B2F_EventScript_DianneJulieDoMultiBattle::
+playbgm MUS_VICTORY_ROAD, TRUE
+multi_2p_vs_2 TRAINER_DIANNE, VictoryRoad_B2F_Text_DianneDefeat, TRAINER_JULIE, VictoryRoad_B2F_Text_JulieDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, VictoryRoad_B2F_EventScript_DianneJulieVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+VictoryRoad_B2F_EventScript_DianneJulieVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+waitmovement 0
+msgbox VictoryRoad_B2F_Text_DiannePostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+waitmovement 0
+msgbox VictoryRoad_B2F_Text_JuliePostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_VICTORY_ROAD_1F_STATE, 1
+end
+
+VictoryRoad_B2F_EventScript_CarolineOwen::
+lockall
+playse SE_PIN
+applymovement LOCALID_CAROLINE, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox VictoryRoad_B2F_Text_CarolineIntro MSGBOX_AUTOCLOSE
+playse SE_PIN
+applymovement  LOCALID_OWEN, Common_Movement_ExclamationMark
+waitmovement 0
+playbgm MUS_ENCOUNTER_COOL, TRUE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox VictoryRoad_B2F_Text_OwenIntro MSGBOX_AUTOCLOSE
+goto VictoryRoad_B2F_EventScript_CarolineOwenDoMultiBattle
+releaseall
+end
+
+VictoryRoad_B2F_EventScript_CarolineOwenDoMultiBattle::
+playbgm MUS_VICTORY_ROAD, TRUE
+multi_2p_vs_2 TRAINER_CAROLINE, VictoryRoad_B2F_Text_CarolineDefeat, TRAINER_OWEN, VictoryRoad_B2F_Text_OwenDefeat, PARTNER_EMMIE
+switch VAR_RESULT
+case 1, VictoryRoad_B2F_EventScript_CarolineOwenVictory
+fadescreen FADE_TO_BLACK
+special SetCB2WhiteOut
+waitstate
+
+VictoryRoad_B2F_EventScript_CarolineOwenVictory::
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+waitmovement 0
+msgbox VictoryRoad_B2F_Text_CarolinePostBattle, MSGBOX_AUTOCLOSE
+applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+waitmovement 0
+msgbox VictoryRoad_B2F_Text_OwenPostBattle, MSGBOX_AUTOCLOSE
+addvar VAR_VICTORY_ROAD_1F_STATE, 1
+end
+
+
 VictoryRoad_B2F_EventScript_Vito::
-	trainerbattle_single TRAINER_VITO, VictoryRoad_B2F_Text_VitoIntro, VictoryRoad_B2F_Text_VitoDefeat
+	faceplayer
+	playbgm MUS_ENCOUNTER_CHAMPION, TRUE
+	msgbox VictoryRoad_B2F_Text_VitoIntro MSGBOX_AUTOCLOSE
+	goto VictoryRoad_B2F_EventScript_VitoDoMultiBattle
+	releaseall
+	end
+
+VictoryRoad_B2F_EventScript_VitoDoMultiBattle::
+	playbgm MUS_VICTORY_ROAD, TRUE
+	multi_2p_vs_1 TRAINER_VITO, VictoryRoad_B2F_Text_VitoDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, VictoryRoad_B2F_EventScript_VitoVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+VictoryRoad_B2F_EventScript_VitoVictory::
+	applymovement LOCALID_VITO, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
 	msgbox VictoryRoad_B2F_Text_VitoPostBattle, MSGBOX_AUTOCLOSE
+	playse SE_EXIT
+	fadescreenspeed FADE_TO_BLACK, 4
+	removeobject LOCALID_VITO
+	setflag FLAG_HIDE_VICTORY_ROAD_VITO
+	fadescreen FADE_FROM_BLACK
+	releaseall
 	end
 
 VictoryRoad_B2F_EventScript_Owen::
-	trainerbattle_single TRAINER_OWEN, VictoryRoad_B2F_Text_OwenIntro, VictoryRoad_B2F_Text_OwenDefeat
+	faceplayer
 	msgbox VictoryRoad_B2F_Text_OwenPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 VictoryRoad_B2F_EventScript_Caroline::
-	trainerbattle_single TRAINER_CAROLINE, VictoryRoad_B2F_Text_CarolineIntro, VictoryRoad_B2F_Text_CarolineDefeat
+	faceplayer
 	msgbox VictoryRoad_B2F_Text_CarolinePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 VictoryRoad_B2F_EventScript_Julie::
-	trainerbattle_single TRAINER_JULIE, VictoryRoad_B2F_Text_JulieIntro, VictoryRoad_B2F_Text_JulieDefeat
+	faceplayer
 	msgbox VictoryRoad_B2F_Text_JuliePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 VictoryRoad_B2F_EventScript_Felix::
-	trainerbattle_single TRAINER_FELIX, VictoryRoad_B2F_Text_FelixIntro, VictoryRoad_B2F_Text_FelixDefeat
+	faceplayer
 	msgbox VictoryRoad_B2F_Text_FelixPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 VictoryRoad_B2F_EventScript_Dianne::
-	trainerbattle_single TRAINER_DIANNE, VictoryRoad_B2F_Text_DianneIntro, VictoryRoad_B2F_Text_DianneDefeat
+	faceplayer
 	msgbox VictoryRoad_B2F_Text_DiannePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 VictoryRoad_B2F_Text_VitoIntro:
-	.string "I trained together with my whole family,\n"
-	.string "every one of us!\l"
-	.string "I'm not losing to anyone!$"
+	.string "Vito: Well hey there!\p"
+	.string "My name's Vito and I'm making my\n"
+	.string "way to challenge the Elite Four.\p"
+	.string "I come from a family of powerful\n"
+	.string "trainers that lives on Route 111.\p"
+	.string "That's right, the Winstrates!\p"
+	.string "What's that? You defeated my\n"
+	.string "whole family?!\p"
+	.string "Hah, don't make me laugh! I\n"
+	.string "guess it's time to put your\l"
+	.string "money where your mouth is!$"
 
 VictoryRoad_B2F_Text_VitoDefeat:
 	.string "Better than my family?!\n"
@@ -44,8 +155,9 @@ VictoryRoad_B2F_Text_VitoDefeat:
 VictoryRoad_B2F_Text_VitoPostBattle:
 	.string "I was better than everyone in my\n"
 	.string "family. I've never lost before…\p"
-	.string "I've lost my confidence…\n"
-	.string "Maybe I'll go home…$"
+	.string "I've lost my confidence…\p"
+	.string "Maybe I'll go home and train\n"
+	.string "some more…$"
 
 VictoryRoad_B2F_Text_OwenIntro:
 	.string "I'd heard that there was a tough\n"
