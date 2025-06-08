@@ -9,7 +9,10 @@ EverGrandeCity_GlaciasRoom_OnWarp:
 	.2byte 0
 
 EverGrandeCity_GlaciasRoom_EventScript_PlayerTurnNorth::
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 7, 13
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_NORTH
 	turnobject LOCALID_PLAYER, DIR_NORTH
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_EVER_GRANDE_CITY_GLACIAS_ROOM
 	end
 
 EverGrandeCity_GlaciasRoom_OnFrame:
@@ -40,9 +43,24 @@ EverGrandeCity_GlaciasRoom_EventScript_Glacia::
 	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_ELITE_4_GLACIA, EverGrandeCity_GlaciasRoom_EventScript_PostBattleSpeech
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FacePlayer
+	waitmovement 0
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
 	msgbox EverGrandeCity_GlaciasRoom_Text_IntroSpeech, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_GLACIA, EverGrandeCity_GlaciasRoom_Text_Defeat
+	goto EverGrandeCity_GlaciasRoom_EventScript_GlaciaDoMultiBattle
+	releaseall
+	end
+
+EverGrandeCity_GlaciasRoom_EventScript_GlaciaDoMultiBattle::
+	playbgm MUS_VICTORY_ROAD, TRUE
+	multi_2p_vs_1 TRAINER_GLACIA, EverGrandeCity_GlaciasRoom_Text_Defeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, EverGrandeCity_GlaciasRoom_EventScript_GlaciaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+EverGrandeCity_GlaciasRoom_EventScript_GlaciaVictory::
 	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
 	end
 

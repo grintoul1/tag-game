@@ -1,13 +1,49 @@
 EverGrandeCity_PokemonLeague_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, EverGrandeCity_PokemonLeague_1F_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, EverGrandeCity_PokemonLeague_1F_OnWarp
 	.byte 0
+
+EverGrandeCity_PokemonLeague_1F_OnWarp:
+	map_script_2 VAR_EMMIE_BATTLE_STATE, 4, EverGrandeCity_PokemonLeague_1F_EventScript_PostEmmieCutscenePos
+	.2byte 0
+
+EverGrandeCity_PokemonLeague_1F_EventScript_PostEmmieCutscenePos::
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 10, 6
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_NORTH
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F
+	setvar VAR_EMMIE_BATTLE_STATE, 5
+	end
 
 EverGrandeCity_PokemonLeague_1F_OnTransition:
 	setrespawn HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE
 	setflag FLAG_LANDMARK_POKEMON_LEAGUE
 	call_if_unset FLAG_ENTERED_ELITE_FOUR, EverGrandeCity_PokemonLeague_1F_EventScript_GuardsBlockDoor
 	end
+
+EverGrandeCity_PokemonLeague_1F_EventScript_EmmieCutscene::
+	lockall
+	fadedefaultbgm
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
+	waitmovement 0
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox EverGrandeCity_PokemonLeague_1F_Text_EmmieBeforeWeHeadIn, MSGBOX_AUTOCLOSE
+	setvar VAR_EMMIE_BATTLE_STATE, 3
+	delay 30
+	playse SE_EXIT
+	warpsilent MAP_EVER_GRANDE_CITY, 28, 18
+	end
+
+EverGrandeCity_PokemonLeague_1F_Text_EmmieBeforeWeHeadIn:
+	.string "Emmie: Hey, {PLAYER}, hold on a moment.\p"
+	.string "Can we take a minute before we head\n"
+	.string "inside please?\p"
+	.string "Step outside with me for a moment.$"
 
 EverGrandeCity_PokemonLeague_1F_EventScript_GuardsBlockDoor::
 	setobjectxyperm LOCALID_LEAGUE_GUARD_1, 9, 2
@@ -72,14 +108,48 @@ EverGrandeCity_PokemonLeague_1F_EventScript_DoorGuard::
 	end
 
 EverGrandeCity_PokemonLeague_1F_EventScript_PlayerMoveToFrontFromRight::
+	call_if_eq VAR_TEMP_2, 12, EverGrandeCity_PokemonLeague_1F_EventScript_EmmieMoveFromRight
+	call_if_eq VAR_TEMP_2, 11, EverGrandeCity_PokemonLeague_1F_EventScript_EmmieMoveFromSouth
 	applymovement LOCALID_PLAYER, EverGrandeCity_PokemonLeague_1F_Movement_MoveToFrontFromRight
 	waitmovement 0
 	return
 
 EverGrandeCity_PokemonLeague_1F_EventScript_PlayerMoveToFrontFromLeft::
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_2, VAR_TEMP_3
+	call_if_eq VAR_TEMP_2, 7, EverGrandeCity_PokemonLeague_1F_EventScript_EmmieMoveFromLeft
+	call_if_eq VAR_TEMP_2, 8, EverGrandeCity_PokemonLeague_1F_EventScript_EmmieMoveFromSouth
 	applymovement LOCALID_PLAYER, EverGrandeCity_PokemonLeague_1F_Movement_MoveToFrontFromLeft
 	waitmovement 0
 	return
+
+EverGrandeCity_PokemonLeague_1F_EventScript_EmmieMoveFromRight::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, EverGrandeCity_PokemonLeague_1F_Movement_EmmieMoveFromRight
+	return
+
+EverGrandeCity_PokemonLeague_1F_EventScript_EmmieMoveFromLeft::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, EverGrandeCity_PokemonLeague_1F_Movement_EmmieMoveFromLeft
+	return
+
+EverGrandeCity_PokemonLeague_1F_EventScript_EmmieMoveFromSouth::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, EverGrandeCity_PokemonLeague_1F_Movement_EmmieMoveFromSouth
+	return
+
+EverGrandeCity_PokemonLeague_1F_Movement_EmmieMoveFromLeft:
+	walk_right
+	walk_down
+	face_up
+	step_end
+
+EverGrandeCity_PokemonLeague_1F_Movement_EmmieMoveFromRight:
+	walk_left
+	walk_down
+	face_up
+	step_end
+
+EverGrandeCity_PokemonLeague_1F_Movement_EmmieMoveFromSouth:
+	walk_down
+	walk_up
+	step_end
 
 EverGrandeCity_PokemonLeague_1F_EventScript_NotAllBadges::
 	playse SE_FAILURE

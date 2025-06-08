@@ -721,7 +721,7 @@ Common_EventScript_EmmieBattle::
 	call_if_unset FLAG_EMMIE_BATTLE_INTRO_GIVEN, Common_EventScript_EmmieBattleIntroduction
 	setflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
 	message Common_Text_EmmieBattleAreYouReady 
-	multichoice 25, 3, MULTI_EMMIE_ARE_YOU_READY, 1
+	multichoice 25, 4, MULTI_EMMIE_ARE_YOU_READY, 1
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_EmmieDoBattle
@@ -755,7 +755,7 @@ Common_EventScript_PlayerFaceEmmie2South:
 	return
 
 Common_EventScript_PlayerFaceEmmie3:
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
 	return
 
@@ -796,6 +796,11 @@ Common_EventScript_EmmieIntroductionMoveAwayFromHideout2:
 	return
 
 Common_EventScript_EmmieBattleIntroduction3::
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
 	msgbox Common_Text_EmmieBattleIntro3, MSGBOX_DEFAULT
 	return
 
@@ -859,7 +864,7 @@ Common_EventScript_EmmieNotEnoughMons::
 
 Common_EventScript_EmmieInformation::
 	message Common_Text_EmmieWhatDoYouNeedToKnow
-	multichoice 25, 3, MULTI_EMMIE_INFORMATION, 1
+	multichoice 25, 2, MULTI_EMMIE_INFORMATION, 1
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_EmmieTeam
 	compare VAR_RESULT, 1
@@ -920,8 +925,8 @@ Common_EventScript_EmmieBattleNotReady2:
 	end
 
 Common_EventScript_EmmieBattleNotReady3:
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkLeft
 	waitmovement 0
 	releaseall
 	end
@@ -998,7 +1003,11 @@ Common_Text_EmmieBattleRules2:
 	.string "and natures.$"
 
 Common_Text_EmmieBattleRules3:
-	.string "BATTLE 3 RULES TEXT$"
+	.string "We will both take the same six Pokémon\n"
+	.string "into battle, including movesets.\p"
+	.string "My team will be fully levelled and healed,\n"
+	.string "but I will use my own choice of items\l"
+	.string "and natures.$"
 
 Common_Text_EmmieBattleIntro1:
 	.string "Emmie: Hey, {PLAYER}, hold up a minute!\p"
@@ -1017,9 +1026,9 @@ Common_Text_EmmieBattleIntro1:
 	.string "{PLAYER}, you should know by now that as\n"
 	.string "your big sister, I'm capable of things\l"
 	.string "beyond your comprehension, okay?\p"
-	.string "Let me know when you are ready, and until\n"
-	.string "then just ask for any extra information\l"
-	.string "that you want to know!$"
+	.string "Let me know when you are ready, and\n"
+	.string "until then just ask for any extra\l"
+	.string "information that you want to know!$"
 
 Common_Text_EmmieBattleIntro2:
 	.string "This time my party will contain 3\n"
@@ -1031,7 +1040,32 @@ Common_Text_EmmieBattleIntro2:
 	.string "more information on the battle.$"
 
 Common_Text_EmmieBattleIntro3:
-	.string "BATTLE 3 INTRO TEXT$"
+	.string "Emmie: Hey, {PLAYER}, hang on a minute!\p"
+	.string "That's the end of Victory Road up\n"
+	.string "ahead…\p"
+	.string "You what this means, right? We are only\n"
+	.string "a few steps away from the Elite Four!\p"
+	.string "You've grown so much since we left\n"
+	.string "home.\p"
+	.string "I've watched you stand up to Team Aqua\n"
+	.string "and Team Magma all by yourself.\p"
+	.string "Perhaps I didn't keep my promise to\n"
+	.string "mom very well, but you've overcome\l"
+	.string "every obstacle in your way!\p"
+	.string "That said, the Elite Four are going\n"
+	.string "to be the biggest challenge yet…\p"
+	.string "So, you have one more challenge to\n"
+	.string "face before we get there.\p"
+	.string "You know what that is, right?\n"
+	.string "Well, me, of course!\p"
+	.string "We're going to have one last battle\n"
+	.string "against each other right here!\p"
+	.string "Let me explain how this battle will work.\p"
+	.string "Whichever six Pokémon you bring to the\n"
+	.string "battle, I will use the same six Pokémon.\p"
+	.string "Let me know when you are ready, and\n"
+	.string "until then just ask for any extra\l"
+	.string "information that you want to know!$"
 
 Common_EventScript_EmmieItems::
 	goto_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieItems1
@@ -1068,7 +1102,10 @@ Common_Text_EmmieBattleItems2:
 	.string "ITEM 4; ITEM 5; ITEM 6.$"
 
 Common_Text_EmmieBattleItems3:
-	.string "BATTLE 3 ITEMS TEXT$"
+	.string "For this battle, my team will hold the\n"
+	.string "following items in this order:\p"
+	.string "Focus Sash; Gem; Eject Pack;\n"
+	.string "Weakness Policy; Choice Scarf; Gem.$"
 
 Common_EventScript_EmmieNatures::
 	goto_if_set FLAG_EMMIE_BATTLE_1, Common_EventScript_EmmieNatures1
@@ -1105,7 +1142,8 @@ Common_Text_EmmieBattleNatures2:
 	.string "NATURE.$"
 
 Common_Text_EmmieBattleNatures3:
-	.string "BATTLE 3 NATURES TEXT$"
+	.string "Timid; Lonely; Naive; Rash; Bashful;\n"
+	.string "Jolly.$"
 
 Common_EventScript_EmmieBattle1::
 	changefollowerbattler PARTNER_NONE
@@ -1160,18 +1198,39 @@ Common_EventScript_EmmieBattleVictory2::
 	end
 
 Common_EventScript_EmmieBattle3::
+	checkplayergender
+	playbgm MUS_ENCOUNTER_CHAMPION, TRUE
+	call_if_eq VAR_RESULT, MALE, Common_EventScript_EmmieBattle3ReadyMale
+	call_if_eq VAR_RESULT, FEMALE, Common_Text_EmmieBattle3ReadyFemale
 	changefollowerbattler PARTNER_NONE
 	setvar VAR_0x8004, SPECIAL_BATTLE_EMMIE
 	setvar VAR_0x8005, TRAINER_EMMIE_3
+	playbgm MUS_VICTORY_ROAD, TRUE
 	special DoSpecialTrainerBattle
 	waitstate
 	clearflag FLAG_EMMIE_BATTLE_3
 	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
-	setvar VAR_EMMIE_BATTLE_STATE, 0
+	setvar VAR_EMMIE_BATTLE_STATE, 2
 	changefollowerbattler PARTNER_EMMIE
 	msgbox Common_Text_EmmieBattleVictory3, MSGBOX_DEFAULT
 	closemessage
 	end
+
+Common_EventScript_EmmieBattle3ReadyMale::
+	msgbox Common_Text_EmmieBattle3ReadyMale, MSGBOX_DEFAULT
+	closemessage
+	return
+
+Common_EventScript_EmmieBattle3ReadyFemale::
+	msgbox Common_Text_EmmieBattle3ReadyFemale, MSGBOX_DEFAULT
+	closemessage
+	return
+
+Common_Text_EmmieBattle3ReadyMale:
+	.string "Emmie: Hahahaha, are you ready, lil bro?$"
+
+Common_Text_EmmieBattle3ReadyFemale:
+	.string "Emmie: Hahahaha, are you ready, lil sis?$"
 
 Common_Text_EmmieBattleVictory1:
 	.string "Emmie: Wow, good stuff {PLAYER}!\p"
@@ -1188,9 +1247,10 @@ Common_Text_EmmieBattleVictory2:
 	.string "Shelly, we will see you inside.$"
 
 Common_Text_EmmieBattleVictory3:
-	.string "Emmie: Wow, good stuff {PLAYER}!\p"
-	.string "You're more than ready. Let's continue\n"
-	.string "and speak to Mr. Briney!$"
+	.string "Emmie: Impressive, {PLAYER}!\p"
+	.string "I'm so proud of the trainer that\n"
+	.string "you've become.\p"
+	.string "Now, let's head on to the Elite Four!$"
 
 Common_Text_EmmieBattleAreYouReady:
 	.string "Emmie: Hey, are you ready, or do you\n"

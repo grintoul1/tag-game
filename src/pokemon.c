@@ -5321,7 +5321,8 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
                 return;
             if (!(opponentTrainerClass == TRAINER_CLASS_LEADER
                 || opponentTrainerClass == TRAINER_CLASS_ELITE_FOUR
-                || opponentTrainerClass == TRAINER_CLASS_CHAMPION))
+                || opponentTrainerClass == TRAINER_CLASS_CHAMPION
+            || opponentTrainerClass == TRAINER_CLASS_FORMER_CHAMPION))
                 return;
         }
 
@@ -5866,6 +5867,7 @@ u16 GetBattleBGM(void)
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
         u8 trainerClass;
+        u16 trainerId=TRAINER_BATTLE_PARAM.opponentA;
 
         if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
             trainerClass = GetFrontierOpponentClass(TRAINER_BATTLE_PARAM.opponentA);
@@ -5893,10 +5895,6 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_CHAMPION:
             return MUS_VS_CHAMPION;
         case TRAINER_CLASS_RIVAL:
-            if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-                return MUS_VS_RIVAL;
-            if (!StringCompare(GetTrainerNameFromId(TRAINER_BATTLE_PARAM.opponentA), gText_BattleWallyName))
-                return MUS_VS_TRAINER;
             return MUS_VS_RIVAL;
         case TRAINER_CLASS_ELITE_FOUR:
             return MUS_VS_ELITE_FOUR;
@@ -5907,9 +5905,15 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_FACTORY_HEAD:
         case TRAINER_CLASS_PIKE_QUEEN:
         case TRAINER_CLASS_PYRAMID_KING:
-            return MUS_VS_FRONTIER_BRAIN;
         case TRAINER_CLASS_PKMN_TRAINER_2:
-            return MUS_VS_SINNOH_BRAIN;
+            return MUS_VS_FRONTIER_BRAIN;
+        case TRAINER_CLASS_WINSTRATE:
+            switch (trainerId)
+            {
+                case TRAINER_VITO:
+                    return MUS_VS_RIVAL;
+                return MUS_VS_TRAINER;
+            }
         default:
             return MUS_VS_TRAINER;
         }

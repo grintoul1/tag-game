@@ -10,7 +10,10 @@ EverGrandeCity_DrakesRoom_OnWarp:
 	.2byte 0
 
 EverGrandeCity_DrakesRoom_EventScript_PlayerTurnNorth::
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 7, 13
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_NORTH
 	turnobject LOCALID_PLAYER, DIR_NORTH
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_EVER_GRANDE_CITY_DRAKES_ROOM
 	end
 
 EverGrandeCity_DrakesRoom_OnFrame:
@@ -41,9 +44,24 @@ EverGrandeCity_DrakesRoom_EventScript_Drake::
 	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_ELITE_4_DRAKE, EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FacePlayer
+	waitmovement 0
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
 	msgbox EverGrandeCity_DrakesRoom_Text_IntroSpeech, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat
+	goto EverGrandeCity_DrakesRoom_EventScript_DrakeDoMultiBattle
+	releaseall
+	end
+
+EverGrandeCity_DrakesRoom_EventScript_DrakeDoMultiBattle::
+	playbgm MUS_VICTORY_ROAD, TRUE
+	multi_2p_vs_1 TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, EverGrandeCity_DrakesRoom_EventScript_DrakeVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+EverGrandeCity_DrakesRoom_EventScript_DrakeVictory::
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
 

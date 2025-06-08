@@ -28,7 +28,10 @@ EverGrandeCity_SidneysRoom_OnWarp:
 	.2byte 0
 
 EverGrandeCity_SidneysRoom_EventScript_PlayerTurnNorth::
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 7, 13
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_NORTH
 	turnobject LOCALID_PLAYER, DIR_NORTH
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM
 	end
 
 EverGrandeCity_SidneysRoom_OnFrame:
@@ -46,9 +49,24 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney::
 	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_ELITE_4_SIDNEY, EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FacePlayer
+	waitmovement 0
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
 	msgbox EverGrandeCity_SidneysRoom_Text_IntroSpeech, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat
+	goto EverGrandeCity_SidneysRoom_EventScript_SidneyDoMultiBattle
+	releaseall
+	end
+
+EverGrandeCity_SidneysRoom_EventScript_SidneyDoMultiBattle::
+	playbgm MUS_VICTORY_ROAD, TRUE
+	multi_2p_vs_1 TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, EverGrandeCity_SidneysRoom_EventScript_SidneyVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+EverGrandeCity_SidneysRoom_EventScript_SidneyVictory::
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
 

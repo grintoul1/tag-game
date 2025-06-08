@@ -2256,30 +2256,30 @@ void DoSpecialTrainerBattle(void)
             j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
             SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
         }
-        j = NATURE_RELAXED;
+        j = NATURE_TIMID;
         SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_SERIOUS;
+        j = NATURE_LONELY;
         SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_BRAVE;
+        j = NATURE_NAIVE;
         SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_SASSY;
+        j = NATURE_RASH;
         SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
         j = NATURE_BASHFUL;
         SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_QUIET;
+        j = NATURE_JOLLY;
         SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
 
         j = ITEM_FOCUS_SASH;
         SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_IRON_BALL;
+        j = ITEM_NORMAL_GEM;
         SetMonData(&gEnemyParty[1], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_EJECT_BUTTON;
+        j = ITEM_EJECT_PACK;
         SetMonData(&gEnemyParty[2], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_LAGGING_TAIL;
+        j = ITEM_WEAKNESS_POLICY;
         SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_SITRUS_BERRY;
+        j = ITEM_CHOICE_SPECS;
         SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_STICKY_BARB;
+        j = ITEM_NORMAL_GEM;
         SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
     }
     
@@ -2294,7 +2294,7 @@ void DoSpecialTrainerBattle(void)
     }
     if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
     {
-        PlayMapChosenOrBattleBGM(481);
+        PlayMapChosenOrBattleBGM(610);
     }
         BattleTransition_StartOnField(GetTrainerBattleTransition());
         break;

@@ -1,12 +1,75 @@
 raw `
 EverGrandeCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, EverGrandeCity_OnTransition
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, EverGrandeCity_OnWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, EverGrandeCity_OnFrame
 	.byte 0
+
+EverGrandeCity_OnWarp:
+	map_script_2 VAR_EMMIE_BATTLE_STATE, 3, EverGrandeCity_EventScript_EmmieCutsceneEmmiePos
+	.2byte 0
+
+EverGrandeCity_OnFrame:
+	map_script_2 VAR_EMMIE_BATTLE_STATE, 3, EverGrandeCity_EventScript_EmmieCutscene
+	.2byte 0
 
 EverGrandeCity_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
 	end
+
+EverGrandeCity_EventScript_EmmieCutsceneEmmiePos:
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 28, 16
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_EAST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_EVER_GRANDE_CITY
+	end
+
+EverGrandeCity_EventScript_EmmieCutscene:
+	lockall
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox EverGrandeCity_Text_EmmieWasntSure, MSGBOX_AUTOCLOSE
+	delay 30
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox EverGrandeCity_Text_EmmieThanksForPlaying, MSGBOX_AUTOCLOSE
+	delay 30
+	setvar VAR_EMMIE_BATTLE_STATE, 4
+	playse SE_EXIT
+	warpsilent MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F, 9, 6
+	end
+
+EverGrandeCity_Movement_Heart:
+	emote_heart
+	step_end
+
+EverGrandeCity_Text_EmmieThanksForPlaying:
+	.string "Thanks for playing with me!\p"
+	.string "Now, let's get in there and finish this!$"
+
+EverGrandeCity_Text_EmmieWasntSure:
+	.string "Emmie: Thank you for coming outside. I\n"
+	.string "just wanted to say something before\l"
+	.string "we went inside.\p"
+	.string "When I first had the idea of us going on\n"
+	.string "this journey together, I admit I wasn't\l"
+	.string "sure if you would be up for it.\p"
+	.string "I guess I was worried that I wouldn't\n"
+	.string "give you the adventure that you were\l"
+	.string "looking for…\p"
+	.string "I mean, who wants their big sister\n"
+	.string "cramping their style, right?\p"
+	.string "But look how far we've come thanks to\n"
+	.string "your remarkable skills!\p"
+	.string "Whatever happens in there, I want you\n"
+	.string "to know how proud of you I am.\p"
+	.string "I hope that the fact that we've\n"
+	.string "travelled so far means you've enjoyed\l"
+	.string "our time together.\p"
+	.string "I suppose what I really want to say is…$"
 
 EverGrandeCity_EventScript_VictoryRoadSign::
 	msgbox EverGrandeCity_Text_EnteringVictoryRoad, MSGBOX_SIGN

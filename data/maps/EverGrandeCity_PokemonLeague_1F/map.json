@@ -107,6 +107,25 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 2,
+      "elevation": 0,
+      "var": "VAR_EMMIE_BATTLE_STATE",
+      "var_value": "2",
+      "script": "EverGrandeCity_PokemonLeague_1F_EventScript_EmmieCutscene"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 2,
+      "elevation": 0,
+      "var": "VAR_EMMIE_BATTLE_STATE",
+      "var_value": "2",
+      "script": "EverGrandeCity_PokemonLeague_1F_EventScript_EmmieCutscene"
+    }
+  ],
   "bg_events": []
 }
