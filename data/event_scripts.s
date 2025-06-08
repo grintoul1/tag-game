@@ -1142,6 +1142,8 @@ Common_Text_EmmieBattleNatures2:
 	.string "NATURE.$"
 
 Common_Text_EmmieBattleNatures3:
+	.string "My Pokémon's will have the following\n"
+	.string "natures in this order:\p"
 	.string "Timid; Lonely; Naive; Rash; Bashful;\n"
 	.string "Jolly.$"
 
