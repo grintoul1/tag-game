@@ -3,7 +3,16 @@ SkyPillar_5F_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, CaveHole_CheckFallDownHole
 	map_script MAP_SCRIPT_ON_TRANSITION, SkyPillar_5F_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, SkyPillar_5F_SetHoleWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SkyPillar_5F_OnFrame
 	.byte 0
+
+SkyPillar_5F_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 66, SkyPillar_5F_EventScript_ProgressEmmieState
+	.2byte 0
+
+SkyPillar_5F_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 65
+	return
 
 SkyPillar_5F_OnTransition:
 	call_if_lt VAR_SKY_PILLAR_STATE, 8, SkyPillar_5F_EventScript_CleanFloor

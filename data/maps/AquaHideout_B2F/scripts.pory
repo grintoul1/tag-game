@@ -110,6 +110,7 @@ AquaHideout_B2F_EventScript_MattShellyVictory::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceLeft
 	waitmovement 0
 	addvar VAR_AQUAHIDEOUT_STATE, 1
+	setvar VAR_PARTNER_EMMIE_STATE, 50
 	goto AquaHideout_B2F_EventScript_SubmarineEscape
 	end
 

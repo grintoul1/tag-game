@@ -3,7 +3,17 @@ Underwater_SeafloorCavern_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, Underwater_SeafloorCavern_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, Underwater_SeafloorCavern_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Underwater_SeafloorCavern_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Underwater_SeafloorCavern_OnFrame
 	.byte 0
+
+Underwater_SeafloorCavern_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 58, Underwater_SeafloorCavern_EventScript_ProgressEmmieState
+	.2byte 0
+
+Underwater_SeafloorCavern_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 59
+	return
+
 
 Underwater_SeafloorCavern_OnTransition:
 	setflag FLAG_LANDMARK_SEAFLOOR_CAVERN

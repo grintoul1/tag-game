@@ -441,7 +441,7 @@ OldaleTown_EventScript_Rival::
 # 221 "data/maps/OldaleTown/scripts.pory"
 	lockall
 # 222 "data/maps/OldaleTown/scripts.pory"
-	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
+	applymovement LOCALID_OLDALE_RIVAL, Common_Movement_FacePlayer
 # 223 "data/maps/OldaleTown/scripts.pory"
 	waitmovement 0
 # 224 "data/maps/OldaleTown/scripts.pory"
@@ -457,7 +457,7 @@ OldaleTown_EventScript_RivalTrigger1::
 # 229 "data/maps/OldaleTown/scripts.pory"
 	lockall
 # 230 "data/maps/OldaleTown/scripts.pory"
-	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer1
+	applymovement LOCALID_OLDALE_RIVAL, OldaleTown_Movement_RivalApproachPlayer1
 # 231 "data/maps/OldaleTown/scripts.pory"
 	waitmovement 0
 # 232 "data/maps/OldaleTown/scripts.pory"
@@ -477,7 +477,7 @@ OldaleTown_EventScript_RivalTrigger2::
 # 239 "data/maps/OldaleTown/scripts.pory"
 	lockall
 # 240 "data/maps/OldaleTown/scripts.pory"
-	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer2
+	applymovement LOCALID_OLDALE_RIVAL, OldaleTown_Movement_RivalApproachPlayer2
 # 241 "data/maps/OldaleTown/scripts.pory"
 	waitmovement 0
 # 242 "data/maps/OldaleTown/scripts.pory"
@@ -497,7 +497,7 @@ OldaleTown_EventScript_RivalTrigger3::
 # 249 "data/maps/OldaleTown/scripts.pory"
 	lockall
 # 250 "data/maps/OldaleTown/scripts.pory"
-	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer3
+	applymovement LOCALID_OLDALE_RIVAL, OldaleTown_Movement_RivalApproachPlayer3
 # 251 "data/maps/OldaleTown/scripts.pory"
 	waitmovement 0
 # 252 "data/maps/OldaleTown/scripts.pory"
@@ -553,11 +553,11 @@ OldaleTown_EventScript_RivalFinish::
 # 277 "data/maps/OldaleTown/scripts.pory"
 	call_if_eq VAR_0x8009, 1, OldaleTown_EventScript_DoExitMovement2
 # 278 "data/maps/OldaleTown/scripts.pory"
-	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalExit
+	applymovement LOCALID_OLDALE_RIVAL, OldaleTown_Movement_RivalExit
 # 279 "data/maps/OldaleTown/scripts.pory"
 	waitmovement 0
 # 280 "data/maps/OldaleTown/scripts.pory"
-	removeobject LOCALID_RIVAL
+	removeobject LOCALID_OLDALE_RIVAL
 # 281 "data/maps/OldaleTown/scripts.pory"
 	setvar VAR_OLDALE_RIVAL_STATE, 2
 # 282 "data/maps/OldaleTown/scripts.pory"
@@ -573,7 +573,7 @@ OldaleTown_EventScript_DoExitMovement1::
 # 287 "data/maps/OldaleTown/scripts.pory"
 	goto_if_ne VAR_FACING, DIR_SOUTH, OldaleTown_EventScript_DoExitMovement2
 # 288 "data/maps/OldaleTown/scripts.pory"
-	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalExit
+	applymovement LOCALID_OLDALE_RIVAL, OldaleTown_Movement_RivalExit
 # 289 "data/maps/OldaleTown/scripts.pory"
 	waitmovement 0
 # 290 "data/maps/OldaleTown/scripts.pory"
@@ -585,7 +585,7 @@ OldaleTown_EventScript_DoExitMovement2::
 # 293 "data/maps/OldaleTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_WatchRivalExit
 # 294 "data/maps/OldaleTown/scripts.pory"
-	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalExit
+	applymovement LOCALID_OLDALE_RIVAL, OldaleTown_Movement_RivalExit
 # 295 "data/maps/OldaleTown/scripts.pory"
 	waitmovement 0
 # 296 "data/maps/OldaleTown/scripts.pory"

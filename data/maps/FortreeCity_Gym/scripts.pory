@@ -10,7 +10,16 @@ raw `
 FortreeCity_Gym_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, FortreeCity_Gym_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, FortreeCity_Gym_OnWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, FortreeCity_Gym_OnFrame
 	.byte 0
+
+FortreeCity_Gym_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 37, FortreeCity_Gym_EventScript_ProgressEmmieState
+	.2byte 0
+
+FortreeCity_Gym_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 38
+	return
 
 FortreeCity_Gym_OnTransition:
 	special RotatingGate_InitPuzzle
@@ -49,6 +58,7 @@ waitstate
 FortreeCity_Gym_EventScript_WinonaVictory::
 addvar VAR_FORTREE_CITY_STATE, 1
 setvar VAR_LEVEL_CAP, 73
+setvar VAR_PARTNER_EMMIE_STATE, 39
 goto FortreeCity_Gym_EventScript_WinonaDefeated
 end
 

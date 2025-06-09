@@ -77,6 +77,7 @@ EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech::
 
 EverGrandeCity_SidneysRoom_EventScript_Defeated::
 	setflag FLAG_DEFEATED_ELITE_4_SIDNEY
+	setvar VAR_PARTNER_EMMIE_STATE, 74
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	release

@@ -10,7 +10,16 @@
 
 MtPyre_Summit_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MtPyre_Summit_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MtPyre_Summit_OnFrame
 	.byte 0
+
+MtPyre_Summit_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 33, MtPyre_Summit_EventScript_ProgressEmmieState
+	.2byte 0
+
+MtPyre_Summit_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 35
+	return
 
 MtPyre_Summit_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
@@ -207,6 +216,7 @@ MtPyre_Summit_EventScript_ArchieDefeated::
 	fadedefaultbgm
 	fadescreen FADE_FROM_BLACK
 	setvar VAR_MT_PYRE_STATE, 9
+	setvar VAR_PARTNER_EMMIE_STATE, 36
 	setrespawn HEAL_LOCATION_MAUVILLE_CITY @Prevents skipping Winona split by wiping to Lavaridge Town
 	call MtPyre_Summit_EventScript_OldLadyApproachPlayer1
 	msgbox MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis, MSGBOX_DEFAULT
@@ -410,6 +420,7 @@ MtPyre_Summit_EventScript_MaxieDefeated::
 	fadedefaultbgm
 	fadescreen FADE_FROM_BLACK
 	setvar VAR_MT_PYRE_STATE, 9
+	setvar VAR_PARTNER_EMMIE_STATE, 36
 	setrespawn HEAL_LOCATION_MAUVILLE_CITY @Prevents skipping Winona split by wiping to Lavaridge Town
 	call MtPyre_Summit_EventScript_OldLadyApproachPlayer2
 	msgbox MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis, MSGBOX_DEFAULT

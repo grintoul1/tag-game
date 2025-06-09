@@ -9,7 +9,18 @@ raw `
 MtChimney_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, MtChimney_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, MtChimney_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MtChimney_OnFrame
 	.byte 0
+
+MtChimney_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 25, MtChimney_EventScript_ProgressEmmieState
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 27, MtChimney_EventScript_ProgressEmmieState
+	.2byte 0
+
+MtChimney_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 26
+	setrespawn HEAL_LOCATION_MAUVILLE_CITY
+	return
 
 MtChimney_OnTransition:
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 1
@@ -193,6 +204,7 @@ MtChimney_EventScript_MaxieVictory::
 	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
 	clearflag FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
 	setvar VAR_LEVEL_CAP, 58
+	setvar VAR_PARTNER_EMMIE_STATE, 28
 	fadescreen FADE_FROM_BLACK
 	releaseall
 	end

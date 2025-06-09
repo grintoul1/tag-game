@@ -1,7 +1,17 @@
 raw `
 SkyPillar_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, SkyPillar_1F_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SkyPillar_1F_OnFrame
 	.byte 0
+
+SkyPillar_1F_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 64, SkyPillar_1F_EventScript_ProgressEmmieState
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 67, SkyPillar_1F_EventScript_ProgressEmmieState
+	.2byte 0
+
+SkyPillar_1F_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 65
+	return
 
 SkyPillar_1F_OnTransition:
 	call_if_lt VAR_SKY_PILLAR_STATE, 8, SkyPillar_1F_EventScript_CleanFloor

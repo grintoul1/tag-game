@@ -15,7 +15,16 @@ raw `
 MossdeepCity_Gym_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_Gym_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, MossdeepCity_Gym_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_Gym_OnFrame
 	.byte 0
+
+MossdeepCity_Gym_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 51, MossdeepCity_Gym_EventScript_ProgressEmmieState
+	.2byte 0
+
+MossdeepCity_Gym_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 52
+	return
 
 @ NOTE: Mossdeep Gym was redesigned between R/S and E. Leftover (and now functionally unused) scripts are commented below
 
@@ -87,6 +96,7 @@ waitstate
 
 MossdeepCity_Gym_EventScript_TateAndLizaVictory::
 setvar VAR_LEVEL_CAP, 65
+setvar VAR_PARTNER_EMMIE_STATE, 53
 goto MossdeepCity_Gym_EventScript_TateAndLizaDefeated
 end
 

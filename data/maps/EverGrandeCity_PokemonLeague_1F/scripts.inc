@@ -2,7 +2,16 @@ EverGrandeCity_PokemonLeague_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, EverGrandeCity_PokemonLeague_1F_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, EverGrandeCity_PokemonLeague_1F_OnWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, EverGrandeCity_PokemonLeague_1F_OnFrame
 	.byte 0
+
+EverGrandeCity_PokemonLeague_1F_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 71, EverGrandeCity_PokemonLeague_1F_EventScript_ProgressEmmieState
+	.2byte 0
+
+EverGrandeCity_PokemonLeague_1F_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 72
+	return
 
 EverGrandeCity_PokemonLeague_1F_OnWarp:
 	map_script_2 VAR_EMMIE_BATTLE_STATE, 4, EverGrandeCity_PokemonLeague_1F_EventScript_PostEmmieCutscenePos

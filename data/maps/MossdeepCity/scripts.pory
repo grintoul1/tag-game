@@ -8,7 +8,22 @@ raw `
 
 MossdeepCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_OnFrame
 	.byte 0
+
+MossdeepCity_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 50, MossdeepCity_EventScript_ProgressEmmieState
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 52, MossdeepCity_EventScript_ProgressEmmieState
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 55, MossdeepCity_EventScript_ProgressEmmieState2
+	.2byte 0
+
+MossdeepCity_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 51
+	return
+
+MossdeepCity_EventScript_ProgressEmmieState2::
+	setvar VAR_PARTNER_EMMIE_STATE, 54
+	end
 
 MossdeepCity_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
@@ -105,6 +120,7 @@ MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter::
 	removeobject LOCALID_GRUNT_4
 	delay 30
 	setvar VAR_MOSSDEEP_CITY_STATE, 2
+	setvar VAR_PARTNER_EMMIE_STATE, 54
 	setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
 	releaseall
 	end

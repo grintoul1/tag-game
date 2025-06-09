@@ -5,7 +5,17 @@ raw `
 FortreeCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, FortreeCity_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, FortreeCity_OnResume
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, FortreeCity_OnFrame
 	.byte 0
+
+FortreeCity_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 36, FortreeCity_EventScript_ProgressEmmieState
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 38, FortreeCity_EventScript_ProgressEmmieState
+	.2byte 0
+
+FortreeCity_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 37
+	return
 
 FortreeCity_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
@@ -49,6 +59,7 @@ FortreeCity_EventScript_Shelly::
 	waitmovement 0
 	setflag FLAG_HIDE_FORTREE_SHELLY
 	clearflag FLAG_HIDE_JAGGED_PASS_SHELLY
+	setvar VAR_PARTNER_EMMIE_STATE, 40
 	addvar VAR_FORTREE_CITY_STATE, 1 
 	end
 

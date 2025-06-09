@@ -13,7 +13,16 @@ raw `
 
 DewfordTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, DewfordTown_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, DewfordTown_OnFrame
 	.byte 0
+
+DewfordTown_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 14, DewfordTown_EventScript_ProgressEmmieState
+	.2byte 0
+
+DewfordTown_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 13
+	return
 
 DewfordTown_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
@@ -167,6 +176,7 @@ DewfordTown_EventScript_SailToPetalburg::
 
 DewfordTown_EventScript_SailToSlateport::
 	call EventScript_BackupMrBrineyLocation
+	setvar VAR_PARTNER_EMMIE_STATE, 16
 	setobjectsubpriority LOCALID_BRINEY_DEWFORD, MAP_DEWFORD_TOWN, 0
 	setobjectsubpriority OBJ_EVENT_ID_PLAYER, MAP_DEWFORD_TOWN, 1
 	setobjectsubpriority OBJ_EVENT_ID_NPC_FOLLOWER, MAP_DEWFORD_TOWN, 1
