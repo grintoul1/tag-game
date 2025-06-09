@@ -19,341 +19,341 @@ MossdeepCity_MapScripts::
 # 10 "data/maps/MossdeepCity/scripts.pory"
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_OnTransition
 # 11 "data/maps/MossdeepCity/scripts.pory"
-	.byte 0
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_OnFrame
 # 12 "data/maps/MossdeepCity/scripts.pory"
-
+	.byte 0
 # 13 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_OnTransition:
+
 # 14 "data/maps/MossdeepCity/scripts.pory"
-	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
+MossdeepCity_OnFrame:
 # 15 "data/maps/MossdeepCity/scripts.pory"
-	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 50, MossdeepCity_EventScript_ProgressEmmieState
 # 16 "data/maps/MossdeepCity/scripts.pory"
-	clearflag FLAG_MOSSDEEP_GYM_SWITCH_1
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 52, MossdeepCity_EventScript_ProgressEmmieState
 # 17 "data/maps/MossdeepCity/scripts.pory"
-	clearflag FLAG_MOSSDEEP_GYM_SWITCH_2
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 55, MossdeepCity_EventScript_ProgressEmmieState2
 # 18 "data/maps/MossdeepCity/scripts.pory"
-	clearflag FLAG_MOSSDEEP_GYM_SWITCH_3
+	.2byte 0
 # 19 "data/maps/MossdeepCity/scripts.pory"
-	clearflag FLAG_MOSSDEEP_GYM_SWITCH_4
+
 # 20 "data/maps/MossdeepCity/scripts.pory"
-	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
+MossdeepCity_EventScript_ProgressEmmieState::
 # 21 "data/maps/MossdeepCity/scripts.pory"
-	end
+	setvar VAR_PARTNER_EMMIE_STATE, 51
 # 22 "data/maps/MossdeepCity/scripts.pory"
-
+	return
 # 23 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_PokefanF::
+
 # 24 "data/maps/MossdeepCity/scripts.pory"
-	lock
+MossdeepCity_EventScript_ProgressEmmieState2::
 # 25 "data/maps/MossdeepCity/scripts.pory"
-	faceplayer
+	setvar VAR_PARTNER_EMMIE_STATE, 54
 # 26 "data/maps/MossdeepCity/scripts.pory"
-	goto_if_set FLAG_RECEIVED_HM_DIVE, MossdeepCity_EventScript_PokefanFMagmaGone
+	end
 # 27 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_SpaceCenterReceivedLetter, MSGBOX_DEFAULT
+
 # 28 "data/maps/MossdeepCity/scripts.pory"
-	release
+MossdeepCity_OnTransition:
 # 29 "data/maps/MossdeepCity/scripts.pory"
-	end
+	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 # 30 "data/maps/MossdeepCity/scripts.pory"
-
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
 # 31 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_PokefanFMagmaGone::
+	clearflag FLAG_MOSSDEEP_GYM_SWITCH_1
 # 32 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_SpaceCenterLaunchingRockets, MSGBOX_DEFAULT
+	clearflag FLAG_MOSSDEEP_GYM_SWITCH_2
 # 33 "data/maps/MossdeepCity/scripts.pory"
-	release
+	clearflag FLAG_MOSSDEEP_GYM_SWITCH_3
 # 34 "data/maps/MossdeepCity/scripts.pory"
-	end
+	clearflag FLAG_MOSSDEEP_GYM_SWITCH_4
 # 35 "data/maps/MossdeepCity/scripts.pory"
-
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
 # 36 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_Sailor::
+	end
 # 37 "data/maps/MossdeepCity/scripts.pory"
-	lock
+
 # 38 "data/maps/MossdeepCity/scripts.pory"
-	faceplayer
+MossdeepCity_EventScript_PokefanF::
 # 39 "data/maps/MossdeepCity/scripts.pory"
-	goto_if_set FLAG_RECEIVED_HM_DIVE, MossdeepCity_EventScript_SailorMagmaGone
+	lock
 # 40 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_MossdeepTargetedByMagma, MSGBOX_DEFAULT
+	faceplayer
 # 41 "data/maps/MossdeepCity/scripts.pory"
-	release
+	goto_if_set FLAG_RECEIVED_HM_DIVE, MossdeepCity_EventScript_PokefanFMagmaGone
 # 42 "data/maps/MossdeepCity/scripts.pory"
-	end
+	msgbox MossdeepCity_Text_SpaceCenterReceivedLetter, MSGBOX_DEFAULT
 # 43 "data/maps/MossdeepCity/scripts.pory"
-
-# 44 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_SailorMagmaGone::
-# 45 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_FeelReliefOnLand, MSGBOX_DEFAULT
-# 46 "data/maps/MossdeepCity/scripts.pory"
 	release
+# 44 "data/maps/MossdeepCity/scripts.pory"
+	end
+# 45 "data/maps/MossdeepCity/scripts.pory"
+
+# 46 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_EventScript_PokefanFMagmaGone::
 # 47 "data/maps/MossdeepCity/scripts.pory"
-	end
+	msgbox MossdeepCity_Text_SpaceCenterLaunchingRockets, MSGBOX_DEFAULT
 # 48 "data/maps/MossdeepCity/scripts.pory"
-
+	release
 # 49 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_NinjaBoy::
+	end
 # 50 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_WailmerWatching, MSGBOX_NPC
+
 # 51 "data/maps/MossdeepCity/scripts.pory"
-	end
+MossdeepCity_EventScript_Sailor::
 # 52 "data/maps/MossdeepCity/scripts.pory"
-
+	lock
 # 53 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_ExpertM::
+	faceplayer
 # 54 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_LifeNeedsSeaToLive, MSGBOX_NPC
+	goto_if_set FLAG_RECEIVED_HM_DIVE, MossdeepCity_EventScript_SailorMagmaGone
 # 55 "data/maps/MossdeepCity/scripts.pory"
-	end
+	msgbox MossdeepCity_Text_MossdeepTargetedByMagma, MSGBOX_DEFAULT
 # 56 "data/maps/MossdeepCity/scripts.pory"
-
+	release
 # 57 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_Girl::
+	end
 # 58 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_NiceIfWorldCoveredByFlowers, MSGBOX_NPC
+
 # 59 "data/maps/MossdeepCity/scripts.pory"
-	end
+MossdeepCity_EventScript_SailorMagmaGone::
 # 60 "data/maps/MossdeepCity/scripts.pory"
-
+	msgbox MossdeepCity_Text_FeelReliefOnLand, MSGBOX_DEFAULT
 # 61 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_Woman::
+	release
 # 62 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_SpecialSpaceCenterRock, MSGBOX_NPC
+	end
 # 63 "data/maps/MossdeepCity/scripts.pory"
-	end
+
 # 64 "data/maps/MossdeepCity/scripts.pory"
-
+MossdeepCity_EventScript_NinjaBoy::
 # 65 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_WhiteRock::
+	msgbox MossdeepCity_Text_WailmerWatching, MSGBOX_NPC
 # 66 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_ItsAWhiteRock, MSGBOX_SIGN
+	end
 # 67 "data/maps/MossdeepCity/scripts.pory"
-	end
+
 # 68 "data/maps/MossdeepCity/scripts.pory"
-
+MossdeepCity_EventScript_ExpertM::
 # 69 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_GymSign::
+	msgbox MossdeepCity_Text_LifeNeedsSeaToLive, MSGBOX_NPC
 # 70 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_GymSign, MSGBOX_SIGN
+	end
 # 71 "data/maps/MossdeepCity/scripts.pory"
-	end
+
 # 72 "data/maps/MossdeepCity/scripts.pory"
-
+MossdeepCity_EventScript_Girl::
 # 73 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_CitySign::
+	msgbox MossdeepCity_Text_NiceIfWorldCoveredByFlowers, MSGBOX_NPC
 # 74 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_CitySign, MSGBOX_SIGN
+	end
 # 75 "data/maps/MossdeepCity/scripts.pory"
-	end
+
 # 76 "data/maps/MossdeepCity/scripts.pory"
-
+MossdeepCity_EventScript_Woman::
 # 77 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_SpaceCenterSign::
+	msgbox MossdeepCity_Text_SpecialSpaceCenterRock, MSGBOX_NPC
 # 78 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_SpaceCenterSign, MSGBOX_SIGN
+	end
 # 79 "data/maps/MossdeepCity/scripts.pory"
-	end
+
 # 80 "data/maps/MossdeepCity/scripts.pory"
-
+MossdeepCity_EventScript_WhiteRock::
 # 81 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_VisitedMossdeep::
+	msgbox MossdeepCity_Text_ItsAWhiteRock, MSGBOX_SIGN
 # 82 "data/maps/MossdeepCity/scripts.pory"
-	setflag FLAG_VISITED_MOSSDEEP_CITY
+	end
 # 83 "data/maps/MossdeepCity/scripts.pory"
-	setvar VAR_TEMP_1, 1
+
 # 84 "data/maps/MossdeepCity/scripts.pory"
-	end
+MossdeepCity_EventScript_GymSign::
 # 85 "data/maps/MossdeepCity/scripts.pory"
-
+	msgbox MossdeepCity_Text_GymSign, MSGBOX_SIGN
 # 86 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter::
-# 87 "data/maps/MossdeepCity/scripts.pory"
-	lockall
-# 88 "data/maps/MossdeepCity/scripts.pory"
-	applymovement LOCALID_MAXIE, MossdeepCity_Movement_MaxieGestureToSpaceCenter
-# 89 "data/maps/MossdeepCity/scripts.pory"
-	waitmovement 0
-# 90 "data/maps/MossdeepCity/scripts.pory"
-	applymovement LOCALID_GRUNT_1, MossdeepCity_Movement_GruntFaceSpaceCenter
-# 91 "data/maps/MossdeepCity/scripts.pory"
-	applymovement LOCALID_GRUNT_2, MossdeepCity_Movement_GruntFaceSpaceCenter
-# 92 "data/maps/MossdeepCity/scripts.pory"
-	applymovement LOCALID_GRUNT_3, MossdeepCity_Movement_GruntFaceSpaceCenter
-# 93 "data/maps/MossdeepCity/scripts.pory"
-	applymovement LOCALID_GRUNT_4, MossdeepCity_Movement_GruntFaceSpaceCenter
-# 94 "data/maps/MossdeepCity/scripts.pory"
-	waitmovement 0
-# 95 "data/maps/MossdeepCity/scripts.pory"
-	applymovement LOCALID_MAXIE, MossdeepCity_Movement_MaxieEnterSpaceCenter
-# 96 "data/maps/MossdeepCity/scripts.pory"
-	applymovement LOCALID_GRUNT_1, MossdeepCity_Movement_Grunt1EnterSpaceCenter
-# 97 "data/maps/MossdeepCity/scripts.pory"
-	applymovement LOCALID_GRUNT_2, MossdeepCity_Movement_Grunt2EnterSpaceCenter
-# 98 "data/maps/MossdeepCity/scripts.pory"
-	applymovement LOCALID_GRUNT_3, MossdeepCity_Movement_Grunt3EnterSpaceCenter
-# 99 "data/maps/MossdeepCity/scripts.pory"
-	applymovement LOCALID_GRUNT_4, MossdeepCity_Movement_Grunt4EnterSpaceCenter
-# 100 "data/maps/MossdeepCity/scripts.pory"
-	waitmovement 0
-# 101 "data/maps/MossdeepCity/scripts.pory"
-	removeobject LOCALID_MAXIE
-# 102 "data/maps/MossdeepCity/scripts.pory"
-	removeobject LOCALID_GRUNT_1
-# 103 "data/maps/MossdeepCity/scripts.pory"
-	removeobject LOCALID_GRUNT_2
-# 104 "data/maps/MossdeepCity/scripts.pory"
-	removeobject LOCALID_GRUNT_3
-# 105 "data/maps/MossdeepCity/scripts.pory"
-	removeobject LOCALID_GRUNT_4
-# 106 "data/maps/MossdeepCity/scripts.pory"
-	delay 30
-# 107 "data/maps/MossdeepCity/scripts.pory"
-	setvar VAR_MOSSDEEP_CITY_STATE, 2
-# 108 "data/maps/MossdeepCity/scripts.pory"
-	setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
-# 109 "data/maps/MossdeepCity/scripts.pory"
-	releaseall
-# 110 "data/maps/MossdeepCity/scripts.pory"
 	end
+# 87 "data/maps/MossdeepCity/scripts.pory"
+
+# 88 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_EventScript_CitySign::
+# 89 "data/maps/MossdeepCity/scripts.pory"
+	msgbox MossdeepCity_Text_CitySign, MSGBOX_SIGN
+# 90 "data/maps/MossdeepCity/scripts.pory"
+	end
+# 91 "data/maps/MossdeepCity/scripts.pory"
+
+# 92 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_EventScript_SpaceCenterSign::
+# 93 "data/maps/MossdeepCity/scripts.pory"
+	msgbox MossdeepCity_Text_SpaceCenterSign, MSGBOX_SIGN
+# 94 "data/maps/MossdeepCity/scripts.pory"
+	end
+# 95 "data/maps/MossdeepCity/scripts.pory"
+
+# 96 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_EventScript_VisitedMossdeep::
+# 97 "data/maps/MossdeepCity/scripts.pory"
+	setflag FLAG_VISITED_MOSSDEEP_CITY
+# 98 "data/maps/MossdeepCity/scripts.pory"
+	setvar VAR_TEMP_1, 1
+# 99 "data/maps/MossdeepCity/scripts.pory"
+	end
+# 100 "data/maps/MossdeepCity/scripts.pory"
+
+# 101 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter::
+# 102 "data/maps/MossdeepCity/scripts.pory"
+	lockall
+# 103 "data/maps/MossdeepCity/scripts.pory"
+	applymovement LOCALID_MAXIE, MossdeepCity_Movement_MaxieGestureToSpaceCenter
+# 104 "data/maps/MossdeepCity/scripts.pory"
+	waitmovement 0
+# 105 "data/maps/MossdeepCity/scripts.pory"
+	applymovement LOCALID_GRUNT_1, MossdeepCity_Movement_GruntFaceSpaceCenter
+# 106 "data/maps/MossdeepCity/scripts.pory"
+	applymovement LOCALID_GRUNT_2, MossdeepCity_Movement_GruntFaceSpaceCenter
+# 107 "data/maps/MossdeepCity/scripts.pory"
+	applymovement LOCALID_GRUNT_3, MossdeepCity_Movement_GruntFaceSpaceCenter
+# 108 "data/maps/MossdeepCity/scripts.pory"
+	applymovement LOCALID_GRUNT_4, MossdeepCity_Movement_GruntFaceSpaceCenter
+# 109 "data/maps/MossdeepCity/scripts.pory"
+	waitmovement 0
+# 110 "data/maps/MossdeepCity/scripts.pory"
+	applymovement LOCALID_MAXIE, MossdeepCity_Movement_MaxieEnterSpaceCenter
 # 111 "data/maps/MossdeepCity/scripts.pory"
-
+	applymovement LOCALID_GRUNT_1, MossdeepCity_Movement_Grunt1EnterSpaceCenter
 # 112 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Movement_MaxieGestureToSpaceCenter:
+	applymovement LOCALID_GRUNT_2, MossdeepCity_Movement_Grunt2EnterSpaceCenter
 # 113 "data/maps/MossdeepCity/scripts.pory"
-	delay_16
+	applymovement LOCALID_GRUNT_3, MossdeepCity_Movement_Grunt3EnterSpaceCenter
 # 114 "data/maps/MossdeepCity/scripts.pory"
-	face_right
+	applymovement LOCALID_GRUNT_4, MossdeepCity_Movement_Grunt4EnterSpaceCenter
 # 115 "data/maps/MossdeepCity/scripts.pory"
-	delay_16
+	waitmovement 0
 # 116 "data/maps/MossdeepCity/scripts.pory"
-	delay_16
+	removeobject LOCALID_MAXIE
 # 117 "data/maps/MossdeepCity/scripts.pory"
-	delay_16
+	removeobject LOCALID_GRUNT_1
 # 118 "data/maps/MossdeepCity/scripts.pory"
-	delay_16
+	removeobject LOCALID_GRUNT_2
 # 119 "data/maps/MossdeepCity/scripts.pory"
-	face_left
+	removeobject LOCALID_GRUNT_3
 # 120 "data/maps/MossdeepCity/scripts.pory"
-	delay_16
+	removeobject LOCALID_GRUNT_4
 # 121 "data/maps/MossdeepCity/scripts.pory"
-	delay_16
+	delay 30
 # 122 "data/maps/MossdeepCity/scripts.pory"
-	step_end
+	setvar VAR_MOSSDEEP_CITY_STATE, 2
 # 123 "data/maps/MossdeepCity/scripts.pory"
-
+	setvar VAR_PARTNER_EMMIE_STATE, 54
 # 124 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Movement_GruntFaceSpaceCenter:
+	setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
 # 125 "data/maps/MossdeepCity/scripts.pory"
-	face_right
+	releaseall
 # 126 "data/maps/MossdeepCity/scripts.pory"
-	delay_16
+	end
 # 127 "data/maps/MossdeepCity/scripts.pory"
-	delay_16
-# 128 "data/maps/MossdeepCity/scripts.pory"
-	delay_16
-# 129 "data/maps/MossdeepCity/scripts.pory"
-	step_end
-# 130 "data/maps/MossdeepCity/scripts.pory"
 
+# 128 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_Movement_MaxieGestureToSpaceCenter:
+# 129 "data/maps/MossdeepCity/scripts.pory"
+	delay_16
+# 130 "data/maps/MossdeepCity/scripts.pory"
+	face_right
 # 131 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Movement_MaxieEnterSpaceCenter:
+	delay_16
 # 132 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	delay_16
 # 133 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	delay_16
 # 134 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	delay_16
 # 135 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	face_left
 # 136 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	delay_16
 # 137 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	delay_16
 # 138 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	step_end
 # 139 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+
 # 140 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+MossdeepCity_Movement_GruntFaceSpaceCenter:
 # 141 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	face_right
 # 142 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	delay_16
 # 143 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	delay_16
 # 144 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	delay_16
 # 145 "data/maps/MossdeepCity/scripts.pory"
 	step_end
 # 146 "data/maps/MossdeepCity/scripts.pory"
 
 # 147 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Movement_Grunt1EnterSpaceCenter:
+MossdeepCity_Movement_MaxieEnterSpaceCenter:
 # 148 "data/maps/MossdeepCity/scripts.pory"
-	delay_16
-# 149 "data/maps/MossdeepCity/scripts.pory"
-	delay_8
-# 150 "data/maps/MossdeepCity/scripts.pory"
 	walk_down
+# 149 "data/maps/MossdeepCity/scripts.pory"
+	walk_right
+# 150 "data/maps/MossdeepCity/scripts.pory"
+	walk_right
 # 151 "data/maps/MossdeepCity/scripts.pory"
 	walk_down
 # 152 "data/maps/MossdeepCity/scripts.pory"
 	walk_down
 # 153 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	walk_down
 # 154 "data/maps/MossdeepCity/scripts.pory"
 	walk_right
 # 155 "data/maps/MossdeepCity/scripts.pory"
 	walk_right
 # 156 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	walk_right
 # 157 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	walk_right
 # 158 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	walk_right
 # 159 "data/maps/MossdeepCity/scripts.pory"
 	walk_right
 # 160 "data/maps/MossdeepCity/scripts.pory"
 	walk_right
 # 161 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 162 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 163 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 164 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 165 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 166 "data/maps/MossdeepCity/scripts.pory"
 	step_end
-# 167 "data/maps/MossdeepCity/scripts.pory"
+# 162 "data/maps/MossdeepCity/scripts.pory"
 
-# 168 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Movement_Grunt2EnterSpaceCenter:
-# 169 "data/maps/MossdeepCity/scripts.pory"
+# 163 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_Movement_Grunt1EnterSpaceCenter:
+# 164 "data/maps/MossdeepCity/scripts.pory"
 	delay_16
-# 170 "data/maps/MossdeepCity/scripts.pory"
+# 165 "data/maps/MossdeepCity/scripts.pory"
 	delay_8
-# 171 "data/maps/MossdeepCity/scripts.pory"
+# 166 "data/maps/MossdeepCity/scripts.pory"
 	walk_down
+# 167 "data/maps/MossdeepCity/scripts.pory"
+	walk_down
+# 168 "data/maps/MossdeepCity/scripts.pory"
+	walk_down
+# 169 "data/maps/MossdeepCity/scripts.pory"
+	walk_right
+# 170 "data/maps/MossdeepCity/scripts.pory"
+	walk_right
+# 171 "data/maps/MossdeepCity/scripts.pory"
+	walk_right
 # 172 "data/maps/MossdeepCity/scripts.pory"
 	walk_down
 # 173 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	walk_down
 # 174 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	walk_down
 # 175 "data/maps/MossdeepCity/scripts.pory"
 	walk_right
 # 176 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	walk_right
 # 177 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	walk_right
 # 178 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	walk_right
 # 179 "data/maps/MossdeepCity/scripts.pory"
 	walk_right
 # 180 "data/maps/MossdeepCity/scripts.pory"
@@ -361,37 +361,37 @@ MossdeepCity_Movement_Grunt2EnterSpaceCenter:
 # 181 "data/maps/MossdeepCity/scripts.pory"
 	walk_right
 # 182 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 183 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 184 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 185 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 186 "data/maps/MossdeepCity/scripts.pory"
 	step_end
-# 187 "data/maps/MossdeepCity/scripts.pory"
+# 183 "data/maps/MossdeepCity/scripts.pory"
 
-# 188 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Movement_Grunt3EnterSpaceCenter:
-# 189 "data/maps/MossdeepCity/scripts.pory"
+# 184 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_Movement_Grunt2EnterSpaceCenter:
+# 185 "data/maps/MossdeepCity/scripts.pory"
 	delay_16
-# 190 "data/maps/MossdeepCity/scripts.pory"
+# 186 "data/maps/MossdeepCity/scripts.pory"
 	delay_8
+# 187 "data/maps/MossdeepCity/scripts.pory"
+	walk_down
+# 188 "data/maps/MossdeepCity/scripts.pory"
+	walk_down
+# 189 "data/maps/MossdeepCity/scripts.pory"
+	walk_right
+# 190 "data/maps/MossdeepCity/scripts.pory"
+	walk_right
 # 191 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	walk_right
 # 192 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	walk_down
 # 193 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	walk_down
 # 194 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	walk_down
 # 195 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	walk_right
 # 196 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	walk_right
 # 197 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	walk_right
 # 198 "data/maps/MossdeepCity/scripts.pory"
 	walk_right
 # 199 "data/maps/MossdeepCity/scripts.pory"
@@ -401,33 +401,33 @@ MossdeepCity_Movement_Grunt3EnterSpaceCenter:
 # 201 "data/maps/MossdeepCity/scripts.pory"
 	walk_right
 # 202 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 203 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 204 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 205 "data/maps/MossdeepCity/scripts.pory"
 	step_end
-# 206 "data/maps/MossdeepCity/scripts.pory"
+# 203 "data/maps/MossdeepCity/scripts.pory"
 
-# 207 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Movement_Grunt4EnterSpaceCenter:
-# 208 "data/maps/MossdeepCity/scripts.pory"
+# 204 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_Movement_Grunt3EnterSpaceCenter:
+# 205 "data/maps/MossdeepCity/scripts.pory"
 	delay_16
-# 209 "data/maps/MossdeepCity/scripts.pory"
+# 206 "data/maps/MossdeepCity/scripts.pory"
 	delay_8
+# 207 "data/maps/MossdeepCity/scripts.pory"
+	walk_down
+# 208 "data/maps/MossdeepCity/scripts.pory"
+	walk_right
+# 209 "data/maps/MossdeepCity/scripts.pory"
+	walk_right
 # 210 "data/maps/MossdeepCity/scripts.pory"
 	walk_right
 # 211 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	walk_down
 # 212 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
+	walk_down
 # 213 "data/maps/MossdeepCity/scripts.pory"
 	walk_down
 # 214 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	walk_right
 # 215 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	walk_right
 # 216 "data/maps/MossdeepCity/scripts.pory"
 	walk_right
 # 217 "data/maps/MossdeepCity/scripts.pory"
@@ -439,103 +439,103 @@ MossdeepCity_Movement_Grunt4EnterSpaceCenter:
 # 220 "data/maps/MossdeepCity/scripts.pory"
 	walk_right
 # 221 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 222 "data/maps/MossdeepCity/scripts.pory"
-	walk_right
-# 223 "data/maps/MossdeepCity/scripts.pory"
 	step_end
+# 222 "data/maps/MossdeepCity/scripts.pory"
+
+# 223 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_Movement_Grunt4EnterSpaceCenter:
 # 224 "data/maps/MossdeepCity/scripts.pory"
-
+	delay_16
 # 225 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_Man::
+	delay_8
 # 226 "data/maps/MossdeepCity/scripts.pory"
-	lock
+	walk_right
 # 227 "data/maps/MossdeepCity/scripts.pory"
-	faceplayer
+	walk_right
 # 228 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_SurfExhilarating, MSGBOX_DEFAULT
+	walk_right
 # 229 "data/maps/MossdeepCity/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	walk_down
 # 230 "data/maps/MossdeepCity/scripts.pory"
-	waitmovement 0
+	walk_down
 # 231 "data/maps/MossdeepCity/scripts.pory"
-	release
+	walk_down
 # 232 "data/maps/MossdeepCity/scripts.pory"
-	end
+	walk_right
 # 233 "data/maps/MossdeepCity/scripts.pory"
-
+	walk_right
 # 234 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_KingsRockBoy::
+	walk_right
 # 235 "data/maps/MossdeepCity/scripts.pory"
-	lock
+	walk_right
 # 236 "data/maps/MossdeepCity/scripts.pory"
-	faceplayer
+	walk_right
 # 237 "data/maps/MossdeepCity/scripts.pory"
-	goto_if_set FLAG_RECEIVED_KINGS_ROCK, MossdeepCity_EventScript_ReceivedKingsRock
+	walk_right
 # 238 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_WantKingsRockStevenGaveMe, MSGBOX_YESNO
+	walk_right
 # 239 "data/maps/MossdeepCity/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, MossdeepCity_EventScript_DeclineKingsRock
+	step_end
 # 240 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_YouCanKeepIt, MSGBOX_DEFAULT
+
 # 241 "data/maps/MossdeepCity/scripts.pory"
-	giveitem ITEM_KINGS_ROCK
+MossdeepCity_EventScript_Man::
 # 242 "data/maps/MossdeepCity/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-# 243 "data/maps/MossdeepCity/scripts.pory"
-	setflag FLAG_RECEIVED_KINGS_ROCK
-# 244 "data/maps/MossdeepCity/scripts.pory"
-	release
-# 245 "data/maps/MossdeepCity/scripts.pory"
-	end
-# 246 "data/maps/MossdeepCity/scripts.pory"
-
-# 247 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_ReceivedKingsRock::
-# 248 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_StevensHouseOverThere, MSGBOX_DEFAULT
-# 249 "data/maps/MossdeepCity/scripts.pory"
-	release
-# 250 "data/maps/MossdeepCity/scripts.pory"
-	end
-# 251 "data/maps/MossdeepCity/scripts.pory"
-
-# 252 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_DeclineKingsRock::
-# 253 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_WhatToDoWithWeirdRock, MSGBOX_DEFAULT
-# 254 "data/maps/MossdeepCity/scripts.pory"
-	release
-# 255 "data/maps/MossdeepCity/scripts.pory"
-	end
-# 256 "data/maps/MossdeepCity/scripts.pory"
-
-# 257 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_BlackBelt::
-# 258 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_SootopolisNewGymLeader, MSGBOX_NPC
-# 259 "data/maps/MossdeepCity/scripts.pory"
-	end
-# 260 "data/maps/MossdeepCity/scripts.pory"
-
-# 261 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_Scott::
-# 262 "data/maps/MossdeepCity/scripts.pory"
 	lock
-# 263 "data/maps/MossdeepCity/scripts.pory"
+# 243 "data/maps/MossdeepCity/scripts.pory"
 	faceplayer
+# 244 "data/maps/MossdeepCity/scripts.pory"
+	msgbox MossdeepCity_Text_SurfExhilarating, MSGBOX_DEFAULT
+# 245 "data/maps/MossdeepCity/scripts.pory"
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+# 246 "data/maps/MossdeepCity/scripts.pory"
+	waitmovement 0
+# 247 "data/maps/MossdeepCity/scripts.pory"
+	release
+# 248 "data/maps/MossdeepCity/scripts.pory"
+	end
+# 249 "data/maps/MossdeepCity/scripts.pory"
+
+# 250 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_EventScript_KingsRockBoy::
+# 251 "data/maps/MossdeepCity/scripts.pory"
+	lock
+# 252 "data/maps/MossdeepCity/scripts.pory"
+	faceplayer
+# 253 "data/maps/MossdeepCity/scripts.pory"
+	goto_if_set FLAG_RECEIVED_KINGS_ROCK, MossdeepCity_EventScript_ReceivedKingsRock
+# 254 "data/maps/MossdeepCity/scripts.pory"
+	msgbox MossdeepCity_Text_WantKingsRockStevenGaveMe, MSGBOX_YESNO
+# 255 "data/maps/MossdeepCity/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, MossdeepCity_EventScript_DeclineKingsRock
+# 256 "data/maps/MossdeepCity/scripts.pory"
+	msgbox MossdeepCity_Text_YouCanKeepIt, MSGBOX_DEFAULT
+# 257 "data/maps/MossdeepCity/scripts.pory"
+	giveitem ITEM_KINGS_ROCK
+# 258 "data/maps/MossdeepCity/scripts.pory"
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+# 259 "data/maps/MossdeepCity/scripts.pory"
+	setflag FLAG_RECEIVED_KINGS_ROCK
+# 260 "data/maps/MossdeepCity/scripts.pory"
+	release
+# 261 "data/maps/MossdeepCity/scripts.pory"
+	end
+# 262 "data/maps/MossdeepCity/scripts.pory"
+
+# 263 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_EventScript_ReceivedKingsRock::
 # 264 "data/maps/MossdeepCity/scripts.pory"
-	msgbox MossdeepCity_Text_ScottSomethingWrongWithTown, MSGBOX_DEFAULT
+	msgbox MossdeepCity_Text_StevensHouseOverThere, MSGBOX_DEFAULT
 # 265 "data/maps/MossdeepCity/scripts.pory"
-	closemessage
+	release
 # 266 "data/maps/MossdeepCity/scripts.pory"
-	call_if_eq VAR_FACING, DIR_NORTH, MossdeepCity_EventScript_ScottExitNorth
+	end
 # 267 "data/maps/MossdeepCity/scripts.pory"
-	call_if_eq VAR_FACING, DIR_EAST, MossdeepCity_EventScript_ScottExitEast
+
 # 268 "data/maps/MossdeepCity/scripts.pory"
-	addvar VAR_SCOTT_STATE, 1
+MossdeepCity_EventScript_DeclineKingsRock::
 # 269 "data/maps/MossdeepCity/scripts.pory"
-	removeobject LOCALID_SCOTT
+	msgbox MossdeepCity_Text_WhatToDoWithWeirdRock, MSGBOX_DEFAULT
 # 270 "data/maps/MossdeepCity/scripts.pory"
 	release
 # 271 "data/maps/MossdeepCity/scripts.pory"
@@ -543,75 +543,75 @@ MossdeepCity_EventScript_Scott::
 # 272 "data/maps/MossdeepCity/scripts.pory"
 
 # 273 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_ScottExitNorth::
+MossdeepCity_EventScript_BlackBelt::
 # 274 "data/maps/MossdeepCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Movement_PlayerWatchScottExit
+	msgbox MossdeepCity_Text_SootopolisNewGymLeader, MSGBOX_NPC
 # 275 "data/maps/MossdeepCity/scripts.pory"
-	applymovement LOCALID_SCOTT, MossdeepCity_Movement_ScottExitNorth
+	end
 # 276 "data/maps/MossdeepCity/scripts.pory"
-	waitmovement 0
+
 # 277 "data/maps/MossdeepCity/scripts.pory"
-	return
+MossdeepCity_EventScript_Scott::
 # 278 "data/maps/MossdeepCity/scripts.pory"
-
+	lock
 # 279 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_EventScript_ScottExitEast::
+	faceplayer
 # 280 "data/maps/MossdeepCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Movement_PlayerWatchScottExit
+	msgbox MossdeepCity_Text_ScottSomethingWrongWithTown, MSGBOX_DEFAULT
 # 281 "data/maps/MossdeepCity/scripts.pory"
-	applymovement LOCALID_SCOTT, MossdeepCity_Movement_ScottExitEast
+	closemessage
 # 282 "data/maps/MossdeepCity/scripts.pory"
-	waitmovement 0
+	call_if_eq VAR_FACING, DIR_NORTH, MossdeepCity_EventScript_ScottExitNorth
 # 283 "data/maps/MossdeepCity/scripts.pory"
-	return
+	call_if_eq VAR_FACING, DIR_EAST, MossdeepCity_EventScript_ScottExitEast
 # 284 "data/maps/MossdeepCity/scripts.pory"
-
+	addvar VAR_SCOTT_STATE, 1
 # 285 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Movement_PlayerWatchScottExit:
+	removeobject LOCALID_SCOTT
 # 286 "data/maps/MossdeepCity/scripts.pory"
-	delay_16
+	release
 # 287 "data/maps/MossdeepCity/scripts.pory"
-	delay_16
+	end
 # 288 "data/maps/MossdeepCity/scripts.pory"
-	walk_in_place_faster_left
+
 # 289 "data/maps/MossdeepCity/scripts.pory"
-	step_end
+MossdeepCity_EventScript_ScottExitNorth::
 # 290 "data/maps/MossdeepCity/scripts.pory"
-
+	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Movement_PlayerWatchScottExit
 # 291 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Movement_ScottExitNorth:
+	applymovement LOCALID_SCOTT, MossdeepCity_Movement_ScottExitNorth
 # 292 "data/maps/MossdeepCity/scripts.pory"
-	walk_left
+	waitmovement 0
 # 293 "data/maps/MossdeepCity/scripts.pory"
-	walk_left
+	return
 # 294 "data/maps/MossdeepCity/scripts.pory"
-	walk_left
-# 295 "data/maps/MossdeepCity/scripts.pory"
-	walk_left
-# 296 "data/maps/MossdeepCity/scripts.pory"
-	walk_left
-# 297 "data/maps/MossdeepCity/scripts.pory"
-	walk_left
-# 298 "data/maps/MossdeepCity/scripts.pory"
-	walk_left
-# 299 "data/maps/MossdeepCity/scripts.pory"
-	walk_left
-# 300 "data/maps/MossdeepCity/scripts.pory"
-	walk_left
-# 301 "data/maps/MossdeepCity/scripts.pory"
-	step_end
-# 302 "data/maps/MossdeepCity/scripts.pory"
 
+# 295 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_EventScript_ScottExitEast::
+# 296 "data/maps/MossdeepCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Movement_PlayerWatchScottExit
+# 297 "data/maps/MossdeepCity/scripts.pory"
+	applymovement LOCALID_SCOTT, MossdeepCity_Movement_ScottExitEast
+# 298 "data/maps/MossdeepCity/scripts.pory"
+	waitmovement 0
+# 299 "data/maps/MossdeepCity/scripts.pory"
+	return
+# 300 "data/maps/MossdeepCity/scripts.pory"
+
+# 301 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_Movement_PlayerWatchScottExit:
+# 302 "data/maps/MossdeepCity/scripts.pory"
+	delay_16
 # 303 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Movement_ScottExitEast:
+	delay_16
 # 304 "data/maps/MossdeepCity/scripts.pory"
-	walk_down
+	walk_in_place_faster_left
 # 305 "data/maps/MossdeepCity/scripts.pory"
-	walk_left
+	step_end
 # 306 "data/maps/MossdeepCity/scripts.pory"
-	walk_left
+
 # 307 "data/maps/MossdeepCity/scripts.pory"
-	walk_left
+MossdeepCity_Movement_ScottExitNorth:
 # 308 "data/maps/MossdeepCity/scripts.pory"
 	walk_left
 # 309 "data/maps/MossdeepCity/scripts.pory"
@@ -625,250 +625,282 @@ MossdeepCity_Movement_ScottExitEast:
 # 313 "data/maps/MossdeepCity/scripts.pory"
 	walk_left
 # 314 "data/maps/MossdeepCity/scripts.pory"
-	step_end
+	walk_left
 # 315 "data/maps/MossdeepCity/scripts.pory"
-
+	walk_left
 # 316 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_WantKingsRockStevenGaveMe:
+	walk_left
 # 317 "data/maps/MossdeepCity/scripts.pory"
-	.string "I got this from STEVEN, but I don't\n"
+	step_end
 # 318 "data/maps/MossdeepCity/scripts.pory"
-	.string "know what it's good for.\p"
+
 # 319 "data/maps/MossdeepCity/scripts.pory"
-	.string "I think it's called KING'S ROCK.\n"
+MossdeepCity_Movement_ScottExitEast:
 # 320 "data/maps/MossdeepCity/scripts.pory"
-	.string "Do you want it?$"
+	walk_down
 # 321 "data/maps/MossdeepCity/scripts.pory"
-
+	walk_left
 # 322 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_YouCanKeepIt:
+	walk_left
 # 323 "data/maps/MossdeepCity/scripts.pory"
-	.string "Why would you want it?\n"
+	walk_left
 # 324 "data/maps/MossdeepCity/scripts.pory"
-	.string "You're weird.\p"
+	walk_left
 # 325 "data/maps/MossdeepCity/scripts.pory"
-	.string "You can keep it, but keep it a secret\n"
+	walk_left
 # 326 "data/maps/MossdeepCity/scripts.pory"
-	.string "from STEVEN.$"
+	walk_left
 # 327 "data/maps/MossdeepCity/scripts.pory"
-
+	walk_left
 # 328 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_StevensHouseOverThere:
+	walk_left
 # 329 "data/maps/MossdeepCity/scripts.pory"
-	.string "STEVEN's house is right over there!$"
+	walk_left
 # 330 "data/maps/MossdeepCity/scripts.pory"
-
+	step_end
 # 331 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_WhatToDoWithWeirdRock:
+
 # 332 "data/maps/MossdeepCity/scripts.pory"
-	.string "Yeah, you think so, too! What are you\n"
+MossdeepCity_Text_WantKingsRockStevenGaveMe:
 # 333 "data/maps/MossdeepCity/scripts.pory"
-	.string "supposed to do with some weird rock?$"
+	.string "I got this from STEVEN, but I don't\n"
 # 334 "data/maps/MossdeepCity/scripts.pory"
-
+	.string "know what it's good for.\p"
 # 335 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_WailmerWatching:
+	.string "I think it's called KING'S ROCK.\n"
 # 336 "data/maps/MossdeepCity/scripts.pory"
-	.string "Around MOSSDEEP, you can see wild\n"
+	.string "Do you want it?$"
 # 337 "data/maps/MossdeepCity/scripts.pory"
-	.string "WAILMER.\p"
+
 # 338 "data/maps/MossdeepCity/scripts.pory"
-	.string "It's called, uh…\n"
+MossdeepCity_Text_YouCanKeepIt:
 # 339 "data/maps/MossdeepCity/scripts.pory"
-	.string "What was it now…\p"
+	.string "Why would you want it?\n"
 # 340 "data/maps/MossdeepCity/scripts.pory"
-	.string "WAI, WAI, WAI…\p"
+	.string "You're weird.\p"
 # 341 "data/maps/MossdeepCity/scripts.pory"
-	.string "WAILMER watching!$"
+	.string "You can keep it, but keep it a secret\n"
 # 342 "data/maps/MossdeepCity/scripts.pory"
-
+	.string "from STEVEN.$"
 # 343 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_SpaceCenterReceivedLetter:
+
 # 344 "data/maps/MossdeepCity/scripts.pory"
-	.string "The island's SPACE CENTER has been\n"
+MossdeepCity_Text_StevensHouseOverThere:
 # 345 "data/maps/MossdeepCity/scripts.pory"
-	.string "launching huge rockets.\p"
+	.string "STEVEN's house is right over there!$"
 # 346 "data/maps/MossdeepCity/scripts.pory"
-	.string "There's been some kind of an uproar\n"
+
 # 347 "data/maps/MossdeepCity/scripts.pory"
-	.string "over a letter they received recently.$"
+MossdeepCity_Text_WhatToDoWithWeirdRock:
 # 348 "data/maps/MossdeepCity/scripts.pory"
-
+	.string "Yeah, you think so, too! What are you\n"
 # 349 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_SpaceCenterLaunchingRockets:
+	.string "supposed to do with some weird rock?$"
 # 350 "data/maps/MossdeepCity/scripts.pory"
-	.string "The island's SPACE CENTER has been\n"
+
 # 351 "data/maps/MossdeepCity/scripts.pory"
-	.string "launching huge rockets.$"
+MossdeepCity_Text_WailmerWatching:
 # 352 "data/maps/MossdeepCity/scripts.pory"
-
+	.string "Around MOSSDEEP, you can see wild\n"
 # 353 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_MossdeepTargetedByMagma:
+	.string "WAILMER.\p"
 # 354 "data/maps/MossdeepCity/scripts.pory"
-	.string "I heard from a SAILOR buddy that\n"
+	.string "It's called, uh…\n"
 # 355 "data/maps/MossdeepCity/scripts.pory"
-	.string "TEAM AQUA set up shop in LILYCOVE.\p"
+	.string "What was it now…\p"
 # 356 "data/maps/MossdeepCity/scripts.pory"
-	.string "I also heard that someone came along\n"
+	.string "WAI, WAI, WAI…\p"
 # 357 "data/maps/MossdeepCity/scripts.pory"
-	.string "and wiped the floor with them!\p"
+	.string "WAILMER watching!$"
 # 358 "data/maps/MossdeepCity/scripts.pory"
-	.string "But MOSSDEEP here's been targeted\n"
-# 359 "data/maps/MossdeepCity/scripts.pory"
-	.string "by that TEAM MAGMA.\p"
-# 360 "data/maps/MossdeepCity/scripts.pory"
-	.string "If you want to know what they're up to,\n"
-# 361 "data/maps/MossdeepCity/scripts.pory"
-	.string "go visit the SPACE CENTER.$"
-# 362 "data/maps/MossdeepCity/scripts.pory"
 
+# 359 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_Text_SpaceCenterReceivedLetter:
+# 360 "data/maps/MossdeepCity/scripts.pory"
+	.string "The island's SPACE CENTER has been\n"
+# 361 "data/maps/MossdeepCity/scripts.pory"
+	.string "launching huge rockets.\p"
+# 362 "data/maps/MossdeepCity/scripts.pory"
+	.string "There's been some kind of an uproar\n"
 # 363 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_FeelReliefOnLand:
+	.string "over a letter they received recently.$"
 # 364 "data/maps/MossdeepCity/scripts.pory"
-	.string "I'm a SAILOR, so the sea's obviously\n"
+
 # 365 "data/maps/MossdeepCity/scripts.pory"
-	.string "more important to me.\p"
+MossdeepCity_Text_SpaceCenterLaunchingRockets:
 # 366 "data/maps/MossdeepCity/scripts.pory"
-	.string "But you know? When I get back on land\n"
+	.string "The island's SPACE CENTER has been\n"
 # 367 "data/maps/MossdeepCity/scripts.pory"
-	.string "after a long voyage, I do feel relief!$"
+	.string "launching huge rockets.$"
 # 368 "data/maps/MossdeepCity/scripts.pory"
 
 # 369 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_NiceIfWorldCoveredByFlowers:
+MossdeepCity_Text_MossdeepTargetedByMagma:
 # 370 "data/maps/MossdeepCity/scripts.pory"
-	.string "Wouldn't it be nice?\p"
+	.string "I heard from a SAILOR buddy that\n"
 # 371 "data/maps/MossdeepCity/scripts.pory"
-	.string "If the whole world was covered in\n"
+	.string "TEAM AQUA set up shop in LILYCOVE.\p"
 # 372 "data/maps/MossdeepCity/scripts.pory"
-	.string "plants and flowers like this island?$"
+	.string "I also heard that someone came along\n"
 # 373 "data/maps/MossdeepCity/scripts.pory"
-
+	.string "and wiped the floor with them!\p"
 # 374 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_LifeNeedsSeaToLive:
+	.string "But MOSSDEEP here's been targeted\n"
 # 375 "data/maps/MossdeepCity/scripts.pory"
-	.string "All life needs the sea to live, even\n"
+	.string "by that TEAM MAGMA.\p"
 # 376 "data/maps/MossdeepCity/scripts.pory"
-	.string "though it makes its home on the land.\p"
+	.string "If you want to know what they're up to,\n"
 # 377 "data/maps/MossdeepCity/scripts.pory"
-	.string "Life, having run its course, becomes\n"
+	.string "go visit the SPACE CENTER.$"
 # 378 "data/maps/MossdeepCity/scripts.pory"
-	.string "soil and returns to the land.\p"
-# 379 "data/maps/MossdeepCity/scripts.pory"
-	.string "And the sea is always connected to\n"
-# 380 "data/maps/MossdeepCity/scripts.pory"
-	.string "the land.\p"
-# 381 "data/maps/MossdeepCity/scripts.pory"
-	.string "Yes, like the very shoreline here.$"
-# 382 "data/maps/MossdeepCity/scripts.pory"
 
+# 379 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_Text_FeelReliefOnLand:
+# 380 "data/maps/MossdeepCity/scripts.pory"
+	.string "I'm a SAILOR, so the sea's obviously\n"
+# 381 "data/maps/MossdeepCity/scripts.pory"
+	.string "more important to me.\p"
+# 382 "data/maps/MossdeepCity/scripts.pory"
+	.string "But you know? When I get back on land\n"
 # 383 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_SurfExhilarating:
+	.string "after a long voyage, I do feel relief!$"
 # 384 "data/maps/MossdeepCity/scripts.pory"
-	.string "A voyage on a ship is fine.\p"
+
 # 385 "data/maps/MossdeepCity/scripts.pory"
-	.string "But crossing the sea with POKéMON\n"
+MossdeepCity_Text_NiceIfWorldCoveredByFlowers:
 # 386 "data/maps/MossdeepCity/scripts.pory"
-	.string "using SURF…\p"
+	.string "Wouldn't it be nice?\p"
 # 387 "data/maps/MossdeepCity/scripts.pory"
-	.string "Now that's an exhilarating trip!\n"
+	.string "If the whole world was covered in\n"
 # 388 "data/maps/MossdeepCity/scripts.pory"
-	.string "Wouldn't you agree, youngster?$"
+	.string "plants and flowers like this island?$"
 # 389 "data/maps/MossdeepCity/scripts.pory"
 
 # 390 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_SpecialSpaceCenterRock:
+MossdeepCity_Text_LifeNeedsSeaToLive:
 # 391 "data/maps/MossdeepCity/scripts.pory"
-	.string "This rock has a special meaning to\n"
+	.string "All life needs the sea to live, even\n"
 # 392 "data/maps/MossdeepCity/scripts.pory"
-	.string "the people at the SPACE CENTER.\p"
+	.string "though it makes its home on the land.\p"
 # 393 "data/maps/MossdeepCity/scripts.pory"
-	.string "They put it here as their wish for\n"
+	.string "Life, having run its course, becomes\n"
 # 394 "data/maps/MossdeepCity/scripts.pory"
-	.string "their rockets to fly safely.\p"
+	.string "soil and returns to the land.\p"
 # 395 "data/maps/MossdeepCity/scripts.pory"
-	.string "When you make a wish, what do you use?\n"
+	.string "And the sea is always connected to\n"
 # 396 "data/maps/MossdeepCity/scripts.pory"
-	.string "Do you wish upon a star?\p"
+	.string "the land.\p"
 # 397 "data/maps/MossdeepCity/scripts.pory"
-	.string "I use a wish tag to make it happen.\n"
+	.string "Yes, like the very shoreline here.$"
 # 398 "data/maps/MossdeepCity/scripts.pory"
-	.string "That's what I do.$"
+
 # 399 "data/maps/MossdeepCity/scripts.pory"
-
+MossdeepCity_Text_SurfExhilarating:
 # 400 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_ItsAWhiteRock:
+	.string "A voyage on a ship is fine.\p"
 # 401 "data/maps/MossdeepCity/scripts.pory"
-	.string "It's a white rock.$"
+	.string "But crossing the sea with POKéMON\n"
 # 402 "data/maps/MossdeepCity/scripts.pory"
-
+	.string "using SURF…\p"
 # 403 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_GymSign:
+	.string "Now that's an exhilarating trip!\n"
 # 404 "data/maps/MossdeepCity/scripts.pory"
-	.string "MOSSDEEP CITY POKéMON GYM\n"
+	.string "Wouldn't you agree, youngster?$"
 # 405 "data/maps/MossdeepCity/scripts.pory"
-	.string "LEADERS: LIZA & TATE\p"
+
 # 406 "data/maps/MossdeepCity/scripts.pory"
-	.string "“The mystic combination!”$"
+MossdeepCity_Text_SpecialSpaceCenterRock:
 # 407 "data/maps/MossdeepCity/scripts.pory"
-
+	.string "This rock has a special meaning to\n"
 # 408 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_CitySign:
+	.string "the people at the SPACE CENTER.\p"
 # 409 "data/maps/MossdeepCity/scripts.pory"
-	.string "MOSSDEEP CITY\n"
+	.string "They put it here as their wish for\n"
 # 410 "data/maps/MossdeepCity/scripts.pory"
-	.string "“Our slogan: Cherish POKéMON!”$"
+	.string "their rockets to fly safely.\p"
 # 411 "data/maps/MossdeepCity/scripts.pory"
-
+	.string "When you make a wish, what do you use?\n"
 # 412 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_SpaceCenterSign:
+	.string "Do you wish upon a star?\p"
 # 413 "data/maps/MossdeepCity/scripts.pory"
-	.string "MOSSDEEP SPACE CENTER\n"
+	.string "I use a wish tag to make it happen.\n"
 # 414 "data/maps/MossdeepCity/scripts.pory"
-	.string "“The closest place to space.”$"
+	.string "That's what I do.$"
 # 415 "data/maps/MossdeepCity/scripts.pory"
 
 # 416 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_ScottSomethingWrongWithTown:
+MossdeepCity_Text_ItsAWhiteRock:
 # 417 "data/maps/MossdeepCity/scripts.pory"
-	.string "SCOTT: {PLAYER}{KUN}, feeling good?\n"
+	.string "It's a white rock.$"
 # 418 "data/maps/MossdeepCity/scripts.pory"
-	.string "I'm doing great!\p"
-# 419 "data/maps/MossdeepCity/scripts.pory"
-	.string "I'd heard MOSSDEEP's GYM LEADER is\n"
-# 420 "data/maps/MossdeepCity/scripts.pory"
-	.string "pretty strong, so I decided to come\l"
-# 421 "data/maps/MossdeepCity/scripts.pory"
-	.string "take a look-see for myself.\p"
-# 422 "data/maps/MossdeepCity/scripts.pory"
-	.string "But there's something wrong about\n"
-# 423 "data/maps/MossdeepCity/scripts.pory"
-	.string "this town.\p"
-# 424 "data/maps/MossdeepCity/scripts.pory"
-	.string "People are going on about a warning\n"
-# 425 "data/maps/MossdeepCity/scripts.pory"
-	.string "letter and the SPACE CENTER…\p"
-# 426 "data/maps/MossdeepCity/scripts.pory"
-	.string "I don't think it concerns me in any\n"
-# 427 "data/maps/MossdeepCity/scripts.pory"
-	.string "way, though.$"
-# 428 "data/maps/MossdeepCity/scripts.pory"
 
+# 419 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_Text_GymSign:
+# 420 "data/maps/MossdeepCity/scripts.pory"
+	.string "MOSSDEEP CITY POKéMON GYM\n"
+# 421 "data/maps/MossdeepCity/scripts.pory"
+	.string "LEADERS: LIZA & TATE\p"
+# 422 "data/maps/MossdeepCity/scripts.pory"
+	.string "“The mystic combination!”$"
+# 423 "data/maps/MossdeepCity/scripts.pory"
+
+# 424 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_Text_CitySign:
+# 425 "data/maps/MossdeepCity/scripts.pory"
+	.string "MOSSDEEP CITY\n"
+# 426 "data/maps/MossdeepCity/scripts.pory"
+	.string "“Our slogan: Cherish POKéMON!”$"
+# 427 "data/maps/MossdeepCity/scripts.pory"
+
+# 428 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_Text_SpaceCenterSign:
 # 429 "data/maps/MossdeepCity/scripts.pory"
-MossdeepCity_Text_SootopolisNewGymLeader:
+	.string "MOSSDEEP SPACE CENTER\n"
 # 430 "data/maps/MossdeepCity/scripts.pory"
-	.string "Ahh… It feels great letting the waves\n"
+	.string "“The closest place to space.”$"
 # 431 "data/maps/MossdeepCity/scripts.pory"
-	.string "wash over my feet…\p"
+
 # 432 "data/maps/MossdeepCity/scripts.pory"
-	.string "Speaking of the waves, you know that\n"
+MossdeepCity_Text_ScottSomethingWrongWithTown:
 # 433 "data/maps/MossdeepCity/scripts.pory"
-	.string "island city SOOTOPOLIS?\p"
+	.string "SCOTT: {PLAYER}{KUN}, feeling good?\n"
 # 434 "data/maps/MossdeepCity/scripts.pory"
-	.string "I think the GYM there had a new\n"
+	.string "I'm doing great!\p"
 # 435 "data/maps/MossdeepCity/scripts.pory"
-	.string "LEADER come in.\p"
+	.string "I'd heard MOSSDEEP's GYM LEADER is\n"
 # 436 "data/maps/MossdeepCity/scripts.pory"
-	.string "People tell me the new LEADER once\n"
+	.string "pretty strong, so I decided to come\l"
 # 437 "data/maps/MossdeepCity/scripts.pory"
+	.string "take a look-see for myself.\p"
+# 438 "data/maps/MossdeepCity/scripts.pory"
+	.string "But there's something wrong about\n"
+# 439 "data/maps/MossdeepCity/scripts.pory"
+	.string "this town.\p"
+# 440 "data/maps/MossdeepCity/scripts.pory"
+	.string "People are going on about a warning\n"
+# 441 "data/maps/MossdeepCity/scripts.pory"
+	.string "letter and the SPACE CENTER…\p"
+# 442 "data/maps/MossdeepCity/scripts.pory"
+	.string "I don't think it concerns me in any\n"
+# 443 "data/maps/MossdeepCity/scripts.pory"
+	.string "way, though.$"
+# 444 "data/maps/MossdeepCity/scripts.pory"
+
+# 445 "data/maps/MossdeepCity/scripts.pory"
+MossdeepCity_Text_SootopolisNewGymLeader:
+# 446 "data/maps/MossdeepCity/scripts.pory"
+	.string "Ahh… It feels great letting the waves\n"
+# 447 "data/maps/MossdeepCity/scripts.pory"
+	.string "wash over my feet…\p"
+# 448 "data/maps/MossdeepCity/scripts.pory"
+	.string "Speaking of the waves, you know that\n"
+# 449 "data/maps/MossdeepCity/scripts.pory"
+	.string "island city SOOTOPOLIS?\p"
+# 450 "data/maps/MossdeepCity/scripts.pory"
+	.string "I think the GYM there had a new\n"
+# 451 "data/maps/MossdeepCity/scripts.pory"
+	.string "LEADER come in.\p"
+# 452 "data/maps/MossdeepCity/scripts.pory"
+	.string "People tell me the new LEADER once\n"
+# 453 "data/maps/MossdeepCity/scripts.pory"
 	.string "mentored WALLACE.$"

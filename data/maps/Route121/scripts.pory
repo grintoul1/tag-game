@@ -15,7 +15,16 @@ raw `
 
 Route121_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route121_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route121_OnFrame
 	.byte 0
+
+Route121_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 31, Route121_EventScript_ProgressEmmieState
+	.2byte 0
+
+Route121_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 32
+	return
 
 Route121_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun

@@ -116,7 +116,11 @@ EverGrandeCity_DrakesRoom_EventScript_Defeated::
 	special Script_TryGainNewFanFromCounter
 # 59 "data/maps/EverGrandeCity_DrakesRoom/scripts.pory"
 	setflag FLAG_DEFEATED_ELITE_4_DRAKE
+<<<<<<< HEAD
 # 60 "data/maps/EverGrandeCity_DrakesRoom/scripts.pory"
+=======
+	setvar VAR_PARTNER_EMMIE_STATE, 77
+>>>>>>> 4e01050c72 (20250609 01)
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 # 61 "data/maps/EverGrandeCity_DrakesRoom/scripts.pory"
 	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT

@@ -706,9 +706,900 @@ Common_Text_NotEligibleToParticipate:
 	.string "Your arrangements involve battling\n"
 	.string "the Frontier Brains directly.$"
 
+Common_Text_StevenSpeech:
+	.string "Steven: Hello, {PLAYER}, Emmie.\p"
+	.string "I suppose I never told you that I\n"
+	.string "was once the champion of Hoenn.\p"
+	.string "After you helped me at the Mossdeep\n"
+	.string "Space Center, I knew it wouldn't be\l"
+	.string "long before you made it here.\p"
+	.string "The talent you have displayed is\n"
+	.string "truly remarkable.\p"
+	.string "Could this be the day that we see\n"
+	.string "a new pair of champions crowned?\p"
+	.string "Or perhaps, will the old guard be the\n"
+	.string "ones standing victorious in the end?\p"
+	.string "The only way to find out is for you\n"
+	.string "to demonstrate your abilities to us\l"
+	.string "one final time.\p"
+	.string "Show us right here and now!$"
+
 Common_EventScript_Emmie::
 	faceplayer
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 0, Common_EventScript_EmmieHeadToPetalburg
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 1, Common_EventScript_EmmieHeadToMauville
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 2, Common_EventScript_EmmieGetFirstBadge
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 3, Common_EventScript_EmmieMauvilleGym
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 4, Common_EventScript_EmmieHeadToRustboro
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 5, Common_EventScript_EmmieGetSecondBadge
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 6, Common_EventScript_EmmieRustboroGym
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 7, Common_EventScript_EmmieHeadToPetalburg2
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 8, Common_EventScript_EmmieUseCyclingRoad
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 9, Common_EventScript_EmmieNearlyThere
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 10, Common_EventScript_EmmieNormanWaiting
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 11, Common_EventScript_EmmieGoAskBriney
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 12, Common_EventScript_EmmieSpeakToBriney
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 13, Common_EventScript_EmmieLetterAndGym
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 14, Common_EventScript_EmmieDewfordGym
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 15, Common_EventScript_EmmieLeaveDewford
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 16, Common_EventScript_EmmieGoToDockyard
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 17, Common_EventScript_EmmieHeadToMuseum
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 18, Common_EventScript_EmmieWhoAreThesePeople
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 19, Common_EventScript_EmmieHeadToHarbor
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 20, Common_EventScript_EmmieLetsHeadNorth
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 21, Common_EventScript_EmmieGetGoGoggles
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 22, Common_EventScript_EmmieGoToFallarbor
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 23, Common_EventScript_EmmieSeeMeteorFalls
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 24, Common_EventScript_EmmiePeopleInRed
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 25, Common_EventScript_EmmieHeadToChimney
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 26, Common_EventScript_EmmieItsTeamMagma
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 27, Common_EventScript_EmmieHeadBackToChimney
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 28, Common_EventScript_EmmieHeadToLavaridge
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 29, Common_EventScript_EmmieGoLavaridgeGym
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 30, Common_EventScript_EmmieInLavaridgeGym
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 31, Common_EventScript_EmmieHeadToFortree
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 32, Common_EventScript_EmmieGoToMtPyre
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 33, Common_EventScript_EmmieBothTeamsPyre
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 34, Common_EventScript_EmmieBackToPyre
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 35, Common_EventScript_EmmiePyreSummit
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 36, Common_EventScript_EmmieHeadToFortree2
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 37, Common_EventScript_EmmieThisIsFortree
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 38, Common_EventScript_EmmieFortreeGym
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 39, Common_EventScript_EmmieMossdeepNext
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 40, Common_EventScript_EmmieGoMeetShelly
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 41, Common_EventScript_EmmieReturnToJaggedPass
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 42, Common_EventScript_EmmieEnterMagmaHideout
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 43, Common_EventScript_ShellyWhatsUpAhead
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 44, Common_EventScript_ShellyNearlyThere
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 45, Common_EventScript_EmmieLetsFightMHOMaxie
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 46, Common_EventScript_EmmieWowItsHot
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 47, Common_EventScript_EmmieThisIsLilycove
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 48, Common_EventScript_EmmieEnterAquaHideout
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 49, Common_EventScript_TabithaGetAMoveOn
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 50, Common_EventScript_EmmieHeadToMossdeep
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 51, Common_EventScript_EmmieGoToMossdeepGym
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 52, Common_EventScript_EmmieInMossdeepGym
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 53, Common_EventScript_EmmieSeeSpaceCenter
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 54, Common_EventScript_EmmieMagmaUpToNoGood
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 55, Common_EventScript_EmmieMustFindMaxie
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 56, Common_EventScript_EmmieMaxieUpAhead
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 57, Common_EventScript_EmmieTeamsOutOfControl
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 58, Common_EventScript_EmmieWhatIsThisCavern
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 59, Common_EventScript_EmmieReturnToSFC
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 60, Common_EventScript_EmmieLetsFightSFCArchie
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 61, Common_EventScript_EmmieMeetStevenSootopolis
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 62, Common_EventScript_EmmieWhoAreWeMeeting
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 63, Common_EventScript_EmmieMeetWallaceSkyPillar
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 64, Common_EventScript_EmmieEnterSkyPillar
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 65, Common_EventScript_EmmieSkyPillarMess
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 66, Common_EventScript_EmmieSkyPillarTop
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 67, Common_EventScript_EmmieReturnToSkyPillar
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 68, Common_EventScript_EmmieReturnToSootopolis
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 69, Common_EventScript_EmmieGoToSootopolisGym
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 70, Common_EventScript_EmmieInSootopolisGym
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 71, Common_EventScript_EmmieFrontierOrEverGrande
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 72, Common_EventScript_EmmieFinalPreparations
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 73, Common_EventScript_EmmieBeforeSidney
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 74, Common_EventScript_EmmieBeforePhoebe
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 75, Common_EventScript_EmmieBeforeGlacia
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 76, Common_EventScript_EmmieBeforeDrake
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 77, Common_EventScript_EmmieBeforeChampion
+	call_if_eq VAR_PARTNER_EMMIE_STATE, 78, Common_EventScript_EmmiePostGame
 	end
+
+Common_EventScript_EmmiePostGame::
+	msgbox Common_Text_EmmiePostGame, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmiePostGame:
+	.string "Emmie: Hey, {PLAYER}, now that we\n"
+	.string "are champions, we can go anywhere\l"
+	.string "and do anything that we want!$"
+
+Common_EventScript_EmmieBeforeChampion::
+	msgbox Common_Text_EmmieBeforeChampion, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieBeforeChampion:
+	.string "Emmie: This is it, {PLAYER}.\p"
+	.string "Everything we've faced together comes\n"
+	.string "down to this final battle.\p"
+	.string "The Champion is waiting for us.$"
+
+Common_EventScript_EmmieBeforeDrake::
+	msgbox Common_Text_EmmieBeforeDrake, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieBeforeDrake:
+	.string "Emmie: We're over halfway there now,\n"
+	.string "{PLAYER}.\p"
+	.string "Remember to keep calm and stay\n"
+	.string "focused!$"
+
+Common_EventScript_EmmieBeforeGlacia::
+	msgbox Common_Text_EmmieBeforeGlacia, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieBeforeGlacia:
+	.string "Emmie: Two Elite Four members down,\n"
+	.string "we're on a roll!$"
+
+Common_EventScript_EmmieBeforePhoebe::
+	msgbox Common_Text_EmmieBeforePhoebe, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieBeforePhoebe:
+	.string "Emmie: That's one down, let's keep\n"
+	.string "up this momentum!$"
+
+Common_EventScript_EmmieBeforeSidney::
+	msgbox Common_Text_EmmieBeforeSidney, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieBeforeSidney:
+	.string "Emmie: I can't believe that we are\n"
+	.string "finally here…\p"
+	.string "I've got your back, let's give this\n"
+	.string "our all!$"
+
+Common_EventScript_EmmieFinalPreparations::
+	msgbox Common_Text_EmmieFinalPreparations, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieFinalPreparations:
+	.string "Emmie: I suppose our journey is almost\n"
+	.string "over now, {PLAYER}…\p"
+	.string "Let's make sure we're fully prepared\n"
+	.string "before we challenge the Elite Four!$"
+
+Common_EventScript_EmmieFrontierOrEverGrande::
+	msgbox Common_Text_EmmieFrontierOrEverGrande, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieFrontierOrEverGrande:
+	.string "Emmie: We have all eight gym badges\n"
+	.string "now, {PLAYER}!\p"
+	.string "We can either head straight to Ever\n"
+	.string "Grande City, or we could go to the\l"
+	.string "Battle Frontier first instead.$"
+
+Common_EventScript_EmmieInSootopolisGym::
+	msgbox Common_Text_EmmieInSootopolisGym, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieInSootopolisGym:
+	.string "Emmie: This is it, {PLAYER}, the\n"
+	.string "final gym.\p"
+	.string "Let's give this our all!$"
+
+Common_EventScript_EmmieGoToSootopolisGym::
+	msgbox Common_Text_EmmieGoToSootopolisGym, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieGoToSootopolisGym:
+	.string "Emmie: It's so peaceful now that all\n"
+	.string "that is over…\p"
+	.string "Why don't we go and challenge\n"
+	.string "Sootopolis gym?$"
+
+Common_EventScript_EmmieReturnToSootopolis::
+	msgbox Common_Text_EmmieReturnToSootopolis, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieReturnToSootopolis:
+	.string "Emmie: C'mon, {PLAYER}, we should\n"
+	.string "head to Sootopolis as well.$"
+
+Common_EventScript_EmmieReturnToSkyPillar::
+	msgbox Common_Text_EmmieReturnToSkyPillar, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieReturnToSkyPillar:
+	.string "Emmie: {PLAYER}, we should get back\n"
+	.string "to Sky Pillar as soon as possible!$"
+
+Common_EventScript_EmmieSkyPillarTop::
+	msgbox Common_Text_EmmieSkyPillarTop, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieSkyPillarTop:
+	.string "Emmie: I can see Archie and Maxie up\n"
+	.string "ahead.\p"
+	.string "Let's keep going, we're almost there!$"
+
+Common_EventScript_EmmieSkyPillarMess::
+	msgbox Common_Text_EmmieSkyPillarMess, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieSkyPillarMess:
+	.string "Emmie: Team Magma and Team Aqua are\n"
+	.string "fighting each other here…\p"
+	.string "This whole situation is a complete\n"
+	.string "mess…\p"
+	.string "We have to make it to the top as\n"
+	.string "quickly as we can!$"
+
+Common_EventScript_EmmieEnterSkyPillar::
+	msgbox Common_Text_EmmieEnterSkyPillar, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieEnterSkyPillar:
+	.string "Emmie: Let's head into Sky Pillar.$"
+
+Common_EventScript_EmmieMeetWallaceSkyPillar::
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, Common_EventScript_EmmieMeetWallaceSkyPillarStopMaxie
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, Common_EventScript_EmmieMeetWallaceSkyPillarStopArchie
+	return
+
+Common_EventScript_EmmieMeetWallaceSkyPillarStopArchie::
+	msgbox Common_Text_EmmieMeetWallaceSkyPillarStopArchie, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieMeetWallaceSkyPillarStopArchie:
+	.string "Emmie: C'mon, {PLAYER}, we're a part\n"
+	.string "of this now.\p"
+	.string "We have to help stop Archie. Let's\n"
+	.string "hurry to Sky Pillar and meet Wallace!$"
+
+Common_EventScript_EmmieMeetWallaceSkyPillarStopMaxie::
+	msgbox Common_Text_EmmieMeetWallaceSkyPillarStopMaxie, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieMeetWallaceSkyPillarStopMaxie:
+	.string "Emmie: C'mon, {PLAYER}, we're a part\n"
+	.string "of this now.\p"
+	.string "We have to help stop Maxie. Let's\n"
+	.string "hurry to Sky Pillar and meet Wallace!$"
+
+Common_EventScript_EmmieWhoAreWeMeeting::
+	msgbox Common_Text_EmmieWhoAreWeMeeting, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieWhoAreWeMeeting:
+	.string "Emmie: I wonder who we are supposed\n"
+	.string "to be meeting in here…$"
+
+Common_EventScript_EmmieMeetStevenSootopolis::
+	msgbox Common_Text_EmmieMeetStevenSootopolis, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieMeetStevenSootopolis:
+	.string "Emmie: This is madness…\p"
+	.string "We should find Steven somewhere in\n"
+	.string "Sootopolis City.$"
+
+Common_EventScript_EmmieLetsFightSFCArchie::
+	msgbox Common_Text_EmmieLetsFightSFCArchie, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieLetsFightSFCArchie:
+	.string "Emmie: {PLAYER}, this isn't the first\n"
+	.string "time we've been in this position.\p"
+	.string "I know that we can defeat Archie and\n"
+	.string "Kyogre if we work together!$"
+
+Common_EventScript_EmmieReturnToSFC::
+	msgbox Common_Text_EmmieReturnToSFC, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieReturnToSFC:
+	.string "Emmie: We have to find out what Team\n"
+	.string "Aqua are doing in that cavern.$"
+
+Common_EventScript_EmmieWhatIsThisCavern::
+	msgbox Common_Text_EmmieWhatIsThisCavern, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieWhatIsThisCavern:
+	.string "Emmie: A cavern hidden at the bottom\n"
+	.string "of the ocean?\p"
+	.string "What could Team Aqua possibly be\n"
+	.string "after somewhere like this?$"
+
+Common_EventScript_EmmieTeamsOutOfControl::
+	msgbox Common_Text_EmmieTeamsOutOfControl, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieTeamsOutOfControl:
+	.string "Emmie: Team Aqua and Team Magma are\n"
+	.string "both completely out of control.\p"
+	.string "Matt told you to search the seas\n"
+	.string "beyond Lilycove, right?\p"
+	.string "There didn't seem to be anything\n"
+	.string "of interest between Lilycove and\l"
+	.string "Mossdeep…\p"
+	.string "Let's investigate the areas around\n"
+	.string "Sootopolis City next.$"
+
+Common_EventScript_EmmieMaxieUpAhead::
+	msgbox Common_Text_EmmieMaxieUpAhead, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieMaxieUpAhead:
+	.string "Emmie: I see Maxie up ahead…$"
+
+Common_EventScript_EmmieMustFindMaxie::
+	msgbox Common_Text_EmmieMustFindMaxie, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieMustFindMaxie:
+	.string "Emmie: Team Magma are everywhere…\p"
+	.string "Maxie must be somewhere, let's try\n"
+	.string "and find out what he's after.$"
+
+Common_EventScript_EmmieMagmaUpToNoGood::
+	msgbox Common_Text_EmmieMagmaUpToNoGood, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieMagmaUpToNoGood:
+	.string "Emmie: Whatever Team Magma are doing\n"
+	.string "at the Space Center can't be good.$"
+
+Common_EventScript_EmmieSeeSpaceCenter::
+	msgbox Common_Text_EmmieSeeSpaceCenter, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieSeeSpaceCenter:
+	.string "Emmie: You know, I'd love to check\n"
+	.string "out Mossdeep Space Center before we\l"
+	.string "head anywhere new!$"
+
+Common_EventScript_EmmieInMossdeepGym::
+	msgbox Common_Text_EmmieInMossdeepGym, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieInMossdeepGym:
+	.string "Emmie: C'mon, {PLAYER}, let's keep\n"
+	.string "up our momentum and get our seventh\l"
+	.string "gym badge!$"
+
+Common_EventScript_EmmieGoToMossdeepGym::
+	msgbox Common_Text_EmmieGoToMossdeepGym, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieGoToMossdeepGym:
+	.string "Emmie: Now that we've made it to\n"
+	.string "Mossdeep, we might as well challenge\l"
+	.string "the gym!$"
+
+Common_EventScript_EmmieHeadToMossdeep::
+	msgbox Common_Text_EmmieHeadToMossdeep, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieHeadToMossdeep:
+	.string "Emmie: So, Archie took off in the\n"
+	.string "submarine from Slateport City?\p"
+	.string "Whatever he has planned can't be\n"
+	.string "good…\p"
+	.string "Well, Mossdeep City isn't far from\n"
+	.string "Lilycove, why don't we head there\l"
+	.string "next?$"
+	
+Common_EventScript_TabithaGetAMoveOn::
+	msgbox Common_Text_TabithaGetAMoveOn, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_TabithaGetAMoveOn:
+	.string "Tabitha: C'mon kid, hurry up, let's\n"
+	.string "get a move on!$"
+
+Common_EventScript_EmmieEnterAquaHideout::
+	msgbox Common_Text_EmmieEnterAquaHideout, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieEnterAquaHideout:
+	.string "Emmie: I've got a bad feeling about\n"
+	.string "this, but I think we should head\l"
+	.string "into Team Aqua's hideout.$"
+
+Common_EventScript_EmmieThisIsLilycove::
+	msgbox Common_Text_EmmieThisIsLilycove, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieThisIsLilycove:
+	.string "Emmie: Maxie told Tabitha to head to\n"
+	.string "Lilycove.\p"
+	.string "That must mean Team Aqua's hideout is\n"
+	.string "somewhere around here…$"
+
+Common_EventScript_EmmieWowItsHot::
+	msgbox Common_Text_EmmieWowItsHot, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieWowItsHot:
+	.string "Emmie: Wow, it's hot out here…\n"
+	.string "What on earth has Maxie done…\p"
+	.string "You said Shelly told you that Team\n"
+	.string "Aqua would retaliate?\p"
+	.string "I think we should also head to\n"
+	.string "Lilycove and try to find out what\l"
+	.string "Team Aqua has planned…$"
+
+Common_EventScript_EmmieLetsFightMHOMaxie::
+	msgbox Common_Text_EmmieLetsFightMHOMaxie, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieLetsFightMHOMaxie:
+	.string "Emmie: {PLAYER}, I know that we can\n"
+	.string "take on Maxie if we work together!$"
+
+Common_EventScript_ShellyNearlyThere::
+	msgbox Common_Text_ShellyNearlyThere, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_ShellyNearlyThere:
+	.string "Shelly: We're almost at the heart\n"
+	.string "of the hideout.\p"
+	.string "Let's keep pushing on.$"
+
+Common_EventScript_ShellyWhatsUpAhead::
+	msgbox Common_Text_ShellyWhatsUpAhead, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_ShellyWhatsUpAhead:
+	.string "Shelly: Let's be careful.\p"
+	.string "I'm not sure what we may face up\n"
+	.string "ahead.$"
+
+Common_EventScript_EmmieEnterMagmaHideout::
+	msgbox Common_Text_EmmieEnterMagmaHideout, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieEnterMagmaHideout:
+	.string "Emmie: I'm not overly happy about\n"
+	.string "this, but let's get ourselves into\l"
+	.string "Team Magma's hideout.$"
+
+Common_EventScript_EmmieReturnToJaggedPass::
+	msgbox Common_Text_EmmieReturnToJaggedPass, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieReturnToJaggedPass:
+	.string "Emmie: When you're ready for our\n"
+	.string "battle, return to the entrance of\l"
+	.string "Team Magma's hideout.$"
+
+Common_EventScript_EmmieGoMeetShelly::
+	msgbox Common_Text_EmmieGoMeetShelly, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieGoMeetShelly:
+	.string "Emmie: I really don't trust that\n"
+	.string "Shelly…\p"
+	.string "But we can't just ignore what she\n"
+	.string "said about Team Magma…\p"
+	.string "I think we should go an meet her\n"
+	.string "near Lavaridge Town.$"
+
+Common_EventScript_EmmieMossdeepNext::
+	msgbox Common_Text_EmmieMossdeepNext, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieMossdeepNext:
+	.string "Emmie: With six badges in hand, I\n"
+	.string "guess we're off to Mossdeep next.$"
+
+Common_EventScript_EmmieFortreeGym::
+	msgbox Common_Text_EmmieFortreeGym, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieFortreeGym:
+	.string "Emmie: So, this is Fortree Gym?\p"
+	.string "These barriers look surprisingly\n"
+	.string "easy to get through!$"
+
+Common_EventScript_EmmieThisIsFortree::
+	msgbox Common_Text_EmmieThisIsFortree, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieThisIsFortree:
+	.string "Emmie: Fortree City is so beautiful,\n"
+	.string "don't you think?\p"
+	.string "Let's make our way to the gym!$"
+
+Common_EventScript_EmmieHeadToFortree2::
+	msgbox Common_Text_EmmieHeadToFortree2, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieHeadToFortree2:
+	.string "Emmie: I'm proud of you for what you\n"
+	.string "did on Mt Pyre.\p"
+	.string "Maxie and Archie…\p"
+	.string "Could they really be trying to awaken\n"
+	.string "the ancient legendary Pokémon?\p"
+	.string "Let's continue to Fortree City for\n"
+	.string "now…$"
+
+Common_EventScript_EmmiePyreSummit::
+	msgbox Common_Text_EmmiePyreSummit, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmiePyreSummit:
+	.string "Emmie: I can see both Maxie and\n"
+	.string "Archie just up ahead…\p"
+	.string "I've got a very bad feeling about\n"
+	.string "this…$"
+
+Common_EventScript_EmmieBackToPyre::
+	msgbox Common_Text_EmmieBackToPyre, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieBackToPyre:
+	.string "Emmie: With Team Magma and Team Aqua\n"
+	.string "blocking the way, we can't continue\l"
+	.string "to Fortree City…\p"
+	.string "Let's head back to Mt Pyre.$"
+
+Common_EventScript_EmmieBothTeamsPyre::
+	msgbox Common_Text_EmmieBothTeamsPyre, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieBothTeamsPyre:
+	.string "Emmie: Team Aqua and Team Magma are\n"
+	.string "fighting each other here?\p"
+	.string "This can't be good… Let's see if we\n"
+	.string "can make it to the summit.$"
+
+Common_EventScript_EmmieGoToMtPyre::
+	msgbox Common_Text_EmmieGoToMtPyre, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieGoToMtPyre:
+	.string "Emmie: With Team Magma and Team Aqua\n"
+	.string "blocking the way, we can't continue\l"
+	.string "to Fortree City…\p"
+	.string "We may as well check out Mt Pyre.$"
+
+Common_EventScript_EmmieHeadToFortree::
+	msgbox Common_Text_EmmieHeadToFortree, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieHeadToFortree:
+	.string "Emmie: Five badges… We're on a\n"
+	.string "roll!\p"
+	.string "I think we should aim for Fortree\n"
+	.string "City next!$"
+
+Common_EventScript_EmmieInLavaridgeGym::
+	msgbox Common_Text_EmmieInLavaridgeGym, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieInLavaridgeGym:
+	.string "Emmie: Wow, it's hot in here.\p"
+	.string "How does Flannery expect people\n"
+	.string "to work in these conditions?$"
+
+Common_EventScript_EmmieGoLavaridgeGym::
+	msgbox Common_Text_EmmieGoLavaridgeGym, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieGoLavaridgeGym:
+	.string "Emmie: Let's head to Lavaridge\n"
+	.string "Gym!$"
+
+Common_EventScript_EmmieHeadToLavaridge::
+	msgbox Common_Text_EmmieHeadToLavaridge, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieHeadToLavaridge:
+	.string "Emmie: Team Aqua and Team Magma…\p"
+	.string "They're complete opposites, yet\n"
+	.string "both as bad as each other!\p"
+	.string "Anyway, let's continue on to\n"
+	.string "Lavaridge Town.$"
+
+Common_EventScript_EmmieHeadBackToChimney::
+	msgbox Common_Text_EmmieHeadBackToChimney, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieHeadBackToChimney:
+	.string "Emmie: I think we should get back\n"
+	.string "to Mt Chimney and find out what\l"
+	.string "Team Magma is doing!$"
+
+Common_EventScript_EmmieItsTeamMagma::
+	msgbox Common_Text_EmmieItsTeamMagma, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieItsTeamMagma:
+	.string "Emmie: Oh no, it's those Team Magma\n"
+	.string "people again!\p"
+	.string "That Tabitha guy seems seriously\n"
+	.string "unhinged.\p"
+	.string "Whatever they're doing here, it can't\n"
+	.string "be anything good!$"
+
+Common_EventScript_EmmieHeadToChimney::
+	msgbox Common_Text_EmmieHeadToChimney, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieHeadToChimney:
+	.string "Emmie: Those Team Magma people seem\n"
+	.string "like bad news too…\p"
+	.string "Let's see if we can make our way to\n"
+	.string "Lavaridge Town next.$"
+
+Common_EventScript_EmmiePeopleInRed::
+	msgbox Common_Text_EmmiePeopleInRed, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmiePeopleInRed:
+	.string "Emmie: Who are those people dressed\n"
+	.string "in red…\p"
+	.string "What could they possibly want in\n"
+	.string "Meteor Falls?$"
+
+Common_EventScript_EmmieSeeMeteorFalls::
+	checkplayergender
+	call_if_eq VAR_RESULT, MALE, Common_EventScript_EmmieSeeMeteorFallsMale
+	call_if_eq VAR_RESULT, FEMALE, Common_EventScript_EmmieSeeMeteorFallsFemale
+	return
+
+Common_EventScript_EmmieSeeMeteorFallsMale::
+	msgbox Common_Text_EmmieSeeMeteorFallsMale, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieSeeMeteorFallsMale:
+	.string "Emmie: I didn't expect to see Wally\n"
+	.string "and May all the way out in\l"
+	.string "Fallarbor Town.\p"
+	.string "That was a nice surprise!\p"
+	.string "Could we go and check out Meteor\n"
+	.string "Falls next, please?$"
+
+Common_EventScript_EmmieSeeMeteorFallsFemale::
+	msgbox Common_Text_EmmieSeeMeteorFallsFemale, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieSeeMeteorFallsFemale:
+	.string "Emmie: I didn't expect to see Wally\n"
+	.string "and Brendan all the way out in\l"
+	.string "Fallarbor Town.\p"
+	.string "That was a nice surprise!\p"
+	.string "Could we go and check out Meteor\n"
+	.string "Falls next, please?$"
+
+Common_EventScript_EmmieGoToFallarbor::
+	msgbox Common_Text_EmmieGoToFallarbor, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieGoToFallarbor:
+	.string "Emmie: Why don't we make our way to\n"
+	.string "Fallarbor Town in the north?$"
+
+Common_EventScript_EmmieGetGoGoggles::
+	msgbox Common_Text_EmmieGetGoGoggles, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieGetGoGoggles:
+	.string "Emmie: Let's see if the Winstrates\n"
+	.string "have any advice on getting through\l"
+	.string "the desert to the north.$"
+
+Common_EventScript_EmmieLetsHeadNorth::
+	msgbox Common_Text_EmmieLetsHeadNorth, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieLetsHeadNorth:
+	.string "Emmie: Those Team Aqua goons seem\n"
+	.string "like bad news.\p"
+	.string "I wonder what they have planned…\p"
+	.string "Anyway, why don't we continue north\n"
+	.string "for now?$"
+
+Common_EventScript_EmmieHeadToHarbor::
+	msgbox Common_Text_EmmieHeadToHarbor, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieHeadToHarbor:
+	.string "Emmie: Stern is heading to the\n"
+	.string "Harbor.\p"
+	.string "I think we should follow him!$"
+
+Common_EventScript_EmmieWhoAreThesePeople::
+	msgbox Common_Text_EmmieWhoAreThesePeople, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieWhoAreThesePeople:
+	.string "Emmie: Those people are dressed\n"
+	.string "in the same awful outfits as those\l"
+	.string "people we fought in Petalburg Woods…\p"
+	.string "Just who are they?$"
+
+Common_EventScript_EmmieHeadToMuseum::
+	msgbox Common_Text_EmmieHeadToMuseum, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieHeadToMuseum:
+	.string "Emmie: Dock said we would find\n"
+	.string "Captain Stern at the Slateport\l"
+	.string "Oceanic Museum, right?$"
+
+Common_EventScript_EmmieGoToDockyard::
+	msgbox Common_Text_EmmieGoToDockyard, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieGoToDockyard:
+	.string "Emmie: Let's make our way to\n"
+	.string "Slateport Shipyard and deliver\l"
+	.string "these goods to Captain Stern.\p"
+	
+Common_EventScript_EmmieLeaveDewford::
+	msgbox Common_Text_EmmieLeaveDewford, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieLeaveDewford:
+	.string "Emmie: I guess it's time for us\n"
+	.string "to leave Dewford Town.\p"
+	.string "Let's speak to Mr Briney and\n"
+	.string "make our way to Slateport City.$"
+
+Common_EventScript_EmmieDewfordGym::
+	msgbox Common_Text_EmmieDewfordGym, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieDewfordGym:
+	.string "Emmie: Dewford Gym…\p"
+	.string "Apparently Brawly used to strike\n"
+	.string "fear into the hearts of trainers\l"
+	.string "around the world in the old days.$"
+
+Common_EventScript_EmmieLetterAndGym::
+	msgbox Common_Text_EmmieLetterAndGym, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieLetterAndGym:
+	.string "Emmie: Dewford Town is quite\n"
+	.string "nice, isn't it?\p"
+	.string "Remember, we need to deliver the\n"
+	.string "letter for Mr Briney and challenge\l"
+	.string "the gym before we leave.$"
+
+Common_EventScript_EmmieSpeakToBriney::
+	msgbox Common_Text_EmmieSpeakToBriney, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieSpeakToBriney:
+	.string "Emmie: Let's make sure that we\n"
+	.string "have everything we need, then\l"
+	.string "let's speak to Mr Briney!$"
+
+Common_EventScript_EmmieGoAskBriney::
+	msgbox Common_Text_EmmieGoAskBriney, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieGoAskBriney:
+	.string "Emmie: I can't believe that we\n"
+	.string "actually defeated dad!\p"
+	.string "I guess our next stop should be\n"
+	.string "Dewford Town.\p"
+	.string "Let's ask Mr Briney if he will\n"
+	.string "take us there.\p"
+	.string "I think he lives somewhere on\n"
+	.string "Route 104.$"
+
+Common_EventScript_EmmieNormanWaiting::
+	msgbox Common_Text_EmmieNormanWaiting, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieNormanWaiting:
+	.string "Emmie: I guess dad must be\n"
+	.string "waiting at the back of the gym.\p"
+	.string "I must admit, I'm a little\n"
+	.string "nervous…$"
+
+Common_EventScript_EmmieNearlyThere::
+	msgbox Common_Text_EmmieNearlyThere, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieNearlyThere:
+	.string "Emmie: C'mon, I'm excited to\n"
+	.string "battle dad!$"
+
+Common_EventScript_EmmieUseCyclingRoad::
+	msgbox Common_Text_EmmieUseCyclingRoad, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieUseCyclingRoad:
+	.string "Emmie: Let's take the Cycling\n"
+	.string "Road back to Petalburg!$"
+
+Common_EventScript_EmmieHeadToPetalburg2::
+	msgbox Common_Text_EmmieHeadToPetalburg2, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieHeadToPetalburg2:
+	.string "Emmie: Dad said he would battle us\n"
+	.string "when we have two badges, right?\p"
+	.string "Let's head back to Petalburg and\n"
+	.string "challenge him!$"
+
+Common_EventScript_EmmieRustboroGym::
+	msgbox Common_Text_EmmieRustboroGym, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieRustboroGym:
+	.string "Emmie: Wow, this gym only has two\n"
+	.string "gym trainers?\p"
+	.string "Roxanne must be a pain to work with.$"
+
+Common_EventScript_EmmieGetSecondBadge::
+	msgbox Common_Text_EmmieGetSecondBadge, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieGetSecondBadge:
+	.string "Emmie: So this is Rustboro City…\p"
+	.string "Let's head to the Gym and try to\n"
+	.string "get our second badge.$"
+
+Common_EventScript_EmmieHeadToRustboro::
+	msgbox Common_Text_EmmieHeadToRustboro, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieHeadToRustboro:
+	.string "Emmie: We have our first badge!\p"
+	.string "Why don't we head to Rustboro City\n"
+	.string "and take on the gym there next?$"
+
+Common_EventScript_EmmieMauvilleGym::
+	msgbox Common_Text_EmmieMauvilleGym, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieMauvilleGym:
+	.string "Emmie: So this is Mauville Gym…\p"
+	.string "I bet the Leader, Wattson, is no\n"
+	.string "pushover!$"
+
+Common_EventScript_EmmieGetFirstBadge::
+	msgbox Common_Text_EmmieGetFirstBadge, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieGetFirstBadge:
+	.string "Emmie: Now that we've made it to\n"
+	.string "Mauville, why don't we go to the\l"
+	.string "gym and try to get our first badge?$"
+
+Common_EventScript_EmmieHeadToMauville::
+	msgbox Common_Text_EmmieHeadToMauville, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieHeadToMauville:
+	.string "Emmie: Wow, I can't believe dad gave\n"
+	.string "us new bikes!\p"
+	.string "Still, it would be nice if he\n"
+	.string "actually spent time at home.\p"
+	.string "Anyway, let's make our way to\n"
+	.string "Mauville City.$"
+
+Common_EventScript_EmmieHeadToPetalburg::
+	msgbox Common_Text_EmmieHeadToPetalburg, MSGBOX_AUTOCLOSE
+	return
+
+Common_Text_EmmieHeadToPetalburg:
+	.string "Emmie: Aww, {PLAYER}, I'm so happy\n"
+	.string "that we're going to travel together.\p"
+	.string "Let's first head to Petalburg City\n"
+	.string "and visit dad!$"
 
 Common_EventScript_EmmieBattle::
 	lockall
@@ -1158,6 +2049,7 @@ Common_EventScript_EmmieBattle1::
 	setvar VAR_EMMIE_BATTLE_STATE, 2
 	changefollowerbattler PARTNER_EMMIE
 	msgbox Common_Text_EmmieBattleVictory1, MSGBOX_DEFAULT
+	setvar VAR_PARTNER_EMMIE_STATE, 12
 	closemessage
 	end
 
@@ -1194,6 +2086,7 @@ Common_EventScript_EmmieBattleVictory2::
 	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
 	setflag FLAG_EMMIE_BATTLE_2_DEFEATED
 	setvar VAR_EMMIE_BATTLE_STATE, 4
+	setvar VAR_PARTNER_EMMIE_STATE, 42
 	changefollowerbattler PARTNER_EMMIE
 	msgbox Common_Text_EmmieBattleVictory2, MSGBOX_DEFAULT
 	closemessage

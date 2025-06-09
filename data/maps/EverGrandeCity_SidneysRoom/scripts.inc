@@ -122,7 +122,11 @@ EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech::
 EverGrandeCity_SidneysRoom_EventScript_Defeated::
 # 62 "data/maps/EverGrandeCity_SidneysRoom/scripts.pory"
 	setflag FLAG_DEFEATED_ELITE_4_SIDNEY
+<<<<<<< HEAD
 # 63 "data/maps/EverGrandeCity_SidneysRoom/scripts.pory"
+=======
+	setvar VAR_PARTNER_EMMIE_STATE, 74
+>>>>>>> 4e01050c72 (20250609 01)
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 # 64 "data/maps/EverGrandeCity_SidneysRoom/scripts.pory"
 	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT

@@ -362,6 +362,7 @@ msgbox Route110_Text_JasminePostBattle, MSGBOX_AUTOCLOSE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
 msgbox Route110_Text_JacobPostBattle, MSGBOX_AUTOCLOSE
+setvar VAR_PARTNER_EMMIE_STATE, 9
 addvar VAR_ROUTE110_STATE, 1
 end
 

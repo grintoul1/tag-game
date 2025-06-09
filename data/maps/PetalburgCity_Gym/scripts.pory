@@ -75,8 +75,6 @@ PetalburgCity_Gym_EventScript_DontMoveNormanToFront::
 
 PetalburgCity_Gym_OnWarp:
 	map_script_2 VAR_PETALBURG_GYM_STATE, 0, PetalburgCity_Gym_EventScript_TurnPlayerNorth
-	map_script_2 VAR_PETALBURG_GYM_STATE, 0, PetalburgCity_Gym_EventScript_EmmiePositionBeforeWally
-	map_script_2 VAR_PETALBURG_GYM_STATE, 1, PetalburgCity_Gym_EventScript_TurnPlayerNorth
 	map_script_2 VAR_PETALBURG_GYM_STATE, 1, PetalburgCity_Gym_EventScript_EmmiePositionAfterWally
 	.2byte 0
 
@@ -86,6 +84,7 @@ PetalburgCity_Gym_EventScript_EmmiePositionBeforeWally::
 	return
 
 PetalburgCity_Gym_EventScript_EmmiePositionAfterWally::
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 3, 108
 	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_PETALBURG_CITY_GYM
 	return
@@ -93,12 +92,19 @@ PetalburgCity_Gym_EventScript_EmmiePositionAfterWally::
 
 PetalburgCity_Gym_EventScript_TurnPlayerNorth::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
-	end
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 5, 111
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_PETALBURG_CITY_GYM
+	return
 
 PetalburgCity_Gym_OnFrame:
 	map_script_2 VAR_PETALBURG_GYM_STATE, 1, PetalburgCity_Gym_EventScript_ReturnFromWallyTutorial
 	map_script_2 VAR_PETALBURG_GYM_STATE, 0, PetalburgCity_Gym_EventScript_EnterRoom2
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 9, PetalburgCity_Gym_EventScript_ProgressEmmieState
 	.2byte 0
+
+PetalburgCity_Gym_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 10
+	return
 
 PetalburgCity_Gym_EventScript_EnterRoom2::
 	lockall
@@ -165,6 +171,7 @@ waitstate
 PetalburgCity_Gym_EventScript_NormanVictory::
 addvar VAR_PETALBURG_GYM_STATE, 1
 setvar VAR_LEVEL_CAP, 42
+setvar VAR_PARTNER_EMMIE_STATE, 11
 goto PetalburgCity_Gym_EventScript_NormanDefeated
 end
 

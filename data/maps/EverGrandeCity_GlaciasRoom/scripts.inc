@@ -110,7 +110,11 @@ EverGrandeCity_GlaciasRoom_EventScript_PostBattleSpeech::
 EverGrandeCity_GlaciasRoom_EventScript_Defeated::
 # 56 "data/maps/EverGrandeCity_GlaciasRoom/scripts.pory"
 	setflag FLAG_DEFEATED_ELITE_4_GLACIA
+<<<<<<< HEAD
 # 57 "data/maps/EverGrandeCity_GlaciasRoom/scripts.pory"
+=======
+	setvar VAR_PARTNER_EMMIE_STATE, 76
+>>>>>>> 4e01050c72 (20250609 01)
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 # 58 "data/maps/EverGrandeCity_GlaciasRoom/scripts.pory"
 	msgbox EverGrandeCity_GlaciasRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT

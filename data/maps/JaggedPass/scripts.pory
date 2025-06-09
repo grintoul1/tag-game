@@ -260,6 +260,7 @@ JaggedPass_EventScript_Shelly::
 	call_if_eq VAR_TEMP_3, 16, JaggedPass_EventScript_EmmieApproachShellyStart4
 	waitmovement 0
 	goto JaggedPass_EventScript_ShellyTrigger
+	setvar VAR_PARTNER_EMMIE_STATE, 41
 	releaseall
 	end
 

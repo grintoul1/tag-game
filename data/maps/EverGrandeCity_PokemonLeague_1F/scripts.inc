@@ -14,11 +14,39 @@ EverGrandeCity_PokemonLeague_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, EverGrandeCity_PokemonLeague_1F_OnTransition
 # 8 "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
 	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
+<<<<<<< HEAD
 # 9 "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
+=======
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, EverGrandeCity_PokemonLeague_1F_OnWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, EverGrandeCity_PokemonLeague_1F_OnFrame
+>>>>>>> 4e01050c72 (20250609 01)
 	.byte 0
 # 10 "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
 
+<<<<<<< HEAD
 # 11 "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
+=======
+EverGrandeCity_PokemonLeague_1F_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 71, EverGrandeCity_PokemonLeague_1F_EventScript_ProgressEmmieState
+	.2byte 0
+
+EverGrandeCity_PokemonLeague_1F_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 72
+	return
+
+EverGrandeCity_PokemonLeague_1F_OnWarp:
+	map_script_2 VAR_EMMIE_BATTLE_STATE, 4, EverGrandeCity_PokemonLeague_1F_EventScript_PostEmmieCutscenePos
+	.2byte 0
+
+EverGrandeCity_PokemonLeague_1F_EventScript_PostEmmieCutscenePos::
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 10, 6
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_NORTH
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F
+	setvar VAR_EMMIE_BATTLE_STATE, 5
+	end
+
+>>>>>>> 4e01050c72 (20250609 01)
 EverGrandeCity_PokemonLeague_1F_OnTransition:
 # 12 "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
 	setrespawn HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE

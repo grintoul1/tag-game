@@ -42,7 +42,11 @@ SlateportCity_SternsShipyard_1F_EventScript_Dock::
 	setflag FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
 # 22 "data/maps/SlateportCity_SternsShipyard_1F/scripts.pory"
 	setflag FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA
+<<<<<<< HEAD
 # 23 "data/maps/SlateportCity_SternsShipyard_1F/scripts.pory"
+=======
+	setvar VAR_PARTNER_EMMIE_STATE, 17
+>>>>>>> 4e01050c72 (20250609 01)
 	releaseall
 # 24 "data/maps/SlateportCity_SternsShipyard_1F/scripts.pory"
 	end

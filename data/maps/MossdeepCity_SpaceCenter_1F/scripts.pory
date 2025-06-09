@@ -12,7 +12,17 @@ raw `
 MossdeepCity_SpaceCenter_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, MossdeepCity_SpaceCenter_1F_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_SpaceCenter_1F_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_SpaceCenter_1F_OnFrame
 	.byte 0
+
+MossdeepCity_SpaceCenter_1F_OnFrame:
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 54, MossdeepCity_SpaceCenter_1F_EventScript_ProgressEmmieState
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 56, MossdeepCity_SpaceCenter_1F_EventScript_ProgressEmmieState
+	.2byte 0
+
+MossdeepCity_SpaceCenter_1F_EventScript_ProgressEmmieState::
+	setvar VAR_PARTNER_EMMIE_STATE, 55
+	return
 
 MossdeepCity_SpaceCenter_1F_OnTransition:
 	goto_if_eq VAR_MOSSDEEP_CITY_STATE, 2, MossdeepCity_SpaceCenter_1F_EventScript_MoveObjectsForTeamMagma

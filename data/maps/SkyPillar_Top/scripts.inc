@@ -11,1069 +11,1069 @@ SkyPillar_Top_MapScripts::
 # 6 "data/maps/SkyPillar_Top/scripts.pory"
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, SkyPillar_Top_OnWarp
 # 7 "data/maps/SkyPillar_Top/scripts.pory"
-	.byte 0
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SkyPillar_Top_OnFrame
 # 8 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.byte 0
 # 9 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_OnResume:
+
 # 10 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, SkyPillar_Top_EventScript_TryRemoveRayquaza
+SkyPillar_Top_OnFrame:
 # 11 "data/maps/SkyPillar_Top/scripts.pory"
-	end
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 65, SkyPillar_Top_EventScript_ProgressEmmieState
 # 12 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.2byte 0
 # 13 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_TryRemoveRayquaza::
+
 # 14 "data/maps/SkyPillar_Top/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+SkyPillar_Top_EventScript_ProgressEmmieState::
 # 15 "data/maps/SkyPillar_Top/scripts.pory"
-	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	setvar VAR_PARTNER_EMMIE_STATE, 66
 # 16 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject VAR_LAST_TALKED
+	return
 # 17 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+
 # 18 "data/maps/SkyPillar_Top/scripts.pory"
-
+SkyPillar_Top_OnResume:
 # 19 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_OnTransition:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, SkyPillar_Top_EventScript_TryRemoveRayquaza
 # 20 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_lt VAR_SKY_PILLAR_STATE, 8, SkyPillar_Top_EventScript_SetCleanLayout
-# 21 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_eq VAR_SKY_PILLAR_STATE, 7, SkyPillar_Top_EventScript_SetWeather
-# 22 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_ge VAR_SKY_PILLAR_STATE, 7, SkyPillar_Top_EventScript_HideRayquaza
-# 23 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_ge VAR_SKY_PILLAR_STATE, 9, SkyPillar_Top_EventScript_TryShowRayquaza
-# 24 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_eq VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_MattTabithaPos
-# 25 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_ge VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_LeaderVars
-# 26 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_ge VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_LeaderPos
-# 27 "data/maps/SkyPillar_Top/scripts.pory"
 	end
+# 21 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 22 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_TryRemoveRayquaza::
+# 23 "data/maps/SkyPillar_Top/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+# 24 "data/maps/SkyPillar_Top/scripts.pory"
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+# 25 "data/maps/SkyPillar_Top/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 26 "data/maps/SkyPillar_Top/scripts.pory"
+	return
+# 27 "data/maps/SkyPillar_Top/scripts.pory"
+
 # 28 "data/maps/SkyPillar_Top/scripts.pory"
-
+SkyPillar_Top_OnTransition:
 # 29 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_HideRayquaza::
+	call_if_lt VAR_SKY_PILLAR_STATE, 8, SkyPillar_Top_EventScript_SetCleanLayout
 # 30 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject LOCALID_SKYPILLAR_RAYQUAZA_STILL
+	call_if_eq VAR_SKY_PILLAR_STATE, 7, SkyPillar_Top_EventScript_SetWeather
 # 31 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	call_if_ge VAR_SKY_PILLAR_STATE, 7, SkyPillar_Top_EventScript_HideRayquaza
 # 32 "data/maps/SkyPillar_Top/scripts.pory"
-
+	call_if_ge VAR_SKY_PILLAR_STATE, 9, SkyPillar_Top_EventScript_TryShowRayquaza
 # 33 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_SetWeather:
+	call_if_eq VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_MattTabithaPos
 # 34 "data/maps/SkyPillar_Top/scripts.pory"
-	setweather WEATHER_ABNORMAL
+	call_if_ge VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_LeaderVars
 # 35 "data/maps/SkyPillar_Top/scripts.pory"
-	doweather
+	call_if_ge VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_LeaderPos
 # 36 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	end
 # 37 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 38 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MattTabithaPos::
+SkyPillar_Top_EventScript_HideRayquaza::
 # 39 "data/maps/SkyPillar_Top/scripts.pory"
-	setobjectxyperm LOCALID_SKYPILLAR_MATT, 12, 21
+	removeobject LOCALID_SKYPILLAR_RAYQUAZA_STILL
 # 40 "data/maps/SkyPillar_Top/scripts.pory"
-	setobjectxyperm LOCALID_SKYPILLAR_TABITHA, 12, 19
+	return
 # 41 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+
 # 42 "data/maps/SkyPillar_Top/scripts.pory"
-
+SkyPillar_Top_EventScript_SetWeather:
 # 43 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_LeaderPos::
+	setweather WEATHER_ABNORMAL
 # 44 "data/maps/SkyPillar_Top/scripts.pory"
-	setobjectxyperm VAR_0x8003, 12, 9
+	doweather
 # 45 "data/maps/SkyPillar_Top/scripts.pory"
-	setobjectmovementtype VAR_0x8003, MOVEMENT_TYPE_FACE_UP
+	return
 # 46 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+
 # 47 "data/maps/SkyPillar_Top/scripts.pory"
-
+SkyPillar_Top_EventScript_MattTabithaPos::
 # 48 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_LeaderVars::
+	setobjectxyperm LOCALID_SKYPILLAR_MATT, 12, 21
 # 49 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieVars
+	setobjectxyperm LOCALID_SKYPILLAR_TABITHA, 12, 19
 # 50 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieVars
+	return
 # 51 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+
 # 52 "data/maps/SkyPillar_Top/scripts.pory"
-
+SkyPillar_Top_EventScript_LeaderPos::
 # 53 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_SetCleanLayout::
+	setobjectxyperm VAR_0x8003, 12, 9
 # 54 "data/maps/SkyPillar_Top/scripts.pory"
-	setmaplayoutindex LAYOUT_SKY_PILLAR_TOP_CLEAN
+	setobjectmovementtype VAR_0x8003, MOVEMENT_TYPE_FACE_UP
 # 55 "data/maps/SkyPillar_Top/scripts.pory"
-	setobjectmovementtype LOCALID_RAYQUAZA_SLEEPING, MOVEMENT_TYPE_FACE_DOWN
-# 56 "data/maps/SkyPillar_Top/scripts.pory"
 	return
-# 57 "data/maps/SkyPillar_Top/scripts.pory"
+# 56 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 57 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_LeaderVars::
 # 58 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_TryShowRayquaza::
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieVars
 # 59 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_unset FLAG_DEFEATED_RAYQUAZA, SkyPillar_Top_EventScript_ShowRayquaza
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieVars
 # 60 "data/maps/SkyPillar_Top/scripts.pory"
 	return
 # 61 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 62 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ShowRayquaza::
+SkyPillar_Top_EventScript_SetCleanLayout::
 # 63 "data/maps/SkyPillar_Top/scripts.pory"
-	clearflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
+	setmaplayoutindex LAYOUT_SKY_PILLAR_TOP_CLEAN
 # 64 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	setobjectmovementtype LOCALID_RAYQUAZA_SLEEPING, MOVEMENT_TYPE_FACE_DOWN
 # 65 "data/maps/SkyPillar_Top/scripts.pory"
-
+	return
 # 66 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_OnWarp:
-# 67 "data/maps/SkyPillar_Top/scripts.pory"
-	map_script_2 VAR_SKY_PILLAR_STATE, 0, SkyPillar_Top_EventScript_RayquazaFaceDown
-# 68 "data/maps/SkyPillar_Top/scripts.pory"
-	.2byte 0
-# 69 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 67 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_TryShowRayquaza::
+# 68 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_unset FLAG_DEFEATED_RAYQUAZA, SkyPillar_Top_EventScript_ShowRayquaza
+# 69 "data/maps/SkyPillar_Top/scripts.pory"
+	return
 # 70 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxieVars::
+
 # 71 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8002, LOCALID_SKYPILLAR_MAXIE
+SkyPillar_Top_EventScript_ShowRayquaza::
 # 72 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8003, LOCALID_SKYPILLAR_ARCHIE
+	clearflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
 # 73 "data/maps/SkyPillar_Top/scripts.pory"
 	return
 # 74 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 75 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchieVars::
+SkyPillar_Top_OnWarp:
 # 76 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8002, LOCALID_SKYPILLAR_ARCHIE
+	map_script_2 VAR_SKY_PILLAR_STATE, 0, SkyPillar_Top_EventScript_RayquazaFaceDown
 # 77 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8003, LOCALID_SKYPILLAR_MAXIE
+	.2byte 0
 # 78 "data/maps/SkyPillar_Top/scripts.pory"
-	return
-# 79 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 79 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_MaxieVars::
 # 80 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_Finale::
+	setvar VAR_0x8002, LOCALID_SKYPILLAR_MAXIE
 # 81 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_WalkUp
+	setvar VAR_0x8003, LOCALID_SKYPILLAR_ARCHIE
 # 82 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER SkyPillar_Top_Movement_FinaleEmmieApproach
+	return
 # 83 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+
 # 84 "data/maps/SkyPillar_Top/scripts.pory"
-	special SpawnCameraObject
+SkyPillar_Top_EventScript_ArchieVars::
 # 85 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_FinaleCameraPanToAction
+	setvar VAR_0x8002, LOCALID_SKYPILLAR_ARCHIE
 # 86 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+	setvar VAR_0x8003, LOCALID_SKYPILLAR_MAXIE
 # 87 "data/maps/SkyPillar_Top/scripts.pory"
-	special RemoveCameraObject
+	return
 # 88 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_FinaleMaxieMusic
+
 # 89 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_FinaleArchieMusic
+SkyPillar_Top_EventScript_Finale::
 # 90 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 30
+	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_WalkUp
 # 91 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8003, Common_Movement_WalkUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER SkyPillar_Top_Movement_FinaleEmmieApproach
 # 92 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
 # 93 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchiePleadWithMaxie
-# 94 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxiePleadWithArchie
-# 95 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 30
-# 96 "data/maps/SkyPillar_Top/scripts.pory"
-	playse SE_NOT_EFFECTIVE
-# 97 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8003, SkyPillar_Top_Movement_FinaleGoodLeaderPushedBack
-# 98 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 99 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8002, Common_Movement_WalkSlowDown
-# 100 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 101 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieFailToSee
-# 102 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieFailToSee
-# 103 "data/maps/SkyPillar_Top/scripts.pory"
-	fadeoutbgm 1
-# 104 "data/maps/SkyPillar_Top/scripts.pory"
 	special SpawnCameraObject
-# 105 "data/maps/SkyPillar_Top/scripts.pory"
+# 94 "data/maps/SkyPillar_Top/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_FinaleCameraPanToAction
-# 106 "data/maps/SkyPillar_Top/scripts.pory"
+# 95 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
-# 107 "data/maps/SkyPillar_Top/scripts.pory"
+# 96 "data/maps/SkyPillar_Top/scripts.pory"
 	special RemoveCameraObject
+# 97 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_FinaleMaxieMusic
+# 98 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_FinaleArchieMusic
+# 99 "data/maps/SkyPillar_Top/scripts.pory"
+	delay 30
+# 100 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8003, Common_Movement_WalkUp
+# 101 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 102 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchiePleadWithMaxie
+# 103 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxiePleadWithArchie
+# 104 "data/maps/SkyPillar_Top/scripts.pory"
+	delay 30
+# 105 "data/maps/SkyPillar_Top/scripts.pory"
+	playse SE_NOT_EFFECTIVE
+# 106 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8003, SkyPillar_Top_Movement_FinaleGoodLeaderPushedBack
+# 107 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
 # 108 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8002, Common_Movement_WalkUp
+	applymovement VAR_0x8002, Common_Movement_WalkSlowDown
 # 109 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
 # 110 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 20
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieFailToSee
 # 111 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_RAYQUAZA_SLEEPING, SkyPillar_Top_Movement_RayquazaStir
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieFailToSee
 # 112 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+	fadeoutbgm 1
 # 113 "data/maps/SkyPillar_Top/scripts.pory"
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	special SpawnCameraObject
 # 114 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmoncry
+	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_FinaleCameraPanToAction
 # 115 "data/maps/SkyPillar_Top/scripts.pory"
-	playse SE_BALL_THROW
+	waitmovement 0
 # 116 "data/maps/SkyPillar_Top/scripts.pory"
-	waitse
+	special RemoveCameraObject
 # 117 "data/maps/SkyPillar_Top/scripts.pory"
-	playse SE_BALL_BOUNCE_1
+	applymovement VAR_0x8002, Common_Movement_WalkUp
 # 118 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_RAYQUAZA_SLEEPING, SkyPillar_Top_Movement_RayquazaEnterPokeball
+	waitmovement 0
 # 119 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+	delay 20
 # 120 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject LOCALID_RAYQUAZA_SLEEPING
+	applymovement LOCALID_RAYQUAZA_SLEEPING, SkyPillar_Top_Movement_RayquazaStir
 # 121 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 40
+	waitmovement 0
 # 122 "data/maps/SkyPillar_Top/scripts.pory"
-	special SpawnCameraObject
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
 # 123 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_FinaleCameraPanFromAction
+	waitmoncry
 # 124 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+	playse SE_BALL_THROW
 # 125 "data/maps/SkyPillar_Top/scripts.pory"
-	special RemoveCameraObject
-# 126 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8002, Common_Movement_WalkDown
-# 127 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 128 "data/maps/SkyPillar_Top/scripts.pory"
-	setweather WEATHER_RAIN_THUNDERSTORM
-# 129 "data/maps/SkyPillar_Top/scripts.pory"
-	doweather
-# 130 "data/maps/SkyPillar_Top/scripts.pory"
-	special WaitWeather
-# 131 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
-# 132 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 360
-# 133 "data/maps/SkyPillar_Top/scripts.pory"
-	setweather WEATHER_DROUGHT
-# 134 "data/maps/SkyPillar_Top/scripts.pory"
-	doweather
-# 135 "data/maps/SkyPillar_Top/scripts.pory"
-	special WaitWeather
-# 136 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
-# 137 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 138 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieSeeHowControl
-# 139 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieSeeHowControl
-# 140 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterRight
-# 141 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0 
-# 142 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 30
-# 143 "data/maps/SkyPillar_Top/scripts.pory"
-	playse SE_BALL_BOUNCE_2
-# 144 "data/maps/SkyPillar_Top/scripts.pory"
 	waitse
-# 145 "data/maps/SkyPillar_Top/scripts.pory"
-	playse SE_BALL_OPEN
-# 146 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE_INVISIBLE, SkyPillar_Top_Movement_RayquazaExitPokeball
-# 147 "data/maps/SkyPillar_Top/scripts.pory"
+# 126 "data/maps/SkyPillar_Top/scripts.pory"
+	playse SE_BALL_BOUNCE_1
+# 127 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_RAYQUAZA_SLEEPING, SkyPillar_Top_Movement_RayquazaEnterPokeball
+# 128 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
-# 148 "data/maps/SkyPillar_Top/scripts.pory"
-	addobject LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE
-# 149 "data/maps/SkyPillar_Top/scripts.pory"
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
-# 150 "data/maps/SkyPillar_Top/scripts.pory"
+# 129 "data/maps/SkyPillar_Top/scripts.pory"
+	removeobject LOCALID_RAYQUAZA_SLEEPING
+# 130 "data/maps/SkyPillar_Top/scripts.pory"
 	delay 40
-# 151 "data/maps/SkyPillar_Top/scripts.pory"
-	setweather WEATHER_NONE
-# 152 "data/maps/SkyPillar_Top/scripts.pory"
-	doweather
-# 153 "data/maps/SkyPillar_Top/scripts.pory"
-	special WaitWeather
-# 154 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
-# 155 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 30
-# 156 "data/maps/SkyPillar_Top/scripts.pory"
+# 131 "data/maps/SkyPillar_Top/scripts.pory"
 	special SpawnCameraObject
-# 157 "data/maps/SkyPillar_Top/scripts.pory"
+# 132 "data/maps/SkyPillar_Top/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_FinaleCameraPanFromAction
-# 158 "data/maps/SkyPillar_Top/scripts.pory"
+# 133 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
-# 159 "data/maps/SkyPillar_Top/scripts.pory"
+# 134 "data/maps/SkyPillar_Top/scripts.pory"
 	special RemoveCameraObject
-# 160 "data/maps/SkyPillar_Top/scripts.pory"
+# 135 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8002, Common_Movement_WalkDown
+# 136 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 137 "data/maps/SkyPillar_Top/scripts.pory"
+	setweather WEATHER_RAIN_THUNDERSTORM
+# 138 "data/maps/SkyPillar_Top/scripts.pory"
+	doweather
+# 139 "data/maps/SkyPillar_Top/scripts.pory"
+	special WaitWeather
+# 140 "data/maps/SkyPillar_Top/scripts.pory"
+	waitstate
+# 141 "data/maps/SkyPillar_Top/scripts.pory"
+	delay 360
+# 142 "data/maps/SkyPillar_Top/scripts.pory"
+	setweather WEATHER_DROUGHT
+# 143 "data/maps/SkyPillar_Top/scripts.pory"
+	doweather
+# 144 "data/maps/SkyPillar_Top/scripts.pory"
+	special WaitWeather
+# 145 "data/maps/SkyPillar_Top/scripts.pory"
 	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
-# 161 "data/maps/SkyPillar_Top/scripts.pory"
+# 146 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
-# 162 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieWeWillSubdue
-# 163 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieWeWillSubdue
-# 164 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 12
-# 165 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterDown
-# 166 "data/maps/SkyPillar_Top/scripts.pory"
+# 147 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieSeeHowControl
+# 148 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieSeeHowControl
+# 149 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterRight
+# 150 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0 
+# 151 "data/maps/SkyPillar_Top/scripts.pory"
+	delay 30
+# 152 "data/maps/SkyPillar_Top/scripts.pory"
+	playse SE_BALL_BOUNCE_2
+# 153 "data/maps/SkyPillar_Top/scripts.pory"
+	waitse
+# 154 "data/maps/SkyPillar_Top/scripts.pory"
+	playse SE_BALL_OPEN
+# 155 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE_INVISIBLE, SkyPillar_Top_Movement_RayquazaExitPokeball
+# 156 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
-# 167 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchiePleaseHelp
-# 168 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxiePleaseHelp
-# 169 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SkyPillar_Top_Movement_EmmieApproachPlayer
-# 170 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-# 171 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 172 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_EmmieDefeatedMaxie
-# 173 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_EmmieDefeatedArchie
-# 174 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
-# 175 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-# 176 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterDown
-# 177 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 178 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchieSoYoullHelp
-# 179 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxieSoYoullHelp
-# 180 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkSlowUp
-# 181 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8003, SkyPillar_Top_Movement_GoodLeaderMoveForPlayer
-# 182 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 183 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
-# 184 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 185 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieYouStillDefy
-# 186 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieYouStillDefy
-# 187 "data/maps/SkyPillar_Top/scripts.pory"
+# 157 "data/maps/SkyPillar_Top/scripts.pory"
+	addobject LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE
+# 158 "data/maps/SkyPillar_Top/scripts.pory"
 	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
-# 188 "data/maps/SkyPillar_Top/scripts.pory"
+# 159 "data/maps/SkyPillar_Top/scripts.pory"
 	delay 40
+# 160 "data/maps/SkyPillar_Top/scripts.pory"
+	setweather WEATHER_NONE
+# 161 "data/maps/SkyPillar_Top/scripts.pory"
+	doweather
+# 162 "data/maps/SkyPillar_Top/scripts.pory"
+	special WaitWeather
+# 163 "data/maps/SkyPillar_Top/scripts.pory"
+	waitstate
+# 164 "data/maps/SkyPillar_Top/scripts.pory"
+	delay 30
+# 165 "data/maps/SkyPillar_Top/scripts.pory"
+	special SpawnCameraObject
+# 166 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_FinaleCameraPanFromAction
+# 167 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 168 "data/maps/SkyPillar_Top/scripts.pory"
+	special RemoveCameraObject
+# 169 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
+# 170 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 171 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieWeWillSubdue
+# 172 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieWeWillSubdue
+# 173 "data/maps/SkyPillar_Top/scripts.pory"
+	delay 12
+# 174 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterDown
+# 175 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 176 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchiePleaseHelp
+# 177 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxiePleaseHelp
+# 178 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SkyPillar_Top_Movement_EmmieApproachPlayer
+# 179 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+# 180 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 181 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_EmmieDefeatedMaxie
+# 182 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_EmmieDefeatedArchie
+# 183 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
+# 184 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+# 185 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterDown
+# 186 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 187 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchieSoYoullHelp
+# 188 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxieSoYoullHelp
 # 189 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8002, Common_Movement_WalkSlowDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkSlowUp
 # 190 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8003, SkyPillar_Top_Movement_GoodLeaderApproachEvilLeader
+	applymovement VAR_0x8003, SkyPillar_Top_Movement_GoodLeaderMoveForPlayer
 # 191 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
 # 192 "data/maps/SkyPillar_Top/scripts.pory"
-	goto_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_Maxie_ChoosePartyForMultiBattle
+	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
 # 193 "data/maps/SkyPillar_Top/scripts.pory"
-	goto_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_Archie_ChoosePartyForMultiBattle
+	waitmovement 0
 # 194 "data/maps/SkyPillar_Top/scripts.pory"
-	releaseall
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieYouStillDefy
 # 195 "data/maps/SkyPillar_Top/scripts.pory"
-	end
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieYouStillDefy
 # 196 "data/maps/SkyPillar_Top/scripts.pory"
-
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
 # 197 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_Archie_ChoosePartyForMultiBattle::
+	delay 40
 # 198 "data/maps/SkyPillar_Top/scripts.pory"
-	special SavePlayerParty
+	applymovement VAR_0x8002, Common_Movement_WalkSlowDown
 # 199 "data/maps/SkyPillar_Top/scripts.pory"
-	fadescreen FADE_TO_BLACK
+	applymovement VAR_0x8003, SkyPillar_Top_Movement_GoodLeaderApproachEvilLeader
 # 200 "data/maps/SkyPillar_Top/scripts.pory"
-	special ChooseHalfPartyForBattle
+	waitmovement 0
 # 201 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
+	goto_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_Maxie_ChoosePartyForMultiBattle
 # 202 "data/maps/SkyPillar_Top/scripts.pory"
-	goto_if_ne VAR_RESULT, 0, SkyPillar_Top_EventScript_ArchieDoMultiBattle
+	goto_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_Archie_ChoosePartyForMultiBattle
 # 203 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchieYouWillNotStopMe, MSGBOX_AUTOCLOSE
-# 204 "data/maps/SkyPillar_Top/scripts.pory"
-	goto SkyPillar_Top_EventScript_Archie_ChoosePartyForMultiBattle
-# 205 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 206 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 207 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchieDoMultiBattle::
-# 208 "data/maps/SkyPillar_Top/scripts.pory"
-	playbgm MUS_NONE, TRUE
-# 209 "data/maps/SkyPillar_Top/scripts.pory"
-	multi_2_vs_1 TRAINER_ARCHIE_SKY_PILLAR, SkyPillar_Top_Text_EvilLeaderDefeat, PARTNER_MAXIE_SKY_PILLAR
-# 210 "data/maps/SkyPillar_Top/scripts.pory"
-	special LoadPlayerParty
-# 211 "data/maps/SkyPillar_Top/scripts.pory"
-	switch VAR_RESULT
-# 212 "data/maps/SkyPillar_Top/scripts.pory"
-	case 1, SkyPillar_Top_EventScript_FinaleVictory
-# 213 "data/maps/SkyPillar_Top/scripts.pory"
-	fadescreen FADE_TO_BLACK
-# 214 "data/maps/SkyPillar_Top/scripts.pory"
-	special SetCB2WhiteOut
-# 215 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
-# 216 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 217 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_Maxie_ChoosePartyForMultiBattle::
-# 218 "data/maps/SkyPillar_Top/scripts.pory"
-	special SavePlayerParty
-# 219 "data/maps/SkyPillar_Top/scripts.pory"
-	fadescreen FADE_TO_BLACK
-# 220 "data/maps/SkyPillar_Top/scripts.pory"
-	special ChooseHalfPartyForBattle
-# 221 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
-# 222 "data/maps/SkyPillar_Top/scripts.pory"
-	goto_if_ne VAR_RESULT, 0, SkyPillar_Top_EventScript_MaxieDoMultiBattle
-# 223 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxieYouWillNotStopMe, MSGBOX_AUTOCLOSE
-# 224 "data/maps/SkyPillar_Top/scripts.pory"
-	goto SkyPillar_Top_EventScript_Maxie_ChoosePartyForMultiBattle
-# 225 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 226 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 227 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxieDoMultiBattle::
-# 228 "data/maps/SkyPillar_Top/scripts.pory"
-	playbgm MUS_NONE, TRUE
-# 229 "data/maps/SkyPillar_Top/scripts.pory"
-	multi_2_vs_1 TRAINER_MAXIE_SKY_PILLAR, SkyPillar_Top_Text_EvilLeaderDefeat, PARTNER_ARCHIE_SKY_PILLAR
-# 230 "data/maps/SkyPillar_Top/scripts.pory"
-	special LoadPlayerParty
-# 231 "data/maps/SkyPillar_Top/scripts.pory"
-	switch VAR_RESULT
-# 232 "data/maps/SkyPillar_Top/scripts.pory"
-	case 1, SkyPillar_Top_EventScript_FinaleVictory
-# 233 "data/maps/SkyPillar_Top/scripts.pory"
-	fadescreen FADE_TO_BLACK
-# 234 "data/maps/SkyPillar_Top/scripts.pory"
-	special SetCB2WhiteOut
-# 235 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
-# 236 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 237 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_FinaleVictory::
-# 238 "data/maps/SkyPillar_Top/scripts.pory"
-	playse SE_NOT_EFFECTIVE
-# 239 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8002, SkyPillar_Top_Movement_EvilLeaderKnockedBack
-# 240 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8003, Common_Movement_FaceUp
-# 241 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 242 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieHowCanThisBe
-# 243 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieHowCanThisBe
-# 244 "data/maps/SkyPillar_Top/scripts.pory"
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
-# 245 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8004, 1  @ vertical pan
-# 246 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8005, 1  @ horizontal pan
-# 247 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8006, 8  @ num shakes
-# 248 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8007, 3  @ shake delay
-# 249 "data/maps/SkyPillar_Top/scripts.pory"
-	special ShakeCamera
-# 250 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
-# 251 "data/maps/SkyPillar_Top/scripts.pory"
-	waitse
-# 252 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 40
-# 253 "data/maps/SkyPillar_Top/scripts.pory"
-	playse SE_PIN
-# 254 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8002, Common_Movement_QuestionMark
-# 255 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8003, Common_Movement_QuestionMark
-# 256 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 257 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8002, Common_Movement_FaceRight
-# 258 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8003, Common_Movement_FaceRight
-# 259 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
-# 260 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-# 261 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 262 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 40
-# 263 "data/maps/SkyPillar_Top/scripts.pory"
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
-# 264 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8004, 1  @ vertical pan
-# 265 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8005, 2  @ horizontal pan
-# 266 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8006, 8  @ num shakes
-# 267 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8007, 5  @ shake delay
-# 268 "data/maps/SkyPillar_Top/scripts.pory"
-	special ShakeCamera
-# 269 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
-# 270 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmoncry
-# 271 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE, SkyPillar_Top_Movement_RayquazaFlyOff
-# 272 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 273 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE
-# 274 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE_INVISIBLE
-# 275 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 40
-# 276 "data/maps/SkyPillar_Top/scripts.pory"
-	setweather WEATHER_ABNORMAL
-# 277 "data/maps/SkyPillar_Top/scripts.pory"
-	doweather
-# 278 "data/maps/SkyPillar_Top/scripts.pory"
-	special WaitWeather
-# 279 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
-# 280 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
-# 281 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8003, Common_Movement_FaceUp
-# 282 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
-# 283 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-# 284 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 285 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieLostControl
-# 286 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieLostControl
-# 287 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterUp
-# 288 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 289 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchieDoYouSee
-# 290 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxieDoYouSee
-# 291 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
-# 292 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 293 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieBeenMisguided
-# 294 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieBeenMisguided
-# 295 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterDown
-# 296 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 297 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchieThankYou
-# 298 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxieThankYou
-# 299 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterUp
-# 300 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 301 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchieComeMaxie
-# 302 "data/maps/SkyPillar_Top/scripts.pory"
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxieComeArchie
-# 303 "data/maps/SkyPillar_Top/scripts.pory"
-	playse SE_EXIT
-# 304 "data/maps/SkyPillar_Top/scripts.pory"
-	fadescreenspeed FADE_TO_BLACK, 4
-# 305 "data/maps/SkyPillar_Top/scripts.pory"
-	addvar VAR_SKY_PILLAR_STATE, 1
-# 306 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject LOCALID_SKYPILLAR_ARCHIE
-# 307 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject LOCALID_SKYPILLAR_MAXIE
-# 308 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject LOCALID_SKYPILLAR_TABITHA
-# 309 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject LOCALID_SKYPILLAR_SHELLY
-# 310 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject LOCALID_SKYPILLAR_MATT
-# 311 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject LOCALID_SKYPILLAR_COURTNEY
-# 312 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_SOOTOPOLIS_CITY_STATE, 5
-# 313 "data/maps/SkyPillar_Top/scripts.pory"
-	setflag FLAG_HIDE_SKY_PILLAR_EVIL_TEAMS
-# 314 "data/maps/SkyPillar_Top/scripts.pory"
-	clearflag FLAG_ABNORMAL_WEATHER_RAIN
-# 315 "data/maps/SkyPillar_Top/scripts.pory"
-	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
-# 316 "data/maps/SkyPillar_Top/scripts.pory"
-	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
-# 317 "data/maps/SkyPillar_Top/scripts.pory"
-	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_CUTSCENE_INVISIBLE
-# 318 "data/maps/SkyPillar_Top/scripts.pory"
-	fadescreen FADE_FROM_BLACK
-# 319 "data/maps/SkyPillar_Top/scripts.pory"
 	releaseall
-# 320 "data/maps/SkyPillar_Top/scripts.pory"
+# 204 "data/maps/SkyPillar_Top/scripts.pory"
 	end
+# 205 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 206 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_Archie_ChoosePartyForMultiBattle::
+# 207 "data/maps/SkyPillar_Top/scripts.pory"
+	special SavePlayerParty
+# 208 "data/maps/SkyPillar_Top/scripts.pory"
+	fadescreen FADE_TO_BLACK
+# 209 "data/maps/SkyPillar_Top/scripts.pory"
+	special ChooseHalfPartyForBattle
+# 210 "data/maps/SkyPillar_Top/scripts.pory"
+	waitstate
+# 211 "data/maps/SkyPillar_Top/scripts.pory"
+	goto_if_ne VAR_RESULT, 0, SkyPillar_Top_EventScript_ArchieDoMultiBattle
+# 212 "data/maps/SkyPillar_Top/scripts.pory"
+	msgbox SkyPillar_Top_Text_ArchieYouWillNotStopMe, MSGBOX_AUTOCLOSE
+# 213 "data/maps/SkyPillar_Top/scripts.pory"
+	goto SkyPillar_Top_EventScript_Archie_ChoosePartyForMultiBattle
+# 214 "data/maps/SkyPillar_Top/scripts.pory"
+	closemessage
+# 215 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 216 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_ArchieDoMultiBattle::
+# 217 "data/maps/SkyPillar_Top/scripts.pory"
+	playbgm MUS_NONE, TRUE
+# 218 "data/maps/SkyPillar_Top/scripts.pory"
+	multi_2_vs_1 TRAINER_ARCHIE_SKY_PILLAR, SkyPillar_Top_Text_EvilLeaderDefeat, PARTNER_MAXIE_SKY_PILLAR
+# 219 "data/maps/SkyPillar_Top/scripts.pory"
+	special LoadPlayerParty
+# 220 "data/maps/SkyPillar_Top/scripts.pory"
+	switch VAR_RESULT
+# 221 "data/maps/SkyPillar_Top/scripts.pory"
+	case 1, SkyPillar_Top_EventScript_FinaleVictory
+# 222 "data/maps/SkyPillar_Top/scripts.pory"
+	fadescreen FADE_TO_BLACK
+# 223 "data/maps/SkyPillar_Top/scripts.pory"
+	special SetCB2WhiteOut
+# 224 "data/maps/SkyPillar_Top/scripts.pory"
+	waitstate
+# 225 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 226 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_Maxie_ChoosePartyForMultiBattle::
+# 227 "data/maps/SkyPillar_Top/scripts.pory"
+	special SavePlayerParty
+# 228 "data/maps/SkyPillar_Top/scripts.pory"
+	fadescreen FADE_TO_BLACK
+# 229 "data/maps/SkyPillar_Top/scripts.pory"
+	special ChooseHalfPartyForBattle
+# 230 "data/maps/SkyPillar_Top/scripts.pory"
+	waitstate
+# 231 "data/maps/SkyPillar_Top/scripts.pory"
+	goto_if_ne VAR_RESULT, 0, SkyPillar_Top_EventScript_MaxieDoMultiBattle
+# 232 "data/maps/SkyPillar_Top/scripts.pory"
+	msgbox SkyPillar_Top_Text_MaxieYouWillNotStopMe, MSGBOX_AUTOCLOSE
+# 233 "data/maps/SkyPillar_Top/scripts.pory"
+	goto SkyPillar_Top_EventScript_Maxie_ChoosePartyForMultiBattle
+# 234 "data/maps/SkyPillar_Top/scripts.pory"
+	closemessage
+# 235 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 236 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_MaxieDoMultiBattle::
+# 237 "data/maps/SkyPillar_Top/scripts.pory"
+	playbgm MUS_NONE, TRUE
+# 238 "data/maps/SkyPillar_Top/scripts.pory"
+	multi_2_vs_1 TRAINER_MAXIE_SKY_PILLAR, SkyPillar_Top_Text_EvilLeaderDefeat, PARTNER_ARCHIE_SKY_PILLAR
+# 239 "data/maps/SkyPillar_Top/scripts.pory"
+	special LoadPlayerParty
+# 240 "data/maps/SkyPillar_Top/scripts.pory"
+	switch VAR_RESULT
+# 241 "data/maps/SkyPillar_Top/scripts.pory"
+	case 1, SkyPillar_Top_EventScript_FinaleVictory
+# 242 "data/maps/SkyPillar_Top/scripts.pory"
+	fadescreen FADE_TO_BLACK
+# 243 "data/maps/SkyPillar_Top/scripts.pory"
+	special SetCB2WhiteOut
+# 244 "data/maps/SkyPillar_Top/scripts.pory"
+	waitstate
+# 245 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 246 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_FinaleVictory::
+# 247 "data/maps/SkyPillar_Top/scripts.pory"
+	playse SE_NOT_EFFECTIVE
+# 248 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8002, SkyPillar_Top_Movement_EvilLeaderKnockedBack
+# 249 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8003, Common_Movement_FaceUp
+# 250 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 251 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieHowCanThisBe
+# 252 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieHowCanThisBe
+# 253 "data/maps/SkyPillar_Top/scripts.pory"
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+# 254 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8004, 1  @ vertical pan
+# 255 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8005, 1  @ horizontal pan
+# 256 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8006, 8  @ num shakes
+# 257 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8007, 3  @ shake delay
+# 258 "data/maps/SkyPillar_Top/scripts.pory"
+	special ShakeCamera
+# 259 "data/maps/SkyPillar_Top/scripts.pory"
+	waitstate
+# 260 "data/maps/SkyPillar_Top/scripts.pory"
+	waitse
+# 261 "data/maps/SkyPillar_Top/scripts.pory"
+	delay 40
+# 262 "data/maps/SkyPillar_Top/scripts.pory"
+	playse SE_PIN
+# 263 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8002, Common_Movement_QuestionMark
+# 264 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8003, Common_Movement_QuestionMark
+# 265 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 266 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8002, Common_Movement_FaceRight
+# 267 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8003, Common_Movement_FaceRight
+# 268 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+# 269 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+# 270 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 271 "data/maps/SkyPillar_Top/scripts.pory"
+	delay 40
+# 272 "data/maps/SkyPillar_Top/scripts.pory"
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+# 273 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8004, 1  @ vertical pan
+# 274 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8005, 2  @ horizontal pan
+# 275 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8006, 8  @ num shakes
+# 276 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8007, 5  @ shake delay
+# 277 "data/maps/SkyPillar_Top/scripts.pory"
+	special ShakeCamera
+# 278 "data/maps/SkyPillar_Top/scripts.pory"
+	waitstate
+# 279 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmoncry
+# 280 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE, SkyPillar_Top_Movement_RayquazaFlyOff
+# 281 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 282 "data/maps/SkyPillar_Top/scripts.pory"
+	removeobject LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE
+# 283 "data/maps/SkyPillar_Top/scripts.pory"
+	removeobject LOCALID_SKYPILLAR_RAYQUAZA_CUTSCENE_INVISIBLE
+# 284 "data/maps/SkyPillar_Top/scripts.pory"
+	delay 40
+# 285 "data/maps/SkyPillar_Top/scripts.pory"
+	setweather WEATHER_ABNORMAL
+# 286 "data/maps/SkyPillar_Top/scripts.pory"
+	doweather
+# 287 "data/maps/SkyPillar_Top/scripts.pory"
+	special WaitWeather
+# 288 "data/maps/SkyPillar_Top/scripts.pory"
+	waitstate
+# 289 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
+# 290 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8003, Common_Movement_FaceUp
+# 291 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
+# 292 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+# 293 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 294 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieLostControl
+# 295 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieLostControl
+# 296 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterUp
+# 297 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 298 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchieDoYouSee
+# 299 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxieDoYouSee
+# 300 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8002, Common_Movement_WalkInPlaceFasterDown
+# 301 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 302 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieBeenMisguided
+# 303 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieBeenMisguided
+# 304 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterDown
+# 305 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 306 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchieThankYou
+# 307 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxieThankYou
+# 308 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement VAR_0x8003, Common_Movement_WalkInPlaceFasterUp
+# 309 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 310 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchieComeMaxie
+# 311 "data/maps/SkyPillar_Top/scripts.pory"
+	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxieComeArchie
+# 312 "data/maps/SkyPillar_Top/scripts.pory"
+	playse SE_EXIT
+# 313 "data/maps/SkyPillar_Top/scripts.pory"
+	fadescreenspeed FADE_TO_BLACK, 4
+# 314 "data/maps/SkyPillar_Top/scripts.pory"
+	addvar VAR_SKY_PILLAR_STATE, 1
+# 315 "data/maps/SkyPillar_Top/scripts.pory"
+	removeobject LOCALID_SKYPILLAR_ARCHIE
+# 316 "data/maps/SkyPillar_Top/scripts.pory"
+	removeobject LOCALID_SKYPILLAR_MAXIE
+# 317 "data/maps/SkyPillar_Top/scripts.pory"
+	removeobject LOCALID_SKYPILLAR_TABITHA
+# 318 "data/maps/SkyPillar_Top/scripts.pory"
+	removeobject LOCALID_SKYPILLAR_SHELLY
+# 319 "data/maps/SkyPillar_Top/scripts.pory"
+	removeobject LOCALID_SKYPILLAR_MATT
+# 320 "data/maps/SkyPillar_Top/scripts.pory"
+	removeobject LOCALID_SKYPILLAR_COURTNEY
 # 321 "data/maps/SkyPillar_Top/scripts.pory"
-
+	setvar VAR_SOOTOPOLIS_CITY_STATE, 5
 # 322 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_EvilLeaderDefeat:
+	setvar VAR_PARTNER_EMMIE_STATE, 68
 # 323 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "This should not be possible!$"
+	setflag FLAG_HIDE_SKY_PILLAR_EVIL_TEAMS
 # 324 "data/maps/SkyPillar_Top/scripts.pory"
-
+	clearflag FLAG_ABNORMAL_WEATHER_RAIN
 # 325 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchieComeMaxie:
+	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
 # 326 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: Come, Maxie.\p"
+	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
 # 327 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "This situation is of our creation.\p"
+	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_CUTSCENE_INVISIBLE
 # 328 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "It is our responsibility to ensure\n"
+	fadescreen FADE_FROM_BLACK
 # 329 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "it comes to a close.$"
+	releaseall
 # 330 "data/maps/SkyPillar_Top/scripts.pory"
-
+	end
 # 331 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxieComeArchie:
+
 # 332 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: Come, Archie.\p"
+SkyPillar_Top_Text_EvilLeaderDefeat:
 # 333 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "This situation is of our creation.\p"
+	.string "This should not be possible!$"
 # 334 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "It is our responsibility to ensure\n"
+
 # 335 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "it comes to a close.$"
+SkyPillar_Top_Text_ArchieComeMaxie:
 # 336 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "Archie: Come, Maxie.\p"
 # 337 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxieComeArchie::
+	.string "This situation is of our creation.\p"
 # 338 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxieComeArchie, MSGBOX_DEFAULT
+	.string "It is our responsibility to ensure\n"
 # 339 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "it comes to a close.$"
 # 340 "data/maps/SkyPillar_Top/scripts.pory"
-	return
-# 341 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 341 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_MaxieComeArchie:
 # 342 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchieComeMaxie::
+	.string "Maxie: Come, Archie.\p"
 # 343 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchieComeMaxie, MSGBOX_DEFAULT
+	.string "This situation is of our creation.\p"
 # 344 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "It is our responsibility to ensure\n"
 # 345 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "it comes to a close.$"
 # 346 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 347 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchieThankYou:
+SkyPillar_Top_EventScript_MaxieComeArchie::
 # 348 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: {PLAYER}, thank you, I don't\n"
+	msgbox SkyPillar_Top_Text_MaxieComeArchie, MSGBOX_DEFAULT
 # 349 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "believe that I could have defeated\l"
+	closemessage
 # 350 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie and that Pokémon alone.\p"
+	return
 # 351 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "It's time for me to return to\n"
+
 # 352 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Sootopolis.\p"
+SkyPillar_Top_EventScript_ArchieComeMaxie::
 # 353 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "I expect that you will be close\n"
+	msgbox SkyPillar_Top_Text_ArchieComeMaxie, MSGBOX_DEFAULT
 # 354 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "behind, as you always are.$"
+	closemessage
 # 355 "data/maps/SkyPillar_Top/scripts.pory"
-
+	return
 # 356 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxieThankYou:
+
 # 357 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: {PLAYER}, thank you, I don't\n"
+SkyPillar_Top_Text_ArchieThankYou:
 # 358 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "believe that I could have defeated\l"
+	.string "Archie: {PLAYER}, thank you, I don't\n"
 # 359 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie and that Pokémon alone.\p"
+	.string "believe that I could have defeated\l"
 # 360 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "It's time for me to return to\n"
+	.string "Maxie and that Pokémon alone.\p"
 # 361 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Sootopolis.\p"
+	.string "It's time for me to return to\n"
 # 362 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "I expect that you will be close\n"
+	.string "Sootopolis.\p"
 # 363 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "behind, as you always are.$"
+	.string "I expect that you will be close\n"
 # 364 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "behind, as you always are.$"
 # 365 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxieThankYou::
-# 366 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxieThankYou, MSGBOX_DEFAULT
-# 367 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 368 "data/maps/SkyPillar_Top/scripts.pory"
-	return
-# 369 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 366 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_MaxieThankYou:
+# 367 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Maxie: {PLAYER}, thank you, I don't\n"
+# 368 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "believe that I could have defeated\l"
+# 369 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Maxie and that Pokémon alone.\p"
 # 370 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchieThankYou::
+	.string "It's time for me to return to\n"
 # 371 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchieThankYou, MSGBOX_DEFAULT
+	.string "Sootopolis.\p"
 # 372 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "I expect that you will be close\n"
 # 373 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "behind, as you always are.$"
 # 374 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 375 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchieBeenMisguided:
+SkyPillar_Top_EventScript_MaxieThankYou::
 # 376 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: Could it really be that I\n"
+	msgbox SkyPillar_Top_Text_MaxieThankYou, MSGBOX_DEFAULT
 # 377 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "have been misguided all this time…?$"
+	closemessage
 # 378 "data/maps/SkyPillar_Top/scripts.pory"
-
+	return
 # 379 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxieBeenMisguided:
+
 # 380 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: Could it really be that I\n"
+SkyPillar_Top_EventScript_ArchieThankYou::
 # 381 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "have been misguided all this time…?$"
+	msgbox SkyPillar_Top_Text_ArchieThankYou, MSGBOX_DEFAULT
 # 382 "data/maps/SkyPillar_Top/scripts.pory"
-
+	closemessage
 # 383 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxieBeenMisguided::
+	return
 # 384 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxieBeenMisguided, MSGBOX_DEFAULT
-# 385 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 386 "data/maps/SkyPillar_Top/scripts.pory"
-	return
-# 387 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 385 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_ArchieBeenMisguided:
+# 386 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Archie: Could it really be that I\n"
+# 387 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "have been misguided all this time…?$"
 # 388 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchieBeenMisguided::
+
 # 389 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchieBeenMisguided, MSGBOX_DEFAULT
+SkyPillar_Top_Text_MaxieBeenMisguided:
 # 390 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "Maxie: Could it really be that I\n"
 # 391 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "have been misguided all this time…?$"
 # 392 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 393 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchieDoYouSee:
+SkyPillar_Top_EventScript_MaxieBeenMisguided::
 # 394 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: Do you see now, Maxie?\p"
+	msgbox SkyPillar_Top_Text_MaxieBeenMisguided, MSGBOX_DEFAULT
 # 395 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "We have tampered with forces beyond\n"
+	closemessage
 # 396 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "our control and our understanding.\p"
+	return
 # 397 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Our only hope is for that Pokémon\n"
+
 # 398 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "to be heading to Sootopolis and\l"
+SkyPillar_Top_EventScript_ArchieBeenMisguided::
 # 399 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "putting an end to this chaos.$"
+	msgbox SkyPillar_Top_Text_ArchieBeenMisguided, MSGBOX_DEFAULT
 # 400 "data/maps/SkyPillar_Top/scripts.pory"
-
+	closemessage
 # 401 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxieDoYouSee:
+	return
 # 402 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: Do you see now, Archie?\p"
+
 # 403 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "We have tampered with forces beyond\n"
+SkyPillar_Top_Text_ArchieDoYouSee:
 # 404 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "our control and our understanding.\p"
+	.string "Archie: Do you see now, Maxie?\p"
 # 405 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Our only hope is for that Pokémon\n"
+	.string "We have tampered with forces beyond\n"
 # 406 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "to be heading to Sootopolis and\l"
+	.string "our control and our understanding.\p"
 # 407 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "putting an end to this chaos.$"
+	.string "Our only hope is for that Pokémon\n"
 # 408 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "to be heading to Sootopolis and\l"
 # 409 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxieDoYouSee::
+	.string "putting an end to this chaos.$"
 # 410 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxieDoYouSee, MSGBOX_DEFAULT
-# 411 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 412 "data/maps/SkyPillar_Top/scripts.pory"
-	return
-# 413 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 411 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_MaxieDoYouSee:
+# 412 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Maxie: Do you see now, Archie?\p"
+# 413 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "We have tampered with forces beyond\n"
 # 414 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchieDoYouSee::
+	.string "our control and our understanding.\p"
 # 415 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchieDoYouSee, MSGBOX_DEFAULT
+	.string "Our only hope is for that Pokémon\n"
 # 416 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "to be heading to Sootopolis and\l"
 # 417 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "putting an end to this chaos.$"
 # 418 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 419 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchieLostControl:
+SkyPillar_Top_EventScript_MaxieDoYouSee::
 # 420 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: What is this…\n"
+	msgbox SkyPillar_Top_Text_MaxieDoYouSee, MSGBOX_DEFAULT
 # 421 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "My control is broken?\p"
+	closemessage
 # 422 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "First Kyogre, and now here too…$"
+	return
 # 423 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 424 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxieLostControl:
+SkyPillar_Top_EventScript_ArchieDoYouSee::
 # 425 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: What is this…\n"
+	msgbox SkyPillar_Top_Text_ArchieDoYouSee, MSGBOX_DEFAULT
 # 426 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "My control is broken?\p"
+	closemessage
 # 427 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "First Groudon, and now here too…$"
+	return
 # 428 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 429 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxieLostControl::
+SkyPillar_Top_Text_ArchieLostControl:
 # 430 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxieLostControl, MSGBOX_DEFAULT
+	.string "Archie: What is this…\n"
 # 431 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "My control is broken?\p"
 # 432 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "First Kyogre, and now here too…$"
 # 433 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 434 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchieLostControl::
+SkyPillar_Top_Text_MaxieLostControl:
 # 435 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchieLostControl, MSGBOX_DEFAULT
+	.string "Maxie: What is this…\n"
 # 436 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "My control is broken?\p"
 # 437 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "First Groudon, and now here too…$"
 # 438 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 439 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchieHowCanThisBe:
+SkyPillar_Top_EventScript_MaxieLostControl::
 # 440 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: How can this be?!\p"
+	msgbox SkyPillar_Top_Text_MaxieLostControl, MSGBOX_DEFAULT
 # 441 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Even with the power of this\n"
+	closemessage
 # 442 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Pokémon, I am still defeated?\p"
+	return
 # 443 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "This changes nothing. As long\n"
+
 # 444 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "as I still… … …$"
+SkyPillar_Top_EventScript_ArchieLostControl::
 # 445 "data/maps/SkyPillar_Top/scripts.pory"
-
+	msgbox SkyPillar_Top_Text_ArchieLostControl, MSGBOX_DEFAULT
 # 446 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxieHowCanThisBe:
+	closemessage
 # 447 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: How can this be?!\p"
+	return
 # 448 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Even with the power of this\n"
+
 # 449 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Pokémon, I am still defeated?\p"
+SkyPillar_Top_Text_ArchieHowCanThisBe:
 # 450 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "This changes nothing. As long\n"
+	.string "Archie: How can this be?!\p"
 # 451 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "as I still… … …$"
+	.string "Even with the power of this\n"
 # 452 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "Pokémon, I am still defeated?\p"
 # 453 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxieHowCanThisBe::
+	.string "This changes nothing. As long\n"
 # 454 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxieHowCanThisBe, MSGBOX_DEFAULT
+	.string "as I still… … …$"
 # 455 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 456 "data/maps/SkyPillar_Top/scripts.pory"
-	return
-# 457 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 456 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_MaxieHowCanThisBe:
+# 457 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Maxie: How can this be?!\p"
 # 458 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchieHowCanThisBe::
+	.string "Even with the power of this\n"
 # 459 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchieHowCanThisBe, MSGBOX_DEFAULT
+	.string "Pokémon, I am still defeated?\p"
 # 460 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "This changes nothing. As long\n"
 # 461 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "as I still… … …$"
 # 462 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 463 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_EvilLeaderKnockedBack:
+SkyPillar_Top_EventScript_MaxieHowCanThisBe::
 # 464 "data/maps/SkyPillar_Top/scripts.pory"
-	lock_facing_direction
+	msgbox SkyPillar_Top_Text_MaxieHowCanThisBe, MSGBOX_DEFAULT
 # 465 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_fast_up
+	closemessage
 # 466 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_fast_up
+	return
 # 467 "data/maps/SkyPillar_Top/scripts.pory"
-	unlock_facing_direction
+
 # 468 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_16
+SkyPillar_Top_EventScript_ArchieHowCanThisBe::
 # 469 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_16
+	msgbox SkyPillar_Top_Text_ArchieHowCanThisBe, MSGBOX_DEFAULT
 # 470 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_down
+	closemessage
 # 471 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_16
+	return
 # 472 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_in_place_fast_down
+
 # 473 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+SkyPillar_Top_Movement_EvilLeaderKnockedBack:
 # 474 "data/maps/SkyPillar_Top/scripts.pory"
-
+	lock_facing_direction
 # 475 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_GoodLeaderApproachEvilLeader:
+	walk_fast_up
 # 476 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_up
+	walk_fast_up
 # 477 "data/maps/SkyPillar_Top/scripts.pory"
-	face_left
+	unlock_facing_direction
 # 478 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+	delay_16
 # 479 "data/maps/SkyPillar_Top/scripts.pory"
-
+	delay_16
 # 480 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchieYouWillNotStopMe:
+	walk_slow_down
 # 481 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: You will not stop me.$"
+	delay_16
 # 482 "data/maps/SkyPillar_Top/scripts.pory"
-
+	walk_in_place_fast_down
 # 483 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxieYouWillNotStopMe:
+	step_end
 # 484 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: You will not stop me.$"
+
 # 485 "data/maps/SkyPillar_Top/scripts.pory"
-
+SkyPillar_Top_Movement_GoodLeaderApproachEvilLeader:
 # 486 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchieYouStillDefy:
+	walk_slow_up
 # 487 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: Even now you still defy me?\p"
+	face_left
 # 488 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "It matters not. I will shape the world\n"
+	step_end
 # 489 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "into one of Team Aqua's design.\p"
+
 # 490 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "You will not stand in my way.$"
+SkyPillar_Top_Text_ArchieYouWillNotStopMe:
 # 491 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "Archie: You will not stop me.$"
 # 492 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxieYouStillDefy:
+
 # 493 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: Even now you still defy me?\p"
+SkyPillar_Top_Text_MaxieYouWillNotStopMe:
 # 494 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "It matters not. I will shape the world\n"
+	.string "Maxie: You will not stop me.$"
 # 495 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "into one of Team Magma's design.\p"
+
 # 496 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "You will not stand in my way.$"
+SkyPillar_Top_Text_ArchieYouStillDefy:
 # 497 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "Archie: Even now you still defy me?\p"
 # 498 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxieYouStillDefy::
+	.string "It matters not. I will shape the world\n"
 # 499 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxieYouStillDefy, MSGBOX_DEFAULT
+	.string "into one of Team Aqua's design.\p"
 # 500 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "You will not stand in my way.$"
 # 501 "data/maps/SkyPillar_Top/scripts.pory"
-	return
-# 502 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 502 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_MaxieYouStillDefy:
 # 503 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchieYouStillDefy::
+	.string "Maxie: Even now you still defy me?\p"
 # 504 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchieYouStillDefy, MSGBOX_DEFAULT
+	.string "It matters not. I will shape the world\n"
 # 505 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "into one of Team Magma's design.\p"
 # 506 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "You will not stand in my way.$"
 # 507 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 508 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_GoodLeaderMoveForPlayer:
+SkyPillar_Top_EventScript_MaxieYouStillDefy::
 # 509 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_right
+	msgbox SkyPillar_Top_Text_MaxieYouStillDefy, MSGBOX_DEFAULT
 # 510 "data/maps/SkyPillar_Top/scripts.pory"
-	face_up
+	closemessage
 # 511 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+	return
 # 512 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 513 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchieSoYoullHelp:
+SkyPillar_Top_EventScript_ArchieYouStillDefy::
 # 514 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: So you will help me?\p"
+	msgbox SkyPillar_Top_Text_ArchieYouStillDefy, MSGBOX_DEFAULT
 # 515 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "… … … … … …\n"
+	closemessage
 # 516 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "… … … … … …\p"
+	return
 # 517 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Thank you.\p"
+
 # 518 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Okay, let's do this.$"
+SkyPillar_Top_Movement_GoodLeaderMoveForPlayer:
 # 519 "data/maps/SkyPillar_Top/scripts.pory"
-
+	walk_slow_right
 # 520 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxieSoYoullHelp:
+	face_up
 # 521 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: So you will help me?\p"
+	step_end
 # 522 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "… … … … … …\n"
+
 # 523 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "… … … … … …\p"
+SkyPillar_Top_Text_ArchieSoYoullHelp:
 # 524 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Thank you.\p"
+	.string "Archie: So you will help me?\p"
 # 525 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Okay, let's do this.$"
+	.string "… … … … … …\n"
 # 526 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "… … … … … …\p"
 # 527 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchieSoYoullHelp::
+	.string "Thank you.\p"
 # 528 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchieSoYoullHelp, MSGBOX_DEFAULT
+	.string "Okay, let's do this.$"
 # 529 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 530 "data/maps/SkyPillar_Top/scripts.pory"
-	return
-# 531 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 530 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_MaxieSoYoullHelp:
+# 531 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Maxie: So you will help me?\p"
 # 532 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxieSoYoullHelp::
+	.string "… … … … … …\n"
 # 533 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxieSoYoullHelp, MSGBOX_DEFAULT
+	.string "… … … … … …\p"
 # 534 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "Thank you.\p"
 # 535 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "Okay, let's do this.$"
 # 536 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 537 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_EmmieDefeatedMaxie::
+SkyPillar_Top_EventScript_ArchieSoYoullHelp::
 # 538 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_EmmieDefeatedMaxie, MSGBOX_DEFAULT
+	msgbox SkyPillar_Top_Text_ArchieSoYoullHelp, MSGBOX_DEFAULT
 # 539 "data/maps/SkyPillar_Top/scripts.pory"
 	closemessage
 # 540 "data/maps/SkyPillar_Top/scripts.pory"
@@ -1081,9 +1081,9 @@ SkyPillar_Top_EventScript_EmmieDefeatedMaxie::
 # 541 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 542 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_EmmieDefeatedArchie::
+SkyPillar_Top_EventScript_MaxieSoYoullHelp::
 # 543 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_EmmieDefeatedArchie, MSGBOX_DEFAULT
+	msgbox SkyPillar_Top_Text_MaxieSoYoullHelp, MSGBOX_DEFAULT
 # 544 "data/maps/SkyPillar_Top/scripts.pory"
 	closemessage
 # 545 "data/maps/SkyPillar_Top/scripts.pory"
@@ -1091,1243 +1091,1243 @@ SkyPillar_Top_EventScript_EmmieDefeatedArchie::
 # 546 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 547 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_EmmieDefeatedArchie:
+SkyPillar_Top_EventScript_EmmieDefeatedMaxie::
 # 548 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Emmie: {PLAYER}, you've got this.\p"
+	msgbox SkyPillar_Top_Text_EmmieDefeatedMaxie, MSGBOX_DEFAULT
 # 549 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Together we've defeated Archie even\n"
+	closemessage
 # 550 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "when he had the power of Kyogre\l"
+	return
 # 551 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "on his side.\p"
+
 # 552 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "You've also tackled both Team Aqua\n"
+SkyPillar_Top_EventScript_EmmieDefeatedArchie::
 # 553 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "and Team Magma without my help.\p"
+	msgbox SkyPillar_Top_Text_EmmieDefeatedArchie, MSGBOX_DEFAULT
 # 554 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "After watching you and Archie\n"
+	closemessage
 # 555 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "defeat Maxie on Mt Pyre, I know\l"
+	return
 # 556 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "that you can succeed here too.\p"
+
 # 557 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Help Maxie defeat Archie and all\n"
+SkyPillar_Top_Text_EmmieDefeatedArchie:
 # 558 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "this can finally end.\p"
-# 559 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "I believe in you!$"
-# 560 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 561 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_EmmieDefeatedMaxie:
-# 562 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "Emmie: {PLAYER}, you've got this.\p"
-# 563 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Together we've defeated Maxie even\n"
-# 564 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "when he had the power of Groudon\l"
-# 565 "data/maps/SkyPillar_Top/scripts.pory"
+# 559 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Together we've defeated Archie even\n"
+# 560 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "when he had the power of Kyogre\l"
+# 561 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "on his side.\p"
-# 566 "data/maps/SkyPillar_Top/scripts.pory"
+# 562 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "You've also tackled both Team Aqua\n"
-# 567 "data/maps/SkyPillar_Top/scripts.pory"
+# 563 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "and Team Magma without my help.\p"
-# 568 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "After watching you and Maxie\n"
-# 569 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "defeat Archie on Mt Pyre, I know\l"
-# 570 "data/maps/SkyPillar_Top/scripts.pory"
+# 564 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "After watching you and Archie\n"
+# 565 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "defeat Maxie on Mt Pyre, I know\l"
+# 566 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "that you can succeed here too.\p"
-# 571 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Help Archie defeat Maxie and all\n"
-# 572 "data/maps/SkyPillar_Top/scripts.pory"
+# 567 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Help Maxie defeat Archie and all\n"
+# 568 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "this can finally end.\p"
-# 573 "data/maps/SkyPillar_Top/scripts.pory"
+# 569 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "I believe in you!$"
+# 570 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 571 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_EmmieDefeatedMaxie:
+# 572 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Emmie: {PLAYER}, you've got this.\p"
+# 573 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Together we've defeated Maxie even\n"
 # 574 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "when he had the power of Groudon\l"
 # 575 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_EmmieApproachPlayer:
+	.string "on his side.\p"
 # 576 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_up
+	.string "You've also tackled both Team Aqua\n"
 # 577 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_in_place_fast_right
+	.string "and Team Magma without my help.\p"
 # 578 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+	.string "After watching you and Maxie\n"
 # 579 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "defeat Archie on Mt Pyre, I know\l"
 # 580 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxiePleaseHelp:
+	.string "that you can succeed here too.\p"
 # 581 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: {PLAYER}, Archie is refusing\n"
+	.string "Help Archie defeat Maxie and all\n"
 # 582 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "to listen to reason.\p"
+	.string "this can finally end.\p"
 # 583 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "He is hell bent on using this Pokémon\n"
+	.string "I believe in you!$"
 # 584 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "to defeat Groudon and control Kyogre.\p"
+
 # 585 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "This world we have created was not \n"
+SkyPillar_Top_Movement_EmmieApproachPlayer:
 # 586 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "part of my design.\p"
+	walk_up
 # 587 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "I accept that I hold equal blame with\n"
+	walk_in_place_fast_right
 # 588 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie, but I see now that we were\l"
+	step_end
 # 589 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "playing with forces beyond our control.\p"
+
 # 590 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "I know that you do not trust me, but\n"
+SkyPillar_Top_Text_MaxiePleaseHelp:
 # 591 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "trust that I also want to stop Archie.\p"
+	.string "Maxie: {PLAYER}, Archie is refusing\n"
 # 592 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Please, help me stop Archie and together\n"
-# 593 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "we can put an end to all this.$"
-# 594 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 595 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchiePleaseHelp:
-# 596 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: {PLAYER}, Maxie is refusing\n"
-# 597 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "to listen to reason.\p"
-# 598 "data/maps/SkyPillar_Top/scripts.pory"
+# 593 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "He is hell bent on using this Pokémon\n"
-# 599 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "to defeat Kyogre and control Groudon.\p"
-# 600 "data/maps/SkyPillar_Top/scripts.pory"
+# 594 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "to defeat Groudon and control Kyogre.\p"
+# 595 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "This world we have created was not \n"
-# 601 "data/maps/SkyPillar_Top/scripts.pory"
+# 596 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "part of my design.\p"
-# 602 "data/maps/SkyPillar_Top/scripts.pory"
+# 597 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "I accept that I hold equal blame with\n"
-# 603 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie, but I see now that we were\l"
-# 604 "data/maps/SkyPillar_Top/scripts.pory"
+# 598 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Archie, but I see now that we were\l"
+# 599 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "playing with forces beyond our control.\p"
-# 605 "data/maps/SkyPillar_Top/scripts.pory"
+# 600 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "I know that you do not trust me, but\n"
-# 606 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "trust that I also want to stop Maxie.\p"
-# 607 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Please, help me stop Maxie and together\n"
-# 608 "data/maps/SkyPillar_Top/scripts.pory"
+# 601 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "trust that I also want to stop Archie.\p"
+# 602 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Please, help me stop Archie and together\n"
+# 603 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "we can put an end to all this.$"
+# 604 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 605 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_ArchiePleaseHelp:
+# 606 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Archie: {PLAYER}, Maxie is refusing\n"
+# 607 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "to listen to reason.\p"
+# 608 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "He is hell bent on using this Pokémon\n"
 # 609 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "to defeat Kyogre and control Groudon.\p"
 # 610 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchiePleaseHelp::
+	.string "This world we have created was not \n"
 # 611 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchiePleaseHelp, MSGBOX_DEFAULT
+	.string "part of my design.\p"
 # 612 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "I accept that I hold equal blame with\n"
 # 613 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "Maxie, but I see now that we were\l"
 # 614 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "playing with forces beyond our control.\p"
 # 615 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxiePleaseHelp::
+	.string "I know that you do not trust me, but\n"
 # 616 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxiePleaseHelp, MSGBOX_DEFAULT
+	.string "trust that I also want to stop Maxie.\p"
 # 617 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "Please, help me stop Maxie and together\n"
 # 618 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "we can put an end to all this.$"
 # 619 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 620 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchieWeWillSubdue:
+SkyPillar_Top_EventScript_ArchiePleaseHelp::
 # 621 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: Together we will subdue Groudon\n"
+	msgbox SkyPillar_Top_Text_ArchiePleaseHelp, MSGBOX_DEFAULT
 # 622 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "and restrain the power of Kyogre.$"
+	closemessage
 # 623 "data/maps/SkyPillar_Top/scripts.pory"
-
+	return
 # 624 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxieWeWillSubdue:
+
 # 625 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: Together we will subdue Kyogre\n"
+SkyPillar_Top_EventScript_MaxiePleaseHelp::
 # 626 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "and restrain the power of Groudon.$"
+	msgbox SkyPillar_Top_Text_MaxiePleaseHelp, MSGBOX_DEFAULT
 # 627 "data/maps/SkyPillar_Top/scripts.pory"
-
+	closemessage
 # 628 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxieWeWillSubdue::
+	return
 # 629 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxieWeWillSubdue, MSGBOX_DEFAULT
-# 630 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 631 "data/maps/SkyPillar_Top/scripts.pory"
-	return
-# 632 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 630 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_ArchieWeWillSubdue:
+# 631 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Archie: Together we will subdue Groudon\n"
+# 632 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "and restrain the power of Kyogre.$"
 # 633 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchieWeWillSubdue::
+
 # 634 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchieWeWillSubdue, MSGBOX_DEFAULT
+SkyPillar_Top_Text_MaxieWeWillSubdue:
 # 635 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "Maxie: Together we will subdue Kyogre\n"
 # 636 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "and restrain the power of Groudon.$"
 # 637 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 638 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_RayquazaExitPokeball:
+SkyPillar_Top_EventScript_MaxieWeWillSubdue::
 # 639 "data/maps/SkyPillar_Top/scripts.pory"
-	exit_pokeball
+	msgbox SkyPillar_Top_Text_MaxieWeWillSubdue, MSGBOX_DEFAULT
 # 640 "data/maps/SkyPillar_Top/scripts.pory"
-	set_invisible
+	closemessage
 # 641 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+	return
 # 642 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 643 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxieSeeHowControl:
+SkyPillar_Top_EventScript_ArchieWeWillSubdue::
 # 644 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: See how this Pokémon eliminates\n"
+	msgbox SkyPillar_Top_Text_ArchieWeWillSubdue, MSGBOX_DEFAULT
 # 645 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "the effects of the weather distortion.\p"
+	closemessage
 # 646 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "With its power, I can control Groudon's\n"
+	return
 # 647 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "abilities.$"
+
 # 648 "data/maps/SkyPillar_Top/scripts.pory"
-
+SkyPillar_Top_Movement_RayquazaExitPokeball:
 # 649 "data/maps/SkyPillar_Top/scripts.pory"
-
+	exit_pokeball
 # 650 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchieSeeHowControl:
+	set_invisible
 # 651 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: See how this Pokémon eliminates\n"
+	step_end
 # 652 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "the effects of the weather distortion.\p"
+
 # 653 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "With its power, I can control Kyogre's\n"
+SkyPillar_Top_Text_MaxieSeeHowControl:
 # 654 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "abilities.$"
+	.string "Maxie: See how this Pokémon eliminates\n"
 # 655 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "the effects of the weather distortion.\p"
 # 656 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxieSeeHowControl::
+	.string "With its power, I can control Groudon's\n"
 # 657 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxieSeeHowControl, MSGBOX_DEFAULT
+	.string "abilities.$"
 # 658 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 659 "data/maps/SkyPillar_Top/scripts.pory"
-	return
-# 660 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 659 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 660 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_ArchieSeeHowControl:
 # 661 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchieSeeHowControl::
+	.string "Archie: See how this Pokémon eliminates\n"
 # 662 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchieSeeHowControl, MSGBOX_DEFAULT
+	.string "the effects of the weather distortion.\p"
 # 663 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	.string "With its power, I can control Kyogre's\n"
 # 664 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "abilities.$"
 # 665 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 666 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_FinaleCameraPanFromAction:
+SkyPillar_Top_EventScript_MaxieSeeHowControl::
 # 667 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_down
+	msgbox SkyPillar_Top_Text_MaxieSeeHowControl, MSGBOX_DEFAULT
 # 668 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_down
+	closemessage
 # 669 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+	return
 # 670 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 671 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_RayquazaEnterPokeball:
+SkyPillar_Top_EventScript_ArchieSeeHowControl::
 # 672 "data/maps/SkyPillar_Top/scripts.pory"
-	enter_pokeball
+	msgbox SkyPillar_Top_Text_ArchieSeeHowControl, MSGBOX_DEFAULT
 # 673 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+	closemessage
 # 674 "data/maps/SkyPillar_Top/scripts.pory"
-
+	return
 # 675 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxieFailToSee::
-# 676 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxieFailToSee, MSGBOX_DEFAULT
-# 677 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 678 "data/maps/SkyPillar_Top/scripts.pory"
-	return
-# 679 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 676 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Movement_FinaleCameraPanFromAction:
+# 677 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_slow_down
+# 678 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_slow_down
+# 679 "data/maps/SkyPillar_Top/scripts.pory"
+	step_end
 # 680 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchieFailToSee::
+
 # 681 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchieFailToSee, MSGBOX_DEFAULT
+SkyPillar_Top_Movement_RayquazaEnterPokeball:
 # 682 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	enter_pokeball
 # 683 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	step_end
 # 684 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 685 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchieFailToSee:
+SkyPillar_Top_EventScript_MaxieFailToSee::
 # 686 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: As ever, Maxie, you fail to see\n"
+	msgbox SkyPillar_Top_Text_MaxieFailToSee, MSGBOX_DEFAULT
 # 687 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "the bigger picture.\p"
+	closemessage
 # 688 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "With the power of this Pokémon, Team\n"
+	return
 # 689 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Aqua's world may not yet be lost.\p"
+
 # 690 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Observe…$"
+SkyPillar_Top_EventScript_ArchieFailToSee::
 # 691 "data/maps/SkyPillar_Top/scripts.pory"
-
+	msgbox SkyPillar_Top_Text_ArchieFailToSee, MSGBOX_DEFAULT
 # 692 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxieFailToSee:
+	closemessage
 # 693 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: As ever, Archie, you fail to see\n"
+	return
 # 694 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "the bigger picture.\p"
+
 # 695 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "With the power of this Pokémon, Team\n"
+SkyPillar_Top_Text_ArchieFailToSee:
 # 696 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Magma's world may not yet be lost.\p"
+	.string "Archie: As ever, Maxie, you fail to see\n"
 # 697 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Observe…$"
+	.string "the bigger picture.\p"
 # 698 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "With the power of this Pokémon, Team\n"
 # 699 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_FinaleGoodLeaderPushedBack:
+	.string "Aqua's world may not yet be lost.\p"
 # 700 "data/maps/SkyPillar_Top/scripts.pory"
-	lock_facing_direction
+	.string "Observe…$"
 # 701 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_fast_down
+
 # 702 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_fast_down
+SkyPillar_Top_Text_MaxieFailToSee:
 # 703 "data/maps/SkyPillar_Top/scripts.pory"
-	unlock_facing_direction
+	.string "Maxie: As ever, Archie, you fail to see\n"
 # 704 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_16
+	.string "the bigger picture.\p"
 # 705 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+	.string "With the power of this Pokémon, Team\n"
 # 706 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "Magma's world may not yet be lost.\p"
 # 707 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ArchiePleadWithMaxie::
+	.string "Observe…$"
 # 708 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ArchiePleadWithMaxie, MSGBOX_DEFAULT
-# 709 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 710 "data/maps/SkyPillar_Top/scripts.pory"
-	return
-# 711 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 709 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Movement_FinaleGoodLeaderPushedBack:
+# 710 "data/maps/SkyPillar_Top/scripts.pory"
+	lock_facing_direction
+# 711 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_fast_down
 # 712 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MaxiePleadWithArchie::
+	walk_fast_down
 # 713 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MaxiePleadWithArchie, MSGBOX_DEFAULT
+	unlock_facing_direction
 # 714 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	delay_16
 # 715 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	step_end
 # 716 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 717 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MaxiePleadWithArchie:
+SkyPillar_Top_EventScript_ArchiePleadWithMaxie::
 # 718 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie: Archie, please, this has gone\n"
+	msgbox SkyPillar_Top_Text_ArchiePleadWithMaxie, MSGBOX_DEFAULT
 # 719 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "too far.\p"
+	closemessage
 # 720 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "This world we have created… This is\n"
+	return
 # 721 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "not the world Team Magma dreamed of.\p"
+
 # 722 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "This cannot be what you and Team Aqua\n"
+SkyPillar_Top_EventScript_MaxiePleadWithArchie::
 # 723 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "want either?\p"
+	msgbox SkyPillar_Top_Text_MaxiePleadWithArchie, MSGBOX_DEFAULT
 # 724 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "The imbalance we have brought to the\n"
+	closemessage
 # 725 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "region must come to an end, but this\l"
+	return
 # 726 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "isn't the way!$"
+
 # 727 "data/maps/SkyPillar_Top/scripts.pory"
-
+SkyPillar_Top_Text_MaxiePleadWithArchie:
 # 728 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ArchiePleadWithMaxie:
+	.string "Maxie: Archie, please, this has gone\n"
 # 729 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie: Maxie, please, this has gone\n"
-# 730 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "too far.\p"
-# 731 "data/maps/SkyPillar_Top/scripts.pory"
+# 730 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "This world we have created… This is\n"
+# 731 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "not the world Team Magma dreamed of.\p"
 # 732 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "not the world Team Aqua dreamed of.\p"
+	.string "This cannot be what you and Team Aqua\n"
 # 733 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "This cannot be what you and Team Magma\n"
-# 734 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "want either?\p"
-# 735 "data/maps/SkyPillar_Top/scripts.pory"
+# 734 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "The imbalance we have brought to the\n"
-# 736 "data/maps/SkyPillar_Top/scripts.pory"
+# 735 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "region must come to an end, but this\l"
-# 737 "data/maps/SkyPillar_Top/scripts.pory"
+# 736 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "isn't the way!$"
+# 737 "data/maps/SkyPillar_Top/scripts.pory"
+
 # 738 "data/maps/SkyPillar_Top/scripts.pory"
-
+SkyPillar_Top_Text_ArchiePleadWithMaxie:
 # 739 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_FinaleCameraPanToAction:
+	.string "Archie: Maxie, please, this has gone\n"
 # 740 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_up
+	.string "too far.\p"
 # 741 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_up
+	.string "This world we have created… This is\n"
 # 742 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+	.string "not the world Team Aqua dreamed of.\p"
 # 743 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "This cannot be what you and Team Magma\n"
 # 744 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_FinaleMaxieMusic::
+	.string "want either?\p"
 # 745 "data/maps/SkyPillar_Top/scripts.pory"
-	playbgm MUS_ENCOUNTER_MAGMA, TRUE
+	.string "The imbalance we have brought to the\n"
 # 746 "data/maps/SkyPillar_Top/scripts.pory"
-	return
+	.string "region must come to an end, but this\l"
 # 747 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "isn't the way!$"
 # 748 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_FinaleArchieMusic::
-# 749 "data/maps/SkyPillar_Top/scripts.pory"
-	playbgm MUS_ENCOUNTER_AQUA, TRUE
-# 750 "data/maps/SkyPillar_Top/scripts.pory"
-	return
-# 751 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 749 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Movement_FinaleCameraPanToAction:
+# 750 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_slow_up
+# 751 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_slow_up
 # 752 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_FinaleEmmieApproach:
-# 753 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_up
-# 754 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_left
-# 755 "data/maps/SkyPillar_Top/scripts.pory"
-	face_up
-# 756 "data/maps/SkyPillar_Top/scripts.pory"
 	step_end
+# 753 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 754 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_FinaleMaxieMusic::
+# 755 "data/maps/SkyPillar_Top/scripts.pory"
+	playbgm MUS_ENCOUNTER_MAGMA, TRUE
+# 756 "data/maps/SkyPillar_Top/scripts.pory"
+	return
 # 757 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 758 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_RayquazaFaceDown::
+SkyPillar_Top_EventScript_FinaleArchieMusic::
 # 759 "data/maps/SkyPillar_Top/scripts.pory"
-	turnobject LOCALID_RAYQUAZA_SLEEPING, DIR_SOUTH
+	playbgm MUS_ENCOUNTER_AQUA, TRUE
 # 760 "data/maps/SkyPillar_Top/scripts.pory"
-	end
+	return
 # 761 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 762 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_EmmieApproachMatt:
+SkyPillar_Top_Movement_FinaleEmmieApproach:
 # 763 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_left
+	walk_up
 # 764 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_down
+	walk_left
 # 765 "data/maps/SkyPillar_Top/scripts.pory"
-	face_left
+	face_up
 # 766 "data/maps/SkyPillar_Top/scripts.pory"
 	step_end
 # 767 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 768 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MattLeaveWellAlone:
+SkyPillar_Top_EventScript_RayquazaFaceDown::
 # 769 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Matt: You two, again!\p"
+	turnobject LOCALID_RAYQUAZA_SLEEPING, DIR_SOUTH
 # 770 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "You just don't know when to quit\n"
+	end
 # 771 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "do you?$"
+
 # 772 "data/maps/SkyPillar_Top/scripts.pory"
-
+SkyPillar_Top_Movement_EmmieApproachMatt:
 # 773 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_TabithaTenacious:
+	walk_left
 # 774 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Tabitha: Heh… Tenacious aren't you…$"
+	walk_down
 # 775 "data/maps/SkyPillar_Top/scripts.pory"
-
+	face_left
 # 776 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MattBeenHereBefore:
+	step_end
 # 777 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Matt: We've been here before…\p"
-# 778 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Let's get it right this time.$"
-# 779 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 778 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_MattLeaveWellAlone:
+# 779 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Matt: You two, again!\p"
 # 780 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_TabithaWhyNot:
+	.string "You just don't know when to quit\n"
 # 781 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Tabitha: Sure, why not?$"
+	.string "do you?$"
 # 782 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 783 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_TabithaApproachPlayer:
+SkyPillar_Top_Text_TabithaTenacious:
 # 784 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_down
+	.string "Tabitha: Heh… Tenacious aren't you…$"
 # 785 "data/maps/SkyPillar_Top/scripts.pory"
-	face_right
+
 # 786 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+SkyPillar_Top_Text_MattBeenHereBefore:
 # 787 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "Matt: We've been here before…\p"
 # 788 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_TabithaNotLikePyre:
+	.string "Let's get it right this time.$"
 # 789 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Tabitha: Hehehe… This isn't going to\n"
+
 # 790 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "end like Mt Pyre!$"
+SkyPillar_Top_Text_TabithaWhyNot:
 # 791 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "Tabitha: Sure, why not?$"
 # 792 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MattDefeat:
+
 # 793 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "I concede. Team Aqua may never be able\n"
+SkyPillar_Top_Movement_TabithaApproachPlayer:
 # 794 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "to hold you back…$"
+	walk_slow_down
 # 795 "data/maps/SkyPillar_Top/scripts.pory"
-
+	face_right
 # 796 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_TabithaDefeat:
-# 797 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Hehe… Hehehehe…$"
-# 798 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 799 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_TabithaMattKnockedBack:
-# 800 "data/maps/SkyPillar_Top/scripts.pory"
-	lock_facing_direction
-# 801 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_fast_left
-# 802 "data/maps/SkyPillar_Top/scripts.pory"
-	unlock_facing_direction
-# 803 "data/maps/SkyPillar_Top/scripts.pory"
 	step_end
-# 804 "data/maps/SkyPillar_Top/scripts.pory"
+# 797 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 798 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_TabithaNotLikePyre:
+# 799 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "Tabitha: Hehehe… This isn't going to\n"
+# 800 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "end like Mt Pyre!$"
+# 801 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 802 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_MattDefeat:
+# 803 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "I concede. Team Aqua may never be able\n"
+# 804 "data/maps/SkyPillar_Top/scripts.pory"
+	.string "to hold you back…$"
 # 805 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_MattPostBattle:
+
 # 806 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Matt: Whatever happens now is beyond\n"
+SkyPillar_Top_Text_TabithaDefeat:
 # 807 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "my control.$"
+	.string "Hehe… Hehehehe…$"
 # 808 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 809 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_TabithaPostBattle:
+SkyPillar_Top_Movement_TabithaMattKnockedBack:
 # 810 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Tabitha: Nothing you say or do will\n"
+	lock_facing_direction
 # 811 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "ever weaken my faith in Maxie…$"
+	walk_fast_left
 # 812 "data/maps/SkyPillar_Top/scripts.pory"
-
+	unlock_facing_direction
 # 813 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_MattReturnToPosition:
+	step_end
 # 814 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_up
+
 # 815 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_up
+SkyPillar_Top_Text_MattPostBattle:
 # 816 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_right
+	.string "Matt: Whatever happens now is beyond\n"
 # 817 "data/maps/SkyPillar_Top/scripts.pory"
-	face_down
+	.string "my control.$"
 # 818 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+
 # 819 "data/maps/SkyPillar_Top/scripts.pory"
-
+SkyPillar_Top_Text_TabithaPostBattle:
 # 820 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_TabithaReturnToPosition:
+	.string "Tabitha: Nothing you say or do will\n"
 # 821 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_up
+	.string "ever weaken my faith in Maxie…$"
 # 822 "data/maps/SkyPillar_Top/scripts.pory"
-	face_down
+
 # 823 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+SkyPillar_Top_Movement_MattReturnToPosition:
 # 824 "data/maps/SkyPillar_Top/scripts.pory"
-
+	walk_up
 # 825 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_EmmieNearlyThere:
+	walk_up
 # 826 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Emmie: C'mon, {PLAYER}, we're almost\n"
+	walk_right
 # 827 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "there!$"
+	face_down
 # 828 "data/maps/SkyPillar_Top/scripts.pory"
-
+	step_end
 # 829 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MattTabitha::
+
 # 830 "data/maps/SkyPillar_Top/scripts.pory"
-	lockall
+SkyPillar_Top_Movement_TabithaReturnToPosition:
 # 831 "data/maps/SkyPillar_Top/scripts.pory"
-	playbgm MUS_ENCOUNTER_AQUA, TRUE
+	walk_slow_up
 # 832 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
+	face_down
 # 833 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SkyPillar_Top_Movement_EmmieApproachMatt
+	step_end
 # 834 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+
 # 835 "data/maps/SkyPillar_Top/scripts.pory"
-	setobjectmovementtype LOCALID_SKYPILLAR_MATT, MOVEMENT_TYPE_FACE_UP
+SkyPillar_Top_Text_EmmieNearlyThere:
 # 836 "data/maps/SkyPillar_Top/scripts.pory"
-	setobjectmovementtype LOCALID_SKYPILLAR_TABITHA, MOVEMENT_TYPE_FACE_DOWN
+	.string "Emmie: C'mon, {PLAYER}, we're almost\n"
 # 837 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_FaceRight
+	.string "there!$"
 # 838 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_FaceRight
+
 # 839 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+SkyPillar_Top_EventScript_MattTabitha::
 # 840 "data/maps/SkyPillar_Top/scripts.pory"
-	playse SE_PIN
+	lockall
 # 841 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_ExclamationMark
+	playbgm MUS_ENCOUNTER_AQUA, TRUE
 # 842 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
 # 843 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SkyPillar_Top_Movement_EmmieApproachMatt
 # 844 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_WalkInPlaceFasterRight
-# 845 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
+# 845 "data/maps/SkyPillar_Top/scripts.pory"
+	setobjectmovementtype LOCALID_SKYPILLAR_MATT, MOVEMENT_TYPE_FACE_UP
 # 846 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MattLeaveWellAlone, MSGBOX_DEFAULT
+	setobjectmovementtype LOCALID_SKYPILLAR_TABITHA, MOVEMENT_TYPE_FACE_DOWN
 # 847 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_FaceRight
 # 848 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_FaceRight
 # 849 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
 # 850 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_TabithaTenacious, MSGBOX_DEFAULT
+	playse SE_PIN
 # 851 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_ExclamationMark
 # 852 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_FaceDown
+	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_ExclamationMark
 # 853 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
 # 854 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 855 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MattBeenHereBefore, MSGBOX_DEFAULT
-# 856 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 857 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_WalkInPlaceFasterDown
-# 858 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 859 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_TabithaWhyNot, MSGBOX_DEFAULT
-# 860 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 861 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_TABITHA, SkyPillar_Top_Movement_TabithaApproachPlayer
-# 862 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_WalkSlowRight
-# 863 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkSlowLeft
-# 864 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkSlowLeft
-# 865 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 866 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_WalkInPlaceFasterRight
-# 867 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 868 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_TabithaNotLikePyre, MSGBOX_DEFAULT
-# 869 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 870 "data/maps/SkyPillar_Top/scripts.pory"
-	goto SkyPillar_Top_EventScript_MattTabithaDoMultiBattle
-# 871 "data/maps/SkyPillar_Top/scripts.pory"
-	releaseall
-# 872 "data/maps/SkyPillar_Top/scripts.pory"
-	end
-# 873 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 874 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MattTabithaDoMultiBattle::
-# 875 "data/maps/SkyPillar_Top/scripts.pory"
-	playbgm MUS_MT_CHIMNEY, TRUE
-# 876 "data/maps/SkyPillar_Top/scripts.pory"
-	multi_2p_vs_2 TRAINER_TABITHA_SKY_PILLAR, SkyPillar_Top_Text_TabithaDefeat, TRAINER_MATT_SKY_PILLAR, SkyPillar_Top_Text_MattDefeat, PARTNER_EMMIE
-# 877 "data/maps/SkyPillar_Top/scripts.pory"
-	switch VAR_RESULT
-# 878 "data/maps/SkyPillar_Top/scripts.pory"
-	case 1, SkyPillar_Top_EventScript_MattTabithaVictory
-# 879 "data/maps/SkyPillar_Top/scripts.pory"
-	fadescreen FADE_TO_BLACK
-# 880 "data/maps/SkyPillar_Top/scripts.pory"
-	special SetCB2WhiteOut
-# 881 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
-# 882 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 883 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_MattTabithaVictory::
-# 884 "data/maps/SkyPillar_Top/scripts.pory"
-	playse SE_NOT_EFFECTIVE
-# 885 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_TABITHA, SkyPillar_Top_Movement_TabithaMattKnockedBack
-# 886 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_MATT, SkyPillar_Top_Movement_TabithaMattKnockedBack
-# 887 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 888 "data/maps/SkyPillar_Top/scripts.pory"
 	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_WalkInPlaceFasterRight
-# 889 "data/maps/SkyPillar_Top/scripts.pory"
+# 855 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
-# 890 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_MattPostBattle, MSGBOX_DEFAULT
-# 891 "data/maps/SkyPillar_Top/scripts.pory"
+# 856 "data/maps/SkyPillar_Top/scripts.pory"
+	msgbox SkyPillar_Top_Text_MattLeaveWellAlone, MSGBOX_DEFAULT
+# 857 "data/maps/SkyPillar_Top/scripts.pory"
 	closemessage
-# 892 "data/maps/SkyPillar_Top/scripts.pory"
+# 858 "data/maps/SkyPillar_Top/scripts.pory"
 	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_WalkInPlaceFasterRight
-# 893 "data/maps/SkyPillar_Top/scripts.pory"
+# 859 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
-# 894 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_TabithaPostBattle, MSGBOX_DEFAULT
-# 895 "data/maps/SkyPillar_Top/scripts.pory"
+# 860 "data/maps/SkyPillar_Top/scripts.pory"
+	msgbox SkyPillar_Top_Text_TabithaTenacious, MSGBOX_DEFAULT
+# 861 "data/maps/SkyPillar_Top/scripts.pory"
 	closemessage
-# 896 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_MATT, SkyPillar_Top_Movement_MattReturnToPosition
-# 897 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_TABITHA, SkyPillar_Top_Movement_TabithaReturnToPosition
-# 898 "data/maps/SkyPillar_Top/scripts.pory"
+# 862 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_FaceDown
+# 863 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_WalkInPlaceFasterUp
+# 864 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 865 "data/maps/SkyPillar_Top/scripts.pory"
+	msgbox SkyPillar_Top_Text_MattBeenHereBefore, MSGBOX_DEFAULT
+# 866 "data/maps/SkyPillar_Top/scripts.pory"
+	closemessage
+# 867 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_WalkInPlaceFasterDown
+# 868 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 869 "data/maps/SkyPillar_Top/scripts.pory"
+	msgbox SkyPillar_Top_Text_TabithaWhyNot, MSGBOX_DEFAULT
+# 870 "data/maps/SkyPillar_Top/scripts.pory"
+	closemessage
+# 871 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_TABITHA, SkyPillar_Top_Movement_TabithaApproachPlayer
+# 872 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_WalkSlowRight
+# 873 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkSlowLeft
+# 874 "data/maps/SkyPillar_Top/scripts.pory"
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkSlowLeft
+# 875 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 876 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_WalkInPlaceFasterRight
+# 877 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 878 "data/maps/SkyPillar_Top/scripts.pory"
+	msgbox SkyPillar_Top_Text_TabithaNotLikePyre, MSGBOX_DEFAULT
+# 879 "data/maps/SkyPillar_Top/scripts.pory"
+	closemessage
+# 880 "data/maps/SkyPillar_Top/scripts.pory"
+	goto SkyPillar_Top_EventScript_MattTabithaDoMultiBattle
+# 881 "data/maps/SkyPillar_Top/scripts.pory"
+	releaseall
+# 882 "data/maps/SkyPillar_Top/scripts.pory"
+	end
+# 883 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 884 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_MattTabithaDoMultiBattle::
+# 885 "data/maps/SkyPillar_Top/scripts.pory"
+	playbgm MUS_MT_CHIMNEY, TRUE
+# 886 "data/maps/SkyPillar_Top/scripts.pory"
+	multi_2p_vs_2 TRAINER_TABITHA_SKY_PILLAR, SkyPillar_Top_Text_TabithaDefeat, TRAINER_MATT_SKY_PILLAR, SkyPillar_Top_Text_MattDefeat, PARTNER_EMMIE
+# 887 "data/maps/SkyPillar_Top/scripts.pory"
+	switch VAR_RESULT
+# 888 "data/maps/SkyPillar_Top/scripts.pory"
+	case 1, SkyPillar_Top_EventScript_MattTabithaVictory
+# 889 "data/maps/SkyPillar_Top/scripts.pory"
+	fadescreen FADE_TO_BLACK
+# 890 "data/maps/SkyPillar_Top/scripts.pory"
+	special SetCB2WhiteOut
+# 891 "data/maps/SkyPillar_Top/scripts.pory"
+	waitstate
+# 892 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 893 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_MattTabithaVictory::
+# 894 "data/maps/SkyPillar_Top/scripts.pory"
+	playse SE_NOT_EFFECTIVE
+# 895 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_TABITHA, SkyPillar_Top_Movement_TabithaMattKnockedBack
+# 896 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_MATT, SkyPillar_Top_Movement_TabithaMattKnockedBack
+# 897 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 898 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_WalkInPlaceFasterRight
 # 899 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
 # 900 "data/maps/SkyPillar_Top/scripts.pory"
-	setobjectmovementtype LOCALID_SKYPILLAR_MATT, MOVEMENT_TYPE_FACE_DOWN
-# 901 "data/maps/SkyPillar_Top/scripts.pory"
-	setobjectmovementtype LOCALID_SKYPILLAR_TABITHA, MOVEMENT_TYPE_FACE_DOWN
-# 902 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-# 903 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
-# 904 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 905 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_EmmieNearlyThere, MSGBOX_DEFAULT
-# 906 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 907 "data/maps/SkyPillar_Top/scripts.pory"
-	addvar VAR_SKY_PILLAR_STATE, 1
-# 908 "data/maps/SkyPillar_Top/scripts.pory"
-	end
-# 909 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 910 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_Matt::
-# 911 "data/maps/SkyPillar_Top/scripts.pory"
-	faceplayer
-# 912 "data/maps/SkyPillar_Top/scripts.pory"
 	msgbox SkyPillar_Top_Text_MattPostBattle, MSGBOX_DEFAULT
-# 913 "data/maps/SkyPillar_Top/scripts.pory"
+# 901 "data/maps/SkyPillar_Top/scripts.pory"
 	closemessage
-# 914 "data/maps/SkyPillar_Top/scripts.pory"
-	end
-# 915 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 916 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_Tabitha::
-# 917 "data/maps/SkyPillar_Top/scripts.pory"
-	faceplayer
-# 918 "data/maps/SkyPillar_Top/scripts.pory"
+# 902 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_WalkInPlaceFasterRight
+# 903 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 904 "data/maps/SkyPillar_Top/scripts.pory"
 	msgbox SkyPillar_Top_Text_TabithaPostBattle, MSGBOX_DEFAULT
-# 919 "data/maps/SkyPillar_Top/scripts.pory"
+# 905 "data/maps/SkyPillar_Top/scripts.pory"
 	closemessage
-# 920 "data/maps/SkyPillar_Top/scripts.pory"
+# 906 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_MATT, SkyPillar_Top_Movement_MattReturnToPosition
+# 907 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_TABITHA, SkyPillar_Top_Movement_TabithaReturnToPosition
+# 908 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkSlowLeft
+# 909 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 910 "data/maps/SkyPillar_Top/scripts.pory"
+	setobjectmovementtype LOCALID_SKYPILLAR_MATT, MOVEMENT_TYPE_FACE_DOWN
+# 911 "data/maps/SkyPillar_Top/scripts.pory"
+	setobjectmovementtype LOCALID_SKYPILLAR_TABITHA, MOVEMENT_TYPE_FACE_DOWN
+# 912 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+# 913 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
+# 914 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 915 "data/maps/SkyPillar_Top/scripts.pory"
+	msgbox SkyPillar_Top_Text_EmmieNearlyThere, MSGBOX_DEFAULT
+# 916 "data/maps/SkyPillar_Top/scripts.pory"
+	closemessage
+# 917 "data/maps/SkyPillar_Top/scripts.pory"
+	addvar VAR_SKY_PILLAR_STATE, 1
+# 918 "data/maps/SkyPillar_Top/scripts.pory"
 	end
+# 919 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 920 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_Matt::
 # 921 "data/maps/SkyPillar_Top/scripts.pory"
-
+	faceplayer
 # 922 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_CourtneyNoInterruptions:
+	msgbox SkyPillar_Top_Text_MattPostBattle, MSGBOX_DEFAULT
 # 923 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Courtney: Maxie instructed me that\n"
+	closemessage
 # 924 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "there are to be no interruptions.\p"
+	end
 # 925 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Nobody makes me break a promise with\n"
+
 # 926 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie, especially not you Shelly!$"
+SkyPillar_Top_EventScript_Tabitha::
 # 927 "data/maps/SkyPillar_Top/scripts.pory"
-
+	faceplayer
 # 928 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_PlayerApproachShelly:
+	msgbox SkyPillar_Top_Text_TabithaPostBattle, MSGBOX_DEFAULT
 # 929 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_right
+	closemessage
 # 930 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_up
+	end
 # 931 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_up
+
 # 932 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+SkyPillar_Top_Text_CourtneyNoInterruptions:
 # 933 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "Courtney: Maxie instructed me that\n"
 # 934 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_EmmieApproachCourtney:
+	.string "there are to be no interruptions.\p"
 # 935 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_up
+	.string "Nobody makes me break a promise with\n"
 # 936 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_left
+	.string "Maxie, especially not you Shelly!$"
 # 937 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_up
+
 # 938 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_up
+SkyPillar_Top_Movement_PlayerApproachShelly:
 # 939 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+	walk_right
 # 940 "data/maps/SkyPillar_Top/scripts.pory"
-
+	walk_up
 # 941 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ShellyShouldHaveKnown:
+	walk_slow_up
 # 942 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Shelly: I should have known you two\n"
+	step_end
 # 943 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "would turn up sooner or later…\p"
-# 944 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "I trust that Archie knows what's\n"
-# 945 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "best, and every time you show up,\l"
-# 946 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "things only ever get worse…$"
-# 947 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 944 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Movement_EmmieApproachCourtney:
+# 945 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_up
+# 946 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_left
+# 947 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_up
 # 948 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_CourtneySpeechless:
+	walk_up
 # 949 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Courtney: … … … … … …$"
+	step_end
 # 950 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 951 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_ShellyCourtney::
+SkyPillar_Top_Text_ShellyShouldHaveKnown:
 # 952 "data/maps/SkyPillar_Top/scripts.pory"
-	lockall
+	.string "Shelly: I should have known you two\n"
 # 953 "data/maps/SkyPillar_Top/scripts.pory"
-	setobjectmovementtype LOCALID_SKYPILLAR_COURTNEY, MOVEMENT_TYPE_FACE_RIGHT
+	.string "would turn up sooner or later…\p"
 # 954 "data/maps/SkyPillar_Top/scripts.pory"
-	setobjectmovementtype LOCALID_SKYPILLAR_SHELLY, MOVEMENT_TYPE_FACE_LEFT
+	.string "I trust that Archie knows what's\n"
 # 955 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, SkyPillar_Top_Movement_PlayerApproachShelly
+	.string "best, and every time you show up,\l"
 # 956 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SkyPillar_Top_Movement_EmmieApproachCourtney
+	.string "things only ever get worse…$"
 # 957 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+
 # 958 "data/maps/SkyPillar_Top/scripts.pory"
-	playbgm MUS_ENCOUNTER_MAGMA, TRUE
+SkyPillar_Top_Text_CourtneySpeechless:
 # 959 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_WalkInPlaceFasterRight
+	.string "Courtney: … … … … … …$"
 # 960 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+
 # 961 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_CourtneyNoInterruptions, MSGBOX_DEFAULT
+SkyPillar_Top_EventScript_ShellyCourtney::
 # 962 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	lockall
 # 963 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_FaceDown
+	setobjectmovementtype LOCALID_SKYPILLAR_COURTNEY, MOVEMENT_TYPE_FACE_RIGHT
 # 964 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_FaceDown
+	setobjectmovementtype LOCALID_SKYPILLAR_SHELLY, MOVEMENT_TYPE_FACE_LEFT
 # 965 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, SkyPillar_Top_Movement_PlayerApproachShelly
 # 966 "data/maps/SkyPillar_Top/scripts.pory"
-	playse SE_PIN
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SkyPillar_Top_Movement_EmmieApproachCourtney
 # 967 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_ExclamationMark
+	waitmovement 0
 # 968 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_ExclamationMark
+	playbgm MUS_ENCOUNTER_MAGMA, TRUE
 # 969 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_WalkInPlaceFasterRight
 # 970 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
 # 971 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+	msgbox SkyPillar_Top_Text_CourtneyNoInterruptions, MSGBOX_DEFAULT
 # 972 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ShellyShouldHaveKnown, MSGBOX_DEFAULT
+	closemessage
 # 973 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_FaceDown
 # 974 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_FaceRight
+	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_FaceDown
 # 975 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_FaceLeft
+	waitmovement 0
 # 976 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+	playse SE_PIN
 # 977 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 30
+	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_ExclamationMark
 # 978 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_CourtneySpeechless, MSGBOX_DEFAULT
+	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_ExclamationMark
 # 979 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	waitmovement 0
 # 980 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_WalkDown
-# 981 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_WalkDown
-# 982 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 983 "data/maps/SkyPillar_Top/scripts.pory"
-	goto SkyPillar_Top_EventScript_CourtneyShellyDoMultiBattle
-# 984 "data/maps/SkyPillar_Top/scripts.pory"
-	releaseall
-# 985 "data/maps/SkyPillar_Top/scripts.pory"
-	end
-# 986 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 987 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_CourtneyShellyDoMultiBattle::
-# 988 "data/maps/SkyPillar_Top/scripts.pory"
-	playbgm MUS_MT_CHIMNEY, TRUE
-# 989 "data/maps/SkyPillar_Top/scripts.pory"
-	setobjectmovementtype LOCALID_SKYPILLAR_COURTNEY, MOVEMENT_TYPE_FACE_DOWN
-# 990 "data/maps/SkyPillar_Top/scripts.pory"
-	setobjectmovementtype LOCALID_SKYPILLAR_SHELLY, MOVEMENT_TYPE_FACE_DOWN
-# 991 "data/maps/SkyPillar_Top/scripts.pory"
-	multi_2p_vs_2 TRAINER_SHELLY_SKY_PILLAR, SkyPillar_Top_Text_ShellyDefeat, TRAINER_COURTNEY_SKY_PILLAR, SkyPillar_Top_Text_CourtneyDefeat, PARTNER_EMMIE
-# 992 "data/maps/SkyPillar_Top/scripts.pory"
-	switch VAR_RESULT
-# 993 "data/maps/SkyPillar_Top/scripts.pory"
-	case 1, SkyPillar_Top_EventScript_CourtneyShellyVictory
-# 994 "data/maps/SkyPillar_Top/scripts.pory"
-	fadescreen FADE_TO_BLACK
-# 995 "data/maps/SkyPillar_Top/scripts.pory"
-	special SetCB2WhiteOut
-# 996 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
-# 997 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 998 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_CourtneyShellyVictory::
-# 999 "data/maps/SkyPillar_Top/scripts.pory"
-	playse SE_NOT_EFFECTIVE
-# 1000 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_COURTNEY, SkyPillar_Top_Movement_CourtneyShellyKnockedBack
-# 1001 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_SHELLY, SkyPillar_Top_Movement_CourtneyShellyKnockedBack
-# 1002 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 1003 "data/maps/SkyPillar_Top/scripts.pory"
 	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_WalkInPlaceFasterDown
+# 981 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 982 "data/maps/SkyPillar_Top/scripts.pory"
+	msgbox SkyPillar_Top_Text_ShellyShouldHaveKnown, MSGBOX_DEFAULT
+# 983 "data/maps/SkyPillar_Top/scripts.pory"
+	closemessage
+# 984 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_FaceRight
+# 985 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_FaceLeft
+# 986 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 987 "data/maps/SkyPillar_Top/scripts.pory"
+	delay 30
+# 988 "data/maps/SkyPillar_Top/scripts.pory"
+	msgbox SkyPillar_Top_Text_CourtneySpeechless, MSGBOX_DEFAULT
+# 989 "data/maps/SkyPillar_Top/scripts.pory"
+	closemessage
+# 990 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_WalkDown
+# 991 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_WalkDown
+# 992 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 993 "data/maps/SkyPillar_Top/scripts.pory"
+	goto SkyPillar_Top_EventScript_CourtneyShellyDoMultiBattle
+# 994 "data/maps/SkyPillar_Top/scripts.pory"
+	releaseall
+# 995 "data/maps/SkyPillar_Top/scripts.pory"
+	end
+# 996 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 997 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_CourtneyShellyDoMultiBattle::
+# 998 "data/maps/SkyPillar_Top/scripts.pory"
+	playbgm MUS_MT_CHIMNEY, TRUE
+# 999 "data/maps/SkyPillar_Top/scripts.pory"
+	setobjectmovementtype LOCALID_SKYPILLAR_COURTNEY, MOVEMENT_TYPE_FACE_DOWN
+# 1000 "data/maps/SkyPillar_Top/scripts.pory"
+	setobjectmovementtype LOCALID_SKYPILLAR_SHELLY, MOVEMENT_TYPE_FACE_DOWN
+# 1001 "data/maps/SkyPillar_Top/scripts.pory"
+	multi_2p_vs_2 TRAINER_SHELLY_SKY_PILLAR, SkyPillar_Top_Text_ShellyDefeat, TRAINER_COURTNEY_SKY_PILLAR, SkyPillar_Top_Text_CourtneyDefeat, PARTNER_EMMIE
+# 1002 "data/maps/SkyPillar_Top/scripts.pory"
+	switch VAR_RESULT
+# 1003 "data/maps/SkyPillar_Top/scripts.pory"
+	case 1, SkyPillar_Top_EventScript_CourtneyShellyVictory
 # 1004 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+	fadescreen FADE_TO_BLACK
 # 1005 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_ShellyPostBattle, MSGBOX_DEFAULT
+	special SetCB2WhiteOut
 # 1006 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	waitstate
 # 1007 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_WalkInPlaceFasterDown
+
 # 1008 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
+SkyPillar_Top_EventScript_CourtneyShellyVictory::
 # 1009 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_CourtneyPostBattle, MSGBOX_DEFAULT
+	playse SE_NOT_EFFECTIVE
 # 1010 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
+	applymovement LOCALID_SKYPILLAR_COURTNEY, SkyPillar_Top_Movement_CourtneyShellyKnockedBack
 # 1011 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkSlowRight
+	applymovement LOCALID_SKYPILLAR_SHELLY, SkyPillar_Top_Movement_CourtneyShellyKnockedBack
 # 1012 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-# 1013 "data/maps/SkyPillar_Top/scripts.pory"
 	waitmovement 0
+# 1013 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_WalkInPlaceFasterDown
 # 1014 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_EmmieThisIsIt, MSGBOX_DEFAULT
+	waitmovement 0
 # 1015 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 1016 "data/maps/SkyPillar_Top/scripts.pory"
-	addvar VAR_SKY_PILLAR_STATE, 1
-# 1017 "data/maps/SkyPillar_Top/scripts.pory"
-	end
-# 1018 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 1019 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_Shelly::
-# 1020 "data/maps/SkyPillar_Top/scripts.pory"
-	faceplayer
-# 1021 "data/maps/SkyPillar_Top/scripts.pory"
 	msgbox SkyPillar_Top_Text_ShellyPostBattle, MSGBOX_DEFAULT
-# 1022 "data/maps/SkyPillar_Top/scripts.pory"
+# 1016 "data/maps/SkyPillar_Top/scripts.pory"
 	closemessage
-# 1023 "data/maps/SkyPillar_Top/scripts.pory"
-	end
-# 1024 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 1025 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_Courtney::
-# 1026 "data/maps/SkyPillar_Top/scripts.pory"
-	faceplayer
-# 1027 "data/maps/SkyPillar_Top/scripts.pory"
+# 1017 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_WalkInPlaceFasterDown
+# 1018 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 1019 "data/maps/SkyPillar_Top/scripts.pory"
 	msgbox SkyPillar_Top_Text_CourtneyPostBattle, MSGBOX_DEFAULT
-# 1028 "data/maps/SkyPillar_Top/scripts.pory"
+# 1020 "data/maps/SkyPillar_Top/scripts.pory"
 	closemessage
-# 1029 "data/maps/SkyPillar_Top/scripts.pory"
+# 1021 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkSlowRight
+# 1022 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+# 1023 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 1024 "data/maps/SkyPillar_Top/scripts.pory"
+	msgbox SkyPillar_Top_Text_EmmieThisIsIt, MSGBOX_DEFAULT
+# 1025 "data/maps/SkyPillar_Top/scripts.pory"
+	closemessage
+# 1026 "data/maps/SkyPillar_Top/scripts.pory"
+	addvar VAR_SKY_PILLAR_STATE, 1
+# 1027 "data/maps/SkyPillar_Top/scripts.pory"
 	end
-# 1030 "data/maps/SkyPillar_Top/scripts.pory"
+# 1028 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 1029 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_Shelly::
+# 1030 "data/maps/SkyPillar_Top/scripts.pory"
+	faceplayer
 # 1031 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ShellyDefeat:
+	msgbox SkyPillar_Top_Text_ShellyPostBattle, MSGBOX_DEFAULT
 # 1032 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maybe I was wrong about you…\n"
+	closemessage
 # 1033 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Perhaps you are the answer…$"
+	end
 # 1034 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 1035 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_CourtneyDefeat:
+SkyPillar_Top_EventScript_Courtney::
 # 1036 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie trusted me and I've let\n"
+	faceplayer
 # 1037 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "him down…$"
+	msgbox SkyPillar_Top_Text_CourtneyPostBattle, MSGBOX_DEFAULT
 # 1038 "data/maps/SkyPillar_Top/scripts.pory"
-
+	closemessage
 # 1039 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_EmmieThisIsIt:
+	end
 # 1040 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Emmie: We made it, {PLAYER}.\n"
+
 # 1041 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Archie and Maxie are up ahead.\p"
+SkyPillar_Top_Text_ShellyDefeat:
 # 1042 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Once we get involved, there's no\n"
+	.string "Maybe I was wrong about you…\n"
 # 1043 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "turning back.\p"
+	.string "Perhaps you are the answer…$"
 # 1044 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "We better make sure we're prepared\n"
+
 # 1045 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "before we go any further.$"
+SkyPillar_Top_Text_CourtneyDefeat:
 # 1046 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "Maxie trusted me and I've let\n"
 # 1047 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_CourtneyPostBattle:
+	.string "him down…$"
 # 1048 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Courtney: Please! You can't interrupt\n"
+
 # 1049 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Maxie now, this is too important!$"
+SkyPillar_Top_Text_EmmieThisIsIt:
 # 1050 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "Emmie: We made it, {PLAYER}.\n"
 # 1051 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_ShellyPostBattle:
+	.string "Archie and Maxie are up ahead.\p"
 # 1052 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "Shelly: There really is no stopping\n"
+	.string "Once we get involved, there's no\n"
 # 1053 "data/maps/SkyPillar_Top/scripts.pory"
-	.string "you two is there…$"
+	.string "turning back.\p"
 # 1054 "data/maps/SkyPillar_Top/scripts.pory"
-
+	.string "We better make sure we're prepared\n"
 # 1055 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_CourtneyShellyKnockedBack:
+	.string "before we go any further.$"
 # 1056 "data/maps/SkyPillar_Top/scripts.pory"
-	lock_facing_direction
+
 # 1057 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_fast_up
+SkyPillar_Top_Text_CourtneyPostBattle:
 # 1058 "data/maps/SkyPillar_Top/scripts.pory"
-	unlock_facing_direction
+	.string "Courtney: Please! You can't interrupt\n"
 # 1059 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+	.string "Maxie now, this is too important!$"
 # 1060 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 1061 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_Rayquaza::
+SkyPillar_Top_Text_ShellyPostBattle:
 # 1062 "data/maps/SkyPillar_Top/scripts.pory"
-	lockall
+	.string "Shelly: There really is no stopping\n"
 # 1063 "data/maps/SkyPillar_Top/scripts.pory"
-	waitse
+	.string "you two is there…$"
 # 1064 "data/maps/SkyPillar_Top/scripts.pory"
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+
 # 1065 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 40
+SkyPillar_Top_Movement_CourtneyShellyKnockedBack:
 # 1066 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmoncry
+	lock_facing_direction
 # 1067 "data/maps/SkyPillar_Top/scripts.pory"
-	setwildbattle SPECIES_RAYQUAZA, 70
+	walk_fast_up
 # 1068 "data/maps/SkyPillar_Top/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	unlock_facing_direction
 # 1069 "data/maps/SkyPillar_Top/scripts.pory"
-	special BattleSetup_StartLegendaryBattle
+	step_end
 # 1070 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
+
 # 1071 "data/maps/SkyPillar_Top/scripts.pory"
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+SkyPillar_Top_EventScript_Rayquaza::
 # 1072 "data/maps/SkyPillar_Top/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+	lockall
 # 1073 "data/maps/SkyPillar_Top/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, SkyPillar_Top_EventScript_DefeatedRayquaza
+	waitse
 # 1074 "data/maps/SkyPillar_Top/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SkyPillar_Top_EventScript_RanFromRayquaza
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
 # 1075 "data/maps/SkyPillar_Top/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SkyPillar_Top_EventScript_RanFromRayquaza
+	delay 40
 # 1076 "data/maps/SkyPillar_Top/scripts.pory"
-	setflag FLAG_DEFEATED_RAYQUAZA
+	waitmoncry
 # 1077 "data/maps/SkyPillar_Top/scripts.pory"
-	releaseall
+	setwildbattle SPECIES_RAYQUAZA, 70
 # 1078 "data/maps/SkyPillar_Top/scripts.pory"
-	end
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 1079 "data/maps/SkyPillar_Top/scripts.pory"
-
+	special BattleSetup_StartLegendaryBattle
 # 1080 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_DefeatedRayquaza::
+	waitstate
 # 1081 "data/maps/SkyPillar_Top/scripts.pory"
-	setflag FLAG_DEFEATED_RAYQUAZA
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 # 1082 "data/maps/SkyPillar_Top/scripts.pory"
-	goto SkyPillar_Top_EventScript_DefeatedRayquaza2
+	specialvar VAR_RESULT, GetBattleOutcome
 # 1083 "data/maps/SkyPillar_Top/scripts.pory"
-	end
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, SkyPillar_Top_EventScript_DefeatedRayquaza
 # 1084 "data/maps/SkyPillar_Top/scripts.pory"
-
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SkyPillar_Top_EventScript_RanFromRayquaza
 # 1085 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_RanFromRayquaza::
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SkyPillar_Top_EventScript_RanFromRayquaza
 # 1086 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8004, SPECIES_RAYQUAZA
+	setflag FLAG_DEFEATED_RAYQUAZA
 # 1087 "data/maps/SkyPillar_Top/scripts.pory"
-	goto SkyPillar_Top_EventScript_RanFromRayquaza2
+	releaseall
 # 1088 "data/maps/SkyPillar_Top/scripts.pory"
 	end
 # 1089 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 1090 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_DefeatedRayquaza2::
+SkyPillar_Top_EventScript_DefeatedRayquaza::
 # 1091 "data/maps/SkyPillar_Top/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
+	setflag FLAG_DEFEATED_RAYQUAZA
 # 1092 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject VAR_LAST_TALKED
+	goto SkyPillar_Top_EventScript_DefeatedRayquaza2
 # 1093 "data/maps/SkyPillar_Top/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
+	end
 # 1094 "data/maps/SkyPillar_Top/scripts.pory"
-	releaseall
+
 # 1095 "data/maps/SkyPillar_Top/scripts.pory"
-	end
+SkyPillar_Top_EventScript_RanFromRayquaza::
 # 1096 "data/maps/SkyPillar_Top/scripts.pory"
-
+	setvar VAR_0x8004, SPECIES_RAYQUAZA
 # 1097 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_RanFromRayquaza2::
+	goto SkyPillar_Top_EventScript_RanFromRayquaza2
 # 1098 "data/maps/SkyPillar_Top/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
+	end
 # 1099 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject VAR_LAST_TALKED
+
 # 1100 "data/maps/SkyPillar_Top/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
+SkyPillar_Top_EventScript_DefeatedRayquaza2::
 # 1101 "data/maps/SkyPillar_Top/scripts.pory"
-	bufferspeciesname STR_VAR_1, VAR_0x8004
+	fadescreenswapbuffers FADE_TO_BLACK
 # 1102 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox gText_LegendaryFlewAway, MSGBOX_DEFAULT
+	removeobject VAR_LAST_TALKED
 # 1103 "data/maps/SkyPillar_Top/scripts.pory"
-	releaseall
+	fadescreenswapbuffers FADE_FROM_BLACK
 # 1104 "data/maps/SkyPillar_Top/scripts.pory"
-	end
-# 1105 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 1106 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_EventScript_AwakenRayquaza::
-# 1107 "data/maps/SkyPillar_Top/scripts.pory"
-	lockall
-# 1108 "data/maps/SkyPillar_Top/scripts.pory"
-	fadeoutbgm 1
-# 1109 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-# 1110 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 1111 "data/maps/SkyPillar_Top/scripts.pory"
-	special SpawnCameraObject
-# 1112 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_CameraPanUp
-# 1113 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 1114 "data/maps/SkyPillar_Top/scripts.pory"
-	special RemoveCameraObject
-# 1115 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_RAYQUAZA_SLEEPING, SkyPillar_Top_Movement_RayquazaStir
-# 1116 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 1117 "data/maps/SkyPillar_Top/scripts.pory"
-	waitse
-# 1118 "data/maps/SkyPillar_Top/scripts.pory"
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
-# 1119 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8004, 1  @ vertical pan
-# 1120 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8005, 1  @ horizontal pan
-# 1121 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8006, 8  @ num shakes
-# 1122 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8007, 3  @ shake delay
-# 1123 "data/maps/SkyPillar_Top/scripts.pory"
-	special ShakeCamera
-# 1124 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
-# 1125 "data/maps/SkyPillar_Top/scripts.pory"
-	waitse
-# 1126 "data/maps/SkyPillar_Top/scripts.pory"
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
-# 1127 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8004, 1  @ vertical pan
-# 1128 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8005, 2  @ horizontal pan
-# 1129 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8006, 8  @ num shakes
-# 1130 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_0x8007, 5  @ shake delay
-# 1131 "data/maps/SkyPillar_Top/scripts.pory"
-	special ShakeCamera
-# 1132 "data/maps/SkyPillar_Top/scripts.pory"
-	waitstate
-# 1133 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmoncry
-# 1134 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement LOCALID_RAYQUAZA_SLEEPING, SkyPillar_Top_Movement_RayquazaFlyOff
-# 1135 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 1136 "data/maps/SkyPillar_Top/scripts.pory"
-	removeobject LOCALID_RAYQUAZA_SLEEPING
-# 1137 "data/maps/SkyPillar_Top/scripts.pory"
-	msgbox SkyPillar_Top_Text_RayquazaFlewOff, MSGBOX_DEFAULT
-# 1138 "data/maps/SkyPillar_Top/scripts.pory"
-	closemessage
-# 1139 "data/maps/SkyPillar_Top/scripts.pory"
-	delay 20
-# 1140 "data/maps/SkyPillar_Top/scripts.pory"
-	fadeinbgm 1
-# 1141 "data/maps/SkyPillar_Top/scripts.pory"
-	special SpawnCameraObject
-# 1142 "data/maps/SkyPillar_Top/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_CameraPanDown
-# 1143 "data/maps/SkyPillar_Top/scripts.pory"
-	waitmovement 0
-# 1144 "data/maps/SkyPillar_Top/scripts.pory"
-	special RemoveCameraObject
-# 1145 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_SOOTOPOLIS_CITY_STATE, 5
-# 1146 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_SKY_PILLAR_STATE, 1
-# 1147 "data/maps/SkyPillar_Top/scripts.pory"
-	setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE, 1
-# 1148 "data/maps/SkyPillar_Top/scripts.pory"
 	releaseall
-# 1149 "data/maps/SkyPillar_Top/scripts.pory"
+# 1105 "data/maps/SkyPillar_Top/scripts.pory"
 	end
-# 1150 "data/maps/SkyPillar_Top/scripts.pory"
+# 1106 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 1107 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_RanFromRayquaza2::
+# 1108 "data/maps/SkyPillar_Top/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 1109 "data/maps/SkyPillar_Top/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 1110 "data/maps/SkyPillar_Top/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 1111 "data/maps/SkyPillar_Top/scripts.pory"
+	bufferspeciesname STR_VAR_1, VAR_0x8004
+# 1112 "data/maps/SkyPillar_Top/scripts.pory"
+	msgbox gText_LegendaryFlewAway, MSGBOX_DEFAULT
+# 1113 "data/maps/SkyPillar_Top/scripts.pory"
+	releaseall
+# 1114 "data/maps/SkyPillar_Top/scripts.pory"
+	end
+# 1115 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 1116 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_EventScript_AwakenRayquaza::
+# 1117 "data/maps/SkyPillar_Top/scripts.pory"
+	lockall
+# 1118 "data/maps/SkyPillar_Top/scripts.pory"
+	fadeoutbgm 1
+# 1119 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+# 1120 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 1121 "data/maps/SkyPillar_Top/scripts.pory"
+	special SpawnCameraObject
+# 1122 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_CameraPanUp
+# 1123 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 1124 "data/maps/SkyPillar_Top/scripts.pory"
+	special RemoveCameraObject
+# 1125 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_RAYQUAZA_SLEEPING, SkyPillar_Top_Movement_RayquazaStir
+# 1126 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 1127 "data/maps/SkyPillar_Top/scripts.pory"
+	waitse
+# 1128 "data/maps/SkyPillar_Top/scripts.pory"
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+# 1129 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8004, 1  @ vertical pan
+# 1130 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8005, 1  @ horizontal pan
+# 1131 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8006, 8  @ num shakes
+# 1132 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8007, 3  @ shake delay
+# 1133 "data/maps/SkyPillar_Top/scripts.pory"
+	special ShakeCamera
+# 1134 "data/maps/SkyPillar_Top/scripts.pory"
+	waitstate
+# 1135 "data/maps/SkyPillar_Top/scripts.pory"
+	waitse
+# 1136 "data/maps/SkyPillar_Top/scripts.pory"
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+# 1137 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8004, 1  @ vertical pan
+# 1138 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8005, 2  @ horizontal pan
+# 1139 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8006, 8  @ num shakes
+# 1140 "data/maps/SkyPillar_Top/scripts.pory"
+	setvar VAR_0x8007, 5  @ shake delay
+# 1141 "data/maps/SkyPillar_Top/scripts.pory"
+	special ShakeCamera
+# 1142 "data/maps/SkyPillar_Top/scripts.pory"
+	waitstate
+# 1143 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmoncry
+# 1144 "data/maps/SkyPillar_Top/scripts.pory"
+	applymovement LOCALID_RAYQUAZA_SLEEPING, SkyPillar_Top_Movement_RayquazaFlyOff
+# 1145 "data/maps/SkyPillar_Top/scripts.pory"
+	waitmovement 0
+# 1146 "data/maps/SkyPillar_Top/scripts.pory"
+	removeobject LOCALID_RAYQUAZA_SLEEPING
+# 1147 "data/maps/SkyPillar_Top/scripts.pory"
+	msgbox SkyPillar_Top_Text_RayquazaFlewOff, MSGBOX_DEFAULT
+# 1148 "data/maps/SkyPillar_Top/scripts.pory"
+	closemessage
+# 1149 "data/maps/SkyPillar_Top/scripts.pory"
+	delay 20
+# 1150 "data/maps/SkyPillar_Top/scripts.pory"
+	fadeinbgm 1
 # 1151 "data/maps/SkyPillar_Top/scripts.pory"
-@ Rayquaza has unusual movement frames
+	special SpawnCameraObject
 # 1152 "data/maps/SkyPillar_Top/scripts.pory"
-@ See comments, or sAnimTable_Rayquaza
+	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_CameraPanDown
 # 1153 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_RayquazaStir:
+	waitmovement 0
 # 1154 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_16
+	special RemoveCameraObject
 # 1155 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_in_place_fast_left  @ Coiled, awake
+	setvar VAR_SOOTOPOLIS_CITY_STATE, 5
 # 1156 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_16
+	setvar VAR_SKY_PILLAR_STATE, 1
 # 1157 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_16
+	setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE, 1
 # 1158 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_16
+	releaseall
 # 1159 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_16
+	end
 # 1160 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_16
+
 # 1161 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_in_place_left  @ Coiled, mouth open
+@ Rayquaza has unusual movement frames
 # 1162 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_16
+@ See comments, or sAnimTable_Rayquaza
 # 1163 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_in_place_right  @ Normal, awake
+SkyPillar_Top_Movement_RayquazaStir:
 # 1164 "data/maps/SkyPillar_Top/scripts.pory"
 	delay_16
 # 1165 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_16
+	walk_in_place_fast_left  @ Coiled, awake
 # 1166 "data/maps/SkyPillar_Top/scripts.pory"
 	delay_16
 # 1167 "data/maps/SkyPillar_Top/scripts.pory"
@@ -2337,64 +2337,84 @@ SkyPillar_Top_Movement_RayquazaStir:
 # 1169 "data/maps/SkyPillar_Top/scripts.pory"
 	delay_16
 # 1170 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
-# 1171 "data/maps/SkyPillar_Top/scripts.pory"
-
-# 1172 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_RayquazaFlyOff:
-# 1173 "data/maps/SkyPillar_Top/scripts.pory"
 	delay_16
-# 1174 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_in_place_down  @ Coiled, asleep
-# 1175 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_8
-# 1176 "data/maps/SkyPillar_Top/scripts.pory"
+# 1171 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_in_place_left  @ Coiled, mouth open
+# 1172 "data/maps/SkyPillar_Top/scripts.pory"
+	delay_16
+# 1173 "data/maps/SkyPillar_Top/scripts.pory"
 	walk_in_place_right  @ Normal, awake
+# 1174 "data/maps/SkyPillar_Top/scripts.pory"
+	delay_16
+# 1175 "data/maps/SkyPillar_Top/scripts.pory"
+	delay_16
+# 1176 "data/maps/SkyPillar_Top/scripts.pory"
+	delay_16
 # 1177 "data/maps/SkyPillar_Top/scripts.pory"
-	delay_8
+	delay_16
 # 1178 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_faster_up  @ Fly up
+	delay_16
 # 1179 "data/maps/SkyPillar_Top/scripts.pory"
-	slide_up
+	delay_16
 # 1180 "data/maps/SkyPillar_Top/scripts.pory"
-	slide_up
+	step_end
 # 1181 "data/maps/SkyPillar_Top/scripts.pory"
-	slide_up
+
 # 1182 "data/maps/SkyPillar_Top/scripts.pory"
-	slide_up
+SkyPillar_Top_Movement_RayquazaFlyOff:
 # 1183 "data/maps/SkyPillar_Top/scripts.pory"
-	slide_up
+	delay_16
 # 1184 "data/maps/SkyPillar_Top/scripts.pory"
-	slide_up
+	walk_in_place_down  @ Coiled, asleep
 # 1185 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+	delay_8
 # 1186 "data/maps/SkyPillar_Top/scripts.pory"
-
+	walk_in_place_right  @ Normal, awake
 # 1187 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_CameraPanUp:
+	delay_8
 # 1188 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_up
+	walk_faster_up  @ Fly up
 # 1189 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_up
+	slide_up
 # 1190 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_up
+	slide_up
 # 1191 "data/maps/SkyPillar_Top/scripts.pory"
-	step_end
+	slide_up
 # 1192 "data/maps/SkyPillar_Top/scripts.pory"
-
+	slide_up
 # 1193 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Movement_CameraPanDown:
+	slide_up
 # 1194 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_down
+	slide_up
 # 1195 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_down
-# 1196 "data/maps/SkyPillar_Top/scripts.pory"
-	walk_slow_down
-# 1197 "data/maps/SkyPillar_Top/scripts.pory"
 	step_end
-# 1198 "data/maps/SkyPillar_Top/scripts.pory"
+# 1196 "data/maps/SkyPillar_Top/scripts.pory"
 
+# 1197 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Movement_CameraPanUp:
+# 1198 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_slow_up
 # 1199 "data/maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_RayquazaFlewOff:
+	walk_slow_up
 # 1200 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_slow_up
+# 1201 "data/maps/SkyPillar_Top/scripts.pory"
+	step_end
+# 1202 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 1203 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Movement_CameraPanDown:
+# 1204 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_slow_down
+# 1205 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_slow_down
+# 1206 "data/maps/SkyPillar_Top/scripts.pory"
+	walk_slow_down
+# 1207 "data/maps/SkyPillar_Top/scripts.pory"
+	step_end
+# 1208 "data/maps/SkyPillar_Top/scripts.pory"
+
+# 1209 "data/maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_RayquazaFlewOff:
+# 1210 "data/maps/SkyPillar_Top/scripts.pory"
 	.string "The awakened RAYQUAZA flew off…$"

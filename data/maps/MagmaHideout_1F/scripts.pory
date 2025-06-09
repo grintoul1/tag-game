@@ -42,6 +42,7 @@ MagmaHideout_1F_EventScript_FirstEntrance::
 	setfollowernpc 7, FNPC_WHITE_OUT, Common_EventScript_Shelly, PARTNER_SHELLY
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 	setflag FLAG_HIDE_JAGGED_PASS_SHELLY
+	setvar VAR_PARTNER_EMMIE_STATE, 43
 	addvar VAR_FOLLOWER_MAGMA_HIDEOUT_SHELLY, 1
 	end
 
@@ -65,6 +66,7 @@ MagmaHideout_1F_EventScript_LeavingHideout::
 	applymovement LOCALID_EMMIE, MagmaHideout_1F_Movement_EmmieLeaving
 	waitmovement 0
 	setfollowernpc 8, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	setvar VAR_PARTNER_EMMIE_STATE, 42
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
 	end
@@ -81,6 +83,7 @@ MagmaHideout_1F_EventScript_EnteringHideout::
 	addobject LOCALID_EMMIE
 	destroyfollowernpc
 	setfollowernpc 7, FNPC_WHITE_OUT, Common_EventScript_Shelly, PARTNER_SHELLY
+	setvar VAR_PARTNER_EMMIE_STATE, 43
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 	end

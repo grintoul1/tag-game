@@ -311,301 +311,301 @@ CaveOfOrigin_B1F_EventScript_AtSkyPillar::
 # 156 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	setvar VAR_ROUTE128_STATE, 3
 # 157 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	fadescreen FADE_FROM_BLACK
+	setvar VAR_PARTNER_EMMIE_STATE, 63
 # 158 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	release
+	fadescreen FADE_FROM_BLACK
 # 159 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	end
+	release
 # 160 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	end
 # 161 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_EventScript_ReturnFromAction::
+
 # 162 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, CaveOfOrigin_B1F_Movement_ReturnFromAction
+CaveOfOrigin_B1F_EventScript_ReturnFromAction::
 # 163 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_CAMERA, CaveOfOrigin_B1F_Movement_ReturnFromAction
 # 164 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	return
+	waitmovement 0
 # 165 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	return
 # 166 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_EventScript_ReturnFromActionWest::
+
 # 167 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, CaveOfOrigin_B1F_Movement_ReturnFromActionWest
+CaveOfOrigin_B1F_EventScript_ReturnFromActionWest::
 # 168 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_CAMERA, CaveOfOrigin_B1F_Movement_ReturnFromActionWest
 # 169 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	return
+	waitmovement 0
 # 170 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	return
 # 171 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_EventScript_FaceDirectionsWest:
+
 # 172 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+CaveOfOrigin_B1F_EventScript_FaceDirectionsWest:
 # 173 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 # 174 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceLeft
 # 175 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	waitmovement 0
+	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterRight
 # 176 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	return
-# 177 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 178 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_EventScript_FaceDirectionsEast:
-# 179 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-# 180 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
-# 181 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterLeft
-# 182 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	waitmovement 0
+# 177 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	return
+# 178 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 179 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_EventScript_FaceDirectionsEast:
+# 180 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+# 181 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+# 182 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterLeft
 # 183 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	return
+	waitmovement 0
 # 184 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	return
 # 185 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Movement_GoodLeaderLeave:
+
 # 186 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_right
+CaveOfOrigin_B1F_Movement_GoodLeaderLeave:
 # 187 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_up
-# 188 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	step_end
-# 189 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 190 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_EventScript_MaxieThisIsntGood::
-# 191 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	msgbox CaveOfOrigin_B1F_Text_MaxieThisIsntGood, MSGBOX_AUTOCLOSE
-# 192 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	return
-# 193 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 194 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_MaxieThisIsntGood:
-# 195 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Maxie: This is bad.\n"
-# 196 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Archie isn't prepared to give up.\p"
-# 197 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "I have to go after him.$"
-# 198 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 199 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_EventScript_ArchieThisIsntGood::
-# 200 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	msgbox CaveOfOrigin_B1F_Text_ArchieThisIsntGood, MSGBOX_AUTOCLOSE
-# 201 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	return
-# 202 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 203 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_ArchieThisIsntGood:
-# 204 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Archie: This is bad.\n"
-# 205 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Maxie isn't prepared to give up.\p"
-# 206 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "I have to go after him.$"
-# 207 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 208 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Movement_EvilLeaderLeave2:
-# 209 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_right
+# 188 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	walk_up
+# 189 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	step_end
+# 190 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 191 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_EventScript_MaxieThisIsntGood::
+# 192 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	msgbox CaveOfOrigin_B1F_Text_MaxieThisIsntGood, MSGBOX_AUTOCLOSE
+# 193 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	return
+# 194 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 195 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Text_MaxieThisIsntGood:
+# 196 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Maxie: This is bad.\n"
+# 197 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Archie isn't prepared to give up.\p"
+# 198 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "I have to go after him.$"
+# 199 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 200 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_EventScript_ArchieThisIsntGood::
+# 201 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	msgbox CaveOfOrigin_B1F_Text_ArchieThisIsntGood, MSGBOX_AUTOCLOSE
+# 202 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	return
+# 203 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 204 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Text_ArchieThisIsntGood:
+# 205 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Archie: This is bad.\n"
+# 206 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Maxie isn't prepared to give up.\p"
+# 207 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "I have to go after him.$"
+# 208 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 209 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Movement_EvilLeaderLeave2:
 # 210 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_right
 # 211 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_up
-# 212 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	step_end
-# 213 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 214 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Movement_GoodLeaderKnockedBack:
-# 215 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	face_down
-# 216 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	lock_facing_direction
-# 217 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_fast_up
-# 218 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	unlock_facing_direction
-# 219 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	step_end
-# 220 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 221 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Movement_EvilLeaderLeave1:
-# 222 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_up
-# 223 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_right
+# 212 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	walk_up
+# 213 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	step_end
+# 214 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 215 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Movement_GoodLeaderKnockedBack:
+# 216 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	face_down
+# 217 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	lock_facing_direction
+# 218 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	walk_fast_up
+# 219 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	unlock_facing_direction
+# 220 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	step_end
+# 221 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 222 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Movement_EvilLeaderLeave1:
+# 223 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	walk_up
 # 224 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	step_end
+	walk_right
 # 225 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 226 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_EventScript_MaxieLackConviction::
-# 227 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	msgbox CaveOfOrigin_B1F_Text_MaxieLackConviction, MSGBOX_AUTOCLOSE
-# 228 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	return
-# 229 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 230 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_EventScript_ArchieLackConviction::
-# 231 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	msgbox CaveOfOrigin_B1F_Text_ArchieLackConviction, MSGBOX_AUTOCLOSE
-# 232 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	return
-# 233 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 234 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_MaxieLackConviction:
-# 235 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Maxie: You lack conviction, Archie.\p"
-# 236 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "This is why Team Aqua will never prevail\n"
-# 237 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "over Team Magma.$"
-# 238 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 239 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_ArchieLackConviction:
-# 240 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Archie: You lack conviction, Maxie.\p"
-# 241 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "This is why Team Magma will never prevail\n"
-# 242 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "over Team Aqua.$"
-# 243 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 244 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_EventScript_ArchieCantYouSee::
-# 245 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	msgbox CaveOfOrigin_B1F_Text_ArchieCantYouSee, MSGBOX_AUTOCLOSE
-# 246 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	return
-# 247 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 248 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_EventScript_MaxieCantYouSee::
-# 249 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	msgbox CaveOfOrigin_B1F_Text_MaxieCantYouSee, MSGBOX_AUTOCLOSE
-# 250 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	return
-# 251 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 252 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_ArchieCantYouSee:
-# 253 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Archie: Maxie, can't you see what our\n"
-# 254 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "actions have already led to?\p"
-# 255 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Our visions were misguided and order\n"
-# 256 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "must be restored.\p"
-# 257 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "It's time for us to stand aside and let\n"
-# 258 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "this chaos come to an end.$"
-# 259 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 260 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_MaxieCantYouSee:
-# 261 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Maxie: Archie, can't you see what our\n"
-# 262 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "actions have already led to?\p"
-# 263 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Our visions were misguided and order\n"
-# 264 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "must be restored.\p"
-# 265 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "It's time for us to stand aside and let\n"
-# 266 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "this chaos come to an end.$"
-# 267 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 268 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_EventScript_MaxieSkyPillarYouSay::
-# 269 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	msgbox CaveOfOrigin_B1F_Text_MaxieSkyPillarYouSay, MSGBOX_AUTOCLOSE
-# 270 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	closemessage
-# 271 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	return
-# 272 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 273 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_EventScript_ArchieSkyPillarYouSay::
-# 274 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	msgbox CaveOfOrigin_B1F_Text_ArchieSkyPillarYouSay, MSGBOX_AUTOCLOSE
-# 275 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	closemessage
-# 276 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	return
-# 277 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 278 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_MaxieSkyPillarYouSay:
-# 279 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Maxie: Sky Pillar, you say?\p"
-# 280 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "A third legendary Pokémon, capable of\n"
-# 281 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "controlling the effects of the others…\p"
-# 282 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Team Magma's vision may not yet be lost.$"
-# 283 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 284 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_ArchieSkyPillarYouSay:
-# 285 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Archie: Sky Pillar, you say?\p"
-# 286 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "A third legendary Pokémon, capable of\n"
-# 287 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "controlling the effects of the others…\p"
-# 288 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Team Aqua's vision may not yet be lost.$"
-# 289 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
-# 290 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Movement_GoodLeaderApproachPlayer:
-# 291 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_down
-# 292 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_left
-# 293 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	step_end
-# 294 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+# 226 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 
-# 295 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Movement_EvilLeaderApproachPlayer:
-# 296 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+# 227 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_EventScript_MaxieLackConviction::
+# 228 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	msgbox CaveOfOrigin_B1F_Text_MaxieLackConviction, MSGBOX_AUTOCLOSE
+# 229 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	return
+# 230 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 231 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_EventScript_ArchieLackConviction::
+# 232 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	msgbox CaveOfOrigin_B1F_Text_ArchieLackConviction, MSGBOX_AUTOCLOSE
+# 233 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	return
+# 234 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 235 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Text_MaxieLackConviction:
+# 236 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Maxie: You lack conviction, Archie.\p"
+# 237 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "This is why Team Aqua will never prevail\n"
+# 238 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "over Team Magma.$"
+# 239 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 240 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Text_ArchieLackConviction:
+# 241 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Archie: You lack conviction, Maxie.\p"
+# 242 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "This is why Team Magma will never prevail\n"
+# 243 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "over Team Aqua.$"
+# 244 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 245 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_EventScript_ArchieCantYouSee::
+# 246 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	msgbox CaveOfOrigin_B1F_Text_ArchieCantYouSee, MSGBOX_AUTOCLOSE
+# 247 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	return
+# 248 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 249 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_EventScript_MaxieCantYouSee::
+# 250 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	msgbox CaveOfOrigin_B1F_Text_MaxieCantYouSee, MSGBOX_AUTOCLOSE
+# 251 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	return
+# 252 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 253 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Text_ArchieCantYouSee:
+# 254 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Archie: Maxie, can't you see what our\n"
+# 255 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "actions have already led to?\p"
+# 256 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Our visions were misguided and order\n"
+# 257 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "must be restored.\p"
+# 258 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "It's time for us to stand aside and let\n"
+# 259 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "this chaos come to an end.$"
+# 260 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 261 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Text_MaxieCantYouSee:
+# 262 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Maxie: Archie, can't you see what our\n"
+# 263 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "actions have already led to?\p"
+# 264 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Our visions were misguided and order\n"
+# 265 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "must be restored.\p"
+# 266 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "It's time for us to stand aside and let\n"
+# 267 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "this chaos come to an end.$"
+# 268 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 269 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_EventScript_MaxieSkyPillarYouSay::
+# 270 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	msgbox CaveOfOrigin_B1F_Text_MaxieSkyPillarYouSay, MSGBOX_AUTOCLOSE
+# 271 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	closemessage
+# 272 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	return
+# 273 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 274 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_EventScript_ArchieSkyPillarYouSay::
+# 275 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	msgbox CaveOfOrigin_B1F_Text_ArchieSkyPillarYouSay, MSGBOX_AUTOCLOSE
+# 276 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	closemessage
+# 277 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	return
+# 278 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 279 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Text_MaxieSkyPillarYouSay:
+# 280 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Maxie: Sky Pillar, you say?\p"
+# 281 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "A third legendary Pokémon, capable of\n"
+# 282 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "controlling the effects of the others…\p"
+# 283 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Team Magma's vision may not yet be lost.$"
+# 284 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 285 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Text_ArchieSkyPillarYouSay:
+# 286 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Archie: Sky Pillar, you say?\p"
+# 287 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "A third legendary Pokémon, capable of\n"
+# 288 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "controlling the effects of the others…\p"
+# 289 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "Team Aqua's vision may not yet be lost.$"
+# 290 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 291 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Movement_GoodLeaderApproachPlayer:
+# 292 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_down
-# 297 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+# 293 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_left
+# 294 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	step_end
+# 295 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+
+# 296 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Movement_EvilLeaderApproachPlayer:
+# 297 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	walk_down
 # 298 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_left
 # 299 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_left
 # 300 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_down
+	walk_left
 # 301 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	step_end
+	walk_down
 # 302 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	step_end
 # 303 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Movement_PanToAction:
+
 # 304 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_up
+CaveOfOrigin_B1F_Movement_PanToAction:
 # 305 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_up
 # 306 "data/maps/CaveOfOrigin_B1F/scripts.pory"
@@ -613,27 +613,27 @@ CaveOfOrigin_B1F_Movement_PanToAction:
 # 307 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_up
 # 308 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	step_end
+	walk_up
 # 309 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	step_end
 # 310 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Movement_PanToActionWest:
+
 # 311 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_diag_northwest
+CaveOfOrigin_B1F_Movement_PanToActionWest:
 # 312 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_diag_northwest
 # 313 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_up
+	walk_diag_northwest
 # 314 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_up
 # 315 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	step_end
+	walk_up
 # 316 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	step_end
 # 317 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Movement_ReturnFromAction:
+
 # 318 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_down
+CaveOfOrigin_B1F_Movement_ReturnFromAction:
 # 319 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_down
 # 320 "data/maps/CaveOfOrigin_B1F/scripts.pory"
@@ -641,136 +641,138 @@ CaveOfOrigin_B1F_Movement_ReturnFromAction:
 # 321 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_down
 # 322 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	step_end
+	walk_down
 # 323 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	step_end
 # 324 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Movement_ReturnFromActionWest:
+
 # 325 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_diag_southeast
+CaveOfOrigin_B1F_Movement_ReturnFromActionWest:
 # 326 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_diag_southeast
 # 327 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	walk_down
+	walk_diag_southeast
 # 328 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	walk_down
 # 329 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	step_end
+	walk_down
 # 330 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	step_end
 # 331 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_WallaceStory:
+
 # 332 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Ah, so you are {PLAYER}{KUN}?\n"
+CaveOfOrigin_B1F_Text_WallaceStory:
 # 333 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "I've heard tales of your exploits.\p"
+	.string "Ah, so you are {PLAYER}{KUN}?\n"
 # 334 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "My name is WALLACE.\p"
+	.string "I've heard tales of your exploits.\p"
 # 335 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "I was once the GYM LEADER of\n"
+	.string "My name is WALLACE.\p"
 # 336 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "SOOTOPOLIS, but something came up.\p"
+	.string "I was once the GYM LEADER of\n"
 # 337 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "So now, I've entrusted my mentor JUAN\n"
+	.string "SOOTOPOLIS, but something came up.\p"
 # 338 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "with the GYM's operation.\p"
+	.string "So now, I've entrusted my mentor JUAN\n"
 # 339 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "… … … … … …\n"
+	.string "with the GYM's operation.\p"
 # 340 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "… … … … … …\p"
+	.string "… … … … … …\n"
 # 341 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "GROUDON and KYOGRE, the two POKéMON\n"
+	.string "… … … … … …\p"
 # 342 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "wreaking havoc here, are considered\l"
+	.string "GROUDON and KYOGRE, the two POKéMON\n"
 # 343 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "to be super-ancient POKéMON.\p"
+	.string "wreaking havoc here, are considered\l"
 # 344 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "But there aren't just two super-\n"
+	.string "to be super-ancient POKéMON.\p"
 # 345 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "ancient POKéMON.\p"
+	.string "But there aren't just two super-\n"
 # 346 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "There is one more somewhere.\p"
+	.string "ancient POKéMON.\p"
 # 347 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Somewhere, there is a super-\n"
+	.string "There is one more somewhere.\p"
 # 348 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "ancient POKéMON named RAYQUAZA.\p"
+	.string "Somewhere, there is a super-\n"
 # 349 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "It's said that it was RAYQUAZA that\n"
+	.string "ancient POKéMON named RAYQUAZA.\p"
 # 350 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "becalmed the two combatants in\l"
+	.string "It's said that it was RAYQUAZA that\n"
 # 351 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "the distant past.\p"
+	.string "becalmed the two combatants in\l"
 # 352 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "But even I have no clue as to\n"
+	.string "the distant past.\p"
 # 353 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "RAYQUAZA's whereabouts…$"
+	.string "But even I have no clue as to\n"
 # 354 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	.string "RAYQUAZA's whereabouts…$"
 # 355 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_WhereIsRayquaza:
+
 # 356 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "WALLACE: {PLAYER}{KUN}, do you perhaps\n"
+CaveOfOrigin_B1F_Text_WhereIsRayquaza:
 # 357 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "know where RAYQUAZA is now?\p"
+	.string "WALLACE: {PLAYER}{KUN}, do you perhaps\n"
 # 358 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "If you do, please tell me.$"
+	.string "know where RAYQUAZA is now?\p"
 # 359 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	.string "If you do, please tell me.$"
 # 360 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_ButWereInCaveOfOrigin:
+
 # 361 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "WALLACE: The CAVE OF ORIGIN?\p"
+CaveOfOrigin_B1F_Text_ButWereInCaveOfOrigin:
 # 362 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "But that's right here!\n"
+	.string "WALLACE: The CAVE OF ORIGIN?\p"
 # 363 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "I need you to do better than that!\p"
+	.string "But that's right here!\n"
 # 364 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Please, I need you to think about\n"
+	.string "I need you to do better than that!\p"
 # 365 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "where RAYQUAZA might be right now.$"
+	.string "Please, I need you to think about\n"
 # 366 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	.string "where RAYQUAZA might be right now.$"
 # 367 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_OldLadyDidntMentionThat:
+
 # 368 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "WALLACE: MT. PYRE?\p"
+CaveOfOrigin_B1F_Text_OldLadyDidntMentionThat:
 # 369 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "But when I met the old lady there\n"
+	.string "WALLACE: MT. PYRE?\p"
 # 370 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "earlier, she made no mention of it.\p"
+	.string "But when I met the old lady there\n"
 # 371 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "I very much doubt that the old lady\n"
+	.string "earlier, she made no mention of it.\p"
 # 372 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "would try to hide something from me…\p"
+	.string "I very much doubt that the old lady\n"
 # 373 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "{PLAYER}{KUN}, could you think about this\n"
+	.string "would try to hide something from me…\p"
 # 374 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "more carefully for me?$"
+	.string "{PLAYER}{KUN}, could you think about this\n"
 # 375 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	.string "more carefully for me?$"
 # 376 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_CantYouRememberSomehow:
+
 # 377 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "WALLACE: Huh? You don't remember?\n"
+CaveOfOrigin_B1F_Text_CantYouRememberSomehow:
 # 378 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Hmm… That's a problem…\p"
+	.string "WALLACE: Huh? You don't remember?\n"
 # 379 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "Can't you remember somehow?$"
+	.string "Hmm… That's a problem…\p"
 # 380 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-
+	.string "Can't you remember somehow?$"
 # 381 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_WellHeadToSkyPillar:
-# 382 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "WALLACE: The Sky Pillar?\p"
-# 383 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "That's it!\n"
-# 384 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "It must be the Sky Pillar!$"
-# 385 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 
+# 382 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+CaveOfOrigin_B1F_Text_WellHeadToSkyPillar:
+# 383 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "WALLACE: The Sky Pillar?\p"
+# 384 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "That's it!\n"
+# 385 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "It must be the Sky Pillar!$"
 # 386 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-CaveOfOrigin_B1F_Text_WellHeadToSkyPillar2:
+
 # 387 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "{PLAYER}{KUN}, there's not a moment to lose!\n"
+CaveOfOrigin_B1F_Text_WellHeadToSkyPillar2:
 # 388 "data/maps/CaveOfOrigin_B1F/scripts.pory"
+	.string "{PLAYER}{KUN}, there's not a moment to lose!\n"
+# 389 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	.string "We'll head to the Sky Pillar right away!$"
