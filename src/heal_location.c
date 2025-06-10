@@ -1,11 +1,11 @@
 #include "global.h"
 #include "event_data.h"
 #include "heal_location.h"
-#include "constants/event_objects.h"
 #include "constants/heal_locations.h"
 #include "constants/maps.h"
 
 #include "data/heal_locations.h"
+#include "data/heal_locations_pkm_center.h"
 
 u32 GetHealLocationIndexByMap(u16 mapGroup, u16 mapNum)
 {
@@ -81,13 +81,14 @@ u32 GetHealNpcLocalId(u32 healLocationId)
     if (healLocationId == HEAL_LOCATION_NONE || healLocationId >= NUM_HEAL_LOCATIONS)
         return 0;
 
-    return sWhiteoutRespawnHealerNpcIds[healLocationId - 1];
+    return sHealNpcLocalId[healLocationId - 1];
 }
 
 void SetWhiteoutRespawnWarpAndHealerNPC(struct WarpData *warp)
 {
     u32 healLocationId = GetHealLocationIndexByWarpData(&gSaveBlock1Ptr->lastHealLocation);
     u32 healNpcLocalId = GetHealNpcLocalId(healLocationId);
+    struct HealLocation pkmCenterHealLocation;
 
     if (!healNpcLocalId)
     {
@@ -95,10 +96,11 @@ void SetWhiteoutRespawnWarpAndHealerNPC(struct WarpData *warp)
         return;
     }
 
-    warp->mapGroup = sWhiteoutRespawnHealCenterMapIdxs[healLocationId - 1][0];
-    warp->mapNum = sWhiteoutRespawnHealCenterMapIdxs[healLocationId - 1][1];
+    pkmCenterHealLocation = sHealLocationsPokemonCenter[healLocationId - 1];
+    warp->mapGroup = pkmCenterHealLocation.mapGroup;
+    warp->mapNum = pkmCenterHealLocation.mapNum;
     warp->warpId = WARP_ID_NONE;
-    warp->x = sWhiteoutRespawnHealCenterMapIdxs[healLocationId - 1][2];
-    warp->y = sWhiteoutRespawnHealCenterMapIdxs[healLocationId - 1][3];
+    warp->x = pkmCenterHealLocation.x;
+    warp->y = pkmCenterHealLocation.y;
     gSpecialVar_LastTalked = healNpcLocalId;
 }

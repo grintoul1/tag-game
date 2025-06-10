@@ -525,7 +525,7 @@ void AnimBasicFistOrFoot(struct Sprite *sprite)
 {
     StartSpriteAnim(sprite, gBattleAnimArgs[4]);
 
-    if (gBattleAnimArgs[3] == ANIM_ATTACKER)
+    if (gBattleAnimArgs[3] == 0)
         InitSpritePosToAnimAttacker(sprite, TRUE);
     else
         InitSpritePosToAnimTarget(sprite, TRUE);

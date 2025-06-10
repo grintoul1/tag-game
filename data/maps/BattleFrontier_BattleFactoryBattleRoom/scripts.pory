@@ -6,7 +6,6 @@ raw `
 .set LOCALID_SCIENTIST_4, 5
 .set LOCALID_SCIENTIST_5, 6
 .set LOCALID_SCIENTIST_6, 7
-.set LOCALID_PLAYER, 8
 
 BattleFrontier_BattleFactoryBattleRoom_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattleFactoryBattleRoom_OnTransition

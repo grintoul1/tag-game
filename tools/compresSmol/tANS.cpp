@@ -1,5 +1,4 @@
 #include "tANS.h"
-#include <stdio.h>
 
 std::vector<DecodeCol> createDecodingTable(std::vector<unsigned char> symbols, std::vector<int> frequencies)
 {
@@ -9,7 +8,6 @@ std::vector<DecodeCol> createDecodingTable(std::vector<unsigned char> symbols, s
     {
         for (size_t j = 0; j < frequencies[i]; j++)
         {
-            //printf("%zu %zu\n", table.size(), currCol);
             table[currCol].state = TANS_TABLE_SIZE + currCol;
             table[currCol].symbol = symbols[i];
             table[currCol].y = frequencies[i] + j;
