@@ -4,35 +4,21 @@
       "id": "HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F",
       "map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F",
       "x": 4,
-<<<<<<< HEAD
-      "y": 2
-=======
       "y": 2,
       "respawn_map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
+      "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM",
       "respawn_x": 2,
-      "respawn_y": 7,
-      "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM"
-<<<<<<< HEAD
->>>>>>> parent of afa6a5f807 (20250609 02)
-=======
->>>>>>> parent of afa6a5f807 (20250609 02)
+      "respawn_y": 7
     },
     {
       "id": "HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE_2F",
       "map": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F",
       "x": 4,
-<<<<<<< HEAD
-      "y": 2
-=======
       "y": 2,
       "respawn_map": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
+      "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM",
       "respawn_x": 8,
-      "respawn_y": 7,
-      "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM"
-<<<<<<< HEAD
->>>>>>> parent of afa6a5f807 (20250609 02)
-=======
->>>>>>> parent of afa6a5f807 (20250609 02)
+      "respawn_y": 7
     },
     {
       "id": "HEAL_LOCATION_PETALBURG_CITY",
@@ -92,35 +78,21 @@
       "id": "HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE",
       "map": "MAP_LITTLEROOT_TOWN",
       "x": 5,
-<<<<<<< HEAD
-      "y": 9
-=======
       "y": 9,
       "respawn_map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
+      "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM",
       "respawn_x": 2,
-      "respawn_y": 7,
-      "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM"
-<<<<<<< HEAD
->>>>>>> parent of afa6a5f807 (20250609 02)
-=======
->>>>>>> parent of afa6a5f807 (20250609 02)
+      "respawn_y": 7
     },
     {
       "id": "HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE",
       "map": "MAP_LITTLEROOT_TOWN",
       "x": 14,
-<<<<<<< HEAD
-      "y": 9
-=======
       "y": 9,
       "respawn_map": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
+      "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM",
       "respawn_x": 8,
-      "respawn_y": 7,
-      "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM"
-<<<<<<< HEAD
->>>>>>> parent of afa6a5f807 (20250609 02)
-=======
->>>>>>> parent of afa6a5f807 (20250609 02)
+      "respawn_y": 7
     },
     {
       "id": "HEAL_LOCATION_OLDALE_TOWN",
@@ -162,18 +134,11 @@
       "id": "HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE",
       "map": "MAP_EVER_GRANDE_CITY",
       "x": 18,
-<<<<<<< HEAD
-      "y": 6
-=======
       "y": 6,
       "respawn_map": "MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F",
+      "respawn_npc": "LOCALID_LEAGUE_NURSE",
       "respawn_x": 3,
-      "respawn_y": 4,
-      "respawn_npc": "LOCALID_LEAGUE_NURSE"
-<<<<<<< HEAD
->>>>>>> parent of afa6a5f807 (20250609 02)
-=======
->>>>>>> parent of afa6a5f807 (20250609 02)
+      "respawn_y": 4
     },
     {
       "id": "HEAL_LOCATION_SOUTHERN_ISLAND_EXTERIOR",
