@@ -5140,7 +5140,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 === TRAINER_WINONA_1 ===
 Name: WINONA
 Class: Leader
-Mugshot: Brendan
+Mugshot: LightBlue
 Pic: Leader Winona
 Gender: Female
 Music: Female
@@ -9669,7 +9669,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Skitty @ Sitrus Berry
 Level: 5
@@ -9687,7 +9687,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Slugma
 Level: 18
@@ -9709,7 +9709,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Slugma
 Level: 29
@@ -9731,7 +9731,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Skitty @ Sitrus Berry
 Level: 5
@@ -9749,7 +9749,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Wingull
 Level: 18
@@ -9771,7 +9771,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Pelipper
 Level: 29
@@ -9793,7 +9793,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Skitty @ Sitrus Berry
 Level: 5
@@ -9811,7 +9811,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Lombre
 Level: 18
@@ -9833,7 +9833,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Lombre
 Level: 29
@@ -11088,7 +11088,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Check Bad Move
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Lotad
 Level: 13
@@ -11106,7 +11106,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Check Bad Move
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Wingull
 Level: 13
@@ -11215,7 +11215,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Slugma
 Level: 13
@@ -11686,7 +11686,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Dustox
 Level: 29
@@ -11704,7 +11704,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Surskit
 Level: 31
@@ -11889,7 +11889,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Pelipper
 Level: 10
@@ -12531,7 +12531,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Tropius
 Level: 31
@@ -12557,7 +12557,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Tropius
 Level: 31
@@ -12583,7 +12583,7 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Tropius
 Level: 31
@@ -17503,7 +17503,7 @@ Pic: RS Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
-Mugshot: Brendan
+Mugshot: LightBlue
 
 Groudon
 Level: 5
