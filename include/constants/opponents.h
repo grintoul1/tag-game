@@ -612,7 +612,7 @@
 #define TRAINER_VIVI                        606
 #define TRAINER_MAXIE_SKY_PILLAR            607
 #define TRAINER_ARCHIE_SKY_PILLAR           608
-#define TRAINER_HALEY_4                     609
+#define TRAINER_MAY_ROUTE_114_TREECKO       609
 #define TRAINER_HALEY_5                     610
 #define TRAINER_SALLY                       611
 #define TRAINER_ROBIN                       612
@@ -625,9 +625,9 @@
 #define TRAINER_GREG                        619
 #define TRAINER_KENT                        620
 #define TRAINER_JAMES_1                     621
-#define TRAINER_JAMES_2                     622
-#define TRAINER_JAMES_3                     623
-#define TRAINER_JAMES_4                     624
+#define TRAINER_MAY_ROUTE_114_MUDKIP        622
+#define TRAINER_BRENDAN_ROUTE_114_TREECKO   623
+#define TRAINER_BRENDAN_ROUTE_114_TORCHIC   624
 #define TRAINER_JAMES_5                     625
 #define TRAINER_BRICE                       626
 #define TRAINER_TRENT_1                     627
@@ -638,8 +638,8 @@
 #define TRAINER_ERIC                        632
 #define TRAINER_LUCAS_2                     633
 #define TRAINER_MIKE_1                      634
-#define TRAINER_MIKE_2                      635
-#define TRAINER_TRENT_2                     636
+#define TRAINER_BRENDAN_ROUTE_114_MUDKIP    635
+#define TRAINER_MAY_ROUTE_114_TORCHIC       636
 #define TRAINER_TRENT_3                     637
 #define TRAINER_TRENT_4                     638
 #define TRAINER_TRENT_5                     639

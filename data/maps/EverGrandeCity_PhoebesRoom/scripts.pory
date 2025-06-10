@@ -10,7 +10,10 @@ EverGrandeCity_PhoebesRoom_OnWarp:
 	.2byte 0
 
 EverGrandeCity_PhoebesRoom_EventScript_PlayerTurnNorth::
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 7, 13
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_NORTH
+	turnobject LOCALID_PLAYER, DIR_NORTH
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_EVER_GRANDE_CITY_PHOEBES_ROOM
 	end
 
 EverGrandeCity_PhoebesRoom_OnFrame:
@@ -41,9 +44,24 @@ EverGrandeCity_PhoebesRoom_EventScript_Phoebe::
 	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_ELITE_4_PHOEBE, EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FacePlayer
+	waitmovement 0
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
 	msgbox EverGrandeCity_PhoebesRoom_Text_IntroSpeech, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat
+	goto EverGrandeCity_PhoebesRoom_EventScript_PhoebeDoMultiBattle
+	releaseall
+	end
+
+EverGrandeCity_PhoebesRoom_EventScript_PhoebeDoMultiBattle::
+	playbgm MUS_VICTORY_ROAD, TRUE
+	multi_2p_vs_1 TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, EverGrandeCity_PhoebesRoom_EventScript_PhoebeVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+EverGrandeCity_PhoebesRoom_EventScript_PhoebeVictory::		
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
 	end
 

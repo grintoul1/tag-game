@@ -849,7 +849,7 @@ RusturfTunnel_Movement_PeekoExit:
 # 425 "data/maps/RusturfTunnel/scripts.pory"
 RusturfTunnel_EventScript_Mike::
 # 426 "data/maps/RusturfTunnel/scripts.pory"
-	trainerbattle_single TRAINER_MIKE_2, RusturfTunnel_Text_MikeIntro, RusturfTunnel_Text_MikeDefeat
+	trainerbattle_single TRAINER_MIKE_1, RusturfTunnel_Text_MikeIntro, RusturfTunnel_Text_MikeDefeat
 # 427 "data/maps/RusturfTunnel/scripts.pory"
 	msgbox RusturfTunnel_Text_MikePostBattle, MSGBOX_AUTOCLOSE
 # 428 "data/maps/RusturfTunnel/scripts.pory"

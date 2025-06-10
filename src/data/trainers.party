@@ -24,7 +24,7 @@ Optional (but still recommended) fields for trainers:
     - AI (Ai Flag / Another Flag / Third Flag / ...
           see "constants/battle_ai.h" for all flags)
     - Mugshot (enable Mugshots during battle transition
-               set to one of Purple, Green, Pink, Blue or Yellow)
+               set to one of Black, Grey, White, Orange, Brown, LightBlue, MayPink, DarkPurple, Purple, Green, Pink, Blue, Red or Yellow)
     - Starting Status (see include/constants/battle.h for values)
 
 Pokemon are then specified using the Showdown Export format.
@@ -46,7 +46,7 @@ Optional fields for Pokemon:
           (Order does not matter)
     - EVs (252 HP / 128 Spe / 48 Def, defaults to all 0, is not capped at 512 total)
           (Order does not matter)
-    - Ball (Poke Ball or ITEM_POKE_BALL, defaults to Poke Ball
+    - Ball (Poke Ball or ITEM_POKE_BALL, defaults to Poke Ball)
     - Happiness (Number between 1 and 255)
     - Nature (Rash or NATURE_RASH, defaults to Hardy)
     - Shiny (Yes/No, defaults to No)
@@ -906,7 +906,7 @@ Name: Emmie
 Class: Pkmn Trainer 2
 Pic: Green
 Gender: Female
-Mugshot: Pink
+Mugshot: MayPink
 Music: Pkmn Trainer 2
 Battle Type: Doubles
 AI: Check Bad Move
@@ -924,7 +924,7 @@ Name: Emmie
 Class: Pkmn Trainer 2
 Pic: Green
 Gender: Female
-Mugshot: Pink
+Mugshot: MayPink
 Music: Pkmn Trainer 2
 Battle Type: Doubles
 AI: Check Bad Move
@@ -982,7 +982,7 @@ Name: Emmie
 Class: Pkmn Trainer 2
 Pic: Green
 Gender: Female
-Mugshot: Pink
+Mugshot: MayPink
 Music: Pkmn Trainer 2
 Battle Type: Doubles
 AI: Check Bad Move
@@ -4716,7 +4716,7 @@ Music: Elite Four
 Items: Full Restore / Full Restore
 Battle Type: Singles
 AI: Basic Trainer / Force Setup First Turn
-Mugshot: Purple
+Mugshot: Black
 
 Mightyena
 Level: 46
@@ -4767,7 +4767,7 @@ Music: Elite Four
 Items: Full Restore / Full Restore
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Green
+Mugshot: DarkPurple
 
 Dusclops
 Level: 48
@@ -4818,7 +4818,7 @@ Music: Elite Four
 Items: Full Restore / Full Restore
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Pink
+Mugshot: White
 
 Sealeo
 Level: 50
@@ -4869,7 +4869,7 @@ Music: Elite Four
 Items: Full Restore / Full Restore
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Blue
+Mugshot: Drake
 
 Shelgon
 Level: 52
@@ -4914,7 +4914,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 === TRAINER_ROXANNE_1 ===
 Name: ROXANNE
 Class: Leader
-Mugshot: Pink
+Mugshot: Brown
 Pic: Leader Roxanne
 Gender: Female
 Music: Female
@@ -4949,7 +4949,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 === TRAINER_BRAWLY_1 ===
 Name: BRAWLY
 Class: Leader
-Mugshot: Blue
+Mugshot: Orange
 Pic: Leader Brawly
 Gender: Male
 Music: Male
@@ -5097,7 +5097,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 === TRAINER_NORMAN_1 ===
 Name: NORMAN
 Class: Leader
-Mugshot: Green
+Mugshot: Grey
 Pic: Leader Norman
 Gender: Male
 Music: Male
@@ -5140,7 +5140,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 === TRAINER_WINONA_1 ===
 Name: WINONA
 Class: Leader
-Mugshot: Green
+Mugshot: Brendan
 Pic: Leader Winona
 Gender: Female
 Music: Female
@@ -5191,7 +5191,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 === TRAINER_TATE_AND_LIZA_1 ===
 Name: TATE&LIZA
 Class: Leader
-Mugshot: Pink
+Mugshot: Purple
 Pic: Leader Tate And Liza
 Gender: Male
 Music: Female
@@ -6407,7 +6407,7 @@ Music: Male
 Items: Full Restore / Full Restore / Full Restore / Full Restore
 Battle Type: Singles
 AI: Basic Trainer
-Mugshot: Yellow
+Mugshot: Champion
 
 Wailord
 Level: 57
@@ -9614,7 +9614,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Name: WALLY
 Class: Rival
 Pic: Wally
-Mugshot: Pink
+Mugshot: White
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
@@ -9662,13 +9662,14 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Future Sight
 
 === TRAINER_BRENDAN_ROUTE_103_MUDKIP ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: Brendan
 
 Skitty @ Sitrus Berry
 Level: 5
@@ -9679,13 +9680,14 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Encore
 
 === TRAINER_BRENDAN_ROUTE_110_MUDKIP ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: Brendan
 
 Slugma
 Level: 18
@@ -9700,13 +9702,14 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_BRENDAN_ROUTE_119_MUDKIP ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: Brendan
 
 Slugma
 Level: 29
@@ -9721,13 +9724,14 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_BRENDAN_ROUTE_103_TREECKO ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
+Mugshot: Brendan
 
 Skitty @ Sitrus Berry
 Level: 5
@@ -9738,13 +9742,14 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Encore
 
 === TRAINER_BRENDAN_ROUTE_110_TREECKO ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: Brendan
 
 Wingull
 Level: 18
@@ -9759,13 +9764,14 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_BRENDAN_ROUTE_119_TREECKO ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: Brendan
 
 Pelipper
 Level: 29
@@ -9780,13 +9786,14 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_BRENDAN_ROUTE_103_TORCHIC ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: Brendan
 
 Skitty @ Sitrus Berry
 Level: 5
@@ -9797,13 +9804,14 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Encore
 
 === TRAINER_BRENDAN_ROUTE_110_TORCHIC ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: Brendan
 
 Lombre
 Level: 18
@@ -9818,13 +9826,14 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_BRENDAN_ROUTE_119_TORCHIC ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: Brendan
 
 Lombre
 Level: 29
@@ -9839,30 +9848,29 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_103_MUDKIP ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
-Skitty @ Sitrus Berry
+Togedemaru @ Flame Orb
 Level: 5
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fake Out
-- Sucker Punch
-- Icy Wind
-- Encore
 
 === TRAINER_MAY_ROUTE_110_MUDKIP ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
 Wingull
 Level: 18
@@ -9877,13 +9885,14 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_MAY_ROUTE_119_MUDKIP ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
 Slugma
 Level: 29
@@ -9898,31 +9907,29 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_103_TREECKO ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
-Mugshot: Pink
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
-Skitty @ Sitrus Berry
+Togedemaru @ Flame Orb
 Level: 5
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fake Out
-- Sucker Punch
-- Icy Wind
-- Encore
 
 === TRAINER_MAY_ROUTE_110_TREECKO ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
 Wingull
 Level: 18
@@ -9937,13 +9944,14 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_MAY_ROUTE_119_TREECKO ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
 Pelipper
 Level: 29
@@ -9958,30 +9966,29 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_103_TORCHIC ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
-Skitty @ Sitrus Berry
+Togedemaru @ Flame Orb
 Level: 5
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fake Out
-- Sucker Punch
-- Icy Wind
-- Encore
 
 === TRAINER_MAY_ROUTE_110_TORCHIC ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
 Lombre
 Level: 18
@@ -9996,13 +10003,14 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_MAY_ROUTE_119_TORCHIC ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
 Lombre
 Level: 29
@@ -11073,13 +11081,14 @@ Level: 36
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRENDAN_RUSTBORO_TREECKO ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Check Bad Move
+Mugshot: Brendan
 
 Lotad
 Level: 13
@@ -11090,13 +11099,14 @@ Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_BRENDAN_RUSTBORO_MUDKIP ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Check Bad Move
+Mugshot: Brendan
 
 Wingull
 Level: 13
@@ -11198,13 +11208,14 @@ Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRENDAN_RUSTBORO_TORCHIC ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: Brendan
 
 Slugma
 Level: 13
@@ -11215,13 +11226,14 @@ Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_MAY_RUSTBORO_MUDKIP ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
+Mugshot: MayPink
 
 Wingull
 Level: 13
@@ -11428,14 +11440,15 @@ Ability: Stamina
 - Electro Shot
 - Dragon Pulse
 
-=== TRAINER_HALEY_4 ===
-Name: HALEY
-Class: Lass
-Pic: Lass
+=== TRAINER_MAY_ROUTE_114_TREECKO ===
+Name: May
+Class: Rival
+Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Check Bad Move
+Mugshot: MayPink
 
 Lombre
 Level: 32
@@ -11642,8 +11655,6 @@ Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
 Music: Male
-Battle Type: Singles
-AI: Check Bad Move
 
 Nincada
 Level: 6
@@ -11653,27 +11664,29 @@ Nincada
 Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_JAMES_2 ===
-Name: JAMES
-Class: Bug Catcher
-Pic: Bug Catcher
-Gender: Male
-Music: Male
+=== TRAINER_MAY_ROUTE_114_MUDKIP ===
+Name: May
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
 Battle Type: Singles
 AI: Check Bad Move
+Mugshot: MayPink
 
 Ninjask
 Level: 27
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
-=== TRAINER_JAMES_3 ===
-Name: JAMES
-Class: Bug Catcher
-Pic: Bug Catcher
+=== TRAINER_BRENDAN_ROUTE_114_TREECKO ===
+Name: Brendan
+Class: Rival
+Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
+Mugshot: Brendan
 
 Dustox
 Level: 29
@@ -11683,14 +11696,15 @@ Ninjask
 Level: 29
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
-=== TRAINER_JAMES_4 ===
-Name: JAMES
-Class: Bug Catcher
-Pic: Bug Catcher
+=== TRAINER_BRENDAN_ROUTE_114_TORCHIC ===
+Name: Brendan
+Class: Rival
+Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
+Mugshot: Brendan
 
 Surskit
 Level: 31
@@ -11867,14 +11881,15 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Splash
 - Water Gun
 
-=== TRAINER_MIKE_1 ===
-Name: MIKE
-Class: Hiker
-Pic: Hiker
+=== TRAINER_BRENDAN_ROUTE_114_MUDKIP ===
+Name: Brendan
+Class: Rival
+Pic: Brendan
 Gender: Male
-Music: Hiker
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
+Mugshot: Brendan
 
 Pelipper
 Level: 10
@@ -11888,35 +11903,15 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Bite
 - Scary Face
 
-=== TRAINER_MIKE_2 ===
-Name: MIKE
-Class: Hiker
-Pic: Hiker
-Gender: Male
-Music: Hiker
+=== TRAINER_MAY_ROUTE_114_TORCHIC ===
+Name: May
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
 Battle Type: Singles
 AI: Check Bad Move
-
-Geodude
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Geodude
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Machop
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_TRENT_2 ===
-Name: TRENT
-Class: Hiker
-Pic: Hiker
-Gender: Male
-Music: Hiker
-Battle Type: Singles
-AI: Check Bad Move
+Mugshot: MayPink
 
 Geodude
 Level: 24
@@ -12318,7 +12313,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 Name: WALLY
 Class: Rival
 Pic: Wally
-Mugshot: Pink
+Mugshot: White
 Gender: Male
 Music: Male
 Battle Type: Singles
@@ -12529,13 +12524,14 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Future Sight
 
 === TRAINER_BRENDAN_LILYCOVE_MUDKIP ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: Brendan
 
 Tropius
 Level: 31
@@ -12554,13 +12550,14 @@ Level: 34
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_BRENDAN_LILYCOVE_TREECKO ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: Brendan
 
 Tropius
 Level: 31
@@ -12579,13 +12576,14 @@ Level: 34
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_BRENDAN_LILYCOVE_TORCHIC ===
-Name: BRENDAN
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: Brendan
 
 Tropius
 Level: 31
@@ -12604,13 +12602,14 @@ Level: 34
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_MAY_LILYCOVE_MUDKIP ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
 Tropius
 Level: 31
@@ -12629,13 +12628,14 @@ Level: 34
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_MAY_LILYCOVE_TREECKO ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
 Tropius
 Level: 31
@@ -12654,13 +12654,14 @@ Level: 34
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_MAY_LILYCOVE_TORCHIC ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
 Tropius
 Level: 31
@@ -14406,13 +14407,14 @@ Level: 29
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_MAY_RUSTBORO_TREECKO ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
 Lotad
 Level: 13
@@ -14423,13 +14425,14 @@ Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_MAY_RUSTBORO_TORCHIC ===
-Name: MAY
+Name: May
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
 Battle Type: Singles
 AI: Basic Trainer
+Mugshot: MayPink
 
 Torkoal
 Level: 13
@@ -17494,24 +17497,26 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRENDAN_PLACEHOLDER ===
-Name: BRENDAN
+Name: Brendan
 Class: RS Protag
 Pic: RS Brendan
 Gender: Male
 Music: Male
 Battle Type: Singles
+Mugshot: Brendan
 
 Groudon
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_MAY_PLACEHOLDER ===
-Name: MAY
+Name: May
 Class: RS Protag
 Pic: RS May
 Gender: Female
 Music: Male
 Battle Type: Singles
+Mugshot: MayPink
 
 Kyogre
 Level: 5
