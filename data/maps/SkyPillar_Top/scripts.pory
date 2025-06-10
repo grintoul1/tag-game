@@ -4,16 +4,7 @@ SkyPillar_Top_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, SkyPillar_Top_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, SkyPillar_Top_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, SkyPillar_Top_OnWarp
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SkyPillar_Top_OnFrame
 	.byte 0
-
-SkyPillar_Top_OnFrame:
-	map_script_2 VAR_PARTNER_EMMIE_STATE, 65, SkyPillar_Top_EventScript_ProgressEmmieState
-	.2byte 0
-
-SkyPillar_Top_EventScript_ProgressEmmieState::
-	setvar VAR_PARTNER_EMMIE_STATE, 66
-	return
 
 SkyPillar_Top_OnResume:
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, SkyPillar_Top_EventScript_TryRemoveRayquaza
@@ -319,7 +310,6 @@ SkyPillar_Top_EventScript_FinaleVictory::
 	removeobject LOCALID_SKYPILLAR_MATT
 	removeobject LOCALID_SKYPILLAR_COURTNEY
 	setvar VAR_SOOTOPOLIS_CITY_STATE, 5
-	setvar VAR_PARTNER_EMMIE_STATE, 68
 	setflag FLAG_HIDE_SKY_PILLAR_EVIL_TEAMS
 	clearflag FLAG_ABNORMAL_WEATHER_RAIN
 	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE

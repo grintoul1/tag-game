@@ -2,16 +2,7 @@ raw `
 
 LavaridgeTown_Gym_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LavaridgeTown_Gym_1F_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, LavaridgeTown_Gym_1F_OnFrame
 	.byte 0
-
-LavaridgeTown_Gym_1F_OnFrame:
-	map_script_2 VAR_PARTNER_EMMIE_STATE, 29, LavaridgeTown_Gym_1F_EventScript_ProgressEmmieState
-	.2byte 0
-
-LavaridgeTown_Gym_1F_EventScript_ProgressEmmieState::
-	setvar VAR_PARTNER_EMMIE_STATE, 30
-	return
 
 LavaridgeTown_Gym_1F_OnTransition:
 	call LavaridgeTown_Gym_1F_EventScript_SetTrainerTempVars
@@ -74,7 +65,6 @@ waitstate
 
 LavaridgeTown_Gym_1F_EventScript_FlanneryVictory::
 setvar VAR_LEVEL_CAP, 65
-setvar VAR_PARTNER_EMMIE_STATE, 31
 goto LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated
 end
 

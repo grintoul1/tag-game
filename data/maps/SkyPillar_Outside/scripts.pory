@@ -30,12 +30,7 @@ SkyPillar_Outside_EventScript_OpenDoor::
 	return
 
 SkyPillar_Outside_OnFrame:
-	map_script_2 VAR_PARTNER_EMMIE_STATE, 65, SkyPillar_Outside_EventScript_ProgressEmmieState
 	.2byte 0
-
-SkyPillar_Outside_EventScript_ProgressEmmieState::
-	setvar VAR_PARTNER_EMMIE_STATE, 67
-	return
 
 SkyPillar_Outside_EventScript_WallaceScene::
 	lockall
@@ -81,7 +76,6 @@ SkyPillar_Outside_EventScript_WallaceScene::
 	fadescreenswapbuffers FADE_TO_BLACK
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
 	setvar VAR_SOOTOPOLIS_CITY_STATE, 4
-	setvar VAR_PARTNER_EMMIE_STATE, 64
 	removeobject LOCALID_WALLACE
 	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
 	fadescreenswapbuffers FADE_FROM_BLACK

@@ -1021,7 +1021,6 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	delay 30
 	applymovement LOCALID_EMMIE, LittlerootTown_Movement_EmmieApproachPlayer
 	waitmovement 0
-	playse SE_PIN
 	applymovement LOCALID_EMMIE, Common_Movement_QuestionMark
 	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0

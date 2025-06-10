@@ -74,12 +74,7 @@ SlateportCity_EventScript_MoveScottLeft::
 
 SlateportCity_OnFrame:
 	map_script_2 VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 1, SlateportCity_EventScript_ScottScene
-	map_script_2 VAR_PARTNER_EMMIE_STATE, 18, SlateportCity_EventScript_ProgressEmmieState
 	.2byte 0
-
-SlateportCity_EventScript_ProgressEmmieState::
-	setvar VAR_PARTNER_EMMIE_STATE, 17
-	return
 
 SlateportCity_EventScript_ScottScene::
 	lockall

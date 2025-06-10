@@ -50,7 +50,6 @@ MauvilleCity_BikeShop_EventScript_GetAcroBike::
 	end
 
 MauvilleCity_BikeShop_EventScript_ComeBackToSwitchBikes::
-	setvar VAR_PARTNER_EMMIE_STATE, 8
 	msgbox MauvilleCity_BikeShop_Text_EnjoyBikes, MSGBOX_DEFAULT
 	closemessage
 	release

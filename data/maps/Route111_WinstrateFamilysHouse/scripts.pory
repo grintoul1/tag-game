@@ -24,7 +24,6 @@ Route111_WinstrateFamilysHouse_EventScript_Victoria::
 	giveitem ITEM_GO_GOGGLES
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_MACHO_BRACE
-	setvar VAR_PARTNER_EMMIE_STATE, 22
 	goto Route111_WinstrateFamilysHouse_EventScript_FaceOriginalDirection
 	end
 

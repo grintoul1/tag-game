@@ -2,16 +2,7 @@ raw `
 .set LOCALID_FAMILIAR_GRUNT, 13
 
 SlateportCity_OceanicMuseum_1F_MapScripts::
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SlateportCity_OceanicMuseum_1F_OnFrame
 	.byte 0
-
-SlateportCity_OceanicMuseum_1F_OnFrame:
-	map_script_2 VAR_PARTNER_EMMIE_STATE, 17, SlateportCity_OceanicMuseum_1F_EventScript_ProgressEmmieState
-	.2byte 0
-
-SlateportCity_OceanicMuseum_1F_EventScript_ProgressEmmieState::
-	setvar VAR_PARTNER_EMMIE_STATE, 18
-	return
 
 SlateportCity_OceanicMuseum_1F_EventScript_EntranceAttendant::
 	msgbox SlateportCity_OceanicMuseum_1F_Text_PleaseEnjoyYourself, MSGBOX_NPC

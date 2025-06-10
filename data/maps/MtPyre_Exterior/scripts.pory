@@ -1,16 +1,7 @@
 raw `
 MtPyre_Exterior_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MtPyre_Exterior_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, MtPyre_Exterior_OnFrame
 	.byte 0
-
-MtPyre_Exterior_OnFrame:
-	map_script_2 VAR_PARTNER_EMMIE_STATE, 35, MtPyre_Exterior_EventScript_ProgressEmmieState
-	.2byte 0
-
-MtPyre_Exterior_EventScript_ProgressEmmieState::
-	setvar VAR_PARTNER_EMMIE_STATE, 33
-	return
 
 MtPyre_Exterior_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun

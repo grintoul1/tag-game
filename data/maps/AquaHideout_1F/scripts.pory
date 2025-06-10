@@ -3,16 +3,7 @@ raw `
 .set LOCALID_EMMIE, 4
 
 AquaHideout_1F_MapScripts::
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, AquaHideout_1F_OnFrame
 	.byte 0
-
-AquaHideout_1F_OnFrame:
-	map_script_2 VAR_PARTNER_EMMIE_STATE, 47, AquaHideout_1F_EventScript_ProgressEmmieState
-	.2byte 0
-
-AquaHideout_1F_EventScript_ProgressEmmieState::
-	setvar VAR_PARTNER_EMMIE_STATE, 48
-	return
 
 @ The below two entrance guards give hints about what to do to progress the story
 AquaHideout_1F_EventScript_HideoutEntranceGrunt1::
@@ -89,7 +80,6 @@ AquaHideout_1F_EventScript_FirstEntrance::
 	setfollowernpc 3, FNPC_WHITE_OUT, Common_EventScript_Tabitha, PARTNER_TABITHA
 	setflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
 	setflag FLAG_HIDE_AQUA_HIDEOUT_B2F_EMMIE
-	setvar VAR_PARTNER_EMMIE_STATE, 49
 	addvar VAR_FOLLOWER_AQUA_HIDEOUT_TABITHA, 1
 	end
 
@@ -114,7 +104,6 @@ AquaHideout_1F_EventScript_LeavingHideout::
 	waitmovement 0
 	setfollowernpc 4, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
-	setvar VAR_PARTNER_EMMIE_STATE, 48
 	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
 	end
 
@@ -131,7 +120,6 @@ AquaHideout_1F_EventScript_EnteringHideout::
 	destroyfollowernpc
 	setfollowernpc 3, FNPC_WHITE_OUT, Common_EventScript_Tabitha, PARTNER_TABITHA
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
-	setvar VAR_PARTNER_EMMIE_STATE, 49
 	setflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
 	end
 

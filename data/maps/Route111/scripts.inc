@@ -391,7 +391,6 @@ Route111_EventScript_VictorVictoriaVictory::
 	setflag FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE
 	setflag FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE
 	setflag FLAG_HIDE_ROUTE_111_AQUA_2
-	setvar VAR_PARTNER_EMMIE_STATE, 21
 	release
 	end
 

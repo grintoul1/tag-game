@@ -334,12 +334,7 @@ SootopolisCity_OnFrame:
 	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 1, SootopolisCity_EventScript_StartLegendariesScene
 	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 7, SootopolisCity_EventScript_WallaceGoFrontier
 	map_script_2 VAR_SKY_PILLAR_STATE, 7, SootopolisCity_EventScript_StartRayquazaScene
-	map_script_2 VAR_PARTNER_EMMIE_STATE, 70, SootopolisCity_EventScript_ProgressEmmieState
 	.2byte 0
-
-SootopolisCity_EventScript_ProgressEmmieState::
-	setvar VAR_PARTNER_EMMIE_STATE, 69
-	return
 
 @ If not at PokeCenter, assumed to have arrived via Dive
 SootopolisCity_EventScript_StartLegendariesScene::
@@ -634,7 +629,6 @@ SootopolisCity_Movement_GroudonIdle:
 SootopolisCity_EventScript_StartRayquazaScene::
 	lockall
 	special StorePlayerCoordsInVars
-	setvar VAR_PARTNER_EMMIE_STATE, 69
 	goto_if_ne VAR_0x8004, 43, SootopolisCity_EventScript_RayquazaSceneFromDive
 	goto_if_ne VAR_0x8005, 32, SootopolisCity_EventScript_RayquazaSceneFromDive
 	goto SootopolisCity_EventScript_RayquazaSceneFromPokeCenter
@@ -1108,7 +1102,6 @@ SootopolisCity_EventScript_StevenLeadPlayerCaveOfOrigin::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SootopolisCity_Movement_PlayerEnterCaveOfOrigin
 	waitmovement 0
 	setflag FLAG_HIDE_CAVE_OF_ORIGIN_B1F_LEADERS
-	setvar VAR_PARTNER_EMMIE_STATE, 62
 	warp MAP_CAVE_OF_ORIGIN_ENTRANCE, 9, 20
 	waitstate
 	end

@@ -10,16 +10,7 @@ raw `
 
 MagmaHideout_4F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MagmaHideout_4F_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, MagmaHideout_4F_OnFrame
 	.byte 0
-
-MagmaHideout_4F_OnFrame:
-	map_script_2 VAR_PARTNER_EMMIE_STATE, 43, MagmaHideout_4F_EventScript_ProgressEmmieState
-	.2byte 0
-
-MagmaHideout_4F_EventScript_ProgressEmmieState::
-	setvar VAR_PARTNER_EMMIE_STATE, 44
-	return
 
 MagmaHideout_4F_OnTransition:
 	call_if_unset FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON, MagmaHideout_4F_EventScript_SetGroudonPosition
@@ -524,7 +515,6 @@ MagmaHideout_4F_EventScript_CourtneyTabithaVictory::
 	closemessage
 	setfollowernpc 9, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	addvar VAR_MAGMAHIDEOUT_STATE, 1
-	setvar VAR_PARTNER_EMMIE_STATE, 45
 	releaseall
 	end
 
@@ -634,7 +624,6 @@ MagmaHideout_4F_EventScript_MaxieVictory::
 	addvar VAR_MAGMAHIDEOUT_STATE, 1
 	addvar VAR_JAGGED_PASS_STATE, 1
 	setvar VAR_LEVEL_CAP, 75
-	setvar VAR_PARTNER_EMMIE_STATE, 46
 	warp MAP_JAGGED_PASS, 16, 19
 	waitstate
 	releaseall

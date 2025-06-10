@@ -5,17 +5,7 @@ raw `
 
 
 RustboroCity_Gym_MapScripts::
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, MauvilleCity_Gym_OnFrame
 	.byte 0
-
-RustboroCity_Gym_OnFrame:
-	map_script_2 VAR_PARTNER_EMMIE_STATE, 5, RustboroCity_Gym_EventScript_ProgressEmmieState
-	.2byte 0
-
-RustboroCity_Gym_EventScript_ProgressEmmieState::
-	setvar VAR_PARTNER_EMMIE_STATE, 6
-	return
-
 
 RustboroCity_Gym_EventScript_Roxanne::
 goto_if_set FLAG_BADGE01_GET, RustboroCity_Gym_EventScript_RoxannePostBattle
@@ -40,7 +30,6 @@ waitstate
 
 RustboroCity_Gym_EventScript_RoxanneVictory::
 addvar VAR_RUSTBOROCITY_GYM_STATE, 1
-setvar VAR_PARTNER_EMMIE_STATE, 7
 setvar VAR_LEVEL_CAP, 38
 goto RustboroCity_Gym_EventScript_RoxanneDefeated
 end

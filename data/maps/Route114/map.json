@@ -421,7 +421,7 @@
       "y": 21,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
-      "var_value": "1",
+      "var_value": "0",
       "script": "Route114_EventScript_KaiClaude"
     },
     {
@@ -430,7 +430,7 @@
       "y": 50,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
-      "var_value": "2",
+      "var_value": "1",
       "script": "Route114_EventScript_IvyTyra"
     },
     {
@@ -439,7 +439,7 @@
       "y": 55,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
-      "var_value": "3",
+      "var_value": "2",
       "script": "Route114_EventScript_Grunt_Route_114_1Grunt_Route_114_2"
     },
     {
@@ -448,7 +448,7 @@
       "y": 70,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
-      "var_value": "4",
+      "var_value": "3",
       "script": "Route114_EventScript_Grunt_Route_114_3Grunt_Route_114_4"
     },
     {
@@ -457,7 +457,7 @@
       "y": 68,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
-      "var_value": "5",
+      "var_value": "4",
       "script": "Route114_EventScript_Grunt_Route_114_5Grunt_Route_114_6"
     },
     {
@@ -468,42 +468,6 @@
       "var": "VAR_ROUTE114_STATE",
       "var_value": "5",
       "script": "Route114_EventScript_SteveCharlotte"
-    },
-    {
-      "type": "trigger",
-      "x": 27,
-      "y": 10,
-      "elevation": 0,
-      "var": "VAR_ROUTE114_STATE",
-      "var_value": "0",
-      "script": "Route114_EventScript_WallyRival1"
-    },
-    {
-      "type": "trigger",
-      "x": 27,
-      "y": 11,
-      "elevation": 0,
-      "var": "VAR_ROUTE114_STATE",
-      "var_value": "0",
-      "script": "Route114_EventScript_WallyRival2"
-    },
-    {
-      "type": "trigger",
-      "x": 27,
-      "y": 12,
-      "elevation": 0,
-      "var": "VAR_ROUTE114_STATE",
-      "var_value": "0",
-      "script": "Route114_EventScript_WallyRival3"
-    },
-    {
-      "type": "trigger",
-      "x": 27,
-      "y": 13,
-      "elevation": 0,
-      "var": "VAR_ROUTE114_STATE",
-      "var_value": "0",
-      "script": "Route114_EventScript_WallyRival4"
     }
   ],
   "bg_events": [
