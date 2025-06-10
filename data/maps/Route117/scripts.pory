@@ -1,16 +1,4 @@
 raw `
-.set LOCALID_DAYCARE_MON_0, 25
-.set LOCALID_DAYCARE_MON_1, 26
-.set LOCALID_MEG, 18
-.set LOCALID_ANNA, 19
-.set LOCALID_LYDIA, 9
-.set LOCALID_ISAAC, 10
-.set LOCALID_DYLAN, 8
-.set LOCALID_MARIA, 16
-.set LOCALID_MELINA, 23
-.set LOCALID_DEREK, 17
-.set LOCALID_BRANDI, 21
-.set LOCALID_AISHA, 22
 
 Route117_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route117_OnTransition
@@ -25,7 +13,7 @@ Route117_OnTransition:
 	setflag FLAG_TEMP_2
 	getdaycaregfx VAR_OBJ_GFX_ID_0, VAR_OBJ_GFX_ID_1, VAR_TEMP_0, VAR_TEMP_1
 	switch VAR_RESULT
-	case 2, Route117_EventScript_ShowDaycareMon1
+	case 2, Route117_EventScript_ShowDaycareMon1 
 	case 1, Route117_EventScript_ShowDaycareMon0
 	end
 

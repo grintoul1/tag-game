@@ -22,7 +22,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 1,
       "movement_range_y": 1,
-      "trainer_type": "NULL",
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MtPyre_6F_EventScript_Pyre_AquaGrunt3",
       "flag": "FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA"
@@ -48,7 +48,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 1,
       "movement_range_y": 1,
-      "trainer_type": "NULL",
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MtPyre_6F_EventScript_Pyre_MagmaGrunt3",
       "flag": "FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA"

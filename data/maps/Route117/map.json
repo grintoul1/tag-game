@@ -118,6 +118,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_DYLAN",
       "graphics_id": "OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M",
       "x": 27,
       "y": 9,
@@ -125,12 +126,13 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "NULL",
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route117_EventScript_Dylan",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_LYDIA",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
       "x": 38,
       "y": 6,
@@ -138,12 +140,13 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "NULL",
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route117_EventScript_Lydia",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_ISAAC",
       "graphics_id": "OBJ_EVENT_GFX_MAN_4",
       "x": 38,
       "y": 8,
@@ -151,7 +154,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "NULL",
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route117_EventScript_Isaac",
       "flag": "0"
@@ -222,6 +225,7 @@
       "flag": "FLAG_ITEM_ROUTE_117_REVIVE"
     },
     {
+      "local_id": "LOCALID_MARIA",
       "graphics_id": "OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F",
       "x": 27,
       "y": 11,
@@ -229,12 +233,13 @@
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "NULL",
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route117_EventScript_Maria",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_DEREK",
       "graphics_id": "OBJ_EVENT_GFX_MANIAC",
       "x": 20,
       "y": 8,
@@ -242,12 +247,13 @@
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "NULL",
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route117_EventScript_Derek",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_ANNA",
       "graphics_id": "OBJ_EVENT_GFX_LASS",
       "x": 43,
       "y": 6,
@@ -255,12 +261,13 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "NULL",
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route117_EventScript_Anna",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_MEG",
       "graphics_id": "OBJ_EVENT_GFX_LASS",
       "x": 42,
       "y": 6,
@@ -268,7 +275,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "NULL",
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route117_EventScript_Meg",
       "flag": "0"
@@ -287,6 +294,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_BRANDI",
       "graphics_id": "OBJ_EVENT_GFX_LASS",
       "x": 15,
       "y": 4,
@@ -294,12 +302,13 @@
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "NULL",
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route117_EventScript_Brandi",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_AISHA",
       "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
       "x": 17,
       "y": 4,
@@ -307,12 +316,13 @@
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "NULL",
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route117_EventScript_Aisha",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_MELINA",
       "graphics_id": "OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F",
       "x": 20,
       "y": 6,
@@ -320,12 +330,13 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "NULL",
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route117_EventScript_Melina",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_DAYCARE_MON_0",
       "graphics_id": "OBJ_EVENT_GFX_VAR_0",
       "x": 47,
       "y": 2,
@@ -339,6 +350,7 @@
       "flag": "FLAG_TEMP_1"
     },
     {
+      "local_id": "LOCALID_DAYCARE_MON_1",
       "graphics_id": "OBJ_EVENT_GFX_VAR_1",
       "x": 49,
       "y": 2,
@@ -366,7 +378,7 @@
       "type": "trigger",
       "x": 43,
       "y": 7,
-      "elevation": 0,
+      "elevation": 3,
       "var": "VAR_ROUTE117_STATE",
       "var_value": "0",
       "script": "Route117_EventScript_AnnaMeg"
@@ -375,7 +387,7 @@
       "type": "trigger",
       "x": 38,
       "y": 7,
-      "elevation": 0,
+      "elevation": 3,
       "var": "VAR_ROUTE117_STATE",
       "var_value": "1",
       "script": "Route117_EventScript_LydiaIsaac"
@@ -384,7 +396,7 @@
       "type": "trigger",
       "x": 27,
       "y": 10,
-      "elevation": 0,
+      "elevation": 3,
       "var": "VAR_ROUTE117_STATE",
       "var_value": "2",
       "script": "Route117_EventScript_DylanMaria"
@@ -393,7 +405,7 @@
       "type": "trigger",
       "x": 20,
       "y": 7,
-      "elevation": 0,
+      "elevation": 3,
       "var": "VAR_ROUTE117_STATE",
       "var_value": "3",
       "script": "Route117_EventScript_MelinaDerek"
@@ -402,7 +414,7 @@
       "type": "trigger",
       "x": 16,
       "y": 4,
-      "elevation": 0,
+      "elevation": 3,
       "var": "VAR_ROUTE117_STATE",
       "var_value": "4",
       "script": "Route117_EventScript_BrandiAisha"
