@@ -25,10 +25,7 @@ AquaHideout_1F_EventScript_HideoutEntranceGrunt1::
 	end
 
 AquaHideout_1F_EventScript_FirstEntrance::
-	setobjectxyperm LOCALID_SHELLY, 10, 34
-	applymovement LOCALID_SHELLY, Common_Movement_FaceUp
-	waitmovement 0
-	addobject LOCALID_SHELLY
+	setrespawn HEAL_LOCATION_LILYCOVE_CITY
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, AquaHideout_1F_Movement_PlayerEnterHideout
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, AquaHideout_1F_Movement_EmmieEnterHideout
@@ -119,6 +116,7 @@ AquaHideout_1F_EventScript_LeavingHideout::
 	end
 
 AquaHideout_1F_EventScript_EnteringHideout::
+	setrespawn HEAL_LOCATION_LILYCOVE_CITY
 	applymovement OBJ_EVENT_ID_PLAYER, AquaHideout_1F_Movement_PlayerEnterHideout
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, AquaHideout_1F_Movement_EmmieEnterHideout
 	applymovement LOCALID_TABITHA, AquaHideout_1F_Movement_TabithaRejoin

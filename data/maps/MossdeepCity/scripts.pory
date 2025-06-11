@@ -15,7 +15,13 @@ MossdeepCity_OnFrame:
 	map_script_2 VAR_PARTNER_EMMIE_STATE, 50, MossdeepCity_EventScript_ProgressEmmieState
 	map_script_2 VAR_PARTNER_EMMIE_STATE, 52, MossdeepCity_EventScript_ProgressEmmieState
 	map_script_2 VAR_PARTNER_EMMIE_STATE, 55, MossdeepCity_EventScript_ProgressEmmieState2
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 56, MossdeepCity_EventScript_ProgressEmmieState2
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 58, MossdeepCity_EventScript_ProgressEmmieStateReturnToSFC
 	.2byte 0
+
+MossdeepCity_EventScript_ProgressEmmieStateReturnToSFC::
+	setvar VAR_PARTNER_EMMIE_STATE, 59
+	return
 
 MossdeepCity_EventScript_ProgressEmmieState::
 	setvar VAR_PARTNER_EMMIE_STATE, 51

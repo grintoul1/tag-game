@@ -103,6 +103,7 @@ PetalburgCity_Gym_OnFrame:
 	.2byte 0
 
 PetalburgCity_Gym_EventScript_ProgressEmmieState::
+	setrespawn HEAL_LOCATION_PETALBURG_CITY
 	setvar VAR_PARTNER_EMMIE_STATE, 10
 	return
 

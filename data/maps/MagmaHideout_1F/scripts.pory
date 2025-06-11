@@ -17,6 +17,7 @@ MagmaHideout_1F_OnWarp:
 	end
 
 MagmaHideout_1F_EventScript_FirstEntrance::
+	setrespawn HEAL_LOCATION_LAVARIDGE_TOWN
 	setobjectxyperm LOCALID_SHELLY, 10, 34
 	applymovement LOCALID_SHELLY, Common_Movement_FaceUp
 	waitmovement 0
@@ -72,6 +73,7 @@ MagmaHideout_1F_EventScript_LeavingHideout::
 	end
 
 MagmaHideout_1F_EventScript_EnteringHideout::
+	setrespawn HEAL_LOCATION_LAVARIDGE_TOWN
 	applymovement OBJ_EVENT_ID_PLAYER, MagmaHideout_1F_Movement_PlayerEnterHideout
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MagmaHideout_1F_Movement_EmmieEnterHideout
 	applymovement LOCALID_SHELLY, MagmaHideout_1F_Movement_ShellyRejoin

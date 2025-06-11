@@ -12,6 +12,7 @@ SeafloorCavern_Entrance_OnFrame:
 	.2byte 0
 
 SeafloorCavern_Entrance_EventScript_ProgressEmmieState::
+	setrespawn HEAL_LOCATION_MOSSDEEP_CITY
 	setvar VAR_PARTNER_EMMIE_STATE, 58
 	return
 

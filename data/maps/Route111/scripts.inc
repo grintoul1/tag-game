@@ -235,21 +235,25 @@ Route111_EventScript_PreventRouteAccess::
 
 Route111_EventScript_PushUpFromRoute::
 	applymovement OBJ_EVENT_ID_PLAYER, Route111_Movement_PushUpFromRoute
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Route111_Movement_PushUpFromRoute
 	waitmovement 0
 	return
 
 Route111_EventScript_PushDownFromRoute::
 	applymovement OBJ_EVENT_ID_PLAYER, Route111_Movement_PushDownFromRoute
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Route111_Movement_PushDownFromRoute
 	waitmovement 0
 	return
 
 Route111_EventScript_PushLeftFromRoute::
 	applymovement OBJ_EVENT_ID_PLAYER, Route111_Movement_PushLeftFromRoute
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Route111_Movement_PushLeftFromRoute
 	waitmovement 0
 	return
 
 Route111_EventScript_PushRightFromRoute::
 	applymovement OBJ_EVENT_ID_PLAYER, Route111_Movement_PushRightFromRoute
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Route111_Movement_PushRightFromRoute
 	waitmovement 0
 	return
 

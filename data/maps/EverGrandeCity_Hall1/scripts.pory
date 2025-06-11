@@ -8,6 +8,7 @@ EverGrandeCity_Hall1_OnWarp:
 	.2byte 0
 
 EverGrandeCity_Hall1_EventScript_TurnPlayerNorth::
+	setrespawn HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	end
 

@@ -11,7 +11,16 @@ EverGrandeCity_OnWarp:
 
 EverGrandeCity_OnFrame:
 	map_script_2 VAR_EMMIE_BATTLE_STATE, 3, EverGrandeCity_EventScript_EmmieCutscene
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 73, EverGrandeCity_EventScript_EmmieStateEliteFourWipe
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 74, EverGrandeCity_EventScript_EmmieStateEliteFourWipe
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 75, EverGrandeCity_EventScript_EmmieStateEliteFourWipe
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 76, EverGrandeCity_EventScript_EmmieStateEliteFourWipe
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 77, EverGrandeCity_EventScript_EmmieStateEliteFourWipe
 	.2byte 0
+
+EverGrandeCity_EventScript_EmmieStateEliteFourWipe::
+	setvar VAR_PARTNER_EMMIE_STATE, 72
+	return
 
 EverGrandeCity_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun

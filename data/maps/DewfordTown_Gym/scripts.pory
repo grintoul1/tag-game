@@ -17,6 +17,7 @@ DewfordTown_Gym_OnFrame:
 	.2byte 0
 
 DewfordTown_Gym_EventScript_ProgressEmmieState::
+	setrespawn HEAL_LOCATION_DEWFORD_TOWN
 	setvar VAR_PARTNER_EMMIE_STATE, 14
 	return
 

@@ -25,6 +25,7 @@ MauvilleCity_Gym_OnFrame:
 	.2byte 0
 
 MauvilleCity_Gym_EventScript_ProgressEmmieState::
+	setrespawn HEAL_LOCATION_MAUVILLE_CITY
 	setvar VAR_PARTNER_EMMIE_STATE, 3
 	return
 

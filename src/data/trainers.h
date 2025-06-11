@@ -2115,7 +2115,7 @@ F_TRAINER_FEMALE |
 #line 912
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
 #line 909
-        .mugshotColor = MUGSHOT_COLOR_MAYPINK,
+        .mugshotColor = MUGSHOT_COLOR_PINK,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -2158,7 +2158,7 @@ F_TRAINER_FEMALE |
 #line 930
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
 #line 927
-        .mugshotColor = MUGSHOT_COLOR_MAYPINK,
+        .mugshotColor = MUGSHOT_COLOR_PINK,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -2291,7 +2291,7 @@ F_TRAINER_FEMALE |
 #line 988
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
 #line 985
-        .mugshotColor = MUGSHOT_COLOR_MAYPINK,
+        .mugshotColor = MUGSHOT_COLOR_PINK,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {

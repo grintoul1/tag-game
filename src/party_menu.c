@@ -5765,9 +5765,9 @@ void ItemUseCB_InfiniteCandy(u8 taskId, TaskFunc task)
         else
         {
             gPartyMenuUseExitCallback = FALSE;
-            DisplayPartyMenuMessage(gText_WontHaveEffect, TRUE);
+            DisplayPartyMenuMessage(gText_WontHaveEffect, FALSE);
             ScheduleBgCopyTilemapToVram(2);
-            gTasks[taskId].func = task;
+            gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
         }
     }
     else
@@ -5803,7 +5803,7 @@ void ItemUseCB_InfiniteCandy(u8 taskId, TaskFunc task)
             StringExpandPlaceholders(gStringVar4, gText_PkmnGainedExp);
             DisplayPartyMenuMessage(gStringVar4, FALSE);
             ScheduleBgCopyTilemapToVram(2);
-            gTasks[taskId].func = task;
+            gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
         }
     }
 }

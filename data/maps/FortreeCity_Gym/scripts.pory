@@ -18,6 +18,7 @@ FortreeCity_Gym_OnFrame:
 	.2byte 0
 
 FortreeCity_Gym_EventScript_ProgressEmmieState::
+	setrespawn HEAL_LOCATION_FORTREE_CITY
 	setvar VAR_PARTNER_EMMIE_STATE, 38
 	return
 

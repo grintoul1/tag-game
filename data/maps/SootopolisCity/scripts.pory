@@ -335,7 +335,14 @@ SootopolisCity_OnFrame:
 	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 7, SootopolisCity_EventScript_WallaceGoFrontier
 	map_script_2 VAR_SKY_PILLAR_STATE, 7, SootopolisCity_EventScript_StartRayquazaScene
 	map_script_2 VAR_PARTNER_EMMIE_STATE, 70, SootopolisCity_EventScript_ProgressEmmieState
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 64, SootopolisCity_EventScript_ProgressEmmieStateReturnToSkyPillar
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 65, SootopolisCity_EventScript_ProgressEmmieStateReturnToSkyPillar
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 66, SootopolisCity_EventScript_ProgressEmmieStateReturnToSkyPillar
 	.2byte 0
+
+SootopolisCity_EventScript_ProgressEmmieStateReturnToSkyPillar::
+	setvar VAR_PARTNER_EMMIE_STATE, 67
+	return
 
 SootopolisCity_EventScript_ProgressEmmieState::
 	setvar VAR_PARTNER_EMMIE_STATE, 69

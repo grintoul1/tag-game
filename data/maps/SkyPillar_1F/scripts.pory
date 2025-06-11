@@ -10,6 +10,7 @@ SkyPillar_1F_OnFrame:
 	.2byte 0
 
 SkyPillar_1F_EventScript_ProgressEmmieState::
+	setrespawn HEAL_LOCATION_SOOTOPOLIS_CITY
 	setvar VAR_PARTNER_EMMIE_STATE, 65
 	return
 

@@ -11,7 +11,18 @@ MauvilleCity_MapScripts::
 MauvilleCity_OnFrame:
 	map_script_2 VAR_PARTNER_EMMIE_STATE, 1, MauvilleCity_EventScript_ProgressEmmieState
 	map_script_2 VAR_PARTNER_EMMIE_STATE, 3, MauvilleCity_EventScript_ProgressEmmieState
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 26, MauvilleCity_EventScript_ProgressEmmieStateReturnToChimney
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 33, MauvilleCity_EventScript_ProgressEmmieStateReturnToPyre
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 35, MauvilleCity_EventScript_ProgressEmmieStateReturnToPyre
 	.2byte 0
+
+MauvilleCity_EventScript_ProgressEmmieStateReturnToPyre::
+	setvar VAR_PARTNER_EMMIE_STATE, 34
+	return
+
+MauvilleCity_EventScript_ProgressEmmieStateReturnToChimney::
+	setvar VAR_PARTNER_EMMIE_STATE, 27
+	return
 
 MauvilleCity_EventScript_ProgressEmmieState::
 	setvar VAR_PARTNER_EMMIE_STATE, 2

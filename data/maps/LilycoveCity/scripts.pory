@@ -10,7 +10,12 @@ LilycoveCity_MapScripts::
 
 LilycoveCity_OnFrame:
 	map_script_2 VAR_PARTNER_EMMIE_STATE, 46, LilycoveCity_EventScript_ProgressEmmieState
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 49, LilycoveCity_EventScript_ProgressEmmieStateReturnToAHO
 	.2byte 0
+
+LilycoveCity_EventScript_ProgressEmmieStateReturnToAHO::
+	setvar VAR_PARTNER_EMMIE_STATE, 48
+	return
 
 LilycoveCity_EventScript_ProgressEmmieState::
 	setvar VAR_PARTNER_EMMIE_STATE, 47
