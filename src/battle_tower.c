@@ -1961,6 +1961,8 @@ static void Task_StartBattleAfterTransition(u8 taskId)
     }
 }
 
+extern u32 GetCurrentLevelCap(void);
+
 void DoSpecialTrainerBattle(void)
 {
     s32 i;
@@ -2126,6 +2128,8 @@ void DoSpecialTrainerBattle(void)
     {
         for (i = 0; i < 6; i++)
             CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+            j=GetCurrentLevelCap();
+            SetMonData(&gEnemyParty[i], MON_DATA_LEVEL, &j);
             gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER;
     }
     if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
@@ -2133,6 +2137,8 @@ void DoSpecialTrainerBattle(void)
         for (i = 3; i < 6; i++)
         {
             CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+            j=GetCurrentLevelCap();
+            SetMonData(&gEnemyParty[i], MON_DATA_LEVEL, &j);
             gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
             (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
             gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY);
@@ -2143,6 +2149,8 @@ void DoSpecialTrainerBattle(void)
     {
         for (i = 0; i < 6; i++)
             CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+            j=GetCurrentLevelCap();
+            SetMonData(&gEnemyParty[i], MON_DATA_LEVEL, &j);
             gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER;
     }
     if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
@@ -3162,6 +3170,7 @@ void FillPartnerParty(u16 trainerId)
     u32 otID;
     u8 trainerName[(PLAYER_NAME_LENGTH * 3) + 1];
     s32 ball = -1;
+    u16 monThreeLevel = 0, monFourLevel = 0, monFiveLevel = 0;
     enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(trainerId);
     u8 nickname[POKEMON_NAME_LENGTH * 2];
     SetFacilityPtrsGetLevel();
@@ -3218,6 +3227,39 @@ void FillPartnerParty(u16 trainerId)
                     GetMonData(&gPlayerParty[i+3], MON_DATA_NICKNAME, nickname);
                     SetMonData(&gPlayerParty[i + 3], MON_DATA_NICKNAME, nickname);
                     }
+                }
+            }
+            if((GetMonData(&gPlayerParty[3], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
+            {
+                monThreeLevel = GetMonData(&gPlayerParty[3], MON_DATA_EXP, NULL);
+                VarSet(VAR_MON_THREE_LEVEL, monThreeLevel);
+                if(!(monThreeLevel > gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[3], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
+                {
+                    j = gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[3], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                    SetMonData(&gPlayerParty[3], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gPlayerParty[3]);
+                }
+            }
+            if((GetMonData(&gPlayerParty[4], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
+            {
+                monFourLevel = GetMonData(&gPlayerParty[4], MON_DATA_EXP, NULL);
+                VarSet(VAR_MON_FOUR_LEVEL, monFourLevel);
+                if(!(monFourLevel > gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[4], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
+                {
+                    j = gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[4], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                    SetMonData(&gPlayerParty[4], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gPlayerParty[4]);
+                }
+            }
+            if((GetMonData(&gPlayerParty[5], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
+            {
+                monFiveLevel = GetMonData(&gPlayerParty[5], MON_DATA_EXP, NULL);
+                VarSet(VAR_MON_FIVE_LEVEL, monFiveLevel);
+                if(!(monFiveLevel > gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[5], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
+                {
+                    j = gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[5], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                    SetMonData(&gPlayerParty[5], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gPlayerParty[5]);
                 }
             }
     }
