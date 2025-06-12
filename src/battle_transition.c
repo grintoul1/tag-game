@@ -89,6 +89,7 @@ struct RectangularSpiralLine
 typedef bool8 (*TransitionStateFunc)(struct Task *task);
 typedef bool8 (*TransitionSpriteCallback)(struct Sprite *sprite);
 typedef bool8 (*TransitionSpriteCallbackPartner)(struct Sprite *sprite);
+typedef bool8 (*TransitionSpriteCallbackBadge)(struct Sprite *sprite);
 
 static bool8 Transition_StartIntro(struct Task *);
 static bool8 Transition_WaitForIntro(struct Task *);
@@ -282,12 +283,15 @@ static bool16 UpdateRectangularSpiralLine(const s16 *const *, struct Rectangular
 static void SpriteCB_FldEffPokeballTrail(struct Sprite *);
 static void SpriteCB_MugshotTrainerPic(struct Sprite *);
 static void SpriteCB_MugshotTrainerPicPartner(struct Sprite *);
+static void SpriteCB_MugshotTrainerPicBadge(struct Sprite *);
 static void SpriteCB_WhiteBarFade(struct Sprite *);
 static bool8 MugshotTrainerPic_Pause(struct Sprite *);
 static bool8 MugshotTrainerPic_Init(struct Sprite *);
 static bool8 MugshotTrainerPic_Slide(struct Sprite *);
 static bool8 MugshotTrainerPic_SlideSlow(struct Sprite *);
+static bool8 MugshotTrainerPic_SlideSlowBadge(struct Sprite *);
 static bool8 MugshotTrainerPic_SlidePartner(struct Sprite *);
+static bool8 MugshotTrainerPic_SlideBadge(struct Sprite *);
 static bool8 MugshotTrainerPic_SlideOffscreen(struct Sprite *);
 
 static s16 sDebug_RectangularSpiralData;
@@ -572,6 +576,17 @@ static const TransitionSpriteCallbackPartner sMugshotTrainerPicFuncsPartner[] =
     MugshotTrainerPic_Init,
     MugshotTrainerPic_SlidePartner,
     MugshotTrainerPic_SlideSlow,
+    MugshotTrainerPic_Pause,
+    MugshotTrainerPic_SlideOffscreen,
+    MugshotTrainerPic_Pause
+};
+
+static const TransitionSpriteCallbackBadge sMugshotTrainerPicFuncsBadge[] =
+{
+    MugshotTrainerPic_Pause,
+    MugshotTrainerPic_Init,
+    MugshotTrainerPic_SlideBadge,
+    MugshotTrainerPic_SlideSlowBadge,
     MugshotTrainerPic_Pause,
     MugshotTrainerPic_SlideOffscreen,
     MugshotTrainerPic_Pause
@@ -2455,6 +2470,17 @@ static bool8 Mugshot_StartOpponentSlide(struct Task *task)
     {
             SetTrainerPicSlideDirection(task->tOpponentSpriteBId, 0);
     }
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ROXANNE_1 
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_BRAWLY_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_WATTSON_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_FLANNERY_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_NORMAN_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_WINONA_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_TATE_AND_LIZA_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_JUAN_1)
+    {
+            SetTrainerPicSlideDirection(task->tOpponentSpriteBId, 0);
+    }
     SetTrainerPicSlideDirection(task->tPlayerSpriteId, 1);
     if (gPartnerTrainerId != TRAINER_PARTNER(PARTNER_NONE) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
     {
@@ -2467,6 +2493,17 @@ static bool8 Mugshot_StartOpponentSlide(struct Task *task)
     PlaySE(SE_MUGSHOT);
 
     if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    {
+        IncrementTrainerPicState(task->tOpponentSpriteBId);
+    }
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ROXANNE_1 
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_BRAWLY_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_WATTSON_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_FLANNERY_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_NORMAN_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_WINONA_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_TATE_AND_LIZA_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_JUAN_1)
     {
         IncrementTrainerPicState(task->tOpponentSpriteBId);
     }
@@ -2658,7 +2695,7 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
     struct Sprite *opponentSpriteA, *opponentSpriteB=0, *playerSprite, *partnerSprite=0;
 
     u8 trainerAPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA);
-    u8 trainerBPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB);
+    u8 trainerBPicId = 0;
     u8 partnerPicId = gTrainerPicToTrainerBackPic[GetTrainerPicFromId(gPartnerTrainerId)];
     s16 opponentARotationScales = 0;
     s16 opponentBRotationScales = 0;
@@ -2666,6 +2703,7 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
     gReservedSpritePaletteCount = 10;
     if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
+        trainerBPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB);
         task->tOpponentSpriteBId = CreateTrainerSprite(trainerBPicId,
                                                     gTrainerSprites[trainerBPicId].mugshotCoords.x - 240,
                                                     gTrainerSprites[trainerBPicId].mugshotCoords.y + 42,
@@ -2680,6 +2718,31 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
         opponentBRotationScales = gTrainerSprites[trainerBPicId].mugshotRotation;
         SetOamMatrixRotationScaling(opponentSpriteB->oam.matrixNum, opponentBRotationScales, opponentBRotationScales, 0);
     }
+
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ROXANNE_1 
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_BRAWLY_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_WATTSON_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_FLANNERY_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_NORMAN_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_WINONA_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_TATE_AND_LIZA_1
+        || TRAINER_BATTLE_PARAM.opponentA == TRAINER_JUAN_1)
+        {
+            trainerBPicId = gLeaderPicToBadgePic[TRAINER_BATTLE_PARAM.opponentA];
+            task->tOpponentSpriteBId = CreateTrainerSprite(trainerBPicId,
+                                                        gTrainerSprites[trainerBPicId].mugshotCoords.x - 240,
+                                                        gTrainerSprites[trainerBPicId].mugshotCoords.y + 42,
+                                                        0, NULL);
+            opponentSpriteB = &gSprites[task->tOpponentSpriteBId];
+            opponentSpriteB->callback = SpriteCB_MugshotTrainerPicBadge;
+            opponentSpriteB->oam.affineMode = ST_OAM_AFFINE_DOUBLE;
+            opponentSpriteB->oam.matrixNum = AllocOamMatrix();
+            opponentSpriteB->oam.shape = SPRITE_SHAPE(16x16);
+            opponentSpriteB->oam.size = SPRITE_SIZE(16x16);
+            CalcCenterToCornerVec(opponentSpriteB, SPRITE_SHAPE(16x16), SPRITE_SIZE(16x16), ST_OAM_AFFINE_DOUBLE);
+            opponentBRotationScales = gTrainerSprites[trainerBPicId].mugshotRotation;
+            SetOamMatrixRotationScaling(opponentSpriteB->oam.matrixNum, opponentBRotationScales, opponentBRotationScales, 0);
+        }
 
     task->tOpponentSpriteAId = CreateTrainerSprite(trainerAPicId,
                                                   gTrainerSprites[trainerAPicId].mugshotCoords.x - 32,
@@ -2745,6 +2808,12 @@ static void SpriteCB_MugshotTrainerPicPartner(struct Sprite *sprite)
     while (sMugshotTrainerPicFuncsPartner[sprite->sState](sprite));
 }
 
+static void SpriteCB_MugshotTrainerPicBadge(struct Sprite *sprite)
+{
+    while (sMugshotTrainerPicFuncsBadge[sprite->sState](sprite));
+}
+
+
 
 // Wait until IncrementTrainerPicState is called
 static bool8 MugshotTrainerPic_Pause(struct Sprite *sprite)
@@ -2781,7 +2850,7 @@ static bool8 MugshotTrainerPic_Slide(struct Sprite *sprite)
 static bool8 MugshotTrainerPic_SlidePartner(struct Sprite *sprite)
 {
     sprite->x += sprite->sSlideSpeed;
-
+    
     // Advance state when pic passes ~40% of screen
     if (sprite->sSlideDir && sprite->x < DISPLAY_WIDTH - 60)
         sprite->sState++;
@@ -2790,7 +2859,36 @@ static bool8 MugshotTrainerPic_SlidePartner(struct Sprite *sprite)
     return FALSE;
 }
 
+static bool8 MugshotTrainerPic_SlideBadge(struct Sprite *sprite)
+{
+    sprite->x += sprite->sSlideSpeed;
+    
+    // Advance state when pic passes ~40% of screen
+    if (sprite->sSlideDir && sprite->x < DISPLAY_WIDTH - 10)
+        sprite->sState++;
+    else if (!sprite->sSlideDir && sprite->x > 10)
+        sprite->sState++;
+    return FALSE;
+}
+
 static bool8 MugshotTrainerPic_SlideSlow(struct Sprite *sprite)
+{
+    // Add acceleration value to speed, then add speed.
+    // For both sides acceleration is opposite speed, so slide slows down.
+    sprite->sSlideSpeed += sprite->sSlideAccel;
+    sprite->x += sprite->sSlideSpeed;
+
+    // Advance state when slide comes to a stop
+    if (sprite->sSlideSpeed == 0)
+    {
+        sprite->sState++;
+        sprite->sSlideAccel = -sprite->sSlideAccel;
+        sprite->sDone = TRUE;
+    }
+    return FALSE;
+}
+
+static bool8 MugshotTrainerPic_SlideSlowBadge(struct Sprite *sprite)
 {
     // Add acceleration value to speed, then add speed.
     // For both sides acceleration is opposite speed, so slide slows down.

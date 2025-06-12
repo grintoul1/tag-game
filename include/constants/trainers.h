@@ -110,7 +110,15 @@
 #define TRAINER_PIC_RS_MAY                92
 #define TRAINER_PIC_MAGMA_ADMIN_F         93
 #define TRAINER_PIC_GREEN                 94
-#define TRAINER_PIC_COUNT                 95
+#define TRAINER_PIC_STONE_BADGE           95
+#define TRAINER_PIC_KNUCKLE_BADGE         96
+#define TRAINER_PIC_DYNAMO_BADGE          97
+#define TRAINER_PIC_HEAT_BADGE            98
+#define TRAINER_PIC_BALANCE_BADGE         99
+#define TRAINER_PIC_FEATHER_BADGE         100
+#define TRAINER_PIC_MIND_BADGE            101
+#define TRAINER_PIC_RAIN_BADGE            102
+#define TRAINER_PIC_COUNT                 103
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
