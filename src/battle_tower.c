@@ -2127,18 +2127,28 @@ void DoSpecialTrainerBattle(void)
     if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
     {
         for (i = 0; i < 6; i++)
+        {
             CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-            j=GetCurrentLevelCap();
-            SetMonData(&gEnemyParty[i], MON_DATA_LEVEL, &j);
+            j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+            if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+            {
+                SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
+                CalculateMonStats(&gEnemyParty[i]);
+            }
             gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER;
+        }
     }
     if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
     {
         for (i = 3; i < 6; i++)
         {
             CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-            j=GetCurrentLevelCap();
-            SetMonData(&gEnemyParty[i], MON_DATA_LEVEL, &j);
+            j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+            if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+            {
+                SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
+                CalculateMonStats(&gEnemyParty[i]);
+            }
             gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
             (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
             gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY);
@@ -2148,14 +2158,20 @@ void DoSpecialTrainerBattle(void)
     if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
     {
         for (i = 0; i < 6; i++)
+        {
             CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-            j=GetCurrentLevelCap();
-            SetMonData(&gEnemyParty[i], MON_DATA_LEVEL, &j);
+            j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+            if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+            {
+                SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
+                CalculateMonStats(&gEnemyParty[i]);
+            }
             gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER;
+        }
     }
     if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
     {
-        for (i = 0; i < 5; i++)
+        for (i = 0; i < 6; i++)
         {
             j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
             SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
@@ -2167,6 +2183,8 @@ void DoSpecialTrainerBattle(void)
             SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
             j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
             SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+            j = STATUS1_NONE;
+            SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
         }
         
         j = NATURE_RELAXED;
@@ -2234,6 +2252,8 @@ void DoSpecialTrainerBattle(void)
             SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
             j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
             SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+            j = STATUS1_NONE;
+            SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
         }
         j = NATURE_SASSY;
         SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
@@ -2263,6 +2283,8 @@ void DoSpecialTrainerBattle(void)
             SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
             j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
             SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+            j = STATUS1_NONE;
+            SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
         }
         j = NATURE_TIMID;
         SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);

@@ -1301,29 +1301,7 @@ static void HandleBattleVariantEndParty(void)
 static void CB2_EndTrainerBattle(void)
 {
     HandleBattleVariantEndParty();
-    if(gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
-    {
-        s32 j=0;
-        if((GetMonData(&gPlayerParty[3], MON_DATA_SPECIES) != SPECIES_NONE))
-        {
-            j=VarGet(VAR_MON_THREE_LEVEL);
-            SetMonData(&gPlayerParty[3], MON_DATA_EXP, &j);
-            CalculateMonStats(&gPlayerParty[3]);
-        }
-        if((GetMonData(&gPlayerParty[4], MON_DATA_SPECIES) != SPECIES_NONE))
-        {
-            j=VarGet(VAR_MON_FOUR_LEVEL);
-            SetMonData(&gPlayerParty[4], MON_DATA_EXP, &j);
-            CalculateMonStats(&gPlayerParty[4]);
-        }
-        if((GetMonData(&gPlayerParty[5], MON_DATA_SPECIES) != SPECIES_NONE))
-        {
-            j=VarGet(VAR_MON_FIVE_LEVEL);
-            SetMonData(&gPlayerParty[5], MON_DATA_EXP, &j);
-            CalculateMonStats(&gPlayerParty[5]);
-        }
-        
-    }    
+
     if (FollowerNPCIsBattlePartner())
     {
         RestorePartyAfterFollowerNPCBattle();

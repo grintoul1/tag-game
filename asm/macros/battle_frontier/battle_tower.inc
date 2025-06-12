@@ -120,7 +120,7 @@
 	.endm
 
 	.macro multi_2p_vs_2 trainer1Id:req, trainer1LoseText:req, trainer2Id:req, trainer2LoseText:req, partnerId:req
-	special SavePlayerParty
+	special SavePlayerPartyEmmie
 	trainerbattle TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE, OBJ_ID_NONE, \trainer1Id, NULL, \trainer1LoseText, NULL, OBJ_ID_NONE, \trainer2Id, NULL, \trainer2LoseText, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	multi_do_p MULTI_BATTLE_2_VS_2, \partnerId
 	.endm
@@ -136,6 +136,7 @@
 	waitstate
 	setvar VAR_0x8004, FRONTIER_UTIL_FUNC_SAVE_PARTY
 	special CallFrontierUtilFunc
+	special LoadPlayerPartyEmmie
 	.endm
 
 	.macro multi_2_vs_1 trainer1Id:req, trainer1LoseText:req, partnerId:req
@@ -145,7 +146,7 @@
 	.endm
 
 	.macro multi_2p_vs_1 trainer1Id:req, trainer1LoseText:req, partnerId:req
-	special SavePlayerParty
+	special SavePlayerPartyEmmie
 	trainerbattle TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE, OBJ_ID_NONE, \trainer1Id, NULL, \trainer1LoseText, NULL, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	multi_do_p MULTI_BATTLE_2_VS_1, \partnerId
 	.endm

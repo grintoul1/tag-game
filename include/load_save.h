@@ -47,6 +47,8 @@ void ClearContinueGameWarpStatus(void);
 void SetContinueGameWarpStatus(void);
 void SetContinueGameWarpStatusToDynamicWarp(void);
 void ClearContinueGameWarpStatus2(void);
+void SavePlayerPartyEmmie(void);
+void LoadPlayerPartyEmmie(void);
 void SavePlayerParty(void);
 void LoadPlayerParty(void);
 void SaveObjectEvents(void);

@@ -1612,7 +1612,7 @@ Common_EventScript_EmmieBattle::
 	call_if_unset FLAG_EMMIE_BATTLE_INTRO_GIVEN, Common_EventScript_EmmieBattleIntroduction
 	setflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
 	message Common_Text_EmmieBattleAreYouReady 
-	multichoice 25, 4, MULTI_EMMIE_ARE_YOU_READY, 1
+	multichoice 25, 6, MULTI_EMMIE_ARE_YOU_READY, 1
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_EmmieDoBattle
@@ -2122,10 +2122,12 @@ Common_EventScript_EmmieBattle3ReadyFemale::
 	return
 
 Common_Text_EmmieBattle3ReadyMale:
-	.string "Emmie: Hahahaha, are you ready, lil bro?$"
+	.string "Emmie: Hahahaha!\p"
+	.string "Ready, lil bro?$"
 
 Common_Text_EmmieBattle3ReadyFemale:
-	.string "Emmie: Hahahaha, are you ready, lil sis?$"
+	.string "Emmie: Hahahaha!\p"
+	.string "Ready, lil sis?$"
 
 Common_Text_EmmieBattleVictory1:
 	.string "Emmie: Wow, good stuff {PLAYER}!\p"
