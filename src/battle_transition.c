@@ -1463,7 +1463,7 @@ static bool8 Aqua_Magma_Init(struct Task *task)
     InitPatternWeaveTransition(task);
     GetBg0TilesDst(&tilemap, &tileset);
     CpuFill16(0, tilemap, BG_SCREEN_SIZE);
-    LZ77UnCompVram(sTeamAquaMagma_Tileset, tileset);
+    DecompressDataWithHeaderVram(sTeamAquaMagma_Tileset, tileset);
     LoadPalette(sEvilTeamMixed_Palette, BG_PLTT_ID(15), sizeof(sEvilTeamMixed_Palette));
 
     task->tState++;
@@ -1547,7 +1547,7 @@ static bool8 Aqua_Magma_SetGfx(struct Task *task)
     u16 *tilemap, *tileset;
 
     GetBg0TilesDst(&tilemap, &tileset);
-    LZ77UnCompVram(sTeamAquaMagma_Tilemap, tilemap);
+    DecompressDataWithHeaderVram(sTeamAquaMagma_Tilemap, tilemap);
     SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
 
     task->tState++;

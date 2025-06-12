@@ -1329,7 +1329,7 @@ MtChimney_EventScript_Grunt1Grunt2DoMultiBattle::
 # 665 "data/maps/MtChimney/scripts.pory"
 playbgm MUS_MT_CHIMNEY, TRUE
 # 666 "data/maps/MtChimney/scripts.pory"
-multi_2p_vs_1 TRAINER_GRUNT_MT_CHIMNEY_1, MtChimney_Text_Grunt1Defeat, PARTNER_EMMIE
+multi_2p_vs_2 TRAINER_GRUNT_MT_CHIMNEY_1, MtChimney_Text_Grunt1Defeat,TRAINER_GRUNT_MT_CHIMNEY_2, MtChimney_Text_Grunt2Defeat, PARTNER_EMMIE
 # 667 "data/maps/MtChimney/scripts.pory"
 switch VAR_RESULT
 # 668 "data/maps/MtChimney/scripts.pory"

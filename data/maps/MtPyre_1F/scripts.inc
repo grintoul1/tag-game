@@ -21,7 +21,7 @@ MtPyre_1F_OnFrame:
 # 11 "data/maps/MtPyre_1F/scripts.pory"
 	map_script_2 VAR_PARTNER_EMMIE_STATE, 31, MtPyre_1F_EventScript_ProgressEmmieState
 # 12 "data/maps/MtPyre_1F/scripts.pory"
-	map_script_2 VAR_PARTNER_EMMIE_STATE, 33, MtPyre_1F_EventScript_ProgressEmmieState
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 32, MtPyre_1F_EventScript_ProgressEmmieState
 # 13 "data/maps/MtPyre_1F/scripts.pory"
 	map_script_2 VAR_PARTNER_EMMIE_STATE, 34, MtPyre_1F_EventScript_ProgressEmmieState
 # 14 "data/maps/MtPyre_1F/scripts.pory"

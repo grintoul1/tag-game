@@ -832,17 +832,15 @@ Route111_EventScript_Tyron::
 
 Route111_EventScript_CelinaTyron::
 lockall
-setvar VAR_0x8008, LOCALID_CELINA
 playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
+applymovement LOCALID_CELINA, Common_Movement_ExclamationMark
 waitmovement 0
 playbgm MUS_ENCOUNTER_GIRL, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 waitmovement 0
 msgbox Route111_Text_CelinaIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_TYRON
 playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
+applymovement LOCALID_TYRON, Common_Movement_ExclamationMark
 waitmovement 0
 playbgm MUS_ENCOUNTER_MALE, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight

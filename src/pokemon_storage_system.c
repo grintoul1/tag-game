@@ -651,6 +651,7 @@ static void InitSummaryScreenData(void);
 static void SetSelectionAfterSummaryScreen(void);
 static void SetMonMarkings(u8);
 static bool8 IsRemovingLastPartyMon(void);
+//static bool8 HasMoreThanFourMons(void);
 static bool8 CanPlaceMon(void);
 static bool8 CanShiftMon(void);
 static bool8 IsMonBeingMoved(void);
@@ -6819,6 +6820,14 @@ static bool8 IsRemovingLastPartyMon(void)
     else
         return FALSE;
 }
+
+//static bool8 HasMoreThanFourMons(void)
+//{
+//    if (CountPartyAliveNonEggMonsExcept(sCursorPosition) >= 4)
+//        return TRUE;
+//    else
+//        return FALSE;
+//}
 
 static bool8 CanPlaceMon(void)
 {

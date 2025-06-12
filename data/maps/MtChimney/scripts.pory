@@ -663,7 +663,7 @@ end
 
 MtChimney_EventScript_Grunt1Grunt2DoMultiBattle::
 playbgm MUS_MT_CHIMNEY, TRUE
-multi_2p_vs_1 TRAINER_GRUNT_MT_CHIMNEY_1, MtChimney_Text_Grunt1Defeat, PARTNER_EMMIE
+multi_2p_vs_2 TRAINER_GRUNT_MT_CHIMNEY_1, MtChimney_Text_Grunt1Defeat,TRAINER_GRUNT_MT_CHIMNEY_2, MtChimney_Text_Grunt2Defeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MtChimney_EventScript_Grunt1Grunt2Victory
 fadescreen FADE_TO_BLACK

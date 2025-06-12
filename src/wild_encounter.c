@@ -847,7 +847,11 @@ void RockSmashWildEncounter(void)
     u32 headerId = GetCurrentMapWildMonHeaderId();
     enum TimeOfDay timeOfDay;
 
-    if (headerId != HEADER_NONE)
+    if (FlagGet(OW_FLAG_NO_ENCOUNTER))
+    {
+        gSpecialVar_Result = FALSE;
+    }
+    else if (headerId != HEADER_NONE)
     {
         timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_ROCKS);
 

@@ -3192,7 +3192,7 @@ void FillPartnerParty(u16 trainerId)
     u32 otID;
     u8 trainerName[(PLAYER_NAME_LENGTH * 3) + 1];
     s32 ball = -1;
-    u16 monThreeLevel = 0, monFourLevel = 0, monFiveLevel = 0;
+    s32 monThreeLevel = 0, monFourLevel = 0, monFiveLevel = 0;
     enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(trainerId);
     u8 nickname[POKEMON_NAME_LENGTH * 2];
     SetFacilityPtrsGetLevel();
@@ -3254,8 +3254,7 @@ void FillPartnerParty(u16 trainerId)
             if((GetMonData(&gPlayerParty[3], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
             {
                 monThreeLevel = GetMonData(&gPlayerParty[3], MON_DATA_EXP, NULL);
-                VarSet(VAR_MON_THREE_LEVEL, monThreeLevel);
-                if(!(monThreeLevel > gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[3], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
+                if((monThreeLevel < gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[3], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
                 {
                     j = gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[3], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
                     SetMonData(&gPlayerParty[3], MON_DATA_EXP, &j);
@@ -3265,8 +3264,7 @@ void FillPartnerParty(u16 trainerId)
             if((GetMonData(&gPlayerParty[4], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
             {
                 monFourLevel = GetMonData(&gPlayerParty[4], MON_DATA_EXP, NULL);
-                VarSet(VAR_MON_FOUR_LEVEL, monFourLevel);
-                if(!(monFourLevel > gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[4], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
+                if((monFourLevel < gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[4], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
                 {
                     j = gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[4], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
                     SetMonData(&gPlayerParty[4], MON_DATA_EXP, &j);
@@ -3276,8 +3274,7 @@ void FillPartnerParty(u16 trainerId)
             if((GetMonData(&gPlayerParty[5], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
             {
                 monFiveLevel = GetMonData(&gPlayerParty[5], MON_DATA_EXP, NULL);
-                VarSet(VAR_MON_FIVE_LEVEL, monFiveLevel);
-                if(!(monFiveLevel > gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[5], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
+                if((monFiveLevel < gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[5], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
                 {
                     j = gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[5], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
                     SetMonData(&gPlayerParty[5], MON_DATA_EXP, &j);

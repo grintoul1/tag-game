@@ -1442,7 +1442,7 @@ Common_EventScript_EmmieGoToDockyard::
 Common_Text_EmmieGoToDockyard:
 	.string "Emmie: Let's make our way to\n"
 	.string "Slateport Shipyard and deliver\l"
-	.string "these goods to Captain Stern.\p"
+	.string "these goods to Captain Stern.$"
 	
 Common_EventScript_EmmieLeaveDewford::
 	msgbox Common_Text_EmmieLeaveDewford, MSGBOX_AUTOCLOSE
