@@ -195,7 +195,7 @@ waitstate
 # 98 "data/maps/MossdeepCity_Gym/scripts.pory"
 MossdeepCity_Gym_EventScript_TateAndLizaVictory::
 # 99 "data/maps/MossdeepCity_Gym/scripts.pory"
-setvar VAR_LEVEL_CAP, 65
+setvar VAR_LEVEL_CAP, 83
 # 100 "data/maps/MossdeepCity_Gym/scripts.pory"
 setvar VAR_PARTNER_EMMIE_STATE, 53
 # 101 "data/maps/MossdeepCity_Gym/scripts.pory"

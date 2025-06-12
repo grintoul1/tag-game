@@ -2106,6 +2106,7 @@ Common_EventScript_EmmieBattle3::
 	clearflag FLAG_EMMIE_BATTLE_3
 	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
 	setvar VAR_EMMIE_BATTLE_STATE, 2
+	setvar VAR_LEVEL_CAP, 99
 	changefollowerbattler PARTNER_EMMIE
 	msgbox Common_Text_EmmieBattleVictory3, MSGBOX_DEFAULT
 	closemessage

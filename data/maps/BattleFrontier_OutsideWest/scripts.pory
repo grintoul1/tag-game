@@ -284,6 +284,18 @@ BattleFrontier_OutsideWest_EventScript_Woman3::
 	release
 	end
 
+BattleFrontier_OutsideWest_EventScript_Scott::
+	lock
+	faceplayer
+	msgbox BattleFrontier_OutsideWest_Text_Scott, MSGBOX_AUTOCLOSE
+	release
+	end
+
+BattleFrontier_OutsideWest_Text_Scott:
+	.string "Scott: Hey, you two!\p"
+	.string "I hope you're enjoying your training\n"
+	.string "with the Frontier Brains!$"
+
 BattleFrontier_OutsideWest_EventScript_Boy2::
 	lock
 	msgbox BattleFrontier_OutsideWest_Text_DomeAceLookedBecauseOfMyCheering, MSGBOX_DEFAULT

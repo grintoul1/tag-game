@@ -96,7 +96,7 @@ special SetCB2WhiteOut
 waitstate
 
 MossdeepCity_Gym_EventScript_TateAndLizaVictory::
-setvar VAR_LEVEL_CAP, 65
+setvar VAR_LEVEL_CAP, 83
 setvar VAR_PARTNER_EMMIE_STATE, 53
 goto MossdeepCity_Gym_EventScript_TateAndLizaDefeated
 end
