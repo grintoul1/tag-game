@@ -1445,6 +1445,7 @@ Common_Text_EmmieGoToDockyard:
 	.string "these goods to Captain Stern.$"
 	
 Common_EventScript_EmmieLeaveDewford::
+	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, Common_EventScript_EmmieLetterAndGym
 	msgbox Common_Text_EmmieLeaveDewford, MSGBOX_AUTOCLOSE
 	return
 
@@ -1466,7 +1467,7 @@ Common_Text_EmmieDewfordGym:
 
 Common_EventScript_EmmieLetterAndGym::
 	msgbox Common_Text_EmmieLetterAndGym, MSGBOX_AUTOCLOSE
-	return
+	end
 
 Common_Text_EmmieLetterAndGym:
 	.string "Emmie: Dewford Town is quite\n"
