@@ -2077,9 +2077,9 @@ Route110_Text_LetsCycleHome:
 # 1039 "data/maps/Route110/scripts.pory"
 	.string "on the Cycling Road.\p"
 # 1040 "data/maps/Route110/scripts.pory"
-	.string "Why don't we check out the Mauville\n"
+	.string "Why don't we take that route home\n"
 # 1041 "data/maps/Route110/scripts.pory"
-	.string "bike shop and take that route home?$"
+	.string "instead?$"
 # 1042 "data/maps/Route110/scripts.pory"
 
 # 1043 "data/maps/Route110/scripts.pory"

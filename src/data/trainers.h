@@ -1822,7 +1822,7 @@ F_TRAINER_FEMALE |
 #line 791
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
 #line 787
-        .mugshotColor = MUGSHOT_COLOR_PURPLE,
+        .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -15111,14 +15111,14 @@ F_TRAINER_FEMALE |
     [DIFFICULTY_NORMAL][TRAINER_CALVIN_1] =
     {
 #line 6102
-        .trainerName = _("MATT"),
+        .trainerName = _("Calvin"),
 #line 6103
-        .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
+        .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 6104
-        .trainerPic = TRAINER_PIC_AQUA_ADMIN_M,
+        .trainerPic = TRAINER_PIC_YOUNGSTER,
         .encounterMusic_gender =
 #line 6106
-            TRAINER_ENCOUNTER_MUSIC_MAGMA,
+            TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 6107
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6108
@@ -26300,7 +26300,7 @@ F_TRAINER_FEMALE |
 #line 10509
         .aiFlags = AI_FLAG_BASIC_TRAINER,
 #line 10505
-        .mugshotColor = MUGSHOT_COLOR_BLUE,
+        .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -26589,7 +26589,7 @@ F_TRAINER_FEMALE |
 #line 10622
         .aiFlags = AI_FLAG_BASIC_TRAINER,
 #line 10618
-        .mugshotColor = MUGSHOT_COLOR_BLUE,
+        .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -26683,7 +26683,7 @@ F_TRAINER_FEMALE |
 #line 10659
         .aiFlags = AI_FLAG_BASIC_TRAINER,
 #line 10655
-        .mugshotColor = MUGSHOT_COLOR_RED,
+        .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -26732,7 +26732,7 @@ F_TRAINER_FEMALE |
 #line 10678
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_FORCE_SETUP_FIRST_TURN,
 #line 10673
-        .mugshotColor = MUGSHOT_COLOR_RED,
+        .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {

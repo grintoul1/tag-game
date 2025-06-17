@@ -3,6 +3,7 @@ raw `
 
 Route112_CableCarStation_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route112_CableCarStation_OnTransition
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Route112_CableCarStation_OnWarp
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route112_CableCarStation_OnFrame
 	.byte 0
 
@@ -10,6 +11,15 @@ Route112_CableCarStation_OnTransition:
 	setescapewarp MAP_ROUTE112, 28, 28
 	call_if_eq VAR_CABLE_CAR_STATION_STATE, 2, Route112_CableCarStation_EventScript_MoveAttendantAside
 	end
+
+Route112_CableCarStation_OnWarp:
+	map_script_2 VAR_CABLE_CAR_STATION_STATE, 2, Route112_CableCarStation_EventScript_EmmiePos
+	.2byte 0
+
+Route112_CableCarStation_EventScript_EmmiePos::
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 5, 4
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_ROUTE112_CABLE_CAR_STATION
+	return
 
 Route112_CableCarStation_EventScript_MoveAttendantAside::
 	setobjectxyperm LOCALID_ATTENDANT, 7, 4
@@ -23,6 +33,7 @@ Route112_CableCarStation_OnFrame:
 Route112_CableCarStation_EventScript_ExitCableCar::
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, Route112_CableCarStation_Movement_ExitCableCar
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Route112_CableCarStation_Movement_EmmieExitCableCar
 	applymovement LOCALID_ATTENDANT, Route112_CableCarStation_Movement_FollowPlayerOutFromCableCar
 	waitmovement 0
 	setvar VAR_CABLE_CAR_STATION_STATE, 0
@@ -43,6 +54,7 @@ Route112_CableCarStation_EventScript_RideCableCar::
 	msgbox Route112_CableCarStation_Text_StepThisWay, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_ATTENDANT, Route112_CableCarStation_Movement_LeadPlayerToCableCar
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Route112_CableCarStation_Movement_EmmieBoardCableCar
 	applymovement OBJ_EVENT_ID_PLAYER, Route112_CableCarStation_Movement_BoardCableCar
 	waitmovement 0
 	setvar VAR_0x8004, FALSE  @ Going up
@@ -61,22 +73,33 @@ Route112_CableCarStation_EventScript_DeclineRide::
 
 Route112_CableCarStation_Movement_LeadPlayerToCableCar:
 	walk_up
-	walk_up
 	walk_right
 	walk_in_place_faster_left
 	step_end
 
 Route112_CableCarStation_Movement_FollowPlayerOutFromCableCar:
 	delay_16
+	delay_16
 	walk_left
-	walk_down
 	walk_down
 	step_end
 
 Route112_CableCarStation_Movement_BoardCableCar:
 	walk_up
 	walk_up
+	delay_16
+	step_end
+
+Route112_CableCarStation_Movement_EmmieBoardCableCar:
 	walk_up
+	walk_up
+	delay_16
+	step_end
+
+Route112_CableCarStation_Movement_EmmieExitCableCar:
+	walk_right
+	walk_down
+	walk_down
 	delay_16
 	step_end
 

@@ -1037,8 +1037,8 @@ Route110_Text_AquaActionsBringSmiles:
 Route110_Text_LetsCycleHome:
 	.string "You know, {PLAYER}, I've never been\n"
 	.string "on the Cycling Road.\p"
-	.string "Why don't we check out the Mauville\n"
-	.string "bike shop and take that route home?$"
+	.string "Why don't we take that route home\n"
+	.string "instead?$"
 
 Route110_Text_MayLetsBattle:
 	.string "MAY: Hi, {PLAYER}{KUN}, long time no see!\p"

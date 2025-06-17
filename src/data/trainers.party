@@ -784,7 +784,7 @@ IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 Name: Tabitha
 Class: Magma Admin Mixed
 Pic: Magma Admin
-Mugshot: Purple
+Mugshot: AquaMagma
 Gender: Male
 Music: Male
 Battle Type: Singles
@@ -6099,11 +6099,11 @@ Level: 39
 IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
 
 === TRAINER_CALVIN_1 ===
-Name: MATT
-Class: Aqua Admin
-Pic: Aqua Admin M
+Name: Calvin
+Class: Youngster
+Pic: Youngster
 Gender: Male
-Music: Magma
+Music: Male
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -10502,7 +10502,7 @@ IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
 Name: Tabitha
 Class: Magma Admin
 Pic: Magma Admin
-Mugshot: Blue
+Mugshot: AquaMagma
 Gender: Male
 Music: Cool
 Battle Type: Singles
@@ -10615,7 +10615,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Name: Matt
 Class: Aqua Admin
 Pic: Aqua Admin M
-Mugshot: Blue
+Mugshot: AquaMagma
 Gender: Male
 Music: Cool
 Battle Type: Singles
@@ -10652,7 +10652,7 @@ Ability: Pressure
 Name: Courtney
 Class: Magma Admin
 Pic: Magma Admin F
-Mugshot: Red
+Mugshot: AquaMagma
 Gender: Female
 Music: Cool
 Battle Type: Singles
@@ -10670,7 +10670,7 @@ IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
 Name: Shelly
 Class: Aqua Admin
 Pic: Aqua Admin F
-Mugshot: Red
+Mugshot: AquaMagma
 Gender: Female
 Music: Cool
 Items: Full Restore

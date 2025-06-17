@@ -887,6 +887,7 @@ const struct SpritePalette gSpritePalette_Pokeball = {sFieldEffectPal_Pokeball, 
 
 static const u16 sMugshotPal_Purple[] = INCBIN_U16("graphics/battle_transitions/purple_bg.gbapal");
 static const u16 sMugshotPal_Red[] = INCBIN_U16("graphics/battle_transitions/red_bg.gbapal");
+static const u16 sMugshotPal_AquaMagma[] = INCBIN_U16("graphics/battle_transitions/aquamagma_bg.gbapal");
 static const u16 sMugshotPal_Orange[] = INCBIN_U16("graphics/battle_transitions/orange_bg.gbapal");
 static const u16 sMugshotPal_Drake[] = INCBIN_U16("graphics/battle_transitions/drake_bg.gbapal");
 static const u16 sMugshotPal_Brown[] = INCBIN_U16("graphics/battle_transitions/brown_bg.gbapal");
@@ -909,6 +910,7 @@ static const u16 *const sOpponentMugshotsPals[MUGSHOT_COLOR_COUNT] =
 {
     [MUGSHOT_COLOR_PURPLE]        = sMugshotPal_Purple,
     [MUGSHOT_COLOR_RED]           = sMugshotPal_Red,
+    [MUGSHOT_COLOR_AQUAMAGMA]     = sMugshotPal_AquaMagma,
     [MUGSHOT_COLOR_ORANGE]        = sMugshotPal_Orange,
     [MUGSHOT_COLOR_DRAKE]         = sMugshotPal_Drake,
     [MUGSHOT_COLOR_BROWN]         = sMugshotPal_Brown,

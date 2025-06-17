@@ -1341,8 +1341,8 @@ MtPyre_Summit_Text_Tabitha_Mt_PyreDefeat:
 
 MtPyre_Summit_Text_Matt_Mt_PyrePostBattle:
 	.string "Matt: Archie will have claimed what\n"
-	.string "we came here for… Next time you\l"
-	.string "won't be so lucky.$"
+	.string "we came here for…\p"
+	.string "Next time you won't be so lucky.$"
 
 MtPyre_Summit_Text_Tabitha_Mt_PyrePostBattle:
 	.string "Tabitha: No matter! You won't stand\n"
