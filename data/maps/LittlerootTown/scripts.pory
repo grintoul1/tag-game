@@ -1035,6 +1035,7 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	msgbox LittlerootTown_Text_EmmieHowExciting, MSGBOX_DEFAULT
 	closemessage
 	setfollowernpc 9, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	clearflag FLAG_HIDE_EMMIE_RESET
 	return
 
 LittlerootTown_Text_OurNewHomeLetsGoInside:

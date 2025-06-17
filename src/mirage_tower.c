@@ -333,7 +333,6 @@ void SetMirageTowerVisibility(void)
     if (visible)
     {
         FlagSet(FLAG_MIRAGE_TOWER_VISIBLE);
-        TryStartMirageTowerPulseBlendEffect();
         return;
     }
 

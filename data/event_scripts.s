@@ -724,6 +724,13 @@ Common_Text_StevenSpeech:
 	.string "one final time.\p"
 	.string "Show us right here and now!$"
 
+Common_EventScript_ResetEmmie::
+	destroyfollowernpc
+	setfollowernpc 7, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie
+	delay 16
+	clearflag FLAG_HIDE_EMMIE_RESET
+	end
+
 Common_EventScript_Emmie::
 	faceplayer
 	call_if_eq VAR_PARTNER_EMMIE_STATE, 0, Common_EventScript_EmmieHeadToPetalburg

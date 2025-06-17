@@ -328,6 +328,7 @@ EventScript_ResetAllMapFlags::
 	clearflag FLAG_HIDE_BATTLE_PYRAMID_LOBBY_BRANDON
 	clearflag FLAG_HIDE_BATTLE_DOME_LOBBY_TUCKER
 	clearflag FLAG_HIDE_VICTORY_ROAD_VITO
+	setflag FLAG_HIDE_EMMIE_RESET
 	destroyfollowernpc
 	call EventScript_ResetAllBerries
 	end
