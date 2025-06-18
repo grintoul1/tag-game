@@ -4,6 +4,7 @@ Class: Pkmn Trainer 1
 Pic: Brendan
 Gender: Male
 Music: Male
+AI: Partner Trainer
 
 === PARTNER_STEVEN ===
 Name: STEVEN
@@ -11,6 +12,7 @@ Class: Rival
 Pic: Steven
 Gender: Male
 Music: Male
+AI: Partner Trainer
 
 Metang
 Brave Nature
@@ -48,6 +50,7 @@ Class: Rival
 Pic: Green
 Gender: Female
 Music: Female
+AI: Partner Trainer
 
 Aggron
 Adamant Nature
@@ -85,6 +88,7 @@ Class: Magma Admin
 Pic: Magma Leader Maxie
 Gender: Male
 Music: Male
+AI: Partner Trainer
 
 Metang
 Brave Nature
@@ -122,6 +126,7 @@ Class: Aqua Admin
 Pic: Steven
 Gender: Male
 Music: Male
+AI: Partner Trainer
 
 Metang
 Brave Nature
@@ -159,6 +164,7 @@ Class: Aqua Admin
 Pic: Aqua Leader Archie
 Gender: Female
 Music: Male
+AI: Partner Trainer
 
 Magearna @ Shuca Berry
 Quiet Nature
@@ -196,6 +202,7 @@ Class: Aqua Leader
 Pic: Aqua Leader Archie
 Gender: Male
 Music: Male
+AI: Partner Trainer
 
 Metang
 Brave Nature
@@ -233,6 +240,7 @@ Class: Magma Leader
 Pic: Magma Leader Maxie
 Gender: Male
 Music: Male
+AI: Partner Trainer
 
 Metang
 Brave Nature
@@ -270,6 +278,7 @@ Class: Aqua Leader
 Pic: Aqua Leader Archie
 Gender: Male
 Music: Male
+AI: Partner Trainer
 
 Metang
 Brave Nature
@@ -307,6 +316,7 @@ Class: Magma Leader
 Pic: Magma Leader Maxie
 Gender: Male
 Music: Male
+AI: Partner Trainer
 
 Metang
 Brave Nature

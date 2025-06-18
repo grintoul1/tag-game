@@ -11,6 +11,7 @@
 #include "config/dexnav.h"
 #include "config/summary_screen.h"
 #include "config/ai.h"
+#include "config/ai_partner.h"
 #include "config/follower_npc.h"
 
 // Invalid Versions show as "----------" in Gen 4 and Gen 5's summary screen.

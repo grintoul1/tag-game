@@ -2052,6 +2052,14 @@ Common_EventScript_EmmieBattle1::
 	setvar VAR_0x8005, TRAINER_EMMIE_1
 	special DoSpecialTrainerBattle
 	waitstate
+	switch VAR_RESULT
+	case 1, Common_EventScript_EmmieBattleWon1
+	changefollowerbattler PARTNER_EMMIE
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+Common_EventScript_EmmieBattleWon1::
 	clearflag FLAG_EMMIE_BATTLE_1
 	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
 	setvar VAR_EMMIE_BATTLE_STATE, 2
@@ -2081,6 +2089,7 @@ Common_EventScript_EmmieBattle2DoMultiBattle::
 	multi_2_vs_1 TRAINER_EMMIE_2, Common_Text_EmmieBattleDefeat2, PARTNER_SHELLY
 	switch VAR_RESULT
 	case 1, Common_EventScript_EmmieBattleVictory2
+	changefollowerbattler PARTNER_EMMIE
 	fadescreen FADE_TO_BLACK
 	special SetCB2WhiteOut
 	waitstate
@@ -2111,6 +2120,14 @@ Common_EventScript_EmmieBattle3::
 	playbgm MUS_VICTORY_ROAD, TRUE
 	special DoSpecialTrainerBattle
 	waitstate
+	switch VAR_RESULT
+	case 1, Common_EventScript_EmmieBattleWon3
+	changefollowerbattler PARTNER_EMMIE
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+Common_EventScript_EmmieBattleWon3::
 	clearflag FLAG_EMMIE_BATTLE_3
 	clearflag FLAG_EMMIE_BATTLE_INTRO_GIVEN
 	setvar VAR_EMMIE_BATTLE_STATE, 2

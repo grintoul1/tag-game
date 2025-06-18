@@ -322,6 +322,7 @@ void SetMirageTowerVisibility(void)
     {
         // Mirage Tower event has already been completed, hide it
         FlagClear(FLAG_MIRAGE_TOWER_VISIBLE);
+        TryStartMirageTowerPulseBlendEffect();
         return;
     }
 
