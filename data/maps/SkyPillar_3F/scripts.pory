@@ -80,6 +80,7 @@ msgbox SkyPillar_3F_Text_SkyPillar_AquaGrunt4PostBattle, MSGBOX_AUTOCLOSE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 waitmovement 0
 msgbox SkyPillar_3F_Text_SkyPillar_MagmaGrunt4PostBattle, MSGBOX_AUTOCLOSE
+clearflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA
 addvar VAR_SKY_PILLAR_STATE, 1
 end
 

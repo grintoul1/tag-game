@@ -17,6 +17,7 @@ SkyPillar_Top_EventScript_ProgressEmmieState::
 
 SkyPillar_Top_OnResume:
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, SkyPillar_Top_EventScript_TryRemoveRayquaza
+	call_if_ge VAR_SKY_PILLAR_STATE, 4, SkyPillar_Top_EventScript_LeaderVars
 	end
 
 SkyPillar_Top_EventScript_TryRemoveRayquaza::
@@ -326,6 +327,7 @@ SkyPillar_Top_EventScript_FinaleVictory::
 	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
 	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
 	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_CUTSCENE_INVISIBLE
+	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA
 	fadescreen FADE_FROM_BLACK
 	releaseall
 	end

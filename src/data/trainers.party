@@ -1205,7 +1205,7 @@ IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 Name: Maxie
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Mugshot: Blue
+Mugshot: Misty
 Gender: Male
 Music: Magma
 Battle Type: Singles
@@ -9535,7 +9535,7 @@ Class: Magma Admin
 Pic: Magma Admin F
 Gender: Female
 Music: Magma
-Mugshot: Blue
+Mugshot: Misty
 Battle Type: Singles
 AI: Smart Trainer
 
@@ -11062,7 +11062,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Name: Tabitha
 Class: Magma Admin
 Pic: Magma Admin
-Mugshot: Blue
+Mugshot: Misty
 Gender: Male
 Music: Magma
 Battle Type: Singles
@@ -11177,7 +11177,7 @@ Name: TABITHA
 Class: Magma Admin
 Pic: Magma Admin
 Gender: Male
-Mugshot: Blue
+Mugshot: Misty
 Music: Magma
 Battle Type: Singles
 AI: Smart Trainer
@@ -11256,7 +11256,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Name: MAXIE
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Mugshot: Blue
+Mugshot: Misty
 Gender: Male
 Music: Magma
 Items: Super Potion / Super Potion
@@ -11279,7 +11279,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 Name: MAXIE
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Mugshot: Blue
+Mugshot: Misty
 Gender: Male
 Music: Magma
 Items: Super Potion / Super Potion
@@ -11370,7 +11370,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 Name: Maxie
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Mugshot: Blue
+Mugshot: Misty
 Gender: Male
 Music: Male
 Battle Type: Singles
@@ -13728,7 +13728,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Name: Courtney
 Class: Magma Admin
 Pic: Magma Admin F
-Mugshot: Blue
+Mugshot: Misty
 Gender: Female
 Music: Magma
 Battle Type: Singles
@@ -13781,7 +13781,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Name: TABITHA
 Class: Magma Admin
 Pic: Magma Admin
-Mugshot: Blue
+Mugshot: Misty
 Gender: Male
 Music: Magma
 Battle Type: Singles
@@ -13825,7 +13825,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Name: MAXIE
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Mugshot: Blue
+Mugshot: Misty
 Gender: Male
 Music: Magma
 Battle Type: Singles

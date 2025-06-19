@@ -163,6 +163,8 @@ waitmovement 0
 # 82 "data/maps/SkyPillar_3F/scripts.pory"
 msgbox SkyPillar_3F_Text_SkyPillar_MagmaGrunt4PostBattle, MSGBOX_AUTOCLOSE
 # 83 "data/maps/SkyPillar_3F/scripts.pory"
-addvar VAR_SKY_PILLAR_STATE, 1
+clearflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA
 # 84 "data/maps/SkyPillar_3F/scripts.pory"
+addvar VAR_SKY_PILLAR_STATE, 1
+# 85 "data/maps/SkyPillar_3F/scripts.pory"
 end

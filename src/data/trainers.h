@@ -2848,7 +2848,7 @@ F_TRAINER_FEMALE |
 #line 1212
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 1208
-        .mugshotColor = MUGSHOT_COLOR_BLUE,
+        .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23802,7 +23802,7 @@ F_TRAINER_FEMALE |
 #line 9540
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 9538
-        .mugshotColor = MUGSHOT_COLOR_BLUE,
+        .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -27718,7 +27718,7 @@ F_TRAINER_FEMALE |
 #line 11069
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 11065
-        .mugshotColor = MUGSHOT_COLOR_BLUE,
+        .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -28009,7 +28009,7 @@ F_TRAINER_FEMALE |
 #line 11183
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 11180
-        .mugshotColor = MUGSHOT_COLOR_BLUE,
+        .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -28215,7 +28215,7 @@ F_TRAINER_FEMALE |
 #line 11264
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 11259
-        .mugshotColor = MUGSHOT_COLOR_BLUE,
+        .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -28273,7 +28273,7 @@ F_TRAINER_FEMALE |
 #line 11287
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 11282
-        .mugshotColor = MUGSHOT_COLOR_BLUE,
+        .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -28509,7 +28509,7 @@ F_TRAINER_FEMALE |
 #line 11377
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 11373
-        .mugshotColor = MUGSHOT_COLOR_BLUE,
+        .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -34392,7 +34392,7 @@ F_TRAINER_FEMALE |
 #line 13735
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 13731
-        .mugshotColor = MUGSHOT_COLOR_BLUE,
+        .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -34528,7 +34528,7 @@ F_TRAINER_FEMALE |
 #line 13788
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 13784
-        .mugshotColor = MUGSHOT_COLOR_BLUE,
+        .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -34642,7 +34642,7 @@ F_TRAINER_FEMALE |
 #line 13832
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 13828
-        .mugshotColor = MUGSHOT_COLOR_BLUE,
+        .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
