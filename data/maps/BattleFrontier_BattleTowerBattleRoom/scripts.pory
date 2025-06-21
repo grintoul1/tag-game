@@ -1,35 +1,82 @@
 raw `
-.set LOCALID_OPPONENT, 1
-.set LOCALID_ATTENDANT_1, 2
-.set LOCALID_ATTENDANT_2, 3
-
 BattleFrontier_BattleTowerBattleRoom_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleTowerBattleRoom_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattleTowerBattleRoom_OnWarp
 	.byte 0
 
 BattleFrontier_BattleTowerBattleRoom_OnWarp:
-	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattleTowerBattleRoom_EventScript_SetUpObjects
+	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattleTowerBattleRoom_EventScript_EmmiePos
 	.2byte 0
 
 BattleFrontier_BattleTowerBattleRoom_EventScript_SetUpObjects::
 	setvar VAR_TEMP_1, 1
-	applymovement LOCALID_ATTENDANT_2, BattleFrontier_BattleTowerBattleRoom_Movement_SetInvisible
+	applymovement LOCALID_TOWER_BATTLE_ATTENDANT_2, BattleFrontier_BattleTowerBattleRoom_Movement_SetInvisible
 	end
 
 BattleFrontier_BattleTowerBattleRoom_OnFrame:
-	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattleTowerBattleRoom_EventScript_EnterRoom
+	map_script_2 VAR_TEMP_0, 0, BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelBattle
 	.2byte 0
+
+BattleFrontier_BattleTowerBattleRoom_EventScript_EmmiePos::
+	special OffsetCameraForBattle
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 2, 4
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_EAST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_BATTLE_FRONTIER_BATTLE_TOWER_BATTLE_ROOM
+	end
+
+BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelBattle::
+	lockall
+	applymovement LOCALID_ANABEL, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox BattleFrontier_BattleTowerBattleRoom_Text_AnabelBestOfLuck, MSGBOX_AUTOCLOSE
+	goto BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelDoMultiBattle
+	releaseall 
+	end
+
+BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelDoMultiBattle::
+	playbgm MUS_B_TOWER, TRUE
+	multi_2p_vs_1 TRAINER_ANABEL, BattleFrontier_BattleTowerBattleRoom_Text_AnabelDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+BattleFrontier_BattleTowerBattleRoom_Text_AnabelDefeat:
+	.string "You've got a promising future ahead of you!$"
+
+BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelVictory::
+	applymovement LOCALID_ANABEL, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox BattleFrontier_BattleTowerBattleRoom_Text_AnabelCongratulationsTakeThis, MSGBOX_AUTOCLOSE
+	giveitem ITEM_EJECT_BUTTON
+	setflag FLAG_HIDE_BATTLE_TOWER_LOBBY_ANABEL
+	playse SE_EXIT
+	warp MAP_BATTLE_FRONTIER_OUTSIDE_EAST, 39, 30
+	releaseall
+	end
+
+BattleFrontier_BattleTowerBattleRoom_Text_AnabelCongratulationsTakeThis:
+	.string "Anabel: You've got heart kids!\p"
+	.string "To celebrate your win, please take this\n"
+	.string "Eject Button.\p"
+	.string "Good luck with the Elite Four, I'll be\n"
+	.string "rooting for you!$"
+
+BattleFrontier_BattleTowerBattleRoom_Text_AnabelBestOfLuck:
+	.string "Anabel: Alright, give me everything\n"
+	.string "you've got!$"
 
 BattleFrontier_BattleTowerBattleRoom_EventScript_EnterRoom::
 	setvar VAR_TEMP_0, 1
-	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleTowerBattleRoom_Movement_PlayerEnter
+	applymovement LOCALID_PLAYER, BattleFrontier_BattleTowerBattleRoom_Movement_PlayerEnter
 	waitmovement 0
 	frontier_get FRONTIER_DATA_BATTLE_NUM
 	goto_if_eq VAR_RESULT, 0, BattleFrontier_BattleTowerBattleRoom_EventScript_OpponentEnter
-	applymovement LOCALID_ATTENDANT_1, BattleFrontier_BattleTowerBattleRoom_Movement_AttendantApproachPlayer
+	applymovement LOCALID_TOWER_BATTLE_ATTENDANT_1, BattleFrontier_BattleTowerBattleRoom_Movement_AttendantApproachPlayer
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleTowerBattleRoom_Movement_PlayerFaceAttendant
+	applymovement LOCALID_PLAYER, BattleFrontier_BattleTowerBattleRoom_Movement_PlayerFaceAttendant
 	waitmovement 0
 	setvar VAR_TEMP_2, 1
 	frontier_set FRONTIER_DATA_RECORD_DISABLED, TRUE
@@ -37,8 +84,8 @@ BattleFrontier_BattleTowerBattleRoom_EventScript_EnterRoom::
 
 BattleFrontier_BattleTowerBattleRoom_EventScript_OpponentEnter::
 	tower_setopponent
-	addobject LOCALID_OPPONENT
-	applymovement LOCALID_OPPONENT, BattleFrontier_BattleTowerBattleRoom_Movement_OpponentEnter
+	addobject LOCALID_TOWER_BATTLE_OPPONENT
+	applymovement LOCALID_TOWER_BATTLE_OPPONENT, BattleFrontier_BattleTowerBattleRoom_Movement_OpponentEnter
 	waitmovement 0
 	tower_getopponentintro 0
 	msgbox gStringVar4, MSGBOX_DEFAULT
@@ -58,14 +105,14 @@ BattleFrontier_BattleTowerBattleRoom_EventScript_DefeatedOpponent::
 	tower_setbattlewon
 	switch VAR_RESULT
 	case 7, BattleFrontier_BattleTowerBattleRoom_EventScript_WarpToLobbyWon
-	applymovement LOCALID_OPPONENT, BattleFrontier_BattleTowerBattleRoom_Movement_OpponentExit
+	applymovement LOCALID_TOWER_BATTLE_OPPONENT, BattleFrontier_BattleTowerBattleRoom_Movement_OpponentExit
 	waitmovement 0
-	removeobject LOCALID_OPPONENT
+	removeobject LOCALID_TOWER_BATTLE_OPPONENT
 	frontier_getbrainstatus
 	call_if_ne VAR_RESULT, FRONTIER_BRAIN_NOT_READY, BattleFrontier_BattleTowerBattleRoom_EventScript_SecondAttendantEnter
-	applymovement LOCALID_ATTENDANT_1, BattleFrontier_BattleTowerBattleRoom_Movement_AttendantApproachPlayer
+	applymovement LOCALID_TOWER_BATTLE_ATTENDANT_1, BattleFrontier_BattleTowerBattleRoom_Movement_AttendantApproachPlayer
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleTowerBattleRoom_Movement_PlayerFaceAttendant
+	applymovement LOCALID_PLAYER, BattleFrontier_BattleTowerBattleRoom_Movement_PlayerFaceAttendant
 	waitmovement 0
 	msgbox BattleFrontier_BattleTowerBattleRoom_Text_RestoreMonsToFullHealth, MSGBOX_DEFAULT
 	playfanfare MUS_HEAL
@@ -126,9 +173,9 @@ BattleFrontier_BattleTowerBattleRoom_EventScript_AskRetireChallenge::
 
 BattleFrontier_BattleTowerBattleRoom_EventScript_ContinueChallenge::
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleTowerBattleRoom_Movement_PlayerFaceBattle
+	applymovement LOCALID_PLAYER, BattleFrontier_BattleTowerBattleRoom_Movement_PlayerFaceBattle
 	waitmovement 0
-	applymovement LOCALID_ATTENDANT_1, BattleFrontier_BattleTowerBattleRoom_Movement_AttendantReturnToPos
+	applymovement LOCALID_TOWER_BATTLE_ATTENDANT_1, BattleFrontier_BattleTowerBattleRoom_Movement_AttendantReturnToPos
 	waitmovement 0
 	goto BattleFrontier_BattleTowerBattleRoom_EventScript_OpponentEnter
 
@@ -194,19 +241,19 @@ BattleFrontier_EventScript_IncrementWinStreak::
 	return
 
 BattleFrontier_BattleTowerBattleRoom_EventScript_SecondAttendantEnter::
-	applymovement LOCALID_ATTENDANT_2, BattleFrontier_BattleTowerBattleRoom_Movement_SecondAttendantEnter
+	applymovement LOCALID_TOWER_BATTLE_ATTENDANT_2, BattleFrontier_BattleTowerBattleRoom_Movement_SecondAttendantEnter
 	waitmovement 0
-	applymovement LOCALID_ATTENDANT_2, Common_Movement_WalkInPlaceLeft
+	applymovement LOCALID_TOWER_BATTLE_ATTENDANT_2, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_ATTENDANT_1, Common_Movement_ExclamationMark
+	applymovement LOCALID_TOWER_BATTLE_ATTENDANT_1, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_ATTENDANT_1, Common_Movement_Delay48
+	applymovement LOCALID_TOWER_BATTLE_ATTENDANT_1, Common_Movement_Delay48
 	waitmovement 0
-	applymovement LOCALID_ATTENDANT_2, BattleFrontier_BattleTowerBattleRoom_Movement_SecondAttendantDelay
-	applymovement LOCALID_ATTENDANT_1, BattleFrontier_BattleTowerBattleRoom_Movement_AttendantFaceSecondAttendant
+	applymovement LOCALID_TOWER_BATTLE_ATTENDANT_2, BattleFrontier_BattleTowerBattleRoom_Movement_SecondAttendantDelay
+	applymovement LOCALID_TOWER_BATTLE_ATTENDANT_1, BattleFrontier_BattleTowerBattleRoom_Movement_AttendantFaceSecondAttendant
 	waitmovement 0
-	applymovement LOCALID_ATTENDANT_2, BattleFrontier_BattleTowerBattleRoom_Movement_SecondAttendantExit
+	applymovement LOCALID_TOWER_BATTLE_ATTENDANT_2, BattleFrontier_BattleTowerBattleRoom_Movement_SecondAttendantExit
 	waitmovement 0
 	return
 
@@ -238,12 +285,12 @@ BattleFrontier_BattleTowerBattleRoom_EventScript_AskReadyForMaidenNoRecord::
 BattleFrontier_BattleTowerBattleRoom_EventScript_BattleAnabel::
 	call BattleFrontier_EventScript_SetBrainObjectGfx
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleTowerBattleRoom_Movement_PlayerFaceBattle
+	applymovement LOCALID_PLAYER, BattleFrontier_BattleTowerBattleRoom_Movement_PlayerFaceBattle
 	waitmovement 0
-	applymovement LOCALID_ATTENDANT_1, BattleFrontier_BattleTowerBattleRoom_Movement_AttendantReturnToPos
+	applymovement LOCALID_TOWER_BATTLE_ATTENDANT_1, BattleFrontier_BattleTowerBattleRoom_Movement_AttendantReturnToPos
 	waitmovement 0
-	addobject LOCALID_OPPONENT
-	applymovement LOCALID_OPPONENT, BattleFrontier_BattleTowerBattleRoom_Movement_AnabelEnter
+	addobject LOCALID_TOWER_BATTLE_OPPONENT
+	applymovement LOCALID_TOWER_BATTLE_OPPONENT, BattleFrontier_BattleTowerBattleRoom_Movement_AnabelEnter
 	waitmovement 0
 	switch VAR_TEMP_F
 	case FRONTIER_BRAIN_GOLD, BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelGoldIntro
@@ -565,5 +612,6 @@ BattleFrontier_BattleTowerBattleRoom_Text_WishICouldBattleYouAgain:
 	.string "I have never had a POKéMON battle\n"
 	.string "so enjoyable before…\p"
 	.string "I wish I could battle with you again…$"
+
 
 `

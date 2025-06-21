@@ -346,8 +346,16 @@ void SetupAIPredictionData(u32 battler, enum SwitchType switchType)
     if ((gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PREDICT_SWITCH))
     {
         gAiLogicData->mostSuitableMonId[opposingBattler] = GetMostSuitableMonToSwitchInto(opposingBattler, switchType);
-        if (ShouldSwitch(opposingBattler))
-            gAiLogicData->shouldSwitch |= (1u << opposingBattler);
+        if (GetBattlerPosition(gBattleAnimTarget) == B_POSITION_PLAYER_RIGHT)
+        {
+            if (PartnerShouldSwitch(battler))
+            gAiLogicData->shouldSwitch |= (1u << battler);
+        }
+        else
+        {
+            if (ShouldSwitch(battler))
+            gAiLogicData->shouldSwitch |= (1u << battler);
+        }
         gBattleStruct->prevTurnSpecies[opposingBattler] = gBattleMons[opposingBattler].species;
 
         // Determine whether AI will use predictions this turn
@@ -358,7 +366,14 @@ void SetupAIPredictionData(u32 battler, enum SwitchType switchType)
     if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PREDICT_MOVE)
     {
         gAiLogicData->predictedMove[opposingBattler] = gBattleMons[opposingBattler].moves[BattleAI_ChooseMoveIndex(opposingBattler)];
-        ModifySwitchAfterMoveScoring(opposingBattler);
+        if (GetBattlerPosition(gBattleAnimTarget) == B_POSITION_PLAYER_RIGHT)
+        {
+            PartnerModifySwitchAfterMoveScoring(battler);
+        }
+        else
+        {
+            ModifySwitchAfterMoveScoring(battler);
+        }
 
         // Determine whether AI will use predictions this turn
         gAiLogicData->predictingMove = RandomPercentage(RNG_AI_PREDICT_MOVE, PREDICT_MOVE_CHANCE);
@@ -387,14 +402,28 @@ void ComputeBattlerDecisions(u32 battler)
 
         // AI's own switching data
         gAiLogicData->mostSuitableMonId[battler] = GetMostSuitableMonToSwitchInto(battler, switchType);
-        if (ShouldSwitch(battler))
+        if (GetBattlerPosition(gBattleAnimTarget) == B_POSITION_PLAYER_RIGHT)
+        {
+            if (PartnerShouldSwitch(battler))
             gAiLogicData->shouldSwitch |= (1u << battler);
+        }
+        else
+        {
+            if (ShouldSwitch(battler))
+            gAiLogicData->shouldSwitch |= (1u << battler);
+        }
         gBattleStruct->prevTurnSpecies[battler] = gBattleMons[battler].species;
 
         // AI's move scoring
         gAiBattleData->chosenMoveIndex[battler] = BattleAI_ChooseMoveIndex(battler); // Calculate score and chose move index
-        ModifySwitchAfterMoveScoring(battler);
-
+        if (GetBattlerPosition(gBattleAnimTarget) == B_POSITION_PLAYER_RIGHT)
+        {
+            PartnerModifySwitchAfterMoveScoring(battler);
+        }
+        else
+        {
+            ModifySwitchAfterMoveScoring(battler);
+        }
         gAiLogicData->aiCalcInProgress = FALSE;
     }
 }
