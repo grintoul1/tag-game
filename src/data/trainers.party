@@ -6108,9 +6108,22 @@ Music: Male
 Battle Type: Singles
 AI: Smart Trainer
 
-Poochyena
-Level: 5
+Dragonite
+Level: 100
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Dragon Claw
+
+Dragonite
+Level: 100
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Dragon Claw
+
+Dragonite
+Level: 100
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Dragon Claw
+
+
 
 === TRAINER_BILLY ===
 Name: BILLY
@@ -11562,8 +11575,12 @@ Battle Type: Singles
 AI: Smart Trainer
 
 Wurmple
-Level: 4
+Level: 50
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- String Shot
+- String Shot
+- String Shot
+- String Shot
 
 Wurmple
 Level: 4
