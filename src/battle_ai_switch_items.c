@@ -924,18 +924,14 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
             {
-                if (!AI_DoesChoiceItemBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp && AI_WhoStrikesFirst(opposingBattler2, battler, aiMove)))
-                {    
-                    k = k+1;
-                    opposingBattler = opposingBattler2;
-                    if(i==0)
-                        switchingmove = GetMonData(&gEnemyParty[gBattlerPartyIndexes[opposingBattler2]], MON_DATA_MOVE1, NULL);
-                    if(i==1)
-                        switchingmove = GetMonData(&gEnemyParty[gBattlerPartyIndexes[opposingBattler2]], MON_DATA_MOVE2, NULL);
-                    if(i==2)
-                        switchingmove = GetMonData(&gEnemyParty[gBattlerPartyIndexes[opposingBattler2]], MON_DATA_MOVE3, NULL);
-                    if(i==3)
-                        switchingmove = GetMonData(&gEnemyParty[gBattlerPartyIndexes[opposingBattler2]], MON_DATA_MOVE4, NULL);
+                if (!AI_DoesChoiceItemBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_IsSlower(battler, opposingBattler2, aiMove)))
+                {
+                    if(GetMoveType(aiMove) != GetMoveType(switchingmove))
+                    {
+                        opposingBattler = opposingBattler2;
+                        switchingmove = aiMove;
+                        k = k+1;
+                    }
                 }
             }
         }
@@ -948,74 +944,71 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
             {
-                if (!AI_DoesChoiceItemBlockMove(opposingBattler1, aiMove) && (AI_GetDamage(opposingBattler1, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_WhoStrikesFirst(opposingBattler1, battler, aiMove)))
+                if (!AI_DoesChoiceItemBlockMove(opposingBattler1, aiMove) && (AI_GetDamage(opposingBattler1, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_IsSlower(battler, opposingBattler1, aiMove)))
                 {
-                    if(i==0)
+                    if(GetMoveType(aiMove) != GetMoveType(switchingmove))
                     {
-                        if(GetMonData(&gEnemyParty[gBattlerPartyIndexes[opposingBattler1]], MON_DATA_MOVE1, NULL) != switchingmove)
-                        {
-                            switchingmove = GetMonData(&gEnemyParty[gBattlerPartyIndexes[opposingBattler1]], MON_DATA_MOVE1, NULL);
-                            k = k+1;
-                        }
+                        opposingBattler = opposingBattler1;
+                        switchingmove = aiMove;
+                        k = k+1;
                     }
-                    if(i==1)
-                    {
-                        if(GetMonData(&gEnemyParty[gBattlerPartyIndexes[opposingBattler1]], MON_DATA_MOVE2, NULL) != switchingmove)
-                        {
-                            switchingmove = GetMonData(&gEnemyParty[gBattlerPartyIndexes[opposingBattler1]], MON_DATA_MOVE2, NULL);
-                            k = k+1;
-                        }
-                    }
-                    if(i==2)
-                    {
-                        if(GetMonData(&gEnemyParty[gBattlerPartyIndexes[opposingBattler1]], MON_DATA_MOVE3, NULL) != switchingmove)
-                        {
-                            switchingmove = GetMonData(&gEnemyParty[gBattlerPartyIndexes[opposingBattler1]], MON_DATA_MOVE3, NULL);
-                            k = k+1;
-                        }
-                    }
-                    if(i==3)
-                    {
-                        if(GetMonData(&gEnemyParty[gBattlerPartyIndexes[opposingBattler1]], MON_DATA_MOVE4, NULL) != switchingmove)
-                        {
-                            switchingmove = GetMonData(&gEnemyParty[gBattlerPartyIndexes[opposingBattler1]], MON_DATA_MOVE4, NULL);
-                            k = k+1;
-                        }
-                    }
-                    opposingBattler = opposingBattler1;
-                    switchingmove = aiMove;
                 }
             }
         }
     }
-    u32 incomingType = GetMoveType(switchingmove);
 
-    if ((k==0) | (k>1))
-        return FALSE;
-    if (!(gAiThinkingStruct->aiFlags[GetThinkingBattler(battler)] & AI_FLAG_PARTNER_SWITCHING))
-        return FALSE;
-    if (gBattleStruct->prevTurnSpecies[opposingBattler] != gBattleMons[opposingBattler].species && !(gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PREDICT_MOVE)) // AI mon has changed, player's behaviour no longer reliable; override this if using AI_FLAG_PREDICT_MOVE
+    u32 incomingType = GetMoveType(switchingmove);
+    MgbaPrintf(MGBA_LOG_WARN, "k %d", k);
+
+    if (k!=1)
         return FALSE;
     if (CanUseSuperEffectiveMoveAgainstOpponents(battler) && (RandomPercentage(RNG_AI_SWITCH_ABSORBING_STAY_IN, PARTNER_STAY_IN_ABSORBING_PERCENTAGE) || gAiLogicData->aiPredictionInProgress))
         return FALSE;
-    if (AreStatsRaised(battler))
-        return FALSE;
+
+    battlerIn1 = battler;
+    if (gAbsentBattlerFlags & (1u << GetPartnerBattler(battler)))
+        battlerIn2 = battler;
+    else
+        battlerIn2 = GetPartnerBattler(battler);
+
+    // Check party for mon immune move(s)
+    GetAIPartyIndexes(battler, &firstId, &lastId);
+    party = GetBattlerParty(battler);
+
+    for (i = firstId; i < lastId; i++)
+    {
+        if (!IsValidForBattle(&party[i]))
+            continue;
+        if (i == gBattlerPartyIndexes[battlerIn1])
+            continue;
+        if (i == gBattlerPartyIndexes[battlerIn2])
+            continue;
+        if (i == gBattleStruct->monToSwitchIntoId[battlerIn1])
+            continue;
+        if (i == gBattleStruct->monToSwitchIntoId[battlerIn2])
+            continue;
+        if (IsAceMon(battler, i))
+            continue;
+
+        if((!(gItemsInfo[gBattleMons[opposingBattler2].item].holdEffect == HOLD_EFFECT_RING_TARGET)) && (!(gItemsInfo[gBattleMons[opposingBattler1].item].holdEffect == HOLD_EFFECT_RING_TARGET)))
+        if((incomingType == TYPE_ELECTRIC) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_GROUND) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_GROUND)))
+            return SetSwitchinAndSwitch(battler, i);
+        if((incomingType == TYPE_POISON) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_STEEL) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_STEEL)))
+            return SetSwitchinAndSwitch(battler, i);
+        if(((incomingType == TYPE_NORMAL) || (incomingType == TYPE_FIGHTING)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_SCRAPPY) && (GetBattlerAbility(opposingBattler2) != ABILITY_SCRAPPY)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_MINDS_EYE) && (GetBattlerAbility(opposingBattler2) != ABILITY_MINDS_EYE)) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_GHOST) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_GHOST)))
+            return SetSwitchinAndSwitch(battler, i);
+        if((incomingType == TYPE_DRAGON) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_FAIRY) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_FAIRY)))
+            return SetSwitchinAndSwitch(battler, i);
+        if((incomingType == TYPE_GROUND) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_FLYING) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_FLYING)))
+            return SetSwitchinAndSwitch(battler, i);
+        if((incomingType == TYPE_GHOST) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_NORMAL) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_NORMAL)))
+            return SetSwitchinAndSwitch(battler, i);
+        if((incomingType == TYPE_PSYCHIC) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_DARK) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_DARK)))
+            return SetSwitchinAndSwitch(battler, i);
+    }
+    
     if (IsMoldBreakerTypeAbility(opposingBattler, gAiLogicData->abilities[opposingBattler]))
         return FALSE;
-
-    if (IsDoubleBattle())
-    {
-        battlerIn1 = battler;
-        if (gAbsentBattlerFlags & (1u << GetPartnerBattler(battler)))
-            battlerIn2 = battler;
-        else
-            battlerIn2 = GetPartnerBattler(battler);
-    }
-    else
-    {
-        battlerIn1 = battler;
-        battlerIn2 = battler;
-    }
 
     // Create an array of possible absorb abilities so the AI considers all of them
     if (incomingType == TYPE_FIRE)
@@ -1083,16 +1076,6 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
             continue;
         if (IsAceMon(battler, i))
             continue;
-        if((incomingType == TYPE_ELECTRIC) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_GROUND) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_GROUND)))
-                return SetSwitchinAndSwitch(battler, i);
-        if((incomingType == TYPE_POISON) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_STEEL) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_STEEL)))
-                return SetSwitchinAndSwitch(battler, i);
-        if(((incomingType == TYPE_NORMAL) || (incomingType == TYPE_FIGHTING)) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_GHOST) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_GHOST)))
-                return SetSwitchinAndSwitch(battler, i);
-        if((incomingType == TYPE_DRAGON) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_FAIRY) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_FAIRY)))
-                return SetSwitchinAndSwitch(battler, i);
-        if((incomingType == TYPE_GROUND) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_FLYING) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_FLYING)))
-                return SetSwitchinAndSwitch(battler, i);
 
         monAbility = GetMonAbility(&party[i]);
 
@@ -2006,7 +1989,7 @@ bool32 ShouldSwitch(u32 battler)
 
 //Used for player's AI partner. Note battler refers to the AI partner and partner refers to the player
 bool32 PartnerShouldSwitch(u32 battler)
-{
+{   
     u32 battlerIn1, battlerIn2;
     s32 firstId;
     s32 lastId; // + 1

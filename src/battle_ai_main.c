@@ -216,6 +216,10 @@ static u64 GetAiFlags(u16 trainerId)
     if (flags & AI_FLAG_SMART_SWITCHING)
         flags |= AI_FLAG_SMART_MON_CHOICES;
 
+    // Automatically includes AI_FLAG_SMART_MON_CHOICES to improve smart switching
+    if (flags & AI_FLAG_PARTNER_SWITCHING)
+        flags |= AI_FLAG_SMART_MON_CHOICES;
+
     // Automatically includes AI_FLAG_PREDICT_SWITCH if AI_FLAG_PREDICT_INCOMING_MON is being used
     if (flags & AI_FLAG_PREDICT_INCOMING_MON)
         flags |= AI_FLAG_PREDICT_SWITCH;
@@ -346,7 +350,7 @@ void SetupAIPredictionData(u32 battler, enum SwitchType switchType)
     if ((gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PREDICT_SWITCH))
     {
         gAiLogicData->mostSuitableMonId[opposingBattler] = GetMostSuitableMonToSwitchInto(opposingBattler, switchType);
-        if (GetBattlerPosition(gBattleAnimTarget) == B_POSITION_PLAYER_RIGHT)
+        if (GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)
         {
             if (PartnerShouldSwitch(battler))
             gAiLogicData->shouldSwitch |= (1u << battler);
@@ -366,7 +370,7 @@ void SetupAIPredictionData(u32 battler, enum SwitchType switchType)
     if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PREDICT_MOVE)
     {
         gAiLogicData->predictedMove[opposingBattler] = gBattleMons[opposingBattler].moves[BattleAI_ChooseMoveIndex(opposingBattler)];
-        if (GetBattlerPosition(gBattleAnimTarget) == B_POSITION_PLAYER_RIGHT)
+        if (GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)
         {
             PartnerModifySwitchAfterMoveScoring(battler);
         }
@@ -402,7 +406,7 @@ void ComputeBattlerDecisions(u32 battler)
 
         // AI's own switching data
         gAiLogicData->mostSuitableMonId[battler] = GetMostSuitableMonToSwitchInto(battler, switchType);
-        if (GetBattlerPosition(gBattleAnimTarget) == B_POSITION_PLAYER_RIGHT)
+        if (GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)
         {
             if (PartnerShouldSwitch(battler))
             gAiLogicData->shouldSwitch |= (1u << battler);
@@ -416,7 +420,7 @@ void ComputeBattlerDecisions(u32 battler)
 
         // AI's move scoring
         gAiBattleData->chosenMoveIndex[battler] = BattleAI_ChooseMoveIndex(battler); // Calculate score and chose move index
-        if (GetBattlerPosition(gBattleAnimTarget) == B_POSITION_PLAYER_RIGHT)
+        if (GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)
         {
             PartnerModifySwitchAfterMoveScoring(battler);
         }
