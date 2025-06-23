@@ -40,7 +40,9 @@ BattleFrontier_BattlePalaceBattleRoom_OnWarp:
 	.2byte 0
 
 BattleFrontier_BattlePalaceBattleRoom_EventScript_EmmiePos::
-	special OffsetCameraForBattle
+	setvar VAR_0x8004, 7  @ x
+	setvar VAR_0x8005, 5  @ y
+	special TeleportCamera
 	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 5, 4
 	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_EAST
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST

@@ -48,7 +48,7 @@ BattleFrontier_BattlePalaceLobby_Text_SpenserWelcomeToBattlePalace:
 	.string "I'll whip you kids into shape for your\n"
 	.string "Elite Four challenge in no time.\p"
 	.string "If you can manage to beat me, I'll\n"
-	.string "even give you an Eject pack!$"
+	.string "even give you an Eject Pack!$"
 
 BattleFrontier_BattlePalaceLobby_OnFrame:
 	map_script_2 VAR_TEMP_CHALLENGE_STATUS, 0, BattleFrontier_BattlePalaceLobby_EventScript_GetChallengeStatus

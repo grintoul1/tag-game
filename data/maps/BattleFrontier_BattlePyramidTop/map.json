@@ -25,8 +25,8 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "3",
-      "script": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS",
-      "flag": "0"
+      "script": "0x0",
+      "flag": "FLAG_HIDE_BATTLE_FRONTIER_REGULAR_OBJECTS"
     },
     {
       "local_id": "LOCALID_BRANDON",

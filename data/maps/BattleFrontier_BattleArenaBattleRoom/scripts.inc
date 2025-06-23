@@ -18,7 +18,9 @@ BattleFrontier_BattleArenaBattleRoom_OnFrame:
 	.2byte 0
 
 BattleFrontier_BattleArenaBattleRoom_EventScript_EmmiePos::
-	special OffsetCameraForBattle
+	setvar VAR_0x8004, 7  @ x
+	setvar VAR_0x8005, 6  @ y
+	special TeleportCamera
 	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 5, 5
 	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_EAST
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST

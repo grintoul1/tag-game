@@ -13,6 +13,9 @@ BattleFrontier_BattlePikeRoom_OnWarp:
 	.2byte 0
 
 BattleFrontier_BattlePikeRoomNormal_EventScript_EmmiePos::
+	setvar VAR_0x8004, 4  @ x
+	setvar VAR_0x8005, 5  @ y
+	special TeleportCamera
 	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 3, 6
 	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_NORTH
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH

@@ -14,7 +14,75 @@ BattleFrontier_BattlePyramidTop_OnTransition:
 	end
 
 BattleFrontier_BattlePyramidTop_OnWarp:
-	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattlePyramidTop_EventScript_SetUpObjects
+	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattlePyramidTop_EventScript_EmmiePos
+	.2byte 0
+
+BattleFrontier_BattlePyramidTop_EventScript_EmmiePos::
+	setvar VAR_0x8004, 17  @ x
+	setvar VAR_0x8005, 8  @ y
+	special TeleportCamera
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 16, 9
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_NORTH
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_BATTLE_FRONTIER_BATTLE_PYRAMID_TOP
+	end
+
+BattleFrontier_BattlePyramidTop_EventScript_BrandonBattle::
+	lockall
+	applymovement LOCALID_BRANDON, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox BattleFrontier_BattlePyramidTop_Text_BrandonBeautifulView, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_BRANDON, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox BattleFrontier_BattlePyramidTop_Text_BrandonBestOfLuck, MSGBOX_AUTOCLOSE
+	goto BattleFrontier_BattlePyramidTop_EventScript_BrandonDoMultiBattle
+	releaseall 
+	end
+
+BattleFrontier_BattlePyramidTop_Text_BrandonBeautifulView:
+	.string "Brandon: Beautiful view, isn't it?$"
+
+BattleFrontier_BattlePyramidTop_EventScript_BrandonDoMultiBattle::
+	playbgm MUS_B_PYRAMID, TRUE
+	multi_2p_vs_1 TRAINER_BRANDON, BattleFrontier_BattlePyramidTop_Text_BrandonDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, BattleFrontier_BattlePyramidTop_EventScript_BrandonVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+BattleFrontier_BattlePyramidTop_Text_BrandonDefeat:
+	.string "Such remarkable strength. Well done.$"
+
+BattleFrontier_BattlePyramidTop_EventScript_BrandonVictory::
+	applymovement LOCALID_BRANDON, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox BattleFrontier_BattlePyramidTop_Text_BrandonCongratulationsTakeThis, MSGBOX_AUTOCLOSE
+	giveitem ITEM_FOCUS_SASH
+	setflag FLAG_HIDE_BATTLE_PYRAMID_LOBBY_BRANDON
+	playse SE_EXIT
+	warp MAP_BATTLE_FRONTIER_OUTSIDE_EAST, 58, 15
+	releaseall
+	end
+
+BattleFrontier_BattlePyramidTop_Text_BrandonCongratulationsTakeThis:
+	.string "Brandon: Very well played!\p"
+	.string "I don't often say this to challengers,\n"
+	.string "but I am truly impressed.\p"
+	.string "Please, take this Focus Sash. You've\n"
+	.string "certainly earned it.\p"
+	.string "I wish you every good fortune for\n"
+	.string "your League challenge.$"
+
+BattleFrontier_BattlePyramidTop_Text_BrandonBestOfLuck:
+	.string "Brandon: What better setting for our\n"
+	.string "battle.\p"
+	.string "Don't pull your punches. I want you\n"
+	.string "to unleash your full potential.$"
+
+BattleFrontier_BattlePyramidTop_OnFrame:
+	map_script_2 VAR_TEMP_PLAYING_PYRAMID_MUSIC, 0, BattleFrontier_BattlePyramidTop_EventScript_PlayPyramidMusic
+	map_script_2 VAR_TEMP_2, 0, BattleFrontier_BattlePyramidTop_EventScript_BrandonBattle
 	.2byte 0
 
 BattleFrontier_BattlePyramidTop_EventScript_SetUpObjects::
@@ -42,15 +110,10 @@ BattleFrontier_BattlePyramidTop_EventScript_CheckChallengeStatus::
 	goto_if_eq VAR_RESULT, B_OUTCOME_FORFEITED, BattleFrontier_BattlePyramid_EventScript_WarpToLobbyLost
 	end
 
-BattleFrontier_BattlePyramidTop_OnFrame:
-	map_script_2 VAR_TEMP_PLAYING_PYRAMID_MUSIC, 0, BattleFrontier_BattlePyramidTop_EventScript_PlayPyramidMusic
-	map_script_2 VAR_TEMP_F, 1, BattleFrontier_BattlePyramidTop_EventScript_ShowMapName
-	.2byte 0
-
 BattleFrontier_BattlePyramidTop_EventScript_PlayPyramidMusic::
 	playbgm MUS_B_PYRAMID_TOP, FALSE
 	setvar VAR_TEMP_PLAYING_PYRAMID_MUSIC, 1
-	end
+	return
 
 BattleFrontier_BattlePyramidTop_EventScript_ShowMapName::
 	special ShowMapNamePopup
