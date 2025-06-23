@@ -686,10 +686,12 @@ Common_EventScript_UpdateBrineyLocation::
 	return
 
 Common_EventScript_Tabitha::
+	goto Common_EventScript_Emmie
 	faceplayer
 	end
 
 Common_EventScript_Shelly::
+	goto Common_EventScript_Emmie
 	faceplayer
 	end
 

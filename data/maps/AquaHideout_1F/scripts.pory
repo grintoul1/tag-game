@@ -139,6 +139,7 @@ AquaHideout_1F_EventScript_Emmie::
 	closemessage
 	applymovement LOCALID_EMMIE, Common_Movement_FaceOriginalDirection
 	waitmovement 0
+	end
 
 AquaHideout_1F_Movement_PlayerEnterHideout:
 	walk_up
