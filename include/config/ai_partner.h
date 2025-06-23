@@ -8,7 +8,7 @@
 // AI switch chances; if you want more complex behaviour, modify GetSwitchChance
 #define PARTNER_SHOULD_SWITCH_WONDER_GUARD_PERCENTAGE                   100
 #define PARTNER_SHOULD_SWITCH_TRUANT_PERCENTAGE                         0
-#define PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE                  0
+#define PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE                  100
 #define PARTNER_STAY_IN_STATS_RAISED                                    0  // Number of stat stages that must be raised across any stats before the AI won't switch mon out in certain cases
 
 // AI smart switching chances; if you want more complex behaviour, modify GetSwitchChance
@@ -17,9 +17,9 @@
 #define PARTNER_SHOULD_SWITCH_FREE_TURN_PERCENTAGE                          0
 #define PARTNER_STAY_IN_ABSORBING_PERCENTAGE                                0  // Chance to stay in if outgoing mon has super effective move against player, will prevent switching out for an absorber with this likelihood
 #define PARTNER_SHOULD_SWITCH_HASBADODDS_PERCENTAGE                         0
-#define PARTNER_SHOULD_SWITCH_ENCORE_STATUS_PERCENTAGE                      100
-#define PARTNER_SHOULD_SWITCH_ENCORE_DAMAGE_PERCENTAGE                      100
-#define PARTNER_SHOULD_SWITCH_CHOICE_LOCKED_PERCENTAGE                      100 // Only if locked into status move
+#define PARTNER_SHOULD_SWITCH_ENCORE_STATUS_PERCENTAGE                      100 // Chance to switch if encored into status move
+#define PARTNER_SHOULD_SWITCH_ENCORE_DAMAGE_PERCENTAGE                      0   // Chance to switch if encored into damaging move
+#define PARTNER_SHOULD_SWITCH_CHOICE_LOCKED_PERCENTAGE                      0 // Only if locked into status move
 #define PARTNER_SHOULD_SWITCH_ATTACKING_STAT_MINUS_TWO_PERCENTAGE           100
 #define PARTNER_SHOULD_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS_PERCENTAGE    100
 #define PARTNER_SHOULD_SWITCH_ALL_SCORES_BAD_PERCENTAGE                     100

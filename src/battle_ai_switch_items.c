@@ -994,23 +994,25 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
             continue;
 
         if((!(gItemsInfo[gBattleMons[opposingBattler2].item].holdEffect == HOLD_EFFECT_RING_TARGET)) && (!(gItemsInfo[gBattleMons[opposingBattler1].item].holdEffect == HOLD_EFFECT_RING_TARGET)))
-        if((incomingType == TYPE_ELECTRIC) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_GROUND) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_GROUND)))
-            return SetSwitchinAndSwitch(battler, i);
-        if((incomingType == TYPE_POISON) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_STEEL) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_STEEL)))
-            return SetSwitchinAndSwitch(battler, i);
-        if(((incomingType == TYPE_NORMAL) || (incomingType == TYPE_FIGHTING)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_SCRAPPY) && (GetBattlerAbility(opposingBattler2) != ABILITY_SCRAPPY)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_MINDS_EYE) && (GetBattlerAbility(opposingBattler2) != ABILITY_MINDS_EYE)) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_GHOST) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_GHOST)))
-            return SetSwitchinAndSwitch(battler, i);
-        if((incomingType == TYPE_DRAGON) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_FAIRY) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_FAIRY)))
-            return SetSwitchinAndSwitch(battler, i);
-        if((incomingType == TYPE_GROUND) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_FLYING) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_FLYING)))
-            return SetSwitchinAndSwitch(battler, i);
-        if((incomingType == TYPE_GHOST) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_NORMAL) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_NORMAL)))
-            return SetSwitchinAndSwitch(battler, i);
-        if((incomingType == TYPE_PSYCHIC) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_DARK) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_DARK)))
-            return SetSwitchinAndSwitch(battler, i);
+        {
+            if((incomingType == TYPE_ELECTRIC) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_GROUND) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_GROUND)))
+                return SetSwitchinAndSwitch(battler, i);
+            if((incomingType == TYPE_POISON) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_STEEL) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_STEEL)))
+                return SetSwitchinAndSwitch(battler, i);
+            if(((incomingType == TYPE_NORMAL) || (incomingType == TYPE_FIGHTING)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_SCRAPPY) && (GetBattlerAbility(opposingBattler2) != ABILITY_SCRAPPY)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_MINDS_EYE) && (GetBattlerAbility(opposingBattler2) != ABILITY_MINDS_EYE)) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_GHOST) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_GHOST)))
+                return SetSwitchinAndSwitch(battler, i);
+            if((incomingType == TYPE_DRAGON) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_FAIRY) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_FAIRY)))
+                return SetSwitchinAndSwitch(battler, i);
+            if((incomingType == TYPE_GROUND) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_FLYING) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_FLYING)))
+                return SetSwitchinAndSwitch(battler, i);
+            if((incomingType == TYPE_GHOST) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_NORMAL) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_NORMAL)))
+                return SetSwitchinAndSwitch(battler, i);
+            if((incomingType == TYPE_PSYCHIC) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_DARK) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_DARK)))
+                return SetSwitchinAndSwitch(battler, i);
+        }
     }
     
-    if (IsMoldBreakerTypeAbility(opposingBattler, gAiLogicData->abilities[opposingBattler]))
+    if (IsMoldBreakerTypeAbility(opposingBattler2, gAiLogicData->abilities[opposingBattler2]) || IsMoldBreakerTypeAbility(opposingBattler1, gAiLogicData->abilities[opposingBattler1]))
         return FALSE;
 
     // Create an array of possible absorb abilities so the AI considers all of them
@@ -1706,7 +1708,7 @@ static bool32 ShouldSwitchIfEncored(u32 battler)
     else if (AI_GetMoveEffectiveness(encoredMove, battler, opposingBattler) >= UQ_4_12(2.0))
         return FALSE;
 
-    // Switch out 50% of the time otherwise
+    // Switch out X% of the time otherwise
     else if ((RandomPercentage(RNG_AI_SWITCH_ENCORE, GetSwitchChance(SHOULD_SWITCH_ENCORE_DAMAGE)) || gAiLogicData->aiPredictionInProgress) && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE)
         return SetSwitchinAndSwitch(battler, PARTY_SIZE);
 

@@ -48,6 +48,8 @@ SkyPillar_Top_EventScript_SetWeather:
 SkyPillar_Top_EventScript_MattTabithaPos::
 	setobjectxyperm LOCALID_SKYPILLAR_MATT, 12, 21
 	setobjectxyperm LOCALID_SKYPILLAR_TABITHA, 12, 19
+	setobjectmovementtype LOCALID_SKYPILLAR_MATT, MOVEMENT_TYPE_FACE_UP
+	setobjectmovementtype LOCALID_SKYPILLAR_TABITHA, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 SkyPillar_Top_EventScript_LeaderPos::
@@ -845,8 +847,6 @@ SkyPillar_Top_EventScript_MattTabitha::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SkyPillar_Top_Movement_EmmieApproachMatt
 	waitmovement 0
-	setobjectmovementtype LOCALID_SKYPILLAR_MATT, MOVEMENT_TYPE_FACE_UP
-	setobjectmovementtype LOCALID_SKYPILLAR_TABITHA, MOVEMENT_TYPE_FACE_DOWN
 	applymovement LOCALID_SKYPILLAR_MATT, Common_Movement_FaceRight
 	applymovement LOCALID_SKYPILLAR_TABITHA, Common_Movement_FaceRight
 	waitmovement 0
@@ -961,6 +961,9 @@ SkyPillar_Top_Text_ShellyShouldHaveKnown:
 SkyPillar_Top_Text_CourtneySpeechless:
 	.string "Courtney: … … … … … …$"
 
+SkyPillar_Top_Text_ShellySpeechless:
+	.string "Shelly: … … … … … …$"
+
 SkyPillar_Top_EventScript_ShellyCourtney::
 	lockall
 	setobjectmovementtype LOCALID_SKYPILLAR_COURTNEY, MOVEMENT_TYPE_FACE_RIGHT
@@ -989,6 +992,8 @@ SkyPillar_Top_EventScript_ShellyCourtney::
 	waitmovement 0
 	delay 30
 	msgbox SkyPillar_Top_Text_CourtneySpeechless, MSGBOX_DEFAULT
+	closemessage
+	msgbox SkyPillar_Top_Text_ShellySpeechless, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_SKYPILLAR_COURTNEY, Common_Movement_WalkDown
 	applymovement LOCALID_SKYPILLAR_SHELLY, Common_Movement_WalkDown
