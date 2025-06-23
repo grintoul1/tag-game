@@ -3099,8 +3099,8 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
                     {
                         maxDamageDealt = damageDealt;
                         percentageDealt = ((maxDamageDealt*1000) / gBattleMons[opposingBattler].hp);
-                        percentageDealtStored[monId]=percentageDealt;
                         #ifndef NDEBUG
+                            percentageDealtStored[monId]=percentageDealt;
                             maxDamageDealtStored[monId]=maxDamageDealt;
                             aiBestMove[monId]=GetMoveName(GetMonData(&party[monId], MON_DATA_MOVE1 + i,NULL));
                         #endif
@@ -3123,8 +3123,8 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
                     {
                         maxDamageDealtToAI = damageReceived;
                         percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&party[monId],MON_DATA_HP,NULL));
-                        percentageReceivedStored[monId]= percentageReceived;
                         #ifndef NDEBUG
+                            percentageReceivedStored[monId]= percentageReceived;
                             maxDamageDealtToAIStored[monId] = maxDamageDealtToAI;
                         #endif
                     }
