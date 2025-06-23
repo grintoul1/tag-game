@@ -6111,17 +6111,17 @@ AI: Smart Trainer
 Dragonite
 Level: 100
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Dragon Claw
+- Pound
 
 Dragonite
 Level: 100
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Dragon Claw
 
-Dragonite
+Archeops
 Level: 100
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Dragon Claw
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 31 Spe
+- Power Gem
 
 
 
@@ -11583,8 +11583,12 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - String Shot
 
 Wurmple
-Level: 4
+Level: 30
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Constrict
+- Constrict
+- Constrict
 
 === TRAINER_LYLE ===
 Name: LYLE
