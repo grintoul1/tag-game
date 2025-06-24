@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "config/general.h"
 #include "constants/battle_ai.h"
 #include "battle_ai_main.h"
 #include "battle_ai_util.h"
@@ -958,7 +959,9 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
     }
 
     u32 incomingType = GetMoveType(switchingmove);
-    MgbaPrintf(MGBA_LOG_WARN, "k %d", k);
+     #ifndef NDEBUG
+        MgbaPrintf(MGBA_LOG_WARN, "k %d", k);
+    #endif
 
     if (k!=1)
         return FALSE;
