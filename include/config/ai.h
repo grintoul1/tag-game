@@ -7,9 +7,9 @@
 
 // AI switch chances; if you want more complex behaviour, modify GetSwitchChance
 #define SHOULD_SWITCH_WONDER_GUARD_PERCENTAGE                   100
-#define SHOULD_SWITCH_TRUANT_PERCENTAGE                         100
-#define SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE                  100
-#define STAY_IN_STATS_RAISED                                    2  // Number of stat stages that must be raised across any stats before the AI won't switch mon out in certain cases
+#define SHOULD_SWITCH_TRUANT_PERCENTAGE                         0
+#define SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE                  50
+#define STAY_IN_STATS_RAISED                                    999  // Number of stat stages that must be raised across any stats before the AI won't switch mon out in certain cases
 
 // AI smart switching chances; if you want more complex behaviour, modify GetSwitchChance
 #define SHOULD_SWITCH_ABSORBS_MOVE_PERCENTAGE                       0
@@ -66,13 +66,13 @@
 #define PREDICT_MOVE_CHANCE                                     100
 
 // AI Terastalization chances
-#define AI_CONSERVE_TERA_CHANCE_PER_MON                         10 // Chance for AI with smart tera flag to decide not to tera before considering defensive benefit is this*(X-1), where X is the number of alive pokemon that could tera
-#define AI_TERA_PREDICT_CHANCE                                  40 // Chance for AI with smart tera flag to tera in the situation where tera would save it from a KO, but could be punished by a KO from a different move. 
+#define AI_CONSERVE_TERA_CHANCE_PER_MON                         0 // Chance for AI with smart tera flag to decide not to tera before considering defensive benefit is this*(X-1), where X is the number of alive pokemon that could tera
+#define AI_TERA_PREDICT_CHANCE                                  0 // Chance for AI with smart tera flag to tera in the situation where tera would save it from a KO, but could be punished by a KO from a different move. 
 
 // AI PP Stall detection chance per roll
-#define PP_STALL_DISREGARD_MOVE_PERCENTAGE                      50
+#define PP_STALL_DISREGARD_MOVE_PERCENTAGE                      0
 // Score reduction if any roll for PP stall detection passes
-#define PP_STALL_SCORE_REDUCTION                                20
+#define PP_STALL_SCORE_REDUCTION                                0
 
 // AI's acceptable number of hits to KO the partner via friendly fire in a double battle.
 #define FRIENDLY_FIRE_RISKY_THRESHOLD           2
