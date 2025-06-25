@@ -2109,226 +2109,228 @@ void DoSpecialTrainerBattle(void)
             gBattleScripting.specialTrainerBattleType = 0xFF;
         break;
     case SPECIAL_BATTLE_EMMIE:
-    s32 j;
-    if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
     {
-        (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_1);
-    }
-    else if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
-    {
-        (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
-    }
-    else if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
-    {
-        (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_3);
-    }
-
-    gBattleTypeFlags = BATTLE_TYPE_TRAINER;
-    FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0, 6);
-    if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
-    {
-        for (i = 0; i < 6; i++)
+        s32 j;
+        if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
         {
-            CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-            j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-            if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
-            {
-                SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
-                CalculateMonStats(&gEnemyParty[i]);
-            }
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER;
+            (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_1);
         }
-    }
-    if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
-    {
-        for (i = 3; i < 6; i++)
+        else if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
         {
-            CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-            j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-            if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
-            {
-                SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
-                CalculateMonStats(&gEnemyParty[i]);
-            }
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
             (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
-            gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY);
-            FillPartnerParty(gPartnerTrainerId);
         }
-    }
-    if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
-    {
-        for (i = 0; i < 6; i++)
+        else if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
         {
-            CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-            j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-            if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+            (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_3);
+        }
+
+        gBattleTypeFlags = BATTLE_TYPE_TRAINER;
+        FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0, 6);
+        if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
+        {
+            for (i = 0; i < 6; i++)
             {
-                SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
-                CalculateMonStats(&gEnemyParty[i]);
+                CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+                {
+                    SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gEnemyParty[i]);
+                }
+                gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER;
             }
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER;
         }
-    }
-    if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
-    {
-        for (i = 0; i < 6; i++)
+        if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
         {
-            j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
-            SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
-            j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
-            SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
-            j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
-            SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
-            j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
-            SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
-            j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
-            SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
-            j = STATUS1_NONE;
-            SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
+            for (i = 3; i < 6; i++)
+            {
+                CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+                {
+                    SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gEnemyParty[i]);
+                }
+                gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
+                (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
+                gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY);
+                FillPartnerParty(gPartnerTrainerId);
+            }
+        }
+        if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
+        {
+            for (i = 0; i < 6; i++)
+            {
+                CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+                {
+                    SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gEnemyParty[i]);
+                }
+                gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER;
+            }
+        }
+        if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
+        {
+            for (i = 0; i < 6; i++)
+            {
+                j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+                j = STATUS1_NONE;
+                SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
+            }
+            
+            j = NATURE_RELAXED;
+            SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_SERIOUS;
+            SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_BRAVE;
+            SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_SASSY;
+            SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_BASHFUL;
+            SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_QUIET;
+            SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
+
+            j = ITEM_FOCUS_SASH;
+            SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_IRON_BALL;
+            SetMonData(&gEnemyParty[1], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_EJECT_BUTTON;
+            SetMonData(&gEnemyParty[2], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_LAGGING_TAIL;
+            SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_SITRUS_BERRY;
+            SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_STICKY_BARB;
+            SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
+        }
+        else if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
+        {
+            j = SPECIES_TORNADUS;
+                SetMonData(&gEnemyParty[0], MON_DATA_SPECIES, &j);
+            j = SPECIES_THUNDURUS;
+                SetMonData(&gEnemyParty[1], MON_DATA_SPECIES, &j);
+            j = SPECIES_LANDORUS;
+                SetMonData(&gEnemyParty[2], MON_DATA_SPECIES, &j);
+            j = 0;
+                SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &j);
+            j = 0;
+                SetMonData(&gEnemyParty[1], MON_DATA_ABILITY_NUM, &j);
+            j = 0;
+                SetMonData(&gEnemyParty[2], MON_DATA_ABILITY_NUM, &j);
+            j = NATURE_SERIOUS;
+                SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_TIMID;
+                SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_BRAVE;
+                SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
+            j = MOVE_TAILWIND;
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &j);
+            j = MOVE_TAUNT;
+                SetMonData(&gEnemyParty[1], MON_DATA_MOVE1, &j);
+            j = MOVE_U_TURN;
+                SetMonData(&gEnemyParty[2], MON_DATA_MOVE1, &j);
+
+            for (i = 0; i < 6; i++)
+            {
+                j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+                j = STATUS1_NONE;
+                SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
+            }
+            j = NATURE_SASSY;
+            SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_BASHFUL;
+            SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_QUIET;
+            SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
+
+            j = ITEM_LAGGING_TAIL;
+            SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_SITRUS_BERRY;
+            SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_STICKY_BARB;
+            SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
+        }
+        else if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
+        {
+            for (i = 0; i < 6; i++)
+            {
+                j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+                j = STATUS1_NONE;
+                SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
+            }
+            j = NATURE_TIMID;
+            SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_LONELY;
+            SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_NAIVE;
+            SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_RASH;
+            SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_BASHFUL;
+            SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_JOLLY;
+            SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
+
+            j = ITEM_FOCUS_SASH;
+            SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_NORMAL_GEM;
+            SetMonData(&gEnemyParty[1], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_EJECT_PACK;
+            SetMonData(&gEnemyParty[2], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_WEAKNESS_POLICY;
+            SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_CHOICE_SPECS;
+            SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_NORMAL_GEM;
+            SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
         }
         
-        j = NATURE_RELAXED;
-        SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_SERIOUS;
-        SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_BRAVE;
-        SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_SASSY;
-        SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_BASHFUL;
-        SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_QUIET;
-        SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
-
-        j = ITEM_FOCUS_SASH;
-        SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_IRON_BALL;
-        SetMonData(&gEnemyParty[1], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_EJECT_BUTTON;
-        SetMonData(&gEnemyParty[2], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_LAGGING_TAIL;
-        SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_SITRUS_BERRY;
-        SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_STICKY_BARB;
-        SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
-    }
-    else if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
-    {
-        j = SPECIES_TORNADUS;
-            SetMonData(&gEnemyParty[0], MON_DATA_SPECIES, &j);
-        j = SPECIES_THUNDURUS;
-            SetMonData(&gEnemyParty[1], MON_DATA_SPECIES, &j);
-        j = SPECIES_LANDORUS;
-            SetMonData(&gEnemyParty[2], MON_DATA_SPECIES, &j);
-        j = 0;
-            SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &j);
-        j = 0;
-            SetMonData(&gEnemyParty[1], MON_DATA_ABILITY_NUM, &j);
-        j = 0;
-            SetMonData(&gEnemyParty[2], MON_DATA_ABILITY_NUM, &j);
-        j = NATURE_SERIOUS;
-            SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_TIMID;
-            SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_BRAVE;
-            SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
-        j = MOVE_TAILWIND;
-            SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &j);
-        j = MOVE_TAUNT;
-            SetMonData(&gEnemyParty[1], MON_DATA_MOVE1, &j);
-        j = MOVE_U_TURN;
-            SetMonData(&gEnemyParty[2], MON_DATA_MOVE1, &j);
-
-        for (i = 0; i < 6; i++)
+        CreateTask(Task_StartBattleAfterTransition, 1);
+        if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
         {
-            j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
-            SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
-            j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
-            SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
-            j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
-            SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
-            j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
-            SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
-            j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
-            SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
-            j = STATUS1_NONE;
-            SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
+            PlayMapChosenOrBattleBGM(481);
         }
-        j = NATURE_SASSY;
-        SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_BASHFUL;
-        SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_QUIET;
-        SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
-
-        j = ITEM_LAGGING_TAIL;
-        SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_SITRUS_BERRY;
-        SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_STICKY_BARB;
-        SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
-    }
-    else if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
-    {
-        for (i = 0; i < 6; i++)
+        if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
         {
-            j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
-            SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
-            j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
-            SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
-            j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
-            SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
-            j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
-            SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
-            j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
-            SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
-            j = STATUS1_NONE;
-            SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
+            PlayMapChosenOrBattleBGM(471);
         }
-        j = NATURE_TIMID;
-        SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_LONELY;
-        SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_NAIVE;
-        SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_RASH;
-        SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_BASHFUL;
-        SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
-        j = NATURE_JOLLY;
-        SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
-
-        j = ITEM_FOCUS_SASH;
-        SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_NORMAL_GEM;
-        SetMonData(&gEnemyParty[1], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_EJECT_PACK;
-        SetMonData(&gEnemyParty[2], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_WEAKNESS_POLICY;
-        SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_CHOICE_SPECS;
-        SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
-        j = ITEM_NORMAL_GEM;
-        SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
-    }
-    
-    CreateTask(Task_StartBattleAfterTransition, 1);
-    if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
-    {
-        PlayMapChosenOrBattleBGM(481);
-    }
-    if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
-    {
-        PlayMapChosenOrBattleBGM(471);
-    }
-    if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
-    {
-        PlayMapChosenOrBattleBGM(610);
-    }
+        if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
+        {
+            PlayMapChosenOrBattleBGM(610);
+        }
         BattleTransition_StartOnField(GetTrainerBattleTransition());
         break;
+    }
     }
 }
 

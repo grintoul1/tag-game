@@ -910,7 +910,6 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
     u16 monAbility, aiMove;
     u32 opposingBattler1 = BATTLE_PARTNER(GetOppositeBattler(battler));
     u32 opposingBattler2 = GetOppositeBattler(battler);
-    u32 opposingBattler = 0;
     u32 switchingmove = 0;
     u32 incomingMove = GetIncomingMove(battler, opposingBattler2, gAiLogicData);
     bool32 isOpposingBattlerChargingOrInvulnerable = (IsSemiInvulnerable(opposingBattler2, incomingMove) || IsTwoTurnNotSemiInvulnerableMove(opposingBattler2, incomingMove));
@@ -929,7 +928,6 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
                 {
                     if(GetMoveType(aiMove) != GetMoveType(switchingmove))
                     {
-                        opposingBattler = opposingBattler2;
                         switchingmove = aiMove;
                         k = k+1;
                     }
@@ -949,7 +947,6 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
                 {
                     if(GetMoveType(aiMove) != GetMoveType(switchingmove))
                     {
-                        opposingBattler = opposingBattler1;
                         switchingmove = aiMove;
                         k = k+1;
                     }
@@ -3030,6 +3027,886 @@ static inline bool32 CanSwitchinWin1v1(u32 hitsToKOAI, u32 hitsToKOPlayer, bool3
     return FALSE;
 }
 
+static u32 CustomGetBestMonIntegrated(struct Pokemon *party, s32 firstId, s32 lastId, u32 battler, u32 opposingBattler, u32 battlerIn1, u32 battlerIn2, enum SwitchType switchType)
+{
+    #ifndef NDEBUG
+        MgbaPrintf(MGBA_LOG_WARN, "CustomGetBestMonIntegrated");
+        s32 maxDamageDealtStored[PARTY_SIZE]={0};
+        const u8 * checkingPosition;
+        const u8 * partyMon=SPECIES_NONE;
+        const u8 * partyMonStored[PARTY_SIZE]={0};
+        const u8 * aiBestMove[PARTY_SIZE]={0};
+        s32 maxDamageDealtToAIStored[PARTY_SIZE]={0};
+        s32 percentageDealtStored[PARTY_SIZE]={0};
+        s32 percentageReceivedStored[PARTY_SIZE]={0};
+    #endif
+    u32 monId;
+    s32 i, j;
+    u32 bestMonId = PARTY_SIZE;
+    s32 switchInScores[PARTY_SIZE]={0};
+    u32 storeCurrBattlerPartyIndex = gBattlerPartyIndexes[battler];
+    gAiLogicData->aiCalcInProgress = TRUE;
+
+    #ifndef NDEBUG
+        checkingPosition=GetSpeciesName(gBattleMons[battler].species);
+        const u8 * lookingAt;
+        lookingAt=GetSpeciesName(gBattleMons[opposingBattler].species);
+    #endif
+
+    if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) || ((!(gBattleTypeFlags & BATTLE_TYPE_MULTI)) && (!(gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))))
+    {
+        for (monId = firstId; monId < lastId; monId++)
+        {
+            s32 maxDamageDealtToAI=0, damageReceived=0, percentageReceived=0, damageDealt=0, percentageDealt=0, maxDamageDealt=0; 
+            u32 aiMonSpecies=0;
+            u32 aiMonFaster=0;
+            u32 aiMove;
+            u32 opponentMove;
+            #ifndef NDEBUG
+                partyMon=SPECIES_NONE;
+                aiBestMove[monId]=0;
+            #endif
+            switchInScores[monId] = 0;
+            if (!IsValidForBattle(&party[monId])
+            || gBattlerPartyIndexes[battlerIn1] == monId
+            || gBattlerPartyIndexes[battlerIn2] == monId
+            || gBattleStruct->monToSwitchIntoId[battlerIn1] == monId
+            || gBattleStruct->monToSwitchIntoId[battlerIn2] == monId)
+                continue;
+
+            #ifndef NDEBUG
+                partyMon=GetSpeciesName(GetMonData(&party[monId],MON_DATA_SPECIES,NULL));
+                partyMonStored[monId]=partyMon;
+            #endif
+            gBattlerPartyIndexes[battler] = monId;
+            InitializeSwitchinCandidate(&party[monId]);
+            aiMonSpecies = GetMonData(&party[monId], MON_DATA_SPECIES, NULL);
+            gBattlerPartyIndexes[battler] = storeCurrBattlerPartyIndex;
+            aiMonFaster = (GetMonData(&party[monId],MON_DATA_SPEED,NULL) >= gBattleMons[opposingBattler].speed);
+
+            for (i = 0; i < MAX_MON_MOVES; i++)
+            {
+                aiMove = gAiLogicData->switchinCandidate.battleMon.moves[i];
+                if (aiMove != MOVE_NONE)
+                {
+                    // Only check damage if it's a damaging move
+                    if (!IsBattleMoveStatus(aiMove))
+                    {
+                        damageDealt = AI_CalcPartyMonDamage(aiMove, monId, opposingBattler, gAiLogicData->switchinCandidate.battleMon, AI_ATTACKING);
+                        if (damageDealt > maxDamageDealt && !AI_DoesChoiceItemBlockMove(opposingBattler, aiMove))
+                        {
+                            maxDamageDealt = damageDealt;
+                            percentageDealt = ((maxDamageDealt*1000) / gBattleMons[opposingBattler].hp);
+                            #ifndef NDEBUG
+                                percentageDealtStored[monId]=percentageDealt;
+                                maxDamageDealtStored[monId]=maxDamageDealt;
+                                aiBestMove[monId]=GetMoveName(GetMonData(&party[monId], MON_DATA_MOVE1 + i,NULL));
+                            #endif
+                        }
+                    }
+                }
+            }
+
+            for (j = 0; j < MAX_MON_MOVES; j++)
+            {
+                damageReceived=0;
+                opponentMove = gBattleMons[opposingBattler].moves[j];
+                if (opponentMove != MOVE_NONE)
+                {
+                    // Only check damage if it's a damaging move
+                    if (!IsBattleMoveStatus(opponentMove))
+                    {
+                        damageReceived = AI_CalcPartyMonDamage(opponentMove, opposingBattler, monId, gAiLogicData->switchinCandidate.battleMon, AI_DEFENDING);
+                        if (damageReceived > maxDamageDealtToAI)
+                        {
+                            maxDamageDealtToAI = damageReceived;
+                            percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&party[monId],MON_DATA_HP,NULL));
+                            #ifndef NDEBUG
+                                percentageReceivedStored[monId]= percentageReceived;
+                                maxDamageDealtToAIStored[monId] = maxDamageDealtToAI;
+                            #endif
+                        }
+                    }
+                }
+            }
+
+            if(aiMonSpecies == SPECIES_DITTO)
+                switchInScores[monId] = 4;
+            else if((maxDamageDealtToAI >= GetMonData(&party[monId],MON_DATA_HP,NULL)) && aiMonFaster != TRUE && ((!((GetMonData(&party[monId],MON_DATA_HP,NULL) == GetMonData(&party[monId],MON_DATA_MAX_HP,NULL)) && ((GetMonData(&party[monId],MON_DATA_HELD_ITEM,NULL) == ITEM_FOCUS_SASH) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_STURDY))) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_DISGUISE))))
+                switchInScores[monId] = 1;
+            else if(aiMonSpecies == SPECIES_WOBBUFFET && aiMonFaster == TRUE)
+                switchInScores[monId] = 5;
+            else if(aiMonSpecies == SPECIES_WOBBUFFET)
+                switchInScores[monId] = 4;
+            else if((maxDamageDealt >= gBattleMons[opposingBattler].hp) && aiMonFaster == TRUE && (!((gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP) && ((gBattleMons[opposingBattler].item == ITEM_FOCUS_SASH) || (gBattleMons[opposingBattler].ability == ABILITY_STURDY))) || (gBattleMons[opposingBattler].ability == ABILITY_DISGUISE)))
+                switchInScores[monId] = 7;
+            else if((maxDamageDealt >= gBattleMons[opposingBattler].hp) && aiMonFaster != TRUE && (!((gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP) && ((gBattleMons[opposingBattler].item == ITEM_FOCUS_SASH) || (gBattleMons[opposingBattler].ability == ABILITY_STURDY))) || (gBattleMons[opposingBattler].ability == ABILITY_DISGUISE)))
+                switchInScores[monId] = 6;
+            else if((percentageDealt >= percentageReceived) && aiMonFaster == TRUE)
+                switchInScores[monId] = 5;
+            else if((percentageDealt >= percentageReceived) && aiMonFaster != TRUE)
+                switchInScores[monId] = 4;
+            else if(aiMonFaster == TRUE)
+                switchInScores[monId] = 3;
+            else 
+                switchInScores[monId] = 2;
+        }
+
+        u32 bestSwitchInScore = 0;
+        for (monId = firstId; monId < lastId; monId++)
+        {
+            if (switchInScores[monId] == 0)
+                continue;
+
+            if (switchInScores[monId] > bestSwitchInScore)
+            {
+                bestSwitchInScore = switchInScores[monId];
+                bestMonId = monId;
+            }
+        }
+
+        gAiLogicData->aiCalcInProgress = FALSE;
+
+        #ifndef NDEBUG
+            MgbaPrintf(MGBA_LOG_WARN, "mon looking %S", checkingPosition);
+            MgbaPrintf(MGBA_LOG_WARN, "mon looking at %S", lookingAt);
+            if(switchInScores[0]!=0)
+            {
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 0 mon%S", partyMonStored[0]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 0 score%d", switchInScores[0]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 0 best move%S", aiBestMove[0]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 0 deals%d", maxDamageDealtStored[0]);
+                MgbaPrintf(MGBA_LOG_WARN, "percentage slot 0 deals%d", percentageDealtStored[0]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 0 takes%d", maxDamageDealtToAIStored[0]);
+                MgbaPrintf(MGBA_LOG_WARN, "percentage slot 0 takes%d", percentageReceivedStored[0]);
+            }
+            if(switchInScores[1]!=0)
+            {
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 1 mon%S", partyMonStored[1]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 1 score%d", switchInScores[1]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 1 best move%S", aiBestMove[1]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 1 deals%d", maxDamageDealtStored[1]);
+                MgbaPrintf(MGBA_LOG_WARN, "percentage slot 1 deals%d", percentageDealtStored[1]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 1 takes%d", maxDamageDealtToAIStored[1]);
+                MgbaPrintf(MGBA_LOG_WARN, "percentage slot 1 takes%d", percentageReceivedStored[1]);
+            }
+            if(switchInScores[2]!=0)
+            {
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 2 mon%S", partyMonStored[2]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 2 score%d", switchInScores[2]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 2 best move%S", aiBestMove[2]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 2 deals%d", maxDamageDealtStored[2]);
+                MgbaPrintf(MGBA_LOG_WARN, "percentage slot 2 deals%d", percentageDealtStored[2]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 2 takes%d", maxDamageDealtToAIStored[2]);
+                MgbaPrintf(MGBA_LOG_WARN, "percentage slot 2 takes%d", percentageReceivedStored[2]);
+            }
+            if(switchInScores[3]!=0)
+            {
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 3 mon%S", partyMonStored[3]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 3 score%d", switchInScores[3]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 3 best move%S", aiBestMove[3]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 3 deals%d", maxDamageDealtStored[3]);
+                MgbaPrintf(MGBA_LOG_WARN, "percentage slot 3 deals%d", percentageDealtStored[3]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 3 takes%d", maxDamageDealtToAIStored[3]);
+                MgbaPrintf(MGBA_LOG_WARN, "percentage slot 3 takes%d", percentageReceivedStored[3]);
+            }
+            if(switchInScores[4]!=0)
+            {
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 4 mon%S", partyMonStored[4]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 4 score%d", switchInScores[4]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 4 best move%S", aiBestMove[4]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 4 deals%d", maxDamageDealtStored[4]);
+                MgbaPrintf(MGBA_LOG_WARN, "percentage slot 4 deals%d", percentageDealtStored[4]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 4 takes%d", maxDamageDealtToAIStored[4]);
+                MgbaPrintf(MGBA_LOG_WARN, "percentage slot 4 takes%d", percentageReceivedStored[4]);
+            }
+            if(switchInScores[5]!=0)
+            {
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 5 mon%S", partyMonStored[5]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 5 score%d", switchInScores[5]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 5 best move%S", aiBestMove[5]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 5 deals%d", maxDamageDealtStored[5]);
+                MgbaPrintf(MGBA_LOG_WARN, "percentage slot 5 deals%d", percentageDealtStored[5]);
+                MgbaPrintf(MGBA_LOG_WARN, "party slot 5 takes%d", maxDamageDealtToAIStored[5]);
+                MgbaPrintf(MGBA_LOG_WARN, "percentage slot 5 takes%d", percentageReceivedStored[5]);
+            }
+        #endif
+
+        return bestMonId;
+    }
+    else if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+    {
+        if(gBattlerPositions[battler] == B_POSITION_PLAYER_RIGHT)
+        {
+            for (monId = 3; monId < 6; monId++)
+            {
+                s32 maxDamageDealtToAI=0, damageReceived=0, percentageReceived=0, damageDealt=0, percentageDealt=0, maxDamageDealt=0; 
+                u32 aiMonSpecies=0;
+                u32 aiMonFaster=0;
+                u32 aiMove;
+                u32 opponentMove;
+                #ifndef NDEBUG
+                    partyMon=SPECIES_NONE;
+                    aiBestMove[monId]=0;
+                #endif
+                switchInScores[monId] = 0;
+                if (!IsValidForBattle(&party[monId])
+                || gBattlerPartyIndexes[battlerIn1] == monId
+                || gBattlerPartyIndexes[battlerIn2] == monId
+                || gBattleStruct->monToSwitchIntoId[battlerIn1] == monId
+                || gBattleStruct->monToSwitchIntoId[battlerIn2] == monId)
+                    continue;
+
+                #ifndef NDEBUG
+                    partyMon=GetSpeciesName(GetMonData(&party[monId],MON_DATA_SPECIES,NULL));
+                    partyMonStored[monId]=partyMon;
+                #endif
+                gBattlerPartyIndexes[battler] = monId;
+                InitializeSwitchinCandidate(&party[monId]);
+                aiMonSpecies = GetMonData(&party[monId], MON_DATA_SPECIES, NULL);
+                gBattlerPartyIndexes[battler] = storeCurrBattlerPartyIndex;
+                aiMonFaster = (GetMonData(&party[monId],MON_DATA_SPEED,NULL) >= gBattleMons[opposingBattler].speed);
+
+                for (i = 0; i < MAX_MON_MOVES; i++)
+                {
+                    aiMove = gAiLogicData->switchinCandidate.battleMon.moves[i];
+                    if (aiMove != MOVE_NONE)
+                    {
+                        // Only check damage if it's a damaging move
+                        if (!IsBattleMoveStatus(aiMove))
+                        {
+                            damageDealt = AI_CalcPartyMonDamage(aiMove, monId, opposingBattler, gAiLogicData->switchinCandidate.battleMon, AI_ATTACKING);
+                            if (damageDealt > maxDamageDealt && !AI_DoesChoiceItemBlockMove(opposingBattler, aiMove))
+                            {
+                                maxDamageDealt = damageDealt;
+                                percentageDealt = ((maxDamageDealt*1000) / gBattleMons[opposingBattler].hp);
+                                #ifndef NDEBUG
+                                    percentageDealtStored[monId]=percentageDealt;
+                                    maxDamageDealtStored[monId]=maxDamageDealt;
+                                    aiBestMove[monId]=GetMoveName(GetMonData(&party[monId], MON_DATA_MOVE1 + i,NULL));
+                                #endif
+                            }
+                        }
+                    }
+                }
+
+                for (j = 0; j < MAX_MON_MOVES; j++)
+                {
+                    damageReceived=0;
+                    opponentMove = gBattleMons[opposingBattler].moves[j];
+                    if (opponentMove != MOVE_NONE)
+                    {
+                        // Only check damage if it's a damaging move
+                        if (!IsBattleMoveStatus(opponentMove))
+                        {
+                            damageReceived = AI_CalcPartyMonDamage(opponentMove, opposingBattler, monId, gAiLogicData->switchinCandidate.battleMon, AI_DEFENDING);
+                            if (damageReceived > maxDamageDealtToAI)
+                            {
+                                maxDamageDealtToAI = damageReceived;
+                                percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&party[monId],MON_DATA_HP,NULL));
+                                #ifndef NDEBUG
+                                    percentageReceivedStored[monId]= percentageReceived;
+                                    maxDamageDealtToAIStored[monId] = maxDamageDealtToAI;
+                                #endif
+                            }
+                        }
+                    }
+                }
+
+                if(aiMonSpecies == SPECIES_DITTO)
+                    switchInScores[monId] = 4;
+                else if((maxDamageDealtToAI >= GetMonData(&party[monId],MON_DATA_HP,NULL)) && aiMonFaster != TRUE && ((!((GetMonData(&party[monId],MON_DATA_HP,NULL) == GetMonData(&party[monId],MON_DATA_MAX_HP,NULL)) && ((GetMonData(&party[monId],MON_DATA_HELD_ITEM,NULL) == ITEM_FOCUS_SASH) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_STURDY))) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_DISGUISE))))
+                    switchInScores[monId] = 1;
+                else if(aiMonSpecies == SPECIES_WOBBUFFET && aiMonFaster == TRUE)
+                    switchInScores[monId] = 5;
+                else if(aiMonSpecies == SPECIES_WOBBUFFET)
+                    switchInScores[monId] = 4;
+                else if((maxDamageDealt >= gBattleMons[opposingBattler].hp) && aiMonFaster == TRUE && (!((gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP) && ((gBattleMons[opposingBattler].item == ITEM_FOCUS_SASH) || (gBattleMons[opposingBattler].ability == ABILITY_STURDY))) || (gBattleMons[opposingBattler].ability == ABILITY_DISGUISE)))
+                    switchInScores[monId] = 7;
+                else if((maxDamageDealt >= gBattleMons[opposingBattler].hp) && aiMonFaster != TRUE && (!((gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP) && ((gBattleMons[opposingBattler].item == ITEM_FOCUS_SASH) || (gBattleMons[opposingBattler].ability == ABILITY_STURDY))) || (gBattleMons[opposingBattler].ability == ABILITY_DISGUISE)))
+                    switchInScores[monId] = 6;
+                else if((percentageDealt >= percentageReceived) && aiMonFaster == TRUE)
+                    switchInScores[monId] = 5;
+                else if((percentageDealt >= percentageReceived) && aiMonFaster != TRUE)
+                    switchInScores[monId] = 4;
+                else if(aiMonFaster == TRUE)
+                    switchInScores[monId] = 3;
+                else 
+                    switchInScores[monId] = 2;
+            }
+
+            u32 bestSwitchInScore = 0;
+            for (monId = firstId; monId < lastId; monId++)
+            {
+                if (switchInScores[monId] == 0)
+                    continue;
+
+                if (switchInScores[monId] > bestSwitchInScore)
+                {
+                    bestSwitchInScore = switchInScores[monId];
+                    bestMonId = monId;
+                }
+            }
+
+            gAiLogicData->aiCalcInProgress = FALSE;
+
+            #ifndef NDEBUG
+                MgbaPrintf(MGBA_LOG_WARN, "mon looking %S", checkingPosition);
+                MgbaPrintf(MGBA_LOG_WARN, "mon looking at %S", lookingAt);
+                if(switchInScores[0]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 mon%S", partyMonStored[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 score%d", switchInScores[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 best move%S", aiBestMove[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 deals%d", maxDamageDealtStored[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 0 deals%d", percentageDealtStored[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 takes%d", maxDamageDealtToAIStored[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 0 takes%d", percentageReceivedStored[0]);
+                }
+                if(switchInScores[1]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 mon%S", partyMonStored[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 score%d", switchInScores[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 best move%S", aiBestMove[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 deals%d", maxDamageDealtStored[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 1 deals%d", percentageDealtStored[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 takes%d", maxDamageDealtToAIStored[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 1 takes%d", percentageReceivedStored[1]);
+                }
+                if(switchInScores[2]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 mon%S", partyMonStored[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 score%d", switchInScores[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 best move%S", aiBestMove[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 deals%d", maxDamageDealtStored[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 2 deals%d", percentageDealtStored[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 takes%d", maxDamageDealtToAIStored[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 2 takes%d", percentageReceivedStored[2]);
+                }
+                if(switchInScores[3]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 mon%S", partyMonStored[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 score%d", switchInScores[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 best move%S", aiBestMove[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 deals%d", maxDamageDealtStored[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 3 deals%d", percentageDealtStored[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 takes%d", maxDamageDealtToAIStored[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 3 takes%d", percentageReceivedStored[3]);
+                }
+                if(switchInScores[4]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 mon%S", partyMonStored[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 score%d", switchInScores[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 best move%S", aiBestMove[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 deals%d", maxDamageDealtStored[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 4 deals%d", percentageDealtStored[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 takes%d", maxDamageDealtToAIStored[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 4 takes%d", percentageReceivedStored[4]);
+                }
+                if(switchInScores[5]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 mon%S", partyMonStored[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 score%d", switchInScores[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 best move%S", aiBestMove[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 deals%d", maxDamageDealtStored[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 5 deals%d", percentageDealtStored[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 takes%d", maxDamageDealtToAIStored[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 5 takes%d", percentageReceivedStored[5]);
+                }
+            #endif
+
+            return bestMonId;
+        }
+        else if((gBattlerPositions[battler] == B_POSITION_OPPONENT_LEFT) && (!(gBattleTypeFlags & BATTLE_TWO_VS_ONE_OPPONENT)))
+        {
+            for (monId = 0; monId < 3; monId++)
+            {
+                s32 maxDamageDealtToAI=0, damageReceived=0, percentageReceived=0, damageDealt=0, percentageDealt=0, maxDamageDealt=0; 
+                u32 aiMonSpecies=0;
+                u32 aiMonFaster=0;
+                u32 aiMove;
+                u32 opponentMove;
+                #ifndef NDEBUG
+                    partyMon=SPECIES_NONE;
+                    aiBestMove[monId]=0;
+                #endif
+                switchInScores[monId] = 0;
+                if (!IsValidForBattle(&party[monId])
+                || gBattlerPartyIndexes[battlerIn1] == monId
+                || gBattlerPartyIndexes[battlerIn2] == monId
+                || gBattleStruct->monToSwitchIntoId[battlerIn1] == monId
+                || gBattleStruct->monToSwitchIntoId[battlerIn2] == monId)
+                    continue;
+
+                #ifndef NDEBUG
+                    partyMon=GetSpeciesName(GetMonData(&party[monId],MON_DATA_SPECIES,NULL));
+                    partyMonStored[monId]=partyMon;
+                #endif
+                gBattlerPartyIndexes[battler] = monId;
+                InitializeSwitchinCandidate(&party[monId]);
+                aiMonSpecies = GetMonData(&party[monId], MON_DATA_SPECIES, NULL);
+                gBattlerPartyIndexes[battler] = storeCurrBattlerPartyIndex;
+                aiMonFaster = (GetMonData(&party[monId],MON_DATA_SPEED,NULL) >= gBattleMons[opposingBattler].speed);
+
+                for (i = 0; i < MAX_MON_MOVES; i++)
+                {
+                    aiMove = gAiLogicData->switchinCandidate.battleMon.moves[i];
+                    if (aiMove != MOVE_NONE)
+                    {
+                        // Only check damage if it's a damaging move
+                        if (!IsBattleMoveStatus(aiMove))
+                        {
+                            damageDealt = AI_CalcPartyMonDamage(aiMove, monId, opposingBattler, gAiLogicData->switchinCandidate.battleMon, AI_ATTACKING);
+                            if (damageDealt > maxDamageDealt && !AI_DoesChoiceItemBlockMove(opposingBattler, aiMove))
+                            {
+                                maxDamageDealt = damageDealt;
+                                percentageDealt = ((maxDamageDealt*1000) / gBattleMons[opposingBattler].hp);
+                                #ifndef NDEBUG
+                                    percentageDealtStored[monId]=percentageDealt;
+                                    maxDamageDealtStored[monId]=maxDamageDealt;
+                                    aiBestMove[monId]=GetMoveName(GetMonData(&party[monId], MON_DATA_MOVE1 + i,NULL));
+                                #endif
+                            }
+                        }
+                    }
+                }
+
+                for (j = 0; j < MAX_MON_MOVES; j++)
+                {
+                    damageReceived=0;
+                    opponentMove = gBattleMons[opposingBattler].moves[j];
+                    if (opponentMove != MOVE_NONE)
+                    {
+                        // Only check damage if it's a damaging move
+                        if (!IsBattleMoveStatus(opponentMove))
+                        {
+                            damageReceived = AI_CalcPartyMonDamage(opponentMove, opposingBattler, monId, gAiLogicData->switchinCandidate.battleMon, AI_DEFENDING);
+                            if (damageReceived > maxDamageDealtToAI)
+                            {
+                                maxDamageDealtToAI = damageReceived;
+                                percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&party[monId],MON_DATA_HP,NULL));
+                                #ifndef NDEBUG
+                                    percentageReceivedStored[monId]= percentageReceived;
+                                    maxDamageDealtToAIStored[monId] = maxDamageDealtToAI;
+                                #endif
+                            }
+                        }
+                    }
+                }
+
+                if(aiMonSpecies == SPECIES_DITTO)
+                    switchInScores[monId] = 4;
+                else if((maxDamageDealtToAI >= GetMonData(&party[monId],MON_DATA_HP,NULL)) && aiMonFaster != TRUE && ((!((GetMonData(&party[monId],MON_DATA_HP,NULL) == GetMonData(&party[monId],MON_DATA_MAX_HP,NULL)) && ((GetMonData(&party[monId],MON_DATA_HELD_ITEM,NULL) == ITEM_FOCUS_SASH) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_STURDY))) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_DISGUISE))))
+                    switchInScores[monId] = 1;
+                else if(aiMonSpecies == SPECIES_WOBBUFFET && aiMonFaster == TRUE)
+                    switchInScores[monId] = 5;
+                else if(aiMonSpecies == SPECIES_WOBBUFFET)
+                    switchInScores[monId] = 4;
+                else if((maxDamageDealt >= gBattleMons[opposingBattler].hp) && aiMonFaster == TRUE && (!((gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP) && ((gBattleMons[opposingBattler].item == ITEM_FOCUS_SASH) || (gBattleMons[opposingBattler].ability == ABILITY_STURDY))) || (gBattleMons[opposingBattler].ability == ABILITY_DISGUISE)))
+                    switchInScores[monId] = 7;
+                else if((maxDamageDealt >= gBattleMons[opposingBattler].hp) && aiMonFaster != TRUE && (!((gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP) && ((gBattleMons[opposingBattler].item == ITEM_FOCUS_SASH) || (gBattleMons[opposingBattler].ability == ABILITY_STURDY))) || (gBattleMons[opposingBattler].ability == ABILITY_DISGUISE)))
+                    switchInScores[monId] = 6;
+                else if((percentageDealt >= percentageReceived) && aiMonFaster == TRUE)
+                    switchInScores[monId] = 5;
+                else if((percentageDealt >= percentageReceived) && aiMonFaster != TRUE)
+                    switchInScores[monId] = 4;
+                else if(aiMonFaster == TRUE)
+                    switchInScores[monId] = 3;
+                else 
+                    switchInScores[monId] = 2;
+            }
+
+            u32 bestSwitchInScore = 0;
+            for (monId = firstId; monId < lastId; monId++)
+            {
+                if (switchInScores[monId] == 0)
+                    continue;
+
+                if (switchInScores[monId] > bestSwitchInScore)
+                {
+                    bestSwitchInScore = switchInScores[monId];
+                    bestMonId = monId;
+                }
+            }
+
+            gAiLogicData->aiCalcInProgress = FALSE;
+
+            #ifndef NDEBUG
+                MgbaPrintf(MGBA_LOG_WARN, "mon looking %S", checkingPosition);
+                MgbaPrintf(MGBA_LOG_WARN, "mon looking at %S", lookingAt);
+                if(switchInScores[0]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 mon%S", partyMonStored[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 score%d", switchInScores[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 best move%S", aiBestMove[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 deals%d", maxDamageDealtStored[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 0 deals%d", percentageDealtStored[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 takes%d", maxDamageDealtToAIStored[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 0 takes%d", percentageReceivedStored[0]);
+                }
+                if(switchInScores[1]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 mon%S", partyMonStored[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 score%d", switchInScores[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 best move%S", aiBestMove[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 deals%d", maxDamageDealtStored[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 1 deals%d", percentageDealtStored[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 takes%d", maxDamageDealtToAIStored[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 1 takes%d", percentageReceivedStored[1]);
+                }
+                if(switchInScores[2]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 mon%S", partyMonStored[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 score%d", switchInScores[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 best move%S", aiBestMove[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 deals%d", maxDamageDealtStored[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 2 deals%d", percentageDealtStored[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 takes%d", maxDamageDealtToAIStored[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 2 takes%d", percentageReceivedStored[2]);
+                }
+            #endif
+
+            return bestMonId;
+        }
+        else if((gBattlerPositions[battler] == B_POSITION_OPPONENT_RIGHT) && (!(gBattleTypeFlags & BATTLE_TWO_VS_ONE_OPPONENT)))
+        {
+            for (monId = 3; monId < 6; monId++)
+            {
+                s32 maxDamageDealtToAI=0, damageReceived=0, percentageReceived=0, damageDealt=0, percentageDealt=0, maxDamageDealt=0; 
+                u32 aiMonSpecies=0;
+                u32 aiMonFaster=0;
+                u32 aiMove;
+                u32 opponentMove;
+                #ifndef NDEBUG
+                    partyMon=SPECIES_NONE;
+                    aiBestMove[monId]=0;
+                #endif
+                switchInScores[monId] = 0;
+                if (!IsValidForBattle(&party[monId])
+                || gBattlerPartyIndexes[battlerIn1] == monId
+                || gBattlerPartyIndexes[battlerIn2] == monId
+                || gBattleStruct->monToSwitchIntoId[battlerIn1] == monId
+                || gBattleStruct->monToSwitchIntoId[battlerIn2] == monId)
+                    continue;
+
+                #ifndef NDEBUG
+                    partyMon=GetSpeciesName(GetMonData(&party[monId],MON_DATA_SPECIES,NULL));
+                    partyMonStored[monId]=partyMon;
+                #endif
+                gBattlerPartyIndexes[battler] = monId;
+                InitializeSwitchinCandidate(&party[monId]);
+                aiMonSpecies = GetMonData(&party[monId], MON_DATA_SPECIES, NULL);
+                gBattlerPartyIndexes[battler] = storeCurrBattlerPartyIndex;
+                aiMonFaster = (GetMonData(&party[monId],MON_DATA_SPEED,NULL) >= gBattleMons[opposingBattler].speed);
+
+                for (i = 0; i < MAX_MON_MOVES; i++)
+                {
+                    aiMove = gAiLogicData->switchinCandidate.battleMon.moves[i];
+                    if (aiMove != MOVE_NONE)
+                    {
+                        // Only check damage if it's a damaging move
+                        if (!IsBattleMoveStatus(aiMove))
+                        {
+                            damageDealt = AI_CalcPartyMonDamage(aiMove, monId, opposingBattler, gAiLogicData->switchinCandidate.battleMon, AI_ATTACKING);
+                            if (damageDealt > maxDamageDealt && !AI_DoesChoiceItemBlockMove(opposingBattler, aiMove))
+                            {
+                                maxDamageDealt = damageDealt;
+                                percentageDealt = ((maxDamageDealt*1000) / gBattleMons[opposingBattler].hp);
+                                #ifndef NDEBUG
+                                    percentageDealtStored[monId]=percentageDealt;
+                                    maxDamageDealtStored[monId]=maxDamageDealt;
+                                    aiBestMove[monId]=GetMoveName(GetMonData(&party[monId], MON_DATA_MOVE1 + i,NULL));
+                                #endif
+                            }
+                        }
+                    }
+                }
+
+                for (j = 0; j < MAX_MON_MOVES; j++)
+                {
+                    damageReceived=0;
+                    opponentMove = gBattleMons[opposingBattler].moves[j];
+                    if (opponentMove != MOVE_NONE)
+                    {
+                        // Only check damage if it's a damaging move
+                        if (!IsBattleMoveStatus(opponentMove))
+                        {
+                            damageReceived = AI_CalcPartyMonDamage(opponentMove, opposingBattler, monId, gAiLogicData->switchinCandidate.battleMon, AI_DEFENDING);
+                            if (damageReceived > maxDamageDealtToAI)
+                            {
+                                maxDamageDealtToAI = damageReceived;
+                                percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&party[monId],MON_DATA_HP,NULL));
+                                #ifndef NDEBUG
+                                    percentageReceivedStored[monId]= percentageReceived;
+                                    maxDamageDealtToAIStored[monId] = maxDamageDealtToAI;
+                                #endif
+                            }
+                        }
+                    }
+                }
+
+                if(aiMonSpecies == SPECIES_DITTO)
+                    switchInScores[monId] = 4;
+                else if((maxDamageDealtToAI >= GetMonData(&party[monId],MON_DATA_HP,NULL)) && aiMonFaster != TRUE && ((!((GetMonData(&party[monId],MON_DATA_HP,NULL) == GetMonData(&party[monId],MON_DATA_MAX_HP,NULL)) && ((GetMonData(&party[monId],MON_DATA_HELD_ITEM,NULL) == ITEM_FOCUS_SASH) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_STURDY))) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_DISGUISE))))
+                    switchInScores[monId] = 1;
+                else if(aiMonSpecies == SPECIES_WOBBUFFET && aiMonFaster == TRUE)
+                    switchInScores[monId] = 5;
+                else if(aiMonSpecies == SPECIES_WOBBUFFET)
+                    switchInScores[monId] = 4;
+                else if((maxDamageDealt >= gBattleMons[opposingBattler].hp) && aiMonFaster == TRUE && (!((gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP) && ((gBattleMons[opposingBattler].item == ITEM_FOCUS_SASH) || (gBattleMons[opposingBattler].ability == ABILITY_STURDY))) || (gBattleMons[opposingBattler].ability == ABILITY_DISGUISE)))
+                    switchInScores[monId] = 7;
+                else if((maxDamageDealt >= gBattleMons[opposingBattler].hp) && aiMonFaster != TRUE && (!((gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP) && ((gBattleMons[opposingBattler].item == ITEM_FOCUS_SASH) || (gBattleMons[opposingBattler].ability == ABILITY_STURDY))) || (gBattleMons[opposingBattler].ability == ABILITY_DISGUISE)))
+                    switchInScores[monId] = 6;
+                else if((percentageDealt >= percentageReceived) && aiMonFaster == TRUE)
+                    switchInScores[monId] = 5;
+                else if((percentageDealt >= percentageReceived) && aiMonFaster != TRUE)
+                    switchInScores[monId] = 4;
+                else if(aiMonFaster == TRUE)
+                    switchInScores[monId] = 3;
+                else 
+                    switchInScores[monId] = 2;
+            }
+
+            u32 bestSwitchInScore = 0;
+            for (monId = firstId; monId < lastId; monId++)
+            {
+                if (switchInScores[monId] == 0)
+                    continue;
+
+                if (switchInScores[monId] > bestSwitchInScore)
+                {
+                    bestSwitchInScore = switchInScores[monId];
+                    bestMonId = monId;
+                }
+            }
+
+            gAiLogicData->aiCalcInProgress = FALSE;
+
+            #ifndef NDEBUG
+                MgbaPrintf(MGBA_LOG_WARN, "mon looking %S", checkingPosition);
+                MgbaPrintf(MGBA_LOG_WARN, "mon looking at %S", lookingAt);
+                if(switchInScores[3]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 mon%S", partyMonStored[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 score%d", switchInScores[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 best move%S", aiBestMove[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 deals%d", maxDamageDealtStored[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 3 deals%d", percentageDealtStored[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 takes%d", maxDamageDealtToAIStored[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 3 takes%d", percentageReceivedStored[3]);
+                }
+                if(switchInScores[4]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 mon%S", partyMonStored[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 score%d", switchInScores[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 best move%S", aiBestMove[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 deals%d", maxDamageDealtStored[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 4 deals%d", percentageDealtStored[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 takes%d", maxDamageDealtToAIStored[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 4 takes%d", percentageReceivedStored[4]);
+                }
+                if(switchInScores[5]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 mon%S", partyMonStored[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 score%d", switchInScores[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 best move%S", aiBestMove[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 deals%d", maxDamageDealtStored[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 5 deals%d", percentageDealtStored[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 takes%d", maxDamageDealtToAIStored[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 5 takes%d", percentageReceivedStored[5]);
+                }
+            #endif
+
+            return bestMonId;
+        }
+        else if((gBattleTypeFlags & BATTLE_TWO_VS_ONE_OPPONENT) && ((gBattlerPositions[battler] == B_POSITION_OPPONENT_RIGHT) || (gBattlerPositions[battler] == B_POSITION_OPPONENT_LEFT)))
+        {
+            for (monId = 0; monId < 6; monId++)
+            {
+                s32 maxDamageDealtToAI=0, damageReceived=0, percentageReceived=0, damageDealt=0, percentageDealt=0, maxDamageDealt=0; 
+                u32 aiMonSpecies=0;
+                u32 aiMonFaster=0;
+                u32 aiMove;
+                u32 opponentMove;
+                #ifndef NDEBUG
+                    partyMon=SPECIES_NONE;
+                    aiBestMove[monId]=0;
+                #endif
+                switchInScores[monId] = 0;
+                if (!IsValidForBattle(&party[monId])
+                || gBattlerPartyIndexes[battlerIn1] == monId
+                || gBattlerPartyIndexes[battlerIn2] == monId
+                || gBattleStruct->monToSwitchIntoId[battlerIn1] == monId
+                || gBattleStruct->monToSwitchIntoId[battlerIn2] == monId)
+                    continue;
+
+                #ifndef NDEBUG
+                    partyMon=GetSpeciesName(GetMonData(&party[monId],MON_DATA_SPECIES,NULL));
+                    partyMonStored[monId]=partyMon;
+                #endif
+                gBattlerPartyIndexes[battler] = monId;
+                InitializeSwitchinCandidate(&party[monId]);
+                aiMonSpecies = GetMonData(&party[monId], MON_DATA_SPECIES, NULL);
+                gBattlerPartyIndexes[battler] = storeCurrBattlerPartyIndex;
+                aiMonFaster = (GetMonData(&party[monId],MON_DATA_SPEED,NULL) >= gBattleMons[opposingBattler].speed);
+
+                for (i = 0; i < MAX_MON_MOVES; i++)
+                {
+                    aiMove = gAiLogicData->switchinCandidate.battleMon.moves[i];
+                    if (aiMove != MOVE_NONE)
+                    {
+                        // Only check damage if it's a damaging move
+                        if (!IsBattleMoveStatus(aiMove))
+                        {
+                            damageDealt = AI_CalcPartyMonDamage(aiMove, monId, opposingBattler, gAiLogicData->switchinCandidate.battleMon, AI_ATTACKING);
+                            if (damageDealt > maxDamageDealt && !AI_DoesChoiceItemBlockMove(opposingBattler, aiMove))
+                            {
+                                maxDamageDealt = damageDealt;
+                                percentageDealt = ((maxDamageDealt*1000) / gBattleMons[opposingBattler].hp);
+                                #ifndef NDEBUG
+                                    percentageDealtStored[monId]=percentageDealt;
+                                    maxDamageDealtStored[monId]=maxDamageDealt;
+                                    aiBestMove[monId]=GetMoveName(GetMonData(&party[monId], MON_DATA_MOVE1 + i,NULL));
+                                #endif
+                            }
+                        }
+                    }
+                }
+
+                for (j = 0; j < MAX_MON_MOVES; j++)
+                {
+                    damageReceived=0;
+                    opponentMove = gBattleMons[opposingBattler].moves[j];
+                    if (opponentMove != MOVE_NONE)
+                    {
+                        // Only check damage if it's a damaging move
+                        if (!IsBattleMoveStatus(opponentMove))
+                        {
+                            damageReceived = AI_CalcPartyMonDamage(opponentMove, opposingBattler, monId, gAiLogicData->switchinCandidate.battleMon, AI_DEFENDING);
+                            if (damageReceived > maxDamageDealtToAI)
+                            {
+                                maxDamageDealtToAI = damageReceived;
+                                percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&party[monId],MON_DATA_HP,NULL));
+                                #ifndef NDEBUG
+                                    percentageReceivedStored[monId]= percentageReceived;
+                                    maxDamageDealtToAIStored[monId] = maxDamageDealtToAI;
+                                #endif
+                            }
+                        }
+                    }
+                }
+
+                if(aiMonSpecies == SPECIES_DITTO)
+                    switchInScores[monId] = 4;
+                else if((maxDamageDealtToAI >= GetMonData(&party[monId],MON_DATA_HP,NULL)) && aiMonFaster != TRUE && ((!((GetMonData(&party[monId],MON_DATA_HP,NULL) == GetMonData(&party[monId],MON_DATA_MAX_HP,NULL)) && ((GetMonData(&party[monId],MON_DATA_HELD_ITEM,NULL) == ITEM_FOCUS_SASH) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_STURDY))) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_DISGUISE))))
+                    switchInScores[monId] = 1;
+                else if(aiMonSpecies == SPECIES_WOBBUFFET && aiMonFaster == TRUE)
+                    switchInScores[monId] = 5;
+                else if(aiMonSpecies == SPECIES_WOBBUFFET)
+                    switchInScores[monId] = 4;
+                else if((maxDamageDealt >= gBattleMons[opposingBattler].hp) && aiMonFaster == TRUE && (!((gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP) && ((gBattleMons[opposingBattler].item == ITEM_FOCUS_SASH) || (gBattleMons[opposingBattler].ability == ABILITY_STURDY))) || (gBattleMons[opposingBattler].ability == ABILITY_DISGUISE)))
+                    switchInScores[monId] = 7;
+                else if((maxDamageDealt >= gBattleMons[opposingBattler].hp) && aiMonFaster != TRUE && (!((gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP) && ((gBattleMons[opposingBattler].item == ITEM_FOCUS_SASH) || (gBattleMons[opposingBattler].ability == ABILITY_STURDY))) || (gBattleMons[opposingBattler].ability == ABILITY_DISGUISE)))
+                    switchInScores[monId] = 6;
+                else if((percentageDealt >= percentageReceived) && aiMonFaster == TRUE)
+                    switchInScores[monId] = 5;
+                else if((percentageDealt >= percentageReceived) && aiMonFaster != TRUE)
+                    switchInScores[monId] = 4;
+                else if(aiMonFaster == TRUE)
+                    switchInScores[monId] = 3;
+                else 
+                    switchInScores[monId] = 2;
+            }
+
+            u32 bestSwitchInScore = 0;
+            for (monId = firstId; monId < lastId; monId++)
+            {
+                if (switchInScores[monId] == 0)
+                    continue;
+
+                if (switchInScores[monId] > bestSwitchInScore)
+                {
+                    bestSwitchInScore = switchInScores[monId];
+                    bestMonId = monId;
+                }
+            }
+
+            gAiLogicData->aiCalcInProgress = FALSE;
+
+            #ifndef NDEBUG
+                MgbaPrintf(MGBA_LOG_WARN, "mon looking %S", checkingPosition);
+                MgbaPrintf(MGBA_LOG_WARN, "mon looking at %S", lookingAt);
+                if(switchInScores[0]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 mon%S", partyMonStored[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 score%d", switchInScores[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 best move%S", aiBestMove[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 deals%d", maxDamageDealtStored[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 0 deals%d", percentageDealtStored[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 0 takes%d", maxDamageDealtToAIStored[0]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 0 takes%d", percentageReceivedStored[0]);
+                }
+                if(switchInScores[1]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 mon%S", partyMonStored[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 score%d", switchInScores[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 best move%S", aiBestMove[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 deals%d", maxDamageDealtStored[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 1 deals%d", percentageDealtStored[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 1 takes%d", maxDamageDealtToAIStored[1]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 1 takes%d", percentageReceivedStored[1]);
+                }
+                if(switchInScores[2]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 mon%S", partyMonStored[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 score%d", switchInScores[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 best move%S", aiBestMove[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 deals%d", maxDamageDealtStored[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 2 deals%d", percentageDealtStored[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 2 takes%d", maxDamageDealtToAIStored[2]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 2 takes%d", percentageReceivedStored[2]);
+                }
+                if(switchInScores[3]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 mon%S", partyMonStored[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 score%d", switchInScores[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 best move%S", aiBestMove[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 deals%d", maxDamageDealtStored[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 3 deals%d", percentageDealtStored[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 3 takes%d", maxDamageDealtToAIStored[3]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 3 takes%d", percentageReceivedStored[3]);
+                }
+                if(switchInScores[4]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 mon%S", partyMonStored[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 score%d", switchInScores[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 best move%S", aiBestMove[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 deals%d", maxDamageDealtStored[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 4 deals%d", percentageDealtStored[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 4 takes%d", maxDamageDealtToAIStored[4]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 4 takes%d", percentageReceivedStored[4]);
+                }
+                if(switchInScores[5]!=0)
+                {
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 mon%S", partyMonStored[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 score%d", switchInScores[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 best move%S", aiBestMove[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 deals%d", maxDamageDealtStored[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 5 deals%d", percentageDealtStored[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "party slot 5 takes%d", maxDamageDealtToAIStored[5]);
+                    MgbaPrintf(MGBA_LOG_WARN, "percentage slot 5 takes%d", percentageReceivedStored[5]);
+                }
+            #endif
+
+            return bestMonId;
+        }
+        else
+            return 0;
+    }
+    else
+        return 0;
+}
+
 // This function splits switching behaviour depending on whether the switch is free.
 // Everything runs in the same loop to minimize computation time. This makes it harder to read, but hopefully the comments can guide you!
 static u32 GetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, u32 battler, u32 opposingBattler, u32 battlerIn1, u32 battlerIn2, enum SwitchType switchType)
@@ -3276,11 +4153,11 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, enum SwitchType switchType)
     // Only use better mon selection if AI_FLAG_SMART_MON_CHOICES is set for the trainer.
     if (gAiThinkingStruct->aiFlags[GetThinkingBattler(battler)] & AI_FLAG_SMART_MON_CHOICES) // Double Battles aren't included in AI_FLAG_SMART_MON_CHOICE. Defaults to regular switch in logic
     {
-        bestMonId = GetBestMonIntegrated(party, firstId, lastId, battler, opposingBattler, battlerIn1, battlerIn2, switchType);
+        bestMonId = CustomGetBestMonIntegrated(party, firstId, lastId, battler, opposingBattler, battlerIn1, battlerIn2, switchType);
         return bestMonId;
     }
 
-    // This all handled by the GetBestMonIntegrated function if the AI_FLAG_SMART_MON_CHOICES flag is set
+    // This all handled by the CustomGetBestMonIntegrated function if the AI_FLAG_SMART_MON_CHOICES flag is set
     else
     {
         s32 i, aliveCount = 0, aceMonCount = 0;
