@@ -2052,14 +2052,9 @@ Common_EventScript_EmmieBattle1::
 	changefollowerbattler PARTNER_NONE
 	setvar VAR_0x8004, SPECIAL_BATTLE_EMMIE
 	setvar VAR_0x8005, TRAINER_EMMIE_1
-	special DoSpecialTrainerBattle
-	waitstate
-	switch VAR_RESULT
-	case 1, Common_EventScript_EmmieBattleWon1
+	trainerbattle_no_intro TRAINER_EMMIE_1, Common_Text_EmmieBattleDefeat1
 	changefollowerbattler PARTNER_EMMIE
-	fadescreen FADE_TO_BLACK
-	special SetCB2WhiteOut
-	waitstate
+	goto Common_EventScript_EmmieBattleWon1
 
 Common_EventScript_EmmieBattleWon1::
 	clearflag FLAG_EMMIE_BATTLE_1
@@ -2096,9 +2091,17 @@ Common_EventScript_EmmieBattle2DoMultiBattle::
 	special SetCB2WhiteOut
 	waitstate
 
+Common_Text_EmmieBattleDefeat1:
+	.string "I hope you know that I was taking\n"
+	.string "it easy on you!$"
+
 Common_Text_EmmieBattleDefeat2:
 	.string "Impressive. I can't deny how strong\n"
 	.string "you have become.$"
+
+Common_Text_EmmieBattleDefeat3:
+	.string "Even alone you've learnt to stand\n"
+	.string "up on your own two feet!$"
 
 Common_EventScript_EmmieBattleVictory2::
 	clearflag FLAG_EMMIE_BATTLE_2
@@ -2120,14 +2123,9 @@ Common_EventScript_EmmieBattle3::
 	setvar VAR_0x8004, SPECIAL_BATTLE_EMMIE
 	setvar VAR_0x8005, TRAINER_EMMIE_3
 	playbgm MUS_VICTORY_ROAD, TRUE
-	special DoSpecialTrainerBattle
-	waitstate
-	switch VAR_RESULT
-	case 1, Common_EventScript_EmmieBattleWon3
+	trainerbattle_no_intro TRAINER_EMMIE_3, Common_Text_EmmieBattleDefeat3
 	changefollowerbattler PARTNER_EMMIE
-	fadescreen FADE_TO_BLACK
-	special SetCB2WhiteOut
-	waitstate
+	goto Common_EventScript_EmmieBattleWon3
 
 Common_EventScript_EmmieBattleWon3::
 	clearflag FLAG_EMMIE_BATTLE_3

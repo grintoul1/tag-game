@@ -84,6 +84,7 @@ enum DebugMenu
     //DEBUG_MENU_ITEM_BATTLE,
     DEBUG_MENU_ITEM_SOUND,
     DEBUG_MENU_ITEM_ROMINFO,
+    DEBUG_MENU_ITEM_TEST,
     DEBUG_MENU_ITEM_CANCEL,
 };
 
@@ -283,6 +284,11 @@ enum ROMInfoDebugMenu
     DEBUG_ROM_INFO_MENU_ITEM_EXPANSION_VER,
 };
 
+enum TestDebugMenu
+{
+    DEBUG_GIVE_MENU_ITEM_ITEM_X_TEST,
+};
+
 // *******************************
 // Constants
 #define DEBUG_MENU_FONT FONT_NORMAL
@@ -381,6 +387,7 @@ static void DebugAction_OpenGiveMenu(u8 taskId);
 static void DebugAction_OpenSoundMenu(u8 taskId);
 static void DebugAction_OpenPlayerMenu(u8 taskId);
 static void DebugAction_OpenROMInfoMenu(u8 taskId);
+static void DebugAction_OpenTestMenu(u8 taskId);
 
 static void DebugTask_HandleMenuInput_Main(u8 taskId);
 static void DebugTask_HandleMenuInput_Utilities(u8 taskId);
@@ -644,6 +651,7 @@ static const struct ListMenuItem sDebugMenu_Items_Main[] =
     //[DEBUG_MENU_ITEM_BATTLE]        = {COMPOUND_STRING("Battle Test{CLEAR_TO 110}{RIGHT_ARROW}"),   DEBUG_MENU_ITEM_BATTLE},
     [DEBUG_MENU_ITEM_SOUND]         = {COMPOUND_STRING("Sound…{CLEAR_TO 110}{RIGHT_ARROW}"),        DEBUG_MENU_ITEM_SOUND},
     [DEBUG_MENU_ITEM_ROMINFO]       = {COMPOUND_STRING("ROM Info…{CLEAR_TO 110}{RIGHT_ARROW}"),     DEBUG_MENU_ITEM_ROMINFO},
+    [DEBUG_MENU_ITEM_TEST]       = {COMPOUND_STRING("Test…{CLEAR_TO 110}{RIGHT_ARROW}"),     DEBUG_MENU_ITEM_TEST},
     [DEBUG_MENU_ITEM_CANCEL]        = {COMPOUND_STRING("Cancel"),                                   DEBUG_MENU_ITEM_CANCEL},
 };
 
@@ -843,6 +851,11 @@ static const struct ListMenuItem sDebugMenu_Items_ROMInfo[] =
     [DEBUG_ROM_INFO_MENU_ITEM_EXPANSION_VER] = {COMPOUND_STRING("Expansion Version"), DEBUG_ROM_INFO_MENU_ITEM_EXPANSION_VER},
 };
 
+static const struct ListMenuItem sDebugMenu_Items_Test[] =
+{
+    [DEBUG_GIVE_MENU_ITEM_ITEM_X_TEST]            = {COMPOUND_STRING("Give item XYZ…{CLEAR_TO 110}{RIGHT_ARROW}"),    DEBUG_GIVE_MENU_ITEM_ITEM_X_TEST},
+};
+
 // *******************************
 // Menu Actions
 static void (*const sDebugMenu_Actions_Main[])(u8) =
@@ -857,6 +870,7 @@ static void (*const sDebugMenu_Actions_Main[])(u8) =
     //[DEBUG_MENU_ITEM_BATTLE]        = DebugAction_OpenBattleMenu,
     [DEBUG_MENU_ITEM_SOUND]         = DebugAction_OpenSoundMenu,
     [DEBUG_MENU_ITEM_ROMINFO]       = DebugAction_OpenROMInfoMenu,
+    [DEBUG_MENU_ITEM_TEST]       = DebugAction_OpenTestMenu,
     [DEBUG_MENU_ITEM_CANCEL]        = DebugAction_Cancel
 };
 
@@ -1007,6 +1021,11 @@ static void (*const sDebugMenu_Actions_ROMInfo[])(u8) =
     [DEBUG_ROM_INFO_MENU_ITEM_SAVEBLOCK]     = DebugAction_ROMInfo_CheckSaveBlock,
     [DEBUG_ROM_INFO_MENU_ITEM_ROM_SPACE]     = DebugAction_ROMInfo_CheckROMSpace,
     [DEBUG_ROM_INFO_MENU_ITEM_EXPANSION_VER] = DebugAction_ROMInfo_ExpansionVersion,
+};
+
+static void (*const sDebugMenu_Actions_Test[])(u8) =
+{
+    [DEBUG_GIVE_MENU_ITEM_ITEM_X_TEST]            = DebugAction_Give_Item,
 };
 
 // *******************************
@@ -1192,6 +1211,13 @@ static const struct ListMenuTemplate sDebugMenu_ListTemplate_ROMInfo =
     .items = sDebugMenu_Items_ROMInfo,
     .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
     .totalItems = ARRAY_COUNT(sDebugMenu_Items_ROMInfo),
+};
+
+static const struct ListMenuTemplate sDebugMenu_ListTemplate_Test =
+{
+    .items = sDebugMenu_Items_Test,
+    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
+    .totalItems = ARRAY_COUNT(sDebugMenu_Items_Test),
 };
 
 // *******************************
@@ -1871,6 +1897,11 @@ static void DebugTask_HandleMenuInput_ROMInfo(u8 taskId)
     DebugTask_HandleMenuInput_General(taskId, sDebugMenu_Actions_ROMInfo, DebugTask_HandleMenuInput_Main, sDebugMenu_ListTemplate_Main);
 }
 
+static void DebugTask_HandleMenuInput_Test(u8 taskId)
+{
+    DebugTask_HandleMenuInput_General(taskId, sDebugMenu_Actions_Test, DebugTask_HandleMenuInput_Main, sDebugMenu_ListTemplate_Main);
+}
+
 // *******************************
 // Open sub-menus
 static void DebugAction_OpenUtilitiesMenu(u8 taskId)
@@ -1964,6 +1995,12 @@ static void DebugAction_OpenROMInfoMenu(u8 taskId)
 {
     Debug_DestroyMenu(taskId);
     Debug_ShowMenu(DebugTask_HandleMenuInput_ROMInfo, sDebugMenu_ListTemplate_ROMInfo);
+}
+
+static void DebugAction_OpenTestMenu(u8 taskId)
+{
+    Debug_DestroyMenu(taskId);
+    Debug_ShowMenu(DebugTask_HandleMenuInput_Test, sDebugMenu_ListTemplate_Test);
 }
 
 // *******************************

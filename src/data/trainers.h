@@ -28575,7 +28575,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_CHARIZARD,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11401
-            .heldItem = ITEM_CHARIZARDITE_X,
+            .heldItem = ITEM_CHARIZARDITE_Y,
 #line 11405
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11404

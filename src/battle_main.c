@@ -2015,6 +2015,56 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 SetMonData(&party[i], MON_DATA_POKEBALL, &ball);
             }
         }
+    if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
+        {
+            for (i = 0; i < 6; i++)
+            {
+                CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+                {
+                    SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gEnemyParty[i]);
+                }
+                j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+                j = STATUS1_NONE;
+                SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
+            }
+            j = NATURE_RELAXED;
+            SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_SERIOUS;
+            SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_BRAVE;
+            SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_SASSY;
+            SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_BASHFUL;
+            SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_QUIET;
+            SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
+
+            j = ITEM_FOCUS_SASH;
+            SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_IRON_BALL;
+            SetMonData(&gEnemyParty[1], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_EJECT_BUTTON;
+            SetMonData(&gEnemyParty[2], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_LAGGING_TAIL;
+            SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_SITRUS_BERRY;
+            SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_STICKY_BARB;
+            SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
+        }
     if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
         {
             for (i = 3; i < 6; i++)
@@ -2075,6 +2125,56 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             j = ITEM_SITRUS_BERRY;
             SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
             j = ITEM_STICKY_BARB;
+            SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
+        }
+        if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
+        {
+            for (i = 0; i < 6; i++)
+            {
+                CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+                {
+                    SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gEnemyParty[i]);
+                }
+                j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+                j = STATUS1_NONE;
+                SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
+            }
+            j = NATURE_TIMID;
+            SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_LONELY;
+            SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_NAIVE;
+            SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_RASH;
+            SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_BASHFUL;
+            SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
+            j = NATURE_JOLLY;
+            SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
+
+            j = ITEM_FOCUS_SASH;
+            SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_NORMAL_GEM;
+            SetMonData(&gEnemyParty[1], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_EJECT_PACK;
+            SetMonData(&gEnemyParty[2], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_WEAKNESS_POLICY;
+            SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_CHOICE_SPECS;
+            SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
+            j = ITEM_NORMAL_GEM;
             SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
         }
     }

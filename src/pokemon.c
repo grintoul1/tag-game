@@ -5946,6 +5946,15 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_PIKE_QUEEN:
         case TRAINER_CLASS_PYRAMID_KING:
         case TRAINER_CLASS_PKMN_TRAINER_2:
+            switch (trainerId)
+            {
+                case TRAINER_EMMIE_1:
+                    return MUS_VS_RIVAL;
+                case TRAINER_EMMIE_2:
+                    return MUS_VS_FRONTIER_BRAIN;
+                case TRAINER_EMMIE_3:
+                    return MUS_VS_SINNOH_BRAIN;
+            }
             return MUS_VS_FRONTIER_BRAIN;
         case TRAINER_CLASS_WINSTRATE:
             switch (trainerId)
