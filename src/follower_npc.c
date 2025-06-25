@@ -193,7 +193,7 @@ static void TurnNPCIntoFollower(u32 localId, u32 followerFlags, u32 setScript, c
     if (flag == 0)
         return;
 
- if (setScript == TRUE)
+    if (setScript == TRUE)
         // Set the custom script.
         script = scriptPtr;
     else
@@ -246,11 +246,11 @@ static void CreateFollowerNPC(u32 gfx, u32 followerFlags, const u8 *scriptPtr)
         .script = scriptPtr
     };
 
-        SetFollowerNPCData(FNPC_DATA_OBJ_ID, TrySpawnObjectEventTemplate(&npc, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, player->currentCoords.x, player->currentCoords.y));
+    SetFollowerNPCData(FNPC_DATA_OBJ_ID, TrySpawnObjectEventTemplate(&npc, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, player->currentCoords.x, player->currentCoords.y));
     follower = &gObjectEvents[GetFollowerNPCData(FNPC_DATA_OBJ_ID)];
     follower->movementType = MOVEMENT_TYPE_NONE;
     gSprites[follower->spriteId].callback = MovementType_None;
-
+    
     SetFollowerNPCData(FNPC_DATA_IN_PROGRESS, TRUE);
     SetFollowerNPCData(FNPC_DATA_GFX_ID, follower->graphicsId);
     SetFollowerNPCData(FNPC_DATA_FOLLOWER_FLAGS, followerFlags);
