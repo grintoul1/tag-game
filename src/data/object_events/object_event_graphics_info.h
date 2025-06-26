@@ -2223,7 +2223,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanUnderwater 
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreenUnderwater = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER,
+    .paletteTag = OBJ_EVENT_PAL_TAG_GREEN_UNDERWATER,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 512,
     .width = 32,

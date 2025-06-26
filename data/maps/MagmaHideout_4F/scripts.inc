@@ -207,7 +207,6 @@ MagmaHideout_4F_Movement_EmmieEnters:
 
 MagmaHideout_4F_Movement_PanToAction:
 	walk_diag_southwest
-	walk_diag_southwest
 	walk_down
 	walk_down
 	walk_down
@@ -233,7 +232,6 @@ MagmaHideout_4F_Movement_PanFromAction:
 	walk_up
 	walk_up
 	walk_up
-	walk_diag_northeast
 	walk_diag_northeast
 	step_end
 
@@ -302,8 +300,8 @@ MagmaHideout_4F_Text_Maxie_NowhereToRun:
 	.string "time!$"
 
 MagmaHideout_4F_Text_ShellyMustLeave:
-	.string "Shelly: Listen kid. With Groudon\n"
-	.string "awake, disaster is about to strike.\p"
+	.string "Shelly: Listen kid. With Groudon awake,\n"
+	.string "disaster is about to strike.\p"
 	.string "I'm grateful for your help, but there's\n"
 	.string "nothing more we can do here.\p"
 	.string "I need to tell Archie what has happened\n"
@@ -395,7 +393,7 @@ MagmaHideout_4F_EventScript_CourtneyTabitha::
 	playse SE_M_DETECT
 	dofieldeffectsparkle 18, 42, 0
 	waitfieldeffect FLDEFF_SPARKLE
-	setvar VAR_RESULT, 1
+	setvar VAR_RESULT, 3
 	playfanfare MUS_AWAKEN_LEGEND
 	playse SE_ORB
 	special DoOrbEffect
@@ -472,7 +470,7 @@ MagmaHideout_4F_EventScript_CourtneyTabitha_NowhereToRun::
 	end
 
 MagmaHideout_4F_EventScript_CourtneyTabithaDoMultiBattle::
-	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+	playbgm MUS_ENCOUNTER_MAGMA, TRUE
 	multi_2_vs_2 TRAINER_TABITHA_MAGMA_HIDEOUT, MagmaHideout_4F_Text_TabithaDefeat, TRAINER_COURTNEY_MAGMA_HIDEOUT, MagmaHideout_4F_Text_CourtneyDefeat, PARTNER_SHELLY
 	special LoadPlayerParty
 	switch VAR_RESULT
@@ -488,7 +486,6 @@ MagmaHideout_4F_EventScript_CourtneyTabithaDoMultiBattle::
 
 MagmaHideout_4F_EventScript_CourtneyTabithaVictory::
 	lockall
-	playbgm MUS_ENCOUNTER_MAGMA, TRUE
 	delay 16
 	playse SE_NOT_EFFECTIVE
 	applymovement LOCALID_TABITHA, MagmaHideout_4F_Movement_TabithaKnockedBack

@@ -1288,24 +1288,38 @@ void DoOrbEffect(void)
     {
         tBlueOrb = FALSE;
         tCenterX = 104;
+        tCenterY = 80;
     }
     else if (gSpecialVar_Result == 1)
     {
         tBlueOrb = TRUE;
         tCenterX = 136;
+        tCenterY = 80;
     }
     else if (gSpecialVar_Result == 2)
     {
         tBlueOrb = FALSE;
         tCenterX = 120;
+        tCenterY = 80;
     }
-    else
+    else if (gSpecialVar_Result == 3)
     {
         tBlueOrb = TRUE;
         tCenterX = 120;
+        tCenterY = 93;
     }
-
-    tCenterY = 80;
+    else if (gSpecialVar_Result == 4)
+    {
+        tBlueOrb = FALSE;
+        tCenterX = 120;
+        tCenterY = 93;
+    }
+    else 
+    {
+        tBlueOrb = TRUE;
+        tCenterX = 120;
+        tCenterY = 80;
+    }
 }
 
 void FadeOutOrbEffect(void)
