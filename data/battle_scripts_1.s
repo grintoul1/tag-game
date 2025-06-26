@@ -5561,6 +5561,7 @@ BattleScript_TerrainEnds_Ret::
 	printfromtable gTerrainStringIds
 	waitmessage B_WAIT_TIME_LONG
 	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
+	tryboosterenergy ON_TERRAIN
 	return
 
 BattleScript_TerrainEnds::
@@ -5775,6 +5776,14 @@ BattleScript_DisabledNoMore::
 
 BattleScript_SelectingDisabledMoveInPalace::
 	printstring STRINGID_PKMNMOVEISDISABLED
+	goto BattleScript_SelectingUnusableMoveInPalace
+
+BattleScript_EncoredMove::
+	printselectionstring STRINGID_PKMNGOTENCOREDMOVE
+	endselectionscript
+
+BattleScript_EncoredMoveInPalace::
+	printselectionstring STRINGID_PKMNGOTENCOREDMOVE
 BattleScript_SelectingUnusableMoveInPalace::
 	moveendto MOVEEND_NEXT_TARGET
 	end
@@ -7167,9 +7176,20 @@ BattleScript_AbilityCantRaiseDefenderStat::
 	restoreattacker
 	return
 
+BattleScript_AbilityShieldProtects::
+	saveattacker
+	copybyte gBattlerAttacker, gBattlerAbility
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	printstring STRINGID_ABILITYSHIELDPROTECTS
+	waitmessage B_WAIT_TIME_LONG
+	restoreattacker
+	return
+
 BattleScript_AbilityPopUpTarget::
 	copybyte gBattlerAbility, gBattlerTarget
 BattleScript_AbilityPopUp::
+	tryactivateabilityshield BS_ABILITY_BATTLER
 	.if B_ABILITY_POP_UP == TRUE
 	showabilitypopup BS_ABILITY_BATTLER
 	pause 40
@@ -7391,6 +7411,7 @@ BattleScript_ShedSkinActivates::
 BattleScript_ActivateWeatherAbilities:
 	saveattacker
 	savetarget
+	tryboosterenergy ON_WEATHER
 	setbyte gBattlerAttacker, 0
 BattleScript_ActivateWeatherAbilities_Loop:
 	copyarraywithindex gBattlerTarget, gBattlerByTurnOrder, gBattlerAttacker, 1
@@ -7418,14 +7439,10 @@ BattleScript_TryIntimidateHoldEffectsRet:
 
 BattleScript_IntimidateActivates::
 	savetarget
-.if B_ABILITY_POP_UP == TRUE
-	showabilitypopup BS_ATTACKER
-	pause B_WAIT_TIME_LONG
+	call BattleScript_AbilityPopUp
 	destroyabilitypopup
-.endif
 	setbyte gBattlerTarget, 0
 BattleScript_IntimidateLoop:
-	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_IntimidateLoopIncrement
 	jumpiftargetally BattleScript_IntimidateLoopIncrement
 	jumpifabsent BS_TARGET, BattleScript_IntimidateLoopIncrement
 	jumpifvolatile BS_TARGET, VOLATILE_SUBSTITUTE, BattleScript_IntimidateLoopIncrement
@@ -7452,7 +7469,6 @@ BattleScript_IntimidateLoopIncrement:
 	destroyabilitypopup
 	restoretarget
 	pause B_WAIT_TIME_MED
-	tryintimidateejectpack
 	end3
 
 BattleScript_IntimidatePrevented::
@@ -7479,16 +7495,12 @@ BattleScript_IntimidateInReverse::
 
 BattleScript_SupersweetSyrupActivates::
  	savetarget
-.if B_ABILITY_POP_UP == TRUE
-	showabilitypopup BS_ATTACKER
-	pause B_WAIT_TIME_LONG
+	call BattleScript_AbilityPopUp
 	destroyabilitypopup
-.endif
 	printstring STRINGID_SUPERSWEETAROMAWAFTS
 	waitmessage B_WAIT_TIME_LONG
 	setbyte gBattlerTarget, 0
 BattleScript_SupersweetSyrupLoop:
-	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_SupersweetSyrupLoopIncrement
 	jumpiftargetally BattleScript_SupersweetSyrupLoopIncrement
 	jumpifabsent BS_TARGET, BattleScript_SupersweetSyrupLoopIncrement
 	jumpifvolatile BS_TARGET, VOLATILE_SUBSTITUTE, BattleScript_SupersweetSyrupLoopIncrement
@@ -7501,8 +7513,12 @@ BattleScript_SupersweetSyrupEffect:
 	printfromtable gStatDownStringIds
 BattleScript_SupersweetSyrupEffect_WaitString:
 	waitmessage B_WAIT_TIME_LONG
+	saveattacker
+	savetarget
 	copybyte sBATTLER, gBattlerTarget
 	call BattleScript_TryIntimidateHoldEffects
+	restoreattacker
+	restoretarget
 BattleScript_SupersweetSyrupLoopIncrement:
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_SupersweetSyrupLoop
@@ -7510,7 +7526,6 @@ BattleScript_SupersweetSyrupLoopIncrement:
 	destroyabilitypopup
 	restoretarget
 	pause B_WAIT_TIME_MED
-	tryintimidateejectpack
 	end3
 
 BattleScript_SupersweetSyrupWontDecrease:
@@ -7695,6 +7710,7 @@ BattleScript_SnowWarningActivatesSnow::
 BattleScript_ActivateTerrainEffects:
 	saveattacker
 	savetarget
+	tryboosterenergy ON_TERRAIN
 	setbyte gBattlerAttacker, 0
 BattleScript_ActivateTerrainSeed:
 	copyarraywithindex gBattlerTarget, gBattlerByTurnOrder, gBattlerAttacker, 1
@@ -7966,6 +7982,11 @@ BattleScript_ProteanActivates::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNCHANGEDTYPE
 	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_AbilityAvoidsDamage::
+	call BattleScript_AbilityPopUp
+	printfromtable gMissStringIds @ waitmessage is executed next so no waitmessage here
 	return
 
 BattleScript_TeraShellDistortingTypeMatchups::
@@ -8889,6 +8910,7 @@ BattleScript_ActivateTeraformZero_RemoveTerrain:
 	printfromtable gTerrainStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_ActivateTeraformZero_End:
+	tryboosterenergy ON_ANY
 	end3
 
 BattleScript_QuickClawActivation::
@@ -9203,6 +9225,10 @@ BattleScript_EjectPackActivate_End2::
 	call BattleScript_EjectPackActivate_Ret
 	end2
 
+BattleScript_EjectPackActivate_End3::
+	call BattleScript_EjectPackActivate_Ret
+	end3
+
 BattleScript_EjectPackActivates::
 	jumpifcantswitch BS_SCRIPTING, BattleScript_EjectButtonEnd
 	goto BattleScript_EjectPackActivate_Ret
@@ -9278,9 +9304,12 @@ BattleScript_NeutralizingGasExits::
 	setbyte gBattlerAttacker, 0
 BattleScript_NeutralizingGasExitsLoop:
 	copyarraywithindex gBattlerTarget, gBattlerByTurnOrder, gBattlerAttacker, 1
+	jumpifabilitycantbesuppressed BS_TARGET, BattleScript_NeutralizingGasExitsLoopIncrement
+	jumpifability BS_TARGET, ABILITY_IMPOSTER, BattleScript_NeutralizingGasExitsLoopIncrement @ Imposter only activates when first entering the field
 	saveattacker
 	switchinabilities BS_TARGET
 	restoreattacker
+BattleScript_NeutralizingGasExitsLoopIncrement:
 	addbyte gBattlerAttacker, 1
 	jumpifbytenotequal gBattlerAttacker, gBattlersCount, BattleScript_NeutralizingGasExitsLoop
 	restoreattacker

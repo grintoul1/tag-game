@@ -6056,7 +6056,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "User spins and removes some\n"
         #if B_SPEED_BUFFING_RAPID_SPIN >= GEN_8
             "effects, while upping speed."),
-        #else
+        #else 
             "effects."),
         #endif
         .effect = EFFECT_RAPID_SPIN,
