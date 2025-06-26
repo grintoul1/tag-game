@@ -667,11 +667,6 @@ static const struct DebugMenuOption sDebugMenu_Actions_Main[] =
     { NULL }
 };
 
-static void (*const sDebugMenu_Actions_Test[])(u8) =
-{
-    [DEBUG_GIVE_MENU_ITEM_ITEM_X_TEST]            = DebugAction_Give_Item,
-};
-
 // *******************************
 // Windows
 static const struct WindowTemplate sDebugMenuWindowTemplateMain =
@@ -719,13 +714,6 @@ static const struct WindowTemplate sDebugMenuWindowTemplateSound =
 };
 
 static bool32 Debug_SaveCallbackMenu(struct DebugMenuOption *callbackItems);
-
-static const struct ListMenuTemplate sDebugMenu_ListTemplate_Test =
-{
-    .items = sDebugMenu_Items_Test,
-    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
-    .totalItems = ARRAY_COUNT(sDebugMenu_Items_Test),
-};
 
 // *******************************
 // Functions universal
