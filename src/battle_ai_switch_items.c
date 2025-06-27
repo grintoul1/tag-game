@@ -1883,13 +1883,13 @@ bool32 ShouldSwitch(u32 battler)
     s32 i;
     s32 availableToSwitch;
 
+    if((gBattleMons[battler].hp * 2) <= gBattleMons[battler].maxHP)
+        return FALSE;
     if (gBattleMons[battler].status2 & (STATUS2_WRAPPED | STATUS2_ESCAPE_PREVENTION))
         return FALSE;
     if (gStatuses3[battler] & STATUS3_ROOTED)
         return FALSE;
     if (IsAbilityPreventingEscape(battler))
-        return FALSE;
-    if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
         return FALSE;
 
     // Sequence Switching AI never switches mid-battle
@@ -1945,6 +1945,7 @@ bool32 ShouldSwitch(u32 battler)
 
     if (ShouldSwitchIfWonderGuard(battler))
         return TRUE;
+    if()
     if ((gAiThinkingStruct->aiFlags[GetThinkingBattler(battler)] & AI_FLAG_SMART_SWITCHING) && (CanMonSurviveHazardSwitchin(battler) == FALSE))
         return FALSE;
     if (ShouldSwitchIfTrapperInParty(battler))
@@ -2005,8 +2006,6 @@ bool32 PartnerShouldSwitch(u32 battler)
         return FALSE;
     if (IsAbilityPreventingEscape(battler))
         return FALSE;
-    if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
-        return FALSE;
 
     // Sequence Switching AI never switches mid-battle
     if (gAiThinkingStruct->aiFlags[GetThinkingBattler(battler)] & AI_FLAG_SEQUENCE_SWITCHING)
@@ -2059,13 +2058,15 @@ bool32 PartnerShouldSwitch(u32 battler)
     // FindMon functions can prompt a switch to specific party members that override GetMostSuitableMonToSwitchInto
     // The rest can prompt a switch to party member returned by GetMostSuitableMonToSwitchInto
 
+    if (PartnerFindMonThatAbsorbsOpponentsMove(battler))
+        return TRUE;
+    if((gBattleMons[battler].hp * 2) <= gBattleMons[battler].maxHP)
+        return FALSE;
     if (PartnerShouldSwitchIfWonderGuard(battler))
         return TRUE;
     if ((gAiThinkingStruct->aiFlags[GetThinkingBattler(battler)] & AI_FLAG_PARTNER_SWITCHING) && (CanMonSurviveHazardSwitchin(battler) == FALSE))
         return FALSE;
     if (PartnerShouldSwitchIfTrapperInParty(battler))
-        return TRUE;
-    if (PartnerFindMonThatAbsorbsOpponentsMove(battler))
         return TRUE;
     if (PartnerShouldSwitchIfOpponentChargingOrInvulnerable(battler))
         return TRUE;
@@ -2587,6 +2588,7 @@ static u32 GetSwitchinHazardsDamage(u32 battler, struct BattlePokemon *battleMon
     return hazardDamage;
 }
 
+/*
 // Gets damage / healing from weather
 static s32 GetSwitchinWeatherImpact(void)
 {
@@ -2650,7 +2652,9 @@ static s32 GetSwitchinWeatherImpact(void)
     }
     return weatherImpact;
 }
+*/
 
+/*
 // Gets one turn of recurring healing
 static u32 GetSwitchinRecurringHealing(void)
 {
@@ -2684,7 +2688,9 @@ static u32 GetSwitchinRecurringHealing(void)
     }
     return recurringHealing;
 }
+*/
 
+/*
 // Gets one turn of recurring damage
 static u32 GetSwitchinRecurringDamage(void)
 {
@@ -2715,7 +2721,9 @@ static u32 GetSwitchinRecurringDamage(void)
     }
     return passiveDamage;
 }
+*/
 
+/*
 // Gets one turn of status damage
 static u32 GetSwitchinStatusDamage(u32 battler)
 {
@@ -2789,7 +2797,9 @@ static u32 GetSwitchinStatusDamage(u32 battler)
     }
     return statusDamage;
 }
+*/
 
+/*
 // Gets number of hits to KO factoring in hazards, healing held items, status, and weather
 static u32 GetSwitchinHitsToKO(s32 damageTaken, u32 battler)
 {
@@ -2902,7 +2912,9 @@ static u32 GetSwitchinHitsToKO(s32 damageTaken, u32 battler)
     }
     return hitsToKO;
 }
+*/ 
 
+/*
 static u16 GetSwitchinTypeMatchup(u32 opposingBattler, struct BattlePokemon battleMon)
 {
 
@@ -2923,7 +2935,9 @@ static u16 GetSwitchinTypeMatchup(u32 opposingBattler, struct BattlePokemon batt
     }
     return typeEffectiveness;
 }
+*/
 
+/*
 static int GetRandomSwitchinWithBatonPass(int aliveCount, int bits, int firstId, int lastId, int currentMonId)
 {
     // Breakout early if there aren't any Baton Pass mons to save computation time
@@ -2943,6 +2957,7 @@ static int GetRandomSwitchinWithBatonPass(int aliveCount, int bits, int firstId,
     else
         return PARTY_SIZE;
 }
+*/
 
 static s32 GetMaxDamagePlayerCouldDealToSwitchin(u32 battler, u32 opposingBattler, struct BattlePokemon battleMon)
 {
@@ -3006,6 +3021,27 @@ static inline bool32 IsFreeSwitch(enum SwitchType switchType, u32 battlerSwitchi
         }
     }
 
+    if(IsDoubleBattle())
+    {
+        bool32 movedSecondOpponentPartner = GetBattlerTurnOrderNum(battlerSwitchingOut) > GetBattlerTurnOrderNum(BATTLE_PARTNER(opposingBattler)) ? TRUE : FALSE;
+        if (IsSwitchOutEffect(GetMoveEffect(gCurrentMove)) && movedSecond && movedSecondOpponentPartner)
+            return TRUE;
+        if (gAiLogicData->ejectButtonSwitch)
+            return TRUE;
+        if (gAiLogicData->ejectPackSwitch)
+        {
+            u32 opposingAbility = GetBattlerAbilityIgnoreMoldBreaker(opposingBattler);
+            u32 opposingAbility2 = GetBattlerAbilityIgnoreMoldBreaker(BATTLE_PARTNER(opposingBattler));
+
+            // If faster, not a free switch; likely lowered own stats
+            if ((!movedSecond && opposingAbility != ABILITY_INTIMIDATE && opposingAbility != ABILITY_SUPERSWEET_SYRUP) || (!movedSecondOpponentPartner && opposingAbility2 != ABILITY_INTIMIDATE && opposingAbility2 != ABILITY_SUPERSWEET_SYRUP)) // Intimidate triggers switches before turn starts
+                return FALSE;
+            // Otherwise, free switch
+            return TRUE;
+        }
+
+    }
+
     // Post KO check has to be last because the GetMostSuitableMonToSwitchInto call in OpponentHandleChoosePokemon assumes a KO rather than a forced switch choice
     if (switchType == SWITCH_AFTER_KO)
         return TRUE;
@@ -3046,6 +3082,7 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
     int i;
     int bestMonId = PARTY_SIZE;
     int switchInScores[PARTY_SIZE]={0};
+    bool32 isFreeSwitch = IsFreeSwitch(switchType, battlerIn1, opposingBattler);
     gAiLogicData->aiCalcInProgress = TRUE;
 
     #ifndef NDEBUG
@@ -3131,9 +3168,18 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
         maxDamageDealtToAI = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon);
         percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&party[monId],MON_DATA_HP,NULL));
         #ifndef NDEBUG
-            percentageReceivedStored[monId]= percentageReceived;
+            percentageReceivedStored[monId] = percentageReceived;
             maxDamageDealtToAIStored[monId] = maxDamageDealtToAI;
         #endif
+
+        if (switchType != SWITCH_AFTER_KO && isFreeSwitch != TRUE)
+        {
+            if((maxDamageDealtToAI*2 >= gAiLogicData->switchinCandidate.battleMon.hp && aiMonFaster == TRUE) || (maxDamageDealtToAI >= gAiLogicData->switchinCandidate.battleMon.hp && aiMonFaster != TRUE))
+            {
+                switchInScores[monId] = 1;
+                continue;
+            }
+        }
 
         if(aiMonSpecies == SPECIES_DITTO)
             switchInScores[monId] = 4;
@@ -3193,7 +3239,7 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
     return bestMonId;
 }
 
-
+/*
 // This function splits switching behaviour depending on whether the switch is free.
 // Everything runs in the same loop to minimize computation time. This makes it harder to read, but hopefully the comments can guide you!
 static u32 GetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, u32 battler, u32 opposingBattler, u32 battlerIn1, u32 battlerIn2, enum SwitchType switchType)
@@ -3374,6 +3420,7 @@ static u32 GetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, 
 
     return PARTY_SIZE;
 }
+*/
 
 static u32 GetNextMonInParty(struct Pokemon *party, int firstId, int lastId, u32 battlerIn1, u32 battlerIn2)
 {
