@@ -156,15 +156,7 @@ TEST("Item plural names fit on PC storage (left box)")
         PARAMETRIZE_LABEL("%S", gItemsInfo[i].name) { item = i; }
     }
     CopyItemNameHandlePlural(item, pluralName, 2);
-    switch (item)
-    {
-    case ITEM_INFINITE_CANDY:
-        EXPECT_GT(GetStringWidth(fontId, pluralName, 0), widthPx);
-        break;
-    default:
-        EXPECT_LE(GetStringWidth(fontId, pluralName, 0), widthPx);
-        break;
-    }
+    EXPECT_LE(GetStringWidth(fontId, pluralName, 0), widthPx);
 }
 
 TEST("Item names fit on Pokemon Storage System")
@@ -180,7 +172,6 @@ TEST("Item names fit on Pokemon Storage System")
     // All items explicitly listed here are too big to fit.
     switch (item)
     {
-    case ITEM_INFINITE_CANDY:
     case ITEM_ELECTRIC_TERA_SHARD:
     case ITEM_FIGHTING_TERA_SHARD:
     case ITEM_PSYCHIC_TERA_SHARD:
