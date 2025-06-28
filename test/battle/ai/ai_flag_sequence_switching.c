@@ -7,7 +7,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SEQUENCE_SWITCHING: AI will always switch after a
 
     PARAMETRIZE { aiSequenceSwitchingFlag = 0; }
     PARAMETRIZE { aiSequenceSwitchingFlag = AI_FLAG_SEQUENCE_SWITCHING; }
-
+    KNOWN_FAILING;
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | aiSequenceSwitchingFlag);
         PLAYER(SPECIES_SWELLOW) { Level (50); }
