@@ -34,8 +34,6 @@
 
 #define STATE gBattleTestRunnerState
 #define DATA gBattleTestRunnerState->data
-#define MULTI_STATE gBattleTestRunnerStateMulti
-#define MULTI_DATA gBattleTestRunnerStateMulti->data
 
 #define RNG_SEED_DEFAULT {0, 0, 0, 0}
 static inline bool32 RngSeedNotDefault(const rng_value_t *seed)
@@ -48,9 +46,7 @@ static inline bool32 RngSeedNotDefault(const rng_value_t *seed)
 
 // Alias sBackupMapData to avoid using heap.
 struct BattleTestRunnerState *const gBattleTestRunnerState = (void *)sBackupMapData;
-struct BattleTestRunnerStateMulti *const gBattleTestRunnerStateMulti = (void *)sBackupMapData;
 STATIC_ASSERT(sizeof(struct BattleTestRunnerState) <= sizeof(sBackupMapData), sBackupMapDataSpace);
-STATIC_ASSERT(sizeof(struct BattleTestRunnerStateMulti) <= sizeof(sBackupMapData), sBackupMapDataSpace);
 
 static void CB2_BattleTest_NextParameter(void);
 static void CB2_BattleTest_NextTrial(void);
@@ -123,10 +119,6 @@ static void InvokeTestFunction(const struct BattleTest *test)
     case BATTLE_TEST_AI_DOUBLES:
         InvokeDoubleTestFunctionWithStack(STATE->results, STATE->runParameter, &gBattleMons[B_POSITION_PLAYER_LEFT], &gBattleMons[B_POSITION_OPPONENT_LEFT], &gBattleMons[B_POSITION_PLAYER_RIGHT], &gBattleMons[B_POSITION_OPPONENT_RIGHT], test->function.singles, &DATA.stack[BATTLE_TEST_STACK_SIZE]);
         break;
-    case BATTLE_TEST_MULTI:
-    case BATTLE_TEST_TWO_VS_ONE:
-        InvokeDoubleTestFunctionWithStack(MULTI_STATE->results, MULTI_STATE->runParameter, &gBattleMons[B_POSITION_PLAYER_LEFT], &gBattleMons[B_POSITION_OPPONENT_LEFT], &gBattleMons[B_POSITION_PLAYER_RIGHT], &gBattleMons[B_POSITION_OPPONENT_RIGHT], test->function.singles, &MULTI_DATA.stack[BATTLE_TEST_STACK_SIZE]);
-        break;
     }
 }
 
@@ -176,7 +168,6 @@ static void BattleTest_SetUp(void *data)
     if (sizeof(*STATE) + test->resultsSize * STATE->parameters > sizeof(sBackupMapData))
         Test_ExitWithResult(TEST_RESULT_ERROR, SourceLine(0), ":LOOM: STATE (%d) + STATE->results (%d) too big for sBackupMapData (%d)", sizeof(*STATE), test->resultsSize * STATE->parameters, sizeof(sBackupMapData));
     STATE->results = (void *)((char *)sBackupMapData + sizeof(struct BattleTestRunnerState));
-    MULTI_STATE->results = (void *)((char *)sBackupMapData + sizeof(struct BattleTestRunnerStateMulti));
     memset(STATE->results, 0, test->resultsSize * STATE->parameters);
     switch (test->type)
     {
@@ -188,10 +179,6 @@ static void BattleTest_SetUp(void *data)
     case BATTLE_TEST_DOUBLES:
     case BATTLE_TEST_AI_DOUBLES:
         STATE->battlersCount = 4;
-        break;
-    case BATTLE_TEST_MULTI:
-    case BATTLE_TEST_TWO_VS_ONE:
-        MULTI_STATE->battlersCount = 4;
         break;
     }
     STATE->hasTornDownBattle = FALSE;
@@ -1582,54 +1569,6 @@ void OpenPokemon(u32 sourceLine, u32 side, u32 species)
         // This way, we avoid the boost affecting tests unless explicitly stated.
         SetMonData(DATA.currentMon, MON_DATA_FRIENDSHIP, &data);
         CalculateMonStats(DATA.currentMon);
-    }
-}
-
-void OpenPokemonMulti(u32 sourceLine, u32 battlerId, u32 species)
-{
-    s32 i, data;
-    u8 *partySize;
-    struct Pokemon *party;
-    INVALID_IF(species >= SPECIES_EGG, "Invalid species: %d", species);
-    ASSUMPTION_FAIL_IF(!IsSpeciesEnabled(species), "Species disabled: %d", species);
-    if (gBattlerPositions[battlerId] == B_POSITION_PLAYER_LEFT)
-    {
-        partySize = &MULTI_DATA.playerPartySize;
-        party = MULTI_DATA.recordedBattleMulti.playerParty;
-    }
-    else if (gBattlerPositions[battlerId] == B_POSITION_PLAYER_RIGHT)
-    {
-        partySize = &MULTI_DATA.partnerPartySize;
-        party = MULTI_DATA.recordedBattleMulti.partnerParty;
-    }
-    else if (gBattlerPositions[battlerId] == B_POSITION_OPPONENT_LEFT)
-    {
-        partySize = &MULTI_DATA.opponent1PartySize;
-        party = MULTI_DATA.recordedBattleMulti.opponent1Party;
-    }
-    else
-    {
-        partySize = &MULTI_DATA.opponent2PartySize;
-        party = MULTI_DATA.recordedBattleMulti.opponent2Party;
-    }
-    INVALID_IF(*partySize >= (PARTY_SIZE/2), "Too many Pokemon in party");
-    MULTI_DATA.currentPosition = gBattlerPositions[battlerId];
-    MULTI_DATA.currentPartyIndex = *partySize;
-    MULTI_DATA.currentMon = &party[MULTI_DATA.currentPartyIndex];
-    MULTI_DATA.gender = 0xFF; // Male
-    MULTI_DATA.nature = NATURE_HARDY;
-    (*partySize)++;
-
-    CreateMon(MULTI_DATA.currentMon, species, 100, 0, TRUE, 0, OT_ID_PRESET, 0);
-    data = MOVE_NONE;
-    for (i = 0; i < MAX_MON_MOVES; i++)
-        SetMonData(MULTI_DATA.currentMon, MON_DATA_MOVE1 + i, &data);
-    data = 0;
-    if (B_FRIENDSHIP_BOOST)
-    {
-        // This way, we avoid the boost affecting tests unless explicitly stated.
-        SetMonData(MULTI_DATA.currentMon, MON_DATA_FRIENDSHIP, &data);
-        CalculateMonStats(MULTI_DATA.currentMon);
     }
 }
 

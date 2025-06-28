@@ -69,30 +69,6 @@ AI_DOUBLE_BATTLE_TEST("AI will not try to switch for the same pokemon for 2 spot
     }
 }
 
-MULTI_BATTLE_TEST("AI will not switch into a partner Pokémon in a multibattle (all bad moves)")
-{
-
-    PASSES_RANDOMLY(SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
-    GIVEN {
-        MULTI_PLAYER(SPECIES_RATTATA);
-        MULTI_PLAYER(SPECIES_RATTATA);
-        // No moves to damage player.
-        MULTI_OPPONENT1(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
-        MULTI_OPPONENT2(SPECIES_HAUNTER) { Moves(MOVE_SHADOW_BALL); }
-        MULTI_OPPONENT1(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
-        MULTI_OPPONENT2(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); }
-    } WHEN {
-        TURN { EXPECT_SWITCH(opponentLeft, 3); };
-    } SCENE {
-        MESSAGE(AI_TRAINER_NAME " withdrew Gengar!");
-        MESSAGE(AI_TRAINER_NAME " sent out Gengar!");
-        NONE_OF {
-            MESSAGE(AI_TRAINER_NAME " withdrew Gengar!");
-            MESSAGE(AI_TRAINER_NAME " sent out SPECIES_RATICATE!");
-        }
-    }
-}
-
 AI_SINGLE_BATTLE_TEST("AI will switch out if it has no move that affects the player")
 {
     PASSES_RANDOMLY(SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);

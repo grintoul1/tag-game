@@ -38,39 +38,6 @@ struct RecordedBattleSave
     u32 checksum;
 };
 
-struct RecordedBattleSaveMulti
-{
-    struct Pokemon playerParty[PARTY_SIZE/2];
-    struct Pokemon partnerParty[PARTY_SIZE/2];
-    struct Pokemon opponent1Party[PARTY_SIZE/2];
-    struct Pokemon opponent2Party[PARTY_SIZE/2];
-    u8 playersName[MAX_LINK_PLAYERS][PLAYER_NAME_LENGTH + 1];
-    u8 playersGender[MAX_LINK_PLAYERS];
-    u32 playersTrainerId[MAX_LINK_PLAYERS];
-    u8 playersLanguage[MAX_LINK_PLAYERS];
-    rng_value_t rngSeed;
-    u32 battleFlags;
-    u8 playersBattlers[MAX_LINK_PLAYERS];
-    u16 opponentA;
-    u16 opponentB;
-    u16 partnerId;
-    u16 multiplayerId;
-    u8 lvlMode;
-    u8 frontierFacility;
-    u8 frontierBrainSymbol;
-    u8 battleScene:1;
-    u8 textSpeed:3;
-    u64 AI_scripts;
-    u8 recordMixFriendName[PLAYER_NAME_LENGTH + 1];
-    u8 recordMixFriendClass;
-    u8 apprenticeId;
-    u16 easyChatSpeech[EASY_CHAT_BATTLE_WORDS_COUNT];
-    u8 recordMixFriendLanguage;
-    u8 apprenticeLanguage;
-    u8 battleRecord[MAX_BATTLERS_COUNT][BATTLER_RECORD_SIZE];
-    u32 checksum;
-};
-
 enum
 {
     RECORDED_BYTE, // Generic.

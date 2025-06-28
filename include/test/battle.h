@@ -521,7 +521,7 @@
 #define MAX_QUEUED_EVENTS 30
 #define MAX_EXPECTED_ACTIONS 10
 
-enum { BATTLE_TEST_SINGLES, BATTLE_TEST_DOUBLES, BATTLE_TEST_WILD, BATTLE_TEST_AI_SINGLES, BATTLE_TEST_AI_DOUBLES, BATTLE_TEST_MULTI, BATTLE_TEST_TWO_VS_ONE };
+enum { BATTLE_TEST_SINGLES, BATTLE_TEST_DOUBLES, BATTLE_TEST_WILD, BATTLE_TEST_AI_SINGLES, BATTLE_TEST_AI_DOUBLES };
 
 typedef void (*SingleBattleTestFunction)(void *, const u32, struct BattlePokemon *, struct BattlePokemon *);
 typedef void (*DoubleBattleTestFunction)(void *, const u32, struct BattlePokemon *, struct BattlePokemon *, struct BattlePokemon *, struct BattlePokemon *);
@@ -712,55 +712,6 @@ struct BattleTestData
     struct BattleTrialData trial;
 };
 
-struct BattleTestDataMulti
-{
-    u8 stack[BATTLE_TEST_STACK_SIZE];
-
-    u8 playerPartySize;
-    u8 partnerPartySize;
-    u8 opponent1PartySize;
-    u8 opponent2PartySize;
-    u8 explicitMoves[NUM_BATTLE_SIDES];
-    bool8 hasExplicitSpeeds;
-    u8 explicitSpeeds[NUM_BATTLE_SIDES];
-    u16 slowerThan[NUM_BATTLE_SIDES][PARTY_SIZE];
-    u8 currentPosition;
-    u8 currentPartyIndex;
-    struct Pokemon *currentMon;
-    u8 gender;
-    u8 nature;
-    u16 forcedAbilities[NUM_BATTLE_SIDES][PARTY_SIZE];
-    u8 chosenGimmick[NUM_BATTLE_SIDES][PARTY_SIZE];
-
-    u8 currentMonIndexes[MAX_BATTLERS_COUNT];
-    u8 turnState;
-    u8 turns;
-    u8 actionBattlers;
-    u8 moveBattlers;
-    bool8 hasAI:1;
-    bool8 logAI:1;
-
-    struct RecordedBattleSaveMulti recordedBattleMulti;
-    u8 battleRecordTypes[MAX_BATTLERS_COUNT][BATTLER_RECORD_SIZE];
-    u8 battleRecordTurnNumbers[MAX_BATTLERS_COUNT][BATTLER_RECORD_SIZE];
-    u8 battleRecordSourceLineOffsets[MAX_BATTLERS_COUNT][BATTLER_RECORD_SIZE];
-    u16 recordIndexes[MAX_BATTLERS_COUNT];
-    struct BattlerTurn battleRecordTurns[MAX_TURNS][MAX_BATTLERS_COUNT];
-
-    u8 queuedEventsCount;
-    u8 queueGroupType;
-    u8 queueGroupStart;
-    struct QueuedEvent queuedEvents[MAX_QUEUED_EVENTS];
-    u8 expectedAiActionIndex[MAX_BATTLERS_COUNT];
-    struct ExpectedAIAction expectedAiActions[MAX_BATTLERS_COUNT][MAX_EXPECTED_ACTIONS];
-    struct ExpectedAiScore expectedAiScores[MAX_BATTLERS_COUNT][MAX_TURNS][MAX_AI_SCORE_COMPARISION_PER_TURN]; // Max 4 comparisions per turn
-    struct AILogLine aiLogLines[MAX_BATTLERS_COUNT][MAX_MON_MOVES][MAX_AI_LOG_LINES];
-    u8 aiLogPrintedForMove[MAX_BATTLERS_COUNT]; // Marks ai score log as printed for move, so the same log isn't displayed multiple times.
-    u16 flagId;
-
-    struct BattleTrialData trial;
-};
-
 struct BattleTestRunnerState
 {
     u8 battlersCount;
@@ -791,39 +742,8 @@ struct BattleTestRunnerState
     u8 checkProgressTurn;
 };
 
-struct BattleTestRunnerStateMulti
-{
-    u8 battlersCount;
-    bool8 forceMoveAnim;
-    u16 parametersCount; // Valid only in BattleTest_Setup.
-    u16 parameters;
-    u16 runParameter;
-    u16 rngTag;
-    u16 rngTrialOffset;
-    u16 trials;
-    u16 runTrial;
-    u16 expectedRatio;
-    u16 observedRatio;
-    u16 trialRatio;
-    bool8 runRandomly:1;
-    bool8 didRunRandomly:1;
-    bool8 runGiven:1;
-    bool8 runWhen:1;
-    bool8 runScene:1;
-    bool8 runThen:1;
-    bool8 runFinally:1;
-    bool8 runningFinally:1;
-    bool8 hasTornDownBattle:1;
-    struct BattleTestDataMulti data;
-    u8 *results;
-    u8 checkProgressParameter;
-    u8 checkProgressTrial;
-    u8 checkProgressTurn;
-};
-
 extern const struct TestRunner gBattleTestRunner;
 extern struct BattleTestRunnerState *const gBattleTestRunnerState;
-extern struct BattleTestRunnerStateMulti *const gBattleTestRunnerStateMulti;
 
 #define APPEND_COMMA_TRUE(a) , a, TRUE
 #define R_APPEND_TRUE(...) __VA_OPT__(FIRST(__VA_ARGS__), TRUE RECURSIVELY(R_FOR_EACH(APPEND_COMMA_TRUE, EXCEPT_1(__VA_ARGS__))))
@@ -882,9 +802,6 @@ extern struct BattleTestRunnerStateMulti *const gBattleTestRunnerStateMulti;
 #define DOUBLE_BATTLE_TEST(_name, ...) BATTLE_TEST_ARGS_DOUBLE(_name, BATTLE_TEST_DOUBLES, __VA_ARGS__)
 #define AI_DOUBLE_BATTLE_TEST(_name, ...) BATTLE_TEST_ARGS_DOUBLE(_name, BATTLE_TEST_AI_DOUBLES, __VA_ARGS__)
 
-#define MULTI_BATTLE_TEST(_name, ...) BATTLE_TEST_ARGS_DOUBLE(_name, BATTLE_TEST_MULTI, __VA_ARGS__)
-#define TWO_VS_ONE_BATTLE_TEST(_name, ...) BATTLE_TEST_ARGS_DOUBLE(_name, BATTLE_TEST_TWO_VS_ONE, __VA_ARGS__)
-
 /* Parametrize */
 
 #undef PARAMETRIZE // Override test/test.h's implementation.
@@ -920,10 +837,6 @@ struct moveWithPP {
 
 #define PLAYER(species) for (OpenPokemon(__LINE__, B_SIDE_PLAYER, species); gBattleTestRunnerState->data.currentMon; ClosePokemon(__LINE__))
 #define OPPONENT(species) for (OpenPokemon(__LINE__, B_SIDE_OPPONENT, species); gBattleTestRunnerState->data.currentMon; ClosePokemon(__LINE__))
-#define MULTI_PLAYER(species) for (OpenPokemonMulti(__LINE__, B_POSITION_PLAYER_LEFT, species); gBattleTestRunnerState->data.currentMon; ClosePokemon(__LINE__))
-#define MULTI_OPPONENT1(species) for (OpenPokemonMulti(__LINE__, B_POSITION_OPPONENT_LEFT, species); gBattleTestRunnerState->data.currentMon; ClosePokemon(__LINE__))
-#define MULTI_PARTNER(species) for (OpenPokemonMulti(__LINE__, B_POSITION_PLAYER_RIGHT, species); gBattleTestRunnerState->data.currentMon; ClosePokemon(__LINE__))
-#define MULTI_OPPONENT2(species) for (OpenPokemonMulti(__LINE__, B_POSITION_OPPONENT_RIGHT, species); gBattleTestRunnerState->data.currentMon; ClosePokemon(__LINE__))
 
 #define Gender(gender) Gender_(__LINE__, gender)
 #define Nature(nature) Nature_(__LINE__, nature)
@@ -957,7 +870,6 @@ void SetFlagForTest(u32 sourceLine, u16 flagId);
 void TestSetConfig(u32 sourceLine, enum GenConfigTag configTag, u32 value);
 void ClearFlagAfterTest(void);
 void OpenPokemon(u32 sourceLine, u32 side, u32 species);
-void OpenPokemonMulti(u32 sourceLine, u32 battlerId, u32 species);
 void ClosePokemon(u32 sourceLine);
 
 void RNGSeed_(u32 sourceLine, rng_value_t seed);
@@ -1009,10 +921,6 @@ struct TestAIScoreStruct
 
 #define PLAYER_PARTY (gBattleTestRunnerState->data.recordedBattle.playerParty)
 #define OPPONENT_PARTY (gBattleTestRunnerState->data.recordedBattle.opponentParty)
-#define MULTI_PLAYER_PARTY (gBattleTestRunnerStateMulti->data.recordedBattleMulti.partnerParty)
-#define MULTI_OPPONENT1_PARTY (gBattleTestRunnerStateMulti->data.recordedBattleMulti.opponent1Party)
-#define MULTI_PARTNER_PARTY (gBattleTestRunnerStateMulti->data.recordedBattleMulti.partnerParty)
-#define MULTI_OPPONENT2_PARTY (gBattleTestRunnerStateMulti->data.recordedBattleMulti.opponent2Party)
 
 /* When */
 
