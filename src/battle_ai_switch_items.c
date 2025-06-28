@@ -3062,6 +3062,26 @@ static inline bool32 CanSwitchinWin1v1(u32 hitsToKOAI, u32 hitsToKOPlayer, bool3
     return FALSE;
 }
 
+static u32 GetNextMonInParty(struct Pokemon *party, int firstId, int lastId, u32 battlerIn1, u32 battlerIn2)
+{
+    u32 i;
+    // Iterate through mons
+    for (i = firstId; i < lastId; i++)
+    {
+        // Check mon validity
+        if (!IsValidForBattle(&party[i])
+            || gBattlerPartyIndexes[battlerIn1] == i
+            || gBattlerPartyIndexes[battlerIn2] == i
+            || i == gBattleStruct->monToSwitchIntoId[battlerIn1]
+            || i == gBattleStruct->monToSwitchIntoId[battlerIn2])
+        {
+            continue;
+        }
+        return i;
+    }
+    return PARTY_SIZE;
+}
+
 extern bool8 FlagGet(u16 id);
 
 static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, u32 battler, u32 opposingBattler, u32 battlerIn1, u32 battlerIn2, enum SwitchType switchType)
@@ -3216,6 +3236,12 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
             MgbaPrintf(MGBA_LOG_WARN, "percentage slot takes%d", percentageReceivedStored[monId]);
         }
         #endif
+    }
+    
+    if (gAiThinkingStruct->aiFlags[GetThinkingBattler(battler)] & AI_FLAG_SEQUENCE_SWITCHING)
+    {
+        bestMonId = GetNextMonInParty(party, firstId, lastId, battlerIn1, battlerIn2);
+        return bestMonId;
     }
 
     u32 bestSwitchInScore = 0;
@@ -3420,26 +3446,6 @@ static u32 GetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, 
     return PARTY_SIZE;
 }
 */
-
-static u32 GetNextMonInParty(struct Pokemon *party, int firstId, int lastId, u32 battlerIn1, u32 battlerIn2)
-{
-    u32 i;
-    // Iterate through mons
-    for (i = firstId; i < lastId; i++)
-    {
-        // Check mon validity
-        if (!IsValidForBattle(&party[i])
-            || gBattlerPartyIndexes[battlerIn1] == i
-            || gBattlerPartyIndexes[battlerIn2] == i
-            || i == gBattleStruct->monToSwitchIntoId[battlerIn1]
-            || i == gBattleStruct->monToSwitchIntoId[battlerIn2])
-        {
-            continue;
-        }
-        return i;
-    }
-    return PARTY_SIZE;
-}
 
 u32 GetMostSuitableMonToSwitchInto(u32 battler, enum SwitchType switchType)
 {
