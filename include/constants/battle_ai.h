@@ -33,7 +33,7 @@
 #define AI_FLAG_PP_STALL_PREVENTION         (1 << 25)  // AI keeps track of the player's switches where the incoming mon is immune to the chosen move
 #define AI_FLAG_PREDICT_MOVE                (1 << 26)  // AI will predict the player's move based on what move it would use in the same situation. Recommend using AI_FLAG_OMNISCIENT
 #define AI_FLAG_SMART_TERA                  (1 << 27)  // AI will make smarter decisions when choosing whether to terrastalize (default is to always tera whenever available).
-#define AI_FLAG_PARTNER_SWITCHING           (1 << 28)  // Partner switching...?
+#define AI_FLAG_PARTNER_SWITCHING           (1 << 28)  // Partner switching
 
 #define AI_FLAG_COUNT                       29
 

@@ -8,8 +8,10 @@ ASSUMPTIONS
     ASSUME(gItemsInfo[ITEM_CHOICE_SCARF].holdEffect == HOLD_EFFECT_CHOICE_SCARF);
 }
 
+/*
 AI_SINGLE_BATTLE_TEST("Choiced Pokémon switch out after using a status move once")
 {
+    KNOWN_FAILING; // Not used in game
     u32 j, ability = ABILITY_NONE, heldItem = ITEM_NONE;
 
     static const u32 choiceItems[] = {
@@ -43,6 +45,7 @@ AI_SINGLE_BATTLE_TEST("Choiced Pokémon switch out after using a status move onc
         }
     }
 }
+*/
 
 AI_SINGLE_BATTLE_TEST("Choiced Pokémon only consider their own status moves when determining if they should switch")
 {

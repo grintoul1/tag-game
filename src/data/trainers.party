@@ -80,7 +80,6 @@ Pic: Hiker
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Smart Trainer
 
 === TRAINER_SAWYER_1 ===
 Name: SAWYER
@@ -17508,7 +17507,6 @@ Pic: Red
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Smart Trainer
 
 Charmander
 Level: 5
@@ -17521,7 +17519,6 @@ Pic: Leaf
 Gender: Female
 Music: Male
 Battle Type: Singles
-AI: Smart Trainer
 
 Bulbasaur
 Level: 5
@@ -17535,7 +17532,6 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 Mugshot: LightBlue
-AI: Smart Trainer
 
 Groudon
 Level: 5
@@ -17549,7 +17545,6 @@ Gender: Female
 Music: Male
 Battle Type: Singles
 Mugshot: MayPink
-AI: Smart Trainer
 
 Kyogre
 Level: 5

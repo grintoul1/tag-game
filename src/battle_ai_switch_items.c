@@ -3100,7 +3100,7 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
         firstId=3;
         lastId=6;
     }
-    else if((gBattleTypeFlags & BATTLE_TWO_VS_ONE_OPPONENT) && ((gBattlerPositions[battler] == B_POSITION_OPPONENT_RIGHT) && (gBattlerPositions[battler] == B_POSITION_OPPONENT_LEFT)))
+    else if((gBattleTypeFlags & BATTLE_TWO_VS_ONE_OPPONENT) && ((gBattlerPositions[battler] == B_POSITION_OPPONENT_RIGHT) || (gBattlerPositions[battler] == B_POSITION_OPPONENT_LEFT)))
     {
         firstId=0;
         lastId=6;
@@ -3113,6 +3113,11 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
     else if((gBattleTypeFlags & BATTLE_TYPE_MULTI) && (!(gBattleTypeFlags & BATTLE_TWO_VS_ONE_OPPONENT)) && (gBattlerPositions[battler] == B_POSITION_OPPONENT_RIGHT))
     {
         firstId=3;
+        lastId=6;
+    }
+    else
+    {
+        firstId=0;
         lastId=6;
     }
     for (monId = firstId; monId < lastId; monId++)
@@ -3139,7 +3144,7 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
         #endif
         InitializeSwitchinCandidate(&party[monId]);
         aiMonSpecies = GetMonData(&party[monId], MON_DATA_SPECIES, NULL);
-        aiMonFaster = (GetMonData(&party[monId],MON_DATA_SPEED,NULL) >= gBattleMons[opposingBattler].speed);
+        aiMonFaster = ((GetMonData(&party[monId],MON_DATA_SPEED,NULL) >= gBattleMons[opposingBattler].speed) || ((GetMonData(&party[monId],MON_DATA_SPEED,NULL) <= gBattleMons[opposingBattler].speed) && (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)));
 
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
@@ -3484,7 +3489,7 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, enum SwitchType switchType)
     }
 
     // Only use better mon selection if AI_FLAG_SMART_MON_CHOICES is set for the trainer.
-    if (gAiThinkingStruct->aiFlags[GetThinkingBattler(battler)] & AI_FLAG_SMART_MON_CHOICES) // Double Battles aren't included in AI_FLAG_SMART_MON_CHOICE. Defaults to regular switch in logic
+    if (gAiThinkingStruct->aiFlags[GetThinkingBattler(battler)] & AI_FLAG_SMART_MON_CHOICES)
     {
         bestMonId = CustomGetBestMonIntegrated(party, firstId, lastId, battler, opposingBattler, battlerIn1, battlerIn2, switchType);
         return bestMonId;

@@ -214,7 +214,7 @@
       "elevation": 0,
       "var": "VAR_SHOAL_CAVE_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Route125_EventScript_KimIris"
     }
   ],
   "bg_events": [

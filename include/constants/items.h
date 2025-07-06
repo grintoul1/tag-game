@@ -131,7 +131,6 @@
 
 // Candy
 #define ITEM_RARE_CANDY 102
-#define ITEM_INFINITE_CANDY 830
 #define ITEM_EXP_CANDY_XS 103
 #define ITEM_EXP_CANDY_S 104
 #define ITEM_EXP_CANDY_M 105
@@ -994,13 +993,14 @@
 #define ITEM_POKESHI_DOLL 827
 
 #define ITEM_STRANGE_BALL 828
-#define ITEM_POKE_VIAL 831
-#define ITEM_REPELLENT 832
+#define ITEM_INFINITE_CANDY 829
+#define ITEM_POKE_VIAL 830
+#define ITEM_REPELLENT 831
 
 // HOPO BERRY
 // LEGEND PLATE
 
-#define ITEMS_COUNT 833
+#define ITEMS_COUNT 832
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations
 // Its icon is defined at ITEMS_COUNT as the "return to field" arrow

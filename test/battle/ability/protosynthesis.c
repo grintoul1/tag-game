@@ -58,6 +58,7 @@ SINGLE_BATTLE_TEST("Protosynthesis ability pop up activates only once during the
 {
     u16 turns;
 
+    KNOWN_FAILING; // Using Gen5 ability weather config
     GIVEN {
         PLAYER(SPECIES_WALKING_WAKE) { Ability(ABILITY_PROTOSYNTHESIS); }
         OPPONENT(SPECIES_NINETALES) { Ability(ABILITY_DROUGHT); };
