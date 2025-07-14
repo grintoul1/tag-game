@@ -81,10 +81,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SAILOR",
-      "x": 28,
-      "y": 11,
+      "x": 39,
+      "y": 9,
       "elevation": 4,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -94,10 +94,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SAILOR",
-      "x": 29,
-      "y": 12,
+      "x": 39,
+      "y": 9,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -106,7 +106,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TUBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 20,
       "y": 16,
       "elevation": 3,
@@ -116,10 +116,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route109_EventScript_Ricky",
-      "flag": "0"
+      "flag": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TUBER_F",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
       "x": 15,
       "y": 9,
       "elevation": 3,
@@ -129,7 +129,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route109_EventScript_Lola",
-      "flag": "0"
+      "flag": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
@@ -288,7 +288,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TUBER_F",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
       "x": 19,
       "y": 17,
       "elevation": 3,
@@ -298,10 +298,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route109_EventScript_Hailey",
-      "flag": "0"
+      "flag": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TUBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 17,
       "y": 9,
       "elevation": 3,
@@ -311,7 +311,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route109_EventScript_Chandler",
-      "flag": "0"
+      "flag": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -357,12 +357,12 @@
       "elevation": 0,
       "var": "VAR_ROUTE109_STATE",
       "var_value": "0",
-      "script": "Route109_EventScript_HaileyRicky"
+      "script": "Route109_EventScript_Grunt1Grunt2"
     },
     {
       "type": "trigger",
-      "x": 28,
-      "y": 12,
+      "x": 39,
+      "y": 9,
       "elevation": 0,
       "var": "VAR_ROUTE109_STATE",
       "var_value": "1",
@@ -374,8 +374,8 @@
       "y": 9,
       "elevation": 0,
       "var": "VAR_ROUTE109_STATE",
-      "var_value": "2",
-      "script": "Route109_EventScript_LolaChandler"
+      "var_value": "1",
+      "script": "Route109_EventScript_Grunt3Grunt4"
     }
   ],
   "bg_events": [

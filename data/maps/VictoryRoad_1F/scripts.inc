@@ -219,7 +219,7 @@ VictoryRoad_1F_EventScript_EntranceWally::
 # 110 "data/maps/VictoryRoad_1F/scripts.pory"
 VictoryRoad_1F_EventScript_ExitWally::
 # 111 "data/maps/VictoryRoad_1F/scripts.pory"
-	trainerbattle_single TRAINER_WALLY_VR_2, VictoryRoad_1F_Text_WallyIntro, VictoryRoad_1F_Text_WallyDefeat
+	trainerbattle_single TRAINER_WALLY_ROUTE_114, VictoryRoad_1F_Text_WallyIntro, VictoryRoad_1F_Text_WallyDefeat
 # 112 "data/maps/VictoryRoad_1F/scripts.pory"
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 # 113 "data/maps/VictoryRoad_1F/scripts.pory"
@@ -233,7 +233,7 @@ VictoryRoad_1F_EventScript_ExitWally::
 # 117 "data/maps/VictoryRoad_1F/scripts.pory"
 VictoryRoad_1F_EventScript_RematchWally::
 # 118 "data/maps/VictoryRoad_1F/scripts.pory"
-	trainerbattle_rematch TRAINER_WALLY_VR_2, VictoryRoad_1F_Text_WallyIntro, VictoryRoad_1F_Text_WallyDefeat
+	trainerbattle_rematch TRAINER_WALLY_ROUTE_114, VictoryRoad_1F_Text_WallyIntro, VictoryRoad_1F_Text_WallyDefeat
 # 119 "data/maps/VictoryRoad_1F/scripts.pory"
 	msgbox VictoryRoad_1F_Text_WallyPostBattle, MSGBOX_AUTOCLOSE
 # 120 "data/maps/VictoryRoad_1F/scripts.pory"

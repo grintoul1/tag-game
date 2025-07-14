@@ -60,14 +60,14 @@
 #define TRAINER_GABBY_AND_TY_4               54
 #define TRAINER_GABBY_AND_TY_5               55
 #define TRAINER_GABBY_AND_TY_6               56
-#define TRAINER_LOLA_1                       57
+#define TRAINER_GRUNT_ROUTE109_3                       57
 #define TRAINER_AUSTINA                      58
 #define TRAINER_GWEN                         59
 #define TRAINER_LOLA_2                       60
 #define TRAINER_ARCHIE_MT_PYRE               61
 #define TRAINER_MAXIE_MT_PYRE                62
 #define TRAINER_LOLA_5                       63
-#define TRAINER_RICKY_1                      64
+#define TRAINER_GRUNT_ROUTE109_2                      64
 #define TRAINER_SIMON                        65
 #define TRAINER_CHARLIE                      66
 #define TRAINER_RICKY_2                      67
@@ -660,7 +660,7 @@
 #define TRAINER_FLINT                       654
 #define TRAINER_ASHLEY                      655
 #define TRAINER_WALLY_MAUVILLE              656
-#define TRAINER_WALLY_VR_2                  657
+#define TRAINER_WALLY_ROUTE_114                  657
 #define TRAINER_WALLY_VR_3                  658
 #define TRAINER_WALLY_VR_4                  659
 #define TRAINER_WALLY_VR_5                  660
@@ -700,8 +700,8 @@
 #define TRAINER_DAWSON                      694
 #define TRAINER_SARAH                       695
 #define TRAINER_DARIAN                      696
-#define TRAINER_HAILEY                      697
-#define TRAINER_CHANDLER                    698
+#define TRAINER_GRUNT_ROUTE109_1                      697
+#define TRAINER_GRUNT_ROUTE109_4                    698
 #define TRAINER_KALEB                       699
 #define TRAINER_JOSEPH                      700
 #define TRAINER_ALYSSA                      701

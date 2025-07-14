@@ -847,15 +847,17 @@ Route109_Text_EdmondPostBattle:
 	.string "I'm a SAILOR, but…$"
 
 Route109_Text_RickyIntro:
-	.string "I'm thirsty… I could go for a SODA POP\n"
-	.string "at the SEASHORE HOUSE…$"
+	.string "How did you get here, did you\n"
+	.string "swim from Dewford Town?!$"
 
 Route109_Text_RickyDefeated:
-	.string "Groan…$"
+	.string "So much energy after such a\n"
+	.string "long swim…$"
 
 Route109_Text_RickyPostBattle:
-	.string "I'm getting famished… My inner tube\n"
-	.string "looks like a giant doughnut…$"
+	.string "What kinda of morning routine\n"
+	.string "you must have to be able to swim\l"
+	.string "so far and then battle so well…$"
 
 Route109_Text_RickyRegister:
 	.string "Will you have another match with me\n"
@@ -874,15 +876,16 @@ Route109_Text_RickyRematchPostBattle:
 	.string "seems to taste a little better.$"
 
 Route109_Text_LolaIntro:
-	.string "Doesn't a beach umbrella look like\n"
-	.string "a giant flower?$"
+	.string "Well this is unexpected. Archie\n"
+	.string "really did cover all bases.$"
 
 Route109_Text_LolaDefeated:
-	.string "Mommy!$"
+	.string "So much for a boring guard\n"
+	.string "position…$"
 
 Route109_Text_LolaPostBattle:
-	.string "If you look at the beach from the sky,\n"
-	.string "it looks like a big flower garden!$"
+	.string "This was supposed to be an easy\n"
+	.string "job…$"
 
 Route109_Text_LolaRegister:
 	.string "Me?\n"
@@ -968,28 +971,27 @@ Route109_Text_MelNotEnoughPokemon:
 	.string "battle together.$"
 
 Route109_Text_ChandlerIntro:
-	.string "Tadaah! See?\n"
-	.string "My inner tube's round!$"
+	.string "Oh no you don't. Nobody's getting past me\n"
+	.string "today!$"
 
 Route109_Text_ChandlerDefeated:
-	.string "Oh, oh!\n"
-	.string "Too bad!$"
+	.string "Okay, okay!\n"
+	.string "Just stay away from the Shipyard!$"
 
 Route109_Text_ChandlerPostBattle:
-	.string "After I showed you my round inner\n"
-	.string "tube, too…$"
+	.string "Archie's going to be very unhappy\n"
+	.string "with us…$"
 
 Route109_Text_HaileyIntro:
-	.string "I can't swim, so I'm pretending\n"
-	.string "to swim.$"
+	.string "Nobody is to enter Slateport City.\n"
+	.string "Archie's orders!$"
 
 Route109_Text_HaileyDefeated:
-	.string "I thought so!\n"
-	.string "I didn't think we could win.$"
+	.string "Maybe I can make an exception!$"
 
 Route109_Text_HaileyPostBattle:
-	.string "When I learn how to swim, I think\n"
-	.string "my POKéMON will become tougher.$"
+	.string "You didn't come from Route 109,\n"
+	.string "okay?$"
 
 Route109_Text_ElijahIntro:
 	.string "For a guy as macho as me, this kind\n"

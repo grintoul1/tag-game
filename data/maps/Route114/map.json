@@ -212,7 +212,7 @@
       "x": 0,
       "y": 19,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
@@ -222,10 +222,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
-      "x": 22,
-      "y": 21,
+      "x": 0,
+      "y": 20,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -365,16 +365,44 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
-      "x": 20,
-      "y": 21,
+      "x": 0,
+      "y": 20,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route114_EventScript_Kai",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ROUTE114_RIVAL",
+      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
+      "x": 21,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_ROUTE_114_RIVAL"
+    },
+    {
+      "local_id": "LOCALID_ROUTE114_WALLY",
+      "graphics_id": "OBJ_EVENT_GFX_WALLY",
+      "x": 34,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_ROUTE_114_WALLY"
     }
   ],
   "warp_events": [
@@ -417,8 +445,8 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 21,
-      "y": 21,
+      "x": 0,
+      "y": 20,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
       "var_value": "1",
@@ -430,7 +458,7 @@
       "y": 50,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
-      "var_value": "2",
+      "var_value": "1",
       "script": "Route114_EventScript_IvyTyra"
     },
     {
@@ -439,7 +467,7 @@
       "y": 55,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
-      "var_value": "3",
+      "var_value": "2",
       "script": "Route114_EventScript_Grunt_Route_114_1Grunt_Route_114_2"
     },
     {
@@ -448,7 +476,7 @@
       "y": 70,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
-      "var_value": "4",
+      "var_value": "3",
       "script": "Route114_EventScript_Grunt_Route_114_3Grunt_Route_114_4"
     },
     {
@@ -457,7 +485,7 @@
       "y": 68,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
-      "var_value": "5",
+      "var_value": "4",
       "script": "Route114_EventScript_Grunt_Route_114_5Grunt_Route_114_6"
     },
     {
@@ -466,12 +494,12 @@
       "y": 19,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
-      "var_value": "5",
+      "var_value": "4",
       "script": "Route114_EventScript_SteveCharlotte"
     },
     {
       "type": "trigger",
-      "x": 27,
+      "x": 24,
       "y": 10,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
@@ -480,7 +508,7 @@
     },
     {
       "type": "trigger",
-      "x": 27,
+      "x": 24,
       "y": 11,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
@@ -489,7 +517,7 @@
     },
     {
       "type": "trigger",
-      "x": 27,
+      "x": 24,
       "y": 12,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",
@@ -498,7 +526,7 @@
     },
     {
       "type": "trigger",
-      "x": 27,
+      "x": 24,
       "y": 13,
       "elevation": 0,
       "var": "VAR_ROUTE114_STATE",

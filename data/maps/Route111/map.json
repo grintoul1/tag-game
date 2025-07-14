@@ -88,10 +88,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
-      "x": 27,
-      "y": 49,
+      "x": 39,
+      "y": 47,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -166,10 +166,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CAMPER",
-      "x": 25,
-      "y": 49,
+      "x": 39,
+      "y": 47,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -400,10 +400,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
-      "x": 22,
-      "y": 109,
+      "x": 4,
+      "y": 103,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -413,10 +413,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_5",
-      "x": 20,
-      "y": 109,
+      "x": 4,
+      "y": 103,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -1016,8 +1016,8 @@
     },
     {
       "type": "trigger",
-      "x": 21,
-      "y": 109,
+      "x": 4,
+      "y": 103,
       "elevation": 0,
       "var": "VAR_ROUTE111_STATE",
       "var_value": "1",
@@ -1029,7 +1029,7 @@
       "y": 88,
       "elevation": 0,
       "var": "VAR_ROUTE111_STATE",
-      "var_value": "2",
+      "var_value": "1",
       "script": "Route111_EventScript_TravisIrene"
     },
     {
@@ -1038,7 +1038,7 @@
       "y": 59,
       "elevation": 0,
       "var": "VAR_ROUTE111_STATE",
-      "var_value": "3",
+      "var_value": "2",
       "script": "Route111_EventScript_CeliaBranden"
     },
     {
@@ -1047,13 +1047,13 @@
       "y": 55,
       "elevation": 0,
       "var": "VAR_ROUTE111_STATE",
-      "var_value": "4",
+      "var_value": "3",
       "script": "Route111_EventScript_BryanDusty"
     },
     {
       "type": "trigger",
-      "x": 26,
-      "y": 49,
+      "x": 39,
+      "y": 47,
       "elevation": 0,
       "var": "VAR_ROUTE111_STATE",
       "var_value": "5",
@@ -1065,7 +1065,7 @@
       "y": 46,
       "elevation": 0,
       "var": "VAR_ROUTE111_STATE",
-      "var_value": "6",
+      "var_value": "4",
       "script": "Route111_EventScript_BeckyDrew"
     },
     {
@@ -1074,7 +1074,7 @@
       "y": 18,
       "elevation": 0,
       "var": "VAR_ROUTE111_STATE",
-      "var_value": "7",
+      "var_value": "5",
       "script": "Route111_EventScript_WiltonBrooke"
     }
   ],

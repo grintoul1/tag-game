@@ -1122,10 +1122,10 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Supersonic
 - Hyper Voice
 
-=== TRAINER_LOLA_1 ===
-Name: LOLA
-Class: Tuber F
-Pic: Tuber F
+=== TRAINER_GRUNT_ROUTE109_3 ===
+Name: Grunt
+Class: Team Aqua
+Pic: Aqua Grunt F
 Gender: Female
 Music: Girl
 Battle Type: Singles
@@ -1235,10 +1235,10 @@ Azumarill
 Level: 35
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-=== TRAINER_RICKY_1 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
+=== TRAINER_GRUNT_ROUTE109_2 ===
+Name: Grunt
+Class: Team Aqua
+Pic: Aqua Grunt M
 Gender: Male
 Music: Girl
 Battle Type: Singles
@@ -6107,10 +6107,10 @@ Music: Male
 Battle Type: Singles
 AI: Smart Trainer
 
-Dragonite
+Zoroark
 Level: 100
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Dragon Claw
+- Night Daze
 
 Dragonite
 Level: 100
@@ -11573,7 +11573,8 @@ Music: Male
 Battle Type: Singles
 AI: Smart Trainer
 
-Wurmple
+Zoroark
+Ability: Illusion
 Level: 50
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - String Shot
@@ -12348,13 +12349,12 @@ Ralts
 Level: 16
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
-=== TRAINER_WALLY_VR_2 ===
-Name: WALLY
+=== TRAINER_WALLY_ROUTE_114 ===
+Name: Wally
 Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore
 Battle Type: Singles
 AI: Smart Trainer
 
@@ -13289,10 +13289,10 @@ Magikarp
 Level: 9
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_HAILEY ===
-Name: HAILEY
-Class: Tuber F
-Pic: Tuber F
+=== TRAINER_GRUNT_ROUTE109_1 ===
+Name: Grunt
+Class: Team Aqua
+Pic: Aqua Grunt F
 Gender: Female
 Music: Girl
 Battle Type: Singles
@@ -13302,10 +13302,10 @@ Marill
 Level: 13
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CHANDLER ===
-Name: CHANDLER
-Class: Tuber M
-Pic: Tuber M
+=== TRAINER_GRUNT_ROUTE109_4 ===
+Name: Grunt
+Class: Team Aqua
+Pic: Aqua Grunt M
 Gender: Male
 Music: Girl
 Battle Type: Singles

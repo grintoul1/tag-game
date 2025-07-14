@@ -19,7 +19,7 @@
 #define SHOULD_SWITCH_HASBADODDS_PERCENTAGE                         0
 #define SHOULD_SWITCH_ENCORE_STATUS_PERCENTAGE                      0 // Chance to switch if encored into status move
 #define SHOULD_SWITCH_ENCORE_DAMAGE_PERCENTAGE                      0 // Chance to switch if encored into damaging move
-#define SHOULD_SWITCH_CHOICE_LOCKED_PERCENTAGE                      50 // Only if locked into status move
+#define SHOULD_SWITCH_CHOICE_LOCKED_PERCENTAGE                      100 // Only if locked into status move
 #define SHOULD_SWITCH_ATTACKING_STAT_MINUS_TWO_PERCENTAGE           0
 #define SHOULD_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS_PERCENTAGE    0
 #define SHOULD_SWITCH_ALL_SCORES_BAD_PERCENTAGE                     50
