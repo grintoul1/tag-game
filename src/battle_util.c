@@ -10312,10 +10312,10 @@ u32 GetIllusionMonPartyId(struct Pokemon *party, struct Pokemon *mon, struct Pok
             if (&party[id] != mon && &party[id] != partnerMon)
                 return id;
             else // If this pokemon or its partner is last in the party, ignore Illusion.
-                return PARTY_END;
+                return PARTY_SIZE;
         }
     }
-    return PARTY_END;
+    return PARTY_SIZE;
 }
 
 bool32 SetIllusionMon(struct Pokemon *mon, u32 battler)
