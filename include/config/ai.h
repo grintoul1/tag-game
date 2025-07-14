@@ -54,7 +54,7 @@
 #define LOW_ACCURACY_THRESHOLD                                  75 // Moves with accuracy equal OR below this value are considered low accuracy 
 
 // AI move scoring
-#define STATUS_MOVE_FOCUS_PUNCH_CHANCE                          50 // Chance the AI will use a status move if the player's best move is Focus Punch
+#define STATUS_MOVE_FOCUS_PUNCH_CHANCE                          0 // Chance the AI will use a status move if the player's best move is Focus Punch
 #define BOOST_INTO_HAZE_CHANCE                                  0 // Chance the AI will use a stat boosting move if the player has used Haze
 
 // AI damage calc considerations

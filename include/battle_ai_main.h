@@ -27,9 +27,9 @@ enum StatChange
     STAT_CHANGE_EVASION
 };
 
-#define BEST_DAMAGE_MOVE         1  // Move with the most amount of hits with the best accuracy/effect
-#define POWERFUL_STATUS_MOVE     10 // Moves with this score will be chosen over a move that faints target
-#define NO_DAMAGE_OR_FAILS      -20 // Move fails or does no damage
+#define BEST_DAMAGE_MOVE         6  // Move with the most amount of hits with the best accuracy/effect
+#define POWERFUL_STATUS_MOVE     30 // Moves with this score will be chosen over a move that faints target
+#define NO_DAMAGE_OR_FAILS      -50 // Move fails or does no damage
 
 // Scores given in AI_CalcMoveEffectScore and AI_CalcHoldEffectMoveScore
 enum AIScore
@@ -46,9 +46,9 @@ enum AIScore
 };
 
 // AI_TryToFaint
-#define FAST_KILL      6 // AI is faster and faints target
-#define SLOW_KILL      4 // AI is slower and faints target
-#define LAST_CHANCE    2 // AI faints to target. It should try and do damage with a priority move
+#define FAST_KILL      12 // AI is faster and faints target
+#define SLOW_KILL      6 // AI is slower and faints target
+#define LAST_CHANCE    14 // AI faints to target. It should try and do damage with a priority move
 
 // AI_Risky
 #define STRONG_RISKY_EFFECT     3
