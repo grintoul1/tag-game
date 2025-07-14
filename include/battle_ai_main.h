@@ -35,11 +35,11 @@ enum StatChange
 enum AIScore
 {
     NO_INCREASE = 0,
-    WEAK_EFFECT = 1,
-    DECENT_EFFECT = 2,
-    GOOD_EFFECT = 3,
-    BEST_EFFECT = 4,
-    PERFECT_EFFECT = 10,
+    WEAK_EFFECT = 6,
+    DECENT_EFFECT = 7,
+    GOOD_EFFECT = 8,
+    BEST_EFFECT = 17,
+    PERFECT_EFFECT = 24,
     BAD_EFFECT = -1,
     AWFUL_EFFECT = -3,
     WORST_EFFECT = -10

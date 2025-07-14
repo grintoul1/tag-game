@@ -80,9 +80,9 @@
 #define SMART_SWITCHING_OMNISCIENT                              FALSE // AI will use omniscience for switching calcs, regardless of omniscience setting otherwise
 
 // AI's acceptable number of hits to KO the partner via friendly fire in a double battle.
-#define FRIENDLY_FIRE_RISKY_THRESHOLD           2
-#define FRIENDLY_FIRE_NORMAL_THRESHOLD          3
-#define FRIENDLY_FIRE_CONSERVATIVE_THRESHOLD    4
+#define FRIENDLY_FIRE_RISKY_THRESHOLD           1
+#define FRIENDLY_FIRE_NORMAL_THRESHOLD          1
+#define FRIENDLY_FIRE_CONSERVATIVE_THRESHOLD    1
 
 // AI's desired stat changes for Guard Split and Power Split, treated as %
 #define GUARD_SPLIT_ALLY_PERCENTAGE     200
