@@ -12,7 +12,7 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
@@ -110,7 +110,5 @@
       "script": "MagmaHideout_2F_1R_EventScript_Grunt5Grunt4"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }
