@@ -162,6 +162,19 @@ bool32 IsBattlerPredictedToSwitch(u32 battler)
     return FALSE;
 }
 
+bool32 IsBattlerFirstTurnOrRandom(u32 battler)
+{
+    return (gDisableStructs[battler].isFirstTurn || Random() & 1);
+}
+
+bool32 ShouldUseProtect(u32 battlerAtk, u32 battlerDef, u32 move)
+{
+    if (gLastMoves[battlerAtk] == gMovesInfo[move].effect && (Random() & 1))
+        return FALSE;
+    else
+        return TRUE;
+}
+
 // Either a predicted move or the last used move from an opposing battler
 u32 GetIncomingMove(u32 battler, u32 opposingBattler, struct AiLogicData *aiData)
 {
@@ -1298,6 +1311,24 @@ u32 NoOfHitsForTargetToFaintAI(u32 battlerDef, u32 battlerAtk)
     return leastNumberOfHits;
 }
 
+u32 NoOfHitsForAIToFaintTarget(u32 battlerAtk, u32 battlerDef)
+{
+    u32 i;
+    u32 currNumberOfHits;
+    u32 leastNumberOfHits = UNKNOWN_NO_OF_HITS;
+
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        currNumberOfHits = GetNoOfHitsToKOBattler(battlerAtk, battlerDef, i, AI_ATTACKING);
+        if (currNumberOfHits != 0)
+        {
+            if (currNumberOfHits < leastNumberOfHits)
+                leastNumberOfHits = currNumberOfHits;
+        }
+    }
+    return leastNumberOfHits;
+}
+
 u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef, enum DamageCalcContext calcContext)
 {
     struct AiLogicData *aiData = gAiLogicData;
@@ -1987,18 +2018,23 @@ bool32 CanLowerStat(u32 battlerAtk, u32 battlerDef, u32 abilityDef, u32 stat)
 u32 IncreaseStatDownScore(u32 battlerAtk, u32 battlerDef, u32 stat)
 {
     u32 tempScore = NO_INCREASE;
+    u32 noOfHitsToFaint = NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk);
+    u32 noOfHitsToFaintTarget = NoOfHitsForAIToFaintTarget(battlerAtk, battlerDef);
+    u32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, TRUE);
 
-    // Don't increase score if target is already -3 stat stage
-    if (stat != STAT_SPEED && gBattleMons[battlerDef].statStages[stat] <= DEFAULT_STAT_STAGE - 3)
+    // Don't increase score if target is already -2 stat stage
+    if (stat != STAT_SPEED && gBattleMons[battlerDef].statStages[stat] <= DEFAULT_STAT_STAGE - 2)
         return NO_INCREASE;
 
     // Don't decrease stat if target will die to residual damage
     if (GetBattlerSecondaryDamage(battlerDef) >= gBattleMons[battlerDef].hp)
         return NO_INCREASE;
 
+    /*
     // Don't decrese stat if opposing battler has Encore
     if (HasBattlerSideMoveWithEffect(battlerDef, EFFECT_ENCORE))
         return NO_INCREASE;
+    */
 
     if (DoesAbilityRaiseStatsWhenLowered(gAiLogicData->abilities[battlerDef]))
         return NO_INCREASE;
@@ -2010,24 +2046,28 @@ u32 IncreaseStatDownScore(u32 battlerAtk, u32 battlerDef, u32 stat)
     switch (stat)
     {
     case STAT_ATK:
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL))
-            tempScore += DECENT_EFFECT;
+        if (!HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && noOfHitsToFaint == 1 && aiIsFaster)
+            tempScore += DECENT_EFFECT + 1; // +9
+        else if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL))
+            tempScore += WEAK_EFFECT; // +6
         break;
     case STAT_DEF:
-        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL))
-            tempScore += DECENT_EFFECT;
+        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && ((noOfHitsToFaint > 3) || (noOfHitsToFaint > 4 && aiIsFaster)) && noOfHitsToFaintTarget > 3)
+            tempScore += DECENT_EFFECT + 1; // +9
         break;
     case STAT_SPEED:
         if (AI_IsSlower(battlerAtk, battlerDef, gAiThinkingStruct->moveConsidered))
-            tempScore += DECENT_EFFECT;
+            tempScore += WEAK_EFFECT;
         break;
     case STAT_SPATK:
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL))
-            tempScore += DECENT_EFFECT;
+        if (!HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) && noOfHitsToFaint == 1 && aiIsFaster)
+            tempScore += DECENT_EFFECT + 1; // +9
+        else if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL))
+            tempScore += WEAK_EFFECT; // +6
         break;
     case STAT_SPDEF:
-        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL))
-            tempScore += DECENT_EFFECT;
+        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && ((noOfHitsToFaint > 3) || (noOfHitsToFaint > 4 && aiIsFaster)) && noOfHitsToFaintTarget > 3)
+            tempScore += DECENT_EFFECT + 1; // +9
         break;
     case STAT_ACC:
         if (gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
@@ -2040,6 +2080,8 @@ u32 IncreaseStatDownScore(u32 battlerAtk, u32 battlerDef, u32 stat)
             tempScore += WEAK_EFFECT;
         break;
     case STAT_EVASION:
+        break;
+        /*
         if (gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
             tempScore += WEAK_EFFECT;
         if (gStatuses3[battlerDef] & STATUS3_LEECHSEED)
@@ -2048,10 +2090,10 @@ u32 IncreaseStatDownScore(u32 battlerAtk, u32 battlerDef, u32 stat)
             tempScore += WEAK_EFFECT;
         if (gBattleMons[battlerDef].volatiles.cursed)
             tempScore += WEAK_EFFECT;
-        break;
+        */
     }
 
-    return (tempScore > BEST_EFFECT) ? BEST_EFFECT : tempScore; // don't inflate score so only max +4
+    return (tempScore); // > BEST_EFFECT) ? BEST_EFFECT : tempScore; // don't inflate score so only max +4
 }
 
 bool32 BattlerStatCanRise(u32 battler, u32 battlerAbility, u32 stat)
@@ -3467,8 +3509,13 @@ bool32 ShouldTrap(u32 battlerAtk, u32 battlerDef, u32 move)
     if (IsBattlerTrapped(battlerAtk, battlerDef))
         return FALSE;
 
+    if (!CanTargetFaintAi(battlerDef, battlerAtk))
+        return TRUE;    // attacker goes first and opponent can't kill us
+
+    /*
     if (BattlerWillFaintFromSecondaryDamage(battlerDef, gAiLogicData->abilities[battlerDef]))
         return TRUE;    // battler is taking secondary damage with low HP
+    */
 
     if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_STALL)
     {
@@ -3644,10 +3691,12 @@ bool32 ShouldSetScreen(u32 battlerAtk, u32 battlerDef, enum BattleMoveEffects mo
 {
     u32 atkSide = GetBattlerSide(battlerAtk);
 
+    /*
     // Don't waste a turn if screens will be broken
     if (HasMoveWithEffect(battlerDef, EFFECT_BRICK_BREAK)
      || HasMoveWithEffect(battlerDef, EFFECT_RAGING_BULL))
         return FALSE;
+    */
 
     switch (moveEffect)
     {
@@ -4156,8 +4205,8 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
     enum AIScore tempScore = NO_INCREASE;
     u32 noOfHitsToFaint = NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk);
     u32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, TRUE);
-    u32 shouldSetUp = ((noOfHitsToFaint >= 2 && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
-    u32 i;
+    u32 shouldSetUp = ((noOfHitsToFaint >= 1 && aiIsFaster) || (noOfHitsToFaint >= 2 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
+    // u32 i;
 
     if (considerContrary && gAiLogicData->abilities[battlerAtk] == ABILITY_CONTRARY)
         return NO_INCREASE;
@@ -4166,13 +4215,14 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
     if (HasBattlerSideAbility(battlerDef, ABILITY_UNAWARE, gAiLogicData))
         return NO_INCREASE;
 
-    // Don't increase stat if AI is at +4
-    if (gBattleMons[battlerAtk].statStages[statId] >= MAX_STAT_STAGE - 2)
+    // Don't increase stat if AI is at +2
+    if (gBattleMons[battlerAtk].statStages[statId] >= MAX_STAT_STAGE - 4)
         return NO_INCREASE;
-
+    /*
     // Don't increase stat if AI has less then 70% HP and number of hits isn't known
-    if (gAiLogicData->hpPercents[battlerAtk] < 70 && noOfHitsToFaint == UNKNOWN_NO_OF_HITS)
+     if (gAiLogicData->hpPercents[battlerAtk] < 70 && noOfHitsToFaint == UNKNOWN_NO_OF_HITS)
         return NO_INCREASE;
+    */
 
     // Don't set up if AI is dead to residual damage from weather
     if (GetBattlerSecondaryDamage(battlerAtk) >= gBattleMons[battlerAtk].hp)
@@ -4182,23 +4232,30 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
     if (gAiLogicData->abilities[battlerDef] == ABILITY_OPPORTUNIST)
         return NO_INCREASE;
 
+    /*
     // Don't increase stats if opposing battler has Encore
     if (HasBattlerSideMoveWithEffect(battlerDef, EFFECT_ENCORE))
         return NO_INCREASE;
+    */
 
+    /*
     // Don't increase stats if opposing battler has used Haze effect
     if (!RandomPercentage(RNG_AI_BOOST_INTO_HAZE, BOOST_INTO_HAZE_CHANCE) &&
         (HasBattlerSideUsedMoveWithEffect(battlerDef, EFFECT_HAZE)
         || HasBattlerSideUsedMoveWithAdditionalEffect(battlerDef, MOVE_EFFECT_CLEAR_SMOG)
         || HasBattlerSideUsedMoveWithAdditionalEffect(battlerDef, MOVE_EFFECT_HAZE)))
         return NO_INCREASE;
+    */
 
+    /*
     // Don't increase if AI is at +1 and opponent has Haze effect
     if (gBattleMons[battlerAtk].statStages[statId] >= MAX_STAT_STAGE - 5 && (HasBattlerSideMoveWithEffect(battlerDef, EFFECT_HAZE)
         || HasBattlerSideMoveWithAdditionalEffect(battlerDef, MOVE_EFFECT_CLEAR_SMOG)
         || HasBattlerSideMoveWithAdditionalEffect(battlerDef, MOVE_EFFECT_HAZE)))
         return NO_INCREASE;
+    */
 
+    /*
     // Predicting switch
     if (IsBattlerPredictedToSwitch(battlerDef))
     {
@@ -4216,78 +4273,161 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
         // Otherwise if predicting switch, stat increases are great momentum
         tempScore += WEAK_EFFECT;
     }
+    */
 
     switch (statId)
     {
     case STAT_CHANGE_ATK:
-        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
-            tempScore += DECENT_EFFECT;
+        // If both targets are incapacitated and user has physical move
+        if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && IsBattlerIncapacitated(BATTLE_PARTNER(battlerDef), gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL))
+        {
+            tempScore += (GOOD_EFFECT + SLOW_KILL); // + 12
+            break;
+        }
+        // If target is incapacitated and user has physical move, 50% increase
+        else if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && AI_RandLessThan(128))
+        {
+            tempScore += (GOOD_EFFECT + SLOW_KILL); // + 12
+            break;
+        }
+        // If Faster and not 3HKO'd and has a physical move
+        else if (!IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && noOfHitsToFaint > 3 && aiIsFaster && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+        {
+            tempScore += DECENT_EFFECT; // +7
+            break;
+        }
+        // If has physical move and not SlowHKO'd or fast 2HKO'd
+        else if (!IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+        {
+            tempScore += WEAK_EFFECT; // +6
+            break;
+        }
         break;
     case STAT_CHANGE_DEF:
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL))
+        // Target has physical move or no special moves
+        if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL)) && shouldSetUp)
         {
-            if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_STALL)
-                tempScore += DECENT_EFFECT;
-            else
-                tempScore += WEAK_EFFECT;
+            tempScore += WEAK_EFFECT; // +6
         }
         break;
     case STAT_CHANGE_SPEED:
         if ((noOfHitsToFaint >= 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS)
-            tempScore += DECENT_EFFECT;
+            tempScore += WEAK_EFFECT; // +6
         break;
     case STAT_CHANGE_SPATK:
-        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
-            tempScore += DECENT_EFFECT;
+        // If both targets are incapacitated and user has special move
+        if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && IsBattlerIncapacitated(BATTLE_PARTNER(battlerDef), gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL))
+        {
+            tempScore += (GOOD_EFFECT + SLOW_KILL); // + 12
+            break;
+        }
+        // If target is incapacitated and user has special move, 50% increase
+        else if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && AI_RandLessThan(128))
+        {
+            tempScore += (GOOD_EFFECT + SLOW_KILL); // + 12
+            break;
+        }
+        // If Faster and not 3HKO'd and has a special move
+        else if (!IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && noOfHitsToFaint > 3 && aiIsFaster && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
+        {
+            tempScore += DECENT_EFFECT; // +7
+            break;
+        }
+        // If has special move and not SlowHKO'd or fast 2HKO'd
+        else if (!IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
+        {
+            tempScore += WEAK_EFFECT; // +6
+            break;
+        }
         break;
     case STAT_CHANGE_SPDEF:
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL))
+        // Target has special move or no physical moves
+        if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)) && shouldSetUp)
         {
-            if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_STALL)
-                tempScore += DECENT_EFFECT;
-            else
-                tempScore += WEAK_EFFECT;
+            tempScore += WEAK_EFFECT; // +6
         }
         break;
     case STAT_CHANGE_ATK_2:
-        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
-            tempScore += GOOD_EFFECT;
+        // If both targets are incapacitated and user has physical move
+        if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && IsBattlerIncapacitated(BATTLE_PARTNER(battlerDef), gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL))
+        {
+            tempScore += (GOOD_EFFECT + FAST_KILL); // + 18
+            break;
+        }
+        // If target is incapacitated and user has physical move, 50% increase
+        else if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && AI_RandLessThan(128))
+        {
+            tempScore += (GOOD_EFFECT + FAST_KILL); // + 18
+            break;
+        }
+        // If Faster and not 3HKO'd and has a physical move
+        else if (noOfHitsToFaint > 3 && aiIsFaster && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+        {
+            tempScore += GOOD_EFFECT; // +8
+            break;
+        }
+        // If has physical move and not SlowHKO'd or fast 2HKO'd
+        else if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+        {
+            tempScore += DECENT_EFFECT; // +7
+            break;
+        }
         break;
     case STAT_CHANGE_DEF_2:
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL))
+        // Target has physical move or no special moves
+        if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL)) && shouldSetUp)
         {
-            if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_STALL)
-                tempScore += GOOD_EFFECT;
-            else
-                tempScore += DECENT_EFFECT;
+            tempScore += DECENT_EFFECT; // +7
         }
         break;
     case STAT_CHANGE_SPEED_2:
         if ((noOfHitsToFaint >= 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS)
-            tempScore += GOOD_EFFECT;
+            tempScore += GOOD_EFFECT; // +8
         break;
     case STAT_CHANGE_SPATK_2:
-        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
-            tempScore += GOOD_EFFECT;
+        // If both targets are incapacitated and user has special move
+        if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && IsBattlerIncapacitated(BATTLE_PARTNER(battlerDef), gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL))
+        {
+            tempScore += (GOOD_EFFECT + FAST_KILL); // + 18
+            break;
+        }
+        // If target is incapacitated and user has special move, 50% increase
+        else if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && AI_RandLessThan(128))
+        {
+            tempScore += (GOOD_EFFECT + FAST_KILL); // + 18
+            break;
+        }
+        // If Faster and not 3HKO'd and has a special move
+        else if (noOfHitsToFaint > 3 && aiIsFaster && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
+        {
+            tempScore += GOOD_EFFECT; // +8
+            break;
+        }
+        // If has special move and not SlowHKO'd or fast 2HKO'd
+        else if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
+        {
+            tempScore += DECENT_EFFECT; // +7
+            break;
+        }
         break;
     case STAT_CHANGE_SPDEF_2:
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL))
+        // Target has special move or no physical moves
+        if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)) && shouldSetUp)
         {
-            if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_STALL)
-                tempScore += GOOD_EFFECT;
-            else
-                tempScore += DECENT_EFFECT;
+            tempScore += DECENT_EFFECT; // +7
         }
         break;
     case STAT_CHANGE_ACC:
-        if (gBattleMons[battlerAtk].statStages[STAT_ACC] <= 3) // Increase only if necessary
-            tempScore += DECENT_EFFECT;
+        // If Accuracy neutral or lower
+        if (gBattleMons[battlerAtk].statStages[STAT_ACC] <= DEFAULT_STAT_STAGE) // Increase only if necessary
+            tempScore += WEAK_EFFECT; // +6
         break;
     case STAT_CHANGE_EVASION:
+        // If immune, not 3HKO'd, or Target is incapacitated
         if (noOfHitsToFaint > 3 || noOfHitsToFaint == UNKNOWN_NO_OF_HITS)
-            tempScore += GOOD_EFFECT;
-        else
-            tempScore += DECENT_EFFECT;
+            tempScore += GOOD_EFFECT; // +8
+        else if (gBattleMons[battlerAtk].statStages[STAT_EVASION] <= DEFAULT_STAT_STAGE)
+            tempScore += WEAK_EFFECT; // +6
         break;
     }
 
@@ -4403,7 +4543,7 @@ void IncreaseConfusionScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score
           || (gAiLogicData->abilities[battlerAtk] == ABILITY_SERENE_GRACE && HasMoveWithMoveEffectExcept(battlerAtk, MOVE_EFFECT_FLINCH, EFFECT_FIRST_TURN_ONLY)))
             ADJUST_SCORE_PTR(GOOD_EFFECT);
         else
-            ADJUST_SCORE_PTR(DECENT_EFFECT);
+            ADJUST_SCORE_PTR(WEAK_EFFECT);
     }
 }
 
@@ -4743,7 +4883,7 @@ bool32 AI_IsBattlerAsleepOrComatose(u32 battlerId)
 s32 AI_TryToClearStats(u32 battlerAtk, u32 battlerDef, bool32 isDoubleBattle)
 {
     if (isDoubleBattle)
-        return min(CountPositiveStatStages(battlerDef) + CountPositiveStatStages(BATTLE_PARTNER(battlerDef)), 7);
+        return min(CountPositiveStatStages(battlerDef) + CountPositiveStatStages(BATTLE_PARTNER(battlerDef) + 4), 5);
     else
         return min(CountPositiveStatStages(battlerDef), 4);
 }
