@@ -1813,6 +1813,7 @@ bool32 ShouldSetSandstorm(u32 battler, u32 ability, enum ItemHoldEffect holdEffe
     if (IsWeatherActive(B_WEATHER_SANDSTORM | B_WEATHER_PRIMAL_ANY) != WEATHER_INACTIVE)
         return FALSE;
 
+    /*
     if (ability == ABILITY_SAND_VEIL
      || ability == ABILITY_SAND_RUSH
      || ability == ABILITY_SAND_FORCE
@@ -1825,7 +1826,8 @@ bool32 ShouldSetSandstorm(u32 battler, u32 ability, enum ItemHoldEffect holdEffe
     {
         return TRUE;
     }
-    return FALSE;
+    */
+    return TRUE;
 }
 
 bool32 ShouldSetHail(u32 battler, u32 ability, enum ItemHoldEffect holdEffect)
@@ -1833,6 +1835,7 @@ bool32 ShouldSetHail(u32 battler, u32 ability, enum ItemHoldEffect holdEffect)
     if (IsWeatherActive(B_WEATHER_HAIL | B_WEATHER_SNOW | B_WEATHER_PRIMAL_ANY) != WEATHER_INACTIVE)
         return FALSE;
 
+    /*
     if (ability == ABILITY_SNOW_CLOAK
      || ability == ABILITY_ICE_BODY
      || ability == ABILITY_FORECAST
@@ -1847,14 +1850,15 @@ bool32 ShouldSetHail(u32 battler, u32 ability, enum ItemHoldEffect holdEffect)
     {
         return TRUE;
     }
-    return FALSE;
+    */
+    return TRUE;
 }
 
 bool32 ShouldSetRain(u32 battlerAtk, u32 atkAbility, enum ItemHoldEffect holdEffect)
 {
     if (IsWeatherActive(B_WEATHER_RAIN | B_WEATHER_PRIMAL_ANY) != WEATHER_INACTIVE)
         return FALSE;
-
+    /*
     if (holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA
      && (atkAbility == ABILITY_SWIFT_SWIM
       || atkAbility == ABILITY_FORECAST
@@ -1867,7 +1871,8 @@ bool32 ShouldSetRain(u32 battlerAtk, u32 atkAbility, enum ItemHoldEffect holdEff
     {
         return TRUE;
     }
-    return FALSE;
+    */
+    return TRUE;
 }
 
 bool32 ShouldSetSun(u32 battlerAtk, u32 atkAbility, enum ItemHoldEffect holdEffect)
@@ -1875,6 +1880,7 @@ bool32 ShouldSetSun(u32 battlerAtk, u32 atkAbility, enum ItemHoldEffect holdEffe
     if (IsWeatherActive(B_WEATHER_SUN | B_WEATHER_PRIMAL_ANY) != WEATHER_INACTIVE)
         return FALSE;
 
+    /*
     if (holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA
      && (atkAbility == ABILITY_CHLOROPHYLL
       || atkAbility == ABILITY_FLOWER_GIFT
@@ -1892,7 +1898,8 @@ bool32 ShouldSetSun(u32 battlerAtk, u32 atkAbility, enum ItemHoldEffect holdEffe
     {
         return TRUE;
     }
-    return FALSE;
+    */
+    return TRUE;
 }
 
 bool32 ShouldSetSnow(u32 battler, u32 ability, enum ItemHoldEffect holdEffect)
@@ -1900,6 +1907,7 @@ bool32 ShouldSetSnow(u32 battler, u32 ability, enum ItemHoldEffect holdEffect)
     if (IsWeatherActive(B_WEATHER_SNOW | B_WEATHER_HAIL | B_WEATHER_PRIMAL_ANY) != WEATHER_INACTIVE)
         return FALSE;
 
+    /*
     if (ability == ABILITY_SNOW_CLOAK
      || ability == ABILITY_ICE_BODY
      || ability == ABILITY_FORECAST
@@ -1911,7 +1919,8 @@ bool32 ShouldSetSnow(u32 battler, u32 ability, enum ItemHoldEffect holdEffect)
     {
         return TRUE;
     }
-    return FALSE;
+    */
+    return TRUE;
 }
 
 bool32 IsBattlerDamagedByStatus(u32 battler)
@@ -3534,7 +3543,10 @@ bool32 ShouldFakeOut(u32 battlerAtk, u32 battlerDef, u32 move)
     || gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
     || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
     || (!IsMoldBreakerTypeAbility(battlerAtk, gAiLogicData->abilities[battlerAtk])
-    && (gAiLogicData->abilities[battlerDef] == ABILITY_SHIELD_DUST || gAiLogicData->abilities[battlerDef] == ABILITY_INNER_FOCUS)))
+    && (gAiLogicData->abilities[battlerDef] == ABILITY_SHIELD_DUST || gAiLogicData->abilities[battlerDef] == ABILITY_INNER_FOCUS
+    || (gAiLogicData->abilities[battlerDef] == ABILITY_DAZZLING || gAiLogicData->abilities[battlerDef] == ABILITY_QUEENLY_MAJESTY 
+    || gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)] == ABILITY_DAZZLING 
+    || gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)] == ABILITY_QUEENLY_MAJESTY))))
         return FALSE;
 
     return TRUE;
@@ -4903,8 +4915,9 @@ bool32 AI_ShouldCopyStatChanges(u32 battlerAtk, u32 battlerDef)
             case STAT_SPATK:
                 return (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL));
             case STAT_ACC:
-                return (HasLowAccuracyMove(battlerAtk, battlerDef));
+            //    return (HasLowAccuracyMove(battlerAtk, battlerDef));
             case STAT_EVASION:
+                return FALSE;
             case STAT_SPEED:
                 return TRUE;
             case STAT_DEF:
@@ -4921,12 +4934,7 @@ bool32 AI_ShouldCopyStatChanges(u32 battlerAtk, u32 battlerDef)
 bool32 AI_ShouldSetUpHazards(u32 battlerAtk, u32 battlerDef, struct AiLogicData *aiData)
 {
     if (aiData->abilities[battlerDef] == ABILITY_MAGIC_BOUNCE
-     || CountUsablePartyMons(battlerDef) == 0
-     || HasMoveWithEffect(battlerDef, EFFECT_RAPID_SPIN)
-     || HasMoveWithEffect(battlerDef, EFFECT_TIDY_UP)
-     || HasMoveWithEffect(battlerDef, EFFECT_DEFOG)
-     || HasMoveWithAdditionalEffect(battlerDef, MOVE_EFFECT_DEFOG)
-     || HasMoveWithEffect(battlerDef, EFFECT_MAGIC_COAT))
+     || CountUsablePartyMons(battlerDef) == 0)
         return FALSE;
 
     return TRUE;
