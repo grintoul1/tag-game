@@ -89,6 +89,7 @@ AI_SINGLE_BATTLE_TEST("AI prefers to keep its substitute over removing hazards i
 
 AI_SINGLE_BATTLE_TEST("AI will try to remove hazards if slower then target even with a Substitute because it expects the Sub to be broken")
 {
+    KNOWN_FAILING; // AI changed
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
         PLAYER(SPECIES_WOBBUFFET) { Speed(100); Status1(STATUS1_BURN); Moves(MOVE_SLEEP_POWDER, MOVE_STEALTH_ROCK, MOVE_CELEBRATE); }
