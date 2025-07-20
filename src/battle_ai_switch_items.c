@@ -556,7 +556,7 @@ static bool32 ShouldSwitchIfTruant(u32 battler)
     if (gAiLogicData->abilities[battler] == ABILITY_TRUANT
         && IsTruantMonVulnerable(battler, gBattlerTarget)
         && gDisableStructs[battler].truantCounter
-        && gBattleMons[battler].hp >= gBattleMons[battler].maxHP / 2
+        && gBattleMons[battler].hp * 2 >= gBattleMons[battler].maxHP
         && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE)
     {
         if (RandomPercentage(RNG_AI_SWITCH_TRUANT, GetSwitchChance(SHOULD_SWITCH_TRUANT)))
@@ -571,7 +571,7 @@ static bool32 PartnerShouldSwitchIfTruant(u32 battler)
     if (gAiLogicData->abilities[battler] == ABILITY_TRUANT
         && IsTruantMonVulnerable(battler, gBattlerTarget)
         && gDisableStructs[battler].truantCounter
-        && gBattleMons[battler].hp >= gBattleMons[battler].maxHP / 2
+        && gBattleMons[battler].hp * 2 >= gBattleMons[battler].maxHP
         && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE)
     {
         if (RandomPercentage(RNG_AI_SWITCH_TRUANT, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_TRUANT)))
@@ -621,12 +621,12 @@ static bool32 ShouldSwitchIfAllMovesBad(u32 battler)
     // Switch if no moves affect opponents
     if (IsDoubleBattle())
     {
-        u32 opposingPartner = GetBattlerAtPosition(BATTLE_PARTNER(opposingBattler));
+        u32 opposingBattlerPartner = GetBattlerAtPosition(BATTLE_PARTNER(opposingBattler));
         for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
         {
             aiMove = gBattleMons[battler].moves[moveIndex];
             if ((AI_GetMoveEffectiveness(aiMove, battler, opposingBattler) > UQ_4_12(0.0)
-                    || AI_GetMoveEffectiveness(aiMove, battler, opposingPartner) > UQ_4_12(0.0))
+                    || AI_GetMoveEffectiveness(aiMove, battler, opposingBattlerPartner) > UQ_4_12(0.0))
                     && aiMove != MOVE_NONE)
                 return FALSE;
         }
@@ -699,67 +699,121 @@ static bool32 PartnerShouldSwitchIfAllMovesBad(u32 battler)
 static bool32 ShouldSwitchIfWonderGuard(u32 battler)
 {
     u32 opposingBattler = GetOppositeBattler(battler);
+    u32 opposingBattlerPartner = GetBattlerAtPosition(BATTLE_PARTNER(opposingBattler));
     u32 i, move;
 
     if (IsDoubleBattle())
-        return FALSE;
-
-    if (gAiLogicData->abilities[opposingBattler] != ABILITY_WONDER_GUARD)
-        return FALSE;
-
-    // Check if Pokémon has a super effective move.
-    for (i = 0; i < MAX_MON_MOVES; i++)
-    {
-        move = gBattleMons[battler].moves[i];
-        if (move != MOVE_NONE)
         {
-            if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
+            if (gAiLogicData->abilities[opposingBattler] != ABILITY_WONDER_GUARD || gAiLogicData->abilities[opposingBattlerPartner] != ABILITY_WONDER_GUARD)
                 return FALSE;
+            
+            for (i = 0; i < MAX_MON_MOVES; i++)
+            {
+                move = gBattleMons[battler].moves[i];
+                if (move != MOVE_NONE)
+                {
+                    if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
+                        return FALSE;
+                    if (AI_GetMoveEffectiveness(move, battler, opposingBattlerPartner) >= UQ_4_12(2.0))
+                        return FALSE;
+                }
+            }
+            if (RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetSwitchChance(SHOULD_SWITCH_WONDER_GUARD)))
+            {
+                if (gAiLogicData->mostSuitableMonId[battler] == PARTY_SIZE) // No good candidate mons, find any one that can deal damage
+                    return FindMonWithMoveOfEffectiveness(battler, opposingBattler, UQ_4_12(2.0));
+                else // Good candidate mon, send that in
+                    return SetSwitchinAndSwitch(battler, PARTY_SIZE);
+            }
+
+            return FALSE;
         }
-    }
-
-    if (RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetSwitchChance(SHOULD_SWITCH_WONDER_GUARD)))
+    else
     {
-        if (gAiLogicData->mostSuitableMonId[battler] == PARTY_SIZE) // No good candidate mons, find any one that can deal damage
-            return FindMonWithMoveOfEffectiveness(battler, opposingBattler, UQ_4_12(2.0));
-        else // Good candidate mon, send that in
-            return SetSwitchinAndSwitch(battler, PARTY_SIZE);
-    }
+        if (gAiLogicData->abilities[opposingBattler] != ABILITY_WONDER_GUARD)
+            return FALSE;
 
-    return FALSE;
+        // Check if Pokémon has a super effective move.
+        for (i = 0; i < MAX_MON_MOVES; i++)
+        {
+            move = gBattleMons[battler].moves[i];
+            if (move != MOVE_NONE)
+            {
+                if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
+                    return FALSE;
+            }
+        }
+
+        if (RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetSwitchChance(SHOULD_SWITCH_WONDER_GUARD)))
+        {
+            if (gAiLogicData->mostSuitableMonId[battler] == PARTY_SIZE) // No good candidate mons, find any one that can deal damage
+                return FindMonWithMoveOfEffectiveness(battler, opposingBattler, UQ_4_12(2.0));
+            else // Good candidate mon, send that in
+                return SetSwitchinAndSwitch(battler, PARTY_SIZE);
+        }
+
+        return FALSE;
+    }
 }
 
 static bool32 PartnerShouldSwitchIfWonderGuard(u32 battler)
 {
     u32 opposingBattler = GetOppositeBattler(battler);
+    u32 opposingBattlerPartner = GetBattlerAtPosition(BATTLE_PARTNER(opposingBattler));
     u32 i, move;
 
     if (IsDoubleBattle())
-        return FALSE;
-
-    if (gAiLogicData->abilities[opposingBattler] != ABILITY_WONDER_GUARD)
-        return FALSE;
-
-    // Check if Pokémon has a super effective move.
-    for (i = 0; i < MAX_MON_MOVES; i++)
-    {
-        move = gBattleMons[battler].moves[i];
-        if (move != MOVE_NONE)
         {
-            if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
+            if (gAiLogicData->abilities[opposingBattler] != ABILITY_WONDER_GUARD || gAiLogicData->abilities[opposingBattlerPartner] != ABILITY_WONDER_GUARD)
                 return FALSE;
+            
+            for (i = 0; i < MAX_MON_MOVES; i++)
+            {
+                move = gBattleMons[battler].moves[i];
+                if (move != MOVE_NONE)
+                {
+                    if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
+                        return FALSE;
+                    if (AI_GetMoveEffectiveness(move, battler, opposingBattlerPartner) >= UQ_4_12(2.0))
+                        return FALSE;
+                }
+            }
+            if (RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetSwitchChance(PARTNER_SHOULD_SWITCH_WONDER_GUARD)))
+            {
+                if (gAiLogicData->mostSuitableMonId[battler] == PARTY_SIZE) // No good candidate mons, find any one that can deal damage
+                    return FindMonWithMoveOfEffectiveness(battler, opposingBattler, UQ_4_12(2.0));
+                else // Good candidate mon, send that in
+                    return SetSwitchinAndSwitch(battler, PARTY_SIZE);
+            }
+
+            return FALSE;
         }
-    }
-
-    if (RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_WONDER_GUARD)))
+    else
     {
-        if (gAiLogicData->mostSuitableMonId[battler] == PARTY_SIZE) // No good candidate mons, find any one that can deal damage
-            return FindMonWithMoveOfEffectiveness(battler, opposingBattler, UQ_4_12(2.0));
-        else // Good candidate mon, send that in
-            return SetSwitchinAndSwitch(battler, PARTY_SIZE);
-    }
+        if (gAiLogicData->abilities[opposingBattler] != ABILITY_WONDER_GUARD)
+            return FALSE;
 
-    return FALSE;
+        // Check if Pokémon has a super effective move.
+        for (i = 0; i < MAX_MON_MOVES; i++)
+        {
+            move = gBattleMons[battler].moves[i];
+            if (move != MOVE_NONE)
+            {
+                if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
+                    return FALSE;
+            }
+        }
+
+        if (RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_WONDER_GUARD)))
+        {
+            if (gAiLogicData->mostSuitableMonId[battler] == PARTY_SIZE) // No good candidate mons, find any one that can deal damage
+                return FindMonWithMoveOfEffectiveness(battler, opposingBattler, UQ_4_12(2.0));
+            else // Good candidate mon, send that in
+                return SetSwitchinAndSwitch(battler, PARTY_SIZE);
+        }
+
+        return FALSE;
+    }
 }
 
 static bool32 FindMonThatAbsorbsOpponentsMove(u32 battler)
@@ -1096,15 +1150,23 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
 static bool32 ShouldSwitchIfOpponentChargingOrInvulnerable(u32 battler)
 {
     u32 opposingBattler = GetOppositeBattler(battler);
+    u32 opposingBattlerPartner = GetBattlerAtPosition(BATTLE_PARTNER(opposingBattler));
     u32 incomingMove = GetIncomingMove(battler, opposingBattler, gAiLogicData);
+    u32 incomingMovePartner = GetIncomingMove(battler, opposingBattlerPartner, gAiLogicData);
 
     bool32 isOpposingBattlerChargingOrInvulnerable = (IsSemiInvulnerable(opposingBattler, incomingMove) || IsTwoTurnNotSemiInvulnerableMove(opposingBattler, incomingMove));
+    bool32 isOpposingBattlerPartnerChargingOrInvulnerable = (IsSemiInvulnerable(opposingBattlerPartner, incomingMovePartner) || IsTwoTurnNotSemiInvulnerableMove(opposingBattlerPartner, incomingMovePartner));
 
     if (IsDoubleBattle() || !(gAiThinkingStruct->aiFlags[GetThinkingBattler(battler)] & AI_FLAG_SMART_SWITCHING))
-        return FALSE;
+    {
+        if ((isOpposingBattlerChargingOrInvulnerable && isOpposingBattlerPartnerChargingOrInvulnerable && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE) && RandomPercentage(RNG_AI_SWITCH_FREE_TURN, GetSwitchChance(SHOULD_SWITCH_FREE_TURN)))
+            return SetSwitchinAndSwitch(battler, PARTY_SIZE);
+    }
 
-    if (isOpposingBattlerChargingOrInvulnerable && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE && RandomPercentage(RNG_AI_SWITCH_FREE_TURN, GetSwitchChance(SHOULD_SWITCH_FREE_TURN)))
+    else if (isOpposingBattlerChargingOrInvulnerable && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE && RandomPercentage(RNG_AI_SWITCH_FREE_TURN, GetSwitchChance(SHOULD_SWITCH_FREE_TURN)))
+    {
         return SetSwitchinAndSwitch(battler, PARTY_SIZE);
+    }        
 
     return FALSE;
 }
@@ -1112,15 +1174,23 @@ static bool32 ShouldSwitchIfOpponentChargingOrInvulnerable(u32 battler)
 static bool32 PartnerShouldSwitchIfOpponentChargingOrInvulnerable(u32 battler)
 {
     u32 opposingBattler = GetOppositeBattler(battler);
+    u32 opposingBattlerPartner = GetBattlerAtPosition(BATTLE_PARTNER(opposingBattler));
     u32 incomingMove = GetIncomingMove(battler, opposingBattler, gAiLogicData);
+    u32 incomingMovePartner = GetIncomingMove(battler, opposingBattlerPartner, gAiLogicData);
 
     bool32 isOpposingBattlerChargingOrInvulnerable = (IsSemiInvulnerable(opposingBattler, incomingMove) || IsTwoTurnNotSemiInvulnerableMove(opposingBattler, incomingMove));
+    bool32 isOpposingBattlerPartnerChargingOrInvulnerable = (IsSemiInvulnerable(opposingBattlerPartner, incomingMovePartner) || IsTwoTurnNotSemiInvulnerableMove(opposingBattlerPartner, incomingMovePartner));
 
-    if (IsDoubleBattle() || !(gAiThinkingStruct->aiFlags[GetThinkingBattler(battler)] & AI_FLAG_PARTNER_SWITCHING))
-        return FALSE;
+    if (IsDoubleBattle() || !(gAiThinkingStruct->aiFlags[GetThinkingBattler(battler)] & AI_FLAG_SMART_SWITCHING))
+    {
+        if ((isOpposingBattlerChargingOrInvulnerable && isOpposingBattlerPartnerChargingOrInvulnerable && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE) && RandomPercentage(RNG_AI_SWITCH_FREE_TURN, GetSwitchChance(SHOULD_SWITCH_FREE_TURN)))
+            return SetSwitchinAndSwitch(battler, PARTY_SIZE);
+    }
 
-    if (isOpposingBattlerChargingOrInvulnerable && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE && RandomPercentage(RNG_AI_SWITCH_FREE_TURN, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_FREE_TURN)))
+    else if (isOpposingBattlerChargingOrInvulnerable && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE && RandomPercentage(RNG_AI_SWITCH_FREE_TURN, GetSwitchChance(PARTNER_SHOULD_SWITCH_FREE_TURN)))
+    {
         return SetSwitchinAndSwitch(battler, PARTY_SIZE);
+    }        
 
     return FALSE;
 }
@@ -2111,7 +2181,7 @@ bool32 PartnerShouldSwitch(u32 battler)
 
 bool32 ShouldSwitchIfAllScoresBad(u32 battler)
 {
-    u32 i, score, opposingBattler = GetOppositeBattler(battler);
+    u32 i, score, opposingBattler = GetOppositeBattler(battler), opposingBattlerPartner = GetBattlerAtPosition(BATTLE_PARTNER(opposingBattler));
     if (!(gAiThinkingStruct->aiFlags[GetThinkingBattler(battler)] & AI_FLAG_SMART_SWITCHING))
         return FALSE;
 
@@ -2120,6 +2190,12 @@ bool32 ShouldSwitchIfAllScoresBad(u32 battler)
         score = gAiBattleData->finalScore[battler][opposingBattler][i];
         if (score > AI_BAD_SCORE_THRESHOLD)
             return FALSE;
+        if (IsDoubleBattle())
+        {
+            score = gAiBattleData->finalScore[battler][opposingBattlerPartner][i];
+            if (score > AI_BAD_SCORE_THRESHOLD)
+                return FALSE;
+        }
     }
     if (RandomPercentage(RNG_AI_SWITCH_ALL_SCORES_BAD, GetSwitchChance(SHOULD_SWITCH_ALL_SCORES_BAD)))
         return TRUE;
@@ -3027,15 +3103,26 @@ static inline bool32 IsFreeSwitch(enum SwitchType switchType, u32 battlerSwitchi
         }
     }
 
+    MgbaPrintf(MGBA_LOG_WARN, "SwitchType %d", switchType);
+    MgbaPrintf(MGBA_LOG_WARN, "IsDoubleBattle() %d", IsDoubleBattle());
     if(IsDoubleBattle())
     {
         bool32 movedSecondOpponentPartner = GetBattlerTurnOrderNum(battlerSwitchingOut) > GetBattlerTurnOrderNum(BATTLE_PARTNER(opposingBattler)) ? TRUE : FALSE;
+            MgbaPrintf(MGBA_LOG_WARN, "movedSecondOpponentPartner %d", movedSecondOpponentPartner);
+            MgbaPrintf(MGBA_LOG_WARN, "IsSwitchOutEffect(GetMoveEffect(gCurrentMove)) %d", IsSwitchOutEffect(GetMoveEffect(gCurrentMove)));
         if (IsSwitchOutEffect(GetMoveEffect(gCurrentMove)) && movedSecond && movedSecondOpponentPartner)
+        {
+            MgbaPrintf(MGBA_LOG_WARN, "IsSwitchOutEffect(GetMoveEffect(gCurrentMove)) && movedSecond && movedSecondOpponentPartner");
             return TRUE;
+        }
         if (gAiLogicData->ejectButtonSwitch)
+        {
+    MgbaPrintf(MGBA_LOG_WARN, "gAiLogicData->ejectButtonSwitch");
             return TRUE;
+        }
         if (gAiLogicData->ejectPackSwitch)
         {
+    MgbaPrintf(MGBA_LOG_WARN, "gAiLogicData->ejectPackSwitch");
             u32 opposingAbility = GetBattlerAbilityIgnoreMoldBreaker(opposingBattler);
             u32 opposingAbility2 = GetBattlerAbilityIgnoreMoldBreaker(BATTLE_PARTNER(opposingBattler));
 
@@ -3119,7 +3206,7 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
         firstId=3;
         lastId=6;
     }
-    else if((gBattleTypeFlags & BATTLE_TWO_VS_ONE_OPPONENT) && ((gBattlerPositions[battler] == B_POSITION_OPPONENT_RIGHT) || (gBattlerPositions[battler] == B_POSITION_OPPONENT_LEFT)))
+    else if(!(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS) && ((gBattlerPositions[battler] == B_POSITION_OPPONENT_RIGHT) || (gBattlerPositions[battler] == B_POSITION_OPPONENT_LEFT)))
     {
         firstId=0;
         lastId=6;
@@ -3195,6 +3282,9 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
             maxDamageDealtToAIStored[monId] = maxDamageDealtToAI;
         #endif
 
+            MgbaPrintf(MGBA_LOG_WARN, "mon looking %S", checkingPosition);
+        MgbaPrintf(MGBA_LOG_WARN, "switchType != SWITCH_AFTER_KO %d", switchType != SWITCH_AFTER_KO);
+        MgbaPrintf(MGBA_LOG_WARN, "isFreeSwitch %d", isFreeSwitch);
         if (switchType != SWITCH_AFTER_KO && isFreeSwitch != TRUE)
         {
             if((maxDamageDealtToAI*2 >= gAiLogicData->switchinCandidate.battleMon.hp && aiMonFaster == TRUE) || (maxDamageDealtToAI >= gAiLogicData->switchinCandidate.battleMon.hp && aiMonFaster != TRUE))
@@ -3208,9 +3298,9 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
             switchInScores[monId] = 4;
         else if((maxDamageDealtToAI >= GetMonData(&party[monId],MON_DATA_HP,NULL)) && aiMonFaster != TRUE && ((!((GetMonData(&party[monId],MON_DATA_HP,NULL) == GetMonData(&party[monId],MON_DATA_MAX_HP,NULL)) && ((GetMonData(&party[monId],MON_DATA_HELD_ITEM,NULL) == ITEM_FOCUS_SASH) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_STURDY))) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_DISGUISE))))
             switchInScores[monId] = 1;
-        else if(aiMonSpecies == SPECIES_WOBBUFFET && aiMonFaster == TRUE)
+        else if(aiMonSpecies == SPECIES_WOBBUFFET && aiMonFaster == TRUE && !TESTING)
             switchInScores[monId] = 5;
-        else if(aiMonSpecies == SPECIES_WOBBUFFET)
+        else if(aiMonSpecies == SPECIES_WOBBUFFET && !TESTING)
             switchInScores[monId] = 4;
         else if((maxDamageDealt >= gBattleMons[opposingBattler].hp) && aiMonFaster == TRUE && (!((gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP) && ((gBattleMons[opposingBattler].item == ITEM_FOCUS_SASH) || (gBattleMons[opposingBattler].ability == ABILITY_STURDY))) || (gBattleMons[opposingBattler].ability == ABILITY_DISGUISE)))
             switchInScores[monId] = 7;
