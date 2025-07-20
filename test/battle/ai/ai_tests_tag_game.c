@@ -4,11 +4,15 @@
 
 // Custom AI tests for tag game
 
+ASSUMPTIONS
+{
+    ASSUME(GetMoveEffect(MOVE_SONIC_BOOM) == EFFECT_FIXED_HP_DAMAGE);
+}
+
 AI_MULTI_BATTLE_TEST("TAG TEST: AI always chooses highest damaging move (multibattle)")
 {
     GIVEN {
-        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_OMNISCIENT | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_WILL_SUICIDE);
-        MgbaPrintf(MGBA_LOG_WARN, "AI_FLAG_SMART_TRAINER %d", (gBattleTypeFlags & AI_FLAG_SMART_TRAINER));
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
         MULTI_PLAYER(SPECIES_KINGDRA);
         MULTI_PLAYER(SPECIES_DIANCIE);
         MULTI_PLAYER(SPECIES_ORTHWORM);
@@ -27,7 +31,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: AI always chooses highest damaging move (multiba
 AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: AI always chooses highest damaging move (2v1)")
 {
     GIVEN {
-        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_OMNISCIENT | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_WILL_SUICIDE);
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
         MULTI_PLAYER(SPECIES_KINGDRA);
         MULTI_PLAYER(SPECIES_DIANCIE);
         MULTI_PLAYER(SPECIES_ORTHWORM);
@@ -41,6 +45,182 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: AI always chooses highest damaging move (2v
             TURN {  EXPECT_MOVE(opponentLeft, MOVE_MUDDY_WATER); EXPECT_MOVE(opponentRight, MOVE_MUDDY_WATER); SWITCH(playerLeft, 2); SWITCH(playerRight, 5); }
             TURN {  EXPECT_MOVE(opponentLeft, MOVE_HEAT_WAVE); EXPECT_MOVE(opponentRight, MOVE_HEAT_WAVE); SWITCH(playerLeft, 0); SWITCH(playerRight, 3); } 
         }   
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: AI always chooses +2 offensive setup over slow kill if both targets are incapacitated (multibattle)")
+{
+    GIVEN {
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_RATTATA) { HP(1); Status1(STATUS1_SLEEP); Speed(4); }
+        MULTI_PARTNER(SPECIES_GASTLY) { HP(1); Status1(STATUS1_FREEZE); Speed(3); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
+        MULTI_OPPONENT_B(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
+        }   SCENE {
+        MESSAGE("The opposing Wobbuffet used Swords Dance!");
+        MESSAGE("The opposing Wynaut used Nasty Plot!");
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: AI always chooses +2 offensive setup over slow kill if both targets are incapacitated (2v1)")
+{
+    GIVEN {
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_RATTATA) { HP(1); Status1(STATUS1_SLEEP); Speed(4); }
+        MULTI_PARTNER(SPECIES_GASTLY) { HP(1); Status1(STATUS1_FREEZE); Speed(3); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
+        MULTI_OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
+        }   SCENE {
+        MESSAGE("The opposing Wobbuffet used Swords Dance!");
+        MESSAGE("The opposing Wynaut used Nasty Plot!");
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: AI will not fast Volt Switch into a mon that is slow OHKO'd (multibattle)")
+{
+    GIVEN {
+        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
+        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(4); }
+        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(6); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(20); Moves(MOVE_SONIC_BOOM); Speed(8); }
+        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(7); }
+        MULTI_OPPONENT_B(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+        } THEN {
+            EXPECT_EQ(opponentLeft->species, SPECIES_WYNAUT);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: AI will not fast Volt Switch into a mon that is slow OHKO'd (2v1)")
+{
+    GIVEN {
+        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
+        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(4); }
+        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(6); }
+        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(2); }
+        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(7); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+        } THEN {
+            EXPECT_EQ(opponentLeft->species, SPECIES_WYNAUT);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: AI will slow Volt Switch into a mon that is slow OHKO'd (multibattle)")
+{
+    GIVEN {
+        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
+        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(4); }
+        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(2); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(20); Moves(MOVE_SONIC_BOOM); Speed(7); }
+        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(8); }
+        MULTI_OPPONENT_B(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+        } THEN {
+            EXPECT_EQ(opponentLeft->species, SPECIES_WOBBUFFET);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: AI will slow Volt Switch into a mon that is slow OHKO'd (2v1)")
+{
+    GIVEN {
+        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
+        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(4); }
+        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(2); }
+        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(20); Moves(MOVE_SONIC_BOOM); Speed(7); }
+        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(8); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+        } THEN {
+            EXPECT_EQ(opponentLeft->species, SPECIES_WOBBUFFET);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: AI will not fast Volt Switch into a mon that is outsped and 2HKO'd (multibattle)")
+{
+    GIVEN {
+        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
+        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(4); }
+        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(6); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(2); }
+        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(7); }
+        MULTI_OPPONENT_B(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+        } THEN {
+            EXPECT_EQ(opponentLeft->species, SPECIES_WYNAUT);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: AI will not fast Volt Switch into a mon that is outsped and 2HKO'd (2v1)")
+{
+    GIVEN {
+        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
+        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(4); }
+        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(6); }
+        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(20); Moves(MOVE_SONIC_BOOM); Speed(8); }
+        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(7); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+        } THEN {
+            EXPECT_EQ(opponentLeft->species, SPECIES_WYNAUT);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: AI will slow Volt Switch into a mon that is outsped and 2HKO'd (multibattle)")
+{
+    GIVEN {
+        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
+        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(5); }
+        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(3); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(1); }
+        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(2); }
+        MULTI_OPPONENT_B(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(6); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+        } THEN {
+            EXPECT_EQ(opponentLeft->species, SPECIES_WOBBUFFET);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: AI will slow Volt Switch into a mon that is outsped and 2HKO'd (2v1)")
+{
+    GIVEN {
+        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
+        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(5); }
+        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(3); }
+        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(6); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(1); }
+        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(2); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+        } THEN {
+            EXPECT_EQ(opponentLeft->species, SPECIES_WOBBUFFET);
+    }
 }
 
 /*

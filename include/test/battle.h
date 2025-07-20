@@ -686,7 +686,7 @@ struct BattleTestData
 
     u8 playerPartySize;
     u8 opponentPartySize;
-    u8 explicitMoves[NUM_BATTLE_SIDES];
+    u8 explicitMoves[MAX_BATTLERS_COUNT];
     bool8 hasExplicitSpeeds;
     u8 explicitSpeeds[MAX_BATTLERS_COUNT];
     u16 slowerThan[NUM_BATTLE_SIDES][PARTY_SIZE];
@@ -765,6 +765,8 @@ extern struct BattleTestRunnerState *const gBattleTestRunnerState;
 
 #define AI_TRAINER_NAME "{PKMN} TRAINER LEAF"
 #define AI_TRAINER_2_NAME "{PKMN} TRAINER RED"
+#define AI_TRAINER_NAME_SHORT "LEAF"
+#define AI_TRAINER_2_NAME_SHORT "RED"
 
 /* Test */
 
