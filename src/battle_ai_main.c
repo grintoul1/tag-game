@@ -3219,7 +3219,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 {
                     if (B_REDIRECT_ABILITY_IMMUNITY < GEN_5 && atkPartnerAbility == ABILITY_LIGHTNING_ROD)
                     {
-                        RETURN_SCORE_MINUS(10);
+                        ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                     }
 
                     if (moveTarget == MOVE_TARGET_FOES_AND_ALLY)
@@ -3232,7 +3232,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     }
                     else
                     {
-                        RETURN_SCORE_MINUS(10);
+                        ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                     }
                 }
                 else
@@ -3250,7 +3250,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     }
                     else if (atkPartnerAbility == ABILITY_EARTH_EATER && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_HP_AWARE))
                     {
-                        RETURN_SCORE_MINUS(10);
+                        ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                     }
                 }
                 else
@@ -3265,7 +3265,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 {
                     if (B_REDIRECT_ABILITY_IMMUNITY < GEN_5 && atkPartnerAbility == ABILITY_STORM_DRAIN)
                     {
-                        RETURN_SCORE_MINUS(10);
+                        ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                     }
 
                     if (moveTarget == MOVE_TARGET_FOES_AND_ALLY)
@@ -3278,7 +3278,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     }
                     else
                     {
-                        RETURN_SCORE_MINUS(10);
+                        ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                     }
                 }
                 else
@@ -3440,7 +3440,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         {
             if (wouldPartnerFaint)
             {
-                RETURN_SCORE_MINUS(30);
+                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             }
 
             switch (effect)
@@ -3601,7 +3601,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 
         if ((isMoveAffectedByPartnerAbility && (score <= AI_SCORE_DEFAULT)) || !isMoveAffectedByPartnerAbility)
         {
-            RETURN_SCORE_MINUS(10);
+            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
         }
 
 
@@ -5179,7 +5179,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         if (gBattleMons[battlerDef].speed > gBattleMons[battlerAtk].speed)
             ADJUST_SCORE(DECENT_EFFECT);
         break;
-case EFFECT_GUARD_SPLIT:
+    case EFFECT_GUARD_SPLIT:
     {
         u32 atkDefense = gBattleMons[battlerAtk].defense;
         u32 defDefense = gBattleMons[battlerDef].defense;

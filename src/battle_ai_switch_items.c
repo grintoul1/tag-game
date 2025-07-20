@@ -3103,26 +3103,19 @@ static inline bool32 IsFreeSwitch(enum SwitchType switchType, u32 battlerSwitchi
         }
     }
 
-    MgbaPrintf(MGBA_LOG_WARN, "SwitchType %d", switchType);
-    MgbaPrintf(MGBA_LOG_WARN, "IsDoubleBattle() %d", IsDoubleBattle());
     if(IsDoubleBattle())
     {
         bool32 movedSecondOpponentPartner = GetBattlerTurnOrderNum(battlerSwitchingOut) > GetBattlerTurnOrderNum(BATTLE_PARTNER(opposingBattler)) ? TRUE : FALSE;
-            MgbaPrintf(MGBA_LOG_WARN, "movedSecondOpponentPartner %d", movedSecondOpponentPartner);
-            MgbaPrintf(MGBA_LOG_WARN, "IsSwitchOutEffect(GetMoveEffect(gCurrentMove)) %d", IsSwitchOutEffect(GetMoveEffect(gCurrentMove)));
         if (IsSwitchOutEffect(GetMoveEffect(gCurrentMove)) && movedSecond && movedSecondOpponentPartner)
         {
-            MgbaPrintf(MGBA_LOG_WARN, "IsSwitchOutEffect(GetMoveEffect(gCurrentMove)) && movedSecond && movedSecondOpponentPartner");
             return TRUE;
         }
         if (gAiLogicData->ejectButtonSwitch)
         {
-    MgbaPrintf(MGBA_LOG_WARN, "gAiLogicData->ejectButtonSwitch");
             return TRUE;
         }
         if (gAiLogicData->ejectPackSwitch)
         {
-    MgbaPrintf(MGBA_LOG_WARN, "gAiLogicData->ejectPackSwitch");
             u32 opposingAbility = GetBattlerAbilityIgnoreMoldBreaker(opposingBattler);
             u32 opposingAbility2 = GetBattlerAbilityIgnoreMoldBreaker(BATTLE_PARTNER(opposingBattler));
 
@@ -3287,17 +3280,6 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
             if((maxDamageDealtToAI*2 >= gAiLogicData->switchinCandidate.battleMon.hp && aiMonFaster != TRUE) || (maxDamageDealtToAI >= gAiLogicData->switchinCandidate.battleMon.hp && aiMonFaster == TRUE))
             {  
                 switchInScores[monId] = 1;
-                MgbaPrintf(MGBA_LOG_WARN, "mon looking %S", checkingPosition);
-                MgbaPrintf(MGBA_LOG_WARN, "mon looking at %S", lookingAt);
-            MgbaPrintf(MGBA_LOG_WARN, "switchType != SWITCH_AFTER_KO %d", switchType != SWITCH_AFTER_KO);
-            MgbaPrintf(MGBA_LOG_WARN, "isFreeSwitch %d", isFreeSwitch);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot mon%S", partyMonStored[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot score%d", switchInScores[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot best move%S", aiBestMove[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot deals%d", maxDamageDealtStored[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "percentage slot deals%d", percentageDealtStored[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot takes%d", maxDamageDealtToAIStored[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "percentage slot takes%d", percentageReceivedStored[monId]);
                 continue;
             }
         }
@@ -3324,13 +3306,10 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
             switchInScores[monId] = 2;
 
         #ifndef NDEBUG
-        /*
         if(switchInScores[monId]!=0)
         {
             MgbaPrintf(MGBA_LOG_WARN, "mon looking %S", checkingPosition);
             MgbaPrintf(MGBA_LOG_WARN, "mon looking at %S", lookingAt);
-            MgbaPrintf(MGBA_LOG_WARN, "switchType != SWITCH_AFTER_KO %d", switchType != SWITCH_AFTER_KO);
-            MgbaPrintf(MGBA_LOG_WARN, "isFreeSwitch %d", isFreeSwitch);
             MgbaPrintf(MGBA_LOG_WARN, "party slot mon%S", partyMonStored[monId]);
             MgbaPrintf(MGBA_LOG_WARN, "party slot score%d", switchInScores[monId]);
             MgbaPrintf(MGBA_LOG_WARN, "party slot best move%S", aiBestMove[monId]);
@@ -3339,7 +3318,6 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
             MgbaPrintf(MGBA_LOG_WARN, "party slot takes%d", maxDamageDealtToAIStored[monId]);
             MgbaPrintf(MGBA_LOG_WARN, "percentage slot takes%d", percentageReceivedStored[monId]);
         }
-            */
         #endif
     }
 
