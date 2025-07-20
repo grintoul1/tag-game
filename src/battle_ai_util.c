@@ -2287,14 +2287,14 @@ u32 CountNegativeStatStages(u32 battlerId)
 bool32 CanIndexMoveFaintTarget(u32 battlerAtk, u32 battlerDef, u32 moveIndex, enum DamageCalcContext calcContext)
 {
     s32 dmg;
-    u16 *moves = gBattleMons[battlerAtk].moves;
+    //u16 *moves = gBattleMons[battlerAtk].moves;
 
     if (IsDoubleBattle() && battlerDef == BATTLE_PARTNER(battlerAtk))
         dmg = gAiLogicData->simulatedDmg[battlerAtk][battlerDef][moveIndex].maximum; // Attacking partner, be careful
     else
         dmg = AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, gAiLogicData);
 
-    if (gBattleMons[battlerDef].hp <= dmg)
+    if (gBattleMons[battlerDef].hp <= dmg) // && !CanEndureHit(battlerAtk, battlerDef, moves[moveIndex]))
         return TRUE;
     return FALSE;
 }
@@ -4403,7 +4403,6 @@ static u32 GetStatBeingChanged(enum StatChange statChange)
 
 static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum StatChange statChange, bool32 considerContrary)
 {
-    MgbaPrintf(MGBA_LOG_WARN, "IncreaseStatUpScoreInternal %d", statChange);
     enum AIScore tempScore = NO_INCREASE;
     u32 noOfHitsToFaint = NoOfHitsForTargetToFaintBattler(battlerDef, battlerAtk);
     u32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, TRUE);
@@ -4419,11 +4418,11 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
         return NO_INCREASE;
 
     
-    MgbaPrintf(MGBA_LOG_WARN, "gBattleMons[battlerAtk].statStages[statId] %d", gBattleMons[battlerAtk].statStages[statId]);
-    MgbaPrintf(MGBA_LOG_WARN, "gBattleMons[battlerAtk].statStages[statId] >= MAX_STAT_STAGE - 4 %d", gBattleMons[battlerAtk].statStages[statId] >= MAX_STAT_STAGE - 4);
     // Don't increase stat if AI is at +2
     if (gBattleMons[battlerAtk].statStages[statId] >= MAX_STAT_STAGE - 4)
+    {
         return NO_INCREASE;
+    }
     /*
     // Don't increase stat if AI has less then 70% HP and number of hits isn't known
      if (gAiLogicData->hpPercents[battlerAtk] < 70 && noOfHitsToFaint == UNKNOWN_NO_OF_HITS)
@@ -4602,31 +4601,26 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
         if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && IsBattlerIncapacitated(BATTLE_PARTNER(battlerDef), gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL))
         {
             tempScore += (WEAK_EFFECT + FAST_KILL); // + 18
-            MgbaPrintf(MGBA_LOG_WARN,"tempScore %d", tempScore);
             break;
         }
         // If target is incapacitated and user has special move, 50% increase
         else if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && AI_RandLessThan(128))
         {
             tempScore += (WEAK_EFFECT + FAST_KILL); // + 18
-            MgbaPrintf(MGBA_LOG_WARN,"tempScore %d", tempScore);
             break;
         }
         // If Faster and not 3HKO'd and has a special move
         else if (noOfHitsToFaint > 3 && aiIsFaster && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
         {
             tempScore += GOOD_EFFECT; // +8
-            MgbaPrintf(MGBA_LOG_WARN,"tempScore %d", tempScore);
             break;
         }
         // If has special move and not SlowHKO'd or fast 2HKO'd
         else if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
         {
             tempScore += DECENT_EFFECT; // +7
-            MgbaPrintf(MGBA_LOG_WARN,"tempScore %d", tempScore);
             break;
         }
-        MgbaPrintf(MGBA_LOG_WARN,"tempScore %d", tempScore);
         break;
     case STAT_CHANGE_SPDEF_2:
         // Target has special move or no physical moves

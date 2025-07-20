@@ -618,7 +618,6 @@ AI_SINGLE_BATTLE_TEST("AI won't use ground type attacks against flying type Poke
     }
 }
 
-
 AI_SINGLE_BATTLE_TEST("AI without any flags chooses moves at random - singles")
 {
     GIVEN {
