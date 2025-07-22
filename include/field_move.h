@@ -4,6 +4,7 @@
 #include "global.h"
 #include "constants/field_move.h"
 
+
 struct FieldMoveInfo
 {
     bool32 (*fieldMoveFunc)(void);

@@ -722,3 +722,530 @@ Debug_EventScript_TellTheTime_Text_0:
 
 DebugEventScript_PrintWeekday_Text_0:
 	.string "Time of day: {STR_VAR_1}$"
+
+// Utility Menu 
+PokeMenu_EventScript::
+	dynmultipush PokeMenu_EventScript_Text_0, 0 @ Access PC
+	dynmultipush PokeMenu_EventScript_Text_1, 1 @ Poke Vial
+	goto_if_set FLAG_BADGE06_GET, PokeMenu_EventScript_2 @ Fly
+PokeMenu_EventScript_1:
+	dynmultipush PokeMenu_EventScript_Text_3, 3 @ Utility
+	dynmultipush PokeMenu_EventScript_Text_4, 4 @ Repellent
+	@goto PokeMenu_EventScript_5 @ Poke Rider
+PokeMenu_EventScript_4:
+	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_8 @ Access PC
+	case 1, PokeMenu_EventScript_9 @ Poke Vial
+	case 2, PokeMenu_EventScript_10 @ Fly
+	case 3, PokeMenu_EventScript_11 @ Utility
+	case 4, PokeMenu_EventScript_12 @ Repellent
+	@ case 5, PokeMenu_EventScript_13 @ Poke Rider
+	case MULTI_B_PRESSED, PokeMenu_EventScript_14 @ Exit
+	return
+
+PokeMenu_EventScript_2:
+	dynmultipush PokeMenu_EventScript_Text_2, 2 @ Fly
+	goto PokeMenu_EventScript_1
+
+@PokeMenu_EventScript_5:
+	@dynmultipush PokeMenu_EventScript_Text_5, 5 @ Poke Rider
+	@goto PokeMenu_EventScript_4
+
+PokeMenu_EventScript_8:
+	goto PokeMenu_EventScript_PortaPC
+	return
+
+PokeMenu_EventScript_9:
+	goto PokeMenu_EventScript_PokeVial
+	return
+
+PokeMenu_EventScript_10:
+	goto PokeMenu_EventScript_Fly
+	return
+
+PokeMenu_EventScript_11:
+	goto PokeMenu_EventScript_Utility
+	return
+
+PokeMenu_EventScript_12:
+	goto PokeMenu_EventScript_Repel
+	return
+
+PokeMenu_EventScript_13:
+	goto PokeMenu_EventScript_PokeRider
+	return
+
+PokeMenu_EventScript_14:
+	goto PokeMenu_EventScript_Exit
+	return
+
+
+PokeMenu_EventScript_PortaPC::
+	playse SE_PC_LOGIN
+	goto_if_unset FLAG_SYS_PC_LANETTE, PokeMenu_EventScript_PortaPC_2
+	call EventScript_AccessLanettesPC
+PokeMenu_EventScript_PortaPC_1:
+	special ShowPokemonStorageSystemPC
+	waitstate
+	closemessage
+	end
+
+PokeMenu_EventScript_PortaPC_2:
+	call EventScript_AccessSomeonesPC
+	goto PokeMenu_EventScript_PortaPC_1
+
+
+SecondaryPokeMenu_EventScript::
+	dynmultipush PokeMenu_EventScript_Text_1, 0 @ Poke Vial
+	dynmultipush PokeMenu_EventScript_Text_2, 1 @ Fly
+	dynmultipush PokeMenu_EventScript_Text_3, 2 @ Utility
+	dynmultipush PokeMenu_EventScript_Text_4, 3 @ Repellent
+	dynmultistack 0, 0, FALSE, 4, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 0, SecondaryPokeMenu_EventScript_2 @ Poke Vial
+	case 1, SecondaryPokeMenu_EventScript_5 @ Fly
+	case 2, SecondaryPokeMenu_EventScript_3 @ Utility
+	case 3, SecondaryPokeMenu_EventScript_4 @ Repellent
+	case MULTI_B_PRESSED, SecondaryPokeMenu_EventScript_6
+	return
+
+SecondaryPokeMenu_EventScript_2:
+	goto PokeMenu_EventScript_PokeVial
+	return
+
+SecondaryPokeMenu_EventScript_3:
+	goto PokeMenu_EventScript_Utility
+	return
+
+SecondaryPokeMenu_EventScript_4:
+	goto PokeMenu_EventScript_Repel
+	return
+
+SecondaryPokeMenu_EventScript_5:
+	goto PokeMenu_EventScript_PokeRider
+	return
+
+SecondaryPokeMenu_EventScript_6:
+	goto PokeMenu_EventScript_Exit
+	return
+
+
+PokeMenu_EventScript_PokeVial::
+	special HealNoneFaintedPartyMons
+	return
+
+PokeMenu_EventScript_FieldMove_11:
+	msgbox PokeMenu_EventScript_PokeRider_Text_0, MSGBOX_AUTOCLOSE
+	end
+
+PokeMenu_EventScript_Fly:
+	checkfieldmove FIELD_MOVE_FLY
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_FieldMove_11
+	special PokeMenu_PokeRider
+	end
+
+PokeMenu_EventScript_FieldMove_2:
+	checkfieldmove FIELD_MOVE_DIVE
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_FieldMove_11
+	goto EventScript_UseDive
+	end
+
+PokeMenu_EventScript_FieldMove_3:
+	checkfieldmove FIELD_MOVE_FLASH
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_FieldMove_11
+	goto EventScript_UseFlash
+	end
+
+PokeMenu_EventScript_FieldMove_4:
+	checkfieldmove FIELD_MOVE_CUT
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_FieldMove_11
+	goto EventScript_UseCut
+	end
+
+PokeMenu_EventScript_FieldMove_5:
+	checkfieldmove FIELD_MOVE_ROCK_SMASH
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_FieldMove_11
+	goto EventScript_UseRockSmash
+	end
+
+PokeMenu_EventScript_FieldMove_6:
+	checkfieldmove FIELD_MOVE_STRENGTH
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_FieldMove_11
+	goto EventScript_UseStrength
+	end
+
+PokeMenu_EventScript_FieldMove_7:
+	checkfieldmove FIELD_MOVE_SURF
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_FieldMove_11
+	goto EventScript_UseSurf
+	end
+
+PokeMenu_EventScript_FieldMove_8:
+	checkfieldmove FIELD_MOVE_WATERFALL
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_FieldMove_11
+	goto EventScript_UseWaterfall
+	end
+
+PokeMenu_EventScript_Utility::
+	@dynmultipush PokeMenu_EventScript_Utility_Text_0, 0 @ Time
+	dynmultipush PokeMenu_EventScript_Utility_Text_1, 1 @ Battle Speed
+	dynmultipush PokeMenu_EventScript_Utility_Text_2, 2 @ Hatch Egg
+	dynmultipush PokeMenu_EventScript_Utility_Text_3, 3 @ Enc. Table
+	@dynmultipush PokeMenu_EventScript_Utility_Text_4, 4 @ Apply damage
+	@dynmultipush PokeMenu_EventScript_Utility_Text_5, 5 @ Apply status
+	dynmultistack 0, 0, FALSE, 3, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	@case 0, PokeMenu_EventScript_Utility_2 @ Time
+	case 1, PokeMenu_EventScript_Utility_3 @ Battle Speed
+	case 2, PokeMenu_EventScript_Utility_4 @ Hatch Egg
+	case 3, PokeMenu_EventScript_Utility_5 @ Enc. Table
+	@case 4, PokeMenu_EventScript_Utility_7 @ Pre-damage
+	@case 5, PokeMenu_EventScript_Utility_8 @ Pre-status
+	case MULTI_B_PRESSED, PokeMenu_EventScript_Utility_6
+	return
+
+PokeMenu_EventScript_Utility_2:
+	call PokeMenu_EventScript_Time
+	return
+
+PokeMenu_EventScript_Utility_3:
+	call PokeMenu_EventScript_BattleSpeed
+	return
+
+PokeMenu_EventScript_Utility_4:
+	call PokeMenu_EventScript_HatchEgg
+	return
+
+PokeMenu_EventScript_Utility_5:
+	return
+
+PokeMenu_EventScript_Utility_6:
+	call PokeMenu_EventScript_Exit
+	return
+
+PokeMenu_EventScript_Utility_7:
+	return
+
+PokeMenu_EventScript_Utility_8:
+	@special PartyMenuApplyStatus
+	return
+
+PokeMenu_EventScript_Utility_Status::
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Poison, 0
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Paralysis, 1
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Sleep, 2
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Burn, 3
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Freeze, 4
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Frostbite, 5
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Close, 6
+	dynmultistack 0, 0, FALSE, 7, FALSE, 0, NULL
+	switch VAR_RESULT
+	case 0, Utility_EventScript_InflictStatus1_Single_Poison
+	case 1, Utility_EventScript_InflictStatus1_Single_Paralysis
+	case 2, Utility_EventScript_InflictStatus1_Single_Sleep
+	case 3, Utility_EventScript_InflictStatus1_Single_Burn
+	case 4, Utility_EventScript_InflictStatus1_Single_Freeze
+	case 5, Utility_EventScript_InflictStatus1_Single_Frostbite
+	case 6, Debug_EventScript_InflictStatus1_Close
+	case MULTI_B_PRESSED, Debug_EventScript_InflictStatus1_Close
+	releaseall
+	end
+
+Utility_EventScript_InflictStatus1_Single_Poison:
+	setstatus1 STATUS1_POISON, VAR_0x8004
+	goto PokeMenu_EventScript_Utility_Status
+	releaseall
+	end
+
+Utility_EventScript_InflictStatus1_Single_Paralysis:
+	setstatus1 STATUS1_PARALYSIS, VAR_0x8004
+	goto PokeMenu_EventScript_Utility_Status
+	releaseall
+	end
+
+Utility_EventScript_InflictStatus1_Single_Sleep:
+	setstatus1 STATUS1_SLEEP, VAR_0x8004
+	goto PokeMenu_EventScript_Utility_Status
+	releaseall
+	end
+
+Utility_EventScript_InflictStatus1_Single_Burn:
+	setstatus1 STATUS1_BURN, VAR_0x8004
+	goto PokeMenu_EventScript_Utility_Status
+	releaseall
+	end
+
+Utility_EventScript_InflictStatus1_Single_Freeze:
+	setstatus1 STATUS1_FREEZE, VAR_0x8004
+	goto PokeMenu_EventScript_Utility_Status
+	releaseall
+	end
+
+Utility_EventScript_InflictStatus1_Single_Frostbite:
+	setstatus1 STATUS1_FROSTBITE, VAR_0x8004
+	goto PokeMenu_EventScript_Utility_Status
+	releaseall
+	end
+
+PokeMenu_EventScript_Time::
+	dynmultipush PokeMenu_EventScript_Time_Text_0, 0
+	dynmultipush PokeMenu_EventScript_Time_Text_1, 1
+	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_Time_3
+	case 1, PokeMenu_EventScript_Time_4
+PokeMenu_EventScript_Time_1:
+	call PokeMenu_EventScript_Exit
+	return
+
+PokeMenu_EventScript_Time_3:
+	initclock 10, 0
+	goto PokeMenu_EventScript_Time_1
+
+PokeMenu_EventScript_Time_4:
+	initclock 20, 0
+	goto PokeMenu_EventScript_Time_1
+
+
+PokeMenu_EventScript_BattleSpeed::
+	dynmultipush PokeMenu_EventScript_BattleSpeed_Text_0, 0
+	dynmultipush PokeMenu_EventScript_BattleSpeed_Text_1, 1
+	dynmultipush PokeMenu_EventScript_BattleSpeed_Text_2, 2
+	dynmultipush PokeMenu_EventScript_BattleSpeed_Text_3, 3
+	dynmultistack 0, 0, FALSE, 4, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_BattleSpeed_3
+	case 1, PokeMenu_EventScript_BattleSpeed_4
+	case 2, PokeMenu_EventScript_BattleSpeed_5
+	case 3, PokeMenu_EventScript_BattleSpeed_6
+	case MULTI_B_PRESSED, PokeMenu_EventScript_BattleSpeed_7
+PokeMenu_EventScript_BattleSpeed_1:
+	playse SE_SELECT
+	call PokeMenu_EventScript_Exit
+	return
+
+PokeMenu_EventScript_BattleSpeed_3:
+	goto PokeMenu_EventScript_BattleSpeed_1
+
+PokeMenu_EventScript_BattleSpeed_4:
+	goto PokeMenu_EventScript_BattleSpeed_1
+
+PokeMenu_EventScript_BattleSpeed_5:
+	goto PokeMenu_EventScript_BattleSpeed_1
+
+PokeMenu_EventScript_BattleSpeed_6:
+	goto PokeMenu_EventScript_BattleSpeed_1
+
+PokeMenu_EventScript_BattleSpeed_7:
+	call PokeMenu_EventScript_Exit
+	goto PokeMenu_EventScript_BattleSpeed_1
+
+
+PokeMenu_EventScript_HatchEgg::
+	lockall
+	getpartysize
+	compare VAR_RESULT, 0
+	goto_if_eq PokeMenu_EventScript_HatchEgg_2
+PokeMenu_EventScript_HatchEgg_1:
+	special ChoosePartyMon
+	waitstate
+	compare VAR_RESULT, PARTY_SIZE
+	goto_if_gt PokeMenu_EventScript_HatchEgg_5
+PokeMenu_EventScript_HatchEgg_4:
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	compare VAR_RESULT, SPECIES_EGG
+	goto_if_ne PokeMenu_EventScript_HatchEgg_8
+PokeMenu_EventScript_HatchEgg_7:
+	special EggHatch
+	waitstate
+	call PokeMenu_EventScript_Exit
+	return
+
+PokeMenu_EventScript_HatchEgg_2:
+	msgbox PokeMenu_EventScript_HatchEgg_Text_0
+	call PokeMenu_EventScript_Exit
+	goto PokeMenu_EventScript_HatchEgg_1
+
+PokeMenu_EventScript_HatchEgg_5:
+	call PokeMenu_EventScript_Exit
+	goto PokeMenu_EventScript_HatchEgg_4
+
+PokeMenu_EventScript_HatchEgg_8:
+	msgbox PokeMenu_EventScript_HatchEgg_Text_1
+	call PokeMenu_EventScript_Exit
+	goto PokeMenu_EventScript_HatchEgg_7
+
+PokeMenu_EventScript_Repel::
+	compare VAR_REPEL_STEP_COUNT, 0
+	goto_if_eq PokeMenu_EventScript_Repel_2
+	setvar VAR_REPEL_STEP_COUNT, 0
+	msgbox PokeMenu_EventScript_Repel_Text_1, MSGBOX_AUTOCLOSE
+PokeMenu_EventScript_Repel_1:
+	end
+
+PokeMenu_EventScript_Repel_2:
+	setvar VAR_REPEL_STEP_COUNT, 1
+	msgbox PokeMenu_EventScript_Repel_Text_0, MSGBOX_AUTOCLOSE
+	goto PokeMenu_EventScript_Repel_1
+
+
+PokeMenu_EventScript_PokeRider::
+	special PokeMenu_PokeRider_Helper
+	goto_if_set FLAG_POKE_MENU, PokeMenu_EventScript_PokeRider_2
+	msgbox PokeMenu_EventScript_PokeRider_Text_0, MSGBOX_AUTOCLOSE
+PokeMenu_EventScript_PokeRider_1:
+	end
+
+PokeMenu_EventScript_PokeRider_2:
+	fadescreen FADE_TO_BLACK
+	special PokeMenu_PokeRider
+	goto PokeMenu_EventScript_PokeRider_1
+
+
+PokeMenu_EventScript_HealParty::
+	playse SE_USE_ITEM
+	special HealPlayerParty
+	end
+
+
+PokeMenu_EventScript_ChoosePokemon::
+	special ChoosePartyMon
+	waitstate
+	compare VAR_0x8004, PARTY_SIZE
+	goto_if_gt PokeMenu_EventScript_ChoosePokemon_2
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	compare VAR_RESULT, SPECIES_EGG
+	compare VAR_RESULT, SPECIES_EGG
+	goto_if_eq PokeMenu_EventScript_ChoosePokemon_5
+PokeMenu_EventScript_ChoosePokemon_1:
+	return
+
+PokeMenu_EventScript_ChoosePokemon_2:
+	goto PokeMenu_EventScript_Exit
+	goto PokeMenu_EventScript_ChoosePokemon_1
+
+PokeMenu_EventScript_ChoosePokemon_5:
+	goto PokeMenu_EventScript_Exit
+	goto PokeMenu_EventScript_ChoosePokemon_1
+
+
+PokeMenu_EventScript_Exit::
+	closemessage
+	release
+	end
+
+
+PokeMenu_EventScript_Text_0:
+	.string "Access PC$"
+
+PokeMenu_EventScript_Text_1:
+	.string "Poke Vial$"
+
+PokeMenu_EventScript_Text_2:
+	.string "Fly$"
+
+PokeMenu_EventScript_Text_3:
+	.string "Utility$"
+
+PokeMenu_EventScript_Text_4:
+	.string "Repel$"
+
+PokeMenu_EventScript_Text_5:
+	.string "Poke Rider$"
+
+PokeMenu_EventScript_FieldMove_Text_0:
+	.string "Fly$"
+	
+PokeMenu_EventScript_FieldMove_Text_1:
+	.string "Dig$"
+	
+PokeMenu_EventScript_FieldMove_Text_2:
+	.string "Dive$"
+	
+PokeMenu_EventScript_FieldMove_Text_3:
+	.string "Flash$"
+	
+PokeMenu_EventScript_FieldMove_Text_4:
+	.string "Cut$"
+	
+PokeMenu_EventScript_FieldMove_Text_5:
+	.string "Rock Smash$"
+	
+PokeMenu_EventScript_FieldMove_Text_6:
+	.string "Strength$"
+	
+PokeMenu_EventScript_FieldMove_Text_7:
+	.string "Surf$"
+	
+PokeMenu_EventScript_FieldMove_Text_8:
+	.string "Waterfall$"
+	
+PokeMenu_EventScript_FieldMove_Text_9:
+	.string "Secret Power$"
+	
+PokeMenu_EventScript_FieldMove_Text_10:
+	.string "Sweet Scent$"
+	
+PokeMenu_EventScript_FieldMove_Text_11:
+	.string "Exit$"
+
+PokeMenu_EventScript_Utility_Text_0:
+	.string "Time$"
+
+PokeMenu_EventScript_Utility_Text_1:
+	.string "Battle Speed$"
+
+PokeMenu_EventScript_Utility_Text_2:
+	.string "Hatch Egg$"
+
+PokeMenu_EventScript_Utility_Text_3:
+	.string "Enc. Table$"
+
+PokeMenu_EventScript_Utility_Text_4:
+	.string "Apply damage$"
+
+PokeMenu_EventScript_Utility_Text_5:
+	.string "Apply status$"
+
+PokeMenu_EventScript_Time_Text_0:
+	.string "Day$"
+
+PokeMenu_EventScript_Time_Text_1:
+	.string "Night$"
+
+PokeMenu_EventScript_BattleSpeed_Text_0:
+	.string "1x$"
+
+PokeMenu_EventScript_BattleSpeed_Text_1:
+	.string "2x$"
+
+PokeMenu_EventScript_BattleSpeed_Text_2:
+	.string "3x$"
+
+PokeMenu_EventScript_BattleSpeed_Text_3:
+	.string "4x$"
+
+PokeMenu_EventScript_HatchEgg_Text_0:
+	.string "You have no Pokémon nor Eggs.$"
+
+PokeMenu_EventScript_HatchEgg_Text_1:
+	.string "That's not a Pokémon Egg.$"
+
+PokeMenu_EventScript_Repel_Text_0:
+	.string "Repel effect: ON$"
+
+PokeMenu_EventScript_Repel_Text_1:
+	.string "Repel effect: OFF$"
+
+PokeMenu_EventScript_PokeRider_Text_0:
+	.string "You can't use this option here.$"
+

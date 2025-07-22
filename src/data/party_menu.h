@@ -438,6 +438,17 @@ static const struct WindowTemplate sDoWhatWithMonMsgWindowTemplate =
     .baseBlock = 0x279,
 };
 
+static const struct WindowTemplate sWhichStatusMsgWindowTemplate =
+{
+    .bg = 2,
+    .tilemapLeft = 1,
+    .tilemapTop = 17,
+    .width = 18,
+    .height = 2,
+    .paletteNum = 15,
+    .baseBlock = 0x279,
+};
+
 static const struct WindowTemplate sDoWhatWithItemMsgWindowTemplate =
 {
     .bg = 2,
@@ -500,6 +511,39 @@ static const struct WindowTemplate sItemGiveTakeWindowTemplate =
     .tilemapTop = 11,
     .width = 6,
     .height = 8,
+    .paletteNum = 14,
+    .baseBlock = 0x39D,
+};
+
+static const struct WindowTemplate sStatusWindowTemplate =
+{
+    .bg = 2,
+    .tilemapLeft = 21,
+    .tilemapTop = 7,
+    .width = 8,
+    .height = 12,
+    .paletteNum = 14,
+    .baseBlock = 0x39D,
+};
+
+static const struct WindowTemplate sDamageWindowTemplate =
+{
+    .bg = 2,
+    .tilemapLeft = 23,
+    .tilemapTop = 13,
+    .width = 6,
+    .height = 2,
+    .paletteNum = 14,
+    .baseBlock = 0x39D,
+};
+
+static const struct WindowTemplate sPoisonWindowTemplate =
+{
+    .bg = 2,
+    .tilemapLeft = 21,
+    .tilemapTop = 15,
+    .width = 8,
+    .height = 4,
     .paletteNum = 14,
     .baseBlock = 0x39D,
 };
@@ -662,6 +706,8 @@ static const u8 *const sActionStringTable[] =
     [PARTY_MSG_NO_POKEMON]             = COMPOUND_STRING("You have no POKéMON."),
     [PARTY_MSG_CHOOSE_MON_FOR_BOX]     = gText_SendWhichMonToPC,
     [PARTY_MSG_MOVE_ITEM_WHERE]        = gText_MoveItemWhere,
+    [PARTY_MSG_WHICH_STATUS]           = gText_WhichStatus,
+    [PARTY_MSG_SET_HP]                 = gText_SetHP,
 };
 
 static const u8 *const sDescriptionStringTable[] =
@@ -701,6 +747,8 @@ struct
     [MENU_SWITCH]          = {COMPOUND_STRING("SWITCH"),          CursorCb_Switch},
     [MENU_CANCEL1]         = {gText_Cancel2,                      CursorCb_Cancel1},
     [MENU_ITEM]            = {COMPOUND_STRING("ITEM"),            CursorCb_Item},
+    [MENU_STATUS]          = {COMPOUND_STRING("STATUS"),          CursorCb_Status},
+    [MENU_DAMAGE]          = {COMPOUND_STRING("DAMAGE"),          CursorCb_Damage},
     [MENU_GIVE]            = {gMenuText_Give,                     CursorCb_Give},
     [MENU_TAKE_ITEM]       = {COMPOUND_STRING("TAKE"),            CursorCb_TakeItem},
     [MENU_MOVE_ITEM]       = {COMPOUND_STRING("MOVE"),            CursorCb_MoveItem},
@@ -725,6 +773,14 @@ struct
     [MENU_CATALOG_MOWER]   = {COMPOUND_STRING("Lawn mower"),      CursorCb_CatalogMower},
     [MENU_CHANGE_FORM]     = {COMPOUND_STRING("Change form"),     CursorCb_ChangeForm},
     [MENU_CHANGE_ABILITY]  = {COMPOUND_STRING("Change Ability"),  CursorCb_ChangeAbility},
+    [MENU_POISON]          = {COMPOUND_STRING("Poison"),          CursorCb_Poison},
+    [MENU_BURN]            = {COMPOUND_STRING("Burn"),            CursorCb_Burn},
+    [MENU_TOXIC]           = {COMPOUND_STRING("Toxic"),           CursorCb_Toxic},
+    [MENU_FROSTBITE]       = {COMPOUND_STRING("Frostbite"),       CursorCb_Frostbite},
+    [MENU_PARALYSIS]       = {COMPOUND_STRING("Paralysis"),       CursorCb_Paralysis},
+    [MENU_SLEEP]           = {COMPOUND_STRING("Sleep"),           CursorCb_Sleep},
+    [MENU_FREEZE]          = {COMPOUND_STRING("Freeze"),          CursorCb_Freeze},
+    [MENU_REGULAR]         = {COMPOUND_STRING("Regular"),         CursorCb_Regular},
 };
 
 static const u8 sPartyMenuAction_SummarySwitchCancel[] = {MENU_SUMMARY, MENU_SWITCH, MENU_CANCEL1};
@@ -742,6 +798,9 @@ static const u8 sPartyMenuAction_TradeSummaryCancel2[] = {MENU_TRADE2, MENU_SUMM
 static const u8 sPartyMenuAction_TakeItemTossCancel[] = {MENU_TAKE_ITEM, MENU_TOSS, MENU_CANCEL1};
 static const u8 sPartyMenuAction_RotomCatalog[] = {MENU_CATALOG_BULB, MENU_CATALOG_OVEN, MENU_CATALOG_WASHING, MENU_CATALOG_FRIDGE, MENU_CATALOG_FAN, MENU_CATALOG_MOWER, MENU_CANCEL1};
 static const u8 sPartyMenuAction_ZygardeCube[] = {MENU_CHANGE_FORM, MENU_CHANGE_ABILITY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_Status[] = {MENU_POISON, MENU_BURN, MENU_FROSTBITE, MENU_PARALYSIS, MENU_SLEEP, MENU_FREEZE};
+static const u8 sPartyMenuAction_Poison[] = {MENU_REGULAR, MENU_TOXIC};
+static const u8 sPartyMenuAction_Damage[] = {ACTIONS_DAMAGE};
 
 
 
@@ -763,6 +822,9 @@ static const u8 *const sPartyMenuActions[] =
     [ACTIONS_TAKEITEM_TOSS] = sPartyMenuAction_TakeItemTossCancel,
     [ACTIONS_ROTOM_CATALOG] = sPartyMenuAction_RotomCatalog,
     [ACTIONS_ZYGARDE_CUBE]  = sPartyMenuAction_ZygardeCube,
+    [ACTIONS_STATUS]        = sPartyMenuAction_Status,
+    [ACTIONS_DAMAGE]        = sPartyMenuAction_Damage,
+    [ACTIONS_POISON]        = sPartyMenuAction_Poison,
 };
 
 static const u8 sPartyMenuActionCounts[] =
@@ -783,6 +845,9 @@ static const u8 sPartyMenuActionCounts[] =
     [ACTIONS_TAKEITEM_TOSS] = ARRAY_COUNT(sPartyMenuAction_TakeItemTossCancel),
     [ACTIONS_ROTOM_CATALOG] = ARRAY_COUNT(sPartyMenuAction_RotomCatalog),
     [ACTIONS_ZYGARDE_CUBE]  = ARRAY_COUNT(sPartyMenuAction_ZygardeCube),
+    [ACTIONS_STATUS]        = ARRAY_COUNT(sPartyMenuAction_Status),
+    [ACTIONS_DAMAGE]        = ARRAY_COUNT(sPartyMenuAction_Damage),
+    [ACTIONS_POISON]        = ARRAY_COUNT(sPartyMenuAction_Poison),
 };
 
 static const u8 *const sUnionRoomTradeMessages[] =
