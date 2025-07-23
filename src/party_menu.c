@@ -75,6 +75,7 @@
 #include "constants/form_change_types.h"
 #include "constants/item_effects.h"
 #include "constants/items.h"
+#include "constants/layouts.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
 #include "constants/rgb.h"
@@ -511,6 +512,7 @@ static void Task_HideFollowerNPCForTeleport(u8);
 static void DisplayFieldMoveExitAreaMessage(u8);
 static void DisplayCantUseFlashMessage(void);
 static void DisplayCantUseSurfMessage(void);
+static bool8 InEliteFour(void);
 
 // static const data
 #include "data/party_menu.h"
@@ -2845,12 +2847,25 @@ static void SetPartyMonSelectionActions(struct Pokemon *mons, u8 slotId, u8 acti
     {
         SetPartyMonFieldSelectionActions(mons, slotId);
     }
+    else if (action == ACTIONS_DAMAGE)
+    {
+        SetPartyMonFieldSelectionActions(mons, slotId);
+    }
     else
     {
         sPartyMenuInternal->numActions = sPartyMenuActionCounts[action];
         for (i = 0; i < sPartyMenuInternal->numActions; i++)
             sPartyMenuInternal->actions[i] = sPartyMenuActions[action][i];
     }
+}
+
+static bool8 InEliteFour(void)
+{
+    return gMapHeader.mapLayoutId == LAYOUT_EVER_GRANDE_CITY_SHORT_HALL
+        || gMapHeader.mapLayoutId == LAYOUT_EVER_GRANDE_CITY_SIDNEYS_ROOM
+        || gMapHeader.mapLayoutId == LAYOUT_EVER_GRANDE_CITY_PHOEBES_ROOM
+        || gMapHeader.mapLayoutId == LAYOUT_EVER_GRANDE_CITY_GLACIAS_ROOM
+        || gMapHeader.mapLayoutId == LAYOUT_EVER_GRANDE_CITY_DRAKES_ROOM;
 }
 
 static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
@@ -2873,7 +2888,16 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
         }
     }
 
-    if (!InBattlePike())
+    if(InEliteFour())
+    {
+        if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE)
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SWITCH);
+        if (ItemIsMail(GetMonData(&mons[slotId], MON_DATA_HELD_ITEM)))
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_MAIL);
+        else
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_ITEM);
+    }
+    else if (!InBattlePike())
     {
         if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE)
         {
@@ -3400,16 +3424,57 @@ bool32 TryMonStatusChange(u8 taskId, u16 status)
     }
 }
 
+static void PrintHP(u8 windowId, s16 quantity)
+{
+    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEADING_ZEROS, 3);
+    StringExpandPlaceholders(gStringVar4, gText_xVar2);
+    AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, 0, 0, 0, 0);
+}
+
+#define thealthPoints data[8]
+static void Task_ChooseHPAmount(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    s16 maxHP=gPlayerParty[gPartyMenu.slotId].maxHP;
+    struct Pokemon *mon=&gPlayerParty[gPartyMenu.slotId];
+
+
+    if (AdjustQuantityAccordingToDPadInput(&thealthPoints, maxHP) == TRUE)
+    {
+        PrintHP(sPartyMenuInternal->windowId[0], thealthPoints);
+        gTasks[taskId].func = Task_ChooseHPAmount;
+        ScheduleBgCopyTilemapToVram(2);
+    }
+    else if (JOY_NEW(A_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+        PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+        SetMonData(mon, MON_DATA_HP, &thealthPoints);
+        UpdateMonDisplayInfoAfterRareCandy(gPartyMenu.slotId, mon);
+        CursorCb_Cancel1(taskId);
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        CursorCb_Cancel1(taskId);
+    }
+}
+#undef thealthPoints
+
 static void CursorCb_Damage(u8 taskId)
 {
     PlaySE(SE_SELECT);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
     SetPartyMonSelectionActions(gPlayerParty, gPartyMenu.slotId, ACTIONS_DAMAGE);
-    DisplaySelectionWindow(SELECTWINDOW_DAMAGE);
+    //DisplaySelectionWindow(SELECTWINDOW_DAMAGE);
+    sPartyMenuInternal->windowId[0] = AddWindow(&sDamageWindowTemplate);
+    DrawStdFrameWithCustomTileAndPalette(sPartyMenuInternal->windowId[0], FALSE, 0x4F, 13);
+    PrintHP(sPartyMenuInternal->windowId[0], 1);
     DisplayPartyMenuStdMessage(PARTY_MSG_SET_HP);
     gTasks[taskId].data[0] = 0xFF;
-    gTasks[taskId].func = Task_HandleSelectionMenuInput;
+    gTasks[taskId].func = Task_ChooseHPAmount;
 }
 
 static void CursorCb_Poison(u8 taskId)
@@ -7994,26 +8059,6 @@ void ChoosePartyMonUtility2(void)
 }
 
 static void Task_ChoosePartyMon(u8 taskId)
-{
-    if (!gPaletteFade.active)
-    {
-        CleanupOverworldWindowsAndTilemaps();
-        InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_MON, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_AND_CLOSE, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, BufferMonSelection);
-        DestroyTask(taskId);
-    }
-}
-
-static void Task_ChoosePartyMonUtility1(u8 taskId)
-{
-    if (!gPaletteFade.active)
-    {
-        CleanupOverworldWindowsAndTilemaps();
-        InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_MON, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_AND_CLOSE, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, BufferMonSelection);
-        DestroyTask(taskId);
-    }
-}
-
-static void Task_ChoosePartyMonUtility2(u8 taskId)
 {
     if (!gPaletteFade.active)
     {

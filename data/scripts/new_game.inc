@@ -331,6 +331,10 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_ROUTE_114_WALLY
 	setflag FLAG_HIDE_ROUTE_114_RIVAL
 	setflag FLAG_HIDE_EMMIE_RESET
+	clearflag FLAG_DEBUG_COLLISION
+	setflag FLAG_UTILITY_MENU
+	clearflag FLAG_UTILITY_MENU_E4
+	clearflag FLAG_POKE_MENU
 	destroyfollowernpc
 	call EventScript_ResetAllBerries
 	end

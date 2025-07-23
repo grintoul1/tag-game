@@ -9,6 +9,7 @@ EverGrandeCity_Hall1_OnWarp:
 
 EverGrandeCity_Hall1_EventScript_TurnPlayerNorth::
 	setrespawn HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE
+	setflag FLAG_UTILITY_MENU_E4
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	end
 
