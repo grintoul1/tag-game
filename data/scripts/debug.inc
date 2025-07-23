@@ -737,7 +737,7 @@ PokeMenu_EventScript_4:
 	switch VAR_RESULT
 	case 0, PokeMenu_EventScript_8 @ Access PC
 	case 1, PokeMenu_EventScript_9 @ Poke Vial
-	case 2, PokeMenu_EventScript_10 @ Fly
+	case 2, PokeMenu_EventScript_13 @ Poke Rider
 	case 3, PokeMenu_EventScript_11 @ Utility
 	case 4, PokeMenu_EventScript_12 @ Repellent
 	@ case 5, PokeMenu_EventScript_13 @ Poke Rider
@@ -1100,7 +1100,7 @@ PokeMenu_EventScript_Repel_2:
 
 PokeMenu_EventScript_PokeRider::
 	special PokeMenu_PokeRider_Helper
-	goto_if_set FLAG_POKE_MENU, PokeMenu_EventScript_PokeRider_2
+	goto_if_set FLAG_BADGE06_GET, PokeMenu_EventScript_PokeRider_2
 	msgbox PokeMenu_EventScript_PokeRider_Text_0, MSGBOX_AUTOCLOSE
 PokeMenu_EventScript_PokeRider_1:
 	end

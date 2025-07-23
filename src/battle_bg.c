@@ -669,7 +669,15 @@ static u8 GetBattleEnvironmentOverride(void)
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
         u32 trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
-        if (trainerClass == TRAINER_CLASS_LEADER)
+        
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_TABITHA_SKY_PILLAR 
+            || TRAINER_BATTLE_PARAM.opponentA == TRAINER_SHELLY_SKY_PILLAR
+            || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_SKY_PILLAR
+            || TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_SKY_PILLAR)
+        {
+            return BATTLE_ENVIRONMENT_RAYQUAZA;
+        }
+        else if (trainerClass == TRAINER_CLASS_LEADER)
             return BATTLE_ENVIRONMENT_LEADER;
         else if (trainerClass == TRAINER_CLASS_CHAMPION)
             return BATTLE_ENVIRONMENT_CHAMPION;

@@ -2672,3 +2672,9 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/birch_speech.inc"
 	.include "data/scripts/dexnav.inc"
 	.include "data/maps/Route100/scripts.inc"
+
+	.include "data/maps/LittlerootCave/scripts.inc"
+
+	.include "data/maps/LittlerootCave_Underwater/scripts.inc"
+
+	.include "data/maps/Littleroot_Cave_WaterfallRoom/scripts.inc"

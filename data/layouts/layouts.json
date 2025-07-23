@@ -4420,6 +4420,36 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route100/border.bin",
       "blockdata_filepath": "data/layouts/Route100/map.bin"
+    },
+    {
+      "id": "LAYOUT_LITTLEROOT_CAVE",
+      "name": "LittlerootCave_Layout",
+      "width": 20,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/LittlerootCave/border.bin",
+      "blockdata_filepath": "data/layouts/LittlerootCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_LITTLEROOT_CAVE_UNDERWATER",
+      "name": "LittlerootCave_Underwater_Layout",
+      "width": 20,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/LittlerootCave_Underwater/border.bin",
+      "blockdata_filepath": "data/layouts/LittlerootCave_Underwater/map.bin"
+    },
+    {
+      "id": "LAYOUT_LITTLEROOT_CAVE_WATERFALL_ROOM",
+      "name": "Littleroot_Cave_WaterfallRoom_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Littleroot_Cave_WaterfallRoom/border.bin",
+      "blockdata_filepath": "data/layouts/Littleroot_Cave_WaterfallRoom/map.bin"
     }
   ]
 }
