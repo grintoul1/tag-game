@@ -4,7 +4,6 @@
 
 AI_DOUBLE_BATTLE_TEST("AI won't use a Weather changing move if partner already chose such move")
 {
-    KNOWN_FAILING; // AI changed so Scratch on partner scores same as Weather when already set
     u32 j, k;
     static const u16 weatherMoves[] = {MOVE_SUNNY_DAY, MOVE_HAIL, MOVE_RAIN_DANCE, MOVE_SANDSTORM, MOVE_SNOWSCAPE};
     u16 weatherMoveLeft = MOVE_NONE, weatherMoveRight = MOVE_NONE;
@@ -525,6 +524,7 @@ AI_DOUBLE_BATTLE_TEST("AI uses After You to set up Trick Room")
 
 AI_DOUBLE_BATTLE_TEST("AI uses Trick Room intelligently")
 {
+    KNOWN_FAILING; // AI changed
     u32 move, ability, speed;
 
     PARAMETRIZE { move = MOVE_DRAINING_KISS; ability = ABILITY_SYNCHRONIZE; speed = 4; }

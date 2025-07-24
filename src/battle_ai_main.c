@@ -5716,8 +5716,12 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
 // AI_FLAG_CHECK_VIABILITY - Chooses best possible move to hit player
 static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
+    enum BattleMoveEffects moveEffect = GetMoveEffect(move);
+
     // Targeting partner, check benefits of doing that instead
-    if (IsTargetingPartner(battlerAtk, battlerDef))
+    if (IsTargetingPartner(battlerAtk, battlerDef) && moveEffect == EFFECT_HIT)
+        ADJUST_AND_RETURN_SCORE(-10);
+    else if (IsTargetingPartner(battlerAtk, battlerDef))
         return score;
 
     if (GetMovePower(move) != 0)
