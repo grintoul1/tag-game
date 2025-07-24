@@ -15138,7 +15138,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 6113
-                MOVE_NIGHT_DAZE,
+                MOVE_SONIC_BOOM,
             },
             },
             {
@@ -15153,7 +15153,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 6118
-                MOVE_DRAGON_CLAW,
+                MOVE_SONIC_BOOM,
             },
             },
             {
@@ -15168,7 +15168,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 6123
-                MOVE_DRAGON_CLAW,
+                MOVE_SONIC_BOOM,
             },
             },
         },

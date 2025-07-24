@@ -765,7 +765,7 @@ static bool32 PartnerShouldSwitchIfWonderGuard(u32 battler)
                         return FALSE;
                 }
             }
-            if (RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetSwitchChance(PARTNER_SHOULD_SWITCH_WONDER_GUARD)))
+            if (RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_WONDER_GUARD)))
             {
                 if (gAiLogicData->mostSuitableMonId[battler] == PARTY_SIZE) // No good candidate mons, find any one that can deal damage
                     return FindMonWithMoveOfEffectiveness(battler, opposingBattler, UQ_4_12(2.0));
@@ -1174,7 +1174,7 @@ static bool32 PartnerShouldSwitchIfOpponentChargingOrInvulnerable(u32 battler)
             return SetSwitchinAndSwitch(battler, PARTY_SIZE);
     }
 
-    else if (isOpposingBattlerChargingOrInvulnerable && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE && RandomPercentage(RNG_AI_SWITCH_FREE_TURN, GetSwitchChance(PARTNER_SHOULD_SWITCH_FREE_TURN)))
+    else if (isOpposingBattlerChargingOrInvulnerable && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE && RandomPercentage(RNG_AI_SWITCH_FREE_TURN, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_FREE_TURN)))
     {
         return SetSwitchinAndSwitch(battler, PARTY_SIZE);
     }        
@@ -2981,7 +2981,7 @@ static u32 GetSwitchinHitsToKO(s32 damageTaken, u32 battler)
     return hitsToKO;
 }
 */ 
-/*
+
 static u32 GetBattleMonTypeMatchup(struct BattlePokemon opposingBattleMon, struct BattlePokemon battleMon)
 {
     // Check type matchup
@@ -3011,7 +3011,7 @@ static u32 GetBattleMonTypeMatchup(struct BattlePokemon opposingBattleMon, struc
 
     return typeEffectiveness1 + typeEffectiveness2;
 }
-*/
+
 
 /*
 static int GetRandomSwitchinWithBatonPass(int aliveCount, int bits, int firstId, int lastId, int currentMonId)
