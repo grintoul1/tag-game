@@ -3137,6 +3137,18 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         {
             ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
         }
+        // Weakness policy priority AI.
+        switch (atkPartnerHoldEffect)
+        {
+        case HOLD_EFFECT_WEAKNESS_POLICY:
+            if (aiData->effectiveness[battlerAtk][battlerAtkPartner][gAiThinkingStruct->movesetIndex] >= UQ_4_12(2.0) && isFriendlyFireOK && GetMovePriority(gAiThinkingStruct->movesetIndex) >= 1)
+            {
+                ADJUST_SCORE(BEST_EFFECT + 10 - NO_DAMAGE_OR_FAILS); // +60 to counter the flat -10 for targetting partner with hitting move
+            }
+            break;
+        default:
+            break;
+        }
 
         // partner ability checks
         if (!partnerProtecting && moveTarget != MOVE_TARGET_BOTH && !DoesBattlerIgnoreAbilityChecks(battlerAtk, aiData->abilities[battlerAtk], move))
@@ -3550,7 +3562,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 break;
             } // attacker move effects
         } // check partner protecting
-
+        
         if ((isMoveAffectedByPartnerAbility && (score <= AI_SCORE_DEFAULT)) || !isMoveAffectedByPartnerAbility)
         {
             ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -5716,10 +5728,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
 // AI_FLAG_CHECK_VIABILITY - Chooses best possible move to hit player
 static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
-    enum BattleMoveEffects moveEffect = GetMoveEffect(move);
 
     // Targeting partner, check benefits of doing that instead
-    if (IsTargetingPartner(battlerAtk, battlerDef) && moveEffect == EFFECT_HIT)
+    if (IsTargetingPartner(battlerAtk, battlerDef) && GetMovePower(move) != 0)
         ADJUST_AND_RETURN_SCORE(-10);
     else if (IsTargetingPartner(battlerAtk, battlerDef))
         return score;

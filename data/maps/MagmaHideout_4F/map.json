@@ -162,7 +162,7 @@
       "y": 15,
       "elevation": 0,
       "var": "VAR_MAGMAHIDEOUT_STATE",
-      "var_value": "4",
+      "var_value": "6",
       "script": "MagmaHideout_4F_EventScript_Grunt11Grunt12"
     },
     {
@@ -171,7 +171,7 @@
       "y": 6,
       "elevation": 0,
       "var": "VAR_MAGMAHIDEOUT_STATE",
-      "var_value": "5",
+      "var_value": "7",
       "script": "MagmaHideout_4F_EventScript_CourtneyTabitha"
     }
   ],
