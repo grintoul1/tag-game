@@ -3389,6 +3389,7 @@ u8 FldEff_UseFly(void)
 
 static void (*const sFlyOutFieldEffectFuncs[])(struct Task *) = {
     FlyOutFieldEffect_FieldMovePose,
+    FlyOutFieldEffect_ShowMon,
     FlyOutFieldEffect_BirdLeaveBall,
     FlyOutFieldEffect_WaitBirdLeave,
     FlyOutFieldEffect_BirdSwoopDown,
