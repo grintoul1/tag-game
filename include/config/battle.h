@@ -134,7 +134,7 @@
                                                // If OW_TIMES_OF_DAY is set to Gen 3, then Morning Sun is boosted during the day. 
 
 // Ability settings
-#define B_GALE_WINGS                GEN_LATEST // In Gen7+ requires full HP to trigger.
+#define B_GALE_WINGS                GEN_6      // In Gen7+ requires full HP to trigger.
 #define B_STANCE_CHANGE_FAIL        GEN_LATEST // In Gen7+, Stance Change fails if the Pokémon is unable to use a move because of confusion, paralysis, etc. In Gen6, it doesn't.
 #define B_SHADOW_TAG_ESCAPE         GEN_LATEST // In Gen4+, if both sides have a Pokémon with Shadow Tag, all battlers can escape. Before, neither side could escape this situation.
 #define B_MOODY_ACC_EVASION         GEN_LATEST // In Gen8, Moody CANNOT raise Accuracy and Evasion anymore.

@@ -873,11 +873,11 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_SNOW_WARNING] =
     {
         .name = _("Snow Warning"),
-    #if B_SNOW_WARNING >= GEN_9
+    //#if B_SNOW_WARNING >= GEN_9
         .description = COMPOUND_STRING("Summons snow in battle."),
-    #else
-        .description = COMPOUND_STRING("Summons hail in battle."),
-    #endif
+    //#else
+    //    .description = COMPOUND_STRING("Summons hail in battle."),
+    //#endif
         .aiRating = 8,
     },
 
@@ -2408,4 +2408,23 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .cantBeSwapped = TRUE,
         .cantBeTraced = TRUE,
     },
+    
+    [ABILITY_SNOW_FORCE] =
+    {
+        .name = _("Snow Force"),
+        .description = COMPOUND_STRING("Powers up Ice and Flying moves in a Snow and Hail."),
+        .aiRating = 4,
+    },
+
+    [ABILITY_HAIL_WARNING] =
+    {
+        .name = _("Hail Warning"),
+    //#if B_SNOW_WARNING >= GEN_9
+    //    .description = COMPOUND_STRING("Summons snow in battle."),
+    //#else
+        .description = COMPOUND_STRING("Summons hail in battle."),
+    //#endif
+        .aiRating = 8,
+    },
+
 };

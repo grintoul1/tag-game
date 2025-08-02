@@ -255,6 +255,7 @@ static bool32 HandleEndTurnWeatherDamage(u32 battler)
         else if (currBattleWeather == BATTLE_WEATHER_HAIL)
         {
             if (ability != ABILITY_SNOW_CLOAK
+             && ability != ABILITY_SNOW_FORCE
              && ability != ABILITY_OVERCOAT
              && !IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
              && !(gStatuses3[battler] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))

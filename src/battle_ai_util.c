@@ -1697,7 +1697,9 @@ u32 AI_GetSwitchinWeather(struct BattlePokemon battleMon)
     case ABILITY_SAND_STREAM:
         return B_WEATHER_SANDSTORM;
     case ABILITY_SNOW_WARNING:
-        return B_SNOW_WARNING >= GEN_9 ? B_WEATHER_SNOW : B_WEATHER_HAIL;
+        return B_WEATHER_SNOW;
+    case ABILITY_HAIL_WARNING:
+        return B_WEATHER_HAIL;
     default:
         return gBattleWeather;
     }
@@ -3000,6 +3002,7 @@ static bool32 BattlerAffectedByHail(u32 battlerId, u32 ability)
 {
     if (!IS_BATTLER_OF_TYPE(battlerId, TYPE_ICE)
       && ability != ABILITY_SNOW_CLOAK
+      && ability != ABILITY_SNOW_FORCE
       && ability != ABILITY_OVERCOAT
       && ability != ABILITY_ICE_BODY)
         return TRUE;
