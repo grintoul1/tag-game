@@ -654,6 +654,8 @@ static bool8 (*const sEscalatorWarpInFieldEffectFuncs[])(struct Task *) =
 static bool8 (*const sWaterfallFieldEffectFuncs[])(struct Task *, struct ObjectEvent *) =
 {
     WaterfallFieldEffect_Init,
+    WaterfallFieldEffect_ShowMon,
+    WaterfallFieldEffect_WaitForShowMon,
     WaterfallFieldEffect_RideUp,
     WaterfallFieldEffect_ContinueRideOrEnd,
 };
@@ -1956,7 +1958,6 @@ static bool8 WaterfallFieldEffect_ShowMon(struct Task *task, struct ObjectEvent 
     if (!ObjectEventIsMovementOverridden(objectEvent))
     {
         ObjectEventClearHeldMovementIfFinished(objectEvent);
-        gFieldEffectArguments[0] = task->tMonId;
         task->tState++;
     }
     return FALSE;

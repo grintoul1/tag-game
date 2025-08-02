@@ -2678,3 +2678,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/LittlerootCave_Underwater/scripts.inc"
 
 	.include "data/maps/Littleroot_Cave_WaterfallRoom/scripts.inc"
+
+	.include "data/maps/LittlerootCave_WaterfallRoom_Underwater/scripts.inc"

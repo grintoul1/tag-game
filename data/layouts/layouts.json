@@ -4450,6 +4450,16 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/Littleroot_Cave_WaterfallRoom/border.bin",
       "blockdata_filepath": "data/layouts/Littleroot_Cave_WaterfallRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_LITTLEROOT_CAVE_WATERFALL_ROOM_UNDERWATER",
+      "name": "LittlerootCave_WaterfallRoom_Underwater_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/LittlerootCave_WaterfallRoom_Underwater/border.bin",
+      "blockdata_filepath": "data/layouts/LittlerootCave_WaterfallRoom_Underwater/map.bin"
     }
   ]
 }
