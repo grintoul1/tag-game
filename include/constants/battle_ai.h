@@ -35,9 +35,10 @@
 #define AI_FLAG_SMART_TERA                  (1 << 27)  // AI will make smarter decisions when choosing whether to terrastalize (default is to always tera whenever available).
 #define AI_FLAG_ASSUME_STAB                 (1 << 28)  // AI knows player's STAB moves, but nothing else. Restricted version of AI_FLAG_OMNISCIENT.
 #define AI_FLAG_ASSUME_STATUS_MOVES         (1 << 29)  // AI has a chance to know certain non-damaging moves, and also Fake Out and Super Fang. Restricted version of AI_FLAG_OMNISCIENT.
-#define AI_FLAG_PARTNER_SWITCHING           (1 << 30)  // Partner switching
+#define AI_FLAG_PARTNER                     (1 << 30)  // Partner
+#define AI_FLAG_PARTNER_SWITCHING           (1 << 31)  // Partner switching
 
-#define AI_FLAG_COUNT                       31
+#define AI_FLAG_COUNT                       32
 
 // Flags at and after 32 need different formatting, as in
 // #define AI_FLAG_PLACEHOLDER      ((u64)1 << 32)
@@ -46,8 +47,9 @@
 #define AI_FLAG_BASIC_TRAINER         (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE | AI_FLAG_CHECK_VIABILITY)
 #define AI_FLAG_SMART_TRAINER         (AI_FLAG_BASIC_TRAINER | AI_FLAG_OMNISCIENT | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_WILL_SUICIDE)
 #define AI_FLAG_PREDICTION            (AI_FLAG_PREDICT_SWITCH | AI_FLAG_PREDICT_INCOMING_MON | AI_FLAG_PREDICT_MOVE)
-#define AI_FLAG_PARTNER_TRAINER       (AI_FLAG_BASIC_TRAINER | AI_FLAG_OMNISCIENT | AI_FLAG_PARTNER_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_WILL_SUICIDE)
+#define AI_FLAG_PARTNER_TRAINER       (AI_FLAG_BASIC_TRAINER | AI_FLAG_OMNISCIENT | AI_FLAG_PARTNER | AI_FLAG_PARTNER_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_WILL_SUICIDE)
 
+#define AI_FLAG_ASSUMPTIONS           (AI_FLAG_ASSUME_STAB | AI_FLAG_ASSUME_STATUS_MOVES | AI_FLAG_WEIGH_ABILITY_PREDICTION)
 
 // 'other' ai logic flags
 #define AI_FLAG_DYNAMIC_FUNC          ((u64)1 << 60)  // Create custom AI functions for specific battles via "setdynamicaifunc" cmd
