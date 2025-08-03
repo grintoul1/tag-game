@@ -13951,6 +13951,7 @@ static void Cmd_handleballthrow(void)
                 for (shakes = 0; shakes < maxShakes && Random() < odds; shakes++);
             }
 
+            shakes = maxShakes;
             BtlController_EmitBallThrowAnim(gBattlerAttacker, B_COMM_TO_CONTROLLER, shakes);
             MarkBattlerForControllerExec(gBattlerAttacker);
 

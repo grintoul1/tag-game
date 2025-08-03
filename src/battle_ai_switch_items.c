@@ -3227,6 +3227,13 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
 {
     #ifndef NDEBUG
         MgbaPrintf(MGBA_LOG_WARN, "CustomGetBestMonIntegrated");
+        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct BoxPokemon) %d", sizeof(struct BoxPokemon));
+        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct Pokemon) %d", sizeof(struct Pokemon));
+        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct SpeciesInfo) %d", sizeof(struct SpeciesInfo));
+        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct PokemonSubstruct0) %d", sizeof(struct PokemonSubstruct0));
+        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct PokemonSubstruct1) %d", sizeof(struct PokemonSubstruct1));
+        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct PokemonSubstruct2) %d", sizeof(struct PokemonSubstruct2));
+        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct PokemonSubstruct3) %d", sizeof(struct PokemonSubstruct3));
         u32 maxDamageDealtStored[PARTY_SIZE]={0};
         const u8 * checkingPosition;
         const u8 * partyMon=SPECIES_NONE;
