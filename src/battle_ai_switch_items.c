@@ -526,7 +526,7 @@ static bool32 PartnerShouldSwitchIfHasBadOdds(u32 battler)
     }
 
     // Check if current mon can 1v1 in spite of bad matchup, and don't switch out if it can
-    if(hitsToKoPlayer < hitsToKoAI || (hitsToKoPlayer == hitsToKoAI && AI_IsFaster(battler, opposingBattler, aiBestMove)))
+    if(hitsToKoPlayer < hitsToKoAI || (hitsToKoPlayer == hitsToKoAI && AI_IsFaster(battler, opposingBattler, aiBestMove, aiBestMove, DONT_CONSIDER_PRIORITY)))
         return FALSE;
 
     // If we don't have any other viable options, don't switch out
@@ -1004,7 +1004,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
             {
-                if (!AI_DoesChoiceEffectBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_IsSlower(battler, opposingBattler2, aiMove)))
+                if (!AI_DoesChoiceEffectBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_IsSlower(battler, opposingBattler2, aiMove, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                 {
                     if(GetMoveType(aiMove) != GetMoveType(switchingmove))
                     {
@@ -1023,7 +1023,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
             {
-                if (!AI_DoesChoiceEffectBlockMove(opposingBattler1, aiMove) && (AI_GetDamage(opposingBattler1, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_IsSlower(battler, opposingBattler1, aiMove)))
+                if (!AI_DoesChoiceEffectBlockMove(opposingBattler1, aiMove) && (AI_GetDamage(opposingBattler1, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_IsSlower(battler, opposingBattler1, aiMove, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                 {
                     if(GetMoveType(aiMove) != GetMoveType(switchingmove))
                     {
@@ -1869,7 +1869,7 @@ static bool32 PartnerShouldSwitchIfBadChoiceLock(u32 battler)
         || CanAbilityBlockMove(battler, opposingBattler, gAiLogicData->abilities[battler], gAiLogicData->abilities[opposingBattler], lastUsedMove, AI_CHECK)))
         moveAffectsTarget = FALSE;
 
-    if (HOLD_EFFECT_CHOICE(holdEffect) && IsBattlerItemEnabled(battler))
+    if (IsHoldEffectChoice(holdEffect) && IsBattlerItemEnabled(battler))
     {
         if ((GetMoveCategory(lastUsedMove) == DAMAGE_CATEGORY_STATUS || !moveAffectsTarget) && RandomPercentage(RNG_AI_SWITCH_CHOICE_LOCKED, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_CHOICE_LOCKED)))
             return SetSwitchinAndSwitch(battler, PARTY_SIZE);
@@ -3284,7 +3284,7 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
         u32 maxDamageDealtToAI=0, percentageReceived=0, damageDealt=0, percentageDealt=0, maxDamageDealt=0; 
         u32 aiMonSpecies=0;
         u32 aiMonFaster=0;
-        u32 aiMove;
+        u32 aiMove, bestPlayerMove = MOVE_NONE;
         #ifndef NDEBUG
             partyMon=SPECIES_NONE;
             aiBestMove[monId]=0;
@@ -3328,7 +3328,7 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
             }
         }
 
-        maxDamageDealtToAI = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon);
+        maxDamageDealtToAI = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon, &bestPlayerMove);
         percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&party[monId],MON_DATA_HP,NULL));
         #ifndef NDEBUG
             percentageReceivedStored[monId] = percentageReceived;
