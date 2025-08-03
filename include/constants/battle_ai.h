@@ -36,7 +36,7 @@
 #define AI_FLAG_ASSUME_STAB                 (1 << 28)  // AI knows player's STAB moves, but nothing else. Restricted version of AI_FLAG_OMNISCIENT.
 #define AI_FLAG_ASSUME_STATUS_MOVES         (1 << 29)  // AI has a chance to know certain non-damaging moves, and also Fake Out and Super Fang. Restricted version of AI_FLAG_OMNISCIENT.
 #define AI_FLAG_PARTNER                     (1 << 30)  // Partner
-#define AI_FLAG_PARTNER_SWITCHING           (1 << 31)  // Partner switching
+#define AI_FLAG_PARTNER_SWITCHING           ((u64)1 << 31)  // Partner switching
 
 #define AI_FLAG_COUNT                       32
 
