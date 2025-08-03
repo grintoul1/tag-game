@@ -3809,6 +3809,35 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                 {
                     dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
                 }
+                                else if (param == LEVEL_CAP)
+                {
+                    u32 levelUpThreshold = GetCurrentLevelCap();
+                    u32 blockLevelUp = FALSE;
+                    u32 monLevel = GetMonData(mon, MON_DATA_LEVEL, NULL);
+                    const struct Evolution *evolutions = GetSpeciesEvolutions(GetMonData(mon, MON_DATA_SPECIES, NULL));
+
+                    for (u32 evo = 0; evolutions[evo].method != EVOLUTIONS_END; evo++)
+                    {
+                        u32 evoLevelUp = evolutions[evo].param;
+
+                        if (evoLevelUp <= monLevel && evoLevelUp != 0)
+                        {
+                            dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
+                            blockLevelUp = TRUE;
+                            break;
+                        }
+
+                        // Prevents looping if no evo method was found
+                        if (SanitizeSpeciesId(evolutions[evo].targetSpecies) == SPECIES_NONE)
+                            break;
+
+                        if (evoLevelUp < levelUpThreshold && monLevel < levelUpThreshold)
+                            levelUpThreshold = evoLevelUp;
+                    }
+
+                    if (!blockLevelUp)
+                        dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][levelUpThreshold];
+                }
                 else if (param - 1 < ARRAY_COUNT(sExpCandyExperienceTable)) // EXP Candies
                 {
                     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
@@ -6047,6 +6076,7 @@ void SetMonPreventsSwitchingString(void)
     BattleStringExpandPlaceholders(gText_PkmnsXPreventsSwitching, gStringVar4, sizeof(gStringVar4));
 }
 
+/*
 static s32 GetWildMonTableIdInAlteringCave(u16 species)
 {
     s32 i;
@@ -6055,6 +6085,7 @@ static s32 GetWildMonTableIdInAlteringCave(u16 species)
             return i;
     return 0;
 }
+*/
 
 static inline bool32 CanFirstMonBoostHeldItemRarity(void)
 {

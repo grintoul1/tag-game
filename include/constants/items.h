@@ -996,11 +996,12 @@
 #define ITEM_INFINITE_CANDY 829
 #define ITEM_POKE_VIAL 830
 #define ITEM_REPELLENT 831
+#define ITEM_SUPER_CANDY 832
 
 // HOPO BERRY
 // LEGEND PLATE
 
-#define ITEMS_COUNT 832
+#define ITEMS_COUNT 833
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations
 // Its icon is defined at ITEMS_COUNT as the "return to field" arrow
@@ -1051,6 +1052,7 @@
 #define EXP_3000  3
 #define EXP_10000 4
 #define EXP_30000 5
+#define LEVEL_CAP 6
 
 // Item type IDs (used to determine the exit callback)
 #define ITEM_USE_MAIL             0

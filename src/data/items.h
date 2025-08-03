@@ -14632,4 +14632,23 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_Repel,
         .iconPalette = gItemIconPalette_MaxRepel,
     },
+    
+    // Note: This only works with Level Caps
+    [ITEM_SUPER_CANDY] =
+    {
+        .name = _("Super Candy"),
+        .pluralName = _("Super Candies"),
+        .price = 0,
+        .holdEffectParam = LEVEL_CAP,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Raises level to\n"
+            "the level cap."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_InfiniteCandy,
+        .effect = gItemEffect_RareCandy,
+        .iconPic = gItemIcon_ExpCandyXL,
+        .iconPalette = gItemIconPalette_ExpCandies,
+    },
 };
