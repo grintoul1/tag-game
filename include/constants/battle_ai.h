@@ -40,8 +40,8 @@
 
 #define AI_FLAG_COUNT                       32
 
-// Flags at and after 32 need different formatting, as in
-// #define AI_FLAG_PLACEHOLDER      ((u64)1 << 32)
+// Flags at and after 31 need different formatting, as in
+// #define AI_FLAG_PLACEHOLDER      ((u64)1 << 31)
 
 // The following options are enough to have a basic/smart trainer. Any other addtion could make the trainer worse/better depending on the flag
 #define AI_FLAG_BASIC_TRAINER         (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE | AI_FLAG_CHECK_VIABILITY)
