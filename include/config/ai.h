@@ -107,4 +107,25 @@
 #define POWER_SPLIT_ALLY_PERCENTAGE     150
 #define POWER_SPLIT_ENEMY_PERCENTAGE    50
 
+// Custom AI percentage changes
+#define CUSTOM_AI_NINETY_FIVE_PERCENT                                   95
+#define CUSTOM_AI_NINETY_PERCENT                                        90
+#define CUSTOM_AI_EIGHTY_FIVE_PERCENT                                   85
+#define CUSTOM_AI_EIGHTY_PERCENT                                        80
+#define CUSTOM_AI_SEVENTY_FIVE_PERCENT                                  75
+#define CUSTOM_AI_SEVENTY_PERCENT                                       70
+#define CUSTOM_AI_SIXTY_FIVE_PERCENT                                    65
+#define CUSTOM_AI_SIXTY_PERCENT                                         60
+#define CUSTOM_AI_FIFTY_FIVE_PERCENT                                    55
+#define CUSTOM_AI_FIFTY_PERCENT                                         50
+#define CUSTOM_AI_FORTY_FIVE_PERCENT                                    45
+#define CUSTOM_AI_FORTY_PERCENT                                         40
+#define CUSTOM_AI_THIRTY_FIVE_PERCENT                                   35
+#define CUSTOM_AI_THIRTY_PERCENT                                        30
+#define CUSTOM_AI_TWENTY_FIVE_PERCENT                                   25
+#define CUSTOM_AI_TWENTY_PERCENT                                        20
+#define CUSTOM_AI_FIFTEEN_PERCENT                                       15
+#define CUSTOM_AI_TEN_PERCENT                                           10
+#define CUSTOM_AI_FIVE_PERCENT                                          5
+
 #endif // GUARD_CONFIG_AI_H
