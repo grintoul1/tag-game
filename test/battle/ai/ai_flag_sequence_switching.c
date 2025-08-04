@@ -74,6 +74,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SEQUENCE_SWITCHING: AI will always switch into lo
         MOVE_PARTING_SHOT,
         MOVE_BATON_PASS,
         MOVE_CHILLY_RECEPTION,
+        MOVE_FROZEN_RECEPTION,
     };
 
     for (j = 0; j < ARRAY_COUNT(switchMoves); j++)

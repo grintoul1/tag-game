@@ -63,12 +63,46 @@ AI_MULTI_BATTLE_TEST("TAG TEST: AI always chooses +2 offensive setup over slow k
     }
 }
 
+AI_MULTI_BATTLE_TEST("TAG TEST: AI sometimes chooses +2 offensive setup over slow kill if one target is incapacitated (multibattle)")
+{
+    PASSES_RANDOMLY(CUSTOM_AI_FIFTY_PERCENT, 100, RNG_AI_CUSTOM_AI_FIFTY_PERCENT);
+    GIVEN {
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_RATTATA) { HP(1); Status1(STATUS1_SLEEP); Speed(4); }
+        MULTI_PARTNER(SPECIES_GASTLY) { HP(1); Speed(3); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
+        MULTI_OPPONENT_B(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
+        }   SCENE {
+        MESSAGE("The opposing Wobbuffet used Swords Dance!");
+        MESSAGE("The opposing Wynaut used Nasty Plot!");
+    }
+}
+
 AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: AI always chooses +2 offensive setup over slow kill if both targets are incapacitated (2v1)")
 {
     GIVEN {
         AI_FLAGS(AI_FLAG_SMART_TRAINER);
         MULTI_PLAYER(SPECIES_RATTATA) { HP(1); Status1(STATUS1_SLEEP); Speed(4); }
         MULTI_PARTNER(SPECIES_GASTLY) { HP(1); Status1(STATUS1_FREEZE); Speed(3); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
+        MULTI_OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
+        }   SCENE {
+        MESSAGE("The opposing Wobbuffet used Swords Dance!");
+        MESSAGE("The opposing Wynaut used Nasty Plot!");
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: AI sometimes chooses +2 offensive setup over slow kill if one target is incapacitated (2v1)")
+{
+    PASSES_RANDOMLY(CUSTOM_AI_FIFTY_PERCENT, 100, RNG_AI_CUSTOM_AI_FIFTY_PERCENT);
+    GIVEN {
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_RATTATA) { HP(1); Status1(STATUS1_SLEEP); Speed(4); }
+        MULTI_PARTNER(SPECIES_GASTLY) { HP(1); Speed(3); }
         MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
         MULTI_OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
     } WHEN {
