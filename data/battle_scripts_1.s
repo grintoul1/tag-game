@@ -250,11 +250,11 @@ BattleScript_EffectChillyReception::
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_EffectChillyReceptionBlockedByPrimalRain
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_EffectChillyReceptionBlockedByStrongWinds
 	call BattleScript_EffectChillyReceptionPlayAnimation
-    #if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
-	setfieldweather BATTLE_WEATHER_HAIL
-    #else
+    @#if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
+	@setfieldweather BATTLE_WEATHER_HAIL
+    @#else
 	setfieldweather BATTLE_WEATHER_SNOW
-    #endif
+    @#endif
 	call BattleScript_MoveWeatherChangeRet
 	goto BattleScript_MoveSwitch
 BattleScript_EffectChillyReceptionPlayAnimation:
@@ -278,6 +278,45 @@ BattleScript_EffectChillyReceptionTrySwitchWeatherFailed:
 	jumpifbattletype BATTLE_TYPE_ARENA, BattleScript_FailedFromAtkString
 	jumpifcantswitch SWITCH_IGNORE_ESCAPE_PREVENTION | BS_ATTACKER, BattleScript_FailedFromAtkString
 	call BattleScript_EffectChillyReceptionPlayAnimation
+	return
+
+BattleScript_EffectFrozenReception::
+	printstring STRINGID_PKMNTELLCHILLINGRECEPTIONJOKE
+	waitmessage B_WAIT_TIME_LONG
+	attackcanceler
+	ppreduce
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN_PRIMAL, BattleScript_EffectFrozenReceptionBlockedByPrimalSun
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_EffectFrozenReceptionBlockedByPrimalRain
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_EffectFrozenReceptionBlockedByStrongWinds
+	call BattleScript_EffectFrozenReceptionPlayAnimation
+    @#if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
+	setfieldweather BATTLE_WEATHER_HAIL
+    @#else
+	@setfieldweather BATTLE_WEATHER_SNOW
+    @#endif
+	call BattleScript_MoveWeatherChangeRet
+	goto BattleScript_MoveSwitch
+BattleScript_EffectFrozenReceptionPlayAnimation:
+	attackstring
+	attackanimation
+	waitanimation
+	return
+BattleScript_EffectFrozenReceptionBlockedByPrimalSun:
+	call BattleScript_EffectFrozenReceptionTrySwitchWeatherFailed
+	call BattleScript_ExtremelyHarshSunlightWasNotLessenedRet
+	goto BattleScript_MoveSwitch
+BattleScript_EffectFrozenReceptionBlockedByPrimalRain:
+	call BattleScript_EffectFrozenReceptionTrySwitchWeatherFailed
+	call BattleScript_NoReliefFromHeavyRainRet
+	goto BattleScript_MoveSwitch
+BattleScript_EffectFrozenReceptionBlockedByStrongWinds:
+	call BattleScript_EffectFrozenReceptionTrySwitchWeatherFailed
+	call BattleScript_MysteriousAirCurrentBlowsOnRet
+	goto BattleScript_MoveSwitch
+BattleScript_EffectFrozenReceptionTrySwitchWeatherFailed:
+	jumpifbattletype BATTLE_TYPE_ARENA, BattleScript_FailedFromAtkString
+	jumpifcantswitch SWITCH_IGNORE_ESCAPE_PREVENTION | BS_ATTACKER, BattleScript_FailedFromAtkString
+	call BattleScript_EffectFrozenReceptionPlayAnimation
 	return
 
 BattleScript_CheckPrimalWeather:

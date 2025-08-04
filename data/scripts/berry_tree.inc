@@ -23,10 +23,10 @@ BerryTree_EventScript_Sparkling::
 BerryTree_EventScript_CheckSoil::
 	lock
 	faceplayer
-	specialvar VAR_RESULT, PlayerHasBerries
-	goto_if_eq VAR_RESULT, TRUE, BerryTree_EventScript_WantToPlant
-	specialvar VAR_RESULT, PlayerHasMulch
-	goto_if_eq VAR_RESULT, TRUE, BerryTree_EventScript_WantToMulch
+	@specialvar VAR_RESULT, PlayerHasBerries
+	@goto_if_eq VAR_RESULT, TRUE, BerryTree_EventScript_WantToPlant
+	@specialvar VAR_RESULT, PlayerHasMulch
+	@goto_if_eq VAR_RESULT, TRUE, BerryTree_EventScript_WantToMulch
 	message BerryTree_Text_ItsSoftLoamySoil
 	waitmessage
 	waitbuttonpress
@@ -206,7 +206,7 @@ BerryTree_EventScript_CancelPickingBerry::
 BerryTree_EventScript_ItemUsePlantBerry::
 	lockall
 	special ObjectEventInteractionGetBerryTreeData
-	call BerryTree_EventScript_PlantBerry
+	@call BerryTree_EventScript_PlantBerry
 	releaseall
 	end
 

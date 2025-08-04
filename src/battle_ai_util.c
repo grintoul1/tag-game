@@ -298,6 +298,7 @@ bool32 ShouldRecordStatusMove(u32 move)
         // High odds
         case EFFECT_AURORA_VEIL:
         case EFFECT_CHILLY_RECEPTION:
+        case EFFECT_FROZEN_RECEPTION:
         case EFFECT_FIRST_TURN_ONLY:
         case EFFECT_FOLLOW_ME:
         case EFFECT_INSTRUCT:
@@ -2782,6 +2783,7 @@ bool32 IsSwitchOutEffect(enum BattleMoveEffects effect)
     case EFFECT_PARTING_SHOT:
     case EFFECT_BATON_PASS:
     case EFFECT_CHILLY_RECEPTION:
+    case EFFECT_FROZEN_RECEPTION:
     case EFFECT_SHED_TAIL:
         return TRUE;
     default:
@@ -3896,7 +3898,8 @@ bool32 IsMoveEffectWeather(u32 move)
       || effect == EFFECT_SANDSTORM
       || effect == EFFECT_HAIL
       || effect == EFFECT_SNOWSCAPE
-      || effect == EFFECT_CHILLY_RECEPTION))
+      || effect == EFFECT_CHILLY_RECEPTION
+      || effect == EFFECT_FROZEN_RECEPTION))
         return TRUE;
     return FALSE;
 }
@@ -4514,7 +4517,7 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
             break;
         }
         // If target is incapacitated and user has physical move, 50% increase
-        else if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && AI_RandLessThan(128))
+        else if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && RandomPercentage(RNG_AI_CUSTOM_AI_FIFTY_PERCENT, CUSTOM_AI_FIFTY_PERCENT))
         {
             tempScore += (WEAK_EFFECT + FAST_KILL); // + 18
             break;
@@ -4551,7 +4554,7 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
             break;
         }
         // If target is incapacitated and user has special move, 50% increase
-        else if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && AI_RandLessThan(128))
+        else if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && RandomPercentage(RNG_AI_CUSTOM_AI_FIFTY_PERCENT, CUSTOM_AI_FIFTY_PERCENT))
         {
             tempScore += (WEAK_EFFECT + FAST_KILL); // + 18
             break;

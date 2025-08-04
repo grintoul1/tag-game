@@ -20237,15 +20237,15 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_CHILLY_RECEPTION] =
     {
         .name = COMPOUND_STRING("Chilly Reception"),
-        #if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
-        .description = COMPOUND_STRING(
-            "Bad joke summons hailstorm.\n"
-            "The user also switches out."),
-        #else
+        //#if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
+        //.description = COMPOUND_STRING(
+        //    "Bad joke summons hailstorm.\n"
+        //    "The user also switches out."),
+        //#else
         .description = COMPOUND_STRING(
             "Bad joke summons snowstorm.\n"
             "The user also switches out."),
-        #endif
+        //#endif
         .effect = EFFECT_CHILLY_RECEPTION,
         .power = 0,
         .type = TYPE_ICE,
@@ -22738,5 +22738,32 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .ignoresProtect = TRUE,
         .battleAnimScript = gBattleAnimMove_GMaxRapidFlow,
+    },
+
+    [MOVE_FROZEN_RECEPTION] =
+    {
+        .name = COMPOUND_STRING("Frozen Reception"),
+        //#if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
+        .description = COMPOUND_STRING(
+            "Bad joke summons hailstorm.\n"
+            "The user also switches out."),
+        //#else
+        //.description = COMPOUND_STRING(
+        //    "Bad joke summons snowstorm.\n"
+        //    "The user also switches out."),
+        //#endif
+        .effect = EFFECT_FROZEN_RECEPTION,
+        .power = 0,
+        .type = TYPE_ICE,
+        .accuracy = 0,
+        .pp = 10,
+        .target = MOVE_TARGET_ALL_BATTLERS,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .zMove = { .effect = Z_EFFECT_SPD_UP_1 },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .metronomeBanned = TRUE,
+        .battleAnimScript = gBattleAnimMove_ChillyReception,
     },
 };

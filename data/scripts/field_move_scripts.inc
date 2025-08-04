@@ -298,7 +298,6 @@ EventScript_UseDive::
 	goto_if_eq VAR_RESULT, FALSE, EventScript_CantDive
 	msgbox Text_WantToDive, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndDive
-	hidefollowernpc
 	setfieldeffectargument 0, VAR_0x8004
 	setfieldeffectargument 1, 1
 	dofieldeffect FLDEFF_USE_DIVE
@@ -321,7 +320,6 @@ EventScript_UseDiveUnderwater::
 	goto_if_eq VAR_RESULT, FALSE, EventScript_CantSurface
 	msgbox Text_WantToSurface, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_NoSurface
-	hidefollowernpc
 	dofieldeffect FLDEFF_USE_DIVE
 	goto EventScript_EndSurface
 	end
