@@ -1914,6 +1914,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_HIT_ESCAPE:
             break;
         case EFFECT_CHILLY_RECEPTION:
+        case EFFECT_FROZEN_RECEPTION:
             if (CountUsablePartyMons(battlerAtk) == 0)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             else if (weather & (B_WEATHER_ICY_ANY | B_WEATHER_PRIMAL_ANY) || IsMoveEffectWeather(aiData->partnerMove))
@@ -2977,6 +2978,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_RAIN_DANCE:
         case EFFECT_SANDSTORM:
         case EFFECT_CHILLY_RECEPTION:
+        case EFFECT_FROZEN_RECEPTION:
             if (IsMoveEffectWeather(move))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
@@ -4232,6 +4234,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_HIT_ESCAPE:
     case EFFECT_PARTING_SHOT:
     case EFFECT_CHILLY_RECEPTION:
+    case EFFECT_FROZEN_RECEPTION:
         if (!IsDoubleBattle())
         {
             switch (ShouldPivot(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, movesetIndex))
@@ -4376,6 +4379,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         case EFFECT_HAIL:
         case EFFECT_SNOWSCAPE:
         case EFFECT_CHILLY_RECEPTION:
+        case EFFECT_FROZEN_RECEPTION:
         case EFFECT_GEOMANCY:
         case EFFECT_VICTORY_DANCE:
         case EFFECT_PROTECT:
@@ -5949,6 +5953,7 @@ static s32 AI_ForceSetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 
     case EFFECT_HAIL:
     case EFFECT_SNOWSCAPE:
     case EFFECT_CHILLY_RECEPTION:
+    case EFFECT_FROZEN_RECEPTION:
     case EFFECT_GEOMANCY:
     case EFFECT_VICTORY_DANCE:
     case EFFECT_CEASELESS_EDGE:

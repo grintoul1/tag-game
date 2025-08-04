@@ -298,6 +298,7 @@ bool32 ShouldRecordStatusMove(u32 move)
         // High odds
         case EFFECT_AURORA_VEIL:
         case EFFECT_CHILLY_RECEPTION:
+        case EFFECT_FROZEN_RECEPTION:
         case EFFECT_FIRST_TURN_ONLY:
         case EFFECT_FOLLOW_ME:
         case EFFECT_INSTRUCT:
@@ -2782,6 +2783,7 @@ bool32 IsSwitchOutEffect(enum BattleMoveEffects effect)
     case EFFECT_PARTING_SHOT:
     case EFFECT_BATON_PASS:
     case EFFECT_CHILLY_RECEPTION:
+    case EFFECT_FROZEN_RECEPTION:
     case EFFECT_SHED_TAIL:
         return TRUE;
     default:
@@ -3896,7 +3898,8 @@ bool32 IsMoveEffectWeather(u32 move)
       || effect == EFFECT_SANDSTORM
       || effect == EFFECT_HAIL
       || effect == EFFECT_SNOWSCAPE
-      || effect == EFFECT_CHILLY_RECEPTION))
+      || effect == EFFECT_CHILLY_RECEPTION
+      || effect == EFFECT_FROZEN_RECEPTION))
         return TRUE;
     return FALSE;
 }

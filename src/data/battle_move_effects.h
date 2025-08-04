@@ -2248,4 +2248,10 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleScript = BattleScript_EffectHit,
         .battleTvScore = 0, // TODO: Assign points
     },
+
+    [EFFECT_FROZEN_RECEPTION] =
+    {
+        .battleScript = BattleScript_EffectFrozenReception,
+        .battleTvScore = 0, // TODO: Assign points
+    },
 };
