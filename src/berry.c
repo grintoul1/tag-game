@@ -2091,6 +2091,27 @@ static u8 CalcBerryYield(struct BerryTree *tree)
     else
         result = CalcBerryYieldInternal(max, min, BerryTreeGetNumStagesWatered(tree));
 
+    if (tree->berry == ITEM_TO_BERRY(ITEM_ORAN_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_PECHA_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_CHERI_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_RAWST_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_ASPEAR_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_PERSIM_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_CHESTO_BERRY))
+        return 99;
+    if (tree->berry == ITEM_TO_BERRY(ITEM_SITRUS_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_LUM_BERRY))
+        return 30;
+    if (tree->berry == ITEM_TO_BERRY(ITEM_IAPAPA_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_WIKI_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_MAGO_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_FIGY_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_AGUAV_BERRY))
+        return 6;
+    if (tree->berry == ITEM_TO_BERRY(ITEM_CUSTAP_BERRY))
+        return 2;
+    
+    result = 99;
     return result;
 }
 
@@ -2230,6 +2251,29 @@ void ObjectEventInteractionPickBerryTree(void)
         AddBagItem(BerryTypeToItemId(mutation), 1);
     }
 }
+/*
+        if (tree->berry == ITEM_TO_BERRY(ITEM_ORAN_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_PECHA_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_CHERI_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_RAWST_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_ASPEAR_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_PERSIM_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_CHESTO_BERRY))
+        return 99;
+    if (tree->berry == ITEM_TO_BERRY(ITEM_SITRUS_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_LUM_BERRY))
+        return 30;
+    if (tree->berry == ITEM_TO_BERRY(ITEM_IAPAPA_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_WIKI_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_MAGO_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_FIGY_BERRY)
+    || tree->berry == ITEM_TO_BERRY(ITEM_AGUAV_BERRY))
+        return 6;
+    if (tree->berry == ITEM_TO_BERRY(ITEM_CUSTAP_BERRY))
+        return 2;
+    
+    result = 99;
+    */
 
 void ObjectEventInteractionRemoveBerryTree(void)
 {
