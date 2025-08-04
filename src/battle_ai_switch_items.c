@@ -3097,6 +3097,7 @@ static s32 GetMaxDamagePlayerCouldDealToSwitchin(u32 battler, u32 opposingBattle
     return maxDamageTaken;
 }
 
+/*
 static s32 GetMaxPriorityDamagePlayerCouldDealToSwitchin(u32 battler, u32 opposingBattler, struct BattlePokemon battleMon, u32 *bestPlayerPriorityMove)
 {
     int i = 0;
@@ -3121,6 +3122,7 @@ static s32 GetMaxPriorityDamagePlayerCouldDealToSwitchin(u32 battler, u32 opposi
     }
     return maxDamageTaken;
 }
+*/
 
 static bool32 CanAbilityTrapOpponent(u16 ability, u32 opponent)
 {

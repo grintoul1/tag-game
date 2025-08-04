@@ -4288,6 +4288,7 @@ bool32 IsRecycleEncouragedItem(u32 item)
     return FALSE;
 }
 
+/*
 static bool32 HasMoveThatChangesKOThreshold(u32 battlerId, u32 noOfHitsToFaint, u32 aiIsFaster)
 {
     s32 i;
@@ -4318,6 +4319,7 @@ static bool32 HasMoveThatChangesKOThreshold(u32 battlerId, u32 noOfHitsToFaint, 
 
     return FALSE;
 }
+*/
 
 static u32 GetStatBeingChanged(enum StatChange statChange)
 {

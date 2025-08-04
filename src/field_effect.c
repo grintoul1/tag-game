@@ -196,8 +196,8 @@ static void SpriteCB_FieldMoveMonSlideOffscreen(struct Sprite *);
 
 static void Task_SurfFieldEffect(u8);
 static void SurfFieldEffect_Init(struct Task *);
-static void SurfFieldEffect_FieldMovePose(struct Task *);
-static void SurfFieldEffect_ShowMon(struct Task *);
+// static void SurfFieldEffect_FieldMovePose(struct Task *);
+// static void SurfFieldEffect_ShowMon(struct Task *);
 static void SurfFieldEffect_JumpOnSurfBlob(struct Task *);
 static void SurfFieldEffect_End(struct Task *);
 
@@ -675,6 +675,7 @@ static bool8 (*const sWaterfallFieldEffectFuncs[])(struct Task *, struct ObjectE
 static bool8 (*const sDiveFieldEffectFuncs[])(struct Task *) =
 {
     DiveFieldEffect_Init,
+    DiveFieldEffect_ShowMon,
     DiveFieldEffect_TryWarp,
 };
 
@@ -3245,6 +3246,7 @@ static void SurfFieldEffect_Init(struct Task *task)
     task->tState++;
 }
 
+/*
 static void SurfFieldEffect_FieldMovePose(struct Task *task)
 {
     struct ObjectEvent *objectEvent;
@@ -3256,7 +3258,9 @@ static void SurfFieldEffect_FieldMovePose(struct Task *task)
         task->tState++;
     }
 }
+*/
 
+/*
 static void SurfFieldEffect_ShowMon(struct Task *task)
 {
     struct ObjectEvent *objectEvent;
@@ -3267,6 +3271,7 @@ static void SurfFieldEffect_ShowMon(struct Task *task)
         task->tState++;
     }
 }
+*/
 
 static void SurfFieldEffect_JumpOnSurfBlob(struct Task *task)
 {
