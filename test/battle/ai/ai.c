@@ -258,7 +258,6 @@ AI_SINGLE_BATTLE_TEST("AI can choose a status move that boosts the attack by two
 
 AI_SINGLE_BATTLE_TEST("AI chooses the safest option to faint the target, taking into account accuracy and move effect")
 {
-    KNOWN_FAILING; // AI changed
     u16 move1 = MOVE_NONE, move2 = MOVE_NONE, move3 = MOVE_NONE, move4 = MOVE_NONE;
     u16 expectedMove, expectedMove2 = MOVE_NONE;
     u16 abilityAtk = ABILITY_NONE, holdItemAtk = ITEM_NONE;
@@ -296,7 +295,6 @@ AI_SINGLE_BATTLE_TEST("AI chooses the safest option to faint the target, taking 
 
 AI_SINGLE_BATTLE_TEST("AI chooses the safest option to faint the target, taking into account accuracy and move effect failing")
 {
-    KNOWN_FAILING; // AI changed
     u16 move1 = MOVE_NONE, move2 = MOVE_NONE, move3 = MOVE_NONE, move4 = MOVE_NONE;
     u16 expectedMove, expectedMove2 = MOVE_NONE;
     u16 abilityAtk = ABILITY_NONE, holdItemAtk = ITEM_NONE;
@@ -614,7 +612,6 @@ AI_SINGLE_BATTLE_TEST("AI avoids contact moves against rocky helmet")
 
 AI_SINGLE_BATTLE_TEST("AI uses a guaranteed KO move instead of the move with the highest expected damage")
 {
-    KNOWN_FAILING; // AI changed
     u32 flags;
 
     PARAMETRIZE { flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY; }
@@ -893,7 +890,6 @@ AI_SINGLE_BATTLE_TEST("AI will not set up Weather if it wont have any affect")
 
 AI_SINGLE_BATTLE_TEST("Move scoring comparison properly awards bonus point to best OHKO move")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         ASSUME(MoveHasAdditionalEffect(MOVE_THUNDER, MOVE_EFFECT_PARALYSIS));
         ASSUME(GetMoveAdditionalEffectCount(MOVE_WATER_SPOUT) == 0);
@@ -924,7 +920,6 @@ AI_SINGLE_BATTLE_TEST("AI will stop setting up at +4")
 
 AI_SINGLE_BATTLE_TEST("Move scoring comparison properly awards bonus point to best OHKO move")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         ASSUME(MoveHasAdditionalEffect(MOVE_THUNDER, MOVE_EFFECT_PARALYSIS));
         ASSUME(GetMoveAdditionalEffectCount(MOVE_WATER_SPOUT) == 0);
