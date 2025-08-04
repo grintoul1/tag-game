@@ -4230,10 +4230,35 @@ Music: Intense
 Battle Type: Singles
 AI: Smart Trainer
 
-Abra
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Hidden Power
+Hippopotas @ Eject Pack  
+Ability: Sand Stream  
+Level: 29  
+Tera Type: Ground  
+Adamant Nature  
+- Bulldoze  
+- Thunder Fang  
+- Rock Tomb  
+- Protect  
+
+Amaura @ Icy Rock  
+Ability: Snow Warning  
+Level: 29  
+Tera Type: Rock  
+Naive Nature  
+- Rock Slide  
+- Icy Wind  
+- Aurora Veil  
+- Chilly Reception  
+
+Snover @ Occa Berry  
+Ability: Hail Warning  
+Level: 29  
+Tera Type: Grass  
+Jolly Nature  
+- Seed Bomb  
+- Ice Punch  
+- Aurora Veil  
+- Frozen Reception  
 
 === TRAINER_PRESTON ===
 Name: PRESTON
@@ -5019,29 +5044,55 @@ Items: Super Potion / Super Potion
 Battle Type: Singles
 AI: Smart Trainer
 
-Voltorb
-Level: 20
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Rollout
-- Spark
-- Self Destruct
-- Shock Wave
+Manectric-Mega @ Manectite  
+Ability: Intimidate  
+Level: 29  
+Brave Nature  
+- Rising Voltage  
+- Fire Fang  
+- Volt Switch  
 
-Electrike
-Level: 20
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Shock Wave
-- Leer
-- Quick Attack
-- Howl
+Togedemaru @ Rocky Helmet  
+Ability: Iron Barbs  
+Level: 30  
+Jolly Nature  
+- Smart Strike  
+- Spark  
+- Electric Terrain  
+- Encore  
 
-Magneton
-Level: 22
-IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
-- Supersonic
-- Shock Wave
-- Thunder Wave
-- Sonic Boom
+Voltorb-Hisui @ Eviolite  
+Ability: Static  
+Level: 31  
+Timid Nature  
+- Volt Switch  
+
+Rotom @ Wide Lens  
+Ability: Levitate  
+Level: 31  
+Timid Nature  
+- Hex  
+- Thunder Wave  
+- Toxic  
+- Will-O-Wisp  
+
+Raichu-Alola @ Wise Glasses  
+Ability: Surge Surfer  
+Level: 30  
+Timid Nature  
+- Fake Out  
+- Rising Voltage  
+- Grass Knot  
+- Psybeam  
+
+Iron Thorns @ Salac Berry  
+Ability: Quark Drive  
+Level: 29  
+Modest Nature  
+- Thunder Fang  
+- Ice Fang  
+- Rock Tomb  
+- Electric Terrain  
 
 Manectric @ Sitrus Berry
 Level: 24
@@ -5533,20 +5584,41 @@ Music: Twins
 Battle Type: Doubles
 AI: Smart Trainer
 
-Zigzagoon
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Growl
-- Tail Whip
-- Headbutt
-- Odor Sleuth
+Persian @ Muscle Band  
+Ability: Limber  
+Level: 30  
+Jolly Nature  
+- Fake Out  
+- Trailblaze  
+- Metal Claw  
+- Assurance  
 
-Makuhita
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Tackle
-- Focus Energy
-- Arm Thrust
+Brambleghast @ Focus Sash  
+Ability: Wind Rider  
+Level: 29  
+Naive Nature  
+- Hex  
+- Mega Drain  
+- Shadow Sneak  
+- Spikes  
+
+Carkol @ Passho Berry  
+Ability: Steam Engine  
+Level: 29  
+Calm Nature  
+- Body Press  
+- Bulldoze  
+- Rock Tomb  
+- Iron Defense  
+
+Hakamo-o @ Muscle Band  
+Ability: Overcoat  
+Level: 30  
+Adamant Nature  
+- Breaking Swipe  
+- Metal Claw  
+- Reversal  
+- Protect  
 
 === TRAINER_ANNA_AND_MEG_2 ===
 Name: ANNA & MEG
@@ -5670,9 +5742,23 @@ Music: Twins
 Battle Type: Singles
 AI: Smart Trainer
 
-Skitty @ Oran Berry
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Vivillon-Ocean @ Rocky Helmet  
+Ability: Compound Eyes  
+Level: 27  
+Bashful Nature  
+- Bug Bite  
+- Struggle Bug  
+- Air Cutter  
+- Protect  
+
+Wormadam-Trash @ Covert Cloak  
+Ability: Overcoat  
+Level: 28  
+Bashful Nature  
+- Bug Bite  
+- Confusion  
+- Infestation  
+- Protect  
 
 === TRAINER_COLTON ===
 Name: COLTON
@@ -6107,20 +6193,21 @@ Music: Male
 Battle Type: Singles
 AI: Smart Trainer
 
-Zoroark
-Level: 100
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Sonic Boom
+Riolu @ Oran Berry  
+Ability: Steadfast  
+Level: 26  
+Bashful Nature  
+- Vacuum Wave  
+- Bullet Punch  
+- Rock Smash  
 
-Dragonite
-Level: 100
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Sonic Boom
-
-Dragonite
-Level: 100
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Sonic Boom
+Nickit @ Oran Berry  
+Ability: Unburden  
+Level: 26  
+Bashful Nature  
+- Assurance  
+- Snarl  
+- Quick Attack  
 
 
 
@@ -6386,13 +6473,22 @@ Music: Male
 Battle Type: Singles
 AI: Smart Trainer
 
-Zigzagoon
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Skwovet @ Petaya Berry  
+Ability: Cheek Pouch  
+Level: 26  
+Naive Nature  
+- Belch  
+- Bite  
+- Super Fang  
+- Stuff Cheeks  
 
-Taillow
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Grimer-Alola @ Liechi Berry  
+Ability: Gluttony  
+Level: 27  
+Adamant Nature  
+- Thief  
+- Rock Tomb  
+- Payback  
 
 === TRAINER_TIMMY ===
 Name: TIMMY
@@ -6403,13 +6499,22 @@ Music: Male
 Battle Type: Singles
 AI: Smart Trainer
 
-Aron
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Pelipper @ Eject Button  
+Ability: Drizzle  
+Level: 29  
+Bashful Nature  
+- Wing Attack  
+- Water Pulse  
+- U-turn  
 
-Electrike
-Level: 13
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Vulpix @ Charcoal  
+Ability: Drought  
+Level: 29  
+Timid Nature  
+- Incinerate  
+- Hex  
+- Weather Ball  
+- Quick Attack  
 
 === TRAINER_WALLACE ===
 Name: WALLACE
@@ -6479,17 +6584,23 @@ Music: Hiker
 Battle Type: Singles
 AI: Smart Trainer
 
-Magikarp
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Buizel @ Eviolite  
+Ability: Water Veil  
+Level: 28  
+Bashful Nature  
+- Fake Out  
+- Liquidation  
+- Ice Punch  
+- Flip Turn  
 
-Tentacool
-Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Magikarp
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Wartortle @ Iapapa Berry  
+Ability: Torrent  
+Level: 27  
+Bashful Nature  
+- Fake Out  
+- Icy Wind  
+- Protect  
+- Follow Me  
 
 === TRAINER_IVAN ===
 Name: IVAN
@@ -6979,9 +7090,21 @@ Music: Male
 Battle Type: Singles
 AI: Smart Trainer
 
-Doduo
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Chatot @ Wise Glasses  
+Ability: Tangled Feet  
+Level: 30  
+Modest Nature  
+- Hyper Voice  
+- Air Cutter  
+- Roost  
+
+Charjabug @ Power Herb  
+Ability: Battery  
+Level: 30  
+Impish Nature  
+- Dig  
+- Skitter Smack  
+- Electroweb  
 
 === TRAINER_DYLAN_2 ===
 Name: DYLAN
@@ -7044,9 +7167,32 @@ Music: Female
 Battle Type: Singles
 AI: Smart Trainer
 
-Doduo
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Dragonair @ Toxic Orb  
+Ability: Marvel Scale  
+Level: 30  
+Naive Nature  
+- Facade  
+- Breaking Swipe  
+- Icy Wind  
+- Chilling Water  
+
+Braixen @ Miracle Seed  
+Ability: Blaze  
+Level: 30  
+Modest Nature  
+- Burning Jealousy  
+- Psybeam  
+- Grass Knot  
+- Will-O-Wisp  
+
+Shiinotic @ Wise Glasses  
+Ability: Effect Spore  
+Level: 30  
+Bold Nature  
+- Dream Eater  
+- Draining Kiss  
+- Mega Drain  
+- Sleep Powder  
 
 === TRAINER_MARIA_2 ===
 Name: MARIA
@@ -8951,13 +9097,41 @@ Music: Twins
 Battle Type: Doubles
 AI: Smart Trainer
 
-Plusle
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Thwackey @ Eject Button  
+Ability: Grassy Surge  
+Level: 27  
+Bashful Nature  
+- Fake Out  
+- Grassy Glide  
+- Facade  
+- Thief  
 
-Minun
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Flabebe-Blue @ Terrain Extender  
+Ability: Symbiosis  
+Level: 28  
+Bashful Nature  
+- Magical Leaf  
+- Fairy Wind  
+- Aromatherapy  
+- Misty Terrain  
+
+Kadabra @ Terrain Extender  
+Ability: Inner Focus  
+Level: 27  
+Bashful Nature  
+- Confusion  
+- Seismic Toss  
+- Telekinesis  
+- Psychic Terrain  
+
+Pincurchin @ Jaboca Berry  
+Ability: Electric Surge  
+Level: 28  
+Bashful Nature  
+- Spark  
+- Electroweb  
+- Water Gun  
+- Toxic Spikes  
 
 === TRAINER_AMY_AND_LIV_2 ===
 Name: AMY & LIV
@@ -9516,13 +9690,32 @@ Music: Suspicious
 Battle Type: Singles
 AI: Smart Trainer
 
-Lombre
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Baltoy @ Soft Sand  
+Ability: Levitate  
+Level: 29  
+Modest Nature  
+- Earth Power  
+- Shadow Ball  
+- Stored Power  
+- Cosmic Power  
 
-Nuzleaf
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Darumaka @ Flame Orb  
+Ability: Inner Focus  
+Level: 28  
+Adamant Nature  
+- Fire Punch  
+- Brick Break  
+- Gyro Ball  
+- Fling  
+
+Darumaka-Galar @ Charti Berry  
+Ability: Inner Focus  
+Level: 28  
+Adamant Nature  
+- Ice Punch  
+- Mega Punch  
+- Thief  
+- Will-O-Wisp  
 
 === TRAINER_HECTOR ===
 Name: HECTOR
@@ -11163,9 +11356,23 @@ Music: Swimmer
 Battle Type: Singles
 AI: Smart Trainer
 
-Staryu
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Tandemaus @ Eviolite  
+Ability: Own Tempo  
+Level: 29  
+Jolly Nature  
+- Double Hit  
+- Low Sweep  
+- Helping Hand  
+- After You  
+
+Togetic @ Charti Berry  
+Ability: Serene Grace  
+Level: 28  
+Relaxed Nature  
+- Air Cutter  
+- Stored Power  
+- Calm Mind  
+- After You  
 
 === TRAINER_GRUNT_WEATHER_INST_5 ===
 Name: GRUNT
@@ -11319,13 +11526,23 @@ Music: Female
 Battle Type: Singles
 AI: Smart Trainer
 
-Zigzagoon
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Gossifleur @ Occa Berry  
+Ability: Cotton Down  
+Level: 26  
+Impish Nature  
+- Razor Leaf  
+- Rapid Spin  
+- Leafage  
+- Cotton Spore  
 
-Shroomish
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Numel @ Passho Berry  
+Ability: Own Tempo  
+Level: 27  
+Sassy Nature  
+- Incinerate  
+- Rock Tomb  
+- Mud Shot  
+- Mud-Slap  
 
 === TRAINER_HALEY_1 ===
 Name: HALEY
@@ -11573,18 +11790,21 @@ Music: Male
 Battle Type: Singles
 AI: Smart Trainer
 
-Zoroark
-Ability: Illusion
-Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- String Shot
-- String Shot
-- String Shot
-- String Shot
+Yungoos @ Berry Juice  
+Ability: Stakeout  
+Level: 26  
+Bashful Nature  
+- Bite  
+- Tackle  
+- Leer  
 
-Wurmple
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Spinarak @ Oran Berry  
+Ability: Swarm  
+Level: 26  
+Bashful Nature  
+- Pounce  
+- Shadow Sneak  
+- Poison Sting  
 
 === TRAINER_LYLE ===
 Name: LYLE
@@ -13328,13 +13548,23 @@ Music: Twins
 Battle Type: Singles
 AI: Smart Trainer
 
-Minun @ Oran Berry
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Slowpoke-Galar @ Covert Cloak  
+Ability: Own Tempo  
+Level: 29  
+Relaxed Nature  
+- Psybeam  
+- Acid  
+- Yawn  
+- Trick Room  
 
-Plusle @ Oran Berry
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Porygon @ Room Service  
+Ability: Trace  
+Level: 28  
+Sassy Nature  
+- Psybeam  
+- Icy Wind  
+- Thunder Shock  
+- Trick Room  
 
 === TRAINER_JOSEPH ===
 Name: JOSEPH
@@ -13345,13 +13575,23 @@ Music: Intense
 Battle Type: Singles
 AI: Smart Trainer
 
-Electrike
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Murkrow @ Sharp Beak  
+Ability: Prankster  
+Level: 28  
+Jolly Nature  
+- Wing Attack  
+- Assurance  
+- Night Shade  
+- Tailwind  
 
-Voltorb
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lumineon @ Wide Lens  
+Ability: Swift Swim  
+Level: 29  
+Adamant Nature  
+- Waterfall  
+- Bounce  
+- U-turn  
+- Tailwind  
 
 === TRAINER_ALYSSA ===
 Name: ALYSSA
@@ -14218,9 +14458,32 @@ Music: Intense
 Battle Type: Singles
 AI: Smart Trainer
 
-Ralts
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Tatsugiri-Droopy @ Air Balloon  
+Ability: Storm Drain  
+Level: 31  
+Naive Nature  
+- Water Pulse  
+- Dragon Breath  
+- Icy Wind  
+- Chilling Water  
+
+Eelektrik @ Sitrus Berry  
+Ability: Levitate  
+Level: 30  
+Quiet Nature  
+- Volt Switch  
+- Giga Drain  
+- Knock Off  
+- Acid Spray  
+
+Chimecho @ Light Clay  
+Ability: Levitate  
+Level: 30  
+Timid Nature  
+- Psychic Noise  
+- Draining Kiss  
+- Grass Knot  
+- Reflect  
 
 === TRAINER_AISHA ===
 Name: AISHA
@@ -14231,9 +14494,23 @@ Music: Intense
 Battle Type: Singles
 AI: Smart Trainer
 
-Meditite
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Krokorok @ Soft Sand  
+Ability: Intimidate  
+Level: 31  
+Jolly Nature  
+- Dig  
+- Ice Fang  
+- Bulldoze  
+- Bite  
+
+Arbok @ Soft Sand  
+Ability: Intimidate  
+Level: 30  
+Jolly Nature  
+- Stomping Tantrum  
+- Mud Shot  
+- Fire Fang  
+- Poison Tail  
 
 === TRAINER_MAKAYLA ===
 Name: MAKAYLA
