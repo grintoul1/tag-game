@@ -49,6 +49,7 @@
 static void SetUpItemUseCallback(u8);
 static void FieldCB_UseItemOnField(void);
 static void Task_CallItemUseOnFieldCallback(u8);
+static void Task_PartyMenuItemUseFromField(u8);
 static void Task_UseItemfinder(u8);
 static void Task_CloseItemfinderMessage(u8);
 static void Task_HiddenItemNearby(u8);
@@ -128,15 +129,25 @@ static void SetUpItemUseCallback(u8 taskId)
         type = gTasks[taskId].tEnigmaBerryType - 1;
     else
         type = GetItemType(gSpecialVar_ItemId) - 1;
-    if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE)
+    
+    if (gTasks[taskId].tUsingRegisteredKeyItem && type == (ITEM_USE_PARTY_MENU - 1))
     {
-        gBagMenu->newScreenCallback = sItemUseCallbacks[type];
-        Task_FadeAndCloseBagMenu(taskId);
+        FadeScreen(FADE_TO_BLACK, 0);
+        gPartyMenu.data1 = DATA1_PARTY_MENU_FROM_FIELD;
+        gTasks[taskId].func = Task_PartyMenuItemUseFromField;
     }
     else
     {
-        gPyramidBagMenu->newScreenCallback = sItemUseCallbacks[type];
-        CloseBattlePyramidBag(taskId);
+        if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE)
+        {
+            gBagMenu->newScreenCallback = sItemUseCallbacks[type];
+            Task_FadeAndCloseBagMenu(taskId);
+        }
+        else
+        {
+            gPyramidBagMenu->newScreenCallback = sItemUseCallbacks[type];
+            CloseBattlePyramidBag(taskId);
+        }
     }
 }
 
@@ -163,6 +174,16 @@ static void Task_CallItemUseOnFieldCallback(u8 taskId)
 {
     if (IsWeatherNotFadingIn() == 1)
         sItemUseOnFieldCB(taskId);
+}
+
+static void Task_PartyMenuItemUseFromField(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        CleanupOverworldWindowsAndTilemaps();
+        SetMainCallback2(CB2_ShowPartyMenuForItemUse);
+        DestroyTask(taskId);
+    }
 }
 
 static void DisplayCannotUseItemMessage(u8 taskId, bool8 isUsingRegisteredKeyItemOnField, const u8 *str)
@@ -1168,7 +1189,7 @@ static u32 GetBallThrowableState(void)
         return BALL_THROW_UNABLE_TWO_MONS;
     else if (IsPlayerPartyAndPokemonStorageFull() == TRUE)
         return BALL_THROW_UNABLE_NO_ROOM;
-    else if (B_SEMI_INVULNERABLE_CATCH >= GEN_4 && (gStatuses3[GetCatchingBattler()] & STATUS3_SEMI_INVULNERABLE))
+    else if (B_SEMI_INVULNERABLE_CATCH >= GEN_4 &&  IsSemiInvulnerable(GetCatchingBattler(), CHECK_ALL))
         return BALL_THROW_UNABLE_SEMI_INVULNERABLE;
     else if (FlagGet(B_FLAG_NO_CATCHING))
         return BALL_THROW_UNABLE_DISABLED_FLAG;
@@ -1450,77 +1471,37 @@ void ItemUseOutOfBattle_EnigmaBerry(u8 taskId)
 
 void ItemUseOutOfBattle_FormChange(u8 taskId)
 {
-    if (!gTasks[taskId].tUsingRegisteredKeyItem)
-    {
-        gItemUseCB = ItemUseCB_FormChange;
-        gTasks[taskId].data[0] = FALSE;
-        SetUpItemUseOnFieldCallback(taskId);
-    }
-    else
-    {
-        // TODO: handle key items with callbacks to menus allow to be used by registering them.
-        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
-    }
+    gItemUseCB = ItemUseCB_FormChange;
+    gTasks[taskId].data[0] = FALSE;
+    SetUpItemUseCallback(taskId);
 }
 
 void ItemUseOutOfBattle_FormChange_ConsumedOnUse(u8 taskId)
 {
-    if (!gTasks[taskId].tUsingRegisteredKeyItem)
-    {
-        gItemUseCB = ItemUseCB_FormChange_ConsumedOnUse;
-        gTasks[taskId].data[0] = TRUE;
-        SetUpItemUseOnFieldCallback(taskId);
-    }
-    else
-    {
-        // TODO: handle key items with callbacks to menus allow to be used by registering them.
-        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
-    }
+    gItemUseCB = ItemUseCB_FormChange_ConsumedOnUse;
+    gTasks[taskId].data[0] = TRUE;
+    SetUpItemUseCallback(taskId);
 }
 
 void ItemUseOutOfBattle_RotomCatalog(u8 taskId)
 {
-    if (!gTasks[taskId].tUsingRegisteredKeyItem)
-    {
-        gItemUseCB = ItemUseCB_RotomCatalog;
-        gTasks[taskId].data[0] = TRUE;
-        SetUpItemUseOnFieldCallback(taskId);
-    }
-    else
-    {
-        // TODO: handle key items with callbacks to menus allow to be used by registering them.
-        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
-    }
+    gItemUseCB = ItemUseCB_RotomCatalog;
+    gTasks[taskId].data[0] = TRUE;
+    SetUpItemUseCallback(taskId);
 }
 
 void ItemUseOutOfBattle_ZygardeCube(u8 taskId)
 {
-    if (!gTasks[taskId].tUsingRegisteredKeyItem)
-    {
-        gItemUseCB = ItemUseCB_ZygardeCube;
-        gTasks[taskId].data[0] = TRUE;
-        SetUpItemUseOnFieldCallback(taskId);
-    }
-    else
-    {
-        // TODO: handle key items with callbacks to menus allow to be used by registering them.
-        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
-    }
+    gItemUseCB = ItemUseCB_ZygardeCube;
+    gTasks[taskId].data[0] = TRUE;
+    SetUpItemUseCallback(taskId);
 }
 
 void ItemUseOutOfBattle_Fusion(u8 taskId)
 {
-    if (!gTasks[taskId].tUsingRegisteredKeyItem)
-    {
-        gItemUseCB = ItemUseCB_Fusion;
-        gTasks[taskId].data[0] = FALSE;
-        SetUpItemUseCallback(taskId);
-    }
-    else
-    {
-        // TODO: handle key items with callbacks to menus allow to be used by registering them.
-        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
-    }
+    gItemUseCB = ItemUseCB_Fusion;
+    gTasks[taskId].data[0] = FALSE;
+    SetUpItemUseCallback(taskId);
 }
 
 void Task_UseHoneyOnField(u8 taskId)
@@ -1679,8 +1660,7 @@ void ItemUseOutOfBattle_TownMap(u8 taskId)
     }
     else
     {
-        // TODO: handle key items with callbacks to menus allow to be used by registering them.
-        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+        gTasks[taskId].func = ItemUseOnFieldCB_TownMap;
     }
 }
 

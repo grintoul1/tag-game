@@ -3,7 +3,7 @@
 
 // AI Flags. Most run specific functions to update score, new flags are used for internal logic in other scripts
 // See docs/ai_flags.md for more details.
-#define AI_FLAG(x) ((x < 32) ? (1u << x) : ((u64)1 << x))
+#define AI_FLAG(x) ((u64)1 << x)
 
 #define AI_FLAG_CHECK_BAD_MOVE              AI_FLAG(0)  // AI will avoid using moves that are likely to fail or be ineffective in the current situation.
 #define AI_FLAG_TRY_TO_FAINT                AI_FLAG(1)  // AI will prioritize KOing the player's mon if able.
@@ -39,13 +39,9 @@
 #define AI_FLAG_ASSUME_STATUS_MOVES         AI_FLAG(29)  // AI has a chance to know certain non-damaging moves, and also Fake Out and Super Fang. Restricted version of AI_FLAG_OMNISCIENT.
 #define AI_FLAG_PARTNER                     AI_FLAG(30)  // Partner
 #define AI_FLAG_PARTNER_SWITCHING           AI_FLAG(31)  // Partner switching
+#define AI_FLAG_ATTACKS_PARTNER             AI_FLAG(32)  // AI specific to double battles; AI can deliberately attack its 'partner.'
 
-
-
-#define AI_FLAG_COUNT                       32
-
-// Flags at and after 32 need different formatting, as in
-// #define AI_FLAG_PLACEHOLDER      ((u64)1 << 32)
+#define AI_FLAG_COUNT                       33
 
 // The following options are enough to have a basic/smart trainer. Any other addtion could make the trainer worse/better depending on the flag
 #define AI_FLAG_BASIC_TRAINER         (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE | AI_FLAG_CHECK_VIABILITY)
@@ -56,10 +52,10 @@
 #define AI_FLAG_ASSUMPTIONS           (AI_FLAG_ASSUME_STAB | AI_FLAG_ASSUME_STATUS_MOVES | AI_FLAG_WEIGH_ABILITY_PREDICTION)
 
 // 'other' ai logic flags
-#define AI_FLAG_DYNAMIC_FUNC          ((u64)1 << 60)  // Create custom AI functions for specific battles via "setdynamicaifunc" cmd
-#define AI_FLAG_ROAMING               ((u64)1 << 61)
-#define AI_FLAG_SAFARI                ((u64)1 << 62)
-#define AI_FLAG_FIRST_BATTLE          ((u64)1 << 63)
+#define AI_FLAG_DYNAMIC_FUNC          AI_FLAG(60)  // Create custom AI functions for specific battles via "setdynamicaifunc" cmd
+#define AI_FLAG_ROAMING               AI_FLAG(61)
+#define AI_FLAG_SAFARI                AI_FLAG(62)
+#define AI_FLAG_FIRST_BATTLE          AI_FLAG(63)
 
 #define AI_SCORE_DEFAULT 100 // Default score for all AI moves.
 

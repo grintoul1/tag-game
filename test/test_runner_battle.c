@@ -1490,12 +1490,10 @@ void TestRunner_Battle_AfterLastTurn(void)
 
 static void TearDownBattle(void)
 {
-    for (u32 i = 0; i < 6; i++)
-    {
-        u8 *ptr = (u8 *)(&gPlayerParty[i]);
-        for (u32 j = 0; j < sizeof(struct Pokemon); j++)
-            ptr[j] = 0;
-    }
+    // Zero out the parties, data in them could potentially carry over
+    ZeroPlayerPartyMons();
+    ZeroEnemyPartyMons();
+
     FreeMonSpritesGfx();
     FreeBattleSpritesData();
     FreeBattleResources();
