@@ -1614,7 +1614,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             }
             break;
         case EFFECT_NOBLE_ROAR:
-            if ((!CanLowerStat(battlerAtk, battlerDef, abilityDef, STAT_SPATK)) && (!CanLowerStat(battlerAtk, battlerDef, abilityDef, STAT_ATK)))
+            if ((!CanLowerStat(battlerAtk, battlerDef, aiData, STAT_SPATK)) && (!CanLowerStat(battlerAtk, battlerDef, aiData, STAT_ATK)))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
         case EFFECT_CAPTIVATE:
@@ -1684,17 +1684,17 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             //fallthrough
         case EFFECT_LIGHT_SCREEN:
             if (gSideStatuses[GetBattlerSide(battlerAtk)] & (SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL)
-              || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
+              || HasMoveWithEffect(BATTLE_PARTNER(battlerAtk), EFFECT_LIGHT_SCREEN))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
         case EFFECT_REFLECT:
             if (gSideStatuses[GetBattlerSide(battlerAtk)] & (SIDE_STATUS_REFLECT | SIDE_STATUS_AURORA_VEIL)
-              || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
+              || HasMoveWithEffect(BATTLE_PARTNER(battlerAtk), EFFECT_REFLECT))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
         case EFFECT_AURORA_VEIL:
             if (gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_AURORA_VEIL
-              || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove)
+              || HasMoveWithEffect(BATTLE_PARTNER(battlerAtk), EFFECT_AURORA_VEIL)
               || !(weather & (B_WEATHER_ICY_ANY)))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
@@ -4531,7 +4531,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                         break;
                     }
                 }
-                else if (isDoubleBattle && GetBattlerMoveTargetType(BATTLE_PARTNER(battlerAtk), aiData->partnerMove) & MOVE_TARGET_FOES_AND_ALLY 
+                else if (hasPartner && GetBattlerMoveTargetType(BATTLE_PARTNER(battlerAtk), aiData->partnerMove) & MOVE_TARGET_FOES_AND_ALLY 
                 && ShouldUseProtect(battlerAtk, battlerDef, targetMove[i]))
                 {
                     if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
@@ -4661,7 +4661,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         }
         break;
     case EFFECT_STICKY_WEB:
-        if (AI_ShouldSetUpHazards(battlerAtk, battlerDef, aiData))
+        if (AI_ShouldSetUpHazards(battlerAtk, battlerDef, move, aiData))
         {
             if (gDisableStructs[battlerAtk].isFirstTurn)
                 ADJUST_SCORE(BEST_DAMAGE_MOVE + FAST_KILL);
@@ -4840,44 +4840,41 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
         break;
     case EFFECT_FIRST_TURN_ONLY:
-        if (ShouldFakeOut(battlerAtk, battlerDef, move) && MoveHasAdditionalEffectWithChance(move, MOVE_EFFECT_FLINCH, 100))
+        if (gAiLogicData->abilities[battlerAtk] == ABILITY_GORILLA_TACTICS || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_BAND
+        || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SPECS || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SCARF
+        || (aiData->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK) || (IsBattlerTerrainAffected(battlerDef, STATUS_FIELD_PSYCHIC_TERRAIN))
+        || ((aiData->abilities[battlerDef] == ABILITY_INNER_FOCUS) || ((aiData->abilities[battlerDef] == ABILITY_SHIELD_DUST
+        || aiData->abilities[battlerDef] == ABILITY_DAZZLING || aiData->abilities[battlerDef] == ABILITY_QUEENLY_MAJESTY 
+        || aiData->abilities[BATTLE_PARTNER(battlerDef)] == ABILITY_DAZZLING || aiData->abilities[BATTLE_PARTNER(battlerDef)] == ABILITY_QUEENLY_MAJESTY) 
+        && !DoesBattlerIgnoreAbilityChecks(battlerDef, gAiLogicData->abilities[battlerDef], move))))
+        {    
+            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+            break;
+        }
+        else if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER) // Partner trainers only
         {
-            if (gAiLogicData->abilities[battlerAtk] == ABILITY_GORILLA_TACTICS || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_BAND
-            || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SPECS || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SCARF
-            || (aiData->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK) || (IsBattlerTerrainAffected(battlerDef, STATUS_FIELD_PSYCHIC_TERRAIN))
-            || ((aiData->abilities[battlerDef] == ABILITY_INNER_FOCUS) || ((aiData->abilities[battlerDef] == ABILITY_SHIELD_DUST
-            || aiData->abilities[battlerDef] == ABILITY_DAZZLING || aiData->abilities[battlerDef] == ABILITY_QUEENLY_MAJESTY 
-            || aiData->abilities[BATTLE_PARTNER(battlerDef)] == ABILITY_DAZZLING || aiData->abilities[BATTLE_PARTNER(battlerDef)] == ABILITY_QUEENLY_MAJESTY) 
-            && !DoesBattlerIgnoreAbilityChecks(battlerDef, gAiLogicData->abilities[battlerDef], move))))
-            {    
-                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+            if (HasMove(battlerDef, MOVE_FAKE_OUT) && gDisableStructs[battlerDef].isFirstTurn 
+            && AI_WhoStrikesFirst(battlerAtk, battlerDef, MOVE_NONE, MOVE_NONE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) // If target has Fake out and it's target first turn
+            {
+                ADJUST_SCORE(GOOD_EFFECT + FAST_KILL + 1); // +19
                 break;
             }
-            else if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER) // Partner trainers only
+            // If Player has kill on Target but is slower, and Partner has no kills
+            else if ((AI_WhoStrikesFirst(BATTLE_PARTNER(battlerAtk), battlerDef, MOVE_NONE, MOVE_NONE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) && CanAIFaintTarget(BATTLE_PARTNER(battlerAtk), battlerDef, 1) && !CanAIFaintTarget(battlerAtk, battlerDef, 1) && !CanAIFaintTarget(battlerAtk, BATTLE_PARTNER(battlerDef), 1))
             {
-                if (HasMove(battlerDef, MOVE_FAKE_OUT) && gDisableStructs[battlerDef].isFirstTurn 
-                && AI_WhoStrikesFirst(battlerAtk, battlerDef, MOVE_NONE, MOVE_NONE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) // If target has Fake out and it's target first turn
-                {
-                    ADJUST_SCORE(GOOD_EFFECT + FAST_KILL + 1); // +19
-                    break;
-                }
-                // If Player has kill on Target but is slower, and Partner has no kills
-                else if ((AI_WhoStrikesFirst(BATTLE_PARTNER(battlerAtk), battlerDef, MOVE_NONE, MOVE_NONE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) && CanAIFaintTarget(BATTLE_PARTNER(battlerAtk), battlerDef, 1) && !CanAIFaintTarget(battlerAtk, battlerDef, 1) && !CanAIFaintTarget(battlerAtk, BATTLE_PARTNER(battlerDef), 1))
-                {
-                    ADJUST_SCORE(GOOD_EFFECT + FAST_KILL + 1); // +19
-                    break;
-                }
-                else 
-                {
-                    ADJUST_SCORE(11); // +11
-                    break;
-                }
-            }
-            else
-            {
-                ADJUST_SCORE(GOOD_EFFECT + SLOW_KILL); // +14
+                ADJUST_SCORE(GOOD_EFFECT + FAST_KILL + 1); // +19
                 break;
             }
+            else 
+            {
+                ADJUST_SCORE(11); // +11
+                break;
+            }
+        }
+        else
+        {
+            ADJUST_SCORE(GOOD_EFFECT + SLOW_KILL); // +14
+            break;
         }
         break;
     case EFFECT_STOCKPILE:
@@ -5819,7 +5816,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                     ADJUST_SCORE(DECENT_EFFECT);
                 break;
             case MOVE_EFFECT_STEALTH_ROCK:
-                if (AI_ShouldSetUpHazards(battlerAtk, battlerDef, move, aiData));
+                if (AI_ShouldSetUpHazards(battlerAtk, battlerDef, move, gAiLogicData));
                 {
                     if (gDisableStructs[battlerAtk].isFirstTurn)
                         ADJUST_SCORE(BEST_EFFECT);

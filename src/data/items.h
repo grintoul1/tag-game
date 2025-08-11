@@ -14594,8 +14594,8 @@ const struct Item gItemsInfo[] =
 
     [ITEM_INFINITE_CANDY] =
     {
-        .name = _("Infinite Candy"),
-        .pluralName = _("Infinite Candy"),
+        .name = ITEM_NAME("Infinite Candy"),
+        .pluralName = ITEM_PLURAL_NAME("Infinite Candy"),
         .price = 0,
         .importance = 1,
         .description = COMPOUND_STRING(
@@ -14612,7 +14612,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_POKE_VIAL] =
     {
-        .name = _("Poké Vial"),
+        .name = ITEM_NAME("Poké Vial"),
         .price = 0,
         .description = COMPOUND_STRING(
             "Restores party\n"
@@ -14627,7 +14627,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_REPELLENT] =
     {
-        .name = _("Repellent"),
+        .name = ITEM_NAME("Repellent"),
         .price = 0,
         .description = sRepellentDesc,
         .importance = 1,
@@ -14641,8 +14641,8 @@ const struct Item gItemsInfo[] =
     // Note: This only works with Level Caps
     [ITEM_SUPER_CANDY] =
     {
-        .name = _("Super Candy"),
-        .pluralName = _("Super Candies"),
+        .name = ITEM_NAME("Super Candy"),
+        .pluralName = ITEM_PLURAL_NAME("Super Candies"),
         .price = 0,
         .holdEffectParam = LEVEL_CAP,
         .importance = 1,
