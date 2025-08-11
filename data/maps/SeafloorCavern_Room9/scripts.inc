@@ -360,7 +360,7 @@ SeafloorCavern_Room9_EventScript_Archie::
 
 SeafloorCavern_Room9_EventScript_ArchieDoMultiBattle::
 	playbgm MUS_NONE, TRUE
-	multi_2p_vs_1 TRAINER_ARCHIE, SeafloorCavern_Room9_Text_ArchieDefeat, PARTNER_EMMIE
+	multi_2p_vs_1 TRAINER_ARCHIE_SEAFLOOR_CAVERN, SeafloorCavern_Room9_Text_ArchieDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, SeafloorCavern_Room9_EventScript_ArchieVictory
 	fadescreen FADE_TO_BLACK
