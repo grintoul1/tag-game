@@ -3956,8 +3956,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     }
 
     // check guaranteed flinch, a la Fake Out
-    if (IsFlinchGuaranteed(battlerAtk, battlerDef, move))
-        ADJUST_SCORE(BEST_EFFECT);
+    //if (IsFlinchGuaranteed(battlerAtk, battlerDef, move))
+    //    ADJUST_SCORE(BEST_EFFECT);
 
     // Non-volatile statuses
     switch(GetMoveNonVolatileStatus(move))

@@ -823,7 +823,7 @@ Pic: Green
 Gender: Female
 Mugshot: Pink
 Music: Pkmn Trainer 2
-Battle Type: Doubles
+Battle Type: Singles
 AI: Smart Trainer
 
 Sandslash
@@ -899,7 +899,7 @@ Pic: Green
 Gender: Female
 Mugshot: Pink
 Music: Pkmn Trainer 2
-Battle Type: Doubles
+Battle Type: Singles
 AI: Smart Trainer
 
 Sandslash
@@ -3507,7 +3507,6 @@ Ability: Intimidate
 Level: 29  
 Brave Nature  
 - Hyper Voice
-- Signal Beam
 - Volt Switch  
 - Fire Fang
 
@@ -6548,7 +6547,7 @@ Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
-Battle Type: Doubles
+Battle Type: Singles
 AI: Smart Trainer
 Mugshot: LightBlue
 
@@ -6610,7 +6609,7 @@ Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
-Battle Type: Doubles
+Battle Type: Singles
 AI: Smart Trainer
 Mugshot: LightBlue
 
@@ -6672,7 +6671,7 @@ Class: Rival
 Pic: May
 Gender: Female
 Music: Female
-Battle Type: Doubles
+Battle Type: Singles
 AI: Smart Trainer
 Mugshot: MayPink
 
@@ -6731,7 +6730,7 @@ Class: Rival
 Pic: May
 Gender: Female
 Music: Female
-Battle Type: Doubles
+Battle Type: Singles
 AI: Smart Trainer
 Mugshot: MayPink
 
@@ -6790,7 +6789,7 @@ Class: Rival
 Pic: May
 Gender: Female
 Music: Female
-Battle Type: Doubles
+Battle Type: Singles
 AI: Smart Trainer
 Mugshot: MayPink
 

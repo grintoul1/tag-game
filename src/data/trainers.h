@@ -17,7 +17,7 @@
 #line 6
             TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 7
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -51,7 +51,7 @@
 #line 19
             TRAINER_ENCOUNTER_MUSIC_HIKER,
 #line 20
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 21
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -87,7 +87,7 @@
 #line 33
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 34
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 35
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -119,7 +119,7 @@
 #line 46
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 47
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 48
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
@@ -162,7 +162,7 @@
 #line 63
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 64
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 65
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -194,7 +194,7 @@
 #line 76
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 77
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 78
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -226,7 +226,7 @@
 #line 89
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 90
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 91
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -258,7 +258,7 @@
 #line 102
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 103
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 104
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -290,7 +290,7 @@
 #line 115
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 116
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 117
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -324,7 +324,7 @@ F_TRAINER_FEMALE |
 #line 128
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
 #line 129
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 130
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
@@ -411,7 +411,7 @@ F_TRAINER_FEMALE |
 #line 161
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 162
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 163
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -445,7 +445,7 @@ F_TRAINER_FEMALE |
 #line 175
         .items = { ITEM_HYPER_POTION },
 #line 176
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 177
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
@@ -488,7 +488,7 @@ F_TRAINER_FEMALE |
 #line 192
             TRAINER_ENCOUNTER_MUSIC_COOL,
 #line 193
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 194
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
@@ -531,7 +531,7 @@ F_TRAINER_FEMALE |
 #line 209
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
 #line 210
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 211
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
@@ -576,7 +576,7 @@ F_TRAINER_FEMALE |
 #line 226
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 227
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 228
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -608,7 +608,7 @@ F_TRAINER_FEMALE |
 #line 239
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 240
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 241
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -640,7 +640,7 @@ F_TRAINER_FEMALE |
 #line 252
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 253
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 254
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -672,7 +672,7 @@ F_TRAINER_FEMALE |
 #line 265
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 266
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 267
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
@@ -715,7 +715,7 @@ F_TRAINER_FEMALE |
 #line 282
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 283
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 284
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
@@ -758,7 +758,7 @@ F_TRAINER_FEMALE |
 #line 299
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 300
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 301
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
@@ -812,7 +812,7 @@ F_TRAINER_FEMALE |
 #line 320
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 321
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 322
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -844,7 +844,7 @@ F_TRAINER_FEMALE |
 #line 333
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 334
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 335
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
@@ -887,7 +887,7 @@ F_TRAINER_FEMALE |
 #line 350
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
 #line 351
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 352
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -919,7 +919,7 @@ F_TRAINER_FEMALE |
 #line 363
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 364
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 365
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -951,7 +951,7 @@ F_TRAINER_FEMALE |
 #line 376
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 377
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 378
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -983,7 +983,7 @@ F_TRAINER_FEMALE |
 #line 389
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 390
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 391
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
@@ -1028,7 +1028,7 @@ F_TRAINER_FEMALE |
 #line 406
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 407
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 408
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -1062,7 +1062,7 @@ F_TRAINER_FEMALE |
 #line 419
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 420
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 421
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -1096,7 +1096,7 @@ F_TRAINER_FEMALE |
 #line 432
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 433
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 434
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -1128,7 +1128,7 @@ F_TRAINER_FEMALE |
 #line 445
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
 #line 446
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 447
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
@@ -1173,7 +1173,7 @@ F_TRAINER_FEMALE |
 #line 464
         .items = { ITEM_SUPER_POTION },
 #line 465
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 466
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 462
@@ -1220,7 +1220,7 @@ F_TRAINER_FEMALE |
 #line 483
         .items = { ITEM_SUPER_POTION },
 #line 484
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 485
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 481
@@ -1265,7 +1265,7 @@ F_TRAINER_FEMALE |
 #line 500
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
 #line 501
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 502
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -1299,7 +1299,7 @@ F_TRAINER_FEMALE |
 #line 514
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 515
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 516
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 512
@@ -1346,7 +1346,7 @@ F_TRAINER_FEMALE |
 #line 532
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 533
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 534
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 530
@@ -1393,7 +1393,7 @@ F_TRAINER_FEMALE |
 #line 550
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 551
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 552
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 548
@@ -1426,7 +1426,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 562
-    [DIFFICULTY_NORMAL][TRAINER_ARCHIE] =
+    [DIFFICULTY_NORMAL][TRAINER_ARCHIE_SLATEPORT_CITY] =
     {
 #line 563
         .trainerName = _("Archie"),
@@ -1482,396 +1482,452 @@ F_TRAINER_FEMALE |
         },
     },
 #line 584
-    [DIFFICULTY_NORMAL][TRAINER_PYRE_AQUAGRUNT2] =
+    [DIFFICULTY_NORMAL][TRAINER_ARCHIE_SEAFLOOR_CAVERN] =
     {
 #line 585
-        .trainerName = _("Grunt"),
+        .trainerName = _("Archie"),
 #line 586
-        .trainerClass = TRAINER_CLASS_TEAM_AQUA,
+        .trainerClass = TRAINER_CLASS_AQUA_LEADER,
 #line 587
+        .trainerPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
+        .encounterMusic_gender =
+#line 590
+            TRAINER_ENCOUNTER_MUSIC_AQUA,
+#line 591
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 592
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+#line 588
+        .mugshotColor = MUGSHOT_COLOR_RED,
+        .partySize = 3,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 594
+            .species = SPECIES_MIGHTYENA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 596
+            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+#line 595
+            .lvl = 41,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 598
+            .species = SPECIES_CROBAT,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 600
+            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+#line 599
+            .lvl = 41,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 602
+            .species = SPECIES_SHARPEDO,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 604
+            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+#line 603
+            .lvl = 43,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 606
+    [DIFFICULTY_NORMAL][TRAINER_PYRE_AQUAGRUNT2] =
+    {
+#line 607
+        .trainerName = _("Grunt"),
+#line 608
+        .trainerClass = TRAINER_CLASS_TEAM_AQUA,
+#line 609
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
         .encounterMusic_gender =
-#line 588
+#line 610
 F_TRAINER_FEMALE | 
-#line 589
+#line 611
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 590
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 591
+#line 612
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 613
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 593
+#line 615
             .species = SPECIES_SPOINK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 595
+#line 617
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 594
+#line 616
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 597
+#line 619
     [DIFFICULTY_NORMAL][TRAINER_DAISY] =
     {
-#line 598
+#line 620
         .trainerName = _("Daisy"),
-#line 599
+#line 621
         .trainerClass = TRAINER_CLASS_AROMA_LADY,
-#line 600
+#line 622
         .trainerPic = TRAINER_PIC_AROMA_LADY,
         .encounterMusic_gender =
-#line 601
+#line 623
 F_TRAINER_FEMALE | 
-#line 602
+#line 624
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 603
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 604
+#line 625
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 626
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 606
+#line 628
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 608
+#line 630
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 607
+#line 629
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 610
+#line 632
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 612
+#line 634
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 611
+#line 633
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 614
+#line 636
     [DIFFICULTY_NORMAL][TRAINER_ROSE_1] =
     {
-#line 615
+#line 637
         .trainerName = _("Rose"),
-#line 616
+#line 638
         .trainerClass = TRAINER_CLASS_AROMA_LADY,
-#line 617
+#line 639
         .trainerPic = TRAINER_PIC_AROMA_LADY,
         .encounterMusic_gender =
-#line 618
+#line 640
 F_TRAINER_FEMALE | 
-#line 619
+#line 641
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 620
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 621
+#line 642
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 643
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 623
+#line 645
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 625
+#line 647
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 624
+#line 646
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 627
+#line 649
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 629
+#line 651
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 628
+#line 650
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 631
+#line 653
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 633
+#line 655
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 632
+#line 654
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 635
+#line 657
     [DIFFICULTY_NORMAL][TRAINER_FELIX] =
     {
-#line 636
+#line 658
         .trainerName = _("Felix"),
-#line 637
+#line 659
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 638
+#line 660
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 640
+#line 662
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 641
+#line 663
         .items = { ITEM_FULL_RESTORE },
-#line 642
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 643
+#line 664
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 665
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 645
+#line 667
             .species = SPECIES_MEDICHAM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 647
+#line 669
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 646
+#line 668
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 648
+#line 670
                 MOVE_PSYCHIC,
             },
             },
             {
-#line 650
+#line 672
             .species = SPECIES_CLAYDOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 652
+#line 674
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 651
+#line 673
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 653
+#line 675
                 MOVE_SKILL_SWAP,
                 MOVE_EARTHQUAKE,
             },
             },
         },
     },
-#line 656
+#line 678
     [DIFFICULTY_NORMAL][TRAINER_VIOLET] =
     {
-#line 657
+#line 679
         .trainerName = _("Violet"),
-#line 658
+#line 680
         .trainerClass = TRAINER_CLASS_AROMA_LADY,
-#line 659
+#line 681
         .trainerPic = TRAINER_PIC_AROMA_LADY,
         .encounterMusic_gender =
-#line 660
+#line 682
 F_TRAINER_FEMALE | 
-#line 661
+#line 683
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 662
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 663
+#line 684
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 685
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 665
+#line 687
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 667
+#line 689
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 666
+#line 688
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 669
+#line 691
             .species = SPECIES_GLOOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 671
+#line 693
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 670
+#line 692
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 673
+#line 695
     [DIFFICULTY_NORMAL][TRAINER_MATT_MT_PYRE] =
     {
-#line 674
+#line 696
         .trainerName = _("Matt"),
-#line 675
+#line 697
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN_MIXED,
-#line 676
+#line 698
         .trainerPic = TRAINER_PIC_AQUA_ADMIN_M,
         .encounterMusic_gender =
-#line 678
+#line 700
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 679
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 680
+#line 701
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 702
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 682
+#line 704
             .species = SPECIES_POLITOED,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 682
+#line 704
             .heldItem = ITEM_EJECT_BUTTON,
-#line 685
+#line 707
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 683
+#line 705
             .ability = ABILITY_DRIZZLE,
-#line 684
+#line 706
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 687
+#line 709
             .species = SPECIES_BARRASKEWDA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 690
+#line 712
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 688
+#line 710
             .ability = ABILITY_SWIFT_SWIM,
-#line 689
+#line 711
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 692
+#line 714
             .species = SPECIES_MANTINE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 695
+#line 717
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 693
+#line 715
             .ability = ABILITY_SWIFT_SWIM,
-#line 694
+#line 716
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 697
+#line 719
     [DIFFICULTY_NORMAL][TRAINER_TABITHA_MT_PYRE] =
     {
-#line 698
+#line 720
         .trainerName = _("Tabitha"),
-#line 699
+#line 721
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN_MIXED,
-#line 700
+#line 722
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
         .encounterMusic_gender =
-#line 703
+#line 725
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 704
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 705
+#line 726
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 727
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 701
+#line 723
         .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 707
+#line 729
             .species = SPECIES_TORKOAL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 707
+#line 729
             .heldItem = ITEM_EJECT_PACK,
-#line 710
+#line 732
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 708
+#line 730
             .ability = ABILITY_DROUGHT,
-#line 709
+#line 731
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 712
+#line 734
             .species = SPECIES_EXEGGUTOR,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 715
+#line 737
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 713
+#line 735
             .ability = ABILITY_CHLOROPHYLL,
-#line 714
+#line 736
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 717
+#line 739
             .species = SPECIES_LILLIGANT_HISUI,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 720
+#line 742
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 718
+#line 740
             .ability = ABILITY_CHLOROPHYLL,
-#line 719
+#line 741
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 722
+#line 744
     [DIFFICULTY_NORMAL][TRAINER_DUSTY_1] =
     {
-#line 723
+#line 745
         .trainerName = _("Dusty"),
-#line 724
+#line 746
         .trainerClass = TRAINER_CLASS_RUIN_MANIAC,
-#line 725
+#line 747
         .trainerPic = TRAINER_PIC_RUIN_MANIAC,
         .encounterMusic_gender =
-#line 727
+#line 749
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 728
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 729
+#line 750
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 751
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 731
+#line 753
             .species = SPECIES_SANDSLASH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 733
+#line 755
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 732
+#line 754
             .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 734
+#line 756
                 MOVE_DIG,
                 MOVE_SLASH,
                 MOVE_SAND_ATTACK,
@@ -1880,37 +1936,37 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 739
+#line 761
     [DIFFICULTY_NORMAL][TRAINER_CHIP] =
     {
-#line 740
+#line 762
         .trainerName = _("Chip"),
-#line 741
+#line 763
         .trainerClass = TRAINER_CLASS_RUIN_MANIAC,
-#line 742
+#line 764
         .trainerPic = TRAINER_PIC_RUIN_MANIAC,
         .encounterMusic_gender =
-#line 744
+#line 766
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 745
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 746
+#line 767
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 768
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 748
+#line 770
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 750
+#line 772
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 749
+#line 771
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 751
+#line 773
                 MOVE_PSYBEAM,
                 MOVE_SELF_DESTRUCT,
                 MOVE_SANDSTORM,
@@ -1918,17 +1974,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 756
+#line 778
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 758
+#line 780
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 757
+#line 779
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 759
+#line 781
                 MOVE_DIG,
                 MOVE_SLASH,
                 MOVE_SAND_ATTACK,
@@ -1936,17 +1992,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 764
+#line 786
             .species = SPECIES_SANDSLASH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 766
+#line 788
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 765
+#line 787
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 767
+#line 789
                 MOVE_DIG,
                 MOVE_SLASH,
                 MOVE_SAND_ATTACK,
@@ -1955,37 +2011,37 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 772
+#line 794
     [DIFFICULTY_NORMAL][TRAINER_FOSTER] =
     {
-#line 773
+#line 795
         .trainerName = _("Foster"),
-#line 774
+#line 796
         .trainerClass = TRAINER_CLASS_RUIN_MANIAC,
-#line 775
+#line 797
         .trainerPic = TRAINER_PIC_RUIN_MANIAC,
         .encounterMusic_gender =
-#line 777
+#line 799
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 778
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 779
+#line 800
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 801
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 781
+#line 803
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 783
+#line 805
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 782
+#line 804
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 784
+#line 806
                 MOVE_DIG,
                 MOVE_SLASH,
                 MOVE_SAND_ATTACK,
@@ -1993,17 +2049,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 789
+#line 811
             .species = SPECIES_SANDSLASH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 791
+#line 813
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 790
+#line 812
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 792
+#line 814
                 MOVE_DIG,
                 MOVE_SLASH,
                 MOVE_SAND_ATTACK,
@@ -2012,41 +2068,41 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 797
+#line 819
     [DIFFICULTY_NORMAL][TRAINER_EMMIE_1] =
     {
-#line 798
+#line 820
         .trainerName = _("Emmie"),
-#line 799
+#line 821
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_2,
-#line 800
+#line 822
         .trainerPic = TRAINER_PIC_GREEN,
         .encounterMusic_gender =
-#line 801
+#line 823
 F_TRAINER_FEMALE | 
-#line 803
+#line 825
             TRAINER_ENCOUNTER_MUSIC_PKMN_TRAINER_2,
-#line 804
-        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 805
+#line 826
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 827
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 802
+#line 824
         .mugshotColor = MUGSHOT_COLOR_PINK,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 807
+#line 829
             .species = SPECIES_SANDSLASH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 809
+#line 831
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
-#line 808
+#line 830
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 810
+#line 832
                 MOVE_DIG,
                 MOVE_SLASH,
                 MOVE_SAND_ATTACK,
@@ -2055,41 +2111,41 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 815
+#line 837
     [DIFFICULTY_NORMAL][TRAINER_EMMIE_2] =
     {
-#line 816
+#line 838
         .trainerName = _("Emmie"),
-#line 817
+#line 839
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_2,
-#line 818
+#line 840
         .trainerPic = TRAINER_PIC_GREEN,
         .encounterMusic_gender =
-#line 819
+#line 841
 F_TRAINER_FEMALE | 
-#line 821
+#line 843
             TRAINER_ENCOUNTER_MUSIC_PKMN_TRAINER_2,
-#line 822
-        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 823
+#line 844
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 845
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 820
+#line 842
         .mugshotColor = MUGSHOT_COLOR_PINK,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 825
+#line 847
             .species = SPECIES_THUNDURUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 827
+#line 849
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 826
+#line 848
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 828
+#line 850
                 MOVE_TAUNT,
                 MOVE_SLASH,
                 MOVE_SAND_ATTACK,
@@ -2097,17 +2153,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 833
+#line 855
             .species = SPECIES_TORNADUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 835
+#line 857
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 834
+#line 856
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 836
+#line 858
                 MOVE_TAILWIND,
                 MOVE_SLASH,
                 MOVE_SAND_ATTACK,
@@ -2115,71 +2171,71 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 841
+#line 863
             .species = SPECIES_LANDORUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 843
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 842
-            .lvl = 30,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 844
-                MOVE_DIG,
-                MOVE_SLASH,
-                MOVE_SAND_ATTACK,
-                MOVE_POISON_STING,
-            },
-            },
-            {
-#line 849
-            .species = SPECIES_SANDSLASH,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 851
-            .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
-#line 850
-            .lvl = 30,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 852
-                MOVE_DIG,
-                MOVE_SLASH,
-                MOVE_SAND_ATTACK,
-                MOVE_POISON_STING,
-            },
-            },
-            {
-#line 857
-            .species = SPECIES_SANDSLASH,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 859
-            .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
-#line 858
-            .lvl = 30,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 860
-                MOVE_DIG,
-                MOVE_SLASH,
-                MOVE_SAND_ATTACK,
-                MOVE_POISON_STING,
-            },
-            },
-            {
 #line 865
-            .species = SPECIES_SANDSLASH,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 867
-            .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
-#line 866
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 864
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 868
+#line 866
+                MOVE_DIG,
+                MOVE_SLASH,
+                MOVE_SAND_ATTACK,
+                MOVE_POISON_STING,
+            },
+            },
+            {
+#line 871
+            .species = SPECIES_SANDSLASH,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 873
+            .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
+#line 872
+            .lvl = 30,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 874
+                MOVE_DIG,
+                MOVE_SLASH,
+                MOVE_SAND_ATTACK,
+                MOVE_POISON_STING,
+            },
+            },
+            {
+#line 879
+            .species = SPECIES_SANDSLASH,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 881
+            .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
+#line 880
+            .lvl = 30,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 882
+                MOVE_DIG,
+                MOVE_SLASH,
+                MOVE_SAND_ATTACK,
+                MOVE_POISON_STING,
+            },
+            },
+            {
+#line 887
+            .species = SPECIES_SANDSLASH,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 889
+            .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
+#line 888
+            .lvl = 30,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 890
                 MOVE_DIG,
                 MOVE_SLASH,
                 MOVE_SAND_ATTACK,
@@ -2188,41 +2244,41 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 873
+#line 895
     [DIFFICULTY_NORMAL][TRAINER_EMMIE_3] =
     {
-#line 874
+#line 896
         .trainerName = _("Emmie"),
-#line 875
+#line 897
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_2,
-#line 876
+#line 898
         .trainerPic = TRAINER_PIC_GREEN,
         .encounterMusic_gender =
-#line 877
+#line 899
 F_TRAINER_FEMALE | 
-#line 879
+#line 901
             TRAINER_ENCOUNTER_MUSIC_PKMN_TRAINER_2,
-#line 880
-        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 881
+#line 902
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 903
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 878
+#line 900
         .mugshotColor = MUGSHOT_COLOR_PINK,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 883
+#line 905
             .species = SPECIES_SANDSLASH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 885
+#line 907
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
-#line 884
+#line 906
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 886
+#line 908
                 MOVE_DIG,
                 MOVE_SLASH,
                 MOVE_SAND_ATTACK,
@@ -2231,240 +2287,240 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 891
+#line 913
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_ROUTE109_3] =
     {
-#line 892
+#line 914
         .trainerName = _("Grunt"),
-#line 893
+#line 915
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
-#line 894
+#line 916
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
         .encounterMusic_gender =
-#line 895
+#line 917
 F_TRAINER_FEMALE | 
-#line 896
+#line 918
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 897
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 898
+#line 919
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 920
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 900
+#line 922
             .species = SPECIES_AZURILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 902
+#line 924
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 901
+#line 923
             .lvl = 12,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 904
+#line 926
             .species = SPECIES_AZURILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 906
+#line 928
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 905
+#line 927
             .lvl = 12,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 908
+#line 930
     [DIFFICULTY_NORMAL][TRAINER_AUSTINA] =
     {
-#line 909
+#line 931
         .trainerName = _("Austina"),
-#line 910
+#line 932
         .trainerClass = TRAINER_CLASS_TUBER_F,
-#line 911
+#line 933
         .trainerPic = TRAINER_PIC_TUBER_F,
         .encounterMusic_gender =
-#line 912
+#line 934
 F_TRAINER_FEMALE | 
-#line 913
+#line 935
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 914
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 915
+#line 936
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 937
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 917
+#line 939
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 919
+#line 941
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 918
+#line 940
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 921
+#line 943
     [DIFFICULTY_NORMAL][TRAINER_GWEN] =
     {
-#line 922
+#line 944
         .trainerName = _("Gwen"),
-#line 923
+#line 945
         .trainerClass = TRAINER_CLASS_TUBER_F,
-#line 924
+#line 946
         .trainerPic = TRAINER_PIC_TUBER_F,
         .encounterMusic_gender =
-#line 925
+#line 947
 F_TRAINER_FEMALE | 
-#line 926
+#line 948
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 927
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 928
+#line 949
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 950
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 930
+#line 952
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 932
+#line 954
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 931
+#line 953
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 934
+#line 956
     [DIFFICULTY_NORMAL][TRAINER_ARCHIE_MT_PYRE] =
     {
-#line 935
+#line 957
         .trainerName = _("Archie"),
-#line 936
+#line 958
         .trainerClass = TRAINER_CLASS_AQUA_LEADER,
-#line 937
+#line 959
         .trainerPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
         .encounterMusic_gender =
-#line 940
+#line 962
             TRAINER_ENCOUNTER_MUSIC_AQUA,
-#line 941
+#line 963
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 942
+#line 964
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 938
+#line 960
         .mugshotColor = MUGSHOT_COLOR_RED,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 944
+#line 966
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 946
+#line 968
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 945
+#line 967
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 948
+#line 970
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 950
+#line 972
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 949
+#line 971
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 952
+#line 974
     [DIFFICULTY_NORMAL][TRAINER_MAXIE_MT_PYRE] =
     {
-#line 953
+#line 975
         .trainerName = _("Maxie"),
-#line 954
+#line 976
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
-#line 955
+#line 977
         .trainerPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
         .encounterMusic_gender =
-#line 958
+#line 980
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 959
+#line 981
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 960
+#line 982
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 956
+#line 978
         .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 962
+#line 984
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 964
+#line 986
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 963
+#line 985
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 966
+#line 988
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 968
+#line 990
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 967
+#line 989
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 970
+#line 992
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_ROUTE109_2] =
     {
-#line 971
+#line 993
         .trainerName = _("Grunt"),
-#line 972
+#line 994
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
-#line 973
+#line 995
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
         .encounterMusic_gender =
-#line 975
+#line 997
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 976
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 977
+#line 998
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 999
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 979
+#line 1001
             .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 981
+#line 1003
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 980
+#line 1002
             .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 982
+#line 1004
                 MOVE_SAND_ATTACK,
                 MOVE_HEADBUTT,
                 MOVE_TAIL_WHIP,
@@ -2473,114 +2529,114 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 987
+#line 1009
     [DIFFICULTY_NORMAL][TRAINER_SIMON] =
     {
-#line 988
+#line 1010
         .trainerName = _("Simon"),
-#line 989
+#line 1011
         .trainerClass = TRAINER_CLASS_TUBER_M,
-#line 990
+#line 1012
         .trainerPic = TRAINER_PIC_TUBER_M,
         .encounterMusic_gender =
-#line 992
+#line 1014
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 993
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 994
+#line 1015
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1016
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 996
+#line 1018
             .species = SPECIES_AZURILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 998
+#line 1020
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 997
+#line 1019
             .lvl = 12,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1000
+#line 1022
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1002
+#line 1024
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1001
+#line 1023
             .lvl = 12,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1004
+#line 1026
     [DIFFICULTY_NORMAL][TRAINER_CHARLIE] =
     {
-#line 1005
+#line 1027
         .trainerName = _("Charlie"),
-#line 1006
+#line 1028
         .trainerClass = TRAINER_CLASS_TUBER_M,
-#line 1007
+#line 1029
         .trainerPic = TRAINER_PIC_TUBER_M,
         .encounterMusic_gender =
-#line 1009
+#line 1031
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 1010
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1011
+#line 1032
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1033
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1013
+#line 1035
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1015
+#line 1037
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1014
+#line 1036
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1017
+#line 1039
     [DIFFICULTY_NORMAL][TRAINER_RANDALL] =
     {
-#line 1018
+#line 1040
         .trainerName = _("Randall"),
-#line 1019
+#line 1041
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1020
+#line 1042
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 1022
+#line 1044
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1023
+#line 1045
         .items = { ITEM_HYPER_POTION },
-#line 1024
+#line 1046
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1025
+#line 1047
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1027
+#line 1049
             .species = SPECIES_SWELLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1029
+#line 1051
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 1028
+#line 1050
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1030
+#line 1052
                 MOVE_QUICK_ATTACK,
                 MOVE_AGILITY,
                 MOVE_WING_ATTACK,
@@ -2588,39 +2644,39 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 1034
+#line 1056
     [DIFFICULTY_NORMAL][TRAINER_PARKER] =
     {
-#line 1035
+#line 1057
         .trainerName = _("Parker"),
-#line 1036
+#line 1058
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1037
+#line 1059
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 1039
+#line 1061
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1040
+#line 1062
         .items = { ITEM_HYPER_POTION },
-#line 1041
+#line 1063
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1042
+#line 1064
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1044
+#line 1066
             .species = SPECIES_SPINDA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1046
+#line 1068
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 1045
+#line 1067
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1047
+#line 1069
                 MOVE_TEETER_DANCE,
                 MOVE_DIZZY_PUNCH,
                 MOVE_FOCUS_PUNCH,
@@ -2628,41 +2684,41 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 1051
+#line 1073
     [DIFFICULTY_NORMAL][TRAINER_GEORGE] =
     {
-#line 1052
+#line 1074
         .trainerName = _("George"),
-#line 1053
+#line 1075
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1054
+#line 1076
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 1056
+#line 1078
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1057
+#line 1079
         .items = { ITEM_HYPER_POTION },
-#line 1058
+#line 1080
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1059
+#line 1081
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1061
+#line 1083
             .species = SPECIES_SLAKOTH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1061
+#line 1083
             .heldItem = ITEM_SITRUS_BERRY,
-#line 1063
+#line 1085
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 1062
+#line 1084
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1064
+#line 1086
                 MOVE_SLACK_OFF,
                 MOVE_COUNTER,
                 MOVE_SHADOW_BALL,
@@ -2670,78 +2726,78 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 1068
+#line 1090
     [DIFFICULTY_NORMAL][TRAINER_BERKE] =
     {
-#line 1069
+#line 1091
         .trainerName = _("Berke"),
-#line 1070
+#line 1092
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1071
+#line 1093
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 1073
+#line 1095
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1074
+#line 1096
         .items = { ITEM_HYPER_POTION },
-#line 1075
+#line 1097
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1076
+#line 1098
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1078
+#line 1100
             .species = SPECIES_VIGOROTH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1080
+#line 1102
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 1079
+#line 1101
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1081
+#line 1103
                 MOVE_FOCUS_ENERGY,
                 MOVE_SLASH,
             },
             },
         },
     },
-#line 1084
+#line 1106
     [DIFFICULTY_NORMAL][TRAINER_BRAXTON] =
     {
-#line 1085
+#line 1107
         .trainerName = _("Braxton"),
-#line 1086
+#line 1108
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1087
+#line 1109
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 1089
+#line 1111
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1090
+#line 1112
         .items = { ITEM_HYPER_POTION },
-#line 1091
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1092
+#line 1113
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1114
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1094
+#line 1116
             .species = SPECIES_SWELLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1096
+#line 1118
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1095
+#line 1117
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1097
+#line 1119
                 MOVE_FOCUS_ENERGY,
                 MOVE_QUICK_ATTACK,
                 MOVE_WING_ATTACK,
@@ -2749,17 +2805,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 1102
+#line 1124
             .species = SPECIES_TRAPINCH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1104
+#line 1126
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1103
+#line 1125
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1105
+#line 1127
                 MOVE_BITE,
                 MOVE_DIG,
                 MOVE_FEINT_ATTACK,
@@ -2767,17 +2823,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 1110
+#line 1132
             .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1112
+#line 1134
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1111
+#line 1133
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1113
+#line 1135
                 MOVE_ROLLOUT,
                 MOVE_WHIRLPOOL,
                 MOVE_ASTONISH,
@@ -2785,17 +2841,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 1118
+#line 1140
             .species = SPECIES_MAGNETON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1120
+#line 1142
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1119
+#line 1141
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1121
+#line 1143
                 MOVE_THUNDERBOLT,
                 MOVE_SUPERSONIC,
                 MOVE_THUNDER_WAVE,
@@ -2803,17 +2859,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 1126
+#line 1148
             .species = SPECIES_SHIFTRY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1128
+#line 1150
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1127
+#line 1149
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1129
+#line 1151
                 MOVE_GIGA_DRAIN,
                 MOVE_FEINT_ATTACK,
                 MOVE_DOUBLE_TEAM,
@@ -2822,67 +2878,11 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 1134
+#line 1156
     [DIFFICULTY_NORMAL][TRAINER_VINCENT] =
     {
-#line 1135
-        .trainerName = _("Vincent"),
-#line 1136
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1137
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
-        .encounterMusic_gender =
-#line 1139
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1140
-        .items = { ITEM_FULL_RESTORE },
-#line 1141
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1142
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 1144
-            .species = SPECIES_SABLEYE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1146
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1145
-            .lvl = 44,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 1148
-            .species = SPECIES_MEDICHAM,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1150
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1149
-            .lvl = 44,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 1152
-            .species = SPECIES_SHARPEDO,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1154
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1153
-            .lvl = 44,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 1156
-    [DIFFICULTY_NORMAL][TRAINER_LEROY] =
-    {
 #line 1157
-        .trainerName = _("Leroy"),
+        .trainerName = _("Vincent"),
 #line 1158
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 1159
@@ -2893,97 +2893,97 @@ F_TRAINER_FEMALE |
 #line 1162
         .items = { ITEM_FULL_RESTORE },
 #line 1163
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 1164
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 1166
-            .species = SPECIES_MAWILE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1168
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1167
-            .lvl = 46,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 1170
-            .species = SPECIES_STARMIE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1172
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1171
-            .lvl = 46,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 1174
-    [DIFFICULTY_NORMAL][TRAINER_WILTON_1] =
-    {
-#line 1175
-        .trainerName = _("Wilton"),
-#line 1176
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1177
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
-        .encounterMusic_gender =
-#line 1179
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1180
-        .items = { ITEM_SUPER_POTION },
-#line 1181
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1182
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1184
-            .species = SPECIES_ELECTRIKE,
+#line 1166
+            .species = SPECIES_SABLEYE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1186
+#line 1168
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1185
-            .lvl = 17,
+#line 1167
+            .lvl = 44,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
+#line 1170
+            .species = SPECIES_MEDICHAM,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1172
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 1171
+            .lvl = 44,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 1174
+            .species = SPECIES_SHARPEDO,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1176
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 1175
+            .lvl = 44,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 1178
+    [DIFFICULTY_NORMAL][TRAINER_LEROY] =
+    {
+#line 1179
+        .trainerName = _("Leroy"),
+#line 1180
+        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+#line 1181
+        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .encounterMusic_gender =
+#line 1183
+            TRAINER_ENCOUNTER_MUSIC_COOL,
+#line 1184
+        .items = { ITEM_FULL_RESTORE },
+#line 1185
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1186
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
 #line 1188
-            .species = SPECIES_WAILMER,
+            .species = SPECIES_MAWILE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1190
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 1189
-            .lvl = 17,
+            .lvl = 46,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
 #line 1192
-            .species = SPECIES_MAKUHITA,
+            .species = SPECIES_STARMIE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1194
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 1193
-            .lvl = 17,
+            .lvl = 46,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 1196
-    [DIFFICULTY_NORMAL][TRAINER_EDGAR] =
+    [DIFFICULTY_NORMAL][TRAINER_WILTON_1] =
     {
 #line 1197
-        .trainerName = _("Edgar"),
+        .trainerName = _("Wilton"),
 #line 1198
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 1199
@@ -2992,73 +2992,73 @@ F_TRAINER_FEMALE |
 #line 1201
             TRAINER_ENCOUNTER_MUSIC_COOL,
 #line 1202
-        .items = { ITEM_FULL_RESTORE },
+        .items = { ITEM_SUPER_POTION },
 #line 1203
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 1204
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
 #line 1206
-            .species = SPECIES_CACTURNE,
+            .species = SPECIES_ELECTRIKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1208
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 1207
-            .lvl = 43,
+            .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
 #line 1210
-            .species = SPECIES_PELIPPER,
+            .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1212
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 1211
-            .lvl = 43,
+            .lvl = 17,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 1214
+            .species = SPECIES_MAKUHITA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1216
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 1215
+            .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1214
-    [DIFFICULTY_NORMAL][TRAINER_ALBERT] =
+#line 1218
+    [DIFFICULTY_NORMAL][TRAINER_EDGAR] =
     {
-#line 1215
-        .trainerName = _("Albert"),
-#line 1216
+#line 1219
+        .trainerName = _("Edgar"),
+#line 1220
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1217
+#line 1221
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 1219
+#line 1223
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1220
+#line 1224
         .items = { ITEM_FULL_RESTORE },
-#line 1221
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1222
+#line 1225
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1226
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1224
-            .species = SPECIES_MAGNETON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1226
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1225
-            .lvl = 43,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
 #line 1228
-            .species = SPECIES_MUK,
+            .species = SPECIES_CACTURNE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1230
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
@@ -3067,310 +3067,364 @@ F_TRAINER_FEMALE |
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
-        },
-    },
-#line 1232
-    [DIFFICULTY_NORMAL][TRAINER_SAMUEL] =
-    {
-#line 1233
-        .trainerName = _("Samuel"),
-#line 1234
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1235
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
-        .encounterMusic_gender =
-#line 1237
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1238
-        .items = { ITEM_FULL_RESTORE },
-#line 1239
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1240
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
-        .party = (const struct TrainerMon[])
-        {
             {
-#line 1242
-            .species = SPECIES_SWELLOW,
+#line 1232
+            .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1244
+#line 1234
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1243
-            .lvl = 42,
+#line 1233
+            .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
+        },
+    },
+#line 1236
+    [DIFFICULTY_NORMAL][TRAINER_ALBERT] =
+    {
+#line 1237
+        .trainerName = _("Albert"),
+#line 1238
+        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+#line 1239
+        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .encounterMusic_gender =
+#line 1241
+            TRAINER_ENCOUNTER_MUSIC_COOL,
+#line 1242
+        .items = { ITEM_FULL_RESTORE },
+#line 1243
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1244
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
             {
 #line 1246
-            .species = SPECIES_MAWILE,
+            .species = SPECIES_MAGNETON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1248
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 1247
-            .lvl = 42,
+            .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
 #line 1250
-            .species = SPECIES_KADABRA,
+            .species = SPECIES_MUK,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1252
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 1251
-            .lvl = 42,
+            .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 1254
-    [DIFFICULTY_NORMAL][TRAINER_VITO] =
+    [DIFFICULTY_NORMAL][TRAINER_SAMUEL] =
     {
 #line 1255
-        .trainerName = _("Vito"),
+        .trainerName = _("Samuel"),
 #line 1256
-        .trainerClass = TRAINER_CLASS_WINSTRATE,
+        .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 1257
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
+#line 1259
+            TRAINER_ENCOUNTER_MUSIC_COOL,
 #line 1260
-            TRAINER_ENCOUNTER_MUSIC_COOL,
+        .items = { ITEM_FULL_RESTORE },
 #line 1261
-        .items = { ITEM_FULL_RESTORE },
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 1262
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1263
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 1258
-        .mugshotColor = MUGSHOT_COLOR_BLUE,
-        .partySize = 4,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 1265
-            .species = SPECIES_DODRIO,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1267
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1266
-            .lvl = 42,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 1269
-            .species = SPECIES_KADABRA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1271
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1270
-            .lvl = 42,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 1273
-            .species = SPECIES_ELECTRODE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1275
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1274
-            .lvl = 42,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 1277
-            .species = SPECIES_SHIFTRY,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1279
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1278
-            .lvl = 42,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 1281
-    [DIFFICULTY_NORMAL][TRAINER_OWEN] =
-    {
-#line 1282
-        .trainerName = _("Owen"),
-#line 1283
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1284
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
-        .encounterMusic_gender =
-#line 1286
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1287
-        .items = { ITEM_FULL_RESTORE },
-#line 1288
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1289
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1291
-            .species = SPECIES_KECLEON,
+#line 1264
+            .species = SPECIES_SWELLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1293
+#line 1266
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1292
+#line 1265
             .lvl = 42,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1295
-            .species = SPECIES_GRAVELER,
+#line 1268
+            .species = SPECIES_MAWILE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1297
+#line 1270
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1296
+#line 1269
             .lvl = 42,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1299
-            .species = SPECIES_WAILORD,
+#line 1272
+            .species = SPECIES_KADABRA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1301
+#line 1274
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1300
+#line 1273
             .lvl = 42,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1303
-    [DIFFICULTY_NORMAL][TRAINER_WARREN] =
+#line 1276
+    [DIFFICULTY_NORMAL][TRAINER_VITO] =
     {
-#line 1304
-        .trainerName = _("Warren"),
-#line 1305
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1306
+#line 1277
+        .trainerName = _("Vito"),
+#line 1278
+        .trainerClass = TRAINER_CLASS_WINSTRATE,
+#line 1279
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 1308
+#line 1282
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1309
-        .items = { ITEM_FULL_RESTORE },
-#line 1310
+#line 1283
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1311
+#line 1284
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+#line 1280
+        .mugshotColor = MUGSHOT_COLOR_BLUE,
+        .partySize = 4,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 1286
+            .species = SPECIES_DODRIO,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1288
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 1287
+            .lvl = 42,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 1290
+            .species = SPECIES_KADABRA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1292
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 1291
+            .lvl = 42,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 1294
+            .species = SPECIES_ELECTRODE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1296
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 1295
+            .lvl = 42,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 1298
+            .species = SPECIES_SHIFTRY,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1300
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 1299
+            .lvl = 42,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 1302
+    [DIFFICULTY_NORMAL][TRAINER_OWEN] =
+    {
+#line 1303
+        .trainerName = _("Owen"),
+#line 1304
+        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+#line 1305
+        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .encounterMusic_gender =
+#line 1307
+            TRAINER_ENCOUNTER_MUSIC_COOL,
+#line 1308
+        .items = { ITEM_FULL_RESTORE },
+#line 1309
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1310
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 3,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 1312
+            .species = SPECIES_KECLEON,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1314
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 1313
+            .lvl = 42,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 1316
+            .species = SPECIES_GRAVELER,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1318
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 1317
+            .lvl = 42,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 1320
+            .species = SPECIES_WAILORD,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1322
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 1321
+            .lvl = 42,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 1324
+    [DIFFICULTY_NORMAL][TRAINER_WARREN] =
+    {
+#line 1325
+        .trainerName = _("Warren"),
+#line 1326
+        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+#line 1327
+        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .encounterMusic_gender =
+#line 1329
+            TRAINER_ENCOUNTER_MUSIC_COOL,
+#line 1330
+        .items = { ITEM_FULL_RESTORE },
+#line 1331
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1332
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1313
+#line 1334
             .species = SPECIES_GRAVELER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1315
+#line 1336
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1314
+#line 1335
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1317
+#line 1338
             .species = SPECIES_LUDICOLO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1319
+#line 1340
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1318
+#line 1339
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1321
+#line 1342
     [DIFFICULTY_NORMAL][TRAINER_MARY] =
     {
-#line 1322
+#line 1343
         .trainerName = _("Mary"),
-#line 1323
+#line 1344
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1324
+#line 1345
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 1325
+#line 1346
 F_TRAINER_FEMALE | 
-#line 1326
+#line 1347
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1327
+#line 1348
         .items = { ITEM_HYPER_POTION },
-#line 1328
+#line 1349
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1329
+#line 1350
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1331
+#line 1352
             .species = SPECIES_DELCATTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1333
+#line 1354
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 1332
+#line 1353
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1334
+#line 1355
                 MOVE_FEINT_ATTACK,
                 MOVE_SHOCK_WAVE,
             },
             },
         },
     },
-#line 1337
+#line 1358
     [DIFFICULTY_NORMAL][TRAINER_ALEXIA] =
     {
-#line 1338
+#line 1359
         .trainerName = _("Alexia"),
-#line 1339
+#line 1360
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1340
+#line 1361
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 1341
+#line 1362
 F_TRAINER_FEMALE | 
-#line 1342
+#line 1363
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1343
+#line 1364
         .items = { ITEM_HYPER_POTION },
-#line 1344
+#line 1365
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1345
+#line 1366
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1347
+#line 1368
             .species = SPECIES_WIGGLYTUFF,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1349
+#line 1370
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 1348
+#line 1369
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1350
+#line 1371
                 MOVE_DEFENSE_CURL,
                 MOVE_DOUBLE_EDGE,
                 MOVE_SHADOW_BALL,
@@ -3378,82 +3432,82 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 1354
+#line 1375
     [DIFFICULTY_NORMAL][TRAINER_JODY] =
     {
-#line 1355
+#line 1376
         .trainerName = _("Jody"),
-#line 1356
+#line 1377
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1357
+#line 1378
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 1358
+#line 1379
 F_TRAINER_FEMALE | 
-#line 1359
+#line 1380
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1360
+#line 1381
         .items = { ITEM_HYPER_POTION },
-#line 1361
+#line 1382
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1362
+#line 1383
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1364
+#line 1385
             .species = SPECIES_ZANGOOSE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1366
+#line 1387
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 1365
+#line 1386
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1367
+#line 1388
                 MOVE_SWORDS_DANCE,
                 MOVE_SLASH,
             },
             },
         },
     },
-#line 1370
+#line 1391
     [DIFFICULTY_NORMAL][TRAINER_WENDY] =
     {
-#line 1371
+#line 1392
         .trainerName = _("Wendy"),
-#line 1372
+#line 1393
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1373
+#line 1394
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 1374
+#line 1395
 F_TRAINER_FEMALE | 
-#line 1375
+#line 1396
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1376
+#line 1397
         .items = { ITEM_FULL_RESTORE },
-#line 1377
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1378
+#line 1398
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1399
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1380
+#line 1401
             .species = SPECIES_MAWILE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1382
+#line 1403
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1381
+#line 1402
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1383
+#line 1404
                 MOVE_BATON_PASS,
                 MOVE_FEINT_ATTACK,
                 MOVE_FAKE_TEARS,
@@ -3461,17 +3515,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 1388
+#line 1409
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1390
+#line 1411
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1389
+#line 1410
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1391
+#line 1412
                 MOVE_MEGA_DRAIN,
                 MOVE_MAGICAL_LEAF,
                 MOVE_GRASS_WHISTLE,
@@ -3479,17 +3533,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 1396
+#line 1417
             .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1398
+#line 1419
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1397
+#line 1418
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1399
+#line 1420
                 MOVE_FLY,
                 MOVE_WATER_GUN,
                 MOVE_MIST,
@@ -3498,699 +3552,643 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 1404
+#line 1425
     [DIFFICULTY_NORMAL][TRAINER_KEIRA] =
     {
-#line 1405
+#line 1426
         .trainerName = _("Keira"),
-#line 1406
+#line 1427
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1407
+#line 1428
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 1408
+#line 1429
 F_TRAINER_FEMALE | 
-#line 1409
+#line 1430
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1410
+#line 1431
         .items = { ITEM_FULL_RESTORE },
-#line 1411
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1412
+#line 1432
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1433
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1414
+#line 1435
             .species = SPECIES_LAIRON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1416
+#line 1437
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1415
+#line 1436
             .lvl = 45,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1418
+#line 1439
             .species = SPECIES_MANECTRIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1420
+#line 1441
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1419
+#line 1440
             .lvl = 45,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1422
+#line 1443
     [DIFFICULTY_NORMAL][TRAINER_BROOKE_1] =
     {
-#line 1423
+#line 1444
         .trainerName = _("Brooke"),
-#line 1424
+#line 1445
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1425
+#line 1446
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 1426
+#line 1447
 F_TRAINER_FEMALE | 
-#line 1427
+#line 1448
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1428
+#line 1449
         .items = { ITEM_SUPER_POTION },
-#line 1429
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1430
+#line 1450
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1451
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1432
+#line 1453
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1434
+#line 1455
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1433
+#line 1454
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1436
+#line 1457
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1438
+#line 1459
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1437
+#line 1458
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1440
+#line 1461
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1442
+#line 1463
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1441
+#line 1462
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1444
+#line 1465
     [DIFFICULTY_NORMAL][TRAINER_JENNIFER] =
     {
-#line 1445
+#line 1466
         .trainerName = _("Jennifer"),
-#line 1446
+#line 1467
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1447
+#line 1468
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 1448
+#line 1469
 F_TRAINER_FEMALE | 
-#line 1449
+#line 1470
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1450
+#line 1471
         .items = { ITEM_FULL_RESTORE },
-#line 1451
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1452
+#line 1472
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1473
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1454
+#line 1475
             .species = SPECIES_SABLEYE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1456
+#line 1477
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 1455
+#line 1476
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1458
+#line 1479
     [DIFFICULTY_NORMAL][TRAINER_HOPE] =
     {
-#line 1459
+#line 1480
         .trainerName = _("Hope"),
-#line 1460
+#line 1481
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1461
+#line 1482
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 1462
+#line 1483
 F_TRAINER_FEMALE | 
-#line 1463
+#line 1484
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1464
+#line 1485
         .items = { ITEM_FULL_RESTORE },
-#line 1465
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1466
+#line 1486
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1487
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1468
+#line 1489
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1470
+#line 1491
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1469
+#line 1490
             .lvl = 45,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1472
+#line 1493
     [DIFFICULTY_NORMAL][TRAINER_SHANNON] =
     {
-#line 1473
+#line 1494
         .trainerName = _("Shannon"),
-#line 1474
+#line 1495
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1475
+#line 1496
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 1476
+#line 1497
 F_TRAINER_FEMALE | 
-#line 1477
+#line 1498
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1478
+#line 1499
         .items = { ITEM_FULL_RESTORE },
-#line 1479
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1480
+#line 1500
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1501
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1482
+#line 1503
             .species = SPECIES_CLAYDOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1484
+#line 1505
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1483
+#line 1504
             .lvl = 45,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1486
+#line 1507
     [DIFFICULTY_NORMAL][TRAINER_MICHELLE] =
     {
-#line 1487
+#line 1508
         .trainerName = _("Michelle"),
-#line 1488
+#line 1509
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1489
+#line 1510
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 1490
+#line 1511
 F_TRAINER_FEMALE | 
-#line 1491
+#line 1512
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1492
+#line 1513
         .items = { ITEM_FULL_RESTORE },
-#line 1493
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1494
+#line 1514
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1515
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1496
+#line 1517
             .species = SPECIES_TORKOAL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1498
+#line 1519
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1497
+#line 1518
             .lvl = 42,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1500
+#line 1521
             .species = SPECIES_MEDICHAM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1502
+#line 1523
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1501
+#line 1522
             .lvl = 42,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1504
+#line 1525
             .species = SPECIES_LUDICOLO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1506
+#line 1527
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1505
+#line 1526
             .lvl = 42,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1508
+#line 1529
     [DIFFICULTY_NORMAL][TRAINER_CAROLINE] =
     {
-#line 1509
+#line 1530
         .trainerName = _("Caroline"),
-#line 1510
+#line 1531
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1511
+#line 1532
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 1512
+#line 1533
 F_TRAINER_FEMALE | 
-#line 1513
+#line 1534
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1514
+#line 1535
         .items = { ITEM_FULL_RESTORE },
-#line 1515
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1516
+#line 1536
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1537
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1518
+#line 1539
             .species = SPECIES_SKARMORY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1520
+#line 1541
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1519
+#line 1540
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1522
+#line 1543
             .species = SPECIES_SABLEYE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1524
+#line 1545
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1523
+#line 1544
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1526
+#line 1547
     [DIFFICULTY_NORMAL][TRAINER_JULIE] =
     {
-#line 1527
+#line 1548
         .trainerName = _("Julie"),
-#line 1528
+#line 1549
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 1529
+#line 1550
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 1530
-F_TRAINER_FEMALE | 
-#line 1531
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 1532
-        .items = { ITEM_FULL_RESTORE },
-#line 1533
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1534
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 1536
-            .species = SPECIES_SANDSLASH,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1538
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1537
-            .lvl = 42,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 1540
-            .species = SPECIES_NINETALES,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1542
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1541
-            .lvl = 42,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 1544
-            .species = SPECIES_TROPIUS,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1546
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1545
-            .lvl = 42,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 1548
-    [DIFFICULTY_NORMAL][TRAINER_PATRICIA] =
-    {
-#line 1549
-        .trainerName = _("Patricia"),
-#line 1550
-        .trainerClass = TRAINER_CLASS_HEX_MANIAC,
 #line 1551
-        .trainerPic = TRAINER_PIC_HEX_MANIAC,
-        .encounterMusic_gender =
-#line 1552
 F_TRAINER_FEMALE | 
+#line 1552
+            TRAINER_ENCOUNTER_MUSIC_COOL,
 #line 1553
-            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+        .items = { ITEM_FULL_RESTORE },
 #line 1554
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 1555
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
 #line 1557
-            .species = SPECIES_BANETTE,
+            .species = SPECIES_SANDSLASH,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1559
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 1558
-            .lvl = 41,
+            .lvl = 42,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
 #line 1561
-            .species = SPECIES_LUNATONE,
+            .species = SPECIES_NINETALES,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1563
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 1562
+            .lvl = 42,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 1565
+            .species = SPECIES_TROPIUS,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1567
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 1566
+            .lvl = 42,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 1569
+    [DIFFICULTY_NORMAL][TRAINER_PATRICIA] =
+    {
+#line 1570
+        .trainerName = _("Patricia"),
+#line 1571
+        .trainerClass = TRAINER_CLASS_HEX_MANIAC,
+#line 1572
+        .trainerPic = TRAINER_PIC_HEX_MANIAC,
+        .encounterMusic_gender =
+#line 1573
+F_TRAINER_FEMALE | 
+#line 1574
+            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+#line 1575
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1576
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 1578
+            .species = SPECIES_BANETTE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1580
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 1579
+            .lvl = 41,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 1582
+            .species = SPECIES_LUNATONE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1584
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 1583
             .lvl = 41,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1565
+#line 1586
     [DIFFICULTY_NORMAL][TRAINER_KINDRA] =
     {
-#line 1566
-        .trainerName = _("Kindra"),
-#line 1567
-        .trainerClass = TRAINER_CLASS_HEX_MANIAC,
-#line 1568
-        .trainerPic = TRAINER_PIC_HEX_MANIAC,
-        .encounterMusic_gender =
-#line 1569
-F_TRAINER_FEMALE | 
-#line 1570
-            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 1571
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1572
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 1574
-            .species = SPECIES_DUSKULL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1576
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1575
-            .lvl = 30,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 1578
-            .species = SPECIES_SHUPPET,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1580
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1579
-            .lvl = 30,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 1582
-    [DIFFICULTY_NORMAL][TRAINER_TAMMY] =
-    {
-#line 1583
-        .trainerName = _("Tammy"),
-#line 1584
-        .trainerClass = TRAINER_CLASS_HEX_MANIAC,
-#line 1585
-        .trainerPic = TRAINER_PIC_HEX_MANIAC,
-        .encounterMusic_gender =
-#line 1586
-F_TRAINER_FEMALE | 
 #line 1587
-            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+        .trainerName = _("Kindra"),
 #line 1588
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .trainerClass = TRAINER_CLASS_HEX_MANIAC,
 #line 1589
+        .trainerPic = TRAINER_PIC_HEX_MANIAC,
+        .encounterMusic_gender =
+#line 1590
+F_TRAINER_FEMALE | 
+#line 1591
+            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+#line 1592
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1593
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
-            {
-#line 1591
-            .species = SPECIES_DUSKULL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1593
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1592
-            .lvl = 29,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
             {
 #line 1595
-            .species = SPECIES_SHUPPET,
+            .species = SPECIES_DUSKULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1597
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 1596
+            .lvl = 30,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 1599
+            .species = SPECIES_SHUPPET,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1601
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 1600
+            .lvl = 30,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 1603
+    [DIFFICULTY_NORMAL][TRAINER_TAMMY] =
+    {
+#line 1604
+        .trainerName = _("Tammy"),
+#line 1605
+        .trainerClass = TRAINER_CLASS_HEX_MANIAC,
+#line 1606
+        .trainerPic = TRAINER_PIC_HEX_MANIAC,
+        .encounterMusic_gender =
+#line 1607
+F_TRAINER_FEMALE | 
+#line 1608
+            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+#line 1609
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1610
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 1612
+            .species = SPECIES_DUSKULL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1614
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 1613
+            .lvl = 29,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 1616
+            .species = SPECIES_SHUPPET,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1618
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 1617
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1599
+#line 1620
     [DIFFICULTY_NORMAL][TRAINER_PYRE_AQUAGRUNT3] =
     {
-#line 1600
+#line 1621
         .trainerName = _("Grunt"),
-#line 1601
+#line 1622
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
-#line 1602
+#line 1623
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
         .encounterMusic_gender =
-#line 1603
+#line 1624
 F_TRAINER_FEMALE | 
-#line 1604
+#line 1625
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 1605
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1606
+#line 1626
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1627
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1608
+#line 1629
             .species = SPECIES_SABLEYE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1610
+#line 1631
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1609
+#line 1630
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1612
+#line 1633
     [DIFFICULTY_NORMAL][TRAINER_PYRE_AQUAGRUNT4] =
     {
-#line 1613
+#line 1634
         .trainerName = _("Grunt"),
-#line 1614
+#line 1635
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
-#line 1615
+#line 1636
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
         .encounterMusic_gender =
-#line 1616
+#line 1637
 F_TRAINER_FEMALE | 
-#line 1617
+#line 1638
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 1618
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1619
+#line 1639
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1640
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1621
+#line 1642
             .species = SPECIES_SABLEYE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1623
+#line 1644
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1622
+#line 1643
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1625
+#line 1646
     [DIFFICULTY_NORMAL][TRAINER_TASHA] =
     {
-#line 1626
+#line 1647
         .trainerName = _("Tasha"),
-#line 1627
+#line 1648
         .trainerClass = TRAINER_CLASS_HEX_MANIAC,
-#line 1628
+#line 1649
         .trainerPic = TRAINER_PIC_HEX_MANIAC,
         .encounterMusic_gender =
-#line 1629
+#line 1650
 F_TRAINER_FEMALE | 
-#line 1630
+#line 1651
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 1631
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1632
+#line 1652
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1653
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1634
+#line 1655
             .species = SPECIES_SHUPPET,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1636
+#line 1657
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 1635
+#line 1656
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1638
+#line 1659
     [DIFFICULTY_NORMAL][TRAINER_PYRE_MAGMAGRUNT5] =
     {
-#line 1639
+#line 1660
         .trainerName = _("Grunt"),
-#line 1640
+#line 1661
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 1641
+#line 1662
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 1642
+#line 1663
 F_TRAINER_FEMALE | 
-#line 1643
-            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 1644
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1645
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 1647
-            .species = SPECIES_SABLEYE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1649
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 1648
-            .lvl = 31,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 1651
-            .species = SPECIES_SPOINK,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1653
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 1652
-            .lvl = 31,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 1655
-    [DIFFICULTY_NORMAL][TRAINER_PYRE_MAGMAGRUNT6] =
-    {
-#line 1656
-        .trainerName = _("Grunt"),
-#line 1657
-        .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
-#line 1658
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
-        .encounterMusic_gender =
-#line 1659
-F_TRAINER_FEMALE | 
-#line 1660
-            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 1661
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1662
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
 #line 1664
-            .species = SPECIES_SABLEYE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1666
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
 #line 1665
-            .lvl = 31,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1666
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
             {
 #line 1668
-            .species = SPECIES_SPOINK,
+            .species = SPECIES_SABLEYE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1670
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
@@ -4199,83 +4197,139 @@ F_TRAINER_FEMALE |
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
+            {
+#line 1672
+            .species = SPECIES_SPOINK,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1674
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 1673
+            .lvl = 31,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
         },
     },
-#line 1672
+#line 1676
+    [DIFFICULTY_NORMAL][TRAINER_PYRE_MAGMAGRUNT6] =
+    {
+#line 1677
+        .trainerName = _("Grunt"),
+#line 1678
+        .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
+#line 1679
+        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .encounterMusic_gender =
+#line 1680
+F_TRAINER_FEMALE | 
+#line 1681
+            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+#line 1682
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1683
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 1685
+            .species = SPECIES_SABLEYE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1687
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 1686
+            .lvl = 31,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 1689
+            .species = SPECIES_SPOINK,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 1691
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 1690
+            .lvl = 31,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 1693
     [DIFFICULTY_NORMAL][TRAINER_CINDY_1] =
     {
-#line 1673
+#line 1694
         .trainerName = _("Cindy"),
-#line 1674
+#line 1695
         .trainerClass = TRAINER_CLASS_LADY,
-#line 1675
+#line 1696
         .trainerPic = TRAINER_PIC_LADY,
         .encounterMusic_gender =
-#line 1676
+#line 1697
 F_TRAINER_FEMALE | 
-#line 1677
+#line 1698
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 1678
+#line 1699
         .items = { ITEM_FULL_RESTORE },
-#line 1679
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1680
+#line 1700
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1701
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1682
+#line 1703
             .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1682
+#line 1703
             .heldItem = ITEM_NUGGET,
-#line 1684
+#line 1705
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1683
+#line 1704
             .lvl = 7,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1686
+#line 1707
     [DIFFICULTY_NORMAL][TRAINER_DAPHNE] =
     {
-#line 1687
+#line 1708
         .trainerName = _("Daphne"),
-#line 1688
+#line 1709
         .trainerClass = TRAINER_CLASS_LADY,
-#line 1689
+#line 1710
         .trainerPic = TRAINER_PIC_LADY,
         .encounterMusic_gender =
-#line 1690
+#line 1711
 F_TRAINER_FEMALE | 
-#line 1691
+#line 1712
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 1692
+#line 1713
         .items = { ITEM_FULL_RESTORE },
-#line 1693
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1694
+#line 1714
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1715
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1696
+#line 1717
             .species = SPECIES_LUVDISC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1696
+#line 1717
             .heldItem = ITEM_NUGGET,
-#line 1698
+#line 1719
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1697
+#line 1718
             .lvl = 39,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1699
+#line 1720
                 MOVE_ATTRACT,
                 MOVE_SWEET_KISS,
                 MOVE_FLAIL,
@@ -4283,19 +4337,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 1704
+#line 1725
             .species = SPECIES_LUVDISC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1704
+#line 1725
             .heldItem = ITEM_NUGGET,
-#line 1706
+#line 1727
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1705
+#line 1726
             .lvl = 39,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1707
+#line 1728
                 MOVE_ATTRACT,
                 MOVE_SAFEGUARD,
                 MOVE_TAKE_DOWN,
@@ -4304,271 +4358,271 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 1712
+#line 1733
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_SPACE_CENTER_2] =
     {
-#line 1713
+#line 1734
         .trainerName = _("Grunt"),
-#line 1714
+#line 1735
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 1715
+#line 1736
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 1717
+#line 1738
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 1718
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1719
+#line 1739
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1740
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1721
+#line 1742
             .species = SPECIES_MIGHTYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1723
+#line 1744
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1722
+#line 1743
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1725
+#line 1746
             .species = SPECIES_MIGHTYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1727
+#line 1748
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1726
+#line 1747
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1729
+#line 1750
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1731
+#line 1752
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1730
+#line 1751
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1733
+#line 1754
     [DIFFICULTY_NORMAL][TRAINER_BRIANNA] =
     {
-#line 1734
+#line 1755
         .trainerName = _("Brianna"),
-#line 1735
+#line 1756
         .trainerClass = TRAINER_CLASS_LADY,
-#line 1736
+#line 1757
         .trainerPic = TRAINER_PIC_LADY,
         .encounterMusic_gender =
-#line 1737
+#line 1758
 F_TRAINER_FEMALE | 
-#line 1738
+#line 1759
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 1739
+#line 1760
         .items = { ITEM_FULL_RESTORE },
-#line 1740
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1741
+#line 1761
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1762
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1743
+#line 1764
             .species = SPECIES_SEAKING,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1743
+#line 1764
             .heldItem = ITEM_NUGGET,
-#line 1745
+#line 1766
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 1744
+#line 1765
             .lvl = 40,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1747
+#line 1768
     [DIFFICULTY_NORMAL][TRAINER_NAOMI] =
     {
-#line 1748
+#line 1769
         .trainerName = _("Naomi"),
-#line 1749
+#line 1770
         .trainerClass = TRAINER_CLASS_LADY,
-#line 1750
+#line 1771
         .trainerPic = TRAINER_PIC_LADY,
         .encounterMusic_gender =
-#line 1751
+#line 1772
 F_TRAINER_FEMALE | 
-#line 1752
+#line 1773
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 1753
+#line 1774
         .items = { ITEM_FULL_RESTORE },
-#line 1754
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1755
+#line 1775
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1776
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1757
+#line 1778
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1757
+#line 1778
             .heldItem = ITEM_NUGGET,
-#line 1759
+#line 1780
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1758
+#line 1779
             .lvl = 45,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1761
+#line 1782
     [DIFFICULTY_NORMAL][TRAINER_MELISSA] =
     {
-#line 1762
+#line 1783
         .trainerName = _("Melissa"),
-#line 1763
+#line 1784
         .trainerClass = TRAINER_CLASS_BEAUTY,
-#line 1764
+#line 1785
         .trainerPic = TRAINER_PIC_BEAUTY,
         .encounterMusic_gender =
-#line 1765
+#line 1786
 F_TRAINER_FEMALE | 
-#line 1766
+#line 1787
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 1767
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1768
+#line 1788
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1789
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1770
+#line 1791
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1772
+#line 1793
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1771
+#line 1792
             .lvl = 21,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1774
+#line 1795
     [DIFFICULTY_NORMAL][TRAINER_SHEILA] =
     {
-#line 1775
+#line 1796
         .trainerName = _("Sheila"),
-#line 1776
+#line 1797
         .trainerClass = TRAINER_CLASS_BEAUTY,
-#line 1777
+#line 1798
         .trainerPic = TRAINER_PIC_BEAUTY,
         .encounterMusic_gender =
-#line 1778
+#line 1799
 F_TRAINER_FEMALE | 
-#line 1779
+#line 1800
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 1780
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1781
+#line 1801
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1802
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1783
+#line 1804
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1785
+#line 1806
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1784
+#line 1805
             .lvl = 21,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1787
+#line 1808
     [DIFFICULTY_NORMAL][TRAINER_SHIRLEY] =
     {
-#line 1788
+#line 1809
         .trainerName = _("Shirley"),
-#line 1789
+#line 1810
         .trainerClass = TRAINER_CLASS_BEAUTY,
-#line 1790
+#line 1811
         .trainerPic = TRAINER_PIC_BEAUTY,
         .encounterMusic_gender =
-#line 1791
+#line 1812
 F_TRAINER_FEMALE | 
-#line 1792
+#line 1813
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 1793
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1794
+#line 1814
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1815
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1796
+#line 1817
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1798
+#line 1819
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1797
+#line 1818
             .lvl = 21,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1800
+#line 1821
     [DIFFICULTY_NORMAL][TRAINER_JESSICA_1] =
     {
-#line 1801
+#line 1822
         .trainerName = _("Jessica"),
-#line 1802
+#line 1823
         .trainerClass = TRAINER_CLASS_BEAUTY,
-#line 1803
+#line 1824
         .trainerPic = TRAINER_PIC_BEAUTY,
         .encounterMusic_gender =
-#line 1804
+#line 1825
 F_TRAINER_FEMALE | 
-#line 1805
+#line 1826
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 1806
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1807
+#line 1827
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1828
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1809
+#line 1830
             .species = SPECIES_KECLEON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1811
+#line 1832
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1810
+#line 1831
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1812
+#line 1833
                 MOVE_BIND,
                 MOVE_LICK,
                 MOVE_FURY_SWIPES,
@@ -4576,17 +4630,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 1817
+#line 1838
             .species = SPECIES_SEVIPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1819
+#line 1840
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1818
+#line 1839
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1820
+#line 1841
                 MOVE_POISON_TAIL,
                 MOVE_SCREECH,
                 MOVE_GLARE,
@@ -4595,107 +4649,107 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 1825
+#line 1846
     [DIFFICULTY_NORMAL][TRAINER_CONNIE] =
     {
-#line 1826
+#line 1847
         .trainerName = _("Connie"),
-#line 1827
+#line 1848
         .trainerClass = TRAINER_CLASS_BEAUTY,
-#line 1828
+#line 1849
         .trainerPic = TRAINER_PIC_BEAUTY,
         .encounterMusic_gender =
-#line 1829
+#line 1850
 F_TRAINER_FEMALE | 
-#line 1830
+#line 1851
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 1831
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1832
+#line 1852
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1853
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1834
+#line 1855
             .species = SPECIES_GOLDEEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1836
+#line 1857
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1835
+#line 1856
             .lvl = 40,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1838
+#line 1859
     [DIFFICULTY_NORMAL][TRAINER_BRIDGET] =
     {
-#line 1839
+#line 1860
         .trainerName = _("Bridget"),
-#line 1840
+#line 1861
         .trainerClass = TRAINER_CLASS_BEAUTY,
-#line 1841
+#line 1862
         .trainerPic = TRAINER_PIC_BEAUTY,
         .encounterMusic_gender =
-#line 1842
+#line 1863
 F_TRAINER_FEMALE | 
-#line 1843
+#line 1864
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 1844
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1845
+#line 1865
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1866
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1847
+#line 1868
             .species = SPECIES_AZUMARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1849
+#line 1870
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 1848
+#line 1869
             .lvl = 40,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1851
+#line 1872
     [DIFFICULTY_NORMAL][TRAINER_OLIVIA] =
     {
-#line 1852
+#line 1873
         .trainerName = _("Olivia"),
-#line 1853
+#line 1874
         .trainerClass = TRAINER_CLASS_BEAUTY,
-#line 1854
+#line 1875
         .trainerPic = TRAINER_PIC_BEAUTY,
         .encounterMusic_gender =
-#line 1855
+#line 1876
 F_TRAINER_FEMALE | 
-#line 1856
+#line 1877
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 1857
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1858
+#line 1878
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1879
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1860
+#line 1881
             .species = SPECIES_CLAMPERL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1862
+#line 1883
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1861
+#line 1882
             .lvl = 35,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1863
+#line 1884
                 MOVE_IRON_DEFENSE,
                 MOVE_WHIRLPOOL,
                 MOVE_RAIN_DANCE,
@@ -4703,34 +4757,34 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 1868
+#line 1889
             .species = SPECIES_CORPHISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1870
+#line 1891
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1869
+#line 1890
             .lvl = 37,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1871
+#line 1892
                 MOVE_TAUNT,
                 MOVE_CRABHAMMER,
                 MOVE_WATER_PULSE,
             },
             },
             {
-#line 1875
+#line 1896
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1877
+#line 1898
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1876
+#line 1897
             .lvl = 39,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 1878
+#line 1899
                 MOVE_UPROAR,
                 MOVE_FURY_SWIPES,
                 MOVE_FAKE_OUT,
@@ -4739,451 +4793,397 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 1883
+#line 1904
     [DIFFICULTY_NORMAL][TRAINER_TIFFANY] =
     {
-#line 1884
+#line 1905
         .trainerName = _("Tiffany"),
-#line 1885
+#line 1906
         .trainerClass = TRAINER_CLASS_BEAUTY,
-#line 1886
+#line 1907
         .trainerPic = TRAINER_PIC_BEAUTY,
         .encounterMusic_gender =
-#line 1887
+#line 1908
 F_TRAINER_FEMALE | 
-#line 1888
+#line 1909
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 1889
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1890
+#line 1910
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1911
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1892
+#line 1913
             .species = SPECIES_CARVANHA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1894
+#line 1915
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1893
+#line 1914
             .lvl = 39,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1896
+#line 1917
             .species = SPECIES_SHARPEDO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1898
+#line 1919
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 1897
+#line 1918
             .lvl = 39,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1900
+#line 1921
     [DIFFICULTY_NORMAL][TRAINER_WINSTON_1] =
     {
-#line 1901
+#line 1922
         .trainerName = _("Winston"),
-#line 1902
+#line 1923
         .trainerClass = TRAINER_CLASS_RICH_BOY,
-#line 1903
+#line 1924
         .trainerPic = TRAINER_PIC_RICH_BOY,
         .encounterMusic_gender =
-#line 1905
+#line 1926
             TRAINER_ENCOUNTER_MUSIC_RICH,
-#line 1906
+#line 1927
         .items = { ITEM_FULL_RESTORE },
-#line 1907
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1908
+#line 1928
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1929
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1910
+#line 1931
             .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1910
+#line 1931
             .heldItem = ITEM_NUGGET,
-#line 1912
+#line 1933
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1911
+#line 1932
             .lvl = 7,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1914
+#line 1935
     [DIFFICULTY_NORMAL][TRAINER_MOLLIE] =
     {
-#line 1915
+#line 1936
         .trainerName = _("Mollie"),
-#line 1916
+#line 1937
         .trainerClass = TRAINER_CLASS_EXPERT,
-#line 1917
+#line 1938
         .trainerPic = TRAINER_PIC_EXPERT_F,
         .encounterMusic_gender =
-#line 1918
+#line 1939
 F_TRAINER_FEMALE | 
-#line 1919
+#line 1940
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 1920
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1921
+#line 1941
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1942
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1923
+#line 1944
             .species = SPECIES_WHISCASH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1925
+#line 1946
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1924
+#line 1945
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1927
+#line 1948
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1929
+#line 1950
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 1928
+#line 1949
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1931
+#line 1952
     [DIFFICULTY_NORMAL][TRAINER_GARRET] =
     {
-#line 1932
+#line 1953
         .trainerName = _("Garret"),
-#line 1933
+#line 1954
         .trainerClass = TRAINER_CLASS_RICH_BOY,
-#line 1934
+#line 1955
         .trainerPic = TRAINER_PIC_RICH_BOY,
         .encounterMusic_gender =
-#line 1936
+#line 1957
             TRAINER_ENCOUNTER_MUSIC_RICH,
-#line 1937
+#line 1958
         .items = { ITEM_FULL_RESTORE },
-#line 1938
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1939
+#line 1959
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1960
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1941
+#line 1962
             .species = SPECIES_AZUMARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1941
+#line 1962
             .heldItem = ITEM_NUGGET,
-#line 1943
+#line 1964
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1942
+#line 1963
             .lvl = 45,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1945
+#line 1966
     [DIFFICULTY_NORMAL][TRAINER_STEVE_1] =
     {
-#line 1946
+#line 1967
         .trainerName = _("Steve"),
-#line 1947
+#line 1968
         .trainerClass = TRAINER_CLASS_POKEMANIAC,
-#line 1948
+#line 1969
         .trainerPic = TRAINER_PIC_POKEMANIAC,
         .encounterMusic_gender =
-#line 1950
+#line 1971
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 1951
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1952
+#line 1972
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1973
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1954
+#line 1975
             .species = SPECIES_ARON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1956
+#line 1977
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1955
+#line 1976
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1958
+#line 1979
     [DIFFICULTY_NORMAL][TRAINER_THALIA_1] =
     {
-#line 1959
+#line 1980
         .trainerName = _("Thalia"),
-#line 1960
+#line 1981
         .trainerClass = TRAINER_CLASS_BEAUTY,
-#line 1961
+#line 1982
         .trainerPic = TRAINER_PIC_BEAUTY,
         .encounterMusic_gender =
-#line 1962
+#line 1983
 F_TRAINER_FEMALE | 
-#line 1963
+#line 1984
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 1964
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1965
+#line 1985
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 1986
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1967
+#line 1988
             .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1969
+#line 1990
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1968
+#line 1989
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 1971
+#line 1992
             .species = SPECIES_HORSEA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1973
+#line 1994
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1972
+#line 1993
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1975
+#line 1996
     [DIFFICULTY_NORMAL][TRAINER_MARK] =
     {
-#line 1976
+#line 1997
         .trainerName = _("Mark"),
-#line 1977
+#line 1998
         .trainerClass = TRAINER_CLASS_POKEMANIAC,
-#line 1978
+#line 1999
         .trainerPic = TRAINER_PIC_POKEMANIAC,
         .encounterMusic_gender =
-#line 1980
+#line 2001
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 1981
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1982
+#line 2002
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2003
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1984
+#line 2005
             .species = SPECIES_RHYHORN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1986
+#line 2007
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1985
+#line 2006
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 1988
+#line 2009
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MT_CHIMNEY_1] =
     {
-#line 1989
+#line 2010
         .trainerName = _("Grunt"),
-#line 1990
+#line 2011
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 1991
+#line 2012
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 1992
+#line 2013
 F_TRAINER_FEMALE | 
-#line 1993
+#line 2014
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 1994
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 1995
+#line 2015
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2016
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 1997
+#line 2018
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 1999
+#line 2020
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 1998
+#line 2019
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2001
+#line 2022
     [DIFFICULTY_NORMAL][TRAINER_LUIS] =
     {
-#line 2002
+#line 2023
         .trainerName = _("Luis"),
-#line 2003
+#line 2024
         .trainerClass = TRAINER_CLASS_SAILOR,
-#line 2004
+#line 2025
         .trainerPic = TRAINER_PIC_SAILOR,
         .encounterMusic_gender =
-#line 2006
+#line 2027
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2007
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2008
+#line 2028
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2029
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2010
+#line 2031
             .species = SPECIES_CARVANHA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2012
+#line 2033
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2011
+#line 2032
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2014
+#line 2035
     [DIFFICULTY_NORMAL][TRAINER_DOMINIK] =
     {
-#line 2015
+#line 2036
         .trainerName = _("Dominik"),
-#line 2016
+#line 2037
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2017
+#line 2038
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 2019
+#line 2040
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2020
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2021
+#line 2041
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2042
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2023
+#line 2044
             .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2025
+#line 2046
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2024
+#line 2045
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2027
+#line 2048
     [DIFFICULTY_NORMAL][TRAINER_DOUGLAS] =
     {
-#line 2028
+#line 2049
         .trainerName = _("Douglas"),
-#line 2029
+#line 2050
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2030
+#line 2051
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 2032
+#line 2053
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2033
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2034
+#line 2054
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2055
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2036
-            .species = SPECIES_TENTACOOL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2038
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 2037
-            .lvl = 24,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 2040
-            .species = SPECIES_TENTACOOL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2042
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 2041
-            .lvl = 24,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2044
-    [DIFFICULTY_NORMAL][TRAINER_DARRIN] =
-    {
-#line 2045
-        .trainerName = _("Darrin"),
-#line 2046
-        .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2047
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
-        .encounterMusic_gender =
-#line 2049
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2050
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2051
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2053
-            .species = SPECIES_TENTACOOL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2055
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 2054
-            .lvl = 24,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
 #line 2057
-            .species = SPECIES_WINGULL,
+            .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2059
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
@@ -5206,10 +5206,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 2065
-    [DIFFICULTY_NORMAL][TRAINER_TONY_1] =
+    [DIFFICULTY_NORMAL][TRAINER_DARRIN] =
     {
 #line 2066
-        .trainerName = _("Tony"),
+        .trainerName = _("Darrin"),
 #line 2067
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 2068
@@ -5218,362 +5218,362 @@ F_TRAINER_FEMALE |
 #line 2070
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 2071
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 2072
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2074
-            .species = SPECIES_CARVANHA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2076
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2075
-            .lvl = 26,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2078
-    [DIFFICULTY_NORMAL][TRAINER_JEROME] =
-    {
-#line 2079
-        .trainerName = _("Jerome"),
-#line 2080
-        .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2081
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
-        .encounterMusic_gender =
-#line 2083
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2084
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2085
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2087
-            .species = SPECIES_TENTACRUEL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2089
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2088
-            .lvl = 26,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2091
-    [DIFFICULTY_NORMAL][TRAINER_MATTHEW] =
-    {
-#line 2092
-        .trainerName = _("Matthew"),
-#line 2093
-        .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2094
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
-        .encounterMusic_gender =
-#line 2096
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2097
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2098
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2100
-            .species = SPECIES_CARVANHA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2102
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2101
-            .lvl = 26,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2104
-    [DIFFICULTY_NORMAL][TRAINER_DAVID] =
-    {
-#line 2105
-        .trainerName = _("David"),
-#line 2106
-        .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2107
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
-        .encounterMusic_gender =
-#line 2109
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2110
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2111
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2113
-            .species = SPECIES_TENTACOOL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2115
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2114
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 2117
-            .species = SPECIES_CARVANHA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2119
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2118
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2121
-    [DIFFICULTY_NORMAL][TRAINER_SPENCER] =
-    {
-#line 2122
-        .trainerName = _("Spencer"),
-#line 2123
-        .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2124
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
-        .encounterMusic_gender =
-#line 2126
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2127
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2128
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2130
-            .species = SPECIES_TENTACOOL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2132
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2131
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 2134
-            .species = SPECIES_WINGULL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2136
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2135
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2138
-    [DIFFICULTY_NORMAL][TRAINER_ROLAND] =
-    {
-#line 2139
-        .trainerName = _("Roland"),
-#line 2140
-        .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2141
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
-        .encounterMusic_gender =
-#line 2143
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2144
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2145
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2147
-            .species = SPECIES_CARVANHA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2149
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2148
-            .lvl = 34,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2151
-    [DIFFICULTY_NORMAL][TRAINER_NOLEN] =
-    {
-#line 2152
-        .trainerName = _("Nolen"),
-#line 2153
-        .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2154
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
-        .encounterMusic_gender =
-#line 2156
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2157
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2158
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2160
-            .species = SPECIES_TENTACRUEL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2162
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2161
-            .lvl = 34,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2164
-    [DIFFICULTY_NORMAL][TRAINER_STAN] =
-    {
-#line 2165
-        .trainerName = _("Stan"),
-#line 2166
-        .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2167
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
-        .encounterMusic_gender =
-#line 2169
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2170
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2171
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2173
-            .species = SPECIES_HORSEA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2175
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2174
-            .lvl = 34,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2177
-    [DIFFICULTY_NORMAL][TRAINER_BARRY] =
-    {
-#line 2178
-        .trainerName = _("Barry"),
-#line 2179
-        .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2180
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
-        .encounterMusic_gender =
-#line 2182
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2183
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2184
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2186
-            .species = SPECIES_GYARADOS,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2188
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2187
-            .lvl = 34,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2190
-    [DIFFICULTY_NORMAL][TRAINER_DEAN] =
-    {
-#line 2191
-        .trainerName = _("Dean"),
-#line 2192
-        .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2193
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
-        .encounterMusic_gender =
-#line 2195
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2196
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2197
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2199
-            .species = SPECIES_CARVANHA,
+#line 2074
+            .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2201
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2200
-            .lvl = 31,
+#line 2076
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 2075
+            .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 2203
+#line 2078
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2205
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2204
-            .lvl = 31,
+#line 2080
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 2079
+            .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 2207
+#line 2082
+            .species = SPECIES_TENTACOOL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2084
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 2083
+            .lvl = 24,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 2086
+    [DIFFICULTY_NORMAL][TRAINER_TONY_1] =
+    {
+#line 2087
+        .trainerName = _("Tony"),
+#line 2088
+        .trainerClass = TRAINER_CLASS_SWIMMER_M,
+#line 2089
+        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .encounterMusic_gender =
+#line 2091
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 2092
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2093
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 2095
             .species = SPECIES_CARVANHA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2097
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2096
+            .lvl = 26,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 2099
+    [DIFFICULTY_NORMAL][TRAINER_JEROME] =
+    {
+#line 2100
+        .trainerName = _("Jerome"),
+#line 2101
+        .trainerClass = TRAINER_CLASS_SWIMMER_M,
+#line 2102
+        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .encounterMusic_gender =
+#line 2104
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 2105
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2106
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 2108
+            .species = SPECIES_TENTACRUEL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2110
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2109
+            .lvl = 26,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 2112
+    [DIFFICULTY_NORMAL][TRAINER_MATTHEW] =
+    {
+#line 2113
+        .trainerName = _("Matthew"),
+#line 2114
+        .trainerClass = TRAINER_CLASS_SWIMMER_M,
+#line 2115
+        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .encounterMusic_gender =
+#line 2117
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 2118
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2119
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 2121
+            .species = SPECIES_CARVANHA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2123
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2122
+            .lvl = 26,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 2125
+    [DIFFICULTY_NORMAL][TRAINER_DAVID] =
+    {
+#line 2126
+        .trainerName = _("David"),
+#line 2127
+        .trainerClass = TRAINER_CLASS_SWIMMER_M,
+#line 2128
+        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .encounterMusic_gender =
+#line 2130
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 2131
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2132
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 2134
+            .species = SPECIES_TENTACOOL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2136
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2135
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 2138
+            .species = SPECIES_CARVANHA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2140
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2139
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 2142
+    [DIFFICULTY_NORMAL][TRAINER_SPENCER] =
+    {
+#line 2143
+        .trainerName = _("Spencer"),
+#line 2144
+        .trainerClass = TRAINER_CLASS_SWIMMER_M,
+#line 2145
+        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .encounterMusic_gender =
+#line 2147
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 2148
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2149
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 2151
+            .species = SPECIES_TENTACOOL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2153
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2152
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 2155
+            .species = SPECIES_WINGULL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2157
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2156
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 2159
+    [DIFFICULTY_NORMAL][TRAINER_ROLAND] =
+    {
+#line 2160
+        .trainerName = _("Roland"),
+#line 2161
+        .trainerClass = TRAINER_CLASS_SWIMMER_M,
+#line 2162
+        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .encounterMusic_gender =
+#line 2164
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 2165
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2166
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 2168
+            .species = SPECIES_CARVANHA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2170
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2169
+            .lvl = 34,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 2172
+    [DIFFICULTY_NORMAL][TRAINER_NOLEN] =
+    {
+#line 2173
+        .trainerName = _("Nolen"),
+#line 2174
+        .trainerClass = TRAINER_CLASS_SWIMMER_M,
+#line 2175
+        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .encounterMusic_gender =
+#line 2177
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 2178
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2179
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 2181
+            .species = SPECIES_TENTACRUEL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2183
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2182
+            .lvl = 34,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 2185
+    [DIFFICULTY_NORMAL][TRAINER_STAN] =
+    {
+#line 2186
+        .trainerName = _("Stan"),
+#line 2187
+        .trainerClass = TRAINER_CLASS_SWIMMER_M,
+#line 2188
+        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .encounterMusic_gender =
+#line 2190
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 2191
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2192
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 2194
+            .species = SPECIES_HORSEA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2196
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2195
+            .lvl = 34,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 2198
+    [DIFFICULTY_NORMAL][TRAINER_BARRY] =
+    {
+#line 2199
+        .trainerName = _("Barry"),
+#line 2200
+        .trainerClass = TRAINER_CLASS_SWIMMER_M,
+#line 2201
+        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .encounterMusic_gender =
+#line 2203
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 2204
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2205
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 2207
+            .species = SPECIES_GYARADOS,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2209
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2208
-            .lvl = 31,
+            .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 2211
-    [DIFFICULTY_NORMAL][TRAINER_RODNEY] =
+    [DIFFICULTY_NORMAL][TRAINER_DEAN] =
     {
 #line 2212
-        .trainerName = _("Rodney"),
+        .trainerName = _("Dean"),
 #line 2213
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 2214
@@ -5582,133 +5582,133 @@ F_TRAINER_FEMALE |
 #line 2216
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 2217
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 2218
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
+        .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
 #line 2220
-            .species = SPECIES_GYARADOS,
+            .species = SPECIES_CARVANHA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2222
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2221
-            .lvl = 34,
+            .lvl = 31,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 2224
+            .species = SPECIES_WINGULL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2226
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2225
+            .lvl = 31,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 2228
+            .species = SPECIES_CARVANHA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2230
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2229
+            .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2224
-    [DIFFICULTY_NORMAL][TRAINER_RICHARD] =
+#line 2232
+    [DIFFICULTY_NORMAL][TRAINER_RODNEY] =
     {
-#line 2225
-        .trainerName = _("Richard"),
-#line 2226
+#line 2233
+        .trainerName = _("Rodney"),
+#line 2234
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2227
+#line 2235
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 2229
+#line 2237
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2230
+#line 2238
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2231
+#line 2239
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2233
-            .species = SPECIES_PELIPPER,
+#line 2241
+            .species = SPECIES_GYARADOS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2235
+#line 2243
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2234
+#line 2242
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2237
-    [DIFFICULTY_NORMAL][TRAINER_HERMAN] =
+#line 2245
+    [DIFFICULTY_NORMAL][TRAINER_RICHARD] =
     {
-#line 2238
-        .trainerName = _("Herman"),
-#line 2239
+#line 2246
+        .trainerName = _("Richard"),
+#line 2247
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2240
+#line 2248
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 2242
+#line 2250
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2243
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2244
+#line 2251
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2252
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2246
-            .species = SPECIES_WINGULL,
+#line 2254
+            .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2248
+#line 2256
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2247
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 2250
-            .species = SPECIES_TENTACRUEL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2252
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2251
-            .lvl = 33,
+#line 2255
+            .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2254
-    [DIFFICULTY_NORMAL][TRAINER_SANTIAGO] =
+#line 2258
+    [DIFFICULTY_NORMAL][TRAINER_HERMAN] =
     {
-#line 2255
-        .trainerName = _("Santiago"),
-#line 2256
+#line 2259
+        .trainerName = _("Herman"),
+#line 2260
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2257
+#line 2261
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 2259
+#line 2263
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2260
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2261
+#line 2264
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2265
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2263
-            .species = SPECIES_TENTACRUEL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2265
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2264
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
 #line 2267
-            .species = SPECIES_WAILMER,
+            .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2269
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -5717,195 +5717,195 @@ F_TRAINER_FEMALE |
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
+            {
+#line 2271
+            .species = SPECIES_TENTACRUEL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2273
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2272
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
         },
     },
-#line 2271
+#line 2275
+    [DIFFICULTY_NORMAL][TRAINER_SANTIAGO] =
+    {
+#line 2276
+        .trainerName = _("Santiago"),
+#line 2277
+        .trainerClass = TRAINER_CLASS_SWIMMER_M,
+#line 2278
+        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .encounterMusic_gender =
+#line 2280
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 2281
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2282
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 2284
+            .species = SPECIES_TENTACRUEL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2286
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2285
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 2288
+            .species = SPECIES_WAILMER,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2290
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2289
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 2292
     [DIFFICULTY_NORMAL][TRAINER_GILBERT] =
     {
-#line 2272
+#line 2293
         .trainerName = _("Gilbert"),
-#line 2273
+#line 2294
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2274
+#line 2295
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 2276
+#line 2297
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2277
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2278
+#line 2298
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2299
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2280
+#line 2301
             .species = SPECIES_SHARPEDO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2282
+#line 2303
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2281
+#line 2302
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2284
+#line 2305
     [DIFFICULTY_NORMAL][TRAINER_FRANKLIN] =
     {
-#line 2285
+#line 2306
         .trainerName = _("Franklin"),
-#line 2286
+#line 2307
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2287
+#line 2308
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 2289
+#line 2310
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2290
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2291
+#line 2311
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2312
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2293
+#line 2314
             .species = SPECIES_SEALEO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2295
+#line 2316
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2294
+#line 2315
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2297
+#line 2318
     [DIFFICULTY_NORMAL][TRAINER_KEVIN] =
     {
-#line 2298
+#line 2319
         .trainerName = _("Kevin"),
-#line 2299
+#line 2320
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2300
+#line 2321
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 2302
+#line 2323
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2303
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2304
+#line 2324
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2325
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2306
+#line 2327
             .species = SPECIES_SPHEAL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2308
+#line 2329
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2307
+#line 2328
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2310
+#line 2331
     [DIFFICULTY_NORMAL][TRAINER_JACK] =
     {
-#line 2311
+#line 2332
         .trainerName = _("Jack"),
-#line 2312
+#line 2333
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2313
+#line 2334
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 2315
+#line 2336
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2316
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2317
+#line 2337
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2338
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2319
-            .species = SPECIES_GYARADOS,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2321
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2320
-            .lvl = 34,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2323
-    [DIFFICULTY_NORMAL][TRAINER_DUDLEY] =
-    {
-#line 2324
-        .trainerName = _("Dudley"),
-#line 2325
-        .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 2326
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
-        .encounterMusic_gender =
-#line 2328
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 2329
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2330
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2332
-            .species = SPECIES_TENTACOOL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2334
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2333
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 2336
-            .species = SPECIES_WINGULL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2338
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2337
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
 #line 2340
-            .species = SPECIES_TENTACRUEL,
+            .species = SPECIES_GYARADOS,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2342
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2341
-            .lvl = 33,
+            .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 2344
-    [DIFFICULTY_NORMAL][TRAINER_CHAD] =
+    [DIFFICULTY_NORMAL][TRAINER_DUDLEY] =
     {
 #line 2345
-        .trainerName = _("Chad"),
+        .trainerName = _("Dudley"),
 #line 2346
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 2347
@@ -5914,10 +5914,10 @@ F_TRAINER_FEMALE |
 #line 2349
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 2350
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 2351
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
@@ -5933,7 +5933,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 2357
-            .species = SPECIES_WAILMER,
+            .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2359
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -5942,328 +5942,382 @@ F_TRAINER_FEMALE |
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
+            {
+#line 2361
+            .species = SPECIES_TENTACRUEL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2363
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2362
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
         },
     },
-#line 2361
+#line 2365
+    [DIFFICULTY_NORMAL][TRAINER_CHAD] =
+    {
+#line 2366
+        .trainerName = _("Chad"),
+#line 2367
+        .trainerClass = TRAINER_CLASS_SWIMMER_M,
+#line 2368
+        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .encounterMusic_gender =
+#line 2370
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 2371
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2372
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 2374
+            .species = SPECIES_TENTACOOL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2376
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2375
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 2378
+            .species = SPECIES_WAILMER,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2380
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2379
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 2382
     [DIFFICULTY_NORMAL][TRAINER_TAKAO] =
     {
-#line 2362
+#line 2383
         .trainerName = _("Takao"),
-#line 2363
+#line 2384
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
-#line 2364
+#line 2385
         .trainerPic = TRAINER_PIC_BLACK_BELT,
         .encounterMusic_gender =
-#line 2366
+#line 2387
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2367
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2368
+#line 2388
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2389
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2370
+#line 2391
             .species = SPECIES_MACHOP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2372
+#line 2393
             .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
-#line 2371
+#line 2392
             .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2374
+#line 2395
     [DIFFICULTY_NORMAL][TRAINER_HITOSHI] =
     {
-#line 2375
+#line 2396
         .trainerName = _("Hitoshi"),
-#line 2376
+#line 2397
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
-#line 2377
+#line 2398
         .trainerPic = TRAINER_PIC_BLACK_BELT,
         .encounterMusic_gender =
-#line 2379
+#line 2400
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2380
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2381
+#line 2401
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2402
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2383
+#line 2404
             .species = SPECIES_MACHOP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2385
+#line 2406
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 2384
+#line 2405
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 2387
+#line 2408
             .species = SPECIES_MACHOKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2389
+#line 2410
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 2388
+#line 2409
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2391
+#line 2412
     [DIFFICULTY_NORMAL][TRAINER_KIYO] =
     {
-#line 2392
+#line 2413
         .trainerName = _("Kiyo"),
-#line 2393
+#line 2414
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
-#line 2394
+#line 2415
         .trainerPic = TRAINER_PIC_BLACK_BELT,
         .encounterMusic_gender =
-#line 2396
+#line 2417
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2397
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2398
+#line 2418
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2419
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2400
+#line 2421
             .species = SPECIES_HARIYAMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2402
+#line 2423
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2401
+#line 2422
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2404
+#line 2425
     [DIFFICULTY_NORMAL][TRAINER_KOICHI] =
     {
-#line 2405
+#line 2426
         .trainerName = _("Koichi"),
-#line 2406
+#line 2427
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
-#line 2407
+#line 2428
         .trainerPic = TRAINER_PIC_BLACK_BELT,
         .encounterMusic_gender =
-#line 2409
+#line 2430
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2410
+#line 2431
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2411
+#line 2432
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2413
+#line 2434
             .species = SPECIES_MACHOP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2415
+#line 2436
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2414
+#line 2435
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 2417
+#line 2438
             .species = SPECIES_MACHOKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2419
+#line 2440
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 2418
+#line 2439
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2421
+#line 2442
     [DIFFICULTY_NORMAL][TRAINER_NOB_1] =
     {
-#line 2422
+#line 2443
         .trainerName = _("Nob"),
-#line 2423
+#line 2444
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
-#line 2424
+#line 2445
         .trainerPic = TRAINER_PIC_BLACK_BELT,
         .encounterMusic_gender =
-#line 2426
+#line 2447
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2427
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2428
+#line 2448
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2449
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2430
+#line 2451
             .species = SPECIES_MACHOP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2432
+#line 2453
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2431
+#line 2452
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2434
+#line 2455
     [DIFFICULTY_NORMAL][TRAINER_YUJI] =
     {
-#line 2435
+#line 2456
         .trainerName = _("Yuji"),
-#line 2436
+#line 2457
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
-#line 2437
+#line 2458
         .trainerPic = TRAINER_PIC_BLACK_BELT,
         .encounterMusic_gender =
-#line 2439
+#line 2460
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2440
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2441
+#line 2461
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2462
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2443
+#line 2464
             .species = SPECIES_MAKUHITA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2445
+#line 2466
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2444
+#line 2465
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 2447
+#line 2468
             .species = SPECIES_MACHOKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2449
+#line 2470
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2448
+#line 2469
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2451
+#line 2472
     [DIFFICULTY_NORMAL][TRAINER_DAISUKE] =
     {
-#line 2452
+#line 2473
         .trainerName = _("Daisuke"),
-#line 2453
+#line 2474
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
-#line 2454
+#line 2475
         .trainerPic = TRAINER_PIC_BLACK_BELT,
         .encounterMusic_gender =
-#line 2456
+#line 2477
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2457
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2458
+#line 2478
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2479
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2460
+#line 2481
             .species = SPECIES_MACHOP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2462
+#line 2483
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2461
+#line 2482
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2464
+#line 2485
     [DIFFICULTY_NORMAL][TRAINER_ATSUSHI] =
     {
-#line 2465
+#line 2486
         .trainerName = _("Atsushi"),
-#line 2466
+#line 2487
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
-#line 2467
+#line 2488
         .trainerPic = TRAINER_PIC_BLACK_BELT,
         .encounterMusic_gender =
-#line 2469
+#line 2490
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2470
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2471
+#line 2491
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2492
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2473
+#line 2494
             .species = SPECIES_HARIYAMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2475
+#line 2496
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2474
+#line 2495
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2477
+#line 2498
     [DIFFICULTY_NORMAL][TRAINER_KIRK] =
     {
-#line 2478
+#line 2499
         .trainerName = _("Kirk"),
-#line 2479
+#line 2500
         .trainerClass = TRAINER_CLASS_GUITARIST,
-#line 2480
+#line 2501
         .trainerPic = TRAINER_PIC_GUITARIST,
         .encounterMusic_gender =
-#line 2482
+#line 2503
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2483
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2484
+#line 2504
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2505
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2486
+#line 2507
             .species = SPECIES_ELECTRIKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2488
+#line 2509
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2487
+#line 2508
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 2489
+#line 2510
                 MOVE_QUICK_ATTACK,
                 MOVE_THUNDER_WAVE,
                 MOVE_SPARK,
@@ -6271,17 +6325,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 2494
+#line 2515
             .species = SPECIES_VOLTORB,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2496
+#line 2517
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2495
+#line 2516
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 2497
+#line 2518
                 MOVE_CHARGE,
                 MOVE_SHOCK_WAVE,
                 MOVE_SCREECH,
@@ -6289,457 +6343,457 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 2501
+#line 2522
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_AQUA_HIDEOUT_7] =
     {
-#line 2502
+#line 2523
         .trainerName = _("Grunt"),
-#line 2503
+#line 2524
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
-#line 2504
+#line 2525
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
         .encounterMusic_gender =
-#line 2505
+#line 2526
 F_TRAINER_FEMALE | 
-#line 2506
+#line 2527
             TRAINER_ENCOUNTER_MUSIC_AQUA,
-#line 2507
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2508
+#line 2528
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2529
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2510
+#line 2531
             .species = SPECIES_POOCHYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2512
+#line 2533
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2511
+#line 2532
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 2514
+#line 2535
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2516
+#line 2537
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2515
+#line 2536
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2518
+#line 2539
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_AQUA_HIDEOUT_8] =
     {
-#line 2519
+#line 2540
         .trainerName = _("Grunt"),
-#line 2520
+#line 2541
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
-#line 2521
+#line 2542
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
         .encounterMusic_gender =
-#line 2523
+#line 2544
             TRAINER_ENCOUNTER_MUSIC_AQUA,
-#line 2524
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2525
+#line 2545
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2546
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2527
+#line 2548
             .species = SPECIES_CARVANHA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2529
+#line 2550
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2528
+#line 2549
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2531
+#line 2552
     [DIFFICULTY_NORMAL][TRAINER_SHAWN] =
     {
-#line 2532
-        .trainerName = _("Shawn"),
-#line 2533
-        .trainerClass = TRAINER_CLASS_GUITARIST,
-#line 2534
-        .trainerPic = TRAINER_PIC_GUITARIST,
-        .encounterMusic_gender =
-#line 2536
-            TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2537
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2538
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2540
-            .species = SPECIES_VOLTORB,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2542
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2541
-            .lvl = 17,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 2544
-            .species = SPECIES_MAGNEMITE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2546
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2545
-            .lvl = 17,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2548
-    [DIFFICULTY_NORMAL][TRAINER_FERNANDO_1] =
-    {
-#line 2549
-        .trainerName = _("Fernando"),
-#line 2550
-        .trainerClass = TRAINER_CLASS_GUITARIST,
-#line 2551
-        .trainerPic = TRAINER_PIC_GUITARIST,
-        .encounterMusic_gender =
 #line 2553
-            TRAINER_ENCOUNTER_MUSIC_INTENSE,
+        .trainerName = _("Shawn"),
 #line 2554
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .trainerClass = TRAINER_CLASS_GUITARIST,
 #line 2555
+        .trainerPic = TRAINER_PIC_GUITARIST,
+        .encounterMusic_gender =
+#line 2557
+            TRAINER_ENCOUNTER_MUSIC_INTENSE,
+#line 2558
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2559
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
-            {
-#line 2557
-            .species = SPECIES_ELECTRIKE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2559
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2558
-            .lvl = 30,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
             {
 #line 2561
-            .species = SPECIES_LOUDRED,
+            .species = SPECIES_VOLTORB,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2563
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 2562
-            .lvl = 30,
+            .lvl = 17,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 2565
+            .species = SPECIES_MAGNEMITE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2567
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 2566
+            .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2565
-    [DIFFICULTY_NORMAL][TRAINER_DALTON_1] =
+#line 2569
+    [DIFFICULTY_NORMAL][TRAINER_FERNANDO_1] =
     {
-#line 2566
-        .trainerName = _("Dalton"),
-#line 2567
+#line 2570
+        .trainerName = _("Fernando"),
+#line 2571
         .trainerClass = TRAINER_CLASS_GUITARIST,
-#line 2568
+#line 2572
         .trainerPic = TRAINER_PIC_GUITARIST,
         .encounterMusic_gender =
-#line 2570
+#line 2574
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2571
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2572
+#line 2575
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2576
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2574
-            .species = SPECIES_MAGNEMITE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2576
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2575
-            .lvl = 15,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
 #line 2578
-            .species = SPECIES_WHISMUR,
+            .species = SPECIES_ELECTRIKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2580
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2579
+            .lvl = 30,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 2582
+            .species = SPECIES_LOUDRED,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2584
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2583
+            .lvl = 30,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 2586
+    [DIFFICULTY_NORMAL][TRAINER_DALTON_1] =
+    {
+#line 2587
+        .trainerName = _("Dalton"),
+#line 2588
+        .trainerClass = TRAINER_CLASS_GUITARIST,
+#line 2589
+        .trainerPic = TRAINER_PIC_GUITARIST,
+        .encounterMusic_gender =
+#line 2591
+            TRAINER_ENCOUNTER_MUSIC_INTENSE,
+#line 2592
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2593
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 2595
+            .species = SPECIES_MAGNEMITE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2597
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2596
+            .lvl = 15,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 2599
+            .species = SPECIES_WHISMUR,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2601
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2600
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2582
+#line 2603
     [DIFFICULTY_NORMAL][TRAINER_COLE] =
     {
-#line 2583
+#line 2604
         .trainerName = _("Cole"),
-#line 2584
+#line 2605
         .trainerClass = TRAINER_CLASS_KINDLER,
-#line 2585
+#line 2606
         .trainerPic = TRAINER_PIC_KINDLER,
         .encounterMusic_gender =
-#line 2587
+#line 2608
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 2588
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2589
+#line 2609
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2610
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2591
+#line 2612
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2593
+#line 2614
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2592
+#line 2613
             .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2595
+#line 2616
     [DIFFICULTY_NORMAL][TRAINER_JEFF] =
     {
-#line 2596
+#line 2617
         .trainerName = _("Jeff"),
-#line 2597
+#line 2618
         .trainerClass = TRAINER_CLASS_KINDLER,
-#line 2598
+#line 2619
         .trainerPic = TRAINER_PIC_KINDLER,
         .encounterMusic_gender =
-#line 2600
+#line 2621
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 2601
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2602
+#line 2622
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2623
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2604
+#line 2625
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2606
+#line 2627
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2605
+#line 2626
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 2608
+#line 2629
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2610
+#line 2631
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2609
+#line 2630
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2612
+#line 2633
     [DIFFICULTY_NORMAL][TRAINER_AXLE] =
     {
-#line 2613
+#line 2634
         .trainerName = _("Axle"),
-#line 2614
+#line 2635
         .trainerClass = TRAINER_CLASS_KINDLER,
-#line 2615
+#line 2636
         .trainerPic = TRAINER_PIC_KINDLER,
         .encounterMusic_gender =
-#line 2617
+#line 2638
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 2618
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2619
+#line 2639
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2640
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2621
+#line 2642
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2623
+#line 2644
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2622
+#line 2643
             .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2625
+#line 2646
     [DIFFICULTY_NORMAL][TRAINER_JACE] =
     {
-#line 2626
+#line 2647
         .trainerName = _("Jace"),
-#line 2627
+#line 2648
         .trainerClass = TRAINER_CLASS_KINDLER,
-#line 2628
+#line 2649
         .trainerPic = TRAINER_PIC_KINDLER,
         .encounterMusic_gender =
-#line 2630
+#line 2651
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 2631
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2632
+#line 2652
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2653
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2634
+#line 2655
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2636
+#line 2657
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2635
+#line 2656
             .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2638
+#line 2659
     [DIFFICULTY_NORMAL][TRAINER_KEEGAN] =
     {
-#line 2639
+#line 2660
         .trainerName = _("Keegan"),
-#line 2640
+#line 2661
         .trainerClass = TRAINER_CLASS_KINDLER,
-#line 2641
+#line 2662
         .trainerPic = TRAINER_PIC_KINDLER,
         .encounterMusic_gender =
-#line 2643
+#line 2664
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 2644
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2645
+#line 2665
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2666
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2647
+#line 2668
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2649
+#line 2670
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
-#line 2648
+#line 2669
             .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2651
+#line 2672
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_ROUTE_114_1] =
     {
-#line 2652
+#line 2673
         .trainerName = _("Grunt"),
-#line 2653
+#line 2674
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 2654
+#line 2675
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 2656
+#line 2677
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 2657
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2658
+#line 2678
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2679
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2660
+#line 2681
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2662
+#line 2683
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2661
+#line 2682
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 2664
+#line 2685
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2666
+#line 2687
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2665
+#line 2686
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2668
+#line 2689
     [DIFFICULTY_NORMAL][TRAINER_DREW] =
     {
-#line 2669
+#line 2690
         .trainerName = _("Drew"),
-#line 2670
+#line 2691
         .trainerClass = TRAINER_CLASS_CAMPER,
-#line 2671
+#line 2692
         .trainerPic = TRAINER_PIC_CAMPER,
         .encounterMusic_gender =
-#line 2673
+#line 2694
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 2674
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2675
+#line 2695
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2696
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2677
+#line 2698
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2679
+#line 2700
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2678
+#line 2699
             .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 2680
+#line 2701
                 MOVE_DIG,
                 MOVE_SAND_ATTACK,
                 MOVE_POISON_STING,
@@ -6748,37 +6802,37 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 2685
+#line 2706
     [DIFFICULTY_NORMAL][TRAINER_BEAU] =
     {
-#line 2686
+#line 2707
         .trainerName = _("Beau"),
-#line 2687
+#line 2708
         .trainerClass = TRAINER_CLASS_CAMPER,
-#line 2688
+#line 2709
         .trainerPic = TRAINER_PIC_CAMPER,
         .encounterMusic_gender =
-#line 2690
+#line 2711
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 2691
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2692
+#line 2712
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2713
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2694
+#line 2715
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2696
+#line 2717
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2695
+#line 2716
             .lvl = 21,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 2697
+#line 2718
                 MOVE_RAPID_SPIN,
                 MOVE_MUD_SLAP,
                 MOVE_PSYBEAM,
@@ -6786,17 +6840,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 2702
+#line 2723
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2704
+#line 2725
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2703
+#line 2724
             .lvl = 21,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 2705
+#line 2726
                 MOVE_POISON_STING,
                 MOVE_SAND_ATTACK,
                 MOVE_SCRATCH,
@@ -6804,17 +6858,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 2710
+#line 2731
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2712
+#line 2733
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2711
+#line 2732
             .lvl = 21,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 2713
+#line 2734
                 MOVE_RAPID_SPIN,
                 MOVE_MUD_SLAP,
                 MOVE_PSYBEAM,
@@ -6823,315 +6877,261 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 2718
+#line 2739
     [DIFFICULTY_NORMAL][TRAINER_LARRY] =
     {
-#line 2719
+#line 2740
         .trainerName = _("Larry"),
-#line 2720
+#line 2741
         .trainerClass = TRAINER_CLASS_CAMPER,
-#line 2721
+#line 2742
         .trainerPic = TRAINER_PIC_CAMPER,
         .encounterMusic_gender =
-#line 2723
+#line 2744
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 2724
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2725
+#line 2745
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2746
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2727
+#line 2748
             .species = SPECIES_NUZLEAF,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2729
+#line 2750
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2728
+#line 2749
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2731
+#line 2752
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_ROUTE_114_6] =
     {
-#line 2732
+#line 2753
         .trainerName = _("Grunt"),
-#line 2733
+#line 2754
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 2734
+#line 2755
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 2735
+#line 2756
 F_TRAINER_FEMALE | 
-#line 2736
+#line 2757
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 2737
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2738
+#line 2758
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2759
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2740
+#line 2761
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2742
+#line 2763
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2741
+#line 2762
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 2744
+#line 2765
             .species = SPECIES_NUZLEAF,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2746
+#line 2767
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2745
+#line 2766
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2748
+#line 2769
     [DIFFICULTY_NORMAL][TRAINER_JUSTIN] =
     {
-#line 2749
+#line 2770
         .trainerName = _("Justin"),
-#line 2750
+#line 2771
         .trainerClass = TRAINER_CLASS_CAMPER,
-#line 2751
+#line 2772
         .trainerPic = TRAINER_PIC_CAMPER,
         .encounterMusic_gender =
-#line 2753
+#line 2774
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 2754
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2755
+#line 2775
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2776
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2757
+#line 2778
             .species = SPECIES_KECLEON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2759
+#line 2780
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2758
+#line 2779
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2761
+#line 2782
     [DIFFICULTY_NORMAL][TRAINER_ETHAN_1] =
     {
-#line 2762
+#line 2783
         .trainerName = _("Ethan"),
-#line 2763
+#line 2784
         .trainerClass = TRAINER_CLASS_CAMPER,
-#line 2764
+#line 2785
         .trainerPic = TRAINER_PIC_CAMPER,
         .encounterMusic_gender =
-#line 2766
+#line 2787
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 2767
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2768
+#line 2788
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2789
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2770
+#line 2791
             .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2772
+#line 2793
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2771
+#line 2792
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 2774
+#line 2795
             .species = SPECIES_TAILLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2776
+#line 2797
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2775
+#line 2796
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2778
+#line 2799
     [DIFFICULTY_NORMAL][TRAINER_AUTUMN] =
     {
-#line 2779
+#line 2800
         .trainerName = _("Autumn"),
-#line 2780
+#line 2801
         .trainerClass = TRAINER_CLASS_PICNICKER,
-#line 2781
+#line 2802
         .trainerPic = TRAINER_PIC_PICNICKER,
         .encounterMusic_gender =
-#line 2782
+#line 2803
 F_TRAINER_FEMALE | 
-#line 2783
+#line 2804
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 2784
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2785
+#line 2805
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2806
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2787
+#line 2808
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2789
+#line 2810
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2788
+#line 2809
             .lvl = 21,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2791
+#line 2812
     [DIFFICULTY_NORMAL][TRAINER_TRAVIS] =
     {
-#line 2792
+#line 2813
         .trainerName = _("Travis"),
-#line 2793
+#line 2814
         .trainerClass = TRAINER_CLASS_CAMPER,
-#line 2794
+#line 2815
         .trainerPic = TRAINER_PIC_CAMPER,
         .encounterMusic_gender =
-#line 2796
+#line 2817
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 2797
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2798
+#line 2818
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2819
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2800
+#line 2821
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2802
+#line 2823
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2801
+#line 2822
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2804
+#line 2825
     [DIFFICULTY_NORMAL][TRAINER_BRENT] =
     {
-#line 2805
+#line 2826
         .trainerName = _("Brent"),
-#line 2806
+#line 2827
         .trainerClass = TRAINER_CLASS_BUG_MANIAC,
-#line 2807
+#line 2828
         .trainerPic = TRAINER_PIC_BUG_MANIAC,
         .encounterMusic_gender =
-#line 2809
+#line 2830
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 2810
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2811
+#line 2831
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2832
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2813
+#line 2834
             .species = SPECIES_SURSKIT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2815
+#line 2836
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2814
+#line 2835
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2817
+#line 2838
     [DIFFICULTY_NORMAL][TRAINER_DONALD] =
     {
-#line 2818
-        .trainerName = _("Donald"),
-#line 2819
-        .trainerClass = TRAINER_CLASS_BUG_MANIAC,
-#line 2820
-        .trainerPic = TRAINER_PIC_BUG_MANIAC,
-        .encounterMusic_gender =
-#line 2822
-            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 2823
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2824
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2826
-            .species = SPECIES_WURMPLE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2828
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2827
-            .lvl = 24,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 2830
-            .species = SPECIES_SILCOON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2832
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2831
-            .lvl = 24,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 2834
-            .species = SPECIES_BEAUTIFLY,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2836
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2835
-            .lvl = 24,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2838
-    [DIFFICULTY_NORMAL][TRAINER_TAYLOR] =
-    {
 #line 2839
-        .trainerName = _("Taylor"),
+        .trainerName = _("Donald"),
 #line 2840
         .trainerClass = TRAINER_CLASS_BUG_MANIAC,
 #line 2841
@@ -7140,7 +7140,7 @@ F_TRAINER_FEMALE |
 #line 2843
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
 #line 2844
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 2845
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
@@ -7153,39 +7153,39 @@ F_TRAINER_FEMALE |
 #line 2849
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 2848
-            .lvl = 27,
+            .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
 #line 2851
-            .species = SPECIES_CASCOON,
+            .species = SPECIES_SILCOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2853
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 2852
-            .lvl = 27,
+            .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
 #line 2855
-            .species = SPECIES_DUSTOX,
+            .species = SPECIES_BEAUTIFLY,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2857
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 2856
-            .lvl = 27,
+            .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 2859
-    [DIFFICULTY_NORMAL][TRAINER_JEFFREY_1] =
+    [DIFFICULTY_NORMAL][TRAINER_TAYLOR] =
     {
 #line 2860
-        .trainerName = _("Jeffrey"),
+        .trainerName = _("Taylor"),
 #line 2861
         .trainerClass = TRAINER_CLASS_BUG_MANIAC,
 #line 2862
@@ -7194,7 +7194,7 @@ F_TRAINER_FEMALE |
 #line 2864
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
 #line 2865
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 2866
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
@@ -7202,10 +7202,10 @@ F_TRAINER_FEMALE |
         {
             {
 #line 2868
-            .species = SPECIES_SURSKIT,
+            .species = SPECIES_WURMPLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2870
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 2869
             .lvl = 27,
             .nature = NATURE_HARDY,
@@ -7213,10 +7213,10 @@ F_TRAINER_FEMALE |
             },
             {
 #line 2872
-            .species = SPECIES_SURSKIT,
+            .species = SPECIES_CASCOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2874
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 2873
             .lvl = 27,
             .nature = NATURE_HARDY,
@@ -7224,10 +7224,10 @@ F_TRAINER_FEMALE |
             },
             {
 #line 2876
-            .species = SPECIES_SURSKIT,
+            .species = SPECIES_DUSTOX,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2878
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 2877
             .lvl = 27,
             .nature = NATURE_HARDY,
@@ -7236,10 +7236,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 2880
-    [DIFFICULTY_NORMAL][TRAINER_DEREK] =
+    [DIFFICULTY_NORMAL][TRAINER_JEFFREY_1] =
     {
 #line 2881
-        .trainerName = _("Derek"),
+        .trainerName = _("Jeffrey"),
 #line 2882
         .trainerClass = TRAINER_CLASS_BUG_MANIAC,
 #line 2883
@@ -7248,74 +7248,128 @@ F_TRAINER_FEMALE |
 #line 2885
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
 #line 2886
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 2887
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
 #line 2889
-            .species = SPECIES_DUSTOX,
+            .species = SPECIES_SURSKIT,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2891
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2890
-            .lvl = 16,
+            .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
 #line 2893
-            .species = SPECIES_BEAUTIFLY,
+            .species = SPECIES_SURSKIT,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2895
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2894
+            .lvl = 27,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 2897
+            .species = SPECIES_SURSKIT,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2899
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 2898
+            .lvl = 27,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 2901
+    [DIFFICULTY_NORMAL][TRAINER_DEREK] =
+    {
+#line 2902
+        .trainerName = _("Derek"),
+#line 2903
+        .trainerClass = TRAINER_CLASS_BUG_MANIAC,
+#line 2904
+        .trainerPic = TRAINER_PIC_BUG_MANIAC,
+        .encounterMusic_gender =
+#line 2906
+            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+#line 2907
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2908
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 2910
+            .species = SPECIES_DUSTOX,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2912
+            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+#line 2911
+            .lvl = 16,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 2914
+            .species = SPECIES_BEAUTIFLY,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 2916
+            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+#line 2915
             .lvl = 16,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2897
+#line 2918
     [DIFFICULTY_NORMAL][TRAINER_EDWARD] =
     {
-#line 2898
+#line 2919
         .trainerName = _("Edward"),
-#line 2899
+#line 2920
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 2900
+#line 2921
         .trainerPic = TRAINER_PIC_PSYCHIC_M,
         .encounterMusic_gender =
-#line 2902
+#line 2923
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2903
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2904
+#line 2924
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2925
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2906
+#line 2927
             .species = SPECIES_HIPPOPOTAS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2906
+#line 2927
             .heldItem = ITEM_EJECT_PACK,
-#line 2911
+#line 2932
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 2907
+#line 2928
             .ability = ABILITY_SAND_STREAM,
-#line 2908
+#line 2929
             .lvl = 29,
-#line 2910
+#line 2931
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-#line 2909
+#line 2930
             .teraType = TYPE_GROUND,
             .moves = {
-#line 2911
+#line 2932
                 MOVE_BULLDOZE,
                 MOVE_THUNDER_FANG,
                 MOVE_ROCK_TOMB,
@@ -7323,24 +7377,24 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 2916
+#line 2937
             .species = SPECIES_AMAURA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2916
+#line 2937
             .heldItem = ITEM_ICY_ROCK,
-#line 2921
+#line 2942
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 2917
+#line 2938
             .ability = ABILITY_SNOW_WARNING,
-#line 2918
+#line 2939
             .lvl = 29,
-#line 2920
+#line 2941
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-#line 2919
+#line 2940
             .teraType = TYPE_ROCK,
             .moves = {
-#line 2921
+#line 2942
                 MOVE_ROCK_SLIDE,
                 MOVE_ICY_WIND,
                 MOVE_AURORA_VEIL,
@@ -7348,24 +7402,24 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 2926
+#line 2947
             .species = SPECIES_SNOVER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2926
+#line 2947
             .heldItem = ITEM_OCCA_BERRY,
-#line 2931
+#line 2952
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 2927
+#line 2948
             .ability = ABILITY_HAIL_WARNING,
-#line 2928
+#line 2949
             .lvl = 29,
-#line 2930
+#line 2951
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-#line 2929
+#line 2950
             .teraType = TYPE_GRASS,
             .moves = {
-#line 2931
+#line 2952
                 MOVE_SEED_BOMB,
                 MOVE_ICE_PUNCH,
                 MOVE_AURORA_VEIL,
@@ -7374,432 +7428,376 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 2936
+#line 2957
     [DIFFICULTY_NORMAL][TRAINER_PRESTON] =
     {
-#line 2937
+#line 2958
         .trainerName = _("Preston"),
-#line 2938
+#line 2959
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 2939
+#line 2960
         .trainerPic = TRAINER_PIC_PSYCHIC_M,
         .encounterMusic_gender =
-#line 2941
+#line 2962
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2942
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2943
+#line 2963
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2964
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2945
+#line 2966
             .species = SPECIES_KIRLIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2947
+#line 2968
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2946
+#line 2967
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2949
+#line 2970
     [DIFFICULTY_NORMAL][TRAINER_VIRGIL] =
     {
-#line 2950
+#line 2971
         .trainerName = _("Virgil"),
-#line 2951
+#line 2972
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 2952
+#line 2973
         .trainerPic = TRAINER_PIC_PSYCHIC_M,
         .encounterMusic_gender =
-#line 2954
+#line 2975
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2955
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2956
+#line 2976
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2977
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2958
+#line 2979
             .species = SPECIES_RALTS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2960
+#line 2981
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2959
+#line 2980
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 2962
+#line 2983
     [DIFFICULTY_NORMAL][TRAINER_BLAKE] =
     {
-#line 2963
+#line 2984
         .trainerName = _("Blake"),
-#line 2964
+#line 2985
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 2965
+#line 2986
         .trainerPic = TRAINER_PIC_PSYCHIC_M,
         .encounterMusic_gender =
-#line 2967
+#line 2988
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2968
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2969
+#line 2989
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 2990
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 2971
+#line 2992
             .species = SPECIES_GIRAFARIG,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2973
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 2972
-            .lvl = 36,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 2975
-    [DIFFICULTY_NORMAL][TRAINER_PYRE_MAGMAGRUNT1] =
-    {
-#line 2976
-        .trainerName = _("Grunt"),
-#line 2977
-        .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 2978
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
-        .encounterMusic_gender =
-#line 2980
-            TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 2981
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 2982
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 2984
-            .species = SPECIES_RALTS,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2986
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2985
-            .lvl = 26,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 2988
-            .species = SPECIES_RALTS,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 2990
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 2989
-            .lvl = 26,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 2992
-            .species = SPECIES_KIRLIA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2994
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 2993
-            .lvl = 26,
+            .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 2996
-    [DIFFICULTY_NORMAL][TRAINER_JOSHUA] =
+    [DIFFICULTY_NORMAL][TRAINER_PYRE_MAGMAGRUNT1] =
     {
 #line 2997
-        .trainerName = _("Joshua"),
+        .trainerName = _("Grunt"),
 #line 2998
-        .trainerClass = TRAINER_CLASS_PSYCHIC,
+        .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 2999
-        .trainerPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 3001
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
 #line 3002
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 3003
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
 #line 3005
-            .species = SPECIES_KADABRA,
+            .species = SPECIES_RALTS,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 3007
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3006
-            .lvl = 41,
+            .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
 #line 3009
-            .species = SPECIES_SOLROCK,
+            .species = SPECIES_RALTS,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 3011
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3010
+            .lvl = 26,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 3013
+            .species = SPECIES_KIRLIA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 3015
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 3014
+            .lvl = 26,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 3017
+    [DIFFICULTY_NORMAL][TRAINER_JOSHUA] =
+    {
+#line 3018
+        .trainerName = _("Joshua"),
+#line 3019
+        .trainerClass = TRAINER_CLASS_PSYCHIC,
+#line 3020
+        .trainerPic = TRAINER_PIC_PSYCHIC_M,
+        .encounterMusic_gender =
+#line 3022
+            TRAINER_ENCOUNTER_MUSIC_INTENSE,
+#line 3023
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3024
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 3026
+            .species = SPECIES_KADABRA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 3028
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 3027
+            .lvl = 41,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 3030
+            .species = SPECIES_SOLROCK,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 3032
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 3031
             .lvl = 41,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3013
+#line 3034
     [DIFFICULTY_NORMAL][TRAINER_CAMERON_1] =
     {
-#line 3014
+#line 3035
         .trainerName = _("Cameron"),
-#line 3015
+#line 3036
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 3016
+#line 3037
         .trainerPic = TRAINER_PIC_PSYCHIC_M,
         .encounterMusic_gender =
-#line 3018
+#line 3039
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 3019
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3020
+#line 3040
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3041
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3022
+#line 3043
             .species = SPECIES_SOLROCK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3024
+#line 3045
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3023
+#line 3044
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3026
+#line 3047
     [DIFFICULTY_NORMAL][TRAINER_JACLYN] =
     {
-#line 3027
+#line 3048
         .trainerName = _("Jaclyn"),
-#line 3028
+#line 3049
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 3029
+#line 3050
         .trainerPic = TRAINER_PIC_PSYCHIC_F,
         .encounterMusic_gender =
-#line 3030
+#line 3051
 F_TRAINER_FEMALE | 
-#line 3031
+#line 3052
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 3032
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3033
+#line 3053
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3054
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3035
+#line 3056
             .species = SPECIES_ABRA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3037
+#line 3058
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3036
+#line 3057
             .lvl = 16,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3038
+#line 3059
                 MOVE_HIDDEN_POWER,
             },
             },
         },
     },
-#line 3040
+#line 3061
     [DIFFICULTY_NORMAL][TRAINER_HANNAH] =
     {
-#line 3041
+#line 3062
         .trainerName = _("Hannah"),
-#line 3042
+#line 3063
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 3043
+#line 3064
         .trainerPic = TRAINER_PIC_PSYCHIC_F,
         .encounterMusic_gender =
-#line 3044
+#line 3065
 F_TRAINER_FEMALE | 
-#line 3045
+#line 3066
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 3046
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3047
+#line 3067
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3068
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3049
+#line 3070
             .species = SPECIES_KIRLIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3051
+#line 3072
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 3050
+#line 3071
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3053
+#line 3074
     [DIFFICULTY_NORMAL][TRAINER_SAMANTHA] =
     {
-#line 3054
+#line 3075
         .trainerName = _("Samantha"),
-#line 3055
+#line 3076
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 3056
+#line 3077
         .trainerPic = TRAINER_PIC_PSYCHIC_F,
         .encounterMusic_gender =
-#line 3057
+#line 3078
 F_TRAINER_FEMALE | 
-#line 3058
+#line 3079
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 3059
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3060
+#line 3080
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3081
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3062
+#line 3083
             .species = SPECIES_XATU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3064
+#line 3085
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 3063
+#line 3084
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3066
+#line 3087
     [DIFFICULTY_NORMAL][TRAINER_MAURA] =
     {
-#line 3067
+#line 3088
         .trainerName = _("Maura"),
-#line 3068
+#line 3089
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 3069
+#line 3090
         .trainerPic = TRAINER_PIC_PSYCHIC_F,
         .encounterMusic_gender =
-#line 3070
+#line 3091
 F_TRAINER_FEMALE | 
-#line 3071
+#line 3092
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 3072
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3073
+#line 3093
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3094
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
-            {
-#line 3075
-            .species = SPECIES_KADABRA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3077
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 3076
-            .lvl = 36,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 3079
-    [DIFFICULTY_NORMAL][TRAINER_KAYLA] =
-    {
-#line 3080
-        .trainerName = _("Kayla"),
-#line 3081
-        .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 3082
-        .trainerPic = TRAINER_PIC_PSYCHIC_F,
-        .encounterMusic_gender =
-#line 3083
-F_TRAINER_FEMALE | 
-#line 3084
-            TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 3085
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3086
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 3088
-            .species = SPECIES_WOBBUFFET,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3090
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3089
-            .lvl = 26,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 3092
-            .species = SPECIES_NATU,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3094
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3093
-            .lvl = 26,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
             {
 #line 3096
             .species = SPECIES_KADABRA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 3098
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 3097
-            .lvl = 26,
+            .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 3100
-    [DIFFICULTY_NORMAL][TRAINER_ALEXIS] =
+    [DIFFICULTY_NORMAL][TRAINER_KAYLA] =
     {
 #line 3101
-        .trainerName = _("Alexis"),
+        .trainerName = _("Kayla"),
 #line 3102
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 3103
@@ -7810,223 +7808,277 @@ F_TRAINER_FEMALE |
 #line 3105
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
 #line 3106
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 3107
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
 #line 3109
-            .species = SPECIES_KIRLIA,
+            .species = SPECIES_WOBBUFFET,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 3111
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3110
-            .lvl = 41,
+            .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
 #line 3113
-            .species = SPECIES_XATU,
+            .species = SPECIES_NATU,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 3115
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3114
+            .lvl = 26,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 3117
+            .species = SPECIES_KADABRA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 3119
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 3118
+            .lvl = 26,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 3121
+    [DIFFICULTY_NORMAL][TRAINER_ALEXIS] =
+    {
+#line 3122
+        .trainerName = _("Alexis"),
+#line 3123
+        .trainerClass = TRAINER_CLASS_PSYCHIC,
+#line 3124
+        .trainerPic = TRAINER_PIC_PSYCHIC_F,
+        .encounterMusic_gender =
+#line 3125
+F_TRAINER_FEMALE | 
+#line 3126
+            TRAINER_ENCOUNTER_MUSIC_INTENSE,
+#line 3127
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3128
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 3130
+            .species = SPECIES_KIRLIA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 3132
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 3131
+            .lvl = 41,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 3134
+            .species = SPECIES_XATU,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 3136
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 3135
             .lvl = 41,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3117
+#line 3138
     [DIFFICULTY_NORMAL][TRAINER_JACKI_1] =
     {
-#line 3118
+#line 3139
         .trainerName = _("Jacki"),
-#line 3119
+#line 3140
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 3120
+#line 3141
         .trainerPic = TRAINER_PIC_PSYCHIC_F,
         .encounterMusic_gender =
-#line 3121
+#line 3142
 F_TRAINER_FEMALE | 
-#line 3122
+#line 3143
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 3123
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3124
+#line 3144
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3145
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3126
+#line 3147
             .species = SPECIES_KADABRA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3128
+#line 3149
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3127
+#line 3148
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 3130
+#line 3151
             .species = SPECIES_LUNATONE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3132
+#line 3153
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3131
+#line 3152
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3134
+#line 3155
     [DIFFICULTY_NORMAL][TRAINER_WALTER_1] =
     {
-#line 3135
+#line 3156
         .trainerName = _("Walter"),
-#line 3136
+#line 3157
         .trainerClass = TRAINER_CLASS_GENTLEMAN,
-#line 3137
+#line 3158
         .trainerPic = TRAINER_PIC_GENTLEMAN,
         .encounterMusic_gender =
-#line 3139
+#line 3160
             TRAINER_ENCOUNTER_MUSIC_RICH,
-#line 3140
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3141
+#line 3161
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3162
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3143
+#line 3164
             .species = SPECIES_MANECTRIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3145
+#line 3166
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3144
+#line 3165
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3147
+#line 3168
     [DIFFICULTY_NORMAL][TRAINER_MICAH] =
     {
-#line 3148
+#line 3169
         .trainerName = _("Micah"),
-#line 3149
+#line 3170
         .trainerClass = TRAINER_CLASS_GENTLEMAN,
-#line 3150
+#line 3171
         .trainerPic = TRAINER_PIC_GENTLEMAN,
         .encounterMusic_gender =
-#line 3152
+#line 3173
             TRAINER_ENCOUNTER_MUSIC_RICH,
-#line 3153
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3154
+#line 3174
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3175
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3156
+#line 3177
             .species = SPECIES_MANECTRIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3158
+#line 3179
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3157
+#line 3178
             .lvl = 44,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 3160
+#line 3181
             .species = SPECIES_MANECTRIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3162
+#line 3183
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3161
+#line 3182
             .lvl = 44,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3164
+#line 3185
     [DIFFICULTY_NORMAL][TRAINER_THOMAS] =
     {
-#line 3165
+#line 3186
         .trainerName = _("Thomas"),
-#line 3166
+#line 3187
         .trainerClass = TRAINER_CLASS_GENTLEMAN,
-#line 3167
+#line 3188
         .trainerPic = TRAINER_PIC_GENTLEMAN,
         .encounterMusic_gender =
-#line 3169
+#line 3190
             TRAINER_ENCOUNTER_MUSIC_RICH,
-#line 3170
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3171
+#line 3191
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3192
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3173
+#line 3194
             .species = SPECIES_ZANGOOSE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3175
+#line 3196
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3174
+#line 3195
             .lvl = 45,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3177
+#line 3198
     [DIFFICULTY_NORMAL][TRAINER_SIDNEY] =
     {
-#line 3178
+#line 3199
         .trainerName = _("Sidney"),
-#line 3179
+#line 3200
         .trainerClass = TRAINER_CLASS_ELITE_FOUR,
-#line 3180
+#line 3201
         .trainerPic = TRAINER_PIC_ELITE_FOUR_SIDNEY,
         .encounterMusic_gender =
-#line 3182
+#line 3203
             TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-#line 3183
-        .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-#line 3184
+#line 3204
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3185
+#line 3205
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 3186
+#line 3206
         .mugshotColor = MUGSHOT_COLOR_BLACK,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3188
+#line 3208
             .species = SPECIES_MIGHTYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3190
+#line 3210
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3189
+#line 3209
             .lvl = 46,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3191
+#line 3211
                 MOVE_ROAR,
                 MOVE_DOUBLE_EDGE,
                 MOVE_SAND_ATTACK,
@@ -8034,17 +8086,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3196
+#line 3216
             .species = SPECIES_SHIFTRY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3198
+#line 3218
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3197
+#line 3217
             .lvl = 48,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3199
+#line 3219
                 MOVE_TORMENT,
                 MOVE_DOUBLE_TEAM,
                 MOVE_SWAGGER,
@@ -8052,17 +8104,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3204
+#line 3224
             .species = SPECIES_CACTURNE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3206
+#line 3226
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3205
+#line 3225
             .lvl = 46,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3207
+#line 3227
                 MOVE_LEECH_SEED,
                 MOVE_FEINT_ATTACK,
                 MOVE_NEEDLE_ARM,
@@ -8070,17 +8122,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3212
+#line 3232
             .species = SPECIES_CRAWDAUNT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3214
+#line 3234
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3213
+#line 3233
             .lvl = 48,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3215
+#line 3235
                 MOVE_SURF,
                 MOVE_SWORDS_DANCE,
                 MOVE_STRENGTH,
@@ -8088,19 +8140,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3220
+#line 3240
             .species = SPECIES_ABSOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3220
+#line 3240
             .heldItem = ITEM_SITRUS_BERRY,
-#line 3222
+#line 3242
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3221
+#line 3241
             .lvl = 49,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3223
+#line 3243
                 MOVE_AERIAL_ACE,
                 MOVE_ROCK_SLIDE,
                 MOVE_SWORDS_DANCE,
@@ -8109,43 +8161,41 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3228
+#line 3248
     [DIFFICULTY_NORMAL][TRAINER_PHOEBE] =
     {
-#line 3229
+#line 3249
         .trainerName = _("Phoebe"),
-#line 3230
+#line 3250
         .trainerClass = TRAINER_CLASS_ELITE_FOUR,
-#line 3231
+#line 3251
         .trainerPic = TRAINER_PIC_ELITE_FOUR_PHOEBE,
         .encounterMusic_gender =
-#line 3232
+#line 3252
 F_TRAINER_FEMALE | 
-#line 3233
+#line 3253
             TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-#line 3234
-        .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-#line 3235
+#line 3254
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3236
+#line 3255
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 3237
+#line 3256
         .mugshotColor = MUGSHOT_COLOR_DARKPURPLE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3239
+#line 3258
             .species = SPECIES_DUSCLOPS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3241
+#line 3260
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3240
+#line 3259
             .lvl = 48,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3242
+#line 3261
                 MOVE_SHADOW_PUNCH,
                 MOVE_CONFUSE_RAY,
                 MOVE_CURSE,
@@ -8153,17 +8203,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3247
+#line 3266
             .species = SPECIES_BANETTE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3249
+#line 3268
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3248
+#line 3267
             .lvl = 49,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3250
+#line 3269
                 MOVE_SHADOW_BALL,
                 MOVE_GRUDGE,
                 MOVE_WILL_O_WISP,
@@ -8171,17 +8221,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3255
+#line 3274
             .species = SPECIES_SABLEYE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3257
+#line 3276
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3256
+#line 3275
             .lvl = 50,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3258
+#line 3277
                 MOVE_SHADOW_BALL,
                 MOVE_DOUBLE_TEAM,
                 MOVE_NIGHT_SHADE,
@@ -8189,17 +8239,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3263
+#line 3282
             .species = SPECIES_BANETTE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3265
+#line 3284
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3264
+#line 3283
             .lvl = 49,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3266
+#line 3285
                 MOVE_SHADOW_BALL,
                 MOVE_PSYCHIC,
                 MOVE_THUNDERBOLT,
@@ -8207,19 +8257,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3271
+#line 3290
             .species = SPECIES_DUSCLOPS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3271
+#line 3290
             .heldItem = ITEM_SITRUS_BERRY,
-#line 3273
+#line 3292
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3272
+#line 3291
             .lvl = 51,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3274
+#line 3293
                 MOVE_SHADOW_BALL,
                 MOVE_ICE_BEAM,
                 MOVE_ROCK_SLIDE,
@@ -8228,43 +8278,41 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3279
+#line 3298
     [DIFFICULTY_NORMAL][TRAINER_GLACIA] =
     {
-#line 3280
+#line 3299
         .trainerName = _("Glacia"),
-#line 3281
+#line 3300
         .trainerClass = TRAINER_CLASS_ELITE_FOUR,
-#line 3282
+#line 3301
         .trainerPic = TRAINER_PIC_ELITE_FOUR_GLACIA,
         .encounterMusic_gender =
-#line 3283
+#line 3302
 F_TRAINER_FEMALE | 
-#line 3284
+#line 3303
             TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-#line 3285
-        .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-#line 3286
+#line 3304
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3287
+#line 3305
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 3288
+#line 3306
         .mugshotColor = MUGSHOT_COLOR_WHITE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3290
+#line 3308
             .species = SPECIES_SEALEO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3292
+#line 3310
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3291
+#line 3309
             .lvl = 50,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3293
+#line 3311
                 MOVE_ENCORE,
                 MOVE_BODY_SLAM,
                 MOVE_HAIL,
@@ -8272,17 +8320,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3298
+#line 3316
             .species = SPECIES_GLALIE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3300
+#line 3318
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3299
+#line 3317
             .lvl = 50,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3301
+#line 3319
                 MOVE_LIGHT_SCREEN,
                 MOVE_CRUNCH,
                 MOVE_ICY_WIND,
@@ -8290,17 +8338,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3306
+#line 3324
             .species = SPECIES_SEALEO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3308
+#line 3326
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3307
+#line 3325
             .lvl = 52,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3309
+#line 3327
                 MOVE_ATTRACT,
                 MOVE_DOUBLE_EDGE,
                 MOVE_HAIL,
@@ -8308,17 +8356,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3314
+#line 3332
             .species = SPECIES_GLALIE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3316
+#line 3334
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3315
+#line 3333
             .lvl = 52,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3317
+#line 3335
                 MOVE_SHADOW_BALL,
                 MOVE_EXPLOSION,
                 MOVE_HAIL,
@@ -8326,19 +8374,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3322
+#line 3340
             .species = SPECIES_WALREIN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3322
+#line 3340
             .heldItem = ITEM_SITRUS_BERRY,
-#line 3324
+#line 3342
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3323
+#line 3341
             .lvl = 53,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3325
+#line 3343
                 MOVE_SURF,
                 MOVE_BODY_SLAM,
                 MOVE_ICE_BEAM,
@@ -8347,41 +8395,39 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3330
+#line 3348
     [DIFFICULTY_NORMAL][TRAINER_DRAKE] =
     {
-#line 3331
+#line 3349
         .trainerName = _("Drake"),
-#line 3332
+#line 3350
         .trainerClass = TRAINER_CLASS_ELITE_FOUR,
-#line 3333
+#line 3351
         .trainerPic = TRAINER_PIC_ELITE_FOUR_DRAKE,
         .encounterMusic_gender =
-#line 3335
+#line 3353
             TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-#line 3336
-        .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-#line 3337
+#line 3354
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3338
+#line 3355
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 3339
+#line 3356
         .mugshotColor = MUGSHOT_COLOR_DRAKE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3341
+#line 3358
             .species = SPECIES_SHELGON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3343
+#line 3360
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3342
+#line 3359
             .lvl = 52,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3344
+#line 3361
                 MOVE_ROCK_TOMB,
                 MOVE_DRAGON_CLAW,
                 MOVE_PROTECT,
@@ -8389,17 +8435,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3349
+#line 3366
             .species = SPECIES_ALTARIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3351
+#line 3368
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3350
+#line 3367
             .lvl = 54,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3352
+#line 3369
                 MOVE_DOUBLE_EDGE,
                 MOVE_DRAGON_BREATH,
                 MOVE_DRAGON_DANCE,
@@ -8407,17 +8453,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3357
+#line 3374
             .species = SPECIES_KINGDRA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3359
+#line 3376
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3358
+#line 3375
             .lvl = 53,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3360
+#line 3377
                 MOVE_SMOKESCREEN,
                 MOVE_DRAGON_DANCE,
                 MOVE_SURF,
@@ -8425,17 +8471,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3365
+#line 3382
             .species = SPECIES_FLYGON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3367
+#line 3384
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3366
+#line 3383
             .lvl = 53,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3368
+#line 3385
                 MOVE_FLAMETHROWER,
                 MOVE_CRUNCH,
                 MOVE_DRAGON_BREATH,
@@ -8443,19 +8489,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3373
+#line 3390
             .species = SPECIES_SALAMENCE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3373
+#line 3390
             .heldItem = ITEM_SITRUS_BERRY,
-#line 3375
+#line 3392
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3374
+#line 3391
             .lvl = 55,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3376
+#line 3393
                 MOVE_FLAMETHROWER,
                 MOVE_DRAGON_CLAW,
                 MOVE_ROCK_SLIDE,
@@ -8464,43 +8510,43 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3381
+#line 3398
     [DIFFICULTY_NORMAL][TRAINER_ROXANNE_1] =
     {
-#line 3382
+#line 3399
         .trainerName = _("Roxanne"),
-#line 3383
+#line 3400
         .trainerClass = TRAINER_CLASS_LEADER,
-#line 3385
+#line 3402
         .trainerPic = TRAINER_PIC_LEADER_ROXANNE,
         .encounterMusic_gender =
-#line 3386
+#line 3403
 F_TRAINER_FEMALE | 
-#line 3387
+#line 3404
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 3388
+#line 3405
         .items = { ITEM_POTION, ITEM_POTION },
-#line 3389
+#line 3406
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3390
+#line 3407
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 3384
+#line 3401
         .mugshotColor = MUGSHOT_COLOR_BROWN,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3392
+#line 3409
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3394
+#line 3411
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 3393
+#line 3410
             .lvl = 12,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3395
+#line 3412
                 MOVE_TACKLE,
                 MOVE_DEFENSE_CURL,
                 MOVE_ROCK_THROW,
@@ -8508,17 +8554,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3400
+#line 3417
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3402
+#line 3419
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 3401
+#line 3418
             .lvl = 12,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3403
+#line 3420
                 MOVE_TACKLE,
                 MOVE_DEFENSE_CURL,
                 MOVE_ROCK_THROW,
@@ -8526,19 +8572,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3408
+#line 3425
             .species = SPECIES_NOSEPASS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3408
+#line 3425
             .heldItem = ITEM_ORAN_BERRY,
-#line 3410
+#line 3427
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 3409
+#line 3426
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3411
+#line 3428
                 MOVE_BLOCK,
                 MOVE_HARDEN,
                 MOVE_TACKLE,
@@ -8547,41 +8593,41 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3416
+#line 3433
     [DIFFICULTY_NORMAL][TRAINER_BRAWLY_1] =
     {
-#line 3417
+#line 3434
         .trainerName = _("Brawly"),
-#line 3418
+#line 3435
         .trainerClass = TRAINER_CLASS_LEADER,
-#line 3420
+#line 3437
         .trainerPic = TRAINER_PIC_LEADER_BRAWLY,
         .encounterMusic_gender =
-#line 3422
+#line 3439
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 3423
+#line 3440
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3424
+#line 3441
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 3419
+#line 3436
         .mugshotColor = MUGSHOT_COLOR_ORANGE,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3426
+#line 3443
             .species = SPECIES_KUBFU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3426
+#line 3443
             .heldItem = ITEM_IAPAPA_BERRY,
-#line 3428
+#line 3445
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3427
+#line 3444
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3429
+#line 3446
                 MOVE_BRICK_BREAK,
                 MOVE_FAINT_ATTACK,
                 MOVE_ZEN_HEADBUTT,
@@ -8589,21 +8635,21 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3434
+#line 3451
             .species = SPECIES_POLIWHIRL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3434
+#line 3451
             .heldItem = ITEM_WISE_GLASSES,
-#line 3437
+#line 3454
             .iv = TRAINER_PARTY_IVS(30, 31, 31, 31, 30, 31),
-#line 3436
+#line 3453
             .ability = ABILITY_WATER_ABSORB,
-#line 3435
+#line 3452
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3438
+#line 3455
                 MOVE_BUBBLE_BEAM,
                 MOVE_ICE_BEAM,
                 MOVE_SUPERPOWER,
@@ -8611,42 +8657,42 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3443
+#line 3460
             .species = SPECIES_LOPUNNY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3443
+#line 3460
             .heldItem = ITEM_EJECT_BUTTON,
-#line 3446
+#line 3463
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3445
+#line 3462
             .ability = ABILITY_LIMBER,
-#line 3444
+#line 3461
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3447
+#line 3464
                 MOVE_DRAIN_PUNCH,
                 MOVE_RETALIATE,
                 MOVE_HEADBUTT,
             },
             },
             {
-#line 3451
+#line 3468
             .species = SPECIES_HITMONTOP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3451
+#line 3468
             .heldItem = ITEM_MUSCLE_BAND,
-#line 3454
+#line 3471
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3453
+#line 3470
             .ability = ABILITY_INTIMIDATE,
-#line 3452
+#line 3469
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3455
+#line 3472
                 MOVE_MACH_PUNCH,
                 MOVE_FAKE_OUT,
                 MOVE_COUNTER,
@@ -8654,21 +8700,21 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3460
+#line 3477
             .species = SPECIES_COMBUSKEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3460
+#line 3477
             .heldItem = ITEM_EXPERT_BELT,
-#line 3463
+#line 3480
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3462
+#line 3479
             .ability = ABILITY_SPEED_BOOST,
-#line 3461
+#line 3478
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3464
+#line 3481
                 MOVE_INCINERATE,
                 MOVE_THUNDER_PUNCH,
                 MOVE_DOUBLE_KICK,
@@ -8676,21 +8722,21 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3469
+#line 3486
             .species = SPECIES_SCRAGGY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3469
+#line 3486
             .heldItem = ITEM_EVIOLITE,
-#line 3472
+#line 3489
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3471
+#line 3488
             .ability = ABILITY_SHED_SKIN,
-#line 3470
+#line 3487
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3473
+#line 3490
                 MOVE_ROCK_TOMB,
                 MOVE_REST,
                 MOVE_BRICK_BREAK,
@@ -8699,67 +8745,66 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3478
+#line 3495
     [DIFFICULTY_NORMAL][TRAINER_WATTSON_1] =
     {
-#line 3479
+#line 3496
         .trainerName = _("Wattson"),
-#line 3480
+#line 3497
         .trainerClass = TRAINER_CLASS_LEADER,
-#line 3482
+#line 3499
         .trainerPic = TRAINER_PIC_LEADER_WATTSON,
         .encounterMusic_gender =
-#line 3484
+#line 3501
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 3485
+#line 3502
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3486
+#line 3503
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 3481
+#line 3498
         .mugshotColor = MUGSHOT_COLOR_YELLOW,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3488
+#line 3505
             .species = SPECIES_MANECTRIC_MEGA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3488
+#line 3505
             .heldItem = ITEM_MANECTITE,
-#line 3492
+#line 3509
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3489
+#line 3506
             .ability = ABILITY_INTIMIDATE,
-#line 3490
+#line 3507
             .lvl = 29,
-#line 3491
+#line 3508
             .nature = NATURE_BRAVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3492
+#line 3509
                 MOVE_HYPER_VOICE,
-                MOVE_SIGNAL_BEAM,
                 MOVE_VOLT_SWITCH,
                 MOVE_FIRE_FANG,
             },
             },
             {
-#line 3497
+#line 3513
             .species = SPECIES_TOGEDEMARU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3497
+#line 3513
             .heldItem = ITEM_ROCKY_HELMET,
-#line 3501
+#line 3517
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3498
+#line 3514
             .ability = ABILITY_IRON_BARBS,
-#line 3499
+#line 3515
             .lvl = 30,
-#line 3500
+#line 3516
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3501
+#line 3517
                 MOVE_SMART_STRIKE,
                 MOVE_SPARK,
                 MOVE_ELECTRIC_TERRAIN,
@@ -8767,42 +8812,42 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3506
+#line 3522
             .species = SPECIES_VOLTORB_HISUI,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3506
+#line 3522
             .heldItem = ITEM_EVIOLITE,
-#line 3510
+#line 3526
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3507
+#line 3523
             .ability = ABILITY_STATIC,
-#line 3508
+#line 3524
             .lvl = 31,
-#line 3509
+#line 3525
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3510
+#line 3526
                 MOVE_VOLT_SWITCH,
             },
             },
             {
-#line 3512
+#line 3528
             .species = SPECIES_ROTOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3512
+#line 3528
             .heldItem = ITEM_WIDE_LENS,
-#line 3516
+#line 3532
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3513
+#line 3529
             .ability = ABILITY_LEVITATE,
-#line 3514
+#line 3530
             .lvl = 31,
-#line 3515
+#line 3531
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3516
+#line 3532
                 MOVE_HEX,
                 MOVE_THUNDER_WAVE,
                 MOVE_TOXIC,
@@ -8810,22 +8855,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3521
+#line 3537
             .species = SPECIES_RAICHU_ALOLA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3521
+#line 3537
             .heldItem = ITEM_FOCUS_SASH,
-#line 3525
+#line 3541
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3522
+#line 3538
             .ability = ABILITY_SURGE_SURFER,
-#line 3523
+#line 3539
             .lvl = 30,
-#line 3524
+#line 3540
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3525
+#line 3541
                 MOVE_FAKE_OUT,
                 MOVE_VOLT_SWITCH,
                 MOVE_GRASS_KNOT,
@@ -8833,22 +8878,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3530
+#line 3546
             .species = SPECIES_IRON_THORNS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3530
+#line 3546
             .heldItem = ITEM_SALAC_BERRY,
-#line 3534
+#line 3550
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3531
+#line 3547
             .ability = ABILITY_QUARK_DRIVE,
-#line 3532
+#line 3548
             .lvl = 29,
-#line 3533
+#line 3549
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3534
+#line 3550
                 MOVE_THUNDER_FANG,
                 MOVE_ICE_FANG,
                 MOVE_ROCK_TOMB,
@@ -8857,43 +8902,41 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3539
+#line 3555
     [DIFFICULTY_NORMAL][TRAINER_FLANNERY_1] =
     {
-#line 3540
+#line 3556
         .trainerName = _("Flannery"),
-#line 3541
+#line 3557
         .trainerClass = TRAINER_CLASS_LEADER,
-#line 3543
+#line 3559
         .trainerPic = TRAINER_PIC_LEADER_FLANNERY,
         .encounterMusic_gender =
-#line 3544
+#line 3560
 F_TRAINER_FEMALE | 
-#line 3545
+#line 3561
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 3546
-        .items = { ITEM_HYPER_POTION, ITEM_HYPER_POTION },
-#line 3547
+#line 3562
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3548
+#line 3563
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 3542
+#line 3558
         .mugshotColor = MUGSHOT_COLOR_RED,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3550
+#line 3565
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3552
+#line 3567
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 3551
+#line 3566
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3553
+#line 3568
                 MOVE_OVERHEAT,
                 MOVE_TAKE_DOWN,
                 MOVE_MAGNITUDE,
@@ -8901,17 +8944,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3558
+#line 3573
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3560
+#line 3575
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 3559
+#line 3574
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3561
+#line 3576
                 MOVE_OVERHEAT,
                 MOVE_SMOG,
                 MOVE_LIGHT_SCREEN,
@@ -8919,17 +8962,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3566
+#line 3581
             .species = SPECIES_CAMERUPT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3568
+#line 3583
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3567
+#line 3582
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3569
+#line 3584
                 MOVE_OVERHEAT,
                 MOVE_TACKLE,
                 MOVE_SUNNY_DAY,
@@ -8937,19 +8980,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3574
+#line 3589
             .species = SPECIES_TORKOAL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3574
+#line 3589
             .heldItem = ITEM_WHITE_HERB,
-#line 3576
+#line 3591
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3575
+#line 3590
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3577
+#line 3592
                 MOVE_OVERHEAT,
                 MOVE_SUNNY_DAY,
                 MOVE_BODY_SLAM,
@@ -8958,41 +9001,39 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3582
+#line 3597
     [DIFFICULTY_NORMAL][TRAINER_NORMAN_1] =
     {
-#line 3583
+#line 3598
         .trainerName = _("Norman"),
-#line 3584
+#line 3599
         .trainerClass = TRAINER_CLASS_LEADER,
-#line 3586
+#line 3601
         .trainerPic = TRAINER_PIC_LEADER_NORMAN,
         .encounterMusic_gender =
-#line 3588
+#line 3603
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 3589
-        .items = { ITEM_HYPER_POTION, ITEM_HYPER_POTION },
-#line 3590
+#line 3604
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3591
+#line 3605
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 3585
+#line 3600
         .mugshotColor = MUGSHOT_COLOR_GREY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3593
+#line 3607
             .species = SPECIES_SPINDA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3595
+#line 3609
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 3594
+#line 3608
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3596
+#line 3610
                 MOVE_TEETER_DANCE,
                 MOVE_PSYBEAM,
                 MOVE_FACADE,
@@ -9000,17 +9041,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3601
+#line 3615
             .species = SPECIES_VIGOROTH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3603
+#line 3617
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 3602
+#line 3616
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3604
+#line 3618
                 MOVE_SLASH,
                 MOVE_FACADE,
                 MOVE_ENCORE,
@@ -9018,17 +9059,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3609
+#line 3623
             .species = SPECIES_LINOONE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3611
+#line 3625
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 3610
+#line 3624
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3612
+#line 3626
                 MOVE_SLASH,
                 MOVE_BELLY_DRUM,
                 MOVE_FACADE,
@@ -9036,19 +9077,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3617
+#line 3631
             .species = SPECIES_SLAKING,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3617
+#line 3631
             .heldItem = ITEM_SITRUS_BERRY,
-#line 3619
+#line 3633
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3618
+#line 3632
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3620
+#line 3634
                 MOVE_COUNTER,
                 MOVE_YAWN,
                 MOVE_FACADE,
@@ -9057,43 +9098,43 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3625
+#line 3639
     [DIFFICULTY_NORMAL][TRAINER_WINONA_1] =
     {
-#line 3626
+#line 3640
         .trainerName = _("Winona"),
-#line 3627
+#line 3641
         .trainerClass = TRAINER_CLASS_LEADER,
-#line 3629
+#line 3643
         .trainerPic = TRAINER_PIC_LEADER_WINONA,
         .encounterMusic_gender =
-#line 3630
+#line 3644
 F_TRAINER_FEMALE | 
-#line 3631
+#line 3645
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 3632
+#line 3646
         .items = { ITEM_HYPER_POTION, ITEM_HYPER_POTION },
-#line 3633
+#line 3647
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3634
+#line 3648
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 3628
+#line 3642
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3636
+#line 3650
             .species = SPECIES_SWABLU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3638
+#line 3652
             .iv = TRAINER_PARTY_IVS(25, 25, 25, 25, 25, 25),
-#line 3637
+#line 3651
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3639
+#line 3653
                 MOVE_PERISH_SONG,
                 MOVE_MIRROR_MOVE,
                 MOVE_SAFEGUARD,
@@ -9101,17 +9142,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3644
+#line 3658
             .species = SPECIES_TROPIUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3646
+#line 3660
             .iv = TRAINER_PARTY_IVS(25, 25, 25, 25, 25, 25),
-#line 3645
+#line 3659
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3647
+#line 3661
                 MOVE_SUNNY_DAY,
                 MOVE_AERIAL_ACE,
                 MOVE_SOLAR_BEAM,
@@ -9119,17 +9160,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3652
+#line 3666
             .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3654
+#line 3668
             .iv = TRAINER_PARTY_IVS(25, 25, 25, 25, 25, 25),
-#line 3653
+#line 3667
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3655
+#line 3669
                 MOVE_WATER_GUN,
                 MOVE_SUPERSONIC,
                 MOVE_PROTECT,
@@ -9137,17 +9178,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3660
+#line 3674
             .species = SPECIES_SKARMORY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3662
+#line 3676
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
-#line 3661
+#line 3675
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3663
+#line 3677
                 MOVE_SAND_ATTACK,
                 MOVE_FURY_ATTACK,
                 MOVE_STEEL_WING,
@@ -9155,19 +9196,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3668
+#line 3682
             .species = SPECIES_ALTARIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3668
+#line 3682
             .heldItem = ITEM_ORAN_BERRY,
-#line 3670
+#line 3684
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3669
+#line 3683
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3671
+#line 3685
                 MOVE_EARTHQUAKE,
                 MOVE_DRAGON_BREATH,
                 MOVE_DRAGON_DANCE,
@@ -9176,41 +9217,41 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3676
+#line 3690
     [DIFFICULTY_NORMAL][TRAINER_TATE_AND_LIZA_1] =
     {
-#line 3677
+#line 3691
         .trainerName = _("Tate&Liza"),
-#line 3678
+#line 3692
         .trainerClass = TRAINER_CLASS_LEADER,
-#line 3680
+#line 3694
         .trainerPic = TRAINER_PIC_LEADER_TATE_AND_LIZA,
         .encounterMusic_gender =
-#line 3682
+#line 3696
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 3683
+#line 3697
         .items = { ITEM_HYPER_POTION, ITEM_HYPER_POTION, ITEM_HYPER_POTION, ITEM_HYPER_POTION },
-#line 3684
+#line 3698
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 3685
+#line 3699
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 3679
+#line 3693
         .mugshotColor = MUGSHOT_COLOR_PURPLE,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3687
+#line 3701
             .species = SPECIES_CLAYDOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3689
+#line 3703
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3688
+#line 3702
             .lvl = 41,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3690
+#line 3704
                 MOVE_EARTHQUAKE,
                 MOVE_ANCIENT_POWER,
                 MOVE_PSYCHIC,
@@ -9218,17 +9259,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3695
+#line 3709
             .species = SPECIES_XATU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3697
+#line 3711
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3696
+#line 3710
             .lvl = 41,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3698
+#line 3712
                 MOVE_PSYCHIC,
                 MOVE_SUNNY_DAY,
                 MOVE_CONFUSE_RAY,
@@ -9236,19 +9277,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3703
+#line 3717
             .species = SPECIES_LUNATONE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3703
+#line 3717
             .heldItem = ITEM_SITRUS_BERRY,
-#line 3705
+#line 3719
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3704
+#line 3718
             .lvl = 42,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3706
+#line 3720
                 MOVE_LIGHT_SCREEN,
                 MOVE_PSYCHIC,
                 MOVE_HYPNOSIS,
@@ -9256,19 +9297,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3711
+#line 3725
             .species = SPECIES_SOLROCK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3711
+#line 3725
             .heldItem = ITEM_SITRUS_BERRY,
-#line 3713
+#line 3727
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3712
+#line 3726
             .lvl = 42,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3714
+#line 3728
                 MOVE_SUNNY_DAY,
                 MOVE_SOLAR_BEAM,
                 MOVE_PSYCHIC,
@@ -9277,41 +9318,41 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3719
+#line 3733
     [DIFFICULTY_NORMAL][TRAINER_JUAN_1] =
     {
-#line 3720
+#line 3734
         .trainerName = _("Juan"),
-#line 3721
+#line 3735
         .trainerClass = TRAINER_CLASS_LEADER,
-#line 3723
+#line 3737
         .trainerPic = TRAINER_PIC_LEADER_JUAN,
         .encounterMusic_gender =
-#line 3725
+#line 3739
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 3726
+#line 3740
         .items = { ITEM_HYPER_POTION, ITEM_HYPER_POTION },
-#line 3727
+#line 3741
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3728
+#line 3742
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 3722
+#line 3736
         .mugshotColor = MUGSHOT_COLOR_BLUE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3730
+#line 3744
             .species = SPECIES_LUVDISC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3732
+#line 3746
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 3731
+#line 3745
             .lvl = 41,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3733
+#line 3747
                 MOVE_WATER_PULSE,
                 MOVE_ATTRACT,
                 MOVE_SWEET_KISS,
@@ -9319,17 +9360,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3738
+#line 3752
             .species = SPECIES_WHISCASH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3740
+#line 3754
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 3739
+#line 3753
             .lvl = 41,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3741
+#line 3755
                 MOVE_RAIN_DANCE,
                 MOVE_WATER_PULSE,
                 MOVE_AMNESIA,
@@ -9337,17 +9378,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3746
+#line 3760
             .species = SPECIES_SEALEO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3748
+#line 3762
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 3747
+#line 3761
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3749
+#line 3763
                 MOVE_ENCORE,
                 MOVE_BODY_SLAM,
                 MOVE_AURORA_BEAM,
@@ -9355,17 +9396,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3754
+#line 3768
             .species = SPECIES_CRAWDAUNT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3756
+#line 3770
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 3755
+#line 3769
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3757
+#line 3771
                 MOVE_WATER_PULSE,
                 MOVE_CRABHAMMER,
                 MOVE_TAUNT,
@@ -9373,19 +9414,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3762
+#line 3776
             .species = SPECIES_KINGDRA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3762
+#line 3776
             .heldItem = ITEM_CHESTO_BERRY,
-#line 3764
+#line 3778
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 3763
+#line 3777
             .lvl = 46,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3765
+#line 3779
                 MOVE_WATER_PULSE,
                 MOVE_DOUBLE_TEAM,
                 MOVE_ICE_BEAM,
@@ -9394,234 +9435,234 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3770
+#line 3784
     [DIFFICULTY_NORMAL][TRAINER_JERRY_1] =
     {
-#line 3771
+#line 3785
         .trainerName = _("Jerry"),
-#line 3772
+#line 3786
         .trainerClass = TRAINER_CLASS_SCHOOL_KID,
-#line 3773
+#line 3787
         .trainerPic = TRAINER_PIC_SCHOOL_KID_M,
         .encounterMusic_gender =
-#line 3775
+#line 3789
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 3776
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3777
+#line 3790
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3791
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3779
+#line 3793
             .species = SPECIES_RALTS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3781
+#line 3795
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 3780
+#line 3794
             .lvl = 9,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3783
+#line 3797
     [DIFFICULTY_NORMAL][TRAINER_TED] =
     {
-#line 3784
+#line 3798
         .trainerName = _("Ted"),
-#line 3785
+#line 3799
         .trainerClass = TRAINER_CLASS_SCHOOL_KID,
-#line 3786
+#line 3800
         .trainerPic = TRAINER_PIC_SCHOOL_KID_M,
         .encounterMusic_gender =
-#line 3788
+#line 3802
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 3789
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3790
+#line 3803
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3804
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3792
+#line 3806
             .species = SPECIES_RALTS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3794
+#line 3808
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 3793
+#line 3807
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3796
+#line 3810
     [DIFFICULTY_NORMAL][TRAINER_PAUL] =
     {
-#line 3797
+#line 3811
         .trainerName = _("Paul"),
-#line 3798
+#line 3812
         .trainerClass = TRAINER_CLASS_SCHOOL_KID,
-#line 3799
+#line 3813
         .trainerPic = TRAINER_PIC_SCHOOL_KID_M,
         .encounterMusic_gender =
-#line 3801
+#line 3815
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 3802
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3803
+#line 3816
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3817
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3805
+#line 3819
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3807
+#line 3821
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 3806
+#line 3820
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 3809
+#line 3823
             .species = SPECIES_ODDISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3811
+#line 3825
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 3810
+#line 3824
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 3813
+#line 3827
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3815
+#line 3829
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 3814
+#line 3828
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3817
+#line 3831
     [DIFFICULTY_NORMAL][TRAINER_KAREN_1] =
     {
-#line 3818
+#line 3832
         .trainerName = _("Karen"),
-#line 3819
+#line 3833
         .trainerClass = TRAINER_CLASS_SCHOOL_KID,
-#line 3820
+#line 3834
         .trainerPic = TRAINER_PIC_SCHOOL_KID_F,
         .encounterMusic_gender =
-#line 3821
+#line 3835
 F_TRAINER_FEMALE | 
-#line 3822
+#line 3836
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 3823
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3824
+#line 3837
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3838
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3826
+#line 3840
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3828
+#line 3842
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 3827
+#line 3841
             .lvl = 9,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3830
+#line 3844
     [DIFFICULTY_NORMAL][TRAINER_GEORGIA] =
     {
-#line 3831
+#line 3845
         .trainerName = _("Georgia"),
-#line 3832
+#line 3846
         .trainerClass = TRAINER_CLASS_SCHOOL_KID,
-#line 3833
+#line 3847
         .trainerPic = TRAINER_PIC_SCHOOL_KID_F,
         .encounterMusic_gender =
-#line 3834
+#line 3848
 F_TRAINER_FEMALE | 
-#line 3835
+#line 3849
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 3836
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3837
+#line 3850
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3851
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3839
+#line 3853
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3841
+#line 3855
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 3840
+#line 3854
             .lvl = 16,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 3843
+#line 3857
             .species = SPECIES_BEAUTIFLY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3845
+#line 3859
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 3844
+#line 3858
             .lvl = 16,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3847
+#line 3861
     [DIFFICULTY_NORMAL][TRAINER_KATE_AND_JOY] =
     {
-#line 3848
+#line 3862
         .trainerName = _("Kate & Joy"),
-#line 3849
+#line 3863
         .trainerClass = TRAINER_CLASS_SR_AND_JR,
-#line 3850
+#line 3864
         .trainerPic = TRAINER_PIC_SR_AND_JR,
         .encounterMusic_gender =
-#line 3852
+#line 3866
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 3853
-        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 3854
+#line 3867
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 3868
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3856
+#line 3870
             .species = SPECIES_SPINDA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3858
+#line 3872
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3857
+#line 3871
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3859
+#line 3873
                 MOVE_HYPNOSIS,
                 MOVE_PSYBEAM,
                 MOVE_DIZZY_PUNCH,
@@ -9629,17 +9670,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3864
+#line 3878
             .species = SPECIES_SLAKING,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3866
+#line 3880
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3865
+#line 3879
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3867
+#line 3881
                 MOVE_FOCUS_PUNCH,
                 MOVE_YAWN,
                 MOVE_SLACK_OFF,
@@ -9648,42 +9689,42 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3872
+#line 3886
     [DIFFICULTY_NORMAL][TRAINER_ANNA_AND_MEG_1] =
     {
-#line 3873
+#line 3887
         .trainerName = _("Anna & Meg"),
-#line 3874
+#line 3888
         .trainerClass = TRAINER_CLASS_SR_AND_JR,
-#line 3875
+#line 3889
         .trainerPic = TRAINER_PIC_SR_AND_JR,
         .encounterMusic_gender =
-#line 3877
+#line 3891
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 3878
+#line 3892
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 3879
+#line 3893
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3881
+#line 3895
             .species = SPECIES_PERSIAN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3881
+#line 3895
             .heldItem = ITEM_MUSCLE_BAND,
-#line 3885
+#line 3899
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3882
+#line 3896
             .ability = ABILITY_LIMBER,
-#line 3883
+#line 3897
             .lvl = 30,
-#line 3884
+#line 3898
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3885
+#line 3899
                 MOVE_FAKE_OUT,
                 MOVE_TRAILBLAZE,
                 MOVE_METAL_CLAW,
@@ -9691,22 +9732,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3890
+#line 3904
             .species = SPECIES_BRAMBLEGHAST,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3890
+#line 3904
             .heldItem = ITEM_FOCUS_SASH,
-#line 3894
+#line 3908
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3891
+#line 3905
             .ability = ABILITY_WIND_RIDER,
-#line 3892
+#line 3906
             .lvl = 29,
-#line 3893
+#line 3907
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3894
+#line 3908
                 MOVE_HEX,
                 MOVE_MEGA_DRAIN,
                 MOVE_SHADOW_SNEAK,
@@ -9714,22 +9755,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3899
+#line 3913
             .species = SPECIES_CARKOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3899
+#line 3913
             .heldItem = ITEM_PASSHO_BERRY,
-#line 3903
+#line 3917
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3900
+#line 3914
             .ability = ABILITY_STEAM_ENGINE,
-#line 3901
+#line 3915
             .lvl = 29,
-#line 3902
+#line 3916
             .nature = NATURE_CALM,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3903
+#line 3917
                 MOVE_BODY_PRESS,
                 MOVE_BULLDOZE,
                 MOVE_ROCK_TOMB,
@@ -9737,22 +9778,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3908
+#line 3922
             .species = SPECIES_HAKAMO_O,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3908
+#line 3922
             .heldItem = ITEM_MUSCLE_BAND,
-#line 3912
+#line 3926
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3909
+#line 3923
             .ability = ABILITY_OVERCOAT,
-#line 3910
+#line 3924
             .lvl = 30,
-#line 3911
+#line 3925
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3912
+#line 3926
                 MOVE_BREAKING_SWIPE,
                 MOVE_METAL_CLAW,
                 MOVE_REVERSAL,
@@ -9761,89 +9802,89 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3917
+#line 3931
     [DIFFICULTY_NORMAL][TRAINER_VICTOR] =
     {
-#line 3918
+#line 3932
         .trainerName = _("Victor"),
-#line 3919
+#line 3933
         .trainerClass = TRAINER_CLASS_WINSTRATE,
-#line 3920
+#line 3934
         .trainerPic = TRAINER_PIC_POKEFAN_M,
         .encounterMusic_gender =
-#line 3922
+#line 3936
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 3923
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3924
+#line 3937
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3938
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3926
+#line 3940
             .species = SPECIES_TAILLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3926
+#line 3940
             .heldItem = ITEM_ORAN_BERRY,
-#line 3928
+#line 3942
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 3927
+#line 3941
             .lvl = 16,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 3930
+#line 3944
             .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3930
+#line 3944
             .heldItem = ITEM_ORAN_BERRY,
-#line 3932
+#line 3946
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 3931
+#line 3945
             .lvl = 16,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 3934
+#line 3948
     [DIFFICULTY_NORMAL][TRAINER_MIGUEL_1] =
     {
-#line 3935
+#line 3949
         .trainerName = _("Miguel"),
-#line 3936
+#line 3950
         .trainerClass = TRAINER_CLASS_POKEFAN,
-#line 3937
+#line 3951
         .trainerPic = TRAINER_PIC_POKEFAN_M,
         .encounterMusic_gender =
-#line 3939
+#line 3953
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 3940
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3941
+#line 3954
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3955
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3943
+#line 3957
             .species = SPECIES_VIVILLON_OCEAN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3943
+#line 3957
             .heldItem = ITEM_ROCKY_HELMET,
-#line 3947
+#line 3961
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3944
+#line 3958
             .ability = ABILITY_COMPOUND_EYES,
-#line 3945
+#line 3959
             .lvl = 27,
-#line 3946
+#line 3960
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3947
+#line 3961
                 MOVE_BUG_BITE,
                 MOVE_STRUGGLE_BUG,
                 MOVE_AIR_CUTTER,
@@ -9851,22 +9892,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3952
+#line 3966
             .species = SPECIES_WORMADAM_TRASH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3952
+#line 3966
             .heldItem = ITEM_COVERT_CLOAK,
-#line 3956
+#line 3970
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3953
+#line 3967
             .ability = ABILITY_OVERCOAT,
-#line 3954
+#line 3968
             .lvl = 28,
-#line 3955
+#line 3969
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3956
+#line 3970
                 MOVE_BUG_BITE,
                 MOVE_CONFUSION,
                 MOVE_INFESTATION,
@@ -9875,39 +9916,39 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 3961
+#line 3975
     [DIFFICULTY_NORMAL][TRAINER_COLTON] =
     {
-#line 3962
+#line 3976
         .trainerName = _("Colton"),
-#line 3963
+#line 3977
         .trainerClass = TRAINER_CLASS_POKEFAN,
-#line 3964
+#line 3978
         .trainerPic = TRAINER_PIC_POKEFAN_M,
         .encounterMusic_gender =
-#line 3966
+#line 3980
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 3967
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 3968
+#line 3981
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 3982
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 3970
+#line 3984
             .species = SPECIES_SKITTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3970
+#line 3984
             .heldItem = ITEM_ORAN_BERRY,
-#line 3972
+#line 3986
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3971
+#line 3985
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3973
+#line 3987
                 MOVE_ASSIST,
                 MOVE_CHARM,
                 MOVE_FEINT_ATTACK,
@@ -9915,19 +9956,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3978
+#line 3992
             .species = SPECIES_SKITTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3978
+#line 3992
             .heldItem = ITEM_ORAN_BERRY,
-#line 3980
+#line 3994
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3979
+#line 3993
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3981
+#line 3995
                 MOVE_ASSIST,
                 MOVE_CHARM,
                 MOVE_FEINT_ATTACK,
@@ -9935,19 +9976,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3986
+#line 4000
             .species = SPECIES_SKITTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3986
+#line 4000
             .heldItem = ITEM_ORAN_BERRY,
-#line 3988
+#line 4002
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3987
+#line 4001
             .lvl = 40,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3989
+#line 4003
                 MOVE_ASSIST,
                 MOVE_CHARM,
                 MOVE_FEINT_ATTACK,
@@ -9955,19 +9996,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3994
+#line 4008
             .species = SPECIES_SKITTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3994
+#line 4008
             .heldItem = ITEM_ORAN_BERRY,
-#line 3996
+#line 4010
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 3995
+#line 4009
             .lvl = 12,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3997
+#line 4011
                 MOVE_ASSIST,
                 MOVE_CHARM,
                 MOVE_FEINT_ATTACK,
@@ -9975,19 +10016,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4002
+#line 4016
             .species = SPECIES_SKITTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4002
+#line 4016
             .heldItem = ITEM_ORAN_BERRY,
-#line 4004
+#line 4018
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4003
+#line 4017
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4005
+#line 4019
                 MOVE_ASSIST,
                 MOVE_CHARM,
                 MOVE_FEINT_ATTACK,
@@ -9995,19 +10036,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4010
+#line 4024
             .species = SPECIES_DELCATTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4010
+#line 4024
             .heldItem = ITEM_ORAN_BERRY,
-#line 4012
+#line 4026
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4011
+#line 4025
             .lvl = 42,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4013
+#line 4027
                 MOVE_ASSIST,
                 MOVE_CHARM,
                 MOVE_FEINT_ATTACK,
@@ -10016,254 +10057,254 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 4018
+#line 4032
     [DIFFICULTY_NORMAL][TRAINER_VICTORIA] =
     {
-#line 4019
+#line 4033
         .trainerName = _("Victoria"),
-#line 4020
+#line 4034
         .trainerClass = TRAINER_CLASS_WINSTRATE,
-#line 4021
+#line 4035
         .trainerPic = TRAINER_PIC_POKEFAN_F,
         .encounterMusic_gender =
-#line 4022
+#line 4036
 F_TRAINER_FEMALE | 
-#line 4023
+#line 4037
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 4024
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4025
+#line 4038
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4039
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4027
+#line 4041
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4027
+#line 4041
             .heldItem = ITEM_ORAN_BERRY,
-#line 4029
+#line 4043
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 4028
+#line 4042
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4031
+#line 4045
     [DIFFICULTY_NORMAL][TRAINER_VANESSA] =
     {
-#line 4032
+#line 4046
         .trainerName = _("Vanessa"),
-#line 4033
+#line 4047
         .trainerClass = TRAINER_CLASS_POKEFAN,
-#line 4034
+#line 4048
         .trainerPic = TRAINER_PIC_POKEFAN_F,
         .encounterMusic_gender =
-#line 4035
+#line 4049
 F_TRAINER_FEMALE | 
-#line 4036
+#line 4050
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 4037
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4038
+#line 4051
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4052
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4040
+#line 4054
             .species = SPECIES_PIKACHU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4040
+#line 4054
             .heldItem = ITEM_ORAN_BERRY,
-#line 4042
+#line 4056
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4041
+#line 4055
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4044
+#line 4058
     [DIFFICULTY_NORMAL][TRAINER_BETHANY] =
     {
-#line 4045
+#line 4059
         .trainerName = _("Bethany"),
-#line 4046
+#line 4060
         .trainerClass = TRAINER_CLASS_POKEFAN,
-#line 4047
+#line 4061
         .trainerPic = TRAINER_PIC_POKEFAN_F,
         .encounterMusic_gender =
-#line 4048
+#line 4062
 F_TRAINER_FEMALE | 
-#line 4049
+#line 4063
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 4050
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4051
+#line 4064
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4065
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4053
+#line 4067
             .species = SPECIES_AZURILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4053
+#line 4067
             .heldItem = ITEM_ORAN_BERRY,
-#line 4055
+#line 4069
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 4054
+#line 4068
             .lvl = 35,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4057
+#line 4071
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4057
+#line 4071
             .heldItem = ITEM_ORAN_BERRY,
-#line 4059
+#line 4073
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 4058
+#line 4072
             .lvl = 37,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4061
+#line 4075
             .species = SPECIES_AZUMARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4061
+#line 4075
             .heldItem = ITEM_ORAN_BERRY,
-#line 4063
+#line 4077
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 4062
+#line 4076
             .lvl = 39,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4065
+#line 4079
     [DIFFICULTY_NORMAL][TRAINER_ISABEL_1] =
     {
-#line 4066
+#line 4080
         .trainerName = _("Isabel"),
-#line 4067
+#line 4081
         .trainerClass = TRAINER_CLASS_POKEFAN,
-#line 4068
+#line 4082
         .trainerPic = TRAINER_PIC_POKEFAN_F,
         .encounterMusic_gender =
-#line 4069
+#line 4083
 F_TRAINER_FEMALE | 
-#line 4070
+#line 4084
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 4071
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4072
+#line 4085
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4086
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4074
+#line 4088
             .species = SPECIES_PLUSLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4074
+#line 4088
             .heldItem = ITEM_ORAN_BERRY,
-#line 4076
+#line 4090
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4075
+#line 4089
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4078
+#line 4092
             .species = SPECIES_MINUN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4078
+#line 4092
             .heldItem = ITEM_ORAN_BERRY,
-#line 4080
+#line 4094
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4079
+#line 4093
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4082
+#line 4096
     [DIFFICULTY_NORMAL][TRAINER_TIMOTHY_1] =
     {
-#line 4083
+#line 4097
         .trainerName = _("Timothy"),
-#line 4084
+#line 4098
         .trainerClass = TRAINER_CLASS_EXPERT,
-#line 4085
+#line 4099
         .trainerPic = TRAINER_PIC_EXPERT_M,
         .encounterMusic_gender =
-#line 4087
+#line 4101
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 4088
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4089
+#line 4102
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4103
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4091
+#line 4105
             .species = SPECIES_HARIYAMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4093
+#line 4107
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 4092
+#line 4106
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4095
+#line 4109
     [DIFFICULTY_NORMAL][TRAINER_VICKY] =
     {
-#line 4096
+#line 4110
         .trainerName = _("Vicky"),
-#line 4097
+#line 4111
         .trainerClass = TRAINER_CLASS_WINSTRATE,
-#line 4098
+#line 4112
         .trainerPic = TRAINER_PIC_EXPERT_F,
         .encounterMusic_gender =
-#line 4099
+#line 4113
 F_TRAINER_FEMALE | 
-#line 4100
+#line 4114
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 4101
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4102
+#line 4115
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4116
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4104
+#line 4118
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4106
+#line 4120
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 4105
+#line 4119
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4107
+#line 4121
                 MOVE_HIGH_JUMP_KICK,
                 MOVE_MEDITATE,
                 MOVE_CONFUSION,
@@ -10272,109 +10313,109 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 4112
+#line 4126
     [DIFFICULTY_NORMAL][TRAINER_SHELBY_1] =
     {
-#line 4113
+#line 4127
         .trainerName = _("Shelby"),
-#line 4114
+#line 4128
         .trainerClass = TRAINER_CLASS_EXPERT,
-#line 4115
+#line 4129
         .trainerPic = TRAINER_PIC_EXPERT_F,
         .encounterMusic_gender =
-#line 4116
+#line 4130
 F_TRAINER_FEMALE | 
-#line 4117
+#line 4131
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 4118
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4119
+#line 4132
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4133
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4121
+#line 4135
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4123
+#line 4137
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 4122
+#line 4136
             .lvl = 21,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4125
+#line 4139
             .species = SPECIES_MAKUHITA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4127
+#line 4141
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 4126
+#line 4140
             .lvl = 21,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4129
+#line 4143
     [DIFFICULTY_NORMAL][TRAINER_CALVIN_1] =
     {
-#line 4130
+#line 4144
         .trainerName = _("Calvin"),
-#line 4131
+#line 4145
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
-#line 4132
+#line 4146
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .encounterMusic_gender =
-#line 4134
+#line 4148
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4135
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4136
+#line 4149
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4150
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4138
+#line 4152
             .species = SPECIES_RIOLU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4138
+#line 4152
             .heldItem = ITEM_ORAN_BERRY,
-#line 4142
+#line 4156
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4139
+#line 4153
             .ability = ABILITY_STEADFAST,
-#line 4140
+#line 4154
             .lvl = 26,
-#line 4141
+#line 4155
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4142
+#line 4156
                 MOVE_VACUUM_WAVE,
                 MOVE_BULLET_PUNCH,
                 MOVE_ROCK_SMASH,
             },
             },
             {
-#line 4146
+#line 4160
             .species = SPECIES_NICKIT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4146
+#line 4160
             .heldItem = ITEM_ORAN_BERRY,
-#line 4150
+#line 4164
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4147
+#line 4161
             .ability = ABILITY_UNBURDEN,
-#line 4148
+#line 4162
             .lvl = 26,
-#line 4149
+#line 4163
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4150
+#line 4164
                 MOVE_ASSURANCE,
                 MOVE_SNARL,
                 MOVE_QUICK_ATTACK,
@@ -10382,90 +10423,54 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 4154
+#line 4168
     [DIFFICULTY_NORMAL][TRAINER_BILLY] =
     {
-#line 4155
+#line 4169
         .trainerName = _("Billy"),
-#line 4156
+#line 4170
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
-#line 4157
+#line 4171
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .encounterMusic_gender =
-#line 4159
+#line 4173
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4160
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4161
+#line 4174
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4175
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4163
+#line 4177
             .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4165
+#line 4179
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4164
+#line 4178
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4167
+#line 4181
             .species = SPECIES_SEEDOT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4169
+#line 4183
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4168
+#line 4182
             .lvl = 7,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4171
+#line 4185
     [DIFFICULTY_NORMAL][TRAINER_JOSH] =
     {
-#line 4172
-        .trainerName = _("Josh"),
-#line 4173
-        .trainerClass = TRAINER_CLASS_YOUNGSTER,
-#line 4174
-        .trainerPic = TRAINER_PIC_YOUNGSTER,
-        .encounterMusic_gender =
-#line 4176
-            TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4177
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4178
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 4180
-            .species = SPECIES_GEODUDE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4182
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 4181
-            .lvl = 10,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 4183
-                MOVE_TACKLE,
-            },
-            },
-        },
-    },
-#line 4185
-    [DIFFICULTY_NORMAL][TRAINER_TOMMY] =
-    {
 #line 4186
-        .trainerName = _("Tommy"),
+        .trainerName = _("Josh"),
 #line 4187
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 4188
@@ -10474,10 +10479,10 @@ F_TRAINER_FEMALE |
 #line 4190
             TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 4191
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 4192
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
@@ -10485,88 +10490,124 @@ F_TRAINER_FEMALE |
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4196
-            .iv = TRAINER_PARTY_IVS(13, 13, 13, 13, 13, 13),
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4195
+            .lvl = 10,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 4197
+                MOVE_TACKLE,
+            },
+            },
+        },
+    },
+#line 4199
+    [DIFFICULTY_NORMAL][TRAINER_TOMMY] =
+    {
+#line 4200
+        .trainerName = _("Tommy"),
+#line 4201
+        .trainerClass = TRAINER_CLASS_YOUNGSTER,
+#line 4202
+        .trainerPic = TRAINER_PIC_YOUNGSTER,
+        .encounterMusic_gender =
+#line 4204
+            TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 4205
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4206
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 4208
+            .species = SPECIES_GEODUDE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 4210
+            .iv = TRAINER_PARTY_IVS(13, 13, 13, 13, 13, 13),
+#line 4209
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4198
+#line 4212
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4200
+#line 4214
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
-#line 4199
+#line 4213
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4202
+#line 4216
     [DIFFICULTY_NORMAL][TRAINER_JOEY] =
     {
-#line 4203
+#line 4217
         .trainerName = _("Joey"),
-#line 4204
+#line 4218
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
-#line 4205
+#line 4219
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .encounterMusic_gender =
-#line 4207
+#line 4221
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4208
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4209
+#line 4222
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4223
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4211
+#line 4225
             .species = SPECIES_MACHOP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4213
+#line 4227
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4212
+#line 4226
             .lvl = 9,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4215
+#line 4229
     [DIFFICULTY_NORMAL][TRAINER_BEN] =
     {
-#line 4216
+#line 4230
         .trainerName = _("Ben"),
-#line 4217
+#line 4231
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
-#line 4218
+#line 4232
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .encounterMusic_gender =
-#line 4220
+#line 4234
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4221
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4222
+#line 4235
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4236
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4224
+#line 4238
             .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4226
+#line 4240
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 4225
+#line 4239
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4227
+#line 4241
                 MOVE_HEADBUTT,
                 MOVE_SAND_ATTACK,
                 MOVE_GROWL,
@@ -10574,17 +10615,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4232
+#line 4246
             .species = SPECIES_GULPIN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4234
+#line 4248
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 4233
+#line 4247
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4235
+#line 4249
                 MOVE_AMNESIA,
                 MOVE_SLUDGE,
                 MOVE_YAWN,
@@ -10593,39 +10634,39 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 4240
+#line 4254
     [DIFFICULTY_NORMAL][TRAINER_QUINCY] =
     {
-#line 4241
+#line 4255
         .trainerName = _("Quincy"),
-#line 4242
+#line 4256
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 4243
+#line 4257
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 4245
+#line 4259
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 4246
+#line 4260
         .items = { ITEM_FULL_RESTORE },
-#line 4247
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4248
+#line 4261
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4262
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4250
+#line 4264
             .species = SPECIES_SLAKING,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4252
+#line 4266
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 4251
+#line 4265
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4253
+#line 4267
                 MOVE_ATTRACT,
                 MOVE_ICE_BEAM,
                 MOVE_THUNDERBOLT,
@@ -10633,17 +10674,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4258
+#line 4272
             .species = SPECIES_DUSCLOPS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4260
+#line 4274
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 4259
+#line 4273
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4261
+#line 4275
                 MOVE_SKILL_SWAP,
                 MOVE_PROTECT,
                 MOVE_WILL_O_WISP,
@@ -10652,41 +10693,41 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 4266
+#line 4280
     [DIFFICULTY_NORMAL][TRAINER_KATELYNN] =
     {
-#line 4267
+#line 4281
         .trainerName = _("Katelynn"),
-#line 4268
+#line 4282
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 4269
+#line 4283
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 4270
+#line 4284
 F_TRAINER_FEMALE | 
-#line 4271
+#line 4285
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 4272
+#line 4286
         .items = { ITEM_FULL_RESTORE },
-#line 4273
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4274
+#line 4287
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4288
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4276
+#line 4290
             .species = SPECIES_GARDEVOIR,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4278
+#line 4292
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 4277
+#line 4291
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4279
+#line 4293
                 MOVE_SKILL_SWAP,
                 MOVE_PSYCHIC,
                 MOVE_THUNDERBOLT,
@@ -10694,17 +10735,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4284
+#line 4298
             .species = SPECIES_SLAKING,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4286
+#line 4300
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 4285
+#line 4299
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4287
+#line 4301
                 MOVE_EARTHQUAKE,
                 MOVE_SHADOW_BALL,
                 MOVE_AERIAL_ACE,
@@ -10713,149 +10754,149 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 4292
+#line 4306
     [DIFFICULTY_NORMAL][TRAINER_JAYLEN] =
     {
-#line 4293
+#line 4307
         .trainerName = _("Jaylen"),
-#line 4294
+#line 4308
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
-#line 4295
+#line 4309
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .encounterMusic_gender =
-#line 4297
+#line 4311
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4298
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4299
+#line 4312
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4313
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4301
+#line 4315
             .species = SPECIES_TRAPINCH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4303
+#line 4317
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4302
+#line 4316
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4305
+#line 4319
     [DIFFICULTY_NORMAL][TRAINER_DILLON] =
     {
-#line 4306
+#line 4320
         .trainerName = _("Dillon"),
-#line 4307
+#line 4321
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
-#line 4308
+#line 4322
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .encounterMusic_gender =
-#line 4310
+#line 4324
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4311
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4312
+#line 4325
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4326
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4314
+#line 4328
             .species = SPECIES_ARON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4316
+#line 4330
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4315
+#line 4329
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4318
+#line 4332
     [DIFFICULTY_NORMAL][TRAINER_EDDIE] =
     {
-#line 4319
+#line 4333
         .trainerName = _("Eddie"),
-#line 4320
+#line 4334
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
-#line 4321
+#line 4335
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .encounterMusic_gender =
-#line 4323
+#line 4337
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4324
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4325
+#line 4338
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4339
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4327
+#line 4341
             .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4329
+#line 4343
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4328
+#line 4342
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4331
+#line 4345
             .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4333
+#line 4347
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4332
+#line 4346
             .lvl = 16,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4335
+#line 4349
     [DIFFICULTY_NORMAL][TRAINER_ALLEN] =
     {
-#line 4336
+#line 4350
         .trainerName = _("Allen"),
-#line 4337
+#line 4351
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
-#line 4338
+#line 4352
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .encounterMusic_gender =
-#line 4340
+#line 4354
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4341
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4342
+#line 4355
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4356
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4344
+#line 4358
             .species = SPECIES_SKWOVET,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4344
+#line 4358
             .heldItem = ITEM_PETAYA_BERRY,
-#line 4348
+#line 4362
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4345
+#line 4359
             .ability = ABILITY_CHEEK_POUCH,
-#line 4346
+#line 4360
             .lvl = 26,
-#line 4347
+#line 4361
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4348
+#line 4362
                 MOVE_BELCH,
                 MOVE_BITE,
                 MOVE_SUPER_FANG,
@@ -10863,22 +10904,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4353
+#line 4367
             .species = SPECIES_GRIMER_ALOLA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4353
+#line 4367
             .heldItem = ITEM_LIECHI_BERRY,
-#line 4357
+#line 4371
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4354
+#line 4368
             .ability = ABILITY_GLUTTONY,
-#line 4355
+#line 4369
             .lvl = 27,
-#line 4356
+#line 4370
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4357
+#line 4371
                 MOVE_THIEF,
                 MOVE_ROCK_TOMB,
                 MOVE_PAYBACK,
@@ -10886,64 +10927,64 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 4361
+#line 4375
     [DIFFICULTY_NORMAL][TRAINER_TIMMY] =
     {
-#line 4362
+#line 4376
         .trainerName = _("Timmy"),
-#line 4363
+#line 4377
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
-#line 4364
+#line 4378
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .encounterMusic_gender =
-#line 4366
+#line 4380
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4367
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4368
+#line 4381
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4382
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4370
+#line 4384
             .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4370
+#line 4384
             .heldItem = ITEM_EJECT_BUTTON,
-#line 4374
+#line 4388
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4371
+#line 4385
             .ability = ABILITY_DRIZZLE,
-#line 4372
+#line 4386
             .lvl = 29,
-#line 4373
+#line 4387
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4374
+#line 4388
                 MOVE_WING_ATTACK,
                 MOVE_WATER_PULSE,
                 MOVE_U_TURN,
             },
             },
             {
-#line 4378
+#line 4392
             .species = SPECIES_VULPIX,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4378
+#line 4392
             .heldItem = ITEM_CHARCOAL,
-#line 4382
+#line 4396
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4379
+#line 4393
             .ability = ABILITY_DROUGHT,
-#line 4380
+#line 4394
             .lvl = 29,
-#line 4381
+#line 4395
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4382
+#line 4396
                 MOVE_INCINERATE,
                 MOVE_HEX,
                 MOVE_WEATHER_BALL,
@@ -10952,41 +10993,39 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 4387
+#line 4401
     [DIFFICULTY_NORMAL][TRAINER_WALLACE] =
     {
-#line 4388
+#line 4402
         .trainerName = _("Wallace"),
-#line 4389
+#line 4403
         .trainerClass = TRAINER_CLASS_CHAMPION,
-#line 4390
+#line 4404
         .trainerPic = TRAINER_PIC_CHAMPION_WALLACE,
         .encounterMusic_gender =
-#line 4392
+#line 4406
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4393
-        .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-#line 4394
+#line 4407
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4395
+#line 4408
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 4396
+#line 4409
         .mugshotColor = MUGSHOT_COLOR_CHAMPION,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4398
+#line 4411
             .species = SPECIES_WAILORD,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4400
+#line 4413
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4399
+#line 4412
             .lvl = 57,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4401
+#line 4414
                 MOVE_RAIN_DANCE,
                 MOVE_WATER_SPOUT,
                 MOVE_DOUBLE_EDGE,
@@ -10994,17 +11033,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4406
+#line 4419
             .species = SPECIES_TENTACRUEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4408
+#line 4421
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4407
+#line 4420
             .lvl = 55,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4409
+#line 4422
                 MOVE_TOXIC,
                 MOVE_HYDRO_PUMP,
                 MOVE_SLUDGE_BOMB,
@@ -11012,17 +11051,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4414
+#line 4427
             .species = SPECIES_LUDICOLO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4416
+#line 4429
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4415
+#line 4428
             .lvl = 56,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4417
+#line 4430
                 MOVE_GIGA_DRAIN,
                 MOVE_SURF,
                 MOVE_LEECH_SEED,
@@ -11030,17 +11069,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4422
+#line 4435
             .species = SPECIES_WHISCASH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4424
+#line 4437
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4423
+#line 4436
             .lvl = 56,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4425
+#line 4438
                 MOVE_EARTHQUAKE,
                 MOVE_SURF,
                 MOVE_AMNESIA,
@@ -11048,17 +11087,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4430
+#line 4443
             .species = SPECIES_GYARADOS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4432
+#line 4445
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4431
+#line 4444
             .lvl = 56,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4433
+#line 4446
                 MOVE_DRAGON_DANCE,
                 MOVE_EARTHQUAKE,
                 MOVE_HYPER_BEAM,
@@ -11066,19 +11105,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4438
+#line 4451
             .species = SPECIES_MILOTIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4438
+#line 4451
             .heldItem = ITEM_SITRUS_BERRY,
-#line 4440
+#line 4453
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4439
+#line 4452
             .lvl = 58,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4441
+#line 4454
                 MOVE_RECOVER,
                 MOVE_SURF,
                 MOVE_ICE_BEAM,
@@ -11087,42 +11126,42 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 4446
+#line 4459
     [DIFFICULTY_NORMAL][TRAINER_ANDREW] =
     {
-#line 4447
+#line 4460
         .trainerName = _("Andrew"),
-#line 4448
+#line 4461
         .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 4449
+#line 4462
         .trainerPic = TRAINER_PIC_FISHERMAN,
         .encounterMusic_gender =
-#line 4451
+#line 4464
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 4452
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4453
+#line 4465
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4466
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4455
+#line 4468
             .species = SPECIES_BUIZEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4455
+#line 4468
             .heldItem = ITEM_EVIOLITE,
-#line 4459
+#line 4472
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4456
+#line 4469
             .ability = ABILITY_WATER_VEIL,
-#line 4457
+#line 4470
             .lvl = 28,
-#line 4458
+#line 4471
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4459
+#line 4472
                 MOVE_FAKE_OUT,
                 MOVE_LIQUIDATION,
                 MOVE_ICE_PUNCH,
@@ -11130,22 +11169,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4464
+#line 4477
             .species = SPECIES_WARTORTLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4464
+#line 4477
             .heldItem = ITEM_IAPAPA_BERRY,
-#line 4468
+#line 4481
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4465
+#line 4478
             .ability = ABILITY_TORRENT,
-#line 4466
+#line 4479
             .lvl = 27,
-#line 4467
+#line 4480
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4468
+#line 4481
                 MOVE_FAKE_OUT,
                 MOVE_ICY_WIND,
                 MOVE_PROTECT,
@@ -11154,79 +11193,47 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 4473
+#line 4486
     [DIFFICULTY_NORMAL][TRAINER_IVAN] =
     {
-#line 4474
+#line 4487
         .trainerName = _("Ivan"),
-#line 4475
+#line 4488
         .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 4476
+#line 4489
         .trainerPic = TRAINER_PIC_FISHERMAN,
         .encounterMusic_gender =
-#line 4478
+#line 4491
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 4479
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4480
+#line 4492
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4493
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4482
+#line 4495
             .species = SPECIES_MAGIKARP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4484
+#line 4497
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4483
+#line 4496
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4486
+#line 4499
             .species = SPECIES_MAGIKARP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4488
+#line 4501
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4487
+#line 4500
             .lvl = 6,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
-            {
-#line 4490
-            .species = SPECIES_MAGIKARP,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4492
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4491
-            .lvl = 7,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 4494
-    [DIFFICULTY_NORMAL][TRAINER_CLAUDE] =
-    {
-#line 4495
-        .trainerName = _("Claude"),
-#line 4496
-        .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 4497
-        .trainerPic = TRAINER_PIC_FISHERMAN,
-        .encounterMusic_gender =
-#line 4499
-            TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 4500
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4501
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
-        .party = (const struct TrainerMon[])
-        {
             {
 #line 4503
             .species = SPECIES_MAGIKARP,
@@ -11234,125 +11241,125 @@ F_TRAINER_FEMALE |
 #line 4505
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4504
+            .lvl = 7,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 4507
+    [DIFFICULTY_NORMAL][TRAINER_CLAUDE] =
+    {
+#line 4508
+        .trainerName = _("Claude"),
+#line 4509
+        .trainerClass = TRAINER_CLASS_FISHERMAN,
+#line 4510
+        .trainerPic = TRAINER_PIC_FISHERMAN,
+        .encounterMusic_gender =
+#line 4512
+            TRAINER_ENCOUNTER_MUSIC_HIKER,
+#line 4513
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4514
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 3,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 4516
+            .species = SPECIES_MAGIKARP,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 4518
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 4517
             .lvl = 16,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4507
+#line 4520
             .species = SPECIES_GOLDEEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4509
+#line 4522
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4508
+#line 4521
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4511
+#line 4524
             .species = SPECIES_BARBOACH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4513
+#line 4526
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4512
+#line 4525
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4515
+#line 4528
     [DIFFICULTY_NORMAL][TRAINER_ELLIOT_1] =
     {
-#line 4516
+#line 4529
         .trainerName = _("Elliot"),
-#line 4517
+#line 4530
         .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 4518
+#line 4531
         .trainerPic = TRAINER_PIC_FISHERMAN,
         .encounterMusic_gender =
-#line 4520
+#line 4533
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 4521
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4522
+#line 4534
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4535
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4524
+#line 4537
             .species = SPECIES_MAGIKARP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4526
+#line 4539
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4525
+#line 4538
             .lvl = 10,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4528
+#line 4541
             .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4530
+#line 4543
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4529
+#line 4542
             .lvl = 7,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4532
+#line 4545
             .species = SPECIES_MAGIKARP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4534
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4533
-            .lvl = 10,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 4536
-    [DIFFICULTY_NORMAL][TRAINER_NED] =
-    {
-#line 4537
-        .trainerName = _("Ned"),
-#line 4538
-        .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 4539
-        .trainerPic = TRAINER_PIC_FISHERMAN,
-        .encounterMusic_gender =
-#line 4541
-            TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 4542
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4543
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 4545
-            .species = SPECIES_TENTACOOL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4547
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4546
-            .lvl = 11,
+            .lvl = 10,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 4549
-    [DIFFICULTY_NORMAL][TRAINER_DALE] =
+    [DIFFICULTY_NORMAL][TRAINER_NED] =
     {
 #line 4550
-        .trainerName = _("Dale"),
+        .trainerName = _("Ned"),
 #line 4551
         .trainerClass = TRAINER_CLASS_FISHERMAN,
 #line 4552
@@ -11361,10 +11368,10 @@ F_TRAINER_FEMALE |
 #line 4554
             TRAINER_ENCOUNTER_MUSIC_HIKER,
 #line 4555
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 4556
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 4,
+        .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
@@ -11372,84 +11379,84 @@ F_TRAINER_FEMALE |
             .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4560
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 4559
             .lvl = 11,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
-            {
+        },
+    },
 #line 4562
-            .species = SPECIES_WAILMER,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4564
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+    [DIFFICULTY_NORMAL][TRAINER_DALE] =
+    {
 #line 4563
-            .lvl = 14,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
+        .trainerName = _("Dale"),
+#line 4564
+        .trainerClass = TRAINER_CLASS_FISHERMAN,
+#line 4565
+        .trainerPic = TRAINER_PIC_FISHERMAN,
+        .encounterMusic_gender =
+#line 4567
+            TRAINER_ENCOUNTER_MUSIC_HIKER,
+#line 4568
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4569
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 4,
+        .party = (const struct TrainerMon[])
+        {
             {
-#line 4566
+#line 4571
             .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4568
+#line 4573
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4567
+#line 4572
             .lvl = 11,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4570
+#line 4575
             .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4572
+#line 4577
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4571
+#line 4576
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
-        },
-    },
-#line 4574
-    [DIFFICULTY_NORMAL][TRAINER_NOLAN] =
-    {
-#line 4575
-        .trainerName = _("Nolan"),
-#line 4576
-        .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 4577
-        .trainerPic = TRAINER_PIC_FISHERMAN,
-        .encounterMusic_gender =
+            {
 #line 4579
-            TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 4580
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+            .species = SPECIES_TENTACOOL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4581
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 4580
+            .lvl = 11,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
             {
 #line 4583
-            .species = SPECIES_BARBOACH,
+            .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4585
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4584
-            .lvl = 19,
+            .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 4587
-    [DIFFICULTY_NORMAL][TRAINER_BARNY] =
+    [DIFFICULTY_NORMAL][TRAINER_NOLAN] =
     {
 #line 4588
-        .trainerName = _("Barny"),
+        .trainerName = _("Nolan"),
 #line 4589
         .trainerClass = TRAINER_CLASS_FISHERMAN,
 #line 4590
@@ -11458,73 +11465,73 @@ F_TRAINER_FEMALE |
 #line 4592
             TRAINER_ENCOUNTER_MUSIC_HIKER,
 #line 4593
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 4594
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 4596
-            .species = SPECIES_TENTACOOL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4598
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4597
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 4600
-            .species = SPECIES_CARVANHA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4602
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4601
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 4604
-    [DIFFICULTY_NORMAL][TRAINER_WADE] =
-    {
-#line 4605
-        .trainerName = _("Wade"),
-#line 4606
-        .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 4607
-        .trainerPic = TRAINER_PIC_FISHERMAN,
-        .encounterMusic_gender =
-#line 4609
-            TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 4610
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4611
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4613
+#line 4596
+            .species = SPECIES_BARBOACH,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 4598
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 4597
+            .lvl = 19,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 4600
+    [DIFFICULTY_NORMAL][TRAINER_BARNY] =
+    {
+#line 4601
+        .trainerName = _("Barny"),
+#line 4602
+        .trainerClass = TRAINER_CLASS_FISHERMAN,
+#line 4603
+        .trainerPic = TRAINER_PIC_FISHERMAN,
+        .encounterMusic_gender =
+#line 4605
+            TRAINER_ENCOUNTER_MUSIC_HIKER,
+#line 4606
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4607
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 4609
             .species = SPECIES_TENTACOOL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 4611
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 4610
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 4613
+            .species = SPECIES_CARVANHA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4615
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4614
-            .lvl = 16,
+            .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 4617
-    [DIFFICULTY_NORMAL][TRAINER_CARTER] =
+    [DIFFICULTY_NORMAL][TRAINER_WADE] =
     {
 #line 4618
-        .trainerName = _("Carter"),
+        .trainerName = _("Wade"),
 #line 4619
         .trainerClass = TRAINER_CLASS_FISHERMAN,
 #line 4620
@@ -11533,239 +11540,239 @@ F_TRAINER_FEMALE |
 #line 4622
             TRAINER_ENCOUNTER_MUSIC_HIKER,
 #line 4623
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 4624
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 4626
+            .species = SPECIES_TENTACOOL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 4628
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 4627
+            .lvl = 16,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 4630
+    [DIFFICULTY_NORMAL][TRAINER_CARTER] =
+    {
+#line 4631
+        .trainerName = _("Carter"),
+#line 4632
+        .trainerClass = TRAINER_CLASS_FISHERMAN,
+#line 4633
+        .trainerPic = TRAINER_PIC_FISHERMAN,
+        .encounterMusic_gender =
+#line 4635
+            TRAINER_ENCOUNTER_MUSIC_HIKER,
+#line 4636
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4637
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4626
+#line 4639
             .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4628
+#line 4641
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 4627
+#line 4640
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4630
+#line 4643
             .species = SPECIES_TENTACRUEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4632
+#line 4645
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 4631
+#line 4644
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4634
+#line 4647
     [DIFFICULTY_NORMAL][TRAINER_RONALD] =
     {
-#line 4635
+#line 4648
         .trainerName = _("Ronald"),
-#line 4636
+#line 4649
         .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 4637
+#line 4650
         .trainerPic = TRAINER_PIC_FISHERMAN,
         .encounterMusic_gender =
-#line 4639
+#line 4652
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 4640
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4641
+#line 4653
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4654
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4643
+#line 4656
             .species = SPECIES_MAGIKARP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4645
+#line 4658
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4644
+#line 4657
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4647
+#line 4660
             .species = SPECIES_GYARADOS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4649
+#line 4662
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4648
+#line 4661
             .lvl = 21,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4651
+#line 4664
             .species = SPECIES_GYARADOS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4653
+#line 4666
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4652
+#line 4665
             .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4655
+#line 4668
             .species = SPECIES_GYARADOS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4657
+#line 4670
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4656
+#line 4669
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4659
+#line 4672
             .species = SPECIES_GYARADOS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4661
+#line 4674
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4660
+#line 4673
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4663
+#line 4676
             .species = SPECIES_GYARADOS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4665
+#line 4678
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4664
+#line 4677
             .lvl = 35,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4667
+#line 4680
     [DIFFICULTY_NORMAL][TRAINER_JACOB] =
     {
-#line 4668
+#line 4681
         .trainerName = _("Jacob"),
-#line 4669
+#line 4682
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 4670
+#line 4683
         .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
         .encounterMusic_gender =
-#line 4672
+#line 4685
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4673
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4674
+#line 4686
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4687
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4676
-            .species = SPECIES_VOLTORB,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4678
-            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 4677
-            .lvl = 6,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 4680
-            .species = SPECIES_VOLTORB,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4682
-            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 4681
-            .lvl = 6,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 4684
-            .species = SPECIES_MAGNEMITE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4686
-            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 4685
-            .lvl = 14,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 4688
-    [DIFFICULTY_NORMAL][TRAINER_ANTHONY] =
-    {
 #line 4689
-        .trainerName = _("Anthony"),
-#line 4690
-        .trainerClass = TRAINER_CLASS_TRIATHLETE,
+            .species = SPECIES_VOLTORB,
+            .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4691
-        .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
-        .encounterMusic_gender =
+            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
+#line 4690
+            .lvl = 6,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
 #line 4693
-            TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4694
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+            .species = SPECIES_VOLTORB,
+            .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4695
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
+            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
+#line 4694
+            .lvl = 6,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
             {
 #line 4697
             .species = SPECIES_MAGNEMITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4699
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 4698
-            .lvl = 14,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 4701
-            .species = SPECIES_MAGNEMITE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4703
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4702
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4705
-    [DIFFICULTY_NORMAL][TRAINER_BENJAMIN_1] =
+#line 4701
+    [DIFFICULTY_NORMAL][TRAINER_ANTHONY] =
     {
-#line 4706
-        .trainerName = _("Benjamin"),
-#line 4707
+#line 4702
+        .trainerName = _("Anthony"),
+#line 4703
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 4708
+#line 4704
         .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
         .encounterMusic_gender =
-#line 4710
+#line 4706
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4711
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4712
+#line 4707
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4708
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
+        .partySize = 2,
         .party = (const struct TrainerMon[])
         {
+            {
+#line 4710
+            .species = SPECIES_MAGNEMITE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 4712
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 4711
+            .lvl = 14,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
             {
 #line 4714
             .species = SPECIES_MAGNEMITE,
@@ -11773,28 +11780,26 @@ F_TRAINER_FEMALE |
 #line 4716
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4715
-            .lvl = 16,
+            .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 4718
-    [DIFFICULTY_NORMAL][TRAINER_ABIGAIL_1] =
+    [DIFFICULTY_NORMAL][TRAINER_BENJAMIN_1] =
     {
 #line 4719
-        .trainerName = _("Abigail"),
+        .trainerName = _("Benjamin"),
 #line 4720
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 4721
-        .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_F,
+        .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
         .encounterMusic_gender =
-#line 4722
-F_TRAINER_FEMALE | 
 #line 4723
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 4724
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 4725
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -11814,10 +11819,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 4731
-    [DIFFICULTY_NORMAL][TRAINER_JASMINE] =
+    [DIFFICULTY_NORMAL][TRAINER_ABIGAIL_1] =
     {
 #line 4732
-        .trainerName = _("Jasmine"),
+        .trainerName = _("Abigail"),
 #line 4733
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 4734
@@ -11828,10 +11833,10 @@ F_TRAINER_FEMALE |
 #line 4736
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
 #line 4737
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 4738
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
+        .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
@@ -11839,94 +11844,128 @@ F_TRAINER_FEMALE |
             .species = SPECIES_MAGNEMITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4742
-            .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4741
-            .lvl = 14,
+            .lvl = 16,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
-            {
+        },
+    },
 #line 4744
+    [DIFFICULTY_NORMAL][TRAINER_JASMINE] =
+    {
+#line 4745
+        .trainerName = _("Jasmine"),
+#line 4746
+        .trainerClass = TRAINER_CLASS_TRIATHLETE,
+#line 4747
+        .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_F,
+        .encounterMusic_gender =
+#line 4748
+F_TRAINER_FEMALE | 
+#line 4749
+            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+#line 4750
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4751
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 3,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 4753
             .species = SPECIES_MAGNEMITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4746
+#line 4755
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
-#line 4745
+#line 4754
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4748
+#line 4757
+            .species = SPECIES_MAGNEMITE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 4759
+            .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
+#line 4758
+            .lvl = 14,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 4761
             .species = SPECIES_VOLTORB,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4750
+#line 4763
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4749
+#line 4762
             .lvl = 6,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4752
+#line 4765
     [DIFFICULTY_NORMAL][TRAINER_DYLAN_1] =
     {
-#line 4753
+#line 4766
         .trainerName = _("Dylan"),
-#line 4754
+#line 4767
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 4755
+#line 4768
         .trainerPic = TRAINER_PIC_RUNNING_TRIATHLETE_M,
         .encounterMusic_gender =
-#line 4757
+#line 4770
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4758
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4759
+#line 4771
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4772
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4761
+#line 4774
             .species = SPECIES_CHATOT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4761
+#line 4774
             .heldItem = ITEM_WISE_GLASSES,
-#line 4765
+#line 4778
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4762
+#line 4775
             .ability = ABILITY_TANGLED_FEET,
-#line 4763
+#line 4776
             .lvl = 30,
-#line 4764
+#line 4777
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4765
+#line 4778
                 MOVE_HYPER_VOICE,
                 MOVE_AIR_CUTTER,
                 MOVE_ROOST,
             },
             },
             {
-#line 4769
+#line 4782
             .species = SPECIES_CHARJABUG,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4769
+#line 4782
             .heldItem = ITEM_POWER_HERB,
-#line 4773
+#line 4786
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4770
+#line 4783
             .ability = ABILITY_BATTERY,
-#line 4771
+#line 4784
             .lvl = 30,
-#line 4772
+#line 4785
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4773
+#line 4786
                 MOVE_DIG,
                 MOVE_SKITTER_SMACK,
                 MOVE_ELECTROWEB,
@@ -11934,44 +11973,44 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 4777
+#line 4790
     [DIFFICULTY_NORMAL][TRAINER_MARIA_1] =
     {
-#line 4778
+#line 4791
         .trainerName = _("Maria"),
-#line 4779
+#line 4792
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 4780
+#line 4793
         .trainerPic = TRAINER_PIC_RUNNING_TRIATHLETE_F,
         .encounterMusic_gender =
-#line 4781
+#line 4794
 F_TRAINER_FEMALE | 
-#line 4782
+#line 4795
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 4783
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4784
+#line 4796
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4797
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4786
+#line 4799
             .species = SPECIES_DRAGONAIR,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4786
+#line 4799
             .heldItem = ITEM_TOXIC_ORB,
-#line 4790
+#line 4803
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4787
+#line 4800
             .ability = ABILITY_MARVEL_SCALE,
-#line 4788
+#line 4801
             .lvl = 30,
-#line 4789
+#line 4802
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4790
+#line 4803
                 MOVE_FACADE,
                 MOVE_BREAKING_SWIPE,
                 MOVE_ICY_WIND,
@@ -11979,22 +12018,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4795
+#line 4808
             .species = SPECIES_BRAIXEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4795
+#line 4808
             .heldItem = ITEM_MIRACLE_SEED,
-#line 4799
+#line 4812
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4796
+#line 4809
             .ability = ABILITY_BLAZE,
-#line 4797
+#line 4810
             .lvl = 30,
-#line 4798
+#line 4811
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4799
+#line 4812
                 MOVE_BURNING_JEALOUSY,
                 MOVE_PSYBEAM,
                 MOVE_GRASS_KNOT,
@@ -12002,22 +12041,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 4804
+#line 4817
             .species = SPECIES_SHIINOTIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4804
+#line 4817
             .heldItem = ITEM_WISE_GLASSES,
-#line 4808
+#line 4821
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4805
+#line 4818
             .ability = ABILITY_EFFECT_SPORE,
-#line 4806
+#line 4819
             .lvl = 30,
-#line 4807
+#line 4820
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4808
+#line 4821
                 MOVE_DREAM_EATER,
                 MOVE_DRAINING_KISS,
                 MOVE_MEGA_DRAIN,
@@ -12026,129 +12065,97 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 4813
+#line 4826
     [DIFFICULTY_NORMAL][TRAINER_CAMDEN] =
     {
-#line 4814
+#line 4827
         .trainerName = _("Camden"),
-#line 4815
+#line 4828
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 4816
+#line 4829
         .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
         .encounterMusic_gender =
-#line 4818
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 4819
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4820
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 4822
-            .species = SPECIES_STARYU,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4824
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4823
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 4826
-            .species = SPECIES_STARYU,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4828
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4827
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 4830
-    [DIFFICULTY_NORMAL][TRAINER_DEMETRIUS] =
-    {
 #line 4831
-        .trainerName = _("Demetrius"),
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 4832
-        .trainerClass = TRAINER_CLASS_YOUNGSTER,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 4833
-        .trainerPic = TRAINER_PIC_YOUNGSTER,
-        .encounterMusic_gender =
-#line 4835
-            TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 4836
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4837
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
+            {
+#line 4835
+            .species = SPECIES_STARYU,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 4837
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 4836
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
             {
 #line 4839
-            .species = SPECIES_ZIGZAGOON,
+            .species = SPECIES_STARYU,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4841
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4840
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 4843
-            .species = SPECIES_ELECTRIKE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4845
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4844
-            .lvl = 25,
+            .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4847
-    [DIFFICULTY_NORMAL][TRAINER_ISAIAH_1] =
+#line 4843
+    [DIFFICULTY_NORMAL][TRAINER_DEMETRIUS] =
     {
-#line 4848
-        .trainerName = _("Isaiah"),
-#line 4849
-        .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 4850
-        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
+#line 4844
+        .trainerName = _("Demetrius"),
+#line 4845
+        .trainerClass = TRAINER_CLASS_YOUNGSTER,
+#line 4846
+        .trainerPic = TRAINER_PIC_YOUNGSTER,
         .encounterMusic_gender =
-#line 4852
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 4853
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4854
+#line 4848
+            TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 4849
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4850
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
+        .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
+#line 4852
+            .species = SPECIES_ZIGZAGOON,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 4854
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 4853
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
 #line 4856
-            .species = SPECIES_STARYU,
+            .species = SPECIES_ELECTRIKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4858
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4857
-            .lvl = 35,
+            .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 4860
-    [DIFFICULTY_NORMAL][TRAINER_PABLO_1] =
+    [DIFFICULTY_NORMAL][TRAINER_ISAIAH_1] =
     {
 #line 4861
-        .trainerName = _("Pablo"),
+        .trainerName = _("Isaiah"),
 #line 4862
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 4863
@@ -12157,10 +12164,10 @@ F_TRAINER_FEMALE |
 #line 4865
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 4866
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 4867
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
@@ -12170,93 +12177,91 @@ F_TRAINER_FEMALE |
 #line 4871
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4870
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 4873
-            .species = SPECIES_STARYU,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4875
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4874
-            .lvl = 33,
+            .lvl = 35,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4877
-    [DIFFICULTY_NORMAL][TRAINER_CHASE] =
+#line 4873
+    [DIFFICULTY_NORMAL][TRAINER_PABLO_1] =
     {
-#line 4878
-        .trainerName = _("Chase"),
-#line 4879
+#line 4874
+        .trainerName = _("Pablo"),
+#line 4875
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 4880
+#line 4876
         .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
         .encounterMusic_gender =
-#line 4882
+#line 4878
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 4883
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4884
+#line 4879
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4880
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4886
-            .species = SPECIES_WINGULL,
+#line 4882
+            .species = SPECIES_STARYU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4888
+#line 4884
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4887
-            .lvl = 26,
+#line 4883
+            .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4890
+#line 4886
             .species = SPECIES_STARYU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4892
-            .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
-#line 4891
-            .lvl = 34,
+#line 4888
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 4887
+            .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4894
-    [DIFFICULTY_NORMAL][TRAINER_ISOBEL] =
+#line 4890
+    [DIFFICULTY_NORMAL][TRAINER_CHASE] =
     {
-#line 4895
-        .trainerName = _("Isobel"),
-#line 4896
+#line 4891
+        .trainerName = _("Chase"),
+#line 4892
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 4897
-        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+#line 4893
+        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
         .encounterMusic_gender =
-#line 4898
-F_TRAINER_FEMALE | 
-#line 4899
+#line 4895
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 4900
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4901
+#line 4896
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4897
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
+        .partySize = 2,
         .party = (const struct TrainerMon[])
         {
+            {
+#line 4899
+            .species = SPECIES_WINGULL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 4901
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 4900
+            .lvl = 26,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
             {
 #line 4903
             .species = SPECIES_STARYU,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4905
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 4904
             .lvl = 34,
             .nature = NATURE_HARDY,
@@ -12265,10 +12270,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 4907
-    [DIFFICULTY_NORMAL][TRAINER_DONNY] =
+    [DIFFICULTY_NORMAL][TRAINER_ISOBEL] =
     {
 #line 4908
-        .trainerName = _("Donny"),
+        .trainerName = _("Isobel"),
 #line 4909
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 4910
@@ -12279,63 +12284,63 @@ F_TRAINER_FEMALE |
 #line 4912
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 4913
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 4914
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
 #line 4916
-            .species = SPECIES_WINGULL,
+            .species = SPECIES_STARYU,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4918
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4917
-            .lvl = 26,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 4920
-            .species = SPECIES_STARYU,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4922
-            .iv = TRAINER_PARTY_IVS(19, 19, 19, 19, 19, 19),
-#line 4921
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4924
-    [DIFFICULTY_NORMAL][TRAINER_TALIA] =
+#line 4920
+    [DIFFICULTY_NORMAL][TRAINER_DONNY] =
     {
-#line 4925
-        .trainerName = _("Talia"),
-#line 4926
+#line 4921
+        .trainerName = _("Donny"),
+#line 4922
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 4927
+#line 4923
         .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
         .encounterMusic_gender =
-#line 4928
+#line 4924
 F_TRAINER_FEMALE | 
-#line 4929
+#line 4925
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 4930
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4931
+#line 4926
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4927
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
+        .partySize = 2,
         .party = (const struct TrainerMon[])
         {
+            {
+#line 4929
+            .species = SPECIES_WINGULL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 4931
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 4930
+            .lvl = 26,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
             {
 #line 4933
             .species = SPECIES_STARYU,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4935
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(19, 19, 19, 19, 19, 19),
 #line 4934
             .lvl = 34,
             .nature = NATURE_HARDY,
@@ -12344,10 +12349,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 4937
-    [DIFFICULTY_NORMAL][TRAINER_KATELYN_1] =
+    [DIFFICULTY_NORMAL][TRAINER_TALIA] =
     {
 #line 4938
-        .trainerName = _("Katelyn"),
+        .trainerName = _("Talia"),
 #line 4939
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 4940
@@ -12358,7 +12363,7 @@ F_TRAINER_FEMALE |
 #line 4942
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 4943
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 4944
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -12371,17 +12376,17 @@ F_TRAINER_FEMALE |
 #line 4948
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4947
-            .lvl = 35,
+            .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 4950
-    [DIFFICULTY_NORMAL][TRAINER_ALLISON] =
+    [DIFFICULTY_NORMAL][TRAINER_KATELYN_1] =
     {
 #line 4951
-        .trainerName = _("Allison"),
+        .trainerName = _("Katelyn"),
 #line 4952
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 4953
@@ -12392,110 +12397,144 @@ F_TRAINER_FEMALE |
 #line 4955
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 4956
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 4957
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 4959
+            .species = SPECIES_STARYU,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 4961
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 4960
+            .lvl = 35,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 4963
+    [DIFFICULTY_NORMAL][TRAINER_ALLISON] =
+    {
+#line 4964
+        .trainerName = _("Allison"),
+#line 4965
+        .trainerClass = TRAINER_CLASS_TRIATHLETE,
+#line 4966
+        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+        .encounterMusic_gender =
+#line 4967
+F_TRAINER_FEMALE | 
+#line 4968
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 4969
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 4970
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4959
+#line 4972
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4961
+#line 4974
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 4960
+#line 4973
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4963
+#line 4976
             .species = SPECIES_STARYU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4965
+#line 4978
             .iv = TRAINER_PARTY_IVS(29, 29, 29, 29, 29, 29),
-#line 4964
+#line 4977
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4967
+#line 4980
     [DIFFICULTY_NORMAL][TRAINER_NICOLAS_1] =
     {
-#line 4968
+#line 4981
         .trainerName = _("Nicolas"),
-#line 4969
+#line 4982
         .trainerClass = TRAINER_CLASS_DRAGON_TAMER,
-#line 4970
+#line 4983
         .trainerPic = TRAINER_PIC_DRAGON_TAMER,
         .encounterMusic_gender =
-#line 4972
+#line 4985
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 4973
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4974
+#line 4986
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 4987
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4976
+#line 4989
             .species = SPECIES_ALTARIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4978
+#line 4991
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 4977
+#line 4990
             .lvl = 37,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 4980
+#line 4993
             .species = SPECIES_ALTARIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4982
+#line 4995
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 4981
+#line 4994
             .lvl = 37,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 4984
+#line 4997
     [DIFFICULTY_NORMAL][TRAINER_AARON] =
     {
-#line 4985
+#line 4998
         .trainerName = _("Aaron"),
-#line 4986
+#line 4999
         .trainerClass = TRAINER_CLASS_DRAGON_TAMER,
-#line 4987
+#line 5000
         .trainerPic = TRAINER_PIC_DRAGON_TAMER,
         .encounterMusic_gender =
-#line 4989
+#line 5002
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 4990
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 4991
+#line 5003
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5004
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 4993
+#line 5006
             .species = SPECIES_BAGON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 4995
+#line 5008
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 4994
+#line 5007
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 4996
+#line 5009
                 MOVE_DRAGON_BREATH,
                 MOVE_HEADBUTT,
                 MOVE_FOCUS_ENERGY,
@@ -12504,43 +12543,11 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 5001
+#line 5014
     [DIFFICULTY_NORMAL][TRAINER_PERRY] =
     {
-#line 5002
-        .trainerName = _("Perry"),
-#line 5003
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 5004
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
-        .encounterMusic_gender =
-#line 5006
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 5007
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5008
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5010
-            .species = SPECIES_WINGULL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5012
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5011
-            .lvl = 26,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5014
-    [DIFFICULTY_NORMAL][TRAINER_HUGH] =
-    {
 #line 5015
-        .trainerName = _("Hugh"),
+        .trainerName = _("Perry"),
 #line 5016
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 5017
@@ -12549,10 +12556,10 @@ F_TRAINER_FEMALE |
 #line 5019
             TRAINER_ENCOUNTER_MUSIC_COOL,
 #line 5020
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5021
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
@@ -12562,60 +12569,60 @@ F_TRAINER_FEMALE |
 #line 5025
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5024
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5027
-            .species = SPECIES_TROPIUS,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5029
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5028
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5031
-    [DIFFICULTY_NORMAL][TRAINER_PHIL] =
-    {
-#line 5032
-        .trainerName = _("Phil"),
-#line 5033
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 5034
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
-        .encounterMusic_gender =
-#line 5036
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 5037
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5038
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5040
-            .species = SPECIES_SWELLOW,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5042
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5041
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
+#line 5027
+    [DIFFICULTY_NORMAL][TRAINER_HUGH] =
+    {
+#line 5028
+        .trainerName = _("Hugh"),
+#line 5029
+        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
+#line 5030
+        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .encounterMusic_gender =
+#line 5032
+            TRAINER_ENCOUNTER_MUSIC_COOL,
+#line 5033
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5034
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5036
+            .species = SPECIES_WINGULL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5038
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5037
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5040
+            .species = SPECIES_TROPIUS,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5042
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5041
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
 #line 5044
-    [DIFFICULTY_NORMAL][TRAINER_JARED] =
+    [DIFFICULTY_NORMAL][TRAINER_PHIL] =
     {
 #line 5045
-        .trainerName = _("Jared"),
+        .trainerName = _("Phil"),
 #line 5046
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 5047
@@ -12624,84 +12631,84 @@ F_TRAINER_FEMALE |
 #line 5049
             TRAINER_ENCOUNTER_MUSIC_COOL,
 #line 5050
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5051
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5053
-            .species = SPECIES_DODUO,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5055
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 5054
-            .lvl = 27,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5057
-            .species = SPECIES_SKARMORY,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5059
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 5058
-            .lvl = 27,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5061
-            .species = SPECIES_TROPIUS,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5063
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 5062
-            .lvl = 27,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5065
-    [DIFFICULTY_NORMAL][TRAINER_HUMBERTO] =
-    {
-#line 5066
-        .trainerName = _("Humberto"),
-#line 5067
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 5068
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
-        .encounterMusic_gender =
-#line 5070
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 5071
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5072
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5074
+#line 5053
+            .species = SPECIES_SWELLOW,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5055
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5054
+            .lvl = 26,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5057
+    [DIFFICULTY_NORMAL][TRAINER_JARED] =
+    {
+#line 5058
+        .trainerName = _("Jared"),
+#line 5059
+        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
+#line 5060
+        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .encounterMusic_gender =
+#line 5062
+            TRAINER_ENCOUNTER_MUSIC_COOL,
+#line 5063
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5064
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 3,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5066
+            .species = SPECIES_DODUO,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5068
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 5067
+            .lvl = 27,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5070
             .species = SPECIES_SKARMORY,
             .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5072
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 5071
+            .lvl = 27,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5074
+            .species = SPECIES_TROPIUS,
+            .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5076
-            .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5075
-            .lvl = 30,
+            .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 5078
-    [DIFFICULTY_NORMAL][TRAINER_PRESLEY] =
+    [DIFFICULTY_NORMAL][TRAINER_HUMBERTO] =
     {
 #line 5079
-        .trainerName = _("Presley"),
+        .trainerName = _("Humberto"),
 #line 5080
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 5081
@@ -12710,159 +12717,159 @@ F_TRAINER_FEMALE |
 #line 5083
             TRAINER_ENCOUNTER_MUSIC_COOL,
 #line 5084
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5085
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5087
-            .species = SPECIES_TROPIUS,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5089
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5088
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5091
-            .species = SPECIES_XATU,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5093
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5092
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5095
-    [DIFFICULTY_NORMAL][TRAINER_EDWARDO] =
-    {
-#line 5096
-        .trainerName = _("Edwardo"),
-#line 5097
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 5098
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
-        .encounterMusic_gender =
-#line 5100
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 5101
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5102
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5104
-            .species = SPECIES_DODUO,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5106
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 5105
-            .lvl = 29,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5108
-            .species = SPECIES_PELIPPER,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5110
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 5109
-            .lvl = 29,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5112
-    [DIFFICULTY_NORMAL][TRAINER_COLIN] =
-    {
-#line 5113
-        .trainerName = _("Colin"),
-#line 5114
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 5115
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
-        .encounterMusic_gender =
-#line 5117
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 5118
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5119
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5121
-            .species = SPECIES_WINGULL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5123
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5122
-            .lvl = 28,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5125
-            .species = SPECIES_NATU,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5127
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5126
-            .lvl = 28,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5129
-    [DIFFICULTY_NORMAL][TRAINER_ROBERT_1] =
-    {
-#line 5130
-        .trainerName = _("Robert"),
-#line 5131
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 5132
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
-        .encounterMusic_gender =
-#line 5134
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 5135
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5136
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
+#line 5087
+            .species = SPECIES_SKARMORY,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5089
+            .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
+#line 5088
+            .lvl = 30,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5091
+    [DIFFICULTY_NORMAL][TRAINER_PRESLEY] =
+    {
+#line 5092
+        .trainerName = _("Presley"),
+#line 5093
+        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
+#line 5094
+        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .encounterMusic_gender =
+#line 5096
+            TRAINER_ENCOUNTER_MUSIC_COOL,
+#line 5097
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5098
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5100
+            .species = SPECIES_TROPIUS,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5102
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5101
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5104
+            .species = SPECIES_XATU,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5106
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5105
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5108
+    [DIFFICULTY_NORMAL][TRAINER_EDWARDO] =
+    {
+#line 5109
+        .trainerName = _("Edwardo"),
+#line 5110
+        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
+#line 5111
+        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .encounterMusic_gender =
+#line 5113
+            TRAINER_ENCOUNTER_MUSIC_COOL,
+#line 5114
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5115
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5117
+            .species = SPECIES_DODUO,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5119
+            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+#line 5118
+            .lvl = 29,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5121
+            .species = SPECIES_PELIPPER,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5123
+            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+#line 5122
+            .lvl = 29,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5125
+    [DIFFICULTY_NORMAL][TRAINER_COLIN] =
+    {
+#line 5126
+        .trainerName = _("Colin"),
+#line 5127
+        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
+#line 5128
+        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .encounterMusic_gender =
+#line 5130
+            TRAINER_ENCOUNTER_MUSIC_COOL,
+#line 5131
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5132
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5134
+            .species = SPECIES_WINGULL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5136
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5135
+            .lvl = 28,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
 #line 5138
-            .species = SPECIES_SWABLU,
+            .species = SPECIES_NATU,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5140
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5139
-            .lvl = 29,
+            .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 5142
-    [DIFFICULTY_NORMAL][TRAINER_BENNY] =
+    [DIFFICULTY_NORMAL][TRAINER_ROBERT_1] =
     {
 #line 5143
-        .trainerName = _("Benny"),
+        .trainerName = _("Robert"),
 #line 5144
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 5145
@@ -12871,179 +12878,179 @@ F_TRAINER_FEMALE |
 #line 5147
             TRAINER_ENCOUNTER_MUSIC_COOL,
 #line 5148
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5149
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5151
-            .species = SPECIES_SWELLOW,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5153
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5152
-            .lvl = 36,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5155
-            .species = SPECIES_PELIPPER,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5157
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5156
-            .lvl = 36,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5159
-            .species = SPECIES_XATU,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5161
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5160
-            .lvl = 36,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5163
-    [DIFFICULTY_NORMAL][TRAINER_CHESTER] =
-    {
-#line 5164
-        .trainerName = _("Chester"),
-#line 5165
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 5166
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
-        .encounterMusic_gender =
-#line 5168
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 5169
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5170
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5172
-            .species = SPECIES_TAILLOW,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5174
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5173
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5176
-            .species = SPECIES_SWELLOW,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5178
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5177
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5180
-    [DIFFICULTY_NORMAL][TRAINER_ALEX] =
-    {
-#line 5181
-        .trainerName = _("Alex"),
-#line 5182
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 5183
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
-        .encounterMusic_gender =
-#line 5185
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 5186
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5187
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5189
-            .species = SPECIES_NATU,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5191
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 5190
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5193
-            .species = SPECIES_SWELLOW,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5195
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 5194
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5197
-    [DIFFICULTY_NORMAL][TRAINER_BECK] =
-    {
-#line 5198
-        .trainerName = _("Beck"),
-#line 5199
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 5200
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
-        .encounterMusic_gender =
-#line 5202
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 5203
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5204
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
+#line 5151
+            .species = SPECIES_SWABLU,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5153
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5152
+            .lvl = 29,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5155
+    [DIFFICULTY_NORMAL][TRAINER_BENNY] =
+    {
+#line 5156
+        .trainerName = _("Benny"),
+#line 5157
+        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
+#line 5158
+        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .encounterMusic_gender =
+#line 5160
+            TRAINER_ENCOUNTER_MUSIC_COOL,
+#line 5161
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5162
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 3,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5164
+            .species = SPECIES_SWELLOW,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5166
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5165
+            .lvl = 36,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5168
+            .species = SPECIES_PELIPPER,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5170
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5169
+            .lvl = 36,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5172
+            .species = SPECIES_XATU,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5174
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5173
+            .lvl = 36,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5176
+    [DIFFICULTY_NORMAL][TRAINER_CHESTER] =
+    {
+#line 5177
+        .trainerName = _("Chester"),
+#line 5178
+        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
+#line 5179
+        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .encounterMusic_gender =
+#line 5181
+            TRAINER_ENCOUNTER_MUSIC_COOL,
+#line 5182
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5183
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5185
+            .species = SPECIES_TAILLOW,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5187
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5186
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5189
+            .species = SPECIES_SWELLOW,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5191
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5190
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5193
+    [DIFFICULTY_NORMAL][TRAINER_ALEX] =
+    {
+#line 5194
+        .trainerName = _("Alex"),
+#line 5195
+        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
+#line 5196
+        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .encounterMusic_gender =
+#line 5198
+            TRAINER_ENCOUNTER_MUSIC_COOL,
+#line 5199
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5200
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5202
+            .species = SPECIES_NATU,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5204
+            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+#line 5203
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
 #line 5206
-            .species = SPECIES_TROPIUS,
+            .species = SPECIES_SWELLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5208
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5207
-            .lvl = 34,
+            .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 5210
-    [DIFFICULTY_NORMAL][TRAINER_YASU] =
+    [DIFFICULTY_NORMAL][TRAINER_BECK] =
     {
 #line 5211
-        .trainerName = _("Yasu"),
+        .trainerName = _("Beck"),
 #line 5212
-        .trainerClass = TRAINER_CLASS_NINJA_BOY,
+        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 5213
-        .trainerPic = TRAINER_PIC_NINJA_BOY,
+        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 5215
-            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+            TRAINER_ENCOUNTER_MUSIC_COOL,
 #line 5216
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5217
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -13051,22 +13058,22 @@ F_TRAINER_FEMALE |
         {
             {
 #line 5219
-            .species = SPECIES_NINJASK,
+            .species = SPECIES_TROPIUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5221
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5220
-            .lvl = 26,
+            .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 5223
-    [DIFFICULTY_NORMAL][TRAINER_TAKASHI] =
+    [DIFFICULTY_NORMAL][TRAINER_YASU] =
     {
 #line 5224
-        .trainerName = _("Takashi"),
+        .trainerName = _("Yasu"),
 #line 5225
         .trainerClass = TRAINER_CLASS_NINJA_BOY,
 #line 5226
@@ -13075,10 +13082,10 @@ F_TRAINER_FEMALE |
 #line 5228
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
 #line 5229
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5230
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
@@ -13088,181 +13095,213 @@ F_TRAINER_FEMALE |
 #line 5234
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5233
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5236
-            .species = SPECIES_KOFFING,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5238
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5237
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5240
-    [DIFFICULTY_NORMAL][TRAINER_DIANNE] =
-    {
-#line 5241
-        .trainerName = _("Dianne"),
-#line 5242
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 5243
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
-        .encounterMusic_gender =
-#line 5244
-F_TRAINER_FEMALE | 
-#line 5245
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 5246
-        .items = { ITEM_FULL_RESTORE },
-#line 5247
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5248
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5250
-            .species = SPECIES_CLAYDOL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5252
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5251
-            .lvl = 43,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 5253
-                MOVE_SKILL_SWAP,
-                MOVE_EARTHQUAKE,
-            },
-            },
-            {
-#line 5256
-            .species = SPECIES_LANTURN,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5258
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5257
-            .lvl = 43,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 5259
-                MOVE_THUNDERBOLT,
-                MOVE_EARTHQUAKE,
-            },
-            },
-        },
-    },
-#line 5262
-    [DIFFICULTY_NORMAL][TRAINER_JANI] =
-    {
-#line 5263
-        .trainerName = _("Jani"),
-#line 5264
-        .trainerClass = TRAINER_CLASS_TUBER_F,
-#line 5265
-        .trainerPic = TRAINER_PIC_TUBER_F,
-        .encounterMusic_gender =
-#line 5266
-F_TRAINER_FEMALE | 
-#line 5267
-            TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 5268
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5269
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5271
-            .species = SPECIES_MARILL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5273
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5272
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 5275
-    [DIFFICULTY_NORMAL][TRAINER_LAO_1] =
+#line 5236
+    [DIFFICULTY_NORMAL][TRAINER_TAKASHI] =
     {
-#line 5276
-        .trainerName = _("Lao"),
-#line 5277
+#line 5237
+        .trainerName = _("Takashi"),
+#line 5238
         .trainerClass = TRAINER_CLASS_NINJA_BOY,
-#line 5278
+#line 5239
         .trainerPic = TRAINER_PIC_NINJA_BOY,
         .encounterMusic_gender =
-#line 5280
+#line 5241
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+#line 5242
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5243
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5245
+            .species = SPECIES_NINJASK,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5247
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5246
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5249
+            .species = SPECIES_KOFFING,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5251
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5250
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5253
+    [DIFFICULTY_NORMAL][TRAINER_DIANNE] =
+    {
+#line 5254
+        .trainerName = _("Dianne"),
+#line 5255
+        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+#line 5256
+        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .encounterMusic_gender =
+#line 5257
+F_TRAINER_FEMALE | 
+#line 5258
+            TRAINER_ENCOUNTER_MUSIC_COOL,
+#line 5259
+        .items = { ITEM_FULL_RESTORE },
+#line 5260
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5261
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5263
+            .species = SPECIES_CLAYDOL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5265
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5264
+            .lvl = 43,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 5266
+                MOVE_SKILL_SWAP,
+                MOVE_EARTHQUAKE,
+            },
+            },
+            {
+#line 5269
+            .species = SPECIES_LANTURN,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5271
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5270
+            .lvl = 43,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 5272
+                MOVE_THUNDERBOLT,
+                MOVE_EARTHQUAKE,
+            },
+            },
+        },
+    },
+#line 5275
+    [DIFFICULTY_NORMAL][TRAINER_JANI] =
+    {
+#line 5276
+        .trainerName = _("Jani"),
+#line 5277
+        .trainerClass = TRAINER_CLASS_TUBER_F,
+#line 5278
+        .trainerPic = TRAINER_PIC_TUBER_F,
+        .encounterMusic_gender =
+#line 5279
+F_TRAINER_FEMALE | 
+#line 5280
+            TRAINER_ENCOUNTER_MUSIC_GIRL,
 #line 5281
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5282
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5284
+            .species = SPECIES_MARILL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5286
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5285
+            .lvl = 26,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5288
+    [DIFFICULTY_NORMAL][TRAINER_LAO_1] =
+    {
+#line 5289
+        .trainerName = _("Lao"),
+#line 5290
+        .trainerClass = TRAINER_CLASS_NINJA_BOY,
+#line 5291
+        .trainerPic = TRAINER_PIC_NINJA_BOY,
+        .encounterMusic_gender =
+#line 5293
+            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+#line 5294
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5295
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5284
+#line 5297
             .species = SPECIES_KOFFING,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5286
+#line 5299
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5285
+#line 5298
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 5287
-                MOVE_POISON_GAS,
-                MOVE_TACKLE,
-                MOVE_SMOG,
-                MOVE_SELF_DESTRUCT,
-            },
-            },
-            {
-#line 5292
-            .species = SPECIES_KOFFING,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5294
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5293
-            .lvl = 17,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 5295
-                MOVE_POISON_GAS,
-                MOVE_TACKLE,
-                MOVE_SMOG,
-                MOVE_SELF_DESTRUCT,
-            },
-            },
-            {
 #line 5300
+                MOVE_POISON_GAS,
+                MOVE_TACKLE,
+                MOVE_SMOG,
+                MOVE_SELF_DESTRUCT,
+            },
+            },
+            {
+#line 5305
             .species = SPECIES_KOFFING,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5302
+#line 5307
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5301
+#line 5306
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 5303
+#line 5308
+                MOVE_POISON_GAS,
+                MOVE_TACKLE,
+                MOVE_SMOG,
+                MOVE_SELF_DESTRUCT,
+            },
+            },
+            {
+#line 5313
+            .species = SPECIES_KOFFING,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5315
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5314
+            .lvl = 17,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 5316
                 MOVE_POISON_GAS,
                 MOVE_TACKLE,
                 MOVE_SLUDGE,
@@ -13271,88 +13310,54 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 5308
+#line 5321
     [DIFFICULTY_NORMAL][TRAINER_LUNG] =
     {
-#line 5309
+#line 5322
         .trainerName = _("Lung"),
-#line 5310
+#line 5323
         .trainerClass = TRAINER_CLASS_NINJA_BOY,
-#line 5311
+#line 5324
         .trainerPic = TRAINER_PIC_NINJA_BOY,
         .encounterMusic_gender =
-#line 5313
+#line 5326
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 5314
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5315
+#line 5327
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5328
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5317
+#line 5330
             .species = SPECIES_KOFFING,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5319
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5318
-            .lvl = 18,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5321
-            .species = SPECIES_NINJASK,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5323
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5322
-            .lvl = 18,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5325
-    [DIFFICULTY_NORMAL][TRAINER_JOCELYN] =
-    {
-#line 5326
-        .trainerName = _("Jocelyn"),
-#line 5327
-        .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
-#line 5328
-        .trainerPic = TRAINER_PIC_BATTLE_GIRL,
-        .encounterMusic_gender =
-#line 5329
-F_TRAINER_FEMALE | 
-#line 5330
-            TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 5331
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5332
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5331
+            .lvl = 18,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
             {
 #line 5334
-            .species = SPECIES_MEDITITE,
+            .species = SPECIES_NINJASK,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5336
-            .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5335
-            .lvl = 13,
+            .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 5338
-    [DIFFICULTY_NORMAL][TRAINER_LAURA] =
+    [DIFFICULTY_NORMAL][TRAINER_JOCELYN] =
     {
 #line 5339
-        .trainerName = _("Laura"),
+        .trainerName = _("Jocelyn"),
 #line 5340
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 5341
@@ -13363,7 +13368,7 @@ F_TRAINER_FEMALE |
 #line 5343
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
 #line 5344
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5345
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -13374,7 +13379,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5349
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+            .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
 #line 5348
             .lvl = 13,
             .nature = NATURE_HARDY,
@@ -13383,10 +13388,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 5351
-    [DIFFICULTY_NORMAL][TRAINER_CYNDY_1] =
+    [DIFFICULTY_NORMAL][TRAINER_LAURA] =
     {
 #line 5352
-        .trainerName = _("Cyndy"),
+        .trainerName = _("Laura"),
 #line 5353
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 5354
@@ -13397,10 +13402,10 @@ F_TRAINER_FEMALE |
 #line 5356
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
 #line 5357
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5358
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
@@ -13408,64 +13413,64 @@ F_TRAINER_FEMALE |
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5362
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5361
-            .lvl = 18,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5364
-            .species = SPECIES_MAKUHITA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5366
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 5365
-            .lvl = 18,
+            .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 5368
-    [DIFFICULTY_NORMAL][TRAINER_CORA] =
+#line 5364
+    [DIFFICULTY_NORMAL][TRAINER_CYNDY_1] =
     {
-#line 5369
-        .trainerName = _("Cora"),
-#line 5370
+#line 5365
+        .trainerName = _("Cyndy"),
+#line 5366
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
-#line 5371
+#line 5367
         .trainerPic = TRAINER_PIC_BATTLE_GIRL,
         .encounterMusic_gender =
-#line 5372
+#line 5368
 F_TRAINER_FEMALE | 
-#line 5373
+#line 5369
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 5374
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5375
+#line 5370
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5371
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
+        .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5377
+#line 5373
             .species = SPECIES_MEDITITE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5375
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 5374
+            .lvl = 18,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5377
+            .species = SPECIES_MAKUHITA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5379
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5378
-            .lvl = 27,
+            .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 5381
-    [DIFFICULTY_NORMAL][TRAINER_PAULA] =
+    [DIFFICULTY_NORMAL][TRAINER_CORA] =
     {
 #line 5382
-        .trainerName = _("Paula"),
+        .trainerName = _("Cora"),
 #line 5383
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 5384
@@ -13476,7 +13481,7 @@ F_TRAINER_FEMALE |
 #line 5386
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
 #line 5387
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5388
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -13484,7 +13489,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 5390
-            .species = SPECIES_BRELOOM,
+            .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5392
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
@@ -13496,21 +13501,21 @@ F_TRAINER_FEMALE |
         },
     },
 #line 5394
-    [DIFFICULTY_NORMAL][TRAINER_MADELINE_1] =
+    [DIFFICULTY_NORMAL][TRAINER_PAULA] =
     {
 #line 5395
-        .trainerName = _("Madeline"),
+        .trainerName = _("Paula"),
 #line 5396
-        .trainerClass = TRAINER_CLASS_PARASOL_LADY,
+        .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 5397
-        .trainerPic = TRAINER_PIC_PARASOL_LADY,
+        .trainerPic = TRAINER_PIC_BATTLE_GIRL,
         .encounterMusic_gender =
 #line 5398
 F_TRAINER_FEMALE | 
 #line 5399
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_INTENSE,
 #line 5400
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5401
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -13518,16 +13523,50 @@ F_TRAINER_FEMALE |
         {
             {
 #line 5403
-            .species = SPECIES_NUMEL,
+            .species = SPECIES_BRELOOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5405
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5404
+            .lvl = 27,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5407
+    [DIFFICULTY_NORMAL][TRAINER_MADELINE_1] =
+    {
+#line 5408
+        .trainerName = _("Madeline"),
+#line 5409
+        .trainerClass = TRAINER_CLASS_PARASOL_LADY,
+#line 5410
+        .trainerPic = TRAINER_PIC_PARASOL_LADY,
+        .encounterMusic_gender =
+#line 5411
+F_TRAINER_FEMALE | 
+#line 5412
+            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+#line 5413
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5414
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5416
+            .species = SPECIES_NUMEL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5418
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5417
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 5406
+#line 5419
                 MOVE_EMBER,
                 MOVE_TACKLE,
                 MOVE_MAGNITUDE,
@@ -13536,84 +13575,84 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 5411
+#line 5424
     [DIFFICULTY_NORMAL][TRAINER_CLARISSA] =
     {
-#line 5412
+#line 5425
         .trainerName = _("Clarissa"),
-#line 5413
+#line 5426
         .trainerClass = TRAINER_CLASS_PARASOL_LADY,
-#line 5414
+#line 5427
         .trainerPic = TRAINER_PIC_PARASOL_LADY,
         .encounterMusic_gender =
-#line 5415
+#line 5428
 F_TRAINER_FEMALE | 
-#line 5416
+#line 5429
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 5417
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5418
+#line 5430
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5431
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5420
+#line 5433
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5422
+#line 5435
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5421
+#line 5434
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 5424
+#line 5437
             .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5426
+#line 5439
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5425
+#line 5438
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 5428
+#line 5441
     [DIFFICULTY_NORMAL][TRAINER_ANGELICA] =
     {
-#line 5429
+#line 5442
         .trainerName = _("Angelica"),
-#line 5430
+#line 5443
         .trainerClass = TRAINER_CLASS_PARASOL_LADY,
-#line 5431
+#line 5444
         .trainerPic = TRAINER_PIC_PARASOL_LADY,
         .encounterMusic_gender =
-#line 5432
+#line 5445
 F_TRAINER_FEMALE | 
-#line 5433
+#line 5446
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 5434
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5435
+#line 5447
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5448
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5437
+#line 5450
             .species = SPECIES_CASTFORM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5439
+#line 5452
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 5438
+#line 5451
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 5440
+#line 5453
                 MOVE_RAIN_DANCE,
                 MOVE_WEATHER_BALL,
                 MOVE_THUNDER,
@@ -13622,90 +13661,56 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 5445
+#line 5458
     [DIFFICULTY_NORMAL][TRAINER_BEVERLY] =
     {
-#line 5446
+#line 5459
         .trainerName = _("Beverly"),
-#line 5447
+#line 5460
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
-#line 5448
+#line 5461
         .trainerPic = TRAINER_PIC_SWIMMER_F,
         .encounterMusic_gender =
-#line 5449
+#line 5462
 F_TRAINER_FEMALE | 
-#line 5450
+#line 5463
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 5451
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5452
+#line 5464
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5465
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5454
+#line 5467
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5456
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5455
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5458
-            .species = SPECIES_WAILMER,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5460
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5459
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5462
-    [DIFFICULTY_NORMAL][TRAINER_IMANI] =
-    {
-#line 5463
-        .trainerName = _("Imani"),
-#line 5464
-        .trainerClass = TRAINER_CLASS_SWIMMER_F,
-#line 5465
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
-        .encounterMusic_gender =
-#line 5466
-F_TRAINER_FEMALE | 
-#line 5467
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 5468
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5469
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5468
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
             {
 #line 5471
-            .species = SPECIES_MARILL,
+            .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5473
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5472
-            .lvl = 26,
+            .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 5475
-    [DIFFICULTY_NORMAL][TRAINER_KYLA] =
+    [DIFFICULTY_NORMAL][TRAINER_IMANI] =
     {
 #line 5476
-        .trainerName = _("Kyla"),
+        .trainerName = _("Imani"),
 #line 5477
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5478
@@ -13716,7 +13721,7 @@ F_TRAINER_FEMALE |
 #line 5480
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5481
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5482
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -13724,7 +13729,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 5484
-            .species = SPECIES_WAILMER,
+            .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5486
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -13736,10 +13741,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 5488
-    [DIFFICULTY_NORMAL][TRAINER_DENISE] =
+    [DIFFICULTY_NORMAL][TRAINER_KYLA] =
     {
 #line 5489
-        .trainerName = _("Denise"),
+        .trainerName = _("Kyla"),
 #line 5490
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5491
@@ -13750,57 +13755,57 @@ F_TRAINER_FEMALE |
 #line 5493
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5494
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5495
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
 #line 5497
-            .species = SPECIES_WINGULL,
+            .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5499
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5498
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5501
-            .species = SPECIES_GOLDEEN,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5503
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5502
-            .lvl = 25,
+            .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 5505
-    [DIFFICULTY_NORMAL][TRAINER_BETH] =
+#line 5501
+    [DIFFICULTY_NORMAL][TRAINER_DENISE] =
     {
-#line 5506
-        .trainerName = _("Beth"),
-#line 5507
+#line 5502
+        .trainerName = _("Denise"),
+#line 5503
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
-#line 5508
+#line 5504
         .trainerPic = TRAINER_PIC_SWIMMER_F,
         .encounterMusic_gender =
-#line 5509
+#line 5505
 F_TRAINER_FEMALE | 
-#line 5510
+#line 5506
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 5511
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5512
+#line 5507
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5508
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
+        .partySize = 2,
         .party = (const struct TrainerMon[])
         {
+            {
+#line 5510
+            .species = SPECIES_WINGULL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5512
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5511
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
             {
 #line 5514
             .species = SPECIES_GOLDEEN,
@@ -13808,17 +13813,17 @@ F_TRAINER_FEMALE |
 #line 5516
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5515
-            .lvl = 26,
+            .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 5518
-    [DIFFICULTY_NORMAL][TRAINER_TARA] =
+    [DIFFICULTY_NORMAL][TRAINER_BETH] =
     {
 #line 5519
-        .trainerName = _("Tara"),
+        .trainerName = _("Beth"),
 #line 5520
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5521
@@ -13829,75 +13834,75 @@ F_TRAINER_FEMALE |
 #line 5523
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5524
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5525
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5527
-            .species = SPECIES_HORSEA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5529
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5528
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5531
-            .species = SPECIES_MARILL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5533
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5532
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5535
-    [DIFFICULTY_NORMAL][TRAINER_MISSY] =
-    {
-#line 5536
-        .trainerName = _("Missy"),
-#line 5537
-        .trainerClass = TRAINER_CLASS_SWIMMER_F,
-#line 5538
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
-        .encounterMusic_gender =
-#line 5539
-F_TRAINER_FEMALE | 
-#line 5540
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 5541
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5542
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5544
+#line 5527
             .species = SPECIES_GOLDEEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5546
+#line 5529
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5545
+#line 5528
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
+#line 5531
+    [DIFFICULTY_NORMAL][TRAINER_TARA] =
+    {
+#line 5532
+        .trainerName = _("Tara"),
+#line 5533
+        .trainerClass = TRAINER_CLASS_SWIMMER_F,
+#line 5534
+        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .encounterMusic_gender =
+#line 5535
+F_TRAINER_FEMALE | 
+#line 5536
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 5537
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5538
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5540
+            .species = SPECIES_HORSEA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5542
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5541
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5544
+            .species = SPECIES_MARILL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5546
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5545
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
 #line 5548
-    [DIFFICULTY_NORMAL][TRAINER_ALICE] =
+    [DIFFICULTY_NORMAL][TRAINER_MISSY] =
     {
 #line 5549
-        .trainerName = _("Alice"),
+        .trainerName = _("Missy"),
 #line 5550
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5551
@@ -13908,10 +13913,10 @@ F_TRAINER_FEMALE |
 #line 5553
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5554
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5555
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
+        .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
@@ -13921,73 +13926,73 @@ F_TRAINER_FEMALE |
 #line 5559
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5558
-            .lvl = 24,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5561
-            .species = SPECIES_WINGULL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5563
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5562
-            .lvl = 24,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5565
-            .species = SPECIES_GOLDEEN,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5567
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5566
-            .lvl = 24,
+            .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 5569
-    [DIFFICULTY_NORMAL][TRAINER_JENNY_1] =
+#line 5561
+    [DIFFICULTY_NORMAL][TRAINER_ALICE] =
     {
-#line 5570
-        .trainerName = _("Jenny"),
-#line 5571
+#line 5562
+        .trainerName = _("Alice"),
+#line 5563
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
-#line 5572
+#line 5564
         .trainerPic = TRAINER_PIC_SWIMMER_F,
         .encounterMusic_gender =
-#line 5573
+#line 5565
 F_TRAINER_FEMALE | 
-#line 5574
+#line 5566
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 5575
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5576
+#line 5567
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5568
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
+        .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
+#line 5570
+            .species = SPECIES_GOLDEEN,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5572
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5571
+            .lvl = 24,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5574
+            .species = SPECIES_WINGULL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5576
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5575
+            .lvl = 24,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
 #line 5578
-            .species = SPECIES_WAILMER,
+            .species = SPECIES_GOLDEEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5580
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5579
-            .lvl = 34,
+            .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 5582
-    [DIFFICULTY_NORMAL][TRAINER_GRACE] =
+    [DIFFICULTY_NORMAL][TRAINER_JENNY_1] =
     {
 #line 5583
-        .trainerName = _("Grace"),
+        .trainerName = _("Jenny"),
 #line 5584
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5585
@@ -13998,7 +14003,7 @@ F_TRAINER_FEMALE |
 #line 5587
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5588
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5589
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -14006,7 +14011,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 5591
-            .species = SPECIES_MARILL,
+            .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5593
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -14018,10 +14023,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 5595
-    [DIFFICULTY_NORMAL][TRAINER_TANYA] =
+    [DIFFICULTY_NORMAL][TRAINER_GRACE] =
     {
 #line 5596
-        .trainerName = _("Tanya"),
+        .trainerName = _("Grace"),
 #line 5597
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5598
@@ -14032,7 +14037,7 @@ F_TRAINER_FEMALE |
 #line 5600
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5601
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5602
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -14040,7 +14045,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 5604
-            .species = SPECIES_LUVDISC,
+            .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5606
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -14052,10 +14057,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 5608
-    [DIFFICULTY_NORMAL][TRAINER_SHARON] =
+    [DIFFICULTY_NORMAL][TRAINER_TANYA] =
     {
 #line 5609
-        .trainerName = _("Sharon"),
+        .trainerName = _("Tanya"),
 #line 5610
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5611
@@ -14066,7 +14071,7 @@ F_TRAINER_FEMALE |
 #line 5613
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5614
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5615
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -14074,7 +14079,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 5617
-            .species = SPECIES_SEAKING,
+            .species = SPECIES_LUVDISC,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5619
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -14086,10 +14091,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 5621
-    [DIFFICULTY_NORMAL][TRAINER_NIKKI] =
+    [DIFFICULTY_NORMAL][TRAINER_SHARON] =
     {
 #line 5622
-        .trainerName = _("Nikki"),
+        .trainerName = _("Sharon"),
 #line 5623
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5624
@@ -14100,75 +14105,75 @@ F_TRAINER_FEMALE |
 #line 5626
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5627
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5628
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5630
-            .species = SPECIES_MARILL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5632
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5631
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5634
-            .species = SPECIES_SPHEAL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5636
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5635
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5638
-    [DIFFICULTY_NORMAL][TRAINER_BRENDA] =
-    {
-#line 5639
-        .trainerName = _("Brenda"),
-#line 5640
-        .trainerClass = TRAINER_CLASS_SWIMMER_F,
-#line 5641
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
-        .encounterMusic_gender =
-#line 5642
-F_TRAINER_FEMALE | 
-#line 5643
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 5644
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5645
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5647
-            .species = SPECIES_GOLDEEN,
+#line 5630
+            .species = SPECIES_SEAKING,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5649
+#line 5632
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5648
+#line 5631
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
+#line 5634
+    [DIFFICULTY_NORMAL][TRAINER_NIKKI] =
+    {
+#line 5635
+        .trainerName = _("Nikki"),
+#line 5636
+        .trainerClass = TRAINER_CLASS_SWIMMER_F,
+#line 5637
+        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .encounterMusic_gender =
+#line 5638
+F_TRAINER_FEMALE | 
+#line 5639
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 5640
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5641
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5643
+            .species = SPECIES_MARILL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5645
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5644
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5647
+            .species = SPECIES_SPHEAL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5649
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5648
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
 #line 5651
-    [DIFFICULTY_NORMAL][TRAINER_KATIE] =
+    [DIFFICULTY_NORMAL][TRAINER_BRENDA] =
     {
 #line 5652
-        .trainerName = _("Katie"),
+        .trainerName = _("Brenda"),
 #line 5653
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5654
@@ -14179,10 +14184,10 @@ F_TRAINER_FEMALE |
 #line 5656
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5657
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5658
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
@@ -14192,62 +14197,62 @@ F_TRAINER_FEMALE |
 #line 5662
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5661
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5664
-            .species = SPECIES_SPHEAL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5666
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5665
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5668
-    [DIFFICULTY_NORMAL][TRAINER_SUSIE] =
-    {
-#line 5669
-        .trainerName = _("Susie"),
-#line 5670
-        .trainerClass = TRAINER_CLASS_SWIMMER_F,
-#line 5671
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
-        .encounterMusic_gender =
-#line 5672
-F_TRAINER_FEMALE | 
-#line 5673
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 5674
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5675
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5677
-            .species = SPECIES_LUVDISC,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5679
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5678
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
+#line 5664
+    [DIFFICULTY_NORMAL][TRAINER_KATIE] =
+    {
+#line 5665
+        .trainerName = _("Katie"),
+#line 5666
+        .trainerClass = TRAINER_CLASS_SWIMMER_F,
+#line 5667
+        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .encounterMusic_gender =
+#line 5668
+F_TRAINER_FEMALE | 
+#line 5669
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 5670
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5671
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5673
+            .species = SPECIES_GOLDEEN,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5675
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5674
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5677
+            .species = SPECIES_SPHEAL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5679
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5678
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
 #line 5681
-    [DIFFICULTY_NORMAL][TRAINER_KARA] =
+    [DIFFICULTY_NORMAL][TRAINER_SUSIE] =
     {
 #line 5682
-        .trainerName = _("Kara"),
+        .trainerName = _("Susie"),
 #line 5683
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5684
@@ -14258,7 +14263,7 @@ F_TRAINER_FEMALE |
 #line 5686
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5687
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5688
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -14266,7 +14271,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 5690
-            .species = SPECIES_SEAKING,
+            .species = SPECIES_LUVDISC,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5692
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -14278,10 +14283,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 5694
-    [DIFFICULTY_NORMAL][TRAINER_DANA] =
+    [DIFFICULTY_NORMAL][TRAINER_KARA] =
     {
 #line 5695
-        .trainerName = _("Dana"),
+        .trainerName = _("Kara"),
 #line 5696
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5697
@@ -14292,7 +14297,7 @@ F_TRAINER_FEMALE |
 #line 5699
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5700
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5701
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -14300,7 +14305,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 5703
-            .species = SPECIES_AZUMARILL,
+            .species = SPECIES_SEAKING,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5705
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -14312,10 +14317,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 5707
-    [DIFFICULTY_NORMAL][TRAINER_SIENNA] =
+    [DIFFICULTY_NORMAL][TRAINER_DANA] =
     {
 #line 5708
-        .trainerName = _("Sienna"),
+        .trainerName = _("Dana"),
 #line 5709
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5710
@@ -14326,75 +14331,75 @@ F_TRAINER_FEMALE |
 #line 5712
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5713
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5714
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5716
-            .species = SPECIES_LUVDISC,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5718
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5717
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5720
-            .species = SPECIES_LUVDISC,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5722
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5721
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5724
-    [DIFFICULTY_NORMAL][TRAINER_DEBRA] =
-    {
-#line 5725
-        .trainerName = _("Debra"),
-#line 5726
-        .trainerClass = TRAINER_CLASS_SWIMMER_F,
-#line 5727
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
-        .encounterMusic_gender =
-#line 5728
-F_TRAINER_FEMALE | 
-#line 5729
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 5730
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5731
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5733
-            .species = SPECIES_SEAKING,
+#line 5716
+            .species = SPECIES_AZUMARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5735
+#line 5718
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5734
+#line 5717
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
+#line 5720
+    [DIFFICULTY_NORMAL][TRAINER_SIENNA] =
+    {
+#line 5721
+        .trainerName = _("Sienna"),
+#line 5722
+        .trainerClass = TRAINER_CLASS_SWIMMER_F,
+#line 5723
+        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .encounterMusic_gender =
+#line 5724
+F_TRAINER_FEMALE | 
+#line 5725
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 5726
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5727
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5729
+            .species = SPECIES_LUVDISC,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5731
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5730
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5733
+            .species = SPECIES_LUVDISC,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5735
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5734
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
 #line 5737
-    [DIFFICULTY_NORMAL][TRAINER_LINDA] =
+    [DIFFICULTY_NORMAL][TRAINER_DEBRA] =
     {
 #line 5738
-        .trainerName = _("Linda"),
+        .trainerName = _("Debra"),
 #line 5739
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5740
@@ -14405,193 +14410,227 @@ F_TRAINER_FEMALE |
 #line 5742
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5743
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5744
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5746
-            .species = SPECIES_HORSEA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5748
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5747
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5750
-            .species = SPECIES_SEADRA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5752
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5751
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5754
-    [DIFFICULTY_NORMAL][TRAINER_KAYLEE] =
-    {
-#line 5755
-        .trainerName = _("Kaylee"),
-#line 5756
-        .trainerClass = TRAINER_CLASS_SWIMMER_F,
-#line 5757
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
-        .encounterMusic_gender =
-#line 5758
-F_TRAINER_FEMALE | 
-#line 5759
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 5760
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5761
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5763
-            .species = SPECIES_LANTURN,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5765
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5764
-            .lvl = 34,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5767
-            .species = SPECIES_PELIPPER,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5769
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5768
-            .lvl = 34,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5771
-    [DIFFICULTY_NORMAL][TRAINER_LAUREL] =
-    {
-#line 5772
-        .trainerName = _("Laurel"),
-#line 5773
-        .trainerClass = TRAINER_CLASS_SWIMMER_F,
-#line 5774
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
-        .encounterMusic_gender =
-#line 5775
-F_TRAINER_FEMALE | 
-#line 5776
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 5777
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5778
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 5780
-            .species = SPECIES_LUVDISC,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5782
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5781
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5784
-            .species = SPECIES_LUVDISC,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5786
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5785
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5788
-    [DIFFICULTY_NORMAL][TRAINER_CARLEE] =
-    {
-#line 5789
-        .trainerName = _("Carlee"),
-#line 5790
-        .trainerClass = TRAINER_CLASS_SWIMMER_F,
-#line 5791
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
-        .encounterMusic_gender =
-#line 5792
-F_TRAINER_FEMALE | 
-#line 5793
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 5794
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5795
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5797
+#line 5746
             .species = SPECIES_SEAKING,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5748
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5747
+            .lvl = 34,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5750
+    [DIFFICULTY_NORMAL][TRAINER_LINDA] =
+    {
+#line 5751
+        .trainerName = _("Linda"),
+#line 5752
+        .trainerClass = TRAINER_CLASS_SWIMMER_F,
+#line 5753
+        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .encounterMusic_gender =
+#line 5754
+F_TRAINER_FEMALE | 
+#line 5755
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 5756
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5757
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5759
+            .species = SPECIES_HORSEA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5761
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5760
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5763
+            .species = SPECIES_SEADRA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5765
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5764
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5767
+    [DIFFICULTY_NORMAL][TRAINER_KAYLEE] =
+    {
+#line 5768
+        .trainerName = _("Kaylee"),
+#line 5769
+        .trainerClass = TRAINER_CLASS_SWIMMER_F,
+#line 5770
+        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .encounterMusic_gender =
+#line 5771
+F_TRAINER_FEMALE | 
+#line 5772
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 5773
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5774
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5776
+            .species = SPECIES_LANTURN,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5778
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5777
+            .lvl = 34,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5780
+            .species = SPECIES_PELIPPER,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5782
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5781
+            .lvl = 34,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5784
+    [DIFFICULTY_NORMAL][TRAINER_LAUREL] =
+    {
+#line 5785
+        .trainerName = _("Laurel"),
+#line 5786
+        .trainerClass = TRAINER_CLASS_SWIMMER_F,
+#line 5787
+        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .encounterMusic_gender =
+#line 5788
+F_TRAINER_FEMALE | 
+#line 5789
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+#line 5790
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5791
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5793
+            .species = SPECIES_LUVDISC,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5795
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5794
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 5797
+            .species = SPECIES_LUVDISC,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5799
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5798
-            .lvl = 35,
+            .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 5801
-    [DIFFICULTY_NORMAL][TRAINER_HEIDI] =
+    [DIFFICULTY_NORMAL][TRAINER_CARLEE] =
     {
 #line 5802
-        .trainerName = _("Heidi"),
+        .trainerName = _("Carlee"),
 #line 5803
-        .trainerClass = TRAINER_CLASS_PICNICKER,
+        .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5804
-        .trainerPic = TRAINER_PIC_PICNICKER,
+        .trainerPic = TRAINER_PIC_SWIMMER_F,
         .encounterMusic_gender =
 #line 5805
 F_TRAINER_FEMALE | 
 #line 5806
-            TRAINER_ENCOUNTER_MUSIC_GIRL,
+            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
 #line 5807
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 5808
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5810
+            .species = SPECIES_SEAKING,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5812
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5811
+            .lvl = 35,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5814
+    [DIFFICULTY_NORMAL][TRAINER_HEIDI] =
+    {
+#line 5815
+        .trainerName = _("Heidi"),
+#line 5816
+        .trainerClass = TRAINER_CLASS_PICNICKER,
+#line 5817
+        .trainerPic = TRAINER_PIC_PICNICKER,
+        .encounterMusic_gender =
+#line 5818
+F_TRAINER_FEMALE | 
+#line 5819
+            TRAINER_ENCOUNTER_MUSIC_GIRL,
+#line 5820
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5821
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5810
+#line 5823
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5812
+#line 5825
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5811
+#line 5824
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 5813
+#line 5826
                 MOVE_DIG,
                 MOVE_SAND_ATTACK,
                 MOVE_POISON_STING,
@@ -14599,17 +14638,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 5818
+#line 5831
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5820
+#line 5833
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5819
+#line 5832
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 5821
+#line 5834
                 MOVE_RAPID_SPIN,
                 MOVE_MUD_SLAP,
                 MOVE_PSYBEAM,
@@ -14618,39 +14657,39 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 5826
+#line 5839
     [DIFFICULTY_NORMAL][TRAINER_BECKY] =
     {
-#line 5827
+#line 5840
         .trainerName = _("Becky"),
-#line 5828
+#line 5841
         .trainerClass = TRAINER_CLASS_PICNICKER,
-#line 5829
+#line 5842
         .trainerPic = TRAINER_PIC_PICNICKER,
         .encounterMusic_gender =
-#line 5830
+#line 5843
 F_TRAINER_FEMALE | 
-#line 5831
+#line 5844
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 5832
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5833
+#line 5845
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5846
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5835
+#line 5848
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5837
+#line 5850
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5836
+#line 5849
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 5838
+#line 5851
                 MOVE_SAND_ATTACK,
                 MOVE_POISON_STING,
                 MOVE_SLASH,
@@ -14658,17 +14697,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 5843
+#line 5856
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5845
+#line 5858
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5844
+#line 5857
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 5846
+#line 5859
                 MOVE_ROLLOUT,
                 MOVE_BUBBLE_BEAM,
                 MOVE_TAIL_WHIP,
@@ -14677,226 +14716,226 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 5851
+#line 5864
     [DIFFICULTY_NORMAL][TRAINER_CAROL] =
     {
-#line 5852
+#line 5865
         .trainerName = _("Carol"),
-#line 5853
+#line 5866
         .trainerClass = TRAINER_CLASS_PICNICKER,
-#line 5854
+#line 5867
         .trainerPic = TRAINER_PIC_PICNICKER,
         .encounterMusic_gender =
-#line 5855
+#line 5868
 F_TRAINER_FEMALE | 
-#line 5856
+#line 5869
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 5857
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5858
+#line 5870
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5871
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5860
+#line 5873
             .species = SPECIES_TAILLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5862
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5861
-            .lvl = 17,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5864
-            .species = SPECIES_LOMBRE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5866
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5865
-            .lvl = 17,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 5868
-    [DIFFICULTY_NORMAL][TRAINER_GRUNT_ROUTE_114_5] =
-    {
-#line 5869
-        .trainerName = _("Grunt"),
-#line 5870
-        .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 5871
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
-        .encounterMusic_gender =
-#line 5873
-            TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 5874
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 5875
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5874
+            .lvl = 17,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
             {
 #line 5877
-            .species = SPECIES_MARILL,
+            .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5879
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5878
-            .lvl = 18,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 5881
-            .species = SPECIES_LOMBRE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5883
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5882
-            .lvl = 18,
+            .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 5885
-    [DIFFICULTY_NORMAL][TRAINER_MARTHA] =
+#line 5881
+    [DIFFICULTY_NORMAL][TRAINER_GRUNT_ROUTE_114_5] =
     {
-#line 5886
-        .trainerName = _("Martha"),
-#line 5887
-        .trainerClass = TRAINER_CLASS_PICNICKER,
-#line 5888
-        .trainerPic = TRAINER_PIC_PICNICKER,
+#line 5882
+        .trainerName = _("Grunt"),
+#line 5883
+        .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
+#line 5884
+        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 5889
-F_TRAINER_FEMALE | 
-#line 5890
+#line 5886
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 5891
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5892
+#line 5887
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5888
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
+#line 5890
+            .species = SPECIES_MARILL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5892
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5891
+            .lvl = 18,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
 #line 5894
-            .species = SPECIES_SKITTY,
+            .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5896
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5895
+            .lvl = 18,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 5898
+    [DIFFICULTY_NORMAL][TRAINER_MARTHA] =
+    {
+#line 5899
+        .trainerName = _("Martha"),
+#line 5900
+        .trainerClass = TRAINER_CLASS_PICNICKER,
+#line 5901
+        .trainerPic = TRAINER_PIC_PICNICKER,
+        .encounterMusic_gender =
+#line 5902
+F_TRAINER_FEMALE | 
+#line 5903
+            TRAINER_ENCOUNTER_MUSIC_GIRL,
+#line 5904
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5905
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 5907
+            .species = SPECIES_SKITTY,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 5909
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 5908
             .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 5898
+#line 5911
             .species = SPECIES_SWABLU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5900
+#line 5913
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5899
+#line 5912
             .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 5902
+#line 5915
     [DIFFICULTY_NORMAL][TRAINER_DIANA_1] =
     {
-#line 5903
+#line 5916
         .trainerName = _("Diana"),
-#line 5904
+#line 5917
         .trainerClass = TRAINER_CLASS_PICNICKER,
-#line 5905
+#line 5918
         .trainerPic = TRAINER_PIC_PICNICKER,
         .encounterMusic_gender =
-#line 5906
+#line 5919
 F_TRAINER_FEMALE | 
-#line 5907
+#line 5920
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 5908
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5909
+#line 5921
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5922
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5911
+#line 5924
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5913
+#line 5926
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5912
+#line 5925
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 5915
+#line 5928
             .species = SPECIES_ODDISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5917
+#line 5930
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5916
+#line 5929
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 5919
+#line 5932
             .species = SPECIES_SWABLU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5921
+#line 5934
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5920
+#line 5933
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 5923
+#line 5936
     [DIFFICULTY_NORMAL][TRAINER_PYRE_MAGMAGRUNT3] =
     {
-#line 5924
+#line 5937
         .trainerName = _("Grunt"),
-#line 5925
+#line 5938
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
-#line 5926
+#line 5939
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 5928
+#line 5941
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 5929
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5930
+#line 5942
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5943
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5932
+#line 5945
             .species = SPECIES_WOBBUFFET,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5934
+#line 5947
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5933
+#line 5946
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 5935
+#line 5948
                 MOVE_DESTINY_BOND,
                 MOVE_SAFEGUARD,
                 MOVE_COUNTER,
@@ -14905,87 +14944,87 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 5940
+#line 5953
     [DIFFICULTY_NORMAL][TRAINER_IRENE] =
     {
-#line 5941
+#line 5954
         .trainerName = _("Irene"),
-#line 5942
+#line 5955
         .trainerClass = TRAINER_CLASS_PICNICKER,
-#line 5943
+#line 5956
         .trainerPic = TRAINER_PIC_PICNICKER,
         .encounterMusic_gender =
-#line 5944
+#line 5957
 F_TRAINER_FEMALE | 
-#line 5945
+#line 5958
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 5946
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 5947
+#line 5959
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 5960
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5949
+#line 5962
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5951
+#line 5964
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5950
+#line 5963
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 5953
+#line 5966
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5955
+#line 5968
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 5954
+#line 5967
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 5957
+#line 5970
     [DIFFICULTY_NORMAL][TRAINER_AMY_AND_LIV_1] =
     {
-#line 5958
+#line 5971
         .trainerName = _("Amy & Liv"),
-#line 5959
+#line 5972
         .trainerClass = TRAINER_CLASS_TWINS,
-#line 5960
+#line 5973
         .trainerPic = TRAINER_PIC_TWINS,
         .encounterMusic_gender =
-#line 5962
+#line 5975
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 5963
-        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 5964
+#line 5976
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 5977
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 5966
+#line 5979
             .species = SPECIES_THWACKEY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5966
+#line 5979
             .heldItem = ITEM_EJECT_BUTTON,
-#line 5970
+#line 5983
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 5967
+#line 5980
             .ability = ABILITY_GRASSY_SURGE,
-#line 5968
+#line 5981
             .lvl = 27,
-#line 5969
+#line 5982
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 5970
+#line 5983
                 MOVE_FAKE_OUT,
                 MOVE_GRASSY_GLIDE,
                 MOVE_FACADE,
@@ -14993,22 +15032,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 5975
+#line 5988
             .species = SPECIES_FLABEBE_BLUE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5975
+#line 5988
             .heldItem = ITEM_TERRAIN_EXTENDER,
-#line 5979
+#line 5992
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 5976
+#line 5989
             .ability = ABILITY_SYMBIOSIS,
-#line 5977
+#line 5990
             .lvl = 28,
-#line 5978
+#line 5991
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 5979
+#line 5992
                 MOVE_MAGICAL_LEAF,
                 MOVE_FAIRY_WIND,
                 MOVE_AROMATHERAPY,
@@ -15016,22 +15055,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 5984
+#line 5997
             .species = SPECIES_KADABRA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5984
+#line 5997
             .heldItem = ITEM_TERRAIN_EXTENDER,
-#line 5988
+#line 6001
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 5985
+#line 5998
             .ability = ABILITY_INNER_FOCUS,
-#line 5986
+#line 5999
             .lvl = 27,
-#line 5987
+#line 6000
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 5988
+#line 6001
                 MOVE_CONFUSION,
                 MOVE_SEISMIC_TOSS,
                 MOVE_TELEKINESIS,
@@ -15039,22 +15078,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 5993
+#line 6006
             .species = SPECIES_PINCURCHIN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 5993
+#line 6006
             .heldItem = ITEM_JABOCA_BERRY,
-#line 5997
+#line 6010
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 5994
+#line 6007
             .ability = ABILITY_ELECTRIC_SURGE,
-#line 5995
+#line 6008
             .lvl = 28,
-#line 5996
+#line 6009
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 5997
+#line 6010
                 MOVE_SPARK,
                 MOVE_ELECTROWEB,
                 MOVE_WATER_GUN,
@@ -15063,172 +15102,140 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 6002
+#line 6015
     [DIFFICULTY_NORMAL][TRAINER_GINA_AND_MIA_1] =
     {
-#line 6003
+#line 6016
         .trainerName = _("Gina & Mia"),
-#line 6004
+#line 6017
         .trainerClass = TRAINER_CLASS_TWINS,
-#line 6005
+#line 6018
         .trainerPic = TRAINER_PIC_TWINS,
         .encounterMusic_gender =
-#line 6007
+#line 6020
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 6008
-        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 6009
+#line 6021
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 6022
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6011
+#line 6024
             .species = SPECIES_SEEDOT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6013
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6012
-            .lvl = 6,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6015
-            .species = SPECIES_LOTAD,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6017
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6016
-            .lvl = 6,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 6019
-    [DIFFICULTY_NORMAL][TRAINER_MIU_AND_YUKI] =
-    {
-#line 6020
-        .trainerName = _("Miu & Yuki"),
-#line 6021
-        .trainerClass = TRAINER_CLASS_TWINS,
-#line 6022
-        .trainerPic = TRAINER_PIC_TWINS,
-        .encounterMusic_gender =
-#line 6024
-            TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 6025
-        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 6026
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6025
+            .lvl = 6,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
             {
 #line 6028
-            .species = SPECIES_BEAUTIFLY,
+            .species = SPECIES_LOTAD,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6030
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6029
-            .lvl = 26,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6032
-            .species = SPECIES_DUSTOX,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6034
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6033
-            .lvl = 26,
+            .lvl = 6,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6036
-    [DIFFICULTY_NORMAL][TRAINER_HUEY] =
+#line 6032
+    [DIFFICULTY_NORMAL][TRAINER_MIU_AND_YUKI] =
     {
-#line 6037
-        .trainerName = _("Huey"),
-#line 6038
-        .trainerClass = TRAINER_CLASS_SAILOR,
-#line 6039
-        .trainerPic = TRAINER_PIC_SAILOR,
+#line 6033
+        .trainerName = _("Miu & Yuki"),
+#line 6034
+        .trainerClass = TRAINER_CLASS_TWINS,
+#line 6035
+        .trainerPic = TRAINER_PIC_TWINS,
         .encounterMusic_gender =
-#line 6041
-            TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6042
+#line 6037
+            TRAINER_ENCOUNTER_MUSIC_TWINS,
+#line 6038
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6043
+#line 6039
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6045
-            .species = SPECIES_WINGULL,
+#line 6041
+            .species = SPECIES_BEAUTIFLY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6047
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 6046
-            .lvl = 12,
+#line 6043
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6042
+            .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6049
-            .species = SPECIES_MACHOP,
+#line 6045
+            .species = SPECIES_DUSTOX,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6051
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 6050
-            .lvl = 12,
+#line 6047
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6046
+            .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6053
-    [DIFFICULTY_NORMAL][TRAINER_EDMOND] =
+#line 6049
+    [DIFFICULTY_NORMAL][TRAINER_HUEY] =
     {
-#line 6054
-        .trainerName = _("Edmond"),
-#line 6055
+#line 6050
+        .trainerName = _("Huey"),
+#line 6051
         .trainerClass = TRAINER_CLASS_SAILOR,
-#line 6056
+#line 6052
         .trainerPic = TRAINER_PIC_SAILOR,
         .encounterMusic_gender =
-#line 6058
+#line 6054
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6059
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6060
+#line 6055
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6056
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
+        .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6062
+#line 6058
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6060
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 6059
+            .lvl = 12,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 6062
+            .species = SPECIES_MACHOP,
+            .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6064
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 6063
-            .lvl = 13,
+            .lvl = 12,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 6066
-    [DIFFICULTY_NORMAL][TRAINER_ERNEST_1] =
+    [DIFFICULTY_NORMAL][TRAINER_EDMOND] =
     {
 #line 6067
-        .trainerName = _("Ernest"),
+        .trainerName = _("Edmond"),
 #line 6068
         .trainerClass = TRAINER_CLASS_SAILOR,
 #line 6069
@@ -15237,10 +15244,10 @@ F_TRAINER_FEMALE |
 #line 6071
             TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 6072
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 6073
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
+        .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
@@ -15250,362 +15257,362 @@ F_TRAINER_FEMALE |
 #line 6077
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6076
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6079
-            .species = SPECIES_MACHOKE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6081
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6080
-            .lvl = 33,
+            .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6083
-    [DIFFICULTY_NORMAL][TRAINER_DWAYNE] =
+#line 6079
+    [DIFFICULTY_NORMAL][TRAINER_ERNEST_1] =
     {
-#line 6084
-        .trainerName = _("Dwayne"),
-#line 6085
+#line 6080
+        .trainerName = _("Ernest"),
+#line 6081
         .trainerClass = TRAINER_CLASS_SAILOR,
-#line 6086
+#line 6082
         .trainerPic = TRAINER_PIC_SAILOR,
         .encounterMusic_gender =
-#line 6088
+#line 6084
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6089
+#line 6085
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6090
+#line 6086
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 3,
+        .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6092
+#line 6088
             .species = SPECIES_WINGULL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6090
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6089
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 6092
+            .species = SPECIES_MACHOKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6094
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6093
-            .lvl = 11,
+            .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
-            {
+        },
+    },
 #line 6096
-            .species = SPECIES_MACHOP,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6098
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+    [DIFFICULTY_NORMAL][TRAINER_DWAYNE] =
+    {
 #line 6097
-            .lvl = 11,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6100
-            .species = SPECIES_TENTACOOL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6102
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+        .trainerName = _("Dwayne"),
+#line 6098
+        .trainerClass = TRAINER_CLASS_SAILOR,
+#line 6099
+        .trainerPic = TRAINER_PIC_SAILOR,
+        .encounterMusic_gender =
 #line 6101
-            .lvl = 11,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 6104
-    [DIFFICULTY_NORMAL][TRAINER_PHILLIP] =
-    {
-#line 6105
-        .trainerName = _("Phillip"),
-#line 6106
-        .trainerClass = TRAINER_CLASS_SAILOR,
-#line 6107
-        .trainerPic = TRAINER_PIC_SAILOR,
-        .encounterMusic_gender =
-#line 6109
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6110
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6111
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 6113
-            .species = SPECIES_TENTACRUEL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6115
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6114
-            .lvl = 44,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6117
-            .species = SPECIES_MACHOKE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6119
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6118
-            .lvl = 44,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 6121
-    [DIFFICULTY_NORMAL][TRAINER_LEONARD] =
-    {
-#line 6122
-        .trainerName = _("Leonard"),
-#line 6123
-        .trainerClass = TRAINER_CLASS_SAILOR,
-#line 6124
-        .trainerPic = TRAINER_PIC_SAILOR,
-        .encounterMusic_gender =
-#line 6126
-            TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6127
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6128
+#line 6102
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6103
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6130
+#line 6105
+            .species = SPECIES_WINGULL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6107
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6106
+            .lvl = 11,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 6109
             .species = SPECIES_MACHOP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6132
+#line 6111
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6131
-            .lvl = 43,
+#line 6110
+            .lvl = 11,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6134
-            .species = SPECIES_PELIPPER,
+#line 6113
+            .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6136
+#line 6115
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6135
-            .lvl = 43,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6138
-            .species = SPECIES_MACHOKE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6140
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6139
-            .lvl = 43,
+#line 6114
+            .lvl = 11,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6142
-    [DIFFICULTY_NORMAL][TRAINER_DUNCAN] =
+#line 6117
+    [DIFFICULTY_NORMAL][TRAINER_PHILLIP] =
     {
-#line 6143
-        .trainerName = _("Duncan"),
-#line 6144
+#line 6118
+        .trainerName = _("Phillip"),
+#line 6119
         .trainerClass = TRAINER_CLASS_SAILOR,
-#line 6145
+#line 6120
         .trainerPic = TRAINER_PIC_SAILOR,
         .encounterMusic_gender =
-#line 6147
+#line 6122
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6148
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6149
+#line 6123
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6124
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6151
-            .species = SPECIES_SPHEAL,
+#line 6126
+            .species = SPECIES_TENTACRUEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6153
+#line 6128
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6152
-            .lvl = 25,
+#line 6127
+            .lvl = 44,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6155
+#line 6130
             .species = SPECIES_MACHOKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6157
+#line 6132
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6156
-            .lvl = 25,
+#line 6131
+            .lvl = 44,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6159
-    [DIFFICULTY_NORMAL][TRAINER_ELI] =
+#line 6134
+    [DIFFICULTY_NORMAL][TRAINER_LEONARD] =
     {
-#line 6160
-        .trainerName = _("Eli"),
-#line 6161
-        .trainerClass = TRAINER_CLASS_HIKER,
-#line 6162
-        .trainerPic = TRAINER_PIC_HIKER,
+#line 6135
+        .trainerName = _("Leonard"),
+#line 6136
+        .trainerClass = TRAINER_CLASS_SAILOR,
+#line 6137
+        .trainerPic = TRAINER_PIC_SAILOR,
         .encounterMusic_gender =
-#line 6164
-            TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 6165
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6166
+#line 6139
+            TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 6140
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6141
         .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
+        .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
+#line 6143
+            .species = SPECIES_MACHOP,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6145
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6144
+            .lvl = 43,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 6147
+            .species = SPECIES_PELIPPER,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6149
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6148
+            .lvl = 43,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 6151
+            .species = SPECIES_MACHOKE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6153
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6152
+            .lvl = 43,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 6155
+    [DIFFICULTY_NORMAL][TRAINER_DUNCAN] =
+    {
+#line 6156
+        .trainerName = _("Duncan"),
+#line 6157
+        .trainerClass = TRAINER_CLASS_SAILOR,
+#line 6158
+        .trainerPic = TRAINER_PIC_SAILOR,
+        .encounterMusic_gender =
+#line 6160
+            TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 6161
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6162
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 6164
+            .species = SPECIES_SPHEAL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6166
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6165
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
 #line 6168
-            .species = SPECIES_NUMEL,
+            .species = SPECIES_MACHOKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6170
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6169
-            .lvl = 23,
+            .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 6172
-    [DIFFICULTY_NORMAL][TRAINER_ANNIKA] =
+    [DIFFICULTY_NORMAL][TRAINER_ELI] =
     {
 #line 6173
-        .trainerName = _("Annika"),
+        .trainerName = _("Eli"),
 #line 6174
-        .trainerClass = TRAINER_CLASS_POKEFAN,
+        .trainerClass = TRAINER_CLASS_HIKER,
 #line 6175
-        .trainerPic = TRAINER_PIC_POKEFAN_F,
+        .trainerPic = TRAINER_PIC_HIKER,
         .encounterMusic_gender =
-#line 6176
-F_TRAINER_FEMALE | 
 #line 6177
-            TRAINER_ENCOUNTER_MUSIC_TWINS,
+            TRAINER_ENCOUNTER_MUSIC_HIKER,
 #line 6178
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 6179
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 6181
-            .species = SPECIES_FEEBAS,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6181
-            .heldItem = ITEM_ORAN_BERRY,
-#line 6183
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6182
-            .lvl = 39,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 6184
-                MOVE_FLAIL,
-                MOVE_WATER_PULSE,
-                MOVE_RETURN,
-                MOVE_ATTRACT,
-            },
-            },
-            {
-#line 6189
-            .species = SPECIES_FEEBAS,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6189
-            .heldItem = ITEM_ORAN_BERRY,
-#line 6191
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6190
-            .lvl = 39,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 6192
-                MOVE_FLAIL,
-                MOVE_WATER_PULSE,
-                MOVE_RETURN,
-                MOVE_ATTRACT,
-            },
-            },
-        },
-    },
-#line 6197
-    [DIFFICULTY_NORMAL][TRAINER_JAZMYN] =
-    {
-#line 6198
-        .trainerName = _("Jazmyn"),
-#line 6199
-        .trainerClass = TRAINER_CLASS_COOLTRAINER_2,
-#line 6200
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
-        .encounterMusic_gender =
-#line 6201
-F_TRAINER_FEMALE | 
-#line 6202
-            TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 6203
-        .items = { ITEM_HYPER_POTION },
-#line 6204
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6205
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6207
-            .species = SPECIES_ABSOL,
+#line 6181
+            .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6209
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6208
-            .lvl = 27,
+#line 6183
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 6182
+            .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6211
-    [DIFFICULTY_NORMAL][TRAINER_JONAS] =
+#line 6185
+    [DIFFICULTY_NORMAL][TRAINER_ANNIKA] =
     {
-#line 6212
-        .trainerName = _("Jonas"),
-#line 6213
-        .trainerClass = TRAINER_CLASS_NINJA_BOY,
-#line 6214
-        .trainerPic = TRAINER_PIC_NINJA_BOY,
+#line 6186
+        .trainerName = _("Annika"),
+#line 6187
+        .trainerClass = TRAINER_CLASS_POKEFAN,
+#line 6188
+        .trainerPic = TRAINER_PIC_POKEFAN_F,
         .encounterMusic_gender =
+#line 6189
+F_TRAINER_FEMALE | 
+#line 6190
+            TRAINER_ENCOUNTER_MUSIC_TWINS,
+#line 6191
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6192
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 6194
+            .species = SPECIES_FEEBAS,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6194
+            .heldItem = ITEM_ORAN_BERRY,
+#line 6196
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 6195
+            .lvl = 39,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 6197
+                MOVE_FLAIL,
+                MOVE_WATER_PULSE,
+                MOVE_RETURN,
+                MOVE_ATTRACT,
+            },
+            },
+            {
+#line 6202
+            .species = SPECIES_FEEBAS,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6202
+            .heldItem = ITEM_ORAN_BERRY,
+#line 6204
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 6203
+            .lvl = 39,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 6205
+                MOVE_FLAIL,
+                MOVE_WATER_PULSE,
+                MOVE_RETURN,
+                MOVE_ATTRACT,
+            },
+            },
+        },
+    },
+#line 6210
+    [DIFFICULTY_NORMAL][TRAINER_JAZMYN] =
+    {
+#line 6211
+        .trainerName = _("Jazmyn"),
+#line 6212
+        .trainerClass = TRAINER_CLASS_COOLTRAINER_2,
+#line 6213
+        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .encounterMusic_gender =
+#line 6214
+F_TRAINER_FEMALE | 
+#line 6215
+            TRAINER_ENCOUNTER_MUSIC_COOL,
 #line 6216
-            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+        .items = { ITEM_HYPER_POTION },
 #line 6217
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 6218
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
@@ -15613,16 +15620,48 @@ F_TRAINER_FEMALE |
         {
             {
 #line 6220
-            .species = SPECIES_KOFFING,
+            .species = SPECIES_ABSOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6222
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6221
+            .lvl = 27,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 6224
+    [DIFFICULTY_NORMAL][TRAINER_JONAS] =
+    {
+#line 6225
+        .trainerName = _("Jonas"),
+#line 6226
+        .trainerClass = TRAINER_CLASS_NINJA_BOY,
+#line 6227
+        .trainerPic = TRAINER_PIC_NINJA_BOY,
+        .encounterMusic_gender =
+#line 6229
+            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+#line 6230
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6231
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 6233
+            .species = SPECIES_KOFFING,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6235
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6234
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6223
+#line 6236
                 MOVE_TOXIC,
                 MOVE_THUNDER,
                 MOVE_SELF_DESTRUCT,
@@ -15631,39 +15670,39 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 6228
+#line 6241
     [DIFFICULTY_NORMAL][TRAINER_KAYLEY] =
     {
-#line 6229
+#line 6242
         .trainerName = _("Kayley"),
-#line 6230
+#line 6243
         .trainerClass = TRAINER_CLASS_PARASOL_LADY,
-#line 6231
+#line 6244
         .trainerPic = TRAINER_PIC_PARASOL_LADY,
         .encounterMusic_gender =
-#line 6232
+#line 6245
 F_TRAINER_FEMALE | 
-#line 6233
+#line 6246
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 6234
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6235
+#line 6247
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6248
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6237
+#line 6250
             .species = SPECIES_CASTFORM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6239
+#line 6252
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6238
+#line 6251
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6240
+#line 6253
                 MOVE_SUNNY_DAY,
                 MOVE_WEATHER_BALL,
                 MOVE_FLAMETHROWER,
@@ -15672,127 +15711,127 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 6245
+#line 6258
     [DIFFICULTY_NORMAL][TRAINER_AURON] =
     {
-#line 6246
+#line 6259
         .trainerName = _("Auron"),
-#line 6247
+#line 6260
         .trainerClass = TRAINER_CLASS_EXPERT,
-#line 6248
+#line 6261
         .trainerPic = TRAINER_PIC_EXPERT_M,
         .encounterMusic_gender =
-#line 6250
+#line 6263
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 6251
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6252
+#line 6264
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6265
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6254
+#line 6267
             .species = SPECIES_MANECTRIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6256
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6255
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6258
-            .species = SPECIES_MACHAMP,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6260
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6259
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 6262
-    [DIFFICULTY_NORMAL][TRAINER_KELVIN] =
-    {
-#line 6263
-        .trainerName = _("Kelvin"),
-#line 6264
-        .trainerClass = TRAINER_CLASS_SAILOR,
-#line 6265
-        .trainerPic = TRAINER_PIC_SAILOR,
-        .encounterMusic_gender =
-#line 6267
-            TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6268
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6269
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 2,
-        .party = (const struct TrainerMon[])
-        {
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6268
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
             {
 #line 6271
-            .species = SPECIES_MACHOKE,
+            .species = SPECIES_MACHAMP,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6273
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6272
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
-            {
+        },
+    },
 #line 6275
+    [DIFFICULTY_NORMAL][TRAINER_KELVIN] =
+    {
+#line 6276
+        .trainerName = _("Kelvin"),
+#line 6277
+        .trainerClass = TRAINER_CLASS_SAILOR,
+#line 6278
+        .trainerPic = TRAINER_PIC_SAILOR,
+        .encounterMusic_gender =
+#line 6280
+            TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 6281
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6282
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 6284
+            .species = SPECIES_MACHOKE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6286
+            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+#line 6285
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 6288
             .species = SPECIES_SPHEAL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6277
+#line 6290
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 6276
+#line 6289
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6279
+#line 6292
     [DIFFICULTY_NORMAL][TRAINER_MARLEY] =
     {
-#line 6280
+#line 6293
         .trainerName = _("Marley"),
-#line 6281
+#line 6294
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 6282
+#line 6295
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 6283
+#line 6296
 F_TRAINER_FEMALE | 
-#line 6284
+#line 6297
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 6285
+#line 6298
         .items = { ITEM_HYPER_POTION },
-#line 6286
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6287
+#line 6299
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6300
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6289
+#line 6302
             .species = SPECIES_MANECTRIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6291
+#line 6304
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 6290
+#line 6303
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6292
+#line 6305
                 MOVE_BITE,
                 MOVE_ROAR,
                 MOVE_THUNDER_WAVE,
@@ -15801,162 +15840,162 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 6297
+#line 6310
     [DIFFICULTY_NORMAL][TRAINER_REYNA] =
     {
-#line 6298
+#line 6311
         .trainerName = _("Reyna"),
-#line 6299
+#line 6312
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
-#line 6300
+#line 6313
         .trainerPic = TRAINER_PIC_BATTLE_GIRL,
         .encounterMusic_gender =
-#line 6301
+#line 6314
 F_TRAINER_FEMALE | 
-#line 6302
+#line 6315
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 6303
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6304
+#line 6316
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6317
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6306
+#line 6319
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6308
-            .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 6307
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6310
-            .species = SPECIES_HARIYAMA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6312
-            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 6311
-            .lvl = 33,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
-#line 6314
-    [DIFFICULTY_NORMAL][TRAINER_HUDSON] =
-    {
-#line 6315
-        .trainerName = _("Hudson"),
-#line 6316
-        .trainerClass = TRAINER_CLASS_SAILOR,
-#line 6317
-        .trainerPic = TRAINER_PIC_SAILOR,
-        .encounterMusic_gender =
-#line 6319
-            TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6320
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 6321
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
+            .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
+#line 6320
+            .lvl = 33,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
             {
 #line 6323
-            .species = SPECIES_WAILMER,
+            .species = SPECIES_HARIYAMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6325
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 6324
-            .lvl = 34,
+            .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
 #line 6327
-    [DIFFICULTY_NORMAL][TRAINER_CONOR] =
+    [DIFFICULTY_NORMAL][TRAINER_HUDSON] =
     {
 #line 6328
-        .trainerName = _("Conor"),
+        .trainerName = _("Hudson"),
 #line 6329
-        .trainerClass = TRAINER_CLASS_EXPERT,
+        .trainerClass = TRAINER_CLASS_SAILOR,
 #line 6330
-        .trainerPic = TRAINER_PIC_EXPERT_M,
+        .trainerPic = TRAINER_PIC_SAILOR,
         .encounterMusic_gender =
 #line 6332
-            TRAINER_ENCOUNTER_MUSIC_INTENSE,
+            TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 6333
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 6334
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 6336
+            .species = SPECIES_WAILMER,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6338
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6337
+            .lvl = 34,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 6340
+    [DIFFICULTY_NORMAL][TRAINER_CONOR] =
+    {
+#line 6341
+        .trainerName = _("Conor"),
+#line 6342
+        .trainerClass = TRAINER_CLASS_EXPERT,
+#line 6343
+        .trainerPic = TRAINER_PIC_EXPERT_M,
+        .encounterMusic_gender =
+#line 6345
+            TRAINER_ENCOUNTER_MUSIC_INTENSE,
+#line 6346
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6347
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6336
+#line 6349
             .species = SPECIES_CHINCHOU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6338
+#line 6351
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6337
+#line 6350
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6340
+#line 6353
             .species = SPECIES_HARIYAMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6342
+#line 6355
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 6341
+#line 6354
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6344
+#line 6357
     [DIFFICULTY_NORMAL][TRAINER_EDWIN_1] =
     {
-#line 6345
+#line 6358
         .trainerName = _("Edwin"),
-#line 6346
+#line 6359
         .trainerClass = TRAINER_CLASS_COLLECTOR,
-#line 6347
+#line 6360
         .trainerPic = TRAINER_PIC_COLLECTOR,
         .encounterMusic_gender =
-#line 6349
+#line 6362
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 6350
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6351
+#line 6363
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6364
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6353
+#line 6366
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6353
+#line 6366
             .heldItem = ITEM_SOFT_SAND,
-#line 6357
+#line 6370
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 6354
+#line 6367
             .ability = ABILITY_LEVITATE,
-#line 6355
+#line 6368
             .lvl = 29,
-#line 6356
+#line 6369
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6357
+#line 6370
                 MOVE_EARTH_POWER,
                 MOVE_SHADOW_BALL,
                 MOVE_STORED_POWER,
@@ -15964,22 +16003,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 6362
+#line 6375
             .species = SPECIES_DARUMAKA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6362
+#line 6375
             .heldItem = ITEM_FLAME_ORB,
-#line 6366
+#line 6379
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 6363
+#line 6376
             .ability = ABILITY_INNER_FOCUS,
-#line 6364
+#line 6377
             .lvl = 28,
-#line 6365
+#line 6378
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6366
+#line 6379
                 MOVE_FIRE_PUNCH,
                 MOVE_BRICK_BREAK,
                 MOVE_GYRO_BALL,
@@ -15987,22 +16026,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 6371
+#line 6384
             .species = SPECIES_DARUMAKA_GALAR,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6371
+#line 6384
             .heldItem = ITEM_CHARTI_BERRY,
-#line 6375
+#line 6388
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 6372
+#line 6385
             .ability = ABILITY_INNER_FOCUS,
-#line 6373
+#line 6386
             .lvl = 28,
-#line 6374
+#line 6387
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6375
+#line 6388
                 MOVE_ICE_PUNCH,
                 MOVE_MEGA_PUNCH,
                 MOVE_THIEF,
@@ -16011,142 +16050,140 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 6380
+#line 6393
     [DIFFICULTY_NORMAL][TRAINER_HECTOR] =
     {
-#line 6381
+#line 6394
         .trainerName = _("Hector"),
-#line 6382
+#line 6395
         .trainerClass = TRAINER_CLASS_COLLECTOR,
-#line 6383
+#line 6396
         .trainerPic = TRAINER_PIC_COLLECTOR,
         .encounterMusic_gender =
-#line 6385
+#line 6398
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 6386
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6387
+#line 6399
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6400
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6389
+#line 6402
             .species = SPECIES_ZANGOOSE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6391
+#line 6404
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6390
+#line 6403
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6393
+#line 6406
             .species = SPECIES_SEVIPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6395
+#line 6408
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6394
+#line 6407
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6397
+#line 6410
     [DIFFICULTY_NORMAL][TRAINER_COURTNEY_MOSSDEEP] =
     {
-#line 6398
+#line 6411
         .trainerName = _("Courtney"),
-#line 6399
+#line 6412
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
-#line 6400
+#line 6413
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN_F,
         .encounterMusic_gender =
-#line 6401
+#line 6414
 F_TRAINER_FEMALE | 
-#line 6402
+#line 6415
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 6404
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6405
+#line 6417
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6418
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6403
+#line 6416
         .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6407
+#line 6420
             .species = SPECIES_CAMERUPT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6409
+#line 6422
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6408
+#line 6421
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6411
+#line 6424
             .species = SPECIES_MIGHTYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6413
+#line 6426
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6412
+#line 6425
             .lvl = 38,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6415
+#line 6428
             .species = SPECIES_GOLBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6417
+#line 6430
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6416
+#line 6429
             .lvl = 40,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6419
+#line 6432
     [DIFFICULTY_NORMAL][TRAINER_WALLY_VR_1] =
     {
-#line 6420
+#line 6433
         .trainerName = _("Wally"),
-#line 6421
+#line 6434
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6422
+#line 6435
         .trainerPic = TRAINER_PIC_WALLY,
         .encounterMusic_gender =
-#line 6425
+#line 6438
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6426
-        .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-#line 6427
+#line 6439
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6428
+#line 6440
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6423
+#line 6436
         .mugshotColor = MUGSHOT_COLOR_WHITE,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6430
+#line 6442
             .species = SPECIES_ALTARIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6432
+#line 6444
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 6431
+#line 6443
             .lvl = 44,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6433
+#line 6445
                 MOVE_AERIAL_ACE,
                 MOVE_SAFEGUARD,
                 MOVE_DRAGON_BREATH,
@@ -16154,17 +16191,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 6438
+#line 6450
             .species = SPECIES_DELCATTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6440
+#line 6452
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 6439
+#line 6451
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6441
+#line 6453
                 MOVE_SING,
                 MOVE_ASSIST,
                 MOVE_CHARM,
@@ -16172,17 +16209,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 6446
+#line 6458
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6448
+#line 6460
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 6447
+#line 6459
             .lvl = 44,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6449
+#line 6461
                 MOVE_MAGICAL_LEAF,
                 MOVE_LEECH_SEED,
                 MOVE_GIGA_DRAIN,
@@ -16190,17 +16227,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 6454
+#line 6466
             .species = SPECIES_MAGNETON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6456
+#line 6468
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 6455
+#line 6467
             .lvl = 41,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6457
+#line 6469
                 MOVE_SUPERSONIC,
                 MOVE_THUNDERBOLT,
                 MOVE_TRI_ATTACK,
@@ -16208,17 +16245,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 6462
+#line 6474
             .species = SPECIES_GARDEVOIR,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6464
+#line 6476
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 6463
+#line 6475
             .lvl = 45,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6465
+#line 6477
                 MOVE_DOUBLE_TEAM,
                 MOVE_CALM_MIND,
                 MOVE_PSYCHIC,
@@ -16227,41 +16264,41 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 6470
+#line 6482
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_ROUTE_103_MUDKIP] =
     {
-#line 6471
+#line 6483
         .trainerName = _("Brendan"),
-#line 6472
+#line 6484
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6473
+#line 6485
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 6475
+#line 6487
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6476
+#line 6488
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6477
+#line 6489
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6478
+#line 6490
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6480
+#line 6492
             .species = SPECIES_SKITTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6480
+#line 6492
             .heldItem = ITEM_SITRUS_BERRY,
-#line 6482
+#line 6494
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 6481
+#line 6493
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6483
+#line 6495
                 MOVE_FAKE_OUT,
                 MOVE_SUCKER_PUNCH,
                 MOVE_ICY_WIND,
@@ -16270,153 +16307,153 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 6488
+#line 6500
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_ROUTE_110_MUDKIP] =
     {
-#line 6489
+#line 6501
         .trainerName = _("Brendan"),
-#line 6490
+#line 6502
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6491
+#line 6503
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 6493
+#line 6505
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6494
+#line 6506
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6495
+#line 6507
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6496
+#line 6508
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6498
+#line 6510
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6500
+#line 6512
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 6499
+#line 6511
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6502
+#line 6514
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6504
+#line 6516
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 6503
+#line 6515
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6506
+#line 6518
             .species = SPECIES_GROVYLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6508
+#line 6520
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6507
+#line 6519
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6510
+#line 6522
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_ROUTE_119_MUDKIP] =
     {
-#line 6511
+#line 6523
         .trainerName = _("Brendan"),
-#line 6512
+#line 6524
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6513
+#line 6525
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 6515
+#line 6527
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6516
+#line 6528
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6517
+#line 6529
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6518
+#line 6530
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6520
+#line 6532
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6522
+#line 6534
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6521
+#line 6533
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6524
+#line 6536
             .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6526
+#line 6538
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6525
+#line 6537
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6528
+#line 6540
             .species = SPECIES_GROVYLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6530
+#line 6542
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 6529
+#line 6541
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6532
+#line 6544
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_ROUTE_103_TREECKO] =
     {
-#line 6533
+#line 6545
         .trainerName = _("Brendan"),
-#line 6534
+#line 6546
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6535
+#line 6547
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 6537
+#line 6549
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6538
+#line 6550
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6539
+#line 6551
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6540
+#line 6552
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6542
+#line 6554
             .species = SPECIES_SKITTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6542
+#line 6554
             .heldItem = ITEM_SITRUS_BERRY,
-#line 6544
+#line 6556
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 6543
+#line 6555
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6545
+#line 6557
                 MOVE_FAKE_OUT,
                 MOVE_SUCKER_PUNCH,
                 MOVE_ICY_WIND,
@@ -16425,153 +16462,153 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 6550
+#line 6562
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_ROUTE_110_TREECKO] =
     {
-#line 6551
+#line 6563
         .trainerName = _("Brendan"),
-#line 6552
+#line 6564
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6553
+#line 6565
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 6555
+#line 6567
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6556
+#line 6568
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6557
+#line 6569
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6558
+#line 6570
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6560
+#line 6572
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6562
+#line 6574
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 6561
+#line 6573
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6564
+#line 6576
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6566
+#line 6578
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 6565
+#line 6577
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6568
+#line 6580
             .species = SPECIES_COMBUSKEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6570
+#line 6582
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6569
+#line 6581
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6572
+#line 6584
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_ROUTE_119_TREECKO] =
     {
-#line 6573
+#line 6585
         .trainerName = _("Brendan"),
-#line 6574
+#line 6586
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6575
+#line 6587
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 6577
+#line 6589
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6578
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6579
+#line 6590
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6591
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6580
+#line 6592
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6582
+#line 6594
             .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6584
+#line 6596
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6583
+#line 6595
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6586
+#line 6598
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6588
+#line 6600
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6587
+#line 6599
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6590
+#line 6602
             .species = SPECIES_COMBUSKEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6592
+#line 6604
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 6591
+#line 6603
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6594
+#line 6606
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_ROUTE_103_TORCHIC] =
     {
-#line 6595
+#line 6607
         .trainerName = _("Brendan"),
-#line 6596
+#line 6608
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6597
+#line 6609
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 6599
+#line 6611
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6600
+#line 6612
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6601
+#line 6613
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6602
+#line 6614
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6604
+#line 6616
             .species = SPECIES_SKITTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6604
+#line 6616
             .heldItem = ITEM_SITRUS_BERRY,
-#line 6606
+#line 6618
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 6605
+#line 6617
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6607
+#line 6619
                 MOVE_FAKE_OUT,
                 MOVE_SUCKER_PUNCH,
                 MOVE_ICY_WIND,
@@ -16580,647 +16617,614 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 6612
+#line 6624
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_ROUTE_110_TORCHIC] =
     {
-#line 6613
+#line 6625
         .trainerName = _("Brendan"),
-#line 6614
+#line 6626
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6615
+#line 6627
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 6617
+#line 6629
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6618
+#line 6630
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6619
+#line 6631
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6620
+#line 6632
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6622
+#line 6634
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6624
+#line 6636
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 6623
+#line 6635
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6626
+#line 6638
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6628
+#line 6640
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 6627
+#line 6639
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6630
+#line 6642
             .species = SPECIES_MARSHTOMP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6632
+#line 6644
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6631
+#line 6643
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6634
+#line 6646
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_ROUTE_119_TORCHIC] =
     {
-#line 6635
+#line 6647
         .trainerName = _("Brendan"),
-#line 6636
+#line 6648
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6637
+#line 6649
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 6639
+#line 6651
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6640
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6641
+#line 6652
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6653
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6642
+#line 6654
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6644
+#line 6656
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6646
+#line 6658
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6645
+#line 6657
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6648
+#line 6660
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6650
+#line 6662
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6649
+#line 6661
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6652
+#line 6664
             .species = SPECIES_MARSHTOMP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6654
+#line 6666
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 6653
+#line 6665
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6656
+#line 6668
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_103_MUDKIP] =
     {
-#line 6657
+#line 6669
         .trainerName = _("May"),
-#line 6658
+#line 6670
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6659
+#line 6671
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 6660
+#line 6672
 F_TRAINER_FEMALE | 
-#line 6661
+#line 6673
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 6662
+#line 6674
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6663
+#line 6675
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6664
+#line 6676
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6666
+#line 6678
             .species = SPECIES_TOGEDEMARU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6666
+#line 6678
             .heldItem = ITEM_FLAME_ORB,
-#line 6668
+#line 6680
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 6667
+#line 6679
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6669
+#line 6681
                 MOVE_FAKE_OUT,
             },
             },
         },
     },
-#line 6671
+#line 6683
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_110_MUDKIP] =
     {
-#line 6672
+#line 6684
         .trainerName = _("May"),
-#line 6673
+#line 6685
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6674
+#line 6686
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 6675
+#line 6687
 F_TRAINER_FEMALE | 
-#line 6676
+#line 6688
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 6677
+#line 6689
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6678
+#line 6690
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6679
+#line 6691
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6681
+#line 6693
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6683
+#line 6695
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 6682
+#line 6694
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6685
+#line 6697
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6687
+#line 6699
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 6686
+#line 6698
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6689
+#line 6701
             .species = SPECIES_GROVYLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6691
+#line 6703
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6690
+#line 6702
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6693
+#line 6705
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_119_MUDKIP] =
     {
-#line 6694
+#line 6706
         .trainerName = _("May"),
-#line 6695
+#line 6707
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6696
+#line 6708
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 6697
+#line 6709
 F_TRAINER_FEMALE | 
-#line 6698
+#line 6710
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 6699
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6700
+#line 6711
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6712
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6701
+#line 6713
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6703
+#line 6715
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6705
+#line 6717
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6704
+#line 6716
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6707
+#line 6719
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6709
+#line 6721
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6708
+#line 6720
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6711
+#line 6723
             .species = SPECIES_GROVYLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6713
+#line 6725
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 6712
+#line 6724
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6715
+#line 6727
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_103_TREECKO] =
     {
-#line 6716
+#line 6728
         .trainerName = _("May"),
-#line 6717
+#line 6729
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6718
+#line 6730
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 6719
+#line 6731
 F_TRAINER_FEMALE | 
-#line 6720
+#line 6732
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 6721
+#line 6733
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6722
+#line 6734
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6723
+#line 6735
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6725
+#line 6737
             .species = SPECIES_TOGEDEMARU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6725
+#line 6737
             .heldItem = ITEM_FLAME_ORB,
-#line 6727
+#line 6739
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 6726
+#line 6738
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6728
+#line 6740
                 MOVE_FAKE_OUT,
             },
             },
         },
     },
-#line 6730
+#line 6742
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_110_TREECKO] =
     {
-#line 6731
+#line 6743
         .trainerName = _("May"),
-#line 6732
+#line 6744
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6733
+#line 6745
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 6734
+#line 6746
 F_TRAINER_FEMALE | 
-#line 6735
+#line 6747
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 6736
+#line 6748
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6737
+#line 6749
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6738
+#line 6750
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6740
+#line 6752
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6742
+#line 6754
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 6741
+#line 6753
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6744
+#line 6756
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6746
+#line 6758
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 6745
+#line 6757
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6748
+#line 6760
             .species = SPECIES_COMBUSKEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6750
+#line 6762
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6749
+#line 6761
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6752
+#line 6764
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_119_TREECKO] =
     {
-#line 6753
+#line 6765
         .trainerName = _("May"),
-#line 6754
+#line 6766
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6755
+#line 6767
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 6756
+#line 6768
 F_TRAINER_FEMALE | 
-#line 6757
+#line 6769
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 6758
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6759
+#line 6770
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6771
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6760
+#line 6772
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6762
+#line 6774
             .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6764
+#line 6776
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6763
+#line 6775
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6766
+#line 6778
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6768
+#line 6780
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6767
+#line 6779
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6770
+#line 6782
             .species = SPECIES_COMBUSKEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6772
+#line 6784
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 6771
+#line 6783
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6774
+#line 6786
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_103_TORCHIC] =
     {
-#line 6775
+#line 6787
         .trainerName = _("May"),
-#line 6776
+#line 6788
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6777
+#line 6789
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 6778
+#line 6790
 F_TRAINER_FEMALE | 
-#line 6779
+#line 6791
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 6780
+#line 6792
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6781
+#line 6793
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6782
+#line 6794
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6784
+#line 6796
             .species = SPECIES_TOGEDEMARU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6784
+#line 6796
             .heldItem = ITEM_FLAME_ORB,
-#line 6786
+#line 6798
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 6785
+#line 6797
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6787
+#line 6799
                 MOVE_FAKE_OUT,
             },
             },
         },
     },
-#line 6789
+#line 6801
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_110_TORCHIC] =
     {
-#line 6790
+#line 6802
         .trainerName = _("May"),
-#line 6791
+#line 6803
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6792
+#line 6804
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 6793
+#line 6805
 F_TRAINER_FEMALE | 
-#line 6794
+#line 6806
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 6795
+#line 6807
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6796
+#line 6808
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6797
+#line 6809
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6799
+#line 6811
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6801
+#line 6813
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 6800
+#line 6812
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6803
+#line 6815
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6805
+#line 6817
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 6804
+#line 6816
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6807
+#line 6819
             .species = SPECIES_MARSHTOMP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6809
+#line 6821
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6808
+#line 6820
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6811
+#line 6823
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_119_TORCHIC] =
     {
-#line 6812
+#line 6824
         .trainerName = _("May"),
-#line 6813
+#line 6825
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 6814
+#line 6826
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 6815
+#line 6827
 F_TRAINER_FEMALE | 
-#line 6816
+#line 6828
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 6817
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6818
+#line 6829
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6830
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 6819
+#line 6831
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6821
+#line 6833
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6823
+#line 6835
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6822
+#line 6834
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6825
+#line 6837
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6827
+#line 6839
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 6826
+#line 6838
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 6829
+#line 6841
             .species = SPECIES_MARSHTOMP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6831
+#line 6843
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 6830
+#line 6842
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6833
+#line 6845
     [DIFFICULTY_NORMAL][TRAINER_ISAAC_1] =
     {
-#line 6834
+#line 6846
         .trainerName = _("Isaac"),
-#line 6835
+#line 6847
         .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
-#line 6836
+#line 6848
         .trainerPic = TRAINER_PIC_POKEMON_BREEDER_M,
         .encounterMusic_gender =
-#line 6838
+#line 6850
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6839
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6840
+#line 6851
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6852
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6842
-            .species = SPECIES_WHISMUR,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6844
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6843
-            .lvl = 11,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6846
-            .species = SPECIES_ZIGZAGOON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6848
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6847
-            .lvl = 11,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6850
-            .species = SPECIES_ARON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6852
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6851
-            .lvl = 11,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
 #line 6854
-            .species = SPECIES_POOCHYENA,
+            .species = SPECIES_WHISMUR,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6856
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -17231,7 +17235,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 6858
-            .species = SPECIES_TAILLOW,
+            .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6860
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -17242,7 +17246,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 6862
-            .species = SPECIES_MAKUHITA,
+            .species = SPECIES_ARON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6864
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -17251,71 +17255,104 @@ F_TRAINER_FEMALE |
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
+            {
+#line 6866
+            .species = SPECIES_POOCHYENA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6868
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6867
+            .lvl = 11,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 6870
+            .species = SPECIES_TAILLOW,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6872
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6871
+            .lvl = 11,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 6874
+            .species = SPECIES_MAKUHITA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6876
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 6875
+            .lvl = 11,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
         },
     },
-#line 6866
+#line 6878
     [DIFFICULTY_NORMAL][TRAINER_DAVIS] =
     {
-#line 6867
+#line 6879
         .trainerName = _("Davis"),
-#line 6868
+#line 6880
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
-#line 6869
+#line 6881
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
         .encounterMusic_gender =
-#line 6871
+#line 6883
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6872
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6873
+#line 6884
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6885
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6875
+#line 6887
             .species = SPECIES_PINSIR,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6877
+#line 6889
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6876
+#line 6888
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 6879
+#line 6891
     [DIFFICULTY_NORMAL][TRAINER_MITCHELL] =
     {
-#line 6880
+#line 6892
         .trainerName = _("Mitchell"),
-#line 6881
+#line 6893
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 6882
+#line 6894
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 6884
+#line 6896
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 6885
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6886
+#line 6897
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6898
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6888
+#line 6900
             .species = SPECIES_LUNATONE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6890
+#line 6902
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6889
+#line 6901
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6891
+#line 6903
                 MOVE_EXPLOSION,
                 MOVE_REFLECT,
                 MOVE_LIGHT_SCREEN,
@@ -17323,17 +17360,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 6896
+#line 6908
             .species = SPECIES_SOLROCK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6898
+#line 6910
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 6897
+#line 6909
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 6899
+#line 6911
                 MOVE_EXPLOSION,
                 MOVE_REFLECT,
                 MOVE_LIGHT_SCREEN,
@@ -17342,61 +17379,28 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 6904
+#line 6916
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_SKY_PILLAR_1] =
     {
-#line 6905
+#line 6917
         .trainerName = _("Grunt"),
-#line 6906
+#line 6918
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
-#line 6907
+#line 6919
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 6909
+#line 6921
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 6910
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6911
+#line 6922
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6923
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6913
-            .species = SPECIES_LOUDRED,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6915
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 6914
-            .lvl = 22,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6917
-            .species = SPECIES_LINOONE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6919
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 6918
-            .lvl = 22,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6921
-            .species = SPECIES_ARON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6923
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 6922
-            .lvl = 22,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
 #line 6925
-            .species = SPECIES_MIGHTYENA,
+            .species = SPECIES_LOUDRED,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6927
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
@@ -17407,7 +17411,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 6929
-            .species = SPECIES_SWELLOW,
+            .species = SPECIES_LINOONE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6931
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
@@ -17418,7 +17422,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 6933
-            .species = SPECIES_MAKUHITA,
+            .species = SPECIES_ARON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6935
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
@@ -17427,65 +17431,65 @@ F_TRAINER_FEMALE |
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
+            {
+#line 6937
+            .species = SPECIES_MIGHTYENA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6939
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 6938
+            .lvl = 22,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 6941
+            .species = SPECIES_SWELLOW,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6943
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 6942
+            .lvl = 22,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 6945
+            .species = SPECIES_MAKUHITA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6947
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 6946
+            .lvl = 22,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
         },
     },
-#line 6937
+#line 6949
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_SKY_PILLAR_2] =
     {
-#line 6938
+#line 6950
         .trainerName = _("Grunt"),
-#line 6939
+#line 6951
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
-#line 6940
+#line 6952
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 6941
+#line 6953
 F_TRAINER_FEMALE | 
-#line 6942
+#line 6954
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 6943
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6944
+#line 6955
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6956
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6946
-            .species = SPECIES_LOUDRED,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6948
-            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 6947
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6950
-            .species = SPECIES_LINOONE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6952
-            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 6951
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6954
-            .species = SPECIES_ARON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6956
-            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 6955
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
 #line 6958
-            .species = SPECIES_MIGHTYENA,
+            .species = SPECIES_LOUDRED,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6960
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
@@ -17496,7 +17500,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 6962
-            .species = SPECIES_SWELLOW,
+            .species = SPECIES_LINOONE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6964
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
@@ -17507,7 +17511,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 6966
-            .species = SPECIES_HARIYAMA,
+            .species = SPECIES_ARON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6968
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
@@ -17516,65 +17520,65 @@ F_TRAINER_FEMALE |
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
+            {
+#line 6970
+            .species = SPECIES_MIGHTYENA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6972
+            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
+#line 6971
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 6974
+            .species = SPECIES_SWELLOW,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6976
+            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
+#line 6975
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 6978
+            .species = SPECIES_HARIYAMA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 6980
+            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
+#line 6979
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
         },
     },
-#line 6970
+#line 6982
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_SKY_PILLAR_3] =
     {
-#line 6971
+#line 6983
         .trainerName = _("Grunt"),
-#line 6972
+#line 6984
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
-#line 6973
+#line 6985
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 6974
+#line 6986
 F_TRAINER_FEMALE | 
-#line 6975
+#line 6987
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 6976
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 6977
+#line 6988
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 6989
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 6979
-            .species = SPECIES_LOUDRED,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6981
-            .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 6980
-            .lvl = 28,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6983
-            .species = SPECIES_LINOONE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6985
-            .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 6984
-            .lvl = 28,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 6987
-            .species = SPECIES_ARON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 6989
-            .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 6988
-            .lvl = 28,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
 #line 6991
-            .species = SPECIES_MIGHTYENA,
+            .species = SPECIES_LOUDRED,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6993
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
@@ -17585,7 +17589,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 6995
-            .species = SPECIES_SWELLOW,
+            .species = SPECIES_LINOONE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6997
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
@@ -17596,7 +17600,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 6999
-            .species = SPECIES_HARIYAMA,
+            .species = SPECIES_ARON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7001
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
@@ -17605,65 +17609,65 @@ F_TRAINER_FEMALE |
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
+            {
+#line 7003
+            .species = SPECIES_MIGHTYENA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7005
+            .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
+#line 7004
+            .lvl = 28,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 7007
+            .species = SPECIES_SWELLOW,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7009
+            .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
+#line 7008
+            .lvl = 28,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 7011
+            .species = SPECIES_HARIYAMA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7013
+            .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
+#line 7012
+            .lvl = 28,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
         },
     },
-#line 7003
+#line 7015
     [DIFFICULTY_NORMAL][TRAINER_LYDIA_1] =
     {
-#line 7004
+#line 7016
         .trainerName = _("Lydia"),
-#line 7005
+#line 7017
         .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
-#line 7006
+#line 7018
         .trainerPic = TRAINER_PIC_POKEMON_BREEDER_F,
         .encounterMusic_gender =
-#line 7007
+#line 7019
 F_TRAINER_FEMALE | 
-#line 7008
+#line 7020
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 7009
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7010
+#line 7021
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7022
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7012
-            .species = SPECIES_WINGULL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7014
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7013
-            .lvl = 11,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 7016
-            .species = SPECIES_SHROOMISH,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7018
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7017
-            .lvl = 11,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 7020
-            .species = SPECIES_MARILL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7022
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7021
-            .lvl = 11,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
 #line 7024
-            .species = SPECIES_ROSELIA,
+            .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7026
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -17674,7 +17678,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 7028
-            .species = SPECIES_SKITTY,
+            .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7030
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -17685,7 +17689,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 7032
-            .species = SPECIES_GOLDEEN,
+            .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7034
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -17694,142 +17698,142 @@ F_TRAINER_FEMALE |
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
+            {
+#line 7036
+            .species = SPECIES_ROSELIA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7038
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 7037
+            .lvl = 11,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 7040
+            .species = SPECIES_SKITTY,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7042
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 7041
+            .lvl = 11,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 7044
+            .species = SPECIES_GOLDEEN,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7046
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 7045
+            .lvl = 11,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
         },
     },
-#line 7036
+#line 7048
     [DIFFICULTY_NORMAL][TRAINER_HALLE] =
     {
-#line 7037
+#line 7049
         .trainerName = _("Halle"),
-#line 7038
+#line 7050
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 7039
+#line 7051
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 7040
+#line 7052
 F_TRAINER_FEMALE | 
-#line 7041
+#line 7053
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7042
+#line 7054
         .items = { ITEM_FULL_RESTORE },
-#line 7043
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7044
+#line 7055
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7056
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7046
+#line 7058
             .species = SPECIES_SABLEYE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7048
+#line 7060
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7047
+#line 7059
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7050
+#line 7062
             .species = SPECIES_ABSOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7052
+#line 7064
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7051
+#line 7063
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7054
+#line 7066
     [DIFFICULTY_NORMAL][TRAINER_GARRISON] =
     {
-#line 7055
+#line 7067
         .trainerName = _("Garrison"),
-#line 7056
+#line 7068
         .trainerClass = TRAINER_CLASS_RUIN_MANIAC,
-#line 7057
+#line 7069
         .trainerPic = TRAINER_PIC_RUIN_MANIAC,
         .encounterMusic_gender =
-#line 7059
+#line 7071
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 7060
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7061
+#line 7072
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7073
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7063
+#line 7075
             .species = SPECIES_SANDSLASH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7065
+#line 7077
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7064
+#line 7076
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7067
+#line 7079
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_SKY_PILLAR_4] =
     {
-#line 7068
+#line 7080
         .trainerName = _("Grunt"),
-#line 7069
+#line 7081
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
-#line 7070
+#line 7082
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 7072
+#line 7084
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 7073
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7074
+#line 7085
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7086
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7076
-            .species = SPECIES_WINGULL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7078
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 7077
-            .lvl = 22,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 7080
-            .species = SPECIES_SHROOMISH,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7082
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 7081
-            .lvl = 22,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 7084
-            .species = SPECIES_MARILL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7086
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 7085
-            .lvl = 22,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
 #line 7088
-            .species = SPECIES_ROSELIA,
+            .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7090
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
@@ -17840,7 +17844,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 7092
-            .species = SPECIES_SKITTY,
+            .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7094
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
@@ -17851,7 +17855,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 7096
-            .species = SPECIES_GOLDEEN,
+            .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7098
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
@@ -17860,63 +17864,63 @@ F_TRAINER_FEMALE |
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
+            {
+#line 7100
+            .species = SPECIES_ROSELIA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7102
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 7101
+            .lvl = 22,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 7104
+            .species = SPECIES_SKITTY,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7106
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 7105
+            .lvl = 22,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 7108
+            .species = SPECIES_GOLDEEN,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7110
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 7109
+            .lvl = 22,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
         },
     },
-#line 7100
+#line 7112
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_AQUA_SKY_PILLAR_1] =
     {
-#line 7101
+#line 7113
         .trainerName = _("Grunt"),
-#line 7102
+#line 7114
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
-#line 7103
+#line 7115
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
         .encounterMusic_gender =
-#line 7105
+#line 7117
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 7106
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7107
+#line 7118
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7119
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7109
-            .species = SPECIES_PELIPPER,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7111
-            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 7110
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 7113
-            .species = SPECIES_BRELOOM,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7115
-            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 7114
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 7117
-            .species = SPECIES_MARILL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7119
-            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 7118
-            .lvl = 25,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
 #line 7121
-            .species = SPECIES_ROSELIA,
+            .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7123
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
@@ -17927,7 +17931,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 7125
-            .species = SPECIES_DELCATTY,
+            .species = SPECIES_BRELOOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7127
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
@@ -17938,7 +17942,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 7129
-            .species = SPECIES_GOLDEEN,
+            .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7131
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
@@ -17947,65 +17951,65 @@ F_TRAINER_FEMALE |
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
+            {
+#line 7133
+            .species = SPECIES_ROSELIA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7135
+            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
+#line 7134
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 7137
+            .species = SPECIES_DELCATTY,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7139
+            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
+#line 7138
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 7141
+            .species = SPECIES_GOLDEEN,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7143
+            .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
+#line 7142
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
         },
     },
-#line 7133
+#line 7145
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_AQUA_SKY_PILLAR_2] =
     {
-#line 7134
+#line 7146
         .trainerName = _("Grunt"),
-#line 7135
+#line 7147
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
-#line 7136
+#line 7148
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
         .encounterMusic_gender =
-#line 7137
+#line 7149
 F_TRAINER_FEMALE | 
-#line 7138
+#line 7150
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 7139
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7140
+#line 7151
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7152
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7142
-            .species = SPECIES_PELIPPER,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7144
-            .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 7143
-            .lvl = 28,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 7146
-            .species = SPECIES_BRELOOM,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7148
-            .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 7147
-            .lvl = 28,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 7150
-            .species = SPECIES_MARILL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7152
-            .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 7151
-            .lvl = 28,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
 #line 7154
-            .species = SPECIES_ROSELIA,
+            .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7156
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
@@ -18016,7 +18020,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 7158
-            .species = SPECIES_DELCATTY,
+            .species = SPECIES_BRELOOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7160
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
@@ -18027,7 +18031,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 7162
-            .species = SPECIES_GOLDEEN,
+            .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7164
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
@@ -18036,232 +18040,265 @@ F_TRAINER_FEMALE |
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
+            {
+#line 7166
+            .species = SPECIES_ROSELIA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7168
+            .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
+#line 7167
+            .lvl = 28,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 7170
+            .species = SPECIES_DELCATTY,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7172
+            .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
+#line 7171
+            .lvl = 28,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 7174
+            .species = SPECIES_GOLDEEN,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7176
+            .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
+#line 7175
+            .lvl = 28,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
         },
     },
-#line 7166
+#line 7178
     [DIFFICULTY_NORMAL][TRAINER_JACKSON_1] =
     {
-#line 7167
+#line 7179
         .trainerName = _("Jackson"),
-#line 7168
+#line 7180
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
-#line 7169
+#line 7181
         .trainerPic = TRAINER_PIC_POKEMON_RANGER_M,
         .encounterMusic_gender =
-#line 7171
+#line 7183
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7172
+#line 7184
         .items = { ITEM_FULL_RESTORE },
-#line 7173
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7174
+#line 7185
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7186
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7176
+#line 7188
             .species = SPECIES_BRELOOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7178
+#line 7190
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7177
+#line 7189
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7180
+#line 7192
     [DIFFICULTY_NORMAL][TRAINER_LORENZO] =
     {
-#line 7181
+#line 7193
         .trainerName = _("Lorenzo"),
-#line 7182
+#line 7194
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
-#line 7183
+#line 7195
         .trainerPic = TRAINER_PIC_POKEMON_RANGER_M,
         .encounterMusic_gender =
-#line 7185
+#line 7197
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7186
+#line 7198
         .items = { ITEM_FULL_RESTORE },
-#line 7187
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7188
+#line 7199
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7200
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7190
+#line 7202
             .species = SPECIES_SEEDOT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7192
+#line 7204
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7191
+#line 7203
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7194
+#line 7206
             .species = SPECIES_NUZLEAF,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7196
+#line 7208
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7195
+#line 7207
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7198
+#line 7210
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7200
+#line 7212
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7199
+#line 7211
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7202
+#line 7214
     [DIFFICULTY_NORMAL][TRAINER_SEBASTIAN] =
     {
-#line 7203
+#line 7215
         .trainerName = _("Sebastian"),
-#line 7204
+#line 7216
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
-#line 7205
+#line 7217
         .trainerPic = TRAINER_PIC_POKEMON_RANGER_M,
         .encounterMusic_gender =
-#line 7207
+#line 7219
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7208
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7209
+#line 7220
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7221
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7211
+#line 7223
             .species = SPECIES_CACTURNE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7213
+#line 7225
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7212
+#line 7224
             .lvl = 39,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7215
+#line 7227
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_AQUA_SKY_PILLAR_3] =
     {
-#line 7216
+#line 7228
         .trainerName = _("Grunt"),
-#line 7217
+#line 7229
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
-#line 7218
+#line 7230
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
         .encounterMusic_gender =
-#line 7220
+#line 7232
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7221
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7222
+#line 7233
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7234
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7224
+#line 7236
             .species = SPECIES_BRELOOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7226
+#line 7238
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
-#line 7225
+#line 7237
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7228
+#line 7240
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_AQUA_SKY_PILLAR_4] =
     {
-#line 7229
+#line 7241
         .trainerName = _("Grunt"),
-#line 7230
+#line 7242
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
-#line 7231
+#line 7243
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
         .encounterMusic_gender =
-#line 7233
+#line 7245
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7234
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7235
+#line 7246
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7247
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7237
+#line 7249
             .species = SPECIES_BRELOOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7239
+#line 7251
             .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
-#line 7238
+#line 7250
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7241
+#line 7253
     [DIFFICULTY_NORMAL][TRAINER_TABITHA_SKY_PILLAR] =
     {
-#line 7242
+#line 7254
         .trainerName = _("Tabitha"),
-#line 7243
+#line 7255
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
-#line 7244
+#line 7256
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
         .encounterMusic_gender =
-#line 7247
+#line 7259
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7248
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7249
+#line 7260
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7261
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 7245
+#line 7257
         .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7251
+#line 7263
             .species = SPECIES_TYRANITAR,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7251
+#line 7263
             .heldItem = ITEM_EJECT_PACK,
-#line 7255
+#line 7267
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 7254
+#line 7266
             .ability = ABILITY_SAND_STREAM,
-#line 7252
+#line 7264
             .lvl = 87,
-#line 7253
+#line 7265
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 7255
+#line 7267
                 MOVE_HIGH_HORSEPOWER,
                 MOVE_SUPERPOWER,
                 MOVE_CRUNCH,
@@ -18269,22 +18306,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 7260
+#line 7272
             .species = SPECIES_HELIOLISK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7260
+#line 7272
             .heldItem = ITEM_SILK_SCARF,
-#line 7264
+#line 7276
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 7263
+#line 7275
             .ability = ABILITY_SAND_VEIL,
-#line 7261
+#line 7273
             .lvl = 86,
-#line 7262
+#line 7274
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 7264
+#line 7276
                 MOVE_FOCUS_BLAST,
                 MOVE_THUNDERBOLT,
                 MOVE_WEATHER_BALL,
@@ -18292,22 +18329,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 7269
+#line 7281
             .species = SPECIES_LANDORUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7269
+#line 7281
             .heldItem = ITEM_YACHE_BERRY,
-#line 7273
+#line 7285
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 7272
+#line 7284
             .ability = ABILITY_SAND_FORCE,
-#line 7270
+#line 7282
             .lvl = 86,
-#line 7271
+#line 7283
             .nature = NATURE_MILD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 7273
+#line 7285
                 MOVE_EARTH_POWER,
                 MOVE_IRON_TAIL,
                 MOVE_WEATHER_BALL,
@@ -18316,196 +18353,196 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 7278
+#line 7290
     [DIFFICULTY_NORMAL][TRAINER_CATHERINE_1] =
     {
-#line 7279
+#line 7291
         .trainerName = _("Catherine"),
-#line 7280
+#line 7292
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
-#line 7281
+#line 7293
         .trainerPic = TRAINER_PIC_POKEMON_RANGER_F,
         .encounterMusic_gender =
-#line 7282
+#line 7294
 F_TRAINER_FEMALE | 
-#line 7283
+#line 7295
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7284
+#line 7296
         .items = { ITEM_FULL_RESTORE },
-#line 7285
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7286
+#line 7297
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7298
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7288
+#line 7300
             .species = SPECIES_GLOOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7290
+#line 7302
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7289
+#line 7301
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7292
+#line 7304
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7294
+#line 7306
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7293
+#line 7305
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7296
+#line 7308
     [DIFFICULTY_NORMAL][TRAINER_JENNA] =
     {
-#line 7297
+#line 7309
         .trainerName = _("Jenna"),
-#line 7298
+#line 7310
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
-#line 7299
+#line 7311
         .trainerPic = TRAINER_PIC_POKEMON_RANGER_F,
         .encounterMusic_gender =
-#line 7300
+#line 7312
 F_TRAINER_FEMALE | 
-#line 7301
+#line 7313
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7302
+#line 7314
         .items = { ITEM_FULL_RESTORE },
-#line 7303
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7304
+#line 7315
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7316
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7306
+#line 7318
             .species = SPECIES_LOTAD,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7308
+#line 7320
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7307
+#line 7319
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7310
+#line 7322
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7312
+#line 7324
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7311
+#line 7323
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7314
+#line 7326
             .species = SPECIES_NUZLEAF,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7316
+#line 7328
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7315
+#line 7327
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7318
+#line 7330
     [DIFFICULTY_NORMAL][TRAINER_SOPHIA] =
     {
-#line 7319
+#line 7331
         .trainerName = _("Sophia"),
-#line 7320
+#line 7332
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
-#line 7321
+#line 7333
         .trainerPic = TRAINER_PIC_POKEMON_RANGER_F,
         .encounterMusic_gender =
-#line 7322
+#line 7334
 F_TRAINER_FEMALE | 
-#line 7323
+#line 7335
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7324
+#line 7336
         .items = { ITEM_FULL_RESTORE },
-#line 7325
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7326
+#line 7337
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7338
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7328
+#line 7340
             .species = SPECIES_SWABLU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7330
+#line 7342
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7329
+#line 7341
             .lvl = 38,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7332
+#line 7344
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7334
+#line 7346
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7333
+#line 7345
             .lvl = 38,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7336
+#line 7348
     [DIFFICULTY_NORMAL][TRAINER_MATT_SKY_PILLAR] =
     {
-#line 7337
+#line 7349
         .trainerName = _("Matt"),
-#line 7338
+#line 7350
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
-#line 7339
+#line 7351
         .trainerPic = TRAINER_PIC_AQUA_ADMIN_M,
         .encounterMusic_gender =
-#line 7342
+#line 7354
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7343
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7344
+#line 7355
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7356
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 7340
+#line 7352
         .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7346
+#line 7358
             .species = SPECIES_NINETALES_ALOLA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7346
+#line 7358
             .heldItem = ITEM_EJECT_BUTTON,
-#line 7350
+#line 7362
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 7349
+#line 7361
             .ability = ABILITY_SNOW_WARNING,
-#line 7347
+#line 7359
             .lvl = 87,
-#line 7348
+#line 7360
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 7350
+#line 7362
                 MOVE_MOONBLAST,
                 MOVE_ICE_BEAM,
                 MOVE_WEATHER_BALL,
@@ -18513,22 +18550,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 7355
+#line 7367
             .species = SPECIES_MAMOSWINE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7355
+#line 7367
             .heldItem = ITEM_NEVER_MELT_ICE,
-#line 7359
+#line 7371
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 7358
+#line 7370
             .ability = ABILITY_SNOW_CLOAK,
-#line 7356
+#line 7368
             .lvl = 86,
-#line 7357
+#line 7369
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 7359
+#line 7371
                 MOVE_HIGH_HORSEPOWER,
                 MOVE_ICICLE_CRASH,
                 MOVE_ROCK_SLIDE,
@@ -18536,22 +18573,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 7364
+#line 7376
             .species = SPECIES_ARTICUNO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7364
+#line 7376
             .heldItem = ITEM_CHARTI_BERRY,
-#line 7368
+#line 7380
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 7367
+#line 7379
             .ability = ABILITY_PRESSURE,
-#line 7365
+#line 7377
             .lvl = 86,
-#line 7366
+#line 7378
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 7368
+#line 7380
                 MOVE_AIR_SLASH,
                 MOVE_FREEZE_DRY,
                 MOVE_WEATHER_BALL,
@@ -18560,1228 +18597,1228 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 7373
+#line 7385
     [DIFFICULTY_NORMAL][TRAINER_COURTNEY_SKY_PILLAR] =
     {
-#line 7374
+#line 7386
         .trainerName = _("Courtney"),
-#line 7375
+#line 7387
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
-#line 7376
+#line 7388
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN_F,
         .encounterMusic_gender =
-#line 7378
+#line 7390
 F_TRAINER_FEMALE | 
-#line 7379
+#line 7391
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7380
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7381
+#line 7392
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7393
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 7377
+#line 7389
         .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7383
+#line 7395
             .species = SPECIES_GLOOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7385
+#line 7397
             .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
-#line 7384
+#line 7396
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7387
+#line 7399
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7389
+#line 7401
             .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
-#line 7388
+#line 7400
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7391
+#line 7403
     [DIFFICULTY_NORMAL][TRAINER_SHELLY_SKY_PILLAR] =
     {
-#line 7392
+#line 7404
         .trainerName = _("Shelly"),
-#line 7393
+#line 7405
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
-#line 7394
+#line 7406
         .trainerPic = TRAINER_PIC_AQUA_ADMIN_F,
         .encounterMusic_gender =
-#line 7396
+#line 7408
 F_TRAINER_FEMALE | 
-#line 7397
+#line 7409
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7398
+#line 7410
         .items = { ITEM_FULL_RESTORE },
-#line 7399
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7400
+#line 7411
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7412
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 7395
+#line 7407
         .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7402
+#line 7414
             .species = SPECIES_GLOOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7404
+#line 7416
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
-#line 7403
+#line 7415
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7406
+#line 7418
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7408
+#line 7420
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
-#line 7407
+#line 7419
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7410
+#line 7422
     [DIFFICULTY_NORMAL][TRAINER_JULIO] =
     {
-#line 7411
+#line 7423
         .trainerName = _("Julio"),
-#line 7412
+#line 7424
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 7413
+#line 7425
         .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
         .encounterMusic_gender =
-#line 7415
+#line 7427
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 7416
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7417
+#line 7428
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7429
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7419
+#line 7431
             .species = SPECIES_MAGNEMITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7421
+#line 7433
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7420
+#line 7432
             .lvl = 21,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7423
+#line 7435
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_SEAFLOOR_CAVERN_5] =
     {
-#line 7424
+#line 7436
         .trainerName = _("Grunt"),
-#line 7425
+#line 7437
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
-#line 7426
+#line 7438
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
         .encounterMusic_gender =
-#line 7428
+#line 7440
             TRAINER_ENCOUNTER_MUSIC_AQUA,
-#line 7429
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7430
+#line 7441
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7442
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7432
+#line 7444
             .species = SPECIES_MIGHTYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7434
+#line 7446
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7433
+#line 7445
             .lvl = 35,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7436
+#line 7448
             .species = SPECIES_GOLBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7438
+#line 7450
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7437
+#line 7449
             .lvl = 35,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7440
+#line 7452
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_UNUSED] =
     {
-#line 7441
+#line 7453
         .trainerName = _("Grunt"),
-#line 7442
+#line 7454
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 7443
+#line 7455
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
         .encounterMusic_gender =
-#line 7444
+#line 7456
 F_TRAINER_FEMALE | 
-#line 7445
+#line 7457
             TRAINER_ENCOUNTER_MUSIC_AQUA,
-#line 7446
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7447
+#line 7458
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7459
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7449
+#line 7461
             .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7451
+#line 7463
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7450
+#line 7462
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7453
+#line 7465
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7455
+#line 7467
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7454
+#line 7466
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7457
+#line 7469
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MT_PYRE_4] =
     {
-#line 7458
+#line 7470
         .trainerName = _("Grunt"),
-#line 7459
+#line 7471
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
-#line 7460
+#line 7472
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 7462
+#line 7474
             TRAINER_ENCOUNTER_MUSIC_AQUA,
-#line 7463
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7464
+#line 7475
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7476
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7466
+#line 7478
             .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7468
+#line 7480
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7467
+#line 7479
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7470
+#line 7482
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7472
+#line 7484
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7471
+#line 7483
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7474
+#line 7486
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_JAGGED_PASS] =
     {
-#line 7475
+#line 7487
         .trainerName = _("Grunt"),
-#line 7476
+#line 7488
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 7477
+#line 7489
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 7479
+#line 7491
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 7480
+#line 7492
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7481
+#line 7493
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7483
+#line 7495
             .species = SPECIES_POOCHYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7485
+#line 7497
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7484
+#line 7496
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7487
+#line 7499
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7489
+#line 7501
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7488
+#line 7500
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7491
+#line 7503
     [DIFFICULTY_NORMAL][TRAINER_MARC] =
     {
-#line 7492
+#line 7504
         .trainerName = _("Marc"),
-#line 7493
+#line 7505
         .trainerClass = TRAINER_CLASS_HIKER,
-#line 7494
+#line 7506
         .trainerPic = TRAINER_PIC_HIKER,
         .encounterMusic_gender =
-#line 7496
+#line 7508
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 7497
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7498
+#line 7509
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7510
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7500
+#line 7512
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7502
+#line 7514
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
-#line 7501
+#line 7513
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7504
+#line 7516
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7506
+#line 7518
             .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
-#line 7505
+#line 7517
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7508
+#line 7520
     [DIFFICULTY_NORMAL][TRAINER_BRENDEN] =
     {
-#line 7509
+#line 7521
         .trainerName = _("Brenden"),
-#line 7510
+#line 7522
         .trainerClass = TRAINER_CLASS_SAILOR,
-#line 7511
+#line 7523
         .trainerPic = TRAINER_PIC_SAILOR,
         .encounterMusic_gender =
-#line 7513
+#line 7525
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 7514
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7515
+#line 7526
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7527
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7517
+#line 7529
             .species = SPECIES_MACHOP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7519
+#line 7531
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 7518
+#line 7530
             .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7521
+#line 7533
     [DIFFICULTY_NORMAL][TRAINER_LILITH] =
     {
-#line 7522
+#line 7534
         .trainerName = _("Lilith"),
-#line 7523
+#line 7535
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
-#line 7524
+#line 7536
         .trainerPic = TRAINER_PIC_BATTLE_GIRL,
         .encounterMusic_gender =
-#line 7525
+#line 7537
 F_TRAINER_FEMALE | 
-#line 7526
+#line 7538
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 7527
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7528
+#line 7539
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7540
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7530
+#line 7542
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7532
+#line 7544
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 7531
+#line 7543
             .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7534
+#line 7546
     [DIFFICULTY_NORMAL][TRAINER_CRISTIAN] =
     {
-#line 7535
+#line 7547
         .trainerName = _("Cristian"),
-#line 7536
+#line 7548
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
-#line 7537
+#line 7549
         .trainerPic = TRAINER_PIC_BLACK_BELT,
         .encounterMusic_gender =
-#line 7539
+#line 7551
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 7540
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7541
+#line 7552
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7553
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7543
+#line 7555
             .species = SPECIES_MAKUHITA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7545
+#line 7557
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 7544
+#line 7556
             .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7547
+#line 7559
     [DIFFICULTY_NORMAL][TRAINER_SYLVIA] =
     {
-#line 7548
+#line 7560
         .trainerName = _("Sylvia"),
-#line 7549
+#line 7561
         .trainerClass = TRAINER_CLASS_HEX_MANIAC,
-#line 7550
+#line 7562
         .trainerPic = TRAINER_PIC_HEX_MANIAC,
         .encounterMusic_gender =
-#line 7551
+#line 7563
 F_TRAINER_FEMALE | 
-#line 7552
+#line 7564
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 7553
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7554
+#line 7565
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7566
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7556
+#line 7568
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7558
+#line 7570
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 7557
+#line 7569
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7560
+#line 7572
     [DIFFICULTY_NORMAL][TRAINER_LEONARDO] =
     {
-#line 7561
+#line 7573
         .trainerName = _("Leonardo"),
-#line 7562
+#line 7574
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 7563
+#line 7575
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 7565
+#line 7577
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 7566
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7567
+#line 7578
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7579
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7569
+#line 7581
             .species = SPECIES_CARVANHA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7571
+#line 7583
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7570
+#line 7582
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7573
+#line 7585
     [DIFFICULTY_NORMAL][TRAINER_ATHENA] =
     {
-#line 7574
+#line 7586
         .trainerName = _("Athena"),
-#line 7575
+#line 7587
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 7576
+#line 7588
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 7577
+#line 7589
 F_TRAINER_FEMALE | 
-#line 7578
+#line 7590
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7579
+#line 7591
         .items = { ITEM_HYPER_POTION },
-#line 7580
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7581
+#line 7592
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7593
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7583
+#line 7595
             .species = SPECIES_MANECTRIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7585
+#line 7597
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 7584
+#line 7596
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 7586
+#line 7598
                 MOVE_THUNDER,
                 MOVE_THUNDER_WAVE,
                 MOVE_QUICK_ATTACK,
             },
             },
             {
-#line 7590
+#line 7602
             .species = SPECIES_LINOONE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7592
+#line 7604
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 7591
+#line 7603
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 7593
+#line 7605
                 MOVE_SURF,
                 MOVE_THIEF,
             },
             },
         },
     },
-#line 7596
+#line 7608
     [DIFFICULTY_NORMAL][TRAINER_HARRISON] =
     {
-#line 7597
+#line 7609
         .trainerName = _("Harrison"),
-#line 7598
+#line 7610
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 7599
+#line 7611
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 7601
+#line 7613
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 7602
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7603
+#line 7614
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7615
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7605
+#line 7617
             .species = SPECIES_TENTACRUEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7607
+#line 7619
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7606
+#line 7618
             .lvl = 35,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7609
+#line 7621
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MT_CHIMNEY_2] =
     {
-#line 7610
+#line 7622
         .trainerName = _("Grunt"),
-#line 7611
+#line 7623
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 7612
+#line 7624
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 7614
+#line 7626
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 7615
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7616
+#line 7627
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7628
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7618
+#line 7630
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7620
+#line 7632
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7619
+#line 7631
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7622
+#line 7634
     [DIFFICULTY_NORMAL][TRAINER_CLARENCE] =
     {
-#line 7623
+#line 7635
         .trainerName = _("Clarence"),
-#line 7624
+#line 7636
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 7625
+#line 7637
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 7627
+#line 7639
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 7628
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7629
+#line 7640
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7641
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7631
+#line 7643
             .species = SPECIES_SHARPEDO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7633
+#line 7645
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7632
+#line 7644
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7635
+#line 7647
     [DIFFICULTY_NORMAL][TRAINER_TERRY] =
     {
-#line 7636
+#line 7648
         .trainerName = _("Terry"),
-#line 7637
+#line 7649
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 7638
+#line 7650
         .trainerPic = TRAINER_PIC_PSYCHIC_F,
         .encounterMusic_gender =
-#line 7639
+#line 7651
 F_TRAINER_FEMALE | 
-#line 7640
+#line 7652
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 7641
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7642
+#line 7653
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7654
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7644
+#line 7656
             .species = SPECIES_GIRAFARIG,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7646
+#line 7658
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7645
+#line 7657
             .lvl = 37,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7648
+#line 7660
     [DIFFICULTY_NORMAL][TRAINER_NATE] =
     {
-#line 7649
-        .trainerName = _("Nate"),
-#line 7650
-        .trainerClass = TRAINER_CLASS_GENTLEMAN,
-#line 7651
-        .trainerPic = TRAINER_PIC_GENTLEMAN,
-        .encounterMusic_gender =
-#line 7653
-            TRAINER_ENCOUNTER_MUSIC_RICH,
-#line 7654
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7655
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-        .partySize = 1,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 7657
-            .species = SPECIES_SPOINK,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7659
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 7658
-            .lvl = 36,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-        },
-    },
 #line 7661
-    [DIFFICULTY_NORMAL][TRAINER_KATHLEEN] =
-    {
+        .trainerName = _("Nate"),
 #line 7662
-        .trainerName = _("Kathleen"),
+        .trainerClass = TRAINER_CLASS_GENTLEMAN,
 #line 7663
-        .trainerClass = TRAINER_CLASS_HEX_MANIAC,
-#line 7664
-        .trainerPic = TRAINER_PIC_HEX_MANIAC,
+        .trainerPic = TRAINER_PIC_GENTLEMAN,
         .encounterMusic_gender =
 #line 7665
-F_TRAINER_FEMALE | 
+            TRAINER_ENCOUNTER_MUSIC_RICH,
 #line 7666
-            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 7667
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7668
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
+#line 7669
+            .species = SPECIES_SPOINK,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 7671
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7670
+            .lvl = 36,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 7673
+    [DIFFICULTY_NORMAL][TRAINER_KATHLEEN] =
+    {
+#line 7674
+        .trainerName = _("Kathleen"),
+#line 7675
+        .trainerClass = TRAINER_CLASS_HEX_MANIAC,
+#line 7676
+        .trainerPic = TRAINER_PIC_HEX_MANIAC,
+        .encounterMusic_gender =
+#line 7677
+F_TRAINER_FEMALE | 
+#line 7678
+            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+#line 7679
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7680
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 7682
             .species = SPECIES_KADABRA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7672
+#line 7684
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 7671
+#line 7683
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7674
+#line 7686
     [DIFFICULTY_NORMAL][TRAINER_CLIFFORD] =
     {
-#line 7675
+#line 7687
         .trainerName = _("Clifford"),
-#line 7676
+#line 7688
         .trainerClass = TRAINER_CLASS_GENTLEMAN,
-#line 7677
+#line 7689
         .trainerPic = TRAINER_PIC_GENTLEMAN,
         .encounterMusic_gender =
-#line 7679
+#line 7691
             TRAINER_ENCOUNTER_MUSIC_RICH,
-#line 7680
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7681
+#line 7692
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7693
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7683
+#line 7695
             .species = SPECIES_GIRAFARIG,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7685
+#line 7697
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7684
+#line 7696
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7687
+#line 7699
     [DIFFICULTY_NORMAL][TRAINER_NICHOLAS] =
     {
-#line 7688
+#line 7700
         .trainerName = _("Nicholas"),
-#line 7689
+#line 7701
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 7690
+#line 7702
         .trainerPic = TRAINER_PIC_PSYCHIC_M,
         .encounterMusic_gender =
-#line 7692
+#line 7704
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 7693
+#line 7705
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7694
+#line 7706
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7696
+#line 7708
             .species = SPECIES_WOBBUFFET,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7698
+#line 7710
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7697
+#line 7709
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7700
+#line 7712
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_SPACE_CENTER_3] =
     {
-#line 7701
+#line 7713
         .trainerName = _("Grunt"),
-#line 7702
+#line 7714
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 7703
+#line 7715
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 7704
+#line 7716
 F_TRAINER_FEMALE | 
-#line 7705
+#line 7717
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 7706
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7707
+#line 7718
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7719
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7709
+#line 7721
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7711
+#line 7723
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7710
+#line 7722
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7713
+#line 7725
             .species = SPECIES_POOCHYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7715
+#line 7727
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7714
+#line 7726
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7717
+#line 7729
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_SPACE_CENTER_4] =
     {
-#line 7718
+#line 7730
         .trainerName = _("Grunt"),
-#line 7719
+#line 7731
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 7720
+#line 7732
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 7722
+#line 7734
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 7723
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7724
+#line 7735
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7736
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7726
+#line 7738
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7728
+#line 7740
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7727
+#line 7739
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7730
+#line 7742
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_SPACE_CENTER_5] =
     {
-#line 7731
+#line 7743
         .trainerName = _("Grunt"),
-#line 7732
+#line 7744
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 7733
+#line 7745
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 7734
+#line 7746
 F_TRAINER_FEMALE | 
-#line 7735
+#line 7747
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 7736
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7737
+#line 7748
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7749
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7739
+#line 7751
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7741
+#line 7753
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7740
+#line 7752
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7743
+#line 7755
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_SPACE_CENTER_6] =
     {
-#line 7744
+#line 7756
         .trainerName = _("Grunt"),
-#line 7745
+#line 7757
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 7746
+#line 7758
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 7747
+#line 7759
 F_TRAINER_FEMALE | 
-#line 7748
+#line 7760
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 7749
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7750
+#line 7761
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7762
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7752
+#line 7764
             .species = SPECIES_MIGHTYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7754
+#line 7766
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7753
+#line 7765
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7756
+#line 7768
     [DIFFICULTY_NORMAL][TRAINER_TABITHA_MOSSDEEP] =
     {
-#line 7757
+#line 7769
         .trainerName = _("Tabitha"),
-#line 7758
+#line 7770
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
-#line 7759
+#line 7771
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
         .encounterMusic_gender =
-#line 7762
+#line 7774
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 7763
+#line 7775
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7764
+#line 7776
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 7760
+#line 7772
         .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7766
+#line 7778
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7768
+#line 7780
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7767
+#line 7779
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7770
+#line 7782
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7772
+#line 7784
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7771
+#line 7783
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7774
+#line 7786
     [DIFFICULTY_NORMAL][TRAINER_MACEY] =
     {
-#line 7775
+#line 7787
         .trainerName = _("Macey"),
-#line 7776
+#line 7788
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 7777
+#line 7789
         .trainerPic = TRAINER_PIC_PSYCHIC_F,
         .encounterMusic_gender =
-#line 7778
+#line 7790
 F_TRAINER_FEMALE | 
-#line 7779
+#line 7791
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 7780
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7781
+#line 7792
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7793
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7783
+#line 7795
             .species = SPECIES_NATU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7785
+#line 7797
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7784
+#line 7796
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7787
+#line 7799
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_RUSTBORO_TREECKO] =
     {
-#line 7788
+#line 7800
         .trainerName = _("Brendan"),
-#line 7789
+#line 7801
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 7790
+#line 7802
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 7792
+#line 7804
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 7793
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7794
+#line 7805
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7806
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 7795
+#line 7807
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7797
+#line 7809
             .species = SPECIES_LOTAD,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7799
+#line 7811
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 7798
+#line 7810
             .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7801
+#line 7813
             .species = SPECIES_TORCHIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7803
+#line 7815
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7802
+#line 7814
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7805
+#line 7817
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_RUSTBORO_MUDKIP] =
     {
-#line 7806
+#line 7818
         .trainerName = _("Brendan"),
-#line 7807
+#line 7819
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 7808
+#line 7820
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 7810
+#line 7822
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 7811
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7812
+#line 7823
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7824
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 7813
+#line 7825
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7815
+#line 7827
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7817
+#line 7829
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 7816
+#line 7828
             .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7819
+#line 7831
             .species = SPECIES_TREECKO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7821
+#line 7833
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7820
+#line 7832
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7823
+#line 7835
     [DIFFICULTY_NORMAL][TRAINER_PAXTON] =
     {
-#line 7824
+#line 7836
         .trainerName = _("Paxton"),
-#line 7825
+#line 7837
         .trainerClass = TRAINER_CLASS_EXPERT,
-#line 7826
+#line 7838
         .trainerPic = TRAINER_PIC_EXPERT_M,
         .encounterMusic_gender =
-#line 7828
+#line 7840
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 7829
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7830
+#line 7841
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7842
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7832
+#line 7844
             .species = SPECIES_SWELLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7834
+#line 7846
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7833
+#line 7845
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7836
+#line 7848
             .species = SPECIES_BRELOOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7838
+#line 7850
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7837
+#line 7849
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7840
+#line 7852
     [DIFFICULTY_NORMAL][TRAINER_ISABELLA] =
     {
-#line 7841
+#line 7853
         .trainerName = _("Isabella"),
-#line 7842
+#line 7854
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 7843
+#line 7855
         .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
         .encounterMusic_gender =
-#line 7844
+#line 7856
 F_TRAINER_FEMALE | 
-#line 7845
+#line 7857
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 7846
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7847
+#line 7858
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7859
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7849
+#line 7861
             .species = SPECIES_TANDEMAUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7849
+#line 7861
             .heldItem = ITEM_EVIOLITE,
-#line 7853
+#line 7865
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 7850
+#line 7862
             .ability = ABILITY_OWN_TEMPO,
-#line 7851
+#line 7863
             .lvl = 29,
-#line 7852
+#line 7864
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 7853
+#line 7865
                 MOVE_DOUBLE_HIT,
                 MOVE_LOW_SWEEP,
                 MOVE_HELPING_HAND,
@@ -19789,22 +19826,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 7858
+#line 7870
             .species = SPECIES_TOGETIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7858
+#line 7870
             .heldItem = ITEM_CHARTI_BERRY,
-#line 7862
+#line 7874
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 7859
+#line 7871
             .ability = ABILITY_SERENE_GRACE,
-#line 7860
+#line 7872
             .lvl = 28,
-#line 7861
+#line 7873
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 7862
+#line 7874
                 MOVE_AIR_CUTTER,
                 MOVE_STORED_POWER,
                 MOVE_CALM_MIND,
@@ -19813,409 +19850,405 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 7867
+#line 7879
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_WEATHER_INST_5] =
     {
-#line 7868
+#line 7880
         .trainerName = _("Grunt"),
-#line 7869
+#line 7881
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
-#line 7870
+#line 7882
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
         .encounterMusic_gender =
-#line 7871
+#line 7883
 F_TRAINER_FEMALE | 
-#line 7872
+#line 7884
             TRAINER_ENCOUNTER_MUSIC_AQUA,
-#line 7873
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7874
+#line 7885
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7886
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7876
+#line 7888
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7878
+#line 7890
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7877
+#line 7889
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7880
+#line 7892
             .species = SPECIES_POOCHYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7882
+#line 7894
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7881
+#line 7893
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7884
+#line 7896
     [DIFFICULTY_NORMAL][TRAINER_TABITHA_MT_CHIMNEY] =
     {
-#line 7885
+#line 7897
         .trainerName = _("Tabitha"),
-#line 7886
+#line 7898
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
-#line 7887
+#line 7899
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
         .encounterMusic_gender =
-#line 7890
+#line 7902
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 7891
+#line 7903
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7892
+#line 7904
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 7889
+#line 7901
         .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7894
+#line 7906
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7896
+#line 7908
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7895
+#line 7907
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7898
+#line 7910
             .species = SPECIES_POOCHYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7900
+#line 7912
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7899
+#line 7911
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7902
+#line 7914
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7904
+#line 7916
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7903
+#line 7915
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7906
+#line 7918
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7908
+#line 7920
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7907
+#line 7919
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7910
+#line 7922
     [DIFFICULTY_NORMAL][TRAINER_JONATHAN] =
     {
-#line 7911
+#line 7923
         .trainerName = _("Jonathan"),
-#line 7912
+#line 7924
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 7913
+#line 7925
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 7915
+#line 7927
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 7916
+#line 7928
         .items = { ITEM_HYPER_POTION },
-#line 7917
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7918
+#line 7929
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7930
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7920
+#line 7932
             .species = SPECIES_KECLEON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7922
+#line 7934
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7921
+#line 7933
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7924
+#line 7936
             .species = SPECIES_LOUDRED,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7926
+#line 7938
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 7925
+#line 7937
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7928
+#line 7940
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_RUSTBORO_TORCHIC] =
     {
-#line 7929
+#line 7941
         .trainerName = _("Brendan"),
-#line 7930
+#line 7942
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 7931
+#line 7943
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 7933
+#line 7945
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 7934
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7935
+#line 7946
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7947
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 7936
+#line 7948
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7938
+#line 7950
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7940
+#line 7952
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 7939
+#line 7951
             .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7942
+#line 7954
             .species = SPECIES_MUDKIP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7944
+#line 7956
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7943
+#line 7955
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7946
+#line 7958
     [DIFFICULTY_NORMAL][TRAINER_MAY_RUSTBORO_MUDKIP] =
     {
-#line 7947
+#line 7959
         .trainerName = _("May"),
-#line 7948
+#line 7960
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 7949
+#line 7961
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 7950
+#line 7962
 F_TRAINER_FEMALE | 
-#line 7951
+#line 7963
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 7952
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7953
+#line 7964
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 7965
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 7954
+#line 7966
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7956
+#line 7968
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7958
+#line 7970
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 7957
+#line 7969
             .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7960
+#line 7972
             .species = SPECIES_TREECKO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7962
+#line 7974
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 7961
+#line 7973
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7964
+#line 7976
     [DIFFICULTY_NORMAL][TRAINER_MAXIE_MAGMA_HIDEOUT] =
     {
-#line 7965
+#line 7977
         .trainerName = _("Maxie"),
-#line 7966
+#line 7978
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
-#line 7967
+#line 7979
         .trainerPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
         .encounterMusic_gender =
-#line 7970
+#line 7982
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 7971
-        .items = { ITEM_SUPER_POTION, ITEM_SUPER_POTION },
-#line 7972
+#line 7983
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7973
+#line 7984
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 7968
+#line 7980
         .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7975
+#line 7986
             .species = SPECIES_MIGHTYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7977
+#line 7988
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 7976
+#line 7987
             .lvl = 37,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7979
+#line 7990
             .species = SPECIES_CROBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7981
+#line 7992
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 7980
+#line 7991
             .lvl = 38,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 7983
+#line 7994
             .species = SPECIES_CAMERUPT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 7985
+#line 7996
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 7984
+#line 7995
             .lvl = 39,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 7987
+#line 7998
     [DIFFICULTY_NORMAL][TRAINER_MAXIE_MT_CHIMNEY] =
     {
-#line 7988
+#line 7999
         .trainerName = _("Maxie"),
-#line 7989
+#line 8000
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
-#line 7990
+#line 8001
         .trainerPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
         .encounterMusic_gender =
-#line 7993
+#line 8004
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 7994
-        .items = { ITEM_SUPER_POTION, ITEM_SUPER_POTION },
-#line 7995
+#line 8005
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 7996
+#line 8006
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 7991
+#line 8002
         .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 7998
+#line 8008
             .species = SPECIES_MIGHTYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8000
+#line 8010
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 7999
+#line 8009
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8002
+#line 8012
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8004
+#line 8014
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8003
+#line 8013
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8006
+#line 8016
             .species = SPECIES_CAMERUPT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8008
+#line 8018
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8007
+#line 8017
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8010
+#line 8020
     [DIFFICULTY_NORMAL][TRAINER_TIANA] =
     {
-#line 8011
+#line 8021
         .trainerName = _("Tiana"),
-#line 8012
+#line 8022
         .trainerClass = TRAINER_CLASS_LASS,
-#line 8013
+#line 8023
         .trainerPic = TRAINER_PIC_LASS,
         .encounterMusic_gender =
-#line 8014
+#line 8024
 F_TRAINER_FEMALE | 
-#line 8015
+#line 8025
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 8016
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8017
+#line 8026
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8027
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8019
+#line 8029
             .species = SPECIES_GOSSIFLEUR,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8019
+#line 8029
             .heldItem = ITEM_OCCA_BERRY,
-#line 8023
+#line 8033
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 8020
+#line 8030
             .ability = ABILITY_COTTON_DOWN,
-#line 8021
+#line 8031
             .lvl = 26,
-#line 8022
+#line 8032
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8023
+#line 8033
                 MOVE_RAZOR_LEAF,
                 MOVE_RAPID_SPIN,
                 MOVE_LEAFAGE,
@@ -20223,22 +20256,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8028
+#line 8038
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8028
+#line 8038
             .heldItem = ITEM_PASSHO_BERRY,
-#line 8032
+#line 8042
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 8029
+#line 8039
             .ability = ABILITY_OWN_TEMPO,
-#line 8030
+#line 8040
             .lvl = 27,
-#line 8031
+#line 8041
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8032
+#line 8042
                 MOVE_INCINERATE,
                 MOVE_ROCK_TOMB,
                 MOVE_MUD_SHOT,
@@ -20247,179 +20280,179 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 8037
+#line 8047
     [DIFFICULTY_NORMAL][TRAINER_HALEY_1] =
     {
-#line 8038
+#line 8048
         .trainerName = _("Haley"),
-#line 8039
+#line 8049
         .trainerClass = TRAINER_CLASS_LASS,
-#line 8040
+#line 8050
         .trainerPic = TRAINER_PIC_LASS,
         .encounterMusic_gender =
-#line 8041
+#line 8051
 F_TRAINER_FEMALE | 
-#line 8042
+#line 8052
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 8043
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8044
+#line 8053
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8054
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8046
+#line 8056
             .species = SPECIES_LOTAD,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8048
+#line 8058
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8047
+#line 8057
             .lvl = 6,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8050
+#line 8060
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8052
+#line 8062
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8051
+#line 8061
             .lvl = 6,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8054
+#line 8064
     [DIFFICULTY_NORMAL][TRAINER_JANICE] =
     {
-#line 8055
+#line 8065
         .trainerName = _("Janice"),
-#line 8056
+#line 8066
         .trainerClass = TRAINER_CLASS_LASS,
-#line 8057
+#line 8067
         .trainerPic = TRAINER_PIC_LASS,
         .encounterMusic_gender =
-#line 8058
+#line 8068
 F_TRAINER_FEMALE | 
-#line 8059
+#line 8069
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 8060
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8061
+#line 8070
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8071
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8063
+#line 8073
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8065
+#line 8075
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8064
+#line 8074
             .lvl = 9,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8067
+#line 8077
     [DIFFICULTY_NORMAL][TRAINER_VIVI] =
     {
-#line 8068
+#line 8078
         .trainerName = _("Vivi"),
-#line 8069
+#line 8079
         .trainerClass = TRAINER_CLASS_WINSTRATE,
-#line 8070
+#line 8080
         .trainerPic = TRAINER_PIC_LASS,
         .encounterMusic_gender =
-#line 8071
+#line 8081
 F_TRAINER_FEMALE | 
-#line 8072
+#line 8082
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 8073
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8074
+#line 8083
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8084
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8076
+#line 8086
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8078
+#line 8088
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 8077
+#line 8087
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8080
+#line 8090
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8082
+#line 8092
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 8081
+#line 8091
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8084
+#line 8094
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8086
+#line 8096
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 8085
+#line 8095
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8088
+#line 8098
     [DIFFICULTY_NORMAL][TRAINER_MAXIE_SKY_PILLAR] =
     {
-#line 8089
+#line 8099
         .trainerName = _("Maxie"),
-#line 8090
+#line 8100
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
-#line 8091
+#line 8101
         .trainerPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
         .encounterMusic_gender =
-#line 8094
+#line 8104
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8095
+#line 8105
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8096
+#line 8106
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 8092
+#line 8102
         .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8098
+#line 8108
             .species = SPECIES_RAYQUAZA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8098
+#line 8108
             .heldItem = ITEM_DRAGON_GEM,
-#line 8102
+#line 8112
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 8101
+#line 8111
             .ability = ABILITY_AIR_LOCK,
-#line 8099
+#line 8109
             .lvl = 87,
-#line 8100
+#line 8110
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8102
+#line 8112
                 MOVE_DRACO_METEOR,
                 MOVE_TAILWIND,
                 MOVE_FLAMETHROWER,
@@ -20427,22 +20460,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8107
+#line 8117
             .species = SPECIES_CHARIZARD,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8107
+#line 8117
             .heldItem = ITEM_CHARIZARDITE_Y,
-#line 8111
+#line 8121
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 8110
+#line 8120
             .ability = ABILITY_BLAZE,
-#line 8108
+#line 8118
             .lvl = 87,
-#line 8109
+#line 8119
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8111
+#line 8121
                 MOVE_HEAT_WAVE,
                 MOVE_AIR_SLASH,
                 MOVE_SOLAR_BEAM,
@@ -20450,22 +20483,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8116
+#line 8126
             .species = SPECIES_TORKOAL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8116
+#line 8126
             .heldItem = ITEM_FIRE_GEM,
-#line 8120
+#line 8130
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 8119
+#line 8129
             .ability = ABILITY_SHELL_ARMOR,
-#line 8117
+#line 8127
             .lvl = 86,
-#line 8118
+#line 8128
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8120
+#line 8130
                 MOVE_PROTECT,
                 MOVE_ERUPTION,
                 MOVE_SOLAR_BEAM,
@@ -20473,22 +20506,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8125
+#line 8135
             .species = SPECIES_LILLIGANT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8125
+#line 8135
             .heldItem = ITEM_FOCUS_SASH,
-#line 8129
+#line 8139
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 8128
+#line 8138
             .ability = ABILITY_CHLOROPHYLL,
-#line 8126
+#line 8136
             .lvl = 86,
-#line 8127
+#line 8137
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8129
+#line 8139
                 MOVE_AFTER_YOU,
                 MOVE_LEAF_STORM,
                 MOVE_WEATHER_BALL,
@@ -20497,44 +20530,44 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 8134
+#line 8144
     [DIFFICULTY_NORMAL][TRAINER_ARCHIE_SKY_PILLAR] =
     {
-#line 8135
+#line 8145
         .trainerName = _("Archie"),
-#line 8136
+#line 8146
         .trainerClass = TRAINER_CLASS_AQUA_LEADER,
-#line 8137
+#line 8147
         .trainerPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
         .encounterMusic_gender =
-#line 8140
+#line 8150
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8141
+#line 8151
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8142
+#line 8152
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 8138
+#line 8148
         .mugshotColor = MUGSHOT_COLOR_RED,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8144
+#line 8154
             .species = SPECIES_RAYQUAZA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8144
+#line 8154
             .heldItem = ITEM_DRAGON_GEM,
-#line 8148
+#line 8158
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 8147
+#line 8157
             .ability = ABILITY_AIR_LOCK,
-#line 8145
+#line 8155
             .lvl = 87,
-#line 8146
+#line 8156
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8148
+#line 8158
                 MOVE_DRACO_METEOR,
                 MOVE_TAILWIND,
                 MOVE_FLAMETHROWER,
@@ -20542,22 +20575,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8153
+#line 8163
             .species = SPECIES_SWAMPERT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8153
+#line 8163
             .heldItem = ITEM_SWAMPERTITE,
-#line 8157
+#line 8167
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 8156
+#line 8166
             .ability = ABILITY_DAMP,
-#line 8154
+#line 8164
             .lvl = 87,
-#line 8155
+#line 8165
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8157
+#line 8167
                 MOVE_LIQUIDATION,
                 MOVE_ICE_PUNCH,
                 MOVE_HIGH_HORSEPOWER,
@@ -20565,22 +20598,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8162
+#line 8172
             .species = SPECIES_ARCHALUDON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8162
+#line 8172
             .heldItem = ITEM_ASSAULT_VEST,
-#line 8166
+#line 8176
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 8165
+#line 8175
             .ability = ABILITY_STAMINA,
-#line 8163
+#line 8173
             .lvl = 86,
-#line 8164
+#line 8174
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8166
+#line 8176
                 MOVE_BODY_PRESS,
                 MOVE_FLASH_CANNON,
                 MOVE_ELECTRO_SHOT,
@@ -20589,280 +20622,280 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 8171
+#line 8181
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_114_TREECKO] =
     {
-#line 8172
+#line 8182
         .trainerName = _("May"),
-#line 8173
+#line 8183
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 8174
+#line 8184
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 8175
+#line 8185
 F_TRAINER_FEMALE | 
-#line 8176
+#line 8186
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 8177
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8178
+#line 8187
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8188
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 8179
+#line 8189
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8181
+#line 8191
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8183
+#line 8193
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 8182
+#line 8192
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8185
+#line 8195
             .species = SPECIES_BRELOOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8187
+#line 8197
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 8186
+#line 8196
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8189
+#line 8199
     [DIFFICULTY_NORMAL][TRAINER_SALLY] =
     {
-#line 8190
+#line 8200
         .trainerName = _("Sally"),
-#line 8191
+#line 8201
         .trainerClass = TRAINER_CLASS_LASS,
-#line 8192
+#line 8202
         .trainerPic = TRAINER_PIC_LASS,
         .encounterMusic_gender =
-#line 8193
+#line 8203
 F_TRAINER_FEMALE | 
-#line 8194
+#line 8204
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 8195
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8196
+#line 8205
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8206
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8198
+#line 8208
             .species = SPECIES_ODDISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8200
+#line 8210
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8199
+#line 8209
             .lvl = 16,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8202
+#line 8212
     [DIFFICULTY_NORMAL][TRAINER_ROBIN] =
     {
-#line 8203
+#line 8213
         .trainerName = _("Robin"),
-#line 8204
+#line 8214
         .trainerClass = TRAINER_CLASS_LASS,
-#line 8205
+#line 8215
         .trainerPic = TRAINER_PIC_LASS,
         .encounterMusic_gender =
-#line 8206
+#line 8216
 F_TRAINER_FEMALE | 
-#line 8207
+#line 8217
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 8208
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8209
+#line 8218
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8219
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8211
+#line 8221
             .species = SPECIES_SKITTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8213
+#line 8223
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8212
+#line 8222
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8215
+#line 8225
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8217
+#line 8227
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8216
+#line 8226
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8219
+#line 8229
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8221
+#line 8231
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8220
+#line 8230
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8223
+#line 8233
     [DIFFICULTY_NORMAL][TRAINER_ANDREA] =
     {
-#line 8224
+#line 8234
         .trainerName = _("Andrea"),
-#line 8225
+#line 8235
         .trainerClass = TRAINER_CLASS_LASS,
-#line 8226
+#line 8236
         .trainerPic = TRAINER_PIC_LASS,
         .encounterMusic_gender =
-#line 8227
+#line 8237
 F_TRAINER_FEMALE | 
-#line 8228
+#line 8238
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 8229
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8230
+#line 8239
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8240
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8232
+#line 8242
             .species = SPECIES_LUVDISC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8234
+#line 8244
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 8233
+#line 8243
             .lvl = 40,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8236
+#line 8246
     [DIFFICULTY_NORMAL][TRAINER_CRISSY] =
     {
-#line 8237
+#line 8247
         .trainerName = _("Crissy"),
-#line 8238
+#line 8248
         .trainerClass = TRAINER_CLASS_LASS,
-#line 8239
+#line 8249
         .trainerPic = TRAINER_PIC_LASS,
         .encounterMusic_gender =
-#line 8240
+#line 8250
 F_TRAINER_FEMALE | 
-#line 8241
+#line 8251
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 8242
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8243
+#line 8252
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8253
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8245
+#line 8255
             .species = SPECIES_GOLDEEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8247
+#line 8257
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 8246
+#line 8256
             .lvl = 39,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8249
+#line 8259
             .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8251
+#line 8261
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 8250
+#line 8260
             .lvl = 39,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8253
+#line 8263
     [DIFFICULTY_NORMAL][TRAINER_RICK] =
     {
-#line 8254
+#line 8264
         .trainerName = _("Rick"),
-#line 8255
+#line 8265
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
-#line 8256
+#line 8266
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
         .encounterMusic_gender =
-#line 8258
+#line 8268
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8259
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8260
+#line 8269
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8270
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8262
+#line 8272
             .species = SPECIES_YUNGOOS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8262
+#line 8272
             .heldItem = ITEM_BERRY_JUICE,
-#line 8266
+#line 8276
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 8263
+#line 8273
             .ability = ABILITY_STAKEOUT,
-#line 8264
+#line 8274
             .lvl = 26,
-#line 8265
+#line 8275
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8266
+#line 8276
                 MOVE_BITE,
                 MOVE_TACKLE,
                 MOVE_LEER,
             },
             },
             {
-#line 8270
+#line 8280
             .species = SPECIES_SPINARAK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8270
+#line 8280
             .heldItem = ITEM_ORAN_BERRY,
-#line 8274
+#line 8284
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 8271
+#line 8281
             .ability = ABILITY_SWARM,
-#line 8272
+#line 8282
             .lvl = 26,
-#line 8273
+#line 8283
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8274
+#line 8284
                 MOVE_POUNCE,
                 MOVE_SHADOW_SNEAK,
                 MOVE_POISON_STING,
@@ -20870,1042 +20903,1042 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 8278
+#line 8288
     [DIFFICULTY_NORMAL][TRAINER_LYLE] =
     {
-#line 8279
+#line 8289
         .trainerName = _("Lyle"),
-#line 8280
+#line 8290
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
-#line 8281
+#line 8291
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
         .encounterMusic_gender =
-#line 8283
+#line 8293
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8284
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8285
+#line 8294
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8295
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8287
-            .species = SPECIES_WURMPLE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8289
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8288
-            .lvl = 3,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 8291
-            .species = SPECIES_WURMPLE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8293
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8292
-            .lvl = 3,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 8295
-            .species = SPECIES_WURMPLE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
 #line 8297
+            .species = SPECIES_WURMPLE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 8299
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8296
+#line 8298
             .lvl = 3,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8299
+#line 8301
             .species = SPECIES_WURMPLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8301
+#line 8303
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8300
+#line 8302
+            .lvl = 3,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 8305
+            .species = SPECIES_WURMPLE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 8307
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 8306
+            .lvl = 3,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 8309
+            .species = SPECIES_WURMPLE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 8311
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 8310
             .lvl = 3,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8303
+#line 8313
     [DIFFICULTY_NORMAL][TRAINER_JOSE] =
     {
-#line 8304
+#line 8314
         .trainerName = _("Jose"),
-#line 8305
+#line 8315
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
-#line 8306
+#line 8316
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
         .encounterMusic_gender =
-#line 8308
+#line 8318
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8309
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8310
+#line 8319
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8320
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8312
+#line 8322
             .species = SPECIES_WURMPLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8314
+#line 8324
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 8313
+#line 8323
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8316
+#line 8326
             .species = SPECIES_NINCADA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8318
+#line 8328
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 8317
+#line 8327
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8320
+#line 8330
     [DIFFICULTY_NORMAL][TRAINER_DOUG] =
     {
-#line 8321
+#line 8331
         .trainerName = _("Doug"),
-#line 8322
+#line 8332
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
-#line 8323
+#line 8333
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
         .encounterMusic_gender =
-#line 8325
+#line 8335
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8326
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8327
+#line 8336
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8337
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8329
+#line 8339
             .species = SPECIES_NINCADA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8331
+#line 8341
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8330
+#line 8340
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8333
+#line 8343
             .species = SPECIES_NINJASK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8335
+#line 8345
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8334
+#line 8344
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8337
+#line 8347
     [DIFFICULTY_NORMAL][TRAINER_GREG] =
     {
-#line 8338
+#line 8348
         .trainerName = _("Greg"),
-#line 8339
+#line 8349
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
-#line 8340
+#line 8350
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
         .encounterMusic_gender =
-#line 8342
+#line 8352
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8343
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8344
+#line 8353
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8354
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8346
+#line 8356
             .species = SPECIES_VOLBEAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8348
+#line 8358
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8347
+#line 8357
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8350
+#line 8360
             .species = SPECIES_ILLUMISE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8352
+#line 8362
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8351
+#line 8361
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8354
+#line 8364
     [DIFFICULTY_NORMAL][TRAINER_KENT] =
     {
-#line 8355
+#line 8365
         .trainerName = _("Kent"),
-#line 8356
+#line 8366
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
-#line 8357
+#line 8367
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
         .encounterMusic_gender =
-#line 8359
+#line 8369
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8360
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8361
+#line 8370
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8371
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8363
+#line 8373
             .species = SPECIES_NINJASK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8365
+#line 8375
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8364
+#line 8374
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8367
+#line 8377
     [DIFFICULTY_NORMAL][TRAINER_JAMES_1] =
     {
-#line 8368
+#line 8378
         .trainerName = _("James"),
-#line 8369
+#line 8379
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
-#line 8370
+#line 8380
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
         .encounterMusic_gender =
-#line 8372
+#line 8382
             TRAINER_ENCOUNTER_MUSIC_MALE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8374
+#line 8384
             .species = SPECIES_NINCADA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8376
+#line 8386
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8375
+#line 8385
             .lvl = 6,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8378
+#line 8388
             .species = SPECIES_NINCADA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8380
+#line 8390
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8379
+#line 8389
             .lvl = 6,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8382
+#line 8392
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_114_MUDKIP] =
     {
-#line 8383
+#line 8393
         .trainerName = _("May"),
-#line 8384
+#line 8394
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 8385
+#line 8395
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 8386
+#line 8396
 F_TRAINER_FEMALE | 
-#line 8387
+#line 8397
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 8388
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8389
+#line 8398
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8399
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 8390
+#line 8400
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8392
+#line 8402
             .species = SPECIES_NINJASK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8394
+#line 8404
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 8393
+#line 8403
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8396
+#line 8406
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_ROUTE_114_TREECKO] =
     {
-#line 8397
+#line 8407
         .trainerName = _("Brendan"),
-#line 8398
+#line 8408
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 8399
+#line 8409
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 8401
+#line 8411
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8402
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8403
+#line 8412
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8413
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 8404
+#line 8414
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8406
+#line 8416
             .species = SPECIES_DUSTOX,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8408
+#line 8418
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 8407
+#line 8417
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8410
+#line 8420
             .species = SPECIES_NINJASK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8412
+#line 8422
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
-#line 8411
+#line 8421
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8414
+#line 8424
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_ROUTE_114_TORCHIC] =
     {
-#line 8415
+#line 8425
         .trainerName = _("Brendan"),
-#line 8416
+#line 8426
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 8417
+#line 8427
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 8419
+#line 8429
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8420
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8421
+#line 8430
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8431
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 8422
+#line 8432
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8424
+#line 8434
             .species = SPECIES_SURSKIT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8426
+#line 8436
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 8425
+#line 8435
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8428
+#line 8438
             .species = SPECIES_DUSTOX,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8430
+#line 8440
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 8429
+#line 8439
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8432
+#line 8442
             .species = SPECIES_NINJASK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8434
+#line 8444
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 8433
+#line 8443
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8436
+#line 8446
     [DIFFICULTY_NORMAL][TRAINER_BRICE] =
     {
-#line 8437
+#line 8447
         .trainerName = _("Brice"),
-#line 8438
+#line 8448
         .trainerClass = TRAINER_CLASS_HIKER,
-#line 8439
+#line 8449
         .trainerPic = TRAINER_PIC_HIKER,
         .encounterMusic_gender =
-#line 8441
+#line 8451
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 8442
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8443
+#line 8452
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8453
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8445
+#line 8455
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8447
+#line 8457
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8446
+#line 8456
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8449
+#line 8459
             .species = SPECIES_MACHOP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8451
+#line 8461
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8450
+#line 8460
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8453
+#line 8463
     [DIFFICULTY_NORMAL][TRAINER_TRENT_1] =
     {
-#line 8454
+#line 8464
         .trainerName = _("Trent"),
-#line 8455
+#line 8465
         .trainerClass = TRAINER_CLASS_HIKER,
-#line 8456
+#line 8466
         .trainerPic = TRAINER_PIC_HIKER,
         .encounterMusic_gender =
-#line 8458
+#line 8468
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 8459
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8460
+#line 8469
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8470
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8462
+#line 8472
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8464
+#line 8474
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8463
+#line 8473
             .lvl = 16,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8466
+#line 8476
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8468
+#line 8478
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8467
+#line 8477
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8470
+#line 8480
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8472
+#line 8482
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8471
+#line 8481
             .lvl = 16,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8474
+#line 8484
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_ROUTE_114_3] =
     {
-#line 8475
+#line 8485
         .trainerName = _("Grunt"),
-#line 8476
+#line 8486
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 8477
+#line 8487
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 8478
+#line 8488
 F_TRAINER_FEMALE | 
-#line 8479
+#line 8489
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 8480
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8481
+#line 8490
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8491
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8483
+#line 8493
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8485
+#line 8495
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8484
+#line 8494
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8487
+#line 8497
             .species = SPECIES_MACHOP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8489
+#line 8499
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8488
+#line 8498
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8491
+#line 8501
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_ROUTE_114_2] =
     {
-#line 8492
+#line 8502
         .trainerName = _("Grunt"),
-#line 8493
+#line 8503
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 8494
+#line 8504
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 8496
+#line 8506
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 8497
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8498
+#line 8507
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8508
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8500
+#line 8510
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8502
+#line 8512
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8501
+#line 8511
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8504
+#line 8514
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8506
+#line 8516
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8505
+#line 8515
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8508
+#line 8518
     [DIFFICULTY_NORMAL][TRAINER_ALAN] =
     {
-#line 8509
+#line 8519
         .trainerName = _("Alan"),
-#line 8510
+#line 8520
         .trainerClass = TRAINER_CLASS_HIKER,
-#line 8511
+#line 8521
         .trainerPic = TRAINER_PIC_HIKER,
         .encounterMusic_gender =
-#line 8513
+#line 8523
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 8514
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8515
+#line 8524
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8525
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8517
+#line 8527
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8519
+#line 8529
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8518
+#line 8528
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8521
+#line 8531
             .species = SPECIES_NOSEPASS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8523
+#line 8533
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8522
+#line 8532
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8525
+#line 8535
             .species = SPECIES_GRAVELER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8527
+#line 8537
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8526
+#line 8536
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8529
+#line 8539
     [DIFFICULTY_NORMAL][TRAINER_CLARK] =
     {
-#line 8530
+#line 8540
         .trainerName = _("Clark"),
-#line 8531
+#line 8541
         .trainerClass = TRAINER_CLASS_HIKER,
-#line 8532
+#line 8542
         .trainerPic = TRAINER_PIC_HIKER,
         .encounterMusic_gender =
-#line 8534
+#line 8544
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 8535
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8536
+#line 8545
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8546
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8538
+#line 8548
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8540
+#line 8550
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8539
+#line 8549
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8542
+#line 8552
     [DIFFICULTY_NORMAL][TRAINER_ERIC] =
     {
-#line 8543
+#line 8553
         .trainerName = _("Eric"),
-#line 8544
+#line 8554
         .trainerClass = TRAINER_CLASS_HIKER,
-#line 8545
+#line 8555
         .trainerPic = TRAINER_PIC_HIKER,
         .encounterMusic_gender =
-#line 8547
+#line 8557
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 8548
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8549
+#line 8558
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8559
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8551
+#line 8561
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8553
+#line 8563
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8552
+#line 8562
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8555
+#line 8565
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8557
+#line 8567
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8556
+#line 8566
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8559
+#line 8569
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_ROUTE_114_MUDKIP] =
     {
-#line 8560
+#line 8570
         .trainerName = _("Brendan"),
-#line 8561
+#line 8571
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 8562
+#line 8572
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 8564
+#line 8574
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8565
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8566
+#line 8575
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8576
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 8567
+#line 8577
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8569
+#line 8579
             .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8571
+#line 8581
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8570
+#line 8580
             .lvl = 10,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8572
+#line 8582
                 MOVE_GUST,
                 MOVE_GROWL,
             },
             },
             {
-#line 8575
+#line 8585
             .species = SPECIES_POOCHYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8577
+#line 8587
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8576
+#line 8586
             .lvl = 10,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8578
+#line 8588
                 MOVE_BITE,
                 MOVE_SCARY_FACE,
             },
             },
         },
     },
-#line 8581
+#line 8591
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_114_TORCHIC] =
     {
-#line 8582
+#line 8592
         .trainerName = _("May"),
-#line 8583
+#line 8593
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 8584
+#line 8594
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 8585
+#line 8595
 F_TRAINER_FEMALE | 
-#line 8586
+#line 8596
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 8587
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8588
+#line 8597
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8598
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 8589
+#line 8599
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8591
-            .species = SPECIES_GEODUDE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8593
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 8592
-            .lvl = 24,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 8595
-            .species = SPECIES_GEODUDE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8597
-            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 8596
-            .lvl = 24,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 8599
-            .species = SPECIES_GEODUDE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
 #line 8601
+            .species = SPECIES_GEODUDE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 8603
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 8600
+#line 8602
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8603
+#line 8605
+            .species = SPECIES_GEODUDE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 8607
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 8606
+            .lvl = 24,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 8609
+            .species = SPECIES_GEODUDE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 8611
+            .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
+#line 8610
+            .lvl = 24,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 8613
             .species = SPECIES_GRAVELER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8605
+#line 8615
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 8604
+#line 8614
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8607
+#line 8617
     [DIFFICULTY_NORMAL][TRAINER_PYRE_MAGMAGRUNT4] =
     {
-#line 8608
+#line 8618
         .trainerName = _("Grunt"),
-#line 8609
+#line 8619
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 8610
+#line 8620
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 8612
+#line 8622
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 8613
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8614
+#line 8623
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8624
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8616
+#line 8626
             .species = SPECIES_DELCATTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8618
+#line 8628
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8617
+#line 8627
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8620
+#line 8630
             .species = SPECIES_MANECTRIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8622
+#line 8632
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8621
+#line 8631
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8624
+#line 8634
     [DIFFICULTY_NORMAL][TRAINER_LEA_AND_JED] =
     {
-#line 8625
+#line 8635
         .trainerName = _("Lea & Jed"),
-#line 8626
+#line 8636
         .trainerClass = TRAINER_CLASS_YOUNG_COUPLE,
-#line 8627
+#line 8637
         .trainerPic = TRAINER_PIC_YOUNG_COUPLE,
         .encounterMusic_gender =
-#line 8629
+#line 8639
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 8630
+#line 8640
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 8631
+#line 8641
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8633
+#line 8643
             .species = SPECIES_LUVDISC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8635
+#line 8645
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8634
+#line 8644
             .lvl = 45,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8637
+#line 8647
             .species = SPECIES_LUVDISC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8639
+#line 8649
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8638
+#line 8648
             .lvl = 45,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8641
+#line 8651
     [DIFFICULTY_NORMAL][TRAINER_KIRA_AND_DAN_1] =
     {
-#line 8642
+#line 8652
         .trainerName = _("Kira & Dan"),
-#line 8643
+#line 8653
         .trainerClass = TRAINER_CLASS_YOUNG_COUPLE,
-#line 8644
+#line 8654
         .trainerPic = TRAINER_PIC_YOUNG_COUPLE,
         .encounterMusic_gender =
-#line 8646
+#line 8656
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 8647
+#line 8657
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 8648
+#line 8658
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8650
+#line 8660
             .species = SPECIES_VOLBEAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8652
+#line 8662
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8651
+#line 8661
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8654
+#line 8664
             .species = SPECIES_ILLUMISE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8656
+#line 8666
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8655
+#line 8665
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8658
+#line 8668
     [DIFFICULTY_NORMAL][TRAINER_JOHANNA] =
     {
-#line 8659
+#line 8669
         .trainerName = _("Johanna"),
-#line 8660
+#line 8670
         .trainerClass = TRAINER_CLASS_BEAUTY,
-#line 8661
+#line 8671
         .trainerPic = TRAINER_PIC_BEAUTY,
         .encounterMusic_gender =
-#line 8662
+#line 8672
 F_TRAINER_FEMALE | 
-#line 8663
+#line 8673
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 8664
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8665
+#line 8674
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8675
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8667
+#line 8677
             .species = SPECIES_GOLDEEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8669
+#line 8679
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8668
+#line 8678
             .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8671
+#line 8681
     [DIFFICULTY_NORMAL][TRAINER_GERALD] =
     {
-#line 8672
+#line 8682
         .trainerName = _("Gerald"),
-#line 8673
+#line 8683
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 8674
+#line 8684
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 8676
+#line 8686
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 8677
+#line 8687
         .items = { ITEM_HYPER_POTION },
-#line 8678
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8679
+#line 8688
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8689
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8681
+#line 8691
             .species = SPECIES_KECLEON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8683
+#line 8693
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 8682
+#line 8692
             .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8684
+#line 8694
                 MOVE_FLAMETHROWER,
                 MOVE_FURY_SWIPES,
                 MOVE_FEINT_ATTACK,
@@ -21914,39 +21947,39 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 8689
+#line 8699
     [DIFFICULTY_NORMAL][TRAINER_VIVIAN] =
     {
-#line 8690
+#line 8700
         .trainerName = _("Vivian"),
-#line 8691
+#line 8701
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
-#line 8692
+#line 8702
         .trainerPic = TRAINER_PIC_BATTLE_GIRL,
         .encounterMusic_gender =
-#line 8693
+#line 8703
 F_TRAINER_FEMALE | 
-#line 8694
+#line 8704
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 8695
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8696
+#line 8705
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8706
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8698
+#line 8708
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8700
+#line 8710
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 8699
+#line 8709
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8701
+#line 8711
                 MOVE_BIDE,
                 MOVE_DETECT,
                 MOVE_CONFUSION,
@@ -21954,17 +21987,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8706
+#line 8716
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8708
+#line 8718
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 8707
+#line 8717
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8709
+#line 8719
                 MOVE_THUNDER_PUNCH,
                 MOVE_DETECT,
                 MOVE_CONFUSION,
@@ -21973,39 +22006,39 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 8714
+#line 8724
     [DIFFICULTY_NORMAL][TRAINER_DANIELLE] =
     {
-#line 8715
+#line 8725
         .trainerName = _("Danielle"),
-#line 8716
+#line 8726
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
-#line 8717
+#line 8727
         .trainerPic = TRAINER_PIC_BATTLE_GIRL,
         .encounterMusic_gender =
-#line 8718
+#line 8728
 F_TRAINER_FEMALE | 
-#line 8719
+#line 8729
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 8720
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8721
+#line 8730
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8731
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8723
+#line 8733
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8725
+#line 8735
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 8724
+#line 8734
             .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8726
+#line 8736
                 MOVE_BIDE,
                 MOVE_DETECT,
                 MOVE_CONFUSION,
@@ -22014,37 +22047,37 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 8731
+#line 8741
     [DIFFICULTY_NORMAL][TRAINER_HIDEO] =
     {
-#line 8732
+#line 8742
         .trainerName = _("Hideo"),
-#line 8733
+#line 8743
         .trainerClass = TRAINER_CLASS_NINJA_BOY,
-#line 8734
+#line 8744
         .trainerPic = TRAINER_PIC_NINJA_BOY,
         .encounterMusic_gender =
-#line 8736
+#line 8746
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 8737
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8738
+#line 8747
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8748
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8740
+#line 8750
             .species = SPECIES_KOFFING,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8742
+#line 8752
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8741
+#line 8751
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8743
+#line 8753
                 MOVE_TACKLE,
                 MOVE_SELF_DESTRUCT,
                 MOVE_SLUDGE,
@@ -22052,17 +22085,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8748
+#line 8758
             .species = SPECIES_KOFFING,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8750
+#line 8760
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8749
+#line 8759
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8751
+#line 8761
                 MOVE_TACKLE,
                 MOVE_POISON_GAS,
                 MOVE_SLUDGE,
@@ -22071,37 +22104,37 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 8756
+#line 8766
     [DIFFICULTY_NORMAL][TRAINER_KEIGO] =
     {
-#line 8757
+#line 8767
         .trainerName = _("Keigo"),
-#line 8758
+#line 8768
         .trainerClass = TRAINER_CLASS_NINJA_BOY,
-#line 8759
+#line 8769
         .trainerPic = TRAINER_PIC_NINJA_BOY,
         .encounterMusic_gender =
-#line 8761
+#line 8771
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 8762
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8763
+#line 8772
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8773
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8765
+#line 8775
             .species = SPECIES_KOFFING,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8767
+#line 8777
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8766
+#line 8776
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8768
+#line 8778
                 MOVE_POISON_GAS,
                 MOVE_SELF_DESTRUCT,
                 MOVE_SLUDGE,
@@ -22109,17 +22142,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8773
+#line 8783
             .species = SPECIES_NINJASK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8775
+#line 8785
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8774
+#line 8784
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8776
+#line 8786
                 MOVE_SAND_ATTACK,
                 MOVE_DOUBLE_TEAM,
                 MOVE_FURY_CUTTER,
@@ -22128,37 +22161,37 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 8781
+#line 8791
     [DIFFICULTY_NORMAL][TRAINER_RILEY] =
     {
-#line 8782
+#line 8792
         .trainerName = _("Riley"),
-#line 8783
+#line 8793
         .trainerClass = TRAINER_CLASS_NINJA_BOY,
-#line 8784
+#line 8794
         .trainerPic = TRAINER_PIC_NINJA_BOY,
         .encounterMusic_gender =
-#line 8786
+#line 8796
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 8787
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8788
+#line 8797
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8798
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8790
+#line 8800
             .species = SPECIES_NINCADA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8792
+#line 8802
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8791
+#line 8801
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8793
+#line 8803
                 MOVE_LEECH_LIFE,
                 MOVE_FURY_SWIPES,
                 MOVE_MIND_READER,
@@ -22166,17 +22199,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8798
+#line 8808
             .species = SPECIES_KOFFING,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8800
+#line 8810
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 8799
+#line 8809
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8801
+#line 8811
                 MOVE_TACKLE,
                 MOVE_SELF_DESTRUCT,
                 MOVE_SLUDGE,
@@ -22185,170 +22218,170 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 8806
+#line 8816
     [DIFFICULTY_NORMAL][TRAINER_FLINT] =
     {
-#line 8807
+#line 8817
         .trainerName = _("Flint"),
-#line 8808
+#line 8818
         .trainerClass = TRAINER_CLASS_CAMPER,
-#line 8809
+#line 8819
         .trainerPic = TRAINER_PIC_CAMPER,
         .encounterMusic_gender =
-#line 8811
+#line 8821
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8812
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8813
+#line 8822
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8823
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8815
+#line 8825
             .species = SPECIES_SWELLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8817
+#line 8827
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8816
+#line 8826
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8819
+#line 8829
             .species = SPECIES_XATU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8821
+#line 8831
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8820
+#line 8830
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8823
+#line 8833
     [DIFFICULTY_NORMAL][TRAINER_ASHLEY] =
     {
-#line 8824
+#line 8834
         .trainerName = _("Ashley"),
-#line 8825
+#line 8835
         .trainerClass = TRAINER_CLASS_PICNICKER,
-#line 8826
+#line 8836
         .trainerPic = TRAINER_PIC_PICNICKER,
         .encounterMusic_gender =
-#line 8827
+#line 8837
 F_TRAINER_FEMALE | 
-#line 8828
+#line 8838
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 8829
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8830
+#line 8839
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8840
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8832
-            .species = SPECIES_SWABLU,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8834
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 8833
-            .lvl = 27,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 8836
-            .species = SPECIES_SWABLU,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8838
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 8837
-            .lvl = 27,
-            .nature = NATURE_HARDY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            },
-            {
-#line 8840
-            .species = SPECIES_SWABLU,
-            .gender = TRAINER_MON_RANDOM_GENDER,
 #line 8842
+            .species = SPECIES_SWABLU,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 8844
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 8841
+#line 8843
+            .lvl = 27,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 8846
+            .species = SPECIES_SWABLU,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 8848
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 8847
+            .lvl = 27,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 8850
+            .species = SPECIES_SWABLU,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 8852
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 8851
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8844
+#line 8854
     [DIFFICULTY_NORMAL][TRAINER_WALLY_MAUVILLE] =
     {
-#line 8845
+#line 8855
         .trainerName = _("Wally"),
-#line 8846
+#line 8856
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 8847
+#line 8857
         .trainerPic = TRAINER_PIC_WALLY,
         .encounterMusic_gender =
-#line 8850
+#line 8860
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8851
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8852
+#line 8861
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8862
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 8848
+#line 8858
         .mugshotColor = MUGSHOT_COLOR_WHITE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8854
+#line 8864
             .species = SPECIES_RALTS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8856
+#line 8866
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 8855
+#line 8865
             .lvl = 16,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8858
+#line 8868
     [DIFFICULTY_NORMAL][TRAINER_WALLY_ROUTE_114] =
     {
-#line 8859
+#line 8869
         .trainerName = _("Wally"),
-#line 8860
+#line 8870
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 8861
+#line 8871
         .trainerPic = TRAINER_PIC_WALLY,
         .encounterMusic_gender =
-#line 8863
+#line 8873
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8864
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8865
+#line 8874
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8875
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8867
+#line 8877
             .species = SPECIES_ALTARIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8869
+#line 8879
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8868
+#line 8878
             .lvl = 47,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8870
+#line 8880
                 MOVE_AERIAL_ACE,
                 MOVE_SAFEGUARD,
                 MOVE_DRAGON_BREATH,
@@ -22356,17 +22389,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8875
+#line 8885
             .species = SPECIES_DELCATTY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8877
+#line 8887
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8876
+#line 8886
             .lvl = 46,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8878
+#line 8888
                 MOVE_SING,
                 MOVE_ASSIST,
                 MOVE_CHARM,
@@ -22374,17 +22407,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8883
+#line 8893
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8885
+#line 8895
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8884
+#line 8894
             .lvl = 47,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8886
+#line 8896
                 MOVE_MAGICAL_LEAF,
                 MOVE_LEECH_SEED,
                 MOVE_GIGA_DRAIN,
@@ -22392,17 +22425,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8891
+#line 8901
             .species = SPECIES_MAGNETON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8893
+#line 8903
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8892
+#line 8902
             .lvl = 44,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8894
+#line 8904
                 MOVE_SUPERSONIC,
                 MOVE_THUNDERBOLT,
                 MOVE_TRI_ATTACK,
@@ -22410,17 +22443,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 8899
+#line 8909
             .species = SPECIES_GARDEVOIR,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8901
+#line 8911
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
-#line 8900
+#line 8910
             .lvl = 48,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 8902
+#line 8912
                 MOVE_DOUBLE_TEAM,
                 MOVE_CALM_MIND,
                 MOVE_PSYCHIC,
@@ -22429,937 +22462,937 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 8907
+#line 8917
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_LILYCOVE_MUDKIP] =
     {
-#line 8908
+#line 8918
         .trainerName = _("Brendan"),
-#line 8909
+#line 8919
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 8910
+#line 8920
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 8912
+#line 8922
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8913
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8914
+#line 8923
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8924
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 8915
+#line 8925
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8917
+#line 8927
             .species = SPECIES_TROPIUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8919
+#line 8929
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8918
+#line 8928
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8921
+#line 8931
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8923
+#line 8933
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8922
+#line 8932
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8925
+#line 8935
             .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8927
+#line 8937
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8926
+#line 8936
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8929
+#line 8939
             .species = SPECIES_GROVYLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8931
+#line 8941
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 8930
+#line 8940
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8933
+#line 8943
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_LILYCOVE_TREECKO] =
     {
-#line 8934
+#line 8944
         .trainerName = _("Brendan"),
-#line 8935
+#line 8945
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 8936
+#line 8946
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 8938
+#line 8948
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8939
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8940
+#line 8949
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8950
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 8941
+#line 8951
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8943
+#line 8953
             .species = SPECIES_TROPIUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8945
+#line 8955
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8944
+#line 8954
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8947
+#line 8957
             .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8949
+#line 8959
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8948
+#line 8958
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8951
+#line 8961
             .species = SPECIES_LUDICOLO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8953
+#line 8963
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8952
+#line 8962
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8955
+#line 8965
             .species = SPECIES_COMBUSKEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8957
+#line 8967
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 8956
+#line 8966
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8959
+#line 8969
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_LILYCOVE_TORCHIC] =
     {
-#line 8960
+#line 8970
         .trainerName = _("Brendan"),
-#line 8961
+#line 8971
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 8962
+#line 8972
         .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
-#line 8964
+#line 8974
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 8965
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8966
+#line 8975
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 8976
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 8967
+#line 8977
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8969
+#line 8979
             .species = SPECIES_TROPIUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8971
+#line 8981
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8970
+#line 8980
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8973
+#line 8983
             .species = SPECIES_LUDICOLO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8975
+#line 8985
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8974
+#line 8984
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8977
+#line 8987
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8979
+#line 8989
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8978
+#line 8988
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8981
+#line 8991
             .species = SPECIES_MARSHTOMP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8983
+#line 8993
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 8982
+#line 8992
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 8985
+#line 8995
     [DIFFICULTY_NORMAL][TRAINER_MAY_LILYCOVE_MUDKIP] =
     {
-#line 8986
+#line 8996
         .trainerName = _("May"),
-#line 8987
+#line 8997
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 8988
+#line 8998
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 8989
+#line 8999
 F_TRAINER_FEMALE | 
-#line 8990
+#line 9000
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 8991
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 8992
+#line 9001
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9002
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 8993
+#line 9003
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 8995
+#line 9005
             .species = SPECIES_TROPIUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 8997
+#line 9007
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 8996
+#line 9006
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 8999
+#line 9009
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9001
+#line 9011
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 9000
+#line 9010
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9003
+#line 9013
             .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9005
+#line 9015
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 9004
+#line 9014
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9007
+#line 9017
             .species = SPECIES_GROVYLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9009
+#line 9019
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 9008
+#line 9018
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9011
+#line 9021
     [DIFFICULTY_NORMAL][TRAINER_MAY_LILYCOVE_TREECKO] =
     {
-#line 9012
+#line 9022
         .trainerName = _("May"),
-#line 9013
+#line 9023
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 9014
+#line 9024
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 9015
+#line 9025
 F_TRAINER_FEMALE | 
-#line 9016
+#line 9026
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 9017
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9018
+#line 9027
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9028
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 9019
+#line 9029
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9021
+#line 9031
             .species = SPECIES_TROPIUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9023
+#line 9033
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 9022
+#line 9032
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9025
+#line 9035
             .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9027
+#line 9037
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 9026
+#line 9036
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9029
+#line 9039
             .species = SPECIES_LUDICOLO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9031
+#line 9041
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 9030
+#line 9040
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9033
+#line 9043
             .species = SPECIES_COMBUSKEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9035
+#line 9045
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 9034
+#line 9044
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9037
+#line 9047
     [DIFFICULTY_NORMAL][TRAINER_MAY_LILYCOVE_TORCHIC] =
     {
-#line 9038
+#line 9048
         .trainerName = _("May"),
-#line 9039
+#line 9049
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 9040
+#line 9050
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 9041
+#line 9051
 F_TRAINER_FEMALE | 
-#line 9042
+#line 9052
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 9043
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9044
+#line 9053
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9054
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 9045
+#line 9055
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9047
+#line 9057
             .species = SPECIES_TROPIUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9049
+#line 9059
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 9048
+#line 9058
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9051
+#line 9061
             .species = SPECIES_LUDICOLO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9053
+#line 9063
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 9052
+#line 9062
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9055
+#line 9065
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9057
+#line 9067
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 9056
+#line 9066
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9059
+#line 9069
             .species = SPECIES_MARSHTOMP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9061
+#line 9071
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 9060
+#line 9070
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9063
+#line 9073
     [DIFFICULTY_NORMAL][TRAINER_JONAH] =
     {
-#line 9064
+#line 9074
         .trainerName = _("Jonah"),
-#line 9065
+#line 9075
         .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 9066
+#line 9076
         .trainerPic = TRAINER_PIC_FISHERMAN,
         .encounterMusic_gender =
-#line 9068
+#line 9078
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 9069
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9070
+#line 9079
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9080
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9072
+#line 9082
             .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9074
+#line 9084
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9073
+#line 9083
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9076
+#line 9086
             .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9078
+#line 9088
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9077
+#line 9087
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9080
+#line 9090
             .species = SPECIES_SHARPEDO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9082
+#line 9092
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9081
+#line 9091
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9084
+#line 9094
     [DIFFICULTY_NORMAL][TRAINER_HENRY] =
     {
-#line 9085
+#line 9095
         .trainerName = _("Henry"),
-#line 9086
+#line 9096
         .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 9087
+#line 9097
         .trainerPic = TRAINER_PIC_FISHERMAN,
         .encounterMusic_gender =
-#line 9089
+#line 9099
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 9090
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9091
+#line 9100
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9101
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9093
+#line 9103
             .species = SPECIES_CARVANHA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9095
+#line 9105
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9094
+#line 9104
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9097
+#line 9107
             .species = SPECIES_TENTACRUEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9099
+#line 9109
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9098
+#line 9108
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9101
+#line 9111
     [DIFFICULTY_NORMAL][TRAINER_ROGER] =
     {
-#line 9102
+#line 9112
         .trainerName = _("Roger"),
-#line 9103
+#line 9113
         .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 9104
+#line 9114
         .trainerPic = TRAINER_PIC_FISHERMAN,
         .encounterMusic_gender =
-#line 9106
+#line 9116
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 9107
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9108
+#line 9117
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9118
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9110
+#line 9120
             .species = SPECIES_MAGIKARP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9112
+#line 9122
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9111
+#line 9121
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9114
+#line 9124
             .species = SPECIES_MAGIKARP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9116
+#line 9126
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9115
+#line 9125
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9118
+#line 9128
             .species = SPECIES_GYARADOS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9120
+#line 9130
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9119
+#line 9129
             .lvl = 35,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9122
+#line 9132
     [DIFFICULTY_NORMAL][TRAINER_ALEXA] =
     {
-#line 9123
+#line 9133
         .trainerName = _("Alexa"),
-#line 9124
+#line 9134
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 9125
+#line 9135
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 9126
+#line 9136
 F_TRAINER_FEMALE | 
-#line 9127
+#line 9137
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 9128
+#line 9138
         .items = { ITEM_FULL_RESTORE },
-#line 9129
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9130
+#line 9139
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9140
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9132
+#line 9142
             .species = SPECIES_GLOOM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9134
+#line 9144
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 9133
+#line 9143
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9136
+#line 9146
             .species = SPECIES_AZUMARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9138
+#line 9148
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 9137
+#line 9147
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9140
+#line 9150
     [DIFFICULTY_NORMAL][TRAINER_RUBEN] =
     {
-#line 9141
+#line 9151
         .trainerName = _("Ruben"),
-#line 9142
+#line 9152
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 9143
+#line 9153
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 9145
+#line 9155
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 9146
+#line 9156
         .items = { ITEM_HYPER_POTION },
-#line 9147
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9148
+#line 9157
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9158
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9150
+#line 9160
             .species = SPECIES_SHIFTRY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9152
+#line 9162
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 9151
+#line 9161
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9154
+#line 9164
             .species = SPECIES_NOSEPASS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9156
+#line 9166
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 9155
+#line 9165
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9158
+#line 9168
     [DIFFICULTY_NORMAL][TRAINER_KOJI_1] =
     {
-#line 9159
+#line 9169
         .trainerName = _("Koji"),
-#line 9160
+#line 9170
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
-#line 9161
+#line 9171
         .trainerPic = TRAINER_PIC_BLACK_BELT,
         .encounterMusic_gender =
-#line 9163
+#line 9173
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 9164
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9165
+#line 9174
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9175
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9167
+#line 9177
             .species = SPECIES_MACHOKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9169
+#line 9179
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9168
+#line 9178
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9171
+#line 9181
     [DIFFICULTY_NORMAL][TRAINER_WAYNE] =
     {
-#line 9172
+#line 9182
         .trainerName = _("Wayne"),
-#line 9173
+#line 9183
         .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 9174
+#line 9184
         .trainerPic = TRAINER_PIC_FISHERMAN,
         .encounterMusic_gender =
-#line 9176
+#line 9186
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 9177
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9178
+#line 9187
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9188
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9180
+#line 9190
             .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9182
+#line 9192
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9181
+#line 9191
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9184
+#line 9194
             .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9186
+#line 9196
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9185
+#line 9195
             .lvl = 31,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9188
+#line 9198
             .species = SPECIES_WAILMER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9190
+#line 9200
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9189
+#line 9199
             .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9192
+#line 9202
     [DIFFICULTY_NORMAL][TRAINER_AIDAN] =
     {
-#line 9193
+#line 9203
         .trainerName = _("Aidan"),
-#line 9194
+#line 9204
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 9195
+#line 9205
         .trainerPic = TRAINER_PIC_BIRD_KEEPER,
         .encounterMusic_gender =
-#line 9197
+#line 9207
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 9198
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9199
+#line 9208
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9209
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9201
+#line 9211
             .species = SPECIES_SWELLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9203
+#line 9213
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9202
+#line 9212
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9205
+#line 9215
             .species = SPECIES_SKARMORY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9207
+#line 9217
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9206
+#line 9216
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9209
+#line 9219
     [DIFFICULTY_NORMAL][TRAINER_REED] =
     {
-#line 9210
+#line 9220
         .trainerName = _("Reed"),
-#line 9211
+#line 9221
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 9212
+#line 9222
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 9214
+#line 9224
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 9215
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9216
+#line 9225
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9226
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9218
+#line 9228
             .species = SPECIES_SPHEAL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9220
+#line 9230
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9219
+#line 9229
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9222
+#line 9232
             .species = SPECIES_SHARPEDO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9224
+#line 9234
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9223
+#line 9233
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9226
+#line 9236
     [DIFFICULTY_NORMAL][TRAINER_TISHA] =
     {
-#line 9227
+#line 9237
         .trainerName = _("Tisha"),
-#line 9228
+#line 9238
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
-#line 9229
+#line 9239
         .trainerPic = TRAINER_PIC_SWIMMER_F,
         .encounterMusic_gender =
-#line 9230
+#line 9240
 F_TRAINER_FEMALE | 
-#line 9231
+#line 9241
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 9232
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9233
+#line 9242
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9243
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9235
+#line 9245
             .species = SPECIES_CHINCHOU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9237
+#line 9247
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9236
+#line 9246
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9239
+#line 9249
     [DIFFICULTY_NORMAL][TRAINER_TORI_AND_TIA] =
     {
-#line 9240
+#line 9250
         .trainerName = _("Tori & Tia"),
-#line 9241
+#line 9251
         .trainerClass = TRAINER_CLASS_TWINS,
-#line 9242
+#line 9252
         .trainerPic = TRAINER_PIC_TWINS,
         .encounterMusic_gender =
-#line 9244
+#line 9254
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 9245
-        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 9246
+#line 9255
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 9256
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9248
+#line 9258
             .species = SPECIES_SPINDA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9250
+#line 9260
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9249
+#line 9259
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9252
+#line 9262
             .species = SPECIES_SPINDA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9254
+#line 9264
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9253
+#line 9263
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9256
+#line 9266
     [DIFFICULTY_NORMAL][TRAINER_KIM_AND_IRIS] =
     {
-#line 9257
+#line 9267
         .trainerName = _("Kim & Iris"),
-#line 9258
+#line 9268
         .trainerClass = TRAINER_CLASS_SR_AND_JR,
-#line 9259
+#line 9269
         .trainerPic = TRAINER_PIC_SR_AND_JR,
         .encounterMusic_gender =
-#line 9261
+#line 9271
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 9262
-        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 9263
+#line 9272
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 9273
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9265
+#line 9275
             .species = SPECIES_SWABLU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9267
+#line 9277
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9266
+#line 9276
             .lvl = 32,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 9268
+#line 9278
                 MOVE_SING,
                 MOVE_FURY_ATTACK,
                 MOVE_SAFEGUARD,
@@ -23367,17 +23400,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 9273
+#line 9283
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9275
+#line 9285
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9274
+#line 9284
             .lvl = 35,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 9276
+#line 9286
                 MOVE_FLAMETHROWER,
                 MOVE_TAKE_DOWN,
                 MOVE_REST,
@@ -23386,37 +23419,37 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 9281
+#line 9291
     [DIFFICULTY_NORMAL][TRAINER_TYRA_AND_IVY] =
     {
-#line 9282
+#line 9292
         .trainerName = _("Tyra & Ivy"),
-#line 9283
+#line 9293
         .trainerClass = TRAINER_CLASS_SR_AND_JR,
-#line 9284
+#line 9294
         .trainerPic = TRAINER_PIC_SR_AND_JR,
         .encounterMusic_gender =
-#line 9286
+#line 9296
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 9287
-        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 9288
+#line 9297
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 9298
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9290
+#line 9300
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9292
+#line 9302
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9291
+#line 9301
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 9293
+#line 9303
                 MOVE_GROWTH,
                 MOVE_STUN_SPORE,
                 MOVE_MEGA_DRAIN,
@@ -23424,17 +23457,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 9298
+#line 9308
             .species = SPECIES_GRAVELER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9300
+#line 9310
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9299
+#line 9309
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 9301
+#line 9311
                 MOVE_DEFENSE_CURL,
                 MOVE_ROLLOUT,
                 MOVE_MUD_SPORT,
@@ -23443,37 +23476,37 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 9306
+#line 9316
     [DIFFICULTY_NORMAL][TRAINER_MEL_AND_PAUL] =
     {
-#line 9307
+#line 9317
         .trainerName = _("Mel & Paul"),
-#line 9308
+#line 9318
         .trainerClass = TRAINER_CLASS_YOUNG_COUPLE,
-#line 9309
+#line 9319
         .trainerPic = TRAINER_PIC_YOUNG_COUPLE,
         .encounterMusic_gender =
-#line 9311
+#line 9321
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 9312
+#line 9322
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 9313
+#line 9323
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9315
+#line 9325
             .species = SPECIES_DUSTOX,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9317
+#line 9327
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9316
+#line 9326
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 9318
+#line 9328
                 MOVE_GUST,
                 MOVE_PSYBEAM,
                 MOVE_TOXIC,
@@ -23481,17 +23514,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 9323
+#line 9333
             .species = SPECIES_BEAUTIFLY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9325
+#line 9335
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9324
+#line 9334
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 9326
+#line 9336
                 MOVE_GUST,
                 MOVE_MEGA_DRAIN,
                 MOVE_ATTRACT,
@@ -23500,37 +23533,37 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 9331
+#line 9341
     [DIFFICULTY_NORMAL][TRAINER_JOHN_AND_JAY_1] =
     {
-#line 9332
+#line 9342
         .trainerName = _("John & Jay"),
-#line 9333
+#line 9343
         .trainerClass = TRAINER_CLASS_OLD_COUPLE,
-#line 9334
+#line 9344
         .trainerPic = TRAINER_PIC_OLD_COUPLE,
         .encounterMusic_gender =
-#line 9336
+#line 9346
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 9337
-        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 9338
+#line 9347
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 9348
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9340
+#line 9350
             .species = SPECIES_MEDICHAM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9342
+#line 9352
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 9341
+#line 9351
             .lvl = 39,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 9343
+#line 9353
                 MOVE_PSYCHIC,
                 MOVE_FIRE_PUNCH,
                 MOVE_PSYCH_UP,
@@ -23538,17 +23571,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 9348
+#line 9358
             .species = SPECIES_HARIYAMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9350
+#line 9360
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 9349
+#line 9359
             .lvl = 39,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 9351
+#line 9361
                 MOVE_FOCUS_PUNCH,
                 MOVE_ROCK_TOMB,
                 MOVE_REST,
@@ -23557,439 +23590,439 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 9356
+#line 9366
     [DIFFICULTY_NORMAL][TRAINER_RELI_AND_IAN] =
     {
-#line 9357
+#line 9367
         .trainerName = _("Reli & Ian"),
-#line 9358
+#line 9368
         .trainerClass = TRAINER_CLASS_SIS_AND_BRO,
-#line 9359
+#line 9369
         .trainerPic = TRAINER_PIC_SIS_AND_BRO,
         .encounterMusic_gender =
-#line 9361
+#line 9371
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 9362
-        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 9363
+#line 9372
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 9373
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9365
+#line 9375
             .species = SPECIES_AZUMARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9367
+#line 9377
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9366
+#line 9376
             .lvl = 35,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9369
+#line 9379
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9371
+#line 9381
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9370
+#line 9380
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9373
+#line 9383
     [DIFFICULTY_NORMAL][TRAINER_LILA_AND_ROY_1] =
     {
-#line 9374
+#line 9384
         .trainerName = _("Lila & Roy"),
-#line 9375
+#line 9385
         .trainerClass = TRAINER_CLASS_SIS_AND_BRO,
-#line 9376
+#line 9386
         .trainerPic = TRAINER_PIC_SIS_AND_BRO,
         .encounterMusic_gender =
-#line 9378
+#line 9388
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 9379
-        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 9380
+#line 9389
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 9390
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9382
+#line 9392
             .species = SPECIES_CHINCHOU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9384
+#line 9394
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9383
+#line 9393
             .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9386
+#line 9396
             .species = SPECIES_CARVANHA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9388
+#line 9398
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9387
+#line 9397
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9390
+#line 9400
     [DIFFICULTY_NORMAL][TRAINER_LISA_AND_RAY] =
     {
-#line 9391
+#line 9401
         .trainerName = _("Lisa & Ray"),
-#line 9392
+#line 9402
         .trainerClass = TRAINER_CLASS_SIS_AND_BRO,
-#line 9393
+#line 9403
         .trainerPic = TRAINER_PIC_SIS_AND_BRO,
         .encounterMusic_gender =
-#line 9395
+#line 9405
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 9396
+#line 9406
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
-#line 9397
+#line 9407
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9399
+#line 9409
             .species = SPECIES_GOLDEEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9401
+#line 9411
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9400
+#line 9410
             .lvl = 27,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9403
+#line 9413
             .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9405
+#line 9415
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9404
+#line 9414
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9407
+#line 9417
     [DIFFICULTY_NORMAL][TRAINER_CHRIS] =
     {
-#line 9408
+#line 9418
         .trainerName = _("Chris"),
-#line 9409
+#line 9419
         .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 9410
+#line 9420
         .trainerPic = TRAINER_PIC_FISHERMAN,
         .encounterMusic_gender =
-#line 9412
+#line 9422
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 9413
+#line 9423
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9414
+#line 9424
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9416
+#line 9426
             .species = SPECIES_MAGIKARP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9418
+#line 9428
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9417
+#line 9427
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9420
+#line 9430
             .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9422
+#line 9432
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9421
+#line 9431
             .lvl = 20,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9424
+#line 9434
             .species = SPECIES_FEEBAS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9426
+#line 9436
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9425
+#line 9435
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9428
+#line 9438
             .species = SPECIES_CARVANHA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9430
+#line 9440
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9429
+#line 9439
             .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9432
+#line 9442
     [DIFFICULTY_NORMAL][TRAINER_DAWSON] =
     {
-#line 9433
+#line 9443
         .trainerName = _("Dawson"),
-#line 9434
+#line 9444
         .trainerClass = TRAINER_CLASS_RICH_BOY,
-#line 9435
+#line 9445
         .trainerPic = TRAINER_PIC_RICH_BOY,
         .encounterMusic_gender =
-#line 9437
+#line 9447
             TRAINER_ENCOUNTER_MUSIC_RICH,
-#line 9438
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9439
+#line 9448
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9449
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9441
+#line 9451
             .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9441
+#line 9451
             .heldItem = ITEM_NUGGET,
-#line 9443
+#line 9453
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9442
+#line 9452
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9445
+#line 9455
             .species = SPECIES_POOCHYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9447
+#line 9457
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9446
+#line 9456
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9449
+#line 9459
     [DIFFICULTY_NORMAL][TRAINER_SARAH] =
     {
-#line 9450
+#line 9460
         .trainerName = _("Sarah"),
-#line 9451
+#line 9461
         .trainerClass = TRAINER_CLASS_LADY,
-#line 9452
+#line 9462
         .trainerPic = TRAINER_PIC_LADY,
         .encounterMusic_gender =
-#line 9453
+#line 9463
 F_TRAINER_FEMALE | 
-#line 9454
+#line 9464
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 9455
+#line 9465
         .items = { ITEM_FULL_RESTORE },
-#line 9456
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9457
+#line 9466
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9467
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9459
+#line 9469
             .species = SPECIES_LOTAD,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9461
+#line 9471
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9460
+#line 9470
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9463
+#line 9473
             .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9463
+#line 9473
             .heldItem = ITEM_NUGGET,
-#line 9465
+#line 9475
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9464
+#line 9474
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9467
+#line 9477
     [DIFFICULTY_NORMAL][TRAINER_DARIAN] =
     {
-#line 9468
+#line 9478
         .trainerName = _("Darian"),
-#line 9469
+#line 9479
         .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 9470
+#line 9480
         .trainerPic = TRAINER_PIC_FISHERMAN,
         .encounterMusic_gender =
-#line 9472
+#line 9482
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 9473
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9474
+#line 9483
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9484
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9476
+#line 9486
             .species = SPECIES_MAGIKARP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9478
+#line 9488
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9477
+#line 9487
             .lvl = 9,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9480
+#line 9490
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_ROUTE109_1] =
     {
-#line 9481
+#line 9491
         .trainerName = _("Grunt"),
-#line 9482
+#line 9492
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
-#line 9483
+#line 9493
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
         .encounterMusic_gender =
-#line 9484
+#line 9494
 F_TRAINER_FEMALE | 
-#line 9485
+#line 9495
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 9486
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9487
+#line 9496
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9497
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9489
+#line 9499
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9491
+#line 9501
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9490
+#line 9500
             .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9493
+#line 9503
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_ROUTE109_4] =
     {
-#line 9494
+#line 9504
         .trainerName = _("Grunt"),
-#line 9495
+#line 9505
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
-#line 9496
+#line 9506
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
         .encounterMusic_gender =
-#line 9498
+#line 9508
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 9499
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9500
+#line 9509
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9510
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9502
+#line 9512
             .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9504
+#line 9514
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9503
+#line 9513
             .lvl = 12,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9506
+#line 9516
             .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9508
+#line 9518
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9507
+#line 9517
             .lvl = 12,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9510
+#line 9520
     [DIFFICULTY_NORMAL][TRAINER_KALEB] =
     {
-#line 9511
+#line 9521
         .trainerName = _("Kaleb"),
-#line 9512
+#line 9522
         .trainerClass = TRAINER_CLASS_POKEFAN,
-#line 9513
+#line 9523
         .trainerPic = TRAINER_PIC_POKEFAN_M,
         .encounterMusic_gender =
-#line 9515
+#line 9525
             TRAINER_ENCOUNTER_MUSIC_TWINS,
-#line 9516
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9517
+#line 9526
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9527
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9519
+#line 9529
             .species = SPECIES_SLOWPOKE_GALAR,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9519
+#line 9529
             .heldItem = ITEM_COVERT_CLOAK,
-#line 9523
+#line 9533
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 9520
+#line 9530
             .ability = ABILITY_OWN_TEMPO,
-#line 9521
+#line 9531
             .lvl = 29,
-#line 9522
+#line 9532
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 9523
+#line 9533
                 MOVE_PSYBEAM,
                 MOVE_ACID,
                 MOVE_YAWN,
@@ -23997,22 +24030,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 9528
+#line 9538
             .species = SPECIES_PORYGON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9528
+#line 9538
             .heldItem = ITEM_ROOM_SERVICE,
-#line 9532
+#line 9542
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 9529
+#line 9539
             .ability = ABILITY_TRACE,
-#line 9530
+#line 9540
             .lvl = 28,
-#line 9531
+#line 9541
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 9532
+#line 9542
                 MOVE_PSYBEAM,
                 MOVE_ICY_WIND,
                 MOVE_THUNDER_SHOCK,
@@ -24021,42 +24054,42 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 9537
+#line 9547
     [DIFFICULTY_NORMAL][TRAINER_JOSEPH] =
     {
-#line 9538
+#line 9548
         .trainerName = _("Joseph"),
-#line 9539
+#line 9549
         .trainerClass = TRAINER_CLASS_GUITARIST,
-#line 9540
+#line 9550
         .trainerPic = TRAINER_PIC_GUITARIST,
         .encounterMusic_gender =
-#line 9542
+#line 9552
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 9543
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9544
+#line 9553
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9554
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9546
+#line 9556
             .species = SPECIES_MURKROW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9546
+#line 9556
             .heldItem = ITEM_SHARP_BEAK,
-#line 9550
+#line 9560
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 9547
+#line 9557
             .ability = ABILITY_PRANKSTER,
-#line 9548
+#line 9558
             .lvl = 28,
-#line 9549
+#line 9559
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 9550
+#line 9560
                 MOVE_WING_ATTACK,
                 MOVE_ASSURANCE,
                 MOVE_NIGHT_SHADE,
@@ -24064,22 +24097,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 9555
+#line 9565
             .species = SPECIES_LUMINEON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9555
+#line 9565
             .heldItem = ITEM_WIDE_LENS,
-#line 9559
+#line 9569
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 9556
+#line 9566
             .ability = ABILITY_SWIFT_SWIM,
-#line 9557
+#line 9567
             .lvl = 29,
-#line 9558
+#line 9568
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 9559
+#line 9569
                 MOVE_WATERFALL,
                 MOVE_BOUNCE,
                 MOVE_U_TURN,
@@ -24088,2228 +24121,2228 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 9564
+#line 9574
     [DIFFICULTY_NORMAL][TRAINER_ALYSSA] =
     {
-#line 9565
+#line 9575
         .trainerName = _("Alyssa"),
-#line 9566
+#line 9576
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 9567
+#line 9577
         .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_F,
         .encounterMusic_gender =
-#line 9568
+#line 9578
 F_TRAINER_FEMALE | 
-#line 9569
+#line 9579
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 9570
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9571
+#line 9580
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9581
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9573
+#line 9583
             .species = SPECIES_MAGNEMITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9575
+#line 9585
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9574
+#line 9584
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9577
+#line 9587
     [DIFFICULTY_NORMAL][TRAINER_MARCOS] =
     {
-#line 9578
+#line 9588
         .trainerName = _("Marcos"),
-#line 9579
+#line 9589
         .trainerClass = TRAINER_CLASS_GUITARIST,
-#line 9580
+#line 9590
         .trainerPic = TRAINER_PIC_GUITARIST,
         .encounterMusic_gender =
-#line 9582
+#line 9592
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 9583
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9584
+#line 9593
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9594
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9586
+#line 9596
             .species = SPECIES_VOLTORB,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9588
+#line 9598
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 9587
+#line 9597
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9590
+#line 9600
     [DIFFICULTY_NORMAL][TRAINER_RHETT] =
     {
-#line 9591
+#line 9601
         .trainerName = _("Rhett"),
-#line 9592
+#line 9602
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
-#line 9593
+#line 9603
         .trainerPic = TRAINER_PIC_BLACK_BELT,
         .encounterMusic_gender =
-#line 9595
+#line 9605
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 9596
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9597
+#line 9606
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9607
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9599
+#line 9609
             .species = SPECIES_MAKUHITA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9601
+#line 9611
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 9600
+#line 9610
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9603
+#line 9613
     [DIFFICULTY_NORMAL][TRAINER_TYRON] =
     {
-#line 9604
+#line 9614
         .trainerName = _("Tyron"),
-#line 9605
+#line 9615
         .trainerClass = TRAINER_CLASS_CAMPER,
-#line 9606
+#line 9616
         .trainerPic = TRAINER_PIC_CAMPER,
         .encounterMusic_gender =
-#line 9608
+#line 9618
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 9609
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9610
+#line 9619
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9620
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9612
+#line 9622
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9614
+#line 9624
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9613
+#line 9623
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9616
+#line 9626
     [DIFFICULTY_NORMAL][TRAINER_CELINA] =
     {
-#line 9617
+#line 9627
         .trainerName = _("Celina"),
-#line 9618
+#line 9628
         .trainerClass = TRAINER_CLASS_AROMA_LADY,
-#line 9619
+#line 9629
         .trainerPic = TRAINER_PIC_AROMA_LADY,
         .encounterMusic_gender =
-#line 9620
+#line 9630
 F_TRAINER_FEMALE | 
-#line 9621
+#line 9631
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 9622
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9623
+#line 9632
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9633
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9625
+#line 9635
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9627
+#line 9637
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9626
+#line 9636
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9629
+#line 9639
     [DIFFICULTY_NORMAL][TRAINER_BIANCA] =
     {
-#line 9630
+#line 9640
         .trainerName = _("Bianca"),
-#line 9631
+#line 9641
         .trainerClass = TRAINER_CLASS_PICNICKER,
-#line 9632
+#line 9642
         .trainerPic = TRAINER_PIC_PICNICKER,
         .encounterMusic_gender =
-#line 9633
+#line 9643
 F_TRAINER_FEMALE | 
-#line 9634
+#line 9644
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 9635
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9636
+#line 9645
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9646
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9638
+#line 9648
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9640
+#line 9650
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9639
+#line 9649
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9642
+#line 9652
     [DIFFICULTY_NORMAL][TRAINER_HAYDEN] =
     {
-#line 9643
+#line 9653
         .trainerName = _("Hayden"),
-#line 9644
+#line 9654
         .trainerClass = TRAINER_CLASS_KINDLER,
-#line 9645
+#line 9655
         .trainerPic = TRAINER_PIC_KINDLER,
         .encounterMusic_gender =
-#line 9647
+#line 9657
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 9648
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9649
+#line 9658
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9659
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9651
+#line 9661
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9653
+#line 9663
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9652
+#line 9662
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9655
+#line 9665
     [DIFFICULTY_NORMAL][TRAINER_SOPHIE] =
     {
-#line 9656
+#line 9666
         .trainerName = _("Sophie"),
-#line 9657
+#line 9667
         .trainerClass = TRAINER_CLASS_PICNICKER,
-#line 9658
+#line 9668
         .trainerPic = TRAINER_PIC_PICNICKER,
         .encounterMusic_gender =
-#line 9659
+#line 9669
 F_TRAINER_FEMALE | 
-#line 9660
+#line 9670
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 9661
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9662
+#line 9671
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9672
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9664
+#line 9674
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9666
+#line 9676
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9665
+#line 9675
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9668
+#line 9678
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9670
+#line 9680
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9669
+#line 9679
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9672
+#line 9682
     [DIFFICULTY_NORMAL][TRAINER_COBY] =
     {
-#line 9673
+#line 9683
         .trainerName = _("Coby"),
-#line 9674
+#line 9684
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 9675
+#line 9685
         .trainerPic = TRAINER_PIC_BIRD_KEEPER,
         .encounterMusic_gender =
-#line 9677
+#line 9687
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 9678
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9679
+#line 9688
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9689
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9681
+#line 9691
             .species = SPECIES_SKARMORY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9683
+#line 9693
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9682
+#line 9692
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9685
+#line 9695
             .species = SPECIES_SWELLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9687
+#line 9697
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9686
+#line 9696
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9689
+#line 9699
     [DIFFICULTY_NORMAL][TRAINER_LAWRENCE] =
     {
-#line 9690
+#line 9700
         .trainerName = _("Lawrence"),
-#line 9691
+#line 9701
         .trainerClass = TRAINER_CLASS_CAMPER,
-#line 9692
+#line 9702
         .trainerPic = TRAINER_PIC_CAMPER,
         .encounterMusic_gender =
-#line 9694
+#line 9704
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 9695
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9696
+#line 9705
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9706
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9698
+#line 9708
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9700
+#line 9710
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9699
+#line 9709
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9702
+#line 9712
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9704
+#line 9714
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9703
+#line 9713
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9706
+#line 9716
     [DIFFICULTY_NORMAL][TRAINER_WYATT] =
     {
-#line 9707
+#line 9717
         .trainerName = _("Wyatt"),
-#line 9708
+#line 9718
         .trainerClass = TRAINER_CLASS_POKEMANIAC,
-#line 9709
+#line 9719
         .trainerPic = TRAINER_PIC_POKEMANIAC,
         .encounterMusic_gender =
-#line 9711
+#line 9721
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 9712
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9713
+#line 9722
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9723
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9715
+#line 9725
             .species = SPECIES_ARON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9717
+#line 9727
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9716
+#line 9726
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9719
+#line 9729
             .species = SPECIES_ARON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9721
+#line 9731
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9720
+#line 9730
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9723
+#line 9733
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_ROUTE_114_4] =
     {
-#line 9724
+#line 9734
         .trainerName = _("Grunt"),
-#line 9725
+#line 9735
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9726
+#line 9736
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 9727
+#line 9737
 F_TRAINER_FEMALE | 
-#line 9728
+#line 9738
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 9729
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9730
+#line 9739
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9740
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9732
+#line 9742
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9734
+#line 9744
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9733
+#line 9743
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9736
+#line 9746
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9738
+#line 9748
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9737
+#line 9747
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9740
+#line 9750
     [DIFFICULTY_NORMAL][TRAINER_KAI] =
     {
-#line 9741
+#line 9751
         .trainerName = _("Kai"),
-#line 9742
+#line 9752
         .trainerClass = TRAINER_CLASS_FISHERMAN,
-#line 9743
+#line 9753
         .trainerPic = TRAINER_PIC_FISHERMAN,
         .encounterMusic_gender =
-#line 9745
+#line 9755
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 9746
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9747
+#line 9756
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9757
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9749
+#line 9759
             .species = SPECIES_BARBOACH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9751
+#line 9761
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9750
+#line 9760
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9753
+#line 9763
     [DIFFICULTY_NORMAL][TRAINER_CHARLOTTE] =
     {
-#line 9754
+#line 9764
         .trainerName = _("Charlotte"),
-#line 9755
+#line 9765
         .trainerClass = TRAINER_CLASS_PICNICKER,
-#line 9756
+#line 9766
         .trainerPic = TRAINER_PIC_PICNICKER,
         .encounterMusic_gender =
-#line 9757
+#line 9767
 F_TRAINER_FEMALE | 
-#line 9758
+#line 9768
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 9759
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9760
+#line 9769
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9770
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9762
+#line 9772
             .species = SPECIES_NUZLEAF,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9764
+#line 9774
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9763
+#line 9773
             .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9766
+#line 9776
     [DIFFICULTY_NORMAL][TRAINER_DEANDRE] =
     {
-#line 9767
+#line 9777
         .trainerName = _("Deandre"),
-#line 9768
+#line 9778
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
-#line 9769
+#line 9779
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .encounterMusic_gender =
-#line 9771
+#line 9781
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 9772
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9773
+#line 9782
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9783
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9775
+#line 9785
             .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9777
+#line 9787
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9776
+#line 9786
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9779
+#line 9789
             .species = SPECIES_ARON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9781
+#line 9791
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9780
+#line 9790
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9783
+#line 9793
             .species = SPECIES_ELECTRIKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9785
+#line 9795
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9784
+#line 9794
             .lvl = 14,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9787
+#line 9797
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_1] =
     {
-#line 9788
+#line 9798
         .trainerName = _("Grunt"),
-#line 9789
+#line 9799
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9790
+#line 9800
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 9792
+#line 9802
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9793
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9794
+#line 9803
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9804
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9796
+#line 9806
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9798
+#line 9808
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9797
+#line 9807
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9800
+#line 9810
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_2] =
     {
-#line 9801
+#line 9811
         .trainerName = _("Grunt"),
-#line 9802
+#line 9812
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9803
+#line 9813
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 9805
+#line 9815
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9806
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9807
+#line 9816
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9817
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9809
+#line 9819
             .species = SPECIES_POOCHYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9811
+#line 9821
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9810
+#line 9820
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9813
+#line 9823
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_3] =
     {
-#line 9814
+#line 9824
         .trainerName = _("Grunt"),
-#line 9815
+#line 9825
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9816
+#line 9826
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 9818
+#line 9828
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9819
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9820
+#line 9829
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9830
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9822
+#line 9832
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9824
+#line 9834
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9823
+#line 9833
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9826
+#line 9836
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_4] =
     {
-#line 9827
+#line 9837
         .trainerName = _("Grunt"),
-#line 9828
+#line 9838
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9829
+#line 9839
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 9831
+#line 9841
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9832
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9833
+#line 9842
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9843
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9835
+#line 9845
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9837
+#line 9847
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9836
+#line 9846
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9839
+#line 9849
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9841
+#line 9851
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9840
+#line 9850
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9843
+#line 9853
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_5] =
     {
-#line 9844
+#line 9854
         .trainerName = _("Grunt"),
-#line 9845
+#line 9855
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9846
+#line 9856
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 9848
+#line 9858
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9849
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9850
+#line 9859
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9860
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9852
+#line 9862
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9854
+#line 9864
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9853
+#line 9863
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 9856
+#line 9866
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9858
+#line 9868
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9857
+#line 9867
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9860
+#line 9870
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_6] =
     {
-#line 9861
+#line 9871
         .trainerName = _("Grunt"),
-#line 9862
+#line 9872
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9863
+#line 9873
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 9865
+#line 9875
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9866
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9867
+#line 9876
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9877
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9869
+#line 9879
             .species = SPECIES_MIGHTYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9871
+#line 9881
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9870
+#line 9880
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9873
+#line 9883
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_7] =
     {
-#line 9874
+#line 9884
         .trainerName = _("Grunt"),
-#line 9875
+#line 9885
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9876
+#line 9886
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 9878
+#line 9888
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9879
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9880
+#line 9889
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9890
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9882
+#line 9892
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9884
+#line 9894
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9883
+#line 9893
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9886
+#line 9896
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_8] =
     {
-#line 9887
+#line 9897
         .trainerName = _("Grunt"),
-#line 9888
+#line 9898
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9889
+#line 9899
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 9891
+#line 9901
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9892
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9893
+#line 9902
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9903
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9895
+#line 9905
             .species = SPECIES_POOCHYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9897
+#line 9907
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9896
+#line 9906
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9899
+#line 9909
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_9] =
     {
-#line 9900
+#line 9910
         .trainerName = _("Grunt"),
-#line 9901
+#line 9911
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9902
+#line 9912
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 9904
+#line 9914
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9905
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9906
+#line 9915
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9916
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9908
+#line 9918
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9910
+#line 9920
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9909
+#line 9919
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9912
+#line 9922
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_10] =
     {
-#line 9913
+#line 9923
         .trainerName = _("Grunt"),
-#line 9914
+#line 9924
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9915
+#line 9925
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 9917
+#line 9927
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9918
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9919
+#line 9928
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9929
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9921
+#line 9931
             .species = SPECIES_MIGHTYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9923
+#line 9933
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9922
+#line 9932
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9925
+#line 9935
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_11] =
     {
-#line 9926
+#line 9936
         .trainerName = _("Grunt"),
-#line 9927
+#line 9937
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9928
+#line 9938
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 9930
+#line 9940
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9931
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9932
+#line 9941
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9942
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9934
+#line 9944
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9936
+#line 9946
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9935
+#line 9945
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9938
+#line 9948
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_12] =
     {
-#line 9939
+#line 9949
         .trainerName = _("Grunt"),
-#line 9940
+#line 9950
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9941
+#line 9951
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .encounterMusic_gender =
-#line 9943
+#line 9953
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9944
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9945
+#line 9954
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9955
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9947
+#line 9957
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9949
+#line 9959
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9948
+#line 9958
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9951
+#line 9961
     [DIFFICULTY_NORMAL][TRAINER_COURTNEY_MAGMA_HIDEOUT] =
     {
-#line 9952
+#line 9962
         .trainerName = _("Courtney"),
-#line 9953
+#line 9963
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
-#line 9954
+#line 9964
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN_F,
         .encounterMusic_gender =
-#line 9956
+#line 9966
 F_TRAINER_FEMALE | 
-#line 9957
+#line 9967
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9958
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9959
+#line 9968
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9969
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 9955
+#line 9965
         .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9961
+#line 9971
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9963
+#line 9973
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9962
+#line 9972
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9965
+#line 9975
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_14] =
     {
-#line 9966
+#line 9976
         .trainerName = _("Grunt"),
-#line 9967
+#line 9977
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9968
+#line 9978
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 9969
+#line 9979
 F_TRAINER_FEMALE | 
-#line 9970
+#line 9980
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9971
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9972
+#line 9981
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9982
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9974
+#line 9984
             .species = SPECIES_MIGHTYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9976
+#line 9986
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9975
+#line 9985
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9978
+#line 9988
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_15] =
     {
-#line 9979
+#line 9989
         .trainerName = _("Grunt"),
-#line 9980
+#line 9990
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9981
+#line 9991
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 9982
+#line 9992
 F_TRAINER_FEMALE | 
-#line 9983
+#line 9993
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9984
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9985
+#line 9994
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 9995
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 9987
+#line 9997
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 9989
+#line 9999
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 9988
+#line 9998
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 9991
+#line 10001
     [DIFFICULTY_NORMAL][TRAINER_GRUNT_MAGMA_HIDEOUT_16] =
     {
-#line 9992
+#line 10002
         .trainerName = _("Grunt"),
-#line 9993
+#line 10003
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-#line 9994
+#line 10004
         .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
         .encounterMusic_gender =
-#line 9995
+#line 10005
 F_TRAINER_FEMALE | 
-#line 9996
+#line 10006
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 9997
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 9998
+#line 10007
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10008
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10000
+#line 10010
             .species = SPECIES_BALTOY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10002
+#line 10012
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10001
+#line 10011
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10004
+#line 10014
     [DIFFICULTY_NORMAL][TRAINER_TABITHA_MAGMA_HIDEOUT] =
     {
-#line 10005
+#line 10015
         .trainerName = _("Tabitha"),
-#line 10006
+#line 10016
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
-#line 10007
+#line 10017
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
         .encounterMusic_gender =
-#line 10010
+#line 10020
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 10011
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10012
+#line 10021
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10022
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 10008
+#line 10018
         .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10014
+#line 10024
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10016
+#line 10026
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
-#line 10015
+#line 10025
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10018
+#line 10028
             .species = SPECIES_MIGHTYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10020
+#line 10030
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
-#line 10019
+#line 10029
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10022
+#line 10032
             .species = SPECIES_ZUBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10024
+#line 10034
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
-#line 10023
+#line 10033
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10026
+#line 10036
             .species = SPECIES_CAMERUPT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10028
+#line 10038
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
-#line 10027
+#line 10037
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10030
+#line 10040
     [DIFFICULTY_NORMAL][TRAINER_DARCY] =
     {
-#line 10031
+#line 10041
         .trainerName = _("Darcy"),
-#line 10032
+#line 10042
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 10033
+#line 10043
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 10034
+#line 10044
 F_TRAINER_FEMALE | 
-#line 10035
+#line 10045
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 10036
+#line 10046
         .items = { ITEM_HYPER_POTION },
-#line 10037
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10038
+#line 10047
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10048
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10040
+#line 10050
             .species = SPECIES_PELIPPER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10042
+#line 10052
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10041
+#line 10051
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10044
+#line 10054
             .species = SPECIES_CAMERUPT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10046
+#line 10056
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10045
+#line 10055
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10048
+#line 10058
     [DIFFICULTY_NORMAL][TRAINER_MAXIE_MOSSDEEP] =
     {
-#line 10049
+#line 10059
         .trainerName = _("Maxie"),
-#line 10050
+#line 10060
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
-#line 10051
+#line 10061
         .trainerPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
         .encounterMusic_gender =
-#line 10054
+#line 10064
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
-#line 10055
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10056
+#line 10065
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10066
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 10052
+#line 10062
         .mugshotColor = MUGSHOT_COLOR_MISTY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10058
+#line 10068
             .species = SPECIES_MIGHTYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10060
+#line 10070
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 10059
+#line 10069
             .lvl = 42,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10062
+#line 10072
             .species = SPECIES_CROBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10064
+#line 10074
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 10063
+#line 10073
             .lvl = 43,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10066
+#line 10076
             .species = SPECIES_CAMERUPT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10068
+#line 10078
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-#line 10067
+#line 10077
             .lvl = 44,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10070
+#line 10080
     [DIFFICULTY_NORMAL][TRAINER_PETE] =
     {
-#line 10071
+#line 10081
         .trainerName = _("Pete"),
-#line 10072
+#line 10082
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
-#line 10073
+#line 10083
         .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
-#line 10075
+#line 10085
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 10076
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10077
+#line 10086
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10087
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10079
+#line 10089
             .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10081
+#line 10091
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10080
+#line 10090
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10083
+#line 10093
     [DIFFICULTY_NORMAL][TRAINER_ISABELLE] =
     {
-#line 10084
+#line 10094
         .trainerName = _("Isabelle"),
-#line 10085
+#line 10095
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
-#line 10086
+#line 10096
         .trainerPic = TRAINER_PIC_SWIMMER_F,
         .encounterMusic_gender =
-#line 10087
+#line 10097
 F_TRAINER_FEMALE | 
-#line 10088
+#line 10098
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 10089
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10090
+#line 10099
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10100
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10092
+#line 10102
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10094
+#line 10104
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10093
+#line 10103
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10096
+#line 10106
     [DIFFICULTY_NORMAL][TRAINER_ANDRES_1] =
     {
-#line 10097
+#line 10107
         .trainerName = _("Andres"),
-#line 10098
+#line 10108
         .trainerClass = TRAINER_CLASS_RUIN_MANIAC,
-#line 10099
+#line 10109
         .trainerPic = TRAINER_PIC_RUIN_MANIAC,
         .encounterMusic_gender =
-#line 10101
+#line 10111
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 10102
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10103
+#line 10112
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10113
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10105
+#line 10115
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10107
+#line 10117
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 10106
+#line 10116
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10109
+#line 10119
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10111
+#line 10121
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 10110
+#line 10120
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10113
+#line 10123
     [DIFFICULTY_NORMAL][TRAINER_JOSUE] =
     {
-#line 10114
+#line 10124
         .trainerName = _("Josue"),
-#line 10115
+#line 10125
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 10116
+#line 10126
         .trainerPic = TRAINER_PIC_BIRD_KEEPER,
         .encounterMusic_gender =
-#line 10118
+#line 10128
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 10119
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10120
+#line 10129
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10130
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10122
+#line 10132
             .species = SPECIES_TAILLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10124
+#line 10134
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 10123
+#line 10133
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10126
+#line 10136
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10128
+#line 10138
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 10127
+#line 10137
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10130
+#line 10140
     [DIFFICULTY_NORMAL][TRAINER_CAMRON] =
     {
-#line 10131
+#line 10141
         .trainerName = _("Camron"),
-#line 10132
+#line 10142
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 10133
+#line 10143
         .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
         .encounterMusic_gender =
-#line 10135
+#line 10145
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-#line 10136
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10137
+#line 10146
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10147
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10139
+#line 10149
             .species = SPECIES_STARYU,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10141
+#line 10151
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10140
+#line 10150
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10143
+#line 10153
     [DIFFICULTY_NORMAL][TRAINER_CORY_1] =
     {
-#line 10144
+#line 10154
         .trainerName = _("Cory"),
-#line 10145
+#line 10155
         .trainerClass = TRAINER_CLASS_SAILOR,
-#line 10146
+#line 10156
         .trainerPic = TRAINER_PIC_SAILOR,
         .encounterMusic_gender =
-#line 10148
+#line 10158
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 10149
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10150
+#line 10159
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10160
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10152
+#line 10162
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10154
+#line 10164
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10153
+#line 10163
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10156
+#line 10166
             .species = SPECIES_MACHOP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10158
+#line 10168
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10157
+#line 10167
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10160
+#line 10170
             .species = SPECIES_TENTACOOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10162
+#line 10172
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10161
+#line 10171
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10164
+#line 10174
     [DIFFICULTY_NORMAL][TRAINER_CAROLINA] =
     {
-#line 10165
+#line 10175
         .trainerName = _("Carolina"),
-#line 10166
+#line 10176
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 10167
+#line 10177
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 10168
+#line 10178
 F_TRAINER_FEMALE | 
-#line 10169
+#line 10179
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 10170
+#line 10180
         .items = { ITEM_HYPER_POTION },
-#line 10171
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10172
+#line 10181
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10182
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10174
+#line 10184
             .species = SPECIES_MANECTRIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10176
+#line 10186
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 10175
+#line 10185
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10178
+#line 10188
             .species = SPECIES_SWELLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10180
+#line 10190
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 10179
+#line 10189
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10182
+#line 10192
             .species = SPECIES_MANECTRIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10184
+#line 10194
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 10183
+#line 10193
             .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10186
+#line 10196
     [DIFFICULTY_NORMAL][TRAINER_ELIJAH] =
     {
-#line 10187
+#line 10197
         .trainerName = _("Elijah"),
-#line 10188
+#line 10198
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 10189
+#line 10199
         .trainerPic = TRAINER_PIC_BIRD_KEEPER,
         .encounterMusic_gender =
-#line 10191
+#line 10201
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 10192
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10193
+#line 10202
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10203
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10195
+#line 10205
             .species = SPECIES_SKARMORY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10197
+#line 10207
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10196
+#line 10206
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10199
+#line 10209
             .species = SPECIES_SKARMORY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10201
+#line 10211
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10200
+#line 10210
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10203
+#line 10213
     [DIFFICULTY_NORMAL][TRAINER_CELIA] =
     {
-#line 10204
+#line 10214
         .trainerName = _("Celia"),
-#line 10205
+#line 10215
         .trainerClass = TRAINER_CLASS_PICNICKER,
-#line 10206
+#line 10216
         .trainerPic = TRAINER_PIC_PICNICKER,
         .encounterMusic_gender =
-#line 10207
+#line 10217
 F_TRAINER_FEMALE | 
-#line 10208
+#line 10218
             TRAINER_ENCOUNTER_MUSIC_GIRL,
-#line 10209
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10210
+#line 10219
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10220
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10212
+#line 10222
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10214
+#line 10224
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10213
+#line 10223
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10216
+#line 10226
             .species = SPECIES_LOMBRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10218
+#line 10228
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10217
+#line 10227
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10220
+#line 10230
     [DIFFICULTY_NORMAL][TRAINER_BRYAN] =
     {
-#line 10221
+#line 10231
         .trainerName = _("Bryan"),
-#line 10222
+#line 10232
         .trainerClass = TRAINER_CLASS_RUIN_MANIAC,
-#line 10223
+#line 10233
         .trainerPic = TRAINER_PIC_RUIN_MANIAC,
         .encounterMusic_gender =
-#line 10225
+#line 10235
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 10226
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10227
+#line 10236
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10237
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10229
+#line 10239
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10231
+#line 10241
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10230
+#line 10240
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10233
+#line 10243
             .species = SPECIES_SANDSLASH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10235
+#line 10245
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10234
+#line 10244
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10237
+#line 10247
     [DIFFICULTY_NORMAL][TRAINER_BRANDEN] =
     {
-#line 10238
+#line 10248
         .trainerName = _("Branden"),
-#line 10239
+#line 10249
         .trainerClass = TRAINER_CLASS_CAMPER,
-#line 10240
+#line 10250
         .trainerPic = TRAINER_PIC_CAMPER,
         .encounterMusic_gender =
-#line 10242
+#line 10252
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 10243
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10244
+#line 10253
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10254
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10246
+#line 10256
             .species = SPECIES_TAILLOW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10248
+#line 10258
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10247
+#line 10257
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10250
+#line 10260
             .species = SPECIES_NUZLEAF,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10252
+#line 10262
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10251
+#line 10261
             .lvl = 22,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10254
+#line 10264
     [DIFFICULTY_NORMAL][TRAINER_BRYANT] =
     {
-#line 10255
+#line 10265
         .trainerName = _("Bryant"),
-#line 10256
+#line 10266
         .trainerClass = TRAINER_CLASS_KINDLER,
-#line 10257
+#line 10267
         .trainerPic = TRAINER_PIC_KINDLER,
         .encounterMusic_gender =
-#line 10259
+#line 10269
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 10260
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10261
+#line 10270
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10271
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10263
+#line 10273
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10265
+#line 10275
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10264
+#line 10274
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10267
+#line 10277
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10269
+#line 10279
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10268
+#line 10278
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10271
+#line 10281
     [DIFFICULTY_NORMAL][TRAINER_SHAYLA] =
     {
-#line 10272
+#line 10282
         .trainerName = _("Shayla"),
-#line 10273
+#line 10283
         .trainerClass = TRAINER_CLASS_AROMA_LADY,
-#line 10274
+#line 10284
         .trainerPic = TRAINER_PIC_AROMA_LADY,
         .encounterMusic_gender =
-#line 10275
+#line 10285
 F_TRAINER_FEMALE | 
-#line 10276
+#line 10286
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 10277
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10278
+#line 10287
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10288
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10280
+#line 10290
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10282
+#line 10292
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10281
+#line 10291
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10284
+#line 10294
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10286
+#line 10296
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10285
+#line 10295
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10288
+#line 10298
     [DIFFICULTY_NORMAL][TRAINER_KYRA] =
     {
-#line 10289
+#line 10299
         .trainerName = _("Kyra"),
-#line 10290
+#line 10300
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 10291
+#line 10301
         .trainerPic = TRAINER_PIC_RUNNING_TRIATHLETE_F,
         .encounterMusic_gender =
-#line 10292
+#line 10302
 F_TRAINER_FEMALE | 
-#line 10293
+#line 10303
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 10294
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10295
+#line 10304
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10305
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10297
+#line 10307
             .species = SPECIES_DODUO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10299
+#line 10309
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10298
+#line 10308
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10301
+#line 10311
             .species = SPECIES_DODRIO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10303
+#line 10313
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10302
+#line 10312
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10305
+#line 10315
     [DIFFICULTY_NORMAL][TRAINER_JAIDEN] =
     {
-#line 10306
+#line 10316
         .trainerName = _("Jaiden"),
-#line 10307
+#line 10317
         .trainerClass = TRAINER_CLASS_NINJA_BOY,
-#line 10308
+#line 10318
         .trainerPic = TRAINER_PIC_NINJA_BOY,
         .encounterMusic_gender =
-#line 10310
+#line 10320
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 10311
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10312
+#line 10321
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10322
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10314
+#line 10324
             .species = SPECIES_NINJASK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10316
+#line 10326
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10315
+#line 10325
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10318
+#line 10328
             .species = SPECIES_GULPIN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10320
+#line 10330
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10319
+#line 10329
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10322
+#line 10332
     [DIFFICULTY_NORMAL][TRAINER_ALIX] =
     {
-#line 10323
+#line 10333
         .trainerName = _("Alix"),
-#line 10324
+#line 10334
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 10325
+#line 10335
         .trainerPic = TRAINER_PIC_PSYCHIC_F,
         .encounterMusic_gender =
-#line 10326
+#line 10336
 F_TRAINER_FEMALE | 
-#line 10327
+#line 10337
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 10328
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10329
+#line 10338
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10339
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10331
+#line 10341
             .species = SPECIES_KADABRA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10333
+#line 10343
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10332
+#line 10342
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10335
+#line 10345
             .species = SPECIES_KIRLIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10337
+#line 10347
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10336
+#line 10346
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10339
+#line 10349
     [DIFFICULTY_NORMAL][TRAINER_HELENE] =
     {
-#line 10340
+#line 10350
         .trainerName = _("Helene"),
-#line 10341
+#line 10351
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
-#line 10342
+#line 10352
         .trainerPic = TRAINER_PIC_BATTLE_GIRL,
         .encounterMusic_gender =
-#line 10343
+#line 10353
 F_TRAINER_FEMALE | 
-#line 10344
+#line 10354
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 10345
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10346
+#line 10355
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10356
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10348
+#line 10358
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10350
+#line 10360
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10349
+#line 10359
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10352
+#line 10362
             .species = SPECIES_MAKUHITA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10354
+#line 10364
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10353
+#line 10363
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10356
+#line 10366
     [DIFFICULTY_NORMAL][TRAINER_MARLENE] =
     {
-#line 10357
+#line 10367
         .trainerName = _("Marlene"),
-#line 10358
+#line 10368
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 10359
+#line 10369
         .trainerPic = TRAINER_PIC_PSYCHIC_F,
         .encounterMusic_gender =
-#line 10360
+#line 10370
 F_TRAINER_FEMALE | 
-#line 10361
+#line 10371
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 10362
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10363
+#line 10372
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10373
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10365
+#line 10375
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10367
+#line 10377
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10366
+#line 10376
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10369
+#line 10379
             .species = SPECIES_SPOINK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10371
+#line 10381
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10370
+#line 10380
             .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10373
+#line 10383
     [DIFFICULTY_NORMAL][TRAINER_DEVAN] =
     {
-#line 10374
+#line 10384
         .trainerName = _("Devan"),
-#line 10375
+#line 10385
         .trainerClass = TRAINER_CLASS_HIKER,
-#line 10376
+#line 10386
         .trainerPic = TRAINER_PIC_HIKER,
         .encounterMusic_gender =
-#line 10378
+#line 10388
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 10379
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10380
+#line 10389
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10390
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10382
+#line 10392
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10384
+#line 10394
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10383
+#line 10393
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10386
+#line 10396
             .species = SPECIES_GEODUDE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10388
+#line 10398
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10387
+#line 10397
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10390
+#line 10400
     [DIFFICULTY_NORMAL][TRAINER_JOHNSON] =
     {
-#line 10391
+#line 10401
         .trainerName = _("Johnson"),
-#line 10392
+#line 10402
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
-#line 10393
+#line 10403
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .encounterMusic_gender =
-#line 10395
+#line 10405
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 10396
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10397
+#line 10406
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10407
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10399
+#line 10409
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10401
+#line 10411
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10400
+#line 10410
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10403
+#line 10413
             .species = SPECIES_LOTAD,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10405
+#line 10415
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10404
+#line 10414
             .lvl = 8,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10407
+#line 10417
     [DIFFICULTY_NORMAL][TRAINER_MELINA] =
     {
-#line 10408
+#line 10418
         .trainerName = _("Melina"),
-#line 10409
+#line 10419
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
-#line 10410
+#line 10420
         .trainerPic = TRAINER_PIC_RUNNING_TRIATHLETE_F,
         .encounterMusic_gender =
-#line 10411
+#line 10421
 F_TRAINER_FEMALE | 
-#line 10412
+#line 10422
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 10413
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10414
+#line 10423
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10424
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10416
+#line 10426
             .species = SPECIES_DODUO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10418
+#line 10428
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10417
+#line 10427
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10420
+#line 10430
     [DIFFICULTY_NORMAL][TRAINER_BRANDI] =
     {
-#line 10421
+#line 10431
         .trainerName = _("Brandi"),
-#line 10422
+#line 10432
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 10423
+#line 10433
         .trainerPic = TRAINER_PIC_PSYCHIC_F,
         .encounterMusic_gender =
-#line 10424
+#line 10434
 F_TRAINER_FEMALE | 
-#line 10425
+#line 10435
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 10426
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10427
+#line 10436
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10437
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10429
+#line 10439
             .species = SPECIES_TATSUGIRI_DROOPY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10429
+#line 10439
             .heldItem = ITEM_AIR_BALLOON,
-#line 10433
+#line 10443
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10430
+#line 10440
             .ability = ABILITY_STORM_DRAIN,
-#line 10431
+#line 10441
             .lvl = 31,
-#line 10432
+#line 10442
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10433
+#line 10443
                 MOVE_WATER_PULSE,
                 MOVE_DRAGON_BREATH,
                 MOVE_ICY_WIND,
@@ -26317,22 +26350,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 10438
+#line 10448
             .species = SPECIES_EELEKTRIK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10438
+#line 10448
             .heldItem = ITEM_SITRUS_BERRY,
-#line 10442
+#line 10452
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10439
+#line 10449
             .ability = ABILITY_LEVITATE,
-#line 10440
+#line 10450
             .lvl = 30,
-#line 10441
+#line 10451
             .nature = NATURE_QUIET,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10442
+#line 10452
                 MOVE_VOLT_SWITCH,
                 MOVE_GIGA_DRAIN,
                 MOVE_KNOCK_OFF,
@@ -26340,22 +26373,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 10447
+#line 10457
             .species = SPECIES_CHIMECHO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10447
+#line 10457
             .heldItem = ITEM_LIGHT_CLAY,
-#line 10451
+#line 10461
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10448
+#line 10458
             .ability = ABILITY_LEVITATE,
-#line 10449
+#line 10459
             .lvl = 30,
-#line 10450
+#line 10460
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10451
+#line 10461
                 MOVE_PSYCHIC_NOISE,
                 MOVE_DRAINING_KISS,
                 MOVE_GRASS_KNOT,
@@ -26364,44 +26397,44 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 10456
+#line 10466
     [DIFFICULTY_NORMAL][TRAINER_AISHA] =
     {
-#line 10457
+#line 10467
         .trainerName = _("Aisha"),
-#line 10458
+#line 10468
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
-#line 10459
+#line 10469
         .trainerPic = TRAINER_PIC_BATTLE_GIRL,
         .encounterMusic_gender =
-#line 10460
+#line 10470
 F_TRAINER_FEMALE | 
-#line 10461
+#line 10471
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 10462
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10463
+#line 10472
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10473
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10465
+#line 10475
             .species = SPECIES_KROKOROK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10465
+#line 10475
             .heldItem = ITEM_SOFT_SAND,
-#line 10469
+#line 10479
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10466
+#line 10476
             .ability = ABILITY_INTIMIDATE,
-#line 10467
+#line 10477
             .lvl = 31,
-#line 10468
+#line 10478
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10469
+#line 10479
                 MOVE_DIG,
                 MOVE_ICE_FANG,
                 MOVE_BULLDOZE,
@@ -26409,22 +26442,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 10474
+#line 10484
             .species = SPECIES_ARBOK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10474
+#line 10484
             .heldItem = ITEM_SOFT_SAND,
-#line 10478
+#line 10488
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10475
+#line 10485
             .ability = ABILITY_INTIMIDATE,
-#line 10476
+#line 10486
             .lvl = 30,
-#line 10477
+#line 10487
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10478
+#line 10488
                 MOVE_STOMPING_TANTRUM,
                 MOVE_MUD_SHOT,
                 MOVE_FIRE_FANG,
@@ -26433,195 +26466,195 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 10483
+#line 10493
     [DIFFICULTY_NORMAL][TRAINER_MAKAYLA] =
     {
-#line 10484
+#line 10494
         .trainerName = _("Makayla"),
-#line 10485
+#line 10495
         .trainerClass = TRAINER_CLASS_EXPERT,
-#line 10486
+#line 10496
         .trainerPic = TRAINER_PIC_EXPERT_F,
         .encounterMusic_gender =
-#line 10487
+#line 10497
 F_TRAINER_FEMALE | 
-#line 10488
+#line 10498
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 10489
+#line 10499
         .items = { ITEM_HYPER_POTION },
-#line 10490
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10491
+#line 10500
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10501
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10493
+#line 10503
             .species = SPECIES_ROSELIA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10495
+#line 10505
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10494
+#line 10504
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10497
+#line 10507
             .species = SPECIES_MEDICHAM,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10499
+#line 10509
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10498
+#line 10508
             .lvl = 33,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10501
+#line 10511
     [DIFFICULTY_NORMAL][TRAINER_FABIAN] =
     {
-#line 10502
+#line 10512
         .trainerName = _("Fabian"),
-#line 10503
+#line 10513
         .trainerClass = TRAINER_CLASS_GUITARIST,
-#line 10504
+#line 10514
         .trainerPic = TRAINER_PIC_GUITARIST,
         .encounterMusic_gender =
-#line 10506
+#line 10516
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 10507
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10508
+#line 10517
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10518
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10510
+#line 10520
             .species = SPECIES_MANECTRIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10512
+#line 10522
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10511
+#line 10521
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10514
+#line 10524
     [DIFFICULTY_NORMAL][TRAINER_DAYTON] =
     {
-#line 10515
+#line 10525
         .trainerName = _("Dayton"),
-#line 10516
+#line 10526
         .trainerClass = TRAINER_CLASS_KINDLER,
-#line 10517
+#line 10527
         .trainerPic = TRAINER_PIC_KINDLER,
         .encounterMusic_gender =
-#line 10519
+#line 10529
             TRAINER_ENCOUNTER_MUSIC_HIKER,
-#line 10520
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10521
+#line 10530
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10531
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10523
+#line 10533
             .species = SPECIES_SLUGMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10525
+#line 10535
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10524
+#line 10534
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10527
+#line 10537
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10529
+#line 10539
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10528
+#line 10538
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10531
+#line 10541
     [DIFFICULTY_NORMAL][TRAINER_RACHEL] =
     {
-#line 10532
+#line 10542
         .trainerName = _("Rachel"),
-#line 10533
+#line 10543
         .trainerClass = TRAINER_CLASS_PARASOL_LADY,
-#line 10534
+#line 10544
         .trainerPic = TRAINER_PIC_PARASOL_LADY,
         .encounterMusic_gender =
-#line 10535
+#line 10545
 F_TRAINER_FEMALE | 
-#line 10536
+#line 10546
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 10537
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10538
+#line 10547
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10548
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10540
+#line 10550
             .species = SPECIES_GOLDEEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10542
+#line 10552
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10541
+#line 10551
             .lvl = 26,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10544
+#line 10554
     [DIFFICULTY_NORMAL][TRAINER_LEONEL] =
     {
-#line 10545
+#line 10555
         .trainerName = _("Leonel"),
-#line 10546
+#line 10556
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 10547
+#line 10557
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
-#line 10549
+#line 10559
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 10550
+#line 10560
         .items = { ITEM_HYPER_POTION },
-#line 10551
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10552
+#line 10561
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10562
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10554
+#line 10564
             .species = SPECIES_MANECTRIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10556
+#line 10566
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 10555
+#line 10565
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10557
+#line 10567
                 MOVE_THUNDER,
                 MOVE_QUICK_ATTACK,
                 MOVE_THUNDER_WAVE,
@@ -26629,459 +26662,459 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 10561
+#line 10571
     [DIFFICULTY_NORMAL][TRAINER_CALLIE] =
     {
-#line 10562
+#line 10572
         .trainerName = _("Callie"),
-#line 10563
+#line 10573
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
-#line 10564
+#line 10574
         .trainerPic = TRAINER_PIC_BATTLE_GIRL,
         .encounterMusic_gender =
-#line 10565
+#line 10575
 F_TRAINER_FEMALE | 
-#line 10566
+#line 10576
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 10567
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10568
+#line 10577
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10578
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10570
+#line 10580
             .species = SPECIES_MEDITITE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10572
+#line 10582
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10571
+#line 10581
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10574
+#line 10584
             .species = SPECIES_MAKUHITA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10576
+#line 10586
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10575
+#line 10585
             .lvl = 28,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10578
+#line 10588
     [DIFFICULTY_NORMAL][TRAINER_CALE] =
     {
-#line 10579
+#line 10589
         .trainerName = _("Cale"),
-#line 10580
+#line 10590
         .trainerClass = TRAINER_CLASS_BUG_MANIAC,
-#line 10581
+#line 10591
         .trainerPic = TRAINER_PIC_BUG_MANIAC,
         .encounterMusic_gender =
-#line 10583
+#line 10593
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 10584
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10585
+#line 10594
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10595
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10587
+#line 10597
             .species = SPECIES_DUSTOX,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10589
+#line 10599
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10588
+#line 10598
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10591
+#line 10601
             .species = SPECIES_BEAUTIFLY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10593
+#line 10603
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 10592
+#line 10602
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10595
+#line 10605
     [DIFFICULTY_NORMAL][TRAINER_MYLES] =
     {
-#line 10596
+#line 10606
         .trainerName = _("Myles"),
-#line 10597
+#line 10607
         .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
-#line 10598
+#line 10608
         .trainerPic = TRAINER_PIC_POKEMON_BREEDER_M,
         .encounterMusic_gender =
-#line 10600
+#line 10610
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 10601
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10602
+#line 10611
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10612
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10604
+#line 10614
             .species = SPECIES_MAKUHITA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10606
+#line 10616
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 10605
+#line 10615
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10608
+#line 10618
             .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10610
+#line 10620
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 10609
+#line 10619
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10612
+#line 10622
             .species = SPECIES_TROPIUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10614
+#line 10624
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 10613
+#line 10623
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10616
+#line 10626
             .species = SPECIES_ZIGZAGOON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10618
+#line 10628
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 10617
+#line 10627
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10620
+#line 10630
             .species = SPECIES_ELECTRIKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10622
+#line 10632
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 10621
+#line 10631
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10624
+#line 10634
             .species = SPECIES_NUMEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10626
+#line 10636
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 10625
+#line 10635
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10628
+#line 10638
     [DIFFICULTY_NORMAL][TRAINER_PAT] =
     {
-#line 10629
+#line 10639
         .trainerName = _("Pat"),
-#line 10630
+#line 10640
         .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
-#line 10631
+#line 10641
         .trainerPic = TRAINER_PIC_POKEMON_BREEDER_F,
         .encounterMusic_gender =
-#line 10632
+#line 10642
 F_TRAINER_FEMALE | 
-#line 10633
+#line 10643
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 10634
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10635
+#line 10644
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10645
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10637
+#line 10647
             .species = SPECIES_POOCHYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10639
+#line 10649
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 10638
+#line 10648
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10641
+#line 10651
             .species = SPECIES_SHROOMISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10643
+#line 10653
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 10642
+#line 10652
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10645
+#line 10655
             .species = SPECIES_ELECTRIKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10647
+#line 10657
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 10646
+#line 10656
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10649
+#line 10659
             .species = SPECIES_MARILL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10651
+#line 10661
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 10650
+#line 10660
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10653
+#line 10663
             .species = SPECIES_SANDSHREW,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10655
+#line 10665
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 10654
+#line 10664
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10657
+#line 10667
             .species = SPECIES_GULPIN,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10659
+#line 10669
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-#line 10658
+#line 10668
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10661
+#line 10671
     [DIFFICULTY_NORMAL][TRAINER_CRISTIN_1] =
     {
-#line 10662
+#line 10672
         .trainerName = _("Cristin"),
-#line 10663
+#line 10673
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
-#line 10664
+#line 10674
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
-#line 10665
+#line 10675
 F_TRAINER_FEMALE | 
-#line 10666
+#line 10676
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 10667
+#line 10677
         .items = { ITEM_HYPER_POTION },
-#line 10668
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10669
+#line 10678
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10679
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10671
+#line 10681
             .species = SPECIES_LOUDRED,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10673
+#line 10683
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 10672
+#line 10682
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10675
+#line 10685
             .species = SPECIES_VIGOROTH,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10677
+#line 10687
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 10676
+#line 10686
             .lvl = 29,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10679
+#line 10689
     [DIFFICULTY_NORMAL][TRAINER_MAY_RUSTBORO_TREECKO] =
     {
-#line 10680
+#line 10690
         .trainerName = _("May"),
-#line 10681
+#line 10691
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 10682
+#line 10692
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 10683
+#line 10693
 F_TRAINER_FEMALE | 
-#line 10684
+#line 10694
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 10685
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10686
+#line 10695
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10696
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 10687
+#line 10697
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10689
+#line 10699
             .species = SPECIES_LOTAD,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10691
+#line 10701
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 10690
+#line 10700
             .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10693
+#line 10703
             .species = SPECIES_TORCHIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10695
+#line 10705
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 10694
+#line 10704
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10697
+#line 10707
     [DIFFICULTY_NORMAL][TRAINER_MAY_RUSTBORO_TORCHIC] =
     {
-#line 10698
+#line 10708
         .trainerName = _("May"),
-#line 10699
+#line 10709
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 10700
+#line 10710
         .trainerPic = TRAINER_PIC_MAY,
         .encounterMusic_gender =
-#line 10701
+#line 10711
 F_TRAINER_FEMALE | 
-#line 10702
+#line 10712
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
-#line 10703
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10704
+#line 10713
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10714
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 10705
+#line 10715
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10707
+#line 10717
             .species = SPECIES_TORKOAL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10709
+#line 10719
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
-#line 10708
+#line 10718
             .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 10711
+#line 10721
             .species = SPECIES_MUDKIP,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10713
+#line 10723
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-#line 10712
+#line 10722
             .lvl = 15,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10715
+#line 10725
     [DIFFICULTY_NORMAL][TRAINER_ANGELO] =
     {
-#line 10716
+#line 10726
         .trainerName = _("Angelo"),
-#line 10717
+#line 10727
         .trainerClass = TRAINER_CLASS_BUG_MANIAC,
-#line 10718
+#line 10728
         .trainerPic = TRAINER_PIC_BUG_MANIAC,
         .encounterMusic_gender =
-#line 10720
+#line 10730
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
-#line 10721
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10722
+#line 10731
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10732
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10724
+#line 10734
             .species = SPECIES_ILLUMISE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10726
+#line 10736
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 10725
+#line 10735
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10727
+#line 10737
                 MOVE_SHOCK_WAVE,
                 MOVE_QUICK_ATTACK,
                 MOVE_CHARM,
             },
             },
             {
-#line 10731
+#line 10741
             .species = SPECIES_VOLBEAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10733
+#line 10743
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
-#line 10732
+#line 10742
             .lvl = 17,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10734
+#line 10744
                 MOVE_SHOCK_WAVE,
                 MOVE_QUICK_ATTACK,
                 MOVE_CONFUSE_RAY,
@@ -27089,71 +27122,69 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 10738
+#line 10748
     [DIFFICULTY_NORMAL][TRAINER_DARIUS] =
     {
-#line 10739
+#line 10749
         .trainerName = _("Darius"),
-#line 10740
+#line 10750
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-#line 10741
+#line 10751
         .trainerPic = TRAINER_PIC_BIRD_KEEPER,
         .encounterMusic_gender =
-#line 10743
+#line 10753
             TRAINER_ENCOUNTER_MUSIC_COOL,
-#line 10744
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10745
+#line 10754
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10755
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10747
+#line 10757
             .species = SPECIES_TROPIUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10749
+#line 10759
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
-#line 10748
+#line 10758
             .lvl = 30,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 10751
+#line 10761
     [DIFFICULTY_NORMAL][TRAINER_STEVEN] =
     {
-#line 10752
+#line 10762
         .trainerName = _("Steven"),
-#line 10753
+#line 10763
         .trainerClass = TRAINER_CLASS_FORMER_CHAMPION,
-#line 10754
+#line 10764
         .trainerPic = TRAINER_PIC_STEVEN,
         .encounterMusic_gender =
-#line 10756
+#line 10766
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 10757
-        .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-#line 10758
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10759
+#line 10767
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 10768
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10761
+#line 10770
             .species = SPECIES_SKARMORY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10763
+#line 10772
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10762
+#line 10771
             .lvl = 77,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10764
+#line 10773
                 MOVE_TOXIC,
                 MOVE_AERIAL_ACE,
                 MOVE_SPIKES,
@@ -27161,17 +27192,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 10769
+#line 10778
             .species = SPECIES_CLAYDOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10771
+#line 10780
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10770
+#line 10779
             .lvl = 75,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10772
+#line 10781
                 MOVE_REFLECT,
                 MOVE_LIGHT_SCREEN,
                 MOVE_ANCIENT_POWER,
@@ -27179,17 +27210,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 10777
+#line 10786
             .species = SPECIES_AGGRON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10779
+#line 10788
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10778
+#line 10787
             .lvl = 76,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10780
+#line 10789
                 MOVE_THUNDER,
                 MOVE_EARTHQUAKE,
                 MOVE_SOLAR_BEAM,
@@ -27197,17 +27228,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 10785
+#line 10794
             .species = SPECIES_CRADILY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10787
+#line 10796
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10786
+#line 10795
             .lvl = 76,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10788
+#line 10797
                 MOVE_GIGA_DRAIN,
                 MOVE_ANCIENT_POWER,
                 MOVE_INGRAIN,
@@ -27215,17 +27246,17 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 10793
+#line 10802
             .species = SPECIES_ARMALDO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10795
+#line 10804
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10794
+#line 10803
             .lvl = 76,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10796
+#line 10805
                 MOVE_WATER_PULSE,
                 MOVE_ANCIENT_POWER,
                 MOVE_AERIAL_ACE,
@@ -27233,19 +27264,19 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 10801
+#line 10810
             .species = SPECIES_METAGROSS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10801
+#line 10810
             .heldItem = ITEM_SITRUS_BERRY,
-#line 10803
+#line 10812
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10802
+#line 10811
             .lvl = 78,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 10804
+#line 10813
                 MOVE_EARTHQUAKE,
                 MOVE_PSYCHIC,
                 MOVE_METEOR_MASH,
@@ -27254,161 +27285,161 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 10809
+#line 10818
     [DIFFICULTY_NORMAL][TRAINER_ANABEL] =
     {
-#line 10810
+#line 10819
         .trainerName = _("Anabel"),
-#line 10811
+#line 10820
         .trainerClass = TRAINER_CLASS_SALON_MAIDEN,
-#line 10812
+#line 10821
         .trainerPic = TRAINER_PIC_SALON_MAIDEN_ANABEL,
         .encounterMusic_gender =
-#line 10814
+#line 10823
 F_TRAINER_FEMALE | 
-#line 10815
+#line 10824
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 10816
+#line 10825
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10817
+#line 10826
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 10813
+#line 10822
         .mugshotColor = MUGSHOT_COLOR_RED,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10819
+#line 10828
             .species = SPECIES_REGIGIGAS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10819
+#line 10828
             .heldItem = ITEM_LIECHI_BERRY,
-#line 10823
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10822
-            .ability = ABILITY_SLOW_START,
-#line 10820
-            .lvl = 97,
-#line 10821
-            .nature = NATURE_ADAMANT,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 10823
-                MOVE_FACADE,
-                MOVE_ZEN_HEADBUTT,
-                MOVE_AVALANCHE,
-                MOVE_DRAIN_PUNCH,
-            },
-            },
-            {
-#line 10828
-            .species = SPECIES_REGIROCK,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10828
-            .heldItem = ITEM_CHOPLE_BERRY,
 #line 10832
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10831
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_SLOW_START,
 #line 10829
-            .lvl = 95,
+            .lvl = 97,
 #line 10830
-            .nature = NATURE_IMPISH,
+            .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10832
-                MOVE_STONE_EDGE,
-                MOVE_HAMMER_ARM,
-                MOVE_EXPLOSION,
-                MOVE_STEALTH_ROCK,
+                MOVE_FACADE,
+                MOVE_ZEN_HEADBUTT,
+                MOVE_AVALANCHE,
+                MOVE_DRAIN_PUNCH,
             },
             },
             {
 #line 10837
-            .species = SPECIES_REGIELEKI,
+            .species = SPECIES_REGIROCK,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10837
-            .heldItem = ITEM_ELECTRIC_GEM,
+            .heldItem = ITEM_CHOPLE_BERRY,
 #line 10841
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10840
-            .ability = ABILITY_TRANSISTOR,
+            .ability = ABILITY_CLEAR_BODY,
 #line 10838
-            .lvl = 97,
+            .lvl = 95,
 #line 10839
-            .nature = NATURE_TIMID,
+            .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10841
-                MOVE_THUNDER_CAGE,
-                MOVE_VOLT_SWITCH,
-                MOVE_REFLECT,
-                MOVE_LIGHT_SCREEN,
+                MOVE_STONE_EDGE,
+                MOVE_HAMMER_ARM,
+                MOVE_EXPLOSION,
+                MOVE_STEALTH_ROCK,
             },
             },
             {
 #line 10846
-            .species = SPECIES_REGISTEEL,
+            .species = SPECIES_REGIELEKI,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10846
-            .heldItem = ITEM_STEEL_GEM,
+            .heldItem = ITEM_ELECTRIC_GEM,
 #line 10850
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10849
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_TRANSISTOR,
 #line 10847
-            .lvl = 95,
+            .lvl = 97,
 #line 10848
-            .nature = NATURE_BOLD,
+            .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10850
-                MOVE_HARD_PRESS,
-                MOVE_BODY_PRESS,
-                MOVE_IRON_DEFENSE,
-                MOVE_PROTECT,
+                MOVE_THUNDER_CAGE,
+                MOVE_VOLT_SWITCH,
+                MOVE_REFLECT,
+                MOVE_LIGHT_SCREEN,
             },
             },
             {
 #line 10855
-            .species = SPECIES_REGIDRAGO,
+            .species = SPECIES_REGISTEEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10855
-            .heldItem = ITEM_CUSTAP_BERRY,
+            .heldItem = ITEM_STEEL_GEM,
 #line 10859
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10858
-            .ability = ABILITY_DRAGONS_MAW,
+            .ability = ABILITY_CLEAR_BODY,
 #line 10856
-            .lvl = 96,
+            .lvl = 95,
 #line 10857
-            .nature = NATURE_HASTY,
+            .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10859
-                MOVE_DRACO_METEOR,
-                MOVE_CRUNCH,
-                MOVE_REVERSAL,
-                MOVE_EARTH_POWER,
+                MOVE_HARD_PRESS,
+                MOVE_BODY_PRESS,
+                MOVE_IRON_DEFENSE,
+                MOVE_PROTECT,
             },
             },
             {
 #line 10864
-            .species = SPECIES_REGICE,
+            .species = SPECIES_REGIDRAGO,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10864
-            .heldItem = ITEM_LIFE_ORB,
+            .heldItem = ITEM_CUSTAP_BERRY,
 #line 10868
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10867
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_DRAGONS_MAW,
 #line 10865
-            .lvl = 95,
+            .lvl = 96,
 #line 10866
-            .nature = NATURE_MODEST,
+            .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10868
+                MOVE_DRACO_METEOR,
+                MOVE_CRUNCH,
+                MOVE_REVERSAL,
+                MOVE_EARTH_POWER,
+            },
+            },
+            {
+#line 10873
+            .species = SPECIES_REGICE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 10873
+            .heldItem = ITEM_LIFE_ORB,
+#line 10877
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 10876
+            .ability = ABILITY_CLEAR_BODY,
+#line 10874
+            .lvl = 95,
+#line 10875
+            .nature = NATURE_MODEST,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 10877
                 MOVE_ZAP_CANNON,
                 MOVE_ICE_BEAM,
                 MOVE_SNOWSCAPE,
@@ -27417,159 +27448,159 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 10873
+#line 10882
     [DIFFICULTY_NORMAL][TRAINER_TUCKER] =
     {
-#line 10874
+#line 10883
         .trainerName = _("Tucker"),
-#line 10875
+#line 10884
         .trainerClass = TRAINER_CLASS_DOME_ACE,
-#line 10876
+#line 10885
         .trainerPic = TRAINER_PIC_DOME_ACE_TUCKER,
         .encounterMusic_gender =
-#line 10879
+#line 10888
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 10880
+#line 10889
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10881
+#line 10890
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 10877
+#line 10886
         .mugshotColor = MUGSHOT_COLOR_RED,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10883
+#line 10892
             .species = SPECIES_REGIGIGAS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10883
+#line 10892
             .heldItem = ITEM_LIECHI_BERRY,
-#line 10887
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10886
-            .ability = ABILITY_SLOW_START,
-#line 10884
-            .lvl = 97,
-#line 10885
-            .nature = NATURE_ADAMANT,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 10887
-                MOVE_FACADE,
-                MOVE_ZEN_HEADBUTT,
-                MOVE_AVALANCHE,
-                MOVE_DRAIN_PUNCH,
-            },
-            },
-            {
-#line 10892
-            .species = SPECIES_REGIROCK,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10892
-            .heldItem = ITEM_CHOPLE_BERRY,
 #line 10896
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10895
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_SLOW_START,
 #line 10893
-            .lvl = 95,
+            .lvl = 97,
 #line 10894
-            .nature = NATURE_IMPISH,
+            .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10896
-                MOVE_STONE_EDGE,
-                MOVE_HAMMER_ARM,
-                MOVE_EXPLOSION,
-                MOVE_STEALTH_ROCK,
+                MOVE_FACADE,
+                MOVE_ZEN_HEADBUTT,
+                MOVE_AVALANCHE,
+                MOVE_DRAIN_PUNCH,
             },
             },
             {
 #line 10901
-            .species = SPECIES_REGIELEKI,
+            .species = SPECIES_REGIROCK,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10901
-            .heldItem = ITEM_ELECTRIC_GEM,
+            .heldItem = ITEM_CHOPLE_BERRY,
 #line 10905
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10904
-            .ability = ABILITY_TRANSISTOR,
+            .ability = ABILITY_CLEAR_BODY,
 #line 10902
-            .lvl = 97,
+            .lvl = 95,
 #line 10903
-            .nature = NATURE_TIMID,
+            .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10905
-                MOVE_THUNDER_CAGE,
-                MOVE_VOLT_SWITCH,
-                MOVE_REFLECT,
-                MOVE_LIGHT_SCREEN,
+                MOVE_STONE_EDGE,
+                MOVE_HAMMER_ARM,
+                MOVE_EXPLOSION,
+                MOVE_STEALTH_ROCK,
             },
             },
             {
 #line 10910
-            .species = SPECIES_REGISTEEL,
+            .species = SPECIES_REGIELEKI,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10910
-            .heldItem = ITEM_STEEL_GEM,
+            .heldItem = ITEM_ELECTRIC_GEM,
 #line 10914
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10913
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_TRANSISTOR,
 #line 10911
-            .lvl = 95,
+            .lvl = 97,
 #line 10912
-            .nature = NATURE_BOLD,
+            .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10914
-                MOVE_HARD_PRESS,
-                MOVE_BODY_PRESS,
-                MOVE_IRON_DEFENSE,
-                MOVE_PROTECT,
+                MOVE_THUNDER_CAGE,
+                MOVE_VOLT_SWITCH,
+                MOVE_REFLECT,
+                MOVE_LIGHT_SCREEN,
             },
             },
             {
 #line 10919
-            .species = SPECIES_REGIDRAGO,
+            .species = SPECIES_REGISTEEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10919
-            .heldItem = ITEM_CUSTAP_BERRY,
+            .heldItem = ITEM_STEEL_GEM,
 #line 10923
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10922
-            .ability = ABILITY_DRAGONS_MAW,
+            .ability = ABILITY_CLEAR_BODY,
 #line 10920
-            .lvl = 96,
+            .lvl = 95,
 #line 10921
-            .nature = NATURE_HASTY,
+            .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10923
-                MOVE_DRACO_METEOR,
-                MOVE_CRUNCH,
-                MOVE_REVERSAL,
-                MOVE_EARTH_POWER,
+                MOVE_HARD_PRESS,
+                MOVE_BODY_PRESS,
+                MOVE_IRON_DEFENSE,
+                MOVE_PROTECT,
             },
             },
             {
 #line 10928
-            .species = SPECIES_REGICE,
+            .species = SPECIES_REGIDRAGO,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10928
-            .heldItem = ITEM_LIFE_ORB,
+            .heldItem = ITEM_CUSTAP_BERRY,
 #line 10932
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10931
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_DRAGONS_MAW,
 #line 10929
-            .lvl = 95,
+            .lvl = 96,
 #line 10930
-            .nature = NATURE_MODEST,
+            .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10932
+                MOVE_DRACO_METEOR,
+                MOVE_CRUNCH,
+                MOVE_REVERSAL,
+                MOVE_EARTH_POWER,
+            },
+            },
+            {
+#line 10937
+            .species = SPECIES_REGICE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 10937
+            .heldItem = ITEM_LIFE_ORB,
+#line 10941
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 10940
+            .ability = ABILITY_CLEAR_BODY,
+#line 10938
+            .lvl = 95,
+#line 10939
+            .nature = NATURE_MODEST,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 10941
                 MOVE_ZAP_CANNON,
                 MOVE_ICE_BEAM,
                 MOVE_SNOWSCAPE,
@@ -27578,159 +27609,159 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 10937
+#line 10946
     [DIFFICULTY_NORMAL][TRAINER_SPENSER] =
     {
-#line 10938
+#line 10947
         .trainerName = _("Spenser"),
-#line 10939
+#line 10948
         .trainerClass = TRAINER_CLASS_PALACE_MAVEN,
-#line 10940
+#line 10949
         .trainerPic = TRAINER_PIC_PALACE_MAVEN_SPENSER,
         .encounterMusic_gender =
-#line 10943
+#line 10952
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 10944
+#line 10953
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 10945
+#line 10954
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 10941
+#line 10950
         .mugshotColor = MUGSHOT_COLOR_RED,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 10947
+#line 10956
             .species = SPECIES_REGIGIGAS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10947
+#line 10956
             .heldItem = ITEM_LIECHI_BERRY,
-#line 10951
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 10950
-            .ability = ABILITY_SLOW_START,
-#line 10948
-            .lvl = 97,
-#line 10949
-            .nature = NATURE_ADAMANT,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 10951
-                MOVE_FACADE,
-                MOVE_ZEN_HEADBUTT,
-                MOVE_AVALANCHE,
-                MOVE_DRAIN_PUNCH,
-            },
-            },
-            {
-#line 10956
-            .species = SPECIES_REGIROCK,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 10956
-            .heldItem = ITEM_CHOPLE_BERRY,
 #line 10960
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10959
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_SLOW_START,
 #line 10957
-            .lvl = 95,
+            .lvl = 97,
 #line 10958
-            .nature = NATURE_IMPISH,
+            .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10960
-                MOVE_STONE_EDGE,
-                MOVE_HAMMER_ARM,
-                MOVE_EXPLOSION,
-                MOVE_STEALTH_ROCK,
+                MOVE_FACADE,
+                MOVE_ZEN_HEADBUTT,
+                MOVE_AVALANCHE,
+                MOVE_DRAIN_PUNCH,
             },
             },
             {
 #line 10965
-            .species = SPECIES_REGIELEKI,
+            .species = SPECIES_REGIROCK,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10965
-            .heldItem = ITEM_ELECTRIC_GEM,
+            .heldItem = ITEM_CHOPLE_BERRY,
 #line 10969
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10968
-            .ability = ABILITY_TRANSISTOR,
+            .ability = ABILITY_CLEAR_BODY,
 #line 10966
-            .lvl = 97,
+            .lvl = 95,
 #line 10967
-            .nature = NATURE_TIMID,
+            .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10969
-                MOVE_THUNDER_CAGE,
-                MOVE_VOLT_SWITCH,
-                MOVE_REFLECT,
-                MOVE_LIGHT_SCREEN,
+                MOVE_STONE_EDGE,
+                MOVE_HAMMER_ARM,
+                MOVE_EXPLOSION,
+                MOVE_STEALTH_ROCK,
             },
             },
             {
 #line 10974
-            .species = SPECIES_REGISTEEL,
+            .species = SPECIES_REGIELEKI,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10974
-            .heldItem = ITEM_STEEL_GEM,
+            .heldItem = ITEM_ELECTRIC_GEM,
 #line 10978
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10977
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_TRANSISTOR,
 #line 10975
-            .lvl = 95,
+            .lvl = 97,
 #line 10976
-            .nature = NATURE_BOLD,
+            .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10978
-                MOVE_HARD_PRESS,
-                MOVE_BODY_PRESS,
-                MOVE_IRON_DEFENSE,
-                MOVE_PROTECT,
+                MOVE_THUNDER_CAGE,
+                MOVE_VOLT_SWITCH,
+                MOVE_REFLECT,
+                MOVE_LIGHT_SCREEN,
             },
             },
             {
 #line 10983
-            .species = SPECIES_REGIDRAGO,
+            .species = SPECIES_REGISTEEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10983
-            .heldItem = ITEM_CUSTAP_BERRY,
+            .heldItem = ITEM_STEEL_GEM,
 #line 10987
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10986
-            .ability = ABILITY_DRAGONS_MAW,
+            .ability = ABILITY_CLEAR_BODY,
 #line 10984
-            .lvl = 96,
+            .lvl = 95,
 #line 10985
-            .nature = NATURE_HASTY,
+            .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10987
-                MOVE_DRACO_METEOR,
-                MOVE_CRUNCH,
-                MOVE_REVERSAL,
-                MOVE_EARTH_POWER,
+                MOVE_HARD_PRESS,
+                MOVE_BODY_PRESS,
+                MOVE_IRON_DEFENSE,
+                MOVE_PROTECT,
             },
             },
             {
 #line 10992
-            .species = SPECIES_REGICE,
+            .species = SPECIES_REGIDRAGO,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10992
-            .heldItem = ITEM_LIFE_ORB,
+            .heldItem = ITEM_CUSTAP_BERRY,
 #line 10996
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10995
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_DRAGONS_MAW,
 #line 10993
-            .lvl = 95,
+            .lvl = 96,
 #line 10994
-            .nature = NATURE_MODEST,
+            .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 10996
+                MOVE_DRACO_METEOR,
+                MOVE_CRUNCH,
+                MOVE_REVERSAL,
+                MOVE_EARTH_POWER,
+            },
+            },
+            {
+#line 11001
+            .species = SPECIES_REGICE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 11001
+            .heldItem = ITEM_LIFE_ORB,
+#line 11005
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 11004
+            .ability = ABILITY_CLEAR_BODY,
+#line 11002
+            .lvl = 95,
+#line 11003
+            .nature = NATURE_MODEST,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 11005
                 MOVE_ZAP_CANNON,
                 MOVE_ICE_BEAM,
                 MOVE_SNOWSCAPE,
@@ -27739,161 +27770,161 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 11001
+#line 11010
     [DIFFICULTY_NORMAL][TRAINER_GRETA] =
     {
-#line 11002
+#line 11011
         .trainerName = _("Greta"),
-#line 11003
+#line 11012
         .trainerClass = TRAINER_CLASS_ARENA_TYCOON,
-#line 11004
+#line 11013
         .trainerPic = TRAINER_PIC_ARENA_TYCOON_GRETA,
         .encounterMusic_gender =
-#line 11006
+#line 11015
 F_TRAINER_FEMALE | 
-#line 11007
+#line 11016
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 11008
+#line 11017
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 11009
+#line 11018
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 11005
+#line 11014
         .mugshotColor = MUGSHOT_COLOR_RED,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 11011
+#line 11020
             .species = SPECIES_REGIGIGAS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11011
+#line 11020
             .heldItem = ITEM_LIECHI_BERRY,
-#line 11015
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 11014
-            .ability = ABILITY_SLOW_START,
-#line 11012
-            .lvl = 97,
-#line 11013
-            .nature = NATURE_ADAMANT,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 11015
-                MOVE_FACADE,
-                MOVE_ZEN_HEADBUTT,
-                MOVE_AVALANCHE,
-                MOVE_DRAIN_PUNCH,
-            },
-            },
-            {
-#line 11020
-            .species = SPECIES_REGIROCK,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11020
-            .heldItem = ITEM_CHOPLE_BERRY,
 #line 11024
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11023
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_SLOW_START,
 #line 11021
-            .lvl = 95,
+            .lvl = 97,
 #line 11022
-            .nature = NATURE_IMPISH,
+            .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 11024
-                MOVE_STONE_EDGE,
-                MOVE_HAMMER_ARM,
-                MOVE_EXPLOSION,
-                MOVE_STEALTH_ROCK,
+                MOVE_FACADE,
+                MOVE_ZEN_HEADBUTT,
+                MOVE_AVALANCHE,
+                MOVE_DRAIN_PUNCH,
             },
             },
             {
 #line 11029
-            .species = SPECIES_REGIELEKI,
+            .species = SPECIES_REGIROCK,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11029
-            .heldItem = ITEM_ELECTRIC_GEM,
+            .heldItem = ITEM_CHOPLE_BERRY,
 #line 11033
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11032
-            .ability = ABILITY_TRANSISTOR,
+            .ability = ABILITY_CLEAR_BODY,
 #line 11030
-            .lvl = 97,
+            .lvl = 95,
 #line 11031
-            .nature = NATURE_TIMID,
+            .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 11033
-                MOVE_THUNDER_CAGE,
-                MOVE_VOLT_SWITCH,
-                MOVE_REFLECT,
-                MOVE_LIGHT_SCREEN,
+                MOVE_STONE_EDGE,
+                MOVE_HAMMER_ARM,
+                MOVE_EXPLOSION,
+                MOVE_STEALTH_ROCK,
             },
             },
             {
 #line 11038
-            .species = SPECIES_REGISTEEL,
+            .species = SPECIES_REGIELEKI,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11038
-            .heldItem = ITEM_STEEL_GEM,
+            .heldItem = ITEM_ELECTRIC_GEM,
 #line 11042
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11041
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_TRANSISTOR,
 #line 11039
-            .lvl = 95,
+            .lvl = 97,
 #line 11040
-            .nature = NATURE_BOLD,
+            .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 11042
-                MOVE_HARD_PRESS,
-                MOVE_BODY_PRESS,
-                MOVE_IRON_DEFENSE,
-                MOVE_PROTECT,
+                MOVE_THUNDER_CAGE,
+                MOVE_VOLT_SWITCH,
+                MOVE_REFLECT,
+                MOVE_LIGHT_SCREEN,
             },
             },
             {
 #line 11047
-            .species = SPECIES_REGIDRAGO,
+            .species = SPECIES_REGISTEEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11047
-            .heldItem = ITEM_CUSTAP_BERRY,
+            .heldItem = ITEM_STEEL_GEM,
 #line 11051
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11050
-            .ability = ABILITY_DRAGONS_MAW,
+            .ability = ABILITY_CLEAR_BODY,
 #line 11048
-            .lvl = 96,
+            .lvl = 95,
 #line 11049
-            .nature = NATURE_HASTY,
+            .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 11051
-                MOVE_DRACO_METEOR,
-                MOVE_CRUNCH,
-                MOVE_REVERSAL,
-                MOVE_EARTH_POWER,
+                MOVE_HARD_PRESS,
+                MOVE_BODY_PRESS,
+                MOVE_IRON_DEFENSE,
+                MOVE_PROTECT,
             },
             },
             {
 #line 11056
-            .species = SPECIES_REGICE,
+            .species = SPECIES_REGIDRAGO,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11056
-            .heldItem = ITEM_LIFE_ORB,
+            .heldItem = ITEM_CUSTAP_BERRY,
 #line 11060
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11059
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_DRAGONS_MAW,
 #line 11057
-            .lvl = 95,
+            .lvl = 96,
 #line 11058
-            .nature = NATURE_MODEST,
+            .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 11060
+                MOVE_DRACO_METEOR,
+                MOVE_CRUNCH,
+                MOVE_REVERSAL,
+                MOVE_EARTH_POWER,
+            },
+            },
+            {
+#line 11065
+            .species = SPECIES_REGICE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 11065
+            .heldItem = ITEM_LIFE_ORB,
+#line 11069
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 11068
+            .ability = ABILITY_CLEAR_BODY,
+#line 11066
+            .lvl = 95,
+#line 11067
+            .nature = NATURE_MODEST,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 11069
                 MOVE_ZAP_CANNON,
                 MOVE_ICE_BEAM,
                 MOVE_SNOWSCAPE,
@@ -27902,159 +27933,159 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 11065
+#line 11074
     [DIFFICULTY_NORMAL][TRAINER_NOLAND] =
     {
-#line 11066
+#line 11075
         .trainerName = _("Noland"),
-#line 11067
+#line 11076
         .trainerClass = TRAINER_CLASS_FACTORY_HEAD,
-#line 11068
+#line 11077
         .trainerPic = TRAINER_PIC_FACTORY_HEAD_NOLAND,
         .encounterMusic_gender =
-#line 11071
+#line 11080
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 11072
+#line 11081
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 11073
+#line 11082
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 11069
+#line 11078
         .mugshotColor = MUGSHOT_COLOR_RED,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 11075
+#line 11084
             .species = SPECIES_REGIGIGAS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11075
+#line 11084
             .heldItem = ITEM_LIECHI_BERRY,
-#line 11079
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 11078
-            .ability = ABILITY_SLOW_START,
-#line 11076
-            .lvl = 97,
-#line 11077
-            .nature = NATURE_ADAMANT,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 11079
-                MOVE_FACADE,
-                MOVE_ZEN_HEADBUTT,
-                MOVE_AVALANCHE,
-                MOVE_DRAIN_PUNCH,
-            },
-            },
-            {
-#line 11084
-            .species = SPECIES_REGIROCK,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11084
-            .heldItem = ITEM_CHOPLE_BERRY,
 #line 11088
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11087
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_SLOW_START,
 #line 11085
-            .lvl = 95,
+            .lvl = 97,
 #line 11086
-            .nature = NATURE_IMPISH,
+            .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 11088
-                MOVE_STONE_EDGE,
-                MOVE_HAMMER_ARM,
-                MOVE_EXPLOSION,
-                MOVE_STEALTH_ROCK,
+                MOVE_FACADE,
+                MOVE_ZEN_HEADBUTT,
+                MOVE_AVALANCHE,
+                MOVE_DRAIN_PUNCH,
             },
             },
             {
 #line 11093
-            .species = SPECIES_REGIELEKI,
+            .species = SPECIES_REGIROCK,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11093
-            .heldItem = ITEM_ELECTRIC_GEM,
+            .heldItem = ITEM_CHOPLE_BERRY,
 #line 11097
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11096
-            .ability = ABILITY_TRANSISTOR,
+            .ability = ABILITY_CLEAR_BODY,
 #line 11094
-            .lvl = 97,
+            .lvl = 95,
 #line 11095
-            .nature = NATURE_TIMID,
+            .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 11097
-                MOVE_THUNDER_CAGE,
-                MOVE_VOLT_SWITCH,
-                MOVE_REFLECT,
-                MOVE_LIGHT_SCREEN,
+                MOVE_STONE_EDGE,
+                MOVE_HAMMER_ARM,
+                MOVE_EXPLOSION,
+                MOVE_STEALTH_ROCK,
             },
             },
             {
 #line 11102
-            .species = SPECIES_REGISTEEL,
+            .species = SPECIES_REGIELEKI,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11102
-            .heldItem = ITEM_STEEL_GEM,
+            .heldItem = ITEM_ELECTRIC_GEM,
 #line 11106
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11105
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_TRANSISTOR,
 #line 11103
-            .lvl = 95,
+            .lvl = 97,
 #line 11104
-            .nature = NATURE_BOLD,
+            .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 11106
-                MOVE_HARD_PRESS,
-                MOVE_BODY_PRESS,
-                MOVE_IRON_DEFENSE,
-                MOVE_PROTECT,
+                MOVE_THUNDER_CAGE,
+                MOVE_VOLT_SWITCH,
+                MOVE_REFLECT,
+                MOVE_LIGHT_SCREEN,
             },
             },
             {
 #line 11111
-            .species = SPECIES_REGIDRAGO,
+            .species = SPECIES_REGISTEEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11111
-            .heldItem = ITEM_CUSTAP_BERRY,
+            .heldItem = ITEM_STEEL_GEM,
 #line 11115
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11114
-            .ability = ABILITY_DRAGONS_MAW,
+            .ability = ABILITY_CLEAR_BODY,
 #line 11112
-            .lvl = 96,
+            .lvl = 95,
 #line 11113
-            .nature = NATURE_HASTY,
+            .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 11115
-                MOVE_DRACO_METEOR,
-                MOVE_CRUNCH,
-                MOVE_REVERSAL,
-                MOVE_EARTH_POWER,
+                MOVE_HARD_PRESS,
+                MOVE_BODY_PRESS,
+                MOVE_IRON_DEFENSE,
+                MOVE_PROTECT,
             },
             },
             {
 #line 11120
-            .species = SPECIES_REGICE,
+            .species = SPECIES_REGIDRAGO,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11120
-            .heldItem = ITEM_LIFE_ORB,
+            .heldItem = ITEM_CUSTAP_BERRY,
 #line 11124
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11123
-            .ability = ABILITY_CLEAR_BODY,
+            .ability = ABILITY_DRAGONS_MAW,
 #line 11121
-            .lvl = 95,
+            .lvl = 96,
 #line 11122
-            .nature = NATURE_MODEST,
+            .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 11124
+                MOVE_DRACO_METEOR,
+                MOVE_CRUNCH,
+                MOVE_REVERSAL,
+                MOVE_EARTH_POWER,
+            },
+            },
+            {
+#line 11129
+            .species = SPECIES_REGICE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 11129
+            .heldItem = ITEM_LIFE_ORB,
+#line 11133
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 11132
+            .ability = ABILITY_CLEAR_BODY,
+#line 11130
+            .lvl = 95,
+#line 11131
+            .nature = NATURE_MODEST,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 11133
                 MOVE_ZAP_CANNON,
                 MOVE_ICE_BEAM,
                 MOVE_SNOWSCAPE,
@@ -28063,207 +28094,46 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 11129
+#line 11138
     [DIFFICULTY_NORMAL][TRAINER_LUCY] =
     {
-#line 11130
+#line 11139
         .trainerName = _("Lucy"),
-#line 11131
+#line 11140
         .trainerClass = TRAINER_CLASS_PIKE_QUEEN,
-#line 11132
+#line 11141
         .trainerPic = TRAINER_PIC_PIKE_QUEEN_LUCY,
         .encounterMusic_gender =
-#line 11134
+#line 11143
 F_TRAINER_FEMALE | 
-#line 11135
+#line 11144
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 11136
+#line 11145
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 11137
+#line 11146
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 11133
+#line 11142
         .mugshotColor = MUGSHOT_COLOR_RED,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
             {
-#line 11139
+#line 11148
             .species = SPECIES_REGIGIGAS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11139
+#line 11148
             .heldItem = ITEM_LIECHI_BERRY,
-#line 11143
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 11142
-            .ability = ABILITY_SLOW_START,
-#line 11140
-            .lvl = 97,
-#line 11141
-            .nature = NATURE_ADAMANT,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 11143
-                MOVE_FACADE,
-                MOVE_ZEN_HEADBUTT,
-                MOVE_AVALANCHE,
-                MOVE_DRAIN_PUNCH,
-            },
-            },
-            {
-#line 11148
-            .species = SPECIES_REGIROCK,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11148
-            .heldItem = ITEM_CHOPLE_BERRY,
 #line 11152
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11151
-            .ability = ABILITY_CLEAR_BODY,
-#line 11149
-            .lvl = 95,
-#line 11150
-            .nature = NATURE_IMPISH,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 11152
-                MOVE_STONE_EDGE,
-                MOVE_HAMMER_ARM,
-                MOVE_EXPLOSION,
-                MOVE_STEALTH_ROCK,
-            },
-            },
-            {
-#line 11157
-            .species = SPECIES_REGIELEKI,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11157
-            .heldItem = ITEM_ELECTRIC_GEM,
-#line 11161
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 11160
-            .ability = ABILITY_TRANSISTOR,
-#line 11158
-            .lvl = 97,
-#line 11159
-            .nature = NATURE_TIMID,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 11161
-                MOVE_THUNDER_CAGE,
-                MOVE_VOLT_SWITCH,
-                MOVE_REFLECT,
-                MOVE_LIGHT_SCREEN,
-            },
-            },
-            {
-#line 11166
-            .species = SPECIES_REGISTEEL,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11166
-            .heldItem = ITEM_STEEL_GEM,
-#line 11170
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 11169
-            .ability = ABILITY_CLEAR_BODY,
-#line 11167
-            .lvl = 95,
-#line 11168
-            .nature = NATURE_BOLD,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 11170
-                MOVE_HARD_PRESS,
-                MOVE_BODY_PRESS,
-                MOVE_IRON_DEFENSE,
-                MOVE_PROTECT,
-            },
-            },
-            {
-#line 11175
-            .species = SPECIES_REGIDRAGO,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11175
-            .heldItem = ITEM_CUSTAP_BERRY,
-#line 11179
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 11178
-            .ability = ABILITY_DRAGONS_MAW,
-#line 11176
-            .lvl = 96,
-#line 11177
-            .nature = NATURE_HASTY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 11179
-                MOVE_DRACO_METEOR,
-                MOVE_CRUNCH,
-                MOVE_REVERSAL,
-                MOVE_EARTH_POWER,
-            },
-            },
-            {
-#line 11184
-            .species = SPECIES_REGICE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11184
-            .heldItem = ITEM_LIFE_ORB,
-#line 11188
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 11187
-            .ability = ABILITY_CLEAR_BODY,
-#line 11185
-            .lvl = 95,
-#line 11186
-            .nature = NATURE_MODEST,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 11188
-                MOVE_ZAP_CANNON,
-                MOVE_ICE_BEAM,
-                MOVE_SNOWSCAPE,
-                MOVE_ANCIENT_POWER,
-            },
-            },
-        },
-    },
-#line 11193
-    [DIFFICULTY_NORMAL][TRAINER_BRANDON] =
-    {
-#line 11194
-        .trainerName = _("Brandon"),
-#line 11195
-        .trainerClass = TRAINER_CLASS_PYRAMID_KING,
-#line 11196
-        .trainerPic = TRAINER_PIC_PYRAMID_KING_BRANDON,
-        .encounterMusic_gender =
-#line 11199
-            TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 11200
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 11201
-        .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 11197
-        .mugshotColor = MUGSHOT_COLOR_RED,
-        .partySize = 6,
-        .party = (const struct TrainerMon[])
-        {
-            {
-#line 11203
-            .species = SPECIES_REGIGIGAS,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11203
-            .heldItem = ITEM_LIECHI_BERRY,
-#line 11207
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 11206
             .ability = ABILITY_SLOW_START,
-#line 11204
+#line 11149
             .lvl = 97,
-#line 11205
+#line 11150
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 11207
+#line 11152
                 MOVE_FACADE,
                 MOVE_ZEN_HEADBUTT,
                 MOVE_AVALANCHE,
@@ -28271,22 +28141,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 11212
+#line 11157
             .species = SPECIES_REGIROCK,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11212
+#line 11157
             .heldItem = ITEM_CHOPLE_BERRY,
-#line 11216
+#line 11161
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 11215
+#line 11160
             .ability = ABILITY_CLEAR_BODY,
-#line 11213
+#line 11158
             .lvl = 95,
-#line 11214
+#line 11159
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 11216
+#line 11161
                 MOVE_STONE_EDGE,
                 MOVE_HAMMER_ARM,
                 MOVE_EXPLOSION,
@@ -28294,22 +28164,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 11221
+#line 11166
             .species = SPECIES_REGIELEKI,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11221
+#line 11166
             .heldItem = ITEM_ELECTRIC_GEM,
-#line 11225
+#line 11170
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 11224
+#line 11169
             .ability = ABILITY_TRANSISTOR,
-#line 11222
+#line 11167
             .lvl = 97,
-#line 11223
+#line 11168
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 11225
+#line 11170
                 MOVE_THUNDER_CAGE,
                 MOVE_VOLT_SWITCH,
                 MOVE_REFLECT,
@@ -28317,22 +28187,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 11230
+#line 11175
             .species = SPECIES_REGISTEEL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11230
+#line 11175
             .heldItem = ITEM_STEEL_GEM,
-#line 11234
+#line 11179
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 11233
+#line 11178
             .ability = ABILITY_CLEAR_BODY,
-#line 11231
+#line 11176
             .lvl = 95,
-#line 11232
+#line 11177
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 11234
+#line 11179
                 MOVE_HARD_PRESS,
                 MOVE_BODY_PRESS,
                 MOVE_IRON_DEFENSE,
@@ -28340,22 +28210,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 11239
+#line 11184
             .species = SPECIES_REGIDRAGO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11239
+#line 11184
             .heldItem = ITEM_CUSTAP_BERRY,
-#line 11243
+#line 11188
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 11242
+#line 11187
             .ability = ABILITY_DRAGONS_MAW,
-#line 11240
+#line 11185
             .lvl = 96,
-#line 11241
+#line 11186
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 11243
+#line 11188
                 MOVE_DRACO_METEOR,
                 MOVE_CRUNCH,
                 MOVE_REVERSAL,
@@ -28363,22 +28233,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 11248
+#line 11193
             .species = SPECIES_REGICE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11248
+#line 11193
             .heldItem = ITEM_LIFE_ORB,
-#line 11252
+#line 11197
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 11251
+#line 11196
             .ability = ABILITY_CLEAR_BODY,
-#line 11249
+#line 11194
             .lvl = 95,
-#line 11250
+#line 11195
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 11252
+#line 11197
                 MOVE_ZAP_CANNON,
                 MOVE_ICE_BEAM,
                 MOVE_SNOWSCAPE,
@@ -28387,237 +28257,398 @@ F_TRAINER_FEMALE |
             },
         },
     },
+#line 11202
+    [DIFFICULTY_NORMAL][TRAINER_BRANDON] =
+    {
+#line 11203
+        .trainerName = _("Brandon"),
+#line 11204
+        .trainerClass = TRAINER_CLASS_PYRAMID_KING,
+#line 11205
+        .trainerPic = TRAINER_PIC_PYRAMID_KING_BRANDON,
+        .encounterMusic_gender =
+#line 11208
+            TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 11209
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 11210
+        .aiFlags = AI_FLAG_SMART_TRAINER,
+#line 11206
+        .mugshotColor = MUGSHOT_COLOR_RED,
+        .partySize = 6,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 11212
+            .species = SPECIES_REGIGIGAS,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 11212
+            .heldItem = ITEM_LIECHI_BERRY,
+#line 11216
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 11215
+            .ability = ABILITY_SLOW_START,
+#line 11213
+            .lvl = 97,
+#line 11214
+            .nature = NATURE_ADAMANT,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 11216
+                MOVE_FACADE,
+                MOVE_ZEN_HEADBUTT,
+                MOVE_AVALANCHE,
+                MOVE_DRAIN_PUNCH,
+            },
+            },
+            {
+#line 11221
+            .species = SPECIES_REGIROCK,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 11221
+            .heldItem = ITEM_CHOPLE_BERRY,
+#line 11225
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 11224
+            .ability = ABILITY_CLEAR_BODY,
+#line 11222
+            .lvl = 95,
+#line 11223
+            .nature = NATURE_IMPISH,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 11225
+                MOVE_STONE_EDGE,
+                MOVE_HAMMER_ARM,
+                MOVE_EXPLOSION,
+                MOVE_STEALTH_ROCK,
+            },
+            },
+            {
+#line 11230
+            .species = SPECIES_REGIELEKI,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 11230
+            .heldItem = ITEM_ELECTRIC_GEM,
+#line 11234
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 11233
+            .ability = ABILITY_TRANSISTOR,
+#line 11231
+            .lvl = 97,
+#line 11232
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 11234
+                MOVE_THUNDER_CAGE,
+                MOVE_VOLT_SWITCH,
+                MOVE_REFLECT,
+                MOVE_LIGHT_SCREEN,
+            },
+            },
+            {
+#line 11239
+            .species = SPECIES_REGISTEEL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 11239
+            .heldItem = ITEM_STEEL_GEM,
+#line 11243
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 11242
+            .ability = ABILITY_CLEAR_BODY,
+#line 11240
+            .lvl = 95,
+#line 11241
+            .nature = NATURE_BOLD,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 11243
+                MOVE_HARD_PRESS,
+                MOVE_BODY_PRESS,
+                MOVE_IRON_DEFENSE,
+                MOVE_PROTECT,
+            },
+            },
+            {
+#line 11248
+            .species = SPECIES_REGIDRAGO,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 11248
+            .heldItem = ITEM_CUSTAP_BERRY,
+#line 11252
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 11251
+            .ability = ABILITY_DRAGONS_MAW,
+#line 11249
+            .lvl = 96,
+#line 11250
+            .nature = NATURE_HASTY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 11252
+                MOVE_DRACO_METEOR,
+                MOVE_CRUNCH,
+                MOVE_REVERSAL,
+                MOVE_EARTH_POWER,
+            },
+            },
+            {
 #line 11257
+            .species = SPECIES_REGICE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 11257
+            .heldItem = ITEM_LIFE_ORB,
+#line 11261
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 11260
+            .ability = ABILITY_CLEAR_BODY,
+#line 11258
+            .lvl = 95,
+#line 11259
+            .nature = NATURE_MODEST,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 11261
+                MOVE_ZAP_CANNON,
+                MOVE_ICE_BEAM,
+                MOVE_SNOWSCAPE,
+                MOVE_ANCIENT_POWER,
+            },
+            },
+        },
+    },
+#line 11266
     [DIFFICULTY_NORMAL][TRAINER_MARIELA] =
     {
-#line 11258
+#line 11267
         .trainerName = _("Mariela"),
-#line 11259
+#line 11268
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 11260
+#line 11269
         .trainerPic = TRAINER_PIC_PSYCHIC_F,
         .encounterMusic_gender =
-#line 11261
+#line 11270
 F_TRAINER_FEMALE | 
-#line 11262
+#line 11271
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 11263
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 11264
+#line 11272
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 11273
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 11266
+#line 11275
             .species = SPECIES_CHIMECHO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11268
+#line 11277
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 11267
+#line 11276
             .lvl = 41,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 11270
+#line 11279
     [DIFFICULTY_NORMAL][TRAINER_ALVARO] =
     {
-#line 11271
+#line 11280
         .trainerName = _("Alvaro"),
-#line 11272
+#line 11281
         .trainerClass = TRAINER_CLASS_PSYCHIC,
-#line 11273
+#line 11282
         .trainerPic = TRAINER_PIC_PSYCHIC_M,
         .encounterMusic_gender =
-#line 11275
+#line 11284
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
-#line 11276
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 11277
+#line 11285
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 11286
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 11279
+#line 11288
             .species = SPECIES_BANETTE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11281
+#line 11290
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 11280
+#line 11289
             .lvl = 41,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 11283
+#line 11292
             .species = SPECIES_KADABRA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11285
+#line 11294
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 11284
+#line 11293
             .lvl = 41,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 11287
+#line 11296
     [DIFFICULTY_NORMAL][TRAINER_EVERETT] =
     {
-#line 11288
+#line 11297
         .trainerName = _("Everett"),
-#line 11289
+#line 11298
         .trainerClass = TRAINER_CLASS_GENTLEMAN,
-#line 11290
+#line 11299
         .trainerPic = TRAINER_PIC_GENTLEMAN,
         .encounterMusic_gender =
-#line 11292
+#line 11301
             TRAINER_ENCOUNTER_MUSIC_RICH,
-#line 11293
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 11294
+#line 11302
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 11303
         .aiFlags = AI_FLAG_SMART_TRAINER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 11296
+#line 11305
             .species = SPECIES_WOBBUFFET,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11298
+#line 11307
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 11297
+#line 11306
             .lvl = 41,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 11300
+#line 11309
     [DIFFICULTY_NORMAL][TRAINER_RED] =
     {
-#line 11301
+#line 11310
         .trainerName = _("Red"),
-#line 11302
+#line 11311
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 11303
+#line 11312
         .trainerPic = TRAINER_PIC_RED,
         .encounterMusic_gender =
-#line 11305
+#line 11314
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 11306
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 11315
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 11308
+#line 11317
             .species = SPECIES_CHARMANDER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11310
+#line 11319
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 11309
+#line 11318
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 11312
+#line 11321
     [DIFFICULTY_NORMAL][TRAINER_LEAF] =
     {
-#line 11313
+#line 11322
         .trainerName = _("Leaf"),
-#line 11314
+#line 11323
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 11315
+#line 11324
         .trainerPic = TRAINER_PIC_LEAF,
         .encounterMusic_gender =
-#line 11316
+#line 11325
 F_TRAINER_FEMALE | 
-#line 11317
+#line 11326
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 11318
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 11327
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 11320
+#line 11329
             .species = SPECIES_BULBASAUR,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11322
+#line 11331
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 11321
+#line 11330
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 11324
+#line 11333
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_PLACEHOLDER] =
     {
-#line 11325
+#line 11334
         .trainerName = _("Brendan"),
-#line 11326
+#line 11335
         .trainerClass = TRAINER_CLASS_RS_PROTAG,
-#line 11327
+#line 11336
         .trainerPic = TRAINER_PIC_RS_BRENDAN,
         .encounterMusic_gender =
-#line 11329
+#line 11338
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 11330
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 11331
+#line 11339
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 11340
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 11333
+#line 11342
             .species = SPECIES_GROUDON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11335
+#line 11344
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 11334
+#line 11343
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 11337
+#line 11346
     [DIFFICULTY_NORMAL][TRAINER_MAY_PLACEHOLDER] =
     {
-#line 11338
+#line 11347
         .trainerName = _("May"),
-#line 11339
+#line 11348
         .trainerClass = TRAINER_CLASS_RS_PROTAG,
-#line 11340
+#line 11349
         .trainerPic = TRAINER_PIC_RS_MAY,
         .encounterMusic_gender =
-#line 11341
+#line 11350
 F_TRAINER_FEMALE | 
-#line 11342
+#line 11351
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 11343
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
-#line 11344
+#line 11352
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
+#line 11353
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 11346
+#line 11355
             .species = SPECIES_KYOGRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 11348
+#line 11357
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 11347
+#line 11356
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
