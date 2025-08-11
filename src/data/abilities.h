@@ -2412,7 +2412,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_SNOW_FORCE] =
     {
         .name = _("Snow Force"),
-        .description = COMPOUND_STRING("Powers up Ice and Flying moves in a Snow and Hail."),
+        .description = COMPOUND_STRING("Powers up icy weather."),
         .aiRating = 4,
     },
 

@@ -2992,8 +2992,8 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     if (aiData->partnerMove != 0 && hasPartner)
     {
         // This catches weather, terrain, screens, etc
-        if (AreMovesEquivalent(battlerAtk, battlerAtkPartner, move, aiData->partnerMove))
-            ADJUST_SCORE(-10);
+        //if (AreMovesEquivalent(battlerAtk, battlerAtkPartner, move, aiData->partnerMove))
+        //    ADJUST_SCORE(-10);
 
         switch (partnerEffect)
         {
@@ -4840,41 +4840,44 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
         break;
     case EFFECT_FIRST_TURN_ONLY:
-        if (gAiLogicData->abilities[battlerAtk] == ABILITY_GORILLA_TACTICS || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_BAND
-        || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SPECS || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SCARF
-        || (aiData->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK) || (IsBattlerTerrainAffected(battlerDef, STATUS_FIELD_PSYCHIC_TERRAIN))
-        || ((aiData->abilities[battlerDef] == ABILITY_INNER_FOCUS) || ((aiData->abilities[battlerDef] == ABILITY_SHIELD_DUST
-        || aiData->abilities[battlerDef] == ABILITY_DAZZLING || aiData->abilities[battlerDef] == ABILITY_QUEENLY_MAJESTY 
-        || aiData->abilities[BATTLE_PARTNER(battlerDef)] == ABILITY_DAZZLING || aiData->abilities[BATTLE_PARTNER(battlerDef)] == ABILITY_QUEENLY_MAJESTY) 
-        && !DoesBattlerIgnoreAbilityChecks(battlerDef, gAiLogicData->abilities[battlerDef], move))))
-        {    
-            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-            break;
-        }
-        else if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER) // Partner trainers only
+        if (MoveHasAdditionalEffectWithChance(move, MOVE_EFFECT_FLINCH, 100))
         {
-            if (HasMove(battlerDef, MOVE_FAKE_OUT) && gDisableStructs[battlerDef].isFirstTurn 
-            && AI_WhoStrikesFirst(battlerAtk, battlerDef, MOVE_NONE, MOVE_NONE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) // If target has Fake out and it's target first turn
-            {
-                ADJUST_SCORE(GOOD_EFFECT + FAST_KILL + 1); // +19
+            if (gAiLogicData->abilities[battlerAtk] == ABILITY_GORILLA_TACTICS || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_BAND
+            || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SPECS || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SCARF
+            || (aiData->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK) || (IsBattlerTerrainAffected(battlerDef, STATUS_FIELD_PSYCHIC_TERRAIN))
+            || ((aiData->abilities[battlerDef] == ABILITY_INNER_FOCUS) || ((aiData->abilities[battlerDef] == ABILITY_SHIELD_DUST
+            || aiData->abilities[battlerDef] == ABILITY_DAZZLING || aiData->abilities[battlerDef] == ABILITY_QUEENLY_MAJESTY 
+            || aiData->abilities[BATTLE_PARTNER(battlerDef)] == ABILITY_DAZZLING || aiData->abilities[BATTLE_PARTNER(battlerDef)] == ABILITY_QUEENLY_MAJESTY) 
+            && !DoesBattlerIgnoreAbilityChecks(battlerDef, gAiLogicData->abilities[battlerDef], move))))
+            {    
+                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             }
-            // If Player has kill on Target but is slower, and Partner has no kills
-            else if ((AI_WhoStrikesFirst(BATTLE_PARTNER(battlerAtk), battlerDef, MOVE_NONE, MOVE_NONE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) && CanAIFaintTarget(BATTLE_PARTNER(battlerAtk), battlerDef, 1) && !CanAIFaintTarget(battlerAtk, battlerDef, 1) && !CanAIFaintTarget(battlerAtk, BATTLE_PARTNER(battlerDef), 1))
+            else if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER) // Partner trainers only
             {
-                ADJUST_SCORE(GOOD_EFFECT + FAST_KILL + 1); // +19
+                if (HasMove(battlerDef, MOVE_FAKE_OUT) && gDisableStructs[battlerDef].isFirstTurn 
+                && AI_WhoStrikesFirst(battlerAtk, battlerDef, MOVE_NONE, MOVE_NONE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) // If target has Fake out and it's target first turn
+                {
+                    ADJUST_SCORE(GOOD_EFFECT + FAST_KILL + 1); // +19
+                    break;
+                }
+                // If Player has kill on Target but is slower, and Partner has no kills
+                else if ((AI_WhoStrikesFirst(BATTLE_PARTNER(battlerAtk), battlerDef, MOVE_NONE, MOVE_NONE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) && CanAIFaintTarget(BATTLE_PARTNER(battlerAtk), battlerDef, 1) && !CanAIFaintTarget(battlerAtk, battlerDef, 1) && !CanAIFaintTarget(battlerAtk, BATTLE_PARTNER(battlerDef), 1))
+                {
+                    ADJUST_SCORE(GOOD_EFFECT + FAST_KILL + 1); // +19
+                    break;
+                }
+                else 
+                {
+                    ADJUST_SCORE(11); // +11
+                    break;
+                }
+            }
+            else
+            {
+                ADJUST_SCORE(GOOD_EFFECT + SLOW_KILL); // +14
                 break;
             }
-            else 
-            {
-                ADJUST_SCORE(11); // +11
-                break;
-            }
-        }
-        else
-        {
-            ADJUST_SCORE(GOOD_EFFECT + SLOW_KILL); // +14
-            break;
         }
         break;
     case EFFECT_STOCKPILE:

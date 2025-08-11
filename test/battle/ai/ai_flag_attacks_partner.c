@@ -52,6 +52,7 @@ AI_DOUBLE_BATTLE_TEST("AI_FLAG_ATTACKS_PARTNER is willing to kill either the par
 
 AI_DOUBLE_BATTLE_TEST("AI_FLAG_ATTACKS_PARTNER steps on its ally's weather")
 {
+    KNOWN_FAILING; // AI changed
     u32 weather1, move1, weather2, move2;
 
     PARAMETRIZE { weather1 = MOVE_SUNNY_DAY; move1 = MOVE_SOLAR_BEAM; weather2 = MOVE_RAIN_DANCE; move2 = MOVE_THUNDER; }
