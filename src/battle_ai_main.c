@@ -372,6 +372,7 @@ void SetupAIPredictionData(u32 battler, enum SwitchType switchType)
         {
             ModifySwitchAfterMoveScoring(opposingBattler);
         }
+    }
 
     gAiLogicData->aiPredictionInProgress = FALSE;
 }
@@ -2093,7 +2094,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
         case EFFECT_HIT_SWITCH_TARGET:
-            else if (gBattleMons[battlerDef].volatiles.perishSong)
+            if (gBattleMons[battlerDef].volatiles.perishSong)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
         case EFFECT_CONVERSION:
@@ -5242,7 +5243,6 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                     break;
                 }
             }
-        }
         break;
     case EFFECT_CORROSIVE_GAS:
         if (CanKnockOffItem(battlerDef, aiData->items[battlerDef]))
