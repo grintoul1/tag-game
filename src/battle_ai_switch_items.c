@@ -1289,7 +1289,7 @@ static bool32 PartnerShouldSwitchIfOpponentChargingOrInvulnerable(u32 battler)
     bool32 isOpposingBattlerChargingOrInvulnerable = (IsSemiInvulnerable(opposingBattler, incomingMove) || IsTwoTurnNotSemiInvulnerableMove(opposingBattler, incomingMove));
     bool32 isOpposingBattlerPartnerChargingOrInvulnerable = (IsSemiInvulnerable(opposingBattlerPartner, incomingMovePartner) || IsTwoTurnNotSemiInvulnerableMove(opposingBattlerPartner, incomingMovePartner));
 
-    if (IsDoubleBattle() || !(gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SMART_SWITCHING))
+    if (IsDoubleBattle() || !(gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING))
     {
         if ((isOpposingBattlerChargingOrInvulnerable && isOpposingBattlerPartnerChargingOrInvulnerable && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE) && RandomPercentage(RNG_AI_SWITCH_FREE_TURN, GetSwitchChance(SHOULD_SWITCH_FREE_TURN)))
             return SetSwitchinAndSwitch(battler, PARTY_SIZE);
