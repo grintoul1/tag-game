@@ -991,12 +991,14 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
     u16 monAbility, aiMove;
     u32 opposingBattler1 = BATTLE_PARTNER(GetOppositeBattler(battler));
     u32 opposingBattler2 = GetOppositeBattler(battler);
-    u32 switchingmove = 0;
+    u32 switchingMove = 0;
+    u32 switchingMoveOpposite = 0;
+    u32 switchingMoveOppositePartner = 0;
     u32 incomingMove = GetIncomingMove(battler, opposingBattler2, gAiLogicData);
     bool32 isOpposingBattlerChargingOrInvulnerable = (IsSemiInvulnerable(opposingBattler2, incomingMove) || IsTwoTurnNotSemiInvulnerableMove(opposingBattler2, incomingMove));
-    s32 i, j, k=0;
+    s32 i, oppositeBattlerMoveTypes, oppositeBattlerPartnerMoveTypes, oppositeBattlerMoveCount, oppositeBattlerPartnerMoveCount=0;
 
-    // Don't switch unless dead to exactly one move
+    // Don't switch unless outsped and OHKO'd by exactly one move type from opposite battler
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         aiMove = gBattleMons[opposingBattler2].moves[i];
@@ -1007,15 +1009,20 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
             {
                 if (!AI_DoesChoiceEffectBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_IsSlower(battler, opposingBattler2, aiMove, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                 {
-                    if(GetMoveType(aiMove) != GetMoveType(switchingmove))
+                    oppositeBattlerMoveCount = oppositeBattlerMoveCount + 1;
+                    if(GetMoveType(aiMove) != GetMoveType(switchingMove))
                     {
-                        switchingmove = aiMove;
-                        k = k+1;
+                        switchingMove = aiMove;
+                        oppositeBattlerMoveTypes = oppositeBattlerMoveTypes + 1;
                     }
                 }
             }
         }
     }
+    switchingMoveOpposite = switchingMove;
+    switchingMove = 0;
+
+    // Don't switch if OHKO'd by any other move type from opposite battler's partner, regardless of speed
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         aiMove = gBattleMons[opposingBattler1].moves[i];
@@ -1024,24 +1031,88 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
             {
-                if (!AI_DoesChoiceEffectBlockMove(opposingBattler1, aiMove) && (AI_GetDamage(opposingBattler1, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_IsSlower(battler, opposingBattler1, aiMove, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
+                if (!AI_DoesChoiceEffectBlockMove(opposingBattler1, aiMove) && (AI_GetDamage(opposingBattler1, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp))
                 {
-                    if(GetMoveType(aiMove) != GetMoveType(switchingmove))
+                    // Check to ensure move isn't the same move stored from other battler
+                    if (aiMove != switchingMoveOpposite)
                     {
-                        switchingmove = aiMove;
-                        k = k+1;
+                        oppositeBattlerMoveCount = oppositeBattlerMoveCount + 1;
+                        if(GetMoveType(aiMove) != GetMoveType(switchingMove))
+                        {
+                            switchingMove = aiMove;
+                            oppositeBattlerMoveTypes = oppositeBattlerMoveTypes + 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    switchingMove = 0;
+
+    // Now check opposite battler's partner
+    // Don't switch unless outsped and OHKO'd by exactly one move type from opposite battler's partner
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        aiMove = gBattleMons[opposingBattler2].moves[i];
+        if (aiMove != MOVE_NONE)
+        {
+            // Only check damage if it's a damaging move
+            if (!IsBattleMoveStatus(aiMove))
+            {
+                if (!AI_DoesChoiceEffectBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_IsSlower(battler, opposingBattler2, aiMove, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
+                {
+                    oppositeBattlerPartnerMoveCount = oppositeBattlerPartnerMoveCount + 1;
+                    if(GetMoveType(aiMove) != GetMoveType(switchingMove))
+                    {
+                        switchingMove = aiMove;
+                        oppositeBattlerPartnerMoveTypes = oppositeBattlerPartnerMoveTypes+1;
+                    }
+                }
+            }
+        }
+    }
+    switchingMoveOppositePartner = switchingMove;
+    switchingMove = 0;
+
+    // Don't switch if OHKO'd by any other move type from opposite battler, regardless of speed
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        aiMove = gBattleMons[opposingBattler1].moves[i];
+        if (aiMove != MOVE_NONE)
+        {
+            // Only check damage if it's a damaging move
+            if (!IsBattleMoveStatus(aiMove))
+            {
+                if (!AI_DoesChoiceEffectBlockMove(opposingBattler1, aiMove) && (AI_GetDamage(opposingBattler1, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp))
+                {
+                    // Check to ensure move isn't the same move stored from other battler
+                    if (aiMove != switchingMoveOppositePartner)
+                    {
+                        oppositeBattlerPartnerMoveCount = oppositeBattlerPartnerMoveCount + 1;
+                        if(GetMoveType(aiMove) != GetMoveType(switchingMove))
+                        {
+                            switchingMove = aiMove;
+                            oppositeBattlerPartnerMoveTypes = oppositeBattlerPartnerMoveTypes+1;
+                        }
                     }
                 }
             }
         }
     }
 
-    u32 incomingType = GetMoveType(switchingmove);
-     #ifndef NDEBUG
-        MgbaPrintf(MGBA_LOG_WARN, "k %d", k);
+    if (switchingMoveOpposite != 0)
+        switchingMove = switchingMoveOpposite;
+    else
+        switchingMove = switchingMoveOppositePartner;
+
+    u32 incomingType = GetMoveType(switchingMove);
+
+    #ifndef NDEBUG
+        MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveTypes %d", oppositeBattlerMoveTypes);
+        MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveTypes %d", oppositeBattlerPartnerMoveTypes);
     #endif
 
-    if (k!=1)
+    if (!(oppositeBattlerMoveTypes=1 || oppositeBattlerPartnerMoveTypes=1))
         return FALSE;
     if (CanUseSuperEffectiveMoveAgainstOpponents(battler) && (RandomPercentage(RNG_AI_SWITCH_ABSORBING_STAY_IN, PARTNER_STAY_IN_ABSORBING_PERCENTAGE) || gAiLogicData->aiPredictionInProgress))
         return FALSE;
@@ -1071,7 +1142,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         if (IsAceMon(battler, i))
             continue;
 
-        if((!(gItemsInfo[gBattleMons[opposingBattler2].item].holdEffect == HOLD_EFFECT_RING_TARGET)) && (!(gItemsInfo[gBattleMons[opposingBattler1].item].holdEffect == HOLD_EFFECT_RING_TARGET)))
+        if(!GetMonData(&party[i], MON_DATA_HELD_ITEM, NULL) == HOLD_EFFECT_RING_TARGET)
         {
             if((incomingType == TYPE_ELECTRIC) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_GROUND) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_GROUND)))
                 return SetSwitchinAndSwitch(battler, i);
@@ -1121,17 +1192,27 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_EARTH_EATER;
         absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_LEVITATE;
     }
-    else if (IsSoundMove(switchingmove) || (isOpposingBattlerChargingOrInvulnerable && IsSoundMove(switchingmove)))
+    // Only run these checks if dead to exactly one move
+    else if (oppositeBattlerMoveCount <= 1 && oppositeBattlerPartnerMoveCount <= 1)
     {
-        absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_SOUNDPROOF;
-    }
-    else if (IsBallisticMove(switchingmove) || (isOpposingBattlerChargingOrInvulnerable && IsBallisticMove(switchingmove)))
-    {
-        absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_BULLETPROOF;
-    }
-    else if (IsWindMove(switchingmove) || (isOpposingBattlerChargingOrInvulnerable && IsWindMove(switchingmove)))
-    {
-        absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_WIND_RIDER;
+        // If only dead to Sound move
+        if ((IsSoundMove(switchingMoveOpposite) || (isOpposingBattlerChargingOrInvulnerable && IsSoundMove(switchingMoveOpposite)) && switchingMoveOppositePartner == 0)
+            || (IsSoundMove(switchingMoveOppositePartner) || (isOpposingBattlerChargingOrInvulnerable && IsSoundMove(switchingMoveOppositePartner)) && switchingMoveOpposite == 0))
+        {
+            absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_SOUNDPROOF;
+        }
+        // If only dead to Ballistic move
+        else if ((IsBallisticMove(switchingMoveOpposite) || (isOpposingBattlerChargingOrInvulnerable && IsBallisticMove(switchingMoveOpposite)) && switchingMoveOppositePartner == 0)
+            || (IsBallisticMove(switchingMoveOppositePartner) || (isOpposingBattlerChargingOrInvulnerable && IsBallisticMove(switchingMoveOppositePartner)) && switchingMoveOpposite == 0))
+        {
+            absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_BULLETPROOF;
+        }
+        // If only dead to Wind move
+        else if ((IsWindMove(switchingMoveOpposite) || (isOpposingBattlerChargingOrInvulnerable && IsWindMove(switchingMoveOpposite)) && switchingMoveOppositePartner == 0)
+            || (IsWindMove(switchingMoveOppositePartner) || (isOpposingBattlerChargingOrInvulnerable && IsWindMove(switchingMoveOppositePartner)) && switchingMoveOpposite == 0))
+        {
+            absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_WIND_RIDER;
+        }
     }
 
     // Check current mon for all absorbing abilities
