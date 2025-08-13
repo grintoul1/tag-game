@@ -97,16 +97,11 @@ AquaHideout_B2F_EventScript_MattShelly_ChoosePartyForMultiBattle::
 	closemessage
 
 AquaHideout_B2F_EventScript_MattShellyDoMultiBattle::
-	multi_2_vs_2 TRAINER_SHELLY_WEATHER_INSTITUTE, AquaHideout_B2F_Text_ShellyDefeat, TRAINER_MATT, AquaHideout_B2F_Text_MattDefeat, PARTNER_TABITHA
+	multi_2_vs_2 TRAINER_SHELLY_AQUA_HIDEOUT, AquaHideout_B2F_Text_ShellyDefeat, TRAINER_MATT_AQUA_HIDEOUT, AquaHideout_B2F_Text_MattDefeat, PARTNER_TABITHA
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, AquaHideout_B2F_EventScript_MattShellyVictory
 	fadescreen FADE_TO_BLACK
-	destroyfollowernpc
-	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
-	setvar VAR_PARTNER_EMMIE_STATE, 48
-	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
-	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	special SetCB2WhiteOut
 	waitstate
 
@@ -373,11 +368,6 @@ special LoadPlayerParty
 switch VAR_RESULT
 case 1, AquaHideout_B2F_EventScript_Grunt4Grunt1Victory
 fadescreen FADE_TO_BLACK
-destroyfollowernpc
-clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
-setvar VAR_PARTNER_EMMIE_STATE, 48
-setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
-createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 special SetCB2WhiteOut
 waitstate
 
@@ -441,11 +431,6 @@ special LoadPlayerParty
 switch VAR_RESULT
 case 1, AquaHideout_B2F_EventScript_Grunt6Grunt8Victory
 fadescreen FADE_TO_BLACK
-destroyfollowernpc
-clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
-setvar VAR_PARTNER_EMMIE_STATE, 48
-setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
-createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 special SetCB2WhiteOut
 waitstate
 
