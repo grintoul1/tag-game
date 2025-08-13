@@ -373,6 +373,9 @@ void SetupAIPredictionData(u32 battler, enum SwitchType switchType)
             ModifySwitchAfterMoveScoring(opposingBattler);
         }
     }
+    
+    // Determine whether AI will use predictions this turn
+    gAiLogicData->predictingSwitch = RandomPercentage(RNG_AI_PREDICT_SWITCH, PREDICT_SWITCH_CHANCE);
 
     gAiLogicData->aiPredictionInProgress = FALSE;
 }
