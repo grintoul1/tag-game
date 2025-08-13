@@ -1146,19 +1146,19 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         // Check for type immunities without considering abilities
         if(!(GetMonData(&party[i], MON_DATA_HELD_ITEM, NULL) == HOLD_EFFECT_RING_TARGET))
         {
-            if((incomingType == TYPE_ELECTRIC) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
+            if((incomingType == TYPE_ELECTRIC) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_POISON) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
+            if((incomingType == TYPE_POISON) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if(((incomingType == TYPE_NORMAL) || (incomingType == TYPE_FIGHTING)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_SCRAPPY) && (GetBattlerAbility(opposingBattler2) != ABILITY_SCRAPPY)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_MINDS_EYE) && (GetBattlerAbility(opposingBattler2) != ABILITY_MINDS_EYE)) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
+            if(((incomingType == TYPE_NORMAL) || (incomingType == TYPE_FIGHTING)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_SCRAPPY) && (GetBattlerAbility(opposingBattler2) != ABILITY_SCRAPPY)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_MINDS_EYE) && (GetBattlerAbility(opposingBattler2) != ABILITY_MINDS_EYE)) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_DRAGON) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
+            if((incomingType == TYPE_DRAGON) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_GROUND) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
+            if((incomingType == TYPE_GROUND) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_GHOST) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
+            if((incomingType == TYPE_GHOST) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_PSYCHIC) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
+            if((incomingType == TYPE_PSYCHIC) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
         }
     }
@@ -3298,13 +3298,6 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
 {
     #ifndef NDEBUG
         MgbaPrintf(MGBA_LOG_WARN, "CustomGetBestMonIntegrated");
-        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct BoxPokemon) %d", sizeof(struct BoxPokemon));
-        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct Pokemon) %d", sizeof(struct Pokemon));
-        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct SpeciesInfo) %d", sizeof(struct SpeciesInfo));
-        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct PokemonSubstruct0) %d", sizeof(struct PokemonSubstruct0));
-        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct PokemonSubstruct1) %d", sizeof(struct PokemonSubstruct1));
-        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct PokemonSubstruct2) %d", sizeof(struct PokemonSubstruct2));
-        MgbaPrintf(MGBA_LOG_WARN, "sizeof(struct PokemonSubstruct3) %d", sizeof(struct PokemonSubstruct3));
         u32 maxDamageDealtStored[PARTY_SIZE]={0};
         const u8 * checkingPosition;
         const u8 * partyMon=SPECIES_NONE;

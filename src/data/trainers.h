@@ -20807,7 +20807,7 @@ F_TRAINER_FEMALE |
 #line 8254
             TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 8255
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 8256
         .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 8257
