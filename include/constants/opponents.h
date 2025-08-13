@@ -33,7 +33,7 @@
 #define TRAINER_GRUNT_AQUA_HIDEOUT_5         27
 #define TRAINER_GRUNT_AQUA_HIDEOUT_6         28
 #define TRAINER_FREDRICK                     29
-#define TRAINER_MATT                         30
+#define TRAINER_MATT_AQUA_HIDEOUT            30
 #define TRAINER_PYRE_AQUAGRUNT1              31
 #define TRAINER_SHELLY_WEATHER_INSTITUTE     32
 #define TRAINER_SHELLY_SEAFLOOR_CAVERN       33
@@ -43,7 +43,7 @@
 #define TRAINER_ROSE_1                       37
 #define TRAINER_FELIX                        38
 #define TRAINER_VIOLET                       39
-#define TRAINER_ROSE_2                       40
+#define TRAINER_MATT_SEAFLOOR_CAVERN         40
 #define TRAINER_MATT_MT_PYRE                 41
 #define TRAINER_TABITHA_MT_PYRE              42
 #define TRAINER_ROSE_5                       43
@@ -63,7 +63,7 @@
 #define TRAINER_GRUNT_ROUTE109_3             57
 #define TRAINER_AUSTINA                      58
 #define TRAINER_GWEN                         59
-#define TRAINER_LOLA_2                       60
+#define TRAINER_SHELLY_AQUA_HIDEOUT          60
 #define TRAINER_ARCHIE_MT_PYRE               61
 #define TRAINER_MAXIE_MT_PYRE                62
 #define TRAINER_LOLA_5                       63
