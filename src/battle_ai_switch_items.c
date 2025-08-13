@@ -996,7 +996,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
     u32 switchingMoveOppositePartner = 0;
     u32 incomingMove = GetIncomingMove(battler, opposingBattler2, gAiLogicData);
     bool32 isOpposingBattlerChargingOrInvulnerable = (IsSemiInvulnerable(opposingBattler2, incomingMove) || IsTwoTurnNotSemiInvulnerableMove(opposingBattler2, incomingMove));
-    s32 i, oppositeBattlerMoveTypes, oppositeBattlerPartnerMoveTypes, oppositeBattlerMoveCount, oppositeBattlerPartnerMoveCount=0;
+    s32 i, j, oppositeBattlerMoveTypes = 0, oppositeBattlerPartnerMoveTypes = 0, oppositeBattlerMoveCount = 0, oppositeBattlerPartnerMoveCount=0;
 
     // Don't switch unless outsped and OHKO'd by exactly one move type from opposite battler
     for (i = 0; i < MAX_MON_MOVES; i++)
@@ -1020,7 +1020,6 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         }
     }
     switchingMoveOpposite = switchingMove;
-    switchingMove = 0;
 
     // Don't switch if OHKO'd by any other move type from opposite battler's partner, regardless of speed
     for (i = 0; i < MAX_MON_MOVES; i++)
@@ -1072,7 +1071,6 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         }
     }
     switchingMoveOppositePartner = switchingMove;
-    switchingMove = 0;
 
     // Don't switch if OHKO'd by any other move type from opposite battler, regardless of speed
     for (i = 0; i < MAX_MON_MOVES; i++)
@@ -1108,11 +1106,14 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
     u32 incomingType = GetMoveType(switchingMove);
 
     #ifndef NDEBUG
+        MgbaPrintf(MGBA_LOG_WARN, "PartnerFindMonThatAbsorbsOpponentsMove", PartnerFindMonThatAbsorbsOpponentsMove);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveTypes %d", oppositeBattlerMoveTypes);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveTypes %d", oppositeBattlerPartnerMoveTypes);
+        MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveCount %d", oppositeBattlerMoveCount);
+        MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveCount %d", oppositeBattlerPartnerMoveCount);
     #endif
 
-    if (!(oppositeBattlerMoveTypes=1 || oppositeBattlerPartnerMoveTypes=1))
+    if (!(oppositeBattlerMoveTypes == 1 || oppositeBattlerPartnerMoveTypes == 1))
         return FALSE;
     if (CanUseSuperEffectiveMoveAgainstOpponents(battler) && (RandomPercentage(RNG_AI_SWITCH_ABSORBING_STAY_IN, PARTNER_STAY_IN_ABSORBING_PERCENTAGE) || gAiLogicData->aiPredictionInProgress))
         return FALSE;
@@ -1142,21 +1143,22 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         if (IsAceMon(battler, i))
             continue;
 
-        if(!GetMonData(&party[i], MON_DATA_HELD_ITEM, NULL) == HOLD_EFFECT_RING_TARGET)
+        // Check for type immunities without considering abilities
+        if(!(GetMonData(&party[i], MON_DATA_HELD_ITEM, NULL) == HOLD_EFFECT_RING_TARGET))
         {
-            if((incomingType == TYPE_ELECTRIC) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_GROUND) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_GROUND)))
+            if((incomingType == TYPE_ELECTRIC) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_POISON) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_STEEL) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_STEEL)))
+            if((incomingType == TYPE_POISON) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
                 return SetSwitchinAndSwitch(battler, i);
-            if(((incomingType == TYPE_NORMAL) || (incomingType == TYPE_FIGHTING)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_SCRAPPY) && (GetBattlerAbility(opposingBattler2) != ABILITY_SCRAPPY)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_MINDS_EYE) && (GetBattlerAbility(opposingBattler2) != ABILITY_MINDS_EYE)) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_GHOST) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_GHOST)))
+            if(((incomingType == TYPE_NORMAL) || (incomingType == TYPE_FIGHTING)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_SCRAPPY) && (GetBattlerAbility(opposingBattler2) != ABILITY_SCRAPPY)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_MINDS_EYE) && (GetBattlerAbility(opposingBattler2) != ABILITY_MINDS_EYE)) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_DRAGON) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_FAIRY) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_FAIRY)))
+            if((incomingType == TYPE_DRAGON) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_GROUND) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_FLYING) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_FLYING)))
+            if((incomingType == TYPE_GROUND) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_GHOST) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_NORMAL) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_NORMAL)))
+            if((incomingType == TYPE_GHOST) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_PSYCHIC) && ((GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) == TYPE_DARK) || (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == TYPE_DARK)))
+            if((incomingType == TYPE_PSYCHIC) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) == UQ_4_12(0)))
                 return SetSwitchinAndSwitch(battler, i);
         }
     }
@@ -1196,20 +1198,20 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
     else if (oppositeBattlerMoveCount <= 1 && oppositeBattlerPartnerMoveCount <= 1)
     {
         // If only dead to Sound move
-        if ((IsSoundMove(switchingMoveOpposite) || (isOpposingBattlerChargingOrInvulnerable && IsSoundMove(switchingMoveOpposite)) && switchingMoveOppositePartner == 0)
-            || (IsSoundMove(switchingMoveOppositePartner) || (isOpposingBattlerChargingOrInvulnerable && IsSoundMove(switchingMoveOppositePartner)) && switchingMoveOpposite == 0))
+        if ((IsSoundMove(switchingMoveOpposite) || ((isOpposingBattlerChargingOrInvulnerable && IsSoundMove(switchingMoveOpposite)) && switchingMoveOppositePartner == 0))
+            || (IsSoundMove(switchingMoveOppositePartner) || ((isOpposingBattlerChargingOrInvulnerable && IsSoundMove(switchingMoveOppositePartner)) && switchingMoveOpposite == 0)))
         {
             absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_SOUNDPROOF;
         }
         // If only dead to Ballistic move
-        else if ((IsBallisticMove(switchingMoveOpposite) || (isOpposingBattlerChargingOrInvulnerable && IsBallisticMove(switchingMoveOpposite)) && switchingMoveOppositePartner == 0)
-            || (IsBallisticMove(switchingMoveOppositePartner) || (isOpposingBattlerChargingOrInvulnerable && IsBallisticMove(switchingMoveOppositePartner)) && switchingMoveOpposite == 0))
+        else if ((IsBallisticMove(switchingMoveOpposite) || ((isOpposingBattlerChargingOrInvulnerable && IsBallisticMove(switchingMoveOpposite)) && switchingMoveOppositePartner == 0))
+            || (IsBallisticMove(switchingMoveOppositePartner) || ((isOpposingBattlerChargingOrInvulnerable && IsBallisticMove(switchingMoveOppositePartner)) && switchingMoveOpposite == 0)))
         {
             absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_BULLETPROOF;
         }
         // If only dead to Wind move
-        else if ((IsWindMove(switchingMoveOpposite) || (isOpposingBattlerChargingOrInvulnerable && IsWindMove(switchingMoveOpposite)) && switchingMoveOppositePartner == 0)
-            || (IsWindMove(switchingMoveOppositePartner) || (isOpposingBattlerChargingOrInvulnerable && IsWindMove(switchingMoveOppositePartner)) && switchingMoveOpposite == 0))
+        else if ((IsWindMove(switchingMoveOpposite) || ((isOpposingBattlerChargingOrInvulnerable && IsWindMove(switchingMoveOpposite)) && switchingMoveOppositePartner == 0))
+            || (IsWindMove(switchingMoveOppositePartner) || ((isOpposingBattlerChargingOrInvulnerable && IsWindMove(switchingMoveOppositePartner)) && switchingMoveOpposite == 0)))
         {
             absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_WIND_RIDER;
         }
