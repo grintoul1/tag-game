@@ -264,6 +264,7 @@ extern const u8 gBattleAnimMove_Hail[];
 extern const u8 gBattleAnimMove_Torment[];
 extern const u8 gBattleAnimMove_Flatter[];
 extern const u8 gBattleAnimMove_WillOWisp[];
+extern const u8 gBattleAnimMove_ChillOWisp[];
 extern const u8 gBattleAnimMove_Memento[];
 extern const u8 gBattleAnimMove_Facade[];
 extern const u8 gBattleAnimMove_FocusPunch[];

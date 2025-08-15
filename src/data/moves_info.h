@@ -22766,4 +22766,29 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .metronomeBanned = TRUE,
         .battleAnimScript = gBattleAnimMove_ChillyReception,
     },
+
+    [MOVE_CHILL_O_WISP] =
+    {
+        .name = COMPOUND_STRING("Chill-O-Wisp"),
+        .description = COMPOUND_STRING(
+            "Inflicts frostbite on the foe\n"
+            "with a chilling flare."),
+        .effect = EFFECT_NON_VOLATILE_STATUS,
+        .power = 0,
+        .type = TYPE_ICE,
+        .accuracy = 85,
+        .pp = 15,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .argument = { .nonVolatileStatus = MOVE_EFFECT_FROSTBITE },
+        .zMove = { .effect = Z_EFFECT_ATK_UP_1 },
+        .magicCoatAffected = TRUE,
+        .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_SUNNY_DAY},
+        .battleAnimScript = gBattleAnimMove_ChillOWisp,
+        .validApprenticeMove = TRUE,
+    },
 };
