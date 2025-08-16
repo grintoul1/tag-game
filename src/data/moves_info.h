@@ -22771,8 +22771,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Chill-O-Wisp"),
         .description = COMPOUND_STRING(
-            "Inflicts frostbite on the foe\n"
-            "with a chilling flare."),
+            "Inflicts frostbite with\n"
+            "a chilling flare."),
         .effect = EFFECT_NON_VOLATILE_STATUS,
         .power = 0,
         .type = TYPE_ICE,
