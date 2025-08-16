@@ -2096,7 +2096,7 @@ F_TRAINER_FEMALE |
 #line 796
                 MOVE_HEX,
                 MOVE_THUNDER_WAVE,
-                MOVE_TOXIC,
+                MOVE_CHILL_O_WISP,
                 MOVE_WILL_O_WISP,
             },
             },
