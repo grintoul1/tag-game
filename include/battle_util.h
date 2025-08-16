@@ -394,7 +394,7 @@ bool32 HadMoreThanHalfHpNowDoesnt(u32 battler);
 void UpdateStallMons(void);
 bool32 TryRestoreHPBerries(u32 battler, enum ItemCaseId caseId);
 bool32 TrySwitchInEjectPack(enum ItemCaseId caseID);
-u32 GetMonVolatile(u32 battler, enum Volatile _volatile);
+u32 GetBattlerVolatile(u32 battler, enum Volatile _volatile);
 void SetMonVolatile(u32 battler, enum Volatile _volatile, u32 newValue);
 u32 TryBoosterEnergy(u32 battler, u32 ability, enum ItemCaseId caseID);
 bool32 ItemHealMonVolatile(u32 battler, u16 itemId);
@@ -406,5 +406,7 @@ bool32 IsHazardOnSideAndClear(u32 side, enum Hazards hazardType);
 void RemoveHazardFromField(u32 side, enum Hazards hazardType);
 bool32 CanMoveSkipAccuracyCalc(u32 battlerAtk, u32 battlerDef, u32 abilityAtk, u32 abilityDef, u32 move, enum FunctionCallOption option);
 u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u32 defAbility, u32 atkHoldEffect, u32 defHoldEffect);
+bool32 IsSemiInvulnerable(u32 battler, enum SemiInvulnerableExclusion excludeCommander);
+bool32 BreaksThroughSemiInvulnerablity(u32 battler, u32 move);
 
 #endif // GUARD_BATTLE_UTIL_H

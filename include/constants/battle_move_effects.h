@@ -9,7 +9,7 @@ enum __attribute__((packed)) BattleMoveEffects
     EFFECT_ABSORB,
     EFFECT_EXPLOSION,
     EFFECT_MISTY_EXPLOSION, // Same as EFFECT_EXPLOSION but it's boosted on Misty Terrain
-    EFFECT_DREAM_EATER,
+    EFFECT_DREAM_EATER, // Same as EFFECT_ABSORB but it can only be used on sleeping targets
     EFFECT_MIRROR_MOVE,
     EFFECT_ATTACK_UP,
     EFFECT_DEFENSE_UP,
@@ -354,6 +354,8 @@ enum __attribute__((packed)) BattleMoveEffects
     EFFECT_STEEL_ROLLER, // Will fail if there is no terrain up but removes it regardless if attacker is removed from field or not
     EFFECT_STONE_AXE, // Not to be confused with MOVE_EFFECT_STEALTH_ROCK. They have two different activation timings.
     EFFECT_CEASELESS_EDGE, // Same applies to spikes
+    EFFECT_FROZEN_RECEPTION,
+    EFFECT_ENLIGHTENING,
     NUM_BATTLE_MOVE_EFFECTS,
 };
 

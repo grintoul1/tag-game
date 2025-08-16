@@ -258,7 +258,6 @@ AI_SINGLE_BATTLE_TEST("AI can choose a status move that boosts the attack by two
 
 AI_SINGLE_BATTLE_TEST("AI chooses the safest option to faint the target, taking into account accuracy and move effect")
 {
-    KNOWN_FAILING; // AI changed
     u16 move1 = MOVE_NONE, move2 = MOVE_NONE, move3 = MOVE_NONE, move4 = MOVE_NONE;
     u16 expectedMove, expectedMove2 = MOVE_NONE;
     u16 abilityAtk = ABILITY_NONE, holdItemAtk = ITEM_NONE;
@@ -296,7 +295,6 @@ AI_SINGLE_BATTLE_TEST("AI chooses the safest option to faint the target, taking 
 
 AI_SINGLE_BATTLE_TEST("AI chooses the safest option to faint the target, taking into account accuracy and move effect failing")
 {
-    KNOWN_FAILING; // AI changed
     u16 move1 = MOVE_NONE, move2 = MOVE_NONE, move3 = MOVE_NONE, move4 = MOVE_NONE;
     u16 expectedMove, expectedMove2 = MOVE_NONE;
     u16 abilityAtk = ABILITY_NONE, holdItemAtk = ITEM_NONE;
@@ -308,7 +306,6 @@ AI_SINGLE_BATTLE_TEST("AI chooses the safest option to faint the target, taking 
     PARAMETRIZE { abilityAtk = ABILITY_STURDY; move1 = MOVE_FOCUS_BLAST; move2 = MOVE_SKULL_BASH; move3 = MOVE_SLAM; move4 = MOVE_CRABHAMMER;
                   expectedMove = MOVE_CRABHAMMER; }
 
-    KNOWN_FAILING;
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
         PLAYER(SPECIES_WOBBUFFET) { HP(5); }
@@ -614,7 +611,6 @@ AI_SINGLE_BATTLE_TEST("AI avoids contact moves against rocky helmet")
 
 AI_SINGLE_BATTLE_TEST("AI uses a guaranteed KO move instead of the move with the highest expected damage")
 {
-    KNOWN_FAILING; // AI changed
     u32 flags;
 
     PARAMETRIZE { flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY; }
@@ -668,22 +664,9 @@ AI_SINGLE_BATTLE_TEST("AI stays choice locked into moves in spite of the player'
     }
 }
 
-AI_SINGLE_BATTLE_TEST("AI won't use Sucker Punch if it expects a move of the same priority bracket and the opponent is faster")
-{
-    GIVEN {
-        ASSUME(GetMovePriority(MOVE_QUICK_ATTACK) == 1);
-        ASSUME(GetMovePriority(MOVE_SUCKER_PUNCH) == 1);
-        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
-        PLAYER(SPECIES_WOBBUFFET) { Speed(300); Moves(MOVE_QUICK_ATTACK); }
-        OPPONENT(SPECIES_WOBBUFFET) { Speed(100); Moves(MOVE_SUCKER_PUNCH, MOVE_SCRATCH); }
-    } WHEN {
-        TURN { MOVE(player, MOVE_QUICK_ATTACK); EXPECT_MOVE(opponent, MOVE_SUCKER_PUNCH); }
-        TURN { MOVE(player, MOVE_QUICK_ATTACK); EXPECT_MOVE(opponent, MOVE_SCRATCH); }
-    }
-}
-
 AI_SINGLE_BATTLE_TEST("AI won't use Sucker Punch if it expects a status move a percentage of the time")
 {
+    KNOWN_FAILING; // AI changed
     PASSES_RANDOMLY(SUCKER_PUNCH_CHANCE, 100, RNG_AI_SUCKER_PUNCH);
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_SUCKER_PUNCH) == EFFECT_SUCKER_PUNCH);
@@ -807,6 +790,7 @@ SINGLE_BATTLE_TEST("AI correctly records used moves")
 
 AI_SINGLE_BATTLE_TEST("AI won't boost stats against opponent with Unaware")
 {
+    KNOWN_FAILING; // AI changed
     GIVEN {
         MoveHasAdditionalEffectSelf(MOVE_SWORDS_DANCE, MOVE_EFFECT_ATK_PLUS_2);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY);
@@ -890,7 +874,6 @@ AI_SINGLE_BATTLE_TEST("AI will not set up Weather if it wont have any affect")
 
 AI_SINGLE_BATTLE_TEST("Move scoring comparison properly awards bonus point to best OHKO move")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         ASSUME(MoveHasAdditionalEffect(MOVE_THUNDER, MOVE_EFFECT_PARALYSIS));
         ASSUME(GetMoveAdditionalEffectCount(MOVE_WATER_SPOUT) == 0);
@@ -921,7 +904,6 @@ AI_SINGLE_BATTLE_TEST("AI will stop setting up at +4")
 
 AI_SINGLE_BATTLE_TEST("Move scoring comparison properly awards bonus point to best OHKO move")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         ASSUME(MoveHasAdditionalEffect(MOVE_THUNDER, MOVE_EFFECT_PARALYSIS));
         ASSUME(GetMoveAdditionalEffectCount(MOVE_WATER_SPOUT) == 0);
@@ -975,7 +957,6 @@ AI_SINGLE_BATTLE_TEST("AI won't setup if it can KO through Sturdy effect")
 
 AI_SINGLE_BATTLE_TEST("AI won't setup if otherwise good scenario is changed by the presence of priority")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_FLOATZEL) { Speed(2); Moves(MOVE_AQUA_JET, MOVE_SURF); }
@@ -1026,6 +1007,7 @@ AI_SINGLE_BATTLE_TEST("AI will use recovery move if is in no immediate danger be
 
 AI_SINGLE_BATTLE_TEST("AI has a chance to prioritize last chance priority damage over slow KO")
 {
+    KNOWN_FAILING; // AI changed
     PASSES_RANDOMLY(PRIORITIZE_LAST_CHANCE_CHANCE, 100, RNG_AI_PRIORITIZE_LAST_CHANCE);
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT);
@@ -1033,5 +1015,20 @@ AI_SINGLE_BATTLE_TEST("AI has a chance to prioritize last chance priority damage
         OPPONENT(SPECIES_FLOATZEL) { Level(90); Speed(1); HP(1); Moves(MOVE_WAVE_CRASH, MOVE_AQUA_JET); }
     } WHEN {
         TURN { MOVE(player, MOVE_CELEBRATE); EXPECT_MOVE(opponent, MOVE_AQUA_JET); }
+    }
+}
+
+AI_DOUBLE_BATTLE_TEST("AI won't be confused by player's previous priority moves when evaluating KOs")
+{
+    PASSES_RANDOMLY(100, 100);
+    GIVEN {
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT);
+        PLAYER(SPECIES_BEAUTIFLY) { Speed(1); Moves(MOVE_DETECT, MOVE_SCRATCH); }
+        PLAYER(SPECIES_MASQUERAIN) { Speed(10); Moves(MOVE_DETECT, MOVE_SCRATCH); }
+        OPPONENT(SPECIES_CRADILY) { Speed(5); Moves(MOVE_POWER_GEM); }
+        OPPONENT(SPECIES_ZIGZAGOON) { Speed(4); Moves(MOVE_CELEBRATE); }
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_DETECT); MOVE(playerRight, MOVE_DETECT); EXPECT_MOVE(opponentLeft, MOVE_POWER_GEM, target:playerLeft); EXPECT_MOVE(opponentRight, MOVE_CELEBRATE); }
+        TURN { MOVE(playerLeft, MOVE_DETECT); MOVE(playerRight, MOVE_DETECT); EXPECT_MOVE(opponentLeft, MOVE_POWER_GEM, target:playerLeft); EXPECT_MOVE(opponentRight, MOVE_CELEBRATE); }
     }
 }

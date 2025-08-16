@@ -444,6 +444,17 @@ const struct SpriteTemplate gWillOWispOrbSpriteTemplate =
     .callback = AnimWillOWispOrb,
 };
 
+const struct SpriteTemplate gChillOWispOrbSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_CHILL_WISP_ORB,
+    .paletteTag = ANIM_TAG_CHILL_WISP_ORB,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gAnims_WillOWispOrb,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimWillOWispOrb,
+};
+
 static const union AnimCmd sAnim_WillOWispFire[] =
 {
     ANIMCMD_FRAME(0, 5),
@@ -462,6 +473,17 @@ const struct SpriteTemplate gWillOWispFireSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WISP_FIRE,
     .paletteTag = ANIM_TAG_WISP_FIRE,
+    .oam = &gOamData_AffineOff_ObjNormal_32x32,
+    .anims = sAnims_WillOWispFire,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimWillOWispFire,
+};
+
+const struct SpriteTemplate gChillOWispFireSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_CHILL_WISP_FIRE,
+    .paletteTag = ANIM_TAG_CHILL_WISP_FIRE,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = sAnims_WillOWispFire,
     .images = NULL,

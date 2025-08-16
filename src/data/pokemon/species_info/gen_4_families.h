@@ -4189,7 +4189,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .levelUpLearnset = sGibleLevelUpLearnset,
         .teachableLearnset = sGibleTeachableLearnset,
         .eggMoveLearnset = sGibleEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 24, SPECIES_GABITE}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 32, SPECIES_GABITE}),
     },
 
     [SPECIES_GABITE] =

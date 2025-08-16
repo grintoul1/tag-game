@@ -15100,6 +15100,26 @@ gBattleAnimMove_Coaching::
 	waitforvisualfinish
 	end
 
+gBattleAnimMove_Enlightening::
+	loadspritegfx ANIM_TAG_THIN_RING
+	playsewithpan SE_M_TAIL_WHIP, SOUND_PAN_ATTACKER
+	createvisualtask AnimTask_Splash, 2, ANIM_ATTACKER, 1
+	waitforvisualfinish
+	playsewithpan SE_M_TAIL_WHIP, SOUND_PAN_TARGET
+	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_TARGET, 1, 2, 0, 10, RGB(29, 18, 7)
+	createvisualtask AnimTask_Splash, 2, ANIM_TARGET, 1
+	waitforvisualfinish
+	createsprite gThinRingShrinkingSpriteTemplate, ANIM_ATTACKER, 0, 0x38, 0, 0, 0
+	playsewithpan SE_M_SUPERSONIC, SOUND_PAN_TARGET
+	delay 14
+	createsprite gThinRingShrinkingSpriteTemplate, ANIM_ATTACKER, 0, 0x38, 0, 0, 0
+	playsewithpan SE_M_SUPERSONIC, SOUND_PAN_TARGET
+	delay 14
+	createsprite gThinRingShrinkingSpriteTemplate, ANIM_ATTACKER, 0, 0x38, 0, 0, 0
+	playsewithpan SE_M_SUPERSONIC, SOUND_PAN_TARGET
+	waitforvisualfinish
+	end
+
 @Credits to Skeli
 gBattleAnimMove_FlipTurn::
 	loadspritegfx ANIM_TAG_ICE_CRYSTALS @;Bubbles
@@ -28822,6 +28842,42 @@ gBattleAnimMove_WillOWisp::
 	createsprite gWillOWispFireSpriteTemplate, ANIM_ATTACKER, 2, 210
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
+	end
+
+gBattleAnimMove_ChillOWisp::
+	loadspritegfx ANIM_TAG_CHILL_WISP_FIRE
+	loadspritegfx ANIM_TAG_CHILL_WISP_ORB
+	monbg ANIM_DEF_PARTNER
+	splitbgprio_foes ANIM_TARGET
+	playsewithpan SE_M_EMBER, SOUND_PAN_ATTACKER
+	waitplaysewithpan SE_M_EMBER, SOUND_PAN_ATTACKER, 10
+	createvisualtask SoundTask_AdjustPanningVar, 2, SOUND_PAN_ATTACKER, SOUND_PAN_ATTACKER, 1, 0
+	createsprite gChillOWispOrbSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 0
+	delay 3
+	createsprite gChillOWispOrbSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 1
+	delay 3
+	createsprite gChillOWispOrbSpriteTemplate, ANIM_ATTACKER, 4, 0, 0, 2
+	delay 3
+	createsprite gChillOWispOrbSpriteTemplate, ANIM_ATTACKER, 4, 0, 0, 3
+	delay 40
+	createvisualtask SoundTask_AdjustPanningVar, 2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 2, 0
+	waitforvisualfinish
+	splitbgprio_all
+	playsewithpan SE_M_FLAME_WHEEL2, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 13, 1
+	createsprite gChillOWispFireSpriteTemplate, ANIM_ATTACKER, 2, 0
+	createsprite gChillOWispFireSpriteTemplate, ANIM_ATTACKER, 2, 42
+	createsprite gChillOWispFireSpriteTemplate, ANIM_ATTACKER, 2, 84
+	createsprite gChillOWispFireSpriteTemplate, ANIM_ATTACKER, 2, 126
+	createsprite gChillOWispFireSpriteTemplate, ANIM_ATTACKER, 2, 168
+	createsprite gChillOWispFireSpriteTemplate, ANIM_ATTACKER, 2, 210
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	loadspritegfx ANIM_TAG_ICE_CRYSTALS
+	call IceCrystalEffectShort
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_TARGET, 5, 7, 0, RGB(0, 20, 31)
+	waitforvisualfinish
+	blendoff
 	end
 
 gBattleAnimMove_Encore::

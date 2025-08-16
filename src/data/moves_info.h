@@ -127,7 +127,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(""),
         .effect = EFFECT_HIT,
         .power = 0,
-        .type = TYPE_NORMAL,
+        .type = TYPE_NONE,
         .accuracy = 0,
         .pp = 0,
         .target = MOVE_TARGET_SELECTED,
@@ -604,7 +604,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
         .assistBanned = TRUE,
-        .argument.twoTurnAttack = { .stringId =  STRINGID_PKMNFLEWHIGH, .status = COMPRESS_BITS(STATUS3_ON_AIR) },
+        .argument.twoTurnAttack = { .stringId =  STRINGID_PKMNFLEWHIGH, .status = STATE_ON_AIR },
         .contestEffect = CONTEST_EFFECT_AVOID_STARTLE,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -2461,7 +2461,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .instructBanned = TRUE,
         .assistBanned = TRUE,
         .skyBattleBanned = TRUE,
-        .argument.twoTurnAttack = { .stringId = STRINGID_PKMNDUGHOLE, .status = COMPRESS_BITS(STATUS3_UNDERGROUND) },
+        .argument.twoTurnAttack = { .stringId = STRINGID_PKMNDUGHOLE, .status = STATE_UNDERGROUND },
         .contestEffect = CONTEST_EFFECT_AVOID_STARTLE,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -7715,7 +7715,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .instructBanned = TRUE,
         .assistBanned = TRUE,
         .skyBattleBanned = TRUE,
-        .argument.twoTurnAttack = { .stringId =  STRINGID_PKMNHIDUNDERWATER, .status = COMPRESS_BITS(STATUS3_UNDERWATER) },
+        .argument.twoTurnAttack = { .stringId =  STRINGID_PKMNHIDUNDERWATER, .status = STATE_UNDERWATER },
         .contestEffect = CONTEST_EFFECT_AVOID_STARTLE_ONCE,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = COMBO_STARTER_DIVE,
@@ -8974,7 +8974,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
         .assistBanned = TRUE,
-        .argument.twoTurnAttack = { .stringId =  STRINGID_PKMNSPRANGUP, .status = COMPRESS_BITS(STATUS3_ON_AIR) },
+        .argument.twoTurnAttack = { .stringId =  STRINGID_PKMNSPRANGUP, .status = STATE_ON_AIR },
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_PARALYSIS,
             .chance = 30,
@@ -12100,7 +12100,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
         .assistBanned = TRUE,
-        .argument.twoTurnAttack = { .stringId = STRINGID_VANISHEDINSTANTLY, .status = COMPRESS_BITS(STATUS3_PHANTOM_FORCE) },
+        .argument.twoTurnAttack = { .stringId = STRINGID_VANISHEDINSTANTLY, .status = STATE_PHANTOM_FORCE },
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FEINT,
         }),
@@ -13065,7 +13065,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
         .assistBanned = TRUE,
-        .argument.twoTurnAttack = { .stringId = STRINGID_PKMNTOOKTARGETHIGH, .status = COMPRESS_BITS(STATUS3_ON_AIR) },
+        .argument.twoTurnAttack = { .stringId = STRINGID_PKMNTOOKTARGETHIGH, .status = STATE_ON_AIR },
         .contestEffect = CONTEST_EFFECT_AVOID_STARTLE,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -14505,7 +14505,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
         .assistBanned = TRUE,
-        .argument.twoTurnAttack = { .stringId = STRINGID_VANISHEDINSTANTLY, .status = COMPRESS_BITS(STATUS3_PHANTOM_FORCE) },
+        .argument.twoTurnAttack = { .stringId = STRINGID_VANISHEDINSTANTLY, .status = STATE_PHANTOM_FORCE },
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FEINT,
         }),
@@ -20237,15 +20237,15 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_CHILLY_RECEPTION] =
     {
         .name = COMPOUND_STRING("Chilly Reception"),
-        #if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
-        .description = COMPOUND_STRING(
-            "Bad joke summons hailstorm.\n"
-            "The user also switches out."),
-        #else
+        //#if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
+        //.description = COMPOUND_STRING(
+        //    "Bad joke summons hailstorm.\n"
+        //    "The user also switches out."),
+        //#else
         .description = COMPOUND_STRING(
             "Bad joke summons snowstorm.\n"
             "The user also switches out."),
-        #endif
+        //#endif
         .effect = EFFECT_CHILLY_RECEPTION,
         .power = 0,
         .type = TYPE_ICE,
@@ -22738,5 +22738,81 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .ignoresProtect = TRUE,
         .battleAnimScript = gBattleAnimMove_GMaxRapidFlow,
+    },
+
+    [MOVE_FROZEN_RECEPTION] =
+    {
+        .name = COMPOUND_STRING("Frozen Reception"),
+        //#if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
+        .description = COMPOUND_STRING(
+            "Bad joke summons hailstorm.\n"
+            "The user also switches out."),
+        //#else
+        //.description = COMPOUND_STRING(
+        //    "Bad joke summons snowstorm.\n"
+        //    "The user also switches out."),
+        //#endif
+        .effect = EFFECT_FROZEN_RECEPTION,
+        .power = 0,
+        .type = TYPE_ICE,
+        .accuracy = 0,
+        .pp = 10,
+        .target = MOVE_TARGET_ALL_BATTLERS,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .zMove = { .effect = Z_EFFECT_SPD_UP_1 },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .metronomeBanned = TRUE,
+        .battleAnimScript = gBattleAnimMove_ChillyReception,
+    },
+
+    [MOVE_CHILL_O_WISP] =
+    {
+        .name = COMPOUND_STRING("Chill-O-Wisp"),
+        .description = COMPOUND_STRING(
+            "Inflicts frostbite with\n"
+            "a chilling flare."),
+        .effect = EFFECT_NON_VOLATILE_STATUS,
+        .power = 0,
+        .type = TYPE_ICE,
+        .accuracy = 85,
+        .pp = 15,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .argument = { .nonVolatileStatus = MOVE_EFFECT_FROSTBITE },
+        .zMove = { .effect = Z_EFFECT_ATK_UP_1 },
+        .magicCoatAffected = TRUE,
+        .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_SUNNY_DAY},
+        .battleAnimScript = gBattleAnimMove_ChillOWisp,
+        .validApprenticeMove = TRUE,
+    },
+
+    [MOVE_ENLIGHTENING] =
+    {
+        .name = COMPOUND_STRING("Enlightening"),
+        .description = COMPOUND_STRING(
+            "Enlightens allies to\n"
+            "up their Sp Atk and Sp Def."),
+        .effect = EFFECT_ENLIGHTENING,
+        .power = 0,
+        .type = TYPE_PSYCHIC,
+        .accuracy = 0,
+        .pp = 10,
+        .target = MOVE_TARGET_ALLY,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .ignoresProtect = TRUE,
+        .ignoresSubstitute = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .contestEffect = CONTEST_EFFECT_IMPROVE_CONDITION_PREVENT_NERVOUSNESS,
+        .contestCategory = CONTEST_CATEGORY_COOL,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_Enlightening,
     },
 };

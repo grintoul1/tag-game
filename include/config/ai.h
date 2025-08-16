@@ -52,7 +52,7 @@
 #define AI_GOOD_SCORE_THRESHOLD                                 100 // Move scores above this threshold are considered "good" when deciding switching
 
 // AI held item-based move scoring
-#define LOW_ACCURACY_THRESHOLD                                  75 // Moves with accuracy equal OR below this value are considered low accuracy 
+#define LOW_ACCURACY_THRESHOLD                                  75 // Moves with accuracy equal OR below this value are considered low accuracy
 
 // AI move scoring
 #define STATUS_MOVE_FOCUS_PUNCH_CHANCE                          0 // Chance the AI will use a status move if the player's best move is Focus Punch
@@ -101,10 +101,34 @@
 #define DOUBLE_TRICK_ROOM_ON_LAST_TURN_CHANCE    50 // both pokemon use Trick Room on turn Trick Room expires in the hopes both opponents used Protect to stall, getting a free refresh on the timer
 #define TAILWIND_IN_TRICK_ROOM_CHANCE            50 // use Tailwind on turn Trick Room expires in the hopes both opponents used Protect to stall
 
+#define AI_FLAG_ATTACKS_PARTNER_FOCUSES_PARTNER  FALSE  // if TRUE, AI_FLAG_ATTACKS_PARTNER prefers attacking the partner over the ally.
+                                                        // This is treated as true regardless during wild battles with AI.
+
 // AI's desired stat changes for Guard Split and Power Split, treated as %
 #define GUARD_SPLIT_ALLY_PERCENTAGE     200
 #define GUARD_SPLIT_ENEMY_PERCENTAGE    50
 #define POWER_SPLIT_ALLY_PERCENTAGE     150
 #define POWER_SPLIT_ENEMY_PERCENTAGE    50
+
+// Custom AI percentage changes
+#define CUSTOM_AI_NINETY_FIVE_PERCENT                                   95
+#define CUSTOM_AI_NINETY_PERCENT                                        90
+#define CUSTOM_AI_EIGHTY_FIVE_PERCENT                                   85
+#define CUSTOM_AI_EIGHTY_PERCENT                                        80
+#define CUSTOM_AI_SEVENTY_FIVE_PERCENT                                  75
+#define CUSTOM_AI_SEVENTY_PERCENT                                       70
+#define CUSTOM_AI_SIXTY_FIVE_PERCENT                                    65
+#define CUSTOM_AI_SIXTY_PERCENT                                         60
+#define CUSTOM_AI_FIFTY_FIVE_PERCENT                                    55
+#define CUSTOM_AI_FIFTY_PERCENT                                         50
+#define CUSTOM_AI_FORTY_FIVE_PERCENT                                    45
+#define CUSTOM_AI_FORTY_PERCENT                                         40
+#define CUSTOM_AI_THIRTY_FIVE_PERCENT                                   35
+#define CUSTOM_AI_THIRTY_PERCENT                                        30
+#define CUSTOM_AI_TWENTY_FIVE_PERCENT                                   25
+#define CUSTOM_AI_TWENTY_PERCENT                                        20
+#define CUSTOM_AI_FIFTEEN_PERCENT                                       15
+#define CUSTOM_AI_TEN_PERCENT                                           10
+#define CUSTOM_AI_FIVE_PERCENT                                          5
 
 #endif // GUARD_CONFIG_AI_H

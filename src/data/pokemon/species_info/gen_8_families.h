@@ -1039,7 +1039,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         )
         .levelUpLearnset = sCorvisquireLevelUpLearnset,
         .teachableLearnset = sCorvisquireTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 38, SPECIES_CORVIKNIGHT}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 43, SPECIES_CORVIKNIGHT}),
     },
 
     [SPECIES_CORVIKNIGHT] =

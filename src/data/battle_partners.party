@@ -2,6 +2,7 @@
 Name:
 Class: Pkmn Trainer 1
 Pic: Brendan
+Back Pic: Brendan
 Gender: Male
 Music: Male
 
@@ -9,6 +10,7 @@ Music: Male
 Name: STEVEN
 Class: Rival
 Pic: Steven
+Back Pic: Steven
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -47,6 +49,7 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 Name: EMMIE
 Class: Rival
 Pic: Green
+Back Pic: Green
 Gender: Female
 Music: Female
 AI: Partner Trainer
@@ -84,7 +87,8 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 === PARTNER_TABITHA ===
 Name: Tabitha
 Class: Magma Admin
-Pic: Magma Leader Maxie
+Pic: Magma Admin
+Back Pic: Magma Leader Maxie
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -160,7 +164,8 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 === PARTNER_SHELLY ===
 Name: Shelly
 Class: Aqua Admin
-Pic: Aqua Leader Archie
+Pic: Aqua Admin F
+Back Pic: Aqua Leader Archie
 Gender: Female
 Music: Male
 AI: Partner Trainer
@@ -199,6 +204,7 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 Name: Archie
 Class: Aqua Leader
 Pic: Aqua Leader Archie
+Back Pic: Aqua Leader Archie
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -237,6 +243,7 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 Name: Maxie
 Class: Magma Leader
 Pic: Magma Leader Maxie
+Back Pic: Magma Leader Maxie
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -275,6 +282,7 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 Name: Archie
 Class: Aqua Leader
 Pic: Aqua Leader Archie
+Back Pic: Aqua Leader Archie
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -313,6 +321,7 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 Name: Maxie
 Class: Magma Leader
 Pic: Magma Leader Maxie
+Back Pic: Magma Leader Maxie
 Gender: Male
 Music: Male
 AI: Partner Trainer
