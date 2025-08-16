@@ -15100,6 +15100,26 @@ gBattleAnimMove_Coaching::
 	waitforvisualfinish
 	end
 
+gBattleAnimMove_Enlightening::
+	loadspritegfx ANIM_TAG_THIN_RING
+	playsewithpan SE_M_TAIL_WHIP, SOUND_PAN_ATTACKER
+	createvisualtask AnimTask_Splash, 2, ANIM_ATTACKER, 1
+	waitforvisualfinish
+	playsewithpan SE_M_TAIL_WHIP, SOUND_PAN_TARGET
+	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_TARGET, 1, 2, 0, 10, RGB(29, 18, 7)
+	createvisualtask AnimTask_Splash, 2, ANIM_TARGET, 1
+	waitforvisualfinish
+	createsprite gThinRingShrinkingSpriteTemplate, ANIM_ATTACKER, 0, 0x38, 0, 0, 0
+	playsewithpan SE_M_SUPERSONIC, SOUND_PAN_TARGET
+	delay 14
+	createsprite gThinRingShrinkingSpriteTemplate, ANIM_ATTACKER, 0, 0x38, 0, 0, 0
+	playsewithpan SE_M_SUPERSONIC, SOUND_PAN_TARGET
+	delay 14
+	createsprite gThinRingShrinkingSpriteTemplate, ANIM_ATTACKER, 0, 0x38, 0, 0, 0
+	playsewithpan SE_M_SUPERSONIC, SOUND_PAN_TARGET
+	waitforvisualfinish
+	end
+
 @Credits to Skeli
 gBattleAnimMove_FlipTurn::
 	loadspritegfx ANIM_TAG_ICE_CRYSTALS @;Bubbles

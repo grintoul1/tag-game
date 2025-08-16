@@ -22791,4 +22791,28 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_ChillOWisp,
         .validApprenticeMove = TRUE,
     },
+
+    [MOVE_ENLIGHTENING] =
+    {
+        .name = COMPOUND_STRING("Enlightening"),
+        .description = COMPOUND_STRING(
+            "Enlightens allies to\n"
+            "up their Sp Atk and Sp Def."),
+        .effect = EFFECT_ENLIGHTENING,
+        .power = 0,
+        .type = TYPE_PSYCHIC,
+        .accuracy = 0,
+        .pp = 10,
+        .target = MOVE_TARGET_ALLY,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .ignoresProtect = TRUE,
+        .ignoresSubstitute = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .contestEffect = CONTEST_EFFECT_IMPROVE_CONDITION_PREVENT_NERVOUSNESS,
+        .contestCategory = CONTEST_CATEGORY_COOL,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_Enlightening,
+    },
 };

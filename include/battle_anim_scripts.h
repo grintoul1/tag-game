@@ -743,6 +743,7 @@ extern const u8 gBattleAnimMove_LashOut[];
 extern const u8 gBattleAnimMove_Poltergeist[];
 extern const u8 gBattleAnimMove_CorrosiveGas[];
 extern const u8 gBattleAnimMove_Coaching[];
+extern const u8 gBattleAnimMove_Enlightening[];
 extern const u8 gBattleAnimMove_FlipTurn[];
 extern const u8 gBattleAnimMove_TripleAxel[];
 extern const u8 gBattleAnimMove_DualWingbeat[];

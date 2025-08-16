@@ -4777,7 +4777,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
-        case ABILITY_FFROST_BODY:
+        case ABILITY_FROST_BODY:
             if (IsBattlerAlive(gBattlerAttacker)
              && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && !CanBattlerAvoidContactEffects(gBattlerAttacker, gBattlerTarget, GetBattlerAbility(gBattlerAttacker), GetBattlerHoldEffect(gBattlerAttacker, TRUE), move)
@@ -7658,7 +7658,8 @@ bool32 IsBattlerProtected(u32 battlerAtk, u32 battlerDef, u32 move)
 
     if (IsSideProtected(battlerDef, PROTECT_CRAFTY_SHIELD)
      && IsBattleMoveStatus(move)
-     && GetMoveEffect(move) != EFFECT_COACHING)
+     && GetMoveEffect(move) != EFFECT_COACHING
+     && GetMoveEffect(move) != EFFECT_ENLIGHTENING)
         isProtected = TRUE;
     else if (MoveIgnoresProtect(move))
         isProtected = FALSE;

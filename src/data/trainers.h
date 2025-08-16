@@ -17280,7 +17280,7 @@ F_TRAINER_FEMALE |
 #line 6564
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 6563
-            .ability = ABILITY_PRESSURE,
+            .ability = ABILITY_SNOW_FORCE,
 #line 6561
             .lvl = 86,
 #line 6562
