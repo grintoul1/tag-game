@@ -224,6 +224,7 @@ bool32 AI_CanPoison(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 move, u3
 bool32 AI_CanParalyze(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 move, u32 partnerMove);
 bool32 AI_CanConfuse(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 battlerAtkPartner, u32 move, u32 partnerMove);
 bool32 ShouldBurn(u32 battlerAtk, u32 battlerDef, u32 abilityDef);
+bool32 ShouldFrostbite(u32 battlerAtk, u32 battlerDef, u32 abilityDef);
 bool32 ShouldFreezeOrFrostbite(u32 battlerAtk, u32 battlerDef, u32 abilityDef);
 bool32 ShouldParalyze(u32 battlerAtk, u32 battlerDef, u32 abilityDef);
 bool32 AI_CanBurn(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 battlerAtkPartner, u32 move, u32 partnerMove);

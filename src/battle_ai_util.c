@@ -3465,6 +3465,24 @@ bool32 ShouldBurn(u32 battlerAtk, u32 battlerDef, u32 abilityDef)
         return TRUE;
 }
 
+bool32 ShouldFrostbite(u32 battlerAtk, u32 battlerDef, u32 abilityDef)
+{
+    // Battler can be frostbitten and has move/ability that synergizes with being frostbitten
+    if (CanBeFrozen(battlerAtk, battlerDef, abilityDef) && (
+        DoesBattlerBenefitFromAllVolatileStatus(battlerDef, abilityDef)))
+    {
+        if (battlerAtk == battlerDef) // Targeting self
+            return TRUE;
+        else
+            return FALSE;
+    }
+
+    if (battlerAtk == battlerDef)
+        return FALSE;
+    else
+        return TRUE;
+}
+
 bool32 ShouldFreezeOrFrostbite(u32 battlerAtk, u32 battlerDef, u32 abilityDef)
 {
     if (!B_USE_FROSTBITE)

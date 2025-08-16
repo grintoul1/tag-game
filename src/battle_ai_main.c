@@ -1194,6 +1194,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case MOVE_EFFECT_POISON:
             case MOVE_EFFECT_TOXIC:
             case MOVE_EFFECT_BURN:
+            case MOVE_EFFECT_FROSTBITE:
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             }
@@ -2626,6 +2627,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 {
                 case MOVE_EFFECT_BURN:
                     break;
+                case MOVE_EFFECT_FROSTBITE:
+                    break;
                 case MOVE_EFFECT_PARALYSIS:
                     break;
                 case MOVE_EFFECT_POISON:
@@ -2933,6 +2936,11 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         if (!AI_CanBurn(battlerAtk, battlerDef, aiData->abilities[battlerDef], BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
             ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
         if (!ShouldBurn(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
+            ADJUST_SCORE(-10);
+    case MOVE_EFFECT_FROSTBITE:
+        if (!AI_CanGiveFrostbite(battlerAtk, battlerDef, aiData->abilities[battlerDef], BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
+            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+        if (!ShouldFrostbite(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
             ADJUST_SCORE(-10);
         break;
     }
@@ -4054,6 +4062,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case MOVE_EFFECT_BURN:
         IncreaseBurnScore(battlerAtk, battlerDef, move, &score);
         break;
+    case MOVE_EFFECT_FROSTBITE:
+        IncreaseFrostbiteScore(battlerAtk, battlerDef, move, &score);
+        break;
     }
     // move effect checks
     switch (moveEffect)
@@ -4444,6 +4455,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         case MOVE_EFFECT_POISON:
         case MOVE_EFFECT_PARALYSIS:
         case MOVE_EFFECT_BURN:
+        case MOVE_EFFECT_FROSTBITE:
             encourage = TRUE;
             break;
         }
@@ -5563,6 +5575,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         {
         case MOVE_EFFECT_BURN:
             IncreaseBurnScore(battlerAtk, battlerDef, move, &score);
+            break;
+        case MOVE_EFFECT_FROSTBITE:
+            IncreaseFrostbiteScore(battlerAtk, battlerDef, move, &score);
             break;
         case MOVE_EFFECT_FLINCH:
             score += ShouldTryToFlinch(battlerAtk, battlerDef, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], move);
