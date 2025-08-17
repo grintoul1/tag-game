@@ -1440,6 +1440,42 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             }
             break;
+        case EFFECT_COACHING:
+            if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER)
+            {
+                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                break;
+            }
+            else if (aiData->abilities[battlerAtkPartner] != ABILITY_CONTRARY)
+            {
+                if (gBattleMons[battlerAtkPartner].statStages[STAT_ATK] >= MAX_STAT_STAGE
+                  && (gBattleMons[battlerAtkPartner].statStages[STAT_DEF] >= MAX_STAT_STAGE || !HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_PHYSICAL)))
+                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                break;
+            }
+            else
+            {
+                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+            }
+            break;
+        case EFFECT_ENLIGHTENING:
+            if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER)
+            {
+                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                break;
+            }
+            else if (aiData->abilities[battlerAtkPartner] != ABILITY_CONTRARY)
+            {
+                if (gBattleMons[battlerAtkPartner].statStages[STAT_SPATK] >= MAX_STAT_STAGE
+                  && (gBattleMons[battlerAtkPartner].statStages[STAT_SPDEF] >= MAX_STAT_STAGE || !HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_SPECIAL)))
+                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                break;
+            }
+            else
+            {
+                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+            }
+            break;
         case EFFECT_CHARGE:
             if (gBattleMons[battlerAtk].volatiles.charge)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -4197,6 +4233,32 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         // Return highest score adjustment
         ADJUST_SCORE((IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK) > IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ACC)) ? IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK) : IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ACC));
         break;
+    case EFFECT_COACHING:
+        // If partner has physical move and is not +2 Atk, or if partner is not +2 Def and either opponent has a physical move
+        if (gBattleMons[battlerAtkPartner].statStages[STAT_ATK] <= (DEFAULT_STAT_STAGE + 2) && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_PHYSICAL)
+                || (gBattleMons[battlerAtkPartner].statStages[STAT_DEF] <= (DEFAULT_STAT_STAGE + 2) 
+                && (HasMoveWithCategory(BATTLE_OPPOSITE(battlerAtkPartner), DAMAGE_CATEGORY_PHYSICAL)
+                || HasMoveWithCategory(BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), DAMAGE_CATEGORY_PHYSICAL))))
+            ADJUST_SCORE(GOOD_EFFECT + SLOW_KILL - 1); // +11
+        if (gBattleMons[battlerAtkPartner].statStages[STAT_ATK] <= (DEFAULT_STAT_STAGE + 2) && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_PHYSICAL)
+                && (gBattleMons[battlerAtkPartner].statStages[STAT_DEF] <= (DEFAULT_STAT_STAGE + 2) 
+                && (HasMoveWithCategory(BATTLE_OPPOSITE(battlerAtkPartner), DAMAGE_CATEGORY_PHYSICAL)
+                || HasMoveWithCategory(BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), DAMAGE_CATEGORY_PHYSICAL))))
+            ADJUST_SCORE(3); // Additional +3
+        break;
+    case EFFECT_ENLIGHTENING:
+        // If partner has special move and is not +2 SpAtk, or if partner is not +2 SpDef and either opponent has a special move
+        if (gBattleMons[battlerAtkPartner].statStages[STAT_SPATK] <= (DEFAULT_STAT_STAGE + 2) && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_SPECIAL)
+                || (gBattleMons[battlerAtkPartner].statStages[STAT_SPDEF] <= (DEFAULT_STAT_STAGE + 2) 
+                && (HasMoveWithCategory(BATTLE_OPPOSITE(battlerAtkPartner), DAMAGE_CATEGORY_SPECIAL)
+                || HasMoveWithCategory(BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), DAMAGE_CATEGORY_SPECIAL))))
+            ADJUST_SCORE(GOOD_EFFECT + SLOW_KILL - 1); // +11
+        if (gBattleMons[battlerAtkPartner].statStages[STAT_SPATK] <= (DEFAULT_STAT_STAGE + 2) && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_SPECIAL)
+                && (gBattleMons[battlerAtkPartner].statStages[STAT_SPDEF] <= (DEFAULT_STAT_STAGE + 2) 
+                && (HasMoveWithCategory(BATTLE_OPPOSITE(battlerAtkPartner), DAMAGE_CATEGORY_SPECIAL)
+                || HasMoveWithCategory(BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), DAMAGE_CATEGORY_SPECIAL))))
+            ADJUST_SCORE(3); // Additional +3
+        break;
     case EFFECT_GROWTH:
     case EFFECT_ATTACK_SPATK_UP:    // work up
         // Return highest score adjustment
@@ -4988,7 +5050,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                 }
                 else 
                 {
-                    ADJUST_SCORE(11); // +11
+                    ADJUST_SCORE(GOOD_EFFECT + SLOW_KILL - 1); // +11
                     break;
                 }
             }
