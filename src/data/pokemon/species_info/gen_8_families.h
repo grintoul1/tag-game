@@ -3280,7 +3280,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .levelUpLearnset = sArrokudaLevelUpLearnset,
         .teachableLearnset = sArrokudaTeachableLearnset,
         .eggMoveLearnset = sArrokudaEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 26, SPECIES_BARRASKEWDA}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 39, SPECIES_BARRASKEWDA}),
     },
 
     [SPECIES_BARRASKEWDA] =
