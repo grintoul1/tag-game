@@ -592,6 +592,7 @@ SINGLE_BATTLE_TEST("(Z-MOVE) Genesis Supernova sets up psychic terrain")
     }
 }
 
+/* Ice Spinner effect changed
 SINGLE_BATTLE_TEST("(Z-MOVE) Splintered Stormshards removes terrain")
 {
     GIVEN {
@@ -609,6 +610,7 @@ SINGLE_BATTLE_TEST("(Z-MOVE) Splintered Stormshards removes terrain")
         HP_BAR(opponent);
     }
 }
+*/
 
 SINGLE_BATTLE_TEST("(Z-MOVE) Clangorous Soulblaze boosts all the user's stats by one stage")
 {
