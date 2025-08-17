@@ -8,6 +8,7 @@ ASSUMPTIONS
     ASSUME(MoveHas50AccuracyInSun(MOVE_HURRICANE) == TRUE);
 }
 
+/* Moves changed
 SINGLE_BATTLE_TEST("Hurricane's accuracy is lowered to 50% in Sunlight")
 {
     PASSES_RANDOMLY(50, 100, RNG_ACCURACY);
@@ -33,7 +34,9 @@ SINGLE_BATTLE_TEST("Hurricane bypasses accuracy checks in Rain")
         NONE_OF { MESSAGE("Wobbuffet's attack missed!"); }
     }
 }
+*/
 
+/* Moves changed
 SINGLE_BATTLE_TEST("Hurricane can hit airborne targets (Fly, Bounce)")
 {
     u16 move;
@@ -72,3 +75,4 @@ DOUBLE_BATTLE_TEST("Hurricane can hit airborne targets (Sky Drop)")
         NONE_OF { MESSAGE("Wobbuffet's attack missed!"); }
     }
 }
+*/

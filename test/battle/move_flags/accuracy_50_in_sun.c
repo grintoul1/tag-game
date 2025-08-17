@@ -7,6 +7,7 @@ ASSUMPTIONS
     ASSUME(MoveHas50AccuracyInSun(MOVE_HURRICANE) == TRUE);
 }
 
+/* Accuracy changed
 SINGLE_BATTLE_TEST("Thunder's accuracy is lowered to 50% in Sunlight")
 {
     PASSES_RANDOMLY(50, 100, RNG_ACCURACY);
@@ -19,3 +20,4 @@ SINGLE_BATTLE_TEST("Thunder's accuracy is lowered to 50% in Sunlight")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_THUNDER, opponent);
     }
 }
+*/

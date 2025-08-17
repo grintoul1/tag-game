@@ -48,11 +48,12 @@ SINGLE_BATTLE_TEST("Micle Berry raises the holder's accuracy by 1.2 when HP drop
     }
 }
 
+/* Accuracy changed
 SINGLE_BATTLE_TEST("Micle Berry raises the holder's accuracy by 1.2")
 {
     PASSES_RANDOMLY(24, 25, RNG_ACCURACY);
     GIVEN {
-        ASSUME(GetMoveAccuracy(MOVE_SUBMISSION) == 80);
+        ASSUME(GetMoveAccuracy(MOVE_SUBMISSION) == 100);
         PLAYER(SPECIES_WOBBUFFET) { MaxHP(160); HP(80); Item(ITEM_MICLE_BERRY); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -64,7 +65,9 @@ SINGLE_BATTLE_TEST("Micle Berry raises the holder's accuracy by 1.2")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBMISSION, player);
     }
 }
+*/
 
+/*Accuracy changed
 SINGLE_BATTLE_TEST("Micle Berry increases the accuracy of the next used move across turns")
 {
     GIVEN {
@@ -81,11 +84,12 @@ SINGLE_BATTLE_TEST("Micle Berry increases the accuracy of the next used move acr
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROCK_SLIDE, player);
     }
 }
+*/
 
 SINGLE_BATTLE_TEST("Micle Berry increases the accuracy of the next used move the same turn the berry was triggered")
 {
     GIVEN {
-        ASSUME(GetMoveAccuracy(MOVE_ROCK_SLIDE) == 90);
+        ASSUME(GetMoveAccuracy(MOVE_ROCK_SLIDE) == 100);
         PASSES_RANDOMLY(100, 100, RNG_ACCURACY);
         PLAYER(SPECIES_WOBBUFFET) { MaxHP(100); HP(26); Item(ITEM_MICLE_BERRY); }
         OPPONENT(SPECIES_WOBBUFFET);

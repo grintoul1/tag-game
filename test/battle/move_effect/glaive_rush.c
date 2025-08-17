@@ -10,7 +10,7 @@ SINGLE_BATTLE_TEST("If Glaive Rush is successful moves targeted at the user do n
 {
     PASSES_RANDOMLY(100, 100, RNG_ACCURACY);
     GIVEN {
-        ASSUME(GetMoveAccuracy(MOVE_MEGA_PUNCH) == 85);
+        ASSUME(GetMoveAccuracy(MOVE_MEGA_PUNCH) == 100);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
