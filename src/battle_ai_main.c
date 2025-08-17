@@ -1126,6 +1126,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     u32 abilityDef = aiData->abilities[battlerDef];
     s32 atkPriority = GetBattleMovePriority(battlerAtk, abilityAtk, move);
     u16 *targetMove = GetMovesArray(battlerDef);
+    u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
 
     SetTypeBeforeUsingMove(move, battlerAtk);
     moveType = GetBattleMoveType(move);
@@ -4053,6 +4054,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     bool32 hasTwoOpponents = HasTwoOpponents(battlerAtk);
     bool32 hasPartner = HasPartner(battlerAtk);
     bool32 moveTargetsBothOpponents = hasTwoOpponents && (gMovesInfo[move].target & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_ALL_BATTLERS));
+    u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
     u32 i;
     s32 maxScore = 0;
 
@@ -4235,12 +4237,12 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         break;
     case EFFECT_COACHING:
         // If partner has physical move and is not +2 Atk, or if partner is not +2 Def and either opponent has a physical move
-        if (gBattleMons[battlerAtkPartner].statStages[STAT_ATK] <= (DEFAULT_STAT_STAGE + 2) && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_PHYSICAL)
+        if ((gBattleMons[battlerAtkPartner].statStages[STAT_ATK] <= (DEFAULT_STAT_STAGE + 2) && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_PHYSICAL))
                 || (gBattleMons[battlerAtkPartner].statStages[STAT_DEF] <= (DEFAULT_STAT_STAGE + 2) 
                 && (HasMoveWithCategory(BATTLE_OPPOSITE(battlerAtkPartner), DAMAGE_CATEGORY_PHYSICAL)
                 || HasMoveWithCategory(BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), DAMAGE_CATEGORY_PHYSICAL))))
             ADJUST_SCORE(GOOD_EFFECT + SLOW_KILL - 1); // +11
-        if (gBattleMons[battlerAtkPartner].statStages[STAT_ATK] <= (DEFAULT_STAT_STAGE + 2) && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_PHYSICAL)
+        if ((gBattleMons[battlerAtkPartner].statStages[STAT_ATK] <= (DEFAULT_STAT_STAGE + 2) && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_PHYSICAL))
                 && (gBattleMons[battlerAtkPartner].statStages[STAT_DEF] <= (DEFAULT_STAT_STAGE + 2) 
                 && (HasMoveWithCategory(BATTLE_OPPOSITE(battlerAtkPartner), DAMAGE_CATEGORY_PHYSICAL)
                 || HasMoveWithCategory(BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), DAMAGE_CATEGORY_PHYSICAL))))
@@ -4248,12 +4250,12 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         break;
     case EFFECT_ENLIGHTENING:
         // If partner has special move and is not +2 SpAtk, or if partner is not +2 SpDef and either opponent has a special move
-        if (gBattleMons[battlerAtkPartner].statStages[STAT_SPATK] <= (DEFAULT_STAT_STAGE + 2) && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_SPECIAL)
+        if ((gBattleMons[battlerAtkPartner].statStages[STAT_SPATK] <= (DEFAULT_STAT_STAGE + 2) && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_SPECIAL))
                 || (gBattleMons[battlerAtkPartner].statStages[STAT_SPDEF] <= (DEFAULT_STAT_STAGE + 2) 
                 && (HasMoveWithCategory(BATTLE_OPPOSITE(battlerAtkPartner), DAMAGE_CATEGORY_SPECIAL)
                 || HasMoveWithCategory(BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), DAMAGE_CATEGORY_SPECIAL))))
             ADJUST_SCORE(GOOD_EFFECT + SLOW_KILL - 1); // +11
-        if (gBattleMons[battlerAtkPartner].statStages[STAT_SPATK] <= (DEFAULT_STAT_STAGE + 2) && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_SPECIAL)
+        if ((gBattleMons[battlerAtkPartner].statStages[STAT_SPATK] <= (DEFAULT_STAT_STAGE + 2) && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_SPECIAL))
                 && (gBattleMons[battlerAtkPartner].statStages[STAT_SPDEF] <= (DEFAULT_STAT_STAGE + 2) 
                 && (HasMoveWithCategory(BATTLE_OPPOSITE(battlerAtkPartner), DAMAGE_CATEGORY_SPECIAL)
                 || HasMoveWithCategory(BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), DAMAGE_CATEGORY_SPECIAL))))
