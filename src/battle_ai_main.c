@@ -1618,8 +1618,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
         case EFFECT_CAPTIVATE:
-            if (!AreBattlersOfOppositeGender(battlerAtk, battlerDef))
-                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
     // other
         case EFFECT_HAZE:
