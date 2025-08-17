@@ -25,6 +25,7 @@ SINGLE_BATTLE_TEST("Captivate decreases the target's Sp. Attack if they're oppos
     }
 }
 
+/* Changed to work on both genders
 SINGLE_BATTLE_TEST("Captivate fails if the target and user share gender")
 {
     GIVEN {
@@ -80,6 +81,7 @@ SINGLE_BATTLE_TEST("Captivate fails if both the user and the opponent are gender
         EXPECT(opponent->statStages[STAT_SPATK] == 6);
     }
 }
+*/
 
 SINGLE_BATTLE_TEST("Attract fails when used by a genderless Pokémon")
 {

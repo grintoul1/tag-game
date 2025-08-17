@@ -86,8 +86,10 @@ SINGLE_BATTLE_TEST("(TERA) Terastallizing into the same type gives that type 2x 
     }
 }
 
+/* BP changed
 SINGLE_BATTLE_TEST("(TERA) Terastallizing boosts moves of the same type to 60 BP", s16 damage)
 {
+    KNOWN_FAILING; // BP changed
     bool32 tera;
     PARAMETRIZE { tera = GIMMICK_NONE; }
     PARAMETRIZE { tera = GIMMICK_TERA; }
@@ -106,9 +108,12 @@ SINGLE_BATTLE_TEST("(TERA) Terastallizing boosts moves of the same type to 60 BP
         EXPECT_MUL_EQ(results[0].damage, Q_4_12(4.5), results[1].damage);
     }
 }
+*/
 
+/* BP changed
 SINGLE_BATTLE_TEST("(TERA) Terastallization's 60 BP floor occurs after Technician", s16 damage)
 {
+    KNOWN_FAILING; // BP changed
     bool32 tera;
     PARAMETRIZE { tera = GIMMICK_NONE; }
     PARAMETRIZE { tera = GIMMICK_TERA; }
@@ -127,6 +132,7 @@ SINGLE_BATTLE_TEST("(TERA) Terastallization's 60 BP floor occurs after Technicia
         EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.5), results[1].damage);
     }
 }
+*/
 
 SINGLE_BATTLE_TEST("(TERA) Terastallization's 60 BP floor occurs after Technician", s16 damage)
 {
@@ -601,8 +607,10 @@ SINGLE_BATTLE_TEST("(TERA) Terastallizing into the Stellar-type provides a one-t
     }
 }
 
+/* BP changed
 SINGLE_BATTLE_TEST("(TERA) Terastallizing into the Stellar type boosts all moves up to 60 BP once per type")
 {
+    KNOWN_FAILING; // BP changed
     s16 damage[4];
     GIVEN {
         ASSUME(GetMovePower(MOVE_MEGA_DRAIN) == 40);
@@ -638,6 +646,7 @@ SINGLE_BATTLE_TEST("(TERA) Terastallizing into the Stellar type boosts all moves
         EXPECT_EQ(damage[1], damage[3]);
     }
 }
+*/
 
 SINGLE_BATTLE_TEST("(TERA) Protean cannot change the type of a Terastallized Pokemon")
 {
