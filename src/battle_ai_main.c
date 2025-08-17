@@ -5514,6 +5514,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         }
         break;
     case EFFECT_ICE_SPINNER:
+        /*
         {
             u32 terrain = gFieldStatuses & STATUS_FIELD_TERRAIN_ANY;
             if (ShouldClearFieldStatus(battlerAtk, terrain))
@@ -5521,6 +5522,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             if (ShouldSetFieldStatus(battlerDef, terrain))
                 ADJUST_SCORE(DECENT_EFFECT);
         }
+        */
         break;
     case EFFECT_PLEDGE:
         if (hasPartner && HasMoveWithEffect(BATTLE_PARTNER(battlerAtk), EFFECT_PLEDGE))

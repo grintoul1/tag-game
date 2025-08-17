@@ -6,6 +6,7 @@ ASSUMPTIONS
     ASSUME(GetMoveEffect(MOVE_ICE_SPINNER) == EFFECT_ICE_SPINNER);
 }
 
+/* Move effect changed
 SINGLE_BATTLE_TEST("Ice Spinner and Steel Roller remove a terrain from field")
 {
     u32 j;
@@ -86,6 +87,7 @@ SINGLE_BATTLE_TEST("Ice Spinner will not be remove Terrain if user is switched o
         NOT MESSAGE("The electricity disappeared from the battlefield.");
     }
 }
+*/
 
 SINGLE_BATTLE_TEST("Ice Spinner doesn't fail if there is no terrain on the field")
 {
