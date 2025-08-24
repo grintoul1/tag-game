@@ -260,6 +260,7 @@ extern const u8 gBattleAnimMove_Stockpile[];
 extern const u8 gBattleAnimMove_SpitUp[];
 extern const u8 gBattleAnimMove_Swallow[];
 extern const u8 gBattleAnimMove_HeatWave[];
+extern const u8 gBattleAnimMove_FrostyGale[];
 extern const u8 gBattleAnimMove_Hail[];
 extern const u8 gBattleAnimMove_Torment[];
 extern const u8 gBattleAnimMove_Flatter[];
