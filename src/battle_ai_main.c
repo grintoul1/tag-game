@@ -401,6 +401,7 @@ void ComputeBattlerDecisions(u32 battler)
         // AI's own switching data
         if (isAiBattler)
         {
+            gAiLogicData->mostSuitableMonId[battler] = GetMostSuitableMonToSwitchInto(battler, switchType);
             if (GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)
             {
                 if (PartnerShouldSwitch(battler))
