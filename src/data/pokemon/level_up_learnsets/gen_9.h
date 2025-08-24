@@ -18510,8 +18510,6 @@ static const struct LevelUpMove sChesnaughtLevelUpLearnset[] = {
 
 #if P_FAMILY_FENNEKIN
 static const struct LevelUpMove sFennekinLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_ROLE_PLAY),
-    LEVEL_UP_MOVE( 1, MOVE_SHADOW_BALL),
     LEVEL_UP_MOVE( 1, MOVE_SCRATCH),
     LEVEL_UP_MOVE( 1, MOVE_TAIL_WHIP),
     LEVEL_UP_MOVE( 5, MOVE_INCINERATE),
@@ -18551,8 +18549,6 @@ static const struct LevelUpMove sFennekinLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sBraixenLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_ROLE_PLAY),
-    LEVEL_UP_MOVE( 1, MOVE_SHADOW_BALL),
     LEVEL_UP_MOVE( 1, MOVE_SCRATCH),
     LEVEL_UP_MOVE( 1, MOVE_TAIL_WHIP),
     LEVEL_UP_MOVE( 5, MOVE_INCINERATE),
@@ -18592,8 +18588,6 @@ static const struct LevelUpMove sBraixenLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sDelphoxLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_ROLE_PLAY),
-    LEVEL_UP_MOVE( 1, MOVE_SHADOW_BALL),
     LEVEL_UP_MOVE( 1, MOVE_SCRATCH),
     LEVEL_UP_MOVE( 1, MOVE_TAIL_WHIP),
     LEVEL_UP_MOVE( 5, MOVE_INCINERATE),

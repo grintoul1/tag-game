@@ -676,20 +676,22 @@ Music: Intense
 Battle Type: Doubles
 AI: Smart Trainer
 
-Electrike
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Quick Attack
-- Thunder Wave
-- Spark
-- Leer
+Voltorb @ Covert Cloak  
+Ability: Static  
+Level: 30  
+Tera Type: Electric  
+Modest Nature  
+- Discharge  
 
-Voltorb
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Charge
-- Shock Wave
-- Screech
+Rhydon @ Passho Berry  
+Ability: Lightning Rod  
+Level: 30  
+Tera Type: Ground  
+Timid Nature  
+- Bubble Beam  
+- Incinerate  
+- Mud Shot  
+- Icy Wind  
 
 === TRAINER_VIVIAN ===
 Name: Vivian
@@ -700,21 +702,26 @@ Music: Intense
 Battle Type: Doubles
 AI: Smart Trainer
 
-Meditite
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Bide
-- Detect
-- Confusion
-- Thunder Punch
+Pikachu-Hoenn @ Adrenaline Orb  
+Ability: Lightning Rod  
+Level: 30  
+Tera Type: Electric  
+Timid Nature  
+- Volt Switch  
+- Grass Knot  
+- Draining Kiss  
+- Encore  
 
-Meditite
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Thunder Punch
-- Detect
-- Confusion
-- Meditate
+Blitzle @ Eviolite  
+Ability: Lightning Rod  
+Level: 30  
+Tera Type: Electric  
+Timid Nature  
+- Discharge  
+- Signal Beam  
+- Volt Switch  
+- Helping Hand  
+
 
 === TRAINER_SHAWN ===
 Name: Shawn
@@ -725,13 +732,25 @@ Music: Intense
 Battle Type: Doubles
 AI: Smart Trainer
 
-Voltorb
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Minun @ Assault Vest  
+Ability: Minus  
+Level: 30  
+Tera Type: Electric  
+Timid Nature  
+- Electro Ball  
+- Nuzzle  
+- Grass Knot  
+- Counter  
 
-Magnemite
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ampharos @ Shuca Berry  
+Ability: Minus  
+Level: 30  
+Tera Type: Electric  
+Hasty Nature  
+- Thunder Punch  
+- Power Gem  
+- Dazzling Gleam  
+- Shock Wave  
 
 === TRAINER_ANGELO ===
 Name: Angelo
@@ -742,19 +761,36 @@ Music: Suspicious
 Battle Type: Doubles
 AI: Smart Trainer
 
-Illumise
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Shock Wave
-- Quick Attack
-- Charm
+Plusle @ Focus Sash  
+Ability: Plus  
+Level: 30  
+Tera Type: Electric  
+Timid Nature  
+- Electroweb  
+- Nasty Plot  
+- Baton Pass  
+- Encore  
 
-Volbeat
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Shock Wave
-- Quick Attack
-- Confuse Ray
+Toxtricity @ Silk Scarf  
+Ability: Plus  
+Level: 30  
+Tera Type: Electric  
+Naive Nature  
+- Hyper Voice  
+- Overdrive  
+- Brick Break  
+- Acid Spray  
+
+Klang @ Eviolite  
+Ability: Plus  
+Level: 30  
+Tera Type: Steel  
+Lax Nature  
+- Flash Cannon  
+- Signal Beam  
+- Gear Grind  
+- Shift Gear  
+
 
 === TRAINER_WATTSON_1 ===
 Name: Wattson
