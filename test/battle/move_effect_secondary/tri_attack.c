@@ -6,6 +6,7 @@ ASSUMPTIONS
     ASSUME(MoveHasAdditionalEffect(MOVE_TRI_ATTACK, MOVE_EFFECT_TRI_ATTACK) == TRUE);
 }
 
+// Updated for new FRB animation
 #if B_USE_FROSTBITE == TRUE
 SINGLE_BATTLE_TEST("Tri Attack can inflict paralysis, burn or frostbite")
 #else
@@ -15,7 +16,7 @@ SINGLE_BATTLE_TEST("Tri Attack can inflict paralysis, burn or freeze")
     u8 statusAnim;
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_PRZ; }
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_BRN; }
-    PARAMETRIZE { statusAnim = B_ANIM_STATUS_FRZ; }
+    PARAMETRIZE { statusAnim = B_ANIM_STATUS_FRB; }
     PASSES_RANDOMLY(1, 3, RNG_TRI_ATTACK);
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);

@@ -6,6 +6,7 @@ ASSUMPTIONS
     ASSUME(MoveHasAdditionalEffect(MOVE_POWDER_SNOW, MOVE_EFFECT_FREEZE_OR_FROSTBITE) == TRUE);
 }
 
+// Updated for new FRB animation
 #if B_USE_FROSTBITE == TRUE
 SINGLE_BATTLE_TEST("Powder Snow inflicts frostbite")
 #else
@@ -20,7 +21,7 @@ SINGLE_BATTLE_TEST("Powder Snow inflicts freeze")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POWDER_SNOW, player);
         HP_BAR(opponent);
-        ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRZ, opponent);
+        ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRB, opponent);
         FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
     }
 }
@@ -59,6 +60,7 @@ SINGLE_BATTLE_TEST("Freeze cannot be inflicted in Sunlight")
     }
 }
 
+// Updated for new FRB animation
 #if B_STATUS_TYPE_IMMUNITY > GEN_1
 #if B_USE_FROSTBITE == TRUE
 SINGLE_BATTLE_TEST("Freezing Glare should frostbite Psychic-types")
@@ -85,11 +87,11 @@ SINGLE_BATTLE_TEST("Freezing Glare shouldn't freeze Psychic-types")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FREEZING_GLARE, player);
         HP_BAR(opponent);
         #if B_STATUS_TYPE_IMMUNITY > GEN_1
-            ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRZ, opponent);
+            ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRB, opponent);
             FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
         #else
             NONE_OF {
-                ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRZ, opponent);
+                ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRB, opponent);
                 FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
             }
         #endif
