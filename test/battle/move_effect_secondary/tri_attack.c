@@ -31,7 +31,7 @@ SINGLE_BATTLE_TEST("Tri Attack can inflict paralysis, burn or freeze")
         if (statusAnim == B_ANIM_STATUS_BRN) {
             STATUS_ICON(opponent, burn: TRUE);
         } else if (statusAnim == B_ANIM_STATUS_FRZ) {
-            FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
+            STATUS_ICON(opponent, freeze: TRUE);
         } else if (statusAnim == B_ANIM_STATUS_PRZ) {
             STATUS_ICON(opponent, paralysis: TRUE);
         }
@@ -66,7 +66,7 @@ SINGLE_BATTLE_TEST("Tri Attack cannot paralyze/burn/freeze electric/fire/ice typ
             if (statusAnim == B_ANIM_STATUS_BRN) {
                 STATUS_ICON(opponent, burn: TRUE);
             } else if (statusAnim == B_ANIM_STATUS_FRZ) {
-                FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
+                STATUS_ICON(opponent, freeze: TRUE);
             } else if (statusAnim == B_ANIM_STATUS_PRZ) {
                 STATUS_ICON(opponent, paralysis: TRUE);
             }
@@ -105,7 +105,7 @@ SINGLE_BATTLE_TEST("Tri Attack cannot paralyze/burn/freeze pokemon with abilitie
             if (statusAnim == B_ANIM_STATUS_BRN) {
                 STATUS_ICON(opponent, burn: TRUE);
             } else if (statusAnim == B_ANIM_STATUS_FRZ) {
-                FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
+                STATUS_ICON(opponent, freeze: TRUE);
             } else if (statusAnim == B_ANIM_STATUS_PRZ) {
                 STATUS_ICON(opponent, paralysis: TRUE);
             }
@@ -138,7 +138,7 @@ SINGLE_BATTLE_TEST("Tri Attack cannot paralyze/burn/freeze a mon which is alread
             if (statusAnim == B_ANIM_STATUS_BRN) {
                 STATUS_ICON(opponent, burn: TRUE);
             } else if (statusAnim == B_ANIM_STATUS_FRZ) {
-                FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
+                STATUS_ICON(opponent, freeze: TRUE);
             } else if (statusAnim == B_ANIM_STATUS_PRZ) {
                 STATUS_ICON(opponent, paralysis: TRUE);
             }

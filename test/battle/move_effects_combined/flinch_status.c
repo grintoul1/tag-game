@@ -5,13 +5,12 @@ ASSUMPTIONS
 {
     ASSUME(MoveHasAdditionalEffect(MOVE_THUNDER_FANG, MOVE_EFFECT_PARALYSIS) == TRUE);
     ASSUME(MoveHasAdditionalEffect(MOVE_THUNDER_FANG, MOVE_EFFECT_FLINCH) == TRUE);
-    ASSUME(MoveHasAdditionalEffect(MOVE_ICE_FANG, MOVE_EFFECT_FREEZE_OR_FROSTBITE) == TRUE);
+    ASSUME(MoveHasAdditionalEffect(MOVE_ICE_FANG, MOVE_EFFECT_FREEZE) == TRUE);
     ASSUME(MoveHasAdditionalEffect(MOVE_ICE_FANG, MOVE_EFFECT_FLINCH) == TRUE);
     ASSUME(MoveHasAdditionalEffect(MOVE_FIRE_FANG, MOVE_EFFECT_BURN) == TRUE);
     ASSUME(MoveHasAdditionalEffect(MOVE_FIRE_FANG, MOVE_EFFECT_FLINCH) == TRUE);
 }
 
-// Updated for new FRB animation
 SINGLE_BATTLE_TEST("Thunder, Ice and Fire Fang inflict status 10% of the time")
 {
     u16 move;
@@ -33,8 +32,8 @@ SINGLE_BATTLE_TEST("Thunder, Ice and Fire Fang inflict status 10% of the time")
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PRZ, opponent);
             STATUS_ICON(opponent, paralysis: TRUE);
         } if (move == MOVE_ICE_FANG) {
-            ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRB, opponent);
-            FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
+            ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRZ, opponent);
+            STATUS_ICON(opponent, freeze: TRUE);
         } if (move == MOVE_FIRE_FANG) {
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_BRN, opponent);
             STATUS_ICON(opponent, burn: TRUE);

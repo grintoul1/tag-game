@@ -22,7 +22,11 @@ SINGLE_BATTLE_TEST("Powder Snow inflicts freeze")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POWDER_SNOW, player);
         HP_BAR(opponent);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRB, opponent);
-        FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
+        #if B_USE_FROSTBITE == TRUE
+        STATUS_ICON(opponent, frostbite: TRUE);
+        #else
+        STATUS_ICON(opponent, freeze: TRUE);
+        #endif
     }
 }
 
@@ -43,7 +47,7 @@ SINGLE_BATTLE_TEST("Powder Snow cannot freeze an Ice-type Pokémon")
         HP_BAR(opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRZ, opponent);
-            FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
+            STATUS_ICON(opponent, freeze: TRUE);
         }
     }
 }
@@ -87,12 +91,22 @@ SINGLE_BATTLE_TEST("Freezing Glare shouldn't freeze Psychic-types")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FREEZING_GLARE, player);
         HP_BAR(opponent);
         #if B_STATUS_TYPE_IMMUNITY > GEN_1
-            ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRB, opponent);
-            FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
+            #if B_USE_FROSTBITE == TRUE
+                ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRB, opponent);
+                STATUS_ICON(opponent, frostbite: TRUE);
+            #else
+                ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRZ, opponent);
+                STATUS_ICON(opponent, freeze: TRUE);
+            #endif
         #else
             NONE_OF {
-                ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRB, opponent);
-                FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
+                #if B_USE_FROSTBITE == TRUE
+                    ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRB, opponent);
+                    STATUS_ICON(opponent, frostbite: TRUE);
+                #else
+                    ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRZ, opponent);
+                    STATUS_ICON(opponent, freeze: TRUE);
+                #endif
             }
         #endif
     }
