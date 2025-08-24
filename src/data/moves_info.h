@@ -314,11 +314,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Ice Punch"),
         .description = COMPOUND_STRING(
             "An icy punch that may\n"
-        #if B_USE_FROSTBITE == TRUE
-            "leave the foe with frostbite."),
-        #else
             "freeze the foe."),
-        #endif
         .effect = EFFECT_HIT,
         .power = 75,
         .type = TYPE_ICE,
@@ -330,7 +326,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .makesContact = TRUE,
         .punchingMove = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_FREEZE_OR_FROSTBITE,
+            .moveEffect = MOVE_EFFECT_FREEZE,
             .chance = 10,
         }),
         .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
@@ -10994,11 +10990,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Ice Fang"),
         .description = COMPOUND_STRING(
             "May cause flinching or\n"
-        #if B_USE_FROSTBITE == TRUE
-            "leave the foe with frostbite."),
-        #else
             "leave the foe frozen."),
-        #endif
         .effect = EFFECT_HIT,
         .power = 65,
         .type = TYPE_ICE,
@@ -11010,7 +11002,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .makesContact = TRUE,
         .bitingMove = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_FREEZE_OR_FROSTBITE,
+            .moveEffect = MOVE_EFFECT_FREEZE,
             .chance = 10,
         },
         {
@@ -22839,6 +22831,65 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .contestComboMoves = {COMBO_STARTER_SUNNY_DAY},
         .battleAnimScript = gBattleAnimMove_FrostyGale,
+        .validApprenticeMove = TRUE,
+    },
+
+    [MOVE_FROST_FANG] =
+    {
+        .name = COMPOUND_STRING("Frost Fang"),
+        .description = COMPOUND_STRING(
+            "May cause flinching or\n"
+            "leave the foe with frostbite."),
+        .effect = EFFECT_HIT,
+        .power = 65,
+        .type = TYPE_ICE,
+        .accuracy = 100,
+        .pp = 15,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .bitingMove = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_FROSTBITE,
+            .chance = 10,
+        },
+        {
+            .moveEffect = MOVE_EFFECT_FLINCH,
+            .chance = 10,
+        }),
+        .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
+        .contestCategory = CONTEST_CATEGORY_COOL,
+        .contestComboStarterId = COMBO_STARTER_ICE_FANG,
+        .contestComboMoves = {COMBO_STARTER_FIRE_FANG, COMBO_STARTER_THUNDER_FANG},
+        .battleAnimScript = gBattleAnimMove_FrostFang,
+    },
+
+    [MOVE_FROST_PUNCH] =
+    {
+        .name = COMPOUND_STRING("Frost Punch"),
+        .description = COMPOUND_STRING(
+            "An icy punch that may\n"
+            "leave the foe with frostbite."),
+        .effect = EFFECT_HIT,
+        .power = 75,
+        .type = TYPE_ICE,
+        .accuracy = 100,
+        .pp = 15,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .punchingMove = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_FROSTBITE,
+            .chance = 10,
+        }),
+        .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = COMBO_STARTER_ICE_PUNCH,
+        .contestComboMoves = {COMBO_STARTER_FIRE_PUNCH, COMBO_STARTER_THUNDER_PUNCH},
+        .battleAnimScript = gBattleAnimMove_FrostPunch,
         .validApprenticeMove = TRUE,
     },
 };
