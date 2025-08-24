@@ -2108,13 +2108,13 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                         if (TESTING && gBattleTypeFlags & BATTLE_TYPE_MULTI)
                         {
                             if (!(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
-                            {
                                 stringPtr = sText_Trainer1WantsToBattle;
-                            }
                             else
-                            {
                                 stringPtr = sText_TwoTrainersWantToBattle;
-                            }
+                        }
+                        else if (TESTING && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+                        {
+                            stringPtr = sText_TwoTrainersWantToBattle;
                         }
                         else if (!(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
                         {
@@ -2283,12 +2283,25 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                                 stringPtr = sText_Trainer1SentOutPkmn2;
                         }
                     }
+                    else if (TESTING && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+                    {
+                        if (gBattleScripting.battler == 1)
+                            stringPtr = sText_Trainer1SentOutPkmn;
+                        else if (gBattleScripting.battler == 3)
+                            stringPtr = sText_Trainer2SentOutPkmn;
+                    }
                     else if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
+                    {
                         stringPtr = sText_LinkTrainerMultiSentOutPkmn;
+                    }
                     else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_UNION_ROOM)
+                    {
                         stringPtr = sText_Trainer1SentOutPkmn2;
+                    }
                     else
+                    {
                         stringPtr = sText_LinkTrainerSentOutPkmn2;
+                    }
                 }
             }
             else
