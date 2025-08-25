@@ -162,7 +162,7 @@ Level: 27
 Adamant Nature  
 - Thief
 - Rock Tomb
-- Payback
+- Bite
 
 === TRAINER_TIANA ===
 Name: Tiana
@@ -299,7 +299,7 @@ Music: Twins
 Battle Type: Doubles
 AI: Smart Trainer
 
-Tandemaus @ Eviolite
+Tandemaus @ Choice Scarf
 Ability: Own Tempo
 Level: 29
 Jolly Nature

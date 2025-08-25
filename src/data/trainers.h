@@ -461,7 +461,7 @@ F_TRAINER_FEMALE |
 #line 163
                 MOVE_THIEF,
                 MOVE_ROCK_TOMB,
-                MOVE_PAYBACK,
+                MOVE_BITE,
             },
             },
         },
@@ -818,7 +818,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_TANDEMAUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 302
-            .heldItem = ITEM_EVIOLITE,
+            .heldItem = ITEM_CHOICE_SCARF,
 #line 306
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 303
