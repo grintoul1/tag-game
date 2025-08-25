@@ -455,11 +455,14 @@ static enum FieldEffectOutcome BenefitsFromTrickRoom(u32 battler)
         }
     }
 
-    // If we are faster or tie, we don't want trick room.
-    if ((gAiLogicData->speedStats[battler] >= gAiLogicData->speedStats[FOE(battler)]) || (gAiLogicData->speedStats[battler] >= gAiLogicData->speedStats[BATTLE_PARTNER(FOE(battler))]))
-        return FIELD_EFFECT_NEGATIVE;
+    // If either mon is slower, we want Trick Room.
+    if ((!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) 
+    && (gAiLogicData->speedStats[battler] + gAiLogicData->speedStats[BATTLE_PARTNER(battler)]) < (gAiLogicData->speedStats[FOE(battler)] + gAiLogicData->speedStats[BATTLE_PARTNER(FOE(battler))]))
+    || ((gFieldStatuses & STATUS_FIELD_TRICK_ROOM) 
+    && (gAiLogicData->speedStats[battler] + gAiLogicData->speedStats[BATTLE_PARTNER(battler)]) < (gAiLogicData->speedStats[FOE(battler)] + gAiLogicData->speedStats[BATTLE_PARTNER(FOE(battler))])))
+        return FIELD_EFFECT_POSITIVE;
 
-    return FIELD_EFFECT_POSITIVE;
+    return FIELD_EFFECT_NEGATIVE;
 }
 
 

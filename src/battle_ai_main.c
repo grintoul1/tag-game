@@ -943,7 +943,10 @@ static u32 ChooseMoveOrAction_Doubles(u32 battler)
 
     gBattlerTarget = mostViableTargetsArray[Random() % mostViableTargetsNo];
     gAiBattleData->chosenTarget[battler] = gBattlerTarget;
-    gBattleStruct->chosenMovePositions[battler] = actionOrMoveIndex[gBattlerTarget];
+
+    if (!IsOnPlayerSide(battler))
+        gBattleStruct->chosenMovePositions[battler] = actionOrMoveIndex[gBattlerTarget];
+
     return actionOrMoveIndex[gBattlerTarget];
 }
 
@@ -2614,7 +2617,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             {
                 // This only happens if the ally already rolled on double trick room on final turn.
                 // Both Pokemon use Trick Room on the final turn of Trick Room to anticipate both opponents Protecting to stall out.
-                if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer == gBattleTurnCounter)
+                if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer == (gBattleTurnCounter + 1))
                     ADJUST_SCORE(PERFECT_EFFECT);
                 else
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -3054,7 +3057,6 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     bool32 partnerHasBadAbility = (gAbilitiesInfo[atkPartnerAbility].aiRating < 0);
     u32 predictedMoveSpeedCheck = GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData);
 
-    MgbaPrintf(MGBA_LOG_WARN, "battlerAtk %d, battlerDef %d, aiData->partnerMove %d, partnerEffect%d", battlerAtk, battlerDef, aiData->partnerMove, partnerEffect);
     SetTypeBeforeUsingMove(move, battlerAtk);
     moveType = GetBattleMoveType(move);
     bool32 hasPartner = HasPartner(battlerAtk);
@@ -3200,7 +3202,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     // Both Pokemon use Trick Room on the final turn of Trick Room to anticipate both opponents Protecting to stall out.
     // This unsets Trick Room and resets it with a full timer.
     case EFFECT_TRICK_ROOM:
-        if (hasPartner && gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer == gBattleTurnCounter
+        if (hasPartner && gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer == (gBattleTurnCounter + 1)
          && ShouldSetFieldStatus(battlerAtk, STATUS_FIELD_TRICK_ROOM)
          && HasMoveWithEffect(battlerAtkPartner, EFFECT_TRICK_ROOM)
          && RandomPercentage(RNG_AI_REFRESH_TRICK_ROOM_ON_LAST_TURN, DOUBLE_TRICK_ROOM_ON_LAST_TURN_CHANCE))
@@ -3208,7 +3210,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         break;
     case EFFECT_TAILWIND:
         // Anticipate both opponents protecting to stall out Trick Room, and apply Tailwind.
-        if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer == gBattleTurnCounter
+        if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer == (gBattleTurnCounter + 1)
          && RandomPercentage(RNG_AI_APPLY_TAILWIND_ON_LAST_TURN_OF_TRICK_ROOM, TAILWIND_IN_TRICK_ROOM_CHANCE))
             ADJUST_SCORE(PERFECT_EFFECT);
         break;
@@ -3309,7 +3311,6 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     // check specific target
     if (IsTargetingPartner(battlerAtk, battlerDef))
     {
-        MgbaPrintf(MGBA_LOG_WARN, "battlerAtk %d, battlerDef %d, move %d", battlerAtk, battlerDef, move);
         bool32 isMoveAffectedByPartnerAbility = TRUE;
 
         if (wouldPartnerFaint)
@@ -3693,12 +3694,20 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 }
                 break;
             case EFFECT_TRICK_ROOM:
-                MgbaPrintf(MGBA_LOG_WARN, "STATUS_FIELD_TRICK_ROOM %d", gFieldStatuses & STATUS_FIELD_TRICK_ROOM);
-                MgbaPrintf(MGBA_LOG_WARN, "battlerAtk %d, partnerEffect == EFFECT_AFTER_YOU %d", battlerAtk, partnerEffect == EFFECT_AFTER_YOU);
-                MgbaPrintf(MGBA_LOG_WARN, "battlerAtk %d, gAiLogicData->partnerMove %d", battlerAtk, gAiLogicData->partnerMove);
-                if (!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && (gAiLogicData->partnerMove == MOVE_AFTER_YOU))
-                    RETURN_SCORE_PLUS(PERFECT_EFFECT);
+            {
+                if (!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM))
+                {
+                    if (gAiLogicData->partnerMove == MOVE_AFTER_YOU)
+                    {
+                        RETURN_SCORE_PLUS(PERFECT_EFFECT);
+                    }
+                    else if (ShouldSetFieldStatus(battlerAtk, STATUS_FIELD_TRICK_ROOM) && (gAiLogicData->partnerMove != MOVE_TRICK_ROOM))
+                    {
+                        RETURN_SCORE_PLUS(PERFECT_EFFECT);
+                    }
+                }
                 break;
+            }
             case EFFECT_AFTER_YOU:
                 if (!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && HasMoveWithEffect(battlerAtkPartner, EFFECT_TRICK_ROOM))
                     RETURN_SCORE_PLUS(PERFECT_EFFECT);

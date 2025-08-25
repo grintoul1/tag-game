@@ -554,7 +554,6 @@ AI_DOUBLE_BATTLE_TEST("AI sets up terrain for its ally")
 
 AI_DOUBLE_BATTLE_TEST("AI uses After You to set up Trick Room")
 {
-    KNOWN_FAILING; // AI changed
     u32 move;
 
     PARAMETRIZE { move = MOVE_TRICK_ROOM; }
