@@ -21,7 +21,6 @@ AI_SINGLE_BATTLE_TEST("AI prefers to set up a powerful Status over fainting a ta
 
 AI_SINGLE_BATTLE_TEST("AI will try to do damage on target instead of setting up hazards if target has a way to remove them")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_RAPID_SPIN) == EFFECT_RAPID_SPIN);
         ASSUME(GetMoveEffect(MOVE_STEALTH_ROCK) == EFFECT_STEALTH_ROCK);

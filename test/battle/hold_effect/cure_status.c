@@ -72,6 +72,7 @@ SINGLE_BATTLE_TEST("Rawst and Lum Berries cure burn")
     }
 }
 
+// Updated for new FRB animation
 SINGLE_BATTLE_TEST("Aspear and Lum Berries cure freeze or frostbite")
 {
     u16 item;
@@ -88,9 +89,9 @@ SINGLE_BATTLE_TEST("Aspear and Lum Berries cure freeze or frostbite")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ICE_PUNCH, player);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRZ, opponent);
-        FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
+        STATUS_ICON(opponent, freeze: TRUE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-        FREEZE_OR_FROSTBURN_STATUS(opponent, FALSE);
+        STATUS_ICON(opponent, FALSE);
     }
 }
 

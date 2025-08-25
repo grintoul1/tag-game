@@ -381,12 +381,7 @@ struct BattlePokemon
     /*0x45*/ u32 experience;
     /*0x49*/ u32 personality;
     /*0x4D*/ u32 status1;
-    /*0x51*/ union {
-        struct {
-            u32 status2; // To be expanded to include Status3/4
-        };
-        struct Volatiles volatiles;
-    };
+    /*0x51*/ struct Volatiles volatiles;
     /*0x5D*/ u32 otId;
     /*0x61*/ u8 metLevel;
     /*0x62*/ bool8 isShiny;
@@ -671,7 +666,7 @@ extern u32 removeBagItem;
 extern u32 removeBagItemCount;
 
 extern const u16 gFacilityClassToPicIndex[];
-extern const  u16 gFacilityClassToTrainerClass[];
+extern const enum TrainerClassID gFacilityClassToTrainerClass[];
 extern const struct SpeciesInfo gSpeciesInfo[];
 extern const u32 gExperienceTables[][MAX_LEVEL + 1];
 extern const u8 gPPUpGetMask[];

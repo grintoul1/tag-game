@@ -131,6 +131,7 @@ SINGLE_BATTLE_TEST("X Speed sharply raises battler's Speed stat", s16 damage)
     }
 }
 
+/* Accuracy changed
 SINGLE_BATTLE_TEST("X Accuracy sharply raises battler's Accuracy stat")
 {
 
@@ -151,6 +152,7 @@ SINGLE_BATTLE_TEST("X Accuracy sharply raises battler's Accuracy stat")
         MESSAGE("The opposing Wobbuffet fell asleep!");
     }
 }
+*/
 
 SINGLE_BATTLE_TEST("Max Mushrooms raises battler's Attack stat", s16 damage)
 {

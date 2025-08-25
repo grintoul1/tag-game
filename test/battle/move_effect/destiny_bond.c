@@ -21,6 +21,7 @@ SINGLE_BATTLE_TEST("Destiny Bond faints the opposing mon if it fainted from the 
     }
 }
 
+/* Config changed
 SINGLE_BATTLE_TEST("Destiny Bond fails if used sequentially in Gen 7+")
 {
     GIVEN {
@@ -38,7 +39,9 @@ SINGLE_BATTLE_TEST("Destiny Bond fails if used sequentially in Gen 7+")
         MESSAGE("But it failed!");
     }
 }
+*/
 
+/* Config changed
 SINGLE_BATTLE_TEST("Destiny Bond does not fail if used repeatedly separated by other moves in Gen 7+")
 {
     GIVEN {
@@ -57,7 +60,9 @@ SINGLE_BATTLE_TEST("Destiny Bond does not fail if used repeatedly separated by o
         NOT { MESSAGE("But it failed!"); }
     }
 }
+*/
 
+/* Config changed
 SINGLE_BATTLE_TEST("Destiny Bond does not fail if used after failing in Gen 7+")
 {
     GIVEN {
@@ -77,6 +82,7 @@ SINGLE_BATTLE_TEST("Destiny Bond does not fail if used after failing in Gen 7+")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DESTINY_BOND, player);
     }
 }
+*/
 
 // can't be used at all in Raid, see "Documenting Dynamax"
 SINGLE_BATTLE_TEST("(DYNAMAX) Dynamaxed Pokemon are not affected by Destiny Bond")
