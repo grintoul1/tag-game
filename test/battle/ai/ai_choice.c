@@ -131,7 +131,6 @@ AI_SINGLE_BATTLE_TEST("Choiced Pokémon won't use status move if they are the on
 
 AI_SINGLE_BATTLE_TEST("Choiced Pokémon won't use status move if they don't have a good switchin")
 {
-    KNOWN_FAILING; // AI changed
     u32 j, ability = ABILITY_NONE, move = MOVE_NONE, species = SPECIES_NONE, heldItem = ITEM_NONE;
 
     static const u32 choiceItems[] = {
@@ -202,7 +201,6 @@ AI_SINGLE_BATTLE_TEST("Choiced Pokémon won't use status move if they are trappe
 
 AI_SINGLE_BATTLE_TEST("Choiced Pokémon will switch if locked into a move the player is immune to")
 {
-    KNOWN_FAILING; // Unsure why
     GIVEN {
         ASSUME(GetSpeciesType(SPECIES_GASTLY, 0) == TYPE_GHOST);
         ASSUME(GetMoveType(MOVE_SURF) == TYPE_WATER);
