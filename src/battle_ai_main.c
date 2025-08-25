@@ -943,6 +943,7 @@ static u32 ChooseMoveOrAction_Doubles(u32 battler)
 
     gBattlerTarget = mostViableTargetsArray[Random() % mostViableTargetsNo];
     gAiBattleData->chosenTarget[battler] = gBattlerTarget;
+    gBattleStruct->chosenMovePositions[battler] = actionOrMoveIndex[gBattlerTarget];
     return actionOrMoveIndex[gBattlerTarget];
 }
 
@@ -3053,6 +3054,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     bool32 partnerHasBadAbility = (gAbilitiesInfo[atkPartnerAbility].aiRating < 0);
     u32 predictedMoveSpeedCheck = GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData);
 
+    MgbaPrintf(MGBA_LOG_WARN, "battlerAtk %d, battlerDef %d, aiData->partnerMove %d, partnerEffect%d", battlerAtk, battlerDef, aiData->partnerMove, partnerEffect);
     SetTypeBeforeUsingMove(move, battlerAtk);
     moveType = GetBattleMoveType(move);
     bool32 hasPartner = HasPartner(battlerAtk);
@@ -3087,14 +3089,6 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_FROZEN_RECEPTION:
             if (IsMoveEffectWeather(move))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-            break;
-        case EFFECT_AFTER_YOU:
-            if ((effect == EFFECT_TRICK_ROOM) && !(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && ShouldSetFieldStatus(battlerAtk, STATUS_FIELD_TRICK_ROOM))
-                RETURN_SCORE_PLUS(PERFECT_EFFECT);
-            break;
-        case EFFECT_TRICK_ROOM:
-            if ((effect == EFFECT_AFTER_YOU) && !(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && ShouldSetFieldStatus(battlerAtk, STATUS_FIELD_TRICK_ROOM))
-                RETURN_SCORE_PLUS(PERFECT_EFFECT);
             break;
         default:
             break;
@@ -3208,7 +3202,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     case EFFECT_TRICK_ROOM:
         if (hasPartner && gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer == gBattleTurnCounter
          && ShouldSetFieldStatus(battlerAtk, STATUS_FIELD_TRICK_ROOM)
-         && HasMoveWithEffect(battlerAtkPartner, MOVE_TRICK_ROOM)
+         && HasMoveWithEffect(battlerAtkPartner, EFFECT_TRICK_ROOM)
          && RandomPercentage(RNG_AI_REFRESH_TRICK_ROOM_ON_LAST_TURN, DOUBLE_TRICK_ROOM_ON_LAST_TURN_CHANCE))
             ADJUST_SCORE(PERFECT_EFFECT);
         break;
@@ -3315,6 +3309,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     // check specific target
     if (IsTargetingPartner(battlerAtk, battlerDef))
     {
+        MgbaPrintf(MGBA_LOG_WARN, "battlerAtk %d, battlerDef %d, move %d", battlerAtk, battlerDef, move);
         bool32 isMoveAffectedByPartnerAbility = TRUE;
 
         if (wouldPartnerFaint)
@@ -3697,10 +3692,17 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     }
                 }
                 break;
+            case EFFECT_TRICK_ROOM:
+                MgbaPrintf(MGBA_LOG_WARN, "STATUS_FIELD_TRICK_ROOM %d", gFieldStatuses & STATUS_FIELD_TRICK_ROOM);
+                MgbaPrintf(MGBA_LOG_WARN, "battlerAtk %d, partnerEffect == EFFECT_AFTER_YOU %d", battlerAtk, partnerEffect == EFFECT_AFTER_YOU);
+                MgbaPrintf(MGBA_LOG_WARN, "battlerAtk %d, gAiLogicData->partnerMove %d", battlerAtk, gAiLogicData->partnerMove);
+                if (!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && (gAiLogicData->partnerMove == MOVE_AFTER_YOU))
+                    RETURN_SCORE_PLUS(PERFECT_EFFECT);
+                break;
             case EFFECT_AFTER_YOU:
                 if (!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && HasMoveWithEffect(battlerAtkPartner, EFFECT_TRICK_ROOM))
-                    ADJUST_SCORE(DECENT_EFFECT);
-
+                    RETURN_SCORE_PLUS(PERFECT_EFFECT);
+                /*
                 if (AI_IsSlower(battlerAtkPartner, FOE(battlerAtkPartner), aiData->partnerMove, predictedMoveSpeedCheck, CONSIDER_PRIORITY)  // Opponent mon 1 goes before partner
                  && AI_IsSlower(battlerAtkPartner, BATTLE_PARTNER(FOE(battlerAtkPartner)), aiData->partnerMove, predictedMoveSpeedCheck, CONSIDER_PRIORITY)) // Opponent mon 2 goes before partner
                 {
@@ -3708,6 +3710,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                         break; // These moves need to go last
                     ADJUST_SCORE(WEAK_EFFECT);
                 }
+                */
                 break;
             case EFFECT_HEAL_PULSE:
             case EFFECT_HIT_ENEMY_HEAL_ALLY:
