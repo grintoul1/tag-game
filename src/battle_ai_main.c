@@ -1203,8 +1203,9 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case MOVE_EFFECT_FROSTBITE:
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
+            default:
+                break;
             }
-            break;
             break;
         case ABILITY_WONDER_GUARD:
             if (effectiveness < UQ_4_12(2.0))
@@ -3630,7 +3631,9 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_PURIFY:
                 if (gBattleMons[battlerAtkPartner].status1 & STATUS1_ANY)
                 {
-                    RETURN_SCORE_PLUS(WEAK_EFFECT);
+                    if (gBattleMons[battlerAtkPartner].status1 & STATUS1_CAN_MOVE)
+                        RETURN_SCORE_PLUS(WEAK_EFFECT);
+                    RETURN_SCORE_PLUS(GOOD_EFFECT);
                 }
                 break;
             case EFFECT_SWAGGER:
@@ -4189,8 +4192,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         if (predictedMove && GetMoveEffect(predictedMove) != GetMoveEffect(move))
             return AI_CheckViability(battlerAtk, battlerDef, predictedMove, score);
         break;
-    case EFFECT_ATTACK_UP:
     case EFFECT_ATTACK_UP_USER_ALLY:
+        ADJUST_SCORE(IncreaseStatUpScore(BATTLE_PARTNER(battlerAtk), battlerDef, STAT_CHANGE_ATK));
+    case EFFECT_ATTACK_UP:
         ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK));
         break;
     case EFFECT_ATTACK_UP_2:
@@ -4199,6 +4203,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_DEFENSE_UP:
         ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
         break;
+    case EFFECT_STUFF_CHEEKS:
     case EFFECT_DEFENSE_UP_2:
     case EFFECT_DEFENSE_UP_3:
         ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF_2));
@@ -4413,8 +4418,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         {
             if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_CURE_SLP
               || aiData->holdEffects[battlerAtk] == HOLD_EFFECT_CURE_STATUS
-              || HasMoveWithEffect(EFFECT_SLEEP_TALK, battlerAtk)
-              || HasMoveWithEffect(EFFECT_SNORE, battlerAtk)
+              || HasMoveWithEffect(battlerAtk, EFFECT_SLEEP_TALK)
+              || HasMoveWithEffect(battlerAtk, EFFECT_SNORE)
               || aiData->abilities[battlerAtk] == ABILITY_SHED_SKIN
               || aiData->abilities[battlerAtk] == ABILITY_EARLY_BIRD
               || (AI_GetWeather() & B_WEATHER_RAIN && gWishFutureKnock.weatherDuration != 1 && aiData->abilities[battlerAtk] == ABILITY_HYDRATION && aiData->holdEffects[battlerAtk] != HOLD_EFFECT_UTILITY_UMBRELLA))
