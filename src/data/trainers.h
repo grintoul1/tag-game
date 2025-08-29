@@ -17209,7 +17209,7 @@ F_TRAINER_FEMALE |
 #line 6532
         .trainerName = _("Tabitha"),
 #line 6533
-        .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
+        .trainerClass = TRAINER_CLASS_MAGMA_ADMIN_MIXED,
 #line 6534
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
         .encounterMusic_gender =
@@ -17303,7 +17303,7 @@ F_TRAINER_FEMALE |
 #line 6569
         .trainerName = _("Matt"),
 #line 6570
-        .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
+        .trainerClass = TRAINER_CLASS_AQUA_ADMIN_MIXED,
 #line 6571
         .trainerPic = TRAINER_PIC_AQUA_ADMIN_M,
         .encounterMusic_gender =
@@ -17397,7 +17397,7 @@ F_TRAINER_FEMALE |
 #line 6606
         .trainerName = _("Shelly"),
 #line 6607
-        .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
+        .trainerClass = TRAINER_CLASS_AQUA_ADMIN_MIXED,
 #line 6608
         .trainerPic = TRAINER_PIC_AQUA_ADMIN_F,
         .encounterMusic_gender =
@@ -17448,7 +17448,7 @@ F_TRAINER_FEMALE |
 #line 6625
         .trainerName = _("Courtney"),
 #line 6626
-        .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
+        .trainerClass = TRAINER_CLASS_MAGMA_ADMIN_MIXED,
 #line 6627
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN_F,
         .encounterMusic_gender =
