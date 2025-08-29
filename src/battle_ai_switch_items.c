@@ -1143,22 +1143,38 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         if (IsAceMon(battler, i))
             continue;
 
+        uq4_12_t mod; 
+        if (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) != GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1))
+        {
+            if (!(GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0)) == UQ_4_12(0.00)) || (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == UQ_4_12(0.00))))
+                mod = UQ_4_12(0.00);
+            else
+                mod = (UQ_4_12(1.00) * (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0))/UQ_4_12(1.00)) * (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1))/UQ_4_12(1.00)));
+        }
+        else
+        {
+            if (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0)) == UQ_4_12(0.00))
+                mod = 0;
+            else
+                mod = (UQ_4_12(1.00) * (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0))/UQ_4_12(1.00)));
+        }
+        
         // Check for type immunities without considering abilities
         if(!(GetMonData(&party[i], MON_DATA_HELD_ITEM, NULL) == HOLD_EFFECT_RING_TARGET))
         {
-            if((incomingType == TYPE_ELECTRIC) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
+            if((incomingType == TYPE_ELECTRIC) && (mod <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_POISON) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
+            if((incomingType == TYPE_POISON) && (mod <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if(((incomingType == TYPE_NORMAL) || (incomingType == TYPE_FIGHTING)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_SCRAPPY) && (GetBattlerAbility(opposingBattler2) != ABILITY_SCRAPPY)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_MINDS_EYE) && (GetBattlerAbility(opposingBattler2) != ABILITY_MINDS_EYE)) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
+            if(((incomingType == TYPE_NORMAL) || (incomingType == TYPE_FIGHTING)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_SCRAPPY) && (GetBattlerAbility(opposingBattler2) != ABILITY_SCRAPPY)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_MINDS_EYE) && (GetBattlerAbility(opposingBattler2) != ABILITY_MINDS_EYE)) && (mod <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_DRAGON) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
+            if((incomingType == TYPE_DRAGON) && (mod <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_GROUND) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
+            if((incomingType == TYPE_GROUND) && (mod <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_GHOST) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
+            if((incomingType == TYPE_GHOST) && (mod <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_PSYCHIC) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
+            if((incomingType == TYPE_PSYCHIC) && (mod <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
         }
     }

@@ -4939,15 +4939,14 @@ void IncreaseSleepScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
         return;
 
     if (AI_CanPutToSleep(battlerAtk, battlerDef, gAiLogicData->abilities[battlerDef], move, gAiLogicData->partnerMove))
-        ADJUST_SCORE_PTR(DECENT_EFFECT);
+        ADJUST_SCORE_PTR(WEAK_EFFECT);
     else
         return;
 
     if ((HasMoveWithEffect(battlerAtk, EFFECT_DREAM_EATER) || HasMoveWithEffect(battlerAtk, EFFECT_NIGHTMARE))
       && !(HasMoveWithEffect(battlerDef, EFFECT_SNORE) || HasMoveWithEffect(battlerDef, EFFECT_SLEEP_TALK)))
         ADJUST_SCORE_PTR(WEAK_EFFECT);
-
-    if (IsPowerBasedOnStatus(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_SLEEP)
+    else if (IsPowerBasedOnStatus(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_SLEEP)
       || IsPowerBasedOnStatus(BATTLE_PARTNER(battlerAtk), EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_SLEEP))
         ADJUST_SCORE_PTR(WEAK_EFFECT);
 }
