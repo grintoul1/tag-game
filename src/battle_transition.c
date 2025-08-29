@@ -33,7 +33,6 @@
 
 // Used by each transition task to determine which of its functions to call
 #define tState          data[0]
-#define t2State         data[15]
 
 // Below are data defines for InitBlackWipe and UpdateBlackWipe, for the TransitionData data array.
 // These will be re-used by any transitions that use these functions.
@@ -62,8 +61,8 @@ struct TransitionData
     u16 WINOUT;
     u16 WIN0H;
     u16 WIN0V;
-    u16 WIN1H;
-    u16 WIN1V;
+    u16 unused1;
+    u16 unused2;
     u16 BLDCNT;
     u16 BLDALPHA;
     u16 BLDY;
@@ -72,7 +71,7 @@ struct TransitionData
     s16 BG0HOFS_Lower;
     s16 BG0HOFS_Upper;
     s16 BG0VOFS; // used but not set
-    s16 BG1VOFS; // used but not set
+    s16 unused3;
     s16 counter;
     s16 unused4;
     s16 data[11];
@@ -136,7 +135,6 @@ static void HBlankCB_Swirl(void);
 static void VBlankCB_Shuffle(void);
 static void HBlankCB_Shuffle(void);
 static void VBlankCB_PatternWeave(void);
-static void VBlankCB_PatternWeave_Mugshot(void);
 static void VBlankCB_CircularMask(void);
 static void VBlankCB_ClockwiseWipe(void);
 static void VBlankCB_Ripple(void);
@@ -159,18 +157,11 @@ static bool8 Swirl_End(struct Task *);
 static bool8 Shuffle_Init(struct Task *);
 static bool8 Shuffle_End(struct Task *);
 static bool8 Aqua_Init(struct Task *);
-static bool8 Aqua_Init_Mugshot(struct Task *);
 static bool8 Aqua_SetGfx(struct Task *);
-static bool8 Aqua_SetGfx_Mugshot(struct Task *);
 static bool8 Magma_Init(struct Task *);
-static bool8 Magma_Init_Mugshot(struct Task *);
 static bool8 Magma_SetGfx(struct Task *);
-static bool8 Magma_SetGfx_Mugshot(struct Task *);
 static bool8 Aqua_Magma_Init(struct Task *);
-static bool8 Aqua_Magma_Init_Mugshot(struct Task *);
 static bool8 Aqua_Magma_SetGfx(struct Task *);
-static bool8 Aqua_Magma_SetGfx_Mugshot(struct Task *);
-static bool8 FramesCountdown_Evil(struct Task *);
 static bool8 FramesCountdown(struct Task *);
 static bool8 Regi_Init(struct Task *);
 static bool8 Regice_SetGfx(struct Task *);
@@ -188,11 +179,8 @@ static bool8 WeatherDuo_FadeOut(struct Task *);
 static bool8 WeatherDuo_End(struct Task *);
 static bool8 BigPokeball_Init(struct Task *);
 static bool8 BigPokeball_SetGfx(struct Task *);
-static bool8 PatternWeave_Blend1_Mugshot(struct Task *);
 static bool8 PatternWeave_Blend1(struct Task *);
-static bool8 PatternWeave_Blend2_Mugshot(struct Task *);
 static bool8 PatternWeave_Blend2(struct Task *);
-static bool8 PatternWeave_FinishAppear_Mugshot(struct Task *);
 static bool8 PatternWeave_FinishAppear(struct Task *);
 static bool8 PatternWeave_CircularMask(struct Task *);
 static bool8 PokeballsTrail_Init(struct Task *);
@@ -262,34 +250,20 @@ static bool8 FrontierSquaresScroll_Draw(struct Task *);
 static bool8 FrontierSquaresScroll_SetBlack(struct Task *);
 static bool8 FrontierSquaresScroll_Erase(struct Task *);
 static bool8 FrontierSquaresScroll_End(struct Task *);
-static bool8 Mugshot_Evil_Wait(struct Task *);
-static bool8 Mugshot_Evil_Init(struct Task *);
 static bool8 Mugshot_Init(struct Task *);
-static bool8 Mugshot_Evil_SetGfx(struct Task *);
 static bool8 Mugshot_SetGfx(struct Task *);
-static bool8 Mugshot_Evil_ShowBanner(struct Task *);
 static bool8 Mugshot_ShowBanner(struct Task *);
-static bool8 Mugshot_Evil_StartOpponentSlide(struct Task *);
 static bool8 Mugshot_StartOpponentSlide(struct Task *);
-static bool8 Mugshot_Evil_WaitStartPlayerSlide(struct Task *);
 static bool8 Mugshot_WaitStartPlayerSlide(struct Task *);
-static bool8 Mugshot_Evil_WaitPlayerSlide(struct Task *);
 static bool8 Mugshot_WaitPlayerSlide(struct Task *);
-static bool8 Mugshot_Evil_GradualWhiteFade(struct Task *);
 static bool8 Mugshot_GradualWhiteFade(struct Task *);
-static bool8 Mugshot_Evil_InitFadeWhiteToBlack(struct Task *);
 static bool8 Mugshot_InitFadeWhiteToBlack(struct Task *);
-static bool8 Mugshot_Evil_FadeToBlack(struct Task *);
 static bool8 Mugshot_FadeToBlack(struct Task *);
-static bool8 Mugshot_Evil_End(struct Task *);
 static bool8 Mugshot_End(struct Task *);
 static void Mugshots_CreateTrainerPics(struct Task *);
 static void VBlankCB_Mugshots(void);
-static void VBlankCB_Mugshots_Evil(void);
 static void VBlankCB_MugshotsFadeOut(void);
-static void VBlankCB_MugshotsFadeOut_Evil(void);
 static void HBlankCB_Mugshots(void);
-static void HBlankCB_Mugshots_Evil(void);
 static void InitTransitionData(void);
 static void FadeScreenBlack(void);
 static void CreateIntroTask(s16, s16, s16, s16, s16);
@@ -579,80 +553,6 @@ static const TransitionStateFunc sMugshot_Funcs[] =
     Mugshot_InitFadeWhiteToBlack,
     Mugshot_FadeToBlack,
     Mugshot_End
-};
-
-static const TransitionStateFunc sMugshotAqua_Funcs[] =
-{
-    Aqua_Init_Mugshot,
-    Aqua_SetGfx_Mugshot,
-    PatternWeave_Blend1_Mugshot,
-    PatternWeave_Blend2_Mugshot,
-    PatternWeave_FinishAppear_Mugshot
-};
-
-static const TransitionStateFunc sMugshotAqua_Funcs2[] =
-{
-    Mugshot_Evil_Wait,
-    Mugshot_Evil_Init,
-    Mugshot_Evil_SetGfx,
-    Mugshot_Evil_ShowBanner,
-    Mugshot_Evil_StartOpponentSlide,
-    Mugshot_Evil_WaitStartPlayerSlide,
-    Mugshot_Evil_WaitPlayerSlide,
-    Mugshot_Evil_GradualWhiteFade,
-    Mugshot_Evil_InitFadeWhiteToBlack,
-    Mugshot_Evil_FadeToBlack,
-    Mugshot_Evil_End
-};
-
-static const TransitionStateFunc sMugshotMagma_Funcs[] =
-{
-    Magma_Init_Mugshot,
-    Magma_SetGfx_Mugshot,
-    PatternWeave_Blend1_Mugshot,
-    PatternWeave_Blend2_Mugshot,
-    PatternWeave_FinishAppear_Mugshot
-};
-
-static const TransitionStateFunc sMugshotMagma_Funcs2[] =
-{
-    Mugshot_Evil_Wait,
-    Mugshot_Evil_Init,
-    Mugshot_Evil_SetGfx,
-    Mugshot_Evil_ShowBanner,
-    Mugshot_Evil_StartOpponentSlide,
-    Mugshot_Evil_WaitStartPlayerSlide,
-    Mugshot_Evil_WaitPlayerSlide,
-    Mugshot_Evil_GradualWhiteFade,
-    Mugshot_Evil_InitFadeWhiteToBlack,
-    Mugshot_Evil_FadeToBlack,
-    Mugshot_Evil_End
-};
-
-static const TransitionStateFunc sMugshotMixed_Funcs[] =
-{
-    Aqua_Magma_Init_Mugshot,
-    Aqua_Magma_SetGfx_Mugshot,
-    PatternWeave_Blend1_Mugshot,
-    PatternWeave_Blend2_Mugshot,
-    PatternWeave_FinishAppear_Mugshot,
-    FramesCountdown
-};
-
-static const TransitionStateFunc sMugshotMixed_Funcs2[] =
-{
-    Mugshot_Evil_Wait,
-    FramesCountdown_Evil,
-    Mugshot_Evil_Init,
-    Mugshot_Evil_SetGfx,
-    Mugshot_Evil_ShowBanner,
-    Mugshot_Evil_StartOpponentSlide,
-    Mugshot_Evil_WaitStartPlayerSlide,
-    Mugshot_Evil_WaitPlayerSlide,
-    Mugshot_Evil_GradualWhiteFade,
-    Mugshot_Evil_InitFadeWhiteToBlack,
-    Mugshot_Evil_FadeToBlack,
-    Mugshot_Evil_End
 };
 
 static const TransitionSpriteCallback sMugshotTrainerPicFuncs[] =
@@ -1464,7 +1364,6 @@ static void HBlankCB_Shuffle(void)
 #define tSinIndex     data[4]
 #define tAmplitude    data[5]
 #define tEndDelay     data[8]
-#define t2EndDelay    data[16]
 
 static void Task_BigPokeball(u8 taskId)
 {
@@ -1531,42 +1430,6 @@ static void InitPatternWeaveTransition(struct Task *task)
     SetVBlankCallback(VBlankCB_PatternWeave);
 }
 
-static void InitPatternWeaveTransition_Mugshot(struct Task *task)
-{
-    s32 i;
-
-    InitTransitionData();
-    ScanlineEffect_Clear();
-
-    MgbaPrintf(MGBA_LOG_WARN,"sTransitionData->WININ %d", sTransitionData->WININ);
-    MgbaPrintf(MGBA_LOG_WARN,"sTransitionData->WINOUT %d", sTransitionData->WINOUT);
-    MgbaPrintf(MGBA_LOG_WARN,"sTransitionData->WIN1H %d", sTransitionData->WIN1H);
-    MgbaPrintf(MGBA_LOG_WARN,"sTransitionData->WIN1V %d", sTransitionData->WIN1V);
-    MgbaPrintf(MGBA_LOG_WARN,"sTransitionData->BLDCNT %d", sTransitionData->BLDCNT);
-    MgbaPrintf(MGBA_LOG_WARN,"sTransitionData->BLDALPHA %d", sTransitionData->BLDALPHA);
-    task->tBlendTarget1 = 16;
-    task->tBlendTarget2 = 0;
-    task->tSinIndex = 0;
-    task->tAmplitude = 0x4000;
-    sTransitionData->WININ = WININ_WIN0_ALL;
-    sTransitionData->WINOUT = 0;
-    sTransitionData->WIN1H = DISPLAY_WIDTH;
-    sTransitionData->WIN1V = DISPLAY_HEIGHT;
-    sTransitionData->BLDCNT = BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_ALL;
-    sTransitionData->BLDALPHA = BLDALPHA_BLEND(task->tBlendTarget2, task->tBlendTarget1);
-    UpdateShadowColor(RGB_GRAY);
-    MgbaPrintf(MGBA_LOG_WARN,"sTransitionData->WININ %d", sTransitionData->WININ);
-    MgbaPrintf(MGBA_LOG_WARN,"sTransitionData->WINOUT %d", sTransitionData->WINOUT);
-    MgbaPrintf(MGBA_LOG_WARN,"sTransitionData->WIN1H %d", sTransitionData->WIN1H);
-    MgbaPrintf(MGBA_LOG_WARN,"sTransitionData->WIN1V %d", sTransitionData->WIN1V);
-    MgbaPrintf(MGBA_LOG_WARN,"sTransitionData->BLDCNT %d", sTransitionData->BLDCNT);
-    MgbaPrintf(MGBA_LOG_WARN,"sTransitionData->BLDALPHA %d", sTransitionData->BLDALPHA);
-    for (i = 0; i < DISPLAY_HEIGHT; i++)
-        gScanlineEffectRegBuffers[1][i] = DISPLAY_WIDTH;
-
-    SetVBlankCallback(VBlankCB_PatternWeave_Mugshot);
-}
-
 static bool8 Aqua_Init(struct Task *task)
 {
     u16 *tilemap, *tileset;
@@ -1576,23 +1439,7 @@ static bool8 Aqua_Init(struct Task *task)
     GetBg0TilesDst(&tilemap, &tileset);
     CpuFill16(0, tilemap, BG_SCREEN_SIZE);
     DecompressDataWithHeaderVram(sTeamAqua_Tileset, tileset);
-    LoadPalette(sEvilTeam_Palette, BG_PLTT_ID(14), sizeof(sEvilTeam_Palette));
-
-    task->tState++;
-    return FALSE;
-}
-
-static bool8 Aqua_Init_Mugshot(struct Task *task)
-{
-    u16 *tilemap, *tileset;
-    task->t2State = 0;
-
-    task->tEndDelay = 60;
-    InitPatternWeaveTransition_Mugshot(task);
-    GetBg1TilesDst(&tilemap, &tileset);
-    CpuFill16(0, tilemap, BG_SCREEN_SIZE);
-    DecompressDataWithHeaderVram(sTeamAqua_Tileset, tileset);
-    LoadPalette(sEvilTeam_Palette, BG_PLTT_ID(14), sizeof(sEvilTeam_Palette));
+    LoadPalette(sEvilTeam_Palette, BG_PLTT_ID(15), sizeof(sEvilTeam_Palette));
 
     task->tState++;
     return FALSE;
@@ -1607,23 +1454,7 @@ static bool8 Magma_Init(struct Task *task)
     GetBg0TilesDst(&tilemap, &tileset);
     CpuFill16(0, tilemap, BG_SCREEN_SIZE);
     DecompressDataWithHeaderVram(sTeamMagma_Tileset, tileset);
-    LoadPalette(sEvilTeam_Palette, BG_PLTT_ID(14), sizeof(sEvilTeam_Palette));
-
-    task->tState++;
-    return FALSE;
-}
-
-static bool8 Magma_Init_Mugshot(struct Task *task)
-{
-    u16 *tilemap, *tileset;
-    task->t2State = 0;
-
-    task->tEndDelay = 60;
-    InitPatternWeaveTransition_Mugshot(task);
-    GetBg1TilesDst(&tilemap, &tileset);
-    CpuFill16(0, tilemap, BG_SCREEN_SIZE);
-    DecompressDataWithHeaderVram(sTeamMagma_Tileset, tileset);
-    LoadPalette(sEvilTeam_Palette, BG_PLTT_ID(14), sizeof(sEvilTeam_Palette));
+    LoadPalette(sEvilTeam_Palette, BG_PLTT_ID(15), sizeof(sEvilTeam_Palette));
 
     task->tState++;
     return FALSE;
@@ -1638,23 +1469,7 @@ static bool8 Aqua_Magma_Init(struct Task *task)
     GetBg0TilesDst(&tilemap, &tileset);
     CpuFill16(0, tilemap, BG_SCREEN_SIZE);
     DecompressDataWithHeaderVram(sTeamAquaMagma_Tileset, tileset);
-    LoadPalette(sEvilTeamMixed_Palette, BG_PLTT_ID(14), sizeof(sEvilTeamMixed_Palette));
-
-    task->tState++;
-    return FALSE;
-}
-
-static bool8 Aqua_Magma_Init_Mugshot(struct Task *task)
-{
-    u16 *tilemap, *tileset;
-    task->t2State = 0;
-
-    task->tEndDelay = 60;
-    InitPatternWeaveTransition_Mugshot(task);
-    GetBg1TilesDst(&tilemap, &tileset);
-    CpuFill16(0, tilemap, BG_SCREEN_SIZE);
-    DecompressDataWithHeaderVram(sTeamAquaMagma_Tileset, tileset);
-    LoadPalette(sEvilTeamMixed_Palette, BG_PLTT_ID(14), sizeof(sEvilTeamMixed_Palette));
+    LoadPalette(sEvilTeamMixed_Palette, BG_PLTT_ID(15), sizeof(sEvilTeamMixed_Palette));
 
     task->tState++;
     return FALSE;
@@ -1720,18 +1535,6 @@ static bool8 Aqua_SetGfx(struct Task *task)
     return FALSE;
 }
 
-static bool8 Aqua_SetGfx_Mugshot(struct Task *task)
-{
-    u16 *tilemap, *tileset;
-
-    GetBg1TilesDst(&tilemap, &tileset);
-    DecompressDataWithHeaderVram(sTeamAqua_Tilemap, tilemap);
-    SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
-
-    task->tState++;
-    return FALSE;
-}
-
 static bool8 Magma_SetGfx(struct Task *task)
 {
     u16 *tilemap, *tileset;
@@ -1744,35 +1547,11 @@ static bool8 Magma_SetGfx(struct Task *task)
     return FALSE;
 }
 
-static bool8 Magma_SetGfx_Mugshot(struct Task *task)
-{
-    u16 *tilemap, *tileset;
-
-    GetBg1TilesDst(&tilemap, &tileset);
-    DecompressDataWithHeaderVram(sTeamMagma_Tilemap, tilemap);
-    SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
-
-    task->tState++;
-    return FALSE;
-}
-
 static bool8 Aqua_Magma_SetGfx(struct Task *task)
 {
     u16 *tilemap, *tileset;
 
     GetBg0TilesDst(&tilemap, &tileset);
-    DecompressDataWithHeaderVram(sTeamAquaMagma_Tilemap, tilemap);
-    SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
-
-    task->tState++;
-    return FALSE;
-}
-
-static bool8 Aqua_Magma_SetGfx_Mugshot(struct Task *task)
-{
-    u16 *tilemap, *tileset;
-
-    GetBg1TilesDst(&tilemap, &tileset);
     DecompressDataWithHeaderVram(sTeamAquaMagma_Tilemap, tilemap);
     SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
 
@@ -1888,26 +1667,6 @@ static bool8 WeatherDuo_End(struct Task *task)
 
 #undef tTimer
 
-static bool8 PatternWeave_Blend1_Mugshot(struct Task *task)
-{
-    sTransitionData->VBlank_DMA = FALSE;
-    if (task->tBlendDelay == 0 || --task->tBlendDelay == 0)
-    {
-        task->tBlendTarget2++;
-        task->tBlendDelay = 2;
-    }
-    sTransitionData->BLDALPHA = BLDALPHA_BLEND(task->tBlendTarget2, task->tBlendTarget1);
-    if (task->tBlendTarget2 > 15)
-        task->tState++;
-    task->tSinIndex += 8;
-    task->tAmplitude -= 256;
-
-    SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude >> 8, DISPLAY_HEIGHT);
-
-    sTransitionData->VBlank_DMA++;
-    return FALSE;
-}
-
 // The PatternWeave_ functions are used by several different transitions.
 // They create an effect where a pattern/image (such as the Magma emblem) is
 // formed by a shimmering weave effect.
@@ -1921,26 +1680,6 @@ static bool8 PatternWeave_Blend1(struct Task *task)
     }
     sTransitionData->BLDALPHA = BLDALPHA_BLEND(task->tBlendTarget2, task->tBlendTarget1);
     if (task->tBlendTarget2 > 15)
-        task->tState++;
-    task->tSinIndex += 8;
-    task->tAmplitude -= 256;
-
-    SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude >> 8, DISPLAY_HEIGHT);
-
-    sTransitionData->VBlank_DMA++;
-    return FALSE;
-}
-
-static bool8 PatternWeave_Blend2_Mugshot(struct Task *task)
-{
-    sTransitionData->VBlank_DMA = FALSE;
-    if (task->tBlendDelay == 0 || --task->tBlendDelay == 0)
-    {
-        task->tBlendTarget1--;
-        task->tBlendDelay = 2;
-    }
-    sTransitionData->BLDALPHA = BLDALPHA_BLEND(task->tBlendTarget2, task->tBlendTarget1);
-    if (task->tBlendTarget1 == 0)
         task->tState++;
     task->tSinIndex += 8;
     task->tAmplitude -= 256;
@@ -1971,29 +1710,6 @@ static bool8 PatternWeave_Blend2(struct Task *task)
     return FALSE;
 }
 
-static bool8 PatternWeave_FinishAppear_Mugshot(struct Task *task)
-{
-    sTransitionData->VBlank_DMA = FALSE;
-    task->tSinIndex += 8;
-    task->tAmplitude -= 256;
-
-    SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude >> 8, DISPLAY_HEIGHT);
-
-    if (task->tAmplitude <= 0)
-    {
-        task->tSinIndex = 0; // New
-        task->tAmplitude = 0; // New
-        task->tEndDelay = 200;
-        task->tState++;
-        task->tRadius = DISPLAY_HEIGHT;
-        task->tRadiusDelta = 1 << 8;
-        task->tVBlankSet = FALSE;
-    }
-
-    sTransitionData->VBlank_DMA++;
-    return FALSE;
-}
-
 static bool8 PatternWeave_FinishAppear(struct Task *task)
 {
     sTransitionData->VBlank_DMA = FALSE;
@@ -2018,13 +1734,6 @@ static bool8 FramesCountdown(struct Task *task)
 {
     if (--task->tEndDelay == 0)
         task->tState++;
-    return FALSE;
-}
-
-static bool8 FramesCountdown_Evil(struct Task *task)
-{
-    if (--task->t2EndDelay == 0)
-        task->t2State++;
     return FALSE;
 }
 
@@ -2087,29 +1796,10 @@ static void VBlankCB_SetWinAndBlend(void)
     REG_BLDALPHA = sTransitionData->BLDALPHA;
 }
 
-static void VBlankCB_SetWinAndBlend_Mugshot(void)
-{
-    DmaStop(0);
-    VBlankCB_BattleTransition();
-    if (sTransitionData->VBlank_DMA)
-        DmaCopy16(3, gScanlineEffectRegBuffers[0], gScanlineEffectRegBuffers[1], DISPLAY_HEIGHT * 2);
-    REG_WININ = sTransitionData->WININ;
-    REG_WINOUT = sTransitionData->WINOUT;
-    REG_WIN1V = sTransitionData->WIN1V;
-    REG_BLDCNT = sTransitionData->BLDCNT;
-    REG_BLDALPHA = sTransitionData->BLDALPHA;
-}
-
 static void VBlankCB_PatternWeave(void)
 {
     VBlankCB_SetWinAndBlend();
     DmaSet(0, gScanlineEffectRegBuffers[1], &REG_BG0HOFS, B_TRANS_DMA_FLAGS);
-}
-
-static void VBlankCB_PatternWeave_Mugshot(void)
-{
-    VBlankCB_SetWinAndBlend_Mugshot();
-    DmaSet(0, gScanlineEffectRegBuffers[1], &REG_BG1HOFS, B_TRANS_DMA_FLAGS);
 }
 
 static void VBlankCB_CircularMask(void)
@@ -2635,30 +2325,7 @@ static void VBlankCB_Wave(void)
 
 static void Task_Mugshot(u8 taskId)
 {
-    if ((GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA) == TRAINER_CLASS_AQUA_ADMIN) || (GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA) == TRAINER_CLASS_AQUA_LEADER))
-    {
-        while (sMugshotAqua_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
-        while (sMugshotAqua_Funcs2[gTasks[taskId].t2State](&gTasks[taskId]));
-    }
-    else if ((GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA) == TRAINER_CLASS_MAGMA_ADMIN) || (GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA) == TRAINER_CLASS_MAGMA_LEADER))
-    {
-        while (sMugshotMagma_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
-        while (sMugshotMagma_Funcs2[gTasks[taskId].t2State](&gTasks[taskId]));
-    }
-    else if ((GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA) == TRAINER_CLASS_AQUA_ADMIN_MIXED) || (GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA) == TRAINER_CLASS_MAGMA_ADMIN_MIXED))
-    {
-        while (sMugshotMixed_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
-        while (sMugshotMixed_Funcs2[gTasks[taskId].t2State](&gTasks[taskId]));
-    }
-    else
-        while (sMugshot_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
-}
-
-static bool8 Mugshot_Evil_Wait(struct Task *task)
-{
-    task->t2EndDelay = 65;
-    task->t2State++;
-    return FALSE;
+    while (sMugshot_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
 }
 
 static bool8 Mugshot_Init(struct Task *task)
@@ -2682,30 +2349,6 @@ static bool8 Mugshot_Init(struct Task *task)
     SetVBlankCallback(VBlankCB_Mugshots);
 
     task->tState++;
-    return FALSE;
-}
-
-static bool8 Mugshot_Evil_Init(struct Task *task)
-{
-    u8 i;
-
-    //InitTransitionData();
-    ScanlineEffect_Clear();
-    Mugshots_CreateTrainerPics(task);
-
-    task->tSinIndex = 0;
-    task->tTopBannerX = 1;
-    task->tBottomBannerX = DISPLAY_WIDTH - 1;
-    sTransitionData->WININ = WININ_WIN0_ALL;
-    sTransitionData->WINOUT = WINOUT_WIN01_BG1 | WINOUT_WIN01_BG2 | WINOUT_WIN01_BG3 | WINOUT_WIN01_OBJ | WINOUT_WIN01_CLR; 
-    sTransitionData->WIN0V = DISPLAY_HEIGHT;
-
-    for (i = 0; i < DISPLAY_HEIGHT; i++)
-        gScanlineEffectRegBuffers[1][i] = (DISPLAY_WIDTH << 8) ;//| (DISPLAY_WIDTH + 1)
-
-    SetVBlankCallback(VBlankCB_Mugshots_Evil);
-
-    task->t2State++;
     return FALSE;
 }
 
@@ -2735,35 +2378,6 @@ static bool8 Mugshot_SetGfx(struct Task *task)
 
     SetHBlankCallback(HBlankCB_Mugshots);
     task->tState++;
-    return FALSE;
-}
-
-static bool8 Mugshot_Evil_SetGfx(struct Task *task)
-{
-    s16 i, j;
-    u16 *tilemapEvil, *tilesetEvil;
-    const u16 *mugshotsMap = sMugshotsTilemap;
-    u8 mugshotColor = GetTrainerMugshotColorFromId(TRAINER_BATTLE_PARAM.opponentA);
-
-    GetBg0TilesDst(&tilemapEvil, &tilesetEvil);
-    CpuSet(sEliteFour_Tileset, tilesetEvil, 0xF0);
-
-    if (mugshotColor >= ARRAY_COUNT(sOpponentMugshotsPals))
-        mugshotColor = MUGSHOT_COLOR_PURPLE;
-
-    LoadPalette(sOpponentMugshotsPals[mugshotColor], 0xF0, 0x20);
-    LoadPalette(sPlayerMugshotsPals[gSaveBlock2Ptr->playerGender], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
-
-    for (i = 0; i < 20; i++)
-    {
-        for (j = 0; j < 32; j++, mugshotsMap++)
-            SET_TILE(tilemapEvil, i, j, *mugshotsMap);
-    }
-
-    EnableInterrupts(INTR_FLAG_HBLANK);
-
-    SetHBlankCallback(HBlankCB_Mugshots_Evil);
-    task->t2State++;
     return FALSE;
 }
 
@@ -2821,60 +2435,6 @@ static bool8 Mugshot_ShowBanner(struct Task *task)
     return FALSE;
 }
 
-static bool8 Mugshot_Evil_ShowBanner(struct Task *task)
-{
-    u8 i, sinIndex;
-    u16 *toStore;
-    s16 x;
-    s32 mergedValue;
-
-    sTransitionData->VBlank_DMA = FALSE;
-
-    toStore = gScanlineEffectRegBuffers[0];
-    sinIndex = task->tSinIndex;
-    task->tSinIndex += 16;
-
-    // Update top banner
-    for (i = 0; i < DISPLAY_HEIGHT / 2; i++, toStore++, sinIndex += 16)
-    {
-        x = task->tTopBannerX + Sin(sinIndex, 16);
-        if (x < 0)
-            x = 1;
-        if (x > DISPLAY_WIDTH)
-            x = DISPLAY_WIDTH;
-        *toStore = x;
-    }
-
-    // Update bottom banner
-    for (; i < DISPLAY_HEIGHT; i++, toStore++, sinIndex += 16)
-    {
-        x = task->tBottomBannerX - Sin(sinIndex, 16);
-        if (x < 0)
-            x = 0;
-        if (x > DISPLAY_WIDTH - 1)
-            x = DISPLAY_WIDTH - 1;
-        *toStore = (x << 8) | DISPLAY_WIDTH;
-    }
-
-    // Slide banners across screen
-    task->tTopBannerX += 8;
-    task->tBottomBannerX -= 8;
-
-    if (task->tTopBannerX > DISPLAY_WIDTH)
-        task->tTopBannerX = DISPLAY_WIDTH;
-    if (task->tBottomBannerX < 0)
-        task->tBottomBannerX = 0;
-
-    mergedValue = *(s32 *)(&task->tTopBannerX);
-    if (mergedValue == DISPLAY_WIDTH)
-        task->t2State++;
-
-    sTransitionData->BG0HOFS_Lower -= 8;
-    sTransitionData->BG0HOFS_Upper += 8;
-    sTransitionData->VBlank_DMA++;
-    return FALSE;
-}
-
 static bool8 Mugshot_StartOpponentSlide(struct Task *task)
 {
     u8 i;
@@ -2920,51 +2480,6 @@ static bool8 Mugshot_StartOpponentSlide(struct Task *task)
     return FALSE;
 }
 
-static bool8 Mugshot_Evil_StartOpponentSlide(struct Task *task)
-{
-    u8 i;
-    u16 *toStore;
-
-    sTransitionData->VBlank_DMA = FALSE;
-
-    for (i = 0, toStore = gScanlineEffectRegBuffers[0]; i < DISPLAY_HEIGHT; i++, toStore++)
-        *toStore = DISPLAY_WIDTH;
-
-    task->t2State++;
-
-    // Clear old data
-    task->tSinIndex = 0;
-    task->tTopBannerX = 0;
-    task->tBottomBannerX = 0;
-
-    sTransitionData->BG0HOFS_Lower -= 8;
-    sTransitionData->BG0HOFS_Upper += 8;
-
-    SetTrainerPicSlideDirection(task->tOpponentSpriteAId, 0);
-    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-    {
-            SetTrainerPicSlideDirection(task->tOpponentSpriteBId, 0);
-    }
-    SetTrainerPicSlideDirection(task->tPlayerSpriteId, 1);
-    if (gPartnerTrainerId != TRAINER_PARTNER(PARTNER_NONE) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
-    {
-        SetTrainerPicSlideDirection(task->tPartnerSpriteId, 1);
-    }
-
-    // Start opponent slide
-    IncrementTrainerPicState(task->tOpponentSpriteAId);
-
-    PlaySE(SE_MUGSHOT);
-
-    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-    {
-        IncrementTrainerPicState(task->tOpponentSpriteBId);
-    }
-
-    sTransitionData->VBlank_DMA++;
-    return FALSE;
-}
-
 static bool8 Mugshot_WaitStartPlayerSlide(struct Task *task)
 {
     sTransitionData->BG0HOFS_Lower -= 8;
@@ -2974,24 +2489,6 @@ static bool8 Mugshot_WaitStartPlayerSlide(struct Task *task)
     if (IsTrainerPicSlideDone(task->tOpponentSpriteAId))
     {
         task->tState++;
-        if (gPartnerTrainerId != TRAINER_PARTNER(PARTNER_NONE) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
-        {
-            IncrementTrainerPicState(task->tPartnerSpriteId);
-        }
-        IncrementTrainerPicState(task->tPlayerSpriteId);
-    }
-    return FALSE;
-}
-
-static bool8 Mugshot_Evil_WaitStartPlayerSlide(struct Task *task)
-{
-    sTransitionData->BG0HOFS_Lower -= 8;
-    sTransitionData->BG0HOFS_Upper += 8;
-
-    // Start player's slide in once the opponent is finished
-    if (IsTrainerPicSlideDone(task->tOpponentSpriteAId))
-    {
-        task->t2State++;
         if (gPartnerTrainerId != TRAINER_PARTNER(PARTNER_NONE) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
         {
             IncrementTrainerPicState(task->tPartnerSpriteId);
@@ -3053,58 +2550,6 @@ static bool8 Mugshot_WaitPlayerSlide(struct Task *task)
     return FALSE;
 }
 
-static bool8 Mugshot_Evil_WaitPlayerSlide(struct Task *task)
-{
-    sTransitionData->BG0HOFS_Lower -= 8;
-    sTransitionData->BG0HOFS_Upper += 8;
-
-    if (gPartnerTrainerId != TRAINER_PARTNER(PARTNER_NONE) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) 
-    {
-        if (IsTrainerPicSlideDone(task->tPartnerSpriteId))
-        {
-            sTransitionData->VBlank_DMA = FALSE;
-            SetVBlankCallback(NULL);
-            DmaStop(0);
-            memset(gScanlineEffectRegBuffers[0], 0, DISPLAY_HEIGHT * 2);
-            memset(gScanlineEffectRegBuffers[1], 0, DISPLAY_HEIGHT * 2);
-            SetGpuReg(REG_OFFSET_WIN0H, DISPLAY_WIDTH);
-            SetGpuReg(REG_OFFSET_BLDY, 0);
-            task->t2State++;
-            task->tTimer = 0;
-            task->tFadeSpread = 0;
-            sTransitionData->BLDCNT = BLDCNT_TGT1_ALL | BLDCNT_EFFECT_LIGHTEN;
-            SetVBlankCallback(VBlankCB_MugshotsFadeOut_Evil);
-        }
-        else
-        {
-            return FALSE;
-        } 
-    }
-    else
-    {
-        if (IsTrainerPicSlideDone(task->tPlayerSpriteId))
-        {
-            sTransitionData->VBlank_DMA = FALSE;
-            SetVBlankCallback(NULL);
-            DmaStop(0);
-            memset(gScanlineEffectRegBuffers[0], 0, DISPLAY_HEIGHT * 2);
-            memset(gScanlineEffectRegBuffers[1], 0, DISPLAY_HEIGHT * 2);
-            SetGpuReg(REG_OFFSET_WIN0H, DISPLAY_WIDTH);
-            SetGpuReg(REG_OFFSET_BLDY, 0);
-            task->t2State++;
-            task->tTimer = 0;
-            task->tFadeSpread = 0;
-            sTransitionData->BLDCNT = BLDCNT_TGT1_ALL | BLDCNT_EFFECT_LIGHTEN;
-            SetVBlankCallback(VBlankCB_MugshotsFadeOut_Evil);
-        }
-        else
-        {
-            return FALSE;
-        } 
-    }
-    return FALSE;
-}
-
 static bool8 Mugshot_GradualWhiteFade(struct Task *task)
 {
     bool32 active;
@@ -3148,49 +2593,6 @@ static bool8 Mugshot_GradualWhiteFade(struct Task *task)
     return FALSE;
 }
 
-static bool8 Mugshot_Evil_GradualWhiteFade(struct Task *task)
-{
-    bool32 active;
-
-    sTransitionData->VBlank_DMA = FALSE;
-    active = TRUE;
-    sTransitionData->BG0HOFS_Lower -= 8;
-    sTransitionData->BG0HOFS_Upper += 8;
-
-    if (task->tFadeSpread < DISPLAY_HEIGHT / 2)
-        task->tFadeSpread += 2;
-    if (task->tFadeSpread > DISPLAY_HEIGHT / 2)
-        task->tFadeSpread = DISPLAY_HEIGHT / 2;
-
-    if (++task->tTimer & 1)
-    {
-        s16 i;
-        for (i = 0, active = FALSE; i <= task->tFadeSpread; i++)
-        {
-            // Fade starts in middle of screen and
-            // spreads outwards in both directions.
-            s16 index1 = DISPLAY_HEIGHT / 2 - i;
-            s16 index2 = DISPLAY_HEIGHT / 2 + i;
-            if (gScanlineEffectRegBuffers[0][index1] <= 15)
-            {
-                active = TRUE;
-                gScanlineEffectRegBuffers[0][index1]++;
-            }
-            if (gScanlineEffectRegBuffers[0][index2] <= 15)
-            {
-                active = TRUE;
-                gScanlineEffectRegBuffers[0][index2]++;
-            }
-        }
-    }
-
-    if (task->tFadeSpread == DISPLAY_HEIGHT / 2 && !active)
-        task->t2State++;
-
-    sTransitionData->VBlank_DMA++;
-    return FALSE;
-}
-
 // Set palette to white to replace the scanline white fade
 // before the screen fades to black.
 static bool8 Mugshot_InitFadeWhiteToBlack(struct Task *task)
@@ -3201,19 +2603,6 @@ static bool8 Mugshot_InitFadeWhiteToBlack(struct Task *task)
     task->tTimer = 0;
 
     task->tState++;
-    return TRUE;
-}
-
-// Set palette to white to replace the scanline white fade
-// before the screen fades to black.
-static bool8 Mugshot_Evil_InitFadeWhiteToBlack(struct Task *task)
-{
-    sTransitionData->VBlank_DMA = FALSE;
-    BlendPalettes(PALETTES_ALL, 16, RGB_WHITE);
-    sTransitionData->BLDCNT = 0xFF;
-    task->tTimer = 0;
-
-    task->t2State++;
     return TRUE;
 }
 
@@ -3230,19 +2619,6 @@ static bool8 Mugshot_FadeToBlack(struct Task *task)
     return FALSE;
 }
 
-static bool8 Mugshot_Evil_FadeToBlack(struct Task *task)
-{
-    sTransitionData->VBlank_DMA = FALSE;
-
-    task->tTimer++;
-    memset(gScanlineEffectRegBuffers[0], task->tTimer, DISPLAY_HEIGHT * 2);
-    if (task->tTimer > 15)
-        task->t2State++;
-
-    sTransitionData->VBlank_DMA++;
-    return FALSE;
-}
-
 static bool8 Mugshot_End(struct Task *task)
 {
     DmaStop(0);
@@ -3251,29 +2627,7 @@ static bool8 Mugshot_End(struct Task *task)
     return FALSE;
 }
 
-static bool8 Mugshot_Evil_End(struct Task *task)
-{
-    task->tState++;
-    DmaStop(0);
-    FadeScreenBlack();
-    DestroyTask(FindTaskIdByFunc(task->func));
-    return FALSE;
-}
-
 static void VBlankCB_Mugshots(void)
-{
-    DmaStop(0);
-    VBlankCB_BattleTransition();
-    if (sTransitionData->VBlank_DMA != 0)
-        DmaCopy16(3, gScanlineEffectRegBuffers[0], gScanlineEffectRegBuffers[1], DISPLAY_HEIGHT * 2);
-    REG_BG0VOFS = sTransitionData->BG0VOFS;
-    REG_WININ = sTransitionData->WININ;
-    REG_WINOUT = sTransitionData->WINOUT;
-    REG_WIN0V = sTransitionData->WIN0V;
-    DmaSet(0, gScanlineEffectRegBuffers[1], &REG_WIN0H, B_TRANS_DMA_FLAGS);
-}
-
-static void VBlankCB_Mugshots_Evil(void)
 {
     DmaStop(0);
     VBlankCB_BattleTransition();
@@ -3296,25 +2650,7 @@ static void VBlankCB_MugshotsFadeOut(void)
     DmaSet(0, gScanlineEffectRegBuffers[1], &REG_BLDY, B_TRANS_DMA_FLAGS);
 }
 
-static void VBlankCB_MugshotsFadeOut_Evil(void)
-{
-    DmaStop(0);
-    VBlankCB_BattleTransition();
-    if (sTransitionData->VBlank_DMA != 0)
-        DmaCopy16(3, gScanlineEffectRegBuffers[0], gScanlineEffectRegBuffers[1], DISPLAY_HEIGHT * 2);
-    REG_BLDCNT = sTransitionData->BLDCNT;
-    DmaSet(0, gScanlineEffectRegBuffers[1], &REG_BLDY, B_TRANS_DMA_FLAGS);
-}
-
 static void HBlankCB_Mugshots(void)
-{
-    if (REG_VCOUNT < DISPLAY_HEIGHT / 2)
-        REG_BG0HOFS = sTransitionData->BG0HOFS_Lower;
-    else
-        REG_BG0HOFS = sTransitionData->BG0HOFS_Upper;
-}
-
-static void HBlankCB_Mugshots_Evil(void)
 {
     if (REG_VCOUNT < DISPLAY_HEIGHT / 2)
         REG_BG0HOFS = sTransitionData->BG0HOFS_Lower;
@@ -4864,13 +4200,6 @@ static void VBlankCB_BattleTransition(void)
     TransferPlttBuffer();
 }
 
-static UNUSED void VBlankCB_BattleTransition_Mugshot(void)
-{
-    LoadOam();
-    ProcessSpriteCopyRequests();
-    TransferPlttBuffer();
-}
-
 static void GetBg0TilemapDst(u16 **tileset)
 {
     u16 charBase = REG_BG0CNT >> 2;
@@ -4883,17 +4212,6 @@ void GetBg0TilesDst(u16 **tilemap, u16 **tileset)
     u16 screenBase = REG_BG0CNT >> 8;
     u16 charBase = REG_BG0CNT >> 2;
 
-    screenBase <<= 11;
-    charBase <<= 14;
-
-    *tilemap = (u16 *)(BG_VRAM + screenBase);
-    *tileset = (u16 *)(BG_VRAM + charBase);
-}
-
-void GetBg1TilesDst(u16 **tilemap, u16 **tileset)
-{
-    u16 screenBase = REG_BG1CNT >> 8;
-    u16 charBase = REG_BG1CNT >> 2;
     screenBase <<= 11;
     charBase <<= 14;
 
