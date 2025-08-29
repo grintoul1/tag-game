@@ -2616,7 +2616,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .levelUpLearnset = sMudbrayLevelUpLearnset,
         .teachableLearnset = sMudbrayTeachableLearnset,
         .eggMoveLearnset = sMudbrayEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_MUDSDALE}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 32, SPECIES_MUDSDALE}),
     },
 
     [SPECIES_MUDSDALE] =

@@ -2597,7 +2597,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .levelUpLearnset = sWattrelLevelUpLearnset,
         .teachableLearnset = sWattrelTeachableLearnset,
         .eggMoveLearnset = sWattrelEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 33, SPECIES_KILOWATTREL}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 32, SPECIES_KILOWATTREL}),
     },
 
     [SPECIES_KILOWATTREL] =
@@ -3117,7 +3117,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .levelUpLearnset = sToedscoolLevelUpLearnset,
         .teachableLearnset = sToedscoolTeachableLearnset,
         .eggMoveLearnset = sToedscoolEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_TOEDSCRUEL}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 32, SPECIES_TOEDSCRUEL}),
     },
 
     [SPECIES_TOEDSCRUEL] =
