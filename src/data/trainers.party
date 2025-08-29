@@ -6530,7 +6530,7 @@ IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 === TRAINER_TABITHA_SKY_PILLAR ===
 Name: Tabitha /* Sky Pillar*/
-Class: Magma Admin Mixed
+Class: Magma Admin
 Pic: Magma Admin
 Mugshot: AquaMagma
 Gender: Male
@@ -6567,7 +6567,7 @@ Ability: Sand Force
 
 === TRAINER_MATT_SKY_PILLAR ===
 Name: Matt /* Sky Pillar*/
-Class: Aqua Admin Mixed
+Class: Aqua Admin
 Pic: Aqua Admin M
 Mugshot: AquaMagma
 Gender: Male
@@ -6604,7 +6604,7 @@ Ability: Snow Force
 
 === TRAINER_SHELLY_SKY_PILLAR ===
 Name: Shelly /* Sky Pillar*/
-Class: Aqua Admin Mixed
+Class: Aqua Admin
 Pic: Aqua Admin F
 Mugshot: AquaMagma
 Gender: Female
@@ -6623,7 +6623,7 @@ IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 
 === TRAINER_COURTNEY_SKY_PILLAR ===
 Name: Courtney /* Sky Pillar*/
-Class: Magma Admin Mixed
+Class: Magma Admin
 Pic: Magma Admin F
 Mugshot: AquaMagma
 Gender: Female
