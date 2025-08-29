@@ -667,6 +667,64 @@ Sandshrew
 Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
+=== TRAINER_WALLY_MAUVILLE ===
+Name: Wally /* Mauville*/
+Class: Rival
+Pic: Wally
+Gender: Male
+Music: Male
+Battle Type: Doubles
+AI: Smart Trainer
+
+Kirlia @ Eviolite  
+Ability: Trace  
+Level: 31  
+Tera Type: Psychic  
+Timid Nature  
+- Psyshock  
+- Psybeam  
+- Dazzling Gleam  
+- Helping Hand  
+
+Linoone-Galar @ Liechi Berry  
+Ability: Gluttony  
+Level: 30  
+Tera Type: Dark  
+Jolly Nature  
+- Dig  
+- Retaliate  
+- Assurance  
+- Counter  
+
+=== TRAINER_UNCLE_MAUVILLE ===
+Name: Uncle /* Mauville*/
+Class: Expert
+Pic: Expert M
+Gender: Male
+Music: Male
+Battle Type: Doubles
+AI: Smart Trainer
+
+Doublade @ Focus Sash  
+Ability: No Guard  
+Level: 31  
+Tera Type: Steel  
+Jolly Nature  
+- Iron Head  
+- Shadow Sneak  
+- Reversal  
+- Autotomize  
+
+Lycanroc-Midnight @ Shuca Berry  
+Ability: No Guard  
+Level: 30  
+Tera Type: Rock  
+Careful Nature  
+- Rock Tomb  
+- Bite  
+- Revenge  
+- Trailblaze  
+
 === TRAINER_KIRK ===
 Name: Kirk
 Class: Guitarist
