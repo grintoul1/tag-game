@@ -312,6 +312,7 @@ Togetic @ Charti Berry
 Ability: Serene Grace
 Level: 28
 Relaxed Nature
+IVs: 0 Spe  
 - Air Cutter
 - Stored Power
 - Calm Mind
@@ -330,6 +331,7 @@ Slowpoke-Galar @ Covert Cloak
 Ability: Own Tempo  
 Level: 29  
 Relaxed Nature  
+IVs: 0 Spe  
 - Psybeam
 - Acid
 - Yawn
@@ -339,6 +341,7 @@ Porygon @ Room Service
 Ability: Trace  
 Level: 28  
 Sassy Nature  
+IVs: 0 Spe  
 - Psybeam
 - Icy Wind
 - Thunder Shock
@@ -395,17 +398,17 @@ Level: 28
 Adamant Nature  
 - Fire Punch
 - Brick Break
-- Gyro Ball
 - Fling
+- Will-O-Wisp
 
 Darumaka-Galar @ Charti Berry  
 Ability: Inner Focus  
 Level: 28  
-Adamant Nature  
+Adamant Nature
 - Ice Punch
 - Mega Punch
 - Thief
-- Will-O-Wisp
+- Chill-O-Wisp
 
 === TRAINER_TIMMY ===
 Name: Timmy
