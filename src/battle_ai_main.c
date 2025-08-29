@@ -2316,13 +2316,9 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     {
                         ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); //Don't protect if you're going to faint after protecting
                     }
-                    else if (gDisableStructs[battlerAtk].protectUses == 1 && AI_RandLessThan(128))
+                    else if (gDisableStructs[battlerAtk].protectUses >= 1)
                     {
-                            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); // 50/50 to not double protect
-                    }
-                    else if (gDisableStructs[battlerAtk].protectUses >= 2) // Don't triple protect
-                    {
-                        ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); // Don't double protect
                     }
                 }
 
@@ -3211,9 +3207,23 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         break;
     case EFFECT_TAILWIND:
         // Anticipate both opponents protecting to stall out Trick Room, and apply Tailwind.
-        if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer == (gBattleTurnCounter + 1)
-         && RandomPercentage(RNG_AI_APPLY_TAILWIND_ON_LAST_TURN_OF_TRICK_ROOM, TAILWIND_IN_TRICK_ROOM_CHANCE))
-            ADJUST_SCORE(PERFECT_EFFECT);
+        if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)
+        {
+            if ((gFieldTimers.trickRoomTimer == (gBattleTurnCounter + 1))
+            && RandomPercentage(RNG_AI_APPLY_TAILWIND_ON_LAST_TURN_OF_TRICK_ROOM, TAILWIND_IN_TRICK_ROOM_CHANCE))
+                ADJUST_SCORE(PERFECT_EFFECT);
+        }
+        else 
+        {
+            if (!(gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND) && ((aiData->abilities[battlerAtk] == ABILITY_PRANKSTER) || (aiData->abilities[battlerAtk] == ABILITY_GALE_WINGS)))
+            {
+                ADJUST_SCORE(POWERFUL_STATUS_MOVE);
+            }
+            else if (!(gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND))
+            {
+                ADJUST_SCORE(BEST_EFFECT);
+            }
+        }
         break;
     default:
         break;
@@ -4187,7 +4197,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         else if (aiData->hpPercents[battlerAtk] < aiData->hpPercents[battlerDef])
             ADJUST_AND_RETURN_SCORE(BEST_DAMAGE_MOVE);
         break;
-// grintoul TODO Mirror Move
+    // grintoul TODO Mirror Move
     case EFFECT_MIRROR_MOVE:
         if (predictedMove && GetMoveEffect(predictedMove) != GetMoveEffect(move))
             return AI_CheckViability(battlerAtk, battlerDef, predictedMove, score);
@@ -5760,14 +5770,6 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(DECENT_EFFECT); // Attacker partner wouldn't go before target
         break;
     case EFFECT_TAILWIND:
-        if (!(gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND) && ((aiData->abilities[battlerAtk] == ABILITY_PRANKSTER) || (aiData->abilities[battlerAtk] == ABILITY_GALE_WINGS)))
-        {
-            ADJUST_SCORE(POWERFUL_STATUS_MOVE);
-        }
-        else if (!(gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND))
-        {
-            ADJUST_SCORE(BEST_EFFECT);
-        }
         break;
     }
     case EFFECT_LUCKY_CHANT:
