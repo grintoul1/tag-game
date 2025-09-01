@@ -4894,8 +4894,8 @@ local speciesStructSize=260
 
 local partyCount=0x02033609 -- gPlayerPartyCount
 local partyloc=0x02033868 -- gPlayerParty
-local speciesInfo=0x0867efbc -- gSpeciesInfo
 local storageLoc=0x03003ff4 -- gPokemonStorage
+local speciesInfo=0x0867efbc -- gSpeciesInfo
 
 local overlayEnabled = false
 

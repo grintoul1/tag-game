@@ -17,23 +17,20 @@ def get_configs(lua_script_master):
     configCount = 0
     status = {}
     configs = {}
-    print("get_configs")
     with open(lua_script_master, 'r') as content:
         lines = content.readlines()
 
-    for line_no, line in enumerate(lines):
+    for line in enumerate(lines):
         if 'local config' in line:
-            print("if 'local config' in line")
             configCount += 1
             configs[configCount] = line.strip().split(" ", -1)[1]
             status[configCount] = line.strip().split(" = ", -1)[1]
 
     configCount += 1
-    print(configCount)
 
     return configs, status, configCount
 
-def replace_values(lua_script_master, lua_script_publishing, new_values):
+def replace_values(lua_script_master, lua_script_public, new_values):
     party_count = f"local partyCount={new_values['gPlayerPartyCount']} -- gPlayerPartyCount\n"
     party_loc = f"local partyloc={new_values['gPlayerParty']} -- gPlayerParty\n"
     storage_loc = f"local storageLoc={new_values['gPokemonStorage']} -- gPokemonStorage\n"
@@ -57,16 +54,13 @@ def replace_values(lua_script_master, lua_script_publishing, new_values):
 
     with open(lua_script_master, 'w') as content:
         content.writelines(lines)
-        print("Replaced addresses in master script")
 
     with open(lua_script_master, 'r') as content:
         lines = content.readlines()      
-        print("Re-reading master script")
 
     for line_no, line in enumerate(lines):
         j = 1
         while j < (configCount):
-            print(line_no, j, status[j], parsing, line)
             if status[j] == "true":
                 j += 1
                 continue
@@ -90,12 +84,10 @@ def replace_values(lua_script_master, lua_script_publishing, new_values):
         line_no += 1
 
 
-    with open(lua_script_publishing, 'w') as content:
+    with open(lua_script_public, 'w') as content:
         content.seek(0)
         content.truncate()
-        print("Cleared published script contents")
         content.writelines(lines)
-        print("Copied from master script")
     
     print(f"partyCount {new_values['gPlayerPartyCount']}")
     print(f"partyloc {new_values['gPlayerParty']}")
@@ -105,4 +97,4 @@ def replace_values(lua_script_master, lua_script_publishing, new_values):
 
 if __name__ == '__main__':
     new_values = get_map_values("pokeemerald.map")
-    replace_values("master_lua_script.lua", "published_lua_script.lua", new_values)
+    replace_values("master_lua_script.lua", "public_lua_script.lua", new_values)
