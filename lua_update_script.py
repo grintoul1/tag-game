@@ -13,12 +13,34 @@ def get_map_values(map_file):
 
     return values
 
+def get_configs(lua_script_master):
+    configCount = 0
+    status = {}
+    configs = {}
+    print("get_configs")
+    with open(lua_script_master, 'r') as content:
+        lines = content.readlines()
+
+    for line_no, line in enumerate(lines):
+        if 'local config' in line:
+            print("if 'local config' in line")
+            configCount += 1
+            configs[configCount] = line.strip().split(" ", -1)[1]
+            status[configCount] = line.strip().split(" = ", -1)[1]
+
+    configCount += 1
+    print(configCount)
+
+    return configs, status, configCount
 
 def replace_values(lua_script_master, lua_script_publishing, new_values):
     party_count = f"local partyCount={new_values['gPlayerPartyCount']} -- gPlayerPartyCount\n"
     party_loc = f"local partyloc={new_values['gPlayerParty']} -- gPlayerParty\n"
     storage_loc = f"local storageLoc={new_values['gPokemonStorage']} -- gPokemonStorage\n"
     species_info = f"local speciesInfo={new_values['gSpeciesInfo']} -- gSpeciesInfo\n"
+    
+    parsing = True
+    configs, status, configCount = get_configs(lua_script_master)
 
     with open(lua_script_master, 'r') as content:
         lines = content.readlines()
@@ -36,6 +58,37 @@ def replace_values(lua_script_master, lua_script_publishing, new_values):
     with open(lua_script_master, 'w') as content:
         content.writelines(lines)
         print("Replaced addresses in master script")
+
+    with open(lua_script_master, 'r') as content:
+        lines = content.readlines()      
+        print("Re-reading master script")
+
+    for line_no, line in enumerate(lines):
+        j = 1
+        while j < (configCount):
+            print(line_no, j, status[j], parsing, line)
+            if status[j] == "true":
+                j += 1
+                continue
+            else:
+                if parsing:
+                    if f"--Start {configs[j]}" in line:
+                        parsing = False
+                        lines[line_no] = lines[line_no].replace(line, "")
+                        break
+                else:
+                    if f"--End {configs[j]}" in line:
+                        parsing = True
+                        j = 1
+                        lines[line_no] = lines[line_no].replace(line, "")
+                        break
+                    else:
+                        lines[line_no] = lines[line_no].replace(line, "")
+                        break
+                break
+        
+        line_no += 1
+
 
     with open(lua_script_publishing, 'w') as content:
         content.seek(0)

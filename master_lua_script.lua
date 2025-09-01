@@ -1,6 +1,15 @@
 -- you do not need this lua script, though it will allow you to with mgba 0.10 to export your pokemon to the calc
 -- to use download this file on mgba select tools->scripting then file->open and open this file
 
+-- The below configs should be set to false if you want lua_update_script.py to not parse them to the
+-- published_lua_script.lua
+
+local configOverlayPokemon = true
+local configPokemonEditing = true
+local configPreDamage = true
+local configPreStatus = true
+local configRandomize = true
+
 -- obspokemonhud grintoul notes: text added to help buffer and start console
 -- frame callback added to startScript to run overlay() every frame
 -- this is enabled by overlayEnable() and disabled by overlayDisable()
@@ -2297,7 +2306,8 @@ mons = {
 "Pecharunt"
 }
 
---ConfigStart overlayPokemon
+--Start configOverlayPokemon
+
 cleansedSpecies = {
     1,
     2,
@@ -3734,7 +3744,8 @@ cleansedSpecies = {
     1024,
     1025
 }
---ConfigEnd overlayPokemon
+
+--End configOverlayPokemon
 
 abilities = {
 "Stench",
@@ -4813,7 +4824,8 @@ item = {
     "Covert Cloak",
 }
 
---ConfigStart overlayPokeball
+--Start configOverlayPokemon
+
 pokeballType = {
     "poke-ball",
     "great-ball",
@@ -4843,7 +4855,8 @@ pokeballType = {
     "beast-ball",
     "cherish-ball",
 }
---ConfigEnd overlayPokeball
+
+--End configOverlayPokemon
 
 nature = {"Hardy","Lonely","Brave","Adamant","Naughty",
 			"Bold","Docile","Relaxed","Impish","Lax",
@@ -4881,8 +4894,8 @@ local speciesStructSize=260
 
 local partyCount=0x02033609 -- gPlayerPartyCount
 local partyloc=0x02033868 -- gPlayerParty
-local storageLoc=0x03003ff4 -- gPokemonStorage
 local speciesInfo=0x0867efbc -- gSpeciesInfo
+local storageLoc=0x03003ff4 -- gPokemonStorage
 
 local overlayEnabled = false
 
@@ -5377,9 +5390,18 @@ end
 function startScript()
 	console:log('To update your exports type \'export()\'')
 	console:log('To update your hidden powers type \'hiddens()\'')
+
+    --Start configOverlayPokemon
+
     console:log('To enable your connection for obspokemonoverlay type \'overlayEnable()\', and to disable the connection type \'overlayDisable()\'')
     console:log('If manually updating your obspokemonoverlay-master/team.json file, type \'overlayBuffer()\', which will print to the \'Overlay Export\' window')
     console:log('For more on obspokemonoverlay please review the guidance within this lua script')
+    callbacks:add("frame", update)
+
+    --End configOverlayPokemon
+
+    --Start configPokemonEditing
+
 	console:log('To perfect a mon: \'perfect(slotNum, \"Nature\")\'')
 	console:log('To set a move: \'setMove(slotNum, moveSlotNum, \"MoveName\")\'')
 	console:log('To set a nature: \'setNature(slotNum, \"Nature\")\'')
@@ -5388,10 +5410,22 @@ function startScript()
 	console:log('To set a species: \'setSpecies(slotNum, \"Species\")\'')
 	console:log('To set an ability: \'setAbility(slotNum, abilityNum)\'')
 	console:log('To set a held item: \'setItem(slotNum, \"Item\")\'')
+	console:log('\nFor the commands that update a mon\'s stats, you have to put the mon in and out of the box or level it up for the stat changes to properly take effect')
+    
+    --End configPokemonEditing
+
+    --Start configPreDamage
+
 	console:log('To pre-damage: \'predamage(slotNum, desiredHP)\'')
+
+    --End configPreDamage
+
+    --Start configPreStatus
+
 	console:log('To pre-poison: \'prepoison(slotNum)\' [also: presleep/preburn/prefreeze/prepara/pretoxic/prefrostbite]')
-	console:log('\nFor the commands that update a mon\'s stats, you may have to put the mon in and out of the box or level it up for the stat changes to properly take effect')
-    callbacks:add("frame", update)
+
+    --End configPreStatus
+
 	if not partyBuffer then
 		partyBuffer = console:createBuffer("Showdown Export")
 		partyBuffer:setSize(200,1000)
@@ -5406,9 +5440,17 @@ function startScript()
         helpBuffer = console:createBuffer("Help Text")
         helpBuffer:print('To update your exports type \'export()\'\n')
         helpBuffer:print('To update your hidden powers type \'hiddens()\'\n')
+
+    --Start configOverlayPokemon
+
         helpBuffer:print('To enable your connection for obspokemonoverlay type \'overlayEnable()\', and to disable the connection type \'overlayDisable()\'\n')
         helpBuffer:print('If manually updating your obspokemonoverlay-master/team.json file, type \'overlayBuffer()\', which will print to the \'Overlay Export\' window\n')
         helpBuffer:print('For more on obspokemonoverlay please review the guidance within this lua script\n')
+
+    --End configOverlayPokemon
+
+    --Start configPokemonEditing
+
         helpBuffer:print('To perfect a mon: \'perfect(slotNum, \"Nature\")\'\n')
         helpBuffer:print('To set a move: \'setMove(slotNum, moveSlotNum, \"MoveName\")\'\n')
         helpBuffer:print('To set a nature: \'setNature(slotNum, \"Nature\")\'')
@@ -5417,11 +5459,26 @@ function startScript()
         helpBuffer:print('To set a species: \'setSpecies(slotNum, \"Species\")\'\n')
         helpBuffer:print('To set an ability: \'setAbility(slotNum, abilityNum)\'\n')
         helpBuffer:print('To set a held item: \'setItem(slotNum, \"Item\")\'\n')
+        helpBuffer:print('\nFor the commands that update a mon\'s stats, you have to put the mon in and out of the box or level it up for the stat changes to properly take effect\n')
+    
+    --End configPokemonEditing
+
+    --Start configPreDamage
+
         helpBuffer:print('To pre-damage: \'predamage(slotNum, desiredHP)\'\n')
+
+    --End configPreDamage
+
+    --Start configPreStatus
+
         helpBuffer:print('To pre-poison: \'prepoison(slotNum)\' [also: presleep/preburn/prefreeze/prepara/pretoxic/prefrostbite]\n')
-        helpBuffer:print('\nFor the commands that update a mon\'s stats, you may have to put the mon in and out of the box or level it up for the stat changes to properly take effect\n')
+    
+    --End configPreStatus
+
     end
 end
+
+--Start configOverlayPokemon
 
 -- START OF OBSPOKEMONHUD FUNCTIONS
 -- obspokemonhud by ThomasHineXYZ
@@ -5551,6 +5608,8 @@ end
 
 -- END OF OBSPOKEMONHUD FUNCTIONS
 
+--End configOverlayPokemon
+
 function export() -- P_LUA_SCRIPT_EXPORT
 	if not partyBuffer then
 		console:log("error")
@@ -5567,6 +5626,8 @@ function getSlotAddress(slot)
     end
     return partyloc + partyMonSize * (slot - 1)
 end
+
+--Start configPokemonEditing
 
 function setIVs(slot, IVs) -- P_LUA_SCRIPT_STATS
     local address = getSlotAddress(slot)
@@ -5615,6 +5676,16 @@ function setItem(slot, newHeldItem) -- P_LUA_SCRIPT_ITEMS
     setBoxMon(address, nil, nil, nil, nil, nil, nil, nil, newHeldItem)
 end
 
+function thieve(slot, newSpecies, newLevel, newAbilityNum, newMoves, newHeldItem)
+    local address = getSlotAddress(slot)
+    setBoxMon(address, nil, nil, 1, newMoves[1], nil, newSpecies, newAbilityNum, newHeldItem)
+    setBoxMon(address, nil, nil, 2, newMoves[2], newLevel, nil, nil, nil)
+    setBoxMon(address, nil, nil, 3, newMoves[3], nil, nil, nil, nil)
+    setBoxMon(address, nil, nil, 4, newMoves[4], nil, nil, nil, nil)
+end
+
+--End configPokemonEditing
+
 function indexOf(array, value)
     for i, v in ipairs(array) do
         if v == value then
@@ -5624,13 +5695,7 @@ function indexOf(array, value)
     return nil
 end
 
-function thieve(slot, newSpecies, newLevel, newAbilityNum, newMoves, newHeldItem)
-    local address = getSlotAddress(slot)
-    setBoxMon(address, nil, nil, 1, newMoves[1], nil, newSpecies, newAbilityNum, newHeldItem)
-    setBoxMon(address, nil, nil, 2, newMoves[2], newLevel, nil, nil, nil)
-    setBoxMon(address, nil, nil, 3, newMoves[3], nil, nil, nil, nil)
-    setBoxMon(address, nil, nil, 4, newMoves[4], nil, nil, nil, nil)
-end
+--Start configPreDamage
 
 function predamage(slot, damage)
     local address = getSlotAddress(slot)
@@ -5642,6 +5707,10 @@ function predamage(slot, damage)
     if (damage > maxHP) then damage = maxHP end
     emu:write16(address + 86, damage & 0xFFFF)
 end
+
+--End configPreDamage
+
+--Start configPreStatus
 
 function presleep(slot)
     local address = getSlotAddress(slot)
@@ -5678,10 +5747,14 @@ function prefrostbite(slot)
     emu:write32(address + 80, 1 << 12)
 end
 
+--End configPreStatus
+
 callbacks:add("start", startScript)
 if emu then
 	startScript()
 end
+
+--Start configRandomize
 
 function randomize(slot)
     if (slot < 1 or slot > emu:read8(partyCount)) then
@@ -5707,3 +5780,6 @@ function randomPokemon(index)
 	local pokemonList = {"Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Charizard","Squirtle","Wartortle","Blastoise","Caterpie","Metapod","Butterfree","Weedle","Kakuna","Beedrill","Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate","Spearow","Fearow","Ekans","Arbok","Pikachu","Raichu","Sandshrew","Sandslash","Nidoran♀","Nidorina","Nidoqueen","Nidoran♂","Nidorino","Nidoking","Clefairy","Clefable","Vulpix","Ninetales","Jigglypuff","Wigglytuff","Zubat","Golbat","Oddish","Gloom","Vileplume","Paras","Parasect","Venonat","Venomoth","Diglett","Dugtrio","Meowth","Persian","Psyduck","Golduck","Mankey","Primeape","Growlithe","Arcanine","Poliwag","Poliwhirl","Poliwrath","Abra","Kadabra","Alakazam","Machop","Machoke","Machamp","Bellsprout","Weepinbell","Victreebel","Tentacool","Tentacruel","Geodude","Graveler","Golem","Ponyta","Rapidash","Slowpoke","Slowbro","Magnemite","Magneton","Farfetch’d","Doduo","Dodrio","Seel","Dewgong","Grimer","Muk","Shellder","Cloyster","Gastly","Haunter","Gengar","Onix","Drowzee","Hypno","Krabby","Kingler","Voltorb","Electrode","Exeggcute","Exeggutor","Cubone","Marowak","Hitmonlee","Hitmonchan","Lickitung","Koffing","Weezing","Rhyhorn","Rhydon","Chansey","Tangela","Kangaskhan","Horsea","Seadra","Goldeen","Seaking","Staryu","Starmie","Mr. Mime","Scyther","Jynx","Electabuzz","Magmar","Pinsir","Tauros","Magikarp","Gyarados","Lapras","Ditto","Eevee","Vaporeon","Jolteon","Flareon","Porygon","Omanyte","Omastar","Kabuto","Kabutops","Aerodactyl","Snorlax","Articuno","Zapdos","Moltres","Dratini","Dragonair","Dragonite","Mewtwo","Mew","Chikorita","Bayleef","Meganium","Cyndaquil","Quilava","Typhlosion","Totodile","Croconaw","Feraligatr","Sentret","Furret","Hoothoot","Noctowl","Ledyba","Ledian","Spinarak","Ariados","Crobat","Chinchou","Lanturn","Pichu","Cleffa","Igglybuff","Togepi","Togetic","Natu","Xatu","Mareep","Flaaffy","Ampharos","Bellossom","Marill","Azumarill","Sudowoodo","Politoed","Hoppip","Skiploom","Jumpluff","Aipom","Sunkern","Sunflora","Yanma","Wooper","Quagsire","Espeon","Umbreon","Murkrow","Slowking","Misdreavus","Unown","Wobbuffet","Girafarig","Pineco","Forretress","Dunsparce","Gligar","Steelix","Snubbull","Granbull","Qwilfish","Scizor","Shuckle","Heracross","Sneasel","Teddiursa","Ursaring","Slugma","Magcargo","Swinub","Piloswine","Corsola","Remoraid","Octillery","Delibird","Mantine","Skarmory","Houndour","Houndoom","Kingdra","Phanpy","Donphan","Porygon2","Stantler","Smeargle","Tyrogue","Hitmontop","Smoochum","Elekid","Magby","Miltank","Blissey","Raikou","Entei","Suicune","Larvitar","Pupitar","Tyranitar","Lugia","Ho-Oh","Celebi","Treecko","Grovyle","Sceptile","Torchic","Combusken","Blaziken","Mudkip","Marshtomp","Swampert","Poochyena","Mightyena","Zigzagoon","Linoone","Wurmple","Silcoon","Beautifly","Cascoon","Dustox","Lotad","Lombre","Ludicolo","Seedot","Nuzleaf","Shiftry","Taillow","Swellow","Wingull","Pelipper","Ralts","Kirlia","Gardevoir","Surskit","Masquerain","Shroomish","Breloom","Slakoth","Vigoroth","Slaking","Nincada","Ninjask","Shedinja","Whismur","Loudred","Exploud","Makuhita","Hariyama","Azurill","Nosepass","Skitty","Delcatty","Sableye","Mawile","Aron","Lairon","Aggron","Meditite","Medicham","Electrike","Manectric","Plusle","Minun","Volbeat","Illumise","Roselia","Gulpin","Swalot","Carvanha","Sharpedo","Wailmer","Wailord","Numel","Camerupt","Torkoal","Spoink","Grumpig","Spinda","Trapinch","Vibrava","Flygon","Cacnea","Cacturne","Swablu","Altaria","Zangoose","Seviper","Lunatone","Solrock","Barboach","Whiscash","Corphish","Crawdaunt","Baltoy","Claydol","Lileep","Cradily","Anorith","Armaldo","Feebas","Milotic","Castform","Kecleon","Shuppet","Banette","Duskull","Dusclops","Tropius","Chimecho","Absol","Wynaut","Snorunt","Glalie","Spheal","Sealeo","Walrein","Clamperl","Huntail","Gorebyss","Relicanth","Luvdisc","Bagon","Shelgon","Salamence","Beldum","Metang","Metagross","Regirock","Regice","Registeel","Latias","Latios","Kyogre","Groudon","Rayquaza","Jirachi","Deoxys","Turtwig","Grotle","Torterra","Chimchar","Monferno","Infernape","Piplup","Prinplup","Empoleon","Starly","Staravia","Staraptor","Bidoof","Bibarel","Kricketot","Kricketune","Shinx","Luxio","Luxray","Budew","Roserade","Cranidos","Rampardos","Shieldon","Bastiodon","Burmy","Wormadam","Mothim","Combee","Vespiquen","Pachirisu","Buizel","Floatzel","Cherubi","Cherrim","Shellos","Gastrodon","Ambipom","Drifloon","Drifblim","Buneary","Lopunny","Mismagius","Honchkrow","Glameow","Purugly","Chingling","Stunky","Skuntank","Bronzor","Bronzong","Bonsly","Mime Jr.","Happiny","Chatot","Spiritomb","Gible","Gabite","Garchomp","Munchlax","Riolu","Lucario","Hippopotas","Hippowdon","Skorupi","Drapion","Croagunk","Toxicroak","Carnivine","Finneon","Lumineon","Mantyke","Snover","Abomasnow","Weavile","Magnezone","Lickilicky","Rhyperior","Tangrowth","Electivire","Magmortar","Togekiss","Yanmega","Leafeon","Glaceon","Gliscor","Mamoswine","Porygon-Z","Gallade","Probopass","Dusknoir","Froslass","Rotom","Uxie","Mesprit","Azelf","Dialga","Palkia","Heatran","Regigigas","Giratina","Cresselia","Phione","Manaphy","Darkrai","Shaymin","Arceus","Victini","Snivy","Servine","Serperior","Tepig","Pignite","Emboar","Oshawott","Dewott","Samurott","Patrat","Watchog","Lillipup","Herdier","Stoutland","Purrloin","Liepard","Pansage","Simisage","Pansear","Simisear","Panpour","Simipour","Munna","Musharna","Pidove","Tranquill","Unfezant","Blitzle","Zebstrika","Roggenrola","Boldore","Gigalith","Woobat","Swoobat","Drilbur","Excadrill","Audino","Timburr","Gurdurr","Conkeldurr","Tympole","Palpitoad","Seismitoad","Throh","Sawk","Sewaddle","Swadloon","Leavanny","Venipede","Whirlipede","Scolipede","Cottonee","Whimsicott","Petilil","Lilligant","Basculin","Sandile","Krokorok","Krookodile","Darumaka","Darmanitan","Maractus","Dwebble","Crustle","Scraggy","Scrafty","Sigilyph","Yamask","Cofagrigus","Tirtouga","Carracosta","Archen","Archeops","Trubbish","Garbodor","Zorua","Zoroark","Minccino","Cinccino","Gothita","Gothorita","Gothitelle","Solosis","Duosion","Reuniclus","Ducklett","Swanna","Vanillite","Vanillish","Vanilluxe","Deerling","Sawsbuck","Emolga","Karrablast","Escavalier","Foongus","Amoonguss","Frillish","Jellicent","Alomomola","Joltik","Galvantula","Ferroseed","Ferrothorn","Klink","Klang","Klinklang","Tynamo","Eelektrik","Eelektross","Elgyem","Beheeyem","Litwick","Lampent","Chandelure","Axew","Fraxure","Haxorus","Cubchoo","Beartic","Cryogonal","Shelmet","Accelgor","Stunfisk","Mienfoo","Mienshao","Druddigon","Golett","Golurk","Pawniard","Bisharp","Bouffalant","Rufflet","Braviary","Vullaby","Mandibuzz","Heatmor","Durant","Deino","Zweilous","Hydreigon","Larvesta","Volcarona","Cobalion","Terrakion","Virizion","Tornadus","Thundurus","Reshiram","Zekrom","Landorus","Kyurem","Keldeo","Meloetta","Genesect","Chespin","Quilladin","Chesnaught","Fennekin","Braixen","Delphox","Froakie","Frogadier","Greninja","Bunnelby","Diggersby","Fletchling","Fletchinder","Talonflame","Scatterbug","Spewpa","Vivillon","Litleo","Pyroar","Flabébé","Floette","Florges","Skiddo","Gogoat","Pancham","Pangoro","Furfrou","Espurr","Meowstic","Honedge","Doublade","Aegislash","Spritzee","Aromatisse","Swirlix","Slurpuff","Inkay","Malamar","Binacle","Barbaracle","Skrelp","Dragalge","Clauncher","Clawitzer","Helioptile","Heliolisk","Tyrunt","Tyrantrum","Amaura","Aurorus","Sylveon","Hawlucha","Dedenne","Carbink","Goomy","Sliggoo","Goodra","Klefki","Phantump","Trevenant","Pumpkaboo","Gourgeist","Bergmite","Avalugg","Noibat","Noivern","Xerneas","Yveltal","Zygarde","Diancie","Hoopa","Volcanion","Rowlet","Dartrix","Decidueye","Litten","Torracat","Incineroar","Popplio","Brionne","Primarina","Pikipek","Trumbeak","Toucannon","Yungoos","Gumshoos","Grubbin","Charjabug","Vikavolt","Crabrawler","Crabominable","Oricorio","Cutiefly","Ribombee","Rockruff","Lycanroc","Wishiwashi","Mareanie","Toxapex","Mudbray","Mudsdale","Dewpider","Araquanid","Fomantis","Lurantis","Morelull","Shiinotic","Salandit","Salazzle","Stufful","Bewear","Bounsweet","Steenee","Tsareena","Comfey","Oranguru","Passimian","Wimpod","Golisopod","Sandygast","Palossand","Pyukumuku","Type: Null","Silvally","Minior","Komala","Turtonator","Togedemaru","Mimikyu","Bruxish","Drampa","Dhelmise","Jangmo-o","Hakamo-o","Kommo-o","Tapu Koko","Tapu Lele","Tapu Bulu","Tapu Fini","Cosmog","Cosmoem","Solgaleo","Lunala","Nihilego","Buzzwole","Pheromosa","Xurkitree","Celesteela","Kartana","Guzzlord","Necrozma","Magearna","Marshadow","Poipole","Naganadel","Stakataka","Blacephalon","Zeraora","Meltan","Melmetal","Grookey","Thwackey","Rillaboom","Scorbunny","Raboot","Cinderace","Sobble","Drizzile","Inteleon","Skwovet","Greedent","Rookidee","Corvisquire","Corviknight","Blipbug","Dottler","Orbeetle","Nickit","Thievul","Gossifleur","Eldegoss","Wooloo","Dubwool","Chewtle","Drednaw","Yamper","Boltund","Rolycoly","Carkol","Coalossal","Applin","Flapple","Appletun","Silicobra","Sandaconda","Cramorant","Arrokuda","Barraskewda","Toxel","Toxtricity","Sizzlipede","Centiskorch","Clobbopus","Grapploct","Sinistea","Polteageist","Hatenna","Hattrem","Hatterene","Impidimp","Morgrem","Grimmsnarl","Obstagoon","Perrserker","Cursola","Sirfetch’d","Mr. Rime","Runerigus","Milcery","Alcremie","Falinks","Pincurchin","Snom","Frosmoth","Stonjourner","Eiscue","Indeedee","Morpeko","Cufant","Copperajah","Dracozolt","Arctozolt","Dracovish","Arctovish","Duraludon","Dreepy","Drakloak","Dragapult","Zacian","Zamazenta","Eternatus","Kubfu","Urshifu","Zarude","Regieleki","Regidrago","Glastrier","Spectrier","Calyrex","Wyrdeer","Kleavor","Ursaluna","Basculegion","Sneasler","Overqwil","Enamorus","Sprigatito","Floragato","Meowscarada","Fuecoco","Crocalor","Skeledirge","Quaxly","Quaxwell","Quaquaval","Lechonk","Oinkologne","Tarountula","Spidops","Nymble","Lokix","Pawmi","Pawmo","Pawmot","Tandemaus","Maushold","Fidough","Dachsbun","Smoliv","Dolliv","Arboliva","Squawkabilly","Nacli","Naclstack","Garganacl","Charcadet","Armarouge","Ceruledge","Tadbulb","Bellibolt","Wattrel","Kilowattrel","Maschiff","Mabosstiff","Shroodle","Grafaiai","Bramblin","Brambleghast","Toedscool","Toedscruel","Klawf","Capsakid","Scovillain","Rellor","Rabsca","Flittle","Espathra","Tinkatink","Tinkatuff","Tinkaton","Wiglett","Wugtrio","Bombirdier","Finizen","Palafin","Varoom","Revavroom","Cyclizar","Orthworm","Glimmet","Glimmora","Greavard","Houndstone","Flamigo","Cetoddle","Cetitan","Veluza","Dondozo","Tatsugiri","Annihilape","Clodsire","Farigiraf","Dudunsparce","Kingambit","Great Tusk","Scream Tail","Brute Bonnet","Flutter Mane","Slither Wing","Sandy Shocks","Iron Treads","Iron Bundle","Iron Hands","Iron Jugulis","Iron Moth","Iron Thorns","Frigibax","Arctibax","Baxcalibur","Gimmighoul","Gholdengo","Wo-Chien","Chien-Pao","Ting-Lu","Chi-Yu","Roaring Moon","Iron Valiant","Koraidon","Miraidon","Walking Wake","Iron Leaves","Dipplin","Poltchageist","Sinistcha","Okidogi","Munkidori","Fezandipiti","Ogerpon","Archaludon","Hydrapple","Gouging Fire","Raging Bolt","Iron Boulder","Iron Crown","Terapagos","Pecharunt"}
 	return pokemonList[index]
 end
+
+--End configRandomize
+
