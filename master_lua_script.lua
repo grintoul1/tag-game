@@ -2,7 +2,7 @@
 -- to use download this file on mgba select tools->scripting then file->open and open this file
 
 -- The below configs should be set to false if you want lua_update_script.py to not parse them to the
--- published_lua_script.lua
+-- public_lua_script.lua
 
 local configOverlayPokemon = true
 local configPokemonEditing = true
@@ -4894,8 +4894,8 @@ local speciesStructSize=260
 
 local partyCount=0x02033609 -- gPlayerPartyCount
 local partyloc=0x02033868 -- gPlayerParty
-local storageLoc=0x03003ff4 -- gPokemonStorage
 local speciesInfo=0x0867efbc -- gSpeciesInfo
+local storageLoc=0x03003ff4 -- gPokemonStorage
 
 local overlayEnabled = false
 
