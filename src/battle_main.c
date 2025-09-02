@@ -6059,6 +6059,7 @@ u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, enum MonState
                     return TYPE_WATER;
                 break;
             case WEATHER_SNOW:
+            case WEATHER_HAIL:
                 return TYPE_ICE;
             case WEATHER_SANDSTORM:
                 return TYPE_ROCK;

@@ -7673,6 +7673,15 @@ BattleScript_SnowWarningActivatesHail::
 	call BattleScript_ActivateWeatherAbilities
 	end3
 
+BattleScript_HailWarningActivatesHail::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_HAILWARNINGHAIL
+	waitstate
+	playanimation BS_BATTLER_0, B_ANIM_HAIL_CONTINUES
+	call BattleScript_ActivateWeatherAbilities
+	end3
+
 BattleScript_SnowWarningActivatesSnow::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
