@@ -4739,7 +4739,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                     {
                         ADJUST_SCORE(WEAK_EFFECT);
                         if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
-                            ADJUST_SCORE(2);
+                            ADJUST_SCORE(1);
                         break;
                     }
                 }
@@ -4763,7 +4763,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                     {
                         ADJUST_SCORE(WEAK_EFFECT);
                         if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
-                            ADJUST_SCORE(2);
+                            ADJUST_SCORE(12);
                         break;
                     }
                 }
@@ -4774,7 +4774,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                     {
                         ADJUST_SCORE(WEAK_EFFECT);
                         if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
-                            ADJUST_SCORE(2);
+                            ADJUST_SCORE(1);
                         break;
                     }
                 }
@@ -4810,7 +4810,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                 {
                     ADJUST_SCORE(WEAK_EFFECT);
                     if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
-                        ADJUST_SCORE(2);
+                        ADJUST_SCORE(1);
                     break;
                 }
             }
@@ -4833,14 +4833,14 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             {
                 ADJUST_SCORE(GOOD_EFFECT);
                 if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
-                    ADJUST_SCORE(2);
+                    ADJUST_SCORE(1);
                 break;
             }
             else if (IsBattlerFirstTurnOrRandom(battlerAtk) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
             {
                 ADJUST_SCORE(WEAK_EFFECT);
                 if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
-                    ADJUST_SCORE(2);
+                    ADJUST_SCORE(1);
                 break;
             }
             break;
@@ -4849,9 +4849,10 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             {   
                 if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
                 {
+                    MgbaPrintf(MGBA_LOG_WARN, "battlerAtk %d, battlerDef %d, i %d, targetMove[i] %S", battlerAtk, battlerDef, i, GetMoveName(targetMove[i]));
                     if (IsBattlerFirstTurnOrRandom(battlerAtk))
                     {
-                        ADJUST_SCORE(BEST_EFFECT);
+                        ADJUST_AND_RETURN_SCORE(BEST_EFFECT);
                     }
                     break;
                 }
@@ -4860,7 +4861,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             {
                 ADJUST_SCORE(WEAK_EFFECT);
                 if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
-                    ADJUST_SCORE(2);
+                    ADJUST_SCORE(1);
                 break;
             }
             break;
