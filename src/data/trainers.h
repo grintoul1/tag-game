@@ -987,11 +987,11 @@ F_TRAINER_FEMALE |
 #line 370
             .lvl = 29,
 #line 371
-            .nature = NATURE_ADAMANT,
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 372
-                MOVE_WATERFALL,
+                MOVE_DIVE,
                 MOVE_BOUNCE,
                 MOVE_U_TURN,
                 MOVE_TAILWIND,
@@ -1052,15 +1052,15 @@ F_TRAINER_FEMALE |
 #line 399
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 396
-            .ability = ABILITY_INNER_FOCUS,
+            .ability = ABILITY_SHEER_FORCE,
 #line 397
             .lvl = 28,
 #line 398
-            .nature = NATURE_ADAMANT,
+            .nature = NATURE_RASH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 399
-                MOVE_FIRE_PUNCH,
+                MOVE_EMBER,
                 MOVE_BRICK_BREAK,
                 MOVE_FLING,
                 MOVE_WILL_O_WISP,
@@ -1075,15 +1075,15 @@ F_TRAINER_FEMALE |
 #line 408
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 405
-            .ability = ABILITY_INNER_FOCUS,
+            .ability = ABILITY_SHEER_FORCE,
 #line 406
             .lvl = 28,
 #line 407
-            .nature = NATURE_ADAMANT,
+            .nature = NATURE_RASH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 408
-                MOVE_ICE_PUNCH,
+                MOVE_POWDER_SNOW,
                 MOVE_MEGA_PUNCH,
                 MOVE_THIEF,
                 MOVE_CHILL_O_WISP,
