@@ -1503,6 +1503,19 @@ u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef, enum DamageCalcCon
     {
         if (IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations))
             continue;
+        if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER)
+        {
+            u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
+            bool32 hasPartner = HasPartner(battlerAtk);
+            u32 friendlyFireThreshold = GetFriendlyFireKOThreshold(battlerAtk);
+            u32 noOfHitsToKOPartner = GetNoOfHitsToKOBattler(battlerAtk, battlerAtkPartner, gAiThinkingStruct->movesetIndex, AI_ATTACKING);
+            bool32 wouldPartnerFaint = hasPartner && CanIndexMoveFaintTarget(battlerAtk, battlerAtkPartner, gAiThinkingStruct->movesetIndex, AI_ATTACKING);
+            bool32 isFriendlyFireOK = !wouldPartnerFaint && (noOfHitsToKOPartner == 0 || noOfHitsToKOPartner > friendlyFireThreshold);
+            u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, moves[moveIndex]);
+            
+            if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
+                continue;
+        }
 
         if (bestDmg < AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData))
         {
@@ -5491,12 +5504,23 @@ bool32 HasBattlerSideAbility(u32 battler, u32 ability, struct AiLogicData *aiDat
 
 u32 GetFriendlyFireKOThreshold(u32 battler)
 {
-    if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_RISKY)
-        return FRIENDLY_FIRE_RISKY_THRESHOLD;
-    if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_CONSERVATIVE)
-        return FRIENDLY_FIRE_CONSERVATIVE_THRESHOLD;
+    if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER)
+    {
+        if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_RISKY)
+            return PARTNER_FRIENDLY_FIRE_RISKY_THRESHOLD;
+        if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_CONSERVATIVE)
+            return PARTNER_FRIENDLY_FIRE_CONSERVATIVE_THRESHOLD;
+        return PARTNER_FRIENDLY_FIRE_NORMAL_THRESHOLD;
+    }
+    else
+    {
+        if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_RISKY)
+            return FRIENDLY_FIRE_RISKY_THRESHOLD;
+        if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_CONSERVATIVE)
+            return FRIENDLY_FIRE_CONSERVATIVE_THRESHOLD;
+    }
     if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_ATTACKS_PARTNER)
-        return 0;
+    return 0;
 
     return FRIENDLY_FIRE_NORMAL_THRESHOLD;
 }
