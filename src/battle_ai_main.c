@@ -6142,8 +6142,11 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     bool32 isFriendlyFireOK = !wouldPartnerFaint && (noOfHitsToKOPartner == 0 || noOfHitsToKOPartner > friendlyFireThreshold);
     u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, move);
     
-    if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
-        RETURN_SCORE_PLUS(NO_DAMAGE_OR_FAILS);
+    if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER)
+    {    
+        if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
+            RETURN_SCORE_PLUS(NO_DAMAGE_OR_FAILS);
+    }
 
     if (GetMovePower(move) != 0)
     {

@@ -94,9 +94,9 @@
 #define SMART_SWITCHING_OMNISCIENT                              FALSE // AI will use omniscience for switching calcs, regardless of omniscience setting otherwise
 
 // Configurations specifically for AI_FLAG_DOUBLE_BATTLE.
-#define FRIENDLY_FIRE_RISKY_THRESHOLD           1
-#define FRIENDLY_FIRE_NORMAL_THRESHOLD          1
-#define FRIENDLY_FIRE_CONSERVATIVE_THRESHOLD    1
+#define FRIENDLY_FIRE_RISKY_THRESHOLD           2
+#define FRIENDLY_FIRE_NORMAL_THRESHOLD          3
+#define FRIENDLY_FIRE_CONSERVATIVE_THRESHOLD    4
 // Counterplay on the assumption of opponents Protecting.
 #define DOUBLE_TRICK_ROOM_ON_LAST_TURN_CHANCE    50 // both pokemon use Trick Room on turn Trick Room expires in the hopes both opponents used Protect to stall, getting a free refresh on the timer
 #define TAILWIND_IN_TRICK_ROOM_CHANCE            50 // use Tailwind on turn Trick Room expires in the hopes both opponents used Protect to stall
