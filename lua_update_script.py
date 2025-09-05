@@ -6,7 +6,7 @@ def get_map_values(map_file):
                 values['gPlayerPartyCount'] = line.strip().split()[0]
             elif "gPlayerParty" in line:
                 values['gPlayerParty'] = line.strip().split()[0]
-            elif "gPokemonStorage" in line:
+            elif "gPokemonStorage" in line and not "gPokemonStoragePtr" in line:
                 values['gPokemonStorage'] = line.strip().split()[0]
             elif "gSpeciesInfo" in line:
                 values['gSpeciesInfo'] = line.strip().split()[0]
