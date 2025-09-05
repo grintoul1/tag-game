@@ -2328,14 +2328,15 @@ bool32 ShouldSwitchIfAllScoresBad(u32 battler)
 
 bool32 PartnerShouldSwitchIfAllScoresBad(u32 battler)
 {
-    u32 i, score, opposingBattler = GetOppositeBattler(battler);
+    u32 i, scoreOpposite, scoreOppositePartner, opposingBattler = GetOppositeBattler(battler);
     if (!(gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING))
         return FALSE;
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        score = gAiBattleData->finalScore[battler][opposingBattler][i];
-        if (score > AI_BAD_SCORE_THRESHOLD)
+        scoreOpposite = gAiBattleData->finalScore[battler][opposingBattler][i];
+        scoreOppositePartner = gAiBattleData->finalScore[battler][BATTLE_PARTNER(opposingBattler)][i];
+        if ((scoreOpposite > PARTNER_AI_BAD_SCORE_THRESHOLD) || (scoreOppositePartner > PARTNER_AI_BAD_SCORE_THRESHOLD))
             return FALSE;
     }
     if (RandomPercentage(RNG_AI_SWITCH_ALL_SCORES_BAD, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_ALL_SCORES_BAD)))
