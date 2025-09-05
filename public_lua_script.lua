@@ -4867,10 +4867,10 @@ nature = {"Hardy","Lonely","Brave","Adamant","Naughty",
 charmap = { [0]=
 	" ", "À", "Á", "Â", "Ç", "È", "É", "Ê", "Ë", "Ì", "こ", "Î", "Ï", "Ò", "Ó", "Ô",
 	"Œ", "Ù", "Ú", "Û", "Ñ", "ß", "à", "á", "ね", "ç", "è", "é", "ê", "ë", "ì", "ま",
-	"î", "ï", "ò", "ó", "ô", "œ", "ù", "ú", "û", "ñ", "º", "ª", "�", "&", "+", "あ",
+	"î", "ï", "ò", "ó", "ô", "œ", "ù", "ú", "û", "ñ", "º", "ª", " ", "&", "+", "あ",
 	"ぃ", "ぅ", "ぇ", "ぉ", "v", "=", "ょ", "が", "ぎ", "ぐ", "げ", "ご", "ざ", "じ", "ず", "ぜ",
 	"ぞ", "だ", "ぢ", "づ", "で", "ど", "ば", "び", "ぶ", "べ", "ぼ", "ぱ", "ぴ", "ぷ", "ぺ", "ぽ",
-	"っ", "¿", "¡", "P\u{200d}k", "M\u{200d}n", "P\u{200d}o", "K\u{200d}é", "�", "�", "�", "Í", "%", "(", ")", "セ", "ソ",
+	"っ", "¿", "¡", "P\u{200d}k", "M\u{200d}n", "P\u{200d}o", "K\u{200d}é", " ", " ", " ", "Í", "%", "(", ")", "セ", "ソ",
 	"タ", "チ", "ツ", "テ", "ト", "ナ", "ニ", "ヌ", "â", "ノ", "ハ", "ヒ", "フ", "ヘ", "ホ", "í",
 	"ミ", "ム", "メ", "モ", "ヤ", "ユ", "ヨ", "ラ", "リ", "⬆", "⬇", "⬅", "➡", "ヲ", "ン", "ァ",
 	"ィ", "ゥ", "ェ", "ォ", "ャ", "ュ", "ョ", "ガ", "ギ", "グ", "ゲ", "ゴ", "ザ", "ジ", "ズ", "ゼ",
@@ -4880,7 +4880,7 @@ charmap = { [0]=
 	"F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
 	"V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
 	"l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "▶",
-	":", "Ä", "Ö", "Ü", "ä", "ö", "ü", "⬆", "⬇", "⬅", "�", "�", "�", "�", "�", ""
+	":", "Ä", "Ö", "Ü", "ä", "ö", "ü", "⬆", "⬇", "⬅", " ", " ", " ", " ", " ", ""
 }
 
 levelCap = 0 -- Sets the level for all mons based on first party slot
@@ -4894,8 +4894,8 @@ local speciesStructSize=260
 
 local partyCount=0x02033609 -- gPlayerPartyCount
 local partyloc=0x02033868 -- gPlayerParty
-local speciesInfo=0x0867efbc -- gSpeciesInfo
-local storageLoc=0x03003ff4 -- gPokemonStorage
+local storageLoc=0x02009578 -- gPokemonStorage
+local speciesInfo=0x0867f908 -- gSpeciesInfo
 
 local overlayEnabled = false
 
@@ -5014,20 +5014,41 @@ function setBoxMon(address, newNature, IVs, moveSlot, moveName, level, species, 
 
     -- set all IVs to 31
     if (IVs ~= nil) then
-        ss3[1] = (ss3[1] & 0x80000001) | (IVs[1] << 0) | (IVs[2] << 5) |
+        ss3[1] = (ss3[1] & 0x00000000) | (IVs[1] << 0) | (IVs[2] << 5) |
                      (IVs[3] << 10) | (IVs[6] << 15) | (IVs[4] << 20) |
                      (IVs[5] << 25)
     end
 
+--function getNature(mon)
+--	if (mon.hiddenNature == 26) then
+--		return nature[(mon.personality % 25)+1]
+--	end
+--	return nature[mon.hiddenNature+1]
+--end
     -- set hiddenNature
+--GRINT
     if (newNature ~= nil) then
         local natureIx = indexOf(nature, newNature)
         if (natureIx == nil) then
             console:log('Invalid nature')
             return
         end
-        ss0[2] = (ss0[2] ~ (mon.hiddenNature << 16)) |
-                     (((natureIx - 1) & 0x1F) << 16)
+        local diff = math.abs((mon.hiddenNature - (natureIx - 1)))
+        local sign
+        if mon.hiddenNature > (natureIx - 1) then
+            sign = 1
+        else
+            sign = -1
+        end
+        if (diff > 25 / 2) then
+            diff = 25 - diff
+            sign = -sign
+        end
+        local newPersonality = (mon.personality - (diff * sign)) & 0xFFFFFFFF
+        emu:write32(address, newPersonality)
+        mon.personality = newPersonality
+        key = mon.otId ~ mon.personality
+        pSel = substructSelector[mon.personality % 24]
     end
 
     if (moveSlot ~= nil) then
@@ -5091,20 +5112,30 @@ function setBoxMon(address, newNature, IVs, moveSlot, moveName, level, species, 
         emu:write32(address + 32 + pSel[4] * 12 + i * 4, ss3[i] ~ key)
     end
 end
-
+--GRINT
 function readBoxMon(address)
 	local mon = {}
 	mon.personality = emu:read32(address + 0)
 	mon.otId = emu:read32(address + 4)
 	mon.nickname = toString(emu:readRange(address + 8, monNameLength))
-	mon.language = emu:read8(address + 18)
+	mon.language = emu:read8(address + 15) & 0x07
+    mon.hiddenNatureModifier = (emu:read8(address + 15) >> 3) & 0x1F
+    mon.hiddenNature = (mon.personality % 25)
 
-	local flags = emu:read8(address + 19)
-	mon.isBadEgg = flags & 1
-	mon.hasSpecies = (flags >> 1) & 1
-	mon.isEgg = (flags >> 2) & 1
-	mon.otName = toString(emu:readRange(address + 20, playerNameLength))
+	local flags = emu:read8(address + 16)
+	mon.isBadEgg = flags & 0x01
+	mon.hasSpecies = (flags >> 1) & 0x01 
+	mon.isEgg = (flags >> 2) & 0x01
+    mon.blockBoxRS = (flags >> 3) & 0x01
+    mon.daysSinceFormChange = (flags >> 4) & 0x07 
+    mon.unused_13 = (flags >> 7) & 0x01 
+	mon.otName = toString(emu:readRange(address + 17, playerNameLength))
 	mon.markings = emu:read8(address + 27)
+    mon.compressedStatus = (emu:read8(address + 27) >> 4) & 0x0F
+    mon.checksum = emu:read16(address + 28)
+    mon.hpLost = emu:read16(address + 30) & 0x3FFF
+    mon.shinyModifier = (emu:read16(address + 31) >> 6) & 0x01
+    mon.unused_1E = (emu:read16(address + 31) >> 7) & 0x01
 
 	local key = mon.otId ~ mon.personality
 	local substructSelector = {
@@ -5147,77 +5178,105 @@ function readBoxMon(address)
 		ss3[i] = emu:read32(address + 32 + pSel[4] * 12 + i * 4) ~ key
 	end
 
-	mon.species = ss0[0] & 0x7FF
-	mon.heldItem = ss0[0] >> 16
-	mon.experience = ss0[1] & 0x1FFFFF
-	mon.ppBonuses = ss0[2] & 0xFF
-	mon.friendship = (ss0[2] >> 8) & 0xFF
-	mon.pokeball = (ss0[2] >> 16) & 0x3F
+    flags = ss0[0]
+	mon.species = flags & 0x7FF
+    mon.teraType = (flags >> 11) & 0x1F
+	mon.heldItem = (flags >> 16) & 0x3FF
+	mon.unused_02 = (flags >> 26) & 0x3F
+    flags = ss0[1]
+	mon.experience = flags & 0x1FFFFF
+	mon.nickname11 = (flags >> 21) & 0xFF
+	mon.unused_04 = (flags >> 29) & 0x07
+    flags = ss0[2]
+	mon.ppBonuses = flags & 0xFF
+	mon.friendship = (flags >> 8) & 0xFF
+	mon.pokeball = (flags >> 16) & 0x3F
+	mon.nickname12 = (flags >> 24) & 0xFF
+	mon.unused_0A = (flags >> 24) & 0x03
 
 	mon.moves = {
-		ss1[0] & 0xFFFF,
-		ss1[0] >> 16,
+		ss1[0] & 0x7FF,
+		(ss1[0] >> 16) & 0x7FF,
 		ss1[1] & 0x7FF,
-		ss1[1] >> 16
+		(ss1[1] >> 16) & 0x7FF
 	}
 
-	mon.hiddenNature = (ss1[1] >> 11) & 0x1F
-	-- console:log(string.format("%d", mon.hiddenNature))
+    flags = ss1[0]
+    mon.move1 = flags & 0x7FF
+	mon.evolutionTracker0 = (flags >> 11) & 0x1F
+    mon.move2 = (flags >> 16) & 0x7FF
+	mon.evolutionTracker1 = (flags >> 27) & 0x1F
+    flags = ss1[1]
+    mon.move3 = flags & 0x7FF
+	mon.unused_04 = (flags >> 11) & 0x1F
+    mon.move4 = (flags >> 16) & 0x7FF
+	mon.unused_06 = (flags >> 27) & 0x07
+	mon.hyperTrainedHP = (flags >> 30) & 0x01
+	mon.hyperTrainedAttack = (flags >> 31) & 0x01
+    flags = ss1[2]
+	mon.pp1 = flags & 0x7F
+	mon.hyperTrainedDefense = (flags >> 7) & 0x01
+	mon.pp2 = (flags >> 8) & 0x7F
+	mon.hyperTrainedSpeed = (flags >> 15) & 0x01
+	mon.pp3 = (flags >> 16) & 0x7F
+	mon.hyperTrainedSpAttack = (flags >> 23) & 0x01
+	mon.pp4 = (flags >> 24) & 0x7F
+	mon.hyperTrainedSpDefense = (flags >> 31) & 0x01
 
-	mon.pp = {
-		ss1[2] & 0xFF,
-		(ss1[2] >> 8) & 0xFF,
-		(ss1[2] >> 16) & 0xFF,
-		ss1[2] >> 24
-	}
+    flags = ss2[0]
+	mon.hpEV = flags & 0xFF
+	mon.attackEV = (flags >> 8) & 0xFF
+	mon.defenseEV = (flags >> 16) & 0xFF
+	mon.speedEV = flags >> 24
+    flags = ss2[1]
+	mon.spAttackEV = flags & 0xFF
+	mon.spDefenseEV = (flags >> 8) & 0xFF
+	mon.cool = (flags >> 16) & 0xFF
+	mon.beauty = flags >> 24
+    flags = ss2[2]
+	mon.cute = flags & 0xFF
+	mon.smart = (flags >> 8) & 0xFF
+	mon.tough = (flags >> 16) & 0xFF
+	mon.sheen = flags >> 24
 
-	mon.hpEV = ss2[0] & 0xFF
-	mon.attackEV = (ss2[0] >> 8) & 0xFF
-	mon.defenseEV = (ss2[0] >> 16) & 0xFF
-	mon.speedEV = ss2[0] >> 24
-	mon.spAttackEV = ss2[1] & 0xFF
-	mon.spDefenseEV = (ss2[1] >> 8) & 0xFF
-	mon.cool = (ss2[1] >> 16) & 0xFF
-	mon.beauty = ss2[1] >> 24
-	mon.cute = ss2[2] & 0xFF
-	mon.smart = (ss2[2] >> 8) & 0xFF
-	mon.tough = (ss2[2] >> 16) & 0xFF
-	mon.sheen = ss2[2] >> 24
-
-	mon.pokerus = ss3[0] & 0xFF
-	mon.metLocation = (ss3[0] >> 8) & 0xFF
-	flags = ss3[0] >> 16
-	mon.metLevel = flags & 0x7F
-	mon.metGame = (flags >> 7) & 0xF
-	mon.dynamaxLevel = (flags >> 11) & 0xF
-	mon.otGender = (flags >> 15) & 0x1
+    flags = ss3[0]
+	mon.pokerus = flags & 0xFF
+	mon.metLocation = (flags >> 8) & 0xFF
+	mon.metLevel = (flags >> 16) & 0x7F
+	mon.metGame = (flags >> 23) & 0x0F
+	mon.dynamaxLevel = (flags >> 27) & 0x0F
+	mon.otGender = (flags >> 31) & 0x01
 	flags = ss3[1]
-	mon.hpIV = (flags >> 0) & 0x1F
+	mon.hpIV = flags & 0x1F
 	mon.attackIV = (flags >> 5) & 0x1F
 	mon.defenseIV = (flags >> 10) & 0x1F
 	mon.speedIV = (flags >> 15) & 0x1F
 	mon.spAttackIV = (flags >> 20) & 0x1F
 	mon.spDefenseIV = (flags >> 25) & 0x1F
-	-- Bit 30 is another "isEgg" bit
+    mon.isEgg2 = (flags >> 30) & 0x01 -- Bit 30 is another "isEgg" bit
+    mon.gigantamaxFactor = (flags >> 31) & 0x01
 	flags = ss3[2]
-	mon.coolRibbon = flags & 7
-	mon.beautyRibbon = (flags >> 3) & 7
-	mon.cuteRibbon = (flags >> 6) & 7
-	mon.smartRibbon = (flags >> 9) & 7
-	mon.toughRibbon = (flags >> 12) & 7
-	mon.championRibbon = (flags >> 15) & 1
-	mon.winningRibbon = (flags >> 16) & 1
-	mon.victoryRibbon = (flags >> 17) & 1
-	mon.artistRibbon = (flags >> 18) & 1
-	mon.effortRibbon = (flags >> 19) & 1
-	mon.marineRibbon = (flags >> 20) & 1
-	mon.landRibbon = (flags >> 21) & 1
-	mon.skyRibbon = (flags >> 22) & 1
-	mon.countryRibbon = (flags >> 23) & 1
-	mon.nationalRibbon = (flags >> 24) & 1
-	mon.earthRibbon = (flags >> 25) & 1
-	mon.worldRibbon = (flags >> 26) & 1
-	mon.abilityNum = (flags >> 29) & 3
+	mon.coolRibbon = flags & 0x07
+	mon.beautyRibbon = (flags >> 3) & 0x07
+	mon.cuteRibbon = (flags >> 6) & 0x07
+	mon.smartRibbon = (flags >> 9) & 0x07
+	mon.toughRibbon = (flags >> 12) & 0x07
+	mon.championRibbon = (flags >> 15) & 0x01
+	mon.winningRibbon = (flags >> 16) & 0x01
+	mon.victoryRibbon = (flags >> 17) & 0x01
+	mon.artistRibbon = (flags >> 18) & 0x01
+	mon.effortRibbon = (flags >> 19) & 0x01
+	mon.marineRibbon = (flags >> 20) & 0x01
+	mon.landRibbon = (flags >> 21) & 0x01
+	mon.skyRibbon = (flags >> 22) & 0x01
+	mon.countryRibbon = (flags >> 23) & 0x01
+	mon.nationalRibbon = (flags >> 24) & 0x01
+	mon.earthRibbon = (flags >> 25) & 0x01
+	mon.worldRibbon = (flags >> 26) & 0x01
+	mon.isShadow = (flags >> 27) & 0x01
+	mon.unused_0B = (flags >> 28) & 0x01
+	mon.abilityNum = (flags >> 29) & 0x03
+	mon.modernFatefulEncounter = (flags >> 31) & 0x01
 	return mon
 end
 
@@ -5249,7 +5308,7 @@ function getItem(mon)
 end
 
 function getNature(mon)
-	if (mon.hiddenNature == 0) then
+	if (mon.hiddenNature == 26) then
 		return nature[(mon.personality % 25)+1]
 	end
 	return nature[mon.hiddenNature+1]
@@ -5316,6 +5375,7 @@ function printPartyStatus(buffer)
 		end
 	end
     while i<120 do
+        buffer:print(string.format("i: %d pcStart %d\n", i, address))
 		if (emu:read32(address) ~=0) then
 			buffer:print(getPCPrint(readBoxMon(address)))
 		end
@@ -5331,7 +5391,7 @@ function getParty()
 		party[i] = readPartyMon(monStart)
 		monStart = monStart + partyMonSize
 	end
-	return party
+	return party, monStart
 end
 
 function getHP(mon)
