@@ -673,13 +673,13 @@ Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
+Mugshot: Green
 Battle Type: Doubles
 AI: Smart Trainer
 
 Kirlia @ Eviolite  
 Ability: Trace  
 Level: 31  
-Tera Type: Psychic  
 Timid Nature  
 - Psyshock  
 - Psybeam  
@@ -689,7 +689,6 @@ Timid Nature
 Linoone-Galar @ Liechi Berry  
 Ability: Gluttony  
 Level: 30  
-Tera Type: Dark  
 Jolly Nature  
 - Dig  
 - Retaliate  
@@ -708,7 +707,6 @@ AI: Smart Trainer
 Doublade @ Focus Sash  
 Ability: No Guard  
 Level: 31  
-Tera Type: Steel  
 Jolly Nature  
 - Iron Head  
 - Shadow Sneak  
@@ -718,7 +716,6 @@ Jolly Nature
 Lycanroc-Midnight @ Shuca Berry  
 Ability: No Guard  
 Level: 30  
-Tera Type: Rock  
 Careful Nature  
 - Rock Tomb  
 - Bite  
