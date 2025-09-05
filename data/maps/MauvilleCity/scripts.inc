@@ -221,7 +221,7 @@ MauvilleCity_EventScript_ScottExitEast::
 	return
 
 MauvilleCity_EventScript_BattleWally::
-	applymovement LOCALID_WALLYS_UNCLE, Common_Movement_FacePlayer
+	applymovement LOCALID_WALLYS_UNCLE, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox MauvilleCity_Text_UncleHereWeCome, MSGBOX_DEFAULT
 	multi_2p_vs_2 TRAINER_WALLY_MAUVILLE, MauvilleCity_Text_WallyDefeat, TRAINER_UNCLE_MAUVILLE, MauvilleCity_Text_UncleDefeat, PARTNER_EMMIE
@@ -241,6 +241,10 @@ MauvilleCity_EventScript_WallyVictory::
 	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	msgbox MauvilleCity_Text_UncleNoNeedToBeDown, MSGBOX_DEFAULT
+	applymovement LOCALID_WALLY, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox MauvilleCity_Text_WallyHaveEviolite, MSGBOX_DEFAULT
+	giveitem ITEM_EVIOLITE
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_WALLY
 	removeobject LOCALID_WALLYS_UNCLE
@@ -510,15 +514,15 @@ MauvilleCity_Text_WallyWantToChallengeGym:
 
 MauvilleCity_Text_UncleYourePushingIt:
 	.string "Uncle: Now hold on, Wally.\p"
-	.string "You've only just started your/n"
+	.string "You've only just started your\n"
 	.string "Pokémon journey.\p"
 	.string "Don't you think you're pushing it\n"
 	.string "to suddenly challenge a gym?$"
 
 MauvilleCity_Text_WallyWeCanBeatAnyone:
 	.string "Wally: I'm not pushing it.\p"
-	.string "If I combine forces with my,\n"
-	.string "Pokémon we can beat anyone!$"
+	.string "If I combine forces with my Pokémon\n"
+	.string "we can beat anyone!$"
 
 MauvilleCity_Text_WallyWillYouBattleMe:
 	.string "Wally: Oh! Hi, {PLAYER}!\p"
@@ -546,9 +550,8 @@ MauvilleCity_Text_WallyPleaseBattleMe:
 	.string "Battle with me, please.$"
 
 MauvilleCity_Text_UncleHereWeCome:
-	.string "Uncle: Okay, Wally. If you want\n"
-	.string "to do this then we'll do it as a\p"
-	.string "team!$"
+	.string "Uncle: Okay, if you want to do\n"
+	.string "this then we'll do it as a team!$"
 
 MauvilleCity_Text_WallyDefeat:
 	.string "Wally: … … … … … … …\p"
@@ -577,6 +580,12 @@ MauvilleCity_Text_UncleNoNeedToBeDown:
 	.string "stronger and stronger?\p"
 	.string "Come on, let's go home.\n"
 	.string "Everyone's waiting for you.$"
+
+MauvilleCity_Text_WallyHaveEviolite:
+	.string "Wally: Here, {PLAYER}, take this too.\n"
+	.string "It's an Eviolite.\p"
+	.string "I hope this helps you with your gym\n"
+	.string "challenge!$"
 
 MauvilleCity_Text_UncleVisitUsSometime:
 	.string "Uncle: {PLAYER}{KUN}, it just dawned on me\n"
