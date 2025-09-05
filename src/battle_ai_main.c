@@ -3019,7 +3019,7 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, AI_ATTACKING)
         && effect != EFFECT_EXPLOSION && effect != EFFECT_MISTY_EXPLOSION)
     {
-        if (AI_IsFaster(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, DONT_CONSIDER_PRIORITY))
+        if (AI_IsFaster(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY))
             ADJUST_SCORE(FAST_KILL);
         else
             ADJUST_SCORE(SLOW_KILL);
@@ -6127,39 +6127,55 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
 // AI_FLAG_CHECK_VIABILITY - Chooses best possible move to hit player
 static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
-
+    u16 *moves = GetMovesArray(battlerAtk);
     // Targeting partner, check benefits of doing that instead
     if (IsTargetingPartner(battlerAtk, battlerDef) && GetMovePower(move) != 0)
         ADJUST_AND_RETURN_SCORE(-10);
     else if (IsTargetingPartner(battlerAtk, battlerDef))
         return score;
 
-    u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
-    bool32 hasPartner = HasPartner(battlerAtk);
-    u32 friendlyFireThreshold = GetFriendlyFireKOThreshold(battlerAtk);
-    u32 noOfHitsToKOPartner = GetNoOfHitsToKOBattler(battlerAtk, battlerAtkPartner, gAiThinkingStruct->movesetIndex, AI_ATTACKING);
-    bool32 wouldPartnerFaint = hasPartner && CanIndexMoveFaintTarget(battlerAtk, battlerAtkPartner, gAiThinkingStruct->movesetIndex, AI_ATTACKING);
-    bool32 isFriendlyFireOK = !wouldPartnerFaint && (noOfHitsToKOPartner == 0 || noOfHitsToKOPartner > friendlyFireThreshold);
-    u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, move);
+    
+
+    u16 bestMoves[4];
+    u32 bestTarget;
+    u32 thisMove = MAX_MON_MOVES;
     
     if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER)
-    {    
-        if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
-            RETURN_SCORE_PLUS(NO_DAMAGE_OR_FAILS);
-    }
-
-    if (GetMovePower(move) != 0)
     {
-        if (GetNoOfHitsToKOBattler(battlerAtk, battlerDef, gAiThinkingStruct->movesetIndex, AI_ATTACKING) == 0)
-            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); // No point in checking the move further so return early
-        else
-        {
-            if (gAiThinkingStruct->aiFlags[battlerAtk] & (AI_FLAG_RISKY | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE)
-                && GetBestDmgMoveFromBattler(battlerAtk, battlerDef, AI_ATTACKING) == move)
+        if (GetMovePower(move) != 0)
+        {    
+            GetBestDmgMoveFromPartner(battlerAtk, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), AI_ATTACKING, bestMoves, &bestTarget);
+            if (((bestMoves[0] == move) || (bestMoves[1] == move) || (bestMoves[2] == move) || (bestMoves[3] == move)) && (bestTarget == battlerDef))
             {
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
                 if (AI_RandLessThan(51))
                     ADJUST_SCORE(2);
+            }
+        }
+    }
+    else
+    {
+        if (GetMovePower(move) != 0)
+        {
+            if (GetNoOfHitsToKOBattler(battlerAtk, battlerDef, gAiThinkingStruct->movesetIndex, AI_ATTACKING) == 0)
+                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); // No point in checking the move further so return early
+            else
+            {
+                if (gAiThinkingStruct->aiFlags[battlerAtk] & (AI_FLAG_RISKY | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE))
+                {
+                    for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+                    {
+                        if (moves[moveIndex] == move)
+                            thisMove = moveIndex;
+                    }
+                    if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, thisMove, AI_ATTACKING)
+                    || GetBestDmgMoveFromBattler(battlerAtk, battlerDef, AI_ATTACKING) == move)
+                    {
+                        ADJUST_SCORE(BEST_DAMAGE_MOVE);
+                        if (AI_RandLessThan(51))
+                            ADJUST_SCORE(2);
+                    }
+                }
             }
         }
     }

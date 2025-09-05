@@ -107,6 +107,7 @@ s32 AI_WhoStrikesFirst(u32 battlerAI, u32 battler2, u32 aiMoveConsidered, u32 pl
 bool32 CanTargetFaintAi(u32 battlerDef, u32 battlerAtk);
 u32 NoOfHitsForTargetToFaintBattler(u32 battlerDef, u32 battlerAtk);
 u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef, enum DamageCalcContext calcContext);
+void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPartner, enum DamageCalcContext calcContext, u16* moves, u32* target);
 u32 GetBestDmgFromBattler(u32 battler, u32 battlerTarget, enum DamageCalcContext calcContext);
 bool32 CanTargetMoveFaintAi(u32 move, u32 battlerDef, u32 battlerAtk, u32 nHits);
 bool32 CanTargetFaintAiWithMod(u32 battlerDef, u32 battlerAtk, s32 hpMod, s32 dmgMod);

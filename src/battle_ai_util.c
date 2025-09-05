@@ -1503,19 +1503,6 @@ u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef, enum DamageCalcCon
     {
         if (IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations))
             continue;
-        if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER)
-        {
-            u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
-            bool32 hasPartner = HasPartner(battlerAtk);
-            u32 friendlyFireThreshold = GetFriendlyFireKOThreshold(battlerAtk);
-            u32 noOfHitsToKOPartner = GetNoOfHitsToKOBattler(battlerAtk, battlerAtkPartner, gAiThinkingStruct->movesetIndex, AI_ATTACKING);
-            bool32 wouldPartnerFaint = hasPartner && CanIndexMoveFaintTarget(battlerAtk, battlerAtkPartner, gAiThinkingStruct->movesetIndex, AI_ATTACKING);
-            bool32 isFriendlyFireOK = !wouldPartnerFaint && (noOfHitsToKOPartner == 0 || noOfHitsToKOPartner > friendlyFireThreshold);
-            u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, moves[moveIndex]);
-            
-            if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
-                continue;
-        }
 
         if (bestDmg < AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData))
         {
@@ -1524,6 +1511,135 @@ u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef, enum DamageCalcCon
         }
     }
     return move;
+}
+
+void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPartner, enum DamageCalcContext calcContext, u16* moves, u32* target)
+{
+    struct AiLogicData *aiData = gAiLogicData;
+    u32 moveIndex; 
+    s32 moveDef = 0, moveDefPartner = 0;
+    s32 bestDmgDef = 0, bestDmgDefPartner = 0;
+    u16 *battlerMoves = GetMovesArray(battlerAtk);
+    u32 moveLimitations = aiData->moveLimitations[battlerAtk];
+    u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
+    bool32 hasPartner = HasPartner(battlerAtk);
+    u32 friendlyFireThreshold = GetFriendlyFireKOThreshold(battlerAtk);
+    u32 noOfHitsToKOPartner = GetNoOfHitsToKOBattler(battlerAtk, battlerAtkPartner, gAiThinkingStruct->movesetIndex, AI_ATTACKING);
+    bool32 wouldPartnerFaint = hasPartner && CanIndexMoveFaintTarget(battlerAtk, battlerAtkPartner, gAiThinkingStruct->movesetIndex, AI_ATTACKING);
+    bool32 isFriendlyFireOK = !wouldPartnerFaint && (noOfHitsToKOPartner == 0 || noOfHitsToKOPartner > friendlyFireThreshold);
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+
+        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations))
+            continue;
+        if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
+            continue;
+    }
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (CanIndexMoveFaintTarget(battlerAtk, battlerDefPartner, moveIndex, AI_ATTACKING) 
+        && (AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER))
+        {
+            moves[moveIndex] = battlerMoves[moveIndex];
+        }
+    }
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (moves[moveIndex] == battlerMoves[moveIndex])
+        {
+            *target = battlerDefPartner;
+            return;
+        }
+    }
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, moveIndex, AI_ATTACKING) 
+        && (AI_WhoStrikesFirst(battlerAtk, battlerDef, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER))
+        {
+            moves[moveIndex] = battlerMoves[moveIndex];
+        }
+    }
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (moves[moveIndex] == battlerMoves[moveIndex])
+        {
+            *target = battlerDef;
+            return;
+        }
+    }
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (CanIndexMoveFaintTarget(battlerAtk, battlerDefPartner, moveIndex, AI_ATTACKING) 
+        && (AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_SLOWER))
+        {
+            moves[moveIndex] = battlerMoves[moveIndex];
+        }
+    }
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (moves[moveIndex] == battlerMoves[moveIndex])
+        {
+            *target = battlerDefPartner;
+            return;
+        }
+    }
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, moveIndex, AI_ATTACKING) 
+        && (AI_WhoStrikesFirst(battlerAtk, battlerDef, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_SLOWER))
+        {
+            moves[moveIndex] = battlerMoves[moveIndex];
+        }
+    }
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (moves[moveIndex] == battlerMoves[moveIndex])
+        {
+            *target = battlerDef;
+            return;
+        }
+    }
+
+    // Check both mons
+    // If move does better damage, or does the same damage but this move results in a change of who moves first.
+    if (bestDmgDef < AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData)
+    || ((bestDmgDef == AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData)) 
+    && (AI_WhoStrikesFirst(battlerAtk, battlerDef, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER)))
+    {
+        bestDmgDef = AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData);
+        moveDef = moveIndex;
+    }
+    // If move does better damage, or does the same damage but this move results in a change of who moves first.
+    if (bestDmgDefPartner < AI_GetDamage(battlerAtk, battlerDefPartner, moveIndex, calcContext, aiData)
+    || ((bestDmgDefPartner == AI_GetDamage(battlerAtk, battlerDefPartner, moveIndex, calcContext, aiData)) 
+    && (AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER)))
+    {
+        bestDmgDefPartner = AI_GetDamage(battlerAtk, battlerDefPartner, moveIndex, calcContext, aiData);
+        moveDefPartner = moveIndex;
+    }
+
+    if (((bestDmgDefPartner&100)/gBattleMons[battlerDefPartner].maxHP) >= ((bestDmgDef&100)/gBattleMons[battlerDef].maxHP))
+    {
+        moves[moveDefPartner] = battlerMoves[moveDefPartner];
+        *target = battlerDefPartner;
+        return;
+    }
+    else
+    {
+        moves[moveDef] = battlerMoves[moveDef];
+        *target = battlerDef;
+        return;
+    }
 }
 
 u32 GetBestDmgFromBattler(u32 battler, u32 battlerTarget, enum DamageCalcContext calcContext)
@@ -2161,13 +2277,13 @@ u32 IncreaseStatDownScore(u32 battlerAtk, u32 battlerDef, u32 stat)
     {
     case STAT_ATK:
         if (!HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && noOfHitsToFaint == 1 && aiIsFaster)
-            tempScore += DECENT_EFFECT + 1; // +9
+            tempScore += GOOD_EFFECT + 1; // +9
         else if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL))
             tempScore += WEAK_EFFECT; // +6
         break;
     case STAT_DEF:
         if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && ((noOfHitsToFaint > 3) || (noOfHitsToFaint > 4 && aiIsFaster)) && noOfHitsToFaintTarget > 3)
-            tempScore += DECENT_EFFECT + 1; // +9
+            tempScore += GOOD_EFFECT + 1; // +9
         break;
     case STAT_SPEED:
     {
@@ -2178,13 +2294,13 @@ u32 IncreaseStatDownScore(u32 battlerAtk, u32 battlerDef, u32 stat)
     }
     case STAT_SPATK:
         if (!HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) && noOfHitsToFaint == 1 && aiIsFaster)
-            tempScore += DECENT_EFFECT + 1; // +9
+            tempScore += GOOD_EFFECT + 1; // +9
         else if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL))
             tempScore += WEAK_EFFECT; // +6
         break;
     case STAT_SPDEF:
         if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && ((noOfHitsToFaint > 3) || (noOfHitsToFaint > 4 && aiIsFaster)) && noOfHitsToFaintTarget > 3)
-            tempScore += DECENT_EFFECT + 1; // +9
+            tempScore += GOOD_EFFECT + 1; // +9
         break;
     case STAT_ACC:
         if (gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
