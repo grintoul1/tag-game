@@ -312,7 +312,7 @@ Togetic @ Charti Berry
 Ability: Serene Grace
 Level: 28
 Relaxed Nature
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Air Cutter
 - Stored Power
 - Calm Mind
@@ -331,7 +331,7 @@ Slowpoke-Galar @ Covert Cloak
 Ability: Own Tempo  
 Level: 29  
 Relaxed Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Psybeam
 - Acid
 - Yawn
@@ -341,7 +341,7 @@ Porygon @ Room Service
 Ability: Trace  
 Level: 28  
 Sassy Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Psybeam
 - Icy Wind
 - Thunder Shock
