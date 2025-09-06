@@ -5,17 +5,34 @@
 -- public_lua_script.lua
 
 local configOverlayPokemon = true
+local configCompanion = true
 local configPokemonEditing = true
 local configPreDamage = true
 local configPreStatus = true
 local configRandomize = true
+
+local overlayConfig = {}
+overlayConfig.enabled = false
+overlayConfig.processParty = true
+overlayConfig.processBoxes = false
+overlayConfig.frameCounter = 0
+overlayConfig.checkInterval = 300
+overlayConfig.debug = true
+
+local companionConfig = {}
+companionConfig.enabled = false
+companionConfig.processParty = true
+companionConfig.processBoxes = true
+companionConfig.frameCounter = 0
+companionConfig.checkInterval = 300
+companionConfig.debug = true
 
 -- obspokemonhud grintoul notes: text added to help buffer and start console
 -- frame callback added to startScript to run overlay() every frame
 -- this is enabled by overlayEnable() and disabled by overlayDisable()
 -- option to update json manually by running overlayBuffer() to print to scripting window
 -- 7 necessary functions added below startScript() 
--- "local overlayEnabled = false" declaration added below speciesInfo declaration
+-- "local overlayConfig.enabled = false" declaration added below speciesInfo declaration
 -- "cleansedSpecies" table added below "mons" table to manage certain forms having expansion define
 -- values different to their national dex numbers
 
@@ -2307,6 +2324,222 @@ mons = {
 }
 
 --Start configOverlayPokemon
+
+metLocation = {
+"Littleroot Town",
+"Oldale Town",
+"Dewford Town",
+"Lavaridge Town",
+"Fallarbor Town",
+"Verdanturf Town",
+"Pacifidlog Town",
+"Petalburg City",
+"Slateport City",
+"Mauville City",
+"Rustboro City",
+"Fortree City",
+"Lilycove City",
+"Mossdeep City",
+"Sootopolis City",
+"Ever Grande City",
+"Route 101",
+"Route 102",
+"Route 103",
+"Route 104",
+"Route 105",
+"Route 106",
+"Route 107",
+"Route 108",
+"Route 109",
+"Route 110",
+"Route 111",
+"Route 112",
+"Route 113",
+"Route 114",
+"Route 115",
+"Route 116",
+"Route 117",
+"Route 118",
+"Route 119",
+"Route 120",
+"Route 121",
+"Route 122",
+"Route 123",
+"Route 124",
+"Route 125",
+"Route 126",
+"Route 127",
+"Route 128",
+"Route 129",
+"Route 130",
+"Route 131",
+"Route 132",
+"Route 133",
+"Route 134",
+"Underwater 124",
+"Underwater 126",
+"Underwater 127",
+"Underwater 128",
+"Underwater Sootopolis",
+"Granite Cave",
+"Mt Chimney",
+"Safari Zone",
+"Battle Frontier",
+"Petalburg Woods",
+"Rusturf Tunnel",
+"Abandoned Ship",
+"New Mauville",
+"Meteor Falls",
+"Meteor Falls2",
+"Mt Pyre",
+"Aqua Hideout Old",
+"Shoal Cave",
+"Seafloor Cavern",
+"Underwater Seafloor Cavern",
+"Victory Road",
+"Mirage Island",
+"Cave Of Origin",
+"Southern Island",
+"Fiery Path",
+"Fiery Path2",
+"Jagged Pass",
+"Jagged Pass2",
+"Sealed Chamber",
+"Underwater Sealed Chamber",
+"Scorched Slab",
+"Island Cave",
+"Desert Ruins",
+"Ancient Tomb",
+"Inside Of Truck",
+"Sky Pillar",
+"Secret Base",
+"Dynamic",
+"Pallet Town",
+"Viridian City",
+"Pewter City",
+"Cerulean City",
+"Lavender Town",
+"Vermilion City",
+"Celadon City",
+"Fuchsia City",
+"Cinnabar Island",
+"Indigo Plateau",
+"Saffron City",
+"Route 4 Pokecenter",
+"Route 10 Pokecenter",
+"Route 1",
+"Route 2",
+"Route 3",
+"Route 4",
+"Route 5",
+"Route 6",
+"Route 7",
+"Route 8",
+"Route 9",
+"Route 10",
+"Route 11",
+"Route 12",
+"Route 13",
+"Route 14",
+"Route 15",
+"Route 16",
+"Route 17",
+"Route 18",
+"Route 19",
+"Route 20",
+"Route 21",
+"Route 22",
+"Route 23",
+"Route 24",
+"Route 25",
+"Viridian Forest",
+"Mt Moon",
+"S S Anne",
+"Underground Path",
+"Underground Path 2",
+"Digletts Cave",
+"Kanto Victory Road",
+"Rocket Hideout",
+"Silph Co",
+"Pokemon Mansion",
+"Kanto Safari Zone",
+"Pokemon League",
+"Rock Tunnel",
+"Seafoam Islands",
+"Pokemon Tower",
+"Cerulean Cave",
+"Power Plant",
+"One Island",
+"Two Island",
+"Three Island",
+"Four Island",
+"Five Island",
+"Seven Island",
+"Six Island",
+"Kindle Road",
+"Treasure Beach",
+"Cape Brink",
+"Bond Bridge",
+"Three Isle Port",
+"Sevii Isle 6",
+"Sevii Isle 7",
+"Sevii Isle 8",
+"Sevii Isle 9",
+"Resort Gorgeous",
+"Water Labyrinth",
+"Five Isle Meadow",
+"Memorial Pillar",
+"Outcast Island",
+"Green Path",
+"Water Path",
+"Ruin Valley",
+"Trainer Tower",
+"Canyon Entrance",
+"Sevault Canyon",
+"Tanoby Ruins",
+"Sevii Isle 22",
+"Sevii Isle 23",
+"Sevii Isle 24",
+"Navel Rock Frlg",
+"Mt Ember",
+"Berry Forest",
+"Icefall Cave",
+"Rocket Warehouse",
+"Trainer Tower 2",
+"Dotted Hole",
+"Lost Cave",
+"Pattern Bush",
+"Altering Cave Frlg",
+"Tanoby Chambers",
+"Three Isle Path",
+"Tanoby Key",
+"Birth Island Frlg",
+"Monean Chamber",
+"Liptoo Chamber",
+"Weepth Chamber",
+"Dilford Chamber",
+"Scufib Chamber",
+"Rixy Chamber",
+"Viapois Chamber",
+"Ember Spa",
+"Special Area",
+"Aqua Hideout",
+"Magma Hideout",
+"Mirage Tower",
+"Birth Island",
+"Faraway Island",
+"Artisan Cave",
+"Marine Cave",
+"Underwater Marine Cave",
+"Terra Cave",
+"Underwater 105",
+"Underwater 125",
+"Underwater 129",
+"Desert Underpass",
+"Altering Cave",
+"Navel Rock",
+"Trainer Hill"
+}
 
 cleansedSpecies = {
     1,
@@ -4894,10 +5127,8 @@ local speciesStructSize=260
 
 local partyCount=0x02033609 -- gPlayerPartyCount
 local partyloc=0x02033868 -- gPlayerParty
+local speciesInfo=0x0867fdac -- gSpeciesInfo
 local storageLoc=0x02009578 -- gPokemonStorage
-local speciesInfo=0x0867f908 -- gSpeciesInfo
-
-local overlayEnabled = false
 
 function getCurve(n)
 	return emu:read8(speciesInfo+(speciesStructSize*n)+21)
@@ -5112,30 +5343,30 @@ function setBoxMon(address, newNature, IVs, moveSlot, moveName, level, species, 
         emu:write32(address + 32 + pSel[4] * 12 + i * 4, ss3[i] ~ key)
     end
 end
---GRINT
+
 function readBoxMon(address)
 	local mon = {}
 	mon.personality = emu:read32(address + 0)
 	mon.otId = emu:read32(address + 4)
 	mon.nickname = toString(emu:readRange(address + 8, monNameLength))
 	mon.language = emu:read8(address + 15) & 0x07
-    mon.hiddenNatureModifier = (emu:read8(address + 15) >> 3) & 0x1F
-    mon.hiddenNature = (mon.personality % 25)
+	mon.hiddenNatureModifier = (emu:read8(address + 15) >> 3) & 0x1F
+	mon.hiddenNature = (mon.personality % 25)
 
 	local flags = emu:read8(address + 16)
 	mon.isBadEgg = flags & 0x01
 	mon.hasSpecies = (flags >> 1) & 0x01 
 	mon.isEgg = (flags >> 2) & 0x01
-    mon.blockBoxRS = (flags >> 3) & 0x01
-    mon.daysSinceFormChange = (flags >> 4) & 0x07 
-    mon.unused_13 = (flags >> 7) & 0x01 
+	mon.blockBoxRS = (flags >> 3) & 0x01
+	mon.daysSinceFormChange = (flags >> 4) & 0x07 
+	mon.unused_13 = (flags >> 7) & 0x01 
 	mon.otName = toString(emu:readRange(address + 17, playerNameLength))
 	mon.markings = emu:read8(address + 27)
-    mon.compressedStatus = (emu:read8(address + 27) >> 4) & 0x0F
-    mon.checksum = emu:read16(address + 28)
-    mon.hpLost = emu:read16(address + 30) & 0x3FFF
-    mon.shinyModifier = (emu:read16(address + 31) >> 6) & 0x01
-    mon.unused_1E = (emu:read16(address + 31) >> 7) & 0x01
+	mon.compressedStatus = (emu:read8(address + 27) >> 4) & 0x0F
+	mon.checksum = emu:read16(address + 28)
+	mon.hpLost = emu:read16(address + 30) & 0x3FFF
+	mon.shinyModifier = (emu:read16(address + 31) >> 6) & 0x01
+	mon.unused_1E = (emu:read16(address + 31) >> 7) & 0x01
 
 	local key = mon.otId ~ mon.personality
 	local substructSelector = {
@@ -5178,16 +5409,16 @@ function readBoxMon(address)
 		ss3[i] = emu:read32(address + 32 + pSel[4] * 12 + i * 4) ~ key
 	end
 
-    flags = ss0[0]
+	flags = ss0[0]
 	mon.species = flags & 0x7FF
-    mon.teraType = (flags >> 11) & 0x1F
+	mon.teraType = (flags >> 11) & 0x1F
 	mon.heldItem = (flags >> 16) & 0x3FF
 	mon.unused_02 = (flags >> 26) & 0x3F
-    flags = ss0[1]
+	flags = ss0[1]
 	mon.experience = flags & 0x1FFFFF
 	mon.nickname11 = (flags >> 21) & 0xFF
 	mon.unused_04 = (flags >> 29) & 0x07
-    flags = ss0[2]
+	flags = ss0[2]
 	mon.ppBonuses = flags & 0xFF
 	mon.friendship = (flags >> 8) & 0xFF
 	mon.pokeball = (flags >> 16) & 0x3F
@@ -5201,19 +5432,19 @@ function readBoxMon(address)
 		(ss1[1] >> 16) & 0x7FF
 	}
 
-    flags = ss1[0]
-    mon.move1 = flags & 0x7FF
+	flags = ss1[0]
+	mon.move1 = flags & 0x7FF
 	mon.evolutionTracker0 = (flags >> 11) & 0x1F
-    mon.move2 = (flags >> 16) & 0x7FF
+	mon.move2 = (flags >> 16) & 0x7FF
 	mon.evolutionTracker1 = (flags >> 27) & 0x1F
-    flags = ss1[1]
-    mon.move3 = flags & 0x7FF
+	flags = ss1[1]
+	mon.move3 = flags & 0x7FF
 	mon.unused_04 = (flags >> 11) & 0x1F
-    mon.move4 = (flags >> 16) & 0x7FF
+	mon.move4 = (flags >> 16) & 0x7FF
 	mon.unused_06 = (flags >> 27) & 0x07
 	mon.hyperTrainedHP = (flags >> 30) & 0x01
 	mon.hyperTrainedAttack = (flags >> 31) & 0x01
-    flags = ss1[2]
+	flags = ss1[2]
 	mon.pp1 = flags & 0x7F
 	mon.hyperTrainedDefense = (flags >> 7) & 0x01
 	mon.pp2 = (flags >> 8) & 0x7F
@@ -5223,23 +5454,23 @@ function readBoxMon(address)
 	mon.pp4 = (flags >> 24) & 0x7F
 	mon.hyperTrainedSpDefense = (flags >> 31) & 0x01
 
-    flags = ss2[0]
+	flags = ss2[0]
 	mon.hpEV = flags & 0xFF
 	mon.attackEV = (flags >> 8) & 0xFF
 	mon.defenseEV = (flags >> 16) & 0xFF
 	mon.speedEV = flags >> 24
-    flags = ss2[1]
+	flags = ss2[1]
 	mon.spAttackEV = flags & 0xFF
 	mon.spDefenseEV = (flags >> 8) & 0xFF
 	mon.cool = (flags >> 16) & 0xFF
 	mon.beauty = flags >> 24
-    flags = ss2[2]
+	flags = ss2[2]
 	mon.cute = flags & 0xFF
 	mon.smart = (flags >> 8) & 0xFF
 	mon.tough = (flags >> 16) & 0xFF
 	mon.sheen = flags >> 24
 
-    flags = ss3[0]
+	flags = ss3[0]
 	mon.pokerus = flags & 0xFF
 	mon.metLocation = (flags >> 8) & 0xFF
 	mon.metLevel = (flags >> 16) & 0x7F
@@ -5253,8 +5484,8 @@ function readBoxMon(address)
 	mon.speedIV = (flags >> 15) & 0x1F
 	mon.spAttackIV = (flags >> 20) & 0x1F
 	mon.spDefenseIV = (flags >> 25) & 0x1F
-    mon.isEgg2 = (flags >> 30) & 0x01 -- Bit 30 is another "isEgg" bit
-    mon.gigantamaxFactor = (flags >> 31) & 0x01
+	mon.isEgg2 = (flags >> 30) & 0x01 -- Bit 30 is another "isEgg" bit
+	mon.gigantamaxFactor = (flags >> 31) & 0x01
 	flags = ss3[2]
 	mon.coolRibbon = flags & 0x07
 	mon.beautyRibbon = (flags >> 3) & 0x07
@@ -5538,6 +5769,50 @@ function startScript()
     end
 end
 
+function update()
+
+--Start configOverlayPokemon
+
+    if overlayConfig.enabled then
+        if not overlayConfig.processParty and not overlayConfig.processBoxes then
+            console:log("ERROR: overlayConfig.processParty and overlayConfig.processBoxes are both currently false.")
+            return
+        end
+
+        -- Increment the frame counter for party/box checks
+        overlayConfig.frameCounter = (overlayConfig.frameCounter + 1)
+
+        -- Only check every X frames to avoid performance issues
+        if overlayConfig.frameCounter >= overlayConfig.checkInterval then
+            overlayConfig.frameCounter = 0
+            overlay()
+        end
+    end
+
+--End configOverlayPokemon
+
+--Start configCompanion
+
+    if companionConfig.enabled then
+        if not companionConfig.processParty and not companionConfig.processBoxes then
+            console:log("ERROR: companionConfig.processParty and companionConfig.processBoxes are both currently false.")
+            return
+        end
+
+        -- Increment the frame counter for party/box checks
+        companionConfig.frameCounter = (companionConfig.frameCounter + 1)
+
+        -- Only check every X frames to avoid performance issues
+        if companionConfig.frameCounter >= companionConfig.checkInterval then
+            companionConfig.frameCounter = 0
+            companion()
+        end
+    end
+
+--End configCompanion
+
+end
+
 --Start configOverlayPokemon
 
 -- START OF OBSPOKEMONHUD FUNCTIONS
@@ -5548,7 +5823,7 @@ end
 -- The below "overlay" functions are for streamers using "obspokemonhud" to get Pokémon sprites on an OBS overlay
 -- For users manually updating their team.json file, use of "overlayBuffer()" will print the json contents
 -- to the "Overlay Export" buffer. For users that have copied the obspokemonhud-master to the folder 
--- that their mGBA.exe is located, "overlayEnable()" will enable use of overlay(), which will write to the
+-- that their mGBA.exe is located, "overlayEnable()" will enable automated writing to the
 -- "obspokemonhud-master/team.json" file directly. "overlayDisable()" will switch this back off.
 
 -- NOTE: this assumes your json is called "team.json" and is in the "obspokemonhud-master" folder, which
@@ -5557,43 +5832,46 @@ end
 
 -- For information on obspokemonhud installation, please visit "https://github.com/ThomasHineXYZ/obspokemonhud"
 
-function update()
-	if overlayEnabled == false then
-		return
-	end
-    overlay()
-end
 
 function overlayEnable()
     if not overlayBufferWindow then
         overlayBufferWindow = console:createBuffer("Overlay Export")
         overlayBufferWindow:setSize(200,1000)
     end
-    if overlayEnabled == false then
-        overlayEnabled = true
-        console:log("obspokemonhud-master/team.json writing enabled. To update: 'overlay()'")
-        overlay()
+    if not overlayConfig.processParty and not overlayConfig.processBoxes then
+        console:log("ERROR: overlayConfig.processParty and overlayConfig.processBoxes are both currently false.")
+        return
+    end
+    if overlayConfig.enabled == false then
+        overlayConfig.enabled = true
+        console:log("obspokemonhud-master/team.json writing enabled.")
     else
-        console:log("error: obspokemonhud-master/team.json already enabled. To update: 'overlay()'")
+        console:log("ERROR: obspokemonhud-master/team.json already enabled.")
     end
 end
 
 function overlayDisable()
-    if overlayEnabled == true then
-        overlayEnabled = false
+    if overlayConfig.enabled == true then
+        overlayConfig.enabled = false
         console:log("obspokemonhud-master/team.json writing disabled.")
     else
-        console:log("error: obspokemonhud-master/team.json writing not currently enabled.")
+        console:log("ERROR: obspokemonhud-master/team.json writing not currently enabled.")
     end
 end
 
 function overlay()
-	if overlayEnabled == false then
-		console:log("error: please run overlayEnable() first.")
+    if overlayConfig.enabled == false then
+		console:log("ERROR: please run overlayEnable() first.")
 		return
     end
+
     str = ""
-    str = str .. printPartyOverlay(overlayBufferWindow)
+    if overlayConfig.processParty then
+        str = str .. getPartyOverlay()
+    end
+    if overlayConfig.processBoxes then
+        str = str .. overlayBoxes()
+    end
     local file = io.open("obspokemonhud-master/team.json", "w")
     io.output(file)
     overlayBufferWindow:clear()
@@ -5602,10 +5880,22 @@ function overlay()
     io.close(file)
 end
 
+function overlayParty()
+	if overlayConfig.enabled == false then
+		console:log("ERROR: please run overlayEnable() first.")
+		return
+    end
+    str = str .. getPartyOverlay()
+end
+
 function overlayBuffer()
     if not overlayBufferWindow then
         overlayBufferWindow = console:createBuffer("Overlay Export")
         overlayBufferWindow:setSize(200,1000)
+    end
+    if not overlayConfig.processParty and not overlayConfig.processBoxes then
+        console:log("ERROR: overlayConfig.processParty and overlayConfig.processBoxes are both currently false.")
+        return
     end
     str = ""
     str = str .. printPartyOverlay(overlayBufferWindow)
@@ -5613,18 +5903,12 @@ function overlayBuffer()
     overlayBufferWindow:print(str)
 end
 
-function printPartyOverlay(str)
-    address = storageLoc + 4
-	str = getOverlay(mon)
-    return str
-end
-
-function getOverlay(mon)
+function getPartyOverlay()
 	local party = {}
 	local monStart = partyloc
     mon = ""
     variant = ""
-    str = "{\n"
+    str = str .. "{\n"
 	for i = 1, emu:read8(partyCount) do
         str = str .. "      \"slot" 
         str = str .. tostring(i) 
@@ -5649,13 +5933,13 @@ function getOverlay(mon)
             str = str .. party[i].species
             str = str .. ",\n"
             str = str .. "          \"form\": \"standard\""
-        str = str .. ",\n"
+            str = str .. ",\n"
         end
         str = str .. "          \"pokeball\": \"" --	str = str .. mons[mon.species]
         str = str .. tostring(pokeballType[party[i].pokeball])
         str = str .."\",\n"
         str = str .. "          \"shiny\": false\n"
-        if readPartyMon(monStart + partyMonSize).species ~= 0 then
+        if (readPartyMon(monStart + partyMonSize).species ~= 0) or overlayConfig.processBoxes then
             str = str .. "      },\n"
         else
             str = str .. "      }\n"
@@ -5669,6 +5953,248 @@ end
 -- END OF OBSPOKEMONHUD FUNCTIONS
 
 --End configOverlayPokemon
+
+function companionEnable()
+    if not companionBufferWindow then
+        companionBufferWindow = console:createBuffer("Companion Export")
+        companionBufferWindow:setSize(200,1000)
+    end
+    if not companionConfig.processParty and not companionConfig.processBoxes then
+        console:log("ERROR: companionConfig.processParty and companionConfig.processBoxes are both currently false.")
+        return
+    end
+    if companionConfig.enabled == false then
+        companionConfig.enabled = true
+        console:log("companion.json writing enabled.")
+    else
+        console:log("ERROR: companion.json already enabled.")
+    end
+end
+
+function companionDisable()
+    if companionConfig.enabled == true then
+        companionConfig.enabled = false
+        console:log("companion.json writing disabled.")
+    else
+        console:log("ERROR: companion.json writing not currently enabled.")
+    end
+end
+
+function companion()
+    if companionConfig.enabled == false then
+		console:log("ERROR: please run companionEnable() first.")
+		return
+    end
+
+    str = "{\n"
+    if companionConfig.processParty then
+        str = getPartyCompanion()
+    end
+    if companionConfig.processBoxes then
+        str = getBoxCompanion()
+    end
+    str = str .. "}"
+    local file = io.open("companion.json", "w"):close()
+    file = io.open("companion.json", "w")
+    io.output(file)
+    companionBufferWindow:clear()
+    companionBufferWindow:print(str)
+    io.write(str):close()
+    io.close(file)
+end
+
+function getPartyCompanion()
+	local party = {}
+	local monStart = partyloc
+    mon = ""
+    variant = ""
+    str = str .. "  \"party\": [\n"
+	for i = 1, emu:read8(partyCount) do
+		party[i] = readBoxMon(monStart)
+        str = str .. "      {\n"
+        str = str .. "          \"dexnumber\": " 
+
+        -- EE defines different forms as different species which don't always match the dex number. 
+        -- This if block cleanses forms back to dex number and adds the form on a separate line.
+        if string.find(mons[party[i].species],"Nidoran") then
+            -- Dex number
+	        str = str .. string.format("%d,\n", cleansedSpecies[party[i].species])
+            -- Species name
+	        str = str .. string.format("          \"species\": \"%s\",\n", mons[cleansedSpecies[party[i].species]])
+            -- Form
+            str = str .. "          \"form\": \"standard\",\n"
+        elseif string.find(mons[party[i].species],"-") then
+            sep = string.find(mons[party[i].species],"-")
+            -- Dex number
+            str = str .. string.format("%d,\n", cleansedSpecies[party[i].species])
+            -- Species name
+            str = str .. string.format("          \"species\": \"%s\",\n", mons[cleansedSpecies[party[i].species]])
+            -- Form
+            str = str .. "          \"form\": \""
+            mon = mons[party[i].species]
+            variant = string.sub(mon, sep + 1, 100)
+            variant = string.gsub(variant, "%-", "")
+            str = str .. string.lower(variant)
+            str = str .. "\",\n"
+        -- Enamorus is the last mon before a big block of different forms
+        elseif party[i].species > 905 then
+            -- Dex number
+	        str = str .. string.format("%d,\n", cleansedSpecies[party[i].species])
+            -- Species
+	        str = str .. string.format("          \"species\": \"%s\",\n", mons[party[i].species])
+            -- Form, for format consistency
+            str = str .. "          \"form\": \"standard\",\n"
+        else
+            -- Dex number
+	        str = str .. string.format("%d,\n", party[i].species)
+            -- Species
+	        str = str .. string.format("          \"species\": \"%s\",\n", mons[cleansedSpecies[party[i].species]])
+            -- Form, for format consistency
+            str = str .. "          \"form\": \"standard\",\n"
+        end
+
+	    str = str .. string.format("          \"nickname\": \"%s\",\n", party[i].nickname)
+	    str = str .. string.format("          \"level\": %d,\n", calcLevel(party[i].experience, party[i].species))
+	    str = str .. string.format("          \"ivs\": [%d, %d, %d, %d, %d, %d],\n", party[i].hpIV, party[i].attackIV, party[i].defenseIV, party[i].spAttackIV, party[i].spDefenseIV, party[i].speedIV)
+	    str = str .. string.format("          \"nature\": \"%s\",\n", getNature(party[i]))
+	    str = str .. string.format("          \"ability\": \"%s\",\n", getAbility(party[i]))
+	    str = str .. string.format("          \"held_item\": \"%s\",\n", item[party[i].heldItem])
+	    str = str .. string.format("          \"met_location\": \"%s\",\n", metLocation[party[i].metLocation])
+	    str = str .. string.format("          \"met_level\": \"%d\",\n", party[i].metLevel)
+	    str = str .. string.format("          \"pokeball\": \"%s\",\n", tostring(pokeballType[party[i].pokeball]))
+	    str = str .. string.format("          \"shiny\": \"%d\",\n", party[i].shinyModifier)
+	    str = str .. "          \"gender\": \""
+
+        local genderRatio = emu:read8(speciesInfo + (speciesStructSize * party[i].species) + 0x12)
+        if (genderRatio == 0xFF) then
+            str = str .. "None\",\n"
+        elseif (genderRatio > (party[i].personality & 0xFF)) then
+            str = str .. "Female\",\n"
+        else
+            str = str .. "Male\",\n"
+        end
+
+	    str = str .. string.format("          \"moves\": \"[%s, %s, %s, %s]\",\n", move[party[i].moves[1] + 1], move[party[i].moves[2] + 1], move[party[i].moves[3] + 1], move[party[i].moves[4] + 1])
+        
+        if (readPartyMon(monStart + partyMonSize).species ~= 0) or companionConfig.processBoxes then
+            str = str .. "      },\n"
+        else
+            str = str .. "      }\n"
+        end
+
+		monStart = monStart + partyMonSize
+	end
+    if companionConfig.processBoxes then
+        str = str .. "  ],\n"
+    else
+        str = str .. "  ]\n"
+    end
+	return str
+end
+
+function getBoxCompanion()
+    address = storageLoc + 4
+    local pokemon = readBoxMon(address)
+    mon = ""
+    variant = ""
+    str = str .. "  \"boxes\": {\n"
+    i = 1
+    j = 1
+    k = 1
+    while j < 15 do
+        str = str .. "      \"" .. string.format("%d",j) .. "\": [\n"
+        while i < 30 do
+            if (emu:read32(address) ~=0) then
+                pokemon = readBoxMon(address)
+
+                str = str .. "          {\n"
+                str = str .. "              \"dexnumber\": " 
+
+                -- EE defines different forms as different species which don't always match the dex number. 
+                -- This if block cleanses forms back to dex number and adds the form on a separate line.
+                if string.find(mons[pokemon.species],"Nidoran") then
+                    -- Dex number
+                    str = str .. string.format("%d,\n", cleansedSpecies[pokemon.species])
+                    -- Species name
+                    str = str .. string.format("            \"species\": \"%s\",\n", mons[cleansedSpecies[pokemon.species]])
+                    -- Form
+                    str = str .. "              \"form\": \"standard\",\n"
+                elseif string.find(mons[pokemon.species],"-") then
+                    sep = string.find(mons[pokemon.species],"-")
+                    -- Dex number
+                    str = str .. string.format("%d,\n", cleansedSpecies[pokemon.species])
+                    -- Species name
+                    str = str .. string.format("            \"species\": \"%s\",\n", mons[cleansedSpecies[pokemon.species]])
+                    -- Form
+                    str = str .. "              \"form\": \""
+                    mon = mons[pokemon.species]
+                    variant = string.sub(mon, sep + 1, 100)
+                    variant = string.gsub(variant, "%-", "")
+                    str = str .. string.lower(variant)
+                    str = str .. "\",\n"
+                -- Enamorus is the last mon before a big block of different forms
+                elseif pokemon.species > 905 then
+                    -- Dex number
+                    str = str .. string.format("%d,\n", cleansedSpecies[pokemon.species])
+                    -- Species
+                    str = str .. string.format("            \"species\": \"%s\",\n", mons[pokemon.species])
+                    -- Form, for format consistency
+                    str = str .. "              \"form\": \"standard\",\n"
+                else
+                    -- Dex number
+                    str = str .. string.format("%d,\n", pokemon.species)
+                    -- Species
+                    str = str .. string.format("            \"species\": \"%s\",\n", mons[cleansedSpecies[pokemon.species]])
+                    -- Form, for format consistency
+                    str = str .. "              \"form\": \"standard\",\n"
+                end
+
+                str = str .. string.format("            \"nickname\": \"%s\",\n", pokemon.nickname)
+                str = str .. string.format("            \"level\": %d,\n", calcLevel(pokemon.experience, pokemon.species))
+                str = str .. string.format("            \"ivs\": [%d, %d, %d, %d, %d, %d],\n", pokemon.hpIV, pokemon.attackIV, pokemon.defenseIV, pokemon.spAttackIV, pokemon.spDefenseIV, pokemon.speedIV)
+                str = str .. string.format("            \"nature\": \"%s\",\n", getNature(pokemon))
+                str = str .. string.format("            \"ability\": \"%s\",\n", getAbility(pokemon))
+                str = str .. string.format("            \"held_item\": \"%s\",\n", item[pokemon.heldItem])
+                str = str .. string.format("            \"met_location\": \"%s\",\n", metLocation[pokemon.metLocation])
+                str = str .. string.format("            \"met_level\": \"%d\",\n", pokemon.metLevel)
+                str = str .. string.format("            \"pokeball\": \"%s\",\n", tostring(pokeballType[pokemon.pokeball]))
+                str = str .. string.format("            \"shiny\": \"%d\",\n", pokemon.shinyModifier)
+                str = str .. "              \"gender\": \""
+
+                local genderRatio = emu:read8(speciesInfo + (speciesStructSize * pokemon.species) + 0x12)
+                if (genderRatio == 0xFF) then
+                    str = str .. "None\",\n"
+                elseif (genderRatio > (pokemon.personality & 0xFF)) then
+                    str = str .. "Female\",\n"
+                else
+                    str = str .. "Male\",\n"
+                end
+
+                str = str .. string.format("            \"moves\": \"[%s, %s, %s, %s]\",\n", move[pokemon.moves[1] + 1], move[pokemon.moves[2] + 1], move[pokemon.moves[3] + 1], move[pokemon.moves[4] + 1])
+                
+                if i < 29 then
+                    str = str .. "          },\n"
+                else
+                    str = str .. "          }\n"
+                end
+            end
+
+            address = address + boxMonSize
+            i = i + 1
+        end
+        if j < 14 then
+            str = str .. "      ],\n"
+        else
+            str = str .. "      ]\n"
+        end
+    j = j + 1
+    end
+    str = str .. "  }\n"
+
+	return str
+end
+
+--End configCompanion
 
 function export() -- P_LUA_SCRIPT_EXPORT
 	if not partyBuffer then
