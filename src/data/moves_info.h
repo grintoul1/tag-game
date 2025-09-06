@@ -22892,4 +22892,26 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_FrostPunch,
         .validApprenticeMove = TRUE,
     },
+
+    [MOVE_TILLAGE] =
+    {
+        .name = COMPOUND_STRING("Tillage"),
+        .description = COMPOUND_STRING(
+            "Stirs the ground beneath\n"
+            "the target."),
+        .effect = EFFECT_HIT,
+        .power = 50,
+        .type = TYPE_GROUND,
+        .accuracy = 100,
+        .pp = 25,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .skyBattleBanned = TRUE,
+        .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_PREV_MONS,
+        .contestCategory = CONTEST_CATEGORY_TOUGH,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_Tillage,
+    },
 };

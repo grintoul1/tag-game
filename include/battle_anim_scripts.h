@@ -530,6 +530,7 @@ extern const u8 gBattleAnimMove_GrassPledge[];
 extern const u8 gBattleAnimMove_VoltSwitch[];
 extern const u8 gBattleAnimMove_StruggleBug[];
 extern const u8 gBattleAnimMove_Bulldoze[];
+extern const u8 gBattleAnimMove_Tillage[];
 extern const u8 gBattleAnimMove_FrostBreath[];
 extern const u8 gBattleAnimMove_DragonTail[];
 extern const u8 gBattleAnimMove_WorkUp[];
