@@ -1541,6 +1541,7 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
                 // Can't select if mon is currently on the field, or doesn't belong to you
                 PlaySE(SE_FAILURE);
             }
+            /*
             else if (DoesSelectedMonKnowHM((u8 *)slotPtr))
             {
                 PlaySE(SE_FAILURE);
@@ -1548,6 +1549,7 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
                 ScheduleBgCopyTilemapToVram(2);
                 gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
             }
+            */
             else
             {
                 PlaySE(SE_SELECT);
