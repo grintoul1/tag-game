@@ -1084,7 +1084,7 @@ LittlerootTown_Text_SoWillYourSister:
 	.string "… … … … … … … …\p"
 	.string "To think that you have your very own\n"
 	.string "POKéMON now…\p"
-	.string "Your father will be overjoyed., and so\n"
+	.string "Your father will be overjoyed, and so\n"
 	.string "will your sister!\p"
 	.string "She's been so excited to take you out\n"
 	.string "to see the world.$"

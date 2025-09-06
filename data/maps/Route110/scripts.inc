@@ -1058,6 +1058,8 @@ Route110_Text_LetsCycleHome:
 
 Route110_Text_MayLetsBattle:
 	.string "May: Hi, {PLAYER}{KUN}, long time no see!\p"
+	.string "So this is where you were.\l"
+	.string "How's it going?\p"
 	.string "This must be your sister, Emmie?\n"
 	.string "I heard about you from my dad!\p"
 	.string "Well, I can think of no better way to\n"
