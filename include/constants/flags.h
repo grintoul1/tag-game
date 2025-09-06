@@ -47,7 +47,7 @@
 #define FLAG_UTILITY_MENU    0x21 // Utility Menu
 #define FLAG_POKE_MENU       0x22 // FLAG_POKE_MENU
 #define FLAG_UTILITY_MENU_E4 0x23 // FLAG_UTILITY_MENU_E4
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
+#define FLAG_SHARE_PARTY     0x24 // Sets player and partner to share a party
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
 #define FLAG_UNUSED_0x026    0x26 // Unused Flag
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag

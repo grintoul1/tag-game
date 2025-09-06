@@ -4849,7 +4849,6 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             {   
                 if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
                 {
-                    MgbaPrintf(MGBA_LOG_WARN, "battlerAtk %d, battlerDef %d, i %d, targetMove[i] %S", battlerAtk, battlerDef, i, GetMoveName(targetMove[i]));
                     if (IsBattlerFirstTurnOrRandom(battlerAtk))
                     {
                         ADJUST_AND_RETURN_SCORE(BEST_EFFECT);

@@ -337,6 +337,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_UTILITY_MENU
 	clearflag FLAG_UTILITY_MENU_E4
 	clearflag FLAG_POKE_MENU
+	clearflag FLAG_SHARE_PARTY
 	destroyfollowernpc
 	call EventScript_ResetAllBerries
 	end

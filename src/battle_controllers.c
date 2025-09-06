@@ -262,7 +262,10 @@ static void InitBtlControllersInternal(void)
 
             gBattlerPartyIndexes[0] = 0;
             gBattlerPartyIndexes[1] = 0;
-            gBattlerPartyIndexes[2] = 3;
+            //if (isSharedTeams)
+            //    gBattlerPartyIndexes[2] = 1;
+            //else 
+                gBattlerPartyIndexes[2] = 3;
             if (!isLink && isInGamePartner && (BATTLE_TWO_VS_ONE_OPPONENT || WILD_DOUBLE_BATTLE))
                 gBattlerPartyIndexes[3] = 1;
             else

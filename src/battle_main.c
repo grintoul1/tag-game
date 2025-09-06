@@ -1417,6 +1417,7 @@ static void CB2_PreInitMultiBattle(void)
 
 static void CB2_PreInitIngamePlayerPartnerBattle(void)
 {
+    bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
     u32 *savedBattleTypeFlags;
     void (**savedCallback)(void);
 
@@ -1436,7 +1437,7 @@ static void CB2_PreInitIngamePlayerPartnerBattle(void)
         *savedCallback = gMain.savedCallback;
         *savedBattleTypeFlags = gBattleTypeFlags;
         gMain.savedCallback = CB2_PreInitIngamePlayerPartnerBattle;
-        if (!PlayerHasFollowerNPC() || !FollowerNPCIsBattlePartner() || (FNPC_NPC_FOLLOWER_PARTY_PREVIEW && FollowerNPCIsBattlePartner()))
+        if ((!PlayerHasFollowerNPC() || !FollowerNPCIsBattlePartner() || (FNPC_NPC_FOLLOWER_PARTY_PREVIEW && FollowerNPCIsBattlePartner())) && !isSharedTeams)
             ShowPartyMenuToShowcaseMultiBattleParty();
 
         break;
