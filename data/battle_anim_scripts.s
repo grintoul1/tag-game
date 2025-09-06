@@ -24105,7 +24105,7 @@ gBattleAnimMove_MilkDrink::
 	waitforvisualfinish
 	end
 
-gBattleAnimMove_Tillage::
+gBattleAnimMove_LowHorsepower::
 	loadspritegfx ANIM_TAG_HORN_HIT
 	loadspritegfx ANIM_TAG_IMPACT @hit
 	loadspritegfx ANIM_TAG_HORSESHOE_SIDE_FIST @horseshoe

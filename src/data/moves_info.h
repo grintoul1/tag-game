@@ -22893,9 +22893,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .validApprenticeMove = TRUE,
     },
 
-    [MOVE_TILLAGE] =
+    [MOVE_LOW_HORSEPOWER] =
     {
-        .name = COMPOUND_STRING("Tillage"),
+        .name = COMPOUND_STRING("Low Horsepower"),
         .description = COMPOUND_STRING(
             "Stirs the ground beneath\n"
             "the target."),
@@ -22912,6 +22912,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestCategory = CONTEST_CATEGORY_TOUGH,
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
-        .battleAnimScript = gBattleAnimMove_Tillage,
+        .battleAnimScript = gBattleAnimMove_LowHorsepower,
     },
 };
