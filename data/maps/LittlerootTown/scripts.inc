@@ -517,7 +517,7 @@ LittlerootTown_EventScript_EmmieIntroduction::
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
 	givemon SPECIES_STUFFUL, 5, ITEM_NONE, ITEM_POKE_BALL, , 0
 	call LittlerootTown_EventScript_SendStuffulParty
-	givemon SPECIES_SKITTY, 5, ITEM_MOON_STONE, ITEM_POKE_BALL
+	givemon SPECIES_SKITTY, 5, ITEM_MOON_STONE, ITEM_POKE_BALL, , 0
 	call LittlerootTown_EventScript_SendSkittyParty
 	givemon SPECIES_EEVEE, 5
 	call LittlerootTown_EventScript_SendEeveeParty
