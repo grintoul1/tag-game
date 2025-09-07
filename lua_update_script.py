@@ -96,5 +96,5 @@ def replace_values(lua_script_master, lua_script_public, new_values):
 
 
 if __name__ == '__main__':
-    new_values = get_map_values("pokeemerald.map")
+    new_values = get_map_values("tagmania.map")
     replace_values("master_lua_script.lua", "public_lua_script.lua", new_values)
