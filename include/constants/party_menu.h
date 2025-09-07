@@ -13,14 +13,16 @@
 #define AILMENT_FNT   7
 #define AILMENT_FRB   8
 
-#define PARTY_LAYOUT_SINGLE          0
-#define PARTY_LAYOUT_DOUBLE          1
-#define PARTY_LAYOUT_MULTI           2
-#define PARTY_LAYOUT_MULTI_SHOWCASE  3  // The layout during the screen that appears just before a multi battle
-#define PARTY_LAYOUT_MIRROR          4  // The layout during the screen that appears just before Emmie mirror battle
-#define PARTY_LAYOUT_MULTI_SHARED    5
-#define PARTY_LAYOUT_COUNT           6
-#define KEEP_PARTY_LAYOUT            0xFF
+#define PARTY_LAYOUT_SINGLE             0
+#define PARTY_LAYOUT_DOUBLE             1
+#define PARTY_LAYOUT_MULTI              2
+#define PARTY_LAYOUT_MULTI_SHOWCASE     3  // The layout during the screen that appears just before a multi battle
+#define PARTY_LAYOUT_MIRROR             4  // The layout during the screen that appears just before Emmie mirror battle
+#define PARTY_LAYOUT_MULTI_SHARED       5
+#define PARTY_LAYOUT_OVERWORLD          6
+#define PARTY_LAYOUT_OVERWORLD_SHARED   7
+#define PARTY_LAYOUT_COUNT              8
+#define KEEP_PARTY_LAYOUT               0xFF
 
 #define PARTY_MENU_TYPE_FIELD                     0
 #define PARTY_MENU_TYPE_IN_BATTLE                 1
