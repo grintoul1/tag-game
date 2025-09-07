@@ -5999,7 +5999,7 @@ function companion()
     io.output(file)
     companionBufferWindow:clear()
     companionBufferWindow:print(str)
-    io.write(str):close()
+    io.write(str)
     io.close(file)
 end
 
@@ -6108,7 +6108,7 @@ function getBoxCompanion()
                 pokemon = readBoxMon(address)
 
                 str = str .. "          {\n"
-                str = str .. "              \"dexnumber\": " 
+                str = str .. "            \"dexnumber\": " 
 
                 -- EE defines different forms as different species which don't always match the dex number. 
                 -- This if block cleanses forms back to dex number and adds the form on a separate line.
@@ -6118,7 +6118,7 @@ function getBoxCompanion()
                     -- Species name
                     str = str .. string.format("            \"species\": \"%s\",\n", mons[cleansedSpecies[pokemon.species]])
                     -- Form
-                    str = str .. "              \"form\": \"standard\",\n"
+                    str = str .. "            \"form\": \"standard\",\n"
                 elseif string.find(mons[pokemon.species],"-") then
                     sep = string.find(mons[pokemon.species],"-")
                     -- Dex number
@@ -6126,7 +6126,7 @@ function getBoxCompanion()
                     -- Species name
                     str = str .. string.format("            \"species\": \"%s\",\n", mons[cleansedSpecies[pokemon.species]])
                     -- Form
-                    str = str .. "              \"form\": \""
+                    str = str .. "            \"form\": \""
                     mon = mons[pokemon.species]
                     variant = string.sub(mon, sep + 1, 100)
                     variant = string.gsub(variant, "%-", "")
@@ -6139,14 +6139,14 @@ function getBoxCompanion()
                     -- Species
                     str = str .. string.format("            \"species\": \"%s\",\n", mons[pokemon.species])
                     -- Form, for format consistency
-                    str = str .. "              \"form\": \"standard\",\n"
+                    str = str .. "            \"form\": \"standard\",\n"
                 else
                     -- Dex number
                     str = str .. string.format("%d,\n", pokemon.species)
                     -- Species
                     str = str .. string.format("            \"species\": \"%s\",\n", mons[cleansedSpecies[pokemon.species]])
                     -- Form, for format consistency
-                    str = str .. "              \"form\": \"standard\",\n"
+                    str = str .. "            \"form\": \"standard\",\n"
                 end
 
                 str = str .. string.format("            \"nickname\": \"%s\",\n", pokemon.nickname)
