@@ -2818,9 +2818,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
         case EFFECT_SUCKER_PUNCH:
-            if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_STATUS) && RandomPercentage(RNG_AI_SUCKER_PUNCH, SUCKER_PUNCH_CHANCE)) // Player has a status move
-            || (IsBattleMoveStatus(predictedMove) && RandomPercentage(RNG_AI_SUCKER_PUNCH, SUCKER_PUNCH_PREDICTION_CHANCE) && (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PREDICT_MOVE)) // AI actively predicting incoming status move
-            || AI_IsSlower(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, DONT_CONSIDER_PRIORITY)) // Opponent going first
+            if ((gLastMoves[battlerAtk] == move) && RandomPercentage(RNG_AI_CUSTOM_AI_FIFTY_PERCENT, CUSTOM_AI_FIFTY_PERCENT))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
         case EFFECT_TAILWIND:
@@ -3029,7 +3027,7 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             && GetBattleMovePriority(battlerAtk, gAiLogicData->abilities[battlerAtk], move) > 0)
     {
         if (RandomPercentage(RNG_AI_PRIORITIZE_LAST_CHANCE, PRIORITIZE_LAST_CHANCE_CHANCE))
-            ADJUST_SCORE(SLOW_KILL + 2); // Don't outscore Fast Kill (which gets a bonus point in AI_CompareDamagingMoves), but do outscore Slow Kill getting the same
+            ADJUST_SCORE(LAST_CHANCE); // Don't outscore Fast Kill (which gets a bonus point in AI_CompareDamagingMoves), but do outscore Slow Kill getting the same
         else
             ADJUST_SCORE(LAST_CHANCE);
     }
@@ -4141,7 +4139,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         IncreasePoisonScore(battlerAtk, battlerDef, move, &score);
         break;
     case MOVE_EFFECT_SLEEP:
-        IncreaseSleepScore(battlerAtk, battlerDef, move, &score);
+        ADJUST_AND_RETURN_SCORE(IncreaseSleepScore(battlerAtk, battlerDef, move));
         break;
     case MOVE_EFFECT_PARALYSIS:
         IncreaseParalyzeScore(battlerAtk, battlerDef, move, &score);
@@ -4157,7 +4155,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     switch (moveEffect)
     {
     case EFFECT_YAWN:
-        IncreaseSleepScore(battlerAtk, battlerDef, move, &score);
+        ADJUST_AND_RETURN_SCORE(IncreaseSleepScore(battlerAtk, battlerDef, move));
         break;
     case EFFECT_ABSORB:
         break;
@@ -5078,7 +5076,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_FIRST_TURN_ONLY:
         if (MoveHasAdditionalEffectWithChance(move, MOVE_EFFECT_FLINCH, 100))
         {
-            if (gAiLogicData->abilities[battlerAtk] == ABILITY_GORILLA_TACTICS || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_BAND
+            if (!gDisableStructs[battlerAtk].isFirstTurn || gAiLogicData->abilities[battlerAtk] == ABILITY_GORILLA_TACTICS || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_BAND
             || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SPECS || gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SCARF
             || (aiData->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK) || (IsBattlerTerrainAffected(battlerDef, STATUS_FIELD_PSYCHIC_TERRAIN))
             || ((aiData->abilities[battlerDef] == ABILITY_INNER_FOCUS) || ((aiData->abilities[battlerDef] == ABILITY_SHIELD_DUST
@@ -5091,21 +5089,21 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             }
             else if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER) // Partner trainers only
             {
-                if (HasMove(battlerDef, MOVE_FAKE_OUT) && gDisableStructs[battlerDef].isFirstTurn 
+                if (HasMove(battlerDef, MOVE_FAKE_OUT) && gDisableStructs[battlerDef].isFirstTurn && gDisableStructs[battlerAtk].isFirstTurn
                 && AI_WhoStrikesFirst(battlerAtk, battlerDef, MOVE_NONE, MOVE_NONE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) // If target has Fake out and it's target first turn
                 {
-                    ADJUST_SCORE(GOOD_EFFECT + FAST_KILL + 1); // +19
+                    ADJUST_SCORE(WEAK_EFFECT + FAST_KILL + 1); // +19
                     break;
                 }
                 // If Player has kill on Target but is slower, and Partner has no kills
-                else if ((AI_WhoStrikesFirst(BATTLE_PARTNER(battlerAtk), battlerDef, MOVE_NONE, MOVE_NONE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) && CanAIFaintTarget(BATTLE_PARTNER(battlerAtk), battlerDef, 1) && !CanAIFaintTarget(battlerAtk, battlerDef, 1) && !CanAIFaintTarget(battlerAtk, BATTLE_PARTNER(battlerDef), 1))
+                else if ((AI_WhoStrikesFirst(BATTLE_PARTNER(battlerAtk), battlerDef, MOVE_NONE, MOVE_NONE, DONT_CONSIDER_PRIORITY) == AI_IS_SLOWER) && CanAIFaintTarget(BATTLE_PARTNER(battlerAtk), battlerDef, 1) && !CanAIFaintTarget(battlerAtk, battlerDef, 1) && !CanAIFaintTarget(battlerAtk, BATTLE_PARTNER(battlerDef), 1))
                 {
-                    ADJUST_SCORE(GOOD_EFFECT + FAST_KILL + 1); // +19
+                    ADJUST_SCORE(WEAK_EFFECT + FAST_KILL + 1); // +19
                     break;
                 }
                 else 
                 {
-                    ADJUST_SCORE(GOOD_EFFECT + SLOW_KILL - 1); // +11
+                    ADJUST_SCORE(WEAK_EFFECT + SLOW_KILL - 1); // +11
                     break;
                 }
             }
@@ -5458,7 +5456,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         else if (gBattleMons[battlerAtk].status1 & STATUS1_PARALYSIS)
             IncreaseParalyzeScore(battlerAtk, battlerDef, move, &score);
         else if (gBattleMons[battlerAtk].status1 & STATUS1_SLEEP)
-            IncreaseSleepScore(battlerAtk, battlerDef, move, &score);
+            ADJUST_AND_RETURN_SCORE(IncreaseSleepScore(battlerAtk, battlerDef, move));
         else if (gBattleMons[battlerAtk].status1 & STATUS1_FROSTBITE)
             IncreaseFrostbiteScore(battlerAtk, battlerDef, move, &score);
         break;
@@ -5682,7 +5680,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         if (!(gFieldStatuses & STATUS_FIELD_GRAVITY))
         {
             if (HasSleepMoveWithLowAccuracy(battlerAtk, battlerDef)) // Has Gravity for a move like Hypnosis
-                IncreaseSleepScore(battlerAtk, battlerDef, move, &score);
+                ADJUST_AND_RETURN_SCORE(IncreaseSleepScore(battlerAtk, battlerDef, move));
             if (HasMoveWithLowAccuracy(battlerAtk, battlerDef, 90, FALSE, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], aiData->holdEffects[battlerAtk], aiData->holdEffects[battlerDef]))
                 ADJUST_SCORE(DECENT_EFFECT);
         }
@@ -5932,7 +5930,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                 case HOLD_EFFECT_STICKY_BARB:
                     break;
                 default:
-                    ADJUST_SCORE(WEAK_EFFECT);
+                    //ADJUST_SCORE(WEAK_EFFECT);
                     break;
                 }
             }
@@ -6142,7 +6140,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER)
     {
         if (GetMovePower(move) != 0)
-        {    
+        {
             GetBestDmgMoveFromPartner(battlerAtk, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), AI_ATTACKING, bestMoves, &bestTarget);
             if (((bestMoves[0] == move) || (bestMoves[1] == move) || (bestMoves[2] == move) || (bestMoves[3] == move)) && (bestTarget == battlerDef))
             {
@@ -6150,6 +6148,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 if (AI_RandLessThan(51))
                     ADJUST_SCORE(2);
             }
+            if (GetNoOfHitsToKOBattler(battlerAtk, battlerDef, gAiThinkingStruct->movesetIndex, AI_ATTACKING) > 4)
+                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
         }
     }
     else

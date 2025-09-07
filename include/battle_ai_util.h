@@ -284,7 +284,7 @@ u32 IncreaseStatDownScore(u32 battlerAtk, u32 battlerDef, u32 stat);
 void IncreasePoisonScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
 void IncreaseBurnScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
 void IncreaseParalyzeScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
-void IncreaseSleepScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
+s32 IncreaseSleepScore(u32 battlerAtk, u32 battlerDef, u32 move);
 void IncreaseConfusionScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
 void IncreaseFrostbiteScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
 

@@ -1540,7 +1540,14 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
 
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        if (CanIndexMoveFaintTarget(battlerAtk, battlerDefPartner, moveIndex, AI_ATTACKING) 
+        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+
+        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDefPartner))
+            continue;
+        if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
+            continue;
+
+            if (CanIndexMoveFaintTarget(battlerAtk, battlerDefPartner, moveIndex, AI_ATTACKING) 
         && (AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER))
         {
             moves[moveIndex] = battlerMoves[moveIndex];
@@ -1558,6 +1565,13 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
 
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
+        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+
+        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDef))
+            continue;
+        if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
+            continue;
+
         if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, moveIndex, AI_ATTACKING) 
         && (AI_WhoStrikesFirst(battlerAtk, battlerDef, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER))
         {
@@ -1576,6 +1590,13 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
 
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
+        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+
+        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDefPartner))
+            continue;
+        if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
+            continue;
+
         if (CanIndexMoveFaintTarget(battlerAtk, battlerDefPartner, moveIndex, AI_ATTACKING) 
         && (AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_SLOWER))
         {
@@ -1594,6 +1615,13 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
 
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
+        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+
+        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDef))
+            continue;
+        if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
+            continue;
+
         if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, moveIndex, AI_ATTACKING) 
         && (AI_WhoStrikesFirst(battlerAtk, battlerDef, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_SLOWER))
         {
@@ -1611,24 +1639,44 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     }
 
     // Check both mons
-    // If move does better damage, or does the same damage but this move results in a change of who moves first.
-    if (bestDmgDef < AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData)
-    || ((bestDmgDef == AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData)) 
-    && (AI_WhoStrikesFirst(battlerAtk, battlerDef, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER)))
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        bestDmgDef = AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData);
-        moveDef = moveIndex;
+        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+
+        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDef))
+            continue;
+        if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
+            continue;
+
+        // If move does better damage, or does the same damage but this move results in a change of who moves first.
+        if (bestDmgDef < AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData)
+        || ((bestDmgDef == AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData)) 
+        && (AI_WhoStrikesFirst(battlerAtk, battlerDef, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER)))
+        {
+            bestDmgDef = AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData);
+            moveDef = moveIndex;
+        }
     }
-    // If move does better damage, or does the same damage but this move results in a change of who moves first.
-    if (bestDmgDefPartner < AI_GetDamage(battlerAtk, battlerDefPartner, moveIndex, calcContext, aiData)
-    || ((bestDmgDefPartner == AI_GetDamage(battlerAtk, battlerDefPartner, moveIndex, calcContext, aiData)) 
-    && (AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER)))
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        bestDmgDefPartner = AI_GetDamage(battlerAtk, battlerDefPartner, moveIndex, calcContext, aiData);
-        moveDefPartner = moveIndex;
+        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+
+        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDefPartner))
+            continue;
+        if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
+            continue;
+
+        // If move does better damage, or does the same damage but this move results in a change of who moves first.
+        if (bestDmgDefPartner < AI_GetDamage(battlerAtk, battlerDefPartner, moveIndex, calcContext, aiData)
+        || ((bestDmgDefPartner == AI_GetDamage(battlerAtk, battlerDefPartner, moveIndex, calcContext, aiData)) 
+        && (AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER)))
+        {
+            bestDmgDefPartner = AI_GetDamage(battlerAtk, battlerDefPartner, moveIndex, calcContext, aiData);
+            moveDefPartner = moveIndex;
+        }
     }
 
-    if (((bestDmgDefPartner&100)/gBattleMons[battlerDefPartner].maxHP) >= ((bestDmgDef&100)/gBattleMons[battlerDef].maxHP))
+    if (((bestDmgDefPartner*100)/gBattleMons[battlerDefPartner].maxHP) >= ((bestDmgDef*100)/gBattleMons[battlerDef].maxHP))
     {
         moves[moveDefPartner] = battlerMoves[moveDefPartner];
         *target = battlerDefPartner;
@@ -5071,22 +5119,25 @@ void IncreaseParalyzeScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
     }
 }
 
-void IncreaseSleepScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
+s32 IncreaseSleepScore(u32 battlerAtk, u32 battlerDef, u32 move)
 {
+    s32 scoreAdj = 0;
     if (((gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_TRY_TO_FAINT) && CanAIFaintTarget(battlerAtk, battlerDef, 0) && GetMoveEffect(GetBestDmgMoveFromBattler(battlerAtk, battlerDef, AI_ATTACKING)) != EFFECT_FOCUS_PUNCH))
-        return;
+        return scoreAdj;
 
     if (AI_CanPutToSleep(battlerAtk, battlerDef, gAiLogicData->abilities[battlerDef], move, gAiLogicData->partnerMove))
-        ADJUST_SCORE_PTR(WEAK_EFFECT);
+        scoreAdj += WEAK_EFFECT;
     else
-        return;
+        return scoreAdj;
 
     if ((HasMoveWithEffect(battlerAtk, EFFECT_DREAM_EATER) || HasMoveWithEffect(battlerAtk, EFFECT_NIGHTMARE))
       && !(HasMoveWithEffect(battlerDef, EFFECT_SNORE) || HasMoveWithEffect(battlerDef, EFFECT_SLEEP_TALK)))
-        ADJUST_SCORE_PTR(WEAK_EFFECT);
+        scoreAdj += WEAK_EFFECT;
     else if (IsPowerBasedOnStatus(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_SLEEP)
       || IsPowerBasedOnStatus(BATTLE_PARTNER(battlerAtk), EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_SLEEP))
-        ADJUST_SCORE_PTR(WEAK_EFFECT);
+        scoreAdj += WEAK_EFFECT;
+    
+    return scoreAdj;
 }
 
 void IncreaseConfusionScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
