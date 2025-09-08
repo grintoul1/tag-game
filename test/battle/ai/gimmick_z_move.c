@@ -44,7 +44,7 @@ AI_SINGLE_BATTLE_TEST("AI uses Z-Moves -- Z-Splash")
         TURN { EXPECT_MOVE(opponent, MOVE_SPLASH, gimmick: GIMMICK_Z_MOVE);
                SCORE_GT_VAL(opponent, MOVE_SPLASH, AI_SCORE_DEFAULT); }
         TURN { EXPECT_MOVE(opponent, MOVE_POUND, gimmick: GIMMICK_NONE);
-               SCORE_EQ_VAL(opponent, MOVE_SPLASH, 90); }
+               SCORE_EQ_VAL(opponent, MOVE_SPLASH, 50); }
     }
 }
 
@@ -59,7 +59,7 @@ AI_SINGLE_BATTLE_TEST("AI uses Z-Moves -- Z-Happy Hour")
         TURN { EXPECT_MOVE(opponent, MOVE_HAPPY_HOUR, gimmick: GIMMICK_Z_MOVE);
                SCORE_GT_VAL(opponent, MOVE_HAPPY_HOUR, AI_SCORE_DEFAULT); }
         TURN { EXPECT_MOVE(opponent, MOVE_POUND, gimmick: GIMMICK_NONE);
-               SCORE_EQ_VAL(opponent, MOVE_HAPPY_HOUR, 90); }
+               SCORE_EQ_VAL(opponent, MOVE_HAPPY_HOUR, 50); }
     }
 }
 

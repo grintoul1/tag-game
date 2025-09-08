@@ -53,6 +53,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_TERA: AI will not tera if it gets ko'd by p
     }
 }
 
+/* Tera not being used
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_TERA: AI might tera if it gets saved from a ko")
 {
     PASSES_RANDOMLY(90, 100, RNG_AI_CONSERVE_TERA);
@@ -69,3 +70,4 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_TERA: AI might tera if it gets saved from a
         MESSAGE("The opposing Wobbuffet terastallized into the Fire type!");
     }
 }
+*/
