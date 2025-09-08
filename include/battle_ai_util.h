@@ -281,12 +281,12 @@ bool32 SideHasMoveCategory(u32 battlerId, enum DamageCategory category);
 u32 IncreaseStatUpScore(u32 battlerAtk, u32 battlerDef, enum StatChange statId);
 u32 IncreaseStatUpScoreContrary(u32 battlerAtk, u32 battlerDef, enum StatChange statId);
 u32 IncreaseStatDownScore(u32 battlerAtk, u32 battlerDef, u32 stat);
-void IncreasePoisonScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
-void IncreaseBurnScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
-void IncreaseParalyzeScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
+s32 IncreasePoisonScore(u32 battlerAtk, u32 battlerDef, u32 move);
+s32 IncreaseBurnScore(u32 battlerAtk, u32 battlerDef, u32 move);
+s32 IncreaseParalyzeScore(u32 battlerAtk, u32 battlerDef, u32 move);
 s32 IncreaseSleepScore(u32 battlerAtk, u32 battlerDef, u32 move);
-void IncreaseConfusionScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
-void IncreaseFrostbiteScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
+s32 IncreaseConfusionScore(u32 battlerAtk, u32 battlerDef, u32 move);
+s32 IncreaseFrostbiteScore(u32 battlerAtk, u32 battlerDef, u32 move);
 
 s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, enum DamageCalcContext calcContext);
 u32 AI_WhoStrikesFirstPartyMon(u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, u32 aiMoveConsidered, u32 playerMoveConsidered, enum ConsiderPriority ConsiderPriority);

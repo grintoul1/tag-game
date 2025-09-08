@@ -4136,19 +4136,19 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     {
     case MOVE_EFFECT_POISON:
     case MOVE_EFFECT_TOXIC:
-        IncreasePoisonScore(battlerAtk, battlerDef, move, &score);
+        ADJUST_AND_RETURN_SCORE(IncreasePoisonScore(battlerAtk, battlerDef, move));
         break;
     case MOVE_EFFECT_SLEEP:
         ADJUST_AND_RETURN_SCORE(IncreaseSleepScore(battlerAtk, battlerDef, move));
         break;
     case MOVE_EFFECT_PARALYSIS:
-        IncreaseParalyzeScore(battlerAtk, battlerDef, move, &score);
+        ADJUST_AND_RETURN_SCORE(IncreaseParalyzeScore(battlerAtk, battlerDef, move));
         break;
     case MOVE_EFFECT_BURN:
-        IncreaseBurnScore(battlerAtk, battlerDef, move, &score);
+        ADJUST_AND_RETURN_SCORE(IncreaseBurnScore(battlerAtk, battlerDef, move));
         break;
     case MOVE_EFFECT_FROSTBITE:
-        IncreaseFrostbiteScore(battlerAtk, battlerDef, move, &score);
+        ADJUST_AND_RETURN_SCORE(IncreaseFrostbiteScore(battlerAtk, battlerDef, move));
         break;
     }
     // move effect checks
@@ -4465,7 +4465,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(GOOD_EFFECT);
         break;
     case EFFECT_CONFUSE:
-        IncreaseConfusionScore(battlerAtk, battlerDef, move, &score);
+        ADJUST_AND_RETURN_SCORE(IncreaseConfusionScore(battlerAtk, battlerDef, move));
         break;
     // grintoul TODO Sub and Shed Tail
     case EFFECT_SUBSTITUTE:
@@ -5129,7 +5129,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(DECENT_EFFECT);
         if (aiData->abilities[battlerDef] == ABILITY_CONTRARY)
             ADJUST_SCORE(GOOD_EFFECT);
-        IncreaseConfusionScore(battlerAtk, battlerDef, move, &score);
+        ADJUST_AND_RETURN_SCORE(IncreaseConfusionScore(battlerAtk, battlerDef, move));
         break;
     case EFFECT_FLATTER:
         if (HasBattlerSideMoveWithEffect(battlerAtk, EFFECT_PSYCH_UP)
@@ -5137,7 +5137,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(DECENT_EFFECT);
         if (aiData->abilities[battlerDef] == ABILITY_CONTRARY)
             ADJUST_SCORE(GOOD_EFFECT);
-        IncreaseConfusionScore(battlerAtk, battlerDef, move, &score);
+        ADJUST_AND_RETURN_SCORE(IncreaseConfusionScore(battlerAtk, battlerDef, move));
         break;
     case EFFECT_FURY_CUTTER:
         if (isBattle1v1 && aiData->holdEffects[battlerAtk] == HOLD_EFFECT_METRONOME)
@@ -5450,15 +5450,15 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         break;
     case EFFECT_PSYCHO_SHIFT:
         if (gBattleMons[battlerAtk].status1 & STATUS1_PSN_ANY)
-            IncreasePoisonScore(battlerAtk, battlerDef, move, &score);
+            ADJUST_AND_RETURN_SCORE(IncreasePoisonScore(battlerAtk, battlerDef, move));
         else if (gBattleMons[battlerAtk].status1 & STATUS1_BURN)
-            IncreaseBurnScore(battlerAtk, battlerDef, move, &score);
+            ADJUST_AND_RETURN_SCORE(IncreaseBurnScore(battlerAtk, battlerDef, move));
         else if (gBattleMons[battlerAtk].status1 & STATUS1_PARALYSIS)
-            IncreaseParalyzeScore(battlerAtk, battlerDef, move, &score);
+            ADJUST_AND_RETURN_SCORE(IncreaseParalyzeScore(battlerAtk, battlerDef, move));
         else if (gBattleMons[battlerAtk].status1 & STATUS1_SLEEP)
             ADJUST_AND_RETURN_SCORE(IncreaseSleepScore(battlerAtk, battlerDef, move));
         else if (gBattleMons[battlerAtk].status1 & STATUS1_FROSTBITE)
-            IncreaseFrostbiteScore(battlerAtk, battlerDef, move, &score);
+            ADJUST_AND_RETURN_SCORE(IncreaseFrostbiteScore(battlerAtk, battlerDef, move));
         break;
     case EFFECT_GRUDGE:
         break;
@@ -5697,20 +5697,20 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         switch (gFlingTable[aiData->items[battlerAtk]].effect)
         {
         case MOVE_EFFECT_BURN:
-            IncreaseBurnScore(battlerAtk, battlerDef, move, &score);
+            ADJUST_AND_RETURN_SCORE(IncreaseBurnScore(battlerAtk, battlerDef, move));
             break;
         case MOVE_EFFECT_FROSTBITE:
-            IncreaseFrostbiteScore(battlerAtk, battlerDef, move, &score);
+            ADJUST_AND_RETURN_SCORE(IncreaseFrostbiteScore(battlerAtk, battlerDef, move));
             break;
         case MOVE_EFFECT_FLINCH:
             score += ShouldTryToFlinch(battlerAtk, battlerDef, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], move);
             break;
         case MOVE_EFFECT_PARALYSIS:
-            IncreaseParalyzeScore(battlerAtk, battlerDef, move, &score);
+            ADJUST_AND_RETURN_SCORE(IncreaseParalyzeScore(battlerAtk, battlerDef, move));
             break;
         case MOVE_EFFECT_POISON:
         case MOVE_EFFECT_TOXIC:
-            IncreasePoisonScore(battlerAtk, battlerDef, move, &score);
+            ADJUST_AND_RETURN_SCORE(IncreasePoisonScore(battlerAtk, battlerDef, move));
             break;
         case MOVE_EFFECT_FREEZE:
             if (AI_CanFreeze(battlerAtk, battlerDef))
@@ -5800,7 +5800,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_TOXIC_THREAD:
-        IncreasePoisonScore(battlerAtk, battlerDef, move, &score);
+        ADJUST_AND_RETURN_SCORE(IncreasePoisonScore(battlerAtk, battlerDef, move));
         ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED));
         break;
     case EFFECT_COUNTER:
@@ -6064,7 +6064,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                     ADJUST_SCORE(DECENT_EFFECT);
                 break;
             case MOVE_EFFECT_POISON:
-                IncreasePoisonScore(battlerAtk, battlerDef, move, &score);
+                ADJUST_AND_RETURN_SCORE(IncreasePoisonScore(battlerAtk, battlerDef, move));
                 break;
             case MOVE_EFFECT_CLEAR_SMOG:
                 score += AI_TryToClearStats(battlerAtk, battlerDef, moveTargetsBothOpponents);

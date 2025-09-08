@@ -5051,32 +5051,35 @@ u32 IncreaseStatUpScoreContrary(u32 battlerAtk, u32 battlerDef, enum StatChange 
     return IncreaseStatUpScoreInternal(battlerAtk, battlerDef, statChange, FALSE);
 }
 
-void IncreasePoisonScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
+s32 IncreasePoisonScore(u32 battlerAtk, u32 battlerDef, u32 move)
 {
+    s32 scoreAdj = 0;
     if (((gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_TRY_TO_FAINT) && CanAIFaintTarget(battlerAtk, battlerDef, 0)))
-        return;
+        return scoreAdj;
 
     if (AI_CanPoison(battlerAtk, battlerDef, gAiLogicData->abilities[battlerDef], move, gAiLogicData->partnerMove) && gAiLogicData->hpPercents[battlerDef] > 20)
     {
         if (!HasDamagingMove(battlerDef))
-            ADJUST_SCORE_PTR(DECENT_EFFECT);
+            scoreAdj += DECENT_EFFECT;
 
         if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_STALL && HasMoveWithEffect(battlerAtk, EFFECT_PROTECT))
-            ADJUST_SCORE_PTR(WEAK_EFFECT);    // stall tactic
+            scoreAdj += WEAK_EFFECT;
 
         if (IsPowerBasedOnStatus(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_PSN_ANY)
          || HasMoveWithEffect(battlerAtk, EFFECT_VENOM_DRENCH)
          || gAiLogicData->abilities[battlerAtk] == ABILITY_MERCILESS)
-            ADJUST_SCORE_PTR(DECENT_EFFECT);
+            scoreAdj += DECENT_EFFECT;
         else
-            ADJUST_SCORE_PTR(WEAK_EFFECT);
+            scoreAdj += WEAK_EFFECT;
     }
+    return scoreAdj;
 }
 
-void IncreaseBurnScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
+s32 IncreaseBurnScore(u32 battlerAtk, u32 battlerDef, u32 move)
 {
+    s32 scoreAdj = 0;
     if (((gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_TRY_TO_FAINT) && CanAIFaintTarget(battlerAtk, battlerDef, 0)))
-        return;
+        return scoreAdj;
 
     if (AI_CanBurn(battlerAtk, battlerDef, gAiLogicData->abilities[battlerDef], BATTLE_PARTNER(battlerAtk), move, gAiLogicData->partnerMove))
     {
@@ -5085,7 +5088,7 @@ void IncreaseBurnScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
                 && GetSpeciesBaseAttack(gBattleMons[battlerDef].species) >= GetSpeciesBaseSpAttack(gBattleMons[battlerDef].species) + 10))
         {
             //if (GetMoveCategory(GetBestDmgMoveFromBattler(battlerDef, battlerAtk, AI_DEFENDING)) == DAMAGE_CATEGORY_PHYSICAL)
-            ADJUST_SCORE_PTR(DECENT_EFFECT);
+            scoreAdj += DECENT_EFFECT;
             /*
             else
                 ADJUST_SCORE_PTR(WEAK_EFFECT);
@@ -5094,14 +5097,16 @@ void IncreaseBurnScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
 
         if (IsPowerBasedOnStatus(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_BURN)
           || IsPowerBasedOnStatus(BATTLE_PARTNER(battlerAtk), EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_BURN))
-            ADJUST_SCORE_PTR(WEAK_EFFECT);
+            scoreAdj += WEAK_EFFECT;
     }
+    return scoreAdj;
 }
 
-void IncreaseParalyzeScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
+s32 IncreaseParalyzeScore(u32 battlerAtk, u32 battlerDef, u32 move)
 {
+    s32 scoreAdj = 0;
     if (((gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_TRY_TO_FAINT) && CanAIFaintTarget(battlerAtk, battlerDef, 0)))
-        return;
+        return scoreAdj;
 
     if (AI_CanParalyze(battlerAtk, battlerDef, gAiLogicData->abilities[battlerDef], move, gAiLogicData->partnerMove))
     {
@@ -5113,10 +5118,11 @@ void IncreaseParalyzeScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
           || (HasMoveWithMoveEffectExcept(battlerAtk, MOVE_EFFECT_FLINCH, EFFECT_FIRST_TURN_ONLY)) // filter out Fake Out
           || gBattleMons[battlerDef].volatiles.infatuation
           || gBattleMons[battlerDef].volatiles.confusionTurns > 0)
-            ADJUST_SCORE_PTR(GOOD_EFFECT);
+            scoreAdj += GOOD_EFFECT;
         else
-            ADJUST_SCORE_PTR(DECENT_EFFECT);
+            scoreAdj += WEAK_EFFECT;
     }
+    return scoreAdj;
 }
 
 s32 IncreaseSleepScore(u32 battlerAtk, u32 battlerDef, u32 move)
@@ -5140,38 +5146,42 @@ s32 IncreaseSleepScore(u32 battlerAtk, u32 battlerDef, u32 move)
     return scoreAdj;
 }
 
-void IncreaseConfusionScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
+s32 IncreaseConfusionScore(u32 battlerAtk, u32 battlerDef, u32 move)
 {
+    s32 scoreAdj = 0;
     if (((gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_TRY_TO_FAINT) && CanAIFaintTarget(battlerAtk, battlerDef, 0)))
-        return;
+        return scoreAdj;
 
     if (AI_CanConfuse(battlerAtk, battlerDef, gAiLogicData->abilities[battlerDef], BATTLE_PARTNER(battlerAtk), move, gAiLogicData->partnerMove))
     {
         if (gBattleMons[battlerDef].status1 & STATUS1_PARALYSIS
           || gBattleMons[battlerDef].volatiles.infatuation
           || (gAiLogicData->abilities[battlerAtk] == ABILITY_SERENE_GRACE && HasMoveWithMoveEffectExcept(battlerAtk, MOVE_EFFECT_FLINCH, EFFECT_FIRST_TURN_ONLY)))
-            ADJUST_SCORE_PTR(GOOD_EFFECT);
+            scoreAdj += GOOD_EFFECT;
         else
-            ADJUST_SCORE_PTR(WEAK_EFFECT);
+            scoreAdj += WEAK_EFFECT;
     }
+    return scoreAdj;
 }
 
-void IncreaseFrostbiteScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
+s32 IncreaseFrostbiteScore(u32 battlerAtk, u32 battlerDef, u32 move)
 {
+    s32 scoreAdj = 0;
     if ((gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_TRY_TO_FAINT) && CanAIFaintTarget(battlerAtk, battlerDef, 0))
-        return;
+        return scoreAdj;
 
     if (AI_CanGiveFrostbite(battlerAtk, battlerDef, gAiLogicData->abilities[battlerDef], BATTLE_PARTNER(battlerAtk), move, gAiLogicData->partnerMove))
     {
         if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL))
         {
-            ADJUST_SCORE_PTR(DECENT_EFFECT);
+            scoreAdj += DECENT_EFFECT;
         }
 
         if (IsPowerBasedOnStatus(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_FROSTBITE)
           || IsPowerBasedOnStatus(BATTLE_PARTNER(battlerAtk), EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_FROSTBITE))
-            ADJUST_SCORE_PTR(WEAK_EFFECT);
+            scoreAdj += WEAK_EFFECT;
     }
+    return scoreAdj;
 }
 
 bool32 AI_MoveMakesContact(u32 ability, enum ItemHoldEffect holdEffect, u32 move)
