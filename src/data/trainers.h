@@ -1037,7 +1037,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 390
-                MOVE_EARTH_POWER,
+                MOVE_SCORCHING_SANDS,
                 MOVE_SHADOW_BALL,
                 MOVE_STORED_POWER,
                 MOVE_COSMIC_POWER,
