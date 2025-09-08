@@ -3648,12 +3648,19 @@ static void Task_ChooseHPAmount(u8 taskId)
     }
     else if (JOY_NEW(A_BUTTON))
     {
-        PlaySE(SE_SELECT);
-        PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
-        PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
-        SetMonData(mon, MON_DATA_HP, &thealthPoints);
-        UpdateMonDisplayInfoAfterRareCandy(gPartyMenu.slotId, mon);
-        CursorCb_Cancel1(taskId);
+        if (thealthPoints == 0)
+        {
+            CursorCb_Cancel1(taskId);
+        }
+        else
+        {
+            PlaySE(SE_SELECT);
+            PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+            PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+            SetMonData(mon, MON_DATA_HP, &thealthPoints);
+            UpdateMonDisplayInfoAfterRareCandy(gPartyMenu.slotId, mon);
+            CursorCb_Cancel1(taskId);
+        }
     }
     else if (JOY_NEW(B_BUTTON))
     {
@@ -3672,7 +3679,7 @@ static void CursorCb_Damage(u8 taskId)
     //DisplaySelectionWindow(SELECTWINDOW_DAMAGE);
     sPartyMenuInternal->windowId[0] = AddWindow(&sDamageWindowTemplate);
     DrawStdFrameWithCustomTileAndPalette(sPartyMenuInternal->windowId[0], FALSE, 0x4F, 13);
-    PrintHP(sPartyMenuInternal->windowId[0], 1);
+    PrintHP(sPartyMenuInternal->windowId[0], 0);
     DisplayPartyMenuStdMessage(PARTY_MSG_SET_HP);
     gTasks[taskId].data[0] = 0xFF;
     gTasks[taskId].func = Task_ChooseHPAmount;
