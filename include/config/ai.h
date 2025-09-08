@@ -131,4 +131,8 @@
 #define CUSTOM_AI_TEN_PERCENT                                           10
 #define CUSTOM_AI_FIVE_PERCENT                                          5
 
+// HP thresholds to use a status z-move.
+#define Z_EFFECT_FOLLOW_ME_THRESHOLD    30
+#define Z_EFFECT_RESTORE_HP_THRESHOLD   60
+
 #endif // GUARD_CONFIG_AI_H

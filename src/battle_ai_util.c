@@ -483,6 +483,9 @@ bool32 AI_CanBattlerEscape(u32 battler)
 
 bool32 IsBattlerTrapped(u32 battlerAtk, u32 battlerDef)
 {
+    if (AI_CanBattlerEscape(battlerDef))
+        return FALSE;
+
     if (gBattleMons[battlerDef].volatiles.wrapped)
         return TRUE;
     if (gBattleMons[battlerDef].volatiles.escapePrevention)
@@ -501,6 +504,9 @@ bool32 IsBattlerTrapped(u32 battlerAtk, u32 battlerDef)
         return TRUE;
     if (AI_IsAbilityOnSide(battlerAtk, ABILITY_MAGNET_PULL)
         && IS_BATTLER_OF_TYPE(battlerAtk, TYPE_STEEL))
+        return TRUE;
+
+    if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && CountUsablePartyMons(battlerDef) == 0)
         return TRUE;
 
     return FALSE;
@@ -878,10 +884,6 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
     if (gBattleStruct->gimmick.usableGimmick[battlerAtk] && GetActiveGimmick(battlerAtk) == GIMMICK_NONE
         && gBattleStruct->gimmick.usableGimmick[battlerAtk] != GIMMICK_NONE && considerGimmickAtk == USE_GIMMICK)
     {
-        // Set Z-Move variables if needed
-        if (gBattleStruct->gimmick.usableGimmick[battlerAtk] == GIMMICK_Z_MOVE && IsViableZMove(battlerAtk, move))
-            gBattleStruct->zmove.baseMoves[battlerAtk] = move;
-
         toggledGimmickAtk = TRUE;
         SetActiveGimmick(battlerAtk, gBattleStruct->gimmick.usableGimmick[battlerAtk]);
     }
@@ -999,7 +1001,6 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
     // Undo temporary settings
     gBattleStruct->dynamicMoveType = 0;
     gBattleStruct->swapDamageCategory = FALSE;
-    gBattleStruct->zmove.baseMoves[battlerAtk] = MOVE_NONE;
     if (toggledGimmickAtk)
         SetActiveGimmick(battlerAtk, GIMMICK_NONE);
     if (toggledGimmickDef)
@@ -2276,6 +2277,10 @@ bool32 CanLowerStat(u32 battlerAtk, u32 battlerDef, struct AiLogicData *aiData, 
         case ABILITY_WHITE_SMOKE:
         case ABILITY_FULL_METAL_BODY:
             return FALSE;
+        case ABILITY_SHIELD_DUST:
+            if (!IsBattleMoveStatus(move) && GetActiveGimmick(battlerAtk) != GIMMICK_DYNAMAX)
+                return FALSE;
+            break;
         default:
             break;
         }
@@ -2351,11 +2356,10 @@ u32 IncreaseStatDownScore(u32 battlerAtk, u32 battlerDef, u32 stat)
             tempScore += GOOD_EFFECT + 1; // +9
         break;
     case STAT_ACC:
-        if (gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
-            tempScore += WEAK_EFFECT;
+        tempScore += WEAK_EFFECT;
+        if (IsBattlerTrapped(battlerAtk, battlerDef))
+            tempScore += DECENT_EFFECT;
         if (gBattleMons[battlerDef].volatiles.leechSeed)
-            tempScore += WEAK_EFFECT;
-        if (gBattleMons[battlerDef].volatiles.root)
             tempScore += WEAK_EFFECT;
         if (gBattleMons[battlerDef].volatiles.cursed)
             tempScore += WEAK_EFFECT;
@@ -3000,7 +3004,7 @@ bool32 IsSwitchOutEffect(enum BattleMoveEffects effect)
     switch (effect)
     {
     case EFFECT_TELEPORT:
-        if (B_TELEPORT_BEHAVIOR >= GEN_8)
+        if (GetGenConfig(GEN_CONFIG_TELEPORT_BEHAVIOR) >= GEN_8)
             return TRUE;
     case EFFECT_HIT_ESCAPE:
     case EFFECT_PARTING_SHOT:
@@ -4777,23 +4781,56 @@ static u32 GetStatBeingChanged(enum StatChange statChange)
     {
         case STAT_CHANGE_ATK:
         case STAT_CHANGE_ATK_2:
+        case STAT_CHANGE_ATK_3:
             return STAT_ATK;
         case STAT_CHANGE_DEF:
         case STAT_CHANGE_DEF_2:
+        case STAT_CHANGE_DEF_3:
             return STAT_DEF;
         case STAT_CHANGE_SPEED:
         case STAT_CHANGE_SPEED_2:
+        case STAT_CHANGE_SPEED_3:
             return STAT_SPEED;
         case STAT_CHANGE_SPATK:
         case STAT_CHANGE_SPATK_2:
+        case STAT_CHANGE_SPATK_3:
             return STAT_SPATK;
         case STAT_CHANGE_SPDEF:
         case STAT_CHANGE_SPDEF_2:
+        case STAT_CHANGE_SPDEF_3:
             return STAT_SPDEF;
         case STAT_CHANGE_ACC:
             return STAT_ACC;
         case STAT_CHANGE_EVASION:
             return STAT_EVASION;
+    }
+    return 0; // STAT_HP, should never be getting changed
+}
+
+static UNUSED u32 GetStagesOfStatChange(enum StatChange statChange)
+{
+    switch(statChange)
+    {
+        case STAT_CHANGE_ATK:
+        case STAT_CHANGE_DEF:
+        case STAT_CHANGE_SPEED:
+        case STAT_CHANGE_SPATK:
+        case STAT_CHANGE_SPDEF:
+        case STAT_CHANGE_ACC:
+        case STAT_CHANGE_EVASION:
+            return 1;
+        case STAT_CHANGE_ATK_2:
+        case STAT_CHANGE_DEF_2:
+        case STAT_CHANGE_SPEED_2:
+        case STAT_CHANGE_SPATK_2:
+        case STAT_CHANGE_SPDEF_2:
+            return 2;
+        case STAT_CHANGE_ATK_3:
+        case STAT_CHANGE_DEF_3:
+        case STAT_CHANGE_SPEED_3:
+        case STAT_CHANGE_SPATK_3:
+        case STAT_CHANGE_SPDEF_3:
+            return 3;
     }
     return 0; // STAT_HP, should never be getting changed
 }
@@ -4807,6 +4844,7 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
     u32 shouldSetUp = ((noOfHitsToFaint >= 1 && aiIsFaster) || (noOfHitsToFaint >= 2 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
     // u32 i;
     u32 statId = GetStatBeingChanged(statChange);
+    //u32 stages = GetStagesOfStatChange(statChange);
 
     if (considerContrary && gAiLogicData->abilities[battlerAtk] == ABILITY_CONTRARY)
         return NO_INCREASE;
@@ -4832,7 +4870,7 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
         return NO_INCREASE;
 
     // Don't increase stats if opposing battler has Opportunist
-    if (gAiLogicData->abilities[battlerDef] == ABILITY_OPPORTUNIST)
+    if (HasBattlerSideAbility(battlerDef, ABILITY_OPPORTUNIST, gAiLogicData))
         return NO_INCREASE;
 
     /*
@@ -4863,6 +4901,10 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
     // Don't increase stats if player has a move that can change the KO threshold
     if (HasMoveThatChangesKOThreshold(battlerDef, noOfHitsToFaint, aiIsFaster))
         return NO_INCREASE;
+
+    // Stat stages are effectively doubled under Simple.
+    if (gAiLogicData->abilities[battlerAtk] == ABILITY_SIMPLE)
+        stages *= 2;
 
     // Predicting switch
     if (IsBattlerPredictedToSwitch(battlerDef))
@@ -4955,6 +4997,7 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
         }
         break;
     case STAT_CHANGE_ATK_2:
+    case STAT_CHANGE_ATK_3:
         // If both targets are incapacitated and user has physical move
         if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && IsBattlerIncapacitated(BATTLE_PARTNER(battlerDef), gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL))
         {
@@ -4981,6 +5024,7 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
         }
         break;
     case STAT_CHANGE_DEF_2:
+    case STAT_CHANGE_DEF_3:
         // Target has physical move or no special moves
         if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL)) && shouldSetUp)
         {
@@ -4988,10 +5032,12 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
         }
         break;
     case STAT_CHANGE_SPEED_2:
+    case STAT_CHANGE_SPEED_3:
         if ((noOfHitsToFaint >= 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS)
             tempScore += GOOD_EFFECT; // +8
         break;
     case STAT_CHANGE_SPATK_2:
+    case STAT_CHANGE_SPATK_3:
         // If both targets are incapacitated and user has special move
         if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && IsBattlerIncapacitated(BATTLE_PARTNER(battlerDef), gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL))
         {
@@ -5018,6 +5064,7 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
         }
         break;
     case STAT_CHANGE_SPDEF_2:
+    case STAT_CHANGE_SPDEF_3:
         // Target has special move or no physical moves
         if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)) && shouldSetUp)
         {
@@ -5037,6 +5084,10 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
             tempScore += WEAK_EFFECT; // +6
         break;
     }
+
+    // if already inclined to boost, be slightly more likely to if boost levels matter
+    if (tempScore > 0 && HasMoveWithEffect(battlerAtk, EFFECT_STORED_POWER))
+        tempScore += WEAK_EFFECT;
 
     return tempScore;
 }
@@ -5197,15 +5248,97 @@ bool32 AI_MoveMakesContact(u32 ability, enum ItemHoldEffect holdEffect, u32 move
 bool32 ShouldUseZMove(u32 battlerAtk, u32 battlerDef, u32 chosenMove)
 {
     // simple logic. just upgrades chosen move to z move if possible, unless regular move would kill opponent
-    if ((IsDoubleBattle()) && battlerDef == BATTLE_PARTNER(battlerAtk))
+    if ((IsDoubleBattle()) && battlerDef == BATTLE_PARTNER(battlerAtk) && !(GetBattlerMoveTargetType(battlerAtk, chosenMove) & MOVE_TARGET_ALLY))
         return FALSE;   // don't use z move on partner
     if (HasTrainerUsedGimmick(battlerAtk, GIMMICK_Z_MOVE))
         return FALSE;   // can't use z move twice
 
     if (IsViableZMove(battlerAtk, chosenMove))
     {
-        uq4_12_t effectiveness;
         u32 zMove = GetUsableZMove(battlerAtk, chosenMove);
+
+        if (IsBattleMoveStatus(chosenMove))
+        {
+            u8 zEffect = GetMoveZEffect(chosenMove);
+            enum StatChange statChange = 0;
+
+            if (zEffect == Z_EFFECT_CURSE)
+            {
+                if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_GHOST))
+                    zEffect = Z_EFFECT_RECOVER_HP;
+                else
+                    zEffect = Z_EFFECT_ATK_UP_1;
+            }
+
+            switch (zEffect)
+            {
+            case Z_EFFECT_NONE:
+                return FALSE;
+            case Z_EFFECT_RESET_STATS:
+                if (CountNegativeStatStages(battlerAtk) > 1)
+                    return TRUE;
+                break;
+            case Z_EFFECT_ALL_STATS_UP_1:
+                if (AreBattlersStatsMaxed(battlerAtk))
+                    return FALSE;
+                return IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK) > 0
+                    || IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPATK) > 0; 
+                break;
+            case Z_EFFECT_BOOST_CRITS:
+                return TRUE;
+            case Z_EFFECT_FOLLOW_ME:
+                return HasPartnerIgnoreFlags(battlerAtk) && (GetHealthPercentage(battlerAtk) <= Z_EFFECT_FOLLOW_ME_THRESHOLD || GetBestNoOfHitsToKO(battlerDef, battlerAtk, AI_DEFENDING) == 1);
+                break;
+            case Z_EFFECT_RECOVER_HP:
+                return gAiLogicData->hpPercents[battlerAtk] <= Z_EFFECT_RESTORE_HP_THRESHOLD;
+            case Z_EFFECT_RESTORE_REPLACEMENT_HP:
+                break;
+            case Z_EFFECT_ACC_UP_1:
+            case Z_EFFECT_ACC_UP_2:
+            case Z_EFFECT_ACC_UP_3:
+                statChange = STAT_CHANGE_ACC;
+                break;
+            case Z_EFFECT_EVSN_UP_1:
+            case Z_EFFECT_EVSN_UP_2:
+            case Z_EFFECT_EVSN_UP_3:
+                statChange = STAT_CHANGE_EVASION;
+                break;
+            case Z_EFFECT_ATK_UP_1:
+            case Z_EFFECT_DEF_UP_1:
+            case Z_EFFECT_SPD_UP_1:
+            case Z_EFFECT_SPATK_UP_1:
+            case Z_EFFECT_SPDEF_UP_1:
+                statChange = STAT_CHANGE_ATK + zEffect - Z_EFFECT_ATK_UP_1;
+                break;
+            case Z_EFFECT_ATK_UP_2:
+            case Z_EFFECT_DEF_UP_2:
+            case Z_EFFECT_SPD_UP_2:
+            case Z_EFFECT_SPATK_UP_2:
+            case Z_EFFECT_SPDEF_UP_2:
+                statChange = STAT_CHANGE_ATK_2 + zEffect - Z_EFFECT_ATK_UP_2;
+                break;
+            case Z_EFFECT_ATK_UP_3:
+            case Z_EFFECT_DEF_UP_3:
+            case Z_EFFECT_SPD_UP_3:
+            case Z_EFFECT_SPATK_UP_3:
+            case Z_EFFECT_SPDEF_UP_3:
+                statChange = STAT_CHANGE_ATK_2 + zEffect - Z_EFFECT_ATK_UP_3;
+                break;
+            default:
+                return FALSE;
+            }
+
+            if (statChange != 0 && IncreaseStatUpScore(battlerAtk, battlerDef, statChange) > 0)
+                return TRUE;
+        }
+        else if (GetMoveEffect(zMove) == EFFECT_EXTREME_EVOBOOST)
+        {
+            return (!AreBattlersStatsMaxed(battlerAtk) && (IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK_2) || IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPATK_2))); 
+        }
+        else if (!IsBattleMoveStatus(chosenMove) && IsBattleMoveStatus(zMove))
+            return FALSE;
+
+        uq4_12_t effectiveness;
         struct SimulatedDamage dmg;
 
         if (gBattleMons[battlerDef].ability == ABILITY_DISGUISE
@@ -5216,11 +5349,6 @@ bool32 ShouldUseZMove(u32 battlerAtk, u32 battlerDef, u32 chosenMove)
             && !MoveIgnoresTargetAbility(zMove)
             && gBattleMons[battlerDef].species == SPECIES_EISCUE_ICE && IsBattleMovePhysical(chosenMove))
             return FALSE; // Don't waste a Z-Move busting Ice Face
-
-        if (IsBattleMoveStatus(chosenMove) && !IsBattleMoveStatus(zMove))
-            return FALSE;
-        else if (!IsBattleMoveStatus(chosenMove) && IsBattleMoveStatus(zMove))
-            return FALSE;
 
         dmg = AI_CalcDamageSaveBattlers(chosenMove, battlerAtk, battlerDef, &effectiveness, NO_GIMMICK, NO_GIMMICK);
 
