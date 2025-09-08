@@ -34,6 +34,8 @@ static bool32 CanAbilityTrapOpponent(u16 ability, u32 opponent);
 static u32 GetHPHealAmount(u8 itemEffectParam, struct Pokemon *mon);
 static u32 GetBattleMonTypeMatchup(struct BattlePokemon opposingBattleMon, struct BattlePokemon battleMon);
 
+extern bool8 FlagGet(u16 id);
+
 static void InitializeSwitchinCandidate(struct Pokemon *mon)
 {
     PokemonToBattleMon(mon, &gAiLogicData->switchinCandidate.battleMon);
@@ -215,7 +217,10 @@ void GetAIPartyIndexes(u32 battler, s32 *firstId, s32 *lastId)
     }
     else if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TOWER_LINK_MULTI))
     {
-        if ((battler & BIT_FLANK) == B_FLANK_LEFT)
+        bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
+        if (isSharedTeams && (battler & BIT_SIDE) == B_SIDE_PLAYER)
+            *firstId = 0, *lastId = PARTY_SIZE;
+        else if ((battler & BIT_FLANK) == B_FLANK_LEFT)
             *firstId = 0, *lastId = PARTY_SIZE / 2;
         else
             *firstId = PARTY_SIZE / 2, *lastId = PARTY_SIZE;
@@ -1119,11 +1124,9 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
 
     if (!(oppositeBattlerMoveTypes == 1 || oppositeBattlerPartnerMoveTypes == 1))
         return FALSE;
-    MgbaPrintf(MGBA_LOG_WARN, "Partner Absorb Check 1");
     if (CanUseSuperEffectiveMoveAgainstOpponents(battler) && (RandomPercentage(RNG_AI_SWITCH_ABSORBING_STAY_IN, PARTNER_STAY_IN_ABSORBING_PERCENTAGE) || gAiLogicData->aiPredictionInProgress))
         return FALSE;
 
-    MgbaPrintf(MGBA_LOG_WARN, "Partner Absorb Check 2");
     battlerIn1 = battler;
     if (gAbsentBattlerFlags & (1u << GetPartnerBattler(battler)))
         battlerIn2 = battler;
@@ -1149,19 +1152,16 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         if (IsAceMon(battler, i))
             continue;
 
-        MgbaPrintf(MGBA_LOG_WARN, "Partner Absorb Check 3");
         uq4_12_t mod; 
         if (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) != GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1))
         {
-            if (!(GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0)) == UQ_4_12(0.00)) || (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1) == UQ_4_12(0.00))))
+            if ((GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0)) == UQ_4_12(0.00)) || (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1)) == UQ_4_12(0.00)))
                 {
                     mod = UQ_4_12(0.00);
-                    MgbaPrintf(MGBA_LOG_WARN, "Partner Absorb Check 4 mod %d", mod);
                 }
             else
                 {
                     mod = (UQ_4_12(1.00) * (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0))/UQ_4_12(1.00)) * (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1))/UQ_4_12(1.00)));
-                    MgbaPrintf(MGBA_LOG_WARN, "Partner Absorb Check 5 mod %d", mod);
                 }
         }
         else
@@ -3341,8 +3341,6 @@ static inline bool32 CanSwitchinWin1v1(u32 hitsToKOAI, u32 hitsToKOPlayer, bool3
         return TRUE;
     return FALSE;
 }
-
-extern bool8 FlagGet(u16 id);
 
 static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, u32 battler, u32 opposingBattler, u32 battlerIn1, u32 battlerIn2, enum SwitchType switchType)
 {
