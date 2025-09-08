@@ -1502,7 +1502,9 @@ u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef, enum DamageCalcCon
 
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        if (IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations))
+        if (IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations)
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDef, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        && IsSemiInvulnerable(battlerDef, moves[moveIndex])))
             continue;
 
         if (bestDmg < AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData))
@@ -1543,13 +1545,15 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     {
         u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
-        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDefPartner))
+        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDefPartner)
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDefPartner, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        && IsSemiInvulnerable(battlerDefPartner, battlerMoves[moveIndex])))
             continue;
         if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
             continue;
 
             if (CanIndexMoveFaintTarget(battlerAtk, battlerDefPartner, moveIndex, AI_ATTACKING) 
-        && (AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER))
+            && (AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, battlerMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER))
         {
             moves[moveIndex] = battlerMoves[moveIndex];
         }
@@ -1568,7 +1572,10 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     {
         u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
-        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDef))
+        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDef)
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDef, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        && IsSemiInvulnerable(battlerDef, battlerMoves[moveIndex])))
+
             continue;
         if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
             continue;
@@ -1644,7 +1651,9 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     {
         u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
-        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDef))
+        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDef)
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDef, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        && IsSemiInvulnerable(battlerDef, battlerMoves[moveIndex])))
             continue;
         if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
             continue;
@@ -1662,7 +1671,9 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     {
         u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
-        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDefPartner))
+        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDefPartner)
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDefPartner, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        && IsSemiInvulnerable(battlerDefPartner, battlerMoves[moveIndex])))
             continue;
         if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
             continue;
@@ -1701,7 +1712,9 @@ u32 GetBestDmgFromBattler(u32 battler, u32 battlerTarget, enum DamageCalcContext
 
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        if (IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations))
+        if (IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations)
+        || ((AI_WhoStrikesFirst(battler, battlerTarget, moves[moveIndex], GetIncomingMoveSpeedCheck(battler, battlerTarget, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        && IsSemiInvulnerable(battlerTarget, moves[moveIndex])))
             continue;
 
         u32 damage = AI_GetDamage(battler, battlerTarget, moveIndex, calcContext, aiData);
