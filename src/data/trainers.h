@@ -853,9 +853,9 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 316
-                MOVE_AIR_CUTTER,
-                MOVE_STORED_POWER,
-                MOVE_CALM_MIND,
+                MOVE_GUST,
+                MOVE_SHOCK_WAVE,
+                MOVE_DREAM_EATER,
                 MOVE_AFTER_YOU,
             },
             },
