@@ -1013,7 +1013,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
             {
-                if (!AI_DoesChoiceEffectBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_IsSlower(battler, opposingBattler2, aiMove, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
+                if (!AI_DoesChoiceEffectBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (!AI_IsFaster(battler, opposingBattler2, aiMove, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                 {
                     oppositeBattlerMoveCount = oppositeBattlerMoveCount + 1;
                     if(GetMoveType(aiMove) != GetMoveType(switchingMove))
@@ -1058,13 +1058,13 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
     // Don't switch unless outsped and OHKO'd by exactly one move type from opposite battler's partner
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        aiMove = gBattleMons[opposingBattler2].moves[i];
+        aiMove = gBattleMons[opposingBattler1].moves[i];
         if (aiMove != MOVE_NONE)
         {
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
             {
-                if (!AI_DoesChoiceEffectBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_IsSlower(battler, opposingBattler2, aiMove, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
+                if (!AI_DoesChoiceEffectBlockMove(opposingBattler1, aiMove) && (AI_GetDamage(opposingBattler1, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (!AI_IsFaster(battler, opposingBattler1, aiMove, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                 {
                     oppositeBattlerPartnerMoveCount = oppositeBattlerPartnerMoveCount + 1;
                     if(GetMoveType(aiMove) != GetMoveType(switchingMove))
@@ -1087,7 +1087,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
             {
-                if (!AI_DoesChoiceEffectBlockMove(opposingBattler1, aiMove) && (AI_GetDamage(opposingBattler1, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp))
+                if (!AI_DoesChoiceEffectBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp))
                 {
                     // Check to ensure move isn't the same move stored from other battler
                     if (aiMove != switchingMoveOppositePartner)
@@ -1104,8 +1104,8 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         }
     }
 
-    MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOpposite %d", GetMoveName(switchingMoveOpposite));
-    MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOppositePartner %d", GetMoveName(switchingMoveOppositePartner));
+    MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOpposite %S", GetMoveName(switchingMoveOpposite));
+    MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOppositePartner %S", GetMoveName(switchingMoveOppositePartner));
 
     if (switchingMoveOpposite != 0)
         switchingMove = switchingMoveOpposite;
