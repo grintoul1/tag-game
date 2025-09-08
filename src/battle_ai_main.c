@@ -6275,7 +6275,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
 
     
 
-    u16 bestMoves[4];
+    u16 bestMoves[4] = {0};
     u32 bestTarget;
     u32 thisMove = MAX_MON_MOVES;
     
@@ -6283,9 +6283,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     {
         if (GetMovePower(move) != 0)
         {
-            GetBestDmgMoveFromPartner(battlerAtk, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), AI_ATTACKING, bestMoves, &bestTarget);
+            GetBestDmgMoveFromPartner(battlerAtk, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), AI_ATTACKING, bestMoves, &bestTarget);
             if (((bestMoves[0] == move) || (bestMoves[1] == move) || (bestMoves[2] == move) || (bestMoves[3] == move)) && (bestTarget == battlerDef))
             {
+                MgbaPrintf(MGBA_LOG_WARN, "move %d, bestTarget %d, battlerDef%d", move, bestTarget, battlerDef);
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
                 if (AI_RandLessThan(51))
                     ADJUST_SCORE(2);
