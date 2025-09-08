@@ -21,6 +21,57 @@ ASSUMPTIONS
     ASSUME(GetMoveEffect(MOVE_SONIC_BOOM) == EFFECT_FIXED_HP_DAMAGE);
 }
 
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: Partner will switch into a type immunity when outsped and OHKO'd by one type of move (multibattle)")
+{
+    KNOWN_FAILING; // Speed for Battler 2 being overwritten by speed for Battler 3
+    u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE , species, ability = ABILITY_NONE;
+
+    PARAMETRIZE { moveA1 = MOVE_GIGA_IMPACT;    moveB1 = MOVE_HYPER_BEAM;       species = SPECIES_GASTLY;       ability = ABILITY_LEVITATE; }
+    PARAMETRIZE { moveA1 = MOVE_THUNDER_SHOCK;  moveB1 = MOVE_SHOCK_WAVE;       species = SPECIES_DONPHAN;      ability = ABILITY_BATTLE_ARMOR; }
+    PARAMETRIZE { moveA1 = MOVE_ROCK_SMASH;     moveB1 = MOVE_STORM_THROW;      species = SPECIES_GASTLY;       ability = ABILITY_LEVITATE; }
+    PARAMETRIZE { moveA1 = MOVE_POISON_STING;   moveB1 = MOVE_ACID;             species = SPECIES_EXCADRILL;    ability = ABILITY_SAND_RUSH; }
+    PARAMETRIZE { moveA1 = MOVE_MUD_SLAP;       moveB1 = MOVE_STOMPING_TANTRUM; species = SPECIES_PIDGEOTTO;    ability = ABILITY_KEEN_EYE; }
+    PARAMETRIZE { moveA1 = MOVE_CONFUSION;      moveB1 = MOVE_PSYCHIC;          species = SPECIES_SNEASEL;      ability = ABILITY_PRESSURE; }
+    PARAMETRIZE { moveA1 = MOVE_HEX;            moveB1 = MOVE_SHADOW_BONE;      species = SPECIES_BEWEAR;       ability = ABILITY_KLUTZ; }
+    PARAMETRIZE { moveA1 = MOVE_BREAKING_SWIPE; moveB1 = MOVE_DRAGON_RUSH;      species = SPECIES_FLORGES;      ability = ABILITY_FLOWER_VEIL; }
+
+    GIVEN {
+        AI_FLAGS(0);
+        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_CATERPIE) { Speed(1); Level(1); Moves(MOVE_CELEBRATE, MOVE_CELEBRATE, MOVE_CELEBRATE, MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_SHUCKLE) { Speed(3); Speed(3); }
+        MULTI_PARTNER(species) { Speed(7); Ability(ability); }
+        MULTI_OPPONENT_A(SPECIES_ARCEUS) { Speed(6); Moves(moveA1); }
+        MULTI_OPPONENT_B(SPECIES_ARCEUS) { Speed(5); Moves(moveB1); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, moveA1, target:playerRight ); EXPECT_MOVE(opponentRight, moveB1, target:playerRight ); EXPECT_SWITCH(playerRight, 5); }
+            TURN { ; }
+        }   
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI always chooses highest damaging move (multibattle)")
+{
+    GIVEN {
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        MULTI_PLAYER(SPECIES_KINGDRA);
+        MULTI_PLAYER(SPECIES_DIANCIE);
+        MULTI_PLAYER(SPECIES_ORTHWORM);
+        MULTI_PARTNER(SPECIES_KINGDRA);
+        MULTI_PARTNER(SPECIES_DIANCIE);
+        MULTI_PARTNER(SPECIES_ORTHWORM);
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_ENERGY, MOVE_MUDDY_WATER, MOVE_HEAT_WAVE); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_ENERGY, MOVE_MUDDY_WATER, MOVE_HEAT_WAVE); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_DRAGON_ENERGY); EXPECT_MOVE(opponentRight, MOVE_DRAGON_ENERGY); SWITCH(playerLeft, 1); SWITCH(playerRight, 4); }
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_MUDDY_WATER); EXPECT_MOVE(opponentRight, MOVE_MUDDY_WATER); SWITCH(playerLeft, 2); SWITCH(playerRight, 5); }
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_HEAT_WAVE); EXPECT_MOVE(opponentRight, MOVE_HEAT_WAVE); SWITCH(playerLeft, 0); SWITCH(playerRight, 3); } 
+        }   
+}
+
 AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI always chooses highest damaging move (multibattle)")
 {
     GIVEN {
