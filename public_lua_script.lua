@@ -5198,7 +5198,7 @@ local speciesStructSize=260
 local partyCount=0x02033609 -- gPlayerPartyCount
 local partyloc=0x02033868 -- gPlayerParty
 local storageLoc=0x02009578 -- gPokemonStorage
-local speciesInfo=0x0867fdac -- gSpeciesInfo
+local speciesInfo=0x08680458 -- gSpeciesInfo
 
 function getCurve(n)
 	return emu:read8(speciesInfo+(speciesStructSize*n)+21)
@@ -5676,7 +5676,6 @@ function printPartyStatus(buffer)
 		end
 	end
     while i<120 do
-        buffer:print(string.format("i: %d pcStart %d\n", i, address))
 		if (emu:read32(address) ~=0) then
 			buffer:print(getPCPrint(readBoxMon(address)))
 		end
