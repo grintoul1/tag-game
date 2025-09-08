@@ -4296,7 +4296,6 @@ abilities = {
 }
 
 item = {
-    "None",
     "Poke Ball",
     "Great Ball",
     "Ultra Ball",
@@ -5197,8 +5196,8 @@ local speciesStructSize=260
 
 local partyCount=0x02033609 -- gPlayerPartyCount
 local partyloc=0x02033868 -- gPlayerParty
+local speciesInfo=0x0868034c -- gSpeciesInfo
 local storageLoc=0x02009578 -- gPokemonStorage
-local speciesInfo=0x08680458 -- gSpeciesInfo
 
 function getCurve(n)
 	return emu:read8(speciesInfo+(speciesStructSize*n)+21)
