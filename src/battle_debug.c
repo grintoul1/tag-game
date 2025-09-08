@@ -738,7 +738,7 @@ static void PutMovesPointsText(struct BattleDebugMenu *data)
     u8 *text = Alloc(0x50);
 
     FillWindowPixelBuffer(data->aiMovesWindowId, 0x11);
-    AddTextPrinterParameterized3(data->aiMovesWindowId, FONT_NORMAL, 3, 0, sTextColorTable[COLORID_BLUE], 0, COMPOUND_STRING("Score/Dmg"));
+    AddTextPrinterParameterized(data->aiMovesWindowId, FONT_NORMAL, COMPOUND_STRING("Score/Dmg"), 3, 0, 0, NULL);
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         text[0] = CHAR_SPACE;
