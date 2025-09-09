@@ -1156,13 +1156,9 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         if (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) != GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1))
         {
             if ((GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0)) == UQ_4_12(0.00)) || (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1)) == UQ_4_12(0.00)))
-                {
-                    mod = UQ_4_12(0.00);
-                }
+                mod = UQ_4_12(0.00);
             else
-                {
-                    mod = (UQ_4_12(1.00) * (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0))/UQ_4_12(1.00)) * (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1))/UQ_4_12(1.00)));
-                }
+                mod = ((GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0))) * (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1)))/UQ_4_12(1.00));
         }
         else
         {

@@ -3064,14 +3064,14 @@ void ValidateFinally(u32 sourceLine)
     INVALID_IF(STATE->parametersCount == 0, "FINALLY without PARAMETRIZE");
 }
 
-u32 TestRunner_Battle_GetForcedAbility(u32 side, u32 partyIndex)
+u32 TestRunner_Battle_GetForcedAbility(u32 position, u32 partyIndex)
 {
-    return DATA.forcedAbilities[side][partyIndex];
+    return DATA.forcedAbilities[position][partyIndex];
 }
 
-u32 TestRunner_Battle_GetChosenGimmick(u32 side, u32 partyIndex)
+u32 TestRunner_Battle_GetChosenGimmick(u32 position, u32 partyIndex)
 {
-    return DATA.chosenGimmick[side][partyIndex];
+    return DATA.chosenGimmick[position][partyIndex];
 }
 
 // TODO: Consider storing the last successful i and searching from i+1

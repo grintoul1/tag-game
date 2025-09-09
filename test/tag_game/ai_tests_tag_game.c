@@ -42,11 +42,11 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: Partner will switch into a type immun
         BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_SMART_TRAINER);
         MULTI_PLAYER(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
-        MULTI_PARTNER(SPECIES_CATERPIE) { Speed(1); Level(1); Moves(MOVE_CELEBRATE, MOVE_CELEBRATE, MOVE_CELEBRATE, MOVE_CELEBRATE); }
-        MULTI_PARTNER(SPECIES_SHUCKLE) { Speed(3); Speed(3); }
-        MULTI_PARTNER(species) { Speed(7); Ability(ability); }
-        MULTI_OPPONENT_A(SPECIES_ARCEUS) { Speed(6); Moves(moveA1); }
-        MULTI_OPPONENT_B(SPECIES_ARCEUS) { Speed(5); Moves(moveB1); }
+        MULTI_PARTNER(SPECIES_CATERPIE) { Speed(1); Moves(MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_SHUCKLE) { Speed(3); }
+        MULTI_PARTNER(species) { Speed(6); Ability(ability); }
+        MULTI_OPPONENT_A(SPECIES_ARCEUS) { Speed(5); Moves(moveA1); }
+        MULTI_OPPONENT_B(SPECIES_ARCEUS) { Speed(4); Moves(moveB1); }
     } WHEN {
             TURN {  EXPECT_MOVE(opponentLeft, moveA1, target:playerRight ); EXPECT_MOVE(opponentRight, moveB1, target:playerRight ); EXPECT_SWITCH(playerRight, 5); }
             TURN { ; }

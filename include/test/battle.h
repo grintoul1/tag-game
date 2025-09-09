@@ -727,14 +727,14 @@ struct BattleTestData
     u8 explicitMoves[MAX_BATTLERS_COUNT];
     bool8 hasExplicitSpeeds;
     u8 explicitSpeeds[MAX_BATTLERS_COUNT];
-    u16 slowerThan[NUM_BATTLE_SIDES][PARTY_SIZE];
+    u16 slowerThan[MAX_BATTLERS_COUNT][PARTY_SIZE];
     u8 currentPosition;
     u8 currentPartyIndex;
     struct Pokemon *currentMon;
     u8 gender;
     u8 nature;
-    u16 forcedAbilities[NUM_BATTLE_SIDES][PARTY_SIZE];
-    u8 chosenGimmick[NUM_BATTLE_SIDES][PARTY_SIZE];
+    u16 forcedAbilities[MAX_BATTLERS_COUNT][PARTY_SIZE];
+    u8 chosenGimmick[MAX_BATTLERS_COUNT][PARTY_SIZE];
 
     u8 currentMonIndexes[MAX_BATTLERS_COUNT];
     u8 turnState;
@@ -993,8 +993,8 @@ struct moveWithPP {
 void SetFlagForTest(u32 sourceLine, u16 flagId);
 void TestSetConfig(u32 sourceLine, enum GenConfigTag configTag, u32 value);
 void ClearFlagAfterTest(void);
-void OpenPokemon(u32 sourceLine, u32 side, u32 species);
-void OpenPokemonMulti(u32 sourceLine, u32 side, u32 species);
+void OpenPokemon(u32 sourceLine, u32 position, u32 species);
+void OpenPokemonMulti(u32 sourceLine, u32 position, u32 species);
 void ClosePokemon(u32 sourceLine);
 
 void RNGSeed_(u32 sourceLine, rng_value_t seed);
