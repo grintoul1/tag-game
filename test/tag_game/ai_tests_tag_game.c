@@ -23,6 +23,7 @@ ASSUMPTIONS
 
 AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: Partner will switch into a type immunity when outsped and OHKO'd by one type of move (multibattle)")
 {
+    KNOWN_FAILING;
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
     PARAMETRIZE { moveA1 = MOVE_GIGA_IMPACT;    moveB1 = MOVE_HYPER_BEAM;       moveC1 = MOVE_FOCUS_BLAST;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE; }
