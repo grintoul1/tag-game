@@ -529,7 +529,7 @@ AI: Smart Trainer
 Chatot @ Wise Glasses  
 Ability: Tangled Feet  
 Level: 30  
-Modest Nature  
+Timid Nature  
 - Hyper Voice
 - Air Cutter
 - Roost
@@ -734,14 +734,12 @@ AI: Smart Trainer
 Voltorb @ Covert Cloak  
 Ability: Static  
 Level: 30  
-Tera Type: Electric  
 Modest Nature  
 - Discharge  
 
 Rhydon @ Passho Berry  
 Ability: Lightning Rod  
 Level: 30  
-Tera Type: Ground  
 Timid Nature  
 - Bubble Beam  
 - Incinerate  
@@ -760,7 +758,6 @@ AI: Smart Trainer
 Pikachu-Hoenn @ Adrenaline Orb  
 Ability: Lightning Rod  
 Level: 30  
-Tera Type: Electric  
 Timid Nature  
 - Volt Switch  
 - Grass Knot  
@@ -770,7 +767,6 @@ Timid Nature
 Blitzle @ Eviolite  
 Ability: Lightning Rod  
 Level: 30  
-Tera Type: Electric  
 Timid Nature  
 - Discharge  
 - Signal Beam  
@@ -790,7 +786,6 @@ AI: Smart Trainer
 Minun @ Assault Vest  
 Ability: Minus  
 Level: 30  
-Tera Type: Electric  
 Timid Nature  
 - Electro Ball  
 - Nuzzle  
@@ -800,7 +795,6 @@ Timid Nature
 Ampharos @ Shuca Berry  
 Ability: Minus  
 Level: 30  
-Tera Type: Electric  
 Hasty Nature  
 - Thunder Punch  
 - Power Gem  
@@ -819,7 +813,6 @@ AI: Smart Trainer
 Plusle @ Focus Sash  
 Ability: Plus  
 Level: 30  
-Tera Type: Electric  
 Timid Nature  
 - Electroweb  
 - Nasty Plot  
@@ -829,7 +822,6 @@ Timid Nature
 Toxtricity @ Silk Scarf  
 Ability: Plus  
 Level: 30  
-Tera Type: Electric  
 Naive Nature  
 - Hyper Voice  
 - Overdrive  
