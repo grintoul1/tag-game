@@ -1124,6 +1124,8 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
 
     if (!(oppositeBattlerMoveTypes == 1 || oppositeBattlerPartnerMoveTypes == 1))
         return FALSE;
+    if ((oppositeBattlerMoveTypes > 1 || oppositeBattlerPartnerMoveTypes > 1))
+        return FALSE;
     if (CanUseSuperEffectiveMoveAgainstOpponents(battler) && (RandomPercentage(RNG_AI_SWITCH_ABSORBING_STAY_IN, PARTNER_STAY_IN_ABSORBING_PERCENTAGE) || gAiLogicData->aiPredictionInProgress))
         return FALSE;
 
