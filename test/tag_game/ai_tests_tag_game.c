@@ -21,7 +21,7 @@ ASSUMPTIONS
     ASSUME(GetMoveEffect(MOVE_SONIC_BOOM) == EFFECT_FIXED_HP_DAMAGE);
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI_FLAG_PARTNER_TRAINER will switch into a type immunity when outsped and OHKO'd by one type of move (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a type immunity when outsped and OHKO'd by one type of move (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -45,13 +45,49 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI_FLAG_PARTNER_TRAINER will switch i
         MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
         MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
         MULTI_OPPONENT_B(SPECIES_SHUCKLE) { Speed(7); }
-        MULTI_OPPONENT_B(species) { Speed(6); Moves(moveC1); Ability(ability); }
+        MULTI_OPPONENT_B(species) { Level(1); Speed(6); Moves(moveC1); Ability(ability); }
     } WHEN {
             TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SWITCH(opponentRight, 5); }
         }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI_FLAG_PARTNER_TRAINER will not switch into a type immunity when the immunity is holding Ring Target (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a type immunity when outsped and OHKO'd by more than one type of move (multibattle)")
+{
+    u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
+
+    PARAMETRIZE { moveA1 = MOVE_GIGA_IMPACT;    moveB1 = MOVE_DRAGON_PULSE;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE;     }
+    PARAMETRIZE { moveA1 = MOVE_THUNDER_SHOCK;  moveB1 = MOVE_HYPER_BEAM;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_DONPHAN;      ability = ABILITY_BATTLE_ARMOR; }
+    PARAMETRIZE { moveA1 = MOVE_ROCK_SMASH;     moveB1 = MOVE_SHOCK_WAVE;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE;     }
+    PARAMETRIZE { moveA1 = MOVE_GUNK_SHOT;      moveB1 = MOVE_STORM_THROW;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_EXCADRILL;    ability = ABILITY_SAND_RUSH;    }
+    PARAMETRIZE { moveA1 = MOVE_MUD_SLAP;       moveB1 = MOVE_GUNK_SHOT;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_PIDGEOTTO;    ability = ABILITY_KEEN_EYE;     }
+    PARAMETRIZE { moveA1 = MOVE_CONFUSION;      moveB1 = MOVE_STOMPING_TANTRUM; moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SNEASEL;      ability = ABILITY_PRESSURE;     }
+    PARAMETRIZE { moveA1 = MOVE_HEX;            moveB1 = MOVE_PSYCHIC;          moveC1 = MOVE_BODY_SLAM;      species = SPECIES_BEWEAR;       ability = ABILITY_KLUTZ;        }
+    PARAMETRIZE { moveA1 = MOVE_DRAGON_PULSE;   moveB1 = MOVE_SHADOW_BONE;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FLORGES;      ability = ABILITY_FLOWER_VEIL;  }
+
+    GIVEN {
+        AI_FLAGS(0);
+        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
+        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        MULTI_OPPONENT_B(species) { Level(1); Speed(6); Moves(moveC1); Ability(ability); }
+        MULTI_OPPONENT_B(SPECIES_SHUCKLE) { Speed(7); }
+    } WHEN {
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SWITCH(opponentRight, 5); }
+            SCENE {
+                MESSAGE(AI_TRAINER_2_NAME " withdrew Caterpie!");
+                NONE_OF {
+                    MESSAGE(AI_TRAINER_2_NAME " sent out Carbink!");
+            }
+        }
+    }   
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a type immunity when the immunity is holding Ring Target (multibattle)")
 {
     u32 item = ITEM_NONE, moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -83,13 +119,13 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI_FLAG_PARTNER_TRAINER will not swit
         MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
         MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
         MULTI_OPPONENT_B((moveA1 == MOVE_HEX ? SPECIES_ARCEUS_FIGHTING : SPECIES_ARCEUS)) { Speed(7); Moves(MOVE_FOCUS_BLAST); }
-        MULTI_OPPONENT_B(species) { Speed(3); Moves(moveC1); Ability(ability); Item(item); }
+        MULTI_OPPONENT_B(species) { Level(1); Speed(3); Moves(moveC1); Ability(ability); Item(item); }
     } WHEN {
             TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (item == ITEM_RING_TARGET ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
         }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI_FLAG_PARTNER_TRAINER will switch into a 4x resist when outsped and OHKO'd by one type of move (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a 4x resist when outsped and OHKO'd by one type of move (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -174,7 +210,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI_FLAG_PARTNER_TRAINER will switch i
         MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
         MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
         MULTI_OPPONENT_B(SPECIES_CARBINK) { Speed(7); }
-        MULTI_OPPONENT_B(species) { Speed(6); Moves(moveC1); Ability(ability); }
+        MULTI_OPPONENT_B(species) { Level(1); Speed(6); Moves(moveC1); Ability(ability); }
     } WHEN {
             TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SWITCH(opponentRight, 5); }
         }   SCENE {
@@ -183,6 +219,32 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI_FLAG_PARTNER_TRAINER will switch i
                     MESSAGE(AI_TRAINER_2_NAME " sent out Carbink!");
                 }
         }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Soundproof immunity when outsped and OHKO'd by only one move (multibattle)")
+{
+    u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
+
+    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_ECHOED_VOICE;    moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BODY_SLAM;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
+
+    GIVEN {
+        AI_FLAGS(0);
+        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
+        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
+        MULTI_OPPONENT_B(SPECIES_CARBINK) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
+    } WHEN {
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (moveA1 == moveB1 ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
+    }   
 }
 
 AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI always chooses highest damaging move (multibattle)")
