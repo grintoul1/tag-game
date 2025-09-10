@@ -21,36 +21,168 @@ ASSUMPTIONS
     ASSUME(GetMoveEffect(MOVE_SONIC_BOOM) == EFFECT_FIXED_HP_DAMAGE);
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: Partner will switch into a type immunity when outsped and OHKO'd by one type of move (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI_FLAG_PARTNER_TRAINER will switch into a type immunity when outsped and OHKO'd by one type of move (multibattle)")
 {
-    KNOWN_FAILING;
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
-    PARAMETRIZE { moveA1 = MOVE_GIGA_IMPACT;    moveB1 = MOVE_HYPER_BEAM;       moveC1 = MOVE_FOCUS_BLAST;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE; }
-    PARAMETRIZE { moveA1 = MOVE_THUNDER_SHOCK;  moveB1 = MOVE_SHOCK_WAVE;       moveC1 = MOVE_FOCUS_BLAST;      species = SPECIES_DONPHAN;      ability = ABILITY_BATTLE_ARMOR; }
-    PARAMETRIZE { moveA1 = MOVE_ROCK_SMASH;     moveB1 = MOVE_STORM_THROW;      moveC1 = MOVE_FOCUS_BLAST;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE; }
-    PARAMETRIZE { moveA1 = MOVE_GUNK_SHOT;      moveB1 = MOVE_GUNK_SHOT;        moveC1 = MOVE_FOCUS_BLAST;      species = SPECIES_EXCADRILL;    ability = ABILITY_SAND_RUSH; }
-    PARAMETRIZE { moveA1 = MOVE_MUD_SLAP;       moveB1 = MOVE_STOMPING_TANTRUM; moveC1 = MOVE_FOCUS_BLAST;      species = SPECIES_PIDGEOTTO;    ability = ABILITY_KEEN_EYE; }
-    PARAMETRIZE { moveA1 = MOVE_CONFUSION;      moveB1 = MOVE_PSYCHIC;          moveC1 = MOVE_FOCUS_BLAST;      species = SPECIES_SNEASEL;      ability = ABILITY_PRESSURE; }
-    PARAMETRIZE { moveA1 = MOVE_HEX;            moveB1 = MOVE_SHADOW_BONE;      moveC1 = MOVE_FOCUS_BLAST;      species = SPECIES_BEWEAR;       ability = ABILITY_KLUTZ; }
-    PARAMETRIZE { moveA1 = MOVE_DRAGON_PULSE;   moveB1 = MOVE_DRAGON_RUSH;      moveC1 = MOVE_FOCUS_BLAST;      species = SPECIES_FLORGES;      ability = ABILITY_FLOWER_VEIL; }
+    PARAMETRIZE { moveA1 = MOVE_GIGA_IMPACT;    moveB1 = MOVE_HYPER_BEAM;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE;     }
+    PARAMETRIZE { moveA1 = MOVE_THUNDER_SHOCK;  moveB1 = MOVE_SHOCK_WAVE;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_DONPHAN;      ability = ABILITY_BATTLE_ARMOR; }
+    PARAMETRIZE { moveA1 = MOVE_ROCK_SMASH;     moveB1 = MOVE_STORM_THROW;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE;     }
+    PARAMETRIZE { moveA1 = MOVE_GUNK_SHOT;      moveB1 = MOVE_GUNK_SHOT;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_EXCADRILL;    ability = ABILITY_SAND_RUSH;    }
+    PARAMETRIZE { moveA1 = MOVE_MUD_SLAP;       moveB1 = MOVE_STOMPING_TANTRUM; moveC1 = MOVE_BODY_SLAM;      species = SPECIES_PIDGEOTTO;    ability = ABILITY_KEEN_EYE;     }
+    PARAMETRIZE { moveA1 = MOVE_CONFUSION;      moveB1 = MOVE_PSYCHIC;          moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SNEASEL;      ability = ABILITY_PRESSURE;     }
+    PARAMETRIZE { moveA1 = MOVE_HEX;            moveB1 = MOVE_SHADOW_BONE;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_BEWEAR;       ability = ABILITY_KLUTZ;        }
+    PARAMETRIZE { moveA1 = MOVE_DRAGON_PULSE;   moveB1 = MOVE_DRAGON_RUSH;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FLORGES;      ability = ABILITY_FLOWER_VEIL;  }
 
     GIVEN {
         AI_FLAGS(0);
         BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
         BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
-        BATTLER_AI_FLAGS(3, AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
-        MULTI_PARTNER(SPECIES_CATERPIE) { Level(1); Speed(1); }
-        MULTI_PARTNER(SPECIES_SHUCKLE) { Speed(3); }
-        MULTI_PARTNER(species) { Speed(6); Moves(moveC1); Ability(ability); }
-        MULTI_OPPONENT_A(SPECIES_ARCEUS) { Level(50); Speed(5); Moves(moveA1); }
-        MULTI_OPPONENT_B(SPECIES_ARCEUS) { Level(50); Speed(4); Moves(moveB1); }
+        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
+        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        MULTI_OPPONENT_B(SPECIES_SHUCKLE) { Speed(7); }
+        MULTI_OPPONENT_B(species) { Speed(6); Moves(moveC1); Ability(ability); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, moveA1, target:playerRight ); EXPECT_MOVE(opponentRight, moveB1, target:playerRight ); MOVE(playerLeft, MOVE_CELEBRATE); EXPECT_SWITCH(playerRight, 5); SKIP_TURN(playerRight); }
-            TURN {  SKIP_TURN(opponentLeft); SKIP_TURN(opponentRight); SKIP_TURN(playerLeft); SKIP_TURN(playerRight); }
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SWITCH(opponentRight, 5); }
         }   
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI_FLAG_PARTNER_TRAINER will not switch into a type immunity when the immunity is holding Ring Target (multibattle)")
+{
+    u32 item = ITEM_NONE, moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
+
+    PARAMETRIZE { item = ITEM_NONE;             moveA1 = MOVE_BODY_SLAM;      moveB1 = MOVE_BODY_SLAM;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE;       }
+    PARAMETRIZE { item = ITEM_NONE;             moveA1 = MOVE_THUNDER_SHOCK;  moveB1 = MOVE_SHOCK_WAVE;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_DONPHAN;      ability = ABILITY_BATTLE_ARMOR;   }
+    PARAMETRIZE { item = ITEM_NONE;             moveA1 = MOVE_ROCK_SMASH;     moveB1 = MOVE_STORM_THROW;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE;       }
+    PARAMETRIZE { item = ITEM_NONE;             moveA1 = MOVE_GUNK_SHOT;      moveB1 = MOVE_GUNK_SHOT;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_EXCADRILL;    ability = ABILITY_SAND_RUSH;      }
+    PARAMETRIZE { item = ITEM_NONE;             moveA1 = MOVE_MUD_SLAP;       moveB1 = MOVE_STOMPING_TANTRUM; moveC1 = MOVE_BODY_SLAM;      species = SPECIES_PIDGEOTTO;    ability = ABILITY_KEEN_EYE;       }
+    PARAMETRIZE { item = ITEM_NONE;             moveA1 = MOVE_CONFUSION;      moveB1 = MOVE_PSYCHIC;          moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SNEASEL;      ability = ABILITY_PRESSURE;       }
+    PARAMETRIZE { item = ITEM_NONE;             moveA1 = MOVE_HEX;            moveB1 = MOVE_SHADOW_BONE;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_BEWEAR;       ability = ABILITY_KLUTZ;          }
+    PARAMETRIZE { item = ITEM_NONE;             moveA1 = MOVE_DRAGON_PULSE;   moveB1 = MOVE_DRAGON_RUSH;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FLORGES;      ability = ABILITY_FLOWER_VEIL;    }
+    PARAMETRIZE { item = ITEM_RING_TARGET;      moveA1 = MOVE_BODY_SLAM;      moveB1 = MOVE_BODY_SLAM;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE;       }
+    PARAMETRIZE { item = ITEM_RING_TARGET;      moveA1 = MOVE_THUNDER_SHOCK;  moveB1 = MOVE_SHOCK_WAVE;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_DONPHAN;      ability = ABILITY_BATTLE_ARMOR;   }
+    PARAMETRIZE { item = ITEM_RING_TARGET;      moveA1 = MOVE_ROCK_SMASH;     moveB1 = MOVE_STORM_THROW;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE;       }
+    PARAMETRIZE { item = ITEM_RING_TARGET;      moveA1 = MOVE_GUNK_SHOT;      moveB1 = MOVE_GUNK_SHOT;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_EXCADRILL;    ability = ABILITY_SAND_RUSH;      }
+    PARAMETRIZE { item = ITEM_RING_TARGET;      moveA1 = MOVE_MUD_SLAP;       moveB1 = MOVE_STOMPING_TANTRUM; moveC1 = MOVE_BODY_SLAM;      species = SPECIES_PIDGEOTTO;    ability = ABILITY_KEEN_EYE;       }
+    PARAMETRIZE { item = ITEM_RING_TARGET;      moveA1 = MOVE_CONFUSION;      moveB1 = MOVE_PSYCHIC;          moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SNEASEL;      ability = ABILITY_PRESSURE;       }
+    PARAMETRIZE { item = ITEM_RING_TARGET;      moveA1 = MOVE_HEX;            moveB1 = MOVE_SHADOW_BONE;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_BEWEAR;       ability = ABILITY_KLUTZ;          }
+    PARAMETRIZE { item = ITEM_RING_TARGET;      moveA1 = MOVE_DRAGON_PULSE;   moveB1 = MOVE_DRAGON_RUSH;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FLORGES;      ability = ABILITY_FLOWER_VEIL;    }
+
+    GIVEN {
+        AI_FLAGS(0);
+        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
+        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        MULTI_OPPONENT_B((moveA1 == MOVE_HEX ? SPECIES_ARCEUS_FIGHTING : SPECIES_ARCEUS)) { Speed(7); Moves(MOVE_FOCUS_BLAST); }
+        MULTI_OPPONENT_B(species) { Speed(3); Moves(moveC1); Ability(ability); Item(item); }
+    } WHEN {
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (item == ITEM_RING_TARGET ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
+        }   
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI_FLAG_PARTNER_TRAINER will switch into a 4x resist when outsped and OHKO'd by one type of move (multibattle)")
+{
+    u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
+
+    PARAMETRIZE { moveA1 = MOVE_BLAST_BURN;     moveB1 = MOVE_BLAST_BURN;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_VOLCANION;    ability = ABILITY_WATER_ABSORB;     }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;       moveB1 = MOVE_ICE_BEAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_VOLCANION;    ability = ABILITY_WATER_ABSORB;     }
+    PARAMETRIZE { moveA1 = MOVE_STEEL_BEAM;     moveB1 = MOVE_HEAVY_SLAM;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_VOLCANION;    ability = ABILITY_WATER_ABSORB;     }
+    PARAMETRIZE { moveA1 = MOVE_STEEL_BEAM;     moveB1 = MOVE_HEAVY_SLAM;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ROTOM_HEAT;   ability = ABILITY_LEVITATE;         }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_INFERNAPE;    ability = ABILITY_BLAZE;            }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_POWER_WHIP;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TALONFLAME;   ability = ABILITY_FLAME_BODY;       }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TALONFLAME;   ability = ABILITY_FLAME_BODY;       }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_VOLCARONA;    ability = ABILITY_FLAME_BODY;       }
+    PARAMETRIZE { moveA1 = MOVE_BLAST_BURN;     moveB1 = MOVE_BLAST_BURN;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_MAGCARGO;     ability = ABILITY_FLAME_BODY;       }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_CHANDELURE;   ability = ABILITY_FLAME_BODY;       }
+    PARAMETRIZE { moveA1 = MOVE_BLAST_BURN;     moveB1 = MOVE_BLAST_BURN;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_RESHIRAM;     ability = ABILITY_TURBOBLAZE;       }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_RESHIRAM;     ability = ABILITY_TURBOBLAZE;       }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_HEATRAN;      ability = ABILITY_FLAME_BODY;       }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;       moveB1 = MOVE_ICE_BEAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_HEATRAN;      ability = ABILITY_FLAME_BODY;       }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_HEATRAN;      ability = ABILITY_FLAME_BODY;       }
+    PARAMETRIZE { moveA1 = MOVE_STEEL_BEAM;     moveB1 = MOVE_HEAVY_SLAM;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_HEATRAN;      ability = ABILITY_FLAME_BODY;       }
+    PARAMETRIZE { moveA1 = MOVE_LIGHT_OF_RUIN;  moveB1 = MOVE_MOONBLAST;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_HEATRAN;      ability = ABILITY_FLAME_BODY;       }
+    PARAMETRIZE { moveA1 = MOVE_STEEL_BEAM;     moveB1 = MOVE_HEAVY_SLAM;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_VOLT_ABSORB;      }
+    PARAMETRIZE { moveA1 = MOVE_WAVE_CRASH;     moveB1 = MOVE_HYDRO_PUMP;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LOMBRE;       ability = ABILITY_RAIN_DISH;        }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;       moveB1 = MOVE_ICE_BEAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_WALREIN;      ability = ABILITY_OBLIVIOUS;        }
+    PARAMETRIZE { moveA1 = MOVE_BLAST_BURN;     moveB1 = MOVE_BLAST_BURN;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_KABUTOPS;     ability = ABILITY_WEAK_ARMOR;       }
+    PARAMETRIZE { moveA1 = MOVE_WAVE_CRASH;     moveB1 = MOVE_HYDRO_PUMP;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TATSUGIRI;    ability = ABILITY_COMMANDER;        }
+    PARAMETRIZE { moveA1 = MOVE_BLAST_BURN;     moveB1 = MOVE_BLAST_BURN;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TATSUGIRI;    ability = ABILITY_COMMANDER;        }
+    PARAMETRIZE { moveA1 = MOVE_STEEL_BEAM;     moveB1 = MOVE_HEAVY_SLAM;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_EMPOLEON;     ability = ABILITY_TORRENT;          }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;       moveB1 = MOVE_ICE_BEAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_EMPOLEON;     ability = ABILITY_TORRENT;          }
+    PARAMETRIZE { moveA1 = MOVE_WILD_CHARGE;    moveB1 = MOVE_THUNDERBOLT;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ROTOM_MOW;    ability = ABILITY_LEVITATE;         }
+    PARAMETRIZE { moveA1 = MOVE_WILD_CHARGE;    moveB1 = MOVE_THUNDERBOLT;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ZEKROM;       ability = ABILITY_TERAVOLT;         }
+    PARAMETRIZE { moveA1 = MOVE_STEEL_BEAM;     moveB1 = MOVE_HEAVY_SLAM;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_MAGNETON;     ability = ABILITY_ANALYTIC;         }
+    PARAMETRIZE { moveA1 = MOVE_BRAVE_BIRD;     moveB1 = MOVE_HURRICANE;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_MAGNETON;     ability = ABILITY_ANALYTIC;         }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_VENUSAUR;     ability = ABILITY_OVERGROW;         }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_JUMPLUFF;     ability = ABILITY_CHLOROPHYLL;      }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FERROTHORN;   ability = ABILITY_IRON_BARBS;       }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LEAVANNY;     ability = ABILITY_LEAF_GUARD;       }
+    PARAMETRIZE { moveA1 = MOVE_EARTHQUAKE;     moveB1 = MOVE_EARTH_POWER;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LEAVANNY;     ability = ABILITY_LEAF_GUARD;       }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TOXICROAK;    ability = ABILITY_POISON_TOUCH;     }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FLAMIGO;      ability = ABILITY_TANGLED_FEET;     }
+    PARAMETRIZE { moveA1 = MOVE_DARKEST_LARIAT; moveB1 = MOVE_DARK_PULSE;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SCRAFTY;      ability = ABILITY_SHED_SKIN;        }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LUCARIO;      ability = ABILITY_INNER_FOCUS;      }
+    PARAMETRIZE { moveA1 = MOVE_ROCK_WRECKER;   moveB1 = MOVE_POWER_GEM;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LUCARIO;      ability = ABILITY_INNER_FOCUS;      }
+    PARAMETRIZE { moveA1 = MOVE_GUNK_SHOT;      moveB1 = MOVE_SLUDGE_BOMB;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_NIDOQUEEN;    ability = ABILITY_SHEER_FORCE;      }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_CROBAT;       ability = ABILITY_INNER_FOCUS;      }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_CROBAT;       ability = ABILITY_INNER_FOCUS;      }
+    PARAMETRIZE { moveA1 = MOVE_CLOSE_COMBAT;   moveB1 = MOVE_AURA_SPHERE;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_CROBAT;       ability = ABILITY_INNER_FOCUS;      }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SCOLIPEDE;    ability = ABILITY_SPEED_BOOST;      }
+    PARAMETRIZE { moveA1 = MOVE_CLOSE_COMBAT;   moveB1 = MOVE_AURA_SPHERE;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SCOLIPEDE;    ability = ABILITY_SPEED_BOOST;      }
+    PARAMETRIZE { moveA1 = MOVE_GUNK_SHOT;      moveB1 = MOVE_SLUDGE_BOMB;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE;         }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE;         }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_DRAGALGE;     ability = ABILITY_ADAPTABILITY;     }
+    PARAMETRIZE { moveA1 = MOVE_GUNK_SHOT;      moveB1 = MOVE_SLUDGE_BOMB;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_GOLEM;        ability = ABILITY_ROCK_HEAD;        }
+    PARAMETRIZE { moveA1 = MOVE_GUNK_SHOT;      moveB1 = MOVE_SLUDGE_BOMB;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_PALOSSAND;    ability = ABILITY_SAND_VEIL;        }
+    PARAMETRIZE { moveA1 = MOVE_ROCK_WRECKER;   moveB1 = MOVE_POWER_GEM;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_EXCADRILL;    ability = ABILITY_SAND_FORCE;       }
+    PARAMETRIZE { moveA1 = MOVE_CLOSE_COMBAT;   moveB1 = MOVE_AURA_SPHERE;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SIGILYPH;     ability = ABILITY_MAGIC_GUARD;      }
+    PARAMETRIZE { moveA1 = MOVE_CLOSE_COMBAT;   moveB1 = MOVE_AURA_SPHERE;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_BUTTERFREE;   ability = ABILITY_COMPOUND_EYES;    }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_BUTTERFREE;   ability = ABILITY_COMPOUND_EYES;    }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_DRIFBLIM;     ability = ABILITY_AFTERMATH;        }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_DRAGONITE;    ability = ABILITY_INNER_FOCUS;      }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_CELESTEELA;   ability = ABILITY_BEAST_BOOST;      }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_CELESTEELA;   ability = ABILITY_BEAST_BOOST;      }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TOGETIC;      ability = ABILITY_SERENE_GRACE;     }
+    PARAMETRIZE { moveA1 = MOVE_CLOSE_COMBAT;   moveB1 = MOVE_AURA_SPHERE;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TOGETIC;      ability = ABILITY_SERENE_GRACE;     }
+    PARAMETRIZE { moveA1 = MOVE_PSYCHO_CUT;     moveB1 = MOVE_PSYCHIC;          moveC1 = MOVE_BODY_SLAM;      species = SPECIES_METAGROSS;    ability = ABILITY_CLEAR_BODY;       }
+    PARAMETRIZE { moveA1 = MOVE_CLOSE_COMBAT;   moveB1 = MOVE_AURA_SPHERE;      moveC1 = MOVE_BODY_SLAM;      species = SPECIES_GARDEVOIR;    ability = ABILITY_SYNCHRONIZE;      }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ESCAVALIER;   ability = ABILITY_SHELL_ARMOR;      }
+    PARAMETRIZE { moveA1 = MOVE_BLAST_BURN;     moveB1 = MOVE_BLAST_BURN;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TYRANTRUM;    ability = ABILITY_STRONG_JAW;       }
+    PARAMETRIZE { moveA1 = MOVE_GIGA_IMPACT;    moveB1 = MOVE_HYPER_BEAM;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_AGGRON;       ability = ABILITY_ROCK_HEAD;        }
+    PARAMETRIZE { moveA1 = MOVE_BRAVE_BIRD;     moveB1 = MOVE_HURRICANE;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_AGGRON;       ability = ABILITY_ROCK_HEAD;        }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_DOUBLADE;     ability = ABILITY_NO_GUARD;         }
+    PARAMETRIZE { moveA1 = MOVE_FRENZY_PLANT;   moveB1 = MOVE_FRENZY_PLANT;     moveC1 = MOVE_BODY_SLAM;      species = SPECIES_DIALGA;       ability = ABILITY_PRESSURE;         }
+    PARAMETRIZE { moveA1 = MOVE_X_SCISSOR;      moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_MAGEARNA;     ability = ABILITY_SOUL_HEART;       }
+
+    GIVEN {
+        AI_FLAGS(0);
+        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
+        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        MULTI_OPPONENT_B(SPECIES_CARBINK) { Speed(7); }
+        MULTI_OPPONENT_B(species) { Speed(6); Moves(moveC1); Ability(ability); }
+    } WHEN {
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SWITCH(opponentRight, 5); }
+        }   SCENE {
+                MESSAGE(AI_TRAINER_2_NAME " withdrew Caterpie!");
+                NONE_OF {
+                    MESSAGE(AI_TRAINER_2_NAME " sent out Carbink!");
+                }
+        }
 }
 
 AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI always chooses highest damaging move (multibattle)")
