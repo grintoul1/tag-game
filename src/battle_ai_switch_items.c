@@ -987,7 +987,6 @@ static bool32 FindMonThatAbsorbsOpponentsMove(u32 battler)
 //Partner should switch if outsped and OHKO'd by only one opponent and only one move, which they have a mon in the back that either absorbs or is immune to it
 static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
 {
-    MgbaPrintf(MGBA_LOG_WARN, "Partner Absorb Init");
     u8 battlerIn1, battlerIn2;
     u8 numAbsorbingAbilities = 0;
     u16 absorbingTypeAbilities[3]; // Array size is maximum number of absorbing abilities for a single type
@@ -1160,32 +1159,21 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
             if ((GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0)) == UQ_4_12(0.00)) || (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1)) == UQ_4_12(0.00)))
                 mod = UQ_4_12(0.00);
             else
-                mod = ((GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0))) * (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1)))/UQ_4_12(1.00));
+                mod = (((GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0))) * (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1))))/UQ_4_12(1.00));
         }
         else
         {
             if (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0)) == UQ_4_12(0.00))
-                mod = 0;
+                mod = UQ_4_12(0.00);
             else
-                mod = (UQ_4_12(1.00) * (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0))/UQ_4_12(1.00)));
+                mod = GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0));
         }
-        
         // Check for type immunities without considering abilities
-        if(!(GetMonData(&party[i], MON_DATA_HELD_ITEM, NULL) == HOLD_EFFECT_RING_TARGET))
+        if(!(GetMonData(&party[i], MON_DATA_HELD_ITEM, NULL) == ITEM_RING_TARGET))
         {
-            if((incomingType == TYPE_ELECTRIC) && (mod <= UQ_4_12(0.25)))
-                return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_POISON) && (mod <= UQ_4_12(0.25)))
-                return SetSwitchinAndSwitch(battler, i);
             if(((incomingType == TYPE_NORMAL) || (incomingType == TYPE_FIGHTING)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_SCRAPPY) && (GetBattlerAbility(opposingBattler2) != ABILITY_SCRAPPY)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_MINDS_EYE) && (GetBattlerAbility(opposingBattler2) != ABILITY_MINDS_EYE)) && (mod <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_DRAGON) && (mod <= UQ_4_12(0.25)))
-                return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_GROUND) && (mod <= UQ_4_12(0.25)))
-                return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_GHOST) && (mod <= UQ_4_12(0.25)))
-                return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_PSYCHIC) && (mod <= UQ_4_12(0.25)))
+            if(mod <= UQ_4_12(0.25))
                 return SetSwitchinAndSwitch(battler, i);
         }
     }
