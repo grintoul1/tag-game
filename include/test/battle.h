@@ -801,10 +801,10 @@ extern struct BattleTestRunnerState *const gBattleTestRunnerState;
 #define APPEND_COMMA_TRUE(a) , a, TRUE
 #define R_APPEND_TRUE(...) __VA_OPT__(FIRST(__VA_ARGS__), TRUE RECURSIVELY(R_FOR_EACH(APPEND_COMMA_TRUE, EXCEPT_1(__VA_ARGS__))))
 
-#define AI_TRAINER_NAME "{PKMN} TRAINER LEAF"
-#define AI_TRAINER_2_NAME "{PKMN} TRAINER RED"
-#define AI_TRAINER_NAME_SHORT "LEAF"
-#define AI_TRAINER_2_NAME_SHORT "RED"
+#define AI_TRAINER_NAME "{PKMN} Trainer Leaf"
+#define AI_TRAINER_2_NAME "{PKMN} Trainer Red"
+#define AI_TRAINER_NAME_SHORT "Leaf"
+#define AI_TRAINER_2_NAME_SHORT "Red"
 
 /* Test */
 
