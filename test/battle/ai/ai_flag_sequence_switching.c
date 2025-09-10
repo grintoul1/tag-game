@@ -5,7 +5,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SEQUENCE_SWITCHING: AI will always switch after a
 {
     u32 aiSequenceSwitchingFlag = 0;
 
-    KNOWN_FAILING; // Not used in game
     PARAMETRIZE { aiSequenceSwitchingFlag = 0; }
     PARAMETRIZE { aiSequenceSwitchingFlag = AI_FLAG_SEQUENCE_SWITCHING; }
 

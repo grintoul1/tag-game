@@ -24,7 +24,6 @@ AI_SINGLE_BATTLE_TEST("AI gets baited by Protect Switch tactics") // This behavi
 // General switching behaviour
 AI_SINGLE_BATTLE_TEST("AI switches if Perish Song is about to kill")
 {
-    KNOWN_FAILING; // Unsure why, but Smart Switching seems to be permanently set 
     PASSES_RANDOMLY(SHOULD_SWITCH_PERISH_SONG_PERCENTAGE, 100, RNG_AI_SWITCH_PERISH_SONG);
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
@@ -43,15 +42,10 @@ AI_SINGLE_BATTLE_TEST("AI switches if Perish Song is about to kill")
 
 AI_DOUBLE_BATTLE_TEST("AI will not try to switch for the same Pokémon for 2 spots in a double battle (all bad moves)")
 {
-    u32 flags;
 
-    KNOWN_FAILING; // Unsure why, but Smart Switching seems to be permanently set 
-    PARAMETRIZE {flags = AI_FLAG_SMART_SWITCHING; }
-    PARAMETRIZE {flags = 0; }
-
-    PASSES_RANDOMLY(SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
+    PASSES_RANDOMLY(100, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
-        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | flags);
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING);
         PLAYER(SPECIES_RATTATA);
         PLAYER(SPECIES_RATTATA);
         // No moves to damage player.
@@ -196,7 +190,6 @@ AI_SINGLE_BATTLE_TEST("When AI switches out due to having no move that affects t
 
 AI_DOUBLE_BATTLE_TEST("AI will not try to switch for the same Pokémon for 2 spots in a double battle (Wonder Guard)")
 {
-    KNOWN_FAILING; // Not used in game
     PASSES_RANDOMLY(SHOULD_SWITCH_WONDER_GUARD_PERCENTAGE, 100, RNG_AI_SWITCH_WONDER_GUARD);
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT | AI_FLAG_SMART_SWITCHING);
@@ -337,7 +330,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI will not switch in a Pokemo
     u32 speedAlakazm;
     u32 aiSmartSwitchFlags = 0;
 
-    KNOWN_FAILING; // Custom AI used.
     PARAMETRIZE { speedAlakazm = 200; alakazamFirst = TRUE; } // AI will always send out Alakazan as it sees a KO with Focus Blast, even if Alakazam dies before it can get it off
     PARAMETRIZE { speedAlakazm = 200; alakazamFirst = FALSE; aiSmartSwitchFlags = AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES; } // AI_FLAG_SMART_MON_CHOICES lets AI see that Alakazam would be KO'd before it can KO, and won't switch it in
     PARAMETRIZE { speedAlakazm = 400; alakazamFirst = TRUE; aiSmartSwitchFlags = AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES; } // AI_FLAG_SMART_MON_CHOICES recognizes that Alakazam is faster and can KO, and will switch it in
