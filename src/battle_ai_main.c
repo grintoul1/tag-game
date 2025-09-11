@@ -349,7 +349,7 @@ void SetupAIPredictionData(u32 battler, enum SwitchType switchType)
     if ((gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PREDICT_SWITCH))
     {
         gAiLogicData->mostSuitableMonId[opposingBattler] = GetMostSuitableMonToSwitchInto(opposingBattler, switchType);
-        if (GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)
+        if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING)
         {
             if (PartnerShouldSwitch(opposingBattler))
             gAiLogicData->shouldSwitch |= (1u << battler);
@@ -366,7 +366,7 @@ void SetupAIPredictionData(u32 battler, enum SwitchType switchType)
     if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PREDICT_MOVE)
     {
         gAiLogicData->predictedMove[opposingBattler] = gBattleMons[opposingBattler].moves[BattleAI_ChooseMoveIndex(opposingBattler)];
-        if (GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)
+        if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING)
         {
             PartnerModifySwitchAfterMoveScoring(opposingBattler);
         }
@@ -418,7 +418,7 @@ void ComputeBattlerDecisions(u32 battler)
 
         // AI's move scoring
         gAiBattleData->chosenMoveIndex[battler] = BattleAI_ChooseMoveIndex(battler); // Calculate score and chose move index
-        if (GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)
+        if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING)
         {
             PartnerModifySwitchAfterMoveScoring(battler);
         }
