@@ -221,14 +221,20 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
         }
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Soundproof immunity when outsped and OHKO'd by only one move (multibattle)")
+// Non-sound moves put on battler 2 as battler 3 runs the regular switch AI when immunity fails, meaning Soundproof sees zero damage if sound move on battler 2
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Soundproof immunity when outsped and OHKO'd by only sound moves (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
-    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BUG_BUZZ;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
-    PARAMETRIZE { moveA1 = MOVE_ECHOED_VOICE;    moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BUG_BUZZ;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_ECHOED_VOICE;   moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
     PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
-    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BODY_SLAM;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_HYPER_VOICE;    moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_BOOMBURST;      moveB1 = MOVE_UPROAR;            moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_BOOMBURST;      moveB1 = MOVE_SPARKLING_ARIA;    moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_PSYCHIC_NOISE;  moveB1 = MOVE_UPROAR;            moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_UPROAR;         moveB1 = MOVE_BRICK_BREAK;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_BODY_SLAM;      moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   }
 
     GIVEN {
         AI_FLAGS(0);
@@ -240,10 +246,185 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
         MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
         MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
         MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
         MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
-        MULTI_OPPONENT_B(SPECIES_CARBINK) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
     } WHEN {
-            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (moveA1 == moveB1 ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); ((IsSoundMove(moveA1) && IsSoundMove(moveB1)) ? EXPECT_SWITCH(opponentRight, 5) : EXPECT_SWITCH(opponentRight, 4)); }
+    }   
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Soundproof immunity when outsped and OHKO'd by sound moves under Moldbreaker (multibattle)")
+{
+    KNOWN_FAILING; // AI_CalcPartyMonDamage not recognising Moldbreaker?
+    u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE, ability1 = ABILITY_NONE, ability2 = ABILITY_NONE;
+
+    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BUG_BUZZ;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_NONE;          ability2 = ABILITY_NONE;         }
+    PARAMETRIZE { moveA1 = MOVE_ECHOED_VOICE;   moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_NONE;          ability2 = ABILITY_NONE;         }
+    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BUG_BUZZ;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_NONE;         }
+    PARAMETRIZE { moveA1 = MOVE_ECHOED_VOICE;   moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_NONE;         }
+    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BUG_BUZZ;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_NONE;          ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_ECHOED_VOICE;   moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_NONE;          ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BUG_BUZZ;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_ECHOED_VOICE;   moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
+
+    GIVEN {
+        AI_FLAGS(0);
+        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
+        MULTI_PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
+        MULTI_PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
+        MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
+    } WHEN {
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (((ability1 == ABILITY_MOLD_BREAKER) || (ability2 == ABILITY_MOLD_BREAKER)) ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
+    }   
+}
+
+// Non-ballistic moves put on battler 2 as battler 3 runs the regular switch AI when immunity fails, meaning Bulletproof sees zero damage if ballistic move on battler 2
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Bulletproof immunity when outsped and OHKO'd by only ballistic moves (multibattle)")
+{
+    u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
+
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MUD_BOMB;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MAGNET_BOMB;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_MUD_BOMB;       moveB1 = MOVE_ENERGY_BALL;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_MUD_BOMB;       moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_OCTAZOOKA;      moveB1 = MOVE_EGG_BOMB;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_OCTAZOOKA;      moveB1 = MOVE_ROCK_BLAST;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_SHADOW_BALL;    moveB1 = MOVE_ROCK_BLAST;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_SEARING_SHOT;   moveB1 = MOVE_BRICK_BREAK;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   }
+    PARAMETRIZE { moveA1 = MOVE_BODY_SLAM;      moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   }
+
+    GIVEN {
+        AI_FLAGS(0);
+        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
+        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
+        MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
+    } WHEN {
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); ((IsBallisticMove(moveA1) && IsBallisticMove(moveB1)) ? EXPECT_SWITCH(opponentRight, 5) : EXPECT_SWITCH(opponentRight, 4)); }
+    }   
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Bulletproof immunity when outsped and OHKO'd by ballistic moves under Moldbreaker (multibattle)")
+{
+    KNOWN_FAILING; // AI_CalcPartyMonDamage not recognising Moldbreaker?
+    u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE, ability1 = ABILITY_NONE, ability2 = ABILITY_NONE;
+
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MUD_BOMB;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_NONE;          ability2 = ABILITY_NONE;         }
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MAGNET_BOMB;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_NONE;          ability2 = ABILITY_NONE;         }
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MUD_BOMB;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_NONE;         }
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MAGNET_BOMB;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_NONE;         }
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MUD_BOMB;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_NONE;          ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MAGNET_BOMB;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_NONE;          ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MUD_BOMB;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MAGNET_BOMB;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
+
+    GIVEN {
+        AI_FLAGS(0);
+        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
+        MULTI_PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
+        MULTI_PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
+        MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
+    } WHEN {
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (((ability1 == ABILITY_MOLD_BREAKER) || (ability2 == ABILITY_MOLD_BREAKER)) ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
+    }   
+}
+
+// Non-wind moves put on battler 2 as battler 3 runs the regular switch AI when immunity fails, meaning Wind-immune mons sees zero damage if wind move on battler 2
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Wind immunity when outsped and OHKO'd by only wind moves (multibattle)")
+{
+    u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
+
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;       moveB1 = MOVE_HURRICANE;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   }
+    PARAMETRIZE { moveA1 = MOVE_HURRICANE;      moveB1 = MOVE_HURRICANE;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   }
+    PARAMETRIZE { moveA1 = MOVE_ICY_WIND;       moveB1 = MOVE_AIR_CUTTER;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   }
+    PARAMETRIZE { moveA1 = MOVE_HURRICANE;      moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   }
+    PARAMETRIZE { moveA1 = MOVE_GUST;           moveB1 = MOVE_PETAL_BLIZZARD;    moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   }
+    PARAMETRIZE { moveA1 = MOVE_GUST;           moveB1 = MOVE_HEAT_WAVE;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   }
+    PARAMETRIZE { moveA1 = MOVE_SANDSEAR_STORM; moveB1 = MOVE_PETAL_BLIZZARD;    moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   }
+    PARAMETRIZE { moveA1 = MOVE_FAIRY_WIND;     moveB1 = MOVE_BRICK_BREAK;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   }
+    PARAMETRIZE { moveA1 = MOVE_BODY_SLAM;      moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;       moveB1 = MOVE_HURRICANE;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   }
+    PARAMETRIZE { moveA1 = MOVE_HURRICANE;      moveB1 = MOVE_HURRICANE;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   }
+    PARAMETRIZE { moveA1 = MOVE_ICY_WIND;       moveB1 = MOVE_AIR_CUTTER;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   }
+    PARAMETRIZE { moveA1 = MOVE_HURRICANE;      moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   }
+    PARAMETRIZE { moveA1 = MOVE_GUST;           moveB1 = MOVE_PETAL_BLIZZARD;    moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   }
+    PARAMETRIZE { moveA1 = MOVE_GUST;           moveB1 = MOVE_HEAT_WAVE;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   }
+    PARAMETRIZE { moveA1 = MOVE_SANDSEAR_STORM; moveB1 = MOVE_PETAL_BLIZZARD;    moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   }
+    PARAMETRIZE { moveA1 = MOVE_FAIRY_WIND;     moveB1 = MOVE_BRICK_BREAK;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   }
+    PARAMETRIZE { moveA1 = MOVE_BODY_SLAM;      moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   }
+
+    GIVEN {
+        AI_FLAGS(0);
+        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
+        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
+        MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
+    } WHEN {
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); ((IsWindMove(moveA1) && IsWindMove(moveB1)) ? EXPECT_SWITCH(opponentRight, 5) : EXPECT_SWITCH(opponentRight, 4)); }
+    }   
+}
+
+// Moldbreaker needs to be on opposite battler for regular switch check
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Wind immunity when outsped and OHKO'd by wind moves under Moldbreaker (multibattle)")
+{
+    KNOWN_FAILING; // AI_CalcPartyMonDamage not recognising Moldbreaker?
+    u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE, ability1 = ABILITY_NONE, ability2 = ABILITY_NONE;
+
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_OWN_TEMPO;    }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_OWN_TEMPO;    }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_OWN_TEMPO;    }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_OWN_TEMPO;    }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
+
+    GIVEN {
+        AI_FLAGS(0);
+        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
+        MULTI_PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
+        MULTI_PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
+        MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
+    } WHEN {
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (((ability1 == ABILITY_MOLD_BREAKER) || (ability2 == ABILITY_MOLD_BREAKER)) ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
     }   
 }
 
