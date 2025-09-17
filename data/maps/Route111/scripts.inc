@@ -105,6 +105,7 @@ Route111_EventScript_SetWinstratesNotDefeated::
 	setflag FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE
 	setflag FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE
 	setflag FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE
+	setflag FLAG_HIDE_ROUTE_111_VITO_WINSTRATE
 	cleartrainerflag TRAINER_VICTOR
 	cleartrainerflag TRAINER_VICTORIA
 	cleartrainerflag TRAINER_VIVI
@@ -303,10 +304,15 @@ Route111_EventScript_WinstratesNotReady::
 	end
 
 Route111_EventScript_BattleWinstrates::
+	applymovement LOCALID_VICTOR, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route111_Text_VictorIntro, MSGBOX_DEFAULT
+	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route111_Movement_MakeSpaceForWinstrates
 	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
-	call_if_eq VAR_TEMP_4, 116, Route111_EventScript_EmmieMakeSpaceForWinstrates1
-	call_if_eq VAR_TEMP_4, 115, Route111_EventScript_EmmieMakeSpaceForWinstrates2
+	call_if_eq VAR_TEMP_3, 13, Route111_EventScript_EmmieMakeSpaceForWinstrates1
+	call_if_eq VAR_TEMP_3, 14, Route111_EventScript_EmmieMakeSpaceForWinstrates2
+	call_if_eq VAR_TEMP_3, 12, Route111_EventScript_EmmieMakeSpaceForWinstrates2
 	applymovement LOCALID_VICTOR, Route111_Movement_Winstrate1_StartBattle
 	waitmovement 0
 	call Route111_EventScript_OpenWinstrateDoor
@@ -316,7 +322,8 @@ Route111_EventScript_BattleWinstrates::
 	applymovement LOCALID_VICTORIA, Route111_Movement_Winstrate2_StartBattle
 	waitmovement 0
 	call Route111_EventScript_CloseWinstrateDoor
-	msgbox Route111_Text_VictorIntro, MSGBOX_DEFAULT
+	applymovement LOCALID_VICTORIA, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
 	msgbox Route111_Text_VictoriaIntro, MSGBOX_DEFAULT
 	multi_2p_vs_2 TRAINER_VICTOR, Route111_Text_VictorDefeat, TRAINER_VICTORIA, Route111_Text_VictoriaDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
@@ -334,8 +341,19 @@ Route111_EventScript_EmmieMakeSpaceForWinstrates2::
 	return
 
 Route111_Movement_EmmieMakeSpaceForWinstrates:
+	walk_down
 	walk_right
 	walk_in_place_faster_up
+	step_end
+
+Route111_Movement_VictorMoveForVivi:
+	walk_right
+	walk_in_place_faster_down
+	step_end
+
+Route111_Movement_VictoriaMoveForVicky:
+	walk_left
+	walk_in_place_faster_down
 	step_end
 
 Route111_EventScript_VictorVictoriaVictory::
@@ -345,18 +363,12 @@ Route111_EventScript_VictorVictoriaVictory::
 	msgbox Route111_Text_VictorPostBattle, MSGBOX_AUTOCLOSE
 	msgbox Route111_Text_VictoriaPostBattle, MSGBOX_AUTOCLOSE
 	closemessage
+	applymovement LOCALID_VICTOR, Route111_Movement_VictorMoveForVivi
+	applymovement LOCALID_VICTORIA, Route111_Movement_VictoriaMoveForVicky
+	waitmovement 0
 	call Route111_EventScript_OpenWinstrateDoor
 	waitmovement 0
-	applymovement LOCALID_VICTORIA, Route111_Movement_Winstrate2_EndBattle
-	waitmovement 0
-	removeobject LOCALID_VICTORIA
-	applymovement LOCALID_VICTOR, Route111_Movement_Winstrate1_EndBattle
-	waitmovement 0
-	removeobject LOCALID_VICTOR
-	call Route111_EventScript_CloseWinstrateDoor
 	applymovement OBJ_EVENT_ID_PLAYER, Route111_Movement_WaitForNextWinstrate
-	waitmovement 0
-	call Route111_EventScript_OpenWinstrateDoor
 	waitmovement 0
 	addobject LOCALID_VIVI
 	applymovement LOCALID_VIVI, Route111_Movement_WinstrateExitHouse
@@ -369,7 +381,11 @@ Route111_EventScript_VictorVictoriaVictory::
 	applymovement LOCALID_VICKY, Route111_Movement_Winstrate2_StartBattle
 	waitmovement 0
 	call Route111_EventScript_CloseWinstrateDoor
+	applymovement LOCALID_VIVI, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
 	msgbox Route111_Text_ViviIntro, MSGBOX_DEFAULT
+	applymovement LOCALID_VICKY, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
 	msgbox Route111_Text_VickyIntro, MSGBOX_DEFAULT
 	multi_2p_vs_2 TRAINER_VIVI, Route111_Text_ViviDefeat, TRAINER_VICKY, Route111_Text_VickyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
@@ -379,21 +395,66 @@ Route111_EventScript_VictorVictoriaVictory::
 	waitstate
 
 	Route111_EventScript_ViviVickyVictory::
+	applymovement LOCALID_VIVI, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
 	msgbox Route111_Text_ViviPostBattle, MSGBOX_DEFAULT
+	applymovement LOCALID_VICKY, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
 	msgbox Route111_Text_VickyPostBattle, MSGBOX_DEFAULT
 	closemessage
+	applymovement LOCALID_VICKY, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route111_Text_VickyCallVito, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_VICKY, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
 	call Route111_EventScript_OpenWinstrateDoor
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Route111_Movement_WaitForNextWinstrate
+	waitmovement 0
+	addobject LOCALID_ROUTE111_VITO
+	applymovement LOCALID_ROUTE111_VITO, Route111_Movement_VitoExitHouse
+	waitmovement 0
+	call Route111_EventScript_CloseWinstrateDoor
+	playbgm MUS_RG_ENCOUNTER_GYM_LEADER, FALSE
+	applymovement LOCALID_ROUTE111_VITO, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route111_Text_VitoIntro, MSGBOX_DEFAULT
+	playbgm MUS_ROUTE110, FALSE
+	multi_2p_vs_1 TRAINER_VITO_ROUTE111, Route111_Text_VitoDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route111_EventScript_VitoVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+Route111_EventScript_VitoVictory::
+	msgbox Route111_Text_VitoPostBattle, MSGBOX_DEFAULT
+	closemessage
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject LOCALID_ROUTE111_VITO
+	fadescreenswapbuffers FADE_FROM_BLACK
+	delay 20
+	call Route111_EventScript_OpenWinstrateDoor
+	waitmovement 0
 	applymovement LOCALID_VICKY, Route111_Movement_Winstrate2_EndBattle
 	waitmovement 0
 	removeobject LOCALID_VICKY
 	applymovement LOCALID_VIVI, Route111_Movement_Winstrate1_EndBattle
 	waitmovement 0
 	removeobject LOCALID_VIVI
+	applymovement LOCALID_VICTORIA, Route111_Movement_Winstrate4_EndBattle
+	waitmovement 0
+	removeobject LOCALID_VICTORIA
+	applymovement LOCALID_VICTOR, Route111_Movement_Winstrate3_EndBattle
+	waitmovement 0
+	removeobject LOCALID_VICTOR
 	call Route111_EventScript_CloseWinstrateDoor
 	setflag FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE
 	setflag FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE
 	setflag FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE
 	setflag FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE
+	setflag FLAG_HIDE_ROUTE_111_VITO_WINSTRATE
 	setflag FLAG_HIDE_ROUTE_111_AQUA_2
 	setvar VAR_PARTNER_EMMIE_STATE, 21
 	release
@@ -416,6 +477,7 @@ Route111_Movement_WinstrateEnterHouse:
 
 Route111_Movement_MakeSpaceForWinstrates:
 	walk_down
+	walk_down
 	walk_in_place_faster_up
 	step_end
 
@@ -427,6 +489,8 @@ Route111_Movement_Winstrate1_StartBattle:
 
 Route111_Movement_Winstrate2_StartBattle:
 	walk_down
+	walk_left
+	walk_in_place_faster_down
 	step_end
 
 Route111_Movement_Winstrate1_EndBattle:
@@ -436,11 +500,32 @@ Route111_Movement_Winstrate1_EndBattle:
 	step_end
 
 Route111_Movement_Winstrate2_EndBattle:
+	walk_right
+	walk_up
+	walk_up
+	step_end
+
+Route111_Movement_Winstrate3_EndBattle:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+Route111_Movement_Winstrate4_EndBattle:
+	walk_right
+	walk_right
 	walk_up
 	walk_up
 	step_end
 
 Route111_Movement_WinstrateExitHouse:
+	walk_down
+	step_end
+
+Route111_Movement_VitoExitHouse:
+	walk_down
+	walk_down
 	walk_down
 	step_end
 
@@ -1049,6 +1134,13 @@ Route111_Text_ViviIntro:
 	.string "But I'm strong, too!\n"
 	.string "Really! Honestly!$"
 
+Route111_Text_VitoIntro:
+	.string "Vito: Wow, this is the first time I've\n"
+	.string "ever been called out!\p"
+	.string "My name's Vito and I'm a cut above\n"
+	.string "the rest of our family.\p"
+	.string "Allow me to demonstrate what I mean!$"
+
 Route111_Text_ViviDefeat:
 	.string "Huh? Did I just lose?$"
 
@@ -1065,9 +1157,26 @@ Route111_Text_VickyDefeat:
 	.string "Kwah! You are strong…\n"
 	.string "My daughter was right…$"
 
+Route111_Text_VitoDefeat:
+	.string "I still have so much to\n"
+	.string "learn…$"
+
 Route111_Text_VickyPostBattle:
-	.string "Vicky: If you're not in any hurry,\n"
-	.string "visit with us awhile.$"
+	.string "Vicky: Very impressive. However, the\n"
+	.string "Winstrate family isn't beaten yet.$"
+
+Route111_Text_VitoPostBattle:
+	.string "Vito: The first time that I am\n"
+	.string "called out and I lose…\p"
+	.string "I suppose I have a lot of training\n"
+	.string "still to complete.\p"
+	.string "I'm going to travel around some more\n"
+	.string "and grow in strength.\p"
+	.string "Next time we meet you're going down!$"
+
+Route111_Text_VickyCallVito:
+	.string "Vicky: Vito, get out here!\n"
+	.string "It's time to step up!$"
 
 Route111_Text_ToughToKeepWinningUpTheRanks:
 	.string "If you don't raise your POKéMON some\n"

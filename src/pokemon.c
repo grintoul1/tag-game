@@ -5881,9 +5881,9 @@ u16 GetBattleBGM(void)
             switch (trainerId)
             {
                 case TRAINER_EMMIE_1:
-                    return MUS_VS_RIVAL;
+                    return MUS_VS_SINNOH_BRAIN;
                 case TRAINER_EMMIE_2:
-                    return MUS_VS_FRONTIER_BRAIN;
+                    return MUS_VS_SINNOH_BRAIN;
                 case TRAINER_EMMIE_3:
                     return MUS_VS_SINNOH_BRAIN;
             }
@@ -5892,8 +5892,10 @@ u16 GetBattleBGM(void)
             switch (trainerId)
             {
                 case TRAINER_VITO:
-                    return MUS_VS_RIVAL;
-                return MUS_VS_TRAINER;
+                case TRAINER_VITO_ROUTE111:
+                    return MUS_RG_VS_CHAMPION;
+                default:
+                    return MUS_RG_VS_GYM_LEADER;
             }
         default:
             return MUS_VS_TRAINER;

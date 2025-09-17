@@ -226,6 +226,9 @@ const u16 gTrainerPalette_May[] = INCBIN_U16("graphics/trainers/palettes/may.gba
 const u32 gTrainerFrontPic_Green[] = INCBIN_U32("graphics/trainers/front_pics/green.4bpp.smol");
 const u16 gTrainerPalette_Green[] = INCBIN_U16("graphics/trainers/palettes/green.gbapal");
 
+const u32 gTrainerFrontPic_Vito[] = INCBIN_U32("graphics/trainers/front_pics/vito.4bpp.smol");
+const u16 gTrainerPalette_Vito[] = INCBIN_U16("graphics/trainers/palettes/vito.gbapal");
+
 const u32 gTrainerFrontPic_BugCatcher[] = INCBIN_U32("graphics/trainers/front_pics/bug_catcher.4bpp.smol");
 const u16 gTrainerPalette_BugCatcher[] = INCBIN_U16("graphics/trainers/front_pics/bug_catcher.gbapal");
 
@@ -394,6 +397,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_BRENDAN, gTrainerFrontPic_Brendan, gTrainerPalette_Brendan),
     TRAINER_SPRITE(TRAINER_PIC_MAY, gTrainerFrontPic_May, gTrainerPalette_May),
     TRAINER_SPRITE(TRAINER_PIC_GREEN, gTrainerFrontPic_Green, gTrainerPalette_Green),
+    TRAINER_SPRITE(TRAINER_PIC_VITO, gTrainerFrontPic_Vito, gTrainerPalette_Vito),
     TRAINER_SPRITE(TRAINER_PIC_BUG_CATCHER, gTrainerFrontPic_BugCatcher, gTrainerPalette_BugCatcher),
     TRAINER_SPRITE(TRAINER_PIC_POKEMON_RANGER_M, gTrainerFrontPic_PokemonRangerM, gTrainerPalette_PokemonRangerM),
     TRAINER_SPRITE(TRAINER_PIC_POKEMON_RANGER_F, gTrainerFrontPic_PokemonRangerF, gTrainerPalette_PokemonRangerF),

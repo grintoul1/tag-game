@@ -33,6 +33,9 @@ $(OBJEVENTGFXDIR)/people/brendan/underwater.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/green/walking.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
+$(OBJEVENTGFXDIR)/people/vito/vito.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+
 $(OBJEVENTGFXDIR)/people/green/running.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 

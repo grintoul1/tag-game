@@ -14,6 +14,10 @@ static const struct SpriteFrameImage sPicTable_GreenNormal[] = {
     overworld_ascending_frames(gObjectEventPic_GreenNormalRunning, 4, 2),
 };
 
+static const struct SpriteFrameImage sPicTable_Vito[] = {
+    overworld_ascending_frames(gObjectEventPic_Vito, 2, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_GreenMachBike[] = {
     overworld_ascending_frames(gObjectEventPic_GreenMachBike, 4, 4),
 };
