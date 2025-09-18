@@ -5881,9 +5881,9 @@ u16 GetBattleBGM(void)
             switch (trainerId)
             {
                 case TRAINER_EMMIE_1:
-                    return MUS_VS_SINNOH_BRAIN;
+                    return MUS_VS_RIVAL;
                 case TRAINER_EMMIE_2:
-                    return MUS_VS_SINNOH_BRAIN;
+                    return MUS_VS_FRONTIER_BRAIN;
                 case TRAINER_EMMIE_3:
                     return MUS_VS_SINNOH_BRAIN;
             }
