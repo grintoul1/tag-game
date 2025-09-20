@@ -722,14 +722,11 @@ void CB2_BattleDebugMenu(void)
 
 enum {
     COLORID_RED,
-    COLORID_BLUE,
-    COLORID_COUNT,
 };
 
 static const u8 sTextColorTable[][3] =
 {
     [COLORID_RED]        = {TEXT_COLOR_WHITE,       TEXT_COLOR_RED,        TEXT_COLOR_LIGHT_RED},
-    [COLORID_BLUE]       = {TEXT_COLOR_WHITE,       TEXT_COLOR_BLUE,       TEXT_COLOR_LIGHT_BLUE},
 };
 
 static void PutMovesPointsText(struct BattleDebugMenu *data)

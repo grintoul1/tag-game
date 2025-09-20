@@ -233,6 +233,7 @@ enum RandomTag
     RNG_AI_CUSTOM_AI_FIFTEEN_PERCENT,
     RNG_AI_CUSTOM_AI_TEN_PERCENT,
     RNG_AI_CUSTOM_AI_FIVE_PERCENT,
+    RNG_WRAP,
 };
 
 #define RandomWeighted(tag, ...) \
