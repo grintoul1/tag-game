@@ -56,7 +56,6 @@ SINGLE_BATTLE_TEST("Destiny Bond fails if used sequentially (Gen7+)")
         MESSAGE("But it failed!");
     }
 }
-*/
 
 SINGLE_BATTLE_TEST("Destiny Bond does not fail if used repeatedly separated by other moves (Gen7+)")
 {
@@ -76,7 +75,6 @@ SINGLE_BATTLE_TEST("Destiny Bond does not fail if used repeatedly separated by o
         NOT { MESSAGE("But it failed!"); }
     }
 }
-*/
 
 SINGLE_BATTLE_TEST("Destiny Bond does not fail if used after failing (Gen7+)")
 {
@@ -97,7 +95,6 @@ SINGLE_BATTLE_TEST("Destiny Bond does not fail if used after failing (Gen7+)")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DESTINY_BOND, player);
     }
 }
-*/
 
 // can't be used at all in Raid, see "Documenting Dynamax"
 SINGLE_BATTLE_TEST("(DYNAMAX) Dynamaxed Pokemon are not affected by Destiny Bond")

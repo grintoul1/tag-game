@@ -15,7 +15,6 @@ AI_SINGLE_BATTLE_TEST("AI uses Dynamax")
 
 AI_SINGLE_BATTLE_TEST("AI uses Dynamax -- Max Moves are scored based on max move effects, not base effects")
 {
-    KNOWN_FAILING;
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT );
         PLAYER(SPECIES_WOBBUFFET);

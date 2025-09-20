@@ -491,9 +491,9 @@ static enum FieldEffectOutcome BenefitsFromTrickRoom(u32 battler)
 
     // If either mon is slower, we want Trick Room.
     if ((!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) 
-    && (gAiLogicData->speedStats[battler] + gAiLogicData->speedStats[BATTLE_PARTNER(battler)]) < (gAiLogicData->speedStats[FOE(battler)] + gAiLogicData->speedStats[BATTLE_PARTNER(FOE(battler))]))
+    && (gAiLogicData->speedStats[battler] + gAiLogicData->speedStats[BATTLE_PARTNER(battler)]) < (gAiLogicData->speedStats[BATTLE_OPPOSITE(battler)] + gAiLogicData->speedStats[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))]))
     || ((gFieldStatuses & STATUS_FIELD_TRICK_ROOM) 
-    && (gAiLogicData->speedStats[battler] + gAiLogicData->speedStats[BATTLE_PARTNER(battler)]) < (gAiLogicData->speedStats[FOE(battler)] + gAiLogicData->speedStats[BATTLE_PARTNER(FOE(battler))])))
+    && (gAiLogicData->speedStats[battler] + gAiLogicData->speedStats[BATTLE_PARTNER(battler)]) < (gAiLogicData->speedStats[BATTLE_OPPOSITE(battler)] + gAiLogicData->speedStats[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))])))
         return FIELD_EFFECT_POSITIVE;
 
     return FIELD_EFFECT_NEGATIVE;

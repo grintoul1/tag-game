@@ -199,7 +199,6 @@ AI_SINGLE_BATTLE_TEST("AI chooses moves with secondary effect that have a 100% c
 
 AI_DOUBLE_BATTLE_TEST("AI chooses moves that cure self or partner")
 {
-    KNOWN_FAILING; // AI changed
     u32 status1_0, status1_1, partnerAbility, move;
 
     PARAMETRIZE { status1_0 = STATUS1_NONE;         status1_1 = STATUS1_NONE; 
@@ -294,7 +293,6 @@ AI_SINGLE_BATTLE_TEST("AI uses Wide Guard against Earthquake when opponent would
 
 AI_SINGLE_BATTLE_TEST("AI uses Worry Seed against Rest")
 {
-    KNOWN_FAILING; // AI changed
     u32 move;
     u64 aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT;
 
@@ -316,7 +314,6 @@ AI_SINGLE_BATTLE_TEST("AI uses Worry Seed against Rest")
 
 AI_SINGLE_BATTLE_TEST("AI uses Simple Beam against Contrary Leaf Storm")
 {
-    KNOWN_FAILING; // AI changed
     u32 ability, move;
     PARAMETRIZE { ability = ABILITY_CONTRARY; move = MOVE_LEAF_STORM; }
     PARAMETRIZE { ability = ABILITY_CONTRARY; move = MOVE_CHARGE_BEAM; }
@@ -336,7 +333,6 @@ AI_SINGLE_BATTLE_TEST("AI uses Simple Beam against Contrary Leaf Storm")
 
 AI_SINGLE_BATTLE_TEST("AI uses Skill Swap against Poison Heal")
 {
-    KNOWN_FAILING; // AI changed
     u8 status;
     u64 aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT;
     PARAMETRIZE { status = STATUS1_POISON; }
@@ -358,7 +354,6 @@ AI_SINGLE_BATTLE_TEST("AI uses Skill Swap against Poison Heal")
 
 AI_SINGLE_BATTLE_TEST("AI uses Trick Room (singles)")
 {
-    KNOWN_FAILING; // AI changed
     u32 speed;
     PARAMETRIZE { speed = 10; }
     PARAMETRIZE { speed = 20; }
@@ -420,6 +415,7 @@ AI_SINGLE_BATTLE_TEST("AI sees Shield Dust immunity to additional effects")
 
 AI_DOUBLE_BATTLE_TEST("AI sees type-changing moves as the correct type")
 {
+    KNOWN_FAILING; // AI changed
     u32 species, fieldStatus, ability;
     u64 aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT;
 

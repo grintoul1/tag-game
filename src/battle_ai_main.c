@@ -5471,6 +5471,7 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
                     break;
                 }
             }
+        }
         break;
     case EFFECT_CORROSIVE_GAS:
         if (CanKnockOffItem(battlerDef, aiData->items[battlerDef]))
@@ -5783,14 +5784,14 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
         if (!(gFieldStatuses & STATUS_FIELD_GRAVITY || ShouldClearFieldStatus(battlerAtk, STATUS_FIELD_GRAVITY)))
         {
             // improve accuracy of Hypnosis
-            if (HasSleepMoveWithLowAccuracy(battlerAtk, battlerDef)
-             || HasSleepMoveWithLowAccuracy(BATTLE_PARTNER(battlerAtk), battlerDef))
-                IncreaseSleepScore(battlerAtk, battlerDef, move, &score);
             if (HasMoveWithLowAccuracy(battlerAtk, battlerDef, 90, TRUE)
              || HasMoveWithLowAccuracy(BATTLE_PARTNER(battlerAtk), battlerDef, 90, TRUE))
                 ADJUST_SCORE(WEAK_EFFECT);
             if (ShouldSetFieldStatus(battlerAtk, STATUS_FIELD_GRAVITY))
                 ADJUST_SCORE(DECENT_EFFECT);
+            if (HasSleepMoveWithLowAccuracy(battlerAtk, battlerDef)
+             || HasSleepMoveWithLowAccuracy(BATTLE_PARTNER(battlerAtk), battlerDef))
+                ADJUST_AND_RETURN_SCORE(IncreaseSleepScore(battlerAtk, battlerDef, move));
         }
         break;
     case EFFECT_ION_DELUGE:
@@ -6090,10 +6091,10 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
 
 static s32 AI_CalcAdditionalEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, struct AiLogicData *aiData)
 {
-    /*
     // move data
     s32 score = 0;
 
+    /*
     u32 predictedMove = GetIncomingMove(battlerAtk, battlerDef, aiData);
     bool32 hasPartner = HasPartner(battlerAtk);
     u32 i;
