@@ -1910,7 +1910,7 @@ static void Select_PrintSelectMonString(void)
     CopyWindowToVram(SELECT_WIN_INFO, COPYWIN_GFX);
 }
 
-static void UNUSED Select_PrintCantSelectSameMon(void)
+static void Select_PrintCantSelectSameMon(void)
 {
     FillWindowPixelBuffer(SELECT_WIN_INFO, PIXEL_FILL(0));
     AddTextPrinterParameterized(SELECT_WIN_INFO, FONT_NORMAL, gText_CantSelectSamePkmn, 2, 5, 0, NULL);
@@ -1950,16 +1950,16 @@ static u8 Select_RunMenuOptionFunc(void)
 
 static u8 Select_OptionRentDeselect(void)
 {
-    /*u8 selectedId = sFactorySelectScreen->mons[sFactorySelectScreen->cursorPos].selectedId;
-    u16 monId  = sFactorySelectScreen->mons[sFactorySelectScreen->cursorPos].monId;
-    if (selectedId == 0 && !Select_AreSpeciesValid(monId))
+    u8 selectedId = sFactorySelectScreen->mons[sFactorySelectScreen->cursorPos].selectedId;
+    //u16 monId = sFactorySelectScreen->mons[sFactorySelectScreen->cursorPos].monId;
+    u16 species = GetMonData(&sFactorySelectScreen->mons[sFactorySelectScreen->cursorPos].monData, MON_DATA_SPECIES_OR_EGG);
+    if (selectedId == 0 && (species == SPECIES_NONE || species == SPECIES_EGG))
     {
         Select_PrintCantSelectSameMon();
         Select_ErasePopupMenu(SELECT_WIN_OPTIONS);
         return SELECT_INVALID_MON;
     }
     else
-    */
     {
         CloseMonPic(sFactorySelectScreen->monPics[1], &sFactorySelectScreen->monPicAnimating, FALSE);
         Select_HandleMonSelectionChange();

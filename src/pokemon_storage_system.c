@@ -4439,7 +4439,7 @@ static void SetPartySlotTilemaps(void)
     {
         for (i = 1; i < PARTY_SIZE; i++)
         {
-            s32 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+            species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
             SetPartySlotTilemap(i, species != SPECIES_NONE);
         }
     }
@@ -4447,7 +4447,7 @@ static void SetPartySlotTilemaps(void)
     {
         for (i = 0; i < PARTY_SIZE; i++)
         {
-            s32 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+            species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
             SetPartySlotTilemap(i, species != SPECIES_NONE);
         }
     }
