@@ -189,16 +189,20 @@ EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF::
 	addobject LOCALID_BIRCH
 	applymovement LOCALID_BIRCH, EverGrandeCity_ChampionsRoom_Movement_BirchArrives
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterDown
-	applymovement LOCALID_CHAMPIONS_ROOM_WALLY, Common_Movement_WalkInPlaceFasterDown
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_CHAMPIONS_ROOM_WALLY, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	msgbox EverGrandeCity_ChampionsRoom_Text_BirchCongratulations, MSGBOX_DEFAULT
 	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	delay 20
 	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_CHAMPIONS_ROOM_WALLY, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox EverGrandeCity_ChampionsRoom_Text_WallaceComeWithMe, MSGBOX_DEFAULT
 	closemessage
@@ -264,6 +268,7 @@ EverGrandeCity_ChampionsRoom_Movement_WallyApproachPlayer:
 	walk_up
 	walk_up
 	walk_up
+	walk_left
 	walk_left
 	walk_in_place_faster_right
 	step_end
@@ -344,6 +349,9 @@ EverGrandeCity_ChampionsRoom_Movement_BirchArrives:
 	walk_up
 	walk_up
 	walk_up
+	walk_up
+	walk_right
+	walk_in_place_faster_left
 	step_end
 
 EverGrandeCity_ChampionsRoom_Text_IntroSpeech:
