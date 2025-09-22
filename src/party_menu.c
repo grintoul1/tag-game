@@ -446,6 +446,7 @@ static bool8 ReturnGiveItemToBagOrPC(u16);
 static void Task_DisplayGaveMailFromBagMessage(u8);
 static void Task_HandleSwitchItemsFromBagYesNoInput(u8);
 static void Task_ValidateChosenHalfParty(u8);
+static void Task_ValidateChosenHalfPartyEliteFour(u8);
 static bool8 GetBattleEntryEligibility(struct Pokemon *);
 static bool8 HasPartySlotAlreadyBeenSelected(u8);
 static u8 GetBattleEntryLevelCap(void);
@@ -544,7 +545,7 @@ static void InitPartyMenu(u8 menuType, u8 layout, u8 partyAction, bool8 keepCurs
         sPartyMenuInternal->spriteIdConfirmPokeball = 0x7F;
         sPartyMenuInternal->spriteIdCancelPokeball = 0x7F;
 
-        if (menuType == PARTY_MENU_TYPE_CHOOSE_HALF)
+        if ((menuType == PARTY_MENU_TYPE_CHOOSE_HALF) || (menuType == PARTY_MENU_TYPE_CHOOSE_HALF_ELITE_FOUR))
             sPartyMenuInternal->chooseHalf = TRUE;
         else
             sPartyMenuInternal->chooseHalf = FALSE;
@@ -1014,7 +1015,7 @@ static void RenderPartyMenuBox(u8 slot)
                 DisplayPartyPokemonDataForRelearner(slot);
             else if (gPartyMenu.menuType == PARTY_MENU_TYPE_CONTEST)
                 DisplayPartyPokemonDataForContest(slot);
-            else if (gPartyMenu.menuType == PARTY_MENU_TYPE_CHOOSE_HALF)
+            else if ((gPartyMenu.menuType == PARTY_MENU_TYPE_CHOOSE_HALF) || (gPartyMenu.menuType == PARTY_MENU_TYPE_CHOOSE_HALF_ELITE_FOUR))
                 DisplayPartyPokemonDataForChooseHalf(slot);
             else if (gPartyMenu.menuType == PARTY_MENU_TYPE_MINIGAME)
                 DisplayPartyPokemonDataForWirelessMinigame(slot);
@@ -1654,7 +1655,7 @@ static bool8 DisplayCancelChooseMonYesNo(u8 taskId)
 
     if (gPartyMenu.menuType == PARTY_MENU_TYPE_CONTEST)
         stringPtr = gText_CancelParticipation;
-    else if (gPartyMenu.menuType == PARTY_MENU_TYPE_CHOOSE_HALF)
+    else if ((gPartyMenu.menuType == PARTY_MENU_TYPE_CHOOSE_HALF) || (gPartyMenu.menuType == PARTY_MENU_TYPE_CHOOSE_HALF_ELITE_FOUR))
         stringPtr = GetFacilityCancelString();
 
     if (stringPtr == NULL)
@@ -3130,6 +3131,7 @@ static u8 GetPartyMenuActionsType(struct Pokemon *mon)
         actionType = GetPartyMenuActionsTypeInBattle(mon);
         break;
     case PARTY_MENU_TYPE_CHOOSE_HALF:
+    case PARTY_MENU_TYPE_CHOOSE_HALF_ELITE_FOUR:
         switch (GetPartySlotEntryStatus(gPartyMenu.slotId))
         {
         default: // Not eligible
@@ -7573,6 +7575,13 @@ void InitChooseHalfPartyForBattle(u8 unused)
     gPartyMenu.task = Task_ValidateChosenHalfParty;
 }
 
+void InitChooseHalfPartyForEliteFour(u8 unused)
+{
+    ClearSelectedPartyOrder();
+    InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_HALF, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, gMain.savedCallback);
+    gPartyMenu.task = Task_ValidateChosenHalfPartyEliteFour;
+}
+
 void ClearSelectedPartyOrder(void)
 {
     memset(gSelectedOrderFromParty, 0, sizeof(gSelectedOrderFromParty));
@@ -7581,7 +7590,7 @@ void ClearSelectedPartyOrder(void)
 static u8 GetPartySlotEntryStatus(s8 slot)
 {
     if (GetBattleEntryEligibility(&gPlayerParty[slot]) == FALSE)
-        return 2;
+        return 0;
     if (HasPartySlotAlreadyBeenSelected(slot + 1) == TRUE)
         return 1;
     return 0;
@@ -7624,7 +7633,6 @@ static u8 CheckBattleEntriesAndGetMessage(void)
     struct Pokemon *party = gPlayerParty;
     u8 minBattlers = GetMinBattleEntries();
     u8 *order = gSelectedOrderFromParty;
-
     if (order[minBattlers - 1] == 0)
     {
         if (minBattlers == 1)
@@ -7670,6 +7678,22 @@ static void Task_ValidateChosenHalfParty(u8 taskId)
 {
     u8 msgId = CheckBattleEntriesAndGetMessage();
 
+    if (msgId != 0xFF)
+    {
+        PlaySE(SE_FAILURE);
+        DisplayPartyMenuStdMessage(msgId);
+        gTasks[taskId].func = Task_ContinueChoosingHalfParty;
+    }
+    else
+    {
+        PlaySE(SE_SELECT);
+        Task_ClosePartyMenu(taskId);
+    }
+}
+
+static void Task_ValidateChosenHalfPartyEliteFour(u8 taskId)
+{
+    u8 msgId = CheckBattleEntriesAndGetMessage();
     if (msgId != 0xFF)
     {
         PlaySE(SE_FAILURE);

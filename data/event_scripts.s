@@ -669,6 +669,9 @@ EverGrandeCity_HallOfFame_EventScript_ResetEliteFour::
 	clearflag FLAG_DEFEATED_ELITE_4_PHOEBE
 	clearflag FLAG_DEFEATED_ELITE_4_GLACIA
 	clearflag FLAG_DEFEATED_ELITE_4_DRAKE
+	clearflag FLAG_ELITE_FOUR_PARTY_ONLY
+	clearflag FLAG_ELITE_FOUR_PARTY_EXCHANGED
+	special RestorePlayerBox
 	setvar VAR_ELITE_4_STATE, 0
 	return
 
@@ -677,6 +680,59 @@ Common_EventScript_MultibattleWipe::
 	special SetCB2WhiteOut
 	waitstate
 	end
+
+Common_EventScript_EliteFourAttendant::
+	faceplayer
+	lockall
+	goto_if_set FLAG_ELITE_FOUR_PARTY_ONLY, Common_EventScript_EliteFourAttendantBestOfLuck
+	goto_if_set FLAG_ELITE_FOUR_PARTY_EXCHANGED, Common_EventScript_EliteFourAttendantBestOfLuck
+	message Common_Text_EliteFourAttendantSwitchPartyWithPool
+	waitmessage
+	multichoicedefault 20, 8, MULTI_YESNO, 1, TRUE
+	switch VAR_RESULT
+	case 1, Common_EventScript_EliteFourNoExchange
+	case 0, Common_EventScript_EliteFourExchangePokemon
+	end
+
+Common_EventScript_EliteFourExchangePokemon::
+	special SaveEliteFourPool
+	special ChooseHalfPartyForEliteFour
+	waitstate
+	switch VAR_RESULT
+	goto_if_ne VAR_RESULT, 0, Common_EventScript_EliteFourExchangePokemonPool
+	special LoadEliteFourPool
+	goto Common_EventScript_EliteFourAttendantBestOfLuck
+	end
+
+Common_EventScript_EliteFourExchangePokemonPool::
+	factory_rentmons
+	waitstate
+	goto Common_EventScript_EliteFourExchangePokemonEnd
+	end
+
+Common_EventScript_EliteFourExchangePokemonEnd::
+	setflag FLAG_ELITE_FOUR_PARTY_EXCHANGED
+	goto Common_EventScript_EliteFourAttendantBestOfLuck
+	end
+
+Common_EventScript_EliteFourNoExchange::
+	goto Common_EventScript_EliteFourAttendantBestOfLuck
+	end
+
+Common_EventScript_EliteFourAttendantBestOfLuck::
+	msgbox Common_Text_EliteFourAttendantBestOfLuck, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+Common_Text_EliteFourAttendantSwitchPartyWithPool:
+	.string "You may now exchange up to three Pokémon\n"
+	.string "in your party with Pokémon in your pool.\p"
+	.string "Would you like to make an exchange?$"
+
+Common_Text_EliteFourAttendantBestOfLuck:
+	.string "I wish you the very best of luck for\n"
+	.string "your challenge.$"
 
 Common_EventScript_UpdateBrineyLocation::
 	goto_if_unset FLAG_RECEIVED_POKENAV, Common_EventScript_NopReturn

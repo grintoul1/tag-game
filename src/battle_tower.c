@@ -2138,6 +2138,7 @@ void DoSpecialTrainerBattle(void)
                     SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
                     CalculateMonStats(&gEnemyParty[i]);
                 }
+                gBattleTypeFlags = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER);
             }
         }
         if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)

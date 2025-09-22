@@ -41,6 +41,7 @@
 #define PARTY_MENU_TYPE_DAMAGE                    14
 #define PARTY_MENU_TYPE_POISON                    15
 #define PARTY_MENU_TYPE_MULTI_SHARED              16
+#define PARTY_MENU_TYPE_CHOOSE_HALF_ELITE_FOUR    17
 
 #define PARTY_ACTION_CHOOSE_MON         0
 #define PARTY_ACTION_SEND_OUT           1

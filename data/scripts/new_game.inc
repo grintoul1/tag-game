@@ -339,6 +339,8 @@ EventScript_ResetAllMapFlags::
 	clearflag FLAG_UTILITY_MENU_E4
 	clearflag FLAG_POKE_MENU
 	clearflag FLAG_SHARE_PARTY
+	clearflag FLAG_ELITE_FOUR_PARTY_ONLY
+	clearflag FLAG_ELITE_FOUR_PARTY_EXCHANGED
 	destroyfollowernpc
 	call EventScript_ResetAllBerries
 	end

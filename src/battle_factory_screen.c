@@ -41,6 +41,8 @@
 
 #define SWAP_PLAYER_SCREEN 0  // The screen where the player selects which of their Pokémon to swap away
 #define SWAP_ENEMY_SCREEN  1  // The screen where the player selects which new Pokémon from the defeated party to swap for
+#define SWAP_PARTY_SCREEN_ELITE_FOUR 2  // The screen where the player selects which of their Pokémon to swap away
+#define SWAP_POOL_SCREEN_ELITE_FOUR  3  // The screen where the player selects which new Pokémon from the defeated party to swap for
 
 #define SELECTABLE_MONS_COUNT 6
 
@@ -1290,7 +1292,7 @@ static void Select_InitMonsData(void)
 {
     u8 i;
 
-    if (sFactorySelectScreen != NULL)
+    if (sFactorySelectScreen != NULL) 
         return;
 
     sFactorySelectScreen = AllocZeroed(sizeof(*sFactorySelectScreen));
@@ -1486,7 +1488,7 @@ static void Select_Task_OpenSummaryScreen(u8 taskId)
         currMonId = sFactorySelectScreen->cursorPos;
         sFactorySelectMons = AllocZeroed(sizeof(struct Pokemon) * SELECTABLE_MONS_COUNT);
         for (i = 0; i < SELECTABLE_MONS_COUNT; i++)
-            sFactorySelectMons[i] = sFactorySelectScreen->mons[i].monData;
+            sFactorySelectMons[i] = gEliteFourPool[i];
         ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, sFactorySelectMons, currMonId, SELECTABLE_MONS_COUNT - 1, CB2_InitSelectScreen);
         break;
     }
@@ -1788,20 +1790,41 @@ static void CreateSlateportTentSelectableMons(u8 firstMonId)
 
 static void Select_CopyMonsToPlayerParty(void)
 {
-    u8 i, j;
+    u8 i, j, k;
 
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
         for (j = 0; j < SELECTABLE_MONS_COUNT; j++)
         {
-            if (sFactorySelectScreen->mons[j].selectedId == i + 1)
+            if (sFactorySelectScreen->mons[j].selectedId == i + 1) // In selectedId order
             {
-                gPlayerParty[i] = sFactorySelectScreen->mons[j].monData;
-                gSaveBlock2Ptr->frontier.rentalMons[i].monId = sFactorySelectScreen->mons[j].monId;
-                gSaveBlock2Ptr->frontier.rentalMons[i].personality = GetMonData(&gPlayerParty[i], MON_DATA_PERSONALITY, NULL);
-                gSaveBlock2Ptr->frontier.rentalMons[i].abilityNum = GetBoxMonData(&gPlayerParty[i].box, MON_DATA_ABILITY_NUM, NULL);
-                gSaveBlock2Ptr->frontier.rentalMons[i].ivs = GetBoxMonData(&gPlayerParty[i].box, MON_DATA_ATK_IV, NULL);
+                for (k = 0; k < PARTY_SIZE; k++)
+                {
+                    if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES, NULL) == SPECIES_NONE) // If player party slot is empty
+                    {
+                        // Copy mon to player party slot
+                        CopyMon(&gPlayerParty[k], &gEliteFourPool[j], sizeof(*&gEliteFourPool[j]));
+                        ZeroMonData(&gEliteFourPool[j]);
+                        break;
+                    }
+                }
                 break;
+            }
+        }
+    }
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (sFactorySelectScreen->mons[i].selectedId != 0)
+        {
+            for (k = 0; k < PARTY_SIZE; k++)
+            {
+                if (GetMonData(&gEnemyParty[k], MON_DATA_SPECIES, NULL) != SPECIES_NONE)
+                {
+                    CopyMon(&gEliteFourPool[i], &gEnemyParty[k], sizeof(*&gEnemyParty[k]));
+                    ZeroMonData(&gEnemyParty[k]);
+                    sFactorySelectScreen->mons[i].selectedId = 0;
+                    break;
+                }
             }
         }
     }
@@ -1862,7 +1885,7 @@ static void Select_PrintMonSpecies(void)
     u8 monId = sFactorySelectScreen->cursorPos;
 
     FillWindowPixelBuffer(SELECT_WIN_SPECIES, PIXEL_FILL(0));
-    species = GetMonData(&sFactorySelectScreen->mons[monId].monData, MON_DATA_SPECIES, NULL);
+    species = GetMonData(&gEliteFourPool[monId], MON_DATA_SPECIES, NULL);
     StringCopy(gStringVar4, GetSpeciesName(species));
     x = GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, 86);
     AddTextPrinterParameterized3(SELECT_WIN_SPECIES, FONT_NORMAL, x, 1, sSpeciesNameTextColors, 0, gStringVar4);
@@ -1887,7 +1910,7 @@ static void Select_PrintSelectMonString(void)
     CopyWindowToVram(SELECT_WIN_INFO, COPYWIN_GFX);
 }
 
-static void Select_PrintCantSelectSameMon(void)
+static void UNUSED Select_PrintCantSelectSameMon(void)
 {
     FillWindowPixelBuffer(SELECT_WIN_INFO, PIXEL_FILL(0));
     AddTextPrinterParameterized(SELECT_WIN_INFO, FONT_NORMAL, gText_CantSelectSamePkmn, 2, 5, 0, NULL);
@@ -1927,7 +1950,7 @@ static u8 Select_RunMenuOptionFunc(void)
 
 static u8 Select_OptionRentDeselect(void)
 {
-    u8 selectedId = sFactorySelectScreen->mons[sFactorySelectScreen->cursorPos].selectedId;
+    /*u8 selectedId = sFactorySelectScreen->mons[sFactorySelectScreen->cursorPos].selectedId;
     u16 monId  = sFactorySelectScreen->mons[sFactorySelectScreen->cursorPos].monId;
     if (selectedId == 0 && !Select_AreSpeciesValid(monId))
     {
@@ -1936,6 +1959,7 @@ static u8 Select_OptionRentDeselect(void)
         return SELECT_INVALID_MON;
     }
     else
+    */
     {
         CloseMonPic(sFactorySelectScreen->monPics[1], &sFactorySelectScreen->monPicAnimating, FALSE);
         Select_HandleMonSelectionChange();
@@ -1982,7 +2006,7 @@ static void Select_PrintMonCategory(void)
     {
         PutWindowTilemap(SELECT_WIN_MON_CATEGORY);
         FillWindowPixelBuffer(SELECT_WIN_MON_CATEGORY, PIXEL_FILL(0));
-        species = GetMonData(&sFactorySelectScreen->mons[monId].monData, MON_DATA_SPECIES, NULL);
+        species = GetMonData(&gEliteFourPool[monId], MON_DATA_SPECIES, NULL);
         CopyMonCategoryText(species, text);
         x = GetStringRightAlignXOffset(FONT_NORMAL, text, 118);
         AddTextPrinterParameterized(SELECT_WIN_MON_CATEGORY, FONT_NORMAL, text, x, 1, 0, NULL);
@@ -1993,7 +2017,7 @@ static void Select_PrintMonCategory(void)
 static void Select_CreateMonSprite(void)
 {
     u8 monId = sFactorySelectScreen->cursorPos;
-    struct Pokemon *mon = &sFactorySelectScreen->mons[monId].monData;
+    struct Pokemon *mon = &gEliteFourPool[monId];
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
     bool8 isShiny = GetMonData(mon, MON_DATA_IS_SHINY, NULL);
@@ -2020,7 +2044,7 @@ static void Select_ReshowMonSprite(void)
     sFactorySelectScreen->monPics[1].bgSpriteId = CreateSprite(&sSpriteTemplate_Select_MonPicBgAnim, 120, 64, 1);
     StartSpriteAffineAnim(&gSprites[sFactorySelectScreen->monPics[1].bgSpriteId], 2);
 
-    mon = &sFactorySelectScreen->mons[sFactorySelectScreen->cursorPos].monData;
+    mon = &gEliteFourPool[sFactorySelectScreen->cursorPos];
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
     isShiny = GetMonData(mon, MON_DATA_IS_SHINY, NULL);
@@ -2042,7 +2066,7 @@ static void Select_CreateChosenMonsSprites(void)
         {
             if (sFactorySelectScreen->mons[j].selectedId == i + 1)
             {
-                struct Pokemon *mon = &sFactorySelectScreen->mons[j].monData;
+                struct Pokemon *mon = &gEliteFourPool[j];
                 u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
                 u32 personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
                 bool8 isShiny = GetMonData(mon, MON_DATA_IS_SHINY, NULL);
@@ -2232,7 +2256,7 @@ static void Select_SetWinRegs(s16 mWin0H, s16 nWin0H, s16 mWin0V, s16 nWin0V)
     SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG0 | WINOUT_WIN01_BG1 | WINOUT_WIN01_BG2 | WINOUT_WIN01_CLR | WINOUT_WIN01_OBJ);
 }
 
-static bool32 Select_AreSpeciesValid(u16 monId)
+static bool32 UNUSED Select_AreSpeciesValid(u16 monId)
 {
     u8 i, j;
     u32 species = gFacilityTrainerMons[monId].species;
@@ -4024,14 +4048,14 @@ static void Swap_ActionMon(u8 taskId)
         gTasks[taskId].tFollowUpTaskPtrLo = (u32)(Swap_Task_HandleMenu);
         gTasks[taskId].tFollowUpTaskState = STATE_MENU_INIT;
     }
-    else if (Swap_AlreadyHasSameSpecies(sFactorySwapScreen->cursorPos) == TRUE)
+    /*else if (Swap_AlreadyHasSameSpecies(sFactorySwapScreen->cursorPos) == TRUE)
     {
         OpenMonPic(&sFactorySwapScreen->monPic.bgSpriteId, &sFactorySwapScreen->monPicAnimating, TRUE);
         gTasks[taskId].tState = 0;
         gTasks[taskId].tFollowUpTaskState = STATE_CHOOSE_MONS_HANDLE_INPUT;
         gTasks[taskId].func = Swap_TaskCantHaveSameMons;
         return;
-    }
+    }*/
     else
     {
         gTasks[taskId].tFollowUpTaskPtrHi = (u32)(Swap_AskAcceptMon) >> 16;
@@ -4094,7 +4118,7 @@ static void HideMonPic(struct FactoryMonPic pic, bool8 *animating)
     *animating = FALSE;
 }
 
-static void Swap_TaskCantHaveSameMons(u8 taskId)
+static void UNUSED Swap_TaskCantHaveSameMons(u8 taskId)
 {
     if (sFactorySwapScreen->monPicAnimating == TRUE)
         return;
@@ -4136,7 +4160,7 @@ static void Swap_TaskCantHaveSameMons(u8 taskId)
     }
 }
 
-static bool8 Swap_AlreadyHasSameSpecies(u8 monId)
+static bool8 UNUSED Swap_AlreadyHasSameSpecies(u8 monId)
 {
     u8 i;
     u16 species = GetMonData(&gEnemyParty[monId], MON_DATA_SPECIES, NULL);

@@ -659,6 +659,8 @@ extern u8 gPlayerPartyCount;
 extern struct Pokemon gPlayerParty[PARTY_SIZE];
 extern u8 gEnemyPartyCount;
 extern struct Pokemon gEnemyParty[PARTY_SIZE];
+extern u8 gEliteFourPoolCount;
+extern struct Pokemon gEliteFourPool[PARTY_SIZE];
 extern struct SpriteTemplate gMultiuseSpriteTemplate;
 extern u16 gFollowerSteps;
 extern bool32 consumeItem;

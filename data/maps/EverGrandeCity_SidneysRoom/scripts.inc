@@ -36,6 +36,7 @@ EverGrandeCity_SidneysRoom_EventScript_PlayerTurnNorth::
 
 EverGrandeCity_SidneysRoom_OnFrame:
 	map_script_2 VAR_ELITE_4_STATE, 0, EverGrandeCity_SidneysRoom_EventScript_WalkInCloseDoor
+	map_script_2 VAR_ELITE_4_STATE, 1, EverGrandeCity_SidneysRoom_EventScript_AttendantIntroduction
 	.2byte 0
 
 EverGrandeCity_SidneysRoom_EventScript_WalkInCloseDoor::
@@ -44,6 +45,89 @@ EverGrandeCity_SidneysRoom_EventScript_WalkInCloseDoor::
 	setvar VAR_ELITE_4_STATE, 1
 	releaseall
 	end
+
+EverGrandeCity_SidneysRoom_EventScript_AttendantIntroduction::
+	lockall
+	specialvar VAR_RESULT, CountMonsInBoxEliteFour
+	goto_if_eq VAR_RESULT, 0, EverGrandeCity_SidneysRoom_EventScript_AttendantIntroductionNoBoxMons
+	applymovement LOCALID_SIDNEYS_ROOM_ATTENDANT, EverGrandeCity_SidneysRoom_Movement_AttendantApproachPlayer
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox EverGrandeCity_SidneysRoom_Text_AttendantGreetPlayer, MSGBOX_DEFAULT
+	waitmessage
+	special SavePlayerParty
+	call EventScript_AccessPokemonStorageEliteFour
+	special LoadPlayerParty
+	goto EverGrandeCity_SidneysRoom_EventScript_AttendantIntroductionMonsInBox
+EverGrandeCity_SidneysRoom_EventScript_AttendantIntroductionNoBoxMons::
+	msgbox EverGrandeCity_SidneysRoom_Text_AttendantGreetPlayerNoBoxMons, MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_ELITE_FOUR_PARTY_ONLY
+EverGrandeCity_SidneysRoom_EventScript_AttendantIntroductionMonsInBox::
+	msgbox EverGrandeCity_SidneysRoom_Text_AttendantBestOfLuck, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SIDNEYS_ROOM_ATTENDANT, EverGrandeCity_SidneysRoom_Movement_AttendantReturn
+	waitmovement 0
+	setvar VAR_ELITE_4_STATE, 2
+	releaseall
+	end
+
+EverGrandeCity_SidneysRoom_EventScript_Attendant::
+	lock
+	faceplayer
+	msgbox EverGrandeCity_SidneysRoom_Text_AttendantBestOfLuck, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+EverGrandeCity_SidneysRoom_Movement_AttendantApproachPlayer:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	step_end
+
+EverGrandeCity_SidneysRoom_Movement_AttendantReturn:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	face_down
+	step_end
+
+EverGrandeCity_SidneysRoom_Text_AttendantBestOfLuck:
+	.string "I wish you the very best of luck for\n"
+	.string "your challenge.$"
+
+EverGrandeCity_SidneysRoom_Text_AttendantGreetPlayerNoBoxMons:
+	.string "Welcome, challengers.\p"
+	.string "Congratulations for qualifying to\n"
+	.string "challenge Hoenn's Elite Four.\p"
+	.string "As you have no Pokémon in the Pokémon\n"
+	.string "storage system, you may only use your\l"
+	.string "current party for this challenge.$"
+
+EverGrandeCity_SidneysRoom_Text_AttendantGreetPlayer:
+	.string "Welcome, challengers.\p"
+	.string "Congratulations for qualifying to\n"
+	.string "challenge Hoenn's Elite Four.\p"
+	.string "You will be able to use a pool of twelve\n"
+	.string "Pokémon for the duration of your\l"
+	.string "challenge.\p"
+	.string "After each victory, you will be able\n"
+	.string "to select up to three Pokémon to\l"
+	.string "exchange in your pool of twelve.\p"
+	.string "Please now select up to six Pokémon\n"
+	.string "that you wish to bring in addition\l"
+	.string "to your current party.$"
 
 EverGrandeCity_SidneysRoom_EventScript_Sidney::
 	lock

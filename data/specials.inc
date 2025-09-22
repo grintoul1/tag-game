@@ -59,7 +59,11 @@ gSpecials::
 	def_special LoadPlayerPartyEmmie
 	def_special SavePlayerParty
 	def_special LoadPlayerParty
+	def_special SaveEliteFourPool
+	def_special LoadEliteFourPool
 	def_special ChooseHalfPartyForBattle
+	def_special ChooseHalfPartyForEliteFour
+	def_special DoBattleFactorySelectScreen
 	def_special Script_ShowLinkTrainerCard
 	def_special ObjectEventInteractionGetBerryTreeData
 	def_special ObjectEventInteractionGetBerryName
@@ -81,6 +85,9 @@ gSpecials::
 	def_special IsTrainerReadyForRematch
 	def_special BattleSetup_StartRematchBattle
 	def_special ShowPokemonStorageSystemPC
+	def_special ShowPokemonStorageSystemPCEliteFour
+	def_special CountMonsInBoxEliteFour
+	def_special RestorePlayerBox
 	def_special HasEnoughMonsForDoubleBattle
 	def_special TurnOffTVScreen
 	def_special DoTVShow

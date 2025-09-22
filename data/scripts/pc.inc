@@ -42,6 +42,11 @@ EventScript_AccessPokemonStorage::
 	goto EventScript_PCMainMenu
 	end
 
+EventScript_AccessPokemonStorageEliteFour::
+	special ShowPokemonStorageSystemPCEliteFour
+	waitstate
+	return
+
 EventScript_AccessSomeonesPC::
 	msgbox gText_AccessedSomeonesPC, MSGBOX_DEFAULT
 	return

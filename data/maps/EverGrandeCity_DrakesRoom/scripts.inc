@@ -17,19 +17,19 @@ EverGrandeCity_DrakesRoom_EventScript_PlayerTurnNorth::
 	end
 
 EverGrandeCity_DrakesRoom_OnFrame:
-	map_script_2 VAR_ELITE_4_STATE, 3, EverGrandeCity_DrakesRoom_EventScript_WalkInCloseDoor
+	map_script_2 VAR_ELITE_4_STATE, 4, EverGrandeCity_DrakesRoom_EventScript_WalkInCloseDoor
 	.2byte 0
 
 EverGrandeCity_DrakesRoom_EventScript_WalkInCloseDoor::
 	lockall
 	call PokemonLeague_EliteFour_EventScript_WalkInCloseDoor
-	setvar VAR_ELITE_4_STATE, 4
+	setvar VAR_ELITE_4_STATE, 5
 	releaseall
 	end
 
 EverGrandeCity_DrakesRoom_OnLoad:
 	call_if_set FLAG_DEFEATED_ELITE_4_DRAKE, EverGrandeCity_DrakesRoom_EventScript_ResetAdvanceToNextRoom
-	call_if_eq VAR_ELITE_4_STATE, 4, EverGrandeCity_DrakesRoom_EventScript_CloseDoor
+	call_if_eq VAR_ELITE_4_STATE, 5, EverGrandeCity_DrakesRoom_EventScript_CloseDoor
 	end
 
 EverGrandeCity_DrakesRoom_EventScript_ResetAdvanceToNextRoom::
@@ -74,6 +74,7 @@ EverGrandeCity_DrakesRoom_EventScript_Defeated::
 	setvar VAR_0x8004, FANCOUNTER_DEFEATED_DRAKE
 	special Script_TryGainNewFanFromCounter
 	setflag FLAG_DEFEATED_ELITE_4_DRAKE
+	clearflag FLAG_ELITE_FOUR_PARTY_EXCHANGED
 	setvar VAR_PARTNER_EMMIE_STATE, 77
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT

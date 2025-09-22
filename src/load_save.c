@@ -226,6 +226,37 @@ void LoadPlayerParty(void)
     }
 }
 
+void SaveEliteFourPool(void)
+{
+    int i;
+    *GetSavedPlayerPartyCount() = gEliteFourPoolCount;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        SavePlayerPartyMon(i, &gEliteFourPool[i]);
+    }
+}
+
+void LoadEliteFourPool(void)
+{
+    int i;
+
+    gEliteFourPoolCount = *GetSavedPlayerPartyCount();
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        u32 data;
+        gEliteFourPool[i] = *GetSavedPlayerPartyMon(i);
+
+        // TODO: Turn this into a save migration once those are available.
+        // At which point we can remove hp and status from Pokemon entirely.
+        data = gEliteFourPool[i].maxHP - gEliteFourPool[i].hp;
+        SetBoxMonData(&gEliteFourPool[i].box, MON_DATA_HP_LOST, &data);
+        data = gEliteFourPool[i].status;
+        SetBoxMonData(&gEliteFourPool[i].box, MON_DATA_STATUS, &data);
+    }
+}
+
 void SaveObjectEvents(void)
 {
     int i;

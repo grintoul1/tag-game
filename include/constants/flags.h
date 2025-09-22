@@ -48,8 +48,8 @@
 #define FLAG_POKE_MENU       0x22 // FLAG_POKE_MENU
 #define FLAG_UTILITY_MENU_E4 0x23 // FLAG_UTILITY_MENU_E4
 #define FLAG_SHARE_PARTY     0x24 // Sets player and partner to share a party
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
+#define FLAG_ELITE_FOUR_PARTY_ONLY    0x25 // 6-mon Elite 4
+#define FLAG_ELITE_FOUR_PARTY_EXCHANGED    0x26 // Flags whether player has already exchanged Pokémon in the Elite 4
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
