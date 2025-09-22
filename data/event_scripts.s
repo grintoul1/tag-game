@@ -727,8 +727,9 @@ Common_EventScript_EliteFourAttendantBestOfLuck::
 	end
 
 Common_Text_EliteFourAttendantSwitchPartyWithPool:
-	.string "You may now exchange up to three Pokémon\n"
-	.string "in your party with Pokémon in your pool.\p"
+	.string "You may now exchange up to three \n"
+	.string "Pokémon in your party with Pokémon\l"
+	.string "in your pool.\p"
 	.string "Would you like to make an exchange?$"
 
 Common_Text_EliteFourAttendantBestOfLuck:

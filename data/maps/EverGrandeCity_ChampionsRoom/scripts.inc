@@ -29,8 +29,8 @@ EverGrandeCity_ChampionsRoom_OnFrame:
 
 EverGrandeCity_ChampionsRoom_EventScript_EnterRoom::
 	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp3
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkUp3
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp4
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkUp4
 	waitmovement 0
 	delay 40
 	applymovement OBJ_EVENT_ID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerApproachWallace
@@ -42,7 +42,6 @@ EverGrandeCity_ChampionsRoom_EventScript_EnterRoom::
 	end
 
 EverGrandeCity_ChampionsRoom_Movement_PlayerApproachWallace:
-	walk_up
 	walk_up
 	step_end
 
