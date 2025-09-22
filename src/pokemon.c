@@ -82,14 +82,15 @@ static union PokemonSubstruct *GetSubstruct(struct BoxPokemon *boxMon, u32 perso
 static void EncryptBoxMon(struct BoxPokemon *boxMon);
 static void DecryptBoxMon(struct BoxPokemon *boxMon);
 static void Task_PlayMapChosenOrBattleBGM(u8 taskId);
-static bool8 ShouldSkipFriendshipChange(void);
 void TrySpecialOverworldEvo();
 
 EWRAM_DATA static u8 sLearningMoveTableID = 0;
 EWRAM_DATA u8 gPlayerPartyCount = 0;
 EWRAM_DATA u8 gEnemyPartyCount = 0;
+EWRAM_DATA u8 gEliteFourPoolCount = 0;
 EWRAM_DATA struct Pokemon gPlayerParty[PARTY_SIZE] = {0};
 EWRAM_DATA struct Pokemon gEnemyParty[PARTY_SIZE] = {0};
+EWRAM_DATA struct Pokemon gEliteFourPool[PARTY_SIZE] = {0};
 EWRAM_DATA struct SpriteTemplate gMultiuseSpriteTemplate = {0};
 EWRAM_DATA static struct MonSpritesGfxManager *sMonSpritesGfxManagers[MON_SPR_GFX_MANAGERS_COUNT] = {NULL};
 EWRAM_DATA static u8 sTriedEvolving = 0;
@@ -3344,6 +3345,12 @@ u8 CalculateEnemyPartyCount(void)
     return gEnemyPartyCount;
 }
 
+u8 CalculateEliteFourPoolCount(void)
+{
+    gEliteFourPoolCount = CalculatePartyCount(gEliteFourPool);
+    return gEliteFourPoolCount;
+}
+
 u8 CalculateEnemyPartyCountInSide(u32 battler)
 {
     return CalculatePartyCountOfSide(battler, gEnemyParty);
@@ -5893,8 +5900,10 @@ u16 GetBattleBGM(void)
             switch (trainerId)
             {
                 case TRAINER_VITO:
-                    return MUS_VS_RIVAL;
-                return MUS_VS_TRAINER;
+                case TRAINER_VITO_ROUTE111:
+                    return MUS_RG_VS_CHAMPION;
+                default:
+                    return MUS_RG_VS_GYM_LEADER;
             }
         default:
             return MUS_VS_TRAINER;
@@ -6411,7 +6420,7 @@ bool8 HasTwoFramesAnimation(u16 species)
         && !gTestRunnerHeadless;
 }
 
-static bool8 ShouldSkipFriendshipChange(void)
+bool8 ShouldSkipFriendshipChange(void)
 {
     if (gMain.inBattle && gBattleTypeFlags & (BATTLE_TYPE_FRONTIER))
         return TRUE;

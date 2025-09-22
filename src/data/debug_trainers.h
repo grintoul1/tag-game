@@ -1,9 +1,7 @@
 //
 // DO NOT MODIFY THIS FILE! It is auto-generated from src/data/debug_trainers.party
 //
-// If you want to modify this file set COMPETITIVE_PARTY_SYNTAX to FALSE
-// in include/config/general.h and remove this notice.
-// Use sed -i '/^#line/d' 'src/data/debug_trainers.h' to remove #line markers.
+// If you want to modify this file see expansion PR #7154
 //
 
 #line 1 "src/data/debug_trainers.party"
@@ -20,6 +18,8 @@
         .encounterMusic_gender =
 #line 19
             TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 0
+        .trainerBackPic = TRAINER_PIC_BRENDAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -64,6 +64,8 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 33
         .aiFlags = AI_FLAG_BASIC_TRAINER,
+#line 0
+        .trainerBackPic = TRAINER_PIC_STEVEN,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {

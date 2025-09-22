@@ -1108,7 +1108,7 @@ MtPyre_Summit_EventScript_MattTabithaFight_A::
 	applymovement LOCALID_TABITHA, MtPyre_Summit_Movement_TabithaApproachPlayer_A
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
-	waitmovement 0
+	waitmovement LOCALID_MATT
 	playbgm MUS_MT_PYRE_EXTERIOR, TRUE
 	multi_2p_vs_2 TRAINER_TABITHA_MT_PYRE, MtPyre_Summit_Text_Tabitha_Mt_PyreDefeat, TRAINER_MATT_MT_PYRE, MtPyre_Summit_Text_Matt_Mt_PyreDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
@@ -1187,7 +1187,7 @@ MtPyre_Summit_EventScript_MattTabithaFight_B::
 	applymovement LOCALID_TABITHA, MtPyre_Summit_Movement_TabithaApproachPlayer_B
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
-	waitmovement 0
+	waitmovement LOCALID_MATT
 	playbgm MUS_MT_PYRE_EXTERIOR, TRUE
 	multi_2p_vs_2 TRAINER_TABITHA_MT_PYRE, MtPyre_Summit_Text_Tabitha_Mt_PyreDefeat, TRAINER_MATT_MT_PYRE, MtPyre_Summit_Text_Matt_Mt_PyreDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
@@ -1229,7 +1229,7 @@ MtPyre_Summit_EventScript_MattTabithaFight_C::
 	applymovement LOCALID_TABITHA, MtPyre_Summit_Movement_TabithaApproachPlayer_C
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
-	waitmovement 0
+	waitmovement LOCALID_TABITHA
 	playbgm MUS_MT_PYRE_EXTERIOR, TRUE
 	multi_2p_vs_2 TRAINER_TABITHA_MT_PYRE, MtPyre_Summit_Text_Tabitha_Mt_PyreDefeat, TRAINER_MATT_MT_PYRE, MtPyre_Summit_Text_Matt_Mt_PyreDefeat, PARTNER_EMMIE
 	switch VAR_RESULT

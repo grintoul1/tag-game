@@ -31,6 +31,7 @@
 static void CB2_ReturnFromChooseHalfParty(void);
 static void CB2_ReturnFromChooseBattleFrontierParty(void);
 static void HealPlayerBoxes(void);
+static void CB2_ReturnFromChooseHalfPartyEliteFour(void);
 
 void HealPlayerParty(void)
 {
@@ -179,6 +180,13 @@ void ChooseHalfPartyForBattle(void)
     InitChooseHalfPartyForBattle(0);
 }
 
+void ChooseHalfPartyForEliteFour(void)
+{
+    gMain.savedCallback = CB2_ReturnFromChooseHalfPartyEliteFour;
+    VarSet(VAR_FRONTIER_FACILITY, FACILITY_MULTI_OR_EREADER);
+    InitChooseHalfPartyForEliteFour(0);
+}
+
 static void CB2_ReturnFromChooseHalfParty(void)
 {
     switch (gSelectedOrderFromParty[0])
@@ -191,6 +199,30 @@ static void CB2_ReturnFromChooseHalfParty(void)
         break;
     }
 
+    SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+}
+
+static void CB2_ReturnFromChooseHalfPartyEliteFour(void)
+{
+    switch (gSelectedOrderFromParty[0])
+    {
+    case 0:
+        gSpecialVar_Result = FALSE;
+        break;
+    default:
+        for (u32 i = 0; i < 3; i++)
+        {
+            if (gSelectedOrderFromParty[i] != 0)
+            {
+                CopyMon(&gEnemyParty[gSelectedOrderFromParty[i] - 1], &gPlayerParty[gSelectedOrderFromParty[i] - 1], sizeof(*&gPlayerParty[gSelectedOrderFromParty[i] - 1]));
+                ZeroMonData(&gPlayerParty[gSelectedOrderFromParty[i] - 1]);
+                gSpecialVar_0x8000 += 1;
+                gSelectedOrderFromParty[i] = 0;
+            }
+        }
+        gSpecialVar_Result = TRUE;
+        break;
+    }
     SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 

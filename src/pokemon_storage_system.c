@@ -72,6 +72,8 @@ enum {
     OPTIONS_COUNT
 };
 
+#define OPTION_MOVE_ELITE_FOUR 6
+
 // IDs for messages to print with PrintMessage
 enum {
     MSG_EXIT_BOX,
@@ -105,6 +107,7 @@ enum {
     MSG_ITEM_IS_HELD,
     MSG_CHANGED_TO_ITEM,
     MSG_CANT_STORE_MAIL,
+    MSG_ELITE_FOUR,
 };
 
 // IDs for how to resolve variables in the above messages
@@ -194,6 +197,9 @@ enum {
     INPUT_MULTIMOVE_UNABLE,
     INPUT_MULTIMOVE_MOVE_MONS,
     INPUT_MULTIMOVE_PLACE_MONS,
+    INPUT_CLOSE_BOX_ELITE_FOUR,
+    INPUT_SHOW_PARTY_ELITE_FOUR,
+    INPUT_HIDE_PARTY_ELITE_FOUR,
 };
 
 enum {
@@ -201,6 +207,7 @@ enum {
     SCREEN_CHANGE_SUMMARY_SCREEN,
     SCREEN_CHANGE_NAME_BOX,
     SCREEN_CHANGE_ITEM_FROM_BAG,
+    SCREEN_CHANGE_EXIT_ELITE_FOUR,
 };
 
 enum {
@@ -569,6 +576,7 @@ static void Task_TakeItemForMoving(u8);
 static void Task_WithdrawMon(u8);
 static void Task_ShiftMon(u8);
 static void Task_ShowPartyPokemon(u8);
+static void Task_ShowPartyPokemonEliteFour(u8);
 static void Task_ShowItemInfo(u8);
 static void Task_GiveItemFromBag(u8);
 static void Task_ItemToBag(u8);
@@ -1073,6 +1081,7 @@ static const struct StorageMessage sMessages[] =
     [MSG_ITEM_IS_HELD]         = {COMPOUND_STRING("{DYNAMIC 0} is now held."),   MSG_VAR_ITEM_NAME},
     [MSG_CHANGED_TO_ITEM]      = {COMPOUND_STRING("Changed to {DYNAMIC 0}."),    MSG_VAR_ITEM_NAME},
     [MSG_CANT_STORE_MAIL]      = {COMPOUND_STRING("MAIL can't be stored!"),      MSG_VAR_NONE},
+    [MSG_ELITE_FOUR]           = {COMPOUND_STRING("All pool Pokémon in party?"), MSG_VAR_NONE},
 };
 
 static const struct WindowTemplate sYesNoWindowTemplate =
@@ -1382,8 +1391,31 @@ u8 CountMonsInBox(u8 boxId)
         if (GetBoxMonDataAt(boxId, i, MON_DATA_SPECIES) != SPECIES_NONE)
             count++;
     }
-
     return count;
+}
+
+u8 CountMonsInBoxEliteFour(void)
+{
+    u16 i, j, count;
+
+    for (j = 0, count = 0; j < TOTAL_BOXES_COUNT; j++)
+    {
+        for (i = 0; i < IN_BOX_COUNT; i++)
+        {
+            if (GetBoxMonDataAt(j, i, MON_DATA_SPECIES) != SPECIES_NONE)
+                count++;
+        }
+    }
+    return count;
+}
+
+void RestorePlayerBox(void)
+{
+    for (u32 i = 0; i < PARTY_SIZE; i++)
+    {
+        CopyMonToPC(&gEliteFourPool[i]);
+        ZeroMonData(&gEliteFourPool[i]);
+    }
 }
 
 s16 GetFirstFreeBoxSpot(u8 boxId)
@@ -1513,6 +1545,35 @@ enum {
 #define tNextOption     data[3]
 #define tWindowId       data[15]
 
+static void Task_PCEliteFour(u8 taskId)
+{
+    struct Task *task = &gTasks[taskId];
+
+    switch (task->tState)
+    {
+    case STATE_LOAD:
+        task->tInput = OPTION_MOVE_ELITE_FOUR;
+        // Enter PC
+        FadeScreen(FADE_TO_BLACK, 0);
+        task->tState = STATE_ENTER_PC;
+        break;
+    case STATE_FADE_IN:
+    case STATE_HANDLE_INPUT:
+    case STATE_ERROR_MSG:
+        task->tState++;
+        break;
+    case STATE_ENTER_PC:
+        if (!gPaletteFade.active)
+        {
+            CleanupOverworldWindowsAndTilemaps();
+            EnterPokeStorage(task->tInput);
+            RemoveWindow(task->tWindowId);
+            DestroyTask(taskId);
+        }
+        break;
+    }
+}
+
 static void Task_PCMainMenu(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
@@ -1633,6 +1694,16 @@ void ShowPokemonStorageSystemPC(void)
     LockPlayerFieldControls();
 }
 
+void ShowPokemonStorageSystemPCEliteFour(void)
+{
+    ZeroPlayerPartyMons();
+    sStorage->boxOption = OPTION_MOVE_ELITE_FOUR;
+    u8 taskId = CreateTask(Task_PCEliteFour, 80);
+    gTasks[taskId].tState = 0;
+    gTasks[taskId].tSelectedOption = 0;
+    LockPlayerFieldControls();
+}
+
 static void FieldTask_ReturnToPcMenu(void)
 {
     u8 taskId;
@@ -1670,6 +1741,13 @@ static void CB2_ExitPokeStorage(void)
 {
     sPreviousBoxOption = GetCurrentBoxOption();
     gFieldCallback = FieldTask_ReturnToPcMenu;
+    SetMainCallback2(CB2_ReturnToField);
+}
+
+static void CB2_ExitPokeStorageEliteFour(void)
+{
+    ScriptContext_Enable();
+    gFieldCallback = FieldCB_ContinueScriptHandleMusic;
     SetMainCallback2(CB2_ReturnToField);
 }
 
@@ -2258,7 +2336,7 @@ static void Task_PokeStorageMain(u8 taskId)
             sStorage->state = MSTATE_MOVE_CURSOR;
             break;
         case INPUT_SHOW_PARTY:
-            if (sStorage->boxOption != OPTION_MOVE_MONS && sStorage->boxOption != OPTION_MOVE_ITEMS)
+            if (sStorage->boxOption != OPTION_MOVE_MONS && sStorage->boxOption != OPTION_MOVE_ELITE_FOUR && sStorage->boxOption != OPTION_MOVE_ITEMS)
             {
                 PrintMessage(MSG_WHICH_ONE_WILL_TAKE);
                 sStorage->state = MSTATE_WAIT_MSG;
@@ -2269,8 +2347,15 @@ static void Task_PokeStorageMain(u8 taskId)
                 SetPokeStorageTask(Task_ShowPartyPokemon);
             }
             break;
+        case INPUT_SHOW_PARTY_ELITE_FOUR:
+            {
+                ClearSavedCursorPos();
+                SetPokeStorageTask(Task_ShowPartyPokemonEliteFour);
+            }
+            break;
         case INPUT_HIDE_PARTY:
-            if (sStorage->boxOption == OPTION_MOVE_MONS)
+            if (sStorage->boxOption == OPTION_MOVE_MONS
+            || sStorage->boxOption == OPTION_MOVE_ELITE_FOUR)
             {
                 if (IsMonBeingMoved() && ItemIsMail(sStorage->displayMonItemId))
                     sStorage->state = MSTATE_ERROR_HAS_MAIL;
@@ -2515,6 +2600,21 @@ static void Task_PokeStorageMain(u8 taskId)
 }
 
 static void Task_ShowPartyPokemon(u8 taskId)
+{
+    switch (sStorage->state)
+    {
+    case 0:
+        SetUpDoShowPartyMenu();
+        sStorage->state++;
+        break;
+    case 1:
+        if (!DoShowPartyMenu())
+            SetPokeStorageTask(Task_PokeStorageMain);
+        break;
+    }
+}
+
+static void Task_ShowPartyPokemonEliteFour(u8 taskId)
 {
     switch (sStorage->state)
     {
@@ -3589,135 +3689,281 @@ static void Task_GiveItemFromBag(u8 taskId)
 
 static void Task_OnCloseBoxPressed(u8 taskId)
 {
-    switch (sStorage->state)
+    if (sStorage->boxOption == OPTION_MOVE_ELITE_FOUR)
     {
-    case 0:
-        if (IsMonBeingMoved())
+        switch (sStorage->state)
         {
-            PlaySE(SE_FAILURE);
-            PrintMessage(MSG_HOLDING_POKE);
-            sStorage->state = 1;
-        }
-        else if (IsMovingItem())
-        {
-            SetPokeStorageTask(Task_CloseBoxWhileHoldingItem);
-        }
-        else
-        {
-            PlaySE(SE_SELECT);
-            PrintMessage(MSG_EXIT_BOX);
-            ShowYesNoWindow(0);
-            sStorage->state = 2;
-        }
-        break;
-    case 1:
-        if (JOY_NEW(A_BUTTON | B_BUTTON | DPAD_ANY))
-        {
-            ClearBottomWindow();
-            SetPokeStorageTask(Task_PokeStorageMain);
-        }
-        break;
-    case 2:
-        switch (Menu_ProcessInputNoWrapClearOnChoose())
-        {
-        case MENU_B_PRESSED:
-        case 1:
-            ClearBottomWindow();
-            SetPokeStorageTask(Task_PokeStorageMain);
-            break;
         case 0:
-            PlaySE(SE_PC_OFF);
-            ClearBottomWindow();
-            sStorage->state++;
-            break;
-        }
-        break;
-    case 3:
-        ComputerScreenCloseEffect(20, 0, 1);
-        sStorage->state++;
-        break;
-    case 4:
-        if (!IsComputerScreenCloseEffectActive())
-        {
-            UpdateBoxToSendMons();
-            gPlayerPartyCount = CalculatePlayerPartyCount();
-            sStorage->screenChangeType = SCREEN_CHANGE_EXIT_BOX;
-            SetPokeStorageTask(Task_ChangeScreen);
-        }
-        break;
-    }
-}
-
-static void Task_OnBPressed(u8 taskId)
-{
-    switch (sStorage->state)
-    {
-    case 0:
-        if (IsMonBeingMoved())
-        {
-            if (OW_PC_PRESS_B < GEN_4)
+            if (IsMonBeingMoved())
             {
                 PlaySE(SE_FAILURE);
                 PrintMessage(MSG_HOLDING_POKE);
                 sStorage->state = 1;
             }
-            else if (CanPlaceMon())
+            else if (IsMovingItem())
             {
-                PlaySE(SE_SELECT);
-                SetPokeStorageTask(Task_PlaceMon);
+                SetPokeStorageTask(Task_CloseBoxWhileHoldingItem);
             }
             else
             {
-                SetPokeStorageTask(Task_PokeStorageMain);
+                PlaySE(SE_SELECT);
+                PrintMessage(MSG_ELITE_FOUR);
+                ShowYesNoWindow(1);
+                sStorage->state = 2;
             }
-        }
-        else if (IsMovingItem())
-        {
-            SetPokeStorageTask(Task_CloseBoxWhileHoldingItem);
-        }
-        else
-        {
-            PlaySE(SE_SELECT);
-            PrintMessage(MSG_CONTINUE_BOX);
-            ShowYesNoWindow(0);
-            sStorage->state = 2;
-        }
-        break;
-    case 1:
-        if (JOY_NEW(A_BUTTON | B_BUTTON | DPAD_ANY))
-        {
-            ClearBottomWindow();
-            SetPokeStorageTask(Task_PokeStorageMain);
-        }
-        break;
-    case 2:
-        switch (Menu_ProcessInputNoWrapClearOnChoose())
-        {
-        case 0:
-            ClearBottomWindow();
-            SetPokeStorageTask(Task_PokeStorageMain);
             break;
         case 1:
-        case MENU_B_PRESSED:
-            PlaySE(SE_PC_OFF);
-            ClearBottomWindow();
+            if (JOY_NEW(A_BUTTON | B_BUTTON | DPAD_ANY))
+            {
+                ClearBottomWindow();
+                SetPokeStorageTask(Task_PokeStorageMain);
+            }
+            break;
+        case 2:
+            switch (Menu_ProcessInputNoWrapClearOnChoose())
+            {
+            case MENU_B_PRESSED:
+            case 1:
+                ClearBottomWindow();
+                SetPokeStorageTask(Task_PokeStorageMain);
+                break;
+            case 0:
+                PlaySE(SE_PC_OFF);
+                ClearBottomWindow();
+                sStorage->state++;
+                break;
+            }
+            break;
+        case 3:
+            ComputerScreenCloseEffect(20, 0, 1);
             sStorage->state++;
             break;
+        case 4:
+            if (!IsComputerScreenCloseEffectActive())
+            {
+                UpdateBoxToSendMons();
+                gPlayerPartyCount = CalculatePlayerPartyCount();
+                for (u8 i = 0; i < gPlayerPartyCount; i++)
+                {
+                    CopyMon(&gEliteFourPool[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+                }
+                sStorage->screenChangeType = SCREEN_CHANGE_EXIT_ELITE_FOUR;
+                SetPokeStorageTask(Task_ChangeScreen);
+            }
+            break;
         }
-        break;
-    case 3:
-        ComputerScreenCloseEffect(20, 0, 0);
-        sStorage->state++;
-        break;
-    case 4:
-        if (!IsComputerScreenCloseEffectActive())
+    }
+    else
+    {
+        switch (sStorage->state)
         {
-            UpdateBoxToSendMons();
-            gPlayerPartyCount = CalculatePlayerPartyCount();
-            sStorage->screenChangeType = SCREEN_CHANGE_EXIT_BOX;
-            SetPokeStorageTask(Task_ChangeScreen);
+        case 0:
+            if (IsMonBeingMoved())
+            {
+                PlaySE(SE_FAILURE);
+                PrintMessage(MSG_HOLDING_POKE);
+                sStorage->state = 1;
+            }
+            else if (IsMovingItem())
+            {
+                SetPokeStorageTask(Task_CloseBoxWhileHoldingItem);
+            }
+            else
+            {
+                PlaySE(SE_SELECT);
+                PrintMessage(MSG_EXIT_BOX);
+                ShowYesNoWindow(0);
+                sStorage->state = 2;
+            }
+            break;
+        case 1:
+            if (JOY_NEW(A_BUTTON | B_BUTTON | DPAD_ANY))
+            {
+                ClearBottomWindow();
+                SetPokeStorageTask(Task_PokeStorageMain);
+            }
+            break;
+        case 2:
+            switch (Menu_ProcessInputNoWrapClearOnChoose())
+            {
+            case MENU_B_PRESSED:
+            case 1:
+                ClearBottomWindow();
+                SetPokeStorageTask(Task_PokeStorageMain);
+                break;
+            case 0:
+                PlaySE(SE_PC_OFF);
+                ClearBottomWindow();
+                sStorage->state++;
+                break;
+            }
+            break;
+        case 3:
+            ComputerScreenCloseEffect(20, 0, 1);
+            sStorage->state++;
+            break;
+        case 4:
+            if (!IsComputerScreenCloseEffectActive())
+            {
+                UpdateBoxToSendMons();
+                gPlayerPartyCount = CalculatePlayerPartyCount();
+                sStorage->screenChangeType = SCREEN_CHANGE_EXIT_BOX;
+                SetPokeStorageTask(Task_ChangeScreen);
+            }
+            break;
         }
-        break;
+    }
+}
+
+static void Task_OnBPressed(u8 taskId)
+{
+    if (sStorage->boxOption == OPTION_MOVE_ELITE_FOUR)
+    {
+        switch (sStorage->state)
+        {
+        case 0:
+            if (IsMonBeingMoved())
+            {
+                if (OW_PC_PRESS_B < GEN_4)
+                {
+                    PlaySE(SE_FAILURE);
+                    PrintMessage(MSG_HOLDING_POKE);
+                    sStorage->state = 1;
+                }
+                else if (CanPlaceMon())
+                {
+                    PlaySE(SE_SELECT);
+                    SetPokeStorageTask(Task_PlaceMon);
+                }
+                else
+                {
+                    SetPokeStorageTask(Task_PokeStorageMain);
+                }
+            }
+            else if (IsMovingItem())
+            {
+                SetPokeStorageTask(Task_CloseBoxWhileHoldingItem);
+            }
+            else
+            {
+                PlaySE(SE_SELECT);
+                PrintMessage(MSG_ELITE_FOUR);
+                ShowYesNoWindow(1);
+                sStorage->state = 2;
+            }
+            break;
+        case 1:
+            if (JOY_NEW(A_BUTTON | B_BUTTON | DPAD_ANY))
+            {
+                ClearBottomWindow();
+                SetPokeStorageTask(Task_PokeStorageMain);
+            }
+            break;
+        case 2:
+            switch (Menu_ProcessInputNoWrapClearOnChoose())
+            {
+            case MENU_B_PRESSED:
+            case 1:
+                ClearBottomWindow();
+                SetPokeStorageTask(Task_PokeStorageMain);
+                break;
+            case 0:
+                PlaySE(SE_PC_OFF);
+                ClearBottomWindow();
+                sStorage->state++;
+                break;
+            }
+            break;
+        case 3:
+            ComputerScreenCloseEffect(20, 0, 0);
+            sStorage->state++;
+            break;
+        case 4:
+            if (!IsComputerScreenCloseEffectActive())
+            {
+                UpdateBoxToSendMons();
+                gPlayerPartyCount = CalculatePlayerPartyCount();
+                for (u8 i = 0; i < gPlayerPartyCount; i++)
+                {
+                    CopyMon(&gEliteFourPool[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
+                }
+                sStorage->screenChangeType = SCREEN_CHANGE_EXIT_ELITE_FOUR;
+                SetPokeStorageTask(Task_ChangeScreen);
+            }
+            break;
+        }
+    }
+    else
+    {
+        switch (sStorage->state)
+        {
+        case 0:
+            if (IsMonBeingMoved())
+            {
+                if (OW_PC_PRESS_B < GEN_4)
+                {
+                    PlaySE(SE_FAILURE);
+                    PrintMessage(MSG_HOLDING_POKE);
+                    sStorage->state = 1;
+                }
+                else if (CanPlaceMon())
+                {
+                    PlaySE(SE_SELECT);
+                    SetPokeStorageTask(Task_PlaceMon);
+                }
+                else
+                {
+                    SetPokeStorageTask(Task_PokeStorageMain);
+                }
+            }
+            else if (IsMovingItem())
+            {
+                SetPokeStorageTask(Task_CloseBoxWhileHoldingItem);
+            }
+            else
+            {
+                PlaySE(SE_SELECT);
+                PrintMessage(MSG_CONTINUE_BOX);
+                ShowYesNoWindow(0);
+                sStorage->state = 2;
+            }
+            break;
+        case 1:
+            if (JOY_NEW(A_BUTTON | B_BUTTON | DPAD_ANY))
+            {
+                ClearBottomWindow();
+                SetPokeStorageTask(Task_PokeStorageMain);
+            }
+            break;
+        case 2:
+            switch (Menu_ProcessInputNoWrapClearOnChoose())
+            {
+            case 0:
+                ClearBottomWindow();
+                SetPokeStorageTask(Task_PokeStorageMain);
+                break;
+            case 1:
+            case MENU_B_PRESSED:
+                PlaySE(SE_PC_OFF);
+                ClearBottomWindow();
+                sStorage->state++;
+                break;
+            }
+            break;
+        case 3:
+            ComputerScreenCloseEffect(20, 0, 0);
+            sStorage->state++;
+            break;
+        case 4:
+            if (!IsComputerScreenCloseEffectActive())
+            {
+                UpdateBoxToSendMons();
+                gPlayerPartyCount = CalculatePlayerPartyCount();
+                sStorage->screenChangeType = SCREEN_CHANGE_EXIT_BOX;
+                SetPokeStorageTask(Task_ChangeScreen);
+            }
+            break;
+        }
     }
 }
 
@@ -3734,6 +3980,15 @@ static void Task_ChangeScreen(u8 taskId)
 
     switch (screenChangeType)
     {
+    case SCREEN_CHANGE_EXIT_ELITE_FOUR:
+        for (u32 i = 0; i < gPlayerPartyCount; i++)
+        {
+            gEliteFourPool[i] = gPlayerParty[i];
+        }
+        FreePokeStorageData();
+        DestroyTask(taskId);
+        SetMainCallback2(CB2_ExitPokeStorageEliteFour);
+        break;
     case SCREEN_CHANGE_EXIT_BOX:
     default:
         FreePokeStorageData();
@@ -4178,13 +4433,23 @@ static void UpdateCloseBoxButtonFlash(void)
 static void SetPartySlotTilemaps(void)
 {
     u8 i;
+    s32 species;
 
-    // Skips first party slot, it should always be drawn
-    // as if it has a Pokémon in it
-    for (i = 1; i < PARTY_SIZE; i++)
+    if (CountPartyMons() != 0)
     {
-        s32 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
-        SetPartySlotTilemap(i, species != SPECIES_NONE);
+        for (i = 1; i < PARTY_SIZE; i++)
+        {
+            species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+            SetPartySlotTilemap(i, species != SPECIES_NONE);
+        }
+    }
+    else
+    {
+        for (i = 0; i < PARTY_SIZE; i++)
+        {
+            species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+            SetPartySlotTilemap(i, species != SPECIES_NONE);
+        }
     }
 }
 
@@ -4738,20 +5003,41 @@ static void CreatePartyMonsSprites(bool8 visible)
     u16 species = GetMonData(&gPlayerParty[0], MON_DATA_SPECIES_OR_EGG);
     u32 personality = GetMonData(&gPlayerParty[0], MON_DATA_PERSONALITY);
 
-    sStorage->partySprites[0] = CreateMonIconSprite(species, personality, 104, 64, 1, 12);
-    count = 1;
-    for (i = 1; i < PARTY_SIZE; i++)
+    if (CountPartyMons() != 0)
     {
-        species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG);
-        if (species != SPECIES_NONE)
+        sStorage->partySprites[0] = CreateMonIconSprite(species, personality, 104, 64, 1, 12);
+        count = 1;
+        for (i = 1; i < PARTY_SIZE; i++)
         {
-            personality = GetMonData(&gPlayerParty[i], MON_DATA_PERSONALITY);
-            sStorage->partySprites[i] = CreateMonIconSprite(species, personality, 152,  8 * (3 * (i - 1)) + 16, 1, 12);
-            count++;
+            species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG);
+            if (species != SPECIES_NONE)
+            {
+                personality = GetMonData(&gPlayerParty[i], MON_DATA_PERSONALITY);
+                sStorage->partySprites[i] = CreateMonIconSprite(species, personality, 152,  8 * (3 * (i - 1)) + 16, 1, 12);
+                count++;
+            }
+            else
+            {
+                sStorage->partySprites[i] = NULL;
+            }
         }
-        else
+    }
+    else
+    {
+        count = 0;
+        for (i = 0; i < PARTY_SIZE; i++)
         {
-            sStorage->partySprites[i] = NULL;
+            species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG);
+            if (species != SPECIES_NONE)
+            {
+                personality = GetMonData(&gPlayerParty[i], MON_DATA_PERSONALITY);
+                sStorage->partySprites[i] = CreateMonIconSprite(species, personality, 152,  8 * (3 * (i)) + 16, 1, 12);
+                count++;
+            }
+            else
+            {
+                sStorage->partySprites[i] = NULL;
+            }
         }
     }
 
@@ -7167,7 +7453,7 @@ static u8 InBoxInput_Normal(void)
             if (!sAutoActionOn)
                 return INPUT_IN_MENU;
 
-            if (sStorage->boxOption != OPTION_MOVE_MONS || sIsMonBeingMoved == TRUE)
+            if ((sStorage->boxOption != OPTION_MOVE_MONS && sStorage->boxOption != OPTION_MOVE_ELITE_FOUR) || sIsMonBeingMoved == TRUE)
             {
                 switch (GetMenuItemTextId(0))
                 {
@@ -7710,6 +7996,7 @@ static bool8 SetMenuTexts_Mon(void)
             return FALSE;
         break;
     case OPTION_MOVE_MONS:
+    case OPTION_MOVE_ELITE_FOUR:
         if (sIsMonBeingMoved)
         {
             if (species != SPECIES_NONE)
@@ -7731,7 +8018,8 @@ static bool8 SetMenuTexts_Mon(void)
     }
 
     SetMenuText(MENU_SUMMARY);
-    if (sStorage->boxOption == OPTION_MOVE_MONS)
+    if (sStorage->boxOption == OPTION_MOVE_MONS
+    || sStorage->boxOption == OPTION_MOVE_ELITE_FOUR)
     {
         if (sCursorArea == CURSOR_AREA_IN_BOX)
             SetMenuText(MENU_WITHDRAW);
@@ -8003,49 +8291,49 @@ static void InitMenu(void)
     sStorage->menuWindow.baseBlock = 92;
 }
 
-static const u8 gPCText_Give[] = _("GIVE");
+static const u8 gPCText_Give[] = _("Give");
 
 static const u8 *const sMenuTexts[] =
 {
-    [MENU_CANCEL]     = COMPOUND_STRING("CANCEL"),
-    [MENU_STORE]      = COMPOUND_STRING("STORE"),
-    [MENU_WITHDRAW]   = COMPOUND_STRING("WITHDRAW"),
-    [MENU_MOVE]       = COMPOUND_STRING("MOVE"),
-    [MENU_SHIFT]      = COMPOUND_STRING("SHIFT"),
-    [MENU_PLACE]      = COMPOUND_STRING("PLACE"),
-    [MENU_SUMMARY]    = COMPOUND_STRING("SUMMARY"),
-    [MENU_RELEASE]    = COMPOUND_STRING("RELEASE"),
-    [MENU_MARK]       = COMPOUND_STRING("MARK"),
-    [MENU_JUMP]       = COMPOUND_STRING("JUMP"),
-    [MENU_WALLPAPER]  = COMPOUND_STRING("WALLPAPER"),
-    [MENU_NAME]       = COMPOUND_STRING("NAME"),
-    [MENU_TAKE]       = COMPOUND_STRING("TAKE"),
+    [MENU_CANCEL]     = COMPOUND_STRING("Cancel"),
+    [MENU_STORE]      = COMPOUND_STRING("Store"),
+    [MENU_WITHDRAW]   = COMPOUND_STRING("Withdraw"),
+    [MENU_MOVE]       = COMPOUND_STRING("Move"),
+    [MENU_SHIFT]      = COMPOUND_STRING("Shift"),
+    [MENU_PLACE]      = COMPOUND_STRING("Place"),
+    [MENU_SUMMARY]    = COMPOUND_STRING("Summary"),
+    [MENU_RELEASE]    = COMPOUND_STRING("Release"),
+    [MENU_MARK]       = COMPOUND_STRING("Mark"),
+    [MENU_JUMP]       = COMPOUND_STRING("Jump"),
+    [MENU_WALLPAPER]  = COMPOUND_STRING("Wallpaper"),
+    [MENU_NAME]       = COMPOUND_STRING("Name"),
+    [MENU_TAKE]       = COMPOUND_STRING("Take"),
     [MENU_GIVE]       = gPCText_Give,
     [MENU_GIVE_2]     = gPCText_Give,
-    [MENU_SWITCH]     = COMPOUND_STRING("SWITCH"),
-    [MENU_BAG]        = COMPOUND_STRING("BAG"),
-    [MENU_INFO]       = COMPOUND_STRING("INFO"),
-    [MENU_SCENERY_1]  = COMPOUND_STRING("SCENERY 1"),
-    [MENU_SCENERY_2]  = COMPOUND_STRING("SCENERY 2"),
-    [MENU_SCENERY_3]  = COMPOUND_STRING("SCENERY 3"),
-    [MENU_ETCETERA]   = COMPOUND_STRING("ETCETERA"),
-    [MENU_FRIENDS]    = COMPOUND_STRING("FRIENDS"),
-    [MENU_FOREST]     = COMPOUND_STRING("FOREST"),
-    [MENU_CITY]       = COMPOUND_STRING("CITY"),
-    [MENU_DESERT]     = COMPOUND_STRING("DESERT"),
-    [MENU_SAVANNA]    = COMPOUND_STRING("SAVANNA"),
-    [MENU_CRAG]       = COMPOUND_STRING("CRAG"),
-    [MENU_VOLCANO]    = COMPOUND_STRING("VOLCANO"),
-    [MENU_SNOW]       = COMPOUND_STRING("SNOW"),
-    [MENU_CAVE]       = COMPOUND_STRING("CAVE"),
-    [MENU_BEACH]      = COMPOUND_STRING("BEACH"),
-    [MENU_SEAFLOOR]   = COMPOUND_STRING("SEAFLOOR"),
-    [MENU_RIVER]      = COMPOUND_STRING("RIVER"),
-    [MENU_SKY]        = COMPOUND_STRING("SKY"),
-    [MENU_POLKADOT]   = COMPOUND_STRING("POLKA-DOT"),
-    [MENU_POKECENTER] = COMPOUND_STRING("POKéCENTER"),
-    [MENU_MACHINE]    = COMPOUND_STRING("MACHINE"),
-    [MENU_SIMPLE]     = COMPOUND_STRING("SIMPLE"),
+    [MENU_SWITCH]     = COMPOUND_STRING("Switch"),
+    [MENU_BAG]        = COMPOUND_STRING("Bag"),
+    [MENU_INFO]       = COMPOUND_STRING("Info"),
+    [MENU_SCENERY_1]  = COMPOUND_STRING("Scenery 1"),
+    [MENU_SCENERY_2]  = COMPOUND_STRING("Scenery 2"),
+    [MENU_SCENERY_3]  = COMPOUND_STRING("Scenery 3"),
+    [MENU_ETCETERA]   = COMPOUND_STRING("Etcetera"),
+    [MENU_FRIENDS]    = COMPOUND_STRING("Friends"),
+    [MENU_FOREST]     = COMPOUND_STRING("Forest"),
+    [MENU_CITY]       = COMPOUND_STRING("City"),
+    [MENU_DESERT]     = COMPOUND_STRING("Desert"),
+    [MENU_SAVANNA]    = COMPOUND_STRING("Savanna"),
+    [MENU_CRAG]       = COMPOUND_STRING("Crag"),
+    [MENU_VOLCANO]    = COMPOUND_STRING("Volcano"),
+    [MENU_SNOW]       = COMPOUND_STRING("Snow"),
+    [MENU_CAVE]       = COMPOUND_STRING("Cave"),
+    [MENU_BEACH]      = COMPOUND_STRING("Beach"),
+    [MENU_SEAFLOOR]   = COMPOUND_STRING("Seafloor"),
+    [MENU_RIVER]      = COMPOUND_STRING("River"),
+    [MENU_SKY]        = COMPOUND_STRING("Sky"),
+    [MENU_POLKADOT]   = COMPOUND_STRING("Polka-dot"),
+    [MENU_POKECENTER] = COMPOUND_STRING("Pokécenter"),
+    [MENU_MACHINE]    = COMPOUND_STRING("Machine"),
+    [MENU_SIMPLE]     = COMPOUND_STRING("Simple"),
 };
 
 static void SetMenuText(u8 textId)

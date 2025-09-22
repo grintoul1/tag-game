@@ -80,7 +80,7 @@ void SetSaveBlocksPointers(u16 offset)
 {
     struct SaveBlock1 **sav1_LocalVar = &gSaveBlock1Ptr;
 
-    offset = (offset + Random()) & (SAVEBLOCK_MOVE_RANGE - 4);
+    offset = 0 & (SAVEBLOCK_MOVE_RANGE - 4);
 
     gSaveBlock2Ptr = (void *)(&gSaveblock2) + offset;
     *sav1_LocalVar = (void *)(&gSaveblock1) + offset;
@@ -223,6 +223,37 @@ void LoadPlayerParty(void)
         SetBoxMonData(&gPlayerParty[i].box, MON_DATA_HP_LOST, &data);
         data = gPlayerParty[i].status;
         SetBoxMonData(&gPlayerParty[i].box, MON_DATA_STATUS, &data);
+    }
+}
+
+void SaveEliteFourPool(void)
+{
+    int i;
+    *GetSavedPlayerPartyCount() = gEliteFourPoolCount;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        SavePlayerPartyMon(i, &gEliteFourPool[i]);
+    }
+}
+
+void LoadEliteFourPool(void)
+{
+    int i;
+
+    gEliteFourPoolCount = *GetSavedPlayerPartyCount();
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        u32 data;
+        gEliteFourPool[i] = *GetSavedPlayerPartyMon(i);
+
+        // TODO: Turn this into a save migration once those are available.
+        // At which point we can remove hp and status from Pokemon entirely.
+        data = gEliteFourPool[i].maxHP - gEliteFourPool[i].hp;
+        SetBoxMonData(&gEliteFourPool[i].box, MON_DATA_HP_LOST, &data);
+        data = gEliteFourPool[i].status;
+        SetBoxMonData(&gEliteFourPool[i].box, MON_DATA_STATUS, &data);
     }
 }
 

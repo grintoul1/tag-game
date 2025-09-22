@@ -105,33 +105,37 @@ struct TypePower
 
 enum MoveSuccessOrder
 {
-    CANCELLER_FLAGS,
+    CANCELLER_CLEAR_FLAGS,
     CANCELLER_STANCE_CHANGE_1,
     CANCELLER_SKY_DROP,
     CANCELLER_RECHARGE,
     CANCELLER_ASLEEP_OR_FROZEN,
+    CANCELLER_POWER_POINTS,
     CANCELLER_OBEDIENCE,
     CANCELLER_TRUANT,
     CANCELLER_FLINCH,
     CANCELLER_DISABLED,
-    CANCELLER_VOLATILE_BLOCKED,
+    CANCELLER_VOLATILE_BLOCKED, // Gravity / Heal Block / Throat Chop
     CANCELLER_TAUNTED,
     CANCELLER_IMPRISONED,
     CANCELLER_CONFUSED,
     CANCELLER_PARALYSED,
     CANCELLER_INFATUATION,
     CANCELLER_BIDE,
+    CANCELLER_Z_MOVES,
+    CANCELLER_CHOICE_LOCK,
+    CANCELLER_CALLSUBMOVE,
     CANCELLER_THAW,
     CANCELLER_STANCE_CHANGE_2,
-    CANCELLER_CHOICE_LOCK,
+    CANCELLER_ATTACKSTRING,
+    CANCELLER_PPDEDUCTION,
     CANCELLER_WEATHER_PRIMAL,
-    CANCELLER_DYNAMAX_BLOCKED,
+    CANCELLER_MOVE_FAILURE,
     CANCELLER_POWDER_STATUS,
+    CANCELLER_PRIORITY_BLOCK,
     CANCELLER_PROTEAN,
-    CANCELLER_PSYCHIC_TERRAIN,
     CANCELLER_EXPLODING_DAMP,
     CANCELLER_MULTIHIT_MOVES,
-    CANCELLER_Z_MOVES,
     CANCELLER_MULTI_TARGET_MOVES,
     CANCELLER_END,
 };
@@ -149,7 +153,8 @@ enum Obedience
 enum MoveCanceller
 {
     MOVE_STEP_SUCCESS,
-    MOVE_STEP_BREAK,
+    MOVE_STEP_BREAK, // Breaks out of the function to run a script
+    MOVE_STEP_FAILURE, // Same as break but breaks out of it due to move failure and jumps to script that handles the failure
     MOVE_STEP_REMOVES_STATUS,
 };
 
@@ -173,6 +178,15 @@ struct DamageContext
     u32 abilityDef:16;
     enum ItemHoldEffect holdEffectAtk:16;
     enum ItemHoldEffect holdEffectDef:16;
+};
+
+struct BattleContext
+{
+    u32 battlerAtk:3;
+    u32 battlerDef:3;
+    u32 currentMove:16;
+    enum BattleMoveEffects moveEffect:10;
+    u16 ability[MAX_BATTLERS_COUNT];
 };
 
 enum SleepClauseBlock
@@ -237,8 +251,7 @@ bool32 IsAbilityAndRecord(u32 battler, u32 battlerAbility, u32 abilityToCheck);
 u32 DoEndTurnEffects(void);
 bool32 HandleFaintedMonActions(void);
 void TryClearRageAndFuryCutter(void);
-enum MoveCanceller AtkCanceller_MoveSuccessOrder(void);
-void SetAtkCancellerForCalledMove(void);
+enum MoveCanceller AtkCanceller_MoveSuccessOrder(struct BattleContext *ctx);
 bool32 HasNoMonsToSwitch(u32 battler, u8 partyIdBattlerOn1, u8 partyIdBattlerOn2);
 bool32 TryChangeBattleWeather(u32 battler, u32 battleWeatherId, bool32 viaAbility);
 bool32 CanAbilityBlockMove(u32 battlerAtk, u32 battlerDef, u32 abilityAtk, u32 abilityDef, u32 move, enum FunctionCallOption option);
@@ -329,7 +342,6 @@ bool32 IsBattlerAffectedByHazards(u32 battler, bool32 toxicSpikes);
 void SortBattlersBySpeed(u8 *battlers, bool32 slowToFast);
 bool32 CompareStat(u32 battler, u8 statId, u8 cmpTo, u8 cmpKind);
 bool32 TryRoomService(u32 battler);
-void BufferStatChange(u32 battler, u8 statId, enum StringID stringId);
 bool32 BlocksPrankster(u16 move, u32 battlerPrankster, u32 battlerDef, bool32 checkTarget);
 u16 GetUsedHeldItem(u32 battler);
 bool32 PickupHasValidTarget(u32 battler);
@@ -408,5 +420,9 @@ bool32 CanMoveSkipAccuracyCalc(u32 battlerAtk, u32 battlerDef, u32 abilityAtk, u
 u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u32 defAbility, u32 atkHoldEffect, u32 defHoldEffect);
 bool32 IsSemiInvulnerable(u32 battler, enum SemiInvulnerableExclusion excludeCommander);
 bool32 BreaksThroughSemiInvulnerablity(u32 battler, u32 move);
+u32 GetNaturePowerMove(u32 battler);
+u32 GetNaturePowerMove(u32 battler);
+void RemoveAbilityFlags(u32 battler);
+bool32 IsDazzlingAbility(u32 ability);
 
 #endif // GUARD_BATTLE_UTIL_H

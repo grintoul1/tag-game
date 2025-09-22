@@ -24,7 +24,6 @@ AI_SINGLE_BATTLE_TEST("AI gets baited by Protect Switch tactics") // This behavi
 // General switching behaviour
 AI_SINGLE_BATTLE_TEST("AI switches if Perish Song is about to kill")
 {
-    KNOWN_FAILING; // Unsure why, but Smart Switching seems to be permanently set 
     PASSES_RANDOMLY(SHOULD_SWITCH_PERISH_SONG_PERCENTAGE, 100, RNG_AI_SWITCH_PERISH_SONG);
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
@@ -43,15 +42,10 @@ AI_SINGLE_BATTLE_TEST("AI switches if Perish Song is about to kill")
 
 AI_DOUBLE_BATTLE_TEST("AI will not try to switch for the same Pokémon for 2 spots in a double battle (all bad moves)")
 {
-    u32 flags;
 
-    KNOWN_FAILING; // Unsure why, but Smart Switching seems to be permanently set 
-    PARAMETRIZE {flags = AI_FLAG_SMART_SWITCHING; }
-    PARAMETRIZE {flags = 0; }
-
-    PASSES_RANDOMLY(SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
+    PASSES_RANDOMLY(100, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
-        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | flags);
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING);
         PLAYER(SPECIES_RATTATA);
         PLAYER(SPECIES_RATTATA);
         // No moves to damage player.
@@ -85,19 +79,19 @@ AI_MULTI_BATTLE_TEST("AI will not switch into a partner Pokémon in a multibattl
         MULTI_PLAYER(SPECIES_RATTATA);
         MULTI_PARTNER(SPECIES_KANGASKHAN);
         // No moves to damage player.
-        MULTI_OPPONENT_A(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
-        MULTI_OPPONENT_A(SPECIES_GASTLY) { Moves(MOVE_LICK); }
-        MULTI_OPPONENT_A(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); }
-        MULTI_OPPONENT_B(SPECIES_HAUNTER) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_OPPONENT_A(SPECIES_HAUNTER) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_OPPONENT_B(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_OPPONENT_B(SPECIES_GASTLY) { Moves(MOVE_LICK); }
+        MULTI_OPPONENT_B(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); }
         
     } WHEN {
-        TURN { EXPECT_SWITCH(opponentLeft, 2); };
+        TURN { EXPECT_SWITCH(opponentRight, 5); };
     } SCENE {
-        MESSAGE(AI_TRAINER_NAME " withdrew Gengar!");
-        MESSAGE(AI_TRAINER_NAME " sent out Raticate!");
+        MESSAGE(AI_TRAINER_2_NAME " withdrew Gengar!");
+        MESSAGE(AI_TRAINER_2_NAME " sent out Raticate!");
         NONE_OF {
-            MESSAGE(AI_TRAINER_2_NAME " withdrew Haunter!");
-            MESSAGE(AI_TRAINER_2_NAME " sent out Raticate!");
+            MESSAGE(AI_TRAINER_NAME " withdrew Haunter!");
+            MESSAGE(AI_TRAINER_NAME " sent out Raticate!");
         }
     }
 }
@@ -147,19 +141,19 @@ AI_ONE_VS_TWO_BATTLE_TEST("AI will not switch into a partner Pokémon in a 1v2 b
         MULTI_PLAYER(SPECIES_RATTATA);
         MULTI_PLAYER(SPECIES_KANGASKHAN);
         // No moves to damage player.
-        MULTI_OPPONENT_A(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
-        MULTI_OPPONENT_A(SPECIES_GASTLY) { Moves(MOVE_LICK); }
-        MULTI_OPPONENT_A(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); }
-        MULTI_OPPONENT_B(SPECIES_HAUNTER) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_OPPONENT_A(SPECIES_HAUNTER) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_OPPONENT_B(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_OPPONENT_B(SPECIES_GASTLY) { Moves(MOVE_LICK); }
+        MULTI_OPPONENT_B(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); }
         
     } WHEN {
-        TURN { EXPECT_SWITCH(opponentLeft, 2); };
+        TURN { EXPECT_SWITCH(opponentRight, 5); };
     } SCENE {
-        MESSAGE(AI_TRAINER_NAME " withdrew Gengar!");
-        MESSAGE(AI_TRAINER_NAME " sent out Raticate!");
+        MESSAGE(AI_TRAINER_2_NAME " withdrew Gengar!");
+        MESSAGE(AI_TRAINER_2_NAME " sent out Raticate!");
         NONE_OF {
-            MESSAGE(AI_TRAINER_2_NAME " withdrew Haunter!");
-            MESSAGE(AI_TRAINER_2_NAME " sent out Raticate!");
+            MESSAGE(AI_TRAINER_NAME " withdrew Haunter!");
+            MESSAGE(AI_TRAINER_NAME " sent out Raticate!");
         }
     }
 }
@@ -196,7 +190,6 @@ AI_SINGLE_BATTLE_TEST("When AI switches out due to having no move that affects t
 
 AI_DOUBLE_BATTLE_TEST("AI will not try to switch for the same Pokémon for 2 spots in a double battle (Wonder Guard)")
 {
-    KNOWN_FAILING; // Not used in game
     PASSES_RANDOMLY(SHOULD_SWITCH_WONDER_GUARD_PERCENTAGE, 100, RNG_AI_SWITCH_WONDER_GUARD);
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT | AI_FLAG_SMART_SWITCHING);
@@ -337,7 +330,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI will not switch in a Pokemo
     u32 speedAlakazm;
     u32 aiSmartSwitchFlags = 0;
 
-    KNOWN_FAILING; // Custom AI used.
     PARAMETRIZE { speedAlakazm = 200; alakazamFirst = TRUE; } // AI will always send out Alakazan as it sees a KO with Focus Blast, even if Alakazam dies before it can get it off
     PARAMETRIZE { speedAlakazm = 200; alakazamFirst = FALSE; aiSmartSwitchFlags = AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES; } // AI_FLAG_SMART_MON_CHOICES lets AI see that Alakazam would be KO'd before it can KO, and won't switch it in
     PARAMETRIZE { speedAlakazm = 400; alakazamFirst = TRUE; aiSmartSwitchFlags = AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES; } // AI_FLAG_SMART_MON_CHOICES recognizes that Alakazam is faster and can KO, and will switch it in
@@ -952,10 +944,9 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will switch out if it has an 
     PARAMETRIZE { aiMon = SPECIES_BRONZONG; absorbingAbility = ABILITY_LEVITATE; move = MOVE_EARTHQUAKE;}
     PARAMETRIZE { aiMon = SPECIES_ELECTRODE; absorbingAbility = ABILITY_SOUNDPROOF; move = MOVE_HYPER_VOICE;}
     PARAMETRIZE { aiMon = SPECIES_CHESNAUGHT; absorbingAbility = ABILITY_BULLETPROOF; move = MOVE_SLUDGE_BOMB;}
-    PARAMETRIZE { aiMon = SPECIES_SHIFTRY; absorbingAbility = ABILITY_WIND_RIDER; move = MOVE_HURRICANE;}
+    PARAMETRIZE { aiMon = SPECIES_BRAMBLEGHAST; absorbingAbility = ABILITY_WIND_RIDER; move = MOVE_HURRICANE;}
     GIVEN {
         ASSUME(B_REDIRECT_ABILITY_IMMUNITY >= GEN_5);
-        ASSUME(P_UPDATED_ABILITIES >= GEN_9); //For the predicted ability for Shiftry
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING);
         PLAYER(SPECIES_ZIGZAGOON) { Moves(move); }
         OPPONENT(SPECIES_ZIGZAGOON) { Moves(MOVE_SCRATCH); }
@@ -1149,7 +1140,7 @@ AI_SINGLE_BATTLE_TEST("Switch AI: AI will switch into mon with good type matchup
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI correctly handles abilities when scoring moves")
 {
     GIVEN {
-        ASSUME(B_PRANKSTER_DARK_TYPES >= GEN_7);
+        WITH_CONFIG(GEN_CONFIG_PRANKSTER_DARK_TYPES, GEN_7);
         ASSUME(GetSpeciesType(SPECIES_GRENINJA, 1) == TYPE_DARK);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_OMNISCIENT | AI_FLAG_SMART_MON_CHOICES);
         PLAYER(SPECIES_GRENINJA) { Moves(MOVE_WATER_GUN); }

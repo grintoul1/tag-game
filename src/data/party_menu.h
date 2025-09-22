@@ -103,6 +103,33 @@ static const u8 sPartyMenuSpriteCoords[PARTY_LAYOUT_COUNT][PARTY_SIZE][4 * 2] =
         {104, 106, 106, 116, 136, 115, 102, 113},
         {104, 130, 106, 140, 136, 139, 102, 137},
     },
+    [PARTY_LAYOUT_MULTI_SHARED] =
+    {
+        {16, 24, 20, 34, 50, 36, 16, 18},
+        {16, 80, 20, 90, 50, 92, 16, 74},
+        {104, 26, 106, 36, 136, 35, 102, 33},
+        {104, 50, 106, 60, 136, 59, 102, 57},
+        {104, 82, 106, 92, 136, 91, 102, 89},
+        {104, 106, 106, 116, 136, 115, 102, 113},
+    },
+    [PARTY_LAYOUT_OVERWORLD] =
+    {
+        {16, 32, 20, 42, 50, 44, 16, 26},
+        {104, 26, 106, 36, 136, 35, 102, 33},
+        {104, 50, 106, 60, 136, 59, 102, 57},
+        {16, 80, 20, 90, 50, 92, 16, 74},
+        {104, 82, 106, 92, 136, 91, 102, 89},
+        {104, 106, 106, 116, 136, 115, 102, 113},
+    },
+    [PARTY_LAYOUT_OVERWORLD_SHARED] =
+    {
+        {16, 24, 20, 34, 50, 36, 16, 18},
+        {104, 18, 108, 28, 136, 27, 102, 25},
+        {104, 50, 108, 60, 136, 59, 102, 57},
+        {16, 80, 20, 90, 50, 92, 16, 74},
+        {104, 82, 108, 92, 136, 91, 102, 89},
+        {104, 114, 108, 124, 136, 123, 102, 121},
+    },
 };
 
 // Used only when both Cancel and Confirm are present
@@ -379,6 +406,210 @@ static const struct WindowTemplate sShowcaseMultiPartyMenuWindowTemplate[] =
         .height = 3,
         .paletteNum = 8,
         .baseBlock = 0x1A1,
+    },
+    DUMMY_WIN_TEMPLATE
+};
+
+static const struct WindowTemplate sSharedMultiPartyMenuWindowTemplate[] =
+{
+    { // Party mon 1
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 1,
+        .width = 10,
+        .height = 7,
+        .paletteNum = 3,
+        .baseBlock = 0x63,
+    },
+    { // Party mon 2
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 8,
+        .width = 10,
+        .height = 7,
+        .paletteNum = 4,
+        .baseBlock = 0xA9,
+    },
+    { // Party mon 3
+        .bg = 0,
+        .tilemapLeft = 12,
+        .tilemapTop = 1,
+        .width = 18,
+        .height = 3,
+        .paletteNum = 5,
+        .baseBlock = 0xEF,
+    },
+    { // Party mon 4
+        .bg = 0,
+        .tilemapLeft = 12,
+        .tilemapTop = 5,
+        .width = 18,
+        .height = 3,
+        .paletteNum = 6,
+        .baseBlock = 0x125,
+    },
+    { // Party mon 5
+        .bg = 0,
+        .tilemapLeft = 12,
+        .tilemapTop = 9,
+        .width = 18,
+        .height = 3,
+        .paletteNum = 7,
+        .baseBlock = 0x15B,
+    },
+    { // Party mon 6
+        .bg = 0,
+        .tilemapLeft = 12,
+        .tilemapTop = 13,
+        .width = 18,
+        .height = 3,
+        .paletteNum = 8,
+        .baseBlock = 0x191,
+    },
+    [WIN_MSG] = {
+        .bg = 2,
+        .tilemapLeft = 1,
+        .tilemapTop = 15,
+        .width = 28,
+        .height = 4,
+        .paletteNum = 14,
+        .baseBlock = 0x1DF,
+    },
+    DUMMY_WIN_TEMPLATE
+};
+
+static const struct WindowTemplate sOverworldPartyMenuWindowTemplate[] =
+{
+    { // Party mon 1
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 1,
+        .width = 10,
+        .height = 7,
+        .paletteNum = 3,
+        .baseBlock = 0x63,
+    },
+    { // Party mon 3
+        .bg = 0,
+        .tilemapLeft = 12,
+        .tilemapTop = 2,
+        .width = 18,
+        .height = 3,
+        .paletteNum = 5,
+        .baseBlock = 0xEF,
+    },
+    { // Party mon 4
+        .bg = 0,
+        .tilemapLeft = 12,
+        .tilemapTop = 5,
+        .width = 18,
+        .height = 3,
+        .paletteNum = 6,
+        .baseBlock = 0x125,
+    },
+    { // Party mon 2
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 8,
+        .width = 10,
+        .height = 7,
+        .paletteNum = 4,
+        .baseBlock = 0xA9,
+    },
+    { // Party mon 5
+        .bg = 0,
+        .tilemapLeft = 12,
+        .tilemapTop = 9,
+        .width = 18,
+        .height = 3,
+        .paletteNum = 7,
+        .baseBlock = 0x15B,
+    },
+    { // Party mon 6
+        .bg = 0,
+        .tilemapLeft = 12,
+        .tilemapTop = 12,
+        .width = 18,
+        .height = 3,
+        .paletteNum = 8,
+        .baseBlock = 0x191,
+    },
+    [WIN_MSG] = {
+        .bg = 2,
+        .tilemapLeft = 1,
+        .tilemapTop = 15,
+        .width = 28,
+        .height = 4,
+        .paletteNum = 14,
+        .baseBlock = 0x1DF,
+    },
+    DUMMY_WIN_TEMPLATE
+};
+
+static const struct WindowTemplate sOverworldSharedPartyMenuWindowTemplate[] =
+{
+    { // Party mon 1
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 1,
+        .width = 10,
+        .height = 7,
+        .paletteNum = 3,
+        .baseBlock = 0x63,
+    },
+    { // Party mon 3
+        .bg = 0,
+        .tilemapLeft = 12,
+        .tilemapTop = 1,
+        .width = 18,
+        .height = 3,
+        .paletteNum = 5,
+        .baseBlock = 0xEF,
+    },
+    { // Party mon 4
+        .bg = 0,
+        .tilemapLeft = 12,
+        .tilemapTop = 5,
+        .width = 18,
+        .height = 3,
+        .paletteNum = 6,
+        .baseBlock = 0x125,
+    },
+    { // Party mon 2
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 8,
+        .width = 10,
+        .height = 7,
+        .paletteNum = 4,
+        .baseBlock = 0xA9,
+    },
+    { // Party mon 5
+        .bg = 0,
+        .tilemapLeft = 12,
+        .tilemapTop = 9,
+        .width = 18,
+        .height = 3,
+        .paletteNum = 7,
+        .baseBlock = 0x15B,
+    },
+    { // Party mon 6
+        .bg = 0,
+        .tilemapLeft = 12,
+        .tilemapTop = 13,
+        .width = 18,
+        .height = 3,
+        .paletteNum = 8,
+        .baseBlock = 0x191,
+    },
+    [WIN_MSG] = {
+        .bg = 2,
+        .tilemapLeft = 1,
+        .tilemapTop = 15,
+        .width = 28,
+        .height = 4,
+        .paletteNum = 14,
+        .baseBlock = 0x1DF,
     },
     DUMMY_WIN_TEMPLATE
 };
@@ -660,13 +891,16 @@ static const u8 sHPBarYellowPalIds[] = {73, 74};
 static const u8 sHPBarRedPalIds[] = {89, 90};
 static const u8 sPartyBoxEmptySlotPalIds1[] = {52, 53, 54};
 static const u8 sPartyBoxMultiPalIds1[] = {68, 69, 70};
+static const u8 sPartyBoxMultiSharedPalIds1[] = {165, 166, 48};
 static const u8 sPartyBoxFaintedPalIds1[] = {84, 85, 86};
 static const u8 sPartyBoxCurrSelectionPalIds1[] = {116, 117, 118};
 static const u8 sPartyBoxCurrSelectionMultiPalIds[] = {132, 133, 134};
+static const u8 sPartyBoxCurrSelectionMultiSharedPalIds[] = {164, 165, 58};
 static const u8 sPartyBoxCurrSelectionFaintedPalIds[] = {148, 149, 150};
 static const u8 sPartyBoxSelectedForActionPalIds1[] = {100, 101, 102};
 static const u8 sPartyBoxEmptySlotPalIds2[] = {49, 55, 56};
 static const u8 sPartyBoxMultiPalIds2[] = {65, 71, 72};
+static const u8 sPartyBoxMultiSharedPalIds2[] = {65, 43, 34};
 static const u8 sPartyBoxFaintedPalIds2[] = {81, 87, 88};
 static const u8 sPartyBoxCurrSelectionPalIds2[] = {97, 103, 104};
 static const u8 sPartyBoxSelectedForActionPalIds2[] = {161, 167, 168};

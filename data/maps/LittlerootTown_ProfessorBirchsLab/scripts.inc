@@ -540,7 +540,33 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese, MSGBOX_DEFAULT
-	giveitem ITEM_POKE_BALL, 5
+	giveitem ITEM_POKE_BALL 1
+	giveitem ITEM_GREAT_BALL 2
+	giveitem ITEM_ULTRA_BALL 3
+	giveitem ITEM_MASTER_BALL 4
+	giveitem ITEM_PREMIER_BALL 5
+	giveitem ITEM_HEAL_BALL 6
+	giveitem ITEM_NET_BALL 7
+	giveitem ITEM_NEST_BALL 8
+	giveitem ITEM_DIVE_BALL 9
+	giveitem ITEM_DUSK_BALL 10
+	giveitem ITEM_TIMER_BALL 11
+	giveitem ITEM_QUICK_BALL 12
+	giveitem ITEM_REPEAT_BALL 13
+	giveitem ITEM_LUXURY_BALL 14
+	giveitem ITEM_LEVEL_BALL 15
+	giveitem ITEM_LURE_BALL 16
+	giveitem ITEM_MOON_BALL 17
+	giveitem ITEM_FRIEND_BALL 18
+	giveitem ITEM_LOVE_BALL 19
+	giveitem ITEM_FAST_BALL 20
+	giveitem ITEM_HEAVY_BALL 21
+	giveitem ITEM_DREAM_BALL 22
+	giveitem ITEM_SAFARI_BALL 23
+	giveitem ITEM_SPORT_BALL 24
+	giveitem ITEM_PARK_BALL 25
+	giveitem ITEM_BEAST_BALL 26
+	giveitem ITEM_CHERISH_BALL 27
 	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_MayNoRoomForPokeBalls
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 0
@@ -548,7 +574,33 @@ LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese, MSGBOX_DEFAULT
-	giveitem ITEM_POKE_BALL, 5
+	giveitem ITEM_POKE_BALL 1
+	giveitem ITEM_GREAT_BALL 2
+	giveitem ITEM_ULTRA_BALL 3
+	giveitem ITEM_MASTER_BALL 4
+	giveitem ITEM_PREMIER_BALL 5
+	giveitem ITEM_HEAL_BALL 6
+	giveitem ITEM_NET_BALL 7
+	giveitem ITEM_NEST_BALL 8
+	giveitem ITEM_DIVE_BALL 9
+	giveitem ITEM_DUSK_BALL 10
+	giveitem ITEM_TIMER_BALL 11
+	giveitem ITEM_QUICK_BALL 12
+	giveitem ITEM_REPEAT_BALL 13
+	giveitem ITEM_LUXURY_BALL 14
+	giveitem ITEM_LEVEL_BALL 15
+	giveitem ITEM_LURE_BALL 16
+	giveitem ITEM_MOON_BALL 17
+	giveitem ITEM_FRIEND_BALL 18
+	giveitem ITEM_LOVE_BALL 19
+	giveitem ITEM_FAST_BALL 20
+	giveitem ITEM_HEAVY_BALL 21
+	giveitem ITEM_DREAM_BALL 22
+	giveitem ITEM_SAFARI_BALL 23
+	giveitem ITEM_SPORT_BALL 24
+	giveitem ITEM_PARK_BALL 25
+	giveitem ITEM_BEAST_BALL 26
+	giveitem ITEM_CHERISH_BALL 27
 	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanNoRoomForPokeBalls
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 1

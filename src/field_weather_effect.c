@@ -2619,6 +2619,7 @@ static u8 TranslateWeatherNum(u8 weather)
     case WEATHER_SUNNY:              return WEATHER_SUNNY;
     case WEATHER_RAIN:               return WEATHER_RAIN;
     case WEATHER_SNOW:               return WEATHER_SNOW;
+    case WEATHER_HAIL:               return WEATHER_HAIL;
     case WEATHER_RAIN_THUNDERSTORM:  return WEATHER_RAIN_THUNDERSTORM;
     case WEATHER_FOG_HORIZONTAL:     return WEATHER_FOG_HORIZONTAL;
     case WEATHER_VOLCANIC_ASH:       return WEATHER_VOLCANIC_ASH;

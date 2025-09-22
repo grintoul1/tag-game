@@ -61,7 +61,7 @@
 #define ENABLE_RECOVERY_THRESHOLD                               60 // HP percentage beneath which SHOULD_RECOVER_CHANCE is active
 #define SUCKER_PUNCH_CHANCE                                     50 // Chance for the AI to not use Sucker Punch if the player has a status move
 #define SUCKER_PUNCH_PREDICTION_CHANCE                          50 // Additional chance for the AI to not use Sucker Punch if actively predicting a status move if SUCKER_PUNCH_CHANCE fails
-#define PRIORITIZE_LAST_CHANCE_CHANCE                           50 // Chance the AI will prioritize Last Chance (priority move in the face of being outsped and KO'd) over Slow KO
+#define PRIORITIZE_LAST_CHANCE_CHANCE                           100 // Chance the AI will prioritize Last Chance (priority move in the face of being outsped and KO'd) over Slow KO
 
 // AI damage calc considerations
 #define RISKY_AI_CRIT_STAGE_THRESHOLD                           2   // Stat stages at which Risky will assume it gets a crit
@@ -94,9 +94,9 @@
 #define SMART_SWITCHING_OMNISCIENT                              FALSE // AI will use omniscience for switching calcs, regardless of omniscience setting otherwise
 
 // Configurations specifically for AI_FLAG_DOUBLE_BATTLE.
-#define FRIENDLY_FIRE_RISKY_THRESHOLD           1
-#define FRIENDLY_FIRE_NORMAL_THRESHOLD          1
-#define FRIENDLY_FIRE_CONSERVATIVE_THRESHOLD    1
+#define FRIENDLY_FIRE_RISKY_THRESHOLD           2
+#define FRIENDLY_FIRE_NORMAL_THRESHOLD          3
+#define FRIENDLY_FIRE_CONSERVATIVE_THRESHOLD    4
 // Counterplay on the assumption of opponents Protecting.
 #define DOUBLE_TRICK_ROOM_ON_LAST_TURN_CHANCE    50 // both pokemon use Trick Room on turn Trick Room expires in the hopes both opponents used Protect to stall, getting a free refresh on the timer
 #define TAILWIND_IN_TRICK_ROOM_CHANCE            50 // use Tailwind on turn Trick Room expires in the hopes both opponents used Protect to stall
@@ -130,5 +130,9 @@
 #define CUSTOM_AI_FIFTEEN_PERCENT                                       15
 #define CUSTOM_AI_TEN_PERCENT                                           10
 #define CUSTOM_AI_FIVE_PERCENT                                          5
+
+// HP thresholds to use a status z-move.
+#define Z_EFFECT_FOLLOW_ME_THRESHOLD    30
+#define Z_EFFECT_RESTORE_HP_THRESHOLD   60
 
 #endif // GUARD_CONFIG_AI_H

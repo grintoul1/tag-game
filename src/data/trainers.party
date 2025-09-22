@@ -312,9 +312,10 @@ Togetic @ Charti Berry
 Ability: Serene Grace
 Level: 28
 Relaxed Nature
-- Air Cutter
-- Stored Power
-- Calm Mind
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
+- Gust
+- Shock Wave
+- Dream Eater
 - After You
 
 === TRAINER_KALEB ===
@@ -330,6 +331,7 @@ Slowpoke-Galar @ Covert Cloak
 Ability: Own Tempo  
 Level: 29  
 Relaxed Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Psybeam
 - Acid
 - Yawn
@@ -339,6 +341,7 @@ Porygon @ Room Service
 Ability: Trace  
 Level: 28  
 Sassy Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Psybeam
 - Icy Wind
 - Thunder Shock
@@ -365,8 +368,8 @@ Jolly Nature
 Lumineon @ Wide Lens  
 Ability: Swift Swim  
 Level: 29  
-Adamant Nature  
-- Waterfall
+Jolly Nature  
+- Dive
 - Bounce
 - U-turn
 - Tailwind
@@ -384,28 +387,28 @@ Baltoy @ Soft Sand
 Ability: Levitate  
 Level: 29  
 Modest Nature  
-- Earth Power  
+- Scorching Sands  
 - Shadow Ball
 - Stored Power  
 - Cosmic Power  
 
 Darumaka @ Flame Orb  
-Ability: Inner Focus  
+Ability: Sheer Force  
 Level: 28  
-Adamant Nature  
-- Fire Punch
+Rash Nature  
+- Ember
 - Brick Break
-- Gyro Ball
 - Fling
+- Will-O-Wisp
 
 Darumaka-Galar @ Charti Berry  
-Ability: Inner Focus  
+Ability: Sheer Force  
 Level: 28  
-Adamant Nature  
-- Ice Punch
+Rash Nature
+- Powder Snow
 - Mega Punch
 - Thief
-- Will-O-Wisp
+- Chill-O-Wisp
 
 === TRAINER_TIMMY ===
 Name: Timmy
@@ -445,7 +448,6 @@ AI: Smart Trainer
 Hippopotas @ Eject Pack  
 Ability: Sand Stream  
 Level: 29  
-Tera Type: Ground  
 Adamant Nature  
 - Bulldoze
 - Thunder Fang
@@ -455,7 +457,6 @@ Adamant Nature
 Amaura @ Icy Rock  
 Ability: Snow Warning  
 Level: 29  
-Tera Type: Rock  
 Naive Nature  
 - Rock Slide
 - Icy Wind
@@ -465,7 +466,6 @@ Naive Nature
 Snover @ Occa Berry  
 Ability: Hail Warning  
 Level: 29  
-Tera Type: Grass  
 Jolly Nature  
 - Seed Bomb
 - Ice Punch
@@ -529,7 +529,7 @@ AI: Smart Trainer
 Chatot @ Wise Glasses  
 Ability: Tangled Feet  
 Level: 30  
-Modest Nature  
+Timid Nature  
 - Hyper Voice
 - Air Cutter
 - Roost
@@ -667,6 +667,61 @@ Sandshrew
 Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
+=== TRAINER_WALLY_MAUVILLE ===
+Name: Wally /* Mauville*/
+Class: Rival
+Pic: Wally
+Gender: Male
+Music: Male
+Mugshot: Green
+Battle Type: Doubles
+AI: Smart Trainer
+
+Kirlia @ Eviolite  
+Ability: Trace  
+Level: 31  
+Timid Nature  
+- Psyshock  
+- Psybeam  
+- Dazzling Gleam  
+- Helping Hand  
+
+Linoone-Galar @ Liechi Berry  
+Ability: Gluttony  
+Level: 30  
+Jolly Nature  
+- Dig  
+- Retaliate  
+- Assurance  
+- Counter  
+
+=== TRAINER_UNCLE_MAUVILLE ===
+Name: Uncle /* Mauville*/
+Class: Expert
+Pic: Expert M
+Gender: Male
+Music: Male
+Battle Type: Doubles
+AI: Smart Trainer
+
+Doublade @ Focus Sash  
+Ability: No Guard  
+Level: 31  
+Jolly Nature  
+- Iron Head  
+- Shadow Sneak  
+- Reversal  
+- Autotomize  
+
+Lycanroc-Midnight @ Shuca Berry  
+Ability: No Guard  
+Level: 30  
+Careful Nature  
+- Rock Tomb  
+- Bite  
+- Revenge  
+- Trailblaze  
+
 === TRAINER_KIRK ===
 Name: Kirk
 Class: Guitarist
@@ -679,14 +734,12 @@ AI: Smart Trainer
 Voltorb @ Covert Cloak  
 Ability: Static  
 Level: 30  
-Tera Type: Electric  
 Modest Nature  
 - Discharge  
 
 Rhydon @ Passho Berry  
 Ability: Lightning Rod  
 Level: 30  
-Tera Type: Ground  
 Timid Nature  
 - Bubble Beam  
 - Incinerate  
@@ -705,7 +758,6 @@ AI: Smart Trainer
 Pikachu-Hoenn @ Adrenaline Orb  
 Ability: Lightning Rod  
 Level: 30  
-Tera Type: Electric  
 Timid Nature  
 - Volt Switch  
 - Grass Knot  
@@ -715,7 +767,6 @@ Timid Nature
 Blitzle @ Eviolite  
 Ability: Lightning Rod  
 Level: 30  
-Tera Type: Electric  
 Timid Nature  
 - Discharge  
 - Signal Beam  
@@ -735,7 +786,6 @@ AI: Smart Trainer
 Minun @ Assault Vest  
 Ability: Minus  
 Level: 30  
-Tera Type: Electric  
 Timid Nature  
 - Electro Ball  
 - Nuzzle  
@@ -745,7 +795,6 @@ Timid Nature
 Ampharos @ Shuca Berry  
 Ability: Minus  
 Level: 30  
-Tera Type: Electric  
 Hasty Nature  
 - Thunder Punch  
 - Power Gem  
@@ -764,7 +813,6 @@ AI: Smart Trainer
 Plusle @ Focus Sash  
 Ability: Plus  
 Level: 30  
-Tera Type: Electric  
 Timid Nature  
 - Electroweb  
 - Nasty Plot  
@@ -774,7 +822,6 @@ Timid Nature
 Toxtricity @ Silk Scarf  
 Ability: Plus  
 Level: 30  
-Tera Type: Electric  
 Naive Nature  
 - Hyper Voice  
 - Overdrive  
@@ -1919,6 +1966,7 @@ Class: Winstrate
 Pic: Pokefan M
 Gender: Male
 Music: Twins
+Mugshot: Blue
 Battle Type: Doubles
 AI: Smart Trainer
 
@@ -1949,6 +1997,7 @@ Class: Winstrate
 Pic: Lass
 Gender: Female
 Music: Female
+Mugshot: Pink
 Battle Type: Doubles
 AI: Smart Trainer
 
@@ -1972,6 +2021,32 @@ Gender: Female
 Music: Intense
 Battle Type: Doubles
 AI: Smart Trainer
+
+Meditite
+Level: 18
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- High Jump Kick
+- Meditate
+- Confusion
+- Detect
+
+=== TRAINER_VITO_ROUTE111 ===
+Name: Vito
+Class: Winstrate
+Pic: Vito
+Gender: Male
+Music: Intense
+Mugshot: Orange
+Battle Type: Singles
+AI: Smart Trainer
+
+Meditite
+Level: 18
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- High Jump Kick
+- Meditate
+- Confusion
+- Detect
 
 Meditite
 Level: 18
@@ -7617,8 +7692,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 === TRAINER_VITO ===
 Name: Vito
 Class: Winstrate
-Pic: Cooltrainer M
-Mugshot: Blue
+Pic: Vito
+Mugshot: Orange
 Gender: Male
 Music: Cool
 Battle Type: Singles
@@ -8092,45 +8167,56 @@ Battle Type: Singles
 AI: Smart Trainer
 Mugshot: Black
 
-Mightyena
-Level: 46
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Roar
-- Double Edge
-- Sand Attack
-- Crunch
+Ninetales @ Shuca Berry  
+Ability: Drought  
+Level: 99  
+Timid Nature  
+- Solar Beam  
+- Heat Wave  
+- Zen Headbutt  
+- Weather Ball  
 
-Shiftry
-Level: 48
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Torment
-- Double Team
-- Swagger
-- Extrasensory
+Hydreigon @ White Herb  
+Ability: Levitate  
+Level: 99  
+Timid Nature  
+- Draco Meteor  
+- Aura Sphere  
+- Dark Pulse  
+- Tailwind  
 
-Cacturne
-Level: 46
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Leech Seed
-- Feint Attack
-- Needle Arm
-- Cotton Spore
+Gouging Fire @ Dragon Gem  
+Ability: Protosynthesis  
+Hasty Nature  
+- Stone Edge  
+- Temper Flare  
+- Dragon Tail  
+- Burning Bulwark  
 
-Crawdaunt
-Level: 48
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Surf
-- Swords Dance
-- Strength
-- Facade
+Obstagoon @ Flame Orb  
+Ability: Guts  
+Level: 99  
+Jolly Nature  
+- Cross Chop  
+- Facade  
+- Sucker Punch  
+- Obstruct  
 
-Absol @ Sitrus Berry
-Level: 49
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Aerial Ace
-- Rock Slide
-- Swords Dance
-- Slash
+Wo-Chien @ Focus Sash  
+Ability: Tablets of Ruin  
+Impish Nature  
+- Solar Blade  
+- Foul Play  
+- Knock Off  
+- Protect  
+
+Houndoom-Mega @ Houndoominite  
+Ability: Solar Power  
+Timid Nature  
+- Solar Beam  
+- Heat Wave  
+- Hyper Voice  
+- Dark Pulse  
 
 === TRAINER_PHOEBE ===
 Name: Phoebe /* 1*/
@@ -8142,45 +8228,61 @@ Battle Type: Singles
 AI: Smart Trainer
 Mugshot: DarkPurple
 
-Dusclops
-Level: 48
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Shadow Punch
-- Confuse Ray
-- Curse
-- Protect
+Sableye-Mega @ Sablenite  
+Ability: Magic Bounce  
+Sassy Nature  
+IVs: 0 Spe  
+- Poltergeist  
+- Foul Play  
+- Ally Switch  
+- Trick Room  
 
-Banette
-Level: 49
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Shadow Ball
-- Grudge
-- Will O Wisp
-- Feint Attack
+Conkeldurr @ Focus Sash  
+Ability: Iron Fist  
+Brave Nature  
+IVs: 0 Spe  
+- Hammer Arm  
+- Ice Punch  
+- Poison Jab  
+- Reversal  
 
-Sableye
-Level: 50
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Shadow Ball
-- Double Team
-- Night Shade
-- Feint Attack
+Grimmsnarl @ Weakness Policy  
+Ability: Prankster  
+Level: 99  
+Brave Nature  
+IVs: 0 Spe  
+- Spirit Break  
+- Hammer Arm  
+- enlightening  
+- Trick  
 
-Banette
-Level: 49
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Shadow Ball
-- Psychic
-- Thunderbolt
-- Facade
+Zoroark-Hisui @ Iron Ball  
+Ability: Illusion  
+Level: 99  
+Quiet Nature  
+IVs: 0 Spe  
+- Hyper Voice  
+- Sludge Bomb  
+- Shadow Ball  
+- Grass Knot  
 
-Dusclops @ Sitrus Berry
-Level: 51
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Shadow Ball
-- Ice Beam
-- Rock Slide
-- Earthquake
+Necrozma-Dawn-Wings @ Room Service  
+Ability: Prism Armor  
+Quiet Nature  
+IVs: 0 Spe  
+- Focus Blast  
+- Moongeist Beam  
+- Psychic  
+- Trick Room  
+
+Brute Bonnet @ Booster Energy  
+Ability: Quark Drive  
+Brave Nature  
+IVs: 0 Spe  
+- Seed Bomb  
+- Lash Out  
+- Stomping Tantrum  
+- Rage Powder  
 
 === TRAINER_GLACIA ===
 Name: Glacia /* 1*/
@@ -8192,45 +8294,54 @@ Battle Type: Singles
 AI: Smart Trainer
 Mugshot: White
 
-Sealeo
-Level: 50
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Encore
-- Body Slam
-- Hail
-- Ice Ball
+Crobat @ Focus Sash  
+Ability: Inner Focus  
+Timid Nature  
+- Hurricane  
+- Sludge Bomb  
+- Toxic  
+- Tailwind  
 
-Glalie
-Level: 50
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Light Screen
-- Crunch
-- Icy Wind
-- Ice Beam
+Mamoswine @ Chople Berry  
+Ability: Thick Fat  
+Jolly Nature  
+- Earthquake  
+- Icicle Crash  
+- Superpower  
+- Ice Shard  
 
-Sealeo
-Level: 52
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Attract
-- Double Edge
-- Hail
-- Blizzard
+Arctozolt @ Electric Gem  
+Ability: Static  
+Level: 99  
+Hasty Nature  
+- Bolt Beak  
+- Icicle Crash  
+- Freeze-Dry  
+- Low Kick  
 
-Glalie
-Level: 52
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Shadow Ball
-- Explosion
-- Hail
-- Ice Beam
+Glalie-Mega @ Glalitite  
+Ability: Refrigerate  
+Naive Nature  
+- Hyper Voice  
+- Freeze-Dry  
+- Facade  
+- Protect  
 
-Walrein @ Sitrus Berry
-Level: 53
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Surf
-- Body Slam
-- Ice Beam
-- Sheer Cold
+Suicune @ Ice Gem  
+Ability: Inner Focus  
+Timid Nature  
+- Frosty Gale  
+- Scald  
+- Snarl  
+- Tailwind  
+
+Kyurem-White @ Power Herb  
+Ability: Turboblaze  
+Timid Nature  
+- Ice Burn  
+- Fusion Flare  
+- Earth Power  
+- Toxic  
 
 === TRAINER_DRAKE ===
 Name: Drake /* 1*/
@@ -8242,45 +8353,53 @@ Battle Type: Singles
 AI: Smart Trainer
 Mugshot: Drake
 
-Shelgon
-Level: 52
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Rock Tomb
-- Dragon Claw
-- Protect
-- Double Edge
+Latios @ Soul Dew  
+Ability: Levitate  
+Timid Nature  
+- Draco Meteor  
+- Luster Purge  
+- Aura Sphere  
+- Protect  
 
-Altaria
-Level: 54
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Edge
-- Dragon Breath
-- Dragon Dance
-- Aerial Ace
+Sneasler @ Normal Gem  
+Ability: Unburden  
+Jolly Nature  
+- Gunk Shot  
+- Close Combat  
+- Knock Off  
+- Fake Out  
 
-Kingdra
-Level: 53
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Smokescreen
-- Dragon Dance
-- Surf
-- Body Slam
+Latias-Mega @ Latiasite  
+Ability: Levitate  
+Timid Nature  
+- Dragon Pulse  
+- Mist Ball  
+- Mystical Fire  
+- Calm Mind  
 
-Flygon
-Level: 53
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Flamethrower
-- Crunch
-- Dragon Breath
-- Earthquake
+Noivern @ Yache Berry  
+Ability: Aerilate  
+Naive Nature  
+- Dragon Rush  
+- Hyper Voice  
+- Flamethrower  
+- Facade  
 
-Salamence @ Sitrus Berry
-Level: 55
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Flamethrower
-- Dragon Claw
-- Rock Slide
-- Crunch
+Blacephalon @ Focus Sash  
+Ability: Beast Boost  
+Timid Nature  
+- Shadow Ball  
+- Heat Wave  
+- Dark Pulse  
+- Will-O-Wisp  
+
+Zekrom @ Shuca Berry  
+Ability: Teravolt  
+Jolly Nature  
+- Bolt Strike  
+- Stone Edge  
+- Dragon Tail  
+- Scale Shot  
 
 === TRAINER_WALLACE ===
 Name: Wallace /* 1*/
@@ -8292,53 +8411,29 @@ Battle Type: Doubles
 AI: Smart Trainer
 Mugshot: Champion
 
-Wailord
-Level: 57
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rain Dance
-- Water Spout
-- Double Edge
-- Blizzard
+Swampert-Mega @ Swampertite  
+Ability: Drizzle  
+Jolly Nature  
+- Stone Edge  
+- High Horsepower  
+- Liquidation  
+- Ice Punch  
 
-Tentacruel
-Level: 55
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Toxic
-- Hydro Pump
-- Sludge Bomb
-- Ice Beam
+Basculegion-F @ Life Orb  
+Ability: Swift Swim  
+Naive Nature  
+- Muddy Water  
+- Ice Beam  
+- Last Respects  
+- Flip Turn  
 
-Ludicolo
-Level: 56
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Giga Drain
-- Surf
-- Leech Seed
-- Double Team
-
-Whiscash
-Level: 56
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Earthquake
-- Surf
-- Amnesia
-- Hyper Beam
-
-Gyarados
-Level: 56
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Dragon Dance
-- Earthquake
-- Hyper Beam
-- Surf
-
-Milotic @ Sitrus Berry
-Level: 58
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Recover
-- Surf
-- Ice Beam
-- Toxic
+Overqwil @ Assault Vest  
+Ability: Swift Swim  
+Jolly Nature  
+- Gunk Shot  
+- Sludge Wave  
+- Lash Out  
+- Fell Stinger  
 
 === TRAINER_STEVEN ===
 Name: Steven /* 1*/
@@ -8349,53 +8444,29 @@ Music: Male
 Battle Type: Doubles
 AI: Smart Trainer
 
-Skarmory
-Level: 77
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Toxic
-- Aerial Ace
-- Spikes
-- Steel Wing
+Empoleon @ Focus Sash  
+Ability: Competitive  
+Timid Nature  
+- Blizzard  
+- Weather Ball  
+- Whirlpool  
+- Stealth Rock  
 
-Claydol
-Level: 75
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Reflect
-- Light Screen
-- Ancient Power
-- Earthquake
+Dialga @ Normal Gem  
+Ability: Telepathy  
+Timid Nature  
+- Draco Meteor  
+- Hyper Voice  
+- Flash Cannon  
+- Earth Power  
 
-Aggron
-Level: 76
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Thunder
-- Earthquake
-- Solar Beam
-- Dragon Claw
-
-Cradily
-Level: 76
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Giga Drain
-- Ancient Power
-- Ingrain
-- Confuse Ray
-
-Armaldo
-Level: 76
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Water Pulse
-- Ancient Power
-- Aerial Ace
-- Slash
-
-Metagross @ Sitrus Berry
-Level: 78
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Earthquake
-- Psychic
-- Meteor Mash
-- Shadow Ball
+Metagross-Mega @ Metagrossite  
+Ability: Tough Claws  
+Jolly Nature  
+- Meteor Mash  
+- Zen Headbutt  
+- Hammer Arm  
+- Pursuit  
 
 === TRAINER_NONE ===
 Name:

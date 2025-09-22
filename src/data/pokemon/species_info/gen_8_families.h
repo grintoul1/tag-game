@@ -21,7 +21,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD, EGG_GROUP_GRASS),
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_GRASSY_SURGE },
+        .abilities = { ABILITY_OVERGROW, ABILITY_BATTLE_ARMOR, ABILITY_GRASSY_SURGE },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Grookey"),
         .cryId = CRY_GROOKEY,
@@ -86,7 +86,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD, EGG_GROUP_GRASS),
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_GRASSY_SURGE },
+        .abilities = { ABILITY_OVERGROW, ABILITY_BATTLE_ARMOR, ABILITY_GRASSY_SURGE },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Thwackey"),
         .cryId = CRY_THWACKEY,
@@ -149,7 +149,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD, EGG_GROUP_GRASS),
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_GRASSY_SURGE },
+        .abilities = { ABILITY_OVERGROW, ABILITY_BATTLE_ARMOR, ABILITY_GRASSY_SURGE },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Rillaboom"),
         .cryId = CRY_RILLABOOM,
@@ -2466,8 +2466,11 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .teachableLearnset = sApplinTeachableLearnset,
         .eggMoveLearnset = sApplinEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_TART_APPLE, SPECIES_FLAPPLE},
-                                {EVO_ITEM, ITEM_SWEET_APPLE, SPECIES_APPLETUN},
-                                {EVO_ITEM, ITEM_SYRUPY_APPLE, SPECIES_DIPPLIN}),
+                                {EVO_ITEM, ITEM_SWEET_APPLE, SPECIES_APPLETUN}
+                            #if P_GEN_9_CROSS_EVOS
+                                ,{EVO_ITEM, ITEM_SYRUPY_APPLE, SPECIES_DIPPLIN}
+                            #endif
+                            ),
     },
 
     [SPECIES_FLAPPLE] =
@@ -6405,7 +6408,9 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .eggMoveLearnset = sDuraludonEggMoveLearnset,
         .formSpeciesIdTable = sDuraludonFormSpeciesIdTable,
         .formChangeTable = sDuraludonFormChangeTable,
+    #if P_GEN_9_CROSS_EVOS
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_METAL_ALLOY, SPECIES_ARCHALUDON}),
+    #endif
     },
 
 #if P_GIGANTAMAX_FORMS

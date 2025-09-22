@@ -87,7 +87,7 @@
 #define TRAINER_SAMUEL                       81
 #define TRAINER_VITO                         82
 #define TRAINER_OWEN                         83
-#define TRAINER_WILTON_2                     84
+#define TRAINER_VITO_ROUTE111                84
 #define TRAINER_WILTON_3                     85
 #define TRAINER_WILTON_4                     86
 #define TRAINER_WILTON_5                     87
@@ -660,8 +660,8 @@
 #define TRAINER_FLINT                       654
 #define TRAINER_ASHLEY                      655
 #define TRAINER_WALLY_MAUVILLE              656
-#define TRAINER_WALLY_ROUTE_114                  657
-#define TRAINER_WALLY_VR_3                  658
+#define TRAINER_WALLY_ROUTE_114             657
+#define TRAINER_UNCLE_MAUVILLE              658
 #define TRAINER_WALLY_VR_4                  659
 #define TRAINER_WALLY_VR_5                  660
 #define TRAINER_BRENDAN_LILYCOVE_MUDKIP     661

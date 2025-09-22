@@ -900,15 +900,15 @@ PokeMenu_EventScript_Utility::
 	dynmultipush PokeMenu_EventScript_Utility_Text_1, 1 @ Battle Speed
 	dynmultipush PokeMenu_EventScript_Utility_Text_2, 2 @ Hatch Egg
 	dynmultipush PokeMenu_EventScript_Utility_Text_3, 3 @ Enc. Table
-	@dynmultipush PokeMenu_EventScript_Utility_Text_4, 4 @ Apply damage
+	dynmultipush PokeMenu_EventScript_Utility_Text_4, 4 @ Party Type
 	@dynmultipush PokeMenu_EventScript_Utility_Text_5, 5 @ Apply status
-	dynmultistack 0, 0, FALSE, 3, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	dynmultistack 0, 0, FALSE, 4, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	switch VAR_RESULT
 	@case 0, PokeMenu_EventScript_Utility_2 @ Time
 	case 1, PokeMenu_EventScript_Utility_3 @ Battle Speed
 	case 2, PokeMenu_EventScript_Utility_4 @ Hatch Egg
 	case 3, PokeMenu_EventScript_Utility_5 @ Enc. Table
-	@case 4, PokeMenu_EventScript_Utility_7 @ Pre-damage
+	case 4, PokeMenu_EventScript_Utility_7 @ Party Type
 	@case 5, PokeMenu_EventScript_Utility_8 @ Pre-status
 	case MULTI_B_PRESSED, PokeMenu_EventScript_Utility_6
 	return
@@ -933,10 +933,27 @@ PokeMenu_EventScript_Utility_6:
 	return
 
 PokeMenu_EventScript_Utility_7:
+	dynmultipush PokeMenu_EventScript_Utility_Text_6, 0 @ Separate
+	dynmultipush PokeMenu_EventScript_Utility_Text_7, 1 @ Shared
+	dynmultistack 0, 0, FALSE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_Utility_9 @ Separate
+	case 1, PokeMenu_EventScript_Utility_10 @ Shared
+	case MULTI_B_PRESSED, PokeMenu_EventScript_Utility_6
+	return
+
 	return
 
 PokeMenu_EventScript_Utility_8:
 	@special PartyMenuApplyStatus
+	return
+
+PokeMenu_EventScript_Utility_9:
+	clearflag FLAG_SHARE_PARTY
+	return
+
+PokeMenu_EventScript_Utility_10:
+	setflag FLAG_SHARE_PARTY
 	return
 
 PokeMenu_EventScript_Utility_Status::
@@ -1211,10 +1228,16 @@ PokeMenu_EventScript_Utility_Text_3:
 	.string "Enc. Table$"
 
 PokeMenu_EventScript_Utility_Text_4:
-	.string "Apply damage$"
+	.string "Party Type$"
 
 PokeMenu_EventScript_Utility_Text_5:
 	.string "Apply status$"
+
+PokeMenu_EventScript_Utility_Text_6:
+	.string "Separate$"
+
+PokeMenu_EventScript_Utility_Text_7:
+	.string "Shared$"
 
 PokeMenu_EventScript_Time_Text_0:
 	.string "Day$"

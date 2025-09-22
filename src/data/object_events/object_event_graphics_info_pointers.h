@@ -3,6 +3,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanMach
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanSurfing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanFieldMove;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreenNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Vito;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreenMachBike;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreenSurfing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreenFieldMove;
@@ -510,6 +511,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_GREEN_FISHING] =            &gObjectEventGraphicsInfo_GreenFishing,
     [OBJ_EVENT_GFX_GREEN_WATERING] =           &gObjectEventGraphicsInfo_GreenWatering,
     [OBJ_EVENT_GFX_GREEN_DECORATING] =         &gObjectEventGraphicsInfo_GreenDecorating,
+    [OBJ_EVENT_GFX_VITO] =                     &gObjectEventGraphicsInfo_Vito,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

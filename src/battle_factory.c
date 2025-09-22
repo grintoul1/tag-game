@@ -287,7 +287,7 @@ static void FactoryDummy2(void)
 
 static void SelectInitialRentalMons(void)
 {
-    ZeroPlayerPartyMons();
+    //ZeroPlayerPartyMons();
     DoBattleFactorySelectScreen();
 }
 

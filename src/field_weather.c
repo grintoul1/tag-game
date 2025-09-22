@@ -386,6 +386,7 @@ static void FadeInScreenWithWeather(void)
         }
         break;
     case WEATHER_SNOW:
+    case WEATHER_HAIL:
     case WEATHER_VOLCANIC_ASH:
     case WEATHER_SANDSTORM:
     case WEATHER_FOG_DIAGONAL:

@@ -21,6 +21,7 @@
 #include "constants/battle_move_effects.h"
 #include "constants/items.h"
 #include "constants/moves.h"
+#include "test/test.h"
 
 // this file's functions
 static bool32 CanUseSuperEffectiveMoveAgainstOpponents(u32 battler);
@@ -33,6 +34,8 @@ static u32 GetSwitchinHazardsDamage(u32 battler, struct BattlePokemon *battleMon
 static bool32 CanAbilityTrapOpponent(u16 ability, u32 opponent);
 static u32 GetHPHealAmount(u8 itemEffectParam, struct Pokemon *mon);
 static u32 GetBattleMonTypeMatchup(struct BattlePokemon opposingBattleMon, struct BattlePokemon battleMon);
+
+extern bool8 FlagGet(u16 id);
 
 static void InitializeSwitchinCandidate(struct Pokemon *mon)
 {
@@ -215,7 +218,10 @@ void GetAIPartyIndexes(u32 battler, s32 *firstId, s32 *lastId)
     }
     else if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TOWER_LINK_MULTI))
     {
-        if ((battler & BIT_FLANK) == B_FLANK_LEFT)
+        bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
+        if (isSharedTeams && (battler & BIT_SIDE) == B_SIDE_PLAYER)
+            *firstId = 0, *lastId = PARTY_SIZE;
+        else if ((battler & BIT_FLANK) == B_FLANK_LEFT)
             *firstId = 0, *lastId = PARTY_SIZE / 2;
         else
             *firstId = PARTY_SIZE / 2, *lastId = PARTY_SIZE;
@@ -991,12 +997,12 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
     u16 monAbility, aiMove;
     u32 opposingBattler1 = BATTLE_PARTNER(GetOppositeBattler(battler));
     u32 opposingBattler2 = GetOppositeBattler(battler);
-    u32 switchingMove = 0;
-    u32 switchingMoveOpposite = 0;
-    u32 switchingMoveOppositePartner = 0;
+    u32 switchingMove = 0, switchingMoveOpposite = 0, switchingMoveOppositePartner = 0;
     u32 incomingMove = GetIncomingMove(battler, opposingBattler2, gAiLogicData);
     bool32 isOpposingBattlerChargingOrInvulnerable = (IsSemiInvulnerable(opposingBattler2, incomingMove) || IsTwoTurnNotSemiInvulnerableMove(opposingBattler2, incomingMove));
     s32 i, j, oppositeBattlerMoveTypes = 0, oppositeBattlerPartnerMoveTypes = 0, oppositeBattlerMoveCount = 0, oppositeBattlerPartnerMoveCount=0;
+    bool32 onlySound = TRUE, onlyBallistic = TRUE, onlyWind = TRUE;
+    u32 countSound = 0, countBallistic = 0, countWind = 0;
 
     // Don't switch unless outsped and OHKO'd by exactly one move type from opposite battler
     for (i = 0; i < MAX_MON_MOVES; i++)
@@ -1007,12 +1013,18 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
             {
-                if (!AI_DoesChoiceEffectBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_IsSlower(battler, opposingBattler2, aiMove, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
+                if (!AI_DoesChoiceEffectBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (!AI_IsFaster(battler, opposingBattler2, aiMove, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                 {
                     oppositeBattlerMoveCount = oppositeBattlerMoveCount + 1;
                     if(GetMoveType(aiMove) != GetMoveType(switchingMove))
                     {
                         switchingMove = aiMove;
+                        onlySound *= IsSoundMove(switchingMove);
+                        countSound += IsSoundMove(switchingMove);
+                        onlyBallistic *= IsBallisticMove(switchingMove);
+                        countBallistic += IsBallisticMove(switchingMove);
+                        onlyWind *= IsWindMove(switchingMove);
+                        countWind += IsWindMove(switchingMove);
                         oppositeBattlerMoveTypes = oppositeBattlerMoveTypes + 1;
                     }
                 }
@@ -1039,6 +1051,12 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
                         if(GetMoveType(aiMove) != GetMoveType(switchingMove))
                         {
                             switchingMove = aiMove;
+                            onlySound *= IsSoundMove(switchingMove);
+                            countSound += IsSoundMove(switchingMove);
+                            onlyBallistic *= IsBallisticMove(switchingMove);
+                            countBallistic += IsBallisticMove(switchingMove);
+                            onlyWind *= IsWindMove(switchingMove);
+                            countWind += IsWindMove(switchingMove);
                             oppositeBattlerMoveTypes = oppositeBattlerMoveTypes + 1;
                         }
                     }
@@ -1052,18 +1070,24 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
     // Don't switch unless outsped and OHKO'd by exactly one move type from opposite battler's partner
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        aiMove = gBattleMons[opposingBattler2].moves[i];
+        aiMove = gBattleMons[opposingBattler1].moves[i];
         if (aiMove != MOVE_NONE)
         {
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
             {
-                if (!AI_DoesChoiceEffectBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (AI_IsSlower(battler, opposingBattler2, aiMove, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
+                if (!AI_DoesChoiceEffectBlockMove(opposingBattler1, aiMove) && (AI_GetDamage(opposingBattler1, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp) && (!AI_IsFaster(battler, opposingBattler1, aiMove, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                 {
                     oppositeBattlerPartnerMoveCount = oppositeBattlerPartnerMoveCount + 1;
                     if(GetMoveType(aiMove) != GetMoveType(switchingMove))
                     {
                         switchingMove = aiMove;
+                        onlySound *= IsSoundMove(switchingMove);
+                        countSound += IsSoundMove(switchingMove);
+                        onlyBallistic *= IsBallisticMove(switchingMove);
+                        countBallistic += IsBallisticMove(switchingMove);
+                        onlyWind *= IsWindMove(switchingMove);
+                        countWind += IsWindMove(switchingMove);
                         oppositeBattlerPartnerMoveTypes = oppositeBattlerPartnerMoveTypes+1;
                     }
                 }
@@ -1075,13 +1099,13 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
     // Don't switch if OHKO'd by any other move type from opposite battler, regardless of speed
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        aiMove = gBattleMons[opposingBattler1].moves[i];
+        aiMove = gBattleMons[opposingBattler2].moves[i];
         if (aiMove != MOVE_NONE)
         {
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
             {
-                if (!AI_DoesChoiceEffectBlockMove(opposingBattler1, aiMove) && (AI_GetDamage(opposingBattler1, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp))
+                if (!AI_DoesChoiceEffectBlockMove(opposingBattler2, aiMove) && (AI_GetDamage(opposingBattler2, battler, i, AI_DEFENDING, gAiLogicData) > gBattleMons[battler].hp))
                 {
                     // Check to ensure move isn't the same move stored from other battler
                     if (aiMove != switchingMoveOppositePartner)
@@ -1090,6 +1114,12 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
                         if(GetMoveType(aiMove) != GetMoveType(switchingMove))
                         {
                             switchingMove = aiMove;
+                            onlySound *= IsSoundMove(switchingMove);
+                            countSound += IsSoundMove(switchingMove);
+                            onlyBallistic *= IsBallisticMove(switchingMove);
+                            countBallistic += IsBallisticMove(switchingMove);
+                            onlyWind *= IsWindMove(switchingMove);
+                            countWind += IsWindMove(switchingMove);
                             oppositeBattlerPartnerMoveTypes = oppositeBattlerPartnerMoveTypes+1;
                         }
                     }
@@ -1097,7 +1127,6 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
             }
         }
     }
-
     if (switchingMoveOpposite != 0)
         switchingMove = switchingMoveOpposite;
     else
@@ -1105,15 +1134,19 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
 
     u32 incomingType = GetMoveType(switchingMove);
 
-    #ifndef NDEBUG
+    /*#ifndef NDEBUG
         MgbaPrintf(MGBA_LOG_WARN, "PartnerFindMonThatAbsorbsOpponentsMove", PartnerFindMonThatAbsorbsOpponentsMove);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveTypes %d", oppositeBattlerMoveTypes);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveTypes %d", oppositeBattlerPartnerMoveTypes);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveCount %d", oppositeBattlerMoveCount);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveCount %d", oppositeBattlerPartnerMoveCount);
-    #endif
+        MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOpposite %S", GetMoveName(switchingMoveOpposite));
+        MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOppositePartner %S", GetMoveName(switchingMoveOppositePartner));
+    #endif*/
 
-    if (!(oppositeBattlerMoveTypes == 1 || oppositeBattlerPartnerMoveTypes == 1))
+    if (!(oppositeBattlerMoveTypes == 1 || oppositeBattlerPartnerMoveTypes == 1) && !(onlySound || onlyBallistic || onlyWind))
+        return FALSE;
+    if (((oppositeBattlerMoveTypes > 1) || (oppositeBattlerPartnerMoveTypes > 1)) && !(onlySound || onlyBallistic || onlyWind))
         return FALSE;
     if (CanUseSuperEffectiveMoveAgainstOpponents(battler) && (RandomPercentage(RNG_AI_SWITCH_ABSORBING_STAY_IN, PARTNER_STAY_IN_ABSORBING_PERCENTAGE) || gAiLogicData->aiPredictionInProgress))
         return FALSE;
@@ -1143,22 +1176,27 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         if (IsAceMon(battler, i))
             continue;
 
-        // Check for type immunities without considering abilities
-        if(!(GetMonData(&party[i], MON_DATA_HELD_ITEM, NULL) == HOLD_EFFECT_RING_TARGET))
+        uq4_12_t mod;
+        if (GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0) != GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1))
         {
-            if((incomingType == TYPE_ELECTRIC) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
+            if ((GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0)) == UQ_4_12(0.00)) || (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1)) == UQ_4_12(0.00)))
+                mod = UQ_4_12(0.00);
+            else
+                mod = (((GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0))) * (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 1))))/UQ_4_12(1.00));
+        }
+        else
+        {
+            if (GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0)) == UQ_4_12(0.00))
+                mod = UQ_4_12(0.00);
+            else
+                mod = GetTypeModifier(GetMoveType(switchingMove), GetSpeciesType(GetMonData(&party[i], MON_DATA_SPECIES, NULL), 0));
+        }
+        // Check for type immunities without considering abilities
+        if(!(GetMonData(&party[i], MON_DATA_HELD_ITEM, NULL) == ITEM_RING_TARGET))
+        {
+            if(((incomingType == TYPE_NORMAL) || (incomingType == TYPE_FIGHTING)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_SCRAPPY) && (GetBattlerAbility(opposingBattler2) != ABILITY_SCRAPPY)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_MINDS_EYE) && (GetBattlerAbility(opposingBattler2) != ABILITY_MINDS_EYE)) && (mod <= UQ_4_12(0.25)))
                 return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_POISON) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
-                return SetSwitchinAndSwitch(battler, i);
-            if(((incomingType == TYPE_NORMAL) || (incomingType == TYPE_FIGHTING)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_SCRAPPY) && (GetBattlerAbility(opposingBattler2) != ABILITY_SCRAPPY)) && ((GetBattlerAbility(opposingBattler1) != ABILITY_MINDS_EYE) && (GetBattlerAbility(opposingBattler2) != ABILITY_MINDS_EYE)) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
-                return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_DRAGON) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
-                return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_GROUND) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
-                return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_GHOST) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
-                return SetSwitchinAndSwitch(battler, i);
-            if((incomingType == TYPE_PSYCHIC) && (CalcPartyMonTypeEffectivenessMultiplier(switchingMove, GetMonData(&party[i], MON_DATA_SPECIES, NULL), ABILITY_NONE) <= UQ_4_12(0.25)))
+            if(mod <= UQ_4_12(0.25))
                 return SetSwitchinAndSwitch(battler, i);
         }
     }
@@ -1195,26 +1233,18 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_LEVITATE;
     }
     // Only run these checks if dead to exactly one move
-    else if (oppositeBattlerMoveCount <= 1 && oppositeBattlerPartnerMoveCount <= 1)
+    if (onlySound && countSound > 0)
     {
-        // If only dead to Sound move
-        if ((IsSoundMove(switchingMoveOpposite) || ((isOpposingBattlerChargingOrInvulnerable && IsSoundMove(switchingMoveOpposite)) && switchingMoveOppositePartner == 0))
-            || (IsSoundMove(switchingMoveOppositePartner) || ((isOpposingBattlerChargingOrInvulnerable && IsSoundMove(switchingMoveOppositePartner)) && switchingMoveOpposite == 0)))
-        {
-            absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_SOUNDPROOF;
-        }
-        // If only dead to Ballistic move
-        else if ((IsBallisticMove(switchingMoveOpposite) || ((isOpposingBattlerChargingOrInvulnerable && IsBallisticMove(switchingMoveOpposite)) && switchingMoveOppositePartner == 0))
-            || (IsBallisticMove(switchingMoveOppositePartner) || ((isOpposingBattlerChargingOrInvulnerable && IsBallisticMove(switchingMoveOppositePartner)) && switchingMoveOpposite == 0)))
-        {
-            absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_BULLETPROOF;
-        }
-        // If only dead to Wind move
-        else if ((IsWindMove(switchingMoveOpposite) || ((isOpposingBattlerChargingOrInvulnerable && IsWindMove(switchingMoveOpposite)) && switchingMoveOppositePartner == 0))
-            || (IsWindMove(switchingMoveOppositePartner) || ((isOpposingBattlerChargingOrInvulnerable && IsWindMove(switchingMoveOppositePartner)) && switchingMoveOpposite == 0)))
-        {
-            absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_WIND_RIDER;
-        }
+        absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_SOUNDPROOF;
+    }
+    else if (onlyBallistic && countBallistic > 0)
+    {
+        absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_BULLETPROOF;
+    }
+    else if (onlyWind && countWind > 0)
+    {
+        absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_WIND_RIDER;
+        absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_WIND_POWER;
     }
 
     // Check current mon for all absorbing abilities
@@ -2312,14 +2342,16 @@ bool32 ShouldSwitchIfAllScoresBad(u32 battler)
 
 bool32 PartnerShouldSwitchIfAllScoresBad(u32 battler)
 {
-    u32 i, score, opposingBattler = GetOppositeBattler(battler);
+    u32 i, scoreOpposite, scoreOppositePartner, opposingBattler = GetOppositeBattler(battler);
     if (!(gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING))
         return FALSE;
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        score = gAiBattleData->finalScore[battler][opposingBattler][i];
-        if (score > AI_BAD_SCORE_THRESHOLD)
+        scoreOpposite = gAiBattleData->finalScore[battler][opposingBattler][i];
+        scoreOppositePartner = gAiBattleData->finalScore[battler][BATTLE_PARTNER(opposingBattler)][i];
+        if (((scoreOpposite > PARTNER_AI_BAD_SCORE_THRESHOLD) && IsBattlerAlive(opposingBattler))
+        || (scoreOppositePartner > PARTNER_AI_BAD_SCORE_THRESHOLD && IsBattlerAlive(BATTLE_PARTNER(opposingBattler))))
             return FALSE;
     }
     if (RandomPercentage(RNG_AI_SWITCH_ALL_SCORES_BAD, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_ALL_SCORES_BAD)))
@@ -3311,11 +3343,9 @@ static inline bool32 CanSwitchinWin1v1(u32 hitsToKOAI, u32 hitsToKOPlayer, bool3
     return FALSE;
 }
 
-extern bool8 FlagGet(u16 id);
-
 static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, u32 battler, u32 opposingBattler, u32 battlerIn1, u32 battlerIn2, enum SwitchType switchType)
 {
-    #ifndef NDEBUG
+    /*#ifndef NDEBUG
         MgbaPrintf(MGBA_LOG_WARN, "CustomGetBestMonIntegrated");
         u32 maxDamageDealtStored[PARTY_SIZE]={0};
         const u8 * checkingPosition;
@@ -3325,7 +3355,7 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
         u32 maxDamageDealtToAIStored[PARTY_SIZE]={0};
         u32 percentageDealtStored[PARTY_SIZE]={0};
         u32 percentageReceivedStored[PARTY_SIZE]={0};
-    #endif
+    #endif*/
     int monId;
     int i;
     int bestMonId = PARTY_SIZE;
@@ -3333,41 +3363,34 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
     bool32 isFreeSwitch = IsFreeSwitch(switchType, battlerIn1, opposingBattler);
     gAiLogicData->aiCalcInProgress = TRUE;
 
-    #ifndef NDEBUG
+    /*#ifndef NDEBUG
         checkingPosition=GetSpeciesName(gBattleMons[battler].species);
         const u8 * lookingAt;
         lookingAt=GetSpeciesName(gBattleMons[opposingBattler].species);
-    #endif
+    #endif*/
 
     if ((FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE) || (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE) || ((!(gBattleTypeFlags & BATTLE_TYPE_MULTI)) && (!(gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))))
     {
         firstId=0;
         lastId=6;
     }
-    else if((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) && (gBattlerPositions[battler] == B_POSITION_PLAYER_RIGHT))
+    else if (BATTLE_TWO_VS_ONE_OPPONENT && (battler & BIT_SIDE) == B_SIDE_OPPONENT)
     {
-        firstId=3;
-        lastId=6;
+        firstId = 0, lastId = PARTY_SIZE;
     }
-    else if(!(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS) && ((gBattlerPositions[battler] == B_POSITION_OPPONENT_RIGHT) || (gBattlerPositions[battler] == B_POSITION_OPPONENT_LEFT)))
+    else if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TOWER_LINK_MULTI))
     {
-        firstId=0;
-        lastId=6;
-    }
-    else if((gBattleTypeFlags & BATTLE_TYPE_MULTI) && (!(gBattleTypeFlags & BATTLE_TWO_VS_ONE_OPPONENT)) && (gBattlerPositions[battler] == B_POSITION_OPPONENT_LEFT))
-    {
-        firstId=0;
-        lastId=3;
-    }
-    else if((gBattleTypeFlags & BATTLE_TYPE_MULTI) && (!(gBattleTypeFlags & BATTLE_TWO_VS_ONE_OPPONENT)) && (gBattlerPositions[battler] == B_POSITION_OPPONENT_RIGHT))
-    {
-        firstId=3;
-        lastId=6;
+        bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
+        if (isSharedTeams && (battler & BIT_SIDE) == B_SIDE_PLAYER)
+            firstId = 0, lastId = PARTY_SIZE;
+        else if ((battler & BIT_FLANK) == B_FLANK_LEFT)
+            firstId = 0, lastId = PARTY_SIZE / 2;
+        else
+            firstId = PARTY_SIZE / 2, lastId = PARTY_SIZE;
     }
     else
     {
-        firstId=0;
-        lastId=6;
+        firstId = 0, lastId = PARTY_SIZE;
     }
     for (monId = firstId; monId < lastId; monId++)
     {
@@ -3375,10 +3398,10 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
         u32 aiMonSpecies=0;
         u32 aiMonFaster=0;
         u32 aiMove, bestPlayerMove = MOVE_NONE;
-        #ifndef NDEBUG
+        /*#ifndef NDEBUG
             partyMon=SPECIES_NONE;
             aiBestMove[monId]=0;
-        #endif
+        #endif*/
         switchInScores[monId] = 0;
         if (!IsValidForBattle(&party[monId])
         || gBattlerPartyIndexes[battlerIn1] == monId
@@ -3387,10 +3410,10 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
         || gBattleStruct->monToSwitchIntoId[battlerIn2] == monId)
             continue;
 
-        #ifndef NDEBUG
+        /*#ifndef NDEBUG
             partyMon=GetSpeciesName(GetMonData(&party[monId],MON_DATA_SPECIES,NULL));
             partyMonStored[monId]=partyMon;
-        #endif
+        #endif*/
         InitializeSwitchinCandidate(&party[monId]);
         aiMonSpecies = GetMonData(&party[monId], MON_DATA_SPECIES, NULL);
         aiMonFaster = ((GetMonData(&party[monId],MON_DATA_SPEED,NULL) >= gBattleMons[opposingBattler].speed) || ((GetMonData(&party[monId],MON_DATA_SPEED,NULL) <= gBattleMons[opposingBattler].speed) && (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)));
@@ -3408,11 +3431,11 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
                     {
                         maxDamageDealt = damageDealt;
                         percentageDealt = ((maxDamageDealt*1000) / gBattleMons[opposingBattler].hp);
-                        #ifndef NDEBUG
+                        /*#ifndef NDEBUG
                             percentageDealtStored[monId]=percentageDealt;
                             maxDamageDealtStored[monId]=maxDamageDealt;
                             aiBestMove[monId]=GetMoveName(GetMonData(&party[monId], MON_DATA_MOVE1 + i,NULL));
-                        #endif
+                        #endif*/
                     }
                 }
             }
@@ -3420,10 +3443,10 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
 
         maxDamageDealtToAI = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon, &bestPlayerMove);
         percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&party[monId],MON_DATA_HP,NULL));
-        #ifndef NDEBUG
+        /*#ifndef NDEBUG
             percentageReceivedStored[monId] = percentageReceived;
             maxDamageDealtToAIStored[monId] = maxDamageDealtToAI;
-        #endif
+        #endif*/
 
         if (switchType != SWITCH_AFTER_KO && isFreeSwitch != TRUE)
         {
@@ -3455,7 +3478,8 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
         else 
             switchInScores[monId] = 2;
 
-        #ifndef NDEBUG
+        
+        /*#ifndef NDEBUG
         if(switchInScores[monId]!=0)
         {
             MgbaPrintf(MGBA_LOG_WARN, "mon looking %S", checkingPosition);
@@ -3468,7 +3492,7 @@ static u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int la
             MgbaPrintf(MGBA_LOG_WARN, "party slot takes%d", maxDamageDealtToAIStored[monId]);
             MgbaPrintf(MGBA_LOG_WARN, "percentage slot takes%d", percentageReceivedStored[monId]);
         }
-        #endif
+        #endif*/
     }
 
     u32 bestSwitchInScore = 0;

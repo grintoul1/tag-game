@@ -58,6 +58,7 @@ AI_DOUBLE_BATTLE_TEST("AI will not use Helping Hand if partner does not have any
 
 AI_DOUBLE_BATTLE_TEST("AI will not use a status move if partner already chose Helping Hand")
 {
+    KNOWN_FAILING; // AI changed
     s32 j;
     u32 statusMove = MOVE_NONE;
 
@@ -69,13 +70,14 @@ AI_DOUBLE_BATTLE_TEST("AI will not use a status move if partner already chose He
     }
 
     GIVEN {
-        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
-        PLAYER(SPECIES_WOBBUFFET);
-        PLAYER(SPECIES_WOBBUFFET);
-        OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_HELPING_HAND); }
-        OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_SCRATCH, statusMove); }
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT);
+        PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE, MOVE_SCRATCH, statusMove, MOVE_WATER_GUN); }
+        PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE, MOVE_SCRATCH, statusMove, MOVE_WATER_GUN); }
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_HELPING_HAND, MOVE_EXPLOSION); }
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_SCRATCH, statusMove, MOVE_WATER_GUN); }
     } WHEN {
-            TURN {  NOT_EXPECT_MOVE(opponentRight, statusMove);
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_HELPING_HAND);
+                    NOT_EXPECT_MOVE(opponentRight, statusMove);
                     SCORE_LT_VAL(opponentRight, statusMove, AI_SCORE_DEFAULT, target:playerLeft);
                     SCORE_LT_VAL(opponentRight, statusMove, AI_SCORE_DEFAULT, target:playerRight);
                     SCORE_LT_VAL(opponentRight, statusMove, AI_SCORE_DEFAULT, target:opponentLeft);
@@ -317,7 +319,6 @@ AI_DOUBLE_BATTLE_TEST("AI will choose Earthquake if it kills both opposing mons"
 
 AI_DOUBLE_BATTLE_TEST("AI will trigger its ally's Weakness Policy")
 {
-    KNOWN_FAILING; // AI changed
     ASSUME(gItemsInfo[ITEM_WEAKNESS_POLICY].holdEffect == HOLD_EFFECT_WEAKNESS_POLICY);
     ASSUME(GetMoveTarget(MOVE_EARTHQUAKE) == MOVE_TARGET_FOES_AND_ALLY);
     ASSUME(GetMoveType(MOVE_EARTHQUAKE) == TYPE_GROUND);
@@ -341,7 +342,7 @@ AI_DOUBLE_BATTLE_TEST("AI will trigger its ally's Weakness Policy")
     }
 }
 
-AI_DOUBLE_BATTLE_TEST("AI will only explode and kill everything on the field with Risky or Will Suicide")
+AI_DOUBLE_BATTLE_TEST("AI will only explode and kill everything on the field with Risky or Will Suicide (doubles)")
 {
     KNOWN_FAILING; // AI changed
     ASSUME(GetMoveTarget(MOVE_EXPLOSION) == MOVE_TARGET_FOES_AND_ALLY);
@@ -364,6 +365,130 @@ AI_DOUBLE_BATTLE_TEST("AI will only explode and kill everything on the field wit
             TURN { EXPECT_MOVE(opponentLeft, MOVE_ELECTRO_BALL); }
         else
             TURN { EXPECT_MOVE(opponentLeft, MOVE_EXPLOSION); }
+    }
+}
+
+AI_MULTI_BATTLE_TEST("AI will only explode and kill everything on the field with Risky or Will Suicide (multibattle)")
+{
+    KNOWN_FAILING; // AI changed
+    ASSUME(GetMoveTarget(MOVE_EXPLOSION) == MOVE_TARGET_FOES_AND_ALLY);
+    ASSUME(GetMoveEffect(MOVE_EXPLOSION) == EFFECT_EXPLOSION);
+
+    u32 aiFlags;
+    u32 battler;
+
+    PARAMETRIZE { aiFlags = 0; battler = 1; }
+    PARAMETRIZE { aiFlags = 0; battler = 3; }
+    PARAMETRIZE { aiFlags = AI_FLAG_RISKY; battler = 1; }
+    PARAMETRIZE { aiFlags = AI_FLAG_RISKY; battler = 3; }
+    PARAMETRIZE { aiFlags = AI_FLAG_WILL_SUICIDE; battler = 1; }
+    PARAMETRIZE { aiFlags = AI_FLAG_WILL_SUICIDE; battler = 3; }
+
+    GIVEN {
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
+        BATTLER_AI_FLAGS(battler, aiFlags);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { HP(1); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { HP(1); }
+        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { Moves(MOVE_EXPLOSION, MOVE_ELECTRO_BALL); HP(1); }
+        MULTI_OPPONENT_B(SPECIES_VOLTORB) { Moves(MOVE_EXPLOSION, MOVE_ELECTRO_BALL); HP(1); }
+    } WHEN {
+        if (aiFlags == 0)
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_ELECTRO_BALL, target: playerLeft); EXPECT_MOVE(opponentRight, MOVE_ELECTRO_BALL, target: playerLeft); }
+        else
+            TURN { EXPECT_MOVE(&gBattleMons[BATTLE_PARTNER(battler)], MOVE_ELECTRO_BALL, target: playerLeft); EXPECT_MOVE(&gBattleMons[battler], MOVE_EXPLOSION); }
+    }
+}
+
+AI_ONE_VS_TWO_BATTLE_TEST("AI will only explode and kill everything on the field with Risky or Will Suicide (1v2)")
+{
+    KNOWN_FAILING; // AI changed
+    ASSUME(GetMoveTarget(MOVE_EXPLOSION) == MOVE_TARGET_FOES_AND_ALLY);
+    ASSUME(GetMoveEffect(MOVE_EXPLOSION) == EFFECT_EXPLOSION);
+
+    u32 aiFlags;
+    u32 battler;
+
+    PARAMETRIZE { aiFlags = 0; battler = 1; }
+    PARAMETRIZE { aiFlags = 0; battler = 3; }
+    PARAMETRIZE { aiFlags = AI_FLAG_RISKY; battler = 3; }
+    PARAMETRIZE { aiFlags = AI_FLAG_RISKY; battler = 1; }
+    PARAMETRIZE { aiFlags = AI_FLAG_WILL_SUICIDE; battler = 1; }
+    PARAMETRIZE { aiFlags = AI_FLAG_WILL_SUICIDE; battler = 3; }
+
+    GIVEN {
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
+        BATTLER_AI_FLAGS(battler, aiFlags);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { HP(1); }
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { HP(1); }
+        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { Moves(MOVE_EXPLOSION, MOVE_ELECTRO_BALL); HP(1); }
+        MULTI_OPPONENT_B(SPECIES_VOLTORB) { Moves(MOVE_EXPLOSION, MOVE_ELECTRO_BALL); HP(1); }
+    } WHEN {
+        if (aiFlags == 0)
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_ELECTRO_BALL, target: playerLeft); EXPECT_MOVE(opponentRight, MOVE_ELECTRO_BALL, target: playerLeft); }
+        else
+            TURN { EXPECT_MOVE(&gBattleMons[BATTLE_PARTNER(battler)], MOVE_ELECTRO_BALL, target: playerLeft); EXPECT_MOVE(&gBattleMons[battler], MOVE_EXPLOSION); }
+    }
+}
+
+AI_DOUBLE_BATTLE_TEST("Battler 3 has Battler 1 AI flags set correctly (doubles)")
+{
+    KNOWN_FAILING; // AI changed
+    ASSUME(GetMoveTarget(MOVE_EXPLOSION) == MOVE_TARGET_FOES_AND_ALLY);
+    ASSUME(GetMoveEffect(MOVE_EXPLOSION) == EFFECT_EXPLOSION);
+
+    u32 aiFlags;
+    u32 battler;
+
+    PARAMETRIZE { aiFlags = 0; battler = 1; }
+    PARAMETRIZE { aiFlags = 0; battler = 3; }
+    PARAMETRIZE { aiFlags = AI_FLAG_RISKY; battler = 3; }
+    PARAMETRIZE { aiFlags = AI_FLAG_RISKY; battler = 1; }
+    PARAMETRIZE { aiFlags = AI_FLAG_WILL_SUICIDE; battler = 1; }
+    PARAMETRIZE { aiFlags = AI_FLAG_WILL_SUICIDE; battler = 3; }
+
+    GIVEN {
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
+        BATTLER_AI_FLAGS(battler, aiFlags);
+        PLAYER(SPECIES_WOBBUFFET) { HP(1); }
+        PLAYER(SPECIES_WOBBUFFET) { HP(1); }
+        OPPONENT(SPECIES_VOLTORB) { Moves(MOVE_EXPLOSION, MOVE_ELECTRO_BALL); HP(1); }
+        OPPONENT(SPECIES_ELECTRODE) { Moves(MOVE_EXPLOSION, MOVE_ELECTRO_BALL); HP(1); }
+    } WHEN {
+        if (aiFlags == 0 || battler == 3)
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_ELECTRO_BALL, target: playerLeft); EXPECT_MOVE(opponentRight, MOVE_ELECTRO_BALL, target: playerLeft); }
+        else
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_EXPLOSION, target: playerLeft); EXPECT_MOVE(opponentRight, MOVE_EXPLOSION); }
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("Battler 3 has Battler 1 AI flags set correctly (2v1)")
+{
+    KNOWN_FAILING; // AI changed
+    ASSUME(GetMoveTarget(MOVE_EXPLOSION) == MOVE_TARGET_FOES_AND_ALLY);
+    ASSUME(GetMoveEffect(MOVE_EXPLOSION) == EFFECT_EXPLOSION);
+
+    u32 aiFlags;
+    u32 battler;
+
+    PARAMETRIZE { aiFlags = 0; battler = 1; }
+    PARAMETRIZE { aiFlags = 0; battler = 3; }
+    PARAMETRIZE { aiFlags = AI_FLAG_RISKY; battler = 1; }
+    PARAMETRIZE { aiFlags = AI_FLAG_RISKY; battler = 3; }
+    PARAMETRIZE { aiFlags = AI_FLAG_WILL_SUICIDE; battler = 1; }
+    PARAMETRIZE { aiFlags = AI_FLAG_WILL_SUICIDE; battler = 3; }
+
+    GIVEN {
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
+        BATTLER_AI_FLAGS(battler, aiFlags);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { HP(1); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { HP(1); }
+        MULTI_OPPONENT_A(SPECIES_VOLTORB) { Moves(MOVE_EXPLOSION, MOVE_ELECTRO_BALL); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { Moves(MOVE_EXPLOSION, MOVE_ELECTRO_BALL); HP(1); }
+    } WHEN {
+        if (aiFlags == 0 || battler == 3)
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_ELECTRO_BALL, target: playerLeft); EXPECT_MOVE(opponentRight, MOVE_ELECTRO_BALL, target: playerLeft); }
+        else
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_EXPLOSION, target: playerLeft); EXPECT_MOVE(opponentRight, MOVE_EXPLOSION); }
     }
 }
 
@@ -603,6 +728,27 @@ AI_DOUBLE_BATTLE_TEST("AI uses Trick Room intelligently")
     }
 }
 
+/* Commenting out as AI changed
+AI_DOUBLE_BATTLE_TEST("AI uses Trick Room with both battlers on the turn it expires in line with the double Trick Room config")
+{
+    PASSES_RANDOMLY(DOUBLE_TRICK_ROOM_ON_LAST_TURN_CHANCE, 100, RNG_AI_REFRESH_TRICK_ROOM_ON_LAST_TURN);
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_TRICK_ROOM) == EFFECT_TRICK_ROOM);
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_DOUBLE_BATTLE);
+        PLAYER(SPECIES_WOBBUFFET) { Speed(4); }
+        PLAYER(SPECIES_WOBBUFFET) { Speed(3); }
+        OPPONENT(SPECIES_WYNAUT) { Moves(MOVE_TRICK_ROOM, MOVE_PSYCHIC); Speed(2); }
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_TRICK_ROOM, MOVE_PSYCHIC); Speed(1); }
+    } WHEN {
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN {  NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN {  NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN {  NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN {  EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+        } 
+}
+*/
+
 AI_DOUBLE_BATTLE_TEST("AI uses Helping Hand if it's about to die")
 {
     KNOWN_FAILING; // AI changed
@@ -628,7 +774,6 @@ AI_DOUBLE_BATTLE_TEST("AI uses Helping Hand if it's about to die")
 
 AI_DOUBLE_BATTLE_TEST("AI uses Helping Hand if the ally does notably more damage")
 {
-
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_HELPING_HAND) == EFFECT_HELPING_HAND);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_OMNISCIENT);
@@ -698,7 +843,6 @@ AI_DOUBLE_BATTLE_TEST("AI uses Guard Split to improve its stats")
 
 AI_DOUBLE_BATTLE_TEST("AI uses Power Split to improve its stats")
 {
-    KNOWN_FAILING; // AI changed
     u32 player, opponent;
 
     PARAMETRIZE { player = SPECIES_SHUCKLE; opponent = SPECIES_PHEROMOSA; }

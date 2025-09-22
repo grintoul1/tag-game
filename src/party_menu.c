@@ -166,7 +166,7 @@ enum {
 #define PARTY_PAL_SWITCHING    (1 << 4)
 #define PARTY_PAL_TO_SOFTBOIL  (1 << 5)
 #define PARTY_PAL_NO_MON       (1 << 6)
-#define PARTY_PAL_UNUSED       (1 << 7)
+#define PARTY_PAL_MULTI_SHARED (1 << 7)
 
 #define MENU_DIR_DOWN     1
 #define MENU_DIR_UP      -1
@@ -309,7 +309,8 @@ static u8 CreatePokeballButtonSprite(u8, u8);
 static void AnimateSelectedPartyIcon(u8, u8);
 static void PartyMenuStartSpriteAnim(u8, u8);
 static u8 GetPartyBoxPaletteFlags(u8, u8);
-static bool8 PartyBoxPal_ParnterOrDisqualifiedInArena(u8);
+static bool8 PartyBoxPal_PartnerOrDisqualifiedInArena(u8);
+static bool8 PartyBoxPal_SharedTeam(u8);
 static u8 GetPartyIdFromBattleSlot(u8);
 static void Task_ClosePartyMenuAndSetCB2(u8);
 static void UpdatePartyToFieldOrder(void);
@@ -340,6 +341,7 @@ static void Task_ReturnToChooseMonAfterText(u8);
 static void UpdateCurrentPartySelection(s8 *, s8);
 static void UpdatePartySelectionSingleLayout(s8 *, s8);
 static void UpdatePartySelectionDoubleLayout(s8 *, s8);
+static void UpdatePartySelectionOverworldLayout(s8 *, s8);
 static s8 GetNewSlotDoubleLayout(s8, s8);
 static void PrintMessage(const u8 *);
 static void Task_PrintAndWaitForText(u8);
@@ -444,6 +446,7 @@ static bool8 ReturnGiveItemToBagOrPC(u16);
 static void Task_DisplayGaveMailFromBagMessage(u8);
 static void Task_HandleSwitchItemsFromBagYesNoInput(u8);
 static void Task_ValidateChosenHalfParty(u8);
+static void Task_ValidateChosenHalfPartyEliteFour(u8);
 static bool8 GetBattleEntryEligibility(struct Pokemon *);
 static bool8 HasPartySlotAlreadyBeenSelected(u8);
 static u8 GetBattleEntryLevelCap(void);
@@ -515,6 +518,8 @@ static void DisplayCantUseSurfMessage(void);
 static bool8 InEliteFour(void);
 static void FieldCallback_RockClimb(void);
 
+extern u16 gPartnerTrainerId;
+
 // static const data
 #include "data/party_menu.h"
 
@@ -522,7 +527,6 @@ static void FieldCallback_RockClimb(void);
 static void InitPartyMenu(u8 menuType, u8 layout, u8 partyAction, bool8 keepCursorPos, u8 messageId, TaskFunc task, MainCallback callback)
 {
     u16 i;
-
     ResetPartyMenu();
     sPartyMenuInternal = Alloc(sizeof(struct PartyMenuInternal));
     if (sPartyMenuInternal == NULL)
@@ -541,7 +545,7 @@ static void InitPartyMenu(u8 menuType, u8 layout, u8 partyAction, bool8 keepCurs
         sPartyMenuInternal->spriteIdConfirmPokeball = 0x7F;
         sPartyMenuInternal->spriteIdCancelPokeball = 0x7F;
 
-        if (menuType == PARTY_MENU_TYPE_CHOOSE_HALF)
+        if ((menuType == PARTY_MENU_TYPE_CHOOSE_HALF) || (menuType == PARTY_MENU_TYPE_CHOOSE_HALF_ELITE_FOUR))
             sPartyMenuInternal->chooseHalf = TRUE;
         else
             sPartyMenuInternal->chooseHalf = FALSE;
@@ -976,6 +980,10 @@ static void LoadPartyMenuBoxes(u8 layout)
 
     if (layout == PARTY_LAYOUT_MULTI_SHOWCASE)
         sPartyMenuBoxes[3].infoRects = &sPartyBoxInfoRects[PARTY_BOX_LEFT_COLUMN];
+    else if (layout == (PARTY_LAYOUT_OVERWORLD_SHARED))
+        sPartyMenuBoxes[3].infoRects = &sPartyBoxInfoRects[PARTY_BOX_LEFT_COLUMN];
+    else if (layout == PARTY_LAYOUT_OVERWORLD)
+        sPartyMenuBoxes[3].infoRects = &sPartyBoxInfoRects[PARTY_BOX_LEFT_COLUMN];
     else if (layout != PARTY_LAYOUT_SINGLE)
         sPartyMenuBoxes[1].infoRects = &sPartyBoxInfoRects[PARTY_BOX_LEFT_COLUMN];
 }
@@ -1007,7 +1015,7 @@ static void RenderPartyMenuBox(u8 slot)
                 DisplayPartyPokemonDataForRelearner(slot);
             else if (gPartyMenu.menuType == PARTY_MENU_TYPE_CONTEST)
                 DisplayPartyPokemonDataForContest(slot);
-            else if (gPartyMenu.menuType == PARTY_MENU_TYPE_CHOOSE_HALF)
+            else if ((gPartyMenu.menuType == PARTY_MENU_TYPE_CHOOSE_HALF) || (gPartyMenu.menuType == PARTY_MENU_TYPE_CHOOSE_HALF_ELITE_FOUR))
                 DisplayPartyPokemonDataForChooseHalf(slot);
             else if (gPartyMenu.menuType == PARTY_MENU_TYPE_MINIGAME)
                 DisplayPartyPokemonDataForWirelessMinigame(slot);
@@ -1329,8 +1337,10 @@ static u8 GetPartyBoxPaletteFlags(u8 slot, u8 animNum)
         palFlags |= PARTY_PAL_SELECTED;
     if (GetMonData(&gPlayerParty[slot], MON_DATA_HP) == 0)
         palFlags |= PARTY_PAL_FAINTED;
-    if (PartyBoxPal_ParnterOrDisqualifiedInArena(slot) == TRUE)
+    if (PartyBoxPal_PartnerOrDisqualifiedInArena(slot) == TRUE)
         palFlags |= PARTY_PAL_MULTI_ALT;
+    if (PartyBoxPal_SharedTeam(slot) == TRUE)
+        palFlags |= PARTY_PAL_MULTI_SHARED;
     if (gPartyMenu.action == PARTY_ACTION_SWITCHING)
         palFlags |= PARTY_PAL_SWITCHING;
     if (gPartyMenu.action == PARTY_ACTION_SWITCH)
@@ -1344,14 +1354,26 @@ static u8 GetPartyBoxPaletteFlags(u8 slot, u8 animNum)
     return palFlags;
 }
 
-static bool8 PartyBoxPal_ParnterOrDisqualifiedInArena(u8 slot)
+static bool8 PartyBoxPal_PartnerOrDisqualifiedInArena(u8 slot)
 {
-    if (gPartyMenu.layout == PARTY_LAYOUT_MULTI && (slot == 1 || slot == 4 || slot == 5))
+    if ((gPartyMenu.layout == PARTY_LAYOUT_MULTI_SHARED && (slot == 1)) || (gPartyMenu.layout == PARTY_LAYOUT_OVERWORLD_SHARED && (slot == 3)))
+        return TRUE;
+
+    if ((gPartyMenu.layout == PARTY_LAYOUT_MULTI && (slot == 1 || slot == 4 || slot == 5)) 
+    || (gPartyMenu.layout == PARTY_LAYOUT_OVERWORLD && (slot == 3 || slot == 4 || slot == 5)))
         return TRUE;
 
     if (slot < MULTI_PARTY_SIZE && (gBattleTypeFlags & BATTLE_TYPE_ARENA) && gMain.inBattle && (gBattleStruct->arenaLostPlayerMons >> GetPartyIdFromBattleSlot(slot) & 1))
         return TRUE;
 
+    return FALSE;
+}
+
+static bool8 PartyBoxPal_SharedTeam(u8 slot)
+{
+    if ((gPartyMenu.layout == PARTY_LAYOUT_MULTI_SHARED && (slot == 2 || slot == 3 || slot == 4 || slot == 5))
+    || (gPartyMenu.layout == PARTY_LAYOUT_OVERWORLD_SHARED && (slot == 1 || slot == 2 || slot == 4 || slot == 5)))
+        return TRUE;
     return FALSE;
 }
 
@@ -1541,6 +1563,7 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
                 // Can't select if mon is currently on the field, or doesn't belong to you
                 PlaySE(SE_FAILURE);
             }
+            /*
             else if (DoesSelectedMonKnowHM((u8 *)slotPtr))
             {
                 PlaySE(SE_FAILURE);
@@ -1548,6 +1571,7 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
                 ScheduleBgCopyTilemapToVram(2);
                 gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
             }
+            */
             else
             {
                 PlaySE(SE_SELECT);
@@ -1576,7 +1600,7 @@ static bool8 IsSelectedMonNotEgg(u8 *slotPtr)
     return TRUE;
 }
 
-static bool8 DoesSelectedMonKnowHM(u8 *slotPtr)
+static bool8 UNUSED DoesSelectedMonKnowHM(u8 *slotPtr)
 {
     if (B_CATCH_SWAP_CHECK_HMS == FALSE)
         return FALSE;
@@ -1631,7 +1655,7 @@ static bool8 DisplayCancelChooseMonYesNo(u8 taskId)
 
     if (gPartyMenu.menuType == PARTY_MENU_TYPE_CONTEST)
         stringPtr = gText_CancelParticipation;
-    else if (gPartyMenu.menuType == PARTY_MENU_TYPE_CHOOSE_HALF)
+    else if ((gPartyMenu.menuType == PARTY_MENU_TYPE_CHOOSE_HALF) || (gPartyMenu.menuType == PARTY_MENU_TYPE_CHOOSE_HALF_ELITE_FOUR))
         stringPtr = GetFacilityCancelString();
 
     if (stringPtr == NULL)
@@ -1729,6 +1753,10 @@ static void UpdateCurrentPartySelection(s8 *slotPtr, s8 movementDir)
 
     if (layout == PARTY_LAYOUT_SINGLE)
         UpdatePartySelectionSingleLayout(slotPtr, movementDir);
+    else if (layout == PARTY_LAYOUT_OVERWORLD_SHARED)
+        UpdatePartySelectionOverworldLayout(slotPtr, movementDir);
+    else if (layout == PARTY_LAYOUT_OVERWORLD)
+        UpdatePartySelectionOverworldLayout(slotPtr, movementDir);
     else
         UpdatePartySelectionDoubleLayout(slotPtr, movementDir);
 
@@ -1898,6 +1926,157 @@ static void UpdatePartySelectionDoubleLayout(s8 *slotPtr, s8 movementDir)
         {
             sPartyMenuInternal->lastSelectedSlot = *slotPtr;
             *slotPtr = 1;
+        }
+        break;
+    }
+}
+
+static void UpdatePartySelectionOverworldLayout(s8 *slotPtr, s8 movementDir)
+{
+    // PARTY_SIZE + 1 is Cancel, PARTY_SIZE is Confirm
+    // newSlot is used temporarily as a movement direction during its later assignment
+    s8 newSlot = movementDir;
+
+    switch (movementDir)
+    {
+    case MENU_DIR_UP:
+        if (*slotPtr == 0)
+        {
+            *slotPtr = PARTY_SIZE + 1;
+            break;
+        }
+        else if (*slotPtr == PARTY_SIZE)
+        {
+            *slotPtr = (gPlayerPartyCount - 1 == 3) ? 2 : gPlayerPartyCount - 1;
+            break;
+        }
+        else if (*slotPtr == 1)
+        {
+            *slotPtr = 3;
+            break;
+        }
+        else if (*slotPtr == 4)
+        {
+            *slotPtr = 2;
+            break;
+        }
+        else if (*slotPtr == 3)
+        {
+            *slotPtr = 0;
+            break;
+        }
+        else if (*slotPtr == PARTY_SIZE + 1)
+        {
+            if (sPartyMenuInternal->chooseHalf)
+            {
+                *slotPtr = PARTY_SIZE;
+                break;
+            }
+            if (gPlayerPartyCount - 1 == 3)
+            {
+                *slotPtr = 2;
+                break;
+            }
+            (*slotPtr)--;
+        }
+        newSlot = GetNewSlotDoubleLayout(*slotPtr, newSlot);
+        if (newSlot != -1)
+            *slotPtr = newSlot;
+        break;
+    case MENU_DIR_DOWN:
+        if (*slotPtr == PARTY_SIZE)
+        {
+            *slotPtr = PARTY_SIZE + 1;
+        }
+        else if (*slotPtr == PARTY_SIZE + 1)
+        {
+            *slotPtr = 0;
+        }
+        else if (*slotPtr == 0)
+        {
+            *slotPtr = 3;
+            break;
+        }
+        else if (*slotPtr == 2)
+        {
+            *slotPtr = (gPlayerPartyCount - 1 == 3) ? PARTY_SIZE + 1 : 4;
+            break;
+        }
+        else if (*slotPtr == 3)
+        {
+            *slotPtr = 1;
+            break;
+        }
+        else
+        {
+            newSlot = GetNewSlotDoubleLayout(*slotPtr, MENU_DIR_DOWN);
+            if (newSlot == -1)
+            {
+                if (sPartyMenuInternal->chooseHalf)
+                    *slotPtr = PARTY_SIZE;
+                else
+                    *slotPtr = PARTY_SIZE + 1;
+            }
+            else
+            {
+                *slotPtr = newSlot;
+            }
+        }
+        break;
+    case MENU_DIR_RIGHT:
+        if (*slotPtr == 0)
+        {
+            if (sPartyMenuInternal->lastSelectedSlot == 2)
+            {
+                if (GetMonData(&gPlayerParty[2], MON_DATA_SPECIES) != SPECIES_NONE)
+                    *slotPtr = 2;
+            }
+            else if (GetMonData(&gPlayerParty[1], MON_DATA_SPECIES) != SPECIES_NONE)
+            {
+                *slotPtr = 1;
+            }
+        }
+        else if (*slotPtr == 3)
+        {
+            if (sPartyMenuInternal->lastSelectedSlot == 5)
+            {
+                if (GetMonData(&gPlayerParty[5], MON_DATA_SPECIES) != SPECIES_NONE)
+                    *slotPtr = 5;
+            }
+            else if (GetMonData(&gPlayerParty[4], MON_DATA_SPECIES) != SPECIES_NONE)
+            {
+                *slotPtr = 4;
+            }
+            else
+            {
+                sPartyMenuInternal->lastSelectedSlot = *slotPtr;
+                *slotPtr = 2;
+            }
+        }
+        break;
+    case MENU_DIR_LEFT:
+        if (*slotPtr == 1)
+        {
+            sPartyMenuInternal->lastSelectedSlot = *slotPtr;
+            *slotPtr = 0;
+        }
+        else if (*slotPtr == 2)
+        {
+            if (sPartyMenuInternal->lastSelectedSlot == 3)
+            {
+                sPartyMenuInternal->lastSelectedSlot = *slotPtr;
+                *slotPtr = 3;
+            }
+            else
+            {
+                sPartyMenuInternal->lastSelectedSlot = *slotPtr;
+                *slotPtr = 0;
+            }
+        }
+        else if (*slotPtr == 4 || *slotPtr == 5)
+        {
+            sPartyMenuInternal->lastSelectedSlot = *slotPtr;
+            *slotPtr = 3;
         }
         break;
     }
@@ -2282,6 +2461,15 @@ static void InitPartyMenuWindows(u8 layout)
     case PARTY_LAYOUT_MULTI:
         InitWindows(sMultiPartyMenuWindowTemplate);
         break;
+    case PARTY_LAYOUT_MULTI_SHARED:
+        InitWindows(sSharedMultiPartyMenuWindowTemplate);
+        break;
+    case PARTY_LAYOUT_OVERWORLD:
+        InitWindows(sOverworldPartyMenuWindowTemplate);
+        break;
+    case PARTY_LAYOUT_OVERWORLD_SHARED:
+        InitWindows(sOverworldSharedPartyMenuWindowTemplate);
+        break;
     default: // PARTY_LAYOUT_MULTI_SHOWCASE
         InitWindows(sShowcaseMultiPartyMenuWindowTemplate);
         break;
@@ -2467,6 +2655,19 @@ static void LoadPartyBoxPalette(struct PartyMenuBox *menuBox, u8 palFlags)
         {
             LOAD_PARTY_BOX_PAL(sPartyBoxMultiPalIds1, sPartyBoxPalOffsets1);
             LOAD_PARTY_BOX_PAL(sPartyBoxMultiPalIds2, sPartyBoxPalOffsets2);
+        }
+    }
+    else if (palFlags & PARTY_PAL_MULTI_SHARED)
+    {
+        if (palFlags & PARTY_PAL_SELECTED)
+        {
+            LOAD_PARTY_BOX_PAL(sPartyBoxCurrSelectionMultiSharedPalIds, sPartyBoxPalOffsets1);
+            LOAD_PARTY_BOX_PAL(sPartyBoxCurrSelectionPalIds2, sPartyBoxPalOffsets2);
+        }
+        else
+        {
+            LOAD_PARTY_BOX_PAL(sPartyBoxMultiSharedPalIds1, sPartyBoxPalOffsets1);
+            LOAD_PARTY_BOX_PAL(sPartyBoxMultiSharedPalIds2, sPartyBoxPalOffsets2);
         }
     }
     else if (palFlags & PARTY_PAL_SELECTED)
@@ -2930,6 +3131,7 @@ static u8 GetPartyMenuActionsType(struct Pokemon *mon)
         actionType = GetPartyMenuActionsTypeInBattle(mon);
         break;
     case PARTY_MENU_TYPE_CHOOSE_HALF:
+    case PARTY_MENU_TYPE_CHOOSE_HALF_ELITE_FOUR:
         switch (GetPartySlotEntryStatus(gPartyMenu.slotId))
         {
         default: // Not eligible
@@ -3448,12 +3650,19 @@ static void Task_ChooseHPAmount(u8 taskId)
     }
     else if (JOY_NEW(A_BUTTON))
     {
-        PlaySE(SE_SELECT);
-        PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
-        PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
-        SetMonData(mon, MON_DATA_HP, &thealthPoints);
-        UpdateMonDisplayInfoAfterRareCandy(gPartyMenu.slotId, mon);
-        CursorCb_Cancel1(taskId);
+        if (thealthPoints == 0)
+        {
+            CursorCb_Cancel1(taskId);
+        }
+        else
+        {
+            PlaySE(SE_SELECT);
+            PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+            PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+            SetMonData(mon, MON_DATA_HP, &thealthPoints);
+            UpdateMonDisplayInfoAfterRareCandy(gPartyMenu.slotId, mon);
+            CursorCb_Cancel1(taskId);
+        }
     }
     else if (JOY_NEW(B_BUTTON))
     {
@@ -3472,7 +3681,7 @@ static void CursorCb_Damage(u8 taskId)
     //DisplaySelectionWindow(SELECTWINDOW_DAMAGE);
     sPartyMenuInternal->windowId[0] = AddWindow(&sDamageWindowTemplate);
     DrawStdFrameWithCustomTileAndPalette(sPartyMenuInternal->windowId[0], FALSE, 0x4F, 13);
-    PrintHP(sPartyMenuInternal->windowId[0], 1);
+    PrintHP(sPartyMenuInternal->windowId[0], 0);
     DisplayPartyMenuStdMessage(PARTY_MSG_SET_HP);
     gTasks[taskId].data[0] = 0xFF;
     gTasks[taskId].func = Task_ChooseHPAmount;
@@ -3968,7 +4177,10 @@ static void CursorCb_Enter(u8 taskId)
 
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
-    maxBattlers = GetMaxBattleEntries();
+    if (InEliteFour())
+        maxBattlers = gSpecialVar_0x8000;
+    else
+        maxBattlers = GetMaxBattleEntries();
     for (i = 0; i < maxBattlers; i++)
     {
         if (gSelectedOrderFromParty[i] == 0)
@@ -4382,7 +4594,7 @@ bool32 SetUpFieldMove_Fly(void)
 
 void CB2_ReturnToPartyMenuFromFlyMap(void)
 {
-    InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, TRUE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_ReturnToFieldWithOpenMenu);
+    InitPartyMenu(PARTY_MENU_TYPE_FIELD, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_CHOOSE_MON, TRUE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_ReturnToFieldWithOpenMenu);
 }
 
 static void FieldCallback_Waterfall(void)
@@ -4763,7 +4975,7 @@ void CB2_ShowPartyMenuForItemUse(void)
     else
     {
         menuType = PARTY_MENU_TYPE_FIELD;
-        partyLayout = PARTY_LAYOUT_SINGLE;
+        partyLayout = (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD);
     }
 
     if (GetItemEffectType(gSpecialVar_ItemId) == ITEM_EFFECT_SACRED_ASH)
@@ -5783,11 +5995,11 @@ static void CB2_ReturnToPartyMenuWhileLearningMove(void)
     if (sFinalLevel != 0)
         SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_LEVEL, &sFinalLevel); // to avoid displaying incorrect level
     if (GetItemFieldFunc(gSpecialVar_ItemId) == ItemUseOutOfBattle_RareCandy && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
-        InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_USE_ITEM, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
+        InitPartyMenu(PARTY_MENU_TYPE_FIELD, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_USE_ITEM, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
     else if (GetItemFieldFunc(gSpecialVar_ItemId) == ItemUseOutOfBattle_InfiniteCandy && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
-        InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_USE_ITEM, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
+        InitPartyMenu(PARTY_MENU_TYPE_FIELD, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_USE_ITEM, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
     else
-        InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
+        InitPartyMenu(PARTY_MENU_TYPE_FIELD, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_CHOOSE_MON, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
 }
 
 static void Task_ReturnToPartyMenuWhileLearningMove(u8 taskId)
@@ -7155,7 +7367,7 @@ static void TryTutorSelectedMon(u8 taskId)
 
 void CB2_PartyMenuFromStartMenu(void)
 {
-    InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_ReturnToFieldWithOpenMenu);
+    InitPartyMenu(PARTY_MENU_TYPE_FIELD, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_ReturnToFieldWithOpenMenu);
 }
 
 // Giving an item by selecting Give from the bag menu
@@ -7163,7 +7375,7 @@ void CB2_PartyMenuFromStartMenu(void)
 void CB2_ChooseMonToGiveItem(void)
 {
     MainCallback callback = (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE) ? CB2_ReturnToBagMenu : CB2_ReturnToPyramidBagMenu;
-    InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_GIVE_ITEM, FALSE, PARTY_MSG_GIVE_TO_WHICH_MON, Task_HandleChooseMonInput, callback);
+    InitPartyMenu(PARTY_MENU_TYPE_FIELD, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_GIVE_ITEM, FALSE, PARTY_MSG_GIVE_TO_WHICH_MON, Task_HandleChooseMonInput, callback);
     gPartyMenu.bagItem = gSpecialVar_ItemId;
 }
 
@@ -7335,7 +7547,7 @@ static bool8 ReturnGiveItemToBagOrPC(u16 item)
 
 void ChooseMonToGiveMailFromMailbox(void)
 {
-    InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_GIVE_MAILBOX_MAIL, FALSE, PARTY_MSG_GIVE_TO_WHICH_MON, Task_HandleChooseMonInput, Mailbox_ReturnToMailListAfterDeposit);
+    InitPartyMenu(PARTY_MENU_TYPE_FIELD, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_GIVE_MAILBOX_MAIL, FALSE, PARTY_MSG_GIVE_TO_WHICH_MON, Task_HandleChooseMonInput, Mailbox_ReturnToMailListAfterDeposit);
 }
 
 static void TryGiveMailToSelectedMon(u8 taskId)
@@ -7366,6 +7578,13 @@ void InitChooseHalfPartyForBattle(u8 unused)
     gPartyMenu.task = Task_ValidateChosenHalfParty;
 }
 
+void InitChooseHalfPartyForEliteFour(u8 unused)
+{
+    ClearSelectedPartyOrder();
+    InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_HALF, (FlagGet(FLAG_SHARE_PARTY) ? PARTY_LAYOUT_MULTI_SHARED : PARTY_LAYOUT_MULTI), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, gMain.savedCallback);
+    gPartyMenu.task = Task_ValidateChosenHalfPartyEliteFour;
+}
+
 void ClearSelectedPartyOrder(void)
 {
     memset(gSelectedOrderFromParty, 0, sizeof(gSelectedOrderFromParty));
@@ -7374,7 +7593,7 @@ void ClearSelectedPartyOrder(void)
 static u8 GetPartySlotEntryStatus(s8 slot)
 {
     if (GetBattleEntryEligibility(&gPlayerParty[slot]) == FALSE)
-        return 2;
+        return 0;
     if (HasPartySlotAlreadyBeenSelected(slot + 1) == TRUE)
         return 1;
     return 0;
@@ -7417,7 +7636,6 @@ static u8 CheckBattleEntriesAndGetMessage(void)
     struct Pokemon *party = gPlayerParty;
     u8 minBattlers = GetMinBattleEntries();
     u8 *order = gSelectedOrderFromParty;
-
     if (order[minBattlers - 1] == 0)
     {
         if (minBattlers == 1)
@@ -7430,7 +7648,10 @@ static u8 CheckBattleEntriesAndGetMessage(void)
     if (facility == FACILITY_UNION_ROOM || facility == FACILITY_MULTI_OR_EREADER)
         return 0xFF;
 
-    maxBattlers = GetMaxBattleEntries();
+    if (InEliteFour())
+        maxBattlers = gSpecialVar_0x8000;
+    else
+        maxBattlers = GetMaxBattleEntries();
     for (i = 0; i < maxBattlers - 1; i++)
     {
         u16 species = GetMonData(&party[order[i] - 1], MON_DATA_SPECIES);
@@ -7463,6 +7684,22 @@ static void Task_ValidateChosenHalfParty(u8 taskId)
 {
     u8 msgId = CheckBattleEntriesAndGetMessage();
 
+    if (msgId != 0xFF)
+    {
+        PlaySE(SE_FAILURE);
+        DisplayPartyMenuStdMessage(msgId);
+        gTasks[taskId].func = Task_ContinueChoosingHalfParty;
+    }
+    else
+    {
+        PlaySE(SE_SELECT);
+        Task_ClosePartyMenu(taskId);
+    }
+}
+
+static void Task_ValidateChosenHalfPartyEliteFour(u8 taskId)
+{
+    u8 msgId = CheckBattleEntriesAndGetMessage();
     if (msgId != 0xFF)
     {
         PlaySE(SE_FAILURE);
@@ -7541,23 +7778,31 @@ static const u8 *GetFacilityCancelString(void)
 
 void ChooseMonForTradingBoard(u8 menuType, MainCallback callback)
 {
-    InitPartyMenu(menuType, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, callback);
+    InitPartyMenu(menuType, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, callback);
 }
 
 void ChooseMonForMoveTutor(void)
 {
-    InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_MOVE_TUTOR, FALSE, PARTY_MSG_TEACH_WHICH_MON, Task_HandleChooseMonInput, CB2_ReturnToFieldContinueScriptPlayMapMusic);
+    InitPartyMenu(PARTY_MENU_TYPE_FIELD, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_MOVE_TUTOR, FALSE, PARTY_MSG_TEACH_WHICH_MON, Task_HandleChooseMonInput, CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 
 void ChooseMonForWirelessMinigame(void)
 {
-    InitPartyMenu(PARTY_MENU_TYPE_MINIGAME, PARTY_LAYOUT_SINGLE, PARTY_ACTION_MINIGAME, FALSE, PARTY_MSG_CHOOSE_MON_OR_CANCEL, Task_HandleChooseMonInput, CB2_ReturnToFieldContinueScriptPlayMapMusic);
+    InitPartyMenu(PARTY_MENU_TYPE_MINIGAME, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_MINIGAME, FALSE, PARTY_MSG_CHOOSE_MON_OR_CANCEL, Task_HandleChooseMonInput, CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 
 static u8 GetPartyLayoutFromBattleType(void)
 {
+    bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
     if (IsMultiBattle() == TRUE)
-        return PARTY_LAYOUT_MULTI;
+    {
+        if (isSharedTeams == TRUE)
+        {
+            return PARTY_LAYOUT_MULTI_SHARED;
+        }
+        else
+            return PARTY_LAYOUT_MULTI;
+    }
     if (!IsDoubleBattle() || gPlayerPartyCount == 1) // Draw the single layout in a double battle where the player has only one pokemon.
         return PARTY_LAYOUT_SINGLE;
     return PARTY_LAYOUT_DOUBLE;
@@ -7598,9 +7843,10 @@ static bool8 TrySwitchInPokemon(void)
     u8 slot = GetCursorSelectionMonId();
     u8 newSlot;
     u8 i;
+    bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
 
     // In a multi battle, slots 1, 4, and 5 are the partner's Pokémon
-    if (IsMultiBattle() == TRUE && (slot == 1 || slot == 4 || slot == 5))
+    if (!isSharedTeams && IsMultiBattle() == TRUE && (slot == 1 || slot == 4 || slot == 5))
     {
         StringCopy(gStringVar1, GetTrainerPartnerName());
         StringExpandPlaceholders(gStringVar4, gText_CantSwitchWithAlly);
@@ -7995,7 +8241,7 @@ static void SlideMultiPartyMenuBoxSpritesOneStep(u8 taskId)
 
 void ChooseMonForDaycare(void)
 {
-    InitPartyMenu(PARTY_MENU_TYPE_DAYCARE, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON_2, Task_HandleChooseMonInput, BufferMonSelection);
+    InitPartyMenu(PARTY_MENU_TYPE_DAYCARE, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON_2, Task_HandleChooseMonInput, BufferMonSelection);
 }
 
 static void UNUSED ChoosePartyMonByMenuType(u8 menuType)
@@ -8042,7 +8288,7 @@ static void Task_ChooseContestMon(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        InitPartyMenu(PARTY_MENU_TYPE_CONTEST, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_AND_CLOSE, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_ChooseContestMon);
+        InitPartyMenu(PARTY_MENU_TYPE_CONTEST, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_CHOOSE_AND_CLOSE, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_ChooseContestMon);
         DestroyTask(taskId);
     }
 }
@@ -8082,7 +8328,7 @@ static void Task_ChoosePartyMon(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_MON, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_AND_CLOSE, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, BufferMonSelection);
+        InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_MON, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_CHOOSE_AND_CLOSE, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, BufferMonSelection);
         DestroyTask(taskId);
     }
 }
@@ -8099,7 +8345,7 @@ static void Task_ChooseMonForMoveRelearner(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        InitPartyMenu(PARTY_MENU_TYPE_MOVE_RELEARNER, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_AND_CLOSE, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_ChooseMonForMoveRelearner);
+        InitPartyMenu(PARTY_MENU_TYPE_MOVE_RELEARNER, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_CHOOSE_AND_CLOSE, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_ChooseMonForMoveRelearner);
         DestroyTask(taskId);
     }
 }

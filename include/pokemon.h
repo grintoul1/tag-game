@@ -659,6 +659,8 @@ extern u8 gPlayerPartyCount;
 extern struct Pokemon gPlayerParty[PARTY_SIZE];
 extern u8 gEnemyPartyCount;
 extern struct Pokemon gEnemyParty[PARTY_SIZE];
+extern u8 gEliteFourPoolCount;
+extern struct Pokemon gEliteFourPool[PARTY_SIZE];
 extern struct SpriteTemplate gMultiuseSpriteTemplate;
 extern u16 gFollowerSteps;
 extern bool32 consumeItem;
@@ -881,6 +883,7 @@ uq4_12_t GetDynamaxLevelHPMultiplier(u32 dynamaxLevel, bool32 inverseMultiplier)
 u32 GetRegionalFormByRegion(u32 species, u32 region);
 bool32 IsSpeciesForeignRegionalForm(u32 species, u32 currentRegion);
 u32 GetTeraTypeFromPersonality(struct Pokemon *mon);
+bool8 ShouldSkipFriendshipChange(void);
 struct Pokemon *GetSavedPlayerPartyMon(u32 index);
 u8 *GetSavedPlayerPartyCount(void);
 void SavePlayerPartyMon(u32 index, struct Pokemon *mon);

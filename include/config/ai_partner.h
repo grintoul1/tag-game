@@ -76,8 +76,8 @@
 #define PARTNER_PP_STALL_SCORE_REDUCTION                                0
 
 // AI's acceptable number of hits to KO the partner via friendly fire in a double battle.
-#define PARTNER_FRIENDLY_FIRE_RISKY_THRESHOLD           1
-#define PARTNER_FRIENDLY_FIRE_NORMAL_THRESHOLD          1
-#define PARTNER_FRIENDLY_FIRE_CONSERVATIVE_THRESHOLD    1
+#define PARTNER_FRIENDLY_FIRE_RISKY_THRESHOLD           3
+#define PARTNER_FRIENDLY_FIRE_NORMAL_THRESHOLD          3
+#define PARTNER_FRIENDLY_FIRE_CONSERVATIVE_THRESHOLD    3
 
 #endif // GUARD_CONFIG_AI_PARTNER_H

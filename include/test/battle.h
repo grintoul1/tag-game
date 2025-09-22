@@ -358,9 +358,15 @@
  * Pokémon may be referenced using indexes 3, 4, and 5.
  *
  * AI_FLAGS
- * Specifies which AI flags are run during the test. Has use only for AI tests.
+ * Specifies which AI flags are run for all battlers during the test. Has use only for AI tests.
  * The most common combination is  AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT)
  * which is the general 'smart' AI.
+ * 
+ * BATTLER_AI_FLAGS
+ * Specifies additional AI flags to be applied to specific battlers (battler 0/1/2/3). Has use only for AI tests.
+ * Must be used strictly after AI_FLAGS(flags), which overwrites all existing flags.
+ * Example: BATTLER_AI_FLAGS(3, AI_FLAG_RISKY) used after AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT)
+ * will set AI_FLAG_RISKY to only battler3 (Opponent B), in addition to the flags set by AI_FLAGS.
  *
  * WHEN
  * Contains the choices that battlers make during the battle.
@@ -668,7 +674,8 @@ struct BattlerTurn
 
 struct ExpectedAIAction
 {
-    u16 sourceLine;
+    u16 sourceLine:13; // TODO: Avoid stealing these bits.
+    enum Gimmick gimmick:3;
     u8 type:4; // which action
     u8 moveSlots:4; // Expected move(s) to be chosen or not, marked as bits.
     u8 target:4; // move target or id of mon which gets sent out
@@ -720,14 +727,14 @@ struct BattleTestData
     u8 explicitMoves[MAX_BATTLERS_COUNT];
     bool8 hasExplicitSpeeds;
     u8 explicitSpeeds[MAX_BATTLERS_COUNT];
-    u16 slowerThan[NUM_BATTLE_SIDES][PARTY_SIZE];
+    u16 slowerThan[MAX_BATTLERS_COUNT][PARTY_SIZE];
     u8 currentPosition;
     u8 currentPartyIndex;
     struct Pokemon *currentMon;
     u8 gender;
     u8 nature;
-    u16 forcedAbilities[NUM_BATTLE_SIDES][PARTY_SIZE];
-    u8 chosenGimmick[NUM_BATTLE_SIDES][PARTY_SIZE];
+    u16 forcedAbilities[MAX_BATTLERS_COUNT][PARTY_SIZE];
+    u8 chosenGimmick[MAX_BATTLERS_COUNT][PARTY_SIZE];
 
     u8 currentMonIndexes[MAX_BATTLERS_COUNT];
     u8 turnState;
@@ -794,10 +801,10 @@ extern struct BattleTestRunnerState *const gBattleTestRunnerState;
 #define APPEND_COMMA_TRUE(a) , a, TRUE
 #define R_APPEND_TRUE(...) __VA_OPT__(FIRST(__VA_ARGS__), TRUE RECURSIVELY(R_FOR_EACH(APPEND_COMMA_TRUE, EXCEPT_1(__VA_ARGS__))))
 
-#define AI_TRAINER_NAME "{PKMN} TRAINER LEAF"
-#define AI_TRAINER_2_NAME "{PKMN} TRAINER RED"
-#define AI_TRAINER_NAME_SHORT "LEAF"
-#define AI_TRAINER_2_NAME_SHORT "RED"
+#define AI_TRAINER_NAME "{PKMN} Trainer Leaf"
+#define AI_TRAINER_2_NAME "{PKMN} Trainer Red"
+#define AI_TRAINER_NAME_SHORT "Leaf"
+#define AI_TRAINER_2_NAME_SHORT "Red"
 
 /* Test */
 
@@ -942,6 +949,7 @@ struct moveWithPP {
 
 #define RNGSeed(seed) RNGSeed_(__LINE__, seed)
 #define AI_FLAGS(flags) AIFlags_(__LINE__, flags)
+#define BATTLER_AI_FLAGS(battler, flags) BattlerAIFlags_(__LINE__, battler, flags)
 #define AI_LOG AILogScores(__LINE__)
 
 #define FLAG_SET(flagId) SetFlagForTest(__LINE__, flagId)
@@ -985,12 +993,13 @@ struct moveWithPP {
 void SetFlagForTest(u32 sourceLine, u16 flagId);
 void TestSetConfig(u32 sourceLine, enum GenConfigTag configTag, u32 value);
 void ClearFlagAfterTest(void);
-void OpenPokemon(u32 sourceLine, u32 side, u32 species);
-void OpenPokemonMulti(u32 sourceLine, u32 side, u32 species);
+void OpenPokemon(u32 sourceLine, u32 position, u32 species);
+void OpenPokemonMulti(u32 sourceLine, u32 position, u32 species);
 void ClosePokemon(u32 sourceLine);
 
 void RNGSeed_(u32 sourceLine, rng_value_t seed);
 void AIFlags_(u32 sourceLine, u64 flags);
+void BattlerAIFlags_(u32 sourceLine, u32 battler, u64 flags);
 void AILogScores(u32 sourceLine);
 void Gender_(u32 sourceLine, u32 gender);
 void Nature_(u32 sourceLine, u32 nature);

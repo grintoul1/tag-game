@@ -1417,6 +1417,7 @@ static void CB2_PreInitMultiBattle(void)
 
 static void CB2_PreInitIngamePlayerPartnerBattle(void)
 {
+    bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
     u32 *savedBattleTypeFlags;
     void (**savedCallback)(void);
 
@@ -1436,7 +1437,7 @@ static void CB2_PreInitIngamePlayerPartnerBattle(void)
         *savedCallback = gMain.savedCallback;
         *savedBattleTypeFlags = gBattleTypeFlags;
         gMain.savedCallback = CB2_PreInitIngamePlayerPartnerBattle;
-        if (!PlayerHasFollowerNPC() || !FollowerNPCIsBattlePartner() || (FNPC_NPC_FOLLOWER_PARTY_PREVIEW && FollowerNPCIsBattlePartner()))
+        if ((!PlayerHasFollowerNPC() || !FollowerNPCIsBattlePartner() || (FNPC_NPC_FOLLOWER_PARTY_PREVIEW && FollowerNPCIsBattlePartner())) && !isSharedTeams)
             ShowPartyMenuToShowcaseMultiBattleParty();
 
         break;
@@ -3366,6 +3367,9 @@ void SwitchInClearSetData(u32 battler, struct Volatiles *volatilesCopy)
 
     memset(&gDisableStructs[battler], 0, sizeof(struct DisableStruct));
 
+    if (GetProtectType(gProtectStructs[battler].protected) == PROTECT_TYPE_SINGLE) // Side type protects expire at the end of the turn
+        gProtectStructs[battler].protected = PROTECT_NONE;
+
     if (effect == EFFECT_BATON_PASS)
     {
         gDisableStructs[battler].substituteHP = disableStructCopy.substituteHP;
@@ -3463,9 +3467,7 @@ const u8* FaintClearSetData(u32 battler)
     for (i = 0; i < NUM_BATTLE_STATS; i++)
         gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
 
-    bool32 keepGastroAcid = FALSE;
-    if (gBattleMons[battler].volatiles.gastroAcid)
-        keepGastroAcid = TRUE;
+    bool32 keepGastroAcid = gBattleMons[battler].volatiles.gastroAcid;
     memset(&gBattleMons[battler].volatiles, 0, sizeof(struct Volatiles));
     gBattleMons[battler].volatiles.gastroAcid = keepGastroAcid; // Edge case: Keep Gastro Acid if pokemon's ability can have effect after fainting, for example Innards Out.
 
@@ -3492,7 +3494,6 @@ const u8* FaintClearSetData(u32 battler)
         gProtectStructs[battler].protected = PROTECT_NONE;
 
     gProtectStructs[battler].quash = FALSE;
-    gProtectStructs[battler].endured = FALSE;
     gProtectStructs[battler].noValidMoves = FALSE;
     gProtectStructs[battler].helpingHand = FALSE;
     gProtectStructs[battler].bounceMove = FALSE;
@@ -3504,7 +3505,6 @@ const u8* FaintClearSetData(u32 battler)
     gProtectStructs[battler].fleeType = 0;
     gProtectStructs[battler].notFirstStrike = FALSE;
     gProtectStructs[battler].statRaised = FALSE;
-    gProtectStructs[battler].tryEjectPack = FALSE;
     gProtectStructs[battler].pranksterElevated = FALSE;
 
     gDisableStructs[battler].isFirstTurn = 2;
@@ -4151,8 +4151,8 @@ void BattleTurnPassed(void)
     gBattleStruct->faintedActionsState = 0;
 
     TurnValuesCleanUp(FALSE);
-    gHitMarker &= ~HITMARKER_NO_ATTACKSTRING;
     gHitMarker &= ~HITMARKER_UNABLE_TO_USE_MOVE;
+    gHitMarker &= ~HITMARKER_ATTACKSTRING_PRINTED;
     gHitMarker &= ~HITMARKER_PLAYER_FAINTED;
     gHitMarker &= ~HITMARKER_PASSIVE_HP_UPDATE;
     gBattleScripting.animTurn = 0;
@@ -4657,6 +4657,10 @@ static void HandleTurnActionSelectionState(void)
                             gBattleStruct->chosenMovePositions[battler] = gBattleResources->bufferB[battler][2] & ~RET_GIMMICK;
                             gChosenMoveByBattler[battler] = gBattleMons[battler].moves[gBattleStruct->chosenMovePositions[battler]];
                             gBattleStruct->moveTarget[battler] = gBattleResources->bufferB[battler][3];
+                            if (IsBattleMoveStatus(gChosenMoveByBattler[battler]) && GetBattlerAbility(battler) == ABILITY_MYCELIUM_MIGHT)
+                                gProtectStructs[battler].myceliumMight = TRUE;
+                            if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_LAGGING_TAIL)
+                                gProtectStructs[battler].laggingTail = TRUE;
 
                             // Check to see if any gimmicks need to be prepared.
                             if (gBattleResources->bufferB[battler][2] & RET_GIMMICK)
@@ -4671,7 +4675,10 @@ static void HandleTurnActionSelectionState(void)
 
                             if (gTestRunnerEnabled)
                             {
-                                TestRunner_Battle_CheckChosenMove(battler, gChosenMoveByBattler[battler], gBattleStruct->moveTarget[battler]);
+                                UNUSED enum Gimmick gimmick = GIMMICK_NONE;
+                                if (gBattleResources->bufferB[battler][2] & RET_GIMMICK)
+                                    gimmick = gBattleStruct->gimmick.usableGimmick[battler];
+                                TestRunner_Battle_CheckChosenMove(battler, gChosenMoveByBattler[battler], gBattleStruct->moveTarget[battler], gimmick);
                             }
                         }
                         break;
@@ -4990,9 +4997,13 @@ s32 GetBattleMovePriority(u32 battler, u32 ability, u32 move)
     if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX && GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS)
         return GetMovePriority(MOVE_MAX_GUARD);
 
-    if (ability == ABILITY_GALE_WINGS
-        && (GetGenConfig(GEN_CONFIG_GALE_WINGS) < GEN_7 || IsBattlerAtMaxHp(battler))
-        && GetMoveType(move) == TYPE_FLYING)
+    if (gProtectStructs[battler].quash)
+    {
+        priority = -8;
+    }
+    else if (ability == ABILITY_GALE_WINGS
+          && (GetGenConfig(GEN_CONFIG_GALE_WINGS) < GEN_7 || IsBattlerAtMaxHp(battler))
+          && GetMoveType(move) == TYPE_FLYING)
     {
         priority++;
     }
@@ -5006,10 +5017,9 @@ s32 GetBattleMovePriority(u32 battler, u32 ability, u32 move)
         priority++;
     }
     else if (ability == ABILITY_TRIAGE && IsHealingMove(move))
+    {
         priority += 3;
-
-    if (gProtectStructs[battler].quash)
-        priority = -8;
+    }
 
     return priority;
 }
@@ -5026,16 +5036,16 @@ s32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
         // Lagging Tail - always last
         bool32 battler1HasQuickEffect = gProtectStructs[battler1].quickDraw || gProtectStructs[battler1].usedCustapBerry;
         bool32 battler2HasQuickEffect = gProtectStructs[battler2].quickDraw || gProtectStructs[battler2].usedCustapBerry;
-        bool32 battler1HasStallingAbility = ability1 == ABILITY_STALL || (ability1 == ABILITY_MYCELIUM_MIGHT && IsBattleMoveStatus(gChosenMoveByBattler[battler1]));
-        bool32 battler2HasStallingAbility = ability2 == ABILITY_STALL || (ability2 == ABILITY_MYCELIUM_MIGHT && IsBattleMoveStatus(gChosenMoveByBattler[battler2]));
+        bool32 battler1HasStallingAbility = ability1 == ABILITY_STALL || gProtectStructs[battler1].myceliumMight;
+        bool32 battler2HasStallingAbility = ability2 == ABILITY_STALL || gProtectStructs[battler2].myceliumMight;
 
         if (battler1HasQuickEffect && !battler2HasQuickEffect)
             strikesFirst = 1;
         else if (battler2HasQuickEffect && !battler1HasQuickEffect)
             strikesFirst = -1;
-        else if (holdEffectBattler1 == HOLD_EFFECT_LAGGING_TAIL && holdEffectBattler2 != HOLD_EFFECT_LAGGING_TAIL)
+        else if (gProtectStructs[battler1].laggingTail && !gProtectStructs[battler2].laggingTail)
             strikesFirst = -1;
-        else if (holdEffectBattler2 == HOLD_EFFECT_LAGGING_TAIL && holdEffectBattler1 != HOLD_EFFECT_LAGGING_TAIL)
+        else if (gProtectStructs[battler2].laggingTail && !gProtectStructs[battler1].laggingTail)
             strikesFirst = 1;
         else if (battler1HasStallingAbility && !battler2HasStallingAbility)
             strikesFirst = -1;
@@ -5354,7 +5364,7 @@ static bool32 TryDoGimmicksBeforeMoves(void)
         }
     }
 
-    if (B_MEGA_EVO_TURN_ORDER >= GEN_7)
+    if (GetGenConfig(GEN_CONFIG_MEGA_EVO_TURN_ORDER) >= GEN_7)
         TryChangeTurnOrder(); // This will just do nothing if no mon has mega evolved.
     return FALSE;
 }
@@ -5547,7 +5557,7 @@ static void RunTurnActionsFunctions(void)
     {
         if (gBattleStruct->savedTurnActionNumber != gCurrentTurnActionNumber) // action turn has been done, clear hitmarker bits for another battler
         {
-            gHitMarker &= ~HITMARKER_NO_ATTACKSTRING;
+            gHitMarker &= ~HITMARKER_ATTACKSTRING_PRINTED;
             gHitMarker &= ~HITMARKER_UNABLE_TO_USE_MOVE;
         }
     }
@@ -6059,6 +6069,7 @@ u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, enum MonState
                     return TYPE_WATER;
                 break;
             case WEATHER_SNOW:
+            case WEATHER_HAIL:
                 return TYPE_ICE;
             case WEATHER_SANDSTORM:
                 return TYPE_ROCK;

@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_VITO",
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_VITO",
       "x": 6,
       "y": 26,
       "elevation": 3,

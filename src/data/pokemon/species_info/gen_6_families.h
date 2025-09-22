@@ -5763,7 +5763,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .levelUpLearnset = sNoibatLevelUpLearnset,
         .teachableLearnset = sNoibatTeachableLearnset,
         .eggMoveLearnset = sNoibatEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 44, SPECIES_NOIVERN}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 43, SPECIES_NOIVERN}),
     },
 
     [SPECIES_NOIVERN] =
