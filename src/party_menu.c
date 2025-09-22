@@ -4177,7 +4177,10 @@ static void CursorCb_Enter(u8 taskId)
 
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
-    maxBattlers = GetMaxBattleEntries();
+    if (InEliteFour())
+        maxBattlers = gSpecialVar_0x8000;
+    else
+        maxBattlers = GetMaxBattleEntries();
     for (i = 0; i < maxBattlers; i++)
     {
         if (gSelectedOrderFromParty[i] == 0)
@@ -7578,7 +7581,7 @@ void InitChooseHalfPartyForBattle(u8 unused)
 void InitChooseHalfPartyForEliteFour(u8 unused)
 {
     ClearSelectedPartyOrder();
-    InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_HALF, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, gMain.savedCallback);
+    InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_HALF, (FlagGet(FLAG_SHARE_PARTY) ? PARTY_LAYOUT_MULTI_SHARED : PARTY_LAYOUT_MULTI), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, gMain.savedCallback);
     gPartyMenu.task = Task_ValidateChosenHalfPartyEliteFour;
 }
 
@@ -7645,7 +7648,10 @@ static u8 CheckBattleEntriesAndGetMessage(void)
     if (facility == FACILITY_UNION_ROOM || facility == FACILITY_MULTI_OR_EREADER)
         return 0xFF;
 
-    maxBattlers = GetMaxBattleEntries();
+    if (InEliteFour())
+        maxBattlers = gSpecialVar_0x8000;
+    else
+        maxBattlers = GetMaxBattleEntries();
     for (i = 0; i < maxBattlers - 1; i++)
     {
         u16 species = GetMonData(&party[order[i] - 1], MON_DATA_SPECIES);

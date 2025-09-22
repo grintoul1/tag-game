@@ -216,6 +216,7 @@ static void CB2_ReturnFromChooseHalfPartyEliteFour(void)
             {
                 CopyMon(&gEnemyParty[gSelectedOrderFromParty[i] - 1], &gPlayerParty[gSelectedOrderFromParty[i] - 1], sizeof(*&gPlayerParty[gSelectedOrderFromParty[i] - 1]));
                 ZeroMonData(&gPlayerParty[gSelectedOrderFromParty[i] - 1]);
+                gSpecialVar_0x8000 += 1;
                 gSelectedOrderFromParty[i] = 0;
             }
         }

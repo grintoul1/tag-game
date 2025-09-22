@@ -684,11 +684,12 @@ Common_EventScript_MultibattleWipe::
 Common_EventScript_EliteFourAttendant::
 	faceplayer
 	lockall
+	setvar VAR_0x8000, 0
 	goto_if_set FLAG_ELITE_FOUR_PARTY_ONLY, Common_EventScript_EliteFourAttendantBestOfLuck
 	goto_if_set FLAG_ELITE_FOUR_PARTY_EXCHANGED, Common_EventScript_EliteFourAttendantBestOfLuck
 	message Common_Text_EliteFourAttendantSwitchPartyWithPool
 	waitmessage
-	multichoicedefault 20, 8, MULTI_YESNO, 1, TRUE
+	multichoicedefault 20, 8, MULTI_YESNO, 0, TRUE
 	switch VAR_RESULT
 	case 1, Common_EventScript_EliteFourNoExchange
 	case 0, Common_EventScript_EliteFourExchangePokemon
