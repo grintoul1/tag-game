@@ -5194,10 +5194,147 @@ local boxMonSize=80
 local partyMonSize=100
 local speciesStructSize=260
 
-local partyCount=0x02033609 -- gPlayerPartyCount
-local partyloc=0x02033868 -- gPlayerParty
-local speciesInfo=0x0868034c -- gSpeciesInfo
-local storageLoc=0x02009578 -- gPokemonStorage
+-- GF HEADER
+local gfHeaderAdr = 0x08000100 -- 0x104 src/rom_header_gf.o
+
+local GFRomHeader = {
+    version                = 0x00, -- u32 version
+    language               = 0x04, -- u32 language
+    gameName               = 0x08, -- 32 bytes -- u8 gameName[32]
+    monFrontPics           = 0x28, -- const struct CompressedSpriteSheet *monFrontPics
+    monBackPics            = 0x2C, -- const struct CompressedSpriteSheet *monBackPics
+    monNormalPalettes      = 0x30, -- const struct SpritePalette *monNormalPalettes
+    monShinyPalettes       = 0x34, -- const struct SpritePalette *monShinyPalettes
+    monIcons               = 0x38, -- const u8 *const *monIcons
+    monIconPaletteIds      = 0x3C, -- const u8 *monIconPaletteIds
+    monIconPalettes        = 0x40, -- const struct SpritePalette *monIconPalettes
+    monSpeciesNames        = 0x44, -- const u8 (*monSpeciesNames)[]
+    moveNames              = 0x48, -- const u8 (*moveNames)[]
+    decorations            = 0x4C, -- const struct Decoration *decorations
+    flagsOffset            = 0x50, -- u32 flagsOffset
+    varsOffset             = 0x54, -- u32 varsOffset
+    pokedexOffset          = 0x58, -- u32 pokedexOffset
+    seen1Offset            = 0x5C, -- u32 seen1Offset
+    seen2Offset            = 0x60, -- u32 seen2Offset
+    pokedexVar             = 0x64, -- u32 pokedexVar
+    pokedexFlag            = 0x68, -- u32 pokedexFlag
+    mysteryEventFlag       = 0x6C, -- u32 mysteryEventFlag
+    pokedexCount           = 0x70, -- u32 pokedexCount
+    playerNameLength       = 0x74, -- u8 playerNameLength
+    trainerNameLength      = 0x75, -- u8 trainerNameLength
+    pokemonNameLength1     = 0x76, -- u8 pokemonNameLength1
+    pokemonNameLength2     = 0x77, -- u8 pokemonNameLength2
+    unk5                   = 0x78, -- u8 unk5
+    unk6                   = 0x79, -- u8 unk6
+    unk7                   = 0x7A, -- u8 unk7
+    unk8                   = 0x7B, -- u8 unk8
+    unk9                   = 0x7C, -- u8 unk9
+    unk10                  = 0x7D, -- u8 unk10
+    unk11                  = 0x7E, -- u8 unk11
+    unk12                  = 0x7F, -- u8 unk12
+    unk13                  = 0x80, -- u8 unk13
+    unk14                  = 0x81, -- u8 unk14
+    unk15                  = 0x82, -- u8 unk15
+    unk16                  = 0x83, -- u8 unk16
+    unk17                  = 0x84, -- u8 unk17
+    gfPadding              = 0x85, -- (padding: 3 bytes for alignment)
+    saveBlock2Size         = 0x88, -- u32 saveBlock2Size
+    saveBlock1Size         = 0x8C, -- u32 saveBlock1Size
+    partyCountOffset       = 0x90, -- u32 partyCountOffset
+    partyOffset            = 0x94, -- u32 partyOffset
+    warpFlagsOffset        = 0x98, -- u32 warpFlagsOffset
+    trainerIdOffset        = 0x9C, -- u32 trainerIdOffset
+    playerNameOffset       = 0xA0, -- u32 playerNameOffset
+    playerGenderOffset     = 0xA4, -- u32 playerGenderOffset
+    frontierStatusOffset   = 0xA8,
+    frontierStatusOffset2  = 0xAC,
+    externalEventFlagsOffset = 0xB0,
+    externalEventDataOffset  = 0xB4,
+    unk18                  = 0xB8,
+    speciesInfo            = 0xBC,
+    abilityNames           = 0xC0,
+    abilityDescriptions    = 0xC4,
+    items                  = 0xC8,
+    moves                  = 0xCC,
+    ballGfx                = 0xD0,
+    ballPalettes           = 0xD4,
+    gcnLinkFlagsOffset     = 0xD8,
+    gameClearFlag          = 0xDC,
+    ribbonFlag             = 0xE0,
+    bagCountItems          = 0xE4,
+    bagCountKeyItems       = 0xE5,
+    bagCountPokeballs      = 0xE6,
+    bagCountTMHMs          = 0xE7,
+    bagCountBerries        = 0xE8,
+    pcItemsCount           = 0xE9,
+    pcItemsOffset          = 0xEC,
+    giftRibbonsOffset      = 0xF0,
+    enigmaBerryOffset      = 0xF4,  -- only if FREE_ENIGMA_BERRY == FALSE
+    enigmaBerrySize        = 0xF8,  -- same condition
+    moveDescriptions       = 0xFC,
+    unk20                  = 0x100,
+}
+
+-- RHH HEADER
+local rhhHeaderAdr = 0x08000204 -- 0x18 src/rom_header_rhh.o
+
+local RHHRomHeader = {
+    rhhMagic                = 0x00,
+    expansionVersionMajor   = 0x06,
+    expansionVersionMinor   = 0x07,
+    expansionVersionPatch   = 0x08,
+    expansionVersionFlags   = 0x09,
+    movesCount              = 0x0A,
+    numSpecies              = 0x0C,
+    abilitiesCount          = 0x0E,
+    abilitiesPtr            = 0x10,
+    itemsCount              = 0x14,
+    itemNameLength          = 0x16,
+    padding                 = 0x17,
+    saveBlock1Ptr           = 0x18,
+    saveBlock2Ptr           = 0x1C,
+    saveBlock3Ptr           = 0x20,
+    pokemonStoragePtr       = 0x24,
+}
+
+local partyCountTest = emu:read32(gfHeaderAdr + GFRomHeader.partyCountOffset)
+
+-- local pokemonStorageOffset = [Need adding to RHH header]
+
+-- Generic helper: read a value from a save block using an offset field in a ROM header
+local function readHeader8(headerAddr, saveBlockPtr, offsetField)
+    local offset = emu:read32(headerAddr + offsetField)
+    return emu:read8(saveBlockPtr + offset)
+end
+
+local function readHeader16(headerAddr, saveBlockPtr, offsetField)
+    local offset = emu:read32(headerAddr + offsetField)
+    return emu:read16(saveBlockPtr + offset)
+end
+
+local function readHeader32(headerAddr, saveBlockPtr, offsetField)
+    local offset = emu:read32(headerAddr + offsetField)
+    return emu:read32(saveBlockPtr + offset)
+end
+
+local saveBlock1Ptr = emu:read32(rhhHeaderAdr + RHHRomHeader.saveBlock1Ptr)
+local saveBlock2Ptr = emu:read32(rhhHeaderAdr + RHHRomHeader.saveBlock2Ptr)
+local saveBlock3Ptr = emu:read32(rhhHeaderAdr + RHHRomHeader.saveBlock3Ptr)
+
+
+local partyCount=0x02033611 -- gPlayerPartyCount
+local partyloc=0x02033ac8 -- gPlayerParty
+local storageLoc=0x02009580 -- gPokemonStorage
+local speciesInfo=0x08682ec4 -- gSpeciesInfo
+
+-- Reads a little-endian 32-bit pointer from ROM
+function read_pointer(addr)
+    local b1 = memory.readbyte(addr)
+    local b2 = memory.readbyte(addr + 1)
+    local b3 = memory.readbyte(addr + 2)
+    local b4 = memory.readbyte(addr + 3)
+    return b1 + b2 * 0x100 + b3 * 0x10000 + b4 * 0x1000000
+end
 
 function getCurve(n)
 	return emu:read8(speciesInfo+(speciesStructSize*n)+21)
@@ -5749,7 +5886,7 @@ end
 function startScript()
 	console:log('To update your exports type \'export()\'')
 	console:log('To update your hidden powers type \'hiddens()\'')
-
+    console:log("Player party count: " .. partyCountTest)
     --Start configOverlayPokemon
 
     console:log('To enable your connection for obspokemonoverlay type \'overlayEnable()\', and to disable the connection type \'overlayDisable()\'')

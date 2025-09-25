@@ -5,6 +5,11 @@
 #include "constants/species.h"
 #include "constants/items.h"
 
+extern struct SaveBlock1 gSaveBlock1;
+extern struct SaveBlock2 gSaveBlock2;
+extern struct SaveBlock3 gSaveBlock3;
+extern struct PokemonStorage gPokemonStorage;
+
 // Similar to the GF ROM header, this struct allows external programs to
 // detect details about Expansion.
 // For this structure to be useful we have to maintain backwards binary
@@ -40,4 +45,19 @@ __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHead
     .abilities = gAbilitiesInfo,
     .itemsCount = ITEMS_COUNT,
     .itemNameLength = ITEM_NAME_LENGTH,
+};
+
+struct RHHRomHeaderRuntime
+{
+    /*0x00*/ struct SaveBlock1 *saveBlock1;
+    /*0x04*/ struct SaveBlock2 *saveBlock2;
+    /*0x08*/ struct SaveBlock3 *saveBlock3;
+    /*0x0C*/ struct PokemonStorage *pokemonStorage;
+};
+
+struct RHHRomHeaderRuntime sRHHRomHeaderRuntime = {
+    .saveBlock1 = &gSaveBlock1,
+    .saveBlock2 = &gSaveBlock2,
+    .saveBlock3 = &gSaveBlock3,
+    .pokemonStorage = &gPokemonStorage,
 };
