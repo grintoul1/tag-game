@@ -139,43 +139,31 @@ local RHHRomHeader = {
 -- local saveBlock1Adr = emu:read32(rhhHeaderAdr + RHHRomHeader.saveBlock1)
 -- local saveBlock2Adr = emu:read32(rhhHeaderAdr + RHHRomHeader.saveBlock2)
 -- local saveBlock3Adr = emu:read32(rhhHeaderAdr + RHHRomHeader.saveBlock3)
-local pokemonNameLength = emu:read8(gfHeaderAdr + GFRomHeader.pokemonNameLength1) -- POKEMON_NAME_LENGTH
-local playerNameLength2 = emu:read8(gfHeaderAdr + GFRomHeader.playerNameLength) -- PLAYER_NAME_LENGTH
-local boxPokemonSize = emu:read32(rhhHeaderAdr + RHHRomHeader.boxPokemonSize) -- sizeof(struct BoxPokemon)
-local partyPokemonSize = emu:read32(rhhHeaderAdr + RHHRomHeader.partyPokemonSize) -- sizeof(struct Pokemon)
-local speciesSize = emu:read32(rhhHeaderAdr + RHHRomHeader.speciesSize) -- sizeof(struct SpeciesInfo)
-local movesSize = emu:read32(rhhHeaderAdr + RHHRomHeader.movesSize) -- sizeof(struct MoveInfo)
-local moveNameLength = emu:read8(rhhHeaderAdr + RHHRomHeader.moveNameLength) -- MOVE_NAME_LENGTH
 
-local playerPartyCountAdr = emu:read32(rhhHeaderAdr + RHHRomHeader.playerPartyCount) -- PlayerPartyCount
-local partyLocationAdr = emu:read32(rhhHeaderAdr + RHHRomHeader.playerParty) -- PlayerParty
-local pokemonStorageAdr = emu:read32(rhhHeaderAdr + RHHRomHeader.pokemonStorage) -- SpeciesInfo
-local speciesInfoAdr = emu:read32(gfHeaderAdr + GFRomHeader.speciesInfo) -- PokemonStorage
-
--- START ORIGINAL LUA NAMING 
 local terminator=0xFF
-local monNameLength=10
-local playerNameLength=10
-local boxMonSize=80
-local partyMonSize=100
-local speciesStructSize=260
-levelCap = 0 -- Sets the level for all mons based on first party slot
+local monNameLength = emu:read8(gfHeaderAdr + GFRomHeader.pokemonNameLength1) -- POKEMON_NAME_LENGTH
+local playerNameLength = emu:read8(gfHeaderAdr + GFRomHeader.playerNameLength) -- PLAYER_NAME_LENGTH
+local boxMonSize = emu:read32(rhhHeaderAdr + RHHRomHeader.boxPokemonSize) -- sizeof(struct BoxPokemon)
+local partyMonSize = emu:read32(rhhHeaderAdr + RHHRomHeader.partyPokemonSize) -- sizeof(struct Pokemon)
+local speciesStructSize = emu:read32(rhhHeaderAdr + RHHRomHeader.speciesSize) -- sizeof(struct SpeciesInfo)
 
 -- Used for mon exporting
-local partyCount=0x02033611 -- gPlayerPartyCount
-local partyloc=0x02033ac8 -- gPlayerParty
-local storageLoc=0x02009580 -- gPokemonStorage
-local speciesInfo=0x08682eec -- gSpeciesInfo
-
--- END ORIGINAL LUA NAMING
+local partyCount = emu:read32(rhhHeaderAdr + RHHRomHeader.playerPartyCount) -- gPlayerPartyCount
+local partyloc = emu:read32(rhhHeaderAdr + RHHRomHeader.playerParty) -- gPlayerParty
+local storageLoc = emu:read32(rhhHeaderAdr + RHHRomHeader.pokemonStorage) -- gPokemonStorage
+local speciesInfo = emu:read32(gfHeaderAdr + GFRomHeader.speciesInfo) -- gSpeciesInfo
 
 -- Used for table generation
+-- Moves
+local movesInfoAdr = emu:read32(gfHeaderAdr + GFRomHeader.moves)
+local movesSize = emu:read32(rhhHeaderAdr + RHHRomHeader.movesSize) -- sizeof(struct MoveInfo)
 local movesCount = emu:read16(rhhHeaderAdr + RHHRomHeader.movesCount)
+local moveNameLength = emu:read8(rhhHeaderAdr + RHHRomHeader.moveNameLength) -- MOVE_NAME_LENGTH
+
 local numSpecies = emu:read16(rhhHeaderAdr + RHHRomHeader.numSpecies)
 local abilitiesCount = emu:read16(rhhHeaderAdr + RHHRomHeader.abilitiesCount)
 local metLocationCount = emu:read8(rhhHeaderAdr + RHHRomHeader.metLocationCount)
-local movesInfoAdr = emu:read32(gfHeaderAdr + GFRomHeader.moves)
-local speciesNameOffset = emu:read32(rhhHeaderAdr + RHHRomHeader.speciesNameOffset)
+--local speciesNameOffset = emu:read32(rhhHeaderAdr + RHHRomHeader.speciesNameOffset)
 
 function readPointer(addr)
     local ptr = emu:read32(addr)
@@ -204,14 +192,14 @@ function getMoveName(n)
     return name
 end
 
-function getMonsName(n)
-    local speciesAdr = speciesInfoAdr + (speciesSize * n) + speciesNameOffset
-
-    local nameBytes = emu:readRange(speciesAdr, pokemonNameLength)
-    local name = toString(nameBytes)
-    console:log(string.format("Species name: %s", name))
-    return name
-end
+--function getMonsName(n)
+--    local speciesAdr = speciesInfo + (speciesStructSize * n) + speciesNameOffset
+--
+--    local nameBytes = emu:readRange(speciesAdr, monNameLength)
+--    local name = toString(nameBytes)
+--    console:log(string.format("Species name: %s", name))
+--    return name
+--end
 
 function getAbilityName(n)
     local moveStructAddr = movesInfoAdr + (movesSize * n)
@@ -237,17 +225,17 @@ function getMoveTable()
     end
 end
 
-mons2 = {}
-
--- sort of works but doesn't do forms
-function getMonsTable()
-    mons2[0] = ""
-    i = 1
-    while i < numSpecies do
-        mons2[i] = string.format("%s",getMonsName(i))
-        i = i + 1
-    end
-end
+--mons2 = {}
+--
+---- sort of works but doesn't do forms
+--function getMonsTable()
+--    mons2[0] = ""
+--    i = 1
+--    while i < numSpecies do
+--        mons2[i] = string.format("%s",getMonsName(i))
+--        i = i + 1
+--    end
+--end
 
 ability = {}
 
@@ -3123,6 +3111,8 @@ charmap = { [0]=
 	":", "Ä", "Ö", "Ü", "ä", "ö", "ü", "⬆", "⬇", "⬅", " ", " ", " ", " ", " ", ""
 }
 
+levelCap = 0 -- Sets the level for all mons based on first party slot
+
 function getCurve(n)
 	return emu:read8(speciesInfo+(speciesStructSize*n)+21)
 end
@@ -3758,28 +3748,19 @@ function startScript()
     --console:log("NEW Save block 2 address: " .. string.format("0x%08X",saveBlock2Adr))
     --console:log("NEW Save block 3 address: " .. string.format("0x%08X",saveBlock3Adr))
     console:log("NEW movesInfoAdr: " .. string.format("0x%08X", movesInfoAdr))
-    console:log("OLD storageLoc: " .. string.format("0x%08X", storageLoc))
-    console:log("NEW pokemonStorageAdr: " .. string.format("0x%08X", pokemonStorageAdr))
-    console:log("OLD partyCount: " .. string.format("0x%08X", partyCount))
-    console:log("NEW playerPartyCountAdr: " .. string.format("0x%08X", playerPartyCountAdr))
-    console:log("OLD partyloc: " .. string.format("0x%08X", partyloc))
-    console:log("NEW partyLocationAdr: " .. string.format("0x%08X", partyLocationAdr))
-    console:log("OLD speciesInfo: " .. string.format("0x%08X", speciesInfo))
-    console:log("NEW speciesInfoAdr: " .. string.format("0x%08X", speciesInfoAdr))
+    console:log("NEW storageLoc: " .. string.format("0x%08X", storageLoc))
+    console:log("NEW partyCount: " .. string.format("0x%08X", partyCount))
+    console:log("NEW partyloc: " .. string.format("0x%08X", partyloc))
+    console:log("NEW speciesInfo: " .. string.format("0x%08X", speciesInfo))
     console:log("NEW movesCount: " .. string.format("%d", movesCount))
     console:log("NEW numSpecies: " .. string.format("%d", numSpecies))
     console:log("NEW abilitiesCount: " .. string.format("%d", abilitiesCount))
     console:log("NEW metLocationCount: " .. string.format("%d", metLocationCount))
-    console:log("OLD monNameLength: " .. string.format("%d", monNameLength))
-    console:log("NEW pokemonNameLength: " .. string.format("%d", pokemonNameLength))
-    console:log("OLD playerNameLength: " .. string.format("%d", playerNameLength))
-    console:log("NEW playerNameLength2: " .. string.format("%d", playerNameLength2))
-    console:log("OLD boxMonSize: " .. string.format("%d", boxMonSize))
-    console:log("NEW boxPokemonSize: " .. string.format("%d", boxPokemonSize))
-    console:log("OLD partyMonSize: " .. string.format("%d", partyMonSize))
-    console:log("NEW partyPokemonSize: " .. string.format("%d", partyPokemonSize))
-    console:log("OLD speciesStructSize: " .. string.format("%d", speciesStructSize))
-    console:log("NEW speciesSize: " .. string.format("%d", speciesSize))
+    console:log("NEW monNameLength: " .. string.format("%d", monNameLength))
+    console:log("NEW playerNameLength: " .. string.format("%d", playerNameLength))
+    console:log("NEW boxMonSize: " .. string.format("%d", boxMonSize))
+    console:log("NEW partyMonSize: " .. string.format("%d", partyMonSize))
+    console:log("NEW speciesStructSize: " .. string.format("%d", speciesStructSize))
     console:log("NEW movesSize: " .. string.format("%d", movesSize))
     console:log("NEW moveNameLength: " .. string.format("%d", moveNameLength))
 
