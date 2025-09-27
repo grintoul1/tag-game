@@ -1,14 +1,17 @@
 #include "global.h"
+#include "move.h"
 #include "constants/abilities.h"
 #include "constants/expansion.h"
 #include "constants/moves.h"
 #include "constants/species.h"
 #include "constants/items.h"
 
-extern struct SaveBlock1 gSaveBlock1;
-extern struct SaveBlock2 gSaveBlock2;
-extern struct SaveBlock3 gSaveBlock3;
+extern struct SaveBlock1 gSaveblock1;
+extern struct SaveBlock2 gSaveblock2;
+extern struct SaveBlock3 gSaveblock3;
 extern struct PokemonStorage gPokemonStorage;
+extern u8 gPlayerPartyCount;
+extern struct Pokemon gPlayerParty[PARTY_SIZE];
 
 // Similar to the GF ROM header, this struct allows external programs to
 // detect details about Expansion.
@@ -29,7 +32,16 @@ struct RHHRomHeader
     /*0x10*/ const struct Ability *abilities;
     /*0x14*/ u16 itemsCount;
     /*0x16*/ u8 itemNameLength;
-    /*0x17*/ u8 padding;
+    /*0x17*/ u8 mapSecCount;
+    /*0x18*/ struct PokemonStorage *pokemonStorage;
+    /*0x1C*/ struct Pokemon *playerParty;
+    /*0x20*/ u8 *playerPartyCount;
+    /*0x24*/ u32 boxPokemonSize;
+    /*0x28*/ u32 partyPokemonSize;
+    /*0x2C*/ u32 speciesSize;
+    /*0X30*/ u32 movesSize;
+    /*0x34*/ u32 speciesNameOffset;
+    /*0x38*/ u8 moveNameLength;
 };
 
 __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHeader sRHHRomHeader =
@@ -45,19 +57,20 @@ __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHead
     .abilities = gAbilitiesInfo,
     .itemsCount = ITEMS_COUNT,
     .itemNameLength = ITEM_NAME_LENGTH,
-};
-
-struct RHHRomHeaderRuntime
-{
-    /*0x00*/ struct SaveBlock1 *saveBlock1;
-    /*0x04*/ struct SaveBlock2 *saveBlock2;
-    /*0x08*/ struct SaveBlock3 *saveBlock3;
-    /*0x0C*/ struct PokemonStorage *pokemonStorage;
-};
-
-struct RHHRomHeaderRuntime sRHHRomHeaderRuntime = {
-    .saveBlock1 = &gSaveBlock1,
-    .saveBlock2 = &gSaveBlock2,
-    .saveBlock3 = &gSaveBlock3,
+    .mapSecCount = MAPSEC_COUNT,
     .pokemonStorage = &gPokemonStorage,
+    .playerParty = &gPlayerParty[0],
+    .playerPartyCount = &gPlayerPartyCount,
+    .boxPokemonSize = sizeof(struct BoxPokemon),
+    .partyPokemonSize = sizeof(struct Pokemon),
+    .speciesSize = sizeof(struct SpeciesInfo),
+    .movesSize = sizeof(struct MoveInfo),
+    .speciesNameOffset = offsetof(struct SpeciesInfo, speciesName),
+    .moveNameLength = MOVE_NAME_LENGTH,
 };
+    ///*0x18*/ struct SaveBlock1 *saveBlock1;
+    ///*0x1C*/ struct SaveBlock2 *saveBlock2;
+    ///*0x20*/ struct SaveBlock3 *saveBlock3;
+    //.saveBlock1 = &gSaveblock1,
+    //.saveBlock2 = &gSaveblock2,
+    //.saveBlock3 = &gSaveblock3,
