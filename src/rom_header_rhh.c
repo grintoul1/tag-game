@@ -1,5 +1,8 @@
 #include "global.h"
 #include "move.h"
+#include "region_map.h" // For MAPSEC_COUNT and struct RegionMapLocation
+#include "pokemon.h" // For struct Pokemon, struct BoxPokemon, struct SpeciesInfo  
+#include "pokemon_storage_system.h" // For struct PokemonStorage
 #include "constants/abilities.h"
 #include "constants/expansion.h"
 #include "constants/moves.h"
@@ -10,8 +13,6 @@ extern struct SaveBlock1 gSaveblock1;
 extern struct SaveBlock2 gSaveblock2;
 extern struct SaveBlock3 gSaveblock3;
 extern struct PokemonStorage gPokemonStorage;
-extern u8 gPlayerPartyCount;
-extern struct Pokemon gPlayerParty[PARTY_SIZE];
 
 // Similar to the GF ROM header, this struct allows external programs to
 // detect details about Expansion.
@@ -42,8 +43,10 @@ struct RHHRomHeader
     /*0X30*/ u32 movesSize;
     /*0X34*/ u32 abilitySize;
     /*0x38*/ u32 speciesNameOffset;
-    /*0x3C*/ u8 moveNameLength;
-    /*0x3D*/ u8 abilityNameLength;
+    /*0x3C*/ struct RegionMapLocation *regionMapEntries;
+    /*0x40*/ u32 mapNameOffset;
+    /*0x44*/ u8 moveNameLength;
+    /*0x45*/ u8 abilityNameLength;
 };
 
 __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHeader sRHHRomHeader =
@@ -69,6 +72,8 @@ __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHead
     .movesSize = sizeof(struct MoveInfo),
     .abilitySize = sizeof(struct Ability),
     .speciesNameOffset = offsetof(struct SpeciesInfo, speciesName),
+    .regionMapEntries = &gRegionMapEntries,
+    .mapNameOffset = offsetof(struct RegionMapLocation, name),
     .moveNameLength = MOVE_NAME_LENGTH,
     .abilityNameLength = ABILITY_NAME_LENGTH,
 };

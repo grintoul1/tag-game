@@ -134,8 +134,10 @@ local RHHRomHeader = {
     movesSize               = 0x30, -- u32
     abilitySize             = 0x34, -- u32
     speciesNameOffset       = 0x38, -- u32
-    moveNameLength          = 0x3C, -- u8
-    abilityNameLength       = 0x3D, -- u8
+    regionMapEntries        = 0x3C, -- u32
+    mapNameOffset           = 0x40, -- u32
+    moveNameLength          = 0x44, -- u8
+    abilityNameLength       = 0x45, -- u8
 }
 
 -- From header
@@ -169,9 +171,12 @@ local abilitySize = emu:read32(rhhHeaderAdr + RHHRomHeader.abilitySize) -- sizeo
 local abilitiesCount = emu:read16(rhhHeaderAdr + RHHRomHeader.abilitiesCount) -- ABILITIES_COUNT
 local abilityNameLength = emu:read8(rhhHeaderAdr + RHHRomHeader.abilityNameLength) -- MOVE_NAME_LENGTH
 
+-- Met Locations
+local regionMapEntries = emu:read32(rhhHeaderAdr + RHHRomHeader.regionMapEntries) -- gRegionMapEntries
+local metLocationCount = emu:read8(rhhHeaderAdr + RHHRomHeader.metLocationCount) -- MET_LOCATION_COUNT
+
 local numSpecies = emu:read16(rhhHeaderAdr + RHHRomHeader.numSpecies)
-local metLocationCount = emu:read8(rhhHeaderAdr + RHHRomHeader.metLocationCount)
---local speciesNameOffset = emu:read32(rhhHeaderAdr + RHHRomHeader.speciesNameOffset)
+local speciesNameOffset = emu:read32(rhhHeaderAdr + RHHRomHeader.speciesNameOffset)
 
 function readPointer(addr)
     local ptr = emu:read32(addr)
