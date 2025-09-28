@@ -40,8 +40,10 @@ struct RHHRomHeader
     /*0x28*/ u32 partyPokemonSize;
     /*0x2C*/ u32 speciesSize;
     /*0X30*/ u32 movesSize;
-    /*0x34*/ u32 speciesNameOffset;
-    /*0x38*/ u8 moveNameLength;
+    /*0X34*/ u32 abilitySize;
+    /*0x38*/ u32 speciesNameOffset;
+    /*0x3C*/ u8 moveNameLength;
+    /*0x3D*/ u8 abilityNameLength;
 };
 
 __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHeader sRHHRomHeader =
@@ -65,8 +67,10 @@ __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHead
     .partyPokemonSize = sizeof(struct Pokemon),
     .speciesSize = sizeof(struct SpeciesInfo),
     .movesSize = sizeof(struct MoveInfo),
+    .abilitySize = sizeof(struct Ability),
     .speciesNameOffset = offsetof(struct SpeciesInfo, speciesName),
     .moveNameLength = MOVE_NAME_LENGTH,
+    .abilityNameLength = ABILITY_NAME_LENGTH,
 };
     ///*0x18*/ struct SaveBlock1 *saveBlock1;
     ///*0x1C*/ struct SaveBlock2 *saveBlock2;
