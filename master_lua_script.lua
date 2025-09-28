@@ -164,7 +164,7 @@ local movesCount = emu:read16(rhhHeaderAdr + RHHRomHeader.movesCount) -- MOVES_C
 local moveNameLength = emu:read8(rhhHeaderAdr + RHHRomHeader.moveNameLength) -- MOVE_NAME_LENGTH
 
 -- Abilities
-local abilityInfo = emu:read32(gfHeaderAdr + GFRomHeader.moves) -- gAbilitiesInfo
+local abilityInfo = emu:read32(rhhHeaderAdr + RHHRomHeader.abilitiesPtr) -- gAbilitiesInfo
 local abilitySize = emu:read32(rhhHeaderAdr + RHHRomHeader.abilitySize) -- sizeof(struct Ability)
 local abilitiesCount = emu:read16(rhhHeaderAdr + RHHRomHeader.abilitiesCount) -- ABILITIES_COUNT
 local abilityNameLength = emu:read8(rhhHeaderAdr + RHHRomHeader.abilityNameLength) -- MOVE_NAME_LENGTH
@@ -247,7 +247,6 @@ function getAbilityTable()
     i = 1
     while i < abilitiesCount do
         abilities[i] = string.format("%s",getAbilityName(i))
-        console:log(string.format("%s", abilities[i]))
         i = i + 1
     end
 end
@@ -4977,7 +4976,7 @@ function getPartyPrint(mon)
 		if(mv == "Hidden Power") then
 			str = str .. string.format("- Hidden Power %s\n", getHP(mon))
 			else
-			if(mv ~= "") then
+			if(mv ~= "") and (mv ~= nil) then
 				str = str .. string.format("- %s\n", mv)
 			end
 		end
@@ -5003,7 +5002,7 @@ function getPCPrint(mon)
 		if(mv == "Hidden Power") then
 			str = str .. string.format("- Hidden Power %s\n", getHP(mon))
 			else
-			if(mv ~= "") then
+			if(mv ~= "") and (mv ~= nil) then
 				str = str .. string.format("- %s\n", mv)
 			end
 		end
