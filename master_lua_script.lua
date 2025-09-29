@@ -250,8 +250,8 @@ function getMetLocationName(n)
 end
 
 function getItemName(n)
-    local itemStructAddr = itemsInfo + (itemSize * n) + itemNameOffset
-    local namePtr = readPointer(itemStructAddr)
+    local itemStructAddr = itemsInfo + (itemSize * n)
+    local namePtr = readPointer(itemStructAddr + itemNameOffset)
     if not namePtr then
         console:log(string.format("Invalid name pointer for item %d", n))
         return nil
