@@ -1,4 +1,5 @@
 #include "global.h"
+#include "item.h"
 #include "move.h"
 #include "region_map.h" // For MAPSEC_COUNT and struct RegionMapLocation
 #include "pokemon.h" // For struct Pokemon, struct BoxPokemon, struct SpeciesInfo  
@@ -44,10 +45,12 @@ struct RHHRomHeader
     /*0X34*/ u32 movesSize;
     /*0x38*/ u32 abilitySize;
     /*0x3C*/ u32 regionMapEntrySize;
-    /*0x40*/ u32 speciesNameOffset;
-    /*0x44*/ u32 mapNameOffset;
-    /*0x48*/ u16 mapSecCount;
-    /*0x4A*/ u8 abilityNameLength;
+    /*0x40*/ u32 itemSize;
+    /*0x44*/ u32 speciesNameOffset;
+    /*0x48*/ u32 mapNameOffset;
+    /*0x4C*/ u32 itemNameOffset;
+    /*0x50*/ u16 mapSecCount;
+    /*0x52*/ u8 abilityNameLength;
 };
 
 __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHeader sRHHRomHeader =
@@ -74,8 +77,10 @@ __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHead
     .movesSize = sizeof(struct MoveInfo),
     .abilitySize = sizeof(struct Ability),
     .regionMapEntrySize = sizeof(struct RegionMapLocation),
+    .itemSize = sizeof(struct Item),
     .speciesNameOffset = offsetof(struct SpeciesInfo, speciesName),
     .mapNameOffset = offsetof(struct RegionMapLocation, name),
+    .itemNameOffset = offsetof(struct Item, name),
     .mapSecCount = MAPSEC_COUNT,
     .abilityNameLength = ABILITY_NAME_LENGTH,
 };
