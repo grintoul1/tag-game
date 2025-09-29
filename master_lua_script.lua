@@ -124,20 +124,21 @@ local RHHRomHeader = {
     abilitiesPtr            = 0x10,
     itemsCount              = 0x14,
     itemNameLength          = 0x16,
-    metLocationCount        = 0x17,
+    moveNameLength          = 0x17,
     pokemonStorage          = 0x18,
-    playerParty             = 0x1C,
-    playerPartyCount        = 0x20, -- u8
-    boxPokemonSize          = 0x24, -- u32
-    partyPokemonSize        = 0x28, -- u32
-    speciesSize             = 0x2C, -- u32
-    movesSize               = 0x30, -- u32
-    abilitySize             = 0x34, -- u32
-    speciesNameOffset       = 0x38, -- u32
-    regionMapEntries        = 0x3C, -- u32
-    mapNameOffset           = 0x40, -- u32
-    moveNameLength          = 0x44, -- u8
-    abilityNameLength       = 0x45, -- u8
+    regionMapEntries        = 0x1C,
+    playerParty             = 0x20,
+    playerPartyCount        = 0x24, -- u8
+    boxPokemonSize          = 0x28, -- u32
+    partyPokemonSize        = 0x2C, -- u32
+    speciesSize             = 0x30, -- u32
+    movesSize               = 0x34, -- u32
+    abilitySize             = 0x38, -- u32
+    regionMapEntrySize      = 0x3C, -- u32
+    speciesNameOffset       = 0x40, -- u32
+    mapNameOffset           = 0x44, -- u32
+    metLocationCount        = 0x48, -- u16
+    abilityNameLength       = 0x4A, -- u8
 }
 
 -- From header
@@ -173,6 +174,8 @@ local abilityNameLength = emu:read8(rhhHeaderAdr + RHHRomHeader.abilityNameLengt
 
 -- Met Locations
 local regionMapEntries = emu:read32(rhhHeaderAdr + RHHRomHeader.regionMapEntries) -- gRegionMapEntries
+local regionMapEntrySize = emu:read32(rhhHeaderAdr + RHHRomHeader.regionMapEntrySize) -- sizeof(struct RegionMapLocation)
+local mapNameOffset = emu:read32(rhhHeaderAdr + RHHRomHeader.mapNameOffset) -- offsetof(struct RegionMapLocation, name)
 local metLocationCount = emu:read8(rhhHeaderAdr + RHHRomHeader.metLocationCount) -- MET_LOCATION_COUNT
 
 local numSpecies = emu:read16(rhhHeaderAdr + RHHRomHeader.numSpecies)
@@ -202,6 +205,7 @@ function getMoveName(n)
 
     local nameBytes = emu:readRange(namePtr, moveNameLength)
     local name = toString(nameBytes)
+    console:log(string.format("Move %d, Name %s", n, name))
     return name
 end
 
@@ -222,13 +226,28 @@ function getAbilityName(n)
     return name
 end
 
+function getMetLocationName(n)
+    local mapStructAddr = regionMapEntries + (regionMapEntrySize * n) + mapNameOffset
+    local namePtr = readPointer(mapStructAddr)
+    if not namePtr then
+        console:log(string.format("Invalid name pointer for map %d", n))
+        return nil
+    end
+
+    local nameBytes = emu:readRange(namePtr, abilityNameLength)
+    local name = toString(nameBytes)
+    return name
+end
+
 move = {}
 
 function getMoveTable()
     move[0] = ""
+    moveTableBuffer:print(move[0])
     i = 1
     while i < movesCount do
-        move[i+1] = string.format("%s",getMoveName(i))
+        move[i] = string.format("%s",getMoveName(i))
+        moveTableBuffer:print(move[i])
         i = i + 1
     end
 end
@@ -238,9 +257,11 @@ end
 ---- sort of works but doesn't do forms
 --function getMonsTable()
 --    mons2[0] = ""
+--    monsTableBuffer:print(mons2[0])
 --    i = 1
 --    while i < numSpecies do
 --        mons2[i] = string.format("%s",getMonsName(i))
+--        monsTableBuffer:print(mons2[i])
 --        i = i + 1
 --    end
 --end
@@ -249,17 +270,36 @@ abilities = {}
 
 function getAbilityTable()
     abilities[0] = ""
+    abilityTableBuffer:print(abilities[0])
     i = 1
     while i < abilitiesCount do
         abilities[i] = string.format("%s",getAbilityName(i))
+        abilityTableBuffer:print(abilities[i])
         i = i + 1
     end
+end
+
+metLocation = {}
+
+function getMetLocationsTable()
+    i = 0
+    while i < metLocationCount do
+        metLocation[i] = string.format("%s",getMetLocationName(i))
+        metLocationsBuffer:print(metLocation[i])
+        i = i + 1
+    end
+    metLocation[0xFD] = "Special Egg"
+    metLocationsBuffer:print(metLocation[0xFD])
+    metLocation[0xFE] = "Trade"
+    metLocationsBuffer:print(metLocation[0xFE])
+    metLocation[0xFF] = "Fateful Encounter"
+    metLocationsBuffer:print(metLocation[0xFF])
 end
 
 --Start configOverlayPokemon
 
 -- Companion: remove Route 100
-metLocation = {
+metLocations = {
     "Littleroot Town",
     "Oldale Town",
     "Dewford Town",
@@ -4977,7 +5017,7 @@ function getPartyPrint(mon)
 	str = str .. string.format("%s", getNature(mon)) .. " Nature" .. string.format("\n")
 	str = str .. string.format("IVs: %d HP / %d Atk / %d Def / %d SpA / %d SpD / %d Spe", mon.hpIV, mon.attackIV, mon.defenseIV, mon.spAttackIV, mon.spDefenseIV, mon.speedIV) .. string.format("\n")
 	for i=1,4 do
-		local mv = move[mon.moves[i] + 1]
+		local mv = move[mon.moves[i]]
 		if(mv == "Hidden Power") then
 			str = str .. string.format("- Hidden Power %s\n", getHP(mon))
 			else
@@ -5003,7 +5043,7 @@ function getPCPrint(mon)
 	str = str .. string.format("%s", getNature(mon)) .. " Nature" .. string.format("\n")
 	str = str .. string.format("IVs: %d HP / %d Atk / %d Def / %d SpA / %d SpD / %d Spe", mon.hpIV, mon.attackIV, mon.defenseIV, mon.spAttackIV, mon.spDefenseIV, mon.speedIV) .. string.format("\n")
 	for i=1,4 do
-		local mv = move[mon.moves[i] + 1]
+		local mv = move[mon.moves[i]]
 		if(mv == "Hidden Power") then
 			str = str .. string.format("- Hidden Power %s\n", getHP(mon))
 			else
@@ -5136,9 +5176,26 @@ function startScript()
     --End configPreStatus
 
     -- Generate tables
-    getMoveTable()
-    --getMonsTable()
-    getAbilityTable()
+    if not moveTableBuffer then
+        moveTableBuffer = console:createBuffer("Move Table")
+        moveTableBuffer:setSize(200, 200)
+        getMoveTable()
+    end
+    --if not monsTableBuffer then
+    --    monsTableBuffer = console:createBuffer("Mons Table")
+    --    monsTableBuffer:setSize(200, 200)
+    --    getMonsTable()
+    --end
+    if not abilityTableBuffer then
+        abilityTableBuffer = console:createBuffer("Ability Table")
+        abilityTableBuffer:setSize(200, 200)
+        getAbilityTable()
+    end
+    if not metLocationsBuffer then
+        metLocationsBuffer = console:createBuffer("Met Locations")
+        metLocationsBuffer:setSize(200, 200)
+        getMetLocationsTable()
+    end
 
 	if not partyBuffer then
 		partyBuffer = console:createBuffer("Showdown Export")
@@ -5613,7 +5670,7 @@ function getBoxCompanion()
                     str = str .. "Male\",\n"
                 end
 
-                str = str .. string.format("            \"moves\": \"[%s, %s, %s, %s]\",\n", move[pokemon.moves[1] + 1], move[pokemon.moves[2] + 1], move[pokemon.moves[3] + 1], move[pokemon.moves[4] + 1])
+                str = str .. string.format("            \"moves\": \"[%s, %s, %s, %s]\",\n", move[pokemon.moves[1]], move[pokemon.moves[2]], move[pokemon.moves[3]], move[pokemon.moves[4]])
                 
                 if i < 29 then
                     str = str .. "          },\n"

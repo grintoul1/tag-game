@@ -33,20 +33,21 @@ struct RHHRomHeader
     /*0x10*/ const struct Ability *abilities;
     /*0x14*/ u16 itemsCount;
     /*0x16*/ u8 itemNameLength;
-    /*0x17*/ u8 mapSecCount;
+    /*0x17*/ u8 moveNameLength;
     /*0x18*/ struct PokemonStorage *pokemonStorage;
-    /*0x1C*/ struct Pokemon *playerParty;
-    /*0x20*/ u8 *playerPartyCount;
-    /*0x24*/ u32 boxPokemonSize;
-    /*0x28*/ u32 partyPokemonSize;
-    /*0x2C*/ u32 speciesSize;
-    /*0X30*/ u32 movesSize;
-    /*0X34*/ u32 abilitySize;
-    /*0x38*/ u32 speciesNameOffset;
-    /*0x3C*/ struct RegionMapLocation *regionMapEntries;
-    /*0x40*/ u32 mapNameOffset;
-    /*0x44*/ u8 moveNameLength;
-    /*0x45*/ u8 abilityNameLength;
+    /*0x1C*/ const struct RegionMapLocation *regionMapEntries;
+    /*0x20*/ struct Pokemon *playerParty;
+    /*0x24*/ u8 *playerPartyCount;
+    /*0x28*/ u32 boxPokemonSize;
+    /*0x2C*/ u32 partyPokemonSize;
+    /*0X30*/ u32 speciesSize;
+    /*0X34*/ u32 movesSize;
+    /*0x38*/ u32 abilitySize;
+    /*0x3C*/ u32 regionMapEntrySize;
+    /*0x40*/ u32 speciesNameOffset;
+    /*0x44*/ u32 mapNameOffset;
+    /*0x48*/ u16 mapSecCount;
+    /*0x4A*/ u8 abilityNameLength;
 };
 
 __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHeader sRHHRomHeader =
@@ -62,8 +63,9 @@ __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHead
     .abilities = gAbilitiesInfo,
     .itemsCount = ITEMS_COUNT,
     .itemNameLength = ITEM_NAME_LENGTH,
-    .mapSecCount = MAPSEC_COUNT,
+    .moveNameLength = MOVE_NAME_LENGTH,
     .pokemonStorage = &gPokemonStorage,
+    .regionMapEntries = gRegionMapEntries,
     .playerParty = &gPlayerParty[0],
     .playerPartyCount = &gPlayerPartyCount,
     .boxPokemonSize = sizeof(struct BoxPokemon),
@@ -71,10 +73,10 @@ __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHead
     .speciesSize = sizeof(struct SpeciesInfo),
     .movesSize = sizeof(struct MoveInfo),
     .abilitySize = sizeof(struct Ability),
+    .regionMapEntrySize = sizeof(struct RegionMapLocation),
     .speciesNameOffset = offsetof(struct SpeciesInfo, speciesName),
-    .regionMapEntries = &gRegionMapEntries,
     .mapNameOffset = offsetof(struct RegionMapLocation, name),
-    .moveNameLength = MOVE_NAME_LENGTH,
+    .mapSecCount = MAPSEC_COUNT,
     .abilityNameLength = ABILITY_NAME_LENGTH,
 };
     ///*0x18*/ struct SaveBlock1 *saveBlock1;
