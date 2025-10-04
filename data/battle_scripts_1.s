@@ -418,7 +418,9 @@ BattleScript_MoveEffectSaltCure::
 BattleScript_SaltCureExtraDamage::
 	playanimation BS_ATTACKER, B_ANIM_SALT_CURE_DAMAGE, NULL
 	waitanimation
-	call BattleScript_HurtTarget_NoString
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_HP_UPDATE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
 	printstring STRINGID_TARGETISHURTBYSALTCURE
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_ATTACKER
@@ -1139,7 +1141,7 @@ BattleScript_PurifyWorks:
 	updatestatusicon BS_TARGET
 	printstring STRINGID_ATTACKERCUREDTARGETSTATUS
 	waitmessage B_WAIT_TIME_LONG
-	tryhealhalfhealth BattleScript_AlreadyAtFullHp, BS_ATTACKER
+	tryhealhalfhealth BS_ATTACKER, BattleScript_AlreadyAtFullHp
 	goto BattleScript_RestoreHp
 
 BattleScript_EffectStrengthSap::
@@ -1435,14 +1437,17 @@ BattleScript_EffectFlowerShield::
 	attackcanceler
 	savetarget
 	selectfirstvalidtarget
-BattleScript_FlowerShieldIsAnyGrass:
+BattleScript_FlowerShieldIsAnyValidTarget:
+	jumpifvolatile BS_TARGET, VOLATILE_SEMI_INVULNERABLE, BattleScript_FlowerShieldCheckNextTarget
 	jumpiftype BS_TARGET, TYPE_GRASS, BattleScript_FlowerShieldLoopStart
-	jumpifnexttargetvalid BattleScript_FlowerShieldIsAnyGrass
+BattleScript_FlowerShieldCheckNextTarget:
+	jumpifnexttargetvalid BattleScript_FlowerShieldIsAnyValidTarget
 	goto BattleScript_RestoreTargetButItFailed
 BattleScript_FlowerShieldLoopStart:
 	selectfirstvalidtarget
 BattleScript_FlowerShieldLoop:
 	movevaluescleanup
+	jumpifvolatile BS_TARGET, VOLATILE_SEMI_INVULNERABLE, BattleScript_FlowerShieldMoveTargetEnd
 	jumpiftype BS_TARGET, TYPE_GRASS, BattleScript_FlowerShieldLoop2
 	goto BattleScript_FlowerShieldMoveTargetEnd
 BattleScript_FlowerShieldLoop2:
@@ -1463,6 +1468,7 @@ BattleScript_FlowerShieldMoveTargetEnd:
 	moveendto MOVEEND_NEXT_TARGET
 	jumpifnexttargetvalid BattleScript_FlowerShieldLoop
 	restoretarget
+	moveendfrom MOVEEND_ITEM_EFFECTS_ATTACKER
 	end
 
 BattleScript_EffectRototiller::
@@ -1532,7 +1538,6 @@ BattleScript_EffectAfterYou::
 	goto BattleScript_MoveEnd
 
 BattleScript_MoveEffectFlameBurst::
-	tryfaintmon BS_TARGET
 	printstring STRINGID_BURSTINGFLAMESHIT
 	waitmessage B_WAIT_TIME_LONG
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_HP_UPDATE
@@ -2467,7 +2472,7 @@ BattleScript_GravityLoopEnd:
 
 BattleScript_EffectRoost::
 	attackcanceler
-	tryhealhalfhealth BattleScript_AlreadyAtFullHp, BS_TARGET
+	tryhealhalfhealth BS_TARGET, BattleScript_AlreadyAtFullHp
 	setroost
 	goto BattleScript_PresentHealTarget
 
@@ -2895,7 +2900,7 @@ BattleScript_EffectConversion::
 
 BattleScript_EffectRestoreHp::
 	attackcanceler
-	tryhealhalfhealth BattleScript_AlreadyAtFullHp, BS_ATTACKER
+	tryhealhalfhealth BS_ATTACKER, BattleScript_AlreadyAtFullHp
 	attackanimation
 	waitanimation
 BattleScript_RestoreHp:
@@ -2961,7 +2966,6 @@ BattleScript_LeafGuardPreventsRest::
 
 BattleScript_EffectOHKO::
 	attackcanceler
-	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
 	typecalc
 	jumpifmovehadnoeffect BattleScript_HitFromAtkAnimation
 	tryKO BattleScript_KOFail
@@ -3918,7 +3922,7 @@ BattleScript_DefenseCurlDoStatUpAnim::
 
 BattleScript_EffectSoftboiled::
 	attackcanceler
-	tryhealhalfhealth BattleScript_AlreadyAtFullHp, BS_TARGET
+	tryhealhalfhealth BS_TARGET, BattleScript_AlreadyAtFullHp
 BattleScript_PresentHealTarget::
 	attackanimation
 	waitanimation
@@ -5030,7 +5034,7 @@ BattleScript_MagicRoomEnds::
 	setbyte gBattlerTarget, 0
 BattleScript_MagicRoomHealingItemsLoop:
 	copyarraywithindex gBattlerAttacker, gBattlerByTurnOrder, gBattlerTarget, 1
-	tryrestorehpberry
+	tryrestorehpberry BS_ATTACKER
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_MagicRoomHealingItemsLoop
 	end2
@@ -5468,27 +5472,36 @@ BattleScript_SeedSowerActivates::
 	call BattleScript_ActivateTerrainEffects
 	return
 
-BattleScript_AngerShellActivates::
+BattleScript_BerserkActivates::
 	saveattacker
-	copybyte gBattlerAttacker, gBattlerTarget
+	copybyte gBattlerAttacker, gEffectBattler
 	call BattleScript_AbilityPopUp
-	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_AngerShellTryDef
-	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_AngerShellTryDef
-	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_SPEED, MAX_STAT_STAGE, BattleScript_AngerShellTryDef
-	jumpifstat BS_TARGET, CMP_GREATER_THAN, STAT_DEF, MIN_STAT_STAGE, BattleScript_AngerShellTryDef
-	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPDEF, MIN_STAT_STAGE, BattleScript_RestoreAttackerButItFailed
-BattleScript_AngerShellTryDef::
-	modifybattlerstatstage BS_ATTACKER, STAT_DEF, DECREASE, 1, BattleScript_AngerShellTrySpDef, ANIM_ON
-BattleScript_AngerShellTrySpDef:
-	modifybattlerstatstage BS_ATTACKER, STAT_SPDEF, DECREASE, 1, BattleScript_AngerShellTryAttack, ANIM_ON
-BattleScript_AngerShellTryAttack:
-	modifybattlerstatstage BS_ATTACKER, STAT_ATK, INCREASE, 1, BattleScript_AngerShellTrySpAtk, ANIM_ON
-BattleScript_AngerShellTrySpAtk:
-	modifybattlerstatstage BS_ATTACKER, STAT_SPATK, INCREASE, 1, BattleScript_AngerShellTrySpeed, ANIM_ON
-BattleScript_AngerShellTrySpeed:
-	modifybattlerstatstage BS_ATTACKER, STAT_SPEED, INCREASE, 1, BattleScript_AngerShellRet, ANIM_ON
-BattleScript_AngerShellRet:
+	statbuffchange BS_EFFECT_BATTLER, STAT_CHANGE_CERTAIN, BattleScript_BerserkActivatesTryBerry
+	call BattleScript_StatUp
+BattleScript_BerserkActivatesTryBerry:
 	restoreattacker
+	tryrestorehpberry BS_EFFECT_BATTLER
+	return
+
+BattleScript_AngerShellActivates::
+	call BattleScript_AbilityPopUp
+	jumpifstat BS_EFFECT_BATTLER, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_AngerShellTryDef
+	jumpifstat BS_EFFECT_BATTLER, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_AngerShellTryDef
+	jumpifstat BS_EFFECT_BATTLER, CMP_LESS_THAN, STAT_SPEED, MAX_STAT_STAGE, BattleScript_AngerShellTryDef
+	jumpifstat BS_EFFECT_BATTLER, CMP_GREATER_THAN, STAT_DEF, MIN_STAT_STAGE, BattleScript_AngerShellTryDef
+	jumpifstat BS_EFFECT_BATTLER, CMP_EQUAL, STAT_SPDEF, MIN_STAT_STAGE, BattleScript_RestoreAttackerButItFailed
+BattleScript_AngerShellTryDef::
+	modifybattlerstatstage BS_EFFECT_BATTLER, STAT_DEF, DECREASE, 1, BattleScript_AngerShellTrySpDef, ANIM_ON
+BattleScript_AngerShellTrySpDef:
+	modifybattlerstatstage BS_EFFECT_BATTLER, STAT_SPDEF, DECREASE, 1, BattleScript_AngerShellTryAttack, ANIM_ON
+BattleScript_AngerShellTryAttack:
+	modifybattlerstatstage BS_EFFECT_BATTLER, STAT_ATK, INCREASE, 1, BattleScript_AngerShellTrySpAtk, ANIM_ON
+BattleScript_AngerShellTrySpAtk:
+	modifybattlerstatstage BS_EFFECT_BATTLER, STAT_SPATK, INCREASE, 1, BattleScript_AngerShellTrySpeed, ANIM_ON
+BattleScript_AngerShellTrySpeed:
+	modifybattlerstatstage BS_EFFECT_BATTLER, STAT_SPEED, INCREASE, 1, BattleScript_AngerShellRet, ANIM_ON
+BattleScript_AngerShellRet:
+	tryrestorehpberry BS_EFFECT_BATTLER
 	return
 
 BattleScript_WindPowerActivates::
@@ -5621,8 +5634,10 @@ BattleScript_DoFutureAttackResult:
 	tryfaintmon BS_TARGET
 	checkteamslost BattleScript_FutureAttackEnd
 BattleScript_FutureAttackEnd::
+	moveendcase MOVEEND_SET_VALUES
 	moveendcase MOVEEND_RAGE
 	moveendcase MOVEEND_ABILITIES
+	moveendcase MOVEEND_COLOR_CHANGE
 	moveendfromto MOVEEND_ITEM_EFFECTS_ALL, MOVEEND_UPDATE_LAST_MOVES
 	setmoveresultflags 0
 	end2
@@ -6206,7 +6221,7 @@ BattleScript_DoTurnDmg:
 	datahpupdate BS_ATTACKER
 	tryfaintmon BS_ATTACKER
 	checkteamslost BattleScript_DoTurnDmgEnd
-	tryrestorehpberry
+	tryrestorehpberry BS_ATTACKER
 BattleScript_DoTurnDmgEnd:
 	end2
 
@@ -6448,7 +6463,7 @@ BattleScript_YawnEnd:
 BattleScript_EmbargoEndTurn::
 	printstring STRINGID_EMBARGOENDS
 	waitmessage B_WAIT_TIME_LONG
-	tryrestorehpberry
+	tryrestorehpberry BS_ATTACKER
 	end2
 
 BattleScript_TelekinesisEndTurn::
@@ -6738,7 +6753,7 @@ BattleScript_PickupActivates::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_XFOUNDONEY
 	waitmessage B_WAIT_TIME_LONG
-	tryrestorehpberry
+	tryrestorehpberry BS_ATTACKER
 BattleScript_PickupActivatesEnd:
 	end2
 
@@ -6748,7 +6763,7 @@ BattleScript_HarvestActivates::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_HARVESTBERRY
 	waitmessage B_WAIT_TIME_LONG
-	tryrestorehpberry
+	tryrestorehpberry BS_ATTACKER
 BattleScript_HarvestActivatesEnd:
 	end2
 
@@ -6810,7 +6825,6 @@ BattleScript_ActivateWeatherAbilities_Loop:
 	return
 
 BattleScript_TryIntimidateHoldEffects:
-	itemstatchangeeffects BS_TARGET
 	jumpifnoholdeffect BS_TARGET, HOLD_EFFECT_ADRENALINE_ORB, BattleScript_TryIntimidateHoldEffectsRet
 	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPEED, MAX_STAT_STAGE, BattleScript_TryIntimidateHoldEffectsRet
 	setstatchanger STAT_SPEED, 1, FALSE
@@ -7916,15 +7930,15 @@ BattleScript_ItemHealHP_RemoveItemEnd2_Anim:
 	end2
 
 BattleScript_BerryPPHealRet::
-	jumpifability BS_ATTACKER, ABILITY_RIPEN, BattleScript_BerryPPHeal_AbilityPopup
+	jumpifability BS_SCRIPTING, ABILITY_RIPEN, BattleScript_BerryPPHeal_AbilityPopup
 	goto BattleScript_BerryPPHeal_Anim
 BattleScript_BerryPPHeal_AbilityPopup:
-	call BattleScript_AbilityPopUp
+	call BattleScript_AbilityPopUpScripting
 BattleScript_BerryPPHeal_Anim:
-	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT
 	printstring STRINGID_PKMNSITEMRESTOREDPP
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_ATTACKER
+	removeitem BS_SCRIPTING
 	return
 
 BattleScript_BerryPPHealEnd2::
@@ -8247,6 +8261,10 @@ BattleScript_OpportunistStartCopyStats:
 	goto BattleScript_OpportunistStartCopyStats
 BattleScript_OpportunistCopyStatChangeEnd:
 	setbyte sSTAT_ANIM_PLAYED, FALSE
+	return
+
+BattleScript_OpportunistCopyStatChangeEnd3::
+	call BattleScript_OpportunistCopyStatChange
 	end3
 
 BattleScript_TotemVar::
@@ -8666,14 +8684,13 @@ BattleScript_SymbiosisActivates::
 	return
 
 BattleScript_TargetAbilityStatRaiseRet::
-	copybyte sSAVED_BATTLER, gBattlerAttacker
-	copybyte gBattlerAbility, gEffectBattler
-	copybyte gBattlerAttacker, gBattlerTarget
+	saveattacker
+	copybyte gBattlerAttacker, gEffectBattler
 	call BattleScript_AbilityPopUp
 	statbuffchange BS_ATTACKER, STAT_CHANGE_CERTAIN, BattleScript_TargetAbilityStatRaiseRet_End
 	call BattleScript_StatUp
 BattleScript_TargetAbilityStatRaiseRet_End:
-	copybyte gBattlerAttacker, sSAVED_BATTLER
+	restoreattacker
 	return
 
 @@@ MAX MOVES @@@

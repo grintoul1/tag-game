@@ -3164,3 +3164,8 @@ void UpdateFriendshipFromXItem(u32 battler)
         SetBattlerMonData(battler, GetBattlerParty(battler), gBattlerPartyIndexes[battler]);
     }
 }
+
+bool32 ShouldBattleRestrictionsApply(u32 battler)
+{
+    return IsControllerPlayer(battler);
+}

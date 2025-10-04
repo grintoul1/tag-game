@@ -575,6 +575,7 @@ gSpecials::
 	def_special TeleportCamera
 	def_special ReturnCameraToPlayer
 	def_special SetHiddenNature
+	def_special SetAbility
 	def_special HealNoneFaintedPartyMons
 	def_special MaxMoney
 	def_special PokeMenu_PokeRider_Helper
