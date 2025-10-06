@@ -5938,9 +5938,11 @@ bool32 AI_ShouldSpicyExtract(u32 battlerAtk, u32 battlerAtkPartner, u32 move, st
         break;
     }
     u32 predictedMoveSpeedCheck = GetIncomingMoveSpeedCheck(battlerAtk, opposingBattler, gAiLogicData);
+
     return (preventsStatLoss
          && AI_IsFaster(battlerAtk, battlerAtkPartner, MOVE_NONE, predictedMoveSpeedCheck, CONSIDER_PRIORITY)
-         && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_PHYSICAL));
+         && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_PHYSICAL) 
+         && !(gBattleMons[battlerAtkPartner].statStages[STAT_ATK] <= (DEFAULT_STAT_STAGE + 1)));
 }
 
 u32 IncreaseSubstituteMoveScore(u32 battlerAtk, u32 battlerDef, u32 move)
@@ -6293,10 +6295,18 @@ void AbilityChangeScore(u32 battlerAtk, u32 battlerDef, u32 effect, s32 *score, 
     if (effect == EFFECT_DOODLE || effect == EFFECT_ROLE_PLAY || effect == EFFECT_SKILL_SWAP)
     {
         if (partnerHasBadAbility && effect == EFFECT_DOODLE)
+        {
             ADJUST_SCORE_PTR(DECENT_EFFECT);
+            if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER)
+                ADJUST_SCORE_PTR(3); // +10 for Partners
+        }
 
         if (attackerHasBadAbility)
+        {
             ADJUST_SCORE_PTR(DECENT_EFFECT);
+            if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER)
+                ADJUST_SCORE_PTR(3); // +10 for Partners
+        }
 
         currentAbilityScore = BattlerBenefitsFromAbilityScore(battlerAtk, abilityAtk, aiData);
         transferredAbilityScore = BattlerBenefitsFromAbilityScore(battlerAtk, abilityDef, aiData);
