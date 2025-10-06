@@ -3078,6 +3078,9 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 // double battle logic
 static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
+    if (gAiThinkingStruct->aiFlags[battlerAtk] & (AI_FLAG_TAG_OPPONENT | AI_FLAG_PARTNER))
+        return score; // Covered in their own functions
+
     // move data
     u32 moveType = GetMoveType(move);
     enum BattleMoveEffects effect = GetMoveEffect(move);
