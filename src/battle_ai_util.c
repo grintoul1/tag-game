@@ -1599,7 +1599,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
 
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        if (moves[moveIndex] == battlerMoves[moveIndex])
+        if (moves[moveIndex] == battlerMoves[moveIndex] && battlerMoves[moveIndex] != MOVE_NONE)
         {
             *target = battlerDefPartner;
             return;
@@ -1618,7 +1618,6 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
         if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDef)
         || ((AI_WhoStrikesFirst(battlerAtk, battlerDef, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
         && IsSemiInvulnerable(battlerDef, battlerMoves[moveIndex])))
-
             continue;
         if ((moveTarget == MOVE_TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
             continue;
@@ -1632,7 +1631,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
 
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        if (moves[moveIndex] == battlerMoves[moveIndex])
+        if (moves[moveIndex] == battlerMoves[moveIndex] && battlerMoves[moveIndex] != MOVE_NONE)
         {
             *target = battlerDef;
             return;
@@ -1662,7 +1661,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
 
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        if (moves[moveIndex] == battlerMoves[moveIndex])
+        if (moves[moveIndex] == battlerMoves[moveIndex] && battlerMoves[moveIndex] != MOVE_NONE)
         {
             *target = battlerDefPartner;
             return;
@@ -1692,7 +1691,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
 
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        if (moves[moveIndex] == battlerMoves[moveIndex])
+        if (moves[moveIndex] == battlerMoves[moveIndex] && battlerMoves[moveIndex] != MOVE_NONE)
         {
             *target = battlerDef;
             return;
@@ -2196,7 +2195,8 @@ bool32 IsMoveRedirectionPrevented(u32 battlerAtk, u32 move, enum Ability atkAbil
     if (effect == EFFECT_SKY_DROP
       || effect == EFFECT_SNIPE_SHOT
       || atkAbility == ABILITY_PROPELLER_TAIL
-      || atkAbility == ABILITY_STALWART)
+      || atkAbility == ABILITY_STALWART
+      || IsMoldBreakerTypeAbility(atkAbility, gAiLogicData->abilities[battlerAtk]))
         return TRUE;
     return FALSE;
 }

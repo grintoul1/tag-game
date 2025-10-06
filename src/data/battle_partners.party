@@ -209,35 +209,32 @@ Gender: Male
 Music: Male
 AI: Partner Trainer
 
-Metang
-Brave Nature
-Level: 42
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Light Screen
-- Psychic
-- Reflect
-- Metal Claw
+Tornadus @ Life Orb
+Ability: Defiant
+Level: 65
+Lonely Nature
+- Fly
+- Heat Wave
+- Lash Out
+- U-Turn
 
-Skarmory
-Impish Nature
-Level: 43
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 6 SpA / 252 SpD
-- Toxic
-- Aerial Ace
-- Protect
-- Steel Wing
+Aerodactyl @ Focus Sash
+Ability: Rock Head
+Level: 65
+Jolly Nature
+- Brave Bird
+- Rock Slide
+- Pursuit
+- Tailwind
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+Blastoise-Mega @ Blastoisinite
+Ability: Mega Launcher
+Level: 65
+Timid Nature
+- Muddy Water
+- Ice Beam
+- Dark Pulse
+- Aura Sphere
 
 === PARTNER_MAXIE_MT_PYRE ===
 Name: Maxie
@@ -248,35 +245,32 @@ Gender: Male
 Music: Male
 AI: Partner Trainer
 
-Metang
-Brave Nature
-Level: 42
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Light Screen
-- Psychic
-- Reflect
-- Metal Claw
+Landorus @ Life Orb
+Ability: Sheer Force
+Level: 65
+Hasty Nature
+- Earth Power
+- Extrasensory
+- Rock Slide
+- U-Turn
 
-Skarmory
-Impish Nature
-Level: 43
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 6 SpA / 252 SpD
-- Toxic
-- Aerial Ace
-- Protect
-- Steel Wing
+Aerodactyl @ Focus Sash
+Ability: Rock Head
+Level: 65
+Jolly Nature
+- Brave Bird
+- Rock Slide
+- Pursuit
+- Tailwind
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
+Charizard-Mega-X @ Charizardite-X
+Ability: Tough Claws
+Level: 65
+Jolly Nature
+- Flare Blitz
+- High Horsepower
 - Dragon Claw
+- Facade
 
 === PARTNER_ARCHIE_SKY_PILLAR ===
 Name: Archie
@@ -287,35 +281,31 @@ Gender: Male
 Music: Male
 AI: Partner Trainer
 
-Metang
-Brave Nature
-Level: 42
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Light Screen
-- Psychic
-- Reflect
-- Metal Claw
+Raging Bolt @ Booster Energy
+Ability: Protosynthesis
+Level: 87
+Quiet Nature
+- Thunderclap
+- Dragon Pulse
+- Weather Ball
 
-Skarmory
-Impish Nature
-Level: 43
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 6 SpA / 252 SpD
-- Toxic
-- Aerial Ace
+Aerodactyl-Mega @ Aerodactylite
+Ability: Tough Claws
+Level: 87
+Hasty Nature
+- Rock Slide
+- Dual Wingbeat
 - Protect
-- Steel Wing
+- Tailwind
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+Basculegion @ Focus Sash
+Ability: Swift Swim
+Level: 86
+Naughty Nature
+- Last Respects
+- Flip Turn
+- Shadow Sneak
+- Agility
 
 === PARTNER_MAXIE_SKY_PILLAR ===
 Name: Maxie
@@ -326,32 +316,29 @@ Gender: Male
 Music: Male
 AI: Partner Trainer
 
-Metang
-Brave Nature
-Level: 42
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Light Screen
-- Psychic
-- Reflect
-- Metal Claw
+Lilligant @ Eject Pack
+Ability: Chlorophyll
+Level: 86
+IVs: 31 HP / 31 Atk / 31 Def / 30 SpA / 30 SpD / 31 Spe
+Rash Nature
+- Leaf Storm
+- Weather Ball
+- Hidden Power
+- Entrainment
 
-Skarmory
-Impish Nature
-Level: 43
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 6 SpA / 252 SpD
-- Toxic
-- Aerial Ace
+Aerodactyl-Mega @ Aerodactylite
+Ability: Tough Claws
+Level: 87
+Hasty Nature
+- Rock Slide
+- Dual Wingbeat
 - Protect
-- Steel Wing
+- Tailwind
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+Walking Wake @ Booster Energy
+Ability: Protosynthesis
+Level: 87
+Modest Nature
+- Hurricane
+- Weather Ball
+- Earth Power
