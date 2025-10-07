@@ -2849,7 +2849,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
         case EFFECT_AFTER_YOU:
-            DebugPrintf("battlerAtk %d, battlerDef %d, AI_IsSlower(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY) %d", battlerAtk, battlerDef, AI_IsSlower(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY));
             if (!IsTargetingPartner(battlerAtk, battlerDef)
               || !hasPartner
               || AI_IsSlower(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY)
@@ -3056,7 +3055,6 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, AI_ATTACKING)
         && effect != EFFECT_EXPLOSION && effect != EFFECT_MISTY_EXPLOSION)
     {
-        DebugPrintf("battler %d, target %d, move %S, faster %d", battlerAtk, battlerDef, GetMoveName(move), AI_IsFaster(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY));
         if (AI_IsFaster(battlerAtk, battlerDef, move, MOVE_TACKLE, CONSIDER_PRIORITY))
             ADJUST_SCORE(FAST_KILL);
         else
@@ -6460,18 +6458,9 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     {
         if (GetMovePower(move) != 0)
         {
-            DebugPrintf("moves[0] %S", GetMoveName(moves[0]));
-            DebugPrintf("moves[1] %S", GetMoveName(moves[1]));
-            DebugPrintf("moves[2] %S", GetMoveName(moves[2]));
-            DebugPrintf("moves[3] %S", GetMoveName(moves[3]));
-            DebugPrintf("bestMoves[0] %S", GetMoveName(bestMoves[0]));
-            DebugPrintf("bestMoves[1] %S", GetMoveName(bestMoves[1]));
-            DebugPrintf("bestMoves[2] %S", GetMoveName(bestMoves[2]));
-            DebugPrintf("bestMoves[3] %S", GetMoveName(bestMoves[3]));
             GetBestDmgMoveFromPartner(battlerAtk, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), AI_ATTACKING, bestMoves, &bestTarget);
             if (((bestMoves[0] == move) || (bestMoves[1] == move) || (bestMoves[2] == move) || (bestMoves[3] == move)) && (bestTarget == battlerDef))
             {
-                DebugPrintf("move %S", GetMoveName(move));
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
                 if (AI_RandLessThan(51))
                     ADJUST_SCORE(2);
@@ -8861,11 +8850,10 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_AFTER_YOU:
-                DebugPrintf("battlerAtk %d, battlerDef %d, AI_IsSlower(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY) %d", battlerAtk, battlerDef, AI_IsSlower(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY));
                 if (!IsTargetingPartner(battlerAtk, battlerDef)
                 || !hasPartner
                 || AI_IsSlower(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY)
-                || PartnerMoveIsSameAsAttacker(battlerAtkPartner, battlerDef, move, aiData->partnerMove))
+                || (move == aiData->partnerMove))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_SUCKER_PUNCH:
@@ -9068,6 +9056,10 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 ADJUST_SCORE(FAST_KILL);
             else
                 ADJUST_SCORE(SLOW_KILL);
+
+            if (moveTargetsBothOpponents)
+                ADJUST_SCORE(3);
+
         }
         if (CanTargetFaintAi(battlerDef, battlerAtk)
             && GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER
@@ -9089,18 +9081,9 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         }
         else if ((GetMovePower(move) != 0) && !IsTargetingPartner(battlerAtk, battlerDef))
         {
-            DebugPrintf("moves[0] %S", GetMoveName(moves[0]));
-            DebugPrintf("moves[1] %S", GetMoveName(moves[1]));
-            DebugPrintf("moves[2] %S", GetMoveName(moves[2]));
-            DebugPrintf("moves[3] %S", GetMoveName(moves[3]));
             GetBestDmgMoveFromPartner(battlerAtk, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), AI_ATTACKING, bestMoves, &bestTarget);
-            DebugPrintf("bestMoves[0] %S", GetMoveName(bestMoves[0]));
-            DebugPrintf("bestMoves[1] %S", GetMoveName(bestMoves[1]));
-            DebugPrintf("bestMoves[2] %S", GetMoveName(bestMoves[2]));
-            DebugPrintf("bestMoves[3] %S", GetMoveName(bestMoves[3]));
             if (((bestMoves[0] == move) || (bestMoves[1] == move) || (bestMoves[2] == move) || (bestMoves[3] == move)) && (bestTarget == battlerDef))
             {
-                DebugPrintf("move %S", GetMoveName(move));
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
                 ADJUST_SCORE(2); // Always gets the additional +2
             }
@@ -9781,18 +9764,22 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 case EFFECT_AFTER_YOU:
                     if (!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && HasMoveWithEffect(battlerAtkPartner, EFFECT_TRICK_ROOM))
                         RETURN_SCORE_PLUS(PERFECT_EFFECT);
-                    // If partner is clicking spread move
-                    if (((GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_BOTH) 
+                    // If partner is clicking spread move, or single target but user has no kills
+                    if ((((GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_BOTH) 
                     || (GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_FOES_AND_ALLY)
-                    || GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_ALL_BATTLERS) && (GetMovePower(gAiLogicData->partnerMove) != 0))
+                    || GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_ALL_BATTLERS) 
+                    || ((GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_SELECTED) 
+                    && !CanAIFaintTarget(battlerAtk, BATTLE_OPPOSITE(battlerAtk)) 
+                    && !CanAIFaintTarget(battlerAtk, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk))))) 
+                    && (GetMovePower(gAiLogicData->partnerMove) != 0))
                     {
                         // If partner has slow KO on opposite battler but After You makes it fast KO
-                        if (CanTargetMoveFaintAi(gAiLogicData->partnerMove, BATTLE_OPPOSITE(battlerAtkPartner), battlerAtkPartner, 1) 
+                        if (CanTargetMoveFaintAi(gAiLogicData->partnerMove, battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), 1) 
                         && (AI_WhoStrikesFirst(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), gAiLogicData->partnerMove, MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_SLOWER)
                         && (AI_WhoStrikesFirst(battlerAtk, BATTLE_OPPOSITE(battlerAtkPartner), move, MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER))
                             ADJUST_SCORE(15); // Over slow kill but not fast kill, unless both checks pass
                         // If partner has slow KO on opposite battler partner but After You makes it fast KO
-                        if (CanTargetMoveFaintAi(gAiLogicData->partnerMove, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), battlerAtkPartner, 1) 
+                        if (CanTargetMoveFaintAi(gAiLogicData->partnerMove, battlerAtkPartner, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), 1) 
                         && (AI_WhoStrikesFirst(battlerAtkPartner, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), gAiLogicData->partnerMove, MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_SLOWER)
                         && (AI_WhoStrikesFirst(battlerAtk, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), move, MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER))
                             ADJUST_SCORE(15); // Over slow kill but not fast kill, unless both checks pass
@@ -9808,13 +9795,12 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                     */
                     break;
                 case EFFECT_HEAL_PULSE:
-                case EFFECT_HIT_ENEMY_HEAL_ALLY: // grintoul TODO
-                    if (!IsTargetingPartner(battlerAtk, battlerDef))
+                case EFFECT_HIT_ENEMY_HEAL_ALLY: // Pollen Puff PARTNER DIFFERENCE
+                    if (IsTargetingPartner(battlerAtk, battlerDef))
                     {
-                        if (AI_IsFaster(battlerAtk, LEFT_FOE(battlerAtk), move, predictedMoveSpeedCheck, CONSIDER_PRIORITY)
-                        && AI_IsFaster(battlerAtk, RIGHT_FOE(battlerAtk), move, predictedMoveSpeedCheck, CONSIDER_PRIORITY)
-                        && gBattleMons[battlerAtkPartner].hp < gBattleMons[battlerAtkPartner].maxHP / 2)
-                            RETURN_SCORE_PLUS(WEAK_EFFECT);
+                        if (ShouldRecover(battlerAtkPartner, battlerDef, move, 50)
+                        && ShouldRecover(battlerAtkPartner, battlerDefPartner, move, 50))
+                            RETURN_SCORE_PLUS(9); // +9 if Recovery check passes on both opposing mons for the player mon
                     }
                     break;
                 case EFFECT_SPEED_SWAP:
@@ -9873,10 +9859,10 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 } // attacker move effects
             } // check partner protecting
 
-            if ((isMoveAffectedByPartnerAbility && (score <= AI_SCORE_DEFAULT)) || !isMoveAffectedByPartnerAbility)
+            /*if ((isMoveAffectedByPartnerAbility && (score <= AI_SCORE_DEFAULT)) || !isMoveAffectedByPartnerAbility)
             {
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-            }
+            }*/
         }
             
     } // AI_DoubleBattle
@@ -14148,12 +14134,13 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_AFTER_YOU:
-                DebugPrintf("battlerAtk %d, battlerDef %d, AI_IsSlower(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY) %d", battlerAtk, battlerDef, AI_IsSlower(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY));
                 if (!IsTargetingPartner(battlerAtk, battlerDef)
                 || !hasPartner
                 || AI_IsSlower(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY)
-                || PartnerMoveIsSameAsAttacker(battlerAtkPartner, battlerDef, move, aiData->partnerMove))
+                || (move == aiData->partnerMove))
+                {
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                }
                 break;
             case EFFECT_SUCKER_PUNCH:
                 if ((gLastMoves[battlerAtk] == move) && (gBattleStruct->battlerState[battlerAtk].stompingTantrumTimer > 0) && RandomPercentage(RNG_AI_CUSTOM_AI_FIFTY_PERCENT, CUSTOM_AI_FIFTY_PERCENT))
@@ -14355,6 +14342,10 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_SCORE(FAST_KILL);
             else
                 ADJUST_SCORE(SLOW_KILL);
+
+            if (moveTargetsBothOpponents)
+                ADJUST_SCORE(3);
+
         }
         if (CanTargetFaintAi(battlerDef, battlerAtk)
             && GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER
@@ -14373,26 +14364,25 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         {
             ADJUST_AND_RETURN_SCORE(-10);
         }
-        else if ((GetMovePower(move) != 0) && !IsTargetingPartner(battlerAtk, battlerDef))
+        else if (GetMovePower(move) != 0)
         {
             if (GetNoOfHitsToKOBattler(battlerAtk, battlerDef, gAiThinkingStruct->movesetIndex, AI_ATTACKING) == 0)
+            {
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); // No point in checking the move further so return early
+            }
             else
             {
-                if (gAiThinkingStruct->aiFlags[battlerAtk] & (AI_FLAG_RISKY | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE))
+                for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
                 {
-                    for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
-                    {
-                        if (moves[moveIndex] == move)
-                            thisMove = moveIndex;
-                    }
-                    if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, thisMove, AI_ATTACKING)
-                    || GetBestDmgMoveFromBattler(battlerAtk, battlerDef, AI_ATTACKING) == move)
-                    {
-                        ADJUST_SCORE(BEST_DAMAGE_MOVE);
-                        if (AI_RandLessThan(51))
-                            ADJUST_SCORE(2);
-                    }
+                    if (moves[moveIndex] == move)
+                        thisMove = moveIndex;
+                }
+                if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, thisMove, AI_ATTACKING)
+                || GetBestDmgMoveFromBattler(battlerAtk, battlerDef, AI_ATTACKING) == move)
+                {
+                    ADJUST_SCORE(BEST_DAMAGE_MOVE);
+                    if (AI_RandLessThan(51))
+                        ADJUST_SCORE(2);
                 }
             }
         }
@@ -14549,9 +14539,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             else 
             {
                 if (!(gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND) 
-                && ((aiData->abilities[battlerAtk] == ABILITY_PRANKSTER) || (aiData->abilities[battlerAtk] == ABILITY_GALE_WINGS)
-                || (AI_IsFaster(battlerAtk, battlerDef, move, MOVE_TACKLE, DONT_CONSIDER_PRIORITY) 
-                && AI_IsFaster(battlerAtk, battlerDefPartner, move, MOVE_TACKLE, DONT_CONSIDER_PRIORITY))))
+                && ((aiData->abilities[battlerAtk] == ABILITY_PRANKSTER) || (aiData->abilities[battlerAtk] == ABILITY_GALE_WINGS)))
                 {
                     ADJUST_SCORE(POWERFUL_STATUS_MOVE); // +30 if Prankster, Gale Wings, or faster than both opponents (partner only)
                 }
@@ -15070,18 +15058,22 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 case EFFECT_AFTER_YOU:
                     if (!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && HasMoveWithEffect(battlerAtkPartner, EFFECT_TRICK_ROOM))
                         RETURN_SCORE_PLUS(PERFECT_EFFECT);
-                    // If partner is clicking spread move
-                    if (((GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_BOTH) 
+                    // If partner is clicking spread move, or single target but user has no kills
+                    if ((((GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_BOTH) 
                     || (GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_FOES_AND_ALLY)
-                    || GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_ALL_BATTLERS) && (GetMovePower(gAiLogicData->partnerMove) != 0))
+                    || GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_ALL_BATTLERS) 
+                    || ((GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_SELECTED) 
+                    && !CanAIFaintTarget(battlerAtk, BATTLE_OPPOSITE(battlerAtk)) 
+                    && !CanAIFaintTarget(battlerAtk, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk))))) 
+                    && (GetMovePower(gAiLogicData->partnerMove) != 0))
                     {
                         // If partner has slow KO on opposite battler but After You makes it fast KO
-                        if (CanTargetMoveFaintAi(gAiLogicData->partnerMove, BATTLE_OPPOSITE(battlerAtkPartner), battlerAtkPartner, 1) 
+                        if (CanTargetMoveFaintAi(gAiLogicData->partnerMove, battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), 1) 
                         && (AI_WhoStrikesFirst(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), gAiLogicData->partnerMove, MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_SLOWER)
                         && (AI_WhoStrikesFirst(battlerAtk, BATTLE_OPPOSITE(battlerAtkPartner), move, MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER))
                             ADJUST_SCORE(15); // Over slow kill but not fast kill, unless both checks pass
                         // If partner has slow KO on opposite battler partner but After You makes it fast KO
-                        if (CanTargetMoveFaintAi(gAiLogicData->partnerMove, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), battlerAtkPartner, 1) 
+                        if (CanTargetMoveFaintAi(gAiLogicData->partnerMove, battlerAtkPartner, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), 1) 
                         && (AI_WhoStrikesFirst(battlerAtkPartner, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), gAiLogicData->partnerMove, MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_SLOWER)
                         && (AI_WhoStrikesFirst(battlerAtk, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), move, MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER))
                             ADJUST_SCORE(15); // Over slow kill but not fast kill, unless both checks pass
@@ -15162,10 +15154,10 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 } // attacker move effects
             } // check partner protecting
             
-            if ((isMoveAffectedByPartnerAbility && (score <= AI_SCORE_DEFAULT)) || !isMoveAffectedByPartnerAbility)
+            /*if ((isMoveAffectedByPartnerAbility && (score <= AI_SCORE_DEFAULT)) || !isMoveAffectedByPartnerAbility)
             {
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-            }
+            }*/
         }
     } // AI_DoubleBattle
 
