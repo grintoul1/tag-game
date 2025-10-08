@@ -702,7 +702,7 @@ F_TRAINER_FEMALE |
 #line 305
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 302
-            .ability = ABILITY_SWIFT_SWIM,
+            .ability = ABILITY_ADAPTABILITY,
 #line 303
             .lvl = 86,
 #line 304

@@ -3043,7 +3043,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
     u32 movesetIndex = gAiThinkingStruct->movesetIndex;
-    u32 predictedMoveSpeedCheck = GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData);
+    //u32 predictedMoveSpeedCheck = GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData);
 
     if (IsTargetingPartner(battlerAtk, battlerDef))
         return score;
@@ -3376,7 +3376,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     // check specific target
     if (IsTargetingPartner(battlerAtk, battlerDef))
     {
-        bool32 isMoveAffectedByPartnerAbility = TRUE;
+        bool32 UNUSED isMoveAffectedByPartnerAbility = TRUE;
 
         if (wouldPartnerFaint)
         {
@@ -7102,7 +7102,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     // partner data 
     bool32 hasPartner = HasPartner(battlerAtk);
     u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
-    u16 *moves = GetMovesArray(battlerAtk);
+    u16 UNUSED *moves = GetMovesArray(battlerAtk);
     u16 *atkPartnerMove = GetMovesArray(battlerAtkPartner);
     u32 partnerEffect = GetMoveEffect(aiData->partnerMove);
     u32 atkPartnerAbility = aiData->abilities[BATTLE_PARTNER(battlerAtk)];
@@ -9358,7 +9358,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         // check specific target
         if (IsTargetingPartner(battlerAtk, battlerDef))
         {
-            bool32 isMoveAffectedByPartnerAbility = TRUE;
+            bool32 UNUSED isMoveAffectedByPartnerAbility = TRUE;
 
             if (wouldPartnerFaint)
             {
@@ -9769,8 +9769,8 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                     || (GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_FOES_AND_ALLY)
                     || GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_ALL_BATTLERS) 
                     || ((GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_SELECTED) 
-                    && !CanAIFaintTarget(battlerAtk, BATTLE_OPPOSITE(battlerAtk)) 
-                    && !CanAIFaintTarget(battlerAtk, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk))))) 
+                    && !CanAIFaintTarget(battlerAtk, BATTLE_OPPOSITE(battlerAtk), 1) 
+                    && !CanAIFaintTarget(battlerAtk, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk)), 1))) 
                     && (GetMovePower(gAiLogicData->partnerMove) != 0))
                     {
                         // If partner has slow KO on opposite battler but After You makes it fast KO
@@ -14652,7 +14652,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         // check specific target
         if (IsTargetingPartner(battlerAtk, battlerDef))
         {
-            bool32 isMoveAffectedByPartnerAbility = TRUE;
+            bool32 UNUSED isMoveAffectedByPartnerAbility = TRUE;
 
             if (wouldPartnerFaint)
             {
@@ -15063,8 +15063,8 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     || (GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_FOES_AND_ALLY)
                     || GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_ALL_BATTLERS) 
                     || ((GetMoveTarget(gAiLogicData->partnerMove) == MOVE_TARGET_SELECTED) 
-                    && !CanAIFaintTarget(battlerAtk, BATTLE_OPPOSITE(battlerAtk)) 
-                    && !CanAIFaintTarget(battlerAtk, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk))))) 
+                    && !CanAIFaintTarget(battlerAtk, BATTLE_OPPOSITE(battlerAtk), 1) 
+                    && !CanAIFaintTarget(battlerAtk, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk)), 1))) 
                     && (GetMovePower(gAiLogicData->partnerMove) != 0))
                     {
                         // If partner has slow KO on opposite battler but After You makes it fast KO
