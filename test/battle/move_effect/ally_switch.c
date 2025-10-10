@@ -315,7 +315,7 @@ DOUBLE_BATTLE_TEST("Ally Switch swaps Illusion data")
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_ALLY_SWITCH) == EFFECT_ALLY_SWITCH);
         PLAYER(SPECIES_HOOPA);
-        PLAYER(SPECIES_ZOROARK);
+        PLAYER(SPECIES_ZOROARK) { Ability(ABILITY_ILLUSION); }
         PLAYER(SPECIES_MAMOSWINE); // the third member here is required for zoroark
         OPPONENT(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);

@@ -171,7 +171,7 @@ SINGLE_BATTLE_TEST("Dynamax: Illusion doesn't break upon Dynamaxing when illusio
     PARAMETRIZE { species = SPECIES_WOBBUFFET; }
     PARAMETRIZE { species = SPECIES_ZIGZAGOON; }
     GIVEN {
-        PLAYER(SPECIES_ZOROARK);
+        PLAYER(SPECIES_ZOROARK) { Ability(ABILITY_ILLUSION); }
         PLAYER(species);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
