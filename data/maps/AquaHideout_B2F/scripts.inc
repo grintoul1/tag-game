@@ -126,7 +126,7 @@ AquaHideout_B2F_Text_TabithaWhatYoureMadeOf:
 	.string "you're really made of!$"
 
 AquaHideout_B2F_Text_ShellyWarnedYou:
-	.string "Shelly: I warned that you Team Aqua\n"
+	.string "Shelly: I warned you that Team Aqua\n"
 	.string "has no choice but to retaliate.\p"
 	.string "I also warned you to not follow us here.$"
 
