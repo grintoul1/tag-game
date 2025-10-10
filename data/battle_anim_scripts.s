@@ -2069,7 +2069,6 @@ gBattleAnimMove_IceFang::
 	monbg ANIM_TARGET
 	setalpha 12, 8
 	loadspritegfx ANIM_TAG_ICE_CUBE
-	loadspritegfx ANIM_TAG_ICE_CRYSTALS
 	loadspritegfx ANIM_TAG_SHARP_TEETH
 	loadspritegfx ANIM_TAG_IMPACT
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 0, 7, RGB_BLACK
@@ -2082,12 +2081,10 @@ gBattleAnimMove_IceFang::
 	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, ANIM_TARGET, 2
 	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 4, 7, 1
 	delay 15
-	monbg ANIM_DEF_PARTNER
 	splitbgprio ANIM_TARGET
 	waitplaysewithpan SE_M_HAIL, SOUND_PAN_TARGET, 17
 	createvisualtask AnimTask_FrozenIceCube, 2
 	waitforvisualfinish
-	clearmonbg ANIM_DEF_PARTNER
 	delay 5
 	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 2, 9, 0, RGB(12, 26, 31)
 	waitforvisualfinish
