@@ -1857,7 +1857,7 @@ static void Cmd_adjustdamage(void)
             continue;
         }
 
-        if (gBattleMons[gBattlerTarget].hp > gBattleStruct->moveDamage[battlerDef])
+        if (gBattleMons[battlerDef].hp > gBattleStruct->moveDamage[battlerDef])
             continue;
 
         holdEffect = GetBattlerHoldEffect(battlerDef);
