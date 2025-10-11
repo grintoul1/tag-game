@@ -840,12 +840,12 @@
               {
                 "min_level": 30,
                 "max_level": 30,
-                "species": "SPECIES_NONE"
+                "species": "SPECIES_PUPITAR"
               },
               {
                 "min_level": 30,
                 "max_level": 30,
-                "species": "SPECIES_PUPITAR"
+                "species": "SPECIES_GABITE"
               },
               {
                 "min_level": 30,
@@ -905,6 +905,11 @@
               {
                 "min_level": 15,
                 "max_level": 15,
+                "species": "SPECIES_ROCKRUFF"
+              },
+              {
+                "min_level": 15,
+                "max_level": 15,
                 "species": "SPECIES_GEODUDE"
               },
               {
@@ -916,11 +921,6 @@
                 "min_level": 15,
                 "max_level": 15,
                 "species": "SPECIES_GLIMMET"
-              },
-              {
-                "min_level": 15,
-                "max_level": 15,
-                "species": "SPECIES_ROCKRUFF"
               }
             ]
           },
