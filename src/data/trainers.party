@@ -1057,33 +1057,62 @@ Mugshot: Brown
 Pic: Leader Roxanne
 Gender: Female
 Music: Female
-Items: Potion / Potion
 Battle Type: Singles
 AI: Tag Trainer
 
-Geodude
-Level: 12
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Tackle
-- Defense Curl
-- Rock Throw
-- Rock Tomb
+Ogerpon-Cornerstone @ Cornerstone Mask  
+Ability: Sturdy  
+Level: 33  
+Jolly Nature  
+- Ivy Cudgel  
+- Horn Leech  
+- Stomping Tantrum  
+- Knock Off  
 
-Geodude
-Level: 12
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Tackle
-- Defense Curl
-- Rock Throw
-- Rock Tomb
+Armaldo @ Babiri Berry  
+Ability: Battle Armor  
+Level: 34  
+Impish Nature  
+- Rock Slide  
+- Bug Bite  
+- Liquidation  
+- Stealth Rock  
 
-Nosepass @ Oran Berry
-Level: 15
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Block
-- Harden
-- Tackle
-- Rock Tomb
+Lycanroc-Dusk @ Air Balloon  
+Ability: Tough Claws  
+Level: 35  
+Jolly Nature  
+- Accelerock  
+- Play Rough  
+- Lash Out  
+- Howl  
+
+Great Tusk @ Focus Sash  
+Ability: Protosynthesis  
+Level: 33  
+Adamant Nature  
+- Brick Break  
+- High Horsepower  
+- Ice Spinner  
+- Endeavor  
+
+Orthworm (F) @ Weakness Policy  
+Ability: Earth Eater  
+Level: 35  
+Careful Nature  
+- Iron Head  
+- Bulldoze  
+- Coil  
+- Shed Tail  
+
+Aggron @ Aggronite  
+Ability: Filter  
+Level: 34  
+Impish Nature  
+- Metal Claw  
+- Body Press  
+- Autotomize  
+- Iron Defense  
 
 === TRAINER_DAWSON ===
 Name: Dawson
@@ -1528,37 +1557,56 @@ Music: Male
 Battle Type: Singles
 AI: Tag Trainer
 
-Spinda
-Level: 27
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Teeter Dance
-- Psybeam
-- Facade
-- Encore
+Kangaskhan @ Kangaskhanite  
+Ability: Inner Focus  
+Level: 37  
+Jolly Nature  
+- Drain Punch  
 
-Vigoroth
-Level: 27
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Slash
-- Facade
-- Encore
-- Feint Attack
+Braviary @ Wacan Berry  
+Ability: Defiant  
+Level: 38  
+Impish Nature  
+- Brave Bird  
+- Crush Claw  
+- U-turn  
+- Tailwind  
 
-Linoone
-Level: 29
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Slash
-- Belly Drum
-- Facade
-- Headbutt
+Bewear @ Occa Berry  
+Ability: Fluffy  
+Level: 38  
+Adamant Nature  
+- Revenge  
+- Body Press  
+- Facade  
+- Stomping Tantrum  
 
-Slaking @ Sitrus Berry
-Level: 31
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Counter
-- Yawn
-- Facade
-- Feint Attack
+Silvally-Ghost @ Ghost Memory  
+Ability: RKS System  
+Level: 37  
+Naive Nature  
+- Multi-Attack  
+- Heat Wave  
+- Air Slash  
+- Parting Shot  
+
+Delcatty @ Focus Sash  
+Ability: Adaptability  
+Level: 38  
+Jolly Nature  
+- Retaliate  
+- Assist  
+- Simple Beam  
+- Toxic  
+
+Scream Tail @ Weakness Policy  
+Ability: Protosynthesis  
+Level: 37  
+Timid Nature  
+- Stored Power  
+- Hyper Voice  
+- Grass Knot  
+- Endure
 
 === TRAINER_HALEY_1 ===
 Name: Haley
@@ -1822,57 +1870,59 @@ Music: Male
 Battle Type: Singles
 AI: Tag Trainer
 
-Kubfu @ Iapapa Berry
-Level: 30
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Brick Break
-- Faint Attack
-- Zen Headbutt
-- Mega Punch
+Keldeo @ Rindo Berry  
+Ability: Justified  
+Level: 41  
+Timid Nature  
+- Focus Blast  
+- Muddy Water  
+- Megahorn  
+- Coaching  
 
-Poliwhirl @ Wise Glasses
-Level: 30
-Ability: Water Absorb
-IVs: 30 HP / 31 Atk / 31 Def / 30 SpA / 31 SpD / 31 Spe
-- Bubble Beam
-- Ice Beam
-- Superpower
-- Hidden Power
+Conkeldurr @ Assault Vest  
+Ability: Iron Fist  
+Level: 42  
+Adamant Nature  
+- Drain Punch  
+- Thunder Punch  
+- Fire Punch  
+- Mach Punch  
 
-Lopunny @ Eject Button
-Level: 29
-Ability: Limber
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Drain Punch
-- Retaliate
-- Headbutt
+Chesnaught @ Custap Berry  
+Ability: Overgrow  
+Level: 42  
+Adamant Nature  
+- Seed Bomb  
+- Spiky Shield  
+- Endure  
+- Helping Hand  
 
-Hitmontop @ Muscle Band
-Level: 28
-Ability: Intimidate
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Mach Punch
-- Fake Out
-- Counter
-- Rock Slide
+Slither Wing @ Focus Sash  
+Ability: Protosynthesis  
+Level: 41  
+Jolly Nature  
+- Temper Flare  
+- First Impression  
+- U-turn  
+- Reversal  
 
-Combusken @ Expert Belt
-Level: 28
-Ability: Speed Boost
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Incinerate
-- Thunder Punch
-- Double Kick
-- Work Up
+Sneasler @ Normal Gem  
+Ability: Unburden  
+Level: 42  
+Jolly Nature  
+- Fake Out  
+- Knock Off  
+- Poison Jab  
+- Close Combat  
 
-Scraggy @ Eviolite
-Level: 29
-Ability: Shed Skin
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rock Tomb
-- Rest
-- Brick Break
-- Faint Attack
+Lucario @ Lucarionite  
+Ability: Adaptability  
+Level: 42  
+Hasty Nature  
+- Aura Sphere  
+- Flash Cannon  
+- Vacuum Wave  
+- Bullet Punch  
 
 === TRAINER_GRUNT_ROUTE109_1 ===
 Name: Grunt /* Route 109 #1*/
