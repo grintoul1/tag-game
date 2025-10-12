@@ -7,40 +7,40 @@ Music: Male
 Back Pic: Brendan
 
 === PARTNER_STEVEN ===
-Name: STEVEN
+Name: Lance
 Class: Rival
 Pic: Steven
 Gender: Male
 Music: Male
 Back Pic: Steven
-AI: Basic Trainer
+AI: Partner Trainer
 
-Metang
-Brave Nature
-Level: 42
+Cyclizar @ Dragon Fang
+Naive Nature
+Level: 65
+Ability: Regenerator
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Light Screen
-- Psychic
-- Reflect
-- Metal Claw
+- Rapid Spin
+- Iron Tail
+- Draco Meteor
+- Knock Off
 
-Skarmory
-Impish Nature
-Level: 43
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 6 SpA / 252 SpD
-- Toxic
-- Aerial Ace
-- Protect
-- Steel Wing
-
-Aggron
+Tyrantrum @ Focus Sash
 Adamant Nature
-Level: 44
+Ability: Strong Jaw
+Level: 66
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
+- Psychic Fangs
+- Heavy Slam
+- Ice Fang
+- Accelerock
+
+Goodra-Hisui @ Sitrus Berry
+Sassy Nature
+Level: 65
+Ability: Shell Armor
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Flash Cannon
+- Ice Beam
+- Flamethrower
 - Protect
-- Solar Beam
-- Dragon Claw

@@ -9363,25 +9363,40 @@ Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_TABITHA_MOSSDEEP ===
-Name: TABITHA
+Name: Archer
 Class: Magma Admin
 Pic: Magma Admin
 Gender: Male
 Music: Magma
 Double Battle: No
+Starting Status: STARTING_STATUS_SPIKES_PLAYER_1
 AI: Check Bad Move
 
-Camerupt
-Level: 36
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Wigglytuff @ Focus Sash
+Level: 65
+Modest Nature
+Ability: Competitive
+- Dazzling Gleam
+- Misty Explosion
+- Fire Blast
 
-Mightyena
-Level: 38
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Nidoqueen @ Life Orb
+Level: 65
+Modest Nature
+Ability: Sheer Force
+- Earth Power
+- Sludge Bomb
+- Focus Blast
+- Protect
 
-Golbat
-Level: 40
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Jirachi @ Iapapa Berry
+Level: 66
+Jolly Nature
+Ability: Serene Grace
+- Meteor Mash
+- Drain Punch
+- Psycho Cut
+- Helping Hand
 
 === TRAINER_EDWIN_2 ===
 Name: EDWIN
@@ -13527,25 +13542,41 @@ Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_MAXIE_MOSSDEEP ===
-Name: MAXIE
+Name: Ariana
 Class: Magma Leader
 Pic: Magma Leader Maxie
+Mugshot: Blue
 Gender: Male
 Music: Magma
 Double Battle: No
-AI: Basic Trainer
+Starting Status: STARTING_STATUS_SPIKES_PLAYER_1
+AI: Smart Trainer
 
-Mightyena
-Level: 42
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Marshadow @ Eject Pack
+Level: 65
+Ability: Technician
+Nature: Lonely
+- Close Combat
+- Pursuit
+- Knock Off
+- Poison Jab
 
-Crobat
-Level: 43
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Altaria @ King's Rock
+Level: 65
+Lax Nature
+Ability: Cotton Down
+- Dragon Rush
+- Bulldoze
+- Air Slash
+- Thunderbolt
 
-Camerupt
-Level: 44
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Ogerpon-Cornerstone @ Cornerstone Mask
+Level: 66
+Adamant Nature
+Ability: Sturdy
+- Power Whip
+- Ivy Cudgel
+- Low Kick
 
 === TRAINER_PETE ===
 Name: PETE
