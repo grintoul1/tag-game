@@ -7737,10 +7737,10 @@ static void Task_WaitAfterMultiPartnerPartySlideIn(u8 taskId)
 
     // data[0] used as a timer afterwards rather than the x pos
     if (FollowerNPCIsBattlePartner()) {
-        if (++data[0] == 128)
+        if (++data[0] == 64)
             Task_ClosePartyMenu(taskId);
     }
-    else if (++data[0] == 256)
+    else if (++data[0] == 64)
         Task_ClosePartyMenu(taskId);
 }
 
