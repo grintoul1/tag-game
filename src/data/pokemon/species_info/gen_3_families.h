@@ -8734,7 +8734,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sLileepLevelUpLearnset,
         .teachableLearnset = sLileepTeachableLearnset,
         .eggMoveLearnset = sLileepEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_CRADILY}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 39, SPECIES_CRADILY}),
     },
 
     [SPECIES_CRADILY] =

@@ -1612,7 +1612,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_SWARM, ABILITY_NONE, ABILITY_SNIPER },
+        .abilities = { ABILITY_SWARM, ABILITY_SNIPER, ABILITY_SNIPER },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Beedrill"),
         .cryId = CRY_BEEDRILL,
@@ -5559,7 +5559,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-        .abilities = { ABILITY_INNER_FOCUS, ABILITY_NONE, ABILITY_INFILTRATOR },
+        .abilities = { ABILITY_INNER_FOCUS, ABILITY_INFILTRATOR, ABILITY_INFILTRATOR },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Zubat"),
         .cryId = CRY_ZUBAT,
@@ -5731,7 +5731,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sGolbatLevelUpLearnset,
         .teachableLearnset = sGolbatTeachableLearnset,
     #if P_GEN_2_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_CROBAT, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_GOLBAT}),
     #endif
     },
 
@@ -13927,7 +13927,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
     #if P_UPDATED_ABILITIES >= GEN_8
-        .abilities = { ABILITY_LEVITATE, ABILITY_NEUTRALIZING_GAS, ABILITY_STENCH },
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NEUTRALIZING_GAS },
     #else
         .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
     #endif
@@ -13982,8 +13982,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sKoffingLevelUpLearnset,
         .teachableLearnset = sKoffingTeachableLearnset,
         .eggMoveLearnset = sKoffingEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 35, SPECIES_WEEZING, CONDITIONS({IF_NOT_REGION, REGION_GALAR})},
-                                {EVO_LEVEL, 35, SPECIES_WEEZING_GALAR, CONDITIONS({IF_REGION, REGION_GALAR})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_WEEZING},
+                                {EVO_ITEM, ITEM_SHINY_STONE, SPECIES_WEEZING_GALAR}),
     },
 
     [SPECIES_WEEZING] =
@@ -14005,7 +14005,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
     #if P_UPDATED_ABILITIES >= GEN_8
-        .abilities = { ABILITY_LEVITATE, ABILITY_NEUTRALIZING_GAS, ABILITY_STENCH },
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NEUTRALIZING_GAS },
     #else
         .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
     #endif
@@ -14082,7 +14082,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NEUTRALIZING_GAS, ABILITY_MISTY_SURGE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_MISTY_SURGE, ABILITY_NEUTRALIZING_GAS },
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = TRUE,
         .speciesName = _("Weezing"),
@@ -19849,7 +19849,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sDragonairLevelUpLearnset,
         .teachableLearnset = sDragonairTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 55, SPECIES_DRAGONITE}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 53, SPECIES_DRAGONITE}),
     },
 
     [SPECIES_DRAGONITE] =

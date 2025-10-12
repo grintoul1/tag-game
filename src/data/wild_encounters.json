@@ -9994,8 +9994,8 @@
                 "species": "SPECIES_DREEPY"
               },
               {
-                "min_level": 24,
-                "max_level": 24,
+                "min_level": 30,
+                "max_level": 30,
                 "species": "SPECIES_HONEDGE"
               }
             ]
@@ -11669,7 +11669,7 @@
               {
                 "min_level": 30,
                 "max_level": 30,
-                "species": "SPECIES_SHELMET"
+                "species": "SPECIES_KARRABLAST"
               },
               {
                 "min_level": 30,
