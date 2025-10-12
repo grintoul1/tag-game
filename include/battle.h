@@ -221,8 +221,8 @@ struct SideTimer
     u16 lightscreenTimer;
     u16 mistTimer;
     u16 safeguardTimer;
-    u8 spikesAmount:4;
-    u8 toxicSpikesAmount:4;
+    u8 spikesAmount;
+    u8 toxicSpikesAmount;
     u8 stickyWebBattlerId;
     u8 stickyWebBattlerSide; // Used for Court Change
     u16 auroraVeilTimer;

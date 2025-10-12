@@ -3300,6 +3300,26 @@ static inline u32 SetStartingSideStatus(u32 flag, u32 side, u32 message, u32 ani
     return 0;
 }
 
+static inline u32 SetStartingSideHazards(u32 flag, u32 side, u32 message, u32 anim, enum Hazards hazardType, u8 layers)
+{
+    if (!(gSideStatuses[side] & flag))
+    {
+        gBattlerTarget = gBattleAnimTarget = side;
+        gBattleScripting.battler = gBattlerAttacker = GetBattlerSide(BATTLE_OPPOSITE(gBattlerTarget));
+        gBattleCommunication[MULTISTRING_CHOOSER] = message;
+        gSideStatuses[side] |= flag;
+        gBattleScripting.animArg1 = anim;
+        for (u32 i = 0; i < layers; i++)
+        {
+            PushHazardTypeToQueue(side, hazardType);
+        }
+
+        return 1;
+    }
+
+    return 0;
+}
+
 u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 moveArg)
 {
     u32 effect = 0;
@@ -3436,6 +3456,54 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                                                B_MSG_SET_SWAMP,
                                                B_ANIM_SWAMP,
                                                &gSideTimers[B_SIDE_OPPONENT].swampTimer);
+                break;
+            case STARTING_STATUS_SPIKES_PLAYER_1:
+                effect = SetStartingSideHazards(SIDE_STATUS_SPIKES,
+                                               B_SIDE_PLAYER,
+                                               B_MSG_SET_SPIKES,
+                                               B_ANIM_SPIKES,
+                                               HAZARDS_SPIKES,
+                                               1);
+                break;
+            case STARTING_STATUS_SPIKES_PLAYER_2:
+                effect = SetStartingSideHazards(SIDE_STATUS_SPIKES,
+                                               B_SIDE_PLAYER,
+                                               B_MSG_SET_SPIKES,
+                                               B_ANIM_SPIKES,
+                                               HAZARDS_SPIKES,
+                                               2);
+                break;
+            case STARTING_STATUS_SPIKES_PLAYER_3:
+                effect = SetStartingSideHazards(SIDE_STATUS_SPIKES,
+                                               B_SIDE_PLAYER,
+                                               B_MSG_SET_SPIKES,
+                                               B_ANIM_SPIKES,
+                                               HAZARDS_SPIKES,
+                                               3);
+                break;
+            case STARTING_STATUS_SPIKES_OPPONENT_1:
+                effect = SetStartingSideHazards(SIDE_STATUS_SPIKES,
+                                               B_SIDE_OPPONENT,
+                                               B_MSG_SET_SPIKES,
+                                               B_ANIM_SPIKES,
+                                               HAZARDS_SPIKES,
+                                               1);
+                break;
+            case STARTING_STATUS_SPIKES_OPPONENT_2:
+                effect = SetStartingSideHazards(SIDE_STATUS_SPIKES,
+                                               B_SIDE_OPPONENT,
+                                               B_MSG_SET_SPIKES,
+                                               B_ANIM_SPIKES,
+                                               HAZARDS_SPIKES,
+                                               2);
+                break;
+            case STARTING_STATUS_SPIKES_OPPONENT_3:
+                effect = SetStartingSideHazards(SIDE_STATUS_SPIKES,
+                                               B_SIDE_OPPONENT,
+                                               B_MSG_SET_SPIKES,
+                                               B_ANIM_SPIKES,
+                                               HAZARDS_SPIKES,
+                                               3);
                 break;
             }
 

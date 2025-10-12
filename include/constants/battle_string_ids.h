@@ -1162,6 +1162,7 @@ enum StartingStatusStringID
     B_MSG_SET_RAINBOW,
     B_MSG_SET_SEA_OF_FIRE,
     B_MSG_SET_SWAMP,
+    B_MSG_SET_SPIKES,
     B_MSG_STARTING_STATUS_COUNT,
 };
 
