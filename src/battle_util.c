@@ -1158,8 +1158,8 @@ bool32 ShouldDefiantCompetitiveActivate(u32 battler, enum Ability ability)
     if (ability != ABILITY_DEFIANT && ability != ABILITY_COMPETITIVE)
         return FALSE;
     // if an ally dropped the stats (except for Sticky Web), don't activate
-    if (IsBattlerAlly(gSpecialStatuses[battler].changedStatsBattlerId, battler) && !gBattleScripting.stickyWebStatDrop)
-        return TRUE;
+    if ((gSpecialStatuses[battler].changedStatsBattlerId == battler) && !gBattleScripting.stickyWebStatDrop)
+        return FALSE;
 
     if (GetGenConfig(GEN_CONFIG_DEFIANT_STICKY_WEB) >= GEN_9 || !gBattleScripting.stickyWebStatDrop)
         return TRUE;
