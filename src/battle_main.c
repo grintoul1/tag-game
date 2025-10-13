@@ -2021,7 +2021,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 SetMonData(&party[i], MON_DATA_POKEBALL, &ball);
             }
         }
-    if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_1)
         {
             for (i = 0; i < 6; i++)
             {
@@ -2071,7 +2071,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             j = ITEM_STICKY_BARB;
             SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
         }
-    if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_2)
         {
             for (i = 3; i < 6; i++)
             {
@@ -2133,7 +2133,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             j = ITEM_STICKY_BARB;
             SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
         }
-        if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_3)
         {
             for (i = 0; i < 6; i++)
             {

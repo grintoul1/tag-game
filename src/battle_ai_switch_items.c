@@ -3380,7 +3380,7 @@ static inline u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId,
         lookingAt=GetSpeciesName(gBattleMons[opposingBattler].species);
     #endif*/
 
-    if ((FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE) || (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE) || ((!(gBattleTypeFlags & BATTLE_TYPE_MULTI)) && (!(gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))))
+    if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_1) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_3) || ((!(gBattleTypeFlags & BATTLE_TYPE_MULTI)) && (!(gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))))
     {
         firstId=0;
         lastId=6;
