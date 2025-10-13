@@ -1799,7 +1799,9 @@ Common_EventScript_EmmieBattleTeamCheck1::
 
 Common_EventScript_EmmieBattleTeamCheck2::
 	specialvar VAR_RESULT, CalculatePlayerPartyCount
-	vgoto_if_ge VAR_RESULT, 4, Common_EventScript_EmmieBattle2
+	vgoto_if_eq VAR_RESULT, 4, Common_EventScript_EmmieBattle2
+	vgoto_if_eq VAR_RESULT, 5, Common_EventScript_EmmieBattle2
+	vgoto_if_eq VAR_RESULT, 6, Common_EventScript_EmmieBattle2
 	goto Common_EventScript_EmmieNotEnoughMons
 	releaseall
 	end
