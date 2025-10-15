@@ -15277,7 +15277,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             if ((atkPartnerAbility == ABILITY_DEFIANT) // If Defiant
             || ((atkPartnerAbility == ABILITY_COMPETITIVE) && HasMove(battlerAtkPartner, MOVE_STORED_POWER))) // Or if Competitive with SP/PT
             {
-                if (gBattleMons[atkPartnerAbility].statStages[STAT_ATK] <= (DEFAULT_STAT_STAGE + 1)) // If not already +2 Atk
+                if (gBattleMons[battlerAtkPartner].statStages[STAT_ATK] <= (DEFAULT_STAT_STAGE + 1)) // If not already +2 Atk
                 {
                     ADJUST_SCORE(17); // +17 if conditions met
                 }
