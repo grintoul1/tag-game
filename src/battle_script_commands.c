@@ -3121,7 +3121,8 @@ void SetMoveEffect(u32 battler, u32 effectBattler, bool32 primary, bool32 certai
             static const u8 sTriAttackEffects[] =
             {
                 MOVE_EFFECT_BURN,
-                MOVE_EFFECT_FREEZE_OR_FROSTBITE,
+                MOVE_EFFECT_FREEZE,
+                MOVE_EFFECT_FROSTBITE,
                 MOVE_EFFECT_PARALYSIS
             };
             gBattleScripting.moveEffect = RandomElement(RNG_TRI_ATTACK, sTriAttackEffects);
