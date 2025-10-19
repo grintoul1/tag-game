@@ -5030,7 +5030,7 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
                 ADJUST_SCORE(GOOD_EFFECT + 3);
             else
                 ADJUST_SCORE(WEAK_EFFECT);
-            if (AI_RandLessThan(205))
+            if (RandomPercentage(RNG_AI_CUSTOM_AI_EIGHTY_PERCENT, CUSTOM_AI_EIGHTY_PERCENT))
                 ADJUST_SCORE(2);
         }
         break;
@@ -5041,7 +5041,7 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
                 ADJUST_SCORE(BEST_DAMAGE_MOVE + FAST_KILL);
             else
                 ADJUST_SCORE(BEST_DAMAGE_MOVE + SLOW_KILL);
-            if (AI_RandLessThan(205))
+            if (RandomPercentage(RNG_AI_CUSTOM_AI_EIGHTY_PERCENT, CUSTOM_AI_EIGHTY_PERCENT))
                 ADJUST_SCORE(2);
         }
         break;
@@ -7984,8 +7984,8 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_HIT_ESCAPE:
-                if (ShouldPivot(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, gAiThinkingStruct->movesetIndex) == DONT_PIVOT)
-                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                //if (ShouldPivot(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, gAiThinkingStruct->movesetIndex) == DONT_PIVOT)
+                //    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_CHILLY_RECEPTION:
             case EFFECT_FROZEN_RECEPTION:
@@ -13231,8 +13231,8 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_HIT_ESCAPE:
-                if (ShouldPivot(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, gAiThinkingStruct->movesetIndex) == DONT_PIVOT)
-                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                //if (ShouldPivot(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, gAiThinkingStruct->movesetIndex) == DONT_PIVOT)
+                //    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_CHILLY_RECEPTION:
             case EFFECT_FROZEN_RECEPTION:
@@ -14348,7 +14348,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 || GetBestDmgMoveFromBattler(battlerAtk, battlerDef, AI_ATTACKING) == move)
                 {
                     ADJUST_SCORE(BEST_DAMAGE_MOVE);
-                    if (AI_RandLessThan(51))
+                    if (RandomPercentage(RNG_AI_CUSTOM_AI_TWENTY_PERCENT, CUSTOM_AI_TWENTY_PERCENT))
                         ADJUST_SCORE(2);
                 }
             }
@@ -15924,7 +15924,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     ADJUST_SCORE(GOOD_EFFECT + 3);
                 else
                     ADJUST_SCORE(WEAK_EFFECT);
-                if (AI_RandLessThan(205))
+                if (RandomPercentage(RNG_AI_CUSTOM_AI_EIGHTY_PERCENT, CUSTOM_AI_EIGHTY_PERCENT))
                     ADJUST_SCORE(2);
             }
             break;
@@ -15935,7 +15935,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     ADJUST_SCORE(BEST_DAMAGE_MOVE + FAST_KILL);
                 else
                     ADJUST_SCORE(BEST_DAMAGE_MOVE + SLOW_KILL);
-                if (AI_RandLessThan(205))
+                if (RandomPercentage(RNG_AI_CUSTOM_AI_EIGHTY_PERCENT, CUSTOM_AI_EIGHTY_PERCENT))
                     ADJUST_SCORE(2);
             }
             break;
