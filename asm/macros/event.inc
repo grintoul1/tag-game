@@ -2176,7 +2176,14 @@
 	setvar VAR_0x8000, \evoMethod
 	setvar VAR_0x8001, \canStopEvo
 	setvar VAR_0x8002, \tryMultiple
-	special TrySpecialScriptEvolution
+	special TrySpecialOverworldEvo
+	.endm
+
+	.macro trytyrogueevo evoMethod:req, canStopEvo=FALSE, tryMultiple=FALSE
+	setvar VAR_0x8000, \evoMethod
+	setvar VAR_0x8001, \canStopEvo
+	setvar VAR_0x8002, \tryMultiple
+	special TryTyrogueEvo
 	.endm
 
 	.macro ai_vs_ai_battle trainer1:req, trainer2:req

@@ -4770,6 +4770,18 @@ bool32 DoesMonMeetAdditionalConditions(struct Pokemon *mon, const struct Evoluti
             if (GetCurrentRegion() != params[i].arg1)
                 currentCondition = TRUE;
             break;
+        case IF_PUNCHING:
+            if (gSpecialVar_0x8008 == 0)
+                currentCondition = TRUE;
+            break;
+        case IF_KICKING:
+            if (gSpecialVar_0x8008 == 1)
+                currentCondition = TRUE;
+            break;
+        case IF_BALANCE:
+            if (gSpecialVar_0x8008 == 2)
+                currentCondition = TRUE;
+            break;
         case CONDITIONS_END:
             break;
         }
@@ -6905,6 +6917,36 @@ void TrySpecialOverworldEvo(void)
 
     sTriedEvolving = 0;
     SetMainCallback2(CB2_ReturnToField);
+}
+
+void TryTyrogueEvo(void)
+{
+    bool32 canStopEvo = gSpecialVar_0x8001;
+    u32 targetSpecies;
+
+    switch(gSpecialVar_0x8008)
+    {
+        case 0:
+            targetSpecies = SPECIES_HITMONCHAN;
+            break;
+        case 1:
+            targetSpecies = SPECIES_HITMONLEE;
+            break;
+        case 2:
+            targetSpecies = SPECIES_HITMONTOP;
+            break;
+        default:
+            targetSpecies = SPECIES_HITMONCHAN;
+            break;
+    }
+
+    sTriedEvolving |= 1u << gSpecialVar_0x8004;
+    if(gMain.callback2 == TrySpecialOverworldEvo) // This fixes small graphics glitches.
+        EvolutionScene(&gPlayerParty[gSpecialVar_0x8004], targetSpecies, canStopEvo, gSpecialVar_0x8004);
+    else
+        BeginEvolutionScene(&gPlayerParty[gSpecialVar_0x8004], targetSpecies, canStopEvo, gSpecialVar_0x8004);
+    gCB2_AfterEvolution = CB2_ReturnToField;
+    return;
 }
 
 bool32 SpeciesHasGenderDifferences(u16 species)

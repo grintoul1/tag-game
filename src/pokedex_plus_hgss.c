@@ -6807,6 +6807,15 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 dept
                     StringAppend(gStringVar4, gStringVar2);
                     StringAppend(gStringVar4, COMPOUND_STRING(" in bag"));
                     break;
+                case IF_PUNCHING:
+                    StringAppend(gStringVar4, COMPOUND_STRING(", punching focus"));
+                    break;
+                case IF_KICKING:
+                    StringAppend(gStringVar4, COMPOUND_STRING(", kicking focus"));
+                    break;
+                case IF_BALANCE:
+                    StringAppend(gStringVar4, COMPOUND_STRING(", balance focus"));
+                    break;
                 case CONDITIONS_END:
                     break;
                 }
