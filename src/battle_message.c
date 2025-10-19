@@ -1440,6 +1440,7 @@ static const u8 sText_Trainer2SentOutPkmn[] = _("{B_TRAINER2_NAME_WITH_CLASS} se
 static const u8 sText_TwoTrainersWantToBattle[] = _("You are challenged by {B_TRAINER1_NAME_WITH_CLASS} and {B_TRAINER2_NAME_WITH_CLASS}!\p");
 static const u8 sText_InGamePartnerSentOutZGoN[] = _("{B_PARTNER_NAME_WITH_CLASS} sent out {B_PLAYER_MON2_NAME}! Go, {B_PLAYER_MON1_NAME}!");
 static const u8 sText_InGamePartnerSentOutPkmn2[] = _("{B_PARTNER_NAME_WITH_CLASS} sent out {B_PLAYER_MON2_NAME}!");
+static const u8 sText_InGamePartnerWithdrewPkmn2[] = _("{B_PARTNER_NAME_WITH_CLASS} withdrew {B_PLAYER_MON2_NAME}!");
 
 const u16 gBattlePalaceFlavorTextTable[] =
 {
@@ -2178,7 +2179,9 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
     case STRINGID_RETURNMON: // sending poke to ball msg
         if (IsOnPlayerSide(battler))
         {
-            if (*(&gBattleStruct->hpScale) == 0)
+            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && GetBattlerAtPosition(battler) == 2)
+                stringPtr = sText_InGamePartnerWithdrewPkmn2;
+            else if (*(&gBattleStruct->hpScale) == 0)
                 stringPtr = sText_PkmnThatsEnough;
             else if (*(&gBattleStruct->hpScale) == 1 || IsDoubleBattle())
                 stringPtr = sText_PkmnComeBack;
@@ -2258,7 +2261,7 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                     {
                         if (gBattleScripting.battler == 1)
                             stringPtr = sText_Trainer1SentOutPkmn;
-                        else if (gBattleScripting.battler == 3)
+                        else
                             stringPtr = sText_Trainer2SentOutPkmn;
                     }
                     else if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
