@@ -685,7 +685,7 @@ struct ExpectedAIAction
     u8 actionSet:1; // Action was set and is expected to happen. Set only for battlers controlled by AI.
 };
 
-#define MAX_AI_SCORE_COMPARISION_PER_TURN 4
+#define MAX_AI_SCORE_COMPARISION_PER_TURN 8
 #define MAX_AI_LOG_LINES 10
 
 struct ExpectedAiScore
@@ -758,7 +758,7 @@ struct BattleTestData
     struct QueuedEvent queuedEvents[MAX_QUEUED_EVENTS];
     u8 expectedAiActionIndex[MAX_BATTLERS_COUNT];
     struct ExpectedAIAction expectedAiActions[MAX_BATTLERS_COUNT][MAX_EXPECTED_ACTIONS];
-    struct ExpectedAiScore expectedAiScores[MAX_BATTLERS_COUNT][MAX_TURNS][MAX_AI_SCORE_COMPARISION_PER_TURN]; // Max 4 comparisions per turn
+    struct ExpectedAiScore expectedAiScores[MAX_BATTLERS_COUNT][MAX_TURNS][MAX_AI_SCORE_COMPARISION_PER_TURN]; // Max 16 comparisions per turn
     struct AILogLine aiLogLines[MAX_BATTLERS_COUNT][MAX_MON_MOVES][MAX_AI_LOG_LINES];
     u8 aiLogPrintedForMove[MAX_BATTLERS_COUNT]; // Marks ai score log as printed for move, so the same log isn't displayed multiple times.
     u16 flagId;
