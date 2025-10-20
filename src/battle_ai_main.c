@@ -988,6 +988,7 @@ static inline void BattleAI_DoAIProcessing(struct AiThinkingStruct *aiThink, u32
                       battlerDef,
                       aiThink->moveConsidered,
                       aiThink->score[aiThink->movesetIndex]);
+                //DebugPrintf("Turn:  %d  Atk:    %d  %S  Def:    %d  %S  Move:   %S  Score:  %d  SimDmg: %d  %d  %d", gBattleTurnCounter + 1, battlerAtk, GetSpeciesName(gBattleMons[battlerAtk].species), battlerDef, GetSpeciesName(gBattleMons[battlerDef].species), GetMoveName(aiThink->moveConsidered), aiThink->score[aiThink->movesetIndex], gAiLogicData->simulatedDmg[battlerAtk][battlerDef][aiThink->movesetIndex].minimum, gAiLogicData->simulatedDmg[battlerAtk][battlerDef][aiThink->movesetIndex].median, gAiLogicData->simulatedDmg[battlerAtk][battlerDef][aiThink->movesetIndex].maximum);
             }
         }
         else
@@ -9050,29 +9051,6 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
 
     } // AI_CheckBadMove
 
-    // AI_TryToFaint
-    if (!IsTargetingPartner(battlerAtk, battlerDef) && !IsBattleMoveStatus(move))
-    {
-        if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, AI_ATTACKING)
-            && moveEffect != EFFECT_EXPLOSION && moveEffect != EFFECT_MISTY_EXPLOSION)
-        {
-            if (AI_IsFaster(battlerAtk, battlerDef, move, MOVE_TACKLE, CONSIDER_PRIORITY))
-                ADJUST_SCORE(FAST_KILL);
-            else
-                ADJUST_SCORE(SLOW_KILL);
-
-            if (moveTargetsBothOpponents)
-                ADJUST_SCORE(3);
-
-        }
-        if (CanTargetFaintAi(battlerDef, battlerAtk)
-            && GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER
-            && GetBattleMovePriority(battlerAtk, gAiLogicData->abilities[battlerAtk], move) > 0)
-        {
-            ADJUST_SCORE(LAST_CHANCE);
-        }
-    } // AI_TryToFaint
-
     // AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE
     {
         u16 bestMoves[4] = {0};
@@ -9088,8 +9066,32 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             GetBestDmgMoveFromPartner(battlerAtk, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), AI_ATTACKING, bestMoves, &bestTarget);
             if (((bestMoves[0] == move) || (bestMoves[1] == move) || (bestMoves[2] == move) || (bestMoves[3] == move)) && (bestTarget == battlerDef))
             {
-                ADJUST_SCORE(BEST_DAMAGE_MOVE);
-                ADJUST_SCORE(2); // Always gets the additional +2
+                // AI_TryToFaint
+                {
+                    if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, AI_ATTACKING)
+                        && moveEffect != EFFECT_EXPLOSION && moveEffect != EFFECT_MISTY_EXPLOSION)
+                    {
+                        if (AI_IsFaster(battlerAtk, battlerDef, move, MOVE_TACKLE, CONSIDER_PRIORITY))
+                            ADJUST_SCORE(FAST_KILL);
+                        else
+                            ADJUST_SCORE(SLOW_KILL);
+
+                        if (moveTargetsBothOpponents)
+                            ADJUST_SCORE(3);
+                    }
+                }
+                if ((moveTarget != MOVE_TARGET_ALL_BATTLERS && moveTarget != MOVE_TARGET_FOES_AND_ALLY) || (isFriendlyFireOK && (moveTarget == MOVE_TARGET_ALL_BATTLERS || moveTarget == MOVE_TARGET_FOES_AND_ALLY))) // Only score if friendly fire is allowed
+                {
+                    ADJUST_SCORE(BEST_DAMAGE_MOVE);
+                    ADJUST_SCORE(2); // Always gets the additional +2
+                }
+            }
+            // AI_TryToFaint
+            {
+                if (CanTargetFaintAi(battlerDef, battlerAtk)
+                    && GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER
+                    && GetBattleMovePriority(battlerAtk, gAiLogicData->abilities[battlerAtk], move) > 0)
+                    ADJUST_SCORE(LAST_CHANCE);
             }
             if (GetNoOfHitsToKOBattler(battlerAtk, battlerDef, gAiThinkingStruct->movesetIndex, AI_ATTACKING) > 4)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
