@@ -10,9 +10,12 @@ Categories:
 >> 2VS1: all 2v1 tests
 >>> AI: all AI tests
 >>> NO AI: all non-AI tests
->>>> OFFENSIVE SETUP: all offensive setup tests
->>>> SWITCHING MOVES: all switching move tests
->>>> TRICK ROOM: all Trick Room tests
+>>>> OPPONENT: all opponent tests
+>>>> PARTNER: all partner tests
+>>>>> SCORING: all scoring tests
+>>>>> OFFENSIVE SETUP: all offensive setup tests
+>>>>> SWITCHING MOVES: all switching move tests
+>>>>> TRICK ROOM: all Trick Room tests
 
 */
 
@@ -21,7 +24,7 @@ ASSUMPTIONS
     ASSUME(GetMoveEffect(MOVE_SONIC_BOOM) == EFFECT_FIXED_HP_DAMAGE);
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a type immunity when outsped and OHKO'd by one type of move (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a type immunity when outsped and OHKO'd by one type of move (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -51,7 +54,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
         }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a type immunity when outsped and OHKO'd by more than one type of move (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a type immunity when outsped and OHKO'd by more than one type of move (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -87,7 +90,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
     }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a type immunity when the immunity is holding Ring Target (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a type immunity when the immunity is holding Ring Target (multibattle)")
 {
     u32 item = ITEM_NONE, moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -125,7 +128,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
         }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a 4x resist when outsped and OHKO'd by one type of move (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a 4x resist when outsped and OHKO'd by one type of move (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -222,7 +225,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 }
 
 // Non-matching moves put on battler 2 as battler 3 runs the regular switch AI when immunity fails, meaning sees zero damage if move on battler 2
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a absorbing abilities when outsped and OHKO'd by appropriate moves by mons without Moldbreaker (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a absorbing abilities when outsped and OHKO'd by appropriate moves by mons without Moldbreaker (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE, ability1 = ABILITY_NONE, ability2 = ABILITY_NONE;
 
@@ -281,7 +284,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 }
 
 // Non-sound moves put on battler 2 as battler 3 runs the regular switch AI when immunity fails, meaning Soundproof sees zero damage if sound move on battler 2
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Soundproof immunity when outsped and OHKO'd by only sound moves (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Soundproof immunity when outsped and OHKO'd by only sound moves (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -312,7 +315,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
     }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Soundproof immunity when outsped and OHKO'd by sound moves under Moldbreaker (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Soundproof immunity when outsped and OHKO'd by sound moves under Moldbreaker (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE, ability1 = ABILITY_NONE, ability2 = ABILITY_NONE;
 
@@ -341,7 +344,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 }
 
 // Non-ballistic moves put on battler 2 as battler 3 runs the regular switch AI when immunity fails, meaning Bulletproof sees zero damage if ballistic move on battler 2
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Bulletproof immunity when outsped and OHKO'd by only ballistic moves (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Bulletproof immunity when outsped and OHKO'd by only ballistic moves (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -372,7 +375,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
     }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Bulletproof immunity when outsped and OHKO'd by ballistic moves under Moldbreaker (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Bulletproof immunity when outsped and OHKO'd by ballistic moves under Moldbreaker (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE, ability1 = ABILITY_NONE, ability2 = ABILITY_NONE;
 
@@ -401,7 +404,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 }
 
 // Non-wind moves put on battler 2 as battler 3 runs the regular switch AI when immunity fails, meaning Wind-immune mons sees zero damage if wind move on battler 2
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Wind immunity when outsped and OHKO'd by only wind moves (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Wind immunity when outsped and OHKO'd by only wind moves (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -442,7 +445,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 }
 
 // Moldbreaker needs to be on opposite battler for regular switch check
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Wind immunity when outsped and OHKO'd by wind moves under Moldbreaker (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Wind immunity when outsped and OHKO'd by wind moves under Moldbreaker (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE, ability1 = ABILITY_NONE, ability2 = ABILITY_NONE;
 
@@ -475,3 +478,185 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
             TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (((ability1 == ABILITY_MOLD_BREAKER) || (ability2 == ABILITY_MOLD_BREAKER)) ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
     }   
 }
+
+// =========================== IMPORTED FROM MULTI TESTING SYSTEM ===========================
+
+// Used to test EXPECT_SWITCH only on partner
+AI_MULTI_BATTLE_TEST("AI partner will not switch mid-turn into a player Pokémon (multi)")
+{
+    u32 flags;
+
+    PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
+    PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
+
+    PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
+    GIVEN {
+        BATTLER_AI_FLAGS(2, flags);
+        MULTI_PLAYER(SPECIES_HAUNTER);
+        MULTI_PLAYER(SPECIES_RATTATA);
+        // No moves to damage opponents.
+        MULTI_PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); }
+        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
+        
+    } WHEN {
+        TURN { EXPECT_SWITCH(playerRight, 4); };
+    } SCENE {
+        MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
+        MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
+        NONE_OF {
+            MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
+            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+        }
+    }
+}
+
+// Used to test EXPECT_SWITCH only on partner
+AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch mid-turn into a player Pokémon (2v1)")
+{
+    u32 flags;
+
+    PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
+    PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
+
+    PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
+    GIVEN {
+        BATTLER_AI_FLAGS(2, flags);
+        MULTI_PLAYER(SPECIES_HAUNTER);
+        MULTI_PLAYER(SPECIES_RATTATA);
+        // No moves to damage opponents.
+        MULTI_PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); }
+        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
+        
+    } WHEN {
+        TURN { EXPECT_SWITCH(playerRight, 4); };
+    } SCENE {
+        MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
+        MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
+        NONE_OF {
+            MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
+            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+        }
+    }
+}
+
+// Used to test EXPECT_SEND_OUT only on partner
+AI_MULTI_BATTLE_TEST("AI partner will not switch into a player Pokémon after fainting (multi)")
+{
+    u32 flags;
+
+    PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
+    PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
+
+    PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
+    GIVEN {
+        BATTLER_AI_FLAGS(2, flags);
+        MULTI_PLAYER(SPECIES_GENGAR);
+        MULTI_PLAYER(SPECIES_RATTATA);
+        // No moves to damage opponents.
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Status1(STATUS1_BURN); HP(1); }
+        MULTI_PARTNER(SPECIES_HAUNTER);
+        MULTI_OPPONENT_A(SPECIES_TRAPINCH) { Ability(ABILITY_ARENA_TRAP); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_VIBRAVA) { Moves(MOVE_CELEBRATE); }
+        
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SEND_OUT(playerRight, 4); };
+    } SCENE {
+        MESSAGE(AI_PARTNER_NAME " sent out Haunter!");
+        NONE_OF {
+            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+        }
+    }
+}
+
+// Used to test EXPECT_SEND_OUT only on partner
+AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch into a player Pokémon after fainting (2v1)")
+{
+    u32 flags;
+
+    PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
+    PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
+
+    PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
+    GIVEN {
+        BATTLER_AI_FLAGS(2, flags);
+        MULTI_PLAYER(SPECIES_GENGAR);
+        MULTI_PLAYER(SPECIES_RATTATA);
+        // No moves to damage opponents.
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Status1(STATUS1_BURN); HP(1); }
+        MULTI_PARTNER(SPECIES_HAUNTER);
+        MULTI_OPPONENT_A(SPECIES_TRAPINCH) { Ability(ABILITY_ARENA_TRAP); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_A(SPECIES_VIBRAVA) { Moves(MOVE_CELEBRATE); }
+        
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SEND_OUT(playerRight, 4); };
+    } SCENE {
+        MESSAGE(AI_PARTNER_NAME " sent out Haunter!");
+        NONE_OF {
+            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+        }
+    }
+}
+
+// Used to test EXPECT_SWITCH, EXPECT_SEND_OUT, and EXPECT_MOVE on partner
+AI_MULTI_BATTLE_TEST("AI partner will not switch into a player Pokémon (multi)")
+{
+    u32 flags;
+
+    PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
+    PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
+
+    PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
+    GIVEN {
+        BATTLER_AI_FLAGS(2, flags);
+        MULTI_PLAYER(SPECIES_HAUNTER);
+        MULTI_PLAYER(SPECIES_RATTATA);
+        // No moves to damage opponents.
+        MULTI_PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
+        
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_AURA_SPHERE, target:playerRight); EXPECT_SWITCH(playerRight, 4); EXPECT_SEND_OUT(playerRight, 3); };
+        TURN { EXPECT_MOVE(playerRight, MOVE_SHADOW_BALL, target:opponentLeft); };
+    } SCENE {
+        MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
+        NONE_OF {
+            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+        }
+    }
+}
+
+// Used to test EXPECT_SWITCH, EXPECT_SEND_OUT, and EXPECT_MOVE on partner
+AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch into a player Pokémon (2v1)")
+{
+    u32 flags;
+
+    PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
+    PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
+
+    PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
+    GIVEN {
+        BATTLER_AI_FLAGS(2, flags);
+        MULTI_PLAYER(SPECIES_HAUNTER);
+        MULTI_PLAYER(SPECIES_RATTATA);
+        // No moves to damage opponents.
+        MULTI_PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
+        
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_AURA_SPHERE, target:playerRight); EXPECT_SWITCH(playerRight, 4); EXPECT_SEND_OUT(playerRight, 3); }
+    } SCENE {
+        MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
+        NONE_OF {
+            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+        }
+    }
+}
+

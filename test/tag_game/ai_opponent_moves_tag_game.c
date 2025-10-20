@@ -10,10 +10,12 @@ Categories:
 >> 2VS1: all 2v1 tests
 >>> AI: all AI tests
 >>> NO AI: all non-AI tests
->>>> SCORING: all scoring tests
->>>> OFFENSIVE SETUP: all offensive setup tests
->>>> SWITCHING MOVES: all switching move tests
->>>> TRICK ROOM: all Trick Room tests
+>>>> OPPONENT: all opponent tests
+>>>> PARTNER: all partner tests
+>>>>> SCORING: all scoring tests
+>>>>> OFFENSIVE SETUP: all offensive setup tests
+>>>>> SWITCHING MOVES: all switching move tests
+>>>>> TRICK ROOM: all Trick Room tests
 
 */
 
@@ -22,7 +24,7 @@ ASSUMPTIONS
     ASSUME(GetMoveEffect(MOVE_SONIC_BOOM) == EFFECT_FIXED_HP_DAMAGE);
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SCORING: Highest damaging move scores +6 80% of the time (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Highest damaging move scores +6 80% of the time for opponents")
 {
     PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
     GIVEN {
@@ -36,10 +38,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SCORING: Highest damaging move scores
                 SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_ENERGY, 106, target:playerLeft); 
                 SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_ENERGY, 106, target:playerRight); 
                 SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_ENERGY, 106, target:playerRight); }
+            TURN { SCORE_EQ_VAL(opponentLeft, MOVE_MUDDY_WATER, 100, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_MUDDY_WATER, 100, target:playerLeft); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_MUDDY_WATER, 100, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_MUDDY_WATER, 100, target:playerRight); }
         } 
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SCORING: Highest damaging move scores +6 80% of the time (2v1)")
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Highest damaging move scores +6 80% of the time for opponents")
 {
     PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
     GIVEN {
@@ -53,10 +59,14 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SCORING: Highest damaging move sc
                 SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_ENERGY, 106, target:playerLeft); 
                 SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_ENERGY, 106, target:playerRight); 
                 SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_ENERGY, 106, target:playerRight); }
+            TURN { SCORE_EQ_VAL(opponentLeft, MOVE_MUDDY_WATER, 100, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_MUDDY_WATER, 100, target:playerLeft); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_MUDDY_WATER, 100, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_MUDDY_WATER, 100, target:playerRight); }
         } 
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SCORING: Highest damaging move scores +8 20% of the time (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Highest damaging move scores +8 20% of the time for opponents")
 {
     PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
     GIVEN {
@@ -70,10 +80,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SCORING: Highest damaging move scores
                 SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_ENERGY, 108, target:playerLeft); 
                 SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_ENERGY, 108, target:playerRight); 
                 SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_ENERGY, 108, target:playerRight); }
+            TURN { SCORE_EQ_VAL(opponentLeft, MOVE_MUDDY_WATER, 100, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_MUDDY_WATER, 100, target:playerLeft); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_MUDDY_WATER, 100, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_MUDDY_WATER, 100, target:playerRight); }
         } 
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SCORING: Highest damaging move scores +8 20% of the time (2v1)")
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Highest damaging move scores +8 20% of the time for opponents")
 {
     PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
     GIVEN {
@@ -87,10 +101,14 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SCORING: Highest damaging move sc
                 SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_ENERGY, 108, target:playerLeft); 
                 SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_ENERGY, 108, target:playerRight); 
                 SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_ENERGY, 108, target:playerRight); }
+            TURN { SCORE_EQ_VAL(opponentLeft, MOVE_MUDDY_WATER, 100, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_MUDDY_WATER, 100, target:playerLeft); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_MUDDY_WATER, 100, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_MUDDY_WATER, 100, target:playerRight); }
         } 
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SCORING: AI always chooses highest damaging move (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: AI always chooses highest damaging move")
 {
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
@@ -109,7 +127,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SCORING: AI always chooses highest da
         }   
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SCORING: AI always chooses highest damaging move (2v1)")
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: AI always chooses highest damaging move")
 {
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
@@ -128,7 +146,175 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SCORING: AI always chooses highes
         }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OFFENSIVE SETUP: AI always chooses +2 offensive setup over slow kill if both targets are incapacitated (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Fast KO scores +18 80% of the time for opponents")
+{
+    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    GIVEN {
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
+        MULTI_PLAYER(SPECIES_KINGDRA) { HP(1); Speed(1); };
+        MULTI_PARTNER(SPECIES_KINGDRA){ HP(1); Speed(1); };
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(2); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(3); }
+    } WHEN {
+            TURN { SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 118, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 118, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 118, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 118, target:playerRight); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 118, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 118, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 118, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 118, target:playerRight); }
+        } 
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Fast KO scores +18 80% of the time for opponents")
+{
+    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    GIVEN {
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
+        MULTI_PLAYER(SPECIES_KINGDRA) { HP(1); Speed(1); };
+        MULTI_PARTNER(SPECIES_KINGDRA){ HP(1); Speed(1); };
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(2); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(3); }
+    } WHEN {
+            TURN { SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 118, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 118, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 118, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 118, target:playerRight); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 118, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 118, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 118, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 118, target:playerRight); }
+        } 
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Fast KO scores +20 20% of the time for opponents")
+{
+    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    GIVEN {
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
+        MULTI_PLAYER(SPECIES_KINGDRA) { HP(1); Speed(1); };
+        MULTI_PARTNER(SPECIES_KINGDRA){ HP(1); Speed(1); };
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(2); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(3); }
+    } WHEN {
+            TURN { SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 120, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 120, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 120, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 120, target:playerRight); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 120, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 120, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 120, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 120, target:playerRight); }
+        } 
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Fast KO scores +20 20% of the time for opponents")
+{
+    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    GIVEN {
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
+        MULTI_PLAYER(SPECIES_KINGDRA) { HP(1); Speed(1); };
+        MULTI_PARTNER(SPECIES_KINGDRA){ HP(1); Speed(1); };
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(2); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(3); }
+    } WHEN {
+            TURN { SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 120, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 120, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 120, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 120, target:playerRight); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 120, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 120, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 120, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 120, target:playerRight); }
+        } 
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Slow KO scores +12 80% of the time for opponents")
+{
+    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    GIVEN {
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
+        MULTI_PLAYER(SPECIES_KINGDRA) { HP(1); Speed(3); };
+        MULTI_PARTNER(SPECIES_KINGDRA){ HP(1); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(2); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(1); }
+    } WHEN {
+            TURN { SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 112, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 112, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 112, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 112, target:playerRight); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 112, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 112, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 112, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 112, target:playerRight); }
+        } 
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Slow KO scores +12 80% of the time for opponents")
+{
+    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    GIVEN {
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
+        MULTI_PLAYER(SPECIES_KINGDRA) { HP(1); Speed(3); };
+        MULTI_PARTNER(SPECIES_KINGDRA){ HP(1); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(2); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(1); }
+    } WHEN {
+            TURN { SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 112, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 112, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 112, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 112, target:playerRight); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 112, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 112, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 112, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 112, target:playerRight); }
+        } 
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Slow KO scores +14 20% of the time for opponents")
+{
+    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    GIVEN {
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
+        MULTI_PLAYER(SPECIES_KINGDRA) { HP(1); Speed(3); };
+        MULTI_PARTNER(SPECIES_KINGDRA){ HP(1); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(2); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(1); }
+    } WHEN {
+            TURN { SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 114, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 114, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 114, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 114, target:playerRight); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 114, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 114, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 114, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 114, target:playerRight); }
+        } 
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Slow KO scores +14 20% of the time for opponents")
+{
+    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    GIVEN {
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
+        MULTI_PLAYER(SPECIES_KINGDRA) { HP(1); Speed(3); };
+        MULTI_PARTNER(SPECIES_KINGDRA){ HP(1); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(2); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(1); }
+    } WHEN {
+            TURN { SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 114, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 114, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_PULSE, 114, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_PULSE, 114, target:playerRight); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 114, target:playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 114, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_SCALD, 114, target:playerRight); 
+                SCORE_EQ_VAL(opponentRight, MOVE_SCALD, 114, target:playerRight); }
+        } 
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: OFFENSIVE SETUP: AI always chooses +2 offensive setup over slow kill if both targets are incapacitated")
 {
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
@@ -144,7 +330,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OFFENSIVE SETUP: AI always chooses +2
     }
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OFFENSIVE SETUP: AI sometimes chooses +2 offensive setup over slow kill if one target is incapacitated (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: OFFENSIVE SETUP: AI sometimes chooses +2 offensive setup over slow kill if one target is incapacitated")
 {
     PASSES_RANDOMLY(CUSTOM_AI_FIFTY_PERCENT, 100, RNG_AI_CUSTOM_AI_FIFTY_PERCENT);
     GIVEN {
@@ -161,7 +347,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OFFENSIVE SETUP: AI sometimes chooses
     }
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OFFENSIVE SETUP: AI always chooses +2 offensive setup over slow kill if both targets are incapacitated (2v1)")
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: OFFENSIVE SETUP: AI always chooses +2 offensive setup over slow kill if both targets are incapacitated")
 {
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
@@ -177,7 +363,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OFFENSIVE SETUP: AI always choose
     }
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OFFENSIVE SETUP: AI sometimes chooses +2 offensive setup over slow kill if one target is incapacitated (2v1)")
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: OFFENSIVE SETUP: AI sometimes chooses +2 offensive setup over slow kill if one target is incapacitated")
 {
     PASSES_RANDOMLY(CUSTOM_AI_FIFTY_PERCENT, 100, RNG_AI_CUSTOM_AI_FIFTY_PERCENT);
     GIVEN {
@@ -194,7 +380,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OFFENSIVE SETUP: AI sometimes cho
     }
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SWITCHING MOVES: AI will not fast Volt Switch into a mon that is slow OHKO'd (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SWITCHING MOVES: AI will not fast Volt Switch into a mon that is slow OHKO'd")
 {
     GIVEN {
         ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
@@ -212,7 +398,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SWITCHING MOVES: AI will not fast Vol
     }
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SWITCHING MOVES: AI will not fast Volt Switch into a mon that is slow OHKO'd (2v1)")
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SWITCHING MOVES: AI will not fast Volt Switch into a mon that is slow OHKO'd")
 {
     GIVEN {
         ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
@@ -230,7 +416,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SWITCHING MOVES: AI will not fast
     }
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SWITCHING MOVES: AI will slow Volt Switch into a mon that is slow OHKO'd (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SWITCHING MOVES: AI will slow Volt Switch into a mon that is slow OHKO'd")
 {
     GIVEN {
         ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
@@ -248,7 +434,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SWITCHING MOVES: AI will slow Volt Sw
     }
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SWITCHING MOVES: AI will slow Volt Switch into a mon that is slow OHKO'd (2v1)")
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SWITCHING MOVES: AI will slow Volt Switch into a mon that is slow OHKO'd")
 {
     GIVEN {
         ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
@@ -266,7 +452,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SWITCHING MOVES: AI will slow Vol
     }
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SWITCHING MOVES: AI will not fast Volt Switch into a mon that is outsped and 2HKO'd (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SWITCHING MOVES: AI will not fast Volt Switch into a mon that is outsped and 2HKO'd")
 {
     GIVEN {
         ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
@@ -284,7 +470,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SWITCHING MOVES: AI will not fast Vol
     }
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SWITCHING MOVES: AI will not fast Volt Switch into a mon that is outsped and 2HKO'd (2v1)")
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SWITCHING MOVES: AI will not fast Volt Switch into a mon that is outsped and 2HKO'd")
 {
     GIVEN {
         ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
@@ -302,7 +488,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SWITCHING MOVES: AI will not fast
     }
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SWITCHING MOVES: AI will slow Volt Switch into a mon that is outsped and 2HKO'd (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SWITCHING MOVES: AI will slow Volt Switch into a mon that is outsped and 2HKO'd")
 {
     GIVEN {
         ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
@@ -320,7 +506,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SWITCHING MOVES: AI will slow Volt Sw
     }
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SWITCHING MOVES: AI will slow Volt Switch into a mon that is outsped and 2HKO'd (2v1)")
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SWITCHING MOVES: AI will slow Volt Switch into a mon that is outsped and 2HKO'd")
 {
     GIVEN {
         ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
@@ -338,7 +524,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SWITCHING MOVES: AI will slow Vol
     }
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: TRICK ROOM: AI uses After You and Trick Room together (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: TRICK ROOM: AI uses After You and Trick Room together")
 {
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
@@ -356,7 +542,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: TRICK ROOM: AI uses After You and Tri
     }
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: TRICK ROOM: AI uses After You and Trick Room together (2v1)")
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: TRICK ROOM: AI uses After You and Trick Room together")
 {
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
@@ -374,7 +560,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: TRICK ROOM: AI uses After You and
     }
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: TRICK ROOM: Both opponents use Trick Room on the turn it expires 50% of time (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: TRICK ROOM: Both opponents use Trick Room on the turn it expires 50% of time")
 {
     PASSES_RANDOMLY(DOUBLE_TRICK_ROOM_ON_LAST_TURN_CHANCE, 100, RNG_AI_REFRESH_TRICK_ROOM_ON_LAST_TURN);
     GIVEN {
@@ -392,7 +578,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: TRICK ROOM: Both opponents use Trick 
         } 
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: TRICK ROOM: Both opponents use Trick Room on the turn it expires 50% of time (2v1)")
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: TRICK ROOM: Both opponents use Trick Room on the turn it expires 50% of time")
 {
     PASSES_RANDOMLY(DOUBLE_TRICK_ROOM_ON_LAST_TURN_CHANCE, 100, RNG_AI_REFRESH_TRICK_ROOM_ON_LAST_TURN);
     GIVEN {
