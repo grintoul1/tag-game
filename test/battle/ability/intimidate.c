@@ -110,7 +110,7 @@ SINGLE_BATTLE_TEST("Intimidate and Eject Button don't force the opponent to Atta
         ASSUME(gItemsInfo[ITEM_EJECT_BUTTON].holdEffect == HOLD_EFFECT_EJECT_BUTTON);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET) { Item(ITEM_EJECT_BUTTON); }
-        OPPONENT(SPECIES_HITMONTOP) { Moves(MOVE_SCRATCH); }
+        OPPONENT(SPECIES_HITMONTOP) { Ability(ABILITY_INTIMIDATE); Moves(MOVE_SCRATCH); }
     } WHEN {
         TURN {
            MOVE(player, MOVE_QUICK_ATTACK);
