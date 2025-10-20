@@ -11023,7 +11023,7 @@
         },
         {
           "map": "MAP_LITTLEROOT_CAVE_WATERFALL_ROOM",
-          "base_label": "gLittleroot_Cave_WaterfallRoom",
+          "base_label": "gLittlerootCave_WaterfallRoom",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
