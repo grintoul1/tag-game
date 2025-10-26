@@ -171,7 +171,7 @@ local moveNameLength = emu:read8(rhhHeaderAdr + RHHRomHeader.moveNameLength) -- 
 
 -- Abilities
 local abilityInfo = emu:read32(rhhHeaderAdr + RHHRomHeader.abilitiesPtr) -- gAbilitiesInfo
-local abilitySize = emu:read32(rhhHeaderAdr + RHHRomHeader.abilitySize) -- sizeof(struct Ability)
+local abilitySize = emu:read32(rhhHeaderAdr + RHHRomHeader.abilitySize) -- sizeof(struct AbilityInfo)
 local abilitiesCount = emu:read16(rhhHeaderAdr + RHHRomHeader.abilitiesCount) -- ABILITIES_COUNT
 local abilityNameLength = emu:read8(rhhHeaderAdr + RHHRomHeader.abilityNameLength) -- ABILITY_NAME_LENGTH
 

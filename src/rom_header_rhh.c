@@ -75,7 +75,7 @@ __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHead
     .partyPokemonSize = sizeof(struct Pokemon),
     .speciesSize = sizeof(struct SpeciesInfo),
     .movesSize = sizeof(struct MoveInfo),
-    .abilitySize = sizeof(struct Ability),
+    .abilitySize = sizeof(struct AbilityInfo),
     .regionMapEntrySize = sizeof(struct RegionMapLocation),
     .itemSize = sizeof(struct Item),
     .speciesNameOffset = offsetof(struct SpeciesInfo, speciesName),
