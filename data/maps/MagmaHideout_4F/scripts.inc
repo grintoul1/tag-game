@@ -242,7 +242,7 @@ MagmaHideout_4F_Movement_ShellyApproachPlayer:
 	step_end
 
 MagmaHideout_4F_Text_TabithaThinkIWouldntFindYou:
-	.string "Tabitha: Did you think you I wouldn't\n"
+	.string "Tabitha: Did you think that I wouldn't\n"
 	.string "find you?\p"
 	.string "You two really need to work on your\n"
 	.string "stealth!$"

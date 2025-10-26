@@ -1791,24 +1791,24 @@ Common_EventScript_EmmieDoBattle::
 	end
 
 Common_EventScript_EmmieBattleTeamCheck1::
-	specialvar VAR_EMMIE_PARTY_SIZE, CalculatePlayerPartyCount
-	vgoto_if_ne VAR_EMMIE_PARTY_SIZE, 6, Common_EventScript_EmmieNotEnoughMons
+	specialvar VAR_RESULT, CalculatePlayerPartyCount
+	vgoto_if_ne VAR_RESULT, 6, Common_EventScript_EmmieNotEnoughMons
 	goto Common_EventScript_EmmieBattle1
 	releaseall
 	end
 
 Common_EventScript_EmmieBattleTeamCheck2::
-	specialvar VAR_EMMIE_PARTY_SIZE, CalculatePlayerPartyCount
-	vgoto_if_eq VAR_EMMIE_PARTY_SIZE, 4, Common_EventScript_EmmieBattle2
-	vgoto_if_eq VAR_EMMIE_PARTY_SIZE, 5, Common_EventScript_EmmieBattle2
-	vgoto_if_eq VAR_EMMIE_PARTY_SIZE, 6, Common_EventScript_EmmieBattle2
+	specialvar VAR_RESULT, CalculatePlayerPartyCount
+	vgoto_if_eq VAR_RESULT, 4, Common_EventScript_EmmieBattle2
+	vgoto_if_eq VAR_RESULT, 5, Common_EventScript_EmmieBattle2
+	vgoto_if_eq VAR_RESULT, 6, Common_EventScript_EmmieBattle2
 	goto Common_EventScript_EmmieNotEnoughMons
 	releaseall
 	end
 
 Common_EventScript_EmmieBattleTeamCheck3::
-	specialvar VAR_EMMIE_PARTY_SIZE, CalculatePlayerPartyCount
-	vgoto_if_ne VAR_EMMIE_PARTY_SIZE, 6, Common_EventScript_EmmieNotEnoughMons
+	specialvar VAR_RESULT, CalculatePlayerPartyCount
+	vgoto_if_ne VAR_RESULT, 6, Common_EventScript_EmmieNotEnoughMons
 	goto Common_EventScript_EmmieBattle3
 	releaseall
 	end
@@ -2736,6 +2736,6 @@ EventScript_VsSeekerChargingDone::
 
 	.include "data/maps/LittlerootCave_Underwater/scripts.inc"
 
-	.include "data/maps/Littleroot_Cave_WaterfallRoom/scripts.inc"
+	.include "data/maps/LittlerootCave_WaterfallRoom/scripts.inc"
 
 	.include "data/maps/LittlerootCave_WaterfallRoom_Underwater/scripts.inc"

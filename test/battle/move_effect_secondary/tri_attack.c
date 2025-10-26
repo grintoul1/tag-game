@@ -17,7 +17,8 @@ SINGLE_BATTLE_TEST("Tri Attack can inflict paralysis, burn or freeze")
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_PRZ; }
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_BRN; }
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_FRB; }
-    PASSES_RANDOMLY(1, 3, RNG_TRI_ATTACK);
+    PARAMETRIZE { statusAnim = B_ANIM_STATUS_FRZ; }
+    PASSES_RANDOMLY(1, 4, RNG_TRI_ATTACK);
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
@@ -32,6 +33,8 @@ SINGLE_BATTLE_TEST("Tri Attack can inflict paralysis, burn or freeze")
             STATUS_ICON(opponent, burn: TRUE);
         } else if (statusAnim == B_ANIM_STATUS_FRZ) {
             STATUS_ICON(opponent, freeze: TRUE);
+        } else if (statusAnim == B_ANIM_STATUS_FRB) {
+            STATUS_ICON(opponent, frostbite: TRUE);
         } else if (statusAnim == B_ANIM_STATUS_PRZ) {
             STATUS_ICON(opponent, paralysis: TRUE);
         }
@@ -81,7 +84,8 @@ SINGLE_BATTLE_TEST("Tri Attack cannot paralyze/burn/freeze Pokémon with abiliti
 #endif
 {
     u8 statusAnim;
-    u16 species, ability;
+    u16 species;
+    enum Ability ability;
     u32 rng;
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_PRZ; rng = MOVE_EFFECT_PARALYSIS; species = SPECIES_PERSIAN; ability = ABILITY_LIMBER; }
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_PRZ; rng = MOVE_EFFECT_PARALYSIS; species = SPECIES_KOMALA; ability = ABILITY_COMATOSE; }

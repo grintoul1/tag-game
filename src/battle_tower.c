@@ -1571,7 +1571,8 @@ void CreateFacilityMon(const struct TrainerMon *fmon, u16 level, u8 fixedIV, u32
 {
     u8 ball = (fmon->ball == 0xFF) ? Random() % POKEBALL_COUNT : fmon->ball;
     u16 move;
-    u32 personality = 0, ability, friendship, j;
+    u32 personality = 0, friendship, j;
+    enum Ability ability;
 
     if (fmon->gender == TRAINER_MON_MALE)
     {
@@ -2127,7 +2128,7 @@ void DoSpecialTrainerBattle(void)
         }
 
         FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0, 6);
-        if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_1)
         {
             for (i = 0; i < 6; i++)
             {
@@ -2141,7 +2142,7 @@ void DoSpecialTrainerBattle(void)
                 gBattleTypeFlags = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER);
             }
         }
-        if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_2)
         {
             for (i = 3; i < 6; i++)
             {
@@ -2158,7 +2159,7 @@ void DoSpecialTrainerBattle(void)
                 FillPartnerParty(gPartnerTrainerId);
             }
         }
-        if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_3)
         {
             for (i = 0; i < 6; i++)
             {
@@ -2172,7 +2173,7 @@ void DoSpecialTrainerBattle(void)
                 gBattleTypeFlags = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER);
             }
         }
-        if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_1)
         {
             for (i = 0; i < 6; i++)
             {
@@ -2216,7 +2217,7 @@ void DoSpecialTrainerBattle(void)
             j = ITEM_STICKY_BARB;
             SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
         }
-        else if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
+        else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_2)
         {
             j = SPECIES_TORNADUS;
                 SetMonData(&gEnemyParty[0], MON_DATA_SPECIES, &j);
@@ -2272,7 +2273,7 @@ void DoSpecialTrainerBattle(void)
             j = ITEM_STICKY_BARB;
             SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
         }
-        else if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
+        else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_3)
         {
             for (i = 0; i < 6; i++)
             {
@@ -2317,15 +2318,15 @@ void DoSpecialTrainerBattle(void)
         }
         
         CreateTask(Task_StartBattleAfterTransition, 1);
-        if (FlagGet(FLAG_EMMIE_BATTLE_1) == TRUE)
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_1)
         {
             PlayMapChosenOrBattleBGM(481);
         }
-        if (FlagGet(FLAG_EMMIE_BATTLE_2) == TRUE)
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_2)
         {
             PlayMapChosenOrBattleBGM(471);
         }
-        if (FlagGet(FLAG_EMMIE_BATTLE_3) == TRUE)
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_3)
         {
             PlayMapChosenOrBattleBGM(610);
         }
@@ -3881,7 +3882,7 @@ void TrySetLinkBattleTowerEnemyPartyLevel(void)
         {
             u8 enemyLevel = SetFacilityPtrsGetLevel();
 
-            for (s32 i = 0; i < PARTY_SIZE; i++)
+            for (u32 i = 0; i < PARTY_SIZE; i++)
             {
                 u32 species = GetMonData(&gEnemyParty[i], MON_DATA_SPECIES, NULL);
                 if (species)

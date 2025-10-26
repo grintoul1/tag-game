@@ -602,7 +602,7 @@ enum
 struct QueuedAbilityEvent
 {
     u8 battlerId;
-    u16 ability;
+    enum Ability ability;
 };
 
 struct QueuedAnimationEvent
@@ -685,7 +685,7 @@ struct ExpectedAIAction
     u8 actionSet:1; // Action was set and is expected to happen. Set only for battlers controlled by AI.
 };
 
-#define MAX_AI_SCORE_COMPARISION_PER_TURN 4
+#define MAX_AI_SCORE_COMPARISION_PER_TURN 8
 #define MAX_AI_LOG_LINES 10
 
 struct ExpectedAiScore
@@ -694,7 +694,7 @@ struct ExpectedAiScore
     u8 moveSlot1:2;
     u8 moveSlot2:2;
     u8 target:2;
-    s8 value; // value
+    s16 value; // value
     u8 cmp:3; // Uses battle script command's CMP_ macros
     u8 toValue:1; // compare to value, not to move
     u8 set:1;
@@ -733,7 +733,8 @@ struct BattleTestData
     struct Pokemon *currentMon;
     u8 gender;
     u8 nature;
-    u16 forcedAbilities[MAX_BATTLERS_COUNT][PARTY_SIZE];
+    bool8 isShiny;
+    enum Ability forcedAbilities[MAX_BATTLERS_COUNT][PARTY_SIZE];
     u8 chosenGimmick[MAX_BATTLERS_COUNT][PARTY_SIZE];
 
     u8 currentMonIndexes[MAX_BATTLERS_COUNT];
@@ -757,7 +758,7 @@ struct BattleTestData
     struct QueuedEvent queuedEvents[MAX_QUEUED_EVENTS];
     u8 expectedAiActionIndex[MAX_BATTLERS_COUNT];
     struct ExpectedAIAction expectedAiActions[MAX_BATTLERS_COUNT][MAX_EXPECTED_ACTIONS];
-    struct ExpectedAiScore expectedAiScores[MAX_BATTLERS_COUNT][MAX_TURNS][MAX_AI_SCORE_COMPARISION_PER_TURN]; // Max 4 comparisions per turn
+    struct ExpectedAiScore expectedAiScores[MAX_BATTLERS_COUNT][MAX_TURNS][MAX_AI_SCORE_COMPARISION_PER_TURN]; // Max 16 comparisions per turn
     struct AILogLine aiLogLines[MAX_BATTLERS_COUNT][MAX_MON_MOVES][MAX_AI_LOG_LINES];
     u8 aiLogPrintedForMove[MAX_BATTLERS_COUNT]; // Marks ai score log as printed for move, so the same log isn't displayed multiple times.
     u16 flagId;
@@ -803,8 +804,10 @@ extern struct BattleTestRunnerState *const gBattleTestRunnerState;
 
 #define AI_TRAINER_NAME "{PKMN} Trainer Leaf"
 #define AI_TRAINER_2_NAME "{PKMN} Trainer Red"
+#define AI_PARTNER_NAME "{PKMN} Trainer 1"
 #define AI_TRAINER_NAME_SHORT "Leaf"
 #define AI_TRAINER_2_NAME_SHORT "Red"
+#define AI_PARTNER_NAME_SHORT "1"
 
 /* Test */
 
@@ -988,7 +991,8 @@ struct moveWithPP {
 #define DynamaxLevel(dynamaxLevel) DynamaxLevel_(__LINE__, dynamaxLevel)
 #define GigantamaxFactor(gigantamaxFactor) GigantamaxFactor_(__LINE__, gigantamaxFactor)
 #define TeraType(teraType) TeraType_(__LINE__, teraType)
-#define Shadow(isShadow) Shadow_(__LINE__, shadow)
+#define Shadow(isShadow) Shadow_(__LINE__, isShadow)
+#define Shiny(isShiny) Shiny_(__LINE__, isShiny)
 
 void SetFlagForTest(u32 sourceLine, u16 flagId);
 void TestSetConfig(u32 sourceLine, enum GenConfigTag configTag, u32 value);
@@ -1003,7 +1007,7 @@ void BattlerAIFlags_(u32 sourceLine, u32 battler, u64 flags);
 void AILogScores(u32 sourceLine);
 void Gender_(u32 sourceLine, u32 gender);
 void Nature_(u32 sourceLine, u32 nature);
-void Ability_(u32 sourceLine, u32 ability);
+void Ability_(u32 sourceLine, enum Ability ability);
 void Level_(u32 sourceLine, u32 level);
 void MaxHP_(u32 sourceLine, u32 maxHP);
 void HP_(u32 sourceLine, u32 hp);
@@ -1028,29 +1032,14 @@ void DynamaxLevel_(u32 sourceLine, u32 dynamaxLevel);
 void GigantamaxFactor_(u32 sourceLine, bool32 gigantamaxFactor);
 void TeraType_(u32 sourceLine, u32 teraType);
 void Shadow_(u32 sourceLine, bool32 isShadow);
+void Shiny_(u32 sourceLine, bool32 isShiny);
 
 static inline bool8 IsMultibattleTest(void)
 {
-    u32 isMaster = gBattleTypeFlags & BATTLE_TYPE_IS_MASTER;
-    u32 isRecordedMaster = gBattleTypeFlags & BATTLE_TYPE_RECORDED_IS_MASTER;
-    u32 isRecordedLink = gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK;
-    u32 isTrainer = gBattleTypeFlags & BATTLE_TYPE_TRAINER;
-    u32 isIngamePartner = gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER;
-    u32 isDouble = gBattleTypeFlags & BATTLE_TYPE_DOUBLE;
-    u32 isMulti = gBattleTypeFlags & BATTLE_TYPE_MULTI;
-    u32 isTwoOpponents = gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS;
-
     if (TESTING)
     {
-        if (isMaster && isRecordedMaster && isRecordedLink && isTrainer && isIngamePartner && isMulti && isTwoOpponents)
-            return TRUE;
-        else if (isMaster && isRecordedMaster && isRecordedLink && isTrainer && isIngamePartner && isMulti)
-            return TRUE;
-        else if (isMaster && isTrainer && isIngamePartner && isMulti && isTwoOpponents)
-            return TRUE;
-        else if (isMaster && isTrainer && isIngamePartner && isMulti)
-            return TRUE;
-        else if (isMaster && isTrainer && isDouble && isTwoOpponents)
+        if (((gBattleTypeFlags & BATTLE_MULTI_TEST) == BATTLE_MULTI_TEST)
+        || ((gBattleTypeFlags & BATTLE_TWO_VS_ONE_TEST) == BATTLE_TWO_VS_ONE_TEST))
             return TRUE;
         else
             return FALSE;
@@ -1147,6 +1136,8 @@ struct ItemContext
     u16 explicitPartyIndex:1;
     u16 move;
     u16 explicitMove:1;
+    struct TurnRNG rng;
+    u16 explicitRNG:1;
 };
 
 void OpenTurn(u32 sourceLine);
@@ -1206,7 +1197,7 @@ enum QueueGroupType
 
 struct AbilityEventContext
 {
-    u16 ability;
+    enum Ability ability;
 };
 
 struct AnimationEventContext

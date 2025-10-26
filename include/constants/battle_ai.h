@@ -40,16 +40,26 @@
 #define AI_FLAG_PARTNER                     AI_FLAG(30)  // Partner
 #define AI_FLAG_PARTNER_SWITCHING           AI_FLAG(31)  // Partner switching
 #define AI_FLAG_ATTACKS_PARTNER             AI_FLAG(32)  // AI specific to double battles; AI can deliberately attack its 'partner.'
+#define AI_FLAG_TAG_OPPONENT                AI_FLAG(33)  // AI specific to double battles; AI can deliberately attack its 'partner.'
 
-#define AI_FLAG_COUNT                       33
+#define AI_FLAG_COUNT                       34
 
 // The following options are enough to have a basic/smart trainer. Any other addtion could make the trainer worse/better depending on the flag
 #define AI_FLAG_BASIC_TRAINER         (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE | AI_FLAG_CHECK_VIABILITY)
 #define AI_FLAG_SMART_TRAINER         (AI_FLAG_BASIC_TRAINER | AI_FLAG_OMNISCIENT | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_WILL_SUICIDE)
 #define AI_FLAG_PREDICTION            (AI_FLAG_PREDICT_SWITCH | AI_FLAG_PREDICT_INCOMING_MON | AI_FLAG_PREDICT_MOVE)
-#define AI_FLAG_PARTNER_TRAINER       (AI_FLAG_BASIC_TRAINER | AI_FLAG_OMNISCIENT | AI_FLAG_PARTNER | AI_FLAG_PARTNER_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_WILL_SUICIDE)
+#define AI_FLAG_PARTNER_TRAINER       (AI_FLAG_OMNISCIENT | AI_FLAG_PARTNER | AI_FLAG_PARTNER_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_WILL_SUICIDE)
+#define AI_FLAG_TAG_TRAINER           (AI_FLAG_OMNISCIENT | AI_FLAG_TAG_OPPONENT | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_WILL_SUICIDE)
 
 #define AI_FLAG_ASSUMPTIONS           (AI_FLAG_ASSUME_STAB | AI_FLAG_ASSUME_STATUS_MOVES | AI_FLAG_WEIGH_ABILITY_PREDICTION)
+
+/*
+AI rework TDL
+AI_FLAG_CHECK_BAD_MOVE - DONE
+AI_FLAG_TRY_TO_FAINT - DONE
+AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE - DONE
+AI_FLAG_CHECK_VIABILITY - 
+*/
 
 // 'other' ai logic flags
 #define AI_FLAG_DYNAMIC_FUNC          AI_FLAG(60)  // Create custom AI functions for specific battles via "setdynamicaifunc" cmd

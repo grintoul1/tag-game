@@ -771,7 +771,7 @@ SINGLE_BATTLE_TEST("(TERA) Illusion breaks if the Pokémon Terastallizes when il
     PARAMETRIZE { species = SPECIES_OGERPON; }
     GIVEN {
         ASSUME(DoesSpeciesHaveFormChangeMethod(species, FORM_CHANGE_BATTLE_TERASTALLIZATION));
-        PLAYER(SPECIES_ZOROARK) { TeraType(TYPE_BUG); }
+        PLAYER(SPECIES_ZOROARK) { Ability(ABILITY_ILLUSION); TeraType(TYPE_BUG); }
         PLAYER(species);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -789,7 +789,7 @@ SINGLE_BATTLE_TEST("(TERA) Illusion doesn't break upon Terastallizing when illus
     PARAMETRIZE { species = SPECIES_ZIGZAGOON; }
     GIVEN {
         ASSUME(!DoesSpeciesHaveFormChangeMethod(species, FORM_CHANGE_BATTLE_TERASTALLIZATION));
-        PLAYER(SPECIES_ZOROARK) { TeraType(TYPE_BUG); }
+        PLAYER(SPECIES_ZOROARK) { Ability(ABILITY_ILLUSION); TeraType(TYPE_BUG); }
         PLAYER(species);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {

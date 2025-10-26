@@ -883,6 +883,9 @@ extern const u8 gText_TrainerHill4F[];
 extern const u8 gText_ChoiceBand[];
 extern const u8 gText_ChoiceSpecs[];
 extern const u8 gText_ChoiceScarf[];
+extern const u8 gText_Punching[];
+extern const u8 gText_Kicking[];
+extern const u8 gText_Balance[];
 
 // Cable Club multichoice text
 extern const u8 CableClub_Text_TradeUsingLinkCable[];
