@@ -194,8 +194,6 @@ SkyPillar_Top_EventScript_Finale::
 	waitmovement 0
 	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieYouStillDefy
 	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieYouStillDefy
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
-	delay 40
 	applymovement VAR_0x8002, Common_Movement_WalkSlowDown
 	applymovement VAR_0x8003, SkyPillar_Top_Movement_GoodLeaderApproachEvilLeader
 	waitmovement 0
@@ -231,7 +229,7 @@ SkyPillar_Top_EventScript_Maxie_ChoosePartyForMultiBattle::
 	waitstate
 	goto_if_ne VAR_RESULT, 0, SkyPillar_Top_EventScript_MaxieDoMultiBattle
 	msgbox SkyPillar_Top_Text_MaxieYouWillNotStopMe, MSGBOX_AUTOCLOSE
-	goto SkyPillar_Top_EventScript_Maxie_ChoosePartyForMultiBattle
+	goto SkyPillar_Top_EventScript_MaxieDoMultiBattle
 	closemessage
 
 SkyPillar_Top_EventScript_MaxieDoMultiBattle::
@@ -503,10 +501,8 @@ SkyPillar_Top_Text_ArchieYouStillDefy:
 	.string "You will not stand in my way.$"
 
 SkyPillar_Top_Text_MaxieYouStillDefy:
-	.string "Maxie: Even now you still defy me?\p"
-	.string "It matters not. I will shape the world\n"
-	.string "into one of Team Magma's design.\p"
-	.string "You will not stand in my way.$"
+	.string "Maxie: I will shape the world\n"
+	.string "into one of Team Magma's design.$"
 
 SkyPillar_Top_EventScript_MaxieYouStillDefy::
 	msgbox SkyPillar_Top_Text_MaxieYouStillDefy, MSGBOX_DEFAULT

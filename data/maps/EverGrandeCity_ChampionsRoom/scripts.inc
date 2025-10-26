@@ -99,6 +99,7 @@ EverGrandeCity_ChampionsRoom_Movement_WatchStevenJoinWallace:
 	step_end
 
 EverGrandeCity_ChampionsRoom_EventScript_WallaceStevenDoMultiBattle::
+	fadescreen FADE_TO_BLACK
 	playbgm MUS_VICTORY_ROAD, TRUE
 	multi_2p_vs_2 TRAINER_WALLACE, EverGrandeCity_ChampionsRoom_Text_Defeat, TRAINER_STEVEN, EverGrandeCity_ChampionsRoom_Text_StevenDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
