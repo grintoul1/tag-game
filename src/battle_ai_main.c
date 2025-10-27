@@ -15132,10 +15132,6 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     break;
             }
         }
-        else
-        {
-            ADJUST_SCORE(-10);
-        }
 
         // move effect checks
         switch (moveEffect)
