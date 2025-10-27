@@ -15109,26 +15109,34 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         //if (IsFlinchGuaranteed(battlerAtk, battlerDef, move))
         //    ADJUST_SCORE(BEST_EFFECT);
 
-        // Non-volatile statuses
-        switch(GetMoveNonVolatileStatus(move))
+        if (!IsTargetingPartner(battlerAtk, battlerDef))
         {
-            case MOVE_EFFECT_POISON:
-            case MOVE_EFFECT_TOXIC: // PARTNER DIFFERENCE - Opponent done
-                ADJUST_AND_RETURN_SCORE(IncreasePoisonScore(battlerAtk, battlerDef, move));
-                break;
-            case MOVE_EFFECT_SLEEP: // PARTNER DIFFERENCE - Opponent done
-                ADJUST_AND_RETURN_SCORE(IncreaseSleepScore(battlerAtk, battlerDef, move));
-                break;
-            case MOVE_EFFECT_PARALYSIS: // PARTNER DIFFERENCE - Opponent done
-                ADJUST_AND_RETURN_SCORE(IncreaseParalyzeScore(battlerAtk, battlerDef, move));
-                break;
-            case MOVE_EFFECT_BURN: // PARTNER DIFFERENCE - Opponent done
-                ADJUST_AND_RETURN_SCORE(IncreaseBurnScore(battlerAtk, battlerDef, move));
-                break;
-            case MOVE_EFFECT_FROSTBITE: // PARTNER DIFFERENCE - Opponent done
-                ADJUST_AND_RETURN_SCORE(IncreaseFrostbiteScore(battlerAtk, battlerDef, move));
-                break;
+            // Non-volatile statuses
+            switch(GetMoveNonVolatileStatus(move))
+            {
+                case MOVE_EFFECT_POISON:
+                case MOVE_EFFECT_TOXIC: // PARTNER DIFFERENCE - Opponent done
+                    ADJUST_AND_RETURN_SCORE(IncreasePoisonScore(battlerAtk, battlerDef, move));
+                    break;
+                case MOVE_EFFECT_SLEEP: // PARTNER DIFFERENCE - Opponent done
+                    ADJUST_AND_RETURN_SCORE(IncreaseSleepScore(battlerAtk, battlerDef, move));
+                    break;
+                case MOVE_EFFECT_PARALYSIS: // PARTNER DIFFERENCE - Opponent done
+                    ADJUST_AND_RETURN_SCORE(IncreaseParalyzeScore(battlerAtk, battlerDef, move));
+                    break;
+                case MOVE_EFFECT_BURN: // PARTNER DIFFERENCE - Opponent done
+                    ADJUST_AND_RETURN_SCORE(IncreaseBurnScore(battlerAtk, battlerDef, move));
+                    break;
+                case MOVE_EFFECT_FROSTBITE: // PARTNER DIFFERENCE - Opponent done
+                    ADJUST_AND_RETURN_SCORE(IncreaseFrostbiteScore(battlerAtk, battlerDef, move));
+                    break;
+            }
         }
+        else
+        {
+            ADJUST_SCORE(-10);
+        }
+
         // move effect checks
         switch (moveEffect)
         {
