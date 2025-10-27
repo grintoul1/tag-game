@@ -11003,3 +11003,12 @@ bool32 IsMimikyuDisguised(u32 battler)
     return gBattleMons[battler].species == SPECIES_MIMIKYU_DISGUISED
         || gBattleMons[battler].species == SPECIES_MIMIKYU_TOTEM_DISGUISED;
 }
+
+bool32 HasPartnerTrainer(u32 battler)
+{
+    if ((GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER && gBattleTypeFlags & BATTLE_TYPE_PLAYER_HAS_PARTNER)
+    || (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
+        return TRUE;
+    else
+        return FALSE;
+}
