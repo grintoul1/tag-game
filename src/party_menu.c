@@ -1187,7 +1187,20 @@ static void DisplayPartyPokemonDataToTeachMove(u8 slot, u16 move)
 static void DisplayPartyPokemonDataForMultiBattle(u8 slot)
 {
     struct PartyMenuBox *menuBox = &sPartyMenuBoxes[slot];
-    u8 actualSlot = slot - MULTI_PARTY_SIZE;
+    u8 actualSlot;
+    if (gAllySwitched[B_SIDE_PLAYER])
+    {
+        if (slot == 0)
+            actualSlot = 3;
+        else if (slot == 3)
+            actualSlot = 0;
+        else
+            actualSlot = slot - MULTI_PARTY_SIZE;
+    } 
+    else
+    {
+        actualSlot = slot - MULTI_PARTY_SIZE;
+    }
 
     if (gMultiPartnerParty[actualSlot].species == SPECIES_NONE)
     {
@@ -1359,7 +1372,10 @@ static bool8 PartyBoxPal_PartnerOrDisqualifiedInArena(u8 slot)
     if ((gPartyMenu.layout == PARTY_LAYOUT_MULTI_SHARED && (slot == 1)) || (gPartyMenu.layout == PARTY_LAYOUT_OVERWORLD_SHARED && (slot == 3)))
         return TRUE;
 
-    if ((gPartyMenu.layout == PARTY_LAYOUT_MULTI && (slot == 1 || slot == 4 || slot == 5)) 
+    if ((gPartyMenu.layout == PARTY_LAYOUT_MULTI 
+    && (GetPartyIdFromBattleSlot(slot) == 3 
+    || GetPartyIdFromBattleSlot(slot) == 4 
+    || GetPartyIdFromBattleSlot(slot) == 5)) 
     || (gPartyMenu.layout == PARTY_LAYOUT_OVERWORLD && (slot == 3 || slot == 4 || slot == 5)))
         return TRUE;
 
@@ -1392,7 +1408,7 @@ bool8 IsMultiBattle(void)
         return FALSE;
 }
 
-static void SwapPartyPokemon(struct Pokemon *mon1, struct Pokemon *mon2)
+void SwapPartyPokemon(struct Pokemon *mon1, struct Pokemon *mon2)
 {
     struct Pokemon *temp = Alloc(sizeof(struct Pokemon));
 
@@ -7846,11 +7862,14 @@ static bool8 TrySwitchInPokemon(void)
     bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
 
     // In a multi battle, slots 1, 4, and 5 are the partner's Pokémon
-    if (!isSharedTeams && IsMultiBattle() == TRUE && (slot == 1 || slot == 4 || slot == 5))
+    if (!isSharedTeams && IsMultiBattle() == TRUE)
     {
-        StringCopy(gStringVar1, GetTrainerPartnerName());
-        StringExpandPlaceholders(gStringVar4, gText_CantSwitchWithAlly);
-        return FALSE;
+        if (GetPartyIdFromBattleSlot(slot) >= MULTI_PARTY_SIZE) // partner’s half
+        {
+            StringCopy(gStringVar1, GetTrainerPartnerName());
+            StringExpandPlaceholders(gStringVar4, gText_CantSwitchWithAlly);
+            return FALSE;
+        }
     }
     if (GetMonData(&gPlayerParty[slot], MON_DATA_HP) == 0)
     {

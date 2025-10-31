@@ -245,6 +245,7 @@ EWRAM_DATA bool8 gLastUsedBallMenuPresent = FALSE;
 EWRAM_DATA u8 gPartyCriticalHits[PARTY_SIZE] = {0};
 EWRAM_DATA static u8 sTriedEvolving = 0;
 EWRAM_DATA u8 gCategoryIconSpriteId = 0;
+EWRAM_DATA u8 gAllySwitched[NUM_BATTLE_SIDES] = {0};
 
 COMMON_DATA void (*gPreBattleCallback1)(void) = NULL;
 COMMON_DATA void (*gBattleMainFunc)(void) = NULL;
@@ -3966,6 +3967,8 @@ static void TryDoEventsBeforeFirstTurn(void)
 
         gBattleStruct->speedTieBreaks = RandomUniform(RNG_SPEED_TIE, 0, Factorial(MAX_BATTLERS_COUNT) - 1);
         gBattleTurnCounter = 0;
+        gAllySwitched[B_SIDE_PLAYER] = FALSE;
+        gAllySwitched[B_SIDE_OPPONENT] = FALSE;
 
         for (i = 0; i < gBattlersCount; i++)
             gBattlerByTurnOrder[i] = i;

@@ -219,12 +219,29 @@ void GetAIPartyIndexes(u32 battler, s32 *firstId, s32 *lastId)
     else if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TOWER_LINK_MULTI))
     {
         bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
-        if (isSharedTeams && (battler & BIT_SIDE) == B_SIDE_PLAYER)
-            *firstId = 0, *lastId = PARTY_SIZE;
-        else if ((battler & BIT_FLANK) == B_FLANK_LEFT)
+        if ((battler & BIT_SIDE) == B_SIDE_PLAYER)
+        {
+            if (isSharedTeams)
+            {
+                *firstId = 0, *lastId = PARTY_SIZE;
+            }
+            else //if (!gAllySwitched[B_SIDE_PLAYER]) // If player side not currently ally switched
+            {
+                *firstId = PARTY_SIZE / 2, *lastId = PARTY_SIZE;
+            }
+            //else
+            //{
+            //    *firstId = 0, *lastId = PARTY_SIZE / 2;
+            //}
+        }
+        else if ((battler & BIT_FLANK) == B_FLANK_LEFT) //&& !gAllySwitched[B_SIDE_OPPONENT]) // If B_POSITION_OPPONENT_LEFT and not currently ally switched
+        {
             *firstId = 0, *lastId = PARTY_SIZE / 2;
+        }
         else
+        {
             *firstId = PARTY_SIZE / 2, *lastId = PARTY_SIZE;
+        }
     }
     else
     {
@@ -3394,7 +3411,7 @@ static inline u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId,
         bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
         if (isSharedTeams && (battler & BIT_SIDE) == B_SIDE_PLAYER)
             firstId = 0, lastId = PARTY_SIZE;
-        else if ((battler & BIT_FLANK) == B_FLANK_LEFT)
+        else if ((battler & BIT_FLANK) == B_FLANK_LEFT && !gAllySwitched[(battler & BIT_SIDE)])
             firstId = 0, lastId = PARTY_SIZE / 2;
         else
             firstId = PARTY_SIZE / 2, lastId = PARTY_SIZE;

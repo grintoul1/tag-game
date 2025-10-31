@@ -1113,6 +1113,7 @@ extern struct FieldTimer gFieldTimers;
 extern u16 gBattleTurnCounter;
 extern u8 gBattlerAbility;
 extern struct QueuedStatBoost gQueuedStatBoosts[MAX_BATTLERS_COUNT];
+extern u8 gAllySwitched[NUM_BATTLE_SIDES];
 
 extern void (*gPreBattleCallback1)(void);
 extern void (*gBattleMainFunc)(void);

@@ -137,14 +137,14 @@ bool32 BattlerHasAi(u32 battlerId)
     switch (GetBattlerPosition(battlerId))
     {
     case B_POSITION_PLAYER_LEFT:
-        if (IsAiVsAiBattle())
+        if (IsAiVsAiBattle() || (gBattleMons[battlerId].otId != T1_READ_32(gSaveBlock2Ptr->playerTrainerId)))
             return TRUE;
     default:
         return FALSE;
     case B_POSITION_OPPONENT_LEFT:
         return TRUE;
     case B_POSITION_PLAYER_RIGHT:
-        if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) || IsAiVsAiBattle())
+        if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) || IsAiVsAiBattle() || (gBattleMons[battlerId].otId != T1_READ_32(gSaveBlock2Ptr->playerTrainerId)))
             return TRUE;
         else
             return FALSE;

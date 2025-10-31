@@ -116,13 +116,18 @@ void SwitchPartyOrderInGameMulti(u8 battler, u8 arg1)
     if (IsOnPlayerSide(battler))
     {
         s32 i;
+        // Load current order for this battler from battlerPartyOrders
         for (i = 0; i < (int)ARRAY_COUNT(gBattlePartyCurrentOrder); i++)
-            gBattlePartyCurrentOrder[i] = *(i + (u8 *)(gBattleStruct->battlerPartyOrders));
+            gBattlePartyCurrentOrder[i] = *(battler * 3 + i + (u8 *)(gBattleStruct->battlerPartyOrders));
             
         SwitchPartyMonSlots(GetPartyIdFromBattlePartyId(gBattlerPartyIndexes[battler]), GetPartyIdFromBattlePartyId(arg1));
 
+        // Persist updated order back for this battler (and partner to keep views in sync)
         for (i = 0; i < (int)ARRAY_COUNT(gBattlePartyCurrentOrder); i++)
-            *(i + (u8 *)(gBattleStruct->battlerPartyOrders)) = gBattlePartyCurrentOrder[i];
+        {
+            *(battler * 3 + i + (u8 *)(gBattleStruct->battlerPartyOrders)) = gBattlePartyCurrentOrder[i];
+            *(BATTLE_PARTNER(battler) * 3 + i + (u8 *)(gBattleStruct->battlerPartyOrders)) = gBattlePartyCurrentOrder[i];
+        }
     }
 }
 

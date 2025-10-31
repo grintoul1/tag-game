@@ -298,7 +298,7 @@ static void PlayerPartnerHandleChoosePokemon(u32 battler)
         {
             s32 firstId = (IsAiVsAiBattle()) ? 0 : (PARTY_SIZE / 2);
             u32 battler1 = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
-            u32 battler2 = IsDoubleBattle() ? GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT) : battler1;
+            u32 battler2 = IsDoubleBattle() ? BATTLE_PARTNER(battler1) : battler1;
 
             for (chosenMonId = firstId; chosenMonId < PARTY_SIZE; chosenMonId++)
             {

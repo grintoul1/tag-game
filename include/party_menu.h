@@ -37,6 +37,7 @@ extern const struct SpriteTemplate gSpriteTemplate_StatusIcons;
 
 void AnimatePartySlot(u8 slot, u8 animNum);
 bool8 IsMultiBattle(void);
+void SwapPartyPokemon(struct Pokemon *mon1, struct Pokemon *mon2);
 u8 GetCursorSelectionMonId(void);
 u8 GetPartyMenuType(void);
 void Task_HandleChooseMonInput(u8 taskId);

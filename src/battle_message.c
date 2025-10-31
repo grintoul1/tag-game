@@ -1439,7 +1439,9 @@ static const u8 sText_TwoTrainersSentPkmn[] = _("{B_TRAINER1_NAME_WITH_CLASS} se
 static const u8 sText_Trainer2SentOutPkmn[] = _("{B_TRAINER2_NAME_WITH_CLASS} sent out {B_BUFF1}!");
 static const u8 sText_TwoTrainersWantToBattle[] = _("You are challenged by {B_TRAINER1_NAME_WITH_CLASS} and {B_TRAINER2_NAME_WITH_CLASS}!\p");
 static const u8 sText_InGamePartnerSentOutZGoN[] = _("{B_PARTNER_NAME_WITH_CLASS} sent out {B_PLAYER_MON2_NAME}! Go, {B_PLAYER_MON1_NAME}!");
+static const u8 sText_InGamePartnerSentOutPkmn[] = _("{B_PARTNER_NAME_WITH_CLASS} sent out {B_PLAYER_MON1_NAME}!");
 static const u8 sText_InGamePartnerSentOutPkmn2[] = _("{B_PARTNER_NAME_WITH_CLASS} sent out {B_PLAYER_MON2_NAME}!");
+static const u8 sText_InGamePartnerWithdrewPkmn[] = _("{B_PARTNER_NAME_WITH_CLASS} withdrew {B_PLAYER_MON1_NAME}!");
 static const u8 sText_InGamePartnerWithdrewPkmn2[] = _("{B_PARTNER_NAME_WITH_CLASS} withdrew {B_PLAYER_MON2_NAME}!");
 
 const u16 gBattlePalaceFlavorTextTable[] =
@@ -2179,16 +2181,30 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
     case STRINGID_RETURNMON: // sending poke to ball msg
         if (IsOnPlayerSide(battler))
         {
-            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && GetBattlerAtPosition(battler) == 2)
-                stringPtr = sText_InGamePartnerWithdrewPkmn2;
+            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && (TESTING 
+            || (!TESTING && (gBattleMons[gBattleScripting.battler].otId != T1_READ_32(gSaveBlock2Ptr->playerTrainerId)))))
+            {
+                if (GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT) == gBattleScripting.battler)
+                    stringPtr = sText_InGamePartnerWithdrewPkmn2;
+                else
+                    stringPtr = sText_InGamePartnerWithdrewPkmn;
+            }
             else if (*(&gBattleStruct->hpScale) == 0)
+            {
                 stringPtr = sText_PkmnThatsEnough;
+            }
             else if (*(&gBattleStruct->hpScale) == 1 || IsDoubleBattle())
+            {
                 stringPtr = sText_PkmnComeBack;
+            }
             else if (*(&gBattleStruct->hpScale) == 2)
+            {
                 stringPtr = sText_PkmnOkComeBack;
+            }
             else
+            {
                 stringPtr = sText_PkmnGoodComeBack;
+            }
         }
         else
         {
@@ -2203,7 +2219,7 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
             {
                 if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
                 {
-                    if (GetBattlerAtPosition(battler) == 1)
+                    if (GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT) == gBattleScripting.battler)
                         stringPtr = sText_Trainer1WithdrewPkmn;
                     else
                         stringPtr = sText_Trainer2WithdrewPkmn;
@@ -2219,16 +2235,31 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
     case STRINGID_SWITCHINMON: // switch-in msg
         if (IsOnPlayerSide(gBattleScripting.battler))
         {
-            if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) && (GetBattlerAtPosition(gBattleScripting.battler) == 2))
-                stringPtr = sText_InGamePartnerSentOutPkmn2;
+            
+            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && (TESTING 
+            || (!TESTING && (gBattleMons[gBattleScripting.battler].otId != T1_READ_32(gSaveBlock2Ptr->playerTrainerId)))))
+            {
+                if (GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT) == gBattleScripting.battler)
+                    stringPtr = sText_InGamePartnerSentOutPkmn2;
+                else
+                    stringPtr = sText_InGamePartnerSentOutPkmn;
+            }                 
             else if (*(&gBattleStruct->hpScale) == 0 || IsDoubleBattle())
+            {
                 stringPtr = sText_GoPkmn2;
+            }
             else if (*(&gBattleStruct->hpScale) == 1)
+            {
                 stringPtr = sText_DoItPkmn;
+            }
             else if (*(&gBattleStruct->hpScale) == 2)
+            {
                 stringPtr = sText_GoForItPkmn;
+            }
             else
+            {
                 stringPtr = sText_YourFoesWeakGetEmPkmn;
+            }
         }
         else
         {

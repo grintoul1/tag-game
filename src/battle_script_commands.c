@@ -15331,9 +15331,11 @@ void BS_TryAllySwitch(void)
 {
     NATIVE_ARGS(const u8 *failInstr);
 
+    bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
+
     if (!IsBattlerAlive(BATTLE_PARTNER(gBattlerAttacker))
-     || (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
-     || (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
+     || (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+     /*|| (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER && gBattleTypeFlags & BATTLE_TYPE_MULTI)*/)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }
@@ -15348,6 +15350,34 @@ void BS_TryAllySwitch(void)
         else
         {
             gDisableStructs[gBattlerAttacker].protectUses++;
+            if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER && gBattleTypeFlags & BATTLE_TYPE_MULTI)
+            {   // Switch Player and Partner battle controllers; if player and Emmie sharing team then do not do this.
+                if (!isSharedTeams)
+                {
+                    if (gBattleMons[gBattlerAttacker].otId == T1_READ_32(gSaveBlock2Ptr->playerTrainerId))
+                    {
+                        gBattlerControllerFuncs[gBattlerPositions[gBattlerAttacker]] = SetControllerToPlayerPartner;
+                        gBattlerControllerFuncs[gBattlerPositions[BATTLE_PARTNER(gBattlerAttacker)]] = SetControllerToPlayer;
+                    }
+                    else
+                    {
+                        gBattlerControllerFuncs[gBattlerPositions[BATTLE_PARTNER(gBattlerAttacker)]] = SetControllerToPlayerPartner;
+                        gBattlerControllerFuncs[gBattlerPositions[gBattlerAttacker]] = SetControllerToPlayer;
+                    }
+                    // Switch Player and Partner AI
+                    u64 tempAiFlagAttacker = gAiThinkingStruct->aiFlags[gBattlerAttacker];
+                    u64 tempAiFlagPartner = gAiThinkingStruct->aiFlags[BATTLE_PARTNER(gBattlerAttacker)];
+                    gAiThinkingStruct->aiFlags[gBattlerAttacker] = tempAiFlagPartner;
+                    gAiThinkingStruct->aiFlags[BATTLE_PARTNER(gBattlerAttacker)] = tempAiFlagAttacker;
+                }
+                // Switch side Ally Switched status
+                gAllySwitched[B_SIDE_PLAYER] = (gAllySwitched[B_SIDE_PLAYER] ? FALSE : TRUE);
+            }
+            else
+            {
+                // Switch side Ally Switched status
+                gAllySwitched[B_SIDE_OPPONENT] = (gAllySwitched[B_SIDE_OPPONENT] ? FALSE : TRUE);
+            }
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
     }
