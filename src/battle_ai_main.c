@@ -8270,60 +8270,65 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 {
                     bool32 decreased = FALSE;
                     enum ProtectMethod protectMethod = GetMoveProtectMethod(move);
-                    switch (protectMethod)
+                    if (IsTargetingPartner(battlerAtk, battlerDef))
+                        break;
+                    else
                     {
-                    case PROTECT_QUICK_GUARD:
-                        decreased = TRUE;
-                        for (i = 0; i < MAX_MON_MOVES; i++)
+                        switch (protectMethod)
                         {
-                            if (targetMove[i] != MOVE_NONE && GetMovePriority(targetMove[i]) > 0)
+                        case PROTECT_QUICK_GUARD:
+                            decreased = TRUE;
+                            for (i = 0; i < MAX_MON_MOVES; i++)
                             {
-                                decreased = FALSE;
+                                if (targetMove[i] != MOVE_NONE && GetMovePriority(targetMove[i]) > 0)
+                                {
+                                    decreased = FALSE;
+                                    break;
+                                }
+                            }
+                            if (decreased == TRUE)
+                            {
+                                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                                decreased = TRUE;
                                 break;
                             }
-                        }
-                        if (decreased == TRUE)
-                        {
-                            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-                            decreased = TRUE;
                             break;
-                        }
-                        break;
-                    case PROTECT_WIDE_GUARD:
-                        decreased = TRUE;
-                        for (i = 0; i < MAX_MON_MOVES; i++)
-                        {
-                            if(!(GetBattlerMoveTargetType(battlerAtk, targetMove[i]) & (MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_BOTH)))
+                        case PROTECT_WIDE_GUARD:
+                            decreased = TRUE;
+                            for (i = 0; i < MAX_MON_MOVES; i++)
                             {
-                                decreased = FALSE;
-                                break;
-                                
+                                if(!(GetBattlerMoveTargetType(battlerAtk, targetMove[i]) & (MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_BOTH)))
+                                {
+                                    decreased = FALSE;
+                                    break;
+                                    
+                                }
                             }
-                        }
-                        if (decreased == TRUE)
-                        {
-                            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-                            decreased = TRUE;
+                            if (decreased == TRUE)
+                            {
+                                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                                decreased = TRUE;
+                                break;
+                            }
                             break;
-                        }
-                        break;
-                    case PROTECT_CRAFTY_SHIELD:
-                        if (!hasPartner)
-                        {
-                            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-                            decreased = TRUE;
-                        }
-                        break;
-                    case PROTECT_MAT_BLOCK:
-                        if (!gDisableStructs[battlerAtk].isFirstTurn)
-                        {
-                            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-                            decreased = TRUE;
-                        }
-                        break;
-                    default:
-                        break;
-                    } // move check
+                        case PROTECT_CRAFTY_SHIELD:
+                            if (!hasPartner)
+                            {
+                                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                                decreased = TRUE;
+                            }
+                            break;
+                        case PROTECT_MAT_BLOCK:
+                            if (!gDisableStructs[battlerAtk].isFirstTurn)
+                            {
+                                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                                decreased = TRUE;
+                            }
+                            break;
+                        default:
+                            break;
+                        } // move check
+                    } // not targeting partner
 
                     if (decreased)
                         break;
@@ -10611,43 +10616,105 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             if (predictedMove == 0xFFFF)
                 predictedMove = MOVE_NONE;
             enum ProtectMethod protectMethod = GetMoveProtectMethod(move);
-            switch (protectMethod)
-            {
-            case PROTECT_QUICK_GUARD: // PARTNER DIFFERENCE - Partner done
-                for (i = 0; i < MAX_MON_MOVES; i++)
-                { 
-                    if (targetMove[i] != MOVE_NONE && GetMovePriority(targetMove[i]) > 0 && ShouldUseProtect(battlerAtk, battlerDef, targetMove[i]) 
-                    && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]) && ((aiData->abilities[battlerAtk] != ABILITY_DAZZLING 
-                    || aiData->abilities[battlerAtk] != ABILITY_QUEENLY_MAJESTY || aiData->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_DAZZLING 
-                    || aiData->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_QUEENLY_MAJESTY) || ((aiData->abilities[battlerAtk] == ABILITY_DAZZLING 
-                    || aiData->abilities[battlerAtk] == ABILITY_QUEENLY_MAJESTY || aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_DAZZLING 
-                    || aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_QUEENLY_MAJESTY) 
-                    && DoesBattlerIgnoreAbilityChecks(battlerDef, gAiLogicData->abilities[battlerDef], targetMove[i]))))
-                    {
-                        if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) || CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtkPartner, 1))
-                        {
-                            ADJUST_SCORE(BEST_EFFECT);
-                            break;
-                        }
-                    }
-                }
+            if (IsTargetingPartner(battlerAtk, battlerDef))
                 break;
-            case PROTECT_WIDE_GUARD: // PARTNER DIFFERENCE - Partner done
-                for (i = 0; i < MAX_MON_MOVES; i++)
+            else
+            {
+                switch (protectMethod)
                 {
-                    if (!IsTargetingPartner(battlerAtk, battlerDef))
-                    {
-                        if (targetMove[i] != MOVE_NONE && GetBattlerMoveTargetType(battlerDef, targetMove[i]) & (MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_BOTH) 
-                        && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                case PROTECT_QUICK_GUARD: // PARTNER DIFFERENCE - Partner done
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    { 
+                        if (targetMove[i] != MOVE_NONE && GetMovePriority(targetMove[i]) > 0 && ShouldUseProtect(battlerAtk, battlerDef, targetMove[i]) 
+                        && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]) && ((aiData->abilities[battlerAtk] != ABILITY_DAZZLING 
+                        || aiData->abilities[battlerAtk] != ABILITY_QUEENLY_MAJESTY || aiData->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_DAZZLING 
+                        || aiData->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_QUEENLY_MAJESTY) || ((aiData->abilities[battlerAtk] == ABILITY_DAZZLING 
+                        || aiData->abilities[battlerAtk] == ABILITY_QUEENLY_MAJESTY || aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_DAZZLING 
+                        || aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_QUEENLY_MAJESTY) 
+                        && DoesBattlerIgnoreAbilityChecks(battlerDef, gAiLogicData->abilities[battlerDef], targetMove[i]))))
                         {
                             if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) || CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtkPartner, 1))
                             {
-                                ADJUST_SCORE(BEST_EFFECT); // +17, will spam if either mon dead
+                                ADJUST_SCORE(BEST_EFFECT);
                                 break;
                             }
                         }
                     }
-                    else if (hasPartner && GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & MOVE_TARGET_FOES_AND_ALLY 
+                    break;
+                case PROTECT_WIDE_GUARD: // PARTNER DIFFERENCE - Partner done
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    {
+                        if (!IsTargetingPartner(battlerAtk, battlerDef))
+                        {
+                            if (targetMove[i] != MOVE_NONE && GetBattlerMoveTargetType(battlerDef, targetMove[i]) & (MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_BOTH) 
+                            && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                            {
+                                if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) || CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtkPartner, 1))
+                                {
+                                    ADJUST_SCORE(BEST_EFFECT); // +17, will spam if either mon dead
+                                    break;
+                                }
+                            }
+                        }
+                        else if (hasPartner && GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & MOVE_TARGET_FOES_AND_ALLY 
+                        && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
+                        && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
+                        {
+                            if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
+                            {
+                                ADJUST_SCORE(BEST_EFFECT); // +17 if player can double kill with spread move
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                case PROTECT_CRAFTY_SHIELD:
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    {  
+                        if (targetMove[i] != MOVE_NONE && IsBattleMoveStatus(targetMove[i]) && !(GetBattlerMoveTargetType(battlerDef, targetMove[i]) & MOVE_TARGET_USER) 
+                        && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                        {
+                            if (IsBattlerFirstTurnOrRandom(battlerAtk))
+                            {
+                                ADJUST_SCORE(WEAK_EFFECT);
+                            }
+                            break;
+                        }
+                    }
+                    break;
+                case PROTECT_MAT_BLOCK: // PARTNER DIFFERENCE - Partner done
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    {  
+                        if (gDisableStructs[battlerAtk].isFirstTurn && targetMove[i] != MOVE_NONE && !IsBattleMoveStatus(targetMove[i]) 
+                        && !(GetBattlerMoveTargetType(battlerDef, targetMove[i]) & MOVE_TARGET_USER) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                        {
+                            if ((AI_WhoStrikesFirst(battlerAtk, battlerDef, move, MOVE_TACKLE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) && (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) || CanTargetMoveFaintAi(targetMove[i], battlerDef, BATTLE_PARTNER(battlerAtk), 1)))
+                            {
+                                ADJUST_SCORE(PERFECT_EFFECT);
+                                break;
+                            }
+                        }
+                    }
+                    if ((AI_WhoStrikesFirst(battlerAtk, battlerDef, move, MOVE_TACKLE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                    {
+                        ADJUST_SCORE(BEST_EFFECT);
+                        break;
+                    }
+                    break;
+                case PROTECT_KINGS_SHIELD: // PARTNER DIFFERENCE - Partner done
+                    if (!ShouldUseProtect(battlerAtk, battlerDef, targetMove[0]))
+                    {
+                        ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                    }
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    {   
+                        if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                        {
+                            ADJUST_AND_RETURN_SCORE(PERFECT_EFFECT); // +24 for Partner Aegislash to protect if dead
+                            break;
+                        }
+                    }
+                    if (hasPartner && GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & MOVE_TARGET_FOES_AND_ALLY 
                     && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
                     && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
                     {
@@ -10657,100 +10724,43 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                             break;
                         }
                     }
-                }
-                break;
-            case PROTECT_CRAFTY_SHIELD:
-                for (i = 0; i < MAX_MON_MOVES; i++)
-                {  
-                    if (targetMove[i] != MOVE_NONE && IsBattleMoveStatus(targetMove[i]) && !(GetBattlerMoveTargetType(battlerDef, targetMove[i]) & MOVE_TARGET_USER) 
+                    else if (aiData->abilities[battlerAtk] == ABILITY_STANCE_CHANGE // Special logic for Aegislash
+                    && gBattleMons[battlerAtk].species == SPECIES_AEGISLASH_BLADE
                     && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
                     {
-                        if (IsBattlerFirstTurnOrRandom(battlerAtk))
-                        {
-                            ADJUST_SCORE(WEAK_EFFECT);
-                        }
+                        ADJUST_SCORE(11); // +11 for Partner Aegislash-Blade to return to Shield form
                         break;
                     }
-                }
-                break;
-            case PROTECT_MAT_BLOCK: // PARTNER DIFFERENCE - Partner done
-                for (i = 0; i < MAX_MON_MOVES; i++)
-                {  
-                    if (gDisableStructs[battlerAtk].isFirstTurn && targetMove[i] != MOVE_NONE && !IsBattleMoveStatus(targetMove[i]) 
-                    && !(GetBattlerMoveTargetType(battlerDef, targetMove[i]) & MOVE_TARGET_USER) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                    break;
+                default: // protect // PARTNER DIFFERENCE - Partner done
+                    if (!ShouldUseProtect(battlerAtk, battlerDef, targetMove[0]))
                     {
-                        if ((AI_WhoStrikesFirst(battlerAtk, battlerDef, move, MOVE_TACKLE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) && (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) || CanTargetMoveFaintAi(targetMove[i], battlerDef, BATTLE_PARTNER(battlerAtk), 1)))
+                        ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                    }
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    {   
+                        if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
                         {
-                            ADJUST_SCORE(PERFECT_EFFECT);
+                            ADJUST_SCORE(BEST_EFFECT); // +17 if dead to target
+                            if (AI_WhoStrikesFirst(battlerDef, battlerAtk, move, predictedMove, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER)
+                            {
+                                ADJUST_SCORE(7); // +24 if fast KO'd
+                            }
                             break;
                         }
                     }
-                }
-                if ((AI_WhoStrikesFirst(battlerAtk, battlerDef, move, MOVE_TACKLE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
-                {
-                    ADJUST_SCORE(BEST_EFFECT);
-                    break;
-                }
-                break;
-            case PROTECT_KINGS_SHIELD: // PARTNER DIFFERENCE - Partner done
-                if (!ShouldUseProtect(battlerAtk, battlerDef, targetMove[0]))
-                {
-                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-                }
-                for (i = 0; i < MAX_MON_MOVES; i++)
-                {   
-                    if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                    if (hasPartner && GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & MOVE_TARGET_FOES_AND_ALLY 
+                    && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
+                    && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
                     {
-                        ADJUST_AND_RETURN_SCORE(PERFECT_EFFECT); // +24 for Partner Aegislash to protect if dead
-                        break;
-                    }
-                }
-                if (hasPartner && GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & MOVE_TARGET_FOES_AND_ALLY 
-                && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
-                && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
-                {
-                    if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
-                    {
-                        ADJUST_SCORE(BEST_EFFECT); // +17 if player can double kill with spread move
-                        break;
-                    }
-                }
-                else if (aiData->abilities[battlerAtk] == ABILITY_STANCE_CHANGE // Special logic for Aegislash
-                && gBattleMons[battlerAtk].species == SPECIES_AEGISLASH_BLADE
-                && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
-                {
-                    ADJUST_SCORE(11); // +11 for Partner Aegislash-Blade to return to Shield form
-                    break;
-                }
-                break;
-            default: // protect // PARTNER DIFFERENCE - Partner done
-                if (!ShouldUseProtect(battlerAtk, battlerDef, targetMove[0]))
-                {
-                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-                }
-                for (i = 0; i < MAX_MON_MOVES; i++)
-                {   
-                    if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
-                    {
-                        ADJUST_SCORE(BEST_EFFECT); // +17 if dead to target
-                        if (AI_WhoStrikesFirst(battlerDef, battlerAtk, move, predictedMove, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER)
+                        if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
                         {
-                            ADJUST_SCORE(7); // +24 if fast KO'd
+                            ADJUST_SCORE(BEST_EFFECT); // +17 if player can double kill with spread move
+                            break;
                         }
-                        break;
                     }
+                    break;
                 }
-                if (hasPartner && GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & MOVE_TARGET_FOES_AND_ALLY 
-                && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
-                && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
-                {
-                    if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
-                    {
-                        ADJUST_SCORE(BEST_EFFECT); // +17 if player can double kill with spread move
-                        break;
-                    }
-                }
-                break;
             }
             break;
         case EFFECT_ENDURE: // PARTNER DIFFERENCE - Partner done
@@ -13502,60 +13512,65 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 {
                     bool32 decreased = FALSE;
                     enum ProtectMethod protectMethod = GetMoveProtectMethod(move);
-                    switch (protectMethod)
+                    if (IsTargetingPartner(battlerAtk, battlerDef))
+                        break;
+                    else
                     {
-                    case PROTECT_QUICK_GUARD:
-                        decreased = TRUE;
-                        for (i = 0; i < MAX_MON_MOVES; i++)
+                        switch (protectMethod)
                         {
-                            if (targetMove[i] != MOVE_NONE && GetMovePriority(targetMove[i]) > 0)
+                        case PROTECT_QUICK_GUARD:
+                            decreased = TRUE;
+                            for (i = 0; i < MAX_MON_MOVES; i++)
                             {
-                                decreased = FALSE;
+                                if (targetMove[i] != MOVE_NONE && GetMovePriority(targetMove[i]) > 0)
+                                {
+                                    decreased = FALSE;
+                                    break;
+                                }
+                            }
+                            if (decreased == TRUE)
+                            {
+                                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                                decreased = TRUE;
                                 break;
                             }
-                        }
-                        if (decreased == TRUE)
-                        {
-                            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-                            decreased = TRUE;
                             break;
-                        }
-                        break;
-                    case PROTECT_WIDE_GUARD:
-                        decreased = TRUE;
-                        for (i = 0; i < MAX_MON_MOVES; i++)
-                        {
-                            if(!(GetBattlerMoveTargetType(battlerAtk, targetMove[i]) & (MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_BOTH)))
+                        case PROTECT_WIDE_GUARD:
+                            decreased = TRUE;
+                            for (i = 0; i < MAX_MON_MOVES; i++)
                             {
-                                decreased = FALSE;
-                                break;
-                                
+                                if(!(GetBattlerMoveTargetType(battlerAtk, targetMove[i]) & (MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_BOTH)))
+                                {
+                                    decreased = FALSE;
+                                    break;
+                                    
+                                }
                             }
-                        }
-                        if (decreased == TRUE)
-                        {
-                            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-                            decreased = TRUE;
+                            if (decreased == TRUE)
+                            {
+                                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                                decreased = TRUE;
+                                break;
+                            }
                             break;
-                        }
-                        break;
-                    case PROTECT_CRAFTY_SHIELD:
-                        if (!hasPartner)
-                        {
-                            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-                            decreased = TRUE;
-                        }
-                        break;
-                    case PROTECT_MAT_BLOCK:
-                        if (!gDisableStructs[battlerAtk].isFirstTurn)
-                        {
-                            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-                            decreased = TRUE;
-                        }
-                        break;
-                    default:
-                        break;
-                    } // move check
+                        case PROTECT_CRAFTY_SHIELD:
+                            if (!hasPartner)
+                            {
+                                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                                decreased = TRUE;
+                            }
+                            break;
+                        case PROTECT_MAT_BLOCK:
+                            if (!gDisableStructs[battlerAtk].isFirstTurn)
+                            {
+                                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                                decreased = TRUE;
+                            }
+                            break;
+                        default:
+                            break;
+                        } // move check
+                    } // not targeting partner
 
                     if (decreased)
                         break;
@@ -15752,28 +15767,67 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             if (predictedMove == 0xFFFF)
                 predictedMove = MOVE_NONE;
             enum ProtectMethod protectMethod = GetMoveProtectMethod(move);
-            switch (protectMethod)
+            if (IsTargetingPartner(battlerAtk, battlerDef))
+                break;
+            else
             {
-            case PROTECT_QUICK_GUARD: // PARTNER DIFFERENCE - Opponent done
+                switch (protectMethod)
+                {
+                case PROTECT_QUICK_GUARD: // PARTNER DIFFERENCE - Opponent done
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    { 
+                        if (targetMove[i] != MOVE_NONE && GetMovePriority(targetMove[i]) > 0 && ShouldUseProtect(battlerAtk, battlerDef, targetMove[i]) 
+                        && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]) && ((aiData->abilities[battlerAtk] != ABILITY_DAZZLING 
+                        || aiData->abilities[battlerAtk] != ABILITY_QUEENLY_MAJESTY || aiData->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_DAZZLING 
+                        || aiData->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_QUEENLY_MAJESTY) || ((aiData->abilities[battlerAtk] == ABILITY_DAZZLING 
+                        || aiData->abilities[battlerAtk] == ABILITY_QUEENLY_MAJESTY || aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_DAZZLING 
+                        || aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_QUEENLY_MAJESTY) 
+                        && DoesBattlerIgnoreAbilityChecks(battlerDef, gAiLogicData->abilities[battlerDef], targetMove[i]))))
+                        {
+                            if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) || CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtkPartner, 1))
+                            {
+                                if (IsBattlerFirstTurnOrRandom(battlerAtk))
+                                {
+                                    ADJUST_SCORE(BEST_EFFECT);
+                                }
+                                break;
+                            }
+                            else if (IsBattlerFirstTurnOrRandom(battlerAtk))
+                            {
+                                ADJUST_SCORE(WEAK_EFFECT);
+                                if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
+                                    ADJUST_SCORE(1);
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                case PROTECT_WIDE_GUARD: // PARTNER DIFFERENCE - Opponent done
                 for (i = 0; i < MAX_MON_MOVES; i++)
-                { 
-                    if (targetMove[i] != MOVE_NONE && GetMovePriority(targetMove[i]) > 0 && ShouldUseProtect(battlerAtk, battlerDef, targetMove[i]) 
-                    && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]) && ((aiData->abilities[battlerAtk] != ABILITY_DAZZLING 
-                    || aiData->abilities[battlerAtk] != ABILITY_QUEENLY_MAJESTY || aiData->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_DAZZLING 
-                    || aiData->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_QUEENLY_MAJESTY) || ((aiData->abilities[battlerAtk] == ABILITY_DAZZLING 
-                    || aiData->abilities[battlerAtk] == ABILITY_QUEENLY_MAJESTY || aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_DAZZLING 
-                    || aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_QUEENLY_MAJESTY) 
-                    && DoesBattlerIgnoreAbilityChecks(battlerDef, gAiLogicData->abilities[battlerDef], targetMove[i]))))
+                {    
+                    if (targetMove[i] != MOVE_NONE && GetBattlerMoveTargetType(battlerDef, targetMove[i]) & (MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_BOTH) 
+                    && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
                     {
-                        if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) || CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtkPartner, 1))
+                        if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) || CanTargetMoveFaintAi(targetMove[i], battlerDef, BATTLE_PARTNER(battlerAtk), 1))
                         {
                             if (IsBattlerFirstTurnOrRandom(battlerAtk))
                             {
-                                ADJUST_SCORE(BEST_EFFECT);
+                                ADJUST_SCORE(BEST_EFFECT); // +17 guaranteed first turn
                             }
                             break;
                         }
                         else if (IsBattlerFirstTurnOrRandom(battlerAtk))
+                        {
+                            ADJUST_SCORE(WEAK_EFFECT); // +6
+                            if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
+                                ADJUST_SCORE(1); // +7 if helps stall
+                            break;
+                        }
+                    }
+                    else if (hasPartner && GetBattlerMoveTargetType(BATTLE_PARTNER(battlerAtk), aiData->partnerMove) & MOVE_TARGET_FOES_AND_ALLY 
+                    && IsBattlerFirstTurnOrRandom(battlerAtk))
+                    {
+                        if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
                         {
                             ADJUST_SCORE(WEAK_EFFECT);
                             if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
@@ -15783,133 +15837,99 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     }
                 }
                 break;
-            case PROTECT_WIDE_GUARD: // PARTNER DIFFERENCE - Opponent done
-            for (i = 0; i < MAX_MON_MOVES; i++)
-            {    
-                if (targetMove[i] != MOVE_NONE && GetBattlerMoveTargetType(battlerDef, targetMove[i]) & (MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_BOTH) 
-                && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
-                {
-                    if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) || CanTargetMoveFaintAi(targetMove[i], battlerDef, BATTLE_PARTNER(battlerAtk), 1))
-                    {
-                        if (IsBattlerFirstTurnOrRandom(battlerAtk))
+                case PROTECT_CRAFTY_SHIELD:
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    {  
+                        if (targetMove[i] != MOVE_NONE && IsBattleMoveStatus(targetMove[i]) && !(GetBattlerMoveTargetType(battlerDef, targetMove[i]) & MOVE_TARGET_USER) 
+                        && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
                         {
-                            ADJUST_SCORE(BEST_EFFECT); // +17 guaranteed first turn
+                            if (IsBattlerFirstTurnOrRandom(battlerAtk))
+                            {
+                                ADJUST_SCORE(WEAK_EFFECT);
+                            }
+                            break;
                         }
-                        break;
                     }
-                    else if (IsBattlerFirstTurnOrRandom(battlerAtk))
-                    {
-                        ADJUST_SCORE(WEAK_EFFECT); // +6
-                        if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
-                            ADJUST_SCORE(1); // +7 if helps stall
-                        break;
+                    break;
+                case PROTECT_MAT_BLOCK: // PARTNER DIFFERENCE - oPPONENT done
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    {  
+                        if (gDisableStructs[battlerAtk].isFirstTurn && targetMove[i] != MOVE_NONE && !IsBattleMoveStatus(targetMove[i]) 
+                        && !(GetBattlerMoveTargetType(battlerDef, targetMove[i]) & MOVE_TARGET_USER) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                        {
+                            if ((AI_WhoStrikesFirst(battlerAtk, battlerDef, move, predictedMove, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) && (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) || CanTargetMoveFaintAi(targetMove[i], battlerDef, BATTLE_PARTNER(battlerAtk), 1)))
+                            {
+                                ADJUST_SCORE(BEST_EFFECT);
+                                break;
+                            }
+                        }
                     }
-                }
-                else if (hasPartner && GetBattlerMoveTargetType(BATTLE_PARTNER(battlerAtk), aiData->partnerMove) & MOVE_TARGET_FOES_AND_ALLY 
-                && IsBattlerFirstTurnOrRandom(battlerAtk))
-                {
-                    if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
+                    if ((AI_WhoStrikesFirst(battlerAtk, battlerDef, move, predictedMove, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
                     {
                         ADJUST_SCORE(WEAK_EFFECT);
                         if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
                             ADJUST_SCORE(1);
                         break;
                     }
-                }
-            }
-            break;
-            case PROTECT_CRAFTY_SHIELD:
-                for (i = 0; i < MAX_MON_MOVES; i++)
-                {  
-                    if (targetMove[i] != MOVE_NONE && IsBattleMoveStatus(targetMove[i]) && !(GetBattlerMoveTargetType(battlerDef, targetMove[i]) & MOVE_TARGET_USER) 
-                    && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                    break;
+                case PROTECT_KINGS_SHIELD: // PARTNER DIFFERENCE - Opponent done
+                    if (!ShouldUseProtect(battlerAtk, battlerDef, targetMove[0]))
                     {
-                        if (IsBattlerFirstTurnOrRandom(battlerAtk))
-                        {
-                            ADJUST_SCORE(WEAK_EFFECT);
-                        }
-                        break;
+                        ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                     }
-                }
-                break;
-            case PROTECT_MAT_BLOCK: // PARTNER DIFFERENCE - oPPONENT done
-                for (i = 0; i < MAX_MON_MOVES; i++)
-                {  
-                    if (gDisableStructs[battlerAtk].isFirstTurn && targetMove[i] != MOVE_NONE && !IsBattleMoveStatus(targetMove[i]) 
-                    && !(GetBattlerMoveTargetType(battlerDef, targetMove[i]) & MOVE_TARGET_USER) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
-                    {
-                        if ((AI_WhoStrikesFirst(battlerAtk, battlerDef, move, predictedMove, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) && (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) || CanTargetMoveFaintAi(targetMove[i], battlerDef, BATTLE_PARTNER(battlerAtk), 1)))
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    {   
+                        if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
                         {
-                            ADJUST_SCORE(BEST_EFFECT);
+                            if (IsBattlerFirstTurnOrRandom(battlerAtk))
+                            {
+                                ADJUST_SCORE(BEST_EFFECT);
+                            }
                             break;
                         }
                     }
-                }
-                if ((AI_WhoStrikesFirst(battlerAtk, battlerDef, move, predictedMove, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
-                {
-                    ADJUST_SCORE(WEAK_EFFECT);
-                    if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
-                        ADJUST_SCORE(1);
-                    break;
-                }
-                break;
-            case PROTECT_KINGS_SHIELD: // PARTNER DIFFERENCE - Opponent done
-                if (!ShouldUseProtect(battlerAtk, battlerDef, targetMove[0]))
-                {
-                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-                }
-                for (i = 0; i < MAX_MON_MOVES; i++)
-                {   
-                    if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                    if (aiData->abilities[battlerAtk] == ABILITY_STANCE_CHANGE //Special logic for Aegislash
+                    && gBattleMons[battlerAtk].species == SPECIES_AEGISLASH_BLADE
+                    && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
                     {
-                        if (IsBattlerFirstTurnOrRandom(battlerAtk))
-                        {
-                            ADJUST_SCORE(BEST_EFFECT);
-                        }
+                        ADJUST_SCORE(GOOD_EFFECT);
+                        if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
+                            ADJUST_SCORE(1);
                         break;
                     }
-                }
-                if (aiData->abilities[battlerAtk] == ABILITY_STANCE_CHANGE //Special logic for Aegislash
-                && gBattleMons[battlerAtk].species == SPECIES_AEGISLASH_BLADE
-                && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
-                {
-                    ADJUST_SCORE(GOOD_EFFECT);
-                    if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
-                        ADJUST_SCORE(1);
-                    break;
-                }
-                else if (IsBattlerFirstTurnOrRandom(battlerAtk) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
-                {
-                    ADJUST_SCORE(WEAK_EFFECT);
-                    if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
-                        ADJUST_SCORE(1);
-                    break;
-                }
-                break;
-            default: // protect // PARTNER DIFFERENCE - Opponent done
-                if (!ShouldUseProtect(battlerAtk, battlerDef, targetMove[0]))
-                {
-                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-                }
-                for (i = 0; i < MAX_MON_MOVES; i++)
-                {   
-                    if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                    else if (IsBattlerFirstTurnOrRandom(battlerAtk) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
                     {
-                        if (IsBattlerFirstTurnOrRandom(battlerAtk))
-                        {
-                            ADJUST_AND_RETURN_SCORE(BEST_EFFECT);
-                        }
+                        ADJUST_SCORE(WEAK_EFFECT);
+                        if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
+                            ADJUST_SCORE(1);
                         break;
                     }
-                }
-                if (IsBattlerFirstTurnOrRandom(battlerAtk) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
-                {
-                    ADJUST_SCORE(WEAK_EFFECT);
-                    if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
-                        ADJUST_SCORE(1);
+                    break;
+                default: // protect // PARTNER DIFFERENCE - Opponent done
+                    if (!ShouldUseProtect(battlerAtk, battlerDef, targetMove[0]))
+                    {
+                        ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                    }
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    {   
+                        if (CanTargetMoveFaintAi(targetMove[i], battlerDef, battlerAtk, 1) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                        {
+                            if (IsBattlerFirstTurnOrRandom(battlerAtk))
+                            {
+                                ADJUST_AND_RETURN_SCORE(BEST_EFFECT);
+                            }
+                            break;
+                        }
+                    }
+                    if (IsBattlerFirstTurnOrRandom(battlerAtk) && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+                    {
+                        ADJUST_SCORE(WEAK_EFFECT);
+                        if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
+                            ADJUST_SCORE(1);
+                        break;
+                    }
                     break;
                 }
-                break;
             }
             break;
         case EFFECT_ENDURE: // PARTNER DIFFERENCE - Opponent done
