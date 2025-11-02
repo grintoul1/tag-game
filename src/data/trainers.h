@@ -17873,7 +17873,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 6786
-            .species = SPECIES_SWAMPERT,
+            .species = SPECIES_SWAMPERT_MEGA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6786
             .heldItem = ITEM_SWAMPERTITE,
