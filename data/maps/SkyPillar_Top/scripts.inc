@@ -507,8 +507,10 @@ SkyPillar_Top_Text_ArchieYouStillDefy:
 	.string "You will not stand in my way.$"
 
 SkyPillar_Top_Text_MaxieYouStillDefy:
-	.string "Maxie: I will shape the world\n"
-	.string "into one of Team Magma's design.$"
+	.string "Maxie: Even now you still defy me?\p"
+	.string "It matters not. I will shape the world\n"
+	.string "into one of Team Magma's design.\p"
+	.string "You will not stand in my way.$"
 
 SkyPillar_Top_EventScript_MaxieYouStillDefy::
 	msgbox SkyPillar_Top_Text_MaxieYouStillDefy, MSGBOX_DEFAULT
