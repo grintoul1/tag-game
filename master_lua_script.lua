@@ -265,8 +265,7 @@ end
 move = {}
 
 function getMoveTable()
-    move[0] = ""
-    i = 1
+    i = 0
     while i < movesCount do
         move[i] = string.format("%s",getMoveName(i))
         i = i + 1
@@ -3407,7 +3406,7 @@ function setBoxMon(address, newNature, IVs, moveSlot, moveName, level, species, 
     if (moveSlot ~= nil) then
         local moveIx = 0
         if (moveName ~= nil) then
-            moveIx = indexOf(move, moveName) - 1
+            moveIx = indexOf(move, moveName)
         end
         if (moveIx == nil) then
             console:log('Invalid move')
