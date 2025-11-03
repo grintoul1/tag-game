@@ -23,7 +23,6 @@
 #include "constants/abilities.h"
 #include "constants/battle_ai.h"
 #include "constants/battle_move_effects.h"
-#include "constants/hold_effects.h"
 #include "constants/moves.h"
 #include "constants/items.h"
 #include "constants/trainers.h"
@@ -38,7 +37,7 @@ static u32 ChooseMoveOrAction_Singles(u32 battler);
 static u32 ChooseMoveOrAction_Doubles(u32 battler);
 static inline void BattleAI_DoAIProcessing(struct AiThinkingStruct *aiThink, u32 battlerAtk, u32 battlerDef);
 static inline void BattleAI_DoAIProcessing_PredictedSwitchin(struct AiThinkingStruct *aiThink, struct AiLogicData *aiData, u32 battlerAtk, u32 battlerDef);
-static bool32 IsPinchBerryItemEffect(enum ItemHoldEffect holdEffect);
+static bool32 IsPinchBerryItemEffect(enum HoldEffect holdEffect);
 static void AI_CompareDamagingMoves(u32 battlerAtk, u32 battlerDef);
 
 // ewram
@@ -323,7 +322,7 @@ void BattleAI_SetupAIData(u8 defaultScoreMoves, u32 battler)
     gAiBattleData->chosenTarget[battler] = gBattlerTarget;
 }
 
-bool32 BattlerChoseNonMoveAction(void)
+bool32 BattlerChooseNonMoveAction(void)
 {
     if (gAiThinkingStruct->aiAction & AI_ACTION_FLEE)
     {
@@ -387,10 +386,6 @@ void ComputeBattlerDecisions(u32 battler)
     bool32 isAiBattler = (gBattleTypeFlags & BATTLE_TYPE_HAS_AI || IsWildMonSmart()) && (BattlerHasAi(battler) && !(gBattleTypeFlags & BATTLE_TYPE_PALACE));
     if (isAiBattler || CanAiPredictMove())
     {
-        // If ai is about to flee or chosen to watch player, no need to calc anything
-        if (isAiBattler && BattlerChoseNonMoveAction())
-            return;
-
         // Risky AI switches aggressively even mid battle
         enum SwitchType switchType = (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_RISKY) ? SWITCH_AFTER_KO : SWITCH_MID_BATTLE;
 
@@ -600,7 +595,7 @@ void SetBattlerAiData(u32 battler, struct AiLogicData *aiData)
     aiData->lastUsedMove[battler] = gLastMoves[battler];
     aiData->hpPercents[battler] = GetHealthPercentage(battler);
     aiData->moveLimitations[battler] = CheckMoveLimitations(battler, 0, MOVE_LIMITATIONS_ALL);
-    aiData->speedStats[battler] = GetBattlerTotalSpeedStatArgs(battler, ability, holdEffect);
+    aiData->speedStats[battler] = GetBattlerTotalSpeedStat(battler, ability, holdEffect);
 
     if (IsAiBattlerAssumingStab())
         RecordMovesBasedOnStab(battler);
@@ -756,7 +751,7 @@ static u32 PpStallReduction(u32 move, u32 battlerAtk)
         u32 species = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES);
         enum Ability abilityAtk = ABILITY_NONE;
         enum Ability abilityDef = GetPartyMonAbility(&gPlayerParty[partyIndex]);
-        u32 moveType = GetBattleMoveType(move); //  Probably doesn't handle dynamic types right now
+        enum Type moveType = GetBattleMoveType(move); //  Probably doesn't handle dynamic types right now
         if (CanAbilityAbsorbMove(battlerAtk, tempBattleMonIndex, abilityDef, move, moveType, CHECK_TRIGGER)
          || CanAbilityBlockMove(battlerAtk, tempBattleMonIndex, abilityAtk, abilityDef, move, CHECK_TRIGGER)
          || (CalcPartyMonTypeEffectivenessMultiplier(move, species, abilityDef) == 0))
@@ -1123,7 +1118,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     // move data
     enum BattleMoveEffects moveEffect = GetMoveEffect(move);
     u32 nonVolatileStatus = GetMoveNonVolatileStatus(move);
-    s32 moveType;
+    enum Type moveType;
     u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, move);
     struct AiLogicData *aiData = gAiLogicData;
     uq4_12_t effectiveness = aiData->effectiveness[battlerAtk][battlerDef][gAiThinkingStruct->movesetIndex];
@@ -1508,7 +1503,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_QUIVER_DANCE:
         case EFFECT_GEOMANCY:
-            if (HasBattlerSideAbility(battlerDef, ABILITY_UNAWARE, aiData))
+            if (AI_IsAbilityOnSide(battlerDef, ABILITY_UNAWARE))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             if ((gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE || !HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPEED)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPDEF)))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -2013,7 +2008,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_BELLY_DRUM:
         case EFFECT_FILLET_AWAY:
-            if (HasBattlerSideAbility(battlerDef, ABILITY_UNAWARE, aiData))
+            if (AI_IsAbilityOnSide(battlerDef, ABILITY_UNAWARE))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             if (aiData->abilities[battlerAtk] == ABILITY_CONTRARY)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -2092,7 +2087,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
         case EFFECT_RECYCLE:
-            if (GetUsedHeldItem(battlerAtk) == 0 || gBattleMons[battlerAtk].item != 0)
+            if (GetBattlerPartyState(battlerAtk)->usedHeldItem == 0 || gBattleMons[battlerAtk].item != 0)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
         case EFFECT_IMPRISON:
@@ -2505,10 +2500,9 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_ENTRAINMENT:
         case EFFECT_GASTRO_ACID:
         case EFFECT_ROLE_PLAY:
-        case EFFECT_SIMPLE_BEAM:
         case EFFECT_SKILL_SWAP:
-        case EFFECT_WORRY_SEED:
-            if (!CanEffectChangeAbility(battlerAtk, battlerDef, moveEffect, aiData)
+        case EFFECT_OVERWRITE_ABILITY:
+            if (!CanEffectChangeAbility(battlerAtk, battlerDef, move, aiData)
              || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
@@ -2744,7 +2738,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_SOAK:
         {
-            u32 types[3];
+            enum Type types[3];
             u32 typeArg = GetMoveArgType(move);
 
             GetBattlerTypes(battlerDef, FALSE, types);
@@ -3043,6 +3037,19 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     return score;
 }
 
+static s32 AI_GetWhichBattlerFasterOrTies(u32 battlerAtk, u32 battlerDef, bool32 ignoreChosenMoves)
+{
+    struct BattleContext ctx = {0};
+    ctx.battlerAtk = battlerAtk;
+    ctx.battlerDef = battlerDef;
+    ctx.abilities[battlerAtk]  = gAiLogicData->abilities[battlerAtk];
+    ctx.abilities[battlerDef]  = gAiLogicData->abilities[battlerDef];
+    ctx.holdEffects[battlerAtk] = gAiLogicData->holdEffects[battlerAtk];
+    ctx.holdEffects[battlerDef] = gAiLogicData->holdEffects[battlerDef];
+
+    return GetWhichBattlerFasterOrTies(&ctx, ignoreChosenMoves);
+}
+
 static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
     u32 movesetIndex = gAiThinkingStruct->movesetIndex;
@@ -3064,7 +3071,7 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             ADJUST_SCORE(SLOW_KILL);
     }
     if (CanTargetFaintAi(battlerDef, battlerAtk)
-            && GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER
+            && AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER
             && GetBattleMovePriority(battlerAtk, gAiLogicData->abilities[battlerAtk], move) > 0)
     {
         if (RandomPercentage(RNG_AI_PRIORITIZE_LAST_CHANCE, PRIORITIZE_LAST_CHANCE_CHANCE))
@@ -3083,7 +3090,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         return score; // Covered in their own functions
 
     // move data
-    u32 moveType = GetMoveType(move);
+    enum Type moveType = GetMoveType(move);
     enum BattleMoveEffects effect = GetMoveEffect(move);
     u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, move);
     // ally data
@@ -3665,10 +3672,9 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_ENTRAINMENT:
             case EFFECT_GASTRO_ACID:
             case EFFECT_ROLE_PLAY:
-            case EFFECT_SIMPLE_BEAM:
             case EFFECT_SKILL_SWAP:
-            case EFFECT_WORRY_SEED:
-                AbilityChangeScore(battlerAtk, battlerAtkPartner, effect, &score, aiData);
+            case EFFECT_OVERWRITE_ABILITY:
+                AbilityChangeScore(battlerAtk, battlerAtkPartner, move, &score, aiData);
                 return score;
             case EFFECT_ELECTRIC_TERRAIN:
                 if (gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)
@@ -3703,8 +3709,18 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 if (gBattleMons[battlerAtkPartner].status1 & STATUS1_ANY)
                 {
                     if (gBattleMons[battlerAtkPartner].status1 & STATUS1_CAN_MOVE)
+                    {
+                        if (ShouldCureStatus(battlerAtk, battlerAtkPartner, aiData))
+                            ADJUST_SCORE(DECENT_EFFECT);
+                    }
+                    else
+                    {
+                        ADJUST_SCORE(DECENT_EFFECT);
+                    }
+
+                    if ((!IsBattlerAlive(LEFT_FOE(battlerAtk)) || ShouldRecover(battlerAtk, LEFT_FOE(battlerAtk), move, 50))
+                     && (!IsBattlerAlive(RIGHT_FOE(battlerAtk)) || ShouldRecover(battlerAtk, RIGHT_FOE(battlerAtk), move, 50)))
                         RETURN_SCORE_PLUS(WEAK_EFFECT);
-                    RETURN_SCORE_PLUS(GOOD_EFFECT);
                 }
                 break;
             case EFFECT_SWAGGER:
@@ -3901,7 +3917,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     return score;
 }
 
-static bool32 IsPinchBerryItemEffect(enum ItemHoldEffect holdEffect)
+static bool32 IsPinchBerryItemEffect(enum HoldEffect holdEffect)
 {
     switch (holdEffect)
     {
@@ -4134,7 +4150,7 @@ static void AI_CompareDamagingMoves(u32 battlerAtk, u32 battlerDef)
 
 static s32 AI_CalcHoldEffectMoveScore(u32 battlerAtk, u32 battlerDef, u32 move, struct AiLogicData *aiData)
 {
-    enum ItemHoldEffect holdEffect = aiData->holdEffects[battlerAtk];
+    enum HoldEffect holdEffect = aiData->holdEffects[battlerAtk];
 
     s32 score = 0;
 
@@ -4172,7 +4188,7 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
     s32 score = 0;
     u32 predictedMove = GetIncomingMove(battlerAtk, battlerDef, aiData);
     u32 predictedMoveSpeedCheck = GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, aiData);
-    u32 predictedType = GetMoveType(predictedMove);
+    enum Type predictedType = GetMoveType(predictedMove);
     u32 predictedMoveSlot = GetMoveSlot(GetMovesArray(battlerDef), predictedMove);
     bool32 isBattle1v1 = IsBattle1v1();
     bool32 hasTwoOpponents = HasTwoOpponents(battlerAtk);
@@ -4189,6 +4205,19 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
     // check status move preference
     if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PREFER_STATUS_MOVES && IsBattleMoveStatus(move) && effectiveness != UQ_4_12(0.0))
         ADJUST_SCORE(10);
+
+    // don't get baited into encore
+    if (gBattleMoveEffects[moveEffect].encourageEncore
+     && HasBattlerSideMoveWithEffect(battlerDef, EFFECT_ENCORE)
+     && (B_MENTAL_HERB < GEN_5 || aiData->holdEffects[battlerAtk] != HOLD_EFFECT_MENTAL_HERB))
+     {
+        if (!AI_IsAbilityOnSide(battlerAtk, ABILITY_AROMA_VEIL)
+         || IsMoldBreakerTypeAbility(battlerDef, aiData->abilities[battlerDef])
+         || aiData->abilities[battlerDef] == ABILITY_MYCELIUM_MIGHT
+         || IsMoldBreakerTypeAbility(BATTLE_PARTNER(battlerDef), aiData->abilities[BATTLE_PARTNER(battlerDef)])
+         || aiData->abilities[BATTLE_PARTNER(battlerDef)] == ABILITY_MYCELIUM_MIGHT)
+            return score;
+     }
 
     // check thawing moves
     if (gBattleMons[battlerAtk].status1 & STATUS1_ICY_ANY && MoveThawsUser(move))
@@ -4838,6 +4867,15 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
         if (ShouldUseWishAromatherapy(battlerAtk, battlerDef, move))
             ADJUST_SCORE(DECENT_EFFECT);
         break;
+    case EFFECT_PURIFY:
+        if (gBattleMons[battlerDef].status1 & STATUS1_ANY)
+        {
+            if (ShouldCureStatus(battlerAtk, battlerDef, aiData))
+                ADJUST_SCORE(GOOD_EFFECT);
+            if (ShouldRecover(battlerAtk, battlerDef, move, 50))
+                RETURN_SCORE_PLUS(WEAK_EFFECT);
+        }
+        break;
     case EFFECT_CURSE:
         if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_GHOST))
         {
@@ -5355,11 +5393,11 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
             // If Target can kill Player and is faster or tied, but Player can kill target, and Player Partner is not dead to Target nor does 
             // Player Partner fast kill, and Target's partner doesn't kill Player Partner before Target moves, score above slow kill
             if (CanAIFaintTarget(battlerDef, BATTLE_PARTNER(battlerAtk),1) 
-            && (GetWhichBattlerFasterOrTies(battlerDef, BATTLE_PARTNER(battlerAtk), TRUE) == AI_IS_FASTER)
+            && (AI_GetWhichBattlerFasterOrTies(battlerDef, BATTLE_PARTNER(battlerAtk), TRUE) == AI_IS_FASTER)
             && (CanAIFaintTarget(BATTLE_PARTNER(battlerAtk), battlerDef, 1))
             && (!(CanAIFaintTarget(battlerDef, battlerAtk,1))) && (!((CanAIFaintTarget(BATTLE_PARTNER(battlerDef), battlerAtk, 1) 
-            && GetWhichBattlerFaster(BATTLE_PARTNER(battlerDef), battlerDef, TRUE) == AI_IS_FASTER)
-            || (GetWhichBattlerFaster(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER 
+            && AI_GetWhichBattlerFasterOrTies(BATTLE_PARTNER(battlerDef), battlerDef, TRUE) == AI_IS_FASTER)
+            || (AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER 
             && CanAIFaintTarget(battlerAtk, battlerDef, 1)))))
             {
                 ADJUST_SCORE(BEST_EFFECT);
@@ -5405,10 +5443,10 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
         }
         // User is faster and Target is not Prankster/Gale Wings, or User is Slower but has Prankster and Target not Prankster/Gale Wings,
         // or Target has Prankster/Gale Wings but User has Prankster and Faster, and Target has Tailwind
-        else if ((((GetWhichBattlerFaster(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER) && !((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
-        || (aiData->abilities[battlerDef] == ABILITY_GALE_WINGS))) || ((GetWhichBattlerFaster(battlerAtk, battlerDef, TRUE) == AI_IS_SLOWER) && !((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
+        else if ((((AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER) && !((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
+        || (aiData->abilities[battlerDef] == ABILITY_GALE_WINGS))) || ((AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == AI_IS_SLOWER) && !((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
         || (aiData->abilities[battlerDef] == ABILITY_GALE_WINGS)) && (aiData->abilities[battlerAtk] == ABILITY_PRANKSTER)) 
-        || ((GetWhichBattlerFaster(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER) && ((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
+        || ((AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER) && ((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
         || (aiData->abilities[battlerDef] == ABILITY_GALE_WINGS)) && (aiData->abilities[battlerAtk] == ABILITY_PRANKSTER)))
             && !(gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_TAILWIND) && HasMoveWithEffect(battlerDef, EFFECT_TRICK_ROOM))
         {
@@ -5543,19 +5581,19 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
             ADJUST_SCORE(GOOD_EFFECT);
         break;
     case EFFECT_RECYCLE:
-        if (GetUsedHeldItem(battlerAtk) != ITEM_NONE)
+        if (GetBattlerPartyState(battlerAtk)->usedHeldItem != ITEM_NONE)
             ADJUST_SCORE(WEAK_EFFECT);
-        if (IsRecycleEncouragedItem(GetUsedHeldItem(battlerAtk)))
+        if (IsRecycleEncouragedItem(GetBattlerPartyState(battlerAtk)->usedHeldItem))
             ADJUST_SCORE(WEAK_EFFECT);
         if (aiData->abilities[battlerAtk] == ABILITY_RIPEN)
         {
-            u32 item = GetUsedHeldItem(battlerAtk);
+            u32 item = GetBattlerPartyState(battlerAtk)->usedHeldItem;
             u32 toHeal = (GetItemHoldEffectParam(item) == 10) ? 10 : gBattleMons[battlerAtk].maxHP / GetItemHoldEffectParam(item);
 
             if (IsStatBoostingBerry(item) && aiData->hpPercents[battlerAtk] > 60)
                 ADJUST_SCORE(WEAK_EFFECT);
             else if (ShouldRestoreHpBerry(battlerAtk, item) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)
-              && ((GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == 1 && CanTargetFaintAiWithMod(battlerDef, battlerAtk, 0, 0))
+              && ((AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == 1 && CanTargetFaintAiWithMod(battlerDef, battlerAtk, 0, 0))
                || !CanTargetFaintAiWithMod(battlerDef, battlerAtk, toHeal, 0)))
                 ADJUST_SCORE(WEAK_EFFECT);    // Recycle healing berry if we can't otherwise faint the target and the target wont kill us after we activate the berry
         }
@@ -5575,10 +5613,9 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
     case EFFECT_ENTRAINMENT:
     case EFFECT_GASTRO_ACID:
     case EFFECT_ROLE_PLAY:
-    case EFFECT_SIMPLE_BEAM:
     case EFFECT_SKILL_SWAP:
-    case EFFECT_WORRY_SEED:
-        AbilityChangeScore(battlerAtk, battlerDef, moveEffect, &score, aiData);
+    case EFFECT_OVERWRITE_ABILITY:
+        AbilityChangeScore(battlerAtk, battlerDef, move, &score, aiData);
         return score;
     case EFFECT_IMPRISON:
         if (predictedMove != MOVE_NONE && HasMove(battlerAtk, predictedMove))
@@ -6433,6 +6470,17 @@ static s32 AI_CalcAdditionalEffectScore(u32 battlerAtk, u32 battlerDef, u32 move
                 if (ShouldSetScreen(battlerAtk, battlerDef, EFFECT_AURORA_VEIL))
                     ADJUST_SCORE(DECENT_EFFECT);
                 break;
+            case MOVE_EFFECT_REMOVE_STATUS:
+                if (gBattleMons[battlerDef].status1 & GetMoveEffectArg_Status(move))
+                {
+                    if (ShouldCureStatus(battlerAtk, battlerDef, aiData))
+                        ADJUST_SCORE(DECENT_EFFECT);
+                    else if (aiData->holdEffects[battlerDef] == HOLD_EFFECT_FLAME_ORB || aiData->holdEffects[battlerDef] == HOLD_EFFECT_TOXIC_ORB)
+                        ADJUST_SCORE(WEAK_EFFECT);
+                    else
+                        ADJUST_SCORE(BAD_EFFECT);
+                }
+                break;
             default:
                 break;
             }
@@ -6795,7 +6843,7 @@ static s32 AI_PreferBatonPass(u32 battlerAtk, u32 battlerDef, u32 move, s32 scor
 static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
     enum BattleMoveEffects effect = GetMoveEffect(move);
-    u32 moveType = 0;
+    enum Type moveType = 0;
 
     SetTypeBeforeUsingMove(move, battlerAtk);
     moveType = GetBattleMoveType(move);
@@ -7091,7 +7139,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     u32 i;
     u32 weather;
     enum Ability abilityAtk = aiData->abilities[battlerAtk];
-    //enum ItemHoldEffect holdEffect = aiData->holdEffects[battlerAtk];
+    //enum HoldEffect holdEffect = aiData->holdEffects[battlerAtk];
     bool32 isBattle1v1 = IsBattle1v1();
     bool32 hasTwoOpponents = HasTwoOpponents(battlerAtk);
     s32 maxScore = 0;
@@ -7486,7 +7534,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 break;
             case EFFECT_QUIVER_DANCE:
             case EFFECT_GEOMANCY:
-                if (HasBattlerSideAbility(battlerDef, ABILITY_UNAWARE, aiData))
+                if (AI_IsAbilityOnSide(battlerDef, ABILITY_UNAWARE))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 if ((gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE || !HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPEED)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPDEF)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -8000,7 +8048,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 break;
             case EFFECT_BELLY_DRUM:
             case EFFECT_FILLET_AWAY:
-                if (HasBattlerSideAbility(battlerDef, ABILITY_UNAWARE, aiData))
+                if (AI_IsAbilityOnSide(battlerDef, ABILITY_UNAWARE))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 if (aiData->abilities[battlerAtk] == ABILITY_CONTRARY)
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -8080,7 +8128,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_RECYCLE:
-                if (GetUsedHeldItem(battlerAtk) == 0 || gBattleMons[battlerAtk].item != 0)
+                if (GetBattlerPartyState(battlerAtk)->usedHeldItem == 0 || gBattleMons[battlerAtk].item != 0)
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_IMPRISON:
@@ -8497,9 +8545,8 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             case EFFECT_ENTRAINMENT:
             case EFFECT_GASTRO_ACID:
             case EFFECT_ROLE_PLAY:
-            case EFFECT_SIMPLE_BEAM:
+            case EFFECT_OVERWRITE_ABILITY:
             case EFFECT_SKILL_SWAP:
-            case EFFECT_WORRY_SEED:
                 if (!CanEffectChangeAbility(battlerAtk, battlerDef, moveEffect, aiData)
                 || DoesPartnerHaveSameMoveEffect(battlerAtkPartner, battlerDef, move, aiData->partnerMove))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -8631,7 +8678,6 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                         case EFFECT_GRASSY_TERRAIN:
                         case EFFECT_ELECTRIC_TERRAIN:
                         case EFFECT_MISTY_TERRAIN:
-                        case EFFECT_HIT_SET_TERRAIN:
                             if (AI_IsFaster(battlerAtk, battlerAtkPartner, aiData->partnerMove, predictedMoveSpeedCheck, CONSIDER_PRIORITY))
                                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                             else
@@ -8754,7 +8800,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 break;
             case EFFECT_SOAK:
             {
-                u32 types[3];
+                enum Type types[3];
                 u32 typeArg = GetMoveArgType(move);
 
                 GetBattlerTypes(battlerDef, FALSE, types);
@@ -9096,7 +9142,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             // AI_TryToFaint
             {
                 if (CanTargetFaintAi(battlerDef, battlerAtk)
-                    && GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER
+                    && AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER
                     && GetBattleMovePriority(battlerAtk, gAiLogicData->abilities[battlerAtk], move) > 0)
                     ADJUST_SCORE(LAST_CHANCE + 1); // +15 for Partner so guaranteed over slow kill
                 else if (GetNoOfHitsToKOBattler(battlerAtk, battlerDef, gAiThinkingStruct->movesetIndex, AI_ATTACKING) > 4)
@@ -9628,9 +9674,8 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 case EFFECT_ENTRAINMENT:
                 case EFFECT_GASTRO_ACID:
                 case EFFECT_ROLE_PLAY:
-                case EFFECT_SIMPLE_BEAM:
+                case EFFECT_OVERWRITE_ABILITY:
                 case EFFECT_SKILL_SWAP:
-                case EFFECT_WORRY_SEED:
                     AbilityChangeScore(battlerAtk, battlerAtkPartner, moveEffect, &score, aiData);
                     return score;
                 case EFFECT_ELECTRIC_TERRAIN:
@@ -11147,11 +11192,11 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                     // If Target can kill Player and is faster or tied, but Player can kill target, and Player Partner is not dead to Target nor does 
                     // Player Partner fast kill, and Target's partner doesn't kill Player Partner before Target moves, score above slow kill
                     if (CanAIFaintTarget(battlerDef, battlerAtkPartner,1) 
-                    && (GetWhichBattlerFasterOrTies(battlerDef, battlerAtkPartner, TRUE) == AI_IS_FASTER)
+                    && (AI_GetWhichBattlerFasterOrTies(battlerDef, battlerAtkPartner, TRUE) == AI_IS_FASTER)
                     && (CanAIFaintTarget(battlerAtkPartner, battlerDef, 1))
                     && (!(CanAIFaintTarget(battlerDef, battlerAtk,1))) && (!((CanAIFaintTarget(battlerAtkPartner, battlerAtk, 1) 
-                    && GetWhichBattlerFaster(battlerAtkPartner, battlerDef, TRUE) == AI_IS_FASTER)
-                    || (GetWhichBattlerFaster(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER 
+                    && AI_GetWhichBattlerFasterOrTies(battlerAtkPartner, battlerDef, TRUE) == AI_IS_FASTER)
+                    || (AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER 
                     && CanAIFaintTarget(battlerAtk, battlerDef, 1)))))
                     {
                         ADJUST_SCORE(BEST_EFFECT);
@@ -11211,10 +11256,10 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 }
                 // User is faster and Target is not Prankster/Gale Wings, or User is Slower but has Prankster and Target not Prankster/Gale Wings,
                 // or Target has Prankster/Gale Wings but User has Prankster and Faster, and Target has Tailwind
-                else if ((((GetWhichBattlerFaster(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER) && !((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
-                || (aiData->abilities[battlerDef] == ABILITY_GALE_WINGS))) || ((GetWhichBattlerFaster(battlerAtk, battlerDef, TRUE) == AI_IS_SLOWER) && !((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
+                else if ((((AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER) && !((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
+                || (aiData->abilities[battlerDef] == ABILITY_GALE_WINGS))) || ((AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == AI_IS_SLOWER) && !((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
                 || (aiData->abilities[battlerDef] == ABILITY_GALE_WINGS)) && (aiData->abilities[battlerAtk] == ABILITY_PRANKSTER)) 
-                || ((GetWhichBattlerFaster(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER) && ((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
+                || ((AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER) && ((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
                 || (aiData->abilities[battlerDef] == ABILITY_GALE_WINGS)) && (aiData->abilities[battlerAtk] == ABILITY_PRANKSTER)))
                     && !(gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_TAILWIND) && HasMoveWithEffect(battlerDef, EFFECT_TRICK_ROOM))
                 {
@@ -11378,19 +11423,19 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             }
             else 
             {
-                if (GetUsedHeldItem(battlerAtk) != ITEM_NONE)
+                if (GetBattlerPartyState(battlerAtk)->usedHeldItem)
                     ADJUST_SCORE(WEAK_EFFECT);
-                if (IsRecycleEncouragedItem(GetUsedHeldItem(battlerAtk)))
+                if (IsRecycleEncouragedItem(GetBattlerPartyState(battlerAtk)->usedHeldItem))
                     ADJUST_SCORE(WEAK_EFFECT);
                 if (aiData->abilities[battlerAtk] == ABILITY_RIPEN)
                 {
-                    u32 item = GetUsedHeldItem(battlerAtk);
+                    u32 item = GetBattlerPartyState(battlerAtk)->usedHeldItem;
                     u32 toHeal = (GetItemHoldEffectParam(item) == 10) ? 10 : gBattleMons[battlerAtk].maxHP / GetItemHoldEffectParam(item);
 
                     if (IsStatBoostingBerry(item) && aiData->hpPercents[battlerAtk] > 60)
                         ADJUST_SCORE(WEAK_EFFECT);
                     else if (ShouldRestoreHpBerry(battlerAtk, item) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)
-                    && ((GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == 1 && CanTargetFaintAiWithMod(battlerDef, battlerAtk, 0, 0))
+                    && ((AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == 1 && CanTargetFaintAiWithMod(battlerDef, battlerAtk, 0, 0))
                     || !CanTargetFaintAiWithMod(battlerDef, battlerAtk, toHeal, 0)))
                         ADJUST_SCORE(WEAK_EFFECT);    // Recycle healing berry if we can't otherwise faint the target and the target wont kill us after we activate the berry
                 }
@@ -11418,9 +11463,8 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         case EFFECT_ENTRAINMENT:
         case EFFECT_GASTRO_ACID:
         case EFFECT_ROLE_PLAY:
-        case EFFECT_SIMPLE_BEAM:
+        case EFFECT_OVERWRITE_ABILITY:
         case EFFECT_SKILL_SWAP:
-        case EFFECT_WORRY_SEED:
             AbilityChangeScore(battlerAtk, battlerDef, moveEffect, &score, aiData);
             return score;
         case EFFECT_IMPRISON:
@@ -12330,7 +12374,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     u32 i;
     u32 weather;
     enum Ability abilityAtk = aiData->abilities[battlerAtk];
-    //enum ItemHoldEffect holdEffect = aiData->holdEffects[battlerAtk];
+    //enum HoldEffect holdEffect = aiData->holdEffects[battlerAtk];
     bool32 isBattle1v1 = IsBattle1v1();
     bool32 hasTwoOpponents = HasTwoOpponents(battlerAtk);
     s32 maxScore = 0;
@@ -12727,7 +12771,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 break;
             case EFFECT_QUIVER_DANCE:
             case EFFECT_GEOMANCY:
-                if (HasBattlerSideAbility(battlerDef, ABILITY_UNAWARE, aiData))
+                if (AI_IsAbilityOnSide(battlerDef, ABILITY_UNAWARE))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 if ((gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE || !HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPEED)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPDEF)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -13242,7 +13286,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 break;
             case EFFECT_BELLY_DRUM:
             case EFFECT_FILLET_AWAY:
-                if (HasBattlerSideAbility(battlerDef, ABILITY_UNAWARE, aiData))
+                if (AI_IsAbilityOnSide(battlerDef, ABILITY_UNAWARE))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 if (aiData->abilities[battlerAtk] == ABILITY_CONTRARY)
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -13322,7 +13366,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_RECYCLE:
-                if (GetUsedHeldItem(battlerAtk) == 0 || gBattleMons[battlerAtk].item != 0)
+                if (GetBattlerPartyState(battlerAtk)->usedHeldItem == 0 || gBattleMons[battlerAtk].item != 0)
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_IMPRISON:
@@ -13739,9 +13783,8 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_ENTRAINMENT:
             case EFFECT_GASTRO_ACID:
             case EFFECT_ROLE_PLAY:
-            case EFFECT_SIMPLE_BEAM:
+            case EFFECT_OVERWRITE_ABILITY:
             case EFFECT_SKILL_SWAP:
-            case EFFECT_WORRY_SEED:
                 if (!CanEffectChangeAbility(battlerAtk, battlerDef, moveEffect, aiData)
                 || DoesPartnerHaveSameMoveEffect(battlerAtkPartner, battlerDef, move, aiData->partnerMove))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -13873,7 +13916,6 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                         case EFFECT_GRASSY_TERRAIN:
                         case EFFECT_ELECTRIC_TERRAIN:
                         case EFFECT_MISTY_TERRAIN:
-                        case EFFECT_HIT_SET_TERRAIN:
                             if (AI_IsFaster(battlerAtk, battlerAtkPartner, aiData->partnerMove, predictedMoveSpeedCheck, CONSIDER_PRIORITY))
                                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                             else
@@ -13996,7 +14038,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 break;
             case EFFECT_SOAK:
             {
-                u32 types[3];
+                enum Type types[3];
                 u32 typeArg = GetMoveArgType(move);
 
                 GetBattlerTypes(battlerDef, FALSE, types);
@@ -14318,7 +14360,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 
         }
         if (CanTargetFaintAi(battlerDef, battlerAtk)
-            && GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER
+            && AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER
             && GetBattleMovePriority(battlerAtk, gAiLogicData->abilities[battlerAtk], move) > 0)
         {
             ADJUST_SCORE(LAST_CHANCE);
@@ -14871,9 +14913,8 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     case EFFECT_ENTRAINMENT:
                     case EFFECT_GASTRO_ACID:
                     case EFFECT_ROLE_PLAY:
-                    case EFFECT_SIMPLE_BEAM:
+                    case EFFECT_OVERWRITE_ABILITY:
                     case EFFECT_SKILL_SWAP:
-                    case EFFECT_WORRY_SEED:
                         AbilityChangeScore(battlerAtk, battlerAtkPartner, moveEffect, &score, aiData);
                         return score;
                     case EFFECT_ELECTRIC_TERRAIN:
@@ -16311,11 +16352,11 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     // If Target can kill Player and is faster or tied, but Player can kill target, and Player Partner is not dead to Target nor does 
                     // Player Partner fast kill, and Target's partner doesn't kill Player Partner before Target moves, score above slow kill
                     if (CanAIFaintTarget(battlerDef, battlerAtkPartner,1) 
-                    && (GetWhichBattlerFasterOrTies(battlerDef, battlerAtkPartner, TRUE) == AI_IS_FASTER)
+                    && (AI_GetWhichBattlerFasterOrTies(battlerDef, battlerAtkPartner, TRUE) == AI_IS_FASTER)
                     && (CanAIFaintTarget(battlerAtkPartner, battlerDef, 1))
                     && (!(CanAIFaintTarget(battlerDef, battlerAtk,1))) && (!((CanAIFaintTarget(battlerAtkPartner, battlerAtk, 1) 
-                    && GetWhichBattlerFaster(battlerAtkPartner, battlerDef, TRUE) == AI_IS_FASTER)
-                    || (GetWhichBattlerFaster(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER 
+                    && AI_GetWhichBattlerFasterOrTies(battlerAtkPartner, battlerDef, TRUE) == AI_IS_FASTER)
+                    || (AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER 
                     && CanAIFaintTarget(battlerAtk, battlerDef, 1)))))
                     {
                         ADJUST_SCORE(BEST_EFFECT);
@@ -16375,10 +16416,10 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 }
                 // User is faster and Target is not Prankster/Gale Wings, or User is Slower but has Prankster and Target not Prankster/Gale Wings,
                 // or Target has Prankster/Gale Wings but User has Prankster and Faster, and Target has Tailwind
-                else if ((((GetWhichBattlerFaster(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER) && !((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
-                || (aiData->abilities[battlerDef] == ABILITY_GALE_WINGS))) || ((GetWhichBattlerFaster(battlerAtk, battlerDef, TRUE) == AI_IS_SLOWER) && !((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
+                else if ((((AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER) && !((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
+                || (aiData->abilities[battlerDef] == ABILITY_GALE_WINGS))) || ((AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == AI_IS_SLOWER) && !((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
                 || (aiData->abilities[battlerDef] == ABILITY_GALE_WINGS)) && (aiData->abilities[battlerAtk] == ABILITY_PRANKSTER)) 
-                || ((GetWhichBattlerFaster(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER) && ((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
+                || ((AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == AI_IS_FASTER) && ((aiData->abilities[battlerDef] == ABILITY_PRANKSTER)
                 || (aiData->abilities[battlerDef] == ABILITY_GALE_WINGS)) && (aiData->abilities[battlerAtk] == ABILITY_PRANKSTER)))
                     && !(gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_TAILWIND) && HasMoveWithEffect(battlerDef, EFFECT_TRICK_ROOM))
                 {
@@ -16542,19 +16583,19 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             }
             else 
             {
-                if (GetUsedHeldItem(battlerAtk) != ITEM_NONE)
+                if (GetBattlerPartyState(battlerAtk)->usedHeldItem)
                     ADJUST_SCORE(WEAK_EFFECT);
-                if (IsRecycleEncouragedItem(GetUsedHeldItem(battlerAtk)))
+                if (IsRecycleEncouragedItem(GetBattlerPartyState(battlerAtk)->usedHeldItem))
                     ADJUST_SCORE(WEAK_EFFECT);
                 if (aiData->abilities[battlerAtk] == ABILITY_RIPEN)
                 {
-                    u32 item = GetUsedHeldItem(battlerAtk);
+                    u32 item = GetBattlerPartyState(battlerAtk)->usedHeldItem;
                     u32 toHeal = (GetItemHoldEffectParam(item) == 10) ? 10 : gBattleMons[battlerAtk].maxHP / GetItemHoldEffectParam(item);
 
                     if (IsStatBoostingBerry(item) && aiData->hpPercents[battlerAtk] > 60)
                         ADJUST_SCORE(WEAK_EFFECT);
                     else if (ShouldRestoreHpBerry(battlerAtk, item) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)
-                    && ((GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == 1 && CanTargetFaintAiWithMod(battlerDef, battlerAtk, 0, 0))
+                    && ((AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == 1 && CanTargetFaintAiWithMod(battlerDef, battlerAtk, 0, 0))
                     || !CanTargetFaintAiWithMod(battlerDef, battlerAtk, toHeal, 0)))
                         ADJUST_SCORE(WEAK_EFFECT);    // Recycle healing berry if we can't otherwise faint the target and the target wont kill us after we activate the berry
                 }
@@ -16582,9 +16623,8 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_ENTRAINMENT:
         case EFFECT_GASTRO_ACID:
         case EFFECT_ROLE_PLAY:
-        case EFFECT_SIMPLE_BEAM:
+        case EFFECT_OVERWRITE_ABILITY:
         case EFFECT_SKILL_SWAP:
-        case EFFECT_WORRY_SEED:
             AbilityChangeScore(battlerAtk, battlerDef, moveEffect, &score, aiData);
             return score;
         case EFFECT_IMPRISON: // grintoul TODO
