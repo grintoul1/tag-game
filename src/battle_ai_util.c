@@ -213,7 +213,7 @@ bool32 IsBattlerFirstTurnOrRandom(u32 battler)
 
 bool32 ShouldUseProtect(u32 battlerAtk, u32 battlerDef, u32 move)
 {
-    if (gLastMoves[battlerAtk] == gMovesInfo[move].effect && (Random() & 1))
+    if (gLastMoves[battlerAtk] == gMovesInfo[move].effect /*&& (Random() & 1)*/)
         return FALSE;
     else
         return TRUE;
