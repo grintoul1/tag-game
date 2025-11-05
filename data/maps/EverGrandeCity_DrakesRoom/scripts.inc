@@ -53,6 +53,7 @@ EverGrandeCity_DrakesRoom_EventScript_Drake::
 	end
 
 EverGrandeCity_DrakesRoom_EventScript_DrakeDoMultiBattle::
+	fadescreen FADE_TO_BLACK
 	playbgm MUS_VICTORY_ROAD, TRUE
 	multi_2p_vs_1 TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat, PARTNER_EMMIE
 	switch VAR_RESULT

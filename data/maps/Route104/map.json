@@ -546,6 +546,13 @@
       "elevation": 3,
       "dest_map": "MAP_PETALBURG_WOODS",
       "dest_warp_id": "7"
+    },
+    {
+      "x": 18,
+      "y": 56,
+      "elevation": 0,
+      "dest_map": "MAP_MT_CHIMNEY",
+      "dest_warp_id": "4"
     }
   ],
   "coord_events": [

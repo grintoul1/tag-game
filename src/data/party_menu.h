@@ -114,7 +114,7 @@ static const u8 sPartyMenuSpriteCoords[PARTY_LAYOUT_COUNT][PARTY_SIZE][4 * 2] =
     },
     [PARTY_LAYOUT_OVERWORLD] =
     {
-        {16, 32, 20, 42, 50, 44, 16, 26},
+        {16, 24, 20, 34, 50, 36, 16, 18},
         {104, 26, 106, 36, 136, 35, 102, 33},
         {104, 50, 106, 60, 136, 59, 102, 57},
         {16, 80, 20, 90, 50, 92, 16, 74},

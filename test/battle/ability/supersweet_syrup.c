@@ -3,6 +3,7 @@
 
 SINGLE_BATTLE_TEST("Supersweet Syrup lowers evasion once per battle by one stage")
 {
+    KNOWN_FAILING; // Supersweet Syrup changed to work more than once per battle
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_DIPPLIN) { Ability(ABILITY_SUPERSWEET_SYRUP); }
@@ -56,11 +57,21 @@ SINGLE_BATTLE_TEST("Supersweet Syrup can not further lower opponents evasion if 
         TURN { MOVE(opponent, MOVE_SWEET_SCENT); }
         TURN { MOVE(opponent, MOVE_SWEET_SCENT); }
         TURN { MOVE(opponent, MOVE_SWEET_SCENT); }
+        if (GetMoveEffect(MOVE_SWEET_SCENT) == EFFECT_EVASION_DOWN) {
+            TURN { MOVE(opponent, MOVE_SWEET_SCENT); }
+            TURN { MOVE(opponent, MOVE_SWEET_SCENT); }
+            TURN { MOVE(opponent, MOVE_SWEET_SCENT); }
+        }
         TURN { SWITCH(opponent, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SWEET_SCENT, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SWEET_SCENT, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SWEET_SCENT, opponent);
+        if (GetMoveEffect(MOVE_SWEET_SCENT) == EFFECT_EVASION_DOWN) {
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_SWEET_SCENT, opponent);
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_SWEET_SCENT, opponent);
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_SWEET_SCENT, opponent);
+        }
         ABILITY_POPUP(opponent, ABILITY_SUPERSWEET_SYRUP);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);

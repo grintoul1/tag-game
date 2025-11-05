@@ -727,8 +727,9 @@ Common_EventScript_EliteFourAttendantBestOfLuck::
 	end
 
 Common_Text_EliteFourAttendantSwitchPartyWithPool:
-	.string "You may now exchange up to three Pokémon\n"
-	.string "in your party with Pokémon in your pool.\p"
+	.string "You may now exchange up to three \n"
+	.string "Pokémon in your party with Pokémon\l"
+	.string "in your pool.\p"
 	.string "Would you like to make an exchange?$"
 
 Common_Text_EliteFourAttendantBestOfLuck:
@@ -1790,24 +1791,24 @@ Common_EventScript_EmmieDoBattle::
 	end
 
 Common_EventScript_EmmieBattleTeamCheck1::
-	specialvar VAR_EMMIE_PARTY_SIZE, CalculatePlayerPartyCount
-	vgoto_if_ne VAR_EMMIE_PARTY_SIZE, 6, Common_EventScript_EmmieNotEnoughMons
+	specialvar VAR_RESULT, CalculatePlayerPartyCount
+	vgoto_if_ne VAR_RESULT, 6, Common_EventScript_EmmieNotEnoughMons
 	goto Common_EventScript_EmmieBattle1
 	releaseall
 	end
 
 Common_EventScript_EmmieBattleTeamCheck2::
-	specialvar VAR_EMMIE_PARTY_SIZE, CalculatePlayerPartyCount
-	vgoto_if_eq VAR_EMMIE_PARTY_SIZE, 4, Common_EventScript_EmmieBattle2
-	vgoto_if_eq VAR_EMMIE_PARTY_SIZE, 5, Common_EventScript_EmmieBattle2
-	vgoto_if_eq VAR_EMMIE_PARTY_SIZE, 6, Common_EventScript_EmmieBattle2
+	specialvar VAR_RESULT, CalculatePlayerPartyCount
+	vgoto_if_eq VAR_RESULT, 4, Common_EventScript_EmmieBattle2
+	vgoto_if_eq VAR_RESULT, 5, Common_EventScript_EmmieBattle2
+	vgoto_if_eq VAR_RESULT, 6, Common_EventScript_EmmieBattle2
 	goto Common_EventScript_EmmieNotEnoughMons
 	releaseall
 	end
 
 Common_EventScript_EmmieBattleTeamCheck3::
-	specialvar VAR_EMMIE_PARTY_SIZE, CalculatePlayerPartyCount
-	vgoto_if_ne VAR_EMMIE_PARTY_SIZE, 6, Common_EventScript_EmmieNotEnoughMons
+	specialvar VAR_RESULT, CalculatePlayerPartyCount
+	vgoto_if_ne VAR_RESULT, 6, Common_EventScript_EmmieNotEnoughMons
 	goto Common_EventScript_EmmieBattle3
 	releaseall
 	end
@@ -2406,7 +2407,7 @@ EventScript_UnusedBoardFerry::
 	delay 30
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	showobjectat LOCALID_PLAYER, 0
+	showplayer
 	delay 30
 	applymovement LOCALID_PLAYER, Movement_UnusedBoardFerry
 	waitmovement 0
@@ -2421,7 +2422,7 @@ Common_EventScript_FerryDepartIsland::
 	call_if_eq VAR_FACING, DIR_SOUTH, Ferry_EventScript_DepartIslandSouth
 	call_if_eq VAR_FACING, DIR_WEST, Ferry_EventScript_DepartIslandWest
 	delay 30
-	hideobjectat LOCALID_PLAYER, 0
+	hideplayer
 	call Common_EventScript_FerryDepart
 	return
 
@@ -2735,6 +2736,7 @@ EventScript_VsSeekerChargingDone::
 
 	.include "data/maps/LittlerootCave_Underwater/scripts.inc"
 
-	.include "data/maps/Littleroot_Cave_WaterfallRoom/scripts.inc"
+	.include "data/maps/LittlerootCave_WaterfallRoom/scripts.inc"
 
 	.include "data/maps/LittlerootCave_WaterfallRoom_Underwater/scripts.inc"
+	.include "data/scripts/battle_frontier.inc"

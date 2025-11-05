@@ -9,7 +9,7 @@ extern const bool8 gTestRunnerSkipIsFail;
 
 enum Gimmick;
 
-void TestRunner_Battle_RecordAbilityPopUp(u32 battlerId, u32 ability);
+void TestRunner_Battle_RecordAbilityPopUp(u32 battlerId, enum Ability ability);
 void TestRunner_Battle_RecordAnimation(u32 animType, u32 animId);
 void TestRunner_Battle_RecordHP(u32 battlerId, u32 oldHP, u32 newHP);
 void TestRunner_Battle_RecordExp(u32 battlerId, u32 oldExp, u32 newExp);
@@ -28,6 +28,7 @@ void TestRunner_Battle_CheckBattleRecordActionType(u32 battlerId, u32 recordInde
 
 u32 TestRunner_Battle_GetForcedAbility(u32 side, u32 partyIndex);
 u32 TestRunner_Battle_GetChosenGimmick(u32 side, u32 partyIndex);
+u32 TestRunner_Battle_GetForcedEnvironment(void);
 
 #else
 
@@ -50,6 +51,8 @@ u32 TestRunner_Battle_GetChosenGimmick(u32 side, u32 partyIndex);
 #define TestRunner_Battle_GetForcedAbility(...) (u32)0
 
 #define TestRunner_Battle_GetChosenGimmick(...) (u32)0
+
+#define TestRunner_Battle_GetForcedEnvironment(...) (u8)0
 
 #endif
 

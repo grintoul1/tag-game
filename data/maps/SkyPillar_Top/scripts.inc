@@ -177,7 +177,7 @@ SkyPillar_Top_EventScript_Finale::
 	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_ArchiePleaseHelp
 	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_MaxiePleaseHelp
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SkyPillar_Top_Movement_EmmieApproachPlayer
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
 	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_EmmieDefeatedMaxie
 	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_EmmieDefeatedArchie
@@ -194,8 +194,6 @@ SkyPillar_Top_EventScript_Finale::
 	waitmovement 0
 	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SkyPillar_Top_EventScript_MaxieYouStillDefy
 	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SkyPillar_Top_EventScript_ArchieYouStillDefy
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
-	delay 40
 	applymovement VAR_0x8002, Common_Movement_WalkSlowDown
 	applymovement VAR_0x8003, SkyPillar_Top_Movement_GoodLeaderApproachEvilLeader
 	waitmovement 0
@@ -231,7 +229,7 @@ SkyPillar_Top_EventScript_Maxie_ChoosePartyForMultiBattle::
 	waitstate
 	goto_if_ne VAR_RESULT, 0, SkyPillar_Top_EventScript_MaxieDoMultiBattle
 	msgbox SkyPillar_Top_Text_MaxieYouWillNotStopMe, MSGBOX_AUTOCLOSE
-	goto SkyPillar_Top_EventScript_Maxie_ChoosePartyForMultiBattle
+	goto SkyPillar_Top_EventScript_MaxieDoMultiBattle
 	closemessage
 
 SkyPillar_Top_EventScript_MaxieDoMultiBattle::
@@ -263,10 +261,12 @@ SkyPillar_Top_EventScript_FinaleVictory::
 	playse SE_PIN
 	applymovement VAR_0x8002, Common_Movement_QuestionMark
 	applymovement VAR_0x8003, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	waitmovement 0
 	applymovement VAR_0x8002, Common_Movement_FaceRight
 	applymovement VAR_0x8003, Common_Movement_FaceRight
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
 	delay 40
@@ -329,6 +329,10 @@ SkyPillar_Top_EventScript_FinaleVictory::
 	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_CUTSCENE_INVISIBLE
 	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA
 	fadescreen FADE_FROM_BLACK
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkLeft
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
+	waitmovement 0
 	releaseall
 	end
 
@@ -487,7 +491,7 @@ SkyPillar_Top_Movement_EvilLeaderKnockedBack:
 
 SkyPillar_Top_Movement_GoodLeaderApproachEvilLeader:
 	walk_slow_up
-	face_left
+	face_right
 	step_end
 
 SkyPillar_Top_Text_ArchieYouWillNotStopMe:
@@ -519,7 +523,7 @@ SkyPillar_Top_EventScript_ArchieYouStillDefy::
 	return
 
 SkyPillar_Top_Movement_GoodLeaderMoveForPlayer:
-	walk_slow_right
+	walk_slow_left
 	face_up
 	step_end
 
@@ -587,7 +591,7 @@ SkyPillar_Top_Text_EmmieDefeatedMaxie:
 
 SkyPillar_Top_Movement_EmmieApproachPlayer:
 	walk_up
-	walk_in_place_fast_right
+	walk_in_place_fast_left
 	step_end
 
 SkyPillar_Top_Text_MaxiePleaseHelp:
@@ -764,7 +768,7 @@ SkyPillar_Top_EventScript_FinaleArchieMusic::
 
 SkyPillar_Top_Movement_FinaleEmmieApproach:
 	walk_up
-	walk_left
+	walk_right
 	face_up
 	step_end
 

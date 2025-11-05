@@ -293,12 +293,11 @@ static void PlayerPartnerHandleChoosePokemon(u32 battler)
     else if (gBattleStruct->monToSwitchIntoId[battler] >= PARTY_SIZE || !IsValidForBattle(&gPlayerParty[gBattleStruct->monToSwitchIntoId[battler]]))
     {
         chosenMonId = GetMostSuitableMonToSwitchInto(battler, SWITCH_AFTER_KO);
-
         if (chosenMonId == PARTY_SIZE || !IsValidForBattle(&gPlayerParty[chosenMonId])) // just switch to the next mon
         {
             s32 firstId = (IsAiVsAiBattle()) ? 0 : (PARTY_SIZE / 2);
             u32 battler1 = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
-            u32 battler2 = IsDoubleBattle() ? GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT) : battler1;
+            u32 battler2 = IsDoubleBattle() ? BATTLE_PARTNER(battler1) : battler1;
 
             for (chosenMonId = firstId; chosenMonId < PARTY_SIZE; chosenMonId++)
             {
@@ -318,6 +317,8 @@ static void PlayerPartnerHandleChoosePokemon(u32 battler)
         gBattleStruct->AI_monToSwitchIntoId[battler] = PARTY_SIZE;
         gBattleStruct->monToSwitchIntoId[battler] = chosenMonId;
     }
+    if (TESTING)
+        TestRunner_Battle_CheckSwitch(battler, chosenMonId);
     BtlController_EmitChosenMonReturnValue(battler, B_COMM_TO_ENGINE, chosenMonId, NULL);
     BtlController_Complete(battler);
 }

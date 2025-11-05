@@ -78,7 +78,7 @@ struct TrainerCardData
     u8 cardType;
     bool8 isHoenn;
     u16 blendColor;
-    void (*callback2)(void);
+    MainCallback callback2;
     struct TrainerCard trainerCard;
     u16 frontTilemap[600];
     u16 backTilemap[600];
@@ -840,7 +840,7 @@ static void SetDataFromTrainerCard(void)
     if (sData->trainerCard.battleTowerWins || sData->trainerCard.battleTowerStraightWins)
         sData->hasBattleTowerWins++;
 
-    for (i = 0, badgeFlag = FLAG_BADGE01_GET; badgeFlag < FLAG_BADGE01_GET + NUM_BADGES; badgeFlag++, i++)
+    for (i = 0, badgeFlag = FLAG_BADGE03_GET; badgeFlag < FLAG_BADGE03_GET + NUM_BADGES; badgeFlag++, i++)
     {
         if (FlagGet(badgeFlag))
             sData->badgeCount[i]++;

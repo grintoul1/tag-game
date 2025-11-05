@@ -52,6 +52,7 @@ EverGrandeCity_GlaciasRoom_EventScript_Glacia::
 	end
 
 EverGrandeCity_GlaciasRoom_EventScript_GlaciaDoMultiBattle::
+	fadescreen FADE_TO_BLACK
 	playbgm MUS_VICTORY_ROAD, TRUE
 	multi_2p_vs_1 TRAINER_GLACIA, EverGrandeCity_GlaciasRoom_Text_Defeat, PARTNER_EMMIE
 	switch VAR_RESULT

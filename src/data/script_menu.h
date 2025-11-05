@@ -786,6 +786,14 @@ static const struct MenuAction MultichoiceList_ChoiceItem[] =
     {gText_ChoiceScarf},
 };
 
+static const struct MenuAction MultichoiceList_TyrogueEvo[] =
+{
+    {gText_Punching},
+    {gText_Kicking},
+    {gText_Balance},
+    {gText_Cancel},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -915,6 +923,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
     [MULTI_CHOICE_ITEM]                = MULTICHOICE(MultichoiceList_ChoiceItem),
+    [MULTI_TYROGUE_EVO]                = MULTICHOICE(MultichoiceList_TyrogueEvo),
 };
 
 const u8 *const gStdStrings[] =

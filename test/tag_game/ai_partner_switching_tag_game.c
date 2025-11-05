@@ -10,9 +10,12 @@ Categories:
 >> 2VS1: all 2v1 tests
 >>> AI: all AI tests
 >>> NO AI: all non-AI tests
->>>> OFFENSIVE SETUP: all offensive setup tests
->>>> SWITCHING MOVES: all switching move tests
->>>> TRICK ROOM: all Trick Room tests
+>>>> OPPONENT: all opponent tests
+>>>> PARTNER: all partner tests
+>>>>> SCORING: all scoring tests
+>>>>> OFFENSIVE SETUP: all offensive setup tests
+>>>>> SWITCHING MOVES: all switching move tests
+>>>>> TRICK ROOM: all Trick Room tests
 
 */
 
@@ -21,7 +24,7 @@ ASSUMPTIONS
     ASSUME(GetMoveEffect(MOVE_SONIC_BOOM) == EFFECT_FIXED_HP_DAMAGE);
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a type immunity when outsped and OHKO'd by one type of move (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a type immunity when outsped and OHKO'd by one type of move (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -36,9 +39,9 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 
     GIVEN {
         AI_FLAGS(0);
-        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(0, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
         MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
         MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
@@ -51,7 +54,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
         }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a type immunity when outsped and OHKO'd by more than one type of move (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a type immunity when outsped and OHKO'd by more than one type of move (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -66,9 +69,9 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 
     GIVEN {
         AI_FLAGS(0);
-        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(0, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
         MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
         MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
@@ -87,7 +90,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
     }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a type immunity when the immunity is holding Ring Target (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a type immunity when the immunity is holding Ring Target (multibattle)")
 {
     u32 item = ITEM_NONE, moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -110,9 +113,9 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 
     GIVEN {
         AI_FLAGS(0);
-        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(0, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
         MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
         MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
@@ -125,7 +128,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
         }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a 4x resist when outsped and OHKO'd by one type of move (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a 4x resist when outsped and OHKO'd by one type of move (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -201,9 +204,9 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 
     GIVEN {
         AI_FLAGS(0);
-        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(0, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
         MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
         MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
@@ -222,52 +225,52 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 }
 
 // Non-matching moves put on battler 2 as battler 3 runs the regular switch AI when immunity fails, meaning sees zero damage if move on battler 2
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a absorbing abilities when outsped and OHKO'd by appropriate moves by mons without Moldbreaker (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a absorbing abilities when outsped and OHKO'd by appropriate moves by mons without Moldbreaker (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE, ability1 = ABILITY_NONE, ability2 = ABILITY_NONE;
 
-    PARAMETRIZE { moveA1 = MOVE_FIRE_BLAST;     moveB1 = MOVE_FIRE_BLAST;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_RAPIDASH;     ability = ABILITY_FLASH_FIRE;     ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_FIRE_BLAST;     moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_RAPIDASH;     ability = ABILITY_FLASH_FIRE;     ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_FIRE_BLAST;     moveB1 = MOVE_FIRE_BLAST;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_RAPIDASH;     ability = ABILITY_FLASH_FIRE;     ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_FIRE_BLAST;     moveB1 = MOVE_FIRE_BLAST;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_RAPIDASH;     ability = ABILITY_FLASH_FIRE;     ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_HYDRO_PUMP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_WATER_ABSORB;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_WATER_ABSORB;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_HYDRO_PUMP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_WATER_ABSORB;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_HYDRO_PUMP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_WATER_ABSORB;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_HYDRO_PUMP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TOXICROAK;    ability = ABILITY_DRY_SKIN;       ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TOXICROAK;    ability = ABILITY_DRY_SKIN;       ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_HYDRO_PUMP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TOXICROAK;    ability = ABILITY_DRY_SKIN;       ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_HYDRO_PUMP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TOXICROAK;    ability = ABILITY_DRY_SKIN;       ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ELECTIVIRE;   ability = ABILITY_MOTOR_DRIVE;    ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ELECTIVIRE;   ability = ABILITY_MOTOR_DRIVE;    ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ELECTIVIRE;   ability = ABILITY_MOTOR_DRIVE;    ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ELECTIVIRE;   ability = ABILITY_MOTOR_DRIVE;    ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_VOLT_ABSORB;    ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_VOLT_ABSORB;    ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_VOLT_ABSORB;    ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_VOLT_ABSORB;    ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SEAKING;      ability = ABILITY_LIGHTNING_ROD;  ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SEAKING;      ability = ABILITY_LIGHTNING_ROD;  ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SEAKING;      ability = ABILITY_LIGHTNING_ROD;  ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SEAKING;      ability = ABILITY_LIGHTNING_ROD;  ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_POWER_WHIP;     moveB1 = MOVE_POWER_WHIP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FARIGIRAF;    ability = ABILITY_SAP_SIPPER;     ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_POWER_WHIP;     moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FARIGIRAF;    ability = ABILITY_SAP_SIPPER;     ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_POWER_WHIP;     moveB1 = MOVE_POWER_WHIP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FARIGIRAF;    ability = ABILITY_SAP_SIPPER;     ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_POWER_WHIP;     moveB1 = MOVE_POWER_WHIP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FARIGIRAF;    ability = ABILITY_SAP_SIPPER;     ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_DRILL_RUN;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ORTHWORM;     ability = ABILITY_EARTH_EATER;    ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ORTHWORM;     ability = ABILITY_EARTH_EATER;    ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_DRILL_RUN;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ORTHWORM;     ability = ABILITY_EARTH_EATER;    ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_DRILL_RUN;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ORTHWORM;     ability = ABILITY_EARTH_EATER;    ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_DRILL_RUN;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LUNATONE;     ability = ABILITY_LEVITATE;       ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LUNATONE;     ability = ABILITY_LEVITATE;       ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_DRILL_RUN;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LUNATONE;     ability = ABILITY_LEVITATE;       ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_DRILL_RUN;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LUNATONE;     ability = ABILITY_LEVITATE;       ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_FIRE_BLAST;     moveB1 = MOVE_FIRE_BLAST;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_RAPIDASH;     ability = ABILITY_FLASH_FIRE;     ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_FIRE_BLAST;     moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_RAPIDASH;     ability = ABILITY_FLASH_FIRE;     ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_FIRE_BLAST;     moveB1 = MOVE_FIRE_BLAST;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_RAPIDASH;     ability = ABILITY_FLASH_FIRE;     ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_FIRE_BLAST;     moveB1 = MOVE_FIRE_BLAST;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_RAPIDASH;     ability = ABILITY_FLASH_FIRE;     ability1 = ABILITY_MOLD_BREAKER;    ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_HYDRO_PUMP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_WATER_ABSORB;   ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_WATER_ABSORB;   ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_HYDRO_PUMP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_WATER_ABSORB;   ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_HYDRO_PUMP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_WATER_ABSORB;   ability1 = ABILITY_MOLD_BREAKER;    ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_HYDRO_PUMP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TOXICROAK;    ability = ABILITY_DRY_SKIN;       ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TOXICROAK;    ability = ABILITY_DRY_SKIN;       ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_HYDRO_PUMP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TOXICROAK;    ability = ABILITY_DRY_SKIN;       ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_HYDRO_PUMP;     moveB1 = MOVE_HYDRO_PUMP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_TOXICROAK;    ability = ABILITY_DRY_SKIN;       ability1 = ABILITY_MOLD_BREAKER;    ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ELECTIVIRE;   ability = ABILITY_MOTOR_DRIVE;    ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ELECTIVIRE;   ability = ABILITY_MOTOR_DRIVE;    ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ELECTIVIRE;   ability = ABILITY_MOTOR_DRIVE;    ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ELECTIVIRE;   ability = ABILITY_MOTOR_DRIVE;    ability1 = ABILITY_MOLD_BREAKER;    ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_VOLT_ABSORB;    ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_VOLT_ABSORB;    ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_VOLT_ABSORB;    ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LANTURN;      ability = ABILITY_VOLT_ABSORB;    ability1 = ABILITY_MOLD_BREAKER;    ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SEAKING;      ability = ABILITY_LIGHTNING_ROD;  ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SEAKING;      ability = ABILITY_LIGHTNING_ROD;  ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SEAKING;      ability = ABILITY_LIGHTNING_ROD;  ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_THUNDERBOLT;    moveB1 = MOVE_THUNDERBOLT;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_SEAKING;      ability = ABILITY_LIGHTNING_ROD;  ability1 = ABILITY_MOLD_BREAKER;    ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_POWER_WHIP;     moveB1 = MOVE_POWER_WHIP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FARIGIRAF;    ability = ABILITY_SAP_SIPPER;     ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_POWER_WHIP;     moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FARIGIRAF;    ability = ABILITY_SAP_SIPPER;     ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_POWER_WHIP;     moveB1 = MOVE_POWER_WHIP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FARIGIRAF;    ability = ABILITY_SAP_SIPPER;     ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_POWER_WHIP;     moveB1 = MOVE_POWER_WHIP;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_FARIGIRAF;    ability = ABILITY_SAP_SIPPER;     ability1 = ABILITY_MOLD_BREAKER;    ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_DRILL_RUN;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ORTHWORM;     ability = ABILITY_EARTH_EATER;    ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ORTHWORM;     ability = ABILITY_EARTH_EATER;    ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_DRILL_RUN;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ORTHWORM;     ability = ABILITY_EARTH_EATER;    ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_DRILL_RUN;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_ORTHWORM;     ability = ABILITY_EARTH_EATER;    ability1 = ABILITY_MOLD_BREAKER;    ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_DRILL_RUN;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LUNATONE;     ability = ABILITY_LEVITATE;       ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_BODY_SLAM;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LUNATONE;     ability = ABILITY_LEVITATE;       ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_DRILL_RUN;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LUNATONE;     ability = ABILITY_LEVITATE;       ability1 = ABILITY_INNER_FOCUS;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_DRILL_RUN;      moveB1 = MOVE_DRILL_RUN;         moveC1 = MOVE_BODY_SLAM;      species = SPECIES_LUNATONE;     ability = ABILITY_LEVITATE;       ability1 = ABILITY_MOLD_BREAKER;    ability2 = ABILITY_MOLD_BREAKER; }
 
     GIVEN {
         AI_FLAGS(0);
-        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(0, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
         MULTI_PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
         MULTI_PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
@@ -281,7 +284,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 }
 
 // Non-sound moves put on battler 2 as battler 3 runs the regular switch AI when immunity fails, meaning Soundproof sees zero damage if sound move on battler 2
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Soundproof immunity when outsped and OHKO'd by only sound moves (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Soundproof immunity when outsped and OHKO'd by only sound moves (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -297,9 +300,9 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 
     GIVEN {
         AI_FLAGS(0);
-        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(0, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
         MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
         MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
@@ -312,22 +315,22 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
     }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Soundproof immunity when outsped and OHKO'd by sound moves under Moldbreaker (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Soundproof immunity when outsped and OHKO'd by sound moves under Moldbreaker (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE, ability1 = ABILITY_NONE, ability2 = ABILITY_NONE;
 
-    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BUG_BUZZ;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_ECHOED_VOICE;   moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BUG_BUZZ;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_ECHOED_VOICE;   moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BUG_BUZZ;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_ECHOED_VOICE;   moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BUG_BUZZ;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_ECHOED_VOICE;   moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_MOLD_BREAKER; }
     PARAMETRIZE { moveA1 = MOVE_BUG_BUZZ;       moveB1 = MOVE_BUG_BUZZ;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
     PARAMETRIZE { moveA1 = MOVE_ECHOED_VOICE;   moveB1 = MOVE_ECHOED_VOICE;      moveC1 = MOVE_CELEBRATE;      species = SPECIES_ELECTRODE;    ability = ABILITY_SOUNDPROOF;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
 
     GIVEN {
         AI_FLAGS(0);
-        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(0, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
         MULTI_PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
         MULTI_PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
@@ -341,7 +344,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 }
 
 // Non-ballistic moves put on battler 2 as battler 3 runs the regular switch AI when immunity fails, meaning Bulletproof sees zero damage if ballistic move on battler 2
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Bulletproof immunity when outsped and OHKO'd by only ballistic moves (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Bulletproof immunity when outsped and OHKO'd by only ballistic moves (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -357,9 +360,9 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 
     GIVEN {
         AI_FLAGS(0);
-        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(0, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
         MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
         MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
@@ -372,22 +375,22 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
     }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Bulletproof immunity when outsped and OHKO'd by ballistic moves under Moldbreaker (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Bulletproof immunity when outsped and OHKO'd by ballistic moves under Moldbreaker (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE, ability1 = ABILITY_NONE, ability2 = ABILITY_NONE;
 
-    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MUD_BOMB;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MAGNET_BOMB;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MUD_BOMB;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MAGNET_BOMB;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MUD_BOMB;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MAGNET_BOMB;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MUD_BOMB;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MAGNET_BOMB;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_MOLD_BREAKER; }
     PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MUD_BOMB;          moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
     PARAMETRIZE { moveA1 = MOVE_MAGNET_BOMB;    moveB1 = MOVE_MAGNET_BOMB;       moveC1 = MOVE_CELEBRATE;      species = SPECIES_DUBWOOL;    ability = ABILITY_BULLETPROOF;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
 
     GIVEN {
         AI_FLAGS(0);
-        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(0, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
         MULTI_PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
         MULTI_PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
@@ -401,7 +404,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 }
 
 // Non-wind moves put on battler 2 as battler 3 runs the regular switch AI when immunity fails, meaning Wind-immune mons sees zero damage if wind move on battler 2
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Wind immunity when outsped and OHKO'd by only wind moves (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will switch into a Wind immunity when outsped and OHKO'd by only wind moves (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
@@ -426,9 +429,9 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 
     GIVEN {
         AI_FLAGS(0);
-        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(0, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
         MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
         MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
@@ -442,18 +445,18 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 }
 
 // Moldbreaker needs to be on opposite battler for regular switch check
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Wind immunity when outsped and OHKO'd by wind moves under Moldbreaker (multibattle)")
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a Wind immunity when outsped and OHKO'd by wind moves under Moldbreaker (multibattle)")
 {
     u32 moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE, ability1 = ABILITY_NONE, ability2 = ABILITY_NONE;
 
-    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_OWN_TEMPO;    }
-    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
-    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_OWN_TEMPO;     ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_INNER_FOCUS;  }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_MOLD_BREAKER; }
+    PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_INNER_FOCUS;   ability2 = ABILITY_MOLD_BREAKER; }
     PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
     PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_BLIZZARD;        moveC1 = MOVE_CELEBRATE;      species = SPECIES_KILOWATTREL;    ability = ABILITY_WIND_POWER;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
     PARAMETRIZE { moveA1 = MOVE_BLIZZARD;    moveB1 = MOVE_PETAL_BLIZZARD;  moveC1 = MOVE_CELEBRATE;      species = SPECIES_SHIFTRY;        ability = ABILITY_WIND_RIDER;   ability1 = ABILITY_MOLD_BREAKER;  ability2 = ABILITY_MOLD_BREAKER; }
@@ -461,9 +464,9 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
 
     GIVEN {
         AI_FLAGS(0);
-        BATTLER_AI_FLAGS(0, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(1, AI_FLAG_SMART_TRAINER);
-        BATTLER_AI_FLAGS(2, AI_FLAG_SMART_TRAINER);
+        BATTLER_AI_FLAGS(0, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
         MULTI_PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
         MULTI_PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
@@ -476,341 +479,184 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER IMMUNITY SWITCH: AI_FLAG_PART
     }   
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI always chooses highest damaging move (multibattle)")
-{
-    GIVEN {
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_KINGDRA);
-        MULTI_PLAYER(SPECIES_DIANCIE);
-        MULTI_PLAYER(SPECIES_ORTHWORM);
-        MULTI_PARTNER(SPECIES_KINGDRA);
-        MULTI_PARTNER(SPECIES_DIANCIE);
-        MULTI_PARTNER(SPECIES_ORTHWORM);
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_ENERGY, MOVE_MUDDY_WATER, MOVE_HEAT_WAVE); }
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_ENERGY, MOVE_MUDDY_WATER, MOVE_HEAT_WAVE); }
-    } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_DRAGON_ENERGY); EXPECT_MOVE(opponentRight, MOVE_DRAGON_ENERGY); SWITCH(playerLeft, 1); SWITCH(playerRight, 4); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_MUDDY_WATER); EXPECT_MOVE(opponentRight, MOVE_MUDDY_WATER); SWITCH(playerLeft, 2); SWITCH(playerRight, 5); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_HEAT_WAVE); EXPECT_MOVE(opponentRight, MOVE_HEAT_WAVE); SWITCH(playerLeft, 0); SWITCH(playerRight, 3); } 
-        }   
-}
+// =========================== IMPORTED FROM MULTI TESTING SYSTEM ===========================
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: AI always chooses highest damaging move (multibattle)")
+// Used to test EXPECT_SWITCH only on partner
+AI_MULTI_BATTLE_TEST("AI partner will not switch mid-turn into a player Pokémon (multi)")
 {
-    GIVEN {
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_KINGDRA);
-        MULTI_PLAYER(SPECIES_DIANCIE);
-        MULTI_PLAYER(SPECIES_ORTHWORM);
-        MULTI_PARTNER(SPECIES_KINGDRA);
-        MULTI_PARTNER(SPECIES_DIANCIE);
-        MULTI_PARTNER(SPECIES_ORTHWORM);
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_ENERGY, MOVE_MUDDY_WATER, MOVE_HEAT_WAVE); }
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_ENERGY, MOVE_MUDDY_WATER, MOVE_HEAT_WAVE); }
-    } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_DRAGON_ENERGY); EXPECT_MOVE(opponentRight, MOVE_DRAGON_ENERGY); SWITCH(playerLeft, 1); SWITCH(playerRight, 4); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_MUDDY_WATER); EXPECT_MOVE(opponentRight, MOVE_MUDDY_WATER); SWITCH(playerLeft, 2); SWITCH(playerRight, 5); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_HEAT_WAVE); EXPECT_MOVE(opponentRight, MOVE_HEAT_WAVE); SWITCH(playerLeft, 0); SWITCH(playerRight, 3); } 
-        }   
-}
+    u32 flags;
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: AI always chooses highest damaging move (2v1)")
-{
-    GIVEN {
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_KINGDRA);
-        MULTI_PLAYER(SPECIES_DIANCIE);
-        MULTI_PLAYER(SPECIES_ORTHWORM);
-        MULTI_PARTNER(SPECIES_KINGDRA);
-        MULTI_PARTNER(SPECIES_DIANCIE);
-        MULTI_PARTNER(SPECIES_ORTHWORM);
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_ENERGY, MOVE_MUDDY_WATER, MOVE_HEAT_WAVE); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_ENERGY, MOVE_MUDDY_WATER, MOVE_HEAT_WAVE); }
-    } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_DRAGON_ENERGY); EXPECT_MOVE(opponentRight, MOVE_DRAGON_ENERGY); SWITCH(playerLeft, 1); SWITCH(playerRight, 4); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_MUDDY_WATER); EXPECT_MOVE(opponentRight, MOVE_MUDDY_WATER); SWITCH(playerLeft, 2); SWITCH(playerRight, 5); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_HEAT_WAVE); EXPECT_MOVE(opponentRight, MOVE_HEAT_WAVE); SWITCH(playerLeft, 0); SWITCH(playerRight, 3); } 
-        }   
-}
+    PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
+    PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OFFENSIVE SETUP: AI always chooses +2 offensive setup over slow kill if both targets are incapacitated (multibattle)")
-{
+    PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_RATTATA) { HP(1); Status1(STATUS1_SLEEP); Speed(4); }
-        MULTI_PARTNER(SPECIES_GASTLY) { HP(1); Status1(STATUS1_FREEZE); Speed(3); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
-        MULTI_OPPONENT_B(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
+        BATTLER_AI_FLAGS(2, flags);
+        MULTI_PLAYER(SPECIES_HAUNTER);
+        MULTI_PLAYER(SPECIES_RATTATA);
+        // No moves to damage opponents.
+        MULTI_PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); }
+        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
+        
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
-        }   SCENE {
-        MESSAGE("The opposing Wobbuffet used Swords Dance!");
-        MESSAGE("The opposing Wynaut used Nasty Plot!");
+        TURN { EXPECT_SWITCH(playerRight, 4); };
+    } SCENE {
+        MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
+        MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
+        NONE_OF {
+            MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
+            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+        }
     }
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OFFENSIVE SETUP: AI sometimes chooses +2 offensive setup over slow kill if one target is incapacitated (multibattle)")
+// Used to test EXPECT_SWITCH only on partner
+AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch mid-turn into a player Pokémon (2v1)")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_FIFTY_PERCENT, 100, RNG_AI_CUSTOM_AI_FIFTY_PERCENT);
+    u32 flags;
+
+    PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
+    PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
+
+    PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_RATTATA) { HP(1); Status1(STATUS1_SLEEP); Speed(4); }
-        MULTI_PARTNER(SPECIES_GASTLY) { HP(1); Speed(3); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
-        MULTI_OPPONENT_B(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
+        BATTLER_AI_FLAGS(2, flags);
+        MULTI_PLAYER(SPECIES_HAUNTER);
+        MULTI_PLAYER(SPECIES_RATTATA);
+        // No moves to damage opponents.
+        MULTI_PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); }
+        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
+        
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
-        }   SCENE {
-        MESSAGE("The opposing Wobbuffet used Swords Dance!");
-        MESSAGE("The opposing Wynaut used Nasty Plot!");
+        TURN { EXPECT_SWITCH(playerRight, 4); };
+    } SCENE {
+        MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
+        MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
+        NONE_OF {
+            MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
+            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+        }
     }
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OFFENSIVE SETUP: AI always chooses +2 offensive setup over slow kill if both targets are incapacitated (2v1)")
+// Used to test EXPECT_SEND_OUT only on partner
+AI_MULTI_BATTLE_TEST("AI partner will not switch into a player Pokémon after fainting (multi)")
 {
+    u32 flags;
+
+    PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
+    PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
+
+    PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_RATTATA) { HP(1); Status1(STATUS1_SLEEP); Speed(4); }
-        MULTI_PARTNER(SPECIES_GASTLY) { HP(1); Status1(STATUS1_FREEZE); Speed(3); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
+        BATTLER_AI_FLAGS(2, flags);
+        MULTI_PLAYER(SPECIES_GENGAR);
+        MULTI_PLAYER(SPECIES_RATTATA);
+        // No moves to damage opponents.
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Status1(STATUS1_BURN); HP(1); }
+        MULTI_PARTNER(SPECIES_HAUNTER);
+        MULTI_OPPONENT_A(SPECIES_TRAPINCH) { Ability(ABILITY_ARENA_TRAP); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_VIBRAVA) { Moves(MOVE_CELEBRATE); }
+        
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
-        }   SCENE {
-        MESSAGE("The opposing Wobbuffet used Swords Dance!");
-        MESSAGE("The opposing Wynaut used Nasty Plot!");
+        TURN { EXPECT_MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SEND_OUT(playerRight, 4); };
+    } SCENE {
+        MESSAGE(AI_PARTNER_NAME " sent out Haunter!");
+        NONE_OF {
+            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+        }
     }
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OFFENSIVE SETUP: AI sometimes chooses +2 offensive setup over slow kill if one target is incapacitated (2v1)")
+// Used to test EXPECT_SEND_OUT only on partner
+AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch into a player Pokémon after fainting (2v1)")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_FIFTY_PERCENT, 100, RNG_AI_CUSTOM_AI_FIFTY_PERCENT);
+    u32 flags;
+
+    PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
+    PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
+
+    PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_RATTATA) { HP(1); Status1(STATUS1_SLEEP); Speed(4); }
-        MULTI_PARTNER(SPECIES_GASTLY) { HP(1); Speed(3); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
+        BATTLER_AI_FLAGS(2, flags);
+        MULTI_PLAYER(SPECIES_GENGAR);
+        MULTI_PLAYER(SPECIES_RATTATA);
+        // No moves to damage opponents.
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Status1(STATUS1_BURN); HP(1); }
+        MULTI_PARTNER(SPECIES_HAUNTER);
+        MULTI_OPPONENT_A(SPECIES_TRAPINCH) { Ability(ABILITY_ARENA_TRAP); Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_A(SPECIES_VIBRAVA) { Moves(MOVE_CELEBRATE); }
+        
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
-        }   SCENE {
-        MESSAGE("The opposing Wobbuffet used Swords Dance!");
-        MESSAGE("The opposing Wynaut used Nasty Plot!");
+        TURN { EXPECT_MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SEND_OUT(playerRight, 4); };
+    } SCENE {
+        MESSAGE(AI_PARTNER_NAME " sent out Haunter!");
+        NONE_OF {
+            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+        }
     }
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SWITCHING MOVES: AI will not fast Volt Switch into a mon that is slow OHKO'd (multibattle)")
+// Used to test EXPECT_SWITCH, EXPECT_SEND_OUT, and EXPECT_MOVE on partner
+AI_MULTI_BATTLE_TEST("AI partner will not switch into a player Pokémon (multi)")
 {
+    u32 flags;
+
+    PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
+    PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
+
+    PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
-        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
-        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(4); }
-        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(6); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(20); Moves(MOVE_SONIC_BOOM); Speed(8); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(7); }
-        MULTI_OPPONENT_B(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
+        BATTLER_AI_FLAGS(2, flags);
+        MULTI_PLAYER(SPECIES_HAUNTER);
+        MULTI_PLAYER(SPECIES_RATTATA);
+        // No moves to damage opponents.
+        MULTI_PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_B(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
+        
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
-        } THEN {
-            EXPECT_EQ(opponentLeft->species, SPECIES_WYNAUT);
+        TURN { MOVE(playerLeft, MOVE_AURA_SPHERE, target:playerRight); EXPECT_SWITCH(playerRight, 4); EXPECT_SEND_OUT(playerRight, 3); };
+        TURN { EXPECT_MOVE(playerRight, MOVE_SHADOW_BALL, target:opponentLeft); };
+    } SCENE {
+        MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
+        NONE_OF {
+            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+        }
     }
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SWITCHING MOVES: AI will not fast Volt Switch into a mon that is slow OHKO'd (2v1)")
+// Used to test EXPECT_SWITCH, EXPECT_SEND_OUT, and EXPECT_MOVE on partner
+AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch into a player Pokémon (2v1)")
 {
+    u32 flags;
+
+    PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
+    PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
+
+    PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
-        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
-        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(4); }
-        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(6); }
-        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(7); }
+        BATTLER_AI_FLAGS(2, flags);
+        MULTI_PLAYER(SPECIES_HAUNTER);
+        MULTI_PLAYER(SPECIES_RATTATA);
+        // No moves to damage opponents.
+        MULTI_PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        MULTI_PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
+        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
+        
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
-        } THEN {
-            EXPECT_EQ(opponentLeft->species, SPECIES_WYNAUT);
+        TURN { MOVE(playerLeft, MOVE_AURA_SPHERE, target:playerRight); EXPECT_SWITCH(playerRight, 4); EXPECT_SEND_OUT(playerRight, 3); }
+    } SCENE {
+        MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
+        NONE_OF {
+            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+        }
     }
 }
 
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SWITCHING MOVES: AI will slow Volt Switch into a mon that is slow OHKO'd (multibattle)")
-{
-    GIVEN {
-        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
-        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(4); }
-        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(20); Moves(MOVE_SONIC_BOOM); Speed(7); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(8); }
-        MULTI_OPPONENT_B(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
-    } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
-        } THEN {
-            EXPECT_EQ(opponentLeft->species, SPECIES_WOBBUFFET);
-    }
-}
-
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SWITCHING MOVES: AI will slow Volt Switch into a mon that is slow OHKO'd (2v1)")
-{
-    GIVEN {
-        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
-        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(4); }
-        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(20); Moves(MOVE_SONIC_BOOM); Speed(7); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(8); }
-    } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
-        } THEN {
-            EXPECT_EQ(opponentLeft->species, SPECIES_WOBBUFFET);
-    }
-}
-
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SWITCHING MOVES: AI will not fast Volt Switch into a mon that is outsped and 2HKO'd (multibattle)")
-{
-    GIVEN {
-        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
-        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(4); }
-        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(6); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(7); }
-        MULTI_OPPONENT_B(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
-    } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
-        } THEN {
-            EXPECT_EQ(opponentLeft->species, SPECIES_WYNAUT);
-    }
-}
-
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SWITCHING MOVES: AI will not fast Volt Switch into a mon that is outsped and 2HKO'd (2v1)")
-{
-    GIVEN {
-        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
-        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(4); }
-        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(6); }
-        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(20); Moves(MOVE_SONIC_BOOM); Speed(8); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(7); }
-    } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
-        } THEN {
-            EXPECT_EQ(opponentLeft->species, SPECIES_WYNAUT);
-    }
-}
-
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: SWITCHING MOVES: AI will slow Volt Switch into a mon that is outsped and 2HKO'd (multibattle)")
-{
-    GIVEN {
-        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
-        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(5); }
-        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(3); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(1); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(2); }
-        MULTI_OPPONENT_B(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(6); }
-    } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
-        } THEN {
-            EXPECT_EQ(opponentLeft->species, SPECIES_WOBBUFFET);
-    }
-}
-
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: SWITCHING MOVES: AI will slow Volt Switch into a mon that is outsped and 2HKO'd (2v1)")
-{
-    GIVEN {
-        ASSUME(GetMoveFixedHPDamage(MOVE_SONIC_BOOM) == 20);
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_SANDSLASH) { HP(30); Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(3); }
-        MULTI_PARTNER(SPECIES_METAGROSS) { Moves(MOVE_SONIC_BOOM, MOVE_CELEBRATE); Speed(5); }
-        MULTI_OPPONENT_A(SPECIES_ELECTRODE) { HP(20); Moves(MOVE_VOLT_SWITCH, MOVE_THUNDERSHOCK); Speed(3); }
-        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(6); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(1); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(2); }
-    } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
-        } THEN {
-            EXPECT_EQ(opponentLeft->species, SPECIES_WOBBUFFET);
-    }
-}
-
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: TRICK ROOM: AI uses After You and Trick Room together (multibattle)")
-{
-    GIVEN {
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_RATTATA) { Speed(4); }
-        MULTI_PARTNER(SPECIES_KANGASKHAN) { Speed(5); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_DOUBLE_HIT, MOVE_LOW_SWEEP, MOVE_HELPING_HAND, MOVE_AFTER_YOU); Speed(6); }
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_PSYBEAM, MOVE_ACID, MOVE_YAWN, MOVE_TRICK_ROOM); Speed(1); }
-    } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_AFTER_YOU, target:opponentRight); EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-        } SCENE {
-        MESSAGE("The opposing Wynaut used After You!");
-        MESSAGE("The opposing Wobbuffet took the kind offer!");
-        MESSAGE("The opposing Wobbuffet used Trick Room!");
-        MESSAGE("The opposing Wobbuffet twisted the dimensions!");
-    }
-}
-
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: TRICK ROOM: AI uses After You and Trick Room together (2v1)")
-{
-    GIVEN {
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_RATTATA) { Speed(4); }
-        MULTI_PARTNER(SPECIES_KANGASKHAN) { Speed(5); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_DOUBLE_HIT, MOVE_LOW_SWEEP, MOVE_HELPING_HAND, MOVE_AFTER_YOU); Speed(6); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_PSYBEAM, MOVE_ACID, MOVE_YAWN, MOVE_TRICK_ROOM); Speed(1); }
-    } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_AFTER_YOU, target:opponentRight); EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-        } SCENE {
-        MESSAGE("The opposing Wynaut used After You!");
-        MESSAGE("The opposing Wobbuffet took the kind offer!");
-        MESSAGE("The opposing Wobbuffet used Trick Room!");
-        MESSAGE("The opposing Wobbuffet twisted the dimensions!");
-    }
-}
-
-AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: TRICK ROOM: Both opponents use Trick Room on the turn it expires 50% of time (multibattle)")
-{
-    PASSES_RANDOMLY(DOUBLE_TRICK_ROOM_ON_LAST_TURN_CHANCE, 100, RNG_AI_REFRESH_TRICK_ROOM_ON_LAST_TURN);
-    GIVEN {
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_RATTATA) { Speed(4); }
-        MULTI_PARTNER(SPECIES_KANGASKHAN) { Speed(5); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_SONIC_BOOM, MOVE_TRICK_ROOM); Speed(6); }
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_SONIC_BOOM, MOVE_TRICK_ROOM); Speed(1); }
-    } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-        } 
-}
-
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: TRICK ROOM: Both opponents use Trick Room on the turn it expires 50% of time (2v1)")
-{
-    PASSES_RANDOMLY(DOUBLE_TRICK_ROOM_ON_LAST_TURN_CHANCE, 100, RNG_AI_REFRESH_TRICK_ROOM_ON_LAST_TURN);
-    GIVEN {
-        AI_FLAGS(AI_FLAG_SMART_TRAINER);
-        MULTI_PLAYER(SPECIES_RATTATA) { Speed(4); }
-        MULTI_PARTNER(SPECIES_KANGASKHAN) { Speed(5); }
-        MULTI_OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_SONIC_BOOM, MOVE_TRICK_ROOM); Speed(6); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SONIC_BOOM, MOVE_TRICK_ROOM); Speed(1); }
-    } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-        } 
-}

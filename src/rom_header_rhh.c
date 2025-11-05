@@ -1,9 +1,19 @@
 #include "global.h"
+#include "item.h"
+#include "move.h"
+#include "region_map.h" // For MAPSEC_COUNT and struct RegionMapLocation
+#include "pokemon.h" // For struct Pokemon, struct BoxPokemon, struct SpeciesInfo  
+#include "pokemon_storage_system.h" // For struct PokemonStorage
 #include "constants/abilities.h"
 #include "constants/expansion.h"
 #include "constants/moves.h"
 #include "constants/species.h"
 #include "constants/items.h"
+
+extern struct SaveBlock1 gSaveblock1;
+extern struct SaveBlock2 gSaveblock2;
+extern struct SaveBlock3 gSaveblock3;
+extern struct PokemonStorage gPokemonStorage;
 
 // Similar to the GF ROM header, this struct allows external programs to
 // detect details about Expansion.
@@ -21,10 +31,26 @@ struct RHHRomHeader
     /*0x0A*/ u16 movesCount;
     /*0x0C*/ u16 numSpecies;
     /*0x0E*/ u16 abilitiesCount;
-    /*0x10*/ const struct Ability *abilities;
+    /*0x10*/ const struct AbilityInfo *abilities;
     /*0x14*/ u16 itemsCount;
     /*0x16*/ u8 itemNameLength;
-    /*0x17*/ u8 padding;
+    /*0x17*/ u8 moveNameLength;
+    /*0x18*/ struct PokemonStorage *pokemonStorage;
+    /*0x1C*/ const struct RegionMapLocation *regionMapEntries;
+    /*0x20*/ struct Pokemon *playerParty;
+    /*0x24*/ u8 *playerPartyCount;
+    /*0x28*/ u32 boxPokemonSize;
+    /*0x2C*/ u32 partyPokemonSize;
+    /*0X30*/ u32 speciesSize;
+    /*0X34*/ u32 movesSize;
+    /*0x38*/ u32 abilitySize;
+    /*0x3C*/ u32 regionMapEntrySize;
+    /*0x40*/ u32 itemSize;
+    /*0x44*/ u32 speciesNameOffset;
+    /*0x48*/ u32 mapNameOffset;
+    /*0x4C*/ u32 itemNameOffset;
+    /*0x50*/ u16 mapSecCount;
+    /*0x52*/ u8 abilityNameLength;
 };
 
 __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHeader sRHHRomHeader =
@@ -40,4 +66,27 @@ __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHead
     .abilities = gAbilitiesInfo,
     .itemsCount = ITEMS_COUNT,
     .itemNameLength = ITEM_NAME_LENGTH,
+    .moveNameLength = MOVE_NAME_LENGTH,
+    .pokemonStorage = &gPokemonStorage,
+    .regionMapEntries = gRegionMapEntries,
+    .playerParty = &gPlayerParty[0],
+    .playerPartyCount = &gPlayerPartyCount,
+    .boxPokemonSize = sizeof(struct BoxPokemon),
+    .partyPokemonSize = sizeof(struct Pokemon),
+    .speciesSize = sizeof(struct SpeciesInfo),
+    .movesSize = sizeof(struct MoveInfo),
+    .abilitySize = sizeof(struct AbilityInfo),
+    .regionMapEntrySize = sizeof(struct RegionMapLocation),
+    .itemSize = sizeof(struct Item),
+    .speciesNameOffset = offsetof(struct SpeciesInfo, speciesName),
+    .mapNameOffset = offsetof(struct RegionMapLocation, name),
+    .itemNameOffset = offsetof(struct Item, name),
+    .mapSecCount = MAPSEC_COUNT,
+    .abilityNameLength = ABILITY_NAME_LENGTH,
 };
+    ///*0x18*/ struct SaveBlock1 *saveBlock1;
+    ///*0x1C*/ struct SaveBlock2 *saveBlock2;
+    ///*0x20*/ struct SaveBlock3 *saveBlock3;
+    //.saveBlock1 = &gSaveblock1,
+    //.saveBlock2 = &gSaveblock2,
+    //.saveBlock3 = &gSaveblock3,

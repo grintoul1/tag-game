@@ -470,317 +470,339 @@ F_TRAINER_FEMALE |
         {
             {
 #line 212
-            .species = SPECIES_METANG,
+            .species = SPECIES_TORNADUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
+#line 212
+            .heldItem = ITEM_LIFE_ORB,
 #line 216
-            .ev = TRAINER_PARTY_EVS(0, 252, 252, 0, 6, 0),
-#line 215
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 214
-            .lvl = 42,
 #line 213
-            .nature = NATURE_BRAVE,
+            .ability = ABILITY_DEFIANT,
+#line 214
+            .lvl = 65,
+#line 215
+            .nature = NATURE_LONELY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 217
-                MOVE_LIGHT_SCREEN,
-                MOVE_PSYCHIC,
-                MOVE_REFLECT,
-                MOVE_METAL_CLAW,
+#line 216
+                MOVE_FLY,
+                MOVE_HEAT_WAVE,
+                MOVE_LASH_OUT,
+                MOVE_U_TURN,
             },
             },
             {
-#line 222
-            .species = SPECIES_SKARMORY,
+#line 221
+            .species = SPECIES_AERODACTYL,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 226
-            .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 6, 252),
+#line 221
+            .heldItem = ITEM_FOCUS_SASH,
 #line 225
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 224
-            .lvl = 43,
+#line 222
+            .ability = ABILITY_ROCK_HEAD,
 #line 223
-            .nature = NATURE_IMPISH,
+            .lvl = 65,
+#line 224
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 227
-                MOVE_TOXIC,
-                MOVE_AERIAL_ACE,
-                MOVE_PROTECT,
-                MOVE_STEEL_WING,
+#line 225
+                MOVE_BRAVE_BIRD,
+                MOVE_ROCK_SLIDE,
+                MOVE_PURSUIT,
+                MOVE_TAILWIND,
             },
             },
             {
-#line 232
-            .species = SPECIES_AGGRON,
+#line 230
+            .species = SPECIES_BLASTOISE_MEGA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 236
-            .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 252, 6),
-#line 235
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 230
+            .heldItem = ITEM_BLASTOISINITE,
 #line 234
-            .lvl = 44,
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 231
+            .ability = ABILITY_MEGA_LAUNCHER,
+#line 232
+            .lvl = 65,
 #line 233
-            .nature = NATURE_ADAMANT,
+            .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 237
-                MOVE_THUNDER,
-                MOVE_PROTECT,
-                MOVE_SOLAR_BEAM,
-                MOVE_DRAGON_CLAW,
+#line 234
+                MOVE_MUDDY_WATER,
+                MOVE_ICE_BEAM,
+                MOVE_DARK_PULSE,
+                MOVE_AURA_SPHERE,
             },
             },
         },
     },
-#line 242
+#line 239
     [DIFFICULTY_NORMAL][PARTNER_MAXIE_MT_PYRE] =
     {
-#line 243
+#line 240
         .trainerName = _("Maxie"),
-#line 244
+#line 241
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
-#line 245
+#line 242
         .trainerPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
         .encounterMusic_gender =
-#line 248
+#line 245
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 249
-        .aiFlags = AI_FLAG_PARTNER_TRAINER,
 #line 246
+        .aiFlags = AI_FLAG_PARTNER_TRAINER,
+#line 243
         .trainerBackPic = TRAINER_BACK_PIC_MAGMA_LEADER_MAXIE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 251
-            .species = SPECIES_METANG,
+#line 248
+            .species = SPECIES_LANDORUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 255
-            .ev = TRAINER_PARTY_EVS(0, 252, 252, 0, 6, 0),
-#line 254
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 253
-            .lvl = 42,
+#line 248
+            .heldItem = ITEM_LIFE_ORB,
 #line 252
-            .nature = NATURE_BRAVE,
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 249
+            .ability = ABILITY_SHEER_FORCE,
+#line 250
+            .lvl = 65,
+#line 251
+            .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 256
-                MOVE_LIGHT_SCREEN,
-                MOVE_PSYCHIC,
-                MOVE_REFLECT,
-                MOVE_METAL_CLAW,
+#line 252
+                MOVE_EARTH_POWER,
+                MOVE_EXTRASENSORY,
+                MOVE_ROCK_SLIDE,
+                MOVE_U_TURN,
             },
             },
             {
+#line 257
+            .species = SPECIES_AERODACTYL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 257
+            .heldItem = ITEM_FOCUS_SASH,
 #line 261
-            .species = SPECIES_SKARMORY,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 265
-            .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 6, 252),
-#line 264
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 263
-            .lvl = 43,
-#line 262
-            .nature = NATURE_IMPISH,
+#line 258
+            .ability = ABILITY_ROCK_HEAD,
+#line 259
+            .lvl = 65,
+#line 260
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 266
-                MOVE_TOXIC,
-                MOVE_AERIAL_ACE,
-                MOVE_PROTECT,
-                MOVE_STEEL_WING,
+#line 261
+                MOVE_BRAVE_BIRD,
+                MOVE_ROCK_SLIDE,
+                MOVE_PURSUIT,
+                MOVE_TAILWIND,
             },
             },
             {
-#line 271
-            .species = SPECIES_AGGRON,
+#line 266
+            .species = SPECIES_CHARIZARD_MEGA_X,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 275
-            .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 252, 6),
-#line 274
+#line 266
+            .heldItem = ITEM_CHARIZARDITE_X,
+#line 270
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 273
-            .lvl = 44,
-#line 272
-            .nature = NATURE_ADAMANT,
+#line 267
+            .ability = ABILITY_TOUGH_CLAWS,
+#line 268
+            .lvl = 65,
+#line 269
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 276
-                MOVE_THUNDER,
-                MOVE_PROTECT,
-                MOVE_SOLAR_BEAM,
+#line 270
+                MOVE_FLARE_BLITZ,
+                MOVE_HIGH_HORSEPOWER,
                 MOVE_DRAGON_CLAW,
+                MOVE_FACADE,
             },
             },
         },
     },
-#line 281
+#line 275
     [DIFFICULTY_NORMAL][PARTNER_ARCHIE_SKY_PILLAR] =
     {
-#line 282
+#line 276
         .trainerName = _("Archie"),
-#line 283
+#line 277
         .trainerClass = TRAINER_CLASS_AQUA_LEADER,
-#line 284
+#line 278
         .trainerPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
         .encounterMusic_gender =
-#line 287
+#line 281
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 288
+#line 282
         .aiFlags = AI_FLAG_PARTNER_TRAINER,
-#line 285
+#line 279
         .trainerBackPic = TRAINER_BACK_PIC_AQUA_LEADER_ARCHIE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 290
-            .species = SPECIES_METANG,
+#line 284
+            .species = SPECIES_RAGING_BOLT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 294
-            .ev = TRAINER_PARTY_EVS(0, 252, 252, 0, 6, 0),
-#line 293
+#line 284
+            .heldItem = ITEM_BOOSTER_ENERGY,
+#line 288
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 292
-            .lvl = 42,
-#line 291
-            .nature = NATURE_BRAVE,
+#line 285
+            .ability = ABILITY_PROTOSYNTHESIS,
+#line 286
+            .lvl = 87,
+#line 287
+            .nature = NATURE_QUIET,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 295
-                MOVE_LIGHT_SCREEN,
-                MOVE_PSYCHIC,
-                MOVE_REFLECT,
-                MOVE_METAL_CLAW,
+#line 288
+                MOVE_THUNDERCLAP,
+                MOVE_DRAGON_PULSE,
+                MOVE_WEATHER_BALL,
             },
             },
             {
-#line 300
-            .species = SPECIES_SKARMORY,
+#line 292
+            .species = SPECIES_AERODACTYL_MEGA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 304
-            .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 6, 252),
-#line 303
+#line 292
+            .heldItem = ITEM_AERODACTYLITE,
+#line 296
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 293
+            .ability = ABILITY_TOUGH_CLAWS,
+#line 294
+            .lvl = 87,
+#line 295
+            .nature = NATURE_HASTY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 296
+                MOVE_ROCK_SLIDE,
+                MOVE_DUAL_WINGBEAT,
+                MOVE_PROTECT,
+                MOVE_TAILWIND,
+            },
+            },
+            {
+#line 301
+            .species = SPECIES_BASCULEGION,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 301
+            .heldItem = ITEM_FOCUS_SASH,
+#line 305
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 302
-            .lvl = 43,
-#line 301
-            .nature = NATURE_IMPISH,
+            .ability = ABILITY_ADAPTABILITY,
+#line 303
+            .lvl = 86,
+#line 304
+            .nature = NATURE_NAUGHTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 305
-                MOVE_TOXIC,
-                MOVE_AERIAL_ACE,
-                MOVE_PROTECT,
-                MOVE_STEEL_WING,
-            },
-            },
-            {
-#line 310
-            .species = SPECIES_AGGRON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 314
-            .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 252, 6),
-#line 313
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 312
-            .lvl = 44,
-#line 311
-            .nature = NATURE_ADAMANT,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 315
-                MOVE_THUNDER,
-                MOVE_PROTECT,
-                MOVE_SOLAR_BEAM,
-                MOVE_DRAGON_CLAW,
+                MOVE_LAST_RESPECTS,
+                MOVE_FLIP_TURN,
+                MOVE_SHADOW_SNEAK,
+                MOVE_AGILITY,
             },
             },
         },
     },
-#line 320
+#line 310
     [DIFFICULTY_NORMAL][PARTNER_MAXIE_SKY_PILLAR] =
     {
-#line 321
+#line 311
         .trainerName = _("Maxie"),
-#line 322
+#line 312
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
-#line 323
+#line 313
         .trainerPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
         .encounterMusic_gender =
-#line 326
+#line 316
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 327
+#line 317
         .aiFlags = AI_FLAG_PARTNER_TRAINER,
-#line 324
+#line 314
         .trainerBackPic = TRAINER_BACK_PIC_MAGMA_LEADER_MAXIE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 329
-            .species = SPECIES_METANG,
+#line 319
+            .species = SPECIES_LILLIGANT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 333
-            .ev = TRAINER_PARTY_EVS(0, 252, 252, 0, 6, 0),
-#line 332
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 331
-            .lvl = 42,
-#line 330
-            .nature = NATURE_BRAVE,
+#line 319
+            .heldItem = ITEM_EJECT_PACK,
+#line 322
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 30, 30),
+#line 320
+            .ability = ABILITY_CHLOROPHYLL,
+#line 321
+            .lvl = 86,
+#line 323
+            .nature = NATURE_RASH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 334
-                MOVE_LIGHT_SCREEN,
-                MOVE_PSYCHIC,
-                MOVE_REFLECT,
-                MOVE_METAL_CLAW,
+#line 324
+                MOVE_LEAF_STORM,
+                MOVE_WEATHER_BALL,
+                MOVE_HIDDEN_POWER,
+                MOVE_ENTRAINMENT,
             },
             },
             {
-#line 339
-            .species = SPECIES_SKARMORY,
+#line 329
+            .species = SPECIES_AERODACTYL_MEGA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 343
-            .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 6, 252),
+#line 329
+            .heldItem = ITEM_AERODACTYLITE,
+#line 333
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 330
+            .ability = ABILITY_TOUGH_CLAWS,
+#line 331
+            .lvl = 87,
+#line 332
+            .nature = NATURE_HASTY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 333
+                MOVE_ROCK_SLIDE,
+                MOVE_DUAL_WINGBEAT,
+                MOVE_PROTECT,
+                MOVE_TAILWIND,
+            },
+            },
+            {
+#line 338
+            .species = SPECIES_WALKING_WAKE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 338
+            .heldItem = ITEM_BOOSTER_ENERGY,
 #line 342
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 341
-            .lvl = 43,
+#line 339
+            .ability = ABILITY_PROTOSYNTHESIS,
 #line 340
-            .nature = NATURE_IMPISH,
+            .lvl = 87,
+#line 341
+            .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 344
-                MOVE_TOXIC,
-                MOVE_AERIAL_ACE,
-                MOVE_PROTECT,
-                MOVE_STEEL_WING,
-            },
-            },
-            {
-#line 349
-            .species = SPECIES_AGGRON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 353
-            .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 252, 6),
-#line 352
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 351
-            .lvl = 44,
-#line 350
-            .nature = NATURE_ADAMANT,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 354
-                MOVE_THUNDER,
-                MOVE_PROTECT,
-                MOVE_SOLAR_BEAM,
-                MOVE_DRAGON_CLAW,
+#line 342
+                MOVE_HURRICANE,
+                MOVE_WEATHER_BALL,
+                MOVE_EARTH_POWER,
             },
             },
         },
