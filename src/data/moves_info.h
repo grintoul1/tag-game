@@ -4280,9 +4280,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Fires three types of beams.\n"
         #if B_USE_FROSTBITE == TRUE
-            "May burn/para/frostbite."),
+            "May burn/para/frz/frb."),
         #else
-            "May burn/paralyze/freeze."),
+            "May burn/para/frz/frb."),
         #endif
         .effect = EFFECT_HIT,
         .power = 80,
