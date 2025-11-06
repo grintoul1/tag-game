@@ -3620,7 +3620,7 @@ IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 Name: Archie /* Mt Pyre*/
 Class: Aqua Leader
 Pic: Aqua Leader Archie
-Mugshot: Red
+Mugshot: ArchieWithMaxie
 Gender: Male
 Music: Aqua
 Battle Type: Singles
@@ -3638,7 +3638,7 @@ IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 Name: Maxie /* Mt Pyre*/
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Mugshot: Misty
+Mugshot: MaxieWithArchie
 Gender: Male
 Music: Magma
 Battle Type: Singles
