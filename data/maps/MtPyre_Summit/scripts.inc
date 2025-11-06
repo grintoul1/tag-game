@@ -287,11 +287,10 @@ MtPyre_Summit_Movement_ArchieFight_TabithaApproachMaxie:
 
 
 MtPyre_Summit_Text_ArchieFight_HaveYouLearnedNothing:
-	.string "Archie: You fool, have you learned\n"
-	.string "nothing?$"
+	.string "You fool, have you learned nothing?$"
 
 MtPyre_Summit_Text_ArchieFight_ErrorOfYourWays:
-	.string "Archie: I will show you the error\n"
+	.string "I will show you the error\n"
 	.string "of your ways here and now.$"
 
 MtPyre_Summit_Text_ArchieFight_NoRunningNow:
@@ -489,14 +488,12 @@ MtPyre_Summit_Movement_MaxieFight_MattApproachArchie:
 	walk_up
 	step_end
 
-
 MtPyre_Summit_Text_MaxieFight_YouCannotStopMe:
-	.string "Maxie: Foolish child! You cannot stop\n"
-	.string "me.$"
+	.string "You fool, have you learned nothing?$"
 
 MtPyre_Summit_Text_MaxieFight_EliminateYouBoth:
-	.string "Maxie: I will eliminate you both\n"
-	.string "here and now!$"
+	.string "I will show you the error\n"
+	.string "of your ways here and now.$"
 
 MtPyre_Summit_Text_MaxieFight_NoRunningNow:
 	.string "Maxie: There's no running now!$"
