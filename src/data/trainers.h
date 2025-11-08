@@ -9515,7 +9515,7 @@ F_TRAINER_FEMALE |
 #line 3627
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 3623
-        .mugshotColor = MUGSHOT_COLOR_RED,
+        .mugshotColor = MUGSHOT_COLOR_ARCHIEWITHMAXIE,
 #line 0
         .trainerBackPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
         .partySize = 2,
@@ -9562,7 +9562,7 @@ F_TRAINER_FEMALE |
 #line 3645
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 3641
-        .mugshotColor = MUGSHOT_COLOR_MISTY,
+        .mugshotColor = MUGSHOT_COLOR_MAXIEWITHARCHIE,
 #line 0
         .trainerBackPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
         .partySize = 2,

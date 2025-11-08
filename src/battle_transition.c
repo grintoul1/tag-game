@@ -887,6 +887,7 @@ const struct SpritePalette gSpritePalette_Pokeball = {sFieldEffectPal_Pokeball, 
 
 static const u16 sMugshotPal_Purple[] = INCBIN_U16("graphics/battle_transitions/purple_bg.gbapal");
 static const u16 sMugshotPal_Red[] = INCBIN_U16("graphics/battle_transitions/red_bg.gbapal");
+static const u16 sMugshotPal_ArchieWithMaxie[] = INCBIN_U16("graphics/battle_transitions/archiewithmaxie_bg.gbapal");
 static const u16 sMugshotPal_AquaMagma[] = INCBIN_U16("graphics/battle_transitions/aquamagma_bg.gbapal");
 static const u16 sMugshotPal_Orange[] = INCBIN_U16("graphics/battle_transitions/orange_bg.gbapal");
 static const u16 sMugshotPal_Drake[] = INCBIN_U16("graphics/battle_transitions/drake_bg.gbapal");
@@ -901,6 +902,7 @@ static const u16 sMugshotPal_Pink[]   = INCBIN_U16("graphics/battle_transitions/
 static const u16 sMugshotPal_MayPink[]   = INCBIN_U16("graphics/battle_transitions/maypink_bg.gbapal");
 static const u16 sMugshotPal_Blue[]   = INCBIN_U16("graphics/battle_transitions/blue_bg.gbapal");
 static const u16 sMugshotPal_Misty[]   = INCBIN_U16("graphics/battle_transitions/misty_bg.gbapal");
+static const u16 sMugshotPal_MaxieWithArchie[]   = INCBIN_U16("graphics/battle_transitions/maxiewitharchie_bg.gbapal");
 static const u16 sMugshotPal_LightBlue[]   = INCBIN_U16("graphics/battle_transitions/lightblue_bg.gbapal");
 static const u16 sMugshotPal_Yellow[] = INCBIN_U16("graphics/battle_transitions/yellow_bg.gbapal");
 static const u16 sMugshotPal_Brendan[] = INCBIN_U16("graphics/battle_transitions/brendan_bg.gbapal");
@@ -908,24 +910,26 @@ static const u16 sMugshotPal_May[] = INCBIN_U16("graphics/battle_transitions/may
 
 static const u16 *const sOpponentMugshotsPals[MUGSHOT_COLOR_COUNT] =
 {
-    [MUGSHOT_COLOR_PURPLE]        = sMugshotPal_Purple,
-    [MUGSHOT_COLOR_RED]           = sMugshotPal_Red,
-    [MUGSHOT_COLOR_AQUAMAGMA]     = sMugshotPal_AquaMagma,
-    [MUGSHOT_COLOR_ORANGE]        = sMugshotPal_Orange,
-    [MUGSHOT_COLOR_DRAKE]         = sMugshotPal_Drake,
-    [MUGSHOT_COLOR_BROWN]         = sMugshotPal_Brown,
-    [MUGSHOT_COLOR_BLACK]         = sMugshotPal_Black,
-    [MUGSHOT_COLOR_GREY]          = sMugshotPal_Grey,
-    [MUGSHOT_COLOR_WHITE]         = sMugshotPal_White,
-    [MUGSHOT_COLOR_CHAMPION]      = sMugshotPal_Champion,
-    [MUGSHOT_COLOR_DARKPURPLE]    = sMugshotPal_DarkPurple,
-    [MUGSHOT_COLOR_GREEN]         = sMugshotPal_Green,
-    [MUGSHOT_COLOR_PINK]          = sMugshotPal_Pink,
-    [MUGSHOT_COLOR_MAYPINK]       = sMugshotPal_MayPink,
-    [MUGSHOT_COLOR_BLUE]          = sMugshotPal_Blue,
-    [MUGSHOT_COLOR_MISTY]         = sMugshotPal_Misty,
-    [MUGSHOT_COLOR_LIGHTBLUE]     = sMugshotPal_LightBlue,
-    [MUGSHOT_COLOR_YELLOW]        = sMugshotPal_Yellow
+    [MUGSHOT_COLOR_PURPLE]          = sMugshotPal_Purple,
+    [MUGSHOT_COLOR_RED]             = sMugshotPal_Red,
+    [MUGSHOT_COLOR_ARCHIEWITHMAXIE] = sMugshotPal_ArchieWithMaxie,
+    [MUGSHOT_COLOR_AQUAMAGMA]       = sMugshotPal_AquaMagma,
+    [MUGSHOT_COLOR_ORANGE]          = sMugshotPal_Orange,
+    [MUGSHOT_COLOR_DRAKE]           = sMugshotPal_Drake,
+    [MUGSHOT_COLOR_BROWN]           = sMugshotPal_Brown,
+    [MUGSHOT_COLOR_BLACK]           = sMugshotPal_Black,
+    [MUGSHOT_COLOR_GREY]            = sMugshotPal_Grey,
+    [MUGSHOT_COLOR_WHITE]           = sMugshotPal_White,
+    [MUGSHOT_COLOR_CHAMPION]        = sMugshotPal_Champion,
+    [MUGSHOT_COLOR_DARKPURPLE]      = sMugshotPal_DarkPurple,
+    [MUGSHOT_COLOR_GREEN]           = sMugshotPal_Green,
+    [MUGSHOT_COLOR_PINK]            = sMugshotPal_Pink,
+    [MUGSHOT_COLOR_MAYPINK]         = sMugshotPal_MayPink,
+    [MUGSHOT_COLOR_BLUE]            = sMugshotPal_Blue,
+    [MUGSHOT_COLOR_MISTY]           = sMugshotPal_Misty,
+    [MUGSHOT_COLOR_MAXIEWITHARCHIE] = sMugshotPal_MaxieWithArchie,
+    [MUGSHOT_COLOR_LIGHTBLUE]       = sMugshotPal_LightBlue,
+    [MUGSHOT_COLOR_YELLOW]          = sMugshotPal_Yellow
 };
 
 static const u16 *const sPlayerMugshotsPals[GENDER_COUNT] =
@@ -2366,7 +2370,10 @@ static bool8 Mugshot_SetGfx(struct Task *task)
         mugshotColor = MUGSHOT_COLOR_PURPLE;
 
     LoadPalette(sOpponentMugshotsPals[mugshotColor], 0xF0, 0x20);
-    LoadPalette(sPlayerMugshotsPals[gSaveBlock2Ptr->playerGender], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
+    if(mugshotColor == MUGSHOT_COLOR_ARCHIEWITHMAXIE || mugshotColor == MUGSHOT_COLOR_MAXIEWITHARCHIE)
+        LoadPalette(sOpponentMugshotsPals[mugshotColor], BG_PLTT_ID(15), PLTT_SIZEOF(6));
+    else
+        LoadPalette(sPlayerMugshotsPals[gSaveBlock2Ptr->playerGender], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
 
     for (i = 0; i < 20; i++)
     {
