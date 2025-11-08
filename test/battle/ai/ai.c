@@ -516,7 +516,6 @@ AI_SINGLE_BATTLE_TEST("AI will choose Thunderbolt then Surf 2/3 times if the opp
 
 AI_SINGLE_BATTLE_TEST("AI will choose Scratch over Power-up Punch with Contrary")
 {
-    KNOWN_FAILING; // AI changed
     enum Ability ability;
 
     PARAMETRIZE {ability = ABILITY_SUCTION_CUPS; }
