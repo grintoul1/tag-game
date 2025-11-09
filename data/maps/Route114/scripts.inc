@@ -83,7 +83,7 @@ Route114_EventScript_WallyRivalBattle::
 	waitmessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceLeft
-	applymovement LOCALID_ROUTE114_WALLY, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_ROUTE114_RIVAL, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, Route114_EventScript_MayWallyJoinMe
