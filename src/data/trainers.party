@@ -1023,11 +1023,11 @@ Timid Nature
 - Silver Wind
 - Sticky Web
 
-Illumise @ Choice Scarf
+Mothim @ Choice Scarf
 Ability: Tinted Lens
 Level: 34
 Modest Nature
-- Bug Buzz
+- Signal Beam
 
 === TRAINER_JOEY ===
 Name: Joey
@@ -1285,7 +1285,6 @@ Class: Lady
 Pic: Lady
 Gender: Female
 Music: Female
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -1298,13 +1297,13 @@ Timid Nature
 - Psychic
 - Grass Whistle
 
-Grafaiai @ Wide Lens
-Ability: Prankster
-Level: 37
-Jolly Nature
-- Gunk Shot
-- X-Scissor
-- Flatter
+Illumise @ Wide Lens  
+Ability: Prankster  
+Level: 37  
+Jolly Nature  
+- Bug Buzz  
+- Thunder Wave  
+- Flatter  
 - Swagger
 
 Liepard @ Wide Lens
@@ -2059,7 +2058,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Battle Type: Singles
 AI: Tag Trainer
 
@@ -2290,7 +2288,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Hyper Potion
 Battle Type: Singles
 AI: Tag Trainer
 
@@ -2491,7 +2488,6 @@ Class: Lady
 Pic: Lady
 Gender: Female
 Music: Female
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -2505,7 +2501,6 @@ Class: Rich Boy
 Pic: Rich Boy
 Gender: Male
 Music: Rich
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -2520,7 +2515,6 @@ Pic: Aqua Admin M
 Gender: Male
 Mugshot: Red
 Music: Aqua
-Items: Super Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -3008,7 +3002,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Super Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -3030,7 +3023,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Super Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -3660,7 +3652,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -3836,7 +3827,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -4033,7 +4023,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -4083,7 +4072,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -4574,7 +4562,6 @@ Class: Pkmn Ranger
 Pic: Pokemon Ranger F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -4596,7 +4583,6 @@ Class: Pkmn Ranger
 Pic: Pokemon Ranger M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -4618,7 +4604,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -4816,7 +4801,6 @@ Mugshot: LightBlue
 Pic: Leader Winona
 Gender: Female
 Music: Female
-Items: Hyper Potion / Hyper Potion
 Battle Type: Singles
 AI: Tag Trainer
 
@@ -5149,7 +5133,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -5167,7 +5150,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -5546,7 +5528,6 @@ Pic: Aqua Admin M
 Gender: Male
 Mugshot: Red
 Music: Aqua
-Items: Super Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -5967,7 +5948,6 @@ Mugshot: Purple
 Pic: Leader Tate And Liza
 Gender: Male
 Music: Female
-Items: Hyper Potion / Hyper Potion / Hyper Potion / Hyper Potion
 Battle Type: Singles
 AI: Tag Trainer
 
@@ -6336,7 +6316,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -6859,7 +6838,6 @@ Class: Expert
 Pic: Expert F
 Gender: Female
 Music: Intense
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -6923,7 +6901,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -6941,7 +6918,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7006,7 +6982,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7161,7 +7136,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7512,7 +7486,6 @@ Pic: Aqua Admin F
 Mugshot: AquaMagma
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7700,7 +7673,6 @@ Class: Lady
 Pic: Lady
 Gender: Female
 Music: Female
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7783,7 +7755,6 @@ Class: Lady
 Pic: Lady
 Gender: Female
 Music: Female
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7866,7 +7837,6 @@ Mugshot: Blue
 Pic: Leader Juan
 Gender: Male
 Music: Male
-Items: Hyper Potion / Hyper Potion
 Battle Type: Singles
 AI: Tag Trainer
 
@@ -8414,7 +8384,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8432,7 +8401,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8446,7 +8414,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8460,7 +8427,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8482,7 +8448,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8504,7 +8469,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8526,7 +8490,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8544,7 +8507,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8592,7 +8554,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8613,7 +8574,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8656,7 +8616,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8678,7 +8637,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8704,7 +8662,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8901,7 +8858,6 @@ Class: Pkmn Ranger
 Pic: Pokemon Ranger M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8915,7 +8871,6 @@ Class: Pkmn Ranger
 Pic: Pokemon Ranger F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
