@@ -1569,25 +1569,53 @@ Makuhita
 Level: 15
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_RANDALL ===
-Name: Randall
+=== TRAINER_STEPH ===
+Name: Steph /* [Speed Room]*/
 Class: Cooltrainer
-Pic: Cooltrainer M
+Pic: Cooltrainer F
 Gender: Male
 Music: Cool
-Items: Hyper Potion
 Battle Type: Singles
 AI: Tag Trainer
 
-Swellow
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Quick Attack
-- Agility
-- Wing Attack
+Sharpedo @ Focus Sash
+Ability: Speed Boost
+Level: 38
+Jolly Nature
+- Crunch
+- Psychic Fangs
+- Ice Fang
+- Flip Turn
+
+Yanmega @ Grass Gem
+Ability: Speed Boost
+Level: 37
+Modest Nature
+- Air Slash
+- Signal Beam
+- Giga Drain
+- Detect
+
+Electrode @ Assault Vest
+Ability: Static
+Level: 37
+Timid Nature
+- Foul Play
+- Electroweb
+- Electro Ball
+- Mirror Coat
+
+Slowbro-Galar @ Quick Claw
+Ability: Quick Draw
+Level: 38
+Relaxed Nature
+- Psychic
+- Acid Spray
+- Bulldoze
+- Slack Off
 
 === TRAINER_MARY ===
-Name: Mary
+Name: Mary /* [Accuracy Room]*/
 Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
@@ -1603,87 +1631,268 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Shock Wave
 
 === TRAINER_PARKER ===
-Name: Parker
+Name: Parker /* [Crit Room]*/
 Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Hyper Potion
 Battle Type: Singles
 AI: Tag Trainer
 
-Spinda
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Teeter Dance
-- Dizzy Punch
-- Focus Punch
+Togekiss @ Scope Lens
+Ability: Super Luck
+Level: 37
+Timid Nature
+- Hyper Voice
+- Air Cutter
+- Dazzling Gleam
 
-=== TRAINER_ALEXIA ===
-Name: Alexia
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Tag Trainer
-
-Wigglytuff
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Defense Curl
-- Double Edge
-- Shadow Ball
-
-=== TRAINER_GEORGE ===
-Name: George
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Tag Trainer
-
-Slakoth @ Sitrus Berry
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Slack Off
-- Counter
-- Shadow Ball
-
-=== TRAINER_JODY ===
-Name: Jody
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Tag Trainer
-
-Zangoose
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Swords Dance
-- Slash
-
-=== TRAINER_BERKE ===
-Name: Berke
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Tag Trainer
-
-Vigoroth
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Kingdra @ Scope Lens
+Ability: Sniper
+Level: 37
+Jolly Nature
+- Liquidation
+- Signal Beam
+- Scale Shot
 - Focus Energy
+
+Octillery @ Scope Lens
+Ability: Sniper
+Level: 36
+Hasty Nature
+- Octazooka
+- Bullet Seed
+- Rock Blast
+- Focus Energy
+
+Unfezant @ Power Herb
+Ability: Super Luck
+Level: 37
+Hasty Nature
+- Sky Attack
+- Razor Wind
+- Night Slash
+- Work Up
+
+Drapion @ Scope Lens
+Ability: Sniper
+Level: 38
+Jolly Nature
+- Cross Poison
+- Night Slash
 - Slash
+- Focus Energy
+
+=== TRAINER_ZOE ===
+Name: Zoe /* [Defense Room]*/
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Female
+Music: Cool
+Battle Type: Singles
+AI: Tag Trainer
+
+Vanilluxe @ Occa Berry
+Ability: Snow Warning
+Level: 37
+Timid Nature
+- Flash Cannon
+- Weather Ball
+- Mirror Coat
+- Aurora Veil
+
+Revavroom @ Iapapa Berry
+Ability: Filter
+Level: 37
+Jolly Nature
+- High Horsepower
+- Iron Head
+- Acid Spray
+- Screech
+
+Avalugg-Hisui @ Covert Cloak
+Ability: Sturdy
+Level: 36
+Relaxed Nature
+- Avalanche
+- Body Press
+- Rock Slide
+- Mirror Coat
+
+Shuckle @ Custap Berry
+Ability: Sturdy
+Level: 37
+Relaxed Nature
+- Dig
+- Rock Slide
+- Skitter Smack
+- Reversal
+
+Piloswine @ Eviolite
+Ability: Thick Fat
+Level: 38
+Impish Nature
+- High Horsepower
+- Avalanche
+- Reversal
+- Curse
+
+=== TRAINER_JAS ===
+Name: Jas /* [Recovery Room]*/
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Female
+Music: Cool
+Battle Type: Singles
+AI: Tag Trainer
+
+Rillaboom @ Grassy Seed
+Ability: Grassy Surge
+Level: 37
+Jolly Nature
+- Drain Punch
+- Knock Off
+- Grassy Glide
+- Fake Out
+
+Bellibolt @ Magnet
+Ability: Electromorphosis
+Level: 37
+Modest Nature
+- Parabolic Charge
+- Acid Spray
+- Soak
+- Hyper Voice
+
+Arbok @ Leftovers
+Ability: Intimidate
+Level: 36
+Hasty Nature
+- Leech Life
+- Giga Drain
+- Lash Out
+- Coil
+
+Gogoat @ Leftovers
+Ability: Grass Pelt
+Level: 37
+Impish Nature
+- Wild Charge
+- Play Rough
+- Giga Drain
+- Bulk Up
+
+Snorlax @ Leftovers
+Ability: Immunity
+Level: 38
+Impish Nature
+- Body Slam
+- Yawn
+- Stockpile
+- Swallow
+
+=== TRAINER_TYRONE ===
+Name: Tyrone /* [Strength Room]*/
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Battle Type: Singles
+AI: Tag Trainer
+
+Diggersby @ Focus Sash
+Ability: Huge Power
+Level: 37
+Jolly Nature
+- High Horsepower
+- Body Slam
+- Quick Attack
+- Swords Dance
+
+Kilowattrel @ Magnet
+Ability: Competitive
+Level: 37
+Timid Nature
+- Volt Switch
+- Air Slash
+- Charge Beam
+- Endeavor
+
+Dipplin @ Eject Pack
+Ability: Supersweet Syrup
+Level: 37
+Sassy Nature
+- Leaf Storm
+- Draco Meteor
+- Pollen Puff
+- Sucker Punch
+
+Azumarill @ Salac Berry
+Ability: Huge Power
+Level: 37
+Jolly Nature
+- Liquidation
+- Play Rough
+- Aqua Jet
+- Belly Drum
+
+Kingambit @ Life Orb
+Ability: Defiant
+Level: 38
+Adamant Nature
+- Iron Head
+- Zen Headbutt
+- Sucker Punch
+- Swords Dance
+
+=== TRAINER_DAN ===
+Name: Dan /* [Recoil Room]*/
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Items: Hyper Potion
+Battle Type: Singles
+AI: Tag Trainer
+
+Staraptor @ Liechi Berry
+Ability: Reckless
+Level: 37
+Jolly Nature
+- Brave Bird
+- Double Edge
+- Endeavor
+
+Pikachu @ Light Ball
+Ability: Static
+Level: 37
+Jolly Nature
+- Volt Tackle
+- Double Edge
+- Submission
+
+Obstagoon @ Custap Berry
+Ability: Reckless
+Level: 37
+Jolly Nature
+- Double Edge
+- Submission
+- Reversal
+- Obstruct
+
+Basculin @ Choice Band
+Ability: Adaptability
+Level: 37
+Jolly Nature
+- Wave Crash
+- Head Smash
+
+Slaking @ Silk Scarf
+Ability: Truant
+Level: 38
+Jolly Nature
+- Retaliate
+- Double Edge
 
 === TRAINER_NORMAN_1 ===
 Name: Norman
