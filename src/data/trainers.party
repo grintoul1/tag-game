@@ -773,7 +773,6 @@ Timid Nature
 - Volt Switch  
 - Helping Hand  
 
-
 === TRAINER_SHAWN ===
 Name: Shawn
 Class: Guitarist
@@ -837,7 +836,6 @@ Lax Nature
 - Signal Beam  
 - Gear Grind  
 - Shift Gear  
-
 
 === TRAINER_WATTSON_1 ===
 Name: Wattson
@@ -2433,9 +2431,14 @@ Battle Type: Doubles
 AI: Tag Trainer
 Mugshot: MayPink
 
-Ninjask
-Level: 27
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Electrode-Hisui @ Big Root
+Ability: Static
+Level: 48
+Timid Nature
+- Giga Drain
+- Electroweb
+- Electro Ball
+- Screech
 
 === TRAINER_MAY_ROUTE_114_TREECKO ===
 Name: May /* Route 114 Blaziken*/
@@ -2490,45 +2493,32 @@ Music: Male
 Battle Type: Singles
 AI: Tag Trainer
 
-Altaria
-Level: 47
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Aerial Ace
-- Safeguard
-- Dragon Breath
-- Dragon Dance
+Gallade @ Galladite
+Ability: Sharpness
+Level: 49
+Jolly Nature
+- Psycho Cut
+- Sacred Sword
+- Shadow Claw
+- Leaf Blade
 
-Delcatty
-Level: 46
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sing
-- Assist
-- Charm
-- Feint Attack
-
-Roselia
-Level: 47
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Magical Leaf
-- Leech Seed
-- Giga Drain
-- Toxic
-
-Magneton
-Level: 44
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Supersonic
-- Thunderbolt
-- Tri Attack
-- Screech
-
-Gardevoir
-Level: 48
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Team
-- Calm Mind
+Farigiraf @ Starf Berry
+Ability: Cud Chew
+Level: 74
+Modest Nature
 - Psychic
+- Shadow Ball
+- Thunderbolt
+- Baton Pass
+
+Iron Valiant @ Misty Seed
+Ability: Quark Drive
+Level: 74
+Jolly Nature
 - Future Sight
+- Spirit Break
+- Drain Punch
+- Night Slash
 
 === TRAINER_TYRA_AND_IVY ===
 Name: Tyra & Ivy
@@ -2542,7 +2532,7 @@ AI: Tag Trainer
 Roselia
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- GROWTH
+- Growth
 - Stun Spore
 - Mega Drain
 - Leech Seed
@@ -6818,7 +6808,6 @@ Naive Nature
 - Thunderclap
 - Weather Ball
 
-
 Basculegion @ Life Orb
 Ability: Swift Swim
 Level: 87
@@ -8325,7 +8314,7 @@ Mugshot: DarkPurple
 Sableye-Mega @ Sablenite  
 Ability: Magic Bounce  
 Sassy Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Poltergeist  
 - Foul Play  
 - Ally Switch  
@@ -8334,7 +8323,7 @@ IVs: 0 Spe
 Conkeldurr @ Focus Sash  
 Ability: Iron Fist  
 Brave Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Hammer Arm  
 - Ice Punch  
 - Poison Jab  
@@ -8344,7 +8333,7 @@ Grimmsnarl @ Weakness Policy
 Ability: Prankster  
 Level: 99  
 Brave Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Spirit Break  
 - Hammer Arm  
 - enlightening  
@@ -8354,7 +8343,7 @@ Zoroark-Hisui @ Iron Ball
 Ability: Illusion  
 Level: 99  
 Quiet Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Hyper Voice  
 - Sludge Bomb  
 - Shadow Ball  
@@ -8363,7 +8352,7 @@ IVs: 0 Spe
 Necrozma-Dawn-Wings @ Room Service  
 Ability: Prism Armor  
 Quiet Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Focus Blast  
 - Moongeist Beam  
 - Psychic  
@@ -8372,7 +8361,7 @@ IVs: 0 Spe
 Brute Bonnet @ Booster Energy  
 Ability: Quark Drive  
 Brave Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Seed Bomb  
 - Lash Out  
 - Stomping Tantrum  
@@ -8400,7 +8389,7 @@ Mamoswine @ Chople Berry
 Ability: Thick Fat  
 Jolly Nature  
 - Earthquake  
-- Icicle Crash  
+- Icicle Crash 
 - Superpower  
 - Ice Shard  
 
