@@ -304,6 +304,7 @@ static void PlayerPartnerHandleChooseMove(u32 battler)
 static void PlayerPartnerHandleChoosePokemon(u32 battler)
 {
     s32 chosenMonId;
+    enum SwitchType switchType = SWITCH_AFTER_KO;
     // Choosing Revival Blessing target
     if (gBattleResources->bufferA[battler][1] == PARTY_ACTION_CHOOSE_FAINTED_MON)
     {
@@ -312,7 +313,7 @@ static void PlayerPartnerHandleChoosePokemon(u32 battler)
     // Switching out
     else if (gBattleStruct->monToSwitchIntoId[battler] >= PARTY_SIZE || !IsValidForBattle(&gPlayerParty[gBattleStruct->monToSwitchIntoId[battler]]))
     {
-        chosenMonId = GetMostSuitableMonToSwitchInto(battler, SWITCH_AFTER_KO);
+        chosenMonId = GetMostSuitableMonToSwitchInto(battler, switchType);
         if (chosenMonId == PARTY_SIZE || !IsValidForBattle(&gPlayerParty[chosenMonId])) // just switch to the next mon
         {
             s32 firstId = (IsAiVsAiBattle()) ? 0 : (PARTY_SIZE / 2);
