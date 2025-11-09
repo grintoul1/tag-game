@@ -1537,7 +1537,17 @@ static bool parse_trainer(struct Parser *p, const struct Parsed *parsed, struct 
             {
                 if (pokemon->moves_n == 0)
                     pokemon->move1_line = move.location.line;
-                pokemon->moves[pokemon->moves_n] = token_string(&move);
+
+                // Special case: "Hidden Power <Type>" -> "Hidden Power"
+                struct String move_str = token_string(&move);
+                const char *hp = "Hidden Power";
+                size_t hp_len = strlen(hp);
+                if (move_str.string_n > (int)hp_len && strncmp((const char *)move_str.string, hp, hp_len) == 0)
+                {
+                    move_str = literal_string(hp);
+                }
+
+                pokemon->moves[pokemon->moves_n] = move_str;
                 pokemon->moves_n++;
             }
         }
