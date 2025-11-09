@@ -906,9 +906,23 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Sandshrew
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sneasel @ Focus Sash
+Ability: Inner Focus
+Level: 35
+Jolly Nature
+- Ice Punch
+- Knock Off
+- Upper Hand
+- Trailblaze
+
+Dugtrio @ Passho Berry
+Ability: Arena Trap
+Level: 36
+Jolly Nature
+- Stone Edge
+- High Horsepower
+- Sucker Punch
+- Fissure
 
 === TRAINER_IRENE ===
 Name: Irene
@@ -919,13 +933,23 @@ Music: Girl
 Battle Type: Doubles
 AI: Tag Trainer
 
-Shroomish
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Qwilfish-Hisui @ Eviolite
+Ability: Intimidate
+Level: 35
+Jolly Nature
+- Crunch
+- Barb Barrage
+- Fell Stinger
+- Acupressure
 
-Marill
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Raticate @ Flame Orb
+Ability: Guts
+Level: 35
+Jolly Nature
+- Facade
+- Zen Headbutt
+- Stomping Tantrum
+- Quick Attack
 
 === TRAINER_DEVAN ===
 Name: Devan
@@ -936,13 +960,23 @@ Music: Hiker
 Battle Type: Doubles
 AI: Tag Trainer
 
-Geodude
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Klawf @ Salac Berry
+Ability: Anger Shell
+Level: 33
+Adamant Nature
+- Crabhammer
+- Knock Off
+- Rock Tomb
+- Endure
 
-Geodude
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Gligar @ Bug Gem
+Ability: Hyper Cutter
+Level: 34
+Jolly Nature
+- Lunge
+- Night Slash
+- Aerial Ace
+- Low Horsepower
 
 === TRAINER_CLARK ===
 Name: Clark
@@ -953,9 +987,23 @@ Music: Hiker
 Battle Type: Doubles
 AI: Tag Trainer
 
-Geodude
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Crustle @ Power Herb
+Ability: Sturdy
+Level: 33
+Adamant Nature
+- Solar Blade
+- Leech Life
+- Stomping Tantrum
+- Knock Off
+
+Trapinch @ Custap Berry
+Ability: Arena Trap
+Level: 35
+Adamant Nature
+- First Impression
+- Dig
+- Reversal
+- Endure
 
 === TRAINER_JOSE ===
 Name: Jose
@@ -966,13 +1014,20 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Wurmple
-Level: 8
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Ribombee @ Fairy Feather
+Ability: Shield Dust
+Level: 34
+Timid Nature
+- Energy Ball
+- Dazzling Gleam
+- Silver Wind
+- Sticky Web
 
-Nincada
-Level: 8
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Illumise @ Choice Scarf
+Ability: Tinted Lens
+Level: 34
+Modest Nature
+- Bug Buzz
 
 === TRAINER_JOEY ===
 Name: Joey
@@ -983,9 +1038,23 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Machop
-Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Clawitzer @ Mystic Water
+Ability: Mega Launcher
+Level: 34
+Timid Nature
+- Aura Sphere
+- Dark Pulse
+- Water Pulse
+- Flip Turn
+
+Clodsire @ Soft Sand
+Ability: Water Absorb
+Level: 34
+Adamant Nature
+- Iron Head
+- Poison Jab
+- Low Horsepower
+- Trailblaze
 
 === TRAINER_JOHNSON ===
 Name: Johnson
@@ -996,13 +1065,23 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Shroomish
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Dachsbun @ Muscle Band
+Ability: Well-Baked Body
+Level: 34
+Jolly Nature
+- Body Press
+- Crunch
+- Thunder Fang
+- Trailblaze
 
-Lotad
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Orbeetle @ Wise Glasses
+Ability: Telepathy
+Level: 34
+Timid Nature
+- Psyshock
+- Signal Beam
+- Giga Drain
+- Hypnosis
 
 === TRAINER_KAREN_1 ===
 Name: Karen
@@ -1013,9 +1092,23 @@ Music: Girl
 Battle Type: Doubles
 AI: Tag Trainer
 
-Shroomish
-Level: 9
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Magmar @ Sitrus Berry
+Ability: Flame Body
+Level: 34
+Naive Nature
+- Belch
+- Lava Plume
+- Low Sweep
+- Follow Me
+
+Ursaring @ Toxic Orb
+Ability: Quick Feet
+Level: 34
+Jolly Nature
+- Retaliate
+- Play Rough
+- Throat Chop
+- Yawn
 
 === TRAINER_JOSH ===
 Name: Josh
@@ -1026,10 +1119,35 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Geodude
-Level: 10
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Tackle
+Bastiodon @ Smooth Rock  
+Ability: Sturdy  
+Level: 34  
+Tera Type: Rock  
+Impish Nature  
+- Foul Play  
+- Body Press  
+- Stomping Tantrum  
+- Sandstorm  
+
+Carracosta @ Muscle Band  
+Ability: Sturdy  
+Level: 33  
+Tera Type: Water  
+Brave Nature  
+- Razor Shell  
+- Zen Headbutt  
+- Rock Tomb  
+- Protect  
+
+Aurorus @ Ice Gem  
+Ability: Refrigerate  
+Level: 34  
+Tera Type: Rock  
+Naive Nature  
+- Hyper Voice  
+- Body Slam  
+- Power Gem  
+- Icy Wind  
 
 === TRAINER_TOMMY ===
 Name: Tommy
@@ -1040,13 +1158,35 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Geodude
-Level: 8
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+Archeops @ Chilan Berry  
+Ability: Defeatist  
+Level: 34  
+Tera Type: Rock  
+Hasty Nature  
+- Rock Slide  
+- Acrobatics  
+- U-turn  
+- Tailwind  
 
-Geodude
-Level: 8
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Cradily @ Leftovers  
+Ability: Storm Drain  
+Level: 33  
+Tera Type: Rock  
+Bold Nature  
+- Giga Drain  
+- Ancient Power  
+- Mirror Coat  
+- Ingrain  
+
+Tyrantrum @ Twisted Spoon  
+Ability: Strong Jaw  
+Level: 34  
+Tera Type: Rock  
+Jolly Nature  
+- High Horsepower  
+- Psychic Fangs  
+- Dragon Tail  
+- Rock Tomb  
 
 === TRAINER_ROXANNE_1 ===
 Name: Roxanne
