@@ -606,7 +606,7 @@ Jolly Nature
 - Poison Tail
 
 === TRAINER_BRANDI ===
-Name: Brandi
+Name: Brandi /* [Optional]*/
 Class: Psychic
 Pic: Psychic F
 Gender: Female
