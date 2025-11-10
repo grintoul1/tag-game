@@ -4030,6 +4030,13 @@ BattleScript_AlreadyBurned::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
+BattleScript_AlreadyFrostbitten::
+	setalreadystatusedmoveattempt
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_PKMNALREADYHASBURN
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectMemento::
 	attackcanceler
 	jumpifbyte CMP_EQUAL, cMISS_TYPE, B_MSG_PROTECTED, BattleScript_MementoTargetProtect

@@ -521,20 +521,9 @@ extern const u8 BattleScript_CantMakeAsleep[];
 extern const u8 BattleScript_AlreadyPoisoned[];
 extern const u8 BattleScript_AlreadyParalyzed[];
 extern const u8 BattleScript_AlreadyBurned[];
+extern const u8 BattleScript_AlreadyFrostbitten[];
 extern const u8 BattleScript_PrintAbilityMadeIneffective[];
 extern const u8 BattleScript_ItDoesntAffectFoe[];
-
-extern const u8 BattleScript_AbilityProtectsDoesntAffect[];
-extern const u8 BattleScript_ImmunityProtected[];
-extern const u8 BattleScript_SafeguardProtected[];
-extern const u8 BattleScript_FlowerVeilProtects[];
-extern const u8 BattleScript_SleepClauseBlocked[];
-extern const u8 BattleScript_AlreadyAsleep[];
-extern const u8 BattleScript_CantMakeAsleep[];
-extern const u8 BattleScript_AlreadyPoisoned[];
-extern const u8 BattleScript_AlreadyParalyzed[];
-extern const u8 BattleScript_AlreadyBurned[];
-extern const u8 BattleScript_PrintAbilityMadeIneffective[];
 
 // zmoves
 extern const u8 BattleScript_ZMoveActivateDamaging[];

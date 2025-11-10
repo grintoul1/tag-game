@@ -5999,7 +5999,7 @@ bool32 CanSetNonVolatileStatus(u32 battlerAtk, u32 battlerDef, enum Ability abil
     case MOVE_EFFECT_FROSTBITE:
         if (gBattleMons[battlerDef].status1 & (STATUS1_FREEZE | STATUS1_FROSTBITE))
         {
-            battleScript = BattleScript_AlreadyBurned;
+            battleScript = BattleScript_AlreadyFrostbitten;
         }
         else if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ICE) || IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN))
         {
