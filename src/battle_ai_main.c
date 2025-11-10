@@ -9212,7 +9212,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             else
             {
                 // If User is outsped and OHKO'd and player is not
-                if ((CanTargetFaintAi(BATTLE_OPPOSITE(battlerAtkPartner), battlerAtk) 
+                if ((CanTargetFaintAi(BATTLE_OPPOSITE(battlerAtkPartner), battlerAtk)
                 || CanTargetFaintAi(BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), battlerAtk))
                 && !(CanTargetFaintAi(BATTLE_OPPOSITE(battlerAtkPartner), battlerAtkPartner)
                 || CanTargetFaintAi(BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner)), battlerAtkPartner)))
@@ -9223,9 +9223,9 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 bool8 encourage = FALSE;
                 for (i = 0; i < MAX_MON_MOVES; i++)
                 {
-                    if (((aiData->simulatedDmg[battlerAtkPartner][BATTLE_OPPOSITE(battlerAtkPartner)][i].minimum)*1.5) > gBattleMons[BATTLE_OPPOSITE(battlerAtkPartner)].hp)
+                    if (((aiData->simulatedDmg[battlerAtkPartner][BATTLE_OPPOSITE(battlerAtkPartner)][i].minimum)*1.5) > gBattleMons[BATTLE_OPPOSITE(battlerAtkPartner)].hp && IsBattlerAlive(BATTLE_OPPOSITE(battlerAtkPartner)))
                         encourage = TRUE;
-                    if (((aiData->simulatedDmg[battlerAtkPartner][BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner))][i].minimum)*1.5) > gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner))].hp)
+                    if (((aiData->simulatedDmg[battlerAtkPartner][BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner))][i].minimum)*1.5) > gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner))].hp && IsBattlerAlive(BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtkPartner))))
                         encourage = TRUE;
                 }
                 if (encourage)
