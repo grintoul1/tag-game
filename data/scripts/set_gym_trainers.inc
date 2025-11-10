@@ -17,7 +17,7 @@ RustboroCity_Gym_SetGymTrainers::
 	return
 
 DewfordTown_Gym_SetGymTrainers::
-	settrainerflag TRAINER_TAKAO
+	settrainerflag TRAINER_NAKOLAI
 	settrainerflag TRAINER_JOCELYN
 	settrainerflag TRAINER_LAURA
 	settrainerflag TRAINER_BRENDEN

@@ -2060,11 +2060,40 @@ Music: Cool
 Battle Type: Singles
 AI: Tag Trainer
 
-Delcatty
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Feint Attack
-- Shock Wave
+Lilligant-Hisui @ Blunder Policy  
+Ability: Hustle  
+Level: 37  
+Jolly Nature  
+- Triple Axel  
+- Axe Kick  
+- Leaf Blade  
+- Acrobatics  
+
+Machamp @ Coba Berry  
+Ability: No Guard  
+Level: 38  
+Jolly Nature  
+- Dynamic Punch  
+- Stone Edge  
+- Mega Kick  
+
+Durant @ Covert Cloak  
+Ability: Hustle  
+Level: 38  
+Jolly Nature  
+- First Impression  
+- X-Scissor  
+- Smart Strike  
+- Feint Attack  
+
+Weezing @ Wide Lens  
+Ability: Levitate  
+Level: 37  
+Calm Nature  
+- Zap Cannon  
+- Fire Blast  
+- Pain Split  
+- Swagger  
 
 === TRAINER_PARKER ===
 Name: Parker /* [Crit Room]*/
@@ -2434,13 +2463,23 @@ Pic: Bug Catcher
 Gender: Male
 Music: Male
 
-Nincada
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Masquerain @ Charti Berry
+Ability: Tinted Lens
+Level: 39
+Timid Nature
+- Bug Buzz
+- Air Slash
+- Giga Drain
+- Quiver Dance
 
-Nincada
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lokix @ Bug Gem
+Ability: Tinted Lens
+Level: 40
+Adamant Nature
+- First Impression
+- Sucker Punch
+- Leech Life
+- Low Kick
 
 === TRAINER_LYLE ===
 Name: Lyle
@@ -2451,21 +2490,23 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Wurmple
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sudowoodo @ Expert Belt
+Ability: Sturdy
+Level: 40
+Adamant Nature
+- Wood Hammer
+- Stone Edge
+- Body Press
+- High Horsepower
 
-Wurmple
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Wurmple
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Wurmple
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Trevenant @ Sitrus Berry
+Ability: Harvest
+Level: 39
+Adamant Nature
+- Horn Leech
+- Drain Punch
+- Shadow Claw
+- Forest's Curse
 
 === TRAINER_GINA_AND_MIA_1 ===
 Name: Gina & Mia
@@ -2493,9 +2534,25 @@ Music: Female
 Battle Type: Doubles
 AI: Tag Trainer
 
-Zigzagoon @ Nugget
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Greedent @ Petaya Berry  
+Ability: Cheek Pouch  
+Level: 41  
+Relaxed Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
+- Belch  
+- Body Press  
+- Super Fang  
+- Stuff Cheeks  
+
+Corviknight @ Liechi Berry  
+Ability: Mirror Armor  
+Level: 39  
+Relaxed Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
+- Dual Wingbeat  
+- Body Press  
+- Power Trip  
+- Iron Defense  
 
 === TRAINER_WINSTON_1 ===
 Name: Winston
@@ -2506,9 +2563,35 @@ Music: Rich
 Battle Type: Doubles
 AI: Tag Trainer
 
-Zigzagoon @ Nugget
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Girafarig @ Colbur Berry  
+Ability: Inner Focus  
+Level: 40  
+Relaxed Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
+- Foul Play  
+- Signal Beam  
+- Twin Beam  
+- Trick Room  
+
+Graveler-Alola @ Eviolite  
+Ability: Galvanize  
+Level: 41  
+Brave Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
+- High Horsepower  
+- Body Slam  
+- Rock Slide  
+- Magnet Rise  
+
+Eldegoss @ White Herb  
+Ability: Cotton Down  
+Level: 39  
+Sassy Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
+- Leaf Storm  
+- Seed Bomb  
+- Hyper Voice  
+- Helping Hand  
 
 === TRAINER_MATT_PETALBURG_WOODS ===
 Name: Matt /* Petalburg Woods*/
@@ -2520,13 +2603,32 @@ Music: Aqua
 Battle Type: Doubles
 AI: Tag Trainer
 
-Mightyena
-Level: 34
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Mawile @ Mawilite
+Ability: Intimidate
+Level: 41
+Adamant Nature
+- Play Rough
+- Brick Break
+- Brutal Swing
+- Fire Fang
 
-Golbat
-Level: 34
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Kingler @ Muscle Band
+Ability: Sheer Force
+Level: 39
+Jolly Nature
+- Ice Hammer
+- Liquidation
+- Stomping Tantrum
+- Protect
+
+Probopass @ Air Balloon
+Ability: Sturdy
+Level: 40
+Relaxed Nature
+- Earth Power
+- Body Press
+- Power Gem
+- Heavy Slam
 
 === TRAINER_SHELLY_PETALBURG_WOODS ===
 Name: Shelly /* Petalburg Woods*/
@@ -2538,13 +2640,32 @@ Music: Aqua
 Battle Type: Doubles
 AI: Tag Trainer
 
-Carvanha
-Level: 28
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Bruxish @ Water Gem
+Ability: Strong Jaw
+Level: 39
+Jolly Nature
+- Psychic Fangs
+- Frost Fang
+- Poison Fang
+- Flip Turn
 
-Mightyena
-Level: 28
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Gourgeist-Super @ Weakness Policy
+Ability: Insomnia
+Level: 38
+Sassy Nature
+- Poltergeist
+- Seed Bomb
+- Shadow Sneak
+- Will-O-Wisp
+
+Audino @ Audinite
+Ability: Regenerator
+Level: 41
+Bold Nature
+- Hyper Voice
+- Icy Wind
+- Yawn
+- Follow Me
 
 === TRAINER_EMMIE_1 ===
 Name: Emmie /* Route 104*/
@@ -2573,9 +2694,32 @@ Music: Intense
 Battle Type: Doubles
 AI: Tag Trainer
 
-Meditite
-Level: 13
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Hitmonchan @ Focus Sash
+Ability: Iron Fist
+Level: 41
+Jolly Nature
+- Frost Punch
+- Fire Punch
+- Thunder Punch
+- Mach Punch
+
+Hitmonlee @ Coba Berry
+Ability: Unburden
+Level: 41
+Adamant Nature
+- Jump Kick
+- Blaze Kick
+- Knock Off
+- Fake Out
+
+Hitmontop @ Punching Glove
+Ability: Intimidate
+Level: 40
+Adamant Nature
+- Triple Axel
+- Bullet Punch
+- Mach Punch
+- Counter
 
 === TRAINER_BRENDEN ===
 Name: Brenden
@@ -2586,9 +2730,23 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Machop
-Level: 13
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Tsareena @ Salac Berry
+Ability: Queenly Majesty
+Level: 41
+Jolly Nature
+- Trop Kick
+- Low Sweep
+- Acrobatics
+- Helping Hand
+
+Skuntank @ Wise Glasses
+Ability: Aftermath
+Level: 40
+Timid Nature
+- Sludge Bomb
+- Flamethrower
+- Dark Pulse
+- Hex
 
 === TRAINER_CRISTIAN ===
 Name: Cristian
@@ -2599,12 +2757,26 @@ Music: Intense
 Battle Type: Doubles
 AI: Tag Trainer
 
-Makuhita
-Level: 13
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Pawmot @ Big Root
+Ability: Iron Fist
+Level: 41
+Jolly Nature
+- Thunder Punch
+- Drain Punch
+- Throat Chop
+- Coaching
 
-=== TRAINER_TAKAO ===
-Name: Takao
+Tauros-Paldea-Aqua
+Ability: Intimidate
+Level: 41
+Jolly Nature
+- Wild Charge
+- Raging Bull
+- Zen Headbutt
+- Bulk Up
+
+=== TRAINER_NAKOLAI ===
+Name: Nakolai
 Class: Black Belt
 Pic: Black Belt
 Gender: Male
@@ -2612,9 +2784,32 @@ Music: Intense
 Battle Type: Doubles
 AI: Tag Trainer
 
-Machop
-Level: 13
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Klefki @ Wide Lens
+Ability: Prankster
+Level: 40
+Hasty Nature
+- Flash Cannon
+- Play Rough
+- Skitter Smack
+- Thunder Wave
+
+Breloom @ Loaded Dice
+Ability: Technician
+Level: 40
+Jolly Nature
+- Sky Uppercut
+- Mach Punch
+- Bullet Seed
+- Spore
+
+Rhydon @ Eviolite
+Ability: Rock Head
+Level: 41
+Adamant Nature
+- Double Edge
+- Submission
+- Rock Slide
+- Curse
 
 === TRAINER_LILITH ===
 Name: Lilith
@@ -2625,9 +2820,32 @@ Music: Intense
 Battle Type: Doubles
 AI: Tag Trainer
 
-Meditite
-Level: 13
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Eelektross @ Black Belt
+Ability: Levitate
+Level: 41
+Calm Nature
+- Wild Charge
+- Drain Punch
+- Knock Off
+- Coil
+
+Poliwrath @ Salac Berry
+Ability: Water Absorb
+Level: 40
+Jolly Nature
+- High Horsepower
+- Liquidation
+- Ice Punch
+- Belly Drum
+
+Heracross @ Flame Orb
+Ability: Guts
+Level: 41
+Jolly Nature
+- Pin Missile
+- Arm Thrust
+- Rock Blast
+- Protect
 
 === TRAINER_JOCELYN ===
 Name: Jocelyn
@@ -2638,9 +2856,32 @@ Music: Intense
 Battle Type: Doubles
 AI: Tag Trainer
 
-Meditite
-Level: 13
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Lurantis @ Power Herb
+Ability: Contrary
+Level: 40
+Hasty Nature
+- Solar Blade
+- Superpower
+- Nature Power
+- Night Slash
+
+Tauros @ Hard Stone
+Ability: Sheer Force
+Level: 41
+Adamant Nature
+- Double Edge
+- Retaliate
+- Rock Slide
+- Reversal
+
+Flamigo @ White Herb
+Ability: Costar
+Level: 41
+Jolly Nature
+- Close Combat
+- Throat Chop
+- Upper Hand
+- Dual Wingbeat
 
 === TRAINER_BRAWLY_1 ===
 Name: Brawly
