@@ -389,7 +389,6 @@ Level: 29
 Modest Nature  
 - Scorching Sands  
 - Shadow Ball
-- Stored Power  
 - Cosmic Power  
 
 Darumaka @ Flame Orb  
@@ -847,8 +846,8 @@ Music: Male
 Battle Type: Singles
 AI: Tag Trainer
 
-Manectric-Mega @ Manectite  
-Ability: Intimidate  
+Manectric @ Manectite  
+Ability: Static  
 Level: 29  
 Brave Nature  
 - Hyper Voice
@@ -2344,7 +2343,10 @@ Kangaskhan @ Kangaskhanite
 Ability: Inner Focus  
 Level: 37  
 Jolly Nature  
-- Drain Punch  
+- Earthquake
+- Brick Break
+- Sucker Punch
+- Fake Out  
 
 Braviary @ Wacan Berry  
 Ability: Defiant  
