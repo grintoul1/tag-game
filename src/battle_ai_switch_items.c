@@ -688,51 +688,6 @@ static bool32 ShouldSwitchIfAllMovesBad(u32 battler)
     return FALSE;
 }
 
-static bool32 PartnerShouldSwitchIfAllMovesBad(u32 battler)
-{
-    u32 moveIndex;
-    u32 opposingBattler = GetOppositeBattler(battler);
-    u32 aiMove;
-    //u32 i;
-
-    // Switch if no moves affect opponents
-    if (IsDoubleBattle())
-    {
-        u32 opposingPartner = GetBattlerAtPosition(BATTLE_PARTNER(opposingBattler));
-        for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
-        {
-            aiMove = gBattleMons[battler].moves[moveIndex];
-            if (aiMove == MOVE_NONE)
-                continue;
-            if (gAiLogicData->effectiveness[battler][opposingBattler][moveIndex] > UQ_4_12(0.0)
-             || gAiLogicData->effectiveness[battler][opposingPartner][moveIndex] > UQ_4_12(0.0))
-                return FALSE;
-        }
-    }
-    else
-    {
-        for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
-        {
-            aiMove = gBattleMons[battler].moves[moveIndex];
-            if (aiMove == MOVE_NONE)
-                continue;
-            if (gAiLogicData->effectiveness[battler][opposingBattler][moveIndex] > UQ_4_12(0.0)
-                && (!ALL_MOVES_BAD_STATUS_MOVES_BAD || gMovesInfo[aiMove].power != 0)) // If using ALL_MOVES_BAD_STATUS_MOVES_BAD, then need power to be non-zero
-                return FALSE;
-        }
-    }
-
-    if (RandomPercentage(RNG_AI_SWITCH_ALL_MOVES_BAD, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD)))
-    {
-        if (gAiLogicData->mostSuitableMonId[battler] == PARTY_SIZE) // No good candidate mons, find any one that can deal damage
-            return FindMonWithMoveOfEffectiveness(battler, opposingBattler, UQ_4_12(1.0));
-        else // Good candidate mon, send that in
-            return SetSwitchinAndSwitch(battler, PARTY_SIZE);
-    }
-
-    return FALSE;
-}
-
 static bool32 ShouldSwitchIfWonderGuard(u32 battler)
 {
     u32 opposingBattler = GetOppositeBattler(battler);
@@ -1143,7 +1098,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
 
     u32 incomingType = GetMoveType(switchingMove);
 
-    /*#ifndef NDEBUG
+    #ifndef NDEBUG
         MgbaPrintf(MGBA_LOG_WARN, "PartnerFindMonThatAbsorbsOpponentsMove", PartnerFindMonThatAbsorbsOpponentsMove);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveTypes %d", oppositeBattlerMoveTypes);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveTypes %d", oppositeBattlerPartnerMoveTypes);
@@ -1151,7 +1106,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveCount %d", oppositeBattlerPartnerMoveCount);
         MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOpposite %S", GetMoveName(switchingMoveOpposite));
         MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOppositePartner %S", GetMoveName(switchingMoveOppositePartner));
-    #endif*/
+    #endif
 
     if (!(oppositeBattlerMoveTypes == 1 || oppositeBattlerPartnerMoveTypes == 1) && !(onlySound || onlyBallistic || onlyWind))
         return FALSE;
@@ -2190,124 +2145,6 @@ bool32 ShouldSwitch(u32 battler)
     // These Functions prevent the "FindMonWithFlagsAndSuperEffective" from getting out of hand.
     // We don't use FindMonWithFlagsAndSuperEffective with AI_FLAG_SMART_SWITCHING, so we can bail early.
     if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SMART_SWITCHING)
-        return FALSE;
-    if (CanUseSuperEffectiveMoveAgainstOpponents(battler))
-        return FALSE;
-    if (AreStatsRaised(battler))
-        return FALSE;
-
-    // Default Function
-    // Can prompt switch if AI has a pokemon in party that resists current opponent & has super effective move
-    if (FindMonWithFlagsAndSuperEffective(battler, MOVE_RESULT_DOESNT_AFFECT_FOE, 50)
-        || FindMonWithFlagsAndSuperEffective(battler, MOVE_RESULT_NOT_VERY_EFFECTIVE, 33))
-        return TRUE;
-
-    return FALSE;
-}
-
-//Used for player's AI partner. Note battler refers to the AI partner and partner refers to the player
-bool32 PartnerShouldSwitch(u32 battler)
-{   
-    u32 battlerIn1, battlerIn2;
-    s32 firstId;
-    s32 lastId; // + 1
-    struct Pokemon *party;
-    s32 i;
-    s32 availableToSwitch;
-
-    if (gBattleMons[battler].volatiles.wrapped)
-        return FALSE;
-    if (gBattleMons[battler].volatiles.escapePrevention)
-        return FALSE;
-    if (gBattleMons[battler].volatiles.root)
-        return FALSE;
-    if (IsAbilityPreventingEscape(battler))
-        return FALSE;
-
-    // Sequence Switching AI never switches mid-battle
-    if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SEQUENCE_SWITCHING)
-        return FALSE;
-
-    availableToSwitch = 0;
-
-    if (IsDoubleBattle())
-    {
-        u32 partner = GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerAtPosition(battler)));
-        battlerIn1 = battler;
-        if (gAbsentBattlerFlags & (1u << partner))
-            battlerIn2 = battler;
-        else
-            battlerIn2 = partner;
-    }
-    else
-    {
-        battlerIn1 = battler;
-        battlerIn2 = battler;
-    }
-
-    GetAIPartyIndexes(battler, &firstId, &lastId);
-    party = GetBattlerParty(battler);
-
-    for (i = firstId; i < lastId; i++)
-    {
-        if (!IsValidForBattle(&party[i]))
-            continue;
-        if (i == gBattlerPartyIndexes[battlerIn1])
-            continue;
-        if (i == gBattlerPartyIndexes[battlerIn2])
-            continue;
-        if (i == gBattleStruct->monToSwitchIntoId[battlerIn1])
-            continue;
-        if (i == gBattleStruct->monToSwitchIntoId[battlerIn2])
-            continue;
-        if (IsAceMon(battler, i))
-            continue;
-
-        availableToSwitch++;
-    }
-
-    if (availableToSwitch == 0)
-            return FALSE;
-
-    // NOTE: The sequence of the below functions matter! Do not change unless you have carefully considered the outcome.
-    // Since the order is sequential, and some of these functions prompt switch to specific party members.
-
-    // FindMon functions can prompt a switch to specific party members that override GetMostSuitableMonToSwitchInto
-    // The rest can prompt a switch to party member returned by GetMostSuitableMonToSwitchInto
-
-    if (PartnerFindMonThatAbsorbsOpponentsMove(battler))
-        return TRUE;
-    if((gBattleMons[battler].hp * 2) <= gBattleMons[battler].maxHP)
-        return FALSE;
-    if (PartnerShouldSwitchIfWonderGuard(battler))
-        return TRUE;
-    if ((gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING) && (CanMonSurviveHazardSwitchin(battler) == FALSE))
-        return FALSE;
-    if (PartnerShouldSwitchIfTrapperInParty(battler))
-        return TRUE;
-    if (PartnerShouldSwitchIfOpponentChargingOrInvulnerable(battler))
-        return TRUE;
-    if (PartnerShouldSwitchIfTruant(battler))
-        return TRUE;
-    if (PartnerShouldSwitchIfAllMovesBad(battler))
-        return TRUE;
-    if (PartnerShouldSwitchIfBadlyStatused(battler))
-        return TRUE;
-    if (PartnerShouldSwitchIfAbilityBenefit(battler))
-        return TRUE;
-    if (PartnerShouldSwitchIfHasBadOdds(battler))
-        return TRUE;
-    if (PartnerShouldSwitchIfEncored(battler))
-        return TRUE;
-    if (PartnerShouldSwitchIfBadChoiceLock(battler))
-        return TRUE;
-    if (PartnerShouldSwitchIfAttackingStatsLowered(battler))
-        return TRUE;
-
-    // Removing switch capabilites under specific conditions
-    // These Functions prevent the "FindMonWithFlagsAndSuperEffective" from getting out of hand.
-    // We don't use FindMonWithFlagsAndSuperEffective with AI_FLAG_PARTNER_SWITCHING, so we can bail early.
-    if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING)
         return FALSE;
     if (CanUseSuperEffectiveMoveAgainstOpponents(battler))
         return FALSE;
@@ -3366,9 +3203,9 @@ static inline bool32 CanSwitchinWin1v1(u32 hitsToKOAI, u32 hitsToKOPlayer, bool3
     return FALSE;
 }
 
-static inline u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, u32 battler, u32 opposingBattler, u32 battlerIn1, u32 battlerIn2, enum SwitchType switchType)
+static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, u32 battler, u32 opposingBattler, u32 battlerIn1, u32 battlerIn2, enum SwitchType switchType, s32 *bestMonId, s32 *bestScore)
 {
-    /*#ifndef NDEBUG
+    #ifndef NDEBUG
         MgbaPrintf(MGBA_LOG_WARN, "CustomGetBestMonIntegrated");
         u32 maxDamageDealtStored[PARTY_SIZE]={0};
         const u8 * checkingPosition;
@@ -3378,20 +3215,19 @@ static inline u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId,
         u32 maxDamageDealtToAIStored[PARTY_SIZE]={0};
         u32 percentageDealtStored[PARTY_SIZE]={0};
         u32 percentageReceivedStored[PARTY_SIZE]={0};
-    #endif*/
+    #endif
     int monId;
     int i;
-    int bestMonId = PARTY_SIZE;
     int switchInScores[PARTY_SIZE]={0};
     bool32 isFreeSwitch = IsFreeSwitch(switchType, battlerIn1, opposingBattler);
     uq4_12_t effectiveness = UQ_4_12(1.0);
     gAiLogicData->aiCalcInProgress = TRUE;
 
-    /*#ifndef NDEBUG
+    #ifndef NDEBUG
         checkingPosition=GetSpeciesName(gBattleMons[battler].species);
         const u8 * lookingAt;
         lookingAt=GetSpeciesName(gBattleMons[opposingBattler].species);
-    #endif*/
+    #endif
 
     if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_1) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_3) || ((!(gBattleTypeFlags & BATTLE_TYPE_MULTI)) && (!(gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))))
     {
@@ -3422,10 +3258,10 @@ static inline u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId,
         u32 aiMonSpecies=0;
         u32 aiMonFaster=0;
         u32 aiMove, bestPlayerMove = MOVE_NONE;
-        /*#ifndef NDEBUG
+        #ifndef NDEBUG
             partyMon=SPECIES_NONE;
             aiBestMove[monId]=0;
-        #endif*/
+        #endif
         switchInScores[monId] = 0;
         if (!IsValidForBattle(&party[monId])
         || gBattlerPartyIndexes[battlerIn1] == monId
@@ -3434,10 +3270,10 @@ static inline u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId,
         || gBattleStruct->monToSwitchIntoId[battlerIn2] == monId)
             continue;
 
-        /*#ifndef NDEBUG
+        #ifndef NDEBUG
             partyMon=GetSpeciesName(GetMonData(&party[monId],MON_DATA_SPECIES,NULL));
             partyMonStored[monId]=partyMon;
-        #endif*/
+        #endif
         InitializeSwitchinCandidate(&party[monId]);
         aiMonSpecies = GetMonData(&party[monId], MON_DATA_SPECIES, NULL);
         aiMonFaster = ((GetMonData(&party[monId],MON_DATA_SPEED,NULL) >= gBattleMons[opposingBattler].speed) || ((GetMonData(&party[monId],MON_DATA_SPEED,NULL) <= gBattleMons[opposingBattler].speed) && (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)));
@@ -3455,11 +3291,11 @@ static inline u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId,
                     {
                         maxDamageDealt = damageDealt;
                         percentageDealt = ((maxDamageDealt*1000) / gBattleMons[opposingBattler].hp);
-                        /*#ifndef NDEBUG
+                        #ifndef NDEBUG
                             percentageDealtStored[monId]=percentageDealt;
                             maxDamageDealtStored[monId]=maxDamageDealt;
                             aiBestMove[monId]=GetMoveName(GetMonData(&party[monId], MON_DATA_MOVE1 + i,NULL));
-                        #endif*/
+                        #endif
                     }
                 }
             }
@@ -3467,10 +3303,10 @@ static inline u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId,
 
         maxDamageDealtToAI = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon, &bestPlayerMove);
         percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&party[monId],MON_DATA_HP,NULL));
-        /*#ifndef NDEBUG
+        #ifndef NDEBUG
             percentageReceivedStored[monId] = percentageReceived;
             maxDamageDealtToAIStored[monId] = maxDamageDealtToAI;
-        #endif*/
+        #endif
 
         if (switchType != SWITCH_AFTER_KO && isFreeSwitch != TRUE)
         {
@@ -3503,7 +3339,7 @@ static inline u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId,
             switchInScores[monId] = 2;
 
         
-        /*#ifndef NDEBUG
+        #ifndef NDEBUG
         if(switchInScores[monId]!=0)
         {
             MgbaPrintf(MGBA_LOG_WARN, "mon looking %S", checkingPosition);
@@ -3516,7 +3352,7 @@ static inline u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId,
             MgbaPrintf(MGBA_LOG_WARN, "party slot takes%d", maxDamageDealtToAIStored[monId]);
             MgbaPrintf(MGBA_LOG_WARN, "percentage slot takes%d", percentageReceivedStored[monId]);
         }
-        #endif*/
+        #endif
     }
 
     u32 bestSwitchInScore = 0;
@@ -3527,14 +3363,198 @@ static inline u32 CustomGetBestMonIntegrated(struct Pokemon *party, int firstId,
 
         if (switchInScores[monId] > bestSwitchInScore)
         {
-            bestSwitchInScore = switchInScores[monId];
-            bestMonId = monId;
+            *bestScore = switchInScores[monId];
+            *bestMonId = monId;
         }
     }
 
     gAiLogicData->aiCalcInProgress = FALSE;
+}
 
-    return bestMonId;
+static bool32 PartnerShouldSwitchIfAllMovesBad(u32 battler)
+{
+    u32 moveIndex;
+    u32 opposingBattler = GetOppositeBattler(battler);
+    u32 battlerIn1 = 0, battlerIn2 = 0;
+    s32 bestMonId = PARTY_SIZE;
+    s32 bestScore;
+    u32 aiMove;
+    s32 firstId, lastId;
+    struct Pokemon *party = NULL;
+    //u32 i;
+
+    // Switch if no moves affect opponents
+    if (IsDoubleBattle())
+    {
+        u32 opposingPartner = GetBattlerAtPosition(BATTLE_PARTNER(opposingBattler));
+        for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+        {
+            aiMove = gBattleMons[battler].moves[moveIndex];
+            if (aiMove == MOVE_NONE)
+                continue;
+            if (gAiLogicData->effectiveness[battler][opposingBattler][moveIndex] > UQ_4_12(0.0)
+             || gAiLogicData->effectiveness[battler][opposingPartner][moveIndex] > UQ_4_12(0.0))
+                return FALSE;
+        }
+    }
+    else
+    {
+        for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+        {
+            aiMove = gBattleMons[battler].moves[moveIndex];
+            if (aiMove == MOVE_NONE)
+                continue;
+            if (gAiLogicData->effectiveness[battler][opposingBattler][moveIndex] > UQ_4_12(0.0)
+                && (!ALL_MOVES_BAD_STATUS_MOVES_BAD || gMovesInfo[aiMove].power != 0)) // If using ALL_MOVES_BAD_STATUS_MOVES_BAD, then need power to be non-zero
+                return FALSE;
+        }
+    }
+    // struct Pokemon *party, int firstId, int lastId, u32 battler, u32 opposingBattler, u32 battlerIn1, u32 battlerIn2, enum SwitchType switchType, u32 *bestMonId, u32 *bestScore
+    GetAIPartyIndexes(battler, &firstId, &lastId);
+    party = GetBattlerParty(battler);
+    battlerIn1 = battler;
+    if (gAbsentBattlerFlags & (1u << GetPartnerBattler(battler)))
+        battlerIn2 = battler;
+    else
+        battlerIn2 = GetPartnerBattler(battler);
+
+    opposingBattler = BATTLE_OPPOSITE(battlerIn1);
+    if (gAbsentBattlerFlags & (1u << opposingBattler))
+        opposingBattler ^= BIT_FLANK;
+
+    CustomGetBestMonIntegrated(party, firstId, lastId, battler, opposingBattler, battlerIn1, battlerIn2, SWITCH_MID_BATTLE, &bestMonId, &bestScore);
+
+    // Don't switch if mid-turn switch checks fail
+    if (bestScore < 2)
+        return FALSE;
+
+    if (RandomPercentage(RNG_AI_SWITCH_ALL_MOVES_BAD, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD)))
+    {
+        if (gAiLogicData->mostSuitableMonId[battler] == PARTY_SIZE) // No good candidate mons, find any one that can deal damage
+            return FindMonWithMoveOfEffectiveness(battler, opposingBattler, UQ_4_12(1.0));
+        else // Good candidate mon, send that in
+            return SetSwitchinAndSwitch(battler, PARTY_SIZE);
+    }
+
+    return FALSE;
+}
+
+//Used for player's AI partner. Note battler refers to the AI partner and partner refers to the player
+bool32 PartnerShouldSwitch(u32 battler)
+{   
+    u32 battlerIn1, battlerIn2;
+    s32 firstId;
+    s32 lastId; // + 1
+    struct Pokemon *party;
+    s32 i;
+    s32 availableToSwitch;
+
+    if (gBattleMons[battler].volatiles.wrapped)
+        return FALSE;
+    if (gBattleMons[battler].volatiles.escapePrevention)
+        return FALSE;
+    if (gBattleMons[battler].volatiles.root)
+        return FALSE;
+    if (IsAbilityPreventingEscape(battler))
+        return FALSE;
+
+    // Sequence Switching AI never switches mid-battle
+    if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SEQUENCE_SWITCHING)
+        return FALSE;
+
+    availableToSwitch = 0;
+
+    if (IsDoubleBattle())
+    {
+        u32 partner = GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerAtPosition(battler)));
+        battlerIn1 = battler;
+        if (gAbsentBattlerFlags & (1u << partner))
+            battlerIn2 = battler;
+        else
+            battlerIn2 = partner;
+    }
+    else
+    {
+        battlerIn1 = battler;
+        battlerIn2 = battler;
+    }
+
+    GetAIPartyIndexes(battler, &firstId, &lastId);
+    party = GetBattlerParty(battler);
+
+    for (i = firstId; i < lastId; i++)
+    {
+        if (!IsValidForBattle(&party[i]))
+            continue;
+        if (i == gBattlerPartyIndexes[battlerIn1])
+            continue;
+        if (i == gBattlerPartyIndexes[battlerIn2])
+            continue;
+        if (i == gBattleStruct->monToSwitchIntoId[battlerIn1])
+            continue;
+        if (i == gBattleStruct->monToSwitchIntoId[battlerIn2])
+            continue;
+        if (IsAceMon(battler, i))
+            continue;
+
+        availableToSwitch++;
+    }
+
+    if (availableToSwitch == 0)
+            return FALSE;
+
+    // NOTE: The sequence of the below functions matter! Do not change unless you have carefully considered the outcome.
+    // Since the order is sequential, and some of these functions prompt switch to specific party members.
+
+    // FindMon functions can prompt a switch to specific party members that override GetMostSuitableMonToSwitchInto
+    // The rest can prompt a switch to party member returned by GetMostSuitableMonToSwitchInto
+
+    if (PartnerFindMonThatAbsorbsOpponentsMove(battler))
+        return TRUE;
+    if((gBattleMons[battler].hp * 2) <= gBattleMons[battler].maxHP)
+        return FALSE;
+    if (PartnerShouldSwitchIfWonderGuard(battler))
+        return TRUE;
+    if ((gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING) && (CanMonSurviveHazardSwitchin(battler) == FALSE))
+        return FALSE;
+    if (PartnerShouldSwitchIfTrapperInParty(battler))
+        return TRUE;
+    if (PartnerShouldSwitchIfOpponentChargingOrInvulnerable(battler))
+        return TRUE;
+    if (PartnerShouldSwitchIfTruant(battler))
+        return TRUE;
+    if (PartnerShouldSwitchIfAllMovesBad(battler))
+        return TRUE;
+    if (PartnerShouldSwitchIfBadlyStatused(battler))
+        return TRUE;
+    if (PartnerShouldSwitchIfAbilityBenefit(battler))
+        return TRUE;
+    if (PartnerShouldSwitchIfHasBadOdds(battler))
+        return TRUE;
+    if (PartnerShouldSwitchIfEncored(battler))
+        return TRUE;
+    if (PartnerShouldSwitchIfBadChoiceLock(battler))
+        return TRUE;
+    if (PartnerShouldSwitchIfAttackingStatsLowered(battler))
+        return TRUE;
+
+    // Removing switch capabilites under specific conditions
+    // These Functions prevent the "FindMonWithFlagsAndSuperEffective" from getting out of hand.
+    // We don't use FindMonWithFlagsAndSuperEffective with AI_FLAG_PARTNER_SWITCHING, so we can bail early.
+    if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING)
+        return FALSE;
+    if (CanUseSuperEffectiveMoveAgainstOpponents(battler))
+        return FALSE;
+    if (AreStatsRaised(battler))
+        return FALSE;
+
+    // Default Function
+    // Can prompt switch if AI has a pokemon in party that resists current opponent & has super effective move
+    if (FindMonWithFlagsAndSuperEffective(battler, MOVE_RESULT_DOESNT_AFFECT_FOE, 50)
+        || FindMonWithFlagsAndSuperEffective(battler, MOVE_RESULT_NOT_VERY_EFFECTIVE, 33))
+        return TRUE;
+
+    return FALSE;
 }
 
 /*
@@ -3762,11 +3782,12 @@ static u32 GetNextMonInParty(struct Pokemon *party, int firstId, int lastId, u32
 u32 GetMostSuitableMonToSwitchInto(u32 battler, enum SwitchType switchType)
 {
     u32 opposingBattler = 0;
-    u32 bestMonId = PARTY_SIZE;
+    s32 bestMonId = PARTY_SIZE;
     u32 battlerIn1 = 0, battlerIn2 = 0;
     s32 firstId = 0;
     s32 lastId = 0; // + 1
     struct Pokemon *party;
+    s32 bestScore;
 
     if (gBattleStruct->monToSwitchIntoId[battler] != PARTY_SIZE)
         return gBattleStruct->monToSwitchIntoId[battler];
@@ -3804,7 +3825,7 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, enum SwitchType switchType)
     // Only use better mon selection if AI_FLAG_SMART_MON_CHOICES is set for the trainer.
     if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SMART_MON_CHOICES)
     {
-        bestMonId = CustomGetBestMonIntegrated(party, firstId, lastId, battler, opposingBattler, battlerIn1, battlerIn2, switchType);
+        CustomGetBestMonIntegrated(party, firstId, lastId, battler, opposingBattler, battlerIn1, battlerIn2, switchType, &bestMonId, &bestScore);
         return bestMonId;
     }
 
