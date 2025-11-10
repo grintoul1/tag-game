@@ -3229,8 +3229,7 @@ F_TRAINER_FEMALE |
             {
 #line 1236
             .species = SPECIES_ORTHWORM,
-#line 1236
-            .gender = TRAINER_MON_FEMALE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1236
             .heldItem = ITEM_WEAKNESS_POLICY,
 #line 1240
