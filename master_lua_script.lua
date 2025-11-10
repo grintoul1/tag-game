@@ -265,7 +265,8 @@ end
 move = {}
 
 function getMoveTable()
-    i = 0
+    move[0] = ""
+    i = 1
     while i < movesCount do
         move[i] = string.format("%s",getMoveName(i))
         i = i + 1
