@@ -899,6 +899,7 @@ static const u16 sMugshotPal_Champion[] = INCBIN_U16("graphics/battle_transition
 static const u16 sMugshotPal_DarkPurple[] = INCBIN_U16("graphics/battle_transitions/darkpurple_bg.gbapal");
 static const u16 sMugshotPal_Green[]  = INCBIN_U16("graphics/battle_transitions/green_bg.gbapal");
 static const u16 sMugshotPal_Pink[]   = INCBIN_U16("graphics/battle_transitions/pink_bg.gbapal");
+static const u16 sMugshotPal_EmmieWithShelly[]   = INCBIN_U16("graphics/battle_transitions/emmiewithshelly_bg.gbapal");
 static const u16 sMugshotPal_MayPink[]   = INCBIN_U16("graphics/battle_transitions/maypink_bg.gbapal");
 static const u16 sMugshotPal_Blue[]   = INCBIN_U16("graphics/battle_transitions/blue_bg.gbapal");
 static const u16 sMugshotPal_Misty[]   = INCBIN_U16("graphics/battle_transitions/misty_bg.gbapal");
@@ -924,6 +925,7 @@ static const u16 *const sOpponentMugshotsPals[MUGSHOT_COLOR_COUNT] =
     [MUGSHOT_COLOR_DARKPURPLE]      = sMugshotPal_DarkPurple,
     [MUGSHOT_COLOR_GREEN]           = sMugshotPal_Green,
     [MUGSHOT_COLOR_PINK]            = sMugshotPal_Pink,
+    [MUGSHOT_COLOR_EMMIEWITHSHELLY] = sMugshotPal_EmmieWithShelly,
     [MUGSHOT_COLOR_MAYPINK]         = sMugshotPal_MayPink,
     [MUGSHOT_COLOR_BLUE]            = sMugshotPal_Blue,
     [MUGSHOT_COLOR_MISTY]           = sMugshotPal_Misty,
@@ -2370,7 +2372,7 @@ static bool8 Mugshot_SetGfx(struct Task *task)
         mugshotColor = MUGSHOT_COLOR_PURPLE;
 
     LoadPalette(sOpponentMugshotsPals[mugshotColor], 0xF0, 0x20);
-    if(mugshotColor == MUGSHOT_COLOR_ARCHIEWITHMAXIE || mugshotColor == MUGSHOT_COLOR_MAXIEWITHARCHIE)
+    if(mugshotColor == MUGSHOT_COLOR_ARCHIEWITHMAXIE || mugshotColor == MUGSHOT_COLOR_MAXIEWITHARCHIE || mugshotColor == MUGSHOT_COLOR_EMMIEWITHSHELLY)
         LoadPalette(sOpponentMugshotsPals[mugshotColor], BG_PLTT_ID(15), PLTT_SIZEOF(6));
     else
         LoadPalette(sPlayerMugshotsPals[gSaveBlock2Ptr->playerGender], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));

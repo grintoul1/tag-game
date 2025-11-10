@@ -5092,7 +5092,7 @@ Name: Emmie /* Jagged Pass*/
 Class: Pkmn Trainer 2
 Pic: Green
 Gender: Female
-Mugshot: Pink
+Mugshot: EmmieWithShelly
 Music: Pkmn Trainer 2
 Battle Type: Singles
 AI: Tag Trainer
@@ -5287,7 +5287,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Name: Tabitha /* Magma Hideout*/
 Class: Magma Admin
 Pic: Magma Admin
-Mugshot: Misty
+Mugshot: MaxieWithArchie
 Gender: Male
 Music: Magma
 Battle Type: Doubles
@@ -5313,7 +5313,7 @@ IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 Name: Courtney /* Magma Hideout*/
 Class: Magma Admin
 Pic: Magma Admin F
-Mugshot: Misty
+Mugshot: MaxieWithArchie
 Gender: Female
 Music: Magma
 Battle Type: Doubles
@@ -5769,7 +5769,7 @@ Name: Matt /* Aqua Hideout*/
 Class: Aqua Admin
 Pic: Aqua Admin M
 Gender: Male
-Mugshot: Red
+Mugshot: ArchieWithMaxie
 Music: Aqua
 Battle Type: Doubles
 AI: Tag Trainer
@@ -5786,7 +5786,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Name: Shelly /* Aqua Hideout*/
 Class: Aqua Admin
 Pic: Aqua Admin F
-Mugshot: Red
+Mugshot: ArchieWithMaxie
 Gender: Female
 Music: Aqua
 Battle Type: Doubles
@@ -7762,7 +7762,7 @@ IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
 Name: Archie /* Sky Pillar*/
 Class: Aqua Leader
 Pic: Aqua Leader Archie
-Mugshot: Red
+Mugshot: ArchieWithMaxie
 Gender: Male
 Music: Male
 Battle Type: Singles
@@ -7825,7 +7825,7 @@ Lonely Nature
 Name: Maxie /* Sky Pillar*/
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Mugshot: Misty
+Mugshot: MaxieWithArchie
 Gender: Male
 Music: Male
 Battle Type: Singles

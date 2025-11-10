@@ -13240,7 +13240,7 @@ F_TRAINER_FEMALE |
 #line 5098
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 5095
-        .mugshotColor = MUGSHOT_COLOR_PINK,
+        .mugshotColor = MUGSHOT_COLOR_EMMIEWITHSHELLY,
 #line 0
         .trainerBackPic = TRAINER_PIC_GREEN,
         .partySize = 6,
@@ -13735,7 +13735,7 @@ F_TRAINER_FEMALE |
 #line 5294
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 5290
-        .mugshotColor = MUGSHOT_COLOR_MISTY,
+        .mugshotColor = MUGSHOT_COLOR_MAXIEWITHARCHIE,
 #line 0
         .trainerBackPic = TRAINER_PIC_MAGMA_ADMIN,
         .partySize = 4,
@@ -13806,7 +13806,7 @@ F_TRAINER_FEMALE |
 #line 5320
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 5316
-        .mugshotColor = MUGSHOT_COLOR_MISTY,
+        .mugshotColor = MUGSHOT_COLOR_MAXIEWITHARCHIE,
 #line 0
         .trainerBackPic = TRAINER_PIC_MAGMA_ADMIN_F,
         .partySize = 1,
@@ -15023,7 +15023,7 @@ F_TRAINER_FEMALE |
 #line 5775
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 5772
-        .mugshotColor = MUGSHOT_COLOR_RED,
+        .mugshotColor = MUGSHOT_COLOR_ARCHIEWITHMAXIE,
 #line 0
         .trainerBackPic = TRAINER_PIC_AQUA_ADMIN_M,
         .partySize = 2,
@@ -15072,7 +15072,7 @@ F_TRAINER_FEMALE |
 #line 5793
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 5789
-        .mugshotColor = MUGSHOT_COLOR_RED,
+        .mugshotColor = MUGSHOT_COLOR_ARCHIEWITHMAXIE,
 #line 0
         .trainerBackPic = TRAINER_PIC_AQUA_ADMIN_F,
         .partySize = 2,
@@ -20341,7 +20341,7 @@ F_TRAINER_FEMALE |
 #line 7769
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 7765
-        .mugshotColor = MUGSHOT_COLOR_RED,
+        .mugshotColor = MUGSHOT_COLOR_ARCHIEWITHMAXIE,
 #line 0
         .trainerBackPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
         .partySize = 6,
@@ -20503,7 +20503,7 @@ F_TRAINER_FEMALE |
 #line 7832
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 7828
-        .mugshotColor = MUGSHOT_COLOR_MISTY,
+        .mugshotColor = MUGSHOT_COLOR_MAXIEWITHARCHIE,
 #line 0
         .trainerBackPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
         .partySize = 6,
