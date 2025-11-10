@@ -15191,6 +15191,23 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     break;
             }
         }
+        else
+        {
+            // Preventing status on partner
+            switch(GetMoveNonVolatileStatus(move))
+            {
+                case MOVE_EFFECT_POISON:
+                case MOVE_EFFECT_TOXIC:
+                case MOVE_EFFECT_SLEEP:
+                case MOVE_EFFECT_PARALYSIS:
+                case MOVE_EFFECT_BURN:
+                case MOVE_EFFECT_FROSTBITE:
+                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS - 10); // Extra -10 to prevent targetting ally when no moves clickable
+                    break;
+                default:
+                    break;
+            }
+        }
 
         // move effect checks
         switch (moveEffect)
