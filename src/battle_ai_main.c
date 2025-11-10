@@ -6523,7 +6523,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 if (AI_RandLessThan(51))
                     ADJUST_SCORE(2);
             }
-            if (GetNoOfHitsToKOBattler(battlerAtk, battlerDef, gAiThinkingStruct->movesetIndex, AI_ATTACKING) > 4)
+            if ((GetNoOfHitsToKOBattler(battlerAtk, battlerDef, gAiThinkingStruct->movesetIndex, AI_ATTACKING) > 4) && (move != MOVE_FAKE_OUT))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
         }
     }
