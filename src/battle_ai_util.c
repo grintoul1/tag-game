@@ -4806,23 +4806,23 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
         if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_CONSERVATIVE))
             return dmg.maximum;
         else if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_CONSERVATIVE && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY))
-            return dmg.minimum;
+            return dmg.maximum;
         else
-            return dmg.median;
+            return dmg.maximum;
     }
 
     else if (calcContext == AI_DEFENDING)
     {
         SetBattlerAiData(battlerDef, gAiLogicData);
         if (gAiThinkingStruct->aiFlags[battlerDef] & AI_FLAG_RISKY && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_CONSERVATIVE))
-            return dmg.minimum;
+            return dmg.maximum;
         else if (gAiThinkingStruct->aiFlags[battlerDef] & AI_FLAG_CONSERVATIVE && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY))
             return dmg.maximum;
         else
-            return dmg.median;
+            return dmg.maximum;
     }
 
-    return dmg.median;
+    return dmg.maximum;
 }
 
 u32 AI_WhoStrikesFirstPartyMon(u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, u32 aiMoveConsidered, u32 playerMoveConsidered, enum ConsiderPriority considerPriority)
