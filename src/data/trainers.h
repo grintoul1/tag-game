@@ -2226,14 +2226,14 @@ F_TRAINER_FEMALE |
         {
             {
 #line 849
-            .species = SPECIES_MANECTRIC,
+            .species = SPECIES_MANECTRIC_MEGA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 849
             .heldItem = ITEM_MANECTITE,
 #line 853
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 850
-            .ability = ABILITY_STATIC,
+            .ability = ABILITY_INTIMIDATE,
 #line 851
             .lvl = 29,
 #line 852
