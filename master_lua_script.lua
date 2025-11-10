@@ -4058,7 +4058,7 @@ function getPartyOverlay()
                 str = str .. party[i].species
             end
         else
-            str = str .. party[i].species
+            str = str .. dexNumber[party[i].species]
             str = str .. ",\n"
             str = str .. "          \"form\": \"standard\""
             str = str .. ",\n"
