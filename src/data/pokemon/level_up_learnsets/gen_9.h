@@ -23317,6 +23317,7 @@ static const struct LevelUpMove sDecidueyeHisuiLevelUpLearnset[] = {
 static const struct LevelUpMove sLittenLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_FAKE_OUT),
     LEVEL_UP_MOVE( 1, MOVE_GROWL),
+    LEVEL_UP_MOVE( 1, MOVE_EMBER),
     LEVEL_UP_MOVE(12, MOVE_ASSURANCE),
     LEVEL_UP_MOVE(15, MOVE_BITE),
     LEVEL_UP_MOVE(17, MOVE_FIRE_SPIN),
@@ -23364,6 +23365,7 @@ static const struct LevelUpMove sLittenLevelUpLearnset[] = {
 static const struct LevelUpMove sTorracatLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_FAKE_OUT),
     LEVEL_UP_MOVE( 1, MOVE_GROWL),
+    LEVEL_UP_MOVE( 1, MOVE_EMBER),
     LEVEL_UP_MOVE(12, MOVE_ASSURANCE),
     LEVEL_UP_MOVE(15, MOVE_BITE),
     LEVEL_UP_MOVE(17, MOVE_FIRE_SPIN),
@@ -23411,6 +23413,7 @@ static const struct LevelUpMove sTorracatLevelUpLearnset[] = {
 static const struct LevelUpMove sIncineroarLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_FAKE_OUT),
     LEVEL_UP_MOVE( 1, MOVE_GROWL),
+    LEVEL_UP_MOVE( 1, MOVE_EMBER),
     LEVEL_UP_MOVE(12, MOVE_ASSURANCE),
     LEVEL_UP_MOVE(15, MOVE_BITE),
     LEVEL_UP_MOVE(17, MOVE_FIRE_SPIN),
