@@ -3355,13 +3355,13 @@ static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId
         #endif
     }
 
-    u32 bestSwitchInScore = 0;
+    *bestScore = 0;
     for (monId = firstId; monId < lastId; monId++)
     {
         if (switchInScores[monId] == 0)
             continue;
 
-        if (switchInScores[monId] > bestSwitchInScore)
+        if (switchInScores[monId] > *bestScore)
         {
             *bestScore = switchInScores[monId];
             *bestMonId = monId;
