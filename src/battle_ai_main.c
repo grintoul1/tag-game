@@ -10660,7 +10660,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 ADJUST_SCORE(((IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK)) > (IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF))) ? IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK) : IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
             }
             break;
-        case EFFECT_PROTECT:
+        case EFFECT_PROTECT: // -10 scores added if no use cases to incentivise partner switching
             if (predictedMove == 0xFFFF)
                 predictedMove = MOVE_NONE;
             enum ProtectMethod protectMethod = GetMoveProtectMethod(move);
@@ -10688,6 +10688,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                             }
                         }
                     }
+                    ADJUST_SCORE(-10); // -10 if no priority move to block
                     break;
                 case PROTECT_WIDE_GUARD: // PARTNER DIFFERENCE - Partner done
                     for (i = 0; i < MAX_MON_MOVES; i++)
@@ -10715,6 +10716,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                             }
                         }
                     }
+                    ADJUST_SCORE(-10); // -10 if no spread move to block
                     break;
                 case PROTECT_CRAFTY_SHIELD:
                     for (i = 0; i < MAX_MON_MOVES; i++)
@@ -10729,6 +10731,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                             break;
                         }
                     }
+                    ADJUST_SCORE(-10); // -10 if no status move to block
                     break;
                 case PROTECT_MAT_BLOCK: // PARTNER DIFFERENCE - Partner done
                     for (i = 0; i < MAX_MON_MOVES; i++)
@@ -10748,6 +10751,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                         ADJUST_SCORE(BEST_EFFECT);
                         break;
                     }
+                    ADJUST_SCORE(-10); // -10 if no damaging move to block
                     break;
                 case PROTECT_KINGS_SHIELD: // PARTNER DIFFERENCE - Partner done
                     if (!ShouldUseProtect(battlerAtk, battlerDef, targetMove[0]))
@@ -10779,6 +10783,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                         ADJUST_SCORE(11); // +11 for Partner Aegislash-Blade to return to Shield form
                         break;
                     }
+                    ADJUST_SCORE(-10); // -10 if no reason to click
                     break;
                 default: // protect // PARTNER DIFFERENCE - Partner done
                     if (!ShouldUseProtect(battlerAtk, battlerDef, targetMove[0]))
@@ -10807,6 +10812,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                             break;
                         }
                     }
+                    ADJUST_SCORE(-10); // -10 if no reason to click
                     break;
                 }
             }
@@ -10839,6 +10845,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                     break;
                 }
             }
+            ADJUST_SCORE(-10); // -10 if no reason to click
             break;
         case EFFECT_CEASELESS_EDGE:
         case EFFECT_SPIKES:
