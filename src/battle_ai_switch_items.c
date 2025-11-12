@@ -1098,7 +1098,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
 
     u32 incomingType = GetMoveType(switchingMove);
 
-    #ifndef NDEBUG
+    /*
         MgbaPrintf(MGBA_LOG_WARN, "PartnerFindMonThatAbsorbsOpponentsMove", PartnerFindMonThatAbsorbsOpponentsMove);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveTypes %d", oppositeBattlerMoveTypes);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveTypes %d", oppositeBattlerPartnerMoveTypes);
@@ -1106,7 +1106,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(u32 battler)
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveCount %d", oppositeBattlerPartnerMoveCount);
         MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOpposite %S", GetMoveName(switchingMoveOpposite));
         MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOppositePartner %S", GetMoveName(switchingMoveOppositePartner));
-    #endif
+    #endif*/
 
     if (!(oppositeBattlerMoveTypes == 1 || oppositeBattlerPartnerMoveTypes == 1) && !(onlySound || onlyBallistic || onlyWind))
         return FALSE;
@@ -3205,7 +3205,7 @@ static inline bool32 CanSwitchinWin1v1(u32 hitsToKOAI, u32 hitsToKOPlayer, bool3
 
 static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, u32 battler, u32 opposingBattler, u32 battlerIn1, u32 battlerIn2, enum SwitchType switchType, s32 *bestMonId, s32 *bestScore)
 {
-    #ifndef NDEBUG
+    /*
         MgbaPrintf(MGBA_LOG_WARN, "CustomGetBestMonIntegrated");
         u32 maxDamageDealtStored[PARTY_SIZE]={0};
         const u8 * checkingPosition;
@@ -3215,7 +3215,7 @@ static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId
         u32 maxDamageDealtToAIStored[PARTY_SIZE]={0};
         u32 percentageDealtStored[PARTY_SIZE]={0};
         u32 percentageReceivedStored[PARTY_SIZE]={0};
-    #endif
+    #endif*/
     int monId;
     int i;
     int switchInScores[PARTY_SIZE]={0};
@@ -3223,11 +3223,11 @@ static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId
     uq4_12_t effectiveness = UQ_4_12(1.0);
     gAiLogicData->aiCalcInProgress = TRUE;
 
-    #ifndef NDEBUG
+    /*
         checkingPosition=GetSpeciesName(gBattleMons[battler].species);
         const u8 * lookingAt;
         lookingAt=GetSpeciesName(gBattleMons[opposingBattler].species);
-    #endif
+    #endif*/
 
     if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_1) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_3) || ((!(gBattleTypeFlags & BATTLE_TYPE_MULTI)) && (!(gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))))
     {
@@ -3258,10 +3258,10 @@ static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId
         u32 aiMonSpecies=0;
         u32 aiMonFaster=0;
         u32 aiMove, bestPlayerMove = MOVE_NONE;
-        #ifndef NDEBUG
+        /*
             partyMon=SPECIES_NONE;
             aiBestMove[monId]=0;
-        #endif
+        #endif*/
         switchInScores[monId] = 0;
         if (!IsValidForBattle(&party[monId])
         || gBattlerPartyIndexes[battlerIn1] == monId
@@ -3270,10 +3270,10 @@ static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId
         || gBattleStruct->monToSwitchIntoId[battlerIn2] == monId)
             continue;
 
-        #ifndef NDEBUG
+        /*
             partyMon=GetSpeciesName(GetMonData(&party[monId],MON_DATA_SPECIES,NULL));
             partyMonStored[monId]=partyMon;
-        #endif
+        #endif*/
         InitializeSwitchinCandidate(&party[monId]);
         aiMonSpecies = GetMonData(&party[monId], MON_DATA_SPECIES, NULL);
         aiMonFaster = ((GetMonData(&party[monId],MON_DATA_SPEED,NULL) >= gBattleMons[opposingBattler].speed) || ((GetMonData(&party[monId],MON_DATA_SPEED,NULL) <= gBattleMons[opposingBattler].speed) && (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)));
@@ -3291,11 +3291,11 @@ static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId
                     {
                         maxDamageDealt = damageDealt;
                         percentageDealt = ((maxDamageDealt*1000) / gBattleMons[opposingBattler].hp);
-                        #ifndef NDEBUG
+                        /*
                             percentageDealtStored[monId]=percentageDealt;
                             maxDamageDealtStored[monId]=maxDamageDealt;
                             aiBestMove[monId]=GetMoveName(GetMonData(&party[monId], MON_DATA_MOVE1 + i,NULL));
-                        #endif
+                        #endif*/
                     }
                 }
             }
@@ -3303,10 +3303,10 @@ static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId
 
         maxDamageDealtToAI = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon, &bestPlayerMove);
         percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&party[monId],MON_DATA_HP,NULL));
-        #ifndef NDEBUG
+        /*
             percentageReceivedStored[monId] = percentageReceived;
             maxDamageDealtToAIStored[monId] = maxDamageDealtToAI;
-        #endif
+        #endif*/
 
         if (switchType != SWITCH_AFTER_KO && isFreeSwitch != TRUE)
         {
@@ -3339,7 +3339,7 @@ static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId
             switchInScores[monId] = 2;
 
         
-        #ifndef NDEBUG
+        /*
         if(switchInScores[monId]!=0)
         {
             MgbaPrintf(MGBA_LOG_WARN, "mon looking %S", checkingPosition);
@@ -3352,7 +3352,7 @@ static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId
             MgbaPrintf(MGBA_LOG_WARN, "party slot takes%d", maxDamageDealtToAIStored[monId]);
             MgbaPrintf(MGBA_LOG_WARN, "percentage slot takes%d", percentageReceivedStored[monId]);
         }
-        #endif
+        #endif*/
     }
 
     *bestScore = 0;

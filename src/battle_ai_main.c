@@ -384,7 +384,7 @@ void SetupAIPredictionData(u32 battler, enum SwitchType switchType)
 void ComputeBattlerDecisions(u32 battler)
 {
     bool32 isAiBattler = (gBattleTypeFlags & BATTLE_TYPE_HAS_AI || IsWildMonSmart()) && (BattlerHasAi(battler) && !(gBattleTypeFlags & BATTLE_TYPE_PALACE));
-    if (isAiBattler || CanAiPredictMove())
+    if (isAiBattler || CanAiPredictMove(battler))
     {
         // Risky AI switches aggressively even mid battle
         enum SwitchType switchType = (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_RISKY) ? SWITCH_AFTER_KO : SWITCH_MID_BATTLE;
@@ -504,8 +504,11 @@ void Ai_InitPartyStruct(void)
     }
 
     // Find fainted mons
-    for (i = 0; i < gAiPartyData->count[B_SIDE_PLAYER]; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
+            continue;
+
         if (GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
             gAiPartyData->mons[B_SIDE_PLAYER][i].isFainted = TRUE;
 
@@ -597,10 +600,10 @@ void SetBattlerAiData(u32 battler, struct AiLogicData *aiData)
     aiData->moveLimitations[battler] = CheckMoveLimitations(battler, 0, MOVE_LIMITATIONS_ALL);
     aiData->speedStats[battler] = GetBattlerTotalSpeedStat(battler, ability, holdEffect);
 
-    if (IsAiBattlerAssumingStab())
+    if (IsAiBattlerAssumingStab(battler))
         RecordMovesBasedOnStab(battler);
 
-    if (IsAiBattlerAssumingStatusMoves())
+    if (IsAiBattlerAssumingStatusMoves(battler))
         RecordStatusMoves(battler);
 }
 
@@ -709,7 +712,7 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData)
     for (battlerAtk = 0; battlerAtk < battlersCount; battlerAtk++)
     {
         // Prediction limited to player side but can be expanded to read partners move in the future
-        if (!IsOnPlayerSide(battlerAtk) || !CanAiPredictMove())
+        if (!IsOnPlayerSide(battlerAtk) || !CanAiPredictMove(battlerAtk))
             continue;
 
         // This can potentially be cleaned up more
@@ -945,9 +948,7 @@ static u32 ChooseMoveOrAction_Doubles(u32 battler)
 
     if (!IsOnPlayerSide(battler))
         gBattleStruct->chosenMovePositions[battler] = actionOrMoveIndex[gBattlerTarget];
-    //DebugPrintf("AI chose target %d for battler %d", gBattlerTarget, battler);
-    //DebugPrintf("AI chose move %S for battler %d", GetMoveName(gBattleMons[battler].moves[actionOrMoveIndex[gBattlerTarget]]), battler);
-    //DebugPrintf("gAiThinkingStruct->score %d, %d, %d, %d", gAiThinkingStruct->score[0], gAiThinkingStruct->score[1], gAiThinkingStruct->score[2], gAiThinkingStruct->score[3]);
+    
     return actionOrMoveIndex[gBattlerTarget];
 }
 
@@ -985,7 +986,6 @@ static inline void BattleAI_DoAIProcessing(struct AiThinkingStruct *aiThink, u32
                       battlerDef,
                       aiThink->moveConsidered,
                       aiThink->score[aiThink->movesetIndex]);
-                //DebugPrintf("Turn:  %d  Atk:    %d  %S  Def:    %d  %S  Move:   %S  Score:  %d  SimDmg: %d  %d  %d", gBattleTurnCounter + 1, battlerAtk, GetSpeciesName(gBattleMons[battlerAtk].species), battlerDef, GetSpeciesName(gBattleMons[battlerDef].species), GetMoveName(aiThink->moveConsidered), aiThink->score[aiThink->movesetIndex], gAiLogicData->simulatedDmg[battlerAtk][battlerDef][aiThink->movesetIndex].minimum, gAiLogicData->simulatedDmg[battlerAtk][battlerDef][aiThink->movesetIndex].median, gAiLogicData->simulatedDmg[battlerAtk][battlerDef][aiThink->movesetIndex].maximum);
             }
         }
         else
@@ -6516,7 +6516,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     {
         if (GetMovePower(move) != 0)
         {
-            GetBestDmgMoveFromPartner(battlerAtk, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), AI_ATTACKING, bestMoves, &bestTarget);
+            GetBestDmgMoveFromPartner(battlerAtk, RIGHT_FOE(battlerAtk), LEFT_FOE(battlerAtk), AI_ATTACKING, bestMoves, &bestTarget);
             if (((bestMoves[0] == move) || (bestMoves[1] == move) || (bestMoves[2] == move) || (bestMoves[3] == move)) && (bestTarget == battlerDef))
             {
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
@@ -9119,7 +9119,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         }
         else if ((GetMovePower(move) != 0) && !IsTargetingPartner(battlerAtk, battlerDef))
         {
-            GetBestDmgMoveFromPartner(battlerAtk, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), AI_ATTACKING, bestMoves, &bestTarget);
+            GetBestDmgMoveFromPartner(battlerAtk, RIGHT_FOE(battlerAtk), LEFT_FOE(battlerAtk), AI_ATTACKING, bestMoves, &bestTarget);
             if (((bestMoves[0] == move) || (bestMoves[1] == move) || (bestMoves[2] == move) || (bestMoves[3] == move)) && (bestTarget == battlerDef))
             {
                 // AI_TryToFaint

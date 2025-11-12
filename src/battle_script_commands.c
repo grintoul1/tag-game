@@ -3022,7 +3022,7 @@ void SetMoveEffect(u32 battler, u32 effectBattler, enum MoveEffect moveEffect, c
         }
         else
         {
-            gBattleMons[gEffectBattler].volatiles.confusionTurns = ((Random()) % 4) + 2; // 2-5 turns
+            gBattleMons[gEffectBattler].volatiles.confusionTurns = RandomUniform(RNG_CONFUSION_TURNS, 2, 5); // 2-5 turns
 
             // If the confusion is activating due to being released from Sky Drop, go to "confused due to fatigue" script.
             // Otherwise, do normal confusion script.
@@ -15473,51 +15473,46 @@ void BS_TryAllySwitch(void)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }
-    else if (GetGenConfig(GEN_ALLY_SWITCH_FAIL_CHANCE) >= GEN_9)
+    else 
     {
-        TryResetProtectUseCounter(gBattlerAttacker);
-        if (sProtectSuccessRates[gDisableStructs[gBattlerAttacker].protectUses] < Random())
+        if (GetGenConfig(GEN_ALLY_SWITCH_FAIL_CHANCE) >= GEN_9)
         {
-            gDisableStructs[gBattlerAttacker].protectUses = 0;
-            gBattlescriptCurrInstr = cmd->failInstr;
-        }
-        else
-        {
-            gDisableStructs[gBattlerAttacker].protectUses++;
-            if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER && gBattleTypeFlags & BATTLE_TYPE_MULTI)
-            {   // Switch Player and Partner battle controllers; if player and Emmie sharing team then do not do this.
-                if (!isSharedTeams)
-                {
-                    if (gBattleMons[gBattlerAttacker].otId == T1_READ_32(gSaveBlock2Ptr->playerTrainerId))
-                    {
-                        gBattlerControllerFuncs[gBattlerPositions[gBattlerAttacker]] = SetControllerToPlayerPartner;
-                        gBattlerControllerFuncs[gBattlerPositions[BATTLE_PARTNER(gBattlerAttacker)]] = SetControllerToPlayer;
-                    }
-                    else
-                    {
-                        gBattlerControllerFuncs[gBattlerPositions[BATTLE_PARTNER(gBattlerAttacker)]] = SetControllerToPlayerPartner;
-                        gBattlerControllerFuncs[gBattlerPositions[gBattlerAttacker]] = SetControllerToPlayer;
-                    }
-                    // Switch Player and Partner AI
-                    u64 tempAiFlagAttacker = gAiThinkingStruct->aiFlags[gBattlerAttacker];
-                    u64 tempAiFlagPartner = gAiThinkingStruct->aiFlags[BATTLE_PARTNER(gBattlerAttacker)];
-                    gAiThinkingStruct->aiFlags[gBattlerAttacker] = tempAiFlagPartner;
-                    gAiThinkingStruct->aiFlags[BATTLE_PARTNER(gBattlerAttacker)] = tempAiFlagAttacker;
-                }
-                // Switch side Ally Switched status
-                gAllySwitched[B_SIDE_PLAYER] = (gAllySwitched[B_SIDE_PLAYER] ? FALSE : TRUE);
+            TryResetProtectUseCounter(gBattlerAttacker);
+            if (sProtectSuccessRates[gDisableStructs[gBattlerAttacker].protectUses] < Random())
+            {
+                gDisableStructs[gBattlerAttacker].protectUses = 0;
+                gBattlescriptCurrInstr = cmd->failInstr;
             }
             else
             {
-                // Switch side Ally Switched status
-                gAllySwitched[B_SIDE_OPPONENT] = (gAllySwitched[B_SIDE_OPPONENT] ? FALSE : TRUE);
+                gDisableStructs[gBattlerAttacker].protectUses++;
+                if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
+                {   
+                    // Switch side Ally Switched status
+                    gAllySwitched[B_SIDE_PLAYER] = (gAllySwitched[B_SIDE_PLAYER] ? FALSE : TRUE);
+                }
+                else
+                {
+                    // Switch side Ally Switched status
+                    gAllySwitched[B_SIDE_OPPONENT] = (gAllySwitched[B_SIDE_OPPONENT] ? FALSE : TRUE);
+                }
+                // Switch Battle Controllers; if player and Emmie sharing team then do not do this.
+                if (!(GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER) 
+                || ((GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER) && !isSharedTeams))
+                {
+                    // Switch Battle Controllers
+                    SwapBattlerBattleControllers(gBattlerAttacker, BATTLE_PARTNER(gBattlerAttacker));
+                    
+                    // Switch AI flags
+                    SwapBattlerAiFlags(gBattlerAttacker, BATTLE_PARTNER(gBattlerAttacker));
+                }
+                gBattlescriptCurrInstr = cmd->nextInstr;
             }
+        }
+        else
+        {
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
-    }
-    else
-    {
-        gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }
 

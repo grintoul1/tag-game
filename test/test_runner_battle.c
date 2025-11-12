@@ -1713,6 +1713,7 @@ void AIFlags_(u32 sourceLine, u64 flags)
     for (u32 i = 0; i < MAX_BATTLERS_COUNT; i++)
     {
         DATA.recordedBattle.AI_scripts[i] = flags;
+        DebugPrintf("AI_FLAGS for %d set to 0x%08X\n", i, flags);
     }
     DATA.hasAI = TRUE;
 }
@@ -2653,7 +2654,7 @@ void ExpectSendOut(u32 sourceLine, struct BattlePokemon *battler, u32 partyIndex
     if (!(DATA.actionBattlers & (1 << battlerId)))
     { // Multi test partner trainers want setting to PlayerPartner controller even if no move set in this case.
         if (IsAITest() && (((battlerId & BIT_SIDE) == B_SIDE_OPPONENT) // If Move was not specified, allow any move used.
-         || (IsMultibattleTest() && battlerId == B_POSITION_PLAYER_RIGHT)))
+         || (IsMultibattleTest() && battlerId == B_BATTLER_2)))
             SetAiActionToPass(sourceLine, battlerId);
         else
             Move(sourceLine, battler, (struct MoveContext) { move: MOVE_CELEBRATE, explicitMove: TRUE });
