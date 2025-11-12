@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "battle_ai_util.h"
 #include "battle_anim.h"
 #include "battle_controllers.h"
 #include "battle_message.h"
@@ -2187,8 +2188,7 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
     case STRINGID_RETURNMON: // sending poke to ball msg
         if (IsOnPlayerSide(battler))
         {
-            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && (TESTING 
-            || (!TESTING && (gBattleMons[gBattleScripting.battler].otId != T1_READ_32(gSaveBlock2Ptr->playerTrainerId)))))
+            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && (!BattlerIsPlayer(gBattleScripting.battler)))
             {
                 if (GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT) == gBattleScripting.battler)
                     stringPtr = sText_InGamePartnerWithdrewPkmn2;
@@ -2241,9 +2241,7 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
     case STRINGID_SWITCHINMON: // switch-in msg
         if (IsOnPlayerSide(gBattleScripting.battler))
         {
-            
-            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && (TESTING 
-            || (!TESTING && (gBattleMons[gBattleScripting.battler].otId != T1_READ_32(gSaveBlock2Ptr->playerTrainerId)))))
+            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && (!BattlerIsPlayer(gBattleScripting.battler)))
             {
                 if (GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT) == gBattleScripting.battler)
                     stringPtr = sText_InGamePartnerSentOutPkmn2;
