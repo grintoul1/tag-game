@@ -2109,6 +2109,10 @@ void DoSpecialTrainerBattle(void)
         if (gSpecialVar_0x8005 & MULTI_BATTLE_CHOOSE_MONS) // Skip mons restoring(done in the script)
             gBattleScripting.specialTrainerBattleType = 0xFF;
         break;
+    case SPECIAL_BATTLE_CUSTOM:
+        // Used for custom battles set up in scripts
+        
+        break;
     }
 }
 

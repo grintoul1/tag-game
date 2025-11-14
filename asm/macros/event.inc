@@ -748,6 +748,103 @@
 
 	NO_MUSIC = FALSE
 
+	@ Configures the arguments for a trainer battle, then jumps to the appropriate script in ...
+	.macro customtrainerbattle type:req, battler0Id:req, battler0IdLoseText:req, battler0IsPartner:req, battler1Id:req, battler1IdLoseText:req, battler1IsPartner:req, battler2Id:req, battler2IdLoseText:req, battler2IsPartner:req, battler3Id:req, battler3IdLoseText:req, battler3IsPartner:req, event_script:req, music:req, musicFromBattler:req, isDouble:req, isMaster:req, playerIsPlayerSide:req
+	.byte SCR_OP_CUSTOMTRAINERBATTLE
+	.set trainerbattle_flags, 0
+	.ifgt \isDouble; .set trainerbattle_flags, trainerbattle_flags | (1 << 0); .endif
+	.ifgt \isMaster; .set trainerbattle_flags, trainerbattle_flags | (1 << 2); .endif
+	.set trainerbattle_flags, trainerbattle_flags | (1 << 3);
+	.set trainerbattle_flags, trainerbattle_flags | (1 << 32);
+	.ifgt \type; .set trainerbattle_flags, trainerbattle_flags | (\type << 4); .endif
+	.byte trainerbattle_flags
+	.2byte 	\battler0Id           		@ battler0
+	.4byte 	\battler0IdLoseText         @ battler0 defeat text
+	.byte	\battler0IsPartner			@ battler0 is partner trainer
+	.2byte 	\battler1Id           		@ battler1
+	.4byte 	\battler1IdLoseText         @ battler1 defeat text
+	.byte	\battler1IsPartner			@ battler1 is partner trainer
+	.2byte 	\battler2Id           		@ battler2
+	.4byte 	\battler2IdLoseText         @ battler2 defeat text
+	.byte	\battler2IsPartner			@ battler2 is partner trainer
+	.2byte 	\battler3Id           		@ battler3
+	.4byte 	\battler3IdLoseText         @ battler3 defeat text
+	.byte	\battler3IsPartner			@ battler3 is partner trainer
+	.4byte 	\event_script      			@ retAddrA
+	.4byte 	\music      				@ play battle music
+	.4byte 	\musicFromBattler      		@ battler to get battle music from
+	.endm
+
+	@ Starts a special battle run through the Battle Tower where the player and any partners or opponents can be set to any battler.
+	@ Player is set via TRAINER_PLAYER
+	@.if ((\arg >= VARS_START && \arg <= VARS_END) || (\arg >= SPECIAL_VARS_START && \arg <= SPECIAL_VARS_END))
+	.macro trainerbattle_custom battler0Id:req, battler0IdLoseText:req, battler0IsPartner:req, battler1Id:req, battler1IdLoseText:req, battler1IsPartner:req, battler2Id=0, battler2IdLoseText=NULL, battler2IsPartner=FALSE, battler3Id=0, battler3IdLoseText=NULL, battler3IsPartner=FALSE, event_script=FALSE, exit_script=NULL, music=TRUE, musicFromBattler=1, isDouble=FALSE
+	.if ((\battler1Id == TRAINER_PLAYER) || (battler3Id == TRAINER_PLAYER))
+	playerIsPlayerSide = FALSE
+	.else
+	playerIsPlayerSide = TRUE
+	.endif
+	.if ((\battler2Id == 0) && (\battler3Id == 0) && (\isDouble == FALSE) && (\event_script == FALSE))
+	customtrainerbattle TRAINER_BATTLE_SINGLE, \battler0Id, \battler0IdLoseText, \battler0IsPartner, \battler1Id, \battler1IdLoseText, \battler1IsPartner, 0, NULL, FALSE, 0, NULL, FALSE, \event_script, NULL, \music, \musicFromBattler, FALSE, TRUE, playerIsPlayerSide
+	setvar VAR_0x8005, TRAINER_BATTLE_SINGLE
+	.elseif ((\battler2Id == 0) && (\battler3Id == 0) && (\isDouble == FALSE) && (\music == TRUE))
+	customtrainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, \battler0Id, \battler0IdLoseText, \battler0IsPartner, \battler1Id, \battler1IdLoseText, \battler1IsPartner, 0, NULL, FALSE, 0, NULL, FALSE, \event_script, NULL, TRUE, \musicFromBattler, FALSE, TRUE, playerIsPlayerSide
+	setvar VAR_0x8005, TRAINER_BATTLE_CONTINUE_SCRIPT
+	.elseif ((\battler2Id == 0) && (\battler3Id == 0) && (\isDouble == FALSE) && (\music == FALSE))
+	customtrainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, \battler0Id, \battler0IdLoseText, \battler0IsPartner, \battler1Id, \battler1IdLoseText, \battler1IsPartner, 0, NULL, FALSE, 0, NULL, FALSE, \event_script, NULL, FALSE, \musicFromBattler, FALSE, TRUE, playerIsPlayerSide
+	setvar VAR_0x8005, TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC
+	.elseif ((\battler2Id == 0) && (\battler3Id == 0) && (\isDouble == TRUE) && (\event_script == FALSE))
+	customtrainerbattle TRAINER_BATTLE_DOUBLE, \battler0Id, \battler0IdLoseText, \battler0IsPartner, \battler1Id, \battler1IdLoseText, \battler1IsPartner, 0, NULL, FALSE, 0, NULL, FALSE, \event_script, NULL, \music, \musicFromBattler, TRUE, TRUE, playerIsPlayerSide
+	setvar VAR_0x8005, TRAINER_BATTLE_DOUBLE
+	.elseif ((\battler2Id == 0) && (\battler3Id == 0) && (\isDouble == TRUE) && (\music == TRUE))
+	customtrainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE, \battler0Id, \battler0IdLoseText, \battler0IsPartner, \battler1Id, \battler1IdLoseText, \battler1IsPartner, 0, NULL, FALSE, 0, NULL, FALSE, \event_script, NULL, TRUE, \musicFromBattler, TRUE, TRUE, playerIsPlayerSide
+	setvar VAR_0x8005, TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE
+	.elseif ((\battler2Id == 0) && (\battler3Id == 0) && (\isDouble == TRUE) && (\music == FALSE))
+	customtrainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC, \battler0Id, \battler0IdLoseText, \battler0IsPartner, \battler1Id, \battler1IdLoseText, \battler1IsPartner, 0, NULL, FALSE, 0, NULL, FALSE, \event_script, NULL, FALSE, \musicFromBattler, TRUE, TRUE, playerIsPlayerSide
+	setvar VAR_0x8005, TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC
+	.elseif ((\battler2Id == 0) && (\battler3Id != 0))
+		.if (\playerIsPlayerSide == FALSE)
+		special SavePlayerParty
+		fadescreen FADE_TO_BLACK
+		special ChooseHalfPartyForBattle
+		waitstate
+		.ifeq VAR_RESULT, 0; exit_script; .endif;
+		special ReducePlayerPartyToSelectedMons
+		setvar VAR_0x8004, FRONTIER_UTIL_FUNC_SET_DATA
+		setvar VAR_0x8005, FRONTIER_DATA_SELECTED_MON_ORDER
+		special CallFrontierUtilFunc @ saves the mon order, so the non-selected mons get restored afterwards
+		.endif
+	customtrainerbattle TRAINER_BATTLE_TWO_TRAINERS_NO_INTRO, \battler0Id, \battler0IdLoseText, \battler0IsPartner, \battler1Id, \battler1IdLoseText, \battler1IsPartner, 0, NULL, FALSE, \battler3Id, \battler3IdLoseText, \battler3IsPartner, \event_script, \exit_script, FALSE, \musicFromBattler, TRUE, TRUE, playerIsPlayerSide
+	setvar VAR_0x8005, TRAINER_BATTLE_TWO_TRAINERS_NO_INTRO
+	.elseif (\battler3Id != 0)
+	special SavePlayerParty
+	fadescreen FADE_TO_BLACK
+	special ChooseHalfPartyForBattle
+	waitstate
+	.ifeq VAR_RESULT, 0; exit_script; .endif;
+	setvar VAR_0x8006, MULTI_BATTLE_2_VS_2
+	customtrainerbattle TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE, \battler0Id, \battler0IdLoseText, \battler0IsPartner, \battler1Id, \battler1IdLoseText, \battler1IsPartner, \battler2Id, \battler2IdLoseText, \battler2IsPartner, \battler3Id, \battler3IdLoseText, \battler3IsPartner, \event_script, \exit_script, FALSE, \musicFromBattler, TRUE, TRUE, playerIsPlayerSide
+	setvar VAR_0x8005, TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE
+	.else 
+		.if (\playerIsPlayerSide == TRUE)
+		special SavePlayerParty
+		fadescreen FADE_TO_BLACK
+		special ChooseHalfPartyForBattle
+		waitstate
+		.ifeq VAR_RESULT, 0; exit_script; .endif;
+		special ReducePlayerPartyToSelectedMons
+		setvar VAR_0x8004, FRONTIER_UTIL_FUNC_SET_DATA
+		setvar VAR_0x8005, FRONTIER_DATA_SELECTED_MON_ORDER
+		special CallFrontierUtilFunc @ saves the mon order, so the non-selected mons get restored afterwards
+		.endif
+	setvar VAR_0x8006, MULTI_BATTLE_2_VS_1
+	customtrainerbattle TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE, \battler0Id, \battler0IdLoseText, \battler0IsPartner, \battler1Id, \battler1IdLoseText, \battler1IsPartner, \battler2Id, \battler2IdLoseText, \battler2IsPartner, 0, NULL, FALSE, \event_script, \exit_script, FALSE, \musicFromBattler, TRUE, TRUE, playerIsPlayerSide
+	setvar VAR_0x8005, TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE
+	.endif
+	setvar VAR_0x8004, SPECIAL_BATTLE_CUSTOM
+	special DoSpecialTrainerBattle
+	.endm
+
 	@ Starts a single trainer battle. Takes a trainer, intro text, loss text, and an optional event script.
 	@ When used with an event script, you can also pass in an optional flag to disable music
 	.macro trainerbattle_single trainer:req, intro_text:req, lose_text:req, event_script=FALSE, music=TRUE
