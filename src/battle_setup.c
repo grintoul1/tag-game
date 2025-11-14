@@ -778,8 +778,8 @@ enum BattleTransition GetTrainerBattleTransition(void)
     u8 transitionType;
     u8 enemyLevel;
     u8 playerLevel;
-    u32 trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentA);
-    enum TrainerClassID trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
+    u32 trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.battler1);
+    enum TrainerClassID trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.battler1);
 
     if (DoesTrainerHaveMugshot(trainerId))
         return B_TRANSITION_MUGSHOT;
@@ -926,12 +926,12 @@ static void TryUpdateGymLeaderRematchFromTrainer(void)
 
 static u16 GetTrainerAFlag(void)
 {
-    return TRAINER_FLAGS_START + TRAINER_BATTLE_PARAM.opponentA;
+    return TRAINER_FLAGS_START + TRAINER_BATTLE_PARAM.battler1;
 }
 
 static u16 GetTrainerBFlag(void)
 {
-    return TRAINER_FLAGS_START + TRAINER_BATTLE_PARAM.opponentB;
+    return TRAINER_FLAGS_START + TRAINER_BATTLE_PARAM.battler3;
 }
 
 static bool32 IsPlayerDefeated(u32 battleOutcome)
@@ -954,8 +954,8 @@ static bool32 IsPlayerDefeated(u32 battleOutcome)
 
 void ResetTrainerOpponentIds(void)
 {
-    TRAINER_BATTLE_PARAM.opponentA = 0;
-    TRAINER_BATTLE_PARAM.opponentB = 0;
+    TRAINER_BATTLE_PARAM.battler1 = 0;
+    TRAINER_BATTLE_PARAM.battler3 = 0;
 }
 
 static void InitTrainerBattleVariables(void)
@@ -971,58 +971,86 @@ void TrainerBattleLoadArgs(const u8 *data)
     sTrainerBattleEndScript = (u8*)data + sizeof(TrainerBattleParameter);
 }
 
-void TrainerBattleLoadArgsTrainerA(const u8 *data)
+void CustomTrainerBattleLoadArgs(const u8 *data)
+{
+    InitTrainerBattleVariables();
+    memcpy(gTrainerBattleParameter.data, data, sizeof(TrainerBattleParameter));
+    sTrainerBattleEndScript = (u8*)data + sizeof(TrainerBattleParameter);
+}
+
+void TrainerBattleLoadArgsBattler1(const u8 *data)
 {
     TrainerBattleParameter *temp = (TrainerBattleParameter*)data;
 
-    TRAINER_BATTLE_PARAM.playMusicA = temp->params.playMusicA;
-    TRAINER_BATTLE_PARAM.objEventLocalIdA = temp->params.objEventLocalIdA;
-    TRAINER_BATTLE_PARAM.opponentA = temp->params.opponentA;
-    TRAINER_BATTLE_PARAM.introTextA = temp->params.introTextA;
-    TRAINER_BATTLE_PARAM.defeatTextA = temp->params.defeatTextA;
-    TRAINER_BATTLE_PARAM.battleScriptRetAddrA = temp->params.battleScriptRetAddrA;
+    TRAINER_BATTLE_PARAM.playMusicBattler1 = temp->params.playMusicBattler1;
+    TRAINER_BATTLE_PARAM.objEventLocalIdBattler1 = temp->params.objEventLocalIdBattler1;
+    TRAINER_BATTLE_PARAM.battler1 = temp->params.battler1;
+    TRAINER_BATTLE_PARAM.introTextBattler1 = temp->params.introTextBattler1;
+    TRAINER_BATTLE_PARAM.defeatTextBattler1 = temp->params.defeatTextBattler1;
+    TRAINER_BATTLE_PARAM.battleScriptRetAddrBattler1 = temp->params.battleScriptRetAddrBattler1;
 }
 
-void TrainerBattleLoadArgsTrainerB(const u8 *data)
+void TrainerBattleLoadArgsBattler3(const u8 *data)
 {
     TrainerBattleParameter *temp = (TrainerBattleParameter*)data;
 
-    TRAINER_BATTLE_PARAM.playMusicB = temp->params.playMusicB;
-    TRAINER_BATTLE_PARAM.objEventLocalIdB = temp->params.objEventLocalIdB;
-    TRAINER_BATTLE_PARAM.opponentB = temp->params.opponentB;
-    TRAINER_BATTLE_PARAM.introTextB = temp->params.introTextB;
-    TRAINER_BATTLE_PARAM.defeatTextB = temp->params.defeatTextB;
-    TRAINER_BATTLE_PARAM.battleScriptRetAddrB = temp->params.battleScriptRetAddrB;
+    TRAINER_BATTLE_PARAM.playMusicBattler3 = temp->params.playMusicBattler3;
+    TRAINER_BATTLE_PARAM.objEventLocalIdBattler3 = temp->params.objEventLocalIdBattler3;
+    TRAINER_BATTLE_PARAM.battler3 = temp->params.battler3;
+    TRAINER_BATTLE_PARAM.introTextBattler3 = temp->params.introTextBattler3;
+    TRAINER_BATTLE_PARAM.defeatTextBattler3 = temp->params.defeatTextBattler3;
+    TRAINER_BATTLE_PARAM.battleScriptRetAddrBattler3 = temp->params.battleScriptRetAddrBattler3;
 }
 
+void TrainerBattleLoadArgsBattler0(const u8 *data)
+{
+    if (gSpecialVar_0x8004 == SPECIAL_BATTLE_CUSTOM)
+    {
+        TrainerBattleParameter *temp = (TrainerBattleParameter*)data;
+
+        TRAINER_BATTLE_PARAM.battler0 = temp->params.battler0;
+        TRAINER_BATTLE_PARAM.defeatTextBattler0 = temp->params.defeatTextBattler0;
+    }
+}
+
+void TrainerBattleLoadArgsBattler2(const u8 *data)
+{
+    if (gSpecialVar_0x8004 == SPECIAL_BATTLE_CUSTOM)
+    {
+        TrainerBattleParameter *temp = (TrainerBattleParameter*)data;
+
+        TRAINER_BATTLE_PARAM.battler2 = temp->params.battler2;
+        TRAINER_BATTLE_PARAM.defeatTextBattler2 = temp->params.defeatTextBattler2;
+    }
+}
 // loads trainer A parameter to trainer B. Used for second trainer in trainer_see.c
 void TrainerBattleLoadArgsSecondTrainer(const u8 *data)
 {
     TrainerBattleParameter *temp = (TrainerBattleParameter*)data;
 
-    TRAINER_BATTLE_PARAM.playMusicB = temp->params.playMusicA;
-    TRAINER_BATTLE_PARAM.objEventLocalIdB = temp->params.objEventLocalIdA;
-    TRAINER_BATTLE_PARAM.opponentB = temp->params.opponentA;
-    TRAINER_BATTLE_PARAM.introTextB = temp->params.introTextA;
-    TRAINER_BATTLE_PARAM.defeatTextB = temp->params.defeatTextA;
-    TRAINER_BATTLE_PARAM.battleScriptRetAddrB = temp->params.battleScriptRetAddrA;
+    TRAINER_BATTLE_PARAM.playMusicBattler3 = temp->params.playMusicBattler1;
+    TRAINER_BATTLE_PARAM.objEventLocalIdBattler3 = temp->params.objEventLocalIdBattler1;
+    TRAINER_BATTLE_PARAM.battler3 = temp->params.battler1;
+    TRAINER_BATTLE_PARAM.introTextBattler3 = temp->params.introTextBattler1;
+    TRAINER_BATTLE_PARAM.defeatTextBattler3 = temp->params.defeatTextBattler1;
+    TRAINER_BATTLE_PARAM.battleScriptRetAddrBattler3 = temp->params.battleScriptRetAddrBattler1;
 }
 
 void SetMapVarsToTrainerA(void)
 {
-    if (TRAINER_BATTLE_PARAM.objEventLocalIdA != LOCALID_NONE)
+    if (TRAINER_BATTLE_PARAM.objEventLocalIdBattler1 != LOCALID_NONE)
     {
-        gSpecialVar_LastTalked = TRAINER_BATTLE_PARAM.objEventLocalIdA;
-        gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(TRAINER_BATTLE_PARAM.objEventLocalIdA, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+        gSpecialVar_LastTalked = TRAINER_BATTLE_PARAM.objEventLocalIdBattler1;
+        gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(TRAINER_BATTLE_PARAM.objEventLocalIdBattler1, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
     }
 }
 
 void SetMapVarsToTrainerB(void)
 {
-    if (TRAINER_BATTLE_PARAM.objEventLocalIdB != LOCALID_NONE)
+    if (TRAINER_BATTLE_PARAM.objEventLocalIdBattler3 != LOCALID_NONE)
     {
-        gSpecialVar_LastTalked = TRAINER_BATTLE_PARAM.objEventLocalIdB;
-        gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(TRAINER_BATTLE_PARAM.objEventLocalIdB, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+        gSpecialVar_LastTalked = TRAINER_BATTLE_PARAM.objEventLocalIdBattler3;
+        gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(TRAINER_BATTLE_PARAM.objEventLocalIdBattler3, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
     }
 }
 
@@ -1052,22 +1080,22 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
 #if FREE_MATCH_CALL == FALSE
     case TRAINER_BATTLE_REMATCH_DOUBLE:
         SetMapVarsToTrainerA();
-        TRAINER_BATTLE_PARAM.opponentA = GetRematchTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+        TRAINER_BATTLE_PARAM.battler1 = GetRematchTrainerId(TRAINER_BATTLE_PARAM.battler1);
         return EventScript_TryDoDoubleRematchBattle;
     case TRAINER_BATTLE_REMATCH:
         SetMapVarsToTrainerA();
-        TRAINER_BATTLE_PARAM.opponentA = GetRematchTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+        TRAINER_BATTLE_PARAM.battler1 = GetRematchTrainerId(TRAINER_BATTLE_PARAM.battler1);
         return EventScript_TryDoRematchBattle;
 #endif //FREE_MATCH_CALL
     case TRAINER_BATTLE_PYRAMID:
         if (gApproachingTrainerId == 0)
         {
             SetMapVarsToTrainerA();
-            TRAINER_BATTLE_PARAM.opponentA = LocalIdToPyramidTrainerId(gSpecialVar_LastTalked);
+            TRAINER_BATTLE_PARAM.battler1 = LocalIdToPyramidTrainerId(gSpecialVar_LastTalked);
         }
         else
         {
-            TRAINER_BATTLE_PARAM.opponentB = LocalIdToPyramidTrainerId(gSpecialVar_LastTalked);
+            TRAINER_BATTLE_PARAM.battler3 = LocalIdToPyramidTrainerId(gSpecialVar_LastTalked);
         }
         return EventScript_TryDoNormalTrainerBattle;
     case TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE:
@@ -1076,11 +1104,11 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
         if (gApproachingTrainerId == 0)
         {
             SetMapVarsToTrainerA();
-            TRAINER_BATTLE_PARAM.opponentA = LocalIdToHillTrainerId(gSpecialVar_LastTalked);
+            TRAINER_BATTLE_PARAM.battler1 = LocalIdToHillTrainerId(gSpecialVar_LastTalked);
         }
         else
         {
-            TRAINER_BATTLE_PARAM.opponentB = LocalIdToHillTrainerId(gSpecialVar_LastTalked);
+            TRAINER_BATTLE_PARAM.battler3 = LocalIdToHillTrainerId(gSpecialVar_LastTalked);
         }
         return EventScript_TryDoNormalTrainerBattle;
     case TRAINER_BATTLE_TWO_TRAINERS_NO_INTRO:
@@ -1129,7 +1157,7 @@ void SetUpTwoTrainersBattle(void)
 bool32 GetTrainerFlagFromScriptPointer(const u8 *data)
 {
     TrainerBattleParameter *temp = (TrainerBattleParameter*)(data + OPCODE_OFFSET);
-    return FlagGet(TRAINER_FLAGS_START + temp->params.opponentA);
+    return FlagGet(TRAINER_FLAGS_START + temp->params.battler1);
 }
 
 bool32 GetRematchFromScriptPointer(const u8 *data)
@@ -1138,7 +1166,7 @@ bool32 GetRematchFromScriptPointer(const u8 *data)
     return FALSE;
 #else
     TrainerBattleParameter *temp = (TrainerBattleParameter*)(data + OPCODE_OFFSET);
-    return ShouldTryRematchBattleForTrainerId(temp->params.opponentA);
+    return ShouldTryRematchBattleForTrainerId(temp->params.battler1);
 #endif
 }
 
@@ -1170,7 +1198,7 @@ bool8 GetTrainerFlag(void)
 
 static void SetBattledTrainersFlags(void)
 {
-    if (TRAINER_BATTLE_PARAM.opponentB != 0)
+    if (TRAINER_BATTLE_PARAM.battler3 != 0)
         FlagSet(GetTrainerBFlag());
     FlagSet(GetTrainerAFlag());
 }
@@ -1209,7 +1237,7 @@ void BattleSetup_StartTrainerBattle(void)
         if (FollowerNPCIsBattlePartner())
         {
             gBattleTypeFlags = (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TRAINER);
-            TRAINER_BATTLE_PARAM.opponentB = 0xFFFF;
+            TRAINER_BATTLE_PARAM.battler3 = 0xFFFF;
         }
         else
         {
@@ -1314,7 +1342,7 @@ static void CB2_EndTrainerBattle(void)
             HealPlayerParty();
     }
 
-    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_SECRET_BASE)
+    if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_SECRET_BASE)
     {
         DowngradeBadPoison();
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
@@ -1344,7 +1372,7 @@ static void CB2_EndTrainerBattle(void)
 
 static void CB2_EndRematchBattle(void)
 {
-    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_SECRET_BASE)
+    if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_SECRET_BASE)
     {
         DowngradeBadPoison();
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
@@ -1410,18 +1438,18 @@ const u8 *BattleSetup_GetTrainerPostBattleScript(void)
     if (sShouldCheckTrainerBScript)
     {
         sShouldCheckTrainerBScript = FALSE;
-        if (TRAINER_BATTLE_PARAM.battleScriptRetAddrB != NULL)
+        if (TRAINER_BATTLE_PARAM.battleScriptRetAddrBattler3 != NULL)
         {
             gWhichTrainerToFaceAfterBattle = 1;
-            return TRAINER_BATTLE_PARAM.battleScriptRetAddrB;
+            return TRAINER_BATTLE_PARAM.battleScriptRetAddrBattler3;
         }
     }
     else
     {
-        if (TRAINER_BATTLE_PARAM.battleScriptRetAddrA != NULL)
+        if (TRAINER_BATTLE_PARAM.battleScriptRetAddrBattler1 != NULL)
         {
             gWhichTrainerToFaceAfterBattle = 0;
-            return TRAINER_BATTLE_PARAM.battleScriptRetAddrA;
+            return TRAINER_BATTLE_PARAM.battleScriptRetAddrBattler1;
         }
     }
 
@@ -1439,9 +1467,9 @@ void PlayTrainerEncounterMusic(void)
     u16 music;
 
     if (gApproachingTrainerId == 0)
-        trainerId = TRAINER_BATTLE_PARAM.opponentA;
+        trainerId = TRAINER_BATTLE_PARAM.battler1;
     else
-        trainerId = TRAINER_BATTLE_PARAM.opponentB;
+        trainerId = TRAINER_BATTLE_PARAM.battler3;
 
     if (TRAINER_BATTLE_PARAM.mode != TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC
         && TRAINER_BATTLE_PARAM.mode != TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC)
@@ -1507,16 +1535,16 @@ static const u8 *GetIntroSpeechOfApproachingTrainer(void)
     if (gApproachingTrainerId == 0)
     {
         if (OW_NAME_BOX_NPC_TRAINER)
-            gSpeakerName = GetTrainerNameFromId(TRAINER_BATTLE_PARAM.opponentA);
+            gSpeakerName = GetTrainerNameFromId(TRAINER_BATTLE_PARAM.battler1);
 
-        return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextA);
+        return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextBattler1);
     }
     else
     {
         if (OW_NAME_BOX_NPC_TRAINER)
-            gSpeakerName = GetTrainerNameFromId(TRAINER_BATTLE_PARAM.opponentB);
+            gSpeakerName = GetTrainerNameFromId(TRAINER_BATTLE_PARAM.battler3);
 
-        return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextB);
+        return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextBattler3);
     }
 }
 
@@ -1524,10 +1552,10 @@ const u8 *GetTrainerALoseText(void)
 {
     const u8 *string;
 
-    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_SECRET_BASE)
+    if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_SECRET_BASE)
         string = GetSecretBaseTrainerLoseText();
     else
-        string = TRAINER_BATTLE_PARAM.defeatTextA;
+        string = TRAINER_BATTLE_PARAM.defeatTextBattler1;
 
     StringExpandPlaceholders(gStringVar4, ReturnEmptyStringIfNull(string));
     return gStringVar4;
@@ -1535,7 +1563,7 @@ const u8 *GetTrainerALoseText(void)
 
 const u8 *GetTrainerBLoseText(void)
 {
-    StringExpandPlaceholders(gStringVar4, ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.defeatTextB));
+    StringExpandPlaceholders(gStringVar4, ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.defeatTextBattler3));
     return gStringVar4;
 }
 
@@ -1775,7 +1803,7 @@ void ClearCurrentTrainerWantRematchVsSeeker(void)
     {
         for (u32 i = 0; i < REMATCH_TABLE_ENTRIES; i++)
         {
-            if (gSaveBlock1Ptr->trainerRematches[i] == TRAINER_BATTLE_PARAM.opponentA)
+            if (gSaveBlock1Ptr->trainerRematches[i] == TRAINER_BATTLE_PARAM.battler1)
                 gSaveBlock1Ptr->trainerRematches[i] = 0;
         }
     }
@@ -1799,7 +1827,7 @@ static void RegisterTrainerInMatchCall(void)
 {
     if (FlagGet(FLAG_HAS_MATCH_CALL))
     {
-        u32 matchCallFlagId = GetTrainerMatchCallFlag(TRAINER_BATTLE_PARAM.opponentA);
+        u32 matchCallFlagId = GetTrainerMatchCallFlag(TRAINER_BATTLE_PARAM.battler1);
         if (matchCallFlagId != 0xFFFF)
             FlagSet(matchCallFlagId);
     }
@@ -1902,7 +1930,7 @@ u16 GetLastBeatenRematchTrainerId(u16 trainerId)
 
 bool8 ShouldTryRematchBattle(void)
 {
-    return ShouldTryRematchBattleForTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+    return ShouldTryRematchBattleForTrainerId(TRAINER_BATTLE_PARAM.battler1);
 }
 
 bool8 ShouldTryRematchBattleForTrainerId(u16 trainerId)
@@ -1915,7 +1943,7 @@ bool8 ShouldTryRematchBattleForTrainerId(u16 trainerId)
 
 bool8 IsTrainerReadyForRematch(void)
 {
-    return IsTrainerReadyForRematch_(gRematchTable, TRAINER_BATTLE_PARAM.opponentA);
+    return IsTrainerReadyForRematch_(gRematchTable, TRAINER_BATTLE_PARAM.battler1);
 }
 
 static void HandleRematchVarsOnBattleEnd(void)
@@ -1923,7 +1951,7 @@ static void HandleRematchVarsOnBattleEnd(void)
     if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) && (I_VS_SEEKER_CHARGING != 0))
         ClearRematchMovementByTrainerId();
 
-    ClearTrainerWantRematchState(gRematchTable, TRAINER_BATTLE_PARAM.opponentA);
+    ClearTrainerWantRematchState(gRematchTable, TRAINER_BATTLE_PARAM.battler1);
     SetBattledTrainersFlags();
 }
 

@@ -2280,7 +2280,7 @@ static bool8 Mugshot_SetGfx(struct Task *task)
     s16 i, j;
     u16 *tilemap, *tileset;
     const u16 *mugshotsMap = sMugshotsTilemap;
-    enum MugshotColor mugshotColor = GetTrainerMugshotColorFromId(TRAINER_BATTLE_PARAM.opponentA);
+    enum MugshotColor mugshotColor = GetTrainerMugshotColorFromId(TRAINER_BATTLE_PARAM.battler1);
 
     GetBg0TilesDst(&tilemap, &tileset);
     CpuSet(sEliteFour_Tileset, tileset, 0xF0);
@@ -2379,7 +2379,7 @@ static bool8 Mugshot_StartOpponentSlide(struct Task *task)
     sTransitionData->BG0HOFS_Upper += 8;
 
     SetTrainerPicSlideDirection(task->tOpponentSpriteAId, 0);
-    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    if (TRAINER_BATTLE_PARAM.battler3 != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
             SetTrainerPicSlideDirection(task->tOpponentSpriteBId, 0);
     }
@@ -2394,7 +2394,7 @@ static bool8 Mugshot_StartOpponentSlide(struct Task *task)
 
     PlaySE(SE_MUGSHOT);
 
-    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    if (TRAINER_BATTLE_PARAM.battler3 != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
         IncrementTrainerPicState(task->tOpponentSpriteBId);
     }
@@ -2585,14 +2585,14 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
 {
     struct Sprite *opponentSpriteA, *opponentSpriteB=0, *playerSprite, *partnerSprite=0;
 
-    u8 trainerAPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA);
-    u8 trainerBPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB);
+    u8 trainerAPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.battler1);
+    u8 trainerBPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.battler3);
     u8 partnerPicId = GetTrainerPicFromId(gPartnerTrainerId);
     s16 opponentARotationScales = 0;
     s16 opponentBRotationScales = 0;
 
     gReservedSpritePaletteCount = 10;
-    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    if (TRAINER_BATTLE_PARAM.battler3 != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
         task->tOpponentSpriteBId = CreateTrainerSprite(trainerBPicId,
                                                     gTrainerSprites[trainerBPicId].mugshotCoords.x - 240,

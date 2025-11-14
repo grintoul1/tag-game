@@ -216,21 +216,21 @@ static void SetTrainerSlideParamters(u32 battler, u32* firstId, u32* lastId, u32
         {
             *firstId = MULTI_PARTY_SIZE;
             *lastId = PARTY_SIZE;
-            *trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentB);
+            *trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.battler3);
             *retValue = TRAINER_SLIDE_TARGET_TRAINER_B;
         }
         else
         {
             *firstId = 0;
             *lastId = MULTI_PARTY_SIZE;
-            *trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+            *trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.battler1);
         }
     }
     else
     {
         *firstId = 0;
         *lastId = PARTY_SIZE;
-        *trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+        *trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.battler1);
     }
 }
 

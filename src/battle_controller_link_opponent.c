@@ -291,9 +291,9 @@ static void LinkOpponentHandleDrawTrainerPic(u32 battler)
         if (gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
         {
             if (battler == B_POSITION_OPPONENT_LEFT)
-                trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
+                trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.battler1);
             else
-                trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentB);
+                trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.battler3);
         }
         else
         {
@@ -322,7 +322,7 @@ static void LinkOpponentHandleDrawTrainerPic(u32 battler)
     else
     {
         xPos = 176;
-        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_UNION_ROOM)
+        if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_UNION_ROOM)
         {
             trainerPicId = GetUnionRoomTrainerPic();
         }
@@ -356,9 +356,9 @@ static void LinkOpponentHandleTrainerSlide(u32 battler)
     u32 trainerPicId;
 
     if (battler == B_POSITION_OPPONENT_LEFT)
-        trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
+        trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.battler1);
     else
-        trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentB);
+        trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.battler3);
 
     BtlController_HandleTrainerSlide(battler, trainerPicId);
     BtlController_Complete(battler); // Possibly a bug, because execution should be completed after the slide in finishes. See Controller_WaitForTrainerPic.

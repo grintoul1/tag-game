@@ -9400,7 +9400,7 @@ bool32 ShouldGetStatBadgeBoost(u16 badgeFlag, u32 battler)
             return FALSE;
         else if (!IsOnPlayerSide(battler))
             return FALSE;
-        else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && TRAINER_BATTLE_PARAM.opponentA == TRAINER_SECRET_BASE)
+        else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && TRAINER_BATTLE_PARAM.battler1 == TRAINER_SECRET_BASE)
             return FALSE;
         else if (FlagGet(badgeFlag))
             return TRUE;

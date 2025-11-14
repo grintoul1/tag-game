@@ -94,7 +94,7 @@ static void InitPalaceChallenge(void)
         gSaveBlock2Ptr->frontier.palaceWinStreaks[battleMode][lvlMode] = 0;
 
     SetDynamicWarp(0, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, WARP_ID_NONE);
-    TRAINER_BATTLE_PARAM.opponentA = 0;
+    TRAINER_BATTLE_PARAM.battler1 = 0;
 }
 
 static void GetPalaceData(void)
@@ -153,14 +153,14 @@ static void GetPalaceCommentId(void)
 
 static void SetPalaceOpponent(void)
 {
-    TRAINER_BATTLE_PARAM.opponentA = 5 *(Random() % 255) / 64u;
-    SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.opponentA, 0);
+    TRAINER_BATTLE_PARAM.battler1 = 5 *(Random() % 255) / 64u;
+    SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.battler1, 0);
 }
 
 static void BufferOpponentIntroSpeech(void)
 {
-    if (TRAINER_BATTLE_PARAM.opponentA < FRONTIER_TRAINERS_COUNT)
-        FrontierSpeechToString(gFacilityTrainers[TRAINER_BATTLE_PARAM.opponentA].speechBefore);
+    if (TRAINER_BATTLE_PARAM.battler1 < FRONTIER_TRAINERS_COUNT)
+        FrontierSpeechToString(gFacilityTrainers[TRAINER_BATTLE_PARAM.battler1].speechBefore);
 }
 
 static void IncrementPalaceStreak(void)

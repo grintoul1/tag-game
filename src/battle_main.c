@@ -529,7 +529,7 @@ static void CB2_InitBattleInternal(void)
                                                                         | BATTLE_TYPE_TRAINER_HILL
                                                                         | BATTLE_TYPE_RECORDED)))
     {
-        switch (GetTrainerBattleType(TRAINER_BATTLE_PARAM.opponentA))
+        switch (GetTrainerBattleType(TRAINER_BATTLE_PARAM.battler1))
         {
         case TRAINER_BATTLE_TYPE_SINGLES:
             break;
@@ -563,9 +563,9 @@ static void CB2_InitBattleInternal(void)
     {
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED)))
         {
-            CreateNPCTrainerParty(&gEnemyParty[0], TRAINER_BATTLE_PARAM.opponentA, TRUE);
+            CreateNPCTrainerParty(&gEnemyParty[0], TRAINER_BATTLE_PARAM.battler1, TRUE);
             if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
-                CreateNPCTrainerParty(&gEnemyParty[PARTY_SIZE / 2], TRAINER_BATTLE_PARAM.opponentB, FALSE);
+                CreateNPCTrainerParty(&gEnemyParty[PARTY_SIZE / 2], TRAINER_BATTLE_PARAM.battler3, FALSE);
             SetWildMonHeldItem();
             CalculateEnemyPartyCount();
         }
@@ -878,7 +878,7 @@ static void CB2_HandleStartBattle(void)
                     BufferPartyVsScreenHealth_AtStart();
                     SetPlayerBerryDataInBattleStruct();
 
-                    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_UNION_ROOM)
+                    if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_UNION_ROOM)
                     {
                         gLinkPlayers[0].id = 0;
                         gLinkPlayers[1].id = 1;
@@ -1083,11 +1083,11 @@ static void CB2_HandleStartMultiPartnerBattle(void)
                 gLinkPlayers[1].id = 2;
                 gLinkPlayers[2].id = 1;
                 gLinkPlayers[3].id = 3;
-                GetFrontierTrainerName(gLinkPlayers[2].name, TRAINER_BATTLE_PARAM.opponentA);
-                GetFrontierTrainerName(gLinkPlayers[3].name, TRAINER_BATTLE_PARAM.opponentB);
-                GetBattleTowerTrainerLanguage(&language, TRAINER_BATTLE_PARAM.opponentA);
+                GetFrontierTrainerName(gLinkPlayers[2].name, TRAINER_BATTLE_PARAM.battler1);
+                GetFrontierTrainerName(gLinkPlayers[3].name, TRAINER_BATTLE_PARAM.battler3);
+                GetBattleTowerTrainerLanguage(&language, TRAINER_BATTLE_PARAM.battler1);
                 gLinkPlayers[2].language = language;
-                GetBattleTowerTrainerLanguage(&language, TRAINER_BATTLE_PARAM.opponentB);
+                GetBattleTowerTrainerLanguage(&language, TRAINER_BATTLE_PARAM.battler3);
                 gLinkPlayers[3].language = language;
 
                 if (IsLinkTaskFinished())
@@ -1740,7 +1740,7 @@ static void CB2_HandleStartMultiBattle(void)
             SetMainCallback2(BattleMainCB2);
             if (gBattleTypeFlags & BATTLE_TYPE_LINK)
             {
-                TRAINER_BATTLE_PARAM.opponentA = TRAINER_LINK_OPPONENT;
+                TRAINER_BATTLE_PARAM.battler1 = TRAINER_LINK_OPPONENT;
                 gBattleTypeFlags |= BATTLE_TYPE_LINK_IN_BATTLE;
             }
         }
@@ -3749,14 +3749,14 @@ static void DoBattleIntro(void)
 
             // Try to set a status to start the battle with
             gBattleStruct->startingStatus = 0;
-            if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && GetTrainerStartingStatusFromId(TRAINER_BATTLE_PARAM.opponentB))
+            if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && GetTrainerStartingStatusFromId(TRAINER_BATTLE_PARAM.battler3))
             {
-                gBattleStruct->startingStatus = GetTrainerStartingStatusFromId(TRAINER_BATTLE_PARAM.opponentB);
+                gBattleStruct->startingStatus = GetTrainerStartingStatusFromId(TRAINER_BATTLE_PARAM.battler3);
                 gBattleStruct->startingStatusTimer = 0; // infinite
             }
-            else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && GetTrainerStartingStatusFromId(TRAINER_BATTLE_PARAM.opponentA))
+            else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && GetTrainerStartingStatusFromId(TRAINER_BATTLE_PARAM.battler1))
             {
-                gBattleStruct->startingStatus = GetTrainerStartingStatusFromId(TRAINER_BATTLE_PARAM.opponentA);
+                gBattleStruct->startingStatus = GetTrainerStartingStatusFromId(TRAINER_BATTLE_PARAM.battler1);
                 gBattleStruct->startingStatusTimer = 0; // infinite
             }
             else if (B_VAR_STARTING_STATUS != 0)
@@ -5429,7 +5429,7 @@ static void HandleEndTurn_BattleWon(void)
         BattleStopLowHpSound();
         gBattlescriptCurrInstr = BattleScript_FrontierTrainerBattleWon;
 
-        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN)
+        if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_FRONTIER_BRAIN)
             PlayBGM(MUS_VICTORY_GYM_LEADER);
         else
             PlayBGM(MUS_VICTORY_TRAINER);
@@ -5439,7 +5439,7 @@ static void HandleEndTurn_BattleWon(void)
         BattleStopLowHpSound();
         gBattlescriptCurrInstr = BattleScript_LocalTrainerBattleWon;
 
-        switch (GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA))
+        switch (GetTrainerClassFromId(TRAINER_BATTLE_PARAM.battler1))
         {
         case TRAINER_CLASS_ELITE_FOUR:
         case TRAINER_CLASS_CHAMPION:

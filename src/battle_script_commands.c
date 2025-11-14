@@ -7520,7 +7520,7 @@ static void Cmd_openpartyscreen(void)
                     bool32 skipPartnerCheck = FALSE;
                     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS
                      && GetBattlerSide(i) == B_SIDE_OPPONENT
-                     && TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE)
+                     && TRAINER_BATTLE_PARAM.battler3 != TRAINER_NONE)
                         skipPartnerCheck = TRUE;
 
                     // In a 1v2 Double Battle if trainer A didn't have any more mons left
@@ -8432,9 +8432,9 @@ static void Cmd_getmoneyreward(void)
 
     if (gBattleOutcome == B_OUTCOME_WON)
     {
-        money = GetTrainerMoneyToGive(TRAINER_BATTLE_PARAM.opponentA);
+        money = GetTrainerMoneyToGive(TRAINER_BATTLE_PARAM.battler1);
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-            money += GetTrainerMoneyToGive(TRAINER_BATTLE_PARAM.opponentB);
+            money += GetTrainerMoneyToGive(TRAINER_BATTLE_PARAM.battler3);
         AddMoney(&gSaveBlock1Ptr->money, money);
     }
     else

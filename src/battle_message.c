@@ -2105,7 +2105,7 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                 }
                 else
                 {
-                    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_UNION_ROOM)
+                    if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_UNION_ROOM)
                         stringPtr = sText_Trainer1WantsToBattle;
                     else if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
                         stringPtr = sText_LinkTrainerWantsToBattlePause;
@@ -2191,7 +2191,7 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
             {
                 if (!(BattlerIsLink(battler) || (BattlerIsRecorded(battler) && BattlerIsOpponent(battler))))
                     stringPtr = sText_Trainer1SentOutPkmn;
-                else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_UNION_ROOM)
+                else if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_UNION_ROOM)
                     stringPtr = sText_Trainer1SentOutPkmn;
                 else
                     stringPtr = sText_LinkTrainerSentOutPkmn;
@@ -2223,7 +2223,7 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                     stringPtr = sText_InGamePartnerWithdrewPkmn1;
                 }
             }
-            else if (BattlerIsLink(battler) || TRAINER_BATTLE_PARAM.opponentA == TRAINER_LINK_OPPONENT 
+            else if (BattlerIsLink(battler) || TRAINER_BATTLE_PARAM.battler1 == TRAINER_LINK_OPPONENT 
             || gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK) // Link Opponent 1 and test opponent
             {
                 stringPtr = sText_LinkTrainer1WithdrewPkmn;
@@ -2257,8 +2257,8 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                     stringPtr = sText_InGamePartnerWithdrewPkmn2;
                 }
             }
-            else if (BattlerIsLink(battler) || TRAINER_BATTLE_PARAM.opponentA == TRAINER_LINK_OPPONENT 
-            || TRAINER_BATTLE_PARAM.opponentB == TRAINER_LINK_OPPONENT || gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK) // Link Opponent B and test opponent
+            else if (BattlerIsLink(battler) || TRAINER_BATTLE_PARAM.battler1 == TRAINER_LINK_OPPONENT 
+            || TRAINER_BATTLE_PARAM.battler3 == TRAINER_LINK_OPPONENT || gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK) // Link Opponent B and test opponent
             {
                 if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
                     stringPtr = sText_LinkTrainer2WithdrewPkmn;
@@ -2300,7 +2300,7 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                     stringPtr = sText_InGamePartnerSentOutPkmn1;
                 }
             }
-            else if (BattlerIsLink(gBattleScripting.battler) || TRAINER_BATTLE_PARAM.opponentA == TRAINER_LINK_OPPONENT 
+            else if (BattlerIsLink(gBattleScripting.battler) || TRAINER_BATTLE_PARAM.battler1 == TRAINER_LINK_OPPONENT 
             || gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK) // Link Opponent 1 and test opponent
             {
                 stringPtr = sText_LinkTrainerSentOutPkmn;
@@ -2334,8 +2334,8 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                     stringPtr = sText_InGamePartnerSentOutPkmn2;
                 }
             }
-            else if (BattlerIsLink(gBattleScripting.battler) || TRAINER_BATTLE_PARAM.opponentA == TRAINER_LINK_OPPONENT 
-            || TRAINER_BATTLE_PARAM.opponentB == TRAINER_LINK_OPPONENT || gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK) // Link Opponent B and test opponent
+            else if (BattlerIsLink(gBattleScripting.battler) || TRAINER_BATTLE_PARAM.battler1 == TRAINER_LINK_OPPONENT 
+            || TRAINER_BATTLE_PARAM.battler3 == TRAINER_LINK_OPPONENT || gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK) // Link Opponent B and test opponent
             {
                 if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
                     stringPtr = sText_LinkTrainer2SentOutPkmn2;
@@ -2402,7 +2402,7 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                     {
                         stringPtr = sText_LinkTrainerMultiSentOutPkmn;
                     }
-                    else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_UNION_ROOM)
+                    else if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_UNION_ROOM)
                     {
                         stringPtr = sText_Trainer1SentOutPkmn2;
                     }
@@ -2474,7 +2474,7 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                     break;
                 }
             }
-            else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_UNION_ROOM)
+            else if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_UNION_ROOM)
             {
                 switch (gBattleTextBuff1[0])
                 {
@@ -2676,13 +2676,13 @@ static const u8 *BattleStringGetOpponentName(u8 *text, u8 multiplayerId, u8 batt
     switch (GetBattlerPosition(battler))
     {
     case B_POSITION_OPPONENT_LEFT:
-        toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, text, multiplayerId, battler);
+        toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.battler1, text, multiplayerId, battler);
         break;
     case B_POSITION_OPPONENT_RIGHT:
         if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI) && !BATTLE_TWO_VS_ONE_OPPONENT)
-            toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentB, text, multiplayerId, battler);
+            toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.battler3, text, multiplayerId, battler);
         else
-            toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, text, multiplayerId, battler);
+            toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.battler1, text, multiplayerId, battler);
         break;
     }
 
@@ -2974,14 +2974,14 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 toCpy = gAbilitiesInfo[sBattlerAbilities[gEffectBattler]].name;
                 break;
             case B_TXT_TRAINER1_CLASS: // trainer class name
-                toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+                toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.battler1);
                 break;
             case B_TXT_TRAINER1_NAME: // trainer1 name
-                toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, text, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
+                toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.battler1, text, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
                 break;
             case B_TXT_TRAINER1_NAME_WITH_CLASS: // trainer1 name with trainer class
                 toCpy = textStart;
-                classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+                classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.battler1);
                 while (classString[classLength] != EOS)
                 {
                     textStart[classLength] = classString[classLength];
@@ -2989,7 +2989,7 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 }
                 textStart[classLength] = CHAR_SPACE;
                 textStart += classLength + 1;
-                nameString = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, textStart, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
+                nameString = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.battler1, textStart, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
                 if (nameString != textStart)
                 {
                     while (nameString[nameLength] != EOS)
@@ -3021,12 +3021,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
             case B_TXT_TRAINER1_LOSE_TEXT: // trainerA lose text
                 if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 {
-                    CopyFrontierTrainerText(FRONTIER_PLAYER_WON_TEXT, TRAINER_BATTLE_PARAM.opponentA);
+                    CopyFrontierTrainerText(FRONTIER_PLAYER_WON_TEXT, TRAINER_BATTLE_PARAM.battler1);
                     toCpy = gStringVar4;
                 }
                 else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
                 {
-                    CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_PLAYER_WON, TRAINER_BATTLE_PARAM.opponentA);
+                    CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_PLAYER_WON, TRAINER_BATTLE_PARAM.battler1);
                     toCpy = gStringVar4;
                 }
                 else
@@ -3037,12 +3037,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
             case B_TXT_TRAINER1_WIN_TEXT: // trainerA win text
                 if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 {
-                    CopyFrontierTrainerText(FRONTIER_PLAYER_LOST_TEXT, TRAINER_BATTLE_PARAM.opponentA);
+                    CopyFrontierTrainerText(FRONTIER_PLAYER_LOST_TEXT, TRAINER_BATTLE_PARAM.battler1);
                     toCpy = gStringVar4;
                 }
                 else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
                 {
-                    CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_PLAYER_LOST, TRAINER_BATTLE_PARAM.opponentA);
+                    CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_PLAYER_LOST, TRAINER_BATTLE_PARAM.battler1);
                     toCpy = gStringVar4;
                 }
                 break;
@@ -3111,14 +3111,14 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                     toCpy = sText_FoePkmnPrefix4;
                 break;
             case B_TXT_TRAINER2_CLASS:
-                toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentB);
+                toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.battler3);
                 break;
             case B_TXT_TRAINER2_NAME:
-                toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentB, text, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT));
+                toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.battler3, text, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT));
                 break;
             case B_TXT_TRAINER2_NAME_WITH_CLASS:
                 toCpy = textStart;
-                classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentB);
+                classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.battler3);
                 while (classString[classLength] != EOS)
                 {
                     textStart[classLength] = classString[classLength];
@@ -3126,7 +3126,7 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 }
                 textStart[classLength] = CHAR_SPACE;
                 textStart += classLength + 1;
-                nameString = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentB, textStart, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT));
+                nameString = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.battler3, textStart, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT));
                 if (nameString != textStart)
                 {
                     while (nameString[nameLength] != EOS)
@@ -3140,12 +3140,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
             case B_TXT_TRAINER2_LOSE_TEXT:
                 if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 {
-                    CopyFrontierTrainerText(FRONTIER_PLAYER_WON_TEXT, TRAINER_BATTLE_PARAM.opponentB);
+                    CopyFrontierTrainerText(FRONTIER_PLAYER_WON_TEXT, TRAINER_BATTLE_PARAM.battler3);
                     toCpy = gStringVar4;
                 }
                 else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
                 {
-                    CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_PLAYER_WON, TRAINER_BATTLE_PARAM.opponentB);
+                    CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_PLAYER_WON, TRAINER_BATTLE_PARAM.battler3);
                     toCpy = gStringVar4;
                 }
                 else
@@ -3156,12 +3156,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
             case B_TXT_TRAINER2_WIN_TEXT:
                 if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 {
-                    CopyFrontierTrainerText(FRONTIER_PLAYER_LOST_TEXT, TRAINER_BATTLE_PARAM.opponentB);
+                    CopyFrontierTrainerText(FRONTIER_PLAYER_LOST_TEXT, TRAINER_BATTLE_PARAM.battler3);
                     toCpy = gStringVar4;
                 }
                 else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
                 {
-                    CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_PLAYER_LOST, TRAINER_BATTLE_PARAM.opponentB);
+                    CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_PLAYER_LOST, TRAINER_BATTLE_PARAM.battler3);
                     toCpy = gStringVar4;
                 }
                 break;
@@ -3203,13 +3203,13 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                         toCpy = gTrainerClasses[GetFrontierOpponentClass(gPartnerTrainerId)].name;
                     break;
                 case B_POSITION_OPPONENT_LEFT:
-                    toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+                    toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.battler1);
                     break;
                 case B_POSITION_OPPONENT_RIGHT:
                     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
-                        toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentB);
+                        toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.battler3);
                     else
-                        toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+                        toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.battler1);
                     break;
                 }
                 break;
@@ -3229,13 +3229,13 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                             classString = gTrainerClasses[GetFrontierOpponentClass(gPartnerTrainerId)].name;
                         break;
                     case B_POSITION_OPPONENT_LEFT:
-                        classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+                        classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.battler1);
                         break;
                     case B_POSITION_OPPONENT_RIGHT:
                         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
-                            classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentB);
+                            classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.battler3);
                         else
-                            classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+                            classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.battler1);
                         break;
                     }
                     classLength = 0;

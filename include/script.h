@@ -100,12 +100,13 @@ extern u8 gMsgBoxIsCancelable;
 
 enum // effects
 {
-    SCREFF_SAVE = 1 << 0,          // writes to the save.
-    SCREFF_HARDWARE = 1 << 1,      // writes to a hardware register.
-    SCREFF_TRAINERBATTLE = 1 << 2, // 'trainerbattle' command.
+    SCREFF_SAVE = 1 << 0,                   // writes to the save.
+    SCREFF_HARDWARE = 1 << 1,               // writes to a hardware register.
+    SCREFF_TRAINERBATTLE = 1 << 2,          // 'trainerbattle' command.
+    SCREFF_CUSTOMTRAINERBATTLE = 1 << 3,    // 'customtrainerbattle' command.
 };
 
-#define SCREFF_ANY (SCREFF_SAVE | SCREFF_HARDWARE | SCREFF_TRAINERBATTLE)
+#define SCREFF_ANY (SCREFF_SAVE | SCREFF_HARDWARE | SCREFF_TRAINERBATTLE | SCREFF_CUSTOMTRAINERBATTLE)
 
 enum // effects versions
 {

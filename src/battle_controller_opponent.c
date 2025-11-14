@@ -318,7 +318,7 @@ static u32 OpponentGetTrainerPicId(u32 battlerId)
     {
         trainerPicId = GetSecretBaseTrainerPicIndex();
     }
-    else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN)
+    else if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_FRONTIER_BRAIN)
     {
         trainerPicId = GetFrontierBrainTrainerPicIndex();
     }
@@ -327,13 +327,13 @@ static u32 OpponentGetTrainerPicId(u32 battlerId)
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
         {
             if (battlerId == 1)
-                trainerPicId = GetTrainerHillTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
+                trainerPicId = GetTrainerHillTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.battler1);
             else
-                trainerPicId = GetTrainerHillTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentB);
+                trainerPicId = GetTrainerHillTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.battler3);
         }
         else
         {
-            trainerPicId = GetTrainerHillTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
+            trainerPicId = GetTrainerHillTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.battler1);
         }
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
@@ -341,13 +341,13 @@ static u32 OpponentGetTrainerPicId(u32 battlerId)
         if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TOWER_LINK_MULTI))
         {
             if (battlerId == 1)
-                trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
+                trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.battler1);
             else
-                trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentB);
+                trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.battler3);
         }
         else
         {
-            trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
+            trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.battler1);
         }
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
@@ -357,13 +357,13 @@ static u32 OpponentGetTrainerPicId(u32 battlerId)
     else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
         if (battlerId != 1)
-            trainerPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB);
+            trainerPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.battler3);
         else
-            trainerPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA);
+            trainerPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.battler1);
     }
     else
     {
-        trainerPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA);
+        trainerPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.battler1);
     }
 
     return trainerPicId;

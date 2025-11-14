@@ -1162,7 +1162,7 @@ const u8 *GetSecretBaseTrainerLoseText(void)
 void PrepSecretBaseBattleFlags(void)
 {
     TryGainNewFanFromCounter(FANCOUNTER_BATTLED_AT_BASE);
-    TRAINER_BATTLE_PARAM.opponentA = TRAINER_SECRET_BASE;
+    TRAINER_BATTLE_PARAM.battler1 = TRAINER_SECRET_BASE;
     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_SECRET_BASE;
 }
 

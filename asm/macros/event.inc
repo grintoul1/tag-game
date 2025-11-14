@@ -723,24 +723,24 @@
 	OBJ_ID_NONE = 0
 
 	@ Configures the arguments for a trainer battle, then jumps to the appropriate script in scripts/trainer_battle.inc
-	.macro trainerbattle type:req localIdA:req, trainer_a:req, intro_text_a:req, lose_text_a:req, event_script_a:req, localIdB:req, trainer_b:req, intro_text_b:req, lose_text_b:req, event_script_b:req, victory_text:req, cannot_battle:req, isDouble:req, playMusicA:req, playMusicB:req, isRematch:req
+	.macro trainerbattle type:req localIdA:req, trainer_a:req, intro_text_a:req, lose_text_a:req, event_script_a:req, localIdB:req, trainer_b:req, intro_text_b:req, lose_text_b:req, event_script_b:req, victory_text:req, cannot_battle:req, isDouble:req, playMusicBattler1:req, playMusicBattler3:req, isRematch:req
 	.byte SCR_OP_TRAINERBATTLE
 	.set trainerbattle_flags, 0
 	.ifgt \isDouble; .set trainerbattle_flags, trainerbattle_flags | (1 << 0); .endif
 	.ifgt \isRematch; .set trainerbattle_flags, trainerbattle_flags | (1 << 1); .endif
-	.ifgt \playMusicA; .set trainerbattle_flags, trainerbattle_flags | (1 << 2); .endif
-	.ifgt \playMusicB; .set trainerBattle_flags, trainerbattle_flags | (1 << 3); .endif
+	.ifgt \playMusicBattler1; .set trainerbattle_flags, trainerbattle_flags | (1 << 2); .endif
+	.ifgt \playMusicBattler3; .set trainerBattle_flags, trainerbattle_flags | (1 << 3); .endif
 	.ifgt \type; .set trainerbattle_flags, trainerbattle_flags | (\type << 4); .endif
 	.byte trainerbattle_flags
-	.byte \localIdA             @ objEventLocalIdA
+	.byte \localIdA             @ objEventLocalIdBattler1
 	.2byte \trainer_a           @ opponentA
-	.4byte \intro_text_a        @ introTextA
-	.4byte \lose_text_a         @ defeatTextA
+	.4byte \intro_text_a        @ introTextBattler1
+	.4byte \lose_text_a         @ defeatTextBattler1
 	.4byte \event_script_a      @ retAddrA
 	.byte  \localIdB            @ objEventLocalIdB
 	.2byte \trainer_b           @ opponentB
-	.4byte \intro_text_b        @ introTextB
-	.4byte \lose_text_b         @ defeatTextB
+	.4byte \intro_text_b        @ introTextBattler3
+	.4byte \lose_text_b         @ defeatTextBattler3
 	.4byte \event_script_b      @ retAddrB
 	.4byte \victory_text        @ victoryText
 	.4byte \cannot_battle       @ cannotBattle
@@ -838,7 +838,7 @@
 		special CallFrontierUtilFunc @ saves the mon order, so the non-selected mons get restored afterwards
 		.endif
 	setvar VAR_0x8006, MULTI_BATTLE_2_VS_1
-	customtrainerbattle TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE, \battler0Id, \battler0IdLoseText, \battler0IsPartner, \battler1Id, \battler1IdLoseText, \battler1IsPartner, \battler2Id, \battler2IdLoseText, \battler2IsPartner, 0, NULL, FALSE, \event_script, \exit_script, FALSE, \musicFromBattler, TRUE, TRUE, playerIsPlayerSide
+	customtrainerbattle TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE, \battler0Id, \battler0IdLoseText, \battler0IsPartner, \battler1Id, \battler1IdLoseText, \battler1IsPartner, \battler2Id, \battler2IdLoseText, \battler2IsPartner, 0xFFFF, NULL, FALSE, \event_script, \exit_script, FALSE, \musicFromBattler, TRUE, TRUE, playerIsPlayerSide
 	setvar VAR_0x8005, TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE
 	.endif
 	setvar VAR_0x8004, SPECIAL_BATTLE_CUSTOM

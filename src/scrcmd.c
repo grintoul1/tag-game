@@ -2443,7 +2443,7 @@ bool8 ScrCmd_trainerbattle(struct ScriptContext *ctx)
 
 bool8 ScrCmd_customtrainerbattle(struct ScriptContext *ctx)
 {
-    Script_RequestEffects(SCREFF_V1 | SCREFF_TRAINERBATTLE);
+    Script_RequestEffects(SCREFF_V1 | SCREFF_CUSTOMTRAINERBATTLE);
 
     TrainerBattleLoadArgs(ctx->scriptPtr);
     ctx->scriptPtr = BattleSetup_ConfigureTrainerBattle(ctx->scriptPtr);

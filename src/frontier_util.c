@@ -1905,7 +1905,7 @@ void ResetFrontierTrainerIds(void)
 
 static void IsTrainerFrontierBrain(void)
 {
-    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN)
+    if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_FRONTIER_BRAIN)
         gSpecialVar_Result = TRUE;
     else
         gSpecialVar_Result = FALSE;
@@ -1956,7 +1956,7 @@ static void GiveBattlePoints(void)
         challengeNum = ARRAY_COUNT(sBattlePointAwards[0][0]) - 1;
 
     points = sBattlePointAwards[facility][battleMode][challengeNum];
-    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN)
+    if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_FRONTIER_BRAIN)
         points += 10;
     gSaveBlock2Ptr->frontier.battlePoints += points;
     ConvertIntToDecimalStringN(gStringVar1, points, STR_CONV_MODE_LEFT_ALIGN, 2);
@@ -1966,7 +1966,7 @@ static void GiveBattlePoints(void)
     points = gSaveBlock2Ptr->frontier.cardBattlePoints;
     points += sBattlePointAwards[facility][battleMode][challengeNum];
     IncrementDailyBattlePoints(sBattlePointAwards[facility][battleMode][challengeNum]);
-    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN)
+    if (TRAINER_BATTLE_PARAM.battler1 == TRAINER_FRONTIER_BRAIN)
     {
         points += 10;
         IncrementDailyBattlePoints(10);
@@ -2247,10 +2247,10 @@ static void BufferFrontierTrainerName(void)
     switch (gSpecialVar_0x8005)
     {
     case 0:
-        GetFrontierTrainerName(gStringVar1, TRAINER_BATTLE_PARAM.opponentA);
+        GetFrontierTrainerName(gStringVar1, TRAINER_BATTLE_PARAM.battler1);
         break;
     case 1:
-        GetFrontierTrainerName(gStringVar2, TRAINER_BATTLE_PARAM.opponentA);
+        GetFrontierTrainerName(gStringVar2, TRAINER_BATTLE_PARAM.battler1);
         break;
     }
 }
@@ -2629,7 +2629,7 @@ u16 GetFrontierBrainMonSpecies(u8 monId)
 
 void SetFrontierBrainObjEventGfx(u8 facility)
 {
-    TRAINER_BATTLE_PARAM.opponentA = TRAINER_FRONTIER_BRAIN;
+    TRAINER_BATTLE_PARAM.battler1 = TRAINER_FRONTIER_BRAIN;
     VarSet(VAR_OBJ_GFX_ID_0, gFrontierBrainInfo[facility].objEventGfx);
 }
 
