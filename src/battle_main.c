@@ -88,7 +88,6 @@ static void CB2_HandleStartMultiPartnerBattle(void);
 static void CB2_HandleStartMultiBattle(void);
 static void CB2_HandleStartBattle(void);
 static void TryCorrectShedinjaLanguage(struct Pokemon *mon);
-static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer);
 static void BattleMainCB1(void);
 static void CB2_EndLinkBattle(void);
 static void EndLinkBattleInSteps(void);
@@ -569,9 +568,20 @@ static void CB2_InitBattleInternal(void)
     {
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED)))
         {
-            CreateNPCTrainerParty(&gEnemyParty[0], TRAINER_BATTLE_PARAM.opponentA, TRUE);
-            if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
-                CreateNPCTrainerParty(&gEnemyParty[PARTY_SIZE / 2], TRAINER_BATTLE_PARAM.opponentB, FALSE);
+            if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE))
+            {
+                for (i = 0; i < PARTY_SIZE; i++)
+                {
+                    CopyMon(&gEnemyParty[i], GetSavedPlayerPartyMon(i), sizeof(*GetSavedPlayerPartyMon(i)));
+                }
+                CreateNPCTrainerParty(&gPlayerParty[0], TRAINER_BATTLE_PARAM.opponentA, TRUE);
+            }
+            else
+            {
+                CreateNPCTrainerParty(&gEnemyParty[0], TRAINER_BATTLE_PARAM.opponentA, TRUE);
+                if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
+                    CreateNPCTrainerParty(&gEnemyParty[PARTY_SIZE / 2], TRAINER_BATTLE_PARAM.opponentB, FALSE);
+            }
             SetWildMonHeldItem();
             CalculateEnemyPartyCount();
         }
@@ -1113,7 +1123,9 @@ static void CB2_HandleStartMultiPartnerBattle(void)
         }
         else
         {
-            if (!(gBattleTypeFlags & BATTLE_TYPE_RECORDED))
+            if (!(gBattleTypeFlags & BATTLE_TYPE_RECORDED)
+            && !(TRAINER_BATTLE_PARAM.opponentA != TRAINER_ARCHIE_MT_PYRE 
+            || TRAINER_BATTLE_PARAM.opponentA != TRAINER_MAXIE_MT_PYRE))
                 gBattleTypeFlags |= BATTLE_TYPE_IS_MASTER;
             gBattleCommunication[MULTIUSE_STATE] = 13;
             SetAllPlayersBerryData();
@@ -1898,7 +1910,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                                                                         | BATTLE_TYPE_EREADER_TRAINER
                                                                         | BATTLE_TYPE_TRAINER_HILL)))
     {
-        if (firstTrainer == TRUE)
+        if (firstTrainer == TRUE && !((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE)))
             ZeroEnemyPartyMons();
 
         if (battleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
@@ -2190,7 +2202,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
     return trainer->partySize;
 }
 
-static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer)
+u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer)
 {
     u8 retVal;
     if (trainerNum == TRAINER_SECRET_BASE)

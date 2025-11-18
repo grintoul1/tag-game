@@ -264,6 +264,14 @@ static void InitBtlControllersInternal(void)
                 gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_3)] = SetControllerToRecordedOpponent;
         }
 
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+        {
+            gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = SetControllerToOpponent;
+            gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_1)] = SetControllerToPlayer;
+            gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_2)] = SetControllerToOpponent;
+            gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_3)] = SetControllerToPlayerPartner;
+        }
+
         bool32 bufferPartyOrders;
 
         if (!isLink)

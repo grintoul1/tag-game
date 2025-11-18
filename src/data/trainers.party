@@ -4635,13 +4635,57 @@ Music: Aqua
 Battle Type: Singles
 AI: Tag Trainer
 
-Marill
-Level: 29
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Tornadus-Therian @ Choice Band  
+Ability: Regenerator  
+Level: 64  
+Jolly Nature  
+- U-turn  
 
-Marill
-Level: 29
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Buzzwole @ Focus Sash  
+Ability: Beast Boost  
+Level: 64  
+Naive Nature  
+- High Horsepower  
+- Ice Punch  
+- Fell Stinger  
+- Reversal  
+
+Zoroark @ Black Glasses  
+Ability: Illusion  
+Level: 65  
+Naive Nature  
+IVs: 30 Spe  
+- Night Daze  
+- Flamethrower  
+- Sludge Bomb  
+- Hidden Power Ice  
+
+Aerodactyl @ Power Herb  
+Ability: Unnerve  
+Level: 64  
+Jolly Nature  
+- Sky Attack  
+- Rock Slide  
+- Pursuit  
+- Tailwind  
+
+Volcanion @ Wacan Berry  
+Ability: Water Absorb  
+Level: 65  
+Naive Nature  
+- Stomping Tantrum  
+- Scald  
+- Whirlpool  
+- Rain Dance  
+
+Sharpedo-Mega @ Sharpedonite  
+Ability: Strong Jaw  
+Level: 65  
+Jolly Nature  
+- Psychic Fangs  
+- Crunch  
+- Ice Fang  
+- Flip Turn  
 
 === TRAINER_MAXIE_MT_PYRE ===
 Name: Maxie /* Mt Pyre*/

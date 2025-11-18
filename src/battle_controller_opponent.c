@@ -371,44 +371,64 @@ static u32 OpponentGetTrainerPicId(u32 battlerId)
 
 static void OpponentHandleDrawTrainerPic(u32 battler)
 {
-    s16 xPos;
+    s16 xPos, yPos;
     u32 trainerPicId;
-    
-    // Sets Multibattle test opponent sprites to not be Hiker
-    if (IsMultibattleTest())
+    bool32 isFrontPic = TRUE;
+
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE)
     {
-        if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT)
-        {
-            trainerPicId = TRAINER_PIC_LEAF;
-            if (!(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
-                xPos = 176;
-            else
-                xPos = 200;
-        }
-        else
-        {
-            trainerPicId = TRAINER_PIC_RED;
-            xPos = 152;
-        }
+        trainerPicId = TRAINER_BACK_PIC_AQUA_LEADER_ARCHIE;
+        isFrontPic = FALSE;
+        xPos = 80;
+        yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
+    }
+    else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+    {
+        trainerPicId = TRAINER_BACK_PIC_MAGMA_LEADER_MAXIE;
+        isFrontPic = FALSE;
+        xPos = 80;
+        yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
     }
     else
     {
-        trainerPicId = OpponentGetTrainerPicId(battler);
-    
-        if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS) && !BATTLE_TWO_VS_ONE_OPPONENT)
+        // Sets Multibattle test opponent sprites to not be Hiker
+        if (IsMultibattleTest())
         {
-            if ((GetBattlerPosition(battler) & BIT_FLANK) != 0) // second mon
+            if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT)
+            {
+                trainerPicId = TRAINER_PIC_LEAF;
+                if (!(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
+                    xPos = 176;
+                else
+                    xPos = 200;
+            }
+            else
+            {
+                trainerPicId = TRAINER_PIC_RED;
                 xPos = 152;
-           else // first mon
-                xPos = 200;
+            }
+            yPos = 40;
         }
         else
         {
-            xPos = 176;
+            trainerPicId = OpponentGetTrainerPicId(battler);
+        
+            if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS) && !BATTLE_TWO_VS_ONE_OPPONENT)
+            {
+                if ((GetBattlerPosition(battler) & BIT_FLANK) != 0) // second mon
+                    xPos = 152;
+                else // first mon
+                    xPos = 200;
+            }
+            else
+            {
+                xPos = 176;
+            }
+            yPos = 40;
         }
     }
 
-    BtlController_HandleDrawTrainerPic(battler, trainerPicId, TRUE, xPos, 40, -1);
+    BtlController_HandleDrawTrainerPic(battler, trainerPicId, isFrontPic, xPos, yPos, -1);
 }
 
 void OpponentHandleTrainerSlide(u32 battler)

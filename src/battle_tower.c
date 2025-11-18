@@ -3287,10 +3287,12 @@ void FillPartnerParty(u16 trainerId)
                 }
             }
     }
+    else if (trainerId == TRAINER_PARTNER(PARTNER_MAXIE_MT_PYRE) || trainerId == TRAINER_PARTNER(PARTNER_ARCHIE_MT_PYRE))
+    {
 
-    else
-
-    if (trainerId > TRAINER_PARTNER(PARTNER_NONE))
+    }
+    else if (trainerId > TRAINER_PARTNER(PARTNER_NONE) 
+    && !(trainerId == TRAINER_PARTNER(PARTNER_MAXIE_MT_PYRE) || trainerId == TRAINER_PARTNER(PARTNER_ARCHIE_MT_PYRE)))
     {
         for (i = 0; i < 3; i++)
             ZeroMonData(&gPlayerParty[i + 3]);
