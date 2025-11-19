@@ -390,7 +390,6 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner cho
         } 
 }
 
-/*
 AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner does not click Coaching/Enlightening")
 {
     GIVEN {
@@ -408,5 +407,23 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner does not
                 SCORE_EQ_VAL(playerRight, MOVE_AQUA_JET, 50, target:opponentLeft); 
                 SCORE_EQ_VAL(playerRight, MOVE_AQUA_JET, 115, target:opponentRight); }
         } 
-}*/
+}
 
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner does not click Coaching/Enlightening")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { HP(80); Speed(2); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { HP(40); Moves(MOVE_DRAGON_RAGE, MOVE_AQUA_JET); Speed(2); }
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA){ HP(40); Moves(MOVE_DRAGON_RAGE); Speed(3); };
+    } WHEN {
+            TURN { EXPECT_MOVE(playerRight, MOVE_AQUA_JET, target:opponentRight);
+                SCORE_EQ_VAL(playerRight, MOVE_DRAGON_RAGE, 114, target:opponentLeft); 
+                SCORE_EQ_VAL(playerRight, MOVE_DRAGON_RAGE, 100, target:opponentRight); 
+                SCORE_EQ_VAL(playerRight, MOVE_AQUA_JET, 50, target:opponentLeft); 
+                SCORE_EQ_VAL(playerRight, MOVE_AQUA_JET, 115, target:opponentRight); }
+        } 
+}
