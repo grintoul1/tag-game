@@ -12754,7 +12754,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 }
                 break;
             case EFFECT_COACHING: // PARTNER DIFFERENCE - Opponent done
-                if (!hasPartner
+                if (!hasPartner || atkPartnerAbility == ABILITY_CONTRARY
                 || ((gBattleMons[battlerAtkPartner].statStages[STAT_ATK] >= (DEFAULT_STAT_STAGE + 2) || !HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_PHYSICAL))
                     && ((gBattleMons[battlerAtkPartner].statStages[STAT_DEF] >= (DEFAULT_STAT_STAGE + 2)) 
                     || (!HasMoveWithCategory(BATTLE_OPPOSITE(battlerAtkPartner), DAMAGE_CATEGORY_PHYSICAL)
@@ -12762,7 +12762,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_ENLIGHTENING: // PARTNER DIFFERENCE - Opponent done
-                if (!hasPartner
+                if (!hasPartner || atkPartnerAbility == ABILITY_CONTRARY
                 || ((gBattleMons[battlerAtkPartner].statStages[STAT_SPATK] >= (DEFAULT_STAT_STAGE + 2) || !HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_SPECIAL))
                     && ((gBattleMons[battlerAtkPartner].statStages[STAT_SPDEF] >= (DEFAULT_STAT_STAGE + 2)) 
                     || (!HasMoveWithCategory(BATTLE_OPPOSITE(battlerAtkPartner), DAMAGE_CATEGORY_SPECIAL)

@@ -1210,3 +1210,68 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: AI opponents c
     } 
 }
 
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: AI opponents will not click Coaching/Enlightening on a Contrary ally")
+{
+    u32 moveOpponentA1, moveOpponentA2, moveOpponentB1, moveOpponentB2, abilityOpponentA, abilityOpponentB;
+    PARAMETRIZE {   moveOpponentA1 = MOVE_COACHING, moveOpponentA2 = MOVE_WATER_GUN, 
+                    moveOpponentB1 = MOVE_ENLIGHTENING, moveOpponentB2 = MOVE_TACKLE,
+                    abilityOpponentA = ABILITY_OVERGROW, abilityOpponentB = ABILITY_OVERGROW; }
+    PARAMETRIZE {   moveOpponentA1 = MOVE_COACHING, moveOpponentA2 = MOVE_WATER_GUN, 
+                    moveOpponentB1 = MOVE_ENLIGHTENING, moveOpponentB2 = MOVE_TACKLE,
+                    abilityOpponentA = ABILITY_CONTRARY, abilityOpponentB = ABILITY_CONTRARY; }
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET);
+        MULTI_OPPONENT_A(SPECIES_SERPERIOR) { Moves(moveOpponentA1, moveOpponentA2); Ability(abilityOpponentA); }
+        MULTI_OPPONENT_B(SPECIES_SERPERIOR) { Moves(moveOpponentB1, moveOpponentB2); Ability(abilityOpponentB); }
+    } WHEN {
+            TURN {  switch(i)
+                    {
+                        case 1:
+                            SCORE_EQ_VAL(opponentLeft, moveOpponentA1, 50, target:opponentRight); 
+                            SCORE_EQ_VAL(opponentRight, moveOpponentB1, 50, target:opponentLeft);
+                            break;
+                        default:
+                            SCORE_EQ_VAL(opponentLeft, moveOpponentA1, 111, target:opponentRight); 
+                            SCORE_EQ_VAL(opponentRight, moveOpponentB1, 111, target:opponentLeft);
+                            break;
+                    }
+        } 
+    } 
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: AI opponents will not click Coaching/Enlightening on a Contrary ally")
+{
+    u32 moveOpponentA1, moveOpponentA2, moveOpponentB1, moveOpponentB2, abilityOpponentA, abilityOpponentB;
+    PARAMETRIZE {   moveOpponentA1 = MOVE_COACHING, moveOpponentA2 = MOVE_WATER_GUN, 
+                    moveOpponentB1 = MOVE_ENLIGHTENING, moveOpponentB2 = MOVE_TACKLE,
+                    abilityOpponentA = ABILITY_OVERGROW, abilityOpponentB = ABILITY_OVERGROW; }
+    PARAMETRIZE {   moveOpponentA1 = MOVE_COACHING, moveOpponentA2 = MOVE_WATER_GUN, 
+                    moveOpponentB1 = MOVE_ENLIGHTENING, moveOpponentB2 = MOVE_TACKLE,
+                    abilityOpponentA = ABILITY_CONTRARY, abilityOpponentB = ABILITY_CONTRARY; }
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET);
+        MULTI_OPPONENT_A(SPECIES_SERPERIOR) { Moves(moveOpponentA1, moveOpponentA2); Ability(abilityOpponentA); }
+        MULTI_OPPONENT_A(SPECIES_SERPERIOR) { Moves(moveOpponentB1, moveOpponentB2); Ability(abilityOpponentB); }
+    } WHEN {
+            TURN {  switch(i)
+                    {
+                        case 1:
+                            SCORE_EQ_VAL(opponentLeft, moveOpponentA1, 50, target:opponentRight); 
+                            SCORE_EQ_VAL(opponentRight, moveOpponentB1, 50, target:opponentLeft);
+                            break;
+                        default:
+                            SCORE_EQ_VAL(opponentLeft, moveOpponentA1, 111, target:opponentRight); 
+                            SCORE_EQ_VAL(opponentRight, moveOpponentB1, 111, target:opponentLeft);
+                            break;
+                    }
+        } 
+    } 
+}
