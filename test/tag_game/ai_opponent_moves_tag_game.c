@@ -698,6 +698,80 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: DEFENSIVE SETUP: Oppone
     }   
 }
 
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: EVASION SETUP: Opponent evasion setup is less incentivised when the user can be 3HKO'd")
+{
+    u32 status, opponentHp, opponentSpeed;
+    PARAMETRIZE { status = STATUS1_NONE, opponentHp = 100, opponentSpeed = 1; } // Outspeed 3HKO'd
+    PARAMETRIZE { status = STATUS1_NONE, opponentHp = 140, opponentSpeed = 1; } // Outspeed not 3HKO'd
+    PARAMETRIZE { status = STATUS1_NONE, opponentHp = 100, opponentSpeed = 5; } // Underspeed 3HKO'd
+    PARAMETRIZE { status = STATUS1_NONE, opponentHp = 140, opponentSpeed = 5; } // Underspeed not 3HKO'd
+    PARAMETRIZE { status = STATUS1_SLEEP, opponentHp = 100, opponentSpeed = 1; } // Outspeed incapacitated
+    PARAMETRIZE { status = STATUS1_SLEEP, opponentHp = 140, opponentSpeed = 5; } // Underspeed incapacitated
+    GIVEN {
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
+        MULTI_PLAYER(SPECIES_RATTATA) { Speed(4); Moves(MOVE_DRAGON_RAGE, MOVE_CELEBRATE); Status1(status); }
+        MULTI_PARTNER(SPECIES_RATTATA) { Speed(3); Moves(MOVE_DRAGON_RAGE, MOVE_CELEBRATE); Status1(status); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(opponentHp); Moves(MOVE_DOUBLE_TEAM, MOVE_TACKLE); Speed(opponentSpeed); }
+        MULTI_OPPONENT_B(SPECIES_WYNAUT) { HP(opponentHp); Moves(MOVE_DOUBLE_TEAM, MOVE_TACKLE); Speed(opponentSpeed); }
+    } WHEN {
+            TURN {  switch(i) 
+                {
+                    case 0:
+                    case 2:
+                    case 4:
+                        SCORE_EQ_VAL(opponentLeft, MOVE_DOUBLE_TEAM, 106, target:playerLeft);
+                        SCORE_EQ_VAL(opponentLeft, MOVE_DOUBLE_TEAM, 106, target:playerRight);
+                        SCORE_EQ_VAL(opponentRight, MOVE_DOUBLE_TEAM, 106, target:playerLeft);
+                        SCORE_EQ_VAL(opponentRight, MOVE_DOUBLE_TEAM, 106, target:playerRight);
+                        break;
+                    default:
+                        SCORE_EQ_VAL(opponentLeft, MOVE_DOUBLE_TEAM, 108, target:playerLeft);
+                        SCORE_EQ_VAL(opponentLeft, MOVE_DOUBLE_TEAM, 108, target:playerRight);
+                        SCORE_EQ_VAL(opponentRight, MOVE_DOUBLE_TEAM, 108, target:playerLeft);
+                        SCORE_EQ_VAL(opponentRight, MOVE_DOUBLE_TEAM, 108, target:playerRight);
+                        break;
+                }
+        }
+    }   
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: EVASION SETUP: Opponent evasion setup is less incentivised when the user can be 3HKO'd")
+{
+    u32 status, opponentHp, opponentSpeed;
+    PARAMETRIZE { status = STATUS1_NONE, opponentHp = 100, opponentSpeed = 1; } // Outspeed 3HKO'd
+    PARAMETRIZE { status = STATUS1_NONE, opponentHp = 140, opponentSpeed = 1; } // Outspeed not 3HKO'd
+    PARAMETRIZE { status = STATUS1_NONE, opponentHp = 100, opponentSpeed = 5; } // Underspeed 3HKO'd
+    PARAMETRIZE { status = STATUS1_NONE, opponentHp = 140, opponentSpeed = 5; } // Underspeed not 3HKO'd
+    PARAMETRIZE { status = STATUS1_SLEEP, opponentHp = 100, opponentSpeed = 1; } // Outspeed incapacitated
+    PARAMETRIZE { status = STATUS1_SLEEP, opponentHp = 140, opponentSpeed = 5; } // Underspeed incapacitated
+    GIVEN {
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
+        MULTI_PLAYER(SPECIES_RATTATA) { Speed(4); Moves(MOVE_DRAGON_RAGE, MOVE_CELEBRATE); Status1(status); }
+        MULTI_PARTNER(SPECIES_RATTATA) { Speed(3); Moves(MOVE_DRAGON_RAGE, MOVE_CELEBRATE); Status1(status); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { HP(opponentHp); Moves(MOVE_DOUBLE_TEAM, MOVE_TACKLE); Speed(opponentSpeed); }
+        MULTI_OPPONENT_A(SPECIES_WYNAUT) { HP(opponentHp); Moves(MOVE_DOUBLE_TEAM, MOVE_TACKLE); Speed(opponentSpeed); }
+    } WHEN {
+            TURN {  switch(i) 
+                {
+                    case 0:
+                    case 2:
+                    case 4:
+                        SCORE_EQ_VAL(opponentLeft, MOVE_DOUBLE_TEAM, 106, target:playerLeft);
+                        SCORE_EQ_VAL(opponentLeft, MOVE_DOUBLE_TEAM, 106, target:playerRight);
+                        SCORE_EQ_VAL(opponentRight, MOVE_DOUBLE_TEAM, 106, target:playerLeft);
+                        SCORE_EQ_VAL(opponentRight, MOVE_DOUBLE_TEAM, 106, target:playerRight);
+                        break;
+                    default:
+                        SCORE_EQ_VAL(opponentLeft, MOVE_DOUBLE_TEAM, 108, target:playerLeft);
+                        SCORE_EQ_VAL(opponentLeft, MOVE_DOUBLE_TEAM, 108, target:playerRight);
+                        SCORE_EQ_VAL(opponentRight, MOVE_DOUBLE_TEAM, 108, target:playerLeft);
+                        SCORE_EQ_VAL(opponentRight, MOVE_DOUBLE_TEAM, 108, target:playerRight);
+                        break;
+                }
+        }
+    }   
+}
+
 AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SWITCHING MOVES: AI will not fast Volt Switch into a mon that is slow OHKO'd")
 {
     GIVEN {
