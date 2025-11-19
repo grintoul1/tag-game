@@ -3283,8 +3283,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .levelUpLearnset = sSalanditLevelUpLearnset,
         .teachableLearnset = sSalanditTeachableLearnset,
         .eggMoveLearnset = sSalanditEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 33, SPECIES_SALAZZLE, CONDITIONS({IF_GENDER, MON_FEMALE})},
-                                {EVO_NONE, 0, SPECIES_SALAZZLE_TOTEM}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 35, SPECIES_SALAZZLE}),
     },
 
     [SPECIES_SALAZZLE] =
@@ -3479,7 +3478,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .levelUpLearnset = sStuffulLevelUpLearnset,
         .teachableLearnset = sStuffulTeachableLearnset,
         .eggMoveLearnset = sStuffulEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 32, SPECIES_BEWEAR}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_BEWEAR}),
     },
 
     [SPECIES_BEWEAR] =

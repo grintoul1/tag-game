@@ -389,7 +389,6 @@ Level: 29
 Modest Nature  
 - Scorching Sands  
 - Shadow Ball
-- Stored Power  
 - Cosmic Power  
 
 Darumaka @ Flame Orb  
@@ -606,7 +605,7 @@ Jolly Nature
 - Poison Tail
 
 === TRAINER_BRANDI ===
-Name: Brandi
+Name: Brandi /* [Optional]*/
 Class: Psychic
 Pic: Psychic F
 Gender: Female
@@ -773,7 +772,6 @@ Timid Nature
 - Volt Switch  
 - Helping Hand  
 
-
 === TRAINER_SHAWN ===
 Name: Shawn
 Class: Guitarist
@@ -837,7 +835,6 @@ Lax Nature
 - Signal Beam  
 - Gear Grind  
 - Shift Gear  
-
 
 === TRAINER_WATTSON_1 ===
 Name: Wattson
@@ -908,9 +905,23 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Sandshrew
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sneasel @ Focus Sash
+Ability: Inner Focus
+Level: 35
+Jolly Nature
+- Ice Punch
+- Knock Off
+- Upper Hand
+- Trailblaze
+
+Dugtrio @ Passho Berry
+Ability: Arena Trap
+Level: 36
+Jolly Nature
+- Stone Edge
+- High Horsepower
+- Sucker Punch
+- Fissure
 
 === TRAINER_IRENE ===
 Name: Irene
@@ -921,13 +932,23 @@ Music: Girl
 Battle Type: Doubles
 AI: Tag Trainer
 
-Shroomish
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Qwilfish-Hisui @ Eviolite
+Ability: Intimidate
+Level: 35
+Jolly Nature
+- Crunch
+- Barb Barrage
+- Fell Stinger
+- Acupressure
 
-Marill
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Raticate @ Flame Orb
+Ability: Guts
+Level: 35
+Jolly Nature
+- Facade
+- Zen Headbutt
+- Stomping Tantrum
+- Quick Attack
 
 === TRAINER_DEVAN ===
 Name: Devan
@@ -938,13 +959,23 @@ Music: Hiker
 Battle Type: Doubles
 AI: Tag Trainer
 
-Geodude
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Klawf @ Salac Berry
+Ability: Anger Shell
+Level: 33
+Adamant Nature
+- Crabhammer
+- Knock Off
+- Rock Tomb
+- Endure
 
-Geodude
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Gligar @ Bug Gem
+Ability: Hyper Cutter
+Level: 34
+Jolly Nature
+- Lunge
+- Night Slash
+- Aerial Ace
+- Low Horsepower
 
 === TRAINER_CLARK ===
 Name: Clark
@@ -955,9 +986,23 @@ Music: Hiker
 Battle Type: Doubles
 AI: Tag Trainer
 
-Geodude
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Crustle @ Power Herb
+Ability: Sturdy
+Level: 33
+Adamant Nature
+- Solar Blade
+- Leech Life
+- Stomping Tantrum
+- Knock Off
+
+Trapinch @ Custap Berry
+Ability: Arena Trap
+Level: 35
+Adamant Nature
+- First Impression
+- Dig
+- Reversal
+- Endure
 
 === TRAINER_JOSE ===
 Name: Jose
@@ -968,13 +1013,20 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Wurmple
-Level: 8
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Ribombee @ Fairy Feather
+Ability: Shield Dust
+Level: 34
+Timid Nature
+- Energy Ball
+- Dazzling Gleam
+- Silver Wind
+- Sticky Web
 
-Nincada
-Level: 8
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Mothim @ Choice Scarf
+Ability: Tinted Lens
+Level: 34
+Modest Nature
+- Signal Beam
 
 === TRAINER_JOEY ===
 Name: Joey
@@ -985,9 +1037,23 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Machop
-Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Clawitzer @ Mystic Water
+Ability: Mega Launcher
+Level: 34
+Timid Nature
+- Aura Sphere
+- Dark Pulse
+- Water Pulse
+- Flip Turn
+
+Clodsire @ Soft Sand
+Ability: Water Absorb
+Level: 34
+Adamant Nature
+- Iron Head
+- Poison Jab
+- Low Horsepower
+- Trailblaze
 
 === TRAINER_JOHNSON ===
 Name: Johnson
@@ -998,13 +1064,23 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Shroomish
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Dachsbun @ Muscle Band
+Ability: Well-Baked Body
+Level: 34
+Jolly Nature
+- Body Press
+- Crunch
+- Thunder Fang
+- Trailblaze
 
-Lotad
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Orbeetle @ Wise Glasses
+Ability: Telepathy
+Level: 34
+Timid Nature
+- Psyshock
+- Signal Beam
+- Giga Drain
+- Hypnosis
 
 === TRAINER_KAREN_1 ===
 Name: Karen
@@ -1015,9 +1091,23 @@ Music: Girl
 Battle Type: Doubles
 AI: Tag Trainer
 
-Shroomish
-Level: 9
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Magmar @ Sitrus Berry
+Ability: Flame Body
+Level: 34
+Naive Nature
+- Belch
+- Lava Plume
+- Low Sweep
+- Follow Me
+
+Ursaring @ Toxic Orb
+Ability: Quick Feet
+Level: 34
+Jolly Nature
+- Retaliate
+- Play Rough
+- Throat Chop
+- Yawn
 
 === TRAINER_JOSH ===
 Name: Josh
@@ -1028,10 +1118,35 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Geodude
-Level: 10
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Tackle
+Bastiodon @ Smooth Rock  
+Ability: Sturdy  
+Level: 34  
+Tera Type: Rock  
+Impish Nature  
+- Foul Play  
+- Body Press  
+- Stomping Tantrum  
+- Sandstorm  
+
+Carracosta @ Muscle Band  
+Ability: Sturdy  
+Level: 33  
+Tera Type: Water  
+Brave Nature  
+- Razor Shell  
+- Zen Headbutt  
+- Rock Tomb  
+- Protect  
+
+Aurorus @ Ice Gem  
+Ability: Refrigerate  
+Level: 34  
+Tera Type: Rock  
+Naive Nature  
+- Hyper Voice  
+- Body Slam  
+- Power Gem  
+- Icy Wind  
 
 === TRAINER_TOMMY ===
 Name: Tommy
@@ -1042,13 +1157,35 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Geodude
-Level: 8
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+Archeops @ Chilan Berry  
+Ability: Defeatist  
+Level: 34  
+Tera Type: Rock  
+Hasty Nature  
+- Rock Slide  
+- Acrobatics  
+- U-turn  
+- Tailwind  
 
-Geodude
-Level: 8
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Cradily @ Leftovers  
+Ability: Storm Drain  
+Level: 33  
+Tera Type: Rock  
+Bold Nature  
+- Giga Drain  
+- Ancient Power  
+- Mirror Coat  
+- Ingrain  
+
+Tyrantrum @ Twisted Spoon  
+Ability: Strong Jaw  
+Level: 34  
+Tera Type: Rock  
+Jolly Nature  
+- High Horsepower  
+- Psychic Fangs  
+- Dragon Tail  
+- Rock Tomb  
 
 === TRAINER_ROXANNE_1 ===
 Name: Roxanne
@@ -1096,7 +1233,7 @@ Adamant Nature
 - Ice Spinner  
 - Endeavor  
 
-Orthworm (F) @ Weakness Policy  
+Orthworm @ Weakness Policy  
 Ability: Earth Eater  
 Level: 35  
 Careful Nature  
@@ -1123,31 +1260,59 @@ Music: Rich
 Battle Type: Doubles
 AI: Tag Trainer
 
-Zigzagoon @ Nugget
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Persian-Alola @ Persim Berry
+Ability: Fur Coat
+Level: 37
+Naive Nature
+- Dream Eater
+- Dark Pulse
+- Burning Jealousy
+- Fake Out
 
-Poochyena
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Furfrou-Dandy @ Persim Berry
+Ability: Fur Coat
+Level: 37
+Jolly Nature
+- Zen Headbutt
+- Facade
+- Sucker Punch
+- Helping Hand
 
 === TRAINER_SARAH ===
-Name: Sarah
+Name: Sarah /* [Optional]*/
 Class: Lady
 Pic: Lady
 Gender: Female
 Music: Female
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
-Lotad
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Whimsicott @ Wide Lens
+Ability: Prankster
+Level: 37
+Timid Nature
+- Moonblast
+- Energy Ball
+- Psychic
+- Grass Whistle
 
-Zigzagoon @ Nugget
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Illumise @ Wide Lens  
+Ability: Prankster  
+Level: 37  
+Jolly Nature  
+- Bug Buzz  
+- Thunder Wave  
+- Flatter  
+- Swagger
+
+Liepard @ Wide Lens
+Ability: Prankster
+Level: 37
+Jolly Nature
+- Iron Tail
+- Foul Play
+- Play Rough
+- Swagger
 
 === TRAINER_JERRY_1 ===
 Name: Jerry
@@ -1158,12 +1323,35 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Ralts
-Level: 9
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Brionne @ Eviolite
+Ability: Liquid Voice
+Level: 37
+Modest Nature
+- Hyper Voice
+- Icy Wind
+- Draining Kiss
+- Flip Turn
+
+Torracat @ Eviolite
+Ability: Intimidate
+Level: 37
+Hasty Nature
+- Revenge
+- Fire Pledge
+- Fake Out
+- Parting Shot
+
+Dartrix @ Eviolite
+Ability: Overgrow
+Level: 37
+Timid Nature
+- Grass Pledge
+- Air Slash
+- Ominous Wind
+- Nasty Plot
 
 === TRAINER_JANICE ===
-Name: Janice
+Name: Janice /* [Optional]*/
 Class: Lass
 Pic: Lass
 Gender: Female
@@ -1171,9 +1359,32 @@ Music: Female
 Battle Type: Doubles
 AI: Tag Trainer
 
-Marill
-Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Pignite @ Eviolite
+Ability: Blaze
+Level: 37
+Adamant Nature
+- Close Combat
+- Fire Pledge
+- Wild Charge
+- Bulk Up
+
+Dewott @ Eviolite
+Ability: Torrent
+Level: 37
+Naive Nature
+- Water Pledge
+- Retaliate
+- Avalanche
+- Swords Dance
+
+Servine @ Eviolite
+Ability: Contrary
+Level: 37
+Hasty Nature
+- Leaf Storm
+- Knock Off
+- Aqua Tail
+- Glare
 
 === TRAINER_ANTHONY ===
 Name: Anthony
@@ -1184,13 +1395,21 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Magnemite
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Spinda @ Adrenaline Orb
+Ability: Contrary
+Level: 36
+Jolly Nature
+- Superpower
+- Frost Punch
+- Fake Out
+- Baton Pass
 
-Magnemite
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ambipom @ Metronome
+Ability: Technician
+Level: 37
+Jolly Nature
+- Last Resort
+- Fake Out
 
 === TRAINER_ABIGAIL_1 ===
 Name: Abigail
@@ -1201,9 +1420,23 @@ Music: Female
 Battle Type: Doubles
 AI: Tag Trainer
 
-Magnemite
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Musharna @ Iapapa Berry
+Ability: Synchronize
+Level: 36
+Calm Nature
+- Future Sight
+- Moonblast
+- Psychic
+- Yawn
+
+Houndstone @ Power Herb
+Ability: Fluffy
+Level: 37
+Adamant Nature
+- Phantom Force
+- Play Rough
+- Crunch
+- Frost Fang
 
 === TRAINER_ALYSSA ===
 Name: Alyssa
@@ -1214,9 +1447,23 @@ Music: Female
 Battle Type: Doubles
 AI: Tag Trainer
 
-Magnemite
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Dewgong @ Water Gem
+Ability: Thick Fat
+Level: 37
+Naive Nature
+- Megahorn
+- Surf
+- Frosty Gale
+- Helping Hand
+
+Sawsbuck-Summer @ Power Herb
+Ability: Sap Sipper
+Level: 37
+Jolly Nature
+- Jump Kick
+- Horn Leech
+- Bounce
+- Stomping Tantrum
 
 === TRAINER_BENJAMIN_1 ===
 Name: Benjamin
@@ -1227,9 +1474,23 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Magnemite
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Raboot @ Salac Berry
+Ability: Blaze
+Level: 37
+Naive Nature
+- Heat Wave
+- Bounce
+- Electro Ball
+- Endure
+
+Gastrodon-East @ Rindo Berry
+Ability: Storm Drain
+Level: 37
+Sassy Nature
+- Ice Beam
+- Muddy Water
+- Earth Power
+- Mirror Coat
 
 === TRAINER_JASMINE ===
 Name: Jasmine
@@ -1240,17 +1501,23 @@ Music: Female
 Battle Type: Doubles
 AI: Tag Trainer
 
-Magnemite
-Level: 14
-IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+Metang @ Air Balloon
+Ability: Clear Body
+Level: 37
+Adamant Nature
+- Meteor Mash
+- Body Press
+- Zen Headbutt
+- Frost Punch
 
-Magnemite
-Level: 14
-IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
-
-Voltorb
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Nidoqueen @ Wise Glasses
+Ability: Poison Point
+Level: 36
+Timid Nature
+- Earth Power
+- Sludge Bomb
+- Flamethrower
+- Detect
 
 === TRAINER_JACOB ===
 Name: Jacob
@@ -1261,17 +1528,97 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Voltorb
-Level: 6
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Cyclizar @ Sitrus Berry
+Ability: Regenerator
+Level: 37
+Jolly Nature
+- Temper Flare
+- Breaking Swipe
+- Shift Gear
+- Shed Tail
 
-Voltorb
-Level: 6
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Poliwrath @ Wacan Berry
+Ability: Water Absorb
+Level: 36
+Jolly Nature
+- Waterfall
+- Poison Jab
+- Circle Throw
+- Hypnosis
 
-Magnemite
-Level: 14
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Dodrio @ Silk Scarf
+Ability: Tangled Feet
+Level: 37
+Jolly Nature
+- Thrash
+- Stomping Tantrum
+- Quick Attack
+- Swords Dance
+
+=== TRAINER_BRENDAN_ROUTE_110_TREECKO ===
+Name: Brendan /* Cycling Road Blaziken*/
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Tag Trainer
+Mugshot: LightBlue
+
+Glaceon @ Chople Berry
+Ability: Ice Body
+Level: 38
+Timid Nature
+- Shadow Ball
+- Freeze-Dry
+- Icy Wind
+- Helping Hand
+
+Blaziken @ Focus Sash
+Ability: Speed Boost
+Level: 38
+Naive Nature
+- Overheat
+- Drain Punch
+- Acrobatics
+- Bulk Up
+
+Mudsdale @ Iapapa Berry
+Ability: Stamina
+Level: 36
+Impish Nature
+- Stomping Tantrum
+- Body Press
+- Lash Out
+- Counter
+
+Starmie @ Rock Gem
+Ability: Natural Cure
+Level: 37
+Timid Nature
+- Scald
+- Psyshock
+- Power Gem
+- Icy Wind
+
+Roserade @ Big Root
+Ability: Poison Point
+Level: 37
+Timid Nature
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 30 Spe
+- Giga Drain
+- Venoshock
+- Hidden Power Fire
+- Toxic
+
+Mimikyu @ Silver Powder
+Ability: Disguise
+Level: 36
+Jolly Nature
+- Play Rough
+- Leech Life
+- Shadow Claw
+- Shadow Sneak
 
 === TRAINER_BRENDAN_ROUTE_110_MUDKIP ===
 Name: Brendan /* Route 110 Sceptile*/
@@ -1283,42 +1630,62 @@ Battle Type: Singles
 AI: Tag Trainer
 Mugshot: LightBlue
 
-Slugma
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Jolteon @ Power Herb
+Ability: Volt Absorb
+Level: 38
+Hasty Nature
+- Dig
+- Signal Beam
+- Volt Switch
+- Helping Hand
 
-Wingull
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Sceptile @ White Herb
+Ability: Unburden
+Level: 38
+Naive Nature
+- Leaf Storm
+- Acrobatics
+- Rock Slide
+- Breaking Swipe
 
-Grovyle
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Toxicroak @ Covert Cloak
+Ability: Poison Point
+Level: 36
+Jolly Nature
+- Poison Jab
+- Sucker Punch
+- Low Sweep
+- Fake Out
 
-=== TRAINER_BRENDAN_ROUTE_110_TREECKO ===
-Name: Brendan /* Route 110 Blaziken*/
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Battle Type: Singles
-AI: Tag Trainer
-Mugshot: LightBlue
+Ceruledge @ Big Root
+Ability: Flash Fire
+Level: 37
+Naive Nature
+- Bitter Blade
+- Hex
+- Will-O-Wisp
+- Chill-O-Wisp
 
-Wingull
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Starmie @ Rock Gem
+Ability: Natural Cure
+Level: 37
+Timid Nature
+- Scald
+- Psyshock
+- Power Gem
+- Icy Wind
 
-Lombre
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Combusken
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ninetales-Alola @ Never-Melt Ice
+Ability: Frost Body
+Level: 36
+Timid Nature
+- Moonblast
+- Dark Pulse
+- Freeze-Dry
+- Nasty Plot
 
 === TRAINER_BRENDAN_ROUTE_110_TORCHIC ===
-Name: Brendan /* Route 110 Swampert*/
+Name: Brendan /* Cycling Road Swampert*/
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -1327,42 +1694,63 @@ Battle Type: Singles
 AI: Tag Trainer
 Mugshot: LightBlue
 
-Lombre
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Sylveon @ Kebia Berry
+Ability: Pixilate
+Level: 38
+Timid Nature
+- Hyper Voice
+- Mystical Fire
+- Draining Kiss
+- Helping Hand
 
-Slugma
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Swampert @ Rindo Berry
+Ability: Filter
+Level: 38
+Jolly Nature
+- High Horsepower
+- Liquidation
+- Knock Off
+- Avalanche
 
-Marshtomp
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Eelektross @ White Herb
+Ability: Levitate
+Level: 36
+Lax Nature
+- Superpower
+- Thunder Punch
+- Lunge
+- Giga Drain
 
-=== TRAINER_MAY_ROUTE_110_MUDKIP ===
-Name: May /* Route 110 Sceptile*/
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Battle Type: Singles
-AI: Tag Trainer
-Mugshot: MayPink
+Roserade @ Big Root
+Ability: Poison Point
+Level: 37
+Timid Nature
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 30 Spe
+- Giga Drain
+- Venoshock
+- Hidden Power Fire
+- Toxic
 
-Wingull
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Armarouge @ Charcoal
+Ability: Flash Fire
+Level: 37
+Hasty Nature
+- Heat Wave
+- Aura Sphere
+- Psyshock
+- Flash Cannon
 
-Slugma
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Grovyle
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Froslass @ Spell Tag
+Ability: Cursed Body
+Level: 36
+Naive Nature
+- Freeze-Dry
+- Hex
+- Will-O-Wisp
+- Chill-O-Wisp
 
 === TRAINER_MAY_ROUTE_110_TREECKO ===
-Name: May /* Route 110 Blaziken*/
+Name: May /* Cycling Road Blaziken*/
 Class: Rival
 Pic: May
 Gender: Female
@@ -1371,20 +1759,127 @@ Battle Type: Singles
 AI: Tag Trainer
 Mugshot: MayPink
 
-Wingull
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Glaceon @ Chople Berry
+Ability: Ice Body
+Level: 38
+Timid Nature
+- Shadow Ball
+- Freeze-Dry
+- Icy Wind
+- Helping Hand
 
-Lombre
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Blaziken @ Focus Sash
+Ability: Speed Boost
+Level: 38
+Naive Nature
+- Overheat
+- Drain Punch
+- Acrobatics
+- Bulk Up
 
-Combusken
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Mudsdale @ Iapapa Berry
+Ability: Stamina
+Level: 36
+Impish Nature
+- Stomping Tantrum
+- Body Press
+- Lash Out
+- Counter
+
+Starmie @ Rock Gem
+Ability: Natural Cure
+Level: 37
+Timid Nature
+- Scald
+- Psyshock
+- Power Gem
+- Icy Wind
+
+Roserade @ Big Root
+Ability: Poison Point
+Level: 37
+Timid Nature
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 30 Spe
+- Giga Drain
+- Venoshock
+- Hidden Power Fire
+- Toxic
+
+Mimikyu @ Silver Powder
+Ability: Disguise
+Level: 36
+Jolly Nature
+- Play Rough
+- Leech Life
+- Shadow Claw
+- Shadow Sneak
+
+=== TRAINER_MAY_ROUTE_110_MUDKIP ===
+Name: May /* Cycling Road Sceptile*/
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Tag Trainer
+Mugshot: MayPink
+
+Jolteon @ Power Herb
+Ability: Volt Absorb
+Level: 38
+Hasty Nature
+- Dig
+- Signal Beam
+- Volt Switch
+- Helping Hand
+
+Sceptile @ White Herb
+Ability: Unburden
+Level: 38
+Naive Nature
+- Leaf Storm
+- Acrobatics
+- Rock Slide
+- Breaking Swipe
+
+Toxicroak @ Covert Cloak
+Ability: Poison Point
+Level: 36
+Jolly Nature
+- Poison Jab
+- Sucker Punch
+- Low Sweep
+- Fake Out
+
+Ceruledge @ Big Root
+Ability: Flash Fire
+Level: 37
+Naive Nature
+- Bitter Blade
+- Hex
+- Will-O-Wisp
+- Chill-O-Wisp
+
+Starmie @ Rock Gem
+Ability: Natural Cure
+Level: 37
+Timid Nature
+- Scald
+- Psyshock
+- Power Gem
+- Icy Wind
+
+Ninetales-Alola @ Never-Melt Ice
+Ability: Frost Body
+Level: 36
+Timid Nature
+- Moonblast
+- Dark Pulse
+- Freeze-Dry
+- Nasty Plot
 
 === TRAINER_MAY_ROUTE_110_TORCHIC ===
-Name: May /* Route 110 Swampert*/
+Name: May /* Cycling Road Swampert*/
 Class: Rival
 Pic: May
 Gender: Female
@@ -1393,17 +1888,60 @@ Battle Type: Singles
 AI: Tag Trainer
 Mugshot: MayPink
 
-Lombre
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Sylveon @ Kebia Berry
+Ability: Pixilate
+Level: 38
+Timid Nature
+- Hyper Voice
+- Mystical Fire
+- Draining Kiss
+- Helping Hand
 
-Slugma
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Swampert @ Rindo Berry
+Ability: Filter
+Level: 38
+Jolly Nature
+- High Horsepower
+- Liquidation
+- Knock Off
+- Avalanche
 
-Marshtomp
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Eelektross @ White Herb
+Ability: Levitate
+Level: 36
+Lax Nature
+- Superpower
+- Thunder Punch
+- Lunge
+- Giga Drain
+
+Roserade @ Big Root
+Ability: Poison Point
+Level: 37
+Timid Nature
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 30 Spe
+- Giga Drain
+- Venoshock
+- Hidden Power Fire
+- Toxic
+
+Armarouge @ Charcoal
+Ability: Flash Fire
+Level: 37
+Hasty Nature
+- Heat Wave
+- Aura Sphere
+- Psyshock
+- Flash Cannon
+
+Froslass @ Spell Tag
+Ability: Cursed Body
+Level: 36
+Naive Nature
+- Freeze-Dry
+- Hex
+- Will-O-Wisp
+- Chill-O-Wisp
 
 === TRAINER_MARCOS ===
 Name: Marcos
@@ -1414,12 +1952,35 @@ Music: Intense
 Battle Type: Doubles
 AI: Tag Trainer
 
-Voltorb
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Bombirdier @ Bug Gem
+Ability: Rocky Payload
+Level: 37
+Jolly Nature
+- Dual Wingbeat
+- Knock Off
+- Rock Tomb
+- U-turn
+
+Kabutops @ Focus Sash
+Ability: Weak Armor
+Level: 36
+Jolly Nature
+- Liquidation
+- Rock Slide
+- Stomping Tantrum
+- Aqua Jet
+
+Golurk @ Black Belt
+Ability: Iron Fist
+Level: 37
+Adamant Nature
+- Hammer Arm
+- High Horsepower
+- Ice Punch
+- Shadow Punch
 
 === TRAINER_RHETT ===
-Name: Rhett
+Name: Rhett /* [Optional]*/
 Class: Black Belt
 Pic: Black Belt
 Gender: Male
@@ -1427,125 +1988,375 @@ Music: Intense
 Battle Type: Doubles
 AI: Tag Trainer
 
-Makuhita
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Hitmonchan @ Black Belt
+Ability: Iron Fist
+Level: 37
+Jolly Nature
+- Drain Punch
+- Thunder Punch
+- Fire Punch
+- Fake Out
 
-=== TRAINER_RANDALL ===
-Name: Randall
+Jynx @ Occa Berry
+Ability: Dry Skin
+Level: 37
+Naive Nature
+- Psychic
+- Ice Beam
+- Shadow Ball
+- Fake Out
+
+=== TRAINER_STEPH ===
+Name: Steph /* [Speed Room]*/
 Class: Cooltrainer
-Pic: Cooltrainer M
+Pic: Cooltrainer F
 Gender: Male
 Music: Cool
-Items: Hyper Potion
 Battle Type: Singles
 AI: Tag Trainer
 
-Swellow
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Quick Attack
-- Agility
-- Wing Attack
+Sharpedo @ Focus Sash
+Ability: Speed Boost
+Level: 38
+Jolly Nature
+- Crunch
+- Psychic Fangs
+- Ice Fang
+- Flip Turn
+
+Yanmega @ Grass Gem
+Ability: Speed Boost
+Level: 37
+Modest Nature
+- Air Slash
+- Signal Beam
+- Giga Drain
+- Detect
+
+Electrode @ Assault Vest
+Ability: Static
+Level: 37
+Timid Nature
+- Foul Play
+- Electroweb
+- Electro Ball
+- Mirror Coat
+
+Slowbro-Galar @ Quick Claw
+Ability: Quick Draw
+Level: 38
+Relaxed Nature
+- Psychic
+- Acid Spray
+- Bulldoze
+- Slack Off
 
 === TRAINER_MARY ===
-Name: Mary
+Name: Mary /* [Accuracy Room]*/
 Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Battle Type: Singles
 AI: Tag Trainer
 
-Delcatty
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Feint Attack
-- Shock Wave
+Lilligant-Hisui @ Blunder Policy  
+Ability: Hustle  
+Level: 37  
+Jolly Nature  
+- Triple Axel  
+- Axe Kick  
+- Leaf Blade  
+- Acrobatics  
+
+Machamp @ Coba Berry  
+Ability: No Guard  
+Level: 38  
+Jolly Nature  
+- Dynamic Punch  
+- Stone Edge  
+- Mega Kick  
+
+Durant @ Covert Cloak  
+Ability: Hustle  
+Level: 38  
+Jolly Nature  
+- First Impression  
+- X-Scissor  
+- Smart Strike  
+- Feint Attack  
+
+Weezing @ Wide Lens  
+Ability: Levitate  
+Level: 37  
+Calm Nature  
+- Zap Cannon  
+- Fire Blast  
+- Pain Split  
+- Swagger  
 
 === TRAINER_PARKER ===
-Name: Parker
+Name: Parker /* [Crit Room]*/
 Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Hyper Potion
 Battle Type: Singles
 AI: Tag Trainer
 
-Spinda
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Teeter Dance
-- Dizzy Punch
-- Focus Punch
+Togekiss @ Scope Lens
+Ability: Super Luck
+Level: 37
+Timid Nature
+- Hyper Voice
+- Air Cutter
+- Dazzling Gleam
 
-=== TRAINER_ALEXIA ===
-Name: Alexia
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Tag Trainer
-
-Wigglytuff
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Defense Curl
-- Double Edge
-- Shadow Ball
-
-=== TRAINER_GEORGE ===
-Name: George
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Tag Trainer
-
-Slakoth @ Sitrus Berry
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Slack Off
-- Counter
-- Shadow Ball
-
-=== TRAINER_JODY ===
-Name: Jody
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Tag Trainer
-
-Zangoose
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Swords Dance
-- Slash
-
-=== TRAINER_BERKE ===
-Name: Berke
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Tag Trainer
-
-Vigoroth
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Kingdra @ Scope Lens
+Ability: Sniper
+Level: 37
+Jolly Nature
+- Liquidation
+- Signal Beam
+- Scale Shot
 - Focus Energy
+
+Octillery @ Scope Lens
+Ability: Sniper
+Level: 36
+Hasty Nature
+- Octazooka
+- Bullet Seed
+- Rock Blast
+- Focus Energy
+
+Unfezant @ Power Herb
+Ability: Super Luck
+Level: 37
+Hasty Nature
+- Sky Attack
+- Razor Wind
+- Night Slash
+- Work Up
+
+Drapion @ Scope Lens
+Ability: Sniper
+Level: 38
+Jolly Nature
+- Cross Poison
+- Night Slash
 - Slash
+- Focus Energy
+
+=== TRAINER_ZOE ===
+Name: Zoe /* [Defense Room]*/
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Female
+Music: Cool
+Battle Type: Singles
+AI: Tag Trainer
+
+Vanilluxe @ Occa Berry
+Ability: Snow Warning
+Level: 37
+Timid Nature
+- Flash Cannon
+- Weather Ball
+- Mirror Coat
+- Aurora Veil
+
+Revavroom @ Iapapa Berry
+Ability: Filter
+Level: 37
+Jolly Nature
+- High Horsepower
+- Iron Head
+- Acid Spray
+- Screech
+
+Avalugg-Hisui @ Covert Cloak
+Ability: Sturdy
+Level: 36
+Relaxed Nature
+- Avalanche
+- Body Press
+- Rock Slide
+- Mirror Coat
+
+Shuckle @ Custap Berry
+Ability: Sturdy
+Level: 37
+Relaxed Nature
+- Dig
+- Rock Slide
+- Skitter Smack
+- Reversal
+
+Piloswine @ Eviolite
+Ability: Thick Fat
+Level: 38
+Impish Nature
+- High Horsepower
+- Avalanche
+- Reversal
+- Curse
+
+=== TRAINER_JAS ===
+Name: Jas /* [Recovery Room]*/
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Female
+Music: Cool
+Battle Type: Singles
+AI: Tag Trainer
+
+Rillaboom @ Grassy Seed
+Ability: Grassy Surge
+Level: 37
+Jolly Nature
+- Drain Punch
+- Knock Off
+- Grassy Glide
+- Fake Out
+
+Bellibolt @ Magnet
+Ability: Electromorphosis
+Level: 37
+Modest Nature
+- Parabolic Charge
+- Acid Spray
+- Soak
+- Hyper Voice
+
+Arbok @ Leftovers
+Ability: Intimidate
+Level: 36
+Hasty Nature
+- Leech Life
+- Giga Drain
+- Lash Out
+- Coil
+
+Gogoat @ Leftovers
+Ability: Grass Pelt
+Level: 37
+Impish Nature
+- Wild Charge
+- Play Rough
+- Giga Drain
+- Bulk Up
+
+Snorlax @ Leftovers
+Ability: Immunity
+Level: 38
+Impish Nature
+- Body Slam
+- Yawn
+- Stockpile
+- Swallow
+
+=== TRAINER_TYRONE ===
+Name: Tyrone /* [Strength Room]*/
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Battle Type: Singles
+AI: Tag Trainer
+
+Diggersby @ Focus Sash
+Ability: Huge Power
+Level: 37
+Jolly Nature
+- High Horsepower
+- Body Slam
+- Quick Attack
+- Swords Dance
+
+Kilowattrel @ Magnet
+Ability: Competitive
+Level: 37
+Timid Nature
+- Volt Switch
+- Air Slash
+- Charge Beam
+- Endeavor
+
+Dipplin @ Eject Pack
+Ability: Supersweet Syrup
+Level: 37
+Sassy Nature
+- Leaf Storm
+- Draco Meteor
+- Pollen Puff
+- Sucker Punch
+
+Azumarill @ Salac Berry
+Ability: Huge Power
+Level: 37
+Jolly Nature
+- Liquidation
+- Play Rough
+- Aqua Jet
+- Belly Drum
+
+Kingambit @ Life Orb
+Ability: Defiant
+Level: 38
+Adamant Nature
+- Iron Head
+- Zen Headbutt
+- Sucker Punch
+- Swords Dance
+
+=== TRAINER_DAN ===
+Name: Dan /* [Recoil Room]*/
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Battle Type: Singles
+AI: Tag Trainer
+
+Staraptor @ Liechi Berry
+Ability: Reckless
+Level: 37
+Jolly Nature
+- Brave Bird
+- Double Edge
+- Endeavor
+
+Pikachu @ Light Ball
+Ability: Static
+Level: 37
+Jolly Nature
+- Volt Tackle
+- Double Edge
+- Submission
+
+Obstagoon @ Custap Berry
+Ability: Reckless
+Level: 37
+Jolly Nature
+- Double Edge
+- Submission
+- Reversal
+- Obstruct
+
+Basculin @ Choice Band
+Ability: Adaptability
+Level: 37
+Jolly Nature
+- Wave Crash
+- Head Smash
+
+Slaking @ Silk Scarf
+Ability: Truant
+Level: 38
+Jolly Nature
+- Retaliate
+- Double Edge
 
 === TRAINER_NORMAN_1 ===
 Name: Norman
@@ -1561,7 +2372,10 @@ Kangaskhan @ Kangaskhanite
 Ability: Inner Focus  
 Level: 37  
 Jolly Nature  
-- Drain Punch  
+- Earthquake
+- Brick Break
+- Sucker Punch
+- Fake Out  
 
 Braviary @ Wacan Berry  
 Ability: Defiant  
@@ -1649,13 +2463,23 @@ Pic: Bug Catcher
 Gender: Male
 Music: Male
 
-Nincada
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Masquerain @ Charti Berry
+Ability: Tinted Lens
+Level: 39
+Timid Nature
+- Bug Buzz
+- Air Slash
+- Giga Drain
+- Quiver Dance
 
-Nincada
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lokix @ Bug Gem
+Ability: Tinted Lens
+Level: 40
+Adamant Nature
+- First Impression
+- Sucker Punch
+- Leech Life
+- Low Kick
 
 === TRAINER_LYLE ===
 Name: Lyle
@@ -1666,21 +2490,23 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Wurmple
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sudowoodo @ Expert Belt
+Ability: Sturdy
+Level: 40
+Adamant Nature
+- Wood Hammer
+- Stone Edge
+- Body Press
+- High Horsepower
 
-Wurmple
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Wurmple
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Wurmple
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Trevenant @ Sitrus Berry
+Ability: Harvest
+Level: 39
+Adamant Nature
+- Horn Leech
+- Drain Punch
+- Shadow Claw
+- Forest's Curse
 
 === TRAINER_GINA_AND_MIA_1 ===
 Name: Gina & Mia
@@ -1705,13 +2531,28 @@ Class: Lady
 Pic: Lady
 Gender: Female
 Music: Female
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
-Zigzagoon @ Nugget
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Greedent @ Petaya Berry  
+Ability: Cheek Pouch  
+Level: 41  
+Relaxed Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
+- Belch  
+- Body Press  
+- Super Fang  
+- Stuff Cheeks  
+
+Corviknight @ Liechi Berry  
+Ability: Mirror Armor  
+Level: 39  
+Relaxed Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
+- Dual Wingbeat  
+- Body Press  
+- Power Trip  
+- Iron Defense  
 
 === TRAINER_WINSTON_1 ===
 Name: Winston
@@ -1719,13 +2560,38 @@ Class: Rich Boy
 Pic: Rich Boy
 Gender: Male
 Music: Rich
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
-Zigzagoon @ Nugget
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Girafarig @ Colbur Berry  
+Ability: Inner Focus  
+Level: 40  
+Relaxed Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
+- Foul Play  
+- Signal Beam  
+- Twin Beam  
+- Trick Room  
+
+Graveler-Alola @ Eviolite  
+Ability: Galvanize  
+Level: 41  
+Brave Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
+- High Horsepower  
+- Body Slam  
+- Rock Slide  
+- Magnet Rise  
+
+Eldegoss @ White Herb  
+Ability: Cotton Down  
+Level: 39  
+Sassy Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
+- Leaf Storm  
+- Seed Bomb  
+- Hyper Voice  
+- Helping Hand  
 
 === TRAINER_MATT_PETALBURG_WOODS ===
 Name: Matt /* Petalburg Woods*/
@@ -1734,17 +2600,35 @@ Pic: Aqua Admin M
 Gender: Male
 Mugshot: Red
 Music: Aqua
-Items: Super Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
-Mightyena
-Level: 34
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Mawile @ Mawilite
+Ability: Intimidate
+Level: 41
+Adamant Nature
+- Play Rough
+- Brick Break
+- Brutal Swing
+- Fire Fang
 
-Golbat
-Level: 34
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Kingler @ Muscle Band
+Ability: Sheer Force
+Level: 39
+Jolly Nature
+- Ice Hammer
+- Liquidation
+- Stomping Tantrum
+- Protect
+
+Probopass @ Air Balloon
+Ability: Sturdy
+Level: 40
+Relaxed Nature
+- Earth Power
+- Body Press
+- Power Gem
+- Heavy Slam
 
 === TRAINER_SHELLY_PETALBURG_WOODS ===
 Name: Shelly /* Petalburg Woods*/
@@ -1756,13 +2640,32 @@ Music: Aqua
 Battle Type: Doubles
 AI: Tag Trainer
 
-Carvanha
-Level: 28
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Bruxish @ Water Gem
+Ability: Strong Jaw
+Level: 39
+Jolly Nature
+- Psychic Fangs
+- Frost Fang
+- Poison Fang
+- Flip Turn
 
-Mightyena
-Level: 28
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Gourgeist-Super @ Weakness Policy
+Ability: Insomnia
+Level: 38
+Sassy Nature
+- Poltergeist
+- Seed Bomb
+- Shadow Sneak
+- Will-O-Wisp
+
+Audino @ Audinite
+Ability: Regenerator
+Level: 41
+Bold Nature
+- Hyper Voice
+- Icy Wind
+- Yawn
+- Follow Me
 
 === TRAINER_EMMIE_1 ===
 Name: Emmie /* Route 104*/
@@ -1791,9 +2694,32 @@ Music: Intense
 Battle Type: Doubles
 AI: Tag Trainer
 
-Meditite
-Level: 13
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Hitmonchan @ Focus Sash
+Ability: Iron Fist
+Level: 41
+Jolly Nature
+- Frost Punch
+- Fire Punch
+- Thunder Punch
+- Mach Punch
+
+Hitmonlee @ Coba Berry
+Ability: Unburden
+Level: 41
+Adamant Nature
+- Jump Kick
+- Blaze Kick
+- Knock Off
+- Fake Out
+
+Hitmontop @ Punching Glove
+Ability: Intimidate
+Level: 40
+Adamant Nature
+- Triple Axel
+- Bullet Punch
+- Mach Punch
+- Counter
 
 === TRAINER_BRENDEN ===
 Name: Brenden
@@ -1804,9 +2730,23 @@ Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 
-Machop
-Level: 13
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Tsareena @ Salac Berry
+Ability: Queenly Majesty
+Level: 41
+Jolly Nature
+- Trop Kick
+- Low Sweep
+- Acrobatics
+- Helping Hand
+
+Skuntank @ Wise Glasses
+Ability: Aftermath
+Level: 40
+Timid Nature
+- Sludge Bomb
+- Flamethrower
+- Dark Pulse
+- Hex
 
 === TRAINER_CRISTIAN ===
 Name: Cristian
@@ -1817,12 +2757,26 @@ Music: Intense
 Battle Type: Doubles
 AI: Tag Trainer
 
-Makuhita
-Level: 13
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Pawmot @ Big Root
+Ability: Iron Fist
+Level: 41
+Jolly Nature
+- Thunder Punch
+- Drain Punch
+- Throat Chop
+- Coaching
 
-=== TRAINER_TAKAO ===
-Name: Takao
+Tauros-Paldea-Aqua
+Ability: Intimidate
+Level: 41
+Jolly Nature
+- Wild Charge
+- Raging Bull
+- Zen Headbutt
+- Bulk Up
+
+=== TRAINER_NAKOLAI ===
+Name: Nakolai
 Class: Black Belt
 Pic: Black Belt
 Gender: Male
@@ -1830,9 +2784,32 @@ Music: Intense
 Battle Type: Doubles
 AI: Tag Trainer
 
-Machop
-Level: 13
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Klefki @ Wide Lens
+Ability: Prankster
+Level: 40
+Hasty Nature
+- Flash Cannon
+- Play Rough
+- Skitter Smack
+- Thunder Wave
+
+Breloom @ Loaded Dice
+Ability: Technician
+Level: 40
+Jolly Nature
+- Sky Uppercut
+- Mach Punch
+- Bullet Seed
+- Spore
+
+Rhydon @ Eviolite
+Ability: Rock Head
+Level: 41
+Adamant Nature
+- Double Edge
+- Submission
+- Rock Slide
+- Curse
 
 === TRAINER_LILITH ===
 Name: Lilith
@@ -1843,9 +2820,32 @@ Music: Intense
 Battle Type: Doubles
 AI: Tag Trainer
 
-Meditite
-Level: 13
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Eelektross @ Black Belt
+Ability: Levitate
+Level: 41
+Calm Nature
+- Wild Charge
+- Drain Punch
+- Knock Off
+- Coil
+
+Poliwrath @ Salac Berry
+Ability: Water Absorb
+Level: 40
+Jolly Nature
+- High Horsepower
+- Liquidation
+- Ice Punch
+- Belly Drum
+
+Heracross @ Flame Orb
+Ability: Guts
+Level: 41
+Jolly Nature
+- Pin Missile
+- Arm Thrust
+- Rock Blast
+- Protect
 
 === TRAINER_JOCELYN ===
 Name: Jocelyn
@@ -1856,9 +2856,32 @@ Music: Intense
 Battle Type: Doubles
 AI: Tag Trainer
 
-Meditite
-Level: 13
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Lurantis @ Power Herb
+Ability: Contrary
+Level: 40
+Hasty Nature
+- Solar Blade
+- Superpower
+- Nature Power
+- Night Slash
+
+Tauros @ Hard Stone
+Ability: Sheer Force
+Level: 41
+Adamant Nature
+- Double Edge
+- Retaliate
+- Rock Slide
+- Reversal
+
+Flamigo @ White Herb
+Ability: Costar
+Level: 41
+Jolly Nature
+- Close Combat
+- Throat Chop
+- Upper Hand
+- Dual Wingbeat
 
 === TRAINER_BRAWLY_1 ===
 Name: Brawly
@@ -2222,7 +3245,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Super Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -2244,7 +3266,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Super Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -2433,9 +3454,14 @@ Battle Type: Doubles
 AI: Tag Trainer
 Mugshot: MayPink
 
-Ninjask
-Level: 27
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Electrode-Hisui @ Big Root
+Ability: Static
+Level: 48
+Timid Nature
+- Giga Drain
+- Electroweb
+- Electro Ball
+- Screech
 
 === TRAINER_MAY_ROUTE_114_TREECKO ===
 Name: May /* Route 114 Blaziken*/
@@ -2490,45 +3516,32 @@ Music: Male
 Battle Type: Singles
 AI: Tag Trainer
 
-Altaria
-Level: 47
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Aerial Ace
-- Safeguard
-- Dragon Breath
-- Dragon Dance
+Gallade @ Galladite
+Ability: Sharpness
+Level: 49
+Jolly Nature
+- Psycho Cut
+- Sacred Sword
+- Shadow Claw
+- Leaf Blade
 
-Delcatty
-Level: 46
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sing
-- Assist
-- Charm
-- Feint Attack
-
-Roselia
-Level: 47
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Magical Leaf
-- Leech Seed
-- Giga Drain
-- Toxic
-
-Magneton
-Level: 44
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Supersonic
-- Thunderbolt
-- Tri Attack
-- Screech
-
-Gardevoir
-Level: 48
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Team
-- Calm Mind
+Farigiraf @ Starf Berry
+Ability: Cud Chew
+Level: 74
+Modest Nature
 - Psychic
+- Shadow Ball
+- Thunderbolt
+- Baton Pass
+
+Iron Valiant @ Misty Seed
+Ability: Quark Drive
+Level: 74
+Jolly Nature
 - Future Sight
+- Spirit Break
+- Drain Punch
+- Night Slash
 
 === TRAINER_TYRA_AND_IVY ===
 Name: Tyra & Ivy
@@ -2542,7 +3555,7 @@ AI: Tag Trainer
 Roselia
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- GROWTH
+- Growth
 - Stun Spore
 - Mega Drain
 - Leech Seed
@@ -2882,7 +3895,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -3058,7 +4070,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -3255,7 +4266,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -3305,7 +4315,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -3796,7 +4805,6 @@ Class: Pkmn Ranger
 Pic: Pokemon Ranger F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -3818,7 +4826,6 @@ Class: Pkmn Ranger
 Pic: Pokemon Ranger M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -3840,7 +4847,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -4038,7 +5044,6 @@ Mugshot: LightBlue
 Pic: Leader Winona
 Gender: Female
 Music: Female
-Items: Hyper Potion / Hyper Potion
 Battle Type: Singles
 AI: Tag Trainer
 
@@ -4087,7 +5092,7 @@ Name: Emmie /* Jagged Pass*/
 Class: Pkmn Trainer 2
 Pic: Green
 Gender: Female
-Mugshot: Pink
+Mugshot: EmmieWithShelly
 Music: Pkmn Trainer 2
 Battle Type: Singles
 AI: Tag Trainer
@@ -4282,7 +5287,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Name: Tabitha /* Magma Hideout*/
 Class: Magma Admin
 Pic: Magma Admin
-Mugshot: Misty
+Mugshot: MaxieWithArchie
 Gender: Male
 Music: Magma
 Battle Type: Doubles
@@ -4308,7 +5313,7 @@ IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 Name: Courtney /* Magma Hideout*/
 Class: Magma Admin
 Pic: Magma Admin F
-Mugshot: Misty
+Mugshot: MaxieWithArchie
 Gender: Female
 Music: Magma
 Battle Type: Doubles
@@ -4371,7 +5376,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -4389,7 +5393,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -4766,9 +5769,8 @@ Name: Matt /* Aqua Hideout*/
 Class: Aqua Admin
 Pic: Aqua Admin M
 Gender: Male
-Mugshot: Red
+Mugshot: ArchieWithMaxie
 Music: Aqua
-Items: Super Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -4784,7 +5786,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Name: Shelly /* Aqua Hideout*/
 Class: Aqua Admin
 Pic: Aqua Admin F
-Mugshot: Red
+Mugshot: ArchieWithMaxie
 Gender: Female
 Music: Aqua
 Battle Type: Doubles
@@ -5189,7 +6191,6 @@ Mugshot: Purple
 Pic: Leader Tate And Liza
 Gender: Male
 Music: Female
-Items: Hyper Potion / Hyper Potion / Hyper Potion / Hyper Potion
 Battle Type: Singles
 AI: Tag Trainer
 
@@ -5558,7 +6559,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -6081,7 +7081,6 @@ Class: Expert
 Pic: Expert F
 Gender: Female
 Music: Intense
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -6145,7 +7144,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -6163,7 +7161,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -6228,7 +7225,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -6383,7 +7379,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -6734,7 +7729,6 @@ Pic: Aqua Admin F
 Mugshot: AquaMagma
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -6768,7 +7762,7 @@ IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
 Name: Archie /* Sky Pillar*/
 Class: Aqua Leader
 Pic: Aqua Leader Archie
-Mugshot: Red
+Mugshot: ArchieWithMaxie
 Gender: Male
 Music: Male
 Battle Type: Singles
@@ -6818,7 +7812,6 @@ Naive Nature
 - Thunderclap
 - Weather Ball
 
-
 Basculegion @ Life Orb
 Ability: Swift Swim
 Level: 87
@@ -6832,7 +7825,7 @@ Lonely Nature
 Name: Maxie /* Sky Pillar*/
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Mugshot: Misty
+Mugshot: MaxieWithArchie
 Gender: Male
 Music: Male
 Battle Type: Singles
@@ -6923,7 +7916,6 @@ Class: Lady
 Pic: Lady
 Gender: Female
 Music: Female
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7006,7 +7998,6 @@ Class: Lady
 Pic: Lady
 Gender: Female
 Music: Female
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7089,7 +8080,6 @@ Mugshot: Blue
 Pic: Leader Juan
 Gender: Male
 Music: Male
-Items: Hyper Potion / Hyper Potion
 Battle Type: Singles
 AI: Tag Trainer
 
@@ -7637,7 +8627,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7655,7 +8644,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7669,7 +8657,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7683,7 +8670,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7705,7 +8691,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7727,7 +8712,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7749,7 +8733,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7767,7 +8750,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7815,7 +8797,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7836,7 +8817,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7879,7 +8859,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7901,7 +8880,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -7927,7 +8905,6 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8124,7 +9101,6 @@ Class: Pkmn Ranger
 Pic: Pokemon Ranger M
 Gender: Male
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8138,7 +9114,6 @@ Class: Pkmn Ranger
 Pic: Pokemon Ranger F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Battle Type: Doubles
 AI: Tag Trainer
 
@@ -8325,7 +9300,7 @@ Mugshot: DarkPurple
 Sableye-Mega @ Sablenite  
 Ability: Magic Bounce  
 Sassy Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Poltergeist  
 - Foul Play  
 - Ally Switch  
@@ -8334,7 +9309,7 @@ IVs: 0 Spe
 Conkeldurr @ Focus Sash  
 Ability: Iron Fist  
 Brave Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Hammer Arm  
 - Ice Punch  
 - Poison Jab  
@@ -8344,7 +9319,7 @@ Grimmsnarl @ Weakness Policy
 Ability: Prankster  
 Level: 99  
 Brave Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Spirit Break  
 - Hammer Arm  
 - enlightening  
@@ -8354,7 +9329,7 @@ Zoroark-Hisui @ Iron Ball
 Ability: Illusion  
 Level: 99  
 Quiet Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Hyper Voice  
 - Sludge Bomb  
 - Shadow Ball  
@@ -8363,7 +9338,7 @@ IVs: 0 Spe
 Necrozma-Dawn-Wings @ Room Service  
 Ability: Prism Armor  
 Quiet Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Focus Blast  
 - Moongeist Beam  
 - Psychic  
@@ -8372,7 +9347,7 @@ IVs: 0 Spe
 Brute Bonnet @ Booster Energy  
 Ability: Quark Drive  
 Brave Nature  
-IVs: 0 Spe  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
 - Seed Bomb  
 - Lash Out  
 - Stomping Tantrum  
@@ -8400,7 +9375,7 @@ Mamoswine @ Chople Berry
 Ability: Thick Fat  
 Jolly Nature  
 - Earthquake  
-- Icicle Crash  
+- Icicle Crash 
 - Superpower  
 - Ice Shard  
 

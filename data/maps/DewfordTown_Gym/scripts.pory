@@ -122,7 +122,7 @@ DewfordTown_Gym_EventScript_AnimateFlashFullBrightness::
 
 DewfordTown_Gym_EventScript_CountTrainersDefeated::
 	setvar VAR_0x8000, 0
-	goto_if_not_defeated TRAINER_TAKAO, DewfordTown_Gym_EventScript_CheckJocelyn
+	goto_if_not_defeated TRAINER_NAKOLAI, DewfordTown_Gym_EventScript_CheckJocelyn
 	addvar VAR_0x8000, 1
 DewfordTown_Gym_EventScript_CheckJocelyn::
 	goto_if_not_defeated TRAINER_JOCELYN, DewfordTown_Gym_EventScript_CheckLaura
@@ -320,7 +320,7 @@ end
 
 DewfordTown_Gym_EventScript_CristianTakaoDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_CRISTIAN, DewfordTown_Gym_Text_CristianDefeat, TRAINER_TAKAO, DewfordTown_Gym_Text_TakaoDefeat, PARTNER_EMMIE
+multi_2p_vs_2 TRAINER_CRISTIAN, DewfordTown_Gym_Text_CristianDefeat, TRAINER_NAKOLAI, DewfordTown_Gym_Text_TakaoDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, DewfordTown_Gym_EventScript_CristianTakaoVictory
 fadescreen FADE_TO_BLACK

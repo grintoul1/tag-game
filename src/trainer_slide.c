@@ -58,7 +58,46 @@ static const u8* const sTrainerSlides[DIFFICULTY_COUNT][TRAINER_PARTNER(PARTNER_
 {
     [DIFFICULTY_NORMAL] =
     {
+        [TRAINER_WATTSON_1] = {
+            [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING(
+                "Let's see if you can keep up with the lightning speeds of my electric Pokémon!{PAUSE_UNTIL_PRESS}"
+            ),
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING(
+                "Let me show you kids the kind of challenges you must be prepared to face out here in the real world!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
+        [TRAINER_ROXANNE_1] = {
+            [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING(
+                "Allow me to show you why I have been given this responsibility despite my youth!{PAUSE_UNTIL_PRESS}"
+            ),
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING(
+                "Let's see if you have the skill to adapt to this!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
+        [TRAINER_NORMAN_1] = {
+            [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING(
+                "The excitement of battling with my own family!{PAUSE_UNTIL_PRESS}"
+            ),
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING(
+                "Time to experience the true strength of the Parental Bond!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
+        [TRAINER_WALLY_ROUTE_114] = {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING(
+                "You don't understand how far Ralts and I have come!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
     },
+};
+
+static const u8* const sEmmieSlides[TRAINERS_COUNT][TRAINER_SLIDE_COUNT] =
+{
+
+    [TRAINER_NORMAN_1] = {
+        [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING(
+            "Don't go thinking that new bikes will make us go easy on you, old man!{PAUSE_UNTIL_PRESS}"
+        ),
+    }
 };
 
 static const u8* const sFrontierTrainerSlides[DIFFICULTY_COUNT][FRONTIER_TRAINERS_COUNT][TRAINER_SLIDE_COUNT] =
@@ -132,6 +171,8 @@ static const u8* const *GetTrainerSlideArray(enum DifficultyLevel difficulty, u3
         return sFrontierTrainerSlides[difficulty][trainerId];
     else if (TESTING)
         return sTestTrainerSlides[difficulty][trainerId];
+    else if (trainerId == TRAINER_PARTNER(PARTNER_EMMIE))
+        return sEmmieSlides[gTrainerBattleParameter.params.opponentA];
     else
         return sTrainerSlides[difficulty][trainerId];
 }

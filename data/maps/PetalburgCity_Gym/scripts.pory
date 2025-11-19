@@ -942,7 +942,7 @@ end
 
 PetalburgCity_Gym_EventScript_RandallDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_RANDALL, PetalburgCity_Gym_Text_RandallDefeat, PARTNER_EMMIE
+multi_2p_vs_1 TRAINER_STEPH, PetalburgCity_Gym_Text_RandallDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, PetalburgCity_Gym_EventScript_RandallVictory
 fadescreen FADE_TO_BLACK
@@ -1024,7 +1024,7 @@ end
 
 PetalburgCity_Gym_EventScript_GeorgeDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_GEORGE, PetalburgCity_Gym_Text_GeorgeDefeat, PARTNER_EMMIE
+multi_2p_vs_1 TRAINER_JAS, PetalburgCity_Gym_Text_GeorgeDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, PetalburgCity_Gym_EventScript_GeorgeVictory
 fadescreen FADE_TO_BLACK
@@ -1065,7 +1065,7 @@ end
 
 PetalburgCity_Gym_EventScript_BerkeDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_BERKE, PetalburgCity_Gym_Text_BerkeDefeat, PARTNER_EMMIE
+multi_2p_vs_1 TRAINER_DAN, PetalburgCity_Gym_Text_BerkeDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, PetalburgCity_Gym_EventScript_BerkeVictory
 fadescreen FADE_TO_BLACK
@@ -1147,7 +1147,7 @@ end
 
 PetalburgCity_Gym_EventScript_AlexiaDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_ALEXIA, PetalburgCity_Gym_Text_AlexiaDefeat, PARTNER_EMMIE
+multi_2p_vs_1 TRAINER_ZOE, PetalburgCity_Gym_Text_AlexiaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, PetalburgCity_Gym_EventScript_AlexiaVictory
 fadescreen FADE_TO_BLACK
@@ -1188,7 +1188,7 @@ end
 
 PetalburgCity_Gym_EventScript_JodyDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_JODY, PetalburgCity_Gym_Text_JodyDefeat, PARTNER_EMMIE
+multi_2p_vs_1 TRAINER_TYRONE, PetalburgCity_Gym_Text_JodyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, PetalburgCity_Gym_EventScript_JodyVictory
 fadescreen FADE_TO_BLACK

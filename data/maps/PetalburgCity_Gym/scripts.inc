@@ -1887,7 +1887,7 @@ PetalburgCity_Gym_EventScript_RandallDoMultiBattle::
 # 944 "data/maps/PetalburgCity_Gym/scripts.pory"
 playbgm MUS_GYM, TRUE
 # 945 "data/maps/PetalburgCity_Gym/scripts.pory"
-multi_2p_vs_1 TRAINER_RANDALL, PetalburgCity_Gym_Text_RandallDefeat, PARTNER_EMMIE
+multi_2p_vs_1 TRAINER_STEPH, PetalburgCity_Gym_Text_RandallDefeat, PARTNER_EMMIE
 # 946 "data/maps/PetalburgCity_Gym/scripts.pory"
 switch VAR_RESULT
 # 947 "data/maps/PetalburgCity_Gym/scripts.pory"
@@ -2051,7 +2051,7 @@ PetalburgCity_Gym_EventScript_GeorgeDoMultiBattle::
 # 1026 "data/maps/PetalburgCity_Gym/scripts.pory"
 playbgm MUS_GYM, TRUE
 # 1027 "data/maps/PetalburgCity_Gym/scripts.pory"
-multi_2p_vs_1 TRAINER_GEORGE, PetalburgCity_Gym_Text_GeorgeDefeat, PARTNER_EMMIE
+multi_2p_vs_1 TRAINER_JAS, PetalburgCity_Gym_Text_GeorgeDefeat, PARTNER_EMMIE
 # 1028 "data/maps/PetalburgCity_Gym/scripts.pory"
 switch VAR_RESULT
 # 1029 "data/maps/PetalburgCity_Gym/scripts.pory"
@@ -2133,7 +2133,7 @@ PetalburgCity_Gym_EventScript_BerkeDoMultiBattle::
 # 1067 "data/maps/PetalburgCity_Gym/scripts.pory"
 playbgm MUS_GYM, TRUE
 # 1068 "data/maps/PetalburgCity_Gym/scripts.pory"
-multi_2p_vs_1 TRAINER_BERKE, PetalburgCity_Gym_Text_BerkeDefeat, PARTNER_EMMIE
+multi_2p_vs_1 TRAINER_DAN, PetalburgCity_Gym_Text_BerkeDefeat, PARTNER_EMMIE
 # 1069 "data/maps/PetalburgCity_Gym/scripts.pory"
 switch VAR_RESULT
 # 1070 "data/maps/PetalburgCity_Gym/scripts.pory"
@@ -2297,7 +2297,7 @@ PetalburgCity_Gym_EventScript_AlexiaDoMultiBattle::
 # 1149 "data/maps/PetalburgCity_Gym/scripts.pory"
 playbgm MUS_GYM, TRUE
 # 1150 "data/maps/PetalburgCity_Gym/scripts.pory"
-multi_2p_vs_1 TRAINER_ALEXIA, PetalburgCity_Gym_Text_AlexiaDefeat, PARTNER_EMMIE
+multi_2p_vs_1 TRAINER_ZOE, PetalburgCity_Gym_Text_AlexiaDefeat, PARTNER_EMMIE
 # 1151 "data/maps/PetalburgCity_Gym/scripts.pory"
 switch VAR_RESULT
 # 1152 "data/maps/PetalburgCity_Gym/scripts.pory"
@@ -2379,7 +2379,7 @@ PetalburgCity_Gym_EventScript_JodyDoMultiBattle::
 # 1190 "data/maps/PetalburgCity_Gym/scripts.pory"
 playbgm MUS_GYM, TRUE
 # 1191 "data/maps/PetalburgCity_Gym/scripts.pory"
-multi_2p_vs_1 TRAINER_JODY, PetalburgCity_Gym_Text_JodyDefeat, PARTNER_EMMIE
+multi_2p_vs_1 TRAINER_TYRONE, PetalburgCity_Gym_Text_JodyDefeat, PARTNER_EMMIE
 # 1192 "data/maps/PetalburgCity_Gym/scripts.pory"
 switch VAR_RESULT
 # 1193 "data/maps/PetalburgCity_Gym/scripts.pory"

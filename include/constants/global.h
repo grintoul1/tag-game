@@ -20,6 +20,7 @@
 #include "config/ai_partner.h"
 #include "config/battle.h"
 #include "config/caps.h"
+#include "config/contest.h"
 #include "config/debug.h"
 #include "config/dexnav.h"
 #include "config/follower_npc.h"
@@ -117,12 +118,14 @@
 #define ALL_MOVES_MASK ((1 << MAX_MON_MOVES) - 1)
 
 #define CONTESTANT_COUNT 4
-#define CONTEST_CATEGORY_COOL     0
-#define CONTEST_CATEGORY_BEAUTY   1
-#define CONTEST_CATEGORY_CUTE     2
-#define CONTEST_CATEGORY_SMART    3
-#define CONTEST_CATEGORY_TOUGH    4
-#define CONTEST_CATEGORIES_COUNT  5
+#define CONTEST_CATEGORY_COOL      0
+#define CONTEST_CATEGORY_BEAUTIFUL 1
+#define CONTEST_CATEGORY_BEAUTY    CONTEST_CATEGORY_BEAUTIFUL
+#define CONTEST_CATEGORY_CUTE      2
+#define CONTEST_CATEGORY_CLEVER    3
+#define CONTEST_CATEGORY_SMART     CONTEST_CATEGORY_CLEVER
+#define CONTEST_CATEGORY_TOUGH     4
+#define CONTEST_CATEGORIES_COUNT   5
 
 // string lengths
 #define ITEM_NAME_LENGTH 20

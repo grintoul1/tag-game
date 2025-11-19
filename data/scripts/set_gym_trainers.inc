@@ -17,7 +17,7 @@ RustboroCity_Gym_SetGymTrainers::
 	return
 
 DewfordTown_Gym_SetGymTrainers::
-	settrainerflag TRAINER_TAKAO
+	settrainerflag TRAINER_NAKOLAI
 	settrainerflag TRAINER_JOCELYN
 	settrainerflag TRAINER_LAURA
 	settrainerflag TRAINER_BRENDEN
@@ -45,13 +45,13 @@ LavaridgeTown_Gym_SetGymTrainers::
 	return
 
 PetalburgCity_Gym_SetGymTrainers::
-	settrainerflag TRAINER_RANDALL
+	settrainerflag TRAINER_STEPH
 	settrainerflag TRAINER_PARKER
-	settrainerflag TRAINER_GEORGE
-	settrainerflag TRAINER_BERKE
+	settrainerflag TRAINER_JAS
+	settrainerflag TRAINER_DAN
 	settrainerflag TRAINER_MARY
-	settrainerflag TRAINER_ALEXIA
-	settrainerflag TRAINER_JODY
+	settrainerflag TRAINER_ZOE
+	settrainerflag TRAINER_TYRONE
 	return
 
 FortreeCity_Gym_SetGymTrainers::
