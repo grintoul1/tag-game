@@ -5051,7 +5051,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Fires a lump of ink to\n"
             "damage and cut accuracy."),
         .effect = EFFECT_HIT,
-        .power = 65,
+        .power = 80,
         .type = TYPE_WATER,
         .accuracy = 100,
         .pp = 10,
