@@ -482,7 +482,7 @@ AI_SINGLE_BATTLE_TEST("AI will not choose Burn Up if the user lost the Fire typi
 
 AI_SINGLE_BATTLE_TEST("AI will only choose Surf 1/3 times if the opposing mon has Volt Absorb")
 {
-    PASSES_RANDOMLY(1, 3, RNG_AI_ABILITY);
+    PASSES_RANDOMLY(2, 3, RNG_AI_ABILITY);
     GIVEN {
         ASSUME(GetMoveType(MOVE_THUNDERBOLT) == TYPE_ELECTRIC);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
@@ -499,7 +499,7 @@ AI_SINGLE_BATTLE_TEST("AI will only choose Surf 1/3 times if the opposing mon ha
 
 AI_SINGLE_BATTLE_TEST("AI will choose Thunderbolt then Surf 2/3 times if the opposing mon has Volt Absorb")
 {
-    PASSES_RANDOMLY(2, 3, RNG_AI_ABILITY);
+    PASSES_RANDOMLY(1, 3, RNG_AI_ABILITY);
     GIVEN {
         ASSUME(GetMoveType(MOVE_THUNDERBOLT) == TYPE_ELECTRIC);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
