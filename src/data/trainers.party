@@ -5283,6 +5283,58 @@ Mightyena
 Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
+=== TRAINER_GRUNT_MAGMA_HIDEOUT_11 ===
+Name: Grunt /* Magma Hideout #11*/
+Class: Team Magma
+Pic: Magma Grunt M
+Gender: Male
+Music: Magma
+Battle Type: Doubles
+AI: Tag Trainer
+
+Mightyena
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_MAGMA_HIDEOUT_12 ===
+Name: Grunt /* Magma Hideout #12*/
+Class: Team Magma
+Pic: Magma Grunt F
+Gender: Male
+Music: Magma
+Battle Type: Doubles
+AI: Tag Trainer
+
+Mightyena
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_MAGMA_HIDEOUT_13 ===
+Name: Grunt /* Magma Hideout #13*/
+Class: Team Magma
+Pic: Magma Grunt M
+Gender: Male
+Music: Magma
+Battle Type: Doubles
+AI: Tag Trainer
+
+Mightyena
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_MAGMA_HIDEOUT_14 ===
+Name: Grunt /* Magma Hideout #14*/
+Class: Team Magma
+Pic: Magma Grunt M
+Gender: Male
+Music: Magma
+Battle Type: Doubles
+AI: Tag Trainer
+
+Mightyena
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
 === TRAINER_TABITHA_MAGMA_HIDEOUT ===
 Name: Tabitha /* Magma Hideout*/
 Class: Magma Admin
