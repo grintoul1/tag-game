@@ -240,7 +240,6 @@ AI_DOUBLE_BATTLE_TEST("AI will choose Beat Up on an ally with Justified if it wi
 
 AI_DOUBLE_BATTLE_TEST("AI will choose Earthquake if partner is not alive")
 {
-    KNOWN_FAILING; // AI changed
     ASSUME(GetMoveTarget(MOVE_EARTHQUAKE) == MOVE_TARGET_FOES_AND_ALLY);
     ASSUME(GetMoveType(MOVE_EARTHQUAKE) == TYPE_GROUND);
 
