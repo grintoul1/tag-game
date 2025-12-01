@@ -1152,9 +1152,15 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     s32 atkPriority = GetBattleMovePriority(battlerAtk, abilityAtk, move);
     u16 *targetMove = GetMovesArray(battlerDef);
     u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
+    u32 *atkBestMoves = {0};
+    u32 *defBestMoves = {0};
 
     SetTypeBeforeUsingMove(move, battlerAtk);
     moveType = GetBattleMoveType(move);
+
+    // Set battlerAtk and battlerDef best dmg moves
+    GetBestDmgMoveFromBattler(battlerAtk, battlerDef, AI_ATTACKING, atkBestMoves);
+    GetBestDmgMoveFromBattler(battlerDef, battlerAtk, AI_DEFENDING, defBestMoves);
 
     if (IsPowderMove(move) && !IsAffectedByPowderMove(battlerDef, aiData->abilities[battlerDef], aiData->holdEffects[battlerDef]))
         ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -1169,13 +1175,19 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
 
     // Don't setup into expected Focus Punch.
-    if (GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS
-        && nonVolatileStatus != MOVE_EFFECT_SLEEP
-        && GetMoveEffect(predictedMove) != EFFECT_FOCUS_PUNCH
-        && GetMoveEffect(GetBestDmgMoveFromBattler(battlerDef, battlerAtk, AI_DEFENDING)) == EFFECT_FOCUS_PUNCH
-        && RandomPercentage(RNG_AI_STATUS_FOCUS_PUNCH, STATUS_MOVE_FOCUS_PUNCH_CHANCE))
+    for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+        if (GetMoveEffect(defBestMoves[i]) == EFFECT_FOCUS_PUNCH)
+        {
+            if (GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS
+                && nonVolatileStatus != MOVE_EFFECT_SLEEP
+                && GetMoveEffect(predictedMove) != EFFECT_FOCUS_PUNCH
+                && RandomPercentage(RNG_AI_STATUS_FOCUS_PUNCH, STATUS_MOVE_FOCUS_PUNCH_CHANCE))
+            {
+                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                break;
+            }
+        }
     }
 
     if (effectiveness == UQ_4_12(0.0))
@@ -4020,7 +4032,7 @@ static bool32 ShouldCompareMove(u32 battlerAtk, u32 battlerDef, u32 moveIndex, u
         return FALSE;
     if (GetNoOfHitsToKOBattler(battlerAtk, battlerDef, moveIndex, AI_ATTACKING) == 0)
         return FALSE;
-    if (gAiThinkingStruct->aiFlags[battlerAtk] & (AI_FLAG_RISKY | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE | AI_FLAG_PARTNER | AI_FLAG_TAG_OPPONENT) && GetBestDmgMoveFromBattler(battlerAtk, battlerDef, AI_ATTACKING) == move)
+    if (gAiThinkingStruct->aiFlags[battlerAtk] & (AI_FLAG_RISKY | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE | AI_FLAG_PARTNER | AI_FLAG_TAG_OPPONENT) && IsBestDmgMove(battlerAtk, battlerDef, AI_ATTACKING, move))
         return FALSE;
     return TRUE;
 }
@@ -6527,7 +6539,6 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
 
     u16 bestMoves[4] = {0};
     u32 bestTarget;
-    u32 thisMove = MAX_MON_MOVES;
     
     if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER)
     {
@@ -6552,20 +6563,12 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); // No point in checking the move further so return early
             else
             {
-                if (gAiThinkingStruct->aiFlags[battlerAtk] & (AI_FLAG_RISKY | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE))
+                if (gAiThinkingStruct->aiFlags[battlerAtk] & (AI_FLAG_RISKY | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE) 
+                    && IsBestDmgMove(battlerAtk, battlerDef, AI_ATTACKING, move))
                 {
-                    for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
-                    {
-                        if (moves[moveIndex] == move)
-                            thisMove = moveIndex;
-                    }
-                    if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, thisMove, AI_ATTACKING)
-                    || GetBestDmgMoveFromBattler(battlerAtk, battlerDef, AI_ATTACKING) == move)
-                    {
-                        ADJUST_SCORE(BEST_DAMAGE_MOVE);
-                        if (AI_RandLessThan(51))
-                            ADJUST_SCORE(2);
-                    }
+                    ADJUST_SCORE(BEST_DAMAGE_MOVE);
+                    if (RandomPercentage(RNG_AI_CUSTOM_AI_TWENTY_PERCENT, CUSTOM_AI_TWENTY_PERCENT))
+                        ADJUST_SCORE(2);
                 }
             }
         }
@@ -7211,6 +7214,10 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     SetTypeBeforeUsingMove(move, battlerAtk);
     moveType = GetBattleMoveType(move);
 
+    // Set target best dmg moves
+    u32 *defBestMoves = {0};
+    GetBestDmgMoveFromBattler(battlerDef, battlerAtk, AI_DEFENDING, defBestMoves);
+
     // AI_CheckBadMove
     {
         if (IsPowderMove(move) && !IsAffectedByPowderMove(battlerDef, aiData->abilities[battlerDef], aiData->holdEffects[battlerDef]))
@@ -7226,13 +7233,19 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
 
         // Don't setup into expected Focus Punch.
-        if (GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS
-            && nonVolatileStatus != MOVE_EFFECT_SLEEP
-            && GetMoveEffect(predictedMove) != EFFECT_FOCUS_PUNCH
-            && GetMoveEffect(GetBestDmgMoveFromBattler(battlerDef, battlerAtk, AI_DEFENDING)) == EFFECT_FOCUS_PUNCH
-            && RandomPercentage(RNG_AI_STATUS_FOCUS_PUNCH, STATUS_MOVE_FOCUS_PUNCH_CHANCE))
+        for (i = 0; i < MAX_MON_MOVES; i++)
         {
-            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+            if (GetMoveEffect(defBestMoves[i]) == EFFECT_FOCUS_PUNCH)
+            {
+                if (GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS
+                    && nonVolatileStatus != MOVE_EFFECT_SLEEP
+                    && GetMoveEffect(predictedMove) != EFFECT_FOCUS_PUNCH
+                    && RandomPercentage(RNG_AI_STATUS_FOCUS_PUNCH, STATUS_MOVE_FOCUS_PUNCH_CHANCE))
+                {
+                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                    break;
+                }
+            }
         }
 
         if (effectiveness == UQ_4_12(0.0))
@@ -12415,6 +12428,8 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     s32 atkPriority = GetBattleMovePriority(battlerAtk, abilityAtk, move);
     u32 movesetIndex = gAiThinkingStruct->movesetIndex;
     uq4_12_t effectiveness = aiData->effectiveness[battlerAtk][battlerDef][movesetIndex];
+    u32 *atkBestMoves = {0};
+    u32 *defBestMoves = {0};
 
     // partner data 
     bool32 hasPartner = HasPartner(battlerAtk);
@@ -12446,6 +12461,10 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     SetTypeBeforeUsingMove(move, battlerAtk);
     moveType = GetBattleMoveType(move);
 
+    // Set battlerAtk and battlerDef best dmg moves
+    GetBestDmgMoveFromBattler(battlerAtk, battlerDef, AI_ATTACKING, atkBestMoves);
+    GetBestDmgMoveFromBattler(battlerDef, battlerAtk, AI_DEFENDING, defBestMoves);
+
     // AI_CheckBadMove
     {
         if (IsPowderMove(move) && !IsAffectedByPowderMove(battlerDef, aiData->abilities[battlerDef], aiData->holdEffects[battlerDef]))
@@ -12461,13 +12480,19 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
 
         // Don't setup into expected Focus Punch.
-        if (GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS
-            && nonVolatileStatus != MOVE_EFFECT_SLEEP
-            && GetMoveEffect(predictedMove) != EFFECT_FOCUS_PUNCH
-            && GetMoveEffect(GetBestDmgMoveFromBattler(battlerDef, battlerAtk, AI_DEFENDING)) == EFFECT_FOCUS_PUNCH
-            && RandomPercentage(RNG_AI_STATUS_FOCUS_PUNCH, STATUS_MOVE_FOCUS_PUNCH_CHANCE))
+        for (i = 0; i < MAX_MON_MOVES; i++)
         {
-            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+            if (GetMoveEffect(defBestMoves[i]) == EFFECT_FOCUS_PUNCH)
+            {
+                if (GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS
+                    && nonVolatileStatus != MOVE_EFFECT_SLEEP
+                    && GetMoveEffect(predictedMove) != EFFECT_FOCUS_PUNCH
+                    && RandomPercentage(RNG_AI_STATUS_FOCUS_PUNCH, STATUS_MOVE_FOCUS_PUNCH_CHANCE))
+                {
+                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                    break;
+                }
+            }
         }
 
         if (effectiveness == UQ_4_12(0.0))
@@ -14396,7 +14421,6 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 
     // AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE
     {
-        u32 thisMove = MAX_MON_MOVES;
 
         // Targeting partner, check benefits of doing that instead
         if (IsTargetingPartner(battlerAtk, battlerDef) && GetMovePower(move) != 0)
@@ -14411,13 +14435,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             }
             else
             {
-                for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
-                {
-                    if (moves[moveIndex] == move)
-                        thisMove = moveIndex;
-                }
-                if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, thisMove, AI_ATTACKING)
-                || GetBestDmgMoveFromBattler(battlerAtk, battlerDef, AI_ATTACKING) == move)
+                if (IsBestDmgMove(battlerAtk, battlerDef, AI_ATTACKING, move))
                 {
                     ADJUST_SCORE(BEST_DAMAGE_MOVE);
                     if (RandomPercentage(RNG_AI_CUSTOM_AI_TWENTY_PERCENT, CUSTOM_AI_TWENTY_PERCENT))

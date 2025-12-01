@@ -115,3 +115,36 @@ AI_SINGLE_BATTLE_TEST("AI will select Throat Chop if the sound move is the best 
         TURN { EXPECT_MOVE(opponent, MOVE_THROAT_CHOP); MOVE(player, MOVE_HYPER_VOICE);}
     }
 }
+
+AI_SINGLE_BATTLE_TEST("AI will incentivise multiple best damage moves in cases of damage ties")
+{
+    u32 hp;
+
+    PARAMETRIZE { hp = 120; }
+    PARAMETRIZE { hp = 20; }
+
+    GIVEN {
+        AI_FLAGS(AI_FLAG_TAG_OPPONENT);
+        PLAYER(SPECIES_WOBBUFFET) { Speed(15); HP(hp); }
+        OPPONENT(SPECIES_KANGASKHAN) { Speed(20); Level(40); Moves(MOVE_SONICBOOM, MOVE_DRAGON_RAGE, MOVE_NIGHT_SHADE, MOVE_SEISMIC_TOSS); }
+    } WHEN {
+        if (hp == 120)
+        {
+            TURN { 
+                SCORE_EQ_VAL(opponent, MOVE_SONICBOOM,      100); 
+                SCORE_EQ_VAL(opponent, MOVE_DRAGON_RAGE,    108);
+                SCORE_EQ_VAL(opponent, MOVE_NIGHT_SHADE,    108); 
+                SCORE_EQ_VAL(opponent, MOVE_SEISMIC_TOSS,   108);
+            }
+        }
+        else
+        {
+            TURN { 
+                SCORE_EQ_VAL(opponent, MOVE_SONICBOOM,      120); 
+                SCORE_EQ_VAL(opponent, MOVE_DRAGON_RAGE,    120); 
+                SCORE_EQ_VAL(opponent, MOVE_NIGHT_SHADE,    120); 
+                SCORE_EQ_VAL(opponent, MOVE_SEISMIC_TOSS,   120); 
+            }
+        }
+    }
+}
