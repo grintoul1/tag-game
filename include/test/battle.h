@@ -710,12 +710,7 @@ struct BattleTrialData
     u8 lastActionTurn;
     u8 queuedEvent;
     u8 aiActionsPlayed[MAX_BATTLERS_COUNT];
-    u8 scoreTieResolution;
-    u8 scoreTieOverride;
-    u8 scoreTieTag;
     u8 scoreTieCount;
-    u8 targetTieResolution;
-    u8 targetTieOverride;
     u8 targetTieCount;
 };
 
@@ -768,6 +763,11 @@ struct BattleTestData
     u16 flagId;
 
     struct BattleTrialData trial;
+    u8 scoreTieResolution;
+    u8 scoreTieOverride;
+    u8 scoreTieTag;
+    u8 targetTieResolution;
+    u8 targetTieOverride;
 };
 
 struct BattleTestRunnerState

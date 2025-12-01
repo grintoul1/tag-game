@@ -834,6 +834,7 @@ static u32 ChooseMoveOrAction_Singles(u32 battler)
             }
         }
     }
+
 #if TESTING
     gBattleTestRunnerState->data.trial.scoreTieCount = numOfBestMoves;
 #endif
@@ -916,12 +917,13 @@ static u32 ChooseMoveOrAction_Doubles(u32 battler)
                     }
                 }
             }
-            actionOrMoveIndex[i] = mostViableMovesIndices[RandomUniform(RNG_AI_SCORE_TIE_DOUBLES_MOVE, 0, mostViableMovesNo - 1)];
-            bestMovePointsForTarget[i] = mostViableMovesScores[0];
 
 #if TESTING
             gBattleTestRunnerState->data.trial.scoreTieCount = mostViableMovesNo;
 #endif
+
+            actionOrMoveIndex[i] = mostViableMovesIndices[RandomUniform(RNG_AI_SCORE_TIE_DOUBLES_MOVE, 0, mostViableMovesNo - 1)];
+            bestMovePointsForTarget[i] = mostViableMovesScores[0];
 
             // Don't use a move against ally if it has less than 100 points.
             if (i == BATTLE_PARTNER(battler) && bestMovePointsForTarget[i] < AI_SCORE_DEFAULT)
@@ -955,12 +957,12 @@ static u32 ChooseMoveOrAction_Doubles(u32 battler)
         }
     }
 
-    gBattlerTarget = mostViableTargetsArray[RandomUniform(RNG_AI_SCORE_TIE_DOUBLES_TARGET, 0, mostViableTargetsNo - 1)];
-    gAiBattleData->chosenTarget[battler] = gBattlerTarget;
-
 #if TESTING
     gBattleTestRunnerState->data.trial.targetTieCount = mostViableTargetsNo;
 #endif
+
+    gBattlerTarget = mostViableTargetsArray[RandomUniform(RNG_AI_SCORE_TIE_DOUBLES_TARGET, 0, mostViableTargetsNo - 1)];
+    gAiBattleData->chosenTarget[battler] = gBattlerTarget;
 
     if (!IsOnPlayerSide(battler))
         gBattleStruct->chosenMovePositions[battler] = actionOrMoveIndex[gBattlerTarget];
