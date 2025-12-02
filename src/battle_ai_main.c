@@ -6526,7 +6526,7 @@ static s32 AI_CalcAdditionalEffectScore(u32 battlerAtk, u32 battlerDef, u32 move
 // AI_FLAG_CHECK_VIABILITY - Chooses best possible move to hit player
 static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
-    u16 *moves = GetMovesArray(battlerAtk);
+    u16 UNUSED *moves = GetMovesArray(battlerAtk);
     struct AiLogicData *aiData = gAiLogicData;
 
     // Targeting partner, check benefits of doing that instead
@@ -12434,7 +12434,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     // partner data 
     bool32 hasPartner = HasPartner(battlerAtk);
     u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
-    u16 *moves = GetMovesArray(battlerAtk);
+    u16 UNUSED *moves = GetMovesArray(battlerAtk);
     u16 UNUSED *atkPartnerMove = GetMovesArray(battlerAtkPartner);
     u32 partnerEffect = GetMoveEffect(aiData->partnerMove);
     u32 atkPartnerAbility = aiData->abilities[BATTLE_PARTNER(battlerAtk)];
