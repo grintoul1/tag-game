@@ -68,6 +68,7 @@ static s32 AI_PredictSwitch(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 static s32 AI_CheckPpStall(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
+static s32 AI_SmartTargeting(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 
 static s32 (*const sBattleAiFuncTable[])(u32, u32, u32, s32) =
 {
@@ -105,7 +106,7 @@ static s32 (*const sBattleAiFuncTable[])(u32, u32, u32, s32) =
     [31] = NULL,                     // AI_FLAG_PARTNER_SWITCHING
     [32] = AI_AttacksPartner,        // AI_FLAG_ATTACKS_PARTNER
     [33] = AI_TagOpponent,           // AI_FLAG_TAG_OPPONENT
-    [34] = NULL,                     // Unused
+    [34] = AI_SmartTargeting,        // AI_FLAG_SMART_TARGETING
     [35] = NULL,                     // Unused
     [36] = NULL,                     // Unused
     [37] = NULL,                     // Unused
@@ -17829,6 +17830,98 @@ static s32 AI_FirstBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     return score;
 }
 
+static s32 AI_SmartTargeting(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
+{
+    // Who can KO who from perspective of battlerAtk
+    bool32 battlerFaintsOpposite        = CanAIFaintTarget(battlerAtk, BATTLE_OPPOSITE(battlerAtk), 1);
+    bool32 battlerFaintsOppositePartner = CanAIFaintTarget(battlerAtk, BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk)), 1);
+    bool32 partnerFaintsOpposite        = CanAIFaintTarget(BATTLE_PARTNER(battlerAtk), BATTLE_OPPOSITE(battlerAtk), 1);
+    bool32 partnerFaintsOppositePartner = CanAIFaintTarget(BATTLE_PARTNER(battlerAtk), BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk)), 1);
+
+    // Double KOs
+    bool32 battlerFaintsBoth            = (battlerFaintsOpposite && battlerFaintsOppositePartner);
+    bool32 partnerFaintsBoth            = (partnerFaintsOpposite && partnerFaintsOppositePartner);
+    bool32 bothFaintBoth                = (battlerFaintsBoth && partnerFaintsBoth);
+
+    // If only one opponent make no adjustments
+    if ((!IsBattlerAlive(BATTLE_OPPOSITE(battlerAtk))) 
+    || (!IsBattlerAlive(BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk))))
+    || (!IsDoubleBattle()))
+    {
+        return score;
+    }
+    // Looking diagonally
+    else if (battlerDef == BATTLE_OPPOSITE(battlerAtk))
+    {
+        // Target diagonally
+        if (bothFaintBoth)
+            return score;
+        // Partner only KOs across opponent
+        else if (battlerFaintsBoth && !partnerFaintsOpposite && partnerFaintsOppositePartner)
+            return score;
+        // Partner only KOs diagonal opponent
+        else if (battlerFaintsBoth && partnerFaintsOpposite && !partnerFaintsOppositePartner)
+            ADJUST_AND_RETURN_SCORE(-200);
+        // Partner KOs both but battlerAtk only KOs diagonal opponent
+        else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsBoth)
+            return score;
+        // Partner KOs both but battlerAtk only KOs across opponent
+        else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsBoth)
+            ADJUST_AND_RETURN_SCORE(-200);
+        // Both only KO diagonal opponent to battlerAtk
+        else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsOpposite && !partnerFaintsOppositePartner)
+            return score;
+        // Both only KO across opponent to battlerAtk
+        else if (!battlerFaintsOpposite && battlerFaintsOppositePartner && !partnerFaintsOpposite && partnerFaintsOppositePartner)
+            return score;
+        // Only KO seen is battlerAtk on diagonal opponent
+        else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && !partnerFaintsOpposite && !partnerFaintsOppositePartner)
+            return score;
+        // Only KO seen is partner on diagonal opponent to battlerAtk
+        else if (!battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsOpposite && !partnerFaintsOppositePartner)
+            ADJUST_AND_RETURN_SCORE(-200);
+        else
+            return score;
+    }
+    // Looking across
+    else if (battlerDef == BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk)))
+    {
+        // Target diagonally
+        if (bothFaintBoth)
+            ADJUST_AND_RETURN_SCORE(-200);
+        // Partner only KOs across opponent
+        else if (battlerFaintsBoth && !partnerFaintsOpposite && partnerFaintsOppositePartner)
+            ADJUST_AND_RETURN_SCORE(-200);
+        // Partner only KOs diagonal opponent
+        else if (battlerFaintsBoth && partnerFaintsOpposite && !partnerFaintsOppositePartner)
+            return score;
+        // Partner KOs both but battlerAtk only KOs diagonal opponent
+        else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsBoth)
+            ADJUST_AND_RETURN_SCORE(-200);
+        // Partner KOs both but battlerAtk only KOs across opponent
+        else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsBoth)
+            return score;
+        // Both only KO diagonal opponent to battlerAtk
+        else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsOpposite && !partnerFaintsOppositePartner)
+            ADJUST_AND_RETURN_SCORE(-200);
+        // Both only KO across opponent to battlerAtk
+        else if (!battlerFaintsOpposite && battlerFaintsOppositePartner && !partnerFaintsOpposite && partnerFaintsOppositePartner)
+            ADJUST_AND_RETURN_SCORE(-200);
+        // Only KO seen is battlerAtk on diagonal opponent
+        else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && !partnerFaintsOpposite && !partnerFaintsOppositePartner)
+            ADJUST_AND_RETURN_SCORE(-200);
+        // Only KO seen is partner on diagonal opponent to battlerAtk
+        else if (!battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsOpposite && !partnerFaintsOppositePartner)
+            return score;
+        else
+            return score;
+    }
+    // Targeting Partner so make no adjustment
+    else
+    {
+        return score;
+    }
+}
 
 // Dynamic AI Functions
 // For specific battle scenarios
