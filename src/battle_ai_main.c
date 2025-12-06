@@ -17855,66 +17855,115 @@ static s32 AI_SmartTargeting(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     {
         // Target diagonally
         if (bothFaintBoth)
+        {
             return score;
+        }
         // Partner only KOs across opponent
         else if (battlerFaintsBoth && !partnerFaintsOpposite && partnerFaintsOppositePartner)
+        {
             return score;
+        }
         // Partner only KOs diagonal opponent
         else if (battlerFaintsBoth && partnerFaintsOpposite && !partnerFaintsOppositePartner)
-            ADJUST_AND_RETURN_SCORE(-200);
+        {
+            score = 0;
+            return score;
+        }
         // Partner KOs both but battlerAtk only KOs diagonal opponent
         else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsBoth)
+        {
             return score;
+        }
         // Partner KOs both but battlerAtk only KOs across opponent
         else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsBoth)
-            ADJUST_AND_RETURN_SCORE(-200);
+        {
+            score = 0;
+            return score;
+        }
         // Both only KO diagonal opponent to battlerAtk
         else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsOpposite && !partnerFaintsOppositePartner)
+        {
             return score;
+        }
         // Both only KO across opponent to battlerAtk
         else if (!battlerFaintsOpposite && battlerFaintsOppositePartner && !partnerFaintsOpposite && partnerFaintsOppositePartner)
+        {
             return score;
+        }
         // Only KO seen is battlerAtk on diagonal opponent
         else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && !partnerFaintsOpposite && !partnerFaintsOppositePartner)
+        {
             return score;
+        }
         // Only KO seen is partner on diagonal opponent to battlerAtk
         else if (!battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsOpposite && !partnerFaintsOppositePartner)
-            ADJUST_AND_RETURN_SCORE(-200);
-        else
+        {
+            score = 0;
             return score;
+        }
+        else
+        {
+            return score;
+        }
     }
     // Looking across
     else if (battlerDef == BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk)))
     {
         // Target diagonally
         if (bothFaintBoth)
-            ADJUST_AND_RETURN_SCORE(-200);
+        {
+            score = 0;
+            return score;
+        }
         // Partner only KOs across opponent
         else if (battlerFaintsBoth && !partnerFaintsOpposite && partnerFaintsOppositePartner)
-            ADJUST_AND_RETURN_SCORE(-200);
+        {
+            score = 0;
+            return score;
+        }
         // Partner only KOs diagonal opponent
         else if (battlerFaintsBoth && partnerFaintsOpposite && !partnerFaintsOppositePartner)
+        {
             return score;
-        // Partner KOs both but battlerAtk only KOs diagonal opponent
+         }
+       // Partner KOs both but battlerAtk only KOs diagonal opponent
         else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsBoth)
-            ADJUST_AND_RETURN_SCORE(-200);
+        {
+            score = 0;
+            return score;
+        }
         // Partner KOs both but battlerAtk only KOs across opponent
         else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsBoth)
+        {
             return score;
+        }
         // Both only KO diagonal opponent to battlerAtk
         else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsOpposite && !partnerFaintsOppositePartner)
-            ADJUST_AND_RETURN_SCORE(-200);
+        {
+            score = 0;
+            return score;
+        }
         // Both only KO across opponent to battlerAtk
         else if (!battlerFaintsOpposite && battlerFaintsOppositePartner && !partnerFaintsOpposite && partnerFaintsOppositePartner)
-            ADJUST_AND_RETURN_SCORE(-200);
+        {
+            score = 0;
+            return score;
+        }
         // Only KO seen is battlerAtk on diagonal opponent
         else if (battlerFaintsOpposite && !battlerFaintsOppositePartner && !partnerFaintsOpposite && !partnerFaintsOppositePartner)
-            ADJUST_AND_RETURN_SCORE(-200);
+        {
+            score = 0;
+            return score;
+        }
         // Only KO seen is partner on diagonal opponent to battlerAtk
         else if (!battlerFaintsOpposite && !battlerFaintsOppositePartner && partnerFaintsOpposite && !partnerFaintsOppositePartner)
+        {
             return score;
+        }
         else
+        {
             return score;
+        }
     }
     // Targeting Partner so make no adjustment
     else
