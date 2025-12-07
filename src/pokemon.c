@@ -7538,9 +7538,24 @@ u8 *GetSavedPlayerPartyCount(void)
     return &gSaveBlock1Ptr->playerPartyCount;
 }
 
+struct Pokemon *GetSavedEliteFourPoolMon(u32 index)
+{
+    return &gSaveBlock3Ptr->eliteFourPool[index];
+}
+
+u8 *GetSavedEliteFourPoolCount(void)
+{
+    return &gSaveBlock3Ptr->eliteFourPoolCount;
+}
+
 void SavePlayerPartyMon(u32 index, struct Pokemon *mon)
 {
     gSaveBlock1Ptr->playerParty[index] = *mon;
+}
+
+void SaveEliteFourPoolMon(u32 index, struct Pokemon *mon)
+{
+    gSaveBlock3Ptr->eliteFourPool[index] = *mon;
 }
 
 bool32 IsSpeciesOfType(u32 species, enum Type type)

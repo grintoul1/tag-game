@@ -1416,31 +1416,37 @@ static void Select_HandleMonSelectionChange(void)
     u8 cursorPos = sFactorySelectScreen->cursorPos;
     if (sFactorySelectScreen->mons[cursorPos].selectedId) // Deselect a mon.
     {
+        DebugPrintf("Select_HandleMonSelectionChange Deselect cursorPos %d", cursorPos);
+        u8 deselectedId = sFactorySelectScreen->mons[cursorPos].selectedId;
         paletteNum = IndexOfSpritePaletteTag(PALTAG_BALL_GRAY);
-        if (sFactorySelectScreen->selectingMonsState == FRONTIER_PARTY_SIZE
-         && sFactorySelectScreen->mons[cursorPos].selectedId == 1)
-        {
-            for (i = 0; i < SELECTABLE_MONS_COUNT; i++)
-            {
-                if (sFactorySelectScreen->mons[i].selectedId == FRONTIER_PARTY_SIZE - 1)
-                    break;
-            }
-            if (i == SELECTABLE_MONS_COUNT)
-                return;
-            else
-                sFactorySelectScreen->mons[i].selectedId = 1;
-        }
+
+        // Deselect the clicked mon
         sFactorySelectScreen->mons[cursorPos].selectedId = 0;
+        
+        // Shift down all selections that are higher than the deselected one
+        for (i = 0; i < SELECTABLE_MONS_COUNT; i++)
+        {
+            if (sFactorySelectScreen->mons[i].selectedId > deselectedId)
+            {
+                sFactorySelectScreen->mons[i].selectedId--;
+                // Note: Palette doesn't change when shifting down - still selected
+            }
+        }
+        
         sFactorySelectScreen->selectingMonsState--;
+        
+        // Update palette for the deselected mon
+        gSprites[sFactorySelectScreen->mons[cursorPos].ballSpriteId].oam.paletteNum = paletteNum;
     }
     else // Select a mon.
     {
         paletteNum = IndexOfSpritePaletteTag(PALTAG_BALL_SELECTED);
         sFactorySelectScreen->mons[cursorPos].selectedId = sFactorySelectScreen->selectingMonsState;
         sFactorySelectScreen->selectingMonsState++;
+        
+        // Update palette for the selected mon
+        gSprites[sFactorySelectScreen->mons[cursorPos].ballSpriteId].oam.paletteNum = paletteNum;
     }
-
-    gSprites[sFactorySelectScreen->mons[cursorPos].ballSpriteId].oam.paletteNum = paletteNum;
 }
 
 static void Select_SetBallSpritePaletteNum(u8 id)
@@ -1632,12 +1638,36 @@ static void Select_Task_HandleMenu(u8 taskId)
         }
         else if (JOY_NEW(B_BUTTON))
         {
-            PlaySE(SE_SELECT);
-            CloseMonPic(sFactorySelectScreen->monPics[1], &sFactorySelectScreen->monPicAnimating, FALSE);
-            Select_ErasePopupMenu(SELECT_WIN_OPTIONS);
-            sFactorySelectScreen->fadeSpeciesNameActive = TRUE;
-            gTasks[taskId].tState = STATE_CHOOSE_MONS_HANDLE_INPUT;
-            gTasks[taskId].func = Select_Task_HandleChooseMons;
+            switch (gMapHeader.regionMapSectionId)
+            {
+                case MAPSEC_MAGMA_HIDEOUT:
+                case MAPSEC_AQUA_HIDEOUT:
+                case MAPSEC_EVER_GRANDE_CITY:
+                    if (sFactorySelectScreen->selectingMonsState != VarGet(VAR_TEMP_4))
+                    { // Not enough mons selected
+                        PlaySE(SE_SELECT);
+                        CloseMonPic(sFactorySelectScreen->monPics[1], &sFactorySelectScreen->monPicAnimating, FALSE);
+                        Select_ErasePopupMenu(SELECT_WIN_OPTIONS);
+                        sFactorySelectScreen->fadeSpeciesNameActive = TRUE;
+                        gTasks[taskId].tState = STATE_CHOOSE_MONS_HANDLE_INPUT;
+                        gTasks[taskId].func = Select_Task_HandleChooseMons;
+                    }
+                    else // Correct number of mons selected
+                    {
+                        gTasks[taskId].tState = STATE_YESNO_SHOW_MONS;
+                        gTasks[taskId].func = Select_Task_HandleYesNo;
+                    }
+                    break;
+                default:
+                    PlaySE(SE_SELECT);
+                    CloseMonPic(sFactorySelectScreen->monPics[1], &sFactorySelectScreen->monPicAnimating, FALSE);
+                    Select_ErasePopupMenu(SELECT_WIN_OPTIONS);
+                    sFactorySelectScreen->fadeSpeciesNameActive = TRUE;
+                    gTasks[taskId].tState = STATE_CHOOSE_MONS_HANDLE_INPUT;
+                    gTasks[taskId].func = Select_Task_HandleChooseMons;
+                    break;
+            }
+            //if (sFactorySelectScreen->selectingMonsState > FRONTIER_PARTY_SIZE)
         }
         else if (JOY_REPEAT(DPAD_UP))
         {
@@ -1897,7 +1927,9 @@ static void Select_PrintSelectMonString(void)
     const u8 *str = NULL;
 
     FillWindowPixelBuffer(SELECT_WIN_INFO, PIXEL_FILL(0));
-    if (sFactorySelectScreen->selectingMonsState == 1)
+    if (sFactorySelectScreen->selectingMonsState == VarGet(VAR_TEMP_4))
+        str = gText_TheseThreePkmnOkay;
+    else if (sFactorySelectScreen->selectingMonsState == 1)
         str = gText_SelectFirstPkmn;
     else if (sFactorySelectScreen->selectingMonsState == 2)
         str = gText_SelectSecondPkmn;
@@ -1953,7 +1985,22 @@ static u8 Select_OptionRentDeselect(void)
     u8 selectedId = sFactorySelectScreen->mons[sFactorySelectScreen->cursorPos].selectedId;
     //u16 monId = sFactorySelectScreen->mons[sFactorySelectScreen->cursorPos].monId;
     u16 species = GetMonData(&sFactorySelectScreen->mons[sFactorySelectScreen->cursorPos].monData, MON_DATA_SPECIES_OR_EGG);
-    if (selectedId == 0 && (species == SPECIES_NONE || species == SPECIES_EGG))
+    // Hideout and selecting mons for wrong trainer
+    if ((VarGet(VAR_TEMP_3) == 3
+    && (sFactorySelectScreen->cursorPos == 0
+    || sFactorySelectScreen->cursorPos == 1
+    || sFactorySelectScreen->cursorPos == 2))
+    || (VarGet(VAR_TEMP_3) == 2
+    && (sFactorySelectScreen->cursorPos == 3
+    || sFactorySelectScreen->cursorPos == 4
+    || sFactorySelectScreen->cursorPos == 5))
+    || (sFactorySelectScreen->selectingMonsState == VarGet(VAR_TEMP_4)))
+    {
+        Select_PrintCantSelectSameMon();
+        Select_ErasePopupMenu(SELECT_WIN_OPTIONS);
+        return SELECT_INVALID_MON;
+    }
+    else if ((selectedId == 0 && (species == SPECIES_NONE || species == SPECIES_EGG)))
     {
         Select_PrintCantSelectSameMon();
         Select_ErasePopupMenu(SELECT_WIN_OPTIONS);
@@ -1965,7 +2012,9 @@ static u8 Select_OptionRentDeselect(void)
         Select_HandleMonSelectionChange();
         Select_PrintSelectMonString();
         Select_ErasePopupMenu(SELECT_WIN_OPTIONS);
-        if (sFactorySelectScreen->selectingMonsState > FRONTIER_PARTY_SIZE)
+        if ((sFactorySelectScreen->selectingMonsState > FRONTIER_PARTY_SIZE)
+         || ((sFactorySelectScreen->selectingMonsState >= (VarGet(VAR_TEMP_4)))
+         && ((VarGet(VAR_TEMP_3) == 2) || (VarGet(VAR_TEMP_3) == 3))))
             return SELECT_CONFIRM_MONS;
         else
             return SELECT_CONTINUE_CHOOSING;
@@ -1974,11 +2023,31 @@ static u8 Select_OptionRentDeselect(void)
 
 static u8 Select_DeclineChosenMons(void)
 {
+    u8 i;
+    u8 lastSelectedId = sFactorySelectScreen->selectingMonsState - 1;
+    
+    // Hide BEFORE decrementing, so the Hide/Close functions see the correct count
     Select_HideChosenMons();
-    Select_HandleMonSelectionChange();
+    
+    // Decrement after hiding
+    sFactorySelectScreen->selectingMonsState--;
+    
+    // Find and deselect the mon with the highest selection ID
+    for (i = 0; i < SELECTABLE_MONS_COUNT; i++)
+    {
+        if (sFactorySelectScreen->mons[i].selectedId == lastSelectedId)
+        {
+            sFactorySelectScreen->mons[i].selectedId = 0;
+            // Update palette for the deselected mon
+            gSprites[sFactorySelectScreen->mons[i].ballSpriteId].oam.paletteNum = IndexOfSpritePaletteTag(PALTAG_BALL_GRAY);
+            break;
+        }
+    }
+    
     Select_PrintSelectMonString();
     Select_ErasePopupMenu(SELECT_WIN_OPTIONS);
-    if (sFactorySelectScreen->selectingMonsState > FRONTIER_PARTY_SIZE)
+    
+    if ((sFactorySelectScreen->selectingMonsState > FRONTIER_PARTY_SIZE))
         return 2;
     else
         return 1;
@@ -2059,8 +2128,10 @@ static void Select_ReshowMonSprite(void)
 static void Select_CreateChosenMonsSprites(void)
 {
     u8 i, j;
+    u8 numSelected = sFactorySelectScreen->selectingMonsState - 1;
 
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    // Only create sprites for the number of mons actually selected
+    for (i = 0; i < numSelected; i++)
     {
         for (j = 0; j < SELECTABLE_MONS_COUNT; j++)
         {
@@ -2083,16 +2154,28 @@ static void Select_CreateChosenMonsSprites(void)
 
 static void SpriteCB_OpenChosenMonPics(struct Sprite *sprite)
 {
+    u8 i;
     u8 taskId;
+    u8 numSelected = sFactorySelectScreen->selectingMonsState - 1;
+    bool8 allEnded = TRUE;
 
-    // Current sprite is monPics[1]
-    if (sprite->affineAnimEnded
-        && gSprites[sFactorySelectScreen->monPics[0].bgSpriteId].affineAnimEnded
-        && gSprites[sFactorySelectScreen->monPics[2].bgSpriteId].affineAnimEnded)
+    // Check if all created sprites have finished animating
+    for (i = 0; i < numSelected; i++)
     {
-        sprite->invisible = TRUE;
-        gSprites[sFactorySelectScreen->monPics[0].bgSpriteId].invisible = TRUE;
-        gSprites[sFactorySelectScreen->monPics[2].bgSpriteId].invisible = TRUE;
+        if (!gSprites[sFactorySelectScreen->monPics[i].bgSpriteId].affineAnimEnded)
+        {
+            allEnded = FALSE;
+            break;
+        }
+    }
+
+    if (allEnded)
+    {
+        // Make all created sprites invisible
+        for (i = 0; i < numSelected; i++)
+        {
+            gSprites[sFactorySelectScreen->monPics[i].bgSpriteId].invisible = TRUE;
+        }
 
         taskId = CreateTask(Select_Task_OpenChosenMonPics, 1);
         gTasks[taskId].func(taskId);
@@ -2103,20 +2186,30 @@ static void SpriteCB_OpenChosenMonPics(struct Sprite *sprite)
 
 static void SpriteCB_CloseChosenMonPics(struct Sprite *sprite)
 {
-    // Current sprite is monPics[1]
-    if (sprite->affineAnimEnded
-        && gSprites[sFactorySelectScreen->monPics[0].bgSpriteId].affineAnimEnded
-        && gSprites[sFactorySelectScreen->monPics[2].bgSpriteId].affineAnimEnded)
+    u8 numSelected = sFactorySelectScreen->selectingMonsState - 1;
+    bool8 allEnded = TRUE;
+    u8 i;
+    
+    // Check if all created sprites have finished animating
+    for (i = 0; i < numSelected; i++)
     {
-        FreeOamMatrix(sprite->oam.matrixNum);
-        FreeOamMatrix(gSprites[sFactorySelectScreen->monPics[0].bgSpriteId].oam.matrixNum);
-        FreeOamMatrix(gSprites[sFactorySelectScreen->monPics[2].bgSpriteId].oam.matrixNum);
+        if (!gSprites[sFactorySelectScreen->monPics[i].bgSpriteId].affineAnimEnded)
+        {
+            allEnded = FALSE;
+            break;
+        }
+    }
+    
+    if (allEnded)
+    {
+        // Free matrices and destroy only the sprites that were created
+        for (i = 0; i < numSelected; i++)
+        {
+            FreeOamMatrix(gSprites[sFactorySelectScreen->monPics[i].bgSpriteId].oam.matrixNum);
+            DestroySprite(&gSprites[sFactorySelectScreen->monPics[i].bgSpriteId]);
+        }
 
         sFactorySelectScreen->monPicAnimating = FALSE;
-
-        DestroySprite(&gSprites[sFactorySelectScreen->monPics[0].bgSpriteId]);
-        DestroySprite(&gSprites[sFactorySelectScreen->monPics[2].bgSpriteId]);
-        DestroySprite(sprite);
     }
 }
 
@@ -2204,42 +2297,63 @@ static void Select_Task_CloseChosenMonPics(u8 taskId)
             task->tState++;
         break;
     default:
-        HideBg(3);
-        gSprites[sFactorySelectScreen->monPics[1].bgSpriteId].invisible = FALSE;
-        gSprites[sFactorySelectScreen->monPics[1].bgSpriteId].callback = SpriteCB_CloseChosenMonPics;
-        gSprites[sFactorySelectScreen->monPics[0].bgSpriteId].invisible = FALSE;
-        gSprites[sFactorySelectScreen->monPics[0].bgSpriteId].callback = SpriteCallbackDummy;
-        gSprites[sFactorySelectScreen->monPics[2].bgSpriteId].invisible = FALSE;
-        gSprites[sFactorySelectScreen->monPics[2].bgSpriteId].callback = SpriteCallbackDummy;
-        StartSpriteAffineAnim(&gSprites[sFactorySelectScreen->monPics[1].bgSpriteId], 1);
-        StartSpriteAffineAnim(&gSprites[sFactorySelectScreen->monPics[0].bgSpriteId], 1);
-        StartSpriteAffineAnim(&gSprites[sFactorySelectScreen->monPics[2].bgSpriteId], 1);
-        ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON);
-        DestroyTask(taskId);
+        {
+            u8 i;
+            u8 numSelected = sFactorySelectScreen->selectingMonsState - 1;
+            
+            HideBg(3);
+            
+            // Set up and animate only the sprites that were created
+            for (i = 0; i < numSelected; i++)
+            {
+                gSprites[sFactorySelectScreen->monPics[i].bgSpriteId].invisible = FALSE;
+                gSprites[sFactorySelectScreen->monPics[i].bgSpriteId].callback = (i == numSelected - 1) ? SpriteCB_CloseChosenMonPics : SpriteCallbackDummy;
+                StartSpriteAffineAnim(&gSprites[sFactorySelectScreen->monPics[i].bgSpriteId], 1);
+            }
+            
+            ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON);
+            DestroyTask(taskId);
+        }
         break;
     }
 }
 
 static void Select_ShowChosenMons(void)
 {
-    sFactorySelectScreen->monPics[1].bgSpriteId = CreateSprite(&sSpriteTemplate_Select_MonPicBgAnim, 120, 64, 1);
-    sFactorySelectScreen->monPics[0].bgSpriteId = CreateSprite(&sSpriteTemplate_Select_MonPicBgAnim,  44, 64, 1);
-    sFactorySelectScreen->monPics[2].bgSpriteId = CreateSprite(&sSpriteTemplate_Select_MonPicBgAnim, 196, 64, 1);
-
-    gSprites[sFactorySelectScreen->monPics[1].bgSpriteId].callback = SpriteCB_OpenChosenMonPics;
-    gSprites[sFactorySelectScreen->monPics[0].bgSpriteId].callback = SpriteCallbackDummy;
-    gSprites[sFactorySelectScreen->monPics[2].bgSpriteId].callback = SpriteCallbackDummy;
+    u8 numSelected = sFactorySelectScreen->selectingMonsState - 1;
+    
+    // Only create bg sprites for the number of mons actually selected
+    if (numSelected >= 1)
+    {
+        sFactorySelectScreen->monPics[0].bgSpriteId = CreateSprite(&sSpriteTemplate_Select_MonPicBgAnim,  44, 64, 1);
+        gSprites[sFactorySelectScreen->monPics[0].bgSpriteId].callback = (numSelected == 1) ? SpriteCB_OpenChosenMonPics : SpriteCallbackDummy;
+    }
+    if (numSelected >= 2)
+    {
+        sFactorySelectScreen->monPics[1].bgSpriteId = CreateSprite(&sSpriteTemplate_Select_MonPicBgAnim, 120, 64, 1);
+        gSprites[sFactorySelectScreen->monPics[1].bgSpriteId].callback = (numSelected == 2) ? SpriteCB_OpenChosenMonPics : SpriteCallbackDummy;
+    }
+    if (numSelected >= 3)
+    {
+        sFactorySelectScreen->monPics[2].bgSpriteId = CreateSprite(&sSpriteTemplate_Select_MonPicBgAnim, 196, 64, 1);
+        gSprites[sFactorySelectScreen->monPics[2].bgSpriteId].callback = SpriteCallbackDummy;
+        gSprites[sFactorySelectScreen->monPics[1].bgSpriteId].callback = SpriteCB_OpenChosenMonPics;
+    }
 
     sFactorySelectScreen->monPicAnimating = TRUE;
 }
 
 static void Select_HideChosenMons(void)
 {
+    u8 i;
     u8 taskId;
+    u8 numSelected = sFactorySelectScreen->selectingMonsState - 1;
 
-    FreeAndDestroyMonPicSprite(sFactorySelectScreen->monPics[0].monSpriteId);
-    FreeAndDestroyMonPicSprite(sFactorySelectScreen->monPics[1].monSpriteId);
-    FreeAndDestroyMonPicSprite(sFactorySelectScreen->monPics[2].monSpriteId);
+    // Free only the mon sprites that were actually created
+    for (i = 0; i < numSelected; i++)
+    {
+        FreeAndDestroyMonPicSprite(sFactorySelectScreen->monPics[i].monSpriteId);
+    }
 
     taskId = CreateTask(Select_Task_CloseChosenMonPics, 1);
     gTasks[taskId].func(taskId);

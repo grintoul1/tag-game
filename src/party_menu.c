@@ -1088,7 +1088,52 @@ static void DisplayPartyPokemonDataForChooseHalf(u8 slot)
     struct Pokemon *mon = &gPlayerParty[slot];
     u8 *order = gSelectedOrderFromParty;
 
-    if (!GetBattleEntryEligibility(mon))
+    // Hideout player exchange
+    if (VarGet(VAR_TEMP_3) == 2)
+    {
+        switch (slot)
+        {
+            case 3:
+            case 4:
+            case 5:
+                DisplayPartyPokemonDescriptionData(slot, PARTYBOX_DESC_NOT_ABLE);
+                return;
+            default:
+                for (i = 0; i < GetMaxBattleEntries(); i++)
+                {
+                    if (order[i] != 0 && (order[i] - 1) == slot)
+                    {
+                        DisplayPartyPokemonDescriptionData(slot, i + PARTYBOX_DESC_FIRST);
+                        return;
+                    }
+                }
+                DisplayPartyPokemonDescriptionData(slot, PARTYBOX_DESC_ABLE_3);
+                break;
+        }
+    }
+    else if (VarGet(VAR_TEMP_3) == 3)
+    {
+        switch (slot)
+        {
+            case 0:
+            case 1:
+            case 2:
+                DisplayPartyPokemonDescriptionData(slot, PARTYBOX_DESC_NOT_ABLE);
+                return;
+            default:
+                for (i = 0; i < GetMaxBattleEntries(); i++)
+                {
+                    if (order[i] != 0 && (order[i] - 1) == slot)
+                    {
+                        DisplayPartyPokemonDescriptionData(slot, i + PARTYBOX_DESC_FIRST);
+                        return;
+                    }
+                }
+                DisplayPartyPokemonDescriptionData(slot, PARTYBOX_DESC_ABLE_3);
+                break;
+        }
+    }
+    else if (!GetBattleEntryEligibility(mon))
     {
         DisplayPartyPokemonDescriptionData(slot, PARTYBOX_DESC_NOT_ABLE);
         return;
@@ -1569,8 +1614,33 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
             }
             break;
         case PARTY_ACTION_SWITCH:
-            PlaySE(SE_SELECT);
-            SwitchSelectedMons(taskId);
+            if (((VarGet(VAR_FOLLOWER_MAGMA_HIDEOUT_SHELLY) == 1) 
+            || VarGet(VAR_FOLLOWER_AQUA_HIDEOUT_TABITHA) == 1) 
+            && (((gPartyMenu.slotId == 0
+            || gPartyMenu.slotId == 1
+            || gPartyMenu.slotId == 2)
+            && (gPartyMenu.slotId2 == 3
+            || gPartyMenu.slotId2 == 4
+            || gPartyMenu.slotId2 == 5))
+            || ((gPartyMenu.slotId == 3
+            || gPartyMenu.slotId == 4
+            || gPartyMenu.slotId == 5)
+            && (gPartyMenu.slotId2 == 0
+            || gPartyMenu.slotId2 == 1
+            || gPartyMenu.slotId2 == 2))))
+            {
+                PlaySE(SE_FAILURE);
+                PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+                StringExpandPlaceholders(gStringVar4, gText_CannotSelectPkmn);
+                DisplayPartyMenuMessage(gStringVar4, TRUE);
+                gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
+                return;
+            }
+            else
+            {
+                PlaySE(SE_SELECT);
+                SwitchSelectedMons(taskId);
+            }
             break;
         case PARTY_ACTION_CHOOSE_AND_CLOSE:
             PlaySE(SE_SELECT);
@@ -4268,18 +4338,37 @@ static void CursorCb_Enter(u8 taskId)
         maxBattlers = gSpecialVar_0x8000;
     else
         maxBattlers = GetMaxBattleEntries();
-    for (i = 0; i < maxBattlers; i++)
+    if ((VarGet(VAR_TEMP_3) == 3
+    && (gPartyMenu.slotId == 0
+    || gPartyMenu.slotId == 1
+    || gPartyMenu.slotId == 2))
+    || (VarGet(VAR_TEMP_3) == 2
+    && (gPartyMenu.slotId == 3
+    || gPartyMenu.slotId == 4
+    || gPartyMenu.slotId == 5)))
     {
-        if (gSelectedOrderFromParty[i] == 0)
+        StringExpandPlaceholders(gStringVar4, gText_CannotSelectPkmn);
+        PlaySE(SE_FAILURE);
+        DisplayPartyMenuMessage(gStringVar4, TRUE);
+        gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
+        return;
+    }
+    else
+    {
+        for (i = 0; i < maxBattlers; i++)
         {
-            PlaySE(SE_SELECT);
-            gSelectedOrderFromParty[i] = gPartyMenu.slotId + 1;
-            DisplayPartyPokemonDescriptionText(i + PARTYBOX_DESC_FIRST, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
-            if (i == (maxBattlers - 1))
-                MoveCursorToConfirm();
-            DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
-            gTasks[taskId].func = Task_HandleChooseMonInput;
-            return;
+            if (gSelectedOrderFromParty[i] == 0)
+            {
+                VarSet(VAR_TEMP_4, i + 2); // i starts at 0; sFactorySelectScreen->selectingMonsState starts at 1
+                PlaySE(SE_SELECT);
+                gSelectedOrderFromParty[i] = gPartyMenu.slotId + 1;
+                DisplayPartyPokemonDescriptionText(i + PARTYBOX_DESC_FIRST, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
+                if (i == (maxBattlers - 1))
+                    MoveCursorToConfirm();
+                DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
+                gTasks[taskId].func = Task_HandleChooseMonInput;
+                return;
+            }
         }
     }
     ConvertIntToDecimalStringN(gStringVar1, maxBattlers, STR_CONV_MODE_LEFT_ALIGN, 1);
@@ -7762,7 +7851,21 @@ void InitChooseHalfPartyForBattle(u8 unused)
 void InitChooseHalfPartyForEliteFour(u8 unused)
 {
     ClearSelectedPartyOrder();
-    InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_HALF, (FlagGet(FLAG_SHARE_PARTY) ? PARTY_LAYOUT_MULTI_SHARED : PARTY_LAYOUT_MULTI), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, gMain.savedCallback);
+    InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_HALF, (FlagGet(FLAG_SHARE_PARTY) ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, gMain.savedCallback);
+    gPartyMenu.task = Task_ValidateChosenHalfPartyEliteFour;
+}
+
+void InitChooseHalfPartyForPlayerHideout(u8 unused)
+{
+    ClearSelectedPartyOrder();
+    InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_HALF, PARTY_LAYOUT_OVERWORLD, PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, gMain.savedCallback);
+    gPartyMenu.task = Task_ValidateChosenHalfPartyEliteFour;
+}
+
+void InitChooseHalfPartyForPartnerHideout(u8 unused)
+{
+    ClearSelectedPartyOrder();
+    InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_HALF, PARTY_LAYOUT_OVERWORLD, PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, gMain.savedCallback);
     gPartyMenu.task = Task_ValidateChosenHalfPartyEliteFour;
 }
 

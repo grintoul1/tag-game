@@ -342,6 +342,7 @@ extern const u8 gText_PCMailboxFull[];
 extern const u8 gText_MailMessageWillBeLost[];
 extern const u8 gText_MailTakenFromPkmn[];
 extern const u8 gText_NoMoreThanVar1Pkmn[];
+extern const u8 gText_CannotSelectPkmn[];
 extern const u8 gText_PkmnCantBeTradedNow[];
 extern const u8 gText_PkmnCantBeTraded[];
 extern const u8 gText_EggCantBeTradedNow[];
@@ -886,6 +887,9 @@ extern const u8 gText_ChoiceScarf[];
 extern const u8 gText_Punching[];
 extern const u8 gText_Kicking[];
 extern const u8 gText_Balance[];
+extern const u8 gText_ExchangeShellyParty[];
+extern const u8 gText_ExchangeTabithaParty[];
+extern const u8 gText_ExchangeYourParty[];
 
 // Cable Club multichoice text
 extern const u8 CableClub_Text_TradeUsingLinkCable[];

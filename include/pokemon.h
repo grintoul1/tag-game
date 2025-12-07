@@ -917,6 +917,9 @@ bool8 ShouldSkipFriendshipChange(void);
 struct Pokemon *GetSavedPlayerPartyMon(u32 index);
 u8 *GetSavedPlayerPartyCount(void);
 void SavePlayerPartyMon(u32 index, struct Pokemon *mon);
+struct Pokemon *GetSavedEliteFourPoolMon(u32 index);
+u8 *GetSavedEliteFourPoolCount(void);
+void SaveEliteFourPoolMon(u32 index, struct Pokemon *mon);
 bool32 IsSpeciesOfType(u32 species, enum Type type);
 
 #endif // GUARD_POKEMON_H

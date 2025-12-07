@@ -125,6 +125,8 @@
 #define MULTI_BERRY_PLOT                   114
 #define MULTI_CHOICE_ITEM                  115
 #define MULTI_TYROGUE_EVO                  116
+#define MULTI_MHO_PARTY                    117 // Used to choose which party to exchange in Magma Hideout
+#define MULTI_AHO_PARTY                    118 // Used to choose which party to exchange in Aqua Hideout
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

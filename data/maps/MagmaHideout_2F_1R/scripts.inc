@@ -40,19 +40,20 @@ releaseall
 end
 
 MagmaHideout_2F_1R_EventScript_Grunt14Grunt3DoMultiBattle::
-playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_3, MagmaHideout_2F_1R_Text_Grunt14Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_4, MagmaHideout_2F_1R_Text_Grunt3Defeat, PARTNER_SHELLY
-special LoadPlayerParty
-switch VAR_RESULT
-case 1, MagmaHideout_2F_1R_EventScript_Grunt14Grunt3Victory
-fadescreen FADE_TO_BLACK
-destroyfollowernpc
-setvar VAR_PARTNER_EMMIE_STATE, 42
-clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
-setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
-createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+	multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_3, MagmaHideout_2F_1R_Text_Grunt14Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_4, MagmaHideout_2F_1R_Text_Grunt3Defeat, PARTNER_SHELLY_MHO
+	special LoadPlayerParty
+	switch VAR_RESULT
+	case 1, MagmaHideout_2F_1R_EventScript_Grunt14Grunt3Victory
+	fadescreen FADE_TO_BLACK
+	destroyfollowernpc
+	special ClearHideoutPool
+	setvar VAR_PARTNER_EMMIE_STATE, 42
+	clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	special SetCB2WhiteOut
+	waitstate
 
 MagmaHideout_2F_1R_EventScript_Grunt14Grunt3Victory::
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
@@ -108,19 +109,20 @@ releaseall
 end
 
 MagmaHideout_2F_1R_EventScript_Grunt5Grunt4DoMultiBattle::
-playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_5, MagmaHideout_2F_1R_Text_Grunt5Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_6, MagmaHideout_2F_1R_Text_Grunt4Defeat, PARTNER_SHELLY
-special LoadPlayerParty
-switch VAR_RESULT
-case 1, MagmaHideout_2F_1R_EventScript_Grunt5Grunt4Victory
-fadescreen FADE_TO_BLACK
-destroyfollowernpc
-setvar VAR_PARTNER_EMMIE_STATE, 42
-clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
-setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
-createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+	multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_5, MagmaHideout_2F_1R_Text_Grunt5Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_6, MagmaHideout_2F_1R_Text_Grunt4Defeat, PARTNER_SHELLY_MHO
+	special LoadPlayerParty
+	switch VAR_RESULT
+	case 1, MagmaHideout_2F_1R_EventScript_Grunt5Grunt4Victory
+	fadescreen FADE_TO_BLACK
+	destroyfollowernpc
+	special ClearHideoutPool
+	setvar VAR_PARTNER_EMMIE_STATE, 42
+	clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	special SetCB2WhiteOut
+	waitstate
 
 MagmaHideout_2F_1R_EventScript_Grunt5Grunt4Victory::
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft

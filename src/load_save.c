@@ -206,6 +206,17 @@ void SavePlayerParty(void)
         SavePlayerPartyMon(i, &gPlayerParty[i]);
 }
 
+void SaveEliteFourPool(void)
+{
+    int i;
+    *GetSavedEliteFourPoolCount() = gEliteFourPoolCount;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        SaveEliteFourPoolMon(i, &gEliteFourPool[i]);
+    }
+}
+
 void LoadPlayerParty(void)
 {
     int i;
@@ -226,27 +237,16 @@ void LoadPlayerParty(void)
     }
 }
 
-void SaveEliteFourPool(void)
-{
-    int i;
-    *GetSavedPlayerPartyCount() = gEliteFourPoolCount;
-
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        SavePlayerPartyMon(i, &gEliteFourPool[i]);
-    }
-}
-
 void LoadEliteFourPool(void)
 {
     int i;
 
-    gEliteFourPoolCount = *GetSavedPlayerPartyCount();
+    gEliteFourPoolCount = *GetSavedEliteFourPoolCount();
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
         u32 data;
-        gEliteFourPool[i] = *GetSavedPlayerPartyMon(i);
+        gEliteFourPool[i] = *GetSavedEliteFourPoolMon(i);
 
         // TODO: Turn this into a save migration once those are available.
         // At which point we can remove hp and status from Pokemon entirely.
@@ -304,12 +304,14 @@ void LoadObjectEvents(void)
 void CopyPartyAndObjectsToSave(void)
 {
     SavePlayerParty();
+    SaveEliteFourPool();
     SaveObjectEvents();
 }
 
 void CopyPartyAndObjectsFromSave(void)
 {
     LoadPlayerParty();
+    LoadEliteFourPool();
     LoadObjectEvents();
 }
 

@@ -5,14 +5,10 @@
 
 MagmaHideout_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MagmaHideout_1F_OnTransition
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, MagmaHideout_1F_OnWarp
 	.byte 0
 
 MagmaHideout_1F_OnTransition:
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 0
-	end
-
-MagmaHideout_1F_OnWarp:
 	end
 
 MagmaHideout_1F_EventScript_FirstEntrance::
@@ -39,11 +35,12 @@ MagmaHideout_1F_EventScript_FirstEntrance::
 	addobject LOCALID_EMMIE
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
 	destroyfollowernpc
-	setfollowernpc 7, FNPC_WHITE_OUT, Common_EventScript_Shelly, PARTNER_SHELLY
+	setfollowernpc 7, FNPC_WHITE_OUT, Common_EventScript_Shelly, PARTNER_SHELLY_MHO
+	special FillPoolForShelly
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 	setflag FLAG_HIDE_JAGGED_PASS_SHELLY
 	setvar VAR_PARTNER_EMMIE_STATE, 43
-	addvar VAR_FOLLOWER_MAGMA_HIDEOUT_SHELLY, 1
+	setvar VAR_FOLLOWER_MAGMA_HIDEOUT_SHELLY, 1
 	end
 
 MagmaHideout_1F_EventScript_LaterEntrance::
@@ -62,11 +59,13 @@ MagmaHideout_1F_EventScript_LeavingHideout::
 	waitmovement 0
 	addobject LOCALID_SHELLY
 	destroyfollowernpc
+	special ClearHideoutPool
 	applymovement OBJ_EVENT_ID_PLAYER, MagmaHideout_1F_Movement_PlayerLeaving
 	applymovement LOCALID_EMMIE, MagmaHideout_1F_Movement_EmmieLeaving
 	waitmovement 0
 	setfollowernpc 8, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	setvar VAR_PARTNER_EMMIE_STATE, 42
+	setvar VAR_FOLLOWER_MAGMA_HIDEOUT_SHELLY, 0
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
 	end
@@ -83,8 +82,10 @@ MagmaHideout_1F_EventScript_EnteringHideout::
 	closemessage
 	addobject LOCALID_EMMIE
 	destroyfollowernpc
-	setfollowernpc 7, FNPC_WHITE_OUT, Common_EventScript_Shelly, PARTNER_SHELLY
+	setfollowernpc 7, FNPC_WHITE_OUT, Common_EventScript_Shelly, PARTNER_SHELLY_MHO
 	setvar VAR_PARTNER_EMMIE_STATE, 43
+	setvar VAR_FOLLOWER_MAGMA_HIDEOUT_SHELLY, 1
+	special FillPoolForShelly
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 	end
@@ -139,7 +140,8 @@ MagmaHideout_1F_Text_EmmieBeRightHere:
 .string "you, and we can leave any time you want.$"
 
 MagmaHideout_1F_Text_ShellyWelcomeToHideout:
-	.string "Shelly: Welcome to the Magma Hideout.\p"
+	.string "Shelly: Welcome to Team Magma's\n"
+	.string "Hideout.\p"
 	.string "I don't know what we may face up ahead,\n"
 	.string "but if we stick together we will be okay.$"
 
@@ -197,19 +199,20 @@ releaseall
 end
 
 MagmaHideout_1F_EventScript_Grunt1Grunt2DoMultiBattle::
-playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_1, MagmaHideout_1F_Text_Grunt1Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_2, MagmaHideout_1F_Text_Grunt2Defeat, PARTNER_SHELLY
-special LoadPlayerParty
-switch VAR_RESULT
-case 1, MagmaHideout_1F_EventScript_Grunt1Grunt2Victory
-fadescreen FADE_TO_BLACK
-destroyfollowernpc
-setvar VAR_PARTNER_EMMIE_STATE, 42
-clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
-setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
-createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+	multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_1, MagmaHideout_1F_Text_Grunt1Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_2, MagmaHideout_1F_Text_Grunt2Defeat, PARTNER_SHELLY_MHO
+	special LoadPlayerParty
+	switch VAR_RESULT
+	case 1, MagmaHideout_1F_EventScript_Grunt1Grunt2Victory
+	fadescreen FADE_TO_BLACK
+	destroyfollowernpc
+	special ClearHideoutPool
+	setvar VAR_PARTNER_EMMIE_STATE, 42
+	clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	special SetCB2WhiteOut
+	waitstate
 
 MagmaHideout_1F_EventScript_Grunt1Grunt2Victory::
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft

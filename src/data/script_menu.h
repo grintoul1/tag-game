@@ -794,6 +794,20 @@ static const struct MenuAction MultichoiceList_TyrogueEvo[] =
     {gText_Cancel},
 };
 
+static const struct MenuAction MultichoiceList_MHOPartyChoice[] =
+{
+    {gText_ExchangeShellyParty},
+    {gText_ExchangeYourParty},
+    {gText_Cancel},
+};
+
+static const struct MenuAction MultichoiceList_AHOPartyChoice[] =
+{
+    {gText_ExchangeTabithaParty},
+    {gText_ExchangeYourParty},
+    {gText_Cancel},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -924,6 +938,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
     [MULTI_CHOICE_ITEM]                = MULTICHOICE(MultichoiceList_ChoiceItem),
     [MULTI_TYROGUE_EVO]                = MULTICHOICE(MultichoiceList_TyrogueEvo),
+    [MULTI_MHO_PARTY]                  = MULTICHOICE(MultichoiceList_MHOPartyChoice),
+    [MULTI_AHO_PARTY]                  = MULTICHOICE(MultichoiceList_AHOPartyChoice),
 };
 
 const u8 *const gStdStrings[] =

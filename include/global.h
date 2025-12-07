@@ -237,25 +237,6 @@ struct NPCFollower
 #include "constants/items.h"
 #define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
 
-struct SaveBlock3
-{
-#if OW_USE_FAKE_RTC
-    struct SiiRtcInfo fakeRTC;
-#endif
-#if FNPC_ENABLE_NPC_FOLLOWERS
-    struct NPCFollower NPCfollower;
-#endif
-#if OW_SHOW_ITEM_DESCRIPTIONS == OW_ITEM_DESCRIPTIONS_FIRST_TIME
-    u8 itemFlags[ITEM_FLAGS_COUNT];
-#endif
-#if USE_DEXNAV_SEARCH_LEVELS == TRUE
-    u8 dexNavSearchLevels[NUM_SPECIES];
-#endif
-    u8 dexNavChain;
-}; /* max size 1624 bytes */
-
-extern struct SaveBlock3 *gSaveBlock3Ptr;
-
 struct Pokedex
 {
     /*0x00*/ u8 order;
@@ -1171,6 +1152,29 @@ struct SaveBlock1
 };
 
 extern struct SaveBlock1 *gSaveBlock1Ptr;
+
+struct SaveBlock3
+{
+#if OW_USE_FAKE_RTC
+    struct SiiRtcInfo fakeRTC;
+#endif
+#if FNPC_ENABLE_NPC_FOLLOWERS
+    struct NPCFollower NPCfollower;
+#endif
+#if OW_SHOW_ITEM_DESCRIPTIONS == OW_ITEM_DESCRIPTIONS_FIRST_TIME
+    u8 itemFlags[ITEM_FLAGS_COUNT];
+#endif
+#if USE_DEXNAV_SEARCH_LEVELS == TRUE
+    u8 dexNavSearchLevels[NUM_SPECIES];
+#endif
+    u8 dexNavChain;
+    u8 eliteFourPoolCount;
+    u8 padding2;
+    u8 padding3;
+    struct Pokemon eliteFourPool[PARTY_SIZE];
+}; /* max size 1624 bytes */
+
+extern struct SaveBlock3 *gSaveBlock3Ptr;
 
 struct MapPosition
 {

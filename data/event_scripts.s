@@ -712,6 +712,31 @@ Common_EventScript_EliteFourExchangePokemonPool::
 	goto Common_EventScript_EliteFourExchangePokemonEnd
 	end
 
+Common_EventScript_HideoutExchangePlayerPokemon::
+	setvar VAR_TEMP_3, 2
+	special SaveEliteFourPool
+	special ChooseHalfPartyForPlayerHideout
+	waitstate
+	switch VAR_RESULT
+	goto_if_ne VAR_RESULT, 0, Common_EventScript_HideoutExchangePokemonPool
+	special LoadEliteFourPool
+	end
+
+Common_EventScript_HideoutExchangePartnerPokemon::
+	setvar VAR_TEMP_3, 3
+	special SaveEliteFourPool
+	special ChooseHalfPartyForPartnerHideout
+	waitstate
+	switch VAR_RESULT
+	goto_if_ne VAR_RESULT, 0, Common_EventScript_HideoutExchangePokemonPool
+	special LoadEliteFourPool
+	end
+
+Common_EventScript_HideoutExchangePokemonPool::
+	factory_rentmons
+	waitstate
+	end
+
 Common_EventScript_EliteFourExchangePokemonEnd::
 	setflag FLAG_ELITE_FOUR_PARTY_EXCHANGED
 	goto Common_EventScript_EliteFourAttendantBestOfLuck
@@ -746,14 +771,44 @@ Common_EventScript_UpdateBrineyLocation::
 	return
 
 Common_EventScript_Tabitha::
+	call Common_EventScript_TabithaExchangeMons
 	goto Common_EventScript_Emmie
 	faceplayer
 	end
 
 Common_EventScript_Shelly::
+	call Common_EventScript_ShellyExchangeMons
 	goto Common_EventScript_Emmie
 	faceplayer
 	end
+
+Common_EventScript_ShellyExchangeMons::
+	message Common_Text_ShellyExchangeMons
+	multichoice 25, 6, MULTI_MHO_PARTY, 1
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq Common_EventScript_HideoutExchangePartnerPokemon
+	compare VAR_RESULT, 1
+	goto_if_eq Common_EventScript_HideoutExchangePlayerPokemon
+	return
+
+Common_Text_ShellyExchangeMons:
+	.string "Shelly: Do you want to switch up\n"
+	.string "our parties?$"
+
+Common_EventScript_TabithaExchangeMons::
+	message Common_Text_TabithaExchangeMons
+	multichoice 25, 6, MULTI_AHO_PARTY, 1
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq Common_EventScript_HideoutExchangePartnerPokemon
+	compare VAR_RESULT, 1
+	goto_if_eq Common_EventScript_HideoutExchangePlayerPokemon
+	return
+
+Common_Text_TabithaExchangeMons:
+	.string "Tabitha: Do you want to switch up\n"
+	.string "our parties?$"
 
 Common_EventScript_NotEligibleToParticipate::
 	lockall
@@ -2130,7 +2185,6 @@ Common_EventScript_EmmieBattle2::
 	goto Common_EventScript_EmmieBattle2ChoosePartyForMultiBattle
 	end
 
-
 Common_EventScript_EmmieBattle2ChoosePartyForMultiBattle::
 	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
@@ -2143,7 +2197,7 @@ Common_EventScript_EmmieBattle2ChoosePartyForMultiBattle::
 
 Common_EventScript_EmmieBattle2DoMultiBattle::
 	playbgm MUS_PETALBURG_WOODS, TRUE
-	multi_2_vs_1 TRAINER_EMMIE_2, Common_Text_EmmieBattleDefeat2, PARTNER_SHELLY
+	multi_2_vs_1 TRAINER_EMMIE_2, Common_Text_EmmieBattleDefeat2, PARTNER_SHELLY_JAGGED_PASS
 	switch VAR_RESULT
 	case 1, Common_EventScript_EmmieBattleVictory2
 	changefollowerbattler PARTNER_EMMIE

@@ -94,7 +94,8 @@
 #define PARTY_MSG_CHOOSE_MON_FOR_BOX        30
 #define PARTY_MSG_MOVE_ITEM_WHERE           31
 #define PARTY_MSG_WHICH_STATUS              32
-#define PARTY_MSG_SET_HP                    33
+#define PARTY_MSG_SET_HP                    33 
+#define PARTY_MSG_CANNOT_SELECT             34
 
 #define PARTY_MSG_NONE                      127
 

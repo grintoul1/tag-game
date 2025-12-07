@@ -99,19 +99,20 @@ releaseall
 end
 
 MagmaHideout_4F_EventScript_Grunt11Grunt12DoMultiBattle::
-playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_13, MagmaHideout_4F_Text_Grunt11Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_14, MagmaHideout_4F_Text_Grunt12Defeat, PARTNER_SHELLY
-special LoadPlayerParty
-switch VAR_RESULT
-case 1, MagmaHideout_4F_EventScript_Grunt11Grunt12Victory
-fadescreen FADE_TO_BLACK
-destroyfollowernpc
-setvar VAR_PARTNER_EMMIE_STATE, 42
-clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
-setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
-createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+	multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_13, MagmaHideout_4F_Text_Grunt11Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_14, MagmaHideout_4F_Text_Grunt12Defeat, PARTNER_SHELLY_MHO
+	special LoadPlayerParty
+	switch VAR_RESULT
+	case 1, MagmaHideout_4F_EventScript_Grunt11Grunt12Victory
+	fadescreen FADE_TO_BLACK
+	destroyfollowernpc
+	special ClearHideoutPool
+	setvar VAR_PARTNER_EMMIE_STATE, 42
+	clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	special SetCB2WhiteOut
+	waitstate
 
 MagmaHideout_4F_EventScript_Grunt11Grunt12Victory::
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
@@ -471,12 +472,13 @@ MagmaHideout_4F_EventScript_CourtneyTabitha_NowhereToRun::
 
 MagmaHideout_4F_EventScript_CourtneyTabithaDoMultiBattle::
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
-	multi_2_vs_2 TRAINER_TABITHA_MAGMA_HIDEOUT, MagmaHideout_4F_Text_TabithaDefeat, TRAINER_COURTNEY_MAGMA_HIDEOUT, MagmaHideout_4F_Text_CourtneyDefeat, PARTNER_SHELLY
+	multi_2_vs_2 TRAINER_TABITHA_MAGMA_HIDEOUT, MagmaHideout_4F_Text_TabithaDefeat, TRAINER_COURTNEY_MAGMA_HIDEOUT, MagmaHideout_4F_Text_CourtneyDefeat, PARTNER_SHELLY_MHO
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, MagmaHideout_4F_EventScript_CourtneyTabithaVictory
 	fadescreen FADE_TO_BLACK
 	destroyfollowernpc
+	special ClearHideoutPool
 	setvar VAR_PARTNER_EMMIE_STATE, 42
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
@@ -516,6 +518,7 @@ MagmaHideout_4F_EventScript_CourtneyTabithaVictory::
 	setobjectxyperm LOCALID_COURTNEY, 20, 5
 	destroyfollowernpc
 	setvar VAR_FOLLOWER_MAGMA_HIDEOUT_SHELLY, 2
+	special ClearHideoutPool
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_COURTNEY
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE

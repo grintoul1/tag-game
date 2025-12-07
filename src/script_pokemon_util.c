@@ -173,18 +173,32 @@ void ScriptSetMonMoveSlot(u8 monIndex, u16 move, u8 slot)
 
 // Note: When control returns to the event script, gSpecialVar_Result will be
 // TRUE if the party selection was successful.
-void ChooseHalfPartyForBattle(void)
+void ChooseHalfPartyForBattle(u8 unused)
 {
     gMain.savedCallback = CB2_ReturnFromChooseHalfParty;
     VarSet(VAR_FRONTIER_FACILITY, FACILITY_MULTI_OR_EREADER);
     InitChooseHalfPartyForBattle(0);
 }
 
-void ChooseHalfPartyForEliteFour(void)
+void ChooseHalfPartyForEliteFour(u8 unused)
 {
     gMain.savedCallback = CB2_ReturnFromChooseHalfPartyEliteFour;
     VarSet(VAR_FRONTIER_FACILITY, FACILITY_MULTI_OR_EREADER);
     InitChooseHalfPartyForEliteFour(0);
+}
+
+void ChooseHalfPartyForPlayerHideout(u8 unused)
+{
+    gMain.savedCallback = CB2_ReturnFromChooseHalfPartyEliteFour;
+    VarSet(VAR_FRONTIER_FACILITY, FACILITY_MULTI_OR_EREADER);
+    InitChooseHalfPartyForPlayerHideout(0);
+}
+
+void ChooseHalfPartyForPartnerHideout(u8 unused)
+{
+    gMain.savedCallback = CB2_ReturnFromChooseHalfPartyEliteFour;
+    VarSet(VAR_FRONTIER_FACILITY, FACILITY_MULTI_OR_EREADER);
+    InitChooseHalfPartyForPartnerHideout(0);
 }
 
 static void CB2_ReturnFromChooseHalfParty(void)

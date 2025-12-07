@@ -2155,7 +2155,7 @@ void DoSpecialTrainerBattle(void)
                 }
                 gBattleTypeFlags = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_DOUBLE);
                 (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
-                gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY);
+                gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY_JAGGED_PASS);
                 FillPartnerParty(gPartnerTrainerId);
             }
         }
@@ -3183,8 +3183,10 @@ void TryHideBattleTowerReporter(void)
     }
 }
 
-#define STEVEN_OTID 61226
-#define EMMIE_OTID 99999
+#define STEVEN_OTID     61226
+#define SHELLY_OTID     99997
+#define TABITHA_OTID    99998
+#define EMMIE_OTID      99999
 
 extern void CopyMon(void *dest, void *src, size_t size);
 
@@ -3201,7 +3203,9 @@ void FillPartnerParty(u16 trainerId)
     enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(trainerId);
     u8 nickname[POKEMON_NAME_LENGTH * 2];
     SetFacilityPtrsGetLevel();
-    if (trainerId == TRAINER_PARTNER(PARTNER_EMMIE))
+    if (trainerId == TRAINER_PARTNER(PARTNER_EMMIE)
+    || trainerId == TRAINER_PARTNER(PARTNER_SHELLY_MHO)
+    || trainerId == TRAINER_PARTNER(PARTNER_TABITHA))
     {
         for (i = 0; i < 3 && i < gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].partySize; i++)
             {
@@ -3227,7 +3231,18 @@ void FillPartnerParty(u16 trainerId)
                             thirdIdPart = partnerName[k];
                         }
                     }
-                otID = EMMIE_OTID;
+                switch (trainerId)
+                {
+                    case TRAINER_PARTNER(PARTNER_SHELLY_MHO):
+                        otID = SHELLY_OTID;
+                        break;
+                    case TRAINER_PARTNER(PARTNER_TABITHA):
+                        otID = TABITHA_OTID;
+                        break;
+                    default:
+                        otID = EMMIE_OTID;
+                        break;
+                }
 
                 personality = Random32();
                 if (partyData[i].gender == TRAINER_MON_MALE)

@@ -102,6 +102,12 @@ AquaHideout_B2F_EventScript_MattShellyDoMultiBattle::
 	switch VAR_RESULT
 	case 1, AquaHideout_B2F_EventScript_MattShellyVictory
 	fadescreen FADE_TO_BLACK
+	destroyfollowernpc
+	special ClearHideoutPool
+	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
+	setvar VAR_PARTNER_EMMIE_STATE, 48
+	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	special SetCB2WhiteOut
 	waitstate
 
@@ -362,14 +368,20 @@ releaseall
 end
 
 AquaHideout_B2F_EventScript_Grunt4Grunt1DoMultiBattle::
-playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-multi_2_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_4, AquaHideout_B2F_Text_Grunt4Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_1, AquaHideout_1F_Text_Grunt1Defeat, PARTNER_TABITHA
-special LoadPlayerParty
-switch VAR_RESULT
-case 1, AquaHideout_B2F_EventScript_Grunt4Grunt1Victory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+	multi_2_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_4, AquaHideout_B2F_Text_Grunt4Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_1, AquaHideout_1F_Text_Grunt1Defeat, PARTNER_TABITHA
+	special LoadPlayerParty
+	switch VAR_RESULT
+	case 1, AquaHideout_B2F_EventScript_Grunt4Grunt1Victory
+	fadescreen FADE_TO_BLACK
+	destroyfollowernpc
+	special ClearHideoutPool
+	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
+	setvar VAR_PARTNER_EMMIE_STATE, 48
+	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	special SetCB2WhiteOut
+	waitstate
 
 AquaHideout_B2F_EventScript_Grunt4Grunt1Victory::
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
@@ -425,14 +437,20 @@ releaseall
 end
 
 AquaHideout_B2F_EventScript_Grunt6Grunt8DoMultiBattle::
-playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-multi_2_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_6, AquaHideout_B2F_Text_Grunt6Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_8, AquaHideout_B2F_Text_Grunt8Defeat, PARTNER_TABITHA
-special LoadPlayerParty
-switch VAR_RESULT
-case 1, AquaHideout_B2F_EventScript_Grunt6Grunt8Victory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+	multi_2_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_6, AquaHideout_B2F_Text_Grunt6Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_8, AquaHideout_B2F_Text_Grunt8Defeat, PARTNER_TABITHA
+	special LoadPlayerParty
+	switch VAR_RESULT
+	case 1, AquaHideout_B2F_EventScript_Grunt6Grunt8Victory
+	fadescreen FADE_TO_BLACK
+	destroyfollowernpc
+	special ClearHideoutPool
+	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
+	setvar VAR_PARTNER_EMMIE_STATE, 48
+	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	special SetCB2WhiteOut
+	waitstate
 
 AquaHideout_B2F_EventScript_Grunt6Grunt8Victory::
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft

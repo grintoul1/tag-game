@@ -943,6 +943,7 @@ static const u8 *const sActionStringTable[] =
     [PARTY_MSG_MOVE_ITEM_WHERE]        = gText_MoveItemWhere,
     [PARTY_MSG_WHICH_STATUS]           = gText_WhichStatus,
     [PARTY_MSG_SET_HP]                 = gText_SetHP,
+    [PARTY_MSG_CANNOT_SELECT]          = gText_CannotSelectPkmn,
 };
 
 static const u8 *const sDescriptionStringTable[] =

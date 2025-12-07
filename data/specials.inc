@@ -63,6 +63,11 @@ gSpecials::
 	def_special LoadEliteFourPool
 	def_special ChooseHalfPartyForBattle
 	def_special ChooseHalfPartyForEliteFour
+	def_special ChooseHalfPartyForPlayerHideout
+	def_special ChooseHalfPartyForPartnerHideout
+	def_special FillPoolForShelly
+	def_special FillPoolForTabitha
+	def_special ClearHideoutPool
 	def_special DoBattleFactorySelectScreen
 	def_special Script_ShowLinkTrainerCard
 	def_special ObjectEventInteractionGetBerryTreeData
