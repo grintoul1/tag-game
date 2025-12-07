@@ -771,15 +771,15 @@ Common_EventScript_UpdateBrineyLocation::
 	return
 
 Common_EventScript_Tabitha::
+	faceplayer
 	call Common_EventScript_TabithaExchangeMons
 	goto Common_EventScript_Emmie
-	faceplayer
 	end
 
 Common_EventScript_Shelly::
+	faceplayer
 	call Common_EventScript_ShellyExchangeMons
 	goto Common_EventScript_Emmie
-	faceplayer
 	end
 
 Common_EventScript_ShellyExchangeMons::
