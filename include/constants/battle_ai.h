@@ -40,8 +40,8 @@
 #define AI_FLAG_PARTNER                     AI_FLAG(30)  // Partner
 #define AI_FLAG_PARTNER_SWITCHING           AI_FLAG(31)  // Partner switching
 #define AI_FLAG_ATTACKS_PARTNER             AI_FLAG(32)  // AI specific to double battles; AI can deliberately attack its 'partner.'
-#define AI_FLAG_TAG_OPPONENT                AI_FLAG(33)  // AI specific to double battles; AI can deliberately attack its 'partner.'
-#define AI_FLAG_SMART_TARGETING             AI_FLAG(34)  // AI specific to double battles; AI can deliberately attack its 'partner.'
+#define AI_FLAG_TAG_OPPONENT                AI_FLAG(33)  // Tag game opponents
+#define AI_FLAG_SMART_TARGETING             AI_FLAG(34)  // Lucid-style targeting
 
 #define AI_FLAG_COUNT                       35
 
