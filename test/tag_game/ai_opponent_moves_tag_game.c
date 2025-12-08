@@ -1277,3 +1277,172 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: AI opponents w
         } 
     } 
 }
+
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: AI opponent will Fake Out over highest damage move")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_AGGRON);
+        MULTI_PARTNER(SPECIES_LAIRON);
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_AURA_SPHERE, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_AURA_SPHERE, MOVE_FAKE_OUT); }
+    } WHEN {
+        TURN { EXPECT_MOVE(opponentLeft, MOVE_FAKE_OUT, target:playerRight); EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
+            SCORE_EQ_VAL(opponentRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerRight); 
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentRight);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: AI partner will Fake Out over highest damage move")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_AGGRON);
+        MULTI_PARTNER(SPECIES_LAIRON);
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_AURA_SPHERE, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_AURA_SPHERE, MOVE_FAKE_OUT); }
+    } WHEN {
+        TURN { EXPECT_MOVE(opponentLeft, MOVE_FAKE_OUT, target:playerRight); EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
+            SCORE_EQ_VAL(opponentRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerRight); 
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentRight);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: AI opponent Fake Out scoring compounds with best damage move")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_AGGRON);
+        MULTI_PARTNER(SPECIES_LAIRON);
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_CONSTRICT, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_CONSTRICT, MOVE_FAKE_OUT); }
+    } WHEN {
+        TURN { EXPECT_MOVE(opponentLeft, MOVE_FAKE_OUT, target:playerRight); EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerRight);
+            SCORE_EQ_VAL(opponentRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerRight); 
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentRight);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: AI opponent Fake Out scoring compounds with best damage move")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_AGGRON);
+        MULTI_PARTNER(SPECIES_LAIRON);
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_CONSTRICT, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_CONSTRICT, MOVE_FAKE_OUT); }
+    } WHEN {
+        TURN { EXPECT_MOVE(opponentLeft, MOVE_FAKE_OUT, target:playerRight); EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerRight);
+            SCORE_EQ_VAL(opponentRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerRight); 
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentRight);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: AI opponent Fake Out scoring compounds with last chance")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_AGGRON) { Speed(3); }
+        MULTI_PARTNER(SPECIES_LAIRON) { Speed(3); Moves(MOVE_DRAGON_RAGE); HP(200); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); HP(1); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); HP(1); }
+    } WHEN {
+        TURN { EXPECT_MOVE(opponentLeft, MOVE_FAKE_OUT, target:playerRight); EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
+            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + LAST_CHANCE, target:playerRight); 
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + LAST_CHANCE, target:playerRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentRight);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: AI opponent Fake Out scoring compounds with last chance")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_AGGRON) { Speed(3); }
+        MULTI_PARTNER(SPECIES_LAIRON) { Speed(3); Moves(MOVE_DRAGON_RAGE); HP(200); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); HP(1); }
+    } WHEN {
+        TURN { EXPECT_MOVE(opponentLeft, MOVE_FAKE_OUT, target:playerRight); EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
+            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + LAST_CHANCE, target:playerRight); 
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + LAST_CHANCE, target:playerRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentRight);
+    }
+}

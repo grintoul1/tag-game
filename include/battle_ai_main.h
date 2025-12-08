@@ -32,9 +32,10 @@ enum StatChange
     STAT_CHANGE_EVASION
 };
 
-#define BEST_DAMAGE_MOVE         6  // Move with the most amount of hits with the best accuracy/effect
-#define POWERFUL_STATUS_MOVE     30 // Moves with this score will be chosen over a move that faints target
-#define NO_DAMAGE_OR_FAILS      -50 // Move fails or does no damage
+#define BEST_DAMAGE_MOVE         6                      // Move with the most amount of hits with the best accuracy/effect
+#define BEST_DAMAGE_MOVE_PARTNER (BEST_DAMAGE_MOVE + 2) // Partner always gets the additional +2
+#define POWERFUL_STATUS_MOVE     30                     // Moves with this score will be chosen over a move that faints target
+#define NO_DAMAGE_OR_FAILS      -50                     // Move fails or does no damage
 
 // Scores given in AI_CalcMoveEffectScore and AI_CalcHoldEffectMoveScore
 enum AIScore
@@ -58,9 +59,14 @@ enum MoveComparisonResult
 };
 
 // AI_TryToFaint
-#define FAST_KILL      12 // AI is faster and faints target
-#define SLOW_KILL      6 // AI is slower and faints target
-#define LAST_CHANCE    14 // AI faints to target. It should try and do damage with a priority move
+#define FAST_KILL           12                                      // AI is faster and faints target
+#define SLOW_KILL           6                                       // AI is slower and faints target
+#define LAST_CHANCE         14                                      // AI faints to target. It should try and do damage with a priority move
+#define SLOW_KO_OPPONENT    (BEST_DAMAGE_MOVE + SLOW_KILL)          // For tests; includes best; excludes extra +2
+#define FAST_KO_OPPONENT    (BEST_DAMAGE_MOVE + FAST_KILL)          // For tests; includes best; excludes extra +2
+#define SLOW_KO_PARTNER     (BEST_DAMAGE_MOVE_PARTNER + SLOW_KILL)  // For tests; includes best dmg and extra +2
+#define FAST_KO_PARTNER     (BEST_DAMAGE_MOVE_PARTNER + FAST_KILL)  // For tests; includes best dmg and extra +2
+#define LAST_CHANCE_PARTNER (LAST_CHANCE + 1)                       // For tests; includes extra +1
 
 // AI_Risky
 #define STRONG_RISKY_EFFECT     3

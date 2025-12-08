@@ -122,8 +122,8 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: Fast KO scores +20 
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(3); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(1); };
-        MULTI_OPPONENT_B(SPECIES_KINGDRA){ HP(1); Speed(1); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(1); }
+        MULTI_OPPONENT_B(SPECIES_KINGDRA) { HP(1); Speed(1); }
     } WHEN {
             TURN { SCORE_EQ_VAL(playerRight, MOVE_DRAGON_PULSE, 120, target:opponentLeft); 
                 SCORE_EQ_VAL(playerRight, MOVE_SCALD, 120, target:opponentLeft);
@@ -139,8 +139,8 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: Fast KO scores 
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(3); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(1); };
-        MULTI_OPPONENT_A(SPECIES_KINGDRA){ HP(1); Speed(1); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(1); }
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(1); }
     } WHEN {
             TURN { SCORE_EQ_VAL(playerRight, MOVE_DRAGON_PULSE, 120, target:opponentLeft); 
                 SCORE_EQ_VAL(playerRight, MOVE_SCALD, 120, target:opponentLeft);
@@ -156,8 +156,8 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: Slow KO scores +14 
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(1); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(3); };
-        MULTI_OPPONENT_B(SPECIES_KINGDRA){ HP(1); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(3); }
+        MULTI_OPPONENT_B(SPECIES_KINGDRA) { HP(1); Speed(3); }
     } WHEN {
             TURN { SCORE_EQ_VAL(playerRight, MOVE_DRAGON_PULSE, 114, target:opponentLeft); 
                 SCORE_EQ_VAL(playerRight, MOVE_SCALD, 114, target:opponentLeft);
@@ -173,8 +173,8 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: Slow KO scores 
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_PULSE, MOVE_SCALD, MOVE_FLAMETHROWER); Speed(1); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(3); };
-        MULTI_OPPONENT_A(SPECIES_KINGDRA){ HP(1); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(3); }
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(3); }
     } WHEN {
             TURN { SCORE_EQ_VAL(playerRight, MOVE_DRAGON_PULSE, 114, target:opponentLeft); 
                 SCORE_EQ_VAL(playerRight, MOVE_SCALD, 114, target:opponentLeft);
@@ -190,8 +190,8 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner prioriti
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_SONIC_BOOM); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(20); Speed(3); };
-        MULTI_OPPONENT_B(SPECIES_KINGDRA){ HP(20); Speed(1); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(20); Speed(3); }
+        MULTI_OPPONENT_B(SPECIES_KINGDRA) { HP(20); Speed(1); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_SONIC_BOOM, target:opponentRight);
                 SCORE_EQ_VAL(playerRight, MOVE_SONIC_BOOM, 120, target:opponentRight); 
@@ -207,8 +207,8 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner prio
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_SONIC_BOOM); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(20); Speed(3); };
-        MULTI_OPPONENT_A(SPECIES_KINGDRA){ HP(20); Speed(1); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(20); Speed(3); }
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(20); Speed(1); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_SONIC_BOOM, target:opponentRight);
                 SCORE_EQ_VAL(playerRight, MOVE_SONIC_BOOM, 120, target:opponentRight); 
@@ -224,8 +224,8 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner prioriti
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_SONIC_BOOM); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Speed(1); };
-        MULTI_OPPONENT_B(SPECIES_KINGDRA){ HP(20); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Speed(1); }
+        MULTI_OPPONENT_B(SPECIES_KINGDRA) { HP(20); Speed(3); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_SONIC_BOOM, target:opponentRight);
                 SCORE_EQ_VAL(playerRight, MOVE_SONIC_BOOM, 114, target:opponentRight); 
@@ -241,8 +241,8 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner prio
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_SONIC_BOOM); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Speed(1); };
-        MULTI_OPPONENT_A(SPECIES_KINGDRA){ HP(20); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Speed(1); }
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(20); Speed(3); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_SONIC_BOOM, target:opponentRight);
                 SCORE_EQ_VAL(playerRight, MOVE_SONIC_BOOM, 114, target:opponentRight); 
@@ -258,8 +258,8 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner prioriti
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_SONIC_BOOM); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Speed(1); };
-        MULTI_OPPONENT_B(SPECIES_KINGDRA){ HP(40); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Speed(1); }
+        MULTI_OPPONENT_B(SPECIES_KINGDRA) { HP(40); Speed(3); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_SONIC_BOOM, target:opponentLeft);
                 SCORE_EQ_VAL(playerRight, MOVE_SONIC_BOOM, 108, target:opponentLeft); 
@@ -275,8 +275,8 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner prio
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_SONIC_BOOM); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Speed(1); };
-        MULTI_OPPONENT_A(SPECIES_KINGDRA){ HP(40); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Speed(1); }
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Speed(3); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_SONIC_BOOM, target:opponentLeft);
                 SCORE_EQ_VAL(playerRight, MOVE_SONIC_BOOM, 108, target:opponentLeft); 
@@ -292,8 +292,8 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner still sc
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); HP(1); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_SURF); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(1); };
-        MULTI_OPPONENT_B(SPECIES_KINGDRA){ HP(1); Speed(1); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(1); }
+        MULTI_OPPONENT_B(SPECIES_KINGDRA) { HP(1); Speed(1); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_SURF);
                 SCORE_EQ_VAL(playerRight, MOVE_SURF, 115, target:opponentLeft); 
@@ -309,8 +309,8 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: PARTNER: SCORING: AI partner still sc
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); HP(1); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_SURF); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(1); };
-        MULTI_OPPONENT_A(SPECIES_KINGDRA){ HP(1); Speed(1); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(1); }
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(1); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_SURF);
                 SCORE_EQ_VAL(playerRight, MOVE_SURF, 115, target:opponentLeft); 
@@ -326,8 +326,8 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner still sc
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); HP(1); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_SURF); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(3); };
-        MULTI_OPPONENT_B(SPECIES_KINGDRA){ HP(1); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(3); }
+        MULTI_OPPONENT_B(SPECIES_KINGDRA) { HP(1); Speed(3); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_SURF);
                 SCORE_EQ_VAL(playerRight, MOVE_SURF, 109, target:opponentLeft); 
@@ -343,8 +343,8 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: PARTNER: SCORING: AI partner still sc
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); HP(1); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_SURF); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(3); };
-        MULTI_OPPONENT_A(SPECIES_KINGDRA){ HP(1); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(3); }
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(1); Speed(3); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_SURF);
                 SCORE_EQ_VAL(playerRight, MOVE_SURF, 109, target:opponentLeft); 
@@ -360,8 +360,8 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner chooses 
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { HP(80); Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { HP(40); Moves(MOVE_DRAGON_RAGE, MOVE_AQUA_JET); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(3); };
-        MULTI_OPPONENT_B(SPECIES_KINGDRA){ HP(40); Moves(MOVE_DRAGON_RAGE); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(3); }
+        MULTI_OPPONENT_B(SPECIES_KINGDRA){ HP(40); Moves(MOVE_DRAGON_RAGE); Speed(3); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_AQUA_JET, target:opponentRight);
                 SCORE_EQ_VAL(playerRight, MOVE_DRAGON_RAGE, 114, target:opponentLeft); 
@@ -379,8 +379,8 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner cho
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { HP(80); Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { HP(40); Moves(MOVE_DRAGON_RAGE, MOVE_AQUA_JET); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(3); };
-        MULTI_OPPONENT_A(SPECIES_KINGDRA){ HP(40); Moves(MOVE_DRAGON_RAGE); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(3); }
+        MULTI_OPPONENT_A(SPECIES_KINGDRA){ HP(40); Moves(MOVE_DRAGON_RAGE); Speed(3); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_AQUA_JET, target:opponentRight);
                 SCORE_EQ_VAL(playerRight, MOVE_DRAGON_RAGE, 114, target:opponentLeft); 
@@ -398,8 +398,8 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner does not
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { HP(80); Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { HP(40); Moves(MOVE_DRAGON_RAGE, MOVE_AQUA_JET); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(3); };
-        MULTI_OPPONENT_B(SPECIES_KINGDRA){ HP(40); Moves(MOVE_DRAGON_RAGE); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(3); }
+        MULTI_OPPONENT_B(SPECIES_KINGDRA){ HP(40); Moves(MOVE_DRAGON_RAGE); Speed(3); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_AQUA_JET, target:opponentRight);
                 SCORE_EQ_VAL(playerRight, MOVE_DRAGON_RAGE, 114, target:opponentLeft); 
@@ -417,8 +417,8 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner does
         BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { HP(80); Speed(2); }
         MULTI_PARTNER(SPECIES_WOBBUFFET) { HP(40); Moves(MOVE_DRAGON_RAGE, MOVE_AQUA_JET); Speed(2); }
-        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(3); };
-        MULTI_OPPONENT_A(SPECIES_KINGDRA){ HP(40); Moves(MOVE_DRAGON_RAGE); Speed(3); };
+        MULTI_OPPONENT_A(SPECIES_KINGDRA) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(3); }
+        MULTI_OPPONENT_A(SPECIES_KINGDRA){ HP(40); Moves(MOVE_DRAGON_RAGE); Speed(3); }
     } WHEN {
             TURN { EXPECT_MOVE(playerRight, MOVE_AQUA_JET, target:opponentRight);
                 SCORE_EQ_VAL(playerRight, MOVE_DRAGON_RAGE, 114, target:opponentLeft); 
@@ -427,3 +427,464 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner does
                 SCORE_EQ_VAL(playerRight, MOVE_AQUA_JET, 115, target:opponentRight); }
         } 
 }
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner will Fake Out over highest damage move")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET);
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_AURA_SPHERE, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_AGGRON);
+        MULTI_OPPONENT_B(SPECIES_LAIRON);
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner will Fake Out over highest damage move")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET);
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_AURA_SPHERE, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_AGGRON);
+        MULTI_OPPONENT_A(SPECIES_LAIRON);
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner will not Fake Out over slow KO")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_AURA_SPHERE, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_AGGRON) { Speed(2); HP(40); }
+        MULTI_OPPONENT_B(SPECIES_LAIRON) { Speed(2); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_AURA_SPHERE, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + SLOW_KO_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_AURA_SPHERE, playerRight);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner will not Fake Out over slow KO")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_AURA_SPHERE, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_AGGRON) { Speed(2); HP(40); }
+        MULTI_OPPONENT_A(SPECIES_LAIRON) { Speed(2); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_AURA_SPHERE, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + SLOW_KO_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_AURA_SPHERE, playerRight);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner Fake Out scoring compounds with best damage move")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET);
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_CONSTRICT, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET);
+        MULTI_OPPONENT_B(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner Fake Out scoring compounds with best damage move")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET);
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Moves(MOVE_CONSTRICT, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET);
+        MULTI_OPPONENT_A(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner Fake Out scoring compounds with last chance")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(200); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(200); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + LAST_CHANCE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + LAST_CHANCE_PARTNER, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: PARTNER: SCORING: AI partner Fake Out scoring compounds with last chance")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(200); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(200); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + LAST_CHANCE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + LAST_CHANCE_PARTNER, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner Fake Out scoring compounds with best damage and last chance")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_CONSTRICT, MOVE_FAKE_OUT); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); }
+        MULTI_OPPONENT_B(SPECIES_WYNAUT) { Speed(2); Moves(MOVE_DRAGON_RAGE); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + LAST_CHANCE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + BEST_DAMAGE_MOVE_PARTNER + LAST_CHANCE_PARTNER, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner Fake Out scoring compounds with best damage and last chance")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_CONSTRICT, MOVE_FAKE_OUT); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); }
+        MULTI_OPPONENT_A(SPECIES_WYNAUT) { Speed(2); Moves(MOVE_DRAGON_RAGE); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + LAST_CHANCE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + BEST_DAMAGE_MOVE_PARTNER + LAST_CHANCE_PARTNER, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner Fake Out scoring compounds with Fast KO")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_BODY_SLAM, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(1); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(1); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_BODY_SLAM, AI_SCORE_DEFAULT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_BODY_SLAM, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + FAST_KO_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner Fake Out scoring compounds with Fast KO")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_BODY_SLAM, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(1); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_BODY_SLAM, AI_SCORE_DEFAULT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_BODY_SLAM, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + FAST_KO_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner Fake Out scoring compounds with Fast KO and last chance")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_BODY_SLAM, MOVE_FAKE_OUT); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(1); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(1); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_BODY_SLAM, AI_SCORE_DEFAULT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_BODY_SLAM, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + FAST_KO_PARTNER + LAST_CHANCE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + LAST_CHANCE_PARTNER, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner Fake Out scoring compounds with Fast KO and last chance")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_BODY_SLAM, MOVE_FAKE_OUT); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(1); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(1); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_BODY_SLAM, AI_SCORE_DEFAULT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_BODY_SLAM, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + FAST_KO_PARTNER + LAST_CHANCE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + LAST_CHANCE_PARTNER, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner will Fake Out a slower opponent that has Fake Out")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_DRAGON_RAGE, MOVE_FAKE_OUT); HP(200); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_DRAGON_RAGE); HP(200); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + FAST_KO_PARTNER + 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: PARTNER: SCORING: AI partner will Fake Out a slower opponent that has Fake Out")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_DRAGON_RAGE, MOVE_FAKE_OUT); HP(200); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_DRAGON_RAGE); HP(200); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + FAST_KO_PARTNER + 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner will Fake Out an opponent that the player has slow KO on when seeing no fast KOs")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_DRAGON_RAGE, MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(1); Level(39); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(40); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(100); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + FAST_KO_PARTNER + 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner will Fake Out an opponent that the player has slow KO on when seeing no fast KOs")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_DRAGON_RAGE, MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(1); Level(39); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(40); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(100); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + FAST_KO_PARTNER + 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
+    }
+}
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner will not Fake Out an opponent that the player has slow KO on when seeing a fast KO")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); Level(40); Moves(MOVE_SEISMIC_TOSS, MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(3); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(100); }
+        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(40); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_SEISMIC_TOSS, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + FAST_KO_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SEISMIC_TOSS, playerRight);
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner will not Fake Out an opponent that the player has slow KO on when seeing a fast KO")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(3, AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_TARGET(TARGET_TIE_HI, 0);
+        MULTI_PLAYER(SPECIES_WOBBUFFET) { Speed(1); Level(40); Moves(MOVE_SEISMIC_TOSS, MOVE_CELEBRATE); }
+        MULTI_PARTNER(SPECIES_WOBBUFFET) { Speed(3); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(100); }
+        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); Moves(MOVE_DRAGON_RAGE); HP(40); }
+    } WHEN {
+        TURN { EXPECT_MOVE(playerRight, MOVE_SEISMIC_TOSS, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + FAST_KO_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT, target:opponentRight);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+        }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SEISMIC_TOSS, playerRight);
+    }
+}
+
