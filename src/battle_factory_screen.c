@@ -1667,7 +1667,6 @@ static void Select_Task_HandleMenu(u8 taskId)
                     gTasks[taskId].func = Select_Task_HandleChooseMons;
                     break;
             }
-            //if (sFactorySelectScreen->selectingMonsState > FRONTIER_PARTY_SIZE)
         }
         else if (JOY_REPEAT(DPAD_UP))
         {
