@@ -392,13 +392,13 @@ void ComputeBattlerDecisions(u32 battler)
     if (isAiBattler || CanAiPredictMove(battler))
     {
         // Risky AI switches aggressively even mid battle
-        enum SwitchType switchType = (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_RISKY) ? SWITCH_AFTER_KO : SWITCH_MID_BATTLE;
+        enum SwitchType switchType = (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_RISKY) ? SWITCH_AFTER_KO : SWITCH_MID_BATTLE_OPTIONAL;
 
         gAiLogicData->aiCalcInProgress = TRUE;
 
         // Setup battler and prediction data
         BattleAI_SetupAIData(0xF, battler);
-        SetupAIPredictionData(battler, switchType);
+        SetupAIPredictionData(battler, SWITCH_MID_BATTLE_OPTIONAL);
 
         // AI's own switching data
         if (isAiBattler)
@@ -491,6 +491,7 @@ void Ai_InitPartyStruct(void)
 {
     u32 i;
     bool32 isOmniscient = (gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_LEFT] & AI_FLAG_OMNISCIENT) || (gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_RIGHT] & AI_FLAG_OMNISCIENT);
+    bool32 hasPartyKnowledge = (gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_LEFT] & AI_FLAG_KNOW_OPPONENT_PARTY) || (gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_RIGHT] & AI_FLAG_KNOW_OPPONENT_PARTY);
     struct Pokemon *mon;
 
     gAiPartyData->count[B_SIDE_PLAYER] = CalculatePlayerPartyCount();
@@ -511,16 +512,16 @@ void Ai_InitPartyStruct(void)
     // Find fainted mons
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
-            continue;
-
+        mon = &gPlayerParty[i];
         if (GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
             gAiPartyData->mons[B_SIDE_PLAYER][i].isFainted = TRUE;
+
+        if (isOmniscient || hasPartyKnowledge)
+            gAiPartyData->mons[B_SIDE_PLAYER][i].species = GetMonData(mon, MON_DATA_SPECIES);
 
         if (isOmniscient)
         {
             u32 j;
-            mon = &gPlayerParty[i];
             gAiPartyData->mons[B_SIDE_PLAYER][i].item = GetMonData(mon, MON_DATA_HELD_ITEM);
             gAiPartyData->mons[B_SIDE_PLAYER][i].heldEffect = GetItemHoldEffect(gAiPartyData->mons[B_SIDE_PLAYER][i].item);
             gAiPartyData->mons[B_SIDE_PLAYER][i].ability = GetMonAbility(mon);
@@ -683,6 +684,7 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData)
     u32 battlerAtk, battlersCount, weather;
 
     memset(aiData, 0, sizeof(struct AiLogicData));
+    gAiBattleData->aiUsingGimmick = 0;
     if (!(gBattleTypeFlags & BATTLE_TYPE_HAS_AI) && !IsWildMonSmart())
         return;
 
@@ -1525,7 +1527,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             }
             break;
         case EFFECT_CHARGE:
-            if (gBattleMons[battlerAtk].volatiles.charge)
+            if (gBattleMons[battlerAtk].volatiles.chargeTimer > 0)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             else if (!HasMoveWithType(battlerAtk, TYPE_ELECTRIC))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -4225,7 +4227,7 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
     bool32 isBattle1v1 = IsBattle1v1();
     bool32 hasTwoOpponents = HasTwoOpponents(battlerAtk);
     bool32 hasPartner = HasPartner(battlerAtk);
-    bool32 moveTargetsBothOpponents = hasTwoOpponents && (gMovesInfo[move].target & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_ALL_BATTLERS));
+    bool32 moveTargetsBothOpponents = hasTwoOpponents && (GetMoveTarget(move) & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_ALL_BATTLERS));
     u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
     u32 i;
     s32 maxScore = 0;
@@ -6383,7 +6385,7 @@ static s32 AI_CalcAdditionalEffectScore(u32 battlerAtk, u32 battlerDef, u32 move
                 break;
             case MOVE_EFFECT_CLEAR_SMOG:
             {
-                bool32 moveTargetsBothOpponents = HasTwoOpponents(battlerAtk) && (gMovesInfo[move].target & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_ALL_BATTLERS));
+                bool32 moveTargetsBothOpponents = HasTwoOpponents(battlerAtk) && (GetMoveTarget(move) & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_ALL_BATTLERS));
 
                 score += AI_TryToClearStats(battlerAtk, battlerDef, moveTargetsBothOpponents);
                 break;
@@ -7176,7 +7178,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     u32 nonVolatileStatus = GetMoveNonVolatileStatus(move);
     s32 moveType;
     u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, move);
-    bool32 moveTargetsBothOpponents = hasTwoOpponents && (gMovesInfo[move].target & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_ALL_BATTLERS));
+    bool32 moveTargetsBothOpponents = hasTwoOpponents && (GetMoveTarget(move) & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_ALL_BATTLERS));
     s32 atkPriority = GetBattleMovePriority(battlerAtk, abilityAtk, move);
     u32 movesetIndex = gAiThinkingStruct->movesetIndex;
     uq4_12_t effectiveness = aiData->effectiveness[battlerAtk][battlerDef][movesetIndex];
@@ -7561,7 +7563,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_CHARGE:
-                if (gBattleMons[battlerAtk].volatiles.charge)
+                if (gBattleMons[battlerAtk].volatiles.chargeTimer > 0)
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 else if (!HasMoveWithType(battlerAtk, TYPE_ELECTRIC))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -12428,7 +12430,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     u32 nonVolatileStatus = GetMoveNonVolatileStatus(move);
     s32 moveType;
     u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, move);
-    bool32 moveTargetsBothOpponents = hasTwoOpponents && (gMovesInfo[move].target & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_ALL_BATTLERS));
+    bool32 moveTargetsBothOpponents = hasTwoOpponents && (GetMoveTarget(move) & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_ALL_BATTLERS));
     s32 atkPriority = GetBattleMovePriority(battlerAtk, abilityAtk, move);
     u32 movesetIndex = gAiThinkingStruct->movesetIndex;
     uq4_12_t effectiveness = aiData->effectiveness[battlerAtk][battlerDef][movesetIndex];
@@ -12818,7 +12820,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_CHARGE:
-                if (gBattleMons[battlerAtk].volatiles.charge)
+                if (gBattleMons[battlerAtk].volatiles.chargeTimer > 0)
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 else if (!HasMoveWithType(battlerAtk, TYPE_ELECTRIC))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);

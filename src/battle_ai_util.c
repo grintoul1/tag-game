@@ -883,7 +883,7 @@ static inline void CalcDynamicMoveDamage(struct DamageContext *ctx, u16 *medianD
         median = maximum = minimum = max(0, gBattleMons[ctx->battlerDef].hp - gBattleMons[ctx->battlerAtk].hp);
         break;
     case EFFECT_BEAT_UP:
-        if (B_BEAT_UP >= GEN_5)
+        if (GetGenConfig(GEN_CONFIG_BEAT_UP) >= GEN_5)
         {
             u32 partyCount = CalculatePartyCount(GetBattlerParty(ctx->battlerAtk));
             u32 i;
@@ -2264,7 +2264,7 @@ bool32 IsHazardClearingMove(u32 move)
     case EFFECT_TIDY_UP:
         return TRUE;
     case EFFECT_DEFOG:
-        if (B_DEFOG_EFFECT_CLEARING >= GEN_6)
+        if (GetGenConfig(GEN_CONFIG_DEFOG_EFFECT_CLEARING) >= GEN_6)
             return TRUE;
         break;
     }
@@ -4542,7 +4542,7 @@ bool32 AreMovesEquivalent(u32 battlerAtk, u32 battlerAtkPartner, u32 move, u32 p
     // shared bits indicate they're meaningfully the same in some way
     if (atkEffect & partnerEffect)
     {
-        if (gMovesInfo[move].target == MOVE_TARGET_SELECTED && gMovesInfo[partnerMove].target == MOVE_TARGET_SELECTED)
+        if (GetMoveTarget(move) == MOVE_TARGET_SELECTED && GetMoveTarget(partnerMove) == MOVE_TARGET_SELECTED)
         {
             if (battlerDef == gBattleStruct->moveTarget[battlerAtkPartner])
                 return TRUE;
@@ -4687,7 +4687,7 @@ bool32 DoesPartnerHaveSameMoveEffect(u32 battlerAtkPartner, u32 battlerDef, u32 
     if (GetMoveEffect(move) == GetMoveEffect(partnerMove)
       && partnerMove != MOVE_NONE)
     {
-        if (gMovesInfo[move].target == MOVE_TARGET_SELECTED && gMovesInfo[partnerMove].target == MOVE_TARGET_SELECTED)
+        if (GetMoveTarget(move) == MOVE_TARGET_SELECTED && GetMoveTarget(partnerMove) == MOVE_TARGET_SELECTED)
         {
             return gBattleStruct->moveTarget[battlerAtkPartner] == battlerDef;
         }
@@ -4987,7 +4987,9 @@ s32 CountUsablePartyMons(u32 battlerId)
     }
 
     ret = 0;
-    for (i = 0; i < PARTY_SIZE; i++)
+    s32 firstId, lastId;
+    GetAIPartyIndexes(battlerId, &firstId, &lastId);
+    for (i = firstId; i < lastId; i++)
     {
         if (i != battlerOnField1 && i != battlerOnField2
          && GetMonData(&party[i], MON_DATA_HP) != 0
@@ -5148,7 +5150,7 @@ bool32 IsRecycleEncouragedItem(u32 item)
 /*
 static bool32 HasMoveThatChangesKOThreshold(u32 battlerId, u32 noOfHitsToFaint, u32 aiIsFaster)
 {
-    s32 i;
+    s32 i, j;
     u16 *moves = GetMovesArray(battlerId);
 
     for (i = 0; i < MAX_MON_MOVES; i++)
@@ -5160,16 +5162,21 @@ static bool32 HasMoveThatChangesKOThreshold(u32 battlerId, u32 noOfHitsToFaint, 
             if (GetMovePriority(moves[i]) > 0)
                 return TRUE;
 
-            switch (gMovesInfo[moves[i]].additionalEffects[i].moveEffect)
+            u32 additionalEffectCount = GetMoveAdditionalEffectCount(moves[i]);
+            for (j = 0; j < additionalEffectCount; j++)
             {
-            case MOVE_EFFECT_SPD_MINUS_1:
-            case MOVE_EFFECT_SPD_MINUS_2:
-            {
-                if(aiIsFaster)
-                    return TRUE;
-            }
-            default:
-                break;
+                const struct AdditionalEffect *additionalEffect = GetMoveAdditionalEffectById(moves[i], j);
+                switch (additionalEffect->moveEffect)
+                {
+                case MOVE_EFFECT_SPD_MINUS_1:
+                case MOVE_EFFECT_SPD_MINUS_2:
+                {
+                    if(aiIsFaster)
+                        return TRUE;
+                }
+                default:
+                    break;
+                }
             }
         }
     }

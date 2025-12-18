@@ -33,25 +33,9 @@ static bool32 HandleEndTurnOrder(u32 battler)
     gBattleTurnCounter++;
     gBattleStruct->eventState.endTurn++;
 
-    u32 i, j;
-    struct BattleContext ctx = {0};
-    for (i = 0; i < gBattlersCount; i++)
-    {
+    for (u32 i = 0; i < gBattlersCount; i++)
         gBattlerByTurnOrder[i] = i;
-        ctx.abilities[i] = GetBattlerAbility(i);
-        ctx.holdEffects[i] = GetBattlerHoldEffect(i);
-    }
-    for (i = 0; i < gBattlersCount - 1; i++)
-    {
-        for (j = i + 1; j < gBattlersCount; j++)
-        {
-            ctx.battlerAtk = gBattlerByTurnOrder[i];
-            ctx.battlerDef = gBattlerByTurnOrder[j];
-
-            if (GetWhichBattlerFaster(&ctx, FALSE) == -1)
-                SwapTurnOrder(i, j);
-        }
-    }
+    SortBattlersBySpeed(gBattlerByTurnOrder, FALSE);
 
     return effect;
 }
@@ -80,8 +64,8 @@ static bool32 HandleEndTurnVarious(u32 battler)
         if (gBattleMons[i].volatiles.lockOn > 0)
             gBattleMons[i].volatiles.lockOn--;
 
-        if (gDisableStructs[i].chargeTimer > 0 && --gDisableStructs[i].chargeTimer == 0)
-            gBattleMons[i].volatiles.charge = FALSE;
+        if (B_CHARGE < GEN_9 && gBattleMons[i].volatiles.chargeTimer > 0)
+            gBattleMons[i].volatiles.chargeTimer--;
 
         if (gDisableStructs[i].laserFocusTimer > 0 && --gDisableStructs[i].laserFocusTimer == 0)
             gBattleMons[i].volatiles.laserFocus = FALSE;

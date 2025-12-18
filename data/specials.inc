@@ -586,3 +586,5 @@ gSpecials::
 	def_special MaxMoney
 	def_special PokeMenu_PokeRider_Helper
 	def_special PokeMenu_PokeRider
+	def_special ObjectEventInteractionGetApricornTreeData
+	def_special ObjectEventInteractionPickApricornTree

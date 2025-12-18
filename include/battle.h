@@ -102,8 +102,7 @@ struct DisableStruct
     u8 battlerWithSureHit;
     u8 isFirstTurn;
     u8 mimickedMoves:4;
-    u8 chargeTimer:4;
-    u8 rechargeTimer;
+    u8 rechargeTimer:4;
     u8 autotomizeCount;
     u16 slowStartTimer;
     u16 embargoTimer;
@@ -138,7 +137,8 @@ struct DisableStruct
     u8 endured:1;
     u8 tryEjectPack:1;
     u8 octolockedBy:3;
-    u8 padding:5;
+    u8 paradoxBoostedStat:4;
+    u8 padding2:1;
 };
 
 // Fully Cleared each turn after end turn effects are done. A few things are cleared before end turn effects
@@ -161,18 +161,17 @@ struct ProtectStruct
     u32 disableEjectPack:1;
     u32 pranksterElevated:1;
     u32 quickDraw:1;
-    u32 beakBlastCharge:1;
     u32 quash:1;
     u32 shellTrap:1;
     u32 eatMirrorHerb:1;
     u32 activateOpportunist:2; // 2 - to copy stats. 1 - stats copied (do not repeat). 0 - no stats to copy
     u16 usedAllySwitch:1;
+    u16 lashOutAffected:1;
     // End of 32-bit bitfield
     u16 helpingHand:3;
-    u16 lashOutAffected:1;
     u16 assuranceDoubled:1;
     u16 myceliumMight:1;
-    u16 padding:10;
+    u16 padding:11;
     // End of 16-bit bitfield
     u16 physicalDmg;
     u16 specialDmg;
@@ -193,14 +192,14 @@ struct SpecialStatus
     u8 afterYou:1;
     u8 enduredDamage:1;
     u8 dancerUsedMove:1;
-    u8 padding:1;
+    u8 padding1:1;
     // End of byte
     u8 switchInAbilityDone:1;
     u8 switchInItemDone:1;
     u8 instructedChosenTarget:3;
     u8 berryReduced:1;
-    u8 announceNeutralizingGas:1;   // See Cmd_switchineffects
     u8 neutralizingGasRemoved:1;    // See VARIOUS_TRY_END_NEUTRALIZING_GAS
+    u8 padding2:1;
     // End of byte
     u8 gemParam;
     // End of byte
@@ -213,7 +212,7 @@ struct SpecialStatus
     u8 criticalHit:1;
     // End of byte
     u8 dancerOriginalTarget:3;
-    u8 unused:5;
+    u8 padding3:5;
     // End of byte
 };
 
@@ -619,7 +618,7 @@ struct EventStates
     enum FirstTurnEventsStates beforeFristTurn:8;
     enum FaintedActions faintedAction:8;
     enum BattlerId faintedActionBattler:4;
-    enum MoveSuccessOrder atkCanceller:8;
+    enum MoveSuccessOrder atkCanceler:8;
     enum BattleIntroStates battleIntro:8;
     u32 padding:24;
 };
@@ -697,7 +696,7 @@ struct BattleStruct
     u8 fickleBeamBoosted:1;
     u8 poisonPuppeteerConfusion:1;
     u8 toxicChainPriority:1; // If Toxic Chain will trigger on target, all other non volatiles will be blocked
-    u8 padding1:1;
+    u8 moldBreakerActive:1;
     u16 startingStatusTimer;
     struct BattleTvMovePoints tvMovePoints;
     struct BattleTv tv;
@@ -740,7 +739,7 @@ struct BattleStruct
     u8 moveInfoSpriteId; // move info, window gfx
     u8 skyDropTargets[MAX_BATTLERS_COUNT]; // For Sky Drop, to account for if multiple Pokemon use Sky Drop in a double battle.
     // When using a move which hits multiple opponents which is then bounced by a target, we need to make sure, the move hits both opponents, the one with bounce, and the one without.
-    u16 beatUpSpecies[PARTY_SIZE];
+    u16 beatUpSpecies[PARTY_SIZE]; // Species for Gen5+ Beat Up, otherwise party indexes
     u8 attackerBeforeBounce:2;
     u8 beatUpSlot:3;
     u8 pledgeMove:1;
@@ -908,7 +907,7 @@ struct BattleScripting
     u8 specialTrainerBattleType;
     bool8 monCaught;
     s32 savedDmg;
-    u16 savedMoveEffect; // For moves hitting multiple targets.
+    u16 unused_0x2c;
     u16 moveEffect;
     u16 unused_0x30;
     u8 illusionNickHack; // To properly display nick in STRINGID_ENEMYABOUTTOSWITCHPKMN.

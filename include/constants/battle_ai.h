@@ -42,8 +42,9 @@
 #define AI_FLAG_ATTACKS_PARTNER             AI_FLAG(32)  // AI specific to double battles; AI can deliberately attack its 'partner.'
 #define AI_FLAG_TAG_OPPONENT                AI_FLAG(33)  // Tag game opponents
 #define AI_FLAG_SMART_TARGETING             AI_FLAG(34)  // Lucid-style targeting
+#define AI_FLAG_KNOW_OPPONENT_PARTY         AI_FLAG(35)  // AI knows all the species in the player's party, but not moves/items/abilities unless they've been seen.
 
-#define AI_FLAG_COUNT                       35
+#define AI_FLAG_COUNT                       36
 
 // The following options are enough to have a basic/smart trainer. Any other addtion could make the trainer worse/better depending on the flag
 #define AI_FLAG_BASIC_TRAINER         (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE | AI_FLAG_CHECK_VIABILITY)

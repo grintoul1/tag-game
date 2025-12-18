@@ -72,7 +72,8 @@ enum ShouldPartnerSwitchScenario
 enum SwitchType
 {
     SWITCH_AFTER_KO,
-    SWITCH_MID_BATTLE,
+    SWITCH_MID_BATTLE_FORCED,
+    SWITCH_MID_BATTLE_OPTIONAL,
 };
 
 void GetAIPartyIndexes(u32 battlerId, s32 *firstId, s32 *lastId);
