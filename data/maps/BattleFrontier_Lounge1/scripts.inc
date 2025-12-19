@@ -29,7 +29,8 @@ BattleFrontier_Lounge1_EventScript_Breeder::
 # 15 "data/maps/BattleFrontier_Lounge1/scripts.pory"
 BattleFrontier_Lounge1_EventScript_ChooseMonToShowBreeder::
 # 16 "data/maps/BattleFrontier_Lounge1/scripts.pory"
-	special ChoosePartyMon
+	fadescreen FADE_TO_BLACK
+	special ChooseBoxMon
 # 17 "data/maps/BattleFrontier_Lounge1/scripts.pory"
 	waitstate
 # 18 "data/maps/BattleFrontier_Lounge1/scripts.pory"

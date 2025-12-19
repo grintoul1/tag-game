@@ -139,7 +139,7 @@ BattleFrontier_Lounge7_EventScript_Softboiled::
 # 70 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 16
 # 71 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_SOFT_BOILED
+	setvar VAR_ITEM_ID, MOVE_SOFT_BOILED
 # 72 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 73 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -151,7 +151,7 @@ BattleFrontier_Lounge7_EventScript_SeismicToss::
 # 76 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 24
 # 77 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_SEISMIC_TOSS
+	setvar VAR_ITEM_ID, MOVE_SEISMIC_TOSS
 # 78 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 79 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -163,7 +163,7 @@ BattleFrontier_Lounge7_EventScript_DreamEater::
 # 82 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 24
 # 83 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_DREAM_EATER
+	setvar VAR_ITEM_ID, MOVE_DREAM_EATER
 # 84 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 85 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -175,7 +175,7 @@ BattleFrontier_Lounge7_EventScript_MegaPunch::
 # 88 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 24
 # 89 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_MEGA_PUNCH
+	setvar VAR_ITEM_ID, MOVE_MEGA_PUNCH
 # 90 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 91 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -187,7 +187,7 @@ BattleFrontier_Lounge7_EventScript_MegaKick::
 # 94 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 48
 # 95 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_MEGA_KICK
+	setvar VAR_ITEM_ID, MOVE_MEGA_KICK
 # 96 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 97 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -199,7 +199,7 @@ BattleFrontier_Lounge7_EventScript_BodySlam::
 # 100 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 48
 # 101 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_BODY_SLAM
+	setvar VAR_ITEM_ID, MOVE_BODY_SLAM
 # 102 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 103 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -211,7 +211,7 @@ BattleFrontier_Lounge7_EventScript_RockSlide::
 # 106 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 48
 # 107 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_ROCK_SLIDE
+	setvar VAR_ITEM_ID, MOVE_ROCK_SLIDE
 # 108 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 109 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -223,7 +223,7 @@ BattleFrontier_Lounge7_EventScript_Counter::
 # 112 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 48
 # 113 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_COUNTER
+	setvar VAR_ITEM_ID, MOVE_COUNTER
 # 114 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 115 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -235,7 +235,7 @@ BattleFrontier_Lounge7_EventScript_ThunderWave::
 # 118 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 48
 # 119 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_THUNDER_WAVE
+	setvar VAR_ITEM_ID, MOVE_THUNDER_WAVE
 # 120 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 121 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -247,7 +247,7 @@ BattleFrontier_Lounge7_EventScript_SwordsDance::
 # 124 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 48
 # 125 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_SWORDS_DANCE
+	setvar VAR_ITEM_ID, MOVE_SWORDS_DANCE
 # 126 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 127 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -387,7 +387,7 @@ BattleFrontier_Lounge7_EventScript_DefenseCurl::
 # 194 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 16
 # 195 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_DEFENSE_CURL
+	setvar VAR_ITEM_ID, MOVE_DEFENSE_CURL
 # 196 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 197 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -399,7 +399,7 @@ BattleFrontier_Lounge7_EventScript_Snore::
 # 200 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 24
 # 201 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_SNORE
+	setvar VAR_ITEM_ID, MOVE_SNORE
 # 202 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 203 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -411,7 +411,7 @@ BattleFrontier_Lounge7_EventScript_MudSlap::
 # 206 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 24
 # 207 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_MUD_SLAP
+	setvar VAR_ITEM_ID, MOVE_MUD_SLAP
 # 208 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 209 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -423,7 +423,7 @@ BattleFrontier_Lounge7_EventScript_Swift::
 # 212 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 24
 # 213 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_SWIFT
+	setvar VAR_ITEM_ID, MOVE_SWIFT
 # 214 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 215 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -435,7 +435,7 @@ BattleFrontier_Lounge7_EventScript_IcyWind::
 # 218 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 24
 # 219 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_ICY_WIND
+	setvar VAR_ITEM_ID, MOVE_ICY_WIND
 # 220 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 221 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -447,7 +447,7 @@ BattleFrontier_Lounge7_EventScript_Endure::
 # 224 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 48
 # 225 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_ENDURE
+	setvar VAR_ITEM_ID, MOVE_ENDURE
 # 226 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 227 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -459,7 +459,7 @@ BattleFrontier_Lounge7_EventScript_PsychUp::
 # 230 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 48
 # 231 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_PSYCH_UP
+	setvar VAR_ITEM_ID, MOVE_PSYCH_UP
 # 232 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 233 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -471,7 +471,7 @@ BattleFrontier_Lounge7_EventScript_IcePunch::
 # 236 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 48
 # 237 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_ICE_PUNCH
+	setvar VAR_ITEM_ID, MOVE_ICE_PUNCH
 # 238 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 239 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -483,7 +483,7 @@ BattleFrontier_Lounge7_EventScript_ThunderPunch::
 # 242 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 48
 # 243 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_THUNDER_PUNCH
+	setvar VAR_ITEM_ID, MOVE_THUNDER_PUNCH
 # 244 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 245 "data/maps/BattleFrontier_Lounge7/scripts.pory"
@@ -495,7 +495,7 @@ BattleFrontier_Lounge7_EventScript_FirePunch::
 # 248 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	setvar VAR_0x8008, 48
 # 249 "data/maps/BattleFrontier_Lounge7/scripts.pory"
-	setvar VAR_0x8005, MOVE_FIRE_PUNCH
+	setvar VAR_ITEM_ID, MOVE_FIRE_PUNCH
 # 250 "data/maps/BattleFrontier_Lounge7/scripts.pory"
 	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
 # 251 "data/maps/BattleFrontier_Lounge7/scripts.pory"

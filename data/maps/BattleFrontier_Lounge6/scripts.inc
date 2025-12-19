@@ -27,7 +27,8 @@ BattleFrontier_Lounge6_EventScript_Trader::
 # 14 "data/maps/BattleFrontier_Lounge6/scripts.pory"
 	goto_if_eq VAR_RESULT, NO, BattleFrontier_Lounge6_EventScript_DeclineTrade
 # 15 "data/maps/BattleFrontier_Lounge6/scripts.pory"
-	special ChoosePartyMon
+	fadescreen FADE_TO_BLACK
+	special ChooseBoxMon
 # 16 "data/maps/BattleFrontier_Lounge6/scripts.pory"
 	waitstate
 # 17 "data/maps/BattleFrontier_Lounge6/scripts.pory"

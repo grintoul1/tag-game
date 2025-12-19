@@ -27,7 +27,8 @@ FortreeCity_House1_EventScript_Trader::
 # 14 "data/maps/FortreeCity_House1/scripts.pory"
 	goto_if_eq VAR_RESULT, NO, FortreeCity_House1_EventScript_DeclineTrade
 # 15 "data/maps/FortreeCity_House1/scripts.pory"
-	special ChoosePartyMon
+	fadescreen FADE_TO_BLACK
+	special ChooseBoxMon
 # 16 "data/maps/FortreeCity_House1/scripts.pory"
 	waitstate
 # 17 "data/maps/FortreeCity_House1/scripts.pory"

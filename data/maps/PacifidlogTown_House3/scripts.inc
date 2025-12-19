@@ -27,7 +27,8 @@ PacifidlogTown_House3_EventScript_Trader::
 # 14 "data/maps/PacifidlogTown_House3/scripts.pory"
 	goto_if_eq VAR_RESULT, NO, PacifidlogTown_House3_EventScript_DeclineTrade
 # 15 "data/maps/PacifidlogTown_House3/scripts.pory"
-	special ChoosePartyMon
+	fadescreen FADE_TO_BLACK
+	special ChooseBoxMon
 # 16 "data/maps/PacifidlogTown_House3/scripts.pory"
 	waitstate
 # 17 "data/maps/PacifidlogTown_House3/scripts.pory"

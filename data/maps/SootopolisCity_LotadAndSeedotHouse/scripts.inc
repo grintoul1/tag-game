@@ -17,7 +17,8 @@ SootopolisCity_LotadAndSeedotHouse_EventScript_SeedotBrother::
 # 9 "data/maps/SootopolisCity_LotadAndSeedotHouse/scripts.pory"
 	msgbox SootopolisCity_LotadAndSeedotHouse_Text_PleaseShowMeBigSeedot, MSGBOX_DEFAULT
 # 10 "data/maps/SootopolisCity_LotadAndSeedotHouse/scripts.pory"
-	special ChoosePartyMon
+	fadescreen FADE_TO_BLACK
+	special ChooseBoxMon
 # 11 "data/maps/SootopolisCity_LotadAndSeedotHouse/scripts.pory"
 	waitstate
 # 12 "data/maps/SootopolisCity_LotadAndSeedotHouse/scripts.pory"
@@ -105,7 +106,8 @@ SootopolisCity_LotadAndSeedotHouse_EventScript_LotadBrother::
 # 53 "data/maps/SootopolisCity_LotadAndSeedotHouse/scripts.pory"
 	msgbox SootopolisCity_LotadAndSeedotHouse_Text_PleaseShowMeBigLotad, MSGBOX_DEFAULT
 # 54 "data/maps/SootopolisCity_LotadAndSeedotHouse/scripts.pory"
-	special ChoosePartyMon
+	fadescreen FADE_TO_BLACK
+	special ChooseBoxMon
 # 55 "data/maps/SootopolisCity_LotadAndSeedotHouse/scripts.pory"
 	waitstate
 # 56 "data/maps/SootopolisCity_LotadAndSeedotHouse/scripts.pory"

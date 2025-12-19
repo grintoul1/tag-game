@@ -29,7 +29,6 @@ enum __attribute__((packed)) BattleMoveEffects
     EFFECT_HAZE,
     EFFECT_BIDE,
     EFFECT_ROAR,
-    EFFECT_MULTI_HIT,
     EFFECT_CONVERSION,
     EFFECT_RESTORE_HP,
     EFFECT_LIGHT_SCREEN,
@@ -325,7 +324,6 @@ enum __attribute__((packed)) BattleMoveEffects
     EFFECT_POPULATION_BOMB,
     EFFECT_CHILLY_RECEPTION,
     EFFECT_MAX_MOVE,
-    EFFECT_GLAIVE_RUSH,
     EFFECT_RAGING_BULL,
     EFFECT_RAGE_FIST,
     EFFECT_DOODLE,
@@ -354,6 +352,7 @@ enum __attribute__((packed)) BattleMoveEffects
     EFFECT_CEASELESS_EDGE, // Same applies to spikes
     EFFECT_FROZEN_RECEPTION,
     EFFECT_ENLIGHTENING,
+    EFFECT_SPECIES_POWER_OVERRIDE, // Uses argument field to for the species, power and (number of hits, used only for multi hit moves)
     NUM_BATTLE_MOVE_EFFECTS,
 };
 

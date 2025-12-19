@@ -27,7 +27,8 @@ RustboroCity_House1_EventScript_Trader::
 # 14 "data/maps/RustboroCity_House1/scripts.pory"
 	goto_if_eq VAR_RESULT, NO, RustboroCity_House1_EventScript_DeclineTrade
 # 15 "data/maps/RustboroCity_House1/scripts.pory"
-	special ChoosePartyMon
+	fadescreen FADE_TO_BLACK
+	special ChooseBoxMon
 # 16 "data/maps/RustboroCity_House1/scripts.pory"
 	waitstate
 # 17 "data/maps/RustboroCity_House1/scripts.pory"

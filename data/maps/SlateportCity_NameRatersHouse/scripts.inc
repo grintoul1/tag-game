@@ -27,7 +27,8 @@ SlateportCity_NameRatersHouse_EventScript_ChooseMonToRate::
 # 14 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 	msgbox SlateportCity_NameRatersHouse_Text_CritiqueWhichMonNickname, MSGBOX_DEFAULT
 # 15 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
-	special ChoosePartyMon
+	fadescreen FADE_TO_BLACK
+	special ChooseBoxMon
 # 16 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 	waitstate
 # 17 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
@@ -101,7 +102,8 @@ SlateportCity_NameRatersHouse_EventScript_ChangeNickname::
 # 51 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 	msgbox SlateportCity_NameRatersHouse_Text_WhatShallNewNameBe, MSGBOX_DEFAULT
 # 52 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
-	call Common_EventScript_NameReceivedPartyMon
+	call_if_eq VAR_MON_BOX_ID, 0xFF, Common_EventScript_NameReceivedPartyMon
+	call_if_ne VAR_MON_BOX_ID, 0xFF, Common_EventScript_NameReceivedBoxMon
 # 53 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 	specialvar VAR_RESULT, TryPutNameRaterShowOnTheAir
 # 54 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"

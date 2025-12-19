@@ -63,7 +63,7 @@ AI_SINGLE_BATTLE_TEST("Choiced Pokémon only consider their own status moves whe
 
 AI_SINGLE_BATTLE_TEST("Choiced Pokémon won't use stat boosting moves")
 {
-    // Moves defined by MOVE_TARGET_USER (with exceptions?)
+    // Moves defined by TARGET_USER (with exceptions?)
     u32 j, heldItem = ITEM_NONE;
     enum Ability ability = ABILITY_NONE;
 
@@ -80,7 +80,7 @@ AI_SINGLE_BATTLE_TEST("Choiced Pokémon won't use stat boosting moves")
     }
 
     GIVEN {
-        ASSUME(GetMoveTarget(MOVE_SWORDS_DANCE) == MOVE_TARGET_USER);
+        ASSUME(GetMoveTarget(MOVE_SWORDS_DANCE) == TARGET_USER);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
         PLAYER(SPECIES_RHYDON)
         OPPONENT(SPECIES_LOPUNNY) { Moves(MOVE_SWORDS_DANCE, MOVE_SCRATCH); Item(heldItem); Ability(ability); }

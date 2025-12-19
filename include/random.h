@@ -199,6 +199,9 @@ enum RandomTag
     RNG_AI_SWITCH_ABSORBING_HIDDEN_POWER,
     RNG_AI_PP_STALL_DISREGARD_MOVE,
     RNG_AI_SUCKER_PUNCH,
+    RNG_AI_CONSIDER_EXPLOSION,
+    RNG_AI_FINAL_GAMBIT,
+    RNG_AI_SHOULD_PIVOT_BREAK_SASH,
     RNG_SHELL_SIDE_ARM,
     RNG_RANDOM_TARGET,
     RNG_AI_PREDICT_ABILITY,
@@ -208,6 +211,10 @@ enum RandomTag
     RNG_AI_BOOST_INTO_HAZE,
     RNG_AI_SHOULD_RECOVER,
     RNG_AI_PRIORITIZE_LAST_CHANCE,
+    RNG_AI_RANDOM_SWITCHIN_POST_KO,
+    RNG_AI_RANDOM_SWITCHIN_MID_BATTLE,
+    RNG_AI_RANDOM_VALID_SWITCHIN_POST_KO,
+    RNG_AI_RANDOM_VALID_SWITCHIN_MID_BATTLE,
     RNG_HEALER,
     RNG_DEXNAV_ENCOUNTER_LEVEL,
     RNG_AI_ASSUME_STATUS_SLEEP,
@@ -245,6 +252,7 @@ enum RandomTag
     RNG_MAGNITUDE,
     RNG_FISHING_BITE,
     RNG_FISHING_GEN3_STICKY,
+    RNG_TAUNT,
 };
 
 #define RandomWeighted(tag, ...) \
@@ -293,6 +301,9 @@ u32 RandomWeightedArrayDefault(enum RandomTag, u32 sum, u32 n, const u8 *weights
 const void *RandomElementArrayDefault(enum RandomTag, const void *array, size_t size, size_t count);
 
 u8 RandomWeightedIndex(u8 *weights, u8 length);
+
+u32 RandomBit(enum RandomTag tag, u32 bits);
+u32 RandomBitIndex(enum RandomTag tag, u32 bits);
 
 #if TESTING
 u32 RandomUniformTrials(enum RandomTag tag, u32 lo, u32 hi, bool32 (*reject)(u32), void *caller);
