@@ -4885,62 +4885,6 @@ void SetBattlerFieldStatusForSwitchin(u32 battler)
     }
 }
 
-// party logic
-s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, uq4_12_t *effectiveness, enum DamageCalcContext calcContext)
-{
-    struct SimulatedDamage dmg;
-    //struct BattlePokemon *savedBattleMons = AllocSaveBattleMons();
-
-    if (calcContext == AI_ATTACKING)
-    {
-        gBattleMons[battlerAtk] = switchinCandidate;
-        gAiThinkingStruct->saved[battlerDef].saved = TRUE;
-        SetBattlerAiData(battlerAtk, gAiLogicData); // set known opposing battler data
-        SetBattlerFieldStatusForSwitchin(battlerAtk);
-        gAiThinkingStruct->saved[battlerDef].saved = FALSE;
-    }
-    else if (calcContext == AI_DEFENDING)
-    {
-        gBattleMons[battlerDef] = switchinCandidate;
-        gAiThinkingStruct->saved[battlerAtk].saved = TRUE;
-        SetBattlerAiData(battlerDef, gAiLogicData); // set known opposing battler data
-        SetBattlerFieldStatusForSwitchin(battlerDef);
-        gAiThinkingStruct->saved[battlerAtk].saved = FALSE;
-    }
-
-    dmg = AI_CalcDamage(move, battlerAtk, battlerDef, effectiveness, NO_GIMMICK, NO_GIMMICK, AI_GetWeather(), DONT_CONSIDER_ENDURE);
-    // restores original gBattleMon struct
-    //FreeRestoreBattleMons(savedBattleMons);
-
-    if (calcContext == AI_ATTACKING)
-    {
-        SetBattlerAiData(battlerAtk, gAiLogicData);
-        if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_CONSERVATIVE))
-            return dmg.maximum;
-        else if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_CONSERVATIVE && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY))
-            return dmg.minimum;
-        else if (gAiThinkingStruct->aiFlags[battlerDef] & AI_FLAG_CONSERVATIVE && !(gAiThinkingStruct->aiFlags[battlerAtk] & (AI_FLAG_PARTNER | AI_FLAG_TAG_OPPONENT)))
-            return dmg.maximum;
-        else
-            return dmg.median;
-    }
-
-    else if (calcContext == AI_DEFENDING)
-    {
-        SetBattlerAiData(battlerDef, gAiLogicData);
-        if (gAiThinkingStruct->aiFlags[battlerDef] & AI_FLAG_RISKY && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_CONSERVATIVE))
-            return dmg.minimum;
-        else if (gAiThinkingStruct->aiFlags[battlerDef] & AI_FLAG_CONSERVATIVE && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY))
-            return dmg.maximum;
-        else if (gAiThinkingStruct->aiFlags[battlerDef] & AI_FLAG_CONSERVATIVE && !(gAiThinkingStruct->aiFlags[battlerAtk] & (AI_FLAG_PARTNER | AI_FLAG_TAG_OPPONENT)))
-            return dmg.maximum;
-        else
-            return dmg.median;
-    }
-
-    return dmg.median;
-}
-
 u32 AI_WhoStrikesFirstPartyMon(u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, u32 aiMoveConsidered, u32 playerMoveConsidered, enum ConsiderPriority considerPriority)
 {
     struct BattlePokemon *savedBattleMons = AllocSaveBattleMons();

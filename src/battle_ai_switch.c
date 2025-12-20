@@ -3168,7 +3168,6 @@ static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId
                 if (!IsBattleMoveStatus(aiMove))
                 {
                     damageDealt = AI_GetDamage(battler, opposingBattler, i, AI_ATTACKING, gAiLogicData);
-                    //damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, gBattleMons[battler], &effectiveness, AI_ATTACKING);
                     if (damageDealt > maxDamageDealt && !AI_DoesChoiceEffectBlockMove(opposingBattler, aiMove))
                     {
                         maxDamageDealt = damageDealt;
