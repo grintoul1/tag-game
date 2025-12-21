@@ -83,24 +83,13 @@ playbgm MUS_ENCOUNTER_MAGMA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
 msgbox MagmaHideout_4F_Text_Grunt12Intro, MSGBOX_AUTOCLOSE
-goto MagmaHideout_4F_EventScript_Grunt11Grunt12_ChoosePartyForMultiBattle
-releaseall
-end
-
-MagmaHideout_4F_EventScript_Grunt11Grunt12_ChoosePartyForMultiBattle::
-special SavePlayerParty
-fadescreen FADE_TO_BLACK
-special ChooseHalfPartyForBattle
-waitstate
-goto_if_ne VAR_RESULT, 0, MagmaHideout_4F_EventScript_Grunt11Grunt12DoMultiBattle
-goto MagmaHideout_4F_EventScript_Grunt11Grunt12_ChoosePartyForMultiBattle
-closemessage
+goto MagmaHideout_4F_EventScript_Grunt11Grunt12DoMultiBattle
 releaseall
 end
 
 MagmaHideout_4F_EventScript_Grunt11Grunt12DoMultiBattle::
 	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-	multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_13, MagmaHideout_4F_Text_Grunt11Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_14, MagmaHideout_4F_Text_Grunt12Defeat, PARTNER_SHELLY_MHO
+	multi_2p_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_13, MagmaHideout_4F_Text_Grunt11Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_14, MagmaHideout_4F_Text_Grunt12Defeat, PARTNER_SHELLY_MHO
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, MagmaHideout_4F_EventScript_Grunt11Grunt12Victory
@@ -448,31 +437,13 @@ MagmaHideout_4F_EventScript_CourtneyTabitha::
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_TabithaLooksLikeYoureCaught, MSGBOX_DEFAULT
 	closemessage
-	goto MagmaHideout_4F_EventScript_CourtneyTabitha_ChoosePartyForMultiBattle
-	releaseall
-	end
-
-MagmaHideout_4F_EventScript_CourtneyTabitha_ChoosePartyForMultiBattle::
-	special SavePlayerParty
-	fadescreen FADE_TO_BLACK
-	special ChooseHalfPartyForBattle
-	waitstate
-	goto_if_ne VAR_RESULT, 0, MagmaHideout_4F_EventScript_CourtneyTabithaDoMultiBattle
-	goto MagmaHideout_4F_EventScript_CourtneyTabitha_NowhereToRun
-	closemessage
-	releaseall
-	end
-
-MagmaHideout_4F_EventScript_CourtneyTabitha_NowhereToRun::
-	msgbox MagmaHideout_4F_Text_CourtneyTabitha_NowhereToRun, MSGBOX_DEFAULT
-	closemessage
-	goto MagmaHideout_4F_EventScript_CourtneyTabitha_ChoosePartyForMultiBattle
+	goto MagmaHideout_4F_EventScript_CourtneyTabithaDoMultiBattle
 	releaseall
 	end
 
 MagmaHideout_4F_EventScript_CourtneyTabithaDoMultiBattle::
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
-	multi_2_vs_2 TRAINER_TABITHA_MAGMA_HIDEOUT, MagmaHideout_4F_Text_TabithaDefeat, TRAINER_COURTNEY_MAGMA_HIDEOUT, MagmaHideout_4F_Text_CourtneyDefeat, PARTNER_SHELLY_MHO
+	multi_2p_vs_2 TRAINER_TABITHA_MAGMA_HIDEOUT, MagmaHideout_4F_Text_TabithaDefeat, TRAINER_COURTNEY_MAGMA_HIDEOUT, MagmaHideout_4F_Text_CourtneyDefeat, PARTNER_SHELLY_MHO
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, MagmaHideout_4F_EventScript_CourtneyTabithaVictory

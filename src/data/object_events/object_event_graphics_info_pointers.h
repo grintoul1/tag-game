@@ -125,6 +125,10 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AquaMemberM
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AquaMemberF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaMemberM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaMemberF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AquaAdminM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AquaAdminF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaAdminM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaAdminF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sidney;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Phoebe;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Glacia;
@@ -514,6 +518,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_GREEN_DECORATING] =         &gObjectEventGraphicsInfo_GreenDecorating,
     [OBJ_EVENT_GFX_VITO] =                     &gObjectEventGraphicsInfo_Vito,
     [OBJ_EVENT_GFX_APRICORN_TREE] =            &gObjectEventGraphicsInfo_ApricornTree,
+    [OBJ_EVENT_GFX_AQUA_ADMIN_M] =             &gObjectEventGraphicsInfo_AquaAdminM,
+    [OBJ_EVENT_GFX_AQUA_ADMIN_F] =             &gObjectEventGraphicsInfo_AquaAdminF,
+    [OBJ_EVENT_GFX_MAGMA_ADMIN_M] =            &gObjectEventGraphicsInfo_MagmaAdminM,
+    [OBJ_EVENT_GFX_MAGMA_ADMIN_F] =            &gObjectEventGraphicsInfo_MagmaAdminF,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

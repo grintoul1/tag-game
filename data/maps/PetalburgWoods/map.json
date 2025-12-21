@@ -42,7 +42,7 @@
     },
     {
       "local_id": "LOCALID_PETALBURG_WOODS_GRUNT",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_ADMIN_M",
       "x": 16,
       "y": 38,
       "elevation": 3,
@@ -56,7 +56,7 @@
     },
     {
       "local_id": "LOCALID_PETALBURG_WOODS_SHELLY",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_ADMIN_F",
       "x": 17,
       "y": 38,
       "elevation": 3,

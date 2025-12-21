@@ -83,21 +83,12 @@ AquaHideout_B2F_EventScript_Matt::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
 	waitmovement 0
-	goto AquaHideout_B2F_EventScript_MattShelly_ChoosePartyForMultiBattle
+	goto AquaHideout_B2F_EventScript_MattShellyDoMultiBattle
 	releaseall
 	end
 
-AquaHideout_B2F_EventScript_MattShelly_ChoosePartyForMultiBattle::
-	special SavePlayerParty
-	fadescreen FADE_TO_BLACK
-	special ChooseHalfPartyForBattle
-	waitstate
-	goto_if_ne VAR_RESULT, 0, AquaHideout_B2F_EventScript_MattShellyDoMultiBattle
-	goto AquaHideout_B2F_EventScript_MattShelly_ChoosePartyForMultiBattle
-	closemessage
-
 AquaHideout_B2F_EventScript_MattShellyDoMultiBattle::
-	multi_2_vs_2 TRAINER_SHELLY_AQUA_HIDEOUT, AquaHideout_B2F_Text_ShellyDefeat, TRAINER_MATT_AQUA_HIDEOUT, AquaHideout_B2F_Text_MattDefeat, PARTNER_TABITHA
+	multi_2p_vs_2 TRAINER_SHELLY_AQUA_HIDEOUT, AquaHideout_B2F_Text_ShellyDefeat, TRAINER_MATT_AQUA_HIDEOUT, AquaHideout_B2F_Text_MattDefeat, PARTNER_TABITHA
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, AquaHideout_B2F_EventScript_MattShellyVictory
@@ -352,24 +343,13 @@ playbgm MUS_ENCOUNTER_AQUA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
 msgbox AquaHideout_1F_Text_Grunt1Intro MSGBOX_AUTOCLOSE
-goto AquaHideout_B2F_EventScript_Grunt4Grunt1_ChoosePartyForMultiBattle
-releaseall
-end
-
-AquaHideout_B2F_EventScript_Grunt4Grunt1_ChoosePartyForMultiBattle::
-special SavePlayerParty
-fadescreen FADE_TO_BLACK
-special ChooseHalfPartyForBattle
-waitstate
-goto_if_ne VAR_RESULT, 0, AquaHideout_B2F_EventScript_Grunt4Grunt1DoMultiBattle
-goto AquaHideout_B2F_EventScript_Grunt4Grunt1_ChoosePartyForMultiBattle
-closemessage
+goto AquaHideout_B2F_EventScript_Grunt4Grunt1DoMultiBattle
 releaseall
 end
 
 AquaHideout_B2F_EventScript_Grunt4Grunt1DoMultiBattle::
 	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-	multi_2_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_4, AquaHideout_B2F_Text_Grunt4Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_1, AquaHideout_1F_Text_Grunt1Defeat, PARTNER_TABITHA
+	multi_2p_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_4, AquaHideout_B2F_Text_Grunt4Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_1, AquaHideout_1F_Text_Grunt1Defeat, PARTNER_TABITHA
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, AquaHideout_B2F_EventScript_Grunt4Grunt1Victory
@@ -421,24 +401,13 @@ playbgm MUS_ENCOUNTER_AQUA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
 msgbox AquaHideout_B2F_Text_Grunt8Intro MSGBOX_AUTOCLOSE
-goto AquaHideout_B2F_EventScript_Grunt6Grunt8_ChoosePartyForMultiBattle
-releaseall
-end
-
-AquaHideout_B2F_EventScript_Grunt6Grunt8_ChoosePartyForMultiBattle::
-special SavePlayerParty
-fadescreen FADE_TO_BLACK
-special ChooseHalfPartyForBattle
-waitstate
-goto_if_ne VAR_RESULT, 0, AquaHideout_B2F_EventScript_Grunt6Grunt8DoMultiBattle
-goto AquaHideout_B2F_EventScript_Grunt6Grunt8_ChoosePartyForMultiBattle
-closemessage
+goto AquaHideout_B2F_EventScript_Grunt6Grunt8DoMultiBattle
 releaseall
 end
 
 AquaHideout_B2F_EventScript_Grunt6Grunt8DoMultiBattle::
 	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-	multi_2_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_6, AquaHideout_B2F_Text_Grunt6Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_8, AquaHideout_B2F_Text_Grunt8Defeat, PARTNER_TABITHA
+	multi_2p_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_6, AquaHideout_B2F_Text_Grunt6Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_8, AquaHideout_B2F_Text_Grunt8Defeat, PARTNER_TABITHA
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, AquaHideout_B2F_EventScript_Grunt6Grunt8Victory

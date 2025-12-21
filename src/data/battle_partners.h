@@ -208,7 +208,7 @@ F_TRAINER_FEMALE |
 #line 94
         .aiFlags = AI_FLAG_PARTNER_TRAINER,
 #line 91
-        .trainerBackPic = TRAINER_BACK_PIC_MAGMA_LEADER_MAXIE,
+        .trainerBackPic = TRAINER_BACK_PIC_MAGMA_ADMIN,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {

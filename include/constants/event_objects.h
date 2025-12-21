@@ -257,11 +257,15 @@
 #define OBJ_EVENT_GFX_GREEN_DECORATING           250
 #define OBJ_EVENT_GFX_VITO                       251
 #define OBJ_EVENT_GFX_APRICORN_TREE              252
+#define OBJ_EVENT_GFX_AQUA_ADMIN_M               253
+#define OBJ_EVENT_GFX_AQUA_ADMIN_F               254
+#define OBJ_EVENT_GFX_MAGMA_ADMIN_M              255
+#define OBJ_EVENT_GFX_MAGMA_ADMIN_F              256
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        253
+#define NUM_OBJ_EVENT_GFX                        257
 
 
 // These are dynamic object gfx ids.
@@ -394,6 +398,8 @@
 #define OBJ_EVENT_PAL_TAG_GREEN                   0x1125
 #define OBJ_EVENT_PAL_TAG_GREEN_UNDERWATER        0x1126
 #define OBJ_EVENT_PAL_TAG_VITO                    0x1127
+#define OBJ_EVENT_PAL_TAG_TEAM_AQUA               0x1128
+#define OBJ_EVENT_PAL_TAG_TEAM_MAGMA              0x1129
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

@@ -536,6 +536,22 @@ static const struct SpriteFrameImage sPicTable_MagmaMemberF[] = {
     overworld_ascending_frames(gObjectEventPic_MagmaMemberF, 2, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_AquaAdminM[] = {
+    overworld_ascending_frames(gObjectEventPic_AquaAdminM, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_AquaAdminF[] = {
+    overworld_ascending_frames(gObjectEventPic_AquaAdminF, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_MagmaAdminM[] = {
+    overworld_ascending_frames(gObjectEventPic_MagmaAdminM, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_MagmaAdminF[] = {
+    overworld_ascending_frames(gObjectEventPic_MagmaAdminF, 2, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_Sidney[] = {
     overworld_frame(gObjectEventPic_Sidney, 2, 4, 0),
     overworld_frame(gObjectEventPic_Sidney, 2, 4, 1),

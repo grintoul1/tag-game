@@ -3138,7 +3138,8 @@ static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId
         u32 maxDamageDealtToAI=0, percentageReceived=0, damageDealt=0, percentageDealt=0, maxDamageDealt=0; 
         u32 aiMonSpecies=0;
         u32 aiMonFaster=0;
-        u32 aiMove, bestPlayerMove = MOVE_NONE;
+        u32 aiMove = MOVE_NONE;
+        u32 *bestPlayerMove = MOVE_NONE;
 
             /*partyMon=SPECIES_NONE;
             aiBestMove[monId]=0;*/
@@ -3181,7 +3182,7 @@ static inline void CustomGetBestMonIntegrated(struct Pokemon *party, int firstId
             }
         }
 
-        maxDamageDealtToAI = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, &bestPlayerMove);
+        maxDamageDealtToAI = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, bestPlayerMove);
         percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&party[monId],MON_DATA_HP,NULL));
 
             /*percentageReceivedStored[monId] = percentageReceived;
@@ -3291,7 +3292,7 @@ static bool32 PartnerShouldSwitchIfAllMovesBad(u32 battler)
                 return FALSE;
         }
     }
-    // struct Pokemon *party, int firstId, int lastId, u32 battler, u32 opposingBattler, u32 battlerIn1, u32 battlerIn2, enum SwitchType switchType, u32 *bestMonId, u32 *bestScore
+
     GetAIPartyIndexes(battler, &firstId, &lastId);
     party = GetBattlerParty(battler);
     battlerIn1 = battler;

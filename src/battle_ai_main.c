@@ -1223,7 +1223,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     enum BattleMoveEffects moveEffect = GetMoveEffect(move);
     u32 nonVolatileStatus = GetMoveNonVolatileStatus(move);
     enum Type moveType;
-    u32 moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, move);
+    enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, move);
     struct AiLogicData *aiData = gAiLogicData;
     uq4_12_t effectiveness = aiData->effectiveness[battlerAtk][battlerDef][gAiThinkingStruct->movesetIndex];
     bool32 isBattle1v1 = IsBattle1v1();
@@ -2445,8 +2445,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                         {
                             break;
                         }
-                        else if(!(GetBattlerMoveTargetType(battlerAtk, targetMove[i]) == TARGET_FOES_AND_ALLY
-                         || GetBattlerMoveTargetType(battlerAtk, targetMove[i]) == TARGET_BOTH))
+                        else if(!(AI_GetBattlerMoveTargetType(battlerAtk, targetMove[i]) == TARGET_FOES_AND_ALLY
+                         || AI_GetBattlerMoveTargetType(battlerAtk, targetMove[i]) == TARGET_BOTH))
                         {
                             decreased = FALSE;
                             break;
@@ -3236,7 +3236,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     // move data
     enum Type moveType = GetMoveType(move);
     enum BattleMoveEffects effect = GetMoveEffect(move);
-    u32 moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, move);
+    enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, move);
     // ally data
     u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
     struct AiLogicData *aiData = gAiLogicData;
@@ -8491,7 +8491,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                             decreased = TRUE;
                             for (i = 0; i < MAX_MON_MOVES; i++)
                             {
-                                if(!(GetBattlerMoveTargetType(battlerAtk, targetMove[i]) & (TARGET_FOES_AND_ALLY | TARGET_BOTH)))
+                                if(!(AI_GetBattlerMoveTargetType(battlerAtk, targetMove[i]) & (TARGET_FOES_AND_ALLY | TARGET_BOTH)))
                                 {
                                     decreased = FALSE;
                                     break;
@@ -10850,7 +10850,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                                 }
                             }
                         }
-                        else if (hasPartner && GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
+                        else if (hasPartner && AI_GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
                         && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
                         && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
                         {
@@ -10911,7 +10911,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                             break;
                         }
                     }
-                    if (hasPartner && GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
+                    if (hasPartner && AI_GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
                     && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
                     && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
                     {
@@ -10947,7 +10947,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                             break;
                         }
                     }
-                    if (hasPartner && GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
+                    if (hasPartner && AI_GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
                     && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
                     && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
                     {
@@ -10980,7 +10980,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                     break;
                 }
             }
-            if (hasPartner && GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
+            if (hasPartner && AI_GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
             && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
             && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
             {
@@ -11567,7 +11567,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             }
             else 
             {
-                if (IsBattleMoveStatus(predictedMove) && GetBattlerMoveTargetType(battlerDef, predictedMove) & (TARGET_SELECTED | TARGET_OPPONENTS_FIELD | TARGET_BOTH))
+                if (IsBattleMoveStatus(predictedMove) && AI_GetBattlerMoveTargetType(battlerDef, predictedMove) & (TARGET_SELECTED | TARGET_OPPONENTS_FIELD | TARGET_BOTH))
                     ADJUST_SCORE(GOOD_EFFECT);
             }
             break;
@@ -13751,7 +13751,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                             decreased = TRUE;
                             for (i = 0; i < MAX_MON_MOVES; i++)
                             {
-                                if(!(GetBattlerMoveTargetType(battlerAtk, targetMove[i]) & (TARGET_FOES_AND_ALLY | TARGET_BOTH)))
+                                if(!(AI_GetBattlerMoveTargetType(battlerAtk, targetMove[i]) & (TARGET_FOES_AND_ALLY | TARGET_BOTH)))
                                 {
                                     decreased = FALSE;
                                     break;
@@ -14296,7 +14296,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     }
                     else
                     {
-                        if (GetBattlerMoveTargetType(battlerDef, instructedMove) & (TARGET_SELECTED
+                        if (AI_GetBattlerMoveTargetType(battlerDef, instructedMove) & (TARGET_SELECTED
                                                                 | TARGET_DEPENDS
                                                                 | TARGET_RANDOM
                                                                 | TARGET_BOTH
@@ -15176,7 +15176,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 
                             if (instructedMove != MOVE_NONE
                             && !IsBattleMoveStatus(instructedMove)
-                            && (GetBattlerMoveTargetType(battlerAtkPartner, instructedMove) & (TARGET_BOTH | TARGET_FOES_AND_ALLY))) // Use instruct on multi-target moves
+                            && (AI_GetBattlerMoveTargetType(battlerAtkPartner, instructedMove) & (TARGET_BOTH | TARGET_FOES_AND_ALLY))) // Use instruct on multi-target moves
                             {
                                 RETURN_SCORE_PLUS(WEAK_EFFECT);
                             }
@@ -16767,7 +16767,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             }
             else 
             {
-                if (IsBattleMoveStatus(predictedMove) && GetBattlerMoveTargetType(battlerDef, predictedMove) & (TARGET_SELECTED | TARGET_OPPONENTS_FIELD | TARGET_BOTH))
+                if (IsBattleMoveStatus(predictedMove) && AI_GetBattlerMoveTargetType(battlerDef, predictedMove) & (TARGET_SELECTED | TARGET_OPPONENTS_FIELD | TARGET_BOTH))
                     ADJUST_SCORE(GOOD_EFFECT);
             }
             break;

@@ -41,7 +41,7 @@ static u32 AI_GetMoldBreakerSanitizedAbility(u32 battlerAtk, enum Ability abilit
 static bool32 AI_IsDoubleSpreadMove(u32 battlerAtk, u32 move)
 {
     u32 numOfTargets = 0;
-    u32 moveTargetType = AI_GetBattlerMoveTargetType(battlerAtk, move);
+    enum MoveTarget moveTargetType = AI_GetBattlerMoveTargetType(battlerAtk, move);
 
     if (!IsSpreadMove(moveTargetType, CHECK_BATTLE_TYPE))
         return FALSE;
@@ -1696,7 +1696,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
 
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+        enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
         if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations))
             continue;
@@ -1707,7 +1707,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     // Fast KO battler 1
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+        enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
         if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDefPartner)
         || ((AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDefPartner, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
@@ -1727,7 +1727,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     {
         if (moves[moveIndex] == battlerMoves[moveIndex] && battlerMoves[moveIndex] != MOVE_NONE)
         {
-            *target = battlerDefPartner;
+            (*target) = battlerDefPartner;
             return;
         }
         else
@@ -1739,7 +1739,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     // Fast KO battler 3
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+        enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
         if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDef)
         || ((AI_WhoStrikesFirst(battlerAtk, battlerDef, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
@@ -1759,7 +1759,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     {
         if (moves[moveIndex] == battlerMoves[moveIndex] && battlerMoves[moveIndex] != MOVE_NONE)
         {
-            *target = battlerDef;
+            (*target) = battlerDef;
             return;
         }
         else
@@ -1771,7 +1771,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     // Slow KO battler 1
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+        enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
         if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDefPartner))
             continue;
@@ -1789,7 +1789,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     {
         if (moves[moveIndex] == battlerMoves[moveIndex] && battlerMoves[moveIndex] != MOVE_NONE)
         {
-            *target = battlerDefPartner;
+            (*target) = battlerDefPartner;
             return;
         }
         else
@@ -1801,7 +1801,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     // Slow KO battler 3
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+        enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
         if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDef))
             continue;
@@ -1819,7 +1819,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     {
         if (moves[moveIndex] == battlerMoves[moveIndex] && battlerMoves[moveIndex] != MOVE_NONE)
         {
-            *target = battlerDef;
+            (*target) = battlerDef;
             return;
         }
         else
@@ -1832,7 +1832,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     // Best damage battler 1
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+        enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
         if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDefPartner)
         || ((AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDefPartner, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
@@ -1853,7 +1853,7 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     // Best damage battler 3
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        u32 moveTarget = GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+        enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
         if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDef)
         || ((AI_WhoStrikesFirst(battlerAtk, battlerDef, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
@@ -1875,13 +1875,13 @@ void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPar
     if (((bestDmgDefPartner*100)/gBattleMons[battlerDefPartner].maxHP) >= ((bestDmgDef*100)/gBattleMons[battlerDef].maxHP))
     {
         moves[moveDefPartner] = battlerMoves[moveDefPartner];
-        *target = battlerDefPartner;
+        (*target) = battlerDefPartner;
         return;
     }
     else
     {
         moves[moveDef] = battlerMoves[moveDef];
-        *target = battlerDef;
+        (*target) = battlerDef;
         return;
     }
 }

@@ -12,7 +12,7 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_AQUA",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
@@ -41,7 +41,7 @@
       "flag": "FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_ADMIN_M",
       "x": 14,
       "y": 10,
       "elevation": 0,
@@ -103,7 +103,5 @@
       "script": "AquaHideout_1F_EventScript_FirstEntrance"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

@@ -300,12 +300,14 @@ const u8 gTrainerBackPic_Wally[] = INCBIN_U8("graphics/trainers/back_pics/wally.
 const u8 gTrainerBackPic_Steven[] = INCBIN_U8("graphics/trainers/back_pics/steven.4bpp");
 const u8 gTrainerBackPic_MagmaLeaderMaxie[] = INCBIN_U8("graphics/trainers/back_pics/magma_leader_maxie.4bpp");
 const u8 gTrainerBackPic_AquaLeaderArchie[] = INCBIN_U8("graphics/trainers/back_pics/aqua_leader_archie.4bpp");
+const u8 gTrainerBackPic_MagmaAdminM[] = INCBIN_U8("graphics/trainers/back_pics/magma_admin_m.4bpp");
 
 const u16 gTrainerBackPicPalette_Red[] = INCBIN_U16("graphics/trainers/back_pics/red.gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCBIN_U16("graphics/trainers/back_pics/leaf.gbapal");
 const u16 gTrainerBackPicPalette_Green[] = INCBIN_U16("graphics/trainers/back_pics/green.gbapal");
 const u16 gTrainerBackPicPalette_MagmaLeaderMaxie[] = INCBIN_U16("graphics/trainers/back_pics/magma_leader_maxie.gbapal");
 const u16 gTrainerBackPicPalette_AquaLeaderArchie[] = INCBIN_U16("graphics/trainers/back_pics/aqua_leader_archie.gbapal");
+const u16 gTrainerBackPicPalette_MagmaAdminM[] = INCBIN_U16("graphics/trainers/back_pics/magma_admin_m.gbapal");
 
 // The first two parameters invoke a front pic and palette by
 // calling a "TRAINER_PIC" constant (e.g. TRAINER_PIC_HIKER), and
@@ -497,4 +499,5 @@ const struct TrainerBacksprite gTrainerBacksprites[] =
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_MAGMA_LEADER_MAXIE, 4, gTrainerBackPic_MagmaLeaderMaxie, gTrainerBackPicPalette_MagmaLeaderMaxie, sBackAnims_Hoenn),
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_AQUA_LEADER_ARCHIE, 4, gTrainerBackPic_AquaLeaderArchie, gTrainerBackPicPalette_AquaLeaderArchie, sBackAnims_Hoenn),
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_GREEN, 5, gTrainerBackPic_Green, gTrainerBackPicPalette_Green, sBackAnims_Kanto),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_MAGMA_ADMIN, 5, gTrainerBackPic_MagmaAdminM, gTrainerBackPicPalette_MagmaAdminM, sBackAnims_Kanto),
 };

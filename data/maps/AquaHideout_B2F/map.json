@@ -12,11 +12,11 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_AQUA",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "local_id": "LOCALID_AQUA_HIDEOUT_MATT",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_ADMIN_M",
       "x": 23,
       "y": 19,
       "elevation": 3,
@@ -108,7 +108,7 @@
       "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_ADMIN_F",
       "x": 31,
       "y": 17,
       "elevation": 0,
@@ -244,7 +244,5 @@
       "script": "AquaHideout_B2F_EventScript_Grunt6Grunt8"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }
