@@ -118,4 +118,3 @@
     - [How to make an Expansion version](team_procedures/expansion_versions.md)
     - [Release Schedule and Process](team_procedures/schedule.md)
     - [Merge Checklist](team_procedures/merge_checklist.md)
-    - [Scope Guidelines](team_procedures/scope.md)
