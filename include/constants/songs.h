@@ -491,6 +491,12 @@
 #define MUS_RG_SLOW_PALLET          557 // MUS_RG_SLOWMASARA
 #define MUS_RG_TEACHY_TV_MENU       558 // MUS_RG_TVNOIZE
 #define MUS_VS_SINNOH_BRAIN         610 
+#define MUS_HG_VS_GYM_LEADER        611
+#define MUS_HG_VS_GYM_LEADER_KANTO  612
+#define MUS_HG_VS_ROCKET            613
+#define MUS_HG_VS_CHAMPION          614
+#define MUS_HG_VS_FRONTIER_BRAIN    615
+#define MUS_HG_VICTORY_FRONTIER_BRAIN 616
 #define END_MUS                     MUS_RG_TEACHY_TV_MENU
 
 // These PH_* constants are phoneme sounds used by the "bard" NPC (see src/bard_music.c and src/mauville_old_man.c).
