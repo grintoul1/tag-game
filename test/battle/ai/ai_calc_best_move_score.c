@@ -241,6 +241,25 @@ AI_SINGLE_BATTLE_TEST("Belly Drum - physical move >50pct damage vs ice face alre
     }
 }
 
+// Need to understand why failing
+/*AI_SINGLE_BATTLE_TEST("AI rolls random damage rolls for move selection")
+{
+    ASSUME(GetMovePower(MOVE_SCRATCH) == 40);
+    s32 hp = 0;
+    P
+    PASSES_RANDOMLY(50, 100, RNG_DAMAGE_MODIFIER);
+    GIVEN {
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
+        PLAYER(SPECIES_WOBBUFFET) { AttackIV(26); Moves(MOVE_SCRATCH); }
+        OPPONENT(SPECIES_WOBBUFFET) { Level(21); DefenseIV(20); }
+    } WHEN {
+        TURN { s32 data = gAiLogicData->simulatedDmg[B_BATTLER_0][B_BATTLER_1][0].median;
+            DebugPrintf("%d data %d", i, data);
+            EXPECT_EQ(data, i + 85);
+        }
+    }
+}*/
+
 AI_SINGLE_BATTLE_TEST("HasMoveThatChangesKOThreshold - AI should not see self-targeted speed drops as preventing setup moves in 2hko cases")
 {
     KNOWN_FAILING; // AI changed
