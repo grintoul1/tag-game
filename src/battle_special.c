@@ -17,6 +17,7 @@
 #include "text.h"
 #include "constants/battle_frontier.h"
 #include "constants/battle_special.h"
+#include "constants/battle_setup.h"
 
 static void HandleSpecialTrainerBattleEnd(void);
 static void Task_StartBattleAfterTransition(u8 taskId);
@@ -49,6 +50,15 @@ static void HandleSpecialTrainerBattleEnd(void)
         {
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES))
                 gSaveBlock1Ptr->playerParty[i] = gPlayerParty[i];
+        }
+        break;
+    case SPECIAL_BATTLE_CUSTOM:
+        // Restore player party for custom battles
+        // The partner's 3 mons are in slots 3-5, so we need to restore the full party
+        for (i = 0; i < PARTY_SIZE; i++)
+        {
+            if (GetMonData(&gSaveBlock1Ptr->playerParty[i], MON_DATA_SPECIES))
+                gPlayerParty[i] = gSaveBlock1Ptr->playerParty[i];
         }
         break;
     }
@@ -120,6 +130,36 @@ void DoSpecialTrainerBattle(void)
 
         if (gSpecialVar_0x8005 & MULTI_BATTLE_CHOOSE_MONS) // Skip mons restoring(done in the script)
             gBattleScripting.specialTrainerBattleType = 0xFF;
+        break;
+    case SPECIAL_BATTLE_CUSTOM:
+        // Used for custom battles set up in scripts
+        switch (gSpecialVar_0x8005)
+        {
+        case TRAINER_BATTLE_SINGLE:
+        case TRAINER_BATTLE_CONTINUE_SCRIPT:
+        case TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC:
+            gBattleTypeFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_CUSTOM;
+            break;
+        case TRAINER_BATTLE_DOUBLE:
+        case TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE:
+        case TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC:
+            gBattleTypeFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_CUSTOM;
+            break;
+        case TRAINER_BATTLE_TWO_TRAINERS_NO_INTRO:
+            gBattleTypeFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_CUSTOM;
+            break;
+        case TRAINER_BATTLE_MULTI_2_VS_2:
+            gBattleTypeFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_CUSTOM;
+            FillPartnerParty(gPartnerTrainerId);
+            break;
+        case TRAINER_BATTLE_MULTI_2_VS_1:
+            gBattleTypeFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_CUSTOM;
+            FillPartnerParty(gPartnerTrainerId);
+            break;
+        }
+        CreateTask(Task_StartBattleAfterTransition, 1);
+        PlayMapChosenOrBattleBGM(0);
+        BattleTransition_StartOnField(GetTrainerBattleTransition());
         break;
     }
 }

@@ -2456,6 +2456,19 @@ bool8 ScrCmd_trainerbattle(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_customtrainerbattle(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1 | SCREFF_CUSTOMTRAINERBATTLE);
+
+    CustomTrainerBattleLoadArgs(ctx->scriptPtr);
+    // For custom battles, we don't use BattleSetup_ConfigureTrainerBattle
+    // because DoSpecialTrainerBattle will handle the battle setup.
+    // We just need to skip past the data in the script.
+    // Data format: flags(1) + [id(2) + text(4)] * 4 + event_script(4) + music(4) + musicFromBattler(4)
+    ctx->scriptPtr += 1 + (6 * 4) + 4 + 4 + 4; // Total: 37 bytes
+    return FALSE;
+}
+
 bool8 ScrCmd_dotrainerbattle(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE);

@@ -38,6 +38,10 @@ typedef union PACKED TrainerBattleParameter
         u8 *battleScriptRetAddrB;
         u8 *victoryText;
         u8 *cannotBattleText;
+        u16 player;
+        u8 *defeatTextPlayer;
+        u16 battlePartner;
+        u8 *defeatTextBattlePartner;
     } params;
     u8 data[sizeof(struct _TrainerBattleParameter)];
 } TrainerBattleParameter;
@@ -105,8 +109,11 @@ void ShouldTryGetTrainerScript(void);
 u16 CountMaxPossibleRematch(u16 trainerId);
 u16 CountBattledRematchTeams(u16 trainerId);
 void TrainerBattleLoadArgs(const u8 *data);
+void CustomTrainerBattleLoadArgs(const u8 *data);
 void TrainerBattleLoadArgsTrainerA(const u8 *data);
 void TrainerBattleLoadArgsTrainerB(const u8 *data);
+void TrainerBattleLoadArgsPlayer(const u8 *data);
+void TrainerBattleLoadArgsBattlePartner(const u8 *data);
 void TrainerBattleLoadArgsSecondTrainer(const u8 *data);
 void InitTrainerBattleParameter(void);
 

@@ -973,6 +973,11 @@ void TrainerBattleLoadArgs(const u8 *data)
     sTrainerBattleEndScript = (u8*)data + sizeof(TrainerBattleParameter);
 }
 
+void CustomTrainerBattleLoadArgs(const u8 *data)
+{
+    sTrainerBattleEndScript = (u8*)data + sizeof(TrainerBattleParameter);
+}
+
 void TrainerBattleLoadArgsTrainerA(const u8 *data)
 {
     TrainerBattleParameter *temp = (TrainerBattleParameter*)data;
@@ -1063,6 +1068,13 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
 #endif //FREE_MATCH_CALL
     case TRAINER_BATTLE_TWO_TRAINERS_NO_INTRO:
         gNoOfApproachingTrainers = 2; // set TWO_OPPONENTS gBattleTypeFlags
+        gApproachingTrainerId = 1; // prevent trainer approach
+        return EventScript_DoNoIntroTrainerBattle;
+    case TRAINER_BATTLE_MULTI_2_VS_2:
+        gNoOfApproachingTrainers = 2; // set TWO_OPPONENTS gBattleTypeFlags
+        gApproachingTrainerId = 1; // prevent trainer approach
+        return EventScript_DoNoIntroTrainerBattle;
+    case TRAINER_BATTLE_MULTI_2_VS_1:
         gApproachingTrainerId = 1; // prevent trainer approach
         return EventScript_DoNoIntroTrainerBattle;
     default:
@@ -2008,5 +2020,22 @@ void SetMultiTrainerBattle(struct ScriptContext *ctx)
     TRAINER_BATTLE_PARAM.opponentB = ScriptReadHalfword(ctx);
     TRAINER_BATTLE_PARAM.defeatTextB = (u8*)ScriptReadWord(ctx);
     gPartnerTrainerId = TRAINER_PARTNER(ScriptReadHalfword(ctx));
+};
+
+void SetCustomTrainerBattle(struct ScriptContext *ctx)
+{
+    InitTrainerBattleParameter();
+    TRAINER_BATTLE_PARAM.mode = gSpecialVar_0x8005;
+
+    TRAINER_BATTLE_PARAM.player = ScriptReadHalfword(ctx);
+    TRAINER_BATTLE_PARAM.defeatTextPlayer = (u8*)ScriptReadWord(ctx);
+    TRAINER_BATTLE_PARAM.opponentA = ScriptReadHalfword(ctx);
+    TRAINER_BATTLE_PARAM.defeatTextA = (u8*)ScriptReadWord(ctx);
+    TRAINER_BATTLE_PARAM.battlePartner = ScriptReadHalfword(ctx);
+    TRAINER_BATTLE_PARAM.defeatTextBattlePartner = (u8*)ScriptReadWord(ctx);
+    TRAINER_BATTLE_PARAM.opponentB = ScriptReadHalfword(ctx);
+    TRAINER_BATTLE_PARAM.defeatTextB = (u8*)ScriptReadWord(ctx);
+    gPartnerTrainerId = TRAINER_BATTLE_PARAM.battlePartner;
+    DebugPrintf("gPartnerTrainerId %d", gPartnerTrainerId);
 };
 

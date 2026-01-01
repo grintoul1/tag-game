@@ -235,18 +235,17 @@ MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt::
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_ChoosePartyForMultiBattle::
-	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	special SavePlayerParty
-	fadescreen FADE_TO_BLACK
-	special ChooseHalfPartyForBattle
+	@.macro trainerbattle_custom battler0Id:req, battler0IdLoseText:req, battler0IsPartner:req, battler1Id:req, battler1IdLoseText:req, battler1IsPartner:req, battler2Id=0, battler2IdLoseText=NULL, battler2IsPartner=FALSE, battler3Id=0, battler3IdLoseText=NULL, battler3IsPartner=FALSE, event_script=FALSE, exit_script=NULL, music=TRUE, musicFromBattler=1, isDouble=FALSE
+	trainerbattle_custom TRAINER_PLAYER_PLACEHOLDER, NULL, FALSE, TRAINER_MAXIE_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, FALSE, PARTNER_STEVEN, NULL, TRUE, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_TabithaDefeat, FALSE, FALSE, MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt, TRUE, 1, TRUE
 	waitstate
-	goto_if_ne VAR_RESULT, 0, MossdeepCity_SpaceCenter_2F_EventScript_DoStevenMultiBattle
-	special LoadPlayerParty
-	goto MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt
+	switch VAR_RESULT
+	case 1, MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 MossdeepCity_SpaceCenter_2F_EventScript_DoStevenMultiBattle::
-	multi_2_vs_2 TRAINER_MAXIE_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_TabithaDefeat, PARTNER_STEVEN
+	@multi_2_vs_2 TRAINER_MAXIE_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_TabithaDefeat, PARTNER_STEVEN
 	switch VAR_RESULT
 	case 1, MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha
 	fadescreen FADE_TO_BLACK
