@@ -158,7 +158,13 @@ void DoSpecialTrainerBattle(void)
             break;
         }
         CreateTask(Task_StartBattleAfterTransition, 1);
+
+        // Play music based on chosen battler as TRAINER_BATTLE_PARAM.opponentA can technically be player
+        u16 tempTrainerId = TRAINER_BATTLE_PARAM.opponentA;
+        TRAINER_BATTLE_PARAM.opponentA = gSpecialVar_0x8007;
         PlayMapChosenOrBattleBGM(0);
+        TRAINER_BATTLE_PARAM.opponentA = tempTrainerId;
+        
         BattleTransition_StartOnField(GetTrainerBattleTransition());
         break;
     }

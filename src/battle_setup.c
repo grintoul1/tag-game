@@ -2036,6 +2036,21 @@ void SetCustomTrainerBattle(struct ScriptContext *ctx)
     TRAINER_BATTLE_PARAM.opponentB = ScriptReadHalfword(ctx);
     TRAINER_BATTLE_PARAM.defeatTextB = (u8*)ScriptReadWord(ctx);
     gPartnerTrainerId = TRAINER_BATTLE_PARAM.battlePartner;
-    DebugPrintf("gPartnerTrainerId %d", gPartnerTrainerId);
+    u16 musicBattler = ScriptReadHalfword(ctx);
+    switch (musicBattler)
+    {
+    case 0:
+        gSpecialVar_0x8007 = TRAINER_BATTLE_PARAM.player;
+        break;
+    case 2:
+        gSpecialVar_0x8007 = TRAINER_BATTLE_PARAM.battlePartner;
+        break;
+    case 3:
+        gSpecialVar_0x8007 = TRAINER_BATTLE_PARAM.opponentB;
+        break;
+    default:
+        gSpecialVar_0x8007 = TRAINER_BATTLE_PARAM.opponentA;
+        break;
+    }
 };
 

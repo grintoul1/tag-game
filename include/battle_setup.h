@@ -46,6 +46,23 @@ typedef union PACKED TrainerBattleParameter
     u8 data[sizeof(struct _TrainerBattleParameter)];
 } TrainerBattleParameter;
 
+// Struct for customtrainerbattle script data layout
+struct PACKED CustomTrainerBattleScriptData
+{
+    u8 flags;
+    u16 battler0Id;
+    u8 *battler0DefeatText;
+    u16 battler1Id;
+    u8 *battler1DefeatText;
+    u16 battler2Id;
+    u8 *battler2DefeatText;
+    u16 battler3Id;
+    u8 *battler3DefeatText;
+    u8 *eventScript;
+    u32 music;
+    u32 musicFromBattler;
+};
+
 extern const struct RematchTrainer gRematchTable[REMATCH_TABLE_ENTRIES];
 
 extern TrainerBattleParameter gTrainerBattleParameter;
