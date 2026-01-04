@@ -235,6 +235,13 @@ static u64 GetAiFlags(u16 trainerId, u32 battler)
     return flags;
 }
 
+void BattleAI_SetupFlagsPyre(void)
+{
+    gAiThinkingStruct->aiFlags[B_POSITION_PLAYER_LEFT] = GetAiFlags(TRAINER_BATTLE_PARAM.opponentA, B_POSITION_PLAYER_LEFT);
+    gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_RIGHT] = GetAiFlags(gPartnerTrainerId, B_POSITION_OPPONENT_RIGHT);
+    gAiThinkingStruct->aiFlags[B_POSITION_PLAYER_RIGHT] = GetAiFlags(TRAINER_BATTLE_PARAM.opponentA, B_POSITION_PLAYER_RIGHT);
+}
+
 void BattleAI_SetupFlags(void)
 {
     if (IsAiVsAiBattle())

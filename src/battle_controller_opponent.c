@@ -133,6 +133,7 @@ static void OpponentBufferRunCommand(u32 battler)
 
 static void Intro_WaitForShinyAnimAndHealthbox(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     bool8 healthboxAnimDone = FALSE;
     bool8 twoMons;
 
@@ -198,6 +199,7 @@ static void Intro_WaitForShinyAnimAndHealthbox(u32 battler)
 
 static void Intro_TryShinyAnimShowHealthbox(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     bool32 bgmRestored = FALSE;
     bool32 battlerAnimsDone = FALSE;
     bool32 twoMons;
@@ -296,6 +298,7 @@ static void Intro_TryShinyAnimShowHealthbox(u32 battler)
 
 void OpponentBufferExecCompleted(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     gBattlerControllerFuncs[battler] = OpponentBufferRunCommand;
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
     {
@@ -312,6 +315,7 @@ void OpponentBufferExecCompleted(u32 battler)
 
 static u32 OpponentGetTrainerPicId(u32 battlerId)
 {
+    DebugPrintf("%s", __func__);
     u32 trainerPicId;
 
     if (gBattleTypeFlags & BATTLE_TYPE_SECRET_BASE)
@@ -371,6 +375,7 @@ static u32 OpponentGetTrainerPicId(u32 battlerId)
 
 static void OpponentHandleDrawTrainerPic(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     s16 xPos, yPos;
     u32 trainerPicId;
     bool32 isFrontPic = TRUE;
@@ -433,23 +438,41 @@ static void OpponentHandleDrawTrainerPic(u32 battler)
 
 void OpponentHandleTrainerSlide(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u32 trainerPicId = OpponentGetTrainerPicId(battler);
+
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE)
+        trainerPicId = TRAINER_BACK_PIC_AQUA_LEADER_ARCHIE;
+    else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+        trainerPicId = TRAINER_BACK_PIC_MAGMA_LEADER_MAXIE;
+
     BtlController_HandleTrainerSlide(battler, trainerPicId);
 }
 
 static void OpponentHandleTrainerSlideBack(u32 battler)
 {
-    BtlController_HandleTrainerSlideBack(battler, 35, FALSE);
+    DebugPrintf("%s", __func__);
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE
+     || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+    {
+        BtlController_HandleTrainerSlideBack(battler, 50, TRUE);
+    }
+    else
+    {
+        BtlController_HandleTrainerSlideBack(battler, 35, FALSE);
+    }
 }
 
 static void OpponentHandleChooseAction(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     AI_TrySwitchOrUseItem(battler);
     BtlController_Complete(battler);
 }
 
 static void OpponentHandleChooseMove(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u32 chosenMoveIndex;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
 
@@ -544,12 +567,14 @@ static void OpponentHandleChooseMove(u32 battler)
 
 static void OpponentHandleChooseItem(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     BtlController_EmitOneReturnValue(battler, B_COMM_TO_ENGINE, gBattleStruct->chosenItem[battler]);
     BtlController_Complete(battler);
 }
 
 static inline bool32 IsAcePokemon(u32 chosenMonId, u32 pokemonInBattle, u32 battler)
 {
+    DebugPrintf("%s", __func__);
     return gAiThinkingStruct->aiFlags[battler] & AI_FLAG_ACE_POKEMON
         && (chosenMonId == CalculateEnemyPartyCountInSide(battler) - 1)
         && CountAIAliveNonEggMonsExcept(PARTY_SIZE) != pokemonInBattle;
@@ -557,6 +582,7 @@ static inline bool32 IsAcePokemon(u32 chosenMonId, u32 pokemonInBattle, u32 batt
 
 static inline bool32 IsDoubleAcePokemon(u32 chosenMonId, u32 pokemonInBattle, u32 battler)
 {
+    DebugPrintf("%s", __func__);
     return gAiThinkingStruct->aiFlags[battler] & AI_FLAG_DOUBLE_ACE_POKEMON
         && (chosenMonId == CalculateEnemyPartyCountInSide(battler) - 1)
         && (chosenMonId == CalculateEnemyPartyCountInSide(battler) - 2)
@@ -566,6 +592,7 @@ static inline bool32 IsDoubleAcePokemon(u32 chosenMonId, u32 pokemonInBattle, u3
 
 static void OpponentHandleChoosePokemon(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     s32 chosenMonId;
     s32 pokemonInBattle = 1;
     enum SwitchType switchType = SWITCH_AFTER_KO;
@@ -632,6 +659,7 @@ static void OpponentHandleChoosePokemon(u32 battler)
 
 static u8 CountAIAliveNonEggMonsExcept(u8 slotToIgnore)
 {
+    DebugPrintf("%s", __func__);
     u16 i, count;
 
     for (i = 0, count = 0; i < PARTY_SIZE; i++)
@@ -648,16 +676,31 @@ static u8 CountAIAliveNonEggMonsExcept(u8 slotToIgnore)
 
 static void OpponentHandleIntroTrainerBallThrow(u32 battler)
 {
-    BtlController_HandleIntroTrainerBallThrow(battler, 0, NULL, 0, Intro_TryShinyAnimShowHealthbox);
+    DebugPrintf("%s", __func__);
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+        BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F8, gTrainerBacksprites[GetTrainerBackPicFromId(TRAINER_BATTLE_PARAM.opponentA)].palette.data, 0, Intro_TryShinyAnimShowHealthbox);
+    else
+        BtlController_HandleIntroTrainerBallThrow(battler, 0, NULL, 0, Intro_TryShinyAnimShowHealthbox);
 }
 
 static void OpponentHandleDrawPartyStatusSummary(u32 battler)
 {
-    BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_OPPONENT, TRUE);
+    DebugPrintf("%s", __func__);
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE
+     || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+    {
+        DebugPrintf("%d OpponentHandleDrawPartyStatusSummary", battler);
+        BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_PLAYER, TRUE);
+    }
+    else
+    {
+        BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_OPPONENT, TRUE);
+    }
 }
 
 static void OpponentHandleEndLinkBattle(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gBattleTypeFlags & BATTLE_TYPE_LINK && !(gBattleTypeFlags & BATTLE_TYPE_IS_MASTER))
     {
         gMain.inBattle = FALSE;

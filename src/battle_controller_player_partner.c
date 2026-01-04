@@ -106,6 +106,7 @@ static void (*const sPlayerPartnerBufferCommands[CONTROLLER_CMDS_COUNT])(u32 bat
 
 void SetControllerToPlayerPartner(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     gBattlerBattleController[battler] = BATTLE_CONTROLLER_PLAYER_PARTNER;
     gBattlerControllerEndFuncs[battler] = PlayerPartnerBufferExecCompleted;
     gBattlerControllerFuncs[battler] = PlayerPartnerBufferRunCommand;
@@ -124,6 +125,7 @@ static void PlayerPartnerBufferRunCommand(u32 battler)
 
 static void Intro_WaitForHealthbox(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     bool32 finished = FALSE;
 
     if (!IsDoubleBattle() || (IsDoubleBattle() && (gBattleTypeFlags & BATTLE_TYPE_MULTI)))
@@ -153,6 +155,7 @@ static void Intro_WaitForHealthbox(u32 battler)
 // Also used by the link partner.
 void Controller_PlayerPartnerShowIntroHealthbox(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!gBattleSpritesDataPtr->healthBoxesData[battler].ballAnimActive
         && !gBattleSpritesDataPtr->healthBoxesData[BATTLE_PARTNER(battler)].ballAnimActive
         && gSprites[gBattleControllerData[battler]].callback == SpriteCallbackDummy
@@ -199,6 +202,7 @@ void PlayerPartnerBufferExecCompleted(u32 battler)
 
 static u32 PlayerPartnerGetTrainerBackPicId(enum DifficultyLevel difficulty)
 {
+    DebugPrintf("%s", __func__);
     u32 trainerPicId;
 
     if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
@@ -214,6 +218,7 @@ static u32 PlayerPartnerGetTrainerBackPicId(enum DifficultyLevel difficulty)
 // which use the front sprite for both the player and the partner as opposed to any other battles (including the one with Steven) that use the back pic as well as animate it
 static void PlayerPartnerHandleDrawTrainerPic(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     bool32 isFrontPic;
     s16 xPos, yPos;
     u32 trainerPicId;
@@ -273,24 +278,42 @@ static void PlayerPartnerHandleDrawTrainerPic(u32 battler)
 
 static void PlayerPartnerHandleTrainerSlide(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(gPartnerTrainerId);
     u32 trainerPicId = PlayerPartnerGetTrainerBackPicId(difficulty);
+
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE)
+        trainerPicId = TRAINER_PIC_MAGMA_LEADER_MAXIE;
+    else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+        trainerPicId = TRAINER_PIC_AQUA_LEADER_ARCHIE;
+
     BtlController_HandleTrainerSlide(battler, trainerPicId);
 }
 
 static void PlayerPartnerHandleTrainerSlideBack(u32 battler)
 {
-    BtlController_HandleTrainerSlideBack(battler, 35, FALSE);
+    DebugPrintf("%s", __func__);
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE
+     || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+    {
+        BtlController_HandleTrainerSlideBack(battler, 35, FALSE);
+    }
+    else
+    {
+        BtlController_HandleTrainerSlideBack(battler, 50, TRUE);
+    }
 }
 
 static void PlayerPartnerHandleChooseAction(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     AI_TrySwitchOrUseItem(battler);
     BtlController_Complete(battler);
 }
 
 static void PlayerPartnerHandleChooseMove(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u32 chosenMoveIndex;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
 
@@ -321,6 +344,7 @@ static void PlayerPartnerHandleChooseMove(u32 battler)
 
 static void PlayerPartnerHandleChoosePokemon(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     s32 chosenMonId;
     enum SwitchType switchType = SWITCH_AFTER_KO;
     // Choosing Revival Blessing target
@@ -364,6 +388,7 @@ static void PlayerPartnerHandleChoosePokemon(u32 battler)
 
 static void PlayerPartnerHandleIntroTrainerBallThrow(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     const u16 *trainerPal;
     enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(gPartnerTrainerId);
 
@@ -374,16 +399,30 @@ static void PlayerPartnerHandleIntroTrainerBallThrow(u32 battler)
     else
         trainerPal = gTrainerSprites[GetFrontierTrainerFrontSpriteId(gPartnerTrainerId)].palette.data; // 2 vs 2 multi battle in Battle Frontier, load front sprite and pal.
 
-    BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F9, trainerPal, 24, Controller_PlayerPartnerShowIntroHealthbox);
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+        BtlController_HandleIntroTrainerBallThrow(battler, 0, NULL, 24, Controller_PlayerPartnerShowIntroHealthbox);
+    else
+        BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F9, trainerPal, 24, Controller_PlayerPartnerShowIntroHealthbox);
 }
 
 static void PlayerPartnerHandleDrawPartyStatusSummary(u32 battler)
 {
-    BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_PLAYER, TRUE);
+    DebugPrintf("%s", __func__);
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE
+     || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+    {
+        DebugPrintf("%d PlayerPartnerHandleDrawPartyStatusSummary", battler);
+        BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_OPPONENT, TRUE);
+    }
+    else
+    {
+        BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_PLAYER, TRUE);
+    }
 }
 
 static void PlayerPartnerHandleEndLinkBattle(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     gBattleOutcome = gBattleResources->bufferA[battler][1];
     FadeOutMapMusic(5);
     BeginFastPaletteFade(3);

@@ -123,6 +123,7 @@ enum MoveComparisonResult
 }
 
 void BattleAI_SetupItems(void);
+void BattleAI_SetupFlagsPyre(void);
 void BattleAI_SetupFlags(void);
 void BattleAI_SetupAIData(u8 defaultScoreMoves, u32 battler);
 void ComputeBattlerDecisions(u32 battler);

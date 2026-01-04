@@ -157,6 +157,7 @@ static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(u32 battler) =
 
 void SetControllerToPlayer(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     gBattlerBattleController[battler] = BATTLE_CONTROLLER_PLAYER;
     gBattlerControllerEndFuncs[battler] = PlayerBufferExecCompleted;
     gBattlerControllerFuncs[battler] = PlayerBufferRunCommand;
@@ -193,12 +194,14 @@ static void PlayerBufferRunCommand(u32 battler)
 
 static void CompleteOnBattlerSpritePosX_0(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gSprites[gBattlerSpriteIds[battler]].x2 == 0)
         BtlController_Complete(battler);
 }
 
 static u16 GetPrevBall(u16 ballId)
 {
+    DebugPrintf("%s", __func__);
     u16 ballPrev;
     s32 i, j;
     CompactItemsInBagPocket(POCKET_POKE_BALLS);
@@ -224,6 +227,7 @@ static u16 GetPrevBall(u16 ballId)
 
 static u32 GetNextBall(u32 ballId)
 {
+    DebugPrintf("%s", __func__);
     u32 ballNext = ITEM_NONE;
     s32 i;
     CompactItemsInBagPocket(POCKET_POKE_BALLS);
@@ -243,6 +247,7 @@ static u32 GetNextBall(u32 ballId)
 
 static void HandleInputChooseAction(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u16 itemId = gBattleResources->bufferA[battler][2] | (gBattleResources->bufferA[battler][3] << 8);
 
     DoBounceEffect(battler, BOUNCE_HEALTHBOX, 7, 1);
@@ -421,6 +426,7 @@ static void HandleInputChooseAction(u32 battler)
 
 void HandleInputChooseTarget(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
     static const u8 identities[MAX_BATTLERS_COUNT] = {B_POSITION_PLAYER_LEFT, B_POSITION_PLAYER_RIGHT, B_POSITION_OPPONENT_RIGHT, B_POSITION_OPPONENT_LEFT};
     u16 move = GetMonData(GetBattlerMon(battler), MON_DATA_MOVE1 + gMoveSelectionCursor[battler]);
@@ -574,6 +580,7 @@ void HandleInputChooseTarget(u32 battler)
 
 static void HideAllTargets(void)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
     {
@@ -587,6 +594,7 @@ static void HideAllTargets(void)
 
 static void HideShownTargets(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
     {
@@ -600,6 +608,7 @@ static void HideShownTargets(u32 battler)
 
 void HandleInputShowEntireFieldTargets(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (JOY_HELD(DPAD_ANY) && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
         gPlayerDpadHoldFrames++;
     else
@@ -628,6 +637,7 @@ void HandleInputShowEntireFieldTargets(u32 battler)
 
 void HandleInputShowTargets(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (JOY_HELD(DPAD_ANY) && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
         gPlayerDpadHoldFrames++;
     else
@@ -657,6 +667,7 @@ void HandleInputShowTargets(u32 battler)
 
 static void TryShowAsTarget(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (IsBattlerAlive(battler))
     {
         DoBounceEffect(battler, BOUNCE_HEALTHBOX, 15, 1);
@@ -666,6 +677,7 @@ static void TryShowAsTarget(u32 battler)
 
 void HandleInputChooseMove(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u16 moveTarget;
     u32 canSelectTarget = 0;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
@@ -913,6 +925,7 @@ void HandleInputChooseMove(u32 battler)
 
 static void ReloadMoveNames(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gBattleStruct->zmove.viable && !gBattleStruct->zmove.viewing)
     {
         struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
@@ -933,6 +946,7 @@ static void ReloadMoveNames(u32 battler)
 
 static u32 UNUSED HandleMoveInputUnused(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u32 var = 0;
 
     if (JOY_NEW(A_BUTTON))
@@ -983,6 +997,7 @@ static u32 UNUSED HandleMoveInputUnused(u32 battler)
 
 void HandleMoveSwitching(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u8 perMovePPBonuses[MAX_MON_MOVES];
     struct ChooseMoveStruct moveStruct;
     u8 totalPPBonuses;
@@ -1175,6 +1190,7 @@ void HandleMoveSwitching(u32 battler)
 
 static void SetLinkBattleEndCallbacks(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gWirelessCommType == 0)
     {
         if (gReceivedRemoteLinkPlayers == 0)
@@ -1206,6 +1222,7 @@ static void SetLinkBattleEndCallbacks(u32 battler)
 // Despite handling link battles separately, this is only ever used by link battles
 void SetBattleEndCallbacks(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!gPaletteFade.active)
     {
         if (gBattleTypeFlags & BATTLE_TYPE_LINK)
@@ -1232,6 +1249,7 @@ void SetBattleEndCallbacks(u32 battler)
 
 static void Intro_WaitForShinyAnimAndHealthbox(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     bool8 healthboxAnimDone = FALSE;
 
     // Check if healthbox has finished sliding in
@@ -1270,6 +1288,7 @@ static void Intro_WaitForShinyAnimAndHealthbox(u32 battler)
 
 static void Intro_TryShinyAnimShowHealthbox(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     bool32 bgmRestored = FALSE;
     bool32 battlerAnimsDone = FALSE;
 
@@ -1356,6 +1375,7 @@ static void Intro_TryShinyAnimShowHealthbox(u32 battler)
 
 void Task_PlayerController_RestoreBgmAfterCry(u8 taskId)
 {
+    DebugPrintf("%s", __func__);
     if (!IsCryPlayingOrClearCrySongs())
     {
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
@@ -1371,6 +1391,7 @@ void Task_PlayerController_RestoreBgmAfterCry(u8 taskId)
 
 static void DynamaxModifyHPLevelUp(struct Pokemon *mon, u32 battler, u32 oldMaxHP)
 {
+    DebugPrintf("%s", __func__);
     ApplyDynamaxHPMultiplier(mon);
     gBattleScripting.levelUpHP = GetMonData(mon, MON_DATA_MAX_HP) - oldMaxHP; // overwrite levelUpHP since it overflows
     gBattleMons[battler].hp += gBattleScripting.levelUpHP;
@@ -1379,11 +1400,13 @@ static void DynamaxModifyHPLevelUp(struct Pokemon *mon, u32 battler, u32 oldMaxH
 
 static s32 GetTaskExpValue(u8 taskId)
 {
+    DebugPrintf("%s", __func__);
     return (u16)(gTasks[taskId].tExpTask_gainedExp_1) | (gTasks[taskId].tExpTask_gainedExp_2 << 16);
 }
 
 static void Task_GiveExpToMon(u8 taskId)
 {
+    DebugPrintf("%s", __func__);
     u32 monId = (u8)(gTasks[taskId].tExpTask_monId);
     u8 battler = gTasks[taskId].tExpTask_battler;
     s32 gainedExp = GetTaskExpValue(taskId);
@@ -1433,6 +1456,7 @@ static void Task_GiveExpToMon(u8 taskId)
 
 static void Task_PrepareToGiveExpWithExpBar(u8 taskId)
 {
+    DebugPrintf("%s", __func__);
     u8 monIndex = gTasks[taskId].tExpTask_monId;
     s32 gainedExp = GetTaskExpValue(taskId);
     u8 battler = gTasks[taskId].tExpTask_battler;
@@ -1453,6 +1477,7 @@ static void Task_PrepareToGiveExpWithExpBar(u8 taskId)
 
 static void Task_GiveExpWithExpBar(u8 taskId)
 {
+    DebugPrintf("%s", __func__);
     u32 level, expAfterGain;
     u16 species;
     u32 oldMaxHP;
@@ -1511,6 +1536,7 @@ static void Task_GiveExpWithExpBar(u8 taskId)
 
 static void Task_LaunchLvlUpAnim(u8 taskId)
 {
+    DebugPrintf("%s", __func__);
     u8 battler = gTasks[taskId].tExpTask_battler;
     u8 monIndex = gTasks[taskId].tExpTask_monId;
 
@@ -1523,6 +1549,7 @@ static void Task_LaunchLvlUpAnim(u8 taskId)
 
 static void Task_UpdateLvlInHealthbox(u8 taskId)
 {
+    DebugPrintf("%s", __func__);
     u8 battler = gTasks[taskId].tExpTask_battler;
 
     if (!gBattleSpritesDataPtr->healthBoxesData[battler].specialAnimActive)
@@ -1540,6 +1567,7 @@ static void Task_UpdateLvlInHealthbox(u8 taskId)
 
 static void Task_SetControllerToWaitForString(u8 taskId)
 {
+    DebugPrintf("%s", __func__);
     u8 battler = gTasks[taskId].tExpTask_battler;
     gBattlerControllerFuncs[battler] = Controller_WaitForString;
     DestroyTask(taskId);
@@ -1547,6 +1575,7 @@ static void Task_SetControllerToWaitForString(u8 taskId)
 
 static void OpenPartyMenuToChooseMon(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!gPaletteFade.active)
     {
         u8 caseId;
@@ -1561,6 +1590,7 @@ static void OpenPartyMenuToChooseMon(u32 battler)
 
 static void WaitForMonSelection(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gMain.callback2 == BattleMainCB2 && !gPaletteFade.active)
     {
         if (gPartyMenuUseExitCallback == TRUE)
@@ -1577,6 +1607,7 @@ static void WaitForMonSelection(u32 battler)
 
 static void OpenBagAndChooseItem(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!gPaletteFade.active)
     {
         gBattlerControllerFuncs[battler] = CompleteWhenChoseItem;
@@ -1588,6 +1619,7 @@ static void OpenBagAndChooseItem(u32 battler)
 
 static void CompleteWhenChoseItem(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gMain.callback2 == BattleMainCB2 && !gPaletteFade.active)
     {
         BtlController_EmitOneReturnValue(battler, B_COMM_TO_ENGINE, gSpecialVar_ItemId);
@@ -1597,6 +1629,7 @@ static void CompleteWhenChoseItem(u32 battler)
 
 static void PlayerHandleYesNoInput(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (JOY_NEW(DPAD_UP) && gMultiUsePlayerCursor != 0)
     {
         PlaySE(SE_SELECT);
@@ -1633,6 +1666,7 @@ static void PlayerHandleYesNoInput(u32 battler)
 
 static void MoveSelectionDisplayMoveNames(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
     gNumberOfMovesToChoose = 0;
@@ -1653,12 +1687,14 @@ static void MoveSelectionDisplayMoveNames(u32 battler)
 
 static void MoveSelectionDisplayPpString(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     StringCopy(gDisplayedStringBattle, gText_MoveInterfacePP);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP);
 }
 
 static void MoveSelectionDisplayPpNumber(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u8 *txtPtr;
     struct ChooseMoveStruct *moveInfo;
 
@@ -1676,6 +1712,7 @@ static void MoveSelectionDisplayPpNumber(u32 battler)
 
 static void MoveSelectionDisplayMoveType(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u8 *txtPtr, *end;
     u32 speciesId = gBattleMons[battler].species;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
@@ -1720,6 +1757,7 @@ static void MoveSelectionDisplayMoveType(u32 battler)
 
 static void TryMoveSelectionDisplayMoveDescription(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!B_SHOW_MOVE_DESCRIPTION)
         return;
 
@@ -1729,6 +1767,7 @@ static void TryMoveSelectionDisplayMoveDescription(u32 battler)
 
 static void MoveSelectionDisplayMoveDescription(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[battler][4]);
     u16 move = moveInfo->moves[gMoveSelectionCursor[battler]];
     u16 pwr = GetMovePower(move);
@@ -1781,6 +1820,7 @@ static void MoveSelectionDisplayMoveDescription(u32 battler)
 
 void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
 {
+    DebugPrintf("%s", __func__);
     u16 src[2];
     src[0] = baseTileNum + 1;
     src[1] = baseTileNum + 2;
@@ -1791,6 +1831,7 @@ void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
 
 void MoveSelectionDestroyCursorAt(u8 cursorPosition)
 {
+    DebugPrintf("%s", __func__);
     u16 src[2];
     src[0] = 0x1016;
     src[1] = 0x1016;
@@ -1801,6 +1842,7 @@ void MoveSelectionDestroyCursorAt(u8 cursorPosition)
 
 void ActionSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
 {
+    DebugPrintf("%s", __func__);
     u16 src[2];
     src[0] = 1;
     src[1] = 2;
@@ -1811,6 +1853,7 @@ void ActionSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
 
 void ActionSelectionDestroyCursorAt(u8 cursorPosition)
 {
+    DebugPrintf("%s", __func__);
     u16 src[2];
     src[0] = 0x1016;
     src[1] = 0x1016;
@@ -1821,16 +1864,19 @@ void ActionSelectionDestroyCursorAt(u8 cursorPosition)
 
 void CB2_SetUpReshowBattleScreenAfterMenu(void)
 {
+    DebugPrintf("%s", __func__);
     SetMainCallback2(ReshowBattleScreenAfterMenu);
 }
 
 void CB2_SetUpReshowBattleScreenAfterMenu2(void)
 {
+    DebugPrintf("%s", __func__);
     SetMainCallback2(ReshowBattleScreenAfterMenu);
 }
 
 static void PrintLinkStandbyMsg(void)
 {
+    DebugPrintf("%s", __func__);
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
     {
         gBattle_BG0_X = 0;
@@ -1841,6 +1887,7 @@ static void PrintLinkStandbyMsg(void)
 
 static void PlayerHandleLoadMonSprite(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     BattleLoadMonSpriteGfx(GetBattlerMon(battler), battler);
     gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
     gBattlerControllerFuncs[battler] = CompleteOnBattlerSpritePosX_0;
@@ -1848,6 +1895,7 @@ static void PlayerHandleLoadMonSprite(u32 battler)
 
 u32 LinkPlayerGetTrainerPicId(u32 multiplayerId)
 {
+    DebugPrintf("%s", __func__);
     u32 trainerPicId;
 
     u8 gender = gLinkPlayers[multiplayerId].gender;
@@ -1865,6 +1913,7 @@ u32 LinkPlayerGetTrainerPicId(u32 multiplayerId)
 
 static u32 PlayerGetTrainerBackPicId(void)
 {
+    DebugPrintf("%s", __func__);
     u32 trainerPicId;
 
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
@@ -1880,6 +1929,7 @@ static u32 PlayerGetTrainerBackPicId(void)
 // that use an animated back pic.
 static void PlayerHandleDrawTrainerPic(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     bool32 isFrontPic;
     s16 xPos, yPos;
     u32 trainerPicId;
@@ -1946,33 +1996,54 @@ static void PlayerHandleDrawTrainerPic(u32 battler)
 
 static void PlayerHandleTrainerSlide(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u32 trainerPicId = PlayerGetTrainerBackPicId();
+    
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE
+     || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+    {
+        trainerPicId = PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender);
+    }
+
     BtlController_HandleTrainerSlide(battler, trainerPicId);
 }
 
 static void PlayerHandleTrainerSlideBack(u32 battler)
 {
-    BtlController_HandleTrainerSlideBack(battler, 50, TRUE);
+    DebugPrintf("%s", __func__);
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE
+     || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+    {
+        BtlController_HandleTrainerSlideBack(battler, 35, FALSE);
+    }
+    else
+    {
+        BtlController_HandleTrainerSlideBack(battler, 50, TRUE);
+    }
 }
 
 static void PlayerHandlePaletteFade(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     BeginNormalPaletteFade(PALETTES_ALL, 2, 0, 16, RGB_BLACK);
     BtlController_Complete(battler);
 }
 
 static void PlayerHandleSuccessBallThrowAnim(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     BtlController_HandleSuccessBallThrowAnim(battler, gBattlerTarget, B_ANIM_BALL_THROW, TRUE);
 }
 
 void PlayerHandleBallThrowAnim(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     BtlController_HandleBallThrowAnim(battler, gBattlerTarget, B_ANIM_BALL_THROW, TRUE);
 }
 
 static void PlayerHandlePause(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u8 timer = gBattleResources->bufferA[battler][1];
 
     while (timer != 0)
@@ -1983,6 +2054,7 @@ static void PlayerHandlePause(u32 battler)
 
 static void HandleChooseActionAfterDma3(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!IsDma3ManagerBusyWithBgCopy())
     {
         gBattle_BG0_X = 0;
@@ -2010,6 +2082,7 @@ static void HandleChooseActionAfterDma3(u32 battler)
 
 static void PlayerHandleChooseAction(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattlerControllerFuncs[battler] = HandleChooseActionAfterDma3;
@@ -2063,6 +2136,7 @@ static void PlayerHandleChooseAction(u32 battler)
 
 static void PlayerHandleYesNoBox(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (IsOnPlayerSide(battler))
     {
         HandleBattleWindow(YESNOBOX_X_Y, 0);
@@ -2079,6 +2153,7 @@ static void PlayerHandleYesNoBox(u32 battler)
 
 void HandleChooseMoveAfterDma3(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!IsDma3ManagerBusyWithBgCopy())
     {
         gBattle_BG0_X = 0;
@@ -2091,6 +2166,7 @@ void HandleChooseMoveAfterDma3(u32 battler)
 
 static void PlayerChooseMoveInBattlePalace(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (--gBattleStruct->arenaMindPoints[battler] == 0)
     {
         gBattlePalaceMoveSelectionRngValue = gRngValue;
@@ -2101,6 +2177,7 @@ static void PlayerChooseMoveInBattlePalace(u32 battler)
 
 void PlayerHandleChooseMove(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
     {
         gBattleStruct->arenaMindPoints[battler] = 8;
@@ -2130,6 +2207,7 @@ void PlayerHandleChooseMove(u32 battler)
 
 void InitMoveSelectionsVarsAndStrings(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     LoadTypeIcons(battler);
     MoveSelectionDisplayMoveNames(battler);
     gMultiUsePlayerCursor = 0xFF;
@@ -2144,6 +2222,7 @@ void InitMoveSelectionsVarsAndStrings(u32 battler)
 
 static void PlayerHandleChooseItem(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
@@ -2156,6 +2235,7 @@ static void PlayerHandleChooseItem(u32 battler)
 
 static void PlayerHandleChoosePokemon(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     for (i = 0; i < ARRAY_COUNT(gBattlePartyCurrentOrder); i++)
@@ -2183,6 +2263,7 @@ static void PlayerHandleChoosePokemon(u32 battler)
 
 static void PlayerHandleCmd23(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     BattleStopLowHpSound();
     BeginNormalPaletteFade(PALETTES_ALL, 2, 0, 16, RGB_BLACK);
     BtlController_Complete(battler);
@@ -2190,6 +2271,7 @@ static void PlayerHandleCmd23(u32 battler)
 
 void PlayerHandleExpUpdate(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u8 monId = gBattleResources->bufferA[battler][1];
     s32 taskId, expPointsToGive;
 
@@ -2218,6 +2300,7 @@ void PlayerHandleExpUpdate(u32 battler)
 
 static void PlayerHandleStatusXor(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u32 val = GetMonData(GetBattlerMon(battler), MON_DATA_STATUS) ^ gBattleResources->bufferA[battler][1];
 
     SetMonData(GetBattlerMon(battler), MON_DATA_STATUS, &val);
@@ -2226,6 +2309,7 @@ static void PlayerHandleStatusXor(u32 battler)
 
 static void PlayerHandleDMA3Transfer(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u32 dstArg = gBattleResources->bufferA[battler][1]
             | (gBattleResources->bufferA[battler][2] << 8)
             | (gBattleResources->bufferA[battler][3] << 16)
@@ -2253,48 +2337,69 @@ static void PlayerHandleDMA3Transfer(u32 battler)
 
 static void PlayerHandlePlayBGM(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     PlayBGM(gBattleResources->bufferA[battler][1] | (gBattleResources->bufferA[battler][2] << 8));
     BtlController_Complete(battler);
 }
 
 static void PlayerHandleTwoReturnValues(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_USE_MOVE, 0);
     BtlController_Complete(battler);
 }
 
 static void PlayerHandleChosenMonReturnValue(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     BtlController_EmitChosenMonReturnValue(battler, B_COMM_TO_ENGINE, 0, NULL);
     BtlController_Complete(battler);
 }
 
 static void PlayerHandleOneReturnValue(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     BtlController_EmitOneReturnValue(battler, B_COMM_TO_ENGINE, 0);
     BtlController_Complete(battler);
 }
 
 static void PlayerHandleOneReturnValue_Duplicate(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     BtlController_EmitOneReturnValue_Duplicate(battler, B_COMM_TO_ENGINE, 0);
     BtlController_Complete(battler);
 }
 
 static void PlayerHandleIntroTrainerBallThrow(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     const u32 paletteIndex = PlayerGetTrainerBackPicId();
     const u16 *trainerPal = gTrainerBacksprites[paletteIndex].palette.data;
-    BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F8, trainerPal, 31, Intro_TryShinyAnimShowHealthbox);
+
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+        BtlController_HandleIntroTrainerBallThrow(battler, 0, NULL, 31, Intro_TryShinyAnimShowHealthbox);
+    else
+        BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F8, trainerPal, 31, Intro_TryShinyAnimShowHealthbox);
 }
 
 static void PlayerHandleDrawPartyStatusSummary(u32 battler)
 {
-    BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_PLAYER, TRUE);
+    DebugPrintf("%s", __func__);
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE
+     || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+    {
+        DebugPrintf("%d PlayerHandleDrawPartyStatusSummary", battler);
+        BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_OPPONENT, TRUE);
+    }
+    else
+    {
+        BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_PLAYER, TRUE);
+    }
 }
 
 static void PlayerHandleEndBounceEffect(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     EndBounceEffect(battler, BOUNCE_HEALTHBOX);
     EndBounceEffect(battler, BOUNCE_MON);
     BtlController_Complete(battler);
@@ -2302,6 +2407,7 @@ static void PlayerHandleEndBounceEffect(u32 battler)
 
 static void PlayerHandleLinkStandbyMsg(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     RecordedBattle_RecordAllBattlerData(&gBattleResources->bufferA[battler][2]);
     switch (gBattleResources->bufferA[battler][1])
     {
@@ -2321,6 +2427,7 @@ static void PlayerHandleLinkStandbyMsg(u32 battler)
 
 static void PlayerHandleResetActionMoveSelection(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     switch (gBattleResources->bufferA[battler][1])
     {
     case RESET_ACTION_MOVE_SELECTION:
@@ -2339,6 +2446,7 @@ static void PlayerHandleResetActionMoveSelection(u32 battler)
 
 static void PlayerHandleEndLinkBattle(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     RecordedBattle_RecordAllBattlerData(&gBattleResources->bufferA[battler][4]);
     gBattleOutcome = gBattleResources->bufferA[battler][1];
     gSaveBlock2Ptr->frontier.disableRecordBattle = gBattleResources->bufferA[battler][2];
@@ -2350,6 +2458,7 @@ static void PlayerHandleEndLinkBattle(u32 battler)
 
 static void Controller_WaitForDebug(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gMain.callback2 == BattleMainCB2 && !gPaletteFade.active)
     {
         BtlController_Complete(battler);
@@ -2358,6 +2467,7 @@ static void Controller_WaitForDebug(u32 battler)
 
 static void PlayerHandleBattleDebug(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
     SetMainCallback2(CB2_BattleDebugMenu);
     gBattlerControllerFuncs[battler] = Controller_WaitForDebug;
@@ -2375,6 +2485,7 @@ enum
 
 static bool32 ShouldShowTypeEffectiveness(u32 targetId)
 {
+    DebugPrintf("%s", __func__);
     if (B_SHOW_EFFECTIVENESS == SHOW_EFFECTIVENESS_CAUGHT)
         return GetSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[targetId].species), FLAG_GET_CAUGHT);
 
@@ -2386,6 +2497,7 @@ static bool32 ShouldShowTypeEffectiveness(u32 targetId)
 
 static u32 CheckTypeEffectiveness(u32 battlerAtk, u32 battlerDef)
 {
+    DebugPrintf("%s", __func__);
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battlerAtk][4]);
     struct DamageContext ctx = {0};
     ctx.battlerAtk = battlerAtk;
@@ -2414,6 +2526,7 @@ static u32 CheckTypeEffectiveness(u32 battlerAtk, u32 battlerDef)
 
 static u32 CheckTargetTypeEffectiveness(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u32 battlerFoe = BATTLE_OPPOSITE(GetBattlerPosition(battler));
     u32 foeEffectiveness = CheckTypeEffectiveness(battler, battlerFoe);
 
@@ -2432,6 +2545,7 @@ static u32 CheckTargetTypeEffectiveness(u32 battler)
 
 static void MoveSelectionDisplayMoveEffectiveness(u32 foeEffectiveness, u32 battler)
 {
+    DebugPrintf("%s", __func__);
     static const u8 noIcon[] =  _("");
     static const u8 effectiveIcon[] =  _("{CIRCLE_HOLLOW}");
     static const u8 superEffectiveIcon[] =  _("{CIRCLE_DOT}");

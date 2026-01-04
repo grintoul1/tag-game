@@ -1452,12 +1452,23 @@ const u8 gText_Judgment[] = _("{B_BUFF1}{CLEAR 13}Judgment{CLEAR 13}{B_BUFF2}");
 static const u8 sText_TwoTrainersSentPkmn[] = _("{B_TRAINER1_NAME_WITH_CLASS} sent out {B_OPPONENT_MON1_NAME}!\p{B_TRAINER2_NAME_WITH_CLASS} sent out {B_OPPONENT_MON2_NAME}!");
 static const u8 sText_Trainer2SentOutPkmn[] = _("{B_TRAINER2_NAME_WITH_CLASS} sent out {B_BUFF1}!");
 static const u8 sText_TwoTrainersWantToBattle[] = _("You are challenged by {B_TRAINER1_NAME_WITH_CLASS} and {B_TRAINER2_NAME_WITH_CLASS}!\p");
+static const u8 sText_TrainerIsChallengedByPartnerAndPlayer[] = _("{B_TRAINER1_NAME_WITH_CLASS} is challenged by {PKMN} Trainer {B_PLAYER_NAME} and {B_PARTNER_NAME_WITH_CLASS}!\p");
+static const u8 sText_ArchieIsChallengedByPartnerAndPlayer[] = _("{B_TRAINER1_NAME_WITH_CLASS} is challenged by Magma Leader Maxie and {PKMN} Trainer {B_PLAYER_NAME}!\p");
+static const u8 sText_MaxieIsChallengedByPartnerAndPlayer[] = _("{B_TRAINER1_NAME_WITH_CLASS} is challenged by Aqua Leader Archie and {PKMN} Trainer {B_PLAYER_NAME}!\p");
 static const u8 sText_InGamePartnerSentOutZGoN[] = _("{B_PARTNER_NAME_WITH_CLASS} sent out {B_PLAYER_MON2_NAME}! Go, {B_PLAYER_MON1_NAME}!");
 static const u8 sText_InGamePartnerSentOutNGoZ[] = _("{B_PARTNER_NAME_WITH_CLASS} sent out {B_PLAYER_MON1_NAME}! Go, {B_PLAYER_MON2_NAME}!");
+static const u8 sText_MaxieSentOutNGoZ[] = _("Magma Leader Maxie sent out {B_OPPONENT_MON1_NAME}! Go, {B_OPPONENT_MON2_NAME}!");
+static const u8 sText_ArchieSentOutNGoZ[] = _("Aqua Leader Archie sent out {B_OPPONENT_MON1_NAME}! Go, {B_OPPONENT_MON2_NAME}!");
 static const u8 sText_InGamePartnerSentOutPkmn1[] = _("{B_PARTNER_NAME_WITH_CLASS} sent out {B_PLAYER_MON1_NAME}!");
 static const u8 sText_InGamePartnerSentOutPkmn2[] = _("{B_PARTNER_NAME_WITH_CLASS} sent out {B_PLAYER_MON2_NAME}!");
 static const u8 sText_InGamePartnerWithdrewPkmn1[] = _("{B_PARTNER_NAME_WITH_CLASS} withdrew {B_PLAYER_MON1_NAME}!");
 static const u8 sText_InGamePartnerWithdrewPkmn2[] = _("{B_PARTNER_NAME_WITH_CLASS} withdrew {B_PLAYER_MON2_NAME}!");
+static const u8 sText_PyreIsChallengedByPartnerAndPlayer[] = _("{B_PLAYER_NAME} is challenged by {B_TRAINER1_NAME_WITH_CLASS} and {B_TRAINER2_NAME_WITH_CLASS}!\p");
+static const u8 sText_PyreSentOutNGoZ[] = _("{B_TRAINER2_NAME_WITH_CLASS} sent out {B_OPPONENT_MON2_NAME}! Go, {B_OPPONENT_MON1_NAME}!");
+static const u8 sText_PyreSentOutPkmn1[] = _("{B_PLAYER_NAME} sent out {B_PLAYER_MON1_NAME}!");
+static const u8 sText_PyreSentOutPkmn2[] = _("{B_PLAYER_NAME} sent out {B_PLAYER_MON2_NAME}!");
+static const u8 sText_PyreSentOut2Pkmn[] = _("{B_PLAYER_NAME} sent out {B_PLAYER_MON1_NAME} and {B_PLAYER_MON2_NAME}!");
+static const u8 sText_PyreTrainerSentOutTwoPkmn[] = _("{B_TRAINER1_NAME_WITH_CLASS} sent out {B_PLAYER_MON1_NAME} and {B_PLAYER_MON2_NAME}!");
 
 const u16 gBattlePalaceFlavorTextTable[] =
 {
@@ -2043,6 +2054,7 @@ static const u8 sRecordedBattleTextSpeeds[] = {8, 4, 1, 0};
 
 void BufferStringBattle(enum StringID stringID, u32 battler)
 {
+    DebugPrintf("%d, %s string %d 1", battler, __func__, stringID);
     s32 i;
     const u8 *stringPtr = NULL;
 
@@ -2055,12 +2067,15 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
     gPotentialItemEffectBattler = gBattleMsgDataPtr->itemEffectBattler;
     gBattleStruct->stringMoveType = gBattleMsgDataPtr->moveType;
 
+    DebugPrintf("%d, %s string %d 2", battler, __func__, stringID);
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
     {
+    DebugPrintf("%d, %s string %d 3 %d", battler, __func__, stringID, i);
         sBattlerAbilities[i] = gBattleMsgDataPtr->abilities[i];
     }
     for (i = 0; i < TEXT_BUFF_ARRAY_COUNT; i++)
     {
+    DebugPrintf("%d, %s string %d 4 %d", battler, __func__, stringID, i);
         gBattleTextBuff1[i] = gBattleMsgDataPtr->textBuffs[0][i];
         gBattleTextBuff2[i] = gBattleMsgDataPtr->textBuffs[1][i];
         gBattleTextBuff3[i] = gBattleMsgDataPtr->textBuffs[2][i];
@@ -2124,14 +2139,41 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
             }
             else
             {
+                DebugPrintf("%d, %s string %d 5 else ", battler, __func__, stringID);
                 if (BATTLE_TWO_VS_ONE_OPPONENT)
+                {
+                    DebugPrintf("%d, %s string %d 5 BATTLE_TWO_VS_ONE_OPPONENT", battler, __func__, stringID);
                     stringPtr = sText_Trainer1WantsToBattle;
+                }
                 else if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER))
+                {
+                    DebugPrintf("%d, %s string %d 5 BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER", battler, __func__, stringID);
                     stringPtr = sText_TwoTrainersWantToBattle;
+                }
+                else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE)
+                {
+                    DebugPrintf("%d, %s string %d 5 TRAINER_ARCHIE_MT_PYRE", battler, __func__, stringID);
+                    stringPtr = sText_TwoTrainersWantToBattle;
+                    stringPtr = sText_PyreIsChallengedByPartnerAndPlayer;
+                    //stringPtr = sText_ArchieIsChallengedByPartnerAndPlayer;
+                }
+                else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+                {
+                    DebugPrintf("%d, %s string %d 5 TRAINER_MAXIE_MT_PYRE", battler, __func__, stringID);
+                    stringPtr = sText_TwoTrainersWantToBattle;
+                    stringPtr = sText_PyreIsChallengedByPartnerAndPlayer;
+                    //stringPtr = sText_MaxieIsChallengedByPartnerAndPlayer;
+                }
                 else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+                {
+                    DebugPrintf("%d, %s string %d 5 BATTLE_TYPE_TWO_OPPONENTS", battler, __func__, stringID);
                     stringPtr = sText_TwoTrainersWantToBattle;
+                }
                 else
+                {
+                    DebugPrintf("%d, %s string %d 5 else else", battler, __func__, stringID);
                     stringPtr = sText_Trainer1WantsToBattle;
+                }
             }
         }
         else
@@ -2157,6 +2199,16 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                         stringPtr = sText_InGamePartnerSentOutZGoN;
                     else // Player is battler 2
                         stringPtr = sText_InGamePartnerSentOutNGoZ;
+                }
+                else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE)
+                {
+                    DebugPrintf("%d, %s string %d 5 TRAINER_ARCHIE_MT_PYRE opponent", battler, __func__, stringID);
+                    stringPtr = sText_TwoTrainersSentPkmn;
+                }
+                else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+                {
+                    DebugPrintf("%d, %s string %d 5 TRAINER_MAXIE_MT_PYRE opponent", battler, __func__, stringID);
+                    stringPtr = sText_TwoTrainersSentPkmn;
                 }
                 else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
                 {
@@ -2185,6 +2237,18 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
             {
                 if (BATTLE_TWO_VS_ONE_OPPONENT)
                     stringPtr = sText_Trainer1SentOutTwoPkmn;
+                else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE)
+                {
+                    DebugPrintf("%d, %s string %d 5 TRAINER_ARCHIE_MT_PYRE player", battler, __func__, stringID);
+                    //stringPtr = sText_MaxieSentOutNGoZ;
+                    stringPtr = sText_PyreSentOut2Pkmn;
+                }
+                else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+                {
+                    DebugPrintf("%d, %s string %d 5 TRAINER_MAXIE_MT_PYRE player", battler, __func__, stringID);
+                    //stringPtr = sText_ArchieSentOutNGoZ;
+                    stringPtr = sText_PyreSentOut2Pkmn;
+                }
                 else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
                     stringPtr = sText_TwoTrainersSentPkmn;
                 else if (gBattleTypeFlags & BATTLE_TYPE_TOWER_LINK_MULTI)
@@ -2998,7 +3062,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 break;
             case B_TXT_TRAINER1_NAME_WITH_CLASS: // trainer1 name with trainer class
                 toCpy = textStart;
-                classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+                
+                if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE))
+                    classString = BattleStringGetOpponentClassByTrainerId(TRAINER_MAY_ROUTE_103_TORCHIC);
+                else
+                    classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentB);
+
                 while (classString[classLength] != EOS)
                 {
                     textStart[classLength] = classString[classLength];
@@ -3006,7 +3075,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 }
                 textStart[classLength] = CHAR_SPACE;
                 textStart += classLength + 1;
-                nameString = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, textStart, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
+                
+                if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE))
+                    nameString = BattleStringGetPlayerName(textStart, GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT));
+                else
+                    nameString = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentB, textStart, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT));
+                
                 if (nameString != textStart)
                 {
                     while (nameString[nameLength] != EOS)
@@ -3033,7 +3107,35 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 toCpy = gLinkPlayers[GetBattlerMultiplayerId(gBattleScripting.battler)].name;
                 break;
             case B_TXT_PLAYER_NAME: // player name
-                toCpy = BattleStringGetPlayerName(text, GetBattlerAtPosition(B_POSITION_PLAYER_LEFT));
+                if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE))
+                {
+                    toCpy = textStart;
+                    classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+
+                    while (classString[classLength] != EOS)
+                    {
+                        textStart[classLength] = classString[classLength];
+                        classLength++;
+                    }
+                    textStart[classLength] = CHAR_SPACE;
+                    textStart += classLength + 1;
+
+                    nameString = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, textStart, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
+                
+                    if (nameString != textStart)
+                    {
+                        while (nameString[nameLength] != EOS)
+                        {
+                            textStart[nameLength] = nameString[nameLength];
+                            nameLength++;
+                        }
+                        textStart[nameLength] = EOS;
+                    }
+                }
+                else
+                {
+                    toCpy = BattleStringGetPlayerName(text, GetBattlerAtPosition(B_POSITION_PLAYER_LEFT));
+                }
                 break;
             case B_TXT_TRAINER1_LOSE_TEXT: // trainerA lose text
                 if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
@@ -3135,7 +3237,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 break;
             case B_TXT_TRAINER2_NAME_WITH_CLASS:
                 toCpy = textStart;
-                classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentB);
+                
+                if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE))
+                    classString = gTrainerClasses[GetFrontierOpponentClass(gPartnerTrainerId)].name;
+                else
+                    classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+                
                 while (classString[classLength] != EOS)
                 {
                     textStart[classLength] = classString[classLength];
@@ -3143,7 +3250,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 }
                 textStart[classLength] = CHAR_SPACE;
                 textStart += classLength + 1;
-                nameString = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentB, textStart, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT));
+                
+                if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE))
+                    nameString = GetTrainerNameFromId(gPartnerTrainerId);
+                else
+                    nameString = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, textStart, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
+                
                 if (nameString != textStart)
                 {
                     while (nameString[nameLength] != EOS)
@@ -3190,7 +3302,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 break;
             case B_TXT_PARTNER_NAME_WITH_CLASS:
                 toCpy = textStart;
-                classString = gTrainerClasses[GetFrontierOpponentClass(gPartnerTrainerId)].name;
+                
+                if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE))
+                    classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+                else
+                    classString = gTrainerClasses[GetFrontierOpponentClass(gPartnerTrainerId)].name;
+                
                 while (classString[classLength] != EOS)
                 {
                     textStart[classLength] = classString[classLength];
@@ -3198,7 +3315,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 }
                 textStart[classLength] = CHAR_SPACE;
                 textStart += classLength + 1;
-                nameString = BattleStringGetPlayerName(textStart, GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT));
+                
+                if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE))
+                    nameString = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, textStart, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
+                else
+                    nameString = BattleStringGetPlayerName(textStart, GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT));
+                
                 if (nameString != textStart)
                 {
                     while (nameString[nameLength] != EOS)

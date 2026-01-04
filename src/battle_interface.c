@@ -4,6 +4,7 @@
 #include "pokemon.h"
 #include "battle_controllers.h"
 #include "battle_interface.h"
+#include "battle_setup.h"
 #include "battle_z_move.h"
 #include "graphics.h"
 #include "sprite.h"
@@ -636,6 +637,8 @@ static const struct WindowTemplate sHealthboxWindowTemplate = {
 // The same goes for a 2 vs 1 where opponent has only one pokemon.
 enum BattleCoordTypes GetBattlerCoordsIndex(u32 battler)
 {
+    if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+        return BATTLE_COORDS_DOUBLES;
     if (GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT && gPlayerPartyCount == 1 && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
         return BATTLE_COORDS_SINGLES;
     else if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT && gEnemyPartyCount == 1 && !(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))

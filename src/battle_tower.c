@@ -1962,6 +1962,7 @@ static void Task_StartBattleAfterTransition(u8 taskId)
         gMain.savedCallback = HandleSpecialTrainerBattleEnd;
         SetMainCallback2(CB2_InitBattle);
         DestroyTask(taskId);
+        DebugPrintf("Task_StartBattleAfterTransition End");
     }
 }
 
@@ -2085,7 +2086,11 @@ void DoSpecialTrainerBattle(void)
         BattleTransition_StartOnField(GetSpecialBattleTransition(B_TRANSITION_GROUP_B_PIKE));
         break;
     case SPECIAL_BATTLE_MULTI:
-        if (gSpecialVar_0x8005 & MULTI_BATTLE_2_VS_WILD) // Player + AI against wild mon
+        if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE))
+        {            
+            gBattleTypeFlags = (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TRAINER);
+        }
+        else if (gSpecialVar_0x8005 & MULTI_BATTLE_2_VS_WILD) // Player + AI against wild mon
         {
             gBattleTypeFlags = BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
         }
@@ -2110,6 +2115,7 @@ void DoSpecialTrainerBattle(void)
 
         if (gSpecialVar_0x8005 & MULTI_BATTLE_CHOOSE_MONS) // Skip mons restoring(done in the script)
             gBattleScripting.specialTrainerBattleType = 0xFF;
+        DebugPrintf("case SPECIAL_BATTLE_MULTI End");
         break;
     case SPECIAL_BATTLE_EMMIE:
     {

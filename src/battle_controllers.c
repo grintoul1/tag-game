@@ -56,6 +56,7 @@ static void AnimateMonAfterKnockout(u32 battler);
 
 void HandleLinkBattleSetup(void)
 {
+    DebugPrintf("%s", __func__);
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
     {
         if (gWirelessCommType)
@@ -69,6 +70,7 @@ void HandleLinkBattleSetup(void)
 
 void SetUpBattleVarsAndBirchZigzagoon(void)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattleMainFunc = BeginBattleIntroDummy;
@@ -85,7 +87,10 @@ void SetUpBattleVarsAndBirchZigzagoon(void)
     gBattleControllerExecFlags = 0;
     ClearBattleAnimationVars();
     BattleAI_SetupItems();
-    BattleAI_SetupFlags();
+    if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE))
+        BattleAI_SetupFlagsPyre();
+    else
+        BattleAI_SetupFlags();
 
     if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
     {
@@ -98,6 +103,7 @@ void SetUpBattleVarsAndBirchZigzagoon(void)
 
 void InitBattleControllers(void)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     if (!(gBattleTypeFlags & BATTLE_TYPE_RECORDED))
@@ -127,6 +133,7 @@ void InitBattleControllers(void)
 
 static void InitBtlControllersInternal(void)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
     bool32 isLink = (gBattleTypeFlags & BATTLE_TYPE_LINK);
     bool32 isDouble = IsDoubleBattle();
@@ -348,6 +355,7 @@ static void InitBtlControllersInternal(void)
 
 bool32 IsValidForBattle(struct Pokemon *mon)
 {
+    DebugPrintf("%s", __func__);
     u32 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
     return (species != SPECIES_NONE
          && species != SPECIES_EGG
@@ -357,51 +365,61 @@ bool32 IsValidForBattle(struct Pokemon *mon)
 
 static inline bool32 IsControllerPlayer(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     return (gBattlerControllerEndFuncs[battler] == PlayerBufferExecCompleted);
 }
 
 static inline bool32 IsControllerRecordedPlayer(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     return (gBattlerControllerEndFuncs[battler] == RecordedPlayerBufferExecCompleted);
 }
 
 static inline bool32 IsControllerRecordedPartner(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     return (gBattlerControllerEndFuncs[battler] == RecordedPartnerBufferExecCompleted);
 }
 
 static inline bool32 IsControllerOpponent(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     return (gBattlerControllerEndFuncs[battler] == OpponentBufferExecCompleted);
 }
 
 static inline bool32 IsControllerPlayerPartner(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     return (gBattlerControllerEndFuncs[battler] == PlayerPartnerBufferExecCompleted);
 }
 
 static inline bool32 IsControllerWally(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     return (gBattlerControllerEndFuncs[battler] == WallyBufferExecCompleted);
 }
 
 static inline bool32 IsControllerRecordedOpponent(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     return (gBattlerControllerEndFuncs[battler] == RecordedOpponentBufferExecCompleted);
 }
 
 static inline bool32 IsControllerLinkOpponent(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     return (gBattlerControllerEndFuncs[battler] == LinkOpponentBufferExecCompleted);
 }
 
 static inline bool32 IsControllerLinkPartner(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     return (gBattlerControllerEndFuncs[battler] == LinkPartnerBufferExecCompleted);
 }
 
 bool32 ShouldUpdateTvData(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     return (IsControllerPlayer(battler)
          || IsControllerLinkPartner(battler)
          || IsControllerLinkOpponent(battler));
@@ -409,6 +427,7 @@ bool32 ShouldUpdateTvData(u32 battler)
 
 static void SetBattlePartyIds(void)
 {
+    DebugPrintf("%s", __func__);
     s32 i, j;
 
     if (!(gBattleTypeFlags & BATTLE_TYPE_MULTI))
@@ -471,6 +490,7 @@ static void SetBattlePartyIds(void)
 
 static void PrepareBufferDataTransfer(u32 battler, u32 bufferId, u8 *data, u16 size)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
@@ -516,6 +536,7 @@ static void PrepareBufferDataTransfer(u32 battler, u32 bufferId, u8 *data, u16 s
 
 static void CreateTasksForSendRecvLinkBuffers(void)
 {
+    DebugPrintf("%s", __func__);
     sLinkSendTaskId = CreateTask(Task_HandleSendLinkBuffersData, 0);
     gTasks[sLinkSendTaskId].tState                 = 0;
     gTasks[sLinkSendTaskId].tCurrentBlock_WrapFrom = 0;
@@ -547,6 +568,7 @@ enum
 // First argument is a BATTLELINKCOMMTYPE_
 void PrepareBufferDataTransferLink(u32 battler, u32 bufferId, u16 size, u8 *data)
 {
+    DebugPrintf("%s", __func__);
     s32 alignedSize;
     s32 i;
 
@@ -588,6 +610,7 @@ enum {
 
 static void Task_HandleSendLinkBuffersData(u8 taskId)
 {
+    DebugPrintf("%s", __func__);
     u16 numPlayers;
     u16 blockSize;
 
@@ -722,6 +745,7 @@ void TryReceiveLinkBattleData(void)
 
 static void Task_HandleCopyReceivedLinkBuffersData(u8 taskId)
 {
+    DebugPrintf("%s", __func__);
     u16 blockSize;
     u8 battler;
     u8 playerId;
@@ -781,6 +805,7 @@ static void Task_HandleCopyReceivedLinkBuffersData(u8 taskId)
 
 void BtlController_EmitGetMonData(u32 battler, u32 bufferId, u8 requestId, u8 monToCheck)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_GETMONDATA;
     gBattleResources->transferBuffer[1] = requestId;
     gBattleResources->transferBuffer[2] = monToCheck;
@@ -790,6 +815,7 @@ void BtlController_EmitGetMonData(u32 battler, u32 bufferId, u8 requestId, u8 mo
 
 static void UNUSED BtlController_EmitGetRawMonData(u32 battler, u32 bufferId, u8 monId, u8 bytes)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_GETRAWMONDATA;
     gBattleResources->transferBuffer[1] = monId;
     gBattleResources->transferBuffer[2] = bytes;
@@ -799,6 +825,7 @@ static void UNUSED BtlController_EmitGetRawMonData(u32 battler, u32 bufferId, u8
 
 void BtlController_EmitSetMonData(u32 battler, u32 bufferId, u8 requestId, u8 monToCheck, u8 bytes, void *data)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattleResources->transferBuffer[0] = CONTROLLER_SETMONDATA;
@@ -811,6 +838,7 @@ void BtlController_EmitSetMonData(u32 battler, u32 bufferId, u8 requestId, u8 mo
 
 static void UNUSED BtlController_EmitSetRawMonData(u32 battler, u32 bufferId, u8 monId, u8 bytes, void *data)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattleResources->transferBuffer[0] = CONTROLLER_SETRAWMONDATA;
@@ -823,6 +851,7 @@ static void UNUSED BtlController_EmitSetRawMonData(u32 battler, u32 bufferId, u8
 
 void BtlController_EmitLoadMonSprite(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_LOADMONSPRITE;
     gBattleResources->transferBuffer[1] = CONTROLLER_LOADMONSPRITE;
     gBattleResources->transferBuffer[2] = CONTROLLER_LOADMONSPRITE;
@@ -832,6 +861,7 @@ void BtlController_EmitLoadMonSprite(u32 battler, u32 bufferId)
 
 void BtlController_EmitSwitchInAnim(u32 battler, u32 bufferId, u8 partyId, bool8 dontClearTransform, bool8 dontClearSubstituteBit)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_SWITCHINANIM;
     gBattleResources->transferBuffer[1] = partyId;
     gBattleResources->transferBuffer[2] = dontClearTransform;
@@ -841,6 +871,7 @@ void BtlController_EmitSwitchInAnim(u32 battler, u32 bufferId, u8 partyId, bool8
 
 void BtlController_EmitReturnMonToBall(u32 battler, u32 bufferId, bool8 skipAnim)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_RETURNMONTOBALL;
     gBattleResources->transferBuffer[1] = skipAnim;
     PrepareBufferDataTransfer(battler, bufferId, gBattleResources->transferBuffer, 2);
@@ -848,6 +879,7 @@ void BtlController_EmitReturnMonToBall(u32 battler, u32 bufferId, bool8 skipAnim
 
 void BtlController_EmitDrawTrainerPic(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_DRAWTRAINERPIC;
     gBattleResources->transferBuffer[1] = CONTROLLER_DRAWTRAINERPIC;
     gBattleResources->transferBuffer[2] = CONTROLLER_DRAWTRAINERPIC;
@@ -857,6 +889,7 @@ void BtlController_EmitDrawTrainerPic(u32 battler, u32 bufferId)
 
 void BtlController_EmitTrainerSlide(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_TRAINERSLIDE;
     gBattleResources->transferBuffer[1] = CONTROLLER_TRAINERSLIDE;
     gBattleResources->transferBuffer[2] = CONTROLLER_TRAINERSLIDE;
@@ -866,6 +899,7 @@ void BtlController_EmitTrainerSlide(u32 battler, u32 bufferId)
 
 void BtlController_EmitTrainerSlideBack(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_TRAINERSLIDEBACK;
     gBattleResources->transferBuffer[1] = CONTROLLER_TRAINERSLIDEBACK;
     gBattleResources->transferBuffer[2] = CONTROLLER_TRAINERSLIDEBACK;
@@ -875,6 +909,7 @@ void BtlController_EmitTrainerSlideBack(u32 battler, u32 bufferId)
 
 void BtlController_EmitFaintAnimation(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_FAINTANIMATION;
     gBattleResources->transferBuffer[1] = CONTROLLER_FAINTANIMATION;
     gBattleResources->transferBuffer[2] = CONTROLLER_FAINTANIMATION;
@@ -884,6 +919,7 @@ void BtlController_EmitFaintAnimation(u32 battler, u32 bufferId)
 
 static void UNUSED BtlController_EmitPaletteFade(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_PALETTEFADE;
     gBattleResources->transferBuffer[1] = CONTROLLER_PALETTEFADE;
     gBattleResources->transferBuffer[2] = CONTROLLER_PALETTEFADE;
@@ -893,6 +929,7 @@ static void UNUSED BtlController_EmitPaletteFade(u32 battler, u32 bufferId)
 
 static void UNUSED BtlController_EmitSuccessBallThrowAnim(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_SUCCESSBALLTHROWANIM;
     gBattleResources->transferBuffer[1] = CONTROLLER_SUCCESSBALLTHROWANIM;
     gBattleResources->transferBuffer[2] = CONTROLLER_SUCCESSBALLTHROWANIM;
@@ -902,6 +939,7 @@ static void UNUSED BtlController_EmitSuccessBallThrowAnim(u32 battler, u32 buffe
 
 void BtlController_EmitBallThrowAnim(u32 battler, u32 bufferId, u8 caseId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_BALLTHROWANIM;
     gBattleResources->transferBuffer[1] = caseId;
     PrepareBufferDataTransfer(battler, bufferId, gBattleResources->transferBuffer, 2);
@@ -909,6 +947,7 @@ void BtlController_EmitBallThrowAnim(u32 battler, u32 bufferId, u8 caseId)
 
 static void UNUSED BtlController_EmitPause(u32 battler, u32 bufferId, u8 toWait, void *data)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattleResources->transferBuffer[0] = CONTROLLER_PAUSE;
@@ -920,6 +959,7 @@ static void UNUSED BtlController_EmitPause(u32 battler, u32 bufferId, u8 toWait,
 
 void BtlController_EmitMoveAnimation(u32 battler, u32 bufferId, u16 move, u8 turnOfMove, u16 movePower, s32 dmg, u8 friendship, struct DisableStruct *disableStructPtr, u8 multihit)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_MOVEANIMATION;
     gBattleResources->transferBuffer[1] = move;
     gBattleResources->transferBuffer[2] = (move & 0xFF00) >> 8;
@@ -950,6 +990,7 @@ void BtlController_EmitMoveAnimation(u32 battler, u32 bufferId, u16 move, u8 tur
 
 void BtlController_EmitPrintString(u32 battler, u32 bufferId, enum StringID stringID)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
     struct BattleMsgData *stringInfo;
 
@@ -982,6 +1023,7 @@ void BtlController_EmitPrintString(u32 battler, u32 bufferId, enum StringID stri
 
 void BtlController_EmitPrintSelectionString(u32 battler, u32 bufferId, enum StringID stringID)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
     struct BattleMsgData *stringInfo;
 
@@ -1012,6 +1054,7 @@ void BtlController_EmitPrintSelectionString(u32 battler, u32 bufferId, enum Stri
 // itemId only relevant for B_ACTION_USE_ITEM
 void BtlController_EmitChooseAction(u32 battler, u32 bufferId, u8 action, u16 itemId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_CHOOSEACTION;
     gBattleResources->transferBuffer[1] = action;
     gBattleResources->transferBuffer[2] = itemId;
@@ -1023,6 +1066,7 @@ void BtlController_EmitChooseAction(u32 battler, u32 bufferId, u8 action, u16 it
 // For other Yes/No boxes in battle, see Cmd_yesnobox
 void BtlController_EmitYesNoBox(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_YESNOBOX;
     gBattleResources->transferBuffer[1] = CONTROLLER_YESNOBOX;
     gBattleResources->transferBuffer[2] = CONTROLLER_YESNOBOX;
@@ -1032,6 +1076,7 @@ void BtlController_EmitYesNoBox(u32 battler, u32 bufferId)
 
 void BtlController_EmitChooseMove(u32 battler, u32 bufferId, bool8 isDoubleBattle, bool8 NoPpNumber, struct ChooseMoveStruct *movePpData)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattleResources->transferBuffer[0] = CONTROLLER_CHOOSEMOVE;
@@ -1045,6 +1090,7 @@ void BtlController_EmitChooseMove(u32 battler, u32 bufferId, bool8 isDoubleBattl
 
 void BtlController_EmitChooseItem(u32 battler, u32 bufferId, u8 *battlePartyOrder)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattleResources->transferBuffer[0] = CONTROLLER_OPENBAG;
@@ -1055,6 +1101,7 @@ void BtlController_EmitChooseItem(u32 battler, u32 bufferId, u8 *battlePartyOrde
 
 void BtlController_EmitChoosePokemon(u32 battler, u32 bufferId, u8 caseId, u8 slotId, u16 abilityId, u8 battlerPreventingSwitchout, u8 *data)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattleResources->transferBuffer[0] = CONTROLLER_CHOOSEPOKEMON;
@@ -1070,6 +1117,7 @@ void BtlController_EmitChoosePokemon(u32 battler, u32 bufferId, u8 caseId, u8 sl
 
 static void UNUSED BtlController_EmitCmd23(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_23;
     gBattleResources->transferBuffer[1] = CONTROLLER_23;
     gBattleResources->transferBuffer[2] = CONTROLLER_23;
@@ -1080,6 +1128,7 @@ static void UNUSED BtlController_EmitCmd23(u32 battler, u32 bufferId)
 // why is the argument u16 if it's being cast to s16 anyway?
 void BtlController_EmitHealthBarUpdate(u32 battler, u32 bufferId, u16 hpValue)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_HEALTHBARUPDATE;
     gBattleResources->transferBuffer[1] = 0;
     gBattleResources->transferBuffer[2] = (s16)hpValue;
@@ -1089,6 +1138,7 @@ void BtlController_EmitHealthBarUpdate(u32 battler, u32 bufferId, u16 hpValue)
 
 void BtlController_EmitExpUpdate(u32 battler, u32 bufferId, u8 partyId, s32 expPoints)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_EXPUPDATE;
     gBattleResources->transferBuffer[1] = partyId;
     gBattleResources->transferBuffer[2] = expPoints;
@@ -1100,6 +1150,7 @@ void BtlController_EmitExpUpdate(u32 battler, u32 bufferId, u8 partyId, s32 expP
 
 void BtlController_EmitStatusIconUpdate(u32 battler, u32 bufferId, u32 status)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_STATUSICONUPDATE;
     gBattleResources->transferBuffer[1] = status;
     gBattleResources->transferBuffer[2] = (status & 0x0000FF00) >> 8;
@@ -1110,6 +1161,7 @@ void BtlController_EmitStatusIconUpdate(u32 battler, u32 bufferId, u32 status)
 
 void BtlController_EmitStatusAnimation(u32 battler, u32 bufferId, bool8 isVolatile, u32 status)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_STATUSANIMATION;
     gBattleResources->transferBuffer[1] = isVolatile;
     gBattleResources->transferBuffer[2] = status;
@@ -1121,6 +1173,7 @@ void BtlController_EmitStatusAnimation(u32 battler, u32 bufferId, bool8 isVolati
 
 static void UNUSED BtlController_EmitStatusXor(u32 battler, u32 bufferId, u8 b)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_STATUSXOR;
     gBattleResources->transferBuffer[1] = b;
     PrepareBufferDataTransfer(battler, bufferId, gBattleResources->transferBuffer, 2);
@@ -1128,6 +1181,7 @@ static void UNUSED BtlController_EmitStatusXor(u32 battler, u32 bufferId, u8 b)
 
 void BtlController_EmitDataTransfer(u32 battler, u32 bufferId, u16 size, void *data)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattleResources->transferBuffer[0] = CONTROLLER_DATATRANSFER;
@@ -1141,6 +1195,7 @@ void BtlController_EmitDataTransfer(u32 battler, u32 bufferId, u16 size, void *d
 
 static void UNUSED BtlController_EmitDMA3Transfer(u32 battler, u32 bufferId, void *dst, u16 size, void *data)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattleResources->transferBuffer[0] = CONTROLLER_DMA3TRANSFER;
@@ -1157,6 +1212,7 @@ static void UNUSED BtlController_EmitDMA3Transfer(u32 battler, u32 bufferId, voi
 
 static void UNUSED BtlController_EmitPlayBGM(u32 battler, u32 bufferId, u16 songId, void *data)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattleResources->transferBuffer[0] = CONTROLLER_PLAYBGM;
@@ -1172,6 +1228,7 @@ static void UNUSED BtlController_EmitPlayBGM(u32 battler, u32 bufferId, u16 song
 
 static void UNUSED BtlController_EmitCmd32(u32 battler, u32 bufferId, u16 size, void *data)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattleResources->transferBuffer[0] = CONTROLLER_32;
@@ -1184,6 +1241,7 @@ static void UNUSED BtlController_EmitCmd32(u32 battler, u32 bufferId, u16 size, 
 
 void BtlController_EmitTwoReturnValues(u32 battler, u32 bufferId, u8 ret8, u32 ret32)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_TWORETURNVALUES;
     gBattleResources->transferBuffer[1] = ret8;
     gBattleResources->transferBuffer[2] = ret32;
@@ -1195,6 +1253,7 @@ void BtlController_EmitTwoReturnValues(u32 battler, u32 bufferId, u8 ret8, u32 r
 
 void BtlController_EmitChosenMonReturnValue(u32 battler, u32 bufferId, u8 partyId, u8 *battlePartyOrder)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattleResources->transferBuffer[0] = CONTROLLER_CHOSENMONRETURNVALUE;
@@ -1209,6 +1268,7 @@ void BtlController_EmitChosenMonReturnValue(u32 battler, u32 bufferId, u8 partyI
 
 void BtlController_EmitOneReturnValue(u32 battler, u32 bufferId, u16 ret)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_ONERETURNVALUE;
     gBattleResources->transferBuffer[1] = ret;
     gBattleResources->transferBuffer[2] = (ret & 0xFF00) >> 8;
@@ -1218,6 +1278,7 @@ void BtlController_EmitOneReturnValue(u32 battler, u32 bufferId, u16 ret)
 
 void BtlController_EmitOneReturnValue_Duplicate(u32 battler, u32 bufferId, u16 ret)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_ONERETURNVALUE_DUPLICATE;
     gBattleResources->transferBuffer[1] = ret;
     gBattleResources->transferBuffer[2] = (ret & 0xFF00) >> 8;
@@ -1227,6 +1288,7 @@ void BtlController_EmitOneReturnValue_Duplicate(u32 battler, u32 bufferId, u16 r
 
 void BtlController_EmitHitAnimation(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_HITANIMATION;
     gBattleResources->transferBuffer[1] = CONTROLLER_HITANIMATION;
     gBattleResources->transferBuffer[2] = CONTROLLER_HITANIMATION;
@@ -1236,6 +1298,7 @@ void BtlController_EmitHitAnimation(u32 battler, u32 bufferId)
 
 void BtlController_EmitCantSwitch(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_CANTSWITCH;
     gBattleResources->transferBuffer[1] = CONTROLLER_CANTSWITCH;
     gBattleResources->transferBuffer[2] = CONTROLLER_CANTSWITCH;
@@ -1245,6 +1308,7 @@ void BtlController_EmitCantSwitch(u32 battler, u32 bufferId)
 
 void BtlController_EmitPlaySE(u32 battler, u32 bufferId, u16 songId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_PLAYSE;
     gBattleResources->transferBuffer[1] = songId;
     gBattleResources->transferBuffer[2] = (songId & 0xFF00) >> 8;
@@ -1254,6 +1318,7 @@ void BtlController_EmitPlaySE(u32 battler, u32 bufferId, u16 songId)
 
 void BtlController_EmitPlayFanfareOrBGM(u32 battler, u32 bufferId, u16 songId, bool8 playBGM)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_PLAYFANFAREORBGM;
     gBattleResources->transferBuffer[1] = songId;
     gBattleResources->transferBuffer[2] = (songId & 0xFF00) >> 8;
@@ -1263,6 +1328,7 @@ void BtlController_EmitPlayFanfareOrBGM(u32 battler, u32 bufferId, u16 songId, b
 
 void BtlController_EmitFaintingCry(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_FAINTINGCRY;
     gBattleResources->transferBuffer[1] = CONTROLLER_FAINTINGCRY;
     gBattleResources->transferBuffer[2] = CONTROLLER_FAINTINGCRY;
@@ -1272,6 +1338,7 @@ void BtlController_EmitFaintingCry(u32 battler, u32 bufferId)
 
 void BtlController_EmitIntroSlide(u32 battler, u32 bufferId, u8 environmentId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_INTROSLIDE;
     gBattleResources->transferBuffer[1] = environmentId;
     PrepareBufferDataTransfer(battler, bufferId, gBattleResources->transferBuffer, 2);
@@ -1279,6 +1346,7 @@ void BtlController_EmitIntroSlide(u32 battler, u32 bufferId, u8 environmentId)
 
 void BtlController_EmitIntroTrainerBallThrow(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_INTROTRAINERBALLTHROW;
     gBattleResources->transferBuffer[1] = CONTROLLER_INTROTRAINERBALLTHROW;
     gBattleResources->transferBuffer[2] = CONTROLLER_INTROTRAINERBALLTHROW;
@@ -1288,6 +1356,7 @@ void BtlController_EmitIntroTrainerBallThrow(u32 battler, u32 bufferId)
 
 void BtlController_EmitDrawPartyStatusSummary(u32 battler, u32 bufferId, struct HpAndStatus *hpAndStatus, u8 flags)
 {
+    DebugPrintf("%s", __func__);
     s32 i;
 
     gBattleResources->transferBuffer[0] = CONTROLLER_DRAWPARTYSTATUSSUMMARY;
@@ -1301,6 +1370,7 @@ void BtlController_EmitDrawPartyStatusSummary(u32 battler, u32 bufferId, struct 
 
 void BtlController_EmitHidePartyStatusSummary(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_HIDEPARTYSTATUSSUMMARY;
     gBattleResources->transferBuffer[1] = CONTROLLER_HIDEPARTYSTATUSSUMMARY;
     gBattleResources->transferBuffer[2] = CONTROLLER_HIDEPARTYSTATUSSUMMARY;
@@ -1310,6 +1380,7 @@ void BtlController_EmitHidePartyStatusSummary(u32 battler, u32 bufferId)
 
 void BtlController_EmitEndBounceEffect(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_ENDBOUNCE;
     gBattleResources->transferBuffer[1] = CONTROLLER_ENDBOUNCE;
     gBattleResources->transferBuffer[2] = CONTROLLER_ENDBOUNCE;
@@ -1319,6 +1390,7 @@ void BtlController_EmitEndBounceEffect(u32 battler, u32 bufferId)
 
 void BtlController_EmitSpriteInvisibility(u32 battler, u32 bufferId, bool8 isInvisible)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_SPRITEINVISIBILITY;
     gBattleResources->transferBuffer[1] = isInvisible;
     gBattleResources->transferBuffer[2] = CONTROLLER_SPRITEINVISIBILITY;
@@ -1328,6 +1400,7 @@ void BtlController_EmitSpriteInvisibility(u32 battler, u32 bufferId, bool8 isInv
 
 void BtlController_EmitBattleAnimation(u32 battler, u32 bufferId, u8 animationId, struct DisableStruct *disableStructPtr, u16 argument)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_BATTLEANIMATION;
     gBattleResources->transferBuffer[1] = animationId;
     gBattleResources->transferBuffer[2] = argument;
@@ -1339,6 +1412,7 @@ void BtlController_EmitBattleAnimation(u32 battler, u32 bufferId, u8 animationId
 // mode is a LINK_STANDBY_* constant
 void BtlController_EmitLinkStandbyMsg(u32 battler, u32 bufferId, u8 mode, bool32 record)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_LINKSTANDBYMSG;
     gBattleResources->transferBuffer[1] = mode;
 
@@ -1352,6 +1426,7 @@ void BtlController_EmitLinkStandbyMsg(u32 battler, u32 bufferId, u8 mode, bool32
 
 void BtlController_EmitResetActionMoveSelection(u32 battler, u32 bufferId, u8 caseId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_RESETACTIONMOVESELECTION;
     gBattleResources->transferBuffer[1] = caseId;
     PrepareBufferDataTransfer(battler, bufferId, gBattleResources->transferBuffer, 2);
@@ -1359,6 +1434,7 @@ void BtlController_EmitResetActionMoveSelection(u32 battler, u32 bufferId, u8 ca
 
 void BtlController_EmitEndLinkBattle(u32 battler, u32 bufferId, u8 battleOutcome)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_ENDLINKBATTLE;
     gBattleResources->transferBuffer[1] = battleOutcome;
     gBattleResources->transferBuffer[2] = gSaveBlock2Ptr->frontier.disableRecordBattle;
@@ -1369,6 +1445,7 @@ void BtlController_EmitEndLinkBattle(u32 battler, u32 bufferId, u8 battleOutcome
 
 void BtlController_EmitDebugMenu(u32 battler, u32 bufferId)
 {
+    DebugPrintf("%s", __func__);
     gBattleResources->transferBuffer[0] = CONTROLLER_DEBUGMENU;
     PrepareBufferDataTransfer(battler, bufferId, gBattleResources->transferBuffer, 1);
 }
@@ -1378,11 +1455,13 @@ void BtlController_EmitDebugMenu(u32 battler, u32 bufferId)
 // Can be used for all the controllers.
 void BtlController_Complete(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     gBattlerControllerEndFuncs[battler](battler);
 }
 
 static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *dst)
 {
+    DebugPrintf("%s", __func__);
     struct BattlePokemon battleMon;
     struct MovePpInfo moveData;
     u8 nickname[POKEMON_NAME_LENGTH * 2];
@@ -1709,6 +1788,7 @@ static const u8 gPartySlotToMultiPartySlot[] =
 
 static void SetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId)
 {
+    DebugPrintf("%s", __func__);
     struct BattlePokemon *battlePokemon = (struct BattlePokemon *)&gBattleResources->bufferA[battler][3];
     struct MovePpInfo *moveData = (struct MovePpInfo *)&gBattleResources->bufferA[battler][3];
     s32 i;
@@ -1929,6 +2009,7 @@ static void SetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId)
 // In normal singles, if follower Pokémon exists, and the Pokémon following is being sent out, have it slide in instead of being thrown
 static bool8 ShouldDoSlideInAnim(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     struct ObjectEvent *followerObj = GetFollowerObject();
     if (!followerObj || followerObj->invisible)
         return FALSE;
@@ -1948,6 +2029,7 @@ static bool8 ShouldDoSlideInAnim(u32 battler)
 
 void StartSendOutAnim(u32 battler, bool32 dontClearTransform, bool32 dontClearSubstituteBit, bool32 doSlideIn)
 {
+    DebugPrintf("%s", __func__);
     u16 species;
     struct Pokemon *mon = GetBattlerMon(battler);
     u32 sendoutType;
@@ -1992,6 +2074,7 @@ void StartSendOutAnim(u32 battler, bool32 dontClearTransform, bool32 dontClearSu
 
 static void FreeMonSprite(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     FreeSpriteOamMatrix(&gSprites[gBattlerSpriteIds[battler]]);
     DestroySprite(&gSprites[gBattlerSpriteIds[battler]]);
     if (!IsOnPlayerSide(battler))
@@ -2001,6 +2084,7 @@ static void FreeMonSprite(u32 battler)
 
 static void Controller_ReturnMonToBall2(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!gBattleSpritesDataPtr->healthBoxesData[battler].specialAnimActive)
     {
         FreeMonSprite(battler);
@@ -2010,6 +2094,7 @@ static void Controller_ReturnMonToBall2(u32 battler)
 
 static void Controller_ReturnMonToBall(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     switch (gBattleSpritesDataPtr->healthBoxesData[battler].animationState)
     {
     case 0:
@@ -2031,6 +2116,7 @@ static void Controller_ReturnMonToBall(u32 battler)
 
 static void Controller_FaintPlayerMon(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u32 spriteId = gBattlerSpriteIds[battler];
     if (gSprites[spriteId].y + gSprites[spriteId].y2 > DISPLAY_HEIGHT)
     {
@@ -2044,6 +2130,7 @@ static void Controller_FaintPlayerMon(u32 battler)
 
 static void Controller_FaintOpponentMon(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!gSprites[gBattlerSpriteIds[battler]].inUse)
     {
         SetHealthboxSpriteInvisible(gHealthboxSpriteIds[battler]);
@@ -2053,6 +2140,7 @@ static void Controller_FaintOpponentMon(u32 battler)
 
 static void Controller_DoMoveAnimation(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u16 move = gBattleResources->bufferA[battler][1] | (gBattleResources->bufferA[battler][2] << 8);
 
     switch (gBattleSpritesDataPtr->healthBoxesData[battler].animationState)
@@ -2103,6 +2191,7 @@ static void Controller_DoMoveAnimation(u32 battler)
 
 static void Controller_HandleTrainerSlideBack(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].callback == SpriteCallbackDummy)
     {
         if (!IsOnPlayerSide(battler))
@@ -2115,6 +2204,7 @@ static void Controller_HandleTrainerSlideBack(u32 battler)
 
 void Controller_WaitForHealthBar(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     s16 hpValue = MoveBattleBar(battler, gHealthboxSpriteIds[battler], HEALTH_BAR, 0);
 
     SetHealthboxSpriteVisible(gHealthboxSpriteIds[battler]);
@@ -2132,36 +2222,42 @@ void Controller_WaitForHealthBar(u32 battler)
 
 static void Controller_WaitForBallThrow(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!gDoingBattleAnim || !gBattleSpritesDataPtr->healthBoxesData[battler].specialAnimActive)
         BtlController_Complete(battler);
 }
 
 static void Controller_WaitForBattleAnimation(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!gBattleSpritesDataPtr->healthBoxesData[battler].animFromTableActive)
         BtlController_Complete(battler);
 }
 
 static void Controller_WaitForStatusAnimation(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!gBattleSpritesDataPtr->healthBoxesData[battler].statusAnimActive)
         BtlController_Complete(battler);
 }
 
 static void Controller_WaitForTrainerPic(u32 battler)
 {
+    DebugPrintf("%d %s", battler, __func__);
     if (gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].callback == SpriteCallbackDummy)
         BtlController_Complete(battler);
 }
 
 void Controller_WaitForString(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!IsTextPrinterActive(B_WIN_MSG))
         BtlController_Complete(battler);
 }
 
 static void Controller_WaitForPartyStatusSummary(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gBattleSpritesDataPtr->healthBoxesData[battler].partyStatusDelayTimer++ > 92)
     {
         gBattleSpritesDataPtr->healthBoxesData[battler].partyStatusDelayTimer = 0;
@@ -2171,6 +2267,7 @@ static void Controller_WaitForPartyStatusSummary(u32 battler)
 
 static void Controller_HitAnimation(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u32 spriteId = gBattlerSpriteIds[battler];
 
     if (gSprites[spriteId].data[1] == 32)
@@ -2191,21 +2288,25 @@ static void Controller_HitAnimation(u32 battler)
 // Used for all the commands which do nothing.
 void BtlController_Empty(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     BtlController_Complete(battler);
 }
 
 // Dummy function at the end of the table.
 void BtlController_TerminatorNop(u32 battler)
 {
+    DebugPrintf("%s", __func__);
 }
 
 void BattleControllerDummy(u32 battler)
 {
+    DebugPrintf("%s", __func__);
 }
 
 // Handlers of the controller commands
 void BtlController_HandleGetMonData(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u8 monData[sizeof(struct Pokemon) * 2 + 56]; // this allows to get full data of two pokemon, trying to get more will result in overwriting data
     struct Pokemon *party = GetBattlerParty(battler);
     u32 size = 0;
@@ -2232,6 +2333,7 @@ void BtlController_HandleGetMonData(u32 battler)
 
 void BtlController_HandleGetRawMonData(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     struct BattlePokemon battleMon;
     struct Pokemon *mon = GetBattlerMon(battler);
 
@@ -2248,6 +2350,7 @@ void BtlController_HandleGetRawMonData(u32 battler)
 
 void BtlController_HandleSetMonData(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     struct Pokemon *party = GetBattlerParty(battler);
     u32 i, monToCheck;
 
@@ -2270,6 +2373,7 @@ void BtlController_HandleSetMonData(u32 battler)
 
 void BtlController_HandleSetRawMonData(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     u32 i;
     u8 *dst = (u8 *)GetBattlerMon(battler) + gBattleResources->bufferA[battler][1];
 
@@ -2281,6 +2385,7 @@ void BtlController_HandleSetRawMonData(u32 battler)
 
 void BtlController_HandleLoadMonSprite(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     struct Pokemon *mon = GetBattlerMon(battler);
     u16 species = GetBattlerVisualSpecies(battler);
 
@@ -2308,6 +2413,7 @@ void BtlController_HandleLoadMonSprite(u32 battler)
 
 void BtlController_HandleSwitchInAnim(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     bool32 isPlayerSide = (IsControllerPlayer(battler)
                         || IsControllerPlayerPartner(battler)
                         || IsControllerRecordedPlayer(battler)
@@ -2335,6 +2441,7 @@ void BtlController_HandleSwitchInAnim(u32 battler)
 
 void BtlController_HandleReturnMonToBall(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gBattleResources->bufferA[battler][1] == 0)
     {
         gBattleSpritesDataPtr->healthBoxesData[battler].animationState = 0;
@@ -2355,6 +2462,7 @@ void BtlController_HandleReturnMonToBall(u32 battler)
 
 void BtlController_HandleDrawTrainerPic(u32 battler, u32 trainerPicId, bool32 isFrontPic, s16 xPos, s16 yPos, s32 subpriority)
 {
+    DebugPrintf("%s", __func__);
     if (!IsOnPlayerSide(battler)) // Always the front sprite for the opponent.
     {
         DecompressTrainerFrontPic(trainerPicId, battler);
@@ -2419,6 +2527,7 @@ void BtlController_HandleDrawTrainerPic(u32 battler, u32 trainerPicId, bool32 is
 
 void BtlController_HandleTrainerSlide(u32 battler, u32 trainerPicId)
 {
+    DebugPrintf("%s", __func__);
     if (IsOnPlayerSide(battler))
     {
         DecompressTrainerBackPic(trainerPicId, battler);
@@ -2456,6 +2565,7 @@ void BtlController_HandleTrainerSlide(u32 battler, u32 trainerPicId)
 
 void BtlController_HandleTrainerSlideBack(u32 battler, s16 data0, bool32 startAnim)
 {
+    DebugPrintf("%s", __func__);
     SetSpritePrimaryCoordsFromSecondaryCoords(&gSprites[gBattleStruct->trainerSlideSpriteIds[battler]]);
     gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].data[0] = data0;
     gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].data[2] = IsOnPlayerSide(battler) ? -40 : 280;
@@ -2472,6 +2582,7 @@ void BtlController_HandleTrainerSlideBack(u32 battler, s16 data0, bool32 startAn
 
 void BtlController_HandleFaintAnimation(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     SetHealthboxSpriteInvisible(gHealthboxSpriteIds[battler]);
     if (gBattleSpritesDataPtr->healthBoxesData[battler].animationState == 0)
     {
@@ -2511,6 +2622,7 @@ void BtlController_HandleFaintAnimation(u32 battler)
 
 static void HandleBallThrow(u32 battler, u32 target, u32 animId, bool32 allowCriticalCapture)
 {
+    DebugPrintf("%s", __func__);
     gDoingBattleAnim = TRUE;
     if (allowCriticalCapture && IsCriticalCapture())
         animId = B_ANIM_CRITICAL_CAPTURE_THROW;
@@ -2521,18 +2633,21 @@ static void HandleBallThrow(u32 battler, u32 target, u32 animId, bool32 allowCri
 
 void BtlController_HandleSuccessBallThrowAnim(u32 battler, u32 target, u32 animId, bool32 allowCriticalCapture)
 {
+    DebugPrintf("%s", __func__);
     gBattleSpritesDataPtr->animationData->ballThrowCaseId = BALL_3_SHAKES_SUCCESS;
     HandleBallThrow(battler, target, animId, allowCriticalCapture);
 }
 
 void BtlController_HandleBallThrowAnim(u32 battler, u32 target, u32 animId, bool32 allowCriticalCapture)
 {
+    DebugPrintf("%s", __func__);
     gBattleSpritesDataPtr->animationData->ballThrowCaseId = gBattleResources->bufferA[battler][1];
     HandleBallThrow(battler, target, animId, allowCriticalCapture);
 }
 
 void BtlController_HandleMoveAnimation(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!IsBattleSEPlaying(battler))
     {
         u16 move = gBattleResources->bufferA[battler][1] | (gBattleResources->bufferA[battler][2] << 8);
@@ -2554,15 +2669,19 @@ void BtlController_HandleMoveAnimation(u32 battler)
 
 void BtlController_HandlePrintString(u32 battler)
 {
+    DebugPrintf("%d, %s 1", battler, __func__);
     u16 *stringId;
 
     gBattle_BG0_X = 0;
     gBattle_BG0_Y = 0;
     stringId = (u16 *)(&gBattleResources->bufferA[battler][2]);
+    DebugPrintf("%d, %s 2", battler, __func__);
     BufferStringBattle(*stringId, battler);
+    DebugPrintf("%d, %s 3", battler, __func__);
 
     if (gTestRunnerEnabled)
     {
+    DebugPrintf("%d, %s 4", battler, __func__);
         TestRunner_Battle_RecordMessage(gDisplayedStringBattle);
         if (gTestRunnerHeadless)
         {
@@ -2571,8 +2690,11 @@ void BtlController_HandlePrintString(u32 battler)
         }
     }
 
+    DebugPrintf("%d, %s 5", battler, __func__);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MSG);
+    DebugPrintf("%d, %s 6", battler, __func__);
     gBattlerControllerFuncs[battler] = Controller_WaitForString;
+    DebugPrintf("%d, %s 7", battler, __func__);
     if (ShouldUpdateTvData(battler))
         BattleTv_SetDataBasedOnString(*stringId);
     if (IsControllerPlayer(battler)
@@ -2582,6 +2704,7 @@ void BtlController_HandlePrintString(u32 battler)
 
 void BtlController_HandlePrintStringPlayerOnly(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (IsOnPlayerSide(battler))
         BtlController_HandlePrintString(battler);
     else
@@ -2590,6 +2713,7 @@ void BtlController_HandlePrintStringPlayerOnly(u32 battler)
 
 void BtlController_HandleHealthBarUpdate(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     s32 maxHP, curHP;
     s16 hpVal;
     struct Pokemon *mon = GetBattlerMon(battler);
@@ -2620,6 +2744,7 @@ void BtlController_HandleHealthBarUpdate(u32 battler)
 
 void DoStatusIconUpdate(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     struct Pokemon *mon = GetBattlerMon(battler);
 
     UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], mon, HEALTHBOX_STATUS_ICON);
@@ -2629,6 +2754,7 @@ void DoStatusIconUpdate(u32 battler)
 
 void BtlController_HandleStatusIconUpdate(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!IsBattleSEPlaying(battler))
     {
         DoStatusIconUpdate(battler);
@@ -2637,6 +2763,7 @@ void BtlController_HandleStatusIconUpdate(u32 battler)
 
 void BtlController_HandleStatusAnimation(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!IsBattleSEPlaying(battler))
     {
         InitAndLaunchChosenStatusAnimation(battler, gBattleResources->bufferA[battler][1],
@@ -2647,6 +2774,7 @@ void BtlController_HandleStatusAnimation(u32 battler)
 
 void BtlController_HandleHitAnimation(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gSprites[gBattlerSpriteIds[battler]].invisible == TRUE)
     {
         BtlController_Complete(battler);
@@ -2662,6 +2790,7 @@ void BtlController_HandleHitAnimation(u32 battler)
 
 void BtlController_HandlePlaySE(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     s32 pan = IsOnPlayerSide(battler) ? SOUND_PAN_ATTACKER : SOUND_PAN_TARGET;
 
     PlaySE12WithPanning(gBattleResources->bufferA[battler][1] | (gBattleResources->bufferA[battler][2] << 8), pan);
@@ -2670,6 +2799,7 @@ void BtlController_HandlePlaySE(u32 battler)
 
 void BtlController_HandlePlayFanfareOrBGM(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gBattleResources->bufferA[battler][3])
     {
         BattleStopLowHpSound();
@@ -2685,6 +2815,7 @@ void BtlController_HandlePlayFanfareOrBGM(u32 battler)
 
 void BtlController_HandleFaintingCry(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     struct Pokemon *party;
     s8 pan;
 
@@ -2705,6 +2836,7 @@ void BtlController_HandleFaintingCry(u32 battler)
 
 void BtlController_HandleIntroSlide(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     HandleIntroSlide(gBattleResources->bufferA[battler][1]);
     gIntroSlideFlags |= 1;
     BtlController_Complete(battler);
@@ -2712,6 +2844,7 @@ void BtlController_HandleIntroSlide(u32 battler)
 
 void BtlController_HandleSpriteInvisibility(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (IsBattlerSpritePresent(battler))
     {
         gSprites[gBattlerSpriteIds[battler]].invisible = gBattleResources->bufferA[battler][1];
@@ -2744,6 +2877,7 @@ bool32 TwoOpponentIntroMons(u32 battler) // Double battle with both opponent pok
 
 void BtlController_HandleIntroTrainerBallThrow(u32 battler, u16 tagTrainerPal, const u16 *trainerPal, s16 framesToWait, void (*controllerCallback)(u32 battler))
 {
+    DebugPrintf("%s", __func__);
     u8 paletteNum, taskId;
     enum BattleSide side = GetBattlerSide(battler);
 
@@ -2768,7 +2902,15 @@ void BtlController_HandleIntroTrainerBallThrow(u32 battler, u16 tagTrainerPal, c
         StoreSpriteCallbackInData6(&gSprites[gBattleStruct->trainerSlideSpriteIds[battler]], SpriteCB_FreePlayerSpriteLoadMonSprite);
         StartSpriteAnim(&gSprites[gBattleStruct->trainerSlideSpriteIds[battler]], ShouldDoSlideInAnim(battler) ? 2 : 1);
 
-        paletteNum = AllocSpritePalette(tagTrainerPal);
+        if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+         && (battler == B_BATTLER_0 || battler == B_BATTLER_2))
+        {
+            paletteNum = (8 + battler/2);
+        }
+        else
+        {
+            paletteNum = AllocSpritePalette(tagTrainerPal);
+        }
         LoadPalette(trainerPal, OBJ_PLTT_ID(paletteNum), PLTT_SIZE_4BPP);
         gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.paletteNum = paletteNum;
     }
@@ -2791,6 +2933,7 @@ void BtlController_HandleIntroTrainerBallThrow(u32 battler, u16 tagTrainerPal, c
 
 static bool32 TwoMonsAtSendOut(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (IsOnPlayerSide(battler))
     {
         if (TwoPlayerIntroMons(battler) && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
@@ -2813,6 +2956,7 @@ static bool32 TwoMonsAtSendOut(u32 battler)
 // Send out at start of battle
 static void Task_StartSendOutAnim(u8 taskId)
 {
+    DebugPrintf("%s", __func__);
     if (gTasks[taskId].tFramesToWait != 0 && gTasks[taskId].tStartTimer < gTasks[taskId].tFramesToWait)
     {
         gTasks[taskId].tStartTimer++;
@@ -2850,6 +2994,7 @@ static void Task_StartSendOutAnim(u8 taskId)
 
 static void SpriteCB_FreePlayerSpriteLoadMonSprite(struct Sprite *sprite)
 {
+    DebugPrintf("%s", __func__);
     u8 battler = sprite->sBattlerId;
 
     // Free player trainer sprite
@@ -2864,6 +3009,7 @@ static void SpriteCB_FreePlayerSpriteLoadMonSprite(struct Sprite *sprite)
 
 static void SpriteCB_FreeOpponentSprite(struct Sprite *sprite)
 {
+    DebugPrintf("%s", __func__);
     FreeTrainerFrontPicPalette(sprite->oam.affineParam);
     FreeSpriteOamMatrix(sprite);
     DestroySprite(sprite);
@@ -2873,6 +3019,7 @@ static void SpriteCB_FreeOpponentSprite(struct Sprite *sprite)
 
 void BtlController_HandleDrawPartyStatusSummary(u32 battler, enum BattleSide side, bool32 considerDelay)
 {
+    DebugPrintf("%s", __func__);
     if (gBattleResources->bufferA[battler][1] != 0 && IsOnPlayerSide(battler))
     {
         BtlController_Complete(battler);
@@ -2907,6 +3054,8 @@ void BtlController_HandleDrawPartyStatusSummary(u32 battler, enum BattleSide sid
 
 void BtlController_HandleHidePartyStatusSummary(u32 battler)
 {
+    DebugPrintf("%s", __func__);
+    DebugPrintf("%d BtlController_HandleHidePartyStatusSummary", battler);
     if (gBattleSpritesDataPtr->healthBoxesData[battler].partyStatusSummaryShown)
         gTasks[gBattlerStatusSummaryTaskId[battler]].func = Task_HidePartyStatusSummary;
     BtlController_Complete(battler);
@@ -2914,6 +3063,7 @@ void BtlController_HandleHidePartyStatusSummary(u32 battler)
 
 void BtlController_HandleBattleAnimation(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if ((gBattleTypeFlags & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_WALLY_TUTORIAL))
         || !IsBattleSEPlaying(battler))
     {
@@ -2934,6 +3084,7 @@ void BtlController_HandleBattleAnimation(u32 battler)
 
 void AnimateMonAfterPokeBallFail(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (B_ANIMATE_MON_AFTER_FAILED_POKEBALL == FALSE)
         return;
     
@@ -2943,6 +3094,7 @@ void AnimateMonAfterPokeBallFail(u32 battler)
 
 static void AnimateMonAfterKnockout(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (B_ANIMATE_MON_AFTER_KO == FALSE)
         return;
 
@@ -2959,6 +3111,7 @@ static void AnimateMonAfterKnockout(u32 battler)
 
 static void LaunchKOAnimation(u32 battlerId, u16 animId, bool32 isFront)
 {
+    DebugPrintf("%s", __func__);
     u32 species = GetBattlerVisualSpecies(battlerId);
     u32 spriteId = gBattlerSpriteIds[battlerId];
 
@@ -2981,6 +3134,7 @@ static void LaunchKOAnimation(u32 battlerId, u16 animId, bool32 isFront)
 
 static u32 ReturnAnimIdForBattler(bool32 wasPlayerSideKnockedOut, u32 specificBattler)
 {
+    DebugPrintf("%s", __func__);
     u32 species = GetBattlerVisualSpecies(specificBattler);
     if (wasPlayerSideKnockedOut)
         return gSpeciesInfo[species].frontAnimId;
@@ -2990,6 +3144,7 @@ static u32 ReturnAnimIdForBattler(bool32 wasPlayerSideKnockedOut, u32 specificBa
 
 void TrySetBattlerShadowSpriteCallback(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gSprites[gBattleSpritesDataPtr->healthBoxesData[battler].shadowSpriteIdPrimary].callback == SpriteCallbackDummy
      && (B_ENEMY_MON_SHADOW_STYLE <= GEN_3 || P_GBA_STYLE_SPECIES_GFX == TRUE
       || gSprites[gBattleSpritesDataPtr->healthBoxesData[battler].shadowSpriteIdSecondary].callback == SpriteCallbackDummy))
@@ -2998,6 +3153,7 @@ void TrySetBattlerShadowSpriteCallback(u32 battler)
 
 void TryShinyAnimAfterMonAnim(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gSprites[gBattlerSpriteIds[battler]].x2 == 0)
     {
         if (!gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim)
@@ -3017,12 +3173,14 @@ void TryShinyAnimAfterMonAnim(u32 battler)
 
 void WaitForMonAnimAfterLoad(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gSprites[gBattlerSpriteIds[battler]].animEnded && gSprites[gBattlerSpriteIds[battler]].x2 == 0)
         BtlController_Complete(battler);
 }
 
 void BtlController_HandleSwitchInShowSubstitute(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gSprites[gHealthboxSpriteIds[battler]].callback == SpriteCallbackDummy)
     {
         if (IsOnPlayerSide(battler))
@@ -3042,6 +3200,7 @@ void BtlController_HandleSwitchInShowSubstitute(u32 battler)
 
 void BtlController_HandleSwitchInWaitAndEnd(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!gBattleSpritesDataPtr->healthBoxesData[battler].specialAnimActive
         && gSprites[gBattlerSpriteIds[battler]].callback == SpriteCallbackDummy)
         BtlController_Complete(battler);
@@ -3049,6 +3208,7 @@ void BtlController_HandleSwitchInWaitAndEnd(u32 battler)
 
 void BtlController_Intro_DelayAndEnd(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (--gBattleSpritesDataPtr->healthBoxesData[battler].introEndDelay == (u8)-1)
     {
         gBattleSpritesDataPtr->healthBoxesData[battler].introEndDelay = 0;
@@ -3058,6 +3218,7 @@ void BtlController_Intro_DelayAndEnd(u32 battler)
 
 void BtlController_HandleSwitchInSoundAndEnd(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!gBattleSpritesDataPtr->healthBoxesData[battler].specialAnimActive && !IsCryPlayingOrClearCrySongs())
     {
         if (gSprites[gBattlerSpriteIds[battler]].callback == SpriteCallbackDummy
@@ -3074,6 +3235,7 @@ void BtlController_HandleSwitchInSoundAndEnd(u32 battler)
 
 void BtlController_HandleSwitchInShowHealthbox(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     enum BattleSide side = GetBattlerSide(battler);
     if (gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim
      && (side == B_SIDE_PLAYER || gSprites[gBattlerSpriteIds[battler]].callback == SpriteCallbackDummy))
@@ -3101,6 +3263,7 @@ void BtlController_HandleSwitchInShowHealthbox(u32 battler)
 
 static void SwitchIn_CleanShinyAnimShowSubstitute(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (gSprites[gHealthboxSpriteIds[battler]].callback == SpriteCallbackDummy
      && gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim
      && gSprites[gBattlerSpriteIds[battler]].callback == SpriteCallbackDummy)
@@ -3122,6 +3285,7 @@ static void SwitchIn_CleanShinyAnimShowSubstitute(u32 battler)
 
 void BtlController_HandleSwitchInTryShinyAnim(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     if (!gBattleSpritesDataPtr->healthBoxesData[battler].ballAnimActive
      && !gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim)
         TryShinyAnimation(battler, GetBattlerMon(battler));
@@ -3150,6 +3314,7 @@ void BtlController_HandleSwitchInTryShinyAnim(u32 battler)
 
 void UpdateFriendshipFromXItem(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     struct Pokemon *party = GetBattlerParty(battler);
 
     u8 friendship;
@@ -3193,11 +3358,13 @@ void UpdateFriendshipFromXItem(u32 battler)
 
 bool32 ShouldBattleRestrictionsApply(u32 battler)
 {
+    DebugPrintf("%s", __func__);
     return IsControllerPlayer(battler);
 }
 
 void FreeShinyStars(void)
 {
+    DebugPrintf("%s", __func__);
     for (u32 battler = 0; battler < gBattlersCount; battler++)
     {
         if (gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim)

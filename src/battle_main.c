@@ -462,6 +462,7 @@ void CB2_InitBattle(void)
     else
     {
         CB2_InitBattleInternal();
+        DebugPrintf("CB2_InitBattle end");
     }
 }
 
@@ -570,11 +571,22 @@ static void CB2_InitBattleInternal(void)
         {
             if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE))
             {
-                for (i = 0; i < PARTY_SIZE; i++)
+                //FillPartnerParty(gPartnerTrainerId);
+                for (i = 0; i < MULTI_PARTY_SIZE; i++)
                 {
-                    CopyMon(&gEnemyParty[i], GetSavedPlayerPartyMon(i), sizeof(*GetSavedPlayerPartyMon(i)));
+                    CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
                 }
+                
+                CreateNPCTrainerParty(&gEnemyParty[3], gPartnerTrainerId, FALSE);
+
+                for (i = 0; i < PARTY_SIZE; i++)
+                    DebugPrintf("gEnemyParty %d %S", i, GetSpeciesName(GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)));
+                
                 CreateNPCTrainerParty(&gPlayerParty[0], TRAINER_BATTLE_PARAM.opponentA, TRUE);
+                
+                for (i = 0; i < PARTY_SIZE; i++)
+                    DebugPrintf("gPlayerParty %d %S", i, GetSpeciesName(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES)));
+
             }
             else
             {
@@ -606,6 +618,7 @@ static void CB2_InitBattleInternal(void)
     }
 
     gBattleCommunication[MULTIUSE_STATE] = 0;
+    DebugPrintf("CB2_InitBattleInternal end");
 }
 
 #define BUFFER_PARTY_VS_SCREEN_STATUS(party, flags, i)                      \
@@ -1913,7 +1926,9 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
         if (firstTrainer == TRUE && !((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE)))
             ZeroEnemyPartyMons();
 
-        if (battleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        if ((battleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+         && !((TRAINER_BATTLE_PARAM.opponentA == TRAINER_MAXIE_MT_PYRE)
+         || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ARCHIE_MT_PYRE)))
         {
             if (trainer->partySize > PARTY_SIZE / 2)
                 monsCount = PARTY_SIZE / 2;
