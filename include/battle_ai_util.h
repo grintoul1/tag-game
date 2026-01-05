@@ -118,7 +118,7 @@ void GetBestDmgMovesFromBattler(u32 battlerAtk, u32 battlerDef, enum DamageCalcC
 u16 GetMoveIndex(u32 battler, enum Move move);
 bool32 IsBestDmgMove(u32 battlerAtk, u32 battlerDef, enum DamageCalcContext calcContext, enum Move move);
 bool32 BestDmgMoveHasEffect(u32 battlerAtk, u32 battlerDef, enum DamageCalcContext calcContext, enum BattleMoveEffects moveEffect);
-void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPartner, enum DamageCalcContext calcContext, u16* moves, u32* target);
+void GetBestDmgMoveFromPartner(u32 battlerAtk, u32 battlerDef, u32 battlerDefPartner, enum DamageCalcContext calcContext, enum Move moves[MAX_MON_MOVES], u32* target);
 u32 GetBestDmgFromBattler(u32 battler, u32 battlerTarget, enum DamageCalcContext calcContext);
 bool32 CanTargetMoveFaintAi(enum Move move, u32 battlerDef, u32 battlerAtk, u32 nHits);
 bool32 CanTargetFaintAiWithMod(u32 battlerDef, u32 battlerAtk, s32 hpMod, s32 dmgMod);

@@ -6673,7 +6673,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, enum Move move, s32
 
     
 
-    u16 bestMoves[4] = {0};
+    enum Move bestMoves[MAX_MON_MOVES] = {0};
     u32 bestTarget;
     
     if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER)
@@ -9320,7 +9320,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, enum Move move, s32
 
     // AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE
     {
-        u16 bestMoves[4] = {0};
+        enum Move bestMoves[MAX_MON_MOVES] = {0};
         u32 bestTarget;
 
         // Targeting partner, check benefits of doing that instead

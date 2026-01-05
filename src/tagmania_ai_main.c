@@ -1210,7 +1210,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, enum Move move, s32 s
     enum Ability abilityAtk = aiData->abilities[battlerAtk];
     enum Ability abilityDef = aiData->abilities[battlerDef];
     s32 atkPriority = GetBattleMovePriority(battlerAtk, abilityAtk, move);
-    u16 *targetMove = GetMovesArray(battlerDef);
+    enum Move *targetMove = GetMovesArray(battlerDef);
     u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
     enum Move atkBestMoves[MAX_MON_MOVES] = {0};
     enum Move defBestMoves[MAX_MON_MOVES] = {0};
@@ -4405,7 +4405,7 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, enum Move move
     enum BattleMoveEffects moveEffect = GetMoveEffect(move);
     enum Move movesetIndex = gAiThinkingStruct->movesetIndex;
     uq4_12_t effectiveness = aiData->effectiveness[battlerAtk][battlerDef][movesetIndex];
-    u16 *targetMove = GetMovesArray(battlerDef);
+    enum Move *targetMove = GetMovesArray(battlerDef);
 
     s32 score = 0;
     enum Move predictedMove = GetIncomingMove(battlerAtk, battlerDef, aiData);
@@ -6661,7 +6661,7 @@ static s32 AI_CalcAdditionalEffectScore(u32 battlerAtk, u32 battlerDef, enum Mov
 // AI_FLAG_CHECK_VIABILITY - Chooses best possible move to hit player
 static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, enum Move move, s32 score)
 {
-    u16 UNUSED *moves = GetMovesArray(battlerAtk);
+    enum Move UNUSED *moves = GetMovesArray(battlerAtk);
     struct AiLogicData *aiData = gAiLogicData;
 
     // Targeting partner, check benefits of doing that instead
@@ -6672,7 +6672,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, enum Move move, s32
 
     
 
-    u16 bestMoves[4] = {0};
+    enum Move bestMoves[MAX_MON_MOVES] = {0};
     u32 bestTarget;
     
     if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER)
@@ -7314,8 +7314,8 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, enum Move move, s32
     // partner data 
     bool32 hasPartner = HasPartner(battlerAtk);
     u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
-    u16 UNUSED *moves = GetMovesArray(battlerAtk);
-    u16 *atkPartnerMove = GetMovesArray(battlerAtkPartner);
+    enum Move UNUSED *moves = GetMovesArray(battlerAtk);
+    enum Move *atkPartnerMove = GetMovesArray(battlerAtkPartner);
     u32 partnerEffect = GetMoveEffect(aiData->partnerMove);
     u32 atkPartnerAbility = aiData->abilities[BATTLE_PARTNER(battlerAtk)];
     u32 atkPartnerHoldEffect = aiData->holdEffects[BATTLE_PARTNER(battlerAtk)];
@@ -7340,9 +7340,9 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, enum Move move, s32
     u32 predictedType = GetMoveType(predictedMove);
     u32 predictedMoveSlot = GetMoveSlot(GetMovesArray(battlerDef), predictedMove);
     enum Ability abilityDef = aiData->abilities[battlerDef];
-    u16 *targetMove = GetMovesArray(battlerDef);
+    enum Move *targetMove = GetMovesArray(battlerDef);
     u32 battlerDefPartner = BATTLE_PARTNER(battlerDef);
-    //u16 *targetPartnerMove = GetMovesArray(battlerDefPartner);
+    //enum Move *targetPartnerMove = GetMovesArray(battlerDefPartner);
     enum Ability abilityDefPartner = aiData->abilities[battlerDefPartner];
 
     SetTypeBeforeUsingMove(move, battlerAtk);
@@ -9319,7 +9319,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, enum Move move, s32
 
     // AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE
     {
-        u16 bestMoves[4] = {0};
+        enum Move bestMoves[MAX_MON_MOVES] = {0};
         u32 bestTarget;
 
         // Targeting partner, check benefits of doing that instead
@@ -12552,8 +12552,8 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, enum Move move, s32 sc
     // partner data 
     bool32 hasPartner = HasPartner(battlerAtk);
     u32 battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
-    u16 UNUSED *moves = GetMovesArray(battlerAtk);
-    u16 UNUSED *atkPartnerMove = GetMovesArray(battlerAtkPartner);
+    enum Move UNUSED *moves = GetMovesArray(battlerAtk);
+    enum Move UNUSED *atkPartnerMove = GetMovesArray(battlerAtkPartner);
     u32 partnerEffect = GetMoveEffect(aiData->partnerMove);
     u32 atkPartnerAbility = aiData->abilities[BATTLE_PARTNER(battlerAtk)];
     u32 atkPartnerHoldEffect = aiData->holdEffects[BATTLE_PARTNER(battlerAtk)];
@@ -12571,9 +12571,9 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, enum Move move, s32 sc
     u32 predictedType = GetMoveType(predictedMove);
     u32 predictedMoveSlot = GetMoveSlot(GetMovesArray(battlerDef), predictedMove);
     enum Ability abilityDef = aiData->abilities[battlerDef];
-    u16 *targetMove = GetMovesArray(battlerDef);
+    enum Move *targetMove = GetMovesArray(battlerDef);
     u32 battlerDefPartner = BATTLE_PARTNER(battlerDef);
-    //u16 *targetPartnerMove = GetMovesArray(battlerDefPartner);
+    //enum Move *targetPartnerMove = GetMovesArray(battlerDefPartner);
     enum Ability abilityDefPartner = aiData->abilities[battlerDefPartner];
 
     SetTypeBeforeUsingMove(move, battlerAtk);
