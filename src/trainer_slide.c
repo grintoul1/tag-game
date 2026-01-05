@@ -27,6 +27,7 @@
 #include "constants/abilities.h"
 #include "constants/battle_dome.h"
 #include "constants/battle_string_ids.h"
+#include "constants/flags.h"
 #include "constants/frontier_util.h"
 #include "constants/items.h"
 #include "constants/moves.h"
@@ -34,6 +35,7 @@
 #include "constants/species.h"
 #include "constants/trainers.h"
 #include "constants/trainer_hill.h"
+#include "constants/vars.h"
 #include "constants/weather.h"
 #include "trainer_slide.h"
 #include "battle_message.h"
@@ -107,7 +109,7 @@ static const u8* const sFrontierTrainerSlides[DIFFICULTY_COUNT][FRONTIER_TRAINER
     },
 };
 
-static const u8* const sTestTrainerSlides[DIFFICULTY_COUNT][TRAINERS_COUNT][TRAINER_SLIDE_COUNT] =
+static const u8* const sTestTrainerSlides[DIFFICULTY_COUNT][TRAINER_PARTNER(PARTNER_COUNT)][TRAINER_SLIDE_COUNT] =
 {
 #include "../test/battle/trainer_slides.h"
 };
@@ -136,29 +138,33 @@ static const s8 sMultiBattleOrder[] = {0, 2, 3, 1, 4, 5};
 
 static u32 GetPartyMonCount(u32 firstId, u32 lastId, u32 side, bool32 onlyAlive)
 {
-    u32 i, count = 0;
+    u32 count = 0;
     struct Pokemon* party = (side == B_SIDE_OPPONENT ? gEnemyParty : gPlayerParty);
 
     if (IsMultiBattle() && side == B_SIDE_PLAYER)
     {
-        for (i = firstId; i < lastId; i++)
+        for (u32 i = firstId; i < lastId; i++)
         {
             u32 species = GetMonData(&party[sMultiBattleOrder[i]], MON_DATA_SPECIES_OR_EGG, NULL);
             if (species != SPECIES_NONE
                     && species != SPECIES_EGG
                     && (!onlyAlive || GetMonData(&party[sMultiBattleOrder[i]], MON_DATA_HP, NULL)))
+            {
                 count++;
+            }
         }
     }
     else
     {
-        for (i = firstId; i < lastId; i++)
+        for (u32 i = firstId; i < lastId; i++)
         {
             u32 species = GetMonData(&party[i], MON_DATA_SPECIES_OR_EGG, NULL);
             if (species != SPECIES_NONE
                     && species != SPECIES_EGG
                     && (!onlyAlive || GetMonData(&party[i], MON_DATA_HP, NULL)))
+            {
                 count++;
+            }
         }
     }
 
@@ -166,7 +172,10 @@ static u32 GetPartyMonCount(u32 firstId, u32 lastId, u32 side, bool32 onlyAlive)
 }
 
 static const u8* const *GetTrainerSlideArray(enum DifficultyLevel difficulty, u32 trainerId, u32 slideId)
-{
+{ 
+#if TESTING
+    return (FlagGet(TESTING_FLAG_TRAINER_SLIDES) ? sTestTrainerSlides[difficulty][trainerId] : NULL);
+#else
     if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
         return sFrontierTrainerSlides[difficulty][trainerId];
     else if (TESTING)
@@ -175,6 +184,7 @@ static const u8* const *GetTrainerSlideArray(enum DifficultyLevel difficulty, u3
         return sEmmieSlides[gTrainerBattleParameter.params.opponentA];
     else
         return sTrainerSlides[difficulty][trainerId];
+#endif // TESTING
 }
 
 static bool32 DoesTrainerHaveSlideMessage(enum DifficultyLevel difficulty, u32 trainerId, u32 slideId)
@@ -182,10 +192,24 @@ static bool32 DoesTrainerHaveSlideMessage(enum DifficultyLevel difficulty, u32 t
     const u8* const *trainerSlides = GetTrainerSlideArray(difficulty, trainerId, slideId);
     const u8* const *trainerSlidesNormal = GetTrainerSlideArray(DIFFICULTY_NORMAL, trainerId, slideId);
 
+#if TESTING
+    if (VarGet(TESTING_VAR_TRAINER_SLIDES) == slideId)
+    {
+        if (trainerSlides[slideId] == NULL)
+            return (trainerSlidesNormal[slideId] != NULL);
+        else
+            return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+#else
     if (trainerSlides[slideId] == NULL)
         return (trainerSlidesNormal[slideId] != NULL);
     else
         return TRUE;
+#endif // TESTING
 }
 
 void SetTrainerSlideMessage(enum DifficultyLevel difficulty, u32 trainerId, u32 slideId)
@@ -317,6 +341,9 @@ enum TrainerSlideTargets ShouldDoTrainerSlide(u32 battler, enum TrainerSlideType
     if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
         return TRAINER_SLIDE_TARGET_NONE;
 
+    if (!IsDoubleBattle() && (battler > B_BATTLER_1))
+        return TRAINER_SLIDE_TARGET_NONE;
+
     SetTrainerSlideParameters(battler, &firstId, &lastId, &trainerId, &retValue);
     enum DifficultyLevel difficulty = GetCurrentDifficultyLevel();
 
@@ -372,9 +399,11 @@ enum TrainerSlideTargets ShouldDoTrainerSlide(u32 battler, enum TrainerSlideType
 
     // Prevents slides triggering twice in single-trainer doubles (B == A / B == TRAINER_NONE) and 2v1 multibattles (B == 0xFFFF)
     if (((TRAINER_BATTLE_PARAM.opponentB == TRAINER_BATTLE_PARAM.opponentA)
-    || (TRAINER_BATTLE_PARAM.opponentB == TRAINER_NONE)
-    || (TRAINER_BATTLE_PARAM.opponentB == 0xFFFF)))
+     || (TRAINER_BATTLE_PARAM.opponentB == TRAINER_NONE)
+     || (TRAINER_BATTLE_PARAM.opponentB == 0xFFFF)))
+    {
         MarkTrainerSlideAsPlayed(BATTLE_PARTNER(battler), slideId);
+    }
     
     MarkTrainerSlideAsPlayed(battler, slideId);
     SetTrainerSlideMessage(difficulty,trainerId,slideId);
@@ -490,9 +519,7 @@ void MarkInitializedTrainerSlidesAsPlayed(u32 battler, enum TrainerSlideType sli
     u32 bitPosition = slideId % TRAINER_SLIDES_PER_ARRAY;
 
     if (IsTrainerSlideInitialized(battler, slideId) && !IsTrainerSlidePlayed(battler, slideId))
-    {
         gBattleStruct->slideMessageStatus.messagePlayed[battler][arrayIndex] |= (1 << bitPosition);
-    }
 }
 
 void MarkTrainerSlideAsPlayed(u32 battler, enum TrainerSlideType slideId)

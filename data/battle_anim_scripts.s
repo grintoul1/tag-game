@@ -341,7 +341,6 @@ gBattleAnimMove_MetalBurst::
 	waitforvisualfinish
 	end
 
-@Credits: Skeli
 gBattleAnimMove_UTurn::
 	loadspritegfx ANIM_TAG_SMALL_BUBBLES
 	loadspritegfx ANIM_TAG_RAZOR_LEAF
@@ -1043,14 +1042,14 @@ gBattleAnimGeneral_AquaRingHeal::
 	createsprite gSmallBubblePairSpriteTemplate, ANIM_ATTACKER, 2, 12, 0, 25, 0
 	setalpha 8, 8
 	playsewithpan SE_M_MILK_DRINK, SOUND_PAN_ATTACKER
-	createsprite gGuardRingSpriteTemplate, ANIM_ATTACKER, 0
+	createsprite gGuardRingSpriteTemplate, ANIM_ATTACKER, 0, FALSE
 	delay 4
-	createsprite gGuardRingSpriteTemplate, ANIM_ATTACKER, 0
+	createsprite gGuardRingSpriteTemplate, ANIM_ATTACKER, 0, FALSE
 	delay 4
-	createsprite gGuardRingSpriteTemplate, ANIM_ATTACKER, 0
+	createsprite gGuardRingSpriteTemplate, ANIM_ATTACKER, 0, FALSE
 	waitforvisualfinish
 	playsewithpan SE_SHINY, SOUND_PAN_ATTACKER
-	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_ATK_SIDE, 0, 2, 0, 10, RGB_WHITE
+	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_ATTACKER, 0, 2, 0, 10, RGB_WHITE
 	waitforvisualfinish
 	clearmonbg ANIM_ATK_PARTNER
 	blendoff
@@ -1979,7 +1978,6 @@ SnowSlide1:
 	delay 2
 	return
 
-@Credits to Skeli
 gBattleAnimMove_IceShard::
 	monbg ANIM_TARGET
 	splitbgprio ANIM_TARGET
@@ -2440,7 +2438,6 @@ InitRoomAnimation:
 	createvisualtask AnimTask_ScaleMonAndRestore, 5, -6, -6, 15, ANIM_TARGET, 1
 	return
 
-@ Credits to Skeli
 gBattleAnimMove_DracoMeteor::
 	loadspritegfx ANIM_TAG_ROCKS @Rocks
 	loadspritegfx ANIM_TAG_FAIRY_LOCK_CHAINS @Gray Colour
@@ -5627,7 +5624,6 @@ GrassPledgeMiddleFountain:
 	delay 4
 	return
 
-@Credits to Skeli
 gBattleAnimMove_VoltSwitch::
 	loadspritegfx ANIM_TAG_SHADOW_BALL
 	loadspritegfx ANIM_TAG_IONS
@@ -14126,7 +14122,6 @@ SmallAppleShower:
 	delay 2
 	return
 
-@ credits to Skeli
 gBattleAnimMove_SpiritBreak::
 	loadspritegfx ANIM_TAG_CIRCLE_OF_LIGHT
 	loadspritegfx ANIM_TAG_TEAL_ALERT
@@ -14233,7 +14228,6 @@ gBattleAnimMove_Obstruct::
 	clearmonbg ANIM_ATK_PARTNER
 	end
 
-@Credits to Skeli
 gBattleAnimMove_FalseSurrender::
 	loadspritegfx ANIM_TAG_IMPACT
 	loadspritegfx ANIM_TAG_CROSS_IMPACT
@@ -14456,7 +14450,6 @@ SetSteelBeamBgPlayer:
 	fadetobg BG_STEEL_BEAM_PLAYER
 	goto SetHighSpeedBgFade
 
-@Credits to Skeli
 gBattleAnimMove_ExpandingForce::
 	loadspritegfx ANIM_TAG_CIRCLE_OF_LIGHT
 	loadspritegfx ANIM_TAG_EXPLOSION_2
@@ -14567,7 +14560,6 @@ MaxKnuckleExplosionGeyser:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_SteelRoller::
 	loadspritegfx ANIM_TAG_STEAMROLLER
 	loadspritegfx ANIM_TAG_IMPACT
@@ -14590,7 +14582,6 @@ SteelRollerRocks:
 	createsprite gRockScatterSpriteTemplate, ANIM_TARGET, 2, 0xc, 0x19, 0x4, 0x4
 	return
 
-@Credits to Skeli
 gBattleAnimMove_ScaleShot::
 	loadspritegfx ANIM_TAG_SHELL_RIGHT
 	loadspritegfx ANIM_TAG_IMPACT
@@ -14607,7 +14598,6 @@ gBattleAnimMove_ScaleShot::
 	waitforvisualfinish
 	end
 
-@Credits to Skeli
 gBattleAnimMove_MeteorBeam::
 	loadspritegfx ANIM_TAG_ROCKS
 	fadetobg BG_COSMIC
@@ -14713,7 +14703,6 @@ gBattleAnimMove_ShellSideArmSpecial:: @ Modified Snipe Shot, placeholder
 	waitforvisualfinish
 	end
 
-@Credits to Skeli
 gBattleAnimMove_MistyExplosion::
 	loadspritegfx ANIM_TAG_EXPLOSION
 	createsprite gComplexPaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 8, 9, RGB(27, 18, 30), 8, RGB_BLACK, 8
@@ -14730,7 +14719,6 @@ gBattleAnimMove_MistyExplosion::
 	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 3, 16, 0, RGB(31, 27, 31) @;White Pink
 	end
 
-@Credits to Skeli
 gBattleAnimMove_GrassyGlide::
 	loadspritegfx ANIM_TAG_LEAF @leaves
 	loadspritegfx ANIM_TAG_IMPACT @hits
@@ -14746,7 +14734,6 @@ gBattleAnimMove_GrassyGlide::
 	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, ANIM_ATTACKER, 0x0, 0x2
 	end
 
-@Credits to Skeli
 gBattleAnimMove_RisingVoltage::
 	loadspritegfx ANIM_TAG_ELECTRIC_ORBS
 	loadspritegfx ANIM_TAG_CIRCLE_OF_LIGHT
@@ -14950,7 +14937,6 @@ gBattleAnimMove_SkitterSmack::
 	waitforvisualfinish
 	end
 
-@Credits to Skeli
 gBattleAnimMove_BurningJealousy::
 	loadspritegfx ANIM_TAG_SMALL_EMBER
 	playsewithpan SE_M_DRAGON_RAGE, SOUND_PAN_ATTACKER
@@ -15003,7 +14989,6 @@ BurningJealousyFlames:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_LashOut::
 	loadspritegfx ANIM_TAG_FOCUS_ENERGY @focus energy
 	loadspritegfx ANIM_TAG_HANDS_AND_FEET @black color
@@ -15084,7 +15069,6 @@ gBattleAnimMove_Poltergeist::
 	unloadspritegfx ANIM_TAG_ITEM_BAG
 	end
 
-@Credits to Skeli
 gBattleAnimMove_CorrosiveGas::
 	loadspritegfx ANIM_TAG_PINK_CLOUD @Fumes
 	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_PINK_CLOUD, 0, 14, 14, RGB(15, 15, 6) @;Garbage green
@@ -15110,7 +15094,6 @@ gBattleAnimMove_CorrosiveGas::
 	clearmonbg ANIM_ATTACKER
 	end
 
-@Credits to Skeli
 gBattleAnimMove_Coaching::
 	playsewithpan SE_M_TAIL_WHIP, SOUND_PAN_ATTACKER
 	createvisualtask AnimTask_Splash, 2, ANIM_ATTACKER, 1
@@ -15165,7 +15148,6 @@ gBattleAnimMove_FlipTurn::
 	end
 
 
-@Credits to Skeli
 gBattleAnimMove_TripleAxel::
 	loadspritegfx ANIM_TAG_HANDS_AND_FEET
 	loadspritegfx ANIM_TAG_IMPACT
@@ -15210,7 +15192,6 @@ TripleAxelEnd:
 	blendoff
 	end
 
-@Credits to Skeli
 gBattleAnimMove_DualWingbeat::
 	loadspritegfx ANIM_TAG_IMPACT
 	loadspritegfx ANIM_TAG_WHITE_FEATHER
@@ -15267,7 +15248,6 @@ DualWingbeatFeatherScatterRight:
 	createsprite gDualWingbeatFeatherSpriteTemplate, ANIM_TARGET, 1, 0, 0xfff8, 0xfe80, 0xffe1
 	return
 
-@ credits to Skeli
 gBattleAnimMove_ScorchingSands::
 	loadspritegfx ANIM_TAG_MUD_SAND
 	loadspritegfx ANIM_TAG_SMALL_EMBER
@@ -15292,7 +15272,6 @@ gBattleAnimMove_ScorchingSands::
 	blendoff
 	end
 
-@ credits to skeli
 gBattleAnimMove_JungleHealing::
 	loadspritegfx ANIM_TAG_ROOTS
 	loadspritegfx ANIM_TAG_ORBS
@@ -15330,7 +15309,6 @@ gBattleAnimMove_JungleHealing::
 	waitbgfadein
 	end
 
-@ credits to ghoulslash
 gBattleAnimMove_SilkTrap::
 	loadspritegfx ANIM_TAG_PROTECT
 	loadspritegfx ANIM_TAG_SPIDER_WEB
@@ -15346,7 +15324,6 @@ gBattleAnimMove_SilkTrap::
 	clearmonbg ANIM_ATK_PARTNER
 	end
 
-@ Also used by Snow weather. Credits to Dat.H A
 gBattleAnimMove_Snowscape::
 	loadspritegfx ANIM_TAG_SNOWFLAKES
 	playsewithpan SE_M_GUST, SOUND_PAN_ATTACKER
@@ -15363,7 +15340,6 @@ gBattleAnimMove_Snowscape::
 	waitforvisualfinish
 	end
 
-@Credits to Skeli
 gBattleAnimMove_WickedBlow::
 	loadspritegfx ANIM_TAG_FOCUS_ENERGY
 	loadspritegfx ANIM_TAG_HANDS_AND_FEET
@@ -15426,7 +15402,6 @@ WickedBlowBuffEffect:
 
 
 
-@Credits to Skeli
 gBattleAnimMove_SurgingStrikes::
 	loadspritegfx ANIM_TAG_IMPACT_2
 	loadspritegfx ANIM_TAG_WATER_IMPACT
@@ -15473,7 +15448,6 @@ SURGING_STRIKES_2:
 	end
 
 
-@Credits to Skeli
 gBattleAnimMove_ThunderCage::
 	loadspritegfx ANIM_TAG_SHOCK_3 	@Thunderbolt Ball
 	loadspritegfx ANIM_TAG_SPARK 	@Electric lines
@@ -15512,7 +15486,6 @@ ThunderCageBolts:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_DragonEnergy::
 	loadspritegfx ANIM_TAG_HYDRO_PUMP
 	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_HYDRO_PUMP, 0, 12, 12, RGB(30, 2, 11) @;Regidrago Reddish Reddish, Purple
@@ -15571,7 +15544,6 @@ DragonEnergyShot:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_FreezingGlare::
 	loadspritegfx ANIM_TAG_SMALL_RED_EYE
 	loadspritegfx ANIM_TAG_EYE_SPARKLE
@@ -15590,7 +15562,6 @@ gBattleAnimMove_FreezingGlare::
 	end
 
 
-@Credits to Skeli
 gBattleAnimMove_FieryWrath::
 	loadspritegfx ANIM_TAG_SMALL_EMBER
 	loadspritegfx ANIM_TAG_PURPLE_RING
@@ -15670,7 +15641,6 @@ FieryWrathGeyser:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_ThunderousKick::
 	loadspritegfx ANIM_TAG_IMPACT
 	loadspritegfx ANIM_TAG_HANDS_AND_FEET
@@ -15707,7 +15677,6 @@ gBattleAnimMove_ThunderousKick::
 	end
 
 
-@Credits to Skeli
 gBattleAnimMove_GlacialLance::
 	loadspritegfx ANIM_TAG_ICICLE_SPEAR
 	loadspritegfx ANIM_TAG_ICE_CUBE
@@ -15862,7 +15831,6 @@ AstralBarrageFlames5:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_EerieSpell::
 	loadspritegfx ANIM_TAG_PURPLE_FLAME
 	call SetPsychicBackground
@@ -15905,7 +15873,6 @@ EerieSpellConvergingFlames:
 	return
 
 @@@@@@@@@@@@@@@@@@@@@@@ GEN 9 @@@@@@@@@@@@@@@@@@@@@@@
-@ credits to Skeli
 gBattleAnimMove_DireClaw::
 	loadspritegfx ANIM_TAG_SLASH
 	loadspritegfx ANIM_TAG_POISON_BUBBLE
@@ -15926,7 +15893,6 @@ gBattleAnimMove_DireClaw::
 	end
 
 
-@ credits to Skeli
 gBattleAnimMove_PsyshieldBash::
 	loadspritegfx ANIM_TAG_IMPACT
 	loadspritegfx ANIM_TAG_WATER_GUN @Blue colour
@@ -15955,7 +15921,6 @@ gBattleAnimMove_PsyshieldBash::
 	blendoff
 	end
 
-@ credits to skeli
 gBattleAnimMove_PowerShift::
 	loadspritegfx ANIM_TAG_BLUEGREEN_ORB
 	loadspritegfx ANIM_TAG_RED_HEART @Red colour for orb
@@ -15971,7 +15936,6 @@ gBattleAnimMove_PowerShift::
 	end
 
 
-@ credits to skeli
 gBattleAnimMove_StoneAxe::
 	loadspritegfx ANIM_TAG_SLAM_HIT_2 @Cut
 	loadspritegfx ANIM_TAG_ROCKS
@@ -16001,7 +15965,6 @@ StoneAxeRockFragments:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_SpringtideStorm::
 	loadspritegfx ANIM_TAG_GUST
 	loadspritegfx ANIM_TAG_RED_HEART
@@ -16040,7 +16003,6 @@ SpringtideStormHeartSwirl:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_MysticalPower::
 	loadspritegfx ANIM_TAG_THIN_RING
 	loadspritegfx ANIM_TAG_POISON_BUBBLE @Purple Colour
@@ -16095,7 +16057,6 @@ MysticalPowerFoeTwoRingsOnly:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_RagingFury::
 	loadspritegfx ANIM_TAG_SMALL_EMBER
 	loopsewithpan SE_M_DRAGON_RAGE, SOUND_PAN_ATTACKER, 0x8, 0x3
@@ -16112,7 +16073,6 @@ gBattleAnimMove_RagingFury::
 	waitforvisualfinish
 	end
 
-@Credits to Skeli
 gBattleAnimMove_WaveCrash::
 	loadspritegfx ANIM_TAG_WATER_IMPACT
 	loadspritegfx ANIM_TAG_SMALL_BUBBLES
@@ -16133,7 +16093,6 @@ gBattleAnimMove_WaveCrash::
 	end
 
 
-@Credits to Skeli
 gBattleAnimMove_Chloroblast::
 	loadspritegfx ANIM_TAG_THIN_RING
 	loadspritegfx ANIM_TAG_HYDRO_PUMP
@@ -16194,7 +16153,6 @@ ChloroblastShot:
 	delay 2
 	return
 
-@Credits to Skeli
 gBattleAnimMove_MountainGale::
 	loadspritegfx ANIM_TAG_ROCKS @Rocks
 	loadspritegfx ANIM_TAG_DRAGON_ASCENT_FOE @White Rock Colour
@@ -16227,7 +16185,6 @@ MountainGaleIceRock:
 
 
 
-@Credits to Skeli
 gBattleAnimMove_VictoryDance::
 	loadspritegfx ANIM_TAG_HOLLOW_ORB
 	createvisualtask AnimTask_TranslateMonEllipticalRespectSide, 2, ANIM_ATTACKER, 40, 6, 3, 3
@@ -16247,7 +16204,6 @@ gBattleAnimMove_VictoryDance::
 	waitforvisualfinish
 	end
 
-@Credits to Skeli
 gBattleAnimMove_HeadlongRush::
 	loadspritegfx ANIM_TAG_MUD_SAND @Dig
 	loadspritegfx ANIM_TAG_IMPACT
@@ -16334,7 +16290,6 @@ MaxQuake_DirtGeyser:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_BarbBarrage::
 	loadspritegfx ANIM_TAG_SPIKES
 	loadspritegfx ANIM_TAG_SHADOW_BALL @Spikes colour
@@ -16367,7 +16322,6 @@ BarbBarrageSpikeShoot:
 
 
 
-@Credits to Skeli
 gBattleAnimMove_EsperWing::
 	loadspritegfx ANIM_TAG_PUNISHMENT_BLADES @Punishment Blade
 	loadspritegfx ANIM_TAG_WHITE_FEATHER
@@ -16404,7 +16358,6 @@ WingAttackFeatherScatter:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_BitterMalice::
 	loadspritegfx ANIM_TAG_PURPLE_RING
 	loadspritegfx ANIM_TAG_EYE_SPARKLE
@@ -16438,7 +16391,6 @@ BitterMaliceSwirl:
 	delay 2
 	return
 
-@ credits to Skeli
 gBattleAnimMove_Shelter::
 	loadspritegfx ANIM_TAG_SHELL_LEFT
 	loadspritegfx ANIM_TAG_SHELL_RIGHT
@@ -16454,7 +16406,6 @@ gBattleAnimMove_Shelter::
 	end
 
 
-@Credits to Skeli
 gBattleAnimMove_TripleArrows::
 	loadspritegfx ANIM_TAG_SPIRIT_ARROW @Arrow
 	loadspritegfx ANIM_TAG_HANDS_AND_FEET
@@ -16488,7 +16439,6 @@ TripleArrowsOnOpponent:
 
 
 
-@Credits to Skeli
 gBattleAnimMove_InfernalParade::
 	loadspritegfx ANIM_TAG_PURPLE_FLAME
 	loadspritegfx ANIM_TAG_WISP_FIRE
@@ -16534,7 +16484,6 @@ InfernalFlames:
 
 
 
-@Credits to Skeli
 gBattleAnimMove_CeaselessEdge::
 	loadspritegfx ANIM_TAG_SLASH
 	playsewithpan SE_M_JUMP_KICK, SOUND_PAN_ATTACKER
@@ -16572,7 +16521,6 @@ CeaselessEdgeSlashes:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_BleakwindStorm::
 	loadspritegfx ANIM_TAG_GUST
 	loadspritegfx ANIM_TAG_ICE_CRYSTALS
@@ -16612,7 +16560,6 @@ BleakwindStormIceSwirl:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_WildboltStorm::
 	loadspritegfx ANIM_TAG_GUST
 	loadspritegfx ANIM_TAG_SPARK_2
@@ -16658,7 +16605,6 @@ WildboltStormSparkSwirl:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_SandsearStorm::
 	loadspritegfx ANIM_TAG_GUST
 	loadspritegfx ANIM_TAG_SMALL_EMBER
@@ -16700,7 +16646,6 @@ SandsearStormFireSpin:
 	return
 
 
-@Credits to Skeli
 gBattleAnimMove_LunarBlessing::
 	loadspritegfx ANIM_TAG_BLUE_STAR
 	loadspritegfx ANIM_TAG_MOON
@@ -16734,7 +16679,6 @@ gBattleAnimMove_LunarBlessing::
 	end
 
 
-@Credits to Skeli
 gBattleAnimMove_TakeHeart::
 	loadspritegfx ANIM_TAG_RED_HEART
 	loadspritegfx ANIM_TAG_SPARKLE_2
@@ -16837,7 +16781,6 @@ gBattleAnimMove_SyrupBomb::
 	jumpargeq 0x0, FALSE, gBattleAnimMove_SyrupBombRed
 	jumpargeq 0x0, TRUE, gBattleAnimMove_SyrupBombYellow
 
-@ Credits to Dat.H A
 gBattleAnimMove_SyrupBombRed::
 	loadspritegfx ANIM_TAG_SYRUP_BLOB_RED
 	loadspritegfx ANIM_TAG_SYRUP_SPLAT_RED
@@ -17056,7 +16999,6 @@ gBattleAnimMove_AlluringVoice::
 	waitforvisualfinish
 	end
 
-@ Credits to Z-nogyroP
 gBattleAnimMove_AquaCutter::
 	loadspritegfx ANIM_TAG_SLASH_2
 	loadspritegfx ANIM_TAG_SMALL_BUBBLES
@@ -17095,7 +17037,6 @@ gBattleAnimMove_AquaCutter::
 	waitforvisualfinish
 	end
 
-@ Credits to Z-nogyroP
 gBattleAnimMove_GigatonHammer::
 	loadspritegfx ANIM_TAG_ROCKS
 	loadspritegfx ANIM_TAG_WOOD_HAMMER_HAMMER
@@ -17124,7 +17065,6 @@ GigatonHammerImpact:
 	createsprite gRockScatterSpriteTemplate, ANIM_TARGET, 2, 0xc, 0x1e, 0x4, 0x3
 	return
 
-@ Credits to Z-nogyroP
 gBattleAnimMove_IceSpinner::
 	loadspritegfx ANIM_TAG_IMPACT
 	loadspritegfx ANIM_TAG_RAPID_SPIN
@@ -17167,7 +17107,6 @@ IceCrystalSpinEffect:
 	delay 2
 	return
 
-@ Credits to Z-nogyroP
 gBattleAnimMove_RagingBull::
 	loadspritegfx ANIM_TAG_IMPACT
 	loadspritegfx ANIM_TAG_ANGER
@@ -17254,7 +17193,6 @@ RagingBullShatteredWall:
 	clearmonbg ANIM_TARGET
 	end
 
-@ Credits to Z-nogyroP. Simple anim that combines Force Palm + Fake Out
 gBattleAnimMove_UpperHand::
 	loadspritegfx ANIM_TAG_SHADOW_BALL
 	loadspritegfx ANIM_TAG_HANDS_AND_FEET
@@ -22576,11 +22514,11 @@ gBattleAnimMove_Safeguard::
 	monbg ANIM_ATK_PARTNER
 	setalpha 8, 8
 	playsewithpan SE_M_MILK_DRINK, SOUND_PAN_ATTACKER
-	createsprite gGuardRingSpriteTemplate, ANIM_ATTACKER, 2
+	createsprite gGuardRingSpriteTemplate, ANIM_ATTACKER, 2, TRUE
 	delay 4
-	createsprite gGuardRingSpriteTemplate, ANIM_ATTACKER, 2
+	createsprite gGuardRingSpriteTemplate, ANIM_ATTACKER, 2, TRUE
 	delay 4
-	createsprite gGuardRingSpriteTemplate, ANIM_ATTACKER, 2
+	createsprite gGuardRingSpriteTemplate, ANIM_ATTACKER, 2, TRUE
 	waitforvisualfinish
 	playsewithpan SE_SHINY, SOUND_PAN_ATTACKER
 	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_ATK_SIDE, 0, 2, 0, 10, RGB_WHITE

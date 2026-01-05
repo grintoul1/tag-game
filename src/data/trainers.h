@@ -14,7 +14,7 @@
 #line 3
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 4
-        .trainerPic = TRAINER_PIC_BRENDAN,
+        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
         .encounterMusic_gender =
 #line 6
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -25,7 +25,7 @@
 #line 9
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BRENDAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -56,7 +56,7 @@
 #line 18
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 19
-        .trainerPic = TRAINER_PIC_BRENDAN,
+        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
         .encounterMusic_gender =
 #line 21
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -67,7 +67,7 @@
 #line 24
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BRENDAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -98,7 +98,7 @@
 #line 33
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 34
-        .trainerPic = TRAINER_PIC_BRENDAN,
+        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
         .encounterMusic_gender =
 #line 36
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -109,7 +109,7 @@
 #line 39
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BRENDAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -140,7 +140,7 @@
 #line 48
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 49
-        .trainerPic = TRAINER_PIC_MAY,
+        .trainerPic = TRAINER_PIC_FRONT_MAY,
         .encounterMusic_gender =
 #line 50
 F_TRAINER_FEMALE | 
@@ -153,7 +153,7 @@ F_TRAINER_FEMALE |
 #line 54
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAY,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -184,7 +184,7 @@ F_TRAINER_FEMALE |
 #line 63
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 64
-        .trainerPic = TRAINER_PIC_MAY,
+        .trainerPic = TRAINER_PIC_FRONT_MAY,
         .encounterMusic_gender =
 #line 65
 F_TRAINER_FEMALE | 
@@ -197,7 +197,7 @@ F_TRAINER_FEMALE |
 #line 69
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAY,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -228,7 +228,7 @@ F_TRAINER_FEMALE |
 #line 78
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 79
-        .trainerPic = TRAINER_PIC_MAY,
+        .trainerPic = TRAINER_PIC_FRONT_MAY,
         .encounterMusic_gender =
 #line 80
 F_TRAINER_FEMALE | 
@@ -241,7 +241,7 @@ F_TRAINER_FEMALE |
 #line 84
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAY,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -272,7 +272,7 @@ F_TRAINER_FEMALE |
 #line 93
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 94
-        .trainerPic = TRAINER_PIC_YOUNGSTER,
+        .trainerPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .encounterMusic_gender =
 #line 96
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -281,7 +281,7 @@ F_TRAINER_FEMALE |
 #line 98
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
+        .trainerBackPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -339,7 +339,7 @@ F_TRAINER_FEMALE |
 #line 118
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
 #line 119
-        .trainerPic = TRAINER_PIC_BUG_CATCHER,
+        .trainerPic = TRAINER_PIC_FRONT_BUG_CATCHER,
         .encounterMusic_gender =
 #line 121
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -348,7 +348,7 @@ F_TRAINER_FEMALE |
 #line 123
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BUG_CATCHER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -406,7 +406,7 @@ F_TRAINER_FEMALE |
 #line 143
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 144
-        .trainerPic = TRAINER_PIC_YOUNGSTER,
+        .trainerPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .encounterMusic_gender =
 #line 146
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -415,7 +415,7 @@ F_TRAINER_FEMALE |
 #line 148
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
+        .trainerBackPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -474,7 +474,7 @@ F_TRAINER_FEMALE |
 #line 169
         .trainerClass = TRAINER_CLASS_LASS,
 #line 170
-        .trainerPic = TRAINER_PIC_LASS,
+        .trainerPic = TRAINER_PIC_FRONT_LASS,
         .encounterMusic_gender =
 #line 171
 F_TRAINER_FEMALE | 
@@ -485,7 +485,7 @@ F_TRAINER_FEMALE |
 #line 174
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
+        .trainerBackPic = TRAINER_PIC_FRONT_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -545,7 +545,7 @@ F_TRAINER_FEMALE |
 #line 196
         .trainerClass = TRAINER_CLASS_FISHERMAN,
 #line 197
-        .trainerPic = TRAINER_PIC_FISHERMAN,
+        .trainerPic = TRAINER_PIC_FRONT_FISHERMAN,
         .encounterMusic_gender =
 #line 199
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -554,7 +554,7 @@ F_TRAINER_FEMALE |
 #line 201
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_FISHERMAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -614,7 +614,7 @@ F_TRAINER_FEMALE |
 #line 223
         .trainerClass = TRAINER_CLASS_POKEFAN,
 #line 224
-        .trainerPic = TRAINER_PIC_POKEFAN_M,
+        .trainerPic = TRAINER_PIC_FRONT_POKEFAN_M,
         .encounterMusic_gender =
 #line 226
             TRAINER_ENCOUNTER_MUSIC_TWINS,
@@ -623,7 +623,7 @@ F_TRAINER_FEMALE |
 #line 228
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEFAN_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEFAN_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -683,7 +683,7 @@ F_TRAINER_FEMALE |
 #line 250
         .trainerClass = TRAINER_CLASS_TWINS,
 #line 251
-        .trainerPic = TRAINER_PIC_TWINS,
+        .trainerPic = TRAINER_PIC_FRONT_TWINS,
         .encounterMusic_gender =
 #line 253
             TRAINER_ENCOUNTER_MUSIC_TWINS,
@@ -692,7 +692,7 @@ F_TRAINER_FEMALE |
 #line 255
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_TWINS,
+        .trainerBackPic = TRAINER_PIC_FRONT_TWINS,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -798,7 +798,7 @@ F_TRAINER_FEMALE |
 #line 295
         .trainerClass = TRAINER_CLASS_POKEFAN,
 #line 296
-        .trainerPic = TRAINER_PIC_POKEFAN_F,
+        .trainerPic = TRAINER_PIC_FRONT_POKEFAN_F,
         .encounterMusic_gender =
 #line 297
 F_TRAINER_FEMALE | 
@@ -809,7 +809,7 @@ F_TRAINER_FEMALE |
 #line 300
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEFAN_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEFAN_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -869,7 +869,7 @@ F_TRAINER_FEMALE |
 #line 323
         .trainerClass = TRAINER_CLASS_POKEFAN,
 #line 324
-        .trainerPic = TRAINER_PIC_POKEFAN_M,
+        .trainerPic = TRAINER_PIC_FRONT_POKEFAN_M,
         .encounterMusic_gender =
 #line 326
             TRAINER_ENCOUNTER_MUSIC_TWINS,
@@ -878,7 +878,7 @@ F_TRAINER_FEMALE |
 #line 328
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEFAN_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEFAN_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -938,7 +938,7 @@ F_TRAINER_FEMALE |
 #line 352
         .trainerClass = TRAINER_CLASS_GUITARIST,
 #line 353
-        .trainerPic = TRAINER_PIC_GUITARIST,
+        .trainerPic = TRAINER_PIC_FRONT_GUITARIST,
         .encounterMusic_gender =
 #line 355
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -947,7 +947,7 @@ F_TRAINER_FEMALE |
 #line 357
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_GUITARIST,
+        .trainerBackPic = TRAINER_PIC_FRONT_GUITARIST,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -1007,7 +1007,7 @@ F_TRAINER_FEMALE |
 #line 379
         .trainerClass = TRAINER_CLASS_COLLECTOR,
 #line 380
-        .trainerPic = TRAINER_PIC_COLLECTOR,
+        .trainerPic = TRAINER_PIC_FRONT_COLLECTOR,
         .encounterMusic_gender =
 #line 382
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
@@ -1016,7 +1016,7 @@ F_TRAINER_FEMALE |
 #line 384
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COLLECTOR,
+        .trainerBackPic = TRAINER_PIC_FRONT_COLLECTOR,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -1098,7 +1098,7 @@ F_TRAINER_FEMALE |
 #line 414
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 415
-        .trainerPic = TRAINER_PIC_YOUNGSTER,
+        .trainerPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .encounterMusic_gender =
 #line 417
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -1107,7 +1107,7 @@ F_TRAINER_FEMALE |
 #line 419
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
+        .trainerBackPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -1166,7 +1166,7 @@ F_TRAINER_FEMALE |
 #line 440
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 441
-        .trainerPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_M,
         .encounterMusic_gender =
 #line 443
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -1175,7 +1175,7 @@ F_TRAINER_FEMALE |
 #line 445
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -1258,7 +1258,7 @@ F_TRAINER_FEMALE |
 #line 476
         .trainerClass = TRAINER_CLASS_SR_AND_JR,
 #line 477
-        .trainerPic = TRAINER_PIC_SR_AND_JR,
+        .trainerPic = TRAINER_PIC_FRONT_SR_AND_JR,
         .encounterMusic_gender =
 #line 479
             TRAINER_ENCOUNTER_MUSIC_TWINS,
@@ -1267,7 +1267,7 @@ F_TRAINER_FEMALE |
 #line 481
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SR_AND_JR,
+        .trainerBackPic = TRAINER_PIC_FRONT_SR_AND_JR,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -1373,7 +1373,7 @@ F_TRAINER_FEMALE |
 #line 521
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 522
-        .trainerPic = TRAINER_PIC_RUNNING_TRIATHLETE_M,
+        .trainerPic = TRAINER_PIC_FRONT_RUNNING_TRIATHLETE_M,
         .encounterMusic_gender =
 #line 524
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -1382,7 +1382,7 @@ F_TRAINER_FEMALE |
 #line 526
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RUNNING_TRIATHLETE_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_RUNNING_TRIATHLETE_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -1440,7 +1440,7 @@ F_TRAINER_FEMALE |
 #line 546
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 547
-        .trainerPic = TRAINER_PIC_RUNNING_TRIATHLETE_F,
+        .trainerPic = TRAINER_PIC_FRONT_RUNNING_TRIATHLETE_F,
         .encounterMusic_gender =
 #line 548
 F_TRAINER_FEMALE | 
@@ -1451,7 +1451,7 @@ F_TRAINER_FEMALE |
 #line 551
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RUNNING_TRIATHLETE_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_RUNNING_TRIATHLETE_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -1534,7 +1534,7 @@ F_TRAINER_FEMALE |
 #line 582
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 583
-        .trainerPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .encounterMusic_gender =
 #line 584
 F_TRAINER_FEMALE | 
@@ -1545,7 +1545,7 @@ F_TRAINER_FEMALE |
 #line 587
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerBackPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -1605,7 +1605,7 @@ F_TRAINER_FEMALE |
 #line 609
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 610
-        .trainerPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .encounterMusic_gender =
 #line 611
 F_TRAINER_FEMALE | 
@@ -1616,7 +1616,7 @@ F_TRAINER_FEMALE |
 #line 614
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -1699,7 +1699,7 @@ F_TRAINER_FEMALE |
 #line 645
         .trainerClass = TRAINER_CLASS_AROMA_LADY,
 #line 646
-        .trainerPic = TRAINER_PIC_AROMA_LADY,
+        .trainerPic = TRAINER_PIC_FRONT_AROMA_LADY,
         .encounterMusic_gender =
 #line 647
 F_TRAINER_FEMALE | 
@@ -1710,7 +1710,7 @@ F_TRAINER_FEMALE |
 #line 650
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AROMA_LADY,
+        .trainerBackPic = TRAINER_PIC_FRONT_AROMA_LADY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1735,7 +1735,7 @@ F_TRAINER_FEMALE |
 #line 658
         .trainerClass = TRAINER_CLASS_CAMPER,
 #line 659
-        .trainerPic = TRAINER_PIC_CAMPER,
+        .trainerPic = TRAINER_PIC_FRONT_CAMPER,
         .encounterMusic_gender =
 #line 661
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -1744,7 +1744,7 @@ F_TRAINER_FEMALE |
 #line 663
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_CAMPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -1769,7 +1769,7 @@ F_TRAINER_FEMALE |
 #line 671
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 672
-        .trainerPic = TRAINER_PIC_WALLY,
+        .trainerPic = TRAINER_PIC_FRONT_WALLY,
         .encounterMusic_gender =
 #line 674
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -1780,7 +1780,7 @@ F_TRAINER_FEMALE |
 #line 675
         .mugshotColor = MUGSHOT_COLOR_GREEN,
 #line 0
-        .trainerBackPic = TRAINER_PIC_WALLY,
+        .trainerBackPic = TRAINER_PIC_FRONT_WALLY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -1840,7 +1840,7 @@ F_TRAINER_FEMALE |
 #line 699
         .trainerClass = TRAINER_CLASS_EXPERT,
 #line 700
-        .trainerPic = TRAINER_PIC_EXPERT_M,
+        .trainerPic = TRAINER_PIC_FRONT_EXPERT_M,
         .encounterMusic_gender =
 #line 702
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -1849,7 +1849,7 @@ F_TRAINER_FEMALE |
 #line 704
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_EXPERT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_EXPERT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -1909,7 +1909,7 @@ F_TRAINER_FEMALE |
 #line 726
         .trainerClass = TRAINER_CLASS_GUITARIST,
 #line 727
-        .trainerPic = TRAINER_PIC_GUITARIST,
+        .trainerPic = TRAINER_PIC_FRONT_GUITARIST,
         .encounterMusic_gender =
 #line 729
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -1918,7 +1918,7 @@ F_TRAINER_FEMALE |
 #line 731
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_GUITARIST,
+        .trainerBackPic = TRAINER_PIC_FRONT_GUITARIST,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -1975,7 +1975,7 @@ F_TRAINER_FEMALE |
 #line 750
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 751
-        .trainerPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .encounterMusic_gender =
 #line 752
 F_TRAINER_FEMALE | 
@@ -1986,7 +1986,7 @@ F_TRAINER_FEMALE |
 #line 755
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerBackPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -2046,7 +2046,7 @@ F_TRAINER_FEMALE |
 #line 777
         .trainerClass = TRAINER_CLASS_GUITARIST,
 #line 778
-        .trainerPic = TRAINER_PIC_GUITARIST,
+        .trainerPic = TRAINER_PIC_FRONT_GUITARIST,
         .encounterMusic_gender =
 #line 780
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -2055,7 +2055,7 @@ F_TRAINER_FEMALE |
 #line 782
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_GUITARIST,
+        .trainerBackPic = TRAINER_PIC_FRONT_GUITARIST,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -2115,7 +2115,7 @@ F_TRAINER_FEMALE |
 #line 804
         .trainerClass = TRAINER_CLASS_BUG_MANIAC,
 #line 805
-        .trainerPic = TRAINER_PIC_BUG_MANIAC,
+        .trainerPic = TRAINER_PIC_FRONT_BUG_MANIAC,
         .encounterMusic_gender =
 #line 807
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
@@ -2124,7 +2124,7 @@ F_TRAINER_FEMALE |
 #line 809
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BUG_MANIAC,
+        .trainerBackPic = TRAINER_PIC_FRONT_BUG_MANIAC,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -2209,7 +2209,7 @@ F_TRAINER_FEMALE |
 #line 841
         .trainerClass = TRAINER_CLASS_LEADER,
 #line 843
-        .trainerPic = TRAINER_PIC_LEADER_WATTSON,
+        .trainerPic = TRAINER_PIC_FRONT_LEADER_WATTSON,
         .encounterMusic_gender =
 #line 845
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -2220,7 +2220,7 @@ F_TRAINER_FEMALE |
 #line 842
         .mugshotColor = MUGSHOT_COLOR_YELLOW,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_WATTSON,
+        .trainerBackPic = TRAINER_PIC_FRONT_LEADER_WATTSON,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -2368,7 +2368,7 @@ F_TRAINER_FEMALE |
 #line 901
         .trainerClass = TRAINER_CLASS_CAMPER,
 #line 902
-        .trainerPic = TRAINER_PIC_CAMPER,
+        .trainerPic = TRAINER_PIC_FRONT_CAMPER,
         .encounterMusic_gender =
 #line 904
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -2377,7 +2377,7 @@ F_TRAINER_FEMALE |
 #line 906
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -2437,7 +2437,7 @@ F_TRAINER_FEMALE |
 #line 928
         .trainerClass = TRAINER_CLASS_PICNICKER,
 #line 929
-        .trainerPic = TRAINER_PIC_PICNICKER,
+        .trainerPic = TRAINER_PIC_FRONT_PICNICKER,
         .encounterMusic_gender =
 #line 930
 F_TRAINER_FEMALE | 
@@ -2448,7 +2448,7 @@ F_TRAINER_FEMALE |
 #line 933
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
+        .trainerBackPic = TRAINER_PIC_FRONT_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -2508,7 +2508,7 @@ F_TRAINER_FEMALE |
 #line 955
         .trainerClass = TRAINER_CLASS_HIKER,
 #line 956
-        .trainerPic = TRAINER_PIC_HIKER,
+        .trainerPic = TRAINER_PIC_FRONT_HIKER,
         .encounterMusic_gender =
 #line 958
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -2517,7 +2517,7 @@ F_TRAINER_FEMALE |
 #line 960
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
+        .trainerBackPic = TRAINER_PIC_FRONT_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -2577,7 +2577,7 @@ F_TRAINER_FEMALE |
 #line 982
         .trainerClass = TRAINER_CLASS_HIKER,
 #line 983
-        .trainerPic = TRAINER_PIC_HIKER,
+        .trainerPic = TRAINER_PIC_FRONT_HIKER,
         .encounterMusic_gender =
 #line 985
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -2586,7 +2586,7 @@ F_TRAINER_FEMALE |
 #line 987
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
+        .trainerBackPic = TRAINER_PIC_FRONT_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -2646,7 +2646,7 @@ F_TRAINER_FEMALE |
 #line 1009
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
 #line 1010
-        .trainerPic = TRAINER_PIC_BUG_CATCHER,
+        .trainerPic = TRAINER_PIC_FRONT_BUG_CATCHER,
         .encounterMusic_gender =
 #line 1012
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -2655,7 +2655,7 @@ F_TRAINER_FEMALE |
 #line 1014
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BUG_CATCHER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -2712,7 +2712,7 @@ F_TRAINER_FEMALE |
 #line 1033
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 1034
-        .trainerPic = TRAINER_PIC_YOUNGSTER,
+        .trainerPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .encounterMusic_gender =
 #line 1036
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -2721,7 +2721,7 @@ F_TRAINER_FEMALE |
 #line 1038
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
+        .trainerBackPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -2781,7 +2781,7 @@ F_TRAINER_FEMALE |
 #line 1060
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 1061
-        .trainerPic = TRAINER_PIC_YOUNGSTER,
+        .trainerPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .encounterMusic_gender =
 #line 1063
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -2790,7 +2790,7 @@ F_TRAINER_FEMALE |
 #line 1065
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
+        .trainerBackPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -2850,7 +2850,7 @@ F_TRAINER_FEMALE |
 #line 1087
         .trainerClass = TRAINER_CLASS_SCHOOL_KID,
 #line 1088
-        .trainerPic = TRAINER_PIC_SCHOOL_KID_F,
+        .trainerPic = TRAINER_PIC_FRONT_SCHOOL_KID_F,
         .encounterMusic_gender =
 #line 1089
 F_TRAINER_FEMALE | 
@@ -2861,7 +2861,7 @@ F_TRAINER_FEMALE |
 #line 1092
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SCHOOL_KID_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SCHOOL_KID_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -2921,7 +2921,7 @@ F_TRAINER_FEMALE |
 #line 1114
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 1115
-        .trainerPic = TRAINER_PIC_YOUNGSTER,
+        .trainerPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .encounterMusic_gender =
 #line 1117
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -2930,7 +2930,7 @@ F_TRAINER_FEMALE |
 #line 1119
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
+        .trainerBackPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -3019,7 +3019,7 @@ F_TRAINER_FEMALE |
 #line 1153
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 1154
-        .trainerPic = TRAINER_PIC_YOUNGSTER,
+        .trainerPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .encounterMusic_gender =
 #line 1156
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -3028,7 +3028,7 @@ F_TRAINER_FEMALE |
 #line 1158
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
+        .trainerBackPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -3117,7 +3117,7 @@ F_TRAINER_FEMALE |
 #line 1192
         .trainerClass = TRAINER_CLASS_LEADER,
 #line 1194
-        .trainerPic = TRAINER_PIC_LEADER_ROXANNE,
+        .trainerPic = TRAINER_PIC_FRONT_LEADER_ROXANNE,
         .encounterMusic_gender =
 #line 1195
 F_TRAINER_FEMALE | 
@@ -3130,7 +3130,7 @@ F_TRAINER_FEMALE |
 #line 1193
         .mugshotColor = MUGSHOT_COLOR_BROWN,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_ROXANNE,
+        .trainerBackPic = TRAINER_PIC_FRONT_LEADER_ROXANNE,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -3282,7 +3282,7 @@ F_TRAINER_FEMALE |
 #line 1256
         .trainerClass = TRAINER_CLASS_RICH_BOY,
 #line 1257
-        .trainerPic = TRAINER_PIC_RICH_BOY,
+        .trainerPic = TRAINER_PIC_FRONT_RICH_BOY,
         .encounterMusic_gender =
 #line 1259
             TRAINER_ENCOUNTER_MUSIC_RICH,
@@ -3291,7 +3291,7 @@ F_TRAINER_FEMALE |
 #line 1261
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RICH_BOY,
+        .trainerBackPic = TRAINER_PIC_FRONT_RICH_BOY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3351,7 +3351,7 @@ F_TRAINER_FEMALE |
 #line 1283
         .trainerClass = TRAINER_CLASS_LADY,
 #line 1284
-        .trainerPic = TRAINER_PIC_LADY,
+        .trainerPic = TRAINER_PIC_FRONT_LADY,
         .encounterMusic_gender =
 #line 1285
 F_TRAINER_FEMALE | 
@@ -3362,7 +3362,7 @@ F_TRAINER_FEMALE |
 #line 1288
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LADY,
+        .trainerBackPic = TRAINER_PIC_FRONT_LADY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -3445,7 +3445,7 @@ F_TRAINER_FEMALE |
 #line 1319
         .trainerClass = TRAINER_CLASS_SCHOOL_KID,
 #line 1320
-        .trainerPic = TRAINER_PIC_SCHOOL_KID_M,
+        .trainerPic = TRAINER_PIC_FRONT_SCHOOL_KID_M,
         .encounterMusic_gender =
 #line 1322
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -3454,7 +3454,7 @@ F_TRAINER_FEMALE |
 #line 1324
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SCHOOL_KID_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SCHOOL_KID_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -3537,7 +3537,7 @@ F_TRAINER_FEMALE |
 #line 1355
         .trainerClass = TRAINER_CLASS_LASS,
 #line 1356
-        .trainerPic = TRAINER_PIC_LASS,
+        .trainerPic = TRAINER_PIC_FRONT_LASS,
         .encounterMusic_gender =
 #line 1357
 F_TRAINER_FEMALE | 
@@ -3548,7 +3548,7 @@ F_TRAINER_FEMALE |
 #line 1360
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
+        .trainerBackPic = TRAINER_PIC_FRONT_LASS,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -3631,7 +3631,7 @@ F_TRAINER_FEMALE |
 #line 1391
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 1392
-        .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
+        .trainerPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_M,
         .encounterMusic_gender =
 #line 1394
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -3640,7 +3640,7 @@ F_TRAINER_FEMALE |
 #line 1396
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3698,7 +3698,7 @@ F_TRAINER_FEMALE |
 #line 1416
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 1417
-        .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_F,
+        .trainerPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_F,
         .encounterMusic_gender =
 #line 1418
 F_TRAINER_FEMALE | 
@@ -3709,7 +3709,7 @@ F_TRAINER_FEMALE |
 #line 1421
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_CYCLING_TRIATHLETE_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3769,7 +3769,7 @@ F_TRAINER_FEMALE |
 #line 1443
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 1444
-        .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_F,
+        .trainerPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_F,
         .encounterMusic_gender =
 #line 1445
 F_TRAINER_FEMALE | 
@@ -3780,7 +3780,7 @@ F_TRAINER_FEMALE |
 #line 1448
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_CYCLING_TRIATHLETE_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3840,7 +3840,7 @@ F_TRAINER_FEMALE |
 #line 1470
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 1471
-        .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
+        .trainerPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_M,
         .encounterMusic_gender =
 #line 1473
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -3849,7 +3849,7 @@ F_TRAINER_FEMALE |
 #line 1475
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3909,7 +3909,7 @@ F_TRAINER_FEMALE |
 #line 1497
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 1498
-        .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_F,
+        .trainerPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_F,
         .encounterMusic_gender =
 #line 1499
 F_TRAINER_FEMALE | 
@@ -3920,7 +3920,7 @@ F_TRAINER_FEMALE |
 #line 1502
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_CYCLING_TRIATHLETE_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -3980,7 +3980,7 @@ F_TRAINER_FEMALE |
 #line 1524
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 1525
-        .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
+        .trainerPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_M,
         .encounterMusic_gender =
 #line 1527
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -3989,7 +3989,7 @@ F_TRAINER_FEMALE |
 #line 1529
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -4072,7 +4072,7 @@ F_TRAINER_FEMALE |
 #line 1560
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 1561
-        .trainerPic = TRAINER_PIC_BRENDAN,
+        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
         .encounterMusic_gender =
 #line 1563
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -4083,7 +4083,7 @@ F_TRAINER_FEMALE |
 #line 1566
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BRENDAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -4235,7 +4235,7 @@ F_TRAINER_FEMALE |
 #line 1625
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 1626
-        .trainerPic = TRAINER_PIC_BRENDAN,
+        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
         .encounterMusic_gender =
 #line 1628
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -4246,7 +4246,7 @@ F_TRAINER_FEMALE |
 #line 1631
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BRENDAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -4398,7 +4398,7 @@ F_TRAINER_FEMALE |
 #line 1689
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 1690
-        .trainerPic = TRAINER_PIC_BRENDAN,
+        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
         .encounterMusic_gender =
 #line 1692
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -4409,7 +4409,7 @@ F_TRAINER_FEMALE |
 #line 1695
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BRENDAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -4561,7 +4561,7 @@ F_TRAINER_FEMALE |
 #line 1754
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 1755
-        .trainerPic = TRAINER_PIC_MAY,
+        .trainerPic = TRAINER_PIC_FRONT_MAY,
         .encounterMusic_gender =
 #line 1756
 F_TRAINER_FEMALE | 
@@ -4574,7 +4574,7 @@ F_TRAINER_FEMALE |
 #line 1760
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAY,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAY,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -4726,7 +4726,7 @@ F_TRAINER_FEMALE |
 #line 1819
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 1820
-        .trainerPic = TRAINER_PIC_MAY,
+        .trainerPic = TRAINER_PIC_FRONT_MAY,
         .encounterMusic_gender =
 #line 1821
 F_TRAINER_FEMALE | 
@@ -4739,7 +4739,7 @@ F_TRAINER_FEMALE |
 #line 1825
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAY,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAY,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -4891,7 +4891,7 @@ F_TRAINER_FEMALE |
 #line 1883
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 1884
-        .trainerPic = TRAINER_PIC_MAY,
+        .trainerPic = TRAINER_PIC_FRONT_MAY,
         .encounterMusic_gender =
 #line 1885
 F_TRAINER_FEMALE | 
@@ -4904,7 +4904,7 @@ F_TRAINER_FEMALE |
 #line 1889
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAY,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAY,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -5056,7 +5056,7 @@ F_TRAINER_FEMALE |
 #line 1948
         .trainerClass = TRAINER_CLASS_GUITARIST,
 #line 1949
-        .trainerPic = TRAINER_PIC_GUITARIST,
+        .trainerPic = TRAINER_PIC_FRONT_GUITARIST,
         .encounterMusic_gender =
 #line 1951
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -5065,7 +5065,7 @@ F_TRAINER_FEMALE |
 #line 1953
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_GUITARIST,
+        .trainerBackPic = TRAINER_PIC_FRONT_GUITARIST,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -5148,7 +5148,7 @@ F_TRAINER_FEMALE |
 #line 1984
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
 #line 1985
-        .trainerPic = TRAINER_PIC_BLACK_BELT,
+        .trainerPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .encounterMusic_gender =
 #line 1987
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -5157,7 +5157,7 @@ F_TRAINER_FEMALE |
 #line 1989
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
+        .trainerBackPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -5217,7 +5217,7 @@ F_TRAINER_FEMALE |
 #line 2011
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 2012
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 2014
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -5226,7 +5226,7 @@ F_TRAINER_FEMALE |
 #line 2016
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -5332,7 +5332,7 @@ F_TRAINER_FEMALE |
 #line 2056
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 2057
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 2058
 F_TRAINER_FEMALE | 
@@ -5343,7 +5343,7 @@ F_TRAINER_FEMALE |
 #line 2061
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -5448,7 +5448,7 @@ F_TRAINER_FEMALE |
 #line 2100
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 2101
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 2103
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -5457,7 +5457,7 @@ F_TRAINER_FEMALE |
 #line 2105
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -5585,7 +5585,7 @@ F_TRAINER_FEMALE |
 #line 2153
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 2154
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 2155
 F_TRAINER_FEMALE | 
@@ -5596,7 +5596,7 @@ F_TRAINER_FEMALE |
 #line 2158
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -5725,7 +5725,7 @@ F_TRAINER_FEMALE |
 #line 2207
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 2208
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 2209
 F_TRAINER_FEMALE | 
@@ -5736,7 +5736,7 @@ F_TRAINER_FEMALE |
 #line 2212
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -5865,7 +5865,7 @@ F_TRAINER_FEMALE |
 #line 2261
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 2262
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 2264
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -5874,7 +5874,7 @@ F_TRAINER_FEMALE |
 #line 2266
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -6003,7 +6003,7 @@ F_TRAINER_FEMALE |
 #line 2315
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 2316
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 2318
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -6012,7 +6012,7 @@ F_TRAINER_FEMALE |
 #line 2320
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -6135,7 +6135,7 @@ F_TRAINER_FEMALE |
 #line 2363
         .trainerClass = TRAINER_CLASS_LEADER,
 #line 2365
-        .trainerPic = TRAINER_PIC_LEADER_NORMAN,
+        .trainerPic = TRAINER_PIC_FRONT_LEADER_NORMAN,
         .encounterMusic_gender =
 #line 2367
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -6146,7 +6146,7 @@ F_TRAINER_FEMALE |
 #line 2364
         .mugshotColor = MUGSHOT_COLOR_GREY,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_NORMAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_LEADER_NORMAN,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -6298,7 +6298,7 @@ F_TRAINER_FEMALE |
 #line 2427
         .trainerClass = TRAINER_CLASS_LASS,
 #line 2428
-        .trainerPic = TRAINER_PIC_LASS,
+        .trainerPic = TRAINER_PIC_FRONT_LASS,
         .encounterMusic_gender =
 #line 2429
 F_TRAINER_FEMALE | 
@@ -6309,7 +6309,7 @@ F_TRAINER_FEMALE |
 #line 2432
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
+        .trainerBackPic = TRAINER_PIC_FRONT_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6345,7 +6345,7 @@ F_TRAINER_FEMALE |
 #line 2444
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 2445
-        .trainerPic = TRAINER_PIC_YOUNGSTER,
+        .trainerPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .encounterMusic_gender =
 #line 2447
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -6354,7 +6354,7 @@ F_TRAINER_FEMALE |
 #line 2449
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
+        .trainerBackPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6390,12 +6390,12 @@ F_TRAINER_FEMALE |
 #line 2461
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
 #line 2462
-        .trainerPic = TRAINER_PIC_BUG_CATCHER,
+        .trainerPic = TRAINER_PIC_FRONT_BUG_CATCHER,
         .encounterMusic_gender =
 #line 2464
             TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BUG_CATCHER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6455,7 +6455,7 @@ F_TRAINER_FEMALE |
 #line 2486
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
 #line 2487
-        .trainerPic = TRAINER_PIC_BUG_CATCHER,
+        .trainerPic = TRAINER_PIC_FRONT_BUG_CATCHER,
         .encounterMusic_gender =
 #line 2489
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -6464,7 +6464,7 @@ F_TRAINER_FEMALE |
 #line 2491
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BUG_CATCHER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6524,7 +6524,7 @@ F_TRAINER_FEMALE |
 #line 2513
         .trainerClass = TRAINER_CLASS_TWINS,
 #line 2514
-        .trainerPic = TRAINER_PIC_TWINS,
+        .trainerPic = TRAINER_PIC_FRONT_TWINS,
         .encounterMusic_gender =
 #line 2516
             TRAINER_ENCOUNTER_MUSIC_TWINS,
@@ -6533,7 +6533,7 @@ F_TRAINER_FEMALE |
 #line 2518
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_TWINS,
+        .trainerBackPic = TRAINER_PIC_FRONT_TWINS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6569,7 +6569,7 @@ F_TRAINER_FEMALE |
 #line 2530
         .trainerClass = TRAINER_CLASS_LADY,
 #line 2531
-        .trainerPic = TRAINER_PIC_LADY,
+        .trainerPic = TRAINER_PIC_FRONT_LADY,
         .encounterMusic_gender =
 #line 2532
 F_TRAINER_FEMALE | 
@@ -6580,7 +6580,7 @@ F_TRAINER_FEMALE |
 #line 2535
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LADY,
+        .trainerBackPic = TRAINER_PIC_FRONT_LADY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -6640,7 +6640,7 @@ F_TRAINER_FEMALE |
 #line 2559
         .trainerClass = TRAINER_CLASS_RICH_BOY,
 #line 2560
-        .trainerPic = TRAINER_PIC_RICH_BOY,
+        .trainerPic = TRAINER_PIC_FRONT_RICH_BOY,
         .encounterMusic_gender =
 #line 2562
             TRAINER_ENCOUNTER_MUSIC_RICH,
@@ -6649,7 +6649,7 @@ F_TRAINER_FEMALE |
 #line 2564
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RICH_BOY,
+        .trainerBackPic = TRAINER_PIC_FRONT_RICH_BOY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -6732,7 +6732,7 @@ F_TRAINER_FEMALE |
 #line 2598
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
 #line 2599
-        .trainerPic = TRAINER_PIC_AQUA_ADMIN_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_ADMIN_M,
         .encounterMusic_gender =
 #line 2602
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -6743,7 +6743,7 @@ F_TRAINER_FEMALE |
 #line 2601
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_ADMIN_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_ADMIN_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -6826,7 +6826,7 @@ F_TRAINER_FEMALE |
 #line 2635
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
 #line 2636
-        .trainerPic = TRAINER_PIC_AQUA_ADMIN_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_ADMIN_F,
         .encounterMusic_gender =
 #line 2638
 F_TRAINER_FEMALE | 
@@ -6839,7 +6839,7 @@ F_TRAINER_FEMALE |
 #line 2637
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_ADMIN_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_ADMIN_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -6922,7 +6922,7 @@ F_TRAINER_FEMALE |
 #line 2672
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_2,
 #line 2673
-        .trainerPic = TRAINER_PIC_GREEN,
+        .trainerPic = TRAINER_PIC_FRONT_GREEN,
         .encounterMusic_gender =
 #line 2674
 F_TRAINER_FEMALE | 
@@ -6935,7 +6935,7 @@ F_TRAINER_FEMALE |
 #line 2675
         .mugshotColor = MUGSHOT_COLOR_PINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_GREEN,
+        .trainerBackPic = TRAINER_PIC_FRONT_GREEN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -6967,7 +6967,7 @@ F_TRAINER_FEMALE |
 #line 2690
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 2691
-        .trainerPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .encounterMusic_gender =
 #line 2692
 F_TRAINER_FEMALE | 
@@ -6978,7 +6978,7 @@ F_TRAINER_FEMALE |
 #line 2695
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerBackPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -7061,7 +7061,7 @@ F_TRAINER_FEMALE |
 #line 2726
         .trainerClass = TRAINER_CLASS_SAILOR,
 #line 2727
-        .trainerPic = TRAINER_PIC_SAILOR,
+        .trainerPic = TRAINER_PIC_FRONT_SAILOR,
         .encounterMusic_gender =
 #line 2729
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -7070,7 +7070,7 @@ F_TRAINER_FEMALE |
 #line 2731
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SAILOR,
+        .trainerBackPic = TRAINER_PIC_FRONT_SAILOR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -7130,7 +7130,7 @@ F_TRAINER_FEMALE |
 #line 2753
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
 #line 2754
-        .trainerPic = TRAINER_PIC_BLACK_BELT,
+        .trainerPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .encounterMusic_gender =
 #line 2756
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -7139,7 +7139,7 @@ F_TRAINER_FEMALE |
 #line 2758
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
+        .trainerBackPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -7197,7 +7197,7 @@ F_TRAINER_FEMALE |
 #line 2780
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
 #line 2781
-        .trainerPic = TRAINER_PIC_BLACK_BELT,
+        .trainerPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .encounterMusic_gender =
 #line 2783
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -7206,7 +7206,7 @@ F_TRAINER_FEMALE |
 #line 2785
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
+        .trainerBackPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -7289,7 +7289,7 @@ F_TRAINER_FEMALE |
 #line 2816
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 2817
-        .trainerPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .encounterMusic_gender =
 #line 2818
 F_TRAINER_FEMALE | 
@@ -7300,7 +7300,7 @@ F_TRAINER_FEMALE |
 #line 2821
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerBackPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -7383,7 +7383,7 @@ F_TRAINER_FEMALE |
 #line 2852
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 2853
-        .trainerPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .encounterMusic_gender =
 #line 2854
 F_TRAINER_FEMALE | 
@@ -7394,7 +7394,7 @@ F_TRAINER_FEMALE |
 #line 2857
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerBackPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -7477,7 +7477,7 @@ F_TRAINER_FEMALE |
 #line 2888
         .trainerClass = TRAINER_CLASS_LEADER,
 #line 2890
-        .trainerPic = TRAINER_PIC_LEADER_BRAWLY,
+        .trainerPic = TRAINER_PIC_FRONT_LEADER_BRAWLY,
         .encounterMusic_gender =
 #line 2892
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -7488,7 +7488,7 @@ F_TRAINER_FEMALE |
 #line 2889
         .mugshotColor = MUGSHOT_COLOR_ORANGE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_BRAWLY,
+        .trainerBackPic = TRAINER_PIC_FRONT_LEADER_BRAWLY,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -7640,7 +7640,7 @@ F_TRAINER_FEMALE |
 #line 2952
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 2953
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .encounterMusic_gender =
 #line 2954
 F_TRAINER_FEMALE | 
@@ -7651,7 +7651,7 @@ F_TRAINER_FEMALE |
 #line 2957
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -7676,7 +7676,7 @@ F_TRAINER_FEMALE |
 #line 2965
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 2966
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 2968
             TRAINER_ENCOUNTER_MUSIC_GIRL,
@@ -7685,7 +7685,7 @@ F_TRAINER_FEMALE |
 #line 2970
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -7717,7 +7717,7 @@ F_TRAINER_FEMALE |
 #line 2982
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 2983
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .encounterMusic_gender =
 #line 2984
 F_TRAINER_FEMALE | 
@@ -7728,7 +7728,7 @@ F_TRAINER_FEMALE |
 #line 2987
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -7764,7 +7764,7 @@ F_TRAINER_FEMALE |
 #line 2999
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 3000
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 3002
             TRAINER_ENCOUNTER_MUSIC_GIRL,
@@ -7773,7 +7773,7 @@ F_TRAINER_FEMALE |
 #line 3004
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -7809,7 +7809,7 @@ F_TRAINER_FEMALE |
 #line 3016
         .trainerClass = TRAINER_CLASS_AQUA_LEADER,
 #line 3017
-        .trainerPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_LEADER_ARCHIE,
         .encounterMusic_gender =
 #line 3020
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -7820,7 +7820,7 @@ F_TRAINER_FEMALE |
 #line 3018
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_LEADER_ARCHIE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -7867,7 +7867,7 @@ F_TRAINER_FEMALE |
 #line 3038
         .trainerClass = TRAINER_CLASS_WINSTRATE,
 #line 3039
-        .trainerPic = TRAINER_PIC_POKEFAN_M,
+        .trainerPic = TRAINER_PIC_FRONT_POKEFAN_M,
         .encounterMusic_gender =
 #line 3041
             TRAINER_ENCOUNTER_MUSIC_TWINS,
@@ -7878,7 +7878,7 @@ F_TRAINER_FEMALE |
 #line 3042
         .mugshotColor = MUGSHOT_COLOR_BLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEFAN_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEFAN_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -7918,7 +7918,7 @@ F_TRAINER_FEMALE |
 #line 3056
         .trainerClass = TRAINER_CLASS_WINSTRATE,
 #line 3057
-        .trainerPic = TRAINER_PIC_POKEFAN_F,
+        .trainerPic = TRAINER_PIC_FRONT_POKEFAN_F,
         .encounterMusic_gender =
 #line 3058
 F_TRAINER_FEMALE | 
@@ -7929,7 +7929,7 @@ F_TRAINER_FEMALE |
 #line 3061
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEFAN_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEFAN_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -7956,7 +7956,7 @@ F_TRAINER_FEMALE |
 #line 3069
         .trainerClass = TRAINER_CLASS_WINSTRATE,
 #line 3070
-        .trainerPic = TRAINER_PIC_LASS,
+        .trainerPic = TRAINER_PIC_FRONT_LASS,
         .encounterMusic_gender =
 #line 3071
 F_TRAINER_FEMALE | 
@@ -7969,7 +7969,7 @@ F_TRAINER_FEMALE |
 #line 3073
         .mugshotColor = MUGSHOT_COLOR_PINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
+        .trainerBackPic = TRAINER_PIC_FRONT_LASS,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -8016,7 +8016,7 @@ F_TRAINER_FEMALE |
 #line 3091
         .trainerClass = TRAINER_CLASS_WINSTRATE,
 #line 3092
-        .trainerPic = TRAINER_PIC_EXPERT_F,
+        .trainerPic = TRAINER_PIC_FRONT_EXPERT_F,
         .encounterMusic_gender =
 #line 3093
 F_TRAINER_FEMALE | 
@@ -8027,7 +8027,7 @@ F_TRAINER_FEMALE |
 #line 3096
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_EXPERT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_EXPERT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -8059,7 +8059,7 @@ F_TRAINER_FEMALE |
 #line 3108
         .trainerClass = TRAINER_CLASS_WINSTRATE,
 #line 3109
-        .trainerPic = TRAINER_PIC_VITO,
+        .trainerPic = TRAINER_PIC_FRONT_VITO,
         .encounterMusic_gender =
 #line 3111
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -8070,7 +8070,7 @@ F_TRAINER_FEMALE |
 #line 3112
         .mugshotColor = MUGSHOT_COLOR_ORANGE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_VITO,
+        .trainerBackPic = TRAINER_PIC_FRONT_VITO,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8120,7 +8120,7 @@ F_TRAINER_FEMALE |
 #line 3134
         .trainerClass = TRAINER_CLASS_PICNICKER,
 #line 3135
-        .trainerPic = TRAINER_PIC_PICNICKER,
+        .trainerPic = TRAINER_PIC_FRONT_PICNICKER,
         .encounterMusic_gender =
 #line 3136
 F_TRAINER_FEMALE | 
@@ -8131,7 +8131,7 @@ F_TRAINER_FEMALE |
 #line 3139
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
+        .trainerBackPic = TRAINER_PIC_FRONT_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8167,7 +8167,7 @@ F_TRAINER_FEMALE |
 #line 3151
         .trainerClass = TRAINER_CLASS_CAMPER,
 #line 3152
-        .trainerPic = TRAINER_PIC_CAMPER,
+        .trainerPic = TRAINER_PIC_FRONT_CAMPER,
         .encounterMusic_gender =
 #line 3154
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -8176,7 +8176,7 @@ F_TRAINER_FEMALE |
 #line 3156
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8212,7 +8212,7 @@ F_TRAINER_FEMALE |
 #line 3168
         .trainerClass = TRAINER_CLASS_RUIN_MANIAC,
 #line 3169
-        .trainerPic = TRAINER_PIC_RUIN_MANIAC,
+        .trainerPic = TRAINER_PIC_FRONT_RUIN_MANIAC,
         .encounterMusic_gender =
 #line 3171
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -8221,7 +8221,7 @@ F_TRAINER_FEMALE |
 #line 3173
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RUIN_MANIAC,
+        .trainerBackPic = TRAINER_PIC_FRONT_RUIN_MANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8257,7 +8257,7 @@ F_TRAINER_FEMALE |
 #line 3185
         .trainerClass = TRAINER_CLASS_RUIN_MANIAC,
 #line 3186
-        .trainerPic = TRAINER_PIC_RUIN_MANIAC,
+        .trainerPic = TRAINER_PIC_FRONT_RUIN_MANIAC,
         .encounterMusic_gender =
 #line 3188
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -8266,7 +8266,7 @@ F_TRAINER_FEMALE |
 #line 3190
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RUIN_MANIAC,
+        .trainerBackPic = TRAINER_PIC_FRONT_RUIN_MANIAC,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -8298,7 +8298,7 @@ F_TRAINER_FEMALE |
 #line 3202
         .trainerClass = TRAINER_CLASS_CAMPER,
 #line 3203
-        .trainerPic = TRAINER_PIC_CAMPER,
+        .trainerPic = TRAINER_PIC_FRONT_CAMPER,
         .encounterMusic_gender =
 #line 3205
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -8307,7 +8307,7 @@ F_TRAINER_FEMALE |
 #line 3207
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_CAMPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -8339,7 +8339,7 @@ F_TRAINER_FEMALE |
 #line 3219
         .trainerClass = TRAINER_CLASS_PICNICKER,
 #line 3220
-        .trainerPic = TRAINER_PIC_PICNICKER,
+        .trainerPic = TRAINER_PIC_FRONT_PICNICKER,
         .encounterMusic_gender =
 #line 3221
 F_TRAINER_FEMALE | 
@@ -8350,7 +8350,7 @@ F_TRAINER_FEMALE |
 #line 3224
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
+        .trainerBackPic = TRAINER_PIC_FRONT_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8400,7 +8400,7 @@ F_TRAINER_FEMALE |
 #line 3244
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 3245
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 3247
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -8409,7 +8409,7 @@ F_TRAINER_FEMALE |
 #line 3249
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -8456,7 +8456,7 @@ F_TRAINER_FEMALE |
 #line 3265
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 3266
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 3267
 F_TRAINER_FEMALE | 
@@ -8467,7 +8467,7 @@ F_TRAINER_FEMALE |
 #line 3270
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -8514,7 +8514,7 @@ F_TRAINER_FEMALE |
 #line 3286
         .trainerClass = TRAINER_CLASS_NINJA_BOY,
 #line 3287
-        .trainerPic = TRAINER_PIC_NINJA_BOY,
+        .trainerPic = TRAINER_PIC_FRONT_NINJA_BOY,
         .encounterMusic_gender =
 #line 3289
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
@@ -8523,7 +8523,7 @@ F_TRAINER_FEMALE |
 #line 3291
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_NINJA_BOY,
+        .trainerBackPic = TRAINER_PIC_FRONT_NINJA_BOY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -8591,7 +8591,7 @@ F_TRAINER_FEMALE |
 #line 3319
         .trainerClass = TRAINER_CLASS_NINJA_BOY,
 #line 3320
-        .trainerPic = TRAINER_PIC_NINJA_BOY,
+        .trainerPic = TRAINER_PIC_FRONT_NINJA_BOY,
         .encounterMusic_gender =
 #line 3322
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
@@ -8600,7 +8600,7 @@ F_TRAINER_FEMALE |
 #line 3324
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_NINJA_BOY,
+        .trainerBackPic = TRAINER_PIC_FRONT_NINJA_BOY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8636,7 +8636,7 @@ F_TRAINER_FEMALE |
 #line 3336
         .trainerClass = TRAINER_CLASS_TWINS,
 #line 3337
-        .trainerPic = TRAINER_PIC_TWINS,
+        .trainerPic = TRAINER_PIC_FRONT_TWINS,
         .encounterMusic_gender =
 #line 3339
             TRAINER_ENCOUNTER_MUSIC_TWINS,
@@ -8645,7 +8645,7 @@ F_TRAINER_FEMALE |
 #line 3341
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_TWINS,
+        .trainerBackPic = TRAINER_PIC_FRONT_TWINS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8681,7 +8681,7 @@ F_TRAINER_FEMALE |
 #line 3353
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 3354
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 3356
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -8690,7 +8690,7 @@ F_TRAINER_FEMALE |
 #line 3358
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8726,7 +8726,7 @@ F_TRAINER_FEMALE |
 #line 3370
         .trainerClass = TRAINER_CLASS_PICNICKER,
 #line 3371
-        .trainerPic = TRAINER_PIC_PICNICKER,
+        .trainerPic = TRAINER_PIC_FRONT_PICNICKER,
         .encounterMusic_gender =
 #line 3372
 F_TRAINER_FEMALE | 
@@ -8737,7 +8737,7 @@ F_TRAINER_FEMALE |
 #line 3375
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
+        .trainerBackPic = TRAINER_PIC_FRONT_PICNICKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8773,7 +8773,7 @@ F_TRAINER_FEMALE |
 #line 3387
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 3388
-        .trainerPic = TRAINER_PIC_BRENDAN,
+        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
         .encounterMusic_gender =
 #line 3390
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -8784,7 +8784,7 @@ F_TRAINER_FEMALE |
 #line 3393
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BRENDAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8830,7 +8830,7 @@ F_TRAINER_FEMALE |
 #line 3409
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 3410
-        .trainerPic = TRAINER_PIC_BRENDAN,
+        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
         .encounterMusic_gender =
 #line 3412
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -8841,7 +8841,7 @@ F_TRAINER_FEMALE |
 #line 3415
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BRENDAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -8877,7 +8877,7 @@ F_TRAINER_FEMALE |
 #line 3427
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 3428
-        .trainerPic = TRAINER_PIC_BRENDAN,
+        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
         .encounterMusic_gender =
 #line 3430
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -8888,7 +8888,7 @@ F_TRAINER_FEMALE |
 #line 3433
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BRENDAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -8935,7 +8935,7 @@ F_TRAINER_FEMALE |
 #line 3449
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 3450
-        .trainerPic = TRAINER_PIC_MAY,
+        .trainerPic = TRAINER_PIC_FRONT_MAY,
         .encounterMusic_gender =
 #line 3451
 F_TRAINER_FEMALE | 
@@ -8948,7 +8948,7 @@ F_TRAINER_FEMALE |
 #line 3455
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAY,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -8985,7 +8985,7 @@ F_TRAINER_FEMALE |
 #line 3468
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 3469
-        .trainerPic = TRAINER_PIC_MAY,
+        .trainerPic = TRAINER_PIC_FRONT_MAY,
         .encounterMusic_gender =
 #line 3470
 F_TRAINER_FEMALE | 
@@ -8998,7 +8998,7 @@ F_TRAINER_FEMALE |
 #line 3474
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAY,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9034,7 +9034,7 @@ F_TRAINER_FEMALE |
 #line 3486
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 3487
-        .trainerPic = TRAINER_PIC_MAY,
+        .trainerPic = TRAINER_PIC_FRONT_MAY,
         .encounterMusic_gender =
 #line 3488
 F_TRAINER_FEMALE | 
@@ -9047,7 +9047,7 @@ F_TRAINER_FEMALE |
 #line 3492
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAY,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -9105,7 +9105,7 @@ F_TRAINER_FEMALE |
 #line 3512
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 3513
-        .trainerPic = TRAINER_PIC_WALLY,
+        .trainerPic = TRAINER_PIC_FRONT_WALLY,
         .encounterMusic_gender =
 #line 3515
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -9114,7 +9114,7 @@ F_TRAINER_FEMALE |
 #line 3517
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_WALLY,
+        .trainerBackPic = TRAINER_PIC_FRONT_WALLY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -9197,7 +9197,7 @@ F_TRAINER_FEMALE |
 #line 3548
         .trainerClass = TRAINER_CLASS_SR_AND_JR,
 #line 3549
-        .trainerPic = TRAINER_PIC_SR_AND_JR,
+        .trainerPic = TRAINER_PIC_FRONT_SR_AND_JR,
         .encounterMusic_gender =
 #line 3551
             TRAINER_ENCOUNTER_MUSIC_TWINS,
@@ -9206,7 +9206,7 @@ F_TRAINER_FEMALE |
 #line 3553
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SR_AND_JR,
+        .trainerBackPic = TRAINER_PIC_FRONT_SR_AND_JR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9256,7 +9256,7 @@ F_TRAINER_FEMALE |
 #line 3573
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 3574
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 3576
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -9265,7 +9265,7 @@ F_TRAINER_FEMALE |
 #line 3578
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9301,7 +9301,7 @@ F_TRAINER_FEMALE |
 #line 3590
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 3591
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 3593
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -9310,7 +9310,7 @@ F_TRAINER_FEMALE |
 #line 3595
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9346,7 +9346,7 @@ F_TRAINER_FEMALE |
 #line 3607
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 3608
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .encounterMusic_gender =
 #line 3609
 F_TRAINER_FEMALE | 
@@ -9357,7 +9357,7 @@ F_TRAINER_FEMALE |
 #line 3612
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9393,7 +9393,7 @@ F_TRAINER_FEMALE |
 #line 3624
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 3625
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .encounterMusic_gender =
 #line 3626
 F_TRAINER_FEMALE | 
@@ -9404,7 +9404,7 @@ F_TRAINER_FEMALE |
 #line 3629
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9440,7 +9440,7 @@ F_TRAINER_FEMALE |
 #line 3641
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 3642
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 3644
             TRAINER_ENCOUNTER_MUSIC_GIRL,
@@ -9449,7 +9449,7 @@ F_TRAINER_FEMALE |
 #line 3646
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9485,7 +9485,7 @@ F_TRAINER_FEMALE |
 #line 3658
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 3659
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .encounterMusic_gender =
 #line 3660
 F_TRAINER_FEMALE | 
@@ -9496,7 +9496,7 @@ F_TRAINER_FEMALE |
 #line 3663
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9532,7 +9532,7 @@ F_TRAINER_FEMALE |
 #line 3675
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 3676
-        .trainerPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .encounterMusic_gender =
 #line 3677
 F_TRAINER_FEMALE | 
@@ -9543,7 +9543,7 @@ F_TRAINER_FEMALE |
 #line 3680
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9579,7 +9579,7 @@ F_TRAINER_FEMALE |
 #line 3692
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
 #line 3693
-        .trainerPic = TRAINER_PIC_BLACK_BELT,
+        .trainerPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .encounterMusic_gender =
 #line 3695
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -9588,7 +9588,7 @@ F_TRAINER_FEMALE |
 #line 3697
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
+        .trainerBackPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -9613,7 +9613,7 @@ F_TRAINER_FEMALE |
 #line 3705
         .trainerClass = TRAINER_CLASS_COLLECTOR,
 #line 3706
-        .trainerPic = TRAINER_PIC_COLLECTOR,
+        .trainerPic = TRAINER_PIC_FRONT_COLLECTOR,
         .encounterMusic_gender =
 #line 3708
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
@@ -9622,7 +9622,7 @@ F_TRAINER_FEMALE |
 #line 3710
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COLLECTOR,
+        .trainerBackPic = TRAINER_PIC_FRONT_COLLECTOR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9658,7 +9658,7 @@ F_TRAINER_FEMALE |
 #line 3722
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 3723
-        .trainerPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .encounterMusic_gender =
 #line 3724
 F_TRAINER_FEMALE | 
@@ -9669,7 +9669,7 @@ F_TRAINER_FEMALE |
 #line 3727
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9705,7 +9705,7 @@ F_TRAINER_FEMALE |
 #line 3739
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 3740
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .encounterMusic_gender =
 #line 3741
 F_TRAINER_FEMALE | 
@@ -9716,7 +9716,7 @@ F_TRAINER_FEMALE |
 #line 3744
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -9741,7 +9741,7 @@ F_TRAINER_FEMALE |
 #line 3752
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 3753
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 3755
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -9750,7 +9750,7 @@ F_TRAINER_FEMALE |
 #line 3757
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -9775,7 +9775,7 @@ F_TRAINER_FEMALE |
 #line 3765
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
 #line 3766
-        .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_ADMIN,
         .encounterMusic_gender =
 #line 3769
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -9786,7 +9786,7 @@ F_TRAINER_FEMALE |
 #line 3768
         .mugshotColor = MUGSHOT_COLOR_MISTY,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_ADMIN,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_ADMIN,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -9844,7 +9844,7 @@ F_TRAINER_FEMALE |
 #line 3791
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
 #line 3792
-        .trainerPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_LEADER_MAXIE,
         .encounterMusic_gender =
 #line 3795
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -9855,7 +9855,7 @@ F_TRAINER_FEMALE |
 #line 3793
         .mugshotColor = MUGSHOT_COLOR_MISTY,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_LEADER_MAXIE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -9902,7 +9902,7 @@ F_TRAINER_FEMALE |
 #line 3813
         .trainerClass = TRAINER_CLASS_HIKER,
 #line 3814
-        .trainerPic = TRAINER_PIC_HIKER,
+        .trainerPic = TRAINER_PIC_FRONT_HIKER,
         .encounterMusic_gender =
 #line 3816
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -9911,7 +9911,7 @@ F_TRAINER_FEMALE |
 #line 3818
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
+        .trainerBackPic = TRAINER_PIC_FRONT_HIKER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -9947,7 +9947,7 @@ F_TRAINER_FEMALE |
 #line 3830
         .trainerClass = TRAINER_CLASS_PICNICKER,
 #line 3831
-        .trainerPic = TRAINER_PIC_PICNICKER,
+        .trainerPic = TRAINER_PIC_FRONT_PICNICKER,
         .encounterMusic_gender =
 #line 3832
 F_TRAINER_FEMALE | 
@@ -9958,7 +9958,7 @@ F_TRAINER_FEMALE |
 #line 3835
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
+        .trainerBackPic = TRAINER_PIC_FRONT_PICNICKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -10005,7 +10005,7 @@ F_TRAINER_FEMALE |
 #line 3851
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 3852
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 3854
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -10014,7 +10014,7 @@ F_TRAINER_FEMALE |
 #line 3856
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10050,7 +10050,7 @@ F_TRAINER_FEMALE |
 #line 3868
         .trainerClass = TRAINER_CLASS_PICNICKER,
 #line 3869
-        .trainerPic = TRAINER_PIC_PICNICKER,
+        .trainerPic = TRAINER_PIC_FRONT_PICNICKER,
         .encounterMusic_gender =
 #line 3870
 F_TRAINER_FEMALE | 
@@ -10061,7 +10061,7 @@ F_TRAINER_FEMALE |
 #line 3873
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
+        .trainerBackPic = TRAINER_PIC_FRONT_PICNICKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10086,7 +10086,7 @@ F_TRAINER_FEMALE |
 #line 3881
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 3882
-        .trainerPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
+        .trainerPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_M,
         .encounterMusic_gender =
 #line 3884
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -10095,7 +10095,7 @@ F_TRAINER_FEMALE |
 #line 3886
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_CYCLING_TRIATHLETE_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_CYCLING_TRIATHLETE_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10120,7 +10120,7 @@ F_TRAINER_FEMALE |
 #line 3894
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 3895
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 3897
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -10129,7 +10129,7 @@ F_TRAINER_FEMALE |
 #line 3899
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10161,7 +10161,7 @@ F_TRAINER_FEMALE |
 #line 3911
         .trainerClass = TRAINER_CLASS_KINDLER,
 #line 3912
-        .trainerPic = TRAINER_PIC_KINDLER,
+        .trainerPic = TRAINER_PIC_FRONT_KINDLER,
         .encounterMusic_gender =
 #line 3914
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -10170,7 +10170,7 @@ F_TRAINER_FEMALE |
 #line 3916
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_KINDLER,
+        .trainerBackPic = TRAINER_PIC_FRONT_KINDLER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10195,7 +10195,7 @@ F_TRAINER_FEMALE |
 #line 3924
         .trainerClass = TRAINER_CLASS_KINDLER,
 #line 3925
-        .trainerPic = TRAINER_PIC_KINDLER,
+        .trainerPic = TRAINER_PIC_FRONT_KINDLER,
         .encounterMusic_gender =
 #line 3927
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -10204,7 +10204,7 @@ F_TRAINER_FEMALE |
 #line 3929
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_KINDLER,
+        .trainerBackPic = TRAINER_PIC_FRONT_KINDLER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10240,7 +10240,7 @@ F_TRAINER_FEMALE |
 #line 3941
         .trainerClass = TRAINER_CLASS_KINDLER,
 #line 3942
-        .trainerPic = TRAINER_PIC_KINDLER,
+        .trainerPic = TRAINER_PIC_FRONT_KINDLER,
         .encounterMusic_gender =
 #line 3944
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -10249,7 +10249,7 @@ F_TRAINER_FEMALE |
 #line 3946
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_KINDLER,
+        .trainerBackPic = TRAINER_PIC_FRONT_KINDLER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10274,7 +10274,7 @@ F_TRAINER_FEMALE |
 #line 3954
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 3955
-        .trainerPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .encounterMusic_gender =
 #line 3956
 F_TRAINER_FEMALE | 
@@ -10285,7 +10285,7 @@ F_TRAINER_FEMALE |
 #line 3959
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerBackPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10317,7 +10317,7 @@ F_TRAINER_FEMALE |
 #line 3971
         .trainerClass = TRAINER_CLASS_KINDLER,
 #line 3972
-        .trainerPic = TRAINER_PIC_KINDLER,
+        .trainerPic = TRAINER_PIC_FRONT_KINDLER,
         .encounterMusic_gender =
 #line 3974
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -10326,7 +10326,7 @@ F_TRAINER_FEMALE |
 #line 3976
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_KINDLER,
+        .trainerBackPic = TRAINER_PIC_FRONT_KINDLER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10351,7 +10351,7 @@ F_TRAINER_FEMALE |
 #line 3984
         .trainerClass = TRAINER_CLASS_LEADER,
 #line 3986
-        .trainerPic = TRAINER_PIC_LEADER_FLANNERY,
+        .trainerPic = TRAINER_PIC_FRONT_LEADER_FLANNERY,
         .encounterMusic_gender =
 #line 3987
 F_TRAINER_FEMALE | 
@@ -10364,7 +10364,7 @@ F_TRAINER_FEMALE |
 #line 3985
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_FLANNERY,
+        .trainerBackPic = TRAINER_PIC_FRONT_LEADER_FLANNERY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -10452,7 +10452,7 @@ F_TRAINER_FEMALE |
 #line 4026
         .trainerClass = TRAINER_CLASS_FISHERMAN,
 #line 4027
-        .trainerPic = TRAINER_PIC_FISHERMAN,
+        .trainerPic = TRAINER_PIC_FRONT_FISHERMAN,
         .encounterMusic_gender =
 #line 4029
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -10461,7 +10461,7 @@ F_TRAINER_FEMALE |
 #line 4031
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_FISHERMAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10497,7 +10497,7 @@ F_TRAINER_FEMALE |
 #line 4043
         .trainerClass = TRAINER_CLASS_FISHERMAN,
 #line 4044
-        .trainerPic = TRAINER_PIC_FISHERMAN,
+        .trainerPic = TRAINER_PIC_FRONT_FISHERMAN,
         .encounterMusic_gender =
 #line 4046
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -10506,7 +10506,7 @@ F_TRAINER_FEMALE |
 #line 4048
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_FISHERMAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10531,7 +10531,7 @@ F_TRAINER_FEMALE |
 #line 4056
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
 #line 4057
-        .trainerPic = TRAINER_PIC_BUG_CATCHER,
+        .trainerPic = TRAINER_PIC_FRONT_BUG_CATCHER,
         .encounterMusic_gender =
 #line 4059
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -10540,7 +10540,7 @@ F_TRAINER_FEMALE |
 #line 4061
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BUG_CATCHER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BUG_CATCHER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10565,7 +10565,7 @@ F_TRAINER_FEMALE |
 #line 4069
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 4070
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 4071
 F_TRAINER_FEMALE | 
@@ -10576,7 +10576,7 @@ F_TRAINER_FEMALE |
 #line 4074
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10601,7 +10601,7 @@ F_TRAINER_FEMALE |
 #line 4082
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 4083
-        .trainerPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .encounterMusic_gender =
 #line 4084
 F_TRAINER_FEMALE | 
@@ -10612,7 +10612,7 @@ F_TRAINER_FEMALE |
 #line 4087
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10648,7 +10648,7 @@ F_TRAINER_FEMALE |
 #line 4099
         .trainerClass = TRAINER_CLASS_EXPERT,
 #line 4100
-        .trainerPic = TRAINER_PIC_EXPERT_M,
+        .trainerPic = TRAINER_PIC_FRONT_EXPERT_M,
         .encounterMusic_gender =
 #line 4102
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -10657,7 +10657,7 @@ F_TRAINER_FEMALE |
 #line 4104
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_EXPERT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_EXPERT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10693,7 +10693,7 @@ F_TRAINER_FEMALE |
 #line 4116
         .trainerClass = TRAINER_CLASS_GUITARIST,
 #line 4117
-        .trainerPic = TRAINER_PIC_GUITARIST,
+        .trainerPic = TRAINER_PIC_FRONT_GUITARIST,
         .encounterMusic_gender =
 #line 4119
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -10702,7 +10702,7 @@ F_TRAINER_FEMALE |
 #line 4121
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_GUITARIST,
+        .trainerBackPic = TRAINER_PIC_FRONT_GUITARIST,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10738,7 +10738,7 @@ F_TRAINER_FEMALE |
 #line 4133
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 4134
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 4136
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -10747,7 +10747,7 @@ F_TRAINER_FEMALE |
 #line 4138
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10783,7 +10783,7 @@ F_TRAINER_FEMALE |
 #line 4150
         .trainerClass = TRAINER_CLASS_HEX_MANIAC,
 #line 4151
-        .trainerPic = TRAINER_PIC_HEX_MANIAC,
+        .trainerPic = TRAINER_PIC_FRONT_HEX_MANIAC,
         .encounterMusic_gender =
 #line 4152
 F_TRAINER_FEMALE | 
@@ -10794,7 +10794,7 @@ F_TRAINER_FEMALE |
 #line 4155
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_HEX_MANIAC,
+        .trainerBackPic = TRAINER_PIC_FRONT_HEX_MANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10830,7 +10830,7 @@ F_TRAINER_FEMALE |
 #line 4167
         .trainerClass = TRAINER_CLASS_COLLECTOR,
 #line 4168
-        .trainerPic = TRAINER_PIC_COLLECTOR,
+        .trainerPic = TRAINER_PIC_FRONT_COLLECTOR,
         .encounterMusic_gender =
 #line 4170
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
@@ -10839,7 +10839,7 @@ F_TRAINER_FEMALE |
 #line 4172
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COLLECTOR,
+        .trainerBackPic = TRAINER_PIC_FRONT_COLLECTOR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -10875,7 +10875,7 @@ F_TRAINER_FEMALE |
 #line 4184
         .trainerClass = TRAINER_CLASS_NINJA_BOY,
 #line 4185
-        .trainerPic = TRAINER_PIC_NINJA_BOY,
+        .trainerPic = TRAINER_PIC_FRONT_NINJA_BOY,
         .encounterMusic_gender =
 #line 4187
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
@@ -10884,7 +10884,7 @@ F_TRAINER_FEMALE |
 #line 4189
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_NINJA_BOY,
+        .trainerBackPic = TRAINER_PIC_FRONT_NINJA_BOY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10916,7 +10916,7 @@ F_TRAINER_FEMALE |
 #line 4201
         .trainerClass = TRAINER_CLASS_PARASOL_LADY,
 #line 4202
-        .trainerPic = TRAINER_PIC_PARASOL_LADY,
+        .trainerPic = TRAINER_PIC_FRONT_PARASOL_LADY,
         .encounterMusic_gender =
 #line 4203
 F_TRAINER_FEMALE | 
@@ -10927,7 +10927,7 @@ F_TRAINER_FEMALE |
 #line 4206
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PARASOL_LADY,
+        .trainerBackPic = TRAINER_PIC_FRONT_PARASOL_LADY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10959,7 +10959,7 @@ F_TRAINER_FEMALE |
 #line 4218
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 4219
-        .trainerPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_M,
         .encounterMusic_gender =
 #line 4221
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -10968,7 +10968,7 @@ F_TRAINER_FEMALE |
 #line 4223
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -10993,7 +10993,7 @@ F_TRAINER_FEMALE |
 #line 4231
         .trainerClass = TRAINER_CLASS_AROMA_LADY,
 #line 4232
-        .trainerPic = TRAINER_PIC_AROMA_LADY,
+        .trainerPic = TRAINER_PIC_FRONT_AROMA_LADY,
         .encounterMusic_gender =
 #line 4233
 F_TRAINER_FEMALE | 
@@ -11004,7 +11004,7 @@ F_TRAINER_FEMALE |
 #line 4236
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AROMA_LADY,
+        .trainerBackPic = TRAINER_PIC_FRONT_AROMA_LADY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11040,7 +11040,7 @@ F_TRAINER_FEMALE |
 #line 4248
         .trainerClass = TRAINER_CLASS_TWINS,
 #line 4249
-        .trainerPic = TRAINER_PIC_TWINS,
+        .trainerPic = TRAINER_PIC_FRONT_TWINS,
         .encounterMusic_gender =
 #line 4251
             TRAINER_ENCOUNTER_MUSIC_TWINS,
@@ -11049,7 +11049,7 @@ F_TRAINER_FEMALE |
 #line 4253
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_TWINS,
+        .trainerBackPic = TRAINER_PIC_FRONT_TWINS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11085,7 +11085,7 @@ F_TRAINER_FEMALE |
 #line 4265
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 4266
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 4268
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -11094,7 +11094,7 @@ F_TRAINER_FEMALE |
 #line 4270
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -11198,7 +11198,7 @@ F_TRAINER_FEMALE |
 #line 4314
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 4315
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 4316
 F_TRAINER_FEMALE | 
@@ -11209,7 +11209,7 @@ F_TRAINER_FEMALE |
 #line 4319
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -11277,7 +11277,7 @@ F_TRAINER_FEMALE |
 #line 4347
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 4348
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 4350
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -11286,7 +11286,7 @@ F_TRAINER_FEMALE |
 #line 4352
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -11311,7 +11311,7 @@ F_TRAINER_FEMALE |
 #line 4360
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 4361
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .encounterMusic_gender =
 #line 4362
 F_TRAINER_FEMALE | 
@@ -11322,7 +11322,7 @@ F_TRAINER_FEMALE |
 #line 4365
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -11347,7 +11347,7 @@ F_TRAINER_FEMALE |
 #line 4373
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 4374
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 4376
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -11356,7 +11356,7 @@ F_TRAINER_FEMALE |
 #line 4378
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -11403,7 +11403,7 @@ F_TRAINER_FEMALE |
 #line 4394
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 4395
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 4396
 F_TRAINER_FEMALE | 
@@ -11414,7 +11414,7 @@ F_TRAINER_FEMALE |
 #line 4399
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -11494,7 +11494,7 @@ F_TRAINER_FEMALE |
 #line 4427
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
 #line 4428
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .encounterMusic_gender =
 #line 4429
 F_TRAINER_FEMALE | 
@@ -11505,7 +11505,7 @@ F_TRAINER_FEMALE |
 #line 4432
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -11530,7 +11530,7 @@ F_TRAINER_FEMALE |
 #line 4440
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
 #line 4441
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .encounterMusic_gender =
 #line 4443
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -11539,7 +11539,7 @@ F_TRAINER_FEMALE |
 #line 4445
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -11571,7 +11571,7 @@ F_TRAINER_FEMALE |
 #line 4457
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 4458
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 4460
             TRAINER_ENCOUNTER_MUSIC_GIRL,
@@ -11580,7 +11580,7 @@ F_TRAINER_FEMALE |
 #line 4462
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11616,7 +11616,7 @@ F_TRAINER_FEMALE |
 #line 4474
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 4475
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .encounterMusic_gender =
 #line 4476
 F_TRAINER_FEMALE | 
@@ -11627,7 +11627,7 @@ F_TRAINER_FEMALE |
 #line 4479
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11663,7 +11663,7 @@ F_TRAINER_FEMALE |
 #line 4491
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
 #line 4492
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 4493
 F_TRAINER_FEMALE | 
@@ -11674,7 +11674,7 @@ F_TRAINER_FEMALE |
 #line 4496
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -11699,7 +11699,7 @@ F_TRAINER_FEMALE |
 #line 4504
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
 #line 4505
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 4506
 F_TRAINER_FEMALE | 
@@ -11710,7 +11710,7 @@ F_TRAINER_FEMALE |
 #line 4509
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11746,7 +11746,7 @@ F_TRAINER_FEMALE |
 #line 4521
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
 #line 4522
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 4524
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -11755,7 +11755,7 @@ F_TRAINER_FEMALE |
 #line 4526
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -11780,7 +11780,7 @@ F_TRAINER_FEMALE |
 #line 4534
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
 #line 4535
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .encounterMusic_gender =
 #line 4537
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -11789,7 +11789,7 @@ F_TRAINER_FEMALE |
 #line 4539
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -11814,7 +11814,7 @@ F_TRAINER_FEMALE |
 #line 4547
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
 #line 4548
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .encounterMusic_gender =
 #line 4550
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -11823,7 +11823,7 @@ F_TRAINER_FEMALE |
 #line 4552
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11859,7 +11859,7 @@ F_TRAINER_FEMALE |
 #line 4564
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
 #line 4565
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 4567
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -11868,7 +11868,7 @@ F_TRAINER_FEMALE |
 #line 4569
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -11904,7 +11904,7 @@ F_TRAINER_FEMALE |
 #line 4581
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN_MIXED,
 #line 4582
-        .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_ADMIN,
         .encounterMusic_gender =
 #line 4585
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -11915,7 +11915,7 @@ F_TRAINER_FEMALE |
 #line 4583
         .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_ADMIN,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_ADMIN,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -11970,7 +11970,7 @@ F_TRAINER_FEMALE |
 #line 4606
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN_MIXED,
 #line 4607
-        .trainerPic = TRAINER_PIC_AQUA_ADMIN_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_ADMIN_M,
         .encounterMusic_gender =
 #line 4609
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -11979,7 +11979,7 @@ F_TRAINER_FEMALE |
 #line 4611
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_ADMIN_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_ADMIN_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -12034,7 +12034,7 @@ F_TRAINER_FEMALE |
 #line 4630
         .trainerClass = TRAINER_CLASS_AQUA_LEADER,
 #line 4631
-        .trainerPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_LEADER_ARCHIE,
         .encounterMusic_gender =
 #line 4634
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -12045,7 +12045,7 @@ F_TRAINER_FEMALE |
 #line 4632
         .mugshotColor = MUGSHOT_COLOR_ARCHIEWITHMAXIE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_LEADER_ARCHIE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12081,7 +12081,7 @@ F_TRAINER_FEMALE |
 #line 4648
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
 #line 4649
-        .trainerPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_LEADER_MAXIE,
         .encounterMusic_gender =
 #line 4652
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -12092,7 +12092,7 @@ F_TRAINER_FEMALE |
 #line 4650
         .mugshotColor = MUGSHOT_COLOR_MAXIEWITHARCHIE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_LEADER_MAXIE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12128,7 +12128,7 @@ F_TRAINER_FEMALE |
 #line 4666
         .trainerClass = TRAINER_CLASS_BUG_MANIAC,
 #line 4667
-        .trainerPic = TRAINER_PIC_BUG_MANIAC,
+        .trainerPic = TRAINER_PIC_FRONT_BUG_MANIAC,
         .encounterMusic_gender =
 #line 4669
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
@@ -12137,7 +12137,7 @@ F_TRAINER_FEMALE |
 #line 4671
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BUG_MANIAC,
+        .trainerBackPic = TRAINER_PIC_FRONT_BUG_MANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12173,7 +12173,7 @@ F_TRAINER_FEMALE |
 #line 4683
         .trainerClass = TRAINER_CLASS_HEX_MANIAC,
 #line 4684
-        .trainerPic = TRAINER_PIC_HEX_MANIAC,
+        .trainerPic = TRAINER_PIC_FRONT_HEX_MANIAC,
         .encounterMusic_gender =
 #line 4685
 F_TRAINER_FEMALE | 
@@ -12184,7 +12184,7 @@ F_TRAINER_FEMALE |
 #line 4688
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_HEX_MANIAC,
+        .trainerBackPic = TRAINER_PIC_FRONT_HEX_MANIAC,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12220,7 +12220,7 @@ F_TRAINER_FEMALE |
 #line 4700
         .trainerClass = TRAINER_CLASS_RUIN_MANIAC,
 #line 4701
-        .trainerPic = TRAINER_PIC_RUIN_MANIAC,
+        .trainerPic = TRAINER_PIC_FRONT_RUIN_MANIAC,
         .encounterMusic_gender =
 #line 4703
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -12229,7 +12229,7 @@ F_TRAINER_FEMALE |
 #line 4705
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RUIN_MANIAC,
+        .trainerBackPic = TRAINER_PIC_FRONT_RUIN_MANIAC,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -12297,7 +12297,7 @@ F_TRAINER_FEMALE |
 #line 4733
         .trainerClass = TRAINER_CLASS_BUG_MANIAC,
 #line 4734
-        .trainerPic = TRAINER_PIC_BUG_MANIAC,
+        .trainerPic = TRAINER_PIC_FRONT_BUG_MANIAC,
         .encounterMusic_gender =
 #line 4736
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
@@ -12306,7 +12306,7 @@ F_TRAINER_FEMALE |
 #line 4738
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BUG_MANIAC,
+        .trainerBackPic = TRAINER_PIC_FRONT_BUG_MANIAC,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -12353,7 +12353,7 @@ F_TRAINER_FEMALE |
 #line 4754
         .trainerClass = TRAINER_CLASS_NINJA_BOY,
 #line 4755
-        .trainerPic = TRAINER_PIC_NINJA_BOY,
+        .trainerPic = TRAINER_PIC_FRONT_NINJA_BOY,
         .encounterMusic_gender =
 #line 4757
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
@@ -12362,7 +12362,7 @@ F_TRAINER_FEMALE |
 #line 4759
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_NINJA_BOY,
+        .trainerBackPic = TRAINER_PIC_FRONT_NINJA_BOY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12412,7 +12412,7 @@ F_TRAINER_FEMALE |
 #line 4779
         .trainerClass = TRAINER_CLASS_NINJA_BOY,
 #line 4780
-        .trainerPic = TRAINER_PIC_NINJA_BOY,
+        .trainerPic = TRAINER_PIC_FRONT_NINJA_BOY,
         .encounterMusic_gender =
 #line 4782
             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
@@ -12421,7 +12421,7 @@ F_TRAINER_FEMALE |
 #line 4784
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_NINJA_BOY,
+        .trainerBackPic = TRAINER_PIC_FRONT_NINJA_BOY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12471,7 +12471,7 @@ F_TRAINER_FEMALE |
 #line 4804
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
 #line 4805
-        .trainerPic = TRAINER_PIC_POKEMON_RANGER_F,
+        .trainerPic = TRAINER_PIC_FRONT_POKEMON_RANGER_F,
         .encounterMusic_gender =
 #line 4806
 F_TRAINER_FEMALE | 
@@ -12482,7 +12482,7 @@ F_TRAINER_FEMALE |
 #line 4809
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEMON_RANGER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -12529,7 +12529,7 @@ F_TRAINER_FEMALE |
 #line 4825
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
 #line 4826
-        .trainerPic = TRAINER_PIC_POKEMON_RANGER_M,
+        .trainerPic = TRAINER_PIC_FRONT_POKEMON_RANGER_M,
         .encounterMusic_gender =
 #line 4828
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -12538,7 +12538,7 @@ F_TRAINER_FEMALE |
 #line 4830
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEMON_RANGER_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -12585,7 +12585,7 @@ F_TRAINER_FEMALE |
 #line 4846
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 4847
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 4848
 F_TRAINER_FEMALE | 
@@ -12596,7 +12596,7 @@ F_TRAINER_FEMALE |
 #line 4851
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -12621,7 +12621,7 @@ F_TRAINER_FEMALE |
 #line 4859
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 4860
-        .trainerPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .encounterMusic_gender =
 #line 4861
 F_TRAINER_FEMALE | 
@@ -12632,7 +12632,7 @@ F_TRAINER_FEMALE |
 #line 4864
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerBackPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12668,7 +12668,7 @@ F_TRAINER_FEMALE |
 #line 4876
         .trainerClass = TRAINER_CLASS_PARASOL_LADY,
 #line 4877
-        .trainerPic = TRAINER_PIC_PARASOL_LADY,
+        .trainerPic = TRAINER_PIC_FRONT_PARASOL_LADY,
         .encounterMusic_gender =
 #line 4878
 F_TRAINER_FEMALE | 
@@ -12679,7 +12679,7 @@ F_TRAINER_FEMALE |
 #line 4881
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PARASOL_LADY,
+        .trainerBackPic = TRAINER_PIC_FRONT_PARASOL_LADY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12715,7 +12715,7 @@ F_TRAINER_FEMALE |
 #line 4893
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 4894
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 4896
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -12724,7 +12724,7 @@ F_TRAINER_FEMALE |
 #line 4898
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -12749,7 +12749,7 @@ F_TRAINER_FEMALE |
 #line 4906
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 4907
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 4909
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -12758,7 +12758,7 @@ F_TRAINER_FEMALE |
 #line 4911
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12794,7 +12794,7 @@ F_TRAINER_FEMALE |
 #line 4923
         .trainerClass = TRAINER_CLASS_PARASOL_LADY,
 #line 4924
-        .trainerPic = TRAINER_PIC_PARASOL_LADY,
+        .trainerPic = TRAINER_PIC_FRONT_PARASOL_LADY,
         .encounterMusic_gender =
 #line 4925
 F_TRAINER_FEMALE | 
@@ -12805,7 +12805,7 @@ F_TRAINER_FEMALE |
 #line 4928
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PARASOL_LADY,
+        .trainerBackPic = TRAINER_PIC_FRONT_PARASOL_LADY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -12837,7 +12837,7 @@ F_TRAINER_FEMALE |
 #line 4940
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 4941
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 4943
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -12846,7 +12846,7 @@ F_TRAINER_FEMALE |
 #line 4945
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -12871,7 +12871,7 @@ F_TRAINER_FEMALE |
 #line 4953
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 4954
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 4956
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -12880,7 +12880,7 @@ F_TRAINER_FEMALE |
 #line 4958
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -12905,7 +12905,7 @@ F_TRAINER_FEMALE |
 #line 4966
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 4967
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 4969
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -12914,7 +12914,7 @@ F_TRAINER_FEMALE |
 #line 4971
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12950,7 +12950,7 @@ F_TRAINER_FEMALE |
 #line 4983
         .trainerClass = TRAINER_CLASS_CAMPER,
 #line 4984
-        .trainerPic = TRAINER_PIC_CAMPER,
+        .trainerPic = TRAINER_PIC_FRONT_CAMPER,
         .encounterMusic_gender =
 #line 4986
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -12959,7 +12959,7 @@ F_TRAINER_FEMALE |
 #line 4988
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_CAMPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_CAMPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -12995,7 +12995,7 @@ F_TRAINER_FEMALE |
 #line 5000
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 5001
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 5003
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -13004,7 +13004,7 @@ F_TRAINER_FEMALE |
 #line 5005
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -13051,7 +13051,7 @@ F_TRAINER_FEMALE |
 #line 5021
         .trainerClass = TRAINER_CLASS_PICNICKER,
 #line 5022
-        .trainerPic = TRAINER_PIC_PICNICKER,
+        .trainerPic = TRAINER_PIC_FRONT_PICNICKER,
         .encounterMusic_gender =
 #line 5023
 F_TRAINER_FEMALE | 
@@ -13062,7 +13062,7 @@ F_TRAINER_FEMALE |
 #line 5026
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PICNICKER,
+        .trainerBackPic = TRAINER_PIC_FRONT_PICNICKER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -13109,7 +13109,7 @@ F_TRAINER_FEMALE |
 #line 5042
         .trainerClass = TRAINER_CLASS_LEADER,
 #line 5044
-        .trainerPic = TRAINER_PIC_LEADER_WINONA,
+        .trainerPic = TRAINER_PIC_FRONT_LEADER_WINONA,
         .encounterMusic_gender =
 #line 5045
 F_TRAINER_FEMALE | 
@@ -13122,7 +13122,7 @@ F_TRAINER_FEMALE |
 #line 5043
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_WINONA,
+        .trainerBackPic = TRAINER_PIC_FRONT_LEADER_WINONA,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -13228,7 +13228,7 @@ F_TRAINER_FEMALE |
 #line 5092
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_2,
 #line 5093
-        .trainerPic = TRAINER_PIC_GREEN,
+        .trainerPic = TRAINER_PIC_FRONT_GREEN,
         .encounterMusic_gender =
 #line 5094
 F_TRAINER_FEMALE | 
@@ -13241,7 +13241,7 @@ F_TRAINER_FEMALE |
 #line 5095
         .mugshotColor = MUGSHOT_COLOR_EMMIEWITHSHELLY,
 #line 0
-        .trainerBackPic = TRAINER_PIC_GREEN,
+        .trainerBackPic = TRAINER_PIC_FRONT_GREEN,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -13363,7 +13363,7 @@ F_TRAINER_FEMALE |
 #line 5150
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5151
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 5153
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13372,7 +13372,7 @@ F_TRAINER_FEMALE |
 #line 5155
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13397,7 +13397,7 @@ F_TRAINER_FEMALE |
 #line 5163
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5164
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 5166
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13406,7 +13406,7 @@ F_TRAINER_FEMALE |
 #line 5168
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13431,7 +13431,7 @@ F_TRAINER_FEMALE |
 #line 5176
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5177
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 5179
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13440,7 +13440,7 @@ F_TRAINER_FEMALE |
 #line 5181
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13465,7 +13465,7 @@ F_TRAINER_FEMALE |
 #line 5189
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5190
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 5192
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13474,7 +13474,7 @@ F_TRAINER_FEMALE |
 #line 5194
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -13510,7 +13510,7 @@ F_TRAINER_FEMALE |
 #line 5206
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5207
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 5209
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13519,7 +13519,7 @@ F_TRAINER_FEMALE |
 #line 5211
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -13555,7 +13555,7 @@ F_TRAINER_FEMALE |
 #line 5223
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5224
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 5226
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13564,7 +13564,7 @@ F_TRAINER_FEMALE |
 #line 5228
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13589,7 +13589,7 @@ F_TRAINER_FEMALE |
 #line 5236
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5237
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 5239
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13598,7 +13598,7 @@ F_TRAINER_FEMALE |
 #line 5241
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13623,7 +13623,7 @@ F_TRAINER_FEMALE |
 #line 5249
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5250
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 5252
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13632,7 +13632,7 @@ F_TRAINER_FEMALE |
 #line 5254
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13657,7 +13657,7 @@ F_TRAINER_FEMALE |
 #line 5262
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5263
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 5265
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13666,7 +13666,7 @@ F_TRAINER_FEMALE |
 #line 5267
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13691,7 +13691,7 @@ F_TRAINER_FEMALE |
 #line 5275
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5276
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 5278
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13700,7 +13700,7 @@ F_TRAINER_FEMALE |
 #line 5280
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13725,7 +13725,7 @@ F_TRAINER_FEMALE |
 #line 5288
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5289
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 5291
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13734,7 +13734,7 @@ F_TRAINER_FEMALE |
 #line 5293
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13759,7 +13759,7 @@ F_TRAINER_FEMALE |
 #line 5301
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5302
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .encounterMusic_gender =
 #line 5304
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13768,7 +13768,7 @@ F_TRAINER_FEMALE |
 #line 5306
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13793,7 +13793,7 @@ F_TRAINER_FEMALE |
 #line 5314
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5315
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 5317
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13802,7 +13802,7 @@ F_TRAINER_FEMALE |
 #line 5319
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13827,7 +13827,7 @@ F_TRAINER_FEMALE |
 #line 5327
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 5328
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 5330
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13836,7 +13836,7 @@ F_TRAINER_FEMALE |
 #line 5332
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13861,7 +13861,7 @@ F_TRAINER_FEMALE |
 #line 5340
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
 #line 5341
-        .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_ADMIN,
         .encounterMusic_gender =
 #line 5344
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13872,7 +13872,7 @@ F_TRAINER_FEMALE |
 #line 5342
         .mugshotColor = MUGSHOT_COLOR_MAXIEWITHARCHIE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_ADMIN,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_ADMIN,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -13930,7 +13930,7 @@ F_TRAINER_FEMALE |
 #line 5366
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
 #line 5367
-        .trainerPic = TRAINER_PIC_MAGMA_ADMIN_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_ADMIN_F,
         .encounterMusic_gender =
 #line 5369
 F_TRAINER_FEMALE | 
@@ -13943,7 +13943,7 @@ F_TRAINER_FEMALE |
 #line 5368
         .mugshotColor = MUGSHOT_COLOR_MAXIEWITHARCHIE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_ADMIN_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_ADMIN_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -13968,7 +13968,7 @@ F_TRAINER_FEMALE |
 #line 5380
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
 #line 5381
-        .trainerPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_LEADER_MAXIE,
         .encounterMusic_gender =
 #line 5384
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -13979,7 +13979,7 @@ F_TRAINER_FEMALE |
 #line 5382
         .mugshotColor = MUGSHOT_COLOR_MISTY,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_LEADER_MAXIE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -14026,7 +14026,7 @@ F_TRAINER_FEMALE |
 #line 5402
         .trainerClass = TRAINER_CLASS_SR_AND_JR,
 #line 5403
-        .trainerPic = TRAINER_PIC_SR_AND_JR,
+        .trainerPic = TRAINER_PIC_FRONT_SR_AND_JR,
         .encounterMusic_gender =
 #line 5405
             TRAINER_ENCOUNTER_MUSIC_TWINS,
@@ -14035,7 +14035,7 @@ F_TRAINER_FEMALE |
 #line 5407
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SR_AND_JR,
+        .trainerBackPic = TRAINER_PIC_FRONT_SR_AND_JR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -14085,7 +14085,7 @@ F_TRAINER_FEMALE |
 #line 5427
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 5428
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 5430
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -14094,7 +14094,7 @@ F_TRAINER_FEMALE |
 #line 5432
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -14130,7 +14130,7 @@ F_TRAINER_FEMALE |
 #line 5444
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 5445
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 5446
 F_TRAINER_FEMALE | 
@@ -14141,7 +14141,7 @@ F_TRAINER_FEMALE |
 #line 5449
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -14177,7 +14177,7 @@ F_TRAINER_FEMALE |
 #line 5461
         .trainerClass = TRAINER_CLASS_POKEFAN,
 #line 5462
-        .trainerPic = TRAINER_PIC_POKEFAN_F,
+        .trainerPic = TRAINER_PIC_FRONT_POKEFAN_F,
         .encounterMusic_gender =
 #line 5463
 F_TRAINER_FEMALE | 
@@ -14188,7 +14188,7 @@ F_TRAINER_FEMALE |
 #line 5466
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEFAN_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEFAN_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -14215,7 +14215,7 @@ F_TRAINER_FEMALE |
 #line 5474
         .trainerClass = TRAINER_CLASS_GENTLEMAN,
 #line 5475
-        .trainerPic = TRAINER_PIC_GENTLEMAN,
+        .trainerPic = TRAINER_PIC_FRONT_GENTLEMAN,
         .encounterMusic_gender =
 #line 5477
             TRAINER_ENCOUNTER_MUSIC_RICH,
@@ -14224,7 +14224,7 @@ F_TRAINER_FEMALE |
 #line 5479
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_GENTLEMAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_GENTLEMAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -14249,7 +14249,7 @@ F_TRAINER_FEMALE |
 #line 5487
         .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
 #line 5488
-        .trainerPic = TRAINER_PIC_POKEMON_BREEDER_F,
+        .trainerPic = TRAINER_PIC_FRONT_POKEMON_BREEDER_F,
         .encounterMusic_gender =
 #line 5489
 F_TRAINER_FEMALE | 
@@ -14260,7 +14260,7 @@ F_TRAINER_FEMALE |
 #line 5492
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_BREEDER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEMON_BREEDER_F,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -14340,7 +14340,7 @@ F_TRAINER_FEMALE |
 #line 5520
         .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
 #line 5521
-        .trainerPic = TRAINER_PIC_POKEMON_BREEDER_M,
+        .trainerPic = TRAINER_PIC_FRONT_POKEMON_BREEDER_M,
         .encounterMusic_gender =
 #line 5523
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -14349,7 +14349,7 @@ F_TRAINER_FEMALE |
 #line 5525
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_BREEDER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEMON_BREEDER_M,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -14429,7 +14429,7 @@ F_TRAINER_FEMALE |
 #line 5553
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 5554
-        .trainerPic = TRAINER_PIC_BRENDAN,
+        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
         .encounterMusic_gender =
 #line 5556
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -14440,7 +14440,7 @@ F_TRAINER_FEMALE |
 #line 5559
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BRENDAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -14498,7 +14498,7 @@ F_TRAINER_FEMALE |
 #line 5579
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 5580
-        .trainerPic = TRAINER_PIC_BRENDAN,
+        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
         .encounterMusic_gender =
 #line 5582
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -14509,7 +14509,7 @@ F_TRAINER_FEMALE |
 #line 5585
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BRENDAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -14567,7 +14567,7 @@ F_TRAINER_FEMALE |
 #line 5605
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 5606
-        .trainerPic = TRAINER_PIC_BRENDAN,
+        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
         .encounterMusic_gender =
 #line 5608
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -14578,7 +14578,7 @@ F_TRAINER_FEMALE |
 #line 5611
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BRENDAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -14636,7 +14636,7 @@ F_TRAINER_FEMALE |
 #line 5631
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 5632
-        .trainerPic = TRAINER_PIC_MAY,
+        .trainerPic = TRAINER_PIC_FRONT_MAY,
         .encounterMusic_gender =
 #line 5633
 F_TRAINER_FEMALE | 
@@ -14649,7 +14649,7 @@ F_TRAINER_FEMALE |
 #line 5637
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAY,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -14707,7 +14707,7 @@ F_TRAINER_FEMALE |
 #line 5657
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 5658
-        .trainerPic = TRAINER_PIC_MAY,
+        .trainerPic = TRAINER_PIC_FRONT_MAY,
         .encounterMusic_gender =
 #line 5659
 F_TRAINER_FEMALE | 
@@ -14720,7 +14720,7 @@ F_TRAINER_FEMALE |
 #line 5663
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAY,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -14778,7 +14778,7 @@ F_TRAINER_FEMALE |
 #line 5683
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 5684
-        .trainerPic = TRAINER_PIC_MAY,
+        .trainerPic = TRAINER_PIC_FRONT_MAY,
         .encounterMusic_gender =
 #line 5685
 F_TRAINER_FEMALE | 
@@ -14791,7 +14791,7 @@ F_TRAINER_FEMALE |
 #line 5689
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAY,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAY,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -14849,7 +14849,7 @@ F_TRAINER_FEMALE |
 #line 5709
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 5710
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 5712
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -14858,7 +14858,7 @@ F_TRAINER_FEMALE |
 #line 5714
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -14883,7 +14883,7 @@ F_TRAINER_FEMALE |
 #line 5722
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 5723
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 5725
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -14892,7 +14892,7 @@ F_TRAINER_FEMALE |
 #line 5727
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -14928,7 +14928,7 @@ F_TRAINER_FEMALE |
 #line 5739
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 5740
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 5742
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -14937,7 +14937,7 @@ F_TRAINER_FEMALE |
 #line 5744
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -14962,7 +14962,7 @@ F_TRAINER_FEMALE |
 #line 5752
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 5753
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 5755
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -14971,7 +14971,7 @@ F_TRAINER_FEMALE |
 #line 5757
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -14996,7 +14996,7 @@ F_TRAINER_FEMALE |
 #line 5765
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 5766
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .encounterMusic_gender =
 #line 5767
 F_TRAINER_FEMALE | 
@@ -15007,7 +15007,7 @@ F_TRAINER_FEMALE |
 #line 5770
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15032,7 +15032,7 @@ F_TRAINER_FEMALE |
 #line 5778
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 5779
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .encounterMusic_gender =
 #line 5780
 F_TRAINER_FEMALE | 
@@ -15043,7 +15043,7 @@ F_TRAINER_FEMALE |
 #line 5783
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15068,7 +15068,7 @@ F_TRAINER_FEMALE |
 #line 5791
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 5792
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .encounterMusic_gender =
 #line 5793
 F_TRAINER_FEMALE | 
@@ -15079,7 +15079,7 @@ F_TRAINER_FEMALE |
 #line 5796
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15115,7 +15115,7 @@ F_TRAINER_FEMALE |
 #line 5808
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 5809
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 5811
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -15124,7 +15124,7 @@ F_TRAINER_FEMALE |
 #line 5813
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15149,7 +15149,7 @@ F_TRAINER_FEMALE |
 #line 5821
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
 #line 5822
-        .trainerPic = TRAINER_PIC_AQUA_ADMIN_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_ADMIN_M,
         .encounterMusic_gender =
 #line 5825
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -15160,7 +15160,7 @@ F_TRAINER_FEMALE |
 #line 5824
         .mugshotColor = MUGSHOT_COLOR_ARCHIEWITHMAXIE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_ADMIN_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_ADMIN_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15196,7 +15196,7 @@ F_TRAINER_FEMALE |
 #line 5839
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
 #line 5840
-        .trainerPic = TRAINER_PIC_AQUA_ADMIN_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_ADMIN_F,
         .encounterMusic_gender =
 #line 5842
 F_TRAINER_FEMALE | 
@@ -15209,7 +15209,7 @@ F_TRAINER_FEMALE |
 #line 5841
         .mugshotColor = MUGSHOT_COLOR_ARCHIEWITHMAXIE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_ADMIN_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_ADMIN_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15245,7 +15245,7 @@ F_TRAINER_FEMALE |
 #line 5857
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5858
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 5859
 F_TRAINER_FEMALE | 
@@ -15256,7 +15256,7 @@ F_TRAINER_FEMALE |
 #line 5862
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15281,7 +15281,7 @@ F_TRAINER_FEMALE |
 #line 5870
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 5871
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 5873
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -15290,7 +15290,7 @@ F_TRAINER_FEMALE |
 #line 5875
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15315,7 +15315,7 @@ F_TRAINER_FEMALE |
 #line 5883
         .trainerClass = TRAINER_CLASS_SIS_AND_BRO,
 #line 5884
-        .trainerPic = TRAINER_PIC_SIS_AND_BRO,
+        .trainerPic = TRAINER_PIC_FRONT_SIS_AND_BRO,
         .encounterMusic_gender =
 #line 5886
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -15324,7 +15324,7 @@ F_TRAINER_FEMALE |
 #line 5888
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SIS_AND_BRO,
+        .trainerBackPic = TRAINER_PIC_FRONT_SIS_AND_BRO,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15360,7 +15360,7 @@ F_TRAINER_FEMALE |
 #line 5900
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 5901
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 5903
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -15369,7 +15369,7 @@ F_TRAINER_FEMALE |
 #line 5905
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15405,7 +15405,7 @@ F_TRAINER_FEMALE |
 #line 5917
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5918
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 5919
 F_TRAINER_FEMALE | 
@@ -15416,7 +15416,7 @@ F_TRAINER_FEMALE |
 #line 5922
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15441,7 +15441,7 @@ F_TRAINER_FEMALE |
 #line 5930
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 5931
-        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_F,
         .encounterMusic_gender =
 #line 5932
 F_TRAINER_FEMALE | 
@@ -15452,7 +15452,7 @@ F_TRAINER_FEMALE |
 #line 5935
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15512,7 +15512,7 @@ F_TRAINER_FEMALE |
 #line 5957
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 5958
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 5960
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -15521,7 +15521,7 @@ F_TRAINER_FEMALE |
 #line 5962
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15546,7 +15546,7 @@ F_TRAINER_FEMALE |
 #line 5970
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5971
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 5972
 F_TRAINER_FEMALE | 
@@ -15557,7 +15557,7 @@ F_TRAINER_FEMALE |
 #line 5975
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15582,7 +15582,7 @@ F_TRAINER_FEMALE |
 #line 5983
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 5984
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 5986
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -15591,7 +15591,7 @@ F_TRAINER_FEMALE |
 #line 5988
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15616,7 +15616,7 @@ F_TRAINER_FEMALE |
 #line 5996
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 5997
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 5998
 F_TRAINER_FEMALE | 
@@ -15627,7 +15627,7 @@ F_TRAINER_FEMALE |
 #line 6001
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15652,7 +15652,7 @@ F_TRAINER_FEMALE |
 #line 6009
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 6010
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 6012
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -15661,7 +15661,7 @@ F_TRAINER_FEMALE |
 #line 6014
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15686,7 +15686,7 @@ F_TRAINER_FEMALE |
 #line 6022
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 6023
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 6025
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -15695,7 +15695,7 @@ F_TRAINER_FEMALE |
 #line 6027
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15731,7 +15731,7 @@ F_TRAINER_FEMALE |
 #line 6039
         .trainerClass = TRAINER_CLASS_EXPERT,
 #line 6040
-        .trainerPic = TRAINER_PIC_EXPERT_M,
+        .trainerPic = TRAINER_PIC_FRONT_EXPERT_M,
         .encounterMusic_gender =
 #line 6042
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -15740,7 +15740,7 @@ F_TRAINER_FEMALE |
 #line 6044
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_EXPERT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_EXPERT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15776,7 +15776,7 @@ F_TRAINER_FEMALE |
 #line 6056
         .trainerClass = TRAINER_CLASS_SAILOR,
 #line 6057
-        .trainerPic = TRAINER_PIC_SAILOR,
+        .trainerPic = TRAINER_PIC_FRONT_SAILOR,
         .encounterMusic_gender =
 #line 6059
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -15785,7 +15785,7 @@ F_TRAINER_FEMALE |
 #line 6061
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SAILOR,
+        .trainerBackPic = TRAINER_PIC_FRONT_SAILOR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15821,7 +15821,7 @@ F_TRAINER_FEMALE |
 #line 6073
         .trainerClass = TRAINER_CLASS_SR_AND_JR,
 #line 6074
-        .trainerPic = TRAINER_PIC_SR_AND_JR,
+        .trainerPic = TRAINER_PIC_FRONT_SR_AND_JR,
         .encounterMusic_gender =
 #line 6076
             TRAINER_ENCOUNTER_MUSIC_TWINS,
@@ -15830,7 +15830,7 @@ F_TRAINER_FEMALE |
 #line 6078
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SR_AND_JR,
+        .trainerBackPic = TRAINER_PIC_FRONT_SR_AND_JR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -15880,7 +15880,7 @@ F_TRAINER_FEMALE |
 #line 6098
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 6099
-        .trainerPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_M,
         .encounterMusic_gender =
 #line 6101
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -15889,7 +15889,7 @@ F_TRAINER_FEMALE |
 #line 6103
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15914,7 +15914,7 @@ F_TRAINER_FEMALE |
 #line 6111
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 6112
-        .trainerPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .encounterMusic_gender =
 #line 6113
 F_TRAINER_FEMALE | 
@@ -15925,7 +15925,7 @@ F_TRAINER_FEMALE |
 #line 6116
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15950,7 +15950,7 @@ F_TRAINER_FEMALE |
 #line 6124
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 6125
-        .trainerPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_M,
         .encounterMusic_gender =
 #line 6127
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -15959,7 +15959,7 @@ F_TRAINER_FEMALE |
 #line 6129
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -15984,7 +15984,7 @@ F_TRAINER_FEMALE |
 #line 6137
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 6138
-        .trainerPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .encounterMusic_gender =
 #line 6139
 F_TRAINER_FEMALE | 
@@ -15995,7 +15995,7 @@ F_TRAINER_FEMALE |
 #line 6142
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16020,7 +16020,7 @@ F_TRAINER_FEMALE |
 #line 6150
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 6151
-        .trainerPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_M,
         .encounterMusic_gender =
 #line 6153
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -16029,7 +16029,7 @@ F_TRAINER_FEMALE |
 #line 6155
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16054,7 +16054,7 @@ F_TRAINER_FEMALE |
 #line 6163
         .trainerClass = TRAINER_CLASS_GENTLEMAN,
 #line 6164
-        .trainerPic = TRAINER_PIC_GENTLEMAN,
+        .trainerPic = TRAINER_PIC_FRONT_GENTLEMAN,
         .encounterMusic_gender =
 #line 6166
             TRAINER_ENCOUNTER_MUSIC_RICH,
@@ -16063,7 +16063,7 @@ F_TRAINER_FEMALE |
 #line 6168
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_GENTLEMAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_GENTLEMAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16088,7 +16088,7 @@ F_TRAINER_FEMALE |
 #line 6176
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 6177
-        .trainerPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .encounterMusic_gender =
 #line 6178
 F_TRAINER_FEMALE | 
@@ -16099,7 +16099,7 @@ F_TRAINER_FEMALE |
 #line 6181
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16124,7 +16124,7 @@ F_TRAINER_FEMALE |
 #line 6189
         .trainerClass = TRAINER_CLASS_HEX_MANIAC,
 #line 6190
-        .trainerPic = TRAINER_PIC_HEX_MANIAC,
+        .trainerPic = TRAINER_PIC_FRONT_HEX_MANIAC,
         .encounterMusic_gender =
 #line 6191
 F_TRAINER_FEMALE | 
@@ -16135,7 +16135,7 @@ F_TRAINER_FEMALE |
 #line 6194
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_HEX_MANIAC,
+        .trainerBackPic = TRAINER_PIC_FRONT_HEX_MANIAC,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16160,7 +16160,7 @@ F_TRAINER_FEMALE |
 #line 6202
         .trainerClass = TRAINER_CLASS_HEX_MANIAC,
 #line 6203
-        .trainerPic = TRAINER_PIC_HEX_MANIAC,
+        .trainerPic = TRAINER_PIC_FRONT_HEX_MANIAC,
         .encounterMusic_gender =
 #line 6204
 F_TRAINER_FEMALE | 
@@ -16171,7 +16171,7 @@ F_TRAINER_FEMALE |
 #line 6207
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_HEX_MANIAC,
+        .trainerBackPic = TRAINER_PIC_FRONT_HEX_MANIAC,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16196,7 +16196,7 @@ F_TRAINER_FEMALE |
 #line 6215
         .trainerClass = TRAINER_CLASS_GENTLEMAN,
 #line 6216
-        .trainerPic = TRAINER_PIC_GENTLEMAN,
+        .trainerPic = TRAINER_PIC_FRONT_GENTLEMAN,
         .encounterMusic_gender =
 #line 6218
             TRAINER_ENCOUNTER_MUSIC_RICH,
@@ -16205,7 +16205,7 @@ F_TRAINER_FEMALE |
 #line 6220
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_GENTLEMAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_GENTLEMAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16230,7 +16230,7 @@ F_TRAINER_FEMALE |
 #line 6228
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 6229
-        .trainerPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .encounterMusic_gender =
 #line 6230
 F_TRAINER_FEMALE | 
@@ -16241,7 +16241,7 @@ F_TRAINER_FEMALE |
 #line 6233
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16266,7 +16266,7 @@ F_TRAINER_FEMALE |
 #line 6241
         .trainerClass = TRAINER_CLASS_LEADER,
 #line 6243
-        .trainerPic = TRAINER_PIC_LEADER_TATE_AND_LIZA,
+        .trainerPic = TRAINER_PIC_FRONT_LEADER_TATE_AND_LIZA,
         .encounterMusic_gender =
 #line 6245
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
@@ -16277,7 +16277,7 @@ F_TRAINER_FEMALE |
 #line 6242
         .mugshotColor = MUGSHOT_COLOR_PURPLE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_TATE_AND_LIZA,
+        .trainerBackPic = TRAINER_PIC_FRONT_LEADER_TATE_AND_LIZA,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -16367,7 +16367,7 @@ F_TRAINER_FEMALE |
 #line 6283
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 6284
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 6286
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -16376,7 +16376,7 @@ F_TRAINER_FEMALE |
 #line 6288
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16401,7 +16401,7 @@ F_TRAINER_FEMALE |
 #line 6296
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 6297
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 6299
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -16410,7 +16410,7 @@ F_TRAINER_FEMALE |
 #line 6301
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -16457,7 +16457,7 @@ F_TRAINER_FEMALE |
 #line 6317
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 6318
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .encounterMusic_gender =
 #line 6319
 F_TRAINER_FEMALE | 
@@ -16468,7 +16468,7 @@ F_TRAINER_FEMALE |
 #line 6322
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -16504,7 +16504,7 @@ F_TRAINER_FEMALE |
 #line 6334
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 6335
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 6337
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -16513,7 +16513,7 @@ F_TRAINER_FEMALE |
 #line 6339
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16538,7 +16538,7 @@ F_TRAINER_FEMALE |
 #line 6347
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 6348
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .encounterMusic_gender =
 #line 6349
 F_TRAINER_FEMALE | 
@@ -16549,7 +16549,7 @@ F_TRAINER_FEMALE |
 #line 6352
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16574,7 +16574,7 @@ F_TRAINER_FEMALE |
 #line 6360
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
 #line 6361
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .encounterMusic_gender =
 #line 6362
 F_TRAINER_FEMALE | 
@@ -16585,7 +16585,7 @@ F_TRAINER_FEMALE |
 #line 6365
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16610,7 +16610,7 @@ F_TRAINER_FEMALE |
 #line 6373
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
 #line 6374
-        .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_ADMIN,
         .encounterMusic_gender =
 #line 6377
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -16621,7 +16621,7 @@ F_TRAINER_FEMALE |
 #line 6375
         .mugshotColor = MUGSHOT_COLOR_MISTY,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_ADMIN,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_ADMIN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -16657,7 +16657,7 @@ F_TRAINER_FEMALE |
 #line 6391
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
 #line 6392
-        .trainerPic = TRAINER_PIC_MAGMA_ADMIN_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_ADMIN_F,
         .encounterMusic_gender =
 #line 6393
 F_TRAINER_FEMALE | 
@@ -16670,7 +16670,7 @@ F_TRAINER_FEMALE |
 #line 6395
         .mugshotColor = MUGSHOT_COLOR_MISTY,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_ADMIN_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_ADMIN_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -16717,7 +16717,7 @@ F_TRAINER_FEMALE |
 #line 6413
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
 #line 6414
-        .trainerPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_LEADER_MAXIE,
         .encounterMusic_gender =
 #line 6417
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -16728,7 +16728,7 @@ F_TRAINER_FEMALE |
 #line 6415
         .mugshotColor = MUGSHOT_COLOR_MISTY,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_LEADER_MAXIE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -16775,7 +16775,7 @@ F_TRAINER_FEMALE |
 #line 6435
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 6436
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 6437
 F_TRAINER_FEMALE | 
@@ -16786,7 +16786,7 @@ F_TRAINER_FEMALE |
 #line 6440
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -16822,7 +16822,7 @@ F_TRAINER_FEMALE |
 #line 6452
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 6453
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 6454
 F_TRAINER_FEMALE | 
@@ -16833,7 +16833,7 @@ F_TRAINER_FEMALE |
 #line 6457
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16858,7 +16858,7 @@ F_TRAINER_FEMALE |
 #line 6465
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 6466
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 6468
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -16867,7 +16867,7 @@ F_TRAINER_FEMALE |
 #line 6470
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -16914,7 +16914,7 @@ F_TRAINER_FEMALE |
 #line 6486
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 6487
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 6489
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -16923,7 +16923,7 @@ F_TRAINER_FEMALE |
 #line 6491
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16948,7 +16948,7 @@ F_TRAINER_FEMALE |
 #line 6499
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 6500
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 6502
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -16957,7 +16957,7 @@ F_TRAINER_FEMALE |
 #line 6504
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -16982,7 +16982,7 @@ F_TRAINER_FEMALE |
 #line 6512
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 6513
-        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_F,
         .encounterMusic_gender =
 #line 6514
 F_TRAINER_FEMALE | 
@@ -16993,7 +16993,7 @@ F_TRAINER_FEMALE |
 #line 6517
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -17018,7 +17018,7 @@ F_TRAINER_FEMALE |
 #line 6525
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 6526
-        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_M,
         .encounterMusic_gender =
 #line 6528
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -17027,7 +17027,7 @@ F_TRAINER_FEMALE |
 #line 6530
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17063,7 +17063,7 @@ F_TRAINER_FEMALE |
 #line 6542
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 6543
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 6544
 F_TRAINER_FEMALE | 
@@ -17074,7 +17074,7 @@ F_TRAINER_FEMALE |
 #line 6547
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17110,7 +17110,7 @@ F_TRAINER_FEMALE |
 #line 6559
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 6560
-        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_F,
         .encounterMusic_gender =
 #line 6561
 F_TRAINER_FEMALE | 
@@ -17121,7 +17121,7 @@ F_TRAINER_FEMALE |
 #line 6564
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17157,7 +17157,7 @@ F_TRAINER_FEMALE |
 #line 6576
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 6577
-        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_M,
         .encounterMusic_gender =
 #line 6579
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -17166,7 +17166,7 @@ F_TRAINER_FEMALE |
 #line 6581
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17202,7 +17202,7 @@ F_TRAINER_FEMALE |
 #line 6593
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 6594
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 6596
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -17211,7 +17211,7 @@ F_TRAINER_FEMALE |
 #line 6598
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17247,7 +17247,7 @@ F_TRAINER_FEMALE |
 #line 6610
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 6611
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 6612
 F_TRAINER_FEMALE | 
@@ -17258,7 +17258,7 @@ F_TRAINER_FEMALE |
 #line 6615
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17305,7 +17305,7 @@ F_TRAINER_FEMALE |
 #line 6632
         .trainerClass = TRAINER_CLASS_FISHERMAN,
 #line 6633
-        .trainerPic = TRAINER_PIC_FISHERMAN,
+        .trainerPic = TRAINER_PIC_FRONT_FISHERMAN,
         .encounterMusic_gender =
 #line 6635
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -17314,7 +17314,7 @@ F_TRAINER_FEMALE |
 #line 6637
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_FISHERMAN,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -17361,7 +17361,7 @@ F_TRAINER_FEMALE |
 #line 6653
         .trainerClass = TRAINER_CLASS_FISHERMAN,
 #line 6654
-        .trainerPic = TRAINER_PIC_FISHERMAN,
+        .trainerPic = TRAINER_PIC_FRONT_FISHERMAN,
         .encounterMusic_gender =
 #line 6656
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -17370,7 +17370,7 @@ F_TRAINER_FEMALE |
 #line 6658
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_FISHERMAN,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -17417,7 +17417,7 @@ F_TRAINER_FEMALE |
 #line 6674
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
 #line 6675
-        .trainerPic = TRAINER_PIC_BLACK_BELT,
+        .trainerPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .encounterMusic_gender =
 #line 6677
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -17426,7 +17426,7 @@ F_TRAINER_FEMALE |
 #line 6679
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
+        .trainerBackPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -17451,7 +17451,7 @@ F_TRAINER_FEMALE |
 #line 6687
         .trainerClass = TRAINER_CLASS_FISHERMAN,
 #line 6688
-        .trainerPic = TRAINER_PIC_FISHERMAN,
+        .trainerPic = TRAINER_PIC_FRONT_FISHERMAN,
         .encounterMusic_gender =
 #line 6690
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -17460,7 +17460,7 @@ F_TRAINER_FEMALE |
 #line 6692
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_FISHERMAN,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17496,7 +17496,7 @@ F_TRAINER_FEMALE |
 #line 6704
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 6705
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 6707
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -17505,7 +17505,7 @@ F_TRAINER_FEMALE |
 #line 6709
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -17530,7 +17530,7 @@ F_TRAINER_FEMALE |
 #line 6717
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 6718
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 6719
 F_TRAINER_FEMALE | 
@@ -17541,7 +17541,7 @@ F_TRAINER_FEMALE |
 #line 6722
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -17566,7 +17566,7 @@ F_TRAINER_FEMALE |
 #line 6730
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 6731
-        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_F,
         .encounterMusic_gender =
 #line 6732
 F_TRAINER_FEMALE | 
@@ -17577,7 +17577,7 @@ F_TRAINER_FEMALE |
 #line 6735
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -17602,7 +17602,7 @@ F_TRAINER_FEMALE |
 #line 6743
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 6744
-        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_M,
         .encounterMusic_gender =
 #line 6746
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -17611,7 +17611,7 @@ F_TRAINER_FEMALE |
 #line 6748
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -17636,7 +17636,7 @@ F_TRAINER_FEMALE |
 #line 6756
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 6757
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 6759
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -17645,7 +17645,7 @@ F_TRAINER_FEMALE |
 #line 6761
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -17670,7 +17670,7 @@ F_TRAINER_FEMALE |
 #line 6769
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 6770
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 6772
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -17679,7 +17679,7 @@ F_TRAINER_FEMALE |
 #line 6774
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -17704,7 +17704,7 @@ F_TRAINER_FEMALE |
 #line 6782
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 6783
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 6785
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -17713,7 +17713,7 @@ F_TRAINER_FEMALE |
 #line 6787
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -17738,7 +17738,7 @@ F_TRAINER_FEMALE |
 #line 6795
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
 #line 6796
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .encounterMusic_gender =
 #line 6797
 F_TRAINER_FEMALE | 
@@ -17749,7 +17749,7 @@ F_TRAINER_FEMALE |
 #line 6800
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -17774,7 +17774,7 @@ F_TRAINER_FEMALE |
 #line 6808
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
 #line 6809
-        .trainerPic = TRAINER_PIC_AQUA_ADMIN_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_ADMIN_F,
         .encounterMusic_gender =
 #line 6811
 F_TRAINER_FEMALE | 
@@ -17787,7 +17787,7 @@ F_TRAINER_FEMALE |
 #line 6810
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_ADMIN_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_ADMIN_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17823,7 +17823,7 @@ F_TRAINER_FEMALE |
 #line 6826
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
 #line 6827
-        .trainerPic = TRAINER_PIC_AQUA_ADMIN_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_ADMIN_M,
         .encounterMusic_gender =
 #line 6830
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -17834,7 +17834,7 @@ F_TRAINER_FEMALE |
 #line 6828
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_ADMIN_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_ADMIN_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17870,7 +17870,7 @@ F_TRAINER_FEMALE |
 #line 6844
         .trainerClass = TRAINER_CLASS_AQUA_LEADER,
 #line 6845
-        .trainerPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_LEADER_ARCHIE,
         .encounterMusic_gender =
 #line 6848
             TRAINER_ENCOUNTER_MUSIC_AQUA,
@@ -17881,7 +17881,7 @@ F_TRAINER_FEMALE |
 #line 6846
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_LEADER_ARCHIE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -17928,7 +17928,7 @@ F_TRAINER_FEMALE |
 #line 6866
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 6867
-        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_M,
         .encounterMusic_gender =
 #line 6869
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -17937,7 +17937,7 @@ F_TRAINER_FEMALE |
 #line 6871
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -17973,7 +17973,7 @@ F_TRAINER_FEMALE |
 #line 6883
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 6884
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 6886
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -17982,7 +17982,7 @@ F_TRAINER_FEMALE |
 #line 6888
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18018,7 +18018,7 @@ F_TRAINER_FEMALE |
 #line 6900
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 6901
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 6902
 F_TRAINER_FEMALE | 
@@ -18029,7 +18029,7 @@ F_TRAINER_FEMALE |
 #line 6905
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -18054,7 +18054,7 @@ F_TRAINER_FEMALE |
 #line 6913
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 6914
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 6916
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -18063,7 +18063,7 @@ F_TRAINER_FEMALE |
 #line 6918
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -18088,7 +18088,7 @@ F_TRAINER_FEMALE |
 #line 6926
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 6927
-        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_F,
         .encounterMusic_gender =
 #line 6928
 F_TRAINER_FEMALE | 
@@ -18099,7 +18099,7 @@ F_TRAINER_FEMALE |
 #line 6931
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18135,7 +18135,7 @@ F_TRAINER_FEMALE |
 #line 6943
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 6944
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 6945
 F_TRAINER_FEMALE | 
@@ -18146,7 +18146,7 @@ F_TRAINER_FEMALE |
 #line 6948
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18182,7 +18182,7 @@ F_TRAINER_FEMALE |
 #line 6960
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 6961
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 6963
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -18191,7 +18191,7 @@ F_TRAINER_FEMALE |
 #line 6965
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18227,7 +18227,7 @@ F_TRAINER_FEMALE |
 #line 6977
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 6978
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 6980
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -18236,7 +18236,7 @@ F_TRAINER_FEMALE |
 #line 6982
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -18261,7 +18261,7 @@ F_TRAINER_FEMALE |
 #line 6990
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 6991
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 6993
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -18270,7 +18270,7 @@ F_TRAINER_FEMALE |
 #line 6995
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -18295,7 +18295,7 @@ F_TRAINER_FEMALE |
 #line 7003
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 7004
-        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_F,
         .encounterMusic_gender =
 #line 7005
 F_TRAINER_FEMALE | 
@@ -18306,7 +18306,7 @@ F_TRAINER_FEMALE |
 #line 7008
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMING_TRIATHLETE_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMING_TRIATHLETE_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -18331,7 +18331,7 @@ F_TRAINER_FEMALE |
 #line 7016
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 7017
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 7018
 F_TRAINER_FEMALE | 
@@ -18342,7 +18342,7 @@ F_TRAINER_FEMALE |
 #line 7021
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -18367,7 +18367,7 @@ F_TRAINER_FEMALE |
 #line 7029
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 7030
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 7032
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -18376,7 +18376,7 @@ F_TRAINER_FEMALE |
 #line 7034
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -18401,7 +18401,7 @@ F_TRAINER_FEMALE |
 #line 7042
         .trainerClass = TRAINER_CLASS_SIS_AND_BRO,
 #line 7043
-        .trainerPic = TRAINER_PIC_SIS_AND_BRO,
+        .trainerPic = TRAINER_PIC_FRONT_SIS_AND_BRO,
         .encounterMusic_gender =
 #line 7045
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -18410,7 +18410,7 @@ F_TRAINER_FEMALE |
 #line 7047
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SIS_AND_BRO,
+        .trainerBackPic = TRAINER_PIC_FRONT_SIS_AND_BRO,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18446,7 +18446,7 @@ F_TRAINER_FEMALE |
 #line 7059
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 7060
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 7062
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -18455,7 +18455,7 @@ F_TRAINER_FEMALE |
 #line 7064
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18491,7 +18491,7 @@ F_TRAINER_FEMALE |
 #line 7076
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 7077
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 7078
 F_TRAINER_FEMALE | 
@@ -18502,7 +18502,7 @@ F_TRAINER_FEMALE |
 #line 7081
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -18527,7 +18527,7 @@ F_TRAINER_FEMALE |
 #line 7089
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 7090
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 7092
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -18536,7 +18536,7 @@ F_TRAINER_FEMALE |
 #line 7094
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -18561,7 +18561,7 @@ F_TRAINER_FEMALE |
 #line 7102
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 7103
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 7104
 F_TRAINER_FEMALE | 
@@ -18572,7 +18572,7 @@ F_TRAINER_FEMALE |
 #line 7107
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -18597,7 +18597,7 @@ F_TRAINER_FEMALE |
 #line 7115
         .trainerClass = TRAINER_CLASS_EXPERT,
 #line 7116
-        .trainerPic = TRAINER_PIC_EXPERT_M,
+        .trainerPic = TRAINER_PIC_FRONT_EXPERT_M,
         .encounterMusic_gender =
 #line 7118
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -18606,7 +18606,7 @@ F_TRAINER_FEMALE |
 #line 7120
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_EXPERT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_EXPERT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18642,7 +18642,7 @@ F_TRAINER_FEMALE |
 #line 7132
         .trainerClass = TRAINER_CLASS_EXPERT,
 #line 7133
-        .trainerPic = TRAINER_PIC_EXPERT_F,
+        .trainerPic = TRAINER_PIC_FRONT_EXPERT_F,
         .encounterMusic_gender =
 #line 7134
 F_TRAINER_FEMALE | 
@@ -18653,7 +18653,7 @@ F_TRAINER_FEMALE |
 #line 7137
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_EXPERT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_EXPERT_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18689,7 +18689,7 @@ F_TRAINER_FEMALE |
 #line 7149
         .trainerClass = TRAINER_CLASS_FISHERMAN,
 #line 7150
-        .trainerPic = TRAINER_PIC_FISHERMAN,
+        .trainerPic = TRAINER_PIC_FRONT_FISHERMAN,
         .encounterMusic_gender =
 #line 7152
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -18698,7 +18698,7 @@ F_TRAINER_FEMALE |
 #line 7154
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_FISHERMAN,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -18778,7 +18778,7 @@ F_TRAINER_FEMALE |
 #line 7182
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
 #line 7183
-        .trainerPic = TRAINER_PIC_BLACK_BELT,
+        .trainerPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .encounterMusic_gender =
 #line 7185
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -18787,7 +18787,7 @@ F_TRAINER_FEMALE |
 #line 7187
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
+        .trainerBackPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -18812,7 +18812,7 @@ F_TRAINER_FEMALE |
 #line 7195
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 7196
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 7198
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -18821,7 +18821,7 @@ F_TRAINER_FEMALE |
 #line 7200
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18857,7 +18857,7 @@ F_TRAINER_FEMALE |
 #line 7212
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 7213
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 7214
 F_TRAINER_FEMALE | 
@@ -18868,7 +18868,7 @@ F_TRAINER_FEMALE |
 #line 7217
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18904,7 +18904,7 @@ F_TRAINER_FEMALE |
 #line 7229
         .trainerClass = TRAINER_CLASS_EXPERT,
 #line 7230
-        .trainerPic = TRAINER_PIC_EXPERT_F,
+        .trainerPic = TRAINER_PIC_FRONT_EXPERT_F,
         .encounterMusic_gender =
 #line 7231
 F_TRAINER_FEMALE | 
@@ -18915,7 +18915,7 @@ F_TRAINER_FEMALE |
 #line 7234
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_EXPERT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_EXPERT_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18951,7 +18951,7 @@ F_TRAINER_FEMALE |
 #line 7246
         .trainerClass = TRAINER_CLASS_EXPERT,
 #line 7247
-        .trainerPic = TRAINER_PIC_EXPERT_M,
+        .trainerPic = TRAINER_PIC_FRONT_EXPERT_M,
         .encounterMusic_gender =
 #line 7249
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -18960,7 +18960,7 @@ F_TRAINER_FEMALE |
 #line 7251
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_EXPERT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_EXPERT_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -18996,7 +18996,7 @@ F_TRAINER_FEMALE |
 #line 7263
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 7264
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 7266
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -19005,7 +19005,7 @@ F_TRAINER_FEMALE |
 #line 7268
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -19030,7 +19030,7 @@ F_TRAINER_FEMALE |
 #line 7276
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 7277
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 7279
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -19039,7 +19039,7 @@ F_TRAINER_FEMALE |
 #line 7281
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -19075,7 +19075,7 @@ F_TRAINER_FEMALE |
 #line 7293
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 7294
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 7296
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -19084,7 +19084,7 @@ F_TRAINER_FEMALE |
 #line 7298
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -19109,7 +19109,7 @@ F_TRAINER_FEMALE |
 #line 7306
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 7307
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 7308
 F_TRAINER_FEMALE | 
@@ -19120,7 +19120,7 @@ F_TRAINER_FEMALE |
 #line 7311
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -19145,7 +19145,7 @@ F_TRAINER_FEMALE |
 #line 7319
         .trainerClass = TRAINER_CLASS_SAILOR,
 #line 7320
-        .trainerPic = TRAINER_PIC_SAILOR,
+        .trainerPic = TRAINER_PIC_FRONT_SAILOR,
         .encounterMusic_gender =
 #line 7322
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -19154,7 +19154,7 @@ F_TRAINER_FEMALE |
 #line 7324
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SAILOR,
+        .trainerBackPic = TRAINER_PIC_FRONT_SAILOR,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -19179,7 +19179,7 @@ F_TRAINER_FEMALE |
 #line 7332
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 7333
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 7334
 F_TRAINER_FEMALE | 
@@ -19190,7 +19190,7 @@ F_TRAINER_FEMALE |
 #line 7337
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -19226,7 +19226,7 @@ F_TRAINER_FEMALE |
 #line 7349
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 7350
-        .trainerPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .encounterMusic_gender =
 #line 7351
 F_TRAINER_FEMALE | 
@@ -19237,7 +19237,7 @@ F_TRAINER_FEMALE |
 #line 7354
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerBackPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -19273,7 +19273,7 @@ F_TRAINER_FEMALE |
 #line 7366
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
 #line 7367
-        .trainerPic = TRAINER_PIC_BLACK_BELT,
+        .trainerPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .encounterMusic_gender =
 #line 7369
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -19282,7 +19282,7 @@ F_TRAINER_FEMALE |
 #line 7371
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
+        .trainerBackPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -19318,7 +19318,7 @@ F_TRAINER_FEMALE |
 #line 7383
         .trainerClass = TRAINER_CLASS_SWIMMER_F,
 #line 7384
-        .trainerPic = TRAINER_PIC_SWIMMER_F,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .encounterMusic_gender =
 #line 7385
 F_TRAINER_FEMALE | 
@@ -19329,7 +19329,7 @@ F_TRAINER_FEMALE |
 #line 7388
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -19365,7 +19365,7 @@ F_TRAINER_FEMALE |
 #line 7400
         .trainerClass = TRAINER_CLASS_SWIMMER_M,
 #line 7401
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .encounterMusic_gender =
 #line 7403
             TRAINER_ENCOUNTER_MUSIC_SWIMMER,
@@ -19374,7 +19374,7 @@ F_TRAINER_FEMALE |
 #line 7405
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SWIMMER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_SWIMMER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -19399,7 +19399,7 @@ F_TRAINER_FEMALE |
 #line 7413
         .trainerClass = TRAINER_CLASS_DRAGON_TAMER,
 #line 7414
-        .trainerPic = TRAINER_PIC_DRAGON_TAMER,
+        .trainerPic = TRAINER_PIC_FRONT_DRAGON_TAMER,
         .encounterMusic_gender =
 #line 7416
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -19408,7 +19408,7 @@ F_TRAINER_FEMALE |
 #line 7418
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_DRAGON_TAMER,
+        .trainerBackPic = TRAINER_PIC_FRONT_DRAGON_TAMER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -19440,7 +19440,7 @@ F_TRAINER_FEMALE |
 #line 7430
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 7431
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 7432
 F_TRAINER_FEMALE | 
@@ -19451,7 +19451,7 @@ F_TRAINER_FEMALE |
 #line 7435
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -19483,7 +19483,7 @@ F_TRAINER_FEMALE |
 #line 7447
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 7448
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 7450
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -19492,7 +19492,7 @@ F_TRAINER_FEMALE |
 #line 7452
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -19528,7 +19528,7 @@ F_TRAINER_FEMALE |
 #line 7464
         .trainerClass = TRAINER_CLASS_SAILOR,
 #line 7465
-        .trainerPic = TRAINER_PIC_SAILOR,
+        .trainerPic = TRAINER_PIC_FRONT_SAILOR,
         .encounterMusic_gender =
 #line 7467
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -19537,7 +19537,7 @@ F_TRAINER_FEMALE |
 #line 7469
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SAILOR,
+        .trainerBackPic = TRAINER_PIC_FRONT_SAILOR,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -19573,7 +19573,7 @@ F_TRAINER_FEMALE |
 #line 7481
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
 #line 7482
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 7484
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -19582,7 +19582,7 @@ F_TRAINER_FEMALE |
 #line 7486
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -19662,7 +19662,7 @@ F_TRAINER_FEMALE |
 #line 7514
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
 #line 7515
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 7517
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -19671,7 +19671,7 @@ F_TRAINER_FEMALE |
 #line 7519
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -19751,7 +19751,7 @@ F_TRAINER_FEMALE |
 #line 7547
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
 #line 7548
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .encounterMusic_gender =
 #line 7549
 F_TRAINER_FEMALE | 
@@ -19762,7 +19762,7 @@ F_TRAINER_FEMALE |
 #line 7552
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -19842,7 +19842,7 @@ F_TRAINER_FEMALE |
 #line 7580
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
 #line 7581
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .encounterMusic_gender =
 #line 7582
 F_TRAINER_FEMALE | 
@@ -19853,7 +19853,7 @@ F_TRAINER_FEMALE |
 #line 7585
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -19933,7 +19933,7 @@ F_TRAINER_FEMALE |
 #line 7613
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
 #line 7614
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .encounterMusic_gender =
 #line 7616
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -19942,7 +19942,7 @@ F_TRAINER_FEMALE |
 #line 7618
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -19967,7 +19967,7 @@ F_TRAINER_FEMALE |
 #line 7626
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
 #line 7627
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .encounterMusic_gender =
 #line 7628
 F_TRAINER_FEMALE | 
@@ -19978,7 +19978,7 @@ F_TRAINER_FEMALE |
 #line 7631
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_F,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -20058,7 +20058,7 @@ F_TRAINER_FEMALE |
 #line 7659
         .trainerClass = TRAINER_CLASS_TEAM_AQUA_MIXED,
 #line 7660
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .encounterMusic_gender =
 #line 7662
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -20067,7 +20067,7 @@ F_TRAINER_FEMALE |
 #line 7664
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_GRUNT_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -20092,7 +20092,7 @@ F_TRAINER_FEMALE |
 #line 7672
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA_MIXED,
 #line 7673
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .encounterMusic_gender =
 #line 7675
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -20101,7 +20101,7 @@ F_TRAINER_FEMALE |
 #line 7677
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_GRUNT_M,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -20181,7 +20181,7 @@ F_TRAINER_FEMALE |
 #line 7705
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
 #line 7706
-        .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_ADMIN,
         .encounterMusic_gender =
 #line 7709
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -20192,7 +20192,7 @@ F_TRAINER_FEMALE |
 #line 7707
         .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_ADMIN,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_ADMIN,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -20275,7 +20275,7 @@ F_TRAINER_FEMALE |
 #line 7742
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
 #line 7743
-        .trainerPic = TRAINER_PIC_AQUA_ADMIN_M,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_ADMIN_M,
         .encounterMusic_gender =
 #line 7746
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -20286,7 +20286,7 @@ F_TRAINER_FEMALE |
 #line 7744
         .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_ADMIN_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_ADMIN_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -20369,7 +20369,7 @@ F_TRAINER_FEMALE |
 #line 7779
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
 #line 7780
-        .trainerPic = TRAINER_PIC_AQUA_ADMIN_F,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_ADMIN_F,
         .encounterMusic_gender =
 #line 7782
 F_TRAINER_FEMALE | 
@@ -20382,7 +20382,7 @@ F_TRAINER_FEMALE |
 #line 7781
         .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_ADMIN_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_ADMIN_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -20418,7 +20418,7 @@ F_TRAINER_FEMALE |
 #line 7797
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
 #line 7798
-        .trainerPic = TRAINER_PIC_MAGMA_ADMIN_F,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_ADMIN_F,
         .encounterMusic_gender =
 #line 7800
 F_TRAINER_FEMALE | 
@@ -20431,7 +20431,7 @@ F_TRAINER_FEMALE |
 #line 7799
         .mugshotColor = MUGSHOT_COLOR_AQUAMAGMA,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_ADMIN_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_ADMIN_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -20467,7 +20467,7 @@ F_TRAINER_FEMALE |
 #line 7815
         .trainerClass = TRAINER_CLASS_AQUA_LEADER,
 #line 7816
-        .trainerPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
+        .trainerPic = TRAINER_PIC_FRONT_AQUA_LEADER_ARCHIE,
         .encounterMusic_gender =
 #line 7819
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -20478,7 +20478,7 @@ F_TRAINER_FEMALE |
 #line 7817
         .mugshotColor = MUGSHOT_COLOR_ARCHIEWITHMAXIE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AQUA_LEADER_ARCHIE,
+        .trainerBackPic = TRAINER_PIC_FRONT_AQUA_LEADER_ARCHIE,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -20629,7 +20629,7 @@ F_TRAINER_FEMALE |
 #line 7878
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
 #line 7879
-        .trainerPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
+        .trainerPic = TRAINER_PIC_FRONT_MAGMA_LEADER_MAXIE,
         .encounterMusic_gender =
 #line 7882
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -20640,7 +20640,7 @@ F_TRAINER_FEMALE |
 #line 7880
         .mugshotColor = MUGSHOT_COLOR_MAXIEWITHARCHIE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
+        .trainerBackPic = TRAINER_PIC_FRONT_MAGMA_LEADER_MAXIE,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -20791,7 +20791,7 @@ F_TRAINER_FEMALE |
 #line 7941
         .trainerClass = TRAINER_CLASS_LASS,
 #line 7942
-        .trainerPic = TRAINER_PIC_LASS,
+        .trainerPic = TRAINER_PIC_FRONT_LASS,
         .encounterMusic_gender =
 #line 7943
 F_TRAINER_FEMALE | 
@@ -20802,7 +20802,7 @@ F_TRAINER_FEMALE |
 #line 7946
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
+        .trainerBackPic = TRAINER_PIC_FRONT_LASS,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -20827,7 +20827,7 @@ F_TRAINER_FEMALE |
 #line 7954
         .trainerClass = TRAINER_CLASS_BEAUTY,
 #line 7955
-        .trainerPic = TRAINER_PIC_BEAUTY,
+        .trainerPic = TRAINER_PIC_FRONT_BEAUTY,
         .encounterMusic_gender =
 #line 7956
 F_TRAINER_FEMALE | 
@@ -20838,7 +20838,7 @@ F_TRAINER_FEMALE |
 #line 7959
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BEAUTY,
+        .trainerBackPic = TRAINER_PIC_FRONT_BEAUTY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -20863,7 +20863,7 @@ F_TRAINER_FEMALE |
 #line 7967
         .trainerClass = TRAINER_CLASS_LADY,
 #line 7968
-        .trainerPic = TRAINER_PIC_LADY,
+        .trainerPic = TRAINER_PIC_FRONT_LADY,
         .encounterMusic_gender =
 #line 7969
 F_TRAINER_FEMALE | 
@@ -20874,7 +20874,7 @@ F_TRAINER_FEMALE |
 #line 7972
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LADY,
+        .trainerBackPic = TRAINER_PIC_FRONT_LADY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -20928,7 +20928,7 @@ F_TRAINER_FEMALE |
 #line 7992
         .trainerClass = TRAINER_CLASS_POKEFAN,
 #line 7993
-        .trainerPic = TRAINER_PIC_POKEFAN_F,
+        .trainerPic = TRAINER_PIC_FRONT_POKEFAN_F,
         .encounterMusic_gender =
 #line 7994
 F_TRAINER_FEMALE | 
@@ -20939,7 +20939,7 @@ F_TRAINER_FEMALE |
 #line 7997
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEFAN_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEFAN_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -20993,7 +20993,7 @@ F_TRAINER_FEMALE |
 #line 8017
         .trainerClass = TRAINER_CLASS_BEAUTY,
 #line 8018
-        .trainerPic = TRAINER_PIC_BEAUTY,
+        .trainerPic = TRAINER_PIC_FRONT_BEAUTY,
         .encounterMusic_gender =
 #line 8019
 F_TRAINER_FEMALE | 
@@ -21004,7 +21004,7 @@ F_TRAINER_FEMALE |
 #line 8022
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BEAUTY,
+        .trainerBackPic = TRAINER_PIC_FRONT_BEAUTY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -21071,7 +21071,7 @@ F_TRAINER_FEMALE |
 #line 8049
         .trainerClass = TRAINER_CLASS_LADY,
 #line 8050
-        .trainerPic = TRAINER_PIC_LADY,
+        .trainerPic = TRAINER_PIC_FRONT_LADY,
         .encounterMusic_gender =
 #line 8051
 F_TRAINER_FEMALE | 
@@ -21082,7 +21082,7 @@ F_TRAINER_FEMALE |
 #line 8054
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LADY,
+        .trainerBackPic = TRAINER_PIC_FRONT_LADY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -21109,7 +21109,7 @@ F_TRAINER_FEMALE |
 #line 8062
         .trainerClass = TRAINER_CLASS_LASS,
 #line 8063
-        .trainerPic = TRAINER_PIC_LASS,
+        .trainerPic = TRAINER_PIC_FRONT_LASS,
         .encounterMusic_gender =
 #line 8064
 F_TRAINER_FEMALE | 
@@ -21120,7 +21120,7 @@ F_TRAINER_FEMALE |
 #line 8067
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LASS,
+        .trainerBackPic = TRAINER_PIC_FRONT_LASS,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -21156,7 +21156,7 @@ F_TRAINER_FEMALE |
 #line 8079
         .trainerClass = TRAINER_CLASS_POKEFAN,
 #line 8080
-        .trainerPic = TRAINER_PIC_POKEFAN_F,
+        .trainerPic = TRAINER_PIC_FRONT_POKEFAN_F,
         .encounterMusic_gender =
 #line 8081
 F_TRAINER_FEMALE | 
@@ -21167,7 +21167,7 @@ F_TRAINER_FEMALE |
 #line 8084
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEFAN_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEFAN_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -21220,7 +21220,7 @@ F_TRAINER_FEMALE |
 #line 8100
         .trainerClass = TRAINER_CLASS_BEAUTY,
 #line 8101
-        .trainerPic = TRAINER_PIC_BEAUTY,
+        .trainerPic = TRAINER_PIC_FRONT_BEAUTY,
         .encounterMusic_gender =
 #line 8102
 F_TRAINER_FEMALE | 
@@ -21231,7 +21231,7 @@ F_TRAINER_FEMALE |
 #line 8105
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BEAUTY,
+        .trainerBackPic = TRAINER_PIC_FRONT_BEAUTY,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -21267,7 +21267,7 @@ F_TRAINER_FEMALE |
 #line 8117
         .trainerClass = TRAINER_CLASS_BEAUTY,
 #line 8118
-        .trainerPic = TRAINER_PIC_BEAUTY,
+        .trainerPic = TRAINER_PIC_FRONT_BEAUTY,
         .encounterMusic_gender =
 #line 8119
 F_TRAINER_FEMALE | 
@@ -21278,7 +21278,7 @@ F_TRAINER_FEMALE |
 #line 8122
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BEAUTY,
+        .trainerBackPic = TRAINER_PIC_FRONT_BEAUTY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -21303,7 +21303,7 @@ F_TRAINER_FEMALE |
 #line 8130
         .trainerClass = TRAINER_CLASS_LEADER,
 #line 8132
-        .trainerPic = TRAINER_PIC_LEADER_JUAN,
+        .trainerPic = TRAINER_PIC_FRONT_LEADER_JUAN,
         .encounterMusic_gender =
 #line 8134
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -21314,7 +21314,7 @@ F_TRAINER_FEMALE |
 #line 8131
         .mugshotColor = MUGSHOT_COLOR_BLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LEADER_JUAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_LEADER_JUAN,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -21420,7 +21420,7 @@ F_TRAINER_FEMALE |
 #line 8180
         .trainerClass = TRAINER_CLASS_PYRAMID_KING,
 #line 8181
-        .trainerPic = TRAINER_PIC_PYRAMID_KING_BRANDON,
+        .trainerPic = TRAINER_PIC_FRONT_PYRAMID_KING_BRANDON,
         .encounterMusic_gender =
 #line 8184
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -21431,7 +21431,7 @@ F_TRAINER_FEMALE |
 #line 8182
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PYRAMID_KING_BRANDON,
+        .trainerBackPic = TRAINER_PIC_FRONT_PYRAMID_KING_BRANDON,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -21583,7 +21583,7 @@ F_TRAINER_FEMALE |
 #line 8244
         .trainerClass = TRAINER_CLASS_PIKE_QUEEN,
 #line 8245
-        .trainerPic = TRAINER_PIC_PIKE_QUEEN_LUCY,
+        .trainerPic = TRAINER_PIC_FRONT_PIKE_QUEEN_LUCY,
         .encounterMusic_gender =
 #line 8247
 F_TRAINER_FEMALE | 
@@ -21596,7 +21596,7 @@ F_TRAINER_FEMALE |
 #line 8246
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PIKE_QUEEN_LUCY,
+        .trainerBackPic = TRAINER_PIC_FRONT_PIKE_QUEEN_LUCY,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -21748,7 +21748,7 @@ F_TRAINER_FEMALE |
 #line 8308
         .trainerClass = TRAINER_CLASS_ARENA_TYCOON,
 #line 8309
-        .trainerPic = TRAINER_PIC_ARENA_TYCOON_GRETA,
+        .trainerPic = TRAINER_PIC_FRONT_ARENA_TYCOON_GRETA,
         .encounterMusic_gender =
 #line 8311
 F_TRAINER_FEMALE | 
@@ -21761,7 +21761,7 @@ F_TRAINER_FEMALE |
 #line 8310
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_ARENA_TYCOON_GRETA,
+        .trainerBackPic = TRAINER_PIC_FRONT_ARENA_TYCOON_GRETA,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -21913,7 +21913,7 @@ F_TRAINER_FEMALE |
 #line 8372
         .trainerClass = TRAINER_CLASS_SALON_MAIDEN,
 #line 8373
-        .trainerPic = TRAINER_PIC_SALON_MAIDEN_ANABEL,
+        .trainerPic = TRAINER_PIC_FRONT_SALON_MAIDEN_ANABEL,
         .encounterMusic_gender =
 #line 8375
 F_TRAINER_FEMALE | 
@@ -21926,7 +21926,7 @@ F_TRAINER_FEMALE |
 #line 8374
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_SALON_MAIDEN_ANABEL,
+        .trainerBackPic = TRAINER_PIC_FRONT_SALON_MAIDEN_ANABEL,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -22078,7 +22078,7 @@ F_TRAINER_FEMALE |
 #line 8436
         .trainerClass = TRAINER_CLASS_PALACE_MAVEN,
 #line 8437
-        .trainerPic = TRAINER_PIC_PALACE_MAVEN_SPENSER,
+        .trainerPic = TRAINER_PIC_FRONT_PALACE_MAVEN_SPENSER,
         .encounterMusic_gender =
 #line 8440
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -22089,7 +22089,7 @@ F_TRAINER_FEMALE |
 #line 8438
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PALACE_MAVEN_SPENSER,
+        .trainerBackPic = TRAINER_PIC_FRONT_PALACE_MAVEN_SPENSER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -22241,7 +22241,7 @@ F_TRAINER_FEMALE |
 #line 8500
         .trainerClass = TRAINER_CLASS_FACTORY_HEAD,
 #line 8501
-        .trainerPic = TRAINER_PIC_FACTORY_HEAD_NOLAND,
+        .trainerPic = TRAINER_PIC_FRONT_FACTORY_HEAD_NOLAND,
         .encounterMusic_gender =
 #line 8504
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -22252,7 +22252,7 @@ F_TRAINER_FEMALE |
 #line 8502
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FACTORY_HEAD_NOLAND,
+        .trainerBackPic = TRAINER_PIC_FRONT_FACTORY_HEAD_NOLAND,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -22404,7 +22404,7 @@ F_TRAINER_FEMALE |
 #line 8564
         .trainerClass = TRAINER_CLASS_DOME_ACE,
 #line 8565
-        .trainerPic = TRAINER_PIC_DOME_ACE_TUCKER,
+        .trainerPic = TRAINER_PIC_FRONT_DOME_ACE_TUCKER,
         .encounterMusic_gender =
 #line 8568
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -22415,7 +22415,7 @@ F_TRAINER_FEMALE |
 #line 8566
         .mugshotColor = MUGSHOT_COLOR_RED,
 #line 0
-        .trainerBackPic = TRAINER_PIC_DOME_ACE_TUCKER,
+        .trainerBackPic = TRAINER_PIC_FRONT_DOME_ACE_TUCKER,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -22567,7 +22567,7 @@ F_TRAINER_FEMALE |
 #line 8628
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 8629
-        .trainerPic = TRAINER_PIC_WALLY,
+        .trainerPic = TRAINER_PIC_FRONT_WALLY,
         .encounterMusic_gender =
 #line 8632
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -22578,7 +22578,7 @@ F_TRAINER_FEMALE |
 #line 8630
         .mugshotColor = MUGSHOT_COLOR_WHITE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_WALLY,
+        .trainerBackPic = TRAINER_PIC_FRONT_WALLY,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -22682,7 +22682,7 @@ F_TRAINER_FEMALE |
 #line 8678
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8679
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 8681
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -22691,7 +22691,7 @@ F_TRAINER_FEMALE |
 #line 8683
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -22727,7 +22727,7 @@ F_TRAINER_FEMALE |
 #line 8695
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8696
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 8697
 F_TRAINER_FEMALE | 
@@ -22738,7 +22738,7 @@ F_TRAINER_FEMALE |
 #line 8700
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -22763,7 +22763,7 @@ F_TRAINER_FEMALE |
 #line 8708
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8709
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 8710
 F_TRAINER_FEMALE | 
@@ -22774,7 +22774,7 @@ F_TRAINER_FEMALE |
 #line 8713
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -22799,7 +22799,7 @@ F_TRAINER_FEMALE |
 #line 8721
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8722
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 8724
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -22808,7 +22808,7 @@ F_TRAINER_FEMALE |
 #line 8726
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -22855,7 +22855,7 @@ F_TRAINER_FEMALE |
 #line 8742
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8743
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 8744
 F_TRAINER_FEMALE | 
@@ -22866,7 +22866,7 @@ F_TRAINER_FEMALE |
 #line 8747
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -22912,7 +22912,7 @@ F_TRAINER_FEMALE |
 #line 8763
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8764
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 8765
 F_TRAINER_FEMALE | 
@@ -22923,7 +22923,7 @@ F_TRAINER_FEMALE |
 #line 8768
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -22970,7 +22970,7 @@ F_TRAINER_FEMALE |
 #line 8784
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8785
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 8786
 F_TRAINER_FEMALE | 
@@ -22981,7 +22981,7 @@ F_TRAINER_FEMALE |
 #line 8789
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23017,7 +23017,7 @@ F_TRAINER_FEMALE |
 #line 8801
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8802
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 8804
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -23026,7 +23026,7 @@ F_TRAINER_FEMALE |
 #line 8806
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -23073,7 +23073,7 @@ F_TRAINER_FEMALE |
 #line 8822
         .trainerClass = TRAINER_CLASS_WINSTRATE,
 #line 8823
-        .trainerPic = TRAINER_PIC_VITO,
+        .trainerPic = TRAINER_PIC_FRONT_VITO,
         .encounterMusic_gender =
 #line 8826
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -23084,7 +23084,7 @@ F_TRAINER_FEMALE |
 #line 8824
         .mugshotColor = MUGSHOT_COLOR_ORANGE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_VITO,
+        .trainerBackPic = TRAINER_PIC_FRONT_VITO,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -23142,7 +23142,7 @@ F_TRAINER_FEMALE |
 #line 8848
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8849
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 8851
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -23151,7 +23151,7 @@ F_TRAINER_FEMALE |
 #line 8853
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23196,7 +23196,7 @@ F_TRAINER_FEMALE |
 #line 8868
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8869
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 8870
 F_TRAINER_FEMALE | 
@@ -23207,7 +23207,7 @@ F_TRAINER_FEMALE |
 #line 8873
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23243,7 +23243,7 @@ F_TRAINER_FEMALE |
 #line 8885
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8886
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 8888
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -23252,7 +23252,7 @@ F_TRAINER_FEMALE |
 #line 8890
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23302,7 +23302,7 @@ F_TRAINER_FEMALE |
 #line 8910
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8911
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 8912
 F_TRAINER_FEMALE | 
@@ -23313,7 +23313,7 @@ F_TRAINER_FEMALE |
 #line 8915
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -23360,7 +23360,7 @@ F_TRAINER_FEMALE |
 #line 8931
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8932
-        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .encounterMusic_gender =
 #line 8933
 F_TRAINER_FEMALE | 
@@ -23371,7 +23371,7 @@ F_TRAINER_FEMALE |
 #line 8936
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23421,7 +23421,7 @@ F_TRAINER_FEMALE |
 #line 8956
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
 #line 8957
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 8959
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -23430,7 +23430,7 @@ F_TRAINER_FEMALE |
 #line 8961
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_COOLTRAINER_M,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23480,7 +23480,7 @@ F_TRAINER_FEMALE |
 #line 8981
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_2,
 #line 8982
-        .trainerPic = TRAINER_PIC_GREEN,
+        .trainerPic = TRAINER_PIC_FRONT_GREEN,
         .encounterMusic_gender =
 #line 8983
 F_TRAINER_FEMALE | 
@@ -23493,7 +23493,7 @@ F_TRAINER_FEMALE |
 #line 8984
         .mugshotColor = MUGSHOT_COLOR_PINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_GREEN,
+        .trainerBackPic = TRAINER_PIC_FRONT_GREEN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -23525,7 +23525,7 @@ F_TRAINER_FEMALE |
 #line 8999
         .trainerClass = TRAINER_CLASS_OLD_COUPLE,
 #line 9000
-        .trainerPic = TRAINER_PIC_OLD_COUPLE,
+        .trainerPic = TRAINER_PIC_FRONT_OLD_COUPLE,
         .encounterMusic_gender =
 #line 9002
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -23534,7 +23534,7 @@ F_TRAINER_FEMALE |
 #line 9004
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_OLD_COUPLE,
+        .trainerBackPic = TRAINER_PIC_FRONT_OLD_COUPLE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23584,7 +23584,7 @@ F_TRAINER_FEMALE |
 #line 9024
         .trainerClass = TRAINER_CLASS_PSYCHIC,
 #line 9025
-        .trainerPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerPic = TRAINER_PIC_FRONT_PSYCHIC_M,
         .encounterMusic_gender =
 #line 9027
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -23593,7 +23593,7 @@ F_TRAINER_FEMALE |
 #line 9029
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_PSYCHIC_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -23618,7 +23618,7 @@ F_TRAINER_FEMALE |
 #line 9037
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
 #line 9038
-        .trainerPic = TRAINER_PIC_BLACK_BELT,
+        .trainerPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .encounterMusic_gender =
 #line 9040
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -23627,7 +23627,7 @@ F_TRAINER_FEMALE |
 #line 9042
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BLACK_BELT,
+        .trainerBackPic = TRAINER_PIC_FRONT_BLACK_BELT,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23663,7 +23663,7 @@ F_TRAINER_FEMALE |
 #line 9054
         .trainerClass = TRAINER_CLASS_EXPERT,
 #line 9055
-        .trainerPic = TRAINER_PIC_EXPERT_M,
+        .trainerPic = TRAINER_PIC_FRONT_EXPERT_M,
         .encounterMusic_gender =
 #line 9057
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -23672,7 +23672,7 @@ F_TRAINER_FEMALE |
 #line 9059
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_EXPERT_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_EXPERT_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -23697,7 +23697,7 @@ F_TRAINER_FEMALE |
 #line 9067
         .trainerClass = TRAINER_CLASS_TRIATHLETE,
 #line 9068
-        .trainerPic = TRAINER_PIC_RUNNING_TRIATHLETE_F,
+        .trainerPic = TRAINER_PIC_FRONT_RUNNING_TRIATHLETE_F,
         .encounterMusic_gender =
 #line 9069
 F_TRAINER_FEMALE | 
@@ -23708,7 +23708,7 @@ F_TRAINER_FEMALE |
 #line 9072
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RUNNING_TRIATHLETE_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_RUNNING_TRIATHLETE_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23744,7 +23744,7 @@ F_TRAINER_FEMALE |
 #line 9084
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 9085
-        .trainerPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .encounterMusic_gender =
 #line 9086
 F_TRAINER_FEMALE | 
@@ -23755,7 +23755,7 @@ F_TRAINER_FEMALE |
 #line 9089
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerBackPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23791,7 +23791,7 @@ F_TRAINER_FEMALE |
 #line 9101
         .trainerClass = TRAINER_CLASS_BATTLE_GIRL,
 #line 9102
-        .trainerPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .encounterMusic_gender =
 #line 9103
 F_TRAINER_FEMALE | 
@@ -23802,7 +23802,7 @@ F_TRAINER_FEMALE |
 #line 9106
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerBackPic = TRAINER_PIC_FRONT_BATTLE_GIRL,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23838,7 +23838,7 @@ F_TRAINER_FEMALE |
 #line 9118
         .trainerClass = TRAINER_CLASS_KINDLER,
 #line 9119
-        .trainerPic = TRAINER_PIC_KINDLER,
+        .trainerPic = TRAINER_PIC_FRONT_KINDLER,
         .encounterMusic_gender =
 #line 9121
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -23847,7 +23847,7 @@ F_TRAINER_FEMALE |
 #line 9123
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_KINDLER,
+        .trainerBackPic = TRAINER_PIC_FRONT_KINDLER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23883,7 +23883,7 @@ F_TRAINER_FEMALE |
 #line 9135
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 9136
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 9138
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -23892,7 +23892,7 @@ F_TRAINER_FEMALE |
 #line 9140
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -23928,7 +23928,7 @@ F_TRAINER_FEMALE |
 #line 9152
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
 #line 9153
-        .trainerPic = TRAINER_PIC_POKEMON_RANGER_M,
+        .trainerPic = TRAINER_PIC_FRONT_POKEMON_RANGER_M,
         .encounterMusic_gender =
 #line 9155
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -23937,7 +23937,7 @@ F_TRAINER_FEMALE |
 #line 9157
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_M,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEMON_RANGER_M,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -23962,7 +23962,7 @@ F_TRAINER_FEMALE |
 #line 9165
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
 #line 9166
-        .trainerPic = TRAINER_PIC_POKEMON_RANGER_F,
+        .trainerPic = TRAINER_PIC_FRONT_POKEMON_RANGER_F,
         .encounterMusic_gender =
 #line 9167
 F_TRAINER_FEMALE | 
@@ -23973,7 +23973,7 @@ F_TRAINER_FEMALE |
 #line 9170
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_POKEMON_RANGER_F,
+        .trainerBackPic = TRAINER_PIC_FRONT_POKEMON_RANGER_F,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -24009,7 +24009,7 @@ F_TRAINER_FEMALE |
 #line 9182
         .trainerClass = TRAINER_CLASS_FISHERMAN,
 #line 9183
-        .trainerPic = TRAINER_PIC_FISHERMAN,
+        .trainerPic = TRAINER_PIC_FRONT_FISHERMAN,
         .encounterMusic_gender =
 #line 9185
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -24018,7 +24018,7 @@ F_TRAINER_FEMALE |
 #line 9187
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FISHERMAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_FISHERMAN,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -24076,7 +24076,7 @@ F_TRAINER_FEMALE |
 #line 9207
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 9208
-        .trainerPic = TRAINER_PIC_YOUNGSTER,
+        .trainerPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .encounterMusic_gender =
 #line 9210
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -24085,7 +24085,7 @@ F_TRAINER_FEMALE |
 #line 9212
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_YOUNGSTER,
+        .trainerBackPic = TRAINER_PIC_FRONT_YOUNGSTER,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -24132,7 +24132,7 @@ F_TRAINER_FEMALE |
 #line 9228
         .trainerClass = TRAINER_CLASS_AROMA_LADY,
 #line 9229
-        .trainerPic = TRAINER_PIC_AROMA_LADY,
+        .trainerPic = TRAINER_PIC_FRONT_AROMA_LADY,
         .encounterMusic_gender =
 #line 9230
 F_TRAINER_FEMALE | 
@@ -24143,7 +24143,7 @@ F_TRAINER_FEMALE |
 #line 9233
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_AROMA_LADY,
+        .trainerBackPic = TRAINER_PIC_FRONT_AROMA_LADY,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -24190,7 +24190,7 @@ F_TRAINER_FEMALE |
 #line 9249
         .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
 #line 9250
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .encounterMusic_gender =
 #line 9252
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -24199,7 +24199,7 @@ F_TRAINER_FEMALE |
 #line 9254
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerBackPic = TRAINER_PIC_FRONT_BIRD_KEEPER,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -24235,7 +24235,7 @@ F_TRAINER_FEMALE |
 #line 9266
         .trainerClass = TRAINER_CLASS_GUITARIST,
 #line 9267
-        .trainerPic = TRAINER_PIC_GUITARIST,
+        .trainerPic = TRAINER_PIC_FRONT_GUITARIST,
         .encounterMusic_gender =
 #line 9269
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
@@ -24244,7 +24244,7 @@ F_TRAINER_FEMALE |
 #line 9271
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_GUITARIST,
+        .trainerBackPic = TRAINER_PIC_FRONT_GUITARIST,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
@@ -24280,7 +24280,7 @@ F_TRAINER_FEMALE |
 #line 9283
         .trainerClass = TRAINER_CLASS_ELITE_FOUR,
 #line 9284
-        .trainerPic = TRAINER_PIC_ELITE_FOUR_SIDNEY,
+        .trainerPic = TRAINER_PIC_FRONT_ELITE_FOUR_SIDNEY,
         .encounterMusic_gender =
 #line 9286
             TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
@@ -24291,7 +24291,7 @@ F_TRAINER_FEMALE |
 #line 9289
         .mugshotColor = MUGSHOT_COLOR_BLACK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_SIDNEY,
+        .trainerBackPic = TRAINER_PIC_FRONT_ELITE_FOUR_SIDNEY,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -24443,7 +24443,7 @@ F_TRAINER_FEMALE |
 #line 9344
         .trainerClass = TRAINER_CLASS_ELITE_FOUR,
 #line 9345
-        .trainerPic = TRAINER_PIC_ELITE_FOUR_PHOEBE,
+        .trainerPic = TRAINER_PIC_FRONT_ELITE_FOUR_PHOEBE,
         .encounterMusic_gender =
 #line 9346
 F_TRAINER_FEMALE | 
@@ -24456,7 +24456,7 @@ F_TRAINER_FEMALE |
 #line 9350
         .mugshotColor = MUGSHOT_COLOR_DARKPURPLE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_PHOEBE,
+        .trainerBackPic = TRAINER_PIC_FRONT_ELITE_FOUR_PHOEBE,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -24608,7 +24608,7 @@ F_TRAINER_FEMALE |
 #line 9410
         .trainerClass = TRAINER_CLASS_ELITE_FOUR,
 #line 9411
-        .trainerPic = TRAINER_PIC_ELITE_FOUR_GLACIA,
+        .trainerPic = TRAINER_PIC_FRONT_ELITE_FOUR_GLACIA,
         .encounterMusic_gender =
 #line 9412
 F_TRAINER_FEMALE | 
@@ -24621,7 +24621,7 @@ F_TRAINER_FEMALE |
 #line 9416
         .mugshotColor = MUGSHOT_COLOR_WHITE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_GLACIA,
+        .trainerBackPic = TRAINER_PIC_FRONT_ELITE_FOUR_GLACIA,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -24773,7 +24773,7 @@ F_TRAINER_FEMALE |
 #line 9469
         .trainerClass = TRAINER_CLASS_ELITE_FOUR,
 #line 9470
-        .trainerPic = TRAINER_PIC_ELITE_FOUR_DRAKE,
+        .trainerPic = TRAINER_PIC_FRONT_ELITE_FOUR_DRAKE,
         .encounterMusic_gender =
 #line 9472
             TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
@@ -24784,7 +24784,7 @@ F_TRAINER_FEMALE |
 #line 9475
         .mugshotColor = MUGSHOT_COLOR_DRAKE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_ELITE_FOUR_DRAKE,
+        .trainerBackPic = TRAINER_PIC_FRONT_ELITE_FOUR_DRAKE,
         .partySize = 6,
         .party = (const struct TrainerMon[])
         {
@@ -24936,7 +24936,7 @@ F_TRAINER_FEMALE |
 #line 9527
         .trainerClass = TRAINER_CLASS_CHAMPION,
 #line 9528
-        .trainerPic = TRAINER_PIC_CHAMPION_WALLACE,
+        .trainerPic = TRAINER_PIC_FRONT_CHAMPION_WALLACE,
         .encounterMusic_gender =
 #line 9530
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -24947,7 +24947,7 @@ F_TRAINER_FEMALE |
 #line 9533
         .mugshotColor = MUGSHOT_COLOR_CHAMPION,
 #line 0
-        .trainerBackPic = TRAINER_PIC_CHAMPION_WALLACE,
+        .trainerBackPic = TRAINER_PIC_FRONT_CHAMPION_WALLACE,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -25030,7 +25030,7 @@ F_TRAINER_FEMALE |
 #line 9561
         .trainerClass = TRAINER_CLASS_FORMER_CHAMPION,
 #line 9562
-        .trainerPic = TRAINER_PIC_STEVEN,
+        .trainerPic = TRAINER_PIC_FRONT_STEVEN,
         .encounterMusic_gender =
 #line 9564
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -25039,7 +25039,7 @@ F_TRAINER_FEMALE |
 #line 9566
         .aiFlags = AI_FLAG_TAG_TRAINER,
 #line 0
-        .trainerBackPic = TRAINER_PIC_STEVEN,
+        .trainerBackPic = TRAINER_PIC_FRONT_STEVEN,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -25120,14 +25120,14 @@ F_TRAINER_FEMALE |
 #line 9594
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 9595
-        .trainerPic = TRAINER_PIC_HIKER,
+        .trainerPic = TRAINER_PIC_FRONT_HIKER,
         .encounterMusic_gender =
 #line 9597
             TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 9598
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_HIKER,
+        .trainerBackPic = TRAINER_PIC_FRONT_HIKER,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25156,14 +25156,14 @@ F_TRAINER_FEMALE |
 #line 9607
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 9608
-        .trainerPic = TRAINER_PIC_RED,
+        .trainerPic = TRAINER_PIC_FRONT_RED,
         .encounterMusic_gender =
 #line 9610
             TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 9611
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25188,7 +25188,7 @@ F_TRAINER_FEMALE |
 #line 9619
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 9620
-        .trainerPic = TRAINER_PIC_LEAF,
+        .trainerPic = TRAINER_PIC_FRONT_LEAF,
         .encounterMusic_gender =
 #line 9621
 F_TRAINER_FEMALE | 
@@ -25197,7 +25197,7 @@ F_TRAINER_FEMALE |
 #line 9623
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_LEAF,
+        .trainerBackPic = TRAINER_PIC_FRONT_LEAF,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25222,7 +25222,7 @@ F_TRAINER_FEMALE |
 #line 9631
         .trainerClass = TRAINER_CLASS_RS_PROTAG,
 #line 9632
-        .trainerPic = TRAINER_PIC_RS_BRENDAN,
+        .trainerPic = TRAINER_PIC_FRONT_RS_BRENDAN,
         .encounterMusic_gender =
 #line 9634
             TRAINER_ENCOUNTER_MUSIC_MALE,
@@ -25231,7 +25231,7 @@ F_TRAINER_FEMALE |
 #line 9636
         .mugshotColor = MUGSHOT_COLOR_LIGHTBLUE,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RS_BRENDAN,
+        .trainerBackPic = TRAINER_PIC_FRONT_RS_BRENDAN,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -25256,7 +25256,7 @@ F_TRAINER_FEMALE |
 #line 9644
         .trainerClass = TRAINER_CLASS_RS_PROTAG,
 #line 9645
-        .trainerPic = TRAINER_PIC_RS_MAY,
+        .trainerPic = TRAINER_PIC_FRONT_RS_MAY,
         .encounterMusic_gender =
 #line 9646
 F_TRAINER_FEMALE | 
@@ -25267,7 +25267,7 @@ F_TRAINER_FEMALE |
 #line 9649
         .mugshotColor = MUGSHOT_COLOR_MAYPINK,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RS_MAY,
+        .trainerBackPic = TRAINER_PIC_FRONT_RS_MAY,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {

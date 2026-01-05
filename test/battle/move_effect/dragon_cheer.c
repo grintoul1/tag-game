@@ -122,7 +122,7 @@ AI_DOUBLE_BATTLE_TEST("AI uses Dragon Cheer")
         OPPONENT(species) { Moves(MOVE_DRAGON_CHEER, MOVE_POUND); }
     } WHEN {
         if (species == SPECIES_DRATINI)
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_DRAGON_CHEER); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_DRAGON_CHEER); }
         else
             TURN {  NOT_EXPECT_MOVE(opponentLeft, MOVE_DRAGON_CHEER); }
     }
