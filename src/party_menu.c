@@ -4346,7 +4346,7 @@ static void CursorCb_Enter(u8 taskId)
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
     if (InEliteFour())
-        maxBattlers = gSpecialVar_0x8000;
+        maxBattlers = (gSpecialVar_0x8000 > gEliteFourPoolCount) ? gEliteFourPoolCount : gSpecialVar_0x8000;
     else
         maxBattlers = GetMaxBattleEntries();
     if ((VarGet(VAR_TEMP_3) == 3
@@ -7947,7 +7947,7 @@ static u8 CheckBattleEntriesAndGetMessage(void)
         return 0xFF;
 
     if (InEliteFour())
-        maxBattlers = gSpecialVar_0x8000;
+        maxBattlers = (gSpecialVar_0x8000 > gEliteFourPoolCount) ? gEliteFourPoolCount : gSpecialVar_0x8000;
     else
         maxBattlers = GetMaxBattleEntries();
     for (i = 0; i < maxBattlers - 1; i++)
