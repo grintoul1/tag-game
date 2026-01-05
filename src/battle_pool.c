@@ -1,7 +1,7 @@
 #include "global.h"
 #include "battle.h"
-#include "battle_factory.h"
-#include "battle_factory_screen.h"
+#include "battle_pool.h"
+#include "battle_pool_screen.h"
 #include "event_data.h"
 #include "battle_setup.h"
 #include "overworld.h"
@@ -9,7 +9,7 @@
 #include "battle_tower.h"
 #include "random.h"
 #include "constants/battle_ai.h"
-#include "constants/battle_factory.h"
+#include "constants/battle_pool.h"
 #include "constants/battle_frontier.h"
 #include "constants/battle_frontier_mons.h"
 #include "constants/battle_tent.h"
@@ -21,12 +21,12 @@
 
 static bool8 sPerformedRentalSwap;
 
-static void InitFactoryChallenge(void);
-static void GetBattleFactoryData(void);
-static void SetBattleFactoryData(void);
-static void SaveFactoryChallenge(void);
-static void FactoryDummy1(void);
-static void FactoryDummy2(void);
+static void InitPoolChallenge(void);
+static void GetBattlePoolData(void);
+static void SetBattlePoolData(void);
+static void SavePoolChallenge(void);
+static void PoolDummy1(void);
+static void PoolDummy2(void);
 static void SelectInitialRentalMons(void);
 static void SwapRentalMons(void);
 static void SetPerformedRentalSwap(void);
@@ -38,8 +38,10 @@ static void GenerateInitialRentalMons(void);
 static void GetOpponentMostCommonMonType(void);
 static void GetOpponentBattleStyle(void);
 static void RestorePlayerPartyHeldItems(void);
-static u16 GetFactoryMonId(u8 lvlMode, u8 challengeNum, bool8 useBetterRange);
+static u16 GetPoolMonId(u8 lvlMode, u8 challengeNum, bool8 useBetterRange);
 static enum FactoryStyle GetMoveBattleStyle(enum Move move);
+static bool8 InBattleFactory(void);
+static u8 GetNumPastRentalsRank(u8 battleMode, u8 lvlMode);
 
 // Number of moves needed on the team to be considered using a certain battle style
 static const u8 sRequiredMoveCounts[FACTORY_NUM_STYLES - 1] = {
@@ -52,25 +54,25 @@ static const u8 sRequiredMoveCounts[FACTORY_NUM_STYLES - 1] = {
     [FACTORY_STYLE_WEATHER - 1]       = 2
 };
 
-static void (*const sBattleFactoryFunctions[])(void) =
+static void (*const sBattlePoolFunctions[])(void) =
 {
-    [BATTLE_FACTORY_FUNC_INIT]                   = InitFactoryChallenge,
-    [BATTLE_FACTORY_FUNC_GET_DATA]               = GetBattleFactoryData,
-    [BATTLE_FACTORY_FUNC_SET_DATA]               = SetBattleFactoryData,
-    [BATTLE_FACTORY_FUNC_SAVE]                   = SaveFactoryChallenge,
-    [BATTLE_FACTORY_FUNC_NULL]                   = FactoryDummy1,
-    [BATTLE_FACTORY_FUNC_NULL2]                  = FactoryDummy2,
-    [BATTLE_FACTORY_FUNC_SELECT_RENT_MONS]       = SelectInitialRentalMons,
-    [BATTLE_FACTORY_FUNC_SWAP_RENT_MONS]         = SwapRentalMons,
-    [BATTLE_FACTORY_FUNC_SET_SWAPPED]            = SetPerformedRentalSwap,
-    [BATTLE_FACTORY_FUNC_SET_OPPONENT_MONS]      = SetRentalsToOpponentParty,
-    [BATTLE_FACTORY_FUNC_SET_PARTIES]            = SetPlayerAndOpponentParties,
-    [BATTLE_FACTORY_FUNC_SET_OPPONENT_GFX]       = SetOpponentGfxVar,
-    [BATTLE_FACTORY_FUNC_GENERATE_OPPONENT_MONS] = GenerateOpponentMons,
-    [BATTLE_FACTORY_FUNC_GENERATE_RENTAL_MONS]   = GenerateInitialRentalMons,
-    [BATTLE_FACTORY_FUNC_GET_OPPONENT_MON_TYPE]  = GetOpponentMostCommonMonType,
-    [BATTLE_FACTORY_FUNC_GET_OPPONENT_STYLE]     = GetOpponentBattleStyle,
-    [BATTLE_FACTORY_FUNC_RESET_HELD_ITEMS]       = RestorePlayerPartyHeldItems,
+    [BATTLE_POOL_FUNC_INIT]                   = InitPoolChallenge,
+    [BATTLE_POOL_FUNC_GET_DATA]               = GetBattlePoolData,
+    [BATTLE_POOL_FUNC_SET_DATA]               = SetBattlePoolData,
+    [BATTLE_POOL_FUNC_SAVE]                   = SavePoolChallenge,
+    [BATTLE_POOL_FUNC_NULL]                   = PoolDummy1,
+    [BATTLE_POOL_FUNC_NULL2]                  = PoolDummy2,
+    [BATTLE_POOL_FUNC_SELECT_RENT_MONS]       = SelectInitialRentalMons,
+    [BATTLE_POOL_FUNC_SWAP_RENT_MONS]         = SwapRentalMons,
+    [BATTLE_POOL_FUNC_SET_SWAPPED]            = SetPerformedRentalSwap,
+    [BATTLE_POOL_FUNC_SET_OPPONENT_MONS]      = SetRentalsToOpponentParty,
+    [BATTLE_POOL_FUNC_SET_PARTIES]            = SetPlayerAndOpponentParties,
+    [BATTLE_POOL_FUNC_SET_OPPONENT_GFX]       = SetOpponentGfxVar,
+    [BATTLE_POOL_FUNC_GENERATE_OPPONENT_MONS] = GenerateOpponentMons,
+    [BATTLE_POOL_FUNC_GENERATE_RENTAL_MONS]   = GenerateInitialRentalMons,
+    [BATTLE_POOL_FUNC_GET_OPPONENT_MON_TYPE]  = GetOpponentMostCommonMonType,
+    [BATTLE_POOL_FUNC_GET_OPPONENT_STYLE]     = GetOpponentBattleStyle,
+    [BATTLE_POOL_FUNC_RESET_HELD_ITEMS]       = RestorePlayerPartyHeldItems,
 };
 
 static const u32 sWinStreakFlags[][2] =
@@ -121,12 +123,12 @@ static const u16 sInitialRentalMonRanges[][2] =
 };
 
 // code
-void CallBattleFactoryFunction(void)
+void CallBattlePoolFunction(void)
 {
-    sBattleFactoryFunctions[gSpecialVar_0x8004]();
+    sBattlePoolFunctions[gSpecialVar_0x8004]();
 }
 
-static void InitFactoryChallenge(void)
+static void InitPoolChallenge(void)
 {
     u8 i;
     u32 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
@@ -152,42 +154,42 @@ static void InitFactoryChallenge(void)
     TRAINER_BATTLE_PARAM.opponentA = 0;
 }
 
-static void GetBattleFactoryData(void)
+static void GetBattlePoolData(void)
 {
     int lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     int battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
 
     switch (gSpecialVar_0x8005)
     {
-    case FACTORY_DATA_WIN_STREAK:
+    case POOL_DATA_WIN_STREAK:
         gSpecialVar_Result = gSaveBlock2Ptr->frontier.factoryWinStreaks[battleMode][lvlMode];
         break;
-    case FACTORY_DATA_WIN_STREAK_ACTIVE:
+    case POOL_DATA_WIN_STREAK_ACTIVE:
         gSpecialVar_Result = ((gSaveBlock2Ptr->frontier.winStreakActiveFlags & sWinStreakFlags[battleMode][lvlMode]) != 0);
         break;
-    case FACTORY_DATA_WIN_STREAK_SWAPS:
+    case POOL_DATA_WIN_STREAK_SWAPS:
         gSpecialVar_Result = gSaveBlock2Ptr->frontier.factoryRentsCount[battleMode][lvlMode];
         break;
     }
 }
 
-static void SetBattleFactoryData(void)
+static void SetBattlePoolData(void)
 {
     int lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     int battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
 
     switch (gSpecialVar_0x8005)
     {
-    case FACTORY_DATA_WIN_STREAK:
+    case POOL_DATA_WIN_STREAK:
         gSaveBlock2Ptr->frontier.factoryWinStreaks[battleMode][lvlMode] = gSpecialVar_0x8006;
         break;
-    case FACTORY_DATA_WIN_STREAK_ACTIVE:
+    case POOL_DATA_WIN_STREAK_ACTIVE:
         if (gSpecialVar_0x8006)
             gSaveBlock2Ptr->frontier.winStreakActiveFlags |= sWinStreakFlags[battleMode][lvlMode];
         else
             gSaveBlock2Ptr->frontier.winStreakActiveFlags &= sWinStreakMasks[battleMode][lvlMode];
         break;
-    case FACTORY_DATA_WIN_STREAK_SWAPS:
+    case POOL_DATA_WIN_STREAK_SWAPS:
         if (sPerformedRentalSwap == TRUE)
         {
             gSaveBlock2Ptr->frontier.factoryRentsCount[battleMode][lvlMode] = gSpecialVar_0x8006;
@@ -197,7 +199,7 @@ static void SetBattleFactoryData(void)
     }
 }
 
-static void SaveFactoryChallenge(void)
+static void SavePoolChallenge(void)
 {
     ClearEnemyPartyAfterChallenge();
     gSaveBlock2Ptr->frontier.challengeStatus = gSpecialVar_0x8005;
@@ -206,25 +208,25 @@ static void SaveFactoryChallenge(void)
     SaveGameFrontier();
 }
 
-static void FactoryDummy1(void)
+static void PoolDummy1(void)
 {
 
 }
 
-static void FactoryDummy2(void)
+static void PoolDummy2(void)
 {
 
 }
 
 static void SelectInitialRentalMons(void)
 {
-    ZeroPlayerPartyMons();
-    DoBattleFactorySelectScreen();
+    //ZeroPlayerPartyMons();
+    DoBattlePoolSelectScreen();
 }
 
 static void SwapRentalMons(void)
 {
-    DoBattleFactorySwapScreen();
+    DoBattlePoolSwapScreen();
 }
 
 static void SetPerformedRentalSwap(void)
@@ -263,9 +265,9 @@ static void GenerateOpponentMons(void)
     i = 0;
     while (i != FRONTIER_PARTY_SIZE)
     {
-        u16 monId = GetFactoryMonId(lvlMode, challengeNum, FALSE);
+        u16 monId = GetPoolMonId(lvlMode, challengeNum, FALSE);
 
-        // Unown (FRONTIER_MON_UNOWN) is forbidden on opponent Factory teams.
+        // Unown (FRONTIER_MON_UNOWN) is forbidden on opponent Pool teams.
         if (gFacilityTrainerMons[monId].species == SPECIES_UNOWN)
             continue;
 
@@ -379,7 +381,7 @@ static void SetPlayerAndOpponentParties(void)
     }
 }
 
-u8 GetNumPastRentalsRank(u8 battleMode, u8 lvlMode)
+static u8 GetNumPastRentalsRank(u8 battleMode, u8 lvlMode)
 {
     u8 ret;
     u8 rents = gSaveBlock2Ptr->frontier.factoryRentsCount[battleMode][lvlMode];
@@ -449,9 +451,9 @@ static void GenerateInitialRentalMons(void)
     while (i != PARTY_SIZE)
     {
         if (i < rentalRank) // The more times the player has rented, the more initial rentals are generated from a better set of Pokémon
-            monId = GetFactoryMonId(factoryLvlMode, challengeNum, TRUE);
+            monId = GetPoolMonId(factoryLvlMode, challengeNum, TRUE);
         else
-            monId = GetFactoryMonId(factoryLvlMode, challengeNum, FALSE);
+            monId = GetPoolMonId(factoryLvlMode, challengeNum, FALSE);
 
         if (gFacilityTrainerMons[monId].species == SPECIES_UNOWN)
             continue;
@@ -621,7 +623,7 @@ static enum FactoryStyle GetMoveBattleStyle(enum Move move)
     return FACTORY_STYLE_NONE;
 }
 
-bool8 InBattleFactory(void)
+static UNUSED bool8 InBattleFactory(void)
 {
     return gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_FACTORY_PRE_BATTLE_ROOM
         || gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_FACTORY_BATTLE_ROOM;
@@ -649,15 +651,15 @@ static void RestorePlayerPartyHeldItems(void)
 // the last trainer in each challenge. Noland is an exception
 // to this, as he uses the IVs that would be used by the regular
 // trainers 2 challenges ahead of the current one.
-// Due to a mistake in FillFactoryFrontierTrainerParty, the
+// Due to a mistake in FillPoolFrontierTrainerParty, the
 // challenge number used to determine the IVs for regular trainers
-// is Battle Tower's instead of Battle Factory's.
-u8 GetFactoryMonFixedIV(u8 challengeNum, bool8 isLastBattle)
+// is Battle Tower's instead of Battle Pool's.
+u8 GetPoolMonFixedIV(u8 challengeNum, bool8 isLastBattle)
 {
     u8 ivSet;
     bool8 useHigherIV = isLastBattle ? TRUE : FALSE;
 
-// The Factory has an out-of-bounds access when generating the rental draft for round 9 (challengeNum==8),
+// The Pool has an out-of-bounds access when generating the rental draft for round 9 (challengeNum==8),
 // or the "elevated" rentals from round 8 (challengeNum+1==8)
 // This happens to land on a number higher than 31, which is interpreted as "random IVs"
 #ifdef BUGFIX
@@ -672,7 +674,7 @@ u8 GetFactoryMonFixedIV(u8 challengeNum, bool8 isLastBattle)
     return sFixedIVTable[ivSet][useHigherIV];
 }
 
-void FillFactoryBrainParty(void)
+void FillPoolBrainParty(void)
 {
     int i, j, k;
     u16 species[FRONTIER_PARTY_SIZE];
@@ -684,14 +686,14 @@ void FillFactoryBrainParty(void)
     u8 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     u8 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
     u8 challengeNum = gSaveBlock2Ptr->frontier.factoryWinStreaks[battleMode][lvlMode] / FRONTIER_STAGES_PER_CHALLENGE;
-    fixedIV = GetFactoryMonFixedIV(challengeNum + 2, FALSE);
+    fixedIV = GetPoolMonFixedIV(challengeNum + 2, FALSE);
     monLevel = SetFacilityPtrsGetLevel();
     i = 0;
     otId = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
 
     while (i != FRONTIER_PARTY_SIZE)
     {
-        u16 monId = GetFactoryMonId(lvlMode, challengeNum, FALSE);
+        u16 monId = GetPoolMonId(lvlMode, challengeNum, FALSE);
 
         if (gFacilityTrainerMons[monId].species == SPECIES_UNOWN)
             continue;
@@ -731,7 +733,7 @@ void FillFactoryBrainParty(void)
     }
 }
 
-static u16 GetFactoryMonId(u8 lvlMode, u8 challengeNum, bool8 useBetterRange)
+static u16 GetPoolMonId(u8 lvlMode, u8 challengeNum, bool8 useBetterRange)
 {
     u16 numMons, monId;
     u16 adder; // Used to skip past early mons for open level
@@ -770,7 +772,7 @@ static u16 GetFactoryMonId(u8 lvlMode, u8 challengeNum, bool8 useBetterRange)
     return monId;
 }
 
-u64 GetAiScriptsInBattleFactory(void)
+u64 GetAiScriptsInBattlePool(void)
 {
     int lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
 
@@ -794,15 +796,7 @@ u64 GetAiScriptsInBattleFactory(void)
     }
 }
 
-void SetMonMoveAvoidReturn(struct Pokemon *mon, enum Move moveArg, u8 moveSlot)
-{
-    enum Move move = moveArg;
-    if (moveArg == MOVE_RETURN)
-        move = MOVE_FRUSTRATION;
-    SetMonMoveSlot(mon, move, moveSlot);
-}
-
-static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
+static void FillPoolFrontierTrainerParty(u16 trainerId, u8 firstMonId)
 {
     u8 i;
     u8 level;
@@ -811,7 +805,7 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
 
     if (trainerId < FRONTIER_TRAINERS_COUNT)
     {
-    // By mistake Battle Tower's Level 50 challenge number is used to determine the IVs for Battle Factory.
+    // By mistake Battle Tower's Level 50 challenge number is used to determine the IVs for Battle Pool.
     #ifdef BUGFIX
         u8 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
         u8 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
@@ -822,9 +816,9 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
         u8 challengeNum = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][FRONTIER_LVL_50] / FRONTIER_STAGES_PER_CHALLENGE;
     #endif
         if (gSaveBlock2Ptr->frontier.curChallengeBattleNum < FRONTIER_STAGES_PER_CHALLENGE - 1)
-            fixedIV = GetFactoryMonFixedIV(challengeNum, FALSE);
+            fixedIV = GetPoolMonFixedIV(challengeNum, FALSE);
         else
-            fixedIV = GetFactoryMonFixedIV(challengeNum, TRUE); // Last trainer in challenge uses higher IVs
+            fixedIV = GetPoolMonFixedIV(challengeNum, TRUE); // Last trainer in challenge uses higher IVs
     }
     else if (trainerId == TRAINER_EREADER)
     {
@@ -836,7 +830,7 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
     }
     else if (trainerId == TRAINER_FRONTIER_BRAIN)
     {
-        FillFactoryBrainParty();
+        FillPoolBrainParty();
         return;
     }
     else
@@ -855,7 +849,7 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
     }
 }
 
-static void FillFactoryTentTrainerParty(u16 trainerId, u8 firstMonId)
+static void FillPoolTentTrainerParty(u16 trainerId, u8 firstMonId)
 {
     u8 i;
     u8 level = TENT_MIN_LEVEL;
@@ -871,11 +865,11 @@ static void FillFactoryTentTrainerParty(u16 trainerId, u8 firstMonId)
     }
 }
 
-void FillFactoryTrainerParty(void)
+void FillPoolTrainerParty(void)
 {
     ZeroEnemyPartyMons();
     if (gSaveBlock2Ptr->frontier.lvlMode != FRONTIER_LVL_TENT)
-        FillFactoryFrontierTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0);
+        FillPoolFrontierTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0);
     else
-        FillFactoryTentTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0);
+        FillPoolTentTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0);
 }

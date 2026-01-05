@@ -69,6 +69,7 @@ gSpecials::
 	def_special FillPoolForTabitha
 	def_special ClearHideoutPool
 	def_special DoBattleFactorySelectScreen
+	def_special DoBattlePoolSelectScreen
 	def_special Script_ShowLinkTrainerCard
 	def_special ObjectEventInteractionGetBerryTreeData
 	def_special ObjectEventInteractionGetBerryName
@@ -271,6 +272,7 @@ gSpecials::
 	def_special DoSpecialTrainerBattle
 	def_special CallBattleArenaFunction
 	def_special CallBattleFactoryFunction
+	def_special CallBattlePoolFunction
 	def_special CallBattlePikeFunction
 	def_special CallBattlePyramidFunction
 	def_special StopMapMusic

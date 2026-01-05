@@ -4343,10 +4343,12 @@ static void CursorCb_Enter(u8 taskId)
     u8 maxBattlers;
     u8 i;
 
+    gEliteFourPoolCount = *GetSavedEliteFourPoolCount();
+
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
     if (InEliteFour())
-        maxBattlers = (gSpecialVar_0x8000 > gEliteFourPoolCount) ? gEliteFourPoolCount : gSpecialVar_0x8000;
+        maxBattlers = ((gSpecialVar_0x8000 > gEliteFourPoolCount) && (gEliteFourPoolCount > 0)) ? gEliteFourPoolCount : gSpecialVar_0x8000;
     else
         maxBattlers = GetMaxBattleEntries();
     if ((VarGet(VAR_TEMP_3) == 3
@@ -7946,8 +7948,10 @@ static u8 CheckBattleEntriesAndGetMessage(void)
     if (facility == FACILITY_UNION_ROOM || facility == FACILITY_MULTI_OR_EREADER)
         return 0xFF;
 
+    gEliteFourPoolCount = *GetSavedEliteFourPoolCount();
+
     if (InEliteFour())
-        maxBattlers = (gSpecialVar_0x8000 > gEliteFourPoolCount) ? gEliteFourPoolCount : gSpecialVar_0x8000;
+        maxBattlers = ((gSpecialVar_0x8000 > gEliteFourPoolCount) && (gEliteFourPoolCount > 0)) ? gEliteFourPoolCount : gSpecialVar_0x8000;
     else
         maxBattlers = GetMaxBattleEntries();
     for (i = 0; i < maxBattlers - 1; i++)

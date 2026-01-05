@@ -11,6 +11,7 @@
 #include "constants/battle_frontier.h"
 #include "constants/battle_palace.h"
 #include "constants/battle_pike.h"
+#include "constants/battle_pool.h"
 #include "constants/battle_pyramid.h"
 #include "constants/battle_setup.h"
 #include "constants/battle_special.h"
@@ -688,7 +689,6 @@ Common_EventScript_MultibattleWipe::
 Common_EventScript_EliteFourAttendant::
 	faceplayer
 	lockall
-	setvar VAR_0x8000, 3
 	goto_if_set FLAG_ELITE_FOUR_PARTY_ONLY, Common_EventScript_EliteFourAttendantBestOfLuck
 	goto_if_set FLAG_ELITE_FOUR_PARTY_EXCHANGED, Common_EventScript_EliteFourAttendantBestOfLuck
 	message Common_Text_EliteFourAttendantSwitchPartyWithPool
@@ -701,6 +701,7 @@ Common_EventScript_EliteFourAttendant::
 
 Common_EventScript_EliteFourExchangePokemon::
 	special SaveEliteFourPool
+	setvar VAR_0x8000, 3
 	special ChooseHalfPartyForEliteFour
 	waitstate
 	switch VAR_RESULT
@@ -710,7 +711,7 @@ Common_EventScript_EliteFourExchangePokemon::
 	end
 
 Common_EventScript_EliteFourExchangePokemonPool::
-	factory_rentmons
+	pool_rentmons
 	waitstate
 	goto Common_EventScript_EliteFourExchangePokemonEnd
 	end
@@ -736,7 +737,7 @@ Common_EventScript_HideoutExchangePartnerPokemon::
 	end
 
 Common_EventScript_HideoutExchangePokemonPool::
-	factory_rentmons
+	pool_rentmons
 	waitstate
 	end
 

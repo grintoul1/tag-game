@@ -57,6 +57,7 @@ EverGrandeCity_SidneysRoom_EventScript_AttendantIntroduction::
 	waitmovement 0
 	msgbox EverGrandeCity_SidneysRoom_Text_AttendantGreetPlayer, MSGBOX_DEFAULT
 	waitmessage
+	setvar VAR_0x8000, 3
 	special SavePlayerParty
 	call EventScript_AccessPokemonStorageEliteFour
 	special LoadPlayerParty
