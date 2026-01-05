@@ -688,7 +688,7 @@ Common_EventScript_MultibattleWipe::
 Common_EventScript_EliteFourAttendant::
 	faceplayer
 	lockall
-	setvar VAR_0x8000, 0
+	setvar VAR_0x8000, 3
 	goto_if_set FLAG_ELITE_FOUR_PARTY_ONLY, Common_EventScript_EliteFourAttendantBestOfLuck
 	goto_if_set FLAG_ELITE_FOUR_PARTY_EXCHANGED, Common_EventScript_EliteFourAttendantBestOfLuck
 	message Common_Text_EliteFourAttendantSwitchPartyWithPool
