@@ -1,4 +1,3 @@
-#if 0
 #include "global.h"
 #include "battle_z_move.h"
 #include "malloc.h"
@@ -6860,4 +6859,3 @@ bool32 IsPartyMonOnFieldOrChosenToSwitch(u32 partyIndex, u32 battlerIn1, u32 bat
         return TRUE;
     return FALSE;
 }
-#endif
