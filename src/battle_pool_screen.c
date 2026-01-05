@@ -21,6 +21,7 @@
 #include "decompress.h"
 #include "pokemon_summary_screen.h"
 #include "sound.h"
+#include "party_menu.h"
 #include "pokedex.h"
 #include "util.h"
 #include "trainer_pokemon_sprites.h"
@@ -2008,7 +2009,8 @@ static u8 Select_OptionRentDeselect(void)
         Select_ErasePopupMenu(SELECT_WIN_OPTIONS);
         if ((sPoolSelectScreen->selectingMonsState > FRONTIER_PARTY_SIZE)
          || ((sPoolSelectScreen->selectingMonsState >= (VarGet(VAR_TEMP_4)))
-         && ((VarGet(VAR_TEMP_3) == 2) || (VarGet(VAR_TEMP_3) == 3))))
+         && ((VarGet(VAR_TEMP_3) == 2) || (VarGet(VAR_TEMP_3) == 3)
+         || InEliteFour())))
             return SELECT_CONFIRM_MONS;
         else
             return SELECT_CONTINUE_CHOOSING;

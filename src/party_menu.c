@@ -529,7 +529,6 @@ static void Task_HideFollowerNPCForTeleport(u8);
 static void DisplayFieldMoveExitAreaMessage(u8);
 static void DisplayCantUseFlashMessage(void);
 static void DisplayCantUseSurfMessage(void);
-static bool8 InEliteFour(void);
 static void FieldCallback_RockClimb(void);
 
 static const u8 sText_askText[] = _("Would you like to change {STR_VAR_1}'s\nability to {STR_VAR_2}?");
@@ -3193,7 +3192,7 @@ static void SetPartyMonSelectionActions(struct Pokemon *mons, u8 slotId, u8 acti
     }
 }
 
-static bool8 InEliteFour(void)
+bool8 InEliteFour(void)
 {
     return (gMapHeader.mapLayoutId == LAYOUT_EVER_GRANDE_CITY_SHORT_HALL
         || gMapHeader.mapLayoutId == LAYOUT_EVER_GRANDE_CITY_SIDNEYS_ROOM
