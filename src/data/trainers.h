@@ -24584,7 +24584,7 @@ F_TRAINER_FEMALE |
 #line 9402
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 0, 31, 31),
 #line 9400
-            .ability = ABILITY_QUARK_DRIVE,
+            .ability = ABILITY_PROTOSYNTHESIS,
 #line 9403
             .lvl = 100,
 #line 9401
