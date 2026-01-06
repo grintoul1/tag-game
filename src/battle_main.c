@@ -2010,6 +2010,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
         }
         if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_1)
         {
+            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
             for (i = 0; i < 6; i++)
             {
                 CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
@@ -2122,6 +2123,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
         }
         if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_3)
         {
+            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
             for (i = 0; i < 6; i++)
             {
                 CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
