@@ -19,9 +19,9 @@ const struct Trainer gBattlePartners[DIFFICULTY_COUNT][PARTNER_COUNT] =
 };
 
 #define STEVEN_OTID     61226
-#define SHELLY_OTID     99997
-#define TABITHA_OTID    99998
-#define EMMIE_OTID      99999
+#define SHELLY_OTID     61227
+#define TABITHA_OTID    61228
+#define EMMIE_OTID      61229
 
 extern void CopyMon(void *dest, void *src, size_t size);
 extern u16 VarGet(u16 id);
@@ -178,7 +178,7 @@ void FillPartnerParty(u16 trainerId)
             else if (partyData[i].gender == TRAINER_MON_FEMALE)
                 personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
             ModifyPersonalityForNature(&personality, partyData[i].nature);
-            CreateMon(&gPlayerParty[i + 3], partyData[i].species, partyData[i].lvl, 0, TRUE, personality, OT_ID_PRESET, otID);
+            CreateMon(&gPlayerParty[i + 3], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(otID));
             j = partyData[i].isShiny;
             SetMonData(&gPlayerParty[i + 3], MON_DATA_IS_SHINY, &j);
             SetMonData(&gPlayerParty[i + 3], MON_DATA_HELD_ITEM, &partyData[i].heldItem);

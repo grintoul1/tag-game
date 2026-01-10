@@ -181,6 +181,7 @@ walk_down
 step_end
 
 PetalburgCity_Gym_EventScript_Norman::
+	vsseeker_rematchid TRAINER_NORMAN_1
 	lock
 	faceplayer
 	switch VAR_PETALBURG_GYM_STATE

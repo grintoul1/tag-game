@@ -1863,6 +1863,7 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
     }
     if (noMoveSet)
     {
+        GiveMonInitialMoveset(mon);
         // TODO: Figure out a default strategy when moves are not set, to generate a good moveset
         return;
     }
@@ -1908,8 +1909,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             s32 ball = -1;
             u32 personalityHash = GeneratePartyHash(trainer, i);
             const struct TrainerMon *partyData = trainer->party;
-            u32 otIdType = OT_ID_RANDOM_NO_SHINY;
-            u32 fixedOtId = 0;
+            struct OriginalTrainerId otId = OTID_STRUCT_RANDOM_NO_SHINY;
             u32 abilityNum = 0;
 
             if (trainer->battleType != TRAINER_BATTLE_TYPE_SINGLES)
@@ -1929,10 +1929,10 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             ModifyPersonalityForNature(&personalityValue, partyData[monIndex].nature);
             if (partyData[monIndex].isShiny)
             {
-                otIdType = OT_ID_PRESET;
-                fixedOtId = HIHALF(personalityValue) ^ LOHALF(personalityValue);
+                otId.method = OT_ID_PRESET;
+                otId.value = HIHALF(personalityValue) ^ LOHALF(personalityValue);
             }
-            CreateMon(&party[i], partyData[monIndex].species, partyData[monIndex].lvl, 0, TRUE, personalityValue, otIdType, fixedOtId);
+            CreateMon(&party[i], partyData[monIndex].species, partyData[monIndex].lvl, personalityValue, otId);
             SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[monIndex].heldItem);
 
             CustomTrainerPartyAssignMoves(&party[i], &partyData[monIndex]);
@@ -2213,15 +2213,14 @@ void CreateTrainerPartyForPlayer(void)
 }
 
 #define STEVEN_OTID     61226
-#define SHELLY_OTID     99997
-#define TABITHA_OTID    99998
-#define EMMIE_OTID      99999
+#define SHELLY_OTID     61227
+#define TABITHA_OTID    61228
+#define EMMIE_OTID      61229
 
 void FillPoolForShelly(u8 unused)
 {
     u32 i, j;
     u32 personality;
-    u32 otID;
     u8 trainerName[(PLAYER_NAME_LENGTH * 3) + 1];
     s32 ball = -1;
     struct Pokemon tempMon;
@@ -2230,15 +2229,13 @@ void FillPoolForShelly(u8 unused)
     {
         const struct TrainerMon *partyData = gBattlePartners[DIFFICULTY_NORMAL][PARTNER_SHELLY_MHO].party;
 
-        otID = SHELLY_OTID;
-
         personality = Random32();
         if (partyData[i].gender == TRAINER_MON_MALE)
             personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[i].species);
         else if (partyData[i].gender == TRAINER_MON_FEMALE)
             personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
         ModifyPersonalityForNature(&personality, partyData[i].nature);
-        CreateMon(&gEliteFourPool[i], partyData[i].species, partyData[i].lvl, 0, TRUE, personality, OT_ID_PRESET, otID);
+        CreateMonWithIVs(&gEliteFourPool[i], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(SHELLY_OTID), 31);
         j = partyData[i].isShiny;
         SetMonData(&gEliteFourPool[i], MON_DATA_IS_SHINY, &j);
         SetMonData(&gEliteFourPool[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
@@ -2296,7 +2293,6 @@ void FillPoolForTabitha(u8 unused)
 {
     u32 i, j;
     u32 personality;
-    u32 otID;
     u8 trainerName[(PLAYER_NAME_LENGTH * 3) + 1];
     s32 ball = -1;
     struct Pokemon tempMon;
@@ -2305,15 +2301,13 @@ void FillPoolForTabitha(u8 unused)
     {
         const struct TrainerMon *partyData = gBattlePartners[DIFFICULTY_NORMAL][PARTNER_TABITHA].party;
 
-        otID = TABITHA_OTID;
-
         personality = Random32();
         if (partyData[i].gender == TRAINER_MON_MALE)
             personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[i].species);
         else if (partyData[i].gender == TRAINER_MON_FEMALE)
             personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
         ModifyPersonalityForNature(&personality, partyData[i].nature);
-        CreateMon(&gEliteFourPool[i], partyData[i].species, partyData[i].lvl, 0, TRUE, personality, OT_ID_PRESET, otID);
+        CreateMonWithIVs(&gEliteFourPool[i], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(TABITHA_OTID), 31);
         j = partyData[i].isShiny;
         SetMonData(&gEliteFourPool[i], MON_DATA_IS_SHINY, &j);
         SetMonData(&gEliteFourPool[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
@@ -2739,7 +2733,7 @@ static void EndLinkBattleInSteps(void)
         }
         break;
     case 7:
-        if (!IsTextPrinterActive(B_WIN_MSG))
+        if (!IsTextPrinterActiveOnWindow(B_WIN_MSG))
         {
             if (IsLinkTaskFinished() == TRUE)
                 gBattleCommunication[MULTIUSE_STATE]++;
@@ -2882,7 +2876,7 @@ static void AskRecordBattle(void)
         }
         break;
     case STATE_PRINT_YES_NO:
-        if (!IsTextPrinterActive(B_WIN_MSG))
+        if (!IsTextPrinterActiveOnWindow(B_WIN_MSG))
         {
             HandleBattleWindow(YESNOBOX_X_Y, 0);
             BattlePutTextOnWindow(gText_BattleYesNoChoice, B_WIN_YESNO);
@@ -2988,7 +2982,7 @@ static void AskRecordBattle(void)
         }
         break;
     case STATE_RECORD_WAIT:
-        if (IsLinkTaskFinished() == TRUE && !IsTextPrinterActive(B_WIN_MSG) && --gBattleCommunication[1] == 0)
+        if (IsLinkTaskFinished() == TRUE && !IsTextPrinterActiveOnWindow(B_WIN_MSG) && --gBattleCommunication[1] == 0)
         {
             if (gMain.anyLinkBattlerHasFrontierPass)
             {
@@ -3000,7 +2994,7 @@ static void AskRecordBattle(void)
         break;
     case STATE_END_RECORD_YES:
     case STATE_END_RECORD_NO:
-        if (!IsTextPrinterActive(B_WIN_MSG))
+        if (!IsTextPrinterActiveOnWindow(B_WIN_MSG))
         {
             if (gMain.anyLinkBattlerHasFrontierPass)
             {
@@ -3731,7 +3725,6 @@ const u8* FaintClearSetData(u32 battler)
     gProtectStructs[battler].pranksterElevated = FALSE;
 
     gBattleStruct->battlerState[battler].isFirstTurn = 2;
-    gBattleStruct->battlerState[battler].fainted = TRUE;
 
     gLastMoves[battler] = MOVE_NONE;
     gLastLandedMoves[battler] = MOVE_NONE;

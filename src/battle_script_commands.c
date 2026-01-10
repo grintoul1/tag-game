@@ -3326,7 +3326,9 @@ void SetMoveEffect(u32 battler, u32 effectBattler, enum MoveEffect moveEffect, c
             }
         }
         else
-        SetMoveEffect(battler, effectBattler, gBattleEnvironmentInfo[gBattleEnvironment].secretPowerEffect, battleScript, effectFlags);
+        {
+            SetMoveEffect(battler, effectBattler, gBattleEnvironmentInfo[gBattleEnvironment].secretPowerEffect, battleScript, effectFlags);
+        }
         break;
     case MOVE_EFFECT_PSYCHIC_NOISE:
         battlerAbility = IsAbilityOnSide(gEffectBattler, ABILITY_AROMA_VEIL);
@@ -4039,6 +4041,8 @@ static void Cmd_dofaintanimation(void)
         BattleScriptCall(BattleScript_DynamaxEnds_Ret);
         return;
     }
+
+    gBattleStruct->battlerState[battler].fainted = TRUE;
 
     BtlController_EmitFaintAnimation(battler, B_COMM_TO_CONTROLLER);
     MarkBattlerForControllerExec(battler);
@@ -6817,6 +6821,7 @@ static void DrawLevelUpBannerText(void)
     GetMonNickname(mon, gStringVar4);
 
     printerTemplate.currentChar = gStringVar4;
+    printerTemplate.type = WINDOW_TEXT_PRINTER;
     printerTemplate.windowId = B_WIN_LEVEL_UP_BANNER;
     printerTemplate.fontId = FONT_SMALL;
     printerTemplate.x = 32;
@@ -10332,8 +10337,13 @@ static void Cmd_tryswapitems(void)
 
             if (GetBattlerAbility(gBattlerTarget) != ABILITY_GORILLA_TACTICS)
                 gBattleStruct->choicedMove[gBattlerTarget] = MOVE_NONE;
-            if (GetBattlerAbility(gBattlerAttacker) != ABILITY_GORILLA_TACTICS)
+
+            if (GetBattlerAbility(gBattlerAttacker) != ABILITY_GORILLA_TACTICS
+             && (!IsHoldEffectChoice(GetItemHoldEffect(oldItemDef))
+             || (GetConfig(CONFIG_MODERN_TRICK_CHOICE_LOCK) >= GEN_5)))
+            {
                 gBattleStruct->choicedMove[gBattlerAttacker] = MOVE_NONE;
+            }
 
             gBattlescriptCurrInstr = cmd->nextInstr;
 
@@ -11552,7 +11562,7 @@ static void Cmd_givecaughtmon(void)
                 SetMonData(caughtMon, MON_DATA_HELD_ITEM, &lostItem);  // Restore non-berry items
         }
 
-        if (GiveMonToPlayer(caughtMon) != MON_GIVEN_TO_PARTY
+        if (GiveCapturedMonToPlayer(caughtMon) != MON_GIVEN_TO_PARTY
          && gBattleCommunication[MULTISTRING_CHOOSER] != B_MSG_SWAPPED_INTO_PARTY)
         {
             if (!ShouldShowBoxWasFullMessage())
@@ -12956,7 +12966,7 @@ void BS_TryTrainerSlideDynamaxMsg(void)
     if ((shouldSlide = ShouldDoTrainerSlide(gBattleScripting.battler, TRAINER_SLIDE_DYNAMAX)))
     {
         BattleScriptPush(cmd->nextInstr);
-        
+
         switch(gBattleScripting.battler)
         {
         case B_POSITION_OPPONENT_LEFT:
@@ -14264,13 +14274,6 @@ void BS_TryIllusionOff(void)
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
-void BS_SetSpriteIgnore0Hp(void)
-{
-    NATIVE_ARGS(bool8 ignore0HP);
-    gBattleStruct->spriteIgnore0Hp = cmd->ignore0HP;
-    gBattlescriptCurrInstr = cmd->nextInstr;
-}
-
 void BS_UpdateNick(void)
 {
     NATIVE_ARGS();
@@ -14507,7 +14510,7 @@ void BS_ArenaJudgmentString(void)
 void BS_ArenaWaitMessage(void)
 {
     NATIVE_ARGS();
-    if (IsTextPrinterActive(ARENA_WIN_JUDGMENT_TEXT))
+    if (IsTextPrinterActiveOnWindow(ARENA_WIN_JUDGMENT_TEXT))
         return;
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
