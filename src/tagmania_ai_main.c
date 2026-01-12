@@ -3181,7 +3181,7 @@ static s32 AI_GetWhichBattlerFasterOrTies(u32 battlerAtk, u32 battlerDef, bool32
 
 static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, enum Move move, s32 score)
 {
-    enum Move movesetIndex = gAiThinkingStruct->movesetIndex;
+    u16 movesetIndex = gAiThinkingStruct->movesetIndex;
     //enum Move predictedMoveSpeedCheck = GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData);
     bool32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, move, MOVE_TACKLE, CONSIDER_PRIORITY);
 
@@ -4403,7 +4403,7 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, enum Move move
 {
     // move data
     enum BattleMoveEffects moveEffect = GetMoveEffect(move);
-    enum Move movesetIndex = gAiThinkingStruct->movesetIndex;
+    u16 movesetIndex = gAiThinkingStruct->movesetIndex;
     uq4_12_t effectiveness = aiData->effectiveness[battlerAtk][battlerDef][movesetIndex];
     enum Move *targetMove = GetMovesArray(battlerDef);
 
@@ -6679,7 +6679,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, enum Move move, s32
     {
         if (GetMovePower(move) != 0)
         {
-            GetBestDmgMoveFromPartner(battlerAtk, RIGHT_FOE(battlerAtk), LEFT_FOE(battlerAtk), AI_ATTACKING, bestMoves, &bestTarget);
+            GetBestDmgMoveFromPartner(battlerAtk, BATTLE_OPPOSITE(battlerAtk), BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk)), AI_ATTACKING, bestMoves, &bestTarget);
             if (((bestMoves[0] == move) || (bestMoves[1] == move) || (bestMoves[2] == move) || (bestMoves[3] == move)) && (bestTarget == battlerDef))
             {
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
@@ -6926,7 +6926,7 @@ static s32 AI_AttacksPartner(u32 battlerAtk, u32 battlerDef, enum Move move, s32
        && ((IsNaturalEnemy(gBattleMons[battlerAtk].species, gBattleMons[battlerDef].species) && !(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER)))
        || AI_FLAG_ATTACKS_PARTNER_FOCUSES_PARTNER))
     {
-        enum Move movesetIndex = gAiThinkingStruct->movesetIndex;
+        u16 movesetIndex = gAiThinkingStruct->movesetIndex;
 
         if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, AI_ATTACKING))
             ADJUST_SCORE(BEST_EFFECT);
@@ -7308,7 +7308,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, enum Move move, s32
     enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, move);
     bool32 moveTargetsBothOpponents = hasTwoOpponents && (IsSpreadMove(moveTarget) || moveTarget == TARGET_ALL_BATTLERS || moveTarget == TARGET_FIELD);
     s32 atkPriority = GetBattleMovePriority(battlerAtk, abilityAtk, move);
-    enum Move movesetIndex = gAiThinkingStruct->movesetIndex;
+    u16 movesetIndex = gAiThinkingStruct->movesetIndex;
     uq4_12_t effectiveness = aiData->effectiveness[battlerAtk][battlerDef][movesetIndex];
 
     // partner data 
@@ -9329,7 +9329,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, enum Move move, s32
         }
         else if ((GetMovePower(move) != 0) && !IsTargetingPartner(battlerAtk, battlerDef))
         {
-            GetBestDmgMoveFromPartner(battlerAtk, RIGHT_FOE(battlerAtk), LEFT_FOE(battlerAtk), AI_ATTACKING, bestMoves, &bestTarget);
+            GetBestDmgMoveFromPartner(battlerAtk, BATTLE_OPPOSITE(battlerAtk), BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk)), AI_ATTACKING, bestMoves, &bestTarget);
             if (((bestMoves[0] == move) || (bestMoves[1] == move) || (bestMoves[2] == move) || (bestMoves[3] == move)) && (bestTarget == battlerDef))
             {
                 // AI_TryToFaint
@@ -10812,6 +10812,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, enum Move move, s32
         case EFFECT_PROTECT: // -10 scores added if no use cases to incentivise partner switching
             if (predictedMove == 0xFFFF)
                 predictedMove = MOVE_NONE;
+            
             enum ProtectMethod protectMethod = GetMoveProtectMethod(move);
             if (IsTargetingPartner(battlerAtk, battlerDef))
                 break;
@@ -10854,7 +10855,10 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, enum Move move, s32
                                 }
                             }
                         }
-                        else if (hasPartner && AI_GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
+                    }
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    {
+                        if (hasPartner && AI_GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
                         && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
                         && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
                         {
@@ -10915,17 +10919,20 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, enum Move move, s32
                             break;
                         }
                     }
-                    if (hasPartner && AI_GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
-                    && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
-                    && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
-                    {
-                        if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    {   
+                        if (hasPartner && AI_GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
+                        && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
+                        && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
                         {
-                            ADJUST_SCORE(BEST_EFFECT); // +17 if player can double kill with spread move
-                            break;
+                            if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
+                            {
+                                ADJUST_SCORE(BEST_EFFECT); // +17 if player can double kill with spread move
+                                break;
+                            }
                         }
                     }
-                    else if (aiData->abilities[battlerAtk] == ABILITY_STANCE_CHANGE // Special logic for Aegislash
+                    if (aiData->abilities[battlerAtk] == ABILITY_STANCE_CHANGE // Special logic for Aegislash
                     && gBattleMons[battlerAtk].species == SPECIES_AEGISLASH_BLADE
                     && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
                     {
@@ -10951,14 +10958,17 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, enum Move move, s32
                             break;
                         }
                     }
-                    if (hasPartner && AI_GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
-                    && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
-                    && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
-                    {
-                        if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
+                    for (i = 0; i < MAX_MON_MOVES; i++)
+                    {   
+                        if (hasPartner && AI_GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
+                        && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
+                        && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
                         {
-                            ADJUST_SCORE(BEST_EFFECT); // +17 if player can double kill with spread move
-                            break;
+                            if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
+                            {
+                                ADJUST_SCORE(BEST_EFFECT); // +17 if player can double kill with spread move
+                                break;
+                            }
                         }
                     }
                     ADJUST_SCORE(-10); // -10 if no reason to click
@@ -10984,14 +10994,17 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, enum Move move, s32
                     break;
                 }
             }
-            if (hasPartner && AI_GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
-            && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
-            && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
-            {
-                if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
+            for (i = 0; i < MAX_MON_MOVES; i++)
+            {   
+                if (hasPartner && AI_GetBattlerMoveTargetType(battlerAtkPartner, atkPartnerMove[i]) & TARGET_FOES_AND_ALLY 
+                && (CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtk), i, AI_ATTACKING)
+                && CanIndexMoveFaintTarget(battlerAtkPartner, BATTLE_OPPOSITE(battlerAtkPartner), i, AI_ATTACKING)))
                 {
-                    ADJUST_SCORE(BEST_EFFECT); // +17 if player can double kill with spread move
-                    break;
+                    if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
+                    {
+                        ADJUST_SCORE(BEST_EFFECT); // +17 if player can double kill with spread move
+                        break;
+                    }
                 }
             }
             ADJUST_SCORE(-10); // -10 if no reason to click
@@ -12544,7 +12557,7 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, enum Move move, s32 sc
     enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, move);
     bool32 moveTargetsBothOpponents = hasTwoOpponents && (IsSpreadMove(moveTarget) || moveTarget == TARGET_ALL_BATTLERS || moveTarget == TARGET_FIELD);
     s32 atkPriority = GetBattleMovePriority(battlerAtk, abilityAtk, move);
-    enum Move movesetIndex = gAiThinkingStruct->movesetIndex;
+    u16 movesetIndex = gAiThinkingStruct->movesetIndex;
     uq4_12_t effectiveness = aiData->effectiveness[battlerAtk][battlerDef][movesetIndex];
     enum Move atkBestMoves[MAX_MON_MOVES] = {0};
     enum Move defBestMoves[MAX_MON_MOVES] = {0};
@@ -16061,16 +16074,16 @@ static s32 AI_TagOpponent(u32 battlerAtk, u32 battlerDef, enum Move move, s32 sc
                             break;
                         }
                     }
-                    else if (hasPartner && IsSpreadMove(AI_GetBattlerMoveTargetType(BATTLE_PARTNER(battlerAtk), aiData->partnerMove)) 
-                    && IsBattlerFirstTurnOrRandom(battlerAtk))
+                }
+                if (hasPartner && IsSpreadMove(AI_GetBattlerMoveTargetType(BATTLE_PARTNER(battlerAtk), aiData->partnerMove)) 
+                && IsBattlerFirstTurnOrRandom(battlerAtk))
+                {
+                    if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
                     {
-                        if (aiData->abilities[battlerAtk] != ABILITY_TELEPATHY)
-                        {
-                            ADJUST_SCORE(WEAK_EFFECT);
-                            if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
-                                ADJUST_SCORE(1);
-                            break;
-                        }
+                        ADJUST_SCORE(WEAK_EFFECT);
+                        if ((gBattleMons[battlerDef].status1 & STATUS1_DAMAGING))
+                            ADJUST_SCORE(1);
+                        break;
                     }
                 }
                 break;

@@ -6680,7 +6680,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, enum Move move, s32
     {
         if (GetMovePower(move) != 0)
         {
-            GetBestDmgMoveFromPartner(battlerAtk, RIGHT_FOE(battlerAtk), LEFT_FOE(battlerAtk), AI_ATTACKING, bestMoves, &bestTarget);
+            GetBestDmgMoveFromPartner(battlerAtk, BATTLE_OPPOSITE(battlerAtk), BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk)), AI_ATTACKING, bestMoves, &bestTarget);
             if (((bestMoves[0] == move) || (bestMoves[1] == move) || (bestMoves[2] == move) || (bestMoves[3] == move)) && (bestTarget == battlerDef))
             {
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
@@ -9330,7 +9330,7 @@ static s32 AI_PartnerTrainer(u32 battlerAtk, u32 battlerDef, enum Move move, s32
         }
         else if ((GetMovePower(move) != 0) && !IsTargetingPartner(battlerAtk, battlerDef))
         {
-            GetBestDmgMoveFromPartner(battlerAtk, RIGHT_FOE(battlerAtk), LEFT_FOE(battlerAtk), AI_ATTACKING, bestMoves, &bestTarget);
+            GetBestDmgMoveFromPartner(battlerAtk, BATTLE_OPPOSITE(battlerAtk), BATTLE_PARTNER(BATTLE_OPPOSITE(battlerAtk)), AI_ATTACKING, bestMoves, &bestTarget);
             if (((bestMoves[0] == move) || (bestMoves[1] == move) || (bestMoves[2] == move) || (bestMoves[3] == move)) && (bestTarget == battlerDef))
             {
                 // AI_TryToFaint
