@@ -371,7 +371,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner chooses 
         } 
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner chooses priority last chance move over slow KO")
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner chooses priority last chance move over slow KO")
 {
     GIVEN {
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
