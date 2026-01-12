@@ -27,7 +27,7 @@
     [DIFFICULTY_NORMAL][PARTNER_STEVEN] =
     {
 #line 10
-        .trainerName = _("STEVEN"),
+        .trainerName = _("Steven"),
 #line 11
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 12
@@ -111,7 +111,7 @@
     [DIFFICULTY_NORMAL][PARTNER_EMMIE] =
     {
 #line 49
-        .trainerName = _("EMMIE"),
+        .trainerName = _("Emmie"),
 #line 50
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 51

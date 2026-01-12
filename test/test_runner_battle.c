@@ -383,17 +383,19 @@ static void BattleTest_Run(void *data)
         DATA.recordedBattle.partnerId = TRAINER_PARTNER(PARTNER_STEVEN);
         DATA.recordedBattle.opponentA = TRAINER_LEAF;
         DATA.recordedBattle.opponentB = TRAINER_RED;
-        DATA.hasAI = TRUE;
+        gPartnerTrainerId = TRAINER_PARTNER(PARTNER_STEVEN);
         DATA.currentMonIndexes[0] = 0; // Player first mon
         DATA.currentMonIndexes[1] = 0; // Opponent A first mon
         DATA.currentMonIndexes[2] = 3; // Player partner first mon
         DATA.currentMonIndexes[3] = 3; // Opponent B first mon
+        DATA.hasAI = TRUE;
         break;
     case BATTLE_TEST_AI_TWO_VS_ONE:
         DATA.recordedBattle.battleFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTI;
         DATA.recordedBattle.partnerId = TRAINER_PARTNER(PARTNER_STEVEN);
         DATA.recordedBattle.opponentA = TRAINER_LEAF;
         DATA.recordedBattle.opponentB = 0xFFFF;
+        gPartnerTrainerId = TRAINER_PARTNER(PARTNER_STEVEN);
         DATA.currentMonIndexes[0] = 0; // Player first mon
         DATA.currentMonIndexes[1] = 0; // Opponent first mon
         DATA.currentMonIndexes[2] = 3; // Player partner first mon
@@ -428,6 +430,7 @@ static void BattleTest_Run(void *data)
         DATA.recordedBattle.partnerId = TRAINER_PARTNER(PARTNER_STEVEN);
         DATA.recordedBattle.opponentA = TRAINER_LINK_OPPONENT;
         DATA.recordedBattle.opponentB = TRAINER_LINK_OPPONENT;
+        gPartnerTrainerId = TRAINER_PARTNER(PARTNER_STEVEN);
         DATA.currentMonIndexes[0] = 0; // Player first mon
         DATA.currentMonIndexes[1] = 0; // Opponent A first mon
         DATA.currentMonIndexes[2] = 3; // Player partner first mon
@@ -438,6 +441,7 @@ static void BattleTest_Run(void *data)
         DATA.recordedBattle.partnerId = TRAINER_PARTNER(PARTNER_STEVEN);
         DATA.recordedBattle.opponentA = TRAINER_LINK_OPPONENT;
         DATA.recordedBattle.opponentB = 0xFFFF;
+        gPartnerTrainerId = TRAINER_PARTNER(PARTNER_STEVEN);
         DATA.currentMonIndexes[0] = 0; // Player first mon
         DATA.currentMonIndexes[1] = 0; // Opponent first mon
         DATA.currentMonIndexes[2] = 3; // Player partner first mon

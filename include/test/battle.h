@@ -849,10 +849,10 @@ extern struct BattleTestRunnerState *const gBattleTestRunnerState;
 
 #define AI_TRAINER_NAME "{PKMN} Trainer Leaf"
 #define AI_TRAINER_2_NAME "{PKMN} Trainer Red"
-#define AI_PARTNER_NAME "{PKMN} Trainer 1"
+#define AI_PARTNER_NAME "{PKMN} Trainer Steven"
 #define AI_TRAINER_NAME_SHORT "Leaf"
 #define AI_TRAINER_2_NAME_SHORT "Red"
-#define AI_PARTNER_NAME_SHORT "1"
+#define AI_PARTNER_NAME_SHORT "Steven"
 
 /* Test */
 

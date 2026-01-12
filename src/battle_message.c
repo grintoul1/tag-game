@@ -37,6 +37,7 @@
 #include "constants/trainers.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "test/battle.h"
 
 struct BattleWindowText
 {
@@ -2718,13 +2719,26 @@ static const u8 *BattleStringGetOpponentName(u8 *text, u8 multiplayerId, u8 batt
     switch (GetBattlerPosition(battler))
     {
     case B_POSITION_OPPONENT_LEFT:
-        toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, text, multiplayerId, battler);
+        /*if (gTestRunnerState.test->runner == &gBattleTestRunner)
+            toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_LEAF, text, multiplayerId, battler);
+        else*/
+            toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, text, multiplayerId, battler);
         break;
     case B_POSITION_OPPONENT_RIGHT:
-        if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI) && !BATTLE_TWO_VS_ONE_OPPONENT)
-            toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentB, text, multiplayerId, battler);
+        /*if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI) && !BATTLE_TWO_VS_ONE_OPPONENT)
+        {
+            if (gTestRunnerState.test->runner == &gBattleTestRunner)
+                toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_LEAF, text, multiplayerId, battler);
+            else
+                toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentB, text, multiplayerId, battler);
+        }
         else
-            toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, text, multiplayerId, battler);
+        {*/
+            if (gTestRunnerState.test->runner == &gBattleTestRunner)
+                toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_LEAF, text, multiplayerId, battler);
+            else
+                toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, text, multiplayerId, battler);
+        //}
         break;
     }
 
@@ -2744,7 +2758,12 @@ static const u8 *BattleStringGetPlayerName(u8 *text, u8 battler)
             toCpy = gSaveBlock2Ptr->playerName;
         break;
     case B_POSITION_PLAYER_RIGHT:
-        if (((gBattleTypeFlags & BATTLE_TYPE_RECORDED) && !(gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER)))
+        if (IsMultibattleTest() && gTestRunnerState.test->runner == &gBattleTestRunner)
+        {
+            GetFrontierTrainerName(text, gPartnerTrainerId);
+            toCpy = text;
+        }
+        else if (((gBattleTypeFlags & BATTLE_TYPE_RECORDED) && !(gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER)))
             || gTestRunnerEnabled)
         {
             toCpy = gLinkPlayers[0].name;
