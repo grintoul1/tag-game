@@ -2725,20 +2725,20 @@ static const u8 *BattleStringGetOpponentName(u8 *text, u8 multiplayerId, u8 batt
             toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, text, multiplayerId, battler);
         break;
     case B_POSITION_OPPONENT_RIGHT:
-        /*if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI) && !BATTLE_TWO_VS_ONE_OPPONENT)
+        if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI) && !BATTLE_TWO_VS_ONE_OPPONENT)
         {
-            if (gTestRunnerState.test->runner == &gBattleTestRunner)
+            /*if (gTestRunnerState.test->runner == &gBattleTestRunner)
                 toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_LEAF, text, multiplayerId, battler);
-            else
+            else*/
                 toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentB, text, multiplayerId, battler);
         }
         else
-        {*/
-            if (gTestRunnerState.test->runner == &gBattleTestRunner)
+        {
+            /*if (gTestRunnerState.test->runner == &gBattleTestRunner)
                 toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_LEAF, text, multiplayerId, battler);
-            else
+            else*/
                 toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, text, multiplayerId, battler);
-        //}
+        }
         break;
     }
 
