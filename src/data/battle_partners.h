@@ -13,9 +13,10 @@
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 4
         .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
-        .encounterMusic_gender =
+#line 6
+        .gender = TRAINER_GENDER_MALE,
 #line 7
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 5
         .trainerBackPic = TRAINER_PIC_BACK_BRENDAN,
         .partySize = 0,
@@ -32,9 +33,10 @@
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 12
         .trainerPic = TRAINER_PIC_FRONT_STEVEN,
-        .encounterMusic_gender =
+#line 14
+        .gender = TRAINER_GENDER_MALE,
 #line 15
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 16
         .aiFlags = AI_FLAG_PARTNER_TRAINER,
 #line 13
@@ -116,11 +118,10 @@
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 51
         .trainerPic = TRAINER_PIC_FRONT_GREEN,
-        .encounterMusic_gender =
 #line 53
-F_TRAINER_FEMALE | 
+        .gender = TRAINER_GENDER_FEMALE,
 #line 54
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_FEMALE,
 #line 55
         .aiFlags = AI_FLAG_PARTNER_TRAINER,
 #line 52
@@ -202,9 +203,10 @@ F_TRAINER_FEMALE |
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
 #line 90
         .trainerPic = TRAINER_PIC_FRONT_MAGMA_ADMIN,
-        .encounterMusic_gender =
+#line 92
+        .gender = TRAINER_GENDER_MALE,
 #line 93
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 94
         .aiFlags = AI_FLAG_PARTNER_TRAINER,
 #line 91
@@ -355,9 +357,10 @@ F_TRAINER_FEMALE |
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
 #line 159
         .trainerPic = TRAINER_PIC_FRONT_STEVEN,
-        .encounterMusic_gender =
+#line 160
+        .gender = TRAINER_GENDER_MALE,
 #line 161
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 162
         .aiFlags = AI_FLAG_PARTNER_TRAINER,
 #line 0
@@ -439,11 +442,10 @@ F_TRAINER_FEMALE |
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
 #line 197
         .trainerPic = TRAINER_PIC_FRONT_AQUA_ADMIN_F,
-        .encounterMusic_gender =
 #line 199
-F_TRAINER_FEMALE | 
+        .gender = TRAINER_GENDER_FEMALE,
 #line 200
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 201
         .aiFlags = AI_FLAG_PARTNER_TRAINER,
 #line 198
@@ -527,9 +529,10 @@ F_TRAINER_FEMALE |
         .trainerClass = TRAINER_CLASS_AQUA_LEADER,
 #line 236
         .trainerPic = TRAINER_PIC_FRONT_AQUA_LEADER_ARCHIE,
-        .encounterMusic_gender =
+#line 238
+        .gender = TRAINER_GENDER_MALE,
 #line 239
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 240
         .aiFlags = AI_FLAG_PARTNER_TRAINER,
 #line 237
@@ -617,9 +620,10 @@ F_TRAINER_FEMALE |
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
 #line 272
         .trainerPic = TRAINER_PIC_FRONT_MAGMA_LEADER_MAXIE,
-        .encounterMusic_gender =
+#line 274
+        .gender = TRAINER_GENDER_MALE,
 #line 275
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 276
         .aiFlags = AI_FLAG_PARTNER_TRAINER,
 #line 273
@@ -707,9 +711,10 @@ F_TRAINER_FEMALE |
         .trainerClass = TRAINER_CLASS_AQUA_LEADER,
 #line 308
         .trainerPic = TRAINER_PIC_FRONT_AQUA_LEADER_ARCHIE,
-        .encounterMusic_gender =
+#line 310
+        .gender = TRAINER_GENDER_MALE,
 #line 311
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 312
         .aiFlags = AI_FLAG_PARTNER_TRAINER,
 #line 309
@@ -796,9 +801,10 @@ F_TRAINER_FEMALE |
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
 #line 343
         .trainerPic = TRAINER_PIC_FRONT_MAGMA_LEADER_MAXIE,
-        .encounterMusic_gender =
+#line 345
+        .gender = TRAINER_GENDER_MALE,
 #line 346
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 347
         .aiFlags = AI_FLAG_PARTNER_TRAINER,
 #line 344
@@ -885,11 +891,10 @@ F_TRAINER_FEMALE |
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
 #line 379
         .trainerPic = TRAINER_PIC_FRONT_AQUA_ADMIN_F,
-        .encounterMusic_gender =
 #line 381
-F_TRAINER_FEMALE | 
+        .gender = TRAINER_GENDER_FEMALE,
 #line 382
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 383
         .aiFlags = AI_FLAG_PARTNER_TRAINER,
 #line 380

@@ -3,8 +3,7 @@
 
 WILD_BATTLE_TEST("Ball Fetch causes the Pokémon to pick up the last failed Ball at the end of the turn")
 {
-    KNOWN_FAILING; // Temporary while catch rates are 100%
-    u32 item = 0;
+    enum Item item = ITEM_NONE;
 
     PARAMETRIZE { item = ITEM_POKE_BALL; }
     PARAMETRIZE { item = ITEM_GREAT_BALL; }
@@ -33,8 +32,7 @@ WILD_BATTLE_TEST("Ball Fetch causes the Pokémon to pick up the last failed Ball
 
 WILD_BATTLE_TEST("Ball Fetch doesn't trigger if the Pokémon is already holding an item")
 {
-    KNOWN_FAILING; // Temporary while catch rates are 100%
-    u32 item = 0;
+    enum Item item = ITEM_NONE;
 
     PARAMETRIZE { item = ITEM_NONE; }
     PARAMETRIZE { item = ITEM_NUGGET; }
@@ -68,9 +66,8 @@ WILD_BATTLE_TEST("Ball Fetch doesn't trigger if the Pokémon is already holding 
 
 WILD_BATTLE_TEST("Ball Fetch only picks up the first failed ball, once per battle")
 {
-    KNOWN_FAILING; // Temporary while catch rates are 100%
-    u32 item = 0;
-    u32 item2 = 0;
+    enum Item item = ITEM_NONE;
+    enum Item item2 = ITEM_NONE;
 
     PARAMETRIZE { item = ITEM_GREAT_BALL; item2 = ITEM_X_ACCURACY; }
     PARAMETRIZE { item = ITEM_GREAT_BALL; item2 = ITEM_ULTRA_BALL; }
@@ -100,7 +97,7 @@ WILD_BATTLE_TEST("Ball Fetch only picks up the first failed ball, once per battl
 
 SINGLE_BATTLE_TEST("Ball Fetch doesn't trigger in Trainer Battles")
 {
-    u32 item = 0;
+    enum Item item = ITEM_NONE;
 
     PARAMETRIZE { item = ITEM_POKE_BALL; }
     PARAMETRIZE { item = ITEM_GREAT_BALL; }

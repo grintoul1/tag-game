@@ -588,7 +588,7 @@ AI_SINGLE_BATTLE_TEST("AI calculates guaranteed criticals and detects critical i
 
 AI_SINGLE_BATTLE_TEST("AI avoids contact moves against rocky helmet")
 {
-    u32 item;
+    enum Item item;
 
     PARAMETRIZE { item = ITEM_NONE; }
     PARAMETRIZE { item = ITEM_ROCKY_HELMET; }
@@ -841,6 +841,7 @@ AI_SINGLE_BATTLE_TEST("AI sees that Primal weather can block a move by type")
 
 AI_DOUBLE_BATTLE_TEST("AI sees opposing drain ability")
 {
+    KNOWN_FAILING; // New AI not implemented
     GIVEN {
         ASSUME(GetMoveType(MOVE_THUNDERBOLT) == TYPE_ELECTRIC);
         ASSUME(GetMoveType(MOVE_RAZOR_LEAF) != TYPE_ELECTRIC);

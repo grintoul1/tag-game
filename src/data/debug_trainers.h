@@ -15,9 +15,10 @@
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 17
         .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
-        .encounterMusic_gender =
+#line 18
+        .gender = TRAINER_GENDER_MALE,
 #line 19
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 0
         .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
         .partySize = 1,
@@ -57,9 +58,10 @@
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 36
         .trainerPic = TRAINER_PIC_FRONT_STEVEN,
-        .encounterMusic_gender =
+#line 37
+        .gender = TRAINER_GENDER_MALE,
 #line 38
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 35
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 33

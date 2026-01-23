@@ -77,10 +77,10 @@ __attribute__((section(".text.header_rhh"))) USED static const struct RHHRomHead
     .movesSize = sizeof(struct MoveInfo),
     .abilitySize = sizeof(struct AbilityInfo),
     .regionMapEntrySize = sizeof(struct RegionMapLocation),
-    .itemSize = sizeof(struct Item),
+    .itemSize = sizeof(struct ItemInfo),
     .speciesNameOffset = offsetof(struct SpeciesInfo, speciesName),
     .mapNameOffset = offsetof(struct RegionMapLocation, name),
-    .itemNameOffset = offsetof(struct Item, name),
+    .itemNameOffset = offsetof(struct ItemInfo, name),
     .mapSecCount = MAPSEC_COUNT,
     .abilityNameLength = ABILITY_NAME_LENGTH,
 };

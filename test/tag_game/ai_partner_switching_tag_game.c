@@ -92,7 +92,8 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_
 
 AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_FLAG_PARTNER_TRAINER will not switch into a type immunity when the immunity is holding Ring Target (multibattle)")
 {
-    u32 item = ITEM_NONE, moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
+    enum Item item = ITEM_NONE;
+    enum Move moveA1 = MOVE_NONE, moveB1 = MOVE_NONE, moveC1 = MOVE_NONE, species, ability = ABILITY_NONE;
 
     PARAMETRIZE { item = ITEM_NONE;             moveA1 = MOVE_BODY_SLAM;      moveB1 = MOVE_BODY_SLAM;        moveC1 = MOVE_BODY_SLAM;      species = SPECIES_GENGAR;       ability = ABILITY_LEVITATE;       }
     PARAMETRIZE { item = ITEM_NONE;             moveA1 = MOVE_THUNDER_SHOCK;  moveB1 = MOVE_SHOCK_WAVE;       moveC1 = MOVE_BODY_SLAM;      species = SPECIES_DONPHAN;      ability = ABILITY_BATTLE_ARMOR;   }
@@ -121,7 +122,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_
         MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
         MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
         MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
-        MULTI_OPPONENT_B((moveA1 == MOVE_HEX ? SPECIES_ARCEUS_FIGHTING : SPECIES_ARCEUS)) { Speed(7); Moves(MOVE_FOCUS_BLAST); }
+        MULTI_OPPONENT_B(((moveA1 == MOVE_HEX) ? SPECIES_ARCEUS_FIGHTING : SPECIES_ARCEUS)) { Speed(7); Moves(MOVE_FOCUS_BLAST); }
         MULTI_OPPONENT_B(species) { Level(1); Speed(3); Moves(moveC1); Ability(ability); Item(item); }
     } WHEN {
             TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (item == ITEM_RING_TARGET ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
