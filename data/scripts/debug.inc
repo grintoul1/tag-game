@@ -1162,10 +1162,13 @@ PokeMenu_EventScript_HatchEgg_8:
 	goto PokeMenu_EventScript_HatchEgg_7
 
 PokeMenu_EventScript_Repel::
-	compare VAR_REPEL_STEP_COUNT, 0
-	goto_if_eq PokeMenu_EventScript_Repel_2
-	setvar VAR_REPEL_STEP_COUNT, 0
-	msgbox PokeMenu_EventScript_Repel_Text_1, MSGBOX_AUTOCLOSE
+	goto_if_set FLAG_NO_ENCOUNTER, PokeMenu_EventScript_Repel_Unset
+	setflag FLAG_NO_ENCOUNTER
+	msgbox PokeMenu_EventScript_Repel_Text_0, MSGBOX_AUTOCLOSE @ Repellent on
+	goto PokeMenu_EventScript_Repel_1
+PokeMenu_EventScript_Repel_Unset:
+	clearflag FLAG_NO_ENCOUNTER
+	msgbox PokeMenu_EventScript_Repel_Text_1, MSGBOX_AUTOCLOSE @ Repellent off
 PokeMenu_EventScript_Repel_1:
 	end
 

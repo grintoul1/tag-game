@@ -758,23 +758,19 @@ void ItemUseOutOfBattle_Repellent(u8 taskId)
     {
         FlagToggle(OW_FLAG_NO_ENCOUNTER);
         PlaySE(SE_REPEL);
-        if(gTasks[taskId].tUsingRegisteredKeyItem){
+        if(gTasks[taskId].tUsingRegisteredKeyItem)
             DisplayItemMessageOnField(taskId, gText_RepellentOn, Task_CloseCantUseKeyItemMessage);
-        }
-        else{
+        else
             DisplayItemMessage(taskId, 1, gText_RepellentOn, CloseItemMessage);
-        }
     }
     else
     {
         FlagToggle(OW_FLAG_NO_ENCOUNTER);
         PlaySE(SE_PC_OFF);
-        if (gTasks[taskId].tUsingRegisteredKeyItem){
+        if (gTasks[taskId].tUsingRegisteredKeyItem)
             DisplayItemMessageOnField(taskId, gText_RepellentOff, Task_CloseCantUseKeyItemMessage);
-        }
-        else{
+        else
             DisplayItemMessage(taskId, 1, gText_RepellentOff, CloseItemMessage);
-        }
     }
 }
 
