@@ -111,7 +111,7 @@ bool32 AI_BattlerAtMaxHp(enum BattlerId battler);
 u32 GetHealthPercentage(enum BattlerId battler);
 bool32 AI_CanBattlerEscape(enum BattlerId battler);
 bool32 IsBattlerTrapped(enum BattlerId battlerAtk, enum BattlerId battlerDef);
-s32 AI_WhoStrikesFirst(enum BattlerId battlerAI, enum BattlerId battler2, enum Move aiMoveConsidered, enum Move playerMoveConsidered, enum ConsiderPriority considerPriority);
+s32 AI_WhoStrikesFirst(enum BattlerId battlerAI, enum BattlerId battler, enum Move aiMoveConsidered, enum Move playerMoveConsidered, enum ConsiderPriority considerPriority);
 bool32 CanTargetFaintAi(enum BattlerId battlerDef, enum BattlerId battlerAtk);
 u32 NoOfHitsForTargetToFaintBattler(enum BattlerId battlerDef, enum BattlerId battlerAtk, enum AiConsiderEndure considerEndure);
 void GetBestDmgMovesFromBattler(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum DamageCalcContext calcContext, enum Move *bestMoves);

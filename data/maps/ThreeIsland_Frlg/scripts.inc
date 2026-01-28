@@ -1,4 +1,4 @@
-ThreeIsland_MapScripts::
+ThreeIsland_Frlg_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, ThreeIsland_OnTransition
 	.byte 0
 
@@ -138,13 +138,13 @@ ThreeIsland_EventScript_BikerBossIntroTrigger::
 	applymovement LOCALID_THREE_ISLAND_ANTIBIKER1, ThreeIsland_Movement_SpeakRight
 	waitmovement 0
 	msgbox ThreeIsland_Text_AreYouBossGoBackToKanto
-	applymovement LOCALID_PAXTON, ThreeIsland_Movement_SpeakLeft
+	applymovement LOCALID_THREE_ISLAND_PAXTON, ThreeIsland_Movement_SpeakLeft
 	waitmovement 0
 	msgbox ThreeIsland_Text_JustGotHerePal
 	applymovement LOCALID_THREE_ISLAND_ANTIBIKER1, ThreeIsland_Movement_SpeakRight
 	waitmovement 0
 	msgbox ThreeIsland_Text_FollowersRaisingHavoc
-	applymovement LOCALID_PAXTON, ThreeIsland_Movement_SpeakLeft
+	applymovement LOCALID_THREE_ISLAND_PAXTON, ThreeIsland_Movement_SpeakLeft
 	waitmovement 0
 	msgbox ThreeIsland_Text_OughtToBeThankingUs
 	applymovement LOCALID_THREE_ISLAND_ANTIBIKER1, ThreeIsland_Movement_SpeakRight
@@ -244,12 +244,12 @@ ThreeIsland_EventScript_BattleBikersScene::
 	call_if_eq VAR_TEMP_1, 4, ThreeIsland_EventScript_PaxtonApproachRight
 	playbgm MUS_RG_ENCOUNTER_BOY, 0
 	msgbox ThreeIsland_Text_PaxtonIntro
-	setvar VAR_LAST_TALKED, LOCALID_PAXTON
+	setvar VAR_LAST_TALKED, LOCALID_THREE_ISLAND_PAXTON
 	trainerbattle_no_intro TRAINER_CUE_BALL_PAXTON, ThreeIsland_Text_PaxtonDefeat
 	msgbox ThreeIsland_Text_PaxtonPostBattle
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
-	removeobject LOCALID_PAXTON
+	removeobject LOCALID_THREE_ISLAND_PAXTON
 	removeobject LOCALID_THREE_ISLAND_BIKER1
 	removeobject LOCALID_THREE_ISLAND_BIKER2
 	removeobject LOCALID_THREE_ISLAND_BIKER3
@@ -263,19 +263,19 @@ ThreeIsland_EventScript_BattleBikersScene::
 
 ThreeIsland_EventScript_PaxtonApproachLeft::
 	applymovement LOCALID_THREE_ISLAND_BIKER3, Common_Movement_WalkInPlaceFasterDown
-	applymovement LOCALID_PAXTON, ThreeIsland_Movement_PaxtonApproachLeft
+	applymovement LOCALID_THREE_ISLAND_PAXTON, ThreeIsland_Movement_PaxtonApproachLeft
 	waitmovement 0
 	return
 
 ThreeIsland_EventScript_PaxtonApproachMidLeft::
 	applymovement LOCALID_THREE_ISLAND_BIKER3, Common_Movement_WalkInPlaceFasterDown
-	applymovement LOCALID_PAXTON, ThreeIsland_Movement_PaxtonApproachMidLeft
+	applymovement LOCALID_THREE_ISLAND_PAXTON, ThreeIsland_Movement_PaxtonApproachMidLeft
 	waitmovement 0
 	return
 
 ThreeIsland_EventScript_PaxtonApproachMid::
 	applymovement LOCALID_THREE_ISLAND_BIKER3, Common_Movement_WalkInPlaceFasterDown
-	applymovement LOCALID_PAXTON, ThreeIsland_Movement_PaxtonApproachMid
+	applymovement LOCALID_THREE_ISLAND_PAXTON, ThreeIsland_Movement_PaxtonApproachMid
 	applymovement LOCALID_PLAYER, ThreeIsland_Movement_PlayerFacePaxton
 	waitmovement 0
 	return
@@ -283,14 +283,14 @@ ThreeIsland_EventScript_PaxtonApproachMid::
 ThreeIsland_EventScript_PaxtonApproachMidRight::
 	applymovement LOCALID_THREE_ISLAND_BIKER3, Common_Movement_WalkInPlaceFasterDown
 	applymovement LOCALID_PLAYER, ThreeIsland_Movement_PlayerFacePaxton
-	applymovement LOCALID_PAXTON, ThreeIsland_Movement_PaxtonApproachMidRight
+	applymovement LOCALID_THREE_ISLAND_PAXTON, ThreeIsland_Movement_PaxtonApproachMidRight
 	waitmovement 0
 	return
 
 ThreeIsland_EventScript_PaxtonApproachRight::
 	applymovement LOCALID_THREE_ISLAND_BIKER3, Common_Movement_WalkInPlaceFasterDown
 	applymovement LOCALID_PLAYER, ThreeIsland_Movement_PlayerFacePaxton
-	applymovement LOCALID_PAXTON, ThreeIsland_Movement_PaxtonApproachRight
+	applymovement LOCALID_THREE_ISLAND_PAXTON, ThreeIsland_Movement_PaxtonApproachRight
 	waitmovement 0
 	return
 

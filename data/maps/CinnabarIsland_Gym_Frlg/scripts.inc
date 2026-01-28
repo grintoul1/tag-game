@@ -1,4 +1,4 @@
-CinnabarIsland_Gym_MapScripts::
+CinnabarIsland_Gym_Frlg_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, CinnabarIsland_Gym_OnLoad
 	.byte 0
 
@@ -490,13 +490,13 @@ CinnabarIsland_Gym_EventScript_BattleDerek::
 
 CinnabarIsland_Gym_EventScript_DerekApproachLeft::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	applymovement LOCALID_DEREK, CinnabarIsland_Gym_Movement_DerekApproachLeft
+	applymovement LOCALID_DEREK_CINNABAR, CinnabarIsland_Gym_Movement_DerekApproachLeft
 	waitmovement 0
 	return
 
 CinnabarIsland_Gym_EventScript_DerekApproachRight::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	applymovement LOCALID_DEREK, CinnabarIsland_Gym_Movement_DerekApproachRight
+	applymovement LOCALID_DEREK_CINNABAR, CinnabarIsland_Gym_Movement_DerekApproachRight
 	waitmovement 0
 	return
 
@@ -562,13 +562,13 @@ CinnabarIsland_Gym_EventScript_BattleDusty::
 
 CinnabarIsland_Gym_EventScript_DustyApproachLeft::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	applymovement LOCALID_DUSTY, CinnabarIsland_Gym_Movement_DustyApproachLeft
+	applymovement LOCALID_CINNABAR_DUSTY, CinnabarIsland_Gym_Movement_DustyApproachLeft
 	waitmovement 0
 	return
 
 CinnabarIsland_Gym_EventScript_DustyApproachRight::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	applymovement LOCALID_DUSTY, CinnabarIsland_Gym_Movement_DustyApproachRight
+	applymovement LOCALID_CINNABAR_DUSTY, CinnabarIsland_Gym_Movement_DustyApproachRight
 	waitmovement 0
 	return
 

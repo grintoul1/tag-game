@@ -30,11 +30,11 @@ static const struct FollowerNPCSpriteGraphics gFollowerNPCAlternateSprites[] =
         .hasRunningFrames = TRUE,
     },
     {
-        .normalId = OBJ_EVENT_GFX_GREEN_NORMAL,
-        .machBikeId = OBJ_EVENT_GFX_GREEN_MACH_BIKE,
-        .acroBikeId = OBJ_EVENT_GFX_GREEN_ACRO_BIKE,
-        .surfId = OBJ_EVENT_GFX_GREEN_SURFING,
-        .underwaterId = OBJ_EVENT_GFX_GREEN_UNDERWATER,
+        .normalId = OBJ_EVENT_GFX_SISTER_NORMAL,
+        .machBikeId = OBJ_EVENT_GFX_SISTER_MACH_BIKE,
+        .acroBikeId = OBJ_EVENT_GFX_SISTER_ACRO_BIKE,
+        .surfId = OBJ_EVENT_GFX_SISTER_SURFING,
+        .underwaterId = OBJ_EVENT_GFX_SISTER_UNDERWATER,
     },
 
 };

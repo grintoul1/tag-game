@@ -1,4 +1,4 @@
-MtMoon_B2F_MapScripts::
+MtMoon_B2F_Frlg_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MtMoon_B2F_OnTransition
 	.byte 0
 
@@ -13,7 +13,7 @@ MtMoon_B2F_EventScript_ShowFossils::
 
 MtMoon_B2F_EventScript_MiguelTrigger::
 	lockall
-	applymovement LOCALID_MIGUEL, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_MT_MOON_MIGUEL, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	call MtMoon_B2F_EventScript_BattleMiguel
 	releaseall
@@ -34,7 +34,7 @@ MtMoon_B2F_EventScript_BattleMiguel::
 	waitmessage
 	playbgm MUS_RG_ENCOUNTER_GYM_LEADER, 0
 	waitbuttonpress
-	setvar VAR_LAST_TALKED, LOCALID_MIGUEL
+	setvar VAR_LAST_TALKED, LOCALID_MT_MOON_MIGUEL
 	trainerbattle_no_intro TRAINER_SUPER_NERD_MIGUEL, MtMoon_B2F_Text_MiguelDefeat
 	setvar VAR_MAP_SCENE_MT_MOON_B2F, 1
 	msgbox MtMoon_B2F_Text_WellEachTakeAFossil
@@ -59,9 +59,9 @@ MtMoon_B2F_EventScript_DomeFossil::
 	giveitem_msg MtMoon_B2F_Text_ObtainedDomeFossil, ITEM_DOME_FOSSIL, 1, MUS_RG_OBTAIN_KEY_ITEM
 	closemessage
 	delay 10
-	applymovement LOCALID_MIGUEL, MtMoon_B2F_Movement_MiguelToHelixFossil
+	applymovement LOCALID_MT_MOON_MIGUEL, MtMoon_B2F_Movement_MiguelToHelixFossil
 	waitmovement 0
-	copyobjectxytoperm LOCALID_MIGUEL
+	copyobjectxytoperm LOCALID_MT_MOON_MIGUEL
 	textcolor NPC_TEXT_COLOR_MALE
 	playfanfare MUS_RG_OBTAIN_KEY_ITEM
 	message MtMoon_B2F_Text_ThenThisFossilIsMine
@@ -89,9 +89,9 @@ MtMoon_B2F_EventScript_HelixFossil::
 	giveitem_msg MtMoon_B2F_Text_ObtainedHelixFossil, ITEM_HELIX_FOSSIL, 1, MUS_RG_OBTAIN_KEY_ITEM
 	closemessage
 	delay 10
-	applymovement LOCALID_MIGUEL, MtMoon_B2F_Movement_MiguelToDomeFossil
+	applymovement LOCALID_MT_MOON_MIGUEL, MtMoon_B2F_Movement_MiguelToDomeFossil
 	waitmovement 0
-	copyobjectxytoperm LOCALID_MIGUEL
+	copyobjectxytoperm LOCALID_MT_MOON_MIGUEL
 	textcolor NPC_TEXT_COLOR_MALE
 	playfanfare MUS_RG_OBTAIN_KEY_ITEM
 	message MtMoon_B2F_Text_ThenThisFossilIsMine

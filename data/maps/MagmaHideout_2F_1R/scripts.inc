@@ -40,7 +40,7 @@ MagmaHideout_2F_1R_EventScript_Grunt14Grunt3DoMultiBattle::
 	setvar VAR_PARTNER_EMMIE_STATE, 42
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
-	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_SISTER_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	special SetCB2WhiteOut
 	waitstate
 
@@ -98,7 +98,7 @@ MagmaHideout_2F_1R_EventScript_Grunt5Grunt4DoMultiBattle::
 	setvar VAR_PARTNER_EMMIE_STATE, 42
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
-	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_SISTER_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	special SetCB2WhiteOut
 	waitstate
 

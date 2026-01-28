@@ -3299,8 +3299,8 @@ extern const u16 gObjectEventPal_Brendan[];
 extern const u16 gObjectEventPal_May[];
 extern const u16 gObjectEventPal_RubySapphireBrendan[];
 extern const u16 gObjectEventPal_RubySapphireMay[];
-extern const u16 gObjectEventPal_Green[];
-extern const u16 gObjectEventPal_GreenUnderwater[];
+extern const u16 gObjectEventPal_Sister[];
+extern const u16 gObjectEventPal_SisterUnderwater[];
 
 // Mail
 extern const u16 gMailPalette_Orange[];
@@ -3347,5 +3347,8 @@ extern const u32 gBattleIcons_Gfx1[];
 extern const u32 gBattleIcons_Gfx2[];
 extern const u16 gBattleIcons_Pal1[];
 extern const u16 gBattleIcons_Pal2[];
+
+extern const u32 gGhostFrontPic[];
+extern const u16 gGhostPalette[];
 
 #endif //GUARD_GRAPHICS_H

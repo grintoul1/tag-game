@@ -98,7 +98,7 @@ AquaHideout_B2F_EventScript_MattShellyDoMultiBattle::
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
 	setvar VAR_PARTNER_EMMIE_STATE, 48
 	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
-	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_SISTER_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	special SetCB2WhiteOut
 	waitstate
 
@@ -359,7 +359,7 @@ AquaHideout_B2F_EventScript_Grunt4Grunt1DoMultiBattle::
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
 	setvar VAR_PARTNER_EMMIE_STATE, 48
 	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
-	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_SISTER_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	special SetCB2WhiteOut
 	waitstate
 
@@ -417,7 +417,7 @@ AquaHideout_B2F_EventScript_Grunt6Grunt8DoMultiBattle::
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
 	setvar VAR_PARTNER_EMMIE_STATE, 48
 	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
-	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_SISTER_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	special SetCB2WhiteOut
 	waitstate
 
