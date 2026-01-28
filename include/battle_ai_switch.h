@@ -77,14 +77,14 @@ enum SwitchType
     SWITCH_MID_BATTLE_OPTIONAL,
 };
 
-u32 GetMostSuitableMonToSwitchInto(u32 battler, enum SwitchType switchType);
-bool32 ShouldSwitch(u32 battler);
-bool32 PartnerShouldSwitch(u32 battler);
+u32 GetMostSuitableMonToSwitchInto(enum BattlerId battler, enum SwitchType switchType);
+bool32 ShouldSwitch(enum BattlerId battler);
+bool32 PartnerShouldSwitch(enum BattlerId battler);
 bool32 IsMonGrounded(enum HoldEffect heldItemEffect, enum Ability ability, enum Type type1, enum Type type2);
-void ModifySwitchAfterMoveScoring(u32 battler);
-void PartnerModifySwitchAfterMoveScoring(u32 battler);
-u32 AI_SelectRevivalBlessingMon(u32 battler);
-bool32 IsSwitchinValid(u32 battler);
-bool32 IsAceMon(u32 battler, u32 monPartyId);
+void ModifySwitchAfterMoveScoring(enum BattlerId battler);
+void PartnerModifySwitchAfterMoveScoring(enum BattlerId battler);
+u32 AI_SelectRevivalBlessingMon(enum BattlerId battler);
+bool32 IsSwitchinValid(enum BattlerId battler);
+bool32 IsAceMon(enum BattlerId battler, u32 monPartyId);
 
 #endif // GUARD_BATTLE_AI_SWITCH_H

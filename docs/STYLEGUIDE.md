@@ -64,7 +64,7 @@ When describing a system/component in-depth, use block comment syntax.
 ```
 
 When briefly describing a function or block of code, use a single-line comments
-placed on its own line. 
+placed on its own line.
 There should be a single space directly to the right of `//`.
 
 ```c
@@ -377,7 +377,7 @@ When an enum is used, the enum type is used instead of a regular number type to 
 
 ```c
 // Incorrect
-bool32 CanActivateGimmick(u32 battler, u32 gimmick)
+bool32 CanActivateGimmick(enum BattlerId battler, u32 gimmick)
 {
     return gGimmicksInfo[gimmick].CanActivate != NULL && gGimmicksInfo[gimmick].CanActivate(battler);
 }
@@ -394,7 +394,7 @@ u32 GetCurrentDifficultyLevel(void)
 ```c
 //Correct
 
-bool32 CanActivateGimmick(u32 battler, enum Gimmick gimmick)
+bool32 CanActivateGimmick(enum BattlerId battler, enum Gimmick gimmick)
 {
     return gGimmicksInfo[gimmick].CanActivate != NULL && gGimmicksInfo[gimmick].CanActivate(battler);
 }
@@ -453,7 +453,7 @@ All other configs should be off.
 
 ### Save Philosophy
 
-Until [save migration](https://discord.com/channels/419213663107416084/1108733346864963746) is implemented, branches will only merged in if they do not forcefully break existing game saves. 
+Until [save migration](https://discord.com/channels/419213663107416084/1108733346864963746) is implemented, branches will only merged in if they do not forcefully break existing game saves.
 
 When `pokemeerald-expansion` gets to a point where new functionality will require that we break saves, we will merge as many [save-breaking features](https://discord.com/channels/419213663107416084/1202774957776441427) together as possible, and increment the major version number of the project.
 

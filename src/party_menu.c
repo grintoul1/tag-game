@@ -456,7 +456,7 @@ static u8 GetMaxBattleEntries(void);
 static u8 GetMinBattleEntries(void);
 static void Task_ContinueChoosingHalfParty(u8);
 static void BufferBattlePartyOrder(u8 *, bool8);
-static void BufferBattlePartyOrderBySide(u8 *, u8, u8);
+static void BufferBattlePartyOrderBySide(u8 *, u8, enum BattlerId);
 static void Task_InitMultiPartnerPartySlideIn(u8);
 static void Task_MultiPartnerPartySlideIn(u8);
 static void SlideMultiPartyMenuBoxSpritesOneStep(u8);
@@ -1210,10 +1210,10 @@ static bool8 DisplayPartyPokemonDataForMoveTutorOrEvolutionItem(u8 slot)
         {
         default:
             return FALSE;
-        case 1: // TM/HM
+        case ITEM_IS_TM_HM: // TM/HM
             DisplayPartyPokemonDataToTeachMove(slot, ItemIdToBattleMoveId(item));
             break;
-        case 2: // Evolution stone
+        case ITEM_IS_EVOLUTION_STONE: // Evolution stone
             if (!GetMonData(currentPokemon, MON_DATA_IS_EGG) && GetEvolutionTargetSpecies(currentPokemon, EVO_MODE_ITEM_CHECK, item, NULL, NULL, CHECK_EVO) != SPECIES_NONE)
                 return FALSE;
             DisplayPartyPokemonDescriptionData(slot, PARTYBOX_DESC_NO_USE);
@@ -8112,7 +8112,7 @@ static bool8 TrySwitchInPokemon(void)
 {
     u8 slot = GetCursorSelectionMonId();
     u8 newSlot;
-    u8 i;
+    //u8 i;
     bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
 
     // In a multi battle, slots 1, 4, and 5 are the partner's Pokémon
@@ -8131,7 +8131,7 @@ static bool8 TrySwitchInPokemon(void)
         StringExpandPlaceholders(gStringVar4, gText_PkmnHasNoEnergy);
         return FALSE;
     }
-    for (i = 0; i < gBattlersCount; i++)
+    for (enum BattlerId i = 0; i < gBattlersCount; i++)
     {
         if (IsOnPlayerSide(i) && GetPartyIdFromBattleSlot(slot) == gBattlerPartyIndexes[i])
         {
@@ -8230,18 +8230,18 @@ static void BufferBattlePartyOrder(u8 *partyBattleOrder, u8 flankId)
         partyBattleOrder[i] = (partyIds[0 + (i * 2)] << 4) | partyIds[1 + (i * 2)];
 }
 
-void BufferBattlePartyCurrentOrderBySide(u8 battler, u8 flankId)
+void BufferBattlePartyCurrentOrderBySide(enum BattlerId battler, u8 flankId)
 {
     BufferBattlePartyOrderBySide(gBattleStruct->battlerPartyOrders[battler], flankId, battler);
 }
 
 // when IsOnPlayerSide(battlerId), this function is identical the one above
-static void BufferBattlePartyOrderBySide(u8 *partyBattleOrder, u8 flankId, u8 battler)
+static void BufferBattlePartyOrderBySide(u8 *partyBattleOrder, u8 flankId, enum BattlerId battler)
 {
     u8 partyIndexes[PARTY_SIZE];
     int i, j;
 
-    u8 leftBattler;
+    enum BattlerId leftBattler;
     if (IsOnPlayerSide(battler))
         leftBattler = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
     else
@@ -8278,7 +8278,7 @@ static void BufferBattlePartyOrderBySide(u8 *partyBattleOrder, u8 flankId, u8 ba
     }
     else
     {
-        u8 rightBattler;
+        enum BattlerId rightBattler;
         if (IsOnPlayerSide(battler))
             rightBattler = GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT);
         else
@@ -8301,7 +8301,7 @@ static void BufferBattlePartyOrderBySide(u8 *partyBattleOrder, u8 flankId, u8 ba
         partyBattleOrder[i] = (partyIndexes[0 + (i * 2)] << 4) | partyIndexes[1 + (i * 2)];
 }
 
-void SwitchPartyOrderLinkMulti(u8 battler, u8 slot, u8 slot2)
+void SwitchPartyOrderLinkMulti(enum BattlerId battler, u8 slot, u8 slot2)
 {
     u8 partyIds[PARTY_SIZE];
     u8 tempSlot = 0;

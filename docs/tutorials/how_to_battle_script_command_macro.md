@@ -27,7 +27,7 @@ Now, how might we add a custom `callnative` command? Here are the steps. We will
 void BS_JumpIfTerrainAffected(void)
 {
     NATIVE_ARGS(u8 battler, u32 flags, const u8 *jumpInstr);
-    u32 battler = GetBattlerForBattleScript(cmd->battler);
+    enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
 
     if (IsBattlerTerrainAffected(battler, cmd->flags))
         gBattlescriptCurrInstr = cmd->jumpInstr;

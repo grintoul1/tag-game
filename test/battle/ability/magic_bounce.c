@@ -126,7 +126,8 @@ DOUBLE_BATTLE_TEST("Magic Bounce bounces back moves hitting both foes at two foe
 
 DOUBLE_BATTLE_TEST("Magic Bounce bounces back moves hitting foes field")
 {
-    u32 battlerOne, battlerTwo, abilityBattlerOne, abilityBattlerTwo;
+    enum BattlerId battlerOne, battlerTwo;
+    enum Ability abilityBattlerOne, abilityBattlerTwo;
 
     PARAMETRIZE { battlerOne = SPECIES_NATU; abilityBattlerOne = ABILITY_MAGIC_BOUNCE;
                   battlerTwo = SPECIES_ESPEON; abilityBattlerTwo = ABILITY_SYNCHRONIZE; }
