@@ -614,6 +614,7 @@ u8 CreateBattlerHealthboxSprites(u8 battler)
     default:
     case BATTLE_COORDS_SINGLES:
     {
+        DebugPrintf("CreateBattlerHealthboxSprites(%d) Singles", battler);
         if (IsOnPlayerSide(battler))
         {
             healthboxLeftSpriteId = CreateSprite(&sHealthboxPlayerSpriteTemplates[0], DISPLAY_WIDTH, DISPLAY_HEIGHT, 1);
@@ -641,6 +642,7 @@ u8 CreateBattlerHealthboxSprites(u8 battler)
     }
     case BATTLE_COORDS_DOUBLES:
     {
+        DebugPrintf("CreateBattlerHealthboxSprites(%d) Doubles", battler);
         if (IsOnPlayerSide(battler))
         {
             healthboxLeftSpriteId = CreateSprite(&sHealthboxPlayerSpriteTemplates[GetBattlerPosition(battler) / 2], DISPLAY_WIDTH, DISPLAY_HEIGHT, 1);

@@ -119,6 +119,23 @@ bool32 BattlerHasAi(u32 battlerId)
     return FALSE;
 }
 
+bool32 TrainerIsPartnerTrainer(u16 trainerId)
+{
+    return (trainerId > TRAINER_PARTNER(PARTNER_NONE) && trainerId < TRAINER_PARTNER(PARTNER_COUNT));
+}
+
+bool32 TrainerHasBackPic(u16 trainerId)
+{
+    trainerId = SanitizeTrainerId(trainerId);
+
+    enum TrainerPicID trainerBackPic = GetTrainerBackPicFromId(trainerId);
+
+    if (trainerBackPic >= TRAINER_PIC_FRONT_COUNT && trainerBackPic < TRAINER_PIC_COUNT)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 void HandleLinkBattleSetup(void)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
@@ -154,6 +171,27 @@ void SetUpBattleVarsAndBirchZigzagoon(void)
 
     if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
         CreateWildMon(SPECIES_ZIGZAGOON, 2);
+}
+
+enum BattlerPosition GetPlayerBattlePosition(void)
+{
+    if(!(gBattleTypeFlags & BATTLE_TYPE_CUSTOM))
+    {
+        return B_POSITION_PLAYER_LEFT; // TO DO consideration for Link battles
+    }
+    else
+    {
+        if (CUSTOM_BATTLE_PARAM.battler0Id == TRAINER_PLAYER_PLACEHOLDER)
+            return B_POSITION_PLAYER_LEFT;
+        else if (CUSTOM_BATTLE_PARAM.battler2Id == TRAINER_PLAYER_PLACEHOLDER)
+            return B_POSITION_PLAYER_RIGHT;
+        else if (CUSTOM_BATTLE_PARAM.battler1Id == TRAINER_PLAYER_PLACEHOLDER)
+            return B_POSITION_OPPONENT_LEFT;
+        else if (CUSTOM_BATTLE_PARAM.battler3Id == TRAINER_PLAYER_PLACEHOLDER)
+            return B_POSITION_OPPONENT_RIGHT;
+        else
+            return B_POSITION_PLAYER_LEFT;
+    }
 }
 
 void InitBattleControllers(void)
@@ -206,7 +244,72 @@ static void InitBtlControllersInternal(void)
     else
         gBattlersCount = MAX_BATTLERS_COUNT;
 
-    if ((gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
+    if (gBattleTypeFlags & BATTLE_TYPE_CUSTOM)
+    {
+        
+        gBattlerPositions[B_BATTLER_0] = B_POSITION_PLAYER_LEFT;
+        gBattlerPositions[B_BATTLER_1] = B_POSITION_OPPONENT_LEFT;
+        if (isDouble)
+        {
+            gBattlerPositions[B_BATTLER_2] = B_POSITION_PLAYER_RIGHT;
+            gBattlerPositions[B_BATTLER_3] = B_POSITION_OPPONENT_RIGHT;
+        }
+        
+        // battler0 controller
+        if (CUSTOM_BATTLE_PARAM.battler0Id == TRAINER_PLAYER_PLACEHOLDER)
+            gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = SetControllerToPlayer;
+        else if (CUSTOM_BATTLE_PARAM.battler0Id > TRAINER_PARTNER(PARTNER_NONE))
+            gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = SetControllerToPlayerPartner;
+        else
+            gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = SetControllerToOpponent;
+
+        // battler1 controller
+        if (CUSTOM_BATTLE_PARAM.battler1Id == TRAINER_PLAYER_PLACEHOLDER)
+            gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_1)] = SetControllerToPlayer;
+        else if (CUSTOM_BATTLE_PARAM.battler1Id > TRAINER_PARTNER(PARTNER_NONE))
+            gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_1)] = SetControllerToPlayerPartner;
+        else
+            gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_1)] = SetControllerToOpponent;
+
+        if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
+        {
+            // battler2 controller
+            if (CUSTOM_BATTLE_PARAM.battler2Id == TRAINER_PLAYER_PLACEHOLDER)
+                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_2)] = SetControllerToPlayer;
+            else if (CUSTOM_BATTLE_PARAM.battler2Id > TRAINER_PARTNER(PARTNER_NONE))
+                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_2)] = SetControllerToPlayerPartner;
+            else
+                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_2)] = SetControllerToOpponent;
+        }
+
+        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        {
+            // battler3 controller
+            if (CUSTOM_BATTLE_PARAM.battler3Id == TRAINER_PLAYER_PLACEHOLDER)
+                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_3)] = SetControllerToPlayer;
+            else if (CUSTOM_BATTLE_PARAM.battler3Id > TRAINER_PARTNER(PARTNER_NONE))
+                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_3)] = SetControllerToPlayerPartner;
+            else
+                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_3)] = SetControllerToOpponent;
+        }
+
+        if (isDouble && isMulti)
+        {
+            BufferBattlePartyCurrentOrderBySide(0, 0);
+            BufferBattlePartyCurrentOrderBySide(1, 0);
+            BufferBattlePartyCurrentOrderBySide(2, 1);
+            BufferBattlePartyCurrentOrderBySide(3, 1);
+
+            gBattlerPartyIndexes[0] = 0;
+            gBattlerPartyIndexes[1] = 0;
+            gBattlerPartyIndexes[2] = 3;
+            if (!isLink && isInGamePartner && (BATTLE_TWO_VS_ONE_OPPONENT || WILD_DOUBLE_BATTLE))
+                gBattlerPartyIndexes[3] = 1;
+            else
+                gBattlerPartyIndexes[3] = 3;
+        }
+    }
+    else if ((gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
         || !isMulti
         || (IsMultibattleTest())
         || (!isLink && !isRecorded)

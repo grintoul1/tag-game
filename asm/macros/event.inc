@@ -785,6 +785,7 @@
 	@ Player is set via TRAINER_PLAYER_PLACEHOLDER
 	@.if ((\arg >= VARS_START && \arg <= VARS_END) || (\arg >= SPECIAL_VARS_START && \arg <= SPECIAL_VARS_END))
 	.macro trainerbattle_custom battler0Id:req, battler0IdLoseText:req, battler0IsPartner:req, battler1Id:req, battler1IdLoseText:req, battler1IsPartner:req, battler2Id=0, battler2IdLoseText=NULL, battler2IsPartner=FALSE, battler3Id=0, battler3IdLoseText=NULL, battler3IsPartner=FALSE, event_script=FALSE, exit_script=NULL, music=TRUE, musicFromBattler=1, isDouble=FALSE
+	special SavePlayerParty
 	.if (\battler0IsPartner != FALSE)
 		.set finalBattler0Id, MAX_TRAINERS_COUNT + \battler0Id
 	.else
@@ -836,7 +837,6 @@
 		setvar VAR_0x8005, TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC
 	.elseif ((\battler2Id == 0) && (\battler3Id != 0))
 		.if (playerIsPlayerSide == FALSE)
-			special SavePlayerParty
 			fadescreen FADE_TO_BLACK
 			special ChooseHalfPartyForBattle
 			waitstate
@@ -850,18 +850,17 @@
 		customtrainerbattle TRAINER_BATTLE_TWO_TRAINERS_NO_INTRO, finalBattler0Id, \battler0IdLoseText, finalBattler1Id, \battler1IdLoseText, 0, NULL, finalBattler3Id, \battler3IdLoseText, \event_script, FALSE, \musicFromBattler, TRUE, TRUE, playerIsPlayerSide
 		setvar VAR_0x8005, TRAINER_BATTLE_TWO_TRAINERS_NO_INTRO
 	.elseif (\battler3Id != 0)
-		special SavePlayerParty
 		fadescreen FADE_TO_BLACK
 		special ChooseHalfPartyForBattle
 		waitstate
 		goto_if_eq VAR_RESULT, 0, \exit_script
+		special ReducePlayerPartyToSelectedMons
 		setvar VAR_0x8006, MULTI_BATTLE_2_VS_2
 		setcustomtrainerbattle finalBattler0Id, \battler0IdLoseText, finalBattler1Id, \battler1IdLoseText, finalBattler2Id, \battler2IdLoseText, finalBattler3Id, \battler3IdLoseText, \musicFromBattler
 		customtrainerbattle TRAINER_BATTLE_MULTI_2_VS_2, finalBattler0Id, \battler0IdLoseText, finalBattler1Id, \battler1IdLoseText, finalBattler2Id, \battler2IdLoseText, finalBattler3Id, \battler3IdLoseText, \event_script, FALSE, \musicFromBattler, TRUE, TRUE, playerIsPlayerSide
 		setvar VAR_0x8005, TRAINER_BATTLE_MULTI_2_VS_2
 	.else 
 		.if (playerIsPlayerSide == TRUE)
-			special SavePlayerParty
 			fadescreen FADE_TO_BLACK
 			special ChooseHalfPartyForBattle
 			waitstate

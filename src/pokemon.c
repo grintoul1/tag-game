@@ -1006,6 +1006,13 @@ void ZeroMonData(struct Pokemon *mon)
     SetMonData(mon, MON_DATA_MAIL, &arg);
 }
 
+void ZeroPartyMons(struct Pokemon *party)
+{
+    s32 i;
+    for (i = 0; i < PARTY_SIZE; i++)
+        ZeroMonData(&party[i]);
+}
+
 void ZeroPlayerPartyMons(void)
 {
     s32 i;
@@ -6326,7 +6333,27 @@ bool8 IsMonShiny(struct Pokemon *mon)
 
 const u8 *GetTrainerPartnerName(void)
 {
-    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+    if (gBattleTypeFlags & BATTLE_TYPE_CUSTOM)
+    {
+        switch (GetPlayerBattlePosition())
+        {
+        case B_POSITION_PLAYER_LEFT:
+        default:
+            StringCopy(gStringVar1, GetTrainerNameFromId(CUSTOM_BATTLE_PARAM.battler2Id));
+            break;
+        case B_POSITION_OPPONENT_LEFT:
+            StringCopy(gStringVar1, GetTrainerNameFromId(CUSTOM_BATTLE_PARAM.battler3Id));
+            break;
+        case B_POSITION_PLAYER_RIGHT:
+            StringCopy(gStringVar1, GetTrainerNameFromId(CUSTOM_BATTLE_PARAM.battler0Id));
+            break;
+        case B_POSITION_OPPONENT_RIGHT:
+            StringCopy(gStringVar1, GetTrainerNameFromId(CUSTOM_BATTLE_PARAM.battler1Id));
+            break;
+        }
+        return gStringVar1;
+    }
+    else if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
     {
         GetFrontierTrainerName(gStringVar1, gPartnerTrainerId);
         return gStringVar1;

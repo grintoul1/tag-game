@@ -115,6 +115,7 @@ bool32 CanPlayerForfeitNormalTrainerBattle(void);
 bool32 DidPlayerForfeitNormalTrainerBattle(void);
 void BattleDebug_WonBattle(void);
 s32 Factorial(s32 n);
+u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer);
 
 extern struct MultiPartnerMenuPokemon gMultiPartnerParty[MULTI_PARTY_SIZE];
 

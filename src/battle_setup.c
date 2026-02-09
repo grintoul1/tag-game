@@ -1,6 +1,7 @@
 #include "global.h"
 #include "battle.h"
 #include "load_save.h"
+#include "battle_controllers.h"
 #include "battle_setup.h"
 #include "battle_tower.h"
 #include "battle_transition.h"
@@ -88,6 +89,7 @@ static const u8 *GetIntroSpeechOfApproachingTrainer(void);
 static const u8 *GetTrainerCantBattleSpeech(void);
 
 EWRAM_DATA TrainerBattleParameter gTrainerBattleParameter = {0};
+EWRAM_DATA CustomBattleParameter gCustomBattleParameter = {0};
 EWRAM_DATA u16 gPartnerTrainerId = 0;
 EWRAM_DATA static u8 *sTrainerBattleEndScript = NULL;
 EWRAM_DATA static bool8 sShouldCheckTrainerBScript = FALSE;
@@ -975,7 +977,11 @@ void TrainerBattleLoadArgs(const u8 *data)
 
 void CustomTrainerBattleLoadArgs(const u8 *data)
 {
-    sTrainerBattleEndScript = (u8*)data + sizeof(TrainerBattleParameter);
+    memset(gCustomBattleParameter.data, 0, sizeof(CustomBattleParameter));
+    memcpy(gCustomBattleParameter.data, data, sizeof(CustomBattleParameter));
+
+    gPartnerTrainerId = CUSTOM_BATTLE_PARAM.battler2Id;
+    sTrainerBattleEndScript = (u8*)data + sizeof(CustomBattleParameter);
 }
 
 void TrainerBattleLoadArgsTrainerA(const u8 *data)

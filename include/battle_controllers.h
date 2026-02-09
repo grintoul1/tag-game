@@ -304,6 +304,9 @@ bool32 BattlerIsRecorded(u32 battlerId);
 bool32 BattlerIsLink(u32 battlerId);
 bool32 BattlerIsWally(u32 battlerId);
 bool32 BattlerHasAi(u32 battlerId);
+bool32 TrainerIsPartnerTrainer(u16 trainerId);
+bool32 TrainerHasBackPic(u16 trainerId);
+enum BattlerPosition GetPlayerBattlePosition(void);
 
 // emitters
 void BtlController_EmitGetMonData(u32 battler, u32 bufferId, u8 requestId, u8 monToCheck);

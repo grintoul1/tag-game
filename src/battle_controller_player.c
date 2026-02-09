@@ -155,6 +155,7 @@ static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(u32 battler) =
 
 void SetControllerToPlayer(u32 battler)
 {
+    DebugPrintf("%d %s", battler, __func__);
     gBattlerBattleController[battler] = BATTLE_CONTROLLER_PLAYER;
     gBattlerControllerEndFuncs[battler] = PlayerBufferExecCompleted;
     gBattlerControllerFuncs[battler] = PlayerBufferRunCommand;
@@ -1893,61 +1894,89 @@ static void PlayerHandleDrawTrainerPic(u32 battler)
     bool32 isFrontPic;
     s16 xPos, yPos;
     enum TrainerPicID trainerPicId;
-  
-    if (IsMultibattleTest())
+
+    if (GetBattlerSide(battler) == B_SIDE_OPPONENT) // Custom battles
     {
-        trainerPicId = TRAINER_PIC_BACK_BRENDAN;
-        if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
-            xPos = 32;
+        trainerPicId = gSaveBlock2Ptr->playerGender + TRAINER_PIC_FRONT_BRENDAN;
+        isFrontPic = TRUE;
+        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        {
+            if ((GetBattlerPosition(battler) & BIT_FLANK) != 0) // second mon
+                xPos = 152;
+            else // first mon
+                xPos = 200;
+        }
         else
-            xPos = 80;
-        yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
+        {
+            xPos = 176;
+        }
+        BtlController_HandleDrawTrainerPic(battler, trainerPicId, isFrontPic, xPos, 40, -1);
     }
     else
     {
-        trainerPicId = PlayerGetTrainerBackPicId();
-
-        if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
+        if (IsMultibattleTest())
         {
-            if ((GetBattlerPosition(battler) & BIT_FLANK) != B_FLANK_LEFT) // Second mon, on the right.
-                xPos = 90;
-            else // First mon, on the left.
+            trainerPicId = TRAINER_PIC_BACK_BRENDAN;
+            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
                 xPos = 32;
-
-            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
-            {
-                xPos = 90;
-                yPos = 80;
-            }
             else
-            {
-                yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
-            }
+                xPos = 80;
+            yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
         }
         else
         {
-            xPos = 80;
-            yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
+            trainerPicId = PlayerGetTrainerBackPicId();
+            if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
+            {
+                if ((GetBattlerPosition(battler) & BIT_FLANK) != B_FLANK_LEFT) // Second mon, on the right.
+                    xPos = 90;
+                else // First mon, on the left.
+                    xPos = 32;
+
+                if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
+                {
+                    xPos = 90;
+                    yPos = 80;
+                }
+                else
+                {
+                    yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
+                }
+            }
+            else
+            {
+                xPos = 80;
+                yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
+            }
         }
-    }
 
-    // Use front pic table for any tag battles unless your partner is Steven or a custom partner.
-    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
-    {
-        trainerPicId = PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender);
-        isFrontPic = TRUE;
-    }
-    else // Use back pic in all the other usual circumstances.
-    {
-        isFrontPic = FALSE;
-    }
+        if (gBattleTypeFlags & BATTLE_TYPE_CUSTOM && GetBattlerSide(battler) == B_SIDE_PLAYER)
+        {
+            isFrontPic = FALSE;
+        }
+        // Use front pic table for any tag battles unless your partner is Steven or a custom partner.
+        else if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
+        {
+            trainerPicId = PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender);
+            isFrontPic = TRUE;
+        }
+        else // Use back pic in all the other usual circumstances.
+        {
+            isFrontPic = FALSE;
+        }
 
-    BtlController_HandleDrawTrainerPic(battler, trainerPicId, isFrontPic, xPos, yPos, -1);
+        BtlController_HandleDrawTrainerPic(battler, trainerPicId, isFrontPic, xPos, yPos, -1);
+    }
 }
 
 static void PlayerHandleTrainerSlide(u32 battler)
 {
-    enum TrainerPicID trainerPicId = PlayerGetTrainerBackPicId();
+    enum TrainerPicID trainerPicId;
+
+    if (GetBattlerSide(battler) == B_SIDE_OPPONENT)
+        trainerPicId = PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender);
+    else
+        trainerPicId = PlayerGetTrainerBackPicId();
     BtlController_HandleTrainerSlide(battler, trainerPicId);
 }
 
@@ -2015,21 +2044,21 @@ static void PlayerHandleChooseAction(u32 battler)
     PREPARE_MON_NICK_BUFFER(gBattleTextBuff1, battler, gBattlerPartyIndexes[battler]);
     BattleStringExpandPlaceholdersToDisplayedString(gText_WhatWillPkmnDo);
 
-    if (B_SHOW_PARTNER_TARGET && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && IsBattlerAlive(B_POSITION_PLAYER_RIGHT))
+    if (B_SHOW_PARTNER_TARGET && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && GetBattlerPosition(BATTLE_PARTNER(battler)))
     {
         StringCopy(gStringVar1, COMPOUND_STRING("Partner will use:\n"));
-        enum Move move = GetChosenMoveFromPosition(B_POSITION_PLAYER_RIGHT);
+        enum Move move = GetChosenMoveFromPosition(GetBattlerPosition(BATTLE_PARTNER(battler)));
         StringAppend(gStringVar1, GetMoveName(move));
-        enum MoveTarget moveTarget = GetBattlerMoveTargetType(B_POSITION_PLAYER_RIGHT, move);
+        enum MoveTarget moveTarget = GetBattlerMoveTargetType(GetBattlerPosition(BATTLE_PARTNER(battler)), move);
         if (moveTarget == TARGET_SELECTED || moveTarget == TARGET_SMART)
         {
-            if (gAiBattleData->chosenTarget[B_POSITION_PLAYER_RIGHT] == B_POSITION_OPPONENT_LEFT)
+            if (gAiBattleData->chosenTarget[GetBattlerPosition(BATTLE_PARTNER(battler))] == GetBattlerPosition(BATTLE_OPPOSITE(battler)))
                 StringAppend(gStringVar1, COMPOUND_STRING(" -{UP_ARROW}"));
-            else if (gAiBattleData->chosenTarget[B_POSITION_PLAYER_RIGHT] == B_POSITION_OPPONENT_RIGHT)
+            else if (gAiBattleData->chosenTarget[GetBattlerPosition(BATTLE_PARTNER(battler))] == GetBattlerPosition(BATTLE_OPPOSITE(BATTLE_PARTNER(battler))))
                 StringAppend(gStringVar1, COMPOUND_STRING(" {UP_ARROW}-"));
-            else if (gAiBattleData->chosenTarget[B_POSITION_PLAYER_RIGHT] == B_POSITION_PLAYER_LEFT)
+            else if (gAiBattleData->chosenTarget[GetBattlerPosition(BATTLE_PARTNER(battler))] == GetBattlerPosition(battler))
                 StringAppend(gStringVar1, COMPOUND_STRING(" {DOWN_ARROW}-"));
-            else if (gAiBattleData->chosenTarget[B_POSITION_PLAYER_RIGHT] == B_POSITION_PLAYER_RIGHT)
+            else if (gAiBattleData->chosenTarget[GetBattlerPosition(BATTLE_PARTNER(battler))] == GetBattlerPosition(BATTLE_PARTNER(battler)))
                 StringAppend(gStringVar1, COMPOUND_STRING(" -{DOWN_ARROW}"));
         }
         else if (moveTarget == TARGET_BOTH)
@@ -2183,8 +2212,9 @@ void PlayerHandleExpUpdate(u32 battler)
 {
     u8 monId = gBattleResources->bufferA[battler][1];
     s32 taskId, expPointsToGive;
+    struct Pokemon *party = (GetBattlerSide(battler) == B_SIDE_PLAYER) ? gPlayerParty : gEnemyParty;
 
-    if (GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL) >= MAX_LEVEL)
+    if (GetMonData(&party[monId], MON_DATA_LEVEL) >= MAX_LEVEL)
     {
         BtlController_Complete(battler);
     }
@@ -2281,7 +2311,10 @@ static void PlayerHandleIntroTrainerBallThrow(u32 battler)
 
 static void PlayerHandleDrawPartyStatusSummary(u32 battler)
 {
-    BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_PLAYER, TRUE);
+    if (GetBattlerSide(battler) == B_SIDE_PLAYER)
+        BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_PLAYER, TRUE);
+    else
+        BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_OPPONENT, TRUE);
 }
 
 static void PlayerHandleEndBounceEffect(u32 battler)

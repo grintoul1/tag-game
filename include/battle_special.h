@@ -9,5 +9,6 @@ void GetEreaderTrainerName(u8 *dst);
 void ValidateEReaderTrainer(void);
 void ClearEReaderTrainer(struct BattleTowerEReaderTrainer *ereaderTrainer);
 void CopyEReaderTrainerGreeting(void);
+u16 GetCustomBattleTrainerId(enum BattlerPosition position);
 
 #endif // GUARD_BATTLE_SPECIAL_H

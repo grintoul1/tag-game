@@ -527,6 +527,8 @@ static void InitPartyMenu(u8 menuType, u8 layout, u8 partyAction, bool8 keepCurs
     }
     else
     {
+        struct Pokemon *party = gPlayerParty;
+        u8 partyCount = gPlayerPartyCount;
         gPartyMenu.menuType = menuType;
         gPartyMenu.exitCallback = callback;
         gPartyMenu.action = partyAction;
@@ -550,16 +552,26 @@ static void InitPartyMenu(u8 menuType, u8 layout, u8 partyAction, bool8 keepCurs
         for (i = 0; i < ARRAY_COUNT(sPartyMenuInternal->windowId); i++)
             sPartyMenuInternal->windowId[i] = WINDOW_NONE;
 
+        DebugPrintf("gBattleTypeFlags & BATTLE_TYPE_CUSTOM %d", gBattleTypeFlags & BATTLE_TYPE_CUSTOM);
+        DebugPrintf("(GetPlayerBattlePosition() & BIT_SIDE) == B_SIDE_OPPONENT) %d", (GetPlayerBattlePosition() & BIT_SIDE) == B_SIDE_OPPONENT);
+        
+
+        if ((gBattleTypeFlags & BATTLE_TYPE_CUSTOM) && ((GetPlayerBattlePosition() & BIT_SIDE) == B_SIDE_OPPONENT))
+        {
+            party = gEnemyParty;
+            partyCount = CalculatePartyCount(party);
+        }
+
         if (!keepCursorPos)
             gPartyMenu.slotId = 0;
-        else if (gPartyMenu.slotId > PARTY_SIZE - 1 || GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES) == SPECIES_NONE)
+        else if (gPartyMenu.slotId > PARTY_SIZE - 1 || GetMonData(&party[gPartyMenu.slotId], MON_DATA_SPECIES) == SPECIES_NONE)
             gPartyMenu.slotId = 0;
 
-        if (gPlayerPartyCount == 0)
+        if (partyCount == 0)
             gPartyMenu.slotId = PARTY_SIZE + 1; // Cancel
 
         gTextFlags.autoScroll = 0;
-        CalculatePlayerPartyCount();
+        CalculatePartyCount(party);
         SetMainCallback2(CB2_InitPartyMenu);
     }
 }

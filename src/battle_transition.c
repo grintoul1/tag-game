@@ -2583,9 +2583,10 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
 {
     struct Sprite *opponentSpriteA, *opponentSpriteB=0, *playerSprite, *partnerSprite=0;
 
-    u8 trainerAPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA);
-    u8 trainerBPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB);
-    u8 partnerPicId = GetTrainerPicFromId(gPartnerTrainerId);
+    u8 trainerAPicId = !(gBattleTypeFlags & BATTLE_TYPE_CUSTOM) ? GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA) : GetTrainerPicFromId(CUSTOM_BATTLE_PARAM.battler1Id);
+    u8 trainerBPicId = !(gBattleTypeFlags & BATTLE_TYPE_CUSTOM) ? GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB) : GetTrainerPicFromId(CUSTOM_BATTLE_PARAM.battler3Id);
+    u8 partnerPicId = !(gBattleTypeFlags & BATTLE_TYPE_CUSTOM) ? GetTrainerPicFromId(gPartnerTrainerId) : GetTrainerPicFromId(CUSTOM_BATTLE_PARAM.battler2Id);
+    u8 playerPicId = !(gBattleTypeFlags & BATTLE_TYPE_CUSTOM) ? PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender) : GetTrainerPicFromId(CUSTOM_BATTLE_PARAM.battler0Id);
     s16 opponentARotationScales = 0;
     s16 opponentBRotationScales = 0;
 
@@ -2629,7 +2630,7 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
         SetOamMatrixRotationScaling(partnerSprite->oam.matrixNum, -512, 512, 0);
     }
 
-    task->tPlayerSpriteId = CreateTrainerSprite(PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender), 
+    task->tPlayerSpriteId = CreateTrainerSprite(playerPicId, 
                                                 DISPLAY_WIDTH + 32, 
                                                 106, 
                                                 0, NULL);

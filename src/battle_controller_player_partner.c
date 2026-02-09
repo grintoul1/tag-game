@@ -8,6 +8,7 @@
 #include "battle_message.h"
 #include "battle_interface.h"
 #include "battle_setup.h"
+#include "battle_special.h"
 #include "battle_tower.h"
 #include "battle_z_move.h"
 #include "bg.h"
@@ -107,6 +108,7 @@ static void (*const sPlayerPartnerBufferCommands[CONTROLLER_CMDS_COUNT])(u32 bat
 
 void SetControllerToPlayerPartner(u32 battler)
 {
+    DebugPrintf("%d %s", battler, __func__);
     gBattlerBattleController[battler] = BATTLE_CONTROLLER_PLAYER_PARTNER;
     gBattlerControllerEndFuncs[battler] = PlayerPartnerBufferExecCompleted;
     gBattlerControllerFuncs[battler] = PlayerPartnerBufferRunCommand;
@@ -198,14 +200,45 @@ void PlayerPartnerBufferExecCompleted(u32 battler)
     }
 }
 
-static enum TrainerPicID PlayerPartnerGetTrainerBackPicId(enum DifficultyLevel difficulty)
+static enum TrainerPicID PlayerPartnerGetTrainerBackPicId(enum DifficultyLevel difficulty, u32 battler)
 {
     enum TrainerPicID trainerPicId;
 
-    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+    if (gBattleTypeFlags & BATTLE_TYPE_CUSTOM)
+    {
+        u32 trainerId;
+        switch (battler)
+        {
+        case B_BATTLER_0:
+            trainerId = CUSTOM_BATTLE_PARAM.battler0Id;
+            break;
+        case B_BATTLER_1:
+            trainerId = CUSTOM_BATTLE_PARAM.battler1Id;
+            break;
+        case B_BATTLER_3:
+            trainerId = CUSTOM_BATTLE_PARAM.battler3Id;
+            break;
+        default:
+            trainerId = CUSTOM_BATTLE_PARAM.battler2Id;
+            break;
+        }
+
+        DebugPrintf("%d PlayerPartnerGetTrainerBackPicId trainerId %d", battler, trainerId);
+
+
+        if (TrainerHasBackPic(trainerId))
+            trainerPicId = GetTrainerBackPicFromId(trainerId);
+        else
+            trainerPicId = GetTrainerPicFromId(trainerId);
+    }
+    else if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+    {
         trainerPicId = gBattlePartners[difficulty][gPartnerTrainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerBackPic;
+    }
     else
+    {
         trainerPicId = gSaveBlock2Ptr->playerGender + TRAINER_PIC_BACK_BRENDAN;
+    }
 
     return trainerPicId;
 }
@@ -215,50 +248,123 @@ static enum TrainerPicID PlayerPartnerGetTrainerBackPicId(enum DifficultyLevel d
 // which use the front sprite for both the player and the partner as opposed to any other battles (including the one with Steven) that use the back pic as well as animate it
 static void PlayerPartnerHandleDrawTrainerPic(u32 battler)
 {
+    DebugPrintf("%d PlayerPartnerHandleDrawTrainerPic", battler);
     bool32 isFrontPic;
     s16 xPos, yPos;
     enum TrainerPicID trainerPicId;
+    u16 trainerId;
 
     enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(gPartnerTrainerId);
 
-    if (IsMultibattleTest())
+    if (GetBattlerSide(battler) == B_SIDE_OPPONENT) // Custom battles
     {
-        trainerPicId = TRAINER_PIC_BACK_STEVEN;
-        xPos = 90;
-        yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
-    }
-    else if (gPartnerTrainerId > TRAINER_PARTNER(PARTNER_NONE))
-    {
-        trainerPicId = PlayerPartnerGetTrainerBackPicId(difficulty);
-        xPos = 90;
-        yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
-    }
-    else if (IsAiVsAiBattle())
-    {
-        trainerPicId = GetTrainerPicFromId(gPartnerTrainerId);
-        xPos = 60;
-        yPos = 80;
-    }
-    else
-    {
-        trainerPicId = GetFrontierTrainerFrontSpriteId(gPartnerTrainerId);
-        xPos = 32;
-        yPos = 80;
-    }
-
-    // Use back pic only if the partner Steven or is custom.
-    if (gPartnerTrainerId > TRAINER_PARTNER(PARTNER_NONE))
-        isFrontPic = FALSE;
-    else
         isFrontPic = TRUE;
+        yPos = 40;
 
+        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        {
+            if ((GetBattlerPosition(battler) & BIT_FLANK) != 0) // second mon
+            {
+                trainerPicId = GetTrainerPicFromId(CUSTOM_BATTLE_PARAM.battler3Id);
+                xPos = 152;
+            }
+            else // first mon
+            {
+                trainerPicId = GetTrainerPicFromId(CUSTOM_BATTLE_PARAM.battler1Id);
+                xPos = 200;
+            }
+        }
+        else
+        {
+            trainerPicId = GetTrainerPicFromId(CUSTOM_BATTLE_PARAM.battler1Id);
+            xPos = 176;
+        }
+    }
+    else
+    {
+        if (gBattleTypeFlags & BATTLE_TYPE_CUSTOM)
+        {
+            if ((battler & BIT_FLANK) == B_FLANK_LEFT)
+            {
+                xPos = 32;
+                trainerId = CUSTOM_BATTLE_PARAM.battler0Id;
+            }
+            else
+            {
+                xPos = 90;
+                trainerId = CUSTOM_BATTLE_PARAM.battler2Id;
+            }
+
+            if (TrainerIsPartnerTrainer(trainerId))
+            {
+                isFrontPic = FALSE;
+                trainerPicId = GetTrainerBackPicFromId(trainerId);
+                yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
+            }
+            else
+            {
+                isFrontPic = TRUE;
+                trainerPicId = GetTrainerPicFromId(trainerId);
+                yPos = 80;
+            }
+        }
+        else
+        {
+            // Use back pic only if the partner Steven or is custom.
+            if (gPartnerTrainerId > TRAINER_PARTNER(PARTNER_NONE))
+                isFrontPic = FALSE;
+            else
+                isFrontPic = TRUE;
+
+            if (IsMultibattleTest())
+            {
+                trainerPicId = TRAINER_PIC_BACK_STEVEN;
+                xPos = 90;
+                yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
+            }
+            else if (gPartnerTrainerId > TRAINER_PARTNER(PARTNER_NONE))
+            {
+                trainerPicId = PlayerPartnerGetTrainerBackPicId(difficulty, battler);
+                xPos = 90;
+                yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
+            }
+            else if (IsAiVsAiBattle())
+            {
+                trainerPicId = GetTrainerPicFromId(gPartnerTrainerId);
+                xPos = 60;
+                yPos = 80;
+            }
+            else
+            {
+                trainerPicId = GetFrontierTrainerFrontSpriteId(gPartnerTrainerId);
+                xPos = 32;
+                yPos = 80;
+            }
+        }
+    }
     BtlController_HandleDrawTrainerPic(battler, trainerPicId, isFrontPic, xPos, yPos, -1);
 }
 
 static void PlayerPartnerHandleTrainerSlide(u32 battler)
 {
-    enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(gPartnerTrainerId);
-    enum TrainerPicID trainerPicId = PlayerPartnerGetTrainerBackPicId(difficulty);
+    enum DifficultyLevel difficulty;
+    enum TrainerPicID trainerPicId;
+    
+    if (gBattleTypeFlags & BATTLE_TYPE_CUSTOM)
+    {
+        difficulty = GetBattlePartnerDifficultyLevel(GetCustomBattleTrainerId(GetBattlerPosition(battler)));
+        
+        if ((GetBattlerPosition(battler) & BIT_SIDE) == B_SIDE_PLAYER)
+            trainerPicId = PlayerPartnerGetTrainerBackPicId(difficulty, battler);
+        else
+            trainerPicId = GetTrainerPicFromId(GetCustomBattleTrainerId(GetBattlerPosition(battler)));
+    }
+    else
+    {
+        difficulty = GetBattlePartnerDifficultyLevel(gPartnerTrainerId);
+        trainerPicId = PlayerPartnerGetTrainerBackPicId(difficulty, battler);
+    }
+    
     BtlController_HandleTrainerSlide(battler, trainerPicId);
 }
 
@@ -288,9 +394,9 @@ static void PlayerPartnerHandleChooseMove(u32 battler)
     }
     else if (moveTarget == TARGET_BOTH)
     {
-        gBattlerTarget = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+        gBattlerTarget = LEFT_FOE(battler);
         if (gAbsentBattlerFlags & (1u << gBattlerTarget))
-            gBattlerTarget = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
+            gBattlerTarget = RIGHT_FOE(battler);
     }
     // If partner can and should use a gimmick (considering trainer data), do it
     enum Gimmick usableGimmick = gBattleStruct->gimmick.usableGimmick[battler];
@@ -310,6 +416,7 @@ static void PlayerPartnerHandleChooseMove(u32 battler)
 
 static void PlayerPartnerHandleChoosePokemon(u32 battler)
 {
+    struct Pokemon *party = GetBattlerSide(battler) == B_SIDE_PLAYER ? gPlayerParty : gEnemyParty;
     s32 chosenMonId;
     // Choosing Revival Blessing target
     if (gBattleResources->bufferA[battler][1] == PARTY_ACTION_CHOOSE_FAINTED_MON)
@@ -317,18 +424,18 @@ static void PlayerPartnerHandleChoosePokemon(u32 battler)
         chosenMonId = gSelectedMonPartyId = GetFirstFaintedPartyIndex(battler);
     }
     // Switching out
-    else if (gBattleStruct->monToSwitchIntoId[battler] >= PARTY_SIZE || !IsValidForBattle(&gPlayerParty[gBattleStruct->monToSwitchIntoId[battler]]))
+    else if (gBattleStruct->monToSwitchIntoId[battler] >= PARTY_SIZE || !IsValidForBattle(&party[gBattleStruct->monToSwitchIntoId[battler]]))
     {
         chosenMonId = GetMostSuitableMonToSwitchInto(battler, SWITCH_AFTER_KO);
-        if (chosenMonId == PARTY_SIZE || !IsValidForBattle(&gPlayerParty[chosenMonId])) // just switch to the next mon
+        if (chosenMonId == PARTY_SIZE || !IsValidForBattle(&party[chosenMonId])) // just switch to the next mon
         {
             s32 firstId = (IsAiVsAiBattle()) ? 0 : (PARTY_SIZE / 2);
-            u32 battler1 = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
-            u32 battler2 = IsDoubleBattle() ? GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT) : battler1;
+            u32 battler1 = (battler & BIT_SIDE);
+            u32 battler2 = IsDoubleBattle() ? BATTLE_PARTNER(battler1) : battler1;
 
             for (chosenMonId = firstId; chosenMonId < PARTY_SIZE; chosenMonId++)
             {
-                if (GetMonData(&gPlayerParty[chosenMonId], MON_DATA_HP) != 0
+                if (GetMonData(&party[chosenMonId], MON_DATA_HP) != 0
                     && chosenMonId != gBattlerPartyIndexes[battler1]
                     && chosenMonId != gBattlerPartyIndexes[battler2])
                 {
@@ -352,22 +459,33 @@ static void PlayerPartnerHandleChoosePokemon(u32 battler)
 
 static void PlayerPartnerHandleIntroTrainerBallThrow(u32 battler)
 {
+    u32 trainerId = (gBattleTypeFlags & BATTLE_TYPE_CUSTOM) ? GetCustomBattleTrainerId(battler) : gPartnerTrainerId;
     const u16 *trainerPal;
-    enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(gPartnerTrainerId);
+    enum DifficultyLevel difficulty;
 
-    if (gPartnerTrainerId > TRAINER_PARTNER(PARTNER_NONE))
-        trainerPal = gTrainerBacksprites[gBattlePartners[difficulty][gPartnerTrainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerBackPic].palette.data;
-    else if (IsAiVsAiBattle())
-        trainerPal = gTrainerSprites[GetTrainerBackPicFromId(gPartnerTrainerId)].palette.data;
+    if ((gBattleTypeFlags & BATTLE_TYPE_CUSTOM) && (GetBattlerSide(battler) == B_SIDE_OPPONENT))
+    {
+        BtlController_HandleIntroTrainerBallThrow(battler, 0, NULL, 0, Controller_PlayerPartnerShowIntroHealthbox);
+    }
     else
-        trainerPal = gTrainerSprites[GetFrontierTrainerFrontSpriteId(gPartnerTrainerId)].palette.data; // 2 vs 2 multi battle in Battle Frontier, load front sprite and pal.
+    {
+        difficulty = GetBattlePartnerDifficultyLevel(trainerId);
 
-    BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F9, trainerPal, 24, Controller_PlayerPartnerShowIntroHealthbox);
+        if (trainerId > TRAINER_PARTNER(PARTNER_NONE))
+            trainerPal = gTrainerBacksprites[gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerBackPic].palette.data;
+        else if (IsAiVsAiBattle())
+            trainerPal = gTrainerSprites[GetTrainerBackPicFromId(trainerId)].palette.data;
+        else
+            trainerPal = gTrainerSprites[GetFrontierTrainerFrontSpriteId(trainerId)].palette.data; // 2 vs 2 multi battle in Battle Frontier, load front sprite and pal.
+    
+        BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F9, trainerPal, 24, Controller_PlayerPartnerShowIntroHealthbox);
+    }
+
 }
 
 static void PlayerPartnerHandleDrawPartyStatusSummary(u32 battler)
 {
-    BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_PLAYER, TRUE);
+    BtlController_HandleDrawPartyStatusSummary(battler, GetBattlerSide(battler), TRUE);
 }
 
 static void PlayerPartnerHandleEndLinkBattle(u32 battler)

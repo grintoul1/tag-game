@@ -2461,7 +2461,7 @@ bool8 ScrCmd_customtrainerbattle(struct ScriptContext *ctx)
     Script_RequestEffects(SCREFF_V1 | SCREFF_CUSTOMTRAINERBATTLE);
 
     CustomTrainerBattleLoadArgs(ctx->scriptPtr);
-    ctx->scriptPtr += sizeof(struct CustomTrainerBattleScriptData);
+    ctx->scriptPtr += sizeof(CustomBattleParameter);
     return FALSE;
 }
 

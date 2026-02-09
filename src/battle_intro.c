@@ -106,7 +106,18 @@ void HandleIntroSlide(u8 environment)
 {
     u8 taskId;
 
-    if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
+    if (gBattleTypeFlags & BATTLE_TYPE_CUSTOM)
+    {
+        if (environment >= NELEMS(sBattleIntroSlideFuncs)
+         || sBattleIntroSlideFuncs[environment] == NULL)
+        {
+            environment = BATTLE_ENVIRONMENT_PLAIN;
+        }
+        taskId = CreateTask(sBattleIntroSlideFuncs[environment], 0);
+    }
+    else if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+     && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE)
+     && gPartnerTrainerId != TRAINER_PLAYER_PLACEHOLDER)
     {
         taskId = CreateTask(BattleIntroSlidePartner, 0);
     }

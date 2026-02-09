@@ -236,7 +236,9 @@ MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt::
 
 MossdeepCity_SpaceCenter_2F_EventScript_ChoosePartyForMultiBattle::
 	@.macro trainerbattle_custom battler0Id:req, battler0IdLoseText:req, battler0IsPartner:req, battler1Id:req, battler1IdLoseText:req, battler1IsPartner:req, battler2Id=0, battler2IdLoseText=NULL, battler2IsPartner=FALSE, battler3Id=0, battler3IdLoseText=NULL, battler3IsPartner=FALSE, event_script=FALSE, exit_script=NULL, music=TRUE, musicFromBattler=1, isDouble=FALSE
-	trainerbattle_custom TRAINER_PLAYER_PLACEHOLDER, NULL, FALSE, TRAINER_MAXIE_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, FALSE, PARTNER_STEVEN, NULL, TRUE, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_TabithaDefeat, FALSE, FALSE, MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt, TRUE, 1, TRUE
+	@trainerbattle_double TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaIntro, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MossdeepCity_Gym_EventScript_TateAndLizaDefeated, NO_MUSIC
+	@trainerbattle_custom PARTNER_STEVEN, NULL, TRUE, TRAINER_MAXIE_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, FALSE, TRAINER_PLAYER_PLACEHOLDER, NULL, FALSE, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_TabithaDefeat, FALSE, FALSE, MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt, TRUE, 0, TRUE
+	trainerbattle_custom TRAINER_MAY_LILYCOVE_TORCHIC, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, FALSE, PARTNER_STEVEN, NULL, TRUE, TRAINER_WALLY_VR_1, MossdeepCity_SpaceCenter_Text_TabithaDefeat, FALSE, TRAINER_PLAYER_PLACEHOLDER, NULL, FALSE, FALSE, MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt, TRUE, 0, TRUE
 	waitstate
 	switch VAR_RESULT
 	case 1, MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha

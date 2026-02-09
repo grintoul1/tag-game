@@ -10,9 +10,11 @@
 #include "battle_interface.h"
 #include "battle_main.h"
 #include "battle_message.h"
+#include "battle_partner.h"
 #include "battle_pyramid.h"
 #include "battle_scripts.h"
 #include "battle_setup.h"
+#include "battle_special.h"
 #include "battle_tower.h"
 #include "battle_z_move.h"
 #include "battle_gimmick.h"
@@ -89,7 +91,6 @@ static void CB2_HandleStartMultiPartnerBattle(void);
 static void CB2_HandleStartMultiBattle(void);
 static void CB2_HandleStartBattle(void);
 static void TryCorrectShedinjaLanguage(struct Pokemon *mon);
-static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer);
 static void BattleMainCB1(void);
 static void CB2_EndLinkBattle(void);
 static void EndLinkBattleInSteps(void);
@@ -461,6 +462,7 @@ void CB2_InitBattle(void)
 static void CB2_InitBattleInternal(void)
 {
     s32 i;
+    u32 j;
 
     SetHBlankCallback(NULL);
     SetVBlankCallback(NULL);
@@ -475,7 +477,9 @@ static void CB2_InitBattleInternal(void)
 
     gBattle_WIN0H = DISPLAY_WIDTH;
 
-    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
+    if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+     && !(gBattleTypeFlags & BATTLE_TYPE_CUSTOM)
+     && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
     {
         gBattle_WIN0V = DISPLAY_HEIGHT - 1;
         gBattle_WIN1H = DISPLAY_WIDTH;
@@ -542,7 +546,8 @@ static void CB2_InitBattleInternal(void)
     else
         SetMainCallback2(CB2_HandleStartBattle);
 
-    if (!DEBUG_OVERWORLD_MENU || (DEBUG_OVERWORLD_MENU && !gIsDebugBattle))
+    // BATTLE_TYPE_CUSTOM parties are set in FillCustomParty()
+    if ((!DEBUG_OVERWORLD_MENU || (DEBUG_OVERWORLD_MENU && !gIsDebugBattle)) && !(gBattleTypeFlags & BATTLE_TYPE_CUSTOM))
     {
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED)))
         {
@@ -1520,7 +1525,9 @@ static void CB2_HandleStartMultiBattle(void)
                     break;
                 }
             }
-            ZeroEnemyPartyMons();
+
+            if (!(gBattleTypeFlags & BATTLE_TYPE_CUSTOM))
+                ZeroEnemyPartyMons();
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         else
@@ -1853,6 +1860,7 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
     }
     if (noMoveSet)
     {
+        GiveMonInitialMoveset(mon);
         // TODO: Figure out a default strategy when moves are not set, to generate a good moveset
         return;
     }
@@ -1875,7 +1883,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                                                                         | BATTLE_TYPE_TRAINER_HILL)))
     {
         if (firstTrainer == TRUE)
-            ZeroEnemyPartyMons();
+            ZeroPartyMons(party);
 
         if (battleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
         {
@@ -1925,6 +1933,10 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[monIndex].heldItem);
 
             CustomTrainerPartyAssignMoves(&party[i], &partyData[monIndex]);
+            if (GetMonData(&party[i], MON_DATA_MOVE1) == MOVE_NONE)
+            {
+
+            }
             SetMonData(&party[i], MON_DATA_IVS, &(partyData[monIndex].iv));
             if (partyData[monIndex].ev != NULL)
             {
@@ -2002,7 +2014,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
     return trainer->partySize;
 }
 
-static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer)
+u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer)
 {
     u8 retVal;
     if (trainerNum == TRAINER_SECRET_BASE)
@@ -3426,7 +3438,14 @@ static void DoBattleIntro(void)
     case BATTLE_INTRO_STATE_PREPARE_BG_SLIDE:
         if (!gBattleControllerExecFlags)
         {
-            battler = GetBattlerAtPosition(0);
+            if (gBattleTypeFlags & BATTLE_TYPE_CUSTOM)
+            {
+                battler = GetBattlerAtPosition(GetPlayerBattlePosition());
+            }
+            else
+            {
+                battler = GetBattlerAtPosition(0);
+            }
             BtlController_EmitIntroSlide(battler, B_COMM_TO_CONTROLLER, gBattleEnvironment);
             MarkBattlerForControllerExec(battler);
             gBattleCommunication[0] = 0;

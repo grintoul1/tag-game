@@ -2,7 +2,9 @@
 #include "main.h"
 #include "battle_special.h"
 #include "battle.h"
+#include "battle_controllers.h"
 #include "battle_frontier.h"
+#include "battle_main.h"
 #include "battle_partner.h"
 #include "battle_setup.h"
 #include "battle_tower.h"
@@ -23,6 +25,7 @@ static void HandleSpecialTrainerBattleEnd(void);
 static void Task_StartBattleAfterTransition(u8 taskId);
 static void UNUSED FillEReaderTrainerWithPlayerData(void);
 static void CopyEReaderTrainerFarewellMessage(void);
+static void FillCustomParty(void);
 
 #if FREE_BATTLE_TOWER_E_READER == FALSE
 static void SetEReaderTrainerChecksum(struct BattleTowerEReaderTrainer *ereaderTrainer);
@@ -53,12 +56,10 @@ static void HandleSpecialTrainerBattleEnd(void)
         }
         break;
     case SPECIAL_BATTLE_CUSTOM:
-        // Restore player party for custom battles
-        // The partner's 3 mons are in slots 3-5, so we need to restore the full party
+        // TO DO - how to retain exp by using gSelectedOrderFromParty or similar?
         for (i = 0; i < PARTY_SIZE; i++)
         {
-            if (GetMonData(&gSaveBlock1Ptr->playerParty[i], MON_DATA_SPECIES))
-                gPlayerParty[i] = gSaveBlock1Ptr->playerParty[i];
+            gPlayerParty[i] = gSaveBlock1Ptr->playerParty[i];
         }
         break;
     }
@@ -73,6 +74,75 @@ static void Task_StartBattleAfterTransition(u8 taskId)
         gMain.savedCallback = HandleSpecialTrainerBattleEnd;
         SetMainCallback2(CB2_InitBattle);
         DestroyTask(taskId);
+    }
+}
+
+u16 GetCustomBattleTrainerId(enum BattlerPosition position)
+{
+    switch (position)
+    {
+    case B_POSITION_PLAYER_LEFT:
+        return CUSTOM_BATTLE_PARAM.battler0Id;
+    case B_POSITION_OPPONENT_LEFT:
+    default:
+        return CUSTOM_BATTLE_PARAM.battler1Id;
+    case B_POSITION_PLAYER_RIGHT:
+        return CUSTOM_BATTLE_PARAM.battler2Id;
+    case B_POSITION_OPPONENT_RIGHT:
+        return CUSTOM_BATTLE_PARAM.battler3Id;
+    }
+}
+
+static void FillCustomParty(void)
+{
+    u32 i;
+    enum BattlerPosition position = GetPlayerBattlePosition();
+
+    // If player has ally trainer in LEFT position, moves party to indexes 3-5 before FillPartnerParty fills indexes 0-2
+    if ((position & BIT_FLANK) == B_FLANK_LEFT)
+    {
+        DebugPrintf("(position & BIT_FLANK) == B_FLANK_LEFT");
+        if (GetCustomBattleTrainerId(BATTLE_PARTNER(position)) != TRAINER_NONE && GetCustomBattleTrainerId(BATTLE_PARTNER(position)) != 0xFFFF)
+            FillPartnerParty((position & BIT_SIDE) == B_SIDE_PLAYER ? CUSTOM_BATTLE_PARAM.battler2Id : CUSTOM_BATTLE_PARAM.battler3Id);
+    }
+    else
+    {
+        DebugPrintf("(position & BIT_FLANK) != B_FLANK_LEFT");
+        for (i = 0; i < MULTI_PARTY_SIZE; i++)
+            CopyMon(&gPlayerParty[i + 3], &gPlayerParty[i], sizeof(gPlayerParty[i]));
+
+        FillPartnerParty((position & BIT_SIDE) == B_SIDE_PLAYER ? CUSTOM_BATTLE_PARAM.battler0Id : CUSTOM_BATTLE_PARAM.battler1Id);
+    }
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        DebugPrintf("FIRST player %d %S", i, GetSpeciesName(GetMonData(&gPlayerParty[i],MON_DATA_SPECIES)));
+        DebugPrintf("FIRST enemy %d %S", i, GetSpeciesName(GetMonData(&gEnemyParty[i],MON_DATA_SPECIES)));
+    }
+
+    // Copies party to opposite side then fills player side party
+    if ((position & BIT_SIDE) == B_SIDE_OPPONENT)
+    {
+        for (i = 0; i < PARTY_SIZE; i++)
+            CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(gPlayerParty[i]));
+
+        ZeroPlayerPartyMons();
+        
+        CreateNPCTrainerParty(&gPlayerParty[0], CUSTOM_BATTLE_PARAM.battler0Id, TRUE);
+
+        if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+            CreateNPCTrainerParty(&gPlayerParty[MULTI_PARTY_SIZE], CUSTOM_BATTLE_PARAM.battler2Id, FALSE);
+    }
+    else // On player is on player side
+    {
+        CreateNPCTrainerParty(&gEnemyParty[0], CUSTOM_BATTLE_PARAM.battler1Id, TRUE);
+
+        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+            CreateNPCTrainerParty(&gEnemyParty[MULTI_PARTY_SIZE], CUSTOM_BATTLE_PARAM.battler3Id, FALSE);
+    }
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        DebugPrintf("END player %d %S", i, GetSpeciesName(GetMonData(&gPlayerParty[i],MON_DATA_SPECIES)));
+        DebugPrintf("END enemy %d %S", i, GetSpeciesName(GetMonData(&gEnemyParty[i],MON_DATA_SPECIES)));
     }
 }
 
@@ -150,13 +220,15 @@ void DoSpecialTrainerBattle(void)
             break;
         case TRAINER_BATTLE_MULTI_2_VS_2:
             gBattleTypeFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_CUSTOM;
-            FillPartnerParty(gPartnerTrainerId);
             break;
         case TRAINER_BATTLE_MULTI_2_VS_1:
             gBattleTypeFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_CUSTOM;
-            FillPartnerParty(gPartnerTrainerId);
             break;
         }
+
+        FillCustomParty();
+
+        gBattleScripting.specialTrainerBattleType = SPECIAL_BATTLE_CUSTOM;
         CreateTask(Task_StartBattleAfterTransition, 1);
 
         // Play music based on chosen battler as TRAINER_BATTLE_PARAM.opponentA can technically be player

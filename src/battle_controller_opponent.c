@@ -113,6 +113,7 @@ static void (*const sOpponentBufferCommands[CONTROLLER_CMDS_COUNT])(u32 battler)
 
 void SetControllerToOpponent(u32 battler)
 {
+    DebugPrintf("%d %s", battler, __func__);
     gBattlerBattleController[battler] = BATTLE_CONTROLLER_OPPONENT;
     gBattlerControllerEndFuncs[battler] = OpponentBufferExecCompleted;
     gBattlerControllerFuncs[battler] = OpponentBufferRunCommand;
@@ -369,44 +370,102 @@ static u32 OpponentGetTrainerPicId(u32 battlerId)
 
 static void OpponentHandleDrawTrainerPic(u32 battler)
 {
-    s16 xPos;
+    bool32 isFrontPic;
+    s16 xPos, yPos;
     enum TrainerPicID trainerPicId;
-
-    // Sets Multibattle test opponent sprites to not be Hiker
-    if (IsMultibattleTest())
+    
+    if (GetBattlerSide(battler) == B_SIDE_PLAYER) // Custom battles
     {
-        if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT)
+        if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
         {
-            trainerPicId = TRAINER_PIC_FRONT_LEAF;
-            if (!(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
-                xPos = 176;
-            else
-                xPos = 200;
+            if ((GetBattlerPosition(battler) & BIT_FLANK) != 0) // second mon
+            {
+                xPos = 90;
+                isFrontPic = !TrainerHasBackPic(CUSTOM_BATTLE_PARAM.battler2Id);
+
+                if (isFrontPic)
+                {
+                    trainerPicId = GetTrainerPicFromId(CUSTOM_BATTLE_PARAM.battler2Id);
+                    yPos = 80;
+                }
+                else
+                {
+                    trainerPicId = GetTrainerBackPicFromId(CUSTOM_BATTLE_PARAM.battler2Id);
+                    yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
+                }
+            }
+            else // first mon
+            {
+                xPos = 32;
+                isFrontPic = !TrainerHasBackPic(CUSTOM_BATTLE_PARAM.battler0Id);
+
+                if (isFrontPic)
+                {
+                    trainerPicId = GetTrainerPicFromId(CUSTOM_BATTLE_PARAM.battler0Id);
+                    yPos = 80;
+                }
+                else
+                {
+                    trainerPicId = GetTrainerBackPicFromId(CUSTOM_BATTLE_PARAM.battler0Id);
+                    yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
+                }
+            }
         }
         else
         {
-            trainerPicId = TRAINER_PIC_FRONT_RED;
-            xPos = 152;
+            xPos = 80;
+            isFrontPic = !TrainerHasBackPic(CUSTOM_BATTLE_PARAM.battler0Id);
+
+            if (isFrontPic)
+            {
+                trainerPicId = GetTrainerPicFromId(CUSTOM_BATTLE_PARAM.battler0Id);
+                yPos = 80;
+            }
+            else
+            {
+                trainerPicId = GetTrainerBackPicFromId(CUSTOM_BATTLE_PARAM.battler0Id);
+                yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
+            }
         }
     }
     else
     {
-        trainerPicId = OpponentGetTrainerPicId(battler);
-
-        if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS) && !BATTLE_TWO_VS_ONE_OPPONENT)
+        isFrontPic = FALSE;
+        yPos = 40;
+        if (IsMultibattleTest()) // Sets Multibattle test opponent sprites to not be Hiker
         {
-            if ((GetBattlerPosition(battler) & BIT_FLANK) != 0) // second mon
+            if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT)
+            {
+                trainerPicId = TRAINER_PIC_FRONT_LEAF;
+                if (!(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
+                    xPos = 176;
+                else
+                    xPos = 200;
+            }
+            else
+            {
+                trainerPicId = TRAINER_PIC_FRONT_RED;
                 xPos = 152;
-           else // first mon
-                xPos = 200;
+            }
         }
         else
         {
-            xPos = 176;
+            trainerPicId = OpponentGetTrainerPicId(battler);
+
+            if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS) && !BATTLE_TWO_VS_ONE_OPPONENT)
+            {
+                if ((GetBattlerPosition(battler) & BIT_FLANK) != 0) // second mon
+                    xPos = 152;
+            else // first mon
+                    xPos = 200;
+            }
+            else
+            {
+                xPos = 176;
+            }
         }
     }
-
-    BtlController_HandleDrawTrainerPic(battler, trainerPicId, TRUE, xPos, 40, -1);
+    BtlController_HandleDrawTrainerPic(battler, trainerPicId, isFrontPic, xPos, yPos, -1);
 }
 
 void OpponentHandleTrainerSlide(u32 battler)
@@ -461,9 +520,9 @@ static void OpponentHandleChooseMove(u32 battler)
 
             if (target == TARGET_BOTH)
             {
-                gBattlerTarget = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
+                gBattlerTarget = GetBattlerAtPosition(LEFT_FOE(battler));
                 if (gAbsentBattlerFlags & (1u << gBattlerTarget))
-                    gBattlerTarget = GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT);
+                    gBattlerTarget = GetBattlerAtPosition(RIGHT_FOE(battler));
             }
             // If opponent can and should use a gimmick (considering trainer data), do it
             enum Gimmick usableGimmick = gBattleStruct->gimmick.usableGimmick[battler];
@@ -520,7 +579,7 @@ static void OpponentHandleChooseMove(u32 battler)
             }
         }
         else
-            BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_EXEC_SCRIPT, (chosenMoveIndex) | (GetBattlerAtPosition(B_POSITION_PLAYER_LEFT) << 8));
+            BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_EXEC_SCRIPT, (chosenMoveIndex) | (GetBattlerAtPosition(LEFT_FOE(battler)) << 8));
 
         BtlController_Complete(battler);
     }
@@ -536,6 +595,7 @@ static void OpponentHandleChoosePokemon(u32 battler)
 {
     s32 chosenMonId;
     enum SwitchType switchType = SWITCH_AFTER_KO;
+    struct Pokemon *party = GetBattlerSide(battler) == B_SIDE_OPPONENT ? gEnemyParty : gPlayerParty;
 
     // Choosing Revival Blessing target
     if (gBattleResources->bufferA[battler][1] == PARTY_ACTION_CHOOSE_FAINTED_MON)
@@ -552,9 +612,9 @@ static void OpponentHandleChoosePokemon(u32 battler)
             switchType = SWITCH_MID_BATTLE_FORCED;
 
         // reset the AI data to consider the correct on-field state at time of switch
-        SetBattlerAiData(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT), gAiLogicData);
+        SetBattlerAiData(GetBattlerAtPosition(LEFT_FOE(battler)), gAiLogicData);
         if (IsDoubleBattle())
-            SetBattlerAiData(GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT), gAiLogicData);
+            SetBattlerAiData(GetBattlerAtPosition(RIGHT_FOE(battler)), gAiLogicData);
 
         chosenMonId = GetMostSuitableMonToSwitchInto(battler, switchType);
         if (chosenMonId == PARTY_SIZE) // Advanced logic failed so we pick the next available battler
@@ -563,18 +623,18 @@ static void OpponentHandleChoosePokemon(u32 battler)
 
             if (!IsDoubleBattle())
             {
-                battler2 = battler1 = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+                battler2 = battler1 = GetBattlerAtPosition(battler & BIT_SIDE);
             }
             else
             {
-                battler1 = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
-                battler2 = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
+                battler1 = GetBattlerAtPosition(battler & BIT_SIDE);
+                battler2 = GetBattlerAtPosition(BATTLE_PARTNER(battler1));
             }
 
             GetAIPartyIndexes(battler, &firstId, &lastId);
             for (chosenMonId = firstId; chosenMonId < lastId; chosenMonId++)
             {
-                if (IsValidForBattle(&gEnemyParty[chosenMonId])
+                if (IsValidForBattle(&party[chosenMonId])
                  && chosenMonId != gBattlerPartyIndexes[battler1]
                  && chosenMonId != gBattlerPartyIndexes[battler2])
                     break;
@@ -602,7 +662,7 @@ static void OpponentHandleIntroTrainerBallThrow(u32 battler)
 
 static void OpponentHandleDrawPartyStatusSummary(u32 battler)
 {
-    BtlController_HandleDrawPartyStatusSummary(battler, B_SIDE_OPPONENT, TRUE);
+    BtlController_HandleDrawPartyStatusSummary(battler, GetBattlerSide(battler), TRUE);
 }
 
 static void OpponentHandleEndLinkBattle(u32 battler)
