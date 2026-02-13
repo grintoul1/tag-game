@@ -15,59 +15,60 @@ Gender: Male
 Music: Male
 AI: Partner Trainer
 
-Cradily
-Level: 42
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Giga Drain
-- Ancient Power
-- Ingrain
-- Confuse Ray
-
-Armaldo
-Level: 43
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Water Pulse
-- Ancient Power
-- Aerial Ace
-- Slash
-
-Metagross @ Sitrus Berry
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Earthquake
-- Psychic
-- Meteor Mash
-- Shadow Ball
-
-Metang
-Brave Nature
-Level: 42
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Light Screen
-- Psychic
-- Reflect
-- Metal Claw
-
-Skarmory
-Impish Nature
-Level: 43
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 6 SpA / 252 SpD
-- Toxic
-- Aerial Ace
-- Protect
-- Steel Wing
-
-Aggron
+Arcanine-Hisui @ Normal Gem
+Ability: Justified
+Level: 81
 Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+- Flare Blitz
+- Extreme Speed
+- Rock Slide
+- Rock Tomb
+
+Omastar @ Power Herb
+Ability: Weak Armor
+Level: 82
+Timid Nature
+- Meteor Beam
+- Ice Beam
+- Scald
+- Power Gem
+
+Magnezone @ Chople Berry
+Ability: Analytic
+Level: 83
+Serious Nature
+- Explosion
+- Flash Cannon
+- Thunderbolt
+- Ally Switch
+
+Alakazam @ Focus Sash
+Ability: Synchronize
+Level: 81
+Timid Nature
+- Psychic
+- Shadow Ball
+- Aura Sphere
+- Calm Mind
+
+Sandslash-Alola @ Wide Lens
+Ability: Slush Rush
+Level: 82
+Hasty Nature
+- Iron Head
+- Triple Axel
+- Drill Run
+- Hone Claws
+
+Pidgeot-Mega @ Pidgeotite
+Ability: No Guard
+Level: 83
+Timid Nature
+IVs: 30 Def / 30SpD / 30 Spe
+- Hurricane
+- Hyper Voice
+- Hidden Power Rock
+- Tailwind
 
 === PARTNER_EMMIE ===
 Name: Emmie

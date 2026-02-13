@@ -6396,17 +6396,59 @@ Mugshot: Misty
 Battle Type: Doubles
 AI: Tag Trainer
 
-Camerupt
-Level: 36
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Talonflame @ Eject Pack
+Ability: Gale Wings
+Level: 83
+Naive Nature
+- Overheat
+- Brave Bird
+- U-turn
+- Tailwind
 
-Mightyena
-Level: 38
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Pheromosa @ Assault Vest
+Ability: Beast Boost
+Level: 81
+Naive Nature
+- Close Combat
+- Throat Chop
+- Bug Buzz
+- Triple Axel
 
-Golbat
-Level: 40
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Sirfetch'd @ Focus Sash
+Ability: Steadfast
+Level: 81
+Jolly Nature
+- Meteor Assault
+- First Impression
+- Knock Off
+- Tailwind
+
+Ninetales-Alola @ Normal Gem
+Ability: Snow Warning
+Level: 82
+Timid Nature
+- Moonblast
+- Hyper Voice
+- Frosty Gale
+- Enlightening
+
+Whimsicott @ Kebia Berry
+Ability: Prankster
+Level: 81
+Modest Nature
+- Moonblast
+- Energy Ball
+- Encore
+- Tailwind
+
+Froslass-Mega @ Froslassite
+Ability: Snow Cloak
+Level: 83
+Hasty Nature
+- Water Pulse
+- Hex
+- Draining Kiss
+- Chill-O-Wisp
 
 === TRAINER_MAXIE_MOSSDEEP ===
 Name: Maxie /* Space Center*/
@@ -6418,17 +6460,59 @@ Music: Magma
 Battle Type: Doubles
 AI: Tag Trainer
 
-Mightyena
-Level: 42
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Metagross @ Life Orb
+Ability: Clear Body
+Level: 81
+Naive Nature
+- Meteor Mash
+- Zen Headbutt
+- Stomping Tantrum
+- Pursuit
 
-Crobat
-Level: 43
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Archeops @ Loaded Dice
+Ability: Defeatist
+Level: 83
+Hasty Nature
+- Heat Wave
+- Air Slash
+- Rock Blast
+- Tailwind
 
-Camerupt
-Level: 44
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Rotom-Heat @ White Herb
+Ability: Levitate
+Level: 82
+Timid Nature
+- Overheat
+- Foul Play
+- Thunderbolt
+- Will-O-Wisp
+
+Zapdos-Galar @ Bug Gem
+Ability: Defiant
+Level: 81
+Hasty Nature
+- Thunderous Kick
+- U-turn
+- Acrobatics
+- Tailwind
+
+Quaquaval @ Scope Lens
+Ability: Moxie
+Level: 81
+Jolly Nature
+- Last Resort
+- Focus Energy
+
+
+
+Glalie-Mega @ Glalitite
+Ability: Refrigerate
+Level: 83
+Naive Nature
+- Hyper Voice
+- Freeze-Dry
+- Retaliate
+- Protect
 
 === TRAINER_NIKKI ===
 Name: Nikki
