@@ -39,6 +39,7 @@ void FillPartnerParty(u16 trainerId)
     enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(trainerId);
     u8 nickname[POKEMON_NAME_LENGTH * 2];
     SetFacilityPtrsGetLevel();
+    ZeroPartnerPartyMons();
 
     if (trainerId == TRAINER_PARTNER(PARTNER_EMMIE)
     || trainerId == TRAINER_PARTNER(PARTNER_SHELLY_MHO)
@@ -46,7 +47,7 @@ void FillPartnerParty(u16 trainerId)
     {
         for (i = 0; i < 3 && i < gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].partySize; i++)
         {
-            if (GetMonData(&gPlayerParty[i+3], MON_DATA_SPECIES, NULL) != SPECIES_NONE)
+            if (GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_SPECIES, NULL) != SPECIES_NONE)
             {
                 const struct TrainerMon *partyData = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].party;
                 const u8 *partnerName = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName;
@@ -86,65 +87,64 @@ void FillPartnerParty(u16 trainerId)
                     personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[i].species);
                 else if (partyData[i].gender == TRAINER_MON_FEMALE)
                     personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
-                ModifyPersonalityForNature(&personality, GetMonData(&gPlayerParty[i+3], MON_DATA_HIDDEN_NATURE, NULL));
-                CopyMon(&gPlayerParty[i+3], &gPlayerParty[i+3], sizeof(*&gPlayerParty[i+3]));
+                ModifyPersonalityForNature(&personality, GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_HIDDEN_NATURE, NULL));
+                CopyMon(&gParties[B_TRAINER_0][i+3], &gParties[B_TRAINER_0][i+3], sizeof(*&gParties[B_TRAINER_0][i+3]));
                 
-                j = GetMonData(&gPlayerParty[i+3], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_HP, &j);
-                j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_PP1, &j);
-                j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_PP2, &j);
-                j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_PP3, &j);
-                j = gMovesInfo[GetMonData(&gPlayerParty[i+3], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_PP4, &j);
+                j = GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_PP4, &j);
                 
                 // Currently included just to get rid of "variable not used" error...
-                if (GetMonData(&gPlayerParty[i+3], MON_DATA_NICKNAME, nickname) != SPECIES_NONE)
+                if (GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_NICKNAME, nickname) != SPECIES_NONE)
                 {
-                    GetMonData(&gPlayerParty[i+3], MON_DATA_NICKNAME, nickname);
-                    SetMonData(&gPlayerParty[i + 3], MON_DATA_NICKNAME, nickname);
+                    GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_NICKNAME, nickname);
+                    SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_NICKNAME, nickname);
                 }
             }
         }
-        if((GetMonData(&gPlayerParty[3], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
+        if((GetMonData(&gParties[B_TRAINER_0][3], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
         {
-            monThreeLevel = GetMonData(&gPlayerParty[3], MON_DATA_EXP, NULL);
-            if((monThreeLevel < gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[3], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
+            monThreeLevel = GetMonData(&gParties[B_TRAINER_0][3], MON_DATA_EXP, NULL);
+            if((monThreeLevel < gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][3], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
             {
-                j = gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[3], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                SetMonData(&gPlayerParty[3], MON_DATA_EXP, &j);
-                CalculateMonStats(&gPlayerParty[3]);
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][3], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                SetMonData(&gParties[B_TRAINER_0][3], MON_DATA_EXP, &j);
+                CalculateMonStats(&gParties[B_TRAINER_0][3]);
             }
         }
-        if((GetMonData(&gPlayerParty[4], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
+        if((GetMonData(&gParties[B_TRAINER_0][4], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
         {
-            monFourLevel = GetMonData(&gPlayerParty[4], MON_DATA_EXP, NULL);
-            if((monFourLevel < gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[4], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
+            monFourLevel = GetMonData(&gParties[B_TRAINER_0][4], MON_DATA_EXP, NULL);
+            if((monFourLevel < gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][4], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
             {
-                j = gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[4], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                SetMonData(&gPlayerParty[4], MON_DATA_EXP, &j);
-                CalculateMonStats(&gPlayerParty[4]);
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][4], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                SetMonData(&gParties[B_TRAINER_0][4], MON_DATA_EXP, &j);
+                CalculateMonStats(&gParties[B_TRAINER_0][4]);
             }
         }
-        if((GetMonData(&gPlayerParty[5], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
+        if((GetMonData(&gParties[B_TRAINER_0][5], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
         {
-            monFiveLevel = GetMonData(&gPlayerParty[5], MON_DATA_EXP, NULL);
-            if((monFiveLevel < gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[5], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
+            monFiveLevel = GetMonData(&gParties[B_TRAINER_0][5], MON_DATA_EXP, NULL);
+            if((monFiveLevel < gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][5], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
             {
-                j = gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[5], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                SetMonData(&gPlayerParty[5], MON_DATA_EXP, &j);
-                CalculateMonStats(&gPlayerParty[5]);
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][5], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                SetMonData(&gParties[B_TRAINER_0][5], MON_DATA_EXP, &j);
+                CalculateMonStats(&gParties[B_TRAINER_0][5]);
             }
         }
     }
     else if (trainerId > TRAINER_PARTNER(PARTNER_NONE))
     {
-        for (i = 0; i < 3; i++)
-            ZeroMonData(&gPlayerParty[i + 3]);
+        s32 lastIndex = AreMultiPartiesFullTeams() ? PARTY_SIZE : MULTI_PARTY_SIZE;
 
-        for (i = 0; i < 3 && i < gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].partySize; i++)
+        for (i = 0; i < lastIndex && i < gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].partySize; i++)
         {
             const struct TrainerMon *partyData = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].party;
             const u8 *partnerName = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName;
@@ -178,21 +178,21 @@ void FillPartnerParty(u16 trainerId)
             else if (partyData[i].gender == TRAINER_MON_FEMALE)
                 personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
             ModifyPersonalityForNature(&personality, partyData[i].nature);
-            CreateMon(&gPlayerParty[i + 3], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(otID));
+            CreateMon(&gParties[B_TRAINER_2][i], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(otID));
             j = partyData[i].isShiny;
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_IS_SHINY, &j);
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
-            CustomTrainerPartyAssignMoves(&gPlayerParty[i + 3], &partyData[i]);
+            SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_IS_SHINY, &j);
+            SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+            CustomTrainerPartyAssignMoves(&gParties[B_TRAINER_2][i], &partyData[i]);
 
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_IVS, &(partyData[i].iv));
+            SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_IVS, &(partyData[i].iv));
             if (partyData[i].ev != NULL)
             {
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_HP_EV, &(partyData[i].ev[0]));
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_ATK_EV, &(partyData[i].ev[1]));
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_DEF_EV, &(partyData[i].ev[2]));
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_SPATK_EV, &(partyData[i].ev[3]));
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_SPDEF_EV, &(partyData[i].ev[4]));
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_SPEED_EV, &(partyData[i].ev[5]));
+                SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_HP_EV, &(partyData[i].ev[0]));
+                SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_ATK_EV, &(partyData[i].ev[1]));
+                SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_DEF_EV, &(partyData[i].ev[2]));
+                SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_SPATK_EV, &(partyData[i].ev[3]));
+                SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_SPDEF_EV, &(partyData[i].ev[4]));
+                SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_SPEED_EV, &(partyData[i].ev[5]));
             }
             if (partyData[i].ability != ABILITY_NONE)
             {
@@ -204,24 +204,24 @@ void FillPartnerParty(u16 trainerId)
                         break;
                 }
                 if (j < maxAbilities)
-                    SetMonData(&gPlayerParty[i + 3], MON_DATA_ABILITY_NUM, &j);
+                    SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_ABILITY_NUM, &j);
             }
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_FRIENDSHIP, &(partyData[i].friendship));
+            SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_FRIENDSHIP, &(partyData[i].friendship));
             if (partyData[i].ball != ITEM_NONE)
             {
                 ball = partyData[i].ball;
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_POKEBALL, &ball);
+                SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_POKEBALL, &ball);
             }
             if (partyData[i].nickname != NULL)
             {
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_NICKNAME, partyData[i].nickname);
+                SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_NICKNAME, partyData[i].nickname);
             }
-            CalculateMonStats(&gPlayerParty[i + 3]);
+            CalculateMonStats(&gParties[B_TRAINER_2][i]);
 
             StringCopy(trainerName, gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName);
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_OT_NAME, trainerName);
+            SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_OT_NAME, trainerName);
             j = gBattlePartners[difficulty][SanitizeTrainerId(trainerId - TRAINER_PARTNER(PARTNER_NONE))].gender;
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_OT_GENDER, &j);
+            SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_OT_GENDER, &j);
         }
     }
     else if (trainerId == TRAINER_EREADER)
@@ -237,12 +237,12 @@ void FillPartnerParty(u16 trainerId)
         for (i = 0; i < FRONTIER_MULTI_PARTY_SIZE; i++)
         {
             monId = gSaveBlock2Ptr->frontier.trainerIds[i + 18];
-            CreateFacilityMon(&gFacilityTrainerMons[monId], level, ivs, otID, 0, &gPlayerParty[MULTI_PARTY_SIZE + i]);
+            CreateFacilityMon(&gFacilityTrainerMons[monId], level, ivs, otID, 0, &gParties[B_TRAINER_2][i]);
             for (j = 0; j < PLAYER_NAME_LENGTH + 1; j++)
                 trainerName[j] = gFacilityTrainers[trainerId].trainerName[j];
-            SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_OT_NAME, &trainerName);
+            SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_OT_NAME, &trainerName);
             j = IsFrontierTrainerFemale(trainerId);
-            SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_OT_GENDER, &j);
+            SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_OT_GENDER, &j);
         }
     }
     else if (trainerId < TRAINER_RECORD_MIXING_APPRENTICE)
@@ -266,10 +266,10 @@ void FillPartnerParty(u16 trainerId)
                 if (monData.nickname[0] == EXT_CTRL_CODE_BEGIN && monData.nickname[1] == EXT_CTRL_CODE_JPN)
                     trainerName[5] = EOS;
             }
-            CreateBattleTowerMon_HandleLevel(&gPlayerParty[MULTI_PARTY_SIZE + i], &monData, TRUE);
-            SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_OT_NAME, trainerName);
+            CreateBattleTowerMon_HandleLevel(&gParties[B_TRAINER_2][i], &monData, TRUE);
+            SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_OT_NAME, trainerName);
             j = IsFrontierTrainerFemale(trainerId + TRAINER_RECORD_MIXING_FRIEND);
-            SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_OT_GENDER, &j);
+            SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_OT_GENDER, &j);
         }
     }
     else
@@ -277,9 +277,9 @@ void FillPartnerParty(u16 trainerId)
         trainerId -= TRAINER_RECORD_MIXING_APPRENTICE;
         for (i = 0; i < FRONTIER_MULTI_PARTY_SIZE; i++)
         {
-            CreateApprenticeMon(&gPlayerParty[MULTI_PARTY_SIZE + i], &gSaveBlock2Ptr->apprentices[trainerId], gSaveBlock2Ptr->frontier.trainerIds[18 + i]);
+            CreateApprenticeMon(&gParties[B_TRAINER_2][i], &gSaveBlock2Ptr->apprentices[trainerId], gSaveBlock2Ptr->frontier.trainerIds[18 + i]);
             j = IsFrontierTrainerFemale(trainerId + TRAINER_RECORD_MIXING_APPRENTICE);
-            SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_OT_GENDER, &j);
+            SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_OT_GENDER, &j);
         }
     }
 }

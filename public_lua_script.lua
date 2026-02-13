@@ -162,8 +162,8 @@ local speciesStructSize=260
 levelCap = 0 -- Sets the level for all mons based on first party slot
 
 -- Used for mon exporting
-local partyCount=0x02033611 -- gPlayerPartyCount
-local partyloc=0x02033ac8 -- gPlayerParty
+local partyCount=0x02033611 -- gPartiesCount[B_TRAINER_0]
+local partyloc=0x02033ac8 -- gParties[B_TRAINER_0]
 local storageLoc=0x02009580 -- gPokemonStorage
 local speciesInfo=0x08682eec -- gSpeciesInfo
 

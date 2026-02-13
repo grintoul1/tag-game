@@ -1536,9 +1536,9 @@ void Script_ForceSaveGame(struct ScriptContext *ctx)
 
 void HealNoneFaintedPartyMons(void)
 {
-    struct Pokemon *party = gPlayerParty;
+    struct Pokemon *party = gParties[B_TRAINER_0];
 
-    for (u32 partyMon = 0; partyMon < gPlayerPartyCount; partyMon++)
+    for (u32 partyMon = 0; partyMon < gPartiesCount[B_TRAINER_0]; partyMon++)
     {
         if (GetMonData(&party[partyMon], MON_DATA_HP) == 0
          || GetMonData(&party[partyMon], MON_DATA_SPECIES) == SPECIES_NONE

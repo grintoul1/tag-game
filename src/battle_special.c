@@ -41,17 +41,20 @@ static void HandleSpecialTrainerBattleEnd(void)
         for (i = 0; i < PARTY_SIZE; i++)
         {
             enum Item itemBefore = GetMonData(&gSaveBlock1Ptr->playerParty[i], MON_DATA_HELD_ITEM);
-            SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &itemBefore);
+            SetMonData(&gParties[B_TRAINER_0][i], MON_DATA_HELD_ITEM, &itemBefore);
         }
         break;
     case SPECIAL_BATTLE_EREADER:
         CopyEReaderTrainerFarewellMessage();
         break;
     case SPECIAL_BATTLE_MULTI:
-        for (i = 0; i < 3; i++)
+        if (!AreMultiPartiesFullTeams()) // grintoul TO DO - test
         {
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES))
-                gSaveBlock1Ptr->playerParty[i] = gPlayerParty[i];
+            for (i = 0; i < 3; i++)
+            {
+                if (GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES))
+                    gSaveBlock1Ptr->playerParty[i] = gParties[B_TRAINER_0][i];
+            }
         }
         break;
     }
@@ -79,7 +82,7 @@ void DoSpecialTrainerBattle(void)
     case SPECIAL_BATTLE_SECRET_BASE:
         for (i = 0; i < PARTY_SIZE; i++)
         {
-            enum Item itemBefore = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
+            enum Item itemBefore = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_HELD_ITEM);
             SetMonData(&gSaveBlock1Ptr->playerParty[i], MON_DATA_HELD_ITEM, &itemBefore);
         }
         CreateTask(Task_StartBattleAfterTransition, 1);
@@ -90,7 +93,7 @@ void DoSpecialTrainerBattle(void)
     #if FREE_BATTLE_TOWER_E_READER == FALSE
         ZeroEnemyPartyMons();
         for (i = 0; i < (int)ARRAY_COUNT(gSaveBlock2Ptr->frontier.ereaderTrainer.party); i++)
-            CreateBattleTowerMon(&gEnemyParty[i], &gSaveBlock2Ptr->frontier.ereaderTrainer.party[i]);
+            CreateBattleTowerMon(&gParties[B_TRAINER_1][i], &gSaveBlock2Ptr->frontier.ereaderTrainer.party[i]);
         gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_EREADER_TRAINER;
         TRAINER_BATTLE_PARAM.opponentA = 0;
         CreateTask(Task_StartBattleAfterTransition, 1);
@@ -144,12 +147,12 @@ void DoSpecialTrainerBattle(void)
         {
             for (i = 0; i < 6; i++)
             {
-                CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-                j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+                CopyMon(&gParties[B_TRAINER_1][i], &gParties[B_TRAINER_0][i], sizeof(*&gParties[B_TRAINER_0][i]));
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                if((j > GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, NULL)))
                 {
-                    SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
-                    CalculateMonStats(&gEnemyParty[i]);
+                    SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gParties[B_TRAINER_1][i]);
                 }
                 gBattleTypeFlags = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER);
             }
@@ -158,12 +161,12 @@ void DoSpecialTrainerBattle(void)
         {
             for (i = 3; i < 6; i++)
             {
-                CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-                j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+                CopyMon(&gParties[B_TRAINER_1][i], &gParties[B_TRAINER_0][i], sizeof(*&gParties[B_TRAINER_0][i]));
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                if((j > GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, NULL)))
                 {
-                    SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
-                    CalculateMonStats(&gEnemyParty[i]);
+                    SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gParties[B_TRAINER_1][i]);
                 }
                 gBattleTypeFlags = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_DOUBLE);
                 (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
@@ -175,12 +178,12 @@ void DoSpecialTrainerBattle(void)
         {
             for (i = 0; i < 6; i++)
             {
-                CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-                j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+                CopyMon(&gParties[B_TRAINER_1][i], &gParties[B_TRAINER_0][i], sizeof(*&gParties[B_TRAINER_0][i]));
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                if((j > GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, NULL)))
                 {
-                    SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
-                    CalculateMonStats(&gEnemyParty[i]);
+                    SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gParties[B_TRAINER_1][i]);
                 }
                 gBattleTypeFlags = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER);
             }
@@ -189,144 +192,144 @@ void DoSpecialTrainerBattle(void)
         {
             for (i = 0; i < 6; i++)
             {
-                j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+                j = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP4, &j);
                 j = STATUS1_NONE;
-                SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_STATUS, &j);
             }
             
             j = NATURE_RELAXED;
-            SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_SERIOUS;
-            SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BRAVE;
-            SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_SASSY;
-            SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BASHFUL;
-            SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_QUIET;
-            SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HIDDEN_NATURE, &j);
 
             j = ITEM_FOCUS_SASH;
-            SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HELD_ITEM, &j);
             j = ITEM_IRON_BALL;
-            SetMonData(&gEnemyParty[1], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HELD_ITEM, &j);
             j = ITEM_EJECT_BUTTON;
-            SetMonData(&gEnemyParty[2], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HELD_ITEM, &j);
             j = ITEM_LAGGING_TAIL;
-            SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HELD_ITEM, &j);
             j = ITEM_SITRUS_BERRY;
-            SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HELD_ITEM, &j);
             j = ITEM_STICKY_BARB;
-            SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HELD_ITEM, &j);
         }
         else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_2)
         {
             j = SPECIES_TORNADUS;
-                SetMonData(&gEnemyParty[0], MON_DATA_SPECIES, &j);
+                SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES, &j);
             j = SPECIES_THUNDURUS;
-                SetMonData(&gEnemyParty[1], MON_DATA_SPECIES, &j);
+                SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_SPECIES, &j);
             j = SPECIES_LANDORUS;
-                SetMonData(&gEnemyParty[2], MON_DATA_SPECIES, &j);
+                SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_SPECIES, &j);
             j = 0;
-                SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &j);
+                SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_ABILITY_NUM, &j);
             j = 0;
-                SetMonData(&gEnemyParty[1], MON_DATA_ABILITY_NUM, &j);
+                SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_ABILITY_NUM, &j);
             j = 0;
-                SetMonData(&gEnemyParty[2], MON_DATA_ABILITY_NUM, &j);
+                SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_ABILITY_NUM, &j);
             j = NATURE_SERIOUS;
-                SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
+                SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_TIMID;
-                SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
+                SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BRAVE;
-                SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
+                SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HIDDEN_NATURE, &j);
             j = MOVE_TAILWIND;
-                SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &j);
+                SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_MOVE1, &j);
             j = MOVE_TAUNT;
-                SetMonData(&gEnemyParty[1], MON_DATA_MOVE1, &j);
+                SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_MOVE1, &j);
             j = MOVE_U_TURN;
-                SetMonData(&gEnemyParty[2], MON_DATA_MOVE1, &j);
+                SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_MOVE1, &j);
 
             for (i = 0; i < 6; i++)
             {
-                j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+                j = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP4, &j);
                 j = STATUS1_NONE;
-                SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_STATUS, &j);
             }
             j = NATURE_SASSY;
-            SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BASHFUL;
-            SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_QUIET;
-            SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HIDDEN_NATURE, &j);
 
             j = ITEM_LAGGING_TAIL;
-            SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HELD_ITEM, &j);
             j = ITEM_SITRUS_BERRY;
-            SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HELD_ITEM, &j);
             j = ITEM_STICKY_BARB;
-            SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HELD_ITEM, &j);
         }
         else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_3)
         {
             for (i = 0; i < 6; i++)
             {
-                j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+                j = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP4, &j);
                 j = STATUS1_NONE;
-                SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_STATUS, &j);
             }
             j = NATURE_TIMID;
-            SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_LONELY;
-            SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_NAIVE;
-            SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_RASH;
-            SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BASHFUL;
-            SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_JOLLY;
-            SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HIDDEN_NATURE, &j);
 
             j = ITEM_FOCUS_SASH;
-            SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HELD_ITEM, &j);
             j = ITEM_NORMAL_GEM;
-            SetMonData(&gEnemyParty[1], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HELD_ITEM, &j);
             j = ITEM_EJECT_PACK;
-            SetMonData(&gEnemyParty[2], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HELD_ITEM, &j);
             j = ITEM_WEAKNESS_POLICY;
-            SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HELD_ITEM, &j);
             j = ITEM_CHOICE_SPECS;
-            SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HELD_ITEM, &j);
             j = ITEM_NORMAL_GEM;
-            SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HELD_ITEM, &j);
         }
         
         CreateTask(Task_StartBattleAfterTransition, 1);
@@ -385,7 +388,7 @@ static void UNUSED FillEReaderTrainerWithPlayerData(void)
     }
 
     for (i = 0; i < (int)ARRAY_COUNT(ereaderTrainer->party); i++)
-        ConvertPokemonToBattleTowerPokemon(&gPlayerParty[i], &ereaderTrainer->party[i]);
+        ConvertPokemonToBattleTowerPokemon(&gParties[B_TRAINER_0][i], &ereaderTrainer->party[i]);
 
     SetEReaderTrainerChecksum(ereaderTrainer);
 #endif //FREE_BATTLE_TOWER_E_READER

@@ -28,6 +28,6 @@ void DoFacilityTrainerBattle(struct ScriptContext *ctx);
 void FillFrontierTrainerParty(u8 monsCount);
 void FillFrontierTrainersParties(u8 monsCount);
 void CreateFacilityMon(const struct TrainerMon *fmon, u16 level, u8 fixedIV, u32 otID, u32 flags, struct Pokemon *dst);
-void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount);
+void FillTrainerParty(u16 trainerId, enum BattleTrainer trainer, u8 monCount);
 
 #endif // GUARD_BATTLE_FRONTIER_H

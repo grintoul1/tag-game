@@ -2,10 +2,10 @@ def get_map_values(map_file):
     values = {}
     with open(map_file, 'r') as content:
         for line in content:
-            if "gPlayerPartyCount" in line:
-                values['gPlayerPartyCount'] = line.strip().split()[0]
-            elif "gPlayerParty" in line:
-                values['gPlayerParty'] = line.strip().split()[0]
+            if "gPartiesCount[B_TRAINER_0]" in line:
+                values['gPartiesCount[B_TRAINER_0]'] = line.strip().split()[0]
+            elif "gParties[B_TRAINER_0]" in line:
+                values['gParties[B_TRAINER_0]'] = line.strip().split()[0]
             elif "gPokemonStorage" in line and not "gPokemonStoragePtr" in line:
                 values['gPokemonStorage'] = line.strip().split()[0]
             elif "gSpeciesInfo" in line:
@@ -15,8 +15,8 @@ def get_map_values(map_file):
 
 
 def replace_values(lua_script, new_values):
-    party_count = f"local partyCount={new_values['gPlayerPartyCount']} -- gPlayerPartyCount\n"
-    party_loc = f"local partyloc={new_values['gPlayerParty']} -- gPlayerParty\n"
+    party_count = f"local partyCount={new_values['gPartiesCount[B_TRAINER_0]']} -- gPartiesCount[B_TRAINER_0]\n"
+    party_loc = f"local partyloc={new_values['gParties[B_TRAINER_0]']} -- gParties[B_TRAINER_0]\n"
     storage_loc = f"local storageLoc={new_values['gPokemonStorage']} -- gPokemonStorage\n"
     species_info = f"local speciesInfo={new_values['gSpeciesInfo']} -- gSpeciesInfo\n"
 
@@ -24,9 +24,9 @@ def replace_values(lua_script, new_values):
         lines = content.readlines()
 
     for line_no, line in enumerate(lines):
-        if 'gPlayerPartyCount' in line:
+        if 'gPartiesCount[B_TRAINER_0]' in line:
             lines[line_no] = lines[line_no].replace(line, party_count)
-        elif 'gPlayerParty' in line:
+        elif 'gParties[B_TRAINER_0]' in line:
             lines[line_no] = lines[line_no].replace(line, party_loc)
         elif 'gSpeciesInfo' in line:
             lines[line_no] = lines[line_no].replace(line, storage_loc)

@@ -658,7 +658,7 @@ void BattleTv_SetDataBasedOnAnimation(u8 animationId)
     }
 }
 
-void TryPutLinkBattleTvShowOnAir(void)
+void TryPutLinkBattleTvShowOnAir(void) // grintoul TO DO
 {
     u16 playerBestSpecies = 0, opponentBestSpecies = 0;
     s16 playerBestSum = 0, opponentBestSum = SHRT_MAX;
@@ -677,9 +677,13 @@ void TryPutLinkBattleTvShowOnAir(void)
     movePoints = &gBattleStruct->tvMovePoints;
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE)
+        if (GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES) != SPECIES_NONE)
             countPlayer++;
-        if (GetMonData(&gEnemyParty[i], MON_DATA_SPECIES) != SPECIES_NONE)
+        if (GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES) != SPECIES_NONE)
+            countOpponent++;
+        if (GetMonData(&gParties[B_TRAINER_2][i], MON_DATA_SPECIES) != SPECIES_NONE)
+            countPlayer++;
+        if (GetMonData(&gParties[B_TRAINER_3][i], MON_DATA_SPECIES) != SPECIES_NONE)
             countOpponent++;
     }
 
@@ -688,8 +692,8 @@ void TryPutLinkBattleTvShowOnAir(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
-        if (species != SPECIES_NONE && !GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
+        species = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES);
+        if (species != SPECIES_NONE && !GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_IS_EGG))
         {
             for (sum = 0, j = 0; j < MAX_MON_MOVES; j++)
                 sum += movePoints->points[zero][i * 4 + j];
@@ -702,15 +706,15 @@ void TryPutLinkBattleTvShowOnAir(void)
             }
         }
 
-        species = GetMonData(&gEnemyParty[i], MON_DATA_SPECIES);
-        if (species != SPECIES_NONE && !GetMonData(&gEnemyParty[i], MON_DATA_IS_EGG))
+        species = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES);
+        if (species != SPECIES_NONE && !GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_IS_EGG))
         {
             for (sum = 0, j = 0; j < MAX_MON_MOVES; j++)
                 sum += movePoints->points[one][i * 4 + j];
 
             if (opponentBestSum == sum)
             {
-                if (GetMonData(&gEnemyParty[i], MON_DATA_EXP) > GetMonData(&gEnemyParty[opponentBestMonId], MON_DATA_EXP))
+                if (GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP) > GetMonData(&gParties[B_TRAINER_1][opponentBestMonId], MON_DATA_EXP))
                 {
                     opponentBestMonId = i;
                     opponentBestSum = sum;
@@ -735,7 +739,7 @@ void TryPutLinkBattleTvShowOnAir(void)
         }
     }
 
-    move = GetMonData(&gPlayerParty[playerBestMonId], MON_DATA_MOVE1 + i);
+    move = GetMonData(&gParties[B_TRAINER_0][playerBestMonId], MON_DATA_MOVE1 + i);
     if (playerBestSum == 0 || move == MOVE_NONE)
         return;
 
@@ -823,6 +827,10 @@ static void AddMovePoints(u8 caseId, u16 arg1, u8 arg2, u8 arg3)
             if (GetMoveReflectDamage_DamageCategories(move) == 1u << DAMAGE_CATEGORY_SPECIAL) // Mirror Coat
                 baseFromEffect++;
             break;
+        case EFFECT_RECOIL:
+            if (GetMoveRecoil(move) > 0)
+                baseFromEffect++;
+            break;
         default:
             break;
         }
@@ -849,9 +857,6 @@ static void AddMovePoints(u8 caseId, u16 arg1, u8 arg2, u8 arg3)
 
         // Guaranteed hit but without negative priority
         if (GetMoveAccuracy(move) == 0 && GetMovePriority(move) >= 0)
-            baseFromEffect++;
-        // User recoil damage
-        if (GetMoveRecoil(move) > 0)
             baseFromEffect++;
         // // Explosion moves get 0 points in vanilla, so we deduct here from EFFECT_HIT's score of 1
         if (IsExplosionMove(move) && baseFromEffect > 0)

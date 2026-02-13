@@ -172,11 +172,11 @@ void BattleAI_SetupItems(void)
 
 static u64 GetWildAiFlags(void)
 {
-    u32 avgLevel = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
+    u32 avgLevel = GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_LEVEL);
     u64 flags = 0;
 
     if (IsDoubleBattle())
-        avgLevel = (GetMonData(&gEnemyParty[0], MON_DATA_LEVEL) + GetMonData(&gEnemyParty[1], MON_DATA_LEVEL)) / 2;
+        avgLevel = (GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_LEVEL) + GetMonData(&gParties[B_TRAINER_1][1], MON_DATA_LEVEL)) / 2;
 
     flags |= AI_FLAG_CHECK_BAD_MOVE;
     if (avgLevel >= 20)
@@ -266,8 +266,8 @@ void BattleAI_SetupFlags(void)
         // The check is here because wild natural enemies are not symmetrical.
         if (B_WILD_NATURAL_ENEMIES && IsDoubleBattle())
         {
-            u32 speciesLeft = GetMonData(&gEnemyParty[0], MON_DATA_SPECIES);
-            u32 speciesRight = GetMonData(&gEnemyParty[1], MON_DATA_SPECIES);
+            u32 speciesLeft = GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES);
+            u32 speciesRight = GetMonData(&gParties[B_TRAINER_1][1], MON_DATA_SPECIES);
             if (IsNaturalEnemy(speciesLeft, speciesRight))
                 gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_LEFT] |= AI_FLAG_ATTACKS_PARTNER;
             if (IsNaturalEnemy(speciesRight, speciesLeft))
@@ -482,7 +482,7 @@ void AI_TrySwitchOrUseItem(enum BattlerId battler)
                     {
                         if (!IsValidForBattle(&party[monToSwitchId]))
                             continue;
-                        if (IsPartyMonOnFieldOrChosenToSwitch(monToSwitchId, battlerIn1, battlerIn2))
+                        if (IsPartyMonOnFieldOrChosenToSwitch(battler, monToSwitchId, battlerIn1, battlerIn2))
                             continue;
                         if (IsAceMon(battler, monToSwitchId))
                             continue;
@@ -572,11 +572,11 @@ void Ai_InitPartyStruct(void)
     // Find fainted mons
     for (u32 monIndex = 0; monIndex < PARTY_SIZE; monIndex++)
     {
-        if (GetMonData(&gPlayerParty[monIndex], MON_DATA_SPECIES) == SPECIES_NONE)
+        if (GetMonData(&gParties[B_TRAINER_0][monIndex], MON_DATA_SPECIES) == SPECIES_NONE)
             continue;
 
-        mon = &gPlayerParty[monIndex];
-        if (GetMonData(&gPlayerParty[monIndex], MON_DATA_HP) == 0)
+        mon = &gParties[B_TRAINER_0][monIndex];
+        if (GetMonData(&gParties[B_TRAINER_0][monIndex], MON_DATA_HP) == 0)
             gAiPartyData->mons[B_SIDE_PLAYER][monIndex].isFainted = TRUE;
 
         if (isOmniscient || hasPartyKnowledge)
@@ -584,11 +584,32 @@ void Ai_InitPartyStruct(void)
 
         if (isOmniscient)
         {
-            gAiPartyData->mons[B_SIDE_PLAYER][monIndex].item = GetMonData(mon, MON_DATA_HELD_ITEM);
-            gAiPartyData->mons[B_SIDE_PLAYER][monIndex].heldEffect = GetItemHoldEffect(gAiPartyData->mons[B_SIDE_PLAYER][monIndex].item);
-            gAiPartyData->mons[B_SIDE_PLAYER][monIndex].ability = GetMonAbility(mon);
-            for (enum Move moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
-                gAiPartyData->mons[B_SIDE_PLAYER][monIndex].moves[moveIndex] = GetMonData(mon, MON_DATA_MOVE1 + moveIndex);
+            gAiPartyData->mons[B_TRAINER_0][monIndex].item = GetMonData(mon, MON_DATA_HELD_ITEM);
+            gAiPartyData->mons[B_TRAINER_0][monIndex].heldEffect = GetItemHoldEffect(gAiPartyData->mons[B_TRAINER_0][monIndex].item);
+            gAiPartyData->mons[B_TRAINER_0][monIndex].ability = GetMonAbility(mon);
+            for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+                gAiPartyData->mons[B_TRAINER_0][monIndex].moves[moveIndex] = GetMonData(mon, MON_DATA_MOVE1 + moveIndex);
+        }
+    }
+    for (u32 monIndex = 0; monIndex < PARTY_SIZE; monIndex++)
+    {
+        if (GetMonData(&gParties[B_TRAINER_2][monIndex], MON_DATA_SPECIES) == SPECIES_NONE)
+            continue;
+
+        mon = &gParties[B_TRAINER_2][monIndex];
+        if (GetMonData(&gParties[B_TRAINER_2][monIndex], MON_DATA_HP) == 0)
+            gAiPartyData->mons[B_TRAINER_2][monIndex].isFainted = TRUE;
+
+        if (isOmniscient || hasPartyKnowledge)
+            gAiPartyData->mons[B_TRAINER_2][monIndex].species = GetMonData(mon, MON_DATA_SPECIES);
+
+        if (isOmniscient)
+        {
+            gAiPartyData->mons[B_TRAINER_2][monIndex].item = GetMonData(mon, MON_DATA_HELD_ITEM);
+            gAiPartyData->mons[B_TRAINER_2][monIndex].heldEffect = GetItemHoldEffect(gAiPartyData->mons[B_TRAINER_2][monIndex].item);
+            gAiPartyData->mons[B_TRAINER_2][monIndex].ability = GetMonAbility(mon);
+            for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+                gAiPartyData->mons[B_TRAINER_2][monIndex].moves[moveIndex] = GetMonData(mon, MON_DATA_MOVE1 + moveIndex);
         }
     }
 }
@@ -818,9 +839,9 @@ static u32 PpStallReduction(enum Move move, enum BattlerId battlerAtk)
     for (u32 partyIndex = 0; partyIndex < PARTY_SIZE; partyIndex++)
     {
         u32 currentStallValue = gAiBattleData->playerStallMons[partyIndex];
-        if (currentStallValue == 0 || GetMonData(&gPlayerParty[partyIndex], MON_DATA_HP) == 0)
+        if (currentStallValue == 0 || GetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_HP) == 0)
             continue;
-        PokemonToBattleMon(&gPlayerParty[partyIndex], &gBattleMons[tempBattleMonIndex]);
+        PokemonToBattleMon(&gParties[B_TRAINER_0][partyIndex], &gBattleMons[tempBattleMonIndex]);
         ctx.battlerDef = tempBattleMonIndex;
         ctx.abilityDef = GetBattlerAbility(ctx.battlerDef);
         ctx.holdEffectDef = GetBattlerHoldEffect(ctx.battlerDef);
@@ -2817,7 +2838,7 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
         case EFFECT_FLING:
-            if (!CanFling(battlerAtk, battlerDef))
+            if (!CanFling(battlerAtk))
             {
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             }
@@ -4074,7 +4095,6 @@ static bool32 DoesAbilityBenefitFromSunOrRain(enum BattlerId battler, enum Abili
         return (weather & B_WEATHER_RAIN);
     case ABILITY_HARVEST:
         if (GetItemPocket(gAiLogicData->items[battler]) != POCKET_BERRIES
-            && GetItemPocket(gBattleStruct->changedItems[battler]) != POCKET_BERRIES
             && GetItemPocket(GetBattlerPartyState(battler)->usedHeldItem) != POCKET_BERRIES)
         {
             return FALSE;
@@ -8961,7 +8981,7 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_FLING:
-                if (!CanFling(battlerAtk, battlerDef))
+                if (!CanFling(battlerAtk))
                 {
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 }
@@ -14097,7 +14117,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_FLING:
-                if (!CanFling(battlerAtk, battlerDef))
+                if (!CanFling(battlerAtk))
                 {
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 }
@@ -14470,6 +14490,8 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
             else
                 ADJUST_SCORE(SLOW_KILL);
 
+            if (moveEffect == EFFECT_PURSUIT)
+                ADJUST_SCORE(10);
             if (moveTargetsBothOpponents)
                 ADJUST_SCORE(3);
 

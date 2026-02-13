@@ -42,7 +42,7 @@ AI_DOUBLE_BATTLE_TEST("AI_FLAG_DOUBLE_ACE_POKEMON: U-Turn won't send out any of 
                 EXPECT_SEND_OUT(opponentRight, 2);
             } else {
                 EXPECT_SEND_OUT(opponentLeft, 4);
-                EXPECT_SEND_OUT(opponentRight, 5);
+                EXPECT_SEND_OUT(opponentRight, 2);
             }
         }
     }

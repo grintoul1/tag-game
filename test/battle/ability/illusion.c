@@ -118,6 +118,7 @@ SINGLE_BATTLE_TEST("Illusion breaks when attacked behind a substitute")
 {
     KNOWN_FAILING; // ???
     GIVEN {
+        WITH_CONFIG(CONFIG_INFILTRATOR_SUBSTITUTE, GEN_6);
         PLAYER(SPECIES_DRAGAPULT) { Ability(ABILITY_INFILTRATOR); Speed(1); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(2); }
         OPPONENT(SPECIES_ZOROARK) { Speed(2); }

@@ -3,6 +3,7 @@
 #include "battle_ai_main.h"
 #include "battle_ai_switch.h"
 #include "battle_ai_util.h"
+#include "constants/battle.h"
 #include "constants/battle_ai.h"
 #include "battle_anim.h"
 #include "battle_arena.h"
@@ -42,7 +43,6 @@
 #include "trainer_tower.h"
 #include "test_runner.h"
 #include "test/battle.h"
-#include "test/test_runner_battle.h"
 
 static void OpponentHandleDrawTrainerPic(enum BattlerId battler);
 static void OpponentHandleTrainerSlideBack(enum BattlerId battler);
@@ -377,8 +377,8 @@ static void OpponentHandleDrawTrainerPic(enum BattlerId battler)
     s16 xPos;
     enum TrainerPicID trainerPicId;
 
-    // Sets Multibattle test opponent sprites to not be Hiker
-    if (IsMultibattleTest())
+    // Sets battle test opponent sprites to Leaf and Red
+    if (TESTING)
     {
         if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT)
         {
@@ -494,8 +494,8 @@ static void OpponentHandleChooseMove(enum BattlerId battler)
             move = moveInfo->moves[chosenMoveIndex];
         } while (move == MOVE_NONE);
 
-        enum MoveTarget target = GetBattlerMoveTargetType(battler, move);
-        if (target == TARGET_USER || target == TARGET_USER_OR_ALLY)
+        enum MoveTarget moveTarget = GetBattlerMoveTargetType(battler, move);
+        if (moveTarget == TARGET_USER || moveTarget == TARGET_USER_OR_ALLY)
         {
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_EXEC_SCRIPT, (chosenMoveIndex) | (battler << 8));
         }
@@ -503,7 +503,8 @@ static void OpponentHandleChooseMove(enum BattlerId battler)
         {
             enum BattlerId targetBattler;
             do {
-                targetBattler = GetBattlerAtPosition(Random() & 2);
+                enum BattlerPosition pos = RandomPercentage(RNG_WILD_MON_TARGET, 50) ? B_POSITION_PLAYER_LEFT : B_POSITION_PLAYER_RIGHT;
+                targetBattler = GetBattlerAtPosition(pos);
             } while (!CanTargetBattler(battler, targetBattler, move));
 
             // Don't bother to check if they're enemies if the move can't attack ally
@@ -515,14 +516,14 @@ static void OpponentHandleChooseMove(enum BattlerId battler)
 
                 bool32 isPartnerEnemy = IsNaturalEnemy(speciesAttacker, speciesTarget);
 
-                if (isPartnerEnemy && CanTargetBattler(battler, targetBattler, move))
+                if (isPartnerEnemy && CanTargetBattler(battler, GetBattlerAtPosition(BATTLE_PARTNER(battler)), move))
                     BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_EXEC_SCRIPT, (chosenMoveIndex) | (GetBattlerAtPosition(BATTLE_PARTNER(battler)) << 8));
                 else
-                    BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_EXEC_SCRIPT, (chosenMoveIndex) | (target << 8));
+                    BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_EXEC_SCRIPT, (chosenMoveIndex) | (targetBattler << 8));
             }
             else
             {
-                BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_EXEC_SCRIPT, (chosenMoveIndex) | (target << 8));
+                BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_EXEC_SCRIPT, (chosenMoveIndex) | (targetBattler << 8));
             }
         }
         else
@@ -581,9 +582,9 @@ static void OpponentHandleChoosePokemon(enum BattlerId battler)
             GetAIPartyIndexes(battler, &firstId, &lastId);
             for (chosenMonId = firstId; chosenMonId < lastId; chosenMonId++)
             {
-                if (IsValidForBattle(&gEnemyParty[chosenMonId])
-                 && chosenMonId != gBattlerPartyIndexes[battler1]
-                 && chosenMonId != gBattlerPartyIndexes[battler2])
+                if (IsValidForBattle(&gParties[GetBattlerTrainer(battler)][chosenMonId])
+                 && !((chosenMonId == gBattlerPartyIndexes[battler1]) && BattlersShareParty(battler, battler1))
+                 && !((chosenMonId == gBattlerPartyIndexes[battler2]) && BattlersShareParty(battler, battler2)))
                     break;
             }
         }

@@ -596,9 +596,9 @@ static const union TextColor sHealthBoxTextColor =
 // The same goes for a 2 vs 1 where opponent has only one pokemon.
 enum BattleCoordTypes GetBattlerCoordsIndex(enum BattlerId battler)
 {
-    if (GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT && gPlayerPartyCount == 1 && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
+    if (GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT && gPartiesCount[B_TRAINER_0] == 1 && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
         return BATTLE_COORDS_SINGLES;
-    else if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT && gEnemyPartyCount == 1 && !(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
+    else if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT && gPartiesCount[B_TRAINER_1] == 1 && !(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
         return BATTLE_COORDS_SINGLES;
     else if (IsDoubleBattle())
         return BATTLE_COORDS_DOUBLES;
@@ -1212,12 +1212,17 @@ u8 CreatePartyStatusSummarySprites(enum BattlerId battler, struct HpAndStatus *p
     u8 ballIconSpritesIds[PARTY_SIZE];
     u8 taskId;
 
-    if (!skipPlayer || GetBattlerPosition(battler) != B_POSITION_OPPONENT_RIGHT)
+
+    if (!skipPlayer)
     {
         if (IsOnPlayerSide(battler))
         {
             isOpponent = FALSE;
-            bar_X = 136, bar_Y = 96;
+            bar_X = 136;
+            if (BattleSideHasTwoTrainers(B_SIDE_PLAYER))
+                bar_Y = GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT ? 90 : 106;
+            else
+                bar_Y = 96;
             bar_pos2_X = 100;
             bar_data0 = -5;
         }
@@ -1226,9 +1231,21 @@ u8 CreatePartyStatusSummarySprites(enum BattlerId battler, struct HpAndStatus *p
             isOpponent = TRUE;
 
             if (!skipPlayer || GetBattlerCoordsIndex(battler) == BATTLE_COORDS_SINGLES)
+            {
                 bar_X = 104, bar_Y = 40;
+                if (BattleSideHasTwoTrainers(B_SIDE_OPPONENT) && GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT)
+                    bar_Y = 24;
+                else
+                    bar_Y = 40;
+            }
             else
-                bar_X = 104, bar_Y = 16;
+            {
+                bar_X = 104;
+                if (BattleSideHasTwoTrainers(B_SIDE_OPPONENT) && GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT)
+                    bar_Y = 16;
+                else
+                    bar_Y = 32;
+            }
 
             bar_pos2_X = -100;
             bar_data0 = 5;
@@ -1237,7 +1254,11 @@ u8 CreatePartyStatusSummarySprites(enum BattlerId battler, struct HpAndStatus *p
     else
     {
         isOpponent = TRUE;
-        bar_X = 104, bar_Y = 40;
+        bar_X = 104;
+        if (BattleSideHasTwoTrainers(B_SIDE_OPPONENT) && GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT)
+            bar_Y = 24;
+        else
+            bar_Y = 40;
         bar_pos2_X = -100;
         bar_data0 = 5;
     }
@@ -2082,33 +2103,47 @@ static void MoveBattleBarGraphically(enum BattlerId battler, u8 whichBar)
     switch (whichBar)
     {
     case HEALTH_BAR:
-    if (B_HPBAR_COLOR_THRESHOLD < GEN_5)
-    {
-        maxValue = B_HEALTHBAR_PIXELS;
-        currValue = CalcBarFilledPixels(gBattleSpritesDataPtr->battleBars[battler].maxValue,
-                            gBattleSpritesDataPtr->battleBars[battler].oldValue,
-                            gBattleSpritesDataPtr->battleBars[battler].receivedValue,
-                            &gBattleSpritesDataPtr->battleBars[battler].currValue,
-                            array, B_HEALTHBAR_PIXELS / 8);
-    }
-    else
-    {
-        CalcBarFilledPixels(gBattleSpritesDataPtr->battleBars[battler].maxValue,
-                            gBattleSpritesDataPtr->battleBars[battler].oldValue,
-                            gBattleSpritesDataPtr->battleBars[battler].receivedValue,
-                            &gBattleSpritesDataPtr->battleBars[battler].currValue,
-                            array, B_HEALTHBAR_PIXELS / 8);
-
-        maxValue  = gBattleSpritesDataPtr->battleBars[battler].maxValue;
-        currValue = gBattleSpritesDataPtr->battleBars[battler].currValue;
-    }
-
-        if (currValue > (maxValue * 50 / 100)) // more than 50% hp
-            barElementId = HEALTHBOX_GFX_HP_BAR_GREEN;
-        else if (currValue > (maxValue * 20 / 100)) // more than 20% hp
-            barElementId = HEALTHBOX_GFX_HP_BAR_YELLOW;
+        if (B_HPBAR_COLOR_THRESHOLD < GEN_5)
+        {
+            maxValue = B_HEALTHBAR_PIXELS;
+            currValue = CalcBarFilledPixels(gBattleSpritesDataPtr->battleBars[battler].maxValue,
+                                gBattleSpritesDataPtr->battleBars[battler].oldValue,
+                                gBattleSpritesDataPtr->battleBars[battler].receivedValue,
+                                &gBattleSpritesDataPtr->battleBars[battler].currValue,
+                                array, B_HEALTHBAR_PIXELS / 8);
+        }
         else
-            barElementId = HEALTHBOX_GFX_HP_BAR_RED; // 20% or less
+        {
+            CalcBarFilledPixels(gBattleSpritesDataPtr->battleBars[battler].maxValue,
+                                gBattleSpritesDataPtr->battleBars[battler].oldValue,
+                                gBattleSpritesDataPtr->battleBars[battler].receivedValue,
+                                &gBattleSpritesDataPtr->battleBars[battler].currValue,
+                                array, B_HEALTHBAR_PIXELS / 8);
+
+            maxValue = gBattleSpritesDataPtr->battleBars[battler].maxValue;
+            currValue = gBattleSpritesDataPtr->battleBars[battler].currValue;
+
+            if (maxValue < B_HEALTHBAR_PIXELS)
+                currValue = Q_24_8_TO_INT(currValue);
+        }
+
+        switch (GetHPBarLevel(currValue, maxValue))
+        {
+        case HP_BAR_FULL:
+        case HP_BAR_GREEN:
+            barElementId = HEALTHBOX_GFX_HP_BAR_GREEN;
+            break;
+        case HP_BAR_YELLOW:
+            barElementId = HEALTHBOX_GFX_HP_BAR_YELLOW;
+            break;
+        default:
+        case HP_BAR_RED:
+            if (maxValue > 1) // handling for wonder guard
+                barElementId = HEALTHBOX_GFX_HP_BAR_RED;
+            else
+                barElementId = HEALTHBOX_GFX_HP_BAR_GREEN;
+            break;
+        }
 
         for (i = 0; i < 6; i++)
         {
@@ -2159,12 +2194,7 @@ static s32 CalcNewBarValue(s32 maxValue, s32 oldValue, s32 receivedValue, s32 *c
             *currValue = oldValue;
     }
 
-    newValue = oldValue - receivedValue;
-    if (newValue < 0)
-        newValue = 0;
-    else if (newValue > maxValue)
-        newValue = maxValue;
-
+    newValue = SubtractClamped(HP_EMPTY, maxValue, oldValue, receivedValue);
     if (maxValue < scale)
     {
         if (newValue == Q_24_8_TO_INT(*currValue) && (*currValue & 0xFF) == 0)
@@ -2230,12 +2260,7 @@ static u8 CalcBarFilledPixels(s32 maxValue, s32 oldValue, s32 receivedValue, s32
     u8 pixels, filledPixels, totalPixels;
     u8 i;
 
-    s32 newValue = oldValue - receivedValue;
-    if (newValue < 0)
-        newValue = 0;
-    else if (newValue > maxValue)
-        newValue = maxValue;
-
+    s32 newValue = SubtractClamped(HP_EMPTY, maxValue, oldValue, receivedValue);
     totalPixels = scale * 8;
 
     for (i = 0; i < scale; i++)
@@ -2280,12 +2305,7 @@ static u8 GetScaledExpFraction(s32 oldValue, s32 receivedValue, s32 maxValue, u8
     s8 oldToMax, newToMax;
 
     scale *= (B_FAST_EXP_GROW) ? 2 : 8;
-    newVal = oldValue - receivedValue;
-
-    if (newVal < 0)
-        newVal = 0;
-    else if (newVal > maxValue)
-        newVal = maxValue;
+    newVal = SubtractClamped(HP_EMPTY, maxValue, oldValue, receivedValue);
 
     oldToMax = oldValue * scale / maxValue;
     newToMax = newVal * scale / maxValue;

@@ -157,8 +157,8 @@ local partyMonSize = emu:read32(rhhHeaderAdr + RHHRomHeader.partyPokemonSize) --
 local speciesStructSize = emu:read32(rhhHeaderAdr + RHHRomHeader.speciesSize) -- sizeof(struct SpeciesInfo)
 
 -- Used for mon exporting
-local partyCount = emu:read32(rhhHeaderAdr + RHHRomHeader.playerPartyCount) -- gPlayerPartyCount
-local partyloc = emu:read32(rhhHeaderAdr + RHHRomHeader.playerParty) -- gPlayerParty
+local partyCount = emu:read32(rhhHeaderAdr + RHHRomHeader.playerPartyCount) -- gPartiesCount[B_TRAINER_0]
+local partyloc = emu:read32(rhhHeaderAdr + RHHRomHeader.playerParty) -- gParties[B_TRAINER_0]
 local storageLoc = emu:read32(rhhHeaderAdr + RHHRomHeader.pokemonStorage) -- gPokemonStorage
 local speciesInfo = emu:read32(gfHeaderAdr + GFRomHeader.speciesInfo) -- gSpeciesInfo
 

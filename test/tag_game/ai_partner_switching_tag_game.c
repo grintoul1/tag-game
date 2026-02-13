@@ -43,14 +43,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
-        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
-        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
-        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
-        MULTI_OPPONENT_B(SPECIES_SHUCKLE) { Speed(7); }
-        MULTI_OPPONENT_B(species) { Level(1); Speed(6); Moves(moveC1); Ability(ability); }
+        PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        OPPONENT_B(SPECIES_SHUCKLE) { Speed(7); }
+        OPPONENT_B(species) { Level(1); Speed(6); Moves(moveC1); Ability(ability); }
     } WHEN {
-            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SWITCH(opponentRight, 5); }
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SWITCH(opponentRight, 2); }
         }   
 }
 
@@ -73,14 +73,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
-        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
-        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
-        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
-        MULTI_OPPONENT_B(species) { Level(1); Speed(6); Moves(moveC1); Ability(ability); }
-        MULTI_OPPONENT_B(SPECIES_SHUCKLE) { Speed(7); }
+        PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        OPPONENT_B(species) { Level(1); Speed(6); Moves(moveC1); Ability(ability); }
+        OPPONENT_B(SPECIES_SHUCKLE) { Speed(7); }
     } WHEN {
-            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SWITCH(opponentRight, 5); }
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SWITCH(opponentRight, 2); }
             SCENE {
                 MESSAGE(AI_TRAINER_2_NAME " withdrew Caterpie!");
                 NONE_OF {
@@ -118,14 +118,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
-        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
-        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
-        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
-        MULTI_OPPONENT_B(((moveA1 == MOVE_HEX) ? SPECIES_ARCEUS_FIGHTING : SPECIES_ARCEUS)) { Speed(7); Moves(MOVE_FOCUS_BLAST); }
-        MULTI_OPPONENT_B(species) { Level(1); Speed(3); Moves(moveC1); Ability(ability); Item(item); }
+        PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        OPPONENT_B(((moveA1 == MOVE_HEX) ? SPECIES_ARCEUS_FIGHTING : SPECIES_ARCEUS)) { Speed(7); Moves(MOVE_FOCUS_BLAST); }
+        OPPONENT_B(species) { Level(1); Speed(3); Moves(moveC1); Ability(ability); Item(item); }
     } WHEN {
-            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (item == ITEM_RING_TARGET ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (item == ITEM_RING_TARGET ? EXPECT_SWITCH(opponentRight, 1) : EXPECT_SWITCH(opponentRight, 2)); }
         }   
 }
 
@@ -209,14 +209,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
-        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
-        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
-        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
-        MULTI_OPPONENT_B(SPECIES_CARBINK) { Speed(7); }
-        MULTI_OPPONENT_B(species) { Speed(6); Moves(moveC1); Ability(ability); }
+        PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        OPPONENT_B(SPECIES_CARBINK) { Speed(7); }
+        OPPONENT_B(species) { Speed(6); Moves(moveC1); Ability(ability); }
     } WHEN {
-            TURN {  MOVE(playerLeft, moveA1, target:opponentRight); MOVE(playerRight, moveB1, target:opponentRight); EXPECT_SWITCH(opponentRight, 5); }
+            TURN {  MOVE(playerLeft, moveA1, target:opponentRight); MOVE(playerRight, moveB1, target:opponentRight); EXPECT_SWITCH(opponentRight, 2); }
         }   SCENE {
                 MESSAGE(AI_TRAINER_2_NAME " withdrew Caterpie!");
                 NONE_OF {
@@ -273,14 +273,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
-        MULTI_PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
-        MULTI_PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
-        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
-        MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
+        PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
+        PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
+        OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
+        OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
     } WHEN {
-            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (((moveA1 == MOVE_BODY_SLAM) || (moveB1 == MOVE_BODY_SLAM) || (ability1 == ABILITY_MOLD_BREAKER) || (ability2 == ABILITY_MOLD_BREAKER)) ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (((moveA1 == MOVE_BODY_SLAM) || (moveB1 == MOVE_BODY_SLAM) || (ability1 == ABILITY_MOLD_BREAKER) || (ability2 == ABILITY_MOLD_BREAKER)) ? EXPECT_SWITCH(opponentRight, 1) : EXPECT_SWITCH(opponentRight, 2)); }
     }   
 }
 
@@ -305,14 +305,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
-        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
-        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
-        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
-        MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
+        PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
+        OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
     } WHEN {
-            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); ((IsSoundMove(moveA1) && IsSoundMove(moveB1)) ? EXPECT_SWITCH(opponentRight, 5) : EXPECT_SWITCH(opponentRight, 4)); }
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); ((IsSoundMove(moveA1) && IsSoundMove(moveB1)) ? EXPECT_SWITCH(opponentRight, 2) : EXPECT_SWITCH(opponentRight, 1)); }
     }   
 }
 
@@ -333,14 +333,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
-        MULTI_PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
-        MULTI_PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
-        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
-        MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
+        PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
+        PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
+        OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
+        OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
     } WHEN {
-            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (((ability1 == ABILITY_MOLD_BREAKER) || (ability2 == ABILITY_MOLD_BREAKER)) ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (((ability1 == ABILITY_MOLD_BREAKER) || (ability2 == ABILITY_MOLD_BREAKER)) ? EXPECT_SWITCH(opponentRight, 1) : EXPECT_SWITCH(opponentRight, 2)); }
     }   
 }
 
@@ -365,14 +365,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
-        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
-        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
-        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
-        MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
+        PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
+        OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
     } WHEN {
-            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); ((IsBallisticMove(moveA1) && IsBallisticMove(moveB1)) ? EXPECT_SWITCH(opponentRight, 5) : EXPECT_SWITCH(opponentRight, 4)); }
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); ((IsBallisticMove(moveA1) && IsBallisticMove(moveB1)) ? EXPECT_SWITCH(opponentRight, 2) : EXPECT_SWITCH(opponentRight, 1)); }
     }   
 }
 
@@ -393,14 +393,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
-        MULTI_PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
-        MULTI_PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
-        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
-        MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
+        PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
+        PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
+        OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
+        OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
     } WHEN {
-            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (((ability1 == ABILITY_MOLD_BREAKER) || (ability2 == ABILITY_MOLD_BREAKER)) ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (((ability1 == ABILITY_MOLD_BREAKER) || (ability2 == ABILITY_MOLD_BREAKER)) ? EXPECT_SWITCH(opponentRight, 1) : EXPECT_SWITCH(opponentRight, 2)); }
     }   
 }
 
@@ -434,14 +434,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
-        MULTI_PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
-        MULTI_PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
-        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
-        MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
+        PLAYER(SPECIES_ARCEUS) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); }
+        PARTNER(SPECIES_ARCEUS) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); }
+        OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
+        OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
     } WHEN {
-            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); ((IsWindMove(moveA1) && IsWindMove(moveB1)) ? EXPECT_SWITCH(opponentRight, 5) : EXPECT_SWITCH(opponentRight, 4)); }
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); ((IsWindMove(moveA1) && IsWindMove(moveB1)) ? EXPECT_SWITCH(opponentRight, 2) : EXPECT_SWITCH(opponentRight, 1)); }
     }   
 }
 
@@ -469,14 +469,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: PARTNER IMMUNITY SWITCH: AI_
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(2, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(3, AI_FLAG_PARTNER_TRAINER);
-        MULTI_PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
-        MULTI_PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
-        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
-        MULTI_OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
+        PLAYER(SPECIES_TINKATON) { Speed(5); Moves(moveA1, MOVE_CELEBRATE); Ability(ability1); }
+        PARTNER(SPECIES_TINKATON) { Speed(4); Moves(moveB1, MOVE_CELEBRATE); Ability(ability2); }
+        OPPONENT_A(SPECIES_KANGASKHAN) { Speed(2); Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_CATERPIE) { Level(1); Speed(1); }
+        OPPONENT_B(SPECIES_WOBBUFFET) { Speed(7); Moves(MOVE_ROCK_WRECKER); }
+        OPPONENT_B(species) { Level(1); Speed(2); Moves(moveC1); Ability(ability); }
     } WHEN {
-            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (((ability1 == ABILITY_MOLD_BREAKER) || (ability2 == ABILITY_MOLD_BREAKER)) ? EXPECT_SWITCH(opponentRight, 4) : EXPECT_SWITCH(opponentRight, 5)); }
+            TURN {  MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); (((ability1 == ABILITY_MOLD_BREAKER) || (ability2 == ABILITY_MOLD_BREAKER)) ? EXPECT_SWITCH(opponentRight, 1) : EXPECT_SWITCH(opponentRight, 2)); }
     }   
 }
 
@@ -493,16 +493,16 @@ AI_MULTI_BATTLE_TEST("AI partner will not switch mid-turn into a player Pokémon
     PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
         BATTLER_AI_FLAGS(2, flags);
-        MULTI_PLAYER(SPECIES_HAUNTER);
-        MULTI_PLAYER(SPECIES_RATTATA);
+        PLAYER(SPECIES_HAUNTER);
+        PLAYER(SPECIES_RATTATA);
         // No moves to damage opponents.
-        MULTI_PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
-        MULTI_PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); }
-        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
+        PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); }
+        OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
         
     } WHEN {
-        TURN { EXPECT_SWITCH(playerRight, 4); };
+        TURN { EXPECT_SWITCH(playerRight, 1); };
     } SCENE {
         MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
         MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
@@ -524,16 +524,16 @@ AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch mid-turn into a player Pok
     PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
         BATTLER_AI_FLAGS(2, flags);
-        MULTI_PLAYER(SPECIES_HAUNTER);
-        MULTI_PLAYER(SPECIES_RATTATA);
+        PLAYER(SPECIES_HAUNTER);
+        PLAYER(SPECIES_RATTATA);
         // No moves to damage opponents.
-        MULTI_PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
-        MULTI_PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); }
-        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
+        PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); }
+        OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
+        OPPONENT_A(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
         
     } WHEN {
-        TURN { EXPECT_SWITCH(playerRight, 4); };
+        TURN { EXPECT_SWITCH(playerRight, 1); };
     } SCENE {
         MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
         MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
@@ -555,16 +555,16 @@ AI_MULTI_BATTLE_TEST("AI partner will not switch into a player Pokémon after fa
     PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
         BATTLER_AI_FLAGS(2, flags);
-        MULTI_PLAYER(SPECIES_GENGAR);
-        MULTI_PLAYER(SPECIES_RATTATA);
+        PLAYER(SPECIES_GENGAR);
+        PLAYER(SPECIES_RATTATA);
         // No moves to damage opponents.
-        MULTI_PARTNER(SPECIES_WOBBUFFET) { Status1(STATUS1_BURN); HP(1); }
-        MULTI_PARTNER(SPECIES_HAUNTER);
-        MULTI_OPPONENT_A(SPECIES_TRAPINCH) { Ability(ABILITY_ARENA_TRAP); Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_VIBRAVA) { Moves(MOVE_CELEBRATE); }
+        PARTNER(SPECIES_WOBBUFFET) { Status1(STATUS1_BURN); HP(1); }
+        PARTNER(SPECIES_HAUNTER);
+        OPPONENT_A(SPECIES_TRAPINCH) { Ability(ABILITY_ARENA_TRAP); Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_VIBRAVA) { Moves(MOVE_CELEBRATE); }
         
     } WHEN {
-        TURN { EXPECT_MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SEND_OUT(playerRight, 4); };
+        TURN { EXPECT_MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SEND_OUT(playerRight, 1); };
     } SCENE {
         MESSAGE(AI_PARTNER_NAME " sent out Haunter!");
         NONE_OF {
@@ -584,16 +584,16 @@ AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch into a player Pokémon aft
     PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
         BATTLER_AI_FLAGS(2, flags);
-        MULTI_PLAYER(SPECIES_GENGAR);
-        MULTI_PLAYER(SPECIES_RATTATA);
+        PLAYER(SPECIES_GENGAR);
+        PLAYER(SPECIES_RATTATA);
         // No moves to damage opponents.
-        MULTI_PARTNER(SPECIES_WOBBUFFET) { Status1(STATUS1_BURN); HP(1); }
-        MULTI_PARTNER(SPECIES_HAUNTER);
-        MULTI_OPPONENT_A(SPECIES_TRAPINCH) { Ability(ABILITY_ARENA_TRAP); Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_A(SPECIES_VIBRAVA) { Moves(MOVE_CELEBRATE); }
+        PARTNER(SPECIES_WOBBUFFET) { Status1(STATUS1_BURN); HP(1); }
+        PARTNER(SPECIES_HAUNTER);
+        OPPONENT_A(SPECIES_TRAPINCH) { Ability(ABILITY_ARENA_TRAP); Moves(MOVE_CELEBRATE); }
+        OPPONENT_A(SPECIES_VIBRAVA) { Moves(MOVE_CELEBRATE); }
         
     } WHEN {
-        TURN { EXPECT_MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SEND_OUT(playerRight, 4); };
+        TURN { EXPECT_MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SEND_OUT(playerRight, 1); };
     } SCENE {
         MESSAGE(AI_PARTNER_NAME " sent out Haunter!");
         NONE_OF {
@@ -613,16 +613,16 @@ AI_MULTI_BATTLE_TEST("AI partner will not switch into a player Pokémon (multi)"
     PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
         BATTLER_AI_FLAGS(2, flags);
-        MULTI_PLAYER(SPECIES_HAUNTER);
-        MULTI_PLAYER(SPECIES_RATTATA);
+        PLAYER(SPECIES_HAUNTER);
+        PLAYER(SPECIES_RATTATA);
         // No moves to damage opponents.
-        MULTI_PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
-        MULTI_PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); HP(1); }
-        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_B(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
+        PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); HP(1); }
+        OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
+        OPPONENT_B(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
         
     } WHEN {
-        TURN { MOVE(playerLeft, MOVE_AURA_SPHERE, target:playerRight); EXPECT_SWITCH(playerRight, 4); EXPECT_SEND_OUT(playerRight, 3); };
+        TURN { MOVE(playerLeft, MOVE_AURA_SPHERE, target:playerRight); EXPECT_SWITCH(playerRight, 1); EXPECT_SEND_OUT(playerRight, 0); };
         TURN { EXPECT_MOVE(playerRight, MOVE_SHADOW_BALL, target:opponentLeft); };
     } SCENE {
         MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
@@ -643,16 +643,16 @@ AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch into a player Pokémon (2v
     PASSES_RANDOMLY(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE, 100, RNG_AI_SWITCH_ALL_MOVES_BAD);
     GIVEN {
         BATTLER_AI_FLAGS(2, flags);
-        MULTI_PLAYER(SPECIES_HAUNTER);
-        MULTI_PLAYER(SPECIES_RATTATA);
+        PLAYER(SPECIES_HAUNTER);
+        PLAYER(SPECIES_RATTATA);
         // No moves to damage opponents.
-        MULTI_PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
-        MULTI_PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); HP(1); }
-        MULTI_OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
-        MULTI_OPPONENT_A(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
+        PARTNER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL); }
+        PARTNER(SPECIES_RATICATE) { Moves(MOVE_HEADBUTT); HP(1); }
+        OPPONENT_A(SPECIES_RATTATA) { Moves(MOVE_CELEBRATE); }
+        OPPONENT_A(SPECIES_KANGASKHAN) { Moves(MOVE_CELEBRATE); }
         
     } WHEN {
-        TURN { MOVE(playerLeft, MOVE_AURA_SPHERE, target:playerRight); EXPECT_SWITCH(playerRight, 4); EXPECT_SEND_OUT(playerRight, 3); }
+        TURN { MOVE(playerLeft, MOVE_AURA_SPHERE, target:playerRight); EXPECT_SWITCH(playerRight, 1); EXPECT_SEND_OUT(playerRight, 0); }
     } SCENE {
         MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
         NONE_OF {

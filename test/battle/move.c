@@ -217,10 +217,10 @@ MULTI_BATTLE_TEST("Ally switch fails when used by either side in a multibattle")
 {
     //KNOWN_FAILING; // Ally switch changed to work for player in a multi battle
     GIVEN {
-        MULTI_PLAYER(SPECIES_WOBBUFFET);
-        MULTI_PARTNER(SPECIES_WOBBUFFET);
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET);
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        PARTNER(SPECIES_WOBBUFFET);
+        OPPONENT_A(SPECIES_WOBBUFFET);
+        OPPONENT_B(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_ALLY_SWITCH); MOVE(playerRight, MOVE_ALLY_SWITCH); MOVE(opponentLeft, MOVE_ALLY_SWITCH); MOVE(opponentRight, MOVE_ALLY_SWITCH); }
     } SCENE {
@@ -239,10 +239,10 @@ MULTI_BATTLE_TEST("Ally switch fails when used by either side in a multibattle")
 TWO_VS_ONE_BATTLE_TEST("Ally switch can only be used by the opponent in a 2v1 battle")
 {
     GIVEN {
-        MULTI_PLAYER(SPECIES_WOBBUFFET);
-        MULTI_PARTNER(SPECIES_WOBBUFFET);
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET);
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        PARTNER(SPECIES_WOBBUFFET);
+        OPPONENT_A(SPECIES_WOBBUFFET);
+        OPPONENT_A(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_ALLY_SWITCH); MOVE(playerRight, MOVE_ALLY_SWITCH); MOVE(opponentLeft, MOVE_ALLY_SWITCH); }
     } SCENE {
@@ -258,10 +258,10 @@ TWO_VS_ONE_BATTLE_TEST("Ally switch can only be used by the opponent in a 2v1 ba
 ONE_VS_TWO_BATTLE_TEST("Ally switch can only be used by the player in a 1v2 battle")
 {
     GIVEN {
-        MULTI_PLAYER(SPECIES_WOBBUFFET);
-        MULTI_PLAYER(SPECIES_WOBBUFFET);
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET);
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT_A(SPECIES_WOBBUFFET);
+        OPPONENT_B(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_ALLY_SWITCH); MOVE(opponentLeft, MOVE_ALLY_SWITCH); MOVE(opponentRight, MOVE_ALLY_SWITCH); }
     } SCENE {

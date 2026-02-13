@@ -176,7 +176,7 @@ static struct BoxPokemon *LearnMove_GetBoxMonFromTaskData(u8 partyIndex)
     if (partyIndex == PC_MON_CHOSEN)
         boxmon = GetBoxedMonPtr(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos);
     else
-        boxmon = &(gPlayerParty[partyIndex].box);
+        boxmon = &(gParties[B_TRAINER_0][partyIndex].box);
     return boxmon;
 }
 
@@ -273,6 +273,7 @@ s32 LearnMove(const struct MoveLearnUI *ui, u8 taskId)
         ui->printMessage(gText_12PoofForgotMove);
         return REPLACE_MOVE_1;
     case REPLACE_MOVE_1:
+    {
         u32 slot = GetMoveSlotToReplace();
         RemoveBoxMonPPBonus(boxmon, slot);
         u32 pp = GetMovePP(move);
@@ -283,6 +284,7 @@ s32 LearnMove(const struct MoveLearnUI *ui, u8 taskId)
         gSpecialVar_Result = TRUE;
         ui->printMessage(gText_PkmnLearnedMove4);
         return LEARN_MOVE_END;
+    }
     case DID_NOT_LEARN_1:
         GetBoxMonNickname(boxmon, gStringVar1);
         StringCopy(gStringVar2, GetMoveName(move));

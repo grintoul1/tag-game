@@ -50,13 +50,13 @@
 	special CallBattlePoolFunction
 	.endm
 
-	@ Update gEnemyParty with the next set of rental mons
+	@ Update gParties[B_TRAINER_1] with the next set of rental mons
 	.macro pool_setopponentmons
 	setvar VAR_0x8004, BATTLE_POOL_FUNC_SET_OPPONENT_MONS
 	special CallBattlePoolFunction
 	.endm
 
-	@ Populate gPlayerParty and gEnemyParty with the rental mons. Only needed when resuming a challenge, otherwise only pool_setopponentmons and pool_rentmons/pool_swapmons are needed
+	@ Populate gParties[B_TRAINER_0] and gParties[B_TRAINER_1] with the rental mons. Only needed when resuming a challenge, otherwise only pool_setopponentmons and pool_rentmons/pool_swapmons are needed
 	.macro pool_setparties arg:req
 	setvar VAR_0x8004, BATTLE_POOL_FUNC_SET_PARTIES
 	setvar VAR_0x8005, \arg

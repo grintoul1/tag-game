@@ -80,7 +80,6 @@
 #include "constants/trainers.h"
 #include "constants/weather.h"
 #include "cable_club.h"
-#include "test/test_runner_battle.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
@@ -92,7 +91,8 @@ static void CB2_HandleStartMultiPartnerBattle(void);
 static void CB2_HandleStartMultiBattle(void);
 static void CB2_HandleStartBattle(void);
 static void TryCorrectShedinjaLanguage(struct Pokemon *mon);
-static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer);
+static enum BattleTrainer GetBattlerTrainerFromParty(struct Pokemon *party);
+static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum);
 static void BattleMainCB1(void);
 static void CB2_EndLinkBattle(void);
 static void EndLinkBattleInSteps(void);
@@ -150,8 +150,7 @@ EWRAM_DATA u8 gBattleTextBuff2[TEXT_BUFF_ARRAY_COUNT] = {0};
 EWRAM_DATA u8 gBattleTextBuff3[TEXT_BUFF_ARRAY_COUNT + 13] = {0};   // expanded for stupidly long z move names
 EWRAM_DATA u32 gBattleTypeFlags = 0;
 EWRAM_DATA u8 gBattleEnvironment = 0;
-EWRAM_DATA struct MultiPartnerMenuPokemon gMultiPartnerParty[MULTI_PARTY_SIZE] = {0};
-EWRAM_DATA static struct MultiPartnerMenuPokemon *sMultiPartnerPartyBuffer = NULL;
+EWRAM_DATA struct MultiPartnerMenuPokemon *gMultiPartnerParty = NULL;
 EWRAM_DATA u8 *gBattleAnimBgTileBuffer = NULL;
 EWRAM_DATA u8 *gBattleAnimBgTilemapBuffer = NULL;
 EWRAM_DATA u32 gBattleControllerExecFlags = 0;
@@ -592,8 +591,8 @@ static void CB2_InitBattleInternal(void)
     gReservedSpritePaletteCount = MAX_BATTLERS_COUNT;
     SetVBlankCallback(VBlankCB_Battle);
     SetUpBattleVarsAndBirchZigzagoon();
-    
-    if ((IsMultibattleTest() && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+
+    if ((TESTING && gBattleTypeFlags & BATTLE_TYPE_MULTI)
     || (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
     || (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))
         SetMainCallback2(CB2_HandleStartMultiPartnerBattle);
@@ -606,9 +605,9 @@ static void CB2_InitBattleInternal(void)
     {
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED)))
         {
-            CreateNPCTrainerParty(&gEnemyParty[0], TRAINER_BATTLE_PARAM.opponentA, TRUE);
+            CreateNPCTrainerParty(&gParties[B_TRAINER_1][0], TRAINER_BATTLE_PARAM.opponentA);
             if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
-                CreateNPCTrainerParty(&gEnemyParty[PARTY_SIZE / 2], TRAINER_BATTLE_PARAM.opponentB, FALSE);
+                CreateNPCTrainerParty(&gParties[B_TRAINER_3][0], TRAINER_BATTLE_PARAM.opponentB);
             SetWildMonHeldItem();
             CalculateEnemyPartyCount();
         }
@@ -619,16 +618,16 @@ static void CB2_InitBattleInternal(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        AdjustFriendship(&gPlayerParty[i], FRIENDSHIP_EVENT_LEAGUE_BATTLE);
+        AdjustFriendship(&gParties[B_TRAINER_0][i], FRIENDSHIP_EVENT_LEAGUE_BATTLE);
 
         // Apply party-wide start-of-battle form changes for both sides.
-        TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_BEGIN_BATTLE);
-        TryFormChange(i, B_SIDE_OPPONENT, FORM_CHANGE_BEGIN_BATTLE);
+        TryFormChange(&gParties[B_TRAINER_0][i], FORM_CHANGE_BEGIN_BATTLE, B_TRAINER_0);
+        TryFormChange(&gParties[B_TRAINER_1][i], FORM_CHANGE_BEGIN_BATTLE, B_TRAINER_1);
     }
 
     #if TESTING
-    gPlayerPartyCount = CalculatePartyCount(gPlayerParty);
-    gEnemyPartyCount = CalculatePartyCount(gEnemyParty);
+    gPartiesCount[B_TRAINER_0] = CalculatePartyCount(B_TRAINER_0);
+    gPartiesCount[B_TRAINER_1] = CalculatePartyCount(B_TRAINER_1);
     #endif
 
     gBattleCommunication[MULTIUSE_STATE] = 0;
@@ -669,7 +668,7 @@ static void BufferPartyVsScreenHealth_AtStart(void)
     u16 flags = 0;
     s32 i;
 
-    BUFFER_PARTY_VS_SCREEN_STATUS(gPlayerParty, flags, i);
+    BUFFER_PARTY_VS_SCREEN_STATUS(gParties[B_TRAINER_0], flags, i);
     gBattleStruct->multiBuffer.linkBattlerHeader.vsScreenHealthFlagsLo = flags;
     *(&gBattleStruct->multiBuffer.linkBattlerHeader.vsScreenHealthFlagsHi) = flags >> 8;
     gBattleStruct->multiBuffer.linkBattlerHeader.vsScreenHealthFlagsHi |= FlagGet(FLAG_SYS_FRONTIER_PASS) << 7;
@@ -965,7 +964,7 @@ static void CB2_HandleStartBattle(void)
         if (IsLinkTaskFinished())
         {
             // Send Pokémon 1-2
-            SendBlock(BitmaskAllOtherLinkPlayers(), gPlayerParty, sizeof(struct Pokemon) * 2);
+            SendBlock(BitmaskAllOtherLinkPlayers(), gParties[B_TRAINER_0], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -974,7 +973,7 @@ static void CB2_HandleStartBattle(void)
         {
             // Recv Pokémon 1-2
             ResetBlockReceivedFlags();
-            memcpy(gEnemyParty, gBlockRecvBuffer[enemyMultiplayerId], sizeof(struct Pokemon) * 2);
+            memcpy(gParties[B_TRAINER_1], gBlockRecvBuffer[enemyMultiplayerId], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -982,7 +981,7 @@ static void CB2_HandleStartBattle(void)
         if (IsLinkTaskFinished())
         {
             // Send Pokémon 3-4
-            SendBlock(BitmaskAllOtherLinkPlayers(), &gPlayerParty[2], sizeof(struct Pokemon) * 2);
+            SendBlock(BitmaskAllOtherLinkPlayers(), &gParties[B_TRAINER_0][2], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -991,7 +990,7 @@ static void CB2_HandleStartBattle(void)
         {
             // Recv Pokémon 3-4
             ResetBlockReceivedFlags();
-            memcpy(&gEnemyParty[2], gBlockRecvBuffer[enemyMultiplayerId], sizeof(struct Pokemon) * 2);
+            memcpy(&gParties[B_TRAINER_1][2], gBlockRecvBuffer[enemyMultiplayerId], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -999,7 +998,7 @@ static void CB2_HandleStartBattle(void)
         if (IsLinkTaskFinished())
         {
             // Send Pokémon 5-6
-            SendBlock(BitmaskAllOtherLinkPlayers(), &gPlayerParty[4], sizeof(struct Pokemon) * 2);
+            SendBlock(BitmaskAllOtherLinkPlayers(), &gParties[B_TRAINER_0][4], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -1008,14 +1007,14 @@ static void CB2_HandleStartBattle(void)
         {
             // Recv Pokémon 5-6
             ResetBlockReceivedFlags();
-            memcpy(&gEnemyParty[4], gBlockRecvBuffer[enemyMultiplayerId], sizeof(struct Pokemon) * 2);
+            memcpy(&gParties[B_TRAINER_1][4], gBlockRecvBuffer[enemyMultiplayerId], sizeof(struct Pokemon) * 2);
 
-            TryCorrectShedinjaLanguage(&gEnemyParty[0]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[1]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[2]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[3]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[4]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[5]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][0]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][1]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][2]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][3]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][4]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][5]);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -1174,10 +1173,10 @@ static void CB2_HandleStartMultiPartnerBattle(void)
         break;
     case 3:
         // Link battle, send/receive party Pokémon in groups
-        if (IsLinkTaskFinished())
+        if (IsLinkTaskFinished()) // grintoul TO DO - do we want to change the parties here? Currently resolved at the end; depends on if want to make 12v12 possible
         {
             // Send Pokémon 1-2
-            SendBlock(BitmaskAllOtherLinkPlayers(), gPlayerParty, sizeof(struct Pokemon) * 2);
+            SendBlock(BitmaskAllOtherLinkPlayers(), gParties[B_TRAINER_0], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -1188,13 +1187,13 @@ static void CB2_HandleStartMultiPartnerBattle(void)
             ResetBlockReceivedFlags();
             if (gLinkPlayers[playerMultiplayerId].id != 0)
             {
-                memcpy(gPlayerParty, gBlockRecvBuffer[partnerMultiplayerId], sizeof(struct Pokemon) * 2);
-                memcpy(&gPlayerParty[MULTI_PARTY_SIZE], gBlockRecvBuffer[playerMultiplayerId], sizeof(struct Pokemon) * 2);
+                memcpy(gParties[B_TRAINER_0], gBlockRecvBuffer[partnerMultiplayerId], sizeof(struct Pokemon) * 2);
+                memcpy(&gParties[B_TRAINER_0][MULTI_PARTY_SIZE], gBlockRecvBuffer[playerMultiplayerId], sizeof(struct Pokemon) * 2);
             }
             else
             {
-                memcpy(gPlayerParty, gBlockRecvBuffer[playerMultiplayerId], sizeof(struct Pokemon) * 2);
-                memcpy(&gPlayerParty[MULTI_PARTY_SIZE], gBlockRecvBuffer[partnerMultiplayerId], sizeof(struct Pokemon) * 2);
+                memcpy(gParties[B_TRAINER_0], gBlockRecvBuffer[playerMultiplayerId], sizeof(struct Pokemon) * 2);
+                memcpy(&gParties[B_TRAINER_0][MULTI_PARTY_SIZE], gBlockRecvBuffer[partnerMultiplayerId], sizeof(struct Pokemon) * 2);
             }
             gBattleCommunication[MULTIUSE_STATE]++;
         }
@@ -1203,7 +1202,7 @@ static void CB2_HandleStartMultiPartnerBattle(void)
         if (IsLinkTaskFinished())
         {
             // Send Pokémon 3
-            SendBlock(BitmaskAllOtherLinkPlayers(), &gPlayerParty[2], sizeof(struct Pokemon));
+            SendBlock(BitmaskAllOtherLinkPlayers(), &gParties[B_TRAINER_0][2], sizeof(struct Pokemon));
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -1214,13 +1213,13 @@ static void CB2_HandleStartMultiPartnerBattle(void)
             ResetBlockReceivedFlags();
             if (gLinkPlayers[playerMultiplayerId].id != 0)
             {
-                memcpy(&gPlayerParty[2], gBlockRecvBuffer[partnerMultiplayerId], sizeof(struct Pokemon));
-                memcpy(&gPlayerParty[2 + MULTI_PARTY_SIZE], gBlockRecvBuffer[playerMultiplayerId], sizeof(struct Pokemon));
+                memcpy(&gParties[B_TRAINER_0][2], gBlockRecvBuffer[partnerMultiplayerId], sizeof(struct Pokemon));
+                memcpy(&gParties[B_TRAINER_0][2 + MULTI_PARTY_SIZE], gBlockRecvBuffer[playerMultiplayerId], sizeof(struct Pokemon));
             }
             else
             {
-                memcpy(&gPlayerParty[2], gBlockRecvBuffer[playerMultiplayerId], sizeof(struct Pokemon));
-                memcpy(&gPlayerParty[2 + MULTI_PARTY_SIZE], gBlockRecvBuffer[partnerMultiplayerId], sizeof(struct Pokemon));
+                memcpy(&gParties[B_TRAINER_0][2], gBlockRecvBuffer[playerMultiplayerId], sizeof(struct Pokemon));
+                memcpy(&gParties[B_TRAINER_0][2 + MULTI_PARTY_SIZE], gBlockRecvBuffer[partnerMultiplayerId], sizeof(struct Pokemon));
             }
             gBattleCommunication[MULTIUSE_STATE]++;
         }
@@ -1229,7 +1228,7 @@ static void CB2_HandleStartMultiPartnerBattle(void)
         if (IsLinkTaskFinished())
         {
             // Send enemy Pokémon 1-2 to partner
-            SendBlock(BitmaskAllOtherLinkPlayers(), gEnemyParty, sizeof(struct Pokemon) * 2);
+            SendBlock(BitmaskAllOtherLinkPlayers(), gParties[B_TRAINER_1], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -1239,7 +1238,7 @@ static void CB2_HandleStartMultiPartnerBattle(void)
             // Recv enemy Pokémon 1-2 (if not master)
             ResetBlockReceivedFlags();
             if (GetMultiplayerId() != 0)
-                memcpy(gEnemyParty, gBlockRecvBuffer[0], sizeof(struct Pokemon) * 2);
+                memcpy(gParties[B_TRAINER_1], gBlockRecvBuffer[0], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -1247,7 +1246,7 @@ static void CB2_HandleStartMultiPartnerBattle(void)
         if (IsLinkTaskFinished())
         {
             // Send enemy Pokémon 3-4 to partner
-            SendBlock(BitmaskAllOtherLinkPlayers(), &gEnemyParty[2], sizeof(struct Pokemon) * 2);
+            SendBlock(BitmaskAllOtherLinkPlayers(), &gParties[B_TRAINER_1][2], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -1257,7 +1256,7 @@ static void CB2_HandleStartMultiPartnerBattle(void)
             // Recv enemy Pokémon 3-4 (if not master)
             ResetBlockReceivedFlags();
             if (GetMultiplayerId() != 0)
-                memcpy(&gEnemyParty[2], gBlockRecvBuffer[0], sizeof(struct Pokemon) * 2);
+                memcpy(&gParties[B_TRAINER_1][2], gBlockRecvBuffer[0], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -1265,7 +1264,7 @@ static void CB2_HandleStartMultiPartnerBattle(void)
         if (IsLinkTaskFinished())
         {
             // Send enemy Pokémon 5-6 to partner
-            SendBlock(BitmaskAllOtherLinkPlayers(), &gEnemyParty[4], sizeof(struct Pokemon) * 2);
+            SendBlock(BitmaskAllOtherLinkPlayers(), &gParties[B_TRAINER_1][4], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -1275,24 +1274,42 @@ static void CB2_HandleStartMultiPartnerBattle(void)
             // Recv enemy Pokémon 5-6 (if not master)
             ResetBlockReceivedFlags();
             if (GetMultiplayerId() != 0)
-                memcpy(&gEnemyParty[4], gBlockRecvBuffer[0], sizeof(struct Pokemon) * 2);
+                memcpy(&gParties[B_TRAINER_1][4], gBlockRecvBuffer[0], sizeof(struct Pokemon) * 2);
 
-            TryCorrectShedinjaLanguage(&gPlayerParty[0]);
-            TryCorrectShedinjaLanguage(&gPlayerParty[1]);
-            TryCorrectShedinjaLanguage(&gPlayerParty[2]);
-            TryCorrectShedinjaLanguage(&gPlayerParty[3]);
-            TryCorrectShedinjaLanguage(&gPlayerParty[4]);
-            TryCorrectShedinjaLanguage(&gPlayerParty[5]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[0]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[1]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[2]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[3]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[4]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[5]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_0][0]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_0][1]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_0][2]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_0][3]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_0][4]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_0][5]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][0]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][1]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][2]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][3]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][4]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][5]);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
     case 13:
+        s32 i;
+        // Move received mons to appropriate parties if ally party currently empty (Link battle)
+        if (BattleSideHasTwoTrainers(B_SIDE_PLAYER) && (GetMonData(&gParties[B_TRAINER_2][0], MON_DATA_SPECIES) == SPECIES_NONE))
+        {
+            for (i = MULTI_PARTY_SIZE; i < PARTY_SIZE; i++)
+            {
+                CopyMon(&gParties[B_TRAINER_2][i - MULTI_PARTY_SIZE], &gParties[B_TRAINER_0][i], sizeof(gParties[B_TRAINER_0][i]));
+                ZeroMonData(&gParties[B_TRAINER_0][i]);
+            }
+        }
+        if (BattleSideHasTwoTrainers(B_SIDE_OPPONENT) && (GetMonData(&gParties[B_TRAINER_3][0], MON_DATA_SPECIES) == SPECIES_NONE))
+        {
+            for (i = MULTI_PARTY_SIZE; i < PARTY_SIZE; i++)
+            {
+                CopyMon(&gParties[B_TRAINER_3][i - MULTI_PARTY_SIZE], &gParties[B_TRAINER_1][i], sizeof(gParties[B_TRAINER_1][i]));
+                ZeroMonData(&gParties[B_TRAINER_1][i]);
+            }
+        }
         InitBattleControllers();
         RecordedBattle_SetTrainerInfo();
         gBattleCommunication[SPRITES_INIT_STATE1] = 0;
@@ -1335,26 +1352,25 @@ static void CB2_HandleStartMultiPartnerBattle(void)
     }
 }
 
-static void SetMultiPartnerMenuParty(u8 offset)
+static void SetMultiPartnerMenuParty(enum BattleTrainer trainer)
 {
     s32 i;
 
-    for (i = 0; i < MULTI_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
-        gMultiPartnerParty[i].species     = GetMonData(&gPlayerParty[offset + i], MON_DATA_SPECIES);
-        gMultiPartnerParty[i].heldItem    = GetMonData(&gPlayerParty[offset + i], MON_DATA_HELD_ITEM);
-        GetMonData(&gPlayerParty[offset + i], MON_DATA_NICKNAME, gMultiPartnerParty[i].nickname);
-        gMultiPartnerParty[i].level       = GetMonData(&gPlayerParty[offset + i], MON_DATA_LEVEL);
-        gMultiPartnerParty[i].hp          = GetMonData(&gPlayerParty[offset + i], MON_DATA_HP);
-        gMultiPartnerParty[i].maxhp       = GetMonData(&gPlayerParty[offset + i], MON_DATA_MAX_HP);
-        gMultiPartnerParty[i].status      = GetMonData(&gPlayerParty[offset + i], MON_DATA_STATUS);
-        gMultiPartnerParty[i].personality = GetMonData(&gPlayerParty[offset + i], MON_DATA_PERSONALITY);
-        gMultiPartnerParty[i].gender      = GetMonGender(&gPlayerParty[offset + i]);
+        gMultiPartnerParty[i].species     = GetMonData(&gParties[trainer][i], MON_DATA_SPECIES);
+        gMultiPartnerParty[i].heldItem    = GetMonData(&gParties[trainer][i], MON_DATA_HELD_ITEM);
+        GetMonData(&gParties[trainer][i], MON_DATA_NICKNAME, gMultiPartnerParty[i].nickname);
+        gMultiPartnerParty[i].level       = GetMonData(&gParties[trainer][i], MON_DATA_LEVEL);
+        gMultiPartnerParty[i].hp          = GetMonData(&gParties[trainer][i], MON_DATA_HP);
+        gMultiPartnerParty[i].maxhp       = GetMonData(&gParties[trainer][i], MON_DATA_MAX_HP);
+        gMultiPartnerParty[i].status      = GetMonData(&gParties[trainer][i], MON_DATA_STATUS);
+        gMultiPartnerParty[i].personality = GetMonData(&gParties[trainer][i], MON_DATA_PERSONALITY);
+        gMultiPartnerParty[i].gender      = GetMonGender(&gParties[trainer][i]);
         StripExtCtrlCodes(gMultiPartnerParty[i].nickname);
-        if (GetMonData(&gPlayerParty[offset + i], MON_DATA_LANGUAGE) != LANGUAGE_JAPANESE)
+        if (GetMonData(&gParties[trainer][i], MON_DATA_LANGUAGE) != LANGUAGE_JAPANESE)
             PadNameString(gMultiPartnerParty[i].nickname, CHAR_SPACE);
     }
-    memcpy(sMultiPartnerPartyBuffer, gMultiPartnerParty, sizeof(gMultiPartnerParty));
 }
 
 static void CB2_PreInitMultiBattle(void)
@@ -1386,9 +1402,9 @@ static void CB2_PreInitMultiBattle(void)
     case 0:
         if (gReceivedRemoteLinkPlayers && IsLinkTaskFinished())
         {
-            sMultiPartnerPartyBuffer = Alloc(sizeof(gMultiPartnerParty));
-            SetMultiPartnerMenuParty(0);
-            SendBlock(BitmaskAllOtherLinkPlayers(), sMultiPartnerPartyBuffer, sizeof(gMultiPartnerParty));
+            gMultiPartnerParty = Alloc(sizeof(struct MultiPartnerMenuPokemon) * PARTY_SIZE); // only 3 mons actually used for link multis
+            SetMultiPartnerMenuParty(B_TRAINER_0);
+            SendBlock(BitmaskAllOtherLinkPlayers(), gMultiPartnerParty, sizeof(struct MultiPartnerMenuPokemon) * PARTY_SIZE);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -1406,19 +1422,22 @@ static void CB2_PreInitMultiBattle(void)
                     if ((!(gLinkPlayers[i].id & 1) && !(gLinkPlayers[playerMultiplierId].id & 1))
                         || (gLinkPlayers[i].id & 1 && gLinkPlayers[playerMultiplierId].id & 1))
                     {
-                        memcpy(gMultiPartnerParty, gBlockRecvBuffer[i], sizeof(gMultiPartnerParty));
+                        memcpy(gMultiPartnerParty, gBlockRecvBuffer[i], sizeof(struct MultiPartnerMenuPokemon) * PARTY_SIZE);
                     }
                 }
                 else
                 {
-                    memcpy(gMultiPartnerParty, gBlockRecvBuffer[i], sizeof(gMultiPartnerParty));
+                    memcpy(gMultiPartnerParty, gBlockRecvBuffer[i], sizeof(struct MultiPartnerMenuPokemon) * PARTY_SIZE);
                 }
             }
             gBattleCommunication[MULTIUSE_STATE]++;
             *savedCallback = gMain.savedCallback;
             *savedBattleTypeFlags = gBattleTypeFlags;
             gMain.savedCallback = CB2_PreInitMultiBattle;
-            ShowPartyMenuToShowcaseMultiBattleParty();
+            if (AreMultiPartiesFullTeams())
+                ShowPartyMenuToShowcaseMultiBattleFullParty();
+            else
+                ShowPartyMenuToShowcaseMultiBattleParty();
         }
         break;
     case 2:
@@ -1439,7 +1458,7 @@ static void CB2_PreInitMultiBattle(void)
                 gBattleTypeFlags = *savedBattleTypeFlags;
                 gMain.savedCallback = *savedCallback;
                 SetMainCallback2(CB2_InitBattleInternal);
-                FREE_AND_SET_NULL(sMultiPartnerPartyBuffer);
+                FREE_AND_SET_NULL(gMultiPartnerParty);
             }
         }
         else if (gReceivedRemoteLinkPlayers == 0)
@@ -1447,7 +1466,7 @@ static void CB2_PreInitMultiBattle(void)
             gBattleTypeFlags = *savedBattleTypeFlags;
             gMain.savedCallback = *savedCallback;
             SetMainCallback2(CB2_InitBattleInternal);
-            FREE_AND_SET_NULL(sMultiPartnerPartyBuffer);
+            FREE_AND_SET_NULL(gMultiPartnerParty);
         }
         break;
     }
@@ -1469,14 +1488,19 @@ static void CB2_PreInitIngamePlayerPartnerBattle(void)
     switch (gBattleCommunication[MULTIUSE_STATE])
     {
     case 0:
-        sMultiPartnerPartyBuffer = Alloc(sizeof(gMultiPartnerParty));
-        SetMultiPartnerMenuParty(MULTI_PARTY_SIZE);
+        gMultiPartnerParty = Alloc(sizeof(struct MultiPartnerMenuPokemon) * PARTY_SIZE); // Up to 6 Pokemon for Ingame Partner multis
+        SetMultiPartnerMenuParty(B_TRAINER_2);
         gBattleCommunication[MULTIUSE_STATE]++;
         *savedCallback = gMain.savedCallback;
         *savedBattleTypeFlags = gBattleTypeFlags;
         gMain.savedCallback = CB2_PreInitIngamePlayerPartnerBattle;
         if ((!PlayerHasFollowerNPC() || !FollowerNPCIsBattlePartner() || (FNPC_NPC_FOLLOWER_PARTY_PREVIEW && FollowerNPCIsBattlePartner())) && !isSharedTeams)
-            ShowPartyMenuToShowcaseMultiBattleParty();
+        {
+            if (AreMultiPartiesFullTeams())
+                ShowPartyMenuToShowcaseMultiBattleFullParty();
+            else
+                ShowPartyMenuToShowcaseMultiBattleParty();
+        }
 
         break;
     case 1:
@@ -1486,7 +1510,7 @@ static void CB2_PreInitIngamePlayerPartnerBattle(void)
             gBattleTypeFlags = *savedBattleTypeFlags;
             gMain.savedCallback = *savedCallback;
             SetMainCallback2(CB2_InitBattleInternal);
-            FREE_AND_SET_NULL(sMultiPartnerPartyBuffer);
+            FREE_AND_SET_NULL(gMultiPartnerParty);
         }
         break;
     }
@@ -1591,7 +1615,7 @@ static void CB2_HandleStartMultiBattle(void)
     case 3:
         if (IsLinkTaskFinished())
         {
-            SendBlock(BitmaskAllOtherLinkPlayers(), gPlayerParty, sizeof(struct Pokemon) * 2);
+            SendBlock(BitmaskAllOtherLinkPlayers(), gParties[B_TRAINER_0], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -1606,12 +1630,12 @@ static void CB2_HandleStartMultiBattle(void)
                     switch (gLinkPlayers[id].id)
                     {
                     case 0:
-                    case 3:
-                        memcpy(gPlayerParty, gBlockRecvBuffer[id], sizeof(struct Pokemon) * 2);
-                        break;
                     case 1:
+                        memcpy(gParties[B_TRAINER_0], gBlockRecvBuffer[id], sizeof(struct Pokemon) * 2);
+                        break;
                     case 2:
-                        memcpy(gPlayerParty + MULTI_PARTY_SIZE, gBlockRecvBuffer[id], sizeof(struct Pokemon) * 2);
+                    case 3:
+                        memcpy(gParties[B_TRAINER_0] + MULTI_PARTY_SIZE, gBlockRecvBuffer[id], sizeof(struct Pokemon) * 2);
                         break;
                     }
                 }
@@ -1623,12 +1647,12 @@ static void CB2_HandleStartMultiBattle(void)
                         switch (gLinkPlayers[id].id)
                         {
                         case 0:
-                        case 3:
-                            memcpy(gPlayerParty, gBlockRecvBuffer[id], sizeof(struct Pokemon) * 2);
-                            break;
                         case 1:
+                            memcpy(gParties[B_TRAINER_0], gBlockRecvBuffer[id], sizeof(struct Pokemon) * 2);
+                            break;
                         case 2:
-                            memcpy(gPlayerParty + MULTI_PARTY_SIZE, gBlockRecvBuffer[id], sizeof(struct Pokemon) * 2);
+                        case 3:
+                            memcpy(gParties[B_TRAINER_0] + MULTI_PARTY_SIZE, gBlockRecvBuffer[id], sizeof(struct Pokemon) * 2);
                             break;
                         }
                     }
@@ -1637,12 +1661,12 @@ static void CB2_HandleStartMultiBattle(void)
                         switch (gLinkPlayers[id].id)
                         {
                         case 0:
-                        case 3:
-                            memcpy(gEnemyParty, gBlockRecvBuffer[id], sizeof(struct Pokemon) * 2);
-                            break;
                         case 1:
+                            memcpy(gParties[B_TRAINER_1], gBlockRecvBuffer[id], sizeof(struct Pokemon) * 2);
+                            break;
                         case 2:
-                            memcpy(gEnemyParty + MULTI_PARTY_SIZE, gBlockRecvBuffer[id], sizeof(struct Pokemon) * 2);
+                        case 3:
+                            memcpy(gParties[B_TRAINER_1] + MULTI_PARTY_SIZE, gBlockRecvBuffer[id], sizeof(struct Pokemon) * 2);
                             break;
                         }
                     }
@@ -1654,7 +1678,7 @@ static void CB2_HandleStartMultiBattle(void)
     case 5:
         if (IsLinkTaskFinished())
         {
-            SendBlock(BitmaskAllOtherLinkPlayers(), gPlayerParty + 2, sizeof(struct Pokemon));
+            SendBlock(BitmaskAllOtherLinkPlayers(), gParties[B_TRAINER_0] + 2, sizeof(struct Pokemon));
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -1669,12 +1693,12 @@ static void CB2_HandleStartMultiBattle(void)
                     switch (gLinkPlayers[id].id)
                     {
                     case 0:
-                    case 3:
-                        memcpy(gPlayerParty + 2, gBlockRecvBuffer[id], sizeof(struct Pokemon));
-                        break;
                     case 1:
+                        memcpy(gParties[B_TRAINER_0] + 2, gBlockRecvBuffer[id], sizeof(struct Pokemon));
+                        break;
                     case 2:
-                        memcpy(gPlayerParty + 5, gBlockRecvBuffer[id], sizeof(struct Pokemon));
+                    case 3:
+                        memcpy(gParties[B_TRAINER_0] + 5, gBlockRecvBuffer[id], sizeof(struct Pokemon));
                         break;
                     }
                 }
@@ -1686,12 +1710,12 @@ static void CB2_HandleStartMultiBattle(void)
                         switch (gLinkPlayers[id].id)
                         {
                         case 0:
-                        case 3:
-                            memcpy(gPlayerParty + 2, gBlockRecvBuffer[id], sizeof(struct Pokemon));
-                            break;
                         case 1:
+                            memcpy(gParties[B_TRAINER_0] + 2, gBlockRecvBuffer[id], sizeof(struct Pokemon));
+                            break;
                         case 2:
-                            memcpy(gPlayerParty + 5, gBlockRecvBuffer[id], sizeof(struct Pokemon));
+                        case 3:
+                            memcpy(gParties[B_TRAINER_0] + 5, gBlockRecvBuffer[id], sizeof(struct Pokemon));
                             break;
                         }
                     }
@@ -1700,30 +1724,30 @@ static void CB2_HandleStartMultiBattle(void)
                         switch (gLinkPlayers[id].id)
                         {
                         case 0:
-                        case 3:
-                            memcpy(gEnemyParty + 2, gBlockRecvBuffer[id], sizeof(struct Pokemon));
-                            break;
                         case 1:
+                            memcpy(gParties[B_TRAINER_1] + 2, gBlockRecvBuffer[id], sizeof(struct Pokemon));
+                            break;
                         case 2:
-                            memcpy(gEnemyParty + 5, gBlockRecvBuffer[id], sizeof(struct Pokemon));
+                        case 3:
+                            memcpy(gParties[B_TRAINER_1] + 5, gBlockRecvBuffer[id], sizeof(struct Pokemon));
                             break;
                         }
                     }
                 }
             }
-            TryCorrectShedinjaLanguage(&gPlayerParty[0]);
-            TryCorrectShedinjaLanguage(&gPlayerParty[1]);
-            TryCorrectShedinjaLanguage(&gPlayerParty[2]);
-            TryCorrectShedinjaLanguage(&gPlayerParty[3]);
-            TryCorrectShedinjaLanguage(&gPlayerParty[4]);
-            TryCorrectShedinjaLanguage(&gPlayerParty[5]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_0][0]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_0][1]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_0][2]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_0][3]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_0][4]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_0][5]);
 
-            TryCorrectShedinjaLanguage(&gEnemyParty[0]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[1]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[2]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[3]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[4]);
-            TryCorrectShedinjaLanguage(&gEnemyParty[5]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][0]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][1]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][2]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][3]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][4]);
+            TryCorrectShedinjaLanguage(&gParties[B_TRAINER_1][5]);
 
             gBattleCommunication[MULTIUSE_STATE]++;
         }
@@ -1927,19 +1951,17 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
     }
 }
 
-u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer *trainer, bool32 firstTrainer, u32 battleTypeFlags)
+u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer *trainer, bool32 halfTeam, u32 battleTypeFlags)
 {
     u32 personalityValue;
-    s32 i, j;
     u8 monsCount;
     if (battleTypeFlags & BATTLE_TYPE_TRAINER && !(battleTypeFlags & (BATTLE_TYPE_FRONTIER
                                                                         | BATTLE_TYPE_EREADER_TRAINER
                                                                         | BATTLE_TYPE_TRAINER_HILL)))
     {
-        if (firstTrainer == TRUE)
-            ZeroEnemyPartyMons();
+        ZeroPartyMons(party);
 
-        if (battleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        if (halfTeam)
         {
             if (trainer->partySize > PARTY_SIZE / 2)
                 monsCount = PARTY_SIZE / 2;
@@ -1954,7 +1976,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
         u32 monIndices[monsCount];
         DoTrainerPartyPool(trainer, monIndices, monsCount, battleTypeFlags);
 
-        for (i = 0; i < monsCount; i++)
+        for (s32 i = 0; i < monsCount; i++)
         {
             u32 monIndex = monIndices[i];
             s32 ball = -1;
@@ -2061,176 +2083,186 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
         }
         if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_1)
         {
+            s32 j;
             gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
-            for (i = 0; i < 6; i++)
+            for (s32 i = 0; i < 6; i++)
             {
-                CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-                j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+                CopyMon(&gParties[B_TRAINER_1][i], &gParties[B_TRAINER_0][i], sizeof(*&gParties[B_TRAINER_0][i]));
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                if((j > GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, NULL)))
                 {
-                    SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
-                    CalculateMonStats(&gEnemyParty[i]);
+                    SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gParties[B_TRAINER_1][i]);
                 }
-                j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+                j = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP4, &j);
                 j = STATUS1_NONE;
-                SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_STATUS, &j);
             }
             j = NATURE_RELAXED;
-            SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_SERIOUS;
-            SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BRAVE;
-            SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_SASSY;
-            SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BASHFUL;
-            SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_QUIET;
-            SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HIDDEN_NATURE, &j);
 
             j = ITEM_FOCUS_SASH;
-            SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HELD_ITEM, &j);
             j = ITEM_IRON_BALL;
-            SetMonData(&gEnemyParty[1], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HELD_ITEM, &j);
             j = ITEM_EJECT_BUTTON;
-            SetMonData(&gEnemyParty[2], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HELD_ITEM, &j);
             j = ITEM_LAGGING_TAIL;
-            SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HELD_ITEM, &j);
             j = ITEM_SITRUS_BERRY;
-            SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HELD_ITEM, &j);
             j = ITEM_STICKY_BARB;
-            SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HELD_ITEM, &j);
         }
         if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_2)
         {
-            for (i = 3; i < 6; i++)
+            s32 j;
+            for (s32 i = 3; i < 6; i++)
             {
-                CopyMon(&gEnemyParty[i], &gPlayerParty[i-3], sizeof(*&gPlayerParty[i-3]));
+                CopyMon(&gParties[B_TRAINER_1][i], &gParties[B_TRAINER_0][i-3], sizeof(*&gParties[B_TRAINER_0][i-3]));
                 gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
                 (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
                 gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY_JAGGED_PASS);
                 FillPartnerParty(gPartnerTrainerId);
             }
             j = SPECIES_TORNADUS;
-                SetMonData(&gEnemyParty[0], MON_DATA_SPECIES, &j);
+                SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES, &j);
             j = SPECIES_THUNDURUS;
-                SetMonData(&gEnemyParty[1], MON_DATA_SPECIES, &j);
+                SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_SPECIES, &j);
             j = SPECIES_LANDORUS;
-                SetMonData(&gEnemyParty[2], MON_DATA_SPECIES, &j);
+                SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_SPECIES, &j);
             j = 0;
-                SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &j);
+                SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_ABILITY_NUM, &j);
             j = 0;
-                SetMonData(&gEnemyParty[1], MON_DATA_ABILITY_NUM, &j);
+                SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_ABILITY_NUM, &j);
             j = 0;
-                SetMonData(&gEnemyParty[2], MON_DATA_ABILITY_NUM, &j);
+                SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_ABILITY_NUM, &j);
             j = NATURE_SERIOUS;
-                SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
+                SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_TIMID;
-                SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
+                SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BRAVE;
-                SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
+                SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HIDDEN_NATURE, &j);
             j = MOVE_TAILWIND;
-                SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &j);
+                SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_MOVE1, &j);
             j = MOVE_TAUNT;
-                SetMonData(&gEnemyParty[1], MON_DATA_MOVE1, &j);
+                SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_MOVE1, &j);
             j = MOVE_U_TURN;
-                SetMonData(&gEnemyParty[2], MON_DATA_MOVE1, &j);
+                SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_MOVE1, &j);
 
-            for (i = 0; i < 6; i++)
+            for (s32 i = 0; i < 6; i++)
             {
-                j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+                j = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP4, &j);
             }
             j = NATURE_SASSY;
-            SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BASHFUL;
-            SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_QUIET;
-            SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HIDDEN_NATURE, &j);
 
             j = ITEM_LAGGING_TAIL;
-            SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HELD_ITEM, &j);
             j = ITEM_SITRUS_BERRY;
-            SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HELD_ITEM, &j);
             j = ITEM_STICKY_BARB;
-            SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HELD_ITEM, &j);
         }
         if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_3)
         {
+            s32 j;
             gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
-            for (i = 0; i < 6; i++)
+            for (s32 i = 0; i < 6; i++)
             {
-                CopyMon(&gEnemyParty[i], &gPlayerParty[i], sizeof(*&gPlayerParty[i]));
-                j = gExperienceTables[gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                if((j > GetMonData(&gEnemyParty[i], MON_DATA_EXP, NULL)))
+                CopyMon(&gParties[B_TRAINER_1][i], &gParties[B_TRAINER_0][i], sizeof(*&gParties[B_TRAINER_0][i]));
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                if((j > GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, NULL)))
                 {
-                    SetMonData(&gEnemyParty[i], MON_DATA_EXP, &j);
-                    CalculateMonStats(&gEnemyParty[i]);
+                    SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gParties[B_TRAINER_1][i]);
                 }
-                j = GetMonData(&gEnemyParty[i], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gEnemyParty[i], MON_DATA_HP, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP1, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP2, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP3, &j);
-                j = gMovesInfo[GetMonData(&gEnemyParty[i], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gEnemyParty[i], MON_DATA_PP4, &j);
+                j = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP4, &j);
                 j = STATUS1_NONE;
-                SetMonData(&gEnemyParty[i], MON_DATA_STATUS, &j);
+                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_STATUS, &j);
             }
             j = NATURE_TIMID;
-            SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_LONELY;
-            SetMonData(&gEnemyParty[1], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_NAIVE;
-            SetMonData(&gEnemyParty[2], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_RASH;
-            SetMonData(&gEnemyParty[3], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BASHFUL;
-            SetMonData(&gEnemyParty[4], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_JOLLY;
-            SetMonData(&gEnemyParty[5], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HIDDEN_NATURE, &j);
 
             j = ITEM_FOCUS_SASH;
-            SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HELD_ITEM, &j);
             j = ITEM_NORMAL_GEM;
-            SetMonData(&gEnemyParty[1], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HELD_ITEM, &j);
             j = ITEM_EJECT_PACK;
-            SetMonData(&gEnemyParty[2], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HELD_ITEM, &j);
             j = ITEM_WEAKNESS_POLICY;
-            SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HELD_ITEM, &j);
             j = ITEM_CHOICE_SPECS;
-            SetMonData(&gEnemyParty[4], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HELD_ITEM, &j);
             j = ITEM_NORMAL_GEM;
-            SetMonData(&gEnemyParty[5], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HELD_ITEM, &j);
         }
     }
 
     return trainer->partySize;
 }
 
-static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer)
+static enum BattleTrainer GetBattlerTrainerFromParty(struct Pokemon *party)
 {
-    u8 retVal;
+    return ((party - gParties[B_TRAINER_0]) / PARTY_SIZE);
+}
+
+static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum)
+{
+    u8 retVal; 
+    bool32 halfTeam = (BattleSideHasTwoTrainers(GetBattlerTrainerFromParty(party) & BIT_SIDE) && !AreMultiPartiesFullTeams());
+
     if (trainerNum == TRAINER_SECRET_BASE)
         return 0;
     if (GetTrainerStructFromId(trainerNum)->overrideTrainer)
@@ -2245,11 +2277,11 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
         if (tempTrainer.partySize == 0)
             tempTrainer.partySize = origTrainer->partySize;
 
-        retVal = CreateNPCTrainerPartyFromTrainer(party, (const struct Trainer *)(&tempTrainer), firstTrainer, gBattleTypeFlags);
+        retVal = CreateNPCTrainerPartyFromTrainer(party, (const struct Trainer *)(&tempTrainer), halfTeam, gBattleTypeFlags);
     }
     else
     {
-        retVal = CreateNPCTrainerPartyFromTrainer(party, GetTrainerStructFromId(trainerNum), firstTrainer, gBattleTypeFlags);
+        retVal = CreateNPCTrainerPartyFromTrainer(party, GetTrainerStructFromId(trainerNum), halfTeam, gBattleTypeFlags);
     }
     return retVal;
 }
@@ -2260,7 +2292,7 @@ void CreateTrainerPartyForPlayer(void)
 
     ZeroPlayerPartyMons();
     gPartnerTrainerId = gSpecialVar_0x8004;
-    CreateNPCTrainerPartyFromTrainer(gPlayerParty, GetTrainerStructFromId(gSpecialVar_0x8004), TRUE, BATTLE_TYPE_TRAINER);
+    CreateNPCTrainerPartyFromTrainer(gParties[B_TRAINER_0], GetTrainerStructFromId(gSpecialVar_0x8004), TRUE, BATTLE_TYPE_TRAINER);
 }
 
 #define STEVEN_OTID     61226
@@ -2334,8 +2366,8 @@ void FillPoolForShelly(u8 unused)
 
     for (i = 0; i < MULTI_PARTY_SIZE; i++)
     {
-        tempMon = gPlayerParty[i + 3];
-        gPlayerParty[i + 3] = gEliteFourPool[i];
+        tempMon = gParties[B_TRAINER_0][i + 3];
+        gParties[B_TRAINER_0][i + 3] = gEliteFourPool[i];
         gEliteFourPool[i] = tempMon;
     }
 }
@@ -2406,15 +2438,15 @@ void FillPoolForTabitha(u8 unused)
 
     for (i = 0; i < MULTI_PARTY_SIZE; i++)
     {
-        tempMon = gPlayerParty[i + 3];
-        gPlayerParty[i + 3] = gEliteFourPool[i];
+        tempMon = gParties[B_TRAINER_0][i + 3];
+        gParties[B_TRAINER_0][i + 3] = gEliteFourPool[i];
         gEliteFourPool[i] = tempMon;
     }
 }
 /*    if (trainerId > TRAINER_PARTNER(PARTNER_NONE))
     {
         for (i = 0; i < 3; i++)
-            ZeroMonData(&gPlayerParty[i + 3]);
+            ZeroMonData(&gParties[B_TRAINER_0][i + 3]);
 
         for (i = 0; i < 3 && i < gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].partySize; i++)
         {
@@ -2450,21 +2482,21 @@ void FillPoolForTabitha(u8 unused)
             else if (partyData[i].gender == TRAINER_MON_FEMALE)
                 personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
             ModifyPersonalityForNature(&personality, partyData[i].nature);
-            CreateMon(&gPlayerParty[i + 3], partyData[i].species, partyData[i].lvl, 0, TRUE, personality, OT_ID_PRESET, otID);
+            CreateMon(&gParties[B_TRAINER_0][i + 3], partyData[i].species, partyData[i].lvl, 0, TRUE, personality, OT_ID_PRESET, otID);
             j = partyData[i].isShiny;
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_IS_SHINY, &j);
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
-            CustomTrainerPartyAssignMoves(&gPlayerParty[i + 3], &partyData[i]);
+            SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_IS_SHINY, &j);
+            SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+            CustomTrainerPartyAssignMoves(&gParties[B_TRAINER_0][i + 3], &partyData[i]);
 
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_IVS, &(partyData[i].iv));
+            SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_IVS, &(partyData[i].iv));
             if (partyData[i].ev != NULL)
             {
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_HP_EV, &(partyData[i].ev[0]));
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_ATK_EV, &(partyData[i].ev[1]));
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_DEF_EV, &(partyData[i].ev[2]));
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_SPATK_EV, &(partyData[i].ev[3]));
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_SPDEF_EV, &(partyData[i].ev[4]));
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_SPEED_EV, &(partyData[i].ev[5]));
+                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_HP_EV, &(partyData[i].ev[0]));
+                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_ATK_EV, &(partyData[i].ev[1]));
+                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_DEF_EV, &(partyData[i].ev[2]));
+                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_SPATK_EV, &(partyData[i].ev[3]));
+                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_SPDEF_EV, &(partyData[i].ev[4]));
+                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_SPEED_EV, &(partyData[i].ev[5]));
             }
             if (partyData[i].ability != ABILITY_NONE)
             {
@@ -2476,24 +2508,24 @@ void FillPoolForTabitha(u8 unused)
                         break;
                 }
                 if (j < maxAbilities)
-                    SetMonData(&gPlayerParty[i + 3], MON_DATA_ABILITY_NUM, &j);
+                    SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_ABILITY_NUM, &j);
             }
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_FRIENDSHIP, &(partyData[i].friendship));
+            SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_FRIENDSHIP, &(partyData[i].friendship));
             if (partyData[i].ball != ITEM_NONE)
             {
                 ball = partyData[i].ball;
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_POKEBALL, &ball);
+                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_POKEBALL, &ball);
             }
             if (partyData[i].nickname != NULL)
             {
-                SetMonData(&gPlayerParty[i + 3], MON_DATA_NICKNAME, partyData[i].nickname);
+                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_NICKNAME, partyData[i].nickname);
             }
-            CalculateMonStats(&gPlayerParty[i + 3]);
+            CalculateMonStats(&gParties[B_TRAINER_0][i + 3]);
 
             StringCopy(trainerName, gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName);
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_OT_NAME, trainerName);
+            SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_OT_NAME, trainerName);
             j = gBattlePartners[difficulty][SanitizeTrainerId(trainerId - TRAINER_PARTNER(PARTNER_NONE))].encounterMusic >> 7;
-            SetMonData(&gPlayerParty[i + 3], MON_DATA_OT_GENDER, &j);
+            SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_OT_GENDER, &j);
         }
     }
 */
@@ -2502,7 +2534,7 @@ void ClearHideoutPool(u8 unused)
     u32 i;
     for (i = 0; i < MULTI_PARTY_SIZE; i++)
     {
-        CopyMon(&gPlayerParty[i + 3], &gEliteFourPool[i], sizeof(gEliteFourPool[i]));
+        CopyMon(&gParties[B_TRAINER_0][i + 3], &gEliteFourPool[i], sizeof(gEliteFourPool[i]));
     }
 
 }
@@ -2575,20 +2607,20 @@ static void BufferPartyVsScreenHealth_AtEnd(u8 taskId)
         {
         case 0:
         case 2:
-            party1 = gPlayerParty;
-            party2 = gEnemyParty;
+            party1 = gParties[B_TRAINER_0];
+            party2 = gParties[B_TRAINER_1];
             break;
         case 1:
         case 3:
-            party1 = gEnemyParty;
-            party2 = gPlayerParty;
+            party1 = gParties[B_TRAINER_1];
+            party2 = gParties[B_TRAINER_0];
             break;
         }
     }
     else
     {
-        party1 = gPlayerParty;
-        party2 = gEnemyParty;
+        party1 = gParties[B_TRAINER_0];
+        party2 = gParties[B_TRAINER_1];
     }
 
     flags = 0;
@@ -3486,10 +3518,10 @@ static void BattleStartClearSetData(void)
         gLastHitBy[i] = 0xFF;
         gLockedMoves[i] = MOVE_NONE;
         gLastPrintedMoves[i] = MOVE_NONE;
-        gPalaceSelectionBattleScripts[i] = 0;
+        gSelectionBattleScripts[i] = NULL;
+        gPalaceSelectionBattleScripts[i] = NULL;
         gBattleStruct->lastTakenMove[i] = MOVE_NONE;
         gBattleStruct->choicedMove[i] = MOVE_NONE;
-        gBattleStruct->changedItems[i] = 0;
         gBattleStruct->lastTakenMoveFrom[i][0] = MOVE_NONE;
         gBattleStruct->lastTakenMoveFrom[i][1] = MOVE_NONE;
         gBattleStruct->lastTakenMoveFrom[i][2] = MOVE_NONE;
@@ -3538,7 +3570,7 @@ static void BattleStartClearSetData(void)
     gBattleStruct->runTries = 0;
     gBattleStruct->safariGoNearCounter = 0;
     gBattleStruct->safariPkblThrowCounter = 0;
-    gBattleStruct->safariCatchFactor = gSpeciesInfo[GetMonData(&gEnemyParty[0], MON_DATA_SPECIES)].catchRate * 100 / 1275;
+    gBattleStruct->safariCatchFactor = gSpeciesInfo[GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES)].catchRate * 100 / 1275;
     gBattleStruct->safariEscapeFactor = 3;
     gBattleStruct->wildVictorySong = 0;
     gBattleStruct->moneyMultiplier = 1;
@@ -3546,7 +3578,7 @@ static void BattleStartClearSetData(void)
     gBattleStruct->givenExpMons = 0;
     gBattleStruct->palaceFlags = 0;
 
-    gBattleResults.shinyWildMon = IsMonShiny(&gEnemyParty[0]);
+    gBattleResults.shinyWildMon = IsMonShiny(&gParties[B_TRAINER_1][0]);
 
     gBattleStruct->arenaLostPlayerMons = 0;
     gBattleStruct->arenaLostOpponentMons = 0;
@@ -3559,11 +3591,12 @@ static void BattleStartClearSetData(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        gBattleStruct->partyState[B_SIDE_PLAYER][i].usedHeldItem = ITEM_NONE;
-        gBattleStruct->partyState[B_SIDE_OPPONENT][i].usedHeldItem = ITEM_NONE;
-        gBattleStruct->itemLost[B_SIDE_PLAYER][i].originalItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
-        gBattleStruct->itemLost[B_SIDE_OPPONENT][i].originalItem = GetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM);
-        gPartyCriticalHits[i] = 0;
+        for (enum BattleTrainer trainer = B_TRAINER_0; trainer < MAX_BATTLE_TRAINERS; trainer++)
+        {
+            gBattleStruct->partyState[trainer][i].usedHeldItem = ITEM_NONE;
+            gBattleStruct->itemLost[trainer][i].originalItem = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_HELD_ITEM);
+            gPartyCriticalHits[i] = 0;
+        }
     }
 
     gBattleStruct->swapDamageCategory = FALSE; // Photon Geyser, Shell Side Arm, Light That Burns the Sky
@@ -3739,8 +3772,10 @@ const u8* FaintClearSetData(enum BattlerId battler)
         gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
 
     bool32 keepGastroAcid = gBattleMons[battler].volatiles.gastroAcid;
+    bool32 keepTransformed = gBattleMons[battler].volatiles.transformed;
     memset(&gBattleMons[battler].volatiles, 0, sizeof(struct Volatiles));
     gBattleMons[battler].volatiles.gastroAcid = keepGastroAcid; // Edge case: Keep Gastro Acid if pokemon's ability can have effect after fainting, for example Innards Out.
+    gBattleMons[battler].volatiles.transformed = keepTransformed; // Edge case: Keep Transformed status to prevent triggering FORM_CHANGE_FAINT on transformed mons.
 
     for (enum BattlerId i = 0; i < gBattlersCount; i++)
     {
@@ -3789,6 +3824,8 @@ const u8* FaintClearSetData(enum BattlerId battler)
     gBattleStruct->lastTakenMoveFrom[battler][2] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][3] = 0;
     gBattleStruct->palaceFlags &= ~(1u << battler);
+    if (battler == gBattlerAttacker)
+        gBattleStruct->moldBreakerActive = FALSE;
 
     ClearPursuitValuesIfSet(battler);
 
@@ -3822,7 +3859,7 @@ const u8* FaintClearSetData(enum BattlerId battler)
     gBattleMons[battler].types[2] = TYPE_MYSTERY;
 
     Ai_UpdateFaintData(battler);
-    TryBattleFormChange(battler, FORM_CHANGE_FAINT);
+    TryBattleFormChange(battler, FORM_CHANGE_FAINT, GetBattlerAbility(battler));
 
     // If the fainted mon was involved in a Sky Drop
     if (gBattleStruct->skyDropTargets[battler] != SKY_DROP_NO_TARGET)
@@ -3989,48 +4026,214 @@ static void DoBattleIntro(void)
         else // Skip party summary since it is a wild battle.
             gBattleStruct->eventState.battleIntro = BATTLE_INTRO_STATE_INTRO_TEXT;
         break;
-    case BATTLE_INTRO_STATE_DRAW_PARTY_SUMMARY:
+    case BATTLE_INTRO_STATE_DRAW_PARTY_SUMMARY: // grintoul TO DO
         if (!gBattleControllerExecFlags)
         {
-            struct HpAndStatus hpStatus[PARTY_SIZE];
+            struct HpAndStatus hpStatus[MAX_BATTLE_TRAINERS/2][PARTY_SIZE];
 
-            for (i = 0; i < PARTY_SIZE; i++)
+            if (BattleSideHasTwoTrainers(B_SIDE_OPPONENT))
             {
-                if (GetMonData(&gEnemyParty[i], MON_DATA_SPECIES_OR_EGG) == SPECIES_NONE
-                 || GetMonData(&gEnemyParty[i], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+                if (!AreMultiPartiesFullTeams())
                 {
-                    hpStatus[i].hp = HP_EMPTY_SLOT;
-                    hpStatus[i].status = 0;
+                    for (i = 0; i < MULTI_PARTY_SIZE; i++)
+                    {
+                        if (GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_NONE
+                        || GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+                        {
+                            hpStatus[0][i].hp = HP_EMPTY_SLOT;
+                            hpStatus[0][i].status = 0;
+                        }
+                        else
+                        {
+                            hpStatus[0][i].hp = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_HP);
+                            hpStatus[0][i].status = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_STATUS);
+                        }
+                    }
+
+                    enum BattleTrainer trainer = B_TRAINER_3;
+                    u32 offset = 0;
+                    if (gBattleTypeFlags & BATTLE_TYPE_LINK && !(gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)) // Link multis use the same party
+                    {
+                        trainer = B_TRAINER_1;
+                        offset = MULTI_PARTY_SIZE;
+                    }
+                    for (i = 0; i < MULTI_PARTY_SIZE; i++)
+                    {
+                        if (GetMonData(&gParties[trainer][i + offset], MON_DATA_SPECIES_OR_EGG) == SPECIES_NONE
+                        || GetMonData(&gParties[trainer][i + offset], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+                        {
+                            hpStatus[1][i].hp = HP_EMPTY_SLOT;
+                            hpStatus[1][i].status = 0;
+                        }
+                        else
+                        {
+                            hpStatus[1][i].hp = GetMonData(&gParties[trainer][i + offset], MON_DATA_HP);
+                            hpStatus[1][i].status = GetMonData(&gParties[trainer][i + offset], MON_DATA_STATUS);
+                        }
+                    }
                 }
                 else
                 {
-                    hpStatus[i].hp = GetMonData(&gEnemyParty[i], MON_DATA_HP);
-                    hpStatus[i].status = GetMonData(&gEnemyParty[i], MON_DATA_STATUS);
+                    for (i = 0; i < PARTY_SIZE; i++)
+                    {
+                        if (GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_NONE
+                        || GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+                        {
+                            hpStatus[0][i].hp = HP_EMPTY_SLOT;
+                            hpStatus[0][i].status = 0;
+                        }
+                        else
+                        {
+                            hpStatus[0][i].hp = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_HP);
+                            hpStatus[0][i].status = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_STATUS);
+                        }
+                    }
+                    for (i = 0; i < PARTY_SIZE; i++)
+                    {
+                        if (GetMonData(&gParties[B_TRAINER_3][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_NONE
+                        || GetMonData(&gParties[B_TRAINER_3][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+                        {
+                            hpStatus[1][i].hp = HP_EMPTY_SLOT;
+                            hpStatus[1][i].status = 0;
+                        }
+                        else
+                        {
+                            hpStatus[1][i].hp = GetMonData(&gParties[B_TRAINER_3][i], MON_DATA_HP);
+                            hpStatus[1][i].status = GetMonData(&gParties[B_TRAINER_3][i], MON_DATA_STATUS);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (i = 0; i < PARTY_SIZE; i++)
+                {
+                    if (GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_NONE
+                     || GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+                    {
+                        hpStatus[0][i].hp = HP_EMPTY_SLOT;
+                        hpStatus[0][i].status = 0;
+                    }
+                    else
+                    {
+                        hpStatus[0][i].hp = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_HP);
+                        hpStatus[0][i].status = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_STATUS);
+                    }
                 }
             }
 
             battler = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
-            BtlController_EmitDrawPartyStatusSummary(battler, B_COMM_TO_CONTROLLER, hpStatus, PARTY_SUMM_SKIP_DRAW_DELAY);
+            BtlController_EmitDrawPartyStatusSummary(battler, B_COMM_TO_CONTROLLER, hpStatus[0], PARTY_SUMM_SKIP_DRAW_DELAY);
             MarkBattlerForControllerExec(battler);
 
-            for (i = 0; i < PARTY_SIZE; i++)
+            if (BattleSideHasTwoTrainers(B_SIDE_OPPONENT))
             {
-                if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG) == SPECIES_NONE
-                 || GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+                battler = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
+                BtlController_EmitDrawPartyStatusSummary(battler, B_COMM_TO_CONTROLLER, hpStatus[1], PARTY_SUMM_SKIP_DRAW_DELAY);
+                MarkBattlerForControllerExec(battler);
+            }
+
+            if (BattleSideHasTwoTrainers(B_SIDE_PLAYER))
+            {
+                if (!AreMultiPartiesFullTeams())
                 {
-                    hpStatus[i].hp = HP_EMPTY_SLOT;
-                    hpStatus[i].status = 0;
+                    for (i = 0; i < MULTI_PARTY_SIZE; i++)
+                    {
+                        if (GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_NONE
+                        || GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+                        {
+                            hpStatus[0][i].hp = HP_EMPTY_SLOT;
+                            hpStatus[0][i].status = 0;
+                        }
+                        else
+                        {
+                            hpStatus[0][i].hp = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_HP);
+                            hpStatus[0][i].status = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_STATUS);
+                        }
+                    }
+
+                    enum BattleTrainer trainer = B_TRAINER_2;
+                    u32 offset = 0;
+                    if (gBattleTypeFlags & BATTLE_TYPE_LINK) // Link multis use the same party even in Battle Tower
+                    {
+                        trainer = B_TRAINER_0;
+                        offset = MULTI_PARTY_SIZE;
+                    }
+                    for (i = 0; i < MULTI_PARTY_SIZE; i++)
+                    {
+                        if (GetMonData(&gParties[trainer][i + offset], MON_DATA_SPECIES_OR_EGG) == SPECIES_NONE
+                        || GetMonData(&gParties[trainer][i + offset], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+                        {
+                            hpStatus[1][i].hp = HP_EMPTY_SLOT;
+                            hpStatus[1][i].status = 0;
+                        }
+                        else
+                        {
+                            hpStatus[1][i].hp = GetMonData(&gParties[trainer][i + offset], MON_DATA_HP);
+                            hpStatus[1][i].status = GetMonData(&gParties[trainer][i + offset], MON_DATA_STATUS);
+                        }
+                    }
                 }
                 else
                 {
-                    hpStatus[i].hp = GetMonData(&gPlayerParty[i], MON_DATA_HP);
-                    hpStatus[i].status = GetMonData(&gPlayerParty[i], MON_DATA_STATUS);
+                    for (i = 0; i < PARTY_SIZE; i++)
+                    {
+                        if (GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_NONE
+                        || GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+                        {
+                            hpStatus[0][i].hp = HP_EMPTY_SLOT;
+                            hpStatus[0][i].status = 0;
+                        }
+                        else
+                        {
+                            hpStatus[0][i].hp = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_HP);
+                            hpStatus[0][i].status = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_STATUS);
+                        }
+                    }
+                    for (i = 0; i < PARTY_SIZE; i++)
+                    {
+                        if (GetMonData(&gParties[B_TRAINER_2][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_NONE
+                        || GetMonData(&gParties[B_TRAINER_2][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+                        {
+                            hpStatus[1][i].hp = HP_EMPTY_SLOT;
+                            hpStatus[1][i].status = 0;
+                        }
+                        else
+                        {
+                            hpStatus[1][i].hp = GetMonData(&gParties[B_TRAINER_2][i], MON_DATA_HP);
+                            hpStatus[1][i].status = GetMonData(&gParties[B_TRAINER_2][i], MON_DATA_STATUS);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (i = 0; i < PARTY_SIZE; i++)
+                {
+                    if (GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_NONE
+                     || GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+                    {
+                        hpStatus[0][i].hp = HP_EMPTY_SLOT;
+                        hpStatus[0][i].status = 0;
+                    }
+                    else
+                    {
+                        hpStatus[0][i].hp = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_HP);
+                        hpStatus[0][i].status = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_STATUS);
+                    }
                 }
             }
 
             battler = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
-            BtlController_EmitDrawPartyStatusSummary(battler, B_COMM_TO_CONTROLLER, hpStatus, PARTY_SUMM_SKIP_DRAW_DELAY);
+            BtlController_EmitDrawPartyStatusSummary(battler, B_COMM_TO_CONTROLLER, hpStatus[0], PARTY_SUMM_SKIP_DRAW_DELAY);
             MarkBattlerForControllerExec(battler);
+
+            if (BattleSideHasTwoTrainers(B_SIDE_PLAYER))
+            {
+                battler = GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT);
+                BtlController_EmitDrawPartyStatusSummary(battler, B_COMM_TO_CONTROLLER, hpStatus[1], PARTY_SUMM_SKIP_DRAW_DELAY);
+                MarkBattlerForControllerExec(battler);
+            }
 
             gBattleStruct->eventState.battleIntro++;
         }
@@ -5956,7 +6159,7 @@ static void HandleEndTurn_MonFled(void)
     gBattleMainFunc = HandleEndTurn_FinishBattle;
 }
 
-static void HandleEndTurn_FinishBattle(void)
+static void HandleEndTurn_FinishBattle(void) //grintoul TO DO
 {
     if (gCurrentActionFuncId == B_ACTION_TRY_FINISH || gCurrentActionFuncId == B_ACTION_FINISHED)
     {
@@ -5994,16 +6197,16 @@ static void HandleEndTurn_FinishBattle(void)
                                   | BATTLE_TYPE_TRAINER_HILL
                                   | BATTLE_TYPE_FRONTIER)))
         {
-            for (enum BattleSide side = 0; side < NUM_BATTLE_SIDES; side++)
+            for (enum BattleTrainer trainer = B_TRAINER_0; trainer < MAX_BATTLE_TRAINERS; trainer++)
             {
-                struct Pokemon *party = GetSideParty(side);
+                struct Pokemon *party = GetTrainerParty(trainer);
 
-                if (side == B_SIDE_PLAYER && !B_PARTNER_MONS_MARKED_SEEN)
+                if ((trainer & BIT_SIDE) == B_SIDE_PLAYER && !B_PARTNER_MONS_MARKED_SEEN)
                     continue;
 
                 for (u32 partySlot = 0; partySlot < PARTY_SIZE; partySlot++)
                 {
-                    if (gBattleStruct->partyState[side][partySlot].sentOut)
+                    if (gBattleStruct->partyState[trainer][partySlot].sentOut)
                         HandleSetPokedexFlagFromMon(&party[partySlot], FLAG_SET_SEEN);
                 }
             }
@@ -6027,13 +6230,13 @@ static void HandleEndTurn_FinishBattle(void)
         if (B_TRAINERS_KNOCK_OFF_ITEMS == TRUE || B_RESTORE_HELD_BATTLE_ITEMS >= GEN_9)
             TryRestoreHeldItems();
 
-        for (u32 i = 0; i < PARTY_SIZE; i++)
+        for (u32 i = 0; i < PARTY_SIZE; i++) // grintoul TO DO - link battles when player on right?
         {
             bool32 changedForm = TryRevertPartyMonFormChange(i);
 
             // Recalculate the stats of every party member before the end
             if (!changedForm && B_RECALCULATE_STATS >= GEN_5)
-                CalculateMonStats(&gPlayerParty[i]);
+                CalculateMonStats(&gParties[B_TRAINER_0][i]);
         }
         RecordedBattle_SetPlaybackFinished();
         if (gTestRunnerEnabled)
@@ -6126,7 +6329,7 @@ static void TryEvolvePokemon(void)
             bool32 canStopEvo = TRUE;
             enum EvolutionMode mode = EVO_MODE_BATTLE_SPECIAL;
             u32 evolutionItemArg = i;
-            u32 species = GetEvolutionTargetSpecies(&gPlayerParty[i], mode, evolutionItemArg, NULL, &canStopEvo, CHECK_EVO);
+            u32 species = GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], mode, evolutionItemArg, NULL, &canStopEvo, CHECK_EVO);
             sTriedEvolving |= 1u << i;
 
             if (species == SPECIES_NONE && (gLeveledUpInBattle & (1u << i)))
@@ -6134,15 +6337,15 @@ static void TryEvolvePokemon(void)
                 gLeveledUpInBattle &= ~(1u << i);
                 mode = EVO_MODE_BATTLE_ONLY;
                 evolutionItemArg = gLeveledUpInBattle;
-                species = GetEvolutionTargetSpecies(&gPlayerParty[i], mode, evolutionItemArg, NULL, &canStopEvo, CHECK_EVO);
+                species = GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], mode, evolutionItemArg, NULL, &canStopEvo, CHECK_EVO);
             }
 
             if (species != SPECIES_NONE)
             {
                 FreeAllWindowBuffers();
                 gBattleMainFunc = WaitForEvoSceneToFinish;
-                GetEvolutionTargetSpecies(&gPlayerParty[i], mode, evolutionItemArg, NULL, &canStopEvo, DO_EVO);
-                EvolutionScene(&gPlayerParty[i], species, canStopEvo, i);
+                GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], mode, evolutionItemArg, NULL, &canStopEvo, DO_EVO);
+                EvolutionScene(&gParties[B_TRAINER_0][i], species, canStopEvo, i);
                 return;
             }
         }
@@ -6176,7 +6379,7 @@ static void ReturnFromBattleToOverworld(void)
 
     if (gBattleTypeFlags & BATTLE_TYPE_ROAMER)
     {
-        UpdateRoamerHPStatus(&gEnemyParty[0]);
+        UpdateRoamerHPStatus(&gParties[B_TRAINER_1][0]);
         ZeroEnemyPartyMons();
 
 #ifndef BUGFIX
