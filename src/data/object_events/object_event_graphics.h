@@ -1,6 +1,6 @@
 const u32 gObjectEventPic_BrendanNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/brendan/walking.4bpp", "graphics/object_events/pics/people/brendan/running.4bpp");
 const u16 gObjectEventPal_Brendan[] = INCBIN_U16("graphics/object_events/palettes/brendan.gbapal");
-const u32 gObjectEventPic_GreenNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/green/walking.4bpp", "graphics/object_events/pics/people/green/running.4bpp");
+const u32 gObjectEventPic_SisterNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/green/walking.4bpp", "graphics/object_events/pics/people/green/running.4bpp");
 const u16 gObjectEventPal_Sister[] = INCBIN_U16("graphics/object_events/palettes/green.gbapal");
 const u32 gObjectEventPic_Vito[] = INCBIN_U32("graphics/object_events/pics/people/vito/vito.4bpp");
 const u16 gObjectEventPal_Vito[] = INCBIN_U16("graphics/object_events/palettes/vito.gbapal");

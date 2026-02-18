@@ -103,7 +103,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SisterNormal = {
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
     .anims = sAnimTable_BrendanMayNormal,
-    .images = sPicTable_GreenNormal,
+    .images = sPicTable_SisterNormal,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
