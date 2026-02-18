@@ -3890,7 +3890,6 @@ void PokemonToBattleMon(struct Pokemon *src, struct BattlePokemon *dst)
 
 void CopyPartyMonToBattleData(enum BattlerId battler, u32 partyIndex)
 {
-    //enum BattleSide side = GetBattlerSide(battler); // grintoul TO DO - check
     struct Pokemon *party = GetBattlerParty(battler);
     PokemonToBattleMon(&party[partyIndex], &gBattleMons[battler]);
     gBattleStruct->battlerState[battler].hpOnSwitchout = gBattleMons[battler].hp;
@@ -4421,7 +4420,7 @@ bool8 HealStatusConditions(struct Pokemon *mon, u32 healMask, enum BattlerId bat
             if((healMask & STATUS1_SLEEP))
             {
                 u32 battlerSide = GetBattlerSide(battler);
-                struct Pokemon *party = GetBattlerParty(battler); // grintoul TO DO - check
+                struct Pokemon *party = GetBattlerParty(battler);
 
                 for (u32 i = 0; i < PARTY_SIZE; i++)
                 {

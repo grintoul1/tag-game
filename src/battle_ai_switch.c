@@ -73,7 +73,7 @@ static u32 UNUSED GetWishHealAmountForBattler(enum BattlerId battler)
 
     if (B_WISH_HP_SOURCE >= GEN_5)
     {
-        wishHeal = GetMonData(&gParties[GetBattlerTrainer(battler)][gBattleStruct->wish[battler].partyId], MON_DATA_MAX_HP) / 2;
+        wishHeal = GetMonData(&GetBattlerParty(battler)[gBattleStruct->wish[battler].partyId], MON_DATA_MAX_HP) / 2;
     }
     else
     {
@@ -3941,7 +3941,7 @@ u32 GetMostSuitableMonToSwitchInto(enum BattlerId battler, enum SwitchType switc
 
     if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SEQUENCE_SWITCHING)
     {
-        bestMonId = GetNextMonInParty(battler, party, firstId, lastId, battlerIn1, battlerIn2); // grintoul TO DO
+        bestMonId = GetNextMonInParty(battler, party, firstId, lastId, battlerIn1, battlerIn2);
         return bestMonId;
     }
 
