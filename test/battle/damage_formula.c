@@ -296,7 +296,7 @@ SINGLE_BATTLE_TEST("Punching Glove vs Muscle Band Damage calculation")
     }
 }
 
-SINGLE_BATTLE_TEST("Gem boosted Damage calculation")
+SINGLE_BATTLE_TEST("BANANA Gem boosted Damage calculation")
 {
     s16 dmg;
     s16 expectedDamage;
