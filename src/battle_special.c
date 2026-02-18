@@ -24,7 +24,7 @@ static void UNUSED FillEReaderTrainerWithPlayerData(void);
 static void CopyEReaderTrainerFarewellMessage(void);
 
 extern void CopyMon(void *dest, void *src, size_t size);
-extern void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount);
+extern void FillTrainerParty(u16 trainerId, enum BattleTrainer trainer, u8 monCount);
 
 #if FREE_BATTLE_TOWER_E_READER == FALSE
 static void SetEReaderTrainerChecksum(struct BattleTowerEReaderTrainer *ereaderTrainer);
@@ -142,7 +142,7 @@ void DoSpecialTrainerBattle(void)
             (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_3);
         }
 
-        FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, 0, 6);
+        FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, B_TRAINER_1, 6);
         if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_1)
         {
             for (i = 0; i < 6; i++)
