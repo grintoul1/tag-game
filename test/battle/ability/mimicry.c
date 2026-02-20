@@ -39,9 +39,8 @@ SINGLE_BATTLE_TEST("Mimicry changes the battler's type based on Terrain")
     }
 }
 
-SINGLE_BATTLE_TEST("Mimicry restores the battler's types when terrain is removed by Steel Roller and Ice Spinner")
+SINGLE_BATTLE_TEST("Mimicry restores the battler's types when terrain is removed by Steel Roller")
 {
-    KNOWN_FAILING; // Ice spinner changed to not remove terrain
     u32 j;
     enum Move terrainMove = MOVE_NONE;
     enum Move removeTerrainMove = MOVE_NONE;
@@ -49,7 +48,7 @@ SINGLE_BATTLE_TEST("Mimicry restores the battler's types when terrain is removed
     for (j = 0; j < ARRAY_COUNT(terrainData); j++)
     {
         PARAMETRIZE { removeTerrainMove = MOVE_STEEL_ROLLER; terrainMove = terrainData[j][0]; }
-        PARAMETRIZE { removeTerrainMove = MOVE_ICE_SPINNER; terrainMove =  terrainData[j][0]; }
+        //PARAMETRIZE { removeTerrainMove = MOVE_ICE_SPINNER; terrainMove =  terrainData[j][0]; }
     }
 
     GIVEN {

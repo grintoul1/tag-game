@@ -33,7 +33,7 @@ WILD_BATTLE_TEST("Higher leveled Pokemon give more exp", s32 exp)
 
     PARAMETRIZE { level = 5; }
     PARAMETRIZE { level = 10; }
-    KNOWN_FAILING; // Level caps block EXP gain
+    KNOWN_FAILING; // grintoul CONFIRMED Level caps block EXP gain
 
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Level(20); }
@@ -76,13 +76,13 @@ WILD_BATTLE_TEST("Exp is scaled to player and opponent's levels", s32 exp)
 {
     u8 level = 0;
 
-    KNOWN_FAILING; // Level caps block test
     PARAMETRIZE { level = 5; }
     PARAMETRIZE { level = 10; }
 
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Level(level); }
         OPPONENT(SPECIES_CATERPIE) { Level(5); HP(1); }
+        VAR_SET(VAR_LEVEL_CAP, 80);
     } WHEN {
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {
@@ -100,7 +100,6 @@ WILD_BATTLE_TEST("Large exp gains are supported", s32 exp) // #1455
 {
     u8 level = 0;
 
-    KNOWN_FAILING; // Level caps block test
     PARAMETRIZE { level = 10; }
     PARAMETRIZE { level = 50; }
     PARAMETRIZE { level = MAX_LEVEL; }
@@ -108,6 +107,7 @@ WILD_BATTLE_TEST("Large exp gains are supported", s32 exp) // #1455
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Level(1); Item(ITEM_LUCKY_EGG); OTName("Test"); } // OT Name is different so it gets more exp as a traded mon
         OPPONENT(SPECIES_BLISSEY) { Level(level); HP(1); }
+        VAR_SET(VAR_LEVEL_CAP, 80);
     } WHEN {
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {
@@ -131,12 +131,12 @@ WILD_BATTLE_TEST("Exp Share(held) gives Experience to mons which did not partici
 
     PARAMETRIZE { item = ITEM_NONE; }
     PARAMETRIZE { item = ITEM_EXP_SHARE; }
-    KNOWN_FAILING; // Level caps block EXP gain
 
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
         PLAYER(SPECIES_WYNAUT) { Level(40); Item(item); }
         OPPONENT(SPECIES_CATERPIE) { Level(10); HP(1); }
+        VAR_SET(VAR_LEVEL_CAP, 80);
     } WHEN {
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {

@@ -140,9 +140,8 @@ ONE_VS_TWO_BATTLE_TEST("End Turn Effects: First Event Block is executed correctl
     }
 }
 
-/*DOUBLE_BATTLE_TEST("End Turn Effects: New mons will switch in after if previous mons died due to hazards")
+DOUBLE_BATTLE_TEST("End Turn Effects: New mons will switch in after if previous mons died due to hazards")
 {
-    KNOWN_FAILING; // Unsure why
     GIVEN {
         PLAYER(SPECIES_WYNAUT);
         PLAYER(SPECIES_WOBBUFFET);
@@ -159,7 +158,7 @@ ONE_VS_TWO_BATTLE_TEST("End Turn Effects: First Event Block is executed correctl
             SEND_OUT(opponentLeft, 2);
             SEND_OUT(opponentRight, 3);
             SEND_OUT(opponentLeft, 4);
-            SEND_OUT(opponentRight, 2);
+            SEND_OUT(opponentRight, 5);
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_VOICE, playerRight);
@@ -170,4 +169,4 @@ ONE_VS_TWO_BATTLE_TEST("End Turn Effects: First Event Block is executed correctl
         HP_BAR(opponentLeft);
         HP_BAR(opponentRight);
     }
-}*/
+}

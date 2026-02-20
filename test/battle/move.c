@@ -215,7 +215,6 @@ DOUBLE_BATTLE_TEST("Moves fail if they target the partner but they faint before 
 
 MULTI_BATTLE_TEST("Ally switch fails when used by either side in a multibattle")
 {
-    //KNOWN_FAILING; // Ally switch changed to work for player in a multi battle
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
         PARTNER(SPECIES_WOBBUFFET);

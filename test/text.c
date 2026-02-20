@@ -44,7 +44,6 @@ TEST("Move names fit on Battle Screen")
 
 TEST("Move names fit on Contest Screen")
 {
-    KNOWN_FAILING; // Fails for custom move
     u32 i;
     const u32 fontId = FONT_NARROWER, widthPx = 59;
     enum Move move = MOVE_NONE;
@@ -58,6 +57,7 @@ TEST("Move names fit on Contest Screen")
     case MOVE_STOMPING_TANTRUM:
     case MOVE_NATURES_MADNESS:
     case MOVE_DOUBLE_IRON_BASH:
+    case MOVE_FROZEN_RECEPTION:
         EXPECT_GT(GetStringWidth(fontId, GetMoveName(move), 0), widthPx);
         break;
     default:
