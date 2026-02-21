@@ -58,6 +58,9 @@ static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildM
 static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum Type type, enum Ability ability, u8 *monIndex);
 #endif
 static bool8 IsAbilityAllowingEncounter(u8 level);
+static bool32 ShouldRandomizeWildMonForm(u16 species);
+static void RandomizeWildMonForm(u16 *species);
+static bool32 GetFormArray(u16 species, const u16 **formTable, u32 *count);
 
 EWRAM_DATA static u8 sWildEncountersDisabled = 0;
 EWRAM_DATA static u32 sFeebasRngValue = 0;
@@ -75,6 +78,49 @@ static const u16 sRoute119WaterTileData[] =
      0,  45,  0,
     46,  91,  NUM_FISHING_SPOTS_1,
     92, 139,  NUM_FISHING_SPOTS_1 + NUM_FISHING_SPOTS_2,
+};
+
+static const u16 gFormArrayMinior[] =
+{
+    SPECIES_MINIOR_METEOR_RED,
+    SPECIES_MINIOR_METEOR_ORANGE,
+    SPECIES_MINIOR_METEOR_YELLOW,
+    SPECIES_MINIOR_METEOR_GREEN,
+    SPECIES_MINIOR_METEOR_BLUE,
+    SPECIES_MINIOR_METEOR_INDIGO,
+    SPECIES_MINIOR_METEOR_VIOLET
+};
+
+static const u16 gFormArrayUnown[] =
+{
+    SPECIES_UNOWN,
+    SPECIES_UNOWN_B,
+    SPECIES_UNOWN_C,
+    SPECIES_UNOWN_D,
+    SPECIES_UNOWN_E,
+    SPECIES_UNOWN_F,
+    SPECIES_UNOWN_G,
+    SPECIES_UNOWN_H,
+    SPECIES_UNOWN_I,
+    SPECIES_UNOWN_J,
+    SPECIES_UNOWN_K,
+    SPECIES_UNOWN_L,
+    SPECIES_UNOWN_M,
+    SPECIES_UNOWN_N,
+    SPECIES_UNOWN_O,
+    SPECIES_UNOWN_P,
+    SPECIES_UNOWN_Q,
+    SPECIES_UNOWN_R,
+    SPECIES_UNOWN_S,
+    SPECIES_UNOWN_T,
+    SPECIES_UNOWN_U,
+    SPECIES_UNOWN_V,
+    SPECIES_UNOWN_W,
+    SPECIES_UNOWN_X,
+    SPECIES_UNOWN_Y,
+    SPECIES_UNOWN_Z,
+    SPECIES_UNOWN_EXCLAMATION,
+    SPECIES_UNOWN_QUESTION,
 };
 
 void DisableWildEncounters(bool8 disabled)
@@ -548,7 +594,12 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum 
     if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
         return FALSE;
 
-    CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
+    u16 species = wildMonInfo->wildPokemon[wildMonIndex].species;
+
+    if (ShouldRandomizeWildMonForm(species))
+        RandomizeWildMonForm(&species);
+
+    CreateWildMon(species, level);
     return TRUE;
 }
 
@@ -1237,4 +1288,42 @@ u32 ChooseHiddenMonIndex(void)
 bool32 MapHasNoEncounterData(void)
 {
     return (GetCurrentMapWildMonHeaderId() == HEADER_NONE);
+}
+
+static bool32 ShouldRandomizeWildMonForm(u16 species)
+{
+    switch (species)
+    {
+    case SPECIES_UNOWN:
+    case SPECIES_MINIOR_METEOR:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+static void RandomizeWildMonForm(u16 *species)
+{
+    const u16 *formTable = NULL;
+    u32 count = 0;
+    if (GetFormArray(*species, &formTable, &count))
+        *species = formTable[Random() % count];
+}
+
+static bool32 GetFormArray(u16 species, const u16 **formTable, u32 *count)
+{
+    switch (species)
+    {
+    case SPECIES_UNOWN:
+        *formTable = gFormArrayUnown;
+        *count = ARRAY_COUNT(gFormArrayUnown);
+        break;
+    case SPECIES_MINIOR_METEOR:
+        *formTable = gFormArrayMinior;
+        *count = ARRAY_COUNT(gFormArrayMinior);
+        break;
+    default:
+        return FALSE;
+    }
+    return TRUE;
 }
