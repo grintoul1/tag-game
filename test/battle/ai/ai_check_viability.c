@@ -439,7 +439,6 @@ AI_SINGLE_BATTLE_TEST("AI uses Trick Room (singles)")
 
 AI_SINGLE_BATTLE_TEST("AI uses Tailwind to trigger Wind Rider (Single)")
 {
-    KNOWN_FAILING; // New AI not implemented
     bool32 expectTailwind;
     u16 tailwindSpecies;
     enum Ability tailwindAbility;
@@ -453,16 +452,17 @@ AI_SINGLE_BATTLE_TEST("AI uses Tailwind to trigger Wind Rider (Single)")
         PLAYER(SPECIES_WOBBUFFET) { Speed(20); }
         OPPONENT(tailwindSpecies) { Ability(tailwindAbility); Speed(9); Moves(MOVE_TAILWIND, MOVE_HEADBUTT); }
     } WHEN {
-        if (expectTailwind)
-            TURN { EXPECT_MOVE(opponent, MOVE_TAILWIND); }
-        else
-            TURN { NOT_EXPECT_MOVE(opponent, MOVE_TAILWIND); }
+        EXPECT_FAIL { // New AI not implemented
+            if (expectTailwind)
+                TURN { EXPECT_MOVE(opponent, MOVE_TAILWIND); }
+            else
+                TURN { NOT_EXPECT_MOVE(opponent, MOVE_TAILWIND); }
+        }
     }
 }
 
 AI_SINGLE_BATTLE_TEST("AI uses Tailwind to trigger Wind Power (Single)")
 {
-    KNOWN_FAILING; // New AI not implemented
     bool32 expectTailwind;
     u16 tailwindSpecies;
     enum Ability tailwindAbility;
@@ -477,10 +477,12 @@ AI_SINGLE_BATTLE_TEST("AI uses Tailwind to trigger Wind Power (Single)")
         PLAYER(SPECIES_WOBBUFFET) { Speed(20); }
         OPPONENT(tailwindSpecies) { Ability(tailwindAbility); Speed(9); Moves(MOVE_TAILWIND, MOVE_THUNDERSHOCK); }
     } WHEN {
-        if (expectTailwind)
-            TURN { EXPECT_MOVE(opponent, MOVE_TAILWIND); }
-        else
-            TURN { NOT_EXPECT_MOVE(opponent, MOVE_TAILWIND); }
+        EXPECT_FAIL { // New AI not implemented
+            if (expectTailwind)
+                TURN { EXPECT_MOVE(opponent, MOVE_TAILWIND); }
+            else
+                TURN { NOT_EXPECT_MOVE(opponent, MOVE_TAILWIND); }
+        }
     }
 }
 

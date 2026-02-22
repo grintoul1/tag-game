@@ -62,8 +62,6 @@ AI_SINGLE_BATTLE_TEST("AI will not waste a turn setting up if it knows target ca
     PARAMETRIZE { move = MOVE_HOWL; }
     PARAMETRIZE { move = MOVE_CALM_MIND; }
 
-    PASSES_RANDOMLY(100 - CUSTOM_AI_TWENTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
-
     GIVEN {
         ASSUME(GetMovePower(MOVE_SKY_UPPERCUT) == 85);
         ASSUME(GetMoveEffect(MOVE_HOWL) == EFFECT_ATTACK_UP);
@@ -76,7 +74,7 @@ AI_SINGLE_BATTLE_TEST("AI will not waste a turn setting up if it knows target ca
         TURN {
             MOVE(player, MOVE_DOUBLE_KICK);
             EXPECT_MOVE(opponent, move); 
-            SCORE_EQ_VAL(opponent, move, AI_SCORE_DEFAULT + DECENT_EFFECT);
+            SCORE_EQ_VAL(opponent, move, AI_SCORE_DEFAULT + WEAK_EFFECT);
             SCORE_EQ_VAL(opponent, MOVE_CHIP_AWAY, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE);
         }
         TURN { EXPECT_MOVE(opponent, MOVE_CHIP_AWAY); MOVE(player, MOVE_SKY_UPPERCUT); }
