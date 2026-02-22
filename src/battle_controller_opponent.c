@@ -402,7 +402,7 @@ static void OpponentHandleDrawTrainerPic(enum BattlerId battler)
         {
             if ((GetBattlerPosition(battler) & BIT_FLANK) != 0) // second mon
                 xPos = 152;
-           else // first mon
+            else // first mon
                 xPos = 200;
         }
         else
