@@ -108,8 +108,11 @@
 	special CallFrontierUtilFunc @ saves the mon order, so the non-selected mons get restored afterwards
 	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
 	goto_if_eq VAR_RESULT, TRUE, MultiDoChooseMonsBypass\@
-		setvar VAR_0x8005, \type | MULTI_BATTLE_CHOOSE_MONS
+	setvar VAR_0x8005, \type | MULTI_BATTLE_CHOOSE_MONS
+	goto MultiDoSpecialTrainerBattle\@
 	MultiDoChooseMonsBypass\@:
+	setvar VAR_0x8005, \type 
+	MultiDoSpecialTrainerBattle\@:
 	special DoSpecialTrainerBattle
 	waitstate
 	setvar VAR_0x8004, FRONTIER_UTIL_FUNC_SAVE_PARTY
@@ -130,11 +133,20 @@
 	.endm
 
 	.macro multi_do_p type:req
+	callnative AreMultiPartiesFullTeams
+	goto_if_eq VAR_RESULT, TRUE, MultiDoPlayerPartyReduceBypass\@
+		special ReducePlayerPartyToSelectedMons
+	MultiDoPlayerPartyReduceBypass\@:
 	setvar VAR_0x8004, FRONTIER_UTIL_FUNC_SET_DATA
 	setvar VAR_0x8005, FRONTIER_DATA_SELECTED_MON_ORDER
 	special CallFrontierUtilFunc @ saves the mon order, so the non-selected mons get restored afterwards
 	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	goto_if_eq VAR_RESULT, TRUE, MultiDoChooseMonsBypass\@
 	setvar VAR_0x8005, \type | MULTI_BATTLE_CHOOSE_MONS
+	goto MultiDoSpecialTrainerBattle\@
+	MultiDoChooseMonsBypass\@:
+	setvar VAR_0x8005, \type 
+	MultiDoSpecialTrainerBattle\@:
 	special DoSpecialTrainerBattle
 	waitstate
 	setvar VAR_0x8004, FRONTIER_UTIL_FUNC_SAVE_PARTY
@@ -152,21 +164,6 @@
 	special SavePlayerPartyEmmie
 	setmultitrainerbattle \trainer1Id, \trainer1LoseText, TRAINER_NONE, NULL, \partnerId
 	multi_do_p MULTI_BATTLE_2_VS_1
-	.endm
-
-	@ Wild mons need to be assigned to gParties[B_TRAINER_1] 0 and 3 slots, other slots need to be cleared out.
-	.macro multi_12_vs_12 trainer1Id:req, trainer1LoseText:req, trainer2Id:req, trainer2LoseText:req, partnerId:req
-	special SavePlayerParty
-	setmultitrainerbattle \trainer1Id, \trainer1LoseText, \trainer2Id, \trainer2LoseText, \partnerId
-	setvar VAR_0x8008, TRUE
-	multi_do MULTI_BATTLE_2_VS_2
-	.endm
-
-	.macro multi_12_vs_6 trainer1Id:req, trainer1LoseText:req, partnerId:req
-	special SavePlayerParty
-	setmultitrainerbattle \trainer1Id, \trainer1LoseText, TRAINER_NONE, NULL, \partnerId
-	setvar VAR_0x8008, TRUE
-	multi_do MULTI_BATTLE_2_VS_1
 	.endm
 
 	@ Wild mons need to be assigned to opponent parties (1 and 3), other slots need to be cleared out.
