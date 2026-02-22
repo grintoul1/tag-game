@@ -75,9 +75,11 @@ bool32 WeatherChecker(enum BattlerId battler, u32 weather, enum FieldEffectOutco
     if (HasPartner(battler))
         battlersOnSide = 2;
 
-    for (enum BattlerId battlerIndex = 0; battlerIndex < battlersOnSide; battlerIndex++)
+    for (enum BattlerId battlerIndex = 0; battlerIndex < MAX_BATTLERS_COUNT; battlerIndex++)
     {
-        if (weather & B_WEATHER_RAIN)
+        if ((GetBattlerSide(battlerIndex) != GetBattlerSide(battler)) || !IsBattlerAlive(battlerIndex))
+            continue;
+        else if (weather & B_WEATHER_RAIN)
             result = BenefitsFromRain(battler);
         else if (weather & B_WEATHER_SUN)
             result = BenefitsFromSun(battler);

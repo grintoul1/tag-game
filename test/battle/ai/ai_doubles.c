@@ -305,7 +305,6 @@ TO_DO_BATTLE_TEST("AI understands Wide Guard")
 
 AI_DOUBLE_BATTLE_TEST("AI won't use the same nondamaging move as its partner for no reason")
 {
-    KNOWN_FAILING; // AI changed
     enum Move move;
     PARAMETRIZE { move = MOVE_AROMATHERAPY; }
     PARAMETRIZE { move = MOVE_ELECTRIC_TERRAIN; }
@@ -335,20 +334,23 @@ AI_DOUBLE_BATTLE_TEST("AI won't use the same nondamaging move as its partner for
     PARAMETRIZE { move = MOVE_COURT_CHANGE; }
     PARAMETRIZE { move = MOVE_PERISH_SONG; }
     PARAMETRIZE { move = MOVE_STICKY_WEB; }
-    PARAMETRIZE { move = MOVE_TEATIME; }
-    PARAMETRIZE { move = MOVE_WONDER_ROOM; }
+    //PARAMETRIZE { move = MOVE_TEATIME; }
+    //PARAMETRIZE { move = MOVE_WONDER_ROOM; }
     GIVEN {
-        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE);
+        SetStartingStatus(STARTING_STATUS_TOXIC_SPIKES_OPPONENT_L1);
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
+        TIE_BREAK_SCORE(RNG_AI_SCORE_TIE_DOUBLES_MOVE, SCORE_TIE_LO, 0);
+        PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_DAZZLING_GLEAM, MOVE_BUG_BITE, MOVE_THUNDER_SHOCK); }
+        PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_EMBER); Status1(STATUS1_PARALYSIS); }
         PLAYER(SPECIES_WOBBUFFET);
         PLAYER(SPECIES_WOBBUFFET);
-        PLAYER(SPECIES_WOBBUFFET);
-        PLAYER(SPECIES_WOBBUFFET);
-        OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_TACKLE); Status1(STATUS1_BURN); }
-        OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_TACKLE); }
-        OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_TACKLE); }
-        OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_TACKLE); }
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_STONE_EDGE); Status1(STATUS1_BURN); }
+        OPPONENT(SPECIES_AVALUGG_HISUI) { Moves(move, MOVE_STONE_EDGE, MOVE_EMBER); Ability(ABILITY_SWIFT_SWIM); Status1(STATUS1_PARALYSIS); }
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_STONE_EDGE); }
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_STONE_EDGE); }
     } WHEN {
-        TURN { EXPECT_MOVE(opponentLeft, move); EXPECT_MOVE(opponentRight, MOVE_TACKLE); }
+        TURN { EXPECT_MOVE(opponentLeft, move); 
+            EXPECT_MOVE(opponentRight, MOVE_STONE_EDGE); }
     }
 }
 

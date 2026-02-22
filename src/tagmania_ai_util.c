@@ -4433,7 +4433,7 @@ enum Move GetAllyChosenMove(enum BattlerId battlerId)
     if (!IsBattlerAlive(partnerBattler) || !IsAiBattlerAware(partnerBattler))
         return MOVE_NONE;
     else if (partnerBattler > battlerId) // Battler with the lower id chooses the move first.
-        return gAiLogicData->lastUsedMove[partnerBattler];
+        return MOVE_NONE; //gAiLogicData->lastUsedMove[partnerBattler];
     else
         return GetBattlerChosenMove(partnerBattler);
 }
@@ -4482,8 +4482,8 @@ static u32 GetAIEffectGroup(enum BattleMoveEffects effect)
     case EFFECT_MISTY_TERRAIN:
     case EFFECT_PSYCHIC_TERRAIN:
     case EFFECT_STEEL_ROLLER:
-    case EFFECT_ICE_SPINNER:
-        //aiEffect |= AI_EFFECT_TERRAIN;
+    //case EFFECT_ICE_SPINNER:
+        aiEffect |= AI_EFFECT_TERRAIN;
         break;
     case EFFECT_COURT_CHANGE:
         aiEffect |= AI_EFFECT_CLEAR_HAZARDS | AI_EFFECT_AURORA_VEIL | AI_EFFECT_BREAK_SCREENS;
