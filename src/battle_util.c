@@ -10050,7 +10050,8 @@ bool32 AreMultiPartiesFullTeams(void)
     if (!B_MULTI_FULL_TEAMS
      || TRAINER_BATTLE_PARAM.opponentA == TRAINER_LINK_OPPONENT
      || TRAINER_BATTLE_PARAM.opponentB == TRAINER_LINK_OPPONENT
-     || gBattleTypeFlags & BATTLE_TYPE_TOWER_LINK_MULTI)
+     || gBattleTypeFlags & BATTLE_TYPE_TOWER_LINK_MULTI
+     || gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE))
     {
         gSpecialVar_Result = FALSE;
         return FALSE;

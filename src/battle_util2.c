@@ -13,6 +13,8 @@
 #include "battle_scripts.h"
 #include "constants/battle_string_ids.h"
 
+extern u16 gPartnerTrainerId;
+
 void AllocateBattleResources(void)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_TOWER && gMapHeader.regionMapSectionId == MAPSEC_TRAINER_TOWER_2)
@@ -252,6 +254,8 @@ struct Pokemon *GetBattlerParty(enum BattlerId battler)
 
 struct Pokemon *GetTrainerParty(enum BattleTrainer trainer)
 {
+    if (trainer == B_TRAINER_2 && gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE))
+        return gParties[B_TRAINER_0];
     return gParties[trainer];
 }
 

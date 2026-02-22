@@ -88,24 +88,24 @@ void FillPartnerParty(u16 trainerId)
                 else if (partyData[i].gender == TRAINER_MON_FEMALE)
                     personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
                 ModifyPersonalityForNature(&personality, GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_HIDDEN_NATURE, NULL));
-                CopyMon(&gParties[B_TRAINER_0][i+3], &gParties[B_TRAINER_0][i+3], sizeof(*&gParties[B_TRAINER_0][i+3]));
+                CopyMon(&gParties[B_TRAINER_2][i], &gParties[B_TRAINER_0][i+3], sizeof(*&gParties[B_TRAINER_0][i+3]));
                 
                 j = GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_HP, &j);
+                SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_HP, &j);
                 j = gMovesInfo[GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_PP1, &j);
+                SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_PP1, &j);
                 j = gMovesInfo[GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_PP2, &j);
+                SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_PP2, &j);
                 j = gMovesInfo[GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_PP3, &j);
+                SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_PP3, &j);
                 j = gMovesInfo[GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_PP4, &j);
+                SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_PP4, &j);
                 
                 // Currently included just to get rid of "variable not used" error...
                 if (GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_NICKNAME, nickname) != SPECIES_NONE)
                 {
                     GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_NICKNAME, nickname);
-                    SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_NICKNAME, nickname);
+                    SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_NICKNAME, nickname);
                 }
             }
         }
@@ -115,8 +115,8 @@ void FillPartnerParty(u16 trainerId)
             if((monThreeLevel < gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][3], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
             {
                 j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][3], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                SetMonData(&gParties[B_TRAINER_0][3], MON_DATA_EXP, &j);
-                CalculateMonStats(&gParties[B_TRAINER_0][3]);
+                SetMonData(&gParties[B_TRAINER_2][0], MON_DATA_EXP, &j);
+                CalculateMonStats(&gParties[B_TRAINER_2][0]);
             }
         }
         if((GetMonData(&gParties[B_TRAINER_0][4], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
@@ -125,8 +125,8 @@ void FillPartnerParty(u16 trainerId)
             if((monFourLevel < gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][4], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
             {
                 j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][4], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                SetMonData(&gParties[B_TRAINER_0][4], MON_DATA_EXP, &j);
-                CalculateMonStats(&gParties[B_TRAINER_0][4]);
+                SetMonData(&gParties[B_TRAINER_2][1], MON_DATA_EXP, &j);
+                CalculateMonStats(&gParties[B_TRAINER_2][1]);
             }
         }
         if((GetMonData(&gParties[B_TRAINER_0][5], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
@@ -135,8 +135,8 @@ void FillPartnerParty(u16 trainerId)
             if((monFiveLevel < gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][5], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)]))
             {
                 j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][5], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                SetMonData(&gParties[B_TRAINER_0][5], MON_DATA_EXP, &j);
-                CalculateMonStats(&gParties[B_TRAINER_0][5]);
+                SetMonData(&gParties[B_TRAINER_2][2], MON_DATA_EXP, &j);
+                CalculateMonStats(&gParties[B_TRAINER_2][2]);
             }
         }
     }
