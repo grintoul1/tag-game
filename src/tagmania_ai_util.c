@@ -1541,6 +1541,24 @@ bool32 CanTargetFaintAi(enum BattlerId battlerDef, enum BattlerId battlerAtk)
     return FALSE;
 }
 
+bool32 CanTargetFaintAiInHits(enum BattlerId battlerDef, enum BattlerId battlerAtk, u32 hits)
+{
+    struct AiLogicData *aiData = gAiLogicData;
+    enum Move *moves = GetMovesArray(battlerDef);
+    u32 moveLimitations = aiData->moveLimitations[battlerDef];
+
+    for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations))
+            continue;
+
+        if ((AI_GetDamage(battlerDef, battlerAtk, moveIndex, AI_DEFENDING, aiData) * hits) >= gBattleMons[battlerAtk].hp)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
 u32 NoOfHitsForTargetToFaintBattler(enum BattlerId battlerDef, enum BattlerId battlerAtk, enum AiConsiderEndure considerEndure)
 {
     u32 currNumberOfHits;
@@ -2413,6 +2431,10 @@ bool32 ShouldRaiseAnyStat(enum BattlerId battlerAtk, enum BattlerId battlerDef)
 
     // Don't increase stats if AI could KO target through Sturdy effect, as otherwise it always 2HKOs
     if (CanBattlerKOTargetIgnoringSturdy(battlerAtk, battlerDef))
+        return FALSE;
+
+    if (CanTargetFaintAiInHits(battlerDef, battlerAtk, 2)
+     && AI_IsFaster(battlerDef, battlerAtk, MOVE_TACKLE, MOVE_TACKLE, DONT_CONSIDER_PRIORITY))
         return FALSE;
 
     return TRUE;
@@ -4063,24 +4085,21 @@ bool32 HasChoiceEffect(enum BattlerId battler)
     }
 }
 
-static u32 FindMoveUsedXTurnsAgo(enum BattlerId battlerId, u32 x)
-{
-    s32 index = gBattleHistory->moveHistoryIndex[battlerId];
-    for (u32 turnsAgo = 0; turnsAgo < x; turnsAgo++)
-    {
-        if (--index < 0)
-            index = AI_MOVE_HISTORY_COUNT - 1;
-    }
-    return gBattleHistory->moveHistory[battlerId][index];
-}
-
 bool32 IsWakeupTurn(enum BattlerId battler)
 {
-    // Check if rest was used 2 turns ago
-    if ((gBattleMons[battler].status1 & STATUS1_SLEEP) == 1 && GetMoveEffect(FindMoveUsedXTurnsAgo(battler, 2)) == EFFECT_REST)
-        return TRUE;
-    else // no way to know
+    u32 sleepTurns = gBattleMons[battler].status1 & STATUS1_SLEEP;
+    u32 toSub;
+
+    if (sleepTurns == 0)
         return FALSE;
+
+    // Early Bird reduces the sleep timer twice as fast.
+    if (gAiLogicData->abilities[battler] == ABILITY_EARLY_BIRD)
+        toSub = 2;
+    else
+        toSub = 1;
+
+    return sleepTurns <= toSub;
 }
 
 bool32 AnyPartyMemberStatused(enum BattlerId battlerId, bool32 checkSoundproof)
@@ -6780,8 +6799,10 @@ bool32 AI_OpponentCanFaintAiWithMod(enum BattlerId battler, u32 healAmount)
 void GetAIPartyIndexes(enum BattlerId battler, s32 *firstId, s32 *lastId)
 {
     bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
-    if (BattleSideHasTwoTrainers(battler & BIT_SIDE) && !AreMultiPartiesFullTeams() && !(isSharedTeams && (battler & BIT_SIDE) == B_SIDE_PLAYER))
-        *firstId = 0, *lastId = PARTY_SIZE / 2;
+    if (battler == B_BATTLER_2 && gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE) && !(isSharedTeams && (battler & BIT_SIDE) == B_SIDE_PLAYER))
+        *firstId = MULTI_PARTY_SIZE, *lastId = PARTY_SIZE;
+    else if (BattleSideHasTwoTrainers(battler & BIT_SIDE) && !AreMultiPartiesFullTeams() && !(isSharedTeams && (battler & BIT_SIDE) == B_SIDE_PLAYER))
+        *firstId = 0, *lastId = MULTI_PARTY_SIZE;
     else
         *firstId = 0, *lastId = PARTY_SIZE;
 }

@@ -131,14 +131,14 @@ AI_TWO_VS_ONE_BATTLE_TEST("Battler 3 has Battler 1 AI flags set correctly (2v1)"
         else
         {
             TURN { MOVE(playerLeft, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE);
-                SCORE_EQ_VAL(opponentLeft, MOVE_WATER_GUN, 120, target: playerLeft); 
-                SCORE_EQ_VAL(opponentLeft, MOVE_WATER_GUN, 114, target: playerRight);
-                SCORE_EQ_VAL(opponentRight, MOVE_WATER_GUN, 120, target: playerLeft); 
-                SCORE_EQ_VAL(opponentRight, MOVE_WATER_GUN, 114, target: playerRight);
-                SCORE_EQ_VAL(opponentLeft, MOVE_AQUA_JET, 120, target: playerLeft); 
-                SCORE_EQ_VAL(opponentLeft, MOVE_AQUA_JET, 134, target: playerRight);
-                SCORE_EQ_VAL(opponentRight, MOVE_AQUA_JET, 120, target: playerLeft); 
-                SCORE_EQ_VAL(opponentRight, MOVE_AQUA_JET, 134, target: playerRight); }
+                SCORE_EQ_VAL(opponentLeft, MOVE_WATER_GUN, 118, target: playerLeft); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_WATER_GUN, 112, target: playerRight);
+                SCORE_EQ_VAL(opponentRight, MOVE_WATER_GUN, 118, target: playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_WATER_GUN, 112, target: playerRight);
+                SCORE_EQ_VAL(opponentLeft, MOVE_AQUA_JET, 118, target: playerLeft); 
+                SCORE_EQ_VAL(opponentLeft, MOVE_AQUA_JET, 132, target: playerRight);
+                SCORE_EQ_VAL(opponentRight, MOVE_AQUA_JET, 118, target: playerLeft); 
+                SCORE_EQ_VAL(opponentRight, MOVE_AQUA_JET, 132, target: playerRight); }
         }
     }
 }

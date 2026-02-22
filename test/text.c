@@ -565,7 +565,7 @@ extern u16 sBattlerAbilities[MAX_BATTLERS_COUNT];
 /* No idea why failing but not using switch mode anyway
 TEST("Battle strings fit on the battle message window")
 {
-    KNOWN_FAILING; // 
+    KNOWN_FAILING; // grintoul FIXER
     u32 i, j, strWidth;
     u32 start = STRINGID_TABLE_START + 1;
     u32 end = STRINGID_COUNT - 1;

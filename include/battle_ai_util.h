@@ -121,6 +121,7 @@ bool32 BestDmgMoveHasEffect(enum BattlerId battlerAtk, enum BattlerId battlerDef
 void GetBestDmgMoveFromPartner(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum BattlerId battlerDefPartner, enum DamageCalcContext calcContext, enum Move moves[MAX_MON_MOVES], u32* target);
 u32 GetBestDmgFromBattler(enum BattlerId battler, enum BattlerId battlerTarget, enum DamageCalcContext calcContext);
 bool32 CanTargetMoveFaintAi(enum Move move, enum BattlerId battlerDef, enum BattlerId battlerAtk, u32 nHits);
+bool32 CanTargetFaintAiInHits(enum BattlerId battlerDef, enum BattlerId battlerAtk, u32 hits);
 bool32 CanTargetFaintAiWithMod(enum BattlerId battlerDef, enum BattlerId battlerAtk, s32 hpMod, s32 dmgMod);
 enum Ability AI_DecideKnownAbilityForTurn(enum BattlerId battlerId);
 enum HoldEffect AI_DecideHoldEffectForTurn(enum BattlerId battlerId);

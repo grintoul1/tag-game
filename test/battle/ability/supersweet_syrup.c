@@ -3,7 +3,6 @@
 
 SINGLE_BATTLE_TEST("Supersweet Syrup lowers evasion once per battle by one stage")
 {
-    KNOWN_FAILING; // Supersweet Syrup changed to work more than once per battle
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_DIPPLIN) { Ability(ABILITY_SUPERSWEET_SYRUP); }
@@ -17,10 +16,12 @@ SINGLE_BATTLE_TEST("Supersweet Syrup lowers evasion once per battle by one stage
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         MESSAGE("2 withdrew Dipplin!");
         MESSAGE("2 withdrew Wobbuffet!");
-        NONE_OF {
-            ABILITY_POPUP(opponent, ABILITY_SUPERSWEET_SYRUP);
-            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("A supersweet aroma is wafting from the syrup covering Foes Dipplin!");
+        EXPECT_FAIL { // Supersweet Syrup changed to work more than once per battle
+            NONE_OF {
+                ABILITY_POPUP(opponent, ABILITY_SUPERSWEET_SYRUP);
+                ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
+                MESSAGE("A supersweet aroma is wafting from the syrup covering Foes Dipplin!");
+            }
         }
     } THEN {
         EXPECT_EQ(player->statStages[STAT_EVASION], DEFAULT_STAT_STAGE - 1);

@@ -5218,7 +5218,7 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
                 ADJUST_SCORE(GOOD_EFFECT + 3);
             else
                 ADJUST_SCORE(WEAK_EFFECT);
-            if (RandomPercentage(RNG_AI_CUSTOM_AI_EIGHTY_PERCENT, CUSTOM_AI_EIGHTY_PERCENT))
+            if (RandomPercentage(RNG_TAG_AI_HAZARDS, CUSTOM_AI_EIGHTY_PERCENT))
                 ADJUST_SCORE(2);
         }
         break;
@@ -5229,7 +5229,7 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
                 ADJUST_SCORE(BEST_DAMAGE_MOVE + FAST_KILL);
             else
                 ADJUST_SCORE(BEST_DAMAGE_MOVE + SLOW_KILL);
-            if (RandomPercentage(RNG_AI_CUSTOM_AI_EIGHTY_PERCENT, CUSTOM_AI_EIGHTY_PERCENT))
+            if (RandomPercentage(RNG_TAG_AI_HAZARDS, CUSTOM_AI_EIGHTY_PERCENT))
                 ADJUST_SCORE(2);
         }
         break;
@@ -6706,7 +6706,7 @@ static s32 AI_CheckViability(enum BattlerId battlerAtk, enum BattlerId battlerDe
             if (((bestMoves[0] == move) || (bestMoves[1] == move) || (bestMoves[2] == move) || (bestMoves[3] == move)) && (bestTarget == battlerDef))
             {
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
-                if (AI_RandLessThan(51))
+                if (!RandomPercentage(RNG_TAG_AI_BEST_DAMAGE_MOVE, CUSTOM_AI_EIGHTY_PERCENT))
                     ADJUST_SCORE(2);
             }
             else if ((GetNoOfHitsToKOBattler(battlerAtk, battlerDef, gAiThinkingStruct->movesetIndex, AI_ATTACKING, DONT_CONSIDER_ENDURE) > 4) && (move != MOVE_FAKE_OUT))
@@ -6727,7 +6727,7 @@ static s32 AI_CheckViability(enum BattlerId battlerAtk, enum BattlerId battlerDe
                     && IsBestDmgMove(battlerAtk, battlerDef, AI_ATTACKING, move))
                 {
                     ADJUST_SCORE(BEST_DAMAGE_MOVE);
-                    if (RandomPercentage(RNG_AI_CUSTOM_AI_TWENTY_PERCENT, CUSTOM_AI_TWENTY_PERCENT))
+                    if (!RandomPercentage(RNG_TAG_AI_BEST_DAMAGE_MOVE, CUSTOM_AI_EIGHTY_PERCENT))
                         ADJUST_SCORE(2);
                 }
             }
@@ -12809,7 +12809,8 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
             case EFFECT_ATTACK_UP:
             case EFFECT_ATTACK_UP_2:
                 if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK) || !HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL)
-                || CanTargetFaintAi(battlerDef, battlerAtk))
+                 || CanTargetFaintAi(battlerDef, battlerAtk) || (CanTargetFaintAiInHits(battlerDef, battlerAtk, 2)
+                 && AI_IsFaster(battlerDef, battlerAtk, MOVE_TACKLE, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_STUFF_CHEEKS:
@@ -12820,23 +12821,31 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
             case EFFECT_DEFENSE_UP_2:
             case EFFECT_DEFENSE_UP_3:
             case EFFECT_DEFENSE_CURL:
-                if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF))
+                if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF)
+                 || CanTargetFaintAi(battlerDef, battlerAtk) || (CanTargetFaintAiInHits(battlerDef, battlerAtk, 2)
+                 && AI_IsFaster(battlerDef, battlerAtk, MOVE_TACKLE, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_SPECIAL_ATTACK_UP:
             case EFFECT_SPECIAL_ATTACK_UP_2:
             case EFFECT_SPECIAL_ATTACK_UP_3:
-                if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPATK) || !HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL))
+                if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPATK) || !HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL)
+                 || CanTargetFaintAi(battlerDef, battlerAtk) || (CanTargetFaintAiInHits(battlerDef, battlerAtk, 2)
+                 && AI_IsFaster(battlerDef, battlerAtk, MOVE_TACKLE, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_SPECIAL_DEFENSE_UP:
             case EFFECT_SPECIAL_DEFENSE_UP_2:
-                if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPDEF))
+                if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPDEF)
+                 || CanTargetFaintAi(battlerDef, battlerAtk) || (CanTargetFaintAiInHits(battlerDef, battlerAtk, 2)
+                 && AI_IsFaster(battlerDef, battlerAtk, MOVE_TACKLE, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_ACCURACY_UP:
             case EFFECT_ACCURACY_UP_2:
-                if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ACC))
+                if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ACC)
+                 || CanTargetFaintAi(battlerDef, battlerAtk) || (CanTargetFaintAiInHits(battlerDef, battlerAtk, 2)
+                 && AI_IsFaster(battlerDef, battlerAtk, MOVE_TACKLE, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_EVASION_UP:
@@ -12846,23 +12855,33 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_COSMIC_POWER:
-                if ((!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPDEF)))
+                if (((!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPDEF)))
+                 || CanTargetFaintAi(battlerDef, battlerAtk) || (CanTargetFaintAiInHits(battlerDef, battlerAtk, 2)
+                 && AI_IsFaster(battlerDef, battlerAtk, MOVE_TACKLE, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_BULK_UP:
-                if ((!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK) || !HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF)))
+                if (((!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK) || !HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF)))
+                 || CanTargetFaintAi(battlerDef, battlerAtk) || (CanTargetFaintAiInHits(battlerDef, battlerAtk, 2)
+                 && AI_IsFaster(battlerDef, battlerAtk, MOVE_TACKLE, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_CALM_MIND:
-                if ((!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPATK)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPEED)))
+                if (((!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPATK)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPEED)))
+                 || CanTargetFaintAi(battlerDef, battlerAtk) || (CanTargetFaintAiInHits(battlerDef, battlerAtk, 2)
+                 && AI_IsFaster(battlerDef, battlerAtk, MOVE_TACKLE, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_DRAGON_DANCE:
-                if ((!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK) || !HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPEED)))
+                if (((!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK) || !HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPEED)))
+                 || CanTargetFaintAi(battlerDef, battlerAtk) || (CanTargetFaintAiInHits(battlerDef, battlerAtk, 2)
+                 && AI_IsFaster(battlerDef, battlerAtk, MOVE_TACKLE, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_COIL:
-                if ((!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ACC)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK) || !HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF)))
+                if (((!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ACC)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK) || !HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL)) && (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF)))
+                 || CanTargetFaintAi(battlerDef, battlerAtk) || (CanTargetFaintAiInHits(battlerDef, battlerAtk, 2)
+                 && AI_IsFaster(battlerDef, battlerAtk, MOVE_TACKLE, MOVE_TACKLE, DONT_CONSIDER_PRIORITY)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_ATTACK_ACCURACY_UP: //hone claws
@@ -14523,7 +14542,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                 if (IsBestDmgMove(battlerAtk, battlerDef, AI_ATTACKING, move))
                 {
                     ADJUST_SCORE(BEST_DAMAGE_MOVE);
-                    if (RandomPercentage(RNG_AI_CUSTOM_AI_TWENTY_PERCENT, CUSTOM_AI_TWENTY_PERCENT))
+                    if (!RandomPercentage(RNG_TAG_AI_BEST_DAMAGE_MOVE, CUSTOM_AI_EIGHTY_PERCENT))
                         ADJUST_SCORE(2);
                 }
             }
@@ -16038,7 +16057,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                     ADJUST_SCORE(GOOD_EFFECT + 3);
                 else
                     ADJUST_SCORE(WEAK_EFFECT);
-                if (RandomPercentage(RNG_AI_CUSTOM_AI_EIGHTY_PERCENT, CUSTOM_AI_EIGHTY_PERCENT))
+                if (RandomPercentage(RNG_TAG_AI_HAZARDS, CUSTOM_AI_EIGHTY_PERCENT))
                     ADJUST_SCORE(2);
             }
             break;
@@ -16049,7 +16068,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                     ADJUST_SCORE(BEST_DAMAGE_MOVE + FAST_KILL);
                 else
                     ADJUST_SCORE(BEST_DAMAGE_MOVE + SLOW_KILL);
-                if (RandomPercentage(RNG_AI_CUSTOM_AI_EIGHTY_PERCENT, CUSTOM_AI_EIGHTY_PERCENT))
+                if (RandomPercentage(RNG_TAG_AI_HAZARDS, CUSTOM_AI_EIGHTY_PERCENT))
                     ADJUST_SCORE(2);
             }
             break;

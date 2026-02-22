@@ -24,7 +24,6 @@ AI_SINGLE_BATTLE_TEST("AI will not further increase Attack / Sp. Atk stat if it 
 
 AI_SINGLE_BATTLE_TEST("AI will not further increase Attack / Sp. Atk stat if it knows it faints to target: AI slower")
 {
-    KNOWN_FAILING; // AI changed
     enum Move move;
 
     PARAMETRIZE { move = MOVE_HOWL; }
@@ -35,6 +34,7 @@ AI_SINGLE_BATTLE_TEST("AI will not further increase Attack / Sp. Atk stat if it 
         ASSUME(GetMoveEffect(MOVE_HOWL) == EFFECT_ATTACK_UP);
         ASSUME(GetMoveEffect(MOVE_CALM_MIND) == EFFECT_CALM_MIND);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
+        TIE_BREAK_SCORE(RNG_AI_SCORE_TIE_SINGLES, SCORE_TIE_HI, 0);
         PLAYER(SPECIES_COMBUSKEN) { Speed(20); Moves(MOVE_DOUBLE_KICK, MOVE_CELEBRATE); }
         OPPONENT(SPECIES_KANGASKHAN) { Speed(15); Moves(MOVE_CHIP_AWAY, MOVE_SWIFT, move); }
     } WHEN {
@@ -57,21 +57,28 @@ AI_SINGLE_BATTLE_TEST("AI will increase speed if it is slower")
 
 AI_SINGLE_BATTLE_TEST("AI will not waste a turn setting up if it knows target can faint it")
 {
-    KNOWN_FAILING; // AI changed
     enum Move move;
 
     PARAMETRIZE { move = MOVE_HOWL; }
     PARAMETRIZE { move = MOVE_CALM_MIND; }
 
+    PASSES_RANDOMLY(100 - CUSTOM_AI_TWENTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
+
     GIVEN {
         ASSUME(GetMovePower(MOVE_SKY_UPPERCUT) == 85);
         ASSUME(GetMoveEffect(MOVE_HOWL) == EFFECT_ATTACK_UP);
         ASSUME(GetMoveEffect(MOVE_CALM_MIND) == EFFECT_CALM_MIND);
-        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT);
+        TIE_BREAK_SCORE(RNG_AI_SCORE_TIE_SINGLES, SCORE_TIE_HI, 0);
+        AI_FLAGS(AI_FLAG_TAG_OPPONENT);
         PLAYER(SPECIES_COMBUSKEN) { Speed(15); Moves(MOVE_SKY_UPPERCUT, MOVE_DOUBLE_KICK, MOVE_FLAME_WHEEL, MOVE_CELEBRATE); }
         OPPONENT(SPECIES_KANGASKHAN) { Speed(20); Moves(MOVE_CHIP_AWAY, MOVE_SWIFT, move); }
     } WHEN {
-        TURN { MOVE(player, MOVE_DOUBLE_KICK); EXPECT_MOVE(opponent, move); }
+        TURN {
+            MOVE(player, MOVE_DOUBLE_KICK);
+            EXPECT_MOVE(opponent, move); 
+            SCORE_EQ_VAL(opponent, move, AI_SCORE_DEFAULT + DECENT_EFFECT);
+            SCORE_EQ_VAL(opponent, MOVE_CHIP_AWAY, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE);
+        }
         TURN { EXPECT_MOVE(opponent, MOVE_CHIP_AWAY); MOVE(player, MOVE_SKY_UPPERCUT); }
     }
 }
@@ -96,7 +103,6 @@ AI_SINGLE_BATTLE_TEST("AI will not use Throat Chop if opposing mon has a better 
 
 AI_SINGLE_BATTLE_TEST("AI will select Throat Chop if the sound move is the best damaging move from opposing mon")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         ASSUME(MoveHasAdditionalEffect(MOVE_THROAT_CHOP, MOVE_EFFECT_THROAT_CHOP) == TRUE);
         ASSUME(GetMovePower(MOVE_PSYCHIC_FANGS) == 85);
@@ -107,9 +113,11 @@ AI_SINGLE_BATTLE_TEST("AI will select Throat Chop if the sound move is the best 
         PLAYER(SPECIES_REGIROCK) { Speed(15); Moves(MOVE_HYPER_VOICE, MOVE_FLAME_BURST); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(20); Moves(MOVE_THROAT_CHOP, MOVE_PSYCHIC_FANGS); }
     } WHEN {
-        TURN { EXPECT_MOVE(opponent, MOVE_PSYCHIC_FANGS); MOVE(player, MOVE_FLAME_BURST); }
-        TURN { EXPECT_MOVE(opponent, MOVE_PSYCHIC_FANGS); MOVE(player, MOVE_HYPER_VOICE); }
-        TURN { EXPECT_MOVE(opponent, MOVE_THROAT_CHOP); MOVE(player, MOVE_HYPER_VOICE); }
+        EXPECT_FAIL { // AI changed to care about best damage
+            TURN { EXPECT_MOVE(opponent, MOVE_PSYCHIC_FANGS); MOVE(player, MOVE_FLAME_BURST); }
+        }
+            TURN { EXPECT_MOVE(opponent, MOVE_PSYCHIC_FANGS); MOVE(player, MOVE_HYPER_VOICE); }
+            TURN { EXPECT_MOVE(opponent, MOVE_THROAT_CHOP); MOVE(player, MOVE_HYPER_VOICE); }
     }
 }
 
@@ -129,18 +137,18 @@ AI_SINGLE_BATTLE_TEST("AI will incentivise multiple best damage moves in cases o
         {
             TURN { 
                 SCORE_EQ_VAL(opponent, MOVE_SONICBOOM,      AI_SCORE_DEFAULT); 
-                SCORE_EQ_VAL(opponent, MOVE_DRAGON_RAGE,    (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER));
-                SCORE_EQ_VAL(opponent, MOVE_NIGHT_SHADE,    (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER)); 
-                SCORE_EQ_VAL(opponent, MOVE_SEISMIC_TOSS,   (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER));
+                SCORE_EQ_VAL(opponent, MOVE_DRAGON_RAGE,    (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE));
+                SCORE_EQ_VAL(opponent, MOVE_NIGHT_SHADE,    (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE)); 
+                SCORE_EQ_VAL(opponent, MOVE_SEISMIC_TOSS,   (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE));
             }
         }
         else
         {
             TURN { 
-                SCORE_EQ_VAL(opponent, MOVE_SONICBOOM,      (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER + FAST_KILL)); 
-                SCORE_EQ_VAL(opponent, MOVE_DRAGON_RAGE,    (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER + FAST_KILL)); 
-                SCORE_EQ_VAL(opponent, MOVE_NIGHT_SHADE,    (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER + FAST_KILL)); 
-                SCORE_EQ_VAL(opponent, MOVE_SEISMIC_TOSS,   (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER + FAST_KILL)); 
+                SCORE_EQ_VAL(opponent, MOVE_SONICBOOM,      (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + FAST_KILL)); 
+                SCORE_EQ_VAL(opponent, MOVE_DRAGON_RAGE,    (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + FAST_KILL)); 
+                SCORE_EQ_VAL(opponent, MOVE_NIGHT_SHADE,    (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + FAST_KILL)); 
+                SCORE_EQ_VAL(opponent, MOVE_SEISMIC_TOSS,   (AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + FAST_KILL)); 
             }
         }
     }
@@ -257,9 +265,9 @@ AI_SINGLE_BATTLE_TEST("Belly Drum - physical move >50pct damage vs ice face alre
     }
 }*/
 
-AI_SINGLE_BATTLE_TEST("HasMoveThatChangesKOThreshold - AI should not see self-targeted speed drops as preventing setup moves in 2hko cases")
+AI_SINGLE_BATTLE_TEST("FIXER HasMoveThatChangesKOThreshold - AI should not see self-targeted speed drops as preventing setup moves in 2hko cases")
 {
-    KNOWN_FAILING; // AI changed
+    KNOWN_FAILING; // grintoul FIXER AI not currently used but will use with future stat change stuff
     enum Move move;
     PARAMETRIZE { move = MOVE_EARTHQUAKE; }
     PARAMETRIZE { move = MOVE_BULLDOZE; }

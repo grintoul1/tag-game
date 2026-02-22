@@ -33,11 +33,11 @@ WILD_BATTLE_TEST("Higher leveled Pokemon give more exp", s32 exp)
 
     PARAMETRIZE { level = 5; }
     PARAMETRIZE { level = 10; }
-    KNOWN_FAILING; // grintoul CONFIRMED Level caps block EXP gain
 
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Level(20); }
         OPPONENT(SPECIES_CATERPIE) { Level(level); HP(1); }
+        VAR_SET(VAR_LEVEL_CAP, 80);
     } WHEN {
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {

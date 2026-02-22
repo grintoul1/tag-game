@@ -172,7 +172,7 @@ SINGLE_BATTLE_TEST("Mirror Armor doesn't lower the stat of the attacking Pokemon
 // This behaviour needs to be verified in the actual games. Currently it's written to follow Showdown's logic.
 DOUBLE_BATTLE_TEST("Mirror Armor lowers Speed of the partner Pokemon after Court Change was used by the opponent after it set up Sticky Web")
 {
-    KNOWN_FAILING;
+    KNOWN_FAILING; // grintoul CONFIRMED failing in expansion
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_STICKY_WEB) == EFFECT_STICKY_WEB);
         ASSUME(GetMoveEffect(MOVE_COURT_CHANGE) == EFFECT_COURT_CHANGE);

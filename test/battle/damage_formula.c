@@ -318,7 +318,7 @@ SINGLE_BATTLE_TEST("FIXER Gem boosted Damage calculation")
     PARAMETRIZE { expectedDamage = 205; }
     PARAMETRIZE { expectedDamage = 204; }
 #else
-    KNOWN_FAILING;
+    KNOWN_FAILING; // grintoul FIXER
     PARAMETRIZE { expectedDamage = 273; }
     PARAMETRIZE { expectedDamage = 270; }
     PARAMETRIZE { expectedDamage = 267; }

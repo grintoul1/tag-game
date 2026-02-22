@@ -26,7 +26,7 @@ ASSUMPTIONS
 
 AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Highest damaging move scores +6 80% of the time for opponents")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_KINGDRA);
@@ -47,7 +47,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Highest damaging m
 
 AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Highest damaging move scores +6 80% of the time for opponents")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_KINGDRA);
@@ -68,7 +68,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Highest damagi
 
 AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Highest damaging move scores +8 20% of the time for opponents")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_KINGDRA);
@@ -89,7 +89,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Highest damaging m
 
 AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Highest damaging move scores +8 20% of the time for opponents")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_KINGDRA);
@@ -148,7 +148,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: AI always choo
 
 AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Fast KO scores +18 80% of the time for opponents")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_KINGDRA) { HP(1); Speed(1); };
@@ -169,7 +169,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Fast KO scores +18
 
 AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Fast KO scores +18 80% of the time for opponents")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_KINGDRA) { HP(1); Speed(1); };
@@ -190,7 +190,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Fast KO scores
 
 AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Fast KO scores +20 20% of the time for opponents")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_KINGDRA) { HP(1); Speed(1); };
@@ -211,7 +211,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Fast KO scores +20
 
 AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Fast KO scores +20 20% of the time for opponents")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_KINGDRA) { HP(1); Speed(1); };
@@ -232,7 +232,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Fast KO scores
 
 AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Slow KO scores +12 80% of the time for opponents")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_KINGDRA) { HP(1); Speed(3); };
@@ -253,7 +253,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Slow KO scores +12
 
 AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Slow KO scores +12 80% of the time for opponents")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(CUSTOM_AI_EIGHTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_KINGDRA) { HP(1); Speed(3); };
@@ -274,7 +274,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Slow KO scores
 
 AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Slow KO scores +14 20% of the time for opponents")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_KINGDRA) { HP(1); Speed(3); };
@@ -295,7 +295,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Slow KO scores +14
 
 AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Slow KO scores +14 20% of the time for opponents")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(CUSTOM_AI_TWENTY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_KINGDRA) { HP(1); Speed(3); };
@@ -524,21 +524,21 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: OFFENSIVE SETUP: Opponent +
             TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 108, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 108, target:playerRight);
-                    SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 108, target:playerLeft);
+                    SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 106, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 50, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 108, target:playerLeft);
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 108, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 50, target:playerLeft);
-                    SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 108, target:playerRight); }
+                    SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 106, target:playerRight); }
             TURN {  EXPECT_MOVE(opponentLeft, MOVE_TACKLE, target:playerLeft); EXPECT_MOVE(opponentRight, MOVE_SHADOW_BALL, target:playerRight);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 100, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 100, target:playerRight);
-                    SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 108, target:playerLeft);
+                    SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 106, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 50, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 100, target:playerLeft);
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 100, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 50, target:playerLeft);
-                    SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 120, target:playerRight); }
+                    SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 118, target:playerRight); }
     }   
 }
 
@@ -554,21 +554,21 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: OFFENSIVE SETUP: Oppone
             TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 108, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 108, target:playerRight);
-                    SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 108, target:playerLeft);
+                    SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 106, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 50, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 108, target:playerLeft);
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 108, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 50, target:playerLeft);
-                    SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 108, target:playerRight); }
+                    SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 106, target:playerRight); }
             TURN {  EXPECT_MOVE(opponentLeft, MOVE_TACKLE, target:playerLeft); EXPECT_MOVE(opponentRight, MOVE_SHADOW_BALL, target:playerRight);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 100, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 100, target:playerRight);
-                    SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 108, target:playerLeft);
+                    SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 106, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 50, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 100, target:playerLeft);
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 100, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 50, target:playerLeft);
-                    SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 120, target:playerRight); }
+                    SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 118, target:playerRight); }
     }   
 }
 
@@ -583,12 +583,12 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: OFFENSIVE SETUP: Opponent +
     } WHEN {
             TURN {  SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 107, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 107, target:playerRight);
-                    SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 108, target:playerLeft);
+                    SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 106, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 50, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 107, target:playerLeft);
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 107, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 50, target:playerLeft);
-                    SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 108, target:playerRight); }
+                    SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 106, target:playerRight); }
     }   
 }
 
@@ -603,12 +603,12 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: OFFENSIVE SETUP: Oppone
     } WHEN {
             TURN {  SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 107, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 107, target:playerRight);
-                    SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 108, target:playerLeft);
+                    SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 106, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 50, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 107, target:playerLeft);
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 107, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 50, target:playerLeft);
-                    SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 108, target:playerRight); }
+                    SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 106, target:playerRight); }
     }   
 }
 
@@ -1001,12 +1001,12 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Opponents choose p
     } WHEN {
             TURN { EXPECT_MOVE(opponentLeft, MOVE_MACH_PUNCH, target:playerRight);
                 EXPECT_MOVE(opponentRight, MOVE_MACH_PUNCH, target:playerRight);
-                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_RAGE, 108, target:playerLeft);
-                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_RAGE, 108, target:playerRight);
+                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_RAGE, 106, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_RAGE, 106, target:playerRight);
                 SCORE_EQ_VAL(opponentLeft, MOVE_MACH_PUNCH, 100, target:playerLeft);
                 SCORE_EQ_VAL(opponentLeft, MOVE_MACH_PUNCH, 114, target:playerRight);
-                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_RAGE, 108, target:playerLeft);
-                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_RAGE, 108, target:playerRight);
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_RAGE, 106, target:playerLeft);
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_RAGE, 106, target:playerRight);
                 SCORE_EQ_VAL(opponentRight, MOVE_MACH_PUNCH, 100, target:playerLeft);
                 SCORE_EQ_VAL(opponentRight, MOVE_MACH_PUNCH, 114, target:playerRight); }
         } 
@@ -1025,12 +1025,12 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Opponents choo
     } WHEN {
             TURN { EXPECT_MOVE(opponentLeft, MOVE_MACH_PUNCH, target:playerRight);
                 EXPECT_MOVE(opponentRight, MOVE_MACH_PUNCH, target:playerRight);
-                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_RAGE, 108, target:playerLeft);
-                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_RAGE, 108, target:playerRight);
+                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_RAGE, 106, target:playerLeft);
+                SCORE_EQ_VAL(opponentLeft, MOVE_DRAGON_RAGE, 106, target:playerRight);
                 SCORE_EQ_VAL(opponentLeft, MOVE_MACH_PUNCH, 100, target:playerLeft);
                 SCORE_EQ_VAL(opponentLeft, MOVE_MACH_PUNCH, 114, target:playerRight);
-                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_RAGE, 108, target:playerLeft);
-                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_RAGE, 108, target:playerRight);
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_RAGE, 106, target:playerLeft);
+                SCORE_EQ_VAL(opponentRight, MOVE_DRAGON_RAGE, 106, target:playerRight);
                 SCORE_EQ_VAL(opponentRight, MOVE_MACH_PUNCH, 100, target:playerLeft);
                 SCORE_EQ_VAL(opponentRight, MOVE_MACH_PUNCH, 114, target:playerRight); }
         } 
@@ -1039,7 +1039,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Opponents choo
 /*AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: Opponents choose priority last chance move over slow KO 90% of the time")
 {
     KNOWN_FAILING; // Only getting apprx 80% pass
-    PASSES_RANDOMLY(90, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(90, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
@@ -1057,7 +1057,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Opponents choo
 
 AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: Opponents choose priority last chance move over slow KO 90% of the time")
 {
-    PASSES_RANDOMLY(CUSTOM_AI_NINETY_PERCENT, 100, RNG_AI_CUSTOM_AI_TWENTY_PERCENT);
+    PASSES_RANDOMLY(CUSTOM_AI_NINETY_PERCENT, 100, RNG_TAG_AI_BEST_DAMAGE_MOVE);
     GIVEN {
         BATTLER_AI_FLAGS(1, AI_FLAG_TAG_TRAINER);
         BATTLER_AI_FLAGS(2, AI_FLAG_PARTNER_TRAINER);
@@ -1293,10 +1293,10 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: AI opponent will F
         OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_AURA_SPHERE, MOVE_FAKE_OUT); }
     } WHEN {
         TURN { EXPECT_MOVE(opponentLeft, MOVE_FAKE_OUT, target:playerRight); EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerRight);
-            SCORE_EQ_VAL(opponentLeft, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
-            SCORE_EQ_VAL(opponentLeft, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
-            SCORE_EQ_VAL(opponentRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
-            SCORE_EQ_VAL(opponentRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerRight);
+            SCORE_EQ_VAL(opponentRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerRight);
             SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
             SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerRight); 
             SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
@@ -1321,10 +1321,10 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: AI partner wil
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_AURA_SPHERE, MOVE_FAKE_OUT); }
     } WHEN {
         TURN { EXPECT_MOVE(opponentLeft, MOVE_FAKE_OUT, target:playerRight); EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerRight);
-            SCORE_EQ_VAL(opponentLeft, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
-            SCORE_EQ_VAL(opponentLeft, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
-            SCORE_EQ_VAL(opponentRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
-            SCORE_EQ_VAL(opponentRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerRight);
+            SCORE_EQ_VAL(opponentRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerRight);
             SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
             SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerRight); 
             SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
@@ -1353,10 +1353,10 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: AI opponent Fake O
             SCORE_EQ_VAL(opponentLeft, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerRight);
             SCORE_EQ_VAL(opponentRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerLeft);
             SCORE_EQ_VAL(opponentRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerRight);
-            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
-            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerRight); 
-            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
-            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerRight); 
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE, target:playerRight); 
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE, target:playerRight); 
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentLeft);
@@ -1381,10 +1381,10 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: AI opponent Fa
             SCORE_EQ_VAL(opponentLeft, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerRight);
             SCORE_EQ_VAL(opponentRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerLeft);
             SCORE_EQ_VAL(opponentRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT, target:playerRight);
-            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
-            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerRight); 
-            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
-            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE + 2, target:playerRight); 
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE, target:playerRight); 
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + BEST_DAMAGE_MOVE, target:playerRight); 
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentLeft);
@@ -1405,10 +1405,10 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: AI opponent Fake O
         OPPONENT_B(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); HP(1); }
     } WHEN {
         TURN { EXPECT_MOVE(opponentLeft, MOVE_FAKE_OUT, target:playerRight); EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerRight);
-            SCORE_EQ_VAL(opponentLeft, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
-            SCORE_EQ_VAL(opponentLeft, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
-            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
-            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerRight);
+            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerRight);
             SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
             SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + LAST_CHANCE, target:playerRight); 
             SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
@@ -1433,10 +1433,10 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: AI opponent Fa
         OPPONENT_A(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); HP(1); }
     } WHEN {
         TURN { EXPECT_MOVE(opponentLeft, MOVE_FAKE_OUT, target:playerRight); EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerRight);
-            SCORE_EQ_VAL(opponentLeft, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
-            SCORE_EQ_VAL(opponentLeft, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
-            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerLeft);
-            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + 2, target:playerRight);
+            SCORE_EQ_VAL(opponentLeft, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerLeft);
+            SCORE_EQ_VAL(opponentLeft, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerRight);
+            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerRight);
             SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
             SCORE_EQ_VAL(opponentLeft, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT + LAST_CHANCE, target:playerRight); 
             SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_OPPONENT, target:playerLeft);
