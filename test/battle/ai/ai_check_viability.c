@@ -143,7 +143,7 @@ AI_SINGLE_BATTLE_TEST("AI chooses Sleep Talk only when it will not wake up with 
     PARAMETRIZE { ability = ABILITY_EARLY_BIRD; }
 
     GIVEN {
-        AI_FLAGS(AI_FLAG_TAG_OPPONENT);
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_DODRIO) { Ability(ability); Status1(STATUS1_SLEEP_TURN(2)); Moves(MOVE_SLEEP_TALK, MOVE_TACKLE); }
     } WHEN {
@@ -168,16 +168,25 @@ AI_SINGLE_BATTLE_TEST("AI chooses Sleep Talk only when it will not wake up with 
 
 AI_SINGLE_BATTLE_TEST("AI sees increased base power of Spit Up")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_STOCKPILE) == EFFECT_STOCKPILE);
         ASSUME(GetMoveEffect(MOVE_SPIT_UP) == EFFECT_SPIT_UP);
-        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_WOBBUFFET) { HP(43); }
         OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_STOCKPILE, MOVE_SPIT_UP, MOVE_SCRATCH); }
     } WHEN {
-        TURN { EXPECT_MOVE(opponent, MOVE_STOCKPILE); }
-        TURN { EXPECT_MOVE(opponent, MOVE_SPIT_UP); }
+        TURN {
+            EXPECT_MOVE(opponent, MOVE_STOCKPILE);
+            SCORE_EQ_VAL(opponent, MOVE_SCRATCH, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE);
+            SCORE_EQ_VAL(opponent, MOVE_STOCKPILE, AI_SCORE_DEFAULT + DECENT_EFFECT);
+            SCORE_EQ_VAL(opponent, MOVE_SPIT_UP, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS);
+        }
+        TURN {
+            EXPECT_MOVE(opponent, MOVE_SPIT_UP);
+            SCORE_EQ_VAL(opponent, MOVE_SCRATCH, AI_SCORE_DEFAULT);
+            SCORE_EQ_VAL(opponent, MOVE_STOCKPILE, AI_SCORE_DEFAULT + DECENT_EFFECT);
+            SCORE_EQ_VAL(opponent, MOVE_SPIT_UP, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + SLOW_KILL);
+        }
     } SCENE {
         MESSAGE("Wobbuffet fainted!");
     }
@@ -212,21 +221,19 @@ AI_SINGLE_BATTLE_TEST("AI can choose Counter or Mirror Coat if the predicted mov
 
 AI_SINGLE_BATTLE_TEST("AI chooses moves with secondary effect that have a 100% chance to trigger")
 {
-    KNOWN_FAILING; // AI changed
     enum Ability ability;
 
     PARAMETRIZE { ability = ABILITY_NONE; }
     PARAMETRIZE { ability = ABILITY_SERENE_GRACE; }
 
     GIVEN {
-        ASSUME(MoveHasAdditionalEffectWithChance(MOVE_SHADOW_BALL, MOVE_EFFECT_SP_DEF_MINUS_1, 20));
         ASSUME(MoveHasAdditionalEffectWithChance(MOVE_OCTAZOOKA, MOVE_EFFECT_ACC_MINUS_1, 50));
-        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
-        PLAYER(SPECIES_REGICE);
-        OPPONENT(SPECIES_REGIROCK) { Ability(ability); Moves(MOVE_SHADOW_BALL, MOVE_OCTAZOOKA); }
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
+        PLAYER(SPECIES_AVALUGG);
+        OPPONENT(SPECIES_REGIROCK) { Ability(ability); Moves(MOVE_THUNDERBOLT, MOVE_OCTAZOOKA); }
     } WHEN {
         if (ability == ABILITY_NONE)
-            TURN { EXPECT_MOVE(opponent, MOVE_SHADOW_BALL); }
+            TURN { EXPECT_MOVE(opponent, MOVE_THUNDERBOLT); }
         else
             TURN { EXPECT_MOVES(opponent, MOVE_OCTAZOOKA); }
     }
@@ -503,13 +510,12 @@ AI_SINGLE_BATTLE_TEST("AI uses Wide Guard against Earthquake when opponent would
 
 AI_SINGLE_BATTLE_TEST("AI sees Shield Dust immunity to additional effects")
 {
-    KNOWN_FAILING; // AI changed
     enum Ability ability;
     PARAMETRIZE { ability = ABILITY_SHIELD_DUST; }
     PARAMETRIZE { ability = ABILITY_TINTED_LENS; }
 
     GIVEN {
-        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT);
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_VENOMOTH) { Ability(ability); Moves(MOVE_CELEBRATE, MOVE_POUND); }
         OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_CHILLING_WATER, MOVE_BRINE); }
     } WHEN {
@@ -522,7 +528,6 @@ AI_SINGLE_BATTLE_TEST("AI sees Shield Dust immunity to additional effects")
 
 AI_DOUBLE_BATTLE_TEST("AI sees type-changing moves as the correct type")
 {
-    KNOWN_FAILING; // AI changed
     u32 species, fieldStatus, ability;
     u64 aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT;
 
@@ -543,16 +548,17 @@ AI_DOUBLE_BATTLE_TEST("AI sees type-changing moves as the correct type")
         OPPONENT(SPECIES_WOBBUFFET) { Moves(fieldStatus, MOVE_RETURN, MOVE_TAUNT); }
         OPPONENT(species) { Ability(ability); Moves(MOVE_HYPER_VOICE); }
     } WHEN {
-        if (ability != ABILITY_NONE)
-            TURN { EXPECT_MOVE(opponentLeft, fieldStatus); }
-        else
-            TURN { NOT_EXPECT_MOVE(opponentLeft, fieldStatus); }
+        EXPECT_FAIL { // AI not used
+            if (ability != ABILITY_NONE)
+                TURN { EXPECT_MOVE(opponentLeft, fieldStatus); }
+            else
+                TURN { NOT_EXPECT_MOVE(opponentLeft, fieldStatus); }
+        }
     }
 }
 
 AI_SINGLE_BATTLE_TEST("AI uses Sparkling Aria to cure an enemy with Guts")
 {
-    KNOWN_FAILING; // AI changed
     u32 ability;
 
     PARAMETRIZE { ability = ABILITY_GUTS; }
@@ -562,10 +568,13 @@ AI_SINGLE_BATTLE_TEST("AI uses Sparkling Aria to cure an enemy with Guts")
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_URSALUNA) { Ability(ability); Moves(MOVE_HEADLONG_RUSH, MOVE_CELEBRATE); Status1(STATUS1_BURN); }
         OPPONENT(SPECIES_PRIMARINA) { Moves(MOVE_SPARKLING_ARIA, MOVE_SCALD); }
+        TIE_BREAK_SCORE(RNG_AI_SCORE_TIE_SINGLES, SCORE_TIE_HI, 0);
     } WHEN {
-        if (ability == ABILITY_GUTS)
-            TURN { EXPECT_MOVE(opponent, MOVE_SPARKLING_ARIA); }
-        else
-            TURN { EXPECT_MOVE(opponent, MOVE_SCALD); }
+        EXPECT_FAIL { // AI not used
+            if (ability == ABILITY_GUTS)
+                TURN { EXPECT_MOVE(opponent, MOVE_SPARKLING_ARIA); }
+            else
+                TURN { EXPECT_MOVE(opponent, MOVE_SCALD); }
+        }
     }
 }

@@ -2165,6 +2165,10 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
             if (gBattleMons[battlerAtk].volatiles.stockpileCounter >= 3)
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             break;
+        case EFFECT_SPIT_UP:
+            if (gBattleMons[battlerAtk].volatiles.stockpileCounter == 0)
+                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+            break;
         case EFFECT_SWALLOW:
             if (gBattleMons[battlerAtk].volatiles.stockpileCounter == 0)
             {
@@ -5450,9 +5454,14 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
         if (aiData->abilities[battlerAtk] == ABILITY_CONTRARY)
             break;
         if (HasMoveWithEffect(battlerAtk, EFFECT_SWALLOW) || HasMoveWithEffect(battlerAtk, EFFECT_SPIT_UP))
+        {
             ADJUST_SCORE(DECENT_EFFECT);
-        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
-        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPDEF));
+        }
+        else
+        {
+            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
+            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPDEF));
+        }
         break;
     case EFFECT_SWAGGER:
         if (HasBattlerSideMoveWithEffect(battlerAtk, EFFECT_FOUL_PLAY)
@@ -7629,7 +7638,8 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
         // check move effects
         switch (moveEffect)
         {
-            case EFFECT_HIT: // only applies to Vital Throw
+            case EFFECT_HIT: 
+                // only applies to Vital Throw
                 if (GetBattleMovePriority(battlerAtk, aiData->abilities[battlerAtk], move) < 0 
                 && ((AI_IsFaster(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, DONT_CONSIDER_PRIORITY) && CanTargetFaintAi(battlerDef, battlerAtk))
                 || (AI_IsFaster(battlerAtk, battlerDefPartner, move, predictedMoveSpeedCheck, DONT_CONSIDER_PRIORITY) && CanTargetFaintAi(battlerDefPartner, battlerAtk))))
@@ -8306,6 +8316,10 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
                 break;
             case EFFECT_STOCKPILE:
                 if (gBattleMons[battlerAtk].volatiles.stockpileCounter >= 3)
+                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                break;
+            case EFFECT_SPIT_UP:
+                if (gBattleMons[battlerAtk].volatiles.stockpileCounter == 0)
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_SWALLOW:
@@ -11160,9 +11174,14 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
             if (aiData->abilities[battlerAtk] == ABILITY_CONTRARY)
                 break;
             if (HasMoveWithEffect(battlerAtk, EFFECT_SWALLOW) || HasMoveWithEffect(battlerAtk, EFFECT_SPIT_UP))
+            {
                 ADJUST_SCORE(DECENT_EFFECT);
-            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
-            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPDEF));
+            }
+            else
+            {
+                ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
+                ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPDEF));
+            }
             break;
         case EFFECT_SWAGGER: // PARTNER DIFFERENCE - Partner done
             if (IsTargetingPartner(battlerAtk, battlerDef))
@@ -12768,7 +12787,8 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
         // check move effects
         switch (moveEffect)
         {
-            case EFFECT_HIT: // only applies to Vital Throw
+            case EFFECT_HIT:
+                // only applies to Vital Throw
                 if (GetBattleMovePriority(battlerAtk, aiData->abilities[battlerAtk], move) < 0 
                 && ((AI_IsFaster(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, DONT_CONSIDER_PRIORITY) && CanTargetFaintAi(battlerDef, battlerAtk))
                 || (AI_IsFaster(battlerAtk, battlerDefPartner, move, predictedMoveSpeedCheck, DONT_CONSIDER_PRIORITY) && CanTargetFaintAi(battlerDefPartner, battlerAtk))))
@@ -12801,6 +12821,168 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                         ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                     else
                         ADJUST_SCORE(-1);
+                }
+                else if (!IsBestDmgMove(battlerAtk, battlerDef, AI_ATTACKING, move))
+                {
+                    u32 additionalEffectCount = GetMoveAdditionalEffectCount(move);
+                    for (u32 effectIndex = 0; effectIndex < additionalEffectCount; effectIndex++)
+                    {
+                        const struct AdditionalEffect *additionalEffect = GetMoveAdditionalEffectById(move, effectIndex);
+                        if (MoveEffectIsGuaranteed(battlerAtk, aiData->abilities[battlerAtk], additionalEffect))
+                        {
+                            switch (additionalEffect->moveEffect)
+                            {
+                            case MOVE_EFFECT_ATK_MINUS_1:
+                            case MOVE_EFFECT_ATK_MINUS_2:
+                                if (CanLowerStat(battlerAtk, battlerDef, gAiLogicData, STAT_ATK)
+                                 && !additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(DECENT_EFFECT);
+                                }
+                                break;
+                            case MOVE_EFFECT_DEF_MINUS_1:
+                            case MOVE_EFFECT_DEF_MINUS_2:
+                                if (CanLowerStat(battlerAtk, battlerDef, gAiLogicData, STAT_DEF)
+                                 && !additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(DECENT_EFFECT);
+                                }
+                                break;
+                            case MOVE_EFFECT_SPD_MINUS_1:
+                            case MOVE_EFFECT_SPD_MINUS_2:
+                                if (CanLowerStat(battlerAtk, battlerDef, gAiLogicData, STAT_SPEED)
+                                 && !additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(DECENT_EFFECT);
+                                }
+                                break;
+                            case MOVE_EFFECT_SP_ATK_MINUS_1:
+                            case MOVE_EFFECT_SP_ATK_MINUS_2:
+                                if (CanLowerStat(battlerAtk, battlerDef, gAiLogicData, STAT_SPATK)
+                                 && !additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(DECENT_EFFECT);
+                                }
+                                break;
+                            case MOVE_EFFECT_SP_DEF_MINUS_1:
+                            case MOVE_EFFECT_SP_DEF_MINUS_2:
+                                if (CanLowerStat(battlerAtk, battlerDef, gAiLogicData, STAT_SPDEF)
+                                 && !additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(DECENT_EFFECT);
+                                }
+                                break;
+                            case MOVE_EFFECT_EVS_MINUS_1:
+                            case MOVE_EFFECT_EVS_MINUS_2:
+                                if (CanLowerStat(battlerAtk, battlerDef, gAiLogicData, STAT_EVASION)
+                                 && !additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(DECENT_EFFECT);
+                                }
+                                break;
+                            case MOVE_EFFECT_ACC_MINUS_1:
+                            case MOVE_EFFECT_ACC_MINUS_2:
+                                if (CanLowerStat(battlerAtk, battlerDef, gAiLogicData, STAT_ACC)
+                                 && !additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(DECENT_EFFECT);
+                                }
+                                break;
+                            case MOVE_EFFECT_ATK_DEF_DOWN:
+                                if ((CanLowerStat(battlerAtk, battlerDef, gAiLogicData, STAT_ATK)
+                                 || CanLowerStat(battlerAtk, battlerDef, gAiLogicData, STAT_DEF))
+                                 && !additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(DECENT_EFFECT);
+                                }
+                                break;
+                            case MOVE_EFFECT_DEF_SPDEF_DOWN:
+                                if ((CanLowerStat(battlerAtk, battlerDef, gAiLogicData, STAT_DEF)
+                                 || CanLowerStat(battlerAtk, battlerDef, gAiLogicData, STAT_SPDEF))
+                                 && !additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(DECENT_EFFECT);
+                                }
+                                break;
+                            case MOVE_EFFECT_ATK_PLUS_1:
+                                if (additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK));
+                                }
+                                break;
+                            case MOVE_EFFECT_ATK_PLUS_2:
+                                if (additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK_2));
+                                }
+                                break;
+                            case MOVE_EFFECT_DEF_PLUS_1:
+                                if (additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
+                                }
+                                break;
+                            case MOVE_EFFECT_DEF_PLUS_2:
+                                if (additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF_2));
+                                }
+                                break;
+                            case MOVE_EFFECT_SPD_PLUS_1:
+                                if (additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED));
+                                }
+                                break;
+                            case MOVE_EFFECT_SPD_PLUS_2:
+                                if (additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED_2));
+                                }
+                                break;
+                            case MOVE_EFFECT_SP_ATK_PLUS_1:
+                                if (additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPATK));
+                                }
+                                break;
+                            case MOVE_EFFECT_SP_ATK_PLUS_2:
+                                if (additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPATK_2));
+                                }
+                                break;
+                            case MOVE_EFFECT_SP_DEF_PLUS_1:
+                                if (additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPDEF));
+                                }
+                                break;
+                            case MOVE_EFFECT_SP_DEF_PLUS_2:
+                                if (additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPDEF_2));
+                                }
+                                break;
+                            case MOVE_EFFECT_EVS_PLUS_1:
+                            case MOVE_EFFECT_EVS_PLUS_2:
+                                if (additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_EVASION));
+                                }
+                                break;
+                            case MOVE_EFFECT_ACC_PLUS_1:
+                            case MOVE_EFFECT_ACC_PLUS_2:
+                                if (additionalEffect->self)
+                                {
+                                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ACC));
+                                }
+                                break;
+                            default:
+                                break;
+                            }
+                        }
+                    }
                 }
                 break;
             default:
@@ -13461,6 +13643,10 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                 break;
             case EFFECT_STOCKPILE:
                 if (gBattleMons[battlerAtk].volatiles.stockpileCounter >= 3)
+                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                break;
+            case EFFECT_SPIT_UP:
+                if (gBattleMons[battlerAtk].volatiles.stockpileCounter == 0)
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_SWALLOW:
@@ -16281,9 +16467,14 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
             if (aiData->abilities[battlerAtk] == ABILITY_CONTRARY)
                 break;
             if (HasMoveWithEffect(battlerAtk, EFFECT_SWALLOW) || HasMoveWithEffect(battlerAtk, EFFECT_SPIT_UP))
+            {
                 ADJUST_SCORE(DECENT_EFFECT);
-            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
-            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPDEF));
+            }
+            else
+            {
+                ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
+                ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPDEF));
+            }
             break;
         case EFFECT_SWAGGER: // PARTNER DIFFERENCE - Opponent done
             if (!IsTargetingPartner(battlerAtk, battlerDef))
