@@ -4982,7 +4982,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD, EGG_GROUP_FAIRY),
-        .abilities = { ABILITY_INTIMIDATE, ABILITY_RUN_AWAY, ABILITY_RATTLED },
+        .abilities = { ABILITY_PIXILATE, ABILITY_PIXILATE, ABILITY_INTIMIDATE },
         .bodyColor = BODY_COLOR_PINK,
         .speciesName = _("Snubbull"),
         .cryId = CRY_SNUBBULL,
@@ -5055,7 +5055,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .growthRate = GROWTH_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD, EGG_GROUP_FAIRY),
     #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_INTIMIDATE, ABILITY_QUICK_FEET, ABILITY_RATTLED },
+        .abilities = { ABILITY_PIXILATE, ABILITY_PIXILATE, ABILITY_INTIMIDATE },
     #else
         .abilities = { ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_RATTLED },
     #endif
