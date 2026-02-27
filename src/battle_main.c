@@ -628,6 +628,8 @@ static void CB2_InitBattleInternal(void)
     #if TESTING
     gPartiesCount[B_TRAINER_0] = CalculatePartyCount(B_TRAINER_0);
     gPartiesCount[B_TRAINER_1] = CalculatePartyCount(B_TRAINER_1);
+    gPartiesCount[B_TRAINER_2] = CalculatePartyCount(B_TRAINER_2);
+    gPartiesCount[B_TRAINER_3] = CalculatePartyCount(B_TRAINER_3);
     #endif
 
     gBattleCommunication[MULTIUSE_STATE] = 0;
@@ -1997,7 +1999,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             }
             SetMonData(&party[i], MON_DATA_ABILITY_NUM, &abilityNum);
             SetMonData(&party[i], MON_DATA_FRIENDSHIP, &(partyData[monIndex].friendship));
-            if (partyData[monIndex].ball != ITEM_NONE)
+            if (partyData[monIndex].ball < POKEBALL_COUNT)
             {
                 ball = partyData[monIndex].ball;
                 SetMonData(&party[i], MON_DATA_POKEBALL, &ball);
