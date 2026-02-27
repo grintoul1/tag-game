@@ -997,6 +997,7 @@ LittlerootTown_EventScript_SetReceivedRunningShoes::
 	removeobject LOCALID_LITTLEROOT_MOM
 	setflag FLAG_SYS_B_DASH
 	setvar VAR_LITTLEROOT_TOWN_STATE, 4
+	fadedefaultbgm
 	release
 	end
 
@@ -1016,6 +1017,7 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	waitmovement 0
 	msgbox LittlerootTown_Text_EmmieComeHere, MSGBOX_DEFAULT
 	closemessage
+	playbgm MUS_BATTLE_HALL, FALSE
 	delay 30
 	applymovement LOCALID_EMMIE, LittlerootTown_Movement_EmmieApproachPlayer
 	waitmovement 0
