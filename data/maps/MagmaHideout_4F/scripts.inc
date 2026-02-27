@@ -521,8 +521,8 @@ MagmaHideout_4F_EventScript_Maxie::
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
 	applymovement LOCALID_MAXIE, Common_Movement_FacePlayer
 	waitmovement 0
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, MagmaHideout_4F_EventScript_MaxiePyreMaxieDefeated
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, MagmaHideout_4F_EventScript_MaxiePyreArchieDefeated
+	call_if_set FLAG_EVIL_TEAM_AQUA, MagmaHideout_4F_EventScript_MaxiePyreMaxieDefeated
+	call_if_set FLAG_EVIL_TEAM_MAGMA, MagmaHideout_4F_EventScript_MaxiePyreArchieDefeated
 	goto MagmaHideout_4F_EventScript_MaxieDoMultiBattle
 	releaseall
 	end

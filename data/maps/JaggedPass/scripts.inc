@@ -184,8 +184,8 @@ JaggedPass_EventScript_ShellyTrigger::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_QuestionMark
 	waitmovement 0
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, JaggedPass_EventScript_EmmieArchieDefeated
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, JaggedPass_EventScript_EmmieMaxieDefeated
+	call_if_set FLAG_EVIL_TEAM_MAGMA, JaggedPass_EventScript_EmmieArchieDefeated
+	call_if_set FLAG_EVIL_TEAM_AQUA, JaggedPass_EventScript_EmmieMaxieDefeated
 	addvar VAR_JAGGED_PASS_STATE, 1
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE

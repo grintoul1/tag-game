@@ -685,8 +685,8 @@
 #define FLAG_HIDE_MT_PYRE_1F_GRUNTS  0x26F // Hides grunts blocking exit to Mt Pyre exterior
 #define FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_MAGMA  0x270 // Hides Team Magma on Mt Pyre summit
 #define FLAG_HIDE_ROUTE_111_TEAM_MAGMA  0x271 // Hides Magma grunts blocking R111
-#define FLAG_MT_PYRE_ARCHIE_DEFEATED  0x272 // Checks if Archie fought on Mt Pyre
-#define FLAG_MT_PYRE_MAXIE_DEFEATED  0x273 // Checks if Maxie fought on Mt Pyre
+#define FLAG_EVIL_TEAM_MAGMA  0x272 // Checks if Archie fought on Mt Pyre
+#define FLAG_EVIL_TEAM_AQUA  0x273 // Checks if Maxie fought on Mt Pyre
 #define FLAG_HIDE_FORTREE_SHELLY  0x274 // Hides Fortree Shelly
 #define FLAG_HIDE_JAGGED_PASS_SHELLY  0x275 // Hides Jagged Pass Shelly
 #define FLAG_HIDE_MAGMA_HIDEOUT_SHELLY  0x276 // Hides Magma Hideout Shelly

@@ -190,8 +190,8 @@ SootopolisCity_EventScript_SetWallacePosition::
 	return
 
 SootopolisCity_EventScript_SetArchieMaxiePos::
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, SootopolisCity_EventScript_ArchieDefeatedPos
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, SootopolisCity_EventScript_MaxieDefeatedPos
+	call_if_set FLAG_EVIL_TEAM_MAGMA, SootopolisCity_EventScript_ArchieDefeatedPos
+	call_if_set FLAG_EVIL_TEAM_AQUA, SootopolisCity_EventScript_MaxieDefeatedPos
 	return
 
 SootopolisCity_EventScript_SetStevenPos::

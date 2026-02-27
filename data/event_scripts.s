@@ -1533,8 +1533,8 @@ Common_Text_EmmieEnterSkyPillar:
 	.string "Emmie: Let's head into Sky Pillar.$"
 
 Common_EventScript_EmmieMeetWallaceSkyPillar::
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, Common_EventScript_EmmieMeetWallaceSkyPillarStopMaxie
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, Common_EventScript_EmmieMeetWallaceSkyPillarStopArchie
+	call_if_set FLAG_EVIL_TEAM_MAGMA, Common_EventScript_EmmieMeetWallaceSkyPillarStopMaxie
+	call_if_set FLAG_EVIL_TEAM_AQUA, Common_EventScript_EmmieMeetWallaceSkyPillarStopArchie
 	return
 
 Common_EventScript_EmmieMeetWallaceSkyPillarStopArchie::

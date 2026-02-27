@@ -12,8 +12,8 @@ CaveOfOrigin_B1F_OnWarp:
 	.byte 0
 
 CaveOfOrigin_B1F_EventScript_SetEvilLeaderVars::
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, CaveOfOrigin_B1F_EventScript_ArchieMtPyreVars
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, CaveOfOrigin_B1F_EventScript_MaxieMtPyreVars
+	call_if_set FLAG_EVIL_TEAM_MAGMA, CaveOfOrigin_B1F_EventScript_ArchieMtPyreVars
+	call_if_set FLAG_EVIL_TEAM_AQUA, CaveOfOrigin_B1F_EventScript_MaxieMtPyreVars
 	end
 
 CaveOfOrigin_B1F_EventScript_ArchieMtPyreVars::
@@ -106,17 +106,17 @@ CaveOfOrigin_B1F_EventScript_AtSkyPillar::
 	waitmovement 0 
 	applymovement VAR_0x8005, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, CaveOfOrigin_B1F_EventScript_MaxieSkyPillarYouSay
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, CaveOfOrigin_B1F_EventScript_ArchieSkyPillarYouSay
+	call_if_set FLAG_EVIL_TEAM_MAGMA, CaveOfOrigin_B1F_EventScript_MaxieSkyPillarYouSay
+	call_if_set FLAG_EVIL_TEAM_AQUA, CaveOfOrigin_B1F_EventScript_ArchieSkyPillarYouSay
 	applymovement VAR_0x8005, Common_Movement_FaceRight
 	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, CaveOfOrigin_B1F_EventScript_ArchieCantYouSee
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, CaveOfOrigin_B1F_EventScript_MaxieCantYouSee
+	call_if_set FLAG_EVIL_TEAM_MAGMA, CaveOfOrigin_B1F_EventScript_ArchieCantYouSee
+	call_if_set FLAG_EVIL_TEAM_AQUA, CaveOfOrigin_B1F_EventScript_MaxieCantYouSee
 	applymovement VAR_0x8005, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, CaveOfOrigin_B1F_EventScript_MaxieLackConviction
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, CaveOfOrigin_B1F_EventScript_ArchieLackConviction
+	call_if_set FLAG_EVIL_TEAM_MAGMA, CaveOfOrigin_B1F_EventScript_MaxieLackConviction
+	call_if_set FLAG_EVIL_TEAM_AQUA, CaveOfOrigin_B1F_EventScript_ArchieLackConviction
 	applymovement VAR_0x8005, CaveOfOrigin_B1F_Movement_EvilLeaderLeave1
 	waitmovement 0
 	playse SE_NOT_EFFECTIVE
@@ -129,8 +129,8 @@ CaveOfOrigin_B1F_EventScript_AtSkyPillar::
 	delay 16
 	applymovement VAR_0x8004, Common_Movement_WalkSlowDown
 	waitmovement 0
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, CaveOfOrigin_B1F_EventScript_ArchieThisIsntGood
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, CaveOfOrigin_B1F_EventScript_MaxieThisIsntGood
+	call_if_set FLAG_EVIL_TEAM_MAGMA, CaveOfOrigin_B1F_EventScript_ArchieThisIsntGood
+	call_if_set FLAG_EVIL_TEAM_AQUA, CaveOfOrigin_B1F_EventScript_MaxieThisIsntGood
 	applymovement VAR_0x8004, CaveOfOrigin_B1F_Movement_GoodLeaderLeave
 	waitmovement 0
 	playse SE_EXIT
