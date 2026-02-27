@@ -798,7 +798,7 @@
 #define TRAINER_WINONA_3                    791
 #define TRAINER_WINONA_4                    792
 #define TRAINER_WINONA_5                    793
-#define TRAINER_TATE_AND_LIZA_2             794
+#define TRAINER_ERIKA_RUSTBORO              794
 #define TRAINER_TATE_AND_LIZA_3             795
 #define TRAINER_TATE_AND_LIZA_4             796
 #define TRAINER_TATE_AND_LIZA_5             797

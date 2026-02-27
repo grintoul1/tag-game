@@ -21,6 +21,101 @@ RustboroCity_OnTransition:
 	goto_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_PositionScientistForExit
 	end
 
+RustboroCity_EventScript_Erika::
+	lockall
+	applymovement LOCALID_RUSTBORO_ERIKA, Common_Movement_FacePlayer
+	waitmovement LOCALID_RUSTBORO_ERIKA
+	goto_if_set FLAG_DEFEATED_RUSTBORO_ERIKA, RustboroCity_EventScript_ErikaVictory
+	goto_if_set FLAG_RUSTBORO_ERIKA_INTRO_GIVEN, RustboroCity_EventScript_ErikaWouldLikeToBattle
+	msgbox RustboroCity_Text_ErikaIntro1, MSGBOX_AUTOCLOSE
+	waitmessage
+	delay 4
+	applymovement LOCALID_RUSTBORO_ERIKA, Common_Movement_FaceRight
+	waitmovement LOCALID_RUSTBORO_ERIKA
+	msgbox RustboroCity_Text_ErikaIntro2, MSGBOX_AUTOCLOSE
+	waitmessage
+	delay 16
+	delay 16
+	delay 16
+	applymovement LOCALID_RUSTBORO_ERIKA, Common_Movement_FacePlayer
+	waitmovement LOCALID_RUSTBORO_ERIKA
+	delay 4
+	setflag FLAG_RUSTBORO_ERIKA_INTRO_GIVEN
+RustboroCity_EventScript_ErikaWouldLikeToBattle::
+	msgbox RustboroCity_Text_ErikaWouldLikeToBattle, MSGBOX_AUTOCLOSE
+	waitmessage
+	message RustboroCity_Text_ErikaWhatDoYouSay
+	yesnobox 25, 5
+	closemessage
+	compare VAR_RESULT, 1
+	goto_if_eq RustboroCity_EventScript_DoErikaBattle
+	msgbox RustboroCity_Text_ErikaLeavingSoon, MSGBOX_AUTOCLOSE
+	waitmessage
+	releaseall
+	end
+
+RustboroCity_EventScript_DoErikaBattle::
+	multi_2p_vs_1 TRAINER_ERIKA_RUSTBORO, RustboroCity_Text_ErikaDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, RustboroCity_EventScript_ErikaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+RustboroCity_EventScript_ErikaVictory::
+	msgbox RustboroCity_Text_ErikaPostBattle, MSGBOX_AUTOCLOSE
+	waitmessage
+	goto_if_set FLAG_DEFEATED_RUSTBORO_ERIKA, RustboroCity_EventScript_ErikaEnd
+	giveitem ITEM_MIRACLE_SEED
+RustboroCity_EventScript_ErikaEnd::
+	releaseall
+	end
+
+RustboroCity_Text_ErikaPostBattle:
+	.string "Erika: Well, you are certainly ready\n"
+	.string "to challenge the Gym.\p"
+	.string "I hope the Miracle Seed will help you\n"
+	.string "to succeed!$"
+
+
+RustboroCity_Text_ErikaDefeat:
+	.string "Impressive! You will give\n"
+	.string "Roxanne a run for her money!$"
+
+RustboroCity_Text_ErikaIntro1:
+	.string "Erika: … … …\p"
+	.string "Oh, I'm so sorry, I did not mean to\n"
+	.string "stare.\p"
+	.string "Sometimes I lose my focus for a moment\n"
+	.string "you see.\p"
+	.string "My name is Erika! My colleagues and I\n"
+	.string "are visiting from the Kanto region on\l"
+	.string "invitation from the former champion.$"
+
+RustboroCity_Text_ErikaIntro2:
+	.string "Erika: Rustboro's Gym leader, Roxanne,\n"
+	.string "is rather adept with Rock type Pokemon.\p"
+	.string "Though personally I have always been\n"
+	.string "more fond of the Grass type… … …$"
+
+RustboroCity_Text_ErikaWouldLikeToBattle:
+	.string "Erika: … … …\p"
+	.string "My apologies, I got distracted for a\n"
+	.string "moment again there.\p"
+	.string "Would you care to show me the Pokemon\n"
+	.string "you like to battle with?\p"
+	.string "If you can defeat me I will give you\n"
+	.string "an item that empowers the Grass type!$"
+
+RustboroCity_Text_ErikaWhatDoYouSay:
+	.string "What do you say?$"
+
+RustboroCity_Text_ErikaLeavingSoon:
+	.string "Okay, do let me know if you change\n"
+	.string "your mind.\p"
+	.string "Though be aware that I am planning\n"
+	.string "yo leave Rustboro very soon!$"
+
 RustboroCity_EventScript_PositionScientistForExit::
 	goto_if_eq VAR_TEMP_0, 11, RustboroCity_EventScript_PositionScientistLeftExit
 	setobjectxyperm LOCALID_SCIENTIST, 12, 15

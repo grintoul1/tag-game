@@ -1188,7 +1188,62 @@ Naive Nature
 - Hyper Voice  
 - Body Slam  
 - Power Gem  
-- Icy Wind  
+- Icy Wind
+
+=== TRAINER_ERIKA_RUSTBORO ===
+Name: Erika
+Class: Kantonian
+Pic: Leader Erika Frlg
+Gender: Female
+Music: Female
+Battle Type: Singles
+Mugshot: Green
+AI: Tag Trainer
+Multi Party: Half
+
+Skiploom @ Bug Gem
+Ability: Chlorophyll
+Level: 34
+Jolly Nature
+- Seed Bomb
+- U-turn
+- Acrobatics
+- Spore
+
+Gloom @ Miracle Seed
+Ability: Stench
+Level: 34
+Rash Nature
+- Venoshock
+- Trailblaze
+- Grass Knot
+- Toxic
+
+Bellossom @ Heat Rock
+Ability: Chlorophyll
+Level: 33
+Naive Nature
+- Pollen Puff
+- Mega Drain
+- Triple Axel
+- Sunny Day
+
+Tangela @ Assault Vest
+Ability: Chlorophyll
+Level: 33
+Calm Nature
+- Magical Leaf
+- Sludge
+- Ancient Power
+- Wrap
+
+Weepinbell @ Miracle Seed
+Ability: Chlorophyll
+Level: 34
+Hasty Nature
+- Weather Ball
+- Acid Spray
+- Bullet Seed
 
 === TRAINER_TOMMY ===
 Name: Tommy

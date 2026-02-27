@@ -65,19 +65,19 @@
 
 #else
 
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
+#define FLAG_DEFEATED_RUSTBORO_ERIKA        0x27
+#define FLAG_HIDE_RUSTBORO_ERIKA            0x28
+#define FLAG_DEFEATED_PETALBURG_BLAINE      0x29
+#define FLAG_HIDE_PETALBURG_BLAINE          0x2A
+#define FLAG_DEFEATED_DEWFORD_SABRINA       0x2B 
+#define FLAG_HIDE_DEWFORD_SABRINA           0x2C
+#define FLAG_DEFEATED_LAVARIDGE_MISTY       0x2D
+#define FLAG_HIDE_LAVARIDGE_MISTY           0x2E
+#define FLAG_DEFEATED_MOSSDEEP_KANTONIANS   0x2F
+#define FLAG_HIDE_MOSSDEEP_KANTONIANS       0x30
+#define FLAG_DEFEATED_FORTREE_KANTONIANS    0x31
+#define FLAG_HIDE_FORTREE_KANTONIANS        0x32
+#define FLAG_RUSTBORO_ERIKA_INTRO_GIVEN     0x33
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
