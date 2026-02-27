@@ -6799,9 +6799,7 @@ bool32 AI_OpponentCanFaintAiWithMod(enum BattlerId battler, u32 healAmount)
 void GetAIPartyIndexes(enum BattlerId battler, s32 *firstId, s32 *lastId)
 {
     bool32 isSharedTeams = (FlagGet(FLAG_SHARE_PARTY) && (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)));
-    if (battler == B_BATTLER_2 && gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE) && !(isSharedTeams && (battler & BIT_SIDE) == B_SIDE_PLAYER))
-        *firstId = MULTI_PARTY_SIZE, *lastId = PARTY_SIZE;
-    else if (BattleSideHasTwoTrainers(battler & BIT_SIDE) && !AreMultiPartiesFullTeams() && !(isSharedTeams && (battler & BIT_SIDE) == B_SIDE_PLAYER))
+    if (BattleSideHasTwoTrainers(battler & BIT_SIDE) && !AreMultiPartiesFullTeams() && !(isSharedTeams && (battler & BIT_SIDE) == B_SIDE_PLAYER))
         *firstId = 0, *lastId = MULTI_PARTY_SIZE;
     else
         *firstId = 0, *lastId = PARTY_SIZE;
