@@ -623,6 +623,7 @@ gSongTable::
 	song mus_hg_vs_champion, MUSIC_PLAYER_BGM, 0
 	song mus_hg_vs_frontier_brain, MUSIC_PLAYER_BGM, 0
 	song mus_hg_victory_frontier_brain, MUSIC_PLAYER_BGM, 0
+	song mus_vs_kantonian, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:

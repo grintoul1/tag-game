@@ -497,6 +497,7 @@
 #define MUS_HG_VS_CHAMPION          614
 #define MUS_HG_VS_FRONTIER_BRAIN    615
 #define MUS_HG_VICTORY_FRONTIER_BRAIN 616
+#define MUS_VS_KANTONIAN            617 // MUS_BATTLE32
 #define END_MUS                     MUS_RG_TEACHY_TV_MENU
 
 // These PH_* constants are phoneme sounds used by the "bard" NPC (see src/bard_music.c and src/mauville_old_man.c).
