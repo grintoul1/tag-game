@@ -530,6 +530,8 @@ bool32 ShouldSanitizeEncounterAbility(u16 species)
 {
     switch (species)
     {
+    case SPECIES_IGGLYBUFF:
+    case SPECIES_JIGGLYTUFF:
     case SPECIES_WIGGLYTUFF:
         return TRUE;
     default:
