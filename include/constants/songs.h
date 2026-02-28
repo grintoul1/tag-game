@@ -662,8 +662,6 @@ enum __attribute__((packed)) SongId
     MUS_NONE            = 0xFFFF,
 };
 
-#define FIRST_PHONEME_SONG          PH_TRAP_BLEND
-#define LAST_PHONEME_SONG           PH_NURSE_SOLO
 #define NUM_PHONEME_SONGS           (LAST_PHONEME_SONG - FIRST_PHONEME_SONG + 1)
 #define PHONEME_ID(song)            ((song) - FIRST_PHONEME_SONG)
 #define PHONEME_ID_NONE             0xFF
