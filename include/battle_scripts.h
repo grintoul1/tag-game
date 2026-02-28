@@ -77,6 +77,7 @@ extern const u8 BattleScript_EncoredMove[];
 extern const u8 BattleScript_MoveUsedIsDisabled[];
 extern const u8 BattleScript_SelectingDisabledMove[];
 extern const u8 BattleScript_DisabledNoMore[];
+extern const u8 BattleScript_StoppedFlinching[];
 extern const u8 BattleScript_SelectingDisabledMoveInPalace[];
 extern const u8 BattleScript_SelectingUnusableMoveInPalace[];
 extern const u8 BattleScript_EncoredNoMore[];

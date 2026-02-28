@@ -4770,6 +4770,11 @@ BattleScript_DisabledNoMore::
 	waitmessage B_WAIT_TIME_LONG
 	end2
 
+BattleScript_StoppedFlinching::
+	printstring STRINGID_PKMNMENTALHERBPREVENTEDFLINCHING
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
 BattleScript_SelectingDisabledMoveInPalace::
 	printstring STRINGID_PKMNMOVEISDISABLED
 	goto BattleScript_SelectingUnusableMoveInPalace

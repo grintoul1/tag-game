@@ -464,6 +464,14 @@ static enum ItemEffect TryMentalHerb(enum BattlerId battler)
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MENTALHERBCURE_DISABLE;
             effect = ITEM_EFFECT_OTHER;
         }
+        // Check flinch
+        if (gBattleMons[battler].volatiles.flinched != 0)
+        {
+            gBattleMons[battler].volatiles.flinched = 0;
+            gBattleMons[battler].volatiles.flinched = 0;
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MENTALHERBCURE_FLINCH;
+            effect = ITEM_EFFECT_OTHER;
+        }
     }
 
     if (effect)
