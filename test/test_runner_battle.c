@@ -2046,7 +2046,7 @@ void OpenPokemon(u32 sourceLine, enum BattleTrainer trainer, u32 species)
     DATA.nature = NATURE_HARDY;
     (*partySize)++;
 
-    CreateMon(DATA.currentMon, species, 100, 0, OTID_STRUCT_PRESET(0));
+    CreateMon(DATA.currentMon, species, 100, 0, OTID_STRUCT_PRESET(0), FALSE);
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         data = MOVE_NONE;

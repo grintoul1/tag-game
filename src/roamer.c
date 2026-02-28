@@ -4,6 +4,7 @@
 #include "pokemon.h"
 #include "random.h"
 #include "roamer.h"
+#include "wild_encounter.h"
 
 // Despite having a variable to track it, the roamer is
 // hard-coded to only ever be in map group 0
@@ -105,7 +106,7 @@ static void CreateInitialRoamerMon(u8 index, u16 species, u8 level)
         GetSynchronizedGender(ROAMER_ORIGIN, species),
         GetSynchronizedNature(ROAMER_ORIGIN, species),
         RANDOM_UNOWN_LETTER);
-    CreateMonWithIVs(&gParties[B_TRAINER_1][0], species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    CreateMonWithIVs(&gParties[B_TRAINER_1][0], species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS, FALSE);
     GiveMonInitialMoveset(&gParties[B_TRAINER_1][0]);
     ROAMER(index)->ivs = GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_IVS);
     ROAMER(index)->personality = GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_PERSONALITY);
@@ -249,7 +250,7 @@ void CreateRoamerMonInstance(u32 roamerIndex)
     u32 status = ROAMER(roamerIndex)->statusA + (ROAMER(roamerIndex)->statusB << 8);
     struct Pokemon *mon = &gParties[B_TRAINER_1][0];
     ZeroEnemyPartyMons();
-    CreateMonWithIVsPersonality(mon, ROAMER(roamerIndex)->species, ROAMER(roamerIndex)->level, ROAMER(roamerIndex)->ivs, ROAMER(roamerIndex)->personality);
+    CreateMonWithIVsPersonality(mon, ROAMER(roamerIndex)->species, ROAMER(roamerIndex)->level, ROAMER(roamerIndex)->ivs, ROAMER(roamerIndex)->personality, ShouldSanitizeEncounterAbility(ROAMER(roamerIndex)->species));
     SetMonData(mon, MON_DATA_STATUS, &status);
     SetMonData(mon, MON_DATA_HP, &ROAMER(roamerIndex)->hp);
     SetMonData(mon, MON_DATA_COOL, &ROAMER(roamerIndex)->cool);

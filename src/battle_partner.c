@@ -177,7 +177,7 @@ void FillPartnerParty(u16 trainerId)
             else if (partyData[i].gender == TRAINER_MON_FEMALE)
                 personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
             ModifyPersonalityForNature(&personality, partyData[i].nature);
-            CreateMon(&gParties[B_TRAINER_2][i], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(otID));
+            CreateMon(&gParties[B_TRAINER_2][i], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(otID), FALSE);
             j = partyData[i].isShiny;
             SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_IS_SHINY, &j);
             SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);

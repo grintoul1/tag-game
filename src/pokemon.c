@@ -1302,30 +1302,30 @@ void ZeroEnemyPartyMons(void)
     }
 }
 
-void CreateRandomMon(struct Pokemon *mon, u16 species, u8 level)
+void CreateRandomMon(struct Pokemon *mon, u16 species, u8 level, bool32 sanitizeAbility)
 {
-    CreateRandomMonWithIVs(mon, species, level, USE_RANDOM_IVS);
+    CreateRandomMonWithIVs(mon, species, level, USE_RANDOM_IVS, sanitizeAbility);
 }
 
-void CreateRandomMonWithIVs(struct Pokemon *mon, u16 species, u8 level, u8 fixedIv)
+void CreateRandomMonWithIVs(struct Pokemon *mon, u16 species, u8 level, u8 fixedIv, bool32 sanitizeAbility)
 {
-    CreateMonWithIVs(mon, species, level, Random32(), OTID_STRUCT_PLAYER_ID, fixedIv);
+    CreateMonWithIVs(mon, species, level, Random32(), OTID_STRUCT_PLAYER_ID, fixedIv, sanitizeAbility);
     GiveMonInitialMoveset(mon);
 }
 
-void CreateMon(struct Pokemon *mon, u16 species, u8 level, u32 personality, struct OriginalTrainerId trainerId)
+void CreateMon(struct Pokemon *mon, u16 species, u8 level, u32 personality, struct OriginalTrainerId trainerId, bool32 sanitizeAbility)
 {
     u32 mail;
     ZeroMonData(mon);
-    CreateBoxMon(&mon->box, species, level, personality, trainerId);
+    CreateBoxMon(&mon->box, species, level, personality, trainerId, sanitizeAbility);
     SetMonData(mon, MON_DATA_LEVEL, &level);
     mail = MAIL_NONE;
     SetMonData(mon, MON_DATA_MAIL, &mail);
 }
 
-void CreateMonWithIVs(struct Pokemon *mon, u16 species, u8 level, u32 personality, struct OriginalTrainerId trainerId, u8 fixedIV)
+void CreateMonWithIVs(struct Pokemon *mon, u16 species, u8 level, u32 personality, struct OriginalTrainerId trainerId, u8 fixedIV, bool32 sanitizeAbility)
 {
-    CreateMon(mon, species, level, personality, trainerId);
+    CreateMon(mon, species, level, personality, trainerId, sanitizeAbility);
     SetBoxMonIVs(&mon->box, fixedIV);
     CalculateMonStats(mon);
 }
@@ -1382,7 +1382,7 @@ void SetBoxMonIVs(struct BoxPokemon *mon, u8 fixedIV)
     }
 }
 
-void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u32 personality, struct OriginalTrainerId trainerId)
+void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u32 personality, struct OriginalTrainerId trainerId, bool32 sanitizeAbility)
 {
     u8 speciesName[POKEMON_NAME_LENGTH + 1];
     u32 value;
@@ -1470,6 +1470,8 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u32 personal
     //using gen 3-4 ability formula, it was changed in later gens
     if (GetSpeciesAbility(species, 1))
         SetBoxMonData(boxMon, MON_DATA_ABILITY_NUM, &value);
+    if (sanitizeAbility)
+        SetBoxMonData(boxMon, MON_DATA_ABILITY_NUM, 0);
 }
 
 static bool32 IsValidGender(u32 gender)
@@ -1518,16 +1520,16 @@ u32 GetMonPersonality(u16 species, u8 gender, u8 nature, u8 unownLetter)
 }
 
 // This is only used to create Wally's Ralts.
-void CreateMaleMon(struct Pokemon *mon, u16 species, u8 level)
+void CreateMaleMon(struct Pokemon *mon, u16 species, u8 level, bool32 sanitizeAbility)
 {
     u32 personality = GetMonPersonality(species, MON_MALE, NATURE_RANDOM, RANDOM_UNOWN_LETTER);
-    CreateMonWithIVs(mon, species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    CreateMonWithIVs(mon, species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS, sanitizeAbility);
     GiveMonInitialMoveset(mon);
 }
 
-void CreateMonWithIVsPersonality(struct Pokemon *mon, u16 species, u8 level, u32 ivs, u32 personality)
+void CreateMonWithIVsPersonality(struct Pokemon *mon, u16 species, u8 level, u32 ivs, u32 personality, bool32 sanitizeAbility)
 {
-    CreateMon(mon, species, level, personality, OTID_STRUCT_PLAYER_ID);
+    CreateMon(mon, species, level, personality, OTID_STRUCT_PLAYER_ID, sanitizeAbility);
     SetMonData(mon, MON_DATA_IVS, &ivs);
     CalculateMonStats(mon);
     GiveMonInitialMoveset(mon);
@@ -1540,7 +1542,7 @@ void CreateBattleTowerMon(struct Pokemon *mon, struct BattleTowerPokemon *src)
     enum Language language;
     u8 value;
 
-    CreateMon(mon, src->species, src->level, src->personality, OTID_STRUCT_PRESET(src->otId));
+    CreateMon(mon, src->species, src->level, src->personality, OTID_STRUCT_PRESET(src->otId), FALSE);
 
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonMoveSlot(mon, src->moves[i], i);
@@ -1602,7 +1604,7 @@ void CreateBattleTowerMon_HandleLevel(struct Pokemon *mon, struct BattleTowerPok
     else
         level = src->level;
 
-    CreateMon(mon, src->species, level, src->personality, OTID_STRUCT_PRESET(src->otId));
+    CreateMon(mon, src->species, level, src->personality, OTID_STRUCT_PRESET(src->otId), FALSE);
 
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonMoveSlot(mon, src->moves[i], i);
@@ -1663,7 +1665,7 @@ void CreateApprenticeMon(struct Pokemon *mon, const struct Apprentice *src, u8 m
               GetFrontierEnemyMonLevel(src->lvlMode - 1),
               personality,
               OTID_STRUCT_PRESET(otId),
-              MAX_PER_STAT_IVS);
+              MAX_PER_STAT_IVS, FALSE);
     SetMonData(mon, MON_DATA_HELD_ITEM, &src->party[monId].item);
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonMoveSlot(mon, src->party[monId].moves[i], i);
@@ -1719,7 +1721,7 @@ static void CreateEventMon(struct Pokemon *mon, u16 species, u8 level, u32 perso
 {
     bool32 isModernFatefulEncounter = TRUE;
 
-    CreateMon(mon, species, level, personality, otId);
+    CreateMon(mon, species, level, personality, otId, FALSE);
     SetMonData(mon, MON_DATA_MODERN_FATEFUL_ENCOUNTER, &isModernFatefulEncounter);
 }
 
@@ -3623,7 +3625,7 @@ void CreateSecretBaseEnemyParty(struct SecretBase *secretBaseRecord)
                 gBattleResources->secretBase->party.levels[i],
                 gBattleResources->secretBase->party.personality[i],
                 OTID_STRUCT_RANDOM_NO_SHINY,
-                15);
+                15, FALSE);
             SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_HELD_ITEM, &gBattleResources->secretBase->party.heldItems[i]);
 
             for (j = 0; j < NUM_STATS; j++)

@@ -4465,13 +4465,39 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Beautifly
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sawk @ Salac Berry
+Ability: Sturdy
+Level: 62
+Jolly Nature
+- Poison Jab
+- Rock Slide
+- Reversal
+- Enlightening
 
-Dustox
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Wigglytuff @ Mental Herb
+Ability: Cute Charm
+Level: 63
+Bold Nature
+- Misty Explosion
+- Follow Me
+
+Krookodile @ Roseli Berry
+Ability: Moxie
+Level: 63
+Naive Nature
+- High Horsepower
+- Knock Off
+- Fire Fang
+- Pursuit
+
+Machamp @ Assault Vest
+Ability: No Guard
+Level: 62
+Jolly Nature
+- Dynamic Punch
+- Stone Edge
+- Mega Kick
+- Ice Punch
 
 === TRAINER_BRAXTON ===
 Name: Braxton

@@ -23,6 +23,7 @@
 #include "item.h"
 #include "regions.h"
 #include "malloc.h"
+#include "wild_encounter.h"
 #include "constants/form_change_types.h"
 #include "constants/items.h"
 #include "constants/moves.h"
@@ -1110,7 +1111,7 @@ void CreateEgg(struct Pokemon *mon, u16 species, bool8 setHotSpringsLocation)
     metloc_u8_t metLocation;
     u8 isEgg;
 
-    CreateRandomMonWithIVs(mon, species, EGG_HATCH_LEVEL, USE_RANDOM_IVS);
+    CreateRandomMonWithIVs(mon, species, EGG_HATCH_LEVEL, USE_RANDOM_IVS, ShouldSanitizeEncounterAbility(species));
     metLevel = 0;
     ball = BALL_POKE;
     language = LANGUAGE_JAPANESE;
@@ -1137,7 +1138,7 @@ static void SetInitialEggData(struct Pokemon *mon, u16 species, struct DayCare *
     u8 language;
 
     personality = daycare->offspringPersonality;
-    CreateMonWithIVs(mon, species, EGG_HATCH_LEVEL, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    CreateMonWithIVs(mon, species, EGG_HATCH_LEVEL, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS, TRUE);
     metLevel = 0;
     ball = BALL_POKE;
     language = LANGUAGE_JAPANESE;

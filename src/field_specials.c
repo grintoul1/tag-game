@@ -1529,7 +1529,7 @@ void SetShoalItemFlag(u16 unused)
 void LoadWallyZigzagoon(void)
 {
     u16 monData;
-    CreateRandomMon(&gParties[B_TRAINER_0][0], SPECIES_ZIGZAGOON, 7);
+    CreateRandomMon(&gParties[B_TRAINER_0][0], SPECIES_ZIGZAGOON, 7, FALSE);
     monData = TRUE;
     SetMonData(&gParties[B_TRAINER_0][0], MON_DATA_ABILITY_NUM, &monData);
     monData = MOVE_TACKLE;

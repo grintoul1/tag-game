@@ -526,11 +526,22 @@ static u8 PickWildMonNature(u32 species)
     return GetSynchronizedNature(WILDMON_ORIGIN, species);
 }
 
-void CreateWildMon(u16 species, u8 level)
+bool32 ShouldSanitizeEncounterAbility(u16 species)
+{
+    switch (species)
+    {
+    case SPECIES_WIGGLYTUFF:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+void CreateWildMon(u16 species, u8 level, bool32 sanitizeAbility)
 {
     ZeroEnemyPartyMons();
     u32 personality = GetMonPersonality(species, GetSynchronizedGender(WILDMON_ORIGIN, species), PickWildMonNature(species), RANDOM_UNOWN_LETTER);
-    CreateMonWithIVs(&gParties[B_TRAINER_1][0], species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    CreateMonWithIVs(&gParties[B_TRAINER_1][0], species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS, sanitizeAbility);
     GiveMonInitialMoveset(&gParties[B_TRAINER_1][0]);
 }
 
@@ -599,7 +610,7 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum 
     if (ShouldRandomizeWildMonForm(species))
         RandomizeWildMonForm(&species);
 
-    CreateWildMon(species, level);
+    CreateWildMon(species, level, ShouldSanitizeEncounterAbility(species));
     return TRUE;
 }
 
@@ -610,7 +621,7 @@ static u16 GenerateFishingWildMon(const struct WildPokemonInfo *wildMonInfo, u8 
     u8 level = ChooseWildMonLevel(wildMonInfo->wildPokemon, wildMonIndex, WILD_AREA_FISHING);
 
     UpdateChainFishingStreak();
-    CreateWildMon(wildMonSpecies, level);
+    CreateWildMon(wildMonSpecies, level, ShouldSanitizeEncounterAbility(wildMonSpecies));
     return wildMonSpecies;
 }
 
@@ -621,7 +632,7 @@ static bool8 SetUpMassOutbreakEncounter(u8 flags)
     if (flags & WILD_CHECK_REPEL && !IsWildLevelAllowedByRepel(gSaveBlock1Ptr->outbreakPokemonLevel))
         return FALSE;
 
-    CreateWildMon(gSaveBlock1Ptr->outbreakPokemonSpecies, gSaveBlock1Ptr->outbreakPokemonLevel);
+    CreateWildMon(gSaveBlock1Ptr->outbreakPokemonSpecies, gSaveBlock1Ptr->outbreakPokemonLevel, ShouldSanitizeEncounterAbility(gSaveBlock1Ptr->outbreakPokemonSpecies));
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonMoveSlot(&gParties[B_TRAINER_1][0], gSaveBlock1Ptr->outbreakPokemonMoves[i], i);
 
@@ -1008,7 +1019,7 @@ void FishingWildEncounter(u8 rod)
         u8 level = ChooseWildMonLevel(&sWildFeebas, 0, WILD_AREA_FISHING);
 
         species = sWildFeebas.species;
-        CreateWildMon(species, level);
+        CreateWildMon(species, level, ShouldSanitizeEncounterAbility(species));
     }
     else
     {

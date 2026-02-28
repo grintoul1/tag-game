@@ -465,7 +465,7 @@ static void DoBattlePyramidTrainerHillBattle(void)
 // Initiates battle where Wally catches Ralts
 void StartWallyTutorialBattle(void)
 {
-    CreateMaleMon(&gParties[B_TRAINER_1][0], SPECIES_RALTS, 5);
+    CreateMaleMon(&gParties[B_TRAINER_1][0], SPECIES_RALTS, 5, FALSE);
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_ReturnToFieldContinueScriptPlayMapMusic;
     gBattleTypeFlags = BATTLE_TYPE_CATCH_TUTORIAL;
@@ -474,7 +474,7 @@ void StartWallyTutorialBattle(void)
 
 void StartOldManTutorialBattle(void)
 {
-    CreateMaleMon(&gParties[B_TRAINER_1][0], SPECIES_WEEDLE, 5);
+    CreateMaleMon(&gParties[B_TRAINER_1][0], SPECIES_WEEDLE, 5, FALSE);
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_ReturnToFieldContinueScriptPlayMapMusic;
     gBattleTypeFlags = BATTLE_TYPE_CATCH_TUTORIAL;
@@ -515,7 +515,7 @@ void StartMarowakBattle(void)
     {
         u32 personality = GetMonPersonality(SPECIES_MAROWAK, MON_FEMALE, NATURE_SERIOUS, RANDOM_UNOWN_LETTER);
 
-        CreateMonWithIVsPersonality(&gParties[B_TRAINER_1][0], SPECIES_MAROWAK, 30, 31, personality);
+        CreateMonWithIVsPersonality(&gParties[B_TRAINER_1][0], SPECIES_MAROWAK, 30, 31, personality, FALSE);
     }
 
     CreateBattleStartTask(GetWildBattleTransition(), 0);

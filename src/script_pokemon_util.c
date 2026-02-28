@@ -124,7 +124,7 @@ void CreateScriptedWildMon(u16 species, u8 level, enum Item item)
         GetSynchronizedGender(STATIC_WILDMON_ORIGIN, species),
         GetSynchronizedNature(STATIC_WILDMON_ORIGIN, species),
         RANDOM_UNOWN_LETTER);
-    CreateMonWithIVs(&gParties[B_TRAINER_1][0], species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    CreateMonWithIVs(&gParties[B_TRAINER_1][0], species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS, FALSE);
     GiveMonInitialMoveset(&gParties[B_TRAINER_1][0]);
     if (item)
     {
@@ -143,7 +143,7 @@ void CreateScriptedDoubleWildMon(u16 species1, u8 level1, enum Item item1, u16 s
         GetSynchronizedGender(STATIC_WILDMON_ORIGIN, species1),
         GetSynchronizedNature(STATIC_WILDMON_ORIGIN, species1),
         RANDOM_UNOWN_LETTER);
-    CreateMonWithIVs(&gParties[B_TRAINER_1][0], species1, level1, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    CreateMonWithIVs(&gParties[B_TRAINER_1][0], species1, level1, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS, FALSE);
     GiveMonInitialMoveset(&gParties[B_TRAINER_1][0]);
     if (item1)
     {
@@ -156,7 +156,7 @@ void CreateScriptedDoubleWildMon(u16 species1, u8 level1, enum Item item1, u16 s
         GetSynchronizedGender(STATIC_WILDMON_ORIGIN, species2),
         GetSynchronizedNature(STATIC_WILDMON_ORIGIN, species2),
         RANDOM_UNOWN_LETTER);
-    CreateMonWithIVs(&gParties[B_TRAINER_3][0], species2, level2, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    CreateMonWithIVs(&gParties[B_TRAINER_3][0], species2, level2, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS, FALSE);
     GiveMonInitialMoveset(&gParties[B_TRAINER_3][0]);
     if (item2)
     {
@@ -419,7 +419,7 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, e
     bool32 isShiny;
 
     u32 personality = GetMonPersonality(species, gender, nature, RANDOM_UNOWN_LETTER);
-    CreateMon(&mon, species, level, personality, OTID_STRUCT_PLAYER_ID);
+    CreateMon(&mon, species, level, personality, OTID_STRUCT_PLAYER_ID, FALSE);
 
     // shininess
     if (shinyMode == SHINY_MODE_ALWAYS || (P_FLAG_FORCE_SHINY != 0 && FlagGet(P_FLAG_FORCE_SHINY)))
@@ -516,7 +516,7 @@ u32 ScriptGiveMon(u16 species, u8 level, enum Item item)
     struct Pokemon mon;
     u8 heldItem[2];
 
-    CreateRandomMon(&mon, species, level);
+    CreateRandomMon(&mon, species, level, ShouldSanitizeEncounterAbility(species));
     if (item)
     {
         heldItem[0] = item;

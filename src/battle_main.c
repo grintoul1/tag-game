@@ -1963,7 +1963,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 otId.method = OT_ID_PRESET;
                 otId.value = HIHALF(personalityValue) ^ LOHALF(personalityValue);
             }
-            CreateMon(&party[i], partyData[monIndex].species, partyData[monIndex].lvl, personalityValue, otId);
+            CreateMon(&party[i], partyData[monIndex].species, partyData[monIndex].lvl, personalityValue, otId, FALSE);
             SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[monIndex].heldItem);
 
             CustomTrainerPartyAssignMoves(&party[i], &partyData[monIndex]);
@@ -2276,7 +2276,7 @@ void FillPoolForShelly(u8 unused)
         else if (partyData[i].gender == TRAINER_MON_FEMALE)
             personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
         ModifyPersonalityForNature(&personality, partyData[i].nature);
-        CreateMonWithIVs(&gEliteFourPool[i], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(SHELLY_OTID), 31);
+        CreateMonWithIVs(&gEliteFourPool[i], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(SHELLY_OTID), 31, FALSE);
         j = partyData[i].isShiny;
         SetMonData(&gEliteFourPool[i], MON_DATA_IS_SHINY, &j);
         SetMonData(&gEliteFourPool[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
@@ -2348,7 +2348,7 @@ void FillPoolForTabitha(u8 unused)
         else if (partyData[i].gender == TRAINER_MON_FEMALE)
             personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
         ModifyPersonalityForNature(&personality, partyData[i].nature);
-        CreateMonWithIVs(&gEliteFourPool[i], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(TABITHA_OTID), 31);
+        CreateMonWithIVs(&gEliteFourPool[i], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(TABITHA_OTID), 31, FALSE);
         j = partyData[i].isShiny;
         SetMonData(&gEliteFourPool[i], MON_DATA_IS_SHINY, &j);
         SetMonData(&gEliteFourPool[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
@@ -2440,7 +2440,7 @@ void FillPoolForTabitha(u8 unused)
             else if (partyData[i].gender == TRAINER_MON_FEMALE)
                 personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
             ModifyPersonalityForNature(&personality, partyData[i].nature);
-            CreateMon(&gParties[B_TRAINER_0][i + 3], partyData[i].species, partyData[i].lvl, 0, TRUE, personality, OT_ID_PRESET, otID);
+            CreateMon(&gParties[B_TRAINER_0][i + 3], partyData[i].species, partyData[i].lvl, 0, TRUE, personality, OT_ID_PRESET, otID, FALSE);
             j = partyData[i].isShiny;
             SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_IS_SHINY, &j);
             SetMonData(&gParties[B_TRAINER_0][i + 3], MON_DATA_HELD_ITEM, &partyData[i].heldItem);

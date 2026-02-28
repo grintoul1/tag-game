@@ -161,7 +161,7 @@ void CreateBoxMonLegacy(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fix
 {
     u32 personality = hasFixedPersonality ? fixedPersonality : Random32();
     struct OriginalTrainerId otId = {otIdType, fixedOtId};
-    CreateBoxMon(boxMon, species, level, personality, otId);
+    CreateBoxMon(boxMon, species, level, personality, otId, FALSE);
     SetBoxMonIVs(boxMon, fixedIV);
     GiveBoxMonInitialMoveset(boxMon);
 }

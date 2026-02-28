@@ -1186,7 +1186,7 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
     u8 i;
     u8 perfectIv = 31;
 
-    CreateWildMon(species, level);  // shiny rate bonus handled in CreateBoxMon
+    CreateWildMon(species, level, ShouldSanitizeEncounterAbility(species));  // shiny rate bonus handled in CreateBoxMon
 
     // Pick random, unique IVs to set to 31. The number of perfect IVs that are assigned is equal to the potential
     iv[0] = Random() % NUM_STATS;               // choose 1st perfect stat
@@ -1276,7 +1276,7 @@ static void DexNavGenerateMoveset(u16 species, u8 searchLevel, u8 encounterLevel
     }
 
     // Generate a wild mon just to get the initial moveset (later overwritten by CreateDexNavWildMon)
-    CreateWildMon(species, encounterLevel);
+    CreateWildMon(species, encounterLevel, ShouldSanitizeEncounterAbility(species));
 
     // Store generated mon moves into Dex Nav Struct
     for (i = 0; i < MAX_MON_MOVES; i++)
