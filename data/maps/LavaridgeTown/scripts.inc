@@ -258,7 +258,10 @@ LavaridgeTown_EventScript_EggWoman::
 	playfanfare MUS_OBTAIN_ITEM
 	message LavaridgeTown_Text_ReceivedTheEgg
 	waitfanfare
-	giveegg SPECIES_WYNAUT
+	giveegg SPECIES_TYPE_NULL
+	callnative GetRandomSilvallyMemory
+	msgbox LavaridgeTown_Text_HaveThisMemory, MSGBOX_DEFAULT
+	giveitem VAR_RESULT
 	release
 	end
 
@@ -356,6 +359,9 @@ LavaridgeTown_Text_ReceivedTheEgg:
 LavaridgeTown_Text_NoRoomForThisEgg:
 	.string "Oh? You've too many POKéMON.\n"
 	.string "There's no room for this EGG…$"
+
+LavaridgeTown_Text_HaveThisMemory:
+	.string "Take this also.$"
 
 LavaridgeTown_Text_AsYouWishThen:
 	.string "As you wish, then…\p"

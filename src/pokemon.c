@@ -7551,3 +7551,8 @@ void ChangePokemonNicknameWithCallback(void (*callback)(void))
     GetBoxMonData(boxMon, MON_DATA_NICKNAME, gStringVar2);
     DoNamingScreen(NAMING_SCREEN_NICKNAME, gStringVar2, GetBoxMonData(boxMon, MON_DATA_SPECIES), GetBoxMonGender(boxMon), GetBoxMonData(boxMon, MON_DATA_PERSONALITY), callback);
 }
+
+void GetRandomSilvallyMemory(void)
+{
+    gSpecialVar_Result = RandomUniform(RNG_SILVALLY_MEMORY, ITEM_FIRE_MEMORY, ITEM_FAIRY_MEMORY);
+}
