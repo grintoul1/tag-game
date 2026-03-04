@@ -1,6 +1,7 @@
 #include "global.h"
 #include "battle.h"
 #include "battle_gfx_sfx_util.h"
+#include "battle_partner.h"
 #include "battle_setup.h"
 #include "berry.h"
 #include "caps.h"
@@ -35,6 +36,7 @@ static void CB2_ReturnFromChooseHalfParty(void);
 static void CB2_ReturnFromChooseBattleFrontierParty(void);
 static void HealPlayerBoxes(void);
 static void CB2_ReturnFromChooseHalfPartyEliteFour(void);
+static void CB2_ReturnFromChooseStoryPartyForPartner(void);
 
 void HealPlayerParty(void)
 {
@@ -188,6 +190,14 @@ void ChooseHalfPartyForBattle(u8 unused)
     InitChooseHalfPartyForBattle(0);
 }
 
+void ChoosePartyForStoryBattle(u8 unused)
+{
+    CalculateEliteFourPoolCount();
+    gMain.savedCallback = CB2_ReturnFromChooseStoryPartyForPartner;
+    VarSet(VAR_FRONTIER_FACILITY, FACILITY_STORY);
+    InitChoosePartyForStoryBattle(0);
+}
+
 void ChooseHalfPartyForEliteFour(u8 unused)
 {
     gMain.savedCallback = CB2_ReturnFromChooseHalfPartyEliteFour;
@@ -248,6 +258,29 @@ static void CB2_ReturnFromChooseHalfPartyEliteFour(void)
     SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 
+static void CB2_ReturnFromChooseStoryPartyForPartner(void)
+{
+    switch (gSelectedOrderFromParty[0])
+    {
+    case 0:
+        gSpecialVar_Result = FALSE;
+        break;
+    default:
+        for (u32 i = 0; i < PARTY_SIZE; i++)
+        {
+            if (i > gSpecialVar_0x800B)
+                break;
+            if (gSelectedOrderFromParty[i] != 0)
+            {
+                CopyMon(&gParties[B_TRAINER_2][i], &gEliteFourPool[gSelectedOrderFromParty[i] - 1], sizeof(*&gEliteFourPool[gSelectedOrderFromParty[i] - 1]));
+            }
+        }
+        gSpecialVar_Result = TRUE;
+        break;
+    }
+    SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+}
+
 void ChoosePartyForBattleFrontier(void)
 {
     gMain.savedCallback = CB2_ReturnFromChooseBattleFrontierParty;
@@ -276,9 +309,10 @@ void ReducePlayerPartyToSelectedMons(void)
 
     CpuFill32(0, party, sizeof party);
 
-    if (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)
+    if ((gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)
      || gPartnerTrainerId == TRAINER_PARTNER(PARTNER_SHELLY_MHO)
      || gPartnerTrainerId == TRAINER_PARTNER(PARTNER_TABITHA))
+     && !IsStoryMulti())
     {
         return;
     }
@@ -292,7 +326,9 @@ void ReducePlayerPartyToSelectedMons(void)
 
     // overwrite the first 4 with the order copied to.
     for (i = 0; i < PARTY_SIZE; i++)
+    {
         gParties[B_TRAINER_0][i] = party[i];
+    }
 
     CalculatePlayerPartyCount();
 }

@@ -2322,11 +2322,14 @@ void FillPoolForShelly(u8 unused)
         SetMonData(&gEliteFourPool[i], MON_DATA_OT_GENDER, &j);
     }
 
-    for (i = 0; i < MULTI_PARTY_SIZE; i++)
+    if (!IsStoryMulti())
     {
-        tempMon = gParties[B_TRAINER_0][i + 3];
-        gParties[B_TRAINER_0][i + 3] = gEliteFourPool[i];
-        gEliteFourPool[i] = tempMon;
+        for (i = 0; i < MULTI_PARTY_SIZE; i++)
+        {
+            tempMon = gParties[B_TRAINER_0][i + 3];
+            gParties[B_TRAINER_0][i + 3] = gEliteFourPool[i];
+            gEliteFourPool[i] = tempMon;
+        }
     }
 }
 
@@ -2394,11 +2397,14 @@ void FillPoolForTabitha(u8 unused)
         SetMonData(&gEliteFourPool[i], MON_DATA_OT_GENDER, &j);
     }
 
-    for (i = 0; i < MULTI_PARTY_SIZE; i++)
+    if (!IsStoryMulti())
     {
-        tempMon = gParties[B_TRAINER_0][i + 3];
-        gParties[B_TRAINER_0][i + 3] = gEliteFourPool[i];
-        gEliteFourPool[i] = tempMon;
+        for (i = 0; i < MULTI_PARTY_SIZE; i++)
+        {
+            tempMon = gParties[B_TRAINER_0][i + 3];
+            gParties[B_TRAINER_0][i + 3] = gEliteFourPool[i];
+            gEliteFourPool[i] = tempMon;
+        }
     }
 }
 /*    if (trainerId > TRAINER_PARTNER(PARTNER_NONE))

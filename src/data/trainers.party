@@ -6144,9 +6144,13 @@ Mugshot: ArchieWithMaxie
 Music: Aqua
 Battle Type: Doubles
 AI: Tag Trainer
-Multi Party: Half
+Multi Party: Full
 
 Mightyena
+Level: 34
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+Golbat
 Level: 34
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
@@ -6163,9 +6167,17 @@ Gender: Female
 Music: Aqua
 Battle Type: Doubles
 AI: Tag Trainer
-Multi Party: Half
+Multi Party: Full
 
 Mightyena
+Level: 34
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+Golbat
+Level: 34
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+Golbat
 Level: 34
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 

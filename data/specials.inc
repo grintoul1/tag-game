@@ -65,6 +65,7 @@ gSpecials::
 	def_special ChooseHalfPartyForEliteFour
 	def_special ChooseHalfPartyForPlayerHideout
 	def_special ChooseHalfPartyForPartnerHideout
+	def_special ChoosePartyForStoryBattle
 	def_special FillPoolForShelly
 	def_special FillPoolForTabitha
 	def_special ClearHideoutPool

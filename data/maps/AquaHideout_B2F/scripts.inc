@@ -83,18 +83,26 @@ AquaHideout_B2F_EventScript_Matt::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
 	waitmovement 0
-	goto AquaHideout_B2F_EventScript_MattShellyDoMultiBattle
+	setvar VAR_0x800A, 0
+	setvar VAR_0x800B, 5
+	special ClearHideoutPool @ Restore player party
+	special FillPoolForTabitha @ Refill pool with Tabitha's team
+	special SavePlayerParty
+	fadescreen FADE_TO_BLACK
+	special ChoosePartyForStoryBattle
+	waitstate
+	goto_if_ne VAR_RESULT, 0, AquaHideout_B2F_EventScript_MattShellyDoMultiBattle
+	special LoadPlayerParty
 	releaseall
 	end
 
 AquaHideout_B2F_EventScript_MattShellyDoMultiBattle::
-	multi_2p_vs_2 TRAINER_SHELLY_AQUA_HIDEOUT, AquaHideout_B2F_Text_ShellyDefeat, TRAINER_MATT_AQUA_HIDEOUT, AquaHideout_B2F_Text_MattDefeat, PARTNER_TABITHA
+	multi_2_vs_2 TRAINER_SHELLY_AQUA_HIDEOUT, AquaHideout_B2F_Text_ShellyDefeat, TRAINER_MATT_AQUA_HIDEOUT, AquaHideout_B2F_Text_MattDefeat, PARTNER_TABITHA
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, AquaHideout_B2F_EventScript_MattShellyVictory
 	fadescreen FADE_TO_BLACK
 	destroyfollowernpc
-	special ClearHideoutPool
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
 	setvar VAR_PARTNER_EMMIE_STATE, 48
 	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
