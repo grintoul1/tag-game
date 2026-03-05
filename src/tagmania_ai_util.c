@@ -234,66 +234,6 @@ enum Move GetIncomingMoveSpeedCheck(enum BattlerId battler, enum BattlerId oppos
     return MOVE_NONE;
 }
 
-void ClearBattlerMoveHistory(enum BattlerId battlerId)
-{
-    memset(gBattleHistory->usedMoves[battlerId], 0, sizeof(gBattleHistory->usedMoves[battlerId]));
-    memset(gBattleHistory->moveHistory[battlerId], 0, sizeof(gBattleHistory->moveHistory[battlerId]));
-    gBattleHistory->moveHistoryIndex[battlerId] = 0;
-}
-
-void RecordLastUsedMoveBy(enum BattlerId battlerId, enum Move move)
-{
-    u8 *index = &gBattleHistory->moveHistoryIndex[battlerId];
-
-    if (++(*index) >= AI_MOVE_HISTORY_COUNT)
-        *index = 0;
-    gBattleHistory->moveHistory[battlerId][*index] = move;
-}
-
-void RecordKnownMove(enum BattlerId battler, enum Move move)
-{
-    s32 moveIndex;
-
-    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
-    {
-        if (gBattleMons[battler].moves[moveIndex] == move)
-            break;
-    }
-
-    if (moveIndex < MAX_MON_MOVES && gBattleHistory->usedMoves[battler][moveIndex] == MOVE_NONE)
-    {
-        gBattleHistory->usedMoves[battler][moveIndex] = move;
-        gAiPartyData->mons[GetBattlerSide(battler)][gBattlerPartyIndexes[battler]].moves[moveIndex] = move;
-    }
-}
-
-void RecordAllMoves(enum BattlerId battler)
-{
-    memcpy(gAiPartyData->mons[GetBattlerSide(battler)][gBattlerPartyIndexes[battler]].moves, gBattleMons[battler].moves, MAX_MON_MOVES * sizeof(u16));
-}
-
-void RecordAbilityBattle(enum BattlerId battlerId, enum Ability abilityId)
-{
-    gBattleHistory->abilities[battlerId] = abilityId;
-    gAiPartyData->mons[GetBattlerSide(battlerId)][gBattlerPartyIndexes[battlerId]].ability = abilityId;
-}
-
-void ClearBattlerAbilityHistory(enum BattlerId battlerId)
-{
-    gBattleHistory->abilities[battlerId] = ABILITY_NONE;
-}
-
-void RecordItemEffectBattle(enum BattlerId battlerId, enum HoldEffect itemEffect)
-{
-    gBattleHistory->itemEffects[battlerId] = itemEffect;
-    gAiPartyData->mons[GetBattlerSide(battlerId)][gBattlerPartyIndexes[battlerId]].heldEffect = itemEffect;
-}
-
-void ClearBattlerItemEffectHistory(enum BattlerId battlerId)
-{
-    gBattleHistory->itemEffects[battlerId] = 0;
-}
-
 void SaveBattlerData(enum BattlerId battlerId)
 {
     if (!BattlerHasAi(battlerId) && !gAiThinkingStruct->saved[battlerId].saved)
@@ -776,7 +716,7 @@ static inline void CalcDynamicMoveDamage(struct BattleContext *ctx, u16 *medianD
 
     u32 strikeCount = GetMoveStrikeCount(ctx->move);
 
-    if (effect == EFFECT_BEAT_UP && GetConfig(CONFIG_BEAT_UP) >= GEN_5)
+    if (effect == EFFECT_BEAT_UP && GetConfig(B_BEAT_UP) >= GEN_5)
     {
         u32 partyCount = CalculatePartyCount(GetBattlerTrainer(ctx->battlerAtk));
         u32 i;
@@ -849,7 +789,7 @@ static inline bool32 ShouldCalcCritDamage(struct BattleContext *ctx)
     s32 critChanceIndex = 0;
 
     // Get crit chance
-    if (GetConfig(CONFIG_CRIT_CHANCE) == GEN_1)
+    if (GetConfig(B_CRIT_CHANCE) == GEN_1)
         critChanceIndex = CalcCritChanceStageGen1(ctx);
     else
         critChanceIndex = CalcCritChanceStage(ctx);
@@ -858,11 +798,11 @@ static inline bool32 ShouldCalcCritDamage(struct BattleContext *ctx)
         return TRUE;
     if (critChanceIndex >= RISKY_AI_CRIT_STAGE_THRESHOLD // Not guaranteed but above Risky threshold
         && (gAiThinkingStruct->aiFlags[ctx->battlerAtk] & AI_FLAG_RISKY)
-        && GetConfig(CONFIG_CRIT_CHANCE) != GEN_1)
+        && GetConfig(B_CRIT_CHANCE) != GEN_1)
         return TRUE;
     if (critChanceIndex >= RISKY_AI_CRIT_THRESHOLD_GEN_1 // Not guaranteed but above Risky threshold
         && (gAiThinkingStruct->aiFlags[ctx->battlerAtk] & AI_FLAG_RISKY)
-        && GetConfig(CONFIG_CRIT_CHANCE) == GEN_1)
+        && GetConfig(B_CRIT_CHANCE) == GEN_1)
         return TRUE;
 
     return FALSE;
@@ -1255,7 +1195,7 @@ static bool32 AI_IsMoveEffectInMinus(enum BattlerId battlerAtk, enum BattlerId b
             return TRUE;
         break;
     case EFFECT_DREAM_EATER:
-        if (abilityDef == ABILITY_LIQUID_OOZE && GetConfig(CONFIG_DREAM_EATER_LIQUID_OOZE) >= GEN_5)
+        if (abilityDef == ABILITY_LIQUID_OOZE && GetConfig(B_DREAM_EATER_LIQUID_OOZE) >= GEN_5)
             return TRUE;
         break;
     default:
@@ -1509,7 +1449,7 @@ bool32 CanEndureHit(enum BattlerId battler, enum BattlerId battlerTarget, enum M
 
     if (!DoesBattlerIgnoreAbilityChecks(battler, gAiLogicData->abilities[battler], move))
     {
-        if (GetConfig(CONFIG_STURDY) >= GEN_5 && gAiLogicData->abilities[battlerTarget] == ABILITY_STURDY)
+        if (GetConfig(B_STURDY) >= GEN_5 && gAiLogicData->abilities[battlerTarget] == ABILITY_STURDY)
             return TRUE;
         if (IsMimikyuDisguised(battlerTarget))
             return TRUE;
@@ -2279,15 +2219,17 @@ bool32 IsHazardMove(enum Move move)
 bool32 IsHazardClearingMove(enum Move move)
 {
     // Hazard clearing effects like Rapid Spin, Tidy Up, etc.
-    u32 moveEffect = GetMoveEffect(move);
+    enum BattleMoveEffects moveEffect = GetMoveEffect(move);
     switch (moveEffect)
     {
     case EFFECT_RAPID_SPIN:
     case EFFECT_TIDY_UP:
         return TRUE;
     case EFFECT_DEFOG:
-        if (GetConfig(CONFIG_DEFOG_EFFECT_CLEARING) >= GEN_6)
+        if (GetConfig(B_DEFOG_EFFECT_CLEARING) >= GEN_6)
             return TRUE;
+        break;
+    default:
         break;
     }
 
@@ -2569,7 +2511,7 @@ bool32 CanLowerStat(enum BattlerId battlerAtk, enum BattlerId battlerDef, struct
             if (stat == STAT_DEF)
                 return FALSE;
         case ABILITY_ILLUMINATE:
-            if (GetConfig(CONFIG_ILLUMINATE_EFFECT) < GEN_9)
+            if (GetConfig(B_ILLUMINATE_EFFECT) < GEN_9)
                 break;
         case ABILITY_KEEN_EYE:
         case ABILITY_MINDS_EYE:
@@ -3150,7 +3092,7 @@ bool32 HasThawingMove(enum BattlerId battler)
     return FALSE;
 }
 
-bool32 HasUsableWhileAsleepMove(enum BattlerId battler)
+bool32 HasMoveUsableWhileAsleep(enum BattlerId battler)
 {
     enum Move *moves = GetMovesArray(battler);
     for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
@@ -3327,7 +3269,7 @@ bool32 IsSwitchOutEffect(enum BattleMoveEffects effect)
     switch (effect)
     {
     case EFFECT_TELEPORT:
-        if (GetConfig(CONFIG_TELEPORT_BEHAVIOR) >= GEN_8)
+        if (GetConfig(B_TELEPORT_BEHAVIOR) >= GEN_8)
             return TRUE;
     case EFFECT_HIT_ESCAPE:
     case EFFECT_PARTING_SHOT:
@@ -3582,6 +3524,7 @@ static bool32 BattlerAffectedByHail(enum BattlerId battlerId, enum Ability abili
     if (!IS_BATTLER_OF_TYPE(battlerId, TYPE_ICE)
       && ability != ABILITY_SNOW_CLOAK
       && ability != ABILITY_SNOW_FORCE
+      && ability != ABILITY_MAGIC_GUARD
       && ability != ABILITY_OVERCOAT
       && ability != ABILITY_ICE_BODY)
         return TRUE;
@@ -4115,7 +4058,7 @@ bool32 AnyPartyMemberStatused(enum BattlerId battlerId, bool32 checkSoundproof)
         battlerOnField1 = gBattlerPartyIndexes[battlerId];
         battlerOnField2 = gBattlerPartyIndexes[GetPartnerBattler(battlerId)];
         // Check partner's status
-        if ((GetConfig(CONFIG_HEAL_BELL_SOUNDPROOF) == GEN_5
+        if ((GetConfig(B_HEAL_BELL_SOUNDPROOF) == GEN_5
             || gAiLogicData->abilities[BATTLE_PARTNER(battlerId)] != ABILITY_SOUNDPROOF
             || !checkSoundproof)
          && GetMonData(&party[battlerOnField2], MON_DATA_STATUS) != STATUS1_NONE
@@ -4129,8 +4072,8 @@ bool32 AnyPartyMemberStatused(enum BattlerId battlerId, bool32 checkSoundproof)
     }
 
     // Check attacker's status
-    if ((GetConfig(CONFIG_HEAL_BELL_SOUNDPROOF) == GEN_5
-      || GetConfig(CONFIG_HEAL_BELL_SOUNDPROOF) >= GEN_8
+    if ((GetConfig(B_HEAL_BELL_SOUNDPROOF) == GEN_5
+      || GetConfig(B_HEAL_BELL_SOUNDPROOF) >= GEN_8
       || gAiLogicData->abilities[battlerId] != ABILITY_SOUNDPROOF || !checkSoundproof)
      && GetMonData(&party[battlerOnField1], MON_DATA_STATUS) != STATUS1_NONE
      && ShouldCureStatus(battlerId, battlerId, gAiLogicData))
@@ -4141,7 +4084,7 @@ bool32 AnyPartyMemberStatused(enum BattlerId battlerId, bool32 checkSoundproof)
     {
         if (monIndex == battlerOnField1 || monIndex == battlerOnField2)
             continue;
-        if (GetConfig(CONFIG_HEAL_BELL_SOUNDPROOF) < GEN_5
+        if (GetConfig(B_HEAL_BELL_SOUNDPROOF) < GEN_5
          && checkSoundproof
          && GetMonAbility(&party[monIndex]) == ABILITY_SOUNDPROOF)
             continue;
@@ -4294,7 +4237,7 @@ static bool32 ShouldCureStatusInternal(enum BattlerId battlerAtk, enum BattlerId
     {
         if (targetingAlly || targetingSelf)
         {
-            if (HasUsableWhileAsleepMove(battlerDef))
+            if (HasMoveUsableWhileAsleep(battlerDef))
                 return FALSE;
             else
                 return usingItem || targetingAlly;
@@ -5513,7 +5456,7 @@ s32 IncreaseSleepScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enu
         return scoreAdj;
 
     if ((HasMoveWithEffect(battlerAtk, EFFECT_DREAM_EATER) || HasMoveWithEffect(battlerAtk, EFFECT_NIGHTMARE))
-      && !HasUsableWhileAsleepMove(battlerDef))
+      && !HasMoveUsableWhileAsleep(battlerDef))
         scoreAdj += WEAK_EFFECT;
     else if (IsPowerBasedOnStatus(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_SLEEP)
       || IsPowerBasedOnStatus(BATTLE_PARTNER(battlerAtk), EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_SLEEP))
@@ -6318,7 +6261,7 @@ bool32 ShouldTriggerAbility(enum BattlerId battlerAtk, enum BattlerId battlerDef
         {
         case ABILITY_LIGHTNING_ROD:
         case ABILITY_STORM_DRAIN:
-            if (GetConfig(CONFIG_REDIRECT_ABILITY_IMMUNITY) < GEN_5)
+            if (GetConfig(B_REDIRECT_ABILITY_IMMUNITY) < GEN_5)
                 return FALSE;
             else
                 return (BattlerStatCanRise(battlerDef, ability, STAT_SPATK) && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL));
@@ -6696,31 +6639,6 @@ enum AIScore BattlerBenefitsFromAbilityScore(enum BattlerId battler, enum Abilit
     }
 
     return WEAK_EFFECT;
-}
-
-bool32 IsNaturalEnemy(u32 speciesAttacker, u32 speciesTarget)
-{
-    if (B_WILD_NATURAL_ENEMIES != TRUE)
-        return FALSE;
-
-    switch (speciesAttacker)
-    {
-    case SPECIES_ZANGOOSE:
-        return (speciesTarget == SPECIES_SEVIPER);
-    case SPECIES_SEVIPER:
-        return (speciesTarget == SPECIES_ZANGOOSE);
-    case SPECIES_HEATMOR:
-        return (speciesTarget == SPECIES_DURANT);
-    case SPECIES_DURANT:
-        return (speciesTarget == SPECIES_HEATMOR);
-    case SPECIES_SABLEYE:
-        return (speciesTarget == SPECIES_CARBINK);
-    case SPECIES_MAREANIE:
-        return (speciesTarget == SPECIES_CORSOLA);
-    default:
-        return FALSE;
-    }
-    return FALSE;
 }
 
 u32 GetAIExplosionChanceFromHP(u32 hpPercent)

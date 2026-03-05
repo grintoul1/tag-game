@@ -1332,6 +1332,7 @@ static bool32 GetFormArray(u16 species, const u16 **formTable, u32 *count)
         *count = ARRAY_COUNT(gFormArrayUnown);
         break;
     case SPECIES_MINIOR_METEOR:
+    case SPECIES_MINIOR_CORE:
         *formTable = gFormArrayMinior;
         *count = ARRAY_COUNT(gFormArrayMinior);
         break;

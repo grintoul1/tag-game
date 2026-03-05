@@ -42,6 +42,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -87,6 +88,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 29
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -132,6 +134,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 45
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -177,6 +180,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 61
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -222,6 +226,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 77
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -267,6 +272,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 93
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -312,6 +318,7 @@
             .ability = ABILITY_STEADFAST,
 #line 109
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
 #line 110
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -334,6 +341,7 @@
             .ability = ABILITY_UNBURDEN,
 #line 117
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
 #line 118
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -382,6 +390,7 @@
             .ability = ABILITY_STAKEOUT,
 #line 135
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
 #line 136
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -404,6 +413,7 @@
             .ability = ABILITY_SWARM,
 #line 143
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
 #line 144
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -452,6 +462,7 @@
             .ability = ABILITY_CHEEK_POUCH,
 #line 161
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
 #line 162
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -475,6 +486,7 @@
             .ability = ABILITY_GLUTTONY,
 #line 170
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
 #line 171
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -523,6 +535,7 @@
             .ability = ABILITY_COTTON_DOWN,
 #line 188
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
 #line 189
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -546,6 +559,7 @@
             .ability = ABILITY_OWN_TEMPO,
 #line 197
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
 #line 198
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -595,6 +609,7 @@
             .ability = ABILITY_WATER_VEIL,
 #line 216
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
 #line 217
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -618,6 +633,7 @@
             .ability = ABILITY_TORRENT,
 #line 225
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
 #line 226
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -667,6 +683,7 @@
             .ability = ABILITY_COMPOUND_EYES,
 #line 244
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
 #line 245
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -690,6 +707,7 @@
             .ability = ABILITY_OVERCOAT,
 #line 253
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
 #line 254
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -739,6 +757,7 @@
             .ability = ABILITY_GRASSY_SURGE,
 #line 272
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
 #line 273
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -762,6 +781,7 @@
             .ability = ABILITY_SYMBIOSIS,
 #line 281
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
 #line 282
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -785,6 +805,7 @@
             .ability = ABILITY_INNER_FOCUS,
 #line 290
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
 #line 291
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -808,6 +829,7 @@
             .ability = ABILITY_ELECTRIC_SURGE,
 #line 299
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
 #line 300
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -857,6 +879,7 @@
             .ability = ABILITY_OWN_TEMPO,
 #line 318
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 319
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -880,6 +903,7 @@
             .ability = ABILITY_SERENE_GRACE,
 #line 327
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
 #line 328
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -929,6 +953,7 @@
             .ability = ABILITY_OWN_TEMPO,
 #line 347
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 348
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -952,6 +977,7 @@
             .ability = ABILITY_TRACE,
 #line 357
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
 #line 358
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1001,6 +1027,7 @@
             .ability = ABILITY_PRANKSTER,
 #line 377
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
 #line 378
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1024,6 +1051,7 @@
             .ability = ABILITY_SWIFT_SWIM,
 #line 386
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 387
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1073,6 +1101,7 @@
             .ability = ABILITY_LEVITATE,
 #line 405
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 406
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1095,6 +1124,7 @@
             .ability = ABILITY_SHEER_FORCE,
 #line 413
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
 #line 414
             .nature = NATURE_RASH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1118,6 +1148,7 @@
             .ability = ABILITY_SHEER_FORCE,
 #line 422
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
 #line 423
             .nature = NATURE_RASH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1167,6 +1198,7 @@
             .ability = ABILITY_DRIZZLE,
 #line 441
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 442
             .nature = NATURE_BASHFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1189,6 +1221,7 @@
             .ability = ABILITY_DROUGHT,
 #line 449
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 450
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1238,6 +1271,7 @@
             .ability = ABILITY_SAND_STREAM,
 #line 468
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 469
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1261,6 +1295,7 @@
             .ability = ABILITY_SNOW_WARNING,
 #line 477
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 478
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1284,6 +1319,7 @@
             .ability = ABILITY_HAIL_WARNING,
 #line 486
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 487
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1333,6 +1369,7 @@
             .ability = ABILITY_LIMBER,
 #line 505
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 506
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1356,6 +1393,7 @@
             .ability = ABILITY_WIND_RIDER,
 #line 514
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 515
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1379,6 +1417,7 @@
             .ability = ABILITY_STEAM_ENGINE,
 #line 523
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 524
             .nature = NATURE_CALM,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1402,6 +1441,7 @@
             .ability = ABILITY_OVERCOAT,
 #line 532
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 533
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1451,6 +1491,7 @@
             .ability = ABILITY_TANGLED_FEET,
 #line 551
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 552
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1473,6 +1514,7 @@
             .ability = ABILITY_BATTERY,
 #line 559
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 560
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1521,6 +1563,7 @@
             .ability = ABILITY_MARVEL_SCALE,
 #line 577
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 578
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1544,6 +1587,7 @@
             .ability = ABILITY_BLAZE,
 #line 586
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 587
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1567,6 +1611,7 @@
             .ability = ABILITY_EFFECT_SPORE,
 #line 595
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 596
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1616,6 +1661,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 614
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
 #line 615
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1639,6 +1685,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 623
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 624
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1688,6 +1735,7 @@
             .ability = ABILITY_STORM_DRAIN,
 #line 642
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
 #line 643
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1711,6 +1759,7 @@
             .ability = ABILITY_LEVITATE,
 #line 651
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 652
             .nature = NATURE_QUIET,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1734,6 +1783,7 @@
             .ability = ABILITY_LEVITATE,
 #line 660
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 661
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1779,6 +1829,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 678
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1816,6 +1867,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 692
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -1859,6 +1911,7 @@
             .ability = ABILITY_TRACE,
 #line 708
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
 #line 709
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1882,6 +1935,7 @@
             .ability = ABILITY_GLUTTONY,
 #line 717
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 718
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1931,6 +1985,7 @@
             .ability = ABILITY_NO_GUARD,
 #line 736
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
 #line 737
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -1954,6 +2009,7 @@
             .ability = ABILITY_NO_GUARD,
 #line 745
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 746
             .nature = NATURE_CAREFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2003,6 +2059,7 @@
             .ability = ABILITY_STATIC,
 #line 764
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 765
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2023,6 +2080,7 @@
             .ability = ABILITY_LIGHTNING_ROD,
 #line 770
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 771
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2072,6 +2130,7 @@
             .ability = ABILITY_LIGHTNING_ROD,
 #line 789
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 790
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2095,6 +2154,7 @@
             .ability = ABILITY_LIGHTNING_ROD,
 #line 798
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 799
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2144,6 +2204,7 @@
             .ability = ABILITY_MINUS,
 #line 817
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 818
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2167,6 +2228,7 @@
             .ability = ABILITY_MINUS,
 #line 826
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 827
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2216,6 +2278,7 @@
             .ability = ABILITY_PLUS,
 #line 845
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 846
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2239,6 +2302,7 @@
             .ability = ABILITY_PLUS,
 #line 854
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 855
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2262,6 +2326,7 @@
             .ability = ABILITY_PLUS,
 #line 863
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 865
             .nature = NATURE_LAX,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2315,6 +2380,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 884
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 885
             .nature = NATURE_BRAVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2337,6 +2403,7 @@
             .ability = ABILITY_IRON_BARBS,
 #line 892
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 893
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2360,6 +2427,7 @@
             .ability = ABILITY_STATIC,
 #line 901
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
 #line 902
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2380,6 +2448,7 @@
             .ability = ABILITY_LEVITATE,
 #line 907
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
 #line 908
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2403,6 +2472,7 @@
             .ability = ABILITY_SURGE_SURFER,
 #line 916
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
 #line 917
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2426,6 +2496,7 @@
             .ability = ABILITY_QUARK_DRIVE,
 #line 925
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 926
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2475,6 +2546,7 @@
             .ability = ABILITY_INNER_FOCUS,
 #line 944
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
 #line 945
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2498,6 +2570,7 @@
             .ability = ABILITY_ARENA_TRAP,
 #line 953
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 954
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2547,6 +2620,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 972
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
 #line 973
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2570,6 +2644,7 @@
             .ability = ABILITY_GUTS,
 #line 981
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
 #line 982
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2619,6 +2694,7 @@
             .ability = ABILITY_ANGER_SHELL,
 #line 1000
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
 #line 1001
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2642,6 +2718,7 @@
             .ability = ABILITY_HYPER_CUTTER,
 #line 1009
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1010
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2691,6 +2768,7 @@
             .ability = ABILITY_STURDY,
 #line 1028
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
 #line 1029
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2714,6 +2792,7 @@
             .ability = ABILITY_ARENA_TRAP,
 #line 1037
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
 #line 1038
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2763,6 +2842,7 @@
             .ability = ABILITY_SHIELD_DUST,
 #line 1056
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1057
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2786,6 +2866,7 @@
             .ability = ABILITY_TINTED_LENS,
 #line 1065
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1066
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2832,6 +2913,7 @@
             .ability = ABILITY_MEGA_LAUNCHER,
 #line 1081
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1082
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2855,6 +2937,7 @@
             .ability = ABILITY_WATER_ABSORB,
 #line 1090
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1091
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2904,6 +2987,7 @@
             .ability = ABILITY_WELL_BAKED_BODY,
 #line 1109
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1110
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2927,6 +3011,7 @@
             .ability = ABILITY_TELEPATHY,
 #line 1118
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1119
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2976,6 +3061,7 @@
             .ability = ABILITY_FLAME_BODY,
 #line 1137
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1138
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -2999,6 +3085,7 @@
             .ability = ABILITY_QUICK_FEET,
 #line 1146
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1147
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3048,6 +3135,7 @@
             .ability = ABILITY_STURDY,
 #line 1165
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1167
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3073,6 +3161,7 @@
             .ability = ABILITY_STURDY,
 #line 1175
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
 #line 1177
             .nature = NATURE_BRAVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3098,6 +3187,7 @@
             .ability = ABILITY_REFRIGERATE,
 #line 1185
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1187
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3151,6 +3241,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 1206
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1207
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3174,6 +3265,7 @@
             .ability = ABILITY_STENCH,
 #line 1215
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1216
             .nature = NATURE_RASH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3197,6 +3289,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 1224
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
 #line 1225
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3220,6 +3313,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 1233
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
 #line 1234
             .nature = NATURE_CALM,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3243,6 +3337,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 1242
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1243
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3291,6 +3386,7 @@
             .ability = ABILITY_DEFEATIST,
 #line 1260
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1262
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3316,6 +3412,7 @@
             .ability = ABILITY_STORM_DRAIN,
 #line 1270
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
 #line 1272
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3341,6 +3438,7 @@
             .ability = ABILITY_STRONG_JAW,
 #line 1280
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1282
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3394,6 +3492,7 @@
             .ability = ABILITY_STURDY,
 #line 1301
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
 #line 1302
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3417,6 +3516,7 @@
             .ability = ABILITY_BATTLE_ARMOR,
 #line 1310
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1311
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3440,6 +3540,7 @@
             .ability = ABILITY_TOUGH_CLAWS,
 #line 1319
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
 #line 1320
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3463,6 +3564,7 @@
             .ability = ABILITY_PROTOSYNTHESIS,
 #line 1328
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
 #line 1329
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3486,6 +3588,7 @@
             .ability = ABILITY_EARTH_EATER,
 #line 1337
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
 #line 1338
             .nature = NATURE_CAREFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3509,6 +3612,7 @@
             .ability = ABILITY_FILTER,
 #line 1346
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
 #line 1347
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3558,6 +3662,7 @@
             .ability = ABILITY_FUR_COAT,
 #line 1365
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1366
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3581,6 +3686,7 @@
             .ability = ABILITY_FUR_COAT,
 #line 1374
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1375
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3630,6 +3736,7 @@
             .ability = ABILITY_PRANKSTER,
 #line 1393
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1394
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3653,6 +3760,7 @@
             .ability = ABILITY_PRANKSTER,
 #line 1402
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1403
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3676,6 +3784,7 @@
             .ability = ABILITY_PRANKSTER,
 #line 1411
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1412
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3725,6 +3834,7 @@
             .ability = ABILITY_LIQUID_VOICE,
 #line 1430
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1431
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3748,6 +3858,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 1439
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1440
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3771,6 +3882,7 @@
             .ability = ABILITY_OVERGROW,
 #line 1448
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1449
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3820,6 +3932,7 @@
             .ability = ABILITY_BLAZE,
 #line 1467
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1468
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3843,6 +3956,7 @@
             .ability = ABILITY_TORRENT,
 #line 1476
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1477
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3866,6 +3980,7 @@
             .ability = ABILITY_CONTRARY,
 #line 1485
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1486
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3915,6 +4030,7 @@
             .ability = ABILITY_CONTRARY,
 #line 1504
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1505
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3938,6 +4054,7 @@
             .ability = ABILITY_TECHNICIAN,
 #line 1513
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1514
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3985,6 +4102,7 @@
             .ability = ABILITY_SYNCHRONIZE,
 #line 1530
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1531
             .nature = NATURE_CALM,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4008,6 +4126,7 @@
             .ability = ABILITY_FLUFFY,
 #line 1539
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1540
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4057,6 +4176,7 @@
             .ability = ABILITY_THICK_FAT,
 #line 1558
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1559
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4080,6 +4200,7 @@
             .ability = ABILITY_SAP_SIPPER,
 #line 1567
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1568
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4129,6 +4250,7 @@
             .ability = ABILITY_BLAZE,
 #line 1586
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1587
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4152,6 +4274,7 @@
             .ability = ABILITY_STORM_DRAIN,
 #line 1595
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1596
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4201,6 +4324,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 1614
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1615
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4224,6 +4348,7 @@
             .ability = ABILITY_POISON_POINT,
 #line 1623
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1624
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4273,6 +4398,7 @@
             .ability = ABILITY_REGENERATOR,
 #line 1642
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1643
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4296,6 +4422,7 @@
             .ability = ABILITY_WATER_ABSORB,
 #line 1651
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1652
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4319,6 +4446,7 @@
             .ability = ABILITY_TANGLED_FEET,
 #line 1660
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1661
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4370,6 +4498,7 @@
             .ability = ABILITY_ICE_BODY,
 #line 1680
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 1681
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4393,6 +4522,7 @@
             .ability = ABILITY_SPEED_BOOST,
 #line 1689
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 1690
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4416,6 +4546,7 @@
             .ability = ABILITY_STAMINA,
 #line 1698
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1699
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4439,6 +4570,7 @@
             .ability = ABILITY_NATURAL_CURE,
 #line 1707
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1708
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4462,6 +4594,7 @@
             .ability = ABILITY_POISON_POINT,
 #line 1716
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1717
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4485,6 +4618,7 @@
             .ability = ABILITY_DISGUISE,
 #line 1726
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1727
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4536,6 +4670,7 @@
             .ability = ABILITY_VOLT_ABSORB,
 #line 1746
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 1747
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4559,6 +4694,7 @@
             .ability = ABILITY_UNBURDEN,
 #line 1755
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 1756
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4582,6 +4718,7 @@
             .ability = ABILITY_POISON_POINT,
 #line 1764
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1765
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4605,6 +4742,7 @@
             .ability = ABILITY_FLASH_FIRE,
 #line 1773
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1774
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4628,6 +4766,7 @@
             .ability = ABILITY_NATURAL_CURE,
 #line 1782
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1783
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4651,6 +4790,7 @@
             .ability = ABILITY_FROST_BODY,
 #line 1791
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1792
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4702,6 +4842,7 @@
             .ability = ABILITY_PIXILATE,
 #line 1811
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 1812
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4725,6 +4866,7 @@
             .ability = ABILITY_FILTER,
 #line 1820
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 1821
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4748,6 +4890,7 @@
             .ability = ABILITY_LEVITATE,
 #line 1829
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1830
             .nature = NATURE_LAX,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4771,6 +4914,7 @@
             .ability = ABILITY_POISON_POINT,
 #line 1838
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1839
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4794,6 +4938,7 @@
             .ability = ABILITY_FLASH_FIRE,
 #line 1848
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1849
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4817,6 +4962,7 @@
             .ability = ABILITY_CURSED_BODY,
 #line 1857
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1858
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4868,6 +5014,7 @@
             .ability = ABILITY_ICE_BODY,
 #line 1877
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 1878
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4891,6 +5038,7 @@
             .ability = ABILITY_SPEED_BOOST,
 #line 1886
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 1887
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4914,6 +5062,7 @@
             .ability = ABILITY_STAMINA,
 #line 1895
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1896
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4937,6 +5086,7 @@
             .ability = ABILITY_NATURAL_CURE,
 #line 1904
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1905
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4960,6 +5110,7 @@
             .ability = ABILITY_POISON_POINT,
 #line 1913
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1914
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -4983,6 +5134,7 @@
             .ability = ABILITY_DISGUISE,
 #line 1923
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1924
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5034,6 +5186,7 @@
             .ability = ABILITY_VOLT_ABSORB,
 #line 1943
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 1944
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5057,6 +5210,7 @@
             .ability = ABILITY_UNBURDEN,
 #line 1952
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 1953
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5080,6 +5234,7 @@
             .ability = ABILITY_POISON_POINT,
 #line 1961
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1962
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5103,6 +5258,7 @@
             .ability = ABILITY_FLASH_FIRE,
 #line 1970
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1971
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5126,6 +5282,7 @@
             .ability = ABILITY_NATURAL_CURE,
 #line 1979
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 1980
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5149,6 +5306,7 @@
             .ability = ABILITY_FROST_BODY,
 #line 1988
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 1989
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5200,6 +5358,7 @@
             .ability = ABILITY_PIXILATE,
 #line 2008
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2009
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5223,6 +5382,7 @@
             .ability = ABILITY_FILTER,
 #line 2017
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2018
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5246,6 +5406,7 @@
             .ability = ABILITY_LEVITATE,
 #line 2026
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 2027
             .nature = NATURE_LAX,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5269,6 +5430,7 @@
             .ability = ABILITY_POISON_POINT,
 #line 2035
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2036
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5292,6 +5454,7 @@
             .ability = ABILITY_FLASH_FIRE,
 #line 2045
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2046
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5315,6 +5478,7 @@
             .ability = ABILITY_CURSED_BODY,
 #line 2054
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 2055
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5364,6 +5528,7 @@
             .ability = ABILITY_ROCKY_PAYLOAD,
 #line 2073
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2074
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5387,6 +5552,7 @@
             .ability = ABILITY_WEAK_ARMOR,
 #line 2082
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 2083
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5410,6 +5576,7 @@
             .ability = ABILITY_IRON_FIST,
 #line 2091
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2092
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5459,6 +5626,7 @@
             .ability = ABILITY_IRON_FIST,
 #line 2110
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2111
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5482,6 +5650,7 @@
             .ability = ABILITY_DRY_SKIN,
 #line 2119
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2120
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5531,6 +5700,7 @@
             .ability = ABILITY_SPEED_BOOST,
 #line 2138
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2139
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5554,6 +5724,7 @@
             .ability = ABILITY_SPEED_BOOST,
 #line 2147
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2148
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5577,6 +5748,7 @@
             .ability = ABILITY_STATIC,
 #line 2156
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2157
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5600,6 +5772,7 @@
             .ability = ABILITY_QUICK_DRAW,
 #line 2165
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2166
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5649,6 +5822,7 @@
             .ability = ABILITY_HUSTLE,
 #line 2184
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2185
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5672,6 +5846,7 @@
             .ability = ABILITY_NO_GUARD,
 #line 2193
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2194
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5694,6 +5869,7 @@
             .ability = ABILITY_HUSTLE,
 #line 2201
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2202
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5717,6 +5893,7 @@
             .ability = ABILITY_LEVITATE,
 #line 2210
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2211
             .nature = NATURE_CALM,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5766,6 +5943,7 @@
             .ability = ABILITY_SUPER_LUCK,
 #line 2229
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2230
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5788,6 +5966,7 @@
             .ability = ABILITY_SNIPER,
 #line 2237
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2238
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5811,6 +5990,7 @@
             .ability = ABILITY_SNIPER,
 #line 2246
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 2247
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5834,6 +6014,7 @@
             .ability = ABILITY_SUPER_LUCK,
 #line 2255
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2256
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5857,6 +6038,7 @@
             .ability = ABILITY_SNIPER,
 #line 2264
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2265
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5906,6 +6088,7 @@
             .ability = ABILITY_SNOW_WARNING,
 #line 2283
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2284
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5929,6 +6112,7 @@
             .ability = ABILITY_FILTER,
 #line 2292
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2293
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5952,6 +6136,7 @@
             .ability = ABILITY_STURDY,
 #line 2301
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 2302
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5975,6 +6160,7 @@
             .ability = ABILITY_STURDY,
 #line 2310
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2311
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -5998,6 +6184,7 @@
             .ability = ABILITY_THICK_FAT,
 #line 2319
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2320
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6047,6 +6234,7 @@
             .ability = ABILITY_GRASSY_SURGE,
 #line 2338
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2339
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6070,6 +6258,7 @@
             .ability = ABILITY_ELECTROMORPHOSIS,
 #line 2347
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2348
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6093,6 +6282,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 2356
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
 #line 2357
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6116,6 +6306,7 @@
             .ability = ABILITY_GRASS_PELT,
 #line 2365
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2366
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6139,6 +6330,7 @@
             .ability = ABILITY_IMMUNITY,
 #line 2374
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2375
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6188,6 +6380,7 @@
             .ability = ABILITY_HUGE_POWER,
 #line 2393
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2394
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6211,6 +6404,7 @@
             .ability = ABILITY_COMPETITIVE,
 #line 2402
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2403
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6234,6 +6428,7 @@
             .ability = ABILITY_SUPERSWEET_SYRUP,
 #line 2411
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2412
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6257,6 +6452,7 @@
             .ability = ABILITY_HUGE_POWER,
 #line 2420
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2421
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6280,6 +6476,7 @@
             .ability = ABILITY_DEFIANT,
 #line 2429
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2430
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6329,6 +6526,7 @@
             .ability = ABILITY_RECKLESS,
 #line 2448
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2449
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6351,6 +6549,7 @@
             .ability = ABILITY_STATIC,
 #line 2456
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2457
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6373,6 +6572,7 @@
             .ability = ABILITY_RECKLESS,
 #line 2464
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2465
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6396,6 +6596,7 @@
             .ability = ABILITY_ADAPTABILITY,
 #line 2473
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2474
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6417,6 +6618,7 @@
             .ability = ABILITY_TRUANT,
 #line 2480
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2481
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6466,6 +6668,7 @@
             .ability = ABILITY_INNER_FOCUS,
 #line 2498
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2499
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6489,6 +6692,7 @@
             .ability = ABILITY_DEFIANT,
 #line 2507
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2508
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6512,6 +6716,7 @@
             .ability = ABILITY_FLUFFY,
 #line 2516
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2517
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6535,6 +6740,7 @@
             .ability = ABILITY_RKS_SYSTEM,
 #line 2525
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2526
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6558,6 +6764,7 @@
             .ability = ABILITY_ADAPTABILITY,
 #line 2534
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2535
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6581,6 +6788,7 @@
             .ability = ABILITY_PROTOSYNTHESIS,
 #line 2543
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
 #line 2544
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6626,6 +6834,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2561
             .lvl = 6,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6637,6 +6846,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2565
             .lvl = 6,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6674,6 +6884,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2579
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6685,6 +6896,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2583
             .lvl = 7,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6722,6 +6934,7 @@
             .ability = ABILITY_TINTED_LENS,
 #line 2595
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
 #line 2596
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6745,6 +6958,7 @@
             .ability = ABILITY_TINTED_LENS,
 #line 2604
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
 #line 2605
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6794,6 +7008,7 @@
             .ability = ABILITY_STURDY,
 #line 2623
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
 #line 2624
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6817,6 +7032,7 @@
             .ability = ABILITY_HARVEST,
 #line 2632
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
 #line 2633
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6862,6 +7078,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2650
             .lvl = 6,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6873,6 +7090,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 2654
             .lvl = 6,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -6914,6 +7132,7 @@
             .ability = ABILITY_CHEEK_POUCH,
 #line 2669
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 2670
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6937,6 +7156,7 @@
             .ability = ABILITY_MIRROR_ARMOR,
 #line 2679
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
 #line 2680
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6986,6 +7206,7 @@
             .ability = ABILITY_INNER_FOCUS,
 #line 2699
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
 #line 2700
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7009,6 +7230,7 @@
             .ability = ABILITY_GALVANIZE,
 #line 2709
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 2710
             .nature = NATURE_BRAVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7032,6 +7254,7 @@
             .ability = ABILITY_COTTON_DOWN,
 #line 2719
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
 #line 2720
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7083,6 +7306,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 2740
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 2741
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7106,6 +7330,7 @@
             .ability = ABILITY_SHEER_FORCE,
 #line 2749
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
 #line 2750
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7129,6 +7354,7 @@
             .ability = ABILITY_STURDY,
 #line 2758
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
 #line 2759
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7180,6 +7406,7 @@
             .ability = ABILITY_STRONG_JAW,
 #line 2778
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
 #line 2779
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7203,6 +7430,7 @@
             .ability = ABILITY_INSOMNIA,
 #line 2787
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
 #line 2788
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7226,6 +7454,7 @@
             .ability = ABILITY_REGENERATOR,
 #line 2796
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 2797
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7273,6 +7502,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 2815
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -7321,6 +7551,7 @@
             .ability = ABILITY_IRON_FIST,
 #line 2834
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 2835
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7344,6 +7575,7 @@
             .ability = ABILITY_UNBURDEN,
 #line 2843
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 2844
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7367,6 +7599,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 2852
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
 #line 2853
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7416,6 +7649,7 @@
             .ability = ABILITY_QUEENLY_MAJESTY,
 #line 2871
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 2872
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7439,6 +7673,7 @@
             .ability = ABILITY_AFTERMATH,
 #line 2880
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
 #line 2881
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7488,6 +7723,7 @@
             .ability = ABILITY_IRON_FIST,
 #line 2899
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 2900
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7509,6 +7745,7 @@
             .ability = ABILITY_INTIMIDATE,
 #line 2908
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 2909
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7558,6 +7795,7 @@
             .ability = ABILITY_PRANKSTER,
 #line 2927
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
 #line 2928
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7581,6 +7819,7 @@
             .ability = ABILITY_TECHNICIAN,
 #line 2936
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
 #line 2937
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7604,6 +7843,7 @@
             .ability = ABILITY_ROCK_HEAD,
 #line 2945
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 2946
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7653,6 +7893,7 @@
             .ability = ABILITY_LEVITATE,
 #line 2964
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 2965
             .nature = NATURE_CALM,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7676,6 +7917,7 @@
             .ability = ABILITY_WATER_ABSORB,
 #line 2973
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
 #line 2974
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7699,6 +7941,7 @@
             .ability = ABILITY_GUTS,
 #line 2982
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 2983
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7748,6 +7991,7 @@
             .ability = ABILITY_CONTRARY,
 #line 3001
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
 #line 3002
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7771,6 +8015,7 @@
             .ability = ABILITY_SHEER_FORCE,
 #line 3010
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 3011
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7794,6 +8039,7 @@
             .ability = ABILITY_COSTAR,
 #line 3019
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 3020
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7845,6 +8091,7 @@
             .ability = ABILITY_JUSTIFIED,
 #line 3039
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 3040
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7868,6 +8115,7 @@
             .ability = ABILITY_IRON_FIST,
 #line 3048
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
 #line 3049
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7891,6 +8139,7 @@
             .ability = ABILITY_OVERGROW,
 #line 3057
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
 #line 3058
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7914,6 +8163,7 @@
             .ability = ABILITY_PROTOSYNTHESIS,
 #line 3066
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
 #line 3067
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7937,6 +8187,7 @@
             .ability = ABILITY_UNBURDEN,
 #line 3075
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
 #line 3076
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -7960,6 +8211,7 @@
             .ability = ABILITY_ADAPTABILITY,
 #line 3084
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
 #line 3085
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -8005,6 +8257,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3102
             .lvl = 13,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8042,6 +8295,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 3116
             .lvl = 13,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8086,6 +8340,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 3134
             .lvl = 12,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8097,6 +8352,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 3138
             .lvl = 12,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8134,6 +8390,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3152
             .lvl = 12,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8145,6 +8402,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3156
             .lvl = 12,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8184,6 +8442,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 3171
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8195,6 +8454,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 3175
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8206,6 +8466,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 3179
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8247,6 +8508,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 3194
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8260,6 +8522,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 3198
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8299,6 +8562,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 3212
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8338,6 +8602,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 3227
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8349,6 +8614,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 3231
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8360,6 +8626,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 3235
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8397,6 +8664,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 3249
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8443,6 +8711,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 3268
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8461,6 +8730,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 3276
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8505,6 +8775,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3294
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8516,6 +8787,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3298
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8553,6 +8825,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3312
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8564,6 +8837,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3316
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8601,6 +8875,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3330
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8612,6 +8887,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3334
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8649,6 +8925,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 3348
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8693,6 +8970,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3366
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8737,6 +9015,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3384
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8755,6 +9034,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3392
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8799,6 +9079,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 3410
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8810,6 +9091,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 3414
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8821,6 +9103,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 3418
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8858,6 +9141,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 3432
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8869,6 +9153,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 3436
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8880,6 +9165,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 3440
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -8917,6 +9203,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3454
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8935,6 +9222,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3462
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8953,6 +9241,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3470
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -8997,6 +9286,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3488
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9008,6 +9298,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3492
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9045,6 +9336,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3506
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9056,6 +9348,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3510
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9093,6 +9386,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3524
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9104,6 +9398,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3528
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9141,6 +9436,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3542
             .lvl = 17,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9152,6 +9448,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3546
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9191,6 +9488,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3561
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9207,6 +9505,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3567
             .lvl = 10,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9251,6 +9550,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 3584
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9262,6 +9562,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 3588
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9301,6 +9602,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 3603
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9312,6 +9614,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 3607
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9323,6 +9626,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 3611
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9366,6 +9670,7 @@
             .ability = ABILITY_STATIC,
 #line 3627
             .lvl = 48,
+            .ball = POKEBALL_COUNT,
 #line 3628
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -9413,6 +9718,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 3646
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9424,6 +9730,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 3650
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9463,6 +9770,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 3665
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9474,6 +9782,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 3669
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9485,6 +9794,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 3673
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9496,6 +9806,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 3677
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9537,6 +9848,7 @@
             .ability = ABILITY_SHARPNESS,
 #line 3692
             .lvl = 49,
+            .ball = POKEBALL_COUNT,
 #line 3693
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -9560,6 +9872,7 @@
             .ability = ABILITY_CUD_CHEW,
 #line 3701
             .lvl = 74,
+            .ball = POKEBALL_COUNT,
 #line 3702
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -9583,6 +9896,7 @@
             .ability = ABILITY_QUARK_DRIVE,
 #line 3710
             .lvl = 74,
+            .ball = POKEBALL_COUNT,
 #line 3711
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -9628,6 +9942,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3728
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9646,6 +9961,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3736
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -9690,6 +10006,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3754
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9701,6 +10018,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3758
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9738,6 +10056,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3772
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9749,6 +10068,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3776
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9786,6 +10106,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3790
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9797,6 +10118,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3794
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9834,6 +10156,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3808
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9845,6 +10168,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3812
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9882,6 +10206,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3826
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9893,6 +10218,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3830
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9930,6 +10256,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3844
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9941,6 +10268,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3848
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9978,6 +10306,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3862
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9989,6 +10318,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3866
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10026,6 +10356,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 3880
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10063,6 +10394,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3894
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10074,6 +10406,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3898
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10111,6 +10444,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3912
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10122,6 +10456,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3916
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10159,6 +10494,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3930
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10196,6 +10532,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 3944
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10235,6 +10572,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 3959
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10246,6 +10584,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 3963
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10257,6 +10596,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 3967
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10268,6 +10608,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 3971
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10307,6 +10648,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 3986
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10318,6 +10660,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 3990
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10329,6 +10672,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 3994
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10366,6 +10710,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4008
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10377,6 +10722,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4012
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10414,6 +10760,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4026
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10425,6 +10772,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4030
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10436,6 +10784,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4034
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10473,6 +10822,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4048
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10484,6 +10834,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4052
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10521,6 +10872,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4066
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10558,6 +10910,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4080
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10595,6 +10948,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4094
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -10639,6 +10993,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4112
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10676,6 +11031,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4126
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10687,6 +11043,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4130
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10724,6 +11081,7 @@
             .iv = TRAINER_PARTY_IVS(14, 14, 14, 14, 14, 14),
 #line 4144
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10761,6 +11119,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4158
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -10805,6 +11164,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4176
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10844,6 +11204,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 4191
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -10862,6 +11223,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 4199
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -10880,6 +11242,7 @@
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
 #line 4207
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -10900,6 +11263,7 @@
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
 #line 4215
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -10944,6 +11308,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4233
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10955,6 +11320,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4237
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -10992,6 +11358,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4251
             .lvl = 16,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11029,6 +11396,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4265
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11066,6 +11434,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4279
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11103,6 +11472,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4293
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11114,6 +11484,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4297
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11151,6 +11522,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4311
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11162,6 +11534,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4315
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11199,6 +11572,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4329
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11210,6 +11584,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4333
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11247,6 +11622,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4347
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11258,6 +11634,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4351
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11295,6 +11672,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4365
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11306,6 +11684,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4369
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11343,6 +11722,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4383
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11354,6 +11734,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4387
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11391,6 +11772,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4401
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -11435,6 +11817,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4419
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -11479,6 +11862,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4437
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11516,6 +11900,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4451
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11527,6 +11912,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4455
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11568,6 +11954,7 @@
             .ability = ABILITY_STURDY,
 #line 4470
             .lvl = 62,
+            .ball = POKEBALL_COUNT,
 #line 4471
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -11591,6 +11978,7 @@
             .ability = ABILITY_CUTE_CHARM,
 #line 4479
             .lvl = 63,
+            .ball = POKEBALL_COUNT,
 #line 4480
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -11612,6 +12000,7 @@
             .ability = ABILITY_MOXIE,
 #line 4486
             .lvl = 63,
+            .ball = POKEBALL_COUNT,
 #line 4487
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -11635,6 +12024,7 @@
             .ability = ABILITY_NO_GUARD,
 #line 4495
             .lvl = 62,
+            .ball = POKEBALL_COUNT,
 #line 4496
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -11680,6 +12070,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4513
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -11698,6 +12089,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4521
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -11716,6 +12108,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4529
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -11734,6 +12127,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4537
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -11752,6 +12146,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4545
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -11796,6 +12191,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4563
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -11814,6 +12210,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4571
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -11832,6 +12229,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 4579
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -11876,6 +12274,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4597
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11913,6 +12312,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4611
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11950,6 +12350,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4625
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11961,6 +12362,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4629
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -11972,6 +12374,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4633
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12009,6 +12412,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4647
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12020,6 +12424,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4651
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12031,6 +12436,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4655
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12042,6 +12448,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4659
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12053,6 +12460,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4663
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12064,6 +12472,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4667
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12101,6 +12510,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4681
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12138,6 +12548,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4695
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -12182,6 +12593,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4713
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12193,6 +12605,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4717
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12230,6 +12643,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 4731
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12241,6 +12655,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 4735
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12278,6 +12693,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4749
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12315,6 +12731,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 4763
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12326,6 +12743,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 4767
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12363,6 +12781,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4781
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12400,6 +12819,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4795
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12437,6 +12857,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4809
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12448,6 +12869,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4813
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12485,6 +12907,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4827
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12496,6 +12919,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4831
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12539,6 +12963,7 @@
             .ability = ABILITY_DROUGHT,
 #line 4847
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12552,6 +12977,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 4852
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12565,6 +12991,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 4857
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12606,6 +13033,7 @@
             .ability = ABILITY_DRIZZLE,
 #line 4872
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12619,6 +13047,7 @@
             .ability = ABILITY_SWIFT_SWIM,
 #line 4877
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12632,6 +13061,7 @@
             .ability = ABILITY_SWIFT_SWIM,
 #line 4882
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12671,6 +13101,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 4897
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12682,6 +13113,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 4901
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12721,6 +13153,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 4916
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12732,6 +13165,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 4920
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12769,6 +13203,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4934
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12780,6 +13215,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4938
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12817,6 +13253,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4952
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12828,6 +13265,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 4956
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12865,6 +13303,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4970
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -12883,6 +13322,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4978
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -12901,6 +13341,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 4986
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -12945,6 +13386,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5004
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12956,6 +13398,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5008
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -12967,6 +13410,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5012
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13004,6 +13448,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5026
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13022,6 +13467,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5034
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13066,6 +13512,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5052
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13084,6 +13531,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5060
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13128,6 +13576,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 5078
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13139,6 +13588,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 5082
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13150,6 +13600,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 5086
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13187,6 +13638,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 5100
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13198,6 +13650,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 5104
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13209,6 +13662,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 5108
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13246,6 +13700,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 5122
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13283,6 +13738,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5136
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13294,6 +13750,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5140
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13331,6 +13788,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5154
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13342,6 +13800,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5158
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13379,6 +13838,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5172
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13416,6 +13876,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5186
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13427,6 +13888,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5190
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13464,6 +13926,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 5204
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13508,6 +13971,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 5222
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13545,6 +14009,7 @@
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
 #line 5236
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13582,6 +14047,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5250
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13593,6 +14059,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5254
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13630,6 +14097,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5268
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13641,6 +14109,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5272
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13678,6 +14147,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5286
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13689,6 +14159,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5290
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13700,6 +14171,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5294
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13737,6 +14209,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5308
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13748,6 +14221,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5312
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13759,6 +14233,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5316
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -13798,6 +14273,7 @@
             .iv = TRAINER_PARTY_IVS(25, 25, 25, 25, 25, 25),
 #line 5331
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13816,6 +14292,7 @@
             .iv = TRAINER_PARTY_IVS(25, 25, 25, 25, 25, 25),
 #line 5339
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13834,6 +14311,7 @@
             .iv = TRAINER_PARTY_IVS(25, 25, 25, 25, 25, 25),
 #line 5347
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13852,6 +14330,7 @@
             .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
 #line 5355
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13872,6 +14351,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 5363
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13918,6 +14398,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 5382
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13936,6 +14417,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 5390
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13954,6 +14436,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 5398
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13972,6 +14455,7 @@
             .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
 #line 5406
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -13990,6 +14474,7 @@
             .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
 #line 5414
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -14008,6 +14493,7 @@
             .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
 #line 5422
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -14052,6 +14538,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5440
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14089,6 +14576,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5454
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14126,6 +14614,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5468
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14163,6 +14652,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5482
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14174,6 +14664,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5486
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14211,6 +14702,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5500
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14222,6 +14714,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5504
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14259,6 +14752,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5518
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14296,6 +14790,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5532
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14333,6 +14828,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5546
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14370,6 +14866,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5560
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14407,6 +14904,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5574
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14444,6 +14942,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5588
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14481,6 +14980,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5602
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14518,6 +15018,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5616
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14555,6 +15056,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5630
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14594,6 +15096,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 5645
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14605,6 +15108,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 5649
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14616,6 +15120,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 5653
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14627,6 +15132,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 5657
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14666,6 +15172,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5672
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14705,6 +15212,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5687
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14716,6 +15224,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5691
             .lvl = 38,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14727,6 +15236,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5695
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14764,6 +15274,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5709
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -14782,6 +15293,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5717
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -14826,6 +15338,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5735
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14837,6 +15350,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5739
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14874,6 +15388,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5753
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14885,6 +15400,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 5757
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14924,6 +15440,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5771
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14961,6 +15478,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 5785
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -14998,6 +15516,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 5799
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15009,6 +15528,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 5803
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15020,6 +15540,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 5807
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15031,6 +15552,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 5811
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15042,6 +15564,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 5815
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15053,6 +15576,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 5819
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15090,6 +15614,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 5833
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15101,6 +15626,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 5837
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15112,6 +15638,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 5841
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15123,6 +15650,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 5845
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15134,6 +15662,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 5849
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15145,6 +15674,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 5853
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15184,6 +15714,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5868
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15195,6 +15726,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5872
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15206,6 +15738,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5876
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15217,6 +15750,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 5880
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15256,6 +15790,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5895
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15267,6 +15802,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5899
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15278,6 +15814,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5903
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15289,6 +15826,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 5907
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15328,6 +15866,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5922
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15339,6 +15878,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5926
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15350,6 +15890,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5930
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15361,6 +15902,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 5934
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15400,6 +15942,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5949
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15411,6 +15954,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5953
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15422,6 +15966,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5957
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15433,6 +15978,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 5961
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15472,6 +16018,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5976
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15483,6 +16030,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5980
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15494,6 +16042,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 5984
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15505,6 +16054,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 5988
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15544,6 +16094,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 6003
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15555,6 +16106,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 6007
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15566,6 +16118,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 6011
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15577,6 +16130,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 6015
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15614,6 +16168,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6029
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15651,6 +16206,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6043
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15662,6 +16218,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6047
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15699,6 +16256,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6061
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15736,6 +16294,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6075
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15773,6 +16332,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6089
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15810,6 +16370,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6103
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15847,6 +16408,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6117
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15858,6 +16420,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6121
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15895,6 +16458,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6135
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15934,6 +16498,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 6150
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15945,6 +16510,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 6154
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15956,6 +16522,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 6158
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -15995,6 +16562,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 6173
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16006,6 +16574,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 6177
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16017,6 +16586,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 6181
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16028,6 +16598,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 6185
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16065,6 +16636,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6199
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16102,6 +16674,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6213
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16139,6 +16712,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6227
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16150,6 +16724,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6231
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16187,6 +16762,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6245
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16198,6 +16774,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6249
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16235,6 +16812,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6263
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16276,6 +16854,7 @@
             .ability = ABILITY_OWN_TEMPO,
 #line 6278
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
 #line 6279
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -16299,6 +16878,7 @@
             .ability = ABILITY_SERENE_GRACE,
 #line 6287
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
 #line 6288
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -16344,6 +16924,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6305
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16381,6 +16962,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6319
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16418,6 +17000,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6333
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16455,6 +17038,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6347
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16492,6 +17076,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6361
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16529,6 +17114,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6375
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16540,6 +17126,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6379
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16577,6 +17164,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6393
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16588,6 +17176,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6397
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16625,6 +17214,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6411
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16636,6 +17226,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6415
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16673,6 +17264,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6429
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16691,6 +17283,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6437
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -16735,6 +17328,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 6455
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16772,6 +17366,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 6469
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16809,6 +17404,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 6483
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16846,6 +17442,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 6497
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16883,6 +17480,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 6511
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16920,6 +17518,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 6525
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16957,6 +17556,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 6539
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -16994,6 +17594,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 6553
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17031,6 +17632,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 6567
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17068,6 +17670,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6581
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17105,6 +17708,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6595
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17144,6 +17748,7 @@
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
 #line 6610
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17162,6 +17767,7 @@
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
 #line 6618
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17182,6 +17788,7 @@
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
 #line 6626
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17202,6 +17809,7 @@
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
 #line 6634
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -17246,6 +17854,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6652
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17283,6 +17892,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6666
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17294,6 +17904,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6670
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17305,6 +17916,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6674
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17342,6 +17954,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6688
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17353,6 +17966,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6692
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17390,6 +18004,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6706
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17427,6 +18042,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6720
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17464,6 +18080,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6734
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17503,6 +18120,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6749
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17514,6 +18132,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6753
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17557,6 +18176,7 @@
             .ability = ABILITY_GALE_WINGS,
 #line 6769
             .lvl = 83,
+            .ball = POKEBALL_COUNT,
 #line 6770
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17580,6 +18200,7 @@
             .ability = ABILITY_BEAST_BOOST,
 #line 6778
             .lvl = 81,
+            .ball = POKEBALL_COUNT,
 #line 6779
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17603,6 +18224,7 @@
             .ability = ABILITY_STEADFAST,
 #line 6787
             .lvl = 81,
+            .ball = POKEBALL_COUNT,
 #line 6788
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17626,6 +18248,7 @@
             .ability = ABILITY_SNOW_WARNING,
 #line 6796
             .lvl = 82,
+            .ball = POKEBALL_COUNT,
 #line 6797
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17649,6 +18272,7 @@
             .ability = ABILITY_PRANKSTER,
 #line 6805
             .lvl = 81,
+            .ball = POKEBALL_COUNT,
 #line 6806
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17672,6 +18296,7 @@
             .ability = ABILITY_SNOW_CLOAK,
 #line 6814
             .lvl = 83,
+            .ball = POKEBALL_COUNT,
 #line 6815
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17723,6 +18348,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 6834
             .lvl = 81,
+            .ball = POKEBALL_COUNT,
 #line 6835
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17746,6 +18372,7 @@
             .ability = ABILITY_DEFEATIST,
 #line 6843
             .lvl = 83,
+            .ball = POKEBALL_COUNT,
 #line 6844
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17769,6 +18396,7 @@
             .ability = ABILITY_LEVITATE,
 #line 6852
             .lvl = 82,
+            .ball = POKEBALL_COUNT,
 #line 6853
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17792,6 +18420,7 @@
             .ability = ABILITY_DEFIANT,
 #line 6861
             .lvl = 81,
+            .ball = POKEBALL_COUNT,
 #line 6862
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17815,6 +18444,7 @@
             .ability = ABILITY_MOXIE,
 #line 6870
             .lvl = 81,
+            .ball = POKEBALL_COUNT,
 #line 6871
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17836,6 +18466,7 @@
             .ability = ABILITY_REFRIGERATE,
 #line 6879
             .lvl = 83,
+            .ball = POKEBALL_COUNT,
 #line 6880
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17881,6 +18512,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6897
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17892,6 +18524,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6901
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17929,6 +18562,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6915
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17966,6 +18600,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6929
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17977,6 +18612,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6933
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -17988,6 +18624,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6937
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18025,6 +18662,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6951
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18062,6 +18700,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6965
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18099,6 +18738,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6979
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18136,6 +18776,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6993
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18147,6 +18788,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 6997
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18184,6 +18826,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7011
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18195,6 +18838,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7015
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18232,6 +18876,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7029
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18243,6 +18888,7 @@
             .iv = TRAINER_PARTY_IVS(19, 19, 19, 19, 19, 19),
 #line 7033
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18280,6 +18926,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7047
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18291,6 +18938,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7051
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18328,6 +18976,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7065
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18339,6 +18988,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7069
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18376,6 +19026,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7083
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -18393,6 +19044,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7090
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -18435,6 +19087,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7106
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18446,6 +19099,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7110
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18457,6 +19111,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7114
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18494,6 +19149,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7128
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18505,6 +19161,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7132
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18516,6 +19173,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7136
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18553,6 +19211,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7150
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18590,6 +19249,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7164
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18601,6 +19261,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7168
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18638,6 +19299,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7182
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18675,6 +19337,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7196
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18712,6 +19375,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7210
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18749,6 +19413,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7224
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18786,6 +19451,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7238
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18823,6 +19489,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7252
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18860,6 +19527,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7266
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18897,6 +19565,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7280
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18936,6 +19605,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7295
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18947,6 +19617,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7299
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18986,6 +19657,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7314
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -18997,6 +19669,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7318
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19036,6 +19709,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 7333
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19047,6 +19721,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 7337
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19058,6 +19733,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 7341
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19095,6 +19771,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7355
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19106,6 +19783,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 7359
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19143,6 +19821,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7373
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19154,6 +19833,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7377
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19191,6 +19871,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7391
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19228,6 +19909,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7405
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19265,6 +19947,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7419
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19276,6 +19959,7 @@
             .iv = TRAINER_PARTY_IVS(29, 29, 29, 29, 29, 29),
 #line 7423
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19313,6 +19997,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7437
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19324,6 +20009,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7441
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19361,6 +20047,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7455
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19372,6 +20059,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7459
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19409,6 +20097,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7473
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19446,6 +20135,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7487
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19483,6 +20173,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7501
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19520,6 +20211,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7515
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19557,6 +20249,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7529
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19594,6 +20287,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7543
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19605,6 +20299,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7547
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19642,6 +20337,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7561
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19653,6 +20349,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7565
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19690,6 +20387,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7579
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19727,6 +20425,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7593
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19764,6 +20463,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7607
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19801,6 +20501,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7621
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19812,6 +20513,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7625
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19849,6 +20551,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7639
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19860,6 +20563,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7643
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19897,6 +20601,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7657
             .lvl = 19,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19908,6 +20613,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7661
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19919,6 +20625,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7665
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19930,6 +20637,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7669
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19941,6 +20649,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7673
             .lvl = 30,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19952,6 +20661,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7677
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -19989,6 +20699,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7691
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20026,6 +20737,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7705
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20037,6 +20749,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7709
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20074,6 +20787,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7723
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20085,6 +20799,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7727
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20122,6 +20837,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7741
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20133,6 +20849,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 7745
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20170,6 +20887,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7759
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20181,6 +20899,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 7763
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20218,6 +20937,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7777
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20255,6 +20975,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7791
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20266,6 +20987,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 7795
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20303,6 +21025,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7809
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20340,6 +21063,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7823
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20377,6 +21101,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7837
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20414,6 +21139,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7851
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20425,6 +21151,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7855
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20462,6 +21189,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 7869
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20473,6 +21201,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 7873
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20510,6 +21239,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 7887
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20521,6 +21251,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 7891
             .lvl = 32,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20558,6 +21289,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7905
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20569,6 +21301,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7909
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20606,6 +21339,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 7923
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20643,6 +21377,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7937
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20687,6 +21422,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7955
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -20731,6 +21467,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 7973
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20742,6 +21479,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 7977
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20779,6 +21517,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 7991
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20790,6 +21529,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 7995
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20827,6 +21567,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 8009
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20838,6 +21579,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 8013
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20849,6 +21591,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 8017
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20860,6 +21603,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 8021
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20871,6 +21615,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 8025
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20882,6 +21627,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 8029
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20919,6 +21665,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 8043
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20930,6 +21677,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 8047
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20941,6 +21689,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 8051
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20952,6 +21701,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 8055
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20963,6 +21713,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 8059
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -20974,6 +21725,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 8063
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21011,6 +21763,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 8077
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21022,6 +21775,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 8081
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21033,6 +21787,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 8085
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21044,6 +21799,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 8089
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21055,6 +21811,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 8093
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21066,6 +21823,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 8097
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21103,6 +21861,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 8111
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21114,6 +21873,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 8115
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21125,6 +21885,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 8119
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21136,6 +21897,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 8123
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21147,6 +21909,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 8127
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21158,6 +21921,7 @@
             .iv = TRAINER_PARTY_IVS(2, 2, 2, 2, 2, 2),
 #line 8131
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21195,6 +21959,7 @@
             .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
 #line 8145
             .lvl = 31,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21232,6 +21997,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 8159
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21243,6 +22009,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 8163
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21254,6 +22021,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 8167
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21265,6 +22033,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 8171
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21276,6 +22045,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 8175
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21287,6 +22057,7 @@
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 8179
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21324,6 +22095,7 @@
             .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
 #line 8193
             .lvl = 34,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21361,6 +22133,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 8207
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21372,6 +22145,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 8211
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21383,6 +22157,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 8215
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21394,6 +22169,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 8219
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21405,6 +22181,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 8223
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21416,6 +22193,7 @@
             .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
 #line 8227
             .lvl = 22,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21459,6 +22237,7 @@
             .ability = ABILITY_SAND_STREAM,
 #line 8242
             .lvl = 87,
+            .ball = POKEBALL_COUNT,
 #line 8243
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21482,6 +22261,7 @@
             .ability = ABILITY_SAND_VEIL,
 #line 8251
             .lvl = 86,
+            .ball = POKEBALL_COUNT,
 #line 8252
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21505,6 +22285,7 @@
             .ability = ABILITY_SAND_FORCE,
 #line 8260
             .lvl = 86,
+            .ball = POKEBALL_COUNT,
 #line 8261
             .nature = NATURE_MILD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21556,6 +22337,7 @@
             .ability = ABILITY_SNOW_WARNING,
 #line 8280
             .lvl = 87,
+            .ball = POKEBALL_COUNT,
 #line 8281
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21579,6 +22361,7 @@
             .ability = ABILITY_SNOW_CLOAK,
 #line 8289
             .lvl = 86,
+            .ball = POKEBALL_COUNT,
 #line 8290
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21602,6 +22385,7 @@
             .ability = ABILITY_SNOW_FORCE,
 #line 8298
             .lvl = 86,
+            .ball = POKEBALL_COUNT,
 #line 8299
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21649,6 +22433,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 8318
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21660,6 +22445,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 8322
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21699,6 +22485,7 @@
             .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
 #line 8337
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21710,6 +22497,7 @@
             .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
 #line 8341
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -21753,6 +22541,7 @@
             .ability = ABILITY_AIR_LOCK,
 #line 8357
             .lvl = 87,
+            .ball = POKEBALL_COUNT,
 #line 8358
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21776,6 +22565,7 @@
             .ability = ABILITY_DRIZZLE,
 #line 8366
             .lvl = 87,
+            .ball = POKEBALL_COUNT,
 #line 8367
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21799,6 +22589,7 @@
             .ability = ABILITY_STAMINA,
 #line 8375
             .lvl = 86,
+            .ball = POKEBALL_COUNT,
 #line 8376
             .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21822,6 +22613,7 @@
             .ability = ABILITY_SWIFT_SWIM,
 #line 8384
             .lvl = 86,
+            .ball = POKEBALL_COUNT,
 #line 8385
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21845,6 +22637,7 @@
             .ability = ABILITY_PROTOSYNTHESIS,
 #line 8393
             .lvl = 86,
+            .ball = POKEBALL_COUNT,
 #line 8394
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21867,6 +22660,7 @@
             .ability = ABILITY_SWIFT_SWIM,
 #line 8401
             .lvl = 87,
+            .ball = POKEBALL_COUNT,
 #line 8402
             .nature = NATURE_LONELY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21918,6 +22712,7 @@
             .ability = ABILITY_AIR_LOCK,
 #line 8421
             .lvl = 87,
+            .ball = POKEBALL_COUNT,
 #line 8422
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21941,6 +22736,7 @@
             .ability = ABILITY_DROUGHT,
 #line 8430
             .lvl = 87,
+            .ball = POKEBALL_COUNT,
 #line 8431
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21964,6 +22760,7 @@
             .ability = ABILITY_SHELL_ARMOR,
 #line 8439
             .lvl = 86,
+            .ball = POKEBALL_COUNT,
 #line 8440
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21987,6 +22784,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 8448
             .lvl = 86,
+            .ball = POKEBALL_COUNT,
 #line 8449
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -22010,6 +22808,7 @@
             .ability = ABILITY_PROTOSYNTHESIS,
 #line 8457
             .lvl = 86,
+            .ball = POKEBALL_COUNT,
 #line 8458
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -22032,6 +22831,7 @@
             .ability = ABILITY_CHLOROPHYLL,
 #line 8465
             .lvl = 87,
+            .ball = POKEBALL_COUNT,
 #line 8466
             .nature = NATURE_RASH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -22077,6 +22877,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8483
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22114,6 +22915,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8497
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22153,6 +22955,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8511
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22173,6 +22976,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8519
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22219,6 +23023,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8537
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22239,6 +23044,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8545
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22283,6 +23089,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8563
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22301,6 +23108,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8571
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22318,6 +23126,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8578
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22364,6 +23173,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 8596
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22401,6 +23211,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8610
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22412,6 +23223,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8614
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22451,6 +23263,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8628
             .lvl = 35,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22464,6 +23277,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8632
             .lvl = 37,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22477,6 +23291,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8636
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22514,6 +23329,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8650
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22525,6 +23341,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 8654
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22562,6 +23379,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 8668
             .lvl = 40,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -22601,6 +23419,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 8683
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22619,6 +23438,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 8691
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22637,6 +23457,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 8699
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22655,6 +23476,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 8707
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22675,6 +23497,7 @@
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
 #line 8715
             .lvl = 46,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -22725,6 +23548,7 @@
             .ability = ABILITY_SLOW_START,
 #line 8734
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 8735
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -22748,6 +23572,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 8743
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 8744
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -22771,6 +23596,7 @@
             .ability = ABILITY_TRANSISTOR,
 #line 8752
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 8753
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -22794,6 +23620,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 8761
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 8762
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -22817,6 +23644,7 @@
             .ability = ABILITY_DRAGONS_MAW,
 #line 8770
             .lvl = 96,
+            .ball = POKEBALL_COUNT,
 #line 8771
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -22840,6 +23668,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 8779
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 8780
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -22891,6 +23720,7 @@
             .ability = ABILITY_SLOW_START,
 #line 8799
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 8800
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -22914,6 +23744,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 8808
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 8809
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -22937,6 +23768,7 @@
             .ability = ABILITY_TRANSISTOR,
 #line 8817
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 8818
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -22960,6 +23792,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 8826
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 8827
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -22983,6 +23816,7 @@
             .ability = ABILITY_DRAGONS_MAW,
 #line 8835
             .lvl = 96,
+            .ball = POKEBALL_COUNT,
 #line 8836
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23006,6 +23840,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 8844
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 8845
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23057,6 +23892,7 @@
             .ability = ABILITY_SLOW_START,
 #line 8864
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 8865
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23080,6 +23916,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 8873
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 8874
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23103,6 +23940,7 @@
             .ability = ABILITY_TRANSISTOR,
 #line 8882
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 8883
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23126,6 +23964,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 8891
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 8892
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23149,6 +23988,7 @@
             .ability = ABILITY_DRAGONS_MAW,
 #line 8900
             .lvl = 96,
+            .ball = POKEBALL_COUNT,
 #line 8901
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23172,6 +24012,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 8909
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 8910
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23223,6 +24064,7 @@
             .ability = ABILITY_SLOW_START,
 #line 8929
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 8930
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23246,6 +24088,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 8938
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 8939
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23269,6 +24112,7 @@
             .ability = ABILITY_TRANSISTOR,
 #line 8947
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 8948
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23292,6 +24136,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 8956
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 8957
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23315,6 +24160,7 @@
             .ability = ABILITY_DRAGONS_MAW,
 #line 8965
             .lvl = 96,
+            .ball = POKEBALL_COUNT,
 #line 8966
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23338,6 +24184,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 8974
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 8975
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23389,6 +24236,7 @@
             .ability = ABILITY_SLOW_START,
 #line 8994
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 8995
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23412,6 +24260,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 9003
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 9004
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23435,6 +24284,7 @@
             .ability = ABILITY_TRANSISTOR,
 #line 9012
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 9013
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23458,6 +24308,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 9021
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 9022
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23481,6 +24332,7 @@
             .ability = ABILITY_DRAGONS_MAW,
 #line 9030
             .lvl = 96,
+            .ball = POKEBALL_COUNT,
 #line 9031
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23504,6 +24356,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 9039
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 9040
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23555,6 +24408,7 @@
             .ability = ABILITY_SLOW_START,
 #line 9059
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 9060
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23578,6 +24432,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 9068
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 9069
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23601,6 +24456,7 @@
             .ability = ABILITY_TRANSISTOR,
 #line 9077
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 9078
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23624,6 +24480,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 9086
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 9087
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23647,6 +24504,7 @@
             .ability = ABILITY_DRAGONS_MAW,
 #line 9095
             .lvl = 96,
+            .ball = POKEBALL_COUNT,
 #line 9096
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23670,6 +24528,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 9104
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 9105
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23721,6 +24580,7 @@
             .ability = ABILITY_SLOW_START,
 #line 9124
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 9125
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23744,6 +24604,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 9133
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 9134
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23767,6 +24628,7 @@
             .ability = ABILITY_TRANSISTOR,
 #line 9142
             .lvl = 97,
+            .ball = POKEBALL_COUNT,
 #line 9143
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23790,6 +24652,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 9151
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 9152
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23813,6 +24676,7 @@
             .ability = ABILITY_DRAGONS_MAW,
 #line 9160
             .lvl = 96,
+            .ball = POKEBALL_COUNT,
 #line 9161
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23836,6 +24700,7 @@
             .ability = ABILITY_CLEAR_BODY,
 #line 9169
             .lvl = 95,
+            .ball = POKEBALL_COUNT,
 #line 9170
             .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -23883,6 +24748,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 9189
             .lvl = 44,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -23901,6 +24767,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 9197
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -23919,6 +24786,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 9205
             .lvl = 44,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -23937,6 +24805,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 9213
             .lvl = 41,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -23955,6 +24824,7 @@
             .iv = TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 30),
 #line 9221
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -23999,6 +24869,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9239
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24010,6 +24881,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9243
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24047,6 +24919,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9257
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24084,6 +24957,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9271
             .lvl = 45,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24121,6 +24995,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9285
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24132,6 +25007,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9289
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24143,6 +25019,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9293
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24180,6 +25057,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9307
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24196,6 +25074,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9313
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24238,6 +25117,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9329
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24249,6 +25129,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9333
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24260,6 +25141,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9337
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24297,6 +25179,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9351
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24308,6 +25191,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9355
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24345,6 +25229,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9369
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24356,6 +25241,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9373
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24367,6 +25253,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9377
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24406,6 +25293,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9392
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24417,6 +25305,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9396
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24428,6 +25317,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9400
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24439,6 +25329,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9404
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24476,6 +25367,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9418
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24491,6 +25383,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9423
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24533,6 +25426,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9439
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24544,6 +25438,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9443
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24581,6 +25476,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9457
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24599,6 +25495,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9465
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24643,6 +25540,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9483
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24654,6 +25552,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9487
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24665,6 +25564,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9491
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24702,6 +25602,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9505
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24720,6 +25621,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9513
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24764,6 +25666,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9531
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24782,6 +25685,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9539
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24828,6 +25732,7 @@
             .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
 #line 9558
             .lvl = 33,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24872,6 +25777,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9576
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24890,6 +25796,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9584
             .lvl = 39,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -24934,6 +25841,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9602
             .lvl = 36,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24971,6 +25879,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9616
             .lvl = 24,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -24982,6 +25891,7 @@
             .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
 #line 9620
             .lvl = 28,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25019,6 +25929,7 @@
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9634
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25056,6 +25967,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9648
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25067,6 +25979,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9652
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25104,6 +26017,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9666
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25115,6 +26029,7 @@
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 9670
             .lvl = 18,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25152,6 +26067,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9684
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25163,6 +26079,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9688
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25200,6 +26117,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9702
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25211,6 +26129,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9706
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25248,6 +26167,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9720
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25259,6 +26179,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9724
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25296,6 +26217,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 9738
             .lvl = 27,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25333,6 +26255,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 9752
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25344,6 +26267,7 @@
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 9756
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25381,6 +26305,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9770
             .lvl = 29,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25392,6 +26317,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9774
             .lvl = 20,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25403,6 +26329,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9778
             .lvl = 26,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25414,6 +26341,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9782
             .lvl = 23,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25451,6 +26379,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9796
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25462,6 +26391,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9800
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25473,6 +26403,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9804
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25510,6 +26441,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9818
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25521,6 +26453,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9822
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25532,6 +26465,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9826
             .lvl = 14,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25569,6 +26503,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9840
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25580,6 +26515,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9844
             .lvl = 25,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25617,6 +26553,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9858
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25628,6 +26565,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 9862
             .lvl = 15,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -25671,6 +26609,7 @@
             .ability = ABILITY_DROUGHT,
 #line 9878
             .lvl = 99,
+            .ball = POKEBALL_COUNT,
 #line 9879
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -25694,6 +26633,7 @@
             .ability = ABILITY_LEVITATE,
 #line 9887
             .lvl = 99,
+            .ball = POKEBALL_COUNT,
 #line 9888
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -25717,6 +26657,7 @@
             .ability = ABILITY_PROTOSYNTHESIS,
 #line 9897
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 9896
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -25740,6 +26681,7 @@
             .ability = ABILITY_GUTS,
 #line 9904
             .lvl = 99,
+            .ball = POKEBALL_COUNT,
 #line 9905
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -25763,6 +26705,7 @@
             .ability = ABILITY_TABLETS_OF_RUIN,
 #line 9914
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 9913
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -25786,6 +26729,7 @@
             .ability = ABILITY_SOLAR_POWER,
 #line 9922
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 9921
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -25837,6 +26781,7 @@
             .ability = ABILITY_MAGIC_BOUNCE,
 #line 9942
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 9940
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -25860,6 +26805,7 @@
             .ability = ABILITY_IRON_FIST,
 #line 9951
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 9949
             .nature = NATURE_BRAVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -25883,6 +26829,7 @@
             .ability = ABILITY_PRANKSTER,
 #line 9958
             .lvl = 99,
+            .ball = POKEBALL_COUNT,
 #line 9959
             .nature = NATURE_BRAVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -25906,6 +26853,7 @@
             .ability = ABILITY_ILLUSION,
 #line 9968
             .lvl = 99,
+            .ball = POKEBALL_COUNT,
 #line 9969
             .nature = NATURE_QUIET,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -25929,6 +26877,7 @@
             .ability = ABILITY_PRISM_ARMOR,
 #line 9980
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 9978
             .nature = NATURE_QUIET,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -25952,6 +26901,7 @@
             .ability = ABILITY_PROTOSYNTHESIS,
 #line 9989
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 9987
             .nature = NATURE_BRAVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26003,6 +26953,7 @@
             .ability = ABILITY_INNER_FOCUS,
 #line 10008
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10007
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26026,6 +26977,7 @@
             .ability = ABILITY_THICK_FAT,
 #line 10016
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10015
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26049,6 +27001,7 @@
             .ability = ABILITY_STATIC,
 #line 10023
             .lvl = 99,
+            .ball = POKEBALL_COUNT,
 #line 10024
             .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26072,6 +27025,7 @@
             .ability = ABILITY_REFRIGERATE,
 #line 10033
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10032
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26095,6 +27049,7 @@
             .ability = ABILITY_INNER_FOCUS,
 #line 10041
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10040
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26118,6 +27073,7 @@
             .ability = ABILITY_TURBOBLAZE,
 #line 10049
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10048
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26169,6 +27125,7 @@
             .ability = ABILITY_LEVITATE,
 #line 10068
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10067
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26192,6 +27149,7 @@
             .ability = ABILITY_UNBURDEN,
 #line 10076
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10075
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26215,6 +27173,7 @@
             .ability = ABILITY_LEVITATE,
 #line 10084
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10083
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26238,6 +27197,7 @@
             .ability = ABILITY_AERILATE,
 #line 10092
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10091
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26261,6 +27221,7 @@
             .ability = ABILITY_BEAST_BOOST,
 #line 10100
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10099
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26284,6 +27245,7 @@
             .ability = ABILITY_TERAVOLT,
 #line 10108
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10107
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26335,6 +27297,7 @@
             .ability = ABILITY_DRIZZLE,
 #line 10127
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10126
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26358,6 +27321,7 @@
             .ability = ABILITY_SWIFT_SWIM,
 #line 10135
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10134
             .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26381,6 +27345,7 @@
             .ability = ABILITY_SWIFT_SWIM,
 #line 10143
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10142
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26430,6 +27395,7 @@
             .ability = ABILITY_COMPETITIVE,
 #line 10161
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10160
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26453,6 +27419,7 @@
             .ability = ABILITY_TELEPATHY,
 #line 10169
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10168
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26476,6 +27443,7 @@
             .ability = ABILITY_TOUGH_CLAWS,
 #line 10177
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
 #line 10176
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -26517,6 +27485,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10191
             .lvl = 21,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -26556,6 +27525,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10204
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26591,6 +27561,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10216
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26628,6 +27599,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10229
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -26665,6 +27637,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 10242
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },

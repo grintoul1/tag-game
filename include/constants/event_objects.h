@@ -282,14 +282,14 @@ enum
     OBJ_EVENT_GFX_AQUA_ADMIN_F,
     OBJ_EVENT_GFX_MAGMA_ADMIN_M,
     OBJ_EVENT_GFX_MAGMA_ADMIN_F,
-    // FRLG objects
-    OBJ_EVENT_GFX_RED_NORMAL,
+    OBJ_EVENT_GFX_RED_NORMAL, // FRLG objects
     OBJ_EVENT_GFX_RED_BIKE,
     OBJ_EVENT_GFX_RED_SURF,
     OBJ_EVENT_GFX_RED_FIELD_MOVE,
     OBJ_EVENT_GFX_RED_FISH,
     OBJ_EVENT_GFX_RED_VS_SEEKER,
     OBJ_EVENT_GFX_RED_VS_SEEKER_BIKE,
+    OBJ_EVENT_GFX_UNUSED_250,
     OBJ_EVENT_GFX_GREEN_NORMAL,
     OBJ_EVENT_GFX_GREEN_BIKE,
     OBJ_EVENT_GFX_GREEN_SURF,
@@ -427,19 +427,16 @@ enum
     OBJ_EVENT_GFX_PUSHABLE_BOULDER_FRLG,
     OBJ_EVENT_GFX_CUTTABLE_TREE_FRLG,
     OBJ_EVENT_GFX_BREAKABLE_ROCK_FRLG,
+    NUM_OBJ_EVENT_GFX,
 };
 
 // FRLG equivalents
-
 // #define OBJ_EVENT_GFX_MEW OBJ_EVENT_GFX_NINJA_BOY
 // #define OBJ_EVENT_GFX_LUGIA OBJ_EVENT_GFX_NINJA_BOY
-
-
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        388
 
 
 // These are dynamic object gfx ids.
