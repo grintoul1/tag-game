@@ -1378,11 +1378,15 @@ void BattleSetup_StartTrainerBattle(void)
     gMain.savedCallback = CB2_EndTrainerBattle;
 
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || InTrainerHillChallenge())
+    {
         DoBattlePyramidTrainerHillBattle();
+        ScriptContext_Stop();
+    }
     else
+    {
         DoTrainerBattle();
-
-    ScriptContext_Stop();
+        ScriptContext_Stop();
+    }
 }
 
 static void CB2_EndDebugBattle(void)

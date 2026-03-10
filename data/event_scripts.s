@@ -3229,9 +3229,6 @@ Common_EventScript_DirectCornerAttendant::
 #endif
 	end
 
-Common_EventScript_TwoPlayerChecks::
-	callnative TwoPlayerOpponentChecks
-
 Common_EventScript_TwoPlayerCableLinkSuccessful::
 	incrementgamestat GAME_STAT_TWO_PLAYER
 	special SaveForBattleTowerLink

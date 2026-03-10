@@ -8,11 +8,17 @@
 #include "battle_tower.h"
 #include "battle_transition.h"
 #include "event_data.h"
+#include "event_object_movement.h"
+#include "field_message_box.h"
+#include "field_player_avatar.h"
 #include "frontier_util.h"
+#include "link.h"
 #include "new_game.h"
 #include "overworld.h"
 #include "recorded_battle.h"
+#include "script.h"
 #include "string_util.h"
+#include "strings.h"
 #include "task.h"
 #include "text.h"
 #include "constants/battle_frontier.h"
@@ -20,6 +26,7 @@
 
 static void HandleSpecialTrainerBattleEnd(void);
 static void Task_StartBattleAfterTransition(u8 taskId);
+static void Task_TwoPlayerPreBattleExchange(u8 taskId);
 static void UNUSED FillEReaderTrainerWithPlayerData(void);
 static void CopyEReaderTrainerFarewellMessage(void);
 
@@ -110,23 +117,33 @@ void DoSpecialTrainerBattle(void)
         {
             TRAINER_BATTLE_PARAM.opponentB = 0xFFFF;
             gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
-            if (gLinkType = LINKTYPE_TWO_PLAYER)
+            if (gLinkType == LINKTYPE_TWO_PLAYER)
                 gBattleTypeFlags |= BATTLE_TYPE_TWO_PLAYER;
         }
         else // MULTI_BATTLE_2_VS_2
         {
             gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
-            if (gLinkType = LINKTYPE_TWO_PLAYER)
+            if (gLinkType == LINKTYPE_TWO_PLAYER)
                 gBattleTypeFlags |= BATTLE_TYPE_TWO_PLAYER;
         }
 
         FillPartnerParty(gPartnerTrainerId);
-        CreateTask(Task_StartBattleAfterTransition, 1);
-        PlayMapChosenOrBattleBGM(0);
-        if (gSpecialVar_0x8005 & MULTI_BATTLE_2_VS_WILD)
-            BattleTransition_StartOnField(GetWildBattleTransition());
+
+        if (gLinkType == LINKTYPE_TWO_PLAYER)
+        {
+            // Two-player mode: sync and exchange opponentA before starting battle
+            u8 taskId = CreateTask(Task_TwoPlayerPreBattleExchange, 1);
+            gTasks[taskId].data[1] = gSpecialVar_0x8005;
+        }
         else
-            BattleTransition_StartOnField(GetTrainerBattleTransition());
+        {
+            CreateTask(Task_StartBattleAfterTransition, 1);
+            PlayMapChosenOrBattleBGM(0);
+            if (gSpecialVar_0x8005 & MULTI_BATTLE_2_VS_WILD)
+                BattleTransition_StartOnField(GetWildBattleTransition());
+            else
+                BattleTransition_StartOnField(GetTrainerBattleTransition());
+        }
 
         if (gSpecialVar_0x8005 & MULTI_BATTLE_CHOOSE_MONS) // Skip mons restoring(done in the script)
             gBattleScripting.specialTrainerBattleType = 0xFF;
@@ -353,6 +370,98 @@ void DoSpecialTrainerBattle(void)
         break;
     }
 }
+
+// Task data indices for Task_TwoPlayerPreBattleExchange
+#define tState       data[0]
+#define tBattleMode  data[1]
+
+static void Task_TwoPlayerPreBattleExchange(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+
+    switch (tState)
+    {
+    case 0:
+        ShowFieldMessage(gText_PleaseWaitForLink);
+        tState = 1;
+        break;
+    case 1:
+        if (IsFieldMessageBoxHidden())
+        {
+            SetLinkStandbyCallback();
+            tState = 2;
+        }
+        break;
+    case 2:
+        if (IsLinkTaskFinished())
+        {
+            SendBlock(BitmaskAllOtherLinkPlayers(), &TRAINER_BATTLE_PARAM.opponentA, sizeof(u16));
+            tState = 3;
+        }
+        break;
+    case 3:
+        if (GetBlockReceivedStatus() == GetLinkPlayerCountAsBitFlags())
+        {
+            u16 localOpponentA = TRAINER_BATTLE_PARAM.opponentA;
+            u16 remoteOpponentA = *(u16 *)gBlockRecvBuffer[GetMultiplayerId() ^ 1];
+            ResetBlockReceivedFlags();
+
+            if (localOpponentA == remoteOpponentA)
+            {
+                // Match: start the battle transition
+                HideFieldMessageBox();
+                gBattleTypeFlags |= BATTLE_TYPE_LINK;
+                CreateTask(Task_StartBattleAfterTransition, 1);
+                PlayMapChosenOrBattleBGM(0);
+                if (tBattleMode & MULTI_BATTLE_2_VS_WILD)
+                    BattleTransition_StartOnField(GetWildBattleTransition());
+                else
+                    BattleTransition_StartOnField(GetTrainerBattleTransition());
+                DestroyTask(taskId);
+            }
+            else
+            {
+                // Mismatch: cancel battle
+                HideFieldMessageBox();
+                tState = 4;
+            }
+        }
+        break;
+    case 4:
+    {
+        struct ObjectEvent *playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
+        enum Direction oppositeDir = GetOppositeDirection(GetPlayerFacingDirection());
+        ObjectEventSetHeldMovement(playerObj, GetWalkNormalMovementAction(oppositeDir));
+        tState = 5;
+        break;
+    }
+    case 5:
+    {
+        struct ObjectEvent *playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
+        if (ObjectEventClearHeldMovementIfFinished(playerObj))
+            tState = 6;
+        break;
+    }
+    case 6:
+        SetCloseLinkCallback();
+        tState = 7;
+        break;
+    case 7:
+        if (!gReceivedRemoteLinkPlayers)
+        {
+            FlagClear(FLAG_LINK_PARTY);
+            gBattleTypeFlags &= ~(BATTLE_TYPE_TWO_PLAYER | BATTLE_TYPE_LINK);
+            ScriptContext_Enable();
+            UnlockPlayerFieldControls();
+            DestroyTask(taskId);
+        }
+        break;
+    }
+}
+
+#undef tState
+#undef tBattleMode
+
 void SetEReaderTrainerGfxId(void)
 {
     SetBattleFacilityTrainerGfxId(TRAINER_EREADER, 0);
