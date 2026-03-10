@@ -3229,6 +3229,48 @@ Common_EventScript_DirectCornerAttendant::
 #endif
 	end
 
+Common_EventScript_TwoPlayerChecks::
+	callnative TwoPlayerOpponentChecks
+
+Common_EventScript_TwoPlayerCableLinkSuccessful::
+	incrementgamestat GAME_STAT_TWO_PLAYER
+	special SaveForBattleTowerLink
+	waitstate
+	playse SE_SAVE
+	waitse
+	special TrySetBattleTowerLinkType
+	special SavePlayerParty
+	closemessage
+	clearflag FLAG_SHARE_PARTY
+	setflag FLAG_LINK_PARTY
+	end
+
+Common_EventScript_SetupTwoPlayerMode::
+	lock
+	setvar VAR_FRONTIER_FACILITY, FACILITY_MULTI_OR_EREADER  @ Set preemptively for multi battles, ignored otherwise
+	goto_if_unset FLAG_SYS_POKEDEX_GET, Common_EventScript_SetupTwoPlayerModeEnd
+	specialvar VAR_RESULT, IsBadEggInParty
+	goto_if_eq VAR_RESULT, TRUE, Common_EventScript_SetupTwoPlayerModeEnd
+	specialvar VAR_RESULT, IsWirelessAdapterConnected
+	message Common_Text_SettingUpTwoPlayerMode
+	waitmessage
+	delay 28
+	setvar VAR_0x8004, USING_TWO_PLAYER
+	message gText_PleaseWaitForLink
+	waitmessage
+	setvar VAR_0x8005, 0
+	special TryBattleLinkup
+	waitstate
+	goto_if_gt VAR_RESULT, LINKUP_SUCCESS, CableClub_EventScript_AbortLinkConnectionError
+	goto_if_eq VAR_RESULT, LINKUP_SUCCESS, Common_EventScript_TwoPlayerCableLinkSuccessful
+Common_EventScript_SetupTwoPlayerModeEnd:
+	release
+	end
+
+Common_Text_SettingUpTwoPlayerMode:
+	.string "Initiating two-player mode.$"
+
+
 Common_EventScript_RemoveStaticPokemon::
 	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject VAR_LAST_TALKED

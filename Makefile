@@ -97,6 +97,7 @@ ifeq ($(RELEASE),1)
 endif
 
 ROM_NAME := $(FILE_NAME).gba
+ROM_P2_NAME := $(FILE_NAME)-player2.gba
 OBJ_DIR_NAME := $(BUILD_DIR)/$(BUILD_NAME)
 OBJ_DIR_NAME_TEST := $(BUILD_DIR)/$(BUILD_NAME)-test
 OBJ_DIR_NAME_DEBUG := $(BUILD_DIR)/$(BUILD_NAME)-debug
@@ -374,7 +375,7 @@ check: $(TESTELF)
 	$(ROMTESTHYDRA) $(ROMTEST) $(OBJCOPY) $(HEADLESSELF)
 
 # Other rules
-rom: $(ROM)
+rom: $(ROM) $(ROM_P2_NAME)
 ifeq ($(COMPARE),1)
 	@$(SHA1) rom.sha1
 endif
@@ -406,7 +407,7 @@ tidydebug:
 
 tidyrelease:
 ifeq ($(RELEASE),1)
-	rm -f $(ROM_NAME) $(ELF_NAME) $(MAP_NAME)
+	rm -f $(ROM_NAME) $(ROM_P2_NAME) $(ELF_NAME) $(MAP_NAME)
 else # Manually remove the release files on clean/tidy
 	rm -f $(FILE_NAME)-release.gba $(FILE_NAME)-release.elf $(FILE_NAME)-release.map
 endif
@@ -606,6 +607,10 @@ endif
 
 # Builds the rom from the elf file
 $(ROM): $(ELF)
+	$(OBJCOPY) -O binary $< $@
+	$(FIX) $@ -p --silent
+
+$(ROM_P2_NAME): $(ELF)
 	$(OBJCOPY) -O binary $< $@
 	$(FIX) $@ -p --silent
 

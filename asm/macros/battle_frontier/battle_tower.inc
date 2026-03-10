@@ -133,6 +133,7 @@
 	.endm
 
 	.macro multi_do_p type:req
+	call_if_set FLAG_LINK_PARTY, Common_EventScript_TwoPlayerChecks
 	callnative AreMultiPartiesFullTeams
 	goto_if_eq VAR_RESULT, TRUE, MultiDoPlayerPartyReduceBypass\@
 		special ReducePlayerPartyToSelectedMons

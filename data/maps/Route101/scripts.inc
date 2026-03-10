@@ -242,7 +242,7 @@ Route101_EventScript_BirchsBag::
 	setvar VAR_BIRCH_LAB_STATE, 2
 	setvar VAR_ROUTE101_STATE, 3
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	clearflag FLAG_UTILITY_MENU
+	clearflag FLAG_HIDE_UTILITY_MENU
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, Route101_EventScript_HideMayInBedroom
 	call_if_eq VAR_RESULT, FEMALE, Route101_EventScript_HideBrendanInBedroom

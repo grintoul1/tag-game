@@ -1411,6 +1411,8 @@ static void SetMultiPartnerMenuParty(enum BattleTrainer trainer)
     }
 }
 
+// TwoPlayerOpponentChecks
+
 static void CB2_PreInitMultiBattle(void)
 {
     s32 i;

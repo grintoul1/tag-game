@@ -356,10 +356,10 @@ static void BuildNormalStartMenu(void)
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    if (!FlagGet(FLAG_UTILITY_MENU_E4) && !FlagGet(FLAG_UTILITY_MENU))
+    /*if (!FlagGet(FLAG_HIDE_UTILITY_MENU))
     {
         AddStartMenuAction(MENU_ACTION_UTILITY);
-    }
+    }*/
 }
 
 static void BuildDebugStartMenu(void)
@@ -375,7 +375,7 @@ static void BuildDebugStartMenu(void)
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_UTILITY);
+    //AddStartMenuAction(MENU_ACTION_UTILITY);
 }
 
 static void BuildSafariZoneStartMenu(void)

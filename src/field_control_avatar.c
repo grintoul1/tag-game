@@ -84,6 +84,7 @@ static void SetMsgSignPostAndVarFacing(enum Direction playerDirection);
 static void SetUpWalkIntoSignScript(const u8 *script, enum Direction playerDirection);
 static u32 GetFacingSignpostType(u16 metatileBehvaior, enum Direction direction);
 static const u8 *GetSignpostScriptAtMapPosition(struct MapPosition *position);
+extern const u8 PokeMenu_EventScript[];
 
 void FieldClearPlayerInput(struct FieldInput *input)
 {
@@ -96,6 +97,7 @@ void FieldClearPlayerInput(struct FieldInput *input)
     input->tookStep = FALSE;
     input->pressedBButton = FALSE;
     input->pressedRButton = FALSE;
+    input->pressedLButton = FALSE;
     input->input_field_1_1 = FALSE;
     input->input_field_1_2 = FALSE;
     input->input_field_1_3 = FALSE;
@@ -122,6 +124,8 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
                 input->pressedBButton = TRUE;
             if (newKeys & R_BUTTON)
                 input->pressedRButton = TRUE;
+            if (newKeys & L_BUTTON)
+                input->pressedLButton = TRUE;
         }
 
         if (heldKeys & (DPAD_UP | DPAD_DOWN | DPAD_LEFT | DPAD_RIGHT))
@@ -235,6 +239,14 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
         return TRUE;
+
+    if (input->pressedLButton && !FlagGet(FLAG_HIDE_UTILITY_MENU))
+    {
+        LockPlayerFieldControls();
+        FreezeObjectEvents();
+        ScriptContext_SetupScript(PokeMenu_EventScript);
+        return TRUE;
+    }
 
     if (input->pressedRButton && TryStartDexNavSearch())
         return TRUE;

@@ -472,9 +472,9 @@ static void FinishLinkup(u16 *linkupStatus, u32 taskId)
 
     if (*linkupStatus == LINKUP_SUCCESS)
     {
-        if (gLinkType == LINKTYPE_BATTLE_TOWER_50 || gLinkType == LINKTYPE_BATTLE_TOWER_OPEN)
+        if (gLinkType == LINKTYPE_BATTLE_TOWER_50 || gLinkType == LINKTYPE_BATTLE_TOWER_OPEN || gLinkType == LINKTYPE_TWO_PLAYER)
         {
-            if (AreBattleTowerLinkSpeciesSame(trainerCards[0].monSpecies, trainerCards[1].monSpecies))
+            if (AreBattleTowerLinkSpeciesSame(trainerCards[0].monSpecies, trainerCards[1].monSpecies) && !(gLinkType == LINKTYPE_TWO_PLAYER))
             {
                 // Unsuccessful battle tower linkup
                 *linkupStatus = LINKUP_FAILED_BATTLE_TOWER;
@@ -594,7 +594,10 @@ void TryBattleLinkup(void)
             gLinkType = LINKTYPE_BATTLE_TOWER_50;
         else
             gLinkType = LINKTYPE_BATTLE_TOWER_OPEN;
-
+        break;
+    case USING_TWO_PLAYER:
+        minPlayers = 2;
+        gLinkType = LINKTYPE_TWO_PLAYER;
         break;
     }
 
@@ -743,6 +746,9 @@ u8 CreateTask_ReestablishCableClubLink(void)
         else
             gLinkType = LINKTYPE_BATTLE_TOWER_OPEN;
         break;
+    case USING_TWO_PLAYER:
+        gLinkType = LINKTYPE_TWO_PLAYER;
+        break;
     case USING_TRADE_CENTER:
         gLinkType = LINKTYPE_TRADE;
         break;
@@ -824,6 +830,8 @@ static void SetLinkBattleTypeFlags(int linkService)
         break;
     case USING_BATTLE_TOWER:
         gBattleTypeFlags = BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER | BATTLE_TYPE_MULTI;
+        break;
+    case USING_TWO_PLAYER: // Flags setup during battle setup
         break;
     }
 }
@@ -1324,7 +1332,12 @@ void Task_ReconnectWithLinkPlayers(u8 taskId)
 void TrySetBattleTowerLinkType(void)
 {
     if (gWirelessCommType == 0)
-        gLinkType = LINKTYPE_BATTLE_TOWER;
+    {
+        if (gSpecialVar_0x8004 == USING_TWO_PLAYER)
+            gLinkType = LINKTYPE_TWO_PLAYER;
+        else
+            gLinkType = LINKTYPE_BATTLE_TOWER;
+    }
 }
 
 #undef tState

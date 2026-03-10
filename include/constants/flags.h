@@ -45,13 +45,13 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
-#define FLAG_DEBUG_COLLISION 0x20 // Debug Collision
-#define FLAG_UTILITY_MENU    0x21 // Utility Menu
-#define FLAG_POKE_MENU       0x22 // FLAG_POKE_MENU
-#define FLAG_UTILITY_MENU_E4 0x23 // FLAG_UTILITY_MENU_E4
-#define FLAG_SHARE_PARTY     0x24 // Sets player and partner to share a party
-#define FLAG_ELITE_FOUR_PARTY_ONLY    0x25 // 6-mon Elite 4
-#define FLAG_ELITE_FOUR_PARTY_EXCHANGED    0x26 // Flags whether player has already exchanged Pokémon in the Elite 4
+#define FLAG_LINK_PARTY                 0x20 // Sets Link mode
+#define FLAG_HIDE_UTILITY_MENU               0x21 // Utility Menu
+#define FLAG_POKE_MENU                  0x22 // FLAG_POKE_MENU
+#define FLAG_HIDE_UTILITY_MENU_E4            0x23 // FLAG_HIDE_UTILITY_MENU_E4
+#define FLAG_SHARE_PARTY                0x24 // Sets player and partner to share a party
+#define FLAG_ELITE_FOUR_PARTY_ONLY      0x25 // 6-mon Elite 4
+#define FLAG_ELITE_FOUR_PARTY_EXCHANGED 0x26 // Flags whether player has already exchanged Pokémon in the Elite 4
 #if IS_FRLG
 
 #include "constants/flags_frlg.h"
@@ -113,7 +113,7 @@
 #define FLAG_RESCUED_BIRCH                       0x52
 #define FLAG_LEGENDARIES_IN_SOOTOPOLIS           0x53
 
-#define FLAG_UNUSED_0x054                    0x54  // Unused Flag
+#define FLAG_DEBUG_COLLISION                 0x54  // Debug Collision
 #define FLAG_UNUSED_0x055                    0x55  // Unused Flag
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56  // Always set after new game, object it hides is added directly

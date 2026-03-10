@@ -842,10 +842,13 @@ DebugEventScript_PrintWeekday_Text_0:
 
 // Utility Menu 
 PokeMenu_EventScript::
+	goto_if_set FLAG_HIDE_UTILITY_MENU_E4, PokeMenu_EventScript_1 @ skip PC and Poke Vial
 	dynmultipush PokeMenu_EventScript_Text_0, 0 @ Access PC
 	dynmultipush PokeMenu_EventScript_Text_1, 1 @ Poke Vial
-	goto_if_set FLAG_BADGE06_GET, PokeMenu_EventScript_2 @ Fly
 PokeMenu_EventScript_1:
+	goto_if_unset FLAG_BADGE06_GET, PokeMenu_EventScript_2 @ skip Fly
+	dynmultipush PokeMenu_EventScript_Text_2, 2 @ Fly
+PokeMenu_EventScript_2:
 	dynmultipush PokeMenu_EventScript_Text_3, 3 @ Utility
 	dynmultipush PokeMenu_EventScript_Text_4, 4 @ Repellent
 	@goto PokeMenu_EventScript_5 @ Poke Rider
@@ -860,10 +863,6 @@ PokeMenu_EventScript_4:
 	@ case 5, PokeMenu_EventScript_13 @ Poke Rider
 	case MULTI_B_PRESSED, PokeMenu_EventScript_14 @ Exit
 	return
-
-PokeMenu_EventScript_2:
-	dynmultipush PokeMenu_EventScript_Text_2, 2 @ Fly
-	goto PokeMenu_EventScript_1
 
 @PokeMenu_EventScript_5:
 	@dynmultipush PokeMenu_EventScript_Text_5, 5 @ Poke Rider
@@ -1052,10 +1051,12 @@ PokeMenu_EventScript_Utility_6:
 PokeMenu_EventScript_Utility_7:
 	dynmultipush PokeMenu_EventScript_Utility_Text_6, 0 @ Separate
 	dynmultipush PokeMenu_EventScript_Utility_Text_7, 1 @ Shared
-	dynmultistack 0, 0, FALSE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	dynmultipush PokeMenu_EventScript_Utility_Text_8, 2 @ Link
+	dynmultistack 0, 0, FALSE, 3, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	switch VAR_RESULT
 	case 0, PokeMenu_EventScript_Utility_9 @ Separate
 	case 1, PokeMenu_EventScript_Utility_10 @ Shared
+	case 2, PokeMenu_EventScript_Utility_11 @ Link
 	case MULTI_B_PRESSED, PokeMenu_EventScript_Utility_6
 	return
 
@@ -1067,11 +1068,17 @@ PokeMenu_EventScript_Utility_8:
 
 PokeMenu_EventScript_Utility_9:
 	clearflag FLAG_SHARE_PARTY
+	clearflag FLAG_LINK_PARTY
 	return
 
 PokeMenu_EventScript_Utility_10:
 	setflag FLAG_SHARE_PARTY
+	clearflag FLAG_LINK_PARTY
 	return
+
+PokeMenu_EventScript_Utility_11:
+	goto Common_EventScript_SetupTwoPlayerMode
+	end
 
 PokeMenu_EventScript_Utility_Status::
 	dynmultipush Debug_EventScript_InflictStatus1_Text_Poison, 0
@@ -1358,6 +1365,9 @@ PokeMenu_EventScript_Utility_Text_6:
 
 PokeMenu_EventScript_Utility_Text_7:
 	.string "Shared$"
+
+PokeMenu_EventScript_Utility_Text_8:
+	.string "Link$"
 
 PokeMenu_EventScript_Time_Text_0:
 	.string "Day$"
