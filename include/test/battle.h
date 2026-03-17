@@ -577,6 +577,7 @@ enum {
     BATTLE_TEST_SINGLES,
     BATTLE_TEST_DOUBLES,
     BATTLE_TEST_WILD,
+    BATTLE_TEST_SAFARI,
     BATTLE_TEST_MULTI,
     BATTLE_TEST_TWO_VS_ONE,
     BATTLE_TEST_ONE_VS_TWO,
@@ -965,6 +966,7 @@ extern struct BattleTestRunnerState *const gBattleTestRunnerState;
 
 #define SINGLE_BATTLE_TEST(_name, ...) BATTLE_TEST_ARGS_SINGLE(_name, BATTLE_TEST_SINGLES, __VA_ARGS__)
 #define WILD_BATTLE_TEST(_name, ...) BATTLE_TEST_ARGS_SINGLE(_name, BATTLE_TEST_WILD, __VA_ARGS__)
+#define SAFARI_BATTLE_TEST(_name, ...) BATTLE_TEST_ARGS_SINGLE(_name, BATTLE_TEST_SAFARI, __VA_ARGS__)
 #define AI_SINGLE_BATTLE_TEST(_name, ...) BATTLE_TEST_ARGS_SINGLE(_name, BATTLE_TEST_AI_SINGLES, __VA_ARGS__)
 
 #define DOUBLE_BATTLE_TEST(_name, ...) BATTLE_TEST_ARGS_DOUBLE(_name, BATTLE_TEST_DOUBLES, __VA_ARGS__)
@@ -1157,9 +1159,26 @@ enum { TURN_CLOSED, TURN_OPEN, TURN_CLOSING };
 #define SKIP_TURN(battler) SkipTurn(__LINE__, battler)
 #define SEND_OUT(battler, partyIndex) SendOut(__LINE__, battler, partyIndex)
 #define USE_ITEM(battler, ...) UseItem(__LINE__, battler, (struct ItemContext) { R_APPEND_TRUE(__VA_ARGS__) })
+#define SAFARI_BALL(...) SafariBall(__LINE__, (struct SafariContext) { .playerAction = B_ACTION_SAFARI_BALL, .explicitPlayerAction = TRUE, R_APPEND_TRUE(__VA_ARGS__) })
+#define POKEBLOCK(...) PokeBlock(__LINE__, (struct SafariContext) { .playerAction = B_ACTION_SAFARI_POKEBLOCK, .explicitPlayerAction = TRUE, R_APPEND_TRUE(__VA_ARGS__) })
+#define GO_NEAR(...) GoNear(__LINE__, (struct SafariContext) { .playerAction = B_ACTION_SAFARI_GO_NEAR, .explicitPlayerAction = TRUE, R_APPEND_TRUE(__VA_ARGS__) })
+#define SAFARI_CURIOUS()
+#define SAFARI_ENTHRALLED()
+#define SAFARI_IGNORE()
 #define WITH_RNG(tag, value) rng: ((struct RiggedRNG) { tag, value })
 #define TIE_BREAK_SCORE(rngTag, scoreTieRes, value) TieBreakScore(__LINE__, rngTag, scoreTieRes, value)
 #define TIE_BREAK_TARGET(targetTieRes, value) TieBreakTarget(__LINE__, targetTieRes, value)
+
+struct SafariContext
+{
+    u16 playerAction:5;
+    u16 explicitPlayerAction:1;
+    u16 opponentAction:5;
+    u16 explicitOpponentAction:1;
+    u16 padding:4;
+    bool8 explicitRNG;
+    struct RiggedRNG rng;
+};
 
 struct MoveContext
 {
@@ -1213,6 +1232,9 @@ void Switch(u32 sourceLine, struct BattlePokemon *, u32 partyIndex);
 void SkipTurn(u32 sourceLine, struct BattlePokemon *);
 void UseItem(u32 sourceLine, struct BattlePokemon *, struct ItemContext);
 void SendOut(u32 sourceLine, struct BattlePokemon *, u32 partyIndex);
+void SafariBall(u32 sourceLine, struct SafariContext);
+void PokeBlock(u32 sourceLine, struct SafariContext);
+void GoNear(u32 sourceLine, struct SafariContext);
 
 /* Scene */
 

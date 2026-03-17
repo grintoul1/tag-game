@@ -203,6 +203,7 @@ static void InvokeTestFunction(const struct BattleTest *test)
     {
     case BATTLE_TEST_SINGLES:
     case BATTLE_TEST_WILD:
+    case BATTLE_TEST_SAFARI:
     case BATTLE_TEST_AI_SINGLES:
         InvokeSingleTestFunctionWithStack(STATE->results, STATE->runParameter, &gBattleMons[B_POSITION_PLAYER_LEFT], &gBattleMons[B_POSITION_OPPONENT_LEFT], test->function.singles, &DATA.stack[BATTLE_TEST_STACK_SIZE]);
         break;
@@ -280,6 +281,7 @@ static void BattleTest_SetUp(void *data)
     {
     case BATTLE_TEST_SINGLES:
     case BATTLE_TEST_WILD:
+    case BATTLE_TEST_SAFARI:
     case BATTLE_TEST_AI_SINGLES:
         STATE->battlersCount = 2;
         break;
@@ -375,6 +377,12 @@ static void BattleTest_Run(void *data)
     {
     case BATTLE_TEST_WILD:
         DATA.recordedBattle.battleFlags = BATTLE_TYPE_IS_MASTER;
+        for (i = 0; i < STATE->battlersCount; i++)
+            DATA.currentMonIndexes[i] = i / 2;
+        break;
+    case BATTLE_TEST_SAFARI:
+        DATA.recordedBattle.battleFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_SAFARI;
+        gAiThinkingStruct->aiFlags[B_BATTLER_1] = AI_FLAG_SAFARI;
         for (i = 0; i < STATE->battlersCount; i++)
             DATA.currentMonIndexes[i] = i / 2;
         break;
@@ -489,19 +497,31 @@ static void BattleTest_Run(void *data)
     STATE->runWhen = FALSE;
     STATE->runScene = FALSE;
 
-    requiredPlayerPartySize = 0;
-    requiredOpponentPartySize = 0;
-    for (i = 0; i < STATE->battlersCount; i++)
+    if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
     {
-        if ((i & BIT_SIDE) == B_SIDE_PLAYER)
-            requiredPlayerPartySize = DATA.currentMonIndexes[i] + 1;
-        else
-            requiredOpponentPartySize = DATA.currentMonIndexes[i] + 1;
+        requiredPlayerPartySize = 0;
+        requiredOpponentPartySize = 1;
+        if (DATA.playerPartySize != requiredPlayerPartySize)
+            Test_ExitWithResult(TEST_RESULT_INVALID, SourceLine(0), ":LPLAYER cannot have Pokemon in Safari tests", requiredPlayerPartySize);
+        if (DATA.opponentPartySize != requiredOpponentPartySize)
+            Test_ExitWithResult(TEST_RESULT_INVALID, SourceLine(0), ":LOPPONENT must only have 1 Pokemon in Safari tests", requiredOpponentPartySize);
     }
-    if (DATA.playerPartySize < requiredPlayerPartySize)
-        Test_ExitWithResult(TEST_RESULT_INVALID, SourceLine(0), ":L%d PLAYER Pokemon required", requiredPlayerPartySize);
-    if (DATA.opponentPartySize < requiredOpponentPartySize)
-        Test_ExitWithResult(TEST_RESULT_INVALID, SourceLine(0), ":L%d OPPONENT Pokemon required", requiredOpponentPartySize);
+    else
+    {
+        requiredPlayerPartySize = 0;
+        requiredOpponentPartySize = 0;
+        for (i = 0; i < STATE->battlersCount; i++)
+        {
+            if ((i & BIT_SIDE) == B_SIDE_PLAYER)
+                requiredPlayerPartySize = DATA.currentMonIndexes[i] + 1;
+            else
+                requiredOpponentPartySize = DATA.currentMonIndexes[i] + 1;
+        }
+        if (DATA.playerPartySize < requiredPlayerPartySize)
+            Test_ExitWithResult(TEST_RESULT_INVALID, SourceLine(0), ":L%d PLAYER Pokemon required", requiredPlayerPartySize);
+        if (DATA.opponentPartySize < requiredOpponentPartySize)
+            Test_ExitWithResult(TEST_RESULT_INVALID, SourceLine(0), ":L%d OPPONENT Pokemon required", requiredOpponentPartySize);
+    }
 
     for (i = 0; i < STATE->battlersCount; i++)
         PushBattlerAction(0, i, RECORDED_BYTE, 0xFF);
@@ -2040,6 +2060,7 @@ void OpenPokemon(u32 sourceLine, enum BattleTrainer trainer, u32 species)
     u8 *partySize;
     struct Pokemon *party;
     INVALID_IF(species >= SPECIES_EGG, "Invalid species: %d", species);
+    INVALID_IF(gBattleTypeFlags & BATTLE_TYPE_SAFARI && trainer != B_TRAINER_1, "Invalid Pokemon assignment for Safari test");
     ASSUMPTION_FAIL_IF(!IsSpeciesEnabled(species), "Species disabled: %d", species);
     if ((trainer & BIT_SIDE) == B_SIDE_PLAYER)
     {
@@ -2080,6 +2101,7 @@ void OpenPokemonMulti(u32 sourceLine, enum BattleTrainer trainer, u32 species)
     u8 *partySize;
     struct Pokemon *party;
     INVALID_IF(species >= SPECIES_EGG, "Invalid species: %d", species);
+    INVALID_IF(gBattleTypeFlags & BATTLE_TYPE_SAFARI && trainer != B_TRAINER_1, "Invalid Pokemon assignment for Safari test");
     ASSUMPTION_FAIL_IF(!IsSpeciesEnabled(species), "Species disabled: %d", species);
     if (trainer == B_TRAINER_0) // MULTI_PLAYER
     {
@@ -2482,6 +2504,7 @@ static const char *BattlerIdentifier(s32 battlerId)
     {
     case BATTLE_TEST_SINGLES:
     case BATTLE_TEST_WILD:
+    case BATTLE_TEST_SAFARI:
     case BATTLE_TEST_AI_SINGLES:
         return sBattlerIdentifiersSingles[battlerId];
     case BATTLE_TEST_DOUBLES:
@@ -2632,11 +2655,22 @@ void CloseTurn(u32 sourceLine)
     for (i = 0; i < STATE->battlersCount; i++)
     {
         if (!(DATA.actionBattlers & (1 << i)))
-        { // Multi test partner trainers want setting to RecordedPartner controller if no move set in this case; EXPECT_XXXX will set to PlayerPartner.
-            if (IsAITest() && (i & BIT_SIDE) == B_SIDE_OPPONENT) // If Move was not specified, allow any move used.
+        {
+            if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
+            {
+                if (i) // Opponent
+                    SetAiActionToPass(sourceLine, i);
+                else
+                    SafariBall(sourceLine, (struct SafariContext) { playerAction: B_ACTION_SAFARI_BALL, explicitPlayerAction: FALSE });
+            }// Multi test partner trainers want setting to RecordedPartner controller if no move set in this case; EXPECT_XXXX will set to PlayerPartner.
+            else if (IsAITest() && (i & BIT_SIDE) == B_SIDE_OPPONENT) // If Move was not specified, allow any move used.
+            {
                 SetAiActionToPass(sourceLine, i);
+            }
             else
+            {
                 Move(sourceLine, &gBattleMons[i], (struct MoveContext) { move: MOVE_CELEBRATE, explicitMove: TRUE });
+            }
         }
     }
     DATA.turnState = TURN_CLOSED;
@@ -2807,6 +2841,7 @@ void Move(u32 sourceLine, struct BattlePokemon *battler, struct MoveContext ctx)
     s32 target;
     bool32 requirePartyIndex = FALSE;
 
+    INVALID_IF(gBattleTypeFlags & BATTLE_TYPE_SAFARI, "MOVE in Safari test");
     INVALID_IF(DATA.turnState == TURN_CLOSED, "MOVE outside TURN");
     INVALID_IF(IsAITest() && (battlerId & BIT_SIDE) == B_SIDE_OPPONENT, "MOVE is not allowed for opponent in AI tests. Use EXPECT_MOVE instead");
 
@@ -2868,6 +2903,7 @@ void Move(u32 sourceLine, struct BattlePokemon *battler, struct MoveContext ctx)
 void ForcedMove(u32 sourceLine, struct BattlePokemon *battler)
 {
     s32 battlerId = battler - gBattleMons;
+    INVALID_IF(gBattleTypeFlags & BATTLE_TYPE_SAFARI, "FORCED_MOVE in Safari test");
     INVALID_IF(DATA.turnState == TURN_CLOSED, "SKIP_TURN outside TURN");
     PushBattlerAction(sourceLine, battlerId, RECORDED_ACTION_TYPE, B_ACTION_USE_MOVE);
     if (DATA.turnState == TURN_OPEN)
@@ -3039,6 +3075,7 @@ void Switch(u32 sourceLine, struct BattlePokemon *battler, u32 partyIndex)
 {
     s32 i;
     s32 battlerId = battler - gBattleMons;
+    INVALID_IF(gBattleTypeFlags & BATTLE_TYPE_SAFARI, "SWITCH in Safari test");
     INVALID_IF(DATA.turnState == TURN_CLOSED, "SWITCH outside TURN");
     INVALID_IF(DATA.actionBattlers & (1 << battlerId), "Multiple battler actions");
     INVALID_IF(partyIndex >= ((battlerId & BIT_SIDE) == B_SIDE_PLAYER ? DATA.playerPartySize : DATA.opponentPartySize), "SWITCH to invalid party index");
@@ -3097,6 +3134,7 @@ void SendOut(u32 sourceLine, struct BattlePokemon *battler, u32 partyIndex)
 {
     s32 i;
     s32 battlerId = battler - gBattleMons;
+    INVALID_IF(gBattleTypeFlags & BATTLE_TYPE_SAFARI, "SEND_OUT in Safari test");
     INVALID_IF(DATA.turnState == TURN_CLOSED, "SEND_OUT outside TURN");
     INVALID_IF(partyIndex >= ((battlerId & BIT_SIDE) == B_SIDE_PLAYER ? DATA.playerPartySize : DATA.opponentPartySize), "SEND_OUT of invalid party index");
     INVALID_IF(IsAITest() && (battlerId & BIT_SIDE) == B_SIDE_OPPONENT, "SEND_OUT is not allowed for opponent in AI tests. Use EXPECT_SEND_OUT instead");
@@ -3121,6 +3159,7 @@ void UseItem(u32 sourceLine, struct BattlePokemon *battler, struct ItemContext c
                             || (ctxItemType == ITEM_USE_BATTLER && GetBattleTest()->type != BATTLE_TEST_AI_DOUBLES && STATE->battlersCount > 2);
     // Check general bad use.
     INVALID_IF(DATA.turnState == TURN_CLOSED, "USE_ITEM outside TURN");
+    INVALID_IF(gBattleTypeFlags & BATTLE_TYPE_SAFARI, "USE_ITEM in Safari test");
     INVALID_IF(DATA.actionBattlers & (1 << battlerId), "Multiple battler actions");
     INVALID_IF(ctx.itemId >= ITEMS_COUNT, "Illegal item: %d", ctx.itemId);
     // Check party menu items.
@@ -3151,6 +3190,72 @@ void UseItem(u32 sourceLine, struct BattlePokemon *battler, struct ItemContext c
     PushBattlerAction(sourceLine, battlerId, RECORDED_ITEM_TARGET, ctx.partyIndex);
     PushBattlerAction(sourceLine, battlerId, RECORDED_ITEM_MOVE, i);
     DATA.actionBattlers |= 1 << battlerId;
+}
+
+void SafariBall(u32 sourceLine, struct SafariContext ctx)
+{
+    INVALID_IF(!(gBattleTypeFlags & BATTLE_TYPE_SAFARI), "SAFARI_BALL only allowed in SAFARI_BATTLE_TEST");
+    INVALID_IF(DATA.turnState == TURN_CLOSED, "SAFARI_BALL outside TURN");
+    INVALID_IF(DATA.actionBattlers & (1 << B_BATTLER_0), "Multiple battler actions");
+    INVALID_IF((ctx.playerAction && ctx.playerAction != B_ACTION_SAFARI_BALL), "Invalid player action set");
+    INVALID_IF((ctx.explicitOpponentAction && !ctx.opponentAction), "Missing explicit opponent action");
+
+    if (!ctx.explicitPlayerAction) // Default action
+    {
+        ctx.explicitRNG = TRUE;
+        SetupRiggedRng(sourceLine, RNG_BALLTHROW_SHAKE, MAX_u16);
+    }
+
+    if (ctx.opponentAction)
+        ctx.explicitOpponentAction = TRUE;
+
+    if (ctx.explicitRNG)
+        DATA.battleRecordTurns[DATA.turns][B_BATTLER_0].rng = ctx.rng;
+    PushBattlerAction(sourceLine, B_BATTLER_0, RECORDED_ACTION_TYPE, B_ACTION_SAFARI_BALL);
+    PushBattlerAction(sourceLine, B_BATTLER_0, RECORDED_ITEM_MOVE, 0);
+    DATA.actionBattlers |= 1 << B_BATTLER_0;
+}
+
+void PokeBlock(u32 sourceLine, struct SafariContext ctx)
+{
+    INVALID_IF(!(gBattleTypeFlags & BATTLE_TYPE_SAFARI), "POKEBLOCK only allowed in SAFARI_BATTLE_TEST");
+    INVALID_IF(DATA.turnState == TURN_CLOSED, "POKEBLOCK outside TURN");
+    INVALID_IF(DATA.actionBattlers & (1 << B_BATTLER_0), "Multiple battler actions");
+    INVALID_IF((ctx.playerAction && ctx.playerAction != B_ACTION_SAFARI_POKEBLOCK), "Invalid player action set");
+    INVALID_IF((ctx.explicitOpponentAction && !ctx.opponentAction), "Missing explicit opponent action");
+
+    if (!ctx.explicitPlayerAction) // Default action
+        ctx.playerAction = B_ACTION_SAFARI_POKEBLOCK;
+
+    if (ctx.opponentAction)
+        ctx.explicitOpponentAction = TRUE;
+
+    if (ctx.explicitRNG)
+        DATA.battleRecordTurns[DATA.turns][B_BATTLER_0].rng = ctx.rng;
+    PushBattlerAction(sourceLine, B_BATTLER_0, RECORDED_ACTION_TYPE, B_ACTION_SAFARI_POKEBLOCK);
+    PushBattlerAction(sourceLine, B_BATTLER_0, RECORDED_ITEM_MOVE, 0);
+    DATA.actionBattlers |= 1 << B_BATTLER_0;
+}
+
+void GoNear(u32 sourceLine, struct SafariContext ctx)
+{
+    INVALID_IF(!(gBattleTypeFlags & BATTLE_TYPE_SAFARI), "GO_NEAR only allowed in SAFARI_BATTLE_TEST");
+    INVALID_IF(DATA.turnState == TURN_CLOSED, "GO_NEAR outside TURN");
+    INVALID_IF(DATA.actionBattlers & (1 << B_BATTLER_0), "Multiple battler actions");
+    INVALID_IF((ctx.playerAction && ctx.playerAction != B_ACTION_SAFARI_GO_NEAR), "Invalid player action set");
+    INVALID_IF((ctx.explicitOpponentAction && !ctx.opponentAction), "Missing explicit opponent action");
+
+    if (!ctx.explicitPlayerAction) // Default action
+        ctx.playerAction = B_ACTION_SAFARI_GO_NEAR;
+
+    if (ctx.opponentAction)
+        ctx.explicitOpponentAction = TRUE;
+
+    if (ctx.explicitRNG)
+        DATA.battleRecordTurns[DATA.turns][B_BATTLER_0].rng = ctx.rng;
+    PushBattlerAction(sourceLine, B_BATTLER_0, RECORDED_ACTION_TYPE, B_ACTION_SAFARI_GO_NEAR);
+    PushBattlerAction(sourceLine, B_BATTLER_0, RECORDED_ITEM_MOVE, 0);
+    DATA.actionBattlers |= 1 << B_BATTLER_0;
 }
 
 static const char *const sQueueGroupTypeMacros[] =

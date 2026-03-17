@@ -252,8 +252,10 @@ static void InitBtlControllersInternal(void)
         else
         {
             // Player 1
-            if (isRecorded)
+            if (isRecorded && !(gBattleTypeFlags & BATTLE_TYPE_SAFARI))
                 gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = SetControllerToRecordedPlayer;
+            else if (isRecorded && (gBattleTypeFlags & BATTLE_TYPE_SAFARI))
+                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = SetControllerToRecordedSafari;
             else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
                 gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = SetControllerToSafari;
             else if (gBattleTypeFlags & BATTLE_TYPE_CATCH_TUTORIAL)

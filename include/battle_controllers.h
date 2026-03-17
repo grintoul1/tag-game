@@ -79,6 +79,7 @@ enum BattleController
     BATTLE_CONTROLLER_RECORDED_PLAYER,
     BATTLE_CONTROLLER_RECORDED_PARTNER,
     BATTLE_CONTROLLER_RECORDED_OPPONENT,
+    BATTLE_CONTROLLER_RECORDED_SAFARI,
     BATTLE_CONTROLLER_OAK_OLD_MAN,
     BATTLE_CONTROLLERS_COUNT,
 };
@@ -435,6 +436,10 @@ void PlayerPartnerBufferExecCompleted(enum BattlerId battler);
 // safari controller
 void SetControllerToSafari(enum BattlerId battler);
 void SafariBufferExecCompleted(enum BattlerId battler);
+
+// recorded safari controller
+void SetControllerToRecordedSafari(enum BattlerId battler);
+void RecordedSafariBufferExecCompleted(enum BattlerId battler);
 
 // wally controller
 void SetControllerToWally(enum BattlerId battler);
