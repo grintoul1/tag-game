@@ -134,9 +134,10 @@ AI_SINGLE_BATTLE_TEST("Choiced Pokémon won't use status move if they don't have
 {
     u32 j;
     enum Move move = MOVE_NONE;
-    u32 species = SPECIES_NONE, heldItem = ITEM_NONE;
+    u32 species = SPECIES_NONE;
+    enum Item heldItem = ITEM_NONE;
     enum Ability ability = ABILITY_NONE;
-    static const u32 choiceItems[] = {
+    static const enum Item choiceItems[] = {
         ITEM_CHOICE_SPECS,
         ITEM_CHOICE_BAND,
         ITEM_CHOICE_SCARF,
@@ -171,7 +172,8 @@ AI_SINGLE_BATTLE_TEST("Choiced Pokémon won't use status move if they are trappe
 {
     u32 j;
     enum Ability aiAbility = ABILITY_NONE, playerAbility = ABILITY_NONE;
-    u32 species = SPECIES_NONE, heldItem = ITEM_NONE;
+    u32 species = SPECIES_NONE;
+    enum Item heldItem = ITEM_NONE;
 
     static const u32 choiceItems[] = {
         ITEM_CHOICE_SPECS,
@@ -276,7 +278,6 @@ AI_DOUBLE_BATTLE_TEST("FIXER Choiced Pokémon won't switch out if they can still
         PLAYER(defendingSpecies) { Ability(defendingAbility); SpDefense(500); Moves(MOVE_CELEBRATE); }
         OPPONENT(SPECIES_VAPOREON) { Moves(MOVE_SCALD); Item(ITEM_CHOICE_SPECS); }
         OPPONENT(SPECIES_VAPOREON) { Moves(MOVE_SCALD); Item(ITEM_CHOICE_SPECS); }
-        OPPONENT(SPECIES_ZIGZAGOON);
         OPPONENT(SPECIES_ZIGZAGOON);
     } WHEN {
         TURN { SWITCH(playerLeft, 2); MOVE(playerRight, MOVE_CELEBRATE); EXPECT_MOVE(opponentLeft, MOVE_SCALD, target:playerLeft); EXPECT_MOVE(opponentRight, MOVE_SCALD, target:playerLeft); }

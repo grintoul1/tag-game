@@ -160,6 +160,7 @@ enum RandomTag
     RNG_SECONDARY_EFFECT_3,
     RNG_SHED_SKIN,
     RNG_SLEEP_TURNS,
+    RNG_TAUNT_TURNS,
     RNG_SPEED_TIE,
     RNG_STATIC,
     RNG_STENCH,
@@ -264,6 +265,7 @@ enum RandomTag
     RNG_WILD_MON_TARGET,
     RNG_TAUNT,
     RNG_SILVALLY_MEMORY,
+    RNG_AI_FAKE_OUT_SAVE_ALLY,
 };
 
 #define RandomWeighted(tag, ...) \

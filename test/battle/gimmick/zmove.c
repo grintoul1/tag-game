@@ -598,6 +598,24 @@ SINGLE_BATTLE_TEST("(Z-MOVE) Genesis Supernova sets up psychic terrain")
     }
 }
 
+SINGLE_BATTLE_TEST("(Z-MOVE) Genesis Supernova sets up psychic terrain when the target is behind a Substitute")
+{
+    GIVEN {
+        ASSUME(MoveHasAdditionalEffect(MOVE_GENESIS_SUPERNOVA, MOVE_EFFECT_PSYCHIC_TERRAIN));
+        PLAYER(SPECIES_MEW) { Item(ITEM_MEWNIUM_Z); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_SUBSTITUTE); MOVE(player, MOVE_PSYCHIC, gimmick: GIMMICK_Z_MOVE); }
+        TURN { MOVE(player, MOVE_QUICK_ATTACK); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_GENESIS_SUPERNOVA, player);
+        SUB_HIT(opponent);
+        NOT { ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, player); }
+        MESSAGE("The opposing Wobbuffet is protected by the Psychic Terrain!");
+    }
+}
+
 /* Ice Spinner effect changed
 SINGLE_BATTLE_TEST("(Z-MOVE) Splintered Stormshards removes terrain")
 {
@@ -617,6 +635,27 @@ SINGLE_BATTLE_TEST("(Z-MOVE) Splintered Stormshards removes terrain")
     }
 }
 */
+
+SINGLE_BATTLE_TEST("(Z-MOVE) Splintered Stormshards removes terrain when the target is behind a Substitute")
+{
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_SPLINTERED_STORMSHARDS) == EFFECT_ICE_SPINNER);
+        PLAYER(SPECIES_LYCANROC_DUSK) { Item(ITEM_LYCANIUM_Z); }
+        OPPONENT(SPECIES_TAPU_LELE) { Ability(ABILITY_PSYCHIC_SURGE); HP(1000); MaxHP(1000); }
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_SUBSTITUTE); MOVE(player, MOVE_STONE_EDGE, gimmick: GIMMICK_Z_MOVE); }
+        TURN { MOVE(player, MOVE_QUICK_ATTACK); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBSTITUTE, opponent);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SPLINTERED_STORMSHARDS, player);
+        SUB_HIT(opponent);
+        EXPECT_FAIL { // Ice spinner effect changed
+            MESSAGE("The weirdness disappeared from the battlefield!");
+        }
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, player);
+    }
+}
 
 SINGLE_BATTLE_TEST("(Z-MOVE) Clangorous Soulblaze boosts all the user's stats by one stage")
 {

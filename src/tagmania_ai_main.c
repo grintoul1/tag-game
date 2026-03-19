@@ -247,57 +247,57 @@ static u64 GetAiFlags(u16 trainerId, enum BattlerId battler)
 void BattleAI_SetupFlags(void)
 {
     if (IsAiVsAiBattle())
-        gAiThinkingStruct->aiFlags[B_POSITION_PLAYER_LEFT] = GetAiFlags(gPartnerTrainerId, B_BATTLER_0);
+        gAiThinkingStruct->aiFlags[B_BATTLER_0] = GetAiFlags(gPartnerTrainerId, B_BATTLER_0);
     else
-        gAiThinkingStruct->aiFlags[B_POSITION_PLAYER_LEFT] = 0; // player has no AI
+        gAiThinkingStruct->aiFlags[B_BATTLER_0] = 0; // player has no AI
 
     if (DEBUG_OVERWORLD_MENU && gIsDebugBattle)
     {
-        gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_LEFT] = gDebugAIFlags;
-        gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_RIGHT] = gDebugAIFlags;
+        gAiThinkingStruct->aiFlags[B_BATTLER_1] = gDebugAIFlags;
+        gAiThinkingStruct->aiFlags[B_BATTLER_3] = gDebugAIFlags;
         return;
     }
 
     if (IsWildMonSmart() && !(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER)))
     {
         // smart wild AI
-        gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_LEFT] = GetAiFlags(0xFFFF, B_BATTLER_1);
-        gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_RIGHT] = GetAiFlags(0xFFFF, B_BATTLER_3);
+        gAiThinkingStruct->aiFlags[B_BATTLER_1] = GetAiFlags(0xFFFF, B_BATTLER_1);
+        gAiThinkingStruct->aiFlags[B_BATTLER_3] = GetAiFlags(0xFFFF, B_BATTLER_3);
 
         // The check is here because wild natural enemies are not symmetrical.
         if (B_WILD_NATURAL_ENEMIES && IsDoubleBattle())
         {
-            u32 speciesLeft = GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES);
-            u32 speciesRight = GetMonData(&gParties[B_TRAINER_1][1], MON_DATA_SPECIES);
+            enum Species speciesLeft = GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES);
+            enum Species speciesRight = GetMonData(&gParties[B_TRAINER_3][0], MON_DATA_SPECIES);
             if (IsNaturalEnemy(speciesLeft, speciesRight))
-                gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_LEFT] |= AI_FLAG_ATTACKS_PARTNER;
+                gAiThinkingStruct->aiFlags[B_BATTLER_1] |= AI_FLAG_ATTACKS_PARTNER;
             if (IsNaturalEnemy(speciesRight, speciesLeft))
-                gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_RIGHT] |= AI_FLAG_ATTACKS_PARTNER;
+                gAiThinkingStruct->aiFlags[B_BATTLER_3] |= AI_FLAG_ATTACKS_PARTNER;
         }
     }
     else
     {
-        gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_LEFT] = GetAiFlags(TRAINER_BATTLE_PARAM.opponentA, B_BATTLER_1);
+        gAiThinkingStruct->aiFlags[B_BATTLER_1] = GetAiFlags(TRAINER_BATTLE_PARAM.opponentA, B_BATTLER_1);
         if ((TRAINER_BATTLE_PARAM.opponentB != 0) && (TRAINER_BATTLE_PARAM.opponentB != 0xFFFF))
-            gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_RIGHT] = GetAiFlags(TRAINER_BATTLE_PARAM.opponentB, B_BATTLER_3);
+            gAiThinkingStruct->aiFlags[B_BATTLER_3] = GetAiFlags(TRAINER_BATTLE_PARAM.opponentB, B_BATTLER_3);
         else
-            gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_RIGHT] = gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_LEFT];
+            gAiThinkingStruct->aiFlags[B_BATTLER_3] = gAiThinkingStruct->aiFlags[B_BATTLER_1];
     }
 
     if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
     {
-        gAiThinkingStruct->aiFlags[B_POSITION_PLAYER_RIGHT] = GetAiFlags(gPartnerTrainerId, B_BATTLER_2);
+        gAiThinkingStruct->aiFlags[B_BATTLER_2] = GetAiFlags(gPartnerTrainerId, B_BATTLER_2);
     }
     else if (IsDoubleBattle() && IsAiVsAiBattle())
     {
-        gAiThinkingStruct->aiFlags[B_POSITION_PLAYER_RIGHT] = gAiThinkingStruct->aiFlags[B_POSITION_PLAYER_LEFT];
+        gAiThinkingStruct->aiFlags[B_BATTLER_2] = gAiThinkingStruct->aiFlags[B_BATTLER_0];
     }
     else // Assign ai flags for player for prediction
     {
         u64 aiFlags = GetAiFlags(TRAINER_BATTLE_PARAM.opponentA, B_BATTLER_1) 
         | GetAiFlags(TRAINER_BATTLE_PARAM.opponentB, B_BATTLER_3);
-        gAiThinkingStruct->aiFlags[B_POSITION_PLAYER_RIGHT] = aiFlags;
-        gAiThinkingStruct->aiFlags[B_POSITION_PLAYER_LEFT] = aiFlags;
+        gAiThinkingStruct->aiFlags[B_BATTLER_2] = aiFlags;
+        gAiThinkingStruct->aiFlags[B_BATTLER_0] = aiFlags;
     }
 }
 
@@ -2394,7 +2394,7 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
             //TODO
             break;
         case EFFECT_LOCK_ON:
-            if (gBattleMons[battlerDef].volatiles.lockOn
+            if (gBattleMons[battlerAtk].volatiles.lockOn
               || aiData->abilities[battlerAtk] == ABILITY_NO_GUARD
               || aiData->abilities[battlerDef] == ABILITY_NO_GUARD
               || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
@@ -7449,7 +7449,6 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
 
             if (AI_CanMoveBeBlockedByTarget(&ctx))
                 RETURN_SCORE_MINUS(NO_DAMAGE_OR_FAILS);
-
             switch (abilityDef)
             {
             case ABILITY_MAGIC_GUARD:
@@ -8534,7 +8533,7 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
                 //TODO
                 break;
             case EFFECT_LOCK_ON:
-                if (gBattleMons[battlerDef].volatiles.lockOn
+                if (gBattleMons[battlerAtk].volatiles.lockOn
                 || aiData->abilities[battlerAtk] == ABILITY_NO_GUARD
                 || aiData->abilities[battlerDef] == ABILITY_NO_GUARD
                 || DoesPartnerHaveSameMoveEffect(battlerAtkPartner, battlerDef, move, aiData->partnerMove))
@@ -9415,22 +9414,22 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
         if (aiData->partnerMove != 0 && hasPartner)
         {
             // This catches weather, terrain, screens, etc
-            //if (AreMovesEquivalent(battlerAtk, battlerAtkPartner, move, aiData->partnerMove))
-            //    ADJUST_SCORE(-10);
-
-            switch (partnerEffect)
+            if (AreMovesEquivalent(battlerAtk, battlerAtkPartner, move, aiData->partnerMove))
             {
-            case EFFECT_HELPING_HAND: // PARTNER DIFFERENCE - Partner done
-                break;
-            case EFFECT_PERISH_SONG:
-                break;
-            // Don't change weather if ally already decided to do so.
-            case EFFECT_WEATHER:
-            case EFFECT_WEATHER_AND_SWITCH:
-                ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
-                break;
-            default:
-                break;
+                switch (partnerEffect)
+                {
+                case EFFECT_HELPING_HAND: // PARTNER DIFFERENCE - Partner done
+                    break;
+                case EFFECT_PERISH_SONG:
+                    break;
+                // Don't change weather if ally already decided to do so.
+                case EFFECT_WEATHER:
+                case EFFECT_WEATHER_AND_SWITCH:
+                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                    break;
+                default:
+                    break;
+                }
             }
         } // check partner move effect
 
@@ -13866,7 +13865,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                 //TODO
                 break;
             case EFFECT_LOCK_ON:
-                if (gBattleMons[battlerDef].volatiles.lockOn
+                if (gBattleMons[battlerAtk].volatiles.lockOn
                 || aiData->abilities[battlerAtk] == ABILITY_NO_GUARD
                 || aiData->abilities[battlerDef] == ABILITY_NO_GUARD
                 || DoesPartnerHaveSameMoveEffect(battlerAtkPartner, battlerDef, move, aiData->partnerMove))

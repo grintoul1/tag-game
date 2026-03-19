@@ -439,7 +439,7 @@ bool32 IsBattlerTrapped(enum BattlerId battlerAtk, enum BattlerId battlerDef)
         return TRUE;
     if (gBattleMons[battlerDef].volatiles.escapePrevention)
         return TRUE;
-    if (gBattleMons[battlerDef].volatiles.semiInvulnerable == STATE_SKY_DROP)
+    if (gBattleMons[battlerDef].volatiles.semiInvulnerable == STATE_SKY_DROP_TARGET)
         return TRUE;
     if (gBattleMons[battlerDef].volatiles.root)
         return TRUE;
@@ -461,7 +461,7 @@ bool32 IsBattlerTrapped(enum BattlerId battlerAtk, enum BattlerId battlerDef)
     return FALSE;
 }
 
-u32 GetTotalBaseStat(u32 species)
+u32 GetTotalBaseStat(enum Species species)
 {
     return GetSpeciesBaseHP(species)
          + GetSpeciesBaseAttack(species)
@@ -6792,13 +6792,21 @@ u32 GetActiveBattlerIds(enum BattlerId battler, enum BattlerId *battlerIn1, enum
     return opposingBattler;
 }
 
-bool32 IsPartyMonOnFieldOrChosenToSwitch(enum BattlerId battler, u32 partyIndex, enum BattlerId battlerIn1, enum BattlerId battlerIn2) // grintoul TO DO - how to make this work for everywhere it's used
+bool32 IsPartyMonOnFieldOrChosenToSwitch(enum BattlerId battler, u32 partyIndex, enum BattlerId battlerIn1, enum BattlerId battlerIn2)
 {
     if ((partyIndex == gBattlerPartyIndexes[battlerIn1] && BattlersShareParty(battler, battlerIn1))
             || (partyIndex == gBattlerPartyIndexes[battlerIn2] && BattlersShareParty(battler, battlerIn2)))
         return TRUE;
     if ((partyIndex == gBattleStruct->monToSwitchIntoId[battlerIn1] && BattlersShareParty(battler, battlerIn1))
             || (partyIndex == gBattleStruct->monToSwitchIntoId[battlerIn2] && BattlersShareParty(battler, battlerIn2)))
+        return TRUE;
+    return FALSE;
+}
+
+bool32 IsPartyMonPlannedToBeSwitchedInByPartner(u32 partyIndex, enum BattlerId battler)
+{
+    enum BattlerId battlerPartner = BATTLE_PARTNER(battler);
+    if (partyIndex == gAiLogicData->mostSuitableMonId[battlerPartner] && (gAiLogicData->shouldSwitch & (1u << battlerPartner)))
         return TRUE;
     return FALSE;
 }
