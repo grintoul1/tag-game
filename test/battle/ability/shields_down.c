@@ -78,7 +78,6 @@ SINGLE_BATTLE_TEST("Shields Down protects Minior Meteor from status conditions")
 
 WILD_BATTLE_TEST("Wild Minior appear in Meteor form without transforming")// To be replaced with WILD_DOUBLE_BATTLE_TEST when that is made possible.
 {
-    KNOWN_FAILING;
     GIVEN {
         PLAYER(SPECIES_MINIOR_CORE) { Ability(ABILITY_SHIELDS_DOWN); }
         OPPONENT(SPECIES_MINIOR_CORE) { Ability(ABILITY_SHIELDS_DOWN); }

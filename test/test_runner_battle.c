@@ -199,8 +199,8 @@ NAKED static void InvokeOneVsTwoTestFunctionWithStack(void *results, u32 i, stru
 static void InvokeTestFunction(const struct BattleTest *test)
 {
     STATE->parametersCount = 0;
-    DATA.battler0Trainer = B_TRAINER_0;
-    DATA.battler1Trainer = B_TRAINER_1;
+    // 2 bits per battler; battler0/1 are always trainer0/1, respectively
+    DATA.battlerTrainers = B_TRAINER_1 << 2;
     switch (test->type)
     {
     case BATTLE_TEST_SINGLES:
@@ -210,26 +210,22 @@ static void InvokeTestFunction(const struct BattleTest *test)
         break;
     case BATTLE_TEST_DOUBLES:
     case BATTLE_TEST_AI_DOUBLES:
-        DATA.battler2Trainer = B_TRAINER_0;
-        DATA.battler3Trainer = B_TRAINER_1;
+        DATA.battlerTrainers |= B_TRAINER_1 << 6;
         InvokeDoubleTestFunctionWithStack(STATE->results, STATE->runParameter, &gBattleMons[B_POSITION_PLAYER_LEFT], &gBattleMons[B_POSITION_OPPONENT_LEFT], &gBattleMons[B_POSITION_PLAYER_RIGHT], &gBattleMons[B_POSITION_OPPONENT_RIGHT], test->function.doubles, &DATA.stack[BATTLE_TEST_STACK_SIZE]);
         break;
     case BATTLE_TEST_MULTI:
     case BATTLE_TEST_AI_MULTI:
-        DATA.battler2Trainer = B_TRAINER_2;
-        DATA.battler3Trainer = B_TRAINER_3;
+        DATA.battlerTrainers |= (B_TRAINER_2 << 4 | B_TRAINER_3 << 6);
         InvokeMultiTestFunctionWithStack(STATE->results, STATE->runParameter, &gBattleMons[B_POSITION_PLAYER_LEFT], &gBattleMons[B_POSITION_OPPONENT_LEFT], &gBattleMons[B_POSITION_PLAYER_RIGHT], &gBattleMons[B_POSITION_OPPONENT_RIGHT], test->function.multi, &DATA.stack[BATTLE_TEST_STACK_SIZE]);
         break;
     case BATTLE_TEST_TWO_VS_ONE:
     case BATTLE_TEST_AI_TWO_VS_ONE:
-        DATA.battler2Trainer = B_TRAINER_2;
-        DATA.battler3Trainer = B_TRAINER_1;
+        DATA.battlerTrainers |= (B_TRAINER_2 << 4 | B_TRAINER_1 << 6);
         InvokeTwoVsOneTestFunctionWithStack(STATE->results, STATE->runParameter, &gBattleMons[B_POSITION_PLAYER_LEFT], &gBattleMons[B_POSITION_OPPONENT_LEFT], &gBattleMons[B_POSITION_PLAYER_RIGHT], &gBattleMons[B_POSITION_OPPONENT_RIGHT], test->function.two_vs_one, &DATA.stack[BATTLE_TEST_STACK_SIZE]);
         break;
     case BATTLE_TEST_ONE_VS_TWO:
     case BATTLE_TEST_AI_ONE_VS_TWO:
-        DATA.battler2Trainer = B_TRAINER_0;
-        DATA.battler3Trainer = B_TRAINER_3;
+        DATA.battlerTrainers |= B_TRAINER_3 << 6;
         InvokeOneVsTwoTestFunctionWithStack(STATE->results, STATE->runParameter, &gBattleMons[B_POSITION_PLAYER_LEFT], &gBattleMons[B_POSITION_OPPONENT_LEFT], &gBattleMons[B_POSITION_PLAYER_RIGHT], &gBattleMons[B_POSITION_OPPONENT_RIGHT], test->function.one_vs_two, &DATA.stack[BATTLE_TEST_STACK_SIZE]);
         break;
     }
@@ -345,12 +341,12 @@ static void SetImplicitSpeeds(void)
         {
             for (i = 0; i < DATA.partySizes[trainer]; i++)
             {
-                if (!(hasSpeeds & (1 << ((6 * trainer) + i)))
-                && !(DATA.slowerThan[trainer][i] & ~hasSpeeds))
+                if (!(hasSpeeds & ((1 << (6 * trainer)) << i))
+                 && !(DATA.slowerThan[trainer][i] & ~hasSpeeds))
                 {
                     SetMonData(&DATA.recordedBattle.parties[trainer][i], MON_DATA_SPEED, &speed);
                     speed--;
-                    hasSpeeds |= 1 << ((6 * trainer) + i);
+                    hasSpeeds |= ((1 << (6 * trainer)) << i);
                     madeProgress = TRUE;
                 }
             }
@@ -481,7 +477,7 @@ static void BattleTest_Run(void *data)
         DATA.recordedBattle.playersName[i][0] = CHAR_1 + i;
         DATA.recordedBattle.playersName[i][1] = EOS;
         DATA.recordedBattle.playersLanguage[i] = GAME_LANGUAGE;
-        DATA.recordedBattle.playersBattlers[i] = i;
+        DATA.recordedBattle.playersBattlers |= (i << (2 * (i >> 1) + 4 * (i & BIT_SIDE))); // Trainer0/1 second mon occupies same bits as trainer2/3 mon
     }
 
     STATE->runRandomly = TRUE;
@@ -1776,9 +1772,8 @@ void TestRunner_Battle_AfterLastTurn(void)
 static void TearDownBattle(void)
 {
     // Zero out the parties, data in them could potentially carry over
-    ZeroPlayerPartyMons();
-    ZeroPartnerPartyMons();
-    ZeroEnemyPartyMons();
+    for (enum BattleTrainer trainer = B_TRAINER_0; trainer < MAX_BATTLE_TRAINERS; trainer++)
+        ZeroPartyMons(gParties[trainer]);
     SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
 
     // Set Battle Controllers to BATTLE_CONTROLLER_NONE

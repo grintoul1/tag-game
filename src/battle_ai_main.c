@@ -463,8 +463,7 @@ void AI_TrySwitchOrUseItem(enum BattlerId battler)
 {
     struct Pokemon *party;
     enum BattlerId battlerIn1, battlerIn2;
-    s32 firstId;
-    s32 lastId; // + 1
+    s32 lastId = GetAILastPartyIndex(battler); // + 1
     party = GetBattlerParty(battler);
 
     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
@@ -479,9 +478,8 @@ void AI_TrySwitchOrUseItem(enum BattlerId battler)
                 if (monToSwitchId == PARTY_SIZE)
                 {
                     GetActiveBattlerIds(battler, &battlerIn1, &battlerIn2);
-                    GetAIPartyIndexes(battler, &firstId, &lastId);
 
-                    for (monToSwitchId = (lastId-1); monToSwitchId >= firstId; monToSwitchId--)
+                    for (monToSwitchId = (lastId-1); monToSwitchId >= 0; monToSwitchId--)
                     {
                         if (!IsValidForBattle(&party[monToSwitchId]))
                             continue;
@@ -559,10 +557,8 @@ void Ai_InitPartyStruct(void)
     bool32 hasPartyKnowledge = (gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_LEFT] & AI_FLAG_KNOW_OPPONENT_PARTY) || (gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_RIGHT] & AI_FLAG_KNOW_OPPONENT_PARTY);
     struct Pokemon *mon;
 
-    gAiPartyData->count[B_TRAINER_0] = CalculatePartyCount(B_TRAINER_0);
-    gAiPartyData->count[B_TRAINER_1] = CalculatePartyCount(B_TRAINER_1);
-    gAiPartyData->count[B_TRAINER_2] = CalculatePartyCount(B_TRAINER_2);
-    gAiPartyData->count[B_TRAINER_3] = CalculatePartyCount(B_TRAINER_3);
+    for (enum BattleTrainer trainer = B_TRAINER_0; trainer < MAX_BATTLE_TRAINERS; trainer++)
+        gAiPartyData->count[trainer] = TrainerHasParty(trainer) ? CalculatePartyCount(trainer) : 0;
 
     // Save first 2 or 4(in doubles) mons
     CopyBattlerDataToAIParty(B_POSITION_PLAYER_LEFT, GetTrainerFromBattlePosition(B_POSITION_PLAYER_LEFT));
@@ -579,25 +575,28 @@ void Ai_InitPartyStruct(void)
     // Find fainted mons
     for (enum BattleTrainer trainer = B_TRAINER_0; trainer < MAX_BATTLE_TRAINERS; trainer++)
     {
+        if (!TrainerHasParty(trainer))
+            continue;
+
         for (u32 monIndex = 0; monIndex < PARTY_SIZE; monIndex++)
         {
-            if (GetMonData(&gParties[trainer][monIndex], MON_DATA_SPECIES) == SPECIES_NONE)
-                continue;
-
             mon = &gParties[trainer][monIndex];
-            if (GetMonData(&gParties[trainer][monIndex], MON_DATA_HP) == 0)
-                gAiPartyData->mons[trainer][monIndex].isFainted = TRUE;
-
-            if (isOmniscient || hasPartyKnowledge)
-                gAiPartyData->mons[trainer][monIndex].species = GetMonData(mon, MON_DATA_SPECIES);
-
-            if (isOmniscient)
+            if (GetMonData(mon, MON_DATA_SPECIES) != SPECIES_NONE)
             {
-                gAiPartyData->mons[trainer][monIndex].item = GetMonData(mon, MON_DATA_HELD_ITEM);
-                gAiPartyData->mons[trainer][monIndex].heldEffect = GetItemHoldEffect(gAiPartyData->mons[B_TRAINER_0][monIndex].item);
-                gAiPartyData->mons[trainer][monIndex].ability = GetMonAbility(mon);
-                for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
-                    gAiPartyData->mons[trainer][monIndex].moves[moveIndex] = GetMonData(mon, MON_DATA_MOVE1 + moveIndex);
+                if (GetMonData(mon, MON_DATA_HP) == 0)
+                    gAiPartyData->mons[trainer][monIndex].isFainted = TRUE;
+
+                if (isOmniscient || hasPartyKnowledge)
+                    gAiPartyData->mons[trainer][monIndex].species = GetMonData(mon, MON_DATA_SPECIES);
+
+                if (isOmniscient)
+                {
+                    gAiPartyData->mons[trainer][monIndex].item = GetMonData(mon, MON_DATA_HELD_ITEM);
+                    gAiPartyData->mons[trainer][monIndex].heldEffect = GetItemHoldEffect(gAiPartyData->mons[trainer][monIndex].item);
+                    gAiPartyData->mons[trainer][monIndex].ability = GetMonAbility(mon);
+                    for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+                        gAiPartyData->mons[trainer][monIndex].moves[moveIndex] = GetMonData(mon, MON_DATA_MOVE1 + moveIndex);
+                }
             }
         }
     }

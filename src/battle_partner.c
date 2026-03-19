@@ -40,7 +40,7 @@ void FillPartnerParty(u16 trainerId)
     enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(trainerId);
     u8 nickname[POKEMON_NAME_LENGTH * 2];
     SetFacilityPtrsGetLevel();
-    ZeroPartnerPartyMons();
+    ZeroPartyMons(gParties[B_TRAINER_2]);
 
     if (trainerId == TRAINER_PARTNER(PARTNER_EMMIE)
     || trainerId == TRAINER_PARTNER(PARTNER_SHELLY_MHO)

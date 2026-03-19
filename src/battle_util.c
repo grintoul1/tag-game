@@ -32,6 +32,7 @@
 #include "window.h"
 #include "battle_message.h"
 #include "battle_ai_record.h"
+#include "battle_ai_util.h"
 #include "event_data.h"
 #include "link.h"
 #include "malloc.h"
@@ -1871,10 +1872,9 @@ void TryClearRageAndFuryCutter(void)
 bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyIdBattlerOn2)
 {
     u32 i, playerId, flankId;
-    s32 firstId = 0, lastId = PARTY_SIZE;
+    s32 lastId = GetAILastPartyIndex(battler); // + 1
     struct Pokemon *party = GetBattlerParty(battler);
     
-    GetAIPartyIndexes(battler, &firstId, &lastId);
 
     if (!IsDoubleBattle())
         return FALSE;
@@ -1893,7 +1893,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyI
          && (gHitMarker & HITMARKER_FAINTED(playerId)))
         {
             u8 count = 0;
-            for (i = firstId; i < lastId; i++)
+            for (i = 0; i < lastId; i++)
                 if (IsValidForBattle(&party[i]))
                     count++;
 
@@ -1906,7 +1906,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyI
         if (partyIdBattlerOn2 == PARTY_SIZE)
             partyIdBattlerOn2 = gBattlerPartyIndexes[playerId];
 
-        for (i = firstId; i < lastId; i++)
+        for (i = 0; i < lastId; i++)
         {
             if (IsValidForBattle(&party[i])
              && i != partyIdBattlerOn1 && i != partyIdBattlerOn2
@@ -1927,7 +1927,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyI
             if (partyIdBattlerOn2 == PARTY_SIZE)
                 partyIdBattlerOn2 = gBattlerPartyIndexes[playerId];
 
-            for (i = firstId; i < lastId; i++)
+            for (i = 0; i < lastId; i++)
             {
                 if (IsValidForBattle(&party[i])
                  && i != partyIdBattlerOn1 && i != partyIdBattlerOn2
@@ -1938,7 +1938,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyI
         }
         else
         {
-            for (i = firstId; i < lastId; i++)
+            for (i = 0; i < lastId; i++)
             {
                 if (IsValidForBattle(&party[i]))
                     break;
@@ -1948,7 +1948,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyI
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
     {
-        for (i = firstId; i < lastId; i++)
+        for (i = 0; i < lastId; i++)
         {
             if (IsValidForBattle(&party[i]))
                 break;
@@ -1957,7 +1957,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyI
     }
     else if ((gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS) && !isPlayerSide)
     {
-        for (i = firstId; i < lastId; i++)
+        for (i = 0; i < lastId; i++)
         {
             if (IsValidForBattle(&party[i]))
                 break;
@@ -1982,7 +1982,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyI
         if (partyIdBattlerOn2 == PARTY_SIZE)
             partyIdBattlerOn2 = gBattlerPartyIndexes[playerId];
 
-        for (i = firstId; i < lastId; i++)
+        for (i = 0; i < lastId; i++)
         {
             if (IsValidForBattle(&party[i])
              && i != partyIdBattlerOn1 && i != partyIdBattlerOn2
@@ -9787,23 +9787,14 @@ bool32 IsSleepClauseEnabled(void)
 
 bool32 AreMultiPartiesFullTeams(void)
 {
+    enum DifficultyLevel difficulty = GetCurrentDifficultyLevel();
+
     if (!B_MULTI_FULL_TEAMS
      || TRAINER_BATTLE_PARAM.opponentA == TRAINER_LINK_OPPONENT
-     || TRAINER_BATTLE_PARAM.opponentB == TRAINER_LINK_OPPONENT
      || gBattleTypeFlags & BATTLE_TYPE_TOWER_LINK_MULTI
-     || gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE))
-    {
-        gSpecialVar_Result = FALSE;
-        return FALSE;
-    }
-
-    enum DifficultyLevel difficulty = GetCurrentDifficultyLevel();
-    if (gTrainers[difficulty][TRAINER_BATTLE_PARAM.opponentA].multiTeamSize == MULTI_TEAM_SIZE_HALF)
-    {
-        gSpecialVar_Result = FALSE;
-        return FALSE;
-    }
-    if (gTrainers[difficulty][TRAINER_BATTLE_PARAM.opponentB].multiTeamSize == MULTI_TEAM_SIZE_HALF)
+     || gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)
+     || (gTrainers[difficulty][TRAINER_BATTLE_PARAM.opponentA].multiTeamSize == MULTI_TEAM_SIZE_HALF)
+     || (gTrainers[difficulty][TRAINER_BATTLE_PARAM.opponentB].multiTeamSize == MULTI_TEAM_SIZE_HALF))
     {
         gSpecialVar_Result = FALSE;
         return FALSE;

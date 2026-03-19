@@ -1287,12 +1287,6 @@ void ZeroPlayerPartyMons(void)
         ZeroMonData(&gParties[B_TRAINER_0][i]);
 }
 
-void ZeroPartnerPartyMons(void)
-{
-    for (s32 i = 0; i < PARTY_SIZE; i++)
-        ZeroMonData(&gParties[B_TRAINER_2][i]);
-}
-
 void ZeroEnemyPartyMons(void)
 {
     for (s32 i = 0; i < PARTY_SIZE; i++)
@@ -3506,10 +3500,7 @@ u8 CalculatePartyCount(enum BattleTrainer trainer)
 
 u8 CalculatePartyCountOfSide(enum BattlerId battler)
 {
-    if (GetBattlerTrainer(battler) != GetAllyTrainerFromBattler(battler))
-        return CalculatePartyCount(GetBattlerTrainer(battler)) + CalculatePartyCount(GetAllyTrainerFromBattler(battler));
-    else
-        return CalculatePartyCount(GetBattlerTrainer(battler));
+    return CalculatePartyCount(GetBattlerTrainer(battler)) + (BattleSideHasTwoTrainers(battler & BIT_SIDE) ? CalculatePartyCount(BATTLE_PARTNER(battler)) : 0);
 }
 
 u8 CalculatePlayerPartyCount(void)
@@ -7021,7 +7012,7 @@ void TryScriptEvolution(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        u32 targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], EVO_MODE_SCRIPT_TRIGGER, 0, NULL, &canStopEvo, CHECK_EVO);
+        enum Species targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], EVO_MODE_SCRIPT_TRIGGER, 0, NULL, &canStopEvo, CHECK_EVO);
 
         if (targetSpecies != SPECIES_NONE && !(sTriedEvolving & (1u << i)))
         {
@@ -7052,7 +7043,7 @@ void TrySpecialOverworldEvo(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        u32 targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], EVO_MODE_OVERWORLD_SPECIAL, 0, NULL, &canStopEvo, CHECK_EVO);
+        enum Species targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], EVO_MODE_OVERWORLD_SPECIAL, 0, NULL, &canStopEvo, CHECK_EVO);
 
         if (targetSpecies != SPECIES_NONE && !(sTriedEvolving & (1u << i)))
         {
@@ -7122,9 +7113,6 @@ static struct PartyState *GetBattlerPartyStateByPokemon(struct Pokemon *partyMon
 {
     struct Pokemon *party = GetTrainerParty(trainer);
     
-    if (gBattleStruct == NULL)
-        return NULL;
-
     for (int i = 0; i < PARTY_SIZE; i++)
     {
         struct Pokemon *mon = &party[i];
