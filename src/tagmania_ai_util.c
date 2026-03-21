@@ -5428,7 +5428,7 @@ s32 IncreaseSleepScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enu
 
         GetBestDmgMovesFromBattler(battlerAtk, battlerDef, AI_ATTACKING, bestMoves);
 
-        for (u32 i; i < MAX_MON_MOVES; i++)
+        for (u32 i = 0; i < MAX_MON_MOVES; i++)
         {
             if (GetMoveEffect(bestMoves[i]) == EFFECT_FOCUS_PUNCH)
                 return scoreAdj;
