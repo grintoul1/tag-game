@@ -91,7 +91,7 @@ void FillPartnerParty(u16 trainerId)
                     else if (partyData[i].gender == TRAINER_MON_FEMALE)
                         personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
                     ModifyPersonalityForNature(&personality, GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_HIDDEN_NATURE, NULL));
-                    CopyMon(&gParties[B_TRAINER_2][i], &gParties[B_TRAINER_0][i+3], sizeof(*&gParties[B_TRAINER_0][i+3]));
+                    CopyMon(&gParties[B_TRAINER_2][i], &gParties[B_TRAINER_0][i+3], sizeof(gParties[B_TRAINER_0][i+3]));
                     
                     j = GetMonData(&gParties[B_TRAINER_0][i+3], MON_DATA_MAX_HP, NULL);
                     SetMonData(&gParties[B_TRAINER_2][i], MON_DATA_HP, &j);
