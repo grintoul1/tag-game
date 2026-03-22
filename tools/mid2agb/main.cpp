@@ -41,6 +41,7 @@ int g_reverb = -1;
 int g_clocksPerBeat = 1;
 bool g_exactGateTime = false;
 bool g_compressionEnabled = true;
+bool g_suppressMod = false;
 
 [[noreturn]] static void PrintUsage()
 {
@@ -156,6 +157,9 @@ int main(int argc, char** argv)
                 if (arg == nullptr)
                     PrintUsage();
                 g_asmLabel = arg;
+                break;
+            case 'M':
+                g_suppressMod = true;
                 break;
             case 'N':
                 g_compressionEnabled = false;
