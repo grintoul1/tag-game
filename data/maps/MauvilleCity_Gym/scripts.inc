@@ -107,15 +107,15 @@ applymovement VAR_0x8008, Common_Movement_FacePlayer
 waitmovement 0
 goto_if_set FLAG_BADGE03_GET, MauvilleCity_Gym_EventScript_WattsonPostBattle
 lockall
-playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
+@playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
 msgbox MauvilleCity_Gym_Text_WattsonIntro, MSGBOX_AUTOCLOSE
 goto MauvilleCity_Gym_EventScript_WattsonDoMultiBattle
-playbgm MUS_GYM, TRUE
+playbgm MUS_RB_GYM, TRUE
 releaseall
 end
 
 MauvilleCity_Gym_EventScript_WattsonDoMultiBattle::
-playbgm MUS_GYM, TRUE
+playbgm MUS_RB_GYM, TRUE
 multi_2p_vs_1 TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonDefeated, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MauvilleCity_Gym_EventScript_WattsonVictory

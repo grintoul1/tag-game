@@ -5875,9 +5875,26 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_MAGMA_ADMIN_MIXED:
             return MUS_VS_AQUA_MAGMA;
         case TRAINER_CLASS_KANTONIAN:
-            return MUS_VS_KANTONIAN;
-            return MUS_RG_VS_GYM_LEADER;
+            switch (TRAINER_BATTLE_PARAM.opponentA)
+            {
+            /*case TRAINER_BROCK:
+                return MUS_GS_VS_KANTO_LEADER_BROCK;
+            case TRAINER_MISTY:
+            case TRAINER_LT_SURGE:
+                return MUS_GS_VS_KANTO_LEADER_MISTY_SURGE;*/
+            case TRAINER_ERIKA_RUSTBORO:
+                return MUS_GS_VS_KANTO_LEADER_ERIKA;
+            /*case TRAINER_JANINE:
+            case TRAINER_KOGA:
+                return MUS_GS_VS_KANTO_LEADER_JANINE_KOGA;
+            case TRAINER_BLAINE:
+                return MUS_GS_VS_KANTO_LEADER_BLAINE;*/
+            default:
+                return MUS_GS_VS_KANTO_LEADER_BLAINE;
+                //return MUS_VS_KANTONIAN;
+            }
         case TRAINER_CLASS_LEADER:
+            return MUS_RB_VS_LEADER;
             return MUS_VS_GYM_LEADER;
         case TRAINER_CLASS_CHAMPION:
             return MUS_VS_CHAMPION;

@@ -60,6 +60,23 @@ enum {
     MUSIC_DISABLE_KEEP,
 };
 
+enum MusicMode
+{
+    MUSIC_MODE_DEFAULT, // Intended - corresponds to badge count
+    MUSIC_MODE_SPLIT_1, // RBY
+    MUSIC_MODE_SPLIT_2, // GSC
+    MUSIC_MODE_SPLIT_3, // FRLG
+    MUSIC_MODE_SPLIT_4, // HGSS
+    MUSIC_MODE_SPLIT_5, // DPPt
+    MUSIC_MODE_SPLIT_6, // BW(2)
+    MUSIC_MODE_SPLIT_7, // Gen6/7/Mix?
+    MUSIC_MODE_SPLIT_8, // Gen8/Mix?
+    MUSIC_MODE_SPLIT_9, // Gen9/Mix?
+    MUSIC_MODE_COUNT,
+    MUSIC_MODE_CUSTOM   = 0xFE,
+    MUSIC_MODE_VANILLA  = 0xFF,
+};
+
 // Exported RAM declarations
 extern struct WarpData gLastUsedWarp;
 extern struct LinkPlayerObjectEvent gLinkPlayerObjectEvents[4];

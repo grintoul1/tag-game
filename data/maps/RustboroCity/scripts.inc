@@ -114,7 +114,7 @@ RustboroCity_Text_ErikaLeavingSoon:
 	.string "Okay, do let me know if you change\n"
 	.string "your mind.\p"
 	.string "Though be aware that I am planning\n"
-	.string "yo leave Rustboro very soon!$"
+	.string "to leave Rustboro very soon!$"
 
 RustboroCity_EventScript_PositionScientistForExit::
 	goto_if_eq VAR_TEMP_0, 11, RustboroCity_EventScript_PositionScientistLeftExit
