@@ -23013,9 +23013,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_GMaxRapidFlow,
     },
 
-    [MOVE_FROZEN_RECEPTION] =
+    [MOVE_FROSTY_RECEPTION] =
     {
-        .name = COMPOUND_STRING("Frozen Reception"),
+        .name = COMPOUND_STRING("Frosty Reception"),
         //#if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
         .description = COMPOUND_STRING(
             "Bad joke summons hailstorm.\n"

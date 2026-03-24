@@ -907,7 +907,7 @@ enum __attribute__((packed)) Move
 
     // Add any custom moves here, not further down!
 
-    MOVE_FROZEN_RECEPTION = 848,
+    MOVE_FROSTY_RECEPTION = 848,
     MOVE_CHILL_O_WISP = 849,
     MOVE_ENLIGHTENING = 850,
     MOVE_FROSTY_GALE = 851,
