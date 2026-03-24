@@ -495,7 +495,7 @@ enum __attribute__((packed)) SongId
     MUS_HG_VS_CHAMPION,
     MUS_HG_VS_FRONTIER_BRAIN,
     MUS_HG_VICTORY_FRONTIER_BRAIN,
-    MUS_VS_KANTONIAN,
+    MUS_VS_KANTONIAN, // Kinda done
     MUS_ACCUMULA_TOWN,
     MUS_AGATE_VILLAGE,
     MUS_AREA_ZERO = 620,
@@ -700,8 +700,8 @@ enum __attribute__((packed)) SongId
     MUS_RB_AROUND,
     MUS_RB_BATTLE1 = 820,
     MUS_RB_VS_TRAINER,
-    MUS_RB_VS_LEADER,
-    MUS_RB_BATTLE4,
+    MUS_RB_VS_LEADER, // Done
+    MUS_RB_BATTLE4, // Done
     MUS_RB_BIKE,
     MUS_RB_CAUGHT,
     MUS_RB_CELADON,
@@ -744,13 +744,13 @@ enum __attribute__((packed)) SongId
     MUS_RB_VICTORY3,
     MUS_RB_VIRIDIAN,
     MUS_DP_GYM,
-    MUS_DP_SANDGEM_NIGHT, // Start
-    MUS_GS_VS_KANTO_LEADER_BLAINE,
-    MUS_GS_VS_KANTO_LEADER_JANINE_KOGA,
-    MUS_GS_VS_KANTO_LEADER_ERIKA,
-    MUS_GS_VS_KANTO_LEADER_MISTY_SURGE,
-    MUS_GS_VS_KANTO_LEADER_SABRINA,
-    MUS_GS_VS_KANTO_LEADER_BROCK,
+    MUS_DP_SANDGEM_NIGHT,
+    MUS_GS_VS_KANTO_LEADER_BLAINE, // Done
+    MUS_GS_VS_KANTO_LEADER_JANINE_KOGA, // Done
+    MUS_GS_VS_KANTO_LEADER_ERIKA, // Done
+    MUS_GS_VS_KANTO_LEADER_MISTY_SURGE, // Done
+    MUS_GS_VS_KANTO_LEADER_SABRINA, // Done
+    MUS_GS_VS_KANTO_LEADER_BROCK, // Done
     END_MUS,
 
 // These PH_* constants are phoneme sounds used by the "bard" NPC (see src/bard_music.c and src/mauville_old_man.c).

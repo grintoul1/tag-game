@@ -5822,9 +5822,36 @@ bool32 IsSpeciesInHoennDex(enum Species species)
         return TRUE;
 }
 
+static u16 gRandomWildMusic[8] = // Add more
+{
+    MUS_RB_BATTLE1,
+    MUS_GS_BATTLE1,
+    MUS_GS_BATTLE7,
+    MUS_VS_WILD,
+    MUS_RG_VS_WILD,
+    MUS_VS_POKEMON_JOHTO,
+    MUS_VS_POKEMON_KANTO,
+    MUS_VS_POKEMON_UNOVA,
+};
+
+static u16 gRandomTrainerMusic[11] = // Add more
+{
+    MUS_RB_VS_TRAINER,
+    MUS_GS_BATTLE3,
+    MUS_GS_BATTLE8,
+    MUS_VS_TRAINER,
+    MUS_RG_VS_TRAINER,
+    MUS_VS_COLOSSEUM_ROUND_3,
+    MUS_VS_CIPHER_PEON,
+    MUS_VS_JOHTO_TRAINER,
+    MUS_VS_KANTO_TRAINER,
+    MUS_VS_SINNOH_TRAINER, // Fix
+    MUS_VS_UNOVA_TRAINER,
+};
+
 u16 GetBattleBGM(void)
 {
-    if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
+    if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
     {
         switch (GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES))
         {
@@ -5840,8 +5867,24 @@ u16 GetBattleBGM(void)
         case SPECIES_REGIELEKI:
         case SPECIES_REGIDRAGO:
             return MUS_VS_REGI;
-        default:
+        case SPECIES_SUICUNE:
+        case SPECIES_WALKING_WAKE:
+            return MUS_VS_SUICUNE;
+        case SPECIES_RAIKOU:
+        case SPECIES_RAGING_BOLT:
+            return MUS_VS_RAIKOU;
+        case SPECIES_ENTEI:
+        case SPECIES_GOUGING_FIRE:
+            return MUS_VS_ENTEI;
+        case SPECIES_ARTICUNO:
+        case SPECIES_ZAPDOS:
+        case SPECIES_MOLTRES:
+        case SPECIES_ARTICUNO_GALAR:
+        case SPECIES_ZAPDOS_GALAR:
+        case SPECIES_MOLTRES_GALAR:
             return MUS_RG_VS_LEGEND;
+        default:
+            return gRandomWildMusic[Random() % 8];
         }
     }
     else if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK))
@@ -5883,7 +5926,7 @@ u16 GetBattleBGM(void)
             case TRAINER_LT_SURGE:
                 return MUS_GS_VS_KANTO_LEADER_MISTY_SURGE;*/
             case TRAINER_ERIKA_RUSTBORO:
-                return MUS_GS_VS_KANTO_LEADER_ERIKA;
+                //return MUS_GS_VS_KANTO_LEADER_ERIKA;
             /*case TRAINER_JANINE:
             case TRAINER_KOGA:
                 return MUS_GS_VS_KANTO_LEADER_JANINE_KOGA;
@@ -5891,7 +5934,7 @@ u16 GetBattleBGM(void)
                 return MUS_GS_VS_KANTO_LEADER_BLAINE;*/
             default:
                 return MUS_GS_VS_KANTO_LEADER_BLAINE;
-                //return MUS_VS_KANTONIAN;
+                //return MUS_GS_VS_KANTO_LEADER;
             }
         case TRAINER_CLASS_LEADER:
             return MUS_RB_VS_LEADER;
@@ -5899,7 +5942,34 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_CHAMPION:
             return MUS_VS_CHAMPION;
         case TRAINER_CLASS_RIVAL:
-            return MUS_VS_RIVAL;
+            u32 switchVal;
+            if (VarGet(VAR_MUSIC_MODE) == MUSIC_MODE_DEFAULT)
+                switchVal = GetCurrentBadgeCount() + 1;
+            else
+                switchVal = VarGet(VAR_MUSIC_MODE);
+            switch (switchVal)
+            {
+            case MUSIC_MODE_SPLIT_1:
+                return MUS_RB_BATTLE4;
+            case MUSIC_MODE_SPLIT_2:
+                return MUS_GS_BATTLE2;
+            case MUSIC_MODE_SPLIT_3:
+                return MUS_GS_BATTLE2;
+            case MUSIC_MODE_SPLIT_4:
+                return MUS_VS_SILVER;
+            case MUSIC_MODE_SPLIT_5:
+                return MUS_VS_SILVER;
+            case MUSIC_MODE_SPLIT_6:
+                return MUS_VS_UNOVA_RIVAL;
+            case MUSIC_MODE_SPLIT_7:
+                return MUS_RB_BATTLE1;
+            case MUSIC_MODE_SPLIT_8:
+                return MUS_RB_BATTLE1;
+            case MUSIC_MODE_SPLIT_9:
+                return MUS_RB_BATTLE1;
+            default:
+                return MUS_VS_RIVAL;
+            }
         case TRAINER_CLASS_ELITE_FOUR:
             //return MUS_RG_VS_GYM_LEADER;
             return MUS_VS_ELITE_FOUR;
@@ -5937,7 +6007,12 @@ u16 GetBattleBGM(void)
             if (GetCurrentRegion() == REGION_KANTO)
                 return MUS_RG_VS_TRAINER;
             else
-                return MUS_VS_TRAINER;
+            {
+                if (VarGet(VAR_MUSIC_MODE == MUSIC_MODE_VANILLA))
+                    return MUS_VS_TRAINER;
+                else
+                    return gRandomTrainerMusic[Random() % 11];
+            }
         }
     }
     else

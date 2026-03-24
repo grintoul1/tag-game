@@ -218,5 +218,6 @@ bool8 GetSetItemObtained(enum Item item, enum ItemObtainFlags caseId);
 
 void Overworld_CreditsMainCB(void);
 bool32 Overworld_DoScrollSceneForCredits(u8 *, const struct CreditsOverworldCmd *);
+u32 GetCurrentBadgeCount(void);
 
 #endif // GUARD_OVERWORLD_H

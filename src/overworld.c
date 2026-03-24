@@ -4143,7 +4143,7 @@ static void Task_OvwldCredits_WaitFade(u8 taskId)
 static const u16 sLocMusicOverrides_Petalburg[MUSIC_MODE_COUNT - 1] =
 {
     MUS_RB_CERULEAN,
-    LOCATION_MUSIC_NO_OVERRIDE,
+    MUS_GS_GOLDENROD,
     MUS_RG_FUCHSIA,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
@@ -4234,10 +4234,10 @@ static const u16 sLocMusicOverrides_Route101[MUSIC_MODE_COUNT - 1] =
 
 static const u16 sLocMusicOverrides_Route122[MUSIC_MODE_COUNT - 1] =
 {
-    LOCATION_MUSIC_NO_OVERRIDE,
-    LOCATION_MUSIC_NO_OVERRIDE,
-    LOCATION_MUSIC_NO_OVERRIDE,
-    LOCATION_MUSIC_NO_OVERRIDE,
+    MUS_RB_24,
+    MUS_GS_38,
+    MUS_RG_SEVII_ROUTE,
+    MUS_SINNOH_ROUTE_213,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
@@ -4250,7 +4250,7 @@ static const u16 sLocMusicOverrides_OceanicMuseum[MUSIC_MODE_COUNT - 1] =
     MUS_RB_SHIP,
     MUS_GS_RADIOLULLABY,
     MUS_RG_SS_ANNE,
-    LOCATION_MUSIC_NO_OVERRIDE,
+    MUS_FLOAROMA_TOWN,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
@@ -4340,7 +4340,7 @@ static const u16 sLocMusicOverrides_PokeCenter[MUSIC_MODE_COUNT - 1] =
 {
     MUS_RB_CENTER,
     MUS_GS_CENTER,
-    LOCATION_MUSIC_NO_OVERRIDE,
+    MUS_RG_POKE_CENTER,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
@@ -4521,7 +4521,7 @@ static const u16 sLocMusicOverrides_Dewford[MUSIC_MODE_COUNT - 1] =
 static const u16 sLocMusicOverrides_SafariZone[MUSIC_MODE_COUNT - 1] =
 {
     MUS_RB_EVOLVING,
-    LOCATION_MUSIC_NO_OVERRIDE,
+    MUS_GS_CONTEST,
     MUS_EVOLUTION,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
@@ -4560,7 +4560,7 @@ static const u16 sLocMusicOverrides_MtPyre[MUSIC_MODE_COUNT - 1] =
 static const u16 sLocMusicOverrides_Slateport[MUSIC_MODE_COUNT - 1] =
 {
     LOCATION_MUSIC_NO_OVERRIDE,
-    LOCATION_MUSIC_NO_OVERRIDE,
+    MUS_GS_AZALEA,
     MUS_RG_SEVII_45,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
@@ -4585,9 +4585,9 @@ static const u16 sLocMusicOverrides_MtPyreExterior[MUSIC_MODE_COUNT - 1] =
 
 static const u16 sLocMusicOverrides_School[MUSIC_MODE_COUNT - 1] =
 {
-    LOCATION_MUSIC_NO_OVERRIDE,
-    LOCATION_MUSIC_NO_OVERRIDE,
-    LOCATION_MUSIC_NO_OVERRIDE,
+    MUS_RB_AROUND,
+    MUS_GS_MOM,
+    MUS_RG_TEACHY_TV_MENU,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
@@ -4598,9 +4598,9 @@ static const u16 sLocMusicOverrides_School[MUSIC_MODE_COUNT - 1] =
 
 static const u16 sLocMusicOverrides_SealedChamber[MUSIC_MODE_COUNT - 1] =
 {
-    LOCATION_MUSIC_NO_OVERRIDE,
-    LOCATION_MUSIC_NO_OVERRIDE,
-    LOCATION_MUSIC_NO_OVERRIDE,
+    MUS_RB_TOWER,
+    MUS_GS_TOWER1,
+    MUS_RG_POKE_TOWER,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
@@ -4611,8 +4611,8 @@ static const u16 sLocMusicOverrides_SealedChamber[MUSIC_MODE_COUNT - 1] =
 
 static const u16 sLocMusicOverrides_AbnormalWeather[MUSIC_MODE_COUNT - 1] =
 {
-    LOCATION_MUSIC_NO_OVERRIDE,
-    LOCATION_MUSIC_NO_OVERRIDE,
+    MUS_RB_MANSION,
+    MUS_GS_CAVE1,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
@@ -4625,7 +4625,7 @@ static const u16 sLocMusicOverrides_AbnormalWeather[MUSIC_MODE_COUNT - 1] =
 static const u16 sLocMusicOverrides_WeatherGroudon[MUSIC_MODE_COUNT - 1] =
 {
     MUS_RB_MANSION,
-    LOCATION_MUSIC_NO_OVERRIDE,
+    MUS_GS_HIDEOUT,
     MUS_RG_POKE_MANSION,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
@@ -4650,6 +4650,32 @@ static const u16 sLocMusicOverrides_Sootopolis[MUSIC_MODE_COUNT - 1] =
 
 static const u16 sLocMusicOverrides_EverGrande[MUSIC_MODE_COUNT - 1] =
 {
+    MUS_RB_INDIGO,
+    MUS_GS_INDIGO,
+    MUS_RG_VICTORY_ROAD,
+    LOCATION_MUSIC_NO_OVERRIDE,
+    LOCATION_MUSIC_NO_OVERRIDE,
+    LOCATION_MUSIC_NO_OVERRIDE,
+    LOCATION_MUSIC_NO_OVERRIDE,
+    LOCATION_MUSIC_NO_OVERRIDE,
+    LOCATION_MUSIC_NO_OVERRIDE,
+};
+
+static const u16 sLocMusicOverrides_EncounterBrendan[MUSIC_MODE_COUNT - 1] =
+{
+    LOCATION_MUSIC_NO_OVERRIDE,
+    LOCATION_MUSIC_NO_OVERRIDE,
+    LOCATION_MUSIC_NO_OVERRIDE,
+    LOCATION_MUSIC_NO_OVERRIDE,
+    LOCATION_MUSIC_NO_OVERRIDE,
+    LOCATION_MUSIC_NO_OVERRIDE,
+    LOCATION_MUSIC_NO_OVERRIDE,
+    LOCATION_MUSIC_NO_OVERRIDE,
+    LOCATION_MUSIC_NO_OVERRIDE,
+};
+
+static const u16 sLocMusicOverrides_EncounterMay[MUSIC_MODE_COUNT - 1] =
+{
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
     LOCATION_MUSIC_NO_OVERRIDE,
@@ -4670,6 +4696,11 @@ static const u16 *const gLocationMusic[LAST_LOCATION_OVERRIDE_SONG + 1] =
     [MUS_PETALBURG_WOODS]      = sLocMusicOverrides_PetalburgWoods,
     [MUS_LILYCOVE_MUSEUM]      = sLocMusicOverrides_LilycoveMuseum,
     [MUS_ROUTE101]             = sLocMusicOverrides_Route101,
+    [MUS_ROUTE104]             = sLocMusicOverrides_Route104,
+    [MUS_ROUTE110]             = sLocMusicOverrides_Route110,
+    [MUS_ROUTE113]             = sLocMusicOverrides_Route113,
+    [MUS_ROUTE119]             = sLocMusicOverrides_Route119,
+    [MUS_ROUTE120]             = sLocMusicOverrides_Route119,
     [MUS_ROUTE122]             = sLocMusicOverrides_Route122,
     [MUS_OCEANIC_MUSEUM]       = sLocMusicOverrides_OceanicMuseum,
     [MUS_ABANDONED_SHIP]       = sLocMusicOverrides_AbandonedShip,
@@ -4679,10 +4710,6 @@ static const u16 *const gLocationMusic[LAST_LOCATION_OVERRIDE_SONG + 1] =
     [MUS_VERDANTURF]           = sLocMusicOverrides_Verdanturf,
     [MUS_RUSTBORO]             = sLocMusicOverrides_Rustboro,
     [MUS_POKE_CENTER]          = sLocMusicOverrides_PokeCenter,
-    [MUS_ROUTE104]             = sLocMusicOverrides_Route104,
-    [MUS_ROUTE110]             = sLocMusicOverrides_Route110,
-    [MUS_ROUTE119]             = sLocMusicOverrides_Route119,
-    [MUS_ROUTE120]             = sLocMusicOverrides_Route119,
     [MUS_CYCLING]              = sLocMusicOverrides_Cycling,
     [MUS_POKE_MART]            = sLocMusicOverrides_PokeMart,
     [MUS_LITTLEROOT]           = sLocMusicOverrides_Littleroot,
@@ -4690,7 +4717,6 @@ static const u16 *const gLocationMusic[LAST_LOCATION_OVERRIDE_SONG + 1] =
     [MUS_LILYCOVE]             = sLocMusicOverrides_Lilycove,
     [MUS_DESERT]               = sLocMusicOverrides_Desert,
     [MUS_UNDERWATER]           = sLocMusicOverrides_Underwater,
-    [MUS_ROUTE113]             = sLocMusicOverrides_Route113,
     [MUS_FOLLOW_ME]            = sLocMusicOverrides_FollowMe,
     [MUS_DEWFORD]              = sLocMusicOverrides_Dewford,
     [MUS_SAFARI_ZONE]          = sLocMusicOverrides_SafariZone,
@@ -4704,6 +4730,8 @@ static const u16 *const gLocationMusic[LAST_LOCATION_OVERRIDE_SONG + 1] =
     [MUS_WEATHER_GROUDON]      = sLocMusicOverrides_WeatherGroudon,
     [MUS_SOOTOPOLIS]           = sLocMusicOverrides_Sootopolis,
     [MUS_EVER_GRANDE]          = sLocMusicOverrides_EverGrande,
+    [MUS_ENCOUNTER_BRENDAN]    = sLocMusicOverrides_EncounterBrendan,
+    [MUS_ENCOUNTER_MAY]        = sLocMusicOverrides_EncounterMay,
 };
 
 static bool32 CanOverrideLocationMusic(enum SongId song)
@@ -4750,13 +4778,15 @@ static bool32 CanOverrideLocationMusic(enum SongId song)
     case MUS_WEATHER_GROUDON:
     case MUS_SOOTOPOLIS:
     case MUS_EVER_GRANDE:
+    case MUS_ENCOUNTER_BRENDAN:
+    case MUS_ENCOUNTER_MAY:
         return TRUE;
     default:
         return FALSE;
     }
 }
 
-static u32 GetCurrentBadgeCount(void)
+u32 GetCurrentBadgeCount(void)
 {
     u32 badgeCount = 0;
     for (u32 flag = FLAG_BADGE03_GET; flag < FLAG_BADGE03_GET + NUM_BADGES; flag++)
