@@ -275,7 +275,8 @@ enum __attribute__((packed)) SongId
     SE_PIKE_CURTAIN_CLOSE,
     SE_PIKE_CURTAIN_OPEN,
     SE_SUDOWOODO_SHAKE,
-    END_SE = SE_SUDOWOODO_SHAKE,
+    SE_M_HYPER_BEAM_GEN1,
+    END_SE = SE_M_HYPER_BEAM_GEN1,
 
 // Music
     START_MUS = 350,

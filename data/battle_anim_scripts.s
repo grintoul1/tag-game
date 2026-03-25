@@ -27413,34 +27413,39 @@ SweetScentEffect:
 	delay 2
 	return
 
+HyperBeamBallSpiral:
+	createsprite gHyperBeamChargeSpiralSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 0
+	return
+
 gBattleAnimMove_HyperBeam::
-	simple_palette_blend selector=F_PAL_BG, delay=4, initial_blend_y=0, target_blend_y=16, color=RGB_BLACK
+	invert_screen_color scenery=0x1 | 0x2 | 0x4 | 0x8 | 0x10
+	delay 4
+	playsewithpan SE_M_EMBER, SOUND_PAN_ATTACKER
+	call HyperBeamBallSpiral
+	delay 4
+	call HyperBeamBallSpiral
+	delay 4
+	call HyperBeamBallSpiral
 	waitforvisualfinish
 	delay 10
 	playsewithpan SE_M_HYPER_BEAM, SOUND_PAN_ATTACKER
 	createvisualtask AnimTask_ShakeMon2, 2, ANIM_ATTACKER, 1, 0, 4, 1
 	waitforvisualfinish
 	delay 30
-	createsoundtask SoundTask_LoopSEAdjustPanning, SE_M_HYPER_BEAM2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 1, 15, 0, 5
-	createvisualtask AnimTask_ShakeMon, 2, ANIM_ATTACKER, 0, 4, 50, 1
-	flash_anim_tag_with_color tag=ANIM_TAG_ORBS, delay=1, num_blends=12, color1=RGB_RED, blend_y1=16, color2=0, blend_y2=0
+	createsoundtask SoundTask_LoopSEAdjustPanning, SE_M_HYPER_BEAM_GEN1, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 1, 15, 0, 5
+	@flash_anim_tag_with_color tag=ANIM_TAG_ORBS, delay=1, num_blends=12, color1=RGB_RED, blend_y1=16, color2=0, blend_y2=0
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_ATTACKER, 10, 0, 60, 1
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 10, 0, 60, 1
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_ATK_PARTNER, 10, 0, 60, 1
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_DEF_PARTNER, 10, 0, 60, 1
+	shake_battle_platforms x_offset=10, y_offset=0, shakes=60, delay=1
 	call HyperBeamOrbs
 	call HyperBeamOrbs
 	call HyperBeamOrbs
 	call HyperBeamOrbs
 	call HyperBeamOrbs
-	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 50, 1
-	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 2, 0, 11, RGB(25, 25, 25)
-	call HyperBeamOrbs
-	call HyperBeamOrbs
-	call HyperBeamOrbs
-	call HyperBeamOrbs
-	call HyperBeamOrbs
-	call HyperBeamOrbs
-	call HyperBeamOrbs
-	call HyperBeamOrbs
-	call HyperBeamOrbs
-	call HyperBeamOrbs
+	@createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 50, 1
+	@createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 2, 0, 11, RGB(25, 25, 25)
 	call HyperBeamOrbs
 	call HyperBeamOrbs
 	call HyperBeamOrbs
@@ -27452,9 +27457,21 @@ gBattleAnimMove_HyperBeam::
 	call HyperBeamOrbs
 	call HyperBeamOrbs
 	call HyperBeamOrbs
-	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 2, 11, 0, RGB(25, 25, 25)
+	call HyperBeamOrbs
+	call HyperBeamOrbs
+	call HyperBeamOrbs
+	call HyperBeamOrbs
+	call HyperBeamOrbs
+	call HyperBeamOrbs
+	call HyperBeamOrbs
+	call HyperBeamOrbs
+	call HyperBeamOrbs
+	call HyperBeamOrbs
+	@createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 2, 11, 0, RGB(25, 25, 25)
 	waitforvisualfinish
-	simple_palette_blend selector=F_PAL_BG, delay=4, initial_blend_y=16, target_blend_y=0, color=RGB_BLACK
+	invert_screen_color scenery=0x1 | 0x2 | 0x4 | 0x8 | 0x10
+	waitforvisualfinish
+	@simple_palette_blend selector=F_PAL_BG, delay=4, initial_blend_y=16, target_blend_y=0, color=RGB_BLACK
 	end
 HyperBeamOrbs:
 	create_hyper_beam_orb_sprite ANIM_TARGET, 2

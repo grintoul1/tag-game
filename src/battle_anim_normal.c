@@ -30,6 +30,8 @@ static void AnimTask_FlashAnimTagWithColor_Step1(u8);
 static void AnimTask_FlashAnimTagWithColor_Step2(u8);
 static void AnimTask_ShakeBattlePlatforms_Step(u8);
 static void AnimMovePowerSwapGuardSwap(struct Sprite *);
+static void AnimHyperBeamChargeSpiral(struct Sprite *);
+static void AnimHyperBeamBallStep(struct Sprite *);
 
 static const union AnimCmd sAnim_ConfusionDuck_0[] =
 {
@@ -133,6 +135,57 @@ const struct SpriteTemplate gPowerSwapGuardSwapSpriteTemplate =
     .oam = &gOamData_AffineOff_ObjNormal_16x16,
     .anims = sPowerSwapGuardSwapAnimTable,
     .callback = AnimMovePowerSwapGuardSwap
+};
+
+static const union AnimCmd sAnim_HyperBeamBall[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnims_HyperBeamBall[] =
+{
+    sAnim_HyperBeamBall,
+};
+
+static void AnimHyperBeamBallStep(struct Sprite *sprite)
+{
+    if (++sprite->data[2] < sprite->data[4]) // "jump" round the spiral by updating every 4 frames
+        return;
+
+    sprite->data[2] = 0;
+    sprite->data[0] = (sprite->data[0] + 0x20) & 0xFF; // new angle
+
+    if (--sprite->data[1] <= 0) // remove when in centre
+    {
+        DestroyAnimSprite(sprite);
+        return;
+    }
+
+    sprite->x2 = Sin(sprite->data[0], sprite->data[1]); // maths Smile; this is what makes the spiral
+    sprite->y2 = Cos(sprite->data[0], sprite->data[1]);
+}
+
+static void AnimHyperBeamChargeSpiral(struct Sprite *sprite)
+{
+    InitSpritePosToAnimAttacker(sprite, FALSE);
+    sprite->data[0] = 0;                  // start at top
+    sprite->data[1] = 32;                 // width
+    sprite->data[2] = 0;                  // timer
+    sprite->data[4] = 4;                  // frames per position jump
+    sprite->x2 = Sin(sprite->data[0], sprite->data[1]);
+    sprite->y2 = Cos(sprite->data[0], sprite->data[1]);
+    sprite->callback = AnimHyperBeamBallStep;
+}
+
+const struct SpriteTemplate gHyperBeamChargeSpiralSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_HYPER_BEAM_BALL,
+    .paletteTag = ANIM_TAG_HYPER_BEAM_BALL,
+    .oam = &gOamData_AffineOff_ObjNormal_8x8,
+    .anims = sAnims_HyperBeamBall,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimHyperBeamChargeSpiral,
 };
 
 static const union AnimCmd sAnim_CirclingSparkle[] =

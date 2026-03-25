@@ -1169,6 +1169,9 @@ const u32 gBattleAnimSpriteGfx_ChillWispFire[] = INCBIN_U32("graphics/battle_ani
 const u16 gBattleAnimSpritePal_ChillWispOrb[] = INCBIN_U16("graphics/battle_anims/sprites/chill_wisp_orb.gbapal");
 const u32 gBattleAnimSpriteGfx_ChillWispOrb[] = INCBIN_U32("graphics/battle_anims/sprites/chill_wisp_orb.4bpp.smol");
 
+const u16 gBattleAnimSpritePal_HyperBeamBall[] = INCBIN_U16("graphics/battle_anims/sprites/hyperbeamball.gbapal");
+const u32 gBattleAnimSpriteGfx_HyperBeamBall[] = INCBIN_U32("graphics/battle_anims/sprites/hyperbeamball.4bpp.smol");
+
 const u32 gBattleAnimSpriteGfx_GoldStars[] = INCBIN_U32("graphics/battle_anims/sprites/gold_stars.4bpp.smol");
 const u16 gBattleAnimSpritePal_GoldStars[] = INCBIN_U16("graphics/battle_anims/sprites/gold_stars.gbapal");
 
