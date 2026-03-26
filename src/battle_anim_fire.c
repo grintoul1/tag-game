@@ -410,7 +410,6 @@ const struct SpriteTemplate gChillOWispOrbSpriteTemplate =
     .paletteTag = ANIM_TAG_CHILL_WISP_ORB,
     .oam = &gOamData_AffineOff_ObjNormal_16x16,
     .anims = gAnims_WillOWispOrb,
-    .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimWillOWispOrb,
 };
@@ -444,7 +443,6 @@ const struct SpriteTemplate gChillOWispFireSpriteTemplate =
     .paletteTag = ANIM_TAG_CHILL_WISP_FIRE,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = sAnims_WillOWispFire,
-    .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimWillOWispFire,
 };
