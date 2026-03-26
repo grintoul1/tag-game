@@ -169,7 +169,7 @@ static void AnimHyperBeamBallStep(struct Sprite *sprite)
 static void AnimHyperBeamChargeSpiral(struct Sprite *sprite)
 {
     InitSpritePosToAnimAttacker(sprite, FALSE);
-    sprite->data[0] = 0;                  // start at top
+    sprite->data[0] = 0x80;                  // start at top
     sprite->data[1] = 32;                 // width
     sprite->data[2] = 0;                  // timer
     sprite->data[4] = 4;                  // frames per position jump
