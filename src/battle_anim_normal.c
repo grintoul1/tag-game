@@ -188,6 +188,36 @@ const struct SpriteTemplate gHyperBeamChargeSpiralSpriteTemplate =
     .callback = AnimHyperBeamChargeSpiral,
 };
 
+const struct SpriteTemplate gBlastBurnChargeSpiralSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_HYPER_BEAM_BALL,
+    .paletteTag = ANIM_TAG_BLAST_BURN_BALL,
+    .oam = &gOamData_AffineOff_ObjNormal_8x8,
+    .anims = sAnims_HyperBeamBall,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimHyperBeamChargeSpiral,
+};
+
+const struct SpriteTemplate gHydroCannonChargeSpiralSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_HYPER_BEAM_BALL,
+    .paletteTag = ANIM_TAG_HYDRO_CANNON_BALL,
+    .oam = &gOamData_AffineOff_ObjNormal_8x8,
+    .anims = sAnims_HyperBeamBall,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimHyperBeamChargeSpiral,
+};
+
+const struct SpriteTemplate gFrenzyPlantChargeSpiralSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_HYPER_BEAM_BALL,
+    .paletteTag = ANIM_TAG_FRENZY_PLANT_BALL,
+    .oam = &gOamData_AffineOff_ObjNormal_8x8,
+    .anims = sAnims_HyperBeamBall,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimHyperBeamChargeSpiral,
+};
+
 static const union AnimCmd sAnim_CirclingSparkle[] =
 {
     ANIMCMD_FRAME(0, 3),

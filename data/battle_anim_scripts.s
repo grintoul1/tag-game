@@ -1755,6 +1755,17 @@ gBattleAnimMove_Switcheroo::
 	end
 
 gBattleAnimMove_GigaImpact::
+	invert_screen_color scenery=0x1 | 0x2 | 0x4 | 0x8 | 0x10
+	delay 4
+	playsewithpan SE_M_EMBER, SOUND_PAN_ATTACKER
+	call HyperBeamBallSpiral
+	delay 4
+	call HyperBeamBallSpiral
+	delay 4
+	call HyperBeamBallSpiral
+	waitforvisualfinish
+	invert_screen_color scenery=0x1 | 0x2 | 0x4 | 0x8 | 0x10
+	delay 10
 	monbg ANIM_DEF_PARTNER
 	setalpha 12, 8
 	createvisualtask AnimTask_IsContest, 2
@@ -27845,7 +27856,22 @@ gBattleAnimMove_Substitute::
 	createvisualtask AnimTask_MonToSubstitute, 2
 	end
 
+FrenzyPlantBallSpiral:
+	createsprite gFrenzyPlantChargeSpiralSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 0
+	return
+
 gBattleAnimMove_FrenzyPlant::
+	invert_screen_color scenery=0x1 | 0x2 | 0x4 | 0x8 | 0x10
+	delay 4
+	playsewithpan SE_M_EMBER, SOUND_PAN_ATTACKER
+	call FrenzyPlantBallSpiral
+	delay 4
+	call FrenzyPlantBallSpiral
+	delay 4
+	call FrenzyPlantBallSpiral
+	waitforvisualfinish
+	invert_screen_color scenery=0x1 | 0x2 | 0x4 | 0x8 | 0x10
+	delay 10
 	monbg ANIM_TARGET
 	splitbgprio ANIM_TARGET
 	setalpha 12, 8
@@ -28128,7 +28154,22 @@ gBattleAnimMove_CosmicPower::
 	waitforvisualfinish
 	end
 
+BlastBurnBallSpiral:
+	createsprite gBlastBurnChargeSpiralSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 0
+	return
+
 gBattleAnimMove_BlastBurn::
+	invert_screen_color scenery=0x1 | 0x2 | 0x4 | 0x8 | 0x10
+	delay 4
+	playsewithpan SE_M_EMBER, SOUND_PAN_ATTACKER
+	call BlastBurnBallSpiral
+	delay 4
+	call BlastBurnBallSpiral
+	delay 4
+	call BlastBurnBallSpiral
+	waitforvisualfinish
+	invert_screen_color scenery=0x1 | 0x2 | 0x4 | 0x8 | 0x10
+	delay 10
 	monbg ANIM_DEF_PARTNER
 	setalpha 12, 8
 	playsewithpan SE_M_SACRED_FIRE, SOUND_PAN_ATTACKER
@@ -28405,7 +28446,22 @@ gBattleAnimMove_Overheat::
 	waitforvisualfinish
 	end
 
+HydroCannonBallSpiral:
+	createsprite gHydroCannonChargeSpiralSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 0
+	return
+
 gBattleAnimMove_HydroCannon::
+	invert_screen_color scenery=0x1 | 0x2 | 0x4 | 0x8 | 0x10
+	delay 4
+	playsewithpan SE_M_EMBER, SOUND_PAN_ATTACKER
+	call HydroCannonBallSpiral
+	delay 4
+	call HydroCannonBallSpiral
+	delay 4
+	call HydroCannonBallSpiral
+	waitforvisualfinish
+	invert_screen_color scenery=0x1 | 0x2 | 0x4 | 0x8 | 0x10
+	delay 10
 	monbg ANIM_DEF_PARTNER
 	setalpha 12, 8
 	playsewithpan SE_M_SURF, SOUND_PAN_ATTACKER
