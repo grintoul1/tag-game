@@ -5834,13 +5834,14 @@ static u16 gRandomWildMusic[8] = // Add more
     MUS_VS_POKEMON_UNOVA,
 };
 
-static u16 gRandomTrainerMusic[11] = // Add more
+static u16 gRandomTrainerMusic[12] = // Add more
 {
     MUS_RB_VS_TRAINER,
     MUS_GS_BATTLE3,
     MUS_GS_BATTLE8,
     MUS_VS_TRAINER,
     MUS_RG_VS_TRAINER,
+    MUS_COLOSSEUM_STORY_MODE_NORMAL_BATTLE_ARRANGED,
     MUS_VS_COLOSSEUM_ROUND_3,
     MUS_VS_CIPHER_PEON,
     MUS_VS_JOHTO_TRAINER,
@@ -5907,16 +5908,23 @@ u16 GetBattleBGM(void)
         {
         case TRAINER_CLASS_AQUA_LEADER:
         case TRAINER_CLASS_MAGMA_LEADER:
-            return MUS_VS_AQUA_MAGMA_LEADER;
+        switch (TRAINER_BATTLE_PARAM.opponentA)
+        {
+            case TRAINER_MAXIE_MOSSDEEP:
+                return MUS_VS_UNOVA_ELITE_FOUR;
+            default:
+                return MUS_VS_AQUA_MAGMA_LEADER;
+        }
         case TRAINER_CLASS_TEAM_AQUA:
         case TRAINER_CLASS_TEAM_AQUA_MIXED:
         case TRAINER_CLASS_TEAM_MAGMA:
         case TRAINER_CLASS_TEAM_MAGMA_MIXED:
+            return MUS_VS_AQUA_MAGMA;
         case TRAINER_CLASS_AQUA_ADMIN:
         case TRAINER_CLASS_AQUA_ADMIN_MIXED:
         case TRAINER_CLASS_MAGMA_ADMIN:
         case TRAINER_CLASS_MAGMA_ADMIN_MIXED:
-            return MUS_VS_AQUA_MAGMA;
+            return MUS_COLOSSEUM_VS_CIPHER_ADMIN;
         case TRAINER_CLASS_KANTONIAN:
             switch (TRAINER_BATTLE_PARAM.opponentA)
             {
@@ -6011,7 +6019,7 @@ u16 GetBattleBGM(void)
                 if (VarGet(VAR_MUSIC_MODE == MUSIC_MODE_VANILLA))
                     return MUS_VS_TRAINER;
                 else
-                    return gRandomTrainerMusic[Random() % 11];
+                    return gRandomTrainerMusic[Random() % 12];
             }
         }
     }

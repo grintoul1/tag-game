@@ -879,6 +879,13 @@ gSongTable::
 	song mus_gs_vs_kanto_leader_misty_surge, MUSIC_PLAYER_BGM, 0
 	song mus_gs_vs_kanto_leader_sabrina, MUSIC_PLAYER_BGM, 0
 	song mus_gs_vs_kanto_leader_brock, MUSIC_PLAYER_BGM, 0
+	song mus_colosseum_battle_fanfare_1_v1_1, MUSIC_PLAYER_BGM, 0
+	song mus_colosseum_battle_fanfare_1, MUSIC_PLAYER_BGM, 0
+	song mus_colosseum_pyrite_town, MUSIC_PLAYER_BGM, 0
+	song mus_colosseum_relic_stone_shrine, MUSIC_PLAYER_BGM, 0
+	song mus_colosseum_story_mode_normal_battle_arranged, MUSIC_PLAYER_BGM, 0
+	song mus_colosseum_vs_cipher_admin, MUSIC_PLAYER_BGM, 0
+	song mus_colosseum_vs_miror_b, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:
