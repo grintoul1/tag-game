@@ -2098,3 +2098,17 @@ AI_DOUBLE_BATTLE_TEST("AI can switch out both mons on the same turn in double ba
         TURN { EXPECT_SWITCH(opponentLeft, 2); EXPECT_SWITCH(opponentRight, 3); }
     }
 }
+
+AI_SINGLE_BATTLE_TEST("Retaliate sees damage correctly for post ko switch in")
+{
+    KNOWN_FAILING; // Changed switch AI
+    GIVEN {
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
+        PLAYER(SPECIES_GABITE) { Level(50); Speed(2);}
+        OPPONENT(SPECIES_ZIGZAGOON) { Level(1); Speed(3); HP(1); Moves(MOVE_TACKLE); }
+        OPPONENT(SPECIES_GROUDON) { Level(85); Speed(3); Moves(MOVE_PRECIPICE_BLADES); }
+        OPPONENT(SPECIES_STOUTLAND) { Level(50); Speed(3); Moves(MOVE_RETALIATE); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_TACKLE); EXPECT_SEND_OUT(opponent, 2); }
+    }
+}
