@@ -1017,15 +1017,15 @@ PokeMenu_EventScript_Utility::
 	dynmultipush PokeMenu_EventScript_Utility_Text_2, 2 @ Hatch Egg
 	dynmultipush PokeMenu_EventScript_Utility_Text_3, 3 @ Enc. Table
 	dynmultipush PokeMenu_EventScript_Utility_Text_4, 4 @ Party Type
-	@dynmultipush PokeMenu_EventScript_Utility_Text_5, 5 @ Apply status
-	dynmultistack 0, 0, FALSE, 4, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	dynmultipush PokeMenu_EventScript_Utility_Text_5, 5 @ Music Mode
+	dynmultistack 0, 0, FALSE, 5, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	switch VAR_RESULT
 	@case 0, PokeMenu_EventScript_Utility_2 @ Time
 	case 1, PokeMenu_EventScript_Utility_3 @ Battle Speed
 	case 2, PokeMenu_EventScript_Utility_4 @ Hatch Egg
 	case 3, PokeMenu_EventScript_Utility_5 @ Enc. Table
 	case 4, PokeMenu_EventScript_Utility_7 @ Party Type
-	@case 5, PokeMenu_EventScript_Utility_8 @ Pre-status
+	case 5, PokeMenu_EventScript_Utility_8 @ Music Mode
 	case MULTI_B_PRESSED, PokeMenu_EventScript_Utility_6
 	return
 
@@ -1063,7 +1063,49 @@ PokeMenu_EventScript_Utility_7:
 	return
 
 PokeMenu_EventScript_Utility_8:
-	@special PartyMenuApplyStatus
+	dynmultipush PokeMenu_EventScript_Utility_Text_9, 0 @ Default
+	dynmultipush PokeMenu_EventScript_Utility_Text_10, 1 @ 0 badges
+	goto_if_unset FLAG_BADGE03_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_11, 2 @ 1 badge
+	goto_if_unset FLAG_BADGE01_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_12, 3 @ 2 badges
+	goto_if_unset FLAG_BADGE05_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_13, 4 @ 3 badges
+	goto_if_unset FLAG_BADGE02_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_14, 5 @ 4 badges
+	goto_if_unset FLAG_BADGE04_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_15, 6 @ 5 badges
+	goto_if_unset FLAG_BADGE07_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_16, 7 @ 6 badges
+	goto_if_unset FLAG_BADGE06_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_17, 8 @ 7 badges
+	goto_if_unset FLAG_BADGE08_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_18, 9 @ 8 badges
+PokeMenu_EventScript_MusicModeVanillaText:
+	dynmultipush PokeMenu_EventScript_Utility_Text_19, 10 @ Vanilla
+	dynmultistack 0, 0, FALSE, 5, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	case 1, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE03_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 2, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE01_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 3, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE05_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 4, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE02_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 5, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE04_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 6, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE07_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 7, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE06_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 8, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE08_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 9, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+PokeMenu_EventScript_MusicModeVanillaAction:
+	case 10, PokeMenu_EventScript_Utility_13 @ Vanilla
+	case MULTI_B_PRESSED, PokeMenu_EventScript_Utility_6
 	return
 
 PokeMenu_EventScript_Utility_9:
@@ -1078,6 +1120,16 @@ PokeMenu_EventScript_Utility_10:
 
 PokeMenu_EventScript_Utility_11:
 	goto Common_EventScript_SetupTwoPlayerMode
+	end
+
+PokeMenu_EventScript_Utility_12:
+	copyvar VAR_MUSIC_MODE, VAR_RESULT
+	fadedefaultbgm
+	end
+
+PokeMenu_EventScript_Utility_13:
+	setvar VAR_MUSIC_MODE, 0xFF
+	fadedefaultbgm
 	end
 
 PokeMenu_EventScript_Utility_Status::
@@ -1358,7 +1410,7 @@ PokeMenu_EventScript_Utility_Text_4:
 	.string "Party Type$"
 
 PokeMenu_EventScript_Utility_Text_5:
-	.string "Apply status$"
+	.string "Music Mode$"
 
 PokeMenu_EventScript_Utility_Text_6:
 	.string "Separate$"
@@ -1368,6 +1420,39 @@ PokeMenu_EventScript_Utility_Text_7:
 
 PokeMenu_EventScript_Utility_Text_8:
 	.string "Link$"
+
+PokeMenu_EventScript_Utility_Text_9:
+	.string "Default$"
+
+PokeMenu_EventScript_Utility_Text_10:
+	.string "0 badges$"
+
+PokeMenu_EventScript_Utility_Text_11:
+	.string "1 badge$"
+
+PokeMenu_EventScript_Utility_Text_12:
+	.string "2 badges$"
+
+PokeMenu_EventScript_Utility_Text_13:
+	.string "3 badges$"
+
+PokeMenu_EventScript_Utility_Text_14:
+	.string "4 badges$"
+
+PokeMenu_EventScript_Utility_Text_15:
+	.string "5 badges$"
+
+PokeMenu_EventScript_Utility_Text_16:
+	.string "6 badges$"
+
+PokeMenu_EventScript_Utility_Text_17:
+	.string "7 badges$"
+
+PokeMenu_EventScript_Utility_Text_18:
+	.string "8 badges$"
+
+PokeMenu_EventScript_Utility_Text_19:
+	.string "Vanilla$"
 
 PokeMenu_EventScript_Time_Text_0:
 	.string "Day$"

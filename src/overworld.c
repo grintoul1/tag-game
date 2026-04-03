@@ -1325,26 +1325,24 @@ u16 GetCurrLocationDefaultMusic(void)
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE111)
      && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE111)
      && GetSavedWeather() == WEATHER_SANDSTORM)
-        return MUS_DESERT;
-
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_AQUA_HIDEOUT_1F)
-     && (gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_AQUA_HIDEOUT_1F)
-     || gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_AQUA_HIDEOUT_B1F)
-     || gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_AQUA_HIDEOUT_B2F)))
-        return MUS_GALACTIC_HQ;
+        music = MUS_DESERT;
 
     music = GetLocationMusic(&gSaveBlock1Ptr->location);
     if (music != MUS_ROUTE118)
     {
-        return music;
+        music = music;
     }
     else
     {
         if (gSaveBlock1Ptr->pos.x < 24)
-            return MUS_ROUTE110;
+            music = MUS_ROUTE110;
         else
-            return MUS_ROUTE119;
+            music = MUS_ROUTE119;
     }
+    if (CanOverrideLocationMusic(music))
+        return GetLocationMusicOverride(music);
+    else 
+        return music;
 }
 
 u16 GetWarpDestinationMusic(void)
