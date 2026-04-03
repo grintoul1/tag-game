@@ -865,6 +865,19 @@ enum BattleTransition GetTrainerBattleTransition(void)
     u32 trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentA);
     u8 trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
 
+    switch (TRAINER_BATTLE_PARAM.opponentA)
+    {
+    case TRAINER_ARCHIE_SKY_PILLAR:
+    case TRAINER_MAXIE_SKY_PILLAR:
+        return B_TRANSITION_RAYQUAZA;
+    case TRAINER_MAXIE_MAGMA_HIDEOUT:
+        return B_TRANSITION_GROUDON;
+    case TRAINER_ARCHIE_SEAFLOOR_CAVERN:
+        return B_TRANSITION_KYOGRE;
+    default:
+        break;
+    }
+
     if (DoesTrainerHaveMugshot(trainerId))
         return B_TRANSITION_MUGSHOT;
 
