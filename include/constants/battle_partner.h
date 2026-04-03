@@ -13,6 +13,10 @@
 #define PARTNER_ARCHIE_SKY_PILLAR   8
 #define PARTNER_MAXIE_SKY_PILLAR    9
 #define PARTNER_SHELLY_MHO          10
-#define PARTNER_COUNT               11
+#define PARTNER_STEVEN_TWELVE       11
+#define PARTNER_STEVEN_B2B          12
+#define PARTNER_BLUE_TWELVE         13
+#define PARTNER_BLUE_B2B            14
+#define PARTNER_COUNT               15
 
 #endif  // GUARD_CONSTANTS_BATTLE_PARTNERS_H

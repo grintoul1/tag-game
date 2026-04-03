@@ -1174,3 +1174,675 @@
             },
         },
     },
+#line 470
+    [DIFFICULTY_NORMAL][PARTNER_STEVEN_TWELVE] =
+    {
+#line 471
+        .trainerName = _("Steven"),
+#line 472
+        .trainerClass = TRAINER_CLASS_RIVAL,
+#line 473
+        .trainerPic = TRAINER_PIC_FRONT_STEVEN,
+#line 475
+        .gender = TRAINER_GENDER_MALE,
+#line 476
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 477
+        .aiFlags = AI_FLAG_PARTNER_TRAINER,
+#line 474
+        .trainerBackPic = TRAINER_PIC_BACK_STEVEN,
+#line 0
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
+        .partySize = 6,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 479
+            .species = SPECIES_ARCANINE_HISUI,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 479
+            .heldItem = ITEM_NORMAL_GEM,
+#line 483
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 480
+            .ability = ABILITY_JUSTIFIED,
+#line 481
+            .lvl = 81,
+            .ball = POKEBALL_COUNT,
+#line 482
+            .nature = NATURE_ADAMANT,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 483
+                MOVE_FLARE_BLITZ,
+                MOVE_EXTREME_SPEED,
+                MOVE_ROCK_SLIDE,
+                MOVE_ROCK_TOMB,
+            },
+            },
+            {
+#line 488
+            .species = SPECIES_OMASTAR,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 488
+            .heldItem = ITEM_POWER_HERB,
+#line 492
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 489
+            .ability = ABILITY_WEAK_ARMOR,
+#line 490
+            .lvl = 82,
+            .ball = POKEBALL_COUNT,
+#line 491
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 492
+                MOVE_METEOR_BEAM,
+                MOVE_ICE_BEAM,
+                MOVE_SCALD,
+                MOVE_POWER_GEM,
+            },
+            },
+            {
+#line 497
+            .species = SPECIES_MAGNEZONE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 497
+            .heldItem = ITEM_CHOPLE_BERRY,
+#line 501
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 498
+            .ability = ABILITY_ANALYTIC,
+#line 499
+            .lvl = 83,
+            .ball = POKEBALL_COUNT,
+#line 500
+            .nature = NATURE_SERIOUS,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 501
+                MOVE_EXPLOSION,
+                MOVE_FLASH_CANNON,
+                MOVE_THUNDERBOLT,
+                MOVE_ALLY_SWITCH,
+            },
+            },
+            {
+#line 506
+            .species = SPECIES_ALAKAZAM,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 506
+            .heldItem = ITEM_FOCUS_SASH,
+#line 510
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 507
+            .ability = ABILITY_SYNCHRONIZE,
+#line 508
+            .lvl = 81,
+            .ball = POKEBALL_COUNT,
+#line 509
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 510
+                MOVE_PSYCHIC,
+                MOVE_SHADOW_BALL,
+                MOVE_AURA_SPHERE,
+                MOVE_CALM_MIND,
+            },
+            },
+            {
+#line 515
+            .species = SPECIES_SANDSLASH_ALOLA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 515
+            .heldItem = ITEM_WIDE_LENS,
+#line 519
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 516
+            .ability = ABILITY_SLUSH_RUSH,
+#line 517
+            .lvl = 82,
+            .ball = POKEBALL_COUNT,
+#line 518
+            .nature = NATURE_HASTY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 519
+                MOVE_IRON_HEAD,
+                MOVE_TRIPLE_AXEL,
+                MOVE_DRILL_RUN,
+                MOVE_HONE_CLAWS,
+            },
+            },
+            {
+#line 524
+            .species = SPECIES_PIDGEOT_MEGA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 524
+            .heldItem = ITEM_PIDGEOTITE,
+#line 528
+            .iv = TRAINER_PARTY_IVS(31, 31, 30, 30, 31, 30),
+#line 525
+            .ability = ABILITY_NO_GUARD,
+#line 526
+            .lvl = 83,
+            .ball = POKEBALL_COUNT,
+#line 527
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 529
+                MOVE_HURRICANE,
+                MOVE_HYPER_VOICE,
+                MOVE_HIDDEN_POWER,
+                MOVE_TAILWIND,
+            },
+            },
+        },
+    },
+#line 534
+    [DIFFICULTY_NORMAL][PARTNER_STEVEN_B2B] =
+    {
+#line 535
+        .trainerName = _("Steven"),
+#line 536
+        .trainerClass = TRAINER_CLASS_RIVAL,
+#line 537
+        .trainerPic = TRAINER_PIC_FRONT_STEVEN,
+#line 539
+        .gender = TRAINER_GENDER_MALE,
+#line 540
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 541
+        .aiFlags = AI_FLAG_PARTNER_TRAINER,
+#line 538
+        .trainerBackPic = TRAINER_PIC_BACK_STEVEN,
+#line 0
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
+        .partySize = 6,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 543
+            .species = SPECIES_ARCANINE_HISUI,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 543
+            .heldItem = ITEM_NORMAL_GEM,
+#line 547
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 544
+            .ability = ABILITY_JUSTIFIED,
+#line 545
+            .lvl = 81,
+            .ball = POKEBALL_COUNT,
+#line 546
+            .nature = NATURE_ADAMANT,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 547
+                MOVE_FLARE_BLITZ,
+                MOVE_EXTREME_SPEED,
+                MOVE_ROCK_SLIDE,
+                MOVE_ROCK_TOMB,
+            },
+            },
+            {
+#line 552
+            .species = SPECIES_OMASTAR,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 552
+            .heldItem = ITEM_POWER_HERB,
+#line 556
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 553
+            .ability = ABILITY_WEAK_ARMOR,
+#line 554
+            .lvl = 82,
+            .ball = POKEBALL_COUNT,
+#line 555
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 556
+                MOVE_METEOR_BEAM,
+                MOVE_ICE_BEAM,
+                MOVE_SCALD,
+                MOVE_POWER_GEM,
+            },
+            },
+            {
+#line 561
+            .species = SPECIES_MAGNEZONE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 561
+            .heldItem = ITEM_CHOPLE_BERRY,
+#line 565
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 562
+            .ability = ABILITY_ANALYTIC,
+#line 563
+            .lvl = 83,
+            .ball = POKEBALL_COUNT,
+#line 564
+            .nature = NATURE_SERIOUS,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 565
+                MOVE_EXPLOSION,
+                MOVE_FLASH_CANNON,
+                MOVE_THUNDERBOLT,
+                MOVE_ALLY_SWITCH,
+            },
+            },
+            {
+#line 570
+            .species = SPECIES_ALAKAZAM,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 570
+            .heldItem = ITEM_FOCUS_SASH,
+#line 574
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 571
+            .ability = ABILITY_SYNCHRONIZE,
+#line 572
+            .lvl = 81,
+            .ball = POKEBALL_COUNT,
+#line 573
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 574
+                MOVE_PSYCHIC,
+                MOVE_SHADOW_BALL,
+                MOVE_AURA_SPHERE,
+                MOVE_CALM_MIND,
+            },
+            },
+            {
+#line 579
+            .species = SPECIES_SANDSLASH_ALOLA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 579
+            .heldItem = ITEM_WIDE_LENS,
+#line 583
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 580
+            .ability = ABILITY_SLUSH_RUSH,
+#line 581
+            .lvl = 82,
+            .ball = POKEBALL_COUNT,
+#line 582
+            .nature = NATURE_HASTY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 583
+                MOVE_IRON_HEAD,
+                MOVE_TRIPLE_AXEL,
+                MOVE_DRILL_RUN,
+                MOVE_HONE_CLAWS,
+            },
+            },
+            {
+#line 588
+            .species = SPECIES_PIDGEOT_MEGA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 588
+            .heldItem = ITEM_PIDGEOTITE,
+#line 592
+            .iv = TRAINER_PARTY_IVS(31, 31, 30, 30, 31, 30),
+#line 589
+            .ability = ABILITY_NO_GUARD,
+#line 590
+            .lvl = 83,
+            .ball = POKEBALL_COUNT,
+#line 591
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 593
+                MOVE_HURRICANE,
+                MOVE_HYPER_VOICE,
+                MOVE_HIDDEN_POWER,
+                MOVE_TAILWIND,
+            },
+            },
+        },
+    },
+#line 598
+    [DIFFICULTY_NORMAL][PARTNER_BLUE_TWELVE] =
+    {
+#line 599
+        .trainerName = _("Blue"),
+#line 600
+        .trainerClass = TRAINER_CLASS_KANTONIAN,
+#line 601
+        .trainerPic = TRAINER_PIC_FRONT_CHAMPION_RIVAL_FRLG,
+#line 603
+        .gender = TRAINER_GENDER_MALE,
+#line 604
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 605
+        .aiFlags = AI_FLAG_PARTNER_TRAINER,
+#line 602
+        .trainerBackPic = TRAINER_PIC_BACK_BLUE,
+#line 0
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
+        .partySize = 6,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 607
+            .species = SPECIES_ARCANINE_HISUI,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 607
+            .heldItem = ITEM_NORMAL_GEM,
+#line 611
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 608
+            .ability = ABILITY_JUSTIFIED,
+#line 609
+            .lvl = 81,
+            .ball = POKEBALL_COUNT,
+#line 610
+            .nature = NATURE_ADAMANT,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 611
+                MOVE_FLARE_BLITZ,
+                MOVE_EXTREME_SPEED,
+                MOVE_ROCK_SLIDE,
+                MOVE_ROCK_TOMB,
+            },
+            },
+            {
+#line 616
+            .species = SPECIES_OMASTAR,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 616
+            .heldItem = ITEM_POWER_HERB,
+#line 620
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 617
+            .ability = ABILITY_WEAK_ARMOR,
+#line 618
+            .lvl = 82,
+            .ball = POKEBALL_COUNT,
+#line 619
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 620
+                MOVE_METEOR_BEAM,
+                MOVE_ICE_BEAM,
+                MOVE_SCALD,
+                MOVE_POWER_GEM,
+            },
+            },
+            {
+#line 625
+            .species = SPECIES_MAGNEZONE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 625
+            .heldItem = ITEM_CHOPLE_BERRY,
+#line 629
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 626
+            .ability = ABILITY_ANALYTIC,
+#line 627
+            .lvl = 83,
+            .ball = POKEBALL_COUNT,
+#line 628
+            .nature = NATURE_SERIOUS,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 629
+                MOVE_EXPLOSION,
+                MOVE_FLASH_CANNON,
+                MOVE_THUNDERBOLT,
+                MOVE_ALLY_SWITCH,
+            },
+            },
+            {
+#line 634
+            .species = SPECIES_ALAKAZAM,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 634
+            .heldItem = ITEM_FOCUS_SASH,
+#line 638
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 635
+            .ability = ABILITY_SYNCHRONIZE,
+#line 636
+            .lvl = 81,
+            .ball = POKEBALL_COUNT,
+#line 637
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 638
+                MOVE_PSYCHIC,
+                MOVE_SHADOW_BALL,
+                MOVE_AURA_SPHERE,
+                MOVE_CALM_MIND,
+            },
+            },
+            {
+#line 643
+            .species = SPECIES_SANDSLASH_ALOLA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 643
+            .heldItem = ITEM_WIDE_LENS,
+#line 647
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 644
+            .ability = ABILITY_SLUSH_RUSH,
+#line 645
+            .lvl = 82,
+            .ball = POKEBALL_COUNT,
+#line 646
+            .nature = NATURE_HASTY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 647
+                MOVE_IRON_HEAD,
+                MOVE_TRIPLE_AXEL,
+                MOVE_DRILL_RUN,
+                MOVE_HONE_CLAWS,
+            },
+            },
+            {
+#line 652
+            .species = SPECIES_PIDGEOT_MEGA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 652
+            .heldItem = ITEM_PIDGEOTITE,
+#line 656
+            .iv = TRAINER_PARTY_IVS(31, 31, 30, 30, 31, 30),
+#line 653
+            .ability = ABILITY_NO_GUARD,
+#line 654
+            .lvl = 83,
+            .ball = POKEBALL_COUNT,
+#line 655
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 657
+                MOVE_HURRICANE,
+                MOVE_HYPER_VOICE,
+                MOVE_HIDDEN_POWER,
+                MOVE_TAILWIND,
+            },
+            },
+        },
+    },
+#line 662
+    [DIFFICULTY_NORMAL][PARTNER_BLUE_B2B] =
+    {
+#line 663
+        .trainerName = _("Blue"),
+#line 664
+        .trainerClass = TRAINER_CLASS_KANTONIAN,
+#line 665
+        .trainerPic = TRAINER_PIC_FRONT_CHAMPION_RIVAL_FRLG,
+#line 667
+        .gender = TRAINER_GENDER_MALE,
+#line 668
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 669
+        .aiFlags = AI_FLAG_PARTNER_TRAINER,
+#line 666
+        .trainerBackPic = TRAINER_PIC_BACK_BLUE,
+#line 0
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
+        .partySize = 6,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 671
+            .species = SPECIES_ARCANINE_HISUI,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 671
+            .heldItem = ITEM_NORMAL_GEM,
+#line 675
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 672
+            .ability = ABILITY_JUSTIFIED,
+#line 673
+            .lvl = 81,
+            .ball = POKEBALL_COUNT,
+#line 674
+            .nature = NATURE_ADAMANT,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 675
+                MOVE_FLARE_BLITZ,
+                MOVE_EXTREME_SPEED,
+                MOVE_ROCK_SLIDE,
+                MOVE_ROCK_TOMB,
+            },
+            },
+            {
+#line 680
+            .species = SPECIES_OMASTAR,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 680
+            .heldItem = ITEM_POWER_HERB,
+#line 684
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 681
+            .ability = ABILITY_WEAK_ARMOR,
+#line 682
+            .lvl = 82,
+            .ball = POKEBALL_COUNT,
+#line 683
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 684
+                MOVE_METEOR_BEAM,
+                MOVE_ICE_BEAM,
+                MOVE_SCALD,
+                MOVE_POWER_GEM,
+            },
+            },
+            {
+#line 689
+            .species = SPECIES_MAGNEZONE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 689
+            .heldItem = ITEM_CHOPLE_BERRY,
+#line 693
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 690
+            .ability = ABILITY_ANALYTIC,
+#line 691
+            .lvl = 83,
+            .ball = POKEBALL_COUNT,
+#line 692
+            .nature = NATURE_SERIOUS,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 693
+                MOVE_EXPLOSION,
+                MOVE_FLASH_CANNON,
+                MOVE_THUNDERBOLT,
+                MOVE_ALLY_SWITCH,
+            },
+            },
+            {
+#line 698
+            .species = SPECIES_ALAKAZAM,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 698
+            .heldItem = ITEM_FOCUS_SASH,
+#line 702
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 699
+            .ability = ABILITY_SYNCHRONIZE,
+#line 700
+            .lvl = 81,
+            .ball = POKEBALL_COUNT,
+#line 701
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 702
+                MOVE_PSYCHIC,
+                MOVE_SHADOW_BALL,
+                MOVE_AURA_SPHERE,
+                MOVE_CALM_MIND,
+            },
+            },
+            {
+#line 707
+            .species = SPECIES_SANDSLASH_ALOLA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 707
+            .heldItem = ITEM_WIDE_LENS,
+#line 711
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 708
+            .ability = ABILITY_SLUSH_RUSH,
+#line 709
+            .lvl = 82,
+            .ball = POKEBALL_COUNT,
+#line 710
+            .nature = NATURE_HASTY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 711
+                MOVE_IRON_HEAD,
+                MOVE_TRIPLE_AXEL,
+                MOVE_DRILL_RUN,
+                MOVE_HONE_CLAWS,
+            },
+            },
+            {
+#line 716
+            .species = SPECIES_PIDGEOT_MEGA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 716
+            .heldItem = ITEM_PIDGEOTITE,
+#line 720
+            .iv = TRAINER_PARTY_IVS(31, 31, 30, 30, 31, 30),
+#line 717
+            .ability = ABILITY_NO_GUARD,
+#line 718
+            .lvl = 83,
+            .ball = POKEBALL_COUNT,
+#line 719
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 721
+                MOVE_HURRICANE,
+                MOVE_HYPER_VOICE,
+                MOVE_HIDDEN_POWER,
+                MOVE_TAILWIND,
+            },
+            },
+        },
+    },

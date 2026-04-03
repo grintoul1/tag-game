@@ -181,10 +181,17 @@ void FillPartnerParty(u16 trainerId)
                     thirdIdPart = partnerName[k];
                 }
             }
-            if (trainerId == TRAINER_PARTNER(PARTNER_STEVEN))
+            switch (trainerId)
+            {
+            case PARTNER_STEVEN:
+            case PARTNER_STEVEN_TWELVE:
+            case PARTNER_STEVEN_B2B:
                 otID = STEVEN_OTID;
-            else
+                break;
+            default:
                 otID = ((firstIdPart % 72) * 1000) + ((secondIdPart % 23) * 10) + (thirdIdPart % 37) % 65536;
+                break;
+            }
 
             personality = Random32();
             if (partyData[i].gender == TRAINER_MON_MALE)

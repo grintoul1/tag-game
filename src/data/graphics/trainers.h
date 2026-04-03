@@ -487,6 +487,7 @@ const u8 gTrainerBackPic_Steven[] = INCBIN_U8("graphics/trainers/back_pics/steve
 const u8 gTrainerBackPic_MagmaLeaderMaxie[] = INCBIN_U8("graphics/trainers/back_pics/magma_leader_maxie.4bpp");
 const u8 gTrainerBackPic_AquaLeaderArchie[] = INCBIN_U8("graphics/trainers/back_pics/aqua_leader_archie.4bpp");
 const u8 gTrainerBackPic_MagmaAdminM[] = INCBIN_U8("graphics/trainers/back_pics/magma_leader_maxie.4bpp");
+const u8 gTrainerBackPic_Blue[] = INCBIN_U8("graphics/trainers/back_pics/blue.4bpp");
 
 const u16 gTrainerBackPicPalette_Red[] = INCBIN_U16("graphics/trainers/back_pics/red.gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCBIN_U16("graphics/trainers/back_pics/leaf.gbapal");
@@ -494,6 +495,8 @@ const u16 gTrainerBackPicPalette_Green[] = INCBIN_U16("graphics/trainers/back_pi
 const u16 gTrainerBackPicPalette_MagmaLeaderMaxie[] = INCBIN_U16("graphics/trainers/back_pics/magma_leader_maxie.gbapal");
 const u16 gTrainerBackPicPalette_AquaLeaderArchie[] = INCBIN_U16("graphics/trainers/back_pics/aqua_leader_archie.gbapal");
 const u16 gTrainerBackPicPalette_MagmaAdminM[] = INCBIN_U16("graphics/trainers/back_pics/magma_leader_maxie.gbapal");
+const u16 gTrainerBackPicPalette_Blue[] = INCBIN_U16("graphics/trainers/back_pics/blue.gbapal");
+
 const u8 gTrainerBackPic_Pokedude[] = INCBIN_U8("graphics/trainers/back_pics/pokedude.4bpp");
 const u8 gTrainerBackPic_OldMan[] = INCBIN_U8("graphics/trainers/back_pics/old_man.4bpp");
 
@@ -767,6 +770,7 @@ const struct TrainerBacksprite gTrainerBacksprites[] =
     TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_AQUA_LEADER_ARCHIE, 4, gTrainerBackPic_AquaLeaderArchie, gTrainerBackPicPalette_AquaLeaderArchie, sBackAnims_Hoenn),
     TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_GREEN, 5, gTrainerBackPic_Green, gTrainerBackPicPalette_Green, sBackAnims_Kanto),
     TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_MAGMA_ADMIN, 4, gTrainerBackPic_MagmaAdminM, gTrainerBackPicPalette_MagmaAdminM, sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_BLUE, 5, gTrainerBackPic_Blue, gTrainerBackPicPalette_Blue, sBackAnims_Kanto),
     TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_POKEDUDE, 4, gTrainerBackPic_Pokedude, gTrainerBackPicPalette_Pokedude, sBackAnims_OldManPokedude),
     TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_OLD_MAN, 4, gTrainerBackPic_OldMan, gTrainerBackPicPalette_OldMan, sBackAnims_OldManPokedude),
 
