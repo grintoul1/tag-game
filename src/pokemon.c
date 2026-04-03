@@ -5794,6 +5794,15 @@ u16 GetBattleBGM(void)
         u8 trainerClass;
         u16 trainerId=TRAINER_BATTLE_PARAM.opponentA;
 
+        switch (trainerId)
+        {
+        case TRAINER_ARCHIE_SKY_PILLAR:
+        case TRAINER_MAXIE_SKY_PILLAR:
+            return MUS_PMD_VS_DIALGA;
+        default:
+            break;
+        }
+
         if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
             trainerClass = GetFrontierOpponentClass(TRAINER_BATTLE_PARAM.opponentA);
         else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
