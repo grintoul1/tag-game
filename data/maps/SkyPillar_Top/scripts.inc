@@ -375,7 +375,7 @@ SkyPillar_Top_Text_ArchieThankYou:
 SkyPillar_Top_Text_MaxieThankYou:
 	.string "Maxie: {PLAYER}, thank you, I don't\n"
 	.string "believe that I could have defeated\l"
-	.string "Maxie and that Pokémon alone.\p"
+	.string "Archie and that Pokémon alone.\p"
 	.string "It's time for me to return to\n"
 	.string "Sootopolis.\p"
 	.string "I expect that you will be close\n"
