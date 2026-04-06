@@ -23,7 +23,7 @@ Route101_EventScript_HideMapNamePopup::
 
 Route101_EventScript_StartBirchRescue::
 	lockall
-	playbgm MUS_HELP, TRUE
+	playbgm MUS_FLOCCESY_RANCH, TRUE
 	msgbox Route101_Text_HelpMe, MSGBOX_DEFAULT
 	closemessage
 	setobjectxy LOCALID_BIRCH, 0, 15

@@ -4318,7 +4318,7 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_ETERNA_CITY)    \
     X(MUS_ETERNA_FOREST)    \
     X(MUS_FLOAROMA_TOWN)    \
-    X(MUS_FLOCESSY_TOWN)    \
+    X(MUS_FLOCCESY_TOWN)    \
     X(MUS_GALACTIC_HQ)    \
     X(MUS_GLOBAL_TERMINAL)    \
     X(MUS_GOLENROD_CITY)    \

@@ -8,6 +8,8 @@ InsideOfTruck_OnLoad:
 	setmetatile 4, 1, METATILE_InsideOfTruck_ExitLight_Top, FALSE
 	setmetatile 4, 2, METATILE_InsideOfTruck_ExitLight_Mid, FALSE
 	setmetatile 4, 3, METATILE_InsideOfTruck_ExitLight_Bottom, FALSE
+	delay 240
+	playbgm MUS_FLOCCESY_RANCH, TRUE
 	end
 
 InsideOfTruck_OnResume:

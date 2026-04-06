@@ -650,7 +650,7 @@ gSongTable::
 	song mus_eterna_city, MUSIC_PLAYER_BGM, 0
 	song mus_eterna_forest, MUSIC_PLAYER_BGM, 0
 	song mus_floaroma_town, MUSIC_PLAYER_BGM, 0
-	song mus_flocessy_town, MUSIC_PLAYER_BGM, 0
+	song mus_floccesy_town, MUSIC_PLAYER_BGM, 0
 	song mus_galactic_hq, MUSIC_PLAYER_BGM, 0
 	song mus_global_terminal, MUSIC_PLAYER_BGM, 0
 	song mus_golenrod_city, MUSIC_PLAYER_BGM, 0
