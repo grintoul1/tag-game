@@ -276,10 +276,8 @@ enum __attribute__((packed)) SongId
     SE_PIKE_CURTAIN_OPEN,
     SE_SUDOWOODO_SHAKE,
     SE_M_HYPER_BEAM_GEN1,
-    END_SE = SE_M_HYPER_BEAM_GEN1,
 
 // Music
-    START_MUS = 350,
     MUS_LITTLEROOT_TEST = 350,
     MUS_GSC_ROUTE38,
     MUS_CAUGHT,
@@ -894,7 +892,6 @@ enum __attribute__((packed)) SongId
     MUS_HG_GOLDENROD,
     MUS_HG_SURF,
     MUS_HG_UNION_CAVE,
-    END_MUS,
 
 // These PH_* constants are phoneme sounds used by the "bard" NPC (see src/bard_music.c and src/mauville_old_man.c).
 // Each comes in a triplet of PH_*_BLEND, PH_*_HELD, and PH_*_SOLO, and the name of each triplet incorporates the English phonetic sound it represents.
@@ -950,19 +947,22 @@ enum __attribute__((packed)) SongId
     PH_NURSE_HELD,
     PH_NURSE_SOLO,
 
-    MUS_EMERALD_START   = MUS_LITTLEROOT_TEST,
-    MUS_EMERALD_END     = MUS_VS_ELITE_FOUR,
-    MUS_RG_START        = MUS_RG_FOLLOW_ME,
-    MUS_RG_END          = MUS_RG_TEACHY_TV_MENU,
-    MUS_TAGMANIA_START  = MUS_VS_SINNOH_BRAIN,
-    MUS_TAGMANIA_END    = MUS_RB_VIRIDIAN,
-    FIRST_PHONEME_SONG  = PH_TRAP_BLEND,
-    LAST_PHONEME_SONG   = PH_NURSE_SOLO,
-
     MUS_ROUTE118        = 0x7FFF,
 
     MUS_NONE            = 0xFFFF,
 };
+
+#define END_SE              SE_M_HYPER_BEAM_GEN1
+#define START_MUS           MUS_LITTLEROOT_TEST
+#define END_MUS             MUS_HG_UNION_CAVE
+#define START_EMERALD_MUS   MUS_LITTLEROOT_TEST
+#define END_EMERALD_MUS     MUS_VS_ELITE_FOUR
+#define START_RG_MUS        MUS_RG_FOLLOW_ME
+#define END_RG_MUS          MUS_RG_TEACHY_TV_MENU
+#define START_TAGMANIA_MUS  MUS_VS_SINNOH_BRAIN
+#define END_TAGMANIA_MUS    END_MUS
+#define FIRST_PHONEME_SONG  PH_TRAP_BLEND
+#define LAST_PHONEME_SONG   PH_NURSE_SOLO
 
 #define NUM_PHONEME_SONGS           (LAST_PHONEME_SONG - FIRST_PHONEME_SONG + 1)
 #define PHONEME_ID(song)            ((song) - FIRST_PHONEME_SONG)
