@@ -270,6 +270,7 @@ enum RandomTag
     RNG_AI_FAKE_OUT_SAVE_ALLY,
     RNG_AI_DMG_ROLL_RANDOM,
     RNG_RANDOM_BERRY,
+    RNG_OVERWORLD_MUSIC,
 };
 
 #define RandomWeighted(tag, ...) \

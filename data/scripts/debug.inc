@@ -1083,6 +1083,7 @@ PokeMenu_EventScript_Utility_8:
 	dynmultipush PokeMenu_EventScript_Utility_Text_18, 9 @ 8 badges
 PokeMenu_EventScript_MusicModeVanillaText:
 	dynmultipush PokeMenu_EventScript_Utility_Text_19, 10 @ Vanilla
+	dynmultipush PokeMenu_EventScript_Utility_Text_20, 11 @ Random
 	dynmultistack 0, 0, FALSE, 5, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	switch VAR_RESULT
 	case 0, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
@@ -1105,6 +1106,7 @@ PokeMenu_EventScript_MusicModeVanillaText:
 	case 9, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
 PokeMenu_EventScript_MusicModeVanillaAction:
 	case 10, PokeMenu_EventScript_Utility_13 @ Vanilla
+	case 11, PokeMenu_EventScript_Utility_14 @ Random
 	case MULTI_B_PRESSED, PokeMenu_EventScript_Utility_6
 	return
 
@@ -1128,7 +1130,12 @@ PokeMenu_EventScript_Utility_12:
 	end
 
 PokeMenu_EventScript_Utility_13:
-	setvar VAR_MUSIC_MODE, 0xFF
+	setvar VAR_MUSIC_MODE, 0xFF @ Vanilla
+	fadedefaultbgm
+	end
+
+PokeMenu_EventScript_Utility_14:
+	setvar VAR_MUSIC_MODE, 0xFE @ Vanilla
 	fadedefaultbgm
 	end
 
@@ -1453,6 +1460,9 @@ PokeMenu_EventScript_Utility_Text_18:
 
 PokeMenu_EventScript_Utility_Text_19:
 	.string "Vanilla$"
+
+PokeMenu_EventScript_Utility_Text_20:
+	.string "Random$"
 
 PokeMenu_EventScript_Time_Text_0:
 	.string "Day$"

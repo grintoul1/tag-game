@@ -73,7 +73,7 @@ enum MusicMode
     MUSIC_MODE_SPLIT_8, // Gen8/Mix?
     MUSIC_MODE_SPLIT_9, // Gen9/Mix?
     MUSIC_MODE_COUNT,
-    MUSIC_MODE_CUSTOM   = 0xFE,
+    MUSIC_MODE_RANDOM   = 0xFE,
     MUSIC_MODE_VANILLA  = 0xFF,
 };
 

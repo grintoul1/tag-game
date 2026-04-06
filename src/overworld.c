@@ -4815,10 +4815,6 @@ static u16 GetLocationMusicOverride(enum SongId song)
     if (song > LAST_LOCATION_OVERRIDE_SONG)
         return song;
 
-    // TO DO handle custom
-    if (mode >= MUSIC_MODE_COUNT)
-        return song;
-
     const u16 *overrides = gLocationMusic[song];
     u16 overrideSong;
 
@@ -4827,6 +4823,10 @@ static u16 GetLocationMusicOverride(enum SongId song)
 
     if (mode == MUSIC_MODE_DEFAULT)
         overrideSong = overrides[GetCurrentBadgeCount()]; // Increments with each badge
+    else if (mode == MUSIC_MODE_RANDOM)
+        overrideSong = overrides[RandomUniform(RNG_OVERWORLD_MUSIC, 0, GetCurrentBadgeCount())];
+    else if (mode >= MUSIC_MODE_COUNT)
+        return song;
     else
         overrideSong = overrides[mode - 1];
 
