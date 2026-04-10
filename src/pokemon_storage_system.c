@@ -4457,7 +4457,7 @@ static void UpdateCloseBoxButtonFlash(void)
 static void SetPartySlotTilemaps(void)
 {
     u8 i;
-    s32 species;
+    enum Species species;
 
     if (CountPartyMons() != 0)
     {

@@ -14,13 +14,11 @@
 #line 16
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 17
-        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
+        .trainerPic = TRAINER_PIC_BRENDAN,
 #line 18
         .gender = TRAINER_GENDER_MALE,
 #line 19
         .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_BRENDAN,
 #line 0
         .multiTeamSize = MULTI_TEAM_SIZE_FULL,
         .partySize = 1,
@@ -60,7 +58,7 @@
 #line 34
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 36
-        .trainerPic = TRAINER_PIC_FRONT_STEVEN,
+        .trainerPic = TRAINER_PIC_STEVEN,
 #line 37
         .gender = TRAINER_GENDER_MALE,
 #line 38
@@ -69,8 +67,6 @@
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 33
         .aiFlags = AI_FLAG_SMART_TRAINER,
-#line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_STEVEN,
 #line 0
         .multiTeamSize = MULTI_TEAM_SIZE_FULL,
         .partySize = 3,

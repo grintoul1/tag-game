@@ -2,7 +2,6 @@
 Name:
 Class: Pkmn Trainer 1
 Pic: Brendan
-Back Pic: Brendan
 Gender: Male
 Music: Male
 
@@ -10,7 +9,6 @@ Music: Male
 Name: Steven
 Class: Rival
 Pic: Steven
-Back Pic: Steven
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -74,7 +72,6 @@ IVs: 30 Def / 30SpD / 30 Spe
 Name: Emmie
 Class: Rival
 Pic: Green
-Back Pic: Green
 Gender: Female
 Music: Female
 AI: Partner Trainer
@@ -113,7 +110,6 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 Name: Tabitha
 Class: Magma Admin
 Pic: Magma Admin
-Back Pic: Magma Admin
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -220,7 +216,6 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 Name: Shelly
 Class: Aqua Admin
 Pic: Aqua Admin F
-Back Pic: Aqua Leader Archie
 Gender: Female
 Music: Male
 AI: Partner Trainer
@@ -259,7 +254,6 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 Name: Archie
 Class: Aqua Leader
 Pic: Aqua Leader Archie
-Back Pic: Aqua Leader Archie
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -295,7 +289,6 @@ Timid Nature
 Name: Maxie
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Back Pic: Magma Leader Maxie
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -331,7 +324,6 @@ Jolly Nature
 Name: Archie
 Class: Aqua Leader
 Pic: Aqua Leader Archie
-Back Pic: Aqua Leader Archie
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -366,7 +358,6 @@ Naughty Nature
 Name: Maxie
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Back Pic: Magma Leader Maxie
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -402,7 +393,6 @@ Modest Nature
 Name: Shelly
 Class: Aqua Admin
 Pic: Aqua Admin F
-Back Pic: Aqua Leader Archie
 Gender: Female
 Music: Male
 AI: Partner Trainer
@@ -471,7 +461,6 @@ EVs: 252 Atk / 252 Def / 6 SpA
 Name: Steven
 Class: Rival
 Pic: Steven
-Back Pic: Steven
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -535,7 +524,6 @@ IVs: 30 Def / 30SpD / 30 Spe
 Name: Steven
 Class: Rival
 Pic: Steven
-Back Pic: Steven
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -599,7 +587,6 @@ IVs: 30 Def / 30SpD / 30 Spe
 Name: Blue
 Class: Kantonian
 Pic: Champion Rival Frlg
-Back Pic: Blue
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -663,7 +650,6 @@ IVs: 30 Def / 30SpD / 30 Spe
 Name: Blue
 Class: Kantonian
 Pic: Champion Rival Frlg
-Back Pic: Blue
 Gender: Male
 Music: Male
 AI: Partner Trainer

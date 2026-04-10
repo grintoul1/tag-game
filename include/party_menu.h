@@ -4,14 +4,56 @@
 #include "main.h"
 #include "task.h"
 
+enum PartyMenuLayout
+{
+    PARTY_LAYOUT_SINGLE,
+    PARTY_LAYOUT_DOUBLE,
+    PARTY_LAYOUT_MULTI,
+    PARTY_LAYOUT_MULTI_SHOWCASE,                // The layout during the screen that appears just before a multi battle
+    PARTY_LAYOUT_MULTI_FULL,
+    PARTY_LAYOUT_MULTI_FULL_PARTNER,
+    PARTY_LAYOUT_MULTI_FULL_SHOWCASE,           // The layout used to present player team in full-teams multi battle
+    PARTY_LAYOUT_MULTI_FULL_SHOWCASE_PARTNER,   // The layout used to present partner team in full-teams multi battle
+    PARTY_LAYOUT_MIRROR,
+    PARTY_LAYOUT_MULTI_SHARED,
+    PARTY_LAYOUT_OVERWORLD,
+    PARTY_LAYOUT_OVERWORLD_SHARED,
+    PARTY_LAYOUT_COUNT,
+    KEEP_PARTY_LAYOUT
+};
+
+enum PartyMenuType
+{
+    PARTY_MENU_TYPE_FIELD,
+    PARTY_MENU_TYPE_IN_BATTLE,
+    PARTY_MENU_TYPE_CONTEST,
+    PARTY_MENU_TYPE_CHOOSE_MON,
+    PARTY_MENU_TYPE_CHOOSE_HALF,                // multi battles, eReader battles, and some battle facilities
+    PARTY_MENU_TYPE_MULTI_SHOWCASE,
+    PARTY_MENU_TYPE_DAYCARE,
+    PARTY_MENU_TYPE_MOVE_RELEARNER,
+    PARTY_MENU_TYPE_UNION_ROOM_REGISTER,        // trading board
+    PARTY_MENU_TYPE_UNION_ROOM_TRADE,           // trading board
+    PARTY_MENU_TYPE_SPIN_TRADE,                 // Unused beta for Gen IV's Spin Trade
+    PARTY_MENU_TYPE_MINIGAME,
+    PARTY_MENU_TYPE_STORE_PYRAMID_HELD_ITEMS,
+    PARTY_MENU_TYPE_STATUS,
+    PARTY_MENU_TYPE_DAMAGE,
+    PARTY_MENU_TYPE_POISON,
+    PARTY_MENU_TYPE_MULTI_SHARED,
+    PARTY_MENU_TYPE_CHOOSE_HALF_ELITE_FOUR,
+    PARTY_MENU_TYPE_MULTI_FULL_SHOWCASE,
+    PARTY_MENU_TYPE_CHOOSE_STORY
+};
+
 // seems like the last two fields may have been left as all-purpose vars
 // and the second of the two just happens to only be used in one case
 struct PartyMenu
 {
     MainCallback exitCallback;
     TaskFunc task;
-    u8 menuType;
-    u8 layout;
+    enum PartyMenuType menuType;
+    enum PartyMenuLayout layout;
     s8 slotId;
     s8 slotId2;
     u8 action;
@@ -92,7 +134,7 @@ void InitChooseHalfPartyForPlayerHideout(u8 unused);
 void ChooseHalfPartyForPartnerHideout(u8 unused);
 void InitChooseHalfPartyForPartnerHideout(u8 unused);
 void ClearSelectedPartyOrder(void);
-void ChooseMonForTradingBoard(u8 menuType, MainCallback callback);
+void ChooseMonForTradingBoard(enum PartyMenuType menuType, MainCallback callback);
 void ChooseMonForMoveTutor(void);
 void ChooseMonForWirelessMinigame(void);
 void OpenPartyMenuInBattle(u8 partyAction);

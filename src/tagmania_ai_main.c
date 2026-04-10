@@ -406,48 +406,52 @@ void SetupAIPredictionData(enum BattlerId battler, enum SwitchType switchType)
     gAiLogicData->aiPredictionInProgress = FALSE;
 }
 
-void ComputeBattlerDecisions(enum BattlerId battler)
+void ComputeAiBattlerDecisions(enum BattlerId battler)
 {
-    bool32 isAiBattler = (gBattleTypeFlags & BATTLE_TYPE_HAS_AI || IsWildMonSmart()) && (BattlerHasAi(battler) && !(gBattleTypeFlags & BATTLE_TYPE_PALACE));
-    if (isAiBattler || CanAiPredictMove(battler))
+    // Risky AI switches aggressively even mid battle
+    enum SwitchType switchType = (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_RISKY) ? SWITCH_AFTER_KO : SWITCH_MID_BATTLE_OPTIONAL;
+
+    gAiLogicData->aiCalcInProgress = TRUE;
+
+    AIDebugTimerStart();
+
+    // Setup battler data
+    BattleAI_SetupAIData(0xF, battler);
+
+    // Determine whether AI will use predictions this turn
+
+    gAiLogicData->predictingSwitch = (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PREDICT_SWITCH) ? RandomPercentage(RNG_AI_PREDICT_SWITCH, PREDICT_SWITCH_CHANCE) : FALSE;
+    gAiLogicData->predictingMove = (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PREDICT_MOVE) ? RandomPercentage(RNG_AI_PREDICT_MOVE, PREDICT_MOVE_CHANCE) : FALSE;
+
+    // AI's switching data
+    gAiLogicData->mostSuitableMonId[battler] = GetMostSuitableMonToSwitchInto(battler, switchType);
+    if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING)
     {
-        // Risky AI switches aggressively even mid battle
-        enum SwitchType switchType = (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_RISKY) ? SWITCH_AFTER_KO : SWITCH_MID_BATTLE_OPTIONAL;
-
-        gAiLogicData->aiCalcInProgress = TRUE;
-
-        // Setup battler and prediction data
-        BattleAI_SetupAIData(0xF, battler);
-        SetupAIPredictionData(battler, SWITCH_MID_BATTLE_OPTIONAL);
-
-        // AI's own switching data
-        if (isAiBattler)
-        {
-            gAiLogicData->mostSuitableMonId[battler] = GetMostSuitableMonToSwitchInto(battler, switchType);
-            if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING)
-            {
-                if (PartnerShouldSwitch(battler))
-                    gAiLogicData->shouldSwitch |= (1u << battler);
-            }
-            else
-            {
-                if (ShouldSwitch(battler))
-                    gAiLogicData->shouldSwitch |= (1u << battler);
-            }
-        }
-
-        // AI's move scoring
-        gAiBattleData->chosenMoveIndex[battler] = BattleAI_ChooseMoveIndex(battler); // Calculate score and chose move index
-        if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING)
-        {
-            PartnerModifySwitchAfterMoveScoring(battler);
-        }
-        else
-        {
-            ModifySwitchAfterMoveScoring(battler);
-        }
-        gAiLogicData->aiCalcInProgress = FALSE;
+        if (PartnerShouldSwitch(battler))
+            gAiLogicData->shouldSwitch |= (1u << battler);
     }
+    else
+    {
+        if (ShouldSwitch(battler))
+            gAiLogicData->shouldSwitch |= (1u << battler);
+    }
+    gBattleStruct->prevTurnSpecies[battler] = gBattleMons[battler].species;
+
+    // AI's move scoring
+    gAiBattleData->chosenMoveIndex[battler] = BattleAI_ChooseMoveIndex(battler); // Calculate score and chose move index
+    BattlerChooseNonMoveAction();
+    if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING)
+    {
+        PartnerModifySwitchAfterMoveScoring(battler);
+    }
+    else
+    {
+        ModifySwitchAfterMoveScoring(battler);
+    }
+
+    AIDebugTimerEnd();
+
+    gAiLogicData->aiCalcInProgress = FALSE;
 }
 
 void ReconsiderGimmick(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move)
@@ -800,8 +804,9 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData)
     gBattleStruct->aiDelayTimer = gMain.vblankCounter1;
 
     gAiLogicData->aiCalcInProgress = TRUE;
-    if (DEBUG_AI_DELAY_TIMER)
-        CycleCountStart();
+
+    AIDebugTimerStart();
+
     aiData->weatherHasEffect = HasWeatherEffect();
     u32 weather = AI_GetWeather();
 
@@ -820,30 +825,26 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData)
         aiData->turnOrder[battler] = battler;
     SetBattlerTurnOrder(aiData->turnOrder);
 
-    for (enum BattlerId battlerAtk = 0; battlerAtk < battlersCount; battlerAtk++)
+    for (enum BattlerId battler = 0; battler < battlersCount; battler++)
     {
-        if (!IsBattlerAlive(battlerAtk))
+        if (!IsBattlerAlive(battler))
             continue;
 
-        SetBattlerAiMovesData(aiData, battlerAtk, battlersCount, weather);
+        SetBattlerAiMovesData(aiData, battler, battlersCount, weather);
     }
 
     for (enum BattlerId battler = 0; battler < battlersCount; battler++)
     {
         // Prediction limited to player side but can be expanded to read partners move in the future
-        if (!IsOnPlayerSide(battler) || !CanAiPredictMove(battler))
+        if (!IsOnPlayerSide(battler))
             continue;
 
-        // This can potentially be cleaned up more
         BattleAI_SetupAIData(0xF, battler);
-        u32 chosenMoveIndex = ChooseMoveOrAction(battler);
-        gAiLogicData->predictedMove[battler] = gBattleMons[battler].moves[chosenMoveIndex];
-        aiData->predictingMove = RandomPercentage(RNG_AI_PREDICT_MOVE, PREDICT_MOVE_CHANCE);
+        SetupAIPredictionData(battler, SWITCH_MID_BATTLE_OPTIONAL);
     }
 
-    if (DEBUG_AI_DELAY_TIMER)
-        AIDebugTimerEnd();
-
+    AIDebugTimerEnd();
+        
     gAiLogicData->aiCalcInProgress = FALSE;
 }
 

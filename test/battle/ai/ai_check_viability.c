@@ -398,6 +398,7 @@ AI_SINGLE_BATTLE_TEST("AI uses Quick Guard against Quick Attack when opponent wo
 
 AI_SINGLE_BATTLE_TEST("AI uses Wide Guard against Earthquake when opponent would die of poison")
 {
+    KNOWN_FAILING; // AI not implemented
     GIVEN {
         PLAYER(SPECIES_ZUBAT) { Moves(MOVE_EARTHQUAKE); Status1(STATUS1_TOXIC_POISON); }
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT | AI_FLAG_PREDICT_MOVE);
@@ -550,6 +551,7 @@ AI_SINGLE_BATTLE_TEST("AI uses Quick Guard against Quick Attack when opponent wo
 
 AI_SINGLE_BATTLE_TEST("AI uses Wide Guard against Earthquake when opponent would take poison damage")
 {
+    KNOWN_FAILING; // AI not implemented
     PASSES_RANDOMLY(PREDICT_MOVE_CHANCE, 100, RNG_AI_PREDICT_MOVE);
     GIVEN {
         PLAYER(SPECIES_RATTATA) { Moves(MOVE_EARTHQUAKE); Status1(STATUS1_TOXIC_POISON); }

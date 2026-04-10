@@ -257,10 +257,10 @@ static void SetPartyMonsAllowedInMinigame(void);
 static void ExitPartyMenu(void);
 static bool8 AllocPartyMenuBg(void);
 static bool8 AllocPartyMenuBgGfx(void);
-static void InitPartyMenuWindows(u8);
+static void InitPartyMenuWindows(enum PartyMenuLayout);
 static void LoadPartyMenuWindows(void);
-static void InitPartyMenuBoxes(u8);
-static void LoadPartyMenuBoxes(u8);
+static void InitPartyMenuBoxes(enum PartyMenuLayout);
+static void LoadPartyMenuBoxes(enum PartyMenuLayout);
 static void LoadPartyMenuPokeballGfx(void);
 static bool8 CreatePartyMonSpritesLoop(void);
 static bool8 RenderPartyMenuBoxes(void);
@@ -557,7 +557,7 @@ extern u16 gPartnerTrainerId;
 #include "data/party_menu.h"
 
 // code
-static void InitPartyMenu(u8 menuType, u8 layout, u8 partyAction, bool8 keepCursorPos, u8 messageId, TaskFunc task, MainCallback callback)
+static void InitPartyMenu(enum PartyMenuType menuType, enum PartyMenuLayout layout, u8 partyAction, bool8 keepCursorPos, u8 messageId, TaskFunc task, MainCallback callback)
 {
     u16 i;
     ResetPartyMenu();
@@ -1018,13 +1018,13 @@ static void FreePartyPointers(void)
     FreeAllWindowBuffers();
 }
 
-static void InitPartyMenuBoxes(u8 layout)
+static void InitPartyMenuBoxes(enum PartyMenuLayout layout)
 {
     sPartyMenuBoxes = Alloc(sizeof(struct PartyMenuBox[PARTY_SIZE]));
     LoadPartyMenuBoxes(layout);
 }
 
-static void LoadPartyMenuBoxes(u8 layout)
+static void LoadPartyMenuBoxes(enum PartyMenuLayout layout)
 {
     u32 i;
 
@@ -1251,7 +1251,9 @@ static void DisplayPartyPokemonDataForContest(u8 slot)
 
 static void DisplayPartyPokemonDataForRelearner(u8 slot)
 {
-    bool32 hasMoves = CanBoxMonRelearnMoves(&gParties[B_TRAINER_0][slot].box, gMoveRelearnerState);
+    bool32 hasMoves = FALSE;
+    if (!GetBoxMonData(&gParties[B_TRAINER_0][slot].box, MON_DATA_IS_EGG) && HasMoveToRelearn(&gParties[B_TRAINER_0][slot].box, gMoveRelearnerState))
+        hasMoves = TRUE;
     u32 desc = (hasMoves ? PARTYBOX_DESC_ABLE_2 : PARTYBOX_DESC_NOT_ABLE_2);
     DisplayPartyPokemonDescriptionData(slot, desc);
 }
@@ -1995,7 +1997,7 @@ static u16 PartyMenuButtonHandler(s8 *slotPtr)
 static void UpdateCurrentPartySelection(s8 *slotPtr, s8 movementDir)
 {
     s8 newSlotId = *slotPtr;
-    u8 layout = gPartyMenu.layout;
+    enum PartyMenuLayout layout = gPartyMenu.layout;
 
     if (layout == PARTY_LAYOUT_SINGLE
      || layout == PARTY_LAYOUT_MULTI_FULL
@@ -2003,11 +2005,7 @@ static void UpdateCurrentPartySelection(s8 *slotPtr, s8 movementDir)
     {
         UpdatePartySelectionSingleLayout(slotPtr, movementDir);
     }
-    else if (layout == PARTY_LAYOUT_OVERWORLD_SHARED)
-    {
-        UpdatePartySelectionOverworldLayout(slotPtr, movementDir);
-    }
-    else if (layout == PARTY_LAYOUT_OVERWORLD)
+    else if (layout == PARTY_LAYOUT_OVERWORLD_SHARED || layout == PARTY_LAYOUT_OVERWORLD)
     {
         UpdatePartySelectionOverworldLayout(slotPtr, movementDir);
     }
@@ -2707,7 +2705,7 @@ static enum CanMoveBeLearned CanTeachMove(struct Pokemon *mon, enum Move move)
         return CAN_LEARN_MOVE;
 }
 
-static void InitPartyMenuWindows(u8 layout)
+static void InitPartyMenuWindows(enum PartyMenuLayout layout)
 {
     switch (layout)
     {
@@ -5292,8 +5290,8 @@ void LoadPartyMenuAilmentGfx(void)
 void CB2_ShowPartyMenuForItemUse(void)
 {
     MainCallback callback = CB2_ReturnToBagMenu;
-    u8 partyLayout;
-    u8 menuType;
+    enum PartyMenuLayout partyLayout;
+    enum PartyMenuType menuType;
     u8 i;
     u8 msgId;
     TaskFunc task;
@@ -8265,7 +8263,7 @@ static const u8 *GetFacilityCancelString(void)
         return gText_CancelChallenge;
 }
 
-void ChooseMonForTradingBoard(u8 menuType, MainCallback callback)
+void ChooseMonForTradingBoard(enum PartyMenuType menuType, MainCallback callback)
 {
     InitPartyMenu(menuType, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, callback);
 }
@@ -8856,7 +8854,7 @@ void ChooseMonForDaycare(void)
     InitPartyMenu(PARTY_MENU_TYPE_DAYCARE, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON_2, Task_HandleChooseMonInput, BufferMonSelection);
 }
 
-static void UNUSED ChoosePartyMonByMenuType(u8 menuType)
+static void UNUSED ChoosePartyMonByMenuType(enum PartyMenuType menuType)
 {
     gFieldCallback2 = CB2_FadeFromPartyMenu;
     InitPartyMenu(menuType, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_AND_CLOSE, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_ReturnToField);
@@ -9107,48 +9105,38 @@ void IsLastMonThatKnowsSurf(void)
     }
 }
 
-static void CursorCb_ChangeLevelUpMoves(u8 taskId)
+static void OpenMoveRelearner(u8 taskId)
 {
     PlaySE(SE_SELECT);
-    gMoveRelearnerState = MOVE_RELEARNER_LEVEL_UP_MOVES;
     gRelearnMode = RELEARN_MODE_PARTY_MENU;
     gLastViewedMonIndex = gPartyMenu.slotId;
     gSpecialVar_0x8004 = gLastViewedMonIndex;
-    TeachMoveRelearnerMove();
+    sPartyMenuInternal->exitCallback = CB2_InitLearnMove;
     Task_ClosePartyMenu(taskId);
+}
+
+static void CursorCb_ChangeLevelUpMoves(u8 taskId)
+{
+    gMoveRelearnerState = MOVE_RELEARNER_LEVEL_UP_MOVES;
+    OpenMoveRelearner(taskId);
 }
 
 static void CursorCb_ChangeEggMoves(u8 taskId)
 {
-    PlaySE(SE_SELECT);
     gMoveRelearnerState = MOVE_RELEARNER_EGG_MOVES;
-    gRelearnMode = RELEARN_MODE_PARTY_MENU;
-    gLastViewedMonIndex = gPartyMenu.slotId;
-    gSpecialVar_0x8004 = gLastViewedMonIndex;
-    TeachMoveRelearnerMove();
-    Task_ClosePartyMenu(taskId);
+    OpenMoveRelearner(taskId);
 }
 
 static void CursorCb_ChangeTMMoves(u8 taskId)
 {
-    PlaySE(SE_SELECT);
     gMoveRelearnerState = MOVE_RELEARNER_TM_MOVES;
-    gRelearnMode = RELEARN_MODE_PARTY_MENU;
-    gLastViewedMonIndex = gPartyMenu.slotId;
-    gSpecialVar_0x8004 = gLastViewedMonIndex;
-    TeachMoveRelearnerMove();
-    Task_ClosePartyMenu(taskId);
+    OpenMoveRelearner(taskId);
 }
 
 static void CursorCb_ChangeTutorMoves(u8 taskId)
 {
-    PlaySE(SE_SELECT);
     gMoveRelearnerState = MOVE_RELEARNER_TUTOR_MOVES;
-    gRelearnMode = RELEARN_MODE_PARTY_MENU;
-    gLastViewedMonIndex = gPartyMenu.slotId;
-    gSpecialVar_0x8004 = gLastViewedMonIndex;
-    TeachMoveRelearnerMove();
-    Task_ClosePartyMenu(taskId);
+    OpenMoveRelearner(taskId);
 }
 
 static void CursorCb_LearnMovesSubMenu(u8 taskId)

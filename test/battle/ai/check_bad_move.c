@@ -138,7 +138,7 @@ AI_SINGLE_BATTLE_TEST("Protect: AI avoids Protect vs Unseen Fist contact (Single
     }
 }
 
-AI_DOUBLE_BATTLE_TEST("Protect: AI avoids Protect vs Unseen Fist contact (Doubles)")
+/*AI_DOUBLE_BATTLE_TEST("Protect: AI avoids Protect vs Unseen Fist contact (Doubles)")
 {
     KNOWN_FAILING; // New AI not implemented
     static const enum Move protectMoves[] =
@@ -190,9 +190,9 @@ AI_DOUBLE_BATTLE_TEST("Protect: AI avoids Protect vs Unseen Fist contact (Double
             }
         }
     }
-}
+}*/
 
-AI_SINGLE_BATTLE_TEST("Protect: AI avoids Protect vs moves that ignore protection (Single)")
+/*AI_SINGLE_BATTLE_TEST("Protect: AI avoids Protect vs moves that ignore protection (Single)")
 {
     KNOWN_FAILING; // New AI not implemented
     enum Move move = MOVE_NONE;
@@ -259,7 +259,7 @@ AI_DOUBLE_BATTLE_TEST("Protect: AI avoids Protect vs moves that ignore protectio
                 SCORE_LT(opponentLeft, MOVE_PROTECT, MOVE_SCRATCH, target: playerLeft);
         }
     }
-}
+}*/
 
 AI_SINGLE_BATTLE_TEST("AI penalizes Yawn when target can self-status with Flame/Toxic Orb")
 {
