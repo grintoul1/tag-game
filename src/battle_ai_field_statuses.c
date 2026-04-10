@@ -246,9 +246,10 @@ static enum FieldEffectOutcome BenefitsFromSun(enum BattlerId battler)
     }
 
     if (DoesAbilityBenefitFromWeather(ability, B_WEATHER_SUN)
-    || HasLightSensitiveMove(battler)
-    || HasDamagingMoveOfType(battler, TYPE_FIRE)
-    || HasMoveWithEffect(battler, EFFECT_HYDRO_STEAM))
+     || HasLightSensitiveMove(battler)
+     || HasDamagingMoveOfType(battler, TYPE_FIRE)
+     || HasMoveWithEffect(battler, EFFECT_WEATHER_BALL)
+     || HasMoveWithEffect(battler, EFFECT_HYDRO_STEAM))
         return FIELD_EFFECT_POSITIVE;
 
     if (HasMoveWithFlag(battler, MoveHas50AccuracyInSun) || HasDamagingMoveOfType(battler, TYPE_WATER) || gAiLogicData->abilities[battler] == ABILITY_DRY_SKIN)
@@ -261,14 +262,15 @@ static enum FieldEffectOutcome BenefitsFromSun(enum BattlerId battler)
 static enum FieldEffectOutcome BenefitsFromSandstorm(enum BattlerId battler)
 {
     if (DoesAbilityBenefitFromWeather(gAiLogicData->abilities[battler], B_WEATHER_SANDSTORM)
-     || IS_BATTLER_OF_TYPE(battler, TYPE_ROCK))
+     || IS_BATTLER_OF_TYPE(battler, TYPE_ROCK)
+     || HasMoveWithEffect(battler, EFFECT_WEATHER_BALL))
         return FIELD_EFFECT_POSITIVE;
 
     if (gAiLogicData->holdEffects[battler] == HOLD_EFFECT_SAFETY_GOGGLES || IS_BATTLER_ANY_TYPE(battler, TYPE_ROCK, TYPE_GROUND, TYPE_STEEL))
     {
-        if (!(IS_BATTLER_ANY_TYPE(LEFT_FOE(battler), TYPE_ROCK, TYPE_GROUND, TYPE_STEEL))
-         || gAiLogicData->holdEffects[LEFT_FOE(battler)] == HOLD_EFFECT_SAFETY_GOGGLES
-         || DoesAbilityBenefitFromWeather(gAiLogicData->abilities[LEFT_FOE(battler)], B_WEATHER_SANDSTORM))
+        if (!IS_BATTLER_ANY_TYPE(LEFT_FOE(battler), TYPE_ROCK, TYPE_GROUND, TYPE_STEEL)
+         && gAiLogicData->holdEffects[LEFT_FOE(battler)] != HOLD_EFFECT_SAFETY_GOGGLES
+         && !DoesAbilityBenefitFromWeather(gAiLogicData->abilities[LEFT_FOE(battler)], B_WEATHER_SANDSTORM))
             return FIELD_EFFECT_POSITIVE;
         else
             return FIELD_EFFECT_NEUTRAL;
@@ -282,6 +284,7 @@ static enum FieldEffectOutcome BenefitsFromHailOrSnow(enum BattlerId battler, u3
 {
     if (DoesAbilityBenefitFromWeather(gAiLogicData->abilities[battler], weather)
      || IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
+     || HasMoveWithEffect(battler, EFFECT_WEATHER_BALL)
      || HasMoveWithFlag(battler, MoveAlwaysHitsInHailSnow)
      || HasBattlerSideMoveWithEffect(battler, EFFECT_AURORA_VEIL))
         return FIELD_EFFECT_POSITIVE;
@@ -306,7 +309,9 @@ static enum FieldEffectOutcome BenefitsFromRain(enum BattlerId battler)
 
     if (DoesAbilityBenefitFromWeather(gAiLogicData->abilities[battler], B_WEATHER_RAIN)
       || HasMoveWithFlag(battler, MoveAlwaysHitsInRain)
-      || HasDamagingMoveOfType(battler, TYPE_WATER))
+      || HasDamagingMoveOfType(battler, TYPE_WATER)
+      || HasMoveWithEffect(battler, EFFECT_WEATHER_BALL)
+      || HasMove(battler, MOVE_ELECTRO_SHOT))
         return FIELD_EFFECT_POSITIVE;
 
     if (HasLightSensitiveMove(battler) || HasDamagingMoveOfType(battler, TYPE_FIRE))

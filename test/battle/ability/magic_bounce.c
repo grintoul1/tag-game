@@ -156,7 +156,7 @@ DOUBLE_BATTLE_TEST("Magic Bounce activates on all opposing mons")
 
 DOUBLE_BATTLE_TEST("Magic Bounce bounces back moves hitting foes field")
 {
-    enum BattlerId battlerOne, battlerTwo;
+    enum Species battlerOne, battlerTwo;
     enum Ability abilityBattlerOne, abilityBattlerTwo;
 
     PARAMETRIZE { battlerOne = SPECIES_NATU; abilityBattlerOne = ABILITY_MAGIC_BOUNCE;

@@ -302,7 +302,7 @@ The most common combination is `AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_
 `BATTLER_AI_FLAGS(battler, flags)`
 Specifies additional AI flags to be applied to specific battlers (battler 0/1/2/3). Has use only for AI tests.
 Must be used strictly after `AI_FLAGS(flags)`, which overwrites all existing flags.
-Example: `BATTLER_AI_FLAGS(3, AI_FLAG_RISKY)` used after `AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT)`
+Example: `BATTLER_AI_FLAGS(opponentRight, AI_FLAG_RISKY)` used after `AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT)`
 will set `AI_FLAG_RISKY` to only `battler3` (Opponent B), in addition to the flags set by `AI_FLAGS`.
 
 ### `WHEN`
