@@ -259,7 +259,15 @@ static inline bool32 IsSpecialTrainer(u16 trainerId)
 
 static inline u16 SanitizeTrainerId(u16 trainerId)
 {
-    assertf(trainerId < TRAINERS_COUNT, "invalid trainer: %d", trainerId)
+    switch (trainerId)
+    {
+    case TRAINER_SECRET_BASE:
+    case TRAINER_LINK_OPPONENT:
+    case TRAINER_UNION_ROOM:
+        return TRAINER_NONE;
+    }
+
+    assertf(trainerId < TRAINERS_COUNT || IsPartnerTrainerId(trainerId), "invalid trainer: %d", trainerId)
     {
         return TRAINER_NONE;
     }
@@ -280,18 +288,19 @@ static inline u16 GetPartnerIdFromTrainerId(u16 trainerId)
 
 static inline const struct Trainer *GetTrainerStructFromId(u16 trainerId)
 {
+    u32 sanitizedTrainerId = 0;
     if (gIsDebugBattle) return GetDebugAiTrainer();
-    enum DifficultyLevel difficulty;
+    sanitizedTrainerId = SanitizeTrainerId(trainerId);
 
     if (IsPartnerTrainerId(trainerId))
     {
-        difficulty = GetBattlePartnerDifficultyLevel(trainerId);
-        return &gBattlePartners[difficulty][GetPartnerIdFromTrainerId(trainerId)];
+        enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(sanitizedTrainerId);
+        return &gBattlePartners[difficulty][sanitizedTrainerId - TRAINER_PARTNER(PARTNER_NONE)];
     }
     else
     {
-        difficulty = GetTrainerDifficultyLevel(trainerId);
-        return &gTrainers[difficulty][SanitizeTrainerId(trainerId)];
+        enum DifficultyLevel difficulty = GetTrainerDifficultyLevel(sanitizedTrainerId);
+        return &gTrainers[difficulty][sanitizedTrainerId];
     }
 }
 
