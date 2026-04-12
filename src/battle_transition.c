@@ -2670,14 +2670,16 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
     struct Sprite *opponentSpriteA, *opponentSpriteB=0, *playerSprite, *partnerSprite=0;
 
     enum TrainerPicID trainerAPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA);
-    enum TrainerPicID trainerBPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB);
+    enum TrainerPicID trainerBPicId = TRAINER_PIC_NONE;
+    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && TRAINER_BATTLE_PARAM.opponentB != 0xFFFF)
+        trainerBPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB);
     enum TrainerPicID partnerPicId = GetTrainerPicFromId(gPartnerTrainerId);
     struct Coords16 mugshotCoordsA = GetTrainerFrontPicMugshotCoords(trainerAPicId);
     s16 opponentARotationScales = 0;
     s16 opponentBRotationScales = 0;
 
     gReservedSpritePaletteCount = 10;
-    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && TRAINER_BATTLE_PARAM.opponentB != 0xFFFF && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
         struct Coords16 mugshotCoordsB = GetTrainerFrontPicMugshotCoords(trainerBPicId);
         task->tOpponentSpriteBId = CreateTrainerSprite(trainerBPicId,
