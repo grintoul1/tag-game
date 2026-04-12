@@ -5276,6 +5276,7 @@ static u16 gRandomTrainerMusic[12] = // Add more
 
 u16 GetBattleBGM(void)
 {
+    u32 switchVal;
     if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
     {
         switch (GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES))
@@ -5378,12 +5379,37 @@ u16 GetBattleBGM(void)
                 //return MUS_GS_VS_KANTO_LEADER;
             }
         case TRAINER_CLASS_LEADER:
-            return MUS_RB_VS_LEADER;
+            if (VarGet(VAR_MUSIC_MODE) == MUSIC_MODE_DEFAULT)
+                switchVal = GetCurrentBadgeCount() + 1;
+            else
+                switchVal = VarGet(VAR_MUSIC_MODE);
+            switch (switchVal)
+            {
+            case MUSIC_MODE_SPLIT_1:
+                return MUS_RB_VS_LEADER;
+            case MUSIC_MODE_SPLIT_2:
+                return MUS_GS_VS_JOHTO_LEADER;
+            case MUSIC_MODE_SPLIT_3:
+                return MUS_RB_VS_LEADER;
+            case MUSIC_MODE_SPLIT_4:
+                return MUS_VS_GYM_LEADER;
+            case MUSIC_MODE_SPLIT_5:
+                return MUS_DP_VS_GYM_LEADER;
+            case MUSIC_MODE_SPLIT_6:
+                return MUS_HG_VS_GYM_LEADER;
+            case MUSIC_MODE_SPLIT_7:
+                return MUS_VS_UNOVA_RIVAL;
+            case MUSIC_MODE_SPLIT_8:
+                return MUS_RB_BATTLE1;
+            case MUSIC_MODE_SPLIT_9:
+                return MUS_RB_BATTLE1;
+            default:
+                return MUS_VS_GYM_LEADER;
+            }
             return MUS_VS_GYM_LEADER;
         case TRAINER_CLASS_CHAMPION:
             return MUS_VS_CHAMPION;
         case TRAINER_CLASS_RIVAL:
-            u32 switchVal;
             if (VarGet(VAR_MUSIC_MODE) == MUSIC_MODE_DEFAULT)
                 switchVal = GetCurrentBadgeCount() + 1;
             else
@@ -5401,9 +5427,9 @@ u16 GetBattleBGM(void)
             case MUSIC_MODE_SPLIT_5:
                 return MUS_VS_SILVER;
             case MUSIC_MODE_SPLIT_6:
-                return MUS_VS_UNOVA_RIVAL;
+                return MUS_VS_UNOVA_RIVAL; // TODO
             case MUSIC_MODE_SPLIT_7:
-                return MUS_RB_BATTLE1;
+                return MUS_VS_UNOVA_RIVAL;
             case MUSIC_MODE_SPLIT_8:
                 return MUS_RB_BATTLE1;
             case MUSIC_MODE_SPLIT_9:

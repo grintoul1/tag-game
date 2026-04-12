@@ -1021,6 +1021,10 @@ gSongTable::
 	song mus_hg_goldenrod, MUSIC_PLAYER_BGM, 0
 	song mus_hg_surf, MUSIC_PLAYER_BGM, 0
 	song mus_hg_union_cave, MUSIC_PLAYER_BGM, 0
+	song mus_dp_vs_gym_leader, MUSIC_PLAYER_BGM, 0
+	song mus_vs_final_pokemon_rb, MUSIC_PLAYER_BGM, 0
+	song mus_vs_final_pokemon_gs, MUSIC_PLAYER_BGM, 0
+	song mus_vs_final_pokemon_blaine, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:

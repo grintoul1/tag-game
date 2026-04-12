@@ -710,7 +710,8 @@ struct BattleStruct
     u32 bouncedMoveIsUsed:1;
     u32 dancerSavedAttacker:3;
     u32 dancerSavedTarget:3;
-    u32 padding:7;
+    u32 lastPokemonMusicPlayed:1;
+    u32 padding:6;
 };
 
 struct AiBattleData

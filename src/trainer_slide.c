@@ -67,6 +67,9 @@ static const u8* const sTrainerSlides[DIFFICULTY_COUNT][TRAINER_PARTNER(PARTNER_
             [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING(
                 "Let me show you kids the kind of challenges you must be prepared to face out here in the real world!{PAUSE_UNTIL_PRESS}"
             ),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING(
+                "Hah! It seems this old man has his back against the wall, but I'm not down for the count just yet!{PAUSE_UNTIL_PRESS}"
+            ),
         },
         [TRAINER_ROXANNE_1] = {
             [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING(

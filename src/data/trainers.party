@@ -881,7 +881,7 @@ Multi Party: Half
 
 Manectric-Mega @ Manectite  
 Ability: Intimidate  
-Level: 29  
+Level: 1  
 Brave Nature  
 - Hyper Voice
 - Volt Switch  
@@ -889,7 +889,7 @@ Brave Nature
 
 Togedemaru @ Rocky Helmet  
 Ability: Iron Barbs  
-Level: 30  
+Level: 1  
 Jolly Nature  
 - Smart Strike
 - Spark
@@ -910,24 +910,6 @@ Timid Nature
 - Thunder Wave
 - Chill-O-Wisp
 - Will-O-Wisp
-
-Raichu-Alola @ Focus Sash  
-Ability: Surge Surfer  
-Level: 30  
-Timid Nature  
-- Fake Out
-- Volt Switch  
-- Grass Knot
-- Psybeam
-
-Iron Thorns @ Salac Berry  
-Ability: Quark Drive  
-Level: 29  
-Modest Nature  
-- Thunder Fang
-- Ice Fang
-- Rock Tomb
-- Electric Terrain
 
 === TRAINER_TRAVIS ===
 Name: Travis

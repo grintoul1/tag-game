@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "battle_ai_util.h"
 #include "battle_hold_effects.h"
 #include "battle_setup.h"
 #include "battle_util.h"
@@ -7,11 +8,13 @@
 #include "battle_ai_record.h"
 #include "battle_gimmick.h"
 #include "battle_scripts.h"
+#include "sound.h"
 #include "constants/battle.h"
 #include "constants/battle_string_ids.h"
 #include "constants/abilities.h"
 #include "constants/items.h"
 #include "constants/moves.h"
+#include "constants/songs.h"
 
 static u32 GetBattlerSideForMessage(enum BattleSide side)
 {
@@ -1461,6 +1464,96 @@ static bool32 HandleEndTurnFaintedMonActions(enum BattlerId battler)
         return TRUE;
     gBattleStruct->eventState.endTurn++;
     return FALSE;
+}
+
+static bool32 TrainerHasLastPokemonMusic(u16 trainerId)
+{
+    switch (trainerId)
+    {
+    /*case TRAINER_BROCK:
+    case TRAINER_MISTY:
+    case TRAINER_LT_SURGE:*/
+    case TRAINER_ERIKA_RUSTBORO:
+    /*case TRAINER_JANINE:
+    case TRAINER_KOGA:
+    case TRAINER_BLAINE:
+    case TRAINER_BLUE:*/
+    case TRAINER_ROXANNE_1:
+    case TRAINER_BRAWLY_1:
+    case TRAINER_WATTSON_1:
+    case TRAINER_NORMAN_1:
+    case TRAINER_FLANNERY_1:
+    case TRAINER_WINONA_1:
+    case TRAINER_TATE_AND_LIZA_1:
+    case TRAINER_JUAN_1:
+    case TRAINER_WALLACE:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+static bool32 HasLastPokemonMusicPlayed(void)
+{
+    return gBattleStruct->lastPokemonMusicPlayed;
+}
+
+static void MarkLastPokemonMusicAsPlayed(void)
+{
+    gBattleStruct->lastPokemonMusicPlayed |= 1;
+}
+
+enum SongId GetFinalPokemonMusic(u16 trainerId)
+{
+    switch (trainerId)
+    {
+    /*case TRAINER_BROCK:
+        return MUS_VS_FINAL_POKEMON_BROCK;
+    case TRAINER_MISTY:
+    case TRAINER_LT_SURGE:
+        return MUS_VS_FINAL_POKEMON_MISTY_SURGE;*/
+    case TRAINER_ERIKA_RUSTBORO:
+    /*    return MUS_VS_FINAL_POKEMON_ERIKA;
+    case TRAINER_JANINE:
+    case TRAINER_KOGA:
+        return MUS_VS_FINAL_POKEMON_JANINE_KOGA;
+    case TRAINER_BLAINE:*/
+        return MUS_VS_FINAL_POKEMON_BLAINE;
+    /*case TRAINER_BLUE:
+        return MUS_VS_FINAL_POKEMON_BLUE;*/
+    case TRAINER_WATTSON_1:
+        return MUS_VS_FINAL_POKEMON_RB;
+    case TRAINER_ROXANNE_1:
+        return MUS_VS_FINAL_POKEMON_GS;
+    /*case TRAINER_NORMAN_1:
+        return MUS_VS_FINAL_POKEMON_RG
+    case TRAINER_BRAWLY_1:
+        return MUS_VS_FINAL_POKEMON_EMERALD
+    case TRAINER_FLANNERY_1:
+        return MUS_VS_FINAL_POKEMON_DP
+    case TRAINER_TATE_AND_LIZA_1:
+        return MUS_VS_FINAL_POKEMON_HG
+    case TRAINER_WINONA_1:
+        return MUS_VS_FINAL_POKEMON
+    case TRAINER_JUAN_1:
+        return MUS_VS_FINAL_POKEMON_??
+    case TRAINER_WALLACE:
+        return MUS_VS_FINAL_POKEMON_??*/
+    default:
+        return MUS_VS_FINAL_POKEMON;
+    }
+}
+
+void TryPlayFinalPokemonMusic(void)
+{
+    if (!TrainerHasLastPokemonMusic(TRAINER_BATTLE_PARAM.opponentA) || HasLastPokemonMusicPlayed())
+        return;
+
+    if (!CountUsablePartyMons(B_BATTLER_1) && !CountUsablePartyMons(B_BATTLER_3))
+    {
+        MarkLastPokemonMusicAsPlayed();
+        PlayBGM(GetFinalPokemonMusic(TRAINER_BATTLE_PARAM.opponentA));
+    }
 }
 
 static bool32 HandleEndTurnDynamax(enum BattlerId battler)

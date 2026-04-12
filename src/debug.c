@@ -4714,6 +4714,10 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_HG_GOLDENROD)              \
     X(MUS_HG_SURF)              \
     X(MUS_HG_UNION_CAVE)              \
+    X(MUS_DP_VS_GYM_LEADER)    \
+    X(MUS_VS_FINAL_POKEMON_RB)    \
+    X(MUS_VS_FINAL_POKEMON_GS)    \
+    X(MUS_VS_FINAL_POKEMON_BLAINE)    \
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \

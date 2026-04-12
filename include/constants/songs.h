@@ -892,6 +892,10 @@ enum __attribute__((packed)) SongId
     MUS_HG_GOLDENROD,
     MUS_HG_SURF,
     MUS_HG_UNION_CAVE,
+    MUS_DP_VS_GYM_LEADER,
+    MUS_VS_FINAL_POKEMON_RB,
+    MUS_VS_FINAL_POKEMON_GS,
+    MUS_VS_FINAL_POKEMON_BLAINE,
 
 // These PH_* constants are phoneme sounds used by the "bard" NPC (see src/bard_music.c and src/mauville_old_man.c).
 // Each comes in a triplet of PH_*_BLEND, PH_*_HELD, and PH_*_SOLO, and the name of each triplet incorporates the English phonetic sound it represents.

@@ -8,6 +8,7 @@
 #include "battle_ai_util.h"
 #include "battle_scripts.h"
 #include "battle_switch_in.h"
+#include "battle_end_turn.h"
 #include "battle_environment.h"
 #include "battle_z_move.h"
 #include "battle_move_resolution.h"
@@ -14444,6 +14445,7 @@ void BS_TryTrainerSlideMsgLastOn(void)
     NATIVE_ARGS(u8 battler);
     u32 shouldDoTrainerSlide = 0;
     enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
+    TryPlayFinalPokemonMusic();
     if ((shouldDoTrainerSlide = ShouldDoTrainerSlide(battler, TRAINER_SLIDE_LAST_SWITCHIN)))
     {
         gBattleScripting.battler = battler;
