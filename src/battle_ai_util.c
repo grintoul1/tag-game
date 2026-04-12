@@ -731,8 +731,30 @@ bool32 IsAdditionalEffectBlocked(enum BattlerId battlerAtk, u32 abilityAtk, enum
     return FALSE;
 }
 
+#include "data/dmg_roll_lut.h"
+
 static inline s32 GetDamageByRollType(s32 dmg, enum DamageRollType rollType)
 {
+    if (dmg <= 300)
+    {
+        switch (rollType)
+        {
+        case DMG_ROLL_LOWEST:
+            return sDmgRollData[dmg][MIN_ROLL_PERCENTAGE - 85];
+        case DMG_ROLL_MEDIAN:
+            return sDmgRollData[dmg][DMG_ROLL_PERCENTAGE - 85];
+            break;
+        case DMG_ROLL_HIGHEST:
+            return sDmgRollData[dmg][MAX_ROLL_PERCENTAGE - 85];
+            break;
+        case DMG_ROLL_RANDOM:
+        {
+            u32 randomRollPercentage = RandomUniform(RNG_AI_DMG_ROLL_RANDOM, MIN_ROLL_PERCENTAGE, MAX_ROLL_PERCENTAGE);
+            return sDmgRollData[dmg][randomRollPercentage - 85];
+        }
+        }
+    }
+
     if (rollType == DMG_ROLL_LOWEST)
         return LowestRollDmg(dmg);
     else if (rollType == DMG_ROLL_HIGHEST)
