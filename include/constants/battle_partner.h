@@ -17,6 +17,7 @@
 #define PARTNER_STEVEN_B2B          12
 #define PARTNER_BLUE_TWELVE         13
 #define PARTNER_BLUE_B2B            14
-#define PARTNER_COUNT               15
+#define PARTNER_SHELLY_MHO_BOSS     15
+#define PARTNER_COUNT               16
 
 #endif  // GUARD_CONSTANTS_BATTLE_PARTNERS_H

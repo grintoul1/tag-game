@@ -282,6 +282,9 @@ MagmaHideout_4F_Text_TabithaLooksLikeYoureCaught:
 	.string "between a rock and a hot place!\p"
 	.string "This time there's no way out.$"
 
+MagmaHideout_4F_Text_TabithaNoEscape:
+	.string "This time there's no way out.$"
+
 MagmaHideout_4F_Text_CourtneyTabitha_NowhereToRun:
 	.string "Tabitha: There's nowhere to run!$"
 
@@ -437,13 +440,31 @@ MagmaHideout_4F_EventScript_CourtneyTabitha::
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_TabithaLooksLikeYoureCaught, MSGBOX_DEFAULT
 	closemessage
-	goto MagmaHideout_4F_EventScript_CourtneyTabithaDoMultiBattle
+	setvar VAR_0x800A, 0
+	setvar VAR_0x800B, 4
+	special ClearHideoutPool @ Restore player party
+	special FillPoolForShelly @ Refill pool with Tabitha's team
+	goto MagmaHideout_4F_EventScript_CourtneyTabithaFightBattle
+
+MagmaHideout_4F_EventScript_CourtneyTabithaFightBattle::
+	special SavePlayerParty
+	fadescreen FADE_TO_BLACK
+	special ChoosePartyForStoryBattle
+	waitstate
+	goto_if_ne VAR_RESULT, 0, MagmaHideout_4F_EventScript_CourtneyTabithaDoMultiBattle
+	special LoadPlayerParty
+	goto MagmaHideout_4F_EventScript_CourtneyTabithaNoEscape
 	releaseall
 	end
 
+MagmaHideout_4F_EventScript_CourtneyTabithaNoEscape::
+	msgbox MagmaHideout_4F_Text_TabithaNoEscape, MSGBOX_DEFAULT
+	waitmessage
+	goto MagmaHideout_4F_EventScript_CourtneyTabithaFightBattle
+
 MagmaHideout_4F_EventScript_CourtneyTabithaDoMultiBattle::
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
-	multi_2p_vs_2 TRAINER_TABITHA_MAGMA_HIDEOUT, MagmaHideout_4F_Text_TabithaDefeat, TRAINER_COURTNEY_MAGMA_HIDEOUT, MagmaHideout_4F_Text_CourtneyDefeat, PARTNER_SHELLY_MHO
+	multi_2_vs_2 TRAINER_TABITHA_MAGMA_HIDEOUT, MagmaHideout_4F_Text_TabithaDefeat, TRAINER_COURTNEY_MAGMA_HIDEOUT, MagmaHideout_4F_Text_CourtneyDefeat, PARTNER_SHELLY_MHO_BOSS
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, MagmaHideout_4F_EventScript_CourtneyTabithaVictory

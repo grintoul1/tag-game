@@ -5358,7 +5358,8 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_AQUA_ADMIN_MIXED:
         case TRAINER_CLASS_MAGMA_ADMIN:
         case TRAINER_CLASS_MAGMA_ADMIN_MIXED:
-            return MUS_COLOSSEUM_VS_CIPHER_ADMIN;
+            return MUS_VS_UNOVA_ELITE_FOUR;
+            //return MUS_COLOSSEUM_VS_CIPHER_ADMIN;
         case TRAINER_CLASS_KANTONIAN:
             switch (TRAINER_BATTLE_PARAM.opponentA)
             {

@@ -220,35 +220,34 @@ Gender: Female
 Music: Male
 AI: Partner Trainer
 
-Magearna @ Shuca Berry
+Audino-Mega @ Audinite
+Ability: Healer
+Level: 73
 Quiet Nature
-Level: 50
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Trick Room
 - Moonblast
-- Light Screen
-- Flash Cannon
+- After You
+- Helping Hand
+- Trick Room
 
-Skarmory
-Impish Nature
-Level: 43
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 6 SpA / 252 SpD
-- Toxic
-- Aerial Ace
-- Protect
-- Steel Wing
+Dhelmise @ Power Herb
+Ability: Steelworker
+Level: 73
+Sassy Nature
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+- Phantom Force
+- Anchor Shot
+- Seed Bomb
+- Ally Switch
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+Ambipom @ Expert Belt
+Ability: Technician
+Level: 73
+Jolly Nature
+- U-turn
+- Knock Off
+- Dual Chop
+- Fake Out
 
 === PARTNER_ARCHIE_MT_PYRE ===
 Name: Archie
@@ -397,65 +396,125 @@ Gender: Female
 Music: Male
 AI: Partner Trainer
 
-Magearna @ Shuca Berry
-Quiet Nature
-Level: 50
+Audino-Mega @ Audinite
+Ability: Healer
+Level: 73
+Mild Nature
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Trick Room
 - Moonblast
-- Light Screen
-- Flash Cannon
+- After You
+- Helping Hand
+- Trick Room
 
-Charizard
-Impish Nature
-Level: 43
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 6 SpA / 252 SpD
-- Toxic
-- Aerial Ace
-- Protect
-- Steel Wing
+Ambipom @ Expert Belt
+Ability: Technician
+Level: 73
+Jolly Nature
+- U-turn
+- Knock Off
+- Dual Chop
+- Fake Out
 
-Blastoise
+Sigilyph @ Sharp Beak
+Ability: Tinted Lens
+Level: 73
+Hasty Nature
+- Synchronoise
+- Air Slash
+- Imprison
+- Tailwind
+
+Empoleon @ Leftovers
+Ability: Competitive
+Level: 73
+Relaxed Nature
+- Ice Beam
+- Scald
+- Icy Wind
+- Defog
+
+Dhelmise @ Power Herb
+Ability: Steelworker
+Level: 73
+Sassy Nature
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+- Phantom Force
+- Anchor Shot
+- Seed Bomb
+- Ally Switch
+
+Muk-Alola @ Zoom Lens
+Ability: Power of Alchemy
+Level: 73
 Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+- Poison Jab
+- Knock Off
+- Helping Hand
+- Toxic
 
-Typhlosion @ Shuca Berry
-Quiet Nature
-Level: 50
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Trick Room
-- Moonblast
-- Light Screen
-- Flash Cannon
+=== PARTNER_SHELLY_MHO_BOSS ===
+Name: Shelly
+Class: Aqua Admin
+Pic: Aqua Admin F
+Gender: Female
+Music: Male
+AI: Partner Trainer
 
-Meganium @ Shuca Berry
-Quiet Nature
-Level: 50
+Audino-Mega @ Audinite
+Ability: Healer
+Level: 73
+Mild Nature
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Trick Room
 - Moonblast
-- Light Screen
-- Flash Cannon
+- After You
+- Helping Hand
+- Trick Room
 
-Swampert @ Shuca Berry
-Quiet Nature
-Level: 50
+Ambipom @ Expert Belt
+Ability: Technician
+Level: 73
+Jolly Nature
+- U-turn
+- Knock Off
+- Dual Chop
+- Fake Out
+
+Sigilyph @ Sharp Beak
+Ability: Tinted Lens
+Level: 73
+Hasty Nature
+- Synchronoise
+- Air Slash
+- Imprison
+- Tailwind
+
+Empoleon @ Leftovers
+Ability: Competitive
+Level: 73
+Relaxed Nature
+- Ice Beam
+- Scald
+- Icy Wind
+- Defog
+
+Dhelmise @ Power Herb
+Ability: Steelworker
+Level: 73
+Sassy Nature
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Trick Room
-- Moonblast
-- Light Screen
-- Flash Cannon
+- Phantom Force
+- Anchor Shot
+- Seed Bomb
+- Ally Switch
+
+Muk-Alola @ Zoom Lens
+Ability: Power of Alchemy
+Level: 73
+Adamant Nature
+- Poison Jab
+- Knock Off
+- Helping Hand
+- Toxic
 
 === PARTNER_STEVEN_TWELVE ===
 Name: Steven

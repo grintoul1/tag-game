@@ -311,6 +311,7 @@ void ReducePlayerPartyToSelectedMons(void)
 
     if ((gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE)
      || gPartnerTrainerId == TRAINER_PARTNER(PARTNER_SHELLY_MHO)
+     || gPartnerTrainerId == TRAINER_PARTNER(PARTNER_SHELLY_MHO_BOSS)
      || gPartnerTrainerId == TRAINER_PARTNER(PARTNER_TABITHA))
      && !IsStoryMulti())
     {

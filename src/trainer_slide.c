@@ -92,6 +92,21 @@ static const u8* const sTrainerSlides[DIFFICULTY_COUNT][TRAINER_PARTNER(PARTNER_
                 "You don't understand how far Ralts and I have come!{PAUSE_UNTIL_PRESS}"
             ),
         },
+        [TRAINER_TABITHA_MAGMA_HIDEOUT] = {
+            [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING(
+                "You've stuck your noses in for the last time!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
+        [TRAINER_COURTNEY_MAGMA_HIDEOUT] = {
+            [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING(
+                "I've been wanting to do this for a long time, Shelly!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
+        [TRAINER_PARTNER(PARTNER_SHELLY_MHO_BOSS)] = {
+            [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING(
+                "We've come too far to stop now. Give them everything you have!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
     },
 };
 

@@ -5621,23 +5621,43 @@ Gender: Male
 Music: Magma
 Battle Type: Doubles
 AI: Tag Trainer
-Multi Party: Half
+Multi Party: Full
 
-Numel
-Level: 26
-IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+Glimmora @ Power Herb
+Ability: Toxic Debris
+Level: 72
+Timid Nature
+- Meteor Beam
+- Solar Beam
+- Sludge Bomb
+- Power Gem
 
-Mightyena
-Level: 28
-IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+Celebi @ Leftovers
+Ability: Synchronize
+Level: 71
+Modest Nature
+- Giga Drain
+- Ancient Power
+- Baton Pass
+- Sandstorm
 
-Zubat
-Level: 30
-IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+Celebi @ Leftovers
+Ability: Synchronize
+Level: 71
+Modest Nature
+- Giga Drain
+- Ancient Power
+- Baton Pass
+- Sandstorm
 
-Camerupt
-Level: 33
-IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+Garchomp-Mega @ Garchompite
+Ability: Sand Force
+Level: 73
+Naive Nature
+- Dragon Rush
+- High Horsepower
+- Flamethrower
+- Protect
 
 === TRAINER_COURTNEY_MAGMA_HIDEOUT ===
 Name: Courtney /* Magma Hideout*/
@@ -5648,11 +5668,45 @@ Gender: Female
 Music: Magma
 Battle Type: Doubles
 AI: Tag Trainer
-Multi Party: Half
+Multi Party: Full
 
-Zubat
-Level: 29
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Absol-Mega @ Absolite
+Ability: Magic Bounce
+Level: 73
+Hasty Nature
+- Future Sight
+- Sacred Sword
+- Sucker Punch
+- Pursuit
+
+Aggron @ Steel Gem
+Ability: Sturdy
+Level: 71
+Brave Nature
+IVs: 0 Spe
+- Stone Edge
+- Stomping Tantrum
+- Heavy Slam
+- Stealth Rock
+
+Aggron @ Steel Gem
+Ability: Sturdy
+Level: 71
+Brave Nature
+IVs: 0 Spe
+- Stone Edge
+- Stomping Tantrum
+- Heavy Slam
+- Stealth Rock
+
+Arcanine @ Fairy Feather
+Ability: Intimidate
+Level: 72
+Hasty Nature
+- Burn Up
+- Play Rough
+- Extreme Speed
+- Howl
 
 === TRAINER_MAXIE_MAGMA_HIDEOUT ===
 Name: Maxie /* Magma Hideout*/

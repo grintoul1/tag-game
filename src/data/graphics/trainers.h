@@ -492,6 +492,7 @@ const u8 gTrainerBackPic_MagmaLeaderMaxie[] = INCBIN_U8("graphics/trainers/back_
 const u8 gTrainerBackPic_AquaLeaderArchie[] = INCBIN_U8("graphics/trainers/back_pics/aqua_leader_archie.4bpp");
 const u8 gTrainerBackPic_MagmaAdminM[] = INCBIN_U8("graphics/trainers/back_pics/magma_leader_maxie.4bpp");
 const u8 gTrainerBackPic_Blue[] = INCBIN_U8("graphics/trainers/back_pics/blue.4bpp");
+const u8 gTrainerBackPic_AquaAdminF[] = INCBIN_U8("graphics/trainers/back_pics/aqua_admin_f.4bpp");
 
 const u16 gTrainerBackPicPalette_Red[] = INCBIN_U16("graphics/trainers/back_pics/red.gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCBIN_U16("graphics/trainers/back_pics/leaf.gbapal");
@@ -500,6 +501,7 @@ const u16 gTrainerBackPicPalette_MagmaLeaderMaxie[] = INCBIN_U16("graphics/train
 const u16 gTrainerBackPicPalette_AquaLeaderArchie[] = INCBIN_U16("graphics/trainers/back_pics/aqua_leader_archie.gbapal");
 const u16 gTrainerBackPicPalette_MagmaAdminM[] = INCBIN_U16("graphics/trainers/back_pics/magma_leader_maxie.gbapal");
 const u16 gTrainerBackPicPalette_Blue[] = INCBIN_U16("graphics/trainers/back_pics/blue.gbapal");
+const u16 gTrainerBackPicPalette_AquaAdminF[] = INCBIN_U16("graphics/trainers/back_pics/aqua_admin_f.gbapal");
 
 const u8 gTrainerBackPic_Pokedude[] = INCBIN_U8("graphics/trainers/back_pics/pokedude.4bpp");
 const u8 gTrainerBackPic_OldMan[] = INCBIN_U8("graphics/trainers/back_pics/old_man.4bpp");
@@ -710,6 +712,7 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_AQUA_ADMIN_F] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_AquaAdminF, gTrainerPalette_AquaAdminF),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_AquaAdminF, gTrainerBackPicPalette_AquaAdminF, sBackAnims_Hoenn),
     },
     [TRAINER_PIC_AQUA_LEADER_ARCHIE] =
     {
@@ -940,6 +943,10 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_MagmaAdmin, gTrainerPalette_MagmaAdmin),
         .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_MagmaAdminM, gTrainerBackPicPalette_MagmaAdminM, sBackAnims_Hoenn),
+    },
+    [TRAINER_PIC_MAGMA_ADMIN_F] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_MagmaAdminF, gTrainerPalette_MagmaAdminF),
     },
     [TRAINER_PIC_BUG_CATCHER] =
     {
