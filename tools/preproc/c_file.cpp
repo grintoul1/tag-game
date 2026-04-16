@@ -115,6 +115,7 @@ void CFile::Preproc()
             TryConvertString();
             TryConvertCompoundString();
             TryConvertIncbin();
+            TryReplaceEnumCount();
 
             if (m_pos >= m_size)
                 break;
@@ -481,6 +482,91 @@ void CFile::TryConvertIncbin()
     m_pos++;
 
     printf("}");
+}
+
+void CFile::TryReplaceEnumCount()
+{
+    std::string sizeofenumString = "sizeofenum";
+
+    if (CheckIdentifier(sizeofenumString))
+    {
+        long int currPos = m_pos + sizeofenumString.length() + 1;
+        int nameLength = 0;
+        while (m_buffer[currPos + nameLength++] != ')');
+        char str[nameLength];
+        for (int i = 0; i < nameLength; i++)
+            str[i] = m_buffer[currPos + i];
+        str[nameLength - 1] = '\0';
+
+        for (long int bufferPos = 0; bufferPos < m_pos; bufferPos++)
+        {
+            bool found = true;
+            for (int j = 0; j < nameLength - 1; j++)
+            {
+                if (str[j] != m_buffer[bufferPos + j])
+                {
+                    found = false;
+                    break;
+                }
+                found = true;
+            }
+
+            if (found)
+            {
+                long int enumOpenOffset = nameLength;
+                while (m_buffer[bufferPos + enumOpenOffset++] != '{');
+
+                enumOpenOffset++;
+
+                int numOpenBracket = 1;
+                long int enumBufferLength = 0;
+                while (true)
+                {
+                    if (m_buffer[bufferPos + enumOpenOffset + enumBufferLength] == '{')
+                        numOpenBracket++;
+                    else if (m_buffer[bufferPos + enumOpenOffset + enumBufferLength] == '}')
+                        numOpenBracket--;
+
+                    if (numOpenBracket == 0)
+                        break;
+
+                    enumBufferLength++;
+                }
+
+                int numMembers = 0;
+                bool trailingMember= false;
+
+                for (long int enumBufferPos = 0; enumBufferPos < enumBufferLength; enumBufferPos++)
+                {
+                    char currChar = m_buffer[bufferPos + enumOpenOffset + enumBufferPos];
+                    if (currChar == ',')
+                    {
+                        numMembers++;
+                        trailingMember = false;
+                    }
+                    else if ((currChar >= 'A' && currChar <= 'Z')
+                          || (currChar >= 'a' && currChar <= 'z'))
+                    {
+                        trailingMember = true;
+                    }
+                }
+
+                if (trailingMember)
+                    numMembers++;
+
+                long int defOffset = 0;
+                while (m_buffer[m_pos + defOffset++] != ')');
+
+                std::printf("%d", numMembers);
+                m_pos += defOffset;
+
+                return;
+            }
+        }
+
+        // If this point is reached countofenum was used but the enum definition wasn't found
+        RaiseError("\e[31menum definition not found for %s\n\e[0m", str);
+    }
 }
 
 // Reports a diagnostic message.

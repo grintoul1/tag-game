@@ -64,6 +64,7 @@ private:
     void RaiseWarning(const char* format, ...);
     void printf(const char *format, ...);
     void putchar(char c);
+    void TryReplaceEnumCount();
 };
 
 #endif // C_FILE_H
