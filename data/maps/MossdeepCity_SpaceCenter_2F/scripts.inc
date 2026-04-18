@@ -536,8 +536,8 @@ MossdeepCity_SpaceCenter_Text_CourtneyDefeat:
 MossdeepCity_SpaceCenter_2F_Text_MaxieWeFailedIsAquaAlsoMisguided:
 	.string "MAXIE: I succeeded in controling GROUDON\n"
 	.string "after we had awoken it…\p"
-	.string "Yes still you protest against Team Magma's\n"
-	.string "vision…\p"
+	.string "Yes still you protest against Team\n"
+	.string "Magma's vision…\p"
 	.string "Is our goal to expand the land\n"
 	.string "misguided?\p"
 	.string "… … … … … …\n"

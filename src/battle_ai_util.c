@@ -1743,7 +1743,7 @@ void GetBestDmgMoveFromPartner(enum BattlerId battlerAtk, enum BattlerId battler
         enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
         if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDefPartner)
-        || ((AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDefPartner, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, battlerMoves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDefPartner, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
         && IsSemiInvulnerable(battlerDefPartner, CHECK_ALL)))
             continue;
         if ((moveTarget == TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
@@ -1775,7 +1775,7 @@ void GetBestDmgMoveFromPartner(enum BattlerId battlerAtk, enum BattlerId battler
         enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
         if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDef)
-        || ((AI_WhoStrikesFirst(battlerAtk, battlerDef, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDef, battlerMoves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
         && IsSemiInvulnerable(battlerDef, CHECK_ALL)))
             continue;
         if ((moveTarget == TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
@@ -1868,7 +1868,7 @@ void GetBestDmgMoveFromPartner(enum BattlerId battlerAtk, enum BattlerId battler
         enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
         if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDefPartner)
-        || ((AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDefPartner, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, battlerMoves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDefPartner, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
         && IsSemiInvulnerable(battlerDefPartner, CHECK_ALL)))
             continue;
         if ((moveTarget == TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
@@ -1889,7 +1889,7 @@ void GetBestDmgMoveFromPartner(enum BattlerId battlerAtk, enum BattlerId battler
         enum MoveTarget moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
 
         if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations) || !IsBattlerAlive(battlerDef)
-        || ((AI_WhoStrikesFirst(battlerAtk, battlerDef, moves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDef, battlerMoves[moveIndex], GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData), CONSIDER_PRIORITY) == AI_IS_FASTER) 
         && IsSemiInvulnerable(battlerDef, CHECK_ALL)))
             continue;
         if ((moveTarget == TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)

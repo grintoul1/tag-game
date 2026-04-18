@@ -103,10 +103,10 @@
 #define AI_ROLL_TYPE_COUNT                                      5
 
 // Define which roll type to use in each context; overridden by AI_FLAG_RISKY and AI_FLAG_CONSERVATIVE
-#define AI_ROLL_ATTACKING                                       AI_ROLL_MAX
-#define AI_ROLL_DEFENDING                                       AI_ROLL_MEDIAN
-#define AI_ROLL_SWITCHIN_ATTACKING                              AI_ROLL_MEDIAN
-#define AI_ROLL_SWITCHIN_DEFENDING                              AI_ROLL_MEDIAN
+#define AI_ROLL_ATTACKING                                       AI_ROLL_RANDOM
+#define AI_ROLL_DEFENDING                                       AI_ROLL_MAX
+#define AI_ROLL_SWITCHIN_ATTACKING                              AI_ROLL_MAX
+#define AI_ROLL_SWITCHIN_DEFENDING                              AI_ROLL_MAX
 #define AI_ROLL_SHOULD_SETUP_DEFENDING                          AI_ROLL_MAX
 #define AI_ROLL_ATTACKING_PARTNER                               AI_ROLL_MAX
 

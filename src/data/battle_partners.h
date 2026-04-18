@@ -58,7 +58,7 @@
             .lvl = 81,
             .ball = POKEBALL_COUNT,
 #line 19
-            .nature = NATURE_ADAMANT,
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 20
@@ -1360,7 +1360,7 @@
             .lvl = 81,
             .ball = POKEBALL_COUNT,
 #line 530
-            .nature = NATURE_ADAMANT,
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 531
@@ -1526,7 +1526,7 @@
             .lvl = 81,
             .ball = POKEBALL_COUNT,
 #line 593
-            .nature = NATURE_ADAMANT,
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 594
@@ -1692,7 +1692,7 @@
             .lvl = 81,
             .ball = POKEBALL_COUNT,
 #line 656
-            .nature = NATURE_ADAMANT,
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 657
@@ -1858,7 +1858,7 @@
             .lvl = 81,
             .ball = POKEBALL_COUNT,
 #line 719
-            .nature = NATURE_ADAMANT,
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 720
