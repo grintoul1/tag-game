@@ -1025,6 +1025,36 @@ gSongTable::
 	song mus_vs_final_pokemon_rb, MUSIC_PLAYER_BGM, 0
 	song mus_vs_final_pokemon_gs, MUSIC_PLAYER_BGM, 0
 	song mus_vs_final_pokemon_blaine, MUSIC_PLAYER_BGM, 0
+	song mus_hg_bug_catching_contest, MUSIC_PLAYER_BGM, 0
+	song mus_dp_follow_me, MUSIC_PLAYER_BGM, 0
+	song mus_hg_follow_me_2, MUSIC_PLAYER_BGM, 0
+	song mus_bw_n_castle, MUSIC_PLAYER_BGM, 0
+	song mus_bw_driftveil, MUSIC_PLAYER_BGM, 0
+	song mus_bw_cycling, MUSIC_PLAYER_BGM, 0
+	song mus_bw_route12_autumn, MUSIC_PLAYER_BGM, 0
+	song mus_bw_route4_summer, MUSIC_PLAYER_BGM, 0
+	song mus_bw_route2_summer, MUSIC_PLAYER_BGM, 0
+	song mus_bw_trouble, MUSIC_PLAYER_BGM, 0
+	song mus_bw_relic_song, MUSIC_PLAYER_BGM, 0
+	song mus_hg_elm_lab, MUSIC_PLAYER_BGM, 0
+	song mus_bw_juniper_lab, MUSIC_PLAYER_BGM, 0
+	song mus_bw_icirrus, MUSIC_PLAYER_BGM, 0
+	song mus_bw_nuvema, MUSIC_PLAYER_BGM, 0
+	song mus_bw_follow_me_2, MUSIC_PLAYER_BGM, 0
+	song mus_bw_tubeline_bridge, MUSIC_PLAYER_BGM, 0
+	song mus_dp_underground, MUSIC_PLAYER_BGM, 0
+	song mus_dp_victory_road, MUSIC_PLAYER_BGM, 0
+	song mus_hg_victory_road, MUSIC_PLAYER_BGM, 0
+	song mus_bw_black_city, MUSIC_PLAYER_BGM, 0
+	song mus_bw_skyarrow_bridge, MUSIC_PLAYER_BGM, 0
+	song mus_dp_rival, MUSIC_PLAYER_BGM, 0
+	song mus_hg_encounter_rival, MUSIC_PLAYER_BGM, 0
+	song mus_bw_cheren, MUSIC_PLAYER_BGM, 0
+	song mus_bw_bianca, MUSIC_PLAYER_BGM, 0
+	song mus_bw_victory_road, MUSIC_PLAYER_BGM, 0
+	song mus_bw_sage, MUSIC_PLAYER_BGM, 0
+	song mus_bw_castelia, MUSIC_PLAYER_BGM, 0
+	song mus_hg_rival_exit, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:

@@ -4718,6 +4718,36 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_VS_FINAL_POKEMON_RB)    \
     X(MUS_VS_FINAL_POKEMON_GS)    \
     X(MUS_VS_FINAL_POKEMON_BLAINE)    \
+    X(MUS_HG_BUG_CATCHING_CONTEST)    \
+    X(MUS_DP_FOLLOW_ME)    \
+    X(MUS_HG_FOLLOW_ME_2)    \
+    X(MUS_BW_N_CASTLE)    \
+    X(MUS_BW_DRIFTVEIL)    \
+    X(MUS_BW_CYCLING)    \
+    X(MUS_BW_ROUTE12_AUTUMN)    \
+    X(MUS_BW_ROUTE4_SUMMER)    \
+    X(MUS_BW_ROUTE2_SUMMER)    \
+    X(MUS_BW_TROUBLE)    \
+    X(MUS_BW_RELIC_SONG)    \
+    X(MUS_HG_ELM_LAB)    \
+    X(MUS_BW_JUNIPER_LAB)    \
+    X(MUS_BW_ICIRRUS)    \
+    X(MUS_BW_NUVEMA)    \
+    X(MUS_BW_FOLLOW_ME_2)    \
+    X(MUS_BW_TUBELINE_BRIDGE)    \
+    X(MUS_DP_UNDERGROUND)    \
+    X(MUS_DP_VICTORY_ROAD)    \
+    X(MUS_HG_VICTORY_ROAD)    \
+    X(MUS_BW_BLACK_CITY)    \
+    X(MUS_BW_SKYARROW_BRIDGE)    \
+    X(MUS_DP_RIVAL)    \
+    X(MUS_HG_ENCOUNTER_RIVAL)    \
+    X(MUS_BW_CHEREN)    \
+    X(MUS_BW_BIANCA)    \
+    X(MUS_BW_VICTORY_ROAD)    \
+    X(MUS_BW_SAGE)    \
+    X(MUS_BW_CASTELIA)    \
+    X(MUS_HG_RIVAL_EXIT)    \
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \
