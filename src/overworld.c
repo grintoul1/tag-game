@@ -4807,6 +4807,9 @@ u32 GetCurrentBadgeCount(void)
 
 static u16 GetLocationMusicOverride(enum SongId song)
 {
+    static enum SongId sLastBaseSong = MUS_DUMMY;
+    static u16 sLastOverrideSong = MUS_DUMMY;
+
     u16 mode = VarGet(VAR_MUSIC_MODE);
 
     if (mode == MUSIC_MODE_VANILLA)
@@ -4824,14 +4827,26 @@ static u16 GetLocationMusicOverride(enum SongId song)
     if (mode == MUSIC_MODE_DEFAULT)
         overrideSong = overrides[GetCurrentBadgeCount()]; // Increments with each badge
     else if (mode == MUSIC_MODE_RANDOM)
+    {
+        // Reuse the cached result if the base song hasn't changed
+        if (song == sLastBaseSong && sLastOverrideSong != MUS_DUMMY)
+            return sLastOverrideSong;
         overrideSong = overrides[RandomUniform(RNG_OVERWORLD_MUSIC, 0, GetCurrentBadgeCount())];
+    }
     else if (mode >= MUSIC_MODE_COUNT)
         return song;
     else
         overrideSong = overrides[mode - 1];
 
     if (overrideSong != LOCATION_MUSIC_NO_OVERRIDE)
+    {
+        if (mode == MUSIC_MODE_RANDOM)
+        {
+            sLastBaseSong = song;
+            sLastOverrideSong = overrideSong;
+        }
         return overrideSong;
+    }
 
     return song;
 }
