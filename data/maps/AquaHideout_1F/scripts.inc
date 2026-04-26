@@ -1,5 +1,5 @@
-.set LOCALID_TABITHA, 3
-.set LOCALID_EMMIE, 4
+.set LOCALID_TABITHA, 2
+.set LOCALID_EMMIE, 3
 
 AquaHideout_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, AquaHideout_1F_OnFrame
@@ -17,9 +17,20 @@ AquaHideout_1F_EventScript_ProgressEmmieState::
 AquaHideout_1F_EventScript_HideoutEntranceGrunt1::
 	lock
 	faceplayer
-	goto_if_set FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, AquaHideout_1F_EventScript_SlateportHint1
-	goto_if_set FLAG_RECEIVED_RED_OR_BLUE_ORB, AquaHideout_1F_EventScript_MagmaHideoutHint1
+	goto_if_set FLAG_HIDE_MOSSDEEP_CITY_SCOTT, AquaHideout_1F_EventScript_MagmaHideoutHint1
+	goto_if_set FLAG_EVIL_TEAM_AQUA, AquaHideout_1F_EventScript_AquaInMossdeep
+	goto_if_set FLAG_EVIL_TEAM_MAGMA, AquaHideout_1F_EventScript_MagmaInMossdeep
 	msgbox AquaHideout_1F_Text_OurBossIsSnatchingSomething, MSGBOX_DEFAULT
+	release
+	end
+
+AquaHideout_1F_EventScript_AquaInMossdeep::
+	msgbox AquaHideout_1F_Text_MagmaWontKnowWhatHitThem, MSGBOX_DEFAULT
+	release
+	end
+
+AquaHideout_1F_EventScript_MagmaInMossdeep::
+	msgbox AquaHideout_1F_Text_MagmaJustPassedThrough, MSGBOX_DEFAULT
 	release
 	end
 
@@ -365,3 +376,17 @@ AquaHideout_1F_Text_Grunt1Defeat:
 AquaHideout_1F_Text_Grunt1PostBattle:
 	.string "I took the loss for the TEAM,\n"
 	.string "but I did my job…$"
+
+AquaHideout_1F_Text_MagmaWontKnowWhatHitThem:
+	.string "Hehe… With Team Magma now on the\n"
+	.string "back foot, the boss plans to put\l"
+	.string "them in the ground… Literally!\p"
+	.string "He's on his way to Mossdeep as we\n"
+	.string "speak to get the final ingredient!$"
+
+AquaHideout_1F_Text_MagmaJustPassedThrough:
+	.string "Our guy outside just reported that\n"
+	.string "Team Magma passed through, headed\l"
+	.string "towards Mossdeep City.\p"
+	.string "Perhaps he was right about needing\n"
+	.string "a Wailmer blockade all along…$"

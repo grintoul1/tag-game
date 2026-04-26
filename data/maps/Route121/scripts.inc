@@ -77,13 +77,24 @@ Route121_EventScript_AquaGrunt3::
 	closemessage
 	end
 
+Route121_EventScript_AquaGrunt4::
+	msgbox Route121_Text_AquaGrunt4, MSGBOX_DEFAULT
+	closemessage
+	end
+
 Route121_EventScript_MagmaGrunt1::
 	msgbox Route121_Text_MagmaGrunt1, MSGBOX_DEFAULT
 	closemessage
 	end
 
 Route121_EventScript_MagmaGrunt2::
+	goto_if_set FLAG_EVIL_TEAM_MAGMA, Route121_EventScript_MagmaGrunt2PostPyre
 	msgbox Route121_Text_MagmaGrunt2, MSGBOX_DEFAULT
+	closemessage
+	end
+
+Route121_EventScript_MagmaGrunt2PostPyre::
+	msgbox Route121_Text_MagmaGrunt2PostPyre, MSGBOX_DEFAULT
 	closemessage
 	end
 
@@ -448,3 +459,10 @@ Route121_Text_MagmaGrunt1:
 Route121_Text_MagmaGrunt2:
 	.string "Nobody goes through this area while\n"
 	.string "Team Magma operates at Mt. Pyre!$"
+
+Route121_Text_MagmaGrunt2PostPyre:
+	.string "Hehe… I wonder if the mail I sent to\n"
+	.string "Mossdeep City Space Center has arrived…$"
+
+Route121_Text_AquaGrunt4:
+	.string "Team Aqua have this area under control!$"

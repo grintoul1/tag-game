@@ -589,13 +589,18 @@ LilycoveCity_Text_IfWorldBecomesOurs:
 	.string "place for POKéMON, too.$"
 
 LilycoveCity_Text_WailmerLeapOutOfWater:
-	.string "There! WAILMER!\n"
-	.string "Leap out of the water now!$"
+	.string ":VegetaPain:$"
 
 LilycoveCity_Text_GetLostMessingUpTraining:
-	.string "Hunh? What do you want?\p"
-	.string "You're messing up our training,\n"
-	.string "so can you, like, get lost?$"
+	.string "You know, since I was a kid I dreamt\n"
+	.string "of one day training a pod of Wailmer\l"
+	.string "while stood in this very spot.\p"
+	.string "Hoenn's seas have changed so much that\n"
+	.string "invasive species have migrated and\l"
+	.string "forced the Wailmer out.\p"
+	.string "I hope that once Team Aqua expands\n"
+	.string "the seas, the habitat may be large\l"
+	.string "enough to support them once again…$"
 
 LilycoveCity_Text_ContestHallInTown:
 	.string "There's a POKéMON CONTEST HALL\n"

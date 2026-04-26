@@ -724,7 +724,7 @@
 #define FLAG_HIDE_BATTLE_PYRAMID_LOBBY_BRANDON  0x296 // Hides Brandon
 #define FLAG_HIDE_BATTLE_DOME_LOBBY_TUCKER  0x297 // Hides Tucker
 #define FLAG_HIDE_VICTORY_ROAD_VITO  0x298 // Hides Vito
-#define FLAG_UNUSED_0x299  0x299 // Unused Flag
+#define FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS_MAXIE_DEFEATED  0x299 // Hides Aqua Grunts on R121 that only appear if Maxie fought on Mt Pyre
 #define FLAG_UNUSED_0x29A  0x29A // Unused Flag
 #define FLAG_UNUSED_0x29B  0x29B // Unused Flag
 #define FLAG_UNUSED_0x29C  0x29C // Unused Flag
@@ -877,7 +877,7 @@
 #define FLAG_HIDE_ROUTE_112_TEAM_MAGMA                              0x333
 #define FLAG_HIDE_CAVE_OF_ORIGIN_B1F_WALLACE                        0x334
 #define FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE         0x335
-#define FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE         0x336
+#define FLAG_UNUSED_0x336                                           0x336 // Unused
 #define FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA                          0x337
 #define FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD                          0x338
 #define FLAG_HIDE_LEGEND_MON_CAVE_OF_ORIGIN                         0x339 // Unused, leftover from R/S
