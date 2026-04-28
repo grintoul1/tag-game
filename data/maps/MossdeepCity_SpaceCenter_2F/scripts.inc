@@ -95,7 +95,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_BattleThreeMagmaGrunts::
 
 MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6DoMultiBattle::
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
-	multi_2p_vs_2 TRAINER_GRUNT_SPACE_CENTER_5, MossdeepCity_SpaceCenter_2F_Text_Grunt5Defeat, TRAINER_GRUNT_SPACE_CENTER_6, MossdeepCity_SpaceCenter_2F_Text_Grunt6Defeat, PARTNER_EMMIE
+	multi_2p_vs_2 TRAINER_MAGMA_GRUNT_SPACE_CENTER_5, MossdeepCity_SpaceCenter_2F_Text_Grunt5Defeat, TRAINER_MAGMA_GRUNT_SPACE_CENTER_6, MossdeepCity_SpaceCenter_2F_Text_Grunt6Defeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6Victory
 	fadescreen FADE_TO_BLACK
@@ -341,8 +341,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieCourtney::
 	fadescreen FADE_TO_BLACK
 	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 6
 	setvar VAR_PARTNER_EMMIE_STATE, 57
-	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
-	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_TEAM_MAGMA
 	setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
 	removeobject LOCALID_GRUNT6
 	removeobject LOCALID_TABITHA

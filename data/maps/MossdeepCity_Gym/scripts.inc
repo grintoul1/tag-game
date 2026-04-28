@@ -120,8 +120,8 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
 	setvar VAR_0x8008, 7
 	call Common_EventScript_SetGymTrainers
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
-	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
-	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+	call_if_set FLAG_EVIL_TEAM_AQUA, MossdeepCity_Gym_EventScript_AquaInSpaceCenter
+	call_if_set FLAG_EVIL_TEAM_MAGMA, MossdeepCity_Gym_EventScript_MagmaInSpaceCenter
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN
 	setvar VAR_MOSSDEEP_CITY_STATE, 1
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
@@ -131,6 +131,14 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
 	delay 30
 	release
 	end
+
+MossdeepCity_Gym_EventScript_AquaInSpaceCenter::
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_TEAM_AQUA
+	return
+
+MossdeepCity_Gym_EventScript_MagmaInSpaceCenter::
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_TEAM_MAGMA
+	return
 
 MossdeepCity_Gym_EventScript_GiveCalmMind2::
 	giveitem ITEM_TM_CALM_MIND

@@ -196,3 +196,31 @@ Common_Movement_WalkRightFaster::
 Common_Movement_WalkLeftFaster::
 	walk_faster_left
 	step_end
+
+Common_Movement_KnockedBackUp::
+	face_down
+	lock_facing_direction
+	walk_faster_up
+	unlock_facing_direction
+	step_end
+
+Common_Movement_KnockedBackDown::
+	face_up
+	lock_facing_direction
+	walk_faster_down
+	unlock_facing_direction
+	step_end
+
+Common_Movement_KnockedBackRight::
+	face_left
+	lock_facing_direction
+	walk_faster_right
+	unlock_facing_direction
+	step_end
+
+Common_Movement_KnockedBackLeft::
+	face_right
+	lock_facing_direction
+	walk_faster_left
+	unlock_facing_direction
+	step_end

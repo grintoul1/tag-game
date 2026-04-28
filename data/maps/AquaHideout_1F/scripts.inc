@@ -1,6 +1,3 @@
-.set LOCALID_TABITHA, 2
-.set LOCALID_EMMIE, 3
-
 AquaHideout_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, AquaHideout_1F_OnFrame
 	.byte 0
@@ -93,7 +90,7 @@ AquaHideout_1F_EventScript_FirstEntrance::
 	addobject LOCALID_EMMIE
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
 	destroyfollowernpc
-	setfollowernpc 3, FNPC_WHITE_OUT, Common_EventScript_Tabitha, PARTNER_TABITHA
+	setfollowernpc LOCALID_AQUA_HIDEOUT_TABITHA, FNPC_WHITE_OUT, Common_EventScript_Tabitha, PARTNER_TABITHA
 	special FillPoolForTabitha
 	setflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
 	setflag FLAG_HIDE_AQUA_HIDEOUT_B2F_EMMIE
@@ -121,7 +118,7 @@ AquaHideout_1F_EventScript_LeavingHideout::
 	applymovement OBJ_EVENT_ID_PLAYER, AquaHideout_1F_Movement_PlayerLeaving
 	applymovement LOCALID_EMMIE, AquaHideout_1F_Movement_EmmieLeaving
 	waitmovement 0
-	setfollowernpc 4, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	setfollowernpc LOCALID_AQUA_HIDEOUT_EMMIE, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
 	setvar VAR_PARTNER_EMMIE_STATE, 48
 	setvar VAR_FOLLOWER_AQUA_HIDEOUT_TABITHA, 0
@@ -140,7 +137,7 @@ AquaHideout_1F_EventScript_EnteringHideout::
 	closemessage
 	addobject LOCALID_EMMIE
 	destroyfollowernpc
-	setfollowernpc 3, FNPC_WHITE_OUT, Common_EventScript_Tabitha, PARTNER_TABITHA
+	setfollowernpc LOCALID_AQUA_HIDEOUT_TABITHA, FNPC_WHITE_OUT, Common_EventScript_Tabitha, PARTNER_TABITHA
 	special FillPoolForTabitha
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
 	setvar VAR_PARTNER_EMMIE_STATE, 49

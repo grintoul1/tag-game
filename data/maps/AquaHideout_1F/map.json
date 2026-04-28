@@ -28,6 +28,7 @@
       "flag": "FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE"
     },
     {
+      "local_id": "LOCALID_AQUA_HIDEOUT_TABITHA",
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_ADMIN_M",
       "x": 14,
       "y": 10,
@@ -41,6 +42,7 @@
       "flag": "FLAG_HIDE_AQUA_HIDEOUT_TABITHA"
     },
     {
+      "local_id": "LOCALID_AQUA_HIDEOUT_EMMIE",
       "graphics_id": "OBJ_EVENT_GFX_SISTER_NORMAL",
       "x": 12,
       "y": 10,

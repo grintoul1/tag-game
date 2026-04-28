@@ -6674,7 +6674,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Psychic
 - Flamethrower
 
-=== TRAINER_GRUNT_SPACE_CENTER_1 ===
+=== TRAINER_MAGMA_GRUNT_SPACE_CENTER_1 ===
 Name: Grunt /* Space Center #1*/
 Class: Team Magma
 Pic: Magma Grunt M
@@ -6688,7 +6688,7 @@ Numel
 Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_SPACE_CENTER_2 ===
+=== TRAINER_MAGMA_GRUNT_SPACE_CENTER_2 ===
 Name: Grunt /* Space Center #2*/
 Class: Team Magma
 Pic: Magma Grunt M
@@ -6710,7 +6710,7 @@ Numel
 Level: 30
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_SPACE_CENTER_3 ===
+=== TRAINER_MAGMA_GRUNT_SPACE_CENTER_3 ===
 Name: Grunt /* Space Center #3*/
 Class: Team Magma
 Pic: Magma Grunt F
@@ -6728,7 +6728,7 @@ Poochyena
 Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_SPACE_CENTER_4 ===
+=== TRAINER_MAGMA_GRUNT_SPACE_CENTER_4 ===
 Name: Grunt /* Space Center #4*/
 Class: Team Magma
 Pic: Magma Grunt M
@@ -6742,7 +6742,7 @@ Baltoy
 Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_SPACE_CENTER_5 ===
+=== TRAINER_MAGMA_GRUNT_SPACE_CENTER_5 ===
 Name: Grunt /* Space Center #5*/
 Class: Team Magma
 Pic: Magma Grunt F
@@ -6756,7 +6756,7 @@ Zubat
 Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_SPACE_CENTER_6 ===
+=== TRAINER_MAGMA_GRUNT_SPACE_CENTER_6 ===
 Name: Grunt /* Space Center #6*/
 Class: Team Magma
 Pic: Magma Grunt F
@@ -6908,7 +6908,248 @@ Jolly Nature
 - Last Resort
 - Focus Energy
 
+Glalie-Mega @ Glalitite
+Ability: Refrigerate
+Level: 83
+Naive Nature
+- Hyper Voice
+- Freeze-Dry
+- Retaliate
+- Protect
 
+=== TRAINER_AQUA_GRUNT_SPACE_CENTER_1 ===
+Name: Grunt /* Space Center #1*/
+Class: Team Aqua
+Pic: Aqua Grunt M
+Gender: Male
+Music: Aqua
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Numel
+Level: 32
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_AQUA_GRUNT_SPACE_CENTER_2 ===
+Name: Grunt /* Space Center #2*/
+Class: Team Aqua
+Pic: Aqua Grunt M
+Gender: Male
+Music: Aqua
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Mightyena
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Mightyena
+Level: 28
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Numel
+Level: 30
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_AQUA_GRUNT_SPACE_CENTER_3 ===
+Name: Grunt /* Space Center #3*/
+Class: Team Aqua
+Pic: Aqua Grunt F
+Gender: Female
+Music: Aqua
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Zubat
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Poochyena
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_AQUA_GRUNT_SPACE_CENTER_4 ===
+Name: Grunt /* Space Center #4*/
+Class: Team Aqua
+Pic: Aqua Grunt M
+Gender: Male
+Music: Aqua
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Baltoy
+Level: 32
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_AQUA_GRUNT_SPACE_CENTER_5 ===
+Name: Grunt /* Space Center #5*/
+Class: Team Aqua
+Pic: Aqua Grunt F
+Gender: Female
+Music: Aqua
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Zubat
+Level: 32
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_AQUA_GRUNT_SPACE_CENTER_6 ===
+Name: Grunt /* Space Center #6*/
+Class: Team Aqua
+Pic: Aqua Grunt F
+Gender: Female
+Music: Aqua
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Mightyena
+Level: 32
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_SHELLY_MOSSDEEP ===
+Name: Shelly /* Space Center*/
+Class: Aqua Admin
+Pic: Aqua Admin F
+Mugshot: Misty
+Gender: Female
+Music: Aqua
+Battle Type: Singles
+AI: Tag Trainer
+Multi Party: Half
+
+Baltoy
+Level: 32
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Baltoy
+Level: 32
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_MATT_MOSSDEEP ===
+Name: Matt /* Space Center*/
+Class: Aqua Admin
+Pic: Aqua Admin M
+Gender: Male
+Music: Aqua
+Mugshot: Misty
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Full
+
+Talonflame @ Eject Pack
+Ability: Gale Wings
+Level: 83
+Naive Nature
+- Overheat
+- Brave Bird
+- U-turn
+- Tailwind
+
+Pheromosa @ Assault Vest
+Ability: Beast Boost
+Level: 81
+Naive Nature
+- Close Combat
+- Throat Chop
+- Bug Buzz
+- Triple Axel
+
+Sirfetch'd @ Focus Sash
+Ability: Steadfast
+Level: 81
+Jolly Nature
+- Meteor Assault
+- First Impression
+- Knock Off
+- Tailwind
+
+Ninetales-Alola @ Normal Gem
+Ability: Snow Warning
+Level: 82
+Timid Nature
+- Moonblast
+- Hyper Voice
+- Frosty Gale
+- Enlightening
+
+Whimsicott @ Kebia Berry
+Ability: Prankster
+Level: 81
+Modest Nature
+- Moonblast
+- Energy Ball
+- Encore
+- Tailwind
+
+Froslass-Mega @ Froslassite
+Ability: Snow Cloak
+Level: 83
+Hasty Nature
+- Water Pulse
+- Hex
+- Draining Kiss
+- Chill-O-Wisp
+
+=== TRAINER_ARCHIE_MOSSDEEP ===
+Name: Archie /* Space Center*/
+Class: Aqua Leader
+Pic: Aqua Leader Archie
+Mugshot: Misty
+Gender: Male
+Music: Aqua
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Full
+
+Metagross @ Life Orb
+Ability: Clear Body
+Level: 81
+Naive Nature
+- Meteor Mash
+- Zen Headbutt
+- Stomping Tantrum
+- Pursuit
+
+Archeops @ Loaded Dice
+Ability: Defeatist
+Level: 83
+Hasty Nature
+- Heat Wave
+- Air Slash
+- Rock Blast
+- Tailwind
+
+Rotom-Heat @ White Herb
+Ability: Levitate
+Level: 82
+Timid Nature
+- Overheat
+- Foul Play
+- Thunderbolt
+- Will-O-Wisp
+
+Zapdos-Galar @ Bug Gem
+Ability: Defiant
+Level: 81
+Hasty Nature
+- Thunderous Kick
+- U-turn
+- Acrobatics
+- Tailwind
+
+Quaquaval @ Scope Lens
+Ability: Moxie
+Level: 81
+Jolly Nature
+- Last Resort
+- Focus Energy
 
 Glalie-Mega @ Glalitite
 Ability: Refrigerate
