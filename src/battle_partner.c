@@ -45,7 +45,8 @@ void FillPartnerParty(u16 trainerId)
     if (trainerId == TRAINER_PARTNER(PARTNER_EMMIE)
     || trainerId == TRAINER_PARTNER(PARTNER_SHELLY_MHO)
     || trainerId == TRAINER_PARTNER(PARTNER_SHELLY_MHO_BOSS)
-    || trainerId == TRAINER_PARTNER(PARTNER_TABITHA))
+    || trainerId == TRAINER_PARTNER(PARTNER_TABITHA)
+    || trainerId == TRAINER_PARTNER(PARTNER_TABITHA_AHO_BOSS))
     {
         if (!IsStoryMulti())
         {
@@ -80,6 +81,7 @@ void FillPartnerParty(u16 trainerId)
                             otID = SHELLY_OTID;
                             break;
                         case TRAINER_PARTNER(PARTNER_TABITHA):
+                        case TRAINER_PARTNER(PARTNER_TABITHA_AHO_BOSS):
                             otID = TABITHA_OTID;
                             break;
                         default:

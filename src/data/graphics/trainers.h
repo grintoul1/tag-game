@@ -490,7 +490,7 @@ const u8 gTrainerBackPic_Wally[] = INCBIN_U8("graphics/trainers/back_pics/wally.
 const u8 gTrainerBackPic_Steven[] = INCBIN_U8("graphics/trainers/back_pics/steven.4bpp");
 const u8 gTrainerBackPic_MagmaLeaderMaxie[] = INCBIN_U8("graphics/trainers/back_pics/magma_leader_maxie.4bpp");
 const u8 gTrainerBackPic_AquaLeaderArchie[] = INCBIN_U8("graphics/trainers/back_pics/aqua_leader_archie.4bpp");
-const u8 gTrainerBackPic_MagmaAdminM[] = INCBIN_U8("graphics/trainers/back_pics/magma_leader_maxie.4bpp");
+const u8 gTrainerBackPic_MagmaAdminM[] = INCBIN_U8("graphics/trainers/back_pics/magma_admin_m.4bpp");
 const u8 gTrainerBackPic_Blue[] = INCBIN_U8("graphics/trainers/back_pics/blue.4bpp");
 const u8 gTrainerBackPic_AquaAdminF[] = INCBIN_U8("graphics/trainers/back_pics/aqua_admin_f.4bpp");
 
@@ -499,7 +499,7 @@ const u16 gTrainerBackPicPalette_Leaf[] = INCBIN_U16("graphics/trainers/back_pic
 const u16 gTrainerBackPicPalette_Green[] = INCBIN_U16("graphics/trainers/back_pics/green.gbapal");
 const u16 gTrainerBackPicPalette_MagmaLeaderMaxie[] = INCBIN_U16("graphics/trainers/back_pics/magma_leader_maxie.gbapal");
 const u16 gTrainerBackPicPalette_AquaLeaderArchie[] = INCBIN_U16("graphics/trainers/back_pics/aqua_leader_archie.gbapal");
-const u16 gTrainerBackPicPalette_MagmaAdminM[] = INCBIN_U16("graphics/trainers/back_pics/magma_leader_maxie.gbapal");
+const u16 gTrainerBackPicPalette_MagmaAdminM[] = INCBIN_U16("graphics/trainers/back_pics/magma_admin_m.gbapal");
 const u16 gTrainerBackPicPalette_Blue[] = INCBIN_U16("graphics/trainers/back_pics/blue.gbapal");
 const u16 gTrainerBackPicPalette_AquaAdminF[] = INCBIN_U16("graphics/trainers/back_pics/aqua_admin_f.gbapal");
 

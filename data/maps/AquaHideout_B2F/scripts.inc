@@ -97,7 +97,7 @@ AquaHideout_B2F_EventScript_Matt::
 	end
 
 AquaHideout_B2F_EventScript_MattShellyDoMultiBattle::
-	multi_2_vs_2 TRAINER_SHELLY_AQUA_HIDEOUT, AquaHideout_B2F_Text_ShellyDefeat, TRAINER_MATT_AQUA_HIDEOUT, AquaHideout_B2F_Text_MattDefeat, PARTNER_TABITHA
+	multi_2_vs_2 TRAINER_SHELLY_AQUA_HIDEOUT, AquaHideout_B2F_Text_ShellyDefeat, TRAINER_MATT_AQUA_HIDEOUT, AquaHideout_B2F_Text_MattDefeat, PARTNER_TABITHA_AHO_BOSS
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, AquaHideout_B2F_EventScript_MattShellyVictory

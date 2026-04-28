@@ -107,6 +107,21 @@ static const u8* const sTrainerSlides[DIFFICULTY_COUNT][TRAINER_PARTNER(PARTNER_
                 "We've come too far to stop now. Give them everything you have!{PAUSE_UNTIL_PRESS}"
             ),
         },
+        [TRAINER_MATT_AQUA_HIDEOUT] = {
+            [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING(
+                "I hope you're ready, because this is gonna hurt!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
+        [TRAINER_SHELLY_AQUA_HIDEOUT] = {
+            [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING(
+                "I really didn't want it to come to this…{PAUSE_UNTIL_PRESS}"
+            ),
+        },
+        [TRAINER_PARTNER(PARTNER_TABITHA_AHO_BOSS)] = {
+            [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING(
+                "Hehehe… Oh this is going to be fun! Show me what you've got kid!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
     },
 };
 
