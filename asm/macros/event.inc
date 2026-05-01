@@ -1987,6 +1987,14 @@
 	trycompare goto_if, 5, \a, \b, \c
 	.endm
 
+	.macro goto_if_bw a:req, b:req, h:req, c @ BETWEEN
+	callnative CompareVariables, requests_effects=1
+	.2byte \a @variable
+	.2byte \b @lower bound
+	.2byte \h @upper bound
+	goto_if_eq VAR_RESULT, TRUE, \c
+	.endm
+
 	.macro call_if_unset flag:req, dest:req
 	checkflag \flag
 	call_if FALSE, \dest
@@ -2019,6 +2027,14 @@
 
 	.macro call_if_ne a:req, b, c @ NOT EQUAL
 	trycompare call_if, 5, \a, \b, \c
+	.endm
+
+	.macro call_if_bw a:req, b:req, h:req, c @ BETWEEN
+	callnative CompareVariables, requests_effects=1
+	.2byte \a @variable
+	.2byte \b @lower bound
+	.2byte \h @upper bound
+	call_if_eq VAR_RESULT, TRUE, \c
 	.endm
 
 	.macro vgoto_if_eq a:req, b, c

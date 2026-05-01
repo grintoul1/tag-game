@@ -34,17 +34,34 @@ MossdeepCity_SpaceCenter_1F_EventScript_ProgressEmmieState::
 
 MossdeepCity_SpaceCenter_1F_OnTransition:
 	call MossdeepCity_SpaceCenter_1F_EventScript_SetErikaGrunt
-	call_if_le VAR_MOSSDEEP_CITY_STATE, 7, MossdeepCity_SpaceCenter_1F_EventScript_ShowErikaGrunt
+	call_if_bw VAR_MOSSDEEP_CITY_STATE, 2, 7, MossdeepCity_SpaceCenter_1F_EventScript_MoveBrock
+	call_if_bw VAR_MOSSDEEP_CITY_STATE, 3, 7, MossdeepCity_SpaceCenter_1F_EventScript_MoveMisty
+	call_if_bw VAR_MOSSDEEP_CITY_STATE, 4, 7, MossdeepCity_SpaceCenter_1F_EventScript_MoveSurge
+	call_if_bw VAR_MOSSDEEP_CITY_STATE, 1, 7, MossdeepCity_SpaceCenter_1F_EventScript_ShowErikaGrunt
 	goto_if_le VAR_MOSSDEEP_CITY_STATE, 7, MossdeepCity_SpaceCenter_1F_EventScript_MoveObjectsForTeamMagma
 	end
 
+MossdeepCity_SpaceCenter_1F_EventScript_MoveBrock::
+	setobjectxyperm LOCALID_SPACE_CENTER_1F_BROCK, 4, 7
+	setobjectmovementtype LOCALID_SPACE_CENTER_1F_BROCK, MOVEMENT_TYPE_FACE_RIGHT
+	return
+
+MossdeepCity_SpaceCenter_1F_EventScript_MoveMisty::
+	setobjectxyperm LOCALID_SPACE_CENTER_1F_MISTY, 4, 4
+	setobjectmovementtype LOCALID_SPACE_CENTER_1F_MISTY, MOVEMENT_TYPE_FACE_RIGHT
+	return
+
+MossdeepCity_SpaceCenter_1F_EventScript_MoveSurge::
+	setobjectxyperm LOCALID_SPACE_CENTER_1F_SURGE, 10, 6
+	setobjectmovementtype LOCALID_SPACE_CENTER_1F_MISTY, MOVEMENT_TYPE_FACE_RIGHT
+	return
+
 MossdeepCity_SpaceCenter_1F_EventScript_ShowErikaGrunt::
-	goto_if_eq VAR_MOSSDEEP_CITY_STATE, 0, MossdeepCity_SpaceCenter_1F_EventScript_ShowErikaGruntReturn
 	goto_if_ge VAR_MOSSDEEP_CITY_STATE, 3, MossdeepCity_SpaceCenter_1F_EventScript_ShowErikaGruntShowOnly
 	setobjectxy VAR_0x8008, 0, 3
+	setobjectxy LOCALID_SPACE_CENTER_1F_ERIKA, 0, 2
 MossdeepCity_SpaceCenter_1F_EventScript_ShowErikaGruntShowOnly::
 	addobject VAR_0x8008
-MossdeepCity_SpaceCenter_1F_EventScript_ShowErikaGruntReturn::
 	return
 
 MossdeepCity_SpaceCenter_1F_EventScript_SetErikaGrunt::
@@ -61,14 +78,14 @@ MossdeepCity_SpaceCenter_1F_EventScript_SetErikaGruntMagma::
 	return
 
 MossdeepCity_SpaceCenter_1F_EventScript_MoveObjectsForTeamMagma::
-	setobjectxyperm LOCALID_SAILOR, 1, 9
-	setobjectmovementtype LOCALID_SAILOR, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectxyperm LOCALID_WOMAN, 0, 8
+	setobjectxyperm LOCALID_SAILOR, 7, 6
+	@setobjectmovementtype LOCALID_SAILOR, MOVEMENT_TYPE_FACE_RIGHT
+	@setobjectxyperm LOCALID_WOMAN, 0, 8
 	setobjectmovementtype LOCALID_WOMAN, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectxyperm LOCALID_OLD_MAN, 1, 6
+	setobjectxyperm LOCALID_OLD_MAN, 1, 9
 	setobjectmovementtype LOCALID_OLD_MAN, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectxyperm LOCALID_SCIENTIST_1, 3, 4
-	setobjectmovementtype LOCALID_SCIENTIST_1, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectxyperm LOCALID_SCIENTIST_1, 8, 2
+	setobjectmovementtype LOCALID_SCIENTIST_1, MOVEMENT_TYPE_FACE_DOWN
 	setobjectmovementtype LOCALID_SCIENTIST_2, MOVEMENT_TYPE_FACE_RIGHT
 	end
 
@@ -584,23 +601,39 @@ MossdeepCity_SpaceCenter_1F_EventScript_MistyContinue2::
 	waitmovement
 	applymovement VAR_0x8008, Common_Movement_ExclamationMark
 	waitmovement
-	playse SE_PIN
+	playse SE_NOT_EFFECTIVE
 	applymovement LOCALID_SPACE_CENTER_1F_ERIKA, Common_Movement_WalkInPlaceFasterDown
-	applymovement VAR_0x8008, Common_Movement_KnockedBackDown
+	applymovement VAR_0x8008, MossdeepCity_SpaceCenter_1F_Movement_ErikaGruntKnockedBack
 	waitmovement VAR_0x8008
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_SpaceCenter_1F_Movement_ApproachGrunt3Grunt4Stage2
-	applymovement LOCALID_SPACE_CENTER_1F_MISTY, MossdeepCity_SpaceCenter_1F_Movement_ApproachGrunt3Grunt4Stage2
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MossdeepCity_SpaceCenter_1F_Movement_EmmieApproachErikaGruntForBattle
+	applymovement LOCALID_SPACE_CENTER_1F_ERIKA, MossdeepCity_SpaceCenter_1F_Movement_ErikaApproachErikaGruntForBattle
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement LOCALID_SPACE_CENTER_1F_MISTY, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_NPC_FOLLOWER
 	goto_if_set FLAG_EVIL_TEAM_MAGMA, MossdeepCity_SpaceCenter_1F_EventScript_Grunt3Grunt4
 	goto MossdeepCity_SpaceCenter_1F_EventScript_AquaGrunt3Grunt4
 
-MossdeepCity_SpaceCenter_1F_Movement_ApproachGrunt3Grunt4Stage2:
-	walk_slow_up
-	face_right
+MossdeepCity_SpaceCenter_1F_Movement_ErikaApproachErikaGruntForBattle:
+	walk_down
+	walk_down
+	step_end
+
+MossdeepCity_SpaceCenter_1F_Movement_EmmieApproachErikaGruntForBattle:
+	walk_slow_down
+	face_left
+	step_end
+
+MossdeepCity_SpaceCenter_1F_Movement_ErikaGruntKnockedBack:
+	face_up
+	lock_facing_direction
+	walk_fast_down
+	walk_fast_down
+	unlock_facing_direction
 	step_end
 
 MossdeepCity_SpaceCenter_1F_Text_EmmieJustDistractingYou:
 	.string "Emmie: Oh, no, I'm not telling you a\n"
-	,string "joke, I'm just distracting you.$"
+	.string "joke, I'm just distracting you.$"
 
 MossdeepCity_SpaceCenter_1F_Text_ErikaGruntWhosThere:
 	.string "Grunt: Who's there?$"
@@ -629,7 +662,6 @@ MossdeepCity_SpaceCenter_1F_Movement_EmmieWalkToErikaLeft:
 	walk_left
 	step_end
 
-
 MossdeepCity_SpaceCenter_1F_Text_EmmieIllHelpErika:
 	.string "Emmie: {PLAYER}, you handle this.\p"
 	.string "I'm going to give that grunt a nasty\n"
@@ -637,7 +669,7 @@ MossdeepCity_SpaceCenter_1F_Text_EmmieIllHelpErika:
 
 MossdeepCity_SpaceCenter_1F_Text_MistyYouAgain:
 	.string "Misty: Oh, it's you again!\p" 
-	.string "Lend me a hand here\would you?\p"
+	.string "Lend me a hand here would you?\p"
 	.string "My friend Erika has been jumped by one\n"
 	.string "of these loons, but these two here\l"
 	.string "won't let me get to her!$"
@@ -648,7 +680,6 @@ MossdeepCity_SpaceCenter_1F_Text_MistyHeyYou:
 	.string "My friend Erika has been jumped by one\n"
 	.string "of these loons, but these two here\l"
 	.string "won't let me get to her!$"
-	
 
 MossdeepCity_SpaceCenter_1F_EventScript_Grunt3Grunt4Trigger::
 	lockall
@@ -675,42 +706,36 @@ MossdeepCity_SpaceCenter_1F_EventScript_MistyContinue3::
 	goto MossdeepCity_SpaceCenter_1F_EventScript_MistyContinue2
 
 MossdeepCity_SpaceCenter_1F_Movement_ApproachGrunt3Grunt4Stage3Player:
-	walk_slow_left
+	walk_slow_right
 	face_left
 	step_end
 
 MossdeepCity_SpaceCenter_1F_EventScript_Grunt3Grunt4::
-playse SE_PIN
-applymovement LOCALID_SPACE_CENTER_1F_MAGMA_GRUNT3, Common_Movement_ExclamationMark
-applymovement  LOCALID_SPACE_CENTER_1F_MAGMA_GRUNT4, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_MAGMA, TRUE
-msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt3Intro MSGBOX_AUTOCLOSE
-msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt4Intro MSGBOX_AUTOCLOSE
-goto MossdeepCity_SpaceCenter_1F_EventScript_Grunt3Grunt4DoMultiBattle
-releaseall
-end
+	playse SE_PIN
+	applymovement LOCALID_SPACE_CENTER_1F_MAGMA_GRUNT3, Common_Movement_ExclamationMark
+	applymovement LOCALID_SPACE_CENTER_1F_MAGMA_GRUNT4, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MAGMA, TRUE
+	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt3Intro MSGBOX_AUTOCLOSE
+	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt4Intro MSGBOX_AUTOCLOSE
+	goto MossdeepCity_SpaceCenter_1F_EventScript_Grunt3Grunt4DoMultiBattle
+	releaseall
+	end
 
-MossdeepCity_SpaceCenter_1F_EventScript_AquaGrunt3Grunt4::
-playse SE_PIN
-applymovement LOCALID_SPACE_CENTER_1F_AQUA_GRUNT3, Common_Movement_ExclamationMark
-applymovement  LOCALID_SPACE_CENTER_1F_AQUA_GRUNT4, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_AQUA, TRUE
-msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt3Intro MSGBOX_AUTOCLOSE
-msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt4Intro MSGBOX_AUTOCLOSE
-goto MossdeepCity_SpaceCenter_1F_EventScript_AquaGrunt3Grunt4DoMultiBattle
-releaseall
-end
+MossdeepCity_SpaceCenter_1F_EventScript_Erika::
+	lockall
+	faceplayer
+	msgbox MossdeepCity_SpaceCenter_1F_Erika, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_SPACE_CENTER_1F_ERIKA, Common_Movement_FaceOriginalDirection
+	waitmovement
+	releaseall
+	end
 
-MossdeepCity_SpaceCenter_1F_EventScript_Grunt3Grunt4DoMultiBattle::
-playbgm MUS_ENCOUNTER_AQUA, TRUE
-multi_2p_vs_2 TRAINER_AQUA_GRUNT_SPACE_CENTER_3, MossdeepCity_SpaceCenter_1F_Text_Grunt3Defeat, TRAINER_AQUA_GRUNT_SPACE_CENTER_4, MossdeepCity_SpaceCenter_1F_Text_Grunt4Defeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, MossdeepCity_SpaceCenter_1F_EventScript_Grunt3Grunt4Victory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+MossdeepCity_SpaceCenter_1F_Erika:
+	.string "Erika: That sister of yours is a force\n"
+	.string "to be reckoned with.\p"
+	.string "Her battle style is wonderfully\n"
+	.string "elegant!$"
 
 MossdeepCity_SpaceCenter_1F_Text_MistyHelpAGirlOut:
 	.string "Misty: Are you seriously going to just\n"
@@ -743,14 +768,33 @@ special SetCB2WhiteOut
 waitstate
 
 MossdeepCity_SpaceCenter_1F_EventScript_Grunt3Grunt4Victory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-waitmovement 0
-msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt3PostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-waitmovement 0
-msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 1
-end
+	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt3PostBattle, MSGBOX_AUTOCLOSE
+	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
+	delay 8
+	playse SE_NOT_EFFECTIVE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_SPACE_CENTER_1F_MISTY, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_SPACE_CENTER_1F_ERIKA, Common_Movement_WalkInPlaceFasterDown
+	applymovement VAR_0x8008, Common_Movement_KnockedBackDown
+	waitmovement VAR_0x8008
+	delay 8
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterLeft
+	msgbox MossdeepCity_SpaceCenter_1F_Text_EmmieTablesHaveTurned, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SPACE_CENTER_1F_ERIKA, Common_Movement_WalkSlowDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MossdeepCity_SpaceCenter_1F_Movement_ErikaApproachErikaGruntForBattle
+	waitmovement
+	addvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 1
+	end
+
+MossdeepCity_SpaceCenter_1F_Movement_EmmieReturnFromErikaBattle:
+	walk_right
+	walk_right
+	step_end
+
+MossdeepCity_SpaceCenter_1F_Text_EmmieTablesHaveTurned:
+	.string "Emmie: Oh, how the tables have turned!\p"
+	.string "Keep an eye on this one for me would you?$"
 
 MossdeepCity_SpaceCenter_1F_EventScript_AquaGrunt3Grunt4::
 lockall
@@ -836,6 +880,322 @@ MossdeepCity_SpaceCenter_1F_EventScript_MoveGruntFromStairsWest::
 	setvar VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE, 1
 	release
 	end
+
+MossdeepCity_SpaceCenter_1F_EventScript_Surge::
+	lockall
+	applymovement LOCALID_SPACE_CENTER_1F_SURGE, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement
+	goto_if_set FLAG_DEFEATED_LAVARIDGE_MISTY, MossdeepCity_SpaceCenter_1F_EventScript_SurgeNotYouAgain
+	msgbox MossdeepCity_SpaceCenter_1F_Text_SurgeHelpMe, MSGBOX_AUTOCLOSE
+	goto MossdeepCity_SpaceCenter_1F_EventScript_SurgeContinue
+MossdeepCity_SpaceCenter_1F_EventScript_SurgeNotYouAgain::
+	msgbox MossdeepCity_SpaceCenter_1F_Text_SurgeNotYouAgain, MSGBOX_AUTOCLOSE
+MossdeepCity_SpaceCenter_1F_EventScript_SurgeContinue::
+	call_if_set FLAG_EVIL_TEAM_AQUA, MossdeepCity_SpaceCenter_1F_EventScript_SetEmmieGruntAqua
+	call_if_set FLAG_EVIL_TEAM_MAGMA, MossdeepCity_SpaceCenter_1F_EventScript_SetEmmieGruntMagma
+	applymovement VAR_0x8008, MossdeepCity_SpaceCenter_1F_Movement_EmmieGruntApproachForSurge
+	waitmovement
+	applymovement LOCALID_SPACE_CENTER_1F_SAILOR, Common_Movement_FaceDown
+	applymovement VAR_0x8008, Common_Movement_WalkInPlaceFasterUp
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_1F_Text_EmmieGruntSailorMove, MSGBOX_AUTOCLOSE
+	playse SE_PIN
+	applymovement LOCALID_SPACE_CENTER_1F_SAILOR, Common_Movement_ExclamationMark
+	waitmovement
+	applymovement LOCALID_SPACE_CENTER_1F_SAILOR, MossdeepCity_SpaceCenter_1F_Movement_SailorMoveForEmmieGrunt
+	waitmovement
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	goto_if_eq VAR_TEMP_3, 9, MossdeepCity_SpaceCenter_1F_Movement_SurgeSceneEmmieFacePlayerNorth
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterRight
+	goto MossdeepCity_SpaceCenter_1F_EventScript_SurgeContinue2
+MossdeepCity_SpaceCenter_1F_Movement_SurgeSceneEmmieFacePlayerNorth::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+MossdeepCity_SpaceCenter_1F_EventScript_SurgeContinue2::
+	msgbox MossdeepCity_SpaceCenter_1F_Text_EmmieHereWeGoAgain, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement LOCALID_SPACE_CENTER_1F_SURGE, Common_Movement_FaceLeft
+	applymovement VAR_0x8008, MossdeepCity_SpaceCenter_1F_Movement_SurgeSceneEmmieGruntApproachEmmie
+	waitmovement
+	applymovement VAR_0x8008, Common_Movement_WalkInPlaceFasterRight
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_1F_Text_EmmieGruntReallyRude, MSGBOX_AUTOCLOSE
+	goto_if_eq VAR_TEMP_3, 9, MossdeepCity_SpaceCenter_1F_EventScript_SurgeContinue3
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MossdeepCity_SpaceCenter_1F_Movement_SurgeSceneEmmieApproachEmmieGrunt
+	waitmovement
+MossdeepCity_SpaceCenter_1F_EventScript_SurgeContinue3::
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterLeft
+	msgbox MossdeepCity_SpaceCenter_1F_Text_EmmieTerriblySorry, MSGBOX_AUTOCLOSE
+	delay 4
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement
+	playse SE_NOT_EFFECTIVE
+	applymovement VAR_0x8008, Common_Movement_KnockedBackDown
+	waitmovement
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MossdeepCity_SpaceCenter_1F_Movement_SurgeSceneEmmieApproachEmmieGrunt2
+	waitmovement
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement
+	playse SE_NOT_EFFECTIVE
+	applymovement VAR_0x8008, Common_Movement_KnockedBackDown
+	waitmovement
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkSlowDown
+	waitmovement
+	delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement LOCALID_SPACE_CENTER_1F_SURGE, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_1F_Text_SurgeLetsDoThis, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_SpaceCenter_1F_Movement_PlayerApproachesGrunts56
+	applymovement LOCALID_SPACE_CENTER_1F_SURGE, MossdeepCity_SpaceCenter_1F_Movement_SurgeApproachesGrunts
+	waitmovement
+	goto MossdeepCity_SpaceCenter_1F_EventScript_Grunt5Grunt6
+
+MossdeepCity_SpaceCenter_1F_EventScript_Grunt5::
+	lockall
+	faceplayer
+	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
+	releaseall
+	end
+
+MossdeepCity_SpaceCenter_1F_EventScript_Grunt6::
+	lockall
+	faceplayer
+	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt6PostBattle, MSGBOX_AUTOCLOSE
+	releaseall
+	end
+
+MossdeepCity_SpaceCenter_1F_Movement_PlayerApproachesGrunts56:
+	walk_up
+	walk_right
+	walk_right
+	step_end
+
+MossdeepCity_SpaceCenter_1F_Movement_SurgeApproachesGrunts:
+	delay_8
+	delay_8
+	walk_right
+	step_end
+
+MossdeepCity_SpaceCenter_1F_Text_SurgeLetsDoThis:
+	.string "Surge: Okay, well she seems to have\n"
+	.string "that guy under control…\p"
+	.string "There's no way out now, so come on\n"
+	.string "let's do this.$"
+
+MossdeepCity_SpaceCenter_1F_Movement_SurgeSceneEmmieApproachEmmieGrunt:
+	walk_slow_left
+	walk_slow_down
+	face_left
+	step_end
+
+MossdeepCity_SpaceCenter_1F_Movement_SurgeSceneEmmieApproachEmmieGrunt2:
+	walk_slow_left
+	face_down
+	step_end
+
+MossdeepCity_SpaceCenter_1F_Text_EmmieTerriblySorry:
+	.string "Emmie: Oh, I am terribly sorry.\p"
+	.string "Here, let me make it up to you!$"
+
+MossdeepCity_SpaceCenter_1F_Text_EmmieGruntReallyRude:
+	.string "Grunt: Excuse me, but you were\n"
+	.string "incredibly rude to me earlier.\p"
+	.string "That was completely uncalled for!$"
+
+MossdeepCity_SpaceCenter_1F_Movement_SurgeSceneEmmieGruntApproachEmmie:
+	walk_up
+	face_right
+	step_end
+
+MossdeepCity_SpaceCenter_1F_Text_EmmieHereWeGoAgain:
+	.string "Emmie: Here we go again…\p"
+	.string "Leave the trash to me!$"
+
+MossdeepCity_SpaceCenter_1F_Movement_SailorMoveForEmmieGrunt:
+	lock_facing_direction
+	walk_up
+	unlock_facing_direction
+	step_end
+
+MossdeepCity_SpaceCenter_1F_Text_EmmieGruntSailorMove:
+	.string "Grunt: You! Move, now!$"
+
+MossdeepCity_SpaceCenter_1F_Movement_EmmieGruntApproachForSurge:
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	walk_up
+	step_end
+
+MossdeepCity_SpaceCenter_1F_Text_SurgeHelpMe:
+	.string "Surge: Hey, you there!\p"
+	.string "Blue and Steven are both upstairs,\n"
+	.string "but they're outnumbered.\p"
+	.string "C'mon, quick march, I need you to\n"
+	.string "help me!\p"
+	.string "We can either try and push through\n"
+	.string "these two or turn back.\p"
+	.string "To be quite honest with you, Misty\n"
+	.string "is the more terrifying option.\p"
+	.string "So, what's it gonna be?$"
+
+MossdeepCity_SpaceCenter_1F_Text_SurgeNotYouAgain:
+	.string "Surge: Oh, not you again…\p"
+	.string "Misty hasn't looked at me the same way\n"
+	.string "since you embarassed me in Lavaridge\p"
+	.string "Still, now isn't the time for hard\n"
+	.string "feelings.\p"
+	.string "Blue and Steven are both upstairs,\n"
+	.string "but they're outnumbered.\p"
+	.string "We can either try and push through\n"
+	.string "these two or turn back.\p"
+	.string "To be quite honest with you, Misty\n"
+	.string "is the more terrifying option.\p"
+	.string "So, what's it gonna be?$"
+
+MossdeepCity_SpaceCenter_1F_EventScript_Grunt5Grunt6::
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement LOCALID_SPACE_CENTER_1F_SURGE, Common_Movement_FaceUp
+	applymovement LOCALID_SPACE_CENTER_1F_MAGMA_GRUNT5, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MAGMA, TRUE
+	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt5Intro MSGBOX_AUTOCLOSE
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement LOCALID_SPACE_CENTER_1F_SURGE, Common_Movement_FaceDown
+	applymovement LOCALID_SPACE_CENTER_1F_MAGMA_GRUNT6, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MAGMA, TRUE
+	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt6Intro MSGBOX_AUTOCLOSE
+	goto MossdeepCity_SpaceCenter_1F_EventScript_Grunt5Grunt6DoMultiBattle
+	releaseall
+	end
+
+MossdeepCity_SpaceCenter_1F_EventScript_Grunt5Grunt6DoMultiBattle::
+	playbgm MUS_ENCOUNTER_MAGMA, TRUE
+	multi_2_vs_2 TRAINER_MAGMA_GRUNT_SPACE_CENTER_5, MossdeepCity_SpaceCenter_1F_Text_Grunt5Defeat, TRAINER_MAGMA_GRUNT_SPACE_CENTER_6, MossdeepCity_SpaceCenter_1F_Text_Grunt6Defeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, MossdeepCity_SpaceCenter_1F_EventScript_Grunt5Grunt6Victory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+MossdeepCity_SpaceCenter_1F_EventScript_Grunt5Grunt6Victory::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_SPACE_CENTER_1F_SURGE, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_SPACE_CENTER_1F_SURGE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt6PostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement LOCALID_SPACE_CENTER_1F_SURGE, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox MossdeepCity_SpaceCenter_1F_Text_SurgeNotBadKid, MSGBOX_AUTOCLOSE
+	delay 4
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement LOCALID_SPACE_CENTER_1F_BROCK, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_1F_Text_EmmieFeelBetterNow, MSGBOX_AUTOCLOSE
+	call_if_set FLAG_EVIL_TEAM_AQUA, MossdeepCity_SpaceCenter_1F_EventScript_SetEmmieGruntAqua
+	call_if_set FLAG_EVIL_TEAM_MAGMA, MossdeepCity_SpaceCenter_1F_EventScript_SetEmmieGruntMagma
+	delay 8
+	applymovement VAR_0x8008, Common_Movement_FaceLeft
+	waitmovement
+	delay 8
+	applymovement VAR_0x8008, Common_Movement_FaceRight
+	waitmovement
+	delay 8
+	applymovement VAR_0x8008, Common_Movement_FaceLeft
+	waitmovement
+	delay 8
+	applymovement VAR_0x8008, Common_Movement_FaceRight
+	waitmovement
+	delay 8
+	applymovement VAR_0x8008, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_1F_Text_EmmieGruntOutOfHere, MSGBOX_AUTOCLOSE
+	delay 8
+	playse SE_DOOR
+	removeobject VAR_0x8008
+	waitse
+	delay 8
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MossdeepCity_SpaceCenter_1F_Movement_EmmieReturnFromSurge
+	waitmovement
+	end
+
+MossdeepCity_SpaceCenter_1F_Movement_EmmieReturnFromSurge:
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	step_end
+
+MossdeepCity_SpaceCenter_1F_Text_EmmieGruntOutOfHere:
+	.string "Grunt: Alright screw this. I'm out of\n"
+	.string "here.$"
+
+MossdeepCity_SpaceCenter_1F_Text_EmmieFeelBetterNow:
+	.string "Emmie: So, do you forgive me then?$"
+
+MossdeepCity_SpaceCenter_1F_Text_SurgeNotBadKid:
+	.string "Surge: You know what? You're not bad\n"
+	.string "kid, I'll give you that.$"
+
+MossdeepCity_SpaceCenter_1F_Text_Grunt5Intro:
+	.string "No, no, no, no, no! This is not how\n"
+	.string "any of this is supposed to go!$"
+
+MossdeepCity_SpaceCenter_1F_Text_Grunt6Intro:
+	.string "At least things seem to be going well\n"
+	.string "for us upstairs!$"
+
+MossdeepCity_SpaceCenter_1F_Text_Grunt5PostBattle:
+MossdeepCity_SpaceCenter_1F_Text_Grunt5Defeat:
+	.string "This is a complete disaster!$"
+
+MossdeepCity_SpaceCenter_1F_Text_Grunt6PostBattle:
+MossdeepCity_SpaceCenter_1F_Text_Grunt6Defeat:
+	.string "I wish I could go upstairs…$"
+
+MossdeepCity_SpaceCenter_1F_EventScript_Stairs::
+	lockall
+	delay 8
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement
+	getobjectcurrentxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 12, MossdeepCity_SpaceCenter_1F_EventScript_PlayerEmmieFaceEachother12
+	call_if_eq VAR_TEMP_3, 13, MossdeepCity_SpaceCenter_1F_EventScript_PlayerEmmieFaceEachother13
+	call_if_eq VAR_TEMP_3, 14, MossdeepCity_SpaceCenter_1F_EventScript_PlayerEmmieFaceEachother14
+	msgbox MossdeepCity_SpaceCenter_1F_Text_EmmieAreYouSure, 
+
+MossdeepCity_SpaceCenter_1F_EventScript_PlayerEmmieFaceEachother12::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement
+	return
+
+MossdeepCity_SpaceCenter_1F_EventScript_PlayerEmmieFaceEachother13::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement
+	return
+
+MossdeepCity_SpaceCenter_1F_EventScript_PlayerEmmieFaceEachother14::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement
+	return
 
 @ Functionally unused by mistake. The movement is handled anyway after the switch (see above)
 @ This also means VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE can never be 3

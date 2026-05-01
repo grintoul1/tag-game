@@ -4850,3 +4850,16 @@ static u16 GetLocationMusicOverride(enum SongId song)
 
     return song;
 }
+
+void CompareVariables(struct ScriptContext *ctx)
+{
+    u32 var = ScriptReadWord(ctx);
+    u16 lower = ScriptReadHalfword(ctx);
+    u16 upper = ScriptReadHalfword(ctx);
+
+    if (VarGet(var) >= lower && VarGet(var) <= upper)
+        gSpecialVar_Result = TRUE;
+    else
+        gSpecialVar_Result = FALSE;
+    return;
+}
