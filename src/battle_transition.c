@@ -114,6 +114,7 @@ static void Task_Mugshot(u8);
 static void Task_Aqua(u8);
 static void Task_Magma(u8);
 static void Task_Aqua_Magma(u8);
+static void Task_BlurBrighten(u8);
 static void Task_Regice(u8);
 static void Task_Registeel(u8);
 static void Task_Regirock(u8);
@@ -152,6 +153,9 @@ static void VBlankCB_Rayquaza(void);
 static bool8 Blur_Init(struct Task *);
 static bool8 Blur_Main(struct Task *);
 static bool8 Blur_End(struct Task *);
+static bool8 BlurBrighten_Init(struct Task *);
+static bool8 BlurBrighten_Main(struct Task *);
+static bool8 BlurBrighten_End(struct Task *);
 static bool8 Swirl_Init(struct Task *);
 static bool8 Swirl_End(struct Task *);
 static bool8 Shuffle_Init(struct Task *);
@@ -390,6 +394,7 @@ static const TaskFunc sTasks_Main[B_TRANSITION_COUNT] =
     [B_TRANSITION_FRONTIER_CIRCLES_ASYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesAsymmetricSpiralInSeq,
     [B_TRANSITION_FRONTIER_CIRCLES_SYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesSymmetricSpiralInSeq,
     [B_TRANSITION_AQUA_MAGMA] = Task_Aqua_Magma,
+    [B_TRANSITION_BLUR_BRIGHTEN] = Task_BlurBrighten,
 };
 
 static const TransitionStateFunc sTaskHandlers[] =
@@ -1210,6 +1215,83 @@ static bool8 Blur_End(struct Task *task)
 
 #undef tDelay
 #undef tCounter
+
+//---------------------------
+// B_TRANSITION_BLUR_BRIGHTEN
+//---------------------------
+
+#define tBBDelay   data[1]
+#define tBBCounter data[2]
+#define tBBBright  data[3]
+
+static const TransitionStateFunc sBlurBrighten_Funcs[] =
+{
+    BlurBrighten_Init,
+    BlurBrighten_Main,
+    BlurBrighten_End
+};
+
+static void Task_BlurBrighten(u8 taskId)
+{
+    while (sBlurBrighten_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
+}
+
+static bool8 BlurBrighten_Init(struct Task *task)
+{
+    SetGpuReg(REG_OFFSET_MOSAIC, 0);
+    SetGpuRegBits(REG_OFFSET_BG1CNT, BGCNT_MOSAIC);
+    SetGpuRegBits(REG_OFFSET_BG2CNT, BGCNT_MOSAIC);
+    SetGpuRegBits(REG_OFFSET_BG3CNT, BGCNT_MOSAIC);
+    SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_ALL | BLDCNT_EFFECT_LIGHTEN);
+    SetGpuReg(REG_OFFSET_BLDY, 0);
+    task->tBBBright = 0;
+    task->tState++;
+    return TRUE;
+}
+
+static bool8 BlurBrighten_Main(struct Task *task)
+{
+    if (task->tBBDelay != 0)
+    {
+        task->tBBDelay--;
+    }
+    else
+    {
+        task->tBBDelay = 4;
+        task->tBBCounter++;
+
+        // Increase mosaic blur
+        SetGpuReg(REG_OFFSET_MOSAIC, (task->tBBCounter & 15) * 17);
+
+        // Gradually brighten palette over the same period (0..16 over ~14 steps)
+        task->tBBBright = (task->tBBCounter * 16) / 14;
+        if (task->tBBBright > 16)
+            task->tBBBright = 16;
+        SetGpuReg(REG_OFFSET_BLDY, task->tBBBright);
+
+        if (task->tBBCounter == 10)
+            BeginNormalPaletteFade(PALETTES_ALL, -1, 0, 16, RGB_BLACK);
+
+        if (task->tBBCounter > 14)
+            task->tState++;
+    }
+    return FALSE;
+}
+
+static bool8 BlurBrighten_End(struct Task *task)
+{
+    if (!gPaletteFade.active)
+    {
+        SetGpuReg(REG_OFFSET_BLDCNT, 0);
+        SetGpuReg(REG_OFFSET_BLDY, 0);
+        DestroyTask(FindTaskIdByFunc(Task_BlurBrighten));
+    }
+    return FALSE;
+}
+
+#undef tBBDelay
+#undef tBBCounter
+#undef tBBBright
 
 //--------------------
 // B_TRANSITION_SWIRL
