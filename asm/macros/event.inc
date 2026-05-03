@@ -1987,12 +1987,10 @@
 	trycompare goto_if, 5, \a, \b, \c
 	.endm
 
-	.macro goto_if_bw a:req, b:req, h:req, c @ BETWEEN
-	callnative CompareVariables, requests_effects=1
-	.2byte \a @variable
-	.2byte \b @lower bound
-	.2byte \h @upper bound
-	goto_if_eq VAR_RESULT, TRUE, \c
+	.macro goto_if_between a:req, b:req, h:req, c @ BETWEEN
+	goto_if_gt \a, \h, 1f
+	trycompare goto_if, 4, \a, \b, \c
+	1:
 	.endm
 
 	.macro call_if_unset flag:req, dest:req
@@ -2029,12 +2027,10 @@
 	trycompare call_if, 5, \a, \b, \c
 	.endm
 
-	.macro call_if_bw a:req, b:req, h:req, c @ BETWEEN
-	callnative CompareVariables, requests_effects=1
-	.2byte \a @variable
-	.2byte \b @lower bound
-	.2byte \h @upper bound
-	call_if_eq VAR_RESULT, TRUE, \c
+	.macro call_if_between a:req, b:req, h:req, c @ BETWEEN
+	goto_if_gt \a, \h, 1f
+	trycompare call_if, 4, \a, \b, \c
+	1:
 	.endm
 
 	.macro vgoto_if_eq a:req, b, c
