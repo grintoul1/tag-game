@@ -50,16 +50,18 @@ static const struct CompressedSpriteSheet sSpriteSheet_SinglesOpponentHealthbox 
     gHealthboxSinglesOpponentGfx, 0x1000, TAG_HEALTHBOX_OPPONENT1_TILE
 };
 
-static const struct CompressedSpriteSheet sSpriteSheets_DoublesPlayerHealthbox[2] =
+static const struct CompressedSpriteSheet sSpriteSheets_DoublesPlayerHealthbox[3] =
 {
     {gHealthboxDoublesPlayerGfx, 0x800, TAG_HEALTHBOX_PLAYER1_TILE},
-    {gHealthboxDoublesPlayerGfx, 0x800, TAG_HEALTHBOX_PLAYER2_TILE}
+    {gHealthboxDoublesPlayerGfx, 0x800, TAG_HEALTHBOX_PLAYER2_TILE},
+    {gHealthboxDoublesPlayerGfx, 0x800, TAG_HEALTHBOX_PLAYER3_TILE},
 };
 
-static const struct CompressedSpriteSheet sSpriteSheets_DoublesOpponentHealthbox[2] =
+static const struct CompressedSpriteSheet sSpriteSheets_DoublesOpponentHealthbox[3] =
 {
     {gHealthboxDoublesOpponentGfx, 0x800, TAG_HEALTHBOX_OPPONENT1_TILE},
-    {gHealthboxDoublesOpponentGfx, 0x800, TAG_HEALTHBOX_OPPONENT2_TILE}
+    {gHealthboxDoublesOpponentGfx, 0x800, TAG_HEALTHBOX_OPPONENT2_TILE},
+    {gHealthboxDoublesOpponentGfx, 0x800, TAG_HEALTHBOX_OPPONENT3_TILE},
 };
 
 static const struct CompressedSpriteSheet sSpriteSheet_SafariHealthbox =
@@ -72,7 +74,9 @@ static const struct CompressedSpriteSheet sSpriteSheets_HealthBar[MAX_BATTLERS_C
     {gBlankGfxCompressed, 0x0100, TAG_HEALTHBAR_PLAYER1_TILE},
     {gBlankGfxCompressed, 0x0120, TAG_HEALTHBAR_OPPONENT1_TILE},
     {gBlankGfxCompressed, 0x0100, TAG_HEALTHBAR_PLAYER2_TILE},
-    {gBlankGfxCompressed, 0x0120, TAG_HEALTHBAR_OPPONENT2_TILE}
+    {gBlankGfxCompressed, 0x0120, TAG_HEALTHBAR_OPPONENT2_TILE},
+    {gBlankGfxCompressed, 0x0100, TAG_HEALTHBAR_PLAYER3_TILE},
+    {gBlankGfxCompressed, 0x0120, TAG_HEALTHBAR_OPPONENT3_TILE},
 };
 
 const struct SpritePalette sSpritePalettes_HealthBoxHealthBar[2] =
@@ -727,8 +731,12 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
     {
         LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[0]);
         LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[1]);
+        if (IsTripleBattle())
+            LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[2]);
         LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[0]);
         LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[1]);
+        if (IsTripleBattle())
+            LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[2]);
         numberOfBattlers = MAX_BATTLERS_COUNT;
     }
     for (i = 0; i < numberOfBattlers; i++)
@@ -775,6 +783,8 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
         }
         else
         {
+            bool8 isTriples = IsTripleBattle();
+
             if (state == 2)
             {
                 switch (GetBattlerCoordsIndex(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)))
@@ -789,18 +799,26 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
             }
             else if (state == 3)
                 LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[1]);
-            else if (state == 4)
+            else if (isTriples && state == 4)
+                LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[2]);
+            else if ((!isTriples && state == 4) || (isTriples && state == 5))
                 LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[0]);
-            else if (state == 5)
+            else if ((!isTriples && state == 5) || (isTriples && state == 6))
                 LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[1]);
-            else if (state == 6)
+            else if (isTriples && state == 7)
+                LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[2]);
+            else if ((!isTriples && state == 6) || (isTriples && state == 8))
                 LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[GetBattlerPosition(B_BATTLER_0)]);
-            else if (state == 7)
+            else if ((!isTriples && state == 7) || (isTriples && state == 9))
                 LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[GetBattlerPosition(B_BATTLER_1)]);
-            else if (state == 8)
+            else if ((!isTriples && state == 8) || (isTriples && state == 10))
                 LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[GetBattlerPosition(B_BATTLER_2)]);
-            else if (state == 9)
+            else if ((!isTriples && state == 9) || (isTriples && state == 11))
                 LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[GetBattlerPosition(B_BATTLER_3)]);
+            else if (isTriples && state == 12)
+                LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[GetBattlerPosition(B_BATTLER_4)]);
+            else if (isTriples && state == 13)
+                LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[GetBattlerPosition(B_BATTLER_5)]);
             else
                 retVal = TRUE;
         }

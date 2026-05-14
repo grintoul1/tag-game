@@ -281,7 +281,7 @@ static void RecordedOpponentHandleDrawTrainerPic(enum BattlerId battler)
         if (position == B_POSITION_OPPONENT_LEFT)
         {
             trainerPicId = TRAINER_PIC_FRONT_LEAF;
-            if (!(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
+            if (!(gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS))
                 xPos = 176;
             else
                 xPos = 200;

@@ -36,6 +36,10 @@ typedef union PACKED TrainerBattleParameter
         u8 *introTextB;
         u8 *defeatTextB;
         u8 *battleScriptRetAddrB;
+        u16 opponentC;
+        u8 *introTextC;
+        u8 *defeatTextC;
+        u8 *battleScriptRetAddrC;
         u8 *victoryText;
         u8 *cannotBattleText;
         u8 rivalBattleFlags;

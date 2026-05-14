@@ -1078,6 +1078,24 @@ const struct SpriteTemplate gBattlerSpriteTemplates[MAX_BATTLERS_COUNT] =
         .affineAnims = gAffineAnims_BattleSpriteOpponentSide,
         .callback = SpriteCB_WildMon
     },
+    [B_POSITION_PLAYER_TRIPLE] = {
+        .tileTag = TAG_NONE,
+        .paletteTag = 0,
+        .oam = &gOamData_BattleSpritePlayerSide,
+        .anims = NULL,
+        .images = gBattlerPicTable_PlayerTriple,
+        .affineAnims = gAffineAnims_BattleSpritePlayerSide,
+        .callback = SpriteCB_BattleSpriteStartSlideLeft,
+    },
+    [B_POSITION_OPPONENT_TRIPLE] = {
+        .tileTag = TAG_NONE,
+        .paletteTag = 0,
+        .oam = &gOamData_BattleSpriteOpponentSide,
+        .anims = NULL,
+        .images = gBattlerPicTable_OpponentTriple,
+        .affineAnims = gAffineAnims_BattleSpriteOpponentSide,
+        .callback = SpriteCB_WildMon,
+    },
 };
 
 static const struct SpriteTemplate sTrainerBackSpriteTemplate =
@@ -2325,7 +2343,7 @@ void SetMultiuseSpriteTemplateToPokemon(enum Species speciesTag, enum BattlerPos
         gMultiuseSpriteTemplate = gBattlerSpriteTemplates[battlerPosition];
 
     gMultiuseSpriteTemplate.paletteTag = speciesTag;
-    if (battlerPosition == B_POSITION_PLAYER_LEFT || battlerPosition == B_POSITION_PLAYER_RIGHT)
+    if (battlerPosition == B_POSITION_PLAYER_LEFT || battlerPosition == B_POSITION_PLAYER_RIGHT || battlerPosition == B_POSITION_PLAYER_TRIPLE)
         gMultiuseSpriteTemplate.anims = gAnims_MonPic;
     else
     {
@@ -2343,7 +2361,7 @@ void SetMultiuseSpriteTemplateToPokemon(enum Species speciesTag, enum BattlerPos
 void SetMultiuseSpriteTemplateToTrainerBack(enum TrainerPicID trainerPicId, enum BattlerPosition battlerPosition)
 {
     gMultiuseSpriteTemplate.paletteTag = trainerPicId;
-    if (battlerPosition == B_POSITION_PLAYER_LEFT || battlerPosition == B_POSITION_PLAYER_RIGHT)
+    if (battlerPosition == B_POSITION_PLAYER_LEFT || battlerPosition == B_POSITION_PLAYER_RIGHT || battlerPosition == B_POSITION_PLAYER_TRIPLE)
     {
         gMultiuseSpriteTemplate = sTrainerBackSpriteTemplate;
         gMultiuseSpriteTemplate.images = &gTrainerBacksprites[trainerPicId].backPic;
@@ -3564,6 +3582,52 @@ u8 GetMonsStateToDoubles_2(void)
         return PLAYER_HAS_ONE_MON; // may have more than one, but only one is alive
 
     return (aliveCount > 1) ? PLAYER_HAS_TWO_USABLE_MONS : PLAYER_HAS_ONE_USABLE_MON;
+}
+
+u8 GetMonsStateToTriples(void)
+{
+    s32 aliveCount = 0;
+    s32 i;
+    CalculatePlayerPartyCount();
+
+    if (OW_DOUBLE_APPROACH_WITH_ONE_MON)
+        return PLAYER_HAS_TWO_USABLE_MONS;
+
+    if (gPlayerPartyCount <= 2)
+        return 1; // PLAYER_HAS_ONE_MON
+
+    for (i = 0; i < gPlayerPartyCount; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG) != SPECIES_EGG
+         && GetMonData(&gPlayerParty[i], MON_DATA_HP) != 0
+         && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE)
+            aliveCount++;
+    }
+
+    return (aliveCount > 2) ? PLAYER_HAS_TWO_USABLE_MONS : PLAYER_HAS_ONE_USABLE_MON;
+}
+
+u8 GetMonsStateToTriples_2(void)
+{
+    s32 aliveCount = 0;
+    s32 i;
+
+    if (OW_DOUBLE_APPROACH_WITH_ONE_MON
+     || FollowerNPCIsBattlePartner())
+        return PLAYER_HAS_TWO_USABLE_MONS;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        enum Species species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG);
+        if (species != SPECIES_EGG && species != SPECIES_NONE
+         && GetMonData(&gPlayerParty[i], MON_DATA_HP) != 0)
+            aliveCount++;
+    }
+
+    if (aliveCount <= 2)
+        return PLAYER_HAS_ONE_MON; // may have more than one, but only one is alive
+
+    return (aliveCount > 2) ? PLAYER_HAS_TWO_USABLE_MONS : PLAYER_HAS_ONE_USABLE_MON;
 }
 
 enum Ability GetAbilityBySpecies(enum Species species, u8 abilityNum)

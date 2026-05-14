@@ -1153,7 +1153,7 @@ static enum CancelerResult CancelerMoveFailure(struct BattleContext *ctx)
             battleScript = BattleScript_ButItFailed;
         break;
     case EFFECT_FOLLOW_ME:
-        if (B_UPDATED_MOVE_DATA >= GEN_8 && !(gBattleTypeFlags & BATTLE_TYPE_DOUBLE))
+        if (B_UPDATED_MOVE_DATA >= GEN_8 && !(gBattleTypeFlags & (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TRIPLE)))
             battleScript = BattleScript_ButItFailed;
         break;
     case EFFECT_LAST_RESORT:

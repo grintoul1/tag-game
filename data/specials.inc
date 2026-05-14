@@ -80,6 +80,7 @@ gSpecials::
 	def_special BattleSetup_StartRematchBattle
 	def_special ShowPokemonStorageSystemPC
 	def_special HasEnoughMonsForDoubleBattle
+	def_special HasEnoughMonsForTripleBattle
 	def_special TurnOffTVScreen
 	def_special DoTVShow
 	def_special DoPokeNews

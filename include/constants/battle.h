@@ -13,12 +13,12 @@
  *
  *   + ------------------------- +
  *   |           Opponent's side |
- *   |            Right    Left  |
- *   |              3       1    |
+ *   |   Triple   Right    Left  |
+ *   |      5       3       1    |
  *   |                           |
  *   | Player's side             |
- *   |  Left   Right             |
- *   |   0       2               |
+ *   |  Left   Right   Triple    |
+ *   |   0       2       4       |
  *   ----------------------------+
  *   |                           |
  *   |                           |
@@ -31,6 +31,8 @@ enum BattlerPosition
     B_POSITION_OPPONENT_LEFT,
     B_POSITION_PLAYER_RIGHT,
     B_POSITION_OPPONENT_RIGHT,
+    B_POSITION_PLAYER_TRIPLE,
+    B_POSITION_OPPONENT_TRIPLE,
     MAX_POSITION_COUNT,
     B_POSITION_ABSENT = 0xFF,
 };
@@ -41,6 +43,8 @@ enum __attribute__((packed)) BattlerId
     B_BATTLER_1,
     B_BATTLER_2,
     B_BATTLER_3,
+    B_BATTLER_4,
+    B_BATTLER_5,
     MAX_BATTLERS_COUNT,
 };
 
@@ -50,17 +54,21 @@ enum __attribute__((packed)) BattleTrainer
     B_TRAINER_1,
     B_TRAINER_2,
     B_TRAINER_3,
+    B_TRAINER_4,
+    B_TRAINER_5,
     MAX_BATTLE_TRAINERS,
 };
 
 // These macros can be used with either battler ID or positions to get the partner or the opposite mon
 #define BATTLE_OPPOSITE(id) ((id) ^ BIT_SIDE)
 #define BATTLE_PARTNER(id) ((id) ^ BIT_FLANK)
+#define BATTLE_TRIPLE(id) (((id) & ~BIT_FLANK) ^ BIT_TRIPLE)
 
 // Left and right are determined by how they're referred to in tests and everywhere else.
 // Left is battlers 0 and 1, right 2 and 3; if you assume the battler referencing them is south, left is to the northeast and right to the northwest.
 #define LEFT_FOE(battler) ((BATTLE_OPPOSITE(battler)) & BIT_SIDE)
 #define RIGHT_FOE(battler) (((BATTLE_OPPOSITE(battler)) & BIT_SIDE) | BIT_FLANK)
+#define TRIPLE_FOE(battler) (((BATTLE_OPPOSITE(battler)) & BIT_SIDE) | BIT_TRIPLE)
 
 enum BattleSide
 {
@@ -69,11 +77,13 @@ enum BattleSide
     NUM_BATTLE_SIDES = 2,
 };
 
-#define B_FLANK_LEFT  0
-#define B_FLANK_RIGHT 1
+#define B_FLANK_LEFT   0
+#define B_FLANK_RIGHT  1
+#define B_FLANK_TRIPLE 3
 
 #define BIT_SIDE        1
 #define BIT_FLANK       2
+#define BIT_TRIPLE      4
 
 // Battle Type Flags
 #define BATTLE_TYPE_DOUBLE             (1 << 0)
@@ -90,8 +100,8 @@ enum BattleSide
 #define BATTLE_TYPE_EREADER_TRAINER    (1 << 11)
 #define BATTLE_TYPE_RAID               (1 << 12)
 #define BATTLE_TYPE_LEGENDARY          (1 << 13)
-#define BATTLE_TYPE_14                 (1 << 14)
-#define BATTLE_TYPE_TWO_OPPONENTS      (1 << 15)
+#define BATTLE_TYPE_TRIPLE             (1 << 14)
+#define BATTLE_TYPE_MULTIPLE_OPPONENTS (1 << 15)
 #define BATTLE_TYPE_DOME               (1 << 16)
 #define BATTLE_TYPE_PALACE             (1 << 17)
 #define BATTLE_TYPE_ARENA              (1 << 18)
@@ -117,14 +127,15 @@ enum BattleSide
                                              | BATTLE_TYPE_RECORDED | BATTLE_TYPE_TRAINER_HILL | BATTLE_TYPE_SECRET_BASE))
 
 #define WILD_DOUBLE_BATTLE                  ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE && !(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER))))
+#define WILD_TRIPLE_BATTLE                  ((gBattleTypeFlags & BATTLE_TYPE_TRIPLE && !(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER))))
 #define RECORDED_WILD_BATTLE                ((gBattleTypeFlags & BATTLE_TYPE_RECORDED) && !(gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER)))
 #define BATTLE_TWO_VS_ONE_OPPONENT          ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && TRAINER_BATTLE_PARAM.opponentB == 0xFFFF))
 #define BATTLE_TYPE_HAS_AI                  (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FIRST_BATTLE | BATTLE_TYPE_SAFARI | BATTLE_TYPE_ROAMER | BATTLE_TYPE_INGAME_PARTNER)
-#define BATTLE_TYPE_MORE_THAN_TWO_BATTLERS  (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TWO_OPPONENTS)
+#define BATTLE_TYPE_MORE_THAN_TWO_BATTLERS  (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTIPLE_OPPONENTS | BATTLE_TYPE_TRIPLE)
 #define BATTLE_TYPE_PLAYER_HAS_PARTNER      (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TOWER_LINK_MULTI)
 
 // Multibattle test composite flags
-#define BATTLE_MULTI_TEST                   (BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS)
+#define BATTLE_MULTI_TEST                   (BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTI | BATTLE_TYPE_MULTIPLE_OPPONENTS)
 #define BATTLE_TWO_VS_ONE_TEST              (BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTI)
 
 #define RIVAL_BATTLE_HEAL_AFTER  1

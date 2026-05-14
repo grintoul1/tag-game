@@ -133,14 +133,22 @@ static void OpponentBufferRunCommand(enum BattlerId battler)
 static void Intro_WaitForShinyAnimAndHealthbox(enum BattlerId battler)
 {
     bool8 healthboxAnimDone = FALSE;
-    bool8 twoMons;
+    bool8 twoMons, threeMons;
 
     twoMons = TwoOpponentIntroMons(battler);
-    if (!twoMons || ((twoMons && (gBattleTypeFlags & BATTLE_TYPE_MULTI) && !BATTLE_TWO_VS_ONE_OPPONENT) || (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)))
+    threeMons = ThreeOpponentIntroMons(battler);
+    if (!twoMons || ((twoMons && (gBattleTypeFlags & BATTLE_TYPE_MULTI) && !BATTLE_TWO_VS_ONE_OPPONENT) || (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)))
     {
         if (gSprites[gHealthboxSpriteIds[battler]].callback == SpriteCallbackDummy)
             healthboxAnimDone = TRUE;
         twoMons = FALSE;
+    }
+    else if (threeMons)
+    {
+        if (gSprites[gHealthboxSpriteIds[battler]].callback == SpriteCallbackDummy
+         && gSprites[gHealthboxSpriteIds[BATTLE_PARTNER(battler)]].callback == SpriteCallbackDummy
+         && gSprites[gHealthboxSpriteIds[BATTLE_TRIPLE(battler)]].callback == SpriteCallbackDummy)
+            healthboxAnimDone = TRUE;
     }
     else
     {
@@ -199,7 +207,7 @@ static void Intro_TryShinyAnimShowHealthbox(enum BattlerId battler)
 {
     bool32 bgmRestored = FALSE;
     bool32 battlerAnimsDone = FALSE;
-    bool32 twoMons;
+    bool32 twoMons, threeMons;
 
     if (!gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim
      && !gBattleSpritesDataPtr->healthBoxesData[battler].ballAnimActive
@@ -207,13 +215,17 @@ static void Intro_TryShinyAnimShowHealthbox(enum BattlerId battler)
         TryShinyAnimation(battler, GetBattlerMon(battler));
 
     twoMons = TwoOpponentIntroMons(battler);
-    if (!(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    threeMons = ThreeOpponentIntroMons(battler);
+    if (!(gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
      && (!(gBattleTypeFlags & BATTLE_TYPE_MULTI) || BATTLE_TWO_VS_ONE_OPPONENT)
      && twoMons
      && !gBattleSpritesDataPtr->healthBoxesData[BATTLE_PARTNER(battler)].triedShinyMonAnim
      && !gBattleSpritesDataPtr->healthBoxesData[BATTLE_PARTNER(battler)].ballAnimActive
      && !gBattleSpritesDataPtr->healthBoxesData[BATTLE_PARTNER(battler)].finishedShinyMonAnim)
         TryShinyAnimation(BATTLE_PARTNER(battler), GetBattlerMon(BATTLE_PARTNER(battler)));
+    
+    if (threeMons)
+        TryShinyAnimation(BATTLE_TRIPLE(battler), GetBattlerMon(BATTLE_TRIPLE(battler)));
 
     if (!gBattleSpritesDataPtr->healthBoxesData[battler].ballAnimActive && !gBattleSpritesDataPtr->healthBoxesData[BATTLE_PARTNER(battler)].ballAnimActive)
     {
@@ -327,7 +339,7 @@ static u32 OpponentGetTrainerPicId(enum BattlerId battlerId)
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
     {
-        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
         {
             if (battlerId == 1)
                 trainerPicId = GetTrainerHillTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
@@ -341,7 +353,7 @@ static u32 OpponentGetTrainerPicId(enum BattlerId battlerId)
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
     {
-        if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TOWER_LINK_MULTI))
+        if (gBattleTypeFlags & (BATTLE_TYPE_MULTIPLE_OPPONENTS | BATTLE_TYPE_TOWER_LINK_MULTI))
         {
             if (battlerId == 1)
                 trainerPicId = GetFrontierTrainerFrontSpriteId(TRAINER_BATTLE_PARAM.opponentA);
@@ -357,7 +369,7 @@ static u32 OpponentGetTrainerPicId(enum BattlerId battlerId)
     {
         trainerPicId = GetEreaderTrainerFrontSpriteId();
     }
-    else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    else if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
     {
         if (battlerId != 1)
             trainerPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB);
@@ -383,7 +395,7 @@ static void OpponentHandleDrawTrainerPic(enum BattlerId battler)
         if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT)
         {
             trainerPicId = TRAINER_PIC_FRONT_LEAF;
-            if (!(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
+            if (!(gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS))
                 xPos = 176;
             else
                 xPos = 200;
@@ -398,7 +410,7 @@ static void OpponentHandleDrawTrainerPic(enum BattlerId battler)
     {
         trainerPicId = OpponentGetTrainerPicId(battler);
 
-        if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS) && !BATTLE_TWO_VS_ONE_OPPONENT)
+        if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_MULTIPLE_OPPONENTS) && !BATTLE_TWO_VS_ONE_OPPONENT)
         {
             if ((GetBattlerPosition(battler) & BIT_FLANK) != 0) // second mon
                 xPos = 152;

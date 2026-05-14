@@ -5,7 +5,7 @@
 #include "link.h"
 #include "random.h"
 
-#define BATTLER_RECORD_SIZE 664
+#define BATTLER_RECORD_SIZE 400
 
 struct RecordedBattleSave
 {
@@ -20,6 +20,7 @@ struct RecordedBattleSave
     u8 playersBattlers[MAX_LINK_PLAYERS];
     u16 opponentA;
     u16 opponentB;
+    u16 opponentC;
     u16 partnerId;
     u16 multiplayerId;
     u8 lvlMode;

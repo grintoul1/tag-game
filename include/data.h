@@ -87,6 +87,7 @@ enum TrainerBattleType
 {
     TRAINER_BATTLE_TYPE_SINGLES,
     TRAINER_BATTLE_TYPE_DOUBLES,
+    TRAINER_BATTLE_TYPE_TRIPLES,
 };
 
 #define UNPACK_STARTING_STATUSES_STRUCT(_enum, _fieldName, _typeMaxValue, ...) INVOKE_WITH_(UNPACK_STARTING_STATUSES_STRUCT_, _fieldName, UNPACK_B(_typeMaxValue));
@@ -186,6 +187,8 @@ extern const struct SpriteFrameImage gBattlerPicTable_PlayerLeft[];
 extern const struct SpriteFrameImage gBattlerPicTable_OpponentLeft[];
 extern const struct SpriteFrameImage gBattlerPicTable_PlayerRight[];
 extern const struct SpriteFrameImage gBattlerPicTable_OpponentRight[];
+extern const struct SpriteFrameImage gBattlerPicTable_PlayerTriple[];
+extern const struct SpriteFrameImage gBattlerPicTable_OpponentTriple[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Brendan[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_May[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Red[];

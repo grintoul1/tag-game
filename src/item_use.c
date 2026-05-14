@@ -1248,6 +1248,8 @@ static bool32 SelectedMonHasVolatile(enum Item itemId)
         return IteamHealsMonVolatile(0, itemId);
     else if (gBattleTypeFlags & (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI) && gPartyMenu.slotId == 1)
         return IteamHealsMonVolatile(2, itemId);
+    else if (gBattleTypeFlags & BATTLE_TYPE_TRIPLE && gPartyMenu.slotId == 2)
+        return IteamHealsMonVolatile(4, itemId);
     return FALSE;
 }
 

@@ -5438,7 +5438,7 @@ bool32 CanBattlerSwitch(enum BattlerId battler)
 
         ret = (i != lastMonId + MULTI_PARTY_SIZE);
     }
-    else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !IsOnPlayerSide(battler))
+    else if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS && !IsOnPlayerSide(battler))
     {
         party = gEnemyParty;
 
@@ -5575,7 +5575,7 @@ static void Cmd_openpartyscreen(void)
                 if (((1u << i) & hitmarkerFaintBits))
                 {
                     bool32 skipPartnerCheck = FALSE;
-                    if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS
+                    if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS
                      && GetBattlerSide(i) == B_SIDE_OPPONENT
                      && TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE)
                         skipPartnerCheck = TRUE;
@@ -6206,7 +6206,7 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
         lastMonLevel = party[GetTrainerPartySizeFromId(trainerId) - 1].lvl;
         trainerMoney = gTrainerClasses[GetTrainerClassFromId(trainerId)].money ?: 5;
 
-        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
             moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * trainerMoney;
         else if (IsDoubleBattle())
             moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * 2 * trainerMoney;
@@ -6227,7 +6227,7 @@ static void Cmd_getmoneyreward(void)
     if (gBattleOutcome == B_OUTCOME_WON)
     {
         money = GetTrainerMoneyToGive(TRAINER_BATTLE_PARAM.opponentA);
-        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
             money += GetTrainerMoneyToGive(TRAINER_BATTLE_PARAM.opponentB);
         AddMoney(&gSaveBlock1Ptr->money, money);
     }
@@ -8222,7 +8222,7 @@ static void Cmd_forcerandomswitch(void)
             battler2PartyId = gBattlerPartyIndexes[gBattlerTarget];
             battler1PartyId = gBattlerPartyIndexes[BATTLE_PARTNER(gBattlerTarget)];
         }
-        else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        else if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
         {
             if (IsOnPlayerSide(gBattlerTarget))
             {
@@ -11937,7 +11937,7 @@ u8 GetFirstFaintedPartyIndex(enum BattlerId battler)
 
     // Check whether partner is separate trainer.
     if ((IsOnPlayerSide(battler) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
-        || (!IsOnPlayerSide(battler) && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
+        || (!IsOnPlayerSide(battler) && gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS))
     {
         if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT
             || GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT)
@@ -13738,7 +13738,7 @@ void BS_UpdateChoiceMoveOnLvlUp(void)
 void BS_ResetPlayerFainted(void)
 {
     NATIVE_ARGS();
-    if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLE))
+    if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TRIPLE))
         && gBattleTypeFlags & BATTLE_TYPE_TRAINER
         && IsBattlerAlive(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT))
         && IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)))

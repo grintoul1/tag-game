@@ -323,7 +323,7 @@ static bool32 ShouldSwitchIfHasBadOdds(enum BattlerId battler)
         return FALSE;
 
     // Double Battles aren't included in AI_FLAG_SMART_MON_CHOICE. Defaults to regular switch in logic
-    if (IsDoubleBattle())
+    if (IsDoubleBattle() || IsTripleBattle())
         return FALSE;
 
     // Get max damage mon could take
@@ -515,7 +515,7 @@ static bool32 ShouldSwitchIfAllMovesBad(enum BattlerId battler, enum BattlerId b
     ctx.holdEffectDef = gAiLogicData->holdEffects[ctx.battlerDef];
 
     // Switch if no moves affect opponents
-    if (IsDoubleBattle())
+    if (IsDoubleBattle() || IsTripleBattle())
     {
         enum BattlerId opposingPartner = BATTLE_PARTNER(opposingBattler);
         for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
@@ -565,7 +565,7 @@ static bool32 ShouldSwitchIfWonderGuard(enum BattlerId battler, enum BattlerId b
 {
     enum BattlerId opposingBattler = GetOppositeBattler(battler);
 
-    if (IsDoubleBattle())
+    if (IsDoubleBattle() || IsTripleBattle())
         return FALSE;
 
     if (gAiLogicData->abilities[opposingBattler] != ABILITY_WONDER_GUARD)
@@ -723,7 +723,7 @@ static bool32 ShouldSwitchIfOpponentChargingOrInvulnerable(enum BattlerId battle
     enum Move incomingMove = GetIncomingMove(battler, opposingBattler, gAiLogicData);
     enum BattleMoveEffects effect = GetMoveEffect(incomingMove);
 
-    if (IsDoubleBattle() || !(gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SMART_SWITCHING))
+    if (IsDoubleBattle() || IsTripleBattle() || !(gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SMART_SWITCHING))
         return FALSE;
 
     // Two-turn attacks that charge without entering semi-invulnerable state (e.g. Solar Beam).
@@ -1047,7 +1047,7 @@ static bool32 CanUseSuperEffectiveMoveAgainstOpponents(enum BattlerId battler)
     if (CanUseSuperEffectiveMoveAgainstOpponent(battler, opposingBattler))
         return TRUE;
 
-    if (IsDoubleBattle() && CanUseSuperEffectiveMoveAgainstOpponent(battler, BATTLE_PARTNER(BATTLE_OPPOSITE(battler))))
+    if ((IsDoubleBattle() || IsTripleBattle()) && CanUseSuperEffectiveMoveAgainstOpponent(battler, BATTLE_PARTNER(BATTLE_OPPOSITE(battler))))
         return TRUE;
 
     return FALSE;
@@ -1212,7 +1212,7 @@ static bool32 ShouldSwitchIfBadChoiceLock(enum BattlerId battler)
 
     u32 moveIndex = GetMoveIndex(battler, choicedMove);
 
-    if (IsDoubleBattle())
+    if (IsDoubleBattle() || IsTripleBattle())
     {
         enum BattlerId opposingPartner = BATTLE_PARTNER(opposingBattler);
         if (IsHoldEffectChoice(ctx.holdEffectAtk) && IsBattlerItemEnabled(battler))
@@ -1414,7 +1414,7 @@ bool32 ShouldSwitchIfAllScoresBad(enum BattlerId battler)
 
     for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        if (IsDoubleBattle())
+        if (IsDoubleBattle() || IsTripleBattle())
         {
             u32 score1 = gAiBattleData->finalScore[battler][opposingBattler][moveIndex];
             u32 score2 = gAiBattleData->finalScore[battler][BATTLE_PARTNER(opposingBattler)][moveIndex];
@@ -1453,7 +1453,7 @@ bool32 ShouldStayInToUseMove(enum BattlerId battler)
                 continue;
 
             if (gAiBattleData->finalScore[battler][opposingBattler][moveIndex] > AI_GOOD_SCORE_THRESHOLD
-                || (IsDoubleBattle() && gAiBattleData->finalScore[battler][BATTLE_PARTNER(opposingBattler)][moveIndex] > AI_GOOD_SCORE_THRESHOLD))
+                || ((IsDoubleBattle() || IsTripleBattle()) && gAiBattleData->finalScore[battler][BATTLE_PARTNER(opposingBattler)][moveIndex] > AI_GOOD_SCORE_THRESHOLD))
                 return TRUE;
         }
     }
@@ -1506,7 +1506,7 @@ void ModifySwitchAfterMoveScoring(enum BattlerId battler)
 bool32 IsSwitchinValid(enum BattlerId battler)
 {
     // Edge case: See if partner already chose to switch into the same mon
-    if (IsDoubleBattle())
+    if ((IsDoubleBattle() || IsTripleBattle()))
     {
         enum BattlerId partner = BATTLE_PARTNER(battler);
         if (gBattleStruct->AI_monToSwitchIntoId[battler] == PARTY_SIZE) // Generic switch
@@ -2097,7 +2097,7 @@ static inline bool32 IsFreeSwitch(enum SwitchType switchType, enum BattlerId bat
     bool32 movedSecond = GetBattlerTurnOrderNum(battlerSwitchingOut) > GetBattlerTurnOrderNum(opposingBattler) ? TRUE : FALSE;
 
     // Switch out effects
-    if (!IsDoubleBattle()) // Not handling doubles' additional complexity
+    if (!(IsDoubleBattle() || IsTripleBattle())) // Not handling doubles' additional complexity
     {
         if (IsSwitchOutEffect(GetMoveEffect(gCurrentMove)) && movedSecond)
             return TRUE;
@@ -2564,7 +2564,7 @@ u32 GetMostSuitableMonToSwitchInto(enum BattlerId battler, enum SwitchType switc
     }
 
     // Only use better mon selection if AI_FLAG_SMART_MON_CHOICES is set for the trainer.
-    if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SMART_MON_CHOICES && !IsDoubleBattle()) // Double Battles aren't included in AI_FLAG_SMART_MON_CHOICE. Defaults to regular switch in logic
+    if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SMART_MON_CHOICES && !(IsDoubleBattle() || IsTripleBattle())) // Double Battles aren't included in AI_FLAG_SMART_MON_CHOICE. Defaults to regular switch in logic
     {
         bestMonId = GetBestMonIntegrated(party, firstId, lastId, battler, opposingBattler, battlerIn1, battlerIn2, switchType);
         return bestMonId;
@@ -2586,7 +2586,7 @@ u32 AI_SelectRevivalBlessingMon(enum BattlerId battler)
     u32 bestMonId = PARTY_SIZE;
     s32 bestScore = -1;
 
-    if (IsDoubleBattle())
+    if ((IsDoubleBattle() || IsTripleBattle()))
     {
         opposingBattler = BATTLE_OPPOSITE(battler);
         if (gAbsentBattlerFlags & (1u << opposingBattler))

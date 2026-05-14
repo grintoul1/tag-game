@@ -49,6 +49,22 @@ const struct SpriteFrameImage gBattlerPicTable_OpponentRight[] =
     {BATTLER_OFFSET(15), MON_PIC_SIZE},
 };
 
+const struct SpriteFrameImage gBattlerPicTable_PlayerTriple[] =
+{
+    {BATTLER_OFFSET(16),  MON_PIC_SIZE},
+    {BATTLER_OFFSET(17),  MON_PIC_SIZE},
+    {BATTLER_OFFSET(18), MON_PIC_SIZE},
+    {BATTLER_OFFSET(19), MON_PIC_SIZE},
+};
+
+const struct SpriteFrameImage gBattlerPicTable_OpponentTriple[] =
+{
+    {BATTLER_OFFSET(20), MON_PIC_SIZE},
+    {BATTLER_OFFSET(21), MON_PIC_SIZE},
+    {BATTLER_OFFSET(22), MON_PIC_SIZE},
+    {BATTLER_OFFSET(23), MON_PIC_SIZE},
+};
+
 const union AnimCmd sAnim_GeneralFrame0[] =
 {
     ANIMCMD_FRAME(0, 0),

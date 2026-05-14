@@ -38,17 +38,30 @@ const struct UCoords8 sBattlerCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_COUNT] =
 {
     [BATTLE_COORDS_SINGLES] =
     {
-        [B_POSITION_PLAYER_LEFT]    = { 72, 80 },
-        [B_POSITION_OPPONENT_LEFT]  = { 176, 40 },
-        [B_POSITION_PLAYER_RIGHT]   = { 48, 40 },
-        [B_POSITION_OPPONENT_RIGHT] = { 112, 80 },
+        [B_POSITION_PLAYER_LEFT]     = { 72, 80 },
+        [B_POSITION_OPPONENT_LEFT]   = { 176, 40 },
+        [B_POSITION_PLAYER_RIGHT]    = { 48, 40 },
+        [B_POSITION_OPPONENT_RIGHT]  = { 112, 80 },
+        [B_POSITION_PLAYER_TRIPLE]   = { 48, 40 },
+        [B_POSITION_OPPONENT_TRIPLE] = { 112, 80 },
     },
     [BATTLE_COORDS_DOUBLES] =
     {
-        [B_POSITION_PLAYER_LEFT]    = { 32, 80 },
-        [B_POSITION_OPPONENT_LEFT]  = { 200, 40 },
-        [B_POSITION_PLAYER_RIGHT]   = { 90, 84 },
-        [B_POSITION_OPPONENT_RIGHT] = { 152, 32 },
+        [B_POSITION_PLAYER_LEFT]     = { 32, 80 },
+        [B_POSITION_OPPONENT_LEFT]   = { 200, 40 },
+        [B_POSITION_PLAYER_RIGHT]    = { 90, 84 },
+        [B_POSITION_OPPONENT_RIGHT]  = { 152, 32 },
+        [B_POSITION_PLAYER_TRIPLE]   = { 48, 40 },
+        [B_POSITION_OPPONENT_TRIPLE] = { 112, 80 },
+    },
+    [BATTLE_COORDS_TRIPLES] =
+    {
+        [B_POSITION_PLAYER_LEFT]     = { 24, 80 },
+        [B_POSITION_OPPONENT_LEFT]   = { 210, 40 },
+        [B_POSITION_PLAYER_RIGHT]    = { 72, 86 },
+        [B_POSITION_OPPONENT_RIGHT]  = { 174, 38 },
+        [B_POSITION_PLAYER_TRIPLE]   = { 120, 84 },
+        [B_POSITION_OPPONENT_TRIPLE] = { 138, 34 },
     },
 };
 
@@ -2005,8 +2018,12 @@ u8 GetBattlerSpriteSubpriority(enum BattlerId battler)
             subpriority = 30;
         else if (position == B_POSITION_PLAYER_RIGHT)
             subpriority = 20;
+        else if (position == B_POSITION_PLAYER_TRIPLE)
+            subpriority = 10;
         else if (position == B_POSITION_OPPONENT_LEFT)
             subpriority = 40;
+        else if (position == B_POSITION_OPPONENT_TRIPLE)
+            subpriority = 60;
         else
             subpriority = 50;
     }

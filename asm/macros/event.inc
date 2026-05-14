@@ -782,6 +782,18 @@
 	.endif
 	.endm
 
+	@ Starts a triple trainer battle. Takes a trainer, intro text, loss text, text for when you have too few pokemon
+	@ and an optional event script. When used with an event script you can pass in an optional flag to disable music
+	.macro trainerbattle_triple trainer:req, intro_text:req, lose_text:req, not_enough_pkmn_text:req, event_script=FALSE, music=TRUE
+	.if \event_script == FALSE
+	trainerbattle TRAINER_BATTLE_TRIPLE, LOCALID_NONE, \trainer, \intro_text, \lose_text, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, \not_enough_pkmn_text, TRUE, TRUE, FALSE, FALSE
+	.elseif \music == TRUE
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_TRIPLE, LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, \not_enough_pkmn_text, TRUE, TRUE, FALSE, FALSE
+	.else
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_TRIPLE_NO_MUSIC, LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, \not_enough_pkmn_text, TRUE, FALSE, FALSE, FALSE
+	.endif
+	.endm
+
 	@ Starts a rematch battle. Takes a trainer, intro text and loss text
 	.macro trainerbattle_rematch trainer:req, intro_text:req, lose_text:req
 	trainerbattle TRAINER_BATTLE_REMATCH, LOCALID_NONE, \trainer, \intro_text, \lose_text, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, TRUE

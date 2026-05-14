@@ -4151,6 +4151,14 @@ bool32 IsBattle1v1(void)
       && ((IsBattlerAlive(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)) && IsBattlerAlive(GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT)))
       || (IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)) && IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)))))
         return FALSE;
+    if (IsTripleBattle()
+      && ((IsBattlerAlive(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)) && IsBattlerAlive(GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT)))
+      || (IsBattlerAlive(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)) && IsBattlerAlive(GetBattlerAtPosition(B_POSITION_PLAYER_TRIPLE)))
+      || (IsBattlerAlive(GetBattlerAtPosition(B_POSITION_PLAYER_TRIPLE)) && IsBattlerAlive(GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT)))
+      || (IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)) && IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)))
+      || (IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)) && IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_TRIPLE)))
+      || (IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_TRIPLE)) && IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)))))
+        return FALSE;
     return TRUE;
 }
 
@@ -4158,6 +4166,11 @@ bool32 HasTwoOpponents(enum BattlerId battler)
 {
     if (IsDoubleBattle()
       && IsBattlerAlive(LEFT_FOE(battler)) && IsBattlerAlive(RIGHT_FOE(battler)))
+        return TRUE;
+    if (IsTripleBattle()
+      && ((IsBattlerAlive(LEFT_FOE(battler)) && IsBattlerAlive(RIGHT_FOE(battler)))
+      || (IsBattlerAlive(LEFT_FOE(battler)) && IsBattlerAlive(TRIPLE_FOE(battler)))
+      || (IsBattlerAlive(TRIPLE_FOE(battler)) && IsBattlerAlive(RIGHT_FOE(battler)))))
         return TRUE;
     return FALSE;
 }
@@ -6321,7 +6334,7 @@ void GetAIPartyIndexes(enum BattlerId battler, s32 *firstId, s32 *lastId)
     {
         *firstId = 0, *lastId = PARTY_SIZE;
     }
-    else if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TOWER_LINK_MULTI))
+    else if (gBattleTypeFlags & (BATTLE_TYPE_MULTIPLE_OPPONENTS | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TOWER_LINK_MULTI))
     {
         if ((battler & BIT_FLANK) == B_FLANK_LEFT)
             *firstId = 0, *lastId = PARTY_SIZE / 2;

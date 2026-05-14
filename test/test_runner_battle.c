@@ -222,6 +222,10 @@ static void InvokeTestFunction(const struct BattleTest *test)
     case BATTLE_TEST_AI_ONE_VS_TWO:
         InvokeOneVsTwoTestFunctionWithStack(STATE->results, STATE->runParameter, &gBattleMons[B_POSITION_PLAYER_LEFT], &gBattleMons[B_POSITION_OPPONENT_LEFT], &gBattleMons[B_POSITION_PLAYER_RIGHT], &gBattleMons[B_POSITION_OPPONENT_RIGHT], test->function.one_vs_two, &DATA.stack[BATTLE_TEST_STACK_SIZE]);
         break;
+    case BATTLE_TEST_TRIPLES:
+    case BATTLE_TEST_AI_TRIPLES:
+        InvokeTripleTestFunctionWithStack(STATE->results, STATE->runParameter, &gBattleMons[B_POSITION_PLAYER_LEFT], &gBattleMons[B_POSITION_OPPONENT_LEFT], &gBattleMons[B_POSITION_PLAYER_RIGHT], &gBattleMons[B_POSITION_OPPONENT_RIGHT], &gBattleMons[B_POSITION_PLAYER_TRIPLE], &gBattleMons[B_POSITION_OPPONENT_TRIPLE], test->function.triples, &DATA.stack[BATTLE_TEST_STACK_SIZE]);
+        break;
     }
 }
 
@@ -240,6 +244,7 @@ static bool32 IsAITest(void)
     case BATTLE_TEST_AI_MULTI:
     case BATTLE_TEST_AI_TWO_VS_ONE:
     case BATTLE_TEST_AI_ONE_VS_TWO:
+    case BATTLE_TEST_AI_TRIPLES:
         return TRUE;
     }
     return FALSE;
@@ -293,7 +298,11 @@ static void BattleTest_SetUp(void *data)
     case BATTLE_TEST_AI_ONE_VS_TWO:
         STATE->battlersCount = 4;
         break;
-    }
+    case BATTLE_TEST_TRIPLES:
+    case BATTLE_TEST_AI_TRIPLES:
+        STATE->battlersCount = 6;
+        break;
+   }
     STATE->hasTornDownBattle = FALSE;
 }
 
@@ -393,8 +402,17 @@ static void BattleTest_Run(void *data)
         for (i = 0; i < STATE->battlersCount; i++)
             DATA.currentMonIndexes[i] = i / 2;
         break;
+    case BATTLE_TEST_AI_TRIPLES:
+        DATA.recordedBattle.battleFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_TRIPLE;
+        DATA.recordedBattle.opponentA = TRAINER_LEAF_TEST;
+        DATA.recordedBattle.opponentB = TRAINER_NONE;
+        DATA.recordedBattle.opponentC = TRAINER_NONE;
+        DATA.hasAI = TRUE;
+        for (i = 0; i < STATE->battlersCount; i++)
+            DATA.currentMonIndexes[i] = i / 2;
+        break;
     case BATTLE_TEST_AI_MULTI:
-        DATA.recordedBattle.battleFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS;
+        DATA.recordedBattle.battleFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTI | BATTLE_TYPE_MULTIPLE_OPPONENTS;
         DATA.recordedBattle.partnerId = TRAINER_PARTNER(PARTNER_STEVEN_TEST);
         DATA.recordedBattle.opponentA = TRAINER_LEAF_TEST;
         DATA.recordedBattle.opponentB = TRAINER_RED_TEST;
@@ -416,7 +434,7 @@ static void BattleTest_Run(void *data)
         DATA.hasAI = TRUE;
         break;
     case BATTLE_TEST_AI_ONE_VS_TWO:
-        DATA.recordedBattle.battleFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS;
+        DATA.recordedBattle.battleFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTIPLE_OPPONENTS;
         DATA.recordedBattle.opponentA = TRAINER_LEAF_TEST;
         DATA.recordedBattle.opponentB = TRAINER_RED_TEST;
         DATA.currentMonIndexes[0] = 0; // Player first mon
@@ -438,8 +456,16 @@ static void BattleTest_Run(void *data)
         for (i = 0; i < STATE->battlersCount; i++)
             DATA.currentMonIndexes[i] = i / 2;
         break;
+    case BATTLE_TEST_TRIPLES:
+        DATA.recordedBattle.battleFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_RECORDED_IS_MASTER | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_TRAINER | BATTLE_TYPE_TRIPLE;
+        DATA.recordedBattle.opponentA = TRAINER_LINK_OPPONENT;
+        DATA.recordedBattle.opponentB = TRAINER_NONE;
+        DATA.recordedBattle.opponentC = TRAINER_NONE;
+        for (i = 0; i < STATE->battlersCount; i++)
+            DATA.currentMonIndexes[i] = i / 2;
+        break;
     case BATTLE_TEST_MULTI:
-        DATA.recordedBattle.battleFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_RECORDED_IS_MASTER | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS;
+        DATA.recordedBattle.battleFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_RECORDED_IS_MASTER | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTI | BATTLE_TYPE_MULTIPLE_OPPONENTS;
         DATA.recordedBattle.partnerId = TRAINER_PARTNER(PARTNER_STEVEN_TEST);
         DATA.recordedBattle.opponentA = TRAINER_LINK_OPPONENT;
         DATA.recordedBattle.opponentB = TRAINER_LINK_OPPONENT;
@@ -459,7 +485,7 @@ static void BattleTest_Run(void *data)
         DATA.currentMonIndexes[3] = 1; // Opponent second mon
         break;
     case BATTLE_TEST_ONE_VS_TWO:
-        DATA.recordedBattle.battleFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_RECORDED_IS_MASTER | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS;
+        DATA.recordedBattle.battleFlags = BATTLE_TYPE_IS_MASTER | BATTLE_TYPE_RECORDED_IS_MASTER | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTIPLE_OPPONENTS;
         DATA.recordedBattle.opponentA = TRAINER_LINK_OPPONENT;
         DATA.recordedBattle.opponentB = TRAINER_LINK_OPPONENT;
         DATA.currentMonIndexes[0] = 0; // Player first mon
@@ -2475,6 +2501,16 @@ static const char *const sBattlerIdentifiersDoubles[] =
     "opponentRight",
 };
 
+static const char *const sBattlerIdentifiersTriples[] =
+{
+    "playerLeft",
+    "opponentLeft",
+    "playerRight",
+    "opponentRight",
+    "playerTriple",
+    "opponentTriple",
+};
+
 static const char *BattlerIdentifier(s32 battlerId)
 {
     const struct BattleTest *test = GetBattleTest();
@@ -2493,6 +2529,9 @@ static const char *BattlerIdentifier(s32 battlerId)
     case BATTLE_TEST_ONE_VS_TWO:
     case BATTLE_TEST_AI_ONE_VS_TWO:
         return sBattlerIdentifiersDoubles[battlerId];
+    case BATTLE_TEST_TRIPLES:
+    case BATTLE_TEST_AI_TRIPLES:
+        return sBattlerIdentifiersTriples[battlerId];
     }
     return "<unknown>";
 }
@@ -2674,7 +2713,8 @@ s32 MoveGetTarget(s32 battlerId, enum Move moveId, struct MoveContext *ctx, u32 
         else if (moveTarget == TARGET_SELECTED || moveTarget == TARGET_SMART || moveTarget == TARGET_OPPONENT)
         {
             // In AI Doubles not specified target allows any target for EXPECT_MOVE.
-            if (GetBattleTest()->type != BATTLE_TEST_AI_DOUBLES)
+            if (GetBattleTest()->type != BATTLE_TEST_AI_DOUBLES
+             && GetBattleTest()->type != BATTLE_TEST_AI_TRIPLES)
             {
                 INVALID_IF(STATE->battlersCount > 2, "%S requires explicit target", GetMoveName(moveId));
             }
@@ -2695,7 +2735,8 @@ s32 MoveGetTarget(s32 battlerId, enum Move moveId, struct MoveContext *ctx, u32 
         else
         {
             // In AI Doubles not specified target allows any target for EXPECT_MOVE.
-            if (GetBattleTest()->type != BATTLE_TEST_AI_DOUBLES)
+            if (GetBattleTest()->type != BATTLE_TEST_AI_DOUBLES
+             && GetBattleTest()->type != BATTLE_TEST_AI_TRIPLES)
             {
                 INVALID("%S requires explicit target", GetMoveName(moveId));
             }
@@ -3118,7 +3159,7 @@ void UseItem(u32 sourceLine, struct BattlePokemon *battler, struct ItemContext c
     enum ItemType ctxItemType = GetItemType(ctx.itemId);
     bool32 requirePartyIndex = ctxItemType == ITEM_USE_PARTY_MENU
                             || ctxItemType == ITEM_USE_PARTY_MENU_MOVES
-                            || (ctxItemType == ITEM_USE_BATTLER && GetBattleTest()->type != BATTLE_TEST_AI_DOUBLES && STATE->battlersCount > 2);
+                            || (ctxItemType == ITEM_USE_BATTLER && GetBattleTest()->type != BATTLE_TEST_AI_DOUBLES  && GetBattleTest()->type != BATTLE_TEST_AI_TRIPLES && STATE->battlersCount > 2);
     // Check general bad use.
     INVALID_IF(DATA.turnState == TURN_CLOSED, "USE_ITEM outside TURN");
     INVALID_IF(DATA.actionBattlers & (1 << battlerId), "Multiple battler actions");

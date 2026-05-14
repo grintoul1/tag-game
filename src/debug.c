@@ -228,7 +228,7 @@ struct DebugMenuListData
     struct ListMenuItem listItems[DEBUG_MAX_MENU_ITEMS + 1];
     u8 itemNames[DEBUG_MAX_MENU_ITEMS + 1][26];
     u8 listId;
-    s16 data[8];
+    s16 data[9];
 };
 
 // EWRAM
@@ -1030,6 +1030,7 @@ static u8 Debug_GenerateListTrainerMenu(void)
     u32 trainer1Id = sDebugMenuListData->data[0];
     u32 trainer2Id = sDebugMenuListData->data[2];
     u32 partnerId = sDebugMenuListData->data[4];
+    u32 trainer3Id = sDebugMenuListData->data[8];
 
     s32 rematchTableId = sDebugMenuListData->data[1];
     bool32 isRealFight = sDebugMenuListData->data[3];
@@ -1057,7 +1058,8 @@ static u8 Debug_GenerateListTrainerMenu(void)
                 ConvertIntToDecimalStringN(gStringVar1, partnerId, STR_CONV_MODE_LEADING_ZEROS, 3);
             break;
         case 4:
-            if (sDebugMenuListData->data[5] || trainer2Id != TRAINER_NONE || partnerId != PARTNER_NONE)
+            if (((sDebugMenuListData->data[5] == 1) || (trainer2Id != TRAINER_NONE || partnerId != PARTNER_NONE))
+             && trainer3Id == TRAINER_NONE)
                 StringCopy(gStringVar1, COMPOUND_STRING("{COLOR GREEN} TRUE"));
             else
                 StringCopy(gStringVar1, COMPOUND_STRING("{COLOR RED} FALSE"));
@@ -1834,7 +1836,8 @@ static void Debug_Trainers_ResetTrainersData(void)
     sDebugMenuListData->data[2] = TRAINER_NONE;
     sDebugMenuListData->data[3] = -1;
     sDebugMenuListData->data[4] = PARTNER_NONE;
-    sDebugMenuListData->data[5] = FALSE;
+    sDebugMenuListData->data[5] = 0;
+    sDebugMenuListData->data[8] = TRAINER_NONE;
 }
 
 void SetMultiTrainerBattle(struct ScriptContext *ctx);
@@ -1888,7 +1891,9 @@ static void GetTrainerIdFromLocalId(u32 localId)
     Debug_Trainers_ResetTrainersData();
     ParseObjectEventScript(gMapHeader.events->objectEvents[localId - 1].script);
     if (GetTrainerBattleType(sDebugMenuListData->data[0]) == TRAINER_BATTLE_TYPE_DOUBLES)
-        sDebugMenuListData->data[5] = TRUE;
+        sDebugMenuListData->data[5] = 1;
+    else if (GetTrainerBattleType(sDebugMenuListData->data[0]) == TRAINER_BATTLE_TYPE_TRIPLES)
+        sDebugMenuListData->data[5] = 2;
 }
 
 #define TRAINER_TAG 0xFDF3
@@ -2100,12 +2105,25 @@ static void DebugAction_Trainers_ChooseTrainer(u8 taskId, u32 selection)
 
 static void DebugAction_Trainers_SwitchDoublesFlag(u8 taskId)
 {
-    if (sDebugMenuListData->data[2] != TRAINER_NONE || sDebugMenuListData->data[4] != PARTNER_NONE)
+    if (sDebugMenuListData->data[2] != TRAINER_NONE
+     || sDebugMenuListData->data[4] != PARTNER_NONE
+     || sDebugMenuListData->data[8] != TRAINER_NONE)
         return;
     if (sDebugMenuListData->data[5])
-        sDebugMenuListData->data[5] = FALSE;
+        sDebugMenuListData->data[5] = 0;
     else
-        sDebugMenuListData->data[5] = TRUE;
+        sDebugMenuListData->data[5] = 1;
+}
+
+static void DebugAction_Trainers_SwitchTriplesFlag(u8 taskId)
+{
+    if (sDebugMenuListData->data[8] != TRAINER_NONE
+     || sDebugMenuListData->data[5] == 1)
+        return;
+    if (sDebugMenuListData->data[5])
+        sDebugMenuListData->data[5] = 0;
+    else
+        sDebugMenuListData->data[5] = 2;
 }
 
 static void DebugAction_Trainers_SetRematch(u8 taskId)
@@ -2153,6 +2171,7 @@ static void DebugAction_Trainers_TryBattle(u8 taskId)
 {
     s32 trainer1Id = sDebugMenuListData->data[0];
     s32 trainer2Id = sDebugMenuListData->data[2];
+    s32 trainer3Id = sDebugMenuListData->data[8];
     s32 partnerId = sDebugMenuListData->data[4];
     s32 rematchId = sDebugMenuListData->data[1];
     if (sDebugMenuListData->data[1] != -1)
@@ -2165,12 +2184,28 @@ static void DebugAction_Trainers_TryBattle(u8 taskId)
     gBattleTypeFlags = BATTLE_TYPE_TRAINER;
     TRAINER_BATTLE_PARAM.opponentA = trainer1Id;
     TRAINER_BATTLE_PARAM.opponentB = 0xFFFF;
-    if (sDebugMenuListData->data[5] || partnerId != PARTNER_NONE || trainer2Id != TRAINER_NONE)
+    if (((sDebugMenuListData->data[5] == 1)
+     || (partnerId != PARTNER_NONE
+     || trainer2Id != TRAINER_NONE))
+     && trainer3Id == TRAINER_NONE)
+    {
         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+    }
+    if ((sDebugMenuListData->data[5] == 2)
+     || (trainer2Id != TRAINER_NONE
+     && trainer3Id != TRAINER_NONE))
+    {
+        gBattleTypeFlags |= BATTLE_TYPE_TRIPLE;
+    }
     if (trainer2Id != TRAINER_NONE)
     {
         TRAINER_BATTLE_PARAM.opponentB = trainer2Id;
-        gBattleTypeFlags |= BATTLE_TYPE_TWO_OPPONENTS;
+        gBattleTypeFlags |= BATTLE_TYPE_MULTIPLE_OPPONENTS;
+    }
+    if (trainer3Id != TRAINER_NONE)
+    {
+        TRAINER_BATTLE_PARAM.opponentC = trainer3Id;
+        gBattleTypeFlags |= BATTLE_TYPE_MULTIPLE_OPPONENTS;
     }
     if (partnerId != PARTNER_NONE)
     {
@@ -4913,6 +4948,8 @@ static void DebugAction_Party_BattleSingle(u8 taskId)
     gBattleTypeFlags = BATTLE_TYPE_TRAINER;
     if (sDebugTrainers[DIFFICULTY_NORMAL][DEBUG_TRAINER_AI].battleType == TRAINER_BATTLE_TYPE_DOUBLES)
         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+    else if (sDebugTrainers[DIFFICULTY_NORMAL][DEBUG_TRAINER_AI].battleType == TRAINER_BATTLE_TYPE_TRIPLES)
+        gBattleTypeFlags |= BATTLE_TYPE_TRIPLE;
     gDebugAIFlags = sDebugTrainers[DIFFICULTY_NORMAL][DEBUG_TRAINER_AI].aiFlags;
     gIsDebugBattle = TRUE;
     gBattleEnvironment = BattleSetup_GetEnvironmentId();

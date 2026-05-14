@@ -4118,7 +4118,7 @@ BattleScript_FirstTurnSwitchInEvents::
 	end3
 
 BattleScript_LocalTrainerBattleWon::
-	jumpifbattletype BATTLE_TYPE_TWO_OPPONENTS, BattleScript_LocalTwoTrainersDefeated
+	jumpifbattletype BATTLE_TYPE_MULTIPLE_OPPONENTS, BattleScript_LocalTwoTrainersDefeated
 	printstring STRINGID_PLAYERDEFEATEDTRAINER1
 	goto BattleScript_LocalBattleWonLoseTexts
 BattleScript_LocalTwoTrainersDefeated::
@@ -4127,7 +4127,7 @@ BattleScript_LocalBattleWonLoseTexts::
 	trainerslidein BS_OPPONENT1
 	waitstate
 	printstring STRINGID_TRAINER1LOSETEXT
-	jumpifnotbattletype BATTLE_TYPE_TWO_OPPONENTS, BattleScript_LocalBattleWonReward
+	jumpifnotbattletype BATTLE_TYPE_MULTIPLE_OPPONENTS, BattleScript_LocalBattleWonReward
 	trainerslideout BS_OPPONENT1
 	waitstate
 	trainerslidein BS_OPPONENT2
@@ -4200,7 +4200,7 @@ BattleScript_LocalBattleLostPrintTrainersWinText::
 	waitstate
 	printstring STRINGID_TRAINER1WINTEXT
 	jumpifbattletype BATTLE_TYPE_TOWER_LINK_MULTI, BattleScript_LocalBattleLostDoTrainer2WinText
-	jumpifnotbattletype BATTLE_TYPE_TWO_OPPONENTS, BattleScript_LocalBattleLostEnd_
+	jumpifnotbattletype BATTLE_TYPE_MULTIPLE_OPPONENTS, BattleScript_LocalBattleLostEnd_
 BattleScript_LocalBattleLostDoTrainer2WinText::
 	trainerslideout BS_OPPONENT1
 	waitstate
@@ -4259,7 +4259,7 @@ BattleScript_TowerLinkBattleWonEnd::
 
 BattleScript_FrontierTrainerBattleWon::
 	jumpifnotbattletype BATTLE_TYPE_TRAINER, BattleScript_PayDayMoneyAndPickUpItems
-	jumpifbattletype BATTLE_TYPE_TWO_OPPONENTS, BattleScript_FrontierTrainerBattleWon_TwoDefeated
+	jumpifbattletype BATTLE_TYPE_MULTIPLE_OPPONENTS, BattleScript_FrontierTrainerBattleWon_TwoDefeated
 	printstring STRINGID_PLAYERDEFEATEDTRAINER1
 	goto BattleScript_FrontierTrainerBattleWon_LoseTexts
 BattleScript_FrontierTrainerBattleWon_TwoDefeated:
@@ -4268,7 +4268,7 @@ BattleScript_FrontierTrainerBattleWon_LoseTexts:
 	trainerslidein BS_OPPONENT1
 	waitstate
 	printstring STRINGID_TRAINER1LOSETEXT
-	jumpifnotbattletype BATTLE_TYPE_TWO_OPPONENTS, BattleScript_TryPickUpItems
+	jumpifnotbattletype BATTLE_TYPE_MULTIPLE_OPPONENTS, BattleScript_TryPickUpItems
 	trainerslideout BS_OPPONENT1
 	waitstate
 	trainerslidein BS_OPPONENT2

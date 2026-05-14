@@ -68,7 +68,7 @@ enum TransitionType
 static void DoBattlePikeWildBattle(void);
 static void DoSafariBattle(void);
 static void DoGhostBattle(void);
-static void DoStandardWildBattle(bool32 isDouble);
+static void DoStandardWildBattle(bool32 isDouble, bool32 isTriple);
 static void CB2_EndWildBattle(void);
 static void CB2_EndScriptedWildBattle(void);
 static void CB2_EndMarowakBattle(void);
@@ -334,12 +334,17 @@ void BattleSetup_StartWildBattle(void)
     else if (CheckSilphScopeInPokemonTower(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum))
         DoGhostBattle();
     else
-        DoStandardWildBattle(FALSE);
+        DoStandardWildBattle(FALSE, FALSE);
 }
 
 void BattleSetup_StartDoubleWildBattle(void)
 {
-    DoStandardWildBattle(TRUE);
+    DoStandardWildBattle(TRUE, FALSE);
+}
+
+void BattleSetup_StartTripleWildBattle(void)
+{
+    DoStandardWildBattle(FALSE, TRUE);
 }
 
 void BattleSetup_StartBattlePikeWildBattle(void)
@@ -347,7 +352,7 @@ void BattleSetup_StartBattlePikeWildBattle(void)
     DoBattlePikeWildBattle();
 }
 
-static void DoStandardWildBattle(bool32 isDouble)
+static void DoStandardWildBattle(bool32 isDouble, bool32 isTriple)
 {
     LockPlayerFieldControls();
     FreezeObjectEvents();
@@ -360,6 +365,8 @@ static void DoStandardWildBattle(bool32 isDouble)
     }
     else if (isDouble)
         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+    else if (isTriple)
+        gBattleTypeFlags |= BATTLE_TYPE_TRIPLE;
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
     {
         VarSet(VAR_TEMP_E, 0);
@@ -498,6 +505,18 @@ void BattleSetup_StartScriptedDoubleWildBattle(void)
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_DOUBLE;
+    CreateBattleStartTask(GetWildBattleTransition(), 0);
+    IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
+    IncrementGameStat(GAME_STAT_WILD_BATTLES);
+    IncrementDailyWildBattles();
+    TryUpdateGymLeaderRematchFromWild();
+}
+
+void BattleSetup_StartScriptedTripleWildBattle(void)
+{
+    LockPlayerFieldControls();
+    gMain.savedCallback = CB2_EndScriptedWildBattle;
+    gBattleTypeFlags = BATTLE_TYPE_TRIPLE;
     CreateBattleStartTask(GetWildBattleTransition(), 0);
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
     IncrementGameStat(GAME_STAT_WILD_BATTLES);
@@ -886,6 +905,9 @@ enum BattleTransition GetTrainerBattleTransition(void)
     case TRAINER_BATTLE_TYPE_DOUBLES:
         minPartyCount = 2; // double battles always at least have 2 Pokémon.
         break;
+    case TRAINER_BATTLE_TYPE_TRIPLES:
+        minPartyCount = 3; // double battles always at least have 2 Pokémon.
+        break;
     }
 
     transitionType = GetBattleTransitionTypeByMap();
@@ -1121,6 +1143,9 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
     case TRAINER_BATTLE_DOUBLE:
         SetMapVarsToTrainerA();
         return EventScript_TryDoDoubleTrainerBattle;
+    case TRAINER_BATTLE_TRIPLE:
+        SetMapVarsToTrainerA();
+        return EventScript_TryDoTripleTrainerBattle;
     case TRAINER_BATTLE_CONTINUE_SCRIPT:
         if (gApproachingTrainerId == 0)
         {
@@ -1134,6 +1159,10 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
     case TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC:
         SetMapVarsToTrainerA();
         return EventScript_TryDoDoubleTrainerBattle;
+    case TRAINER_BATTLE_CONTINUE_SCRIPT_TRIPLE:
+    case TRAINER_BATTLE_CONTINUE_SCRIPT_TRIPLE_NO_MUSIC:
+        SetMapVarsToTrainerA();
+        return EventScript_TryDoTripleTrainerBattle;
 #if FREE_MATCH_CALL == FALSE
     case TRAINER_BATTLE_REMATCH_DOUBLE:
         SetMapVarsToTrainerA();
@@ -1299,12 +1328,19 @@ void ClearTrainerFlag(u16 trainerId)
 
 void BattleSetup_StartTrainerBattle(void)
 {
-    if (gNoOfApproachingTrainers == 2)
+    if (gNoOfApproachingTrainers == 3)
     {
         if (FollowerNPCIsBattlePartner())
-            gBattleTypeFlags = (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TRAINER);
+            gBattleTypeFlags = (BATTLE_TYPE_MULTI | BATTLE_TYPE_TRIPLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTIPLE_OPPONENTS | BATTLE_TYPE_TRAINER);
         else
-            gBattleTypeFlags = (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TRAINER);
+            gBattleTypeFlags = (BATTLE_TYPE_TRIPLE | BATTLE_TYPE_MULTIPLE_OPPONENTS | BATTLE_TYPE_TRAINER);
+    }
+    else if (gNoOfApproachingTrainers == 2)
+    {
+        if (FollowerNPCIsBattlePartner())
+            gBattleTypeFlags = (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTIPLE_OPPONENTS | BATTLE_TYPE_TRAINER);
+        else
+            gBattleTypeFlags = (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTIPLE_OPPONENTS | BATTLE_TYPE_TRAINER);
     }
     else
     {
@@ -1354,6 +1390,10 @@ void BattleSetup_StartTrainerBattle(void)
             FillHillTrainerParty();
 
         SetHillTrainerFlag();
+    }
+    else if (GetTrainerBattleType(TRAINER_BATTLE_PARAM.opponentA) == TRAINER_BATTLE_TYPE_TRIPLES)
+    {
+        gBattleTypeFlags |= BATTLE_TYPE_TRIPLE;
     }
     else if (GetTrainerBattleType(TRAINER_BATTLE_PARAM.opponentA) == TRAINER_BATTLE_TYPE_DOUBLES)
     {

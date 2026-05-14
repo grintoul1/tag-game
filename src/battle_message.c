@@ -2398,16 +2398,16 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
                     {
                         if (TESTING && gBattleTypeFlags & BATTLE_TYPE_MULTI)
                         {
-                            if (!(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
+                            if (!(gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS))
                                 stringPtr = sText_Trainer1WantsToBattle;
                             else
                                 stringPtr = sText_TwoTrainersWantToBattle;
                         }
-                        else if (TESTING && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+                        else if (TESTING && gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
                         {
                             stringPtr = sText_TwoTrainersWantToBattle;
                         }
-                        else if (!(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
+                        else if (!(gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS))
                         {
                             stringPtr = sText_LinkTrainerWantsToBattlePause;
                         }
@@ -2437,7 +2437,7 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
                     stringPtr = sText_Trainer1WantsToBattle;
                 else if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER))
                     stringPtr = sText_TwoTrainersWantToBattle;
-                else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+                else if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
                     stringPtr = sText_TwoTrainersWantToBattle;
                 else
                     stringPtr = sText_Trainer1WantsToBattle;
@@ -2472,7 +2472,7 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
                     else // Player is battler 2
                         stringPtr = sText_InGamePartnerSentOutNGoZ;
                 }
-                else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+                else if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
                 {
                     stringPtr = sText_GoTwoPkmn;
                 }
@@ -2499,7 +2499,7 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
             {
                 if (BATTLE_TWO_VS_ONE_OPPONENT)
                     stringPtr = sText_Trainer1SentOutTwoPkmn;
-                else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+                else if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
                     stringPtr = sText_TwoTrainersSentPkmn;
                 else if (gBattleTypeFlags & BATTLE_TYPE_TOWER_LINK_MULTI)
                     stringPtr = sText_TwoTrainersSentPkmn;
@@ -2583,12 +2583,12 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
             else if (BattlerIsLink(battler) || TRAINER_BATTLE_PARAM.opponentA == TRAINER_LINK_OPPONENT
             || TRAINER_BATTLE_PARAM.opponentB == TRAINER_LINK_OPPONENT || gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK) // Link Opponent B and test opponent
             {
-                if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+                if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
                     stringPtr = sText_LinkTrainer2WithdrewPkmn;
                 else
                     stringPtr = sText_LinkTrainer1WithdrewPkmn;
             }
-            else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS) // Opponent B
+            else if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS) // Opponent B
             {
                 stringPtr = sText_Trainer2WithdrewPkmn;
             }
@@ -2660,12 +2660,12 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
             else if (BattlerIsLink(gBattleScripting.battler) || TRAINER_BATTLE_PARAM.opponentA == TRAINER_LINK_OPPONENT
             || TRAINER_BATTLE_PARAM.opponentB == TRAINER_LINK_OPPONENT || gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK) // Link Opponent B and test opponent
             {
-                if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+                if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
                     stringPtr = sText_LinkTrainer2SentOutPkmn2;
                 else
                     stringPtr = sText_LinkTrainerSentOutPkmn2;
             }
-            else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS) // Opponent B
+            else if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS) // Opponent B
             {
                 stringPtr = sText_Trainer2SentOutPkmn;
             }
@@ -2708,13 +2708,13 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
                         }
                         else
                         {
-                            if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+                            if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
                                 stringPtr = sText_Trainer2SentOutPkmn;
                             else
                                 stringPtr = sText_Trainer1SentOutPkmn2;
                         }
                     }
-                    else if (TESTING && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+                    else if (TESTING && gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
                     {
                         if (gBattleScripting.battler == 1)
                             stringPtr = sText_Trainer1SentOutPkmn;
@@ -2737,7 +2737,7 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
             }
             else
             {
-                if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+                if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
                 {
                     if (gBattleScripting.battler == 1)
                         stringPtr = sText_Trainer1SentOutPkmn2;
@@ -3017,7 +3017,7 @@ static const u8 *BattleStringGetOpponentName(u8 *text, u8 multiplayerId, enum Ba
         toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, text, multiplayerId, battler);
         break;
     case B_POSITION_OPPONENT_RIGHT:
-        if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI) && !BATTLE_TWO_VS_ONE_OPPONENT)
+        if (gBattleTypeFlags & (BATTLE_TYPE_MULTIPLE_OPPONENTS | BATTLE_TYPE_MULTI) && !BATTLE_TWO_VS_ONE_OPPONENT)
             toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentB, text, multiplayerId, battler);
         else
             toCpy = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, text, multiplayerId, battler);
@@ -3570,7 +3570,7 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                     toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
                     break;
                 case B_POSITION_OPPONENT_RIGHT:
-                    if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
+                    if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
                         toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentB);
                     else
                         toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
@@ -3598,7 +3598,7 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                         classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
                         break;
                     case B_POSITION_OPPONENT_RIGHT:
-                        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
+                        if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
                             classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentB);
                         else
                             classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);

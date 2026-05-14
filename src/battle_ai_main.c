@@ -205,6 +205,8 @@ static u64 GetWildAiFlags(void)
 
     if (IsDoubleBattle())
         avgLevel = (GetMonData(&gEnemyParty[0], MON_DATA_LEVEL) + GetMonData(&gEnemyParty[1], MON_DATA_LEVEL)) / 2;
+    else if (IsTripleBattle())
+        avgLevel = (GetMonData(&gEnemyParty[0], MON_DATA_LEVEL) + GetMonData(&gEnemyParty[1], MON_DATA_LEVEL) + GetMonData(&gEnemyParty[2], MON_DATA_LEVEL)) / 3;
 
     flags |= AI_FLAG_CHECK_BAD_MOVE;
     if (avgLevel >= 20)
@@ -278,6 +280,7 @@ void BattleAI_SetupFlags(void)
     {
         gAiThinkingStruct->aiFlags[B_BATTLER_1] = gDebugAIFlags;
         gAiThinkingStruct->aiFlags[B_BATTLER_3] = gDebugAIFlags;
+        gAiThinkingStruct->aiFlags[B_BATTLER_5] = gDebugAIFlags;
         return;
     }
 
@@ -286,16 +289,26 @@ void BattleAI_SetupFlags(void)
         // smart wild AI
         gAiThinkingStruct->aiFlags[B_BATTLER_1] = GetAiFlags(0xFFFF, B_BATTLER_1);
         gAiThinkingStruct->aiFlags[B_BATTLER_3] = GetAiFlags(0xFFFF, B_BATTLER_3);
+        gAiThinkingStruct->aiFlags[B_BATTLER_5] = GetAiFlags(0xFFFF, B_BATTLER_5);
 
         // The check is here because wild natural enemies are not symmetrical.
-        if (B_WILD_NATURAL_ENEMIES && IsDoubleBattle())
+        if (B_WILD_NATURAL_ENEMIES && (IsDoubleBattle() || IsTripleBattle()))
         {
             enum Species speciesLeft = GetMonData(&gEnemyParty[0], MON_DATA_SPECIES);
             enum Species speciesRight = GetMonData(&gEnemyParty[1], MON_DATA_SPECIES);
+            enum Species speciesTriple = GetMonData(&gEnemyParty[2], MON_DATA_SPECIES);
             if (IsNaturalEnemy(speciesLeft, speciesRight))
+                gAiThinkingStruct->aiFlags[B_BATTLER_1] |= AI_FLAG_ATTACKS_PARTNER;
+            if (IsNaturalEnemy(speciesLeft, speciesTriple))
                 gAiThinkingStruct->aiFlags[B_BATTLER_1] |= AI_FLAG_ATTACKS_PARTNER;
             if (IsNaturalEnemy(speciesRight, speciesLeft))
                 gAiThinkingStruct->aiFlags[B_BATTLER_3] |= AI_FLAG_ATTACKS_PARTNER;
+            if (IsNaturalEnemy(speciesRight, speciesTriple))
+                gAiThinkingStruct->aiFlags[B_BATTLER_3] |= AI_FLAG_ATTACKS_PARTNER;
+            if (IsNaturalEnemy(speciesTriple, speciesLeft))
+                gAiThinkingStruct->aiFlags[B_BATTLER_5] |= AI_FLAG_ATTACKS_PARTNER;
+            if (IsNaturalEnemy(speciesTriple, speciesRight))
+                gAiThinkingStruct->aiFlags[B_BATTLER_5] |= AI_FLAG_ATTACKS_PARTNER;
         }
     }
     else
@@ -305,20 +318,27 @@ void BattleAI_SetupFlags(void)
             gAiThinkingStruct->aiFlags[B_BATTLER_3] = GetAiFlags(TRAINER_BATTLE_PARAM.opponentB, B_BATTLER_3);
         else
             gAiThinkingStruct->aiFlags[B_BATTLER_3] = gAiThinkingStruct->aiFlags[B_BATTLER_1];
+        if ((TRAINER_BATTLE_PARAM.opponentC != 0) && (TRAINER_BATTLE_PARAM.opponentC != 0xFFFF))
+            gAiThinkingStruct->aiFlags[B_BATTLER_5] = GetAiFlags(TRAINER_BATTLE_PARAM.opponentC, B_BATTLER_5);
+        else
+            gAiThinkingStruct->aiFlags[B_BATTLER_5] = gAiThinkingStruct->aiFlags[B_BATTLER_1];
     }
 
     if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
     {
         gAiThinkingStruct->aiFlags[B_BATTLER_2] = GetAiFlags(gPartnerTrainerId, B_BATTLER_1);
     }
-    else if (IsDoubleBattle() && IsAiVsAiBattle())
+    else if ((IsDoubleBattle() || IsTripleBattle()) && IsAiVsAiBattle())
     {
         gAiThinkingStruct->aiFlags[B_BATTLER_2] = gAiThinkingStruct->aiFlags[B_BATTLER_0];
+        gAiThinkingStruct->aiFlags[B_BATTLER_4] = gAiThinkingStruct->aiFlags[B_BATTLER_0];
     }
     else // Assign ai flags for player for prediction
     {
         u64 aiFlags = GetAiFlags(TRAINER_BATTLE_PARAM.opponentA, B_BATTLER_1)
-                    | GetAiFlags(TRAINER_BATTLE_PARAM.opponentB, B_BATTLER_3);
+                    | GetAiFlags(TRAINER_BATTLE_PARAM.opponentB, B_BATTLER_3)
+                    | GetAiFlags(TRAINER_BATTLE_PARAM.opponentC, B_BATTLER_5);
+        gAiThinkingStruct->aiFlags[B_BATTLER_4] = aiFlags;
         gAiThinkingStruct->aiFlags[B_BATTLER_2] = aiFlags;
         gAiThinkingStruct->aiFlags[B_BATTLER_0] = aiFlags;
     }
@@ -407,7 +427,7 @@ void ReconsiderGimmick(enum BattlerId battlerAtk, enum BattlerId battlerDef, enu
 
 static u32 ChooseMoveOrAction(enum BattlerId battler)
 {
-    if (IsDoubleBattle())
+    if (IsDoubleBattle() || IsTripleBattle())
         return ChooseMoveOrAction_Doubles(battler);
     return ChooseMoveOrAction_Singles(battler);
 }
@@ -523,8 +543,10 @@ void Ai_InitPartyStruct(void)
 
     // Save first 2 or 4(in doubles) mons
     CopyBattlerDataToAIParty(B_POSITION_PLAYER_LEFT, B_SIDE_PLAYER);
-    if (IsDoubleBattle())
+    if (IsDoubleBattle() || IsTripleBattle())
         CopyBattlerDataToAIParty(B_POSITION_PLAYER_RIGHT, B_SIDE_PLAYER);
+    if (IsTripleBattle())
+        CopyBattlerDataToAIParty(B_POSITION_PLAYER_TRIPLE, B_SIDE_PLAYER);
 
     // If player's partner is AI, save opponent mons
     if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
@@ -3170,7 +3192,7 @@ static s32 AI_TryToFaint(enum BattlerId battlerAtk, enum BattlerId battlerDef, e
             && AI_GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER
             && GetBattleMovePriority(battlerAtk, gAiLogicData->abilities[battlerAtk], move) > 0)
     {
-        if (RandomPercentage(RNG_AI_PRIORITIZE_LAST_CHANCE, PRIORITIZE_LAST_CHANCE_CHANCE) && !IsDoubleBattle()) // Last Chance behaviour is too easily abused in doubles
+        if (RandomPercentage(RNG_AI_PRIORITIZE_LAST_CHANCE, PRIORITIZE_LAST_CHANCE_CHANCE) && !IsDoubleBattle() && !IsTripleBattle()) // Last Chance behaviour is too easily abused in doubles
             ADJUST_SCORE(SLOW_KILL + 2); // Don't outscore Fast Kill (which gets a bonus point in AI_CompareDamagingMoves), but do outscore Slow Kill getting the same
         else
             ADJUST_SCORE(LAST_CHANCE);
@@ -4386,7 +4408,7 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
     }
 
     // check guaranteed flinch, a la Fake Out
-    if (IsFlinchGuaranteed(battlerAtk, battlerDef, move) && !IsDoubleBattle())
+    if (IsFlinchGuaranteed(battlerAtk, battlerDef, move) && !IsDoubleBattle() && !IsTripleBattle())
         ADJUST_SCORE(BEST_EFFECT);
 
     if (IsExplosionMove(move) && gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_WILL_SUICIDE && gBattleMons[battlerDef].statStages[STAT_EVASION] <= DEFAULT_STAT_STAGE)
@@ -5033,7 +5055,7 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
         if (gBattleStruct->battlerState[battlerAtk].isFirstTurn && !IsTargetingPartner(battlerAtk, battlerDef))
         {
             // Fake Out in doubles
-            if (IsDoubleBattle() && IsFlinchGuaranteed(battlerAtk, battlerDef, move))
+            if ((IsDoubleBattle() || IsTripleBattle()) && IsFlinchGuaranteed(battlerAtk, battlerDef, move))
             {
                 bool32 atkKoDef = CanAIFaintTarget(battlerAtk, battlerDef, 1);
                 bool32 atkKoDefPartner = CanAIFaintTarget(battlerAtk, battlerDefPartner, 1);

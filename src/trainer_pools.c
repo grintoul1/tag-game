@@ -32,7 +32,8 @@ static u32 DefaultLeadPickFunction(const struct Trainer *trainer, u8 *poolIndexA
     u32 monIndex = POOL_SLOT_DISABLED;
     //  monIndex is set to 255 if nothing has been chosen yet, this gives an upper limit on pool size of 255
     if ((partyIndex == 0)
-     || (partyIndex == 1 && (battleTypeFlags & BATTLE_TYPE_DOUBLE)))
+     || (partyIndex == 1 && (battleTypeFlags & BATTLE_TYPE_DOUBLE))
+     || (partyIndex == 2 && (battleTypeFlags & BATTLE_TYPE_TRIPLE)))
     {
         //  Find required + lead tags
         bool32 foundRequiredTag = FALSE;
@@ -70,7 +71,9 @@ static u32 DefaultAcePickFunction(const struct Trainer *trainer, u8 *poolIndexAr
     u32 arrayIndex = 0;
     u32 monIndex = POOL_SLOT_DISABLED;
     //  monIndex is set to 255 if nothing has been chosen yet, this gives an upper limit on pool size of 255
-    if (((partyIndex == monsCount - 1) || (partyIndex == monsCount - 2 && battleTypeFlags & BATTLE_TYPE_DOUBLE))
+    if (((partyIndex == monsCount - 1)
+     || (partyIndex == monsCount - 2 && battleTypeFlags & BATTLE_TYPE_DOUBLE)
+     || (partyIndex == monsCount - 3 && battleTypeFlags & BATTLE_TYPE_TRIPLE))
      && (rules->tagMaxMembers[1] == POOL_MEMBER_COUNT_UNLIMITED || rules->tagMaxMembers[1] >= 1))
     {
         //  Find required + ace tags

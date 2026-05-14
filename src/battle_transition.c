@@ -2377,7 +2377,7 @@ static bool8 Mugshot_StartOpponentSlide(struct Task *task)
     sTransitionData->BG0HOFS_Upper += 8;
 
     SetTrainerPicSlideDirection(task->tOpponentSpriteAId, 0);
-    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
     {
             SetTrainerPicSlideDirection(task->tOpponentSpriteBId, 0);
     }
@@ -2392,7 +2392,7 @@ static bool8 Mugshot_StartOpponentSlide(struct Task *task)
 
     PlaySE(SE_MUGSHOT);
 
-    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
     {
         IncrementTrainerPicState(task->tOpponentSpriteBId);
     }
@@ -2590,7 +2590,7 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
     s16 opponentBRotationScales = 0;
 
     gReservedSpritePaletteCount = 10;
-    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
     {
         task->tOpponentSpriteBId = CreateTrainerSprite(trainerBPicId,
                                                     gTrainerSprites[trainerBPicId].mugshotCoords.x - 240,

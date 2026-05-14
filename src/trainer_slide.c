@@ -260,7 +260,7 @@ static void SetTrainerSlideParameters(enum BattlerId battler, u32* firstId, u32*
 {
     if ((battler & BIT_SIDE) == B_SIDE_OPPONENT)
     {
-        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
         {
             if (gBattlerPartyIndexes[battler] >= MULTI_PARTY_SIZE)
             {

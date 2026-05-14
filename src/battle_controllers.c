@@ -196,12 +196,15 @@ static void InitBtlControllersInternal(void)
     bool32 isMulti = (gBattleTypeFlags & BATTLE_TYPE_MULTI);
     bool32 isInGamePartner = (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER);
     bool32 isAIvsAI = IsAiVsAiBattle();
+    bool32 isTriple = (gBattleTypeFlags & BATTLE_TYPE_TRIPLE);
 
     if (!isLink || isMaster)
         gBattleMainFunc = BeginBattleIntro;
 
-    if (!isDouble)
+    if (!isDouble && !isTriple)
         gBattlersCount = 2;
+    else if (isDouble)
+        gBattlersCount = 4;
     else
         gBattlersCount = MAX_BATTLERS_COUNT;
 
@@ -216,17 +219,22 @@ static void InitBtlControllersInternal(void)
             isPlayerPrimary = (isMaster || (isDouble && isMulti));
         else if (!isRecorded)
             isPlayerPrimary = TRUE;
-        else if (isDouble)
+        else if (isDouble || isTriple)
             isPlayerPrimary = (isInGamePartner || isMulti || isMaster);
         else
             isPlayerPrimary = (!isRecordedLink || isRecordedMaster);
 
         gBattlerPositions[B_BATTLER_0] = isPlayerPrimary ? B_POSITION_PLAYER_LEFT : B_POSITION_OPPONENT_LEFT;
         gBattlerPositions[B_BATTLER_1] = isPlayerPrimary ? B_POSITION_OPPONENT_LEFT : B_POSITION_PLAYER_LEFT;
-        if (isDouble)
+        if (isDouble || isTriple)
         {
             gBattlerPositions[B_BATTLER_2] = isPlayerPrimary ? B_POSITION_PLAYER_RIGHT : B_POSITION_OPPONENT_RIGHT;
             gBattlerPositions[B_BATTLER_3] = isPlayerPrimary ? B_POSITION_OPPONENT_RIGHT : B_POSITION_PLAYER_RIGHT;
+        }
+        if (isTriple)
+        {
+            gBattlerPositions[B_BATTLER_4] = B_POSITION_PLAYER_TRIPLE;
+            gBattlerPositions[B_BATTLER_5] = B_POSITION_OPPONENT_TRIPLE;
         }
 
         if (isLink)
@@ -310,6 +318,18 @@ static void InitBtlControllersInternal(void)
                 gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_3)] = SetControllerToOpponent;
             else
                 gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_3)] = SetControllerToRecordedOpponent;
+            
+            // Player 3
+            if (isRecordedLink)
+                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_4)] = SetControllerToRecordedPlayer;
+            else
+                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_4)] = SetControllerToPlayer;
+
+            // Opponent 3
+            if (isRecordedLink)
+                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_5)] = SetControllerToRecordedOpponent;
+            else
+                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_5)] = SetControllerToOpponent;
         }
 
         bool32 bufferPartyOrders;
@@ -508,7 +528,7 @@ static void SetBattlePartyIds(void)
                 gBattlerPartyIndexes[i] -= PARTY_SIZE;
         }
 
-        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
             gBattlerPartyIndexes[1] = 0, gBattlerPartyIndexes[3] = 3;
     }
 }
@@ -1979,8 +1999,8 @@ static bool8 ShouldDoSlideInAnim(enum BattlerId battler)
         return FALSE;
 
     if (gBattleTypeFlags & (
-        BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_FIRST_BATTLE |
-        BATTLE_TYPE_SAFARI | BATTLE_TYPE_CATCH_TUTORIAL | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_TWO_OPPONENTS |
+        BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TRIPLE | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_FIRST_BATTLE |
+        BATTLE_TYPE_SAFARI | BATTLE_TYPE_CATCH_TUTORIAL | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_MULTIPLE_OPPONENTS |
         BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_RECORDED | BATTLE_TYPE_TRAINER_HILL)
     )
         return FALSE;
@@ -2828,11 +2848,26 @@ bool32 TwoPlayerIntroMons(enum BattlerId battler) // Double battle with both pla
     return (IsDoubleBattle() && IsValidForBattle(GetBattlerMon(battler ^ BIT_FLANK)));
 }
 
+bool32 ThreePlayerIntroMons(enum BattlerId battler) // Triple battle with both player pokemon active.
+{
+    return (IsTripleBattle()
+     && IsValidForBattle(GetBattlerMon((battler & ~BIT_TRIPLE) ^ BIT_FLANK))
+     && IsValidForBattle(GetBattlerMon((battler & ~BIT_FLANK) ^ BIT_TRIPLE)));
+}
+
 bool32 TwoOpponentIntroMons(enum BattlerId battler) // Double battle with both opponent pokemon active.
 {
     return (IsDoubleBattle()
             && IsValidForBattle(GetBattlerMon(battler))
             && IsValidForBattle(GetBattlerMon(BATTLE_PARTNER(battler))));
+}
+
+bool32 ThreeOpponentIntroMons(enum BattlerId battler) // Triple battle with both opponent pokemon active.
+{
+    return (IsTripleBattle()
+            && IsValidForBattle(GetBattlerMon(battler))
+            && IsValidForBattle(GetBattlerMon(BATTLE_PARTNER(battler)))
+            && IsValidForBattle(GetBattlerMon(BATTLE_TRIPLE(battler))));
 }
 
 // Task data for Task_StartSendOutAnim
@@ -2901,7 +2936,26 @@ static bool32 TwoMonsAtSendOut(enum BattlerId battler)
     {
         if ((!TwoOpponentIntroMons(battler) || (gBattleTypeFlags & BATTLE_TYPE_MULTI)) && !BATTLE_TWO_VS_ONE_OPPONENT)
             return FALSE;
-        else if ((gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS) || (BATTLE_TWO_VS_ONE_OPPONENT && !TwoOpponentIntroMons(battler)))
+        else if ((gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS) || (BATTLE_TWO_VS_ONE_OPPONENT && !TwoOpponentIntroMons(battler)))
+            return FALSE;
+        else
+            return TRUE;
+    }
+    return FALSE;
+}
+
+static bool32 ThreeMonsAtSendOut(enum BattlerId battler)
+{
+    if (IsOnPlayerSide(battler))
+    {
+        if (ThreePlayerIntroMons(battler))
+            return TRUE;
+        else
+            return FALSE;
+    }
+    else
+    {
+        if ((!ThreeOpponentIntroMons(battler) || (gBattleTypeFlags & BATTLE_TYPE_MULTI)) && !BATTLE_TWO_VS_ONE_OPPONENT)
             return FALSE;
         else
             return TRUE;
@@ -2918,10 +2972,24 @@ static void Task_StartSendOutAnim(u8 taskId)
     }
     else
     {
-        enum BattlerId battlerPartner;
+        enum BattlerId battlerPartner, battlerTriple;
         enum BattlerId battler = gTasks[taskId].tBattlerId;
 
-        if (TwoMonsAtSendOut(battler))
+        if (ThreeMonsAtSendOut(battler))
+        {
+            gBattleResources->bufferA[battler][1] = gBattlerPartyIndexes[battler];
+            StartSendOutAnim(battler, FALSE, FALSE, ShouldDoSlideInAnim(battler));
+
+            battlerPartner = battler ^ BIT_FLANK;
+            gBattleResources->bufferA[battlerPartner][1] = gBattlerPartyIndexes[battlerPartner];
+            BattleLoadMonSpriteGfx(GetBattlerMon(battlerPartner), battlerPartner);
+            StartSendOutAnim(battlerPartner, FALSE, FALSE, ShouldDoSlideInAnim(battler));
+            battlerTriple = (battler & BIT_SIDE) ^ BIT_TRIPLE;
+            gBattleResources->bufferA[battlerTriple][1] = gBattlerPartyIndexes[battlerTriple];
+            BattleLoadMonSpriteGfx(GetBattlerMon(battlerTriple), battlerTriple);
+            StartSendOutAnim(battlerTriple, FALSE, FALSE, ShouldDoSlideInAnim(battler));
+        }
+        else if (TwoMonsAtSendOut(battler))
         {
             gBattleResources->bufferA[battler][1] = gBattlerPartyIndexes[battler];
             StartSendOutAnim(battler, FALSE, FALSE, ShouldDoSlideInAnim(battler));
@@ -3053,7 +3121,7 @@ static void AnimateMonAfterKnockout(enum BattlerId battler)
     if (IsBattlerAlive(oppositeBattler))
         LaunchKOAnimation(oppositeBattler, ReturnAnimIdForBattler(wasPlayerSideKnockedOut, oppositeBattler), wasPlayerSideKnockedOut);
 
-    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE && IsBattlerAlive(partnerBattler))
+    if (gBattleTypeFlags & (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TRIPLE) && IsBattlerAlive(partnerBattler))
         LaunchKOAnimation(partnerBattler, ReturnAnimIdForBattler(wasPlayerSideKnockedOut, partnerBattler), wasPlayerSideKnockedOut);
 }
 
@@ -3304,7 +3372,7 @@ enum BattleTrainer GetBattlerTrainer(enum BattlerId battler)
         else
             return B_TRAINER_0;
     case B_BATTLER_3:
-        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
             return B_TRAINER_3;
         else
             return B_TRAINER_1;

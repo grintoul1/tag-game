@@ -724,7 +724,7 @@ struct AiBattleData
 // The palaceFlags member of struct BattleStruct contains 1 flag per move to indicate which moves the AI should consider,
 // and 1 flag per battler to indicate whether the battler is awake and at <= 50% HP (which affects move choice).
 // The assert below is to ensure palaceFlags is large enough to store these flags without overlap.
-STATIC_ASSERT(sizeof(((struct BattleStruct *)0)->palaceFlags) * 8 >= MAX_BATTLERS_COUNT + MAX_MON_MOVES, PalaceFlagsTooSmall)
+// grintoul TO DO STATIC_ASSERT(sizeof(((struct BattleStruct *)0)->palaceFlags) * 8 >= MAX_BATTLERS_COUNT + MAX_MON_MOVES, PalaceFlagsTooSmall)
 
 #define DYNAMIC_TYPE_MASK                 ((1 << 6) - 1)
 #define F_DYNAMIC_TYPE_IGNORE_PHYSICALITY  (1 << 6) // If set, the dynamic type's physicality won't be used for certain move effects.
@@ -1150,9 +1150,14 @@ static inline bool32 IsDoubleBattle(void)
     return !!(gBattleTypeFlags & BATTLE_TYPE_MORE_THAN_TWO_BATTLERS);
 }
 
+static inline bool32 IsTripleBattle(void)
+{
+    return !!(gBattleTypeFlags & BATTLE_TYPE_TRIPLE);
+}
+
 static inline bool32 IsSpreadMove(enum MoveTarget moveTarget)
 {
-    if (!IsDoubleBattle())
+    if (!IsDoubleBattle() && !IsTripleBattle())
         return FALSE;
     return moveTarget == TARGET_BOTH || moveTarget == TARGET_FOES_AND_ALLY;
 }

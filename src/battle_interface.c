@@ -221,7 +221,7 @@ static const struct OamData sOamData_64x32 =
     .affineParam = 0,
 };
 
-static const struct SpriteTemplate sHealthboxPlayerSpriteTemplates[2] =
+static const struct SpriteTemplate sHealthboxPlayerSpriteTemplates[3] =
 {
     {
         .tileTag = TAG_HEALTHBOX_PLAYER1_TILE,
@@ -232,10 +232,15 @@ static const struct SpriteTemplate sHealthboxPlayerSpriteTemplates[2] =
         .tileTag = TAG_HEALTHBOX_PLAYER2_TILE,
         .paletteTag = TAG_HEALTHBOX_PAL,
         .oam = &sOamData_64x32,
+    },
+    {
+        .tileTag = TAG_HEALTHBOX_PLAYER3_TILE,
+        .paletteTag = TAG_HEALTHBOX_PAL,
+        .oam = &sOamData_64x32,
     }
 };
 
-static const struct SpriteTemplate sHealthboxOpponentSpriteTemplates[2] =
+static const struct SpriteTemplate sHealthboxOpponentSpriteTemplates[3] =
 {
     {
         .tileTag = TAG_HEALTHBOX_OPPONENT1_TILE,
@@ -244,6 +249,11 @@ static const struct SpriteTemplate sHealthboxOpponentSpriteTemplates[2] =
     },
     {
         .tileTag = TAG_HEALTHBOX_OPPONENT2_TILE,
+        .paletteTag = TAG_HEALTHBOX_PAL,
+        .oam = &sOamData_64x32,
+    },
+    {
+        .tileTag = TAG_HEALTHBOX_OPPONENT3_TILE,
         .paletteTag = TAG_HEALTHBOX_PAL,
         .oam = &sOamData_64x32,
     }
@@ -295,6 +305,18 @@ static const struct SpriteTemplate sHealthbarSpriteTemplates[MAX_BATTLERS_COUNT]
     },
     {
         .tileTag = TAG_HEALTHBAR_OPPONENT2_TILE,
+        .paletteTag = TAG_HEALTHBAR_PAL,
+        .oam = &sOamData_Healthbar,
+        .callback = SpriteCB_HealthBar
+    },
+    {
+        .tileTag = TAG_HEALTHBAR_PLAYER3_TILE,
+        .paletteTag = TAG_HEALTHBAR_PAL,
+        .oam = &sOamData_Healthbar,
+        .callback = SpriteCB_HealthBar
+    },
+    {
+        .tileTag = TAG_HEALTHBAR_OPPONENT3_TILE,
         .paletteTag = TAG_HEALTHBAR_PAL,
         .oam = &sOamData_Healthbar,
         .callback = SpriteCB_HealthBar
@@ -598,8 +620,10 @@ enum BattleCoordTypes GetBattlerCoordsIndex(enum BattlerId battler)
 {
     if (GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT && gPlayerPartyCount == 1 && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
         return BATTLE_COORDS_SINGLES;
-    else if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT && gEnemyPartyCount == 1 && !(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
+    else if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT && gEnemyPartyCount == 1 && !(gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS))
         return BATTLE_COORDS_SINGLES;
+    else if (IsTripleBattle())
+        return BATTLE_COORDS_TRIPLES;
     else if (IsDoubleBattle())
         return BATTLE_COORDS_DOUBLES;
     else
@@ -643,6 +667,7 @@ u8 CreateBattlerHealthboxSprites(enum BattlerId battler)
         gSprites[healthboxRightSpriteId].callback = SpriteCB_HealthBoxOther;
         break;
     }
+    case BATTLE_COORDS_TRIPLES:
     case BATTLE_COORDS_DOUBLES:
     {
         if (IsOnPlayerSide(battler))
@@ -839,6 +864,15 @@ static const s16 sBattlerHealthboxCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_COUNT
         [B_POSITION_PLAYER_RIGHT]   = { 171, 101 },
         [B_POSITION_OPPONENT_LEFT]  = { 44,  19 },
         [B_POSITION_OPPONENT_RIGHT] = { 32,  44 },
+    },
+    [BATTLE_COORDS_TRIPLES] =
+    {
+        [B_POSITION_PLAYER_LEFT]     = { 159, 70 },
+        [B_POSITION_PLAYER_RIGHT]    = { 171, 106 },
+        [B_POSITION_PLAYER_TRIPLE]   = { 159, 94 },
+        [B_POSITION_OPPONENT_LEFT]   = { 44,  14 },
+        [B_POSITION_OPPONENT_RIGHT]  = { 32,  50 },
+        [B_POSITION_OPPONENT_TRIPLE] = { 44,  32 },
     },
 };
 
@@ -1350,7 +1384,7 @@ u8 CreatePartyStatusSummarySprites(enum BattlerId battler, struct HpAndStatus *p
     }
     else
     {
-        if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS))
+        if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_MULTIPLE_OPPONENTS))
         {
             for (var = PARTY_SIZE - 1, i = 0; i < PARTY_SIZE; i++)
             {
@@ -1832,7 +1866,7 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
     FillPalette(sStatusIconColors[statusPalId], OBJ_PLTT_OFFSET + pltAdder, PLTT_SIZEOF(1));
     CpuCopy16(&gPlttBufferUnfaded[OBJ_PLTT_OFFSET + pltAdder], (u16 *)OBJ_PLTT + pltAdder, PLTT_SIZEOF(1));
     CpuCopy32(statusGfxPtr, (void *)(OBJ_VRAM0 + (gSprites[healthboxSpriteId].oam.tileNum + tileNumAdder) * TILE_SIZE_4BPP), 96);
-    if (GetBattlerCoordsIndex(battler) == BATTLE_COORDS_DOUBLES || !IsOnPlayerSide(battler))
+    if (GetBattlerCoordsIndex(battler) != BATTLE_COORDS_SINGLES || !IsOnPlayerSide(battler))
     {
         if (!gBattleSpritesDataPtr->battlerData[battler].hpNumbersNoBars)
         {
@@ -1959,7 +1993,7 @@ void UpdateHealthboxAttribute(u8 healthboxSpriteId, struct Pokemon *mon, u8 elem
 
     if (IsOnPlayerSide(battler))
     {
-        u8 isDoubles = GetBattlerCoordsIndex(battler) == BATTLE_COORDS_DOUBLES;
+        u8 isDoubles = GetBattlerCoordsIndex(battler) != BATTLE_COORDS_SINGLES;
 
         if (elementId == HEALTHBOX_LEVEL || elementId == HEALTHBOX_ALL)
             UpdateLvlInHealthbox(healthboxSpriteId, GetMonData(mon, MON_DATA_LEVEL));

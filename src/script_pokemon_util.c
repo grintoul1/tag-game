@@ -91,6 +91,22 @@ void HasEnoughMonsForDoubleBattle(void)
     }
 }
 
+void HasEnoughMonsForTripleBattle(void)
+{
+    switch (GetMonsStateToTriples())
+    {
+    case PLAYER_HAS_TWO_USABLE_MONS:
+        gSpecialVar_Result = PLAYER_HAS_TWO_USABLE_MONS;
+        break;
+    case PLAYER_HAS_ONE_MON:
+        gSpecialVar_Result = PLAYER_HAS_ONE_MON;
+        break;
+    case PLAYER_HAS_ONE_USABLE_MON:
+        gSpecialVar_Result = PLAYER_HAS_ONE_USABLE_MON;
+        break;
+    }
+}
+
 static bool32 CheckPartyMonHasHeldItem(enum Item item)
 {
     int i;

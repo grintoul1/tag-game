@@ -598,7 +598,7 @@ static void CB2_InitBattleInternal(void)
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED)))
         {
             CreateNPCTrainerParty(&gEnemyParty[0], TRAINER_BATTLE_PARAM.opponentA, TRUE);
-            if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
+            if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
                 CreateNPCTrainerParty(&gEnemyParty[PARTY_SIZE / 2], TRAINER_BATTLE_PARAM.opponentB, FALSE);
             SetWildMonHeldItem();
             CalculateEnemyPartyCount();
@@ -1936,7 +1936,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
         if (firstTrainer == TRUE)
             ZeroEnemyPartyMons();
 
-        if (battleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        if (battleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
         {
             if (trainer->partySize > PARTY_SIZE / 2)
                 monsCount = PARTY_SIZE / 2;
@@ -3509,16 +3509,26 @@ static void DoBattleIntro(void)
                     MarkBattlerForControllerExec(battler);
                 }
                 break;
+            case B_POSITION_PLAYER_TRIPLE:
+                break;
             case B_POSITION_OPPONENT_RIGHT:
                 if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
                 {
-                    if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS) && !BATTLE_TWO_VS_ONE_OPPONENT) // opponent 2 if exists
+                    if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_MULTIPLE_OPPONENTS) && !BATTLE_TWO_VS_ONE_OPPONENT) // opponent 2 if exists
                     {
                         BtlController_EmitDrawTrainerPic(battler, B_COMM_TO_CONTROLLER);
                         MarkBattlerForControllerExec(battler);
                     }
                 }
                 else if (IsBattlerAlive(battler)) // wild mon 2 if alive
+                {
+                    BtlController_EmitLoadMonSprite(battler, B_COMM_TO_CONTROLLER);
+                    MarkBattlerForControllerExec(battler);
+                    gBattleResults.lastOpponentSpecies = GetMonData(GetBattlerMon(battler), MON_DATA_SPECIES);
+                }
+                break;
+            case B_POSITION_OPPONENT_TRIPLE:
+                if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) && IsBattlerAlive(battler)) // wild mon 3 if alive
                 {
                     BtlController_EmitLoadMonSprite(battler, B_COMM_TO_CONTROLLER);
                     MarkBattlerForControllerExec(battler);
@@ -3633,7 +3643,7 @@ static void DoBattleIntro(void)
         gBattleStruct->eventState.battleIntro++;
         break;
     case BATTLE_INTRO_STATE_TRAINER_2_SEND_OUT_ANIM:
-        if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS) && !BATTLE_TWO_VS_ONE_OPPONENT)
+        if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_MULTIPLE_OPPONENTS) && !BATTLE_TWO_VS_ONE_OPPONENT)
         {
             if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK && !(gBattleTypeFlags & BATTLE_TYPE_RECORDED_IS_MASTER))
                 battler = GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT);
@@ -4123,9 +4133,13 @@ static void HandleTurnActionSelectionState(void)
         case STATE_BEFORE_ACTION_CHOSEN: // Choose an action.
             gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE;
             if (gBattleTypeFlags & BATTLE_TYPE_MULTI
-                || (position & BIT_FLANK) == B_FLANK_LEFT
-                || gAbsentBattlerFlags & 1u << GetBattlerAtPosition(BATTLE_PARTNER(position))
-                || gBattleCommunication[GetBattlerAtPosition(BATTLE_PARTNER(position))] == STATE_WAIT_ACTION_CONFIRMED)
+                || (position & (BIT_FLANK | BIT_TRIPLE)) == 0
+                || ((position & BIT_FLANK)
+                    && (gAbsentBattlerFlags & (1u << GetBattlerAtPosition(BATTLE_PARTNER(position)))
+                        || gBattleCommunication[GetBattlerAtPosition(BATTLE_PARTNER(position))] == STATE_WAIT_ACTION_CONFIRMED))
+                || ((position & BIT_TRIPLE)
+                    && (gAbsentBattlerFlags & (1u << GetBattlerAtPosition((position & BIT_SIDE) | BIT_FLANK))
+                        || gBattleCommunication[GetBattlerAtPosition((position & BIT_SIDE) | BIT_FLANK)] == STATE_WAIT_ACTION_CONFIRMED)))
             {
                 if (gAbsentBattlerFlags & 1u << battler || gBattleStruct->battlerState[battler].commandingDondozo)
                 {
@@ -4153,10 +4167,21 @@ static void HandleTurnActionSelectionState(void)
                         gBattleCommunication[battler] = STATE_WAIT_ACTION_CONFIRMED_STANDBY;
                     }
                     else if (B_RUN_TRAINER_BATTLE
-                          && gBattleTypeFlags & BATTLE_TYPE_DOUBLE
+                          && gBattleTypeFlags & (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TRIPLE)
                           && position == B_POSITION_PLAYER_RIGHT
                           && gChosenActionByBattler[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)] == B_ACTION_RUN
                           && gChosenActionByBattler[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)] != B_ACTION_NOTHING_FAINTED)
+                    {
+                        gChosenActionByBattler[battler] = B_ACTION_USE_MOVE;
+                        gBattleCommunication[battler] = STATE_WAIT_ACTION_CONFIRMED_STANDBY;
+                    }
+                    else if (B_RUN_TRAINER_BATTLE
+                          && gBattleTypeFlags & BATTLE_TYPE_TRIPLE
+                          && position == B_POSITION_PLAYER_TRIPLE
+                          && gChosenActionByBattler[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)] == B_ACTION_RUN
+                          && gChosenActionByBattler[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)] != B_ACTION_NOTHING_FAINTED
+                          && gChosenActionByBattler[GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT)] == B_ACTION_RUN
+                          && gChosenActionByBattler[GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT)] != B_ACTION_NOTHING_FAINTED)
                     {
                         gChosenActionByBattler[battler] = B_ACTION_USE_MOVE;
                         gBattleCommunication[battler] = STATE_WAIT_ACTION_CONFIRMED_STANDBY;
@@ -4276,6 +4301,14 @@ static void HandleTurnActionSelectionState(void)
                             BtlController_EmitChoosePokemon(battler, B_COMM_TO_CONTROLLER, PARTY_ACTION_CHOOSE_MON, gBattleStruct->monToSwitchIntoId[0], ABILITY_NONE, 0, gBattleStruct->battlerPartyOrders[battler]);
                         else if (battler == 3 && gChosenActionByBattler[1] == B_ACTION_SWITCH)
                             BtlController_EmitChoosePokemon(battler, B_COMM_TO_CONTROLLER, PARTY_ACTION_CHOOSE_MON, gBattleStruct->monToSwitchIntoId[1], ABILITY_NONE, 0, gBattleStruct->battlerPartyOrders[battler]);
+                        else if (battler == 4 && gChosenActionByBattler[0] == B_ACTION_SWITCH)
+                            BtlController_EmitChoosePokemon(battler, B_COMM_TO_CONTROLLER, PARTY_ACTION_CHOOSE_MON, gBattleStruct->monToSwitchIntoId[0], ABILITY_NONE, 0, gBattleStruct->battlerPartyOrders[battler]);
+                        else if (battler == 4 && gChosenActionByBattler[2] == B_ACTION_SWITCH)
+                            BtlController_EmitChoosePokemon(battler, B_COMM_TO_CONTROLLER, PARTY_ACTION_CHOOSE_MON, gBattleStruct->monToSwitchIntoId[2], ABILITY_NONE, 0, gBattleStruct->battlerPartyOrders[battler]);
+                        else if (battler == 5 && gChosenActionByBattler[1] == B_ACTION_SWITCH)
+                            BtlController_EmitChoosePokemon(battler, B_COMM_TO_CONTROLLER, PARTY_ACTION_CHOOSE_MON, gBattleStruct->monToSwitchIntoId[1], ABILITY_NONE, 0, gBattleStruct->battlerPartyOrders[battler]);
+                        else if (battler == 5 && gChosenActionByBattler[3] == B_ACTION_SWITCH)
+                            BtlController_EmitChoosePokemon(battler, B_COMM_TO_CONTROLLER, PARTY_ACTION_CHOOSE_MON, gBattleStruct->monToSwitchIntoId[3], ABILITY_NONE, 0, gBattleStruct->battlerPartyOrders[battler]);
                         else
                             BtlController_EmitChoosePokemon(battler, B_COMM_TO_CONTROLLER, PARTY_ACTION_CHOOSE_MON, PARTY_SIZE, ABILITY_NONE, 0, gBattleStruct->battlerPartyOrders[battler]);
                     }
@@ -4538,8 +4571,8 @@ static void HandleTurnActionSelectionState(void)
                     i = FALSE;
 
                 if (((gBattleTypeFlags & BATTLE_TYPE_MULTI) || !IsDoubleBattle())
-                    || (position & BIT_FLANK) != B_FLANK_LEFT
-                    || gAbsentBattlerFlags & 1u << GetBattlerAtPosition(BATTLE_PARTNER(position)))
+                    || (position & (BIT_FLANK | BIT_TRIPLE)) != 0
+                    || gAbsentBattlerFlags & (1u << GetBattlerAtPosition(BATTLE_PARTNER(position))))
                 {
                     BtlController_EmitLinkStandbyMsg(battler, B_COMM_TO_CONTROLLER, LINK_STANDBY_MSG_STOP_BOUNCE, i);
                 }

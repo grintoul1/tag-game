@@ -43,6 +43,7 @@ enum BattleType
 {
     BATTLE_TYPE_SINGLE,
     BATTLE_TYPE_DOUBLE,
+    BATTLE_TYPE_TRIPLE,
 };
 
 // TODO: Support Hidden Power.
@@ -886,6 +887,11 @@ static bool token_battle_type(struct Parser *p, const struct Token *t, enum Batt
         *g = BATTLE_TYPE_DOUBLE;
         return true;
     }
+    else if (is_literal_token(t, "Triple") || is_literal_token(t, "Triples"))
+    {
+        *g = BATTLE_TYPE_TRIPLE;
+        return true;
+    }
     else
     {
         return set_parse_error(p, t->location, "invalid battle type");
@@ -1232,10 +1238,20 @@ static bool parse_trainer(struct Parser *p, const struct Parsed *parsed, struct 
                 any_error = !show_parse_error(p);
             trainer->battle_type = is_double_battle ? BATTLE_TYPE_DOUBLE : BATTLE_TYPE_SINGLE;
         }
+        else if (is_literal_token(&key, "Triple Battle"))
+        {
+            if (trainer->battle_type_line)
+                any_error = !set_show_parse_error(p, key.location, "duplicate 'Triple Battle' or 'Battle Type'");
+            trainer->battle_type_line = value.location.line;
+            bool is_triple_battle;
+            if (!token_bool(p, &value, &is_triple_battle))
+                any_error = !show_parse_error(p);
+            trainer->battle_type = is_triple_battle ? BATTLE_TYPE_TRIPLE : BATTLE_TYPE_SINGLE;
+        }
         else if (is_literal_token(&key, "Battle Type"))
         {
             if (trainer->battle_type_line)
-                any_error = !set_show_parse_error(p, key.location, "duplicate 'Double Battle' or 'Battle Type'");
+                any_error = !set_show_parse_error(p, key.location, "duplicate 'Double Battle', 'Triple Battle' or 'Battle Type'");
             trainer->battle_type_line = value.location.line;
             if (!token_battle_type(p, &value, &trainer->battle_type))
                 any_error = !show_parse_error(p);
@@ -1859,6 +1875,8 @@ static void fprint_trainers(const char *output_path, FILE *f, struct Parsed *par
             fprintf(f, "        .battleType = ");
             if (trainer->battle_type == BATTLE_TYPE_DOUBLE)
                 fprintf(f, "TRAINER_BATTLE_TYPE_DOUBLES,\n");
+            else if (trainer->battle_type == BATTLE_TYPE_TRIPLE)
+                fprintf(f, "TRAINER_BATTLE_TYPE_TRIPLES,\n");
             else
                 fprintf(f, "TRAINER_BATTLE_TYPE_SINGLES,\n");
         }

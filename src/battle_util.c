@@ -1977,7 +1977,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyI
         }
         return (i == playerId * MULTI_PARTY_SIZE + MULTI_PARTY_SIZE);
     }
-    else if ((gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS) && !isPlayerside)
+    else if ((gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS) && !isPlayerside)
     {
         party = gEnemyParty;
 
@@ -8411,7 +8411,7 @@ s32 GetStealthHazardDamage(enum TypeSideHazard hazardType, enum BattlerId battle
 bool32 IsPartnerMonFromSameTrainer(enum BattlerId battler)
 {
     if (!IsOnPlayerSide(battler))
-        return !(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS);
+        return !(gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS);
     else
         return !(gBattleTypeFlags & BATTLE_TYPE_MULTI);
 }
@@ -8798,7 +8798,7 @@ u32 GetIllusionMonPartyId(struct Pokemon *party, struct Pokemon *mon, struct Pok
 
     // Adjust party search range for Multibattles and Player vs two-trainers
     if ((GetBattlerSide(battler) == B_SIDE_PLAYER && (gBattleTypeFlags & BATTLE_TYPE_MULTI))
-        || (GetBattlerSide(battler) == B_SIDE_OPPONENT && (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)))
+        || (GetBattlerSide(battler) == B_SIDE_OPPONENT && (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)))
         {
             if ((GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT) || (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT))
             {
@@ -10545,7 +10545,7 @@ bool32 IsBattlerOnAir(enum BattlerId battler)
 bool32 HasPartnerTrainer(enum BattlerId battler)
 {
     if ((GetBattlerSide(battler) == B_SIDE_PLAYER && gBattleTypeFlags & BATTLE_TYPE_PLAYER_HAS_PARTNER)
-     || (GetBattlerSide(battler) == B_SIDE_OPPONENT && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
+     || (GetBattlerSide(battler) == B_SIDE_OPPONENT && gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS))
         return TRUE;
     else
         return FALSE;
@@ -10888,6 +10888,10 @@ enum BattlerId GetTargetBySlot(enum BattlerId battlerAtk, enum BattlerId battler
         return LEFT_FOE(battlerAtk);
     case B_BATTLER_3:
         return RIGHT_FOE(battlerAtk);
+    case B_BATTLER_4:
+        return TRIPLE_FOE(battlerAtk);
+    case B_BATTLER_5:
+        return TRIPLE_FOE(battlerAtk);
     default:
         errorf("Illegal battler");
         return B_BATTLER_0;

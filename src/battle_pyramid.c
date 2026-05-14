@@ -1332,7 +1332,7 @@ bool8 GetBattlePyramidTrainerFlag(u8 eventId)
 void MarkApproachingPyramidTrainersAsBattled(void)
 {
     MarkPyramidTrainerAsBattled(TRAINER_BATTLE_PARAM.opponentA);
-    if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    if (gBattleTypeFlags & BATTLE_TYPE_MULTIPLE_OPPONENTS)
     {
         gSelectedObjectEvent = GetChosenApproachingTrainerObjectEventId(1);
         MarkPyramidTrainerAsBattled(TRAINER_BATTLE_PARAM.opponentB);

@@ -92,7 +92,7 @@ static void DoFacilityTrainerBattleInternal(u8 facility)
             FillFrontierTrainersParties(FRONTIER_MULTI_PARTY_SIZE);
             gPartnerTrainerId = gSaveBlock2Ptr->frontier.trainerIds[17];
             FillPartnerParty(gPartnerTrainerId);
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS;
+            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTI | BATTLE_TYPE_MULTIPLE_OPPONENTS;
             break;
         case FRONTIER_MODE_LINK_MULTIS:
             gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI | BATTLE_TYPE_TOWER_LINK_MULTI;
@@ -152,7 +152,7 @@ static void DoFacilityTrainerBattleInternal(u8 facility)
         BattleTransition_StartOnField(GetSpecialBattleTransition(B_TRANSITION_GROUP_B_PIKE));
         break;
     case FACILITY_BATTLE_PIKE_DOUBLE:
-        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS;
+        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTIPLE_OPPONENTS;
         FillFrontierTrainersParties(1);
         CreateTask(Task_StartBattleAfterTransition, 1);
         PlayMapChosenOrBattleBGM(0);

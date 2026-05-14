@@ -798,6 +798,8 @@ u8 CalculateEnemyPartyCount(void);
 u8 CalculateEnemyPartyCountInSide(enum BattlerId battler);
 u8 GetMonsStateToDoubles(void);
 u8 GetMonsStateToDoubles_2(void);
+u8 GetMonsStateToTriples(void);
+u8 GetMonsStateToTriples_2(void);
 enum Ability GetAbilityBySpecies(enum Species species, u8 abilityNum);
 enum Ability GetMonAbility(struct Pokemon *mon);
 void CreateSecretBaseEnemyParty(struct SecretBase *secretBaseRecord);

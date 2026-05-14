@@ -1268,7 +1268,14 @@ static void Intro_WaitForShinyAnimAndHealthbox(enum BattlerId battler)
     bool8 healthboxAnimDone = FALSE;
 
     // Check if healthbox has finished sliding in
-    if (TwoPlayerIntroMons(battler) && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
+    if (ThreePlayerIntroMons(battler))
+    {
+        if (gSprites[gHealthboxSpriteIds[battler]].callback == SpriteCallbackDummy
+         && gSprites[gHealthboxSpriteIds[BATTLE_PARTNER(battler)]].callback == SpriteCallbackDummy
+         && gSprites[gHealthboxSpriteIds[BATTLE_TRIPLE(battler)]].callback == SpriteCallbackDummy)
+            healthboxAnimDone = TRUE;
+    }
+    else if (TwoPlayerIntroMons(battler) && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
     {
         if (gSprites[gHealthboxSpriteIds[battler]].callback == SpriteCallbackDummy
          && gSprites[gHealthboxSpriteIds[BATTLE_PARTNER(battler)]].callback == SpriteCallbackDummy)
@@ -1353,7 +1360,19 @@ static void Intro_TryShinyAnimShowHealthbox(enum BattlerId battler)
     }
 
     // Wait for battler anims
-    if (TwoPlayerIntroMons(battler) && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
+    if (ThreePlayerIntroMons(battler))
+    {
+        if (gSprites[gBattleControllerData[battler]].callback == SpriteCallbackDummy
+            && gSprites[gBattlerSpriteIds[battler]].callback == SpriteCallbackDummy
+            && gSprites[gBattleControllerData[BATTLE_PARTNER(battler)]].callback == SpriteCallbackDummy
+            && gSprites[gBattlerSpriteIds[BATTLE_PARTNER(battler)]].callback == SpriteCallbackDummy
+            && gSprites[gBattleControllerData[BATTLE_TRIPLE(battler)]].callback == SpriteCallbackDummy
+            && gSprites[gBattlerSpriteIds[BATTLE_TRIPLE(battler)]].callback == SpriteCallbackDummy)
+        {
+            battlerAnimsDone = TRUE;
+        }
+    }
+    else if (TwoPlayerIntroMons(battler) && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
     {
         if (gSprites[gBattleControllerData[battler]].callback == SpriteCallbackDummy
             && gSprites[gBattlerSpriteIds[battler]].callback == SpriteCallbackDummy
@@ -1375,8 +1394,15 @@ static void Intro_TryShinyAnimShowHealthbox(enum BattlerId battler)
     // Clean up
     if (bgmRestored && battlerAnimsDone)
     {
-        if (TwoPlayerIntroMons(battler) && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
+        if (ThreePlayerIntroMons(battler))
+        {
             DestroySprite(&gSprites[gBattleControllerData[BATTLE_PARTNER(battler)]]);
+            DestroySprite(&gSprites[gBattleControllerData[BATTLE_TRIPLE(battler)]]);
+        }
+        else if (TwoPlayerIntroMons(battler) && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
+        {
+            DestroySprite(&gSprites[gBattleControllerData[BATTLE_PARTNER(battler)]]);
+        }
         DestroySprite(&gSprites[gBattleControllerData[battler]]);
 
         gBattleSpritesDataPtr->animationData->introAnimActive = FALSE;

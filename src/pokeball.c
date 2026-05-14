@@ -1344,7 +1344,7 @@ void StartHealthboxSlideIn(enum BattlerId battler)
         healthboxSprite->y2 = -healthboxSprite->y2;
     }
     gSprites[healthboxSprite->data[5]].callback(&gSprites[healthboxSprite->data[5]]);
-    if (GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT && !gTestRunnerHeadless)
+    if ((GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT || GetBattlerPosition(battler) == B_POSITION_PLAYER_TRIPLE) && !gTestRunnerHeadless)
         healthboxSprite->callback = SpriteCB_HealthboxSlideInDelayed;
 }
 
