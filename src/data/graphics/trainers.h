@@ -145,6 +145,12 @@ const u16 gTrainerPalette_LeaderWinona[] = INCBIN_U16("graphics/trainers/front_p
 const u32 gTrainerFrontPic_LeaderTateAndLiza[] = INCBIN_U32("graphics/trainers/front_pics/leader_tate_and_liza.4bpp.smol");
 const u16 gTrainerPalette_LeaderTateAndLiza[] = INCBIN_U16("graphics/trainers/front_pics/leader_tate_and_liza.gbapal");
 
+const u32 gTrainerFrontPic_LeaderTate[] = INCBIN_U32("graphics/trainers/front_pics/leader_tate.4bpp.smol");
+const u16 gTrainerPalette_LeaderTate[] = INCBIN_U16("graphics/trainers/front_pics/leader_tate.gbapal");
+
+const u32 gTrainerFrontPic_LeaderLiza[] = INCBIN_U32("graphics/trainers/front_pics/leader_liza.4bpp.smol");
+const u16 gTrainerPalette_LeaderLiza[] = INCBIN_U16("graphics/trainers/front_pics/leader_liza.gbapal");
+
 const u32 gTrainerFrontPic_LeaderJuan[] = INCBIN_U32("graphics/trainers/front_pics/leader_juan.4bpp.smol");
 const u16 gTrainerPalette_LeaderJuan[] = INCBIN_U16("graphics/trainers/front_pics/leader_juan.gbapal");
 
@@ -493,6 +499,7 @@ const u8 gTrainerBackPic_AquaLeaderArchie[] = INCBIN_U8("graphics/trainers/back_
 const u8 gTrainerBackPic_MagmaAdminM[] = INCBIN_U8("graphics/trainers/back_pics/magma_admin_m.4bpp");
 const u8 gTrainerBackPic_Blue[] = INCBIN_U8("graphics/trainers/back_pics/blue.4bpp");
 const u8 gTrainerBackPic_AquaAdminF[] = INCBIN_U8("graphics/trainers/back_pics/aqua_admin_f.4bpp");
+const u8 gTrainerBackPic_LeaderTate[] = INCBIN_U8("graphics/trainers/back_pics/leader_tate.4bpp");
 
 const u16 gTrainerBackPicPalette_Red[] = INCBIN_U16("graphics/trainers/back_pics/red.gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCBIN_U16("graphics/trainers/back_pics/leaf.gbapal");
@@ -502,6 +509,7 @@ const u16 gTrainerBackPicPalette_AquaLeaderArchie[] = INCBIN_U16("graphics/train
 const u16 gTrainerBackPicPalette_MagmaAdminM[] = INCBIN_U16("graphics/trainers/back_pics/magma_admin_m.gbapal");
 const u16 gTrainerBackPicPalette_Blue[] = INCBIN_U16("graphics/trainers/back_pics/blue.gbapal");
 const u16 gTrainerBackPicPalette_AquaAdminF[] = INCBIN_U16("graphics/trainers/back_pics/aqua_admin_f.gbapal");
+const u16 gTrainerBackPicPalette_LeaderTate[] = INCBIN_U16("graphics/trainers/back_pics/leader_tate.gbapal");
 
 const u8 gTrainerBackPic_Pokedude[] = INCBIN_U8("graphics/trainers/back_pics/pokedude.4bpp");
 const u8 gTrainerBackPic_OldMan[] = INCBIN_U8("graphics/trainers/back_pics/old_man.4bpp");
@@ -1264,5 +1272,14 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Green, gTrainerPalette_Green),
         .backPic = TRAINER_BACK_PIC(5, gTrainerBackPic_Green, gTrainerBackPicPalette_Green, sBackAnims_Kanto),
+    },
+    [TRAINER_PIC_LEADER_TATE] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LeaderTate, gTrainerPalette_LeaderTate),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_LeaderTate, gTrainerBackPicPalette_LeaderTate, sBackAnims_Hoenn),
+    },
+    [TRAINER_PIC_LEADER_LIZA] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LeaderLiza, gTrainerPalette_LeaderLiza),
     },
 };

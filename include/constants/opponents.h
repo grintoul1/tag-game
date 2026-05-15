@@ -280,9 +280,9 @@
 #define TRAINER_JERRY_1                     273
 #define TRAINER_TED                         274
 #define TRAINER_PAUL                        275
-#define TRAINER_JERRY_2                     276
-#define TRAINER_JERRY_3                     277
-#define TRAINER_JERRY_4                     278
+#define TRAINER_TATE                        276
+#define TRAINER_LIZA                        277
+#define TRAINER_SABRINA_MOSSDEEP                     278
 #define TRAINER_JERRY_5                     279
 #define TRAINER_KAREN_1                     280
 #define TRAINER_GEORGIA                     281

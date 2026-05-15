@@ -949,3 +949,93 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 - Protect
 - Solar Beam
 - Dragon Claw
+
+=== PARTNER_SABRINA_MOSSDEEP ===
+Name: Sabrina
+Class: Kantonian
+Pic: Leader Sabrina Frlg
+Gender: Male
+Music: Male
+AI: Partner Trainer
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+=== PARTNER_TATE_MOSSDEEP ===
+Name: Tate
+Class: Leader
+Pic: Leader Tate
+Gender: Male
+Music: Female
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Claydol
+Level: 41
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Earthquake
+- Ancient Power
+- Psychic
+- Light Screen
+
+Lunatone @ Sitrus Berry
+Level: 42
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Light Screen
+- Psychic
+- Hypnosis
+- Calm Mind
+
+=== PARTNER_LIZA_MOSSDEEP ===
+Name: Liza /* [Multi]*/
+Class: Leader
+Pic: Leader Liza
+Gender: Female
+Music: Female
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Xatu
+Level: 41
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Psychic
+- Sunny Day
+- Confuse Ray
+- Calm Mind
+
+Solrock @ Sitrus Berry
+Level: 42
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Sunny Day
+- Solar Beam
+- Psychic
+- Flamethrower

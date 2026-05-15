@@ -88,7 +88,7 @@ end
 
 MossdeepCity_Gym_EventScript_TateAndLizaDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_LIZA, MossdeepCity_Gym_Text_TateAndLizaDefeat, TRAINER_SABRINA_MOSSDEEP, MossdeepCity_Gym_Text_TateAndLizaDefeat, PARTNER_TATE_MOSSDEEP
 switch VAR_RESULT
 case 1, MossdeepCity_Gym_EventScript_TateAndLizaVictory
 fadescreen FADE_TO_BLACK

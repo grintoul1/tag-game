@@ -6643,14 +6643,14 @@ Natu
 Level: 36
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_TATE_AND_LIZA_1 ===
-Name: Tate&Liza
+=== TRAINER_TATE ===
+Name: Tate /* [Multi]*/
 Class: Leader
 Mugshot: Purple
-Pic: Leader Tate And Liza
+Pic: Leader Tate
 Gender: Male
 Music: Female
-Battle Type: Singles
+Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
@@ -6662,14 +6662,6 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Psychic
 - Light Screen
 
-Xatu
-Level: 41
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Psychic
-- Sunny Day
-- Confuse Ray
-- Calm Mind
-
 Lunatone @ Sitrus Berry
 Level: 42
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
@@ -6678,7 +6670,53 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Hypnosis
 - Calm Mind
 
+=== TRAINER_LIZA ===
+Name: Liza /* [Multi]*/
+Class: Leader
+Mugshot: Purple
+Pic: Leader Liza
+Gender: Female
+Music: Female
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Xatu
+Level: 41
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Psychic
+- Sunny Day
+- Confuse Ray
+- Calm Mind
+
 Solrock @ Sitrus Berry
+Level: 42
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Sunny Day
+- Solar Beam
+- Psychic
+- Flamethrower
+
+=== TRAINER_SABRINA_MOSSDEEP ===
+Name: Sabrina /* Mossdeep [Multi]*/
+Class: Kantonian
+Mugshot: Purple
+Pic: Leader Sabrina Frlg
+Gender: Female
+Music: Female
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Mr Mime
+Level: 41
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Psychic
+- Sunny Day
+- Confuse Ray
+- Calm Mind
+
+Alakazam @ Sitrus Berry
 Level: 42
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Sunny Day
