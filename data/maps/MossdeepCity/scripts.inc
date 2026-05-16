@@ -109,6 +109,225 @@ MossdeepCity_EventScript_VisitedMossdeep::
 	setvar VAR_TEMP_1, 1
 	end
 
+MossdeepCity_EventScript_BlueIntroduction1::
+	lockall
+	getobjectcurrentxy OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	addvar VAR_TEMP_4, (-6)
+	setobjectxyperm LOCALID_MOSSDEEP_CITY_BLUE, VAR_TEMP_3, VAR_TEMP_4
+	delay 8
+	playbgm MUS_RG_ENCOUNTER_RIVAL, FALSE
+	addobject LOCALID_MOSSDEEP_CITY_BLUE
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
+	applymovement LOCALID_MOSSDEEP_CITY_BLUE, MossdeepCity_Movement_BlueApproachPlayerNorth
+	waitmovement
+	msgbox MossdeepCity_Text_BlueIntroduction, MSGBOX_AUTOCLOSE
+	delay 8
+	applymovement LOCALID_MOSSDEEP_CITY_BLUE, Common_Movement_FaceRight
+	waitmovement
+	msgbox MossdeepCity_Text_BlueIntroduction2, MSGBOX_AUTOCLOSE
+	delay 8
+	applymovement LOCALID_MOSSDEEP_CITY_BLUE, Common_Movement_FacePlayer
+	waitmovement
+	msgbox MossdeepCity_Text_BlueIntroduction3, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_MOSSDEEP_CITY_BLUE, MossdeepCity_Movement_BlueLeavePlayerNorth
+	waitmovement
+	removeobject LOCALID_MOSSDEEP_CITY_BLUE
+	setobjectxyperm LOCALID_MOSSDEEP_CITY_BLUE, 48, 12
+	addobject LOCALID_MOSSDEEP_CITY_BLUE
+	addvar VAR_KANTONIANS_STATE, 1
+	fadedefaultbgm
+	releaseall
+	end
+
+MossdeepCity_EventScript_BlueIntroduction2::
+	lockall
+	delay 16
+	delay 16
+	setobjectxyperm LOCALID_MOSSDEEP_CITY_BLUE, 26, 23
+	delay 8
+	playbgm MUS_RG_ENCOUNTER_RIVAL, FALSE
+	addobject LOCALID_MOSSDEEP_CITY_BLUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_BLUE, MossdeepCity_Movement_BlueApproachPlayerSouth
+	waitmovement
+	msgbox MossdeepCity_Text_BlueIntroduction, MSGBOX_AUTOCLOSE
+	delay 8
+	applymovement LOCALID_MOSSDEEP_CITY_BLUE, Common_Movement_FaceRight
+	waitmovement
+	msgbox MossdeepCity_Text_BlueIntroduction2, MSGBOX_AUTOCLOSE
+	delay 8
+	applymovement LOCALID_MOSSDEEP_CITY_BLUE, Common_Movement_FacePlayer
+	waitmovement
+	msgbox MossdeepCity_Text_BlueIntroduction3, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_MOSSDEEP_CITY_BLUE, MossdeepCity_Movement_BlueLeavePlayerSouth
+	waitmovement
+	removeobject LOCALID_MOSSDEEP_CITY_BLUE
+	setobjectxyperm LOCALID_MOSSDEEP_CITY_BLUE, 48, 12
+	addobject LOCALID_MOSSDEEP_CITY_BLUE
+	addvar VAR_KANTONIANS_STATE, 1
+	fadedefaultbgm
+	releaseall
+	end
+
+MossdeepCity_EventScript_BlueIntroduction4::
+	lockall
+	delay 16
+	delay 16
+	setobjectxyperm LOCALID_MOSSDEEP_CITY_BLUE, 37, 19
+	delay 8
+	playbgm MUS_RG_ENCOUNTER_RIVAL, FALSE
+	addobject LOCALID_MOSSDEEP_CITY_BLUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	goto MossdeepCity_EventScript_BlueIntroduction5
+MossdeepCity_EventScript_BlueIntroduction3::
+	lockall
+	delay 16
+	delay 16
+	setobjectxyperm LOCALID_MOSSDEEP_CITY_BLUE, 36, 20
+	delay 8
+	playbgm MUS_RG_ENCOUNTER_RIVAL, FALSE
+	addobject LOCALID_MOSSDEEP_CITY_BLUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+MossdeepCity_EventScript_BlueIntroduction5::
+	applymovement LOCALID_MOSSDEEP_CITY_BLUE, MossdeepCity_Movement_BlueApproachPlayerEast
+	waitmovement
+	msgbox MossdeepCity_Text_BlueIntroduction, MSGBOX_AUTOCLOSE
+	delay 8
+	applymovement LOCALID_MOSSDEEP_CITY_BLUE, Common_Movement_FaceRight
+	waitmovement
+	msgbox MossdeepCity_Text_BlueIntroduction2, MSGBOX_AUTOCLOSE
+	delay 8
+	applymovement LOCALID_MOSSDEEP_CITY_BLUE, Common_Movement_FacePlayer
+	waitmovement
+	msgbox MossdeepCity_Text_BlueIntroduction3, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_MOSSDEEP_CITY_BLUE, MossdeepCity_Movement_BlueLeavePlayerEast
+	waitmovement
+	removeobject LOCALID_MOSSDEEP_CITY_BLUE
+	setobjectxyperm LOCALID_MOSSDEEP_CITY_BLUE, 48, 12
+	addobject LOCALID_MOSSDEEP_CITY_BLUE
+	addvar VAR_KANTONIANS_STATE, 1
+	fadedefaultbgm
+	releaseall
+	end
+
+MossdeepCity_Movement_BlueLeavePlayerEast:
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_down
+	walk_slow_down
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	step_end
+
+MossdeepCity_Movement_BlueApproachPlayerEast:
+	walk_slow_left
+	walk_slow_left
+	walk_slow_left
+	walk_slow_up
+	walk_slow_up
+	walk_slow_left
+	walk_slow_left
+	walk_slow_left
+	walk_slow_left
+	step_end
+
+MossdeepCity_Movement_BlueLeavePlayerSouth:
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_down
+	walk_slow_right
+	step_end
+
+MossdeepCity_Movement_BlueApproachPlayerSouth:
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_right
+	face_up
+	step_end
+
+MossdeepCity_Movement_BlueLeavePlayerNorth:
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	step_end
+
+MossdeepCity_Text_BlueIntroduction:
+	.string "Blue: Well, well, look who it is!\p"
+	.string "I was wondering how long it would take\n"
+	.string "you to get here.\p"
+	.string "I'm guessing your next stop must be\n"
+	.string "Mossdeep City Gym?\p"
+	.string "What am I doing here?\p"
+	.string "Well as you know my friends and I are\n"
+	.string "here on invitation of Hoenn's former\l"
+	.string "champion.\p"
+	.string "Mossdeep is his home city, so we\n"
+	.string "thought we would come and see it.\p"
+	.string "The Mossdeep gym leaders are the twins\n"
+	.string "Tate and Liza.\p"
+	.string "Let me warn you, those kids are a\n"
+	.string "force to be reckoned with!\p"
+	.string "Their speciality is the psychic type,\n"
+	.string "which gave me an idea.\p"
+	.string "One of the toughest leaders in our\n"
+	.string "Kanto roster is called Sabrina.\p"
+	.string "She was… an unusual character when she\n"
+	.string "was younger…\p"
+	.string "But she's mellowed out in recent\n"
+	.string "years.\p"
+	.string "Anyway, I've spoken with Tate and Liza\n"
+	.string "and we've got a fun challenge for you.\p"
+	.string "When you reach them, only one of you\n"
+	.string "will participate in the battle.\p"
+	.string "You will then have to choose between\n"
+	.string "Tate, Liza, and Sabrina.\p"
+	.string "Your first two selections will be your\n"
+	.string "opponents for the battle.\p"
+	.string "Then the individual who remains will\n"
+	.string "be your battle partner!\p"
+	.string "The three of them are evenly matched\n"
+	.string "in terms of ability, so think hard\l"
+	.string "about who you can best support.$"
+
+MossdeepCity_Text_BlueIntroduction2:
+	.string "If you have time, come and join me on\n"
+	.string "the plateau near the Space Center.\p"
+	.string "There are some Kanto legends that I\n"
+	.string "would like you to meet.\p"
+	.string "They've agreed to have a practice\n"
+	.string "battle with you in preparation for\l"
+	.string "your gym challenge.$"
+
+MossdeepCity_Text_BlueIntroduction3:
+	.string "They're planning to leave Mossdeep\n"
+	.string "a bit earlier than the rest of us, \l"
+	.string "so make the most of this offer!\p"
+	.string "Anyway, I'll be seeing ya!$"
+
+MossdeepCity_Movement_BlueApproachPlayerNorth:
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	step_end
+
 MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter::
 	lockall
 	goto_if_set FLAG_EVIL_TEAM_AQUA, MossdeepCity_EventScript_TeamAquaEnterSpaceCenter
