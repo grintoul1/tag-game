@@ -359,6 +359,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_EMMIE_MAGMA_GRUNT
 	setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_AQUA
 	setflag FLAG_HIDE_MOSSDEEP_KANTONIANS
+	setflag FLAG_HIDE_MOSSDEEP_CITY_GYM_SABRINA
 	destroyfollowernpc
 	call EventScript_ResetAllBerries
 	end

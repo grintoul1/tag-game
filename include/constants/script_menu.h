@@ -102,7 +102,10 @@ enum
     MULTI_PYRE_FIGHT, // Used to choose which evil team leader is fought on Mt Pyre summit
     MULTI_EMMIE_ARE_YOU_READY, // Used to choose whether player is ready to fight Emmie or whether more information needed
     MULTI_EMMIE_INFORMATION, // Used to choose which information the player needs about the Emmie battles
-    MULTI_UNUSED_SSTIDAL_4,
+    MULTI_MOSSDEEP_GYM_OPPONENTA,
+    MULTI_MOSSDEEP_GYM_OPPONENTB_TATE,
+    MULTI_MOSSDEEP_GYM_OPPONENTB_LIZA,
+    MULTI_MOSSDEEP_GYM_OPPONENTB_SABRINA,
     MULTI_FOSSIL,
     MULTI_YESNO,
     MULTI_FRONTIER_RULES,

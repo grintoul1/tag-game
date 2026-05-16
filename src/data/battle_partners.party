@@ -958,35 +958,29 @@ Gender: Male
 Music: Male
 AI: Partner Trainer
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+Alakazam-Mega @ Alakazite
+Ability: Trace
+Level: 81
+Timid Nature
+- Psychic
+- Hyper Voice
+- Tachyon Cutter
+- Shadow Ball
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+Mr. Rime
+- Psychic
+- Hyper Voice
+- Tachyon Cutter
+- Tachyon Cutter
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+Farigiraf @ Throat Spray
+Ability: Armor Tail
+Level: 81
+Calm Nature
+- Expanding Force
+- Hyper Voice
+- Energy Ball
+- Psychic Terrain
 
 === PARTNER_TATE_MOSSDEEP ===
 Name: Tate
@@ -998,21 +992,32 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Claydol
-Level: 41
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Earthquake
-- Ancient Power
-- Psychic
-- Light Screen
+Gallade-Mega @ Galladite
+Ability: Sharpness
+Level: 81
+Jolly Nature
+- Sacred Sword
+- Psycho Cut
+- Leaf Blade
+- Night Slash
 
-Lunatone @ Sitrus Berry
-Level: 42
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Light Screen
-- Psychic
-- Hypnosis
-- Calm Mind
+Braviary-Hisui @ Life Orb
+Ability: Sheer Force
+Level: 81
+Timid Nature
+- Air Slash
+- Esper Wing
+- Heat Wave
+- Hyper Voice
+
+Meloetta @ Bug Gem
+Ability: Serene Grace
+Level: 80
+Jolly Nature
+- Relic Song
+- Zen Headbutt
+- Close Combat
+- U-turn
 
 === PARTNER_LIZA_MOSSDEEP ===
 Name: Liza /* [Multi]*/
@@ -1024,18 +1029,29 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Xatu
-Level: 41
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Gardevoir-Mega @ Gardevoirite
+Ability: Pixilate
+Level: 81
+Timid Nature
 - Psychic
-- Sunny Day
-- Confuse Ray
-- Calm Mind
+- Moonblast
+- Shadow Ball
+- Thunderbolt
 
-Solrock @ Sitrus Berry
-Level: 42
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Sunny Day
-- Solar Beam
-- Psychic
-- Flamethrower
+Munkidori @ Focus Sash
+Ability: Toxic Chain
+Level: 81
+Timid Nature
+- Fake Out
+- Future Sight
+- Helping Hand
+- Parting Shot
+
+Farigiraf @ Throat Spray
+Ability: Armor Tail
+Level: 81
+Calm Nature
+- Expanding Force
+- Hyper Voice
+- Energy Ball
+- Psychic Terrain

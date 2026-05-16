@@ -78,28 +78,359 @@ MossdeepCity_Gym_EventScript_SetSwitch4Metatiles::
 	end
 
 MossdeepCity_Gym_EventScript_TateAndLiza2::
-lockall
-playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
-msgbox MossdeepCity_Gym_Text_TateAndLizaIntro MSGBOX_AUTOCLOSE
-goto MossdeepCity_Gym_EventScript_TateAndLizaDoMultiBattle
-playbgm MUS_GYM, TRUE
-releaseall
-end
+	lockall
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
+	waitmovement
+	msgbox MossdeepCity_Gym_Text_TateAndLizaIntro, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceLeft
+	waitmovement
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_QuestionMark
+	waitmovement
+	waitse
+	playmoncry SPECIES_ALAKAZAM, CRY_MODE_ENCOUNTER
+	waitmoncry
+	playse SE_M_DETECT
+	dofieldeffectsparkle 21, 7, 0
+	dofieldeffectsparkle 21, 8, 0
+	waitfieldeffect FLDEFF_SPARKLE
+	addobject LOCALID_MOSSDEEP_CITY_GYM_SABRINA
+	addobject LOCALID_MOSSDEEP_CITY_GYM_ALAKAZAM
+	delay 16
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_ALAKAZAM, Common_Movement_FaceUp
+	waitmovement
+	playse SE_BALL_THROW
+	waitse
+	playse SE_BALL_BOUNCE_1
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_ALAKAZAM, MossdeepCity_Gym_Movement_AlakazamEnterPokeball
+	waitmovement
+	delay 16
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_WalkInPlaceFasterRight
+	waitmovement
+	msgbox MossdeepCity_Gym_Text_SabrinaIntro, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MossdeepCity_Gym_Text_TateExplanation, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MossdeepCity_Gym_Text_LizaExplanation, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_WalkInPlaceFasterRight
+	waitmovement
+	msgbox MossdeepCity_Gym_Text_WhoWillYouChoose, MSGBOX_AUTOCLOSE
+	goto MossdeepCity_Gym_EventScript_SetUpLeaderBattle
+	goto MossdeepCity_Gym_EventScript_TateAndLizaDoMultiBattle
+	playbgm MUS_GYM, TRUE
+	releaseall
+	end
+
+MossdeepCity_Gym_Movement_AlakazamEnterPokeball:
+	enter_pokeball
+	step_end
+
+MossdeepCity_Gym_EventScript_SetUpLeaderBattle::
+	message MossdeepCity_Gym_Text_SetUpLeaderBattle_ChooseFirstOpponent
+	multichoice 25, 4, MULTI_MOSSDEEP_GYM_OPPONENTA, 1
+	closemessage
+	compare VAR_RESULT, 0 @ Tate
+	goto_if_eq MossdeepCity_Gym_EventScript_SetUpLeaderBattle_ChooseSecondOpponentTate
+	compare VAR_RESULT, 1 @ Liza
+	goto_if_eq MossdeepCity_Gym_EventScript_SetUpLeaderBattle_ChooseSecondOpponentLiza
+	compare VAR_RESULT, 2 @ Sabrina
+	goto_if_eq MossdeepCity_Gym_EventScript_SetUpLeaderBattle_ChooseSecondOpponentSabrina
+	end
+
+MossdeepCity_Gym_EventScript_SetUpLeaderBattle_ChooseSecondOpponentTate::
+	message MossdeepCity_Gym_Text_SetUpLeaderBattle_ChooseSecondOpponent
+	multichoice 25, 4, MULTI_MOSSDEEP_GYM_OPPONENTB_TATE, 1
+	closemessage
+	compare VAR_RESULT, 0 @ Liza
+	goto_if_eq MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleTateAndLiza
+	compare VAR_RESULT, 1 @ Sabrina
+	goto_if_eq MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleTateAndSabrina
+	compare VAR_RESULT, 2 @ back
+	goto_if_eq MossdeepCity_Gym_EventScript_SetUpLeaderBattle
+	end
+
+MossdeepCity_Gym_EventScript_SetUpLeaderBattle_ChooseSecondOpponentLiza::
+	message MossdeepCity_Gym_Text_SetUpLeaderBattle_ChooseSecondOpponent
+	multichoice 25, 4, MULTI_MOSSDEEP_GYM_OPPONENTB_LIZA, 1
+	closemessage
+	compare VAR_RESULT, 0 @ Tate
+	goto_if_eq MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleLizaAndTate
+	compare VAR_RESULT, 1 @ Sabrina
+	goto_if_eq MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleLizaAndSabrina
+	compare VAR_RESULT, 2 @ back
+	goto_if_eq MossdeepCity_Gym_EventScript_SetUpLeaderBattle
+	end
+
+MossdeepCity_Gym_EventScript_SetUpLeaderBattle_ChooseSecondOpponentSabrina::
+	message MossdeepCity_Gym_Text_SetUpLeaderBattle_ChooseSecondOpponent
+	multichoice 25, 4, MULTI_MOSSDEEP_GYM_OPPONENTB_SABRINA, 1
+	closemessage
+	compare VAR_RESULT, 0 @ Tate
+	goto_if_eq MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleSabrinaAndTate
+	compare VAR_RESULT, 1 @ Liza
+	goto_if_eq MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleSabrinaAndLiza
+	compare VAR_RESULT, 2 @ back
+	goto_if_eq MossdeepCity_Gym_EventScript_SetUpLeaderBattle
+	end
+
+MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleTateAndLiza::
+	delay 16
+	fadescreen FADE_TO_BLACK
+	delay 32
+	setobjectxy OBJ_EVENT_ID_PLAYER, 23, 8
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 21, 7
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_FaceUp
+	waitmovement
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_TATE, 24, 5
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_LIZA, 23, 5
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_SABRINA, 24, 8
+	special ChooseHalfPartyForBattle
+	waitstate
+	special SavePlayerParty
+	special ReducePlayerPartyToSelectedMons
+	delay 16
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_WalkInPlaceFasterUp
+	waitmovement
+	msgbox MossdeepCity_Gym_Text_LetsGo, MSGBOX_AUTOCLOSE
+	goto MossdeepCity_Gym_EventScript_TateAndLizaDoMultiBattle
 
 MossdeepCity_Gym_EventScript_TateAndLizaDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2_vs_2 TRAINER_LIZA, MossdeepCity_Gym_Text_TateAndLizaDefeat, TRAINER_SABRINA_MOSSDEEP, MossdeepCity_Gym_Text_TateAndLizaDefeat, PARTNER_TATE_MOSSDEEP
-switch VAR_RESULT
-case 1, MossdeepCity_Gym_EventScript_TateAndLizaVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2_vs_2 TRAINER_TATE, MossdeepCity_Gym_Text_Leader1Defeat, TRAINER_LIZA, MossdeepCity_Gym_Text_Leader2Defeat, PARTNER_SABRINA_MOSSDEEP
+	switch VAR_RESULT
+	case 1, MossdeepCity_Gym_EventScript_TateAndLizaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleTateAndSabrina::
+	delay 16
+	fadescreen FADE_TO_BLACK
+	delay 32
+	setobjectxy OBJ_EVENT_ID_PLAYER, 23, 8
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 21, 7
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_FaceUp
+	waitmovement
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_TATE, 24, 5
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_SABRINA, 23, 5
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_LIZA, 24, 8
+	special ChooseHalfPartyForBattle
+	waitstate
+	special SavePlayerParty
+	special ReducePlayerPartyToSelectedMons
+	delay 16
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_WalkInPlaceFasterUp
+	waitmovement
+	msgbox MossdeepCity_Gym_Text_LetsGo, MSGBOX_AUTOCLOSE
+	goto MossdeepCity_Gym_EventScript_TateAndSabrinaDoMultiBattle
+
+MossdeepCity_Gym_EventScript_TateAndSabrinaDoMultiBattle::
+	playbgm MUS_GYM, TRUE
+	multi_2_vs_2 TRAINER_TATE, MossdeepCity_Gym_Text_Leader1Defeat, TRAINER_SABRINA_MOSSDEEP, MossdeepCity_Gym_Text_Leader2Defeat, PARTNER_LIZA_MOSSDEEP
+	switch VAR_RESULT
+	case 1, MossdeepCity_Gym_EventScript_TateAndLizaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleLizaAndTate::
+	delay 16
+	fadescreen FADE_TO_BLACK
+	delay 32
+	setobjectxy OBJ_EVENT_ID_PLAYER, 23, 8
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 21, 7
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_FaceUp
+	waitmovement
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_LIZA, 24, 5
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_TATE, 23, 5
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_SABRINA, 24, 8
+	special ChooseHalfPartyForBattle
+	waitstate
+	special SavePlayerParty
+	special ReducePlayerPartyToSelectedMons
+	delay 16
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_WalkInPlaceFasterUp
+	waitmovement
+	msgbox MossdeepCity_Gym_Text_LetsGo, MSGBOX_AUTOCLOSE
+	goto MossdeepCity_Gym_EventScript_LizaAndTateDoMultiBattle
+
+MossdeepCity_Gym_EventScript_LizaAndTateDoMultiBattle::
+	playbgm MUS_GYM, TRUE
+	multi_2_vs_2 TRAINER_LIZA, MossdeepCity_Gym_Text_Leader1Defeat, TRAINER_TATE, MossdeepCity_Gym_Text_Leader2Defeat, PARTNER_SABRINA_MOSSDEEP
+	switch VAR_RESULT
+	case 1, MossdeepCity_Gym_EventScript_TateAndLizaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleLizaAndSabrina::
+	delay 16
+	fadescreen FADE_TO_BLACK
+	delay 32
+	setobjectxy OBJ_EVENT_ID_PLAYER, 23, 8
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 21, 7
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_FaceUp
+	waitmovement
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_LIZA, 24, 5
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_SABRINA, 23, 5
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_TATE, 24, 8
+	special ChooseHalfPartyForBattle
+	waitstate
+	special SavePlayerParty
+	special ReducePlayerPartyToSelectedMons
+	delay 16
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_WalkInPlaceFasterUp
+	waitmovement
+	msgbox MossdeepCity_Gym_Text_LetsGo, MSGBOX_AUTOCLOSE
+	goto MossdeepCity_Gym_EventScript_LizaAndSabrinaDoMultiBattle
+
+MossdeepCity_Gym_EventScript_LizaAndSabrinaDoMultiBattle::
+	playbgm MUS_GYM, TRUE
+	multi_2_vs_2 TRAINER_LIZA, MossdeepCity_Gym_Text_Leader1Defeat, TRAINER_SABRINA_MOSSDEEP, MossdeepCity_Gym_Text_Leader2Defeat, PARTNER_TATE_MOSSDEEP
+	switch VAR_RESULT
+	case 1, MossdeepCity_Gym_EventScript_TateAndLizaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleSabrinaAndTate::
+	delay 16
+	fadescreen FADE_TO_BLACK
+	delay 32
+	setobjectxy OBJ_EVENT_ID_PLAYER, 23, 8
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 21, 7
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_FaceUp
+	waitmovement
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_SABRINA, 24, 5
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_TATE, 23, 5
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_LIZA, 24, 8
+	special ChooseHalfPartyForBattle
+	waitstate
+	special SavePlayerParty
+	special ReducePlayerPartyToSelectedMons
+	delay 16
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_WalkInPlaceFasterUp
+	waitmovement
+	msgbox MossdeepCity_Gym_Text_LetsGo, MSGBOX_AUTOCLOSE
+	goto MossdeepCity_Gym_EventScript_SabrinaAndTateDoMultiBattle
+
+MossdeepCity_Gym_EventScript_SabrinaAndTateDoMultiBattle::
+	playbgm MUS_GYM, TRUE
+	multi_2_vs_2 TRAINER_SABRINA_MOSSDEEP, MossdeepCity_Gym_Text_Leader1Defeat, TRAINER_TATE, MossdeepCity_Gym_Text_Leader2Defeat, PARTNER_LIZA_MOSSDEEP
+	switch VAR_RESULT
+	case 1, MossdeepCity_Gym_EventScript_TateAndLizaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleSabrinaAndLiza::
+	delay 16
+	fadescreen FADE_TO_BLACK
+	delay 32
+	setobjectxy OBJ_EVENT_ID_PLAYER, 23, 8
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 21, 7
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceRight
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_FaceUp
+	waitmovement
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_SABRINA, 24, 5
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_LIZA, 23, 5
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_TATE, 24, 8
+	special ChooseHalfPartyForBattle
+	waitstate
+	special SavePlayerParty
+	special ReducePlayerPartyToSelectedMons
+	delay 16
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_WalkInPlaceFasterUp
+	waitmovement
+	msgbox MossdeepCity_Gym_Text_LetsGo, MSGBOX_AUTOCLOSE
+	goto MossdeepCity_Gym_EventScript_SabrinaAndLizaDoMultiBattle
+
+MossdeepCity_Gym_EventScript_SabrinaAndLizaDoMultiBattle::
+	playbgm MUS_GYM, TRUE
+	multi_2_vs_2 TRAINER_SABRINA_MOSSDEEP, MossdeepCity_Gym_Text_Leader1Defeat, TRAINER_LIZA, MossdeepCity_Gym_Text_Leader2Defeat, PARTNER_TATE_MOSSDEEP
+	switch VAR_RESULT
+	case 1, MossdeepCity_Gym_EventScript_TateAndLizaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 MossdeepCity_Gym_EventScript_TateAndLizaVictory::
-setvar VAR_LEVEL_CAP, 83
-setvar VAR_PARTNER_EMMIE_STATE, 53
-goto MossdeepCity_Gym_EventScript_TateAndLizaDefeated
-end
+	goto MossdeepCity_Gym_EventScript_TateAndLizaDefeated
+	end
+
+MossdeepCity_Gym_Text_LetsGo:
+	.string "Tate: It's decided then…\n"
+	.string "Liza: It's decided then…\l"
+	.string "Sabrina: It's decided then…\p"
+	.string "Tate: Let's go.\n"
+	.string "Liza: Let's go.\l"
+	.string "Sabrina: Let's go.$"
+
+MossdeepCity_Gym_Text_SetUpLeaderBattle_ChooseFirstOpponent:
+	.string "Select the first opponent.$"
+
+MossdeepCity_Gym_Text_SetUpLeaderBattle_ChooseSecondOpponent:
+	.string "Select the second opponent.$"
+
+MossdeepCity_Gym_Text_WhoWillYouChoose:
+	.string "Tate: Who will you choose?\n"
+	.string "Liza: Who will you choose?\l"
+	.string "Sabrina: Who will you choose?$"
+
+MossdeepCity_Gym_Text_TateExplanation:
+	.string "Tate: As previously explained, you now\n"
+	.string "must choose who to face in battle.$"
+
+MossdeepCity_Gym_Text_LizaExplanation:
+	.string "Liza: The third of us will support\n"
+	.string "you in your challenge.\p"
+	.string "So, trainer, tell us…$"
+
+MossdeepCity_Gym_Text_SabrinaIntro:
+	.string "Sabrina: Welcome, challengers…\n"
+	.string "I had a vision of your arrival…\p"
+	.string "Only messing. Blue explained the\n"
+	.string "plan to change up your gym challenge.\p"
+	.string "I believe that you have a decision\n"
+	.string "to make.$"
 
 MossdeepCity_Gym_EventScript_TateAndLiza::
 	goto_if_unset FLAG_BADGE07_GET, MossdeepCity_Gym_EventScript_TateAndLiza2
@@ -109,6 +440,8 @@ MossdeepCity_Gym_EventScript_TateAndLiza::
 	end
 
 MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
+	setvar VAR_LEVEL_CAP, 83
+	setvar VAR_PARTNER_EMMIE_STATE, 53
 	message MossdeepCity_Gym_Text_ReceivedMindBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
@@ -128,7 +461,19 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
 	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 1
 	call MossdeepCity_Gym_EventScript_GiveCalmMind
 	closemessage
-	delay 30
+	delay 16
+	fadescreen FADE_TO_BLACK
+	setobjectxy OBJ_EVENT_ID_PLAYER, 23, 7
+	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, 24, 7
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_FaceDown
+	waitmovement
+	removeobject LOCALID_MOSSDEEP_CITY_GYM_SABRINA
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_TATE, 23, 5
+	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_LIZA, 24, 5
+	delay 16
+	fadescreen FADE_FROM_BLACK
 	release
 	end
 
@@ -662,7 +1007,7 @@ MossdeepCity_Gym_EventScript_RedFloorSwitch::
 MossdeepCity_Gym_Text_GymGuideAdvice:
 	.string "Yo, how's it going, CHAMPION-bound\n"
 	.string "{PLAYER}?\p"
-	.string "The GYM LEADERS here use\n"
+	.string "The gym leaders here use\n"
 	.string "PSYCHIC-type POKéMON.\p"
 	.string "If you go up against them with\n"
 	.string "FIGHTING- or POISON-type POKéMON,\l"
@@ -697,7 +1042,7 @@ MossdeepCity_Gym_Text_VirgilDefeat:
 
 MossdeepCity_Gym_Text_VirgilPostBattle:
 	.string "If there are prodigies in the world,\n"
-	.string "then our GYM LEADERS are them!\p"
+	.string "then our gym leaders are them!\p"
 	.string "However, you may be even more talented\n"
 	.string "than them…$"
 
@@ -746,7 +1091,7 @@ MossdeepCity_Gym_Text_SamanthaDefeat:
 
 MossdeepCity_Gym_Text_SamanthaPostBattle:
 	.string "You will wage a terrifically intense\n"
-	.string "battle with our GYM LEADERS…\p"
+	.string "battle with our gym leaders…\p"
 	.string "The result…\n"
 	.string "You won't hear it from me!$"
 
@@ -841,63 +1186,74 @@ MossdeepCity_Gym_Text_NicholasPostBattle:
 	.string "invincible POKéMON power next.$"
 
 MossdeepCity_Gym_Text_TateAndLizaIntro:
-	.string "TATE: Hehehe… Were you surprised?\p"
-	.string "LIZA: Fufufu… Were you surprised?\p"
-	.string "TATE: That there are two GYM LEADERS?\n"
-	.string "LIZA: That there are two GYM LEADERS?\p"
-	.string "TATE: We're twins!\n"
-	.string "LIZA: We're twins!\p"
-	.string "TATE: We don't need to talk because…\n"
-	.string "LIZA: We can each determine what…\p"
-	.string "TATE: The other is thinking…\n"
-	.string "LIZA: All in our minds!\p"
-	.string "TATE: This combination of ours…\n"
-	.string "LIZA: Can you beat it?$"
+	.string "Tate: Hehehe… Were you surprised?\n"
+	.string "Liza: Fufufu… Were you surprised?\p"
+	.string "Tate: That there are two gym leaders?\n"
+	.string "Liza: That there are two gym leaders?\p"
+	.string "Tate: We're twins!\n"
+	.string "Liza: We're twins!\p"
+	.string "Tate: We don't need to talk because…\n"
+	.string "Liza: We can each determine what…\p"
+	.string "Tate: The other is thinking…\n"
+	.string "Liza: All in our minds!\p"
+	.string "Tate: But were you expecting…\n"
+	.string "Liza: But were you expecting…\p"
+	.string "Tate: A third participant?\n"
+	.string "Liza: A third participant?\l"
+	.string "Sabrina: A third participant?$"
 
 MossdeepCity_Gym_Text_TateAndLizaDefeat:
-	.string "TATE: What?! Our combination…\n"
-	.string "LIZA: Was shattered!\p"
-	.string "TATE: It can't be helped. You've won…\n"
-	.string "LIZA: So, in recognition, take this.$"
+	.string "Tate: What?! Our combination…\n"
+	.string "Liza: Was shattered!\p"
+	.string "Tate: It can't be helped. You've won…\n"
+	.string "Liza: So, in recognition, take this.$"
+
+MossdeepCity_Gym_Text_Leader1Defeat:
+	.string "What?! Our combination…\n"
+	.string "Was shattered!$"
+
+MossdeepCity_Gym_Text_Leader2Defeat:
+	.string "Impressive work trainer. You've won…\p"
+	.string "In recognition, take this.$"
 
 MossdeepCity_Gym_Text_ReceivedMindBadge:
 	.string "{PLAYER} received the MIND BADGE\n"
 	.string "from TATE and LIZA.$"
 
 MossdeepCity_Gym_Text_ExplainMindBadgeTakeThis:
-	.string "TATE: The MIND BADGE enhances the\n"
+	.string "Tate: The MIND BADGE enhances the\n"
 	.string "SP. ATK and SP. DEF of POKéMON.\p"
-	.string "LIZA: It also lets you use the HM move\n"
+	.string "Liza: It also lets you use the HM move\n"
 	.string "DIVE outside of battle.\p"
-	.string "TATE: You should also take this, too.$"
+	.string "Sabrina: You should also take this, too.$"
 
 MossdeepCity_Gym_Text_ExplainCalmMind:
-	.string "TATE: That TM04 contains…\n"
-	.string "LIZA: CALM MIND!\p"
-	.string "TATE: It raises SP. ATK and…\n"
-	.string "LIZA: It raises SP. DEF!\p"
-	.string "TATE: It's a move that's perfect…\n"
-	.string "LIZA: For PSYCHIC POKéMON!\p"
+	.string "Tate: That TM04 contains…\n"
+	.string "Liza: CALM MIND!\p"
+	.string "Tate: It raises SP. ATK and…\n"
+	.string "Liza: It raises SP. DEF!\p"
+	.string "Tate: It's a move that's perfect…\n"
+	.string "Liza: For PSYCHIC POKéMON!\p"
 	.string "… … … … … …$"
 
 MossdeepCity_Gym_Text_RegisteredTateAndLiza:
-	.string "Registered GYM LEADERS TATE & LIZA\n"
+	.string "Registered gym leaders TATE & LIZA\n"
 	.string "in the POKéNAV.$"
 
 MossdeepCity_Gym_Text_TateAndLizaPostBattle:
-	.string "TATE: Looks like the bond between you\n"
+	.string "Tate: Looks like the bond between you\n"
 	.string "and your POKéMON is far stronger than\l"
 	.string "the bond that we share as twins.\p"
-	.string "LIZA: You will become even stronger!\n"
+	.string "Liza: You will become even stronger!\n"
 	.string "We've battled you, so we know.$"
 
 MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons:
-	.string "TATE: Hehehe… Were you surprised?\p"
-	.string "LIZA: That there are two GYM LEADERS?\p"
-	.string "TATE: Oops, you have only one…\n"
-	.string "LIZA: POKéMON that can battle.\p"
-	.string "TATE: We can't battle that way!\p"
-	.string "LIZA: If you want to challenge us,\n"
+	.string "Tate: Hehehe… Were you surprised?\p"
+	.string "Liza: That there are two gym leaders?\p"
+	.string "Tate: Oops, you have only one…\n"
+	.string "Liza: POKéMON that can battle.\p"
+	.string "Tate: We can't battle that way!\p"
+	.string "Liza: If you want to challenge us,\n"
 	.string "bring some more POKéMON.$"
 
 MossdeepCity_Gym_Text_GymStatue:
@@ -909,35 +1265,35 @@ MossdeepCity_Gym_Text_GymStatueCertified:
 	.string "{PLAYER}$"
 
 MossdeepCity_Gym_Text_TateAndLizaPreRematch:
-	.string "TATE: POKéMON…\n"
-	.string "LIZA: POKéMON…\p"
-	.string "TATE: By changing the party's mix…\n"
-	.string "LIZA: The battle style changes.\p"
-	.string "TATE: But me…\n"
-	.string "LIZA: But me…\p"
-	.string "TATE: I'll always be with LIZA!\n"
-	.string "LIZA: I'll always be with TATE!\p"
-	.string "TATE: Our combination…\n"
-	.string "LIZA: We'll show you again and again!$"
+	.string "Tate: POKéMON…\n"
+	.string "Liza: POKéMON…\p"
+	.string "Tate: By changing the party's mix…\n"
+	.string "Liza: The battle style changes.\p"
+	.string "Tate: But me…\n"
+	.string "Liza: But me…\p"
+	.string "Tate: I'll always be with LIZA!\n"
+	.string "Liza: I'll always be with TATE!\p"
+	.string "Tate: Our combination…\n"
+	.string "Liza: We'll show you again and again!$"
 
 MossdeepCity_Gym_Text_TateAndLizaRematchDefeat:
-	.string "TATE: You and your POKéMON…\n"
-	.string "LIZA: It's as if you were siblings!$"
+	.string "Tate: You and your POKéMON…\n"
+	.string "Liza: It's as if you were siblings!$"
 
 MossdeepCity_Gym_Text_TateAndLizaPostRematch:
-	.string "TATE: You can knock us down,\n"
+	.string "Tate: You can knock us down,\n"
 	.string "but we'll never stay down!\p"
-	.string "LIZA: Because the two of us,\n"
+	.string "Liza: Because the two of us,\n"
 	.string "we always support each other!$"
 
 MossdeepCity_Gym_Text_TateAndLizaRematchNeedTwoMons:
-	.string "TATE: You're back again…\n"
-	.string "LIZA: You're back again…\p"
-	.string "TATE: To give us a rematch.\n"
-	.string "LIZA: To give us a rematch.\p"
-	.string "TATE: But…\n"
-	.string "LIZA: For our match…\p"
-	.string "TATE: You brought just one POKéMON!\n"
-	.string "LIZA: You brought just one POKéMON!\p"
-	.string "TATE: We need you to bring at least…\n"
-	.string "LIZA: Two POKéMON when you come back.$"
+	.string "Tate: You're back again…\n"
+	.string "Liza: You're back again…\p"
+	.string "Tate: To give us a rematch.\n"
+	.string "Liza: To give us a rematch.\p"
+	.string "Tate: But…\n"
+	.string "Liza: For our match…\p"
+	.string "Tate: You brought just one POKéMON!\n"
+	.string "Liza: You brought just one POKéMON!\p"
+	.string "Tate: We need you to bring at least…\n"
+	.string "Liza: Two POKéMON when you come back.$"

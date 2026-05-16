@@ -78,7 +78,7 @@
 #define FLAG_DEFEATED_FORTREE_KANTONIANS    0x31
 #define FLAG_HIDE_FORTREE_KANTONIANS        0x32
 #define FLAG_RUSTBORO_ERIKA_INTRO_GIVEN     0x33
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
+#define FLAG_HIDE_MOSSDEEP_CITY_GYM_SABRINA 0x34
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag

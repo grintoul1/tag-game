@@ -622,6 +622,34 @@ static const struct MenuAction MultichoiceList_EmmieInformation[] =
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_MossdeepGymOpponentA[] =
+{
+    {gText_Tate},
+    {gText_Liza},
+    {gText_Sabrina},
+};
+
+static const struct MenuAction MultichoiceList_MossdeepGymOpponentB_Tate[] =
+{
+    {gText_Liza},
+    {gText_Sabrina},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_MossdeepGymOpponentB_Liza[] =
+{
+    {gText_Tate},
+    {gText_Sabrina},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_MossdeepGymOpponentB_Sabrina[] =
+{
+    {gText_Tate},
+    {gText_Liza},
+    {gText_Back},
+};
+
 static const struct MenuAction MultichoiceList_UnusedSSTidal4[] =
 {
     {gText_SouthernIsland},
@@ -1257,7 +1285,10 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_PYRE_FIGHT]                 = MULTICHOICE(MultichoiceList_PyreLeaderChoice),
     [MULTI_EMMIE_ARE_YOU_READY]        = MULTICHOICE(MultichoiceList_EmmieAreYouReady),
     [MULTI_EMMIE_INFORMATION]          = MULTICHOICE(MultichoiceList_EmmieInformation),
-    [MULTI_UNUSED_SSTIDAL_4]           = MULTICHOICE(MultichoiceList_UnusedSSTidal4),
+    [MULTI_MOSSDEEP_GYM_OPPONENTA]         = MULTICHOICE(MultichoiceList_MossdeepGymOpponentA),
+    [MULTI_MOSSDEEP_GYM_OPPONENTB_TATE]    = MULTICHOICE(MultichoiceList_MossdeepGymOpponentB_Tate),
+    [MULTI_MOSSDEEP_GYM_OPPONENTB_LIZA]    = MULTICHOICE(MultichoiceList_MossdeepGymOpponentB_Liza),
+    [MULTI_MOSSDEEP_GYM_OPPONENTB_SABRINA] = MULTICHOICE(MultichoiceList_MossdeepGymOpponentB_Sabrina),
     [MULTI_FOSSIL]                     = MULTICHOICE(MultichoiceList_Fossil),
     [MULTI_YESNO]                      = MULTICHOICE(MultichoiceList_YesNo),
     [MULTI_FRONTIER_RULES]             = MULTICHOICE(MultichoiceList_FrontierRules),
