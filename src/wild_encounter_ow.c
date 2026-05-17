@@ -393,7 +393,7 @@ void StartWildBattleWithOWE(struct ScriptContext *ctx)
 
     ZeroEnemyPartyMons();
     personality = GetMonPersonality(speciesId, gender, NATURE_RANDOM, RANDOM_UNOWN_LETTER);
-    CreateMonWithIVs(&gParties[B_TRAINER_1][0], speciesId, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    CreateMonWithIVs(&gParties[B_TRAINER_1][0], speciesId, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS, ShouldSanitizeEncounterAbility(speciesId));
     GiveMonInitialMoveset(&gParties[B_TRAINER_1][0]);
     SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_IS_SHINY, &shiny);
     
@@ -879,7 +879,7 @@ static bool32 CreateEnemyPartyOWE(struct InfoOWE *info, s32 x, s32 y)
         }
         else if (WE_OWE_FEEBAS_SPOTS && MetatileBehavior_IsWaterWildEncounter(metatileBehavior) && CheckFeebasAtCoords(x, y))
         {
-            CreateWildMon(gWildFeebas.species, ChooseWildMonLevel(&gWildFeebas, 0, WILD_AREA_FISHING));
+            CreateWildMon(gWildFeebas.species, ChooseWildMonLevel(&gWildFeebas, 0, WILD_AREA_FISHING), FALSE);
             info->category = OWE_CATEGORY_FEEBAS;
             if (WE_OWE_PREVENT_FEEBAS_DESPAWN)
                 info->noDespawn = TRUE;

@@ -5132,21 +5132,22 @@ bool32 CanBattlerSwitch(enum BattlerId battler)
 
     if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) && IsOnPlayerSide(battler) && isSharedTeams)
     {
+        lastMonId = PARTY_SIZE;
         battlerIn1 = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
         battlerIn2 = GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT);
         party = gParties[B_TRAINER_0];
 
-        for (i = 0; i < PARTY_SIZE; i++)
+        for (u32 mon = 0; mon < lastMonId; mon++)
         {
-            if (GetMonData(&party[i], MON_DATA_HP) != 0
-             && GetMonData(&party[i], MON_DATA_SPECIES) != SPECIES_NONE
-             && !GetMonData(&party[i], MON_DATA_IS_EGG)
-             && i != gBattlerPartyIndexes[battlerIn1] && i != gBattlerPartyIndexes[battlerIn2])
-                break;
-        }
+            if (GetMonData(&party[mon], MON_DATA_HP) == 0
+            || GetMonData(&party[mon], MON_DATA_SPECIES) == SPECIES_NONE
+            || GetMonData(&party[mon], MON_DATA_IS_EGG)
+            || (mon == gBattlerPartyIndexes[battlerIn1] && BattlersShareParty(battler, battlerIn1))
+            || (mon == gBattlerPartyIndexes[battlerIn2] && BattlersShareParty(battler, battlerIn2)))
+                continue;
 
-        ret = (i != PARTY_SIZE);
-        lastMonId = PARTY_SIZE;
+            return TRUE;
+        }
     }
     else if (BattleSideHasTwoTrainers(GetBattlerSide(battler)) && !AreMultiPartiesFullTeams())
     {

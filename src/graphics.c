@@ -1166,10 +1166,10 @@ const u32 gBattleAnimSpriteGfx_WispOrb[] = INCGFX_U32("graphics/battle_anims/spr
 
 const u32 gBattleAnimSpriteGfx_ChillWispFire[] = INCGFX_U32("graphics/battle_anims/sprites/chill_wisp_fire.png", ".4bpp.smol");
 
-const u16 gBattleAnimSpritePal_ChillWispOrb[] = INCGFX_U16("graphics/battle_anims/sprites/chill_wisp_orb.pal", ".gbapal");
+const u16 gBattleAnimSpritePal_ChillWispOrb[] = INCGFX_U16("graphics/battle_anims/sprites/chill_wisp_orb.png", ".gbapal");
 const u32 gBattleAnimSpriteGfx_ChillWispOrb[] = INCGFX_U32("graphics/battle_anims/sprites/chill_wisp_orb.png", ".4bpp.smol");
 
-const u16 gBattleAnimSpritePal_HyperBeamBall[] = INCGFX_U16("graphics/battle_anims/sprites/hyperbeamball.pal", ".gbapal");
+const u16 gBattleAnimSpritePal_HyperBeamBall[] = INCGFX_U16("graphics/battle_anims/sprites/hyperbeamball.png", ".gbapal");
 const u32 gBattleAnimSpriteGfx_HyperBeamBall[] = INCGFX_U32("graphics/battle_anims/sprites/hyperbeamball.png", ".4bpp.smol");
 
 const u16 gBattleAnimSpritePal_BlastBurnBall[] = INCGFX_U16("graphics/battle_anims/sprites/blast_burn_ball.pal", ".gbapal");
@@ -1177,7 +1177,7 @@ const u16 gBattleAnimSpritePal_HydroCannonBall[] = INCGFX_U16("graphics/battle_a
 const u16 gBattleAnimSpritePal_FrenzyPlantBall[] = INCGFX_U16("graphics/battle_anims/sprites/frenzy_plant_ball.pal", ".gbapal");
 
 const u32 gBattleAnimSpriteGfx_GoldStars[] = INCGFX_U32("graphics/battle_anims/sprites/gold_stars.png", ".4bpp.smol");
-const u16 gBattleAnimSpritePal_GoldStars[] = INCGFX_U16("graphics/battle_anims/sprites/gold_stars.gbapal");
+const u16 gBattleAnimSpritePal_GoldStars[] = INCGFX_U16("graphics/battle_anims/sprites/gold_stars.png", ".gbapal");
 
 const u32 gBattleAnimSpriteGfx_EclipsingOrb[] = INCGFX_U32("graphics/battle_anims/sprites/eclipsing_orb.png", ".4bpp.smol");
 const u16 gBattleAnimSpritePal_EclipsingOrb[] = INCGFX_U16("graphics/battle_anims/sprites/eclipsing_orb.png", ".gbapal");

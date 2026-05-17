@@ -221,10 +221,10 @@ const u32 gTrainerFrontPic_MagmaAdmin[] = INCGFX_U32("graphics/trainers/front_pi
 const u16 gTrainerPalette_MagmaAdmin[] = INCGFX_U16("graphics/trainers/front_pics/magma_admin.png", ".gbapal");
 
 const u32 gTrainerFrontPic_MagmaAdminF[] = INCGFX_U32("graphics/trainers/front_pics/magma_admin_f.png", ".4bpp.smol");
-const u16 gTrainerPalette_MagmaAdminF[] = INCBIN_U16("graphics/trainers/front_pics/magma_admin_f.pal", ".gbapal");
+const u16 gTrainerPalette_MagmaAdminF[] = INCGFX_U16("graphics/trainers/front_pics/magma_admin_f.png", ".gbapal");
 
 const u32 gTrainerFrontPic_Wally[] = INCGFX_U32("graphics/trainers/front_pics/wally.png", ".4bpp.smol");
-const u16 gTrainerPalette_Wally[] = INCBIN_U16("graphics/trainers/palettes/wally.pal", ".gbapal");
+const u16 gTrainerPalette_Wally[] = INCGFX_U16("graphics/trainers/palettes/wally.pal", ".gbapal");
 
 const u32 gTrainerFrontPic_Brendan[] = INCGFX_U32("graphics/trainers/front_pics/brendan.png", ".4bpp.smol");
 const u16 gTrainerPalette_Brendan[] = INCGFX_U16("graphics/trainers/palettes/brendan.pal", ".gbapal");
@@ -239,7 +239,7 @@ const u32 gTrainerFrontPic_Vito[] = INCGFX_U32("graphics/trainers/front_pics/vit
 const u16 gTrainerPalette_Vito[] = INCGFX_U16("graphics/trainers/palettes/vito.pal", ".gbapal");
 
 const u32 gTrainerFrontPic_BugCatcher[] = INCGFX_U32("graphics/trainers/front_pics/bug_catcher.png", ".4bpp.smol");
-const u16 gTrainerPalette_BugCatcher[] = INCGFX_U16("graphics/trainers/front_pics/bug_catcher.pal", ".gbapal");
+const u16 gTrainerPalette_BugCatcher[] = INCGFX_U16("graphics/trainers/front_pics/bug_catcher.png", ".gbapal");
 
 const u32 gTrainerFrontPic_PokemonRangerM[] = INCGFX_U32("graphics/trainers/front_pics/pokemon_ranger_m.png", ".4bpp.smol");
 const u16 gTrainerPalette_PokemonRangerM[] = INCGFX_U16("graphics/trainers/front_pics/pokemon_ranger_m.png", ".gbapal");
@@ -503,13 +503,13 @@ const u8 gTrainerBackPic_LeaderTate[] = INCGFX_U8("graphics/trainers/back_pics/l
 
 const u16 gTrainerBackPicPalette_Red[] = INCGFX_U16("graphics/trainers/back_pics/red.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCGFX_U16("graphics/trainers/back_pics/leaf.png", ".gbapal");
-const u16 gTrainerBackPicPalette_Green[] = INCGFX_U16("graphics/trainers/back_pics/green.png", ".gbapal");
-const u16 gTrainerBackPicPalette_MagmaLeaderMaxie[] = INCGFX_U16("graphics/trainers/back_pics/magma_leader_maxie.png", ".gbapal");
-const u16 gTrainerBackPicPalette_AquaLeaderArchie[] = INCGFX_U16("graphics/trainers/back_pics/aqua_leader_archie.png", ".gbapal");
+const u16 gTrainerBackPicPalette_Green[] = INCGFX_U16("graphics/trainers/back_pics/green.pal", ".gbapal");
+const u16 gTrainerBackPicPalette_MagmaLeaderMaxie[] = INCGFX_U16("graphics/trainers/back_pics/magma_leader_maxie.pal", ".gbapal");
+const u16 gTrainerBackPicPalette_AquaLeaderArchie[] = INCGFX_U16("graphics/trainers/back_pics/aqua_leader_archie.pal", ".gbapal");
 const u16 gTrainerBackPicPalette_MagmaAdminM[] = INCGFX_U16("graphics/trainers/back_pics/magma_admin_m.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Blue[] = INCGFX_U16("graphics/trainers/back_pics/blue.png", ".gbapal");
 const u16 gTrainerBackPicPalette_AquaAdminF[] = INCGFX_U16("graphics/trainers/back_pics/aqua_admin_f.png", ".gbapal");
-const u16 gTrainerBackPicPalette_LeaderTate[] = INCGFX_U16("graphics/trainers/back_pics/leader_tate.png", ".gbapal");
+const u16 gTrainerBackPicPalette_LeaderTate[] = INCGFX_U16("graphics/trainers/back_pics/leader_tate.pal", ".gbapal");
 
 const u8 gTrainerBackPic_Pokedude[] = INCGFX_U8("graphics/trainers/back_pics/pokedude.png", ".4bpp");
 const u8 gTrainerBackPic_OldMan[] = INCGFX_U8("graphics/trainers/back_pics/old_man.png", ".4bpp");
