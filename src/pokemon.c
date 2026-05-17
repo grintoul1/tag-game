@@ -5369,17 +5369,26 @@ u16 GetBattleBGM(void)
             case TRAINER_LT_SURGE:
                 return MUS_GS_VS_KANTO_LEADER_MISTY_SURGE;*/
             case TRAINER_ERIKA_RUSTBORO:
-                //return MUS_GS_VS_KANTO_LEADER_ERIKA;
+                return MUS_GS_VS_KANTO_LEADER_ERIKA;
             /*case TRAINER_JANINE:
             case TRAINER_KOGA:
                 return MUS_GS_VS_KANTO_LEADER_JANINE_KOGA;
             case TRAINER_BLAINE:
                 return MUS_GS_VS_KANTO_LEADER_BLAINE;*/
+            case TRAINER_SABRINA_MOSSDEEP:
+                return MUS_GS_VS_KANTO_LEADER_SABRINA;
             default:
-                return MUS_GS_VS_KANTO_LEADER_BLAINE;
-                //return MUS_GS_VS_KANTO_LEADER;
+                return MUS_GS_VS_KANTO_LEADER;
             }
         case TRAINER_CLASS_LEADER:
+            switch (TRAINER_BATTLE_PARAM.opponentA)
+            {
+            case TRAINER_TATE:
+            case TRAINER_LIZA:
+                return MUS_GS_VS_KANTO_LEADER_SABRINA;
+            default:
+                break;
+            }
             if (VarGet(VAR_MUSIC_MODE) == MUSIC_MODE_DEFAULT)
                 switchVal = GetCurrentBadgeCount() + 1;
             else

@@ -6615,6 +6615,20 @@ Kadabra
 Level: 36
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
+=== TRAINER_NICHOLAS ===
+Name: Nicholas
+Class: Psychic
+Pic: Psychic M
+Gender: Male
+Music: Intense
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Wobbuffet
+Level: 36
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
 === TRAINER_CLIFFORD ===
 Name: Clifford
 Class: Gentleman
@@ -6726,7 +6740,7 @@ Mugshot: Purple
 Pic: Leader Sabrina Frlg
 Gender: Female
 Music: Female
-Battle Type: Doubles
+Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
@@ -6739,11 +6753,14 @@ Timid Nature
 - Tachyon Cutter
 - Shadow Ball
 
-Mr. Rime
+Alakazam-Mega @ Alakazite
+Ability: Trace
+Level: 81
+Timid Nature
 - Psychic
 - Hyper Voice
 - Tachyon Cutter
-- Tachyon Cutter
+- Shadow Ball
 
 Farigiraf @ Throat Spray
 Ability: Armor Tail
@@ -9945,10 +9962,10 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Rest
 - Belly Drum
 
-=== TRAINER_NICHOLAS ===
-Name: Nicholas
-Class: Psychic
-Pic: Psychic M
+=== TRAINER_NICOLAS_1 ===
+Name: Nicolas
+Class: Dragon Tamer
+Pic: Dragon Tamer
 Gender: Male
 Music: Intense
 Battle Type: Singles

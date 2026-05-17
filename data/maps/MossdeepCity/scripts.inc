@@ -141,8 +141,6 @@ MossdeepCity_EventScript_BlueIntroduction1::
 
 MossdeepCity_EventScript_BlueIntroduction2::
 	lockall
-	delay 16
-	delay 16
 	setobjectxyperm LOCALID_MOSSDEEP_CITY_BLUE, 26, 23
 	delay 8
 	playbgm MUS_RG_ENCOUNTER_RIVAL, FALSE
@@ -171,8 +169,6 @@ MossdeepCity_EventScript_BlueIntroduction2::
 
 MossdeepCity_EventScript_BlueIntroduction4::
 	lockall
-	delay 16
-	delay 16
 	setobjectxyperm LOCALID_MOSSDEEP_CITY_BLUE, 37, 19
 	delay 8
 	playbgm MUS_RG_ENCOUNTER_RIVAL, FALSE
@@ -182,8 +178,6 @@ MossdeepCity_EventScript_BlueIntroduction4::
 	goto MossdeepCity_EventScript_BlueIntroduction5
 MossdeepCity_EventScript_BlueIntroduction3::
 	lockall
-	delay 16
-	delay 16
 	setobjectxyperm LOCALID_MOSSDEEP_CITY_BLUE, 36, 20
 	delay 8
 	playbgm MUS_RG_ENCOUNTER_RIVAL, FALSE
