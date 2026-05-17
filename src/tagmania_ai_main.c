@@ -1,3 +1,4 @@
+#if 0
 #include "global.h"
 #include "main.h"
 #include "malloc.h"
@@ -18269,3 +18270,4 @@ void ResetDynamicAiFunctions(void)
     sDynamicAiFunc = NULL;
     gDynamicAiSwitchFunc = NULL;
 }
+#endif

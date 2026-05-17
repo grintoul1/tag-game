@@ -1,3 +1,4 @@
+#if 0
 #include "global.h"
 #include "battle_z_move.h"
 #include "malloc.h"
@@ -3315,7 +3316,7 @@ bool32 IsSelfStatLoweringEffect(enum MoveEffect effect)
     // Self stat lowering moves like Overheart, Superpower etc.
     switch (effect)
     {
-    case MOVE_EFFECT_ATK_MINUS_1:
+    case MOVE_EFFECT_STAT_MINUS:
     case MOVE_EFFECT_DEF_MINUS_1:
     case MOVE_EFFECT_SPD_MINUS_1:
     case MOVE_EFFECT_SP_ATK_MINUS_1:
@@ -6874,3 +6875,4 @@ bool32 IsPartyMonPlannedToBeSwitchedInByPartner(u32 partyIndex, enum BattlerId b
         return TRUE;
     return FALSE;
 }
+#endif

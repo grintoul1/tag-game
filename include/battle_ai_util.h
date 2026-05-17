@@ -226,10 +226,8 @@ bool32 IsFlinchGuaranteed(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
 bool32 HasChoiceEffect(enum BattlerId battler);
 bool32 HasThawingMove(enum BattlerId battler);
 bool32 HasMoveUsableWhileAsleep(enum BattlerId battler);
-bool32 IsStatRaisingEffect(enum BattleMoveEffects effect);
-bool32 IsStatLoweringEffect(enum BattleMoveEffects effect);
-bool32 IsSelfStatLoweringEffect(enum MoveEffect effect);
-bool32 IsSelfStatRaisingEffect(enum MoveEffect effect);
+bool32 IsStatRaisingMove(enum Move move);
+bool32 IsStatLoweringMove(enum Move move);
 bool32 IsSwitchOutEffect(enum BattleMoveEffects effect);
 bool32 IsChaseEffect(enum BattleMoveEffects effect);
 bool32 IsAttackBoostMoveEffect(enum BattleMoveEffects effect);
@@ -272,16 +270,16 @@ enum AIScore BattlerBenefitsFromAbilityScore(enum BattlerId battler, enum Abilit
 
 // partner logic
 bool32 IsTargetingPartner(enum BattlerId battlerAtk, enum BattlerId battlerDef);
-// IsTargetingPartner includes a check to make sure the adjacent pokemon is truly a partner.
+// IsTargetingPartner includes a check to make sure the adjacent Pokémon is truly a partner.
 enum Move GetAllyChosenMove(enum BattlerId battlerId);
 bool32 IsBattle1v1(void);
 // IsBattle1v1 is distinct from !IsDoubleBattle. If the player is fighting Maxie and Tabitha, with Steven as their partner, and both Tabitha and Steven have run out of Pokemon, the battle is 1v1, even though mechanically it is a Double Battle for how battlers and flags are set.
 // Most AI checks should be using IsBattle1v1; most engine checks should be using !IsDoubleBattle
 bool32 HasTwoOpponents(enum BattlerId battler);
-// HasTwoOpponents checks if the opposing side has two pokemon. Partner state is irrelevant. e.g., Dragon Darts hits one time with two opponents and twice with one opponent.
+// HasTwoOpponents checks if the opposing side has two Pokémon. Partner state is irrelevant. e.g., Dragon Darts hits one time with two opponents and twice with one opponent.
 bool32 HasPartner(enum BattlerId battler);
 bool32 HasPartnerIgnoreFlags(enum BattlerId battler);
-// HasPartner respects the Attacks Partner AI flag; HasPartnerIgnoreFlags checks only if a live pokemon is adjacent.
+// HasPartner respects the Attacks Partner AI flag; HasPartnerIgnoreFlags checks only if a live Pokémon is adjacent.
 bool32 AreMovesEquivalent(enum BattlerId battlerAtk, enum BattlerId battlerAtkPartner, enum Move move, enum Move partnerMove);
 bool32 DoesPartnerHaveSameMoveEffect(enum BattlerId battlerAtkPartner, enum BattlerId battlerDef, enum Move move, enum Move partnerMove);
 bool32 PartnerMoveEffectIsStatusSameTarget(enum BattlerId battlerAtkPartner, enum BattlerId battlerDef, enum Move partnerMove);
@@ -307,17 +305,21 @@ s32 GetAILastPartyIndex(enum BattlerId battler);
 u32 GetActiveBattlerIds(enum BattlerId battler, enum BattlerId *battlerIn1, enum BattlerId *battlerIn2);
 bool32 IsPartyMonOnFieldOrChosenToSwitch(enum BattlerId battler, u32 partyIndex, enum BattlerId battlerIn1, enum BattlerId battlerIn2);
 bool32 IsPartyMonPlannedToBeSwitchedInByPartner(u32 partyIndex, enum BattlerId battler);
+s32 GetStatChangeScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
+s32 GetSelfStatChangeScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
+s32 GetFoeStatChangeScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
+s32 GetAllyStatChangeScore(u32 battlerAtk, u32 partner, u32 move);
 
 // score increases
-enum AIScore IncreaseStatUpScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum StatChange statId);
-enum AIScore IncreaseStatUpScoreContrary(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum StatChange statId);
+enum AIScore IncreaseStatUpScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Stat stat, s32 stage);
+enum AIScore IncreaseStatUpScoreContrary(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Stat stat, s32 stage);
 enum AIScore IncreaseStatDownScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Stat stat);
-s32 IncreasePoisonScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
-s32 IncreaseBurnScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
-s32 IncreaseParalyzeScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
-s32 IncreaseSleepScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
-s32 IncreaseConfusionScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
-s32 IncreaseFrostbiteScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
+void IncreasePoisonScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move, s32 *score);
+void IncreaseBurnScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move, s32 *score);
+void IncreaseParalyzeScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move, s32 *score);
+void IncreaseSleepScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move, s32 *score);
+void IncreaseConfusionScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move, s32 *score);
+void IncreaseFrostbiteScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move, s32 *score);
 bool32 HasHPForDamagingSetup(enum BattlerId battlerAtk, enum BattlerId battlerDef, u32 hpThreshold);
 s32 AI_TryToClearStats(enum BattlerId battlerAtk, enum BattlerId battlerDef, bool32 isDoubleBattle);
 bool32 AI_ShouldCopyStatChanges(enum BattlerId battlerAtk, enum BattlerId battlerDef);
@@ -330,10 +332,11 @@ bool32 IsBattlerPredictedToSwitch(enum BattlerId battler);
 bool32 IsBattlerFirstTurnOrRandom(enum BattlerId battler);
 bool32 ShouldUseProtect(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
 enum Move GetIncomingMove(enum BattlerId battler, enum BattlerId opposingBattler, struct AiLogicData *aiData);
-enum Move GetIncomingMoveSpeedCheck(enum BattlerId battler, enum BattlerId opposingBattler, struct AiLogicData *aiData);
+enum Move GetPredictedMove(enum BattlerId battler, enum BattlerId opposingBattler, struct AiLogicData *aiData);
 bool32 AI_OpponentCanFaintAiWithMod(enum BattlerId battler, u32 healAmount);
 bool32 ShouldInstructPartner(enum BattlerId partner, enum Move move);
 bool32 CanMoveBeBouncedBack(enum BattlerId battler, enum Move move);
+bool32 AI_CanAnyStatChange(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
 
 // Switching and item helpers
 bool32 AiExpectsToFaintPlayer(enum BattlerId battler);
@@ -355,5 +358,14 @@ bool32 AiExpectsToFaintPlayer(enum BattlerId battler);
 
 // As Aurora Veil should almost never be used alongside the other screens, we save the bit.
 #define AI_EFFECT_AURORA_VEIL          (AI_EFFECT_LIGHT_SCREEN | AI_EFFECT_REFLECT)
+
+//TAGMANIA FUNCTIONS
+s32 GetPoisonScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
+s32 GetBurnScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
+s32 GetParalyzeScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
+s32 GetSleepScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
+s32 GetConfusionScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
+s32 GetFrostbiteScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
+
 
 #endif //GUARD_BATTLE_AI_UTIL_H

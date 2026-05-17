@@ -1,14 +1,6 @@
 #ifndef GUARD_CONFIG_AI_H
 #define GUARD_CONFIG_AI_H
 
-// Frame count references used by testing system
-#define AI_FRAME_CEILING_SINGLES_NO_FLAGS                       3
-#define AI_FRAME_CEILING_SINGLES_SMART_TRAINER                  7
-#define AI_FRAME_CEILING_DOUBLES_NO_FLAGS                       22
-#define AI_FRAME_CEILING_DOUBLES_SMART_TRAINER                  38
-#define AI_FRAME_CEILING_STEVEN_MULTI                           27
-#define AI_FRAME_CEILING_STEVEN_MULTI_SMART_TRAINER             33
-
 // For the details on what specific factors the switching functions are considering, go read the corresponding function inside ShouldSwitch in src/battle_ai_switch_items.c
 // These configuration options control how likely the AI is to switch if it determines that a switch meets all of its criteria
 // Think of them almost like success rates; if the AI has determined that it needs to switch out to hit Wonder Guard, how often do you want it to actually take that course of action? Etc.
@@ -33,6 +25,7 @@
 #define SHOULD_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS_PERCENTAGE    0
 #define SHOULD_SWITCH_ALL_SCORES_BAD_PERCENTAGE                     50
 #define SHOULD_SWITCH_DYN_FUNC_PERCENTAGE                           0 // Dynamic switching function switch chance
+#define SHOULD_SWITCH_LOSES_1V1_PERCENTAGE                          0 // Keeping this disabled by default makes evaluating and testing switching behaviour when developing much easier
 
 // AI smart switching chances for bad statuses
 #define SHOULD_SWITCH_PERISH_SONG_PERCENTAGE                    50
@@ -56,6 +49,7 @@
 #define SHOULD_SWITCH_REGENERATOR_STATS_RAISED_PERCENTAGE           0
 #define SHOULD_SWITCH_INTIMIDATE_PERCENTAGE                         0
 #define SHOULD_SWITCH_INTIMIDATE_STATS_RAISED_PERCENTAGE            0
+#define SHOULD_SWITCH_WISH_PASSING_PERCENTAGE                       0
 
 // AI switchin considerations
 #define ALL_MOVES_BAD_STATUS_MOVES_BAD                          FALSE // If the AI has no moves that affect the target, ShouldSwitchIfAllMovesBad can prompt a switch. Enabling this config will ignore status moves that can affect the target when making this decision.
@@ -115,8 +109,8 @@
 #define PREDICT_MOVE_CHANCE                                     100
 
 // AI Terastalization chances
-#define AI_CONSERVE_TERA_CHANCE_PER_MON                         0 // Chance for AI with smart tera flag to decide not to tera before considering defensive benefit is this*(X-1), where X is the number of alive pokemon that could tera
-#define AI_TERA_PREDICT_CHANCE                                  0 // Chance for AI with smart tera flag to tera in the situation where tera would save it from a KO, but could be punished by a KO from a different move. 
+#define AI_CONSERVE_TERA_CHANCE_PER_MON                         0 // Chance for AI with smart tera flag to decide not to tera before considering defensive benefit is this*(X-1), where X is the number of alive Pokémon that could tera
+#define AI_TERA_PREDICT_CHANCE                                  0 // Chance for AI with smart tera flag to tera in the situation where tera would save it from a KO, but could be punished by a KO from a different move.
 
 // AI_FLAG_PP_STALL_PREVENTION settings
 #define PP_STALL_DISREGARD_MOVE_PERCENTAGE                      0 // Detection chance per roll
@@ -128,9 +122,9 @@
 // AI_FLAG_ASSUME_STATUS_MOVES settings
 #define ASSUME_STATUS_MOVES_HAS_TUNING                  TRUE // Flag has varying rates for different kinds of status move.
                                                              // Setting to false also means it will not alert on Fake Out or Super Fang.
-#define ASSUME_STATUS_HIGH_ODDS                         90 // Chance for AI to see extremely likely moves for a pokemon to have, like Spore
-#define ASSUME_STATUS_MEDIUM_ODDS                       70 // Chance for AI to see moderately likely moves for a pokemon to have, like Protect
-#define ASSUME_STATUS_LOW_ODDS                          40 // Chance for AI to see niche moves a pokemon may have but probably won't, like Entrainment
+#define ASSUME_STATUS_HIGH_ODDS                         90 // Chance for AI to see extremely likely moves for a Pokémon to have, like Spore
+#define ASSUME_STATUS_MEDIUM_ODDS                       70 // Chance for AI to see moderately likely moves for a Pokémon to have, like Protect
+#define ASSUME_STATUS_LOW_ODDS                          40 // Chance for AI to see niche moves a Pokémon may have but probably won't, like Entrainment
 #define ASSUME_ALL_STATUS_ODDS                          25 // Chance for the AI to see any kind of status move.
 
 // AI_FLAG_SMART_SWITCHING settings
