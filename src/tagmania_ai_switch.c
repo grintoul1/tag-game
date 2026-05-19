@@ -244,66 +244,66 @@ u32 GetPartnerSwitchChance(enum ShouldPartnerSwitchScenario shouldPartnerSwitchS
     // Modify these cases if you want unique behaviour based on other data (trainer class, difficulty, etc.)
     switch(shouldPartnerSwitchScenario)
     {
-        case PARTNER_SHOULD_SWITCH_WONDER_GUARD:
-            return PARTNER_SHOULD_SWITCH_WONDER_GUARD_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_ABSORBS_MOVE:
-            return PARTNER_SHOULD_SWITCH_ABSORBS_MOVE_PERCENTAGE_IF_FAST_KILLED;
-        case PARTNER_SHOULD_SWITCH_TRAPPER:
-            return PARTNER_SHOULD_SWITCH_TRAPPER_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_FREE_TURN:
-            return PARTNER_SHOULD_SWITCH_FREE_TURN_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_TRUANT:
-            return PARTNER_SHOULD_SWITCH_TRUANT_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD:
-            return PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_PERISH_SONG:
-            return PARTNER_SHOULD_SWITCH_PERISH_SONG_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_YAWN:
-            return PARTNER_SHOULD_SWITCH_YAWN_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_BADLY_POISONED:
-            return PARTNER_SHOULD_SWITCH_BADLY_POISONED_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_BADLY_POISONED_STATS_RAISED:
-            return PARTNER_SHOULD_SWITCH_BADLY_POISONED_STATS_RAISED_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_CURSED:
-            return PARTNER_SHOULD_SWITCH_CURSED_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_CURSED_STATS_RAISED:
-            return PARTNER_SHOULD_SWITCH_CURSED_STATS_RAISED_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_NIGHTMARE:
-            return PARTNER_SHOULD_SWITCH_NIGHTMARE_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_NIGHTMARE_STATS_RAISED:
-            return PARTNER_SHOULD_SWITCH_NIGHTMARE_STATS_RAISED_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_SEEDED:
-            return PARTNER_SHOULD_SWITCH_SEEDED_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_SEEDED_STATS_RAISED:
-            return PARTNER_SHOULD_SWITCH_SEEDED_STATS_RAISED_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_INFATUATION:
-            return PARTNER_SHOULD_SWITCH_INFATUATION_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_HASBADODDS:
-            return PARTNER_SHOULD_SWITCH_HASBADODDS_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_NATURAL_CURE_STRONG:
-            return PARTNER_SHOULD_SWITCH_NATURAL_CURE_STRONG_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_NATURAL_CURE_STRONG_STATS_RAISED:
-            return PARTNER_SHOULD_SWITCH_NATURAL_CURE_STRONG_STATS_RAISED_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_NATURAL_CURE_WEAK:
-            return PARTNER_SHOULD_SWITCH_NATURAL_CURE_WEAK_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_NATURAL_CURE_WEAK_STATS_RAISED:
-            return PARTNER_SHOULD_SWITCH_NATURAL_CURE_WEAK_STATS_RAISED_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_REGENERATOR:
-            return PARTNER_SHOULD_SWITCH_REGENERATOR_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_REGENERATOR_STATS_RAISED:
-            return PARTNER_SHOULD_SWITCH_REGENERATOR_STATS_RAISED_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_ENCORE_STATUS:
-            return PARTNER_SHOULD_SWITCH_ENCORE_STATUS_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_ENCORE_DAMAGE:
-            return PARTNER_SHOULD_SWITCH_ENCORE_DAMAGE_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_CHOICE_LOCKED:
-            return PARTNER_SHOULD_SWITCH_CHOICE_LOCKED_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_ATTACKING_STAT_MINUS_TWO:
-            return PARTNER_SHOULD_SWITCH_ATTACKING_STAT_MINUS_TWO_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS:
-            return PARTNER_SHOULD_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS_PERCENTAGE;
-        case PARTNER_SHOULD_SWITCH_ALL_SCORES_BAD:
-            return PARTNER_SHOULD_SWITCH_ALL_SCORES_BAD_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_WONDER_GUARD:
+            return SHOULD_PARTNER_SWITCH_WONDER_GUARD_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_ABSORBS_MOVE:
+            return SHOULD_PARTNER_SWITCH_ABSORBS_MOVE_PERCENTAGE_IF_FAST_KILLED;
+        case SHOULD_PARTNER_SWITCH_TRAPPER:
+            return SHOULD_PARTNER_SWITCH_TRAPPER_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_FREE_TURN:
+            return SHOULD_PARTNER_SWITCH_FREE_TURN_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_TRUANT:
+            return SHOULD_PARTNER_SWITCH_TRUANT_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_ALL_MOVES_BAD:
+            return SHOULD_PARTNER_SWITCH_ALL_MOVES_BAD_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_PERISH_SONG:
+            return SHOULD_PARTNER_SWITCH_PERISH_SONG_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_YAWN:
+            return SHOULD_PARTNER_SWITCH_YAWN_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_BADLY_POISONED:
+            return SHOULD_PARTNER_SWITCH_BADLY_POISONED_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_BADLY_POISONED_STATS_RAISED:
+            return SHOULD_PARTNER_SWITCH_BADLY_POISONED_STATS_RAISED_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_CURSED:
+            return SHOULD_PARTNER_SWITCH_CURSED_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_CURSED_STATS_RAISED:
+            return SHOULD_PARTNER_SWITCH_CURSED_STATS_RAISED_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_NIGHTMARE:
+            return SHOULD_PARTNER_SWITCH_NIGHTMARE_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_NIGHTMARE_STATS_RAISED:
+            return SHOULD_PARTNER_SWITCH_NIGHTMARE_STATS_RAISED_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_SEEDED:
+            return SHOULD_PARTNER_SWITCH_SEEDED_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_SEEDED_STATS_RAISED:
+            return SHOULD_PARTNER_SWITCH_SEEDED_STATS_RAISED_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_INFATUATION:
+            return SHOULD_PARTNER_SWITCH_INFATUATION_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_HASBADODDS:
+            return SHOULD_PARTNER_SWITCH_HASBADODDS_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_NATURAL_CURE_STRONG:
+            return SHOULD_PARTNER_SWITCH_NATURAL_CURE_STRONG_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_NATURAL_CURE_STRONG_STATS_RAISED:
+            return SHOULD_PARTNER_SWITCH_NATURAL_CURE_STRONG_STATS_RAISED_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_NATURAL_CURE_WEAK:
+            return SHOULD_PARTNER_SWITCH_NATURAL_CURE_WEAK_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_NATURAL_CURE_WEAK_STATS_RAISED:
+            return SHOULD_PARTNER_SWITCH_NATURAL_CURE_WEAK_STATS_RAISED_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_REGENERATOR:
+            return SHOULD_PARTNER_SWITCH_REGENERATOR_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_REGENERATOR_STATS_RAISED:
+            return SHOULD_PARTNER_SWITCH_REGENERATOR_STATS_RAISED_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_ENCORE_STATUS:
+            return SHOULD_PARTNER_SWITCH_ENCORE_STATUS_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_ENCORE_DAMAGE:
+            return SHOULD_PARTNER_SWITCH_ENCORE_DAMAGE_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_CHOICE_LOCKED:
+            return SHOULD_PARTNER_SWITCH_CHOICE_LOCKED_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_ATTACKING_STAT_MINUS_TWO:
+            return SHOULD_PARTNER_SWITCH_ATTACKING_STAT_MINUS_TWO_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS:
+            return SHOULD_PARTNER_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS_PERCENTAGE;
+        case SHOULD_PARTNER_SWITCH_ALL_SCORES_BAD:
+            return SHOULD_PARTNER_SWITCH_ALL_SCORES_BAD_PERCENTAGE;
         default:
             return 100;
     }
@@ -615,7 +615,7 @@ static bool32 PartnerShouldSwitchIfHasBadOdds(enum BattlerId battler)
             && gBattleMons[battler].hp >= gBattleMons[battler].maxHP / 4)))
     {
         // 50% chance to stay in regardless
-        if (RandomPercentage(RNG_AI_SWITCH_HASBADODDS, (100 - GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_HASBADODDS))) && !gAiLogicData->aiPredictionInProgress)
+        if (RandomPercentage(RNG_AI_SWITCH_HASBADODDS, (100 - GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_HASBADODDS))) && !gAiLogicData->aiPredictionInProgress)
             return FALSE;
 
         // Switch mon out
@@ -635,7 +635,7 @@ static bool32 PartnerShouldSwitchIfHasBadOdds(enum BattlerId battler)
                 return FALSE;
 
             // 50% chance to stay in regardless
-            if (RandomPercentage(RNG_AI_SWITCH_HASBADODDS, (100 - GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_HASBADODDS))) && !gAiLogicData->aiPredictionInProgress)
+            if (RandomPercentage(RNG_AI_SWITCH_HASBADODDS, (100 - GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_HASBADODDS))) && !gAiLogicData->aiPredictionInProgress)
                 return FALSE;
 
             // Switch mon out
@@ -669,7 +669,7 @@ static bool32 PartnerShouldSwitchIfTruant(enum BattlerId battler)
         && gBattleMons[battler].hp * 2 >= gBattleMons[battler].maxHP
         && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE)
     {
-        if (RandomPercentage(RNG_AI_SWITCH_TRUANT, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_TRUANT)))
+        if (RandomPercentage(RNG_AI_SWITCH_TRUANT, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_TRUANT)))
             return SetSwitchinAndSwitch(battler, PARTY_SIZE);
     }
     return FALSE;
@@ -864,7 +864,7 @@ static bool32 PartnerShouldSwitchIfWonderGuard(enum BattlerId battler, enum Batt
                         return FALSE;
                 }
             }
-            if (RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_WONDER_GUARD)))
+            if (RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_WONDER_GUARD)))
             {
                 if (gAiLogicData->mostSuitableMonId[battler] == PARTY_SIZE) // No good candidate mons, find any one that can deal damage
                     return FindMonWithMoveOfEffectiveness(battler, opposingBattler, battlerIn1, battlerIn2, UQ_4_12(2.0));
@@ -890,7 +890,7 @@ static bool32 PartnerShouldSwitchIfWonderGuard(enum BattlerId battler, enum Batt
             }
         }
 
-        if (RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_WONDER_GUARD)))
+        if (RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_WONDER_GUARD)))
         {
             if (gAiLogicData->mostSuitableMonId[battler] == PARTY_SIZE) // No good candidate mons, find any one that can deal damage
                 return FindMonWithMoveOfEffectiveness(battler, opposingBattler, battlerIn1, battlerIn2, UQ_4_12(2.0));
@@ -1287,7 +1287,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
         for (j = 0; j < numAbsorbingAbilities; j++)
         {
             // Found a mon
-            if (absorbingTypeAbilities[j] == monAbility && RandomPercentage(RNG_AI_SWITCH_ABSORBING, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_ABSORBS_MOVE)))
+            if (absorbingTypeAbilities[j] == monAbility && RandomPercentage(RNG_AI_SWITCH_ABSORBING, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_ABSORBS_MOVE)))
                 return SetSwitchinAndSwitch(battler, i);
         }
     }
@@ -1345,7 +1345,7 @@ static bool32 PartnerShouldSwitchIfOpponentChargingOrInvulnerable(enum BattlerId
             return SetSwitchinAndSwitch(battler, PARTY_SIZE);
     }
 
-    else if (isOpposingBattlerChargingOrInvulnerable && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE && RandomPercentage(RNG_AI_SWITCH_FREE_TURN, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_FREE_TURN)))
+    else if (isOpposingBattlerChargingOrInvulnerable && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE && RandomPercentage(RNG_AI_SWITCH_FREE_TURN, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_FREE_TURN)))
     {
         return SetSwitchinAndSwitch(battler, PARTY_SIZE);
     }        
@@ -1412,7 +1412,7 @@ static bool32 PartnerShouldSwitchIfTrapperInParty(enum BattlerId battler)
         if (AI_CanSwitchinAbilityTrapOpponent(monAbility, opposingBattler) || (AI_CanSwitchinAbilityTrapOpponent(gAiLogicData->abilities[opposingBattler], opposingBattler) && monAbility == ABILITY_TRACE))
         {
             // If mon in slot i is the most suitable switchin candidate, then it's a trapper than wins 1v1
-            if (i == gAiLogicData->mostSuitableMonId[battler] && RandomPercentage(RNG_AI_SWITCH_FREE_TURN, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_FREE_TURN)))
+            if (i == gAiLogicData->mostSuitableMonId[battler] && RandomPercentage(RNG_AI_SWITCH_FREE_TURN, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_FREE_TURN)))
                 return SetSwitchinAndSwitch(battler, PARTY_SIZE);
         }
     }
@@ -1529,7 +1529,7 @@ static bool32 PartnerShouldSwitchIfBadlyStatused(enum BattlerId battler)
     if (gBattleMons[battler].volatiles.perishSong
         && gBattleMons[battler].volatiles.perishSongTimer == 0
         && monAbility != ABILITY_SOUNDPROOF
-        && RandomPercentage(RNG_AI_SWITCH_PERISH_SONG, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_PERISH_SONG)))
+        && RandomPercentage(RNG_AI_SWITCH_PERISH_SONG, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_PERISH_SONG)))
         return SetSwitchinAndSwitch(battler, PARTY_SIZE);
 
     if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PARTNER_SWITCHING)
@@ -1538,7 +1538,7 @@ static bool32 PartnerShouldSwitchIfBadlyStatused(enum BattlerId battler)
         if (gBattleMons[battler].volatiles.yawn
             && CanBeSlept(battler, battler, monAbility, BLOCKED_BY_SLEEP_CLAUSE) // TODO: ask for help from pawwkie
             && gBattleMons[battler].hp > gBattleMons[battler].maxHP / 3
-            && RandomPercentage(RNG_AI_SWITCH_YAWN, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_YAWN)))
+            && RandomPercentage(RNG_AI_SWITCH_YAWN, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_YAWN)))
         {
             switchMon = TRUE;
 
@@ -1586,22 +1586,22 @@ static bool32 PartnerShouldSwitchIfBadlyStatused(enum BattlerId battler)
             if (((gBattleMons[battler].status1 & STATUS1_TOXIC_COUNTER) >= STATUS1_TOXIC_TURN(2))
                 && gBattleMons[battler].hp >= (gBattleMons[battler].maxHP / 3)
                 && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE
-                && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_BADLY_POISONED, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_BADLY_POISONED_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_BADLY_POISONED, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_BADLY_POISONED))))
+                && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_BADLY_POISONED, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_BADLY_POISONED_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_BADLY_POISONED, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_BADLY_POISONED))))
                 return SetSwitchinAndSwitch(battler, PARTY_SIZE);
 
             //Cursed
             if (gBattleMons[battler].volatiles.cursed
-                && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_CURSED, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_CURSED_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_CURSED, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_CURSED))))
+                && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_CURSED, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_CURSED_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_CURSED, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_CURSED))))
                 return SetSwitchinAndSwitch(battler, PARTY_SIZE);
 
             //Nightmare
             if (gBattleMons[battler].volatiles.nightmare
-                && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_NIGHTMARE, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_NIGHTMARE_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_NIGHTMARE, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_NIGHTMARE))))
+                && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_NIGHTMARE, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_NIGHTMARE_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_NIGHTMARE, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_NIGHTMARE))))
                 return SetSwitchinAndSwitch(battler, PARTY_SIZE);
 
             //Leech Seed
             if (gBattleMons[battler].volatiles.leechSeed
-                && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_SEEDED, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_SEEDED_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_SEEDED, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_SEEDED))))
+                && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_SEEDED, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_SEEDED_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_SEEDED, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_SEEDED))))
                 return SetSwitchinAndSwitch(battler, PARTY_SIZE);
         }
 
@@ -1609,7 +1609,7 @@ static bool32 PartnerShouldSwitchIfBadlyStatused(enum BattlerId battler)
         if (gBattleMons[battler].volatiles.infatuation
             && !AiExpectsToFaintPlayer(battler)
             && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE
-            && RandomPercentage(RNG_AI_SWITCH_INFATUATION, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_INFATUATION)))
+            && RandomPercentage(RNG_AI_SWITCH_INFATUATION, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_INFATUATION)))
             return SetSwitchinAndSwitch(battler, PARTY_SIZE);
     }
 
@@ -1901,13 +1901,13 @@ static bool32 PartnerShouldSwitchIfAbilityBenefit(enum BattlerId battler)
             //Attempt to cure bad ailment
             if (gBattleMons[battler].status1 & (STATUS1_SLEEP | STATUS1_FREEZE | STATUS1_TOXIC_POISON)
                 && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE
-                && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_NATURAL_CURE, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_NATURAL_CURE_STRONG_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_NATURAL_CURE, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_NATURAL_CURE_STRONG))))
+                && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_NATURAL_CURE, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_NATURAL_CURE_STRONG_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_NATURAL_CURE, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_NATURAL_CURE_STRONG))))
                 break;
             //Attempt to cure lesser ailment
             if ((gBattleMons[battler].status1 & STATUS1_ANY)
                 && (gBattleMons[battler].hp >= gBattleMons[battler].maxHP / 2)
                 && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE
-                && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_NATURAL_CURE, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_NATURAL_CURE_WEAK_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_NATURAL_CURE, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_NATURAL_CURE_WEAK))))
+                && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_NATURAL_CURE, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_NATURAL_CURE_WEAK_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_NATURAL_CURE, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_NATURAL_CURE_WEAK))))
                 break;
 
             return FALSE;
@@ -1918,7 +1918,7 @@ static bool32 PartnerShouldSwitchIfAbilityBenefit(enum BattlerId battler)
                 return FALSE;
             if ((gBattleMons[battler].hp <= ((gBattleMons[battler].maxHP * 2) / 3))
                  && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE
-                 && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_REGENERATOR, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_REGENERATOR_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_REGENERATOR, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_REGENERATOR))))
+                 && (hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_REGENERATOR, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_REGENERATOR_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_REGENERATOR, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_REGENERATOR))))
                 break;
 
             return FALSE;
@@ -2035,7 +2035,7 @@ static bool32 PartnerShouldSwitchIfEncored(enum BattlerId battler)
         return FALSE;
 
     // Switch out if status move
-    if (GetMoveCategory(encoredMove) == DAMAGE_CATEGORY_STATUS && RandomPercentage(RNG_AI_SWITCH_ENCORE, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_ENCORE_STATUS)))
+    if (GetMoveCategory(encoredMove) == DAMAGE_CATEGORY_STATUS && RandomPercentage(RNG_AI_SWITCH_ENCORE, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_ENCORE_STATUS)))
         return SetSwitchinAndSwitch(battler, PARTY_SIZE);
 
     // Stay in if effective move
@@ -2043,7 +2043,7 @@ static bool32 PartnerShouldSwitchIfEncored(enum BattlerId battler)
         return FALSE;
 
     // Switch out 50% of the time otherwise
-    else if ((RandomPercentage(RNG_AI_SWITCH_ENCORE, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_ENCORE_DAMAGE)) || gAiLogicData->aiPredictionInProgress) && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE)
+    else if ((RandomPercentage(RNG_AI_SWITCH_ENCORE, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_ENCORE_DAMAGE)) || gAiLogicData->aiPredictionInProgress) && gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE)
         return SetSwitchinAndSwitch(battler, PARTY_SIZE);
 
     return FALSE;
@@ -2117,7 +2117,7 @@ static bool32 PartnerShouldSwitchIfBadChoiceLock(enum BattlerId battler)
 
     if (IsHoldEffectChoice(holdEffect) && IsBattlerItemEnabled(battler))
     {
-        if ((GetMoveCategory(lastUsedMove) == DAMAGE_CATEGORY_STATUS || !moveAffectsTarget) && RandomPercentage(RNG_AI_SWITCH_CHOICE_LOCKED, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_CHOICE_LOCKED)))
+        if ((GetMoveCategory(lastUsedMove) == DAMAGE_CATEGORY_STATUS || !moveAffectsTarget) && RandomPercentage(RNG_AI_SWITCH_CHOICE_LOCKED, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_CHOICE_LOCKED)))
             return SetSwitchinAndSwitch(battler, PARTY_SIZE);
     }
 
@@ -2189,11 +2189,11 @@ static bool32 PartnerShouldSwitchIfAttackingStatsLowered(enum BattlerId battler)
         // 50% chance if attack at -2 and have a good candidate mon
         else if (attackingStage == DEFAULT_STAT_STAGE - 2)
         {
-            if (gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE && (RandomPercentage(RNG_AI_SWITCH_STATS_LOWERED, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_ATTACKING_STAT_MINUS_TWO)) || gAiLogicData->aiPredictionInProgress))
+            if (gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE && (RandomPercentage(RNG_AI_SWITCH_STATS_LOWERED, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_ATTACKING_STAT_MINUS_TWO)) || gAiLogicData->aiPredictionInProgress))
                 return SetSwitchinAndSwitch(battler, PARTY_SIZE);
         }
         // If at -3 or worse, switch out regardless
-        else if ((attackingStage < DEFAULT_STAT_STAGE - 2) && RandomPercentage(RNG_AI_SWITCH_STATS_LOWERED, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS)))
+        else if ((attackingStage < DEFAULT_STAT_STAGE - 2) && RandomPercentage(RNG_AI_SWITCH_STATS_LOWERED, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS)))
             return SetSwitchinAndSwitch(battler, PARTY_SIZE);
     }
 
@@ -2206,11 +2206,11 @@ static bool32 PartnerShouldSwitchIfAttackingStatsLowered(enum BattlerId battler)
         // 50% chance if attack at -2 and have a good candidate mon
         else if (spAttackingStage == DEFAULT_STAT_STAGE - 2)
         {
-            if (gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE && (RandomPercentage(RNG_AI_SWITCH_STATS_LOWERED, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_ATTACKING_STAT_MINUS_TWO)) || gAiLogicData->aiPredictionInProgress))
+            if (gAiLogicData->mostSuitableMonId[battler] != PARTY_SIZE && (RandomPercentage(RNG_AI_SWITCH_STATS_LOWERED, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_ATTACKING_STAT_MINUS_TWO)) || gAiLogicData->aiPredictionInProgress))
                 return SetSwitchinAndSwitch(battler, PARTY_SIZE);
         }
         // If at -3 or worse, switch out regardless
-        else if ((spAttackingStage < DEFAULT_STAT_STAGE - 2) && RandomPercentage(RNG_AI_SWITCH_STATS_LOWERED, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS)))
+        else if ((spAttackingStage < DEFAULT_STAT_STAGE - 2) && RandomPercentage(RNG_AI_SWITCH_STATS_LOWERED, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS)))
             return SetSwitchinAndSwitch(battler, PARTY_SIZE);
     }
     return FALSE;
@@ -2439,7 +2439,7 @@ bool32 PartnerShouldSwitchIfAllScoresBad(enum BattlerId battler)
         || (scoreOppositePartner > PARTNER_AI_BAD_SCORE_THRESHOLD && IsBattlerAlive(BATTLE_PARTNER(opposingBattler))))
             return FALSE;
     }
-    if (RandomPercentage(RNG_AI_SWITCH_ALL_SCORES_BAD, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_ALL_SCORES_BAD)))
+    if (RandomPercentage(RNG_AI_SWITCH_ALL_SCORES_BAD, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_ALL_SCORES_BAD)))
         return TRUE;
     return FALSE;
 }
@@ -3455,7 +3455,7 @@ static bool32 PartnerShouldSwitchIfAllMovesBad(enum BattlerId battler)
     if (bestScore < 2)
         return FALSE;
 
-    if (RandomPercentage(RNG_AI_SWITCH_ALL_MOVES_BAD, GetPartnerSwitchChance(PARTNER_SHOULD_SWITCH_ALL_MOVES_BAD)))
+    if (RandomPercentage(RNG_AI_SWITCH_ALL_MOVES_BAD, GetPartnerSwitchChance(SHOULD_PARTNER_SWITCH_ALL_MOVES_BAD)))
     {
         if (gAiLogicData->mostSuitableMonId[battler] == PARTY_SIZE) // No good candidate mons, find any one that can deal damage
             return FindMonWithMoveOfEffectiveness(battler, opposingBattler, battlerIn1, battlerIn2, UQ_4_12(1.0));

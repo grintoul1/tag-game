@@ -24,7 +24,6 @@ AI_DOUBLE_BATTLE_TEST("AI uses Purify")
 
 AI_SINGLE_BATTLE_TEST("AI uses Purify to heal an enemy with Guts")
 {
-    KNOWN_FAILING; // AI changed
     enum Ability ability;
 
     PARAMETRIZE { ability = ABILITY_GUTS; }

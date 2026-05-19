@@ -249,6 +249,9 @@ static inline struct Benchmark BenchmarkStop(void)
 #define KNOWN_FAILING \
     Test_ExpectedResult(TEST_RESULT_KNOWN_FAIL)
 
+#define FIXER \
+    Test_ExpectedResult(TEST_RESULT_FIXER)
+
 #define KNOWN_LEAKING \
     Test_ExpectLeaks(TRUE)
 

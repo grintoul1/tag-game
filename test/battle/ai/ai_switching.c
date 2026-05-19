@@ -36,7 +36,6 @@ AI_SINGLE_BATTLE_TEST("AI picks an injured ally to receive Healing Wish") // Hea
 
 AI_SINGLE_BATTLE_TEST("AI avoids wasting Healing Wish on a mon that dies to hazards") // Stealth Rock up; AI should not send in a 1 HP mon weak to Rock
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_SHUCKLE) { Moves(MOVE_STEALTH_ROCK); }
@@ -50,7 +49,6 @@ AI_SINGLE_BATTLE_TEST("AI avoids wasting Healing Wish on a mon that dies to haza
 
 AI_SINGLE_BATTLE_TEST("AI chooses best post-KO switch with stored Wish") // Wish is active; should pick mon that benefits from heal AND can win 1v1
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_SCRATCH); }
@@ -375,7 +373,6 @@ AI_DOUBLE_BATTLE_TEST("AI will not switch out if it's moves can still affect one
 
 AI_SINGLE_BATTLE_TEST("When AI switches out due to having no move that affects the player, AI will send in a mon that can hit the player, even if not ideal")
 {
-    KNOWN_FAILING; // Not used in game
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_GENGAR) { Moves(MOVE_SHADOW_BALL, MOVE_CELEBRATE); }
@@ -588,7 +585,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI will not switch in a Pokemo
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI considers hazard damage when choosing which Pokemon to switch in")
 {
-    KNOWN_FAILING; // Not used in game
     u32 aiIsSmart = 0;
     u32 flags = 0;
 
@@ -609,7 +605,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI considers hazard damage whe
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Mid-battle switches prioritize type matchup + SE move, then type matchup")
 {
-    KNOWN_FAILING; // AI changed
     u32 aiSmartSwitchFlags = 0;
     enum Move move1;
     enum Move move2;
@@ -634,7 +629,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Mid-battle switches prioritize
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Mid-battle switches prioritize defensive options")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_SWELLOW) { Level(30); Moves(MOVE_WING_ATTACK, MOVE_BOOMBURST); Speed(5); SpAttack(50); }
@@ -692,7 +686,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Mid-battle switches prioritize
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Mid-battle switches prioritize defensive options after Eject Pack if mon outspeeds")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         ASSUME(gItemsInfo[ITEM_EJECT_PACK].holdEffect == HOLD_EFFECT_EJECT_PACK);
         ASSUME_MOVE_EFFECT_STAT_CHANGE(MOVE_OVERHEAT, self: TRUE, spAtk: -2);
@@ -708,7 +701,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Mid-battle switches prioritize
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Mid-battle switches prioritize offensive options after Eject Pack if mon outspeeds but was Intimidate'd")
 {
-    KNOWN_FAILING; // Not used in game
     GIVEN {
         ASSUME(gItemsInfo[ITEM_EJECT_PACK].holdEffect == HOLD_EFFECT_EJECT_PACK);
         ASSUME_MOVE_EFFECT_STAT_CHANGE(MOVE_OVERHEAT, self: TRUE, spAtk: -2);
@@ -825,7 +817,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI will switch in trapping mon
     u32 aiSmartMonChoicesFlag = 0; // Enables trapping behaviour after KOs
     PARAMETRIZE { aiSmartMonChoicesFlag = 0; } // No trapping behaviour
     PARAMETRIZE { aiSmartMonChoicesFlag = AI_FLAG_SMART_MON_CHOICES; } // Traps with mid battle switches
-    KNOWN_FAILING; // Not used in game
     GIVEN {
         ASSUME(GetSpeciesType(SPECIES_MAWILE, 0) == TYPE_STEEL);
         AI_FLAGS(aiSmartMonChoicesFlag);
@@ -1493,7 +1484,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will switch out if main attac
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI correctly handles abilities when scoring moves")
 {
-    KNOWN_FAILING; // New AI not implemented
     GIVEN {
         WITH_CONFIG(B_PRANKSTER_DARK_TYPES, GEN_7);
         ASSUME(GetSpeciesType(SPECIES_GRENINJA, 1) == TYPE_DARK);
@@ -1581,7 +1571,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI won't switch in absorbing mon
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI will consider choice-locked player when determining which mon to send out")
 {
-    KNOWN_FAILING; // Not used in game
     enum Item item;
     PARAMETRIZE { item = ITEM_NONE; }
     PARAMETRIZE { item = ITEM_CHOICE_BAND; }
@@ -1924,7 +1913,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI will properly consider immu
 
 AI_DOUBLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI will properly consider immunities when determining switchin type matchup (Doubles)")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_POLIWRATH) { Moves(MOVE_WATER_GUN, MOVE_KARATE_CHOP); }
@@ -1993,7 +1981,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will consider player's endure
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will consider player's endure effects when evaluating switchin candidates")
 {
-    KNOWN_FAILING; // AI changed
     enum Item item;
     PARAMETRIZE { item = ITEM_NONE; }
     PARAMETRIZE { item = ITEM_FOCUS_SASH; }
@@ -2041,7 +2028,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: Fake Out style moves won't confu
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI will consider choice-locked player priority when determining which mon to send out")
 {
-    KNOWN_FAILING; // Not used in game
     enum Item item;
     PARAMETRIZE { item = ITEM_NONE; }
     PARAMETRIZE { item = ITEM_CHOICE_BAND; }
@@ -2253,7 +2239,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_RANDOMIZE_SWITCHIN: AI will consider all mons tha
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_RANDOMIZE_SWITCHIN: AI will consider all mons that meet the specified threshold (defensive)")
 {
-    KNOWN_FAILING; // AI changed
     u64 aiFlag = 0;
     PARAMETRIZE { aiFlag = 0; }
     PARAMETRIZE { aiFlag = AI_FLAG_RANDOMIZE_SWITCHIN; }
@@ -2343,7 +2328,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI sees stat stage changes on 
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI sees status changes on switchin when doing switching calcs")
 {
-    KNOWN_FAILING;
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_ZIGZAGOON) { Speed(2); HP(1); MaxHP(100); Moves(MOVE_TOXIC_SPIKES); }
@@ -2359,7 +2343,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI sees status changes on swit
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI sees volate changes on switchin when doing switching calcs")
 {
-    KNOWN_FAILING;
     GIVEN {
         ASSUME(GetItemHoldEffect(ITEM_BOOSTER_ENERGY) == HOLD_EFFECT_BOOSTER_ENERGY);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
@@ -2374,7 +2357,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI sees volate changes on swit
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI sees HP changes on switchin when doing switchin calcs")
 {
-    KNOWN_FAILING;
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_ZIGZAGOON) { Speed(2); HP(1); MaxHP(100); Moves(MOVE_SPIKES); }
@@ -2390,7 +2372,6 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI sees HP changes on switchin
 
 AI_SINGLE_BATTLE_TEST("Retaliate sees damage correctly for post ko switch in")
 {
-    KNOWN_FAILING; // Changed switch AI
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_GABITE) { Level(50); Speed(2);}

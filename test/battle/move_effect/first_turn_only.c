@@ -164,13 +164,11 @@ AI_DOUBLE_BATTLE_TEST("AI will Fake Out a target that its ally has slow KO on wh
         OPPONENT(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_DRAGON_RAGE, MOVE_CELEBRATE); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(3); Level(39); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); }
     } WHEN {
-        EXPECT_FAIL { // Not using expansion's AI
-            TURN { EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerLeft);
-                SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerLeft);
-                SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerRight);
-                SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + GOOD_EFFECT, target:playerLeft);
-                SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + DECENT_EFFECT, target:playerRight); 
-            }
+        TURN { EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerRight);
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + GOOD_EFFECT, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + DECENT_EFFECT, target:playerRight); 
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentRight);
@@ -186,13 +184,11 @@ AI_DOUBLE_BATTLE_TEST("AI will not Fake Out a target that its ally has slow KO o
         OPPONENT(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_SEISMIC_TOSS, MOVE_CELEBRATE); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(3); Level(40); Moves(MOVE_SEISMIC_TOSS, MOVE_FAKE_OUT); }
     } WHEN {
-        EXPECT_FAIL { // Not using expansion's AI
-            TURN { EXPECT_MOVE(opponentRight, MOVE_SEISMIC_TOSS, target:playerLeft);
-                SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + FAST_KILL, target:playerLeft);
-                SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerRight);
-                SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + DECENT_EFFECT, target:playerLeft);
-                SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + DECENT_EFFECT, target:playerRight); 
-            }
+        TURN { EXPECT_MOVE(opponentRight, MOVE_SEISMIC_TOSS, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE + FAST_KILL, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE, target:playerRight);
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + DECENT_EFFECT, target:playerLeft);
+            SCORE_EQ_VAL(opponentRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + DECENT_EFFECT, target:playerRight); 
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SEISMIC_TOSS, opponentRight);

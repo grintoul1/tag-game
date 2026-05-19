@@ -1419,9 +1419,9 @@ AI_SINGLE_BATTLE_TEST("AI sees Sheer Force skips additional effects")
     PARAMETRIZE { ability = ABILITY_SHEER_FORCE; move = MOVE_KARATE_CHOP; expectedMove = MOVE_POWER_UP_PUNCH;   }
 
     GIVEN {
-        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
-        PLAYER(SPECIES_WOBBUFFET);
-        OPPONENT(SPECIES_DRUDDIGON) { Ability(ability); Moves(MOVE_POWER_UP_PUNCH, move); }
+        AI_FLAGS(AI_FLAG_TAG_TRAINER);
+        PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE, MOVE_DRAGON_RAGE); Speed(2); }
+        OPPONENT(SPECIES_DRUDDIGON) { HP(80); Ability(ability); Moves(MOVE_POWER_UP_PUNCH, move); Speed(1); }
     } WHEN {
         TURN { EXPECT_MOVE(opponent, expectedMove); }
     }

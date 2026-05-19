@@ -17,7 +17,6 @@
 #endif
 
 #include "config/ai.h"
-#include "config/ai_partner.h"
 #include "config/battle.h"
 #include "config/caps.h"
 #include "config/contest.h"

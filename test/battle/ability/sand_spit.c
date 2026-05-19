@@ -21,9 +21,7 @@ SINGLE_BATTLE_TEST("Sand Spit sets up sandstorm for 5 turns when hit")
         MESSAGE("The sandstorm is raging.");
         MESSAGE("The sandstorm is raging.");
         MESSAGE("The sandstorm is raging.");
-        EXPECT_FAIL { // Config changed
-            MESSAGE("The sandstorm subsided.");
-        }
+        MESSAGE("The sandstorm subsided.");
     }
 }
 
@@ -53,9 +51,7 @@ SINGLE_BATTLE_TEST("Sand Spit sets up sandstorm for 8 turns when hit with Smooth
         MESSAGE("The sandstorm is raging.");
         MESSAGE("The sandstorm is raging.");
         MESSAGE("The sandstorm is raging.");
-        EXPECT_FAIL { // Config changed
-            MESSAGE("The sandstorm subsided.");
-        }
+        MESSAGE("The sandstorm subsided.");
     }
 }
 

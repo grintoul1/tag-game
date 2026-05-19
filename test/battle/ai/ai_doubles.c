@@ -100,7 +100,6 @@ AI_DOUBLE_BATTLE_TEST("AI skips Trick/Bestow with unexchangeable items")
 
 AI_DOUBLE_BATTLE_TEST("AI skips Trick around Sticky Hold")
 {
-    KNOWN_FAILING; // Trick AI not setup
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
         PLAYER(SPECIES_WOBBUFFET) { Ability(ABILITY_STICKY_HOLD); Item(ITEM_LEFTOVERS); }
@@ -139,7 +138,6 @@ AI_DOUBLE_BATTLE_TEST("AI skips Trick/Bestow if the target has a Substitute")
 
 AI_DOUBLE_BATTLE_TEST("AI considers status orbs and abilities for Trick/Bestow")
 {
-    KNOWN_FAILING; // Trick AI not setup
     enum Move move = MOVE_NONE;
     enum Item item = ITEM_NONE;
     u16 status = STATUS1_NONE, species = SPECIES_NONE;
@@ -180,7 +178,6 @@ AI_DOUBLE_BATTLE_TEST("AI considers status orbs and abilities for Trick/Bestow")
 
 AI_DOUBLE_BATTLE_TEST("AI gifts Utility Umbrella only when it removes the foe's weather benefit")
 {
-    KNOWN_FAILING; // Trick AI not setup
     u16 weatherSpecies = SPECIES_NONE, targetSpecies = SPECIES_NONE, attackerSpecies = SPECIES_NONE;
     enum Ability weatherAbility = ABILITY_NONE, targetAbility = ABILITY_NONE, attackerAbility = ABILITY_NONE;
     bool32 expectTrick = FALSE;
@@ -212,7 +209,6 @@ AI_DOUBLE_BATTLE_TEST("AI gifts Utility Umbrella only when it removes the foe's 
 
 AI_DOUBLE_BATTLE_TEST("AI steals Utility Umbrella to handle sun and Dry Skin but keeps its own weather perks")
 {
-    KNOWN_FAILING; // Trick AI not setup
     u16 weatherSpecies = SPECIES_NONE, targetSpecies = SPECIES_NONE, attackerSpecies = SPECIES_NONE;
     enum Ability weatherAbility = ABILITY_NONE, targetAbility = ABILITY_NONE, attackerAbility = ABILITY_NONE;
     bool32 expectTrick = FALSE;
@@ -246,7 +242,6 @@ AI_DOUBLE_BATTLE_TEST("AI steals Utility Umbrella to handle sun and Dry Skin but
 
 AI_DOUBLE_BATTLE_TEST("AI treats Harvest as a sun benefit only when a berry is involved")
 {
-    KNOWN_FAILING; // Trick AI not setup
     enum Item targetItem = ITEM_NONE;
     bool32 expectTrick = FALSE;
 
@@ -384,7 +379,6 @@ AI_DOUBLE_BATTLE_TEST("Heal Bell and Jungle Healing skip curing a partner that b
 
 AI_DOUBLE_BATTLE_TEST("AI will not choose Earthquake if it damages the partner without a positive effect")
 {
-    KNOWN_FAILING; // AI changed
     ASSUME(GetMoveTarget(MOVE_EARTHQUAKE) == TARGET_FOES_AND_ALLY);
 
     u32 species;
@@ -481,7 +475,6 @@ AI_DOUBLE_BATTLE_TEST("AI will choose Beat Up on an ally with Justified if it wi
 
 AI_DOUBLE_BATTLE_TEST("AI will choose Beat Up on an ally with Rage Fist if it will benefit the ally")
 {
-    KNOWN_FAILING;
     u32 currentHP, movePP;
     enum Move move;
     bool32 shouldBeatUp;
@@ -509,7 +502,6 @@ AI_DOUBLE_BATTLE_TEST("AI will choose Beat Up on an ally with Rage Fist if it wi
 
 AI_DOUBLE_BATTLE_TEST("AI will only Beat Up for Rage Fist if it can hit at least one opponent")
 {
-    KNOWN_FAILING;
     u32 species;
     bool32 shouldBeatUp;
 
@@ -552,7 +544,6 @@ AI_DOUBLE_BATTLE_TEST("AI will choose Earthquake if partner is not alive")
 
 AI_DOUBLE_BATTLE_TEST("AI will choose Earthquake if it kills one opposing mon and does not kill the partner needlessly")
 {
-    KNOWN_FAILING; // AI changed
     ASSUME(GetMoveTarget(MOVE_EARTHQUAKE) == TARGET_FOES_AND_ALLY);
     ASSUME(GetMoveType(MOVE_EARTHQUAKE) == TYPE_GROUND);
 
@@ -810,7 +801,6 @@ AI_DOUBLE_BATTLE_TEST("AI treats an ally's redirection ability appropriately (ge
 
 AI_DOUBLE_BATTLE_TEST("AI recognizes Volt Absorb received from Trace")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
         PLAYER(SPECIES_MAGNETON);
@@ -980,7 +970,6 @@ AI_DOUBLE_BATTLE_TEST("AI uses Trick Room with both battlers on the turn it expi
 
 AI_DOUBLE_BATTLE_TEST("AI uses Helping Hand if it's about to die")
 {
-    KNOWN_FAILING; // AI changed
     u32 hp;
 
     PARAMETRIZE { hp = 1; }
@@ -1066,7 +1055,6 @@ AI_DOUBLE_BATTLE_TEST("AI uses Tailwind based on speed matchups")
 
 AI_DOUBLE_BATTLE_TEST("AI uses Tailwind to trigger Wind Rider (Doubles)")
 {
-    KNOWN_FAILING; // New AI not implemented
     bool32 expectTailwind;
     u16 tailwindSpecies, partnerSpecies;
     enum Ability tailwindAbility, partnerAbility;
@@ -1093,7 +1081,6 @@ AI_DOUBLE_BATTLE_TEST("AI uses Tailwind to trigger Wind Rider (Doubles)")
 
 AI_DOUBLE_BATTLE_TEST("AI uses Tailwind to trigger Wind Power (Doubles)")
 {
-    KNOWN_FAILING; // New AI not implemented
     bool32 expectTailwind;
     u16 tailwindSpecies, partnerSpecies;
     enum Ability tailwindAbility, partnerAbility;
@@ -1174,7 +1161,7 @@ AI_DOUBLE_BATTLE_TEST("AI uses Power Split to improve its stats")
 
 AI_DOUBLE_BATTLE_TEST("AI prefers to Fake Out the opponent vulnerable to flinching.")
 {
-
+    FIXER;
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_DOUBLE_BATTLE | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_ZUBAT) { Ability(ABILITY_INNER_FOCUS); }

@@ -399,7 +399,6 @@ AI_SINGLE_BATTLE_TEST("AI uses Quick Guard against Quick Attack when opponent wo
 
 AI_SINGLE_BATTLE_TEST("AI uses Wide Guard against Earthquake when opponent would die of poison")
 {
-    KNOWN_FAILING; // AI not implemented
     GIVEN {
         PLAYER(SPECIES_ZUBAT) { Moves(MOVE_EARTHQUAKE); Status1(STATUS1_TOXIC_POISON); }
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT | AI_FLAG_PREDICT_MOVE);
@@ -504,12 +503,10 @@ AI_SINGLE_BATTLE_TEST("AI uses Tailwind to trigger Wind Rider (Single)")
         PLAYER(SPECIES_WOBBUFFET) { Speed(20); }
         OPPONENT(tailwindSpecies) { Ability(tailwindAbility); Speed(9); Moves(MOVE_TAILWIND, MOVE_HEADBUTT); }
     } WHEN {
-        EXPECT_FAIL { // New AI not implemented
-            if (expectTailwind)
-                TURN { EXPECT_MOVE(opponent, MOVE_TAILWIND); }
-            else
-                TURN { NOT_EXPECT_MOVE(opponent, MOVE_TAILWIND); }
-        }
+        if (expectTailwind)
+            TURN { EXPECT_MOVE(opponent, MOVE_TAILWIND); }
+        else
+            TURN { NOT_EXPECT_MOVE(opponent, MOVE_TAILWIND); }
     }
 }
 
@@ -529,12 +526,10 @@ AI_SINGLE_BATTLE_TEST("AI uses Tailwind to trigger Wind Power (Single)")
         PLAYER(SPECIES_WOBBUFFET) { Speed(20); }
         OPPONENT(tailwindSpecies) { Ability(tailwindAbility); Speed(9); Moves(MOVE_TAILWIND, MOVE_THUNDERSHOCK); }
     } WHEN {
-        EXPECT_FAIL { // New AI not implemented
-            if (expectTailwind)
-                TURN { EXPECT_MOVE(opponent, MOVE_TAILWIND); }
-            else
-                TURN { NOT_EXPECT_MOVE(opponent, MOVE_TAILWIND); }
-        }
+        if (expectTailwind)
+            TURN { EXPECT_MOVE(opponent, MOVE_TAILWIND); }
+        else
+            TURN { NOT_EXPECT_MOVE(opponent, MOVE_TAILWIND); }
     }
 }
 
@@ -552,7 +547,6 @@ AI_SINGLE_BATTLE_TEST("AI uses Quick Guard against Quick Attack when opponent wo
 
 AI_SINGLE_BATTLE_TEST("AI uses Wide Guard against Earthquake when opponent would take poison damage")
 {
-    KNOWN_FAILING; // AI not implemented
     PASSES_RANDOMLY(PREDICT_MOVE_CHANCE, 100, RNG_AI_PREDICT_MOVE);
     GIVEN {
         PLAYER(SPECIES_RATTATA) { Moves(MOVE_EARTHQUAKE); Status1(STATUS1_TOXIC_POISON); }
@@ -575,9 +569,9 @@ AI_SINGLE_BATTLE_TEST("AI sees Shield Dust immunity to additional effects")
         OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_CHILLING_WATER, MOVE_BRINE); }
     } WHEN {
     if (ability == ABILITY_SHIELD_DUST)
-        TURN { EXPECT_MOVE(opponent, MOVE_BRINE); }
+        TURN { EXPECT_MOVE(opponent, MOVE_BRINE, WITH_RNG(RNG_TAG_AI_BEST_DAMAGE_MOVE, 0)); }
     else
-        TURN { EXPECT_MOVE(opponent, MOVE_CHILLING_WATER); }
+        TURN { EXPECT_MOVE(opponent, MOVE_CHILLING_WATER, WITH_RNG(RNG_TAG_AI_BEST_DAMAGE_MOVE, 0)); }
     }
 }
 
@@ -603,12 +597,10 @@ AI_DOUBLE_BATTLE_TEST("AI sees type-changing moves as the correct type")
         OPPONENT(SPECIES_WOBBUFFET) { Moves(fieldStatus, MOVE_RETURN, MOVE_TAUNT); }
         OPPONENT(species) { Ability(ability); Moves(MOVE_HYPER_VOICE); }
     } WHEN {
-        EXPECT_FAIL { // AI not used
-            if (ability != ABILITY_NONE)
-                TURN { EXPECT_MOVE(opponentLeft, fieldStatus); }
-            else
-                TURN { NOT_EXPECT_MOVE(opponentLeft, fieldStatus); }
-        }
+        if (ability != ABILITY_NONE)
+            TURN { EXPECT_MOVE(opponentLeft, fieldStatus); }
+        else
+            TURN { NOT_EXPECT_MOVE(opponentLeft, fieldStatus); }
     }
 }
 
@@ -625,12 +617,10 @@ AI_SINGLE_BATTLE_TEST("AI uses Sparkling Aria to cure an enemy with Guts")
         OPPONENT(SPECIES_PRIMARINA) { Moves(MOVE_SPARKLING_ARIA, MOVE_SCALD); }
         TIE_BREAK_SCORE(RNG_AI_SCORE_TIE_SINGLES, SCORE_TIE_HI, 0);
     } WHEN {
-        EXPECT_FAIL { // AI not used
-            if (ability == ABILITY_GUTS)
-                TURN { EXPECT_MOVE(opponent, MOVE_SPARKLING_ARIA); }
-            else
-                TURN { EXPECT_MOVE(opponent, MOVE_SCALD); }
-        }
+        if (ability == ABILITY_GUTS)
+            TURN { EXPECT_MOVE(opponent, MOVE_SPARKLING_ARIA); }
+        else
+            TURN { EXPECT_MOVE(opponent, MOVE_SCALD); }
     }
 }
 

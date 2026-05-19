@@ -294,7 +294,6 @@ AI_SINGLE_BATTLE_TEST("AI chooses the safest option to faint the target, taking 
 
 AI_SINGLE_BATTLE_TEST("AI scores KOs with two turn moves correctly, considering Power Herb")
 {
-    KNOWN_FAILING; // Unsure why
     enum Item aiItem;
 
     PARAMETRIZE { aiItem = ITEM_POWER_HERB; }
@@ -700,7 +699,6 @@ AI_SINGLE_BATTLE_TEST("AI won't use thawing moves if target is frozen unless it 
 
 AI_SINGLE_BATTLE_TEST("AI score for Mean Look will be decreased if target can escape")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_BULBASAUR) { Item(ITEM_SHED_SHELL); }
@@ -827,7 +825,6 @@ AI_SINGLE_BATTLE_TEST("AI sees that Primal weather can block a move by type")
 
 AI_DOUBLE_BATTLE_TEST("AI sees opposing drain ability")
 {
-    KNOWN_FAILING; // New AI not implemented
     GIVEN {
         ASSUME(GetMoveType(MOVE_THUNDERBOLT) == TYPE_ELECTRIC);
         ASSUME(GetMoveType(MOVE_RAZOR_LEAF) != TYPE_ELECTRIC);
@@ -952,7 +949,6 @@ AI_SINGLE_BATTLE_TEST("AI won't setup if it can KO through Sturdy effect")
 
 AI_SINGLE_BATTLE_TEST("AI won't setup if otherwise good scenario is changed by the presence of priority")
 {
-    KNOWN_FAILING; // AI changed
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_FLOATZEL) { Speed(2); Moves(MOVE_AQUA_JET, MOVE_SURF); }
@@ -1102,7 +1098,6 @@ AI_SINGLE_BATTLE_TEST("AI will consider using Explosion inversely proportional t
 
 AI_SINGLE_BATTLE_TEST("AI will prioritize non-self-sacrificing moves if they have the same hits to KO")
 {
-    KNOWN_FAILING; // AI changed
     enum Move selfSacrificeMove;
     PARAMETRIZE { selfSacrificeMove = MOVE_EXPLOSION; }
     PARAMETRIZE { selfSacrificeMove = MOVE_FINAL_GAMBIT; }
@@ -1123,7 +1118,6 @@ AI_SINGLE_BATTLE_TEST("AI will prioritize non-self-sacrificing moves if they hav
 
 AI_SINGLE_BATTLE_TEST("AI will consider using Final Gambit if it expects to KO and outspeeds")
 {
-    KNOWN_FAILING; // AI changed
     u32 aiOmniscientFlag;
     PARAMETRIZE { aiOmniscientFlag = AI_FLAG_OMNISCIENT; }
     PARAMETRIZE { aiOmniscientFlag = 0 ;}
@@ -1275,7 +1269,6 @@ AI_SINGLE_BATTLE_TEST("AI will not try to withstand hit with absorbing move if i
 
 AI_DOUBLE_BATTLE_TEST("FIXER AI can use Acupressure on its ally")
 {
-    KNOWN_FAILING; // FIXER Acupressure AI not written?
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE); }
@@ -1336,7 +1329,6 @@ AI_SINGLE_BATTLE_TEST("Bolt Beak damage will be correctly seen by AI (singles)")
 
 AI_DOUBLE_BATTLE_TEST("FIXER Bolt Beak damage will be correctly seen by AI (doubles)")
 {
-    KNOWN_FAILING; // FIXER
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
         PLAYER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_PROTECT, MOVE_CELEBRATE); }

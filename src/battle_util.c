@@ -3246,17 +3246,13 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 break;
             if (TryChangeBattleWeather(battler, BATTLE_WEATHER_SNOW, gLastUsedAbility))
             {
-                u32 weather = BATTLE_WEATHER_SNOW;
-                if (TryChangeBattleWeather(battler, weather, gLastUsedAbility))
-                {
-                    BattleScriptCall(BattleScript_WeatherAbilityActivates);
-                    effect++;
-                }
-                else if (GetWeather() & B_WEATHER_PRIMAL_ANY)
-                {
-                    BattleScriptCall(BattleScript_BlockedByPrimalWeather);
-                    effect++;
-                }
+                BattleScriptCall(BattleScript_WeatherAbilityActivates);
+                effect++;
+            }
+            else if (GetWeather() & B_WEATHER_PRIMAL_ANY)
+            {
+                BattleScriptCall(BattleScript_BlockedByPrimalWeather);
+                effect++;
             }
             break;
         case ABILITY_HAIL_WARNING:
@@ -3264,17 +3260,13 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 break;
             if (TryChangeBattleWeather(battler, BATTLE_WEATHER_HAIL, gLastUsedAbility))
             {
-                u32 weather = BATTLE_WEATHER_HAIL;
-                if (TryChangeBattleWeather(battler, weather, gLastUsedAbility))
-                {
-                    BattleScriptCall(BattleScript_WeatherAbilityActivates);
-                    effect++;
-                }
-                else if (GetWeather() & B_WEATHER_PRIMAL_ANY)
-                {
-                    BattleScriptCall(BattleScript_BlockedByPrimalWeather);
-                    effect++;
-                }
+                BattleScriptCall(BattleScript_WeatherAbilityActivates);
+                effect++;
+            }
+            else if (GetWeather() & B_WEATHER_PRIMAL_ANY)
+            {
+                BattleScriptCall(BattleScript_BlockedByPrimalWeather);
+                effect++;
             }
             break;
         case ABILITY_ELECTRIC_SURGE:

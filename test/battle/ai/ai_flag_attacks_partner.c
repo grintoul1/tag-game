@@ -4,7 +4,6 @@
 
 AI_DOUBLE_BATTLE_TEST("AI_FLAG_ATTACKS_PARTNER is willing to kill either the partner or the player")
 {
-    KNOWN_FAILING; // AI changed
     ASSUME(GetMoveTarget(MOVE_EARTHQUAKE) == TARGET_FOES_AND_ALLY);
 
     enum Move move;

@@ -165,7 +165,6 @@ SINGLE_BATTLE_TEST("Spicy Extract against Clear Amulet and Contrary raises Defen
 
 AI_DOUBLE_BATTLE_TEST("Spicy Extract user will use it if partner holds Clear Amulet and a physical move")
 {
-    KNOWN_FAILING; // AI changed
     enum Move move;
 
     PARAMETRIZE { move = MOVE_SCRATCH; }

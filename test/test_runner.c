@@ -390,6 +390,13 @@ top:
                 color = "\e[32m";
                 Test_MgbaPrintf(":N%s", gTestRunnerState.test->name);
             }
+            else if (gTestRunnerState.result == gTestRunnerState.expectedResult
+             || (gTestRunnerState.result == TEST_RESULT_FAIL
+              && gTestRunnerState.expectedResult == TEST_RESULT_FIXER))
+            {
+                color = "\e[32m";
+                Test_MgbaPrintf(":N%s", gTestRunnerState.test->name);
+            }
             else if (gTestRunnerState.result != TEST_RESULT_ASSUMPTION_FAIL || gTestRunnerSkipIsFail)
             {
                 gTestRunnerState.exitCode = 1;
@@ -413,6 +420,10 @@ top:
                     color = "\e[32m";
                     result = "EXPECTED_FAIL";
                 }
+                else if (gTestRunnerState.expectedResult == TEST_RESULT_FIXER)
+                {
+                    result = "FIXER";
+                }
                 else if (gTestRunnerState.expectedResult == TEST_RESULT_FAIL
                  && gTestRunnerState.expectedFailState != EXPECT_FAIL_SUCCESS)
                 {
@@ -426,10 +437,9 @@ top:
                 break;
             case TEST_RESULT_PASS:
                 if (gTestRunnerState.result != gTestRunnerState.expectedResult
-                 && gTestRunnerState.expectedFailLine == 0)
+                 && gTestRunnerState.expectedFailState == NO_EXPECT_FAIL)
                     result = "KNOWN_FAILING_PASS";
-                else if (gTestRunnerState.result != gTestRunnerState.expectedResult
-                 && gTestRunnerState.expectedFailLine != 0)
+                else if (gTestRunnerState.result != gTestRunnerState.expectedResult)
                     result = "EXPECTED_FAIL_PASS";
                 else
                     result = "PASS";
@@ -464,7 +474,7 @@ top:
                 if (gTestRunnerState.result != gTestRunnerState.expectedResult)
                 {
                     Test_MgbaPrintf(":L%s:%d", gTestRunnerState.test->filename, SourceLine(0));
-                    if (gTestRunnerState.expectedFailLine == 0)
+                    if (gTestRunnerState.expectedFailState == NO_EXPECT_FAIL)
                         Test_MgbaPrintf(":U%s%s\e[0m", color, result);
                     else
                         Test_MgbaPrintf(":V%s%s\e[0m", color, result);
@@ -483,15 +493,19 @@ top:
             else if (gTestRunnerState.expectedResult == gTestRunnerState.result
                  && gTestRunnerState.result == TEST_RESULT_CRASH)
                 Test_MgbaPrintf(":E%s%s\e[0m", color, result);
-            else if (gTestRunnerState.expectedResult == gTestRunnerState.result
-                 && gTestRunnerState.result == TEST_RESULT_FAIL
-                 && gTestRunnerState.expectedFailLine == 0)
-                Test_MgbaPrintf(":K%s%s\e[0m", color, result);
             else if ((gTestRunnerState.expectedResult == gTestRunnerState.result
                   && gTestRunnerState.expectedFailState == NO_EXPECT_FAIL)
                  || (gTestRunnerState.result == TEST_RESULT_FAIL
                   && gTestRunnerState.expectedResult == TEST_RESULT_KNOWN_FAIL))
                 Test_MgbaPrintf(":K%s%s\e[0m", color, result);
+            else if (gTestRunnerState.expectedResult == gTestRunnerState.result
+                 && gTestRunnerState.result == TEST_RESULT_FAIL)
+                Test_MgbaPrintf(":V%s%s\e[0m", color, result);
+            else if ((gTestRunnerState.expectedResult == gTestRunnerState.result
+                  && gTestRunnerState.expectedFailState == NO_EXPECT_FAIL)
+                 || (gTestRunnerState.result == TEST_RESULT_FAIL
+                  && gTestRunnerState.expectedResult == TEST_RESULT_FIXER))
+                Test_MgbaPrintf(":X%s%s\e[0m", color, result);
             else
                 Test_MgbaPrintf(":F%s%s\e[0m", color, result);
         }

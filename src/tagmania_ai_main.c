@@ -14862,8 +14862,8 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
             break;
         case EFFECT_DRAGON_CHEER: // PARTNER DIFFERENCE - Opponent done
             if (gBattleMons[battlerAtkPartner].volatiles.dragonCheer
-            || gBattleMons[battlerAtkPartner].volatiles.focusEnergy
-            || !HasDamagingMove(battlerAtkPartner))
+             || gBattleMons[battlerAtkPartner].volatiles.focusEnergy
+             || !HasDamagingMove(battlerAtkPartner))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
             else if (atkPartnerHoldEffect == HOLD_EFFECT_SCOPE_LENS
                 || IS_BATTLER_OF_TYPE(battlerAtkPartner, TYPE_DRAGON)

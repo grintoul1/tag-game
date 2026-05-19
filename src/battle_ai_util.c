@@ -4586,7 +4586,7 @@ bool32 IsRecycleEncouragedItem(enum Item item)
     return FALSE;
 }
 
-static bool32 HasMoveThatChangesKOThreshold(enum BattlerId battlerId, u32 noOfHitsToFaint)
+static bool32 UNUSED HasMoveThatChangesKOThreshold(enum BattlerId battlerId, u32 noOfHitsToFaint)
 {
     enum Move *moves = GetMovesArray(battlerId);
 
@@ -4626,7 +4626,7 @@ static enum AIScore IncreaseStatUpScoreInternal(enum BattlerId battlerAtk, enum 
     u32 noOfHitsToFaint = NoOfHitsForTargetToFaintBattler(battlerDef, battlerAtk, AI_SHOULD_SETUP_DEFENDING, DONT_CONSIDER_ENDURE);
     enum Move predictedMove = GetPredictedMove(battlerAtk, battlerDef, gAiLogicData);
     bool32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, MOVE_NONE, predictedMove, DONT_CONSIDER_PRIORITY); // Don't care about the priority of our setup move, care about outspeeding otherwise
-    bool32 shouldSetUp = ((noOfHitsToFaint >= 2 && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
+    bool32 shouldSetUp = ((noOfHitsToFaint > 2 && aiIsFaster) || (noOfHitsToFaint > 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
 
     // This should be now redundant
     if (considerContrary && gAiLogicData->abilities[battlerAtk] == ABILITY_CONTRARY)
@@ -4635,17 +4635,18 @@ static enum AIScore IncreaseStatUpScoreInternal(enum BattlerId battlerAtk, enum 
     if (!ShouldRaiseAnyStat(battlerAtk, battlerDef))
         return NO_INCREASE;
 
+    // Don't increase stat if AI is at +2
+    if (gBattleMons[battlerAtk].statStages[statId] >= MAX_STAT_STAGE - 4)
+        return NO_INCREASE;
+    /*
     // Don't increase stat if AI has less then 70% HP and number of hits isn't known
     if (gAiLogicData->hpPercents[battlerAtk] < 70 && noOfHitsToFaint == UNKNOWN_NO_OF_HITS)
         return NO_INCREASE;
+    */
 
     // Don't increase stats if player has a move that can change the KO threshold
-    if (aiIsFaster && HasMoveThatChangesKOThreshold(battlerDef, noOfHitsToFaint))
-        return NO_INCREASE;
-
-    // Don't increase stat if AI is at +4
-    if (gBattleMons[battlerAtk].statStages[statId] >= MAX_STAT_STAGE - 2)
-        return NO_INCREASE;
+    //if (aiIsFaster && HasMoveThatChangesKOThreshold(battlerDef, noOfHitsToFaint))
+    //    return NO_INCREASE;
 
     // Stat stages are effectively doubled under Simple.
     if (gAiLogicData->abilities[battlerAtk] == ABILITY_SIMPLE)
@@ -4675,26 +4676,80 @@ static enum AIScore IncreaseStatUpScoreInternal(enum BattlerId battlerAtk, enum 
         if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
         {
             if (stages == 1)
-                tempScore += DECENT_EFFECT;
+            {
+                // If both targets are incapacitated and user has physical move
+                if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && IsBattlerIncapacitated(BATTLE_PARTNER(battlerDef), gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL))
+                {
+                    tempScore += (WEAK_EFFECT + SLOW_KILL); // + 12
+                    break;
+                }
+                // If target is incapacitated and user has physical move, 50% increase
+                else if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && RandomPercentage(RNG_AI_CUSTOM_AI_FIFTY_PERCENT, CUSTOM_AI_FIFTY_PERCENT))
+                {
+                    tempScore += (WEAK_EFFECT + SLOW_KILL); // + 12
+                    break;
+                }
+                // If Faster and not 3HKO'd and has a physical move
+                else if (!IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && noOfHitsToFaint > 3 && aiIsFaster && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+                {
+                    tempScore += DECENT_EFFECT; // +7
+                    break;
+                }
+                // If has physical move and not SlowHKO'd or fast 2HKO'd
+                else if (!IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+                {
+                    tempScore += WEAK_EFFECT; // +6
+                    break;
+                }
+                break;
+            }
+            else if (stages > 1 && stages < 6)
+            {
+                // If both targets are incapacitated and user has physical move
+                if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && IsBattlerIncapacitated(BATTLE_PARTNER(battlerDef), gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL))
+                {
+                    tempScore += (WEAK_EFFECT + FAST_KILL); // + 18
+                    break;
+                }
+                // If target is incapacitated and user has physical move, 50% increase
+                else if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && RandomPercentage(RNG_AI_CUSTOM_AI_FIFTY_PERCENT, CUSTOM_AI_FIFTY_PERCENT))
+                {
+                    tempScore += (WEAK_EFFECT + FAST_KILL); // + 18
+                    break;
+                }
+                // If Faster and not 3HKO'd and has a physical move
+                else if (noOfHitsToFaint > 3 && aiIsFaster && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+                {
+                    tempScore += GOOD_EFFECT; // +8
+                    break;
+                }
+                // If has physical move and not SlowHKO'd or fast 2HKO'd
+                else if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+                {
+                    tempScore += DECENT_EFFECT; // +7
+                    break;
+                }
+                break;
+            }
             else if (stages == 6)
                 tempScore += BEST_EFFECT;
-            else
-                tempScore += GOOD_EFFECT;
+            //else
+            //    tempScore += GOOD_EFFECT;
         }
         break;
     case STAT_DEF:
     {
-        bool32 defRelevant = (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL));
-        bool32 bodyPressCheck = (HasMoveWithEffect(battlerAtk, EFFECT_BODY_PRESS) && !(gFieldStatuses & STATUS_FIELD_WONDER_ROOM) && shouldSetUp);
-
-        if (defRelevant || bodyPressCheck)
+        // Target has physical move or no special moves
+        if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL)) && shouldSetUp)
         {
-            if (defRelevant && (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_STALL))
-                tempScore += WEAK_EFFECT;
             if (stages == 1)
-                tempScore += bodyPressCheck ? DECENT_EFFECT : WEAK_EFFECT;
+            {
+                tempScore += WEAK_EFFECT; // +6
+            }
             else
-                tempScore += bodyPressCheck ? GOOD_EFFECT : DECENT_EFFECT;
+            {
+                tempScore += DECENT_EFFECT; // +7
+            }
         }
         break;
     }
@@ -4702,46 +4757,92 @@ static enum AIScore IncreaseStatUpScoreInternal(enum BattlerId battlerAtk, enum 
         if ((noOfHitsToFaint >= 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS)
         {
             if (stages == 1)
-                tempScore += DECENT_EFFECT;
+                tempScore += WEAK_EFFECT; // +6
             else
-                tempScore += GOOD_EFFECT;
+                tempScore += GOOD_EFFECT; // +8
         }
         break;
     case STAT_SPATK:
-        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
+        if (stages == 1)
         {
-            if (stages == 1)
-                tempScore += DECENT_EFFECT;
-            else
-                tempScore += GOOD_EFFECT;
+            // If both targets are incapacitated and user has special move
+            if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && IsBattlerIncapacitated(BATTLE_PARTNER(battlerDef), gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL))
+            {
+                tempScore += (WEAK_EFFECT + SLOW_KILL); // + 12
+                break;
+            }
+            // If target is incapacitated and user has special move, 50% increase
+            else if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && RandomPercentage(RNG_AI_CUSTOM_AI_FIFTY_PERCENT, CUSTOM_AI_FIFTY_PERCENT))
+            {
+                tempScore += (WEAK_EFFECT + SLOW_KILL); // + 12
+                break;
+            }
+            // If Faster and not 3HKO'd and has a special move
+            else if (!IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && noOfHitsToFaint > 3 && aiIsFaster && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
+            {
+                tempScore += DECENT_EFFECT; // +7
+                break;
+            }
+            // If has special move and not SlowHKO'd or fast 2HKO'd
+            else if (!IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
+            {
+                tempScore += WEAK_EFFECT; // +6
+                break;
+            }
+            break;
+        }
+        else
+        {
+            // If both targets are incapacitated and user has special move
+            if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && IsBattlerIncapacitated(BATTLE_PARTNER(battlerDef), gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL))
+            {
+                tempScore += (WEAK_EFFECT + FAST_KILL); // + 18
+                break;
+            }
+            // If target is incapacitated and user has special move, 50% increase
+            else if (IsBattlerIncapacitated(battlerDef, gAiLogicData->abilities[battlerDef]) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && RandomPercentage(RNG_AI_CUSTOM_AI_FIFTY_PERCENT, CUSTOM_AI_FIFTY_PERCENT))
+            {
+                tempScore += (WEAK_EFFECT + FAST_KILL); // + 18
+                break;
+            }
+            // If Faster and not 3HKO'd and has a special move
+            else if (noOfHitsToFaint > 3 && aiIsFaster && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
+            {
+                tempScore += GOOD_EFFECT; // +8
+                break;
+            }
+            // If has special move and not SlowHKO'd or fast 2HKO'd
+            else if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
+            {
+                tempScore += DECENT_EFFECT; // +7
+                break;
+            }
+            break;
         }
         break;
     case STAT_SPDEF:
     {
-        bool32 spDefRelevant = (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL));
-        // Wonder Room makes Body Press use Sp. Def stages for its damage calculation.
-        bool32 bodyPressCheck = (HasMoveWithEffect(battlerAtk, EFFECT_BODY_PRESS) && (gFieldStatuses & STATUS_FIELD_WONDER_ROOM) && shouldSetUp);
-
-        if (spDefRelevant || bodyPressCheck)
+        // Target has special move or no physical moves
+        if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) || !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)) && shouldSetUp)
         {
-            if (spDefRelevant && (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_STALL))
-                tempScore += WEAK_EFFECT;
             if (stages == 1)
-                tempScore += bodyPressCheck ? DECENT_EFFECT : WEAK_EFFECT;
+                tempScore += WEAK_EFFECT; // +6
             else
-                tempScore += bodyPressCheck ? GOOD_EFFECT : DECENT_EFFECT;
+                tempScore += DECENT_EFFECT; // +7
         }
         break;
     }
     case STAT_ACC:
-        if (gBattleMons[battlerAtk].statStages[statId] <= DEFAULT_STAT_STAGE - 3) // Increase only if necessary
-            tempScore += DECENT_EFFECT;
+        // If Accuracy neutral or lower
+        if (gBattleMons[battlerAtk].statStages[statId] <= DEFAULT_STAT_STAGE) // Increase only if necessary
+            tempScore += WEAK_EFFECT; // +6
         break;
     case STAT_EVASION:
+        // If immune, not 3HKO'd, or Target is incapacitated
         if (noOfHitsToFaint > 3 || noOfHitsToFaint == UNKNOWN_NO_OF_HITS)
-            tempScore += GOOD_EFFECT;
-        else
-            tempScore += DECENT_EFFECT;
+            tempScore += GOOD_EFFECT; // +8
+        else if (gBattleMons[battlerAtk].statStages[STAT_EVASION] <= DEFAULT_STAT_STAGE)
+            tempScore += WEAK_EFFECT; // +6
         break;
     default:
         break;
@@ -6733,6 +6834,252 @@ s32 GetFrostbiteScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum
             scoreAdj += WEAK_EFFECT;
     }
     return scoreAdj;
+}
+
+bool32 ShouldUseProtect(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move)
+{
+    if (gLastMoves[battlerAtk] == gMovesInfo[move].effect /*&& (Random() & 1)*/)
+        return FALSE;
+    else
+        return TRUE;
+}
+
+bool32 IsBattlerFirstTurnOrRandom(enum BattlerId battler)
+{
+    return (gBattleStruct->battlerState[battler].isFirstTurn || Random() & 1);
+}
+
+bool32 CanTargetFaintAiInHits(enum BattlerId battlerDef, enum BattlerId battlerAtk, u32 hits)
+{
+    struct AiLogicData *aiData = gAiLogicData;
+    enum Move *moves = GetMovesArray(battlerDef);
+    u32 moveLimitations = aiData->moveLimitations[battlerDef];
+
+    for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations))
+            continue;
+
+        if ((AI_GetDamage(battlerDef, battlerAtk, moveIndex, AI_DEFENDING, aiData) * hits) >= gBattleMons[battlerAtk].hp)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+void GetBestDmgMoveFromPartner(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum BattlerId battlerDefPartner, enum DamageCalcContext calcContext, enum Move moves[MAX_MON_MOVES], u32* target)
+{
+    struct AiLogicData *aiData = gAiLogicData;
+    u32 moveIndex; 
+    s32 moveDef = 0, moveDefPartner = 0;
+    s32 bestDmgDef = 0, bestDmgDefPartner = 0;
+    enum Move *battlerMoves = GetMovesArray(battlerAtk);
+    enum Move checkingMoves[MAX_MON_MOVES] = {0};
+    u32 checkingMovesCount = 0;
+    u32 moveLimitations = aiData->moveLimitations[battlerAtk];
+    enum BattlerId battlerAtkPartner = BATTLE_PARTNER(battlerAtk);
+    bool32 hasPartner = HasPartner(battlerAtk);
+    u32 friendlyFireThreshold = GetFriendlyFireKOThreshold(battlerAtk);
+    u32 noOfHitsToKOPartner = 0;
+    bool32 wouldPartnerFaint = FALSE;
+    bool32 isFriendlyFireOK = TRUE;
+    enum Move predictedMove = GetPredictedMove(battlerAtk, battlerDef, gAiLogicData);
+    enum Move predictedMoveAdjacent = GetPredictedMove(battlerAtk, BATTLE_PARTNER(battlerDef), gAiLogicData);
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        enum MoveTarget moveTarget;
+
+        if (battlerMoves[moveIndex] == MOVE_NONE || battlerMoves[moveIndex] == MOVE_UNAVAILABLE)
+            continue;
+        if (IsMoveUnusable(moveIndex, battlerMoves[moveIndex], moveLimitations))
+            continue;
+
+        noOfHitsToKOPartner = GetNoOfHitsToKOBattler(battlerAtk, battlerAtkPartner, moveIndex, AI_ATTACKING, DONT_CONSIDER_ENDURE);
+        wouldPartnerFaint = hasPartner && CanIndexMoveFaintTarget(battlerAtk, battlerAtkPartner, moveIndex, AI_ATTACKING);
+        isFriendlyFireOK = !wouldPartnerFaint && (noOfHitsToKOPartner == 0 || noOfHitsToKOPartner > friendlyFireThreshold);
+        moveTarget = AI_GetBattlerMoveTargetType(battlerAtk, battlerMoves[moveIndex]);
+
+        if ((moveTarget == TARGET_FOES_AND_ALLY) && hasPartner && !isFriendlyFireOK)
+            continue;
+
+        checkingMoves[checkingMovesCount++] = battlerMoves[moveIndex];
+    }
+
+    // Fast KO battler 1
+    for (moveIndex = 0; moveIndex < checkingMovesCount; moveIndex++)
+    {
+        u32 moveIdx = GetMoveIndex(battlerAtk, checkingMoves[moveIndex]);
+        
+        if (!IsBattlerAlive(battlerDefPartner)
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, checkingMoves[moveIndex], predictedMoveAdjacent, CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        && IsSemiInvulnerable(battlerDefPartner, CHECK_ALL)))
+            continue;
+
+        if (CanIndexMoveFaintTarget(battlerAtk, battlerDefPartner, moveIdx, AI_ATTACKING) 
+        && (AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, checkingMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER))
+        {
+            moves[moveIdx] = checkingMoves[moveIndex];
+        }
+    }
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (moves[moveIndex] != MOVE_NONE)
+        {
+            (*target) = battlerDefPartner;
+            return;
+        }
+    }
+
+    // Fast KO battler 3
+    for (moveIndex = 0; moveIndex < checkingMovesCount; moveIndex++)
+    {
+        u32 moveIdx = GetMoveIndex(battlerAtk, checkingMoves[moveIndex]);
+        
+        if (!IsBattlerAlive(battlerDef)
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDef, checkingMoves[moveIndex], predictedMove, CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        && IsSemiInvulnerable(battlerDef, CHECK_ALL)))
+            continue;
+
+        if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, moveIdx, AI_ATTACKING) 
+        && (AI_WhoStrikesFirst(battlerAtk, battlerDef, checkingMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER))
+        {
+            moves[moveIdx] = checkingMoves[moveIndex];
+        }
+    }
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (moves[moveIndex] != MOVE_NONE)
+        {
+            (*target) = battlerDef;
+            return;
+        }
+    }
+
+    // Slow KO battler 1
+    for (moveIndex = 0; moveIndex < checkingMovesCount; moveIndex++)
+    {
+        u32 moveIdx = GetMoveIndex(battlerAtk, checkingMoves[moveIndex]);
+        
+        if (!IsBattlerAlive(battlerDefPartner)
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, checkingMoves[moveIndex], predictedMoveAdjacent, CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        && IsSemiInvulnerable(battlerDefPartner, CHECK_ALL)))
+            continue;
+
+        if (CanIndexMoveFaintTarget(battlerAtk, battlerDefPartner, moveIdx, AI_ATTACKING) 
+        && (AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, checkingMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_SLOWER))
+        {
+            moves[moveIdx] = checkingMoves[moveIndex];
+        }
+    }
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (moves[moveIndex] != MOVE_NONE)
+        {
+            (*target) = battlerDefPartner;
+            return;
+        }
+    }
+
+    // Slow KO battler 3
+    for (moveIndex = 0; moveIndex < checkingMovesCount; moveIndex++)
+    {
+        u32 moveIdx = GetMoveIndex(battlerAtk, checkingMoves[moveIndex]);
+        
+        if (!IsBattlerAlive(battlerDef)
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDef, checkingMoves[moveIndex], predictedMove, CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        && IsSemiInvulnerable(battlerDef, CHECK_ALL)))
+            continue;
+
+        if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, moveIdx, AI_ATTACKING) 
+        && (AI_WhoStrikesFirst(battlerAtk, battlerDef, checkingMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_SLOWER))
+        {
+            moves[moveIdx] = checkingMoves[moveIndex];
+        }
+    }
+
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+    {
+        if (moves[moveIndex] != MOVE_NONE)
+        {
+            (*target) = battlerDef;
+            return;
+        }
+    }
+
+    // Check both mons
+    // Best damage battler 1
+    for (moveIndex = 0; moveIndex < checkingMovesCount; moveIndex++)
+    {
+        u32 moveIdx = GetMoveIndex(battlerAtk, checkingMoves[moveIndex]);
+        
+        if (!IsBattlerAlive(battlerDefPartner)
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, checkingMoves[moveIndex], predictedMoveAdjacent, CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        && IsSemiInvulnerable(battlerDefPartner, CHECK_ALL)))
+            continue;
+
+        // If move does better damage, or does the same damage but this move results in a change of who moves first.
+        if (bestDmgDefPartner < AI_GetDamage(battlerAtk, battlerDefPartner, moveIdx, calcContext, aiData)
+        || ((bestDmgDefPartner == AI_GetDamage(battlerAtk, battlerDefPartner, moveIdx, calcContext, aiData)) 
+        && (AI_WhoStrikesFirst(battlerAtk, battlerDefPartner, checkingMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER)))
+        {
+            bestDmgDefPartner = AI_GetDamage(battlerAtk, battlerDefPartner, moveIdx, calcContext, aiData);
+            moveDefPartner = moveIdx;
+        }
+    }
+    // Best damage battler 3
+    for (moveIndex = 0; moveIndex < checkingMovesCount; moveIndex++)
+    {
+        u32 moveIdx = GetMoveIndex(battlerAtk, checkingMoves[moveIndex]);
+        
+        if (!IsBattlerAlive(battlerDef)
+        || ((AI_WhoStrikesFirst(battlerAtk, battlerDef, checkingMoves[moveIndex], predictedMove, CONSIDER_PRIORITY) == AI_IS_FASTER) 
+        && IsSemiInvulnerable(battlerDef, CHECK_ALL)))
+            continue;
+
+        // If move does better damage, or does the same damage but this move results in a change of who moves first.
+        if (bestDmgDef < AI_GetDamage(battlerAtk, battlerDef, moveIdx, calcContext, aiData)
+        || ((bestDmgDef == AI_GetDamage(battlerAtk, battlerDef, moveIdx, calcContext, aiData)) 
+        && (AI_WhoStrikesFirst(battlerAtk, battlerDef, checkingMoves[moveIndex], MOVE_TACKLE, CONSIDER_PRIORITY) == AI_IS_FASTER)))
+        {
+            bestDmgDef = AI_GetDamage(battlerAtk, battlerDef, moveIdx, calcContext, aiData);
+            moveDef = moveIdx;
+        }
+    }
+
+    if (((bestDmgDefPartner*100)/gBattleMons[battlerDefPartner].maxHP) >= ((bestDmgDef*100)/gBattleMons[battlerDef].maxHP))
+    {
+        moves[moveDefPartner] = battlerMoves[moveDefPartner];
+        (*target) = battlerDefPartner;
+        return;
+    }
+    else
+    {
+        moves[moveDef] = battlerMoves[moveDef];
+        (*target) = battlerDef;
+        return;
+    }
+}
+
+bool32 ShouldFrostbite(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Ability abilityDef)
+{
+    // Battler can be frostbitten and has move/ability that synergizes with being frostbitten
+    if (CanBeFrozen(battlerAtk, battlerDef, abilityDef) && (
+        DoesBattlerBenefitFromAllVolatileStatus(battlerDef, abilityDef)))
+    {
+        if (battlerAtk == battlerDef) // Targeting self
+            return TRUE;
+        else
+            return FALSE;
+    }
+
+    if (battlerAtk == battlerDef)
+        return FALSE;
+    else
+        return TRUE;
 }
 
 #endif

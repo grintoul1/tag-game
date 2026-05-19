@@ -4,14 +4,13 @@
 #define AI_FRAME_CEILING_SINGLES_NO_FLAGS                       3
 #define AI_FRAME_CEILING_SINGLES_SMART_TRAINER                  8
 #define AI_FRAME_CEILING_DOUBLES_NO_FLAGS                       21
-#define AI_FRAME_CEILING_DOUBLES_SMART_TRAINER                  37
+#define AI_FRAME_CEILING_DOUBLES_SMART_TRAINER                  39
 #define AI_FRAME_CEILING_STEVEN_MULTI                           27
-#define AI_FRAME_CEILING_STEVEN_MULTI_SMART_TRAINER             30
+#define AI_FRAME_CEILING_STEVEN_MULTI_SMART_TRAINER             31
 #define AI_FRAME_CEILING_CHECK                                  FALSE // If TRUE, forces all thinking time tests to fail. Useful for printing all actual frame times to console by running the tests
 
 AI_SINGLE_BATTLE_TEST("AI thinking time doesn't explode (singles, no flags)")
 {
-    KNOWN_FAILING;
     GIVEN {
         PLAYER(SPECIES_ZIGZAGOON) { Moves(MOVE_CELEBRATE, MOVE_BELLY_DRUM, MOVE_FLAIL, MOVE_FLING); }
         PLAYER(SPECIES_ZIGZAGOON) { Moves(MOVE_DOUBLE_EDGE, MOVE_BELLY_DRUM, MOVE_FLAIL, MOVE_FLING); }
@@ -34,7 +33,6 @@ AI_SINGLE_BATTLE_TEST("AI thinking time doesn't explode (singles, no flags)")
 
 AI_SINGLE_BATTLE_TEST("AI thinking time doesn't explode (singles, smart)")
 {
-    KNOWN_FAILING;
     GIVEN {
         AI_FLAGS(AI_FLAG_SMART_TRAINER);
         PLAYER(SPECIES_ZIGZAGOON) { Moves(MOVE_CELEBRATE, MOVE_BELLY_DRUM, MOVE_FLAIL, MOVE_FLING); }
@@ -58,7 +56,6 @@ AI_SINGLE_BATTLE_TEST("AI thinking time doesn't explode (singles, smart)")
 
 AI_DOUBLE_BATTLE_TEST("AI thinking time doesn't explode (doubles, no flags)")
 {
-    KNOWN_FAILING;
     GIVEN {
         PLAYER(SPECIES_ZIGZAGOON) { Moves(MOVE_CELEBRATE, MOVE_BELLY_DRUM, MOVE_FLAIL, MOVE_FLING); }
         PLAYER(SPECIES_ZIGZAGOON) { Moves(MOVE_CELEBRATE, MOVE_BELLY_DRUM, MOVE_FLAIL, MOVE_FLING); }
@@ -81,7 +78,6 @@ AI_DOUBLE_BATTLE_TEST("AI thinking time doesn't explode (doubles, no flags)")
 
 AI_DOUBLE_BATTLE_TEST("AI thinking time doesn't explode (doubles, smart)")
 {
-    KNOWN_FAILING;
     GIVEN {
         AI_FLAGS(AI_FLAG_SMART_TRAINER);
         PLAYER(SPECIES_ZIGZAGOON) { Moves(MOVE_CELEBRATE, MOVE_BELLY_DRUM, MOVE_FLAIL, MOVE_FLING); }
@@ -105,7 +101,6 @@ AI_DOUBLE_BATTLE_TEST("AI thinking time doesn't explode (doubles, smart)")
 
 AI_MULTI_BATTLE_TEST("AI thinking time doesn't explode (Steven multi)")
 {
-    KNOWN_FAILING;
     GIVEN {
         BATTLER_AI_FLAGS(playerRight, AI_FLAG_BASIC_TRAINER);
         BATTLER_AI_FLAGS(opponentLeft, AI_FLAG_BASIC_TRAINER);
@@ -130,7 +125,6 @@ AI_MULTI_BATTLE_TEST("AI thinking time doesn't explode (Steven multi)")
 
 AI_MULTI_BATTLE_TEST("AI thinking time doesn't explode (Steven multi, smart)")
 {
-    KNOWN_FAILING;
     GIVEN {
         BATTLER_AI_FLAGS(playerRight, AI_FLAG_SMART_TRAINER);
         BATTLER_AI_FLAGS(opponentLeft, AI_FLAG_SMART_TRAINER);

@@ -51,7 +51,6 @@ AI_DOUBLE_BATTLE_TEST("AI will not try to lower opposing stats if target is prot
 
 AI_SINGLE_BATTLE_TEST("AI sees No Guard affects semi-invulnerable moves")
 {
-    KNOWN_FAILING; // New AI not implemented
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_PHANTOM_FORCE) == EFFECT_SEMI_INVULNERABLE);
         ASSUME(GetMovePower(MOVE_PHANTOM_FORCE) == GetMovePower(MOVE_SPECTRAL_THIEF));
@@ -90,7 +89,6 @@ AI_SINGLE_BATTLE_TEST("AI predicts semi-invulnerable entry and chooses a move th
 
 AI_SINGLE_BATTLE_TEST("Protect: AI avoids Protect vs Unseen Fist contact (Single)")
 {
-    KNOWN_FAILING; // New AI not implemented
     static const enum Move protectMoves[] =
     {
         MOVE_PROTECT,
@@ -263,7 +261,6 @@ AI_DOUBLE_BATTLE_TEST("Protect: AI avoids Protect vs moves that ignore protectio
 
 AI_SINGLE_BATTLE_TEST("AI penalizes Yawn when target can self-status with Flame/Toxic Orb")
 {
-    KNOWN_FAILING;
     u32 heldItem = ITEM_NONE;
     bool32 shouldYawn = FALSE;
 
