@@ -91,14 +91,13 @@ struct BerryTree
     u8 stopGrowth:1;
     u16 minutesUntilNextStage:14;
     u16 mutationA:2;
-    u8 berryYield:5;
+    u8 berryYield:7;
     u8 pests:1;
-    u8 mutationB:2;
     u8 regrowthCount:4;
     u8 watered:4; // Used to keep track of bonuses in case of gradient watering
     u16 moistureLevel:7;
     u16 moistureClock:7;
-    u16 padding:2;
+    u16 mutationB:2;
 };
 
 #endif // GUARD_GLOBAL_BERRY_H
