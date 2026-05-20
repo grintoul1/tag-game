@@ -105,6 +105,7 @@ MossdeepCity_Gym_EventScript_TateAndLiza2::
 	playse SE_BALL_THROW
 	waitse
 	playse SE_BALL_BOUNCE_1
+	waitse
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_ALAKAZAM, MossdeepCity_Gym_Movement_AlakazamEnterPokeball
 	waitmovement
 	delay 16
