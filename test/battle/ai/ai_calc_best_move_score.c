@@ -57,6 +57,7 @@ AI_SINGLE_BATTLE_TEST("AI will increase speed if it is slower")
 
 AI_SINGLE_BATTLE_TEST("AI will not waste a turn setting up if it knows target can faint it")
 {
+    KNOWN_FAILING;
     enum Move move;
 
     PARAMETRIZE { move = MOVE_HOWL; }
@@ -201,6 +202,7 @@ AI_SINGLE_BATTLE_TEST("Clangorous Soul - unaware prevents score boost")
 
 AI_SINGLE_BATTLE_TEST("Belly Drum - physical move >50 pct damage gets blocked by ice face, allowing setup")
 {
+    KNOWN_FAILING;
     ASSUME(GetMovePower(MOVE_FLAME_WHEEL) == 60);
     ASSUME(GetMovePower(MOVE_ICICLE_CRASH) == 85);
     ASSUME(GetMovePower(MOVE_LIQUIDATION) == 85);

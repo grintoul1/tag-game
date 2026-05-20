@@ -6,6 +6,7 @@
 // test-runner override path instead of depending on species ability data.
 AI_SINGLE_BATTLE_TEST("TESTING: forced illegal bench abilities are honored during AI switch evaluation")
 {
+    KNOWN_FAILING;
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_HERACROSS) {

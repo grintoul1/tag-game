@@ -4078,7 +4078,7 @@ enum Move GetAllyChosenMove(enum BattlerId battlerId)
     if (!IsBattlerAlive(partnerBattler) || !IsAiBattlerAware(partnerBattler))
         return MOVE_NONE;
     else if (partnerBattler > battlerId) // Battler with the lower id chooses the move first.
-        return gAiLogicData->lastUsedMove[partnerBattler];
+        return MOVE_NONE; //gAiLogicData->lastUsedMove[partnerBattler];
     else
         return GetBattlerChosenMove(partnerBattler);
 }
@@ -4626,7 +4626,7 @@ static enum AIScore IncreaseStatUpScoreInternal(enum BattlerId battlerAtk, enum 
     u32 noOfHitsToFaint = NoOfHitsForTargetToFaintBattler(battlerDef, battlerAtk, AI_SHOULD_SETUP_DEFENDING, DONT_CONSIDER_ENDURE);
     enum Move predictedMove = GetPredictedMove(battlerAtk, battlerDef, gAiLogicData);
     bool32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, MOVE_NONE, predictedMove, DONT_CONSIDER_PRIORITY); // Don't care about the priority of our setup move, care about outspeeding otherwise
-    bool32 shouldSetUp = ((noOfHitsToFaint > 2 && aiIsFaster) || (noOfHitsToFaint > 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
+    bool32 shouldSetUp = ((noOfHitsToFaint > 1 && aiIsFaster) || (noOfHitsToFaint > 2 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
 
     // This should be now redundant
     if (considerContrary && gAiLogicData->abilities[battlerAtk] == ABILITY_CONTRARY)

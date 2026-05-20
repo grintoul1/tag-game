@@ -2321,6 +2321,31 @@ static inline bool32 IsFreeSwitch(enum SwitchType switchType, enum BattlerId bat
         }
     }
 
+    if(IsDoubleBattle())
+    {
+        bool32 movedSecondOpponentPartner = GetBattlerTurnOrderNum(battlerSwitchingOut) > GetBattlerTurnOrderNum(BATTLE_PARTNER(opposingBattler)) ? TRUE : FALSE;
+        if (IsSwitchOutEffect(GetMoveEffect(gCurrentMove)) && movedSecond && movedSecondOpponentPartner)
+        {
+            return TRUE;
+        }
+        if (gAiLogicData->ejectButtonSwitch)
+        {
+            return TRUE;
+        }
+        if (gAiLogicData->ejectPackSwitch)
+        {
+            u32 opposingAbility = GetBattlerAbilityIgnoreMoldBreaker(opposingBattler);
+            u32 opposingAbility2 = GetBattlerAbilityIgnoreMoldBreaker(BATTLE_PARTNER(opposingBattler));
+
+            // If faster, not a free switch; likely lowered own stats
+            if ((!movedSecond && opposingAbility != ABILITY_INTIMIDATE && opposingAbility != ABILITY_SUPERSWEET_SYRUP) || (!movedSecondOpponentPartner && opposingAbility2 != ABILITY_INTIMIDATE && opposingAbility2 != ABILITY_SUPERSWEET_SYRUP)) // Intimidate triggers switches before turn starts
+                return FALSE;
+            // Otherwise, free switch
+            return TRUE;
+        }
+
+    }
+
     // Post KO check has to be last because the GetMostSuitableMonToSwitchInto call in OpponentHandleChoosePokemon assumes a KO rather than a forced switch choice
     if (switchType == SWITCH_AFTER_KO)
         return TRUE;
@@ -3614,14 +3639,14 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
 
     u32 incomingType = GetMoveType(switchingMove);
 
-        MgbaPrintf(MGBA_LOG_WARN, "PartnerFindMonThatAbsorbsOpponentsMove", PartnerFindMonThatAbsorbsOpponentsMove);
+        /*MgbaPrintf(MGBA_LOG_WARN, "PartnerFindMonThatAbsorbsOpponentsMove", PartnerFindMonThatAbsorbsOpponentsMove);
         MgbaPrintf(MGBA_LOG_WARN, "battler %d %S", battler, GetSpeciesName(gBattleMons[battler].species));
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveTypes %d", oppositeBattlerMoveTypes);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveTypes %d", oppositeBattlerPartnerMoveTypes);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveCount %d", oppositeBattlerMoveCount);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveCount %d", oppositeBattlerPartnerMoveCount);
         MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOpposite %S", GetMoveName(switchingMoveOpposite));
-        MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOppositePartner %S", GetMoveName(switchingMoveOppositePartner));
+        MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOppositePartner %S", GetMoveName(switchingMoveOppositePartner));*/
 
     if (!(oppositeBattlerMoveTypes == 1 || oppositeBattlerPartnerMoveTypes == 1) && !(onlySound || onlyBallistic || onlyWind))
         return FALSE;

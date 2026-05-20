@@ -10,6 +10,9 @@
 
 #define POKEDEX_AREA_MAP_BG 3
 
+static const u32 sPokedexAreaMapAffine_Gfx[] = INCBIN_U32("graphics/pokedex/region_map_affine.8bpp.smol");
+static const u32 sPokedexAreaMapAffine_Tilemap[] = INCBIN_U32("graphics/pokedex/region_map_affine.bin.smolTM");
+
 void LoadPokedexAreaMapGfx(void)
 {
     enum RegionMapType regionMapType = GetRegionMapType(gMapHeader.regionMapSectionId);

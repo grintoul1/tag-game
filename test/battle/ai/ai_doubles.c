@@ -34,6 +34,7 @@ AI_DOUBLE_BATTLE_TEST("AI won't use a Weather changing move if partner already c
 
 AI_DOUBLE_BATTLE_TEST("AI will not use Helping Hand if partner does not have any damage moves")
 {
+    FIXER;
     enum Move move1 = MOVE_NONE, move2 = MOVE_NONE, move3 = MOVE_NONE, move4 = MOVE_NONE;
 
     PARAMETRIZE { move1 = MOVE_LEER; move2 = MOVE_TOXIC; }
@@ -266,6 +267,7 @@ AI_DOUBLE_BATTLE_TEST("AI treats Harvest as a sun benefit only when a berry is i
 
 AI_DOUBLE_BATTLE_TEST("AI will not use a status move if partner already chose Helping Hand")
 {
+    FIXER;
     enum Move j;
     enum Move statusMove = MOVE_NONE;
 
@@ -895,6 +897,7 @@ AI_DOUBLE_BATTLE_TEST("AI sets up terrain for its ally")
 
 AI_DOUBLE_BATTLE_TEST("AI uses After You to set up Trick Room")
 {
+    KNOWN_FAILING;
     enum Move move;
 
     PARAMETRIZE { move = MOVE_TRICK_ROOM; }

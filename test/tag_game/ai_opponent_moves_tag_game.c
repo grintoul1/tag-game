@@ -121,9 +121,9 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SCORING: AI always chooses 
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_ENERGY, MOVE_MUDDY_WATER, MOVE_HEAT_WAVE); }
         OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_ENERGY, MOVE_MUDDY_WATER, MOVE_HEAT_WAVE); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_DRAGON_ENERGY); EXPECT_MOVE(opponentRight, MOVE_DRAGON_ENERGY); SWITCH(playerLeft, 1); SWITCH(playerRight, 1); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_MUDDY_WATER); EXPECT_MOVE(opponentRight, MOVE_MUDDY_WATER); SWITCH(playerLeft, 2); SWITCH(playerRight, 2); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_HEAT_WAVE); EXPECT_MOVE(opponentRight, MOVE_HEAT_WAVE); SWITCH(playerLeft, 0); SWITCH(playerRight, 0); } 
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_DRAGON_ENERGY); EXPECT_MOVE(opponentRight, MOVE_DRAGON_ENERGY); SWITCH(playerLeft, 1); SWITCH(playerRight, 1); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_MUDDY_WATER); EXPECT_MOVE(opponentRight, MOVE_MUDDY_WATER); SWITCH(playerLeft, 2); SWITCH(playerRight, 2); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_HEAT_WAVE); EXPECT_MOVE(opponentRight, MOVE_HEAT_WAVE); SWITCH(playerLeft, 0); SWITCH(playerRight, 0); } 
         }   
 }
 
@@ -140,9 +140,9 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: AI always choo
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_ENERGY, MOVE_MUDDY_WATER, MOVE_HEAT_WAVE); }
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_ENERGY, MOVE_MUDDY_WATER, MOVE_HEAT_WAVE); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_DRAGON_ENERGY); EXPECT_MOVE(opponentRight, MOVE_DRAGON_ENERGY); SWITCH(playerLeft, 1); SWITCH(playerRight, 1); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_MUDDY_WATER); EXPECT_MOVE(opponentRight, MOVE_MUDDY_WATER); SWITCH(playerLeft, 2); SWITCH(playerRight, 2); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_HEAT_WAVE); EXPECT_MOVE(opponentRight, MOVE_HEAT_WAVE); SWITCH(playerLeft, 0); SWITCH(playerRight, 0); } 
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_DRAGON_ENERGY); EXPECT_MOVE(opponentRight, MOVE_DRAGON_ENERGY); SWITCH(playerLeft, 1); SWITCH(playerRight, 1); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_MUDDY_WATER); EXPECT_MOVE(opponentRight, MOVE_MUDDY_WATER); SWITCH(playerLeft, 2); SWITCH(playerRight, 2); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_HEAT_WAVE); EXPECT_MOVE(opponentRight, MOVE_HEAT_WAVE); SWITCH(playerLeft, 0); SWITCH(playerRight, 0); } 
         }   
 }
 
@@ -323,7 +323,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: OFFENSIVE SETUP: AI +1 offe
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_MEDITATE, MOVE_TACKLE); Speed(2); }
         OPPONENT_B(SPECIES_WYNAUT) { Moves(MOVE_MEDITATE, MOVE_TACKLE); Speed(1); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_MEDITATE); EXPECT_MOVE(opponentRight, MOVE_MEDITATE);
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_MEDITATE); EXPECT_MOVE(opponentRight, MOVE_MEDITATE);
                     SCORE_EQ_VAL(opponentLeft, MOVE_MEDITATE, 112, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_MEDITATE, 112, target:playerRight); }
         }   SCENE {
@@ -341,7 +341,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: OFFENSIVE SETUP: AI +1 
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_MEDITATE, MOVE_TACKLE); Speed(2); }
         OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_MEDITATE, MOVE_TACKLE); Speed(1); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_MEDITATE); EXPECT_MOVE(opponentRight, MOVE_MEDITATE);
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_MEDITATE); EXPECT_MOVE(opponentRight, MOVE_MEDITATE);
                     SCORE_EQ_VAL(opponentLeft, MOVE_MEDITATE, 112, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_MEDITATE, 112, target:playerRight); }
         }   SCENE {
@@ -360,7 +360,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: OFFENSIVE SETUP: AI +1 offe
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_MEDITATE, MOVE_TACKLE); Speed(2); }
         OPPONENT_B(SPECIES_WYNAUT) { Moves(MOVE_MEDITATE, MOVE_TACKLE); Speed(1); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_MEDITATE); EXPECT_MOVE(opponentRight, MOVE_MEDITATE);
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_MEDITATE); EXPECT_MOVE(opponentRight, MOVE_MEDITATE);
                     SCORE_EQ_VAL(opponentLeft, MOVE_MEDITATE, 112, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_MEDITATE, 112, target:playerRight); }
         }   SCENE {
@@ -379,7 +379,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: OFFENSIVE SETUP: AI +1 
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_MEDITATE, MOVE_TACKLE); Speed(2); }
         OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_MEDITATE, MOVE_TACKLE); Speed(1); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_MEDITATE); EXPECT_MOVE(opponentRight, MOVE_MEDITATE);
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_MEDITATE); EXPECT_MOVE(opponentRight, MOVE_MEDITATE);
                     SCORE_EQ_VAL(opponentLeft, MOVE_MEDITATE, 112, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_MEDITATE, 112, target:playerRight); }
         }   SCENE {
@@ -439,7 +439,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: OFFENSIVE SETUP: AI always 
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
         OPPONENT_B(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
         }   SCENE {
         MESSAGE("The opposing Wobbuffet used Swords Dance!");
         MESSAGE("The opposing Wynaut used Nasty Plot!");
@@ -455,7 +455,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: OFFENSIVE SETUP: AI alw
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
         OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
         }   SCENE {
         MESSAGE("The opposing Wobbuffet used Swords Dance!");
         MESSAGE("The opposing Wynaut used Nasty Plot!");
@@ -472,7 +472,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: OFFENSIVE SETUP: AI sometim
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
         OPPONENT_B(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
         }   SCENE {
         MESSAGE("The opposing Wobbuffet used Swords Dance!");
         MESSAGE("The opposing Wynaut used Nasty Plot!");
@@ -488,7 +488,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: OFFENSIVE SETUP: AI alw
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
         OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
         }   SCENE {
         MESSAGE("The opposing Wobbuffet used Swords Dance!");
         MESSAGE("The opposing Wynaut used Nasty Plot!");
@@ -505,7 +505,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: OFFENSIVE SETUP: AI som
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(2); }
         OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(1); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT); }
         }   SCENE {
         MESSAGE("The opposing Wobbuffet used Swords Dance!");
         MESSAGE("The opposing Wynaut used Nasty Plot!");
@@ -521,7 +521,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: OFFENSIVE SETUP: Opponent +
         OPPONENT_A(SPECIES_HAUNTER) { HP(60); Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(4); }
         OPPONENT_B(SPECIES_WYNAUT) { HP(60); Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(3); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT);
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 108, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 108, target:playerRight);
                     SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 106, target:playerLeft);
@@ -530,7 +530,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: OFFENSIVE SETUP: Opponent +
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 108, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 50, target:playerLeft);
                     SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 106, target:playerRight); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_TACKLE, target:playerLeft); EXPECT_MOVE(opponentRight, MOVE_SHADOW_BALL, target:playerRight);
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_TACKLE, target:playerLeft); EXPECT_MOVE(opponentRight, MOVE_SHADOW_BALL, target:playerRight);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 100, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 100, target:playerRight);
                     SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 106, target:playerLeft);
@@ -551,7 +551,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: OFFENSIVE SETUP: Oppone
         OPPONENT_A(SPECIES_HAUNTER) { HP(60); Moves(MOVE_SWORDS_DANCE, MOVE_TACKLE); Speed(4); }
         OPPONENT_A(SPECIES_WYNAUT) { HP(60); Moves(MOVE_NASTY_PLOT, MOVE_SHADOW_BALL); Speed(3); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT);
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_SWORDS_DANCE); EXPECT_MOVE(opponentRight, MOVE_NASTY_PLOT);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 108, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 108, target:playerRight);
                     SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 106, target:playerLeft);
@@ -560,7 +560,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: OFFENSIVE SETUP: Oppone
                     SCORE_EQ_VAL(opponentRight, MOVE_NASTY_PLOT, 108, target:playerRight);
                     SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 50, target:playerLeft);
                     SCORE_EQ_VAL(opponentRight, MOVE_SHADOW_BALL, 106, target:playerRight); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_TACKLE, target:playerLeft); EXPECT_MOVE(opponentRight, MOVE_SHADOW_BALL, target:playerRight);
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_TACKLE, target:playerLeft); EXPECT_MOVE(opponentRight, MOVE_SHADOW_BALL, target:playerRight);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 100, target:playerLeft);
                     SCORE_EQ_VAL(opponentLeft, MOVE_SWORDS_DANCE, 100, target:playerRight);
                     SCORE_EQ_VAL(opponentLeft, MOVE_TACKLE, 106, target:playerLeft);
@@ -784,7 +784,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SWITCHING MOVES: AI will no
         OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(7); }
         OPPONENT_B(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
         } THEN {
             EXPECT_EQ(opponentLeft->species, SPECIES_WYNAUT);
     }
@@ -802,7 +802,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SWITCHING MOVES: AI wil
         OPPONENT_A(SPECIES_WOBBUFFET) { HP(20); Moves(MOVE_SONIC_BOOM); Speed(8); }
         OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(7); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
         } THEN {
             EXPECT_EQ(opponentLeft->species, SPECIES_WYNAUT);
     }
@@ -820,7 +820,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SWITCHING MOVES: AI will sl
         OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(8); }
         OPPONENT_B(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
         } THEN {
             EXPECT_EQ(opponentLeft->species, SPECIES_WOBBUFFET);
     }
@@ -838,7 +838,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SWITCHING MOVES: AI wil
         OPPONENT_A(SPECIES_WOBBUFFET) { HP(20); Moves(MOVE_SONIC_BOOM); Speed(7); }
         OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(8); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
         } THEN {
             EXPECT_EQ(opponentLeft->species, SPECIES_WOBBUFFET);
     }
@@ -856,7 +856,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SWITCHING MOVES: AI will no
         OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(7); }
         OPPONENT_B(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(5); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
         } THEN {
             EXPECT_EQ(opponentLeft->species, SPECIES_WYNAUT);
     }
@@ -874,7 +874,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SWITCHING MOVES: AI wil
         OPPONENT_A(SPECIES_WOBBUFFET) { HP(20); Moves(MOVE_SONIC_BOOM); Speed(8); }
         OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(7); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
         } THEN {
             EXPECT_EQ(opponentLeft->species, SPECIES_WYNAUT);
     }
@@ -892,7 +892,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: SWITCHING MOVES: AI will sl
         OPPONENT_A(SPECIES_WYNAUT) { HP(40); Moves(MOVE_SONIC_BOOM); Speed(2); }
         OPPONENT_B(SPECIES_RATTATA) { Moves(MOVE_TACKLE); Speed(6); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_VOLT_SWITCH, target:playerRight); }
         } THEN {
             EXPECT_EQ(opponentLeft->species, SPECIES_WOBBUFFET);
     }
@@ -925,7 +925,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: TRICK ROOM: AI uses After Y
         OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_DOUBLE_HIT, MOVE_LOW_SWEEP, MOVE_HELPING_HAND, MOVE_AFTER_YOU); Speed(6); }
         OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_PSYBEAM, MOVE_ACID, MOVE_YAWN, MOVE_TRICK_ROOM); Speed(1); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_AFTER_YOU, target:opponentRight); EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_AFTER_YOU, target:opponentRight); EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
         } SCENE {
         MESSAGE("The opposing Wynaut used After You!");
         MESSAGE("The opposing Wobbuffet took the kind offer!");
@@ -943,7 +943,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: TRICK ROOM: AI uses Aft
         OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_DOUBLE_HIT, MOVE_LOW_SWEEP, MOVE_HELPING_HAND, MOVE_AFTER_YOU); Speed(6); }
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_PSYBEAM, MOVE_ACID, MOVE_YAWN, MOVE_TRICK_ROOM); Speed(1); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_AFTER_YOU, target:opponentRight); EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_AFTER_YOU, target:opponentRight); EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
         } SCENE {
         MESSAGE("The opposing Wynaut used After You!");
         MESSAGE("The opposing Wobbuffet took the kind offer!");
@@ -959,14 +959,14 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: TRICK ROOM: Both opponents 
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
         PLAYER(SPECIES_RATTATA) { Speed(4); }
         PARTNER(SPECIES_KANGASKHAN) { Speed(5); }
-        OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_SONIC_BOOM, MOVE_TRICK_ROOM); Speed(6); }
+        OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_SONIC_BOOM, MOVE_TRICK_ROOM); Speed(3); }
         OPPONENT_B(SPECIES_WOBBUFFET) { Moves(MOVE_SONIC_BOOM, MOVE_TRICK_ROOM); Speed(1); }
     } WHEN {
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN { NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN { NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN { NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
         } 
 }
 
@@ -980,11 +980,11 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: TRICK ROOM: Both oppone
         OPPONENT_A(SPECIES_WYNAUT) { Moves(MOVE_SONIC_BOOM, MOVE_TRICK_ROOM); Speed(3); }
         OPPONENT_A(SPECIES_WOBBUFFET) { Moves(MOVE_SONIC_BOOM, MOVE_TRICK_ROOM); Speed(1); }
     } WHEN {
-            TURN {  }//EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  }//NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  }//NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  }//NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
-            TURN {  }//EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN { NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN { NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN { NOT_EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); NOT_EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
+            TURN { EXPECT_MOVE(opponentLeft, MOVE_TRICK_ROOM); EXPECT_MOVE(opponentRight, MOVE_TRICK_ROOM); }
         } 
 }
 

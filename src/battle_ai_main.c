@@ -948,7 +948,10 @@ static u32 ChooseMoveOrAction_Doubles(enum BattlerId battler)
 
             gBattlerTarget = battlerIndex;
 
-            gAiLogicData->partnerMove = GetAllyChosenMove(battler);
+            if (BATTLE_PARTNER(battler) > battler)
+                gAiLogicData->partnerMove = MOVE_NONE;
+            else
+                gAiLogicData->partnerMove = gBattleMons[BATTLE_PARTNER(battler)].moves[gAiBattleData->chosenMoveIndex[BATTLE_PARTNER(battler)]];
             gAiThinkingStruct->aiLogicId = 0;
             gAiThinkingStruct->movesetIndex = 0;
             flags = gAiThinkingStruct->aiFlags[battler];
@@ -11084,7 +11087,6 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
             }
             break;
         case EFFECT_TRICK_ROOM:
-            DebugPrintf("Check 1");
             if (!(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_POWERFUL_STATUS))
             {
                 if (!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && ShouldSetFieldStatus(battlerAtk, STATUS_FIELD_TRICK_ROOM))
@@ -13294,15 +13296,14 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                 }
                 break;
             case EFFECT_TRICK_ROOM:
-                DebugPrintf("Check 1");
-                if (PartnerMoveEffectIs(battlerAtkPartner, aiData->partnerMove, EFFECT_TRICK_ROOM) && !gFieldTimers.trickRoomTimer)
+                if (PartnerMoveEffectIs(battlerAtkPartner, aiData->partnerMove, EFFECT_TRICK_ROOM))
                 {
                     // This only happens if the ally already rolled on double trick room on final turn.
                     // Both Pokemon use Trick Room on the final turn of Trick Room to anticipate both opponents Protecting to stall out.
                     if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer == 1)
                         ADJUST_SCORE(PERFECT_EFFECT);
                     else
-                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                        ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 }
                 /*
                 else if (!(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_POWERFUL_STATUS))
@@ -13847,12 +13848,10 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
         // Both Pokemon use Trick Room on the final turn of Trick Room to anticipate both opponents Protecting to stall out.
         // This unsets Trick Room and resets it with a full timer.
         case EFFECT_TRICK_ROOM:
-            DebugPrintf("hasPartner %d TR up %d timer %d should %d partner has %d", hasPartner, gFieldStatuses & STATUS_FIELD_TRICK_ROOM, gFieldTimers.trickRoomTimer,
-            ShouldSetFieldStatus(battlerAtk, STATUS_FIELD_TRICK_ROOM), HasMoveWithEffect(battlerAtkPartner, EFFECT_TRICK_ROOM));
             if (hasPartner && gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer == 1
-            && ShouldSetFieldStatus(battlerAtk, STATUS_FIELD_TRICK_ROOM)
-            && HasMoveWithEffect(battlerAtkPartner, EFFECT_TRICK_ROOM)
-            && RandomPercentage(RNG_AI_REFRESH_TRICK_ROOM_ON_LAST_TURN, DOUBLE_TRICK_ROOM_ON_LAST_TURN_CHANCE))
+             && ShouldSetFieldStatus(battlerAtk, STATUS_FIELD_TRICK_ROOM)
+             && HasMoveWithEffect(battlerAtkPartner, EFFECT_TRICK_ROOM)
+             && RandomPercentage(RNG_AI_REFRESH_TRICK_ROOM_ON_LAST_TURN, DOUBLE_TRICK_ROOM_ON_LAST_TURN_CHANCE))
                 ADJUST_SCORE(PERFECT_EFFECT);
             break;
         case EFFECT_TAILWIND: // PARTNER DIFFERENCE - Opponent done

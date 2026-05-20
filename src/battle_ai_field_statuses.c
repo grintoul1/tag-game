@@ -510,11 +510,12 @@ static enum FieldEffectOutcome BenefitsFromTrickRoom(enum BattlerId battler)
         }
     }
 
+    u32 battlerSideSpeed = gAiLogicData->speedStats[battler] + gAiLogicData->speedStats[BATTLE_PARTNER(battler)];
+    u32 opposingSideSpeed = gAiLogicData->speedStats[BATTLE_OPPOSITE(battler)] + gAiLogicData->speedStats[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))];
     // If either mon is slower, we want Trick Room.
-    if ((!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) 
-    && (gAiLogicData->speedStats[battler] + gAiLogicData->speedStats[BATTLE_PARTNER(battler)]) < (gAiLogicData->speedStats[BATTLE_OPPOSITE(battler)] + gAiLogicData->speedStats[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))]))
-    || ((gFieldStatuses & STATUS_FIELD_TRICK_ROOM) 
-    && (gAiLogicData->speedStats[battler] + gAiLogicData->speedStats[BATTLE_PARTNER(battler)]) < (gAiLogicData->speedStats[BATTLE_OPPOSITE(battler)] + gAiLogicData->speedStats[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))])))
+    if ((!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && (battlerSideSpeed < opposingSideSpeed))
+     || ((gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && (battlerSideSpeed > opposingSideSpeed))
+     || ((gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && (battlerSideSpeed < opposingSideSpeed) && HasMoveWithEffect(BATTLE_PARTNER(battler), EFFECT_TRICK_ROOM)))
         return FIELD_EFFECT_POSITIVE;
 
     return FIELD_EFFECT_NEGATIVE;
