@@ -66,7 +66,6 @@ MtChimney_CableCarStation_EventScript_RideCableCar::
 	incrementgamestat GAME_STAT_RODE_CABLE_CAR
 	special CableCarWarp
 	special CableCar
-	waitstate
 	release
 	end
 
