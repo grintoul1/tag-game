@@ -185,6 +185,7 @@ MossdeepCity_Gym_EventScript_SetUpLeaderBattle_ChooseSecondOpponentSabrina::
 
 MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleTateAndLiza::
 	delay 16
+	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
 	delay 32
 	setobjectxy OBJ_EVENT_ID_PLAYER, 23, 8
@@ -198,9 +199,6 @@ MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleTateAndLiza::
 	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_LIZA, 23, 5
 	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_SABRINA, 24, 8
 	special ChooseHalfPartyForBattle
-	waitstate
-	special SavePlayerParty
-	special ReducePlayerPartyToSelectedMons
 	delay 16
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_WalkInPlaceFasterDown
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_WalkInPlaceFasterDown
@@ -220,6 +218,7 @@ MossdeepCity_Gym_EventScript_TateAndLizaDoMultiBattle::
 
 MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleTateAndSabrina::
 	delay 16
+	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
 	delay 32
 	setobjectxy OBJ_EVENT_ID_PLAYER, 23, 8
@@ -233,9 +232,6 @@ MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleTateAndSabrina::
 	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_SABRINA, 23, 5
 	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_LIZA, 24, 8
 	special ChooseHalfPartyForBattle
-	waitstate
-	special SavePlayerParty
-	special ReducePlayerPartyToSelectedMons
 	delay 16
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_WalkInPlaceFasterDown
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_WalkInPlaceFasterDown
@@ -255,6 +251,7 @@ MossdeepCity_Gym_EventScript_TateAndSabrinaDoMultiBattle::
 
 MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleLizaAndTate::
 	delay 16
+	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
 	delay 32
 	setobjectxy OBJ_EVENT_ID_PLAYER, 23, 8
@@ -268,9 +265,6 @@ MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleLizaAndTate::
 	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_TATE, 23, 5
 	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_SABRINA, 24, 8
 	special ChooseHalfPartyForBattle
-	waitstate
-	special SavePlayerParty
-	special ReducePlayerPartyToSelectedMons
 	delay 16
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_WalkInPlaceFasterDown
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_WalkInPlaceFasterDown
@@ -290,6 +284,7 @@ MossdeepCity_Gym_EventScript_LizaAndTateDoMultiBattle::
 
 MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleLizaAndSabrina::
 	delay 16
+	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
 	delay 32
 	setobjectxy OBJ_EVENT_ID_PLAYER, 23, 8
@@ -303,9 +298,6 @@ MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleLizaAndSabrina::
 	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_SABRINA, 23, 5
 	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_TATE, 24, 8
 	special ChooseHalfPartyForBattle
-	waitstate
-	special SavePlayerParty
-	special ReducePlayerPartyToSelectedMons
 	delay 16
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_WalkInPlaceFasterDown
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_WalkInPlaceFasterDown
@@ -325,6 +317,7 @@ MossdeepCity_Gym_EventScript_LizaAndSabrinaDoMultiBattle::
 
 MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleSabrinaAndTate::
 	delay 16
+	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
 	delay 32
 	setobjectxy OBJ_EVENT_ID_PLAYER, 23, 8
@@ -338,9 +331,6 @@ MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleSabrinaAndTate::
 	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_TATE, 23, 5
 	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_LIZA, 24, 8
 	special ChooseHalfPartyForBattle
-	waitstate
-	special SavePlayerParty
-	special ReducePlayerPartyToSelectedMons
 	delay 16
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_WalkInPlaceFasterDown
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_TATE, Common_Movement_WalkInPlaceFasterDown
@@ -360,6 +350,7 @@ MossdeepCity_Gym_EventScript_SabrinaAndTateDoMultiBattle::
 
 MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleSabrinaAndLiza::
 	delay 16
+	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
 	delay 32
 	setobjectxy OBJ_EVENT_ID_PLAYER, 23, 8
@@ -373,9 +364,6 @@ MossdeepCity_Gym_EventScript_SetUpLeaderBattle_LeaderBattleSabrinaAndLiza::
 	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_LIZA, 23, 5
 	setobjectxy LOCALID_MOSSDEEP_CITY_GYM_TATE, 24, 8
 	special ChooseHalfPartyForBattle
-	waitstate
-	special SavePlayerParty
-	special ReducePlayerPartyToSelectedMons
 	delay 16
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_SABRINA, Common_Movement_WalkInPlaceFasterDown
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_LIZA, Common_Movement_WalkInPlaceFasterDown

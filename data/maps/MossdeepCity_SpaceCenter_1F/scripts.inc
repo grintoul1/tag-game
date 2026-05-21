@@ -350,11 +350,10 @@ MossdeepCity_SpaceCenter_1F_EventScript_Grunt1Grunt2::
 	closemessage
 	goto_if_set FLAG_EVIL_TEAM_AQUA, MossdeepCity_SpaceCenter_1F_EventScript_AquaGrunt1Grunt2BrockScriptJoin
 MossdeepCity_SpaceCenter_1F_EventScript_Grunt1Grunt2BrockScriptJoin::
+	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
 	special ChooseHalfPartyForBattle
 	waitstate
-	special SavePlayerParty
-	special ReducePlayerPartyToSelectedMons
 	delay 16
 	addobject VAR_0x8008
 	playse SE_DOOR
@@ -492,11 +491,10 @@ MossdeepCity_SpaceCenter_1F_Text_EmmieStayThere:
 	.string "I'd stay put if I were you!$"
 
 MossdeepCity_SpaceCenter_1F_EventScript_AquaGrunt1Grunt2BrockScriptJoin::
+	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
 	special ChooseHalfPartyForBattle
 	waitstate
-	special SavePlayerParty
-	special ReducePlayerPartyToSelectedMons
 	delay 16
 	addobject VAR_0x8008
 	playse SE_DOOR
@@ -608,11 +606,10 @@ MossdeepCity_SpaceCenter_1F_EventScript_MistyEmmieHelpErikaLeft::
 MossdeepCity_SpaceCenter_1F_EventScript_MistyEmmieHelpErika::
 	msgbox MossdeepCity_SpaceCenter_1F_Text_EmmieIllHelpErika, MSGBOX_DEFAULT
 	closemessage
+	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
 	special ChooseHalfPartyForBattle
 	waitstate
-	special SavePlayerParty
-	special ReducePlayerPartyToSelectedMons
 	goto_if_eq VAR_TEMP_3, 3, MossdeepCity_SpaceCenter_1F_EventScript_MistyEmmieWalkToErikaLeft
 	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_SpaceCenter_1F_Movement_ApproachGrunt3Grunt4Stage1
 	applymovement LOCALID_SPACE_CENTER_1F_MISTY, MossdeepCity_SpaceCenter_1F_Movement_ApproachGrunt3Grunt4Stage1
@@ -741,11 +738,10 @@ MossdeepCity_SpaceCenter_1F_EventScript_MistyContinue3::
 	waitmovement OBJ_EVENT_ID_NPC_FOLLOWER
 	msgbox MossdeepCity_SpaceCenter_1F_Text_EmmieIllHelpErika, MSGBOX_DEFAULT
 	closemessage
+	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
 	special ChooseHalfPartyForBattle
 	waitstate
-	special SavePlayerParty
-	special ReducePlayerPartyToSelectedMons
 	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_SpaceCenter_1F_Movement_ApproachGrunt3Grunt4Stage3Player
 	applymovement LOCALID_SPACE_CENTER_1F_MISTY, MossdeepCity_SpaceCenter_1F_Movement_ApproachGrunt3Grunt4Stage1
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MossdeepCity_SpaceCenter_1F_Movement_EmmieWalkToErikaLeft
@@ -931,11 +927,10 @@ MossdeepCity_SpaceCenter_1F_EventScript_Grunt5Grunt6Trigger::
 	waitmovement
 	goto_if_set FLAG_DEFEATED_LAVARIDGE_MISTY, MossdeepCity_SpaceCenter_1F_EventScript_SurgeNotYouAgainTrigger
 	msgbox MossdeepCity_SpaceCenter_1F_Text_SurgeHelpMe, MSGBOX_AUTOCLOSE
+	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
 	special ChooseHalfPartyForBattle
 	waitstate
-	special SavePlayerParty
-	special ReducePlayerPartyToSelectedMons
 	goto MossdeepCity_SpaceCenter_1F_EventScript_SurgeContinue4
 MossdeepCity_SpaceCenter_1F_EventScript_SurgeNotYouAgainTrigger::
 	msgbox MossdeepCity_SpaceCenter_1F_Text_SurgeNotYouAgain, MSGBOX_AUTOCLOSE
@@ -966,11 +961,10 @@ MossdeepCity_SpaceCenter_1F_EventScript_Surge::
 	waitmovement
 	goto_if_set FLAG_DEFEATED_LAVARIDGE_MISTY, MossdeepCity_SpaceCenter_1F_EventScript_SurgeNotYouAgain
 	msgbox MossdeepCity_SpaceCenter_1F_Text_SurgeHelpMe, MSGBOX_AUTOCLOSE
+	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
 	special ChooseHalfPartyForBattle
 	waitstate
-	special SavePlayerParty
-	special ReducePlayerPartyToSelectedMons
 	goto MossdeepCity_SpaceCenter_1F_EventScript_SurgeContinue
 MossdeepCity_SpaceCenter_1F_EventScript_SurgeNotYouAgain::
 	msgbox MossdeepCity_SpaceCenter_1F_Text_SurgeNotYouAgain, MSGBOX_AUTOCLOSE

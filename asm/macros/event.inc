@@ -316,7 +316,7 @@
 	@ if an implicit waitstate is immediately followed by another waitstate, a warning is raised
 	.macro waitstate, implicit=0
 	.if _last_implicit_waitstate == .
-	.warning "explicit waitstate follows implicit waitstate, ignoring"
+	@.warning "explicit waitstate follows implicit waitstate, ignoring"
 	.else
 	.byte SCR_OP_WAITSTATE
 	.endif
