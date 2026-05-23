@@ -591,9 +591,8 @@ static void CB2_InitBattleInternal(void)
     SetVBlankCallback(VBlankCB_Battle);
     SetUpBattleVarsAndBirchZigzagoon();
 
-    if ((TESTING && gBattleTypeFlags & BATTLE_TYPE_MULTI)
-    || (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
-    || (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))
+    if (gBattleTypeFlags & BATTLE_TYPE_MULTI
+     && (TESTING || gBattleTypeFlags & (BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_INGAME_PARTNER)))
         SetMainCallback2(CB2_HandleStartMultiPartnerBattle);
     else if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
         SetMainCallback2(CB2_HandleStartMultiBattle);
@@ -611,6 +610,8 @@ static void CB2_InitBattleInternal(void)
             SetWildMonHeldItem();
             CalculateEnemyPartyCount();
         }
+        if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
+            CalculatePartnerPartyCount();
     }
 
     gMain.inBattle = TRUE;
