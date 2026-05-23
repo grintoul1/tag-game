@@ -500,6 +500,7 @@ const u8 gTrainerBackPic_MagmaAdminM[] = INCGFX_U8("graphics/trainers/back_pics/
 const u8 gTrainerBackPic_Blue[] = INCGFX_U8("graphics/trainers/back_pics/blue.png", ".4bpp");
 const u8 gTrainerBackPic_AquaAdminF[] = INCGFX_U8("graphics/trainers/back_pics/aqua_admin_f.png", ".4bpp");
 const u8 gTrainerBackPic_LeaderTate[] = INCGFX_U8("graphics/trainers/back_pics/leader_tate.png", ".4bpp");
+const u8 gTrainerBackPic_LeaderLiza[] = INCGFX_U8("graphics/trainers/back_pics/leader_liza.png", ".4bpp");
 
 const u16 gTrainerBackPicPalette_Red[] = INCGFX_U16("graphics/trainers/back_pics/red.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCGFX_U16("graphics/trainers/back_pics/leaf.png", ".gbapal");
@@ -509,7 +510,7 @@ const u16 gTrainerBackPicPalette_AquaLeaderArchie[] = INCGFX_U16("graphics/train
 const u16 gTrainerBackPicPalette_MagmaAdminM[] = INCGFX_U16("graphics/trainers/back_pics/magma_admin_m.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Blue[] = INCGFX_U16("graphics/trainers/back_pics/blue.png", ".gbapal");
 const u16 gTrainerBackPicPalette_AquaAdminF[] = INCGFX_U16("graphics/trainers/back_pics/aqua_admin_f.png", ".gbapal");
-const u16 gTrainerBackPicPalette_LeaderTate[] = INCGFX_U16("graphics/trainers/back_pics/leader_tate.pal", ".gbapal");
+const u16 gTrainerBackPicPalette_LeaderTateAndLiza[] = INCGFX_U16("graphics/trainers/back_pics/leader_tate_and_liza.pal", ".gbapal");
 
 const u8 gTrainerBackPic_Pokedude[] = INCGFX_U8("graphics/trainers/back_pics/pokedude.png", ".4bpp");
 const u8 gTrainerBackPic_OldMan[] = INCGFX_U8("graphics/trainers/back_pics/old_man.png", ".4bpp");
@@ -1276,10 +1277,11 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_LEADER_TATE] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LeaderTate, gTrainerPalette_LeaderTate),
-        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_LeaderTate, gTrainerBackPicPalette_LeaderTate, sBackAnims_Hoenn),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_LeaderTate, gTrainerBackPicPalette_LeaderTateAndLiza, sBackAnims_Hoenn),
     },
     [TRAINER_PIC_LEADER_LIZA] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LeaderLiza, gTrainerPalette_LeaderLiza),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_LeaderLiza, gTrainerBackPicPalette_LeaderTateAndLiza, sBackAnims_Hoenn),
     },
 };
