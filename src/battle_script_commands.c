@@ -4228,6 +4228,7 @@ bool32 NoAliveMonsForBattlerSide(enum BattlerId battler)
 
 bool32 NoAliveMonsForPlayer(void)
 {
+    // Test system does not have saved player party data that can be accessed
     u32 maxIneligible = TESTING ? gPartiesCount[B_TRAINER_0] : PARTY_SIZE;
     u32 HP_count = 0;
     u32 ineligibleMonsCount = 0;
@@ -4264,6 +4265,9 @@ bool32 NoAliveMonsForPlayer(void)
 
     if (GetConfig(B_MULTI_BATTLE_WHITEOUT) > GEN_3 && gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER))
     {
+        if (HP_count == 0 && AreMultiPartiesFullTeams())
+            return TRUE;
+
         // Get total HP for the partner's party
         for (u32 i = 0; i < PARTY_SIZE; i++)
         {
@@ -4295,7 +4299,7 @@ bool32 NoAliveMonsForPlayer(void)
                 }
             }
 
-            // If the total number of ineligible mons is 6 or more, lose the battle.
+            // If the total number of ineligible mons is more than the maximum, lose the battle.
             if (ineligibleMonsCount >= maxIneligible)
                 return TRUE;
         }
