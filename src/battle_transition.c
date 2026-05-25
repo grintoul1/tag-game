@@ -911,30 +911,48 @@ static const u16 sMugshotPal_LightBlue[]   = INCGFX_U16("graphics/battle_transit
 static const u16 sMugshotPal_Yellow[] = INCGFX_U16("graphics/battle_transitions/yellow_bg.pal", ".gbapal");
 static const u16 sMugshotPal_Brendan[] = INCGFX_U16("graphics/battle_transitions/brendan_bg.pal", ".gbapal");
 static const u16 sMugshotPal_May[] = INCGFX_U16("graphics/battle_transitions/may_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Tate[] = INCGFX_U16("graphics/battle_transitions/tate_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Liza[] = INCGFX_U16("graphics/battle_transitions/liza_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Sabrina[] = INCGFX_U16("graphics/battle_transitions/sabrina_bg.pal", ".gbapal");
+static const u16 sMugshotPal_TateAndLiza[] = INCGFX_U16("graphics/battle_transitions/tate_and_liza_bg.pal", ".gbapal");
+static const u16 sMugshotPal_LizaAndTate[] = INCGFX_U16("graphics/battle_transitions/liza_and_tate_bg.pal", ".gbapal");
+static const u16 sMugshotPal_SabrinaAndTate[] = INCGFX_U16("graphics/battle_transitions/sabrina_and_tate_bg.pal", ".gbapal");
+static const u16 sMugshotPal_TateAndSabrina[] = INCGFX_U16("graphics/battle_transitions/tate_and_sabrina_bg.pal", ".gbapal");
+static const u16 sMugshotPal_LizaAndSabrina[] = INCGFX_U16("graphics/battle_transitions/liza_and_sabrina_bg.pal", ".gbapal");
+static const u16 sMugshotPal_SabrinaAndLiza[] = INCGFX_U16("graphics/battle_transitions/sabrina_and_liza_bg.pal", ".gbapal");
 
 static const u16 *const sOpponentMugshotsPals[MUGSHOT_COLOR_COUNT] =
 {
-    [MUGSHOT_COLOR_PURPLE]          = sMugshotPal_Purple,
-    [MUGSHOT_COLOR_RED]             = sMugshotPal_Red,
-    [MUGSHOT_COLOR_ARCHIEWITHMAXIE] = sMugshotPal_ArchieWithMaxie,
-    [MUGSHOT_COLOR_AQUAMAGMA]       = sMugshotPal_AquaMagma,
-    [MUGSHOT_COLOR_ORANGE]          = sMugshotPal_Orange,
-    [MUGSHOT_COLOR_DRAKE]           = sMugshotPal_Drake,
-    [MUGSHOT_COLOR_BROWN]           = sMugshotPal_Brown,
-    [MUGSHOT_COLOR_BLACK]           = sMugshotPal_Black,
-    [MUGSHOT_COLOR_GREY]            = sMugshotPal_Grey,
-    [MUGSHOT_COLOR_WHITE]           = sMugshotPal_White,
-    [MUGSHOT_COLOR_CHAMPION]        = sMugshotPal_Champion,
-    [MUGSHOT_COLOR_DARKPURPLE]      = sMugshotPal_DarkPurple,
-    [MUGSHOT_COLOR_GREEN]           = sMugshotPal_Green,
-    [MUGSHOT_COLOR_PINK]            = sMugshotPal_Pink,
-    [MUGSHOT_COLOR_EMMIEWITHSHELLY] = sMugshotPal_EmmieWithShelly,
-    [MUGSHOT_COLOR_MAYPINK]         = sMugshotPal_MayPink,
-    [MUGSHOT_COLOR_BLUE]            = sMugshotPal_Blue,
-    [MUGSHOT_COLOR_MISTY]           = sMugshotPal_Misty,
-    [MUGSHOT_COLOR_MAXIEWITHARCHIE] = sMugshotPal_MaxieWithArchie,
-    [MUGSHOT_COLOR_LIGHTBLUE]       = sMugshotPal_LightBlue,
-    [MUGSHOT_COLOR_YELLOW]          = sMugshotPal_Yellow
+    [MUGSHOT_COLOR_PURPLE]              = sMugshotPal_Purple,
+    [MUGSHOT_COLOR_RED]                 = sMugshotPal_Red,
+    [MUGSHOT_COLOR_ARCHIEWITHMAXIE]     = sMugshotPal_ArchieWithMaxie,
+    [MUGSHOT_COLOR_AQUAMAGMA]           = sMugshotPal_AquaMagma,
+    [MUGSHOT_COLOR_ORANGE]              = sMugshotPal_Orange,
+    [MUGSHOT_COLOR_DRAKE]               = sMugshotPal_Drake,
+    [MUGSHOT_COLOR_BROWN]               = sMugshotPal_Brown,
+    [MUGSHOT_COLOR_BLACK]               = sMugshotPal_Black,
+    [MUGSHOT_COLOR_GREY]                = sMugshotPal_Grey,
+    [MUGSHOT_COLOR_WHITE]               = sMugshotPal_White,
+    [MUGSHOT_COLOR_CHAMPION]            = sMugshotPal_Champion,
+    [MUGSHOT_COLOR_DARKPURPLE]          = sMugshotPal_DarkPurple,
+    [MUGSHOT_COLOR_GREEN]               = sMugshotPal_Green,
+    [MUGSHOT_COLOR_PINK]                = sMugshotPal_Pink,
+    [MUGSHOT_COLOR_EMMIEWITHSHELLY]     = sMugshotPal_EmmieWithShelly,
+    [MUGSHOT_COLOR_MAYPINK]             = sMugshotPal_MayPink,
+    [MUGSHOT_COLOR_BLUE]                = sMugshotPal_Blue,
+    [MUGSHOT_COLOR_MISTY]               = sMugshotPal_Misty,
+    [MUGSHOT_COLOR_MAXIEWITHARCHIE]     = sMugshotPal_MaxieWithArchie,
+    [MUGSHOT_COLOR_LIGHTBLUE]           = sMugshotPal_LightBlue,
+    [MUGSHOT_COLOR_YELLOW]              = sMugshotPal_Yellow,
+    [MUGSHOT_COLOR_TATE]                = sMugshotPal_Tate,
+    [MUGSHOT_COLOR_LIZA]                = sMugshotPal_Liza,
+    [MUGSHOT_COLOR_SABRINA]             = sMugshotPal_Sabrina,
+    [MUGSHOT_COLOR_TATE_AND_LIZA]       = sMugshotPal_TateAndLiza,
+    [MUGSHOT_COLOR_LIZA_AND_TATE]       = sMugshotPal_LizaAndTate,
+    [MUGSHOT_COLOR_SABRINA_AND_TATE]    = sMugshotPal_SabrinaAndTate,
+    [MUGSHOT_COLOR_TATE_AND_SABRINA]    = sMugshotPal_TateAndSabrina,
+    [MUGSHOT_COLOR_LIZA_AND_SABRINA]    = sMugshotPal_LizaAndSabrina,
+    [MUGSHOT_COLOR_SABRINA_AND_LIZA]    = sMugshotPal_SabrinaAndLiza
 };
 
 static const u16 *const sPlayerMugshotsPals[GENDER_COUNT] =
@@ -2451,11 +2469,47 @@ static bool8 Mugshot_SetGfx(struct Task *task)
     if (mugshotColor >= ARRAY_COUNT(sOpponentMugshotsPals))
         mugshotColor = MUGSHOT_COLOR_PURPLE;
 
+    switch (TRAINER_BATTLE_PARAM.opponentA)
+    {
+    case TRAINER_TATE:
+        mugshotColor = (TRAINER_BATTLE_PARAM.opponentB == TRAINER_LIZA) ? MUGSHOT_COLOR_TATE_AND_LIZA : MUGSHOT_COLOR_TATE_AND_SABRINA;
+        break;
+    case TRAINER_LIZA:
+        mugshotColor = (TRAINER_BATTLE_PARAM.opponentB == TRAINER_TATE) ? MUGSHOT_COLOR_LIZA_AND_TATE : MUGSHOT_COLOR_LIZA_AND_SABRINA;
+        break;
+    case TRAINER_SABRINA_MOSSDEEP:
+        mugshotColor = (TRAINER_BATTLE_PARAM.opponentB == TRAINER_LIZA) ? MUGSHOT_COLOR_SABRINA_AND_LIZA : MUGSHOT_COLOR_SABRINA_AND_TATE;
+        break;
+    default:
+        break;
+    }
+
     LoadPalette(sOpponentMugshotsPals[mugshotColor], BG_PLTT_ID(15), PLTT_SIZE_4BPP);
     if(mugshotColor == MUGSHOT_COLOR_ARCHIEWITHMAXIE || mugshotColor == MUGSHOT_COLOR_MAXIEWITHARCHIE || mugshotColor == MUGSHOT_COLOR_EMMIEWITHSHELLY)
+    {
         LoadPalette(sOpponentMugshotsPals[mugshotColor], BG_PLTT_ID(15), PLTT_SIZEOF(6));
+    }
     else
-        LoadPalette(sPlayerMugshotsPals[gSaveBlock2Ptr->playerGender], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
+    {
+        switch (TRAINER_BATTLE_PARAM.opponentA)
+        {
+        case TRAINER_TATE:
+            mugshotColor = (TRAINER_BATTLE_PARAM.opponentB == TRAINER_LIZA) ? MUGSHOT_COLOR_SABRINA : MUGSHOT_COLOR_LIZA;
+            LoadPalette(sOpponentMugshotsPals[mugshotColor], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
+            break;
+        case TRAINER_LIZA:
+            mugshotColor = (TRAINER_BATTLE_PARAM.opponentB == TRAINER_TATE) ? MUGSHOT_COLOR_SABRINA : MUGSHOT_COLOR_TATE;
+            LoadPalette(sOpponentMugshotsPals[mugshotColor], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
+            break;
+        case TRAINER_SABRINA_MOSSDEEP:
+            mugshotColor = (TRAINER_BATTLE_PARAM.opponentB == TRAINER_LIZA) ? MUGSHOT_COLOR_TATE : MUGSHOT_COLOR_LIZA;
+            LoadPalette(sOpponentMugshotsPals[mugshotColor], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
+            break;
+        default:
+            LoadPalette(sPlayerMugshotsPals[gSaveBlock2Ptr->playerGender], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
+            break;
+        }
+    }
 
     for (i = 0; i < 20; i++)
     {
