@@ -8641,6 +8641,7 @@ bool32 TryBattleFormChange(enum BattlerId battler, enum FormChanges method, enum
 
     enum Species currentSpecies = GetMonData(mon, MON_DATA_SPECIES);
     enum Species targetSpecies = GetBattleFormChangeTargetSpecies(battler, method, ability);
+    enum Ability targetAbility = gSpeciesInfo[targetSpecies].abilities[GetMonData(mon, MON_DATA_ABILITY_NUM)];
 
     struct PartyState *battlePartyState = GetBattlerPartyState(battler);
     // If the battle ends, and there's not a specified species to change back to,
@@ -8668,6 +8669,7 @@ bool32 TryBattleFormChange(enum BattlerId battler, enum FormChanges method, enum
         TryToSetBattleFormChangeMoves(mon, method);
         SetMonData(mon, MON_DATA_SPECIES, &targetSpecies);
         gBattleMons[battler].species = targetSpecies;
+        gBattleMons[battler].ability = targetAbility;
         RecalcBattlerStats(battler, mon, method == FORM_CHANGE_BATTLE_GIGANTAMAX);
         return TRUE;
     }

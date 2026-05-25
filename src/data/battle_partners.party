@@ -58,7 +58,7 @@ Hasty Nature
 - Drill Run
 - Hone Claws
 
-Pidgeot-Mega @ Pidgeotite
+Pidgeot @ Pidgeotite
 Ability: No Guard
 Level: 83
 Timid Nature
@@ -288,7 +288,7 @@ Gender: Female
 Music: Male
 AI: Partner Trainer
 
-Audino-Mega @ Audinite
+Audino @ Audinite
 Ability: Healer
 Level: 73
 Quiet Nature
@@ -343,7 +343,7 @@ Jolly Nature
 - Pursuit
 - Tailwind
 
-Blastoise-Mega @ Blastoisinite
+Blastoise @ Blastoisinite
 Ability: Mega Launcher
 Level: 65
 Timid Nature
@@ -378,7 +378,7 @@ Jolly Nature
 - Pursuit
 - Tailwind
 
-Charizard-Mega-X @ Charizardite-X
+Charizard @ Charizardite-X
 Ability: Tough Claws
 Level: 65
 Jolly Nature
@@ -403,7 +403,7 @@ Quiet Nature
 - Dragon Pulse
 - Weather Ball
 
-Aerodactyl-Mega @ Aerodactylite
+Aerodactyl @ Aerodactylite
 Ability: Tough Claws
 Level: 87
 Hasty Nature
@@ -439,7 +439,7 @@ Rash Nature
 - Hidden Power
 - Entrainment
 
-Aerodactyl-Mega @ Aerodactylite
+Aerodactyl @ Aerodactylite
 Ability: Tough Claws
 Level: 87
 Hasty Nature
@@ -464,7 +464,7 @@ Gender: Female
 Music: Male
 AI: Partner Trainer
 
-Audino-Mega @ Audinite
+Audino @ Audinite
 Ability: Healer
 Level: 73
 Mild Nature
@@ -528,7 +528,7 @@ Gender: Female
 Music: Male
 AI: Partner Trainer
 
-Audino-Mega @ Audinite
+Audino @ Audinite
 Ability: Healer
 Level: 73
 Mild Nature
@@ -637,7 +637,7 @@ Hasty Nature
 - Drill Run
 - Hone Claws
 
-Pidgeot-Mega @ Pidgeotite
+Pidgeot @ Pidgeotite
 Ability: No Guard
 Level: 83
 Timid Nature
@@ -700,7 +700,7 @@ Hasty Nature
 - Drill Run
 - Hone Claws
 
-Pidgeot-Mega @ Pidgeotite
+Pidgeot @ Pidgeotite
 Ability: No Guard
 Level: 83
 Timid Nature
@@ -763,7 +763,7 @@ Hasty Nature
 - Drill Run
 - Hone Claws
 
-Pidgeot-Mega @ Pidgeotite
+Pidgeot @ Pidgeotite
 Ability: No Guard
 Level: 83
 Timid Nature
@@ -826,7 +826,7 @@ Hasty Nature
 - Drill Run
 - Hone Claws
 
-Pidgeot-Mega @ Pidgeotite
+Pidgeot @ Pidgeotite
 Ability: No Guard
 Level: 83
 Timid Nature
@@ -958,14 +958,13 @@ Gender: Male
 Music: Male
 AI: Partner Trainer
 
-Alakazam-Mega @ Alakazite
-Ability: Trace
+Alakazam @ Alakazite
+Ability: Synchronize
 Level: 81
-Timid Nature
+Naive Nature
+- Hyper Beam
 - Psychic
-- Hyper Voice
 - Tachyon Cutter
-- Shadow Ball
 
 Mr. Rime
 - Psychic
@@ -992,7 +991,7 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Gallade-Mega @ Galladite
+Gallade @ Galladite
 Ability: Sharpness
 Level: 81
 Jolly Nature
@@ -1029,14 +1028,14 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Gardevoir-Mega @ Gardevoirite
-Ability: Pixilate
+Gardevoir @ Gardevoirite
+Ability: Synchronize
 Level: 81
-Timid Nature
+Naive Nature
 - Psychic
 - Moonblast
 - Shadow Ball
-- Thunderbolt
+- Ally Switch
 
 Munkidori @ Focus Sash
 Ability: Toxic Chain

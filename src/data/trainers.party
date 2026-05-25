@@ -879,37 +879,56 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Manectric-Mega @ Manectite  
-Ability: Intimidate  
-Level: 1  
-Brave Nature  
+Manectric @ Manectite
+Ability: Static
+Level: 29
+Brave Nature
 - Hyper Voice
-- Volt Switch  
+- Signal Beam
+- Volt Switch
 - Fire Fang
 
-Togedemaru @ Rocky Helmet  
-Ability: Iron Barbs  
-Level: 1  
-Jolly Nature  
+Togedemaru @ Rocky Helmet
+Ability: Iron Barbs
+Level: 30
+Jolly Nature
 - Smart Strike
 - Spark
 - Electric Terrain
 - Encore
 
-Voltorb-Hisui @ Eviolite  
-Ability: Static  
-Level: 31  
-Timid Nature  
-- Volt Switch  
+Voltorb-Hisui @ Eviolite
+Ability: Static
+Level: 31
+Timid Nature
+- Volt Switch
 
-Rotom @ Wide Lens  
-Ability: Levitate  
-Level: 31  
-Timid Nature  
+Rotom @ Wide Lens
+Ability: Levitate
+Level: 31
+Timid Nature
 - Hex
 - Thunder Wave
-- Chill-O-Wisp
 - Will-O-Wisp
+- Toxic
+
+Raichu-Alola @ Focus Sash
+Ability: Surge Surfer
+Level: 30
+Timid Nature
+- Fake Out
+- Volt Switch
+- Grass Knot
+- Psybeam
+
+Iron Thorns @ Salac Berry
+Ability: Quark Drive
+Level: 29
+Modest Nature
+- Thunder Fang
+- Ice Fang
+- Rock Tomb
+- Electric Terrain
 
 === TRAINER_TRAVIS ===
 Name: Travis
@@ -1324,7 +1343,7 @@ Careful Nature
 - Shed Tail  
 
 Aggron @ Aggronite  
-Ability: Filter  
+Ability: Sturdy  
 Level: 34  
 Impish Nature  
 - Metal Claw  
@@ -3062,7 +3081,7 @@ Jolly Nature
 - Close Combat  
 
 Lucario @ Lucarionite  
-Ability: Adaptability  
+Ability: Inner Focus  
 Level: 42  
 Hasty Nature  
 - Aura Sphere  
@@ -5650,7 +5669,7 @@ Modest Nature
 - Baton Pass
 - Sandstorm
 
-Garchomp-Mega @ Garchompite
+Garchomp @ Garchompite
 Ability: Sand Force
 Level: 73
 Naive Nature
@@ -5670,7 +5689,7 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Full
 
-Absol-Mega @ Absolite
+Absol @ Absolite
 Ability: Magic Bounce
 Level: 73
 Hasty Nature
@@ -6668,7 +6687,7 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Gallade-Mega @ Galladite
+Gallade @ Galladite
 Ability: Sharpness
 Level: 81
 Jolly Nature
@@ -6706,14 +6725,14 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Gardevoir-Mega @ Gardevoirite
-Ability: Pixilate
+Gardevoir @ Gardevoirite
+Ability: Synchronize
 Level: 81
-Timid Nature
+Naive Nature
 - Psychic
 - Moonblast
 - Shadow Ball
-- Thunderbolt
+- Ally Switch
 
 Munkidori @ Focus Sash
 Ability: Toxic Chain
@@ -6744,17 +6763,16 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Alakazam-Mega @ Alakazite
-Ability: Trace
+Alakazam @ Alakazite
+Ability: Synchronize
 Level: 81
-Timid Nature
+Naive Nature
+- Hyper Beam
 - Psychic
-- Hyper Voice
 - Tachyon Cutter
-- Shadow Ball
 
-Alakazam-Mega @ Alakazite
-Ability: Trace
+Alakazam @ Alakazite
+Ability: Synchronize
 Level: 81
 Timid Nature
 - Psychic
@@ -6942,7 +6960,7 @@ Modest Nature
 - Encore
 - Tailwind
 
-Froslass-Mega @ Froslassite
+Froslass @ Froslassite
 Ability: Snow Cloak
 Level: 83
 Hasty Nature
@@ -7005,8 +7023,8 @@ Jolly Nature
 - Last Resort
 - Focus Energy
 
-Glalie-Mega @ Glalitite
-Ability: Refrigerate
+Glalie @ Glalitite
+Ability: Inner Focus
 Level: 83
 Naive Nature
 - Hyper Voice
@@ -7185,7 +7203,7 @@ Modest Nature
 - Encore
 - Tailwind
 
-Froslass-Mega @ Froslassite
+Froslass @ Froslassite
 Ability: Snow Cloak
 Level: 83
 Hasty Nature
@@ -7248,8 +7266,8 @@ Jolly Nature
 - Last Resort
 - Focus Energy
 
-Glalie-Mega @ Glalitite
-Ability: Refrigerate
+Glalie @ Glalitite
+Ability: Inner Focus
 Level: 83
 Naive Nature
 - Hyper Voice
@@ -8735,8 +8753,8 @@ Naive Nature
 - Scale Shot
 - Tailwind
 
-Swampert-Mega @ Swampertite
-Ability: Drizzle
+Swampert @ Swampertite
+Ability: Damp
 Level: 87
 Adamant Nature
 - Liquidation
@@ -8800,7 +8818,7 @@ Naive Nature
 - Tailwind
 
 Charizard @ Charizardite Y
-Ability: Drought
+Ability: Blaze
 Level: 87
 Modest Nature
 - Heat Wave
@@ -10290,7 +10308,7 @@ Impish Nature
 - Knock Off  
 - Protect  
 
-Houndoom-Mega @ Houndoominite  
+Houndoom @ Houndoominite  
 Ability: Solar Power  
 Timid Nature  
 - Solar Beam  
@@ -10309,7 +10327,7 @@ AI: Tag Trainer
 Multi Party: Half
 Mugshot: DarkPurple
 
-Sableye-Mega @ Sablenite  
+Sableye @ Sablenite  
 Ability: Magic Bounce  
 Sassy Nature  
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe  
@@ -10401,7 +10419,7 @@ Hasty Nature
 - Freeze-Dry  
 - Low Kick  
 
-Glalie-Mega @ Glalitite  
+Glalie @ Glalitite  
 Ability: Refrigerate  
 Naive Nature  
 - Hyper Voice  
@@ -10452,7 +10470,7 @@ Jolly Nature
 - Knock Off  
 - Fake Out  
 
-Latias-Mega @ Latiasite  
+Latias @ Latiasite  
 Ability: Levitate  
 Timid Nature  
 - Dragon Pulse  
@@ -10495,7 +10513,7 @@ AI: Tag Trainer
 Multi Party: Half
 Mugshot: Champion
 
-Swampert-Mega @ Swampertite  
+Swampert @ Swampertite  
 Ability: Drizzle  
 Jolly Nature  
 - Stone Edge  
@@ -10545,7 +10563,7 @@ Timid Nature
 - Flash Cannon  
 - Earth Power  
 
-Metagross-Mega @ Metagrossite  
+Metagross @ Metagrossite  
 Ability: Tough Claws  
 Jolly Nature  
 - Meteor Mash  
