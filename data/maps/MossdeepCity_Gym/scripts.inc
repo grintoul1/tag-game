@@ -89,7 +89,7 @@ MossdeepCity_Gym_EventScript_TateAndLiza2::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_QuestionMark
 	waitmovement
-	delay 16
+	waitse
 	playmoncry SPECIES_ALAKAZAM, CRY_MODE_ENCOUNTER
 	waitmoncry
 	playse SE_M_DETECT
@@ -104,10 +104,8 @@ MossdeepCity_Gym_EventScript_TateAndLiza2::
 	waitmovement
 	playse SE_BALL_THROW
 	waitse
-	delay 12
 	playse SE_BALL_BOUNCE_1
 	waitse
-	delay 12
 	applymovement LOCALID_MOSSDEEP_CITY_GYM_ALAKAZAM, MossdeepCity_Gym_Movement_AlakazamEnterPokeball
 	waitmovement
 	delay 16
