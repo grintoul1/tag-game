@@ -1447,3 +1447,43 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: SCORING: AI opponent Fa
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentRight);
     }
 }
+
+AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: OPPONENT: MEGA: AI sees its own Mega form on turn 1 (Multi)")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(opponentLeft, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(playerRight, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(opponentRight, AI_FLAG_TAG_TRAINER);
+        PLAYER(SPECIES_GENGAR) { Speed(4); Moves(MOVE_DRAGON_RAGE, MOVE_CELEBRATE); HP(3); Defense(999); }
+        PARTNER(SPECIES_LOPUNNY) { Speed(1); Moves(MOVE_FAKE_OUT, MOVE_DRAGON_RAGE); HP(40); Attack(1); Item(ITEM_LOPUNNITE); }
+        OPPONENT_A(SPECIES_LOPUNNY) { Speed(2); Moves(MOVE_FAKE_OUT, MOVE_DRAGON_RAGE); HP(40); Attack(1); Item(ITEM_LOPUNNITE); }
+        OPPONENT_B(SPECIES_LOPUNNY) { Speed(3); Moves(MOVE_FAKE_OUT, MOVE_SHADOW_BALL); HP(40); Attack(1); Item(ITEM_LOPUNNITE); }
+    } WHEN {
+        TURN {
+            MOVE(playerLeft, MOVE_CELEBRATE);
+            EXPECT_MOVE(opponentLeft, MOVE_FAKE_OUT, target:playerLeft, gimmick: GIMMICK_MEGA);
+            EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentLeft, gimmick: GIMMICK_MEGA);
+            EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerLeft, gimmick: GIMMICK_MEGA);
+        }
+    }
+}
+
+AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: OPPONENT: MEGA: AI sees its own Mega form on turn 1 (2v1)")
+{
+    GIVEN {
+        BATTLER_AI_FLAGS(opponentLeft, AI_FLAG_TAG_TRAINER);
+        BATTLER_AI_FLAGS(playerRight, AI_FLAG_PARTNER_TRAINER);
+        BATTLER_AI_FLAGS(opponentRight, AI_FLAG_TAG_TRAINER);
+        PLAYER(SPECIES_GENGAR) { Speed(4); Moves(MOVE_DRAGON_RAGE, MOVE_CELEBRATE); HP(3); Defense(999); }
+        PARTNER(SPECIES_LOPUNNY) { Speed(2); Moves(MOVE_FAKE_OUT, MOVE_DRAGON_RAGE); HP(40); Attack(1); Item(ITEM_LOPUNNITE); }
+        OPPONENT_A(SPECIES_GENGAR) { Speed(3); Moves(MOVE_DRAGON_RAGE); HP(3); Defense(999); }
+        OPPONENT_A(SPECIES_LOPUNNY) { Speed(1); Moves(MOVE_FAKE_OUT, MOVE_DRAGON_RAGE); HP(40); Attack(1); Item(ITEM_LOPUNNITE); }
+    } WHEN {
+        TURN {
+            MOVE(playerLeft, MOVE_CELEBRATE);
+            EXPECT_MOVE(opponentLeft, MOVE_DRAGON_RAGE, target:playerRight);
+            EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentLeft, gimmick: GIMMICK_MEGA);
+            EXPECT_MOVE(opponentRight, MOVE_FAKE_OUT, target:playerLeft, gimmick: GIMMICK_MEGA);
+        }
+    }
+}
