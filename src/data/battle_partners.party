@@ -2,54 +2,76 @@
 Name:
 Class: Pkmn Trainer 1
 Pic: Brendan
-Back Pic: Brendan
 Gender: Male
 Music: Male
 
 === PARTNER_STEVEN ===
-Name: STEVEN
+Name: Steven
 Class: Rival
 Pic: Steven
-Back Pic: Steven
 Gender: Male
 Music: Male
 AI: Partner Trainer
 
-Metang
-Brave Nature
-Level: 42
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Light Screen
+Arcanine-Hisui @ Normal Gem
+Ability: Justified
+Level: 81
+Jolly Nature
+- Flare Blitz
+- Extreme Speed
+- Rock Slide
+- Rock Tomb
+
+Omastar @ Power Herb
+Ability: Weak Armor
+Level: 82
+Timid Nature
+- Meteor Beam
+- Ice Beam
+- Scald
+- Power Gem
+
+Magnezone @ Chople Berry
+Ability: Analytic
+Level: 83
+Serious Nature
+- Explosion
+- Flash Cannon
+- Thunderbolt
+- Ally Switch
+
+Alakazam @ Focus Sash
+Ability: Synchronize
+Level: 81
+Timid Nature
 - Psychic
-- Reflect
-- Metal Claw
+- Shadow Ball
+- Aura Sphere
+- Calm Mind
 
-Skarmory
-Impish Nature
-Level: 43
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 6 SpA / 252 SpD
-- Toxic
-- Aerial Ace
-- Protect
-- Steel Wing
+Sandslash-Alola @ Wide Lens
+Ability: Slush Rush
+Level: 82
+Hasty Nature
+- Iron Head
+- Triple Axel
+- Drill Run
+- Hone Claws
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+Pidgeot @ Pidgeotite
+Ability: No Guard
+Level: 83
+Timid Nature
+IVs: 30 Def / 30SpD / 30 Spe
+- Hurricane
+- Hyper Voice
+- Hidden Power Rock
+- Tailwind
 
 === PARTNER_EMMIE ===
-Name: EMMIE
+Name: Emmie
 Class: Rival
 Pic: Green
-Back Pic: Green
 Gender: Female
 Music: Female
 AI: Partner Trainer
@@ -88,22 +110,21 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 Name: Tabitha
 Class: Magma Admin
 Pic: Magma Admin
-Back Pic: Magma Leader Maxie
 Gender: Male
 Music: Male
 AI: Partner Trainer
 
-Metang
-Brave Nature
-Level: 42
+Victini
+Adamant Nature
+Level: 44
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Light Screen
-- Psychic
-- Reflect
-- Metal Claw
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
 
-Skarmory
+Charizard
 Impish Nature
 Level: 43
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
@@ -113,7 +134,7 @@ EVs: 252 HP / 6 SpA / 252 SpD
 - Protect
 - Steel Wing
 
-Aggron
+Blastoise
 Adamant Nature
 Level: 44
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
@@ -122,6 +143,104 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 - Protect
 - Solar Beam
 - Dragon Claw
+
+Typhlosion @ Shuca Berry
+Quiet Nature
+Level: 50
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+EVs: 252 Atk / 252 Def / 6 SpA
+- Trick Room
+- Moonblast
+- Light Screen
+- Flash Cannon
+
+Meganium @ Shuca Berry
+Quiet Nature
+Level: 50
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+EVs: 252 Atk / 252 Def / 6 SpA
+- Trick Room
+- Moonblast
+- Light Screen
+- Flash Cannon
+
+Swampert @ Shuca Berry
+Quiet Nature
+Level: 50
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+EVs: 252 Atk / 252 Def / 6 SpA
+- Trick Room
+- Moonblast
+- Light Screen
+- Flash Cannon
+
+=== PARTNER_TABITHA_AHO_BOSS ===
+Name: Tabitha
+Class: Magma Admin
+Pic: Magma Admin
+Gender: Male
+Music: Male
+AI: Partner Trainer
+
+Victini
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+Charizard
+Impish Nature
+Level: 43
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 6 SpA / 252 SpD
+- Toxic
+- Aerial Ace
+- Protect
+- Steel Wing
+
+Blastoise
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+Typhlosion @ Shuca Berry
+Quiet Nature
+Level: 50
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+EVs: 252 Atk / 252 Def / 6 SpA
+- Trick Room
+- Moonblast
+- Light Screen
+- Flash Cannon
+
+Meganium @ Shuca Berry
+Quiet Nature
+Level: 50
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+EVs: 252 Atk / 252 Def / 6 SpA
+- Trick Room
+- Moonblast
+- Light Screen
+- Flash Cannon
+
+Swampert @ Shuca Berry
+Quiet Nature
+Level: 50
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+EVs: 252 Atk / 252 Def / 6 SpA
+- Trick Room
+- Moonblast
+- Light Screen
+- Flash Cannon
 
 === PARTNER_MATT ===
 Name: Matt
@@ -161,50 +280,47 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 - Solar Beam
 - Dragon Claw
 
-=== PARTNER_SHELLY ===
+=== PARTNER_SHELLY_JAGGED_PASS ===
 Name: Shelly
 Class: Aqua Admin
 Pic: Aqua Admin F
-Back Pic: Aqua Leader Archie
 Gender: Female
 Music: Male
 AI: Partner Trainer
 
-Magearna @ Shuca Berry
+Audino @ Audinite
+Ability: Healer
+Level: 73
 Quiet Nature
-Level: 50
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Trick Room
 - Moonblast
-- Light Screen
-- Flash Cannon
+- After You
+- Helping Hand
+- Trick Room
 
-Skarmory
-Impish Nature
-Level: 43
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 6 SpA / 252 SpD
-- Toxic
-- Aerial Ace
-- Protect
-- Steel Wing
+Dhelmise @ Power Herb
+Ability: Steelworker
+Level: 73
+Sassy Nature
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+- Phantom Force
+- Anchor Shot
+- Seed Bomb
+- Ally Switch
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+Ambipom @ Expert Belt
+Ability: Technician
+Level: 73
+Jolly Nature
+- U-turn
+- Knock Off
+- Dual Chop
+- Fake Out
 
 === PARTNER_ARCHIE_MT_PYRE ===
 Name: Archie
 Class: Aqua Leader
 Pic: Aqua Leader Archie
-Back Pic: Aqua Leader Archie
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -227,7 +343,7 @@ Jolly Nature
 - Pursuit
 - Tailwind
 
-Blastoise-Mega @ Blastoisinite
+Blastoise @ Blastoisinite
 Ability: Mega Launcher
 Level: 65
 Timid Nature
@@ -240,7 +356,6 @@ Timid Nature
 Name: Maxie
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Back Pic: Magma Leader Maxie
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -263,7 +378,7 @@ Jolly Nature
 - Pursuit
 - Tailwind
 
-Charizard-Mega-X @ Charizardite-X
+Charizard @ Charizardite-X
 Ability: Tough Claws
 Level: 65
 Jolly Nature
@@ -276,7 +391,6 @@ Jolly Nature
 Name: Archie
 Class: Aqua Leader
 Pic: Aqua Leader Archie
-Back Pic: Aqua Leader Archie
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -289,7 +403,7 @@ Quiet Nature
 - Dragon Pulse
 - Weather Ball
 
-Aerodactyl-Mega @ Aerodactylite
+Aerodactyl @ Aerodactylite
 Ability: Tough Claws
 Level: 87
 Hasty Nature
@@ -311,7 +425,6 @@ Naughty Nature
 Name: Maxie
 Class: Magma Leader
 Pic: Magma Leader Maxie
-Back Pic: Magma Leader Maxie
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -326,7 +439,7 @@ Rash Nature
 - Hidden Power
 - Entrainment
 
-Aerodactyl-Mega @ Aerodactylite
+Aerodactyl @ Aerodactylite
 Ability: Tough Claws
 Level: 87
 Hasty Nature
@@ -342,3 +455,602 @@ Modest Nature
 - Hurricane
 - Weather Ball
 - Earth Power
+
+=== PARTNER_SHELLY_MHO ===
+Name: Shelly
+Class: Aqua Admin
+Pic: Aqua Admin F
+Gender: Female
+Music: Male
+AI: Partner Trainer
+
+Audino @ Audinite
+Ability: Healer
+Level: 73
+Mild Nature
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+- Moonblast
+- After You
+- Helping Hand
+- Trick Room
+
+Ambipom @ Expert Belt
+Ability: Technician
+Level: 73
+Jolly Nature
+- U-turn
+- Knock Off
+- Dual Chop
+- Fake Out
+
+Sigilyph @ Sharp Beak
+Ability: Tinted Lens
+Level: 73
+Hasty Nature
+- Synchronoise
+- Air Slash
+- Imprison
+- Tailwind
+
+Empoleon @ Leftovers
+Ability: Competitive
+Level: 73
+Relaxed Nature
+- Ice Beam
+- Scald
+- Icy Wind
+- Defog
+
+Dhelmise @ Power Herb
+Ability: Steelworker
+Level: 73
+Sassy Nature
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+- Phantom Force
+- Anchor Shot
+- Seed Bomb
+- Ally Switch
+
+Muk-Alola @ Zoom Lens
+Ability: Power of Alchemy
+Level: 73
+Adamant Nature
+- Poison Jab
+- Knock Off
+- Helping Hand
+- Toxic
+
+=== PARTNER_SHELLY_MHO_BOSS ===
+Name: Shelly
+Class: Aqua Admin
+Pic: Aqua Admin F
+Gender: Female
+Music: Male
+AI: Partner Trainer
+
+Audino @ Audinite
+Ability: Healer
+Level: 73
+Mild Nature
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+- Moonblast
+- After You
+- Helping Hand
+- Trick Room
+
+Ambipom @ Expert Belt
+Ability: Technician
+Level: 73
+Jolly Nature
+- U-turn
+- Knock Off
+- Dual Chop
+- Fake Out
+
+Sigilyph @ Sharp Beak
+Ability: Tinted Lens
+Level: 73
+Hasty Nature
+- Synchronoise
+- Air Slash
+- Imprison
+- Tailwind
+
+Empoleon @ Leftovers
+Ability: Competitive
+Level: 73
+Relaxed Nature
+- Ice Beam
+- Scald
+- Icy Wind
+- Defog
+
+Dhelmise @ Power Herb
+Ability: Steelworker
+Level: 73
+Sassy Nature
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+- Phantom Force
+- Anchor Shot
+- Seed Bomb
+- Ally Switch
+
+Muk-Alola @ Zoom Lens
+Ability: Power of Alchemy
+Level: 73
+Adamant Nature
+- Poison Jab
+- Knock Off
+- Helping Hand
+- Toxic
+
+=== PARTNER_STEVEN_TWELVE ===
+Name: Steven
+Class: Rival
+Pic: Steven
+Gender: Male
+Music: Male
+AI: Partner Trainer
+
+Arcanine-Hisui @ Normal Gem
+Ability: Justified
+Level: 81
+Jolly Nature
+- Flare Blitz
+- Extreme Speed
+- Rock Slide
+- Rock Tomb
+
+Omastar @ Power Herb
+Ability: Weak Armor
+Level: 82
+Timid Nature
+- Meteor Beam
+- Ice Beam
+- Scald
+- Power Gem
+
+Magnezone @ Chople Berry
+Ability: Analytic
+Level: 83
+Serious Nature
+- Explosion
+- Flash Cannon
+- Thunderbolt
+- Ally Switch
+
+Alakazam @ Focus Sash
+Ability: Synchronize
+Level: 81
+Timid Nature
+- Psychic
+- Shadow Ball
+- Aura Sphere
+- Calm Mind
+
+Sandslash-Alola @ Wide Lens
+Ability: Slush Rush
+Level: 82
+Hasty Nature
+- Iron Head
+- Triple Axel
+- Drill Run
+- Hone Claws
+
+Pidgeot @ Pidgeotite
+Ability: No Guard
+Level: 83
+Timid Nature
+IVs: 30 Def / 30SpD / 30 Spe
+- Hurricane
+- Hyper Voice
+- Hidden Power Rock
+- Tailwind
+
+=== PARTNER_STEVEN_B2B ===
+Name: Steven
+Class: Rival
+Pic: Steven
+Gender: Male
+Music: Male
+AI: Partner Trainer
+
+Arcanine-Hisui @ Normal Gem
+Ability: Justified
+Level: 81
+Jolly Nature
+- Flare Blitz
+- Extreme Speed
+- Rock Slide
+- Rock Tomb
+
+Omastar @ Power Herb
+Ability: Weak Armor
+Level: 82
+Timid Nature
+- Meteor Beam
+- Ice Beam
+- Scald
+- Power Gem
+
+Magnezone @ Chople Berry
+Ability: Analytic
+Level: 83
+Serious Nature
+- Explosion
+- Flash Cannon
+- Thunderbolt
+- Ally Switch
+
+Alakazam @ Focus Sash
+Ability: Synchronize
+Level: 81
+Timid Nature
+- Psychic
+- Shadow Ball
+- Aura Sphere
+- Calm Mind
+
+Sandslash-Alola @ Wide Lens
+Ability: Slush Rush
+Level: 82
+Hasty Nature
+- Iron Head
+- Triple Axel
+- Drill Run
+- Hone Claws
+
+Pidgeot @ Pidgeotite
+Ability: No Guard
+Level: 83
+Timid Nature
+IVs: 30 Def / 30SpD / 30 Spe
+- Hurricane
+- Hyper Voice
+- Hidden Power Rock
+- Tailwind
+
+=== PARTNER_BLUE_TWELVE ===
+Name: Blue
+Class: Kantonian
+Pic: Champion Rival Frlg
+Gender: Male
+Music: Male
+AI: Partner Trainer
+
+Arcanine-Hisui @ Normal Gem
+Ability: Justified
+Level: 81
+Jolly Nature
+- Flare Blitz
+- Extreme Speed
+- Rock Slide
+- Rock Tomb
+
+Omastar @ Power Herb
+Ability: Weak Armor
+Level: 82
+Timid Nature
+- Meteor Beam
+- Ice Beam
+- Scald
+- Power Gem
+
+Magnezone @ Chople Berry
+Ability: Analytic
+Level: 83
+Serious Nature
+- Explosion
+- Flash Cannon
+- Thunderbolt
+- Ally Switch
+
+Alakazam @ Focus Sash
+Ability: Synchronize
+Level: 81
+Timid Nature
+- Psychic
+- Shadow Ball
+- Aura Sphere
+- Calm Mind
+
+Sandslash-Alola @ Wide Lens
+Ability: Slush Rush
+Level: 82
+Hasty Nature
+- Iron Head
+- Triple Axel
+- Drill Run
+- Hone Claws
+
+Pidgeot @ Pidgeotite
+Ability: No Guard
+Level: 83
+Timid Nature
+IVs: 30 Def / 30SpD / 30 Spe
+- Hurricane
+- Hyper Voice
+- Hidden Power Rock
+- Tailwind
+
+=== PARTNER_BLUE_B2B ===
+Name: Blue
+Class: Kantonian
+Pic: Champion Rival Frlg
+Gender: Male
+Music: Male
+AI: Partner Trainer
+
+Arcanine-Hisui @ Normal Gem
+Ability: Justified
+Level: 81
+Jolly Nature
+- Flare Blitz
+- Extreme Speed
+- Rock Slide
+- Rock Tomb
+
+Omastar @ Power Herb
+Ability: Weak Armor
+Level: 82
+Timid Nature
+- Meteor Beam
+- Ice Beam
+- Scald
+- Power Gem
+
+Magnezone @ Chople Berry
+Ability: Analytic
+Level: 83
+Serious Nature
+- Explosion
+- Flash Cannon
+- Thunderbolt
+- Ally Switch
+
+Alakazam @ Focus Sash
+Ability: Synchronize
+Level: 81
+Timid Nature
+- Psychic
+- Shadow Ball
+- Aura Sphere
+- Calm Mind
+
+Sandslash-Alola @ Wide Lens
+Ability: Slush Rush
+Level: 82
+Hasty Nature
+- Iron Head
+- Triple Axel
+- Drill Run
+- Hone Claws
+
+Pidgeot @ Pidgeotite
+Ability: No Guard
+Level: 83
+Timid Nature
+IVs: 30 Def / 30SpD / 30 Spe
+- Hurricane
+- Hyper Voice
+- Hidden Power Rock
+- Tailwind
+
+=== PARTNER_BROCK_MOSSDEEP ===
+Name: Brock
+Class: Kantonian
+Pic: Steven
+Gender: Male
+Music: Male
+AI: Partner Trainer
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+=== PARTNER_MISTY_MOSSDEEP ===
+Name: Misty
+Class: Kantonian
+Pic: Steven
+Gender: Female
+Music: Female
+AI: Partner Trainer
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+=== PARTNER_SURGE_MOSSDEEP ===
+Name: Lt. Surge
+Class: Kantonian
+Pic: Steven
+Gender: Male
+Music: Male
+AI: Partner Trainer
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
+
+=== PARTNER_SABRINA_MOSSDEEP ===
+Name: Sabrina
+Class: Kantonian
+Pic: Leader Sabrina Frlg
+Gender: Male
+Music: Male
+AI: Partner Trainer
+
+Alakazam @ Alakazite
+Ability: Synchronize
+Level: 81
+Naive Nature
+- Hyper Beam
+- Psychic
+- Tachyon Cutter
+
+Mr. Rime
+- Psychic
+- Hyper Voice
+- Tachyon Cutter
+- Tachyon Cutter
+
+Farigiraf @ Throat Spray
+Ability: Armor Tail
+Level: 81
+Calm Nature
+- Expanding Force
+- Hyper Voice
+- Energy Ball
+- Psychic Terrain
+
+=== PARTNER_TATE_MOSSDEEP ===
+Name: Tate
+Class: Leader
+Pic: Leader Tate
+Gender: Male
+Music: Female
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Gallade @ Galladite
+Ability: Sharpness
+Level: 81
+Jolly Nature
+- Sacred Sword
+- Psycho Cut
+- Leaf Blade
+- Night Slash
+
+Braviary-Hisui @ Life Orb
+Ability: Sheer Force
+Level: 81
+Timid Nature
+- Air Slash
+- Esper Wing
+- Heat Wave
+- Hyper Voice
+
+Meloetta @ Bug Gem
+Ability: Serene Grace
+Level: 80
+Jolly Nature
+- Relic Song
+- Zen Headbutt
+- Close Combat
+- U-turn
+
+=== PARTNER_LIZA_MOSSDEEP ===
+Name: Liza /* [Multi]*/
+Class: Leader
+Pic: Leader Liza
+Gender: Female
+Music: Female
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Gardevoir @ Gardevoirite
+Ability: Synchronize
+Level: 81
+Naive Nature
+- Psychic
+- Moonblast
+- Shadow Ball
+- Ally Switch
+
+Munkidori @ Focus Sash
+Ability: Toxic Chain
+Level: 81
+Timid Nature
+- Fake Out
+- Future Sight
+- Helping Hand
+- Parting Shot
+
+Farigiraf @ Throat Spray
+Ability: Armor Tail
+Level: 81
+Calm Nature
+- Expanding Force
+- Hyper Voice
+- Energy Ball
+- Psychic Terrain

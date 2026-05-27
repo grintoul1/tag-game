@@ -13,6 +13,7 @@
 #include "save_location.h"
 #include "script_pokemon_util.h"
 #include "trainer_hill.h"
+#include "wild_encounter_ow.h"
 #include "gba/flash_internal.h"
 #include "decoration_inventory.h"
 #include "agb_flash.h"
@@ -170,10 +171,10 @@ void SavePlayerPartyEmmie(void)
 {
     int i;
 
-    gSaveBlock1Ptr->playerPartyCount = gPlayerPartyCount;
+    gSaveBlock1Ptr->playerPartyCount = gPartiesCount[B_TRAINER_0];
 
     for (i = 3; i < PARTY_SIZE; i++)
-        gSaveBlock1Ptr->playerParty[i] = gPlayerParty[i];
+        gSaveBlock1Ptr->playerParty[i] = gParties[B_TRAINER_0][i];
 }
 
 
@@ -181,59 +182,59 @@ void LoadPlayerPartyEmmie(void)
 {
     int i;
 
-    gPlayerPartyCount = gSaveBlock1Ptr->playerPartyCount;
+    gPartiesCount[B_TRAINER_0] = gSaveBlock1Ptr->playerPartyCount;
 
     for (i = 3; i < PARTY_SIZE; i++)
     {
         u32 data;
-        gPlayerParty[i] = gSaveBlock1Ptr->playerParty[i];
+        gParties[B_TRAINER_0][i] = gSaveBlock1Ptr->playerParty[i];
 
         // TODO: Turn this into a save migration once those are available.
         // At which point we can remove hp and status from Pokemon entirely.
-        data = gPlayerParty[i].maxHP - gPlayerParty[i].hp;
-        SetBoxMonData(&gPlayerParty[i].box, MON_DATA_HP_LOST, &data);
-        data = gPlayerParty[i].status;
-        SetBoxMonData(&gPlayerParty[i].box, MON_DATA_STATUS, &data);
+        data = gParties[B_TRAINER_0][i].maxHP - gParties[B_TRAINER_0][i].hp;
+        SetBoxMonData(&gParties[B_TRAINER_0][i].box, MON_DATA_HP_LOST, &data);
+        data = gParties[B_TRAINER_0][i].status;
+        SetBoxMonData(&gParties[B_TRAINER_0][i].box, MON_DATA_STATUS, &data);
     }
 }
 
 void SavePlayerParty(void)
 {
     int i;
-    *GetSavedPlayerPartyCount() = gPlayerPartyCount;
+    *GetSavedPlayerPartyCount() = gPartiesCount[B_TRAINER_0];
 
     for (i = 0; i < PARTY_SIZE; i++)
-        SavePlayerPartyMon(i, &gPlayerParty[i]);
+        SavePlayerPartyMon(i, &gParties[B_TRAINER_0][i]);
+}
+
+void SaveEliteFourPool(void)
+{
+    int i;
+    *GetSavedEliteFourPoolCount() = gEliteFourPoolCount;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        SaveEliteFourPoolMon(i, &gEliteFourPool[i]);
+    }
 }
 
 void LoadPlayerParty(void)
 {
     int i;
 
-    gPlayerPartyCount = *GetSavedPlayerPartyCount();
+    gPartiesCount[B_TRAINER_0] = *GetSavedPlayerPartyCount();
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
         u32 data;
-        gPlayerParty[i] = *GetSavedPlayerPartyMon(i);
+        gParties[B_TRAINER_0][i] = *GetSavedPlayerPartyMon(i);
 
         // TODO: Turn this into a save migration once those are available.
         // At which point we can remove hp and status from Pokemon entirely.
-        data = gPlayerParty[i].maxHP - gPlayerParty[i].hp;
-        SetBoxMonData(&gPlayerParty[i].box, MON_DATA_HP_LOST, &data);
-        data = gPlayerParty[i].status;
-        SetBoxMonData(&gPlayerParty[i].box, MON_DATA_STATUS, &data);
-    }
-}
-
-void SaveEliteFourPool(void)
-{
-    int i;
-    *GetSavedPlayerPartyCount() = gEliteFourPoolCount;
-
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        SavePlayerPartyMon(i, &gEliteFourPool[i]);
+        data = gParties[B_TRAINER_0][i].maxHP - gParties[B_TRAINER_0][i].hp;
+        SetBoxMonData(&gParties[B_TRAINER_0][i].box, MON_DATA_HP_LOST, &data);
+        data = gParties[B_TRAINER_0][i].status;
+        SetBoxMonData(&gParties[B_TRAINER_0][i].box, MON_DATA_STATUS, &data);
     }
 }
 
@@ -241,12 +242,12 @@ void LoadEliteFourPool(void)
 {
     int i;
 
-    gEliteFourPoolCount = *GetSavedPlayerPartyCount();
+    gEliteFourPoolCount = *GetSavedEliteFourPoolCount();
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
         u32 data;
-        gEliteFourPool[i] = *GetSavedPlayerPartyMon(i);
+        gEliteFourPool[i] = *GetSavedEliteFourPoolMon(i);
 
         // TODO: Turn this into a save migration once those are available.
         // At which point we can remove hp and status from Pokemon entirely.
@@ -299,17 +300,20 @@ void LoadObjectEvents(void)
             gObjectEvents[i].graphicsId & OBJ_EVENT_MON)
             gObjectEvents[i].active = TRUE;
     }
+    SetMinimumOWESpawnTimer();
 }
 
 void CopyPartyAndObjectsToSave(void)
 {
     SavePlayerParty();
+    SaveEliteFourPool();
     SaveObjectEvents();
 }
 
 void CopyPartyAndObjectsFromSave(void)
 {
     LoadPlayerParty();
+    LoadEliteFourPool();
     LoadObjectEvents();
 }
 

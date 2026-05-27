@@ -47,6 +47,36 @@ struct LinkPlayerObjectEvent
     u8 movementMode;
 };
 
+struct CreditsOverworldCmd
+{
+    s16 unk_0;
+    s16 unk_2;
+    s16 unk_4;
+};
+
+enum {
+    MUSIC_DISABLE_OFF,
+    MUSIC_DISABLE_STOP,
+    MUSIC_DISABLE_KEEP,
+};
+
+enum MusicMode
+{
+    MUSIC_MODE_DEFAULT, // Intended - corresponds to badge count
+    MUSIC_MODE_SPLIT_1, // RBY
+    MUSIC_MODE_SPLIT_2, // GSC
+    MUSIC_MODE_SPLIT_3, // FRLG
+    MUSIC_MODE_SPLIT_4, // RSE
+    MUSIC_MODE_SPLIT_5, // DPPt
+    MUSIC_MODE_SPLIT_6, // HGSS
+    MUSIC_MODE_SPLIT_7, // BW
+    MUSIC_MODE_SPLIT_8, // Col
+    MUSIC_MODE_SPLIT_9, // Mix
+    MUSIC_MODE_COUNT,
+    MUSIC_MODE_RANDOM   = 0xFE,
+    MUSIC_MODE_VANILLA  = 0xFF,
+};
+
 // Exported RAM declarations
 extern struct WarpData gLastUsedWarp;
 extern struct LinkPlayerObjectEvent gLinkPlayerObjectEvents[4];
@@ -63,6 +93,7 @@ extern bool8 gExitStairsMovementDisabled;
 extern bool8 gSkipShowMonAnim;
 extern u8 gTimeOfDay;
 extern s16 gTimeUpdateCounter;
+extern u8 gDisableMapMusicChangeOnMapLoad;
 
 extern struct TimeBlendSettings gTimeBlend;
 
@@ -93,6 +124,7 @@ void SetDynamicWarpWithCoords(s32 unused, s8 mapGroup, s8 mapNum, s8 warpId, s8 
 void SetWarpDestinationToDynamicWarp(u8 unusedWarpId);
 void SetWarpDestinationToHealLocation(u8 healLocationId);
 void SetWarpDestinationToLastHealLocation(void);
+void SetWarpDestinationForTeleport(void);
 void SetLastHealLocationWarp(u8 healLocationId);
 void UpdateEscapeWarp(s16 x, s16 y);
 void SetEscapeWarp(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y);
@@ -132,6 +164,7 @@ enum MapType GetMapTypeByGroupAndId(s8 mapGroup, s8 mapNum);
 enum MapType GetMapTypeByWarpData(struct WarpData *warp);
 enum MapType GetCurrentMapType(void);
 enum MapType GetLastUsedWarpMapType(void);
+mapsec_u8_t GetLastUsedWarpMapSectionId(void);
 bool8 IsMapTypeOutdoors(enum MapType mapType);
 bool8 Overworld_MapTypeAllowsTeleportAndFly(enum MapType mapType);
 bool8 IsMapTypeIndoors(enum MapType mapType);
@@ -174,6 +207,7 @@ bool32 Overworld_SendKeysToLinkIsRunning(void);
 bool32 IsSendingKeysOverCable(void);
 void ClearLinkPlayerObjectEvents(void);
 bool16 SetTimeOfDay(u16 hours);
+bool8 MetatileBehavior_IsSurfableInSeafoamIslands(u16 metatileBehavior);
 
 // Item Description Headers
 enum ItemObtainFlags
@@ -181,6 +215,10 @@ enum ItemObtainFlags
     FLAG_GET_ITEM_OBTAINED,
     FLAG_SET_ITEM_OBTAINED,
 };
-bool8 GetSetItemObtained(u16 item, enum ItemObtainFlags caseId);
+bool8 GetSetItemObtained(enum Item item, enum ItemObtainFlags caseId);
+
+void Overworld_CreditsMainCB(void);
+bool32 Overworld_DoScrollSceneForCredits(u8 *, const struct CreditsOverworldCmd *);
+u32 GetCurrentBadgeCount(void);
 
 #endif // GUARD_OVERWORLD_H

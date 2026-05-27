@@ -1,6 +1,7 @@
 #include "global.h"
 #include "battle.h"
 #include "battle_anim.h"
+#include "battle_controllers.h"
 #include "battle_message.h"
 #include "main.h"
 #include "menu.h"
@@ -19,7 +20,6 @@
 #include "text_window.h"
 #include "international_string_util.h"
 #include "strings.h"
-#include "battle_ai_main.h"
 #include "battle_ai_util.h"
 #include "list_menu.h"
 #include "decompress.h"
@@ -53,8 +53,8 @@ struct BattleDebugModifyArrows
 
 struct BattleDebugMenu
 {
-    u8 battlerId:2;
-    u8 aiBattlerId:2;
+    enum BattlerId battlerId:3;
+    enum BattlerId aiBattlerId:3;
 
     u8 battlerWindowId;
 
@@ -189,6 +189,19 @@ enum
     LIST_AI_PREFER_HIGHEST_DAMAGE_MOVE,
     LIST_AI_PREDICT_SWITCH,
     LIST_AI_PREDICT_INCOMING_MON,
+    LIST_AI_PP_STALL_PREVENTION,
+    LIST_AI_PREDICT_MOVE,
+    LIST_AI_SMART_TERA,
+    LIST_AI_ASSUME_STAB,
+    LIST_AI_ASSUME_STATUS_MOVES,
+    LIST_AI_PARTNER,
+    LIST_AI_PARTNER_SWITCHING,
+    LIST_AI_ATTACKS_PARTNER,
+    LIST_AI_TAG_OPPONENT,
+    LIST_AI_SMART_TARGETING,
+    LIST_AI_KNOW_OPPONENT_PARTY,
+    LIST_AI_RANDOMIZE_SWITCHIN,
+    LIST_AI_RANDOMIZE_PARTY_INDICES,
     LIST_AI_DYNAMIC_FUNC,
     LIST_AI_ROAMING,
     LIST_AI_SAFARI,
@@ -283,7 +296,7 @@ static const struct BitfieldInfo sAIBitfield[] =
     {/*Check Viability*/ 1, 2},
     {/*Force Setup First Turn*/ 1, 3},
     {/*Risky*/ 1, 4},
-    {/*Prefer Strongest Move*/ 1, 5},
+    {/*Try To 2HKO*/ 1, 5},
     {/*Prefer Baton Pass*/ 1, 6},
     {/*Double Battle*/ 1, 7},
     {/*HP Aware*/ 1, 8},
@@ -303,10 +316,23 @@ static const struct BitfieldInfo sAIBitfield[] =
     {/*Prefer Highest Damage Move*/ 1, 22},
     {/*Predict Switch*/ 1, 23},
     {/*Predict Incoming Mon*/ 1, 24},
-    {/*Dynamic Func*/ 1, 28},
-    {/*Roaming*/ 1, 29},
-    {/*Safari*/ 1, 30},
-    {/*First Battle*/ 1, 31},
+    {/*PP Stall Prevention*/ 1, 25},
+    {/*Predict Move*/ 1, 26},
+    {/*Smart Tera*/ 1, 27},
+    {/*Assume STAB*/ 1, 28},
+    {/*Assume Status Moves*/ 1, 29},
+    {/*Partner*/ 1, 30},
+    {/*Partner Switching*/ 1, 31},
+    {/*Attacks Partner*/ 1, 32},
+    {/*Tag Opponent*/ 1, 33},
+    {/*Smart Targeting*/ 1, 34},
+    {/*Know Opponent Party*/ 1, 35},
+    {/*Randomize Switchin*/ 1, 36},
+    {/*Randomize Party Indices*/ 1, 37},
+    {/*Dynamic Func*/ 1, 60},
+    {/*Roaming*/ 1, 61},
+    {/*Safari*/ 1, 62},
+    {/*First Battle*/ 1, 63},
 };
 
 static const struct ListMenuItem sMainListItems[] =
@@ -360,7 +386,6 @@ static const struct ListMenuItem sVolatileStatusListItems[] =
     {COMPOUND_STRING("Torment"),            VOLATILE_TORMENT},
     {COMPOUND_STRING("Powder"),             VOLATILE_POWDER},
     {COMPOUND_STRING("DefenseCurl"),        VOLATILE_DEFENSE_CURL},
-    {COMPOUND_STRING("Recharge"),           VOLATILE_RECHARGE},
     {COMPOUND_STRING("Rage"),               VOLATILE_RAGE},
     {COMPOUND_STRING("DestinyBond"),        VOLATILE_DESTINY_BOND},
     {COMPOUND_STRING("EscapePrevention"),   VOLATILE_ESCAPE_PREVENTION},
@@ -379,7 +404,7 @@ static const struct ListMenuItem sVolatileStatusListItems[] =
     {COMPOUND_STRING("Lock On"),            VOLATILE_LOCK_ON},
     {COMPOUND_STRING("Perish Song"),        VOLATILE_PERISH_SONG},
     {COMPOUND_STRING("Minimize"),           VOLATILE_MINIMIZE},
-    {COMPOUND_STRING("Charge"),             VOLATILE_CHARGE},
+    {COMPOUND_STRING("Charge"),             VOLATILE_CHARGE_TIMER},
     {COMPOUND_STRING("Root"),               VOLATILE_ROOT},
     {COMPOUND_STRING("Yawn"),               VOLATILE_YAWN},
     {COMPOUND_STRING("Imprison"),           VOLATILE_IMPRISON},
@@ -447,6 +472,19 @@ static const struct ListMenuItem sAIListItems[] =
     {COMPOUND_STRING("Prefer Highest Damage Move"), LIST_AI_PREFER_HIGHEST_DAMAGE_MOVE},
     {COMPOUND_STRING("Predict Switch"),             LIST_AI_PREDICT_SWITCH},
     {COMPOUND_STRING("Predict Incoming Mon"),       LIST_AI_PREDICT_INCOMING_MON},
+    {COMPOUND_STRING("PP Stall Prevention"),        LIST_AI_PP_STALL_PREVENTION},
+    {COMPOUND_STRING("Predict Move"),               LIST_AI_PREDICT_MOVE},
+    {COMPOUND_STRING("Smart Tera"),                 LIST_AI_SMART_TERA},
+    {COMPOUND_STRING("Assume STAB"),                LIST_AI_ASSUME_STAB},
+    {COMPOUND_STRING("Assume Status Moves"),        LIST_AI_ASSUME_STATUS_MOVES},
+    {COMPOUND_STRING("Partner"),                    LIST_AI_PARTNER},
+    {COMPOUND_STRING("Partner Switching"),          LIST_AI_PARTNER_SWITCHING},
+    {COMPOUND_STRING("Attacks Partner"),            LIST_AI_ATTACKS_PARTNER},
+    {COMPOUND_STRING("Tag Opponent"),               LIST_AI_TAG_OPPONENT},
+    {COMPOUND_STRING("Smart Targeting"),            LIST_AI_SMART_TARGETING},
+    {COMPOUND_STRING("Know Opponent Party"),        LIST_AI_KNOW_OPPONENT_PARTY},
+    {COMPOUND_STRING("Randomize Switchin"),         LIST_AI_RANDOMIZE_SWITCHIN},
+    {COMPOUND_STRING("Randomize Party Indices"),    LIST_AI_RANDOMIZE_PARTY_INDICES},
     {COMPOUND_STRING("Dynamic Func"),               LIST_AI_DYNAMIC_FUNC},
     {COMPOUND_STRING("Roaming"),                    LIST_AI_ROAMING},
     {COMPOUND_STRING("Safari"),                     LIST_AI_SAFARI},
@@ -602,7 +640,7 @@ static const u16 sBgColor[] = {RGB_WHITE};
 static void Task_DebugMenuFadeOut(u8 taskId);
 static void Task_DebugMenuProcessInput(u8 taskId);
 static void Task_DebugMenuFadeIn(u8 taskId);
-static void PrintOnBattlerWindow(u8 windowId, u8 battlerId);
+static void PrintOnBattlerWindow(u8 windowId, enum BattlerId battler);
 static void UpdateWindowsOnChangedBattler(struct BattleDebugMenu *data);
 static void CreateSecondaryListMenu(struct BattleDebugMenu *data);
 static void PrintSecondaryEntries(struct BattleDebugMenu *data);
@@ -670,7 +708,7 @@ void CB2_BattleDebugMenu(void)
         ResetBgsAndClearDma3BusyFlags(0);
         InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
         ResetAllBgsCoordinates();
-        FreeAllWindowBuffers();
+        CloseMainBattleScreen();
         DeactivateAllTextPrinters();
         SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
         ShowBg(0);
@@ -685,8 +723,8 @@ void CB2_BattleDebugMenu(void)
         gMain.state++;
         break;
     case 3:
-        LoadPalette(sBgColor, 0, 2);
-        LoadPalette(GetOverworldTextboxPalettePtr(), 0xf0, 16);
+        LoadPalette(sBgColor, BG_PLTT_ID(0), 2);
+        LoadPalette(GetOverworldTextboxPalettePtr(), BG_PLTT_ID(15), PLTT_SIZEOF(8));
         gMain.state++;
         break;
     case 4:
@@ -915,14 +953,14 @@ static void PutAiInfoText(struct BattleDebugMenu *data)
     }
 
     // items info
-    for (i = 0; i < gBattlersCount; i++)
+    for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
     {
-        if (IsOnPlayerSide(i) && IsBattlerAlive(i))
+        if (IsOnPlayerSide(battler) && IsBattlerAlive(battler))
         {
-            enum Ability ability = gAiLogicData->abilities[i];
-            enum HoldEffect holdEffect = gAiLogicData->holdEffects[i];
-            u16 item = gAiLogicData->items[i];
-            u8 x = (i == B_POSITION_PLAYER_LEFT) ? 83 + (i) * 75 : 83 + (i-1) * 75;
+            enum Ability ability = gAiLogicData->abilities[battler];
+            enum HoldEffect holdEffect = gAiLogicData->holdEffects[battler];
+            enum Item item = gAiLogicData->items[battler];
+            u8 x = (GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT) ? 83 + battler * 75 : 83 + (battler - 1) * 75;
             AddTextPrinterParameterized(data->aiMovesWindowId, FONT_SMALL, gAbilitiesInfo[ability].name, x, 0, 0, NULL);
             AddTextPrinterParameterized(data->aiMovesWindowId, FONT_SMALL, GetItemName(item), x, 15, 0, NULL);
             AddTextPrinterParameterized(data->aiMovesWindowId, FONT_SMALL, GetHoldEffectName(holdEffect), x, 30, 0, NULL);
@@ -1069,7 +1107,7 @@ static void Task_ShowAiParty(u8 taskId)
         aiMons = gAiPartyData->mons[GetBattlerSide(data->aiBattlerId)];
         for (i = 0; i < gAiPartyData->count[GetBattlerSide(data->aiBattlerId)]; i++)
         {
-            u16 species = SPECIES_NONE; // Question mark
+            enum Species species = SPECIES_NONE; // Question mark
             if (aiMons[i].wasSentInBattle && aiMons[i].species)
                 species = aiMons[i].species;
             data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, (i * 41) + 15, 7, 1, 0);
@@ -1311,15 +1349,15 @@ static void Task_DebugMenuFadeOut(u8 taskId)
     }
 }
 
-static void PrintOnBattlerWindow(u8 windowId, u8 battlerId)
+static void PrintOnBattlerWindow(u8 windowId, enum BattlerId battler)
 {
     u8 text[POKEMON_NAME_LENGTH + 10];
 
-    text[0] = CHAR_0 + battlerId;
+    text[0] = CHAR_0 + battler;
     text[1] = CHAR_SPACE;
     text[2] = CHAR_HYPHEN;
     text[3] = CHAR_SPACE;
-    StringCopy(&text[4], gBattleMons[battlerId].nickname);
+    StringCopy(&text[4], gBattleMons[battler].nickname);
 
     FillWindowPixelBuffer(windowId, 0x11);
     AddTextPrinterParameterized(windowId, FONT_NORMAL, text, 0, 0, 0, NULL);
@@ -1452,14 +1490,15 @@ static void PrintSecondaryEntries(struct BattleDebugMenu *data)
 
     yMultiplier = (GetFontAttribute(sSecondaryListTemplate.fontId, 1) + sSecondaryListTemplate.itemVerticalPadding);
 
+    printer.type = WINDOW_TEXT_PRINTER;
     printer.windowId = data->secondaryListWindowId;
     printer.fontId = 1;
-    printer.unk = 0;
     printer.letterSpacing = 0;
     printer.lineSpacing = 1;
-    printer.fgColor = 2;
-    printer.bgColor = 1;
-    printer.shadowColor = 3;
+    printer.color.accent = 1;
+    printer.color.foreground = 2;
+    printer.color.background = 1;
+    printer.color.shadow = 3;
     printer.x = sSecondaryListTemplate.item_X;
     printer.currentX = sSecondaryListTemplate.item_X;
     printer.currentChar = text;
@@ -1685,7 +1724,7 @@ static void ValueToCharDigits(u8 *charDigits, u32 newValue, u8 maxDigits)
 
 static void ChangeHazardsValue(struct BattleDebugMenu *data)
 {
-    u32 side = GetBattlerSide(data->battlerId);
+    enum BattleSide side = GetBattlerSide(data->battlerId);
 
     switch (data->currentSecondaryListItemId)
     {
@@ -1981,12 +2020,14 @@ static void SetUpModifyArrows(struct BattleDebugMenu *data)
         }
         else if (data->currentSecondaryListItemId == VARIOUS_SUBSTITUTE_HP)
         {
+            u32 subHp = gBattleMons[data->battlerId].volatiles.substituteHP;
             data->modifyArrows.minValue = 0;
             data->modifyArrows.maxValue = 255;
             data->modifyArrows.maxDigits = 3;
-            data->modifyArrows.modifiedValPtr = &gDisableStructs[data->battlerId].substituteHP;
+            data->modifyArrows.modifiedValPtr = &subHp;
+            gBattleMons[data->battlerId].volatiles.substituteHP = subHp;
             data->modifyArrows.typeOfVal = VAR_SUBSTITUTE;
-            data->modifyArrows.currValue = gDisableStructs[data->battlerId].substituteHP;
+            data->modifyArrows.currValue = gBattleMons[data->battlerId].volatiles.substituteHP;
         }
         else if (data->currentSecondaryListItemId == VARIOUS_IN_LOVE)
         {
@@ -2010,18 +2051,18 @@ static void SetUpModifyArrows(struct BattleDebugMenu *data)
 #define UNPACK_VOLATILE_MAX_SIZE(_enum, _fieldName, _typeMaxValue, ...) case _enum: data->modifyArrows.maxValue = min(MAX_u16, GET_VOLATILE_MAXIMUM(_typeMaxValue)); break;
         switch (data->currentSecondaryListItemId)
         {
-            VOLATILE_DEFINITIONS(UNPACK_VOLATILE_MAX_SIZE)
-            /* Expands to the following:
-             * case VOLATILE_CONFUSION:
-                  data->modifyArrows.maxValue = MAX_BITS(3); // Max value 7
-                  break;
-             * case VOLATILE_FLINCHED:
-                  data->modifyArrows.maxValue = MAX_BITS(1); // Max value 1
-                  break;
-             * ...etc.
-             */
-            default:
-                data->modifyArrows.maxValue = 0;
+        VOLATILE_DEFINITIONS(UNPACK_VOLATILE_MAX_SIZE)
+        /* Expands to the following:
+            * case VOLATILE_CONFUSION:
+                data->modifyArrows.maxValue = MAX_BITS(3); // Max value 7
+                break;
+            * case VOLATILE_FLINCHED:
+                data->modifyArrows.maxValue = MAX_BITS(1); // Max value 1
+                break;
+            * ...etc.
+            */
+        default:
+            data->modifyArrows.maxValue = 0;
         }
         data->modifyArrows.maxDigits = MAX_DIGITS(data->modifyArrows.maxValue);
         break;
@@ -2200,10 +2241,8 @@ static const u8 *const sHoldEffectNames[HOLD_EFFECT_COUNT] =
     [HOLD_EFFECT_LUCKY_EGG]        = COMPOUND_STRING("Lucky Egg"),
     [HOLD_EFFECT_SCOPE_LENS]       = COMPOUND_STRING("Scope Lens"),
     [HOLD_EFFECT_LEFTOVERS]        = COMPOUND_STRING("Leftovers"),
-    [HOLD_EFFECT_DRAGON_SCALE]     = COMPOUND_STRING("Dragon Scale"),
     [HOLD_EFFECT_LIGHT_BALL]       = COMPOUND_STRING("Light Ball"),
     [HOLD_EFFECT_TYPE_POWER]       = COMPOUND_STRING("Type Power"),
-    [HOLD_EFFECT_UPGRADE]          = COMPOUND_STRING("Upgrade"),
     [HOLD_EFFECT_SHELL_BELL]       = COMPOUND_STRING("Shell Bell"),
     [HOLD_EFFECT_LUCKY_PUNCH]      = COMPOUND_STRING("Lucky Punch"),
     [HOLD_EFFECT_METAL_POWDER]     = COMPOUND_STRING("Metal Powder"),

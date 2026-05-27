@@ -2,6 +2,7 @@
 #define GUARD_CONSTANTS_OPPONENTS_H
 
 #include "constants/battle_partner.h"
+#include "constants/opponents_frlg.h"
 
 #define TRAINER_NONE                          0
 #define TRAINER_SAWYER_1                      1
@@ -25,7 +26,7 @@
 #define TRAINER_GRUNT_WEATHER_INST_3         19
 #define TRAINER_GRUNT_MUSEUM_1               20
 #define TRAINER_GRUNT_MUSEUM_2               21
-#define TRAINER_GRUNT_SPACE_CENTER_1         22
+#define TRAINER_MAGMA_GRUNT_SPACE_CENTER_1   22
 #define TRAINER_GRUNT_MT_PYRE_1              23
 #define TRAINER_GRUNT_MT_PYRE_2              24
 #define TRAINER_GRUNT_MT_PYRE_3              25
@@ -54,12 +55,12 @@
 #define TRAINER_EMMIE_2                      48
 #define TRAINER_EMMIE_3                      49
 #define TRAINER_DUSTY_5                      50
-#define TRAINER_GABBY_AND_TY_1               51
-#define TRAINER_GABBY_AND_TY_2               52
-#define TRAINER_GABBY_AND_TY_3               53
-#define TRAINER_GABBY_AND_TY_4               54
-#define TRAINER_GABBY_AND_TY_5               55
-#define TRAINER_GABBY_AND_TY_6               56
+#define TRAINER_AQUA_GRUNT_SPACE_CENTER_1    51
+#define TRAINER_AQUA_GRUNT_SPACE_CENTER_2    52
+#define TRAINER_AQUA_GRUNT_SPACE_CENTER_3    53
+#define TRAINER_AQUA_GRUNT_SPACE_CENTER_4    54
+#define TRAINER_AQUA_GRUNT_SPACE_CENTER_5    55
+#define TRAINER_AQUA_GRUNT_SPACE_CENTER_6    56
 #define TRAINER_GRUNT_ROUTE109_3             57
 #define TRAINER_AUSTINA                      58
 #define TRAINER_GWEN                         59
@@ -74,10 +75,10 @@
 #define TRAINER_RICKY_3                      68
 #define TRAINER_RICKY_4                      69
 #define TRAINER_RICKY_5                      70
-#define TRAINER_RANDALL                      71
+#define TRAINER_STEPH                        71
 #define TRAINER_PARKER                       72
-#define TRAINER_GEORGE                       73
-#define TRAINER_BERKE                        74
+#define TRAINER_JAS                          73
+#define TRAINER_DAN                          74
 #define TRAINER_BRAXTON                      75
 #define TRAINER_VINCENT                      76
 #define TRAINER_LEROY                        77
@@ -88,13 +89,13 @@
 #define TRAINER_VITO                         82
 #define TRAINER_OWEN                         83
 #define TRAINER_VITO_ROUTE111                84
-#define TRAINER_WILTON_3                     85
-#define TRAINER_WILTON_4                     86
-#define TRAINER_WILTON_5                     87
+#define TRAINER_SHELLY_MOSSDEEP              85
+#define TRAINER_MATT_MOSSDEEP                86
+#define TRAINER_ARCHIE_MOSSDEEP              87
 #define TRAINER_WARREN                       88
 #define TRAINER_MARY                         89
-#define TRAINER_ALEXIA                       90
-#define TRAINER_JODY                         91
+#define TRAINER_ZOE                          90
+#define TRAINER_TYRONE                       91
 #define TRAINER_WENDY                        92
 #define TRAINER_KEIRA                        93
 #define TRAINER_BROOKE_1                     94
@@ -119,7 +120,7 @@
 #define TRAINER_VALERIE_5                   113
 #define TRAINER_CINDY_1                     114
 #define TRAINER_DAPHNE                      115
-#define TRAINER_GRUNT_SPACE_CENTER_2        116
+#define TRAINER_MAGMA_GRUNT_SPACE_CENTER_2  116
 #define TRAINER_CINDY_2                     117
 #define TRAINER_BRIANNA                     118
 #define TRAINER_NAOMI                       119
@@ -182,7 +183,7 @@
 #define TRAINER_TONY_3                      176
 #define TRAINER_TONY_4                      177
 #define TRAINER_TONY_5                      178
-#define TRAINER_TAKAO                       179
+#define TRAINER_NAKOLAI                     179
 #define TRAINER_HITOSHI                     180
 #define TRAINER_KIYO                        181
 #define TRAINER_KOICHI                      182
@@ -279,9 +280,9 @@
 #define TRAINER_JERRY_1                     273
 #define TRAINER_TED                         274
 #define TRAINER_PAUL                        275
-#define TRAINER_JERRY_2                     276
-#define TRAINER_JERRY_3                     277
-#define TRAINER_JERRY_4                     278
+#define TRAINER_TATE                        276
+#define TRAINER_LIZA                        277
+#define TRAINER_SABRINA_MOSSDEEP                     278
 #define TRAINER_JERRY_5                     279
 #define TRAINER_KAREN_1                     280
 #define TRAINER_GEORGIA                     281
@@ -589,10 +590,10 @@
 #define TRAINER_KATHLEEN                    583
 #define TRAINER_CLIFFORD                    584
 #define TRAINER_NICHOLAS                    585
-#define TRAINER_GRUNT_SPACE_CENTER_3        586
-#define TRAINER_GRUNT_SPACE_CENTER_4        587
-#define TRAINER_GRUNT_SPACE_CENTER_5        588
-#define TRAINER_GRUNT_SPACE_CENTER_6        589
+#define TRAINER_MAGMA_GRUNT_SPACE_CENTER_3  586
+#define TRAINER_MAGMA_GRUNT_SPACE_CENTER_4  587
+#define TRAINER_MAGMA_GRUNT_SPACE_CENTER_5  588
+#define TRAINER_MAGMA_GRUNT_SPACE_CENTER_6  589
 #define TRAINER_TABITHA_MOSSDEEP            590
 #define TRAINER_MACEY                       591
 #define TRAINER_BRENDAN_RUSTBORO_TREECKO    592
@@ -732,9 +733,9 @@
 #define TRAINER_GRUNT_MAGMA_HIDEOUT_11      726
 #define TRAINER_GRUNT_MAGMA_HIDEOUT_12      727
 #define TRAINER_COURTNEY_MAGMA_HIDEOUT      728
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_14      729
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_15      730
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_16      731
+#define TRAINER_GRUNT_MAGMA_HIDEOUT_13      729
+#define TRAINER_GRUNT_MAGMA_HIDEOUT_14      730
+#define TRAINER_GRUNT_MAGMA_HIDEOUT_15      731
 #define TRAINER_TABITHA_MAGMA_HIDEOUT       732
 #define TRAINER_DARCY                       733
 #define TRAINER_MAXIE_MOSSDEEP              734
@@ -797,7 +798,7 @@
 #define TRAINER_WINONA_3                    791
 #define TRAINER_WINONA_4                    792
 #define TRAINER_WINONA_5                    793
-#define TRAINER_TATE_AND_LIZA_2             794
+#define TRAINER_ERIKA_RUSTBORO              794
 #define TRAINER_TATE_AND_LIZA_3             795
 #define TRAINER_TATE_AND_LIZA_4             796
 #define TRAINER_TATE_AND_LIZA_5             797
@@ -868,8 +869,16 @@
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT                      860
-#define MAX_TRAINERS_COUNT                  864
+#define TRAINERS_COUNT_EMERALD     860
+#define MAX_TRAINERS_COUNT_EMERALD 864
+
+#if IS_FRLG
+#define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG
+#define MAX_TRAINERS_COUNT                  MAX_TRAINERS_COUNT_FRLG
+#else
+#define TRAINERS_COUNT                      TRAINERS_COUNT_EMERALD
+#define MAX_TRAINERS_COUNT                  MAX_TRAINERS_COUNT_EMERALD
+#endif
 #define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H

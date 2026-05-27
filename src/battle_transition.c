@@ -114,6 +114,7 @@ static void Task_Mugshot(u8);
 static void Task_Aqua(u8);
 static void Task_Magma(u8);
 static void Task_Aqua_Magma(u8);
+static void Task_BlurBrighten(u8);
 static void Task_Regice(u8);
 static void Task_Registeel(u8);
 static void Task_Regirock(u8);
@@ -152,6 +153,9 @@ static void VBlankCB_Rayquaza(void);
 static bool8 Blur_Init(struct Task *);
 static bool8 Blur_Main(struct Task *);
 static bool8 Blur_End(struct Task *);
+static bool8 BlurBrighten_Init(struct Task *);
+static bool8 BlurBrighten_Main(struct Task *);
+static bool8 BlurBrighten_End(struct Task *);
 static bool8 Swirl_Init(struct Task *);
 static bool8 Swirl_End(struct Task *);
 static bool8 Shuffle_Init(struct Task *);
@@ -297,48 +301,48 @@ static struct RectangularSpiralLine sRectangularSpiralLines[4];
 
 EWRAM_DATA static struct TransitionData *sTransitionData = NULL;
 
-static const u32 sBigPokeball_Tileset[] = INCBIN_U32("graphics/battle_transitions/big_pokeball.4bpp");
-static const u32 sPokeballTrail_Tileset[] = INCBIN_U32("graphics/battle_transitions/pokeball_trail.4bpp");
-static const u8 sPokeball_Gfx[] = INCBIN_U8("graphics/battle_transitions/pokeball.4bpp");
-static const u32 sEliteFour_Tileset[] = INCBIN_U32("graphics/battle_transitions/elite_four_bg.4bpp");
-static const u8 sUnusedBrendan_Gfx[] = INCBIN_U8("graphics/battle_transitions/unused_brendan.4bpp");
-static const u8 sUnusedLass_Gfx[] = INCBIN_U8("graphics/battle_transitions/unused_lass.4bpp");
-static const u32 sShrinkingBoxTileset[] = INCBIN_U32("graphics/battle_transitions/shrinking_box.4bpp");
-static const u16 sEvilTeam_Palette[] = INCBIN_U16("graphics/battle_transitions/evil_team.gbapal");
-static const u32 sTeamAqua_Tileset[] = INCBIN_U32("graphics/battle_transitions/team_aqua.4bpp.smol");
+static const u32 sBigPokeball_Tileset[] = INCGFX_U32("graphics/battle_transitions/big_pokeball.png", ".4bpp");
+static const u32 sPokeballTrail_Tileset[] = INCGFX_U32("graphics/battle_transitions/pokeball_trail.png", ".4bpp");
+static const u8 sPokeball_Gfx[] = INCGFX_U8("graphics/battle_transitions/pokeball.png", ".4bpp");
+static const u32 sEliteFour_Tileset[] = INCGFX_U32("graphics/battle_transitions/elite_four_bg.png", ".4bpp");
+static const u8 sUnusedBrendan_Gfx[] = INCGFX_U8("graphics/battle_transitions/unused_brendan.png", ".4bpp");
+static const u8 sUnusedLass_Gfx[] = INCGFX_U8("graphics/battle_transitions/unused_lass.png", ".4bpp");
+static const u32 sShrinkingBoxTileset[] = INCGFX_U32("graphics/battle_transitions/shrinking_box.png", ".4bpp");
+static const u16 sEvilTeam_Palette[] = INCGFX_U16("graphics/battle_transitions/evil_team.pal", ".gbapal");
+static const u32 sTeamAqua_Tileset[] = INCGFX_U32("graphics/battle_transitions/team_aqua.png", ".4bpp.smol");
 static const u32 sTeamAqua_Tilemap[] = INCBIN_U32("graphics/battle_transitions/team_aqua.bin.smolTM");
-static const u32 sTeamMagma_Tileset[] = INCBIN_U32("graphics/battle_transitions/team_magma.4bpp.smol");
+static const u32 sTeamMagma_Tileset[] = INCGFX_U32("graphics/battle_transitions/team_magma.png", ".4bpp.smol");
 static const u32 sTeamMagma_Tilemap[] = INCBIN_U32("graphics/battle_transitions/team_magma.bin.smolTM");
-static const u16 sEvilTeamMixed_Palette[] = INCBIN_U16("graphics/battle_transitions/team_aqua_magma.gbapal");
-static const u32 sTeamAquaMagma_Tileset[] = INCBIN_U32("graphics/battle_transitions/team_aqua_magma.4bpp.smol");
+static const u16 sEvilTeamMixed_Palette[] = INCGFX_U16("graphics/battle_transitions/team_aqua_magma.png", ".gbapal");
+static const u32 sTeamAquaMagma_Tileset[] = INCGFX_U32("graphics/battle_transitions/team_aqua_magma.png", ".4bpp.smol");
 static const u32 sTeamAquaMagma_Tilemap[] = INCBIN_U32("graphics/battle_transitions/team_aqua_magma.bin.smolTM");
-static const u32 sRegis_Tileset[] = INCBIN_U32("graphics/battle_transitions/regis.4bpp");
-static const u16 sRegice_Palette[] = INCBIN_U16("graphics/battle_transitions/regice.gbapal");
-static const u16 sRegisteel_Palette[] = INCBIN_U16("graphics/battle_transitions/registeel.gbapal");
-static const u16 sRegirock_Palette[] = INCBIN_U16("graphics/battle_transitions/regirock.gbapal");
+static const u32 sRegis_Tileset[] = INCGFX_U32("graphics/battle_transitions/regis.png", ".4bpp", "-num_tiles 53 -Wnum_tiles");
+static const u16 sRegice_Palette[] = INCGFX_U16("graphics/battle_transitions/regice.pal", ".gbapal");
+static const u16 sRegisteel_Palette[] = INCGFX_U16("graphics/battle_transitions/registeel.pal", ".gbapal");
+static const u16 sRegirock_Palette[] = INCGFX_U16("graphics/battle_transitions/regirock.pal", ".gbapal");
 static const u32 sRegice_Tilemap[] = INCBIN_U32("graphics/battle_transitions/regice.bin");
 static const u32 sRegisteel_Tilemap[] = INCBIN_U32("graphics/battle_transitions/registeel.bin");
 static const u32 sRegirock_Tilemap[] = INCBIN_U32("graphics/battle_transitions/regirock.bin");
-static const u16 sUnused_Palette[] = INCBIN_U16("graphics/battle_transitions/unused.gbapal");
-static const u32 sKyogre_Tileset[] = INCBIN_U32("graphics/battle_transitions/kyogre.4bpp.smol");
+static const u16 sUnused_Palette[] = INCGFX_U16("graphics/battle_transitions/unused.pal", ".gbapal");
+static const u32 sKyogre_Tileset[] = INCGFX_U32("graphics/battle_transitions/kyogre.png", ".4bpp.smol");
 static const u32 sKyogre_Tilemap[] = INCBIN_U32("graphics/battle_transitions/kyogre.bin.smolTM");
-static const u32 sGroudon_Tileset[] = INCBIN_U32("graphics/battle_transitions/groudon.4bpp.smol");
+static const u32 sGroudon_Tileset[] = INCGFX_U32("graphics/battle_transitions/groudon.png", ".4bpp.smol");
 static const u32 sGroudon_Tilemap[] = INCBIN_U32("graphics/battle_transitions/groudon.bin.smolTM");
-static const u16 sKyogre1_Palette[] = INCBIN_U16("graphics/battle_transitions/kyogre_pt1.gbapal");
-static const u16 sKyogre2_Palette[] = INCBIN_U16("graphics/battle_transitions/kyogre_pt2.gbapal");
-static const u16 sGroudon1_Palette[] = INCBIN_U16("graphics/battle_transitions/groudon_pt1.gbapal");
-static const u16 sGroudon2_Palette[] = INCBIN_U16("graphics/battle_transitions/groudon_pt2.gbapal");
-static const u16 sRayquaza_Palette[] = INCBIN_U16("graphics/battle_transitions/rayquaza.gbapal");
-static const u32 sRayquaza_Tileset[] = INCBIN_U32("graphics/battle_transitions/rayquaza.4bpp");
+static const u16 sKyogre1_Palette[] = INCGFX_U16("graphics/battle_transitions/kyogre_pt1.pal", ".gbapal");
+static const u16 sKyogre2_Palette[] = INCGFX_U16("graphics/battle_transitions/kyogre_pt2.pal", ".gbapal");
+static const u16 sGroudon1_Palette[] = INCGFX_U16("graphics/battle_transitions/groudon_pt1.pal", ".gbapal");
+static const u16 sGroudon2_Palette[] = INCGFX_U16("graphics/battle_transitions/groudon_pt2.pal", ".gbapal");
+static const u16 sRayquaza_Palette[] = INCGFX_U16("graphics/battle_transitions/rayquaza.pal", ".gbapal");
+static const u32 sRayquaza_Tileset[] = INCGFX_U32("graphics/battle_transitions/rayquaza.png", ".4bpp", "-num_tiles 938 -Wnum_tiles");
 static const u32 sRayquaza_Tilemap[] = INCBIN_U32("graphics/battle_transitions/rayquaza.bin");
-static const u16 sFrontierLogo_Palette[] = INCBIN_U16("graphics/battle_transitions/frontier_logo.gbapal");
-static const u32 sFrontierLogo_Tileset[] = INCBIN_U32("graphics/battle_transitions/frontier_logo.4bpp.smol");
+static const u16 sFrontierLogo_Palette[] = INCGFX_U16("graphics/battle_transitions/frontier_logo.png", ".gbapal");
+static const u32 sFrontierLogo_Tileset[] = INCGFX_U32("graphics/battle_transitions/frontier_logo.png", ".4bpp.smol");
 static const u32 sFrontierLogo_Tilemap[] = INCBIN_U32("graphics/battle_transitions/frontier_logo.bin.smolTM");
-static const u16 sFrontierSquares_Palette[] = INCBIN_U16("graphics/battle_transitions/frontier_squares_blanktiles.gbapal");
-static const u32 sFrontierSquares_FilledBg_Tileset[] = INCBIN_U32("graphics/battle_transitions/frontier_square_1.4bpp.smol");
-static const u32 sFrontierSquares_EmptyBg_Tileset[] = INCBIN_U32("graphics/battle_transitions/frontier_square_2.4bpp.smol");
-static const u32 sFrontierSquares_Shrink1_Tileset[] = INCBIN_U32("graphics/battle_transitions/frontier_square_3.4bpp.smol");
-static const u32 sFrontierSquares_Shrink2_Tileset[] = INCBIN_U32("graphics/battle_transitions/frontier_square_4.4bpp.smol");
+static const u16 sFrontierSquares_Palette[] = INCGFX_U16("graphics/battle_transitions/frontier_squares_blanktiles.png", ".gbapal");
+static const u32 sFrontierSquares_FilledBg_Tileset[] = INCGFX_U32("graphics/battle_transitions/frontier_square_1.4bpp", ".smol");
+static const u32 sFrontierSquares_EmptyBg_Tileset[] = INCGFX_U32("graphics/battle_transitions/frontier_square_2.4bpp", ".smol");
+static const u32 sFrontierSquares_Shrink1_Tileset[] = INCGFX_U32("graphics/battle_transitions/frontier_square_3.4bpp", ".smol");
+static const u32 sFrontierSquares_Shrink2_Tileset[] = INCGFX_U32("graphics/battle_transitions/frontier_square_4.4bpp", ".smol");
 static const u32 sFrontierSquares_Tilemap[] = INCBIN_U32("graphics/battle_transitions/frontier_squares.bin");
 
 // All battle transitions use the same intro
@@ -390,6 +394,7 @@ static const TaskFunc sTasks_Main[B_TRANSITION_COUNT] =
     [B_TRANSITION_FRONTIER_CIRCLES_ASYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesAsymmetricSpiralInSeq,
     [B_TRANSITION_FRONTIER_CIRCLES_SYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesSymmetricSpiralInSeq,
     [B_TRANSITION_AQUA_MAGMA] = Task_Aqua_Magma,
+    [B_TRANSITION_BLUR_BRIGHTEN] = Task_BlurBrighten,
 };
 
 static const TransitionStateFunc sTaskHandlers[] =
@@ -866,7 +871,6 @@ static const struct SpriteTemplate sSpriteTemplate_UnusedBrendan =
     .oam = &sOam_UnusedBrendanLass,
     .anims = sSpriteAnimTable_UnusedBrendanLass,
     .images = sImageTable_UnusedBrendan,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_MugshotTrainerPic
 };
 
@@ -877,59 +881,78 @@ static const struct SpriteTemplate sSpriteTemplate_UnusedLass =
     .oam = &sOam_UnusedBrendanLass,
     .anims = sSpriteAnimTable_UnusedBrendanLass,
     .images = sImageTable_UnusedLass,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_MugshotTrainerPic
 };
 
-static const u16 sFieldEffectPal_Pokeball[] = INCBIN_U16("graphics/field_effects/palettes/pokeball.gbapal");
+static const u16 sFieldEffectPal_Pokeball[] = INCGFX_U16("graphics/field_effects/palettes/pokeball.pal", ".gbapal");
 
 const struct SpritePalette gSpritePalette_Pokeball = {sFieldEffectPal_Pokeball, FLDEFF_PAL_TAG_POKEBALL_TRAIL};
 
-static const u16 sMugshotPal_Purple[] = INCBIN_U16("graphics/battle_transitions/purple_bg.gbapal");
-static const u16 sMugshotPal_Red[] = INCBIN_U16("graphics/battle_transitions/red_bg.gbapal");
-static const u16 sMugshotPal_ArchieWithMaxie[] = INCBIN_U16("graphics/battle_transitions/archiewithmaxie_bg.gbapal");
-static const u16 sMugshotPal_AquaMagma[] = INCBIN_U16("graphics/battle_transitions/aquamagma_bg.gbapal");
-static const u16 sMugshotPal_Orange[] = INCBIN_U16("graphics/battle_transitions/orange_bg.gbapal");
-static const u16 sMugshotPal_Drake[] = INCBIN_U16("graphics/battle_transitions/drake_bg.gbapal");
-static const u16 sMugshotPal_Brown[] = INCBIN_U16("graphics/battle_transitions/brown_bg.gbapal");
-static const u16 sMugshotPal_Black[] = INCBIN_U16("graphics/battle_transitions/black_bg.gbapal");
-static const u16 sMugshotPal_Grey[] = INCBIN_U16("graphics/battle_transitions/grey_bg.gbapal");
-static const u16 sMugshotPal_White[] = INCBIN_U16("graphics/battle_transitions/white_bg.gbapal");
-static const u16 sMugshotPal_Champion[] = INCBIN_U16("graphics/battle_transitions/champion_bg.gbapal");
-static const u16 sMugshotPal_DarkPurple[] = INCBIN_U16("graphics/battle_transitions/darkpurple_bg.gbapal");
-static const u16 sMugshotPal_Green[]  = INCBIN_U16("graphics/battle_transitions/green_bg.gbapal");
-static const u16 sMugshotPal_Pink[]   = INCBIN_U16("graphics/battle_transitions/pink_bg.gbapal");
-static const u16 sMugshotPal_MayPink[]   = INCBIN_U16("graphics/battle_transitions/maypink_bg.gbapal");
-static const u16 sMugshotPal_Blue[]   = INCBIN_U16("graphics/battle_transitions/blue_bg.gbapal");
-static const u16 sMugshotPal_Misty[]   = INCBIN_U16("graphics/battle_transitions/misty_bg.gbapal");
-static const u16 sMugshotPal_MaxieWithArchie[]   = INCBIN_U16("graphics/battle_transitions/maxiewitharchie_bg.gbapal");
-static const u16 sMugshotPal_LightBlue[]   = INCBIN_U16("graphics/battle_transitions/lightblue_bg.gbapal");
-static const u16 sMugshotPal_Yellow[] = INCBIN_U16("graphics/battle_transitions/yellow_bg.gbapal");
-static const u16 sMugshotPal_Brendan[] = INCBIN_U16("graphics/battle_transitions/brendan_bg.gbapal");
-static const u16 sMugshotPal_May[] = INCBIN_U16("graphics/battle_transitions/may_bg.gbapal");
+static const u16 sMugshotPal_Purple[] = INCGFX_U16("graphics/battle_transitions/purple_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Red[] = INCGFX_U16("graphics/battle_transitions/red_bg.pal", ".gbapal");
+static const u16 sMugshotPal_ArchieWithMaxie[] = INCGFX_U16("graphics/battle_transitions/archiewithmaxie_bg.pal", ".gbapal");
+static const u16 sMugshotPal_AquaMagma[] = INCGFX_U16("graphics/battle_transitions/aquamagma_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Orange[] = INCGFX_U16("graphics/battle_transitions/orange_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Drake[] = INCGFX_U16("graphics/battle_transitions/drake_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Brown[] = INCGFX_U16("graphics/battle_transitions/brown_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Black[] = INCGFX_U16("graphics/battle_transitions/black_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Grey[] = INCGFX_U16("graphics/battle_transitions/grey_bg.pal", ".gbapal");
+static const u16 sMugshotPal_White[] = INCGFX_U16("graphics/battle_transitions/white_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Champion[] = INCGFX_U16("graphics/battle_transitions/champion_bg.pal", ".gbapal");
+static const u16 sMugshotPal_DarkPurple[] = INCGFX_U16("graphics/battle_transitions/darkpurple_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Green[]  = INCGFX_U16("graphics/battle_transitions/green_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Pink[]   = INCGFX_U16("graphics/battle_transitions/pink_bg.pal", ".gbapal");
+static const u16 sMugshotPal_EmmieWithShelly[]   = INCGFX_U16("graphics/battle_transitions/emmiewithshelly_bg.pal", ".gbapal");
+static const u16 sMugshotPal_MayPink[]   = INCGFX_U16("graphics/battle_transitions/maypink_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Blue[]   = INCGFX_U16("graphics/battle_transitions/blue_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Misty[]   = INCGFX_U16("graphics/battle_transitions/misty_bg.pal", ".gbapal");
+static const u16 sMugshotPal_MaxieWithArchie[]   = INCGFX_U16("graphics/battle_transitions/maxiewitharchie_bg.pal", ".gbapal");
+static const u16 sMugshotPal_LightBlue[]   = INCGFX_U16("graphics/battle_transitions/lightblue_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Yellow[] = INCGFX_U16("graphics/battle_transitions/yellow_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Brendan[] = INCGFX_U16("graphics/battle_transitions/brendan_bg.pal", ".gbapal");
+static const u16 sMugshotPal_May[] = INCGFX_U16("graphics/battle_transitions/may_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Tate[] = INCGFX_U16("graphics/battle_transitions/tate_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Liza[] = INCGFX_U16("graphics/battle_transitions/liza_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Sabrina[] = INCGFX_U16("graphics/battle_transitions/sabrina_bg.pal", ".gbapal");
+static const u16 sMugshotPal_TateAndLiza[] = INCGFX_U16("graphics/battle_transitions/tate_and_liza_bg.pal", ".gbapal");
+static const u16 sMugshotPal_LizaAndTate[] = INCGFX_U16("graphics/battle_transitions/liza_and_tate_bg.pal", ".gbapal");
+static const u16 sMugshotPal_SabrinaAndTate[] = INCGFX_U16("graphics/battle_transitions/sabrina_and_tate_bg.pal", ".gbapal");
+static const u16 sMugshotPal_TateAndSabrina[] = INCGFX_U16("graphics/battle_transitions/tate_and_sabrina_bg.pal", ".gbapal");
+static const u16 sMugshotPal_LizaAndSabrina[] = INCGFX_U16("graphics/battle_transitions/liza_and_sabrina_bg.pal", ".gbapal");
+static const u16 sMugshotPal_SabrinaAndLiza[] = INCGFX_U16("graphics/battle_transitions/sabrina_and_liza_bg.pal", ".gbapal");
 
 static const u16 *const sOpponentMugshotsPals[MUGSHOT_COLOR_COUNT] =
 {
-    [MUGSHOT_COLOR_PURPLE]          = sMugshotPal_Purple,
-    [MUGSHOT_COLOR_RED]             = sMugshotPal_Red,
-    [MUGSHOT_COLOR_ARCHIEWITHMAXIE] = sMugshotPal_ArchieWithMaxie,
-    [MUGSHOT_COLOR_AQUAMAGMA]       = sMugshotPal_AquaMagma,
-    [MUGSHOT_COLOR_ORANGE]          = sMugshotPal_Orange,
-    [MUGSHOT_COLOR_DRAKE]           = sMugshotPal_Drake,
-    [MUGSHOT_COLOR_BROWN]           = sMugshotPal_Brown,
-    [MUGSHOT_COLOR_BLACK]           = sMugshotPal_Black,
-    [MUGSHOT_COLOR_GREY]            = sMugshotPal_Grey,
-    [MUGSHOT_COLOR_WHITE]           = sMugshotPal_White,
-    [MUGSHOT_COLOR_CHAMPION]        = sMugshotPal_Champion,
-    [MUGSHOT_COLOR_DARKPURPLE]      = sMugshotPal_DarkPurple,
-    [MUGSHOT_COLOR_GREEN]           = sMugshotPal_Green,
-    [MUGSHOT_COLOR_PINK]            = sMugshotPal_Pink,
-    [MUGSHOT_COLOR_MAYPINK]         = sMugshotPal_MayPink,
-    [MUGSHOT_COLOR_BLUE]            = sMugshotPal_Blue,
-    [MUGSHOT_COLOR_MISTY]           = sMugshotPal_Misty,
-    [MUGSHOT_COLOR_MAXIEWITHARCHIE] = sMugshotPal_MaxieWithArchie,
-    [MUGSHOT_COLOR_LIGHTBLUE]       = sMugshotPal_LightBlue,
-    [MUGSHOT_COLOR_YELLOW]          = sMugshotPal_Yellow
+    [MUGSHOT_COLOR_PURPLE]              = sMugshotPal_Purple,
+    [MUGSHOT_COLOR_RED]                 = sMugshotPal_Red,
+    [MUGSHOT_COLOR_ARCHIEWITHMAXIE]     = sMugshotPal_ArchieWithMaxie,
+    [MUGSHOT_COLOR_AQUAMAGMA]           = sMugshotPal_AquaMagma,
+    [MUGSHOT_COLOR_ORANGE]              = sMugshotPal_Orange,
+    [MUGSHOT_COLOR_DRAKE]               = sMugshotPal_Drake,
+    [MUGSHOT_COLOR_BROWN]               = sMugshotPal_Brown,
+    [MUGSHOT_COLOR_BLACK]               = sMugshotPal_Black,
+    [MUGSHOT_COLOR_GREY]                = sMugshotPal_Grey,
+    [MUGSHOT_COLOR_WHITE]               = sMugshotPal_White,
+    [MUGSHOT_COLOR_CHAMPION]            = sMugshotPal_Champion,
+    [MUGSHOT_COLOR_DARKPURPLE]          = sMugshotPal_DarkPurple,
+    [MUGSHOT_COLOR_GREEN]               = sMugshotPal_Green,
+    [MUGSHOT_COLOR_PINK]                = sMugshotPal_Pink,
+    [MUGSHOT_COLOR_EMMIEWITHSHELLY]     = sMugshotPal_EmmieWithShelly,
+    [MUGSHOT_COLOR_MAYPINK]             = sMugshotPal_MayPink,
+    [MUGSHOT_COLOR_BLUE]                = sMugshotPal_Blue,
+    [MUGSHOT_COLOR_MISTY]               = sMugshotPal_Misty,
+    [MUGSHOT_COLOR_MAXIEWITHARCHIE]     = sMugshotPal_MaxieWithArchie,
+    [MUGSHOT_COLOR_LIGHTBLUE]           = sMugshotPal_LightBlue,
+    [MUGSHOT_COLOR_YELLOW]              = sMugshotPal_Yellow,
+    [MUGSHOT_COLOR_TATE]                = sMugshotPal_Tate,
+    [MUGSHOT_COLOR_LIZA]                = sMugshotPal_Liza,
+    [MUGSHOT_COLOR_SABRINA]             = sMugshotPal_Sabrina,
+    [MUGSHOT_COLOR_TATE_AND_LIZA]       = sMugshotPal_TateAndLiza,
+    [MUGSHOT_COLOR_LIZA_AND_TATE]       = sMugshotPal_LizaAndTate,
+    [MUGSHOT_COLOR_SABRINA_AND_TATE]    = sMugshotPal_SabrinaAndTate,
+    [MUGSHOT_COLOR_TATE_AND_SABRINA]    = sMugshotPal_TateAndSabrina,
+    [MUGSHOT_COLOR_LIZA_AND_SABRINA]    = sMugshotPal_LizaAndSabrina,
+    [MUGSHOT_COLOR_SABRINA_AND_LIZA]    = sMugshotPal_SabrinaAndLiza
 };
 
 static const u16 *const sPlayerMugshotsPals[GENDER_COUNT] =
@@ -938,7 +961,7 @@ static const u16 *const sPlayerMugshotsPals[GENDER_COUNT] =
     [FEMALE] = sMugshotPal_May
 };
 
-static const u16 sUnusedTrainerPalette[] = INCBIN_U16("graphics/battle_transitions/unused_trainer.gbapal");
+static const u16 sUnusedTrainerPalette[] = INCGFX_U16("graphics/battle_transitions/unused_trainer.pal", ".gbapal");
 static const struct SpritePalette sSpritePalette_UnusedTrainer = {sUnusedTrainerPalette, PALTAG_UNUSED_MUGSHOT};
 
 static const u16 sBigPokeball_Tilemap[] = INCBIN_U16("graphics/battle_transitions/big_pokeball_map.bin");
@@ -1210,6 +1233,83 @@ static bool8 Blur_End(struct Task *task)
 
 #undef tDelay
 #undef tCounter
+
+//---------------------------
+// B_TRANSITION_BLUR_BRIGHTEN
+//---------------------------
+
+#define tBBDelay   data[1]
+#define tBBCounter data[2]
+#define tBBBright  data[3]
+
+static const TransitionStateFunc sBlurBrighten_Funcs[] =
+{
+    BlurBrighten_Init,
+    BlurBrighten_Main,
+    BlurBrighten_End
+};
+
+static void Task_BlurBrighten(u8 taskId)
+{
+    while (sBlurBrighten_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
+}
+
+static bool8 BlurBrighten_Init(struct Task *task)
+{
+    SetGpuReg(REG_OFFSET_MOSAIC, 0);
+    SetGpuRegBits(REG_OFFSET_BG1CNT, BGCNT_MOSAIC);
+    SetGpuRegBits(REG_OFFSET_BG2CNT, BGCNT_MOSAIC);
+    SetGpuRegBits(REG_OFFSET_BG3CNT, BGCNT_MOSAIC);
+    SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_ALL | BLDCNT_EFFECT_LIGHTEN);
+    SetGpuReg(REG_OFFSET_BLDY, 0);
+    task->tBBBright = 0;
+    task->tState++;
+    return TRUE;
+}
+
+static bool8 BlurBrighten_Main(struct Task *task)
+{
+    if (task->tBBDelay != 0)
+    {
+        task->tBBDelay--;
+    }
+    else
+    {
+        task->tBBDelay = 4;
+        task->tBBCounter++;
+
+        // Increase mosaic blur
+        SetGpuReg(REG_OFFSET_MOSAIC, (task->tBBCounter & 15) * 17);
+
+        // Gradually brighten palette over the same period (0..16 over ~14 steps)
+        task->tBBBright = (task->tBBCounter * 16) / 14;
+        if (task->tBBBright > 16)
+            task->tBBBright = 16;
+        SetGpuReg(REG_OFFSET_BLDY, task->tBBBright);
+
+        if (task->tBBCounter == 10)
+            BeginNormalPaletteFade(PALETTES_ALL, -1, 0, 16, RGB_BLACK);
+
+        if (task->tBBCounter > 14)
+            task->tState++;
+    }
+    return FALSE;
+}
+
+static bool8 BlurBrighten_End(struct Task *task)
+{
+    if (!gPaletteFade.active)
+    {
+        SetGpuReg(REG_OFFSET_BLDCNT, 0);
+        SetGpuReg(REG_OFFSET_BLDY, 0);
+        DestroyTask(FindTaskIdByFunc(Task_BlurBrighten));
+    }
+    return FALSE;
+}
+
+#undef tBBDelay
+#undef tBBCounter
+#undef tBBBright
 
 //--------------------
 // B_TRANSITION_SWIRL
@@ -2369,11 +2469,47 @@ static bool8 Mugshot_SetGfx(struct Task *task)
     if (mugshotColor >= ARRAY_COUNT(sOpponentMugshotsPals))
         mugshotColor = MUGSHOT_COLOR_PURPLE;
 
-    LoadPalette(sOpponentMugshotsPals[mugshotColor], 0xF0, 0x20);
-    if(mugshotColor == MUGSHOT_COLOR_ARCHIEWITHMAXIE || mugshotColor == MUGSHOT_COLOR_MAXIEWITHARCHIE)
+    switch (TRAINER_BATTLE_PARAM.opponentA)
+    {
+    case TRAINER_TATE:
+        mugshotColor = (TRAINER_BATTLE_PARAM.opponentB == TRAINER_LIZA) ? MUGSHOT_COLOR_TATE_AND_LIZA : MUGSHOT_COLOR_TATE_AND_SABRINA;
+        break;
+    case TRAINER_LIZA:
+        mugshotColor = (TRAINER_BATTLE_PARAM.opponentB == TRAINER_TATE) ? MUGSHOT_COLOR_LIZA_AND_TATE : MUGSHOT_COLOR_LIZA_AND_SABRINA;
+        break;
+    case TRAINER_SABRINA_MOSSDEEP:
+        mugshotColor = (TRAINER_BATTLE_PARAM.opponentB == TRAINER_LIZA) ? MUGSHOT_COLOR_SABRINA_AND_LIZA : MUGSHOT_COLOR_SABRINA_AND_TATE;
+        break;
+    default:
+        break;
+    }
+
+    LoadPalette(sOpponentMugshotsPals[mugshotColor], BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+    if(mugshotColor == MUGSHOT_COLOR_ARCHIEWITHMAXIE || mugshotColor == MUGSHOT_COLOR_MAXIEWITHARCHIE || mugshotColor == MUGSHOT_COLOR_EMMIEWITHSHELLY)
+    {
         LoadPalette(sOpponentMugshotsPals[mugshotColor], BG_PLTT_ID(15), PLTT_SIZEOF(6));
+    }
     else
-        LoadPalette(sPlayerMugshotsPals[gSaveBlock2Ptr->playerGender], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
+    {
+        switch (TRAINER_BATTLE_PARAM.opponentA)
+        {
+        case TRAINER_TATE:
+            mugshotColor = (TRAINER_BATTLE_PARAM.opponentB == TRAINER_LIZA) ? MUGSHOT_COLOR_SABRINA : MUGSHOT_COLOR_LIZA;
+            LoadPalette(sOpponentMugshotsPals[mugshotColor], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
+            break;
+        case TRAINER_LIZA:
+            mugshotColor = (TRAINER_BATTLE_PARAM.opponentB == TRAINER_TATE) ? MUGSHOT_COLOR_SABRINA : MUGSHOT_COLOR_TATE;
+            LoadPalette(sOpponentMugshotsPals[mugshotColor], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
+            break;
+        case TRAINER_SABRINA_MOSSDEEP:
+            mugshotColor = (TRAINER_BATTLE_PARAM.opponentB == TRAINER_LIZA) ? MUGSHOT_COLOR_TATE : MUGSHOT_COLOR_LIZA;
+            LoadPalette(sOpponentMugshotsPals[mugshotColor], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
+            break;
+        default:
+            LoadPalette(sPlayerMugshotsPals[gSaveBlock2Ptr->playerGender], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
+            break;
+        }
+    }
 
     for (i = 0; i < 20; i++)
     {
@@ -2510,7 +2646,7 @@ static bool8 Mugshot_WaitPlayerSlide(struct Task *task)
     sTransitionData->BG0HOFS_Lower -= 8;
     sTransitionData->BG0HOFS_Upper += 8;
 
-    if (gPartnerTrainerId != TRAINER_PARTNER(PARTNER_NONE) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) 
+    if (gPartnerTrainerId != TRAINER_PARTNER(PARTNER_NONE) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
     {
         if (IsTrainerPicSlideDone(task->tPartnerSpriteId))
         {
@@ -2530,7 +2666,7 @@ static bool8 Mugshot_WaitPlayerSlide(struct Task *task)
         else
         {
             return FALSE;
-        } 
+        }
     }
     else
     {
@@ -2552,7 +2688,7 @@ static bool8 Mugshot_WaitPlayerSlide(struct Task *task)
         else
         {
             return FALSE;
-        } 
+        }
     }
     return FALSE;
 }
@@ -2669,18 +2805,22 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
 {
     struct Sprite *opponentSpriteA, *opponentSpriteB=0, *playerSprite, *partnerSprite=0;
 
-    u8 trainerAPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA);
-    u8 trainerBPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB);
-    u8 partnerPicId = GetTrainerPicFromId(gPartnerTrainerId);
+    enum TrainerPicID trainerAPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA);
+    enum TrainerPicID trainerBPicId = TRAINER_PIC_NONE;
+    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && TRAINER_BATTLE_PARAM.opponentB != 0xFFFF)
+        trainerBPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB);
+    enum TrainerPicID partnerPicId = GetTrainerPicFromId(gPartnerTrainerId);
+    struct Coords16 mugshotCoordsA = GetTrainerFrontPicMugshotCoords(trainerAPicId);
     s16 opponentARotationScales = 0;
     s16 opponentBRotationScales = 0;
 
     gReservedSpritePaletteCount = 10;
-    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && TRAINER_BATTLE_PARAM.opponentB != 0xFFFF && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
+        struct Coords16 mugshotCoordsB = GetTrainerFrontPicMugshotCoords(trainerBPicId);
         task->tOpponentSpriteBId = CreateTrainerSprite(trainerBPicId,
-                                                    gTrainerSprites[trainerBPicId].mugshotCoords.x - 240,
-                                                    gTrainerSprites[trainerBPicId].mugshotCoords.y + 42,
+                                                    mugshotCoordsB.x - 240,
+                                                    mugshotCoordsB.y + 42,
                                                     0, NULL);
         opponentSpriteB = &gSprites[task->tOpponentSpriteBId];
         opponentSpriteB->callback = SpriteCB_MugshotTrainerPicPartner;
@@ -2689,21 +2829,21 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
         opponentSpriteB->oam.shape = SPRITE_SHAPE(64x32);
         opponentSpriteB->oam.size = SPRITE_SIZE(64x32);
         CalcCenterToCornerVec(opponentSpriteB, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
-        opponentBRotationScales = gTrainerSprites[trainerBPicId].mugshotRotation;
+        opponentBRotationScales = GetTrainerFrontPicMugshotRotation(trainerBPicId);
         SetOamMatrixRotationScaling(opponentSpriteB->oam.matrixNum, opponentBRotationScales, opponentBRotationScales, 0);
     }
 
     task->tOpponentSpriteAId = CreateTrainerSprite(trainerAPicId,
-                                                  gTrainerSprites[trainerAPicId].mugshotCoords.x - 32,
-                                                  gTrainerSprites[trainerAPicId].mugshotCoords.y + 42,
+                                                  mugshotCoordsA.x - 32,
+                                                  mugshotCoordsA.y + 42,
                                                   0, NULL);
 
     gReservedSpritePaletteCount = 12;
-    if (gPartnerTrainerId != TRAINER_PARTNER(PARTNER_NONE) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) 
+    if (gPartnerTrainerId != TRAINER_PARTNER(PARTNER_NONE) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
     {
-        task->tPartnerSpriteId = CreateTrainerSprite(partnerPicId, 
-                                                DISPLAY_WIDTH + 240, 
-                                                106, 
+        task->tPartnerSpriteId = CreateTrainerSprite(partnerPicId,
+                                                DISPLAY_WIDTH + 240,
+                                                106,
                                                 0, NULL);
         partnerSprite = &gSprites[task->tPartnerSpriteId];
         partnerSprite->callback = SpriteCB_MugshotTrainerPicPartner;
@@ -2715,10 +2855,10 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
         SetOamMatrixRotationScaling(partnerSprite->oam.matrixNum, -512, 512, 0);
     }
 
-    task->tPlayerSpriteId = CreateTrainerSprite(PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender), 
-                                                DISPLAY_WIDTH + 32, 
-                                                106, 
-                                                0, NULL); 
+    task->tPlayerSpriteId = CreateTrainerSprite(PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender),
+                                                DISPLAY_WIDTH + 32,
+                                                106,
+                                                0, NULL);
 
     opponentSpriteA = &gSprites[task->tOpponentSpriteAId];
     playerSprite = &gSprites[task->tPlayerSpriteId];
@@ -2741,7 +2881,7 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
     CalcCenterToCornerVec(opponentSpriteA, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
     CalcCenterToCornerVec(playerSprite, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
 
-    opponentARotationScales = gTrainerSprites[trainerAPicId].mugshotRotation;
+    opponentARotationScales = GetTrainerFrontPicMugshotRotation(trainerAPicId);
 
     SetOamMatrixRotationScaling(opponentSpriteA->oam.matrixNum, opponentARotationScales, opponentARotationScales, 0);
     SetOamMatrixRotationScaling(playerSprite->oam.matrixNum, -512, 512, 0);

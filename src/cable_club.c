@@ -372,8 +372,8 @@ static void Task_LinkupExchangeDataWithLeader(u8 taskId)
         SaveLinkPlayers(gFieldLinkPlayerCount);
         card = (struct TrainerCard *)gBlockSendBuffer;
         TrainerCard_GenerateCardForLinkPlayer(card);
-        card->monSpecies[0] = GetMonData(&gPlayerParty[gSelectedOrderFromParty[0] - 1], MON_DATA_SPECIES, NULL);
-        card->monSpecies[1] = GetMonData(&gPlayerParty[gSelectedOrderFromParty[1] - 1], MON_DATA_SPECIES, NULL);
+        card->monSpecies[0] = GetMonData(&gParties[B_TRAINER_0][gSelectedOrderFromParty[0] - 1], MON_DATA_SPECIES);
+        card->monSpecies[1] = GetMonData(&gParties[B_TRAINER_0][gSelectedOrderFromParty[1] - 1], MON_DATA_SPECIES);
         gTasks[taskId].func = Task_LinkupAwaitTrainerCardData;
     }
 }
@@ -420,8 +420,8 @@ static void Task_LinkupCheckStatusAfterConfirm(u8 taskId)
         SaveLinkPlayers(gFieldLinkPlayerCount);
         card = (struct TrainerCard *)gBlockSendBuffer;
         TrainerCard_GenerateCardForLinkPlayer(card);
-        card->monSpecies[0] = GetMonData(&gPlayerParty[gSelectedOrderFromParty[0] - 1], MON_DATA_SPECIES, NULL);
-        card->monSpecies[1] = GetMonData(&gPlayerParty[gSelectedOrderFromParty[1] - 1], MON_DATA_SPECIES, NULL);
+        card->monSpecies[0] = GetMonData(&gParties[B_TRAINER_0][gSelectedOrderFromParty[0] - 1], MON_DATA_SPECIES);
+        card->monSpecies[1] = GetMonData(&gParties[B_TRAINER_0][gSelectedOrderFromParty[1] - 1], MON_DATA_SPECIES);
         gTasks[taskId].func = Task_LinkupAwaitTrainerCardData;
         SendBlockRequest(BLOCK_REQ_SIZE_100);
     }
@@ -472,9 +472,9 @@ static void FinishLinkup(u16 *linkupStatus, u32 taskId)
 
     if (*linkupStatus == LINKUP_SUCCESS)
     {
-        if (gLinkType == LINKTYPE_BATTLE_TOWER_50 || gLinkType == LINKTYPE_BATTLE_TOWER_OPEN)
+        if (gLinkType == LINKTYPE_BATTLE_TOWER_50 || gLinkType == LINKTYPE_BATTLE_TOWER_OPEN || gLinkType == LINKTYPE_TWO_PLAYER)
         {
-            if (AreBattleTowerLinkSpeciesSame(trainerCards[0].monSpecies, trainerCards[1].monSpecies))
+            if (AreBattleTowerLinkSpeciesSame(trainerCards[0].monSpecies, trainerCards[1].monSpecies) && !(gLinkType == LINKTYPE_TWO_PLAYER))
             {
                 // Unsuccessful battle tower linkup
                 *linkupStatus = LINKUP_FAILED_BATTLE_TOWER;
@@ -594,7 +594,10 @@ void TryBattleLinkup(void)
             gLinkType = LINKTYPE_BATTLE_TOWER_50;
         else
             gLinkType = LINKTYPE_BATTLE_TOWER_OPEN;
-
+        break;
+    case USING_TWO_PLAYER:
+        minPlayers = 2;
+        gLinkType = LINKTYPE_TWO_PLAYER;
         break;
     }
 
@@ -650,8 +653,8 @@ static void Task_ValidateMixingGameLanguage(u8 taskId)
             playerCount = GetLinkPlayerCount();
             for (i = 0; i < playerCount; i++)
             {
-                u32 version = (u8)gLinkPlayers[i].version;
-                u32 language = gLinkPlayers[i].language;
+                enum GameVersion version = (u8)gLinkPlayers[i].version;
+                enum Language language = gLinkPlayers[i].language;
 
                 if (version == VERSION_RUBY || version == VERSION_SAPPHIRE)
                 {
@@ -743,6 +746,9 @@ u8 CreateTask_ReestablishCableClubLink(void)
         else
             gLinkType = LINKTYPE_BATTLE_TOWER_OPEN;
         break;
+    case USING_TWO_PLAYER:
+        gLinkType = LINKTYPE_TWO_PLAYER;
+        break;
     case USING_TRADE_CENTER:
         gLinkType = LINKTYPE_TRADE;
         break;
@@ -824,6 +830,8 @@ static void SetLinkBattleTypeFlags(int linkService)
         break;
     case USING_BATTLE_TOWER:
         gBattleTypeFlags = BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER | BATTLE_TYPE_MULTI;
+        break;
+    case USING_TWO_PLAYER: // Flags setup during battle setup
         break;
     }
 }
@@ -956,7 +964,7 @@ static void CB2_ReturnFromUnionRoomBattle(void)
         linkedWithFRLG = FALSE;
         for (i = 0; i < playerCount; i++)
         {
-            u32 version = (u8)gLinkPlayers[i].version;
+            enum GameVersion version = (u8)gLinkPlayers[i].version;
             if (version == VERSION_FIRE_RED || version == VERSION_LEAF_GREEN)
             {
                 linkedWithFRLG = TRUE;
@@ -1324,7 +1332,12 @@ void Task_ReconnectWithLinkPlayers(u8 taskId)
 void TrySetBattleTowerLinkType(void)
 {
     if (gWirelessCommType == 0)
-        gLinkType = LINKTYPE_BATTLE_TOWER;
+    {
+        if (gSpecialVar_0x8004 == USING_TWO_PLAYER)
+            gLinkType = LINKTYPE_TWO_PLAYER;
+        else
+            gLinkType = LINKTYPE_BATTLE_TOWER;
+    }
 }
 
 #undef tState

@@ -122,20 +122,20 @@ Common_Movement_WalkUp2::
 
 @ Follower NPC
 Common_Movement_WalkUpSlow::
-    walk_slow_up
-    step_end
+	walk_slow_up
+	step_end
 
 Common_Movement_WalkDownSlow::
-    walk_slow_down
-    step_end
+	walk_slow_down
+	step_end
 
 Common_Movement_WalkRightSlow::
-    walk_slow_right
-    step_end
+	walk_slow_right
+	step_end
 
 Common_Movement_WalkLeftSlow::
-    walk_slow_left
-    step_end
+	walk_slow_left
+	step_end
 
 Common_Movement_WalkSlowUp::
     walk_slow_up
@@ -154,45 +154,73 @@ Common_Movement_WalkSlowLeft::
     step_end
 
 Common_Movement_WalkDown::
-    walk_down
-    step_end
+	walk_down
+	step_end
 
 Common_Movement_WalkRight::
-    walk_right
-    step_end
+	walk_right
+	step_end
 
 Common_Movement_WalkLeft::
-    walk_left
-    step_end
+	walk_left
+	step_end
 
 Common_Movement_WalkUpFast::
-    walk_fast_up
-    step_end
+	walk_fast_up
+	step_end
 
 Common_Movement_WalkDownFast::
-    walk_fast_down
-    step_end
+	walk_fast_down
+	step_end
 
 Common_Movement_WalkRightFast::
-    walk_fast_right
-    step_end
+	walk_fast_right
+	step_end
 
 Common_Movement_WalkLeftFast::
-    walk_fast_left
-    step_end
+	walk_fast_left
+	step_end
 
 Common_Movement_WalkUpFaster::
-    walk_faster_up
-    step_end
+	walk_faster_up
+	step_end
 
 Common_Movement_WalkDownFaster::
-    walk_faster_down
-    step_end
+	walk_faster_down
+	step_end
 
 Common_Movement_WalkRightFaster::
-    walk_faster_right
-    step_end
+	walk_faster_right
+	step_end
 
 Common_Movement_WalkLeftFaster::
-    walk_faster_left
-    step_end
+	walk_faster_left
+	step_end
+
+Common_Movement_KnockedBackUp::
+	face_down
+	lock_facing_direction
+	walk_faster_up
+	unlock_facing_direction
+	step_end
+
+Common_Movement_KnockedBackDown::
+	face_up
+	lock_facing_direction
+	walk_faster_down
+	unlock_facing_direction
+	step_end
+
+Common_Movement_KnockedBackRight::
+	face_left
+	lock_facing_direction
+	walk_faster_right
+	unlock_facing_direction
+	step_end
+
+Common_Movement_KnockedBackLeft::
+	face_right
+	lock_facing_direction
+	walk_faster_left
+	unlock_facing_direction
+	step_end

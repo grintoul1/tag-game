@@ -24,6 +24,8 @@
 #define SHOULD_SWITCH_ATTACKING_STAT_MINUS_TWO_PERCENTAGE           0
 #define SHOULD_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS_PERCENTAGE    0
 #define SHOULD_SWITCH_ALL_SCORES_BAD_PERCENTAGE                     50
+#define SHOULD_SWITCH_DYN_FUNC_PERCENTAGE                           0 // Dynamic switching function switch chance
+#define SHOULD_SWITCH_LOSES_1V1_PERCENTAGE                          0 // Keeping this disabled by default makes evaluating and testing switching behaviour when developing much easier
 
 // AI smart switching chances for bad statuses
 #define SHOULD_SWITCH_PERISH_SONG_PERCENTAGE                    50
@@ -45,11 +47,21 @@
 #define SHOULD_SWITCH_NATURAL_CURE_WEAK_STATS_RAISED_PERCENTAGE     0
 #define SHOULD_SWITCH_REGENERATOR_PERCENTAGE                        0
 #define SHOULD_SWITCH_REGENERATOR_STATS_RAISED_PERCENTAGE           0
+#define SHOULD_SWITCH_INTIMIDATE_PERCENTAGE                         0
+#define SHOULD_SWITCH_INTIMIDATE_STATS_RAISED_PERCENTAGE            0
+#define SHOULD_SWITCH_WISH_PASSING_PERCENTAGE                       0
 
 // AI switchin considerations
 #define ALL_MOVES_BAD_STATUS_MOVES_BAD                          FALSE // If the AI has no moves that affect the target, ShouldSwitchIfAllMovesBad can prompt a switch. Enabling this config will ignore status moves that can affect the target when making this decision.
 #define AI_BAD_SCORE_THRESHOLD                                  95 // Move scores beneath this threshold are considered "bad" when deciding switching
 #define AI_GOOD_SCORE_THRESHOLD                                 100 // Move scores above this threshold are considered "good" when deciding switching
+#define ALL_MOVES_BAD_NEEDS_GOOD_SWITCHIN                       FALSE // AI will only trigger ShouldSwitchIfAllMovesBad if they have a good switchin
+#define ALL_SCORES_BAD_NEEDS_GOOD_SWITCHIN                      FALSE // AI will only trigger ShouldSwitchIfAllScoresBad if they have a good switchin
+#define AI_DEFENSIVE_KO_THRESHOLD                               3 // AI must be able to take more than this many hits before being KO'd before being considered a "defensive mon"
+#define AI_TYPE_MATCHUP_THRESHOLD                               UQ_4_12(2.0) // AI must have a better matchup than this to be considered good; 2.0 is the default "Neutral" matchup from GetBattlerTypeMatchup
+#define AI_WISH_HEAL_THRESHOLD                                  4 // Fraction of HP AI must restore to be considered a good recipient of Wish, treated as a fraction denominator (ie. 4 = 1/4 = 25% HP)
+#define AI_SWITCHIN_DAMAGE_THRESHOLD                            0 // Damage AI must exceed to be considered an acceptable switchin candidate. Keep this *very low*, as it's used as a fallback case before giving up.
+#define AI_REVERSE_BATTLER_LOGIC_ORDER_CHANCE                   0 // Chance to reverse the order of mons when running AI logic in double battles. For example if both mons want to switch and there's only one mon to switch in, the first mon processed will get to switch; setting this above zero controls the chance of switching which slot is processed first
 
 // AI held item-based move scoring
 #define LOW_ACCURACY_THRESHOLD                                  75 // Moves with accuracy equal OR below this value are considered low accuracy
@@ -62,18 +74,43 @@
 #define SUCKER_PUNCH_CHANCE                                     50 // Chance for the AI to not use Sucker Punch if the player has a status move
 #define SUCKER_PUNCH_PREDICTION_CHANCE                          50 // Additional chance for the AI to not use Sucker Punch if actively predicting a status move if SUCKER_PUNCH_CHANCE fails
 #define PRIORITIZE_LAST_CHANCE_CHANCE                           100 // Chance the AI will prioritize Last Chance (priority move in the face of being outsped and KO'd) over Slow KO
+#define LAST_MON_PREFERS_NOT_SACRIFICE                          FALSE // Whether the AI will be hesitant to use self-sacrificing moves (Explosion, Final Gambit) with their last mon
+#define EXPLOSION_LOWER_HP_THRESHOLD                            10 // HP percentage at or beneath which the AI has a 90% chance to explode; otherwise scales between this and higher threshold
+#define EXPLOSION_HIGHER_HP_THRESHOLD                           90 // HP percentage at or above which the AI has a 0% chance to explode; otherwise scales between this and lower threshold
+#define EXPLOSION_MINIMUM_CHANCE                                0 // Lowest possible percent chance of the AI using explosion based on its current HP
+#define EXPLOSION_MAXIMUM_CHANCE                                90 // Highest possible percent chance of the AI using explosion based on its current HP
+#define FINAL_GAMBIT_CHANCE                                     50 // Chance for AI to consider using Final Gambit if it outspeeds the player and thinks it has more HP
+#define SHOULD_PIVOT_BREAK_SASH_CHANCE                          50 // Chance for ShouldPivot to return true when trying to break Multiscale and Focus Sash type effects while having a good switchin
+#define FAKE_OUT_SAVE_ALLY_CHANCE                               50 // Chance for AI to Fake Out to save its ally when ally is fast KO'd by both opponents
 
 // AI damage calc considerations
 #define RISKY_AI_CRIT_STAGE_THRESHOLD                           2   // Stat stages at which Risky will assume it gets a crit
 #define RISKY_AI_CRIT_THRESHOLD_GEN_1                           128 // "Stat stage" at which Risky will assume it gets a crit with gen 1 mechanics (this translates to an X / 255 % crit threshold)
+#define AI_DAMAGES_THROUGH_BERRIES                              TRUE // AI will see through resist berries when considering a certain KO threshold for the purposes damage calcs; this is considered when comparing best moves to KO to still pick the actual OHKO if needed
+#define AI_IGNORE_BERRY_KO_THRESHOLD                            2   // KO threshold AI must meet in order to treat it berry though it doesn't exist (ie. 2 means "If the AI can 2HKO with berry resisted attack + not-berry resisted next attack, ignore berry resistence when calcing first attack"). Requires AI_DAMAGES_THROUGH_BERRIES
+
+// AI damage calc roll considerations
+#define AI_ROLL_MIN                                             1
+#define AI_ROLL_MEDIAN                                          2
+#define AI_ROLL_MAX                                             3
+#define AI_ROLL_RANDOM                                          4
+#define AI_ROLL_TYPE_COUNT                                      5
+
+// Define which roll type to use in each context; overridden by AI_FLAG_RISKY and AI_FLAG_CONSERVATIVE
+#define AI_ROLL_ATTACKING                                       AI_ROLL_RANDOM
+#define AI_ROLL_DEFENDING                                       AI_ROLL_MAX
+#define AI_ROLL_SWITCHIN_ATTACKING                              AI_ROLL_MAX
+#define AI_ROLL_SWITCHIN_DEFENDING                              AI_ROLL_MAX
+#define AI_ROLL_SHOULD_SETUP_DEFENDING                          AI_ROLL_MAX
+#define AI_ROLL_ATTACKING_PARTNER                               AI_ROLL_MAX
 
 // AI prediction chances
 #define PREDICT_SWITCH_CHANCE                                   50
 #define PREDICT_MOVE_CHANCE                                     100
 
 // AI Terastalization chances
-#define AI_CONSERVE_TERA_CHANCE_PER_MON                         0 // Chance for AI with smart tera flag to decide not to tera before considering defensive benefit is this*(X-1), where X is the number of alive pokemon that could tera
-#define AI_TERA_PREDICT_CHANCE                                  0 // Chance for AI with smart tera flag to tera in the situation where tera would save it from a KO, but could be punished by a KO from a different move. 
+#define AI_CONSERVE_TERA_CHANCE_PER_MON                         0 // Chance for AI with smart tera flag to decide not to tera before considering defensive benefit is this*(X-1), where X is the number of alive Pokémon that could tera
+#define AI_TERA_PREDICT_CHANCE                                  0 // Chance for AI with smart tera flag to tera in the situation where tera would save it from a KO, but could be punished by a KO from a different move.
 
 // AI_FLAG_PP_STALL_PREVENTION settings
 #define PP_STALL_DISREGARD_MOVE_PERCENTAGE                      0 // Detection chance per roll
@@ -85,13 +122,16 @@
 // AI_FLAG_ASSUME_STATUS_MOVES settings
 #define ASSUME_STATUS_MOVES_HAS_TUNING                  TRUE // Flag has varying rates for different kinds of status move.
                                                              // Setting to false also means it will not alert on Fake Out or Super Fang.
-#define ASSUME_STATUS_HIGH_ODDS                         90 // Chance for AI to see extremely likely moves for a pokemon to have, like Spore
-#define ASSUME_STATUS_MEDIUM_ODDS                       70 // Chance for AI to see moderately likely moves for a pokemon to have, like Protect
-#define ASSUME_STATUS_LOW_ODDS                          40 // Chance for AI to see niche moves a pokemon may have but probably won't, like Entrainment
+#define ASSUME_STATUS_HIGH_ODDS                         90 // Chance for AI to see extremely likely moves for a Pokémon to have, like Spore
+#define ASSUME_STATUS_MEDIUM_ODDS                       70 // Chance for AI to see moderately likely moves for a Pokémon to have, like Protect
+#define ASSUME_STATUS_LOW_ODDS                          40 // Chance for AI to see niche moves a Pokémon may have but probably won't, like Entrainment
 #define ASSUME_ALL_STATUS_ODDS                          25 // Chance for the AI to see any kind of status move.
 
 // AI_FLAG_SMART_SWITCHING settings
 #define SMART_SWITCHING_OMNISCIENT                              FALSE // AI will use omniscience for switching calcs, regardless of omniscience setting otherwise
+
+// AI_FLAG_RANDOMIZE_SWITCHIN settings
+#define RANDOMIZE_SWITCHIN_ANY_VALID                            FALSE // If AI has no good candidate mons, it will still choose randomly from all valid options rather than defaulting to the last one in party order
 
 // Configurations specifically for AI_FLAG_DOUBLE_BATTLE.
 #define FRIENDLY_FIRE_RISKY_THRESHOLD           2
@@ -135,5 +175,81 @@
 #define Z_EFFECT_FOLLOW_ME_THRESHOLD    30
 #define Z_EFFECT_RESTORE_HP_LOWER_THRESHOLD   ENABLE_RECOVERY_THRESHOLD // threshold used for moves you could conceivably use more than once
 #define Z_EFFECT_RESTORE_HP_HIGHER_THRESHOLD  90                        // these moves are one-time use or drop your HP
+
+// PARTNER TRAINERS
+// AI switch chances; if you want more complex behaviour, modify GetSwitchChance
+#define SHOULD_PARTNER_SWITCH_WONDER_GUARD_PERCENTAGE                   100
+#define SHOULD_PARTNER_SWITCH_TRUANT_PERCENTAGE                         0
+#define SHOULD_PARTNER_SWITCH_ALL_MOVES_BAD_PERCENTAGE                  100
+#define PARTNER_STAY_IN_STATS_RAISED                                    0  // Number of stat stages that must be raised across any stats before the AI won't switch mon out in certain cases
+
+// AI smart switching chances; if you want more complex behaviour, modify GetSwitchChance
+#define SHOULD_PARTNER_SWITCH_ABSORBS_MOVE_PERCENTAGE_IF_FAST_KILLED            100
+#define SHOULD_PARTNER_SWITCH_ABSORBS_HIDDEN_POWER_PERCENTAGE_IF_FAST_KILLED    100
+#define SHOULD_PARTNER_SWITCH_TRAPPER_PERCENTAGE                                0
+#define SHOULD_PARTNER_SWITCH_FREE_TURN_PERCENTAGE                              0
+#define PARTNER_STAY_IN_ABSORBING_PERCENTAGE                                    0  // Chance to stay in if outgoing mon has super effective move against player, will prevent switching out for an absorber with this likelihood
+#define SHOULD_PARTNER_SWITCH_HASBADODDS_PERCENTAGE                             0
+#define SHOULD_PARTNER_SWITCH_ENCORE_STATUS_PERCENTAGE                          100 // Chance to switch if encored into status move
+#define SHOULD_PARTNER_SWITCH_ENCORE_DAMAGE_PERCENTAGE                          0   // Chance to switch if encored into damaging move
+#define SHOULD_PARTNER_SWITCH_CHOICE_LOCKED_PERCENTAGE                          0 // Only if locked into status move
+#define SHOULD_PARTNER_SWITCH_ATTACKING_STAT_MINUS_TWO_PERCENTAGE               100
+#define SHOULD_PARTNER_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS_PERCENTAGE        100
+#define SHOULD_PARTNER_SWITCH_ALL_SCORES_BAD_PERCENTAGE                         100
+
+// AI smart switching chances for bad statuses
+#define SHOULD_PARTNER_SWITCH_PERISH_SONG_PERCENTAGE                    100
+#define SHOULD_PARTNER_SWITCH_YAWN_PERCENTAGE                           100
+#define SHOULD_PARTNER_SWITCH_BADLY_POISONED_PERCENTAGE                 0
+#define SHOULD_PARTNER_SWITCH_BADLY_POISONED_STATS_RAISED_PERCENTAGE    0
+#define SHOULD_PARTNER_SWITCH_CURSED_PERCENTAGE                         0
+#define SHOULD_PARTNER_SWITCH_CURSED_STATS_RAISED_PERCENTAGE            0
+#define SHOULD_PARTNER_SWITCH_NIGHTMARE_PERCENTAGE                      0
+#define SHOULD_PARTNER_SWITCH_NIGHTMARE_STATS_RAISED_PERCENTAGE         0
+#define SHOULD_PARTNER_SWITCH_SEEDED_PERCENTAGE                         0
+#define SHOULD_PARTNER_SWITCH_SEEDED_STATS_RAISED_PERCENTAGE            0
+#define SHOULD_PARTNER_SWITCH_INFATUATION_PERCENTAGE                    100
+
+// AI smart switching chances for beneficial abilities
+#define SHOULD_PARTNER_SWITCH_NATURAL_CURE_STRONG_PERCENTAGE                100
+#define SHOULD_PARTNER_SWITCH_NATURAL_CURE_STRONG_STATS_RAISED_PERCENTAGE   100
+#define SHOULD_PARTNER_SWITCH_NATURAL_CURE_WEAK_PERCENTAGE                  0
+#define SHOULD_PARTNER_SWITCH_NATURAL_CURE_WEAK_STATS_RAISED_PERCENTAGE     0
+#define SHOULD_PARTNER_SWITCH_REGENERATOR_PERCENTAGE                        0
+#define SHOULD_PARTNER_SWITCH_REGENERATOR_STATS_RAISED_PERCENTAGE           0
+
+// AI switchin considerations
+#define PARTNER_ALL_MOVES_BAD_STATUS_MOVES_BAD                          FALSE // If the AI has no moves that affect the target, ShouldSwitchIfAllMovesBad can prompt a switch. Enabling this config will ignore status moves that can affect the target when making this decision.
+#define PARTNER_AI_BAD_SCORE_THRESHOLD                                  95 // Move scores beneath this threshold are considered "bad" when deciding switching
+#define PARTNER_AI_GOOD_SCORE_THRESHOLD                                 100 // Move scores above this threshold are considered "good" when deciding switching
+
+// AI held item-based move scoring
+#define PARTNER_LOW_ACCURACY_THRESHOLD                                  75 // Moves with accuracy equal OR below this value are considered low accuracy 
+
+// AI move scoring
+#define PARTNER_STATUS_MOVE_FOCUS_PUNCH_CHANCE                          0 // Chance the AI will use a status move if the player's best move is Focus Punch
+#define PARTNER_BOOST_INTO_HAZE_CHANCE                                  0 // Chance the AI will use a stat boosting move if the player has used Haze
+
+// AI damage calc considerations
+#define PARTNER_RISKY_AI_CRIT_STAGE_THRESHOLD                           2   // Stat stages at which Risky will assume it gets a crit
+#define PARTNER_RISKY_AI_CRIT_THRESHOLD_GEN_1                           128 // "Stat stage" at which Risky will assume it gets a crit with gen 1 mechanics (this translates to an X / 255 % crit threshold)
+
+// AI prediction chances
+#define PARTNER_PREDICT_SWITCH_CHANCE                                   0
+#define PARTNER_PREDICT_MOVE_CHANCE                                     0
+
+// AI Terastalization chances
+#define PARTNER_AI_CONSERVE_TERA_CHANCE_PER_MON                         0 // Chance for AI with smart tera flag to decide not to tera before considering defensive benefit is this*(X-1), where X is the number of alive pokemon that could tera
+#define PARTNER_AI_TERA_PREDICT_CHANCE                                  0 // Chance for AI with smart tera flag to tera in the situation where tera would save it from a KO, but could be punished by a KO from a different move. 
+
+// AI PP Stall detection chance per roll
+#define PARTNER_PP_STALL_DISREGARD_MOVE_PERCENTAGE                      0
+// Score reduction if any roll for PP stall detection passes
+#define PARTNER_PP_STALL_SCORE_REDUCTION                                0
+
+// AI's acceptable number of hits to KO the partner via friendly fire in a double battle.
+#define PARTNER_FRIENDLY_FIRE_RISKY_THRESHOLD           3
+#define PARTNER_FRIENDLY_FIRE_NORMAL_THRESHOLD          3
+#define PARTNER_FRIENDLY_FIRE_CONSERVATIVE_THRESHOLD    3
 
 #endif // GUARD_CONFIG_AI_H

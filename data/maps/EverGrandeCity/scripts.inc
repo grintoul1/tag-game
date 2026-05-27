@@ -19,13 +19,13 @@ EverGrandeCity_OnFrame:
 
 EverGrandeCity_EventScript_EmmieStateEliteFourWipe::
 	setvar VAR_PARTNER_EMMIE_STATE, 72
-	clearflag FLAG_UTILITY_MENU_E4
+	clearflag FLAG_HIDE_UTILITY_MENU_E4
 	return
 
 EverGrandeCity_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
-	clearflag FLAG_UTILITY_MENU_E4
+	clearflag FLAG_HIDE_UTILITY_MENU_E4
 	end
 
 EverGrandeCity_EventScript_EmmieCutsceneEmmiePos:

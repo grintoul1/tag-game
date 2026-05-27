@@ -19,10 +19,10 @@ Categories:
 MULTI_BATTLE_TEST("TAG TEST: Snow Warning and Hail Warning summon the correct weather")
 {
     GIVEN {
-        MULTI_PLAYER(SPECIES_NINETALES_ALOLA) { Speed(4); Ability(ABILITY_SNOW_WARNING); }
-        MULTI_PARTNER(SPECIES_ABOMASNOW) { Speed(3);Ability(ABILITY_HAIL_WARNING); }
-        MULTI_OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); }
-        MULTI_OPPONENT_B(SPECIES_WOBBUFFET) { Speed(1); }
+        PLAYER(SPECIES_NINETALES_ALOLA) { Speed(4); Ability(ABILITY_SNOW_WARNING); }
+        PARTNER(SPECIES_ABOMASNOW) { Speed(3);Ability(ABILITY_HAIL_WARNING); }
+        OPPONENT_A(SPECIES_WOBBUFFET) { Speed(2); }
+        OPPONENT_B(SPECIES_WOBBUFFET) { Speed(1); }
     } WHEN {
         TURN {}
     } SCENE {

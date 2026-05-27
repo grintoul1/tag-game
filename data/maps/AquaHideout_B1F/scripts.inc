@@ -98,35 +98,26 @@ playbgm MUS_ENCOUNTER_AQUA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
 msgbox AquaHideout_B1F_Text_Grunt2Intro MSGBOX_AUTOCLOSE
-goto AquaHideout_B1F_EventScript_Grunt7Grunt2_ChoosePartyForMultiBattle
-releaseall
-end
-
-AquaHideout_B1F_EventScript_Grunt7Grunt2_ChoosePartyForMultiBattle::
-special SavePlayerParty
-fadescreen FADE_TO_BLACK
-special ChooseHalfPartyForBattle
-waitstate
-goto_if_ne VAR_RESULT, 0, AquaHideout_B1F_EventScript_Grunt7Grunt2DoMultiBattle
-goto AquaHideout_B1F_EventScript_Grunt7Grunt2_ChoosePartyForMultiBattle
-closemessage
+goto AquaHideout_B1F_EventScript_Grunt7Grunt2DoMultiBattle
 releaseall
 end
 
 AquaHideout_B1F_EventScript_Grunt7Grunt2DoMultiBattle::
-playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-multi_2_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_7, AquaHideout_B1F_Text_Grunt7Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_2, AquaHideout_B1F_Text_Grunt2Defeat, PARTNER_TABITHA
-special LoadPlayerParty
-switch VAR_RESULT
-case 1, AquaHideout_B1F_EventScript_Grunt7Grunt2Victory
-fadescreen FADE_TO_BLACK
-destroyfollowernpc
-clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
-setvar VAR_PARTNER_EMMIE_STATE, 48
-setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
-createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+	multi_2p_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_7, AquaHideout_B1F_Text_Grunt7Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_2, AquaHideout_B1F_Text_Grunt2Defeat, PARTNER_TABITHA
+	special LoadPlayerParty
+	switch VAR_RESULT
+	case 1, AquaHideout_B1F_EventScript_Grunt7Grunt2Victory
+	fadescreen FADE_TO_BLACK
+	destroyfollowernpc
+	special ClearHideoutPool
+	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
+	setvar VAR_PARTNER_EMMIE_STATE, 48
+	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_SISTER_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	special SetCB2WhiteOut
+	waitstate
+
 
 AquaHideout_B1F_EventScript_Grunt7Grunt2Victory::
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
@@ -168,35 +159,25 @@ playbgm MUS_ENCOUNTER_AQUA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 waitmovement 0
 msgbox AquaHideout_B1F_Text_Grunt3Intro MSGBOX_AUTOCLOSE
-goto AquaHideout_B1F_EventScript_Grunt5Grunt3_ChoosePartyForMultiBattle
-releaseall
-end
-
-AquaHideout_B1F_EventScript_Grunt5Grunt3_ChoosePartyForMultiBattle::
-special SavePlayerParty
-fadescreen FADE_TO_BLACK
-special ChooseHalfPartyForBattle
-waitstate
-goto_if_ne VAR_RESULT, 0, AquaHideout_B1F_EventScript_Grunt5Grunt3DoMultiBattle
-goto AquaHideout_B1F_EventScript_Grunt5Grunt3_ChoosePartyForMultiBattle
-closemessage
+goto AquaHideout_B1F_EventScript_Grunt5Grunt3DoMultiBattle
 releaseall
 end
 
 AquaHideout_B1F_EventScript_Grunt5Grunt3DoMultiBattle::
-playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-multi_2_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_5, AquaHideout_B1F_Text_Grunt5Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_3, AquaHideout_B1F_Text_Grunt3Defeat, PARTNER_TABITHA
-special LoadPlayerParty
-switch VAR_RESULT
-case 1, AquaHideout_B1F_EventScript_Grunt5Grunt3Victory
-fadescreen FADE_TO_BLACK
-destroyfollowernpc
-clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
-setvar VAR_PARTNER_EMMIE_STATE, 48
-setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
-createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+	multi_2p_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_5, AquaHideout_B1F_Text_Grunt5Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_3, AquaHideout_B1F_Text_Grunt3Defeat, PARTNER_TABITHA
+	special LoadPlayerParty
+	switch VAR_RESULT
+	case 1, AquaHideout_B1F_EventScript_Grunt5Grunt3Victory
+	fadescreen FADE_TO_BLACK
+	destroyfollowernpc
+	special ClearHideoutPool
+	clearflag FLAG_HIDE_AQUA_HIDEOUT_TABITHA
+	setvar VAR_PARTNER_EMMIE_STATE, 48
+	setflag FLAG_HIDE_AQUA_HIDEOUT_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_SISTER_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	special SetCB2WhiteOut
+	waitstate
 
 AquaHideout_B1F_EventScript_Grunt5Grunt3Victory::
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp

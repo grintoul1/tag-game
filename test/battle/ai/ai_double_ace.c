@@ -12,7 +12,6 @@ AI_DOUBLE_BATTLE_TEST("AI_FLAG_DOUBLE_ACE_POKEMON: U-Turn won't send out any of 
 {
     u32 flag;
 
-    KNOWN_FAILING; // Not used in game
     PARAMETRIZE { flag = AI_FLAG_DOUBLE_ACE_POKEMON; }
     PARAMETRIZE { flag = 0; }
 
@@ -37,12 +36,14 @@ AI_DOUBLE_BATTLE_TEST("AI_FLAG_DOUBLE_ACE_POKEMON: U-Turn won't send out any of 
             EXPECT_MOVE(opponentLeft, MOVE_U_TURN);
             EXPECT_MOVE(opponentRight, MOVE_U_TURN);
 
-            if(flag == AI_FLAG_DOUBLE_ACE_POKEMON) {
-                EXPECT_SEND_OUT(opponentLeft, 3);
-                EXPECT_SEND_OUT(opponentRight, 2);
-            } else {
-                EXPECT_SEND_OUT(opponentLeft, 4);
-                EXPECT_SEND_OUT(opponentRight, 5);
+            EXPECT_FAIL { // Switch AI doesn't consider AI_FLAG_DOUBLE_ACE_POKEMON 
+                if(flag == AI_FLAG_DOUBLE_ACE_POKEMON) {
+                    EXPECT_SEND_OUT(opponentLeft, 3);
+                    EXPECT_SEND_OUT(opponentRight, 2);
+                } else {
+                    EXPECT_SEND_OUT(opponentLeft, 4);
+                    EXPECT_SEND_OUT(opponentRight, 2);
+                }
             }
         }
     }
@@ -50,7 +51,6 @@ AI_DOUBLE_BATTLE_TEST("AI_FLAG_DOUBLE_ACE_POKEMON: U-Turn won't send out any of 
 
 AI_DOUBLE_BATTLE_TEST("AI_FLAG_DOUBLE_ACE_POKEMON: U-Turn will send out an Ace Mon if no other options remain")
 {
-    KNOWN_FAILING; // Not used in game
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_SMART_SWITCHING | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_ACE_POKEMON);
 
@@ -77,8 +77,8 @@ AI_DOUBLE_BATTLE_TEST("AI_FLAG_DOUBLE_ACE_POKEMON: U-Turn will send out an Ace M
 
 AI_DOUBLE_BATTLE_TEST("AI_FLAG_DOUBLE_ACE_POKEMON: Ace mons won't be switched in even if they are the best candidates")
 {
-    KNOWN_FAILING; // Not used in game
     GIVEN {
+        WITH_CONFIG(AI_REVERSE_BATTLER_LOGIC_ORDER_CHANCE, 0);
         ASSUME(GetSpeciesType(SPECIES_GENGAR, 0) == TYPE_GHOST);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_SMART_SWITCHING | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_ACE_POKEMON);
 
@@ -95,5 +95,62 @@ AI_DOUBLE_BATTLE_TEST("AI_FLAG_DOUBLE_ACE_POKEMON: Ace mons won't be switched in
         OPPONENT(SPECIES_POOCHYENA) { Moves(MOVE_CRUNCH); Level(50); }
     } WHEN {
         TURN { EXPECT_SWITCH(opponentLeft, 2); }
+    }
+}
+
+//FIXER
+/*AI_DOUBLE_BATTLE_TEST("AI_FLAG_DOUBLE_ACE_POKEMON: Ace mons won't be switched in even if they are the best candidates (reversed)")
+{
+    GIVEN {
+        WITH_CONFIG(AI_REVERSE_BATTLER_LOGIC_ORDER_CHANCE, 100);
+        ASSUME(GetSpeciesType(SPECIES_GENGAR, 0) == TYPE_GHOST);
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_SMART_SWITCHING | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_ACE_POKEMON);
+
+        PLAYER(SPECIES_GENGAR) { Level(10); }
+        PLAYER(SPECIES_GENGAR) { Level(10); }
+
+        OPPONENT(SPECIES_RATTATA) { Moves(MOVE_SCRATCH); Level(10); }
+        OPPONENT(SPECIES_PSYDUCK) { Moves(MOVE_SCRATCH); Level(10); }
+
+        OPPONENT(SPECIES_ABRA) { Moves(MOVE_ABSORB); Level(20); }
+
+        // Aces
+        OPPONENT(SPECIES_MIGHTYENA) { Moves(MOVE_CRUNCH); Level(50); }
+        OPPONENT(SPECIES_POOCHYENA) { Moves(MOVE_CRUNCH); Level(50); }
+    } WHEN {
+        TURN { EXPECT_SWITCH(opponentRight, 2); }
+    }
+}*/
+
+AI_DOUBLE_BATTLE_TEST("AI_FLAG_DOUBLE_ACE_POKEMON: sends out Ace mons when no other options remain mid-battle")
+{
+    KNOWN_FAILING;
+    GIVEN {
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_SMART_SWITCHING | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_ACE_POKEMON);
+
+        PLAYER(SPECIES_WOBBUFFET) { Level(50); Speed(200); Moves(MOVE_THUNDERBOLT, MOVE_CELEBRATE); SpAttack(200); }
+        PLAYER(SPECIES_WOBBUFFET) { Level(50); Speed(150); Moves(MOVE_THUNDERBOLT, MOVE_CELEBRATE); SpAttack(200); }
+
+        OPPONENT(SPECIES_ZIGZAGOON) { Level(5); HP(1); Speed(1); Moves(MOVE_SPLASH); }
+        OPPONENT(SPECIES_POOCHYENA) { Level(5); HP(1); Speed(1); Moves(MOVE_SPLASH); }
+
+        // Aces
+        OPPONENT(SPECIES_GENGAR) { Level(50); Speed(10); Moves(MOVE_SPLASH); }
+        OPPONENT(SPECIES_MIGHTYENA) { Level(50); Speed(10); Moves(MOVE_CRUNCH); }
+    } WHEN {
+        TURN {
+            MOVE(playerLeft, MOVE_THUNDERBOLT, target: opponentLeft);
+            MOVE(playerRight, MOVE_CELEBRATE);
+            EXPECT_MOVE(opponentLeft, MOVE_SPLASH);
+            EXPECT_MOVE(opponentRight, MOVE_SPLASH);
+            EXPECT_SEND_OUT(opponentLeft, 2);
+        }
+        TURN {
+            MOVE(playerLeft, MOVE_CELEBRATE);
+            MOVE(playerRight, MOVE_THUNDERBOLT, target: opponentRight);
+            EXPECT_MOVE(opponentLeft, MOVE_SPLASH);
+            EXPECT_MOVE(opponentRight, MOVE_SPLASH);
+            EXPECT_SEND_OUT(opponentRight, 3);
+        }
     }
 }

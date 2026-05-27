@@ -83,35 +83,25 @@ playbgm MUS_ENCOUNTER_MAGMA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
 msgbox MagmaHideout_4F_Text_Grunt12Intro, MSGBOX_AUTOCLOSE
-goto MagmaHideout_4F_EventScript_Grunt11Grunt12_ChoosePartyForMultiBattle
-releaseall
-end
-
-MagmaHideout_4F_EventScript_Grunt11Grunt12_ChoosePartyForMultiBattle::
-special SavePlayerParty
-fadescreen FADE_TO_BLACK
-special ChooseHalfPartyForBattle
-waitstate
-goto_if_ne VAR_RESULT, 0, MagmaHideout_4F_EventScript_Grunt11Grunt12DoMultiBattle
-goto MagmaHideout_4F_EventScript_Grunt11Grunt12_ChoosePartyForMultiBattle
-closemessage
+goto MagmaHideout_4F_EventScript_Grunt11Grunt12DoMultiBattle
 releaseall
 end
 
 MagmaHideout_4F_EventScript_Grunt11Grunt12DoMultiBattle::
-playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_11, MagmaHideout_4F_Text_Grunt11Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_12, MagmaHideout_4F_Text_Grunt12Defeat, PARTNER_SHELLY
-special LoadPlayerParty
-switch VAR_RESULT
-case 1, MagmaHideout_4F_EventScript_Grunt11Grunt12Victory
-fadescreen FADE_TO_BLACK
-destroyfollowernpc
-setvar VAR_PARTNER_EMMIE_STATE, 42
-clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
-setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
-createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+	multi_2p_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_13, MagmaHideout_4F_Text_Grunt11Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_14, MagmaHideout_4F_Text_Grunt12Defeat, PARTNER_SHELLY_MHO
+	special LoadPlayerParty
+	switch VAR_RESULT
+	case 1, MagmaHideout_4F_EventScript_Grunt11Grunt12Victory
+	fadescreen FADE_TO_BLACK
+	destroyfollowernpc
+	special ClearHideoutPool
+	setvar VAR_PARTNER_EMMIE_STATE, 42
+	clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_SISTER_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	special SetCB2WhiteOut
+	waitstate
 
 MagmaHideout_4F_EventScript_Grunt11Grunt12Victory::
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
@@ -292,6 +282,9 @@ MagmaHideout_4F_Text_TabithaLooksLikeYoureCaught:
 	.string "between a rock and a hot place!\p"
 	.string "This time there's no way out.$"
 
+MagmaHideout_4F_Text_TabithaNoEscape:
+	.string "This time there's no way out.$"
+
 MagmaHideout_4F_Text_CourtneyTabitha_NowhereToRun:
 	.string "Tabitha: There's nowhere to run!$"
 
@@ -447,40 +440,41 @@ MagmaHideout_4F_EventScript_CourtneyTabitha::
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_TabithaLooksLikeYoureCaught, MSGBOX_DEFAULT
 	closemessage
-	goto MagmaHideout_4F_EventScript_CourtneyTabitha_ChoosePartyForMultiBattle
-	releaseall
-	end
+	setvar VAR_0x800A, 0
+	setvar VAR_0x800B, 4
+	special ClearHideoutPool @ Restore player party
+	special FillPoolForShelly @ Refill pool with Tabitha's team
+	goto MagmaHideout_4F_EventScript_CourtneyTabithaFightBattle
 
-MagmaHideout_4F_EventScript_CourtneyTabitha_ChoosePartyForMultiBattle::
+MagmaHideout_4F_EventScript_CourtneyTabithaFightBattle::
 	special SavePlayerParty
 	fadescreen FADE_TO_BLACK
-	special ChooseHalfPartyForBattle
+	special ChoosePartyForStoryBattle
 	waitstate
 	goto_if_ne VAR_RESULT, 0, MagmaHideout_4F_EventScript_CourtneyTabithaDoMultiBattle
-	goto MagmaHideout_4F_EventScript_CourtneyTabitha_NowhereToRun
-	closemessage
+	special LoadPlayerParty
+	goto MagmaHideout_4F_EventScript_CourtneyTabithaNoEscape
 	releaseall
 	end
 
-MagmaHideout_4F_EventScript_CourtneyTabitha_NowhereToRun::
-	msgbox MagmaHideout_4F_Text_CourtneyTabitha_NowhereToRun, MSGBOX_DEFAULT
-	closemessage
-	goto MagmaHideout_4F_EventScript_CourtneyTabitha_ChoosePartyForMultiBattle
-	releaseall
-	end
+MagmaHideout_4F_EventScript_CourtneyTabithaNoEscape::
+	msgbox MagmaHideout_4F_Text_TabithaNoEscape, MSGBOX_DEFAULT
+	waitmessage
+	goto MagmaHideout_4F_EventScript_CourtneyTabithaFightBattle
 
 MagmaHideout_4F_EventScript_CourtneyTabithaDoMultiBattle::
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
-	multi_2_vs_2 TRAINER_TABITHA_MAGMA_HIDEOUT, MagmaHideout_4F_Text_TabithaDefeat, TRAINER_COURTNEY_MAGMA_HIDEOUT, MagmaHideout_4F_Text_CourtneyDefeat, PARTNER_SHELLY
+	multi_2_vs_2 TRAINER_TABITHA_MAGMA_HIDEOUT, MagmaHideout_4F_Text_TabithaDefeat, TRAINER_COURTNEY_MAGMA_HIDEOUT, MagmaHideout_4F_Text_CourtneyDefeat, PARTNER_SHELLY_MHO_BOSS
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, MagmaHideout_4F_EventScript_CourtneyTabithaVictory
 	fadescreen FADE_TO_BLACK
 	destroyfollowernpc
+	special ClearHideoutPool
 	setvar VAR_PARTNER_EMMIE_STATE, 42
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
-	createfollowernpc OBJ_EVENT_GFX_GREEN_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
+	createfollowernpc OBJ_EVENT_GFX_SISTER_NORMAL, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	special SetCB2WhiteOut
 	waitstate
 
@@ -516,6 +510,7 @@ MagmaHideout_4F_EventScript_CourtneyTabithaVictory::
 	setobjectxyperm LOCALID_COURTNEY, 20, 5
 	destroyfollowernpc
 	setvar VAR_FOLLOWER_MAGMA_HIDEOUT_SHELLY, 2
+	special ClearHideoutPool
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_COURTNEY
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_SHELLY
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_EMMIE
@@ -547,8 +542,8 @@ MagmaHideout_4F_EventScript_Maxie::
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
 	applymovement LOCALID_MAXIE, Common_Movement_FacePlayer
 	waitmovement 0
-	call_if_set FLAG_MT_PYRE_MAXIE_DEFEATED, MagmaHideout_4F_EventScript_MaxiePyreMaxieDefeated
-	call_if_set FLAG_MT_PYRE_ARCHIE_DEFEATED, MagmaHideout_4F_EventScript_MaxiePyreArchieDefeated
+	call_if_set FLAG_EVIL_TEAM_AQUA, MagmaHideout_4F_EventScript_MaxiePyreMaxieDefeated
+	call_if_set FLAG_EVIL_TEAM_MAGMA, MagmaHideout_4F_EventScript_MaxiePyreArchieDefeated
 	goto MagmaHideout_4F_EventScript_MaxieDoMultiBattle
 	releaseall
 	end

@@ -273,54 +273,53 @@ void PrintMemAcc(const Event& event)
     case 0x05:
         PrintByte("MEMACC, mem_mem_sub, 0x%02X, 0x%02X", s_memaccParam1, event.param2);
         break;
-    // TODO: everything else
     case 0x06:
+        PrintByte("MEMACC, mem_beq, 0x%02X, %u", s_memaccParam1, event.param2);
+        PrintWord("%s_%u_L%u", g_asmLabel.c_str(), g_agbTrack, s_memaccParam2);
         break;
     case 0x07:
+        PrintByte("MEMACC, mem_bne, 0x%02X, %u", s_memaccParam1, event.param2);
+        PrintWord("%s_%u_L%u", g_asmLabel.c_str(), g_agbTrack, s_memaccParam2);
         break;
     case 0x08:
+        PrintByte("MEMACC, mem_bhi, 0x%02X, %u", s_memaccParam1, event.param2);
+        PrintWord("%s_%u_L%u", g_asmLabel.c_str(), g_agbTrack, s_memaccParam2);
         break;
     case 0x09:
+        PrintByte("MEMACC, mem_bhs, 0x%02X, %u", s_memaccParam1, event.param2);
+        PrintWord("%s_%u_L%u", g_asmLabel.c_str(), g_agbTrack, s_memaccParam2);
         break;
     case 0x0A:
+        PrintByte("MEMACC, mem_bls, 0x%02X, %u", s_memaccParam1, event.param2);
+        PrintWord("%s_%u_L%u", g_asmLabel.c_str(), g_agbTrack, s_memaccParam2);
         break;
     case 0x0B:
+        PrintByte("MEMACC, mem_blo, 0x%02X, %u", s_memaccParam1, event.param2);
+        PrintWord("%s_%u_L%u", g_asmLabel.c_str(), g_agbTrack, s_memaccParam2);
         break;
     case 0x0C:
+        PrintByte("MEMACC, mem_mem_beq, 0x%02X, 0x%02X", s_memaccParam1, event.param2);
+        PrintWord("%s_%u_L%u", g_asmLabel.c_str(), g_agbTrack, s_memaccParam2);
         break;
     case 0x0D:
+        PrintByte("MEMACC, mem_mem_bne, 0x%02X, 0x%02X", s_memaccParam1, event.param2);
+        PrintWord("%s_%u_L%u", g_asmLabel.c_str(), g_agbTrack, s_memaccParam2);
         break;
     case 0x0E:
+        PrintByte("MEMACC, mem_mem_bhi, 0x%02X, 0x%02X", s_memaccParam1, event.param2);
+        PrintWord("%s_%u_L%u", g_asmLabel.c_str(), g_agbTrack, s_memaccParam2);
         break;
     case 0x0F:
+        PrintByte("MEMACC, mem_mem_bhs, 0x%02X, 0x%02X", s_memaccParam1, event.param2);
+        PrintWord("%s_%u_L%u", g_asmLabel.c_str(), g_agbTrack, s_memaccParam2);
         break;
     case 0x10:
+        PrintByte("MEMACC, mem_mem_bls, 0x%02X, 0x%02X", s_memaccParam1, event.param2);
+        PrintWord("%s_%u_L%u", g_asmLabel.c_str(), g_agbTrack, s_memaccParam2);
         break;
     case 0x11:
-        break;
-    case 0x46:
-        break;
-    case 0x47:
-        break;
-    case 0x48:
-        break;
-    case 0x49:
-        break;
-    case 0x4A:
-        break;
-    case 0x4B:
-        break;
-    case 0x4C:
-        break;
-    case 0x4D:
-        break;
-    case 0x4E:
-        break;
-    case 0x4F:
-        break;
-    case 0x50:
-        break;
-    case 0x51:
+        PrintByte("MEMACC, mem_mem_blo, 0x%02X, 0x%02X", s_memaccParam1, event.param2);
+        PrintWord("%s_%u_L%u", g_asmLabel.c_str(), g_agbTrack, s_memaccParam2);
         break;
     default:
         break;
@@ -352,7 +351,10 @@ void PrintControllerOp(const Event& event)
     switch (event.param1)
     {
     case 0x01:
-        PrintOp(event.time, "MOD   ", "%u", event.param2);
+        if (g_suppressMod)
+            PrintWait(event.time);
+        else
+            PrintOp(event.time, "MOD   ", "%u", event.param2);
         break;
     case 0x07:
         PrintOp(event.time, "VOL   ", "%u*%s_mvl/mxv", event.param2, g_asmLabel.c_str());
@@ -426,6 +428,7 @@ void PrintAgbTrack(std::vector<Event>& events)
     ResetTrackVars();
 
     bool foundVolBeforeNote = false;
+    bool skipFine = false;
 
     for (const Event& event : events)
     {
@@ -520,9 +523,16 @@ void PrintAgbTrack(std::vector<Event>& events)
             PrintWait(event.time);
             break;
         }
+
+        if (event.type == EventType::LoopEnd)
+        {
+            skipFine = true;
+            break;
+        }
     }
 
-    PrintByte("FINE");
+    if (!skipFine)
+        PrintByte("FINE");
 }
 
 void PrintAgbTrackLoop(std::vector<Event>& events, int trackLoops)
@@ -534,6 +544,7 @@ void PrintAgbTrackLoop(std::vector<Event>& events, int trackLoops)
     ResetTrackVars();
 
     bool foundVolBeforeNote = false;
+    bool skipFine = false;
 
     for (const Event& event : events)
     {
@@ -630,10 +641,17 @@ void PrintAgbTrackLoop(std::vector<Event>& events, int trackLoops)
                 PrintWait(event.time);
                 break;
             }
+
+            if (event.type == EventType::LoopEnd)
+            {
+                skipFine = true;
+                break;
+            }
         }
     }
 
-    PrintByte("FINE");
+    if (!skipFine)
+        PrintByte("FINE");
 }
 
 void PrintAgbFooter()

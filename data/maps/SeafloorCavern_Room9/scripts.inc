@@ -96,8 +96,8 @@ SeafloorCavern_Room9_EventScript_ShellyMatt::
 	closemessage
 	setweather WEATHER_NONE
 	doweather
+	special Script_FadeOutMapMusic
 	special WaitWeather
-	waitstate
 	setvar VAR_RESULT, 1
 	playse SE_M_DETECT
 	dofieldeffectsparkle 17, 42, 0
@@ -115,7 +115,6 @@ SeafloorCavern_Room9_EventScript_ShellyMatt::
 	applymovement LOCALID_KYOGRE, SeafloorCavern_Room9_Movement_KyogreApproach
 	waitmovement 0
 	special FadeOutOrbEffect
-	waitstate
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
 	setvar VAR_0x8006, 8  @ num shakes

@@ -1,6 +1,7 @@
 #ifndef GUARD_CONSTANTS_PARTY_MENU_H
 #define GUARD_CONSTANTS_PARTY_MENU_H
 
+#define PC_MON_CHOSEN 0xFE
 #define PARTY_NOTHING_CHOSEN 0xFF
 
 #define AILMENT_NONE  0
@@ -12,36 +13,6 @@
 #define AILMENT_PKRS  6
 #define AILMENT_FNT   7
 #define AILMENT_FRB   8
-
-#define PARTY_LAYOUT_SINGLE             0
-#define PARTY_LAYOUT_DOUBLE             1
-#define PARTY_LAYOUT_MULTI              2
-#define PARTY_LAYOUT_MULTI_SHOWCASE     3  // The layout during the screen that appears just before a multi battle
-#define PARTY_LAYOUT_MIRROR             4  // The layout during the screen that appears just before Emmie mirror battle
-#define PARTY_LAYOUT_MULTI_SHARED       5
-#define PARTY_LAYOUT_OVERWORLD          6
-#define PARTY_LAYOUT_OVERWORLD_SHARED   7
-#define PARTY_LAYOUT_COUNT              8
-#define KEEP_PARTY_LAYOUT               0xFF
-
-#define PARTY_MENU_TYPE_FIELD                     0
-#define PARTY_MENU_TYPE_IN_BATTLE                 1
-#define PARTY_MENU_TYPE_CONTEST                   2
-#define PARTY_MENU_TYPE_CHOOSE_MON                3
-#define PARTY_MENU_TYPE_CHOOSE_HALF               4  // multi battles, eReader battles, and some battle facilities
-#define PARTY_MENU_TYPE_MULTI_SHOWCASE            5
-#define PARTY_MENU_TYPE_DAYCARE                   6
-#define PARTY_MENU_TYPE_MOVE_RELEARNER            7
-#define PARTY_MENU_TYPE_UNION_ROOM_REGISTER       8  // trading board
-#define PARTY_MENU_TYPE_UNION_ROOM_TRADE          9  // trading board
-#define PARTY_MENU_TYPE_SPIN_TRADE                10 // Unused beta for Gen IV's Spin Trade
-#define PARTY_MENU_TYPE_MINIGAME                  11
-#define PARTY_MENU_TYPE_STORE_PYRAMID_HELD_ITEMS  12
-#define PARTY_MENU_TYPE_STATUS                    13
-#define PARTY_MENU_TYPE_DAMAGE                    14
-#define PARTY_MENU_TYPE_POISON                    15
-#define PARTY_MENU_TYPE_MULTI_SHARED              16
-#define PARTY_MENU_TYPE_CHOOSE_HALF_ELITE_FOUR    17
 
 #define PARTY_ACTION_CHOOSE_MON         0
 #define PARTY_ACTION_SEND_OUT           1
@@ -94,24 +65,29 @@
 #define PARTY_MSG_CHOOSE_MON_FOR_BOX        30
 #define PARTY_MSG_MOVE_ITEM_WHERE           31
 #define PARTY_MSG_WHICH_STATUS              32
-#define PARTY_MSG_SET_HP                    33
+#define PARTY_MSG_SET_HP                    33 
+#define PARTY_MSG_CANNOT_SELECT             34
 
 #define PARTY_MSG_NONE                      127
 
 // IDs for DisplayPartyPokemonDescriptionText, to display a message in the party pokemon's box
-#define PARTYBOX_DESC_NO_USE      0
-#define PARTYBOX_DESC_ABLE_3      1
-#define PARTYBOX_DESC_FIRST       2
-#define PARTYBOX_DESC_SECOND      3
-#define PARTYBOX_DESC_THIRD       4
-#define PARTYBOX_DESC_FOURTH      5
-#define PARTYBOX_DESC_ABLE        6
-#define PARTYBOX_DESC_NOT_ABLE    7
-#define PARTYBOX_DESC_ABLE_2      8
-#define PARTYBOX_DESC_NOT_ABLE_2  9
-#define PARTYBOX_DESC_LEARNED     10
-#define PARTYBOX_DESC_HAVE        11
-#define PARTYBOX_DESC_DONT_HAVE   12
+enum PartyBoxDesc
+{
+    PARTYBOX_DESC_NO_USE,
+    PARTYBOX_DESC_ABLE_3,
+    PARTYBOX_DESC_FIRST,
+    PARTYBOX_DESC_SECOND,
+    PARTYBOX_DESC_THIRD,
+    PARTYBOX_DESC_FOURTH,
+    PARTYBOX_DESC_FIFTH,
+    PARTYBOX_DESC_ABLE,
+    PARTYBOX_DESC_NOT_ABLE,
+    PARTYBOX_DESC_ABLE_2,
+    PARTYBOX_DESC_NOT_ABLE_2,
+    PARTYBOX_DESC_LEARNED,
+    PARTYBOX_DESC_HAVE,
+    PARTYBOX_DESC_DONT_HAVE,
+};
 
 #define SELECTWINDOW_ACTIONS     0
 #define SELECTWINDOW_ITEM        1
@@ -122,5 +98,24 @@
 #define SELECTWINDOW_STATUS      6
 #define SELECTWINDOW_DAMAGE      7
 #define SELECTWINDOW_POISON      8
+
+enum PcMonSelectionType
+{
+    SELECT_PC_MON_NORMAL,
+    SELECT_PC_MON_TRADE, // Also used for Lotad / Seedot size check
+    SELECT_PC_MON_DAYCARE,
+    SELECT_PC_MON_MOVE_TUTOR,
+    SELECT_PC_MON_MOVE_DELETER,
+    SELECT_PC_MON_MOVE_RELEARNER,
+    SELECT_PC_MON_EVOLUTION,
+};
+
+enum CanMoveBeLearned
+{
+    CAN_LEARN_MOVE,
+    CANNOT_LEARN_MOVE,
+    ALREADY_KNOWS_MOVE,
+    CANNOT_LEARN_MOVE_IS_EGG
+};
 
 #endif // GUARD_CONSTANTS_PARTY_MENU_H

@@ -57,6 +57,7 @@ EverGrandeCity_SidneysRoom_EventScript_AttendantIntroduction::
 	waitmovement 0
 	msgbox EverGrandeCity_SidneysRoom_Text_AttendantGreetPlayer, MSGBOX_DEFAULT
 	waitmessage
+	setvar VAR_0x8000, 3
 	special SavePlayerParty
 	call EventScript_AccessPokemonStorageEliteFour
 	special LoadPlayerParty
@@ -142,7 +143,6 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney::
 	end
 
 EverGrandeCity_SidneysRoom_EventScript_SidneyDoMultiBattle::
-	fadescreen FADE_TO_BLACK
 	playbgm MUS_VICTORY_ROAD, TRUE
 	multi_2p_vs_1 TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat, PARTNER_EMMIE
 	switch VAR_RESULT

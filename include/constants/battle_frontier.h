@@ -18,6 +18,7 @@
 #define FACILITY_LINK_CONTEST      7
 #define FACILITY_UNION_ROOM        8
 #define FACILITY_MULTI_OR_EREADER  9  // Direct Corner multi battles, multi battle with Steven, and e-Reader battles
+#define FACILITY_STORY             10 // Story multis with more than 3 mons each
 
 // Battle Frontier battle modes.
 #define FRONTIER_MODE_SINGLES      0
@@ -33,18 +34,21 @@
 #define CHALLENGE_STATUS_LOST     4
 
 // Special trainer battles.
-#define SPECIAL_BATTLE_TOWER 0
 #define SPECIAL_BATTLE_SECRET_BASE 1
 #define SPECIAL_BATTLE_EREADER 2
-#define SPECIAL_BATTLE_DOME 3
-#define SPECIAL_BATTLE_PALACE 4
-#define SPECIAL_BATTLE_ARENA 5
-#define SPECIAL_BATTLE_FACTORY 6
-#define SPECIAL_BATTLE_PIKE_SINGLE 7
-#define SPECIAL_BATTLE_PIKE_DOUBLE 8
-#define SPECIAL_BATTLE_PYRAMID 9
-#define SPECIAL_BATTLE_MULTI 10
-#define SPECIAL_BATTLE_EMMIE 11
+#define SPECIAL_BATTLE_MULTI 3
+#define SPECIAL_BATTLE_EMMIE 4
+
+// Facility trainer Battles
+#define FACILITY_BATTLE_TOWER           0
+#define FACILITY_BATTLE_DOME            1
+#define FACILITY_BATTLE_PALACE          2
+#define FACILITY_BATTLE_ARENA           3
+#define FACILITY_BATTLE_FACTORY         4
+#define FACILITY_BATTLE_PIKE_SINGLE     5
+#define FACILITY_BATTLE_PIKE_DOUBLE     6
+#define FACILITY_BATTLE_PYRAMID         7
+#define FACILITY_BATTLE_TRAINER_HILL    8
 
 #define MAX_BATTLE_FRONTIER_POINTS 9999
 #define MAX_STREAK 9999

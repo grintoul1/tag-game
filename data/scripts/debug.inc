@@ -69,6 +69,63 @@ Debug_CheatStart::
 	release
 	end
 
+Debug_CheatStartFrlg::
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_PALLET_LADY_NOT_BLOCKING_SIGN
+	setflag FLAG_OPENED_START_MENU
+	setflag FLAG_VISITED_OAKS_LAB
+	setflag FLAG_BEAT_RIVAL_IN_OAKS_LAB
+	givemon SPECIES_BULBASAUR, 20, ITEM_NONE
+	givemon SPECIES_CHARMANDER, 20, ITEM_NONE
+	givemon SPECIES_SQUIRTLE, 20, ITEM_NONE
+	clearflag FLAG_HIDE_OAK_IN_HIS_LAB
+	setflag FLAG_HIDE_RIVAL_IN_LAB
+	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 1 @ prevents Oak scene when trying to enter Route 1
+	setflag FLAG_SYS_POKEDEX_GET
+	special SetUnlockedPokedexFlags
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6 @ state after handing in parcel and getting pokedex
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_MART, 2
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1
+	setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 1
+	setvar VAR_MAP_SCENE_ROUTE22, 1
+	setvar VAR_MAP_SCENE_POKEMON_CENTER_TEALA, 1 @ end
+	setflag FLAG_SYS_NATIONAL_DEX
+	special EnableNationalPokedex
+	setflag FLAG_SYS_B_DASH
+	setflag FLAG_BADGE01_GET
+	setflag FLAG_BADGE02_GET
+	setflag FLAG_BADGE03_GET
+	setflag FLAG_BADGE04_GET
+	setflag FLAG_BADGE05_GET
+	setflag FLAG_BADGE06_GET
+	setflag FLAG_BADGE07_GET
+	setflag FLAG_BADGE08_GET
+	setflag FLAG_GOT_BIKE_VOUCHER
+	setflag FLAG_GOT_BICYCLE
+	additem ITEM_BICYCLE
+	setflag FLAG_WORLD_MAP_PALLET_TOWN
+	setflag FLAG_WORLD_MAP_VIRIDIAN_CITY
+	setflag FLAG_WORLD_MAP_PEWTER_CITY
+	setflag FLAG_WORLD_MAP_ROUTE4_POKEMON_CENTER_1F
+	setflag FLAG_WORLD_MAP_CERULEAN_CITY
+	setflag FLAG_WORLD_MAP_VERMILION_CITY
+	setflag FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F
+	setflag FLAG_WORLD_MAP_LAVENDER_TOWN
+	setflag FLAG_WORLD_MAP_CELADON_CITY
+	setflag FLAG_WORLD_MAP_FUCHSIA_CITY
+	setflag FLAG_WORLD_MAP_SAFFRON_CITY
+	setflag FLAG_WORLD_MAP_CINNABAR_ISLAND
+	setflag FLAG_WORLD_MAP_INDIGO_PLATEAU_EXTERIOR
+	setflag FLAG_WORLD_MAP_ONE_ISLAND
+	setflag FLAG_WORLD_MAP_TWO_ISLAND
+	setflag FLAG_WORLD_MAP_THREE_ISLAND
+	setflag FLAG_WORLD_MAP_FOUR_ISLAND
+	setflag FLAG_WORLD_MAP_FIVE_ISLAND
+	setflag FLAG_WORLD_MAP_SIX_ISLAND
+	setflag FLAG_WORLD_MAP_SEVEN_ISLAND
+	release
+	end
+
 Debug_FlagsNotSetOverworldConfigMessage::
 	message Debug_FlagsNotSetOverworldConfigMessage_Text
 	goto Debug_MessageEnd
@@ -108,7 +165,6 @@ Debug_EventScript_CheckEVs::
 	getpartysize
 	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_CheckEVs_End
 	callnative Script_GetChosenMonOffensiveEVs
 	msgbox Debug_EventScript_Text_OffensiveEVs, MSGBOX_DEFAULT
@@ -129,7 +185,6 @@ Debug_EventScript_CheckIVs::
 	getpartysize
 	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_CheckIVs_End
 	callnative Script_GetChosenMonOffensiveIVs
 	msgbox Debug_EventScript_Text_OffensiveIVs, MSGBOX_DEFAULT
@@ -220,12 +275,10 @@ Debug_HatchAnEgg::
 	getpartysize
 	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_HatchAnEgg_End
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
 	goto_if_ne VAR_RESULT, SPECIES_EGG, DebugScript_HatchAnEgg_CantForceHatch
 	special EggHatch
-	waitstate
 Debug_HatchAnEgg_End::
 	releaseall
 	end
@@ -302,6 +355,14 @@ Debug_EventScript_Steven_Multi::
 	release
 	end
 
+Debug_EventScript_WallyTutorial::
+	special SavePlayerParty
+	special LoadWallyZigzagoon
+	special StartWallyTutorialBattle
+	special LoadPlayerParty
+	release
+	end
+
 Debug_BerryPestsDisabled::
 	msgbox DebugText_BerryPestsDisabled, MSGBOX_DEFAULT
 	release
@@ -338,7 +399,6 @@ Debug_EventScript_InflictStatus1_Close:
 
 Debug_EventScript_InflictStatus1_Single:
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_InflictStatus1_Close
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
 	goto_if_eq VAR_RESULT, SPECIES_EGG, Debug_EventScript_InflictStatus1_Close
@@ -362,9 +422,17 @@ Debug_EventScript_InflictStatus1_Single:
 	releaseall
 	end
 
+Debug_EventScript_KoPokemon::
+	special ChoosePartyMon
+	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_InflictStatus1_Close
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	goto_if_eq VAR_RESULT, SPECIES_EGG, Debug_EventScript_InflictStatus1_Close
+	setko VAR_0x8004
+	releaseall
+	end
+
 Debug_EventScript_SetHiddenNature::
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_InflictStatus1_Close
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
 	goto_if_eq VAR_RESULT, SPECIES_EGG, Debug_EventScript_InflictStatus1_Close
@@ -402,7 +470,6 @@ Debug_EventScript_SetHiddenNature::
 
 Debug_EventScript_SetAbility::
 	special ChoosePartyMon
-	waitstate
 	callnative DebugNative_GetAbilityNames
 	dynmultipush gStringVar1, 0
 	dynmultipush gStringVar2, 1
@@ -417,8 +484,13 @@ Debug_EventScript_SetAbilityClose:
 
 Debug_EventScript_SetFriendship::
 	special ChoosePartyMon
-	waitstate
 	callnative DebugNative_Party_SetFriendship
+	releaseall
+	end
+
+Debug_EventScript_GivePokerus::
+	special ChoosePartyMon
+	callnative DebugNative_Party_SetPokerus
 	releaseall
 	end
 
@@ -529,6 +601,9 @@ Debug_EventScript_InflictStatus1_Text_Freeze:
 
 Debug_EventScript_InflictStatus1_Text_Frostbite:
 	.string "Frostbite$"
+
+Debug_EventScript_InflictStatus1_Text_KO:
+	.string "KO$"
 
 Debug_EventScript_ChangeNature_Text_Hardy:
 	.string "Hardy$"
@@ -756,10 +831,13 @@ DebugEventScript_PrintWeekday_Text_0:
 
 // Utility Menu 
 PokeMenu_EventScript::
+	goto_if_set FLAG_HIDE_UTILITY_MENU_E4, PokeMenu_EventScript_1 @ skip PC and Poke Vial
 	dynmultipush PokeMenu_EventScript_Text_0, 0 @ Access PC
 	dynmultipush PokeMenu_EventScript_Text_1, 1 @ Poke Vial
-	goto_if_set FLAG_BADGE06_GET, PokeMenu_EventScript_2 @ Fly
 PokeMenu_EventScript_1:
+	goto_if_unset FLAG_BADGE06_GET, PokeMenu_EventScript_2 @ skip Fly
+	dynmultipush PokeMenu_EventScript_Text_2, 2 @ Fly
+PokeMenu_EventScript_2:
 	dynmultipush PokeMenu_EventScript_Text_3, 3 @ Utility
 	dynmultipush PokeMenu_EventScript_Text_4, 4 @ Repellent
 	@goto PokeMenu_EventScript_5 @ Poke Rider
@@ -774,10 +852,6 @@ PokeMenu_EventScript_4:
 	@ case 5, PokeMenu_EventScript_13 @ Poke Rider
 	case MULTI_B_PRESSED, PokeMenu_EventScript_14 @ Exit
 	return
-
-PokeMenu_EventScript_2:
-	dynmultipush PokeMenu_EventScript_Text_2, 2 @ Fly
-	goto PokeMenu_EventScript_1
 
 @PokeMenu_EventScript_5:
 	@dynmultipush PokeMenu_EventScript_Text_5, 5 @ Poke Rider
@@ -932,15 +1006,15 @@ PokeMenu_EventScript_Utility::
 	dynmultipush PokeMenu_EventScript_Utility_Text_2, 2 @ Hatch Egg
 	dynmultipush PokeMenu_EventScript_Utility_Text_3, 3 @ Enc. Table
 	dynmultipush PokeMenu_EventScript_Utility_Text_4, 4 @ Party Type
-	@dynmultipush PokeMenu_EventScript_Utility_Text_5, 5 @ Apply status
-	dynmultistack 0, 0, FALSE, 4, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	dynmultipush PokeMenu_EventScript_Utility_Text_5, 5 @ Music Mode
+	dynmultistack 0, 0, FALSE, 5, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	switch VAR_RESULT
 	@case 0, PokeMenu_EventScript_Utility_2 @ Time
 	case 1, PokeMenu_EventScript_Utility_3 @ Battle Speed
 	case 2, PokeMenu_EventScript_Utility_4 @ Hatch Egg
 	case 3, PokeMenu_EventScript_Utility_5 @ Enc. Table
 	case 4, PokeMenu_EventScript_Utility_7 @ Party Type
-	@case 5, PokeMenu_EventScript_Utility_8 @ Pre-status
+	case 5, PokeMenu_EventScript_Utility_8 @ Music Mode
 	case MULTI_B_PRESSED, PokeMenu_EventScript_Utility_6
 	return
 
@@ -966,26 +1040,93 @@ PokeMenu_EventScript_Utility_6:
 PokeMenu_EventScript_Utility_7:
 	dynmultipush PokeMenu_EventScript_Utility_Text_6, 0 @ Separate
 	dynmultipush PokeMenu_EventScript_Utility_Text_7, 1 @ Shared
-	dynmultistack 0, 0, FALSE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	dynmultipush PokeMenu_EventScript_Utility_Text_8, 2 @ Link
+	dynmultistack 0, 0, FALSE, 3, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	switch VAR_RESULT
 	case 0, PokeMenu_EventScript_Utility_9 @ Separate
 	case 1, PokeMenu_EventScript_Utility_10 @ Shared
+	case 2, PokeMenu_EventScript_Utility_11 @ Link
 	case MULTI_B_PRESSED, PokeMenu_EventScript_Utility_6
 	return
 
 	return
 
 PokeMenu_EventScript_Utility_8:
-	@special PartyMenuApplyStatus
+	dynmultipush PokeMenu_EventScript_Utility_Text_9, 0 @ Default
+	dynmultipush PokeMenu_EventScript_Utility_Text_10, 1 @ 0 badges
+	goto_if_unset FLAG_BADGE03_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_11, 2 @ 1 badge
+	goto_if_unset FLAG_BADGE01_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_12, 3 @ 2 badges
+	goto_if_unset FLAG_BADGE05_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_13, 4 @ 3 badges
+	goto_if_unset FLAG_BADGE02_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_14, 5 @ 4 badges
+	goto_if_unset FLAG_BADGE04_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_15, 6 @ 5 badges
+	goto_if_unset FLAG_BADGE07_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_16, 7 @ 6 badges
+	goto_if_unset FLAG_BADGE06_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_17, 8 @ 7 badges
+	goto_if_unset FLAG_BADGE08_GET, PokeMenu_EventScript_MusicModeVanillaText
+	dynmultipush PokeMenu_EventScript_Utility_Text_18, 9 @ 8 badges
+PokeMenu_EventScript_MusicModeVanillaText:
+	dynmultipush PokeMenu_EventScript_Utility_Text_19, 10 @ Vanilla
+	dynmultipush PokeMenu_EventScript_Utility_Text_20, 11 @ Random
+	dynmultistack 0, 0, FALSE, 5, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 0, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	case 1, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE03_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 2, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE01_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 3, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE05_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 4, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE02_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 5, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE04_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 6, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE07_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 7, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE06_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 8, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+	goto_if_unset FLAG_BADGE08_GET, PokeMenu_EventScript_MusicModeVanillaAction
+	case 9, PokeMenu_EventScript_Utility_12 @ Set chosen music mode
+PokeMenu_EventScript_MusicModeVanillaAction:
+	case 10, PokeMenu_EventScript_Utility_13 @ Vanilla
+	case 11, PokeMenu_EventScript_Utility_14 @ Random
+	case MULTI_B_PRESSED, PokeMenu_EventScript_Utility_6
 	return
 
 PokeMenu_EventScript_Utility_9:
 	clearflag FLAG_SHARE_PARTY
+	clearflag FLAG_LINK_PARTY
 	return
 
 PokeMenu_EventScript_Utility_10:
 	setflag FLAG_SHARE_PARTY
+	clearflag FLAG_LINK_PARTY
 	return
+
+PokeMenu_EventScript_Utility_11:
+	goto Common_EventScript_SetupTwoPlayerMode
+	end
+
+PokeMenu_EventScript_Utility_12:
+	copyvar VAR_MUSIC_MODE, VAR_RESULT
+	fadedefaultbgm
+	end
+
+PokeMenu_EventScript_Utility_13:
+	setvar VAR_MUSIC_MODE, 0xFF @ Vanilla
+	fadedefaultbgm
+	end
+
+PokeMenu_EventScript_Utility_14:
+	setvar VAR_MUSIC_MODE, 0xFE @ Vanilla
+	fadedefaultbgm
+	end
 
 PokeMenu_EventScript_Utility_Status::
 	dynmultipush Debug_EventScript_InflictStatus1_Text_Poison, 0
@@ -1133,10 +1274,13 @@ PokeMenu_EventScript_HatchEgg_8:
 	goto PokeMenu_EventScript_HatchEgg_7
 
 PokeMenu_EventScript_Repel::
-	compare VAR_REPEL_STEP_COUNT, 0
-	goto_if_eq PokeMenu_EventScript_Repel_2
-	setvar VAR_REPEL_STEP_COUNT, 0
-	msgbox PokeMenu_EventScript_Repel_Text_1, MSGBOX_AUTOCLOSE
+	goto_if_set FLAG_NO_ENCOUNTER, PokeMenu_EventScript_Repel_Unset
+	setflag FLAG_NO_ENCOUNTER
+	msgbox PokeMenu_EventScript_Repel_Text_0, MSGBOX_AUTOCLOSE @ Repellent on
+	goto PokeMenu_EventScript_Repel_1
+PokeMenu_EventScript_Repel_Unset:
+	clearflag FLAG_NO_ENCOUNTER
+	msgbox PokeMenu_EventScript_Repel_Text_1, MSGBOX_AUTOCLOSE @ Repellent off
 PokeMenu_EventScript_Repel_1:
 	end
 
@@ -1262,13 +1406,52 @@ PokeMenu_EventScript_Utility_Text_4:
 	.string "Party Type$"
 
 PokeMenu_EventScript_Utility_Text_5:
-	.string "Apply status$"
+	.string "Music Mode$"
 
 PokeMenu_EventScript_Utility_Text_6:
 	.string "Separate$"
 
 PokeMenu_EventScript_Utility_Text_7:
 	.string "Shared$"
+
+PokeMenu_EventScript_Utility_Text_8:
+	.string "Link$"
+
+PokeMenu_EventScript_Utility_Text_9:
+	.string "Default$"
+
+PokeMenu_EventScript_Utility_Text_10:
+	.string "0 badges$"
+
+PokeMenu_EventScript_Utility_Text_11:
+	.string "1 badge$"
+
+PokeMenu_EventScript_Utility_Text_12:
+	.string "2 badges$"
+
+PokeMenu_EventScript_Utility_Text_13:
+	.string "3 badges$"
+
+PokeMenu_EventScript_Utility_Text_14:
+	.string "4 badges$"
+
+PokeMenu_EventScript_Utility_Text_15:
+	.string "5 badges$"
+
+PokeMenu_EventScript_Utility_Text_16:
+	.string "6 badges$"
+
+PokeMenu_EventScript_Utility_Text_17:
+	.string "7 badges$"
+
+PokeMenu_EventScript_Utility_Text_18:
+	.string "8 badges$"
+
+PokeMenu_EventScript_Utility_Text_19:
+	.string "Vanilla$"
+
+PokeMenu_EventScript_Utility_Text_20:
+	.string "Random$"
 
 PokeMenu_EventScript_Time_Text_0:
 	.string "Day$"

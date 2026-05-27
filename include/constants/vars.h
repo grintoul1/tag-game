@@ -1,6 +1,8 @@
 #ifndef GUARD_CONSTANTS_VARS_H
 #define GUARD_CONSTANTS_VARS_H
 
+#include "constants/vars_frlg.h"
+
 #define VARS_START 0x4000
 
 // temporary vars
@@ -95,7 +97,7 @@
 #define VAR_POKELOT_RND1                                 0x404B
 #define VAR_POKELOT_RND2                                 0x404C
 #define VAR_POKELOT_PRIZE_PLACE                          0x404D
-#define VAR_UNUSED_0x404E                                0x404E // Unused Var
+#define VAR_KANTONIANS_STATE                             0x404E // Unused Var
 #define VAR_LOTAD_SIZE_RECORD                            0x404F
 #define VAR_LITTLEROOT_TOWN_STATE                        0x4050
 #define VAR_OLDALE_TOWN_STATE                            0x4051
@@ -178,7 +180,7 @@
 #define VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE      0x409E
 #define VAR_MOSSDEEP_SPACE_CENTER_STATE                  0x409F
 #define VAR_SLATEPORT_HARBOR_STATE                       0x40A0
-#define VAR_PARTNER_EMMIE_STATE                          0x40A1 // Unused var
+#define VAR_PARTNER_EMMIE_STATE                          0x40A1 // Dictates Emmie dialogue throughout game
 #define VAR_SEAFLOOR_CAVERN_STATE                        0x40A2
 #define VAR_CABLE_CAR_STATION_STATE                      0x40A3
 #define VAR_SAFARI_ZONE_STATE                            0x40A4  // 0: In or out of SZ, 1: Player exiting SZ, 2: Player entering SZ
@@ -246,7 +248,7 @@
 #define VAR_GIFT_UNUSED_5                                0x40E2 // Var is written to, but never read
 #define VAR_GIFT_UNUSED_6                                0x40E3 // Var is written to, but never read
 #define VAR_GIFT_UNUSED_7                                0x40E4 // var is written to, but never read
-#define VAR_UNUSED_0x40E5                                0x40E5 // Unused Var
+#define VAR_MUSIC_MODE                                   0x40E5 // Unused Var
 #define VAR_DAILY_SLOTS                                  0x40E6
 #define VAR_DAILY_WILDS                                  0x40E7
 #define VAR_DAILY_BLENDER                                0x40E8
@@ -327,8 +329,8 @@
 #if TESTING
 #define TESTING_VARS_START                  0x9000
 #define TESTING_VAR_DIFFICULTY              (TESTING_VARS_START + 0x0)
-#define TESTING_VAR_STARTING_STATUS         (TESTING_VARS_START + 0x1)
-#define TESTING_VAR_STARTING_STATUS_TIMER   (TESTING_VARS_START + 0x2)
+#define TESTING_VAR_TRAINER_SLIDES          (TESTING_VARS_START + 0x1)
+#define TESTING_VAR_UNUSED_2                (TESTING_VARS_START + 0x2)
 #define TESTING_VAR_UNUSED_3                (TESTING_VARS_START + 0x3)
 #define TESTING_VAR_UNUSED_4                (TESTING_VARS_START + 0x4)
 #define TESTING_VAR_UNUSED_5                (TESTING_VARS_START + 0x5)
