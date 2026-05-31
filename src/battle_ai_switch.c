@@ -3794,6 +3794,9 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
         if (IsAceMon(battler, i))
             continue;
 
+        if (incomingType == TYPE_GROUND && gAiLogicData->holdEffects[battler] == HOLD_EFFECT_AIR_BALLOON)
+            SetSwitchinAndSwitch(battler, i);
+
         monAbility = GetMonAbility(&party[i]);
 
         for (j = 0; j < numAbsorbingAbilities; j++)

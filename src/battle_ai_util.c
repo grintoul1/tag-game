@@ -902,20 +902,18 @@ struct SimulatedDamage AI_CalcDamage(enum Move move, enum BattlerId battlerAtk, 
         move = GetNaturePowerMove();
 
     // Temporarily enable gimmicks for damage calcs if planned
-    if (gBattleStruct->gimmick.usableGimmick[battlerAtk] && GetActiveGimmick(battlerAtk) == GIMMICK_NONE
-        && gBattleStruct->gimmick.usableGimmick[battlerAtk] != GIMMICK_NONE && considerGimmickAtk == USE_GIMMICK)
+    if (toggledGimmickAtk != GIMMICK_NONE && GetActiveGimmick(battlerAtk) == GIMMICK_NONE
+        && considerGimmickAtk == USE_GIMMICK)
     {
-        toggledGimmickAtk = gBattleStruct->gimmick.usableGimmick[battlerAtk];
         shouldRevertAtk = TRUE;
-        SetActiveGimmick(battlerAtk, gBattleStruct->gimmick.usableGimmick[battlerAtk]);
+        SetActiveGimmick(battlerAtk, toggledGimmickAtk);
     }
 
-    if (gBattleStruct->gimmick.usableGimmick[battlerDef] && GetActiveGimmick(battlerDef) == GIMMICK_NONE
-        && gBattleStruct->gimmick.usableGimmick[battlerDef] != GIMMICK_NONE && considerGimmickDef == USE_GIMMICK)
+    if (toggledGimmickDef != GIMMICK_NONE && GetActiveGimmick(battlerDef) == GIMMICK_NONE
+        && considerGimmickDef == USE_GIMMICK)
     {
-        toggledGimmickDef = gBattleStruct->gimmick.usableGimmick[battlerDef];
         shouldRevertDef = TRUE;
-        SetActiveGimmick(battlerDef, gBattleStruct->gimmick.usableGimmick[battlerDef]);
+        SetActiveGimmick(battlerDef, toggledGimmickDef);
     }
 
     SetDynamicMoveCategory(battlerAtk, battlerDef, move);
@@ -7399,15 +7397,15 @@ static enum Gimmick GetPossibleGimmickForDamageCalc(enum BattlerId battler, enum
     if (GetActiveGimmick(battler) != GIMMICK_NONE)
         return GIMMICK_NONE;
 
-    /*switch (GetViableGimmick(battler))
+    switch (GetViableGimmick(battler))
     {
-    case GIMMICK_MEGA:*/
+    case GIMMICK_MEGA:
         if (BattlerIsPlayer(battler))
             return GIMMICK_NONE;
         if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM, gBattleMons[battler].ability))
             gimmick = GIMMICK_MEGA;
-        /*break;
-    case GIMMICK_ULTRA_BURST:
+        break;
+    /*case GIMMICK_ULTRA_BURST:
         TryBattleFormChange(battler, FORM_CHANGE_BATTLE_ULTRA_BURST, gBattleMons[battler].ability);
         gimmick = GIMMICK_ULTRA_BURST;
         break;
@@ -7424,18 +7422,12 @@ static enum Gimmick GetPossibleGimmickForDamageCalc(enum BattlerId battler, enum
             gBattleStruct->zmove.baseMoves[battler] = move;
             gimmick = GIMMICK_Z_MOVE;
         }
-        break;
+        break;*/
     default:
         break;
-    }*/
-
-    if (gimmick != GIMMICK_NONE)
-    {
-        gBattleStruct->gimmick.usableGimmick[battler] = gimmick;
-        return gimmick;
     }
 
-    return GIMMICK_NONE;
+    return gimmick;
 }
 
 void RevertFormAfterDamageCalc(enum BattlerId battler, enum Gimmick gimmick)

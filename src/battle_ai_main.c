@@ -527,7 +527,7 @@ u32 BattleAI_ChooseMoveIndex(enum BattlerId battler)
     u32 chosenMoveIndex;
     //bool32 revertMegaForms[MAX_BATTLERS_COUNT] = {FALSE};
 
-    SetAIUsingGimmick(battler, USE_GIMMICK);
+    SetAIUsingGimmick(battler, gBattleStruct->gimmick.usableGimmick[battler] != GIMMICK_NONE ? USE_GIMMICK : NO_GIMMICK);
     SetupRandomRollsForAIMoveSelection(battler);
 
     if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SMART_GIMMICK)
