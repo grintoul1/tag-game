@@ -580,6 +580,27 @@ static bool32 ShouldSwitchIfAllMovesBad(struct SwitchAiContext *switchContext)
         s32 bestMonId = PARTY_SIZE;
         s32 bestScore = 0; 
 
+        enum BattlerId opposingPartner = BATTLE_PARTNER(switchContext->opposingBattler);
+        for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+        {
+            ctx.move = ctx.chosenMove = gBattleMons[switchContext->battler].moves[moveIndex];
+            ctx.moveType = GetBattleMoveType(ctx.move);
+            // Check if move is bad in the context of both opposing battlers
+            if (!IsMoveBad(&ctx, moveIndex))
+            {
+                return FALSE;
+            }
+            else
+            {
+                // Set partner data in ctx
+                ctx.battlerDef = opposingPartner;
+                ctx.abilities[ctx.battlerDef] = gAiLogicData->abilities[ctx.battlerDef];
+                ctx.holdEffects[ctx.battlerDef] = gAiLogicData->holdEffects[ctx.battlerDef];
+                if (!IsMoveBad(&ctx, moveIndex))
+                    return FALSE;
+            }
+        }
+
         CustomGetBestMonIntegrated(party, lastId, ctx.battlerAtk, opposingBattler, battlerIn1, battlerIn2, SWITCH_MID_BATTLE_OPTIONAL, &bestMonId, &bestScore);
 
         // Don't switch if mid-turn switch checks fail
