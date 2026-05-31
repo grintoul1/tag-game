@@ -3534,7 +3534,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         aiMove = gBattleMons[opposingBattler2].moves[i];
-        if (aiMove != MOVE_NONE)
+        if (aiMove != MOVE_NONE && GetMoveEffect(aiMove) != EFFECT_FUTURE_SIGHT)
         {
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
@@ -3563,7 +3563,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         aiMove = gBattleMons[opposingBattler1].moves[i];
-        if (aiMove != MOVE_NONE)
+        if (aiMove != MOVE_NONE && GetMoveEffect(aiMove) != EFFECT_FUTURE_SIGHT)
         {
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
@@ -3597,7 +3597,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         aiMove = gBattleMons[opposingBattler1].moves[i];
-        if (aiMove != MOVE_NONE)
+        if (aiMove != MOVE_NONE && GetMoveEffect(aiMove) != EFFECT_FUTURE_SIGHT)
         {
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
@@ -3626,7 +3626,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         aiMove = gBattleMons[opposingBattler2].moves[i];
-        if (aiMove != MOVE_NONE)
+        if (aiMove != MOVE_NONE && GetMoveEffect(aiMove) != EFFECT_FUTURE_SIGHT)
         {
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
@@ -3660,14 +3660,14 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
 
     u32 incomingType = GetMoveType(switchingMove);
 
-        /*MgbaPrintf(MGBA_LOG_WARN, "PartnerFindMonThatAbsorbsOpponentsMove", PartnerFindMonThatAbsorbsOpponentsMove);
+        MgbaPrintf(MGBA_LOG_WARN, "PartnerFindMonThatAbsorbsOpponentsMove");
         MgbaPrintf(MGBA_LOG_WARN, "battler %d %S", battler, GetSpeciesName(gBattleMons[battler].species));
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveTypes %d", oppositeBattlerMoveTypes);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveTypes %d", oppositeBattlerPartnerMoveTypes);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveCount %d", oppositeBattlerMoveCount);
         MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveCount %d", oppositeBattlerPartnerMoveCount);
         MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOpposite %S", GetMoveName(switchingMoveOpposite));
-        MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOppositePartner %S", GetMoveName(switchingMoveOppositePartner));*/
+        MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOppositePartner %S", GetMoveName(switchingMoveOppositePartner));
 
     if (!(oppositeBattlerMoveTypes == 1 || oppositeBattlerPartnerMoveTypes == 1) && !(onlySound || onlyBallistic || onlyWind))
         return FALSE;
@@ -3794,8 +3794,8 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
         if (IsAceMon(battler, i))
             continue;
 
-        if (incomingType == TYPE_GROUND && gAiLogicData->holdEffects[battler] == HOLD_EFFECT_AIR_BALLOON)
-            SetSwitchinAndSwitch(battler, i);
+        if (incomingType == TYPE_GROUND && gItemsInfo[GetMonData(&party[i], MON_DATA_HELD_ITEM, NULL)].holdEffect == HOLD_EFFECT_AIR_BALLOON)
+            return SetSwitchinAndSwitch(battler, i);
 
         monAbility = GetMonAbility(&party[i]);
 
