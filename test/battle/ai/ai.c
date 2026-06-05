@@ -1367,3 +1367,15 @@ AI_DOUBLE_BATTLE_TEST("FIXER Bolt Beak damage will be correctly seen by AI (doub
         }
     }
 }
+
+MULTI_BATTLE_TEST("Low HP Test")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { HP(1); }
+        PARTNER(SPECIES_WOBBUFFET) { HP(1); }
+        OPPONENT_A(SPECIES_WOBBUFFET) { HP(1); }
+        OPPONENT_B(SPECIES_WOBBUFFET) { HP(1); }
+    } WHEN {
+        TURN {}
+    }
+}
