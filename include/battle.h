@@ -114,7 +114,7 @@ struct SpecialStatus
     u8 berryReduced:1;
     u8 mindBlownRecoil:1;
     u8 updateStallMons:1;
-    u8 padding:1;
+    u8 poisonPuppeteer:1;
     // End of byte
     u8 statLowered:1;
     u8 abilityRedirected:1;
@@ -632,7 +632,7 @@ struct BattleStruct
     } multiBuffer;
     u8 battlerKOAnimsRunning:3;
     u8 fickleBeamBoosted:1;
-    u8 poisonPuppeteerConfusion:1;
+    u8 unused2:1;
     u8 toxicChainPriority:1; // If Toxic Chain will trigger on target, all other non volatiles will be blocked
     u8 battlersSorted:1; // To avoid unnessasery computation
     u8 unused1:1;
@@ -711,7 +711,7 @@ struct BattleStruct
     u8 numHazards[NUM_BATTLE_SIDES];
     u8 hazardsCounter:4; // Counter for applying hazard on switch in
     enum SubmoveState submoveAnnouncement:2;
-    u8 padding:2;
+    enum VictoryCatch victoryCatchState:2;
     u32 incrementEchoedVoice:1;
     u32 echoedVoiceCounter:3;
     u32 attackAnimPlayed:1;

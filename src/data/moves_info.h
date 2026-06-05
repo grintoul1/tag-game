@@ -1998,7 +1998,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         #endif
         .effect = EFFECT_GROWTH,
         .power = 0,
-        .type = TYPE_NORMAL,
+        .type = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? TYPE_GRASS : TYPE_NORMAL,
         .accuracy = 0,
         .pp = B_UPDATED_MOVE_DATA >= GEN_6 ? 20 : 40,
         .target = TARGET_USER,
@@ -4146,8 +4146,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_HIT,
         .power = 100,
         .type = TYPE_WATER,
-        .accuracy = 100,
-        .criticalHitStage = 1,
+        #if B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS
+            .accuracy = 95,
+        #elif B_UPDATED_MOVE_DATA >= GEN_5
+            .accuracy = 100,
+        #else
+            .accuracy = 85,
+        #endif
+        .criticalHitStage = B_UPDATED_MOVE_DATA >= GEN_3 ? 1 : 2,
         .pp = 10,
         .target = TARGET_SELECTED,
         .priority = 0,
@@ -4981,7 +4987,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 0,
-        .pp = 10,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 10,
         .target = TARGET_USER,
         #if B_UPDATED_MOVE_DATA >= GEN_5
             .priority = 4,
@@ -5423,7 +5429,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Strikes the foe with a bone\n"
             "in hand 2 to 5 times."),
         .effect = EFFECT_HIT,
-        .power = 25,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 30 : 25,
         .type = TYPE_GROUND,
         .accuracy = 100,
         .pp = 10,
@@ -5499,14 +5505,13 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_ROCK,
         .accuracy = 0,
-        .pp = 10,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 10,
         .target = TARGET_FIELD,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
         .zMove = { .effect = Z_EFFECT_SPD_UP_1 },
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
-        .windMove = TRUE,
         .argument = { .weatherType = BATTLE_WEATHER_SANDSTORM },
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_BADLY_STARTLE_MONS_WITH_GOOD_APPEALS : CONTEST_EFFECT_SCRAMBLE_NEXT_TURN_ORDER,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
@@ -6344,6 +6349,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
+        .slicingMove = B_UPDATED_MOVE_FLAGS >= GEN_CHAMPIONS,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_STAT_PLUS,
             .attack = 1,
@@ -8360,6 +8366,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
+        .slicingMove = B_UPDATED_MOVE_FLAGS >= GEN_CHAMPIONS,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_STAT_MINUS,
             .defense = 1,
@@ -9190,6 +9197,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
+        .slicingMove = B_UPDATED_MOVE_FLAGS >= GEN_CHAMPIONS,
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_HIGHLY_APPEALING : CONTEST_EFFECT_STARTLE_MONS_SAME_TYPE_APPEAL,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -10798,7 +10806,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .type = TYPE_DARK,
         .accuracy = 100,
         .criticalHitStage = B_UPDATED_MOVE_DATA >= GEN_3 ? 1 : 2,
-        .pp = 15,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 20 : 15,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
@@ -11319,6 +11327,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
+        .slicingMove = B_UPDATED_MOVE_FLAGS >= GEN_CHAMPIONS,
         .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
         .contestCategory = C_UPDATED_MOVE_CATEGORIES >= GEN_6 ? CONTEST_CATEGORY_COOL : CONTEST_CATEGORY_CUTE,
         .contestComboStarterId = 0,
@@ -11871,7 +11880,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .makesContact = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FLINCH,
-            .chance = 30,
+            .chance = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 20 : 30,
         }),
         .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
@@ -14317,7 +14326,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Looses a pitch-black shock\n"
             "wave. May lower accuracy."),
         .effect = EFFECT_HIT,
-        .power = 85,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 90 : 85,
         .type = TYPE_DARK,
         .accuracy = 100,
         .pp = 10,
@@ -14439,9 +14448,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Throws two steel gears\n"
             "that strike twice."),
         .effect = EFFECT_HIT,
-        .power = 50,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 60 : 50,
         .type = TYPE_STEEL,
-        .accuracy = 100,
+        .accuracy = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 90 : 100,
         .pp = 15,
         .target = TARGET_SELECTED,
         .priority = 0,
@@ -15210,10 +15219,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .argument = { .type = TYPE_WATER },
+    #if B_UPDATED_MOVE_DATA < GEN_CHAMPIONS
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FREEZE_OR_FROSTBITE,
             .chance = 10,
         }),
+    #endif
         .contestEffect = CONTEST_EFFECT_REPETITION_NOT_BORING,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = 0,
@@ -15514,7 +15525,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_STAT_MINUS,
             .spAtk = 1,
-            .chance = 30,
+            .chance = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 10 : 30,
         }),
         .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
@@ -15574,13 +15585,18 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("King's Shield"),
         .description = COMPOUND_STRING(
+        #if B_KINGS_SHIELD_LOWER_ATK >= GEN_8
+            "Evades damage, reducing\n"
+            "Attack if struck."),
+        #else
             "Evades damage, and sharply\n"
             "reduces Attack if struck."),
+        #endif
         .effect = EFFECT_PROTECT,
         .power = 0,
         .type = TYPE_STEEL,
         .accuracy = 0,
-        .pp = 10,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 10,
         .target = TARGET_USER,
         .priority = 4,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -15803,7 +15819,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_GRASS,
         .accuracy = 0,
-        .pp = 10,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 10,
         .target = TARGET_USER,
         .priority = 4,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -16514,7 +16530,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Hits hard and first.\n"
             "Only works first turn."),
         .effect = EFFECT_FIRST_TURN_ONLY,
-        .power = 90,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 100 : 90,
         .type = TYPE_BUG,
         .accuracy = 100,
         .pp = 10,
@@ -16540,7 +16556,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_POISON,
         .accuracy = 0,
-        .pp = 10,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 10,
         .target = TARGET_USER,
         .priority = 4,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -16565,7 +16581,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "After being hit, foes can\n"
             "no longer escape."),
         .effect = EFFECT_HIT,
-        .power = 80,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 90 : 80,
         .type = TYPE_GHOST,
         .accuracy = 100,
         .pp = 10,
@@ -16834,7 +16850,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {COMBO_STARTER_TOXIC},
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = STAT_CHANGE_EFFECT_MINUS,
-            .speed = 1,
+            .speed = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 2 : 1,
         }),
         .battleAnimScript = gBattleAnimMove_ToxicThread,
     },
@@ -16950,7 +16966,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Strangles the foe with a\n"
             "chain. The foe can't escape."),
         .effect = EFFECT_HIT,
-        .power = 80,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 90 : 80,
         .type = TYPE_STEEL,
         .accuracy = 100,
         .pp = 20,
@@ -17028,7 +17044,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Whips the foe with fire\n"
             "lowering its Defense."),
         .effect = EFFECT_HIT,
-        .power = 80,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 90 : 80,
         .type = TYPE_FIRE,
         .accuracy = 100,
         .pp = 15,
@@ -17152,7 +17168,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_POISON,
         .accuracy = 0,
-        .pp = 20,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 20,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -17174,7 +17190,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Dances with mystical power.\n"
             "Matches user's first type."),
         .effect = EFFECT_REVELATION_DANCE,
-        .power = 90,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 100 : 90,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 15,
@@ -17221,7 +17237,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "An intense kick from the\n"
             "tropics. Lowers Attack."),
         .effect = EFFECT_HIT,
-        .power = 70,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 85 : 70,
         .type = TYPE_GRASS,
         .accuracy = 100,
         .pp = 15,
@@ -17274,10 +17290,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Heats beak to attack last.\n"
             "Burns foe on contact."),
         .effect = EFFECT_BEAK_BLAST,
-        .power = 100,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 120 : 100,
         .type = TYPE_FLYING,
         .accuracy = 100,
-        .pp = 15,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 15,
         .target = TARGET_SELECTED,
         .priority = -3,
         .category = DAMAGE_CATEGORY_PHYSICAL,
@@ -17331,7 +17347,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Swings its whole body\n"
             "like a hammer to damage."),
         .effect = EFFECT_HIT,
-        .power = 90,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 100 : 90,
         .type = TYPE_DRAGON,
         .accuracy = 100,
         .pp = 15,
@@ -17413,7 +17429,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 150,
         .type = TYPE_FIRE,
         .accuracy = 100,
-        .pp = 5,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 10 : 5,
         .target = TARGET_BOTH,
         .priority = -3,
         .category = DAMAGE_CATEGORY_SPECIAL,
@@ -18225,7 +18241,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "The user ignores effects\n"
             "that draw in moves."),
         .effect = EFFECT_SNIPE_SHOT,
-        .power = 80,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 85 : 80,
         .type = TYPE_WATER,
         .accuracy = 100,
         .criticalHitStage = B_UPDATED_MOVE_DATA >= GEN_3 ? 1 : 2,
@@ -18451,7 +18467,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Double power if the user\n"
             "moves before the target."),
         .effect = EFFECT_BOLT_BEAK,
-        .power = 85,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 80 : 85,
         .type = TYPE_ELECTRIC,
         .accuracy = 100,
         .pp = 10,
@@ -18473,7 +18489,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Double power if the user\n"
             "moves before the target."),
         .effect = EFFECT_BOLT_BEAK,
-        .power = 85,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 80 : 85,
         .type = TYPE_WATER,
         .accuracy = 100,
         .pp = 10,
@@ -18520,7 +18536,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_CLANGOROUS_SOUL,
         .power = 0,
         .type = TYPE_DRAGON,
-        .accuracy = 100,
+        .accuracy = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 0 : 100,
         .pp = 5,
         .target = TARGET_USER,
         .priority = 0,
@@ -18634,7 +18650,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "trap for four to five turns."),
         .effect = EFFECT_HIT,
         .power = 35,
-        .type = TYPE_GRASS,
+        .type = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? TYPE_STEEL : TYPE_GRASS,
         .accuracy = 100,
         .pp = 15,
         .target = TARGET_SELECTED,
@@ -18845,7 +18861,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Attacks with tart apple acid\n"
             "to lower the foe's Sp. Def."),
         .effect = EFFECT_HIT,
-        .power = 80,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 90 : 80,
         .type = TYPE_GRASS,
         .accuracy = 100,
         .pp = 10,
@@ -18872,7 +18888,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Drops an apple from above.\n"
             "Lowers the foe's Defense."),
         .effect = EFFECT_GRAV_APPLE,
-        .power = 80,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 90 : 80,
         .type = TYPE_GRASS,
         .accuracy = 100,
         .pp = 10,
@@ -18983,7 +18999,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_DARK,
         .accuracy = 100,
-        .pp = 10,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 10,
         .target = TARGET_USER,
         .priority = 4,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -19806,7 +19822,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Sends a frightful amount\n"
             "of small ghosts at foes."),
         .effect = EFFECT_HIT,
-        .power = 120,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 110 : 120,
         .type = TYPE_GHOST,
         .accuracy = 100,
         .pp = 5,
@@ -19852,8 +19868,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Dire Claw"),
         .description = COMPOUND_STRING(
-            "High critical hit chance. May\n"
-            "paralyze, poison or drowse."),
+            "May poison, paralyze, or\n"
+            "put the foe to sleep."),
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_9 ? 80 : 60,
         .type = TYPE_POISON,
@@ -19863,9 +19879,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
+        .slicingMove = B_UPDATED_MOVE_FLAGS >= GEN_CHAMPIONS,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_DIRE_CLAW,
-            .chance = 50,
+            .chance = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 30 : 50,
         }),
         .battleAnimScript = gBattleAnimMove_DireClaw,
     },
@@ -19877,7 +19894,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Hits a foe with psychic\n"
             "energy. May raise Defense."),
         .effect = EFFECT_HIT,
-        .power = 70,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 90 : 70,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
         .pp = 10,
@@ -19919,8 +19936,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Stone Axe"),
         .description = COMPOUND_STRING(
-            "Sets sharp rocks that hurt\n"
-            "the foe."),
+            "Hits and sets floating\n"
+            "stones around foes."),
         .effect = EFFECT_STONE_AXE,
         .power = 65,
         .type = TYPE_ROCK,
@@ -20056,7 +20073,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Giant chunks of ice damage\n"
             "the foe. It may flinch."),
         .effect = EFFECT_HIT,
-        .power = 100,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 120 : 100,
         .type = TYPE_ICE,
         .accuracy = 95,
         .pp = 5,
@@ -20254,7 +20271,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Hurts a foe harder if it has\n"
             "an ailment. May leave a burn."),
         .effect = EFFECT_DOUBLE_POWER_ON_ARG_STATUS,
-        .power = 60,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 65 : 60,
         .type = TYPE_GHOST,
         .accuracy = 100,
         .pp = 15,
@@ -20273,8 +20290,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Ceaseless Edge"),
         .description = COMPOUND_STRING(
-            "Sets Spikes that hurt the\n"
-            "foe."),
+            "Hits and scatters Spikes\n"
+            "around foes."),
         .effect = EFFECT_CEASELESS_EDGE,
         .power = 65,
         .type = TYPE_DARK,
@@ -20595,7 +20612,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 100,
         .type = TYPE_STEEL,
         .accuracy = 100,
-        .pp = 5,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 10 : 5,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
@@ -20722,7 +20739,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Hits target with splashes\n"
             "of water 3 times in a row."),
         .effect = EFFECT_HIT,
-        .power = 30,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 35 : 30,
         .type = TYPE_WATER,
         .accuracy = 100,
         .pp = 10,
@@ -20923,7 +20940,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_HIT,
         .power = 120,
         .type = TYPE_STEEL,
-        .accuracy = 100,
+        .accuracy = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 95 : 100,
         .pp = 5,
         .target = TARGET_BOTH,
         .priority = 0,
@@ -21090,7 +21107,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_ICE,
         .accuracy = 0,
-        .pp = 10,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 10,
         .target = TARGET_FIELD,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -21191,7 +21208,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "A spinning pointed part\n"
             "bypasses a foe's Protect."),
         .effect = EFFECT_HIT,
-        .power = 100,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 120 : 100,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 5,
@@ -21573,7 +21590,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Unleashes the blood moon.\n"
             "Can't be used twice in a row."),
         .effect = EFFECT_HIT,
-        .power = 140,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 130 : 140,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 5,
@@ -21617,7 +21634,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_HIT,
         .power = 60,
         .type = TYPE_GRASS,
-        .accuracy = 100,
+        .accuracy = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 90 : 100,
         .pp = 10,
         .target = TARGET_SELECTED,
         .priority = 0,
@@ -21827,6 +21844,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_ALLY,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
+        .soundMove = B_UPDATED_MOVE_FLAGS >= GEN_CHAMPIONS,
         .ignoresSubstitute = TRUE,
         .battleAnimScript = gBattleAnimMove_DragonCheer,
     },

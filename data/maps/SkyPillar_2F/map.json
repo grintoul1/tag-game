@@ -3,6 +3,7 @@
   "name": "SkyPillar_2F",
   "layout": "LAYOUT_SKY_PILLAR_2F_CLEAN",
   "music": "MUS_SKY_TOWER",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SKY_PILLAR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
