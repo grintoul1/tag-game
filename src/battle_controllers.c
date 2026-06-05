@@ -1507,6 +1507,7 @@ static u32 GetBattlerMonData(enum BattlerId battler, struct Pokemon *party, u32 
         GetMonData(&party[monId], MON_DATA_NICKNAME, nickname);
         StringCopy_Nickname(battleMon.nickname, nickname);
         GetMonData(&party[monId], MON_DATA_OT_NAME, battleMon.otName);
+        CopyMonLevelAndBaseStatsToBattleMon(battler, &party[monId]);
         src = (u8 *)&battleMon;
         for (size = 0; size < sizeof(battleMon); size++)
             dst[size] = src[size];
