@@ -3133,7 +3133,7 @@ static void SetBattlerVolatilesForSwitchin(enum BattlerId battler, u32 weather, 
 static void CustomGetBestMonIntegrated(struct Pokemon *party, s32 lastId, enum BattlerId battler, enum BattlerId opposingBattler, enum BattlerId battlerIn1, enum BattlerId battlerIn2, enum SwitchType switchType, s32 *bestMonId, s32 *bestScore)
 {
 
-        /*MgbaPrintf(MGBA_LOG_WARN, "CustomGetBestMonIntegrated");
+        /*DebugPrintf("CustomGetBestMonIntegrated");
         u32 maxDamageDealtStored[PARTY_SIZE]={0};
         const u8 * checkingPosition;
         const u8 * partyMon=SPECIES_NONE;
@@ -3249,15 +3249,15 @@ static void CustomGetBestMonIntegrated(struct Pokemon *party, s32 lastId, enum B
         
         /*if(switchInScores[monId]!=0)
         {
-            MgbaPrintf(MGBA_LOG_WARN, "mon looking %S", checkingPosition);
-            MgbaPrintf(MGBA_LOG_WARN, "mon looking at %S", lookingAt);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot mon %S", partyMonStored[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot score %d", switchInScores[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot best move %S", aiBestMove[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot deals %d", maxDamageDealtStored[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "percentage slot deals %d", percentageDealtStored[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot takes %d", maxDamageDealtToAIStored[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "percentage slot takes %d", percentageReceivedStored[monId]);
+            DebugPrintf("mon looking %S", checkingPosition);
+            DebugPrintf("mon looking at %S", lookingAt);
+            DebugPrintf("party slot mon %S", partyMonStored[monId]);
+            DebugPrintf("party slot score %d", switchInScores[monId]);
+            DebugPrintf("party slot best move %S", aiBestMove[monId]);
+            DebugPrintf("party slot deals %d", maxDamageDealtStored[monId]);
+            DebugPrintf("percentage slot deals %d", percentageDealtStored[monId]);
+            DebugPrintf("party slot takes %d", maxDamageDealtToAIStored[monId]);
+            DebugPrintf("percentage slot takes %d", percentageReceivedStored[monId]);
         }*/
     }
 
@@ -3660,14 +3660,14 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
 
     u32 incomingType = GetMoveType(switchingMove);
 
-        MgbaPrintf(MGBA_LOG_WARN, "PartnerFindMonThatAbsorbsOpponentsMove");
-        MgbaPrintf(MGBA_LOG_WARN, "battler %d %S", battler, GetSpeciesName(gBattleMons[battler].species));
-        MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveTypes %d", oppositeBattlerMoveTypes);
-        MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveTypes %d", oppositeBattlerPartnerMoveTypes);
-        MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveCount %d", oppositeBattlerMoveCount);
-        MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveCount %d", oppositeBattlerPartnerMoveCount);
-        MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOpposite %S", GetMoveName(switchingMoveOpposite));
-        MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOppositePartner %S", GetMoveName(switchingMoveOppositePartner));
+        DebugPrintf("PartnerFindMonThatAbsorbsOpponentsMove");
+        DebugPrintf("battler %d %S", battler, GetSpeciesName(gBattleMons[battler].species));
+        DebugPrintf("oppositeBattlerMoveTypes %d", oppositeBattlerMoveTypes);
+        DebugPrintf("oppositeBattlerPartnerMoveTypes %d", oppositeBattlerPartnerMoveTypes);
+        DebugPrintf("oppositeBattlerMoveCount %d", oppositeBattlerMoveCount);
+        DebugPrintf("oppositeBattlerPartnerMoveCount %d", oppositeBattlerPartnerMoveCount);
+        DebugPrintf("switchingMoveOpposite %S", GetMoveName(switchingMoveOpposite));
+        DebugPrintf("switchingMoveOppositePartner %S", GetMoveName(switchingMoveOppositePartner));
 
     if (!(oppositeBattlerMoveTypes == 1 || oppositeBattlerPartnerMoveTypes == 1) && !(onlySound || onlyBallistic || onlyWind))
         return FALSE;
