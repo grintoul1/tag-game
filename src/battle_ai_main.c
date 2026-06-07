@@ -1901,6 +1901,11 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
           || PartnerMoveIsSameNoTarget(GetPartnerBattler(battlerAtk), move, aiData->partnerMove)) //Only one mon needs to set up Stealth Rocks
             ADJUST_SCORE(-10);
         break;
+    case EFFECT_STEELSURGE:
+        if (IsHazardOnSide(GetBattlerSide(battlerDef), HAZARDS_STEELSURGE)
+          || PartnerMoveIsSameNoTarget(GetPartnerBattler(battlerAtk), move, aiData->partnerMove)) //Only one mon needs to set up Stealth Rocks
+            ADJUST_SCORE(-10);
+        break;
     case EFFECT_TOXIC_SPIKES:
         if (gSideTimers[GetBattlerSide(battlerDef)].toxicSpikesAmount >= 2)
             ADJUST_SCORE(-10);
@@ -4728,6 +4733,7 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
     case EFFECT_CEASELESS_EDGE:
     case EFFECT_SPIKES:
     case EFFECT_STEALTH_ROCK:
+    case EFFECT_STEELSURGE:
     case EFFECT_STICKY_WEB:
     case EFFECT_STONE_AXE:
     case EFFECT_TOXIC_SPIKES:
@@ -5980,6 +5986,7 @@ static s32 AI_ForceSetupFirstTurn(enum BattlerId battlerAtk, enum BattlerId batt
     case EFFECT_ELECTRIC_TERRAIN:
     case EFFECT_MISTY_TERRAIN:
     case EFFECT_STEALTH_ROCK:
+    case EFFECT_STEELSURGE:
     case EFFECT_TOXIC_SPIKES:
     case EFFECT_TRICK_ROOM:
     case EFFECT_WONDER_ROOM:
@@ -6380,6 +6387,7 @@ static s32 AI_PowerfulStatus(enum BattlerId battlerAtk, enum BattlerId battlerDe
         break;
     case EFFECT_SPIKES:
     case EFFECT_STEALTH_ROCK:
+    case EFFECT_STEELSURGE:
     case EFFECT_STICKY_WEB:
     case EFFECT_TOXIC_SPIKES:
         if (AI_ShouldSetUpHazards(battlerAtk, battlerDef, move, gAiLogicData))
@@ -6498,6 +6506,7 @@ static s32 AI_PredictSwitch(enum BattlerId battlerAtk, enum BattlerId battlerDef
     case EFFECT_MAGNET_RISE:
     case EFFECT_TRICK_ROOM:
     case EFFECT_STEALTH_ROCK:
+    case EFFECT_STEELSURGE:
     case EFFECT_SPIKES:
     case EFFECT_TOXIC_SPIKES:
         ADJUST_SCORE(BEST_EFFECT);
@@ -7281,6 +7290,11 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
                 break;
             case EFFECT_STEALTH_ROCK:
                 if (IsHazardOnSide(GetBattlerSide(battlerDef), HAZARDS_STEALTH_ROCK)
+                || PartnerMoveIsSameNoTarget(GetPartnerBattler(battlerAtk), move, aiData->partnerMove)) //Only one mon needs to set up Stealth Rocks
+                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                break;
+            case EFFECT_STEELSURGE:
+                if (IsHazardOnSide(GetBattlerSide(battlerDef), HAZARDS_STEELSURGE)
                 || PartnerMoveIsSameNoTarget(GetPartnerBattler(battlerAtk), move, aiData->partnerMove)) //Only one mon needs to set up Stealth Rocks
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
@@ -10212,6 +10226,7 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
         case EFFECT_CEASELESS_EDGE:
         case EFFECT_SPIKES:
         case EFFECT_STEALTH_ROCK:
+        case EFFECT_STEELSURGE:
         case EFFECT_STONE_AXE:
         case EFFECT_TOXIC_SPIKES:
         case EFFECT_STICKY_WEB: // PARTNER DIFFERENCE - Partner done
@@ -12540,6 +12555,11 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                 break;
             case EFFECT_STEALTH_ROCK:
                 if (IsHazardOnSide(GetBattlerSide(battlerDef), HAZARDS_STEALTH_ROCK)
+                || PartnerMoveIsSameNoTarget(GetPartnerBattler(battlerAtk), move, aiData->partnerMove)) //Only one mon needs to set up Stealth Rocks
+                    ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
+                break;
+            case EFFECT_STEELSURGE:
+                if (IsHazardOnSide(GetBattlerSide(battlerDef), HAZARDS_STEELSURGE)
                 || PartnerMoveIsSameNoTarget(GetPartnerBattler(battlerAtk), move, aiData->partnerMove)) //Only one mon needs to set up Stealth Rocks
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
@@ -15102,6 +15122,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
         case EFFECT_CEASELESS_EDGE:
         case EFFECT_SPIKES:
         case EFFECT_STEALTH_ROCK:
+        case EFFECT_STEELSURGE:
         case EFFECT_STONE_AXE:
         case EFFECT_TOXIC_SPIKES: // PARTNER DIFFERENCE - Opponent done
             if (AI_ShouldSetUpHazards(battlerAtk, battlerDef, move, aiData))

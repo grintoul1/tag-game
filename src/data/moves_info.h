@@ -23842,4 +23842,30 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_LowHorsepower,
     },
+
+    [MOVE_STEELSURGE] =
+    {
+        .name = COMPOUND_STRING("Steel Surge"),
+        .description = COMPOUND_STRING(
+            "Sets floating steel that\n"
+            "hurt a foe switching in."),
+        .effect = EFFECT_STEALTH_ROCK,
+        .power = 0,
+        .type = TYPE_STEEL,
+        .accuracy = 0,
+        .pp = 20,
+        .target = TARGET_OPPONENTS_FIELD,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .zMove = { .effect = Z_EFFECT_DEF_UP_1 },
+        .magicCoatAffected = B_UPDATED_MOVE_FLAGS >= GEN_5,
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .forcePressure = TRUE,
+        .contestEffect = CONTEST_EFFECT_MAKE_FOLLOWING_MONS_NERVOUS,
+        .contestCategory = CONTEST_CATEGORY_COOL,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_STEALTH_ROCK},
+        .battleAnimScript = gBattleAnimMove_StealthRock,
+    },
 };

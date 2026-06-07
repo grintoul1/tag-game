@@ -4067,6 +4067,7 @@ static bool32 IsDomeComboMove(enum Move move)
     case EFFECT_SPIKES:
     case EFFECT_TOXIC_SPIKES:
     case EFFECT_STEALTH_ROCK:
+    case EFFECT_STEELSURGE:
     case EFFECT_STICKY_WEB:
     case EFFECT_YAWN:
     case EFFECT_DREAM_EATER:

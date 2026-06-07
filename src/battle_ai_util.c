@@ -313,6 +313,7 @@ bool32 ShouldRecordStatusMove(enum Move move)
         case EFFECT_REFLECT:
         case EFFECT_SPIKES:
         case EFFECT_STEALTH_ROCK:
+        case EFFECT_STEELSURGE:
         case EFFECT_STICKY_WEB:
         case EFFECT_TOXIC_SPIKES:
             return RandomPercentage(RNG_AI_ASSUME_STATUS_MEDIUM_ODDS, ASSUME_STATUS_MEDIUM_ODDS);
@@ -2008,6 +2009,7 @@ bool32 IsHazardMove(enum Move move)
     case EFFECT_CEASELESS_EDGE:
     case EFFECT_SPIKES:
     case EFFECT_STEALTH_ROCK:
+    case EFFECT_STEELSURGE:
     case EFFECT_STICKY_WEB:
     case EFFECT_STONE_AXE:
     case EFFECT_TOXIC_SPIKES:

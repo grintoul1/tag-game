@@ -1247,6 +1247,15 @@ BattleScript_EffectStealthRock::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
+BattleScript_EffectSteelsurge::
+	attackcanceler
+	setsteelsurge BattleScript_ButItFailed
+	attackanimation
+	waitanimation
+	printfromtable gDmgHazardsStringIds
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectStickyWeb::
 	attackcanceler
 	setstickyweb BattleScript_ButItFailed
