@@ -3,7 +3,6 @@
   "name": "Route131",
   "layout": "LAYOUT_ROUTE131_SKY_PILLAR",
   "music": "MUS_ROUTE119",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_131",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -178,5 +177,6 @@
       "script": "Route131_EventScript_HermanSusie"
     }
   ],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }
