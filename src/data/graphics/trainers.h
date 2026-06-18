@@ -502,6 +502,7 @@ const u8 gTrainerBackPic_AquaAdminF[] = INCGFX_U8("graphics/trainers/back_pics/a
 const u8 gTrainerBackPic_LeaderTate[] = INCGFX_U8("graphics/trainers/back_pics/leader_tate.png", ".4bpp");
 const u8 gTrainerBackPic_LeaderLiza[] = INCGFX_U8("graphics/trainers/back_pics/leader_liza.png", ".4bpp");
 const u8 gTrainerBackPic_Sabrina[] = INCGFX_U8("graphics/trainers/back_pics/sabrina.png", ".4bpp");
+const u8 gTrainerBackPic_Brock[] = INCGFX_U8("graphics/trainers/back_pics/brock.png", ".4bpp");
 
 const u16 gTrainerBackPicPalette_Red[] = INCGFX_U16("graphics/trainers/back_pics/red.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCGFX_U16("graphics/trainers/back_pics/leaf.png", ".gbapal");
@@ -513,6 +514,7 @@ const u16 gTrainerBackPicPalette_Blue[] = INCGFX_U16("graphics/trainers/back_pic
 const u16 gTrainerBackPicPalette_AquaAdminF[] = INCGFX_U16("graphics/trainers/back_pics/aqua_admin_f.png", ".gbapal");
 const u16 gTrainerBackPicPalette_LeaderTateAndLiza[] = INCGFX_U16("graphics/trainers/back_pics/leader_tate_and_liza.pal", ".gbapal");
 const u16 gTrainerBackPicPalette_Sabrina[] = INCGFX_U16("graphics/trainers/back_pics/sabrina.png", ".gbapal");
+const u16 gTrainerBackPicPalette_Brock[] = INCGFX_U16("graphics/trainers/back_pics/brock.png", ".gbapal");
 
 const u8 gTrainerBackPic_Pokedude[] = INCGFX_U8("graphics/trainers/back_pics/pokedude.png", ".4bpp");
 const u8 gTrainerBackPic_OldMan[] = INCGFX_U8("graphics/trainers/back_pics/old_man.png", ".4bpp");
@@ -1160,6 +1162,7 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_LEADER_BROCK_FRLG] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LeaderBrockFrlg, gTrainerPalette_LeaderBrockFrlg),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_Brock, gTrainerBackPicPalette_Brock, sBackAnims_Hoenn),
     },
     [TRAINER_PIC_LEADER_MISTY_FRLG] =
     {
