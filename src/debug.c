@@ -755,6 +755,30 @@ static const struct DebugMenuOption sDebugMenu_Actions_ROMInfo2[] =
     { NULL }
 };
 
+/*static const struct DebugMenuOption sDebugMenu_Actions_SetSplit[] =
+{
+    { COMPOUND_STRING("Wattson"),           DebugAction_ExecuteScript, Debug_SetSplitWattson },
+    { COMPOUND_STRING("Roxanne"),           DebugAction_ExecuteScript, Debug_SetSplitRoxanne },
+    { COMPOUND_STRING("Norman"),            DebugAction_ExecuteScript, Debug_SetSplitNorman },
+    { COMPOUND_STRING("Brawly"),            DebugAction_ExecuteScript, Debug_SetSplitBrawly },
+    { COMPOUND_STRING("Winstrates"),        DebugAction_ExecuteScript, Debug_SetSplitWinstrates },
+    { COMPOUND_STRING("Fallarbor"),         DebugAction_ExecuteScript, Debug_SetSplitFallarbor },
+    { COMPOUND_STRING("Mt Chimney"),        DebugAction_ExecuteScript, Debug_SetSplitMtChimney },
+    { COMPOUND_STRING("Flannery"),          DebugAction_ExecuteScript, Debug_SetSplitFlannery },
+    { COMPOUND_STRING("Mt Pyre"),           DebugAction_ExecuteScript, Debug_SetSplitMtPyre },
+    { COMPOUND_STRING("Tate & Liza"),       DebugAction_ExecuteScript, Debug_SetSplitTateAndLiza },
+    { COMPOUND_STRING("Space Center"),      DebugAction_ExecuteScript, Debug_SetSplitSpaceCenter },
+    { COMPOUND_STRING("Winona"),            DebugAction_ExecuteScript, Debug_SetSplitWinona },
+    { COMPOUND_STRING("Magma Hideout"),     DebugAction_ExecuteScript, Debug_SetSplitMagmaHideout },
+    { COMPOUND_STRING("Aqua Hideout"),      DebugAction_ExecuteScript, Debug_SetSplitAquaHideout },
+    { COMPOUND_STRING("Seafloor Cavern"),   DebugAction_ExecuteScript, Debug_SetSplitSeafloorCavern },
+    { COMPOUND_STRING("Sky Pillar"),        DebugAction_ExecuteScript, Debug_SetSplitSkyPillar },
+    { COMPOUND_STRING("Juan"),              DebugAction_ExecuteScript, Debug_SetSplitJuan },
+    { COMPOUND_STRING("Victory Road"),      DebugAction_ExecuteScript, Debug_SetSplitVictoryRoad },
+    { COMPOUND_STRING("Elite Four"),        DebugAction_ExecuteScript, Debug_SetSplitEliteFour },
+    { NULL }
+};*/
+
 static const struct DebugMenuOption sDebugMenu_Actions_Flags[] =
 {
     [DEBUG_FLAGVAR_MENU_ITEM_FLAGS]                = { COMPOUND_STRING("Set Flag XYZ…"),                     DebugAction_FlagsVars_Flags },
@@ -799,6 +823,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Main[] =
     { COMPOUND_STRING("Flags & Vars…"), DebugAction_OpenSubMenuFlagsVars, sDebugMenu_Actions_Flags, },
     { COMPOUND_STRING("Sound…"),        DebugAction_OpenSubMenu, sDebugMenu_Actions_Sound, },
     { COMPOUND_STRING("ROM Info…"),     DebugAction_OpenSubMenu, sDebugMenu_Actions_ROMInfo2, },
+    //{ COMPOUND_STRING("Split…"),        DebugAction_OpenSubMenu, sDebugMenu_Actions_SetSplit, },
     { COMPOUND_STRING("Cancel"),        DebugAction_Cancel, },
     { NULL }
 };
