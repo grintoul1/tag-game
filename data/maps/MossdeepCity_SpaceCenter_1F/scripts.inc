@@ -363,7 +363,6 @@ MossdeepCity_SpaceCenter_1F_EventScript_Grunt1Grunt2BrockScriptJoin::
 	applymovement LOCALID_SPACE_CENTER_1F_BROCK, Common_Movement_FaceRight
 	waitmovement
 	playse SE_PIN
-	waitse
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_QuestionMark
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	applymovement LOCALID_SPACE_CENTER_1F_BROCK, Common_Movement_QuestionMark
@@ -504,7 +503,6 @@ MossdeepCity_SpaceCenter_1F_EventScript_AquaGrunt1Grunt2BrockScriptJoin::
 	applymovement LOCALID_SPACE_CENTER_1F_BROCK, Common_Movement_FaceRight
 	waitmovement
 	playse SE_PIN
-	waitse
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_QuestionMark
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	applymovement LOCALID_SPACE_CENTER_1F_BROCK, Common_Movement_QuestionMark
@@ -653,8 +651,8 @@ MossdeepCity_SpaceCenter_1F_EventScript_MistyContinue2::
 	goto MossdeepCity_SpaceCenter_1F_EventScript_AquaGrunt3Grunt4
 
 MossdeepCity_SpaceCenter_1F_Movement_ErikaApproachErikaGruntForBattle:
-	walk_down
-	walk_down
+	walk_slow_down
+	walk_slow_down
 	step_end
 
 MossdeepCity_SpaceCenter_1F_Movement_EmmieApproachErikaGruntForBattle:
@@ -686,19 +684,19 @@ MossdeepCity_SpaceCenter_1F_Movement_ApproachGrunt3Grunt4Stage1:
 	step_end	
 
 MossdeepCity_SpaceCenter_1F_Movement_EmmieWalkToErika:
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_left
-	walk_left
+	walk_slow_left
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_left
+	walk_slow_left
 	step_end
 
 MossdeepCity_SpaceCenter_1F_Movement_EmmieWalkToErikaLeft:
-	walk_up
-	walk_up
-	walk_left
-	walk_left
+	walk_slow_up
+	walk_slow_up
+	walk_slow_left
+	walk_slow_left
 	step_end
 
 MossdeepCity_SpaceCenter_1F_Text_EmmieIllHelpErika:
@@ -749,7 +747,7 @@ MossdeepCity_SpaceCenter_1F_EventScript_MistyContinue3::
 	goto MossdeepCity_SpaceCenter_1F_EventScript_MistyContinue2
 
 MossdeepCity_SpaceCenter_1F_Movement_ApproachGrunt3Grunt4Stage3Player:
-	walk_right
+	walk_slow_right
 	face_left
 	step_end
 
@@ -1028,7 +1026,6 @@ MossdeepCity_SpaceCenter_1F_EventScript_SurgeContinue3::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkSlowDown
 	waitmovement
 	delay 8
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	applymovement LOCALID_SPACE_CENTER_1F_SURGE, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement
 	msgbox MossdeepCity_SpaceCenter_1F_Text_SurgeLetsDoThis, MSGBOX_AUTOCLOSE
@@ -1254,7 +1251,7 @@ MossdeepCity_SpaceCenter_1F_EventScript_AquaGrunt5Grunt6DoMultiBattle::
 
 MossdeepCity_SpaceCenter_1F_Movement_EmmieReturnFromSurge:
 	walk_up
-	walk_up
+	walk_right
 	walk_up
 	walk_right
 	walk_right

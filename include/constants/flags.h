@@ -1230,9 +1230,9 @@
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
 #define FLAG_HIDE_MOSSDEEP_CITY_TEAM_AQUA                           0x493
-#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
-#define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
+#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_KOGA                0x494 // Koga & Janine
+#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAGMA_GRUNTS        0x495
+#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_AQUA_GRUNTS         0x496
 #define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
 #define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
