@@ -72,8 +72,10 @@ MossdeepCity_SpaceCenter_2F_EventScript_ThreeGrunts::
 	@applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkDown
 	@applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_SpaceCenter_2F_Movement_PlayerEnter
 	@waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
-	waitmovement 0
+	@applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
+	@waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_SpaceCenter_2F_Movement_PlayerApproachAdmin
+	waitmovement
 	playse SE_PIN
 	@goto_if_set FLAG_EVIL_TEAM_AQUA, MossdeepCity_SpaceCenter_2F_EventScript_ThreeAquaGrunts
 MossdeepCity_SpaceCenter_2F_EventScript_ThreeMagmaGrunts::
@@ -125,12 +127,18 @@ MossdeepCity_SpaceCenter_2F_EventScript_ThreeMagmaGrunts::
 	delay 8
 	applymovement LOCALID_GRUNT5, MossdeepCity_SpaceCenter_2F_Movement_PlayerEnter
 	waitmovement
-	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_FaceUp
 	applymovement LOCALID_GRUNT5, MossdeepCity_SpaceCenter_2F_Movement_Grunt5Approach
 	applymovement LOCALID_GRUNT6, MossdeepCity_SpaceCenter_2F_Movement_Grunt6Approach
 	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_SpaceCenter_2F_Movement_PlayerWatchGrunt5
 	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, MossdeepCity_SpaceCenter_2F_Movement_PartnerWatchGrunt6
 	waitmovementall
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, MossdeepCity_SpaceCenter_2F_Movement_TabithaSpin2
+	waitmovement
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_2F_Text_TabithaPinserAttack, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_FaceUp
+	waitmovement
 	goto MossdeepCity_SpaceCenter_2F_EventScript_BattleThreeMagmaGrunts
 	releaseall
 	end
@@ -186,6 +194,17 @@ MossdeepCity_SpaceCenter_2F_Movement_TabithaSpin:
 	delay_16
 	step_end
 
+MossdeepCity_SpaceCenter_2F_Movement_TabithaSpin2:
+	face_left
+	delay_16
+	face_up
+	delay_16
+	face_right
+	delay_16
+	face_down
+	delay_16
+	step_end
+
 MossdeepCity_SpaceCenter_2F_Movement_Grunt6MoveForGrunt5:
 	walk_down
 	walk_right
@@ -199,6 +218,9 @@ MossdeepCity_SpaceCenter_2F_Text_TabithaGoodThingIPrepared:
 MossdeepCity_SpaceCenter_2F_Text_TabithaNeedsYou:
 	.string "Time to come out ladies! Your Tabby\n"
 	.string "needs you!$"
+
+MossdeepCity_SpaceCenter_2F_Text_TabithaPinserAttack:
+	.string "Pinser attack!$"
 
 MossdeepCity_SpaceCenter_2F_Text_TabithaAnAccomplice:
 	.string "Tabitha: Well, now, look what we have\n"
@@ -227,7 +249,6 @@ MossdeepCity_SpaceCenter_2F_Text_BlueCantGetPast:
 	.string "demanding the fuel for the rocket.$"
 
 MossdeepCity_SpaceCenter_2F_Movement_PlayerApproachAdmin:
-	walk_slow_down
 	walk_slow_down
 	step_end
 
@@ -420,13 +441,13 @@ MossdeepCity_SpaceCenter_2F_EventScript_Steven::
 	playse SE_NOT_EFFECTIVE
 	switch VAR_FACING
 	case DIR_SOUTH, MossdeepCity_SpaceCenter_2F_EventScript_StevenFightMovementSouth
-	applymovement LOCALID_STEVEN, MossdeepCity_SpaceCenter_2F_Movement_StevenFight
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN, MossdeepCity_SpaceCenter_2F_Movement_StevenFight
 	waitmovement 0
 	releaseall
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_StevenFightMovementSouth::
-	applymovement LOCALID_STEVEN, MossdeepCity_SpaceCenter_2F_Movement_StevenFightSouth
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN, MossdeepCity_SpaceCenter_2F_Movement_StevenFightSouth
 	waitmovement 0
 	releaseall
 	end
@@ -523,7 +544,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieCourtney::
 	fadescreen FADE_TO_BLACK
 	setflag FLAG_DEFEATED_MAGMA_SPACE_CENTER
 	setflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
-	removeobject LOCALID_STEVEN
+	removeobject LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_MAGMA_NOTE
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
 	setvar VAR_STEVENS_HOUSE_STATE, 1
@@ -546,11 +567,11 @@ MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayer::
 	return
 
 MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayerSouth::
-	turnobject LOCALID_STEVEN, DIR_NORTH
+	turnobject LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN, DIR_NORTH
 	return
 
 MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayerWest::
-	turnobject LOCALID_STEVEN, DIR_EAST
+	turnobject LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN, DIR_EAST
 	return
 
 MossdeepCity_SpaceCenter_2F_EventScript_RivalRayquazaCall::
