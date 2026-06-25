@@ -427,6 +427,7 @@ enum
     OBJ_EVENT_GFX_PUSHABLE_BOULDER_FRLG,
     OBJ_EVENT_GFX_CUTTABLE_TREE_FRLG,
     OBJ_EVENT_GFX_BREAKABLE_ROCK_FRLG,
+    OBJ_EVENT_GFX_JANINE,
     NUM_OBJ_EVENT_GFX,
 };
 
@@ -624,6 +625,18 @@ enum
 // Gen VIII
 #define OBJ_EVENT_PAL_TAG_BALL_STRANGE            0x116A
 #endif //OW_FOLLOWERS_POKEBALLS
+#define OBJ_EVENT_PAL_TAG_BROCK                   0x116B
+#define OBJ_EVENT_PAL_TAG_MISTY                   0x116C
+#define OBJ_EVENT_PAL_TAG_SURGE                   0x116D
+#define OBJ_EVENT_PAL_TAG_ERIKA                   0x116E
+#define OBJ_EVENT_PAL_TAG_KOGA                    0x116F
+#define OBJ_EVENT_PAL_TAG_JANINE                  0x1170
+#define OBJ_EVENT_PAL_TAG_SABRINA                 0x1171
+#define OBJ_EVENT_PAL_TAG_BLAINE                  0x1171
+#define OBJ_EVENT_PAL_TAG_GIOVANNI                0x1172
+#define OBJ_EVENT_PAL_TAG_AGATHA                  0x1173
+#define OBJ_EVENT_PAL_TAG_BRUNO                   0x1174
+#define OBJ_EVENT_PAL_TAG_LANCE                   0x1175
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001

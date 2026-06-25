@@ -502,6 +502,7 @@ const u16 gObjectEventPic_Misty[] = INCGFX_U16("graphics/object_events/pics/peop
 const u16 gObjectEventPic_Lance[] = INCGFX_U16("graphics/object_events/pics/people/lance.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Blue[] = INCGFX_U16("graphics/object_events/pics/people/blue.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Giovanni[] = INCGFX_U16("graphics/object_events/pics/people/giovanni.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPic_Janine[] = INCGFX_U16("graphics/object_events/pics/people/janine.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPal_PlayerFrlg[] = INCGFX_U16("graphics/object_events/palettes/player_frlg.pal", ".gbapal");
 const u16 gObjectEventPal_PlayerReflectionFrlg[] = INCGFX_U16("graphics/object_events/palettes/player_reflection_frlg.pal", ".gbapal");
 const u16 gObjectEventPal_NpcBlue[] = INCGFX_U16("graphics/object_events/palettes/npc_blue.pal", ".gbapal");
@@ -512,6 +513,18 @@ const u16 gObjectEventPal_NpcBlueReflection[] = INCGFX_U16("graphics/object_even
 const u16 gObjectEventPal_NpcPinkReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_pink_reflection.pal", ".gbapal");
 const u16 gObjectEventPal_NpcGreenReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_green_reflection.pal", ".gbapal");
 const u16 gObjectEventPal_NpcWhiteReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_white_reflection.pal", ".gbapal");
+const u16 gObjectEventPal_Brock[] = INCGFX_U16("graphics/object_events/palettes/brock.pal", ".gbapal");
+const u16 gObjectEventPal_Misty[] = INCGFX_U16("graphics/object_events/palettes/misty.pal", ".gbapal");
+const u16 gObjectEventPal_Surge[] = INCGFX_U16("graphics/object_events/palettes/surge.pal", ".gbapal");
+const u16 gObjectEventPal_Erika[] = INCGFX_U16("graphics/object_events/palettes/erika.pal", ".gbapal");
+const u16 gObjectEventPal_Sabrina[] = INCGFX_U16("graphics/object_events/palettes/sabrina.pal", ".gbapal");
+const u16 gObjectEventPal_Koga[] = INCGFX_U16("graphics/object_events/palettes/koga.pal", ".gbapal");
+const u16 gObjectEventPal_Janine[] = INCGFX_U16("graphics/object_events/palettes/janine.pal", ".gbapal");
+const u16 gObjectEventPal_Blaine[] = INCGFX_U16("graphics/object_events/palettes/blaine.pal", ".gbapal");
+const u16 gObjectEventPal_Bruno[] = INCGFX_U16("graphics/object_events/palettes/bruno.pal", ".gbapal");
+const u16 gObjectEventPal_Agatha[] = INCGFX_U16("graphics/object_events/palettes/agatha.pal", ".gbapal");
+const u16 gObjectEventPal_Lance[] = INCGFX_U16("graphics/object_events/palettes/lance.pal", ".gbapal");
+const u16 gObjectEventPal_Giovanni[] = INCGFX_U16("graphics/object_events/palettes/giovanni.pal", ".gbapal");
 
 #if IS_FRLG
 
