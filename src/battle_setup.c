@@ -32,6 +32,7 @@
 #include "field_weather.h"
 #include "battle_tower.h"
 #include "gym_leader_rematch.h"
+#include "battle_partner.h"
 #include "battle_frontier.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
@@ -1002,7 +1003,10 @@ static void CB2_StartFirstBattle(void)
 
     if (IsBattleTransitionDone() == TRUE)
     {
-        gBattleTypeFlags = BATTLE_TYPE_FIRST_BATTLE;
+        gBattleTypeFlags = BATTLE_TYPE_FIRST_BATTLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTI;
+        gPartnerTrainerId = TRAINER_PARTNER(PARTNER_BIRCH);
+        TRAINER_BATTLE_PARAM.opponentB = 0xFFFF;
+        FillPartnerParty(TRAINER_PARTNER(PARTNER_BIRCH));
         gMain.savedCallback = CB2_EndFirstBattle;
         FreeAllWindowBuffers();
         SetMainCallback2(CB2_InitBattle);

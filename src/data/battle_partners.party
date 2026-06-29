@@ -1058,3 +1058,18 @@ Naive Nature
 - Shadow Ball
 - Mystical Fire
 - Ally Switch
+
+=== PARTNER_BIRCH ===
+Name: Birch
+Class: Rival
+Pic: Steven
+Gender: Male
+Music: Male
+AI: Partner Trainer
+
+Surskit @ Miracle Seed
+Ability: Technician
+Level: 8
+IVs: 0 HP / 0 SpD
+Naive Nature
+- Mega Drain

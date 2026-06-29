@@ -34,6 +34,7 @@
 #define PARTNER_BRUNO_MOSSDEEP      29
 #define PARTNER_AGATHA_MOSSDEEP     30
 #define PARTNER_LANCE_MOSSDEEP      31
-#define PARTNER_COUNT               32
+#define PARTNER_BIRCH               32
+#define PARTNER_COUNT               33
 
 #endif  // GUARD_CONSTANTS_BATTLE_PARTNERS_H

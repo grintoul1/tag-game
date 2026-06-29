@@ -158,7 +158,20 @@ void SetUpBattleVarsAndBirchZigzagoon(void)
     BattleAI_SetupFlags();
 
     if (!IS_FRLG && gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
-        CreateWildMon(SPECIES_ZIGZAGOON, 2, FALSE);
+    {
+        ZeroEnemyPartyMons();
+        u32 personality = GetMonPersonality(SPECIES_PSYDUCK, MON_MALE, NATURE_BRAVE, RANDOM_UNOWN_LETTER);
+        CreateMonWithIVs(&gParties[B_TRAINER_OPPONENT_A][0], SPECIES_PSYDUCK, 10, personality, OTID_STRUCT_PLAYER_ID, MAX_IV_MASK, FALSE);
+        SetMonMoveSlot(&gParties[B_TRAINER_OPPONENT_A][0], MOVE_GUST, 0);
+        SetMonMoveSlot(&gParties[B_TRAINER_OPPONENT_A][0], MOVE_FREEZE_DRY, 1);
+        u32 j = 0;
+        SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HP_IV, &j);
+        j = 9;
+        SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_SPATK_IV, &j);
+        j = 0;
+        SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_SPDEF_IV, &j);
+        CalculateMonStats(&gParties[B_TRAINER_OPPONENT_A][0]);
+    }
 }
 
 void InitBattleControllers(void)

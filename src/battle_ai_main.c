@@ -334,6 +334,10 @@ void BattleAI_SetupFlags(void)
                 gAiThinkingStruct->aiFlags[B_BATTLER_3] |= AI_FLAG_ATTACKS_PARTNER;
         }
     }
+    else if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
+    {
+        gAiThinkingStruct->aiFlags[B_BATTLER_1] = AI_FLAG_SMART_TRAINER;
+    }
     else
     {
         gAiThinkingStruct->aiFlags[B_BATTLER_1] = GetAiFlags(TRAINER_BATTLE_PARAM.opponentA, B_BATTLER_1);
