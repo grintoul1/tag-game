@@ -58,21 +58,75 @@ AncientTomb_EventScript_CaveEntranceSide::
 AncientTomb_EventScript_Registeel::
 	lock
 	faceplayer
+	random 3
+	goto_if_eq VAR_RESULT, 0, AncientTomb_EventScript_SuicuneEncounter
+	goto_if_eq VAR_RESULT, 1, AncientTomb_EventScript_RaikouEncounter
+	goto_if_eq VAR_RESULT, 2, AncientTomb_EventScript_EnteiEncounter
+	end
+
+AncientTomb_EventScript_SuicuneEncounter::
 	waitse
-	playmoncry SPECIES_REGISTEEL, CRY_MODE_ENCOUNTER
+	playmoncry SPECIES_SUICUNE, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
-	setwildbattle SPECIES_REGISTEEL, 40
+	setwildbattle SPECIES_SUICUNE, 70
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
-	special StartRegiBattle
+	special BattleSetup_StartLegendaryBattle
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_SUICUNE
 	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, AncientTomb_EventScript_DefeatedRegisteel
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, AncientTomb_EventScript_RanFromRegisteel
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, AncientTomb_EventScript_RanFromRegisteel
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, AncientTomb_EventScript_DefeatedDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, AncientTomb_EventScript_RanFromDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, AncientTomb_EventScript_RanFromDog
+	setflag FLAG_DEFEATED_GALAR_BIRD
+	release
+	end
+
+AncientTomb_EventScript_RaikouEncounter::
+	waitse
+	playmoncry SPECIES_RAIKOU, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_RAIKOU, 70
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_RAIKOU
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, AncientTomb_EventScript_DefeatedDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, AncientTomb_EventScript_RanFromDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, AncientTomb_EventScript_RanFromDog
+	setflag FLAG_DEFEATED_GALAR_BIRD
+	release
+	end
+
+AncientTomb_EventScript_EnteiEncounter::
+	waitse
+	playmoncry SPECIES_ENTEI, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_ENTEI, 70
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_ENTEI
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, AncientTomb_EventScript_DefeatedDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, AncientTomb_EventScript_RanFromDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, AncientTomb_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_REGISTEEL
 	release
 	end
+
+AncientTomb_EventScript_DefeatedDog::
+	setflag FLAG_DEFEATED_REGISTEEL
+	goto Common_EventScript_RemoveStaticPokemon
+	end
+
+AncientTomb_EventScript_RanFromDog::
+	goto Common_EventScript_LegendaryFlewAway
+	end
+
 
 AncientTomb_EventScript_DefeatedRegisteel::
 	setflag FLAG_DEFEATED_REGISTEEL

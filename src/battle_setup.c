@@ -565,6 +565,18 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_DEOXYS_SPEED:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEOXYS);
         break;
+    case SPECIES_SUICUNE:
+    case SPECIES_WALKING_WAKE:
+        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_VS_SUICUNE);
+        break;
+    case SPECIES_RAIKOU:
+    case SPECIES_RAGING_BOLT:
+        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_VS_RAIKOU);
+        break;
+    case SPECIES_ENTEI:
+    case SPECIES_GOUGING_FIRE:
+        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_VS_ENTEI);
+        break;
     case SPECIES_LUGIA:
     case SPECIES_HO_OH:
     default:
