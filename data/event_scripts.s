@@ -3412,3 +3412,15 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
 	.include "data/scripts/wild_encounter.inc"
+
+	.include "data/maps/ShoalCavern/scripts.inc"
+
+	.include "data/maps/ShoalCavern_Underwater/scripts.inc"
+
+	.include "data/maps/ShoalCavity_Underwater/scripts.inc"
+
+	.include "data/maps/ShoalHollow_Underwater/scripts.inc"
+
+	.include "data/maps/ShoalCavity/scripts.inc"
+
+	.include "data/maps/ShoalHollow/scripts.inc"

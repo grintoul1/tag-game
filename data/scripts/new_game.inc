@@ -363,6 +363,8 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_KOGA
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAGMA_GRUNTS
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_AQUA_GRUNTS
+	clearflag FLAG_HIDE_KANTO_BIRD
+	clearflag FLAG_HIDE_GALAR_BIRD
 	destroyfollowernpc
 	call EventScript_ResetAllBerries
 	end

@@ -1,0 +1,41 @@
+{
+  "id": "MAP_SHOAL_CAVITY",
+  "name": "ShoalCavity",
+  "layout": "LAYOUT_SHOAL_CAVITY",
+  "music": "MUS_MT_PYRE",
+  "region_map_section": "MAPSEC_SHOAL_CAVITY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_SHOAL_CAVITY_UNDERWATER",
+      "offset": 0,
+      "direction": "dive"
+    }
+  ],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
+      "x": 10,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ShoalCavity_EventScript_Bird",
+      "flag": "FLAG_HIDE_KANTO_BIRD"
+    }
+  ],
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": [],
+  "region": "REGION_HOENN"
+}

@@ -9378,6 +9378,72 @@
       "border_height": 2,
       "border_width": 2,
       "layout_version": "frlg"
+    },
+    {
+      "id": "LAYOUT_SHOAL_CAVERN",
+      "name": "ShoalCavern_Layout",
+      "width": 20,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/ShoalCavern/border.bin",
+      "blockdata_filepath": "data/layouts/ShoalCavern/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_SHOAL_CAVERN_UNDERWATER",
+      "name": "ShoalCavern_Underwater_Layout",
+      "width": 20,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/ShoalCavern_Underwater/border.bin",
+      "blockdata_filepath": "data/layouts/ShoalCavern_Underwater/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_SHOAL_CAVITY_UNDERWATER",
+      "name": "ShoalCavity_Underwater_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/ShoalCavity_Underwater/border.bin",
+      "blockdata_filepath": "data/layouts/ShoalCavity_Underwater/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_SHOAL_HOLLOW_UNDERWATER",
+      "name": "ShoalHollow_Underwater_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/ShoalHollow_Underwater/border.bin",
+      "blockdata_filepath": "data/layouts/ShoalHollow_Underwater/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_SHOAL_CAVITY",
+      "name": "ShoalCavity_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/ShoalCavity/border.bin",
+      "blockdata_filepath": "data/layouts/ShoalCavity/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_SHOAL_HOLLOW",
+      "name": "ShoalHollow_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/ShoalHollow/border.bin",
+      "blockdata_filepath": "data/layouts/ShoalHollow/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }
