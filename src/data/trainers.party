@@ -490,6 +490,71 @@ Jolly Nature
 - Aurora Veil
 - Frosty Reception
 
+=== TRAINER_BLUE_MAUVILLE ===
+Name: Blue /* Mauville*/
+Class: Kantonian
+Pic: Champion Rival Frlg
+Gender: Male
+Music: Male
+Mugshot: Blue
+Battle Type: Singles
+AI: Tag Trainer
+Multi Party: Half
+
+Growlithe-Hisui @ Normal Gem
+Ability: Justified
+Level: 29
+Adamant Nature
+- Extreme Speed
+- Flame Charge
+- Rock Tomb
+- Rock Throw
+
+Omanyte @ Rindo Berry
+Ability: Weak Armor
+Level: 28
+Timid Nature
+- Power Gem
+- Brine
+- Icy Wind
+- Rock Polish
+
+Magnemite @ Air Balloon
+Ability: Analytic
+Level: 28
+Serious Nature
+- Magnet Bomb
+- Shock Wave
+- Thunder Wave
+- Ally Switch
+
+Kadabra @ Focus Sash
+Ability: Synchronize
+Level: 29
+Timid Nature
+- Ominous Wind
+- Confusion
+- Telekinesis
+- Calm Mind
+
+Sandshrew-Alola @ Never Melt Ice
+Ability: Slush Rush
+Level: 28
+Hasty Nature
+- Metal Claw
+- Low Horsepower
+- Ice Shard
+- Hone Claws
+
+Pidgeotto @ Power Herb
+Ability: Keen Eye
+Level: 30
+Timid Nature
+- Razor Wind
+- Air Cutter
+- Twister
+- Tailwind
+
 === TRAINER_ANNA_AND_MEG_1 ===
 Name: Anna & Meg
 Class: Sr And Jr
@@ -10516,7 +10581,7 @@ Multi Party: Half
 Mugshot: Champion
 
 Swampert @ Swampertite  
-Ability: Drizzle  
+Ability: Damp  
 Jolly Nature  
 - Stone Edge  
 - High Horsepower  
@@ -10566,7 +10631,7 @@ Timid Nature
 - Earth Power  
 
 Metagross @ Metagrossite  
-Ability: Tough Claws  
+Ability: Clear Body  
 Jolly Nature  
 - Meteor Mash  
 - Zen Headbutt  

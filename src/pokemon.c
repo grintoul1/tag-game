@@ -5488,7 +5488,8 @@ u16 GetBattleBGM(void)
             }
             return MUS_VS_GYM_LEADER;
         case TRAINER_CLASS_CHAMPION:
-            return MUS_VS_CHAMPION;
+            //return MUS_VS_CHAMPION;
+            return MUS_VS_SINNOH_BRAIN;
         case TRAINER_CLASS_RIVAL:
             if (VarGet(VAR_MUSIC_MODE) == MUSIC_MODE_DEFAULT)
                 switchVal = GetCurrentBadgeCount() + 1;

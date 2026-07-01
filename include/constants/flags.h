@@ -534,7 +534,7 @@
 #define FLAG_DEFEATED_GALAR_BIRD             0x1DE
 #define FLAG_HIDE_KANTO_BIRD                 0x1DF
 #define FLAG_HIDE_GALAR_BIRD                 0x1E0
-#define FLAG_UNUSED_0x1E1                    0x1E1 // Unused Flag
+#define FLAG_HIDE_MAUVILLE_CITY_BLUE         0x1E1
 #define FLAG_UNUSED_0x1E2                    0x1E2 // Unused Flag
 #define FLAG_UNUSED_0x1E3                    0x1E3 // Unused Flag
 
@@ -725,14 +725,14 @@
 #define FLAG_HIDE_BATTLE_DOME_LOBBY_TUCKER  0x297 // Hides Tucker
 #define FLAG_HIDE_VICTORY_ROAD_VITO  0x298 // Hides Vito
 #define FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS_MAXIE_DEFEATED  0x299 // Hides Aqua Grunts on R121 that only appear if Maxie fought on Mt Pyre
-#define FLAG_UNUSED_0x29A  0x29A // Unused Flag
-#define FLAG_UNUSED_0x29B  0x29B // Unused Flag
-#define FLAG_UNUSED_0x29C  0x29C // Unused Flag
-#define FLAG_UNUSED_0x29D  0x29D // Unused Flag
-#define FLAG_UNUSED_0x29E  0x29E // Unused Flag
-#define FLAG_UNUSED_0x29F  0x29F // Unused Flag
-#define FLAG_UNUSED_0x2A0  0x2A0 // Unused Flag
-#define FLAG_UNUSED_0x2A1  0x2A1 // Unused Flag
+#define FLAG_BADGE09_GET   0x29A
+#define FLAG_BADGE10_GET   0x29B
+#define FLAG_BADGE11_GET   0x29C
+#define FLAG_BADGE12_GET   0x29D
+#define FLAG_BADGE13_GET   0x29E
+#define FLAG_BADGE14_GET   0x29F
+#define FLAG_BADGE15_GET   0x2A0
+#define FLAG_BADGE16_GET   0x2A1
 #define FLAG_UNUSED_0x2A2  0x2A2 // Unused Flag
 #define FLAG_UNUSED_0x2A3  0x2A3 // Unused Flag
 #define FLAG_UNUSED_0x2A4  0x2A4 // Unused Flag
