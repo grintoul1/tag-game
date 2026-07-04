@@ -119,11 +119,6 @@ static const u16 gFormArrayUnown[] =
     SPECIES_UNOWN_QUESTION,
 };
 
-void DisableWildEncounters(bool8 disabled)
-{
-    sWildEncountersDisabled = disabled;
-}
-
 // Each fishing spot on Route 119 is given a number between 1 and NUM_FISHING_SPOTS inclusive.
 // The number is determined by counting the valid fishing spots left to right top to bottom.
 // The map is divided into three sections, with each section having a pre-counted number of
@@ -1238,18 +1233,6 @@ bool8 TryDoDoubleWildBattle(void)
     else if (RandomPercentage(RNG_NONE, WE_DOUBLE_WILD_CHANCE))
         return TRUE;
     return FALSE;
-}
-
-bool8 StandardWildEncounter_Debug(void)
-{
-    u32 headerId = GetCurrentMapWildMonHeaderId();
-    enum TimeOfDay timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_LAND);
-
-    if (TryGenerateWildMon(gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo, WILD_AREA_LAND, 0) != TRUE)
-        return FALSE;
-
-    DoStandardWildBattle_Debug();
-    return TRUE;
 }
 
 u32 ChooseHiddenMonIndex(void)

@@ -26,7 +26,6 @@
 
 static void HandleSpecialTrainerBattleEnd(void);
 static void Task_StartBattleAfterTransition(u8 taskId);
-static void Task_TwoPlayerPreBattleExchange(u8 taskId);
 static void UNUSED FillEReaderTrainerWithPlayerData(void);
 static void CopyEReaderTrainerFarewellMessage(void);
 
@@ -107,48 +106,6 @@ void DoSpecialTrainerBattle(void)
         PlayMapChosenOrBattleBGM(0);
         BattleTransition_StartOnField(GetSpecialBattleTransition(B_TRANSITION_GROUP_E_READER));
     #endif //FREE_BATTLE_TOWER_E_READER
-        break;
-    case SPECIAL_BATTLE_MULTI:
-        if (gSpecialVar_0x8005 & MULTI_BATTLE_2_VS_WILD) // Player + AI against wild mon
-        {
-            gBattleTypeFlags = BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
-        }
-        else if (gSpecialVar_0x8005 & MULTI_BATTLE_2_VS_1) // Player + AI against one trainer
-        {
-            TRAINER_BATTLE_PARAM.opponentB = 0xFFFF;
-            gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
-            if (gLinkType == LINKTYPE_TWO_PLAYER)
-                gBattleTypeFlags |= BATTLE_TYPE_TWO_PLAYER;
-        }
-        else // MULTI_BATTLE_2_VS_2
-        {
-            gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
-            if (gLinkType == LINKTYPE_TWO_PLAYER)
-                gBattleTypeFlags |= BATTLE_TYPE_TWO_PLAYER;
-        }
-
-        FillPartnerParty(gPartnerTrainerId);
-        if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
-            CalculatePartnerPartyCount();
-
-        if (gLinkType == LINKTYPE_TWO_PLAYER)
-        {
-            // Two-player mode: sync and exchange opponentA before starting battle
-            u8 taskId = CreateTask(Task_TwoPlayerPreBattleExchange, 1);
-            gTasks[taskId].data[1] = gSpecialVar_0x8005;
-        }
-        else
-        {
-            CreateTask(Task_StartBattleAfterTransition, 1);
-            PlayMapChosenOrBattleBGM(0);
-            if (gSpecialVar_0x8005 & MULTI_BATTLE_2_VS_WILD)
-                BattleTransition_StartOnField(GetWildBattleTransition());
-            else
-                BattleTransition_StartOnField(GetTrainerBattleTransition());
-        }
-
-        if (gSpecialVar_0x8005 & MULTI_BATTLE_CHOOSE_MONS) // Skip mons restoring(done in the script)
-            gBattleScripting.specialTrainerBattleType = 0xFF;
         break;
     case SPECIAL_BATTLE_EMMIE:
         s32 j;
@@ -370,6 +327,9 @@ void DoSpecialTrainerBattle(void)
         }
         BattleTransition_StartOnField(GetTrainerBattleTransition());
         break;
+    case SPECIAL_BATTLE_MULTI:
+    default:
+        errorf("Unknown special battle type %d", gSpecialVar_0x8004);
     }
 }
 
@@ -377,7 +337,7 @@ void DoSpecialTrainerBattle(void)
 #define tState       data[0]
 #define tBattleMode  data[1]
 
-static void Task_TwoPlayerPreBattleExchange(u8 taskId)
+void Task_TwoPlayerPreBattleExchange(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 

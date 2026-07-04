@@ -513,7 +513,7 @@ AI_MULTI_BATTLE_TEST("AI partner will not switch mid-turn into a player Pokémon
 // Used to test EXPECT_SWITCH only on partner
 AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch mid-turn into a player Pokémon (2v1)")
 {
-    u32 flags;
+    u64 flags;
 
     PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
     PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
@@ -543,7 +543,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch mid-turn into a player Pok
 // Used to test EXPECT_SEND_OUT only on partner
 AI_MULTI_BATTLE_TEST("AI partner will not switch into a player Pokémon after fainting (multi)")
 {
-    u32 flags;
+    u64 flags;
 
     PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
     PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
@@ -572,7 +572,7 @@ AI_MULTI_BATTLE_TEST("AI partner will not switch into a player Pokémon after fa
 // Used to test EXPECT_SEND_OUT only on partner
 AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch into a player Pokémon after fainting (2v1)")
 {
-    u32 flags;
+    u64 flags;
 
     PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
     PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
@@ -601,7 +601,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch into a player Pokémon aft
 // Used to test EXPECT_SWITCH, EXPECT_SEND_OUT, and EXPECT_MOVE on partner
 AI_MULTI_BATTLE_TEST("AI partner will not switch into a player Pokémon (multi)")
 {
-    u32 flags;
+    u64 flags;
 
     PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
     PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }
@@ -631,7 +631,7 @@ AI_MULTI_BATTLE_TEST("AI partner will not switch into a player Pokémon (multi)"
 // Used to test EXPECT_SWITCH, EXPECT_SEND_OUT, and EXPECT_MOVE on partner
 AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch into a player Pokémon (2v1)")
 {
-    u32 flags;
+    u64 flags;
 
     PARAMETRIZE {flags = AI_FLAG_PARTNER_TRAINER; }
     PARAMETRIZE {flags = (AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PARTNER_SWITCHING); }

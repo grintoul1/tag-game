@@ -59,7 +59,7 @@
 #include "test/battle.h"
 #include "test_runner.h"
 #include "text.h"
-#include "trainer_pools.h"
+#include "trainer_util.h"
 #include "trig.h"
 #include "tv.h"
 #include "util.h"
@@ -70,7 +70,6 @@
 #include "constants/battle_move_effects.h"
 #include "constants/battle_string_ids.h"
 #include "constants/battle_partner.h"
-#include "constants/battle_setup.h"
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
@@ -91,8 +90,6 @@ static void CB2_HandleStartMultiPartnerBattle(void);
 static void CB2_HandleStartMultiBattle(void);
 static void CB2_HandleStartBattle(void);
 static void TryCorrectShedinjaLanguage(struct Pokemon *mon);
-static enum BattleTrainer GetBattlerTrainerFromParty(struct Pokemon *party);
-static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum);
 static void BattleMainCB1(void);
 static void CB2_EndLinkBattle(void);
 static void EndLinkBattleInSteps(void);
@@ -129,7 +126,6 @@ static void HandleEndTurn_BattleLost(void);
 static void HandleEndTurn_RanFromBattle(void);
 static void HandleEndTurn_MonFled(void);
 static void HandleEndTurn_FinishBattle(void);
-static u32 GeneratePartyHash(const struct Trainer *trainer, u32 i);
 
 EWRAM_DATA u16 gBattle_BG0_X = 0;
 EWRAM_DATA u16 gBattle_BG0_Y = 0;
@@ -170,7 +166,7 @@ EWRAM_DATA u16 gCurrentMove = 0;
 EWRAM_DATA u16 gChosenMove = 0;
 EWRAM_DATA u16 gCalledMove = 0;
 EWRAM_DATA s32 gBideDmg[MAX_BATTLERS_COUNT] = {0};
-EWRAM_DATA u16 gLastUsedItem = 0;
+EWRAM_DATA enum Item gLastUsedItem = ITEM_NONE;
 EWRAM_DATA enum Ability gLastUsedAbility = ABILITY_NONE;
 EWRAM_DATA enum BattlerId gBattlerAttacker = 0;
 EWRAM_DATA enum BattlerId gBattlerTarget = 0;
@@ -491,9 +487,9 @@ void CB2_InitBattle(void)
     AllocateMonSpritesGfx();
     RecordedBattle_ClearFrontierPassFlag();
 
-#if T_SHOULD_RUN_MOVE_ANIM
+#if TESTING
     gLoadFail = FALSE;
-#endif // T_SHOULD_RUN_MOVE_ANIM
+#endif // TESTING
 
     if (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
@@ -599,21 +595,6 @@ static void CB2_InitBattleInternal(void)
     else
         SetMainCallback2(CB2_HandleStartBattle);
 
-    if (!DEBUG_OVERWORLD_MENU || (DEBUG_OVERWORLD_MENU && !gIsDebugBattle))
-    {
-        if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED))
-         || (gBattleTypeFlags & BATTLE_TYPE_TWO_PLAYER))
-        {
-            CreateNPCTrainerParty(&gParties[B_TRAINER_OPPONENT_A][0], TRAINER_BATTLE_PARAM.opponentA);
-            if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
-                CreateNPCTrainerParty(&gParties[B_TRAINER_OPPONENT_B][0], TRAINER_BATTLE_PARAM.opponentB);
-            SetWildMonHeldItem();
-            CalculateEnemyPartyCount();
-        }
-        if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
-            CalculatePartnerPartyCount();
-    }
-
     gMain.inBattle = TRUE;
     gSaveBlock2Ptr->frontier.disableRecordBattle = FALSE;
 
@@ -628,15 +609,15 @@ static void CB2_InitBattleInternal(void)
 
     if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
     {
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE)))
+            SetWildMonHeldItem();
         TryFormChange(&gParties[B_TRAINER_OPPONENT_A][0], FORM_CHANGE_BEGIN_WILD_ENCOUNTER, B_TRAINER_OPPONENT_A);
         if (IsDoubleBattle())
             TryFormChange(&gParties[B_TRAINER_OPPONENT_A][1], FORM_CHANGE_BEGIN_WILD_ENCOUNTER, B_TRAINER_OPPONENT_A);
     }
 
-    #if TESTING
     for (enum BattleTrainer trainer = B_TRAINER_PLAYER; trainer < MAX_BATTLE_TRAINERS; trainer++)
         gPartiesCount[trainer] = CalculatePartyCount(trainer);
-    #endif
 
     gBattleCommunication[MULTIUSE_STATE] = 0;
 }
@@ -1818,13 +1799,6 @@ void CB2_QuitRecordedBattle(void)
     }
 }
 
-static u32 GeneratePartyHash(const struct Trainer *trainer, u32 i)
-{
-    const u8 *buffer = (const u8 *) &trainer->party[i];
-    u32 n = sizeof(*trainer->party);
-    return Crc32B(buffer, n);
-}
-
 void ModifyPersonalityForNature(u32 *personality, u32 newNature)
 {
     u32 nature = GetNatureFromPersonality(*personality);
@@ -1836,636 +1810,6 @@ void ModifyPersonalityForNature(u32 *personality, u32 newNature)
         sign *= -1;
     }
     *personality -= (diff * sign);
-}
-
-u32 GeneratePersonalityForGender(u32 gender, enum Species species)
-{
-    const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[species];
-    if (gender == MON_GENDERLESS)
-        return 0;
-    else if (gender == MON_MALE)
-        return ((255 - speciesInfo->genderRatio) / 2) + speciesInfo->genderRatio;
-    else
-        return speciesInfo->genderRatio / 2;
-}
-
-void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon *partyEntry)
-{
-    bool32 noMoveSet = TRUE;
-    u32 j;
-
-    for (j = 0; j < MAX_MON_MOVES; ++j)
-    {
-        if (partyEntry->moves[j] != MOVE_NONE)
-            noMoveSet = FALSE;
-    }
-    if (noMoveSet)
-    {
-        GiveMonInitialMoveset(mon);
-        // TODO: Figure out a default strategy when moves are not set, to generate a good moveset
-        return;
-    }
-
-    for (j = 0; j < MAX_MON_MOVES; ++j)
-    {
-        u32 pp = GetMovePP(partyEntry->moves[j]);
-        SetMonData(mon, MON_DATA_MOVE1 + j, &partyEntry->moves[j]);
-        SetMonData(mon, MON_DATA_PP1 + j, &pp);
-    }
-}
-
-u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer *trainer, bool32 halfTeam, u32 battleTypeFlags)
-{
-    u32 personalityValue;
-    u8 monsCount;
-    if (battleTypeFlags & BATTLE_TYPE_TRAINER && !(battleTypeFlags & (BATTLE_TYPE_FRONTIER
-                                                                        | BATTLE_TYPE_EREADER_TRAINER
-                                                                        | BATTLE_TYPE_TRAINER_HILL)))
-    {
-        ZeroPartyMons(party);
-
-        if (halfTeam)
-        {
-            if (trainer->partySize > PARTY_SIZE / 2)
-                monsCount = PARTY_SIZE / 2;
-            else
-                monsCount = trainer->partySize;
-        }
-        else
-        {
-            monsCount = trainer->partySize;
-        }
-
-        u32 monIndices[monsCount];
-        DoTrainerPartyPool(trainer, monIndices, monsCount, battleTypeFlags);
-
-        for (s32 i = 0; i < monsCount; i++)
-        {
-            u32 monIndex = monIndices[i];
-            s32 ball = -1;
-            u32 personalityHash = GeneratePartyHash(trainer, i);
-            const struct TrainerMon *partyData = trainer->party;
-            struct OriginalTrainerId otId = OTID_STRUCT_RANDOM_NO_SHINY;
-            u32 abilityNum = 0;
-
-            if (trainer->battleType != TRAINER_BATTLE_TYPE_SINGLES)
-                personalityValue = 0x80;
-            else if (trainer->gender == TRAINER_GENDER_FEMALE)
-                personalityValue = 0x78; // Use personality more likely to result in a female Pokémon
-            else
-                personalityValue = 0x88; // Use personality more likely to result in a male Pokémon
-
-            personalityValue += personalityHash << 8;
-            if (partyData[monIndex].gender == TRAINER_MON_MALE)
-                personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[monIndex].species);
-            else if (partyData[monIndex].gender == TRAINER_MON_FEMALE)
-                personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[monIndex].species);
-            else if (partyData[monIndex].gender == TRAINER_MON_RANDOM_GENDER)
-                personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(Random() & 1 ? MON_MALE : MON_FEMALE, partyData[monIndex].species);
-            ModifyPersonalityForNature(&personalityValue, partyData[monIndex].nature);
-            if (partyData[monIndex].isShiny)
-            {
-                otId.method = OT_ID_PRESET;
-                otId.value = HIHALF(personalityValue) ^ LOHALF(personalityValue);
-            }
-            CreateMon(&party[i], partyData[monIndex].species, partyData[monIndex].lvl, personalityValue, otId, FALSE);
-            SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[monIndex].heldItem);
-
-            CustomTrainerPartyAssignMoves(&party[i], &partyData[monIndex]);
-            SetMonData(&party[i], MON_DATA_IVS, &(partyData[monIndex].iv));
-            if (partyData[monIndex].ev != NULL)
-            {
-                SetMonData(&party[i], MON_DATA_HP_EV, &(partyData[monIndex].ev[0]));
-                SetMonData(&party[i], MON_DATA_ATK_EV, &(partyData[monIndex].ev[1]));
-                SetMonData(&party[i], MON_DATA_DEF_EV, &(partyData[monIndex].ev[2]));
-                SetMonData(&party[i], MON_DATA_SPATK_EV, &(partyData[monIndex].ev[3]));
-                SetMonData(&party[i], MON_DATA_SPDEF_EV, &(partyData[monIndex].ev[4]));
-                SetMonData(&party[i], MON_DATA_SPEED_EV, &(partyData[monIndex].ev[5]));
-            }
-            if (partyData[monIndex].ability != ABILITY_NONE)
-            {
-                const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[partyData[monIndex].species];
-                u32 maxAbilityNum = ARRAY_COUNT(speciesInfo->abilities);
-                for (abilityNum = 0; abilityNum < maxAbilityNum; ++abilityNum)
-                {
-                    if (speciesInfo->abilities[abilityNum] == partyData[monIndex].ability)
-                        break;
-                }
-                assertf(abilityNum < maxAbilityNum, "illegal ability %S for %S", gAbilitiesInfo[partyData[monIndex].ability].name, speciesInfo->speciesName);
-            }
-            else if (B_TRAINER_MON_RANDOM_ABILITY)
-            {
-                const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[partyData[monIndex].species];
-                abilityNum = personalityHash % 3;
-                while (speciesInfo->abilities[abilityNum] == ABILITY_NONE)
-                {
-                    abilityNum--;
-                }
-            }
-            SetMonData(&party[i], MON_DATA_ABILITY_NUM, &abilityNum);
-            SetMonData(&party[i], MON_DATA_FRIENDSHIP, &(partyData[monIndex].friendship));
-            if (partyData[monIndex].ball < POKEBALL_COUNT)
-            {
-                ball = partyData[monIndex].ball;
-                SetMonData(&party[i], MON_DATA_POKEBALL, &ball);
-            }
-            if (partyData[monIndex].nickname != NULL)
-            {
-                SetMonData(&party[i], MON_DATA_NICKNAME, partyData[monIndex].nickname);
-            }
-            if (partyData[monIndex].isShiny)
-            {
-                bool32 data = TRUE;
-                SetMonData(&party[i], MON_DATA_IS_SHINY, &data);
-            }
-            if (partyData[monIndex].dynamaxLevel > 0)
-            {
-                u32 data = partyData[monIndex].dynamaxLevel;
-                if (partyData[monIndex].shouldUseDynamax)
-                    gBattleStruct->opponentMonCanDynamax |= 1 << i;
-                SetMonData(&party[i], MON_DATA_DYNAMAX_LEVEL, &data);
-            }
-            if (partyData[monIndex].gigantamaxFactor)
-            {
-                u32 data = partyData[monIndex].gigantamaxFactor;
-                SetMonData(&party[i], MON_DATA_GIGANTAMAX_FACTOR, &data);
-            }
-            if (partyData[monIndex].teraType > 0)
-            {
-                gBattleStruct->opponentMonCanTera |= 1 << i;
-                enum Type data = partyData[monIndex].teraType;
-                SetMonData(&party[i], MON_DATA_TERA_TYPE, &data);
-            }
-            CalculateMonStats(&party[i]);
-
-            if (B_TRAINER_CLASS_POKE_BALLS >= GEN_7 && ball == -1)
-            {
-                ball = gTrainerClasses[trainer->trainerClass].ball ?: ITEM_POKE_BALL;
-                SetMonData(&party[i], MON_DATA_POKEBALL, &ball);
-            }
-        }
-        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_1)
-        {
-            s32 j;
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
-            for (s32 i = 0; i < 6; i++)
-            {
-                CopyMon(&gParties[B_TRAINER_OPPONENT_A][i], &gParties[B_TRAINER_PLAYER][i], sizeof(*&gParties[B_TRAINER_PLAYER][i]));
-                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                if((j > GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_EXP, NULL)))
-                {
-                    SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_EXP, &j);
-                    CalculateMonStats(&gParties[B_TRAINER_OPPONENT_A][i]);
-                }
-                j = GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_HP, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP1, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP2, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP3, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP4, &j);
-                j = STATUS1_NONE;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_STATUS, &j);
-            }
-            j = NATURE_RELAXED;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_SERIOUS;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_BRAVE;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_SASSY;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][3], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_BASHFUL;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][4], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_QUIET;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][5], MON_DATA_HIDDEN_NATURE, &j);
-
-            j = ITEM_FOCUS_SASH;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HELD_ITEM, &j);
-            j = ITEM_IRON_BALL;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_HELD_ITEM, &j);
-            j = ITEM_EJECT_BUTTON;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_HELD_ITEM, &j);
-            j = ITEM_LAGGING_TAIL;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][3], MON_DATA_HELD_ITEM, &j);
-            j = ITEM_SITRUS_BERRY;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][4], MON_DATA_HELD_ITEM, &j);
-            j = ITEM_STICKY_BARB;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][5], MON_DATA_HELD_ITEM, &j);
-        }
-        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_2)
-        {
-            s32 j;
-            for (s32 i = 3; i < 6; i++)
-            {
-                CopyMon(&gParties[B_TRAINER_OPPONENT_A][i], &gParties[B_TRAINER_PLAYER][i-3], sizeof(*&gParties[B_TRAINER_PLAYER][i-3]));
-                gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
-                (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
-                gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY_JAGGED_PASS);
-                FillPartnerParty(gPartnerTrainerId);
-            }
-            j = SPECIES_TORNADUS;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_SPECIES, &j);
-            j = SPECIES_THUNDURUS;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_SPECIES, &j);
-            j = SPECIES_LANDORUS;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_SPECIES, &j);
-            j = 0;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_ABILITY_NUM, &j);
-            j = 0;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_ABILITY_NUM, &j);
-            j = 0;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_ABILITY_NUM, &j);
-            j = NATURE_SERIOUS;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_TIMID;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_BRAVE;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_HIDDEN_NATURE, &j);
-            j = MOVE_TAILWIND;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_MOVE1, &j);
-            j = MOVE_TAUNT;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_MOVE1, &j);
-            j = MOVE_U_TURN;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_MOVE1, &j);
-
-            for (s32 i = 0; i < 6; i++)
-            {
-                j = GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_HP, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP1, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP2, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP3, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP4, &j);
-            }
-            j = NATURE_SASSY;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][3], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_BASHFUL;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][4], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_QUIET;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][5], MON_DATA_HIDDEN_NATURE, &j);
-
-            j = ITEM_LAGGING_TAIL;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][3], MON_DATA_HELD_ITEM, &j);
-            j = ITEM_SITRUS_BERRY;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][4], MON_DATA_HELD_ITEM, &j);
-            j = ITEM_STICKY_BARB;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][5], MON_DATA_HELD_ITEM, &j);
-        }
-        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_3)
-        {
-            s32 j;
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
-            for (s32 i = 0; i < 6; i++)
-            {
-                CopyMon(&gParties[B_TRAINER_OPPONENT_A][i], &gParties[B_TRAINER_PLAYER][i], sizeof(*&gParties[B_TRAINER_PLAYER][i]));
-                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                if((j > GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_EXP, NULL)))
-                {
-                    SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_EXP, &j);
-                    CalculateMonStats(&gParties[B_TRAINER_OPPONENT_A][i]);
-                }
-                j = GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_HP, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP1, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP2, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP3, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP4, &j);
-                j = STATUS1_NONE;
-                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_STATUS, &j);
-            }
-            j = NATURE_TIMID;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_LONELY;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_NAIVE;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_RASH;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][3], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_BASHFUL;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][4], MON_DATA_HIDDEN_NATURE, &j);
-            j = NATURE_JOLLY;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][5], MON_DATA_HIDDEN_NATURE, &j);
-
-            j = ITEM_FOCUS_SASH;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HELD_ITEM, &j);
-            j = ITEM_NORMAL_GEM;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_HELD_ITEM, &j);
-            j = ITEM_EJECT_PACK;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_HELD_ITEM, &j);
-            j = ITEM_WEAKNESS_POLICY;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][3], MON_DATA_HELD_ITEM, &j);
-            j = ITEM_CHOICE_SPECS;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][4], MON_DATA_HELD_ITEM, &j);
-            j = ITEM_NORMAL_GEM;
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][5], MON_DATA_HELD_ITEM, &j);
-        }
-    }
-
-    return trainer->partySize;
-}
-
-static enum BattleTrainer GetBattlerTrainerFromParty(struct Pokemon *party)
-{
-    return ((party - gParties[B_TRAINER_PLAYER]) / PARTY_SIZE);
-}
-
-static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum)
-{
-    u8 retVal;
-    bool32 halfTeam = (BattleSideHasTwoTrainers(GetBattlerTrainerFromParty(party) & BIT_SIDE) && !AreMultiPartiesFullTeams());
-
-    if (trainerNum == TRAINER_SECRET_BASE)
-        return 0;
-    if (GetTrainerStructFromId(trainerNum)->overrideTrainer)
-    {
-        struct Trainer tempTrainer;
-        memcpy(&tempTrainer, GetTrainerStructFromId(trainerNum), sizeof(struct Trainer));
-        const struct Trainer *origTrainer = GetTrainerStructFromId(tempTrainer.overrideTrainer);
-
-        tempTrainer.party = origTrainer->party;
-
-        tempTrainer.poolSize = origTrainer->poolSize;
-        if (tempTrainer.partySize == 0)
-            tempTrainer.partySize = origTrainer->partySize;
-
-        retVal = CreateNPCTrainerPartyFromTrainer(party, (const struct Trainer *)(&tempTrainer), halfTeam, gBattleTypeFlags);
-    }
-    else
-    {
-        retVal = CreateNPCTrainerPartyFromTrainer(party, GetTrainerStructFromId(trainerNum), halfTeam, gBattleTypeFlags);
-    }
-    return retVal;
-}
-
-void CreateTrainerPartyForPlayer(void)
-{
-    Script_RequestEffects(SCREFF_V1);
-
-    ZeroPlayerPartyMons();
-    gPartnerTrainerId = gSpecialVar_0x8004;
-    CreateNPCTrainerPartyFromTrainer(gParties[B_TRAINER_PLAYER], GetTrainerStructFromId(gSpecialVar_0x8004), TRUE, BATTLE_TYPE_TRAINER);
-}
-
-#define STEVEN_OTID     61226
-#define SHELLY_OTID     61227
-#define TABITHA_OTID    61228
-#define EMMIE_OTID      61229
-
-void FillPoolForShelly(u8 unused)
-{
-    u32 i, j;
-    u32 personality;
-    u8 trainerName[(PLAYER_NAME_LENGTH * 3) + 1];
-    s32 ball = -1;
-    struct Pokemon tempMon;
-    
-    for (i = 0; i < PARTY_SIZE && i < gBattlePartners[DIFFICULTY_NORMAL][PARTNER_SHELLY_MHO].partySize; i++)
-    {
-        const struct TrainerMon *partyData = gBattlePartners[DIFFICULTY_NORMAL][PARTNER_SHELLY_MHO].party;
-
-        personality = Random32();
-        if (partyData[i].gender == TRAINER_MON_MALE)
-            personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[i].species);
-        else if (partyData[i].gender == TRAINER_MON_FEMALE)
-            personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
-        ModifyPersonalityForNature(&personality, partyData[i].nature);
-        CreateMonWithIVs(&gEliteFourPool[i], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(SHELLY_OTID), 31, FALSE);
-        j = partyData[i].isShiny;
-        SetMonData(&gEliteFourPool[i], MON_DATA_IS_SHINY, &j);
-        SetMonData(&gEliteFourPool[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
-        CustomTrainerPartyAssignMoves(&gEliteFourPool[i], &partyData[i]);
-
-        SetMonData(&gEliteFourPool[i], MON_DATA_IVS, &(partyData[i].iv));
-        if (partyData[i].ev != NULL)
-        {
-            SetMonData(&gEliteFourPool[i], MON_DATA_HP_EV, &(partyData[i].ev[0]));
-            SetMonData(&gEliteFourPool[i], MON_DATA_ATK_EV, &(partyData[i].ev[1]));
-            SetMonData(&gEliteFourPool[i], MON_DATA_DEF_EV, &(partyData[i].ev[2]));
-            SetMonData(&gEliteFourPool[i], MON_DATA_SPATK_EV, &(partyData[i].ev[3]));
-            SetMonData(&gEliteFourPool[i], MON_DATA_SPDEF_EV, &(partyData[i].ev[4]));
-            SetMonData(&gEliteFourPool[i], MON_DATA_SPEED_EV, &(partyData[i].ev[5]));
-        }
-        if (partyData[i].ability != ABILITY_NONE)
-        {
-            const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[partyData[i].species];
-            u32 maxAbilities = ARRAY_COUNT(speciesInfo->abilities);
-            for (j = 0; j < maxAbilities; j++)
-            {
-                if (speciesInfo->abilities[j] == partyData[i].ability)
-                    break;
-            }
-            if (j < maxAbilities)
-                SetMonData(&gEliteFourPool[i], MON_DATA_ABILITY_NUM, &j);
-        }
-        SetMonData(&gEliteFourPool[i], MON_DATA_FRIENDSHIP, &(partyData[i].friendship));
-        if (partyData[i].ball < POKEBALL_COUNT)
-        {
-            ball = partyData[i].ball;
-            SetMonData(&gEliteFourPool[i], MON_DATA_POKEBALL, &ball);
-        }
-        if (partyData[i].nickname != NULL)
-        {
-            SetMonData(&gEliteFourPool[i], MON_DATA_NICKNAME, partyData[i].nickname);
-        }
-        CalculateMonStats(&gEliteFourPool[i]);
-
-        StringCopy(trainerName, gBattlePartners[DIFFICULTY_NORMAL][PARTNER_SHELLY_MHO].trainerName);
-        SetMonData(&gEliteFourPool[i], MON_DATA_OT_NAME, trainerName);
-        j = gBattlePartners[DIFFICULTY_NORMAL][PARTNER_SHELLY_MHO].encounterMusic >> 7;
-        SetMonData(&gEliteFourPool[i], MON_DATA_OT_GENDER, &j);
-    }
-
-    if (!IsStoryMulti())
-    {
-        for (i = 0; i < MULTI_PARTY_SIZE; i++)
-        {
-            tempMon = gParties[B_TRAINER_PLAYER][i + 3];
-            gParties[B_TRAINER_PLAYER][i + 3] = gEliteFourPool[i];
-            gEliteFourPool[i] = tempMon;
-        }
-    }
-}
-
-void FillPoolForTabitha(u8 unused)
-{
-    u32 i, j;
-    u32 personality;
-    u8 trainerName[(PLAYER_NAME_LENGTH * 3) + 1];
-    s32 ball = -1;
-    struct Pokemon tempMon;
-    
-    for (i = 0; i < PARTY_SIZE && i < gBattlePartners[DIFFICULTY_NORMAL][PARTNER_TABITHA].partySize; i++)
-    {
-        const struct TrainerMon *partyData = gBattlePartners[DIFFICULTY_NORMAL][PARTNER_TABITHA].party;
-
-        personality = Random32();
-        if (partyData[i].gender == TRAINER_MON_MALE)
-            personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[i].species);
-        else if (partyData[i].gender == TRAINER_MON_FEMALE)
-            personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
-        ModifyPersonalityForNature(&personality, partyData[i].nature);
-        CreateMonWithIVs(&gEliteFourPool[i], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(TABITHA_OTID), 31, FALSE);
-        j = partyData[i].isShiny;
-        SetMonData(&gEliteFourPool[i], MON_DATA_IS_SHINY, &j);
-        SetMonData(&gEliteFourPool[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
-        CustomTrainerPartyAssignMoves(&gEliteFourPool[i], &partyData[i]);
-
-        SetMonData(&gEliteFourPool[i], MON_DATA_IVS, &(partyData[i].iv));
-        if (partyData[i].ev != NULL)
-        {
-            SetMonData(&gEliteFourPool[i], MON_DATA_HP_EV, &(partyData[i].ev[0]));
-            SetMonData(&gEliteFourPool[i], MON_DATA_ATK_EV, &(partyData[i].ev[1]));
-            SetMonData(&gEliteFourPool[i], MON_DATA_DEF_EV, &(partyData[i].ev[2]));
-            SetMonData(&gEliteFourPool[i], MON_DATA_SPATK_EV, &(partyData[i].ev[3]));
-            SetMonData(&gEliteFourPool[i], MON_DATA_SPDEF_EV, &(partyData[i].ev[4]));
-            SetMonData(&gEliteFourPool[i], MON_DATA_SPEED_EV, &(partyData[i].ev[5]));
-        }
-        if (partyData[i].ability != ABILITY_NONE)
-        {
-            const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[partyData[i].species];
-            u32 maxAbilities = ARRAY_COUNT(speciesInfo->abilities);
-            for (j = 0; j < maxAbilities; j++)
-            {
-                if (speciesInfo->abilities[j] == partyData[i].ability)
-                    break;
-            }
-            if (j < maxAbilities)
-                SetMonData(&gEliteFourPool[i], MON_DATA_ABILITY_NUM, &j);
-        }
-        SetMonData(&gEliteFourPool[i], MON_DATA_FRIENDSHIP, &(partyData[i].friendship));
-        if (partyData[i].ball < POKEBALL_COUNT)
-        {
-            ball = partyData[i].ball;
-            SetMonData(&gEliteFourPool[i], MON_DATA_POKEBALL, &ball);
-        }
-        if (partyData[i].nickname != NULL)
-        {
-            SetMonData(&gEliteFourPool[i], MON_DATA_NICKNAME, partyData[i].nickname);
-        }
-        CalculateMonStats(&gEliteFourPool[i]);
-
-        StringCopy(trainerName, gBattlePartners[DIFFICULTY_NORMAL][PARTNER_TABITHA].trainerName);
-        SetMonData(&gEliteFourPool[i], MON_DATA_OT_NAME, trainerName);
-        j = gBattlePartners[DIFFICULTY_NORMAL][PARTNER_TABITHA].encounterMusic >> 7;
-        SetMonData(&gEliteFourPool[i], MON_DATA_OT_GENDER, &j);
-    }
-
-    if (!IsStoryMulti())
-    {
-        for (i = 0; i < MULTI_PARTY_SIZE; i++)
-        {
-            tempMon = gParties[B_TRAINER_PLAYER][i + 3];
-            gParties[B_TRAINER_PLAYER][i + 3] = gEliteFourPool[i];
-            gEliteFourPool[i] = tempMon;
-        }
-    }
-}
-/*    if (trainerId > TRAINER_PARTNER(PARTNER_NONE))
-    {
-        for (i = 0; i < 3; i++)
-            ZeroMonData(&gParties[B_TRAINER_PLAYER][i + 3]);
-
-        for (i = 0; i < 3 && i < gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].partySize; i++)
-        {
-            const struct TrainerMon *partyData = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].party;
-            const u8 *partnerName = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName;
-
-            for (k = 0; partnerName[k] != EOS && k < 3; k++)
-            {
-                if (k == 0)
-                {
-                    firstIdPart = partnerName[k];
-                    secondIdPart = partnerName[k];
-                    thirdIdPart = partnerName[k];
-                }
-                else if (k == 1)
-                {
-                    secondIdPart = partnerName[k];
-                    thirdIdPart = partnerName[k];
-                }
-                else if (k == 2)
-                {
-                    thirdIdPart = partnerName[k];
-                }
-            }
-            if (trainerId == TRAINER_PARTNER(PARTNER_STEVEN))
-                otID = STEVEN_OTID;
-            else
-                otID = ((firstIdPart % 72) * 1000) + ((secondIdPart % 23) * 10) + (thirdIdPart % 37) % 65536;
-
-            personality = Random32();
-            if (partyData[i].gender == TRAINER_MON_MALE)
-                personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[i].species);
-            else if (partyData[i].gender == TRAINER_MON_FEMALE)
-                personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
-            ModifyPersonalityForNature(&personality, partyData[i].nature);
-            CreateMon(&gParties[B_TRAINER_PLAYER][i + 3], partyData[i].species, partyData[i].lvl, 0, TRUE, personality, OT_ID_PRESET, otID, FALSE);
-            j = partyData[i].isShiny;
-            SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_IS_SHINY, &j);
-            SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
-            CustomTrainerPartyAssignMoves(&gParties[B_TRAINER_PLAYER][i + 3], &partyData[i]);
-
-            SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_IVS, &(partyData[i].iv));
-            if (partyData[i].ev != NULL)
-            {
-                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_HP_EV, &(partyData[i].ev[0]));
-                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_ATK_EV, &(partyData[i].ev[1]));
-                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_DEF_EV, &(partyData[i].ev[2]));
-                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_SPATK_EV, &(partyData[i].ev[3]));
-                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_SPDEF_EV, &(partyData[i].ev[4]));
-                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_SPEED_EV, &(partyData[i].ev[5]));
-            }
-            if (partyData[i].ability != ABILITY_NONE)
-            {
-                const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[partyData[i].species];
-                u32 maxAbilities = ARRAY_COUNT(speciesInfo->abilities);
-                for (j = 0; j < maxAbilities; j++)
-                {
-                    if (speciesInfo->abilities[j] == partyData[i].ability)
-                        break;
-                }
-                if (j < maxAbilities)
-                    SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_ABILITY_NUM, &j);
-            }
-            SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_FRIENDSHIP, &(partyData[i].friendship));
-            if (partyData[i].ball != ITEM_NONE)
-            {
-                ball = partyData[i].ball;
-                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_POKEBALL, &ball);
-            }
-            if (partyData[i].nickname != NULL)
-            {
-                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_NICKNAME, partyData[i].nickname);
-            }
-            CalculateMonStats(&gParties[B_TRAINER_PLAYER][i + 3]);
-
-            StringCopy(trainerName, gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName);
-            SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_OT_NAME, trainerName);
-            j = gBattlePartners[difficulty][SanitizeTrainerId(trainerId - TRAINER_PARTNER(PARTNER_NONE))].encounterMusic >> 7;
-            SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_OT_GENDER, &j);
-        }
-    }
-*/
-void ClearHideoutPool(u8 unused)
-{
-    u32 i;
-    for (i = 0; i < MULTI_PARTY_SIZE; i++)
-    {
-        CopyMon(&gParties[B_TRAINER_PLAYER][i + 3], &gEliteFourPool[i], sizeof(gEliteFourPool[i]));
-    }
-
 }
 
 void VBlankCB_Battle(void)
@@ -3439,6 +2783,7 @@ static void BattleStartClearSetData(void)
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
     {
         gBattleStruct->battlerState[i].isFirstTurn = 2;
+        gBattleStruct->battlerState[i].originalBattlerPartyId = PARTY_SIZE;
         gLastMoves[i] = MOVE_NONE;
         gLastLandedMoves[i] = MOVE_NONE;
         gLastHitByType[i] = 0;
@@ -3527,9 +2872,6 @@ static void BattleStartClearSetData(void)
         }
     }
 
-    gBattleStruct->swapDamageCategory = FALSE; // Photon Geyser, Shell Side Arm, Light That Burns the Sky
-    gBattleStruct->categoryOverride = FALSE; // used for Z-Moves and Max Moves
-
     ClearPursuitValues();
     gSelectedMonPartyId = PARTY_SIZE; // Revival Blessing
     gCategoryIconSpriteId = 0xFF;
@@ -3544,9 +2886,85 @@ static void BattleStartClearSetData(void)
 
 #define UNPACK_VOLATILE_BATON_PASSABLES(_enum, _fieldName, _typeMaxValue, ...) __VA_OPT__(if ((FIRST(__VA_ARGS__)) & V_BATON_PASSABLE) gBattleMons[battler].volatiles._fieldName = volatilesCopy->_fieldName;)
 
+static void ClearSetDataOnLeave(enum BattlerId battler)
+{
+    // Clear Rage Fist stacks
+    if (GetConfig(B_RAGE_FIST) >= GEN_CHAMPIONS)
+        GetBattlerPartyState(battler)->timesGotHit = 0;
+
+    if (GetProtectType(gProtectStructs[battler].protected) == PROTECT_TYPE_SINGLE) // Side type protects expire at the end of the turn
+        gProtectStructs[battler].protected = PROTECT_NONE;
+
+    if (battler == gBattlerAttacker)
+        gBattleStruct->moldBreakerActive = FALSE;
+
+    gActionSelectionCursor[battler] = 0;
+    gMoveSelectionCursor[battler] = 0;
+
+    gProtectStructs[battler].quash = FALSE;
+    gProtectStructs[battler].noValidMoves = FALSE;
+    gProtectStructs[battler].helpingHand = 0;
+    gProtectStructs[battler].bounceMove = FALSE;
+    gProtectStructs[battler].stealMove = FALSE;
+    gProtectStructs[battler].chargingTurn = FALSE;
+    gProtectStructs[battler].fleeType = 0;
+    gProtectStructs[battler].statRaised = FALSE;
+    gProtectStructs[battler].pranksterElevated = FALSE;
+    gSpecialStatuses[battler].queuedSwitch = NO_QUEUED_SWITCH;
+    gBattleStruct->battlerState[battler].isFirstTurn = 2;
+    gBattleStruct->battlerState[battler].stompingTantrumTimer = 0;
+    gBattleStruct->battlerState[battler].canPickupItem = FALSE;
+    gBattleStruct->battlerState[battler].wasAboveHalfHp = gBattleMons[battler].hp > gBattleMons[battler].maxHP / 2;
+    gBattleStruct->choicedMove[battler] = MOVE_NONE;
+    gBattleStruct->palaceFlags &= ~(1u << battler);
+
+    gLastMoves[battler] = MOVE_NONE;
+    gLastLandedMoves[battler] = MOVE_NONE;
+    gLastHitByType[battler] = 0;
+    gLastUsedMoveType[battler] = 0;
+    gLastResultingMoves[battler] = MOVE_NONE;
+    gLastPrintedMoves[battler] = MOVE_NONE;
+    gLastHitBy[battler] = 0xFF;
+
+    for (u32 i = 0; i < NUM_BATTLE_SIDES; i++)
+    {
+        // User of sticky web fainted, so reset the stored battler ID
+        if (gSideTimers[i].stickyWebBattlerId == battler)
+            gSideTimers[i].stickyWebBattlerId = 0xFF;
+    }
+
+    gBattleStruct->lastTakenMove[battler] = 0;
+    for (enum BattlerId i = 0; i < gBattlersCount; i++)
+    {
+        if (i != battler && !IsBattlerAlly(i, battler))
+            gBattleStruct->lastTakenMove[i] = MOVE_NONE;
+
+        gBattleStruct->lastTakenMoveFrom[i][battler] = 0;
+        gBattleStruct->lastTakenMoveFrom[battler][i] = 0;
+
+        if (gBattleMons[i].volatiles.infatuation == INFATUATED_WITH(battler))
+            gBattleMons[i].volatiles.infatuation = 0;
+        if (gBattleMons[i].volatiles.wrapped && gBattleMons[i].volatiles.wrappedBy == battler)
+            gBattleMons[i].volatiles.wrapped = FALSE;
+        if (gBattleMons[i].volatiles.syrupBomb && gBattleMons[i].volatiles.stickySyrupedBy == battler)
+            gBattleMons[i].volatiles.syrupBomb = FALSE;
+        if (gBattleMons[i].volatiles.octolock && gBattleMons[i].volatiles.octolockedBy == battler)
+            gBattleMons[i].volatiles.octolock = FALSE;
+    }
+
+    ClearPursuitValuesIfSet(battler);
+
+    // Reset Eject Button / Eject Pack switch detection
+    gAiLogicData->ejectButtonSwitch = FALSE;
+    gAiLogicData->ejectPackSwitch = FALSE;
+}
+
 void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCopy)
 {
     enum BattleMoveEffects effect = GetMoveEffect(gCurrentMove);
+
+    // Data cleared both on switch and faint
+    ClearSetDataOnLeave(battler);
 
     ClearIllusionMon(battler);
     if (effect != EFFECT_BATON_PASS)
@@ -3592,24 +3010,6 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
             gBattleMons[battler].volatiles.gastroAcid = FALSE;
     }
 
-    for (enum BattlerId i = 0; i < gBattlersCount; i++)
-    {
-        if (gBattleMons[i].volatiles.infatuation == INFATUATED_WITH(battler))
-            gBattleMons[i].volatiles.infatuation = 0;
-        if (gBattleMons[i].volatiles.wrapped && gBattleMons[i].volatiles.wrappedBy == battler)
-            gBattleMons[i].volatiles.wrapped = FALSE;
-        if (gBattleMons[i].volatiles.syrupBomb && gBattleMons[i].volatiles.stickySyrupedBy == battler)
-            gBattleMons[i].volatiles.syrupBomb = FALSE;
-        if (gBattleMons[i].volatiles.octolock && gBattleMons[i].volatiles.octolockedBy == battler)
-            gBattleMons[i].volatiles.octolock = FALSE;
-    }
-
-    gActionSelectionCursor[battler] = 0;
-    gMoveSelectionCursor[battler] = 0;
-
-    if (GetProtectType(gProtectStructs[battler].protected) == PROTECT_TYPE_SINGLE) // Side type protects expire at the end of the turn
-        gProtectStructs[battler].protected = PROTECT_NONE;
-
     if (effect == EFFECT_BATON_PASS)
     {
         gBattleMons[battler].volatiles.substituteHP = volatilesCopy->substituteHP;
@@ -3624,56 +3024,15 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
         gBattleMons[battler].volatiles.substituteHP = volatilesCopy->substituteHP;
     }
 
-    gBattleStruct->moveResultFlags[battler] = 0;
-    gBattleStruct->battlerState[battler].isFirstTurn = 2;
     gBattleStruct->battlerState[battler].notOnField = FALSE;
     gBattleMons[battler].volatiles.truantSwitchInHack = volatilesCopy->truantSwitchInHack;
-    gLastMoves[battler] = MOVE_NONE;
-    gLastLandedMoves[battler] = MOVE_NONE;
-    gLastHitByType[battler] = 0;
-    gLastUsedMoveType[battler] = 0;
-    gLastResultingMoves[battler] = MOVE_NONE;
-    gLastPrintedMoves[battler] = MOVE_NONE;
-    gLastHitBy[battler] = 0xFF;
 
-    gBattleStruct->lastTakenMove[battler] = 0;
-    gBattleStruct->lastTakenMoveFrom[battler][0] = 0;
-    gBattleStruct->lastTakenMoveFrom[battler][1] = 0;
-    gBattleStruct->lastTakenMoveFrom[battler][2] = 0;
-    gBattleStruct->lastTakenMoveFrom[battler][3] = 0;
-    gBattleStruct->battlerState[battler].stompingTantrumTimer = 0;
-    gBattleStruct->palaceFlags &= ~(1u << battler);
-    gBattleStruct->battlerState[battler].canPickupItem = FALSE;
-    gBattleStruct->battlerState[battler].wasAboveHalfHp = gBattleMons[battler].hp > gBattleMons[battler].maxHP / 2;
     gBattleStruct->hazardsCounter = 0;
     gSpecialStatuses[battler].queuedSwitch = NO_QUEUED_SWITCH;
-
-    ClearPursuitValuesIfSet(battler);
-
-    for (u32 i = 0; i < ARRAY_COUNT(gSideTimers); i++)
-    {
-        // Switched into sticky web user slot, so reset stored battler ID
-        if (gSideTimers[i].stickyWebBattlerId == battler)
-            gSideTimers[i].stickyWebBattlerId = 0xFF;
-    }
-
-    for (enum BattlerId i = 0; i < gBattlersCount; i++)
-    {
-        if (i != battler && !IsBattlerAlly(i, battler))
-            gBattleStruct->lastTakenMove[i] = MOVE_NONE;
-
-        gBattleStruct->lastTakenMoveFrom[i][battler] = 0;
-    }
-
-    gBattleStruct->choicedMove[battler] = MOVE_NONE;
     gBattleStruct->eventState.arenaTurn = 0xFF;
 
     // Reset damage to prevent things like red card activating if the switched-in mon is holding it
     gSpecialStatuses[battler].damagedByAttack = FALSE;
-
-    // Reset Eject Button / Eject Pack switch detection
-    gAiLogicData->ejectButtonSwitch = FALSE;
-    gAiLogicData->ejectPackSwitch = FALSE;
 
     // Clear selected party ID so Revival Blessing doesn't get confused.
     gSelectedMonPartyId = PARTY_SIZE;
@@ -3694,6 +3053,9 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
 
 void FaintClearSetData(enum BattlerId battler)
 {
+    // Data cleared both on switch and faint
+    ClearSetDataOnLeave(battler);
+
     for (enum Stat i = 0; i < NUM_BATTLE_STATS; i++)
         gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
 
@@ -3707,53 +3069,7 @@ void FaintClearSetData(enum BattlerId battler)
             gBattleMons[i].volatiles.battlerWithSureHit = 0;
         if (gBattleMons[i].volatiles.escapePrevention && gBattleMons[i].volatiles.battlerPreventingEscape == battler)
             gBattleMons[i].volatiles.escapePrevention = FALSE;
-        if (gBattleMons[i].volatiles.infatuation == INFATUATED_WITH(battler))
-            gBattleMons[i].volatiles.infatuation = 0;
-        if (gBattleMons[i].volatiles.wrapped && gBattleMons[i].volatiles.wrappedBy == battler)
-            gBattleMons[i].volatiles.wrapped = FALSE;
-        if (gBattleMons[i].volatiles.syrupBomb && gBattleMons[i].volatiles.stickySyrupedBy == battler)
-            gBattleMons[i].volatiles.syrupBomb = FALSE;
-        if (gBattleMons[i].volatiles.octolock && gBattleMons[i].volatiles.octolockedBy == battler)
-            gBattleMons[i].volatiles.octolock = FALSE;
     }
-
-    gActionSelectionCursor[battler] = 0;
-    gMoveSelectionCursor[battler] = 0;
-
-    if (GetProtectType(gProtectStructs[battler].protected) == PROTECT_TYPE_SINGLE) // Side type protects expire at the end of the turn
-        gProtectStructs[battler].protected = PROTECT_NONE;
-
-    gProtectStructs[battler].quash = FALSE;
-    gProtectStructs[battler].noValidMoves = FALSE;
-    gProtectStructs[battler].helpingHand = 0;
-    gProtectStructs[battler].bounceMove = FALSE;
-    gProtectStructs[battler].stealMove = FALSE;
-    gProtectStructs[battler].chargingTurn = FALSE;
-    gProtectStructs[battler].fleeType = 0;
-    gProtectStructs[battler].statRaised = FALSE;
-    gProtectStructs[battler].pranksterElevated = FALSE;
-    gSpecialStatuses[battler].queuedSwitch = NO_QUEUED_SWITCH;
-
-    gBattleStruct->battlerState[battler].isFirstTurn = 2;
-
-    gLastMoves[battler] = MOVE_NONE;
-    gLastLandedMoves[battler] = MOVE_NONE;
-    gLastHitByType[battler] = 0;
-    gLastUsedMoveType[battler] = 0;
-    gLastResultingMoves[battler] = MOVE_NONE;
-    gLastPrintedMoves[battler] = MOVE_NONE;
-    gLastHitBy[battler] = 0xFF;
-
-    gBattleStruct->choicedMove[battler] = MOVE_NONE;
-    gBattleStruct->lastTakenMove[battler] = MOVE_NONE;
-    gBattleStruct->lastTakenMoveFrom[battler][0] = 0;
-    gBattleStruct->lastTakenMoveFrom[battler][1] = 0;
-    gBattleStruct->lastTakenMoveFrom[battler][2] = 0;
-    gBattleStruct->lastTakenMoveFrom[battler][3] = 0;
-    gBattleStruct->palaceFlags &= ~(1u << battler);
-    if (battler == gBattlerAttacker)
-        gBattleStruct->moldBreakerActive = FALSE;
-    ClearPursuitValuesIfSet(battler);
 
     if (gBattleStruct->battlerState[battler].commanderSpecies != SPECIES_NONE)
     {
@@ -3769,21 +3085,6 @@ void FaintClearSetData(enum BattlerId battler)
                 MarkBattlerForControllerExec(partner);
             }
         }
-    }
-
-    for (u32 i = 0; i < ARRAY_COUNT(gSideTimers); i++)
-    {
-        // User of sticky web fainted, so reset the stored battler ID
-        if (gSideTimers[i].stickyWebBattlerId == battler)
-            gSideTimers[i].stickyWebBattlerId = 0xFF;
-    }
-
-    for (enum BattlerId i = 0; i < gBattlersCount; i++)
-    {
-        if (i != battler && !IsBattlerAlly(i, battler))
-            gBattleStruct->lastTakenMove[i] = MOVE_NONE;
-
-        gBattleStruct->lastTakenMoveFrom[i][battler] = 0;
     }
 
     gBattleMons[battler].types[0] = GetSpeciesType(gBattleMons[battler].species, 0);
@@ -4228,7 +3529,7 @@ static void TryDoEventsBeforeFirstTurn(void)
         break;
     case FIRST_TURN_EVENTS_TRAINER_SLIDE_A:
         if (ShouldDoTrainerSlide(B_BATTLER_1, TRAINER_SLIDE_BEFORE_FIRST_TURN))
-            BattleScriptExecute(BattleScript_TrainerASlideMsgEnd2);
+            BattleScriptExecute(BattleScript_TrainerASlideMsgEnd);
         gBattleStruct->eventState.beforeFirstTurn++;
         break;
     case FIRST_TURN_EVENTS_TRAINER_SLIDE_B:
@@ -4238,13 +3539,15 @@ static void TryDoEventsBeforeFirstTurn(void)
             if (!((TRAINER_BATTLE_PARAM.opponentB == TRAINER_BATTLE_PARAM.opponentA)
             || (TRAINER_BATTLE_PARAM.opponentB == TRAINER_NONE)
             || (TRAINER_BATTLE_PARAM.opponentB == 0xFFFF)))
-                BattleScriptExecute(BattleScript_TrainerBSlideMsgEnd2);
+            {
+                BattleScriptExecute(BattleScript_TrainerBSlideMsgEnd);
+            }
         }
         gBattleStruct->eventState.beforeFirstTurn++;
         break;
     case FIRST_TURN_EVENTS_TRAINER_SLIDE_PARTNER:
         if (ShouldDoTrainerSlide(B_BATTLER_2, TRAINER_SLIDE_BEFORE_FIRST_TURN))
-            BattleScriptExecute(BattleScript_TrainerPartnerSlideMsgEnd2);
+            BattleScriptExecute(BattleScript_TrainerPartnerSlideMsgEnd);
         gBattleStruct->eventState.beforeFirstTurn++;
         break;
     case FIRST_TURN_EVENTS_END:
@@ -4465,6 +3768,11 @@ void SwitchPartyOrder(enum BattlerId battler)
     partyId1 = GetPartyIdFromBattlePartyId(gBattlerPartyIndexes[battler]);
     partyId2 = GetPartyIdFromBattlePartyId(gBattleStruct->monToSwitchIntoId[battler]);
     SwitchPartyMonSlots(partyId1, partyId2);
+
+    if (gBattleStruct->battlerState[battler].originalBattlerPartyId == partyId1)
+        gBattleStruct->battlerState[battler].originalBattlerPartyId = partyId2;
+    else if (gBattleStruct->battlerState[battler].originalBattlerPartyId == partyId2)
+        gBattleStruct->battlerState[battler].originalBattlerPartyId = partyId1;
 
     if (IsDoubleBattle())
     {
@@ -5154,6 +4462,8 @@ s32 GetChosenMovePriority(enum BattlerId battler, enum Ability ability)
     gProtectStructs[battler].pranksterElevated = FALSE;
     if (gProtectStructs[battler].noValidMoves)
         move = MOVE_STRUGGLE;
+    else if (gBattleMons[battler].volatiles.encoredMove != MOVE_NONE && GetConfig(B_ENCORE_PRIORITY) >= GEN_CHAMPIONS)
+        move = gBattleMons[battler].volatiles.encoredMove;
     else
         move = GetBattlerChosenMove(battler);
 
@@ -5825,9 +5135,9 @@ static void HandleEndTurn_BattleLost(void)
     }
     else
     {
-        if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && GetTrainerBattleMode() == TRAINER_BATTLE_EARLY_RIVAL)
+        if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && TRAINER_BATTLE_PARAM.earlyRival)
         {
-            if (GetRivalBattleFlags() & RIVAL_BATTLE_HEAL_AFTER)
+            if (TRAINER_BATTLE_PARAM.earlyRival)
                 gBattleCommunication[MULTISTRING_CHOOSER] = 1; // Dont do white out text
             else
                 gBattleCommunication[MULTISTRING_CHOOSER] = 2; // Do white out text
@@ -5996,8 +5306,7 @@ static void HandleEndTurn_FinishBattle(void)
     }
     else
     {
-        if (gBattleControllerExecFlags == 0)
-            gBattleScriptingCommandsTable[gBattlescriptCurrInstr[0]]();
+        RunBattleScriptCommands();
     }
 }
 
@@ -6144,8 +5453,7 @@ void RunBattleScriptCommands_PopCallbacksStack(void)
     }
     else
     {
-        if (gBattleControllerExecFlags == 0)
-            gBattleScriptingCommandsTable[gBattlescriptCurrInstr[0]]();
+        RunBattleScriptCommands();
     }
 }
 
@@ -6313,7 +5621,7 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
                     hpTypes[hpTypeCount++] = i;
             }
             moveType = ((hpTypeCount - 1) * typeBits) / 63;
-            return ((hpTypes[moveType] | F_DYNAMIC_TYPE_IGNORE_PHYSICALITY) & 0x3F);
+            return hpTypes[moveType];
         }
         break;
     case EFFECT_CHANGE_TYPE_ON_ITEM:
@@ -6440,7 +5748,7 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
           && gimmick != GIMMICK_DYNAMAX
           && gimmick != GIMMICK_Z_MOVE)
     {
-        u32 ateType = TrySetAteType(move, battler, ability);
+        enum Type ateType = TrySetAteType(move, battler, ability);
         if (ateType != TYPE_NONE && state == MON_IN_BATTLE)
             gBattleStruct->battlerState[battler].ateBoost = TRUE;
         return ateType;
@@ -6464,10 +5772,10 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
 void SetTypeBeforeUsingMove(enum Move move, enum BattlerId battler)
 {
     enum Type moveType;
-    u32 heldItem = gBattleMons[battler].item;
+    enum Item heldItem = gBattleMons[battler].item;
     enum HoldEffect holdEffect = GetBattlerHoldEffect(battler);
 
-    gBattleStruct->dynamicMoveType = 0;
+    gBattleStruct->dynamicMoveCategory = DAMAGE_CATEGORY_NONE;
     gBattleStruct->battlerState[battler].ateBoost = FALSE;
     gSpecialStatuses[battler].gemBoost = FALSE;
 
@@ -6477,12 +5785,12 @@ void SetTypeBeforeUsingMove(enum Move move, enum BattlerId battler)
                                   MON_IN_BATTLE);
 
     if (moveType != TYPE_NONE)
-        gBattleStruct->dynamicMoveType = moveType | F_DYNAMIC_TYPE_SET;
+        gBattleStruct->dynamicMoveType = moveType;
 
     moveType = GetBattleMoveType(move);
     if ((gFieldStatuses & STATUS_FIELD_ION_DELUGE && moveType == TYPE_NORMAL)
      || gBattleMons[battler].volatiles.electrified)
-        gBattleStruct->dynamicMoveType = TYPE_ELECTRIC | F_DYNAMIC_TYPE_SET;
+        gBattleStruct->dynamicMoveType = TYPE_ELECTRIC;
 
     // Check if a gem should activate.
     u32 effect = GetMoveEffect(move);
@@ -6558,4 +5866,279 @@ void BattleDebug_WonBattle(void)
 {
     gBattleOutcome |= B_OUTCOME_WON;
     gBattleMainFunc = sEndTurnFuncsTable[gBattleOutcome & 0x7F];
+}
+
+#define STEVEN_OTID     61226
+#define SHELLY_OTID     61227
+#define TABITHA_OTID    61228
+#define EMMIE_OTID      61229
+
+void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon *partyEntry)
+{
+    bool32 noMoveSet = TRUE;
+    u32 j;
+
+    for (j = 0; j < MAX_MON_MOVES; ++j)
+    {
+        if (partyEntry->moves[j] != MOVE_NONE)
+            noMoveSet = FALSE;
+    }
+    if (noMoveSet)
+    {
+        GiveMonInitialMoveset(mon);
+        // TODO: Figure out a default strategy when moves are not set, to generate a good moveset
+        return;
+    }
+
+    for (j = 0; j < MAX_MON_MOVES; ++j)
+    {
+        u32 pp = GetMovePP(partyEntry->moves[j]);
+        SetMonData(mon, MON_DATA_MOVE1 + j, &partyEntry->moves[j]);
+        SetMonData(mon, MON_DATA_PP1 + j, &pp);
+    }
+}
+
+void FillPoolForShelly(u8 unused)
+{
+    u32 i, j;
+    u32 personality;
+    u8 trainerName[(PLAYER_NAME_LENGTH * 3) + 1];
+    s32 ball = -1;
+    struct Pokemon tempMon;
+    
+    for (i = 0; i < PARTY_SIZE && i < gBattlePartners[DIFFICULTY_NORMAL][PARTNER_SHELLY_MHO].partySize; i++)
+    {
+        const struct TrainerMon *partyData = gBattlePartners[DIFFICULTY_NORMAL][PARTNER_SHELLY_MHO].party;
+
+        personality = Random32();
+        if (partyData[i].gender == TRAINER_MON_MALE)
+            personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[i].species);
+        else if (partyData[i].gender == TRAINER_MON_FEMALE)
+            personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
+        ModifyPersonalityForNature(&personality, partyData[i].nature);
+        CreateMonWithIVs(&gEliteFourPool[i], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(SHELLY_OTID), 31, FALSE);
+        j = partyData[i].isShiny;
+        SetMonData(&gEliteFourPool[i], MON_DATA_IS_SHINY, &j);
+        SetMonData(&gEliteFourPool[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+        CustomTrainerPartyAssignMoves(&gEliteFourPool[i], &partyData[i]);
+
+        SetMonData(&gEliteFourPool[i], MON_DATA_IVS, &(partyData[i].iv));
+        if (partyData[i].ev != NULL)
+        {
+            SetMonData(&gEliteFourPool[i], MON_DATA_HP_EV, &(partyData[i].ev[0]));
+            SetMonData(&gEliteFourPool[i], MON_DATA_ATK_EV, &(partyData[i].ev[1]));
+            SetMonData(&gEliteFourPool[i], MON_DATA_DEF_EV, &(partyData[i].ev[2]));
+            SetMonData(&gEliteFourPool[i], MON_DATA_SPATK_EV, &(partyData[i].ev[3]));
+            SetMonData(&gEliteFourPool[i], MON_DATA_SPDEF_EV, &(partyData[i].ev[4]));
+            SetMonData(&gEliteFourPool[i], MON_DATA_SPEED_EV, &(partyData[i].ev[5]));
+        }
+        if (partyData[i].ability != ABILITY_NONE)
+        {
+            const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[partyData[i].species];
+            u32 maxAbilities = ARRAY_COUNT(speciesInfo->abilities);
+            for (j = 0; j < maxAbilities; j++)
+            {
+                if (speciesInfo->abilities[j] == partyData[i].ability)
+                    break;
+            }
+            if (j < maxAbilities)
+                SetMonData(&gEliteFourPool[i], MON_DATA_ABILITY_NUM, &j);
+        }
+        SetMonData(&gEliteFourPool[i], MON_DATA_FRIENDSHIP, &(partyData[i].friendship));
+        if (partyData[i].ball < POKEBALL_COUNT)
+        {
+            ball = partyData[i].ball;
+            SetMonData(&gEliteFourPool[i], MON_DATA_POKEBALL, &ball);
+        }
+        if (partyData[i].nickname != NULL)
+        {
+            SetMonData(&gEliteFourPool[i], MON_DATA_NICKNAME, partyData[i].nickname);
+        }
+        CalculateMonStats(&gEliteFourPool[i]);
+
+        StringCopy(trainerName, gBattlePartners[DIFFICULTY_NORMAL][PARTNER_SHELLY_MHO].trainerName);
+        SetMonData(&gEliteFourPool[i], MON_DATA_OT_NAME, trainerName);
+        j = gBattlePartners[DIFFICULTY_NORMAL][PARTNER_SHELLY_MHO].encounterMusic >> 7;
+        SetMonData(&gEliteFourPool[i], MON_DATA_OT_GENDER, &j);
+    }
+
+    if (!IsStoryMulti())
+    {
+        for (i = 0; i < MULTI_PARTY_SIZE; i++)
+        {
+            tempMon = gParties[B_TRAINER_PLAYER][i + 3];
+            gParties[B_TRAINER_PLAYER][i + 3] = gEliteFourPool[i];
+            gEliteFourPool[i] = tempMon;
+        }
+    }
+}
+
+void FillPoolForTabitha(u8 unused)
+{
+    u32 i, j;
+    u32 personality;
+    u8 trainerName[(PLAYER_NAME_LENGTH * 3) + 1];
+    s32 ball = -1;
+    struct Pokemon tempMon;
+    
+    for (i = 0; i < PARTY_SIZE && i < gBattlePartners[DIFFICULTY_NORMAL][PARTNER_TABITHA].partySize; i++)
+    {
+        const struct TrainerMon *partyData = gBattlePartners[DIFFICULTY_NORMAL][PARTNER_TABITHA].party;
+
+        personality = Random32();
+        if (partyData[i].gender == TRAINER_MON_MALE)
+            personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[i].species);
+        else if (partyData[i].gender == TRAINER_MON_FEMALE)
+            personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
+        ModifyPersonalityForNature(&personality, partyData[i].nature);
+        CreateMonWithIVs(&gEliteFourPool[i], partyData[i].species, partyData[i].lvl, personality, OTID_STRUCT_PRESET(TABITHA_OTID), 31, FALSE);
+        j = partyData[i].isShiny;
+        SetMonData(&gEliteFourPool[i], MON_DATA_IS_SHINY, &j);
+        SetMonData(&gEliteFourPool[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+        CustomTrainerPartyAssignMoves(&gEliteFourPool[i], &partyData[i]);
+
+        SetMonData(&gEliteFourPool[i], MON_DATA_IVS, &(partyData[i].iv));
+        if (partyData[i].ev != NULL)
+        {
+            SetMonData(&gEliteFourPool[i], MON_DATA_HP_EV, &(partyData[i].ev[0]));
+            SetMonData(&gEliteFourPool[i], MON_DATA_ATK_EV, &(partyData[i].ev[1]));
+            SetMonData(&gEliteFourPool[i], MON_DATA_DEF_EV, &(partyData[i].ev[2]));
+            SetMonData(&gEliteFourPool[i], MON_DATA_SPATK_EV, &(partyData[i].ev[3]));
+            SetMonData(&gEliteFourPool[i], MON_DATA_SPDEF_EV, &(partyData[i].ev[4]));
+            SetMonData(&gEliteFourPool[i], MON_DATA_SPEED_EV, &(partyData[i].ev[5]));
+        }
+        if (partyData[i].ability != ABILITY_NONE)
+        {
+            const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[partyData[i].species];
+            u32 maxAbilities = ARRAY_COUNT(speciesInfo->abilities);
+            for (j = 0; j < maxAbilities; j++)
+            {
+                if (speciesInfo->abilities[j] == partyData[i].ability)
+                    break;
+            }
+            if (j < maxAbilities)
+                SetMonData(&gEliteFourPool[i], MON_DATA_ABILITY_NUM, &j);
+        }
+        SetMonData(&gEliteFourPool[i], MON_DATA_FRIENDSHIP, &(partyData[i].friendship));
+        if (partyData[i].ball < POKEBALL_COUNT)
+        {
+            ball = partyData[i].ball;
+            SetMonData(&gEliteFourPool[i], MON_DATA_POKEBALL, &ball);
+        }
+        if (partyData[i].nickname != NULL)
+        {
+            SetMonData(&gEliteFourPool[i], MON_DATA_NICKNAME, partyData[i].nickname);
+        }
+        CalculateMonStats(&gEliteFourPool[i]);
+
+        StringCopy(trainerName, gBattlePartners[DIFFICULTY_NORMAL][PARTNER_TABITHA].trainerName);
+        SetMonData(&gEliteFourPool[i], MON_DATA_OT_NAME, trainerName);
+        j = gBattlePartners[DIFFICULTY_NORMAL][PARTNER_TABITHA].encounterMusic >> 7;
+        SetMonData(&gEliteFourPool[i], MON_DATA_OT_GENDER, &j);
+    }
+
+    if (!IsStoryMulti())
+    {
+        for (i = 0; i < MULTI_PARTY_SIZE; i++)
+        {
+            tempMon = gParties[B_TRAINER_PLAYER][i + 3];
+            gParties[B_TRAINER_PLAYER][i + 3] = gEliteFourPool[i];
+            gEliteFourPool[i] = tempMon;
+        }
+    }
+}
+/*    if (trainerId > TRAINER_PARTNER(PARTNER_NONE))
+    {
+        for (i = 0; i < 3; i++)
+            ZeroMonData(&gParties[B_TRAINER_PLAYER][i + 3]);
+
+        for (i = 0; i < 3 && i < gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].partySize; i++)
+        {
+            const struct TrainerMon *partyData = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].party;
+            const u8 *partnerName = gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName;
+
+            for (k = 0; partnerName[k] != EOS && k < 3; k++)
+            {
+                if (k == 0)
+                {
+                    firstIdPart = partnerName[k];
+                    secondIdPart = partnerName[k];
+                    thirdIdPart = partnerName[k];
+                }
+                else if (k == 1)
+                {
+                    secondIdPart = partnerName[k];
+                    thirdIdPart = partnerName[k];
+                }
+                else if (k == 2)
+                {
+                    thirdIdPart = partnerName[k];
+                }
+            }
+            if (trainerId == TRAINER_PARTNER(PARTNER_STEVEN))
+                otID = STEVEN_OTID;
+            else
+                otID = ((firstIdPart % 72) * 1000) + ((secondIdPart % 23) * 10) + (thirdIdPart % 37) % 65536;
+
+            personality = Random32();
+            if (partyData[i].gender == TRAINER_MON_MALE)
+                personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[i].species);
+            else if (partyData[i].gender == TRAINER_MON_FEMALE)
+                personality = (personality & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
+            ModifyPersonalityForNature(&personality, partyData[i].nature);
+            CreateMon(&gParties[B_TRAINER_PLAYER][i + 3], partyData[i].species, partyData[i].lvl, 0, TRUE, personality, OT_ID_PRESET, otID, FALSE);
+            j = partyData[i].isShiny;
+            SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_IS_SHINY, &j);
+            SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+            CustomTrainerPartyAssignMoves(&gParties[B_TRAINER_PLAYER][i + 3], &partyData[i]);
+
+            SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_IVS, &(partyData[i].iv));
+            if (partyData[i].ev != NULL)
+            {
+                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_HP_EV, &(partyData[i].ev[0]));
+                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_ATK_EV, &(partyData[i].ev[1]));
+                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_DEF_EV, &(partyData[i].ev[2]));
+                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_SPATK_EV, &(partyData[i].ev[3]));
+                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_SPDEF_EV, &(partyData[i].ev[4]));
+                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_SPEED_EV, &(partyData[i].ev[5]));
+            }
+            if (partyData[i].ability != ABILITY_NONE)
+            {
+                const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[partyData[i].species];
+                u32 maxAbilities = ARRAY_COUNT(speciesInfo->abilities);
+                for (j = 0; j < maxAbilities; j++)
+                {
+                    if (speciesInfo->abilities[j] == partyData[i].ability)
+                        break;
+                }
+                if (j < maxAbilities)
+                    SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_ABILITY_NUM, &j);
+            }
+            SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_FRIENDSHIP, &(partyData[i].friendship));
+            if (partyData[i].ball != ITEM_NONE)
+            {
+                ball = partyData[i].ball;
+                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_POKEBALL, &ball);
+            }
+            if (partyData[i].nickname != NULL)
+            {
+                SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_NICKNAME, partyData[i].nickname);
+            }
+            CalculateMonStats(&gParties[B_TRAINER_PLAYER][i + 3]);
+
+            StringCopy(trainerName, gBattlePartners[difficulty][trainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerName);
+            SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_OT_NAME, trainerName);
+            j = gBattlePartners[difficulty][SanitizeTrainerId(trainerId - TRAINER_PARTNER(PARTNER_NONE))].encounterMusic >> 7;
+            SetMonData(&gParties[B_TRAINER_PLAYER][i + 3], MON_DATA_OT_GENDER, &j);
+        }
+    }
+*/
+void ClearHideoutPool(u8 unused)
+{
+    u32 i;
+    for (i = 0; i < MULTI_PARTY_SIZE; i++)
+    {
+        CopyMon(&gParties[B_TRAINER_PLAYER][i + 3], &gEliteFourPool[i], sizeof(gEliteFourPool[i]));
+    }
+
 }
