@@ -3,12 +3,12 @@
 
 ASSUMPTIONS
 {
-    ASSUME(GetMoveAccuracy(MOVE_HURRICANE) == 70);
+    ASSUME(GetMoveAccuracy(MOVE_HURRICANE) == 80);
     ASSUME(MoveAlwaysHitsInRain(MOVE_HURRICANE) == TRUE);
     ASSUME(MoveHas50AccuracyInSun(MOVE_HURRICANE) == TRUE);
 }
 
-/* Moves changed
+//Moves changed
 SINGLE_BATTLE_TEST("Hurricane's accuracy is lowered to 50% in Sunlight")
 {
     PASSES_RANDOMLY(50, 100, RNG_ACCURACY);
@@ -34,9 +34,9 @@ SINGLE_BATTLE_TEST("Hurricane bypasses accuracy checks in Rain")
         NONE_OF { MESSAGE("The opposing Wobbuffet avoided the attack!"); }
     }
 }
-*/
 
-/* Moves changed
+
+//Moves changed
 SINGLE_BATTLE_TEST("Hurricane can hit airborne targets (Fly, Bounce)")
 {
     enum Move move;
@@ -75,4 +75,4 @@ DOUBLE_BATTLE_TEST("Hurricane can hit airborne targets (Sky Drop)")
         NONE_OF { MESSAGE("The opposing Wobbuffet avoided the attack!"); }
     }
 }
-*/
+
