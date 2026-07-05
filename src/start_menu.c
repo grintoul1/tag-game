@@ -287,13 +287,6 @@ static void RemoveSaveInfoWindow(void);
 static void HideStartMenuWindow(void);
 static void HideStartMenuDebug(void);
 
-void SetDexPokemonPokenavFlags(void) // unused
-{
-    FlagSet(FLAG_SYS_POKEDEX_GET);
-    FlagSet(FLAG_SYS_POKEMON_GET);
-    FlagSet(FLAG_SYS_POKENAV_GET);
-}
-
 static void BuildStartMenuActions(void)
 {
     sNumStartMenuActions = 0;
@@ -1547,9 +1540,9 @@ void Script_ForceSaveGame(struct ScriptContext *ctx)
 
 void HealNoneFaintedPartyMons(void)
 {
-    struct Pokemon *party = gParties[B_TRAINER_0];
+    struct Pokemon *party = gParties[B_TRAINER_PLAYER];
 
-    for (u32 partyMon = 0; partyMon < gPartiesCount[B_TRAINER_0]; partyMon++)
+    for (u32 partyMon = 0; partyMon < gPartiesCount[B_TRAINER_PLAYER]; partyMon++)
     {
         if (GetMonData(&party[partyMon], MON_DATA_HP) == 0
          || GetMonData(&party[partyMon], MON_DATA_SPECIES) == SPECIES_NONE

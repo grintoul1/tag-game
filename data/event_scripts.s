@@ -13,7 +13,6 @@
 #include "constants/battle_pike.h"
 #include "constants/battle_pool.h"
 #include "constants/battle_pyramid.h"
-#include "constants/battle_setup.h"
 #include "constants/battle_special.h"
 #include "constants/battle_tent.h"
 #include "constants/battle_tower.h"
@@ -45,6 +44,7 @@
 #include "constants/lilycove_lady.h"
 #include "constants/map_scripts.h"
 #include "constants/maps.h"
+#include "constants/mass_outbreak.h"
 #include "constants/mauville_old_man.h"
 #include "constants/metatile_labels.h"
 #include "constants/move_relearner.h"
@@ -3411,3 +3411,15 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
 	.include "data/scripts/wild_encounter.inc"
+
+	.include "data/maps/ShoalCavern/scripts.inc"
+
+	.include "data/maps/ShoalCavern_Underwater/scripts.inc"
+
+	.include "data/maps/ShoalCavity_Underwater/scripts.inc"
+
+	.include "data/maps/ShoalHollow_Underwater/scripts.inc"
+
+	.include "data/maps/ShoalCavity/scripts.inc"
+
+	.include "data/maps/ShoalHollow/scripts.inc"

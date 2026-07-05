@@ -525,16 +525,16 @@
 #define FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL 0x1D8
 #define FLAG_ENABLE_JUAN_MATCH_CALL          0x1D9
 
-#define FLAG_UNUSED_0x1DA                    0x1DA // Unused Flag
+#define FLAG_DEFEATED_KANTO_BIRD             0x1DA
 
 #define FLAG_SHOWN_MYSTIC_TICKET             0x1DB
 #define FLAG_DEFEATED_HO_OH                  0x1DC
 #define FLAG_DEFEATED_LUGIA                  0x1DD
 
-#define FLAG_UNUSED_0x1DE                    0x1DE // Unused Flag
-#define FLAG_UNUSED_0x1DF                    0x1DF // Unused Flag
-#define FLAG_UNUSED_0x1E0                    0x1E0 // Unused Flag
-#define FLAG_UNUSED_0x1E1                    0x1E1 // Unused Flag
+#define FLAG_DEFEATED_GALAR_BIRD             0x1DE
+#define FLAG_HIDE_KANTO_BIRD                 0x1DF
+#define FLAG_HIDE_GALAR_BIRD                 0x1E0
+#define FLAG_HIDE_MAUVILLE_CITY_BLUE         0x1E1
 #define FLAG_UNUSED_0x1E2                    0x1E2 // Unused Flag
 #define FLAG_UNUSED_0x1E3                    0x1E3 // Unused Flag
 
@@ -725,14 +725,14 @@
 #define FLAG_HIDE_BATTLE_DOME_LOBBY_TUCKER  0x297 // Hides Tucker
 #define FLAG_HIDE_VICTORY_ROAD_VITO  0x298 // Hides Vito
 #define FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS_MAXIE_DEFEATED  0x299 // Hides Aqua Grunts on R121 that only appear if Maxie fought on Mt Pyre
-#define FLAG_UNUSED_0x29A  0x29A // Unused Flag
-#define FLAG_UNUSED_0x29B  0x29B // Unused Flag
-#define FLAG_UNUSED_0x29C  0x29C // Unused Flag
-#define FLAG_UNUSED_0x29D  0x29D // Unused Flag
-#define FLAG_UNUSED_0x29E  0x29E // Unused Flag
-#define FLAG_UNUSED_0x29F  0x29F // Unused Flag
-#define FLAG_UNUSED_0x2A0  0x2A0 // Unused Flag
-#define FLAG_UNUSED_0x2A1  0x2A1 // Unused Flag
+#define FLAG_BADGE09_GET   0x29A
+#define FLAG_BADGE10_GET   0x29B
+#define FLAG_BADGE11_GET   0x29C
+#define FLAG_BADGE12_GET   0x29D
+#define FLAG_BADGE13_GET   0x29E
+#define FLAG_BADGE14_GET   0x29F
+#define FLAG_BADGE15_GET   0x2A0
+#define FLAG_BADGE16_GET   0x2A1
 #define FLAG_UNUSED_0x2A2  0x2A2 // Unused Flag
 #define FLAG_UNUSED_0x2A3  0x2A3 // Unused Flag
 #define FLAG_UNUSED_0x2A4  0x2A4 // Unused Flag
@@ -811,7 +811,7 @@
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN              0x2F1
 #define FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1          0x2F2
 #define FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2          0x2F3
-#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_TEAM_MAGMA          0x2F4
+#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_TEAM_MAGMA             0x2F4
 #define FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_BEDROOM_MOM               0x2F5
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM                0x2F6
 #define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_MOM                    0x2F7
@@ -1230,9 +1230,9 @@
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
 #define FLAG_HIDE_MOSSDEEP_CITY_TEAM_AQUA                           0x493
-#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
-#define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
+#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_KOGA                0x494 // Koga & Janine
+#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAGMA_GRUNTS        0x495
+#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_AQUA_GRUNTS         0x496
 #define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
 #define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag

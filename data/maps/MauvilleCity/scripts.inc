@@ -44,6 +44,200 @@ MauvilleCity_EventScript_MoveWattsonBackToGym::
 	setflag FLAG_WATTSON_REMATCH_AVAILABLE
 	return
 
+MauvilleCity_EventScript_Blue::
+	lockall
+	delay 8
+	playse SE_PIN
+	applymovement LOCALID_MAUVILLE_CITY_BLUE, Common_Movement_FaceDown
+	waitmovement
+	applymovement LOCALID_MAUVILLE_CITY_BLUE, Common_Movement_ExclamationMark
+	waitmovement
+	waitse
+	playbgm MUS_RB_RIVAL, FALSE
+	delay 8
+	getobjectcurrentxy OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_3, VAR_TEMP_4
+	switch VAR_TEMP_3
+	case 26, MauvilleCity_EventScript_BlueMovement1
+	case 27, MauvilleCity_EventScript_BlueMovement2
+	case 28, MauvilleCity_EventScript_BlueMovement3
+	case 29, MauvilleCity_EventScript_BlueMovement4
+	case 30, MauvilleCity_EventScript_BlueMovement5
+MauvilleCity_EventScript_BlueContinue::
+	waitmovementall
+	applymovement LOCALID_MAUVILLE_CITY_BLUE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MauvilleCity_Text_BlueNewTrainers, MSGBOX_AUTOCLOSE
+	goto MauvilleCity_EventScript_BlueDoMultiBattle
+	releaseall
+	end
+
+MauvilleCity_EventScript_BlueDoMultiBattle::
+	playbgm MUS_RUSTBORO, FALSE
+	multi_2p_vs_1 TRAINER_BLUE_MAUVILLE, MauvilleCity_Text_BlueMauvilleDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, MauvilleCity_EventScript_BlueVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+MauvilleCity_EventScript_BlueVictory::
+	applymovement LOCALID_MAUVILLE_CITY_BLUE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MauvilleCity_Text_BlueExplanation, MSGBOX_AUTOCLOSE
+	message MauvilleCity_Text_ReceivedEarthBadge
+	waitmessage
+	call Common_EventScript_PlayGymBadgeFanfare
+	msgbox MauvilleCity_Text_EarthBadgeInfoTakeThis, MSGBOX_AUTOCLOSE
+	setflag FLAG_BADGE16_GET
+	giveitem ITEM_SOFT_SAND
+	msgbox MauvilleCity_Text_BlueSmellYaLater, MSGBOX_AUTOCLOSE
+	playbgm MUS_RB_RIVAL, FALSE
+	applymovement LOCALID_MAUVILLE_CITY_BLUE, MauvilleCity_Movement_BlueLeaves
+	waitmovement
+	addvar VAR_KANTONIANS_STATE, 1
+	removeobject LOCALID_MAUVILLE_CITY_BLUE
+	setflag FLAG_HIDE_MAUVILLE_CITY_BLUE
+	fadedefaultbgm
+	releaseall
+	end
+
+MauvilleCity_Movement_BlueLeaves:
+	walk_slow_up
+	walk_slow_up
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	step_end
+
+MauvilleCity_Text_BlueSmellYaLater:
+	.string "Blue: Keep an eye open for me and my\n"
+	.string "colleagues while on your journey.\p"
+	.string "Best of luck-- Smell ya later!$"
+
+MauvilleCity_Text_EarthBadgeInfoTakeThis:
+	.string "Blue: Like I said, it's not much use\n"
+	.string "here in Hoenn, but hopefully this is\l"
+	.string "your first of many.\p"
+	.string "I'm one of the Gym Leaders back in\n"
+	.string "Kanto. The best, as it happens.\p"
+	.string "I took up the position after a\n"
+	.string "challenging time for both myself\l"
+	.string "and the region.\p"
+	.string "Here, you should take this too.\p"
+	.string "It was left behind by my predecessor,\n"
+	.string "but I think it should give you an edge\l"
+	.string "against Mauville City's Gym.$"
+
+MauvilleCity_Text_ReceivedEarthBadge:
+	.string "{PLAYER} received the Earth Badge\n"
+	.string "from Blue.$"
+
+MauvilleCity_Text_BlueExplanation:
+	.string "Blue: A deal is a deal!\p"
+	.string "My name is Blue, and I'm here visiting\n"
+	.string "from the Kanto region.\p"
+	.string "There's a big group of us doing a tour\n"
+	.string "of Hoenn on… let's call it a diplomatic\l"
+	.string "engagement.\p"
+	.string "Not to burst your bubble, but I'm\n"
+	.string "raising a fresh batch of Pokemon\l"
+	.string "while here.\p"
+	.string "If that had been my regular line-up\n"
+	.string "you wouldn't have stood a chance!\p"
+	.string "Anyway, you've got potential kids,\n"
+	.string "I'll give you that.\p"
+	.string "While I'm at it, I'll also give you\n"
+	.string "this, not that it's much use here…$"
+
+MauvilleCity_Text_BlueMauvilleDefeat:
+	.string "Hehe… Okay, fair's fair!\n"
+	.string "You've earnt your answer!$"
+
+MauvilleCity_Text_BlueNewTrainers:
+	.string "Blue: Well now, what do we have here?\p"
+	.string "Looks to me like a pair of rookies\n"
+	.string "on their first day away from home!\p"
+	.string "Hmmm? How can I know that?\p"
+	.string "Believe me, I can spot an amateur when\n"
+	.string "I see one!\p"
+	.string "… … … … … …\n"
+	.string "… … … … … …\p"
+	.string "Huh? Who am I?\p"
+	.string "There's only one way I'm gonna answer\n"
+	.string "that question--\p"
+	.string "You'll have to defeat me here and now!$"
+
+MauvilleCity_EventScript_BlueMovement1::
+	applymovement LOCALID_MAUVILLE_CITY_BLUE, MauvilleCity_Movement_BlueMovement1
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MauvilleCity_Movement_EmmieApproachBlueRight
+	goto MauvilleCity_EventScript_BlueContinue
+
+MauvilleCity_EventScript_BlueMovement2::
+	applymovement LOCALID_MAUVILLE_CITY_BLUE, MauvilleCity_Movement_BlueMovement2
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MauvilleCity_Movement_EmmieApproachBlueRight
+	goto MauvilleCity_EventScript_BlueContinue
+
+MauvilleCity_EventScript_BlueMovement3::
+	applymovement LOCALID_MAUVILLE_CITY_BLUE, MauvilleCity_Movement_BlueMovement3
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MauvilleCity_Movement_EmmieApproachBlueRight
+	goto MauvilleCity_EventScript_BlueContinue
+
+MauvilleCity_EventScript_BlueMovement4::
+	applymovement LOCALID_MAUVILLE_CITY_BLUE, MauvilleCity_Movement_BlueMovement4
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MauvilleCity_Movement_EmmieApproachBlueLeft
+	goto MauvilleCity_EventScript_BlueContinue
+
+MauvilleCity_EventScript_BlueMovement5::
+	applymovement LOCALID_MAUVILLE_CITY_BLUE, MauvilleCity_Movement_BlueMovement5
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MauvilleCity_Movement_EmmieApproachBlueLeft
+	goto MauvilleCity_EventScript_BlueContinue
+
+MauvilleCity_Movement_EmmieApproachBlueRight:
+	walk_slow_right
+	walk_slow_up
+	step_end
+
+MauvilleCity_Movement_EmmieApproachBlueLeft:
+	walk_slow_left
+	walk_slow_up
+	step_end
+
+MauvilleCity_Movement_BlueMovement1:
+	walk_slow_down
+	walk_slow_left
+	walk_slow_left
+	walk_slow_down
+	step_end
+
+MauvilleCity_Movement_BlueMovement2:
+	walk_slow_down
+	walk_slow_left
+	walk_slow_down
+	step_end
+
+MauvilleCity_Movement_BlueMovement3:
+	walk_slow_down
+	walk_slow_down
+	step_end
+
+MauvilleCity_Movement_BlueMovement4:
+	walk_slow_down
+	walk_slow_right
+	walk_slow_down
+	step_end
+
+MauvilleCity_Movement_BlueMovement5:
+	walk_slow_down
+	walk_slow_right
+	walk_slow_right
+	walk_slow_down
+	step_end
+
 MauvilleCity_EventScript_Boy::
 	msgbox MauvilleCity_Text_NurseHurtMonBackToHealth, MSGBOX_NPC
 	end

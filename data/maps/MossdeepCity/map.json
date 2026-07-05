@@ -556,7 +556,7 @@
       "y": 23,
       "elevation": 0,
       "var": "VAR_KANTONIANS_STATE",
-      "var_value": "0",
+      "var_value": "1",
       "script": "MossdeepCity_EventScript_BlueIntroduction1"
     },
     {
@@ -565,7 +565,7 @@
       "y": 23,
       "elevation": 0,
       "var": "VAR_KANTONIANS_STATE",
-      "var_value": "0",
+      "var_value": "1",
       "script": "MossdeepCity_EventScript_BlueIntroduction1"
     },
     {
@@ -574,7 +574,7 @@
       "y": 26,
       "elevation": 0,
       "var": "VAR_KANTONIANS_STATE",
-      "var_value": "0",
+      "var_value": "1",
       "script": "MossdeepCity_EventScript_BlueIntroduction1"
     },
     {
@@ -583,7 +583,7 @@
       "y": 26,
       "elevation": 0,
       "var": "VAR_KANTONIANS_STATE",
-      "var_value": "0",
+      "var_value": "1",
       "script": "MossdeepCity_EventScript_BlueIntroduction1"
     },
     {
@@ -592,7 +592,7 @@
       "y": 17,
       "elevation": 0,
       "var": "VAR_KANTONIANS_STATE",
-      "var_value": "0",
+      "var_value": "1",
       "script": "MossdeepCity_EventScript_BlueIntroduction2"
     },
     {
@@ -601,7 +601,7 @@
       "y": 18,
       "elevation": 0,
       "var": "VAR_KANTONIANS_STATE",
-      "var_value": "0",
+      "var_value": "1",
       "script": "MossdeepCity_EventScript_BlueIntroduction3"
     },
     {
@@ -610,7 +610,7 @@
       "y": 17,
       "elevation": 0,
       "var": "VAR_KANTONIANS_STATE",
-      "var_value": "0",
+      "var_value": "1",
       "script": "MossdeepCity_EventScript_BlueIntroduction4"
     }
   ],
@@ -679,5 +679,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MossdeepCity_EventScript_WhiteRock"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

@@ -26,7 +26,6 @@
 
 static void HandleSpecialTrainerBattleEnd(void);
 static void Task_StartBattleAfterTransition(u8 taskId);
-static void Task_TwoPlayerPreBattleExchange(u8 taskId);
 static void UNUSED FillEReaderTrainerWithPlayerData(void);
 static void CopyEReaderTrainerFarewellMessage(void);
 
@@ -48,7 +47,7 @@ static void HandleSpecialTrainerBattleEnd(void)
         for (i = 0; i < PARTY_SIZE; i++)
         {
             enum Item itemBefore = GetMonData(&gSaveBlock1Ptr->playerParty[i], MON_DATA_HELD_ITEM);
-            SetMonData(&gParties[B_TRAINER_0][i], MON_DATA_HELD_ITEM, &itemBefore);
+            SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM, &itemBefore);
         }
         break;
     case SPECIAL_BATTLE_EREADER:
@@ -59,8 +58,8 @@ static void HandleSpecialTrainerBattleEnd(void)
         {
             for (i = 0; i < 3; i++)
             {
-                if (GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES))
-                    gSaveBlock1Ptr->playerParty[i] = gParties[B_TRAINER_0][i];
+                if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES))
+                    gSaveBlock1Ptr->playerParty[i] = gParties[B_TRAINER_PLAYER][i];
             }
         }
         break;
@@ -89,7 +88,7 @@ void DoSpecialTrainerBattle(void)
     case SPECIAL_BATTLE_SECRET_BASE:
         for (i = 0; i < PARTY_SIZE; i++)
         {
-            enum Item itemBefore = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_HELD_ITEM);
+            enum Item itemBefore = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM);
             SetMonData(&gSaveBlock1Ptr->playerParty[i], MON_DATA_HELD_ITEM, &itemBefore);
         }
         CreateTask(Task_StartBattleAfterTransition, 1);
@@ -100,53 +99,13 @@ void DoSpecialTrainerBattle(void)
     #if FREE_BATTLE_TOWER_E_READER == FALSE
         ZeroEnemyPartyMons();
         for (i = 0; i < (int)ARRAY_COUNT(gSaveBlock2Ptr->frontier.ereaderTrainer.party); i++)
-            CreateBattleTowerMon(&gParties[B_TRAINER_1][i], &gSaveBlock2Ptr->frontier.ereaderTrainer.party[i]);
+            CreateBattleTowerMon(&gParties[B_TRAINER_OPPONENT_A][i], &gSaveBlock2Ptr->frontier.ereaderTrainer.party[i]);
         gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_EREADER_TRAINER;
         TRAINER_BATTLE_PARAM.opponentA = 0;
         CreateTask(Task_StartBattleAfterTransition, 1);
         PlayMapChosenOrBattleBGM(0);
         BattleTransition_StartOnField(GetSpecialBattleTransition(B_TRANSITION_GROUP_E_READER));
     #endif //FREE_BATTLE_TOWER_E_READER
-        break;
-    case SPECIAL_BATTLE_MULTI:
-        if (gSpecialVar_0x8005 & MULTI_BATTLE_2_VS_WILD) // Player + AI against wild mon
-        {
-            gBattleTypeFlags = BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
-        }
-        else if (gSpecialVar_0x8005 & MULTI_BATTLE_2_VS_1) // Player + AI against one trainer
-        {
-            TRAINER_BATTLE_PARAM.opponentB = 0xFFFF;
-            gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
-            if (gLinkType == LINKTYPE_TWO_PLAYER)
-                gBattleTypeFlags |= BATTLE_TYPE_TWO_PLAYER;
-        }
-        else // MULTI_BATTLE_2_VS_2
-        {
-            gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
-            if (gLinkType == LINKTYPE_TWO_PLAYER)
-                gBattleTypeFlags |= BATTLE_TYPE_TWO_PLAYER;
-        }
-
-        FillPartnerParty(gPartnerTrainerId);
-
-        if (gLinkType == LINKTYPE_TWO_PLAYER)
-        {
-            // Two-player mode: sync and exchange opponentA before starting battle
-            u8 taskId = CreateTask(Task_TwoPlayerPreBattleExchange, 1);
-            gTasks[taskId].data[1] = gSpecialVar_0x8005;
-        }
-        else
-        {
-            CreateTask(Task_StartBattleAfterTransition, 1);
-            PlayMapChosenOrBattleBGM(0);
-            if (gSpecialVar_0x8005 & MULTI_BATTLE_2_VS_WILD)
-                BattleTransition_StartOnField(GetWildBattleTransition());
-            else
-                BattleTransition_StartOnField(GetTrainerBattleTransition());
-        }
-
-        if (gSpecialVar_0x8005 & MULTI_BATTLE_CHOOSE_MONS) // Skip mons restoring(done in the script)
-            gBattleScripting.specialTrainerBattleType = 0xFF;
         break;
     case SPECIAL_BATTLE_EMMIE:
         s32 j;
@@ -163,17 +122,17 @@ void DoSpecialTrainerBattle(void)
             (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_3);
         }
 
-        FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, B_TRAINER_1, 6);
+        FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, B_TRAINER_OPPONENT_A, 6);
         if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_1)
         {
             for (i = 0; i < 6; i++)
             {
-                CopyMon(&gParties[B_TRAINER_1][i], &gParties[B_TRAINER_0][i], sizeof(*&gParties[B_TRAINER_0][i]));
-                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                if((j > GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, NULL)))
+                CopyMon(&gParties[B_TRAINER_OPPONENT_A][i], &gParties[B_TRAINER_PLAYER][i], sizeof(*&gParties[B_TRAINER_PLAYER][i]));
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                if((j > GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_EXP, NULL)))
                 {
-                    SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, &j);
-                    CalculateMonStats(&gParties[B_TRAINER_1][i]);
+                    SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gParties[B_TRAINER_OPPONENT_A][i]);
                 }
                 gBattleTypeFlags = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER);
             }
@@ -182,12 +141,12 @@ void DoSpecialTrainerBattle(void)
         {
             for (i = 3; i < 6; i++)
             {
-                CopyMon(&gParties[B_TRAINER_1][i], &gParties[B_TRAINER_0][i], sizeof(*&gParties[B_TRAINER_0][i]));
-                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                if((j > GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, NULL)))
+                CopyMon(&gParties[B_TRAINER_OPPONENT_A][i], &gParties[B_TRAINER_PLAYER][i], sizeof(*&gParties[B_TRAINER_PLAYER][i]));
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                if((j > GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_EXP, NULL)))
                 {
-                    SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, &j);
-                    CalculateMonStats(&gParties[B_TRAINER_1][i]);
+                    SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gParties[B_TRAINER_OPPONENT_A][i]);
                 }
                 gBattleTypeFlags = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_DOUBLE);
                 (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
@@ -199,12 +158,12 @@ void DoSpecialTrainerBattle(void)
         {
             for (i = 0; i < 6; i++)
             {
-                CopyMon(&gParties[B_TRAINER_1][i], &gParties[B_TRAINER_0][i], sizeof(*&gParties[B_TRAINER_0][i]));
-                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
-                if((j > GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, NULL)))
+                CopyMon(&gParties[B_TRAINER_OPPONENT_A][i], &gParties[B_TRAINER_PLAYER][i], sizeof(*&gParties[B_TRAINER_PLAYER][i]));
+                j = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_SPECIES)].growthRate][VarGet(VAR_LEVEL_CAP)];
+                if((j > GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_EXP, NULL)))
                 {
-                    SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_EXP, &j);
-                    CalculateMonStats(&gParties[B_TRAINER_1][i]);
+                    SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_EXP, &j);
+                    CalculateMonStats(&gParties[B_TRAINER_OPPONENT_A][i]);
                 }
                 gBattleTypeFlags = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_BATTLE_TOWER);
             }
@@ -213,144 +172,144 @@ void DoSpecialTrainerBattle(void)
         {
             for (i = 0; i < 6; i++)
             {
-                j = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_HP, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP1, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP2, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP3, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP4, &j);
+                j = GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP4, &j);
                 j = STATUS1_NONE;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_STATUS, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_STATUS, &j);
             }
             
             j = NATURE_RELAXED;
-            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_SERIOUS;
-            SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BRAVE;
-            SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_SASSY;
-            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][3], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BASHFUL;
-            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][4], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_QUIET;
-            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][5], MON_DATA_HIDDEN_NATURE, &j);
 
             j = ITEM_FOCUS_SASH;
-            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HELD_ITEM, &j);
             j = ITEM_IRON_BALL;
-            SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_HELD_ITEM, &j);
             j = ITEM_EJECT_BUTTON;
-            SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_HELD_ITEM, &j);
             j = ITEM_LAGGING_TAIL;
-            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][3], MON_DATA_HELD_ITEM, &j);
             j = ITEM_SITRUS_BERRY;
-            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][4], MON_DATA_HELD_ITEM, &j);
             j = ITEM_STICKY_BARB;
-            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][5], MON_DATA_HELD_ITEM, &j);
         }
         else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_2)
         {
             j = SPECIES_TORNADUS;
-                SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_SPECIES, &j);
             j = SPECIES_THUNDURUS;
-                SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_SPECIES, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_SPECIES, &j);
             j = SPECIES_LANDORUS;
-                SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_SPECIES, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_SPECIES, &j);
             j = 0;
-                SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_ABILITY_NUM, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_ABILITY_NUM, &j);
             j = 0;
-                SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_ABILITY_NUM, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_ABILITY_NUM, &j);
             j = 0;
-                SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_ABILITY_NUM, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_ABILITY_NUM, &j);
             j = NATURE_SERIOUS;
-                SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HIDDEN_NATURE, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_TIMID;
-                SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HIDDEN_NATURE, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BRAVE;
-                SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HIDDEN_NATURE, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_HIDDEN_NATURE, &j);
             j = MOVE_TAILWIND;
-                SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_MOVE1, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_MOVE1, &j);
             j = MOVE_TAUNT;
-                SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_MOVE1, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_MOVE1, &j);
             j = MOVE_U_TURN;
-                SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_MOVE1, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_MOVE1, &j);
 
             for (i = 0; i < 6; i++)
             {
-                j = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_HP, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP1, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP2, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP3, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP4, &j);
+                j = GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP4, &j);
                 j = STATUS1_NONE;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_STATUS, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_STATUS, &j);
             }
             j = NATURE_SASSY;
-            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][3], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BASHFUL;
-            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][4], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_QUIET;
-            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][5], MON_DATA_HIDDEN_NATURE, &j);
 
             j = ITEM_LAGGING_TAIL;
-            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][3], MON_DATA_HELD_ITEM, &j);
             j = ITEM_SITRUS_BERRY;
-            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][4], MON_DATA_HELD_ITEM, &j);
             j = ITEM_STICKY_BARB;
-            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][5], MON_DATA_HELD_ITEM, &j);
         }
         else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_3)
         {
             for (i = 0; i < 6; i++)
             {
-                j = GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MAX_HP, NULL);
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_HP, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE1, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP1, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE2, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP2, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE3, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP3, &j);
-                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_1][i], MON_DATA_MOVE4, NULL)].pp;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_PP4, &j);
+                j = GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MAX_HP, NULL);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_HP, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE1, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP1, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE2, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP2, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE3, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP3, &j);
+                j = gMovesInfo[GetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_MOVE4, NULL)].pp;
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_PP4, &j);
                 j = STATUS1_NONE;
-                SetMonData(&gParties[B_TRAINER_1][i], MON_DATA_STATUS, &j);
+                SetMonData(&gParties[B_TRAINER_OPPONENT_A][i], MON_DATA_STATUS, &j);
             }
             j = NATURE_TIMID;
-            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_LONELY;
-            SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_NAIVE;
-            SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_RASH;
-            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][3], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_BASHFUL;
-            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][4], MON_DATA_HIDDEN_NATURE, &j);
             j = NATURE_JOLLY;
-            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HIDDEN_NATURE, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][5], MON_DATA_HIDDEN_NATURE, &j);
 
             j = ITEM_FOCUS_SASH;
-            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HELD_ITEM, &j);
             j = ITEM_NORMAL_GEM;
-            SetMonData(&gParties[B_TRAINER_1][1], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_HELD_ITEM, &j);
             j = ITEM_EJECT_PACK;
-            SetMonData(&gParties[B_TRAINER_1][2], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][2], MON_DATA_HELD_ITEM, &j);
             j = ITEM_WEAKNESS_POLICY;
-            SetMonData(&gParties[B_TRAINER_1][3], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][3], MON_DATA_HELD_ITEM, &j);
             j = ITEM_CHOICE_SPECS;
-            SetMonData(&gParties[B_TRAINER_1][4], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][4], MON_DATA_HELD_ITEM, &j);
             j = ITEM_NORMAL_GEM;
-            SetMonData(&gParties[B_TRAINER_1][5], MON_DATA_HELD_ITEM, &j);
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][5], MON_DATA_HELD_ITEM, &j);
         }
         
         CreateTask(Task_StartBattleAfterTransition, 1);
@@ -368,6 +327,9 @@ void DoSpecialTrainerBattle(void)
         }
         BattleTransition_StartOnField(GetTrainerBattleTransition());
         break;
+    case SPECIAL_BATTLE_MULTI:
+    default:
+        errorf("Unknown special battle type %d", gSpecialVar_0x8004);
     }
 }
 
@@ -375,7 +337,7 @@ void DoSpecialTrainerBattle(void)
 #define tState       data[0]
 #define tBattleMode  data[1]
 
-static void Task_TwoPlayerPreBattleExchange(u8 taskId)
+void Task_TwoPlayerPreBattleExchange(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
@@ -501,7 +463,7 @@ static void UNUSED FillEReaderTrainerWithPlayerData(void)
     }
 
     for (i = 0; i < (int)ARRAY_COUNT(ereaderTrainer->party); i++)
-        ConvertPokemonToBattleTowerPokemon(&gParties[B_TRAINER_0][i], &ereaderTrainer->party[i]);
+        ConvertPokemonToBattleTowerPokemon(&gParties[B_TRAINER_PLAYER][i], &ereaderTrainer->party[i]);
 
     SetEReaderTrainerChecksum(ereaderTrainer);
 #endif //FREE_BATTLE_TOWER_E_READER

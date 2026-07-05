@@ -490,6 +490,71 @@ Jolly Nature
 - Aurora Veil
 - Frosty Reception
 
+=== TRAINER_BLUE_MAUVILLE ===
+Name: Blue /* Mauville*/
+Class: Kantonian
+Pic: Champion Rival Frlg
+Gender: Male
+Music: Male
+Mugshot: Blue
+Battle Type: Singles
+AI: Tag Trainer
+Multi Party: Half
+
+Growlithe-Hisui @ Normal Gem
+Ability: Justified
+Level: 29
+Adamant Nature
+- Extreme Speed
+- Flame Charge
+- Rock Tomb
+- Rock Throw
+
+Omanyte @ Rindo Berry
+Ability: Weak Armor
+Level: 28
+Timid Nature
+- Power Gem
+- Brine
+- Icy Wind
+- Rock Polish
+
+Magnemite @ Air Balloon
+Ability: Analytic
+Level: 28
+Serious Nature
+- Magnet Bomb
+- Shock Wave
+- Thunder Wave
+- Ally Switch
+
+Kadabra @ Focus Sash
+Ability: Synchronize
+Level: 29
+Timid Nature
+- Ominous Wind
+- Confusion
+- Telekinesis
+- Calm Mind
+
+Sandshrew-Alola @ Never Melt Ice
+Ability: Slush Rush
+Level: 28
+Hasty Nature
+- Metal Claw
+- Low Horsepower
+- Ice Shard
+- Hone Claws
+
+Pidgeotto @ Power Herb
+Ability: Keen Eye
+Level: 30
+Timid Nature
+- Razor Wind
+- Air Cutter
+- Twister
+- Tailwind
+
 === TRAINER_ANNA_AND_MEG_1 ===
 Name: Anna & Meg
 Class: Sr And Jr
@@ -6687,32 +6752,33 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
+Iron Boulder @ Ground Gem
+Ability: Quark Drive
+Level: 70
+Hasty Nature
+- High Horsepower
+- Mighty Cleave
+- X-Scissor
+- Throat Chop
+
+Aegislash @ Kasib Berry
+Ability: Stance Change
+Level: 70
+Brave Nature
+IVs: 0 Spe
+- Iron Head
+- Shadow Claw
+- Pursuit
+- King's Shield
+
 Gallade @ Galladite
-Ability: Sharpness
-Level: 81
-Jolly Nature
+Ability: Steadfast
+Level: 70
+Naive Nature
 - Sacred Sword
-- Psycho Cut
-- Leaf Blade
+- Psyblade
 - Night Slash
-
-Braviary-Hisui @ Life Orb
-Ability: Sheer Force
-Level: 81
-Timid Nature
-- Air Slash
-- Esper Wing
-- Heat Wave
-- Hyper Voice
-
-Meloetta @ Bug Gem
-Ability: Serene Grace
-Level: 80
-Jolly Nature
-- Relic Song
-- Zen Headbutt
-- Close Combat
-- U-turn
+- Bulk Up
 
 === TRAINER_LIZA ===
 Name: Liza /* [Multi]*/
@@ -6725,32 +6791,32 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
+Munkidori @ Psychic Gem
+Ability: Prankster
+Level: 70
+Hasty Nature
+- Future Sight
+- Fake Out
+- Helping Hand
+- Follow Me
+
+Grimmsnarl @ Lagging Tail
+Ability: Prankster
+Level: 70
+Jolly Nature
+- Foul Play
+- Spirit Break
+- Trick
+- Fake Tears
+
 Gardevoir @ Gardevoirite
 Ability: Synchronize
-Level: 81
+Level: 70
 Naive Nature
-- Psychic
-- Moonblast
-- Shadow Ball
-- Ally Switch
-
-Munkidori @ Focus Sash
-Ability: Toxic Chain
-Level: 81
-Timid Nature
-- Fake Out
-- Future Sight
-- Helping Hand
-- Parting Shot
-
-Farigiraf @ Throat Spray
-Ability: Armor Tail
-Level: 81
-Calm Nature
-- Expanding Force
 - Hyper Voice
-- Energy Ball
-- Psychic Terrain
+- Shadow Ball
+- Mystical Fire
+- Ally Switch
 
 === TRAINER_SABRINA_MOSSDEEP ===
 Name: Sabrina /* Mossdeep [Multi]*/
@@ -6763,31 +6829,32 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
+Tapu Koko @ Fairy Gem
+Ability: Electric Surge
+Level: 70
+Naive Nature
+- Play Rough
+- Iron Head
+- U-Turn
+- Electroweb
+
+Farigiraf @ Air Balloon
+Ability: Armor Tail
+Level: 70
+Modest Nature
+- Hyper Voice
+- Assurance
+- Twin Beam
+- Calm Mind
+
 Alakazam @ Alakazite
-Ability: Synchronize
-Level: 81
+Ability: Inner Focus
+Level: 70
 Naive Nature
 - Hyper Beam
 - Psychic
 - Tachyon Cutter
-
-Alakazam @ Alakazite
-Ability: Synchronize
-Level: 81
-Timid Nature
-- Psychic
-- Hyper Voice
-- Tachyon Cutter
-- Shadow Ball
-
-Farigiraf @ Throat Spray
-Ability: Armor Tail
-Level: 81
-Calm Nature
-- Expanding Force
-- Hyper Voice
-- Energy Ball
-- Psychic Terrain
+- Telekinesis
 
 === TRAINER_MAGMA_GRUNT_SPACE_CENTER_1 ===
 Name: Grunt /* Space Center #1*/
@@ -6865,7 +6932,7 @@ Gender: Female
 Music: Magma
 Battle Type: Doubles
 AI: Tag Trainer
-Multi Party: Half
+Multi Party: Full
 
 Zubat
 Level: 32
@@ -6879,7 +6946,7 @@ Gender: Female
 Music: Magma
 Battle Type: Doubles
 AI: Tag Trainer
-Multi Party: Half
+Multi Party: Full
 
 Mightyena
 Level: 32
@@ -10514,7 +10581,7 @@ Multi Party: Half
 Mugshot: Champion
 
 Swampert @ Swampertite  
-Ability: Drizzle  
+Ability: Damp  
 Jolly Nature  
 - Stone Edge  
 - High Horsepower  
@@ -10564,7 +10631,7 @@ Timid Nature
 - Earth Power  
 
 Metagross @ Metagrossite  
-Ability: Tough Claws  
+Ability: Clear Body  
 Jolly Nature  
 - Meteor Mash  
 - Zen Headbutt  

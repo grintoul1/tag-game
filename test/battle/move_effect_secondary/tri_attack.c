@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME(MoveHasAdditionalEffect(MOVE_TRI_ATTACK, MOVE_EFFECT_TRI_ATTACK) == TRUE);
+    ASSUME(MoveHasAdditionalEffect(MOVE_TRI_ATTACK, MOVE_EFFECT_RANDOM_FROM_LIST) == TRUE);
 }
 
 // Updated for new FRB animation
@@ -18,7 +18,7 @@ SINGLE_BATTLE_TEST("Tri Attack can inflict paralysis, burn or freeze")
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_BRN; }
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_FRB; }
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_FRZ; }
-    PASSES_RANDOMLY(1, 4, RNG_TRI_ATTACK);
+    PASSES_RANDOMLY(1, 4, RNG_RANDOM_FROM_LIST);
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
@@ -48,7 +48,7 @@ SINGLE_BATTLE_TEST("Tri Attack cannot paralyze/burn/freeze electric/fire/ice typ
 #endif
 {
     u8 statusAnim;
-    u16 species;
+    enum Species species;
     u32 rng;
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_PRZ; rng = MOVE_EFFECT_PARALYSIS; species = SPECIES_RAICHU; }
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_BRN; rng = MOVE_EFFECT_BURN; species = SPECIES_ARCANINE; }
@@ -58,7 +58,7 @@ SINGLE_BATTLE_TEST("Tri Attack cannot paralyze/burn/freeze electric/fire/ice typ
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(species);
     } WHEN {
-        TURN { MOVE(player, MOVE_TRI_ATTACK, WITH_RNG(RNG_TRI_ATTACK, rng)); }
+        TURN { MOVE(player, MOVE_TRI_ATTACK, WITH_RNG(RNG_RANDOM_FROM_LIST, rng)); }
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TRI_ATTACK, player);
@@ -83,7 +83,7 @@ SINGLE_BATTLE_TEST("Tri Attack cannot paralyze/burn/freeze Pokémon with abiliti
 #endif
 {
     u8 statusAnim;
-    u16 species;
+    enum Species species;
     enum Ability ability;
     u32 rng;
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_PRZ; rng = MOVE_EFFECT_PARALYSIS; species = SPECIES_PERSIAN; ability = ABILITY_LIMBER; }
@@ -98,7 +98,7 @@ SINGLE_BATTLE_TEST("Tri Attack cannot paralyze/burn/freeze Pokémon with abiliti
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(species) { Ability(ability); }
     } WHEN {
-        TURN { MOVE(player, MOVE_TRI_ATTACK, WITH_RNG(RNG_TRI_ATTACK, rng)); }
+        TURN { MOVE(player, MOVE_TRI_ATTACK, WITH_RNG(RNG_RANDOM_FROM_LIST, rng)); }
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TRI_ATTACK, player);
@@ -131,7 +131,7 @@ SINGLE_BATTLE_TEST("Tri Attack cannot paralyze/burn/freeze a mon which is alread
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET) { Status1(STATUS1_SLEEP); }
     } WHEN {
-        TURN { MOVE(player, MOVE_TRI_ATTACK, WITH_RNG(RNG_TRI_ATTACK, rng)); }
+        TURN { MOVE(player, MOVE_TRI_ATTACK, WITH_RNG(RNG_RANDOM_FROM_LIST, rng)); }
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TRI_ATTACK, player);

@@ -187,5 +187,6 @@
       "script": "Route126_EventScript_PabloSienna"
     }
   ],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

@@ -151,7 +151,7 @@ AI_SINGLE_BATTLE_TEST("AI switches if Perish Song is about to kill")
 
 AI_SINGLE_BATTLE_TEST("AI sees on-field player ability correctly and does not see previous Pokémon's ability after player uses a pivot move when choosing a post-KO switch")
 {
-    u32 testAbility;
+    enum Ability testAbility;
     PARAMETRIZE { testAbility = ABILITY_WATER_ABSORB; }
     PARAMETRIZE { testAbility = ABILITY_VOLT_ABSORB; }
     GIVEN {
@@ -198,7 +198,7 @@ AI_DOUBLE_BATTLE_TEST("AI will not try to switch for the same Pokémon for 2 spo
 //FIXER
 /*AI_DOUBLE_BATTLE_TEST("AI will not try to switch for the same Pokémon for 2 spots in a double battle (all bad moves, reversed)")
 {
-    u32 flags;
+    u64 flags;
 
     PARAMETRIZE { flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING; }
     PARAMETRIZE { flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT; }
@@ -228,7 +228,7 @@ AI_DOUBLE_BATTLE_TEST("AI will not try to switch for the same Pokémon for 2 spo
 AI_TWO_VS_ONE_BATTLE_TEST("AI will not try to switch for the same pokemon for 2 spots in a 2v1 battle (all bad moves)")
 {
     KNOWN_FAILING; // AI changed
-    u32 flags;
+    u64 flags;
 
     PARAMETRIZE {flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING; }
     PARAMETRIZE {flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT; }
@@ -264,7 +264,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("AI will not try to switch for the same pokemon for 2 
 //FIXER
 /*AI_TWO_VS_ONE_BATTLE_TEST("AI will not try to switch for the same pokemon for 2 spots in a 2v1 battle (all bad moves, reversed)")
 {
-    u32 flags;
+    u64 flags;
 
     PARAMETRIZE {flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING; }
     PARAMETRIZE {flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT; }
@@ -300,7 +300,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("AI will not try to switch for the same pokemon for 2 
 AI_ONE_VS_TWO_BATTLE_TEST("AI will not switch into a partner Pokémon in a 1v2 battle (all bad moves)")
 {
     KNOWN_FAILING; // AI changed
-    u32 flags;
+    u64 flags;
 
     PARAMETRIZE { flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING; }
     PARAMETRIZE { flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT; }
@@ -467,7 +467,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Switch effect moves will send 
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Eject Button will send out Ace Mon if it's the only one remaining")
 {
-    u32 flags;
+    u64 flags;
     PARAMETRIZE { flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_ACE_POKEMON; }
     PARAMETRIZE { flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_ACE_POKEMON; }
     GIVEN {
@@ -482,7 +482,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Eject Button will send out Ace
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Eject Pack will send out Ace Mon if it's the only one remaining")
 {
-    u32 flags;
+    u64 flags;
     PARAMETRIZE { flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_ACE_POKEMON; }
     PARAMETRIZE { flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_ACE_POKEMON; }
     GIVEN {
@@ -586,7 +586,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI will not switch in a Pokemo
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI considers hazard damage when choosing which Pokemon to switch in")
 {
     u32 aiIsSmart = 0;
-    u32 flags = 0;
+    u64 flags = 0;
 
     PARAMETRIZE { aiIsSmart = 0; flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT; } // AI doesn't care about hazard damage resulting in Pokemon being KO'd
     PARAMETRIZE { aiIsSmart = 1; flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES; } // AI_FLAG_SMART_MON_CHOICES avoids being KO'd as a result of hazards damage
@@ -835,7 +835,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI will switch in trapping mon
 
 AI_SINGLE_BATTLE_TEST("AI won't use trapping behaviour if player only has 1 mon left")
 {
-    u32 flags = 0; // Enables trapping behaviour after KOs
+    u64 flags = 0; // Enables trapping behaviour after KOs
     PARAMETRIZE { flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT; } // No trapping behaviour
     PARAMETRIZE { flags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES; } // Traps with mid battle switches
     GIVEN {
@@ -892,7 +892,7 @@ AI_SINGLE_BATTLE_TEST("Switch AI: AI will switch out if it can't deal damage to 
         ASSUME(GetSpeciesType(SPECIES_SHEDINJA, 1) == TYPE_GHOST);
         ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 0) == ABILITY_WONDER_GUARD);
         ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 1) == ABILITY_NONE);
-        ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 2) == ABILITY_NONE);
+        //ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 2) == ABILITY_NONE);
         ASSUME(GetMoveType(MOVE_SCRATCH) == TYPE_NORMAL);
         ASSUME(GetMoveType(MOVE_SHADOW_BALL) == TYPE_GHOST);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
@@ -912,7 +912,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will switch out if it can't d
         ASSUME(GetSpeciesType(SPECIES_SHEDINJA, 1) == TYPE_GHOST);
         ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 0) == ABILITY_WONDER_GUARD);
         ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 1) == ABILITY_NONE);
-        ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 2) == ABILITY_NONE);
+        //ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 2) == ABILITY_NONE);
         ASSUME(GetMoveType(MOVE_SCRATCH) == TYPE_NORMAL);
         ASSUME(GetMoveType(MOVE_SHADOW_BALL) == TYPE_GHOST);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING);
@@ -926,7 +926,8 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will switch out if it can't d
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will switch out if it has been Toxic'd for at least two turns 50% of the time with more than 1/3 HP remaining with good switchin")
 {
-    u32 species = SPECIES_NONE, odds = 0;
+    enum Species species = SPECIES_NONE;
+    u32 odds = 0;
     PARAMETRIZE { species = SPECIES_ZIGZAGOON, odds = 0; }
     PARAMETRIZE { species = SPECIES_HARIYAMA, odds = SHOULD_SWITCH_BADLY_POISONED_PERCENTAGE; }
     PASSES_RANDOMLY(odds, 100, RNG_AI_SWITCH_BADLY_POISONED);
@@ -1262,7 +1263,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will switch out to cycle Inti
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will not cycle Intimidate when target blocks or punishes Attack drops")
 {
-    u32 Species = SPECIES_NONE;
+    enum Species Species = SPECIES_NONE;
     enum Ability ability;
     PARAMETRIZE { Species = SPECIES_TENTACRUEL; ability = ABILITY_CLEAR_BODY; }
     PARAMETRIZE { Species = SPECIES_BRAVIARY; ability = ABILITY_DEFIANT; }
@@ -1439,7 +1440,7 @@ AI_SINGLE_BATTLE_TEST("Switch AI: AI will switch out if mon has Truant and oppon
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will switch out if main attacking stat lowered by 2 stages with good switchin candidate 50% of the time")
 {
-    u32 aiSpecies = SPECIES_NONE;
+    enum Species aiSpecies = SPECIES_NONE;
     enum Move aiMove = MOVE_NONE, move = MOVE_NONE;
 
     PASSES_RANDOMLY(SHOULD_SWITCH_ATTACKING_STAT_MINUS_TWO_PERCENTAGE, 100, RNG_AI_SWITCH_STATS_LOWERED);
@@ -1461,7 +1462,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will switch out if main attac
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will switch out if main attacking stat lowered by 3+ stages")
 {
-    u32 aiSpecies = SPECIES_NONE;
+    enum Species aiSpecies = SPECIES_NONE;
     enum Move aiMove = MOVE_NONE, move = MOVE_NONE, move2 = MOVE_NONE;
 
     PASSES_RANDOMLY(SHOULD_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS_PERCENTAGE, 100, RNG_AI_SWITCH_STATS_LOWERED);

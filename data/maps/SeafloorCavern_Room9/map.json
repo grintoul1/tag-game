@@ -158,5 +158,6 @@
       "script": "SeafloorCavern_Room9_EventScript_ShellyMatt"
     }
   ],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

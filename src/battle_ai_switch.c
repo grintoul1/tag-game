@@ -56,7 +56,7 @@ static bool32 ShouldSwitchIfIntimidateBenefit(struct SwitchAiContext *switchCont
 static bool32 DoesMostSuitableSwitchinBenefitFromWish(enum BattlerId battler);
 static u32 GetSwitchinCandidate(u32 switchinCategory, enum BattlerId battler, int lastId, enum SwitchType switchType);
 static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler);
-static void CustomGetBestMonIntegrated(struct Pokemon *party, s32 lastId, enum BattlerId battler, enum BattlerId opposingBattler, enum BattlerId battlerIn1, enum BattlerId battlerIn2, enum SwitchType switchType, s32 *bestMonId, s32 *bestScore);
+static void CustomGetBestMonIntegrated(struct SwitchAiContext *ctx, enum SwitchType switchType, s32 *bestMonId, s32 *bestScore, struct AiLogicData *aiData);
 
 static enum Ability GetPartyMonAbilityForSwitchCalc(enum BattlerId battler, u32 monIndex, struct Pokemon *mon)
 {
@@ -66,8 +66,8 @@ static enum Ability GetPartyMonAbilityForSwitchCalc(enum BattlerId battler, u32 
     if (gTestRunnerEnabled)
     {
         enum BattleTrainer trainer = !IsPartnerMonFromSameTrainer(battler) ? battler : GetBattlerSide(battler);
-        u32 forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, monIndex);
-        if (forcedAbility != 0)
+        enum Ability forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, monIndex);
+        if (forcedAbility != ABILITY_NONE)
             ability = forcedAbility;
     }
 #endif
@@ -564,23 +564,35 @@ static bool32 ShouldSwitchIfAllMovesBad(struct SwitchAiContext *switchContext)
     ctx.holdEffects[ctx.battlerDef] = gAiLogicData->holdEffects[ctx.battlerDef];
 
     bool32 isPartner = gAiThinkingStruct->aiFlags[switchContext->battler] & AI_FLAG_PARTNER_SWITCHING;
-    enum BattlerId battlerIn1 = ctx.battlerAtk;
-    enum BattlerId opposingBattler = GetOppositeBattler(battlerIn1);
-    enum BattlerId battlerIn2 = GetPartnerBattler(ctx.battlerAtk);
-    if (gAbsentBattlerFlags & (1u << GetPartnerBattler(ctx.battlerAtk)))
-        battlerIn2 = ctx.battlerAtk;
-
-    if (gAbsentBattlerFlags & (1u << opposingBattler))
-        opposingBattler ^= BIT_FLANK;
 
     if (isPartner)
     {
-        s32 lastId = GetAILastPartyIndex(ctx.battlerAtk);
-        struct Pokemon *party = GetBattlerParty(ctx.battlerAtk);
         s32 bestMonId = PARTY_SIZE;
         s32 bestScore = 0; 
 
-        CustomGetBestMonIntegrated(party, lastId, ctx.battlerAtk, opposingBattler, battlerIn1, battlerIn2, SWITCH_MID_BATTLE_OPTIONAL, &bestMonId, &bestScore);
+        for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+        {
+            ctx.move = ctx.chosenMove = gBattleMons[switchContext->battler].moves[moveIndex];
+            ctx.moveType = GetBattleMoveType(ctx.move);
+            // Check if move is bad in the context of both opposing battlers
+            if (!IsMoveBad(&ctx, moveIndex))
+            {
+                return FALSE;
+            }
+            else
+            {
+                // Set partner data in ctx
+                ctx.battlerDef = switchContext->opposingPartner;
+                ctx.abilities[ctx.battlerDef] = gAiLogicData->abilities[ctx.battlerDef];
+                ctx.holdEffects[ctx.battlerDef] = gAiLogicData->holdEffects[ctx.battlerDef];
+                if (!IsMoveBad(&ctx, moveIndex))
+                    return FALSE;
+                // Restore opposing battler for next move check
+                ctx.battlerDef = switchContext->opposingBattler;
+            }
+        }
+
+        CustomGetBestMonIntegrated(switchContext, SWITCH_MID_BATTLE_OPTIONAL, &bestMonId, &bestScore, gAiLogicData);
 
         // Don't switch if mid-turn switch checks fail
         if (bestScore < 2)
@@ -617,6 +629,8 @@ static bool32 ShouldSwitchIfAllMovesBad(struct SwitchAiContext *switchContext)
                     ctx.holdEffects[ctx.battlerDef] = gAiLogicData->holdEffects[ctx.battlerDef];
                     if (!IsMoveBad(&ctx, moveIndex))
                         return FALSE;
+                    // Restore opposing battler for next move check
+                    ctx.battlerDef = switchContext->opposingBattler;
                 }
             }
         }
@@ -714,7 +728,7 @@ static bool32 FindMonThatAbsorbsOpponentsMove(struct SwitchAiContext *switchCont
         return FALSE;
     if (AreStatsRaised(switchContext->battler))
         return FALSE;
-    if (IsMoldBreakerTypeAbility(switchContext->opposingBattler, gAiLogicData->abilities[switchContext->opposingBattler]))
+    if (IsMoldBreakerTypeAbility(switchContext->opposingBattler, gAiLogicData->abilities[switchContext->opposingBattler], switchContext->incomingMove))
         return FALSE;
     if (switchContext->canBattlerWin1v1)
         return FALSE;
@@ -747,6 +761,7 @@ static bool32 FindMonThatAbsorbsOpponentsMove(struct SwitchAiContext *switchCont
     {
         absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_EARTH_EATER;
         absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_LEVITATE;
+        absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_EELEVATE;
     }
     if (IsSoundMove(switchContext->incomingMove))
     {
@@ -1501,7 +1516,7 @@ void GetShouldSwitchMoveData(struct SwitchAiContext *switchContext)
             enum MoveEffect nonVolatileStatus = GetMoveNonVolatileStatus(aiMove);
             // Check if mon has an "important" status move
             if (aiMoveEffect == EFFECT_REFLECT || aiMoveEffect == EFFECT_LIGHT_SCREEN
-            || aiMoveEffect == EFFECT_SPIKES || aiMoveEffect == EFFECT_TOXIC_SPIKES || aiMoveEffect == EFFECT_STEALTH_ROCK || aiMoveEffect == EFFECT_STICKY_WEB || aiMoveEffect == EFFECT_LEECH_SEED
+            || aiMoveEffect == EFFECT_SPIKES || aiMoveEffect == EFFECT_TOXIC_SPIKES || aiMoveEffect == EFFECT_STEALTH_ROCK || aiMoveEffect == EFFECT_STEELSURGE || aiMoveEffect == EFFECT_STICKY_WEB || aiMoveEffect == EFFECT_LEECH_SEED
             || IsExplosionMove(aiMove)
             || nonVolatileStatus == MOVE_EFFECT_SLEEP
             || nonVolatileStatus == MOVE_EFFECT_TOXIC
@@ -1757,11 +1772,7 @@ static u32 GetSwitchinSingleUseItemHealing(enum BattlerId battler, enum BattlerI
                 itemHeal = 1;
         }
         break;
-    case HOLD_EFFECT_CONFUSE_SPICY:
-    case HOLD_EFFECT_CONFUSE_DRY:
-    case HOLD_EFFECT_CONFUSE_SWEET:
-    case HOLD_EFFECT_CONFUSE_BITTER:
-    case HOLD_EFFECT_CONFUSE_SOUR:
+    case HOLD_EFFECT_CONFUSE_FLAVOR:
         if (currentHP < maxHP / CONFUSE_BERRY_HP_FRACTION)
         {
             itemHeal = maxHP / GetItemHoldEffectParam(aiItem);
@@ -2056,11 +2067,13 @@ static u32 GetSwitchinHitsToKO(s32 damageTaken, enum BattlerId battler, const st
     u32 recurringHealing = GetSwitchinRecurringHealing(battler);
     u32 statusDamage = GetSwitchinStatusDamage(battler);
     u32 hitsToKO = 0;
-    u16 maxHP = gBattleMons[battler].maxHP, item = gAiLogicData->items[battler], heldItemEffect = GetItemHoldEffect(item);
+    u16 maxHP = gBattleMons[battler].maxHP;
+    enum Item item = gAiLogicData->items[battler];
+    enum HoldEffect heldItemEffect = GetItemHoldEffect(item);
     u8 weatherDuration = gBattleStruct->weatherDuration;
     enum BattlerId opposingBattler = GetOppositeBattler(battler);
     enum Ability opposingAbility = gAiLogicData->abilities[opposingBattler], ability = gAiLogicData->abilities[battler];
-    bool32 usedSingleUseHealingItem = FALSE, opponentCanBreakMold = IsMoldBreakerTypeAbility(opposingBattler, opposingAbility);
+    bool32 usedSingleUseHealingItem = FALSE, opponentCanBreakMold = IsMoldBreakerTypeAbility(opposingBattler, opposingAbility, MOVE_NONE);
     s32 currentHP = startingHP, singleUseItemHeal = 0;
     bool32 applyWishNow = healInfo->healEndOfTurn && healInfo->wishCounter == 1;
 
@@ -2803,7 +2816,20 @@ u32 GetMostSuitableMonToSwitchInto(enum BattlerId battler, enum SwitchType switc
     // Only use better mon selection if AI_FLAG_SMART_MON_CHOICES is set for the trainer.
     if (gAiThinkingStruct->aiFlags[battler] & (AI_FLAG_PARTNER_SWITCHING | AI_FLAG_TAG_OPPONENT))
     {
-        CustomGetBestMonIntegrated(party, lastId, battler, opposingBattler, battlerIn1, battlerIn2, switchType, &bestMonId, &bestScore);
+        struct SwitchAiContext switchContext = {0};
+        switchContext.battler = battler;
+        switchContext.opposingBattler = GetOppositeBattler(switchContext.battler);
+        switchContext.battlerPartner = GetPartnerBattler(switchContext.battler);
+        switchContext.opposingPartner = GetPartnerBattler(switchContext.opposingBattler);
+        switchContext.party = GetBattlerParty(switchContext.battler);
+        switchContext.lastId = GetAILastPartyIndex(switchContext.battler);
+        switchContext.incomingMove = GetIncomingMove(switchContext.battler, switchContext.opposingBattler, gAiLogicData);
+        switchContext.hasStatRaised = AnyUsefulStatIsRaised(switchContext.battler);
+        switchContext.typeMatchup = GetBattlerTypeMatchup(switchContext.opposingBattler, switchContext.battler);
+        GetActiveBattlerIds(switchContext.battler, &switchContext.battlerIn1, &switchContext.battlerIn2);
+        GetShouldSwitchMoveData(&switchContext);
+        GetShouldSwitchPartyMonEligibility(&switchContext);
+        CustomGetBestMonIntegrated(&switchContext, switchType, &bestMonId, &bestScore, gAiLogicData);
         return bestMonId;
     }
     else if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SMART_MON_CHOICES)
@@ -2922,9 +2948,13 @@ static void SetBattlerStatusForSwitchin(enum BattlerId battler)
 
 static void SetBattlerStatStagesForSwitchin(enum BattlerId battler, enum BattlerId opposingBattler, u32 fieldStatus)
 {
-    u32 aiAbility = gAiLogicData->abilities[battler];
+    enum Ability aiAbility = gAiLogicData->abilities[battler];
+    enum HoldEffect aiHoldEffect = gAiLogicData->holdEffects[battler];
     enum Item aiItem = gAiLogicData->items[battler];
-    bool32 isStickyWebsAffected = (IsHazardOnSide(GetBattlerSide(battler), HAZARDS_STICKY_WEB) && IsBattlerAffectedByHazards(battler, GetItemHoldEffect(aiItem), FALSE) && IsBattlerGrounded(battler, gAiLogicData->abilities[battler], GetItemHoldEffect(aiItem)));
+    bool32 isStickyWebsAffected = (IsHazardOnSide(GetBattlerSide(battler), HAZARDS_STICKY_WEB)
+                                && IsBattlerAffectedByHazards(battler, aiHoldEffect, FALSE)
+                                && IsBattlerGrounded(battler, aiAbility, aiHoldEffect));
+
     bool32 opponentStatDrop = FALSE;
 
     // Ability stat changes
@@ -2935,8 +2965,6 @@ static void SetBattlerStatStagesForSwitchin(enum BattlerId battler, enum Battler
         break;
     case ABILITY_DAUNTLESS_SHIELD:
         gBattleMons[battler].statStages[STAT_DEF] += 1;
-        break;
-    case ABILITY_SUPREME_OVERLORD:
         break;
     case ABILITY_DOWNLOAD:
         gBattleMons[battler].statStages[GetDownloadStat(battler)] += 1;
@@ -2997,7 +3025,7 @@ static void SetBattlerStatStagesForSwitchin(enum BattlerId battler, enum Battler
     }
 
     // Item stat changes
-    switch(GetItemHoldEffect(aiItem))
+    switch(aiHoldEffect)
     {
     case HOLD_EFFECT_TERRAIN_SEED:
     {
@@ -3043,7 +3071,7 @@ static void SetBattlerStatStagesForSwitchin(enum BattlerId battler, enum Battler
     }
 
     // Hazard stat changes
-    if (isStickyWebsAffected && GetItemHoldEffect(aiItem) != HOLD_EFFECT_WHITE_HERB)
+    if (isStickyWebsAffected && aiHoldEffect != HOLD_EFFECT_WHITE_HERB)
         gBattleMons[battler].statStages[STAT_SPEED] -= 1;
 }
 
@@ -3066,7 +3094,6 @@ static void SetBattlerHPChangeForSwitch(enum BattlerId battler, enum BattlerId o
 // Set potential field effect from ability for switch in
 static void SetBattlerVolatilesForSwitchin(enum BattlerId battler, u32 weather, u32 fieldStatus)
 {
-    enum Item aiItem = gAiLogicData->items[battler];
     switch (gAiLogicData->abilities[battler])
     {
     case ABILITY_VESSEL_OF_RUIN:
@@ -3082,16 +3109,19 @@ static void SetBattlerVolatilesForSwitchin(enum BattlerId battler, u32 weather, 
         gBattleMons[battler].volatiles.beadsOfRuin = TRUE;
         break;
     case ABILITY_QUARK_DRIVE:
-        if ((fieldStatus & STATUS_FIELD_ELECTRIC_TERRAIN) || GetItemHoldEffect(aiItem) == HOLD_EFFECT_BOOSTER_ENERGY)
+        if ((fieldStatus & STATUS_FIELD_ELECTRIC_TERRAIN) || gAiLogicData->holdEffects[battler] == HOLD_EFFECT_BOOSTER_ENERGY)
             gBattleMons[battler].volatiles.boosterEnergyActivated = TRUE;
         break;
     case ABILITY_PROTOSYNTHESIS:
-        if ((weather & B_WEATHER_SUN) || GetItemHoldEffect(aiItem) == HOLD_EFFECT_BOOSTER_ENERGY)
+        if ((weather & B_WEATHER_SUN) || gAiLogicData->holdEffects[battler] == HOLD_EFFECT_BOOSTER_ENERGY)
             gBattleMons[battler].volatiles.boosterEnergyActivated = TRUE;
         break;
     case ABILITY_WIND_POWER:
         if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND)
             gBattleMons[battler].volatiles.chargeTimer = 2;
+        break;
+    case ABILITY_SUPREME_OVERLORD:
+        gBattleMons[battler].volatiles.supremeOverlordCounter = min(5, gBattleStruct->faintCounter[GetBattlerTrainer(battler)]);
         break;
     default:
         break;
@@ -3109,10 +3139,10 @@ static void SetBattlerVolatilesForSwitchin(enum BattlerId battler, u32 weather, 
     }
 }*/
 
-static void CustomGetBestMonIntegrated(struct Pokemon *party, s32 lastId, enum BattlerId battler, enum BattlerId opposingBattler, enum BattlerId battlerIn1, enum BattlerId battlerIn2, enum SwitchType switchType, s32 *bestMonId, s32 *bestScore)
+static void CustomGetBestMonIntegrated(struct SwitchAiContext *ctx, enum SwitchType switchType, s32 *bestMonId, s32 *bestScore, struct AiLogicData *aiData)
 {
 
-        /*MgbaPrintf(MGBA_LOG_WARN, "CustomGetBestMonIntegrated");
+        /*DebugPrintf("CustomGetBestMonIntegrated");
         u32 maxDamageDealtStored[PARTY_SIZE]={0};
         const u8 * checkingPosition;
         const u8 * partyMon=SPECIES_NONE;
@@ -3123,120 +3153,132 @@ static void CustomGetBestMonIntegrated(struct Pokemon *party, s32 lastId, enum B
         u32 percentageReceivedStored[PARTY_SIZE]={0};*/
 
     u32 switchInScores[PARTY_SIZE]={0};
-    bool32 isFreeSwitch = IsFreeSwitch(switchType, battler, opposingBattler);
+    bool32 isFreeSwitch = IsFreeSwitch(switchType, ctx->battler, ctx->opposingBattler);
+    bool32 isPartner = gAiThinkingStruct->aiFlags[ctx->battler] & AI_FLAG_PARTNER_SWITCHING;
 
     struct AiLogicData *savedAiLogicData = AllocSaveAiLogicData();
     struct BattlePokemon *savedBattleMons = AllocSaveBattleMons();
 
-    gAiLogicData->aiCalcInProgress = TRUE;
+    aiData->aiCalcInProgress = TRUE;
 
-        /*checkingPosition=GetSpeciesName(gBattleMons[battler].species);
-        const u8 * lookingAt;
-        lookingAt=GetSpeciesName(gBattleMons[opposingBattler].species);*/
+        /*checkingPosition = GetSpeciesName(gBattleMons[ctx->battler].species);
+        const u8 *lookingAt;
+        lookingAt = GetSpeciesName(gBattleMons[ctx->opposingBattler].species);*/
 
-    lastId = GetAILastPartyIndex(battler);
-    if ((TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_1) || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_EMMIE_3) || ((!(gBattleTypeFlags & BATTLE_TYPE_MULTI)) && (!(gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))))
-    {
+    u32 lastId = ctx->lastId;
+    u32 opponentA = TRAINER_BATTLE_PARAM.opponentA;
+    u64 flags = gBattleTypeFlags;
+
+    if ((opponentA == TRAINER_EMMIE_1) || (opponentA == TRAINER_EMMIE_3) || ((!(flags & BATTLE_TYPE_MULTI)) && (!(flags & BATTLE_TYPE_INGAME_PARTNER))))
         lastId=6;
-    }
 
     for (u32 monId = 0; monId < lastId; monId++)
     {
-        u32 maxDamageDealtToAI=0, percentageReceived=0, damageDealt=0, percentageDealt=0, maxDamageDealt=0; 
-        u32 aiMonSpecies=0;
-        u32 aiMonFaster=0;
-        u32 aiMove = MOVE_NONE;
-        enum Move bestPlayerMove = MOVE_NONE;
+        u32 maxDamageDealtToAI = 0, maxDamagePartnerDealtToAI = 0, percentageReceived = 0, damageDealt = 0, percentageDealt = 0, maxDamageDealt = 0; 
+        enum Species aiMonSpecies = 0;
+        enum Move aiMove = MOVE_NONE;
+        enum Move bestTargetMove = MOVE_NONE, bestTargetPartnerMove = MOVE_NONE;
+        bool32 aiMonFasterPartner = FALSE;
 
             /*partyMon=SPECIES_NONE;
             aiBestMove[monId]=0;*/
 
-        switchInScores[monId] = 0;
-        if (!IsValidForBattle(&party[monId])
-        || (gBattlerPartyIndexes[battlerIn1] == monId && BattlersShareParty(battler, battlerIn1))
-        || (gBattlerPartyIndexes[battlerIn2] == monId && BattlersShareParty(battler, battlerIn2))
-        || (gBattleStruct->monToSwitchIntoId[battlerIn1] == monId && BattlersShareParty(battler, battlerIn1))
-        || (gBattleStruct->monToSwitchIntoId[battlerIn2] == monId && BattlersShareParty(battler, battlerIn2)))
+        struct Pokemon mon = ctx->party[monId];
+
+        if (!IsValidForBattle(&mon))
+            continue;
+        if (IsPartyMonOnFieldOrChosenToSwitch(ctx->battler, monId, ctx->battlerIn1, ctx->battlerIn2))
+            continue;
+        if (IsPartyMonPlannedToBeSwitchedInByPartner(monId, ctx->battler))
             continue;
 
-            /*partyMon=GetSpeciesName(GetMonData(&party[monId],MON_DATA_SPECIES,NULL));
+        switchInScores[monId] = 0;
+
+            /*partyMon=GetSpeciesName(GetMonData(&mon,MON_DATA_SPECIES,NULL));
             partyMonStored[monId]=partyMon;*/
 
-        InitializeSwitchinCandidate(battler, monId, &party[monId]);
-        aiMonSpecies = GetMonData(&party[monId], MON_DATA_SPECIES, NULL);
-        aiMonFaster = ((GetMonData(&party[monId],MON_DATA_SPEED,NULL) >= gBattleMons[opposingBattler].speed) || ((GetMonData(&party[monId],MON_DATA_SPEED,NULL) <= gBattleMons[opposingBattler].speed) && (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)));
+        InitializeSwitchinCandidate(ctx->battler, monId, &mon);
+        aiMonSpecies = GetMonData(&mon, MON_DATA_SPECIES, NULL);
+        bool32 aiMonFaster = AI_IsFaster(ctx->battler, ctx->opposingBattler, MOVE_SCRATCH, MOVE_SCRATCH, DONT_CONSIDER_PRIORITY);
+
+        if (isPartner)
+            aiMonFasterPartner = AI_IsFaster(ctx->battler, ctx->opposingPartner, MOVE_SCRATCH, MOVE_SCRATCH, DONT_CONSIDER_PRIORITY);
+
+        struct BattlePokemon battleMon = gBattleMons[ctx->battler];
+        struct BattlePokemon opposingBattleMon = gBattleMons[ctx->opposingBattler];
 
         for (u32 i = 0; i < MAX_MON_MOVES; i++)
         {
-            aiMove = gBattleMons[battler].moves[i];
-            if (aiMove != MOVE_NONE)
+            aiMove = battleMon.moves[i];
+            if (aiMove == MOVE_NONE)
+                break;
+            if (AI_DoesChoiceEffectBlockMove(ctx->opposingBattler, aiMove))
+                continue;
+            // Only check damage if it's a damaging move
+            if (!IsBattleMoveStatus(aiMove))
             {
-                // Only check damage if it's a damaging move
-                if (!IsBattleMoveStatus(aiMove))
+                damageDealt = AI_GetDamage(ctx->battler, ctx->opposingBattler, i, AI_SWITCHIN_ATTACKING, gAiLogicData);
+                if (damageDealt > maxDamageDealt)
                 {
-                    damageDealt = AI_GetDamage(battler, opposingBattler, i, AI_SWITCHIN_ATTACKING, gAiLogicData);
-                    if (damageDealt > maxDamageDealt && !AI_DoesChoiceEffectBlockMove(opposingBattler, aiMove))
-                    {
-                        maxDamageDealt = damageDealt;
-                        percentageDealt = ((maxDamageDealt*1000) / gBattleMons[opposingBattler].hp);
+                    maxDamageDealt = damageDealt;
+                    percentageDealt = ((maxDamageDealt*1000) / opposingBattleMon.hp);
 
-                            /*percentageDealtStored[monId]=percentageDealt;
-                            maxDamageDealtStored[monId]=maxDamageDealt;
-                            aiBestMove[monId]=GetMoveName(GetMonData(&party[monId], MON_DATA_MOVE1 + i,NULL));*/
-                    }
+                    /*percentageDealtStored[monId]=percentageDealt;
+                    maxDamageDealtStored[monId]=maxDamageDealt;
+                    aiBestMove[monId]=GetMoveName(GetMonData(&mon, MON_DATA_MOVE1 + i,NULL));*/
                 }
             }
         }
 
-        maxDamageDealtToAI = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, &bestPlayerMove);
-        percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&party[monId],MON_DATA_HP,NULL));
+        maxDamageDealtToAI = GetMaxDamagePlayerCouldDealToSwitchin(ctx->battler, ctx->opposingBattler, &bestTargetMove);
+        maxDamagePartnerDealtToAI = GetMaxDamagePlayerCouldDealToSwitchin(ctx->battler, ctx->opposingPartner, &bestTargetPartnerMove);
+        percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&mon,MON_DATA_HP,NULL));
+        bool32 targetKills = (maxDamageDealtToAI >= battleMon.hp && !CanEndureHit(ctx->opposingBattler, ctx->battler, bestTargetMove));
+        bool32 targetPartnerKills = (maxDamagePartnerDealtToAI >= battleMon.hp && !CanEndureHit(ctx->opposingBattler, ctx->battler, bestTargetPartnerMove));
+        bool32 aiKills = maxDamageDealt >= opposingBattleMon.hp;
 
             /*percentageReceivedStored[monId] = percentageReceived;
             maxDamageDealtToAIStored[monId] = maxDamageDealtToAI;*/
 
-        if (switchType != SWITCH_AFTER_KO && isFreeSwitch != TRUE)
+        if (switchType != SWITCH_AFTER_KO && !isFreeSwitch)
         {
-            if((maxDamageDealtToAI*2 >= gBattleMons[battler].hp && aiMonFaster != TRUE) || (maxDamageDealtToAI >= gBattleMons[battler].hp && aiMonFaster == TRUE))
-            {  
+            if((maxDamageDealtToAI*2 >= battleMon.hp && !aiMonFaster) || (targetKills))
+            {
                 switchInScores[monId] = 1;
                 continue;
             }
         }
 
-        if(aiMonSpecies == SPECIES_DITTO)
-            switchInScores[monId] = 4;
-        else if((maxDamageDealtToAI >= GetMonData(&party[monId],MON_DATA_HP,NULL)) && aiMonFaster != TRUE && ((!((GetMonData(&party[monId],MON_DATA_HP,NULL) == GetMonData(&party[monId],MON_DATA_MAX_HP,NULL)) && ((GetMonData(&party[monId],MON_DATA_HELD_ITEM,NULL) == ITEM_FOCUS_SASH) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_STURDY))) || (GetAbilityBySpecies(GetMonData(&party[monId],MON_DATA_SPECIES,NULL),GetMonData(&party[monId],MON_DATA_ABILITY_NUM,NULL)) == ABILITY_DISGUISE))))
+        if(aiMonFaster)
             switchInScores[monId] = 1;
-        else if(aiMonSpecies == SPECIES_WOBBUFFET && aiMonFaster == TRUE && !TESTING)
-            switchInScores[monId] = 5;
+
+        if(aiMonSpecies == SPECIES_DITTO)
+            switchInScores[monId] += 4;
+        else if (!aiMonFaster && targetKills)
+            switchInScores[monId] = 1;
+        else if (isPartner && !aiMonFasterPartner && targetPartnerKills)
+            switchInScores[monId] = 1;
         else if(aiMonSpecies == SPECIES_WOBBUFFET && !TESTING)
-            switchInScores[monId] = 4;
-        else if((maxDamageDealt >= gBattleMons[opposingBattler].hp) && aiMonFaster == TRUE && (!((gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP) && ((gBattleMons[opposingBattler].item == ITEM_FOCUS_SASH) || (gBattleMons[opposingBattler].ability == ABILITY_STURDY))) || (gBattleMons[opposingBattler].ability == ABILITY_DISGUISE)))
-            switchInScores[monId] = 7;
-        else if((maxDamageDealt >= gBattleMons[opposingBattler].hp) && aiMonFaster != TRUE && (!((gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP) && ((gBattleMons[opposingBattler].item == ITEM_FOCUS_SASH) || (gBattleMons[opposingBattler].ability == ABILITY_STURDY))) || (gBattleMons[opposingBattler].ability == ABILITY_DISGUISE)))
-            switchInScores[monId] = 6;
-        else if((percentageDealt >= percentageReceived) && aiMonFaster == TRUE)
-            switchInScores[monId] = 5;
-        else if((percentageDealt >= percentageReceived) && aiMonFaster != TRUE)
-            switchInScores[monId] = 4;
-        else if(aiMonFaster == TRUE)
-            switchInScores[monId] = 3;
+            switchInScores[monId] += 4;
+        else if(aiKills)
+            switchInScores[monId] += 6;
+        else if((percentageDealt >= percentageReceived))
+            switchInScores[monId] += 4;
         else 
-            switchInScores[monId] = 2;
-        
+            switchInScores[monId] += 2;
         
         
         /*if(switchInScores[monId]!=0)
         {
-            MgbaPrintf(MGBA_LOG_WARN, "mon looking %S", checkingPosition);
-            MgbaPrintf(MGBA_LOG_WARN, "mon looking at %S", lookingAt);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot mon %S", partyMonStored[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot score %d", switchInScores[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot best move %S", aiBestMove[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot deals %d", maxDamageDealtStored[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "percentage slot deals %d", percentageDealtStored[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "party slot takes %d", maxDamageDealtToAIStored[monId]);
-            MgbaPrintf(MGBA_LOG_WARN, "percentage slot takes %d", percentageReceivedStored[monId]);
+            DebugPrintf("mon looking %S", checkingPosition);
+            DebugPrintf("mon looking at %S", lookingAt);
+            DebugPrintf("party slot mon %S", partyMonStored[monId]);
+            DebugPrintf("party slot score %d", switchInScores[monId]);
+            DebugPrintf("party slot best move %S", aiBestMove[monId]);
+            DebugPrintf("party slot deals %d", maxDamageDealtStored[monId]);
+            DebugPrintf("percentage slot deals %d", percentageDealtStored[monId]);
+            DebugPrintf("party slot takes %d", maxDamageDealtToAIStored[monId]);
+            DebugPrintf("percentage slot takes %d", percentageReceivedStored[monId]);
         }*/
     }
 
@@ -3257,7 +3299,7 @@ static void CustomGetBestMonIntegrated(struct Pokemon *party, s32 lastId, enum B
     gAiLogicData->aiCalcInProgress = FALSE;
     FreeRestoreAiLogicData(savedAiLogicData);
     FreeRestoreBattleMons(savedBattleMons);
-    SetBattlerAiData(battler, gAiLogicData);
+    SetBattlerAiData(ctx->battler, gAiLogicData);
 }
 
 /*static bool32 PartnerShouldSwitchIfHasBadOdds(enum BattlerId battler)
@@ -3513,7 +3555,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         aiMove = gBattleMons[opposingBattler2].moves[i];
-        if (aiMove != MOVE_NONE)
+        if (aiMove != MOVE_NONE && GetMoveEffect(aiMove) != EFFECT_FUTURE_SIGHT)
         {
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
@@ -3542,7 +3584,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         aiMove = gBattleMons[opposingBattler1].moves[i];
-        if (aiMove != MOVE_NONE)
+        if (aiMove != MOVE_NONE && GetMoveEffect(aiMove) != EFFECT_FUTURE_SIGHT)
         {
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
@@ -3576,7 +3618,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         aiMove = gBattleMons[opposingBattler1].moves[i];
-        if (aiMove != MOVE_NONE)
+        if (aiMove != MOVE_NONE && GetMoveEffect(aiMove) != EFFECT_FUTURE_SIGHT)
         {
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
@@ -3605,7 +3647,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         aiMove = gBattleMons[opposingBattler2].moves[i];
-        if (aiMove != MOVE_NONE)
+        if (aiMove != MOVE_NONE && GetMoveEffect(aiMove) != EFFECT_FUTURE_SIGHT)
         {
             // Only check damage if it's a damaging move
             if (!IsBattleMoveStatus(aiMove))
@@ -3639,14 +3681,14 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
 
     u32 incomingType = GetMoveType(switchingMove);
 
-        /*MgbaPrintf(MGBA_LOG_WARN, "PartnerFindMonThatAbsorbsOpponentsMove", PartnerFindMonThatAbsorbsOpponentsMove);
-        MgbaPrintf(MGBA_LOG_WARN, "battler %d %S", battler, GetSpeciesName(gBattleMons[battler].species));
-        MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveTypes %d", oppositeBattlerMoveTypes);
-        MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveTypes %d", oppositeBattlerPartnerMoveTypes);
-        MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerMoveCount %d", oppositeBattlerMoveCount);
-        MgbaPrintf(MGBA_LOG_WARN, "oppositeBattlerPartnerMoveCount %d", oppositeBattlerPartnerMoveCount);
-        MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOpposite %S", GetMoveName(switchingMoveOpposite));
-        MgbaPrintf(MGBA_LOG_WARN, "switchingMoveOppositePartner %S", GetMoveName(switchingMoveOppositePartner));*/
+        /*DebugPrintf("PartnerFindMonThatAbsorbsOpponentsMove");
+        DebugPrintf("battler %d %S", battler, GetSpeciesName(gBattleMons[battler].species));
+        DebugPrintf("oppositeBattlerMoveTypes %d", oppositeBattlerMoveTypes);
+        DebugPrintf("oppositeBattlerPartnerMoveTypes %d", oppositeBattlerPartnerMoveTypes);
+        DebugPrintf("oppositeBattlerMoveCount %d", oppositeBattlerMoveCount);
+        DebugPrintf("oppositeBattlerPartnerMoveCount %d", oppositeBattlerPartnerMoveCount);
+        DebugPrintf("switchingMoveOpposite %S", GetMoveName(switchingMoveOpposite));
+        DebugPrintf("switchingMoveOppositePartner %S", GetMoveName(switchingMoveOppositePartner));*/
 
     if (!(oppositeBattlerMoveTypes == 1 || oppositeBattlerPartnerMoveTypes == 1) && !(onlySound || onlyBallistic || onlyWind))
         return FALSE;
@@ -3701,7 +3743,7 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
         }
     }
     
-    if (IsMoldBreakerTypeAbility(opposingBattler2, gAiLogicData->abilities[opposingBattler2]) || IsMoldBreakerTypeAbility(opposingBattler1, gAiLogicData->abilities[opposingBattler1]))
+    if (IsMoldBreakerTypeAbility(opposingBattler2, gAiLogicData->abilities[opposingBattler2], switchingMove) || IsMoldBreakerTypeAbility(opposingBattler1, gAiLogicData->abilities[opposingBattler1], switchingMove))
         return FALSE;
 
     // Create an array of possible absorb abilities so the AI considers all of them
@@ -3772,6 +3814,9 @@ static bool32 PartnerFindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
             continue;
         if (IsAceMon(battler, i))
             continue;
+
+        if (incomingType == TYPE_GROUND && gItemsInfo[GetMonData(&party[i], MON_DATA_HELD_ITEM, NULL)].holdEffect == HOLD_EFFECT_AIR_BALLOON)
+            return SetSwitchinAndSwitch(battler, i);
 
         monAbility = GetMonAbility(&party[i]);
 

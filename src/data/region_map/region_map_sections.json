@@ -1634,6 +1634,30 @@
       "y": 4,
       "width": 1,
       "height": 1
+    },
+    {
+      "id": "MAPSEC_SHOAL_CAVERN",
+      "name": "SHOAL CAVERN"
+    },
+    {
+      "id": "MAPSEC_SHOAL_CAVITY_UNDERWATER",
+      "name": "SHOAL CAVITY"
+    },
+    {
+      "id": "MAPSEC_SHOAL_CAVERN_UNDERWATER",
+      "name": "SHOAL CAVERN"
+    },
+    {
+      "id": "MAPSEC_SHOAL_HOLLOW_UNDERWATER",
+      "name": "SHOAL HOLLOW"
+    },
+    {
+      "id": "MAPSEC_SHOAL_CAVITY",
+      "name": "SHOAL CAVITY"
+    },
+    {
+      "id": "MAPSEC_SHOAL_HOLLOW",
+      "name": "SHOAL HOLLOW"
     }
   ]
 }

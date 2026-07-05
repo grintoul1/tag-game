@@ -988,7 +988,7 @@ enum __attribute__((packed)) SongId
 
 #define END_SE              SE_M_HYPER_BEAM_GEN1
 #define START_MUS           MUS_LITTLEROOT_TEST
-#define END_MUS             MUS_HG_UNION_CAVE
+#define END_MUS             MUS_HG_RIVAL_EXIT
 #define START_EMERALD_MUS   MUS_LITTLEROOT_TEST
 #define END_EMERALD_MUS     MUS_VS_ELITE_FOUR
 #define START_RG_MUS        MUS_RG_FOLLOW_ME

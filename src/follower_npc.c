@@ -685,6 +685,7 @@ void Task_FollowerNPCOutOfDoor(u8 taskId)
         }
         break;
     case REALLOW_MOVEMENT:
+    {
         struct MapPosition position;
         enum Direction playerDirection;
 
@@ -701,6 +702,7 @@ void Task_FollowerNPCOutOfDoor(u8 taskId)
         }
         DestroyTask(taskId);
         break;
+    }
     }
 }
 
@@ -1173,9 +1175,9 @@ static void ChooseFirstThreeEligibleMons(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        if (GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_HP) != 0
-         && GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_IS_EGG) == FALSE
-         && GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES) != SPECIES_NONE)
+        if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP) != 0
+         && GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_IS_EGG) == FALSE
+         && GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES) != SPECIES_NONE)
         {
             gSelectedOrderFromParty[count] = (i + 1);
             count++;
@@ -1517,12 +1519,6 @@ void FollowerNPC_FollowerToWater(void)
     SetFollowerNPCData(FNPC_DATA_SURF_BLOB, FNPC_SURF_BLOB_NEW);
 }
 
-void FollowerNPC_SetIndicatorToRecreateSurfBlob(void)
-{
-    if (PlayerHasFollowerNPC())
-        SetFollowerNPCData(FNPC_DATA_SURF_BLOB, FNPC_SURF_BLOB_RECREATE);
-}
-
 void FollowerNPC_BindToSurfBlobOnReloadScreen(void)
 {
     struct ObjectEvent *follower;
@@ -1672,11 +1668,6 @@ bool32 FollowerNPCIsBattlePartner(void)
         return TRUE;
 
     return FALSE;
-}
-
-u32 GetFollowerNPCBattlePartner(void)
-{
-    return GetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER);
 }
 
 bool32 IsNPCFollowerWildBattle(void)

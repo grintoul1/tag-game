@@ -138,7 +138,7 @@ SINGLE_BATTLE_TEST("Chesto Berry cures sleep when Yawn takes effect")
 
 SINGLE_BATTLE_TEST("Chesto and Lum Berries don't trigger if the holder has Comatose")
 {
-    u16 item;
+    enum Item item;
 
     PARAMETRIZE { item = ITEM_CHESTO_BERRY; }
     PARAMETRIZE { item = ITEM_LUM_BERRY; }
@@ -247,7 +247,7 @@ SINGLE_BATTLE_TEST("Opponent Pokemon can be further poisoned with Toxic spikes a
     } SCENE {
         MESSAGE("Wobbuffet used Toxic Spikes!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC_SPIKES, player);
-        MESSAGE("Poison spikes were scattered on the ground all around the opposing team!");
+        MESSAGE("Toxic spikes were scattered on the ground all around the opposing side!");
         // 1st switch-in
         MESSAGE("2 sent out Wynaut!");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, opponent);
@@ -288,7 +288,7 @@ SINGLE_BATTLE_TEST("Player Pokemon can be further poisoned with Toxic spikes aft
     } SCENE {
         MESSAGE("The opposing Wobbuffet used Toxic Spikes!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC_SPIKES, opponent);
-        MESSAGE("Poison spikes were scattered on the ground all around your team!");
+        MESSAGE("Toxic spikes were scattered on the ground all around your side!");
         // 1st switch-in
         SEND_IN_MESSAGE("Wobbuffet");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, player);

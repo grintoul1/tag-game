@@ -839,7 +839,7 @@ IVs: 30 Def / 30SpD / 30 Spe
 === PARTNER_BROCK_MOSSDEEP ===
 Name: Brock
 Class: Kantonian
-Pic: Steven
+Pic: Leader Brock Frlg
 Gender: Male
 Music: Male
 AI: Partner Trainer
@@ -958,28 +958,32 @@ Gender: Male
 Music: Male
 AI: Partner Trainer
 
+Tapu Koko @ Fairy Gem
+Ability: Electric Surge
+Level: 70
+Naive Nature
+- Play Rough
+- Iron Head
+- U-Turn
+- Electroweb
+
+Farigiraf @ Air Balloon
+Ability: Armor Tail
+Level: 70
+Modest Nature
+- Hyper Voice
+- Assurance
+- Twin Beam
+- Calm Mind
+
 Alakazam @ Alakazite
-Ability: Synchronize
-Level: 81
+Ability: Inner Focus
+Level: 70
 Naive Nature
 - Hyper Beam
 - Psychic
 - Tachyon Cutter
-
-Mr. Rime
-- Psychic
-- Hyper Voice
-- Tachyon Cutter
-- Tachyon Cutter
-
-Farigiraf @ Throat Spray
-Ability: Armor Tail
-Level: 81
-Calm Nature
-- Expanding Force
-- Hyper Voice
-- Energy Ball
-- Psychic Terrain
+- Telekinesis
 
 === PARTNER_TATE_MOSSDEEP ===
 Name: Tate
@@ -991,32 +995,32 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Gallade @ Galladite
-Ability: Sharpness
-Level: 81
-Jolly Nature
-- Sacred Sword
-- Psycho Cut
-- Leaf Blade
-- Night Slash
-
-Braviary-Hisui @ Life Orb
-Ability: Sheer Force
-Level: 81
-Timid Nature
-- Air Slash
-- Esper Wing
-- Heat Wave
-- Hyper Voice
-
-Meloetta @ Bug Gem
-Ability: Serene Grace
-Level: 80
-Jolly Nature
-- Relic Song
-- Zen Headbutt
+Iron Boulder @ Ground Gem
+Ability: Quark Drive
+Level: 70
+Hasty Nature
+- Megahorn
 - Close Combat
-- U-turn
+- High Horsepower
+- Mighty Cleave
+
+Aegislash @ Kasib Berry
+Ability: Stance Change
+Level: 70
+IVs: 0 Spe
+- Iron Head
+- Shadow Claw
+- Pursuit
+- King's Shield
+
+Gallade @ Galladite
+Ability: Steadfast
+Level: 70
+Naive Nature
+- Sacred Sword
+- Psyblade
+- Night Slash
+- Bulk Up
 
 === PARTNER_LIZA_MOSSDEEP ===
 Name: Liza /* [Multi]*/
@@ -1028,29 +1032,44 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
+Munkidori @ Psychic Gem
+Ability: Prankster
+Level: 70
+Hasty Nature
+- Future Sight
+- Fake Out
+- Helping Hand
+- Follow Me
+
+Grimmsnarl @ Lagging Tail
+Ability: Prankster
+Level: 70
+Jolly Nature
+- Foul Play
+- Spirit Break
+- Trick
+- Fake Tears
+
 Gardevoir @ Gardevoirite
 Ability: Synchronize
-Level: 81
+Level: 70
 Naive Nature
-- Psychic
-- Moonblast
+- Hyper Voice
 - Shadow Ball
+- Mystical Fire
 - Ally Switch
 
-Munkidori @ Focus Sash
-Ability: Toxic Chain
-Level: 81
-Timid Nature
-- Fake Out
-- Future Sight
-- Helping Hand
-- Parting Shot
+=== PARTNER_BIRCH ===
+Name: Birch
+Class: Rival
+Pic: Steven
+Gender: Male
+Music: Male
+AI: Partner Trainer
 
-Farigiraf @ Throat Spray
-Ability: Armor Tail
-Level: 81
-Calm Nature
-- Expanding Force
-- Hyper Voice
-- Energy Ball
-- Psychic Terrain
+Surskit @ Miracle Seed
+Ability: Technician
+Level: 8
+IVs: 0 HP / 0 SpD
+Naive Nature
+- Mega Drain

@@ -914,6 +914,7 @@ enum __attribute__((packed)) Move
     MOVE_FROST_FANG = 852,
     MOVE_FROST_PUNCH = 853,
     MOVE_LOW_HORSEPOWER = 854,
+    MOVE_STEELSURGE = 855,
 
     MOVES_COUNT,
 

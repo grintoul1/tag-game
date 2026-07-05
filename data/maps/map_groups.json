@@ -475,7 +475,13 @@
     "TerraCave_Entrance",
     "TerraCave_End",
     "AlteringCave",
-    "MeteorFalls_StevensCave"
+    "MeteorFalls_StevensCave",
+    "ShoalCavern",
+    "ShoalCavern_Underwater",
+    "ShoalCavity_Underwater",
+    "ShoalHollow_Underwater",
+    "ShoalCavity",
+    "ShoalHollow"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

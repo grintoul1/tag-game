@@ -99,5 +99,6 @@
       "script": "Route130_EventScript_KatieSantiago"
     }
   ],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

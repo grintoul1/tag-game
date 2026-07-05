@@ -9,5 +9,6 @@ void GetEreaderTrainerName(u8 *dst);
 void ValidateEReaderTrainer(void);
 void ClearEReaderTrainer(struct BattleTowerEReaderTrainer *ereaderTrainer);
 void CopyEReaderTrainerGreeting(void);
+void Task_TwoPlayerPreBattleExchange(u8 taskId);
 
 #endif // GUARD_BATTLE_SPECIAL_H
