@@ -67,7 +67,7 @@ SINGLE_BATTLE_TEST("Freeze is thawed by opponent's attack that can burn (Gen 1-2
 
 SINGLE_BATTLE_TEST("Freeze is thawed by opponent's Tri Attack 1/3 of the time (Gen 1-2)")
 {
-    PASSES_RANDOMLY(1, 4, RNG_RANDOM_FROM_LIST);
+    PASSES_RANDOMLY(1, 3, RNG_RANDOM_FROM_LIST);
     GIVEN {
         WITH_CONFIG(B_HIT_THAW, GEN_2);
         ASSUME(MoveHasAdditionalEffect(MOVE_TRI_ATTACK, MOVE_EFFECT_RANDOM_FROM_LIST));

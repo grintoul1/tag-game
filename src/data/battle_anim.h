@@ -1250,6 +1250,8 @@ const struct BattleAnimation gBattleAnimTable[ANIM_TAG_COUNT] =
     BATTLE_ANIMATION(ANIM_TAG_LETTER_Z, gBattleAnimSpriteGfx_LetterZ, 0x0200, gBattleAnimSpritePal_LetterZ),
     BATTLE_ANIMATION(ANIM_TAG_RAPID_SPIN, gBattleAnimSpriteGfx_RapidSpin, 0x0300, gBattleAnimSpritePal_RapidSpin),
     BATTLE_ANIMATION(ANIM_TAG_TRI_ATTACK_TRIANGLE, gBattleAnimSpriteGfx_TriAttackTriangle, 0x0800, gBattleAnimSpritePal_TriAttackTriangle),
+    BATTLE_ANIMATION(ANIM_TAG_TRI_ATTACK_2_TRIANGLE, gBattleAnimSpriteGfx_TriAttack2Triangle, 0x0800, gBattleAnimSpritePal_TriAttack2Triangle),
+    BATTLE_ANIMATION(ANIM_TAG_TRUCK_ATTACK_TRIANGLE, gBattleAnimSpriteGfx_TruckAttackTriangle, 0x0800, gBattleAnimSpritePal_TruckAttackTriangle),
     BATTLE_ANIMATION(ANIM_TAG_WISP_ORB, gBattleAnimSpriteGfx_WispOrb, 0x0380, gBattleAnimSpritePal_WispOrb),
     BATTLE_ANIMATION(ANIM_TAG_WISP_FIRE, gBattleAnimSpriteGfx_WispFire, 0x0800, gBattleAnimSpritePal_WispOrb),
     BATTLE_ANIMATION(ANIM_TAG_GOLD_STARS, gBattleAnimSpriteGfx_GoldStars, 0x00c0, gBattleAnimSpritePal_GoldStars),

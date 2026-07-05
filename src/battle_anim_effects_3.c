@@ -442,6 +442,26 @@ const struct SpriteTemplate gTriAttackTriangleSpriteTemplate =
     .callback = AnimTriAttackTriangle,
 };
 
+const struct SpriteTemplate gTriAttack2TriangleSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_TRI_ATTACK_2_TRIANGLE,
+    .paletteTag = ANIM_TAG_TRI_ATTACK_2_TRIANGLE,
+    .oam = &gOamData_AffineDouble_ObjNormal_64x64,
+    .anims = gTriAttackTriangleAnimTable,
+    .affineAnims = gTriAttackTriangleAffineAnimTable,
+    .callback = AnimTriAttackTriangle,
+};
+
+const struct SpriteTemplate gTruckAttackTriangleSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_TRUCK_ATTACK_TRIANGLE,
+    .paletteTag = ANIM_TAG_TRUCK_ATTACK_TRIANGLE,
+    .oam = &gOamData_AffineDouble_ObjNormal_64x64,
+    .anims = gTriAttackTriangleAnimTable,
+    .affineAnims = gTriAttackTriangleAffineAnimTable,
+    .callback = AnimTriAttackTriangle,
+};
+
 const union AnimCmd gEclipsingOrbAnimCmds[] =
 {
     ANIMCMD_FRAME(0, 3),

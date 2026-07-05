@@ -1135,6 +1135,12 @@ const u32 gBattleAnimSpriteGfx_ItemBag[] = INCGFX_U32("graphics/battle_anims/spr
 const u16 gBattleAnimSpritePal_TriAttackTriangle[] = INCGFX_U16("graphics/battle_anims/sprites/tri_attack_triangle.png", ".gbapal");
 const u32 gBattleAnimSpriteGfx_TriAttackTriangle[] = INCGFX_U32("graphics/battle_anims/sprites/tri_attack_triangle.png", ".4bpp.smol");
 
+const u16 gBattleAnimSpritePal_TriAttack2Triangle[] = INCGFX_U16("graphics/battle_anims/sprites/tri_attack_2_triangle.png", ".gbapal");
+const u32 gBattleAnimSpriteGfx_TriAttack2Triangle[] = INCGFX_U32("graphics/battle_anims/sprites/tri_attack_2_triangle.png", ".4bpp.smol");
+
+const u16 gBattleAnimSpritePal_TruckAttackTriangle[] = INCGFX_U16("graphics/battle_anims/sprites/truck_attack_triangle.png", ".gbapal");
+const u32 gBattleAnimSpriteGfx_TruckAttackTriangle[] = INCGFX_U32("graphics/battle_anims/sprites/truck_attack_triangle.png", ".4bpp.smol");
+
 const u16 gBattleAnimSpritePal_LetterZ[] = INCGFX_U16("graphics/battle_anims/sprites/letter_z.png", ".gbapal");
 const u32 gBattleAnimSpriteGfx_LetterZ[] = INCGFX_U32("graphics/battle_anims/sprites/letter_z.png", ".4bpp.smol");
 

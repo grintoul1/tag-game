@@ -4386,14 +4386,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Fires three types of beams.\n"
         #if B_USE_FROSTBITE == TRUE
-            "May burn/para/frz/frb."),
+            "May burn/para/frz."),
         #else
-            "May burn/para/frz/frb."),
+            "May burn/para/frz."),
         #endif
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_RANDOM_FROM_LIST,
-            .chance = 40,
-            .randomMoveEffects = { MOVE_EFFECT_BURN, MOVE_EFFECT_PARALYSIS, MOVE_EFFECT_FREEZE, MOVE_EFFECT_FROSTBITE },
+            .chance = 30,
+            .randomMoveEffects = { MOVE_EFFECT_BURN, MOVE_EFFECT_PARALYSIS, MOVE_EFFECT_FREEZE },
         }),
         .effect = EFFECT_HIT,
         .power = 80,
@@ -23931,5 +23931,67 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .contestComboMoves = {COMBO_STARTER_STEALTH_ROCK},
         .battleAnimScript = gBattleAnimMove_StealthRock,
+    },
+
+    [MOVE_TRI_ATTACK_2] =
+    {
+        .name = COMPOUND_STRING("Tri Attack 2"),
+        .description = COMPOUND_STRING(
+            "Fires three types of beams.\n"
+        #if B_USE_FROSTBITE == TRUE
+            "May frb/slp/psn."),
+        #else
+            "May frb/slp/psn."),
+        #endif
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_RANDOM_FROM_LIST,
+            .chance = 30,
+            .randomMoveEffects = { MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_SLEEP, MOVE_EFFECT_POISON },
+        }),
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_NORMAL,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_QUALITY_DEPENDS_ON_TIMING : CONTEST_EFFECT_STARTLE_PREV_MONS,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_LOCK_ON},
+        .battleAnimScript = gBattleAnimMove_TriAttack2,
+        .validApprenticeMove = TRUE,
+    },
+
+    [MOVE_TRUCK_ATTACK] =
+    {
+        .name = COMPOUND_STRING("Truck Attack"),
+        .description = COMPOUND_STRING(
+            "Fires many types of beams.\n"
+        #if B_USE_FROSTBITE == TRUE
+            "May status. Good luck."),
+        #else
+            "May status. Good luck."),
+        #endif
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_RANDOM_FROM_LIST,
+            .chance = 30,
+            .randomMoveEffects = { MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_SLEEP, MOVE_EFFECT_POISON, MOVE_EFFECT_BURN, MOVE_EFFECT_PARALYSIS, MOVE_EFFECT_FREEZE },
+        }),
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_NORMAL,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_QUALITY_DEPENDS_ON_TIMING : CONTEST_EFFECT_STARTLE_PREV_MONS,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_LOCK_ON},
+        .battleAnimScript = gBattleAnimMove_TruckAttack,
+        .validApprenticeMove = TRUE,
     },
 };

@@ -165,6 +165,8 @@ extern const u8 gBattleAnimMove_HyperFang[];
 extern const u8 gBattleAnimMove_Sharpen[];
 extern const u8 gBattleAnimMove_Conversion[];
 extern const u8 gBattleAnimMove_TriAttack[];
+extern const u8 gBattleAnimMove_TriAttack2[];
+extern const u8 gBattleAnimMove_TruckAttack[];
 extern const u8 gBattleAnimMove_SuperFang[];
 extern const u8 gBattleAnimMove_Slash[];
 extern const u8 gBattleAnimMove_Substitute[];

@@ -16,9 +16,8 @@ SINGLE_BATTLE_TEST("Tri Attack can inflict paralysis, burn or freeze")
     u8 statusAnim;
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_PRZ; }
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_BRN; }
-    PARAMETRIZE { statusAnim = B_ANIM_STATUS_FRB; }
     PARAMETRIZE { statusAnim = B_ANIM_STATUS_FRZ; }
-    PASSES_RANDOMLY(1, 4, RNG_RANDOM_FROM_LIST);
+    PASSES_RANDOMLY(1, 3, RNG_RANDOM_FROM_LIST);
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
@@ -33,8 +32,6 @@ SINGLE_BATTLE_TEST("Tri Attack can inflict paralysis, burn or freeze")
             STATUS_ICON(opponent, burn: TRUE);
         } else if (statusAnim == B_ANIM_STATUS_FRZ) {
             STATUS_ICON(opponent, freeze: TRUE);
-        } else if (statusAnim == B_ANIM_STATUS_FRB) {
-            STATUS_ICON(opponent, frostbite: TRUE);
         } else if (statusAnim == B_ANIM_STATUS_PRZ) {
             STATUS_ICON(opponent, paralysis: TRUE);
         }
