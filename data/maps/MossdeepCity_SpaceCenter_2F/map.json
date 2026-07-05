@@ -3,7 +3,6 @@
   "name": "MossdeepCity_SpaceCenter_2F",
   "layout": "LAYOUT_MOSSDEEP_CITY_SPACE_CENTER_2F",
   "music": "MUS_RUSTBORO",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_MOSSDEEP_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -217,6 +216,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MossdeepCity_SpaceCenter_2F_EventScript_Archie",
       "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_TEAM_AQUA"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_KOGA",
+      "x": 10,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_KOGA"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_JANINE",
+      "x": 13,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_KOGA"
     }
   ],
   "warp_events": [
@@ -229,5 +254,6 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }
