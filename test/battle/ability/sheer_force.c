@@ -620,6 +620,8 @@ static inline bool32 IsMoveSheerForceBoosted(enum Move move)
         case MOVE_THUNDEROUS_KICK:
         case MOVE_TORCH_SONG:
         case MOVE_TRI_ATTACK:
+        case MOVE_TRI_ATTACK_2:
+        case MOVE_TRUCK_ATTACK:
         case MOVE_TRIPLE_ARROWS:
         case MOVE_TROP_KICK:
         case MOVE_TWINEEDLE:
