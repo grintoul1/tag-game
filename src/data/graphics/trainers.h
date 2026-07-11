@@ -503,6 +503,10 @@ const u8 gTrainerBackPic_LeaderTate[] = INCGFX_U8("graphics/trainers/back_pics/l
 const u8 gTrainerBackPic_LeaderLiza[] = INCGFX_U8("graphics/trainers/back_pics/leader_liza.png", ".4bpp");
 const u8 gTrainerBackPic_Sabrina[] = INCGFX_U8("graphics/trainers/back_pics/sabrina.png", ".4bpp");
 const u8 gTrainerBackPic_Brock[] = INCGFX_U8("graphics/trainers/back_pics/brock.png", ".4bpp");
+const u8 gTrainerBackPic_Birch[] = INCGFX_U8("graphics/trainers/back_pics/birch.png", ".4bpp");
+
+const u32 gTrainerFrontPic_Birch[] = INCGFX_U32("graphics/trainers/front_pics/birch.png", ".4bpp.smol");
+const u16 gTrainerPalette_Birch[] = INCGFX_U16("graphics/trainers/front_pics/birch.png", ".gbapal");
 
 const u16 gTrainerBackPicPalette_Red[] = INCGFX_U16("graphics/trainers/back_pics/red.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCGFX_U16("graphics/trainers/back_pics/leaf.png", ".gbapal");
@@ -515,6 +519,7 @@ const u16 gTrainerBackPicPalette_AquaAdminF[] = INCGFX_U16("graphics/trainers/ba
 const u16 gTrainerBackPicPalette_LeaderTateAndLiza[] = INCGFX_U16("graphics/trainers/back_pics/leader_tate_and_liza.pal", ".gbapal");
 const u16 gTrainerBackPicPalette_Sabrina[] = INCGFX_U16("graphics/trainers/back_pics/sabrina.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Brock[] = INCGFX_U16("graphics/trainers/back_pics/brock.png", ".gbapal");
+const u16 gTrainerBackPicPalette_Birch[] = INCGFX_U16("graphics/trainers/back_pics/birch.png", ".gbapal");
 
 const u8 gTrainerBackPic_Pokedude[] = INCGFX_U8("graphics/trainers/back_pics/pokedude.png", ".4bpp");
 const u8 gTrainerBackPic_OldMan[] = INCGFX_U8("graphics/trainers/back_pics/old_man.png", ".4bpp");
@@ -1289,5 +1294,10 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LeaderLiza, gTrainerPalette_LeaderLiza),
         .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_LeaderLiza, gTrainerBackPicPalette_LeaderTateAndLiza, sBackAnims_Hoenn),
+    },
+    [TRAINER_PIC_BIRCH] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Birch, gTrainerPalette_Birch),
+        .backPic = TRAINER_BACK_PIC(5, gTrainerBackPic_Birch, gTrainerBackPicPalette_Birch, sBackAnims_Kanto),
     },
 };
