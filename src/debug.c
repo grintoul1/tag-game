@@ -2557,6 +2557,7 @@ static void DebugAction_Trainers_TryBattle(u8 taskId)
             gSelectedOrderFromParty[i] = i + 1;
             gSaveBlock2Ptr->frontier.selectedPartyMons[i] = gSelectedOrderFromParty[i];
         }
+        DebugPrintf("Check3");
         FillPartnerParty(gPartnerTrainerId);
     }
 

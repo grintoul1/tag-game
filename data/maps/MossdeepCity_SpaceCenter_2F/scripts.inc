@@ -19,8 +19,8 @@ MossdeepCity_SpaceCenter_2F_EventScript_ProgressEmmieState::
 
 MossdeepCity_SpaceCenter_2F_OnTransition:
 	call_if_eq VAR_MOSSDEEP_CITY_STATE, 2, MossdeepCity_SpaceCenter_2F_EventScript_MoveCivilians
-	call_if_between VAR_MOSSDEEP_SPACE_CENTER_STATE, 4, 5, MossdeepCity_SpaceCenter_2F_EventScript_SetEvilTeamObjects
-	call_if_eq VAR_MOSSDEEP_SPACE_CENTER_STATE, 5, MossdeepCity_SpaceCenter_2F_EventScript_MoveDefeatedGrunts
+	call_if_eq VAR_MOSSDEEP_SPACE_CENTER_STATE, 4, MossdeepCity_SpaceCenter_2F_EventScript_SetEvilTeamObjects
+	call_if_eq VAR_MOSSDEEP_SPACE_CENTER_STATE, 6, MossdeepCity_SpaceCenter_2F_EventScript_MoveDefeatedGrunts
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_SetEvilTeamObjects::
@@ -65,7 +65,13 @@ MossdeepCity_SpaceCenter_2F_EventScript_MoveDefeatedAquaGrunts::
 MossdeepCity_SpaceCenter_2F_OnFrame:
 	map_script_2 VAR_PARTNER_EMMIE_STATE, 55, MossdeepCity_SpaceCenter_2F_EventScript_ProgressEmmieState
 	map_script_2 VAR_MOSSDEEP_SPACE_CENTER_STATE, 4, MossdeepCity_SpaceCenter_2F_EventScript_ThreeGrunts
+	map_script_2 VAR_MOSSDEEP_SPACE_CENTER_STATE, 5, MossdeepCity_SpaceCenter_2F_EventScript_AdminBattle
 	.2byte 0
+
+MossdeepCity_SpaceCenter_2F_EventScript_AdminBattle::
+	@call_if_set FLAG_EVIL_TEAM_AQUA, MossdeepCity_SpaceCenter_2F_EventScript_MoveDefeatedAquaGrunts
+	goto_if_set FLAG_EVIL_TEAM_MAGMA, MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6Victory
+	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_ThreeGrunts::
 	@showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_MOSSDEEP_CITY_SPACE_CENTER_2F
@@ -74,6 +80,14 @@ MossdeepCity_SpaceCenter_2F_EventScript_ThreeGrunts::
 	@waitmovement 0
 	@applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
 	@waitmovement 0
+	setobjectxyperm LOCALID_AQUA_GRUNT5, 11, 1
+	setobjectxyperm LOCALID_AQUA_GRUNT6, 11, 1
+	setobjectxyperm LOCALID_GRUNT5, 11, 1
+	setobjectxyperm LOCALID_GRUNT6, 11, 1
+	setobjectmovementtype LOCALID_AQUA_GRUNT5, MOVEMENT_TYPE_FACE_DOWN
+	setobjectmovementtype LOCALID_AQUA_GRUNT6, MOVEMENT_TYPE_FACE_DOWN
+	setobjectmovementtype LOCALID_GRUNT5, MOVEMENT_TYPE_FACE_DOWN
+	setobjectmovementtype LOCALID_GRUNT6, MOVEMENT_TYPE_FACE_DOWN
 	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_SpaceCenter_2F_Movement_PlayerApproachAdmin
 	waitmovement
 	playse SE_PIN
@@ -139,21 +153,8 @@ MossdeepCity_SpaceCenter_2F_EventScript_ThreeMagmaGrunts::
 	msgbox MossdeepCity_SpaceCenter_2F_Text_TabithaPinserAttack, MSGBOX_AUTOCLOSE
 	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_FaceUp
 	waitmovement
-	goto MossdeepCity_SpaceCenter_2F_EventScript_BattleThreeMagmaGrunts
-	releaseall
-	end
-
-	msgbox MossdeepCity_SpaceCenter_2F_Text_YoureOutnumberedTakeUsOn, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, MossdeepCity_SpaceCenter_2F_EventScript_BattleThreeMagmaGrunts
-	msgbox MossdeepCity_SpaceCenter_2F_Text_GoodAnswer, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_SpaceCenter_2F_Movement_PlayerExit
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MossdeepCity_SpaceCenter_2F_Movement_EmmieExit
-	waitmovement 0
-	warp MAP_MOSSDEEP_CITY_SPACE_CENTER_1F, 13, 1
-	waitstate
-	releaseall
-	end
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAGMA_GRUNTS
+	goto MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6DoMultiBattle
 
 MossdeepCity_SpaceCenter_2F_Movement_PlayerWatchGrunt5:
 	delay_16
@@ -270,37 +271,169 @@ MossdeepCity_SpaceCenter_2F_EventScript_BattleThreeMagmaGrunts::
 	goto MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6DoMultiBattle
 
 MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6DoMultiBattle::
-	playbgm MUS_ENCOUNTER_MAGMA, TRUE
-	multi_2p_vs_2 TRAINER_MAGMA_GRUNT_SPACE_CENTER_5, MossdeepCity_SpaceCenter_2F_Text_Grunt5Defeat, TRAINER_MAGMA_GRUNT_SPACE_CENTER_6, MossdeepCity_SpaceCenter_2F_Text_Grunt6Defeat, PARTNER_BLUE_B2B
+	playbgm MUS_MIROR_B, TRUE
+	addvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 1 @ 5
+	multi_2_vs_2 TRAINER_MAGMA_GRUNT_SPACE_CENTER_5, MossdeepCity_SpaceCenter_2F_Text_Grunt5Defeat, TRAINER_MAGMA_GRUNT_SPACE_CENTER_6, MossdeepCity_SpaceCenter_2F_Text_Grunt6Defeat, PARTNER_BLUE_B2B
 	switch VAR_RESULT
 	case 1, MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6Victory
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAGMA_GRUNTS
+	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 4
 	fadescreen FADE_TO_BLACK
 	special SetCB2WhiteOut
 	waitstate
 
 MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6Victory::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	msgbox MossdeepCity_SpaceCenter_2F_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
-	applymovement LOCALID_GRUNT5, MossdeepCity_SpaceCenter_2F_Movement_Grunt5Defeated
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	msgbox MossdeepCity_SpaceCenter_2F_Text_Grunt6PostBattle, MSGBOX_AUTOCLOSE
-	applymovement LOCALID_GRUNT6, MossdeepCity_SpaceCenter_2F_Movement_Grunt6Defeated
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	msgbox MossdeepCity_SpaceCenter_2F_Text_TabithaIntro MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, Common_Movement_FaceRight
+	playbgm MUS_MIROR_B, TRUE
+	switch VAR_RESULT
+	case 1, MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6VictoryContinue
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAGMA_GRUNTS
+	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 4
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6VictoryContinue::
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, MossdeepCity_SpaceCenter_2F_Movement_TabithaSpin
+	waitmovement
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_2F_Text_TabithaOutnumbered, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, MossdeepCity_SpaceCenter_2F_Movement_TabithaSpin2
+	waitmovement
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_2F_Text_BlueYouThinkSo, MSGBOX_AUTOCLOSE
+	playse SE_PIN
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_FaceUp
+	waitmovement
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_QuestionMark
+	waitmovement
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_WalkInPlaceFasterUp
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_2F_Text_TabithaHmmm, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_2F_Text_BlueNow, MSGBOX_AUTOCLOSE
+	playse SE_M_DETECT
+	dofieldeffectsparkle 10, 4, 0
+	dofieldeffectsparkle 13, 4, 0
+	waitfieldeffect FLDEFF_SPARKLE
+	playse SE_NOT_EFFECTIVE
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_KnockedBackDown
+	applymovement LOCALID_GRUNT5, Common_Movement_KnockedBackLeft2
+	applymovement LOCALID_GRUNT6, Common_Movement_KnockedBackRight2
+	delay 4
+	addobject LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_KOGA
+	addobject LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_JANINE
+	waitmovementall
+	playse SE_PIN
+	delay 16
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_ExclamationMark
+	applymovement LOCALID_GRUNT5, Common_Movement_ExclamationMark
+	applymovement LOCALID_GRUNT6, Common_Movement_ExclamationMark
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_JANINE, Common_Movement_WalkSlowRight
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_KOGA, Common_Movement_WalkSlowLeft
+	waitmovementall
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_2F_Text_BlueYouDontKnow, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, Common_Movement_WalkSlowDown
+	waitmovement
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, Common_Movement_WalkInPlaceFasterUp
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_2F_Text_BlueWithMe, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkSlowDown
+	waitmovement
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	playse SE_NOT_EFFECTIVE
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_KnockedBackDown
+	waitmovement
+	delay 16
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_2F_Text_BlueCrucialDetail, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkSlowDown
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, Common_Movement_WalkSlowDown
+	waitmovement
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_2F_Text_BlueMostPowerfulTrainer, MSGBOX_AUTOCLOSE
+	playse SE_PIN
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_ExclamationMark
+	waitmovement
+	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_SpaceCenter_2F_Movement_PlayerApproachAdmin2
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, MossdeepCity_SpaceCenter_2F_Movement_TabithaPanic
+	waitmovementall
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_2F_Text_TabithaHoldOn, MSGBOX_AUTOCLOSE
+	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 6
 	goto MossdeepCity_SpaceCenter_2F_EventScript_TabithaDoMultiBattle
 	releaseall
 	end
 
+
+MossdeepCity_SpaceCenter_2F_Text_TabithaHoldOn:
+	.string "Tabitha: Wait, wait, wait…\n"
+	.string "Hold on just a moment--$"
+
+MossdeepCity_SpaceCenter_2F_Movement_PlayerApproachAdmin2:
+	walk_slow_down
+	face_right
+	step_end
+
+MossdeepCity_SpaceCenter_2F_Movement_TabithaPanic:
+	walk_in_place_faster_left
+	delay_4
+	walk_in_place_faster_up
+	delay_4
+	walk_in_place_faster_left
+	delay_4
+	walk_in_place_faster_up
+	delay_4
+	step_end
+
+MossdeepCity_SpaceCenter_2F_Text_BlueCrucialDetail:
+	.string "You see, there's one crucial detail\n"
+	.string "that you seem to be missing.$"
+
+MossdeepCity_SpaceCenter_2F_Text_BlueMostPowerfulTrainer:
+	.string "I used to be the most powerful trainer\n"
+	.string "in the world!$"
+
+MossdeepCity_SpaceCenter_2F_Text_BlueWithMe:
+	.string "{PLAYER}, with me, now.$"
+
+
+MossdeepCity_SpaceCenter_2F_Text_BlueYouDontKnow:
+	.string "Blue: The thing is, you clearly don't\n"
+	.string "know what you are up against, do you?$"
+
+MossdeepCity_SpaceCenter_2F_Text_BlueNow:
+	.string "Blue: Now!$"
+
+MossdeepCity_SpaceCenter_2F_Text_TabithaHmmm:
+	.string "Tabitha: Hmmm?\p"
+	.string "What do you--$"
+
+MossdeepCity_SpaceCenter_2F_Text_BlueYouThinkSo:
+	.string "Blue: Oh, do you really think so?$"
+
+MossdeepCity_SpaceCenter_2F_Text_TabithaOutnumbered:
+	.string "Tabitha: Hehehehe!\p"
+	.string "You're outnumbered!$"
+
 MossdeepCity_SpaceCenter_2F_EventScript_TabithaDoMultiBattle::
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
-	multi_2p_vs_1 TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_TabithaDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_TabithaDefeat, PARTNER_BLUE_B2B
 	switch VAR_RESULT
 	case 1, MossdeepCity_SpaceCenter_2F_EventScript_TabithaVictory
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAGMA_GRUNTS
+	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 4
 	fadescreen FADE_TO_BLACK
 	special SetCB2WhiteOut
 	waitstate
@@ -309,14 +442,64 @@ MossdeepCity_SpaceCenter_2F_EventScript_TabithaVictory::
 	delay 8
 	playse SE_NOT_EFFECTIVE
 	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, MossdeepCity_SpaceCenter_2F_Movement_Grunt7Defeated
-	waitmovement 0
+	waitmovement
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement
 	msgbox MossdeepCity_SpaceCenter_2F_Text_TabithaPostBattle, MSGBOX_AUTOCLOSE
-	addvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 1 @ 5
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, MossdeepCity_SpaceCenter_2F_Movement_AllyApproachPlayerPostAdmin
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_2F_Text_BlueIllHoldHim, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, MossdeepCity_SpaceCenter_2F_Movement_AllyHoldsAdmin
+	waitmovement
+	setobjectxyperm OBJ_EVENT_ID_NPC_FOLLOWER, 11, 1
+	delay 48
+	playse SE_DOOR
+	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_MOSSDEEP_CITY_SPACE_CENTER_2F
+	delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MossdeepCity_SpaceCenter_2F_Movement_EmmieReturnAfterAdmin
+	waitmovement
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement
+	msgbox MossdeepCity_SpaceCenter_2F_Text_EmmieMissMuch, MSGBOX_AUTOCLOSE
+	copyobjectxytoperm LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_KOGA
+	copyobjectxytoperm LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_JANINE
+	copyobjectxytoperm LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE
 	copyobjectxytoperm LOCALID_GRUNT6
 	copyobjectxytoperm LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA
 	copyobjectxytoperm LOCALID_GRUNT5
 	releaseall
 	end
+
+MossdeepCity_SpaceCenter_2F_Text_EmmieMissMuch:
+	.string "Emmie: Well, that guy really does\n"
+	.string "make a great damsel in distress.\p"
+	.string "Anyway, I hope I didn't miss too much?$"
+
+MossdeepCity_SpaceCenter_2F_Movement_EmmieReturnAfterAdmin:
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	step_end
+
+
+MossdeepCity_SpaceCenter_2F_Movement_AllyHoldsAdmin:
+	walk_slow_right
+	walk_slow_right
+	step_end
+
+MossdeepCity_SpaceCenter_2F_Text_BlueIllHoldHim:
+	.string "Good stuff, {PLAYER}.\p"
+	.string "Between you and me, I was anxious for\n"
+	.string "a moment there.$"
+	.string "Go, Steven is just ahead.\n"
+	.string "I'll hold this one here.$"
+
+MossdeepCity_SpaceCenter_2F_Movement_AllyApproachPlayerPostAdmin:
+	walk_slow_down
+	walk_in_place_faster_left
+	step_end
 
 MossdeepCity_SpaceCenter_2F_Movement_Grunt6Defeated:
 	lock_facing_direction
@@ -332,7 +515,9 @@ MossdeepCity_SpaceCenter_2F_Movement_Grunt5Defeated:
 
 MossdeepCity_SpaceCenter_2F_Movement_Grunt7Defeated:
 	lock_facing_direction
-	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
 	unlock_facing_direction
 	step_end
 
@@ -665,7 +850,7 @@ MossdeepCity_SpaceCenter_2F_Text_Grunt6PostBattle:
 	.string "mess we got ourselves into.$"
 
 MossdeepCity_SpaceCenter_2F_Text_TabithaPostBattle:
-	.string "Hehe… You're unstoppable!$"
+	.string "Awaaah! You're unstoppable!$"
 
 MossdeepCity_SpaceCenter_2F_Text_Grunt5PostBattle:
 	.string "Are we being useful to our leader\n"

@@ -1664,7 +1664,7 @@ void FollowerNPCFaceAfterLeaveMap(void)
 
 bool32 FollowerNPCIsBattlePartner(void)
 {
-    if (PlayerHasFollowerNPC() && GetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER))
+    if (PlayerHasFollowerNPC() && (GetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER) == gPartnerTrainerId))
         return TRUE;
 
     return FALSE;
@@ -1691,6 +1691,7 @@ void PrepareForFollowerNPCBattle(void)
         VarSet(VAR_0x8005, FRONTIER_DATA_SELECTED_MON_ORDER);
         CallFrontierUtilFunc();
         gPartnerTrainerId = TRAINER_PARTNER(GetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER));
+        DebugPrintf("Check2");
         FillPartnerParty(gPartnerTrainerId);
     }
 }

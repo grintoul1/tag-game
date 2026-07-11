@@ -151,6 +151,7 @@ void DoSpecialTrainerBattle(void)
                 gBattleTypeFlags = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_DOUBLE);
                 (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
                 gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY_JAGGED_PASS);
+        DebugPrintf("Check4");
                 FillPartnerParty(gPartnerTrainerId);
             }
         }

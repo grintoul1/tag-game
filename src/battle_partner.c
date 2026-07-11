@@ -42,6 +42,7 @@ void FillPartnerParty(u16 trainerId)
     u8 nickname[POKEMON_NAME_LENGTH * 2];
     SetFacilityPtrsGetLevel();
     ZeroPartyMons(gParties[B_TRAINER_PARTNER]);
+    DebugPrintf("%d", trainerId);
 
     if (trainerId == TRAINER_PARTNER(PARTNER_EMMIE)
     || trainerId == TRAINER_PARTNER(PARTNER_SHELLY_MHO)

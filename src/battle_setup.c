@@ -370,9 +370,12 @@ void BattleSetup_StartMultiBattle(void)
                 gBattleTypeFlags |= BATTLE_TYPE_TWO_PLAYER;
         }
 
+        DebugPrintf("Check1");
         FillPartnerParty(gPartnerTrainerId);
         if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
             CalculatePartnerPartyCount();
+        if (gSpecialVar_0x8005 & MULTI_BATTLE_CHOOSE_MONS) // Skip mons restoring(done in the script)
+            gBattleScripting.specialTrainerBattleType = 0xFF;
 
         if (gLinkType == LINKTYPE_TWO_PLAYER)
         {
@@ -396,9 +399,6 @@ void BattleSetup_StartMultiBattle(void)
                 DoTrainerBattle();
             }
         }
-
-        if (gSpecialVar_0x8005 & MULTI_BATTLE_CHOOSE_MONS) // Skip mons restoring(done in the script)
-            gBattleScripting.specialTrainerBattleType = 0xFF;
 }
 
 
@@ -2375,6 +2375,7 @@ void CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Traine
                 gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
                 (TRAINER_BATTLE_PARAM.opponentA = TRAINER_EMMIE_2);
                 gPartnerTrainerId = TRAINER_PARTNER(PARTNER_SHELLY_JAGGED_PASS);
+        DebugPrintf("Check5");
                 FillPartnerParty(gPartnerTrainerId);
             }
             j = SPECIES_TORNADUS;
