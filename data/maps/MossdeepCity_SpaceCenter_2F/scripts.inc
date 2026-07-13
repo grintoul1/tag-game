@@ -437,7 +437,6 @@ MossdeepCity_SpaceCenter_2F_EventScript_TabithaVictory::
 	msgbox MossdeepCity_SpaceCenter_2F_Text_BlueIllHoldHim, MSGBOX_AUTOCLOSE
 	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, MossdeepCity_SpaceCenter_2F_Movement_AllyHoldsAdmin
 	waitmovement
-	setobjectxyperm OBJ_EVENT_ID_NPC_FOLLOWER, 11, 1
 	delay 48
 	playse SE_DOOR
 	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_MOSSDEEP_CITY_SPACE_CENTER_2F
@@ -463,6 +462,7 @@ MossdeepCity_SpaceCenter_2F_Text_EmmieMissMuch:
 	.string "Anyway, I hope I didn't miss too much?$"
 
 MossdeepCity_SpaceCenter_2F_Movement_EmmieReturnAfterAdmin:
+	walk_slow_down
 	walk_slow_down
 	walk_slow_down
 	walk_slow_down
