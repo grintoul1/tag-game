@@ -5372,7 +5372,7 @@ u16 GetBattleBGM(void)
             case MUSIC_MODE_SPLIT_5:
                 return MUS_DP_VS_GYM_LEADER;
             case MUSIC_MODE_SPLIT_6:
-                return MUS_HG_VS_GYM_LEADER;
+                return MUS_VS_GYM_LEADER;
             case MUSIC_MODE_SPLIT_7:
                 return MUS_VS_UNOVA_LEADER;
             case MUSIC_MODE_SPLIT_8:
