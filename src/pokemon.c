@@ -5400,7 +5400,7 @@ u16 GetBattleBGM(void)
             case MUSIC_MODE_SPLIT_3:
                 return MUS_GS_BATTLE2;
             case MUSIC_MODE_SPLIT_4:
-                return MUS_VS_SILVER;
+                return MUS_VS_SILVER; // TODO
             case MUSIC_MODE_SPLIT_5:
                 return MUS_VS_SILVER;
             case MUSIC_MODE_SPLIT_6:
