@@ -24,7 +24,6 @@
 #include "constants/battle_frontier.h"
 #include "constants/battle_special.h"
 
-static void HandleSpecialTrainerBattleEnd(void);
 static void Task_StartBattleAfterTransition(u8 taskId);
 static void UNUSED FillEReaderTrainerWithPlayerData(void);
 static void CopyEReaderTrainerFarewellMessage(void);
@@ -36,7 +35,7 @@ extern void FillTrainerParty(u16 trainerId, enum BattleTrainer trainer, u8 monCo
 static void SetEReaderTrainerChecksum(struct BattleTowerEReaderTrainer *ereaderTrainer);
 #endif //FREE_BATTLE_TOWER_E_READER
 
-static void HandleSpecialTrainerBattleEnd(void)
+void HandleSpecialTrainerBattleEnd(void)
 {
     s32 i;
 
