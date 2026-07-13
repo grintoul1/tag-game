@@ -2,7 +2,6 @@
 .set LOCALID_RICH_BOY, 1
 .set LOCALID_GENTLEMAN, 2
 .set LOCALID_SCIENTIST, 3
-@ Grunt names numbered like their Trainer values (which are for the full Space Center)
 .set LOCALID_GRUNT6, 5
 .set LOCALID_GRUNT5, 7
 .set LOCALID_AQUA_GRUNT5, 11
@@ -63,9 +62,8 @@ MossdeepCity_SpaceCenter_2F_EventScript_MoveDefeatedAquaGrunts::
 	return
 
 MossdeepCity_SpaceCenter_2F_OnFrame:
-	map_script_2 VAR_PARTNER_EMMIE_STATE, 55, MossdeepCity_SpaceCenter_2F_EventScript_ProgressEmmieState
 	map_script_2 VAR_MOSSDEEP_SPACE_CENTER_STATE, 4, MossdeepCity_SpaceCenter_2F_EventScript_ThreeGrunts
-	map_script_2 VAR_MOSSDEEP_SPACE_CENTER_STATE, 5, MossdeepCity_SpaceCenter_2F_EventScript_AdminBattle
+	map_script_2 VAR_PARTNER_EMMIE_STATE, 55, MossdeepCity_SpaceCenter_2F_EventScript_ProgressEmmieState
 	.2byte 0
 
 MossdeepCity_SpaceCenter_2F_EventScript_AdminBattle::
@@ -74,6 +72,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_AdminBattle::
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_ThreeGrunts::
+	lockall
 	@showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_MOSSDEEP_CITY_SPACE_CENTER_2F
 	@applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkDown
 	@applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_SpaceCenter_2F_Movement_PlayerEnter
@@ -244,7 +243,7 @@ MossdeepCity_SpaceCenter_2F_Text_BlueOneDayRocket:
 	.string "word rocket in a positive context…$"
 
 MossdeepCity_SpaceCenter_2F_Text_BlueCantGetPast:
-	.string "Blue: {PLAYER}! You're here at the\n"
+	.string "Blue: {PLAYER}! You're here at the perfect\n"
 	.string "time.\p"
 	.string "This lot just marched in here and are\n"
 	.string "demanding the fuel for the rocket.$"
@@ -280,20 +279,8 @@ MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6DoMultiBattle::
 	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 4
 	fadescreen FADE_TO_BLACK
 	special SetCB2WhiteOut
-	waitstate
 
 MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6Victory::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_BLUE, Common_Movement_FaceRight
-	playbgm MUS_MIROR_B, TRUE
-	switch VAR_RESULT
-	case 1, MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6VictoryContinue
-	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAGMA_GRUNTS
-	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 4
-	fadescreen FADE_TO_BLACK
-	special SetCB2WhiteOut
-	waitstate
-MossdeepCity_SpaceCenter_2F_EventScript_Grunt5Grunt6VictoryContinue::
 	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, MossdeepCity_SpaceCenter_2F_Movement_TabithaSpin
 	waitmovement
 	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_WalkInPlaceFasterDown
@@ -436,7 +423,6 @@ MossdeepCity_SpaceCenter_2F_EventScript_TabithaDoMultiBattle::
 	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 4
 	fadescreen FADE_TO_BLACK
 	special SetCB2WhiteOut
-	waitstate
 
 MossdeepCity_SpaceCenter_2F_EventScript_TabithaVictory::
 	delay 8

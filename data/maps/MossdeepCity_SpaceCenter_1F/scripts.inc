@@ -1410,6 +1410,7 @@ MossdeepCity_SpaceCenter_1F_EventScript_StairsScene::
 	applymovement VAR_0x8008, Common_Movement_KnockedBackDown
 	waitmovement
 	applymovement OBJ_EVENT_ID_CAMERA, MossdeepCity_SpaceCenter_1F_Movement_CameraPanBackFromActionStairs
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_WalkSlowDown
 	applymovement VAR_0x8008, Common_Movement_QuestionMark
 	applymovement VAR_0x8009, Common_Movement_QuestionMark
 	waitmovement
@@ -1422,8 +1423,8 @@ MossdeepCity_SpaceCenter_1F_EventScript_StairsScene::
 	end
 
 MossdeepCity_SpaceCenter_1F_Text_EmmieDontBelieveWeHaveMet:
-	.string "Emmie: Hi! I don't believe we have met\n"
-	.string "yet!$"
+	.string "Emmie: Hi! I don't believe that we have\n"
+	.string "met yet!$"
 
 MossdeepCity_SpaceCenter_1F_EventScript_EmmieApproachSurge12::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MossdeepCity_SpaceCenter_1F_Movement_EmmieApproachSurge12
