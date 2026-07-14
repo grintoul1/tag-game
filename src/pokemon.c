@@ -5398,19 +5398,19 @@ u16 GetBattleBGM(void)
             case MUSIC_MODE_SPLIT_2:
                 return MUS_GS_BATTLE2;
             case MUSIC_MODE_SPLIT_3:
-                return MUS_GS_BATTLE2;
+                return MUS_RG_VS_CHAMPION;
             case MUSIC_MODE_SPLIT_4:
-                return MUS_VS_SILVER; // TODO
+                return MUS_VS_SILVER;
             case MUSIC_MODE_SPLIT_5:
                 return MUS_VS_SILVER;
             case MUSIC_MODE_SPLIT_6:
-                return MUS_VS_UNOVA_RIVAL; // TODO
+                return MUS_VS_UNOVA_RIVAL;
             case MUSIC_MODE_SPLIT_7:
                 return MUS_VS_UNOVA_RIVAL;
             case MUSIC_MODE_SPLIT_8:
-                return MUS_RB_BATTLE1;
+                return MUS_RG_VS_CHAMPION;
             case MUSIC_MODE_SPLIT_9:
-                return MUS_RB_BATTLE1;
+                return MUS_N_FINAL_BATTLE;
             default:
                 return MUS_VS_RIVAL;
             }

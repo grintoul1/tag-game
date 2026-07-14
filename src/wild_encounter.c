@@ -693,7 +693,7 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
     enum TimeOfDay timeOfDay;
     struct Roamer *roamer;
 
-    if (sWildEncountersDisabled == TRUE)
+    if (sWildEncountersDisabled == TRUE || FlagGet(OW_FLAG_NO_ENCOUNTER))
         return FALSE;
 
     headerId = GetCurrentMapWildMonHeaderId();
