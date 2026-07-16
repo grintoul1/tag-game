@@ -5376,8 +5376,6 @@ u16 GetBattleBGM(void)
                 return MUS_VS_UNOVA_LEADER;
             case MUSIC_MODE_SPLIT_8:
                 return MUS_VS_SINNOH_BRAIN;
-            case MUSIC_MODE_SPLIT_9:
-                return MUS_RB_BATTLE1;
             default:
                 return MUS_VS_GYM_LEADER;
             }
