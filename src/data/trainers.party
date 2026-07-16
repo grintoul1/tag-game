@@ -9138,45 +9138,59 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Luvdisc
-Level: 41
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Water Pulse
-- Attract
-- Sweet Kiss
-- Flail
+Suicune @ Focus Sash
+Ability: Inner Focus
+Level: 90
+Timid Nature
+- Blizzard
+- Scald
+- Detect
+- Tailwind
 
-Whiscash
-Level: 41
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Rain Dance
-- Water Pulse
-- Amnesia
+Iron Bundle @ Booster Energy
+Ability: Quark Drive
+Level: 90
+Modest Nature
+- Hydro Pump
+- Freeze Dry
+- U-turn
+- Flip Turn
+
+Politoed @ Eject Button
+Ability: Drizzle
+Level: 90
+Timid Nature
+- Muddy Water
+- Earth Power
+- Whirlpool
+
+
+Overqwil @ Shuca Berry
+Ability: Swift Swim
+Level: 90
+Adamant Nature
+- Liquidation
+- Crunch
+- Barb Barrage
+- Fell Stinger
+
+Palafin @ Choice Scarf
+Ability: Zero to Hero
+Level: 90
+Jolly Nature
+- Liquidation
+- Drain Punch
+- Ice Punch
+- Flip Turn
+
+Gyarados @ Gyaradosite
+Ability: Intimidate
+Level: 90
+Jolly Nature
+- Liquidation
+- Lash Out
 - Earthquake
-
-Sealeo
-Level: 43
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Encore
-- Body Slam
-- Aurora Beam
-- Water Pulse
-
-Crawdaunt
-Level: 43
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Water Pulse
-- Crabhammer
-- Taunt
-- Leer
-
-Kingdra @ Chesto Berry
-Level: 46
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Water Pulse
-- Double Team
-- Ice Beam
-- Rest
+- Dragon Dance
 
 === TRAINER_BRANDON ===
 Name: Brandon

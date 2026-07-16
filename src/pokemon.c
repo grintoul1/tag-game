@@ -5224,19 +5224,18 @@ static u16 gRandomWildMusic[8] = // Add more
     MUS_VS_POKEMON_UNOVA,
 };
 
-static u16 gRandomTrainerMusic[12] = // Add more
+static u16 gRandomTrainerMusic[11] = // Add more
 {
     MUS_RB_VS_TRAINER,
     MUS_GS_BATTLE3,
     MUS_GS_BATTLE8,
     MUS_VS_TRAINER,
     MUS_RG_VS_TRAINER,
-    MUS_COLOSSEUM_STORY_MODE_NORMAL_BATTLE_ARRANGED,
     MUS_VS_COLOSSEUM_ROUND_3,
     MUS_VS_CIPHER_PEON,
     MUS_VS_JOHTO_TRAINER,
     MUS_VS_KANTO_TRAINER,
-    MUS_VS_SINNOH_TRAINER, // Fix
+    MUS_VS_SINNOH_TRAINER,
     MUS_VS_UNOVA_TRAINER,
 };
 
@@ -5376,7 +5375,7 @@ u16 GetBattleBGM(void)
             case MUSIC_MODE_SPLIT_7:
                 return MUS_VS_UNOVA_LEADER;
             case MUSIC_MODE_SPLIT_8:
-                return MUS_RB_BATTLE1;
+                return MUS_VS_SINNOH_BRAIN;
             case MUSIC_MODE_SPLIT_9:
                 return MUS_RB_BATTLE1;
             default:
@@ -5455,7 +5454,7 @@ u16 GetBattleBGM(void)
                 if (VarGet(VAR_MUSIC_MODE == MUSIC_MODE_VANILLA))
                     return MUS_VS_TRAINER;
                 else
-                    return gRandomTrainerMusic[Random() % 12];
+                    return gRandomTrainerMusic[Random() % 11];
             }
         }
     }
