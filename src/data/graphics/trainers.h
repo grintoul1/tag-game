@@ -1300,4 +1300,8 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Birch, gTrainerPalette_Birch),
         .backPic = TRAINER_BACK_PIC(5, gTrainerBackPic_Birch, gTrainerBackPicPalette_Birch, sBackAnims_Kanto),
     },
+    [TRAINER_PIC_VITO] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Vito, gTrainerPalette_Vito),
+    },
 };
