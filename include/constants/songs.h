@@ -926,6 +926,7 @@ enum __attribute__((packed)) SongId
     MUS_BW_SAGE,
     MUS_BW_CASTELIA,
     MUS_HG_RIVAL_EXIT,
+    MUS_DP_VS_GALACTIC_COMMANDER,
 
 // These PH_* constants are phoneme sounds used by the "bard" NPC (see src/bard_music.c and src/mauville_old_man.c).
 // Each comes in a triplet of PH_*_BLEND, PH_*_HELD, and PH_*_SOLO, and the name of each triplet incorporates the English phonetic sound it represents.
@@ -988,7 +989,7 @@ enum __attribute__((packed)) SongId
 
 #define END_SE              SE_M_HYPER_BEAM_GEN1
 #define START_MUS           MUS_LITTLEROOT_TEST
-#define END_MUS             MUS_HG_RIVAL_EXIT
+#define END_MUS             MUS_DP_VS_GALACTIC_COMMANDER
 #define START_EMERALD_MUS   MUS_LITTLEROOT_TEST
 #define END_EMERALD_MUS     MUS_VS_ELITE_FOUR
 #define START_RG_MUS        MUS_RG_FOLLOW_ME

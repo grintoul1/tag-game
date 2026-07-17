@@ -5445,6 +5445,7 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_BW_SAGE)    \
     X(MUS_BW_CASTELIA)    \
     X(MUS_HG_RIVAL_EXIT)    \
+    X(MUS_DP_VS_GALACTIC_COMMANDER)    \
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \
