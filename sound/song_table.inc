@@ -1056,6 +1056,7 @@ gSongTable::
 	song mus_bw_castelia, MUSIC_PLAYER_BGM, 0
 	song mus_hg_rival_exit, MUSIC_PLAYER_BGM, 0
 	song mus_dp_vs_galactic_commander, MUSIC_PLAYER_BGM, 0
+	song mus_bw_vs_team_plasma, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:
