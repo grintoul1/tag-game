@@ -5316,6 +5316,7 @@ u16 GetBattleBGM(void)
         }
         case TRAINER_CLASS_TEAM_AQUA:
         case TRAINER_CLASS_TEAM_AQUA_MIXED:
+            return MUS_BW_VS_TEAM_PLASMA;
         case TRAINER_CLASS_TEAM_MAGMA:
         case TRAINER_CLASS_TEAM_MAGMA_MIXED:
             return MUS_BW_VS_TEAM_PLASMA;
