@@ -145,7 +145,7 @@ DOUBLE_BATTLE_TEST("Distraction Policy redirects single target moves used by opp
     }
 }
 
-DOUBLE_BATTLE_TEST("Spotlight Policy redirects single target moves used by opponents to user (first turn)")
+DOUBLE_BATTLE_TEST("Spotlight Policy redirects single target moves used by opponents to ally (first turn)")
 {
     enum Item itemLeft, itemRight;
     struct BattlePokemon *itemBattler = NULL;
@@ -180,7 +180,7 @@ DOUBLE_BATTLE_TEST("Spotlight Policy redirects single target moves used by oppon
     }
 }
 
-DOUBLE_BATTLE_TEST("Spotlight Policy redirects single target moves used by opponents to user (switch)")
+DOUBLE_BATTLE_TEST("Spotlight Policy redirects single target moves used by opponents to ally (switch)")
 {
     struct BattlePokemon *itemBattler = NULL;
     struct BattlePokemon *noItemBattler = NULL;
@@ -216,7 +216,7 @@ DOUBLE_BATTLE_TEST("Spotlight Policy redirects single target moves used by oppon
     }
 }
 
-DOUBLE_BATTLE_TEST("Spotlight Policy redirects single target moves used by opponents to user (post KO)")
+DOUBLE_BATTLE_TEST("Spotlight Policy redirects single target moves used by opponents to ally (post KO)")
 {
     struct BattlePokemon *itemBattler = NULL;
     struct BattlePokemon *noItemBattler = NULL;
