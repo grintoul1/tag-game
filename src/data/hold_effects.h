@@ -591,4 +591,14 @@ const struct HoldEffectInfo gHoldEffectsInfo[HOLD_EFFECT_COUNT] =
     {
         .onSwitchIn = TRUE,
     },
+
+    [HOLD_EFFECT_DISTRACTION_POLICY] =
+    {
+        .onSwitchIn = TRUE,
+    },
+
+    [HOLD_EFFECT_SPOTLIGHT_POLICY] =
+    {
+        .onSwitchIn = TRUE,
+    },
 };

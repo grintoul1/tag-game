@@ -5944,6 +5944,18 @@ BattleScript_InversionPolicyEnds::
     waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_DistractionPolicyEnds::
+    pause B_WAIT_TIME_SHORT
+    printstring STRINGID_DISTRACTIONPOLICYENDS
+    waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_SpotlightPolicyEnds::
+    pause B_WAIT_TIME_SHORT
+    printstring STRINGID_SPOTLIGHTPOLICYENDS
+    waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_NeutralizingGasExits::
     copybyte sSAVED_BATTLER, sBATTLER
     savetarget
@@ -6295,6 +6307,20 @@ BattleScriptInversionPolicyRet::
 	call BattleScript_ItemPopUp_Scripting
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	printstring STRINGID_INVERSIONPOLICYSTARTS
+	removeitem BS_SCRIPTING
+	return
+
+BattleScriptDistractionPolicyRet::
+	call BattleScript_ItemPopUp_Scripting
+	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	printstring STRINGID_DISTRACTIONPOLICYSTARTS
+	removeitem BS_SCRIPTING
+	return
+
+BattleScriptSpotlightPolicyRet::
+	call BattleScript_ItemPopUp_Scripting
+	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	printstring STRINGID_SPOTLIGHTPOLICYSTARTS
 	removeitem BS_SCRIPTING
 	return
 

@@ -91,6 +91,11 @@ static bool32 HandleEndTurnVarious(enum BattlerId battler)
         gBattleStruct->echoedVoiceCounter = 0;
     }
 
+    gSideTimers[B_SIDE_PLAYER].distractionPolicyTimer = 0;
+    gSideTimers[B_SIDE_OPPONENT].distractionPolicyTimer = 0;
+    gSideTimers[B_SIDE_PLAYER].spotlightPolicyTimer = 0;
+    gSideTimers[B_SIDE_OPPONENT].spotlightPolicyTimer = 0;
+
     return effect;
 }
 

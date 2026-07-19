@@ -808,7 +808,9 @@ bool32 IsAffectedByFollowMe(enum BattlerId battlerAtk, enum BattleSide defSide, 
     enum BattleMoveEffects effect = GetMoveEffect(move);
 
 
-    if (gSideTimers[defSide].followmeTimer == 0
+    if ((gSideTimers[defSide].followmeTimer == 0
+        && gSideTimers[defSide].distractionPolicyTimer == 0
+        && gSideTimers[defSide].spotlightPolicyTimer == 0)
         || (!IsBattlerAlive(gSideTimers[defSide].followmeTarget) && !IsSmartTargetMoveConsecutiveHit(battlerAtk, move))
         || effect == EFFECT_SNIPE_SHOT
         || effect == EFFECT_SKY_DROP
@@ -856,6 +858,8 @@ static bool32 HandleMoveTargetRedirection(struct BattleCalcValues *cv, enum Move
     if (currTargetCantAbsorb
      && IsDoubleBattle()
      && gSideTimers[side].followmeTimer == 0
+     && gSideTimers[side].distractionPolicyTimer == 0
+     && gSideTimers[side].spotlightPolicyTimer == 0
      && moveTarget != TARGET_USER
      && moveTarget != TARGET_ALL_BATTLERS
      && moveTarget != TARGET_FIELD

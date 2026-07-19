@@ -327,7 +327,9 @@ enum VolatileFlags
     F(VOLATILE_ACTIVATE_DANCER,             activateDancer,                (u32, 1)) \
     F(VOLATILE_TRACE_ACTIVATED,             traceActivated,                (u32, 1)) \
     F(VOLATILE_SPEED_SWAP,                  speedSwapped,                  (u32, 1)) \
-    F(VOLATILE_INVERSION_POLICY,            inversionPolicy,               (u32, 1))
+    F(VOLATILE_INVERSION_POLICY,            inversionPolicy,               (u32, 1)) \
+    F(VOLATILE_DISTRACTION_POLICY,          distractionPolicy,             (u32, 1)) \
+    F(VOLATILE_SPOTLIGHT_POLICY,            spotlightPolicy,               (u32, 1))
 
 
 /* Use within a macro to get the maximum allowed value for a volatile. Requires _typeMaxValue as input. */

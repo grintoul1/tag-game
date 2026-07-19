@@ -156,6 +156,28 @@ static enum ItemEffect TryInversionPolicy(enum BattlerId battler)
     return ITEM_EFFECT_OTHER;
 }
 
+static enum ItemEffect TryDistractionPolicy(enum BattlerId battler)
+{
+    gBattleMons[battler].volatiles.distractionPolicy = TRUE;
+
+    gSideTimers[GetBattlerSide(battler)].distractionPolicyTimer = 1;
+    gSideTimers[GetBattlerSide(battler)].followmeTarget = battler;
+
+    BattleScriptCall(BattleScriptDistractionPolicyRet);
+    return ITEM_EFFECT_OTHER;
+}
+
+static enum ItemEffect TrySpotlightPolicy(enum BattlerId battler)
+{
+    gBattleMons[battler].volatiles.spotlightPolicy = TRUE;
+
+    gSideTimers[GetBattlerSide(battler)].spotlightPolicyTimer = 1;
+    gSideTimers[GetBattlerSide(battler)].followmeTarget = BATTLE_PARTNER(battler);
+
+    BattleScriptCall(BattleScriptSpotlightPolicyRet);
+    return ITEM_EFFECT_OTHER;
+}
+
 static enum ItemEffect RestoreWhiteHerbStats(enum BattlerId battler)
 {
     enum ItemEffect effect = ITEM_NO_EFFECT;
@@ -1225,6 +1247,12 @@ enum ItemEffect ItemBattleEffects(enum BattlerId itemBattler, enum BattlerId bat
         break;
     case HOLD_EFFECT_INVERSION_POLICY:
         effect = TryInversionPolicy(itemBattler);
+        break;
+    case HOLD_EFFECT_DISTRACTION_POLICY:
+        effect = TryDistractionPolicy(itemBattler);
+        break;
+    case HOLD_EFFECT_SPOTLIGHT_POLICY:
+        effect = TrySpotlightPolicy(itemBattler);
         break;
     default:
         break;

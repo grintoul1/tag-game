@@ -16204,10 +16204,10 @@ const struct ItemInfo gItemsInfo[] =
 
     [ITEM_DISTRACTION_POLICY] =
     {
-        .name = ITEM_NAME("Inversion Policy"),
-        .pluralName = ITEM_PLURAL_NAME("Inversion Policies"),
+        .name = ITEM_NAME("Distraction Policy"),
+        .pluralName = ITEM_PLURAL_NAME("Distraction Policies"),
         .price = (I_PRICE >= GEN_9) ? 50000 : 1000,
-        .holdEffect = HOLD_EFFECT_INVERSION_POLICY,
+        .holdEffect = HOLD_EFFECT_DISTRACTION_POLICY,
         .description = COMPOUND_STRING(
             "Inverts type chart\n"
             "until user leaves\n"
@@ -16223,10 +16223,10 @@ const struct ItemInfo gItemsInfo[] =
 
     [ITEM_SPOTLIGHT_POLICY] =
     {
-        .name = ITEM_NAME("Inversion Policy"),
-        .pluralName = ITEM_PLURAL_NAME("Inversion Policies"),
+        .name = ITEM_NAME("Spotlight Policy"),
+        .pluralName = ITEM_PLURAL_NAME("Spotlight Policies"),
         .price = (I_PRICE >= GEN_9) ? 50000 : 1000,
-        .holdEffect = HOLD_EFFECT_INVERSION_POLICY,
+        .holdEffect = HOLD_EFFECT_SPOTLIGHT_POLICY,
         .description = COMPOUND_STRING(
             "Inverts type chart\n"
             "until user leaves\n"

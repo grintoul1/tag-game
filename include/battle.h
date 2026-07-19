@@ -159,6 +159,8 @@ struct SideTimer
     u16 tailwindTimer;
     u16 luckyChantTimer;
     // Timers below this point are not swapped by Court Change
+    u8 distractionPolicyTimer:4;
+    u8 spotlightPolicyTimer:4;
     u8 followmeTimer:4;
     u8 followmeTarget:3;
     u8 followmePowder:1; // Rage powder, does not affect grass type Pokémon.
