@@ -582,4 +582,12 @@ const struct HoldEffectInfo gHoldEffectsInfo[HOLD_EFFECT_COUNT] =
     {
         .onSwitchIn = TRUE,
     },
+
+    [HOLD_EFFECT_SERENE_SHAWL] =
+    {
+    },
+
+    [HOLD_EFFECT_INVERSION_POLICY] =
+    {
+    },
 };

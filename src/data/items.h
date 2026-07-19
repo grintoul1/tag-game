@@ -16166,6 +16166,42 @@ const struct ItemInfo gItemsInfo[] =
         .iconPic = gItemIcon_ExpCandyXL,
         .iconPalette = gItemIconPalette_ExpCandies,
     },
+
+    [ITEM_SERENE_SHAWL] =
+    {
+        .name = ITEM_NAME("Serene Shawl"),
+        .pluralName = ITEM_PLURAL_NAME("Serene Shawls"),
+        .price = 100,
+        .holdEffect = HOLD_EFFECT_SERENE_SHAWL,
+        .description = COMPOUND_STRING(
+            "Doubles odds for\n"
+            "added effects."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CovertCloak,
+        .iconPalette = gItemIconPalette_CovertCloak,
+    },
+
+    [ITEM_INVERSION_POLICY] =
+    {
+        .name = ITEM_NAME("Inversion Policy"),
+        .pluralName = ITEM_PLURAL_NAME("Inversion Policies"),
+        .price = (I_PRICE >= GEN_9) ? 50000 : 1000,
+        .holdEffect = HOLD_EFFECT_INVERSION_POLICY,
+        .holdEffectParam = 0,
+        .description = COMPOUND_STRING(
+            "If hit super\n"
+            "effectively, ups\n"
+            "offenses sharply."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_WeaknessPolicy,
+        .iconPalette = gItemIconPalette_WeaknessPolicy,
+    },
 };
 
 #undef ITEM_NAME
