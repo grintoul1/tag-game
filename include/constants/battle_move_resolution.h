@@ -91,6 +91,7 @@ enum FaintBlockStates
     FAINT_BLOCK_CHECK_TARGET_FAINTED, // Exits if target is not fainted
     FAINT_BLOCK_VICTORY_CATCH,
     FAINT_BLOCK_END_NEUTRALIZING_GAS,
+    FAINT_BLOCK_END_INVERSION_POLICY,
     FAINT_BLOCK_DO_GRUDGE,
     // Destiny Bond is tested and called first, but Faint Target's script plays first
     FAINT_BLOCK_TRY_DESTINY_BOND,

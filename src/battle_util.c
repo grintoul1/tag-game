@@ -4810,6 +4810,17 @@ bool32 IsNeutralizingGasOnField(void)
     return FALSE;
 }
 
+bool32 IsInversionPolicyOnField(void)
+{
+    for (enum BattlerId i = 0; i < gBattlersCount; i++)
+    {
+        if (gBattleMons[i].volatiles.inversionPolicy)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
 bool32 IsMoldBreakerTypeAbility(enum BattlerId battler, enum Ability ability, enum Move move)
 {
     if (gBattleMons[battler].volatiles.gastroAcid)

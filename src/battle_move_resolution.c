@@ -10,6 +10,7 @@
 #include "battle_stat_change.h"
 #include "battle_scripts.h"
 #include "battle_z_move.h"
+#include "event_data.h"
 #include "item.h"
 #include "battle_controllers.h"
 #include "move.h"
@@ -3157,6 +3158,19 @@ static enum MoveEndResult MoveEndFaintBlock(struct BattleCalcValues *cv)
                 if (!IsNeutralizingGasOnField())
                 {
                     BattleScriptCall(BattleScript_NeutralizingGasExits);
+                    result = MOVEEND_RESULT_RUN_SCRIPT;
+                }
+            }
+            gBattleStruct->eventState.moveEndBlock++;
+            break;
+        case FAINT_BLOCK_END_INVERSION_POLICY:
+            if (gBattleMons[cv->battlerDef].volatiles.inversionPolicy)
+            {
+                gBattleMons[cv->battlerDef].volatiles.inversionPolicy = FALSE;
+                if (!IsInversionPolicyOnField())
+                {
+                    FlagClear(B_FLAG_INVERSE_BATTLE);
+                    BattleScriptCall(BattleScript_InversionPolicyEnds);
                     result = MOVEEND_RESULT_RUN_SCRIPT;
                 }
             }

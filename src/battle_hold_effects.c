@@ -7,6 +7,7 @@
 #include "battle_hold_effects.h"
 #include "battle_stat_change.h"
 #include "battle_scripts.h"
+#include "event_data.h"
 #include "item.h"
 #include "string_util.h"
 #include "data/hold_effects.h"
@@ -143,6 +144,16 @@ static enum ItemEffect TryBerserkGene(enum BattlerId battler)
     SetStatChange(battler, STAT_ATK, 2);
     BattleScriptCall(BattleScript_BerserkGeneRet);
     return ITEM_STATS_CHANGE;
+}
+
+static enum ItemEffect TryInversionPolicy(enum BattlerId battler)
+{
+    gBattleMons[battler].volatiles.inversionPolicy = TRUE;
+
+    FlagSet(B_FLAG_INVERSE_BATTLE);
+
+    BattleScriptCall(BattleScriptInversionPolicyRet);
+    return ITEM_EFFECT_OTHER;
 }
 
 static enum ItemEffect RestoreWhiteHerbStats(enum BattlerId battler)
@@ -1211,6 +1222,9 @@ enum ItemEffect ItemBattleEffects(enum BattlerId itemBattler, enum BattlerId bat
         break;
     case HOLD_EFFECT_MICLE_BERRY:
         effect = TrySetMicleBerry(itemBattler, item);
+        break;
+    case HOLD_EFFECT_INVERSION_POLICY:
+        effect = TryInversionPolicy(itemBattler);
         break;
     default:
         break;

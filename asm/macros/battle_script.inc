@@ -1993,6 +1993,11 @@
 	callnative BS_TryEndNeutralizingGas
 	.endm
 
+	.macro tryendinversionpolicy battler:req
+	callnative BS_TryEndInversionPolicy
+	.byte \battler
+	.endm
+
 	.macro consumeberry battler:req, fromBattler:req
 	callnative BS_ConsumeBerry
 	.byte \battler

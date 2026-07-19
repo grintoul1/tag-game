@@ -350,6 +350,7 @@ BattleScript_MoveSwitchOpenPartyScreenRet:
 
 BattleScript_MoveSwitchOpenPartyScreenReturnWithNoAnim:
 	returntoball BS_ATTACKER, FALSE
+	tryendinversionpolicy BS_ATTACKER
 	switchoutabilities BS_ATTACKER
 	openpartyscreen BS_ATTACKER, BattleScript_MoveSwitchEnd
 	waitstate
@@ -2799,6 +2800,7 @@ BattleScript_FaintedMonTryChoose:
 	resetswitchinabilitybits
 	hpthresholds2 BS_ATTACKER
 	printstring STRINGID_RETURNMON
+	tryendinversionpolicy BS_ATTACKER
 	switchoutabilities BS_ATTACKER
 	waitstate
 	returnatktoball
@@ -3091,6 +3093,7 @@ BattleScript_DoSwitchOut::
 	waitstate
 	returnatktoball
 	waitstate
+	tryendinversionpolicy BS_ATTACKER
 	switchoutabilities BS_ATTACKER
 	drawpartystatussummary BS_ATTACKER
 	switchhandleorder BS_ATTACKER, 1
@@ -3399,6 +3402,7 @@ BattleScript_RoarSuccessRet:
 BattleScript_RoarSuccessRet_Ret:
 	returntoball BS_TARGET, FALSE
 	waitstate
+	tryendinversionpolicy BS_TARGET
 	switchoutabilities BS_TARGET
 	return
 
@@ -4559,6 +4563,7 @@ BattleScript_EmergencyExit::
 
 BattleScript_SwitchOutEffects::
 	returntoball BS_SCRIPTING, FALSE
+	tryendinversionpolicy BS_SCRIPTING
 	switchoutabilities BS_SCRIPTING
 	return
 
@@ -5884,6 +5889,7 @@ BattleScript_EjectItemActivates::
 	printstring STRINGID_EJECTBUTTONACTIVATE
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_SCRIPTING
+	tryendinversionpolicy BS_SCRIPTING
 	undodynamax BS_SCRIPTING
 	makeinvisible BS_SCRIPTING
 	returntoball BS_SCRIPTING, FALSE
@@ -5930,6 +5936,12 @@ BattleScript_PastelVeilLoopIncrement:
 	goto BattleScript_PastelVeilEnd
 BattleScript_PastelVeilEnd:
 	restoretarget
+	return
+
+BattleScript_InversionPolicyEnds::
+    pause B_WAIT_TIME_SHORT
+    printstring STRINGID_INVERSIONPOLICYENDS
+    waitmessage B_WAIT_TIME_LONG
 	return
 
 BattleScript_NeutralizingGasExits::
@@ -6277,6 +6289,13 @@ BattleScript_UnseenFist::
 BattleScript_CouldntFullyProtect::
 	printstring STRINGID_COULDNTFULLYPROTECT
 	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScriptInversionPolicyRet::
+	call BattleScript_ItemPopUp_Scripting
+	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	printstring STRINGID_INVERSIONPOLICYSTARTS
+	removeitem BS_SCRIPTING
 	return
 
 BattleScript_BerserkGeneRet::

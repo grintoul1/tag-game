@@ -3544,6 +3544,18 @@ static void Cmd_tryfaintmon(void)
                 }
             }
 
+            if (gBattleMons[battler].volatiles.inversionPolicy)
+            {
+                gBattleMons[battler].volatiles.inversionPolicy = FALSE;
+                if (!IsInversionPolicyOnField())
+                {
+                    FlagClear(B_FLAG_INVERSE_BATTLE);
+                    BattleScriptPush(gBattlescriptCurrInstr);
+                    gBattlescriptCurrInstr = BattleScript_InversionPolicyEnds;
+                    return;
+                }
+            }
+
             SetValuesOnFaint(battler);
             BattleScriptPush(cmd->nextInstr);
             gBattlescriptCurrInstr = BattleScript_FaintBattler;
@@ -14077,6 +14089,25 @@ void BS_TryEndNeutralizingGas(void)
         {
             BattleScriptPush(cmd->nextInstr);
             gBattlescriptCurrInstr = BattleScript_NeutralizingGasExits;
+            return;
+        }
+    }
+
+    gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_TryEndInversionPolicy(void)
+{
+    NATIVE_ARGS(u8 battler);
+    enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
+    if (gBattleMons[battler].volatiles.inversionPolicy)
+    {
+        gBattleMons[battler].volatiles.inversionPolicy = FALSE;
+        if (!IsInversionPolicyOnField())
+        {
+            FlagClear(B_FLAG_INVERSE_BATTLE);
+            BattleScriptPush(cmd->nextInstr);
+            gBattlescriptCurrInstr = BattleScript_InversionPolicyEnds;
             return;
         }
     }
