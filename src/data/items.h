@@ -16201,6 +16201,44 @@ const struct ItemInfo gItemsInfo[] =
         .iconPic = gItemIcon_WeaknessPolicy,
         .iconPalette = gItemIconPalette_WeaknessPolicy,
     },
+
+    [ITEM_DISTRACTION_POLICY] =
+    {
+        .name = ITEM_NAME("Inversion Policy"),
+        .pluralName = ITEM_PLURAL_NAME("Inversion Policies"),
+        .price = (I_PRICE >= GEN_9) ? 50000 : 1000,
+        .holdEffect = HOLD_EFFECT_INVERSION_POLICY,
+        .description = COMPOUND_STRING(
+            "Inverts type chart\n"
+            "until user leaves\n"
+            "the field."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_WeaknessPolicy,
+        .iconPalette = gItemIconPalette_WeaknessPolicy,
+    },
+
+    [ITEM_SPOTLIGHT_POLICY] =
+    {
+        .name = ITEM_NAME("Inversion Policy"),
+        .pluralName = ITEM_PLURAL_NAME("Inversion Policies"),
+        .price = (I_PRICE >= GEN_9) ? 50000 : 1000,
+        .holdEffect = HOLD_EFFECT_INVERSION_POLICY,
+        .description = COMPOUND_STRING(
+            "Inverts type chart\n"
+            "until user leaves\n"
+            "the field."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_WeaknessPolicy,
+        .iconPalette = gItemIconPalette_WeaknessPolicy,
+    },
 };
 
 #undef ITEM_NAME
