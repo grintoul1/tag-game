@@ -5399,7 +5399,7 @@ u16 GetBattleBGM(void)
             case MUSIC_MODE_SPLIT_3:
                 return MUS_RG_VS_CHAMPION;
             case MUSIC_MODE_SPLIT_4:
-                return MUS_VS_SILVER;
+                return MUS_VS_RIVAL;
             case MUSIC_MODE_SPLIT_5:
                 return MUS_VS_SILVER;
             case MUSIC_MODE_SPLIT_6:

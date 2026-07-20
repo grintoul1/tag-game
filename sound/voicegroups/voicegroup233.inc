@@ -1,4 +1,3 @@
-
 	.align 2
 voicegroup233:: @ 1132c54
 	voice_directsound 60, 0, DirectSoundWaveData_108ad30, 255, 0, 255, 235
