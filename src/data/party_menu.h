@@ -844,11 +844,11 @@ static const struct WindowTemplate sStatusWindowTemplate =
 {
     .bg = 2,
     .tilemapLeft = 21,
-    .tilemapTop = 7,
+    .tilemapTop = 5,
     .width = 8,
-    .height = 12,
+    .height = 14,
     .paletteNum = 14,
-    .baseBlock = 0x39D,
+    .baseBlock = 0x37D,
 };
 
 static const struct WindowTemplate sDamageWindowTemplate =
@@ -866,9 +866,9 @@ static const struct WindowTemplate sPoisonWindowTemplate =
 {
     .bg = 2,
     .tilemapLeft = 21,
-    .tilemapTop = 15,
+    .tilemapTop = 13,
     .width = 8,
-    .height = 4,
+    .height = 6,
     .paletteNum = 14,
     .baseBlock = 0x39D,
 };
@@ -1128,8 +1128,8 @@ static const u8 sPartyMenuAction_TradeSummaryCancel2[] = {MENU_TRADE2, MENU_SUMM
 static const u8 sPartyMenuAction_TakeItemTossCancel[] = {MENU_TAKE_ITEM, MENU_TOSS, MENU_CANCEL1};
 static const u8 sPartyMenuAction_RotomCatalog[] = {MENU_CATALOG_BULB, MENU_CATALOG_OVEN, MENU_CATALOG_WASHING, MENU_CATALOG_FRIDGE, MENU_CATALOG_FAN, MENU_CATALOG_MOWER, MENU_CANCEL1};
 static const u8 sPartyMenuAction_ZygardeCube[] = {MENU_CHANGE_FORM, MENU_CHANGE_ABILITY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_Status[] = {MENU_POISON, MENU_BURN, MENU_FROSTBITE, MENU_PARALYSIS, MENU_SLEEP, MENU_FREEZE};
-static const u8 sPartyMenuAction_Poison[] = {MENU_REGULAR, MENU_TOXIC};
+static const u8 sPartyMenuAction_Status[] = {MENU_POISON, MENU_BURN, MENU_FROSTBITE, MENU_PARALYSIS, MENU_SLEEP, MENU_FREEZE, MENU_CANCEL1};
+static const u8 sPartyMenuAction_Poison[] = {MENU_REGULAR, MENU_TOXIC, MENU_CANCEL2};
 static const u8 sPartyMenuAction_Damage[] = {MENU_DAMAGE};
 
 
