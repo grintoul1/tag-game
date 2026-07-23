@@ -47,7 +47,7 @@ releaseall
 end
 
 FortreeCity_Gym_EventScript_WinonaDoMultiBattle::
-playbgm MUS_GYM, TRUE
+playbgm MUS_PMD_TEMPORAL_TOWER, TRUE
 multi_2p_vs_1 TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, FortreeCity_Gym_EventScript_WinonaVictory
@@ -56,10 +56,11 @@ special SetCB2WhiteOut
 waitstate
 
 FortreeCity_Gym_EventScript_WinonaVictory::
-addvar VAR_FORTREE_CITY_STATE, 1
-setvar VAR_LEVEL_CAP, 73
-setvar VAR_PARTNER_EMMIE_STATE, 39
-goto FortreeCity_Gym_EventScript_WinonaDefeated
+	addvar VAR_FORTREE_CITY_STATE, 1
+	setvar VAR_LEVEL_CAP, 73
+	setvar VAR_PARTNER_EMMIE_STATE, 39
+	setflag FLAG_BADGE06_GET
+	goto FortreeCity_Gym_EventScript_WinonaDefeated
 end
 
 FortreeCity_Gym_EventScript_Winona::

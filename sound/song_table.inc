@@ -1057,6 +1057,41 @@ gSongTable::
 	song mus_hg_rival_exit, MUSIC_PLAYER_BGM, 0
 	song mus_dp_vs_galactic_commander, MUSIC_PLAYER_BGM, 0
 	song mus_bw_vs_team_plasma, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_wigglytuffs_guild, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_at_the_end_of_the_day, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_temporal_tower, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_through_the_sea_of_time, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_foggy_forest, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_a_wish_for_peace, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_job_clear, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_craggy_coast, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_deep_dark_crater, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_on_the_beach_at_dusk, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_top_menu_theme, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_time_gear, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_heartwarming, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_treasure_town, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_drenched_bluff, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_apple_woods, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_southern_jungle, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_do_your_best_as_always, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_kecleons_shop, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_goodnight, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_spacial_cliffs, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_temporal_spire, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_wigglytuffs_guild_remix, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_pelipper_island, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_sky_peak_forest, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_ending_theme, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_hidden_land, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_shaymin_village, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_illusion_stone_chamber, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_far_amp_plains, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_in_the_future, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_a_fun_exploration, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_team_charms_theme, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_spindas_cafe, MUSIC_PLAYER_BGM, 0
+	song mus_pmd_vast_ice_mountain_peak, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:

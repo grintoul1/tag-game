@@ -2,8 +2,7 @@
   "id": "MAP_SKY_PILLAR_1F",
   "name": "SkyPillar_1F",
   "layout": "LAYOUT_SKY_PILLAR_1F_CLEAN",
-  "music": "MUS_SKY_TOWER",
-  "region": "REGION_HOENN",
+  "music": "MUS_PMD_VAST_ICE_MOUNTAIN_PEAK",
   "region_map_section": "MAPSEC_SKY_PILLAR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -78,5 +77,6 @@
       "script": "SkyPillar_1F_EventScript_SkyPillar_AquaGrunt1SkyPillar_MagmaGrunt1"
     }
   ],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

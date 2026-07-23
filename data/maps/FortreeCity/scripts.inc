@@ -56,7 +56,6 @@ FortreeCity_EventScript_Shelly::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, FortreeCity_Movement_EmmieReturnToPlayer
 	waitmovement 0
 	setflag FLAG_HIDE_FORTREE_SHELLY
-	setflag FLAG_BADGE06_GET
 	clearflag FLAG_HIDE_JAGGED_PASS_SHELLY
 	setvar VAR_PARTNER_EMMIE_STATE, 40
 	addvar VAR_FORTREE_CITY_STATE, 1 
