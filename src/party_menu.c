@@ -3889,6 +3889,7 @@ bool32 TryMonStatusChange(u8 taskId, u16 status)
     struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][gPartyMenu.slotId];
     struct PartyMenuBox *menuBox = &sPartyMenuBoxes[gPartyMenu.slotId];
     u32 currentSpecies = GetMonData(mon, MON_DATA_SPECIES);
+    u32 status1 = (u32)status;
 
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
@@ -3897,7 +3898,7 @@ bool32 TryMonStatusChange(u8 taskId, u16 status)
     {
         gPartyMenuUseExitCallback = TRUE;
         PlaySE(SE_SELECT);
-        SetMonData(mon, MON_DATA_STATUS, &status);
+        SetMonData(mon, MON_DATA_STATUS, &status1);
         gSprites[menuBox->statusSpriteId].invisible = TRUE;
         CreatePartyMonStatusSprite(mon, menuBox);
         gSprites[menuBox->statusSpriteId].invisible = FALSE;
