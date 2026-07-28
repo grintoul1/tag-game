@@ -10,6 +10,7 @@ Multi Party: Half
 Mugshot: LightBlue
 
 Togedemaru @ Flame Orb
+Ability: Sturdy
 Level: 5
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fake Out
@@ -26,6 +27,7 @@ Multi Party: Half
 Mugshot: LightBlue
 
 Togedemaru @ Flame Orb
+Ability: Sturdy
 Level: 5
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fake Out
@@ -42,6 +44,7 @@ Multi Party: Half
 Mugshot: LightBlue
 
 Togedemaru @ Flame Orb
+Ability: Sturdy
 Level: 5
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fake Out
@@ -58,6 +61,7 @@ Multi Party: Half
 Mugshot: MayPink
 
 Togedemaru @ Flame Orb
+Ability: Sturdy
 Level: 5
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fake Out
@@ -74,6 +78,7 @@ Multi Party: Half
 Mugshot: MayPink
 
 Togedemaru @ Flame Orb
+Ability: Sturdy
 Level: 5
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fake Out
@@ -90,6 +95,7 @@ Multi Party: Half
 Mugshot: MayPink
 
 Togedemaru @ Flame Orb
+Ability: Sturdy
 Level: 5
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fake Out
@@ -739,9 +745,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Roselia
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sneasel-Hisui @ Focus Sash
+Ability: Inner Focus
+Level: 31
+Jolly Nature
+- Ice Punch
+- Knock Off
+- Upper Hand
+- Trailblaze
+
+Dugtrio-Alola @ Shuca Berry
+Ability: Tangling Hair
+Level: 32
+Jolly Nature
+- Iron Head
+- Sucker Punch
+- Low Horsepower
+- Fissure
 
 === TRAINER_TYRON ===
 Name: Tyron
@@ -753,9 +773,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Sandshrew
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Qwilfish @ Mystic Water
+Ability: Intimidate
+Level: 31
+Jolly Nature
+- Liquidation
+- Poison Jab
+- Fell Stinger
+- Aqua Jet
+
+Raticate-Alola @ Starf Berry
+Ability: Gluttony
+Level: 31
+Jolly Nature
+- Hyper Fang
+- Sucker Punch
+- U-turn
+- Pursuit
 
 === TRAINER_WALLY_MAUVILLE ===
 Name: Wally /* Mauville*/
@@ -2189,54 +2223,54 @@ Naive Nature
 - Shadow Ball
 - Fake Out
 
-=== TRAINER_STEPH ===
-Name: Steph /* [Speed Room]*/
+=== TRAINER_MIL ===
+Name: Mil /* [Hazards Room]*/
 Class: Cooltrainer
-Pic: Cooltrainer F
+Pic: Cooltrainer M
 Gender: Male
 Music: Cool
 Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Sharpedo @ Focus Sash
-Ability: Speed Boost
-Level: 38
-Jolly Nature
-- Crunch
-- Psychic Fangs
-- Ice Fang
-- Flip Turn
-
-Yanmega @ Grass Gem
-Ability: Speed Boost
-Level: 37
-Modest Nature
-- Air Slash
-- Signal Beam
-- Giga Drain
-- Detect
-
-Electrode @ Assault Vest
-Ability: Static
+Glimmora @ Power Herb
+Ability: Toxic Debris
 Level: 37
 Timid Nature
-- Foul Play
-- Electroweb
-- Electro Ball
-- Mirror Coat
+- Meteor Beam
+- Sludge
+- Mud Shot
+- Mortal Spin
 
-Slowbro-Galar @ Quick Claw
-Ability: Quick Draw
+Gourgeist-Small @ Sitrus Berry
+Ability: Pickup
+Level: 37
+Jolly Nature
+- Phantom Force
+- Seed Bomb
+- Leech Seed
+- Trick-or-Treat
+
+Samurott-Hisui @ Leftovers
+Ability: Torrent
+Level: 37
+Naive Nature
+- Sacred Sword
+- Ceaseless Edge
+- Flip Turn
+- Protect
+
+Kleavor @ Metronome
+Ability: Swarm
 Level: 38
-Relaxed Nature
-- Psychic
-- Acid Spray
-- Bulldoze
-- Slack Off
+Adamant Nature
+- Stone Axe
+- Trailblaze
+- Fury Cutter
+- Focus Energy
 
-=== TRAINER_MARY ===
-Name: Mary /* [Accuracy Room]*/
+=== TRAINER_PORY ===
+Name: Pory /* [Moody Room TODO]*/
 Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
@@ -2280,8 +2314,8 @@ Calm Nature
 - Pain Split  
 - Swagger  
 
-=== TRAINER_PARKER ===
-Name: Parker /* [Crit Room]*/
+=== TRAINER_TYRONE ===
+Name: Tyrone /* [Topsy Turvy Room]*/
 Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
@@ -2290,52 +2324,53 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Togekiss @ Scope Lens
-Ability: Super Luck
-Level: 37
-Timid Nature
-- Hyper Voice
-- Air Cutter
-- Dazzling Gleam
-
-Kingdra @ Scope Lens
-Ability: Sniper
-Level: 37
-Jolly Nature
-- Liquidation
-- Signal Beam
-- Scale Shot
-- Focus Energy
-
-Octillery @ Scope Lens
-Ability: Sniper
-Level: 36
-Hasty Nature
-- Octazooka
-- Bullet Seed
-- Rock Blast
-- Focus Energy
-
-Unfezant @ Power Herb
-Ability: Super Luck
-Level: 37
-Hasty Nature
-- Sky Attack
-- Razor Wind
-- Night Slash
-- Work Up
-
-Drapion @ Scope Lens
-Ability: Sniper
+Kingambit @ Metal Coat
+Ability: Defiant
 Level: 38
+Adamant Nature
+- Zen Headbutt
+- Sucker Punch
+- Aerial Ace
+- Metal Claw
+
+Eldegoss @ Eject Pack
+Ability: Cotton Down
+Level: 37
+Sassy Nature
+- Leaf Storm
+- Hyper Voice
+- Pollen Puff
+- Endure
+
+Skarmory @ Mirror Herb
+Ability: Weak Armor
+Level: 37
+Impish Nature
+- Body Press
+- Steel Wing
+- Fly
+- Swagger
+
+Malamar @ Clear Amulet
+Ability: Contrary
+Level: 37
+Careful Nature
+- Superpower
+- Foul Play
+- Psycho Cut
+- Topsy Turvy
+
+Flamigo @ Silver Powder
+Ability: Costar
+Level: 37
 Jolly Nature
-- Cross Poison
-- Night Slash
-- Slash
-- Focus Energy
+- U-turn
+- Payback
+- Dual Wingbeat
+- Low Kick
 
 === TRAINER_ZOE ===
-Name: Zoe /* [Defense Room]*/
+Name: Zoe /* [Screens Room]*/
 Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
@@ -2344,7 +2379,7 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Vanilluxe @ Occa Berry
+Vanilluxe @ Eject Button
 Ability: Snow Warning
 Level: 37
 Timid Nature
@@ -2377,8 +2412,8 @@ Level: 37
 Relaxed Nature
 - Dig
 - Rock Slide
-- Skitter Smack
 - Reversal
+- Power Trick
 
 Piloswine @ Eviolite
 Ability: Thick Fat
@@ -2390,7 +2425,7 @@ Impish Nature
 - Curse
 
 === TRAINER_JAS ===
-Name: Jas /* [Recovery Room]*/
+Name: Jas /* [Terrain Room]*/
 Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
@@ -2399,8 +2434,8 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Rillaboom @ Grassy Seed
-Ability: Grassy Surge
+Rillaboom @ Electric Seed
+Ability: Battle Armor
 Level: 37
 Jolly Nature
 - Drain Punch
@@ -2412,12 +2447,12 @@ Bellibolt @ Magnet
 Ability: Electromorphosis
 Level: 37
 Modest Nature
+- Hyper Voice
 - Parabolic Charge
 - Acid Spray
 - Soak
-- Hyper Voice
 
-Arbok @ Leftovers
+Arbok @ Big Root
 Ability: Intimidate
 Level: 36
 Hasty Nature
@@ -2426,26 +2461,26 @@ Hasty Nature
 - Lash Out
 - Coil
 
-Gogoat @ Leftovers
-Ability: Grass Pelt
+Hypno @ Psychic Seed
+Ability: Inner Focus
 Level: 37
-Impish Nature
-- Wild Charge
-- Play Rough
-- Giga Drain
-- Bulk Up
+Lax Nature
+- Expanding Force
+- Thunderpunch
+- Hex
+- Trailblaze
 
 Snorlax @ Leftovers
 Ability: Immunity
 Level: 38
 Impish Nature
+- Steel Roller
 - Body Slam
-- Yawn
 - Stockpile
 - Swallow
 
-=== TRAINER_TYRONE ===
-Name: Tyrone /* [Strength Room]*/
+=== TRAINER_BAZZO ===
+Name: Bazzo /* [Tailwind Room]*/
 Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
@@ -2453,100 +2488,92 @@ Music: Cool
 Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
-
-Diggersby @ Focus Sash
-Ability: Huge Power
-Level: 37
-Jolly Nature
-- High Horsepower
-- Body Slam
-- Quick Attack
-- Swords Dance
 
 Kilowattrel @ Magnet
-Ability: Competitive
-Level: 37
-Timid Nature
-- Volt Switch
-- Air Slash
-- Charge Beam
+Ability: Wind Power
+Level: 38
+Naive Nature
+- Air Cutter
+- Electro Ball
 - Endeavor
+- Thunder Wave
 
-Dipplin @ Eject Pack
-Ability: Supersweet Syrup
-Level: 37
-Sassy Nature
-- Leaf Storm
-- Draco Meteor
-- Pollen Puff
-- Sucker Punch
-
-Azumarill @ Salac Berry
-Ability: Huge Power
+Shiftry @ Tanga Berry
+Ability: Wind Rider
 Level: 37
 Jolly Nature
-- Liquidation
-- Play Rough
-- Aqua Jet
-- Belly Drum
+- Leaf Blade
+- Lash Out
+- Aerial Ace
+- Fake Out
 
-Kingambit @ Life Orb
-Ability: Defiant
+Golduck @ Wise Glasses
+Ability: Damp
+Level: 37
+Modest Nature
+- Scald
+- Signal Beam
+- Psybeam
+- Mud Slap
+
+Feraligatr @ Ice Gem
+Ability: Torrent
 Level: 38
-Adamant Nature
-- Iron Head
-- Zen Headbutt
-- Sucker Punch
-- Swords Dance
+Hasty Nature
+- Superpower
+- Liquidation
+- Frost Punch
+- Snarl
 
-=== TRAINER_DAN ===
-Name: Dan /* [Recoil Room]*/
+=== TRAINER_STEPH ===
+Name: Steph /* [Trick Room Room]*/
 Class: Cooltrainer
-Pic: Cooltrainer M
+Pic: Cooltrainer F
 Gender: Male
 Music: Cool
 Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Staraptor @ Liechi Berry
-Ability: Reckless
+Pincurchin @ Mystic Water
+Ability: Lightning Rod
 Level: 37
-Jolly Nature
-- Brave Bird
-- Double Edge
-- Endeavor
+Quiet Nature
+IVs: 0 Spe
+- Supercell Slam
+- Scald
+- Poison Jab
+- Curse
 
-Pikachu @ Light Ball
-Ability: Static
-Level: 37
-Jolly Nature
-- Volt Tackle
-- Double Edge
-- Submission
-
-Obstagoon @ Custap Berry
-Ability: Reckless
-Level: 37
-Jolly Nature
-- Double Edge
-- Submission
-- Reversal
-- Obstruct
-
-Basculin @ Choice Band
-Ability: Adaptability
-Level: 37
-Jolly Nature
-- Wave Crash
-- Head Smash
-
-Slaking @ Silk Scarf
-Ability: Truant
+Cursola @ Kasib Berry
+Ability: Perish Body
 Level: 38
-Jolly Nature
-- Retaliate
-- Double Edge
+Relaxed Nature
+IVs: 0 Spe
+- Leech Life
+- Giga Drain
+- Iron Defense
+- Strength Sap
+
+Wigglytuff @ Room Service
+Ability: Friend Guard
+Level: 37
+Sassy Nature
+IVs: 0 Spe
+- Energy Ball
+- Draining Kiss
+- Grass Knot
+- Gyro Ball
+
+Slowbro-Galar @ Quick Claw
+Ability: Quick Draw
+Level: 38
+Relaxed Nature
+IVs: 0 Spe
+- Psychic
+- Razor Shell
+- Acid Spray
+- Slack Off
 
 === TRAINER_NORMAN_1 ===
 Name: Norman
@@ -2623,13 +2650,21 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Lotad
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ludicolo @ Wise Glasses
+Ability: Own Tempo
+Level: 40
+Naive Nature
+- Scald
+- Giga Drain
+- Icy Wind
+- Fake Out
 
-Shroomish
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Crabominable @ Focus Sash
+Ability: Anger Point
+Level: 39
+Impish Nature
+- Brutal Swing
+- Coaching
 
 === TRAINER_BILLY ===
 Name: Billy
@@ -2641,13 +2676,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Zigzagoon
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Swellow @ Silk Scarf
+Ability: Scrappy
+Level: 39
+Mild Nature
+- Hyper Voice
+- Air Slash
+- Steel Wing
+- Endeavor
 
-Seedot
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lucario @ Life Orb
+Ability: Justified
+Level: 40
+Naive Nature
+- Flash Cannon
+- Force Palm
+- Vacuum Wave
+- Bullet Punch
 
 === TRAINER_JAMES_1 ===
 Name: James
@@ -2712,13 +2757,41 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Seedot
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Vivillon-Jungle @ Focus Sash
+Ability: Friend Guard
+Level: 40
+Timid Nature
+- Bug Buzz
+- Air Slash
+- Energy Ball
+- Rage Powder
 
-Lotad
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Electabuzz @ Punching Glove
+Ability: Static
+Level: 41
+Naive Nature
+- Focus Punch
+- Thunderbolt
+- Ice Punch
+- Metal Sound
+
+Palossand @ Assault Vest
+Ability: Water Compaction
+Level: 41
+Modest Nature
+- Shadow Ball
+- Scorching Sands
+- Ancient Power
+- Infestation
+
+Amoonguss @ Iapapa Berry
+Ability: Effect Spore
+Level: 40
+Bold Nature
+- Foul Play
+- Sludge Bomb
+- Giga Drain
+- Rage Powder
 
 === TRAINER_CINDY_1 ===
 Name: Cindy
@@ -3164,9 +3237,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Marill
-Level: 13
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Gyarados @ Wacan Berry
+Ability: Intimidate
+Level: 44
+Jolly Nature
+- Aqua Tail
+- Iron Head
+- Bounce
+- Temper Flare
+
+Seviper @ Miracle Seed
+Ability: Shed Skin
+Level: 45
+Timid Nature
+- Sludge Bomb
+- Flamethrower
+- Giga Drain
+- Acid Spray
 
 === TRAINER_GRUNT_ROUTE109_2 ===
 Name: Grunt /* Route 109 #2*/
@@ -3178,13 +3265,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Zigzagoon
-Level: 13
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-- Sand Attack
-- Headbutt
-- Tail Whip
-- Surf
+Dustox @ Focus Sash
+Ability: Shield Dust
+Level: 45
+Timid Nature
+- U-turn
+- Venoshock
+- Infestation
+- Toxic
+
+Cacturne @ Quick Claw
+Ability: Water Absorb
+Level: 44
+Adamant Nature
+- Sucker Punch
+- Needle Arm
+- Fell Stinger
+- Spiky Shield
 
 === TRAINER_GRUNT_ROUTE109_3 ===
 Name: Grunt /* Route 109 #3*/
@@ -3196,13 +3293,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Azurill
-Level: 12
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Lickitung @ Eviolite
+Ability: Own Tempo
+Level: 45
+Relaxed Nature
+- Hammer Arm
+- Body Slam
+- Muddy Water
+- Sunny Day
 
-Azurill
-Level: 12
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Chimecho @ Life Orb
+Ability: Levitate
+Level: 44
+Timid Nature
+- Psychic
+- Shadow Ball
+- Signal Beam
+- Hypnosis
 
 === TRAINER_GRUNT_ROUTE109_4 ===
 Name: Grunt /* Route 109 #4*/
@@ -3214,13 +3321,79 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Tentacool
-Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Mr. Mime @ Focus Band
+Ability: Filter
+Level: 44
+Modest Nature
+- Psychic
+- Dazzling Gleam
+- Mystical Fire
+- Icy Wind
 
-Tentacool
-Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Victreebel @ Blunder Policy
+Ability: Chlorophyll
+Level: 45
+Jolly Nature
+- Solar Blade
+- Poison Jab
+- Leech Life
+- Sleep Powder
+
+=== TRAINER_GRUNT_ROUTE109_5 ===
+Name: Grunt /* Route 109 #5*/
+Class: Team Aqua
+Pic: Aqua Grunt F
+Gender: Female
+Music: Girl
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Weezing @ Assault Vest
+Ability: Levitate
+Level: 44
+Mild Nature
+- Explosion
+- Heat Wave
+- Dark Pulse
+- Psybeam
+
+Arbok @ Payapa Berry
+Ability: Intimidate
+Level: 45
+Jolly Nature
+- Gunk Shot
+- Stomping Tantrum
+- Lash Out
+- Coil
+
+=== TRAINER_GRUNT_ROUTE109_6 ===
+Name: Grunt /* Route 109 #6*/
+Class: Team Aqua
+Pic: Aqua Grunt M
+Gender: Male
+Music: Girl
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Wobbuffet @ Brightpowder
+Ability: Telepathy
+Level: 46
+Calm Nature
+- Mirror Coat
+- Counter
+- Destiny Bond
+- Encore
+
+Persian @ Scope Lens
+Ability: Unnerve
+Level: 44
+Jolly Nature
+- Slash
+- Night Slash
+- Play Rough
+- Fake Out
 
 === TRAINER_ARCHIE_SLATEPORT_CITY ===
 Name: Archie /* Oceanic Museum*/
@@ -3233,17 +3406,59 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Mightyena
-Level: 41
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Silvally-Water @ Water Memory
+Ability: RKS System
+Level: 45
+Naive Nature
+- Multi Attack
+- Flamethrower
+- U-Turn
+- Tailwind
 
-Crobat
-Level: 41
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Tornadus @ Eject Pack
+Ability: Prankster
+Level: 46
+Hasty Nature
+- Bleakwind Storm
+- Hammer Arm
+- Weather Ball
+- Rain Dance
 
-Sharpedo
-Level: 43
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Darmanitan @ Focus Sash
+Ability: Zen Mode
+Level: 44
+Naive Nature
+- Psychic
+- Body Press
+- Fire Punch
+- Grass Knot
+
+Kartana @ Scope Lens
+Ability: Beast Boost
+Level: 46
+Jolly Nature
+- Leaf Blade
+- X-Scissor
+- Knock Off
+- Tailwind
+
+Quaquaval @ Coba Berry
+Ability: Moxie
+Level: 45
+Hasty Nature
+- Triple Axel
+- Aqua Cutter
+- Upper Hand
+- Rain Dance
+
+Blastoise @ Blastoisinite
+Ability: Torrent
+Level: 46
+Timid Nature
+- Surf
+- Ice Beam
+- Dark Pulse
+- Aura Sphere
 
 === TRAINER_VICTOR ===
 Name: Victor
@@ -3256,13 +3471,14 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Taillow @ Oran Berry
-Level: 16
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-Zigzagoon @ Oran Berry
-Level: 16
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Perrserker @ Air Balloon
+Ability: Steely Spirit
+Level: 42
+Adamant Nature
+- Play Rough
+- Iron Head
+- Dig
+- Fake Out
 
 === TRAINER_VICTORIA ===
 Name: Victoria
@@ -3274,9 +3490,14 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Roselia @ Oran Berry
-Level: 17
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Maushold-Four @ Covert Cloak
+Ability: Friend Guard
+Level: 42
+Jolly Nature
+- Population Bomb
+- Bulldoze
+- Encore
+- After You
 
 === TRAINER_VIVI ===
 Name: Vivi
@@ -3289,17 +3510,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Marill
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Dragalge @ Focus Sash
+Ability: Poison Point
+Level: 42
+Hasty Nature
+- Dragon Tail
+- Acid Spray
+- Flip Turn
+- Toxic Spikes
 
-Shroomish
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Numel
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ampharos @ Never-Melt Ice
+Ability: Static
+Level: 43
+Naive Nature
+- Volt Switch
+- Thunder Punch
+- Frost Punch
+- Thunder Wave
 
 === TRAINER_VICKY ===
 Name: Vicky
@@ -3311,13 +3538,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Meditite
-Level: 18
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- High Jump Kick
-- Meditate
-- Confusion
-- Detect
+Glalie @ Occa Berry
+Ability: Frost Body
+Level: 42
+Naive Nature
+- Crunch
+- Ice Shard
+- Icy Wind
+- Protect
+
+Magmar @ Adrenaline Orb
+Ability: Flame Body
+Level: 44
+Adamant Nature
+- Knock Off
+- Flame Wheel
+- Poison Jab
+- Will-O-Wisp
 
 === TRAINER_VITO_ROUTE111 ===
 Name: Vito
@@ -3330,21 +3567,41 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Meditite
-Level: 18
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- High Jump Kick
-- Meditate
-- Confusion
-- Detect
+Electrode-Hisui @ Big Root
+Ability: Static
+Level: 42
+Timid Nature
+- Giga Drain
+- Electroweb
+- Electro Ball
+- Screech
 
-Meditite
-Level: 18
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- High Jump Kick
-- Meditate
-- Confusion
-- Detect
+Shiftry
+Ability: Pickpocket
+Level: 46
+Jolly Nature
+- Foul Play
+- Hex
+- Trailblaze
+- Rock Tomb
+
+Swalot @ Custap Berry
+Ability: Liquid Ooze
+Level: 43
+Brave Nature
+- Venoshock
+- Round
+- Frost Punch
+- Endure
+
+Altaria-Mega @ Altarianite
+Ability: Pixilate
+Level: 45
+Timid Nature
+- Round
+- Incinerate
+- Dragon Breath
+- Roost
 
 === TRAINER_CELIA ===
 Name: Celia
@@ -3356,13 +3613,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Marill
-Level: 22
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Golurk @ Power Herb
+Ability: No Guard
+Level: 46
+Adamant Nature
+- Dynamic Punch
+- High Horsepower
+- Phantom Force
+- Fly
 
-Lombre
-Level: 22
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Excadrill @ Occa Berry
+Ability: Sand Force
+Level: 47
+Jolly Nature
+- Iron Head
+- Crush Claw
+- Stomping Tantrum
+- Hone Claws
 
 === TRAINER_BRANDEN ===
 Name: Branden
@@ -3374,13 +3641,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Taillow
-Level: 22
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Orthworm @ Metal Coat
+Ability: Sand Veil
+Level: 47
+Jolly Nature
+- Iron Tail
+- Body Press
+- Rock Slide
+- Coil
 
-Nuzleaf
-Level: 22
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Gabite @ Eviolite
+Ability: Sand Veil
+Level: 46
+Hasty Nature
+- Dragon Rush
+- Facade
+- Fire Fang
+- Swords Dance
 
 === TRAINER_BRYAN ===
 Name: Bryan
@@ -3392,13 +3669,32 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Sandshrew
-Level: 22
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Stonjourner @ Focus Sash
+Ability: Power Spot
+Level: 49
+Naive Nature
+- Body Press
+- Rock Slide
+- Heavy Slam
+- Heat Crash
 
-Sandslash
-Level: 22
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Klinklang @ Silk Scarf
+Ability: Minus
+Level: 48
+Jolly Nature
+- Frustration
+- Wild Charge
+- Gear Grind
+- Shift Gear
+
+Vanilluxe @ Chople Berry
+Ability: Weak Armor
+Level: 49
+Naive Nature
+- Freeze-Dry
+- Mirror Shot
+- Weather Ball
+- Magic Coat
 
 === TRAINER_DUSTY_1 ===
 Name: Dusty
@@ -3410,13 +3706,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Sandslash
-Level: 23
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
+Dedenne @ Petaya Berry
+Ability: Plus
+Level: 48
+Timid Nature
+- Dazzling Gleam
+- Volt Switch
+- Grass Knot
+- Magnet Rise
+
+Dugtrio @ Passho Berry
+Ability: Arena Trap
+Level: 53
+Jolly Nature
+- High Horsepower
+- Foul Play
+- Smack Down
+- Fissure
 
 === TRAINER_DREW ===
 Name: Drew
@@ -3428,13 +3734,32 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Sandshrew
-Level: 23
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Dig
-- Sand Attack
-- Poison Sting
-- Slash
+Dracozolt @ Black Glasses
+Ability: Sand Rush
+Level: 47
+Adamant Nature
+- Wild Charge
+- Body Slam
+- Brutal Swing
+
+
+Houndstone @ Rocky Helmet
+Ability: Sand Rush
+Level: 47
+Adamant Nature
+- Play Rough
+- Frost Fang
+- Last Respects
+- Howl
+
+Stoutland @ Muscle Band
+Ability: Sand Rush
+Level: 48
+Adamant Nature
+- Retaliate
+- Psychic Fangs
+- Submission
+- After You
 
 === TRAINER_BECKY ===
 Name: Becky
@@ -3446,21 +3771,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Sandshrew
-Level: 22
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Sand Attack
-- Poison Sting
-- Slash
-- Dig
+Solrock @ Luminous Moss
+Ability: Levitate
+Level: 47
+Jolly Nature
+- Stone Edge
+- Zen Headbutt
+- Acrobatics
+- Grass Knot
 
-Marill
-Level: 22
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Rollout
-- Bubble Beam
-- Tail Whip
-- Defense Curl
+Lunatone @ Ice Gem
+Ability: Levitate
+Level: 47
+Timid Nature
+- Moonblast
+- Frosty Gale
+- Shadow Ball
+- Weather Ball
 
 === TRAINER_WILTON_1 ===
 Name: Wilton
@@ -3472,17 +3799,25 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Electrike
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Oranguru @ Colbur Berry
+Ability: Telepathy
+Level: 48
+Relaxed Nature
+IVs: 0 Spe
+- Foul Play
+- Psychic
+- Trick Room
+- Instruct
 
-Wailmer
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Makuhita
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Doublade @ Air Balloon
+Ability: No Guard
+Level: 47
+Sassy Nature
+IVs: 0 Spe
+- Iron Head
+- Shadow Claw
+- Sacred Sword
+- Instruct
 
 === TRAINER_BROOKE_1 ===
 Name: Brooke
@@ -3494,17 +3829,30 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Wingull
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Indeedee @ Metronome
+Ability: Psychic Surge
+Level: 48
+Timid Nature
+- Hyper Voice
+- Dazzling Gleam
+- Mystical Fire
 
-Numel
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Goodra-Hisui @ Metronome
+Ability: Shell Armor
+Level: 47
+Quiet Nature
+IVs: 0 Spe
+- Sludge Wave
+- Muddy Water
 
-Roselia
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Marowak-Alola @ Metronome
+Ability: Cursed Body
+Level: 47
+Brave Nature
+IVs: 0 Spe
+- Earthquake
+- Heat Wave
+- Rock Slide
 
 === TRAINER_LAO_1 ===
 Name: Lao
@@ -3516,29 +3864,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Koffing
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Poison Gas
-- Tackle
-- Smog
-- Self Destruct
+Togekiss @ Weakness Policy
+Ability: Super Luck
+Level: 47
+Timid Nature
+- Air Slash
+- Dazzling Gleam
+- Stored Power
+- Follow Me
 
-Koffing
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Poison Gas
-- Tackle
-- Smog
-- Self Destruct
-
-Koffing
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Poison Gas
-- Tackle
-- Sludge
-- Self Destruct
+Nidoking @ Soft Sand
+Ability: Sheer Force
+Level: 49
+Jolly Nature
+- Megahorn
+- Poison Jab
+- Stomping Tantrum
+- Thunder Punch
 
 === TRAINER_LUNG ===
 Name: Lung
@@ -3550,13 +3892,29 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Koffing
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ninjask @ Focus Sash
+Ability: Speed Boost
+Level: 48
+Jolly Nature
+- U-turn
 
-Ninjask
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Zoroark-Hisui @ Silk Scarf
+Ability: Illusion
+Level: 48
+Naive Nature
+- Hyper Voice
+- Flamethrower
+- Psychic
+- U-turn
+
+Zoroark @ Black Belt
+Ability: Illusion
+Level: 48
+Timid Nature
+- Night Daze
+- Aura Sphere
+- Grass Knot
+- U-turn
 
 === TRAINER_TORI_AND_TIA ===
 Name: Tori & Tia
@@ -3568,13 +3926,37 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Spinda
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Toedscruel @ Ghost Gem
+Ability: Mycelium Might
+Level: 48
+Timid Nature
+- Energy Ball
+- Earth Power
+- Hex
+- Spore
 
-Spinda
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Weezing-Galar @ Air Balloon
+Ability: Neutralizing Gas
+Level: 49
+Calm Nature
+- Strange Steam
+- Dark Pulse
+- Heat Wave
+- Protect
+
+Silvally @ Chople Berry
+Ability: RKS System
+Level: 48
+Jolly Nature
+- Explosion
+
+Kingdra @ Mystic Water
+Ability: Damp
+Level: 49
+Jolly Nature
+- Liquidation
+- Breaking Swipe
+- Whirlpool
 
 === TRAINER_COBY ===
 Name: Coby
@@ -3612,70 +3994,80 @@ Lombre
 Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_BRENDAN_ROUTE_114_MUDKIP ===
-Name: Brendan /* Route 114 Sceptile*/
+=== TRAINER_MAY_ROUTE_114_TREECKO ===
+Name: May /* Route 114 Blaziken*/
 Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Battle Type: Singles
+Pic: May
+Gender: Female
+Music: Female
+Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
-Mugshot: LightBlue
+Mugshot: MayPink
 
-Pelipper
-Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Gust
-- Growl
+Cryogonal @ Rock Gem
+Ability: Levitate
+Level: 49
+Timid Nature
+- Frosty Gale
+- Freeze-Dry
+- Ancient Power
+- Icy Wind
 
-Poochyena
-Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Bite
-- Scary Face
+Cyclizar @ Sitrus Berry
+Ability: Regenerator
+Level: 48
+Hasty Nature
+- Hyper Voice
+- Aqua Tail
+- Iron Head
+- Shed Tail
 
-=== TRAINER_BRENDAN_ROUTE_114_TREECKO ===
-Name: Brendan /* Route 114 Blaziken*/
+Blaziken @ Coba Berry
+Ability: Speed Boost
+Level: 49
+Naive Nature
+- Close Combat
+- Fire Pledge
+- Blaze Kick
+- Acrobatics
+
+=== TRAINER_WALLY_ROUTE_114_M_TREECKO ===
+Name: Wally /* Route 114 M Blaziken*/
 Class: Rival
-Pic: Brendan
+Pic: Wally
 Gender: Male
 Music: Male
-Battle Type: Singles
+Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
-Mugshot: LightBlue
 
-Dustox
-Level: 29
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Gallade @ Black Glasses
+Ability: Sharpness
+Level: 49
+Jolly Nature
+- Sacred Sword
+- Psycho Cut
+- Night Slash
+- Upper Hand
 
-Ninjask
-Level: 29
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Decidueye @ Miracle Seed
+Ability: Long Reach
+Level: 48
+Naive Nature
+- Leaf Blade
+- Spirit Shackle
+- Grass Pledge
+- Sucker Punch
 
-=== TRAINER_BRENDAN_ROUTE_114_TORCHIC ===
-Name: Brendan /* Route 114 Swampert*/
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Battle Type: Singles
-AI: Tag Trainer
-Multi Party: Half
-Mugshot: LightBlue
-
-Surskit
-Level: 31
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-Dustox
-Level: 31
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-Ninjask
-Level: 31
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Samurott-Hisui @ Adrenaline Orb
+Ability: Sharpness
+Level: 49
+Hasty Nature
+- Water Pledge
+- Air Slash
+- Night Slash
+- Helping Hand
 
 === TRAINER_MAY_ROUTE_114_MUDKIP ===
 Name: May /* Route 114 Sceptile*/
@@ -3688,33 +4080,69 @@ AI: Tag Trainer
 Multi Party: Half
 Mugshot: MayPink
 
-Electrode-Hisui @ Big Root
-Ability: Static
-Level: 48
-Timid Nature
-- Giga Drain
-- Electroweb
-- Electro Ball
-- Screech
+Revavroom @ Focus Sash
+Ability: Filter
+Level: 49
+Hasty Nature
+- Sludge Wave
+- Iron Head
+- Poison Jab
+- Acid Spray
 
-=== TRAINER_MAY_ROUTE_114_TREECKO ===
-Name: May /* Route 114 Blaziken*/
+Mamoswine @ Toxic Orb
+Ability: Refrigerate
+Level: 48
+Jolly Nature
+- High Horsepower
+- Facade
+- Rock Slide
+- Protect
+
+Sceptile @ Occa Berry
+Ability: Unburden
+Level: 49
+Naive Nature
+- Leaf Blade
+- Grass Pledge
+- Acrobatics
+- Pursuit
+
+=== TRAINER_WALLY_ROUTE_114_M_MUDKIP ===
+Name: Wally /* Route 114 M Sceptile*/
 Class: Rival
-Pic: May
-Gender: Female
-Music: Female
+Pic: Wally
+Gender: Male
+Music: Male
 Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
-Mugshot: MayPink
 
-Lombre
-Level: 32
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Gallade @ Black Glasses
+Ability: Sharpness
+Level: 49
+Jolly Nature
+- Sacred Sword
+- Psycho Cut
+- Night Slash
+- Upper Hand
 
-Breloom
-Level: 32
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Samurott @ Mystic Water
+Ability: Shell Armor
+Level: 48
+Hasty Nature
+- Megahorn
+- Razor Shell
+- Retaliate
+- Water Pledge
+
+Typhlosion-Hisui @ Red Card
+Ability: Flame Body
+Level: 49
+Naive Nature
+- Infernal Parade
+- Fire Pledge
+- Aura Sphere
+- Calm Mind
 
 === TRAINER_MAY_ROUTE_114_TORCHIC ===
 Name: May /* Route 114 Swampert*/
@@ -3727,58 +4155,294 @@ AI: Tag Trainer
 Multi Party: Half
 Mugshot: MayPink
 
-Geodude
-Level: 24
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Honchkrow @ Roseli Berry
+Ability: Moxie
+Level: 49
+Naive Nature
+- Brave Bird
+- Heat Wave
+- Knock Off
+- Pursuit
 
-Geodude
-Level: 24
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Dachsbun @ Salac Berry
+Ability: Well-Baked Body
+Level: 48
+Careful Nature
+- Play Rough
+- Body Press
+- Baton Pass
+- Howl
 
-Geodude
-Level: 24
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Swampert @ Rindo Berry
+Ability: Filter
+Level: 49
+Hasty Nature
+- High Horsepower
+- Liquidation
+- Water Pledge
+- Frost Punch
 
-Graveler
-Level: 24
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-=== TRAINER_WALLY_ROUTE_114 ===
-Name: Wally /* Route 114*/
+=== TRAINER_WALLY_ROUTE_114_M_TORCHIC ===
+Name: Wally /* Route 114 M Swampert*/
 Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
-Battle Type: Singles
+Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Gallade @ Galladite
+Gallade @ Black Glasses
 Ability: Sharpness
 Level: 49
 Jolly Nature
-- Psycho Cut
 - Sacred Sword
-- Shadow Claw
-- Leaf Blade
-
-Farigiraf @ Starf Berry
-Ability: Cud Chew
-Level: 74
-Modest Nature
-- Psychic
-- Shadow Ball
-- Thunderbolt
-- Baton Pass
-
-Iron Valiant @ Misty Seed
-Ability: Quark Drive
-Level: 74
-Jolly Nature
-- Future Sight
-- Spirit Break
-- Drain Punch
+- Psycho Cut
 - Night Slash
+- Upper Hand
+
+Typhlosion @ Charcoal
+Ability: Flash Fire
+Level: 48
+Hasty Nature
+- Iron Tail
+- Wild Charge
+- Lava Plume
+- Fire Pledge
+
+Decidueye-Hisui @ Focus Sash
+Ability: Scrappy
+Level: 49
+Naive Nature
+- Grass Pledge
+- Triple Arrows
+- Reversal
+- Coaching
+
+=== TRAINER_BRENDAN_ROUTE_114_TREECKO ===
+Name: Brendan /* Route 114 Blaziken*/
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+Mugshot: LightBlue
+
+Cryogonal @ Rock Gem
+Ability: Levitate
+Level: 49
+Timid Nature
+- Frosty Gale
+- Freeze-Dry
+- Ancient Power
+- Icy Wind
+
+Cyclizar @ Sitrus Berry
+Ability: Regenerator
+Level: 48
+Hasty Nature
+- Hyper Voice
+- Aqua Tail
+- Iron Head
+- Shed Tail
+
+Blaziken @ Coba Berry
+Ability: Speed Boost
+Level: 49
+Naive Nature
+- Close Combat
+- Fire Pledge
+- Blaze Kick
+- Acrobatics
+
+=== TRAINER_WALLY_ROUTE_114_F_TREECKO ===
+Name: Wally /* Route 114 F Blaziken*/
+Class: Rival
+Pic: Wally
+Gender: Male
+Music: Male
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Gardevoir @ Black Belt
+Ability: Telepathy
+Level: 49
+Timid Nature
+- Future Sight
+- Moonblast
+- Psychic
+- Aura Sphere
+
+Decidueye @ Miracle Seed
+Ability: Long Reach
+Level: 48
+Naive Nature
+- Leaf Blade
+- Spirit Shackle
+- Grass Pledge
+- Sucker Punch
+
+Samurott-Hisui @ Adrenaline Orb
+Ability: Sharpness
+Level: 48
+Hasty Nature
+- Water Pledge
+- Air Slash
+- Night Slash
+- Helping Hand
+
+=== TRAINER_BRENDAN_ROUTE_114_MUDKIP ===
+Name: Brendan /* Route 114 Sceptile*/
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+Mugshot: LightBlue
+
+Revavroom @ Focus Sash
+Ability: Filter
+Level: 49
+Hasty Nature
+- Sludge Wave
+- Iron Head
+- Poison Jab
+- Acid Spray
+
+Mamoswine @ Toxic Orb
+Ability: Refrigerate
+Level: 48
+Jolly Nature
+- High Horsepower
+- Facade
+- Rock Slide
+- Protect
+
+Sceptile @ Occa Berry
+Ability: Unburden
+Level: 49
+Naive Nature
+- Leaf Blade
+- Grass Pledge
+- Acrobatics
+- Pursuit
+
+=== TRAINER_WALLY_ROUTE_114_F_MUDKIP ===
+Name: Wally /* Route 114 F Sceptile*/
+Class: Rival
+Pic: Wally
+Gender: Male
+Music: Male
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Gardevoir @ Black Belt
+Ability: Telepathy
+Level: 49
+Timid Nature
+- Future Sight
+- Moonblast
+- Psychic
+- Aura Sphere
+
+Samurott @ Mystic Water
+Ability: Shell Armor
+Level: 48
+Hasty Nature
+- Megahorn
+- Razor Shell
+- Retaliate
+- Water Pledge
+
+Typhlosion-Hisui @ Red Card
+Ability: Flame Body
+Level: 49
+Naive Nature
+- Infernal Parade
+- Fire Pledge
+- Aura Sphere
+- Calm Mind
+
+=== TRAINER_BRENDAN_ROUTE_114_TORCHIC ===
+Name: Brendan /* Route 114 Swampert*/
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+Mugshot: LightBlue
+
+Honchkrow @ Roseli Berry
+Ability: Moxie
+Level: 49
+Naive Nature
+- Brave Bird
+- Heat Wave
+- Knock Off
+- Pursuit
+
+Dachsbun @ Salac Berry
+Ability: Well-Baked Body
+Level: 48
+Careful Nature
+- Play Rough
+- Body Press
+- Baton Pass
+- Howl
+
+Swampert @ Rindo Berry
+Ability: Filter
+Level: 49
+Hasty Nature
+- High Horsepower
+- Liquidation
+- Water Pledge
+- Frost Punch
+
+=== TRAINER_WALLY_ROUTE_114_F_TORCHIC ===
+Name: Wally /* Route 114 F Swampert*/
+Class: Rival
+Pic: Wally
+Gender: Male
+Music: Male
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Gardevoir @ Black Belt
+Ability: Telepathy
+Level: 49
+Timid Nature
+- Future Sight
+- Moonblast
+- Psychic
+- Aura Sphere
+
+Typhlosion @ Charcoal
+Ability: Flash Fire
+Level: 48
+Hasty Nature
+- Iron Tail
+- Wild Charge
+- Lava Plume
+- Fire Pledge
+
+Decidueye-Hisui @ Focus Sash
+Ability: Scrappy
+Level: 49
+Naive Nature
+- Grass Pledge
+- Triple Arrows
+- Reversal
+- Coaching
 
 === TRAINER_TYRA_AND_IVY ===
 Name: Tyra & Ivy
@@ -3790,21 +4454,50 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Roselia
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Growth
-- Stun Spore
-- Mega Drain
-- Leech Seed
+Rotom-Heat @ Charcoal
+Ability: Levitate
+Level: 50
+Timid Nature
+- Heat Wave
+- Foul Play
+- Shadow Ball
+- Will-O-Wisp
 
-Graveler
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Defense Curl
-- Rollout
-- Mud Sport
-- Rock Throw
+Rotom-Fan @ Wise Glasses
+Ability: Levitate
+Level: 49
+Hasty Nature
+- Air Slash
+- Volt Switch
+- Swagger
+- Thunder Wave
+
+Rotom-Mow @ Eject Pack
+Ability: Levitate
+Level: 48
+Hasty Nature
+- Leaf Storm
+- Ominous Wind
+- Stored Power
+- Toxic
+
+Rotom-Wash @ Iapapa Berry
+Ability: Levitate
+Level: 48
+Timid Nature
+- Hydro Pump
+- Signal Beam
+- Hex
+- Ally Switch
+
+Rotom-Frost @ Chople Berry
+Ability: Levitate
+Level: 50
+Naive Nature
+- Poltergeist
+- Frosty Gale
+- Thunderbolt
+- Chill-O-Wisp
 
 === TRAINER_GRUNT_ROUTE_114_1 ===
 Name: Grunt /* Route 114 #1*/
@@ -3816,13 +4509,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Slugma
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Meowstic-F @ Scope Lens
+Ability: Competitive
+Level: 50
+Timid Nature
+- Psyshock
+- Extrasensory
+- Dazzling Gleam
+- Fake Out
 
-Wingull
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sharpedo @ Scope Lens
+Ability: Speed Boost
+Level: 51
+Adamant Nature
+- Psychic Fangs
+- Waterfall
+- Crunch
+- Protect
 
 === TRAINER_GRUNT_ROUTE_114_2 ===
 Name: Grunt /* Route 114 #2*/
@@ -3834,13 +4537,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Geodude
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Scrafty @ Covert Cloak
+Ability: Intimidate
+Level: 51
+Careful Nature
+- Close Combat
+- Throat Chop
+- Poison Jab
+- Fake Tears
 
-Numel
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Salazzle @ Focus Band
+Ability: Corrosion
+Level: 49
+Hasty Nature
+- Flamethrower
+- Sludge Bomb
+- Hyper Voice
+- Dragon Pulse
 
 === TRAINER_GRUNT_ROUTE_114_3 ===
 Name: Grunt /* Route 114 #3*/
@@ -3852,13 +4565,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Geodude
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Tauros-Paldea-Blaze @ Bright Powder
+Ability: Anger Point
+Level: 50
+Hasty Nature
+- Raging Bull
+- Lash Out
+- Reversal
+- Scary Face
 
-Machop
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Clefable @ Bright Powder
+Ability: Friend Guard
+Level: 51
+Bold Nature
+- Meteor Mash
+- Moonblast
+- Tri Attack
+- Grass Knot
 
 === TRAINER_GRUNT_ROUTE_114_4 ===
 Name: Grunt /* Route 114 #4*/
@@ -3870,13 +4593,21 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Lombre
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Absol @ Scope Lens
+Ability: Super Luck
+Level: 51
+Naive Nature
+- Future Sight
+- Brutal Swing
 
-Marill
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Clodsire @ Quick Claw
+Ability: Unaware
+Level: 50
+Bold Nature
+- Gunk Shot
+- Iron Head
+- Stomping Tantrum
+- Helping Hand
 
 === TRAINER_GRUNT_ROUTE_114_5 ===
 Name: Grunt /* Route 114 #5*/
@@ -3888,13 +4619,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Marill
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Carbink @ Quick Claw
+Ability: Sturdy
+Level: 51
+Bold Nature
+- Body Press
+- Ancient Power
+- Moonblast
+- Guard Split
 
-Lombre
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Shuckle @ Quick Claw
+Ability: Sturdy
+Level: 51
+Bold Nature
+- Infestation
+- Toxic
+- Rest
+- Guard Split
 
 === TRAINER_GRUNT_ROUTE_114_6 ===
 Name: Grunt /* Route 114 #6*/
@@ -3906,13 +4647,32 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Sandshrew
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Alakazam @ Fairy Feather
+Ability: Inner Focus
+Level: 50
+Timid Nature
+- Psyshock
+- Dazzling Gleam
+- Grass Knot
+- Calm Mind
 
-Nuzleaf
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Cloyster @ Focus Sash
+Ability: Skill Link
+Level: 50
+Naive Nature
+- Liquidation
+- Rock Blast
+- Icicle Spear
+- Shell Smash
+
+Blissey @ Leftovers
+Ability: Healer
+Level: 50
+Modest Nature
+- Ice Beam
+- Seismic Toss
+- Heal Bell
+- Counter
 
 === TRAINER_ALIX ===
 Name: Alix
@@ -3992,12 +4752,26 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Numel
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Mr. Rime @ Berserk Gene
+Ability: Tangled Feet
+Level: 51
+Naive Nature
+- Zen Headbutt
+- Ice Punch
+- Drain Punch
+- Icy Wind
+
+Flamigo @ Clear Amulet
+Ability: Costar
+Level: 50
+Jolly Nature
+- Lunge
+- Low Sweep
+- Aerial Ace
+- Bulk Up
 
 === TRAINER_GRUNT_MT_CHIMNEY_2 ===
-Name: Grunt /* Mt Chimney #1*/
+Name: Grunt /* Mt Chimney #2*/
 Class: Team Magma
 Pic: Magma Grunt M
 Gender: Male
@@ -4006,9 +4780,22 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Zubat
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Spinda @ Berserk Gene
+Ability: Tangled Feet
+Level: 52
+Adamant Nature
+- Wild Charge
+- Facade
+- Covet
+- Baton Pass
+
+Dodrio @ Berserk Gene
+Ability: Tangled Feet
+Level: 50
+Jolly Nature
+- Stomping Tantrum
+- Thief
+- Pursuit
 
 === TRAINER_TABITHA_MT_CHIMNEY ===
 Name: Tabitha /* Mt Chimney*/
@@ -4021,21 +4808,59 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Numel
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Houndoom @ Power Herb
+Ability: Unnerve
+Level: 52
+Timid Nature
+- Solar Beam
+- Flamethrower
+- Sludge Bomb
+- Dark Pulse
 
-Poochyena
-Level: 20
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Gliscor @ Weakness Policy
+Ability: Hyper Cutter
+Level: 50
+Jolly Nature
+- Breaking Swipe
+- Struggle Bug
+- Baton Pass
+- Sandstorm
 
-Numel
-Level: 22
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Garchomp @ Rocky Helmet
+Ability: Sand Veil
+Level: 50
+Hasty Nature
+- Stone Edge
+- Flamethrower
+- Stomping Tantrum
+- Dual Chop
 
-Zubat
-Level: 22
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Okidogi @ Payapa Berry
+Ability: Guard Dog
+Level: 51
+Jolly Nature
+- Gunk Shot
+- Drain Punch
+- Lash Out
+- Howl
+
+Tatsugiri-Stretchy @ Iapapa Berry
+Ability: Storm Drain
+Level: 51
+Naive Nature
+- Muddy Water
+- Dragon Pulse
+- Dragon Cheer
+- Protect
+
+Camerupt-Mega @ Cameruptite
+Ability: Sheer Force
+Level: 52
+Quiet Nature
+- Heat Wave
+- Earth Power
+- Iron Head
+- Rock Slide
 
 === TRAINER_MAXIE_MT_CHIMNEY ===
 Name: Maxie /* Mt Chimney*/
@@ -4048,17 +4873,59 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Mightyena
-Level: 24
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Silvally-Fire @ Fire Memory
+Ability: RKS System
+Level: 51
+Hasty Nature
+- Multi Attack
+- Thunderbolt
+- Grass Pledge
+- Tailwind
 
-Zubat
-Level: 24
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Landorus @ Eject Button
+Ability: Sheer Force
+Level: 52
+Timid Nature
+- Sandsear Storm
+- Grass Knot
+- Weather Ball
+- Sunny Day
 
-Camerupt
-Level: 25
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Darmanitan-Galar @ Focus Sash
+Ability: Zen Mode
+Level: 50
+Jolly Nature
+- Rock Slide
+- Ice Punch
+- Fire Punch
+- Reversal
+
+Blacephalon @ Power Herb
+Ability: Beast Boost
+Level: 52
+Timid Nature
+- Solar Beam
+- Shadow Ball
+- Mystical Fire
+- Sunny Day
+
+Charizard @ Charti Berry
+Ability: Solar Power
+Level: 51
+Naive Nature
+- Heat Wave
+- Air Slash
+- Breaking Swipe
+- Tailwind
+
+Venusaur @ Venusaurite
+Ability: Chlorophyll
+Level: 52
+Hasty Nature
+- Earth Power
+- Sludge Bomb
+- Giga Drain
+- Facade
 
 === TRAINER_ERIC ===
 Name: Eric
@@ -4070,13 +4937,32 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Geodude
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Golem-Alola @ Covert Cloak
+Ability: Sturdy
+Level: 54
+Adamant Nature
+- Stone Edge
+- Thunder Punch
+- Fire Punch
+- Stealth Rock
 
-Baltoy
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Corviknight @ Liechi Berry
+Ability: Mirror Armor
+Level: 53
+Careful Nature
+- Dual Wingbeat
+- Body Press
+- Power Trip
+- Iron Defense
+
+Claydol @ Salac Berry
+Ability: Levitate
+Level: 54
+Bold Nature
+- Earth Power
+- Ancient Power
+- Stored Power
+- Cosmic Power
 
 === TRAINER_DIANA_1 ===
 Name: Diana
@@ -4088,20 +4974,35 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Shroomish
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Polteageist @ Kasib Berry
+Ability: Weak Armor
+Level: 53
+Timid Nature
+- Shadow Ball
+- Giga Drain
+- Chill-O-Wisp
+- Imprison
 
-Oddish
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Appletun @ Snowball
+Ability: Thick Fat
+Level: 53
+Careful Nature
+- Seed Bomb
+- Dragon Tail
+- Gyro Ball
+- Helping Hand
 
-Swablu
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Alcremie-Star-Matcha-Cream @ Normal Gem
+Ability: Aroma Veil
+Level: 54
+Bold Nature
+- Tri Attack
+- Dazzling Gleam
+- Mystical Fire
+- Decorate
 
 === TRAINER_GRUNT_JAGGED_PASS ===
-Name: Grunt /* Jagged Pass*/
+Name: Grunt /* Jagged Pass [Optional]*/
 Class: Team Magma
 Pic: Magma Grunt M
 Gender: Male
@@ -4110,13 +5011,50 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Poochyena
-Level: 22
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Bellibolt @ Quick Claw
+Ability: Static
+Level: 58
+Careful Nature
+- Electro Ball
+- Soak
+- Light Screen
+- Thunder Wave
 
-Numel
-Level: 22
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Fearow @ Scope Lens
+Ability: Sniper
+Level: 57
+Jolly Nature
+- Drill Run
+- Steel Wing
+- Dual Wingbeat
+- Fury Attack
+
+Octillery @ Focus Band
+Ability: Moody
+Level: 57
+Sassy Nature
+- Energy Ball
+- Ice Beam
+- Octazooka
+- Rock Blast
+
+Lucario @ Bright Powder
+Ability: Justified
+Level: 58
+Jolly Nature
+- Close Combat
+- Meteor Mash
+- Extreme Speed
+- Howl
+
+Sableye @ King's Rock
+Ability: Stall
+Level: 57
+Brave Nature
+- Poison Jab
+- Sucker Punch
+- Shadow Sneak
+- Fake Out
 
 === TRAINER_AUTUMN ===
 Name: Autumn
@@ -4128,9 +5066,32 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Shroomish
-Level: 21
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Oinkologne @ Ganlon Berry
+Ability: Lingering Aroma
+Level: 55
+Careful Nature
+- Take Down
+- Zen Headbutt
+- Body Press
+- Stuff Cheeks
+
+Sirfetch'd @ Leek
+Ability: Scrappy
+Level: 55
+Adamant Nature
+- First Impression
+- Revenge
+- Brutal Swing
+- Detect
+
+Miltank @ Leftovers
+Ability: Sap Sipper
+Level: 54
+Jolly Nature
+- Steel Roller
+- Play Rough
+- Body Slam
+- Iron Head
 
 === TRAINER_JULIO ===
 Name: Julio
@@ -4142,9 +5103,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Magnemite
-Level: 21
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Gyarados @ Power Herb
+Ability: Intimidate
+Level: 55
+Jolly Nature
+- Bounce
+- Waterfall
+- Lash Out
+- Rain Dance
+
+Arboliva @ Focus Sash
+Ability: Seed Sower
+Level: 54
+Modest Nature
+- Hyper Voice
+- Giga Drain
+- Weather Ball
+- Mirror Coat
 
 === TRAINER_GERALD ===
 Name: Gerald
@@ -4156,13 +5131,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Kecleon
-Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Flamethrower
-- Fury Swipes
-- Feint Attack
-- Bind
+Bruxish @ Wacan Berry
+Ability: Dazzling
+Level: 56
+Hasty Nature
+- Psychic Fangs
+- Liquidation
+- Crunch
+- Swords Dance
+
+Flygon @ Snowball
+Ability: Levitate
+Level: 56
+Jolly Nature
+- Dragon Claw
+- Stomping Tantrum
+- Fire Punch
+- Dragon Dance
 
 === TRAINER_COLE ===
 Name: Cole
@@ -4174,9 +5159,32 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Numel
-Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Oricorio @ Covert Cloak
+Ability: Dancer
+Level: 55
+Naive Nature
+- Revelation Dance
+- Dual Wingbeat
+- Quiver Dance
+- Baton Pass
+
+Heatmor @ Starf Berry
+Ability: Gluttony
+Level: 56
+Lax Nature
+- Belch
+- Fire Lash
+- Giga Drain
+- Scorching Sands
+
+Pyroar @ Normal Gem
+Ability: Unnerve
+Level: 55
+Hasty Nature
+- Hyper Voice
+- Heat Wave
+- Retaliate
+- Bulldoze
 
 === TRAINER_JEFF ===
 Name: Jeff
@@ -4188,13 +5196,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Slugma
-Level: 22
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Jumpluff @ Yache Berry
+Ability: Chlorophyll
+Level: 57
+Adamant Nature
+- Solar Blade
+- U-turn
+- Acrobatics
+- Sleep Powder
 
-Slugma
-Level: 22
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Rapidash @ Soft Sand
+Ability: Flash Fire
+Level: 56
+Naive Nature
+- Solar Beam
+- Flamethrower
+- Drill Run
+- Hypnosis
 
 === TRAINER_KEEGAN ===
 Name: Keegan
@@ -4206,9 +5224,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Slugma
-Level: 23
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Torkoal @ Iapapa Berry
+Ability: Drought
+Level: 56
+Quiet Nature
+- Eruption
+- Earth Power
+- Body Press
+- Gyro Ball
+
+Heliolisk @ Blunder Policy
+Ability: Solar Power
+Level: 57
+Timid Nature
+- Thunder
+- Weather Ball
+- Electro Ball
+- Grass Knot
 
 === TRAINER_DANIELLE ===
 Name: Danielle
@@ -4220,13 +5252,38 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Meditite
-Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Bide
-- Detect
-- Confusion
-- Fire Punch
+Serperior @ White Herb
+Ability: Unburden
+Level: 56
+Timid Nature
+- Leaf Storm
+- Dragon Pulse
+- Glare
+- Light Screen
+
+Magmortar @ Charcoal
+Ability: Flame Body
+Level: 57
+Calm Nature
+- Lava Plume
+- Thunderbolt
+- Follow Me
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Level: 57
+Jolly Nature
+- Flare Blitz
+- Darkest Lariat
+- Parting Shot
+- Fake Out
+
+Flareon @ Charti Berry
+Ability: Flash Fire
+Level: 57
+Jolly Nature
+- Last Resort
+- Temper Flare
 
 === TRAINER_AXLE ===
 Name: Axle
@@ -4238,9 +5295,29 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Numel
-Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Flareon @ Charti Berry
+Ability: Flash Fire
+Level: 57
+Jolly Nature
+- Last Resort
+- Temper Flare
+
+Rhyperior @ Covert Cloak
+Ability: Solid Rock
+Level: 56
+Brave Nature
+- High Horsepower
+- Rock Slide
+- Heat Crash
+- Heavy Slam
+
+Chandelure @ Choice Scarf
+Ability: Flash Fire
+Level: 57
+Timid Nature
+- Heat Wave
+- Psychic
+- Hex
 
 === TRAINER_FLANNERY_1 ===
 Name: Flannery
@@ -4253,37 +5330,59 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Numel
-Level: 24
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Overheat
-- Take Down
-- Magnitude
-- Sunny Day
+Ninetales @ Focus Sash
+Ability: Drought
+Level: 58
+Timid Nature
+- Solar Beam
+- Heat Wave
+- Calm Mind
+- Baton Pass
 
-Slugma
-Level: 24
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Overheat
-- Smog
-- Light Screen
-- Sunny Day
+Roaring Moon @ Dragon Gem
+Ability: Protosynthesis
+Level: 57
+Jolly Nature
+- Lash Out
+- Stomping Tantrum
+- Dragon Tail
+- Dragon Cheer
 
-Camerupt
-Level: 26
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Overheat
-- Tackle
-- Sunny Day
-- Attract
+Scovillain @ Terrain Extender
+Ability: Chlorophyll
+Level: 58
+Timid Nature
+- Grassy Glide
+- Fire Spin
+- Rage Powder
+- Grassy Terrain
 
-Torkoal @ White Herb
-Level: 29
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Overheat
-- Sunny Day
-- Body Slam
-- Attract
+Victini @ Eject Pack
+Ability: Victory Star
+Level: 57
+Naive Nature
+- V-create
+- Bolt Strike
+- Scorching Sands
+- Grass Knot
+
+Exeggutor-Alola @ Custap Berry
+Ability: Harvest
+Level: 58
+Brave Nature
+- Explosion
+- Energy Ball
+- Dragon Hammer
+- Endure
+
+Charizard @ Charizardite-X
+Ability: Blaze
+Level: 58
+Adamant Nature
+- Flare Blitz
+- Dragon Claw
+- Dual Wingbeat
+- Dragon Dance
 
 === TRAINER_BARNY ===
 Name: Barny
