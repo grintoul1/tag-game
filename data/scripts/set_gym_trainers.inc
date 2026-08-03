@@ -57,13 +57,13 @@ LavaridgeTown_Gym_SetGymTrainers::
 	return
 
 PetalburgCity_Gym_SetGymTrainers::
-	settrainerflag TRAINER_STEPH
-	settrainerflag TRAINER_PARKER
-	settrainerflag TRAINER_JAS
-	settrainerflag TRAINER_DAN
-	settrainerflag TRAINER_MARY
-	settrainerflag TRAINER_ZOE
+	settrainerflag TRAINER_MIL
 	settrainerflag TRAINER_TYRONE
+	settrainerflag TRAINER_JAS
+	settrainerflag TRAINER_STEPH
+	settrainerflag TRAINER_PORY
+	settrainerflag TRAINER_ZOE
+	settrainerflag TRAINER_BAZZO
 	return
 
 FortreeCity_Gym_SetGymTrainers::
@@ -125,7 +125,7 @@ EventScript_SetCeladonGymTrainers::
 	settrainerflag TRAINER_BEAUTY_BRIDGET
 	settrainerflag TRAINER_BEAUTY_TAMIA
 	settrainerflag TRAINER_BEAUTY_LORI
-	settrainerflag TRAINER_COOLTRAINER_MARY
+	settrainerflag TRAINER_COOLTRAINER_PORY
 	return
 
 EventScript_SetFuchsiaGymTrainers::

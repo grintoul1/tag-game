@@ -87,7 +87,32 @@ static const u8* const sTrainerSlides[DIFFICULTY_COUNT][TRAINER_PARTNER(PARTNER_
                 "Time to experience the true strength of the Parental Bond!{PAUSE_UNTIL_PRESS}"
             ),
         },
-        [TRAINER_WALLY_ROUTE_114] = {
+        [TRAINER_WALLY_ROUTE_114_M_MUDKIP] = {
+            [TRAINER_SLIDE_OPPONENT_MEGA_EVOLUTION] = COMPOUND_STRING(
+                "You don't understand how far Ralts and I have come!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
+        [TRAINER_WALLY_ROUTE_114_M_TREECKO] = {
+            [TRAINER_SLIDE_OPPONENT_MEGA_EVOLUTION] = COMPOUND_STRING(
+                "You don't understand how far Ralts and I have come!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
+        [TRAINER_WALLY_ROUTE_114_M_TORCHIC] = {
+            [TRAINER_SLIDE_OPPONENT_MEGA_EVOLUTION] = COMPOUND_STRING(
+                "You don't understand how far Ralts and I have come!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
+        [TRAINER_WALLY_ROUTE_114_F_MUDKIP] = {
+            [TRAINER_SLIDE_OPPONENT_MEGA_EVOLUTION] = COMPOUND_STRING(
+                "You don't understand how far Ralts and I have come!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
+        [TRAINER_WALLY_ROUTE_114_F_TREECKO] = {
+            [TRAINER_SLIDE_OPPONENT_MEGA_EVOLUTION] = COMPOUND_STRING(
+                "You don't understand how far Ralts and I have come!{PAUSE_UNTIL_PRESS}"
+            ),
+        },
+        [TRAINER_WALLY_ROUTE_114_F_TORCHIC] = {
             [TRAINER_SLIDE_OPPONENT_MEGA_EVOLUTION] = COMPOUND_STRING(
                 "You don't understand how far Ralts and I have come!{PAUSE_UNTIL_PRESS}"
             ),

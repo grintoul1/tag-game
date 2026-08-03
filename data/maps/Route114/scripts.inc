@@ -119,7 +119,7 @@ Route114_EventScript_BrendanWallySetupBattle::
 
 Route114_EventScript_MayBattleTreecko::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	multi_2p_vs_2 TRAINER_MAY_ROUTE_114_TREECKO, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114, Route114_Text_WallyDefeat, PARTNER_EMMIE
+	multi_2p_vs_2 TRAINER_MAY_ROUTE_114_TREECKO, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route114_EventScript_RivalWallyVictory
 	fadescreen FADE_TO_BLACK
@@ -128,7 +128,7 @@ Route114_EventScript_MayBattleTreecko::
 
 Route114_EventScript_MayBattleTorchic::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	multi_2p_vs_2 TRAINER_MAY_ROUTE_114_TORCHIC, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114, Route114_Text_WallyDefeat, PARTNER_EMMIE
+	multi_2p_vs_2 TRAINER_MAY_ROUTE_114_TORCHIC, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route114_EventScript_RivalWallyVictory
 	fadescreen FADE_TO_BLACK
@@ -137,7 +137,7 @@ Route114_EventScript_MayBattleTorchic::
 
 Route114_EventScript_MayBattleMudkip::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	multi_2p_vs_2 TRAINER_MAY_ROUTE_114_MUDKIP, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114, Route114_Text_WallyDefeat, PARTNER_EMMIE
+	multi_2p_vs_2 TRAINER_MAY_ROUTE_114_MUDKIP, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route114_EventScript_RivalWallyVictory
 	fadescreen FADE_TO_BLACK
@@ -146,7 +146,7 @@ Route114_EventScript_MayBattleMudkip::
 
 Route114_EventScript_BrendanBattleTreecko::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	multi_2p_vs_2 TRAINER_BRENDAN_ROUTE_114_TREECKO, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114, Route114_Text_WallyDefeat, PARTNER_EMMIE
+	multi_2p_vs_2 TRAINER_BRENDAN_ROUTE_114_TREECKO, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route114_EventScript_RivalWallyVictory
 	fadescreen FADE_TO_BLACK
@@ -155,7 +155,7 @@ Route114_EventScript_BrendanBattleTreecko::
 
 Route114_EventScript_BrendanBattleTorchic::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	multi_2p_vs_2 TRAINER_BRENDAN_ROUTE_114_TORCHIC, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114, Route114_Text_WallyDefeat, PARTNER_EMMIE
+	multi_2p_vs_2 TRAINER_BRENDAN_ROUTE_114_TORCHIC, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route114_EventScript_RivalWallyVictory
 	fadescreen FADE_TO_BLACK
@@ -164,7 +164,7 @@ Route114_EventScript_BrendanBattleTorchic::
 
 Route114_EventScript_BrendanBattleMudkip::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	multi_2p_vs_2 TRAINER_BRENDAN_ROUTE_114_MUDKIP, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114, Route114_Text_WallyDefeat, PARTNER_EMMIE
+	multi_2p_vs_2 TRAINER_BRENDAN_ROUTE_114_MUDKIP, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route114_EventScript_RivalWallyVictory
 	fadescreen FADE_TO_BLACK
