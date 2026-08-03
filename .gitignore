@@ -68,3 +68,4 @@ __pycache__
 tools/mgba/mgba-rom-test
 src/data/trainers.h
 .map_version
+midicon*
