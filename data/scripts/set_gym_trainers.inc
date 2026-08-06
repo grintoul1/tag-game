@@ -125,7 +125,7 @@ EventScript_SetCeladonGymTrainers::
 	settrainerflag TRAINER_BEAUTY_BRIDGET
 	settrainerflag TRAINER_BEAUTY_TAMIA
 	settrainerflag TRAINER_BEAUTY_LORI
-	settrainerflag TRAINER_COOLTRAINER_PORY
+	settrainerflag TRAINER_COOLTRAINER_MARY
 	return
 
 EventScript_SetFuchsiaGymTrainers::

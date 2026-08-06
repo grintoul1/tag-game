@@ -877,40 +877,31 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 === PARTNER_MISTY_MOSSDEEP ===
 Name: Misty
 Class: Kantonian
-Pic: Steven
+Pic: Leader Misty Frlg
 Gender: Female
 Music: Female
 AI: Partner Trainer
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+Gyarados @ Mystic Water
+Ability: Intimidate
+Level: 73
+Naive Nature
+- Wave Crash
+- Bounce
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+Starmie @ Mystic Water
+Ability: Natural Cure
+Level: 73
+Naive Nature
+- Wave Crash
+- Bounce
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+Seaking @ Mystic Water
+Ability: Lightning Rod
+Level: 73
+Naive Nature
+- Wave Crash
+- Bounce
 
 === PARTNER_SURGE_MOSSDEEP ===
 Name: Lt. Surge
