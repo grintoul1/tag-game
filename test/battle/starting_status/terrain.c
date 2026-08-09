@@ -105,9 +105,11 @@ SINGLE_BATTLE_TEST("Terrain started after the one which started the battle lasts
 
         MESSAGE("Tapu Bulu used Celebrate!");
         MESSAGE("The opposing Wobbuffet used Celebrate!");
-
-        MESSAGE("The grass disappeared from the battlefield.");
-        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_RESTORE_BG);
+        // Terrain abilities now permanent
+        if (viaMove) {
+            MESSAGE("The grass disappeared from the battlefield.");
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_RESTORE_BG);
+        }
     } THEN {
         ResetStartingStatuses();
     }

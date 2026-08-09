@@ -27,7 +27,10 @@ SINGLE_BATTLE_TEST("Booster Energy will activate Quark Drive after Electric Terr
         ABILITY_POPUP(player, ABILITY_QUARK_DRIVE);
         MESSAGE("The Electric Terrain activated Iron Moth's Quark Drive!");
         MESSAGE("Iron Moth's Sp. Atk was heightened!");
-        MESSAGE("The electricity disappeared from the battlefield.");
+        // Terrain abilities changed
+        EXPECT_FAIL {
+            MESSAGE("The electricity disappeared from the battlefield.");
+        }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         ABILITY_POPUP(player, ABILITY_QUARK_DRIVE);
         MESSAGE("Iron Moth used its Booster Energy to activate Quark Drive!");

@@ -1247,7 +1247,7 @@ static bool32 HandleEndTurnMagicRoom(enum BattlerId battler)
 
 static bool32 EndTurnTerrain(u32 terrainFlag, u32 stringTableId)
 {
-    /*if (gFieldTimers.terrainTimer > 0 && --gFieldTimers.terrainTimer == 0)
+    if (gFieldTimers.terrainTimer > 0 && --gFieldTimers.terrainTimer == 0)
     {
         gFieldStatuses &= ~terrainFlag;
         TryToRevertMimicryAndFlags();
@@ -1255,7 +1255,7 @@ static bool32 EndTurnTerrain(u32 terrainFlag, u32 stringTableId)
         gBattleScripting.battler = gBattlerAttacker;
         BattleScriptCall(BattleScript_TerrainEnds);
         return TRUE;
-    }*/
+    }
 
     return FALSE;
 }

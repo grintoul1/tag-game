@@ -636,6 +636,8 @@ struct SecretBase
     /*0x1AD0*/ struct SecretBaseParty party;
 };
 
+STATIC_ASSERT(sizeof(struct SecretBase) == 0x1B84);
+
 #include "constants/game_stat.h"
 #include "global.fieldmap.h"
 #include "global.berry.h"

@@ -1980,7 +1980,7 @@ bool32 TryChangeBattleWeather(enum BattlerId battler, u32 battleWeatherId, enum 
     return TRUE;
 }
 
-bool32 TryChangeBattleTerrain(enum BattlerId battler, u32 statusFlag)
+bool32 TryChangeBattleTerrain(enum BattlerId battler, u32 statusFlag, bool32 isAbility)
 {
     if (gBattleStruct->isSkyBattle)
         return FALSE;
@@ -1994,7 +1994,9 @@ bool32 TryChangeBattleTerrain(enum BattlerId battler, u32 statusFlag)
             gBattleMons[i].volatiles.terrainAbilityDone = FALSE;
             ResetParadoxTerrainStat(i);
         }
-        if (GetBattlerHoldEffect(battler) == HOLD_EFFECT_TERRAIN_EXTENDER)
+        if (isAbility)
+            gFieldTimers.terrainTimer = 0;
+        else if (GetBattlerHoldEffect(battler) == HOLD_EFFECT_TERRAIN_EXTENDER)
             gFieldTimers.terrainTimer = 8;
         else
             gFieldTimers.terrainTimer = 5;
@@ -3283,7 +3285,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         case ABILITY_HADRON_ENGINE:
             if (!shouldAbilityTrigger)
                 break;
-            if (TryChangeBattleTerrain(battler, STATUS_FIELD_ELECTRIC_TERRAIN))
+            if (TryChangeBattleTerrain(battler, STATUS_FIELD_ELECTRIC_TERRAIN, TRUE))
             {
                 BattleScriptCall(BattleScript_ElectricSurgeActivates);
                 effect++;
@@ -3292,7 +3294,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         case ABILITY_GRASSY_SURGE:
             if (!shouldAbilityTrigger)
                 break;
-            if (TryChangeBattleTerrain(battler, STATUS_FIELD_GRASSY_TERRAIN))
+            if (TryChangeBattleTerrain(battler, STATUS_FIELD_GRASSY_TERRAIN, TRUE))
             {
                 BattleScriptCall(BattleScript_GrassySurgeActivates);
                 effect++;
@@ -3301,7 +3303,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         case ABILITY_MISTY_SURGE:
             if (!shouldAbilityTrigger)
                 break;
-            if (TryChangeBattleTerrain(battler, STATUS_FIELD_MISTY_TERRAIN))
+            if (TryChangeBattleTerrain(battler, STATUS_FIELD_MISTY_TERRAIN, TRUE))
             {
                 BattleScriptCall(BattleScript_MistySurgeActivates);
                 effect++;
@@ -3310,7 +3312,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         case ABILITY_PSYCHIC_SURGE:
             if (!shouldAbilityTrigger)
                 break;
-            if (TryChangeBattleTerrain(battler, STATUS_FIELD_PSYCHIC_TERRAIN))
+            if (TryChangeBattleTerrain(battler, STATUS_FIELD_PSYCHIC_TERRAIN, TRUE))
             {
                 BattleScriptCall(BattleScript_PsychicSurgeActivates);
                 effect++;
@@ -4222,7 +4224,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             break;
         case ABILITY_SEED_SOWER:
             if (IsBattlerTurnDamaged(gBattlerTarget, EXCLUDING_SUBSTITUTES)
-             && TryChangeBattleTerrain(gBattlerTarget, STATUS_FIELD_GRASSY_TERRAIN))
+             && TryChangeBattleTerrain(gBattlerTarget, STATUS_FIELD_GRASSY_TERRAIN, TRUE))
             {
                 BattleScriptCall(BattleScript_SeedSowerActivates);
                 effect++;

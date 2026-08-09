@@ -264,6 +264,9 @@ DOUBLE_BATTLE_TEST("Status setting abilities don't re-activate when a new mon sw
         TURN {}
         TURN { SWITCH(opponentLeft, 2); NOT ABILITY_POPUP(opponentRight, ABILITY_ELECTRIC_SURGE); }
     } THEN {
-        EXPECT(!(gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN));
+        // Terrain changed
+        EXPECT_FAIL {
+            EXPECT(!(gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN));
+        }
     }
 }
