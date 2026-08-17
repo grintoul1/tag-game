@@ -81,7 +81,6 @@
 #include "constants/layouts.h"
 #include "constants/region_map_sections.h"
 #include "constants/rgb.h"
-#include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
 
@@ -195,8 +194,6 @@ static bool8 MapLdr_Credits(void);
 static void CameraCB_CreditsPan(struct CameraObject *camera);
 static void Task_OvwldCredits_FadeOut(u8 taskId);
 static void Task_OvwldCredits_WaitFade(u8 taskId);
-static bool32 CanOverrideLocationMusic(enum SongId song);
-static u16 GetLocationMusicOverride(enum SongId song);
 
 static u8 sPlayerLinkStates[MAX_LINK_PLAYERS];
 // This callback is called with a player's key code. It then returns an
@@ -4749,7 +4746,7 @@ static const u16 *const gLocationMusic[LAST_LOCATION_OVERRIDE_SONG + 1] =
     [MUS_EVER_GRANDE_INTERNAL] = sLocMusicOverrides_EverGrandeInternal,
 };
 
-static bool32 CanOverrideLocationMusic(enum SongId song)
+bool32 CanOverrideLocationMusic(enum SongId song)
 {
     switch (song)
     {
@@ -4813,7 +4810,7 @@ u32 GetCurrentBadgeCount(void)
     return badgeCount;
 }
 
-static u16 GetLocationMusicOverride(enum SongId song)
+u16 GetLocationMusicOverride(enum SongId song)
 {
     static enum SongId sLastBaseSong = MUS_DUMMY;
     static u16 sLastOverrideSong = MUS_DUMMY;

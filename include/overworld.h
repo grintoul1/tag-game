@@ -2,6 +2,7 @@
 #define GUARD_OVERWORLD_H
 
 #include "constants/map_types.h"
+#include "constants/songs.h"
 
 #define LINK_KEY_CODE_NULL 0x00
 #define LINK_KEY_CODE_EMPTY 0x11
@@ -207,6 +208,8 @@ bool32 IsSendingKeysOverCable(void);
 void ClearLinkPlayerObjectEvents(void);
 bool16 SetTimeOfDay(u16 hours);
 bool8 MetatileBehavior_IsSurfableInSeafoamIslands(u16 metatileBehavior);
+bool32 CanOverrideLocationMusic(enum SongId song);
+u16 GetLocationMusicOverride(enum SongId song);
 
 // Item Description Headers
 enum ItemObtainFlags

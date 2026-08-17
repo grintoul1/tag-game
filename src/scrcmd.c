@@ -1202,6 +1202,9 @@ bool8 ScrCmd_playbgm(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE);
 
+    if (CanOverrideLocationMusic(songId))
+        songId = GetLocationMusicOverride(songId);
+
     if (save == TRUE)
         Overworld_SetSavedMusic(songId);
     PlayNewMapMusic(songId);
