@@ -885,78 +885,18 @@ gSongTable::
 	song mus_colosseum_relic_stone_shrine, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_story_mode_normal_battle_arranged, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_vs_cipher_admin, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_vs_miror_b, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_agb_fanfa1b, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_agb_fanfa5, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_agb_me_asa, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_agb_me_shinka, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_agb_shinka, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_battle2, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_battle5, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_battle6, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_battle7, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_battle8, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_battle9, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_battle9plus, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_chakumelo00, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_chakumelo01, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_chakumelo02, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_chakumelo03, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_chakumelo04, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_chakumelo05, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_chakumelo06, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_chakumelo07, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_chakumelo08, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_chakumelo09, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_country, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_darkside4, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_darkside, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_darkunder, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_demo_roll, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_dungeon, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_end_ev_1, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_end_ev_2, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_end_roll_b, MUSIC_PLAYER_BGM, 0
-	song mus_dummy, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_ev_kinpaku, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_ev_shadow, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_ev_shiccho, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_ev_snatch, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_fanfare00, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_fanfare01, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_fanfare02, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_fanfare03, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_gs_logo, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_gtsolo, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_hyper_shiccho, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_jyakira, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_level_up, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_me_chukei, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_me_ex_tre, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_me_fue, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_me_news, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_me_relive, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_me_snatch, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_me_undertime, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_me_welcome, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_me_win, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_me_winwin, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_miraclebo, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_mirrorbo, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_mt_battle, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_null_bgm, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_open_roll, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_pokecen, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_saint, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_shinpi, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_siren_atmos, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_stand2, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_stand, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_title, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_tool_battle1, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_tool_battle2, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_tool_battle3, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_tool_music, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_tretre, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_virtual, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_watercity, MUSIC_PLAYER_BGM, 0

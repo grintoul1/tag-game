@@ -5261,6 +5261,8 @@ u16 GetBattleBGM(void)
             default:
                 return MUS_VS_AQUA_MAGMA_LEADER;
         }
+        case TRAINER_CLASS_ROCKET:
+            return MUS_HG_VS_ROCKET;
         case TRAINER_CLASS_TEAM_AQUA:
         case TRAINER_CLASS_TEAM_AQUA_MIXED:
             return MUS_BW_VS_TEAM_PLASMA;
