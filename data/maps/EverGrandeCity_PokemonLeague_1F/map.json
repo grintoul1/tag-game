@@ -2,8 +2,7 @@
   "id": "MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F",
   "name": "EverGrandeCity_PokemonLeague_1F",
   "layout": "LAYOUT_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F",
-  "music": "MUS_POKE_CENTER",
-  "region": "REGION_HOENN",
+  "music": "MUS_EVER_GRANDE_INTERNAL",
   "region_map_section": "MAPSEC_EVER_GRANDE_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -128,5 +127,6 @@
       "script": "EverGrandeCity_PokemonLeague_1F_EventScript_EmmieCutscene"
     }
   ],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

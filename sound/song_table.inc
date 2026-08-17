@@ -1092,6 +1092,7 @@ gSongTable::
 	song mus_pmd_team_charms_theme, MUSIC_PLAYER_BGM, 0
 	song mus_pmd_spindas_cafe, MUSIC_PLAYER_BGM, 0
 	song mus_pmd_vast_ice_mountain_peak, MUSIC_PLAYER_BGM, 0
+	song mus_ever_grande, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:

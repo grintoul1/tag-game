@@ -963,6 +963,7 @@ enum __attribute__((packed)) SongId
     MUS_PMD_TEAM_CHARMS_THEME,
     MUS_PMD_SPINDAS_CAFE,
     MUS_PMD_VAST_ICE_MOUNTAIN_PEAK,
+    MUS_EVER_GRANDE_INTERNAL,
 
 // These PH_* constants are phoneme sounds used by the "bard" NPC (see src/bard_music.c and src/mauville_old_man.c).
 // Each comes in a triplet of PH_*_BLEND, PH_*_HELD, and PH_*_SOLO, and the name of each triplet incorporates the English phonetic sound it represents.

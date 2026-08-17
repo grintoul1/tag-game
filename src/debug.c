@@ -4659,6 +4659,7 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_PMD_TEAM_CHARMS_THEME)    \
     X(MUS_PMD_SPINDAS_CAFE)    \
     X(MUS_PMD_VAST_ICE_MOUNTAIN_PEAK)    \
+    X(MUS_EVER_GRANDE_INTERNAL)              \
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \

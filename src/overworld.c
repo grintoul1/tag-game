@@ -4136,7 +4136,7 @@ static void Task_OvwldCredits_WaitFade(u8 taskId)
     }
 }
 
-#define LAST_LOCATION_OVERRIDE_SONG MUS_SOOTOPOLIS  // choose the last *normal* sequential id you care about
+#define LAST_LOCATION_OVERRIDE_SONG MUS_EVER_GRANDE_INTERNAL  // choose the last *normal* sequential id you care about
 
 #define LOCATION_MUSIC_NO_OVERRIDE MUS_DUMMY
 
@@ -4539,8 +4539,8 @@ static const u16 sLocMusicOverrides_VictoryRoad[MUSIC_MODE_COUNT - 1] =
     MUS_DP_VICTORY_ROAD, // DONE
     MUS_HG_VICTORY_ROAD, // DONE
     MUS_BW_VICTORY_ROAD, // DONE
-    MUS_PMD_ENDING_THEME, // TODO
-    MUS_COLOSSEUM_MT_BATTLE, // DONE
+    MUS_PMD_ENDING_THEME, // DONE
+    MUS_PMD_ENDING_THEME, // DONE
 };
 
 static const u16 sLocMusicOverrides_MtPyre[MUSIC_MODE_COUNT - 1] =
@@ -4656,7 +4656,7 @@ static const u16 sLocMusicOverrides_EverGrande[MUSIC_MODE_COUNT - 1] =
     MUS_SINNOH_PKMN_LEAGUE_EXTERIOR, // DONE
     MUS_HG_POKEMON_LEAGUE, // DONE
     MUS_BW_POKEMON_LEAGUE, // DONE
-    MUS_PMD_ENDING_THEME,
+    MUS_PMD_ENDING_THEME, // DONE
     MUS_COLOSSEUM_MT_BATTLE, // DONE
 };
 
@@ -4684,6 +4684,19 @@ static const u16 sLocMusicOverrides_EncounterMay[MUSIC_MODE_COUNT - 1] =
     MUS_BW_CHEREN, // DONE
     MUS_PMD_TEAM_CHARMS_THEME, // TODO
     LOCATION_MUSIC_NO_OVERRIDE,
+};
+
+static const u16 sLocMusicOverrides_EverGrandeInternal[MUSIC_MODE_COUNT - 1] =
+{
+    MUS_RB_INDIGO, // DONE
+    MUS_GS_VROAD, // DONE
+    MUS_RG_VICTORY_ROAD, // DONE
+    LOCATION_MUSIC_NO_OVERRIDE,
+    MUS_DP_VICTORY_ROAD, // DONE
+    MUS_HG_VICTORY_ROAD, // DONE
+    MUS_BW_VICTORY_ROAD, // DONE
+    MUS_PMD_ENDING_THEME, // DONE
+    MUS_COLOSSEUM_MT_BATTLE, // DONE
 };
 
 static const u16 *const gLocationMusic[LAST_LOCATION_OVERRIDE_SONG + 1] =
@@ -4731,6 +4744,7 @@ static const u16 *const gLocationMusic[LAST_LOCATION_OVERRIDE_SONG + 1] =
     [MUS_EVER_GRANDE]          = sLocMusicOverrides_EverGrande,
     [MUS_ENCOUNTER_BRENDAN]    = sLocMusicOverrides_EncounterBrendan,
     [MUS_ENCOUNTER_MAY]        = sLocMusicOverrides_EncounterMay,
+    [MUS_EVER_GRANDE_INTERNAL] = sLocMusicOverrides_EverGrandeInternal,
 };
 
 static bool32 CanOverrideLocationMusic(enum SongId song)
@@ -4779,6 +4793,7 @@ static bool32 CanOverrideLocationMusic(enum SongId song)
     case MUS_EVER_GRANDE:
     case MUS_ENCOUNTER_BRENDAN:
     case MUS_ENCOUNTER_MAY:
+    case MUS_EVER_GRANDE_INTERNAL:
         return TRUE;
     default:
         return FALSE;
