@@ -62,6 +62,26 @@ ASSUMPTIONS
     ASSUME(GetMoveType(MOVE_DRAGON_BREATH) == TYPE_DRAGON);
     ASSUME(GetMoveType(MOVE_BITE)          == TYPE_DARK);
     ASSUME(GetMoveType(MOVE_FAIRY_WIND)    == TYPE_FAIRY);
+
+    // Move power
+    ASSUME(GetMovePower(MOVE_TACKLE)        > 0);
+    ASSUME(GetMovePower(MOVE_KARATE_CHOP)   > 0);
+    ASSUME(GetMovePower(MOVE_GUST)          > 0);
+    ASSUME(GetMovePower(MOVE_POISON_STING)  > 0);
+    ASSUME(GetMovePower(MOVE_MUD_SLAP)      > 0);
+    ASSUME(GetMovePower(MOVE_ROCK_THROW)    > 0);
+    ASSUME(GetMovePower(MOVE_BUG_BITE)      > 0);
+    ASSUME(GetMovePower(MOVE_SHADOW_BALL)   > 0);
+    ASSUME(GetMovePower(MOVE_METAL_CLAW)    > 0);
+    ASSUME(GetMovePower(MOVE_EMBER)         > 0);
+    ASSUME(GetMovePower(MOVE_WATER_GUN)     > 0);
+    ASSUME(GetMovePower(MOVE_VINE_WHIP)     > 0);
+    ASSUME(GetMovePower(MOVE_THUNDER_SHOCK) > 0);
+    ASSUME(GetMovePower(MOVE_CONFUSION)     > 0);
+    ASSUME(GetMovePower(MOVE_ICE_BEAM)      > 0);
+    ASSUME(GetMovePower(MOVE_DRAGON_BREATH) > 0);
+    ASSUME(GetMovePower(MOVE_BITE)          > 0);
+    ASSUME(GetMovePower(MOVE_FAIRY_WIND)    > 0);
 }
 
 SINGLE_BATTLE_TEST("Inverse battle reverses type matchups")
@@ -121,6 +141,7 @@ SINGLE_BATTLE_TEST("Inverse battle reverses type matchups")
 
     GIVEN {
         FLAG_SET(B_FLAG_INVERSE_BATTLE);
+        ASSUME(GetMoveEffect(MOVE_WORRY_SEED) == EFFECT_OVERWRITE_ABILITY);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(species);
     }

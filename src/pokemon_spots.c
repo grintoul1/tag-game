@@ -123,7 +123,7 @@ static const struct MonSpotTemplate* GetSpeciesSpots(enum Species species)
 {
     switch (species)
     {
-    case SPECIES_SPINDA: 
+    case SPECIES_SPINDA:
             return &gSpindaSpotTemplate;
     default:
         return NULL;

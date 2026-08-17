@@ -917,7 +917,7 @@ gSongTable::
 	song mus_colosseum_end_ev_1, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_end_ev_2, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_end_roll_b, MUSIC_PLAYER_BGM, 0
-	song mus_colosseum_end_roll_c, MUSIC_PLAYER_BGM, 0
+	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_ev_kinpaku, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_ev_shadow, MUSIC_PLAYER_BGM, 0
 	song mus_colosseum_ev_shiccho, MUSIC_PLAYER_BGM, 0

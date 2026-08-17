@@ -4,7 +4,6 @@
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_GIMMICK: AI will tera if it enables a ko")
 {
-    KNOWN_FAILING;
     GIVEN {
         ASSUME(GetMovePower(MOVE_SEED_BOMB) == 80);
         ASSUME(GetMovePower(MOVE_AQUA_TAIL) == 90);

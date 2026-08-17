@@ -266,7 +266,7 @@ DOUBLE_BATTLE_TEST("Status setting abilities don't re-activate when a new mon sw
     } THEN {
         // Terrain changed
         EXPECT_FAIL {
-            EXPECT(!(gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN));
+            EXPECT(gFieldTimers.terrain != B_TERRAIN_ELECTRIC);
         }
     }
 }
