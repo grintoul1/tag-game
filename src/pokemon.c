@@ -5221,6 +5221,14 @@ u16 GetBattleBGM(void)
         case SPECIES_ZAPDOS_GALAR:
         case SPECIES_MOLTRES_GALAR:
             return MUS_RG_VS_LEGEND;
+        case SPECIES_MEW:
+        case SPECIES_CELEBI:
+        case SPECIES_JIRACHI:
+        case SPECIES_MANAPHY:
+        case SPECIES_SHAYMIN:
+        case SPECIES_VICTINI:
+        case SPECIES_PECHARUNT:
+            return MUS_RG_VS_MEWTWO;
         default:
             return gRandomWildMusic[Random() % 8];
         }

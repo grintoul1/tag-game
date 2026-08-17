@@ -15,7 +15,7 @@ SealedChamber_OuterRoom_OnTransition:
 	end
 
 SealedChamber_OuterRoom_OnLoad:
-	call_if_unset FLAG_SYS_BRAILLE_DIG, SealedChamber_OuterRoom_EventScript_CloseInnerRoomEntrance
+	@call_if_unset FLAG_SYS_BRAILLE_DIG, SealedChamber_OuterRoom_EventScript_CloseInnerRoomEntrance
 	end
 
 SealedChamber_OuterRoom_EventScript_CloseInnerRoomEntrance::
@@ -103,4 +103,77 @@ SealedChamber_OuterRoom_EventScript_BrailleDigHere::
 	lockall
 	braillemsgbox SealedChamber_OuterRoom_Braille_DigHere
 	releaseall
+	end
+
+SealedChamber_OuterRoom_EventScript_Johto_Dogs::
+	lock
+	faceplayer
+	random 3
+	goto_if_eq VAR_RESULT, 0, SealedChamber_OuterRoom_EventScript_SuicuneEncounter
+	goto_if_eq VAR_RESULT, 1, SealedChamber_OuterRoom_EventScript_RaikouEncounter
+	goto_if_eq VAR_RESULT, 2, SealedChamber_OuterRoom_EventScript_EnteiEncounter
+	end
+
+SealedChamber_OuterRoom_EventScript_SuicuneEncounter::
+	waitse
+	playmoncry SPECIES_SUICUNE, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_SUICUNE, 70
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_SUICUNE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, SealedChamber_OuterRoom_EventScript_DefeatedDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SealedChamber_OuterRoom_EventScript_RanFromDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SealedChamber_OuterRoom_EventScript_RanFromDog
+	setflag FLAG_DEFEATED_JOHTO_DOGS
+	release
+	end
+
+SealedChamber_OuterRoom_EventScript_RaikouEncounter::
+	waitse
+	playmoncry SPECIES_RAIKOU, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_RAIKOU, 70
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_RAIKOU
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, SealedChamber_OuterRoom_EventScript_DefeatedDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SealedChamber_OuterRoom_EventScript_RanFromDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SealedChamber_OuterRoom_EventScript_RanFromDog
+	setflag FLAG_DEFEATED_JOHTO_DOGS
+	release
+	end
+
+SealedChamber_OuterRoom_EventScript_EnteiEncounter::
+	waitse
+	playmoncry SPECIES_ENTEI, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_ENTEI, 70
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_ENTEI
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, SealedChamber_OuterRoom_EventScript_DefeatedDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SealedChamber_OuterRoom_EventScript_RanFromDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SealedChamber_OuterRoom_EventScript_RanFromDog
+	setflag FLAG_DEFEATED_JOHTO_DOGS
+	release
+	end
+
+SealedChamber_OuterRoom_EventScript_DefeatedDog::
+	setflag FLAG_DEFEATED_JOHTO_DOGS
+	goto Common_EventScript_RemoveStaticPokemon
+	end
+
+SealedChamber_OuterRoom_EventScript_RanFromDog::
+	setflag FLAG_DEFEATED_JOHTO_DOGS
+	goto Common_EventScript_LegendaryFlewAway
 	end

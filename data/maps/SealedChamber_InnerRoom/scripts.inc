@@ -67,3 +67,76 @@ SealedChamber_InnerRoom_EventScript_BrailleStoryPart6::
 	braillemsgbox SealedChamber_InnerRoom_Braille_OpenDoorEternalPokemonWaits
 	releaseall
 	end
+
+SealedChamber_InnerRoom_EventScript_Paradogs::
+	lock
+	faceplayer
+	random 3
+	goto_if_eq VAR_RESULT, 0, SealedChamber_InnerRoom_EventScript_SuicuneEncounter
+	goto_if_eq VAR_RESULT, 1, SealedChamber_InnerRoom_EventScript_RaikouEncounter
+	goto_if_eq VAR_RESULT, 2, SealedChamber_InnerRoom_EventScript_EnteiEncounter
+	end
+
+SealedChamber_InnerRoom_EventScript_SuicuneEncounter::
+	waitse
+	playmoncry SPECIES_WALKING_WAKE, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_WALKING_WAKE, 70
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_WALKING_WAKE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, SealedChamber_InnerRoom_EventScript_DefeatedDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SealedChamber_InnerRoom_EventScript_RanFromDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SealedChamber_InnerRoom_EventScript_RanFromDog
+	setflag FLAG_DEFEATED_PARADOGS
+	release
+	end
+
+SealedChamber_InnerRoom_EventScript_RaikouEncounter::
+	waitse
+	playmoncry SPECIES_RAGING_BOLT, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_RAGING_BOLT, 70
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_RAGING_BOLT
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, SealedChamber_InnerRoom_EventScript_DefeatedDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SealedChamber_InnerRoom_EventScript_RanFromDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SealedChamber_InnerRoom_EventScript_RanFromDog
+	setflag FLAG_DEFEATED_PARADOGS
+	release
+	end
+
+SealedChamber_InnerRoom_EventScript_EnteiEncounter::
+	waitse
+	playmoncry SPECIES_GOUGING_FIRE, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_GOUGING_FIRE, 70
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_GOUGING_FIRE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, SealedChamber_InnerRoom_EventScript_DefeatedDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SealedChamber_InnerRoom_EventScript_RanFromDog
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SealedChamber_InnerRoom_EventScript_RanFromDog
+	setflag FLAG_DEFEATED_PARADOGS
+	release
+	end
+
+SealedChamber_InnerRoom_EventScript_DefeatedDog::
+	setflag FLAG_DEFEATED_PARADOGS
+	goto Common_EventScript_RemoveStaticPokemon
+	end
+
+SealedChamber_InnerRoom_EventScript_RanFromDog::
+	setflag FLAG_DEFEATED_PARADOGS
+	goto Common_EventScript_LegendaryFlewAway
+	end

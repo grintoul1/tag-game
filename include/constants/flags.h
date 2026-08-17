@@ -733,9 +733,9 @@
 #define FLAG_BADGE14_GET   0x29F
 #define FLAG_BADGE15_GET   0x2A0
 #define FLAG_BADGE16_GET   0x2A1
-#define FLAG_UNUSED_0x2A2  0x2A2 // Unused Flag
-#define FLAG_UNUSED_0x2A3  0x2A3 // Unused Flag
-#define FLAG_UNUSED_0x2A4  0x2A4 // Unused Flag
+#define FLAG_DEFEATED_JOHTO_DOGS  0x2A2
+#define FLAG_DEFEATED_PARADOGS  0x2A3
+#define FLAG_DEFEATED_MYTHICAL  0x2A4
 #define FLAG_UNUSED_0x2A5  0x2A5 // Unused Flag
 #define FLAG_UNUSED_0x2A6  0x2A6 // Unused Flag
 #define FLAG_UNUSED_0x2A7  0x2A7 // Unused Flag
@@ -1233,8 +1233,8 @@
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_KOGA                0x494 // Koga & Janine
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAGMA_GRUNTS        0x495
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_AQUA_GRUNTS         0x496
-#define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
-#define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
+#define FLAG_HIDE_KANTO_DOGS                                        0x497
+#define FLAG_HIDE_PARADOGS                                          0x498
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
 #define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
 #define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
