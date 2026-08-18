@@ -55,32 +55,9 @@ voicegroup329:: @ HGSS main
 	voice_directsound 60, 0, DirectSoundWaveData_puresquare_50, 224, 242, 101, 192
 	voice_directsound 60, 0, DirectSoundWaveData_purenoise, 42, 0, 57, 192
 	voice_directsound 60, 0, DirectSoundWaveData_purenoise, 240, 242, 0, 192
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_whistle_c5_16, 255, 246, 78, 192	@ remaining voices wrap around
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_reverscyn_16, 255, 0, 255, 16		@ to the next voice group, so
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_org5_c3_16, 255, 167, 235, 171		@ have some dittos
-@	voice_directsound 60, 0, DirectSoundWaveData_puresquare_37, 80, 234, 191, 220
-@	voice_directsound 60, 0, DirectSoundWaveData_puresquare_12, 80, 234, 191, 220
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_orchhitmajor60, 255, 197, 255, 171						@ 60
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_orchhitminor60, 255, 197, 255, 171						@ 61
 @	voice_keysplit_all voicegroup332				 @ synth kick+snare										@ 62
 @	voice_keysplit voicegroup316, KeySplitTable27    @ DPPt timpani											@ 63
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_synbass1_c2_16, 255, 42, 255, 192						@ 64
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_synbass2_c1_16, 255, 0, 255, 220						@ 65
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_sawtoothlead60, 255, 197, 255, 171						@ 66
 @	voice_keysplit voicegroup372, KeySplitTable57    @ shamisen												@ 67
-@	voice_directsound 60, 0, DirectSoundWaveData_hg_hyoshigi, 255, 0, 255, 171								@ 68
-@	voice_directsound 60, 0, DirectSoundWaveData_hg_kodaiko, 255, 0, 255, 171								@ 69
-@	voice_directsound 60, 0, DirectSoundWaveData_hg_tsuzumi, 255, 0, 255, 171								@ 70
-@	voice_directsound 60, 0, DirectSoundWaveData_hg_jinglebell, 255, 0, 255, 171							@ 71
-@	voice_directsound 60, 0, DirectSoundWaveData_hg_hoohclap, 255, 0, 255, 0								@ 72
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_tenorchoir48, 255, 197, 255, 171						@ 73
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_sopranochoir60, 255, 197, 255, 171						@ 74
-@	voice_directsound 60, 0, DirectSoundWaveData_hg_choirc5, 255, 197, 255, 171 @ 1 octave too low			@ 75
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_reverscyn_16, 255, 197, 255, 171 @ 1 octave too high	@ 76
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_spearpillarwind60, 255, 0, 255, 32						@ 77
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_altosax_c3_16, 255, 216, 252, 192						@ 78
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_synthsnare, 255, 0, 255, 171							@ 79
 @	voice_keysplit voicegroup373, KeySplitTable58    @ piano (national park)								@ 80
-@	voice_directsound 60, 0, DirectSoundWaveData_dp_tom1_16, 255, 0, 255, 32								@ 81
 @	voice_keysplit voicegroup319, KeySplitTable29    @ dp trumpets (arceus)									@ 82
 @	voice_keysplit voicegroup320, KeySplitTable30    @ dp trombone (arceus)									@ 83
