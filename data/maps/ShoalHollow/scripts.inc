@@ -34,6 +34,7 @@ ShoalHollow_EventScript_ArticunoEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, ShoalHollow_EventScript_RanFromBird
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ShoalHollow_EventScript_RanFromBird
 	setflag FLAG_DEFEATED_GALAR_BIRD
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -52,6 +53,7 @@ ShoalHollow_EventScript_ZapdosEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, ShoalHollow_EventScript_RanFromBird
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ShoalHollow_EventScript_RanFromBird
 	setflag FLAG_DEFEATED_GALAR_BIRD
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -70,6 +72,7 @@ ShoalHollow_EventScript_MoltresEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, ShoalHollow_EventScript_RanFromBird
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ShoalHollow_EventScript_RanFromBird
 	setflag FLAG_DEFEATED_GALAR_BIRD
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 

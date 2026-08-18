@@ -34,6 +34,7 @@ ShoalCavity_EventScript_ArticunoEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, ShoalCavity_EventScript_RanFromBird
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ShoalCavity_EventScript_RanFromBird
 	setflag FLAG_DEFEATED_KANTO_BIRD
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -52,6 +53,7 @@ ShoalCavity_EventScript_ZapdosEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, ShoalCavity_EventScript_RanFromBird
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ShoalCavity_EventScript_RanFromBird
 	setflag FLAG_DEFEATED_KANTO_BIRD
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -70,6 +72,7 @@ ShoalCavity_EventScript_MoltresEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, ShoalCavity_EventScript_RanFromBird
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ShoalCavity_EventScript_RanFromBird
 	setflag FLAG_DEFEATED_KANTO_BIRD
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 

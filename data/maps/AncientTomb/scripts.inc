@@ -83,6 +83,7 @@ AncientTomb_EventScript_ManaphyEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, AncientTomb_EventScript_RanFromDog
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, AncientTomb_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_MYTHICAL
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -101,6 +102,7 @@ AncientTomb_EventScript_PecharuntEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, AncientTomb_EventScript_RanFromDog
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, AncientTomb_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_MYTHICAL
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -119,6 +121,7 @@ AncientTomb_EventScript_VictiniEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, AncientTomb_EventScript_RanFromDog
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, AncientTomb_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_MYTHICAL
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -137,6 +140,7 @@ AncientTomb_EventScript_ShayminEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, AncientTomb_EventScript_RanFromDog
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, AncientTomb_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_MYTHICAL
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -155,6 +159,7 @@ AncientTomb_EventScript_MewEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, AncientTomb_EventScript_RanFromDog
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, AncientTomb_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_MYTHICAL
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -173,6 +178,7 @@ AncientTomb_EventScript_CelebiEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, AncientTomb_EventScript_RanFromDog
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, AncientTomb_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_MYTHICAL
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -191,6 +197,7 @@ AncientTomb_EventScript_JirachiEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, AncientTomb_EventScript_RanFromDog
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, AncientTomb_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_MYTHICAL
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 

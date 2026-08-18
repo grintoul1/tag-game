@@ -3,7 +3,7 @@
   "name": "SealedChamber_InnerRoom",
   "layout": "LAYOUT_SEALED_CHAMBER_INNER_ROOM",
   "music": "MUS_SEALED_CHAMBER",
-  "region_map_section": "MAPSEC_SEALED_CHAMBER",
+  "region_map_section": "MAPSEC_SEALED_CHAMBER_INNER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_UNDERGROUND",
@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SealedChamber_InnerRoom_EventScript_Paradogs",
-      "flag": "FLAG_HIDE_PARADOGS"
+      "flag": "FLAG_DEFEATED_PARADOGS"
     }
   ],
   "warp_events": [

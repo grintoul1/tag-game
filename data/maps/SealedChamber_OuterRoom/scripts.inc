@@ -129,6 +129,7 @@ SealedChamber_OuterRoom_EventScript_SuicuneEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SealedChamber_OuterRoom_EventScript_RanFromDog
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SealedChamber_OuterRoom_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_JOHTO_DOGS
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -147,6 +148,7 @@ SealedChamber_OuterRoom_EventScript_RaikouEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SealedChamber_OuterRoom_EventScript_RanFromDog
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SealedChamber_OuterRoom_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_JOHTO_DOGS
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -165,6 +167,7 @@ SealedChamber_OuterRoom_EventScript_EnteiEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SealedChamber_OuterRoom_EventScript_RanFromDog
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SealedChamber_OuterRoom_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_JOHTO_DOGS
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 

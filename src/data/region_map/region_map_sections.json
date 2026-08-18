@@ -634,7 +634,7 @@
     },
     {
       "id": "MAPSEC_SEALED_CHAMBER",
-      "name": "SEALED CHAMBER",
+      "name": "SEALED CHAMBER OUTER",
       "x": 11,
       "y": 10,
       "width": 1,
@@ -1658,6 +1658,14 @@
     {
       "id": "MAPSEC_SHOAL_HOLLOW",
       "name": "SHOAL HOLLOW"
+    },
+    {
+      "id": "MAPSEC_SEALED_CHAMBER_OUTER",
+      "name": "SEALED CHAMBER OUTER"
+    },
+    {
+      "id": "MAPSEC_SEALED_CHAMBER_INNER",
+      "name": "SEALED CHAMBER INNER"
     }
   ]
 }

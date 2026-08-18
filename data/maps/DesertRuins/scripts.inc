@@ -77,6 +77,7 @@ DesertRuins_EventScript_RegirockEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DesertRuins_EventScript_RanFromRegirock
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DesertRuins_EventScript_RanFromRegirock
 	setflag FLAG_DEFEATED_REGIROCK
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -95,6 +96,7 @@ DesertRuins_EventScript_RegisteelEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DesertRuins_EventScript_RanFromRegirock
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DesertRuins_EventScript_RanFromRegirock
 	setflag FLAG_DEFEATED_REGIROCK
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -113,6 +115,7 @@ DesertRuins_EventScript_RegiceEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DesertRuins_EventScript_RanFromRegirock
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DesertRuins_EventScript_RanFromRegirock
 	setflag FLAG_DEFEATED_REGIROCK
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 

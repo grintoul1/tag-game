@@ -92,6 +92,7 @@ SealedChamber_InnerRoom_EventScript_SuicuneEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SealedChamber_InnerRoom_EventScript_RanFromDog
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SealedChamber_InnerRoom_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_PARADOGS
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -110,6 +111,7 @@ SealedChamber_InnerRoom_EventScript_RaikouEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SealedChamber_InnerRoom_EventScript_RanFromDog
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SealedChamber_InnerRoom_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_PARADOGS
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
@@ -128,6 +130,7 @@ SealedChamber_InnerRoom_EventScript_EnteiEncounter::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SealedChamber_InnerRoom_EventScript_RanFromDog
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SealedChamber_InnerRoom_EventScript_RanFromDog
 	setflag FLAG_DEFEATED_PARADOGS
+	goto Common_EventScript_RemoveStaticPokemon
 	release
 	end
 
