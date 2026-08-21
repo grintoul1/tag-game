@@ -149,7 +149,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_ThreeMagmaGrunts::
 	waitmovement
 	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_WalkInPlaceFasterDown
 	waitmovement
-	msgbox MossdeepCity_SpaceCenter_2F_Text_TabithaPinserAttack, MSGBOX_AUTOCLOSE
+	msgbox MossdeepCity_SpaceCenter_2F_Text_TabithaPinsirAttack, MSGBOX_AUTOCLOSE
 	applymovement LOCALID_MOSSDEEP_CITY_SPACE_CENTER_2F_TABITHA, Common_Movement_FaceUp
 	waitmovement
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAGMA_GRUNTS
@@ -219,8 +219,8 @@ MossdeepCity_SpaceCenter_2F_Text_TabithaNeedsYou:
 	.string "Time to come out ladies! Your Tabby\n"
 	.string "needs you!$"
 
-MossdeepCity_SpaceCenter_2F_Text_TabithaPinserAttack:
-	.string "Pinser attack!$"
+MossdeepCity_SpaceCenter_2F_Text_TabithaPinsirAttack:
+	.string "Pinsir attack!$"
 
 MossdeepCity_SpaceCenter_2F_Text_TabithaAnAccomplice:
 	.string "Tabitha: Well, now, look what we have\n"
