@@ -1127,6 +1127,7 @@ void SetCurrentMapLayout(u16 mapLayoutId)
 {
     gSaveBlock1Ptr->mapLayoutId = mapLayoutId;
     gMapHeader.mapLayout = GetMapLayout(mapLayoutId);
+    //ReloadMapData();
 }
 
 void SetObjectEventLoadFlag(u8 flag)
@@ -1307,7 +1308,7 @@ u16 GetLocationMusic(struct WarpData *warp)
     else if (ShouldLegendaryMusicPlayAtLocation(warp) == TRUE)
         song = MUS_ABNORMAL_WEATHER;
     else if (ShouldDroughtMusicPlayAtLocation(warp) == TRUE)
-        song = MUS_ABNORMAL_WEATHER;
+        song = MUS_WEATHER_GROUDON;
     else if (IsInfiltratedSpaceCenter(warp) == TRUE)
         song = MUS_ENCOUNTER_MAGMA;
     else if (IsInfiltratedWeatherInstitute(warp) == TRUE)
@@ -1455,13 +1456,20 @@ static void TransitionMapMusic(void)
 void Overworld_ChangeMusicToDefault(void)
 {
     u16 currentMusic = GetCurrentMapMusic();
-    if (currentMusic != GetCurrLocationDefaultMusic())
-        FadeOutAndPlayNewMapMusic(GetCurrLocationDefaultMusic(), 8);
+    if (CanOverrideLocationMusic(currentMusic))
+        currentMusic = GetLocationMusicOverride(currentMusic);
+    if (currentMusic != GetCurrentMapMusic())
+    {
+        if (currentMusic != GetCurrLocationDefaultMusic())
+            FadeOutAndPlayNewMapMusic(GetCurrLocationDefaultMusic(), 8);
+    }
 }
 
 void Overworld_ChangeMusicTo(u16 newMusic)
 {
     u16 currentMusic = GetCurrentMapMusic();
+    if (CanOverrideLocationMusic(newMusic))
+        newMusic = GetLocationMusicOverride(newMusic);
     if (currentMusic != newMusic && currentMusic != MUS_ABNORMAL_WEATHER)
         FadeOutAndPlayNewMapMusic(newMusic, 8);
 }

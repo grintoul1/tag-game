@@ -531,7 +531,7 @@ static void CB2_InitBattleInternal(void)
 
     gBattle_WIN0H = DISPLAY_WIDTH;
 
-    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
+    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE) && !(gBattleTypeFlags & BATTLE_TYPE_RAYQUAZA))
     {
         gBattle_WIN0V = DISPLAY_HEIGHT - 1;
         gBattle_WIN1H = DISPLAY_WIDTH;
@@ -3102,6 +3102,8 @@ static void DoBattleIntro(void)
     s32 i;
     enum BattlerId battler;
 
+    DebugPrintf("battler %d state %d", gBattleCommunication[1], (enum BattleIntroStates)gBattleStruct->eventState.battleIntro);
+
     switch ((enum BattleIntroStates)gBattleStruct->eventState.battleIntro)
     {
     case BATTLE_INTRO_STATE_GET_MON_DATA:
@@ -3184,7 +3186,12 @@ static void DoBattleIntro(void)
                 }
                 break;
             case B_POSITION_PLAYER_RIGHT:
-                if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER)) // partner sprite
+                if (gBattleTypeFlags & BATTLE_TYPE_RAYQUAZA) // Rayquaza battle
+                {
+                    BtlController_EmitLoadMonSprite(battler, B_COMM_TO_CONTROLLER);
+                    MarkBattlerForControllerExec(battler);
+                }
+                else if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER)) // partner sprite
                 {
                     BtlController_EmitDrawTrainerPic(battler, B_COMM_TO_CONTROLLER);
                     MarkBattlerForControllerExec(battler);
@@ -3264,7 +3271,9 @@ static void DoBattleIntro(void)
             gBattleStruct->eventState.battleIntro++;
         break;
     case BATTLE_INTRO_STATE_INTRO_TEXT:
-        if (!IsBattlerMarkedForControllerExec(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)))
+        if (!IsBattlerMarkedForControllerExec(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT))
+         && (!(gBattleTypeFlags & BATTLE_TYPE_RAYQUAZA)
+          || !IsBattlerMarkedForControllerExec(GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT))))
         {
             PrepareStringBattle(STRINGID_INTROMSG, GetBattlerAtPosition(B_POSITION_PLAYER_LEFT));
             gBattleStruct->eventState.battleIntro++;
@@ -3383,7 +3392,7 @@ static void DoBattleIntro(void)
         gBattleStruct->eventState.battleIntro++;
         break;
     case BATTLE_INTRO_STATE_PRINT_PLAYER_2_SEND_OUT_TEXT:
-        if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER))
+        if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER) && !(gBattleTypeFlags & BATTLE_TYPE_RAYQUAZA))
         {
             if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK && !(gBattleTypeFlags & BATTLE_TYPE_RECORDED_IS_MASTER))
                 battler = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);

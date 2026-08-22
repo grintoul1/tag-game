@@ -51,6 +51,7 @@ void SaveMapView(void);
 void SetCameraFocusCoords(u16 x, u16 y);
 void InitMap(void);
 void InitMapFromSavedGame(void);
+void ReloadMapData(void);
 void InitTrainerHillMap(void);
 void InitBattlePyramidMap(bool8 setPlayerPosition);
 void CopyMapTilesetsToVram(struct MapLayout const *mapLayout);

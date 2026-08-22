@@ -11,6 +11,7 @@
 #include "rotating_gate.h"
 #include "sprite.h"
 #include "text.h"
+#include "constants/layouts.h"
 
 //EWRAM_DATA bool8 gUnusedBikeCameraAheadPanback = FALSE;   //  Old EWRAM variable that was never set to anything other than false
 

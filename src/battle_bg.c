@@ -904,7 +904,7 @@ static u8 GetBattleEnvironmentOverride(void)
     }
     else if (gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_EREADER_TRAINER))
         return BATTLE_ENVIRONMENT_FRONTIER;
-    else if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
+    else if (gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_RAYQUAZA))
     {
         switch (GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_SPECIES))
         {

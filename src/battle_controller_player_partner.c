@@ -35,6 +35,7 @@
 #include "constants/trainers.h"
 #include "test/battle.h"
 
+static void PlayerPartnerHandleLoadMonSprite(enum BattlerId battler);
 static void PlayerPartnerHandleDrawTrainerPic(enum BattlerId battler);
 static void PlayerPartnerHandleTrainerSlide(enum BattlerId battler);
 static void PlayerPartnerHandleTrainerSlideBack(enum BattlerId battler);
@@ -44,6 +45,7 @@ static void PlayerPartnerHandleChoosePokemon(enum BattlerId battler);
 static void PlayerPartnerHandleIntroTrainerBallThrow(enum BattlerId battler);
 static void PlayerPartnerHandleDrawPartyStatusSummary(enum BattlerId battler);
 static void PlayerPartnerHandleEndLinkBattle(enum BattlerId battler);
+static void RayquazaShowIntroHealthbox(enum BattlerId battler);
 
 static void PlayerPartnerBufferRunCommand(enum BattlerId battler);
 
@@ -53,7 +55,7 @@ static void (*const sPlayerPartnerBufferCommands[CONTROLLER_CMDS_COUNT])(enum Ba
     [CONTROLLER_GETRAWMONDATA]            = BtlController_Empty,
     [CONTROLLER_SETMONDATA]               = BtlController_HandleSetMonData,
     [CONTROLLER_SETRAWMONDATA]            = BtlController_HandleSetRawMonData,
-    [CONTROLLER_LOADMONSPRITE]            = BtlController_HandleLoadMonSprite,
+    [CONTROLLER_LOADMONSPRITE]            = PlayerPartnerHandleLoadMonSprite,
     [CONTROLLER_SWITCHINANIM]             = BtlController_HandleSwitchInAnim,
     [CONTROLLER_RETURNMONTOBALL]          = BtlController_HandleReturnMonToBall,
     [CONTROLLER_DRAWTRAINERPIC]           = PlayerPartnerHandleDrawTrainerPic,
@@ -207,6 +209,47 @@ static enum TrainerPicID PlayerPartnerGetTrainerBackPicId(enum DifficultyLevel d
         trainerPicId = GetPlayerTrainerPic(gSaveBlock2Ptr->playerGender, GAME_VERSION);
 
     return trainerPicId;
+}
+
+static void CompleteOnBattlerSpritePosX_0(enum BattlerId battler)
+{
+    if (gSprites[gBattlerSpriteIds[battler]].x2 == 0)
+        BtlController_Complete(battler);
+}
+
+static void PlayerPartnerHandleLoadMonSprite(enum BattlerId battler)
+{
+    BattleLoadMonSpriteGfx(GetBattlerMon(battler), battler);
+    enum Species species = GetBattlerVisualSpecies(battler);
+    SetMultiuseSpriteTemplateToPokemon(species, GetBattlerPosition(battler));
+
+    gBattlerSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate,
+                                               GetBattlerSpriteCoord(battler, BATTLER_COORD_X_2),
+                                               GetBattlerSpriteDefault_Y(battler),
+                                               GetBattlerSpriteSubpriority(battler));
+    gSprites[gBattlerSpriteIds[battler]].x2 = DISPLAY_WIDTH;
+    gSprites[gBattlerSpriteIds[battler]].data[0] = battler;
+    gSprites[gBattlerSpriteIds[battler]].data[2] = species;
+    gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
+    if (gBattleTypeFlags & BATTLE_TYPE_RAYQUAZA)
+        gBattlerControllerFuncs[battler] = RayquazaShowIntroHealthbox;
+    else
+        gBattlerControllerFuncs[battler] = CompleteOnBattlerSpritePosX_0;
+}
+
+static void RayquazaShowIntroHealthbox(enum BattlerId battler)
+{
+    if (gSprites[gBattlerSpriteIds[battler]].x2 == 0
+        && ++gBattleSpritesDataPtr->healthBoxesData[battler].introEndDelay != 1)
+    {
+        gBattleSpritesDataPtr->healthBoxesData[battler].introEndDelay = 0;
+        TryShinyAnimation(battler, GetBattlerMon(battler));
+        UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], GetBattlerMon(battler), HEALTHBOX_ALL);
+        StartHealthboxSlideIn(battler);
+        SetHealthboxSpriteVisible(gHealthboxSpriteIds[battler]);
+        gBattleSpritesDataPtr->animationData->introAnimActive = FALSE;
+        gBattlerControllerFuncs[battler] = Intro_WaitForHealthbox;
+    }
 }
 
 // some explanation here

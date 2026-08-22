@@ -121,6 +121,7 @@ static void Task_Regirock(u8);
 static void Task_Kyogre(u8);
 static void Task_Groudon(u8);
 static void Task_Rayquaza(u8);
+static void Task_RayquazaTag(u8);
 static void Task_ShredSplit(u8);
 static void Task_Blackhole(u8);
 static void Task_BlackholePulsate(u8);
@@ -176,9 +177,13 @@ static bool8 WeatherTrio_WaitFade(struct Task *);
 static bool8 Kyogre_Init(struct Task *);
 static bool8 Kyogre_PaletteFlash(struct Task *);
 static bool8 Kyogre_PaletteBrighten(struct Task *);
+static bool8 KyogreRayquaza_PaletteFlash(struct Task *);
+static bool8 KyogreRayquaza_PaletteBrighten(struct Task *);
 static bool8 Groudon_Init(struct Task *);
 static bool8 Groudon_PaletteFlash(struct Task *);
 static bool8 Groudon_PaletteBrighten(struct Task *);
+static bool8 GroudonRayquaza_PaletteFlash(struct Task *);
+static bool8 GroudonRayquaza_PaletteBrighten(struct Task *);
 static bool8 WeatherDuo_FadeOut(struct Task *);
 static bool8 WeatherDuo_End(struct Task *);
 static bool8 BigPokeball_Init(struct Task *);
@@ -237,6 +242,7 @@ static bool8 FrontierLogoWave_Main(struct Task *);
 static bool8 Rayquaza_Init(struct Task *);
 static bool8 Rayquaza_SetGfx(struct Task *);
 static bool8 Rayquaza_PaletteFlash(struct Task *);
+static bool8 RayquazaTag_PaletteFlash(struct Task *);
 static bool8 Rayquaza_FadeToBlack(struct Task *);
 static bool8 Rayquaza_WaitFade(struct Task *);
 static bool8 Rayquaza_SetBlack(struct Task *);
@@ -395,6 +401,7 @@ static const TaskFunc sTasks_Main[B_TRANSITION_COUNT] =
     [B_TRANSITION_FRONTIER_CIRCLES_SYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesSymmetricSpiralInSeq,
     [B_TRANSITION_AQUA_MAGMA] = Task_Aqua_Magma,
     [B_TRANSITION_BLUR_BRIGHTEN] = Task_BlurBrighten,
+    [B_TRANSITION_RAYQUAZA_TAG] = Task_RayquazaTag,
 };
 
 static const TransitionStateFunc sTaskHandlers[] =
@@ -729,6 +736,22 @@ static const TransitionStateFunc sRayquaza_Funcs[] =
     Rayquaza_TriRing,
     Blackhole_Vibrate,
     Blackhole_GrowEnd
+};
+
+static const TransitionStateFunc sRayquazaTag_Funcs[] =
+{
+    WeatherTrio_BgFadeBlack,
+    WeatherTrio_WaitFade,
+    Kyogre_Init,
+    KyogreRayquaza_PaletteFlash,
+    Groudon_Init,
+    GroudonRayquaza_PaletteFlash,
+    Rayquaza_Init,
+    Rayquaza_SetGfx,
+    RayquazaTag_PaletteFlash,
+    Rayquaza_FadeToBlack,
+    Rayquaza_WaitFade,
+    WeatherDuo_End
 };
 
 static const TransitionStateFunc sWhiteBarsFade_Funcs[] =
@@ -1742,6 +1765,40 @@ static bool8 Kyogre_PaletteBrighten(struct Task *task)
         LoadPalette(&sKyogre2_Palette[offset * 16], BG_PLTT_ID(15), PLTT_SIZE_4BPP);
     }
     if (++task->tTimer > 68)
+    {
+        task->tState++;
+        task->tTimer = 0;
+        task->tEndDelay = 30;
+    }
+
+    return FALSE;
+}
+
+static bool8 KyogreRayquaza_PaletteFlash(struct Task *task)
+{
+    if (task->tTimer % 3 == 0)
+    {
+        u16 offset = task->tTimer % 30;
+        offset /= 3;
+        LoadPalette(&sKyogre1_Palette[offset * 16], BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+    }
+    if (++task->tTimer > 70)
+    {
+        task->tState++;
+        task->tTimer = 0;
+    }
+
+    return FALSE;
+}
+
+static bool8 KyogreRayquaza_PaletteBrighten(struct Task *task)
+{
+    if (task->tTimer % 5 == 0)
+    {
+        s16 offset = task->tTimer / 5;
+        LoadPalette(&sKyogre2_Palette[offset * 16], BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+    }
+    if (++task->tTimer > 48)
     {
         task->tState++;
         task->tTimer = 0;
@@ -3658,7 +3715,23 @@ static bool8 Groudon_PaletteFlash(struct Task *task)
         u16 offset = (task->tTimer % 30) / 3;
         LoadPalette(&sGroudon1_Palette[offset * 16], BG_PLTT_ID(15), PLTT_SIZE_4BPP);
     }
-    if (++task->tTimer > 58)
+    if (++task->tTimer > 30)
+    {
+        task->tState++;
+        task->tTimer = 0;
+    }
+
+    return FALSE;
+}
+
+static bool8 GroudonRayquaza_PaletteFlash(struct Task *task)
+{
+    if (task->tTimer % 3 == 0)
+    {
+        u16 offset = (task->tTimer % 30) / 3;
+        LoadPalette(&sGroudon1_Palette[offset * 16], BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+    }
+    if (++task->tTimer > 70)
     {
         task->tState++;
         task->tTimer = 0;
@@ -3684,6 +3757,23 @@ static bool8 Groudon_PaletteBrighten(struct Task *task)
     return FALSE;
 }
 
+static bool8 GroudonRayquaza_PaletteBrighten(struct Task *task)
+{
+    if (task->tTimer % 5 == 0)
+    {
+        s16 offset = task->tTimer / 5;
+        LoadPalette(&sGroudon2_Palette[offset * 16], BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+    }
+    if (++task->tTimer > 48)
+    {
+        task->tState++;
+        task->tTimer = 0;
+        task->tEndDelay = 30;
+    }
+
+    return FALSE;
+}
+
 #undef tTimer
 #undef tEndDelay
 
@@ -3698,6 +3788,11 @@ static bool8 Groudon_PaletteBrighten(struct Task *task)
 static void Task_Rayquaza(u8 taskId)
 {
     while (sRayquaza_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
+}
+
+static void Task_RayquazaTag(u8 taskId)
+{
+    while (sRayquazaTag_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
 }
 
 static bool8 Rayquaza_Init(struct Task *task)
@@ -3746,6 +3841,23 @@ static bool8 Rayquaza_PaletteFlash(struct Task *task)
         LoadPalette(palPtr, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
     }
     if (++task->tTimer > 40)
+    {
+        task->tState++;
+        task->tTimer = 0;
+    }
+
+    return FALSE;
+}
+
+static bool8 RayquazaTag_PaletteFlash(struct Task *task)
+{
+    if ((task->tTimer % 4) == 0)
+    {
+        u16 value = task->tTimer / 4;
+        const u16 *palPtr = &sRayquaza_Palette[(value + 5) * 16];
+        LoadPalette(palPtr, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+    }
+    if (++task->tTimer > 30)
     {
         task->tState++;
         task->tTimer = 0;

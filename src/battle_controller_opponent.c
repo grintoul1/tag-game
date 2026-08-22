@@ -432,7 +432,7 @@ static void OpponentHandleChooseAction(enum BattlerId battler)
 
 static void OpponentHandleChooseMove(enum BattlerId battler)
 {
-    if (gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FIRST_BATTLE | BATTLE_TYPE_SAFARI | BATTLE_TYPE_ROAMER)
+    if (gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FIRST_BATTLE | BATTLE_TYPE_SAFARI | BATTLE_TYPE_ROAMER | BATTLE_TYPE_RAYQUAZA)
      || IsWildMonSmart())
     {
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)

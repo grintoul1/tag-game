@@ -635,6 +635,9 @@ bool32 TryRunFromBattle(enum BattlerId battler)
     u8 pyramidMultiplier;
     u8 speedVar;
 
+    if (gBattleTypeFlags & BATTLE_TYPE_RAYQUAZA)
+        return effect; // lol
+
     // If this flag is set, running will never be successful under any circumstances.
     if (FlagGet(WE_FLAG_NO_RUNNING))
         return effect;

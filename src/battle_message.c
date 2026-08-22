@@ -91,6 +91,7 @@ static const u8 sText_PlayerDefeatedLinkTrainerTrainer1[] = _("You defeated {B_T
 static const u8 sText_OpponentMon1Appeared[] = _("{B_OPPONENT_MON1_NAME} appeared!\p");
 static const u8 sText_WildPkmnAppeared[] = _("You encountered a wild {B_OPPONENT_MON1_NAME}!\p");
 static const u8 sText_LegendaryPkmnAppeared[] = _("You encountered a wild {B_OPPONENT_MON1_NAME}!\p");
+static const u8 sText_StopKyogreGroudon[] = _("This is your chance to stop Kyogre and Groudon!\p");
 static const u8 sText_WildPkmnAppearedPause[] = _("You encountered a wild {B_OPPONENT_MON1_NAME}!{PAUSE 127}");
 static const u8 sText_TwoWildPkmnAppeared[] = _("Oh! A wild {B_OPPONENT_MON1_NAME} and {B_OPPONENT_MON2_NAME} appeared!\p");
 static const u8 sText_GhostAppearedCantId[] = _("The GHOST appeared!\pDarn!\nThe GHOST can't be ID'd!\p");
@@ -2526,6 +2527,8 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
                 stringPtr = sText_GhostAppearedCantId;
             else if (gBattleTypeFlags & BATTLE_TYPE_GHOST)
                 stringPtr = sText_TheGhostAppeared;
+            else if (gBattleTypeFlags & BATTLE_TYPE_RAYQUAZA)
+                stringPtr = sText_StopKyogreGroudon;
             else if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
                 stringPtr = sText_LegendaryPkmnAppeared;
             else if (IsDoubleBattle() && IsValidForBattle(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT))))
@@ -2539,7 +2542,11 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
     case STRINGID_INTROSENDOUT: // poke first send-out
         if (IsOnPlayerSide(battler))
         {
-            if (IsDoubleBattle() && IsValidForBattle(GetBattlerMon(GetPartnerBattler(battler))))
+            if (gBattleTypeFlags & BATTLE_TYPE_RAYQUAZA)
+            {
+                stringPtr = sText_GoPkmn;
+            }
+            else if (IsDoubleBattle() && IsValidForBattle(GetBattlerMon(GetPartnerBattler(battler))))
             {
                 if (gBattleTypeFlags & BATTLE_TYPE_MULTI && (gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK || gBattleTypeFlags & BATTLE_TYPE_LINK))
                 {

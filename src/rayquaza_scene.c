@@ -2688,7 +2688,7 @@ static void Task_HandleRayChasesAway(u8 taskId)
                 ChasesAway_KyogreStartLeave(taskId);
                 ChasesAway_GroudonStartLeave(taskId);
                 tTimer = 0;
-                tState++;
+                tState += 2;
             }
             else
             {
@@ -2885,6 +2885,7 @@ static void SpriteCB_ChasesAway_DuoRingPush(struct Sprite *sprite)
 
 static void ChasesAway_GroudonStartLeave(u8 taskId)
 {
+    return;
     s16 *taskData = gTasks[taskId].data;
     gSprites[tGroudonSpriteId].callback = SpriteCB_ChasesAway_GroudonLeave;
     StartSpriteAnim(&gSprites[tGroudonSpriteId], 1);
@@ -2917,6 +2918,7 @@ static void SpriteCB_ChasesAway_GroudonLeave(struct Sprite *sprite)
 
 static void ChasesAway_KyogreStartLeave(u8 taskId)
 {
+    return;
     s16 *taskData, *spriteData;
 
     taskData = gTasks[taskId].data;

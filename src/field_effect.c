@@ -37,6 +37,7 @@
 #include "constants/event_object_movement.h"
 #include "constants/field_effects.h"
 #include "constants/flags.h"
+#include "constants/layouts.h"
 #include "constants/metatile_behaviors.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
@@ -3333,7 +3334,8 @@ u8 FldEff_UseSurf(void)
     u8 taskId = CreateTask(Task_SurfFieldEffect, 0xff);
     gTasks[taskId].tMonId = gFieldEffectArguments[0];
     Overworld_ClearSavedMusic();
-    Overworld_ChangeMusicTo(IS_FRLG ? MUS_RG_SURF : MUS_SURF);
+    if (!(gSaveBlock1Ptr->mapLayoutId == LAYOUT_SOOTOPOLIS_CITY_LEGENDS_BATTLE))
+        Overworld_ChangeMusicTo(IS_FRLG ? MUS_RG_SURF : MUS_SURF);
     return FALSE;
 }
 

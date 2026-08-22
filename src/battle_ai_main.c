@@ -311,6 +311,14 @@ static u64 GetAiFlags(u16 trainerId, enum BattlerId battler)
 
 void BattleAI_SetupFlags(void)
 {
+    if (gBattleTypeFlags & BATTLE_TYPE_RAYQUAZA)
+    {
+        gAiThinkingStruct->aiFlags[B_BATTLER_1] = AI_FLAG_TAG_TRAINER;
+        gAiThinkingStruct->aiFlags[B_BATTLER_2] = AI_FLAG_PARTNER_TRAINER;
+        gAiThinkingStruct->aiFlags[B_BATTLER_3] = AI_FLAG_TAG_TRAINER;
+        return;
+    }
+
     if (IsAiVsAiBattle())
         gAiThinkingStruct->aiFlags[B_BATTLER_0] = GetAiFlags(gPartnerTrainerId, B_BATTLER_0);
     else
@@ -342,7 +350,7 @@ void BattleAI_SetupFlags(void)
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
     {
-        gAiThinkingStruct->aiFlags[B_BATTLER_1] = AI_FLAG_SMART_TRAINER;
+        gAiThinkingStruct->aiFlags[B_BATTLER_1] = AI_FLAG_TAG_TRAINER;
     }
     else
     {

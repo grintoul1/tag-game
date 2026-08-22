@@ -2477,6 +2477,7 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
 {
     enum Species species = ScriptReadHalfword(ctx);
     u8 level = ScriptReadByte(ctx);
+    bool8 rayquaza = ScriptReadByte(ctx);
     enum Item item = ScriptReadHalfword(ctx);
     enum Species species2 = ScriptReadHalfword(ctx);
     u8 level2 = ScriptReadByte(ctx);
@@ -2491,7 +2492,7 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
     }
     else
     {
-        CreateScriptedDoubleWildMon(species, level, item, species2, level2, item2);
+        CreateScriptedDoubleWildMon(species, level, item, species2, level2, item2, rayquaza);
         sIsScriptedWildDouble = TRUE;
     }
 
@@ -2501,9 +2502,12 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
 bool8 ScrCmd_dowildbattle(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+    bool8 rayquaza = ScriptReadByte(ctx);
 
     if (sIsScriptedWildDouble == FALSE)
         BattleSetup_StartScriptedWildBattle();
+    else if (rayquaza)
+        BattleSetup_StartScriptedRayquazaBattle();
     else
         BattleSetup_StartScriptedDoubleWildBattle();
 

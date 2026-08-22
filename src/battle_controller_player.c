@@ -1920,7 +1920,7 @@ static void PlayerHandleDrawTrainerPic(enum BattlerId battler)
             else // First mon, on the left.
                 xPos = 32;
 
-            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
+            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE) && !(gBattleTypeFlags & BATTLE_TYPE_RAYQUAZA))
             {
                 xPos = 90;
                 yPos = 80;
@@ -1938,7 +1938,7 @@ static void PlayerHandleDrawTrainerPic(enum BattlerId battler)
     }
 
     // Use front pic table for any tag battles unless your partner is Steven or a custom partner.
-    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
+    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE) && !(gBattleTypeFlags & BATTLE_TYPE_RAYQUAZA))
     {
         trainerPicId = PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender);
         isFrontPic = TRUE;

@@ -3,7 +3,6 @@
   "name": "SootopolisCity",
   "layout": "LAYOUT_SOOTOPOLIS_CITY",
   "music": "MUS_SOOTOPOLIS",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SOOTOPOLIS_CITY",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -374,7 +373,134 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 32,
+      "elevation": 0,
+      "var": "VAR_SKY_PILLAR_STATE",
+      "var_value": "7",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneWest"
+    },
+    {
+      "type": "trigger",
+      "x": 43,
+      "y": 33,
+      "elevation": 0,
+      "var": "VAR_SKY_PILLAR_STATE",
+      "var_value": "7",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneSouth"
+    },
+    {
+      "type": "trigger",
+      "x": 44,
+      "y": 32,
+      "elevation": 0,
+      "var": "VAR_SKY_PILLAR_STATE",
+      "var_value": "7",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneEast"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 33,
+      "elevation": 0,
+      "var": "VAR_SOOTOPOLIS_CITY_STATE",
+      "var_value": "1",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneWest"
+    },
+    {
+      "type": "trigger",
+      "x": 43,
+      "y": 33,
+      "elevation": 0,
+      "var": "VAR_SOOTOPOLIS_CITY_STATE",
+      "var_value": "1",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneSouth"
+    },
+    {
+      "type": "trigger",
+      "x": 44,
+      "y": 32,
+      "elevation": 0,
+      "var": "VAR_SOOTOPOLIS_CITY_STATE",
+      "var_value": "1",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneEast"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 53,
+      "elevation": 0,
+      "var": "VAR_SOOTOPOLIS_CITY_STATE",
+      "var_value": "1",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneDiveEastWest"
+    },
+    {
+      "type": "trigger",
+      "x": 30,
+      "y": 53,
+      "elevation": 0,
+      "var": "VAR_SOOTOPOLIS_CITY_STATE",
+      "var_value": "1",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneDiveEastWest"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 52,
+      "elevation": 0,
+      "var": "VAR_SOOTOPOLIS_CITY_STATE",
+      "var_value": "1",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneDiveNorth"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 54,
+      "elevation": 0,
+      "var": "VAR_SOOTOPOLIS_CITY_STATE",
+      "var_value": "1",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneDiveSouth"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 53,
+      "elevation": 0,
+      "var": "VAR_SKY_PILLAR_STATE",
+      "var_value": "7",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneDiveEastWest"
+    },
+    {
+      "type": "trigger",
+      "x": 30,
+      "y": 53,
+      "elevation": 0,
+      "var": "VAR_SKY_PILLAR_STATE",
+      "var_value": "7",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneDiveEastWest"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 54,
+      "elevation": 0,
+      "var": "VAR_SKY_PILLAR_STATE",
+      "var_value": "7",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneDiveSouth"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 52,
+      "elevation": 0,
+      "var": "VAR_SKY_PILLAR_STATE",
+      "var_value": "7",
+      "script": "SootopolisCity_EventScript_StartRayquazaSceneDiveNorth"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",
@@ -424,5 +550,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SootopolisCity_EventScript_CitySign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

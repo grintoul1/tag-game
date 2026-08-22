@@ -142,7 +142,8 @@ void CreateScriptedWildMon(enum Species species, u8 level, enum Item item)
         SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HELD_ITEM, heldItem);
     }
 }
-void CreateScriptedDoubleWildMon(enum Species species1, u8 level1, enum Item item1, enum Species species2, u8 level2, enum Item item2)
+
+void CreateScriptedDoubleWildMon(enum Species species1, u8 level1, enum Item item1, enum Species species2, u8 level2, enum Item item2, bool32 rayquaza)
 {
     u8 heldItem1[2];
     u8 heldItem2[2];
@@ -159,6 +160,24 @@ void CreateScriptedDoubleWildMon(enum Species species1, u8 level1, enum Item ite
         heldItem1[0] = item1;
         heldItem1[1] = item1 >> 8;
         SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HELD_ITEM, heldItem1);
+    }
+
+    if (rayquaza)
+    {
+        struct Pokemon *rayquazaMon = &gParties[B_TRAINER_PARTNER][0];
+        u32 j = NATURE_SERIOUS;
+        CreateMonWithIVs(rayquazaMon, SPECIES_RAYQUAZA, 90, personality, OTID_STRUCT_RANDOM_NO_SHINY, 31, FALSE);
+        SetMonData(rayquazaMon, MON_DATA_HIDDEN_NATURE, &j);
+        CalculateMonStats(rayquazaMon);
+        enum Move move = MOVE_REFLECT;
+        SetMonData(rayquazaMon, MON_DATA_MOVE1, &move);
+        move = MOVE_LIGHT_SCREEN;
+        SetMonData(rayquazaMon, MON_DATA_MOVE2, &move);
+        move = MOVE_SAFEGUARD;
+        SetMonData(rayquazaMon, MON_DATA_MOVE3, &move);
+        move = MOVE_TAILWIND;
+        SetMonData(rayquazaMon, MON_DATA_MOVE4, &move);
+        HealPokemon(rayquazaMon);
     }
 
     personality = GetMonPersonality(species2,

@@ -570,6 +570,18 @@ void BattleSetup_StartScriptedDoubleWildBattle(void)
     TryUpdateGymLeaderRematchFromWild();
 }
 
+void BattleSetup_StartScriptedRayquazaBattle(void)
+{
+    LockPlayerFieldControls();
+    gMain.savedCallback = CB2_EndScriptedWildBattle;
+    gBattleTypeFlags = (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_RAYQUAZA);
+    CreateBattleStartTask(B_TRANSITION_RAYQUAZA_TAG, MUS_VS_RAYQUAZA);
+    IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
+    IncrementGameStat(GAME_STAT_WILD_BATTLES);
+    IncrementDailyWildBattles();
+    TryUpdateGymLeaderRematchFromWild();
+}
+
 void StartMarowakBattle(void)
 {
     LockPlayerFieldControls();
