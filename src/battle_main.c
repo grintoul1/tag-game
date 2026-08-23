@@ -3102,8 +3102,6 @@ static void DoBattleIntro(void)
     s32 i;
     enum BattlerId battler;
 
-    DebugPrintf("battler %d state %d", gBattleCommunication[1], (enum BattleIntroStates)gBattleStruct->eventState.battleIntro);
-
     switch ((enum BattleIntroStates)gBattleStruct->eventState.battleIntro)
     {
     case BATTLE_INTRO_STATE_GET_MON_DATA:
