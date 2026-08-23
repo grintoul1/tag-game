@@ -178,12 +178,12 @@ static bool8 Kyogre_Init(struct Task *);
 static bool8 Kyogre_PaletteFlash(struct Task *);
 static bool8 Kyogre_PaletteBrighten(struct Task *);
 static bool8 KyogreRayquaza_PaletteFlash(struct Task *);
-static bool8 KyogreRayquaza_PaletteBrighten(struct Task *);
+//static bool8 KyogreRayquaza_PaletteBrighten(struct Task *);
 static bool8 Groudon_Init(struct Task *);
 static bool8 Groudon_PaletteFlash(struct Task *);
 static bool8 Groudon_PaletteBrighten(struct Task *);
 static bool8 GroudonRayquaza_PaletteFlash(struct Task *);
-static bool8 GroudonRayquaza_PaletteBrighten(struct Task *);
+//static bool8 GroudonRayquaza_PaletteBrighten(struct Task *);
 static bool8 WeatherDuo_FadeOut(struct Task *);
 static bool8 WeatherDuo_End(struct Task *);
 static bool8 BigPokeball_Init(struct Task *);
@@ -1791,7 +1791,7 @@ static bool8 KyogreRayquaza_PaletteFlash(struct Task *task)
     return FALSE;
 }
 
-static bool8 KyogreRayquaza_PaletteBrighten(struct Task *task)
+/*static bool8 KyogreRayquaza_PaletteBrighten(struct Task *task)
 {
     if (task->tTimer % 5 == 0)
     {
@@ -1806,7 +1806,7 @@ static bool8 KyogreRayquaza_PaletteBrighten(struct Task *task)
     }
 
     return FALSE;
-}
+}*/
 
 static bool8 WeatherDuo_FadeOut(struct Task *task)
 {
@@ -3757,7 +3757,7 @@ static bool8 Groudon_PaletteBrighten(struct Task *task)
     return FALSE;
 }
 
-static bool8 GroudonRayquaza_PaletteBrighten(struct Task *task)
+/*static bool8 GroudonRayquaza_PaletteBrighten(struct Task *task)
 {
     if (task->tTimer % 5 == 0)
     {
@@ -3772,7 +3772,7 @@ static bool8 GroudonRayquaza_PaletteBrighten(struct Task *task)
     }
 
     return FALSE;
-}
+}*/
 
 #undef tTimer
 #undef tEndDelay
