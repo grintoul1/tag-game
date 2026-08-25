@@ -15328,7 +15328,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Lets out a charming cry\n"
             "that cannot be evaded."),
         .effect = EFFECT_HIT,
-        .power = 40,
+        .power = 60,
         .type = TYPE_FAIRY,
         .accuracy = 0,
         .pp = 15,
