@@ -8072,14 +8072,87 @@ Gender: Female
 Music: Magma
 Battle Type: Doubles
 AI: Tag Trainer
+Multi Party: Half
+
+Heliolisk @ Eject Pack
+Ability: Solar Power
+Level: 73
+Timid Nature
+- Hyper Beam
+- Parabolic Charge
+- Weather Ball
+- Magnet Rise
+
+Magmortar @ King's Rock
+Ability: Flame Body
+Level: 71
+Hasty Nature
+- Dynamic Punch
+- Flamethrower
+- Thunderbolt
+- Flame Charge
+
+Glimmora @ Eject Button
+Ability: Toxic Debris
+Level: 72
+Modest Nature
+- Sludge Bomb
+- Drain Punch
+- Autotomize
+
+=== TRAINER_MAGMA_GRUNT_SPACE_CENTER_6 ===
+Name: Grunt /* Space Center #6*/
+Class: Team Magma
+Pic: Magma Grunt M
+Gender: Male
+Music: Magma
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Torkoal @ Custap Berry
+Ability: Drought
+Level: 71
+Sassy Nature
+- Explosion
+- Solar Beam
+- Heat Wave
+- Shell Smash
+
+Comfey @ Salac Berry
+Ability: Triage
+Level: 71
+Timid Nature
+- Pollen Puff
+- Giga Drain
+- Draining Kiss
+- After You
+
+Scovillain @ Miracle Seed
+Ability: Chlorophyll
+Level: 73
+Naive Nature
+- Solar Blade
+- Crunch
+- Temper Flare
+- Spicy Extract
+
+=== TRAINER_MAGMA_GRUNT_SPACE_CENTER_7 ===
+Name: Grunt /* Space Center #7*/
+Class: Team Magma
+Pic: Magma Grunt F
+Gender: Female
+Music: Magma
+Battle Type: Doubles
+AI: Tag Trainer
 Multi Party: Full
 
 Zubat
 Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_MAGMA_GRUNT_SPACE_CENTER_6 ===
-Name: Grunt /* Space Center #6*/
+=== TRAINER_MAGMA_GRUNT_SPACE_CENTER_8 ===
+Name: Grunt /* Space Center #8*/
 Class: Team Magma
 Pic: Magma Grunt F
 Gender: Female

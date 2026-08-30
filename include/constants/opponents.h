@@ -592,8 +592,8 @@
 #define TRAINER_NICHOLAS                    585
 #define TRAINER_MAGMA_GRUNT_SPACE_CENTER_3  586
 #define TRAINER_MAGMA_GRUNT_SPACE_CENTER_4  587
-#define TRAINER_MAGMA_GRUNT_SPACE_CENTER_5  588
-#define TRAINER_MAGMA_GRUNT_SPACE_CENTER_6  589
+#define TRAINER_MAGMA_GRUNT_SPACE_CENTER_7  588
+#define TRAINER_MAGMA_GRUNT_SPACE_CENTER_8  589
 #define TRAINER_TABITHA_MOSSDEEP            590
 #define TRAINER_MACEY                       591
 #define TRAINER_BRENDAN_RUSTBORO_TREECKO    592
@@ -614,7 +614,7 @@
 #define TRAINER_MAXIE_SKY_PILLAR            607
 #define TRAINER_ARCHIE_SKY_PILLAR           608
 #define TRAINER_MAY_ROUTE_114_TREECKO       609
-#define TRAINER_HALEY_5                     610
+#define TRAINER_MAGMA_GRUNT_SPACE_CENTER_5  610
 #define TRAINER_SALLY                       611
 #define TRAINER_ROBIN                       612
 #define TRAINER_ANDREA                      613
@@ -629,7 +629,7 @@
 #define TRAINER_MAY_ROUTE_114_MUDKIP        622
 #define TRAINER_BRENDAN_ROUTE_114_TREECKO   623
 #define TRAINER_BRENDAN_ROUTE_114_TORCHIC   624
-#define TRAINER_JAMES_5                     625
+#define TRAINER_MAGMA_GRUNT_SPACE_CENTER_6                     625
 #define TRAINER_BRICE                       626
 #define TRAINER_TRENT_1                     627
 #define TRAINER_GRUNT_ROUTE_114_3           628
