@@ -333,8 +333,10 @@ static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatil
      && script != SecretBase_EventScript_RecordMixingPC
      && script != SecretBase_EventScript_DollInteract
      && script != SecretBase_EventScript_CushionInteract
-     && script != EventScript_PC
-     && script != GoldenrodCity_RadioTower_5F_EventScript_Petrel)
+#if IS_HNS
+     && script != GoldenrodCity_RadioTower_5F_EventScript_Petrel
+#endif
+     && script != EventScript_PC)
         PlaySE(SE_SELECT);
 
     ScriptContext_SetupScript(script);
@@ -439,10 +441,12 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
     gSelectedObjectEvent = objectEventId;
     gSpecialVar_LastTalked = gObjectEvents[objectEventId].localId;
 
-    if (InTrainerHill() == TRUE)
-        script = GetTrainerHillTrainerScript();
-    else if (PlayerHasFollowerNPC() && objectEventId == GetFollowerNPCObjectId())
+    if (PlayerHasFollowerNPC() && objectEventId == GetFollowerNPCObjectId())
         script = GetFollowerNPCScriptPointer();
+    else if (gObjectEvents[objectEventId].localId == OBJ_EVENT_ID_FOLLOWER)
+        script = EventScript_Follower;
+    else if (InTrainerHill() == TRUE)
+        script = GetTrainerHillTrainerScript();
     else
         script = GetObjectEventScriptPointerByObjectEventId(objectEventId);
 

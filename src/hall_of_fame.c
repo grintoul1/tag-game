@@ -314,12 +314,12 @@ static const struct SpriteTemplate sSpriteTemplate_HofConfetti =
 };
 
 #if IS_HNS
-static const u16 sHallOfFame_Pal[] = INCBIN_U16("graphics/misc/japanese_hof_hns.gbapal");
+static const u16 sHallOfFame_Pal[] = INCGFX_U16("graphics/misc/japanese_hof_hns.pal", ".gbapal");
 #else
-static const u16 sHallOfFame_Pal[] = INCBIN_U16("graphics/misc/japanese_hof.gbapal");
+static const u16 sHallOfFame_Pal[] = INCGFX_U16("graphics/misc/japanese_hof.png", ".gbapal");
 #endif
 
-static const u32 sHallOfFame_Gfx[] = INCBIN_U32("graphics/misc/japanese_hof.4bpp.smol");
+static const u32 sHallOfFame_Gfx[] = INCGFX_U32("graphics/misc/japanese_hof.png", ".4bpp.smol", "-num_tiles 29 -Wnum_tiles");
 
 static const struct HallofFameMon sDummyFameMon =
 {

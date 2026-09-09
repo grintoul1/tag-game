@@ -4931,20 +4931,26 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
     u16 hp = 0;
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
     enum Item item = gSpecialVar_ItemId;
-    bool8 canHeal, cannotUse;
+    bool8 canHeal = FALSE, cannotUse = FALSE;
     u32 oldStatus = GetMonData(mon, MON_DATA_STATUS);
+
+    canHeal = IsHPRecoveryItem(item);
 
     if (NotUsingHPEVItemOnShedinja(mon, item) == FALSE)
     {
         cannotUse = TRUE;
     }
-    else if (IsEVItem(item) && gSaveBlock3Ptr->challengeSettings.tx_Challenges_NoEVs && !FlagGet(FLAG_DEFEATED_RED))
+    else if (IsEVItem(item) && gSaveBlock3Ptr->challengeSettings.tx_Challenges_NoEVs)
     {
+#if IS_HNS
+        if (!FlagGet(FLAG_DEFEATED_RED))
+            cannotUse = TRUE;
+#else
         cannotUse = TRUE;
+#endif
     }
     else
     {
-        canHeal = IsHPRecoveryItem(item);
         if (canHeal == TRUE)
         {
             hp = GetMonData(mon, MON_DATA_HP);

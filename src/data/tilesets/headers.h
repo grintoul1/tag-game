@@ -1540,7 +1540,8 @@ const struct Tileset gTileset_HallOfFame =
     .callback = NULL,
 };
 
-#elif IS_HNS
+#else
+//#elif IS_HNS
 
 
 // HnS tilesets

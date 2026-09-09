@@ -220,13 +220,17 @@ Debug_EventScript_Script_2::
 	end
 
 Debug_EventScript_Script_3::
+#if IS_HNS
 	goto SinjohRuins_EventScript_StevenBattle
+#endif
 	release
 	end
 
 Debug_EventScript_Script_4::
+#if IS_HNS
 	msgbox SinjohRuins_Lab_Text_StevenCall3Plates, MSGBOX_DEFAULT
 	pokenavcall SinjohRuins_Lab_Text_StevenCall6Plates
+#endif
 	release
 	end
 

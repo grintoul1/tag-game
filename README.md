@@ -35,7 +35,7 @@ For example:
 
 <!-- TODO: confirm the closest applicable expansion version number -->
 ```
-pokemonHnS-expansion 2.0 is Based off RHH's pokeemerald-expansion version 1.15.1 https://github.com/rh-hideout/pokemonHnS-expansion/
+pokemonHnS-expansion 2.0 is Based off RHH's pokeemerald-expansion version 1.15.2 https://github.com/rh-hideout/pokemonHnS-expansion/
 ```
 
 Finally, please consider [crediting all contributors](CREDITS.md) involved in the project!

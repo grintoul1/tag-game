@@ -119,13 +119,13 @@ static void DrawMainMenuWindowBorder(const struct WindowTemplate *, u16);
 // .rodata
 
 static const u16 sHnsSpeechBgPals[][16] = {
-    INCBIN_U16("graphics/oak_speech_hns/bg0_hns.gbapal"),
-    INCBIN_U16("graphics/oak_speech_hns/bg1_hns.gbapal")
+    INCGFX_U16("graphics/oak_speech_hns/bg0_hns.pal", ".gbapal"),
+    INCGFX_U16("graphics/oak_speech_hns/bg1_hns.pal", ".gbapal")
 };
 
-static const u32 sHnsSpeechShadowGfx[] = INCBIN_U32("graphics/oak_speech_hns/shadow_hns.4bpp.smol");
+static const u32 sHnsSpeechShadowGfx[] = INCGFX_U32("graphics/oak_speech_hns/shadow_hns.png", ".4bpp.smol");
 static const u32 sHnsSpeechBgMap[] = INCBIN_U32("graphics/oak_speech_hns/map_hns.bin.smolTM");
-static const u16 sHnsSpeechBgGradientPal[] = INCBIN_U16("graphics/oak_speech_hns/bg2_hns.gbapal");
+static const u16 sHnsSpeechBgGradientPal[] = INCGFX_U16("graphics/oak_speech_hns/bg2_hns.pal", ".gbapal");
 
 static const struct WindowTemplate sNewGameHnsSpeechTextWindows[] =
 {

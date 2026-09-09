@@ -301,7 +301,7 @@ static const struct BgTemplate sBgTemplates[] = {
 };
 
 static const u16 sBgPal[] = {RGB(14, 20, 24)};
-static const u16 sTextPal[] = INCBIN_U16("graphics/interface/option_menu_text_custom.gbapal");
+static const u16 sTextPal[] = INCGFX_U16("graphics/interface/option_menu_text_custom.pal", ".gbapal");
 
 // Frame tile IDs — loaded from window frame tileset at base 0x1A2
 #define TILE_TOP_CORNER_L 0x1A2

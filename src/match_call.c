@@ -1436,18 +1436,18 @@ static void StartMatchCall(void)
 }
 
 #if IS_HNS
-static const u16 sMatchCallWindow_Pal[] = INCBIN_U16("graphics/pokenav/hns/match_call/window.gbapal");
-static const u8 sMatchCallWindow_Gfx[] = INCBIN_U8("graphics/pokenav/hns/match_call/window.4bpp");
+static const u16 sMatchCallWindow_Pal[] = INCGFX_U16("graphics/pokenav/hns/match_call/window.png", ".gbapal");
+static const u8 sMatchCallWindow_Gfx[] = INCGFX_U8("graphics/pokenav/hns/match_call/window.png", ".4bpp");
 #else
-static const u16 sMatchCallWindow_Pal[] = INCBIN_U16("graphics/pokenav/match_call/window.gbapal");
-static const u8 sMatchCallWindow_Gfx[] = INCBIN_U8("graphics/pokenav/match_call/window.4bpp");
+static const u16 sMatchCallWindow_Pal[] = INCGFX_U16("graphics/pokenav/match_call/window.png", ".gbapal");
+static const u8 sMatchCallWindow_Gfx[] = INCGFX_U8("graphics/pokenav/match_call/window.png", ".4bpp");
 #endif
 #if IS_HNS
-static const u16 sPokenavIcon_Pal[] = INCBIN_U16("graphics/pokenav/hns/match_call/nav_icon.gbapal");
-static const u32 sPokenavIcon_Gfx[] = INCBIN_U32("graphics/pokenav/hns/match_call/nav_icon.4bpp.smol");
+static const u16 sPokenavIcon_Pal[] = INCGFX_U16("graphics/pokenav/hns/match_call/nav_icon.png", ".gbapal");
+static const u32 sPokenavIcon_Gfx[] = INCGFX_U32("graphics/pokenav/hns/match_call/nav_icon.png", ".4bpp.smol");
 #else
-static const u16 sPokenavIcon_Pal[] = INCBIN_U16("graphics/pokenav/match_call/nav_icon.gbapal");
-static const u32 sPokenavIcon_Gfx[] = INCBIN_U32("graphics/pokenav/match_call/nav_icon.4bpp.smol");
+static const u16 sPokenavIcon_Pal[] = INCGFX_U16("graphics/pokenav/match_call/nav_icon.png", ".gbapal");
+static const u32 sPokenavIcon_Gfx[] = INCGFX_U32("graphics/pokenav/match_call/nav_icon.png", ".4bpp.smol");
 #endif
 
 static const u8 sText_PokenavCallEllipsis[] = _("………………\p");

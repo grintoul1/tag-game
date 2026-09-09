@@ -755,8 +755,8 @@ static const u8 sTextColors[][3] =
 };
 
 static const u8 sButtons_Gfx[][4 * TILE_SIZE_4BPP] = {
-    INCBIN_U8("graphics/summary_screen/a_button.4bpp"),
-    INCBIN_U8("graphics/summary_screen/b_button.4bpp"),
+    INCGFX_U8("graphics/summary_screen/a_button.png", ".4bpp"),
+    INCGFX_U8("graphics/summary_screen/b_button.png", ".4bpp"),
 };
 
 static void (*const sTextPrinterFunctions[])(void) =
@@ -1191,13 +1191,13 @@ static const struct SpriteTemplate sSpriteTemplate_StatusCondition =
     .anims = sSpriteAnimTable_StatusCondition,
 };
 #if IS_HNS
-static const u16 sMarkings_Pal[] = INCBIN_U16("graphics/summary_screen/hns/markings.gbapal");
+static const u16 sMarkings_Pal[] = INCGFX_U16("graphics/summary_screen/hns/markings.pal", ".gbapal");
 #else
-static const u16 sMarkings_Pal[] = INCBIN_U16("graphics/summary_screen/markings.gbapal");
+static const u16 sMarkings_Pal[] = INCGFX_U16("graphics/summary_screen/markings.pal", ".gbapal");
 #endif
 
-static const u32 sShinyStarObjTiles[] = INCBIN_U32("graphics/summary_screen/shiny_icon.4bpp.smol");
-static const u16 sShinyStarObjPal[] = INCBIN_U16("graphics/summary_screen/heart.gbapal");
+static const u32 sShinyStarObjTiles[] = INCGFX_U32("graphics/summary_screen/shiny_icon.png", ".4bpp.smol");
+static const u16 sShinyStarObjPal[] = INCGFX_U16("graphics/summary_screen/heart.png", ".gbapal");
 
 static const struct OamData sShinyStarObjOamData =
 {
@@ -1224,7 +1224,7 @@ struct ShinyStarObjData {
 };
 static EWRAM_DATA struct ShinyStarObjData *sShinyStarObjData = NULL;
 
-static const u32 sFriendshipIcon_Gfx[] = INCBIN_U32("graphics/summary_screen/heart.4bpp.smol");
+static const u32 sFriendshipIcon_Gfx[] = INCGFX_U32("graphics/summary_screen/heart.png", ".4bpp.smol");
 
 static const u16 sFriendshipLevelToThreshold[FRIENDSHIP_LEVEL_COUNT] = { 0, 42, 85, 128, 170, 212, 250 };
 

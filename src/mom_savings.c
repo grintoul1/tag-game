@@ -1,3 +1,4 @@
+#if IS_HNS
 #include "global.h"
 #include "mom_savings.h"
 #include "main.h"
@@ -537,3 +538,4 @@ void Special_MomOpenWithdrawInput(void)
 #undef tWindowMoney
 #undef tWindowInput
 #undef tWindowMessage
+#endif // IS_HNS

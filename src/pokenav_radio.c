@@ -142,10 +142,10 @@ static void GenerateStationContent(struct Pokenav_Radio *radio, u8 station);
 static void GenerateOPTSegment(struct Pokenav_Radio *radio);
 static void GeneratePokemonMusicContent(struct Pokenav_Radio *radio, u32 *n, u32 *buf, bool32 isBen);
 
-static const u16 sRadioUI_Pal[] = INCBIN_U16("graphics/pokenav/hns/radio/ui.gbapal");
-static const u32 sRadioUI_Gfx[] = INCBIN_U32("graphics/pokenav/hns/radio/ui_tiles.4bpp.smol");
+static const u16 sRadioUI_Pal[] = INCGFX_U16("graphics/pokenav/hns/radio/ui.pal", ".gbapal");
+static const u32 sRadioUI_Gfx[] = INCGFX_U32("graphics/pokenav/hns/radio/ui_tiles.png", ".4bpp.smol");
 static const u32 sRadioUI_Tilemap[] = INCBIN_U32("graphics/pokenav/hns/radio/ui_map.bin.smolTM");
-static const u32 sRadioDial_Gfx[] = INCBIN_U32("graphics/pokenav/hns/radio/dial.4bpp.smol");
+static const u32 sRadioDial_Gfx[] = INCGFX_U32("graphics/pokenav/hns/radio/dial.png", ".4bpp.smol");
 
 // Crystal frequencies (0-80) scaled to our range (0-63):
 //   new = old * 63 / 80

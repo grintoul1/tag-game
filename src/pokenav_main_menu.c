@@ -55,13 +55,13 @@ static void SpriteCB_SpinningPokenav(struct Sprite *);
 static u32 LoopedTask_InitPokenavMenu(s32);
 
 #if IS_HNS
-static const u16 sSpinningPokenav_Pal[] = INCBIN_U16("graphics/pokenav/hns/nav_icon.gbapal");
-static const u32 sSpinningPokenav_Gfx[] = INCBIN_U32("graphics/pokenav/hns/nav_icon.4bpp.smol");
+static const u16 sSpinningPokenav_Pal[] = INCGFX_U16("graphics/pokenav/hns/nav_icon.png", ".gbapal");
+static const u32 sSpinningPokenav_Gfx[] = INCGFX_U32("graphics/pokenav/hns/nav_icon.png", ".4bpp.smol");
 #else
-static const u16 sSpinningPokenav_Pal[] = INCBIN_U16("graphics/pokenav/nav_icon.gbapal");
-static const u32 sSpinningPokenav_Gfx[] = INCBIN_U32("graphics/pokenav/nav_icon.4bpp.smol");
+static const u16 sSpinningPokenav_Pal[] = INCGFX_U16("graphics/pokenav/nav_icon.png", ".gbapal");
+static const u32 sSpinningPokenav_Gfx[] = INCGFX_U32("graphics/pokenav/nav_icon.png", ".4bpp.smol");
 #endif
-static const u32 sBlueLightCopy[] = INCBIN_U32("graphics/pokenav/blue_light.4bpp.smol"); // Unused copy of sMatchCallBlueLightTiles
+static const u32 sBlueLightCopy[] = INCGFX_U32("graphics/pokenav/blue_light.png", ".4bpp.smol"); // Unused copy of sMatchCallBlueLightTiles
 
 const struct BgTemplate gPokenavMainMenuBgTemplates[] =
 {

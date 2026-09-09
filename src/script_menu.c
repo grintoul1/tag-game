@@ -31,8 +31,8 @@
 #define GFXTAG_SHINY_STAR_PREVIEW 5000
 #define PALTAG_SHINY_STAR_PREVIEW 5000
 
-static const u32 sShinyStarTiles[] = INCBIN_U32("graphics/summary_screen/shiny_icon.4bpp.lz");
-static const u16 sShinyStarPal[] = INCBIN_U16("graphics/summary_screen/heart.gbapal");
+static const u32 sShinyStarTiles[] = INCGFX_U32("graphics/summary_screen/shiny_icon.png", ".4bpp.lz");
+static const u16 sShinyStarPal[] = INCGFX_U16("graphics/summary_screen/heart.png", ".gbapal");
 
 static const struct OamData sOam_ShinyStarIcon =
 {

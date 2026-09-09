@@ -190,17 +190,17 @@ struct NamingScreenData
 
 EWRAM_DATA static struct NamingScreenData *sNamingScreen = NULL;
 
-static const u8 sPCIconOff_Gfx[] = INCBIN_U8("graphics/naming_screen/pc_icon_off.4bpp");
-static const u8 sPCIconOn_Gfx[] = INCBIN_U8("graphics/naming_screen/pc_icon_on.4bpp");
-static const u16 sKeyboard_Pal[] = INCBIN_U16("graphics/naming_screen/keyboard.gbapal");
-static const u32 sShinyStarTiles[] = INCBIN_U32("graphics/summary_screen/shiny_icon.4bpp.lz");
-static const u16 sShinyStarPal[] = INCBIN_U16("graphics/summary_screen/heart.gbapal");
+static const u8 sPCIconOff_Gfx[] = INCGFX_U8("graphics/naming_screen/pc_icon_off.png", ".4bpp");
+static const u8 sPCIconOn_Gfx[] = INCGFX_U8("graphics/naming_screen/pc_icon_on.png", ".4bpp");
+static const u16 sKeyboard_Pal[] = INCGFX_U16("graphics/naming_screen/keyboard.pal", ".gbapal");
+static const u32 sShinyStarTiles[] = INCGFX_U32("graphics/summary_screen/shiny_icon.png", ".4bpp.lz");
+static const u16 sShinyStarPal[] = INCGFX_U16("graphics/summary_screen/heart.png", ".gbapal");
 #if IS_HNS
-static const u16 sRival_Gfx[] = INCBIN_U16("graphics/naming_screen/silver.4bpp");
-static const u16 sRival_Pal[] = INCBIN_U16("graphics/naming_screen/silver.gbapal");
+static const u16 sRival_Gfx[] = INCGFX_U16("graphics/naming_screen/silver.png", ".4bpp");
+static const u16 sRival_Pal[] = INCGFX_U16("graphics/naming_screen/silver.png", ".gbapal");
 #else
-static const u16 sRival_Gfx[] = INCBIN_U16("graphics/naming_screen/rival.4bpp");
-static const u16 sRival_Pal[] = INCBIN_U16("graphics/naming_screen/rival.gbapal");
+static const u16 sRival_Gfx[] = INCGFX_U16("graphics/naming_screen/rival.png", ".4bpp");
+static const u16 sRival_Pal[] = INCGFX_U16("graphics/naming_screen/rival.pal", ".gbapal");
 #endif
 
 static const u8 *const sTransferredToPCMessages[] =

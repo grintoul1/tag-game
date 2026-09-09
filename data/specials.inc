@@ -669,9 +669,11 @@ gSpecials::
 	def_special IsPokecenterChallengeActivated
 	def_special IsOneTypeChallengeActive
 	def_special CheckRadioStation
+#if IS_HNS
 	def_special Special_BuenaPasswordShowMultichoice
 	def_special Special_BuenaCheckAnswer
 	def_special Special_BuenaRollReward
+#endif
 	def_special GetAlolaCatchProgress
 	def_special GetGalarCatchProgress
 	def_special GetHisuiCatchProgress
@@ -682,6 +684,7 @@ gSpecials::
 	def_special GetRegionalFormSpecies
 	def_special ConvertToRegionalForm
 	def_special Special_ViewVoltorbFlip
+#if IS_HNS
 	def_special Special_MomEnableSaving
 	def_special Special_MomDisableSaving
 	def_special Special_MomGetBalance
@@ -691,6 +694,7 @@ gSpecials::
 	def_special Special_MomEnsureInitialized
 	def_special Special_MomOpenDepositInput
 	def_special Special_MomOpenWithdrawInput
+#endif
     def_special PartyMonHasSkyRibbon
 	def_special GivePartyMonSkyRibbon
     def_special PartyMonHasLandRibbon
