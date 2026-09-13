@@ -254,7 +254,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_GRASS),
-        .abilities = { ABILITY_THICK_FAT, ABILITY_THICK_FAT, ABILITY_THICK_FAT },
+        .abilities = { ABILITY_MEGA_SOL, ABILITY_MEGA_SOL, ABILITY_MEGA_SOL },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Venusaur"),
     #if P_MODIFIED_MEGA_CRIES
