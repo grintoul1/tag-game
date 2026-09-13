@@ -7021,6 +7021,7 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
     switch (ctx->abilities[ctx->battlerDef])
     {
     case ABILITY_THICK_FAT:
+    case ABILITY_MEGA_SOL:
         if (moveType == TYPE_FIRE || moveType == TYPE_ICE)
         {
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.5));
