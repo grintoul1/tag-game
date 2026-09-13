@@ -1,7 +1,7 @@
 #include "global.h"
 #include "test/battle.h"
 
-SINGLE_BATTLE_TEST("Mega Sol multiplies the power of Fire-type moves by 1.5x")
+DOUBLE_BATTLE_TEST("Mega Sol multiplies the power of Fire-type moves by 1.5x")
 {
     s16 damage[2];
 
@@ -9,16 +9,18 @@ SINGLE_BATTLE_TEST("Mega Sol multiplies the power of Fire-type moves by 1.5x")
         ASSUME(GetMoveType(MOVE_EMBER) == TYPE_FIRE);
         ASSUME(GetMoveEffect(MOVE_SKILL_SWAP) == EFFECT_SKILL_SWAP);
         PLAYER(SPECIES_MEGANIUM) { Ability(ABILITY_SYMBIOSIS); Item(ITEM_MEGANIUMITE); }
+        PLAYER(SPECIES_MEGANIUM) { Ability(ABILITY_SYMBIOSIS); }
+        OPPONENT(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN { MOVE(player, MOVE_EMBER, gimmick: GIMMICK_MEGA); MOVE(opponent, MOVE_SKILL_SWAP); }
-        TURN { MOVE(player, MOVE_EMBER); }
+        TURN { MOVE(playerLeft, MOVE_EMBER, target: opponentLeft, gimmick: GIMMICK_MEGA); MOVE(opponentRight, MOVE_SKILL_SWAP, target: playerLeft); }
+        TURN { MOVE(playerLeft, MOVE_EMBER, target: opponentLeft); }
     } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, player);
-        HP_BAR(opponent, captureDamage: &damage[0]);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, opponent);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, player);
-        HP_BAR(opponent, captureDamage: &damage[1]);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, playerLeft);
+        HP_BAR(opponentLeft, captureDamage: &damage[0]);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, opponentRight);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, playerLeft);
+        HP_BAR(opponentLeft, captureDamage: &damage[1]);
     } THEN {
         EXPECT_MUL_EQ(damage[1], Q_4_12(1.5), damage[0]);
     }
@@ -204,7 +206,7 @@ SINGLE_BATTLE_TEST("Mega Sol doesn't trigger the foe's Leaf Guard", s16 damage)
     }
 }
 
-SINGLE_BATTLE_TEST("Mega Sol ignores Cloud Nine")
+DOUBLE_BATTLE_TEST("Mega Sol ignores Cloud Nine")
 {
     s16 damage[2];
     enum Species species;
@@ -217,16 +219,18 @@ SINGLE_BATTLE_TEST("Mega Sol ignores Cloud Nine")
         ASSUME(GetMoveType(MOVE_EMBER) == TYPE_FIRE);
         ASSUME(GetMoveEffect(MOVE_SKILL_SWAP) == EFFECT_SKILL_SWAP);
         PLAYER(SPECIES_MEGANIUM) { Ability(ABILITY_SYMBIOSIS); Item(ITEM_MEGANIUMITE); }
+        PLAYER(SPECIES_MEGANIUM) { Ability(ABILITY_SYMBIOSIS); }
+        OPPONENT(species) { Ability(ability); }
         OPPONENT(species) { Ability(ability); }
     } WHEN {
-        TURN { MOVE(player, MOVE_EMBER, gimmick: GIMMICK_MEGA); MOVE(opponent, MOVE_SKILL_SWAP); }
-        TURN { MOVE(player, MOVE_EMBER); }
+        TURN { MOVE(playerLeft, MOVE_EMBER, target: opponentLeft, gimmick: GIMMICK_MEGA); MOVE(opponentRight, MOVE_SKILL_SWAP, target: playerLeft); }
+        TURN { MOVE(playerLeft, MOVE_EMBER, target: opponentLeft); }
     } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, player);
-        HP_BAR(opponent, captureDamage: &damage[0]);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, opponent);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, player);
-        HP_BAR(opponent, captureDamage: &damage[1]);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, playerLeft);
+        HP_BAR(opponentLeft, captureDamage: &damage[0]);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, opponentRight);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, playerLeft);
+        HP_BAR(opponentLeft, captureDamage: &damage[1]);
     } THEN {
         EXPECT_MUL_EQ(damage[1], Q_4_12(1.5), damage[0]);
     }

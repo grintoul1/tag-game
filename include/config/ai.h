@@ -134,6 +134,7 @@
 #define RANDOMIZE_SWITCHIN_ANY_VALID                            FALSE // If AI has no good candidate mons, it will still choose randomly from all valid options rather than defaulting to the last one in party order
 
 // Configurations specifically for AI_FLAG_DOUBLE_BATTLE.
+#define AI_DOUBLE_TARGET_COORDINATION            FALSE // Reduce redundant single-target attacks when an ally has already chosen a reliable KO. Set FALSE for independent targeting.
 #define FRIENDLY_FIRE_RISKY_THRESHOLD           2
 #define FRIENDLY_FIRE_NORMAL_THRESHOLD          3
 #define FRIENDLY_FIRE_CONSERVATIVE_THRESHOLD    4
