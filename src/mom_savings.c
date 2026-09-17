@@ -1,4 +1,3 @@
-#if IS_HNS
 #include "global.h"
 #include "mom_savings.h"
 #include "main.h"
@@ -26,6 +25,8 @@
 #include "constants/map_types.h"
 #include "decoration_inventory.h"
 #include "randomizer.h"
+
+#if IS_HNS
 
 extern const u8 EventScript_MomGiftCall_Item[];
 extern const u8 EventScript_MomGiftCall_Berry[];

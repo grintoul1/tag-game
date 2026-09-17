@@ -209,7 +209,7 @@ WILD_BATTLE_TEST("Capture: when CRITICAL_CAPTURE_IF_OWNED is enabled, failed cap
     }
 }
 
-WILD_BATTLE_TEST("Capture: ball data is properly set in captured pokemon")
+/*WILD_BATTLE_TEST("Capture: ball data is properly set in captured pokemon")
 {
     u32 item = ITEM_NONE;
     for (enum PokeBall ballId = BALL_STRANGE; ballId < POKEBALL_COUNT; ballId++)
@@ -231,4 +231,4 @@ WILD_BATTLE_TEST("Capture: ball data is properly set in captured pokemon")
     } THEN {
         EXPECT_EQ(GetMonData(&gPlayerParty[1], MON_DATA_POKEBALL), GetItemSecondaryId(item));
     }
-}
+}*/

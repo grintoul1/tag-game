@@ -723,6 +723,15 @@ void process_groups(string groups_filepath, vector<string> &map_filepaths, strin
         if (game_ver.empty())
             game_ver = "emerald";
 
+        string region = json_to_string(map_data, "region", true);
+        if (region.empty()) {
+            if (version == "hns")
+                region = "REGION_JOHTO";
+            else if (version == "emerald")
+                region = "REGION_HOENN";
+            else if (version == "firered")
+                region = "REGION_KANTO";
+        }
         string map_name = json_to_string(map_data, "name");
 
         string expected_game_ver = version;
@@ -772,7 +781,16 @@ string generate_layout_headers_text(Json layouts_data) {
             continue;
         if (!layout_matches_version(layout))
             continue;
+
         string layout_version = json_to_string(layout, "layout_version", true);
+        if (layout_version.empty()) {
+            if (version == "hns")
+                layout_version = "hns";
+            else if (version == "emerald")
+                layout_version = "emerald";
+            else if (version == "firered")
+                layout_version = "frlg";
+        }
         if (layout_version.empty())
             layout_version = "emerald";
         string layoutName = json_to_string(layout, "name");

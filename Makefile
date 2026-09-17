@@ -1,8 +1,8 @@
-GAME_VERSION ?= EMERALD
+GAME_VERSION ?= POKEMON_HNS
 TITLE        ?= POKEMON EMER
 GAME_CODE    ?= BPEE
-BUILD_NAME   ?= emerald
-MAP_VERSION  ?= emerald
+BUILD_NAME   ?= hns
+MAP_VERSION  ?= hns
 
 ifneq (,$(filter firered,$(or $(BUILD), $(MAKECMDGOALS))))
   	GAME_VERSION 	:= FIRERED
@@ -18,7 +18,7 @@ ifneq (,$(filter leafgreen,$(or $(BUILD), $(MAKECMDGOALS))))
 	BUILD_NAME  	:= leafgreen
 	MAP_VERSION 	:= firered
 else
-ifneq (,$(filter hns,$(or $(BUILD), $(MAKECMDGOALS))))
+ifneq (,$(filter emerald,$(or $(BUILD), $(MAKECMDGOALS))))
 	GAME_VERSION 	:= POKEMON_HNS
 	TITLE       	:= POKEMON HNS
 	GAME_CODE   	:= BPEE

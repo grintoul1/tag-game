@@ -179,7 +179,6 @@ MoveTutor_EventScript_HeadbuttTaught::
 
 MoveTutor_EventScript_OpenPartyMenu::
 	special ChooseMonForMoveTutor
-	waitstate
 	lock
 	faceplayer
 	return

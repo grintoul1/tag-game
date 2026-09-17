@@ -1800,6 +1800,9 @@ static void Task_OpenPokedexFromSummary(u8 taskId)
     }
 }
 
+static inline bool32 ShouldShowRename(void);
+static void CB2_PssChangePokemonNickname(void);
+
 static void Task_ShowPokedexEntryFromSummary(u8 taskId)
 {
     // Only open Pokedex if not an egg and player has Pokedex
@@ -1949,8 +1952,38 @@ static void Task_HandleInput(u8 taskId)
             if (sMonSummaryScreen->currPageIndex == PSS_PAGE_BATTLE_MOVES
                         || sMonSummaryScreen->currPageIndex == PSS_PAGE_CONTEST_MOVES)
             {
+#if IS_HNS
                 PlaySE(SE_SELECT);
                 SwitchToMoveSelection(taskId);
+#else
+                if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO)
+                {
+                    if (ShouldShowRename())
+                    {
+                        if (sMonSummaryScreen->isBoxMon)
+                        {
+                            gSpecialVar_0x8004 = PC_MON_CHOSEN;
+                            gSpecialVar_MonBoxPos = sMonSummaryScreen->curMonIndex;
+                            gSpecialVar_MonBoxId = StorageGetCurrentBox();
+                        }
+                        else
+                        {
+                            gSpecialVar_0x8004 = sMonSummaryScreen->curMonIndex;
+                        }
+                        sMonSummaryScreen->callback = CB2_PssChangePokemonNickname;
+                    }
+
+                    StopPokemonAnimations();
+                    PlaySE(SE_SELECT);
+                    BeginCloseSummaryScreen(taskId);
+                }
+                else if (sMonSummaryScreen->currPageIndex == PSS_PAGE_BATTLE_MOVES
+                         || sMonSummaryScreen->currPageIndex == PSS_PAGE_CONTEST_MOVES)
+                {
+                    PlaySE(SE_SELECT);
+                    SwitchToMoveSelection(taskId);
+                }
+#endif // IS_HNS
             }
             else if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO
                   || (sMonSummaryScreen->currPageIndex == PSS_PAGE_SKILLS && gSaveBlock2Ptr->optionsButtonMode != OPTIONS_BUTTON_MODE_L_EQUALS_A))
@@ -1968,8 +2001,35 @@ static void Task_HandleInput(u8 taskId)
         {
             if (sMonSummaryScreen->currPageIndex == PSS_PAGE_SKILLS)
             {
+#if IS_HNS
                 ShowMonSkillsInfo(taskId, SUMMARY_SKILLS_MODE_STATS);
                 sMonSummaryScreen->skillsPageMode = SUMMARY_SKILLS_MODE_STATS;
+#else
+                gSpecialVar_0x8004 = PC_MON_CHOSEN;
+                gSpecialVar_MonBoxPos = sMonSummaryScreen->curMonIndex;
+                gSpecialVar_MonBoxId = StorageGetCurrentBox();
+            }
+            else
+            {
+                gSpecialVar_0x8004 = sMonSummaryScreen->curMonIndex;
+            }
+            StopPokemonAnimations();
+            PlaySE(SE_SELECT);
+            BeginCloseSummaryScreen(taskId);
+        }
+        else if (DEBUG_POKEMON_SPRITE_VISUALIZER && JOY_NEW(SELECT_BUTTON) && !gMain.inBattle)
+        {
+            sMonSummaryScreen->callback = CB2_Pokemon_Sprite_Visualizer;
+            StopPokemonAnimations();
+            PlaySE(SE_SELECT);
+            CloseSummaryScreen(taskId);
+        }
+        else if (JOY_NEW(R_BUTTON)) // R means increase. Level -> Egg -> TM -> Tutor
+        {
+            if (P_SUMMARY_SCREEN_MOVE_RELEARNER && (sMonSummaryScreen->currPageIndex == PSS_PAGE_BATTLE_MOVES || sMonSummaryScreen->currPageIndex == PSS_PAGE_CONTEST_MOVES) && !gMain.inBattle)
+            {
+                TryUpdateRelearnType(TRY_INCREMENT);
+#endif // IS_HNS
                 PlaySE(SE_SELECT);
             }
         }

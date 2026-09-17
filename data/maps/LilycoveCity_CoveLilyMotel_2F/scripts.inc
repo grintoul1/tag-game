@@ -31,8 +31,6 @@ LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma::
 	specialvar VAR_RESULT, HasAllRegionalMons
 	call_if_eq VAR_RESULT, TRUE, LilycoveCity_CoveLilyMotel_2F_EventScript_TryGiveOvalCharm
 	special Special_ShowDiploma
-	waitstate
-
 	release
 	end
 

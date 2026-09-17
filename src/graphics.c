@@ -1049,12 +1049,12 @@ const u32 gBattleAnimSpriteGfx_Tendrils[] = INCGFX_U32("graphics/battle_anims/sp
 const u16 gBattleAnimSpritePal_Tendrils[] = INCGFX_U16("graphics/battle_anims/sprites/tendrils.png", ".gbapal");
 
 // Gen 4 healthboxes — engine-wide
-const u32 gHealthboxSinglesPlayerGfxGen4[] = INCGFX_U32("graphics/battle_interface/gen4/healthbox_singles_player.png", ".4bpp.smol");
-const u32 gHealthboxSinglesPlayerGfx_FrontierGen4[] = INCGFX_U32("graphics/battle_interface/gen4/healthbox_singles_player_frontier.png", ".4bpp.smol");
-const u32 gHealthboxSinglesOpponentGfxGen4[] = INCGFX_U32("graphics/battle_interface/gen4/healthbox_singles_opponent.png", ".4bpp.smol");
-const u32 gHealthboxDoublesPlayerGfxGen4[] = INCGFX_U32("graphics/battle_interface/gen4/healthbox_doubles_player.png", ".4bpp.smol");
-const u32 gHealthboxDoublesOpponentGfxGen4[] = INCGFX_U32("graphics/battle_interface/gen4/healthbox_doubles_opponent.png", ".4bpp.smol");
-const u32 gHealthboxSafariGfxGen4[] = INCGFX_U32("graphics/battle_interface/gen4/healthbox_safari.png", ".4bpp.smol");
+const u32 gHealthboxSinglesPlayerGfxGen4[] = INCGFX_U32("graphics/battle_interface/gen4/healthbox_singles_player.png", ".4bpp.smol", "-mwidth 8 -mheight 8");
+const u32 gHealthboxSinglesPlayerGfx_FrontierGen4[] = INCGFX_U32("graphics/battle_interface/gen4/healthbox_singles_player_frontier.png", ".4bpp.smol", "-mwidth 8 -mheight 8");
+const u32 gHealthboxSinglesOpponentGfxGen4[] = INCGFX_U32("graphics/battle_interface/gen4/healthbox_singles_opponent.png", ".4bpp.smol", "-mwidth 8 -mheight 4");
+const u32 gHealthboxDoublesPlayerGfxGen4[] = INCGFX_U32("graphics/battle_interface/gen4/healthbox_doubles_player.png", ".4bpp.smol", "-mwidth 8 -mheight 4");
+const u32 gHealthboxDoublesOpponentGfxGen4[] = INCGFX_U32("graphics/battle_interface/gen4/healthbox_doubles_opponent.png", ".4bpp.smol", "-mwidth 8 -mheight 4");
+const u32 gHealthboxSafariGfxGen4[] = INCGFX_U32("graphics/battle_interface/gen4/healthbox_safari.png", ".4bpp.smol", "-mwidth 8 -mheight 8");
 
 // Gen 3 healthboxes — per-game
 #if IS_HNS
@@ -1780,11 +1780,11 @@ const u16 gBattleAnimBGPalette_Swamp[] = INCGFX_U16("graphics/battle_anims/backg
 const u32 gBattleAnimBgTilemap_Swamp[] = INCBIN_U32("graphics/battle_anims/backgrounds/swampswizzle.bin.smolTM");
 
 #if IS_HNS
-const u32 gPartyMenuBg_Gfx[] = INCGFX_U32("graphics/party_menu/hns/bg.png", ".4bpp.smol");
+const u32 gPartyMenuBg_Gfx[] = INCGFX_U32("graphics/party_menu/hns/bg.png", ".4bpp.smol", "-num_tiles 62 -Wnum_tiles");
 const u16 gPartyMenuBg_Pal[] = INCGFX_U16("graphics/party_menu/hns/bg.png", ".gbapal");
 const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/hns/bg.bin.smolTM");
 #else
-const u32 gPartyMenuBg_Gfx[] = INCGFX_U32("graphics/party_menu/bg.png", ".4bpp.smol");
+const u32 gPartyMenuBg_Gfx[] = INCGFX_U32("graphics/party_menu/bg.png", ".4bpp.smol", "-num_tiles 62 -Wnum_tiles");
 const u16 gPartyMenuBg_Pal[] = INCGFX_U16("graphics/party_menu/bg.png", ".gbapal");
 const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/bg.bin.smolTM");
 #endif
@@ -1809,7 +1809,11 @@ const u16 gSummaryMoveSelect_Pal[] = INCGFX_U16("graphics/summary_screen/move_se
 const u32 gSummaryScreen_Gfx[]                = INCGFX_U32("graphics/summary_screen/hns/tiles.png", ".4bpp.smol");
 const u16 gSummaryScreen_Pal[]                = INCGFX_U16("graphics/summary_screen/hns/tiles.png", ".gbapal");
 #else
+#if P_SUMMARY_SCREEN_IV_EV_TILESET
+const u32 gSummaryScreen_Gfx[]                = INCGFX_U32("graphics/summary_screen/iv_ev_tiles.png", ".4bpp.smol");
+#else
 const u32 gSummaryScreen_Gfx[]                = INCGFX_U32("graphics/summary_screen/tiles.png", ".4bpp.smol");
+#endif // P_SUMMARY_SCREEN_IV_EV_TILESET
 const u16 gSummaryScreen_Pal[]                = INCGFX_U16("graphics/summary_screen/tiles.png", ".gbapal");
 #endif
 const u32 gSummaryPage_Info_Tilemap[]         = INCBIN_U32("graphics/summary_screen/page_info.bin.smolTM");
@@ -1832,7 +1836,7 @@ const u16 gBagScreenMale_Pal[] = INCGFX_U16("graphics/bag/menu_male.pal", ".gbap
 const u16 gBagScreenFemale_Pal[] = INCGFX_U16("graphics/bag/menu_female.pal", ".gbapal");
 #endif
 
-const u32 gBagScreen_Gfx[] = INCGFX_U32("graphics/bag/menu.png", ".4bpp.smol");
+const u32 gBagScreen_Gfx[] = INCGFX_U32("graphics/bag/menu.png", ".4bpp.smol", "-num_tiles 53 -Wnum_tiles");
 #if I_COMBINE_BAG_POCKETS == TRUE
 const u32 gBagScreen_GfxTileMap[] = INCBIN_U32("graphics/bag/menu_6.bin.smolTM");
 #else
@@ -2001,7 +2005,7 @@ const u32 gPokenavHeader_Gfx[] = INCGFX_U32("graphics/pokenav/hns/header.png", "
 const u32 gPokenavHeader_Tilemap[] = INCBIN_U32("graphics/pokenav/hns/header.bin.smolTM");
 #else
 const u16 gPokenavHeader_Pal[] = INCGFX_U16("graphics/pokenav/header.png", ".gbapal");
-const u32 gPokenavHeader_Gfx[] = INCGFX_U32("graphics/pokenav/header.png", ".4bpp.smol"); // TODO: use width 9 and makefile rule for cleanliness, make wasnt behaving, didnt want to apply num_tiles to this
+const u32 gPokenavHeader_Gfx[] = INCGFX_U32("graphics/pokenav/header.png", ".4bpp.smol", "-num_tiles 53 -Wnum_tiles"); // TODO: use width 9 and makefile rule for cleanliness, make wasnt behaving, didnt want to apply num_tiles to this
 const u32 gPokenavHeader_Tilemap[] = INCBIN_U32("graphics/pokenav/header.bin.smolTM");
 #endif
 
