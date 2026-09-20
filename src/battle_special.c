@@ -61,6 +61,7 @@ void CB2_EndSpecialTrainerBattle(void)
                     gSaveBlock1Ptr->playerParty[i] = gParties[B_TRAINER_PLAYER][i];
             }
         }
+        gSpecialVar_Result = gBattleOutcome;
         break;
     }
 
