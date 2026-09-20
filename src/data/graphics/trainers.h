@@ -506,6 +506,7 @@ const u8 gTrainerBackPic_Brock[] = INCGFX_U8("graphics/trainers/back_pics/brock.
 const u8 gTrainerBackPic_Birch[] = INCGFX_U8("graphics/trainers/back_pics/birch.png", ".4bpp");
 const u8 gTrainerBackPic_Misty[] = INCGFX_U8("graphics/trainers/back_pics/misty.png", ".4bpp");
 const u8 gTrainerBackPic_Surge[] = INCGFX_U8("graphics/trainers/back_pics/surge.png", ".4bpp");
+const u8 gTrainerBackPic_Erika[] = INCGFX_U8("graphics/trainers/back_pics/erika.png", ".4bpp");
 
 const u32 gTrainerFrontPic_Birch[] = INCGFX_U32("graphics/trainers/front_pics/birch.png", ".4bpp.smol");
 const u16 gTrainerPalette_Birch[] = INCGFX_U16("graphics/trainers/front_pics/birch.png", ".gbapal");
@@ -524,6 +525,7 @@ const u16 gTrainerBackPicPalette_Brock[] = INCGFX_U16("graphics/trainers/back_pi
 const u16 gTrainerBackPicPalette_Birch[] = INCGFX_U16("graphics/trainers/back_pics/birch.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Misty[] = INCGFX_U16("graphics/trainers/back_pics/misty.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Surge[] = INCGFX_U16("graphics/trainers/back_pics/surge.png", ".gbapal");
+const u16 gTrainerBackPicPalette_Erika[] = INCGFX_U16("graphics/trainers/back_pics/erika.png", ".gbapal");
 
 const u8 gTrainerBackPic_Pokedude[] = INCGFX_U8("graphics/trainers/back_pics/pokedude.png", ".4bpp");
 const u8 gTrainerBackPic_OldMan[] = INCGFX_U8("graphics/trainers/back_pics/old_man.png", ".4bpp");
@@ -1186,6 +1188,7 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_LEADER_ERIKA_FRLG] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LeaderErikaFrlg, gTrainerPalette_LeaderErikaFrlg),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_Erika, gTrainerBackPicPalette_Erika, sBackAnims_Hoenn),
     },
     [TRAINER_PIC_LEADER_KOGA_FRLG] =
     {
