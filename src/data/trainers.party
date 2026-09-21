@@ -1328,7 +1328,7 @@ Naive Nature
 - Triple Axel
 - Sunny Day
 
-Tangela @ Assault Vest
+Tangela @ Miracle Seed
 Ability: Chlorophyll
 Level: 33
 Calm Nature
@@ -1337,13 +1337,13 @@ Calm Nature
 - Ancient Power
 - Wrap
 
-Weepinbell @ Miracle Seed
+Victreebel @ Victreebelite
 Ability: Chlorophyll
 Level: 34
 Hasty Nature
 - Weather Ball
+- Razor Leaf
 - Acid Spray
-- Bullet Seed
 
 === TRAINER_TOMMY ===
 Name: Tommy
@@ -2223,6 +2223,26 @@ Naive Nature
 - Shadow Ball
 - Fake Out
 
+=== TRAINER_BLAINE_PETALBURG ===
+Name: Blaine /* [Optional]*/
+Class: Kantonian
+Pic: Leader Blaine Frlg
+Gender: Male
+Music: Cool
+Mugshot: Red
+Battle Type: Singles
+AI: Tag Trainer
+Multi Party: Half
+
+Glimmora @ Power Herb
+Ability: Toxic Debris
+Level: 37
+Timid Nature
+- Meteor Beam
+- Sludge
+- Mud Shot
+- Mortal Spin
+
 === TRAINER_MIL ===
 Name: Mil /* [Hazards Room]*/
 Class: Cooltrainer
@@ -2921,7 +2941,7 @@ Jolly Nature
 - Poison Fang
 - Flip Turn
 
-Gourgeist-Super @ Weakness Policy
+Gourgeist-Super
 Ability: Insomnia
 Level: 38
 Sassy Nature
@@ -3227,13 +3247,13 @@ Hasty Nature
 - Vacuum Wave  
 - Bullet Punch  
 
-=== TRAINER_GRUNT_ROUTE109_1 ===
-Name: Grunt /* Route 109 #1*/
-Class: Team Aqua
-Pic: Aqua Grunt F
+=== TRAINER_ROCKETS_ROUTE109_1 ===
+Name: ???? & ???? /* Route 109 #1*/
+Class: Suspicious Grunts
+Pic: Suspicious Grunts
 Gender: Female
 Music: Girl
-Battle Type: Doubles
+Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
@@ -3246,25 +3266,6 @@ Jolly Nature
 - Bounce
 - Temper Flare
 
-Seviper @ Miracle Seed
-Ability: Shed Skin
-Level: 45
-Timid Nature
-- Sludge Bomb
-- Flamethrower
-- Giga Drain
-- Acid Spray
-
-=== TRAINER_GRUNT_ROUTE109_2 ===
-Name: Grunt /* Route 109 #2*/
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Girl
-Battle Type: Doubles
-AI: Tag Trainer
-Multi Party: Half
-
 Dustox @ Focus Sash
 Ability: Shield Dust
 Level: 45
@@ -3273,6 +3274,15 @@ Timid Nature
 - Venoshock
 - Infestation
 - Toxic
+
+Seviper @ Miracle Seed
+Ability: Shed Skin
+Level: 45
+Timid Nature
+- Sludge Bomb
+- Flamethrower
+- Giga Drain
+- Acid Spray
 
 Cacturne @ Quick Claw
 Ability: Water Absorb
@@ -3283,13 +3293,13 @@ Adamant Nature
 - Fell Stinger
 - Spiky Shield
 
-=== TRAINER_GRUNT_ROUTE109_3 ===
-Name: Grunt /* Route 109 #3*/
-Class: Team Aqua
-Pic: Aqua Grunt F
+=== TRAINER_ROCKETS_ROUTE109_2 ===
+Name: ???? & ???? /* Route 109 #2*/
+Class: Suspicious Grunts
+Pic: Suspicious Grunts
 Gender: Female
 Music: Girl
-Battle Type: Doubles
+Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
@@ -3302,25 +3312,6 @@ Relaxed Nature
 - Muddy Water
 - Sunny Day
 
-Chimecho @ Life Orb
-Ability: Levitate
-Level: 44
-Timid Nature
-- Psychic
-- Shadow Ball
-- Signal Beam
-- Hypnosis
-
-=== TRAINER_GRUNT_ROUTE109_4 ===
-Name: Grunt /* Route 109 #4*/
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Girl
-Battle Type: Doubles
-AI: Tag Trainer
-Multi Party: Half
-
 Mr. Mime @ Focus Band
 Ability: Filter
 Level: 44
@@ -3329,6 +3320,15 @@ Modest Nature
 - Dazzling Gleam
 - Mystical Fire
 - Icy Wind
+
+Chimecho @ Life Orb
+Ability: Levitate
+Level: 44
+Timid Nature
+- Psychic
+- Shadow Ball
+- Signal Beam
+- Hypnosis
 
 Victreebel @ Blunder Policy
 Ability: Chlorophyll
@@ -3339,13 +3339,13 @@ Jolly Nature
 - Leech Life
 - Sleep Powder
 
-=== TRAINER_GRUNT_ROUTE109_5 ===
-Name: Grunt /* Route 109 #5*/
-Class: Team Aqua
-Pic: Aqua Grunt F
+=== TRAINER_ROCKETS_ROUTE109_3 ===
+Name: ???? & ???? /* Route 109 #3*/
+Class: Suspicious Grunts
+Pic: Suspicious Grunts
 Gender: Female
 Music: Girl
-Battle Type: Doubles
+Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
@@ -3358,6 +3358,15 @@ Mild Nature
 - Dark Pulse
 - Psybeam
 
+Wobbuffet @ Brightpowder
+Ability: Telepathy
+Level: 46
+Calm Nature
+- Mirror Coat
+- Counter
+- Destiny Bond
+- Encore
+
 Arbok @ Payapa Berry
 Ability: Intimidate
 Level: 45
@@ -3367,24 +3376,24 @@ Jolly Nature
 - Lash Out
 - Coil
 
-=== TRAINER_GRUNT_ROUTE109_6 ===
-Name: Grunt /* Route 109 #6*/
-Class: Team Aqua
-Pic: Aqua Grunt M
+Persian @ Scope Lens
+Ability: Unnerve
+Level: 44
+Jolly Nature
+- Slash
+- Night Slash
+- Play Rough
+- Fake Out
+
+=== TRAINER_GIOVANNI_SLATEPORT ===
+Name: Giovanni /* Slateport*/
+Class: Rocket
+Pic: Leader Giovanni Frlg
 Gender: Male
 Music: Girl
-Battle Type: Doubles
+Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
-
-Wobbuffet @ Brightpowder
-Ability: Telepathy
-Level: 46
-Calm Nature
-- Mirror Coat
-- Counter
-- Destiny Bond
-- Encore
 
 Persian @ Scope Lens
 Ability: Unnerve
@@ -5148,6 +5157,44 @@ Jolly Nature
 - Stomping Tantrum
 - Fire Punch
 - Dragon Dance
+
+=== TRAINER_MISTY_LAVARIDGE ===
+Name: Misty
+Class: Kantonian
+Pic: Leader Misty Frlg
+Gender: Female
+Music: Cool
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Bruxish @ Wacan Berry
+Ability: Dazzling
+Level: 56
+Hasty Nature
+- Psychic Fangs
+- Liquidation
+- Crunch
+- Swords Dance
+
+=== TRAINER_SURGE_LAVARIDGE ===
+Name: Surge /* Lavaridge [Optional]*/
+Class: Kantonian
+Pic: Leader Lt Surge Frlg
+Gender: Male
+Music: Cool
+Battle Type: Doubles
+AI: Tag Trainer
+Multi Party: Half
+
+Bruxish @ Wacan Berry
+Ability: Dazzling
+Level: 56
+Hasty Nature
+- Psychic Fangs
+- Liquidation
+- Crunch
+- Swords Dance
 
 === TRAINER_COLE ===
 Name: Cole

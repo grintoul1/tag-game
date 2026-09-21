@@ -358,7 +358,7 @@
       "elevation": 0,
       "var": "VAR_ROUTE109_STATE",
       "var_value": "0",
-      "script": "Route109_EventScript_Grunt1Grunt2"
+      "script": "Route109_EventScript_Rockets1"
     },
     {
       "type": "trigger",
@@ -376,7 +376,7 @@
       "elevation": 0,
       "var": "VAR_ROUTE109_STATE",
       "var_value": "1",
-      "script": "Route109_EventScript_Grunt3Grunt4"
+      "script": "Route109_EventScript_Rockets2"
     }
   ],
   "bg_events": [

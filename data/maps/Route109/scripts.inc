@@ -466,16 +466,16 @@ Route109_EventScript_RickyRegisterMatchCallAfterBattle::
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route109_Text_RickyRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_GRUNT_ROUTE109_2
+	register_matchcall TRAINER_ROCKETS_ROUTE109_2
 	release
 	end
 
 Route109_EventScript_RickyRematch::
-	trainerbattle_rematch TRAINER_GRUNT_ROUTE109_2, Route109_Text_RickyRematchIntro, Route109_Text_RickyRematchDefeated
+	trainerbattle_rematch TRAINER_ROCKETS_ROUTE109_2, Route109_Text_RickyRematchIntro, Route109_Text_RickyRematchDefeated
 	msgbox Route109_Text_RickyRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route109_EventScript_Grunt3Grunt4::
+Route109_EventScript_Rockets2::
 lockall
 setvar VAR_0x8008, LOCALID_GRUNT3
 playse SE_PIN
@@ -493,20 +493,20 @@ playbgm MUS_ENCOUNTER_TWINS, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 waitmovement 0
 msgbox Route109_Text_ChandlerIntro, MSGBOX_AUTOCLOSE
-goto Route109_EventScript_Grunt3Grunt4DoMultiBattle
+goto Route109_EventScript_Rockets2DoMultiBattle
 releaseall
 end
 
-Route109_EventScript_Grunt3Grunt4DoMultiBattle::
+Route109_EventScript_Rockets2DoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_GRUNT_ROUTE109_3, Route109_Text_LolaDefeated, TRAINER_GRUNT_ROUTE109_4, Route109_Text_ChandlerDefeated, PARTNER_EMMIE
+multi_2p_vs_1 TRAINER_ROCKETS_ROUTE109_2, Route109_Text_LolaDefeated, PARTNER_EMMIE
 switch VAR_RESULT
-case 1, Route109_EventScript_Grunt3Grunt4Victory
+case 1, Route109_EventScript_Rockets2Victory
 fadescreen FADE_TO_BLACK
 special SetCB2WhiteOut
 waitstate
 
-Route109_EventScript_Grunt3Grunt4Victory::
+Route109_EventScript_Rockets2Victory::
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 waitmovement 0
 msgbox Route109_Text_LolaPostBattle, MSGBOX_AUTOCLOSE
@@ -526,12 +526,12 @@ Route109_EventScript_LolaRegisterMatchCallAfterBattle::
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route109_Text_LolaRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_GRUNT_ROUTE109_3
+	register_matchcall TRAINER_ROCKETS_ROUTE109_3
 	release
 	end
 
 Route109_EventScript_LolaRematch::
-	trainerbattle_rematch TRAINER_GRUNT_ROUTE109_3, Route109_Text_LolaRematchIntro, Route109_Text_LolaRematchDefeated
+	trainerbattle_rematch TRAINER_ROCKETS_ROUTE109_3, Route109_Text_LolaRematchIntro, Route109_Text_LolaRematchDefeated
 	msgbox Route109_Text_LolaRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -565,7 +565,7 @@ Route109_EventScript_Chandler::
 	msgbox Route109_Text_ChandlerPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route109_EventScript_Grunt1Grunt2::
+Route109_EventScript_Rockets1::
 lockall
 setvar VAR_0x8008, LOCALID_GRUNT1
 playse SE_PIN
@@ -583,20 +583,20 @@ playbgm MUS_ENCOUNTER_AQUA, TRUE
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 waitmovement 0
 msgbox Route109_Text_RickyIntro, MSGBOX_AUTOCLOSE
-goto Route109_EventScript_Grunt1Grunt2DoMultiBattle
+goto Route109_EventScript_Rockets1DoMultiBattle
 releaseall
 end
 
-Route109_EventScript_Grunt1Grunt2DoMultiBattle::
+Route109_EventScript_Rockets1DoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_GRUNT_ROUTE109_1, Route109_Text_HaileyDefeated, TRAINER_GRUNT_ROUTE109_2, Route109_Text_RickyDefeated, PARTNER_EMMIE
+multi_2p_vs_1 TRAINER_ROCKETS_ROUTE109_1, Route109_Text_HaileyDefeated, PARTNER_EMMIE
 switch VAR_RESULT
-case 1, Route109_EventScript_Grunt1Grunt2Victory
+case 1, Route109_EventScript_Rockets1Victory
 fadescreen FADE_TO_BLACK
 special SetCB2WhiteOut
 waitstate
 
-Route109_EventScript_Grunt1Grunt2Victory::
+Route109_EventScript_Rockets1Victory::
 applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 waitmovement 0
 msgbox Route109_Text_HaileyPostBattle, MSGBOX_AUTOCLOSE
