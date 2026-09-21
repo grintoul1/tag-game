@@ -904,6 +904,14 @@ enum __attribute__((packed)) SongId
     MUS_PMD_SPINDAS_CAFE = 1024,
     MUS_PMD_VAST_ICE_MOUNTAIN_PEAK = 1025,
     MUS_EVER_GRANDE_INTERNAL = 1026,
+    MUS_HG_VS_ROCKET_PLUS_1 = 1027,
+    MUS_HG_VS_ROCKET_PLUS_2 = 1028,
+    MUS_RG_VS_GYM_LEADER_PLUS_1 = 1029,
+    MUS_RG_VS_GYM_LEADER_PLUS_2 = 1030,
+    MUS_RG_VS_GYM_LEADER_PLUS_3 = 1031,
+    MUS_RG_VS_GYM_LEADER_MINUS_1 = 1032,
+    MUS_RG_VS_GYM_LEADER_MINUS_2 = 1033,
+    MUS_RG_VS_GYM_LEADER_MINUS_3 = 1034,
 
 // These PH_* constants are phoneme sounds used by the "bard" NPC (see src/bard_music.c and src/mauville_old_man.c).
 // Each comes in a triplet of PH_*_BLEND, PH_*_HELD, and PH_*_SOLO, and the name of each triplet incorporates the English phonetic sound it represents.

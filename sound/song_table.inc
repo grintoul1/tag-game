@@ -1033,6 +1033,14 @@ gSongTable::
 	song mus_pmd_spindas_cafe, MUSIC_PLAYER_BGM, 0
 	song mus_pmd_vast_ice_mountain_peak, MUSIC_PLAYER_BGM, 0
 	song mus_ever_grande, MUSIC_PLAYER_BGM, 0
+	song mus_hg_vs_rocket_plus_1, MUSIC_PLAYER_BGM, 0
+	song mus_hg_vs_rocket_plus_2, MUSIC_PLAYER_BGM, 0
+	song mus_rg_vs_gym_leader_plus_1, MUSIC_PLAYER_BGM, 0
+	song mus_rg_vs_gym_leader_plus_2, MUSIC_PLAYER_BGM, 0
+	song mus_rg_vs_gym_leader_plus_3, MUSIC_PLAYER_BGM, 0
+	song mus_rg_vs_gym_leader_minus_1, MUSIC_PLAYER_BGM, 0
+	song mus_rg_vs_gym_leader_minus_2, MUSIC_PLAYER_BGM, 0
+	song mus_rg_vs_gym_leader_minus_3, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:

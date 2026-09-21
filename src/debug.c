@@ -4602,6 +4602,14 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_PMD_SPINDAS_CAFE)    \
     X(MUS_PMD_VAST_ICE_MOUNTAIN_PEAK)    \
     X(MUS_EVER_GRANDE_INTERNAL)              \
+    X(MUS_HG_VS_ROCKET_PLUS_1)    \
+    X(MUS_HG_VS_ROCKET_PLUS_2)    \
+    X(MUS_RG_VS_GYM_LEADER_PLUS_1)         \
+    X(MUS_RG_VS_GYM_LEADER_PLUS_2)         \
+    X(MUS_RG_VS_GYM_LEADER_PLUS_3)         \
+    X(MUS_RG_VS_GYM_LEADER_MINUS_1)         \
+    X(MUS_RG_VS_GYM_LEADER_MINUS_2)         \
+    X(MUS_RG_VS_GYM_LEADER_MINUS_3)         \
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \
