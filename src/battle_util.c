@@ -2689,6 +2689,17 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
             gStartingStatuses.tailwindOpponentTemporary = gStartingStatuses.tailwindOpponent = FALSE;
             return effect;
         }
+        else if (gStartingStatuses.auroraVeilOpponent)
+        {
+            effect = SetStartingSideStatus(
+                        SIDE_STATUS_AURORA_VEIL,
+                        B_SIDE_OPPONENT,
+                        B_MSG_SET_AURORA_VEIL_OPPONENT,
+                        B_ANIM_AURORA_VEIL,
+                        &gSideTimers[B_SIDE_OPPONENT].auroraVeilTimer, 0);
+            gStartingStatuses.auroraVeilOpponent = FALSE;
+            return effect;
+        }
         else if (gStartingStatuses.rainbowPlayer || gStartingStatuses.rainbowPlayerTemporary)
         {
             effect = SetStartingSideStatus(

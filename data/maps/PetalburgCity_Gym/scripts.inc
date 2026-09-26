@@ -1139,29 +1139,29 @@ PetalburgCity_Gym_EventScript_MaryPostBadge::
 	end
 
 PetalburgCity_Gym_EventScript_Alexia::
-faceplayer
-goto_if_set FLAG_ALEXIA_DEFEATED, PetalburgCity_Gym_EventScript_Alexia2
-lockall
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_AlexiaIntro, MSGBOX_AUTOCLOSE
-goto PetalburgCity_Gym_EventScript_AlexiaDoMultiBattle
-releaseall
-end
+	faceplayer
+	goto_if_set FLAG_ALEXIA_DEFEATED, PetalburgCity_Gym_EventScript_Alexia2
+	lockall
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	msgbox PetalburgCity_Gym_Text_AlexiaIntro, MSGBOX_AUTOCLOSE
+	goto PetalburgCity_Gym_EventScript_AlexiaDoMultiBattle
+	releaseall
+	end
 
 PetalburgCity_Gym_EventScript_AlexiaDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_ZOE, PetalburgCity_Gym_Text_AlexiaDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, PetalburgCity_Gym_EventScript_AlexiaVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_1 TRAINER_ZOE, PetalburgCity_Gym_Text_AlexiaDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, PetalburgCity_Gym_EventScript_AlexiaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 PetalburgCity_Gym_EventScript_AlexiaVictory::
-msgbox PetalburgCity_Gym_Text_AlexiaPostBattle, MSGBOX_AUTOCLOSE
-setflag FLAG_ALEXIA_DEFEATED
-call PetalburgCity_Gym_EventScript_SlideOpenDefenseRoomDoors
-end
+	msgbox PetalburgCity_Gym_Text_AlexiaPostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_ALEXIA_DEFEATED
+	call PetalburgCity_Gym_EventScript_SlideOpenDefenseRoomDoors
+	end
 
 PetalburgCity_Gym_EventScript_Alexia2::
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_AlexiaPostBadge
@@ -1639,8 +1639,7 @@ PetalburgCity_Gym_Text_ParkerPostBadge:
 PetalburgCity_Gym_Text_GeorgeIntro:
 	.string "Jas: Can you keep track of the\n"
 	.string "terrain changes?\p"
-	.string "If not then you will never defeat\n"
-	.string "me!$"
+	.string "I sure can't!$"
 
 PetalburgCity_Gym_Text_GeorgeDefeat:
 	.string "I'm going back to Dota…$"
@@ -1650,7 +1649,7 @@ PetalburgCity_Gym_Text_GeorgePostBattle:
 	.string "Good luck!$"
 
 PetalburgCity_Gym_Text_GeorgePostBadge:
-	.string "I'm going to keep playing Dota.\n"
+	.string "I'm going to keep uninstalling Dota.\n"
 	.string "One day, I'll reach 30,000 hours!$"
 
 PetalburgCity_Gym_Text_BerkeIntro:
@@ -1699,24 +1698,25 @@ PetalburgCity_Gym_Text_MaryPostBadge:
 	.string "with Gilmore, my Smeargle.$"
 
 PetalburgCity_Gym_Text_AlexiaIntro:
-	.string "The higher the DEFENSE, the more\n"
-	.string "reckless I can be in attack.$"
+	.string "Zoe: Its hard to shine bright in a\n"
+	.string "blizzard.\p"
+	.string "My battle performance will leave you\n"
+	.string "as speechless as a mime.\p"
+	.string "I guess it's fine for me to be as cute\n"
+	.string "as Mime Jr...$"
 
 PetalburgCity_Gym_Text_AlexiaDefeat:
-	.string "Our defenses weren't enough…$"
+	.string "I guess its tea time now…$"
 
 PetalburgCity_Gym_Text_AlexiaPostBattle:
-	.string "I think you've taught me a valuable\n"
-	.string "lesson here.\p"
-	.string "Now, go on! The left door goes to\n"
-	.string "the STRENGTH ROOM.\p"
+	.string "Zoe: Go on! The left door goes to\n"
+	.string "the Tailwind Room.\p"
 	.string "The right door opens to\n"
-	.string "the ONE-HIT KO ROOM.\p"
-	.string "Both of them have TRAINERS who are\n"
-	.string "skilled at offense.$"
+	.string "the Trick Room Room!$"
 
 PetalburgCity_Gym_Text_AlexiaPostBadge:
-	.string "Hi! Have you tried using SURF?$"
+	.string "Zoe: Have you heard of the Nuzlocke\n"
+	.string "Invitational?$"
 
 PetalburgCity_Gym_Text_JodyIntro:
 	.string "Our GYM LEADER told us to go all out\n"
@@ -1766,11 +1766,11 @@ PetalburgCity_Gym_Text_EnterDefenseRoom:
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterRecoveryRoom:
-	.string "“Terrain Room,” the sign says.\p"
+	.string "“Terrain Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterStrengthRoom:
-	.string "“STRENGTH ROOM,” the sign says.\p"
+	.string "“Tailwind Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterOHKORoom:
@@ -1778,7 +1778,7 @@ PetalburgCity_Gym_Text_EnterOHKORoom:
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterGymLeadersRoom:
-	.string "“GYM LEADER'S ROOM\p"
+	.string "“Truck Room”\p"
 	.string "“See for yourself what POKéMON await\n"
 	.string "you!” the sign says.\p"
 	.string "Do you want to go through?$"
