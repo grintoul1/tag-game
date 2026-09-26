@@ -5441,13 +5441,32 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Tentacool
-Level: 25
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Wailord @ Flying Gem
+Ability: Drizzle
+Level: 60
+Lonely Nature
+- Bounce
+- Body Slam
+- Avalanche
+- Whirlpool
 
-Carvanha
-Level: 25
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Huntail @ Cell Battery
+Ability: Swift Swim
+Level: 61
+Jolly Nature
+- Liquidation
+- Crunch
+- Ice Fang
+- Shell Smash
+
+Gorebyss @ Wacan Berry
+Ability: Swift Swim
+Level: 61
+Timid Nature
+- Ice Beam
+- Signal Beam
+- Draining Kiss
+- Shell Smash
 
 === TRAINER_WADE ===
 Name: Wade
@@ -5459,9 +5478,21 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Tentacool
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Araquanid @ Leftovers
+Ability: Water Bubble
+Level: 61
+Bold Nature
+- Scald
+- Mirror Coat
+- Aqua Ring
+- Sticky Web
+
+Wugtrio @ Choice Band
+Ability: Gooey
+Level: 60
+Jolly Nature
+- Muddy Water
+- Triple Dive
 
 === TRAINER_DAVIS ===
 Name: Davis
@@ -5473,9 +5504,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Pinsir
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Volbeat @ Focus Sash
+Ability: Prankster
+Level: 61
+Naive Nature
+- Ice Punch
+- Struggle Bug
+- Baton Pass
+- Tail Glow
+
+Galvantula @ Wise Glasses
+Ability: Compound Eyes
+Level: 61
+Timid Nature
+- Thunder
+- Energy Ball
+- Giga Drain
+- Electroweb
 
 === TRAINER_JAZMYN ===
 Name: Jazmyn
@@ -5487,9 +5532,32 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Absol
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Tsareena @ Miracle Seed
+Ability: Queenly Majesty
+Level: 61
+Jolly Nature
+- Trop Kick
+- Knock Off
+- Low Sweep
+- Triple Axel
+
+Medicham @ Wide Lens
+Ability: Pure Power
+Level: 61
+Adamant Nature
+- Axe Kick
+- Rock Slide
+- Psycho Cut
+- Bullet Punch
+
+Cryogonal @ Water Gem
+Ability: Frost Body
+Level: 61
+Timid Nature
+- Frosty Gale
+- Water Pulse
+- Ancient Power
+- Acid Armor
 
 === TRAINER_JACKI_1 ===
 Name: Jacki
@@ -5501,13 +5569,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Kadabra
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Pangoro @ Chople Berry
+Ability: Iron Fist
+Level: 61
+Adamant Nature
+- Poison Jab
+- Sucker Punch
+- Circle Throw
+- Parting Shot
 
-Lunatone
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Gothitelle @ Assault Vest
+Ability: Shadow Tag
+Level: 62
+Naive Nature
+- Psychic
+- Energy Ball
+- Shadow Ball
+- Fake Out
 
 === TRAINER_FREDRICK ===
 Name: Fredrick
@@ -5519,13 +5597,18 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Makuhita
-Level: 30
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Swellow @ Choice Specs
+Ability: Scrappy
+Level: 62
+Timid Nature
+- Hyper Voice
 
-Machoke
-Level: 30
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Dugtrio @ Choice Band
+Ability: Arena Trap
+Level: 61
+Jolly Nature
+- Stomping Tantrum
+- Rock Slide
 
 === TRAINER_FERNANDO_1 ===
 Name: Fernando
@@ -5537,13 +5620,23 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Electrike
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Bisharp @ Covert Cloak
+Ability: Sturdy
+Level: 62
+Jolly Nature
+- Iron Head
+- X-Scissor
+- Sucker Punch
+- Swords Dance
 
-Loudred
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ribombee @ Big Root
+Ability: Shield Dust
+Level: 61
+Timid Nature
+- Struggle Bug
+- Draining Kiss
+- Stored Power
+- Quiver Dance
 
 === TRAINER_ALBERTO ===
 Name: Alberto
@@ -5555,13 +5648,32 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Pelipper
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Oricorio-Pom-Pom @ Sharp Beak
+Ability: Dancer
+Level: 61
+Timid Nature
+- Revelation Dance
+- Alluring Voice
+- Air Slash
+- Baton Pass
 
-Xatu
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Oricorio-Pa'u @ Power Herb
+Ability: Dancer
+Level: 62
+Hasty Nature
+- Sky Attack
+- Revelation Dance
+- U-turn
+- Helping Hand
+
+Oricorio-Sensu @ Colbur Berry
+Ability: Dancer
+Level: 62
+Naive Nature
+- Hurricane
+- Revelation Dance
+- Icy Wind
+- Flatter
 
 === TRAINER_KINDRA ===
 Name: Kindra
