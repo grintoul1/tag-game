@@ -1598,27 +1598,26 @@ PetalburgCity_Gym_Text_GymGuidePostVictory:
 	.string "What a stunning turn of events!$"
 
 PetalburgCity_Gym_Text_RandallIntro:
-	.string "The ability to attack before the\n"
-	.string "opponent…\p"
-	.string "Just that alone puts me at a great\n"
-	.string "advantage, don't you agree?$"
+	.string "Mil: You'd better watch out for\n"
+	.string "all these hazards…\p"
+	.string "But worry not, if you injure\n"
+	.string "yourself, at least I'm here.\p"
+	.string "Trust me, I'm a doctor!$"
 
 PetalburgCity_Gym_Text_RandallDefeat:
-	.string "That was a magnificent battle!$"
+	.string "Next time you're not getting past\n"
+	.string "my receptionist!$"
 
 PetalburgCity_Gym_Text_RandallPostBattle:
-	.string "Go on to the next room where a new\n"
-	.string "challenge awaits you.\p"
-	.string "At the left is the CONFUSION ROOM.\p"
-	.string "The right door leads to the DEFENSE\n"
-	.string "ROOM.$"
+	.string "Mil: Go on, your next challenge\n"
+	.string "awaits you.\p"
+	.string "At the left is the Screens Room.\p"
+	.string "The right door leads to the Topsy\n"
+	.string "Turvy Room.$"
 
 PetalburgCity_Gym_Text_RandallPostBadge:
-	.string "Whomever you beat, and whomever you\n"
-	.string "may lose to, you never shirk from\l"
-	.string "training yourself and your POKéMON.\p"
-	.string "That's what I think being a\n"
-	.string "GYM LEADER is all about.$"
+	.string "Mil: If you come across Kya, ask her\n"
+	.string "what it's like to be a former champion.$"
 
 PetalburgCity_Gym_Text_ParkerIntro:
 	.string "This is the CONFUSION ROOM.\p"
@@ -1759,11 +1758,11 @@ PetalburgCity_Gym_Text_EnterAccuracyRoom:
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterConfusionRoom:
-	.string "“CONFUSION ROOM,” the sign says.\p"
+	.string "“Topsy Turvy Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterDefenseRoom:
-	.string "“DEFENSE ROOM,” the sign says.\p"
+	.string "“Screens Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterRecoveryRoom:
