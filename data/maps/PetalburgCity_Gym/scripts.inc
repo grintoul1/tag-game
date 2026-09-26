@@ -1180,29 +1180,29 @@ PetalburgCity_Gym_EventScript_AlexiaPostBadge::
 	end
 
 PetalburgCity_Gym_EventScript_Jody::
-faceplayer
-goto_if_set FLAG_JODY_DEFEATED, PetalburgCity_Gym_EventScript_Jody2
-lockall
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_JodyIntro, MSGBOX_AUTOCLOSE
-goto PetalburgCity_Gym_EventScript_JodyDoMultiBattle
-releaseall
-end
+	faceplayer
+	goto_if_set FLAG_JODY_DEFEATED, PetalburgCity_Gym_EventScript_Jody2
+	lockall
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	msgbox PetalburgCity_Gym_Text_JodyIntro, MSGBOX_AUTOCLOSE
+	goto PetalburgCity_Gym_EventScript_JodyDoMultiBattle
+	releaseall
+	end
 
 PetalburgCity_Gym_EventScript_JodyDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_BAZZO, PetalburgCity_Gym_Text_JodyDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, PetalburgCity_Gym_EventScript_JodyVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_1 TRAINER_BAZZO, PetalburgCity_Gym_Text_JodyDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, PetalburgCity_Gym_EventScript_JodyVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 PetalburgCity_Gym_EventScript_JodyVictory::
-msgbox PetalburgCity_Gym_Text_JodyPostBattle, MSGBOX_AUTOCLOSE
-setflag FLAG_JODY_DEFEATED
-call PetalburgCity_Gym_EventScript_SlideOpenStrengthRoomDoors
-end
+	msgbox PetalburgCity_Gym_Text_JodyPostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_JODY_DEFEATED
+	call PetalburgCity_Gym_EventScript_SlideOpenStrengthRoomDoors
+	end
 
 PetalburgCity_Gym_EventScript_Jody2::
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_JodyPostBadge
@@ -1719,26 +1719,18 @@ PetalburgCity_Gym_Text_AlexiaPostBadge:
 	.string "Invitational?$"
 
 PetalburgCity_Gym_Text_JodyIntro:
-	.string "Our GYM LEADER told us to go all out\n"
-	.string "and beat you.\p"
-	.string "Even if you happen to be the\n"
-	.string "LEADER's kid!$"
+	.string "Bazzo: Croc!$"
 
 PetalburgCity_Gym_Text_JodyDefeat:
-	.string "But… I went all out!$"
+	.string "Buh…$"
 
 PetalburgCity_Gym_Text_JodyPostBattle:
-	.string "The way you use your POKéMON…\n"
-	.string "It's like your father's style.\p"
-	.string "Go on through! The GYM LEADER, your\n"
-	.string "father, is waiting!$"
+	.string "Bazzo: Some say Norman is the toughest\n"
+	.string "there is!$"
 
 PetalburgCity_Gym_Text_JodyPostBadge:
-	.string "Sure, it's fine to make your POKéMON\n"
-	.string "stronger.\p"
-	.string "But what decides the winner?\p"
-	.string "Why, it's the feelings TRAINERS have\n"
-	.string "for their POKéMON.$"
+	.string "Bazzo: They hate you when you're a\n"
+	.string "Barboach…$"
 
 PetalburgCity_Gym_Text_DoorAppearsLocked:
 	.string "This door appears to be locked\n"
