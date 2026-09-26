@@ -64,6 +64,16 @@ enum FirstTurnEventsStates
     FIRST_TURN_EVENTS_END,
 };
 
+enum BattleGimmick
+{
+    BATTLE_GIMMICK_NONE,
+    BATTLE_GIMMICK_WEATHER,
+    BATTLE_GIMMICK_TOPSY_TURVY,
+    BATTLE_GIMMICK_SCREENS,
+    BATTLE_GIMMICK_TERRAIN,
+    BATTLE_GIMMICK_COUNT,
+};
+
 void CB2_InitBattle(void);
 void BattleMainCB2(void);
 void CB2_QuitRecordedBattle(void);

@@ -1096,29 +1096,30 @@ PetalburgCity_Gym_EventScript_BerkePostBadge::
 	end
 
 PetalburgCity_Gym_EventScript_Mary::
-faceplayer
-goto_if_set FLAG_MARY_DEFEATED, PetalburgCity_Gym_EventScript_Mary2
-lockall
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_MaryIntro, MSGBOX_AUTOCLOSE
-goto PetalburgCity_Gym_EventScript_MaryDoMultiBattle
-releaseall
-end
+	faceplayer
+	lockall
+	goto_if_set FLAG_MARY_DEFEATED, PetalburgCity_Gym_EventScript_Mary2
+	setvar VAR_BATTLE_GIMMICK, 1 @ BATTLE_GIMMICK_WEATHER
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	msgbox PetalburgCity_Gym_Text_MaryIntro, MSGBOX_AUTOCLOSE
+	goto PetalburgCity_Gym_EventScript_MaryDoMultiBattle
+	releaseall
+	end
 
 PetalburgCity_Gym_EventScript_MaryDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_PORY, PetalburgCity_Gym_Text_MaryDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, PetalburgCity_Gym_EventScript_MaryVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_1 TRAINER_PORY, PetalburgCity_Gym_Text_MaryDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, PetalburgCity_Gym_EventScript_MaryVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 PetalburgCity_Gym_EventScript_MaryVictory::
-msgbox PetalburgCity_Gym_Text_MaryPostBattle, MSGBOX_AUTOCLOSE
-setflag FLAG_MARY_DEFEATED
-call PetalburgCity_Gym_EventScript_SlideOpenAccuracyRoomDoors
-end
+	msgbox PetalburgCity_Gym_Text_MaryPostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_MARY_DEFEATED
+	call PetalburgCity_Gym_EventScript_SlideOpenAccuracyRoomDoors
+	end
 
 PetalburgCity_Gym_EventScript_Mary2::
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_MaryPostBadge
@@ -1579,9 +1580,9 @@ PetalburgCity_Gym_Text_GymGuideAdvice:
 	.string "Whoops! The doors in this room are\n"
 	.string "already open, so don't attack me!\p"
 	.string "The door at the left leads to\n"
-	.string "the SPEED ROOM.\p"
+	.string "the Hazards Room.\p"
 	.string "The door at the right leads to\n"
-	.string "the ACCURACY ROOM.\p"
+	.string "the Weather Room.\p"
 	.string "The room's name will be on\n"
 	.string "the door, so choose carefully.\p"
 	.string "Every battle in the gym will be a\n"
@@ -1685,20 +1686,19 @@ PetalburgCity_Gym_Text_BerkePostBadge:
 
 PetalburgCity_Gym_Text_MaryIntro:
 	.string "Giggle…\n"
-	.string "This is the ACCURACY ROOM.\p"
-	.string "It's pretty nasty when every attack\n"
-	.string "lands without fail.$"
+	.string "This is the Weather Room.\p"
+	.string "Now you'll experience what it's\n"
+	.string "like to be British!$"
 
 PetalburgCity_Gym_Text_MaryDefeat:
-	.string "You were a cut above me…$"
+	.string "Britannia waves the rules…$"
 
 PetalburgCity_Gym_Text_MaryPostBattle:
 	.string "There are some even stronger\n"
-	.string "TRAINERS waiting for you.\p"
-	.string "The left is the DEFENSE ROOM, and\n"
-	.string "the right is the RECOVERY ROOM.\p"
-	.string "Your POKéMON's ATTACK power will be\n"
-	.string "on trial either way.$"
+	.string "trainers waiting for you.\p"
+	.string "The left is the Screens Room, and\n"
+	.string "the right is the Terrain Room.\p"
+	.string "The fun continues!$"
 
 PetalburgCity_Gym_Text_MaryPostBadge:
 	.string "Do you know what we're trying to\n"
@@ -1753,7 +1753,7 @@ PetalburgCity_Gym_Text_DoorAppearsLocked:
 	.string "right now…$"
 
 PetalburgCity_Gym_Text_EnterSpeedRoom:
-	.string "“SPEED ROOM,” the sign says.\p"
+	.string "“Hazards Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 @ Unused
@@ -1762,7 +1762,7 @@ PetalburgCity_Gym_Text_DoorAppearsLocked2:
 	.string "right now…$"
 
 PetalburgCity_Gym_Text_EnterAccuracyRoom:
-	.string "“ACCURACY ROOM,” the sign says.\p"
+	.string "“Weather Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterConfusionRoom:

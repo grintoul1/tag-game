@@ -9,6 +9,7 @@
 #include "battle_stat_change.h"
 #include "battle_gimmick.h"
 #include "battle_scripts.h"
+#include "event_data.h"
 #include "sound.h"
 #include "constants/battle.h"
 #include "constants/battle_string_ids.h"
@@ -16,6 +17,8 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/songs.h"
+
+static bool32 HandleEndTurnWeatherGimmick(enum BattlerId battler);
 
 static enum BattlerId GetBattlerSideForMessage(enum BattleSide side)
 {
@@ -102,6 +105,8 @@ static bool32 HandleEndTurnVarious(enum BattlerId battler)
 static bool32 HandleEndTurnWeather(enum BattlerId battler)
 {
     gBattleStruct->eventState.endTurn++;
+    if (VarGet(VAR_BATTLE_GIMMICK) == BATTLE_GIMMICK_WEATHER)
+        return FALSE;
     return EndOrContinueWeather();
 }
 
@@ -1664,6 +1669,7 @@ static bool32 (*const sEndTurnEffectHandlers[])(enum BattlerId battler) =
 {
     [ENDTURN_ORDER] = HandleEndTurnOrder,
     [ENDTURN_VARIOUS] = HandleEndTurnVarious,
+    [ENDTURN_WEATHER_GIMMICK] = HandleEndTurnWeatherGimmick,
     [ENDTURN_WEATHER] = HandleEndTurnWeather,
     [ENDTURN_WEATHER_DAMAGE] = HandleEndTurnWeatherDamage,
     [ENDTURN_SEND_OUT_REPLACEMENTS_1] = HandleEndTurnSendOutReplacements,
@@ -1781,4 +1787,14 @@ bool32 DoEndTurnEffects(void)
         if (sEndTurnEffectHandlers[gBattleStruct->eventState.endTurn](battler))
             return TRUE;
     }
+}
+
+
+static bool32 HandleEndTurnWeatherGimmick(enum BattlerId battler)
+{
+    gBattleStruct->eventState.endTurn++;
+    if (VarGet(VAR_BATTLE_GIMMICK) != BATTLE_GIMMICK_WEATHER)
+        return FALSE;
+    else
+        return TryChangeBattleWeatherGimmick();
 }
