@@ -1014,29 +1014,30 @@ PetalburgCity_Gym_EventScript_ParkerPostBadge::
 	end
 
 PetalburgCity_Gym_EventScript_George::
-faceplayer
-goto_if_set FLAG_GEORGE_DEFEATED, PetalburgCity_Gym_EventScript_George2
-lockall
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_GeorgeIntro, MSGBOX_AUTOCLOSE
-goto PetalburgCity_Gym_EventScript_GeorgeDoMultiBattle
-releaseall
-end
+	faceplayer
+	lockall
+	goto_if_set FLAG_GEORGE_DEFEATED, PetalburgCity_Gym_EventScript_George2
+	setvar VAR_BATTLE_GIMMICK, 4 @ BATTLE_GIMMICK_TERRAIN
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	msgbox PetalburgCity_Gym_Text_GeorgeIntro, MSGBOX_AUTOCLOSE
+	goto PetalburgCity_Gym_EventScript_GeorgeDoMultiBattle
+	releaseall
+	end
 
 PetalburgCity_Gym_EventScript_GeorgeDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_JAS, PetalburgCity_Gym_Text_GeorgeDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, PetalburgCity_Gym_EventScript_GeorgeVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_1 TRAINER_JAS, PetalburgCity_Gym_Text_GeorgeDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, PetalburgCity_Gym_EventScript_GeorgeVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 PetalburgCity_Gym_EventScript_GeorgeVictory::
-msgbox PetalburgCity_Gym_Text_GeorgePostBattle, MSGBOX_AUTOCLOSE
-setflag FLAG_GEORGE_DEFEATED
-call PetalburgCity_Gym_EventScript_SlideOpenRecoveryRoomDoors
-end
+	msgbox PetalburgCity_Gym_Text_GeorgePostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_GEORGE_DEFEATED
+	call PetalburgCity_Gym_EventScript_SlideOpenRecoveryRoomDoors
+	end
 
 PetalburgCity_Gym_EventScript_George2::
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_GeorgePostBadge
@@ -1637,29 +1638,21 @@ PetalburgCity_Gym_Text_ParkerPostBadge:
 	.string "training has become a lot tougher.$"
 
 PetalburgCity_Gym_Text_GeorgeIntro:
-	.string "Just when you think you're going to\n"
-	.string "win, your opponent restores HP…\p"
-	.string "Can you just imagine how awful that\n"
-	.string "must feel?\p"
-	.string "I'll show you exactly how awful it\n"
-	.string "feels!$"
+	.string "Jas: Can you keep track of the\n"
+	.string "terrain changes?\p"
+	.string "If not then you will never defeat\n"
+	.string "me!$"
 
 PetalburgCity_Gym_Text_GeorgeDefeat:
-	.string "I couldn't restore HP enough…\n"
-	.string "What ATTACK power…$"
+	.string "I'm going back to Dota…$"
 
 PetalburgCity_Gym_Text_GeorgePostBattle:
-	.string "I should have expected no less from\n"
-	.string "our LEADER's kid.\p"
-	.string "No, wait! A TRAINER's abilities are\n"
-	.string "earned only through effort.\p"
-	.string "I lost because my own efforts\n"
-	.string "weren't enough.\p"
-	.string "Go on! The ONE-HIT KO ROOM is next.$"
+	.string "Jas: The Trick Room Room is next.\n"
+	.string "Good luck!$"
 
 PetalburgCity_Gym_Text_GeorgePostBadge:
-	.string "I'm going to keep training at GYMS.\n"
-	.string "One day, I'll become a LEADER.$"
+	.string "I'm going to keep playing Dota.\n"
+	.string "One day, I'll reach 30,000 hours!$"
 
 PetalburgCity_Gym_Text_BerkeIntro:
 	.string "I'm not going to take it easy just\n"
@@ -1685,26 +1678,26 @@ PetalburgCity_Gym_Text_BerkePostBadge:
 	.string "become a lot tougher.$"
 
 PetalburgCity_Gym_Text_MaryIntro:
-	.string "Giggle…\n"
+	.string "Pory: Giggle…\n"
 	.string "This is the Weather Room.\p"
 	.string "Now you'll experience what it's\n"
 	.string "like to be British!$"
 
 PetalburgCity_Gym_Text_MaryDefeat:
-	.string "Britannia waves the rules…$"
+	.string "Britannia waves the rules, innit…$"
 
 PetalburgCity_Gym_Text_MaryPostBattle:
-	.string "There are some even stronger\n"
+	.string "Pory: There are some even stronger\n"
 	.string "trainers waiting for you.\p"
 	.string "The left is the Screens Room, and\n"
 	.string "the right is the Terrain Room.\p"
 	.string "The fun continues!$"
 
 PetalburgCity_Gym_Text_MaryPostBadge:
-	.string "Do you know what we're trying to\n"
-	.string "achieve as TRAINERS?\p"
-	.string "We're striving to become soul mates\n"
-	.string "with our POKéMON.$"
+	.string "Pory: Do you know what we're trying\n"
+	.string "to achieve as trainers?\p"
+	.string "I'm striving to become soul mates\n"
+	.string "with Gilmore, my Smeargle.$"
 
 PetalburgCity_Gym_Text_AlexiaIntro:
 	.string "The higher the DEFENSE, the more\n"
@@ -1774,7 +1767,7 @@ PetalburgCity_Gym_Text_EnterDefenseRoom:
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterRecoveryRoom:
-	.string "“RECOVERY ROOM,” the sign says.\p"
+	.string "“Terrain Room,” the sign says.\p"
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterStrengthRoom:
@@ -1782,7 +1775,7 @@ PetalburgCity_Gym_Text_EnterStrengthRoom:
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterOHKORoom:
-	.string "“ONE-HIT KO ROOM,” the sign says.\p"
+	.string "“Trick Room Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterGymLeadersRoom:

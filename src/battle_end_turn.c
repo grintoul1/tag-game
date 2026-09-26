@@ -19,6 +19,7 @@
 #include "constants/songs.h"
 
 static bool32 HandleEndTurnWeatherGimmick(enum BattlerId battler);
+static bool32 HandleEndTurnTerrainGimmick(enum BattlerId battler);
 
 static enum BattlerId GetBattlerSideForMessage(enum BattleSide side)
 {
@@ -1270,6 +1271,9 @@ static bool32 HandleEndTurnTerrain(enum BattlerId battler)
 {
     gBattleStruct->eventState.endTurn++;
 
+    if (VarGet(VAR_BATTLE_GIMMICK) == BATTLE_GIMMICK_TERRAIN)
+        return FALSE;
+
     if (gFieldTimers.terrainTimer > 0 && --gFieldTimers.terrainTimer == 0)
     {
         TryToRevertMimicryAndFlags();
@@ -1669,9 +1673,9 @@ static bool32 (*const sEndTurnEffectHandlers[])(enum BattlerId battler) =
 {
     [ENDTURN_ORDER] = HandleEndTurnOrder,
     [ENDTURN_VARIOUS] = HandleEndTurnVarious,
-    [ENDTURN_WEATHER_GIMMICK] = HandleEndTurnWeatherGimmick,
     [ENDTURN_WEATHER] = HandleEndTurnWeather,
     [ENDTURN_WEATHER_DAMAGE] = HandleEndTurnWeatherDamage,
+    [ENDTURN_WEATHER_GIMMICK] = HandleEndTurnWeatherGimmick,
     [ENDTURN_SEND_OUT_REPLACEMENTS_1] = HandleEndTurnSendOutReplacements,
     [ENDTURN_AFFECTION] = HandleEndTurnAffection,
     [ENDTURN_FUTURE_SIGHT] = HandleEndTurnFutureSight,
@@ -1710,6 +1714,7 @@ static bool32 (*const sEndTurnEffectHandlers[])(enum BattlerId battler) =
     [ENDTURN_WONDER_ROOM] = HandleEndTurnWonderRoom,
     [ENDTURN_MAGIC_ROOM] = HandleEndTurnMagicRoom,
     [ENDTURN_TERRAIN] = HandleEndTurnTerrain,
+    [ENDTURN_TERRAIN_GIMMICK] = HandleEndTurnTerrainGimmick,
     [ENDTURN_THIRD_EVENT_BLOCK] = HandleEndTurnThirdEventBlock,
     [ENDTURN_OPPORTUNIST] = HandleEndTurnOpportunist,
     [ENDTURN_MIRROR_HERB] = HandleEndTurnMirrorHerb,
@@ -1789,7 +1794,6 @@ bool32 DoEndTurnEffects(void)
     }
 }
 
-
 static bool32 HandleEndTurnWeatherGimmick(enum BattlerId battler)
 {
     gBattleStruct->eventState.endTurn++;
@@ -1797,4 +1801,19 @@ static bool32 HandleEndTurnWeatherGimmick(enum BattlerId battler)
         return FALSE;
     else
         return TryChangeBattleWeatherGimmick();
+}
+
+static bool32 HandleEndTurnTerrainGimmick(enum BattlerId battler)
+{
+    gBattleStruct->eventState.endTurn++;
+
+    if (VarGet(VAR_BATTLE_GIMMICK) != BATTLE_GIMMICK_TERRAIN)
+        return FALSE;
+
+    enum BattleTerrain newTerrain = ((gBattleTurnCounter + 1) % 4) + 1;
+
+    TryChangeBattleTerrain(battler, newTerrain, TRUE);
+    BattleScriptPushCursorAndCallback(BattleScript_OverworldTerrain);
+
+    return TRUE;
 }
