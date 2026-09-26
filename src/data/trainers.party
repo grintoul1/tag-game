@@ -2234,14 +2234,59 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Glimmora @ Power Herb
-Ability: Toxic Debris
-Level: 37
-Timid Nature
-- Meteor Beam
-- Sludge
-- Mud Shot
-- Mortal Spin
+Octillery @ Wise Glasses  
+Ability: Mega Launcher  
+Level: 38  
+Sassy Nature  
+- Gunk Shot  
+- Ice Beam  
+- Flamethrower  
+- Octazooka  
+
+Arcanine @ Adrenaline Orb  
+Ability: Intimidate  
+Level: 36  
+Adamant Nature  
+- Fire Fang  
+- Aerial Ace  
+- Double Kick  
+- Howl  
+
+Charmeleon @ Eviolite  
+Ability: Blaze  
+Level: 38  
+Hasty Nature  
+- Overheat  
+- Dragon Tail  
+- Metal Claw  
+- Fire Spin  
+
+Rapidash-Galar @ Chesto Berry  
+Ability: Pastel Veil  
+Level: 36  
+Bashful Nature  
+- Drill Run  
+- Dazzling Gleam  
+- Psycho Cut  
+- Rest  
+
+Flareon @ Charcoal  
+Ability: Flash Fire  
+Level: 37  
+Gentle Nature  
+- Skull Bash  
+- Flame Charge  
+- Trailblaze  
+- Quick Attack  
+
+Pyroar-Mega @ Pyroarite  
+Ability: Fire Mane  
+Level: 36  
+Naive Nature  
+- Scorching Sands  
+- Incinerate  
+- Echoed Voice  
+- Will-O-Wisp  
 
 === TRAINER_MIL ===
 Name: Mil /* [Hazards Room]*/
@@ -2290,7 +2335,7 @@ Adamant Nature
 - Focus Energy
 
 === TRAINER_PORY ===
-Name: Pory /* [Moody Room TODO]*/
+Name: Pory /* [Weather Room]*/
 Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
@@ -2299,40 +2344,41 @@ Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
 
-Lilligant-Hisui @ Blunder Policy  
-Ability: Hustle  
+Cherrim @ Assault Vest  
+Ability: Flower Gift  
+Level: 37  
+Naive Nature  
+- Double-Edge  
+- Petal Blizzard  
+- Play Rough  
+- Draining Kiss  
+
+Castform @ Choice Scarf  
+Ability: Forecast  
+Level: 38  
+Timid Nature  
+- Blizzard  
+- Thunder  
+- Hurricane  
+- Weather Ball  
+
+Seaking @ Flying Gem  
+Ability: Swift Swim  
 Level: 37  
 Jolly Nature  
-- Triple Axel  
-- Axe Kick  
-- Leaf Blade  
-- Acrobatics  
+- Megahorn  
+- Bounce  
+- Dive  
+- Soak  
 
-Machamp @ Coba Berry  
-Ability: No Guard  
+Gilmore (Smeargle) @ Leftovers  
+Ability: Moody  
 Level: 38  
-Jolly Nature  
-- Dynamic Punch  
-- Stone Edge  
-- Mega Kick  
-
-Durant @ Covert Cloak  
-Ability: Hustle  
-Level: 38  
-Jolly Nature  
-- First Impression  
-- X-Scissor  
-- Smart Strike  
-- Feint Attack  
-
-Weezing @ Wide Lens  
-Ability: Levitate  
-Level: 37  
-Calm Nature  
-- Zap Cannon  
-- Fire Blast  
-- Pain Split  
-- Swagger  
+Bold Nature  
+- Weather Ball  
+- Power Trip  
+- Seismic Toss  
+- Substitute  
 
 === TRAINER_TYRONE ===
 Name: Tyrone /* [Topsy Turvy Room]*/
