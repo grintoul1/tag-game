@@ -1056,29 +1056,29 @@ PetalburgCity_Gym_EventScript_GeorgePostBadge::
 	end
 
 PetalburgCity_Gym_EventScript_Berke::
-faceplayer
-goto_if_set FLAG_BERKE_DEFEATED, PetalburgCity_Gym_EventScript_Berke2
-lockall
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_BerkeIntro, MSGBOX_AUTOCLOSE
-goto PetalburgCity_Gym_EventScript_BerkeDoMultiBattle
-releaseall
-end
+	faceplayer
+	lockall
+	goto_if_set FLAG_BERKE_DEFEATED, PetalburgCity_Gym_EventScript_Berke2
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	msgbox PetalburgCity_Gym_Text_BerkeIntro, MSGBOX_AUTOCLOSE
+	goto PetalburgCity_Gym_EventScript_BerkeDoMultiBattle
+	releaseall
+	end
 
 PetalburgCity_Gym_EventScript_BerkeDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_STEPH, PetalburgCity_Gym_Text_BerkeDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, PetalburgCity_Gym_EventScript_BerkeVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_1 TRAINER_STEPH, PetalburgCity_Gym_Text_BerkeDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, PetalburgCity_Gym_EventScript_BerkeVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 PetalburgCity_Gym_EventScript_BerkeVictory::
-msgbox PetalburgCity_Gym_Text_BerkePostBattle, MSGBOX_AUTOCLOSE
-setflag FLAG_BERKE_DEFEATED
-call PetalburgCity_Gym_EventScript_SlideOpenOHKORoomDoors
-end
+	msgbox PetalburgCity_Gym_Text_BerkePostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_BERKE_DEFEATED
+	call PetalburgCity_Gym_EventScript_SlideOpenOHKORoomDoors
+	end
 
 PetalburgCity_Gym_EventScript_Berke2::
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_BerkePostBadge
@@ -1653,27 +1653,21 @@ PetalburgCity_Gym_Text_GeorgePostBadge:
 	.string "One day, I'll reach 30,000 hours!$"
 
 PetalburgCity_Gym_Text_BerkeIntro:
-	.string "I'm not going to take it easy just\n"
-	.string "because you're our LEADER's kid.\p"
-	.string "I'll show you how horrid it is for\n"
-	.string "a POKéMON to take a critical hit!$"
+	.string "Steph: It's your favourite Nuzlocker's\n"
+	.string "favourite moderator!$"
 
 PetalburgCity_Gym_Text_BerkeDefeat:
-	.string "Your power…\n"
-	.string "You're the real deal.$"
+	.string "If this were Moxi's chat, I'd ban you\n"
+	.string "right now…$"
 
 PetalburgCity_Gym_Text_BerkePostBattle:
-	.string "Your father really is strong.\n"
-	.string "He's a TRAINER worth my respect.\p"
-	.string "And, I sense the same glow coming\n"
-	.string "from you as your father.\p"
-	.string "I hope that you'll stage a terrific\n"
-	.string "battle with your father!$"
+	.string "Steph: I'm gonna be honest with you.\p"
+	.string "I'm gonna seriously crash out if you\n"
+	.string "lose to Norman now!$"
 
 PetalburgCity_Gym_Text_BerkePostBadge:
-	.string "Since your dad became the LEADER,\n"
-	.string "the TRAINERS of PETALBURG CITY have\l"
-	.string "become a lot tougher.$"
+	.string "Steph: I make a mean chicken satay\n"
+	.string "and you're never gonna get to try it.$"
 
 PetalburgCity_Gym_Text_MaryIntro:
 	.string "Pory: Giggle…\n"
@@ -1682,7 +1676,8 @@ PetalburgCity_Gym_Text_MaryIntro:
 	.string "like to be British!$"
 
 PetalburgCity_Gym_Text_MaryDefeat:
-	.string "Britannia waves the rules, innit…$"
+	.string "I just got solar panels installed.\n"
+	.string "Better hope the sun lasts, innit…$"
 
 PetalburgCity_Gym_Text_MaryPostBattle:
 	.string "Pory: There are some even stronger\n"

@@ -2364,6 +2364,15 @@ Timid Nature
 - Hurricane  
 - Weather Ball  
 
+Gilmore (Smeargle) @ Chople Berry  
+Ability: Moody  
+Level: 38  
+Bold Nature  
+- Weather Ball  
+- Power Trip  
+- Seismic Toss  
+- Substitute  
+
 Seaking @ Flying Gem  
 Ability: Swift Swim  
 Level: 37  
@@ -2372,15 +2381,6 @@ Jolly Nature
 - Bounce  
 - Dive  
 - Soak  
-
-Gilmore (Smeargle) @ Leftovers  
-Ability: Moody  
-Level: 38  
-Bold Nature  
-- Weather Ball  
-- Power Trip  
-- Seismic Toss  
-- Substitute  
 
 === TRAINER_TYRONE ===
 Name: Tyrone /* [Topsy Turvy Room]*/
@@ -2605,6 +2605,7 @@ Music: Cool
 Battle Type: Singles
 AI: Tag Trainer
 Multi Party: Half
+Starting Status: Trick Room
 
 Pincurchin @ Mystic Water
 Ability: Lightning Rod
