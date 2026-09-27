@@ -20,6 +20,7 @@
 
 static bool32 HandleEndTurnWeatherGimmick(enum BattlerId battler);
 static bool32 HandleEndTurnTerrainGimmick(enum BattlerId battler);
+static bool32 HandleEndTurnTopsyTurvyGimmick(enum BattlerId battler);
 
 static enum BattlerId GetBattlerSideForMessage(enum BattleSide side)
 {
@@ -1725,6 +1726,7 @@ static bool32 (*const sEndTurnEffectHandlers[])(enum BattlerId battler) =
     [ENDTURN_ARENA_TURN_END] = HandleEndTurnArenaTurnEnd,
     [ENDTURN_FAINTED_MON_ACTIONS] = HandleEndTurnFaintedMonActions,
     [ENDTURN_DYNAMAX] = HandleEndTurnDynamax,
+    [ENDTURN_TOPSY_TURVY_GIMMICK] = HandleEndTurnTopsyTurvyGimmick,
     [ENDTURN_TRAINER_A_SLIDES] = HandleEndTurnTrainerASlides,
     [ENDTURN_TRAINER_B_SLIDES] = HandleEndTurnTrainerBSlides,
     [ENDTURN_TRAINER_PARTNER_SLIDES] = HandleEndTurnTrainerPartnerSlides,
@@ -1815,5 +1817,24 @@ static bool32 HandleEndTurnTerrainGimmick(enum BattlerId battler)
     TryChangeBattleTerrain(battler, newTerrain, TRUE);
     BattleScriptPushCursorAndCallback(BattleScript_OverworldTerrain);
 
+    return TRUE;
+}
+
+static bool32 HandleEndTurnTopsyTurvyGimmick(enum BattlerId battler)
+{
+    if (VarGet(VAR_BATTLE_GIMMICK) != BATTLE_GIMMICK_TOPSY_TURVY)
+    {
+        gBattleStruct->eventState.endTurn++;
+        return FALSE;
+    }
+
+    gBattleStruct->eventState.endTurnBattler++;
+
+    if (!IsBattlerPresent(battler))
+        return FALSE;
+    
+    gCurrentMove = MOVE_TOPSY_TURVY;
+    gBattlerTarget = battler;
+    BattleScriptPushCursorAndCallback(BattleScript_EffectTopsyTurvyGimmick);
     return TRUE;
 }

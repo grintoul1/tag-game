@@ -973,29 +973,30 @@ PetalburgCity_Gym_EventScript_RandallPostBadge::
 	end
 
 PetalburgCity_Gym_EventScript_Parker::
-faceplayer
-goto_if_set FLAG_PARKER_DEFEATED, PetalburgCity_Gym_EventScript_Parker2
-lockall
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_ParkerIntro, MSGBOX_AUTOCLOSE
-goto PetalburgCity_Gym_EventScript_ParkerDoMultiBattle
-releaseall
-end
+	faceplayer
+	goto_if_set FLAG_PARKER_DEFEATED, PetalburgCity_Gym_EventScript_Parker2
+	lockall
+	setvar VAR_BATTLE_GIMMICK, 2 @ BATTLE_GIMMICK_TOPSY_TURVY
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	msgbox PetalburgCity_Gym_Text_ParkerIntro, MSGBOX_AUTOCLOSE
+	goto PetalburgCity_Gym_EventScript_ParkerDoMultiBattle
+	releaseall
+	end
 
 PetalburgCity_Gym_EventScript_ParkerDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_TYRONE, PetalburgCity_Gym_Text_ParkerDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, PetalburgCity_Gym_EventScript_ParkerVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_1 TRAINER_TYRONE, PetalburgCity_Gym_Text_ParkerDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, PetalburgCity_Gym_EventScript_ParkerVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 PetalburgCity_Gym_EventScript_ParkerVictory::
-msgbox PetalburgCity_Gym_Text_ParkerPostBattle, MSGBOX_AUTOCLOSE
-setflag FLAG_PARKER_DEFEATED
-call PetalburgCity_Gym_EventScript_SlideOpenConfusionRoomDoors
-end
+	msgbox PetalburgCity_Gym_Text_ParkerPostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_PARKER_DEFEATED
+	call PetalburgCity_Gym_EventScript_SlideOpenConfusionRoomDoors
+	end
 
 PetalburgCity_Gym_EventScript_Parker2::
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_ParkerPostBadge
@@ -1015,9 +1016,9 @@ PetalburgCity_Gym_EventScript_ParkerPostBadge::
 
 PetalburgCity_Gym_EventScript_George::
 	faceplayer
-	lockall
 	goto_if_set FLAG_GEORGE_DEFEATED, PetalburgCity_Gym_EventScript_George2
-	setvar VAR_BATTLE_GIMMICK, 4 @ BATTLE_GIMMICK_TERRAIN
+	lockall
+	setvar VAR_BATTLE_GIMMICK, 3 @ BATTLE_GIMMICK_TERRAIN
 	playbgm MUS_ENCOUNTER_INTENSE, TRUE
 	msgbox PetalburgCity_Gym_Text_GeorgeIntro, MSGBOX_AUTOCLOSE
 	goto PetalburgCity_Gym_EventScript_GeorgeDoMultiBattle
@@ -1057,8 +1058,8 @@ PetalburgCity_Gym_EventScript_GeorgePostBadge::
 
 PetalburgCity_Gym_EventScript_Berke::
 	faceplayer
-	lockall
 	goto_if_set FLAG_BERKE_DEFEATED, PetalburgCity_Gym_EventScript_Berke2
+	lockall
 	playbgm MUS_ENCOUNTER_INTENSE, TRUE
 	msgbox PetalburgCity_Gym_Text_BerkeIntro, MSGBOX_AUTOCLOSE
 	goto PetalburgCity_Gym_EventScript_BerkeDoMultiBattle
@@ -1098,8 +1099,8 @@ PetalburgCity_Gym_EventScript_BerkePostBadge::
 
 PetalburgCity_Gym_EventScript_Mary::
 	faceplayer
-	lockall
 	goto_if_set FLAG_MARY_DEFEATED, PetalburgCity_Gym_EventScript_Mary2
+	lockall
 	setvar VAR_BATTLE_GIMMICK, 1 @ BATTLE_GIMMICK_WEATHER
 	playbgm MUS_ENCOUNTER_INTENSE, TRUE
 	msgbox PetalburgCity_Gym_Text_MaryIntro, MSGBOX_AUTOCLOSE
@@ -1620,21 +1621,24 @@ PetalburgCity_Gym_Text_RandallPostBadge:
 	.string "what it's like to be a former champion.$"
 
 PetalburgCity_Gym_Text_ParkerIntro:
-	.string "This is the CONFUSION ROOM.\p"
-	.string "Let me see how well bonded you are\n"
-	.string "with your POKéMON!$"
+	.string "Tyrone: Welcome to the Topsy Turvy\n"
+	.string "Room.\p"
+	.string "I hope you don't suffer from motion\n"
+	.string "sickness!$"
 
 PetalburgCity_Gym_Text_ParkerDefeat:
-	.string "I couldn't confuse your team enough…\n"
-	.string "You share a strong bond together.$"
+	.string "If I don't get a mayo chicken in the\n"
+	.string "next five minutes, I'm gonna hurl…$"
 
 PetalburgCity_Gym_Text_ParkerPostBattle:
-	.string "The next room is the STRENGTH ROOM.\n"
-	.string "Can you withstand brute force?$"
+	.string "Tyrone: The next room is the\n"
+	.string "Trick Room Room.\p"
+	.string "How much more twisting can your mind\n"
+	.string "endure?$"
 
 PetalburgCity_Gym_Text_ParkerPostBadge:
-	.string "After you beat our LEADER, the\n"
-	.string "training has become a lot tougher.$"
+	.string "Tyrone: I'm gonna edit out your\n"
+	.string "victory.$"
 
 PetalburgCity_Gym_Text_GeorgeIntro:
 	.string "Jas: Can you keep track of the\n"
