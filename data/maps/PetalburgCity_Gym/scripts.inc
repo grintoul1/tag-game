@@ -1632,7 +1632,7 @@ PetalburgCity_Gym_Text_ParkerDefeat:
 
 PetalburgCity_Gym_Text_ParkerPostBattle:
 	.string "Tyrone: The next room is the\n"
-	.string "Trick Room Room.\p"
+	.string "Tailwind Room.\p"
 	.string "How much more twisting can your mind\n"
 	.string "endure?$"
 
