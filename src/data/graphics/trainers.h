@@ -484,6 +484,15 @@ const u16 gTrainerPalette_LadyFrlg[] = INCGFX_U16("graphics/trainers/palettes/la
 const u32 gTrainerFrontPic_PainterFrlg[] = INCGFX_U32("graphics/trainers/front_pics/painter_frlg.png", ".4bpp.smol");
 const u16 gTrainerPalette_PainterFrlg[] = INCGFX_U16("graphics/trainers/palettes/painter_frlg.pal", ".gbapal");
 
+const u32 gTrainerFrontPic_SuspiciousGruntM[] = INCGFX_U32("graphics/trainers/front_pics/suspicious_grunt_m.png", ".4bpp.smol");
+const u16 gTrainerPalette_SuspiciousGruntM[] = INCGFX_U16("graphics/trainers/palettes/suspicious_grunt_m.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_SuspiciousGruntF[] = INCGFX_U32("graphics/trainers/front_pics/suspicious_grunt_f.png", ".4bpp.smol");
+const u16 gTrainerPalette_SuspiciousGruntF[] = INCGFX_U16("graphics/trainers/palettes/suspicious_grunt_f.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_SuspiciousGrunts[] = INCGFX_U32("graphics/trainers/front_pics/suspicious_grunts.png", ".4bpp.smol");
+const u16 gTrainerPalette_SuspiciousGrunts[] = INCGFX_U16("graphics/trainers/palettes/suspicious_grunts.pal", ".gbapal");
+
 static const u8 gTrainerBackPic_None[] = INCGFX_U8("graphics/trainers/back_pics/none.png", ".4bpp");
 const u8 gTrainerBackPic_Brendan[] = INCGFX_U8("graphics/trainers/back_pics/brendan.png", ".4bpp");
 const u8 gTrainerBackPic_May[] = INCGFX_U8("graphics/trainers/back_pics/may.png", ".4bpp");
@@ -1313,7 +1322,23 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Vito, gTrainerPalette_Vito),
     },
+    [TRAINER_PIC_SUSPICIOUS_GRUNT_M] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SuspiciousGruntM, gTrainerPalette_SuspiciousGruntM),
+    },
+    [TRAINER_PIC_SUSPICIOUS_GRUNT_F] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SuspiciousGruntF, gTrainerPalette_SuspiciousGruntF),
+    },
     [TRAINER_PIC_SUSPICIOUS_GRUNTS] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SuspiciousGrunts, gTrainerPalette_SuspiciousGrunts),
+    },
+    [TRAINER_PIC_ROCKET_M] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_AquaGruntM, gTrainerPalette_AquaGruntM),
+    },
+    [TRAINER_PIC_ROCKET_F] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_AquaGruntM, gTrainerPalette_AquaGruntM),
     },

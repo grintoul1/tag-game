@@ -1,8 +1,8 @@
 	.align 2
 voicegroup329:: @ HGSS main
-	voice_keysplit voicegroup333, KeySplitTable35    @ piano
+	voice_keysplit voicegroup_hg_piano_1, KeySplitTable35    @ piano
 	voice_keysplit voicegroup334, KeySplitTable36    @ piano 2
-	voice_keysplit voicegroup335, KeySplitTable37    @ piano octave
+	voice_keysplit voicegroup_hg_piano_3, KeySplitTable37    @ piano octave
 	voice_keysplit voicegroup336, KeySplitTable9     @ rhodes 1
 	voice_keysplit voicegroup337, KeySplitTable9     @ rhodes 2
 	voice_keysplit voicegroup338, KeySplitTable36    @ vibraphone

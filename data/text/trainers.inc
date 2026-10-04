@@ -846,19 +846,6 @@ Route109_Text_EdmondPostBattle:
 	.string "I'm just seasick as a dog!\p"
 	.string "I'm a SAILOR, but…$"
 
-Route109_Text_RickyIntro:
-	.string "How did you get here, did you\n"
-	.string "swim from Dewford Town?!$"
-
-Route109_Text_RickyDefeated:
-	.string "So much energy after such a\n"
-	.string "long swim…$"
-
-Route109_Text_RickyPostBattle:
-	.string "What kinda of morning routine\n"
-	.string "you must have to be able to swim\l"
-	.string "so far and then battle so well…$"
-
 Route109_Text_RickyRegister:
 	.string "Will you have another match with me\n"
 	.string "when I'm not all thirsty?$"
@@ -874,33 +861,6 @@ Route109_Text_RickyRematchDefeated:
 Route109_Text_RickyRematchPostBattle:
 	.string "When you eat on a beach, everything\n"
 	.string "seems to taste a little better.$"
-
-Route109_Text_LolaIntro:
-	.string "Well this is unexpected. Archie\n"
-	.string "really did cover all bases.$"
-
-Route109_Text_LolaDefeated:
-	.string "So much for a boring guard\n"
-	.string "position…$"
-
-Route109_Text_LolaPostBattle:
-	.string "This was supposed to be an easy\n"
-	.string "job…$"
-
-Route109_Text_LolaRegister:
-	.string "Me?\n"
-	.string "I'm here every day!$"
-
-Route109_Text_LolaRematchIntro:
-	.string "I'm not losing to you again!\n"
-	.string "That's why I have my inner tube!$"
-
-Route109_Text_LolaRematchDefeated:
-	.string "Mommy!$"
-
-Route109_Text_LolaRematchPostBattle:
-	.string "If I have an inner tube, me and my\n"
-	.string "POKéMON's cuteness goes way up!$"
 
 Route109_Text_AustinaIntro:
 	.string "I can't swim without my inner tube,\n"
@@ -969,29 +929,6 @@ Route109_Text_MelNotEnoughPokemon:
 	.string "MEL: We're, like, deeply and truly in love.\n"
 	.string "That's why we make our POKéMON\l"
 	.string "battle together.$"
-
-Route109_Text_ChandlerIntro:
-	.string "Oh no you don't. Nobody's getting past me\n"
-	.string "today!$"
-
-Route109_Text_ChandlerDefeated:
-	.string "Okay, okay!\n"
-	.string "Just stay away from the Shipyard!$"
-
-Route109_Text_ChandlerPostBattle:
-	.string "Archie's going to be very unhappy\n"
-	.string "with us…$"
-
-Route109_Text_HaileyIntro:
-	.string "Nobody is to enter Slateport City.\n"
-	.string "Archie's orders!$"
-
-Route109_Text_HaileyDefeated:
-	.string "Maybe I can make an exception!$"
-
-Route109_Text_HaileyPostBattle:
-	.string "You didn't come from Route 109,\n"
-	.string "okay?$"
 
 Route109_Text_ElijahIntro:
 	.string "For a guy as macho as me, this kind\n"

@@ -366,6 +366,7 @@ EventScript_ResetAllMapFlags::
 	clearflag FLAG_HIDE_KANTO_BIRD
 	clearflag FLAG_HIDE_GALAR_BIRD
 	clearflag FLAG_HIDE_MAUVILLE_CITY_BLUE
+	clearflag FLAG_HIDE_BEACH_GRUNTS
 	destroyfollowernpc
 	call EventScript_ResetAllBerries
 	end

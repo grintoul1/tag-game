@@ -1041,6 +1041,7 @@ gSongTable::
 	song mus_rg_vs_gym_leader_minus_1, MUSIC_PLAYER_BGM, 0
 	song mus_rg_vs_gym_leader_minus_2, MUSIC_PLAYER_BGM, 0
 	song mus_rg_vs_gym_leader_minus_3, MUSIC_PLAYER_BGM, 0
+	song mus_hg_encounter_rocket, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:

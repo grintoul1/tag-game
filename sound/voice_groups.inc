@@ -202,6 +202,9 @@
 .include "sound/voicegroups/rg_sevii_67.inc"
 .include "sound/voicegroups/drumsets/rg_credits.inc"
 
+@ Custom music
+.include "sound/voicegroups/hg_vs_gym_leader_kanto.inc"
+
 .include "sound/voicegroups/voicegroup190.inc"
 .include "sound/voicegroups/voicegroup_universal.inc" @ [Main] Universal voicegroup
 .include "sound/voicegroups/voicegroup192.inc"
@@ -322,9 +325,9 @@
 .include "sound/voicegroups/voicegroup330.inc"
 .include "sound/voicegroups/voicegroup331.inc"
 .include "sound/voicegroups/voicegroup332.inc"
-.include "sound/voicegroups/voicegroup333.inc"
+.include "sound/voicegroups/voicegroup_hg_piano_1.inc"
 .include "sound/voicegroups/voicegroup334.inc"
-.include "sound/voicegroups/voicegroup335.inc"
+.include "sound/voicegroups/voicegroup_hg_piano_3.inc"
 .include "sound/voicegroups/voicegroup336.inc"
 .include "sound/voicegroups/voicegroup337.inc"
 .include "sound/voicegroups/voicegroup338.inc"

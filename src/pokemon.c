@@ -5382,6 +5382,16 @@ u16 GetBattleBGM(void)
                 default:
                     return MUS_RG_VS_GYM_LEADER;
             }
+        case TRAINER_CLASS_SUSPICIOUS_GRUNTS:
+            switch (trainerId)
+            {
+                case TRAINER_ROCKETS_ROUTE109_2:
+                    return MUS_HG_VS_ROCKET_PLUS_1;
+                case TRAINER_ROCKETS_ROUTE109_3:
+                    return MUS_HG_VS_ROCKET_PLUS_2;
+                default:
+                    return MUS_HG_VS_ROCKET;
+            }
         default:
             if (GetCurrentRegion() == REGION_KANTO)
                 return MUS_RG_VS_TRAINER;

@@ -1235,7 +1235,7 @@
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_AQUA_GRUNTS         0x496
 #define FLAG_HIDE_KANTO_DOGS                                        0x497
 #define FLAG_HIDE_PARADOGS                                          0x498
-#define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
+#define FLAG_HIDE_BEACH_GRUNTS                                      0x499
 #define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
 #define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
 #define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag

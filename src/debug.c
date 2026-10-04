@@ -4610,6 +4610,7 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_RG_VS_GYM_LEADER_MINUS_1)         \
     X(MUS_RG_VS_GYM_LEADER_MINUS_2)         \
     X(MUS_RG_VS_GYM_LEADER_MINUS_3)         \
+    X(MUS_HG_ENCOUNTER_ROCKET)         \
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \
