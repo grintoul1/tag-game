@@ -343,6 +343,7 @@ void BtlController_HandleLoadMonSprite(u32 battler);
 void BtlController_HandleSwitchInAnim(u32 battler);
 void BtlController_HandleReturnMonToBall(u32 battler);
 void BtlController_HandleDrawTrainerPic(u32 battlerId, u32 trainerPicId, bool32 isFrontPic, s16 xPos, s16 yPos, s32 subpriority);
+void BtlController_HandleDrawTrainerPicAtPosition(u32 battler, u32 trainerPicId, u32 position, s16 xPos, s16 yPos, s32 subpriority);
 void BtlController_HandleTrainerSlide(u32 battler, u32 trainerPicId);
 void BtlController_HandleTrainerSlideBack(u32 battlerId, s16 data0, bool32 startAnim);
 void BtlController_HandleFaintAnimation(u32 battler);
