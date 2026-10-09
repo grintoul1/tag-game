@@ -609,6 +609,21 @@ static void Task_DoPokeballSendOutAnim(u8 taskId)
 
     throwCaseId = gTasks[taskId].tThrowId;
     battler = gTasks[taskId].tBattler;
+
+    // Sorta stitches together a few things from other places.
+    // Tried adding a case below but kept ending up with corrupted
+    // pokeball sprites on the player side.
+    if (throwCaseId == POKEBALL_OPPONENT_SLIDEIN)
+    {
+        struct Sprite *sprite = &gSprites[gBattlerSpriteIds[battler]];
+
+        gBattlerTarget = battler;
+        sprite->callback = SpriteCB_OpponentMonSlideIn;
+        AnimateSprite(sprite);
+        DestroyTask(taskId);
+        return;
+    }
+
     ballId = GetBattlerPokeballItemId(battler);
     LoadBallGfx(ballId);
     ballSpriteId = CreateSprite(&gBallSpriteTemplates[ballId], 32, 80, 29);

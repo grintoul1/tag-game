@@ -2959,6 +2959,43 @@ void SpriteCB_PlayerMonSlideIn(struct Sprite *sprite)
     }
 }
 
+// Basically the same as the player func above except...
+void SpriteCB_OpponentMonSlideIn(struct Sprite *sprite)
+{
+    if (sprite->data[3] == 0)
+    {
+        PlaySE(SE_BALL_TRAY_ENTER);
+        sprite->data[3]++;
+    }
+    else if (sprite->data[3] == 1)
+    {
+        if (sprite->animEnded)
+            return;
+        sprite->data[4] = sprite->x;
+        sprite->x = DISPLAY_WIDTH + 33; // This is the same distance but off the right-side of screen
+        sprite->invisible = FALSE;
+        sprite->data[3]++;
+    }
+    else if (sprite->data[3] < 27)
+    {
+        sprite->x -= 4; // This makes it slide left instead of right
+        sprite->data[3]++;
+    }
+    else
+    {
+        sprite->data[3] = 0;
+        sprite->x = sprite->data[4];
+        sprite->data[4] = 0;
+
+        // Taken from HandleBallAnimEnd because the hacky early return in Task_DoPokeballSendOutAnim
+        // means HandleBallAnimEnd isn't reached for POKEBALL_OPPONENT_SLIDEIN
+        gBattleSpritesDataPtr->healthBoxesData[sprite->data[0]].ballAnimActive = FALSE;
+
+        // Just the generic opponent mon anim func
+        BattleAnimateFrontSprite(sprite, sprite->sSpeciesId, FALSE, 1);
+    }
+}
+
 static void SpriteCB_TrainerThrowObject_Main(struct Sprite *sprite)
 {
     AnimSetCenterToCornerVecX(sprite);

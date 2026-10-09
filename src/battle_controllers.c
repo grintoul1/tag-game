@@ -48,6 +48,7 @@ static void Task_HandleSendLinkBuffersData(u8 taskId);
 static void Task_HandleCopyReceivedLinkBuffersData(u8 taskId);
 static void Task_StartSendOutAnim(u8 taskId);
 static void SpriteCB_FreePlayerSpriteLoadMonSprite(struct Sprite *sprite);
+static void SpriteCB_FreeOpponentSpriteLoadMonSprite(struct Sprite *sprite);
 static void SpriteCB_FreeOpponentSprite(struct Sprite *sprite);
 static u32 ReturnAnimIdForBattler(bool32 isPlayerSide, u32 specificBattler);
 static void LaunchKOAnimation(u32 battlerId, u16 animId, bool32 isFront);
@@ -1924,10 +1925,6 @@ static void SetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId)
 // In normal singles, if follower Pokémon exists, and the Pokémon following is being sent out, have it slide in instead of being thrown
 static bool8 ShouldDoSlideInAnim(u32 battler)
 {
-    struct ObjectEvent *followerObj = GetFollowerObject();
-    if (!followerObj || followerObj->invisible)
-        return FALSE;
-
     if (gBattleTypeFlags & (
         BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_FIRST_BATTLE |
         BATTLE_TYPE_SAFARI | BATTLE_TYPE_WALLY_TUTORIAL | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_TWO_OPPONENTS |
@@ -1935,8 +1932,22 @@ static bool8 ShouldDoSlideInAnim(u32 battler)
     )
         return FALSE;
 
-    if (GetFirstLiveMon() != GetBattlerMon(battler))
-        return FALSE;
+    if (IsOnPlayerSide(battler))
+    {
+        struct ObjectEvent *followerObj = GetFollowerObject();
+        if (!followerObj || followerObj->invisible)
+            return FALSE;
+
+        if (GetFirstLiveMon() != GetBattlerMon(battler))
+            return FALSE;
+    }
+    else
+    {
+        if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) || IsDoubleBattle())
+            return FALSE;
+        if (!DoesTrainerHaveOverworldLead(TRAINER_BATTLE_PARAM.opponentA))
+            return FALSE;
+    }
 
     return TRUE;
 }
@@ -1956,7 +1967,10 @@ void StartSendOutAnim(u32 battler, bool32 dontClearTransform, bool32 dontClearSu
     }
     else
     {
-        sendoutType = POKEBALL_OPPONENT_SENDOUT;
+        if (doSlideIn)
+            sendoutType = POKEBALL_OPPONENT_SLIDEIN;
+        else
+            sendoutType = POKEBALL_OPPONENT_SENDOUT;
     }
 
     ClearTemporarySpeciesSpriteData(battler, dontClearTransform, dontClearSubstituteBit);
@@ -2774,7 +2788,8 @@ void BtlController_HandleIntroTrainerBallThrow(u32 battler, u16 tagTrainerPal, c
     }
     else
     {
-        StoreSpriteCallbackInData6(&gSprites[gBattleStruct->trainerSlideSpriteIds[battler]], SpriteCB_FreeOpponentSprite);
+        void (*callbackFunc) = ShouldDoSlideInAnim(battler) ? SpriteCB_FreeOpponentSpriteLoadMonSprite : SpriteCB_FreeOpponentSprite;
+        StoreSpriteCallbackInData6(&gSprites[gBattleStruct->trainerSlideSpriteIds[battler]], callbackFunc);
     }
 
     taskId = CreateTask(Task_StartSendOutAnim, 5);
@@ -2858,6 +2873,19 @@ static void SpriteCB_FreePlayerSpriteLoadMonSprite(struct Sprite *sprite)
     DestroySprite(sprite);
 
     // Load mon sprite
+    BattleLoadMonSpriteGfx(GetBattlerMon(battler), battler);
+    StartSpriteAnim(&gSprites[gBattlerSpriteIds[battler]], 0);
+}
+
+static void SpriteCB_FreeOpponentSpriteLoadMonSprite(struct Sprite *sprite)
+{
+    u8 battler = sprite->sBattlerId;
+
+    // Free opponent trainer sprite
+    FreeTrainerFrontPicPalette(sprite->oam.affineParam);
+    FreeSpriteOamMatrix(sprite);
+    DestroySprite(sprite);
+
     BattleLoadMonSpriteGfx(GetBattlerMon(battler), battler);
     StartSpriteAnim(&gSprites[gBattlerSpriteIds[battler]], 0);
 }
