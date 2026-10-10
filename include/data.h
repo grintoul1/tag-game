@@ -98,9 +98,9 @@ struct Trainer
     /*0x12*/ u8 trainerPic;
     /*0x13*/ u8 trainerName[TRAINER_NAME_LENGTH + 1];
     /*0x1E*/ u8 battleType:2;
-             u8 startingStatus:5;    // this trainer starts a battle with a given status. see include/constants/battle.h for values
-             bool8 overworldLead:1;   // causes the trainer to start battle with their lead mon already out
-    /*0x1F*/ u8 mugshotColor;
+             u8 startingStatus:6;    // this trainer starts a battle with a given status. see include/constants/battle.h for values
+             u8 overworldLead:3;   // causes the trainer to start battle with their lead mon already out & their overworld mon to approach player
+    /*0x1F*/ u8 mugshotColor:5;
     /*0x20*/ u8 partySize;
     /*0x21*/ u8 poolSize;
     /*0x22*/ u8 poolRuleIndex;
@@ -312,9 +312,15 @@ static inline const u64 GetTrainerAIFlagsFromId(u16 trainerId)
     return GetTrainerStructFromId(trainerId)->aiFlags;
 }
 
-static inline const bool32 DoesTrainerHaveOverworldLead(u16 trainerId)
+static inline const u8 GetTrainerOverworldLeadDirection(u16 trainerId)
 {
     return GetTrainerStructFromId(trainerId)->overworldLead;
+}
+
+static inline const bool32 DoesTrainerHaveOverworldLead(u16 trainerId)
+{
+    u8 overworldLead = GetTrainerOverworldLeadDirection(trainerId);
+    return (overworldLead && overworldLead < CARDINAL_DIRECTION_COUNT);
 }
 
 #endif // GUARD_DATA_H

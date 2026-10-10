@@ -11545,3 +11545,10 @@ u8 GetObjectEventApricornTreeId(u8 objectEventId)
 {
     return gObjectEvents[objectEventId].trainerRange_berryTreeId;
 }
+
+u16 GetObjectEventSpecies(struct ObjectEvent *objectEvent)
+{
+    if (IS_OW_MON_OBJ(objectEvent))
+        return OW_SPECIES(objectEvent);
+    return SPECIES_NONE;
+}

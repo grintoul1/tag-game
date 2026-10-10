@@ -135,7 +135,7 @@ struct Trainer
     struct String starting_status;
     int starting_status_line;
 
-    bool overworld_lead;
+    struct String overworld_lead;
     int overworld_lead_line;
 
     struct String difficulty;
@@ -1261,10 +1261,7 @@ static bool parse_trainer(struct Parser *p, const struct Parsed *parsed, struct 
             if (trainer->overworld_lead_line)
                 any_error = !set_show_parse_error(p, key.location, "duplicate 'Overworld Lead'");
             trainer->overworld_lead_line = value.location.line;
-            bool is_overworld_lead;
-            if (!token_bool(p, &value, &is_overworld_lead))
-                any_error = !show_parse_error(p);
-            trainer->overworld_lead = is_overworld_lead;
+            trainer->overworld_lead = token_string(&value);
         }
         else if (is_literal_token(&key, "Difficulty"))
         {
@@ -1873,10 +1870,11 @@ static void fprint_trainers(const char *output_path, FILE *f, struct Parsed *par
             fprintf(f, ",\n");
         }
 
-        if (trainer->overworld_lead)
+        if (!is_empty_string(trainer->overworld_lead))
         {
             fprintf(f, "#line %d\n", trainer->overworld_lead_line);
-            fprintf(f, "        .overworldLead = TRUE");
+            fprintf(f, "        .overworldLead = ");
+            fprint_constant(f, "DIR", trainer->overworld_lead);
             fprintf(f, ",\n");
         }
 

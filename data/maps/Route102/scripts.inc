@@ -68,6 +68,26 @@ Route102_EventScript_Tiana::
 	msgbox Route102_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+TestTiana::
+	applymovement LOCALID_ROUTE102_TIANA_LEAD, Route102_Movement_TianaLeadApproachPlayer
+	applymovement LOCALID_ROUTE102_TIANA, Route102_Movement_TianaApproachPlayer
+	waitmovement LOCALID_ROUTE102_TIANA_LEAD
+	trainerbattle_single TRAINER_TIANA, Route102_Text_TianaIntro, Route102_Text_TianaDefeated
+	msgbox Route102_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route102_Movement_TianaApproachPlayer:
+	walk_down
+	walk_down
+	step_end
+
+Route102_Movement_TianaLeadApproachPlayer:
+	walk_down
+	walk_down
+	walk_down
+	face_player
+	step_end
+
 Route102_EventScript_Allen::
 	trainerbattle_single TRAINER_ALLEN, Route102_Text_AllenIntro, Route102_Text_AllenDefeated
 	msgbox Route102_Text_AllenPostBattle, MSGBOX_AUTOCLOSE
