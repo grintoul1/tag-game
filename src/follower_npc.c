@@ -1168,10 +1168,51 @@ void SetFollowerNPCSprite(u32 spriteIndex)
 
 static void GetFirstThreeMonsForEmmieBattle(void)
 {
-    u32 i;
-    u32 firstEligible;
+    u32 i, firstEligible, hp = 1, count = 0;
 
     ClearSelectedPartyOrder();
+
+    for (firstEligible = 0; firstEligible < MULTI_PARTY_SIZE; firstEligible++)
+    {
+        if (GetMonData(&gParties[B_TRAINER_PLAYER][firstEligible], MON_DATA_HP) != 0
+         && GetMonData(&gParties[B_TRAINER_PLAYER][firstEligible], MON_DATA_IS_EGG) == FALSE
+         && GetMonData(&gParties[B_TRAINER_PLAYER][firstEligible], MON_DATA_SPECIES) != SPECIES_NONE)
+        {
+            gSelectedOrderFromParty[0] = (firstEligible + 1);
+            count++;
+            DebugPrintf("firstEligible %d count %d", firstEligible, count);
+            break;
+        }
+    }
+
+    // If player slots have no valid mons...
+    assertf(count, "No valid mons for player")
+    {
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_HP, &hp);
+
+        for (i = 0; i < MULTI_PARTY_SIZE; i++)
+        {
+            gSelectedOrderFromParty[count] = (i + 1);
+            count++;
+        }
+
+        return;
+    }
+
+    DebugPrintf("found eligible");
+
+    for (i = 0; i < MULTI_PARTY_SIZE; i++)
+    {
+        if (i == firstEligible)
+            {DebugPrintf("skipping firstEligible %d", firstEligible); continue; }
+
+        gSelectedOrderFromParty[count] = (i + 1);
+        count++;
+        DebugPrintf("setting %d count %d", i, count);
+
+        if (count == 3)
+            break;
+    }
 }
 
 static void ChooseFirstThreeEligibleMons(void)
@@ -1689,15 +1730,22 @@ bool32 IsNPCFollowerWildBattle(void)
 
 void PrepareForFollowerNPCBattle(void)
 {
+    DebugPrintf("%s, %d", __func__, __LINE__);
     // Load the partner party if the NPC follower should participate.
     if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && FollowerNPCIsBattlePartner())
     {
+        DebugPrintf("%s, %d", __func__, __LINE__);
         gPartnerTrainerId = TRAINER_PARTNER(GetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER));
         FillPartnerParty(gPartnerTrainerId);
         if (!AreMultiPartiesFullTeams())
         {
             SavePlayerParty();
-            ChooseFirstThreeEligibleMons();
+            DebugPrintf("%s, %d gPartnerTrainerId %d TRAINER_PARTNER(PARTNER_EMMIE) %d", __func__, __LINE__, gPartnerTrainerId, TRAINER_PARTNER(PARTNER_EMMIE));
+            if (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_EMMIE))
+                GetFirstThreeMonsForEmmieBattle();
+            else
+                ChooseFirstThreeEligibleMons();
+
             ReducePlayerPartyToSelectedMons();
             VarSet(VAR_0x8004, FRONTIER_UTIL_FUNC_SET_DATA);
             VarSet(VAR_0x8005, FRONTIER_DATA_SELECTED_MON_ORDER);

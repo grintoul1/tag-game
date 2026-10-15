@@ -1047,6 +1047,8 @@ static void RenderPartyMenuBox(u8 slot)
         DisplayPartyPokemonDataForMultiBattle(slot);
         if (gMultiPartnerParty[slot].species == SPECIES_NONE)
             LoadPartyBoxPalette(&sPartyMenuBoxes[slot], PARTY_PAL_NO_MON);
+        else if (gMultiPartnerParty[slot].hp == 0)
+            LoadPartyBoxPalette(&sPartyMenuBoxes[slot], PARTY_PAL_FAINTED);
         else
             LoadPartyBoxPalette(&sPartyMenuBoxes[slot], PARTY_PAL_MULTI_ALT);
         CopyWindowToVram(sPartyMenuBoxes[slot].windowId, COPYWIN_GFX);
@@ -1058,6 +1060,8 @@ static void RenderPartyMenuBox(u8 slot)
         DisplayPartyPokemonDataForMultiBattle(slot);
         if (gMultiPartnerParty[slot - MULTI_PARTY_SIZE].species == SPECIES_NONE)
             LoadPartyBoxPalette(&sPartyMenuBoxes[slot], PARTY_PAL_NO_MON);
+        else if (gMultiPartnerParty[slot - MULTI_PARTY_SIZE].hp == 0)
+            LoadPartyBoxPalette(&sPartyMenuBoxes[slot], PARTY_PAL_FAINTED);
         else
             LoadPartyBoxPalette(&sPartyMenuBoxes[slot], PARTY_PAL_MULTI_ALT);
         CopyWindowToVram(sPartyMenuBoxes[slot].windowId, COPYWIN_GFX);
@@ -1349,7 +1353,8 @@ static void DisplayPartyPokemonDataForMultiBattle(u8 slot)
         StringGet_Nickname(gStringVar1);
         ConvertInternationalPlayerName(gStringVar1);
         DisplayPartyPokemonBarDetailToFit(menuBox->windowId, gStringVar1, 0, menuBox->infoRects->dimensions, 50);
-        DisplayPartyPokemonLevel(gMultiPartnerParty[actualSlot].level, menuBox);
+        if (gMultiPartnerParty[actualSlot].hp && gMultiPartnerParty[actualSlot].status == STATUS1_NONE)
+            DisplayPartyPokemonLevel(gMultiPartnerParty[actualSlot].level, menuBox);
         DisplayPartyPokemonGender(gMultiPartnerParty[actualSlot].gender, gMultiPartnerParty[actualSlot].species, gMultiPartnerParty[actualSlot].nickname, menuBox);
         DisplayPartyPokemonHP(gMultiPartnerParty[actualSlot].hp, gMultiPartnerParty[actualSlot].maxhp, menuBox);
         DisplayPartyPokemonMaxHP(gMultiPartnerParty[actualSlot].maxhp, menuBox);
