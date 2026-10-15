@@ -326,5 +326,6 @@ u32 GetWeatherFromOverworldWeather(u32 owWeather);
 enum BattleTerrain GetBattleTerrainFromOverworldWeather(u32 owWeather);
 bool32 IsCommanderActive(enum BattlerId battler);
 bool32 IsWholeSideAlive(enum BattlerId sideBattler);
+enum WeatherFailure TryChangeBattleWeatherGimmick(void);
 
 #endif // GUARD_BATTLE_UTIL_H

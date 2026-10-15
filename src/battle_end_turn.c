@@ -9,6 +9,7 @@
 #include "battle_stat_change.h"
 #include "battle_gimmick.h"
 #include "battle_scripts.h"
+#include "event_data.h"
 #include "sound.h"
 #include "constants/battle.h"
 #include "constants/battle_string_ids.h"
@@ -16,6 +17,10 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/songs.h"
+
+static bool32 HandleEndTurnWeatherGimmick(enum BattlerId battler);
+static bool32 HandleEndTurnTerrainGimmick(enum BattlerId battler);
+static bool32 HandleEndTurnTopsyTurvyGimmick(enum BattlerId battler);
 
 static enum BattlerId GetBattlerSideForMessage(enum BattleSide side)
 {
@@ -102,6 +107,8 @@ static bool32 HandleEndTurnVarious(enum BattlerId battler)
 static bool32 HandleEndTurnWeather(enum BattlerId battler)
 {
     gBattleStruct->eventState.endTurn++;
+    if (VarGet(VAR_BATTLE_GIMMICK) == BATTLE_GIMMICK_WEATHER)
+        return FALSE;
     return EndOrContinueWeather();
 }
 
@@ -1265,6 +1272,9 @@ static bool32 HandleEndTurnTerrain(enum BattlerId battler)
 {
     gBattleStruct->eventState.endTurn++;
 
+    if (VarGet(VAR_BATTLE_GIMMICK) == BATTLE_GIMMICK_TERRAIN)
+        return FALSE;
+
     if (gFieldTimers.terrainTimer > 0 && --gFieldTimers.terrainTimer == 0)
     {
         TryToRevertMimicryAndFlags();
@@ -1666,6 +1676,7 @@ static bool32 (*const sEndTurnEffectHandlers[])(enum BattlerId battler) =
     [ENDTURN_VARIOUS] = HandleEndTurnVarious,
     [ENDTURN_WEATHER] = HandleEndTurnWeather,
     [ENDTURN_WEATHER_DAMAGE] = HandleEndTurnWeatherDamage,
+    [ENDTURN_WEATHER_GIMMICK] = HandleEndTurnWeatherGimmick,
     [ENDTURN_SEND_OUT_REPLACEMENTS_1] = HandleEndTurnSendOutReplacements,
     [ENDTURN_AFFECTION] = HandleEndTurnAffection,
     [ENDTURN_FUTURE_SIGHT] = HandleEndTurnFutureSight,
@@ -1704,6 +1715,7 @@ static bool32 (*const sEndTurnEffectHandlers[])(enum BattlerId battler) =
     [ENDTURN_WONDER_ROOM] = HandleEndTurnWonderRoom,
     [ENDTURN_MAGIC_ROOM] = HandleEndTurnMagicRoom,
     [ENDTURN_TERRAIN] = HandleEndTurnTerrain,
+    [ENDTURN_TERRAIN_GIMMICK] = HandleEndTurnTerrainGimmick,
     [ENDTURN_THIRD_EVENT_BLOCK] = HandleEndTurnThirdEventBlock,
     [ENDTURN_OPPORTUNIST] = HandleEndTurnOpportunist,
     [ENDTURN_MIRROR_HERB] = HandleEndTurnMirrorHerb,
@@ -1714,6 +1726,7 @@ static bool32 (*const sEndTurnEffectHandlers[])(enum BattlerId battler) =
     [ENDTURN_ARENA_TURN_END] = HandleEndTurnArenaTurnEnd,
     [ENDTURN_FAINTED_MON_ACTIONS] = HandleEndTurnFaintedMonActions,
     [ENDTURN_DYNAMAX] = HandleEndTurnDynamax,
+    [ENDTURN_TOPSY_TURVY_GIMMICK] = HandleEndTurnTopsyTurvyGimmick,
     [ENDTURN_TRAINER_A_SLIDES] = HandleEndTurnTrainerASlides,
     [ENDTURN_TRAINER_B_SLIDES] = HandleEndTurnTrainerBSlides,
     [ENDTURN_TRAINER_PARTNER_SLIDES] = HandleEndTurnTrainerPartnerSlides,
@@ -1781,4 +1794,47 @@ bool32 DoEndTurnEffects(void)
         if (sEndTurnEffectHandlers[gBattleStruct->eventState.endTurn](battler))
             return TRUE;
     }
+}
+
+static bool32 HandleEndTurnWeatherGimmick(enum BattlerId battler)
+{
+    gBattleStruct->eventState.endTurn++;
+    if (VarGet(VAR_BATTLE_GIMMICK) != BATTLE_GIMMICK_WEATHER)
+        return FALSE;
+    else
+        return TryChangeBattleWeatherGimmick();
+}
+
+static bool32 HandleEndTurnTerrainGimmick(enum BattlerId battler)
+{
+    gBattleStruct->eventState.endTurn++;
+
+    if (VarGet(VAR_BATTLE_GIMMICK) != BATTLE_GIMMICK_TERRAIN)
+        return FALSE;
+
+    enum BattleTerrain newTerrain = ((gBattleTurnCounter + 1) % 4) + 1;
+
+    TryChangeBattleTerrain(battler, newTerrain, TRUE);
+    BattleScriptPushCursorAndCallback(BattleScript_OverworldTerrain);
+
+    return TRUE;
+}
+
+static bool32 HandleEndTurnTopsyTurvyGimmick(enum BattlerId battler)
+{
+    if (VarGet(VAR_BATTLE_GIMMICK) != BATTLE_GIMMICK_TOPSY_TURVY)
+    {
+        gBattleStruct->eventState.endTurn++;
+        return FALSE;
+    }
+
+    gBattleStruct->eventState.endTurnBattler++;
+
+    if (!IsBattlerPresent(battler))
+        return FALSE;
+    
+    gCurrentMove = MOVE_TOPSY_TURVY;
+    gBattlerTarget = battler;
+    BattleScriptPushCursorAndCallback(BattleScript_EffectTopsyTurvyGimmick);
+    return TRUE;
 }

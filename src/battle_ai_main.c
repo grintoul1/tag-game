@@ -7065,7 +7065,7 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
             ADJUST_SCORE(-10);
 
         // check non-user target
-        if (!(moveTarget & TARGET_USER))
+        if (!(moveTarget == TARGET_USER))
         {
             if (Ai_IsPriorityBlocked(battlerAtk, battlerDef, move, aiData))
                 RETURN_SCORE_MINUS(NO_DAMAGE_OR_FAILS);
@@ -7173,7 +7173,7 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
                         ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                     break;
                 case ABILITY_MAGIC_BOUNCE:
-                    if (MoveCanBeBouncedBack(move) && moveTarget & (TARGET_BOTH | TARGET_FOES_AND_ALLY | TARGET_OPPONENTS_FIELD))
+                    if (MoveCanBeBouncedBack(move) && (moveTarget == TARGET_BOTH || moveTarget == TARGET_FOES_AND_ALLY || moveTarget == TARGET_OPPONENTS_FIELD))
                         ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                     break;
                 case ABILITY_SWEET_VEIL:
@@ -7196,7 +7196,7 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
             // gen7+ dark type mons immune to priority->elevated moves from prankster
             if (GetConfig(B_PRANKSTER_DARK_TYPES) >= GEN_7 && IS_BATTLER_OF_TYPE(battlerDef, TYPE_DARK)
             && aiData->abilities[battlerAtk] == ABILITY_PRANKSTER && IsBattleMoveStatus(move)
-            && !(moveTarget & (TARGET_OPPONENTS_FIELD | TARGET_USER)))
+            && !((moveTarget == TARGET_OPPONENTS_FIELD || moveTarget == TARGET_USER)))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
 
             // terrain & effect checks
@@ -8657,7 +8657,7 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
         if (IsHoldEffectChoice(aiData->holdEffects[battlerAtk]) && IsBattlerItemEnabled(battlerAtk))
         {
             // Don't use user-target moves ie. Swords Dance, with exceptions
-            if ((moveTarget & TARGET_USER)
+            if ((moveTarget == TARGET_USER)
             && moveEffect != EFFECT_DESTINY_BOND && moveEffect != EFFECT_WISH && moveEffect != EFFECT_HEALING_WISH
             && !(moveEffect == EFFECT_AURORA_VEIL && (AI_GetWeather() & B_WEATHER_ICY_ANY)))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -8762,7 +8762,7 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
                 if (IsStatChangeStatusMove(move, IsAtkStatUpMove))
                     ADJUST_SCORE(-3);
                 // encourage moves hitting multiple opponents
-                if (!IsBattleMoveStatus(move) && (moveTarget & (TARGET_BOTH | TARGET_FOES_AND_ALLY)))
+                if (!IsBattleMoveStatus(move) && (moveTarget == TARGET_BOTH || moveTarget == TARGET_FOES_AND_ALLY))
                     ADJUST_SCORE(GOOD_EFFECT);
             }
         }
@@ -12003,7 +12003,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
             ADJUST_SCORE(-10);
 
         // check non-user target
-        if (!(moveTarget & TARGET_USER))
+        if (!(moveTarget == TARGET_USER))
         {
             if (Ai_IsPriorityBlocked(battlerAtk, battlerDef, move, aiData))
                 RETURN_SCORE_MINUS(NO_DAMAGE_OR_FAILS);
@@ -12112,7 +12112,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                         ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                     break;
                 case ABILITY_MAGIC_BOUNCE:
-                    if (MoveCanBeBouncedBack(move) && moveTarget & (TARGET_BOTH | TARGET_FOES_AND_ALLY | TARGET_OPPONENTS_FIELD))
+                    if (MoveCanBeBouncedBack(move) && (moveTarget == TARGET_BOTH || moveTarget == TARGET_FOES_AND_ALLY || moveTarget == TARGET_OPPONENTS_FIELD))
                         ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                     break;
                 case ABILITY_SWEET_VEIL:
@@ -12135,7 +12135,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
             // gen7+ dark type mons immune to priority->elevated moves from prankster
             if (GetConfig(B_PRANKSTER_DARK_TYPES) >= GEN_7 && IS_BATTLER_OF_TYPE(battlerDef, TYPE_DARK)
             && aiData->abilities[battlerAtk] == ABILITY_PRANKSTER && IsBattleMoveStatus(move)
-            && !(moveTarget & (TARGET_OPPONENTS_FIELD | TARGET_USER)))
+            && !((moveTarget == TARGET_OPPONENTS_FIELD || moveTarget == TARGET_USER)))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
 
             // terrain & effect checks
@@ -13958,7 +13958,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
         if (IsHoldEffectChoice(aiData->holdEffects[battlerAtk]) && IsBattlerItemEnabled(battlerAtk))
         {
             // Don't use user-target moves ie. Swords Dance, with exceptions
-            if ((moveTarget & TARGET_USER)
+            if ((moveTarget == TARGET_USER)
             && moveEffect != EFFECT_DESTINY_BOND && moveEffect != EFFECT_WISH && moveEffect != EFFECT_HEALING_WISH
             && !(moveEffect == EFFECT_AURORA_VEIL && (AI_GetWeather() & B_WEATHER_ICY_ANY)))
                 ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
@@ -14070,7 +14070,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                 if (IsStatChangeStatusMove(move, IsAtkStatUpMove))
                     ADJUST_SCORE(-3);
                 // encourage moves hitting multiple opponents
-                if (!IsBattleMoveStatus(move) && (moveTarget & (TARGET_BOTH | TARGET_FOES_AND_ALLY)))
+                if (!IsBattleMoveStatus(move) && (moveTarget == TARGET_BOTH || moveTarget == TARGET_FOES_AND_ALLY))
                     ADJUST_SCORE(GOOD_EFFECT);
             }
         }

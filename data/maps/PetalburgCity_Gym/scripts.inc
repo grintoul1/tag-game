@@ -973,29 +973,30 @@ PetalburgCity_Gym_EventScript_RandallPostBadge::
 	end
 
 PetalburgCity_Gym_EventScript_Parker::
-faceplayer
-goto_if_set FLAG_PARKER_DEFEATED, PetalburgCity_Gym_EventScript_Parker2
-lockall
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_ParkerIntro, MSGBOX_AUTOCLOSE
-goto PetalburgCity_Gym_EventScript_ParkerDoMultiBattle
-releaseall
-end
+	faceplayer
+	goto_if_set FLAG_PARKER_DEFEATED, PetalburgCity_Gym_EventScript_Parker2
+	lockall
+	setvar VAR_BATTLE_GIMMICK, 2 @ BATTLE_GIMMICK_TOPSY_TURVY
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	msgbox PetalburgCity_Gym_Text_ParkerIntro, MSGBOX_AUTOCLOSE
+	goto PetalburgCity_Gym_EventScript_ParkerDoMultiBattle
+	releaseall
+	end
 
 PetalburgCity_Gym_EventScript_ParkerDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_TYRONE, PetalburgCity_Gym_Text_ParkerDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, PetalburgCity_Gym_EventScript_ParkerVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_1 TRAINER_TYRONE, PetalburgCity_Gym_Text_ParkerDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, PetalburgCity_Gym_EventScript_ParkerVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 PetalburgCity_Gym_EventScript_ParkerVictory::
-msgbox PetalburgCity_Gym_Text_ParkerPostBattle, MSGBOX_AUTOCLOSE
-setflag FLAG_PARKER_DEFEATED
-call PetalburgCity_Gym_EventScript_SlideOpenConfusionRoomDoors
-end
+	msgbox PetalburgCity_Gym_Text_ParkerPostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_PARKER_DEFEATED
+	call PetalburgCity_Gym_EventScript_SlideOpenConfusionRoomDoors
+	end
 
 PetalburgCity_Gym_EventScript_Parker2::
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_ParkerPostBadge
@@ -1014,29 +1015,30 @@ PetalburgCity_Gym_EventScript_ParkerPostBadge::
 	end
 
 PetalburgCity_Gym_EventScript_George::
-faceplayer
-goto_if_set FLAG_GEORGE_DEFEATED, PetalburgCity_Gym_EventScript_George2
-lockall
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_GeorgeIntro, MSGBOX_AUTOCLOSE
-goto PetalburgCity_Gym_EventScript_GeorgeDoMultiBattle
-releaseall
-end
+	faceplayer
+	goto_if_set FLAG_GEORGE_DEFEATED, PetalburgCity_Gym_EventScript_George2
+	lockall
+	setvar VAR_BATTLE_GIMMICK, 3 @ BATTLE_GIMMICK_TERRAIN
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	msgbox PetalburgCity_Gym_Text_GeorgeIntro, MSGBOX_AUTOCLOSE
+	goto PetalburgCity_Gym_EventScript_GeorgeDoMultiBattle
+	releaseall
+	end
 
 PetalburgCity_Gym_EventScript_GeorgeDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_JAS, PetalburgCity_Gym_Text_GeorgeDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, PetalburgCity_Gym_EventScript_GeorgeVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_1 TRAINER_JAS, PetalburgCity_Gym_Text_GeorgeDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, PetalburgCity_Gym_EventScript_GeorgeVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 PetalburgCity_Gym_EventScript_GeorgeVictory::
-msgbox PetalburgCity_Gym_Text_GeorgePostBattle, MSGBOX_AUTOCLOSE
-setflag FLAG_GEORGE_DEFEATED
-call PetalburgCity_Gym_EventScript_SlideOpenRecoveryRoomDoors
-end
+	msgbox PetalburgCity_Gym_Text_GeorgePostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_GEORGE_DEFEATED
+	call PetalburgCity_Gym_EventScript_SlideOpenRecoveryRoomDoors
+	end
 
 PetalburgCity_Gym_EventScript_George2::
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_GeorgePostBadge
@@ -1055,29 +1057,29 @@ PetalburgCity_Gym_EventScript_GeorgePostBadge::
 	end
 
 PetalburgCity_Gym_EventScript_Berke::
-faceplayer
-goto_if_set FLAG_BERKE_DEFEATED, PetalburgCity_Gym_EventScript_Berke2
-lockall
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_BerkeIntro, MSGBOX_AUTOCLOSE
-goto PetalburgCity_Gym_EventScript_BerkeDoMultiBattle
-releaseall
-end
+	faceplayer
+	goto_if_set FLAG_BERKE_DEFEATED, PetalburgCity_Gym_EventScript_Berke2
+	lockall
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	msgbox PetalburgCity_Gym_Text_BerkeIntro, MSGBOX_AUTOCLOSE
+	goto PetalburgCity_Gym_EventScript_BerkeDoMultiBattle
+	releaseall
+	end
 
 PetalburgCity_Gym_EventScript_BerkeDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_STEPH, PetalburgCity_Gym_Text_BerkeDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, PetalburgCity_Gym_EventScript_BerkeVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_1 TRAINER_STEPH, PetalburgCity_Gym_Text_BerkeDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, PetalburgCity_Gym_EventScript_BerkeVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 PetalburgCity_Gym_EventScript_BerkeVictory::
-msgbox PetalburgCity_Gym_Text_BerkePostBattle, MSGBOX_AUTOCLOSE
-setflag FLAG_BERKE_DEFEATED
-call PetalburgCity_Gym_EventScript_SlideOpenOHKORoomDoors
-end
+	msgbox PetalburgCity_Gym_Text_BerkePostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_BERKE_DEFEATED
+	call PetalburgCity_Gym_EventScript_SlideOpenOHKORoomDoors
+	end
 
 PetalburgCity_Gym_EventScript_Berke2::
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_BerkePostBadge
@@ -1096,29 +1098,30 @@ PetalburgCity_Gym_EventScript_BerkePostBadge::
 	end
 
 PetalburgCity_Gym_EventScript_Mary::
-faceplayer
-goto_if_set FLAG_MARY_DEFEATED, PetalburgCity_Gym_EventScript_Mary2
-lockall
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_MaryIntro, MSGBOX_AUTOCLOSE
-goto PetalburgCity_Gym_EventScript_MaryDoMultiBattle
-releaseall
-end
+	faceplayer
+	goto_if_set FLAG_MARY_DEFEATED, PetalburgCity_Gym_EventScript_Mary2
+	lockall
+	setvar VAR_BATTLE_GIMMICK, 1 @ BATTLE_GIMMICK_WEATHER
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	msgbox PetalburgCity_Gym_Text_MaryIntro, MSGBOX_AUTOCLOSE
+	goto PetalburgCity_Gym_EventScript_MaryDoMultiBattle
+	releaseall
+	end
 
 PetalburgCity_Gym_EventScript_MaryDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_PORY, PetalburgCity_Gym_Text_MaryDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, PetalburgCity_Gym_EventScript_MaryVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_1 TRAINER_PORY, PetalburgCity_Gym_Text_MaryDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, PetalburgCity_Gym_EventScript_MaryVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 PetalburgCity_Gym_EventScript_MaryVictory::
-msgbox PetalburgCity_Gym_Text_MaryPostBattle, MSGBOX_AUTOCLOSE
-setflag FLAG_MARY_DEFEATED
-call PetalburgCity_Gym_EventScript_SlideOpenAccuracyRoomDoors
-end
+	msgbox PetalburgCity_Gym_Text_MaryPostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_MARY_DEFEATED
+	call PetalburgCity_Gym_EventScript_SlideOpenAccuracyRoomDoors
+	end
 
 PetalburgCity_Gym_EventScript_Mary2::
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_MaryPostBadge
@@ -1137,29 +1140,29 @@ PetalburgCity_Gym_EventScript_MaryPostBadge::
 	end
 
 PetalburgCity_Gym_EventScript_Alexia::
-faceplayer
-goto_if_set FLAG_ALEXIA_DEFEATED, PetalburgCity_Gym_EventScript_Alexia2
-lockall
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_AlexiaIntro, MSGBOX_AUTOCLOSE
-goto PetalburgCity_Gym_EventScript_AlexiaDoMultiBattle
-releaseall
-end
+	faceplayer
+	goto_if_set FLAG_ALEXIA_DEFEATED, PetalburgCity_Gym_EventScript_Alexia2
+	lockall
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	msgbox PetalburgCity_Gym_Text_AlexiaIntro, MSGBOX_AUTOCLOSE
+	goto PetalburgCity_Gym_EventScript_AlexiaDoMultiBattle
+	releaseall
+	end
 
 PetalburgCity_Gym_EventScript_AlexiaDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_ZOE, PetalburgCity_Gym_Text_AlexiaDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, PetalburgCity_Gym_EventScript_AlexiaVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_1 TRAINER_ZOE, PetalburgCity_Gym_Text_AlexiaDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, PetalburgCity_Gym_EventScript_AlexiaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 PetalburgCity_Gym_EventScript_AlexiaVictory::
-msgbox PetalburgCity_Gym_Text_AlexiaPostBattle, MSGBOX_AUTOCLOSE
-setflag FLAG_ALEXIA_DEFEATED
-call PetalburgCity_Gym_EventScript_SlideOpenDefenseRoomDoors
-end
+	msgbox PetalburgCity_Gym_Text_AlexiaPostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_ALEXIA_DEFEATED
+	call PetalburgCity_Gym_EventScript_SlideOpenDefenseRoomDoors
+	end
 
 PetalburgCity_Gym_EventScript_Alexia2::
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_AlexiaPostBadge
@@ -1178,29 +1181,29 @@ PetalburgCity_Gym_EventScript_AlexiaPostBadge::
 	end
 
 PetalburgCity_Gym_EventScript_Jody::
-faceplayer
-goto_if_set FLAG_JODY_DEFEATED, PetalburgCity_Gym_EventScript_Jody2
-lockall
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-msgbox PetalburgCity_Gym_Text_JodyIntro, MSGBOX_AUTOCLOSE
-goto PetalburgCity_Gym_EventScript_JodyDoMultiBattle
-releaseall
-end
+	faceplayer
+	goto_if_set FLAG_JODY_DEFEATED, PetalburgCity_Gym_EventScript_Jody2
+	lockall
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	msgbox PetalburgCity_Gym_Text_JodyIntro, MSGBOX_AUTOCLOSE
+	goto PetalburgCity_Gym_EventScript_JodyDoMultiBattle
+	releaseall
+	end
 
 PetalburgCity_Gym_EventScript_JodyDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_BAZZO, PetalburgCity_Gym_Text_JodyDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, PetalburgCity_Gym_EventScript_JodyVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_1 TRAINER_BAZZO, PetalburgCity_Gym_Text_JodyDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, PetalburgCity_Gym_EventScript_JodyVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 PetalburgCity_Gym_EventScript_JodyVictory::
-msgbox PetalburgCity_Gym_Text_JodyPostBattle, MSGBOX_AUTOCLOSE
-setflag FLAG_JODY_DEFEATED
-call PetalburgCity_Gym_EventScript_SlideOpenStrengthRoomDoors
-end
+	msgbox PetalburgCity_Gym_Text_JodyPostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_JODY_DEFEATED
+	call PetalburgCity_Gym_EventScript_SlideOpenStrengthRoomDoors
+	end
 
 PetalburgCity_Gym_EventScript_Jody2::
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_JodyPostBadge
@@ -1579,9 +1582,9 @@ PetalburgCity_Gym_Text_GymGuideAdvice:
 	.string "Whoops! The doors in this room are\n"
 	.string "already open, so don't attack me!\p"
 	.string "The door at the left leads to\n"
-	.string "the SPEED ROOM.\p"
+	.string "the Hazards Room.\p"
 	.string "The door at the right leads to\n"
-	.string "the ACCURACY ROOM.\p"
+	.string "the Weather Room.\p"
 	.string "The room's name will be on\n"
 	.string "the door, so choose carefully.\p"
 	.string "Every battle in the gym will be a\n"
@@ -1596,164 +1599,144 @@ PetalburgCity_Gym_Text_GymGuidePostVictory:
 	.string "What a stunning turn of events!$"
 
 PetalburgCity_Gym_Text_RandallIntro:
-	.string "The ability to attack before the\n"
-	.string "opponent…\p"
-	.string "Just that alone puts me at a great\n"
-	.string "advantage, don't you agree?$"
+	.string "Mil: You'd better watch out for\n"
+	.string "all these hazards…\p"
+	.string "But worry not, if you injure\n"
+	.string "yourself, at least I'm here.\p"
+	.string "Trust me, I'm a doctor!$"
 
 PetalburgCity_Gym_Text_RandallDefeat:
-	.string "That was a magnificent battle!$"
+	.string "Next time you're not getting past\n"
+	.string "my receptionist!$"
 
 PetalburgCity_Gym_Text_RandallPostBattle:
-	.string "Go on to the next room where a new\n"
-	.string "challenge awaits you.\p"
-	.string "At the left is the CONFUSION ROOM.\p"
-	.string "The right door leads to the DEFENSE\n"
-	.string "ROOM.$"
+	.string "Mil: Go on, your next challenge\n"
+	.string "awaits you.\p"
+	.string "At the left is the Screens Room.\p"
+	.string "The right door leads to the Topsy\n"
+	.string "Turvy Room.$"
 
 PetalburgCity_Gym_Text_RandallPostBadge:
-	.string "Whomever you beat, and whomever you\n"
-	.string "may lose to, you never shirk from\l"
-	.string "training yourself and your POKéMON.\p"
-	.string "That's what I think being a\n"
-	.string "GYM LEADER is all about.$"
+	.string "Mil: If you come across Kya, ask her\n"
+	.string "what it's like to be a former champion.$"
 
 PetalburgCity_Gym_Text_ParkerIntro:
-	.string "This is the CONFUSION ROOM.\p"
-	.string "Let me see how well bonded you are\n"
-	.string "with your POKéMON!$"
+	.string "Tyrone: Welcome to the Topsy Turvy\n"
+	.string "Room.\p"
+	.string "I hope you don't suffer from motion\n"
+	.string "sickness!$"
 
 PetalburgCity_Gym_Text_ParkerDefeat:
-	.string "I couldn't confuse your team enough…\n"
-	.string "You share a strong bond together.$"
+	.string "If I don't get a mayo chicken in the\n"
+	.string "next five minutes, I'm gonna hurl…$"
 
 PetalburgCity_Gym_Text_ParkerPostBattle:
-	.string "The next room is the STRENGTH ROOM.\n"
-	.string "Can you withstand brute force?$"
+	.string "Tyrone: The next room is the\n"
+	.string "Tailwind Room.\p"
+	.string "How much more twisting can your mind\n"
+	.string "endure?$"
 
 PetalburgCity_Gym_Text_ParkerPostBadge:
-	.string "After you beat our LEADER, the\n"
-	.string "training has become a lot tougher.$"
+	.string "Tyrone: I'm gonna edit out your\n"
+	.string "victory.$"
 
 PetalburgCity_Gym_Text_GeorgeIntro:
-	.string "Just when you think you're going to\n"
-	.string "win, your opponent restores HP…\p"
-	.string "Can you just imagine how awful that\n"
-	.string "must feel?\p"
-	.string "I'll show you exactly how awful it\n"
-	.string "feels!$"
+	.string "Jas: Can you keep track of the\n"
+	.string "terrain changes?\p"
+	.string "I sure can't!$"
 
 PetalburgCity_Gym_Text_GeorgeDefeat:
-	.string "I couldn't restore HP enough…\n"
-	.string "What ATTACK power…$"
+	.string "I'm going back to Dota…$"
 
 PetalburgCity_Gym_Text_GeorgePostBattle:
-	.string "I should have expected no less from\n"
-	.string "our LEADER's kid.\p"
-	.string "No, wait! A TRAINER's abilities are\n"
-	.string "earned only through effort.\p"
-	.string "I lost because my own efforts\n"
-	.string "weren't enough.\p"
-	.string "Go on! The ONE-HIT KO ROOM is next.$"
+	.string "Jas: The Trick Room Room is next.\n"
+	.string "Good luck!$"
 
 PetalburgCity_Gym_Text_GeorgePostBadge:
-	.string "I'm going to keep training at GYMS.\n"
-	.string "One day, I'll become a LEADER.$"
+	.string "I'm going to keep uninstalling Dota.\n"
+	.string "One day, I'll reach 30,000 hours!$"
 
 PetalburgCity_Gym_Text_BerkeIntro:
-	.string "I'm not going to take it easy just\n"
-	.string "because you're our LEADER's kid.\p"
-	.string "I'll show you how horrid it is for\n"
-	.string "a POKéMON to take a critical hit!$"
+	.string "Steph: It's your favourite Nuzlocker's\n"
+	.string "favourite moderator!$"
 
 PetalburgCity_Gym_Text_BerkeDefeat:
-	.string "Your power…\n"
-	.string "You're the real deal.$"
+	.string "If this were Moxi's chat, I'd ban you\n"
+	.string "right now…$"
 
 PetalburgCity_Gym_Text_BerkePostBattle:
-	.string "Your father really is strong.\n"
-	.string "He's a TRAINER worth my respect.\p"
-	.string "And, I sense the same glow coming\n"
-	.string "from you as your father.\p"
-	.string "I hope that you'll stage a terrific\n"
-	.string "battle with your father!$"
+	.string "Steph: I'm gonna be honest with you.\p"
+	.string "I'm gonna seriously crash out if you\n"
+	.string "lose to Norman now!$"
 
 PetalburgCity_Gym_Text_BerkePostBadge:
-	.string "Since your dad became the LEADER,\n"
-	.string "the TRAINERS of PETALBURG CITY have\l"
-	.string "become a lot tougher.$"
+	.string "Steph: I make a mean chicken satay\n"
+	.string "and you're never gonna get to try it.$"
 
 PetalburgCity_Gym_Text_MaryIntro:
-	.string "Giggle…\n"
-	.string "This is the ACCURACY ROOM.\p"
-	.string "It's pretty nasty when every attack\n"
-	.string "lands without fail.$"
+	.string "Pory: Giggle…\n"
+	.string "This is the Weather Room.\p"
+	.string "Now you'll experience what it's\n"
+	.string "like to be British!$"
 
 PetalburgCity_Gym_Text_MaryDefeat:
-	.string "You were a cut above me…$"
+	.string "I just got solar panels installed.\n"
+	.string "Better hope the sun lasts, innit…$"
 
 PetalburgCity_Gym_Text_MaryPostBattle:
-	.string "There are some even stronger\n"
-	.string "TRAINERS waiting for you.\p"
-	.string "The left is the DEFENSE ROOM, and\n"
-	.string "the right is the RECOVERY ROOM.\p"
-	.string "Your POKéMON's ATTACK power will be\n"
-	.string "on trial either way.$"
+	.string "Pory: There are some even stronger\n"
+	.string "trainers waiting for you.\p"
+	.string "The left is the Screens Room, and\n"
+	.string "the right is the Terrain Room.\p"
+	.string "The fun continues!$"
 
 PetalburgCity_Gym_Text_MaryPostBadge:
-	.string "Do you know what we're trying to\n"
-	.string "achieve as TRAINERS?\p"
-	.string "We're striving to become soul mates\n"
-	.string "with our POKéMON.$"
+	.string "Pory: Do you know what we're trying\n"
+	.string "to achieve as trainers?\p"
+	.string "I'm striving to become soul mates\n"
+	.string "with Gilmore, my Smeargle.$"
 
 PetalburgCity_Gym_Text_AlexiaIntro:
-	.string "The higher the DEFENSE, the more\n"
-	.string "reckless I can be in attack.$"
+	.string "Zoe: Its hard to shine bright in a\n"
+	.string "blizzard.\p"
+	.string "My battle performance will leave you\n"
+	.string "as speechless as a mime.\p"
+	.string "I guess it's fine for me to be as cute\n"
+	.string "as Mime Jr...$"
 
 PetalburgCity_Gym_Text_AlexiaDefeat:
-	.string "Our defenses weren't enough…$"
+	.string "I guess its tea time now…$"
 
 PetalburgCity_Gym_Text_AlexiaPostBattle:
-	.string "I think you've taught me a valuable\n"
-	.string "lesson here.\p"
-	.string "Now, go on! The left door goes to\n"
-	.string "the STRENGTH ROOM.\p"
+	.string "Zoe: Go on! The left door goes to\n"
+	.string "the Tailwind Room.\p"
 	.string "The right door opens to\n"
-	.string "the ONE-HIT KO ROOM.\p"
-	.string "Both of them have TRAINERS who are\n"
-	.string "skilled at offense.$"
+	.string "the Trick Room Room!$"
 
 PetalburgCity_Gym_Text_AlexiaPostBadge:
-	.string "Hi! Have you tried using SURF?$"
+	.string "Zoe: Have you heard of the Nuzlocke\n"
+	.string "Invitational?$"
 
 PetalburgCity_Gym_Text_JodyIntro:
-	.string "Our GYM LEADER told us to go all out\n"
-	.string "and beat you.\p"
-	.string "Even if you happen to be the\n"
-	.string "LEADER's kid!$"
+	.string "Bazzo: Croc!$"
 
 PetalburgCity_Gym_Text_JodyDefeat:
-	.string "But… I went all out!$"
+	.string "Buh…$"
 
 PetalburgCity_Gym_Text_JodyPostBattle:
-	.string "The way you use your POKéMON…\n"
-	.string "It's like your father's style.\p"
-	.string "Go on through! The GYM LEADER, your\n"
-	.string "father, is waiting!$"
+	.string "Bazzo: Some say Norman is the toughest\n"
+	.string "there is!$"
 
 PetalburgCity_Gym_Text_JodyPostBadge:
-	.string "Sure, it's fine to make your POKéMON\n"
-	.string "stronger.\p"
-	.string "But what decides the winner?\p"
-	.string "Why, it's the feelings TRAINERS have\n"
-	.string "for their POKéMON.$"
+	.string "Bazzo: They hate you when you're a\n"
+	.string "Barboach…$"
 
 PetalburgCity_Gym_Text_DoorAppearsLocked:
 	.string "This door appears to be locked\n"
 	.string "right now…$"
 
 PetalburgCity_Gym_Text_EnterSpeedRoom:
-	.string "“SPEED ROOM,” the sign says.\p"
+	.string "“Hazards Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 @ Unused
@@ -1762,31 +1745,31 @@ PetalburgCity_Gym_Text_DoorAppearsLocked2:
 	.string "right now…$"
 
 PetalburgCity_Gym_Text_EnterAccuracyRoom:
-	.string "“ACCURACY ROOM,” the sign says.\p"
+	.string "“Weather Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterConfusionRoom:
-	.string "“CONFUSION ROOM,” the sign says.\p"
+	.string "“Topsy Turvy Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterDefenseRoom:
-	.string "“DEFENSE ROOM,” the sign says.\p"
+	.string "“Screens Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterRecoveryRoom:
-	.string "“RECOVERY ROOM,” the sign says.\p"
+	.string "“Terrain Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterStrengthRoom:
-	.string "“STRENGTH ROOM,” the sign says.\p"
+	.string "“Tailwind Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterOHKORoom:
-	.string "“ONE-HIT KO ROOM,” the sign says.\p"
+	.string "“Trick Room Room”, the sign says.\p"
 	.string "Do you want to go through?$"
 
 PetalburgCity_Gym_Text_EnterGymLeadersRoom:
-	.string "“GYM LEADER'S ROOM\p"
+	.string "“Truck Room”\p"
 	.string "“See for yourself what POKéMON await\n"
 	.string "you!” the sign says.\p"
 	.string "Do you want to go through?$"

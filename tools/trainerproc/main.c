@@ -1575,12 +1575,31 @@ static bool parse_trainer(struct Parser *p, const struct Parsed *parsed, struct 
 
                 // Special case: "Hidden Power <Type>" -> "Hidden Power"
                 struct String move_str = token_string(&move);
-                const char *hp = "Hidden Power";
-                size_t hp_len = strlen(hp);
-                if (move_str.string_n > (int)hp_len && strncmp((const char *)move_str.string, hp, hp_len) == 0)
-                {
-                    move_str = literal_string(hp);
-                }
+                //const char *hp = "Hidden Power";
+                //size_t hp_len = strlen(hp);
+                //if (move_str.string_n > (int)hp_len && strncmp((const char *)move_str.string, hp, hp_len) == 0)
+                //{
+                //    move_str = literal_string(hp);
+                //}
+
+                /*{
+                typeBits = ((GetMonData(mon, MON_DATA_HP_IV) & 1) << 0)
+                        | ((GetMonData(mon, MON_DATA_ATK_IV) & 1) << 1)
+                        | ((GetMonData(mon, MON_DATA_DEF_IV) & 1) << 2)
+                        | ((GetMonData(mon, MON_DATA_SPEED_IV) & 1) << 3)
+                        | ((GetMonData(mon, MON_DATA_SPATK_IV) & 1) << 4)
+                        | ((GetMonData(mon, MON_DATA_SPDEF_IV) & 1) << 5);
+            }
+
+            u32 hpTypes[NUMBER_OF_MON_TYPES] = {0};
+            u32 i, hpTypeCount = 0;
+            for (i = 0; i < NUMBER_OF_MON_TYPES; i++)
+            {
+                if (gTypesInfo[i].isHiddenPowerType)
+                    hpTypes[hpTypeCount++] = i;
+            }
+            moveType = ((hpTypeCount - 1) * typeBits) / 63;
+            return hpTypes[moveType];*/
 
                 pokemon->moves[pokemon->moves_n] = move_str;
                 pokemon->moves_n++;

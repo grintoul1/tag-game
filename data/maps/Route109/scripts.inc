@@ -1,12 +1,8 @@
 @ NOTE: Route 109's sail to Dewford script references local IDs from Dewford's map.
 @  These are labeled in DewfordTown/scripts.inc
 
-.set LOCALID_GRUNT1, 21
-.set LOCALID_GRUNT2, 7
 .set LOCALID_HUEY, 5
 .set LOCALID_EDMOND, 6
-.set LOCALID_GRUNT3, 8
-.set LOCALID_GRUNT4, 11
 
 
 Route109_MapScripts::
@@ -16,7 +12,31 @@ Route109_MapScripts::
 Route109_OnTransition:
 	call_if_set FLAG_ABNORMAL_WEATHER_SUN, Common_EventScript_SetWeatherIntenseSun
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather	
+	call_if_eq VAR_ROUTE109_STATE, 1, Route109_EventScript_SetRocketsForBattle2
+	call_if_eq VAR_ROUTE109_STATE, 2, Route109_EventScript_SetRocketsForBattle3
 	end
+
+Route109_EventScript_SetRocketsForBattle2::
+	hideobjectat LOCALID_ROUTE109_JESSIE, MAP_ROUTE109
+	hideobjectat LOCALID_ROUTE109_JAMES, MAP_ROUTE109
+	setobjectxyperm LOCALID_ROUTE109_JESSIE, 29, 12
+	setobjectxyperm LOCALID_ROUTE109_JAMES, 27, 12
+	setobjectmovementtype LOCALID_ROUTE109_JESSIE, MOVEMENT_TYPE_FACE_LEFT
+	setobjectmovementtype LOCALID_ROUTE109_JAMES, MOVEMENT_TYPE_FACE_RIGHT
+	showobjectat LOCALID_ROUTE109_JESSIE, MAP_ROUTE109
+	showobjectat LOCALID_ROUTE109_JAMES, MAP_ROUTE109
+	return
+
+Route109_EventScript_SetRocketsForBattle3::
+	hideobjectat LOCALID_ROUTE109_JESSIE, MAP_ROUTE109
+	hideobjectat LOCALID_ROUTE109_JAMES, MAP_ROUTE109
+	setobjectxyperm LOCALID_ROUTE109_JESSIE, 15, 9
+	setobjectxyperm LOCALID_ROUTE109_JAMES, 17, 9
+	setobjectmovementtype LOCALID_ROUTE109_JESSIE, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectmovementtype LOCALID_ROUTE109_JAMES, MOVEMENT_TYPE_FACE_LEFT
+	showobjectat LOCALID_ROUTE109_JESSIE, MAP_ROUTE109
+	showobjectat LOCALID_ROUTE109_JAMES, MAP_ROUTE109
+	return
 
 Route109_EventScript_StartDepartForDewford::
 	call EventScript_BackupMrBrineyLocation
@@ -456,84 +476,228 @@ Route109_EventScript_Edmond::
 	msgbox Route109_Text_EdmondPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route109_EventScript_Ricky::
-	faceplayer
-	msgbox Route109_Text_RickyPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
-Route109_EventScript_RickyRegisterMatchCallAfterBattle::
-	special PlayerFaceTrainerAfterBattle
+Route109_EventScript_Rockets3::
+	lockall
+	playse SE_PIN
+	applymovement LOCALID_ROUTE109_JESSIE, Common_Movement_ExclamationMark
+	applymovement LOCALID_ROUTE109_JAMES, Common_Movement_ExclamationMark
 	waitmovement 0
-	msgbox Route109_Text_RickyRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_GRUNT_ROUTE109_2
-	release
-	end
-
-Route109_EventScript_RickyRematch::
-	trainerbattle_rematch TRAINER_GRUNT_ROUTE109_2, Route109_Text_RickyRematchIntro, Route109_Text_RickyRematchDefeated
-	msgbox Route109_Text_RickyRematchPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route109_EventScript_Grunt3Grunt4::
-lockall
-setvar VAR_0x8008, LOCALID_GRUNT3
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_TWINS, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-waitmovement 0
-msgbox Route109_Text_LolaIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_GRUNT4
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_TWINS, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-waitmovement 0
-msgbox Route109_Text_ChandlerIntro, MSGBOX_AUTOCLOSE
-goto Route109_EventScript_Grunt3Grunt4DoMultiBattle
-releaseall
-end
-
-Route109_EventScript_Grunt3Grunt4DoMultiBattle::
-playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_GRUNT_ROUTE109_3, Route109_Text_LolaDefeated, TRAINER_GRUNT_ROUTE109_4, Route109_Text_ChandlerDefeated, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route109_EventScript_Grunt3Grunt4Victory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
-
-Route109_EventScript_Grunt3Grunt4Victory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-waitmovement 0
-msgbox Route109_Text_LolaPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-waitmovement 0
-msgbox Route109_Text_ChandlerPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE109_STATE, 1
-end
-
-Route109_EventScript_Lola::
-	faceplayer
-	msgbox Route109_Text_LolaPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
-Route109_EventScript_LolaRegisterMatchCallAfterBattle::
-	special PlayerFaceTrainerAfterBattle
+	playbgm MUS_HG_ROCKET_TAKEOVER, FALSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement LOCALID_ROUTE109_JAMES, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	msgbox Route109_Text_LolaRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_GRUNT_ROUTE109_3
-	release
+	msgbox Route109_Text_James3Intro, MSGBOX_AUTOCLOSE
+	delay 16
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
+	applymovement LOCALID_ROUTE109_JAMES, Common_Movement_FaceUp
+	applymovement LOCALID_ROUTE109_JESSIE, Common_Movement_FaceUp
+	waitmovement 0
+	playse SE_BALL_BOUNCE_2
+	waitse
+	removeobject LOCALID_ROUTE109_WOBBUFFET
+	setobjectmovementtype LOCALID_ROUTE109_WOBBUFFET, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN
+	addobject LOCALID_ROUTE109_WOBBUFFET
+	setobjectmovementtype LOCALID_ROUTE109_WOBBUFFET, MOVEMENT_TYPE_INVISIBLE
+	applymovement LOCALID_ROUTE109_WOBBUFFET, Route109_Movement_WobuffetExitPokeball
+	playse SE_BALL_OPEN
+	waitse
+	waitmovement LOCALID_ROUTE109_WOBBUFFET
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_QuestionMark
+	waitmovement 0
+	msgbox Route109_Text_WobbuffetIntro, MSGBOX_AUTOCLOSE
+	delay 8
+	applymovement LOCALID_ROUTE109_JESSIE, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route109_Text_Jessie3Intro, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement LOCALID_ROUTE109_JAMES, Common_Movement_FaceLeft
+	applymovement LOCALID_ROUTE109_JESSIE, Common_Movement_FaceRight
+	waitmovement 0
+	goto Route109_EventScript_Rockets3DoMultiBattle
+	releaseall
 	end
 
-Route109_EventScript_LolaRematch::
-	trainerbattle_rematch TRAINER_GRUNT_ROUTE109_3, Route109_Text_LolaRematchIntro, Route109_Text_LolaRematchDefeated
-	msgbox Route109_Text_LolaRematchPostBattle, MSGBOX_AUTOCLOSE
+Route109_EventScript_Rockets3DoMultiBattle::
+	playbgm MUS_ROUTE110, TRUE
+	multi_2p_vs_1 TRAINER_ROCKETS_ROUTE109_3, Route109_Text_JessieJames3Defeated, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route109_EventScript_Rockets3Victory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+Route109_EventScript_Rockets3Victory::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement LOCALID_ROUTE109_JAMES, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox Route109_Text_James3PostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement LOCALID_ROUTE109_JESSIE, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox Route109_Text_Jessie3PostBattle, MSGBOX_AUTOCLOSE
+	delay 16
+	playse SE_FLEE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_FaceUp
+	applymovement LOCALID_ROUTE109_WOBBUFFET, Route109_Movement_WobuffetFlee3
+	applymovement LOCALID_ROUTE109_JESSIE, Route109_Movement_JessieFlee3
+	applymovement LOCALID_ROUTE109_JAMES, Route109_Movement_JamesFlee3
+	waitmovement LOCALID_ROUTE109_JESSIE
+	removeobject LOCALID_ROUTE109_JESSIE
+	removeobject LOCALID_ROUTE109_JAMES
+	setflag FLAG_HIDE_BEACH_GRUNTS
+	addvar VAR_ROUTE109_STATE, 1
+	releaseall
 	end
+
+Route109_Movement_WobuffetExitPokeball:
+	set_invisible
+	face_down
+	exit_pokeball
+	set_visible
+	step_end
+
+Route109_Movement_JamesFlee3:
+	delay_8
+	delay_8
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	step_end
+
+Route109_Movement_WobuffetFlee3:
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	step_end
+
+Route109_Movement_JessieFlee3:
+	delay_8
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_right
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	step_end
+
+Route109_EventScript_Rockets2::
+	lockall
+	playse SE_PIN
+	applymovement LOCALID_ROUTE109_JESSIE, Common_Movement_ExclamationMark
+	applymovement LOCALID_ROUTE109_JAMES, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_HG_ROCKET_TAKEOVER, FALSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement LOCALID_ROUTE109_JESSIE, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox Route109_Text_Jessie2Intro MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement LOCALID_ROUTE109_JAMES, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox Route109_Text_James2Intro, MSGBOX_AUTOCLOSE
+	goto Route109_EventScript_Rockets2DoMultiBattle
+	releaseall
+	end
+
+Route109_EventScript_Rockets2DoMultiBattle::
+	playbgm MUS_ROUTE110, TRUE
+	multi_2p_vs_1 TRAINER_ROCKETS_ROUTE109_2, Route109_Text_JessieJames2Defeated, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route109_EventScript_Rockets2Victory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+Route109_EventScript_Rockets2Victory::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement LOCALID_ROUTE109_JESSIE, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox Route109_Text_Jessie2PostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement LOCALID_ROUTE109_JAMES, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox Route109_Text_James2PostBattle, MSGBOX_AUTOCLOSE
+	delay 16
+	playse SE_FLEE
+	applymovement OBJ_EVENT_ID_PLAYER, Route109_Movement_WatchGruntsFlee2
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Route109_Movement_WatchGruntsFlee2
+	applymovement LOCALID_ROUTE109_JESSIE, Route109_Movement_JessieFlee2
+	applymovement LOCALID_ROUTE109_JAMES, Route109_Movement_JamesFlee2
+	waitmovement LOCALID_ROUTE109_JESSIE
+	setobjectxyperm LOCALID_ROUTE109_JESSIE, 15, 9
+	setobjectxyperm LOCALID_ROUTE109_JAMES, 17, 9
+	setobjectmovementtype LOCALID_ROUTE109_JESSIE, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectmovementtype LOCALID_ROUTE109_JAMES, MOVEMENT_TYPE_FACE_LEFT
+	addvar VAR_ROUTE109_STATE, 1
+	releaseall
+	end
+
+Route109_Movement_WatchGruntsFlee2:
+	face_up
+	delay_16
+	face_left
+	step_end
+
+Route109_Movement_JessieFlee2:
+	walk_faster_up
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_up
+	walk_faster_up
+	walk_faster_left
+	face_right
+	step_end
+
+Route109_Movement_JamesFlee2:
+	delay_8
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_up
+	walk_faster_left
+	walk_faster_up
+	walk_faster_up
+	walk_faster_right
+	face_left
+	step_end
 
 Route109_EventScript_Austina::
 	trainerbattle_single TRAINER_AUSTINA, Route109_Text_AustinaIntro, Route109_Text_AustinaDefeated
@@ -560,56 +724,98 @@ Route109_EventScript_Mel::
 	msgbox Route109_Text_MelPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route109_EventScript_Chandler::
-	faceplayer
-	msgbox Route109_Text_ChandlerPostBattle, MSGBOX_AUTOCLOSE
+Route109_EventScript_Rockets1::
+	lockall
+	playse SE_PIN
+	applymovement LOCALID_ROUTE109_JESSIE, Common_Movement_ExclamationMark
+	applymovement LOCALID_ROUTE109_JAMES, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_HG_ROCKET_TAKEOVER, FALSE
+	applymovement LOCALID_ROUTE109_JESSIE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route109_Text_Jessie1Intro MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement LOCALID_ROUTE109_JAMES, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox Route109_Text_James1Intro, MSGBOX_AUTOCLOSE
+	goto Route109_EventScript_Rockets1DoMultiBattle
+	releaseall
 	end
 
-Route109_EventScript_Grunt1Grunt2::
-lockall
-setvar VAR_0x8008, LOCALID_GRUNT1
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_AQUA, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-waitmovement 0
-msgbox Route109_Text_HaileyIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_GRUNT2
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_AQUA, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route109_Text_RickyIntro, MSGBOX_AUTOCLOSE
-goto Route109_EventScript_Grunt1Grunt2DoMultiBattle
-releaseall
-end
+Route109_EventScript_Rockets1DoMultiBattle::
+	playbgm MUS_ROUTE110, TRUE
+	multi_2p_vs_1 TRAINER_ROCKETS_ROUTE109_1, Route109_Text_JessieJames1Defeated, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route109_EventScript_Rockets1Victory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
-Route109_EventScript_Grunt1Grunt2DoMultiBattle::
-playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_GRUNT_ROUTE109_1, Route109_Text_HaileyDefeated, TRAINER_GRUNT_ROUTE109_2, Route109_Text_RickyDefeated, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route109_EventScript_Grunt1Grunt2Victory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
-
-Route109_EventScript_Grunt1Grunt2Victory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-waitmovement 0
-msgbox Route109_Text_HaileyPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route109_Text_RickyPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE109_STATE, 1
-end
-
-Route109_EventScript_Hailey::
-	faceplayer
-	msgbox Route109_Text_HaileyPostBattle, MSGBOX_AUTOCLOSE
+Route109_EventScript_Rockets1Victory::
+	applymovement LOCALID_ROUTE109_JESSIE, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox Route109_Text_Jessie1PostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement LOCALID_ROUTE109_JAMES, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox Route109_Text_James1PostBattle, MSGBOX_AUTOCLOSE
+	delay 16
+	playse SE_FLEE
+	applymovement OBJ_EVENT_ID_PLAYER, Route109_Movement_WatchGruntsFlee1
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Route109_Movement_WatchGruntsFlee1
+	applymovement LOCALID_ROUTE109_JESSIE, Route109_Movement_JessieFlee1
+	applymovement LOCALID_ROUTE109_JAMES, Route109_Movement_JamesFlee1
+	waitmovement LOCALID_ROUTE109_JAMES
+	setobjectxyperm LOCALID_ROUTE109_JESSIE, 29, 12
+	setobjectxyperm LOCALID_ROUTE109_JAMES, 27, 12
+	setobjectmovementtype LOCALID_ROUTE109_JESSIE, MOVEMENT_TYPE_FACE_LEFT
+	setobjectmovementtype LOCALID_ROUTE109_JAMES, MOVEMENT_TYPE_FACE_RIGHT
+	addvar VAR_ROUTE109_STATE, 1
+	releaseall
 	end
+
+Route109_Movement_WatchGruntsFlee1:
+	face_up
+	delay_16
+	face_right
+	step_end
+
+Route109_Movement_JessieFlee1:
+	walk_faster_right
+	walk_faster_up
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_right
+	face_left
+	step_end
+
+Route109_Movement_JamesFlee1:
+	walk_faster_up
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_left
+	face_right
+	step_end
 
 Route109_EventScript_Elijah::
 	trainerbattle_single TRAINER_ELIJAH, Route109_Text_ElijahIntro, Route109_Text_ElijahDefeated
@@ -696,7 +902,71 @@ Route109_Text_SeashoreHouseSign:
 
 Route109_Text_TrainerTipsSign:
 	.string "TRAINER TIPS\p"
-	.string "POKéMON at the same level may not\n"
-	.string "always have identical stats.\p"
-	.string "POKéMON raised by TRAINERS are said\n"
-	.string "to grow stronger than wild POKéMON.$"
+	.string "Thinking too hard about the layout\n"
+	.string "of the sunbeds is inadvisable!$"
+
+Route109_Text_Jessie1Intro:
+	.string "What do you want you little twerp?!$"
+
+Route109_Text_JessieJames1Defeated:
+	.string "Stop looking at us like that!$"
+
+Route109_Text_Jessie1PostBattle:
+	.string "Can't you let us do Team Aqua things\n"
+	.string "in peace?$"
+
+Route109_Text_James1Intro:
+	.string "We're Team Aqua, yes, that's right!\p"
+	.string "You'd better be prepared to\n"
+	.string "fight, fight, fight!$"
+
+Route109_Text_James1PostBattle:
+	.string "This isn't the last you've seen of\n"
+	.string "us, Team Aqua!$"
+
+Route109_Text_Jessie2Intro:
+	.string "To protect the beach from\n"
+	.string "devastation!\p"
+	.string "What's that? You say we look familiar?$"
+
+Route109_Text_JessieJames2Defeated:
+	.string "You're wrong, we're just a pair\n"
+	.string "of regular Team Aqua grunts!$"
+
+Route109_Text_Jessie2PostBattle:
+	.string "Why won't you leave us alone?!$"
+
+Route109_Text_James2Intro:
+	.string "Even if we were pretending, you would\n"
+	.string "never know.\p"
+	.string "We're masters of disguise!$"
+
+Route109_Text_James2PostBattle:
+	.string "Gah! We'll never find the boss if we\n"
+	.string "get rumbled!$"
+
+Route109_Text_James3Intro:
+	.string "Come on, I even dyed my hair blue just\n"
+	.string "to blend in!$"
+
+Route109_Text_James3PostBattle:
+	.string "We were so sure that the boss is\n"
+	.string "somewhere around here.\p"
+	.string "But we can't keep looking while you're\n"
+	.string "threatening to blow our cover!\p"
+	.string "Why don't you go bother Archie at the\n"
+	.string "Slateport City Oceanic Museum instead?$"
+
+Route109_Text_Jessie3Intro:
+	.string "Not now, Wobbuffet!$"
+
+Route109_Text_JessieJames3Defeated:
+	.string "We should surrender now.\n"
+	.string "We're not prepared to fight!$"
+
+Route109_Text_Jessie3PostBattle:
+	.string "It looks like Team Aqua's blasting\n"
+	.string "off again!$"
+
+Route109_Text_WobbuffetIntro:
+	.string "Waaaaah-buh, wobb-buh!$"

@@ -7688,7 +7688,7 @@ static u8 LoadFillColorPalette(u16 color, u16 paletteTag, struct Sprite *sprite)
 static void ObjectEventSetPokeballGfx(struct ObjectEvent *objEvent)
 {
     #if OW_FOLLOWERS_POKEBALLS
-    enum PokeBall ball = BALL_STRANGE;
+    enum PokeBall ball = BALL_ULTRA;
     if (objEvent->localId == OBJ_EVENT_ID_FOLLOWER)
     {
         struct Pokemon *mon = GetFirstLiveMon();
@@ -7714,9 +7714,16 @@ static void ObjectEventSetPokeballGfx(struct ObjectEvent *objEvent)
 
 bool8 MovementAction_ExitPokeball_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    enum Direction direction = gObjectEvents[gPlayerAvatar.objectEventId].facingDirection;
+    enum Direction direction = DIR_SOUTH; 
     u16 graphicsId = objectEvent->graphicsId;
+
+    if (objectEvent->localId == LOCALID_FOLLOWING_POKEMON)
+    {
+        direction = gObjectEvents[gPlayerAvatar.objectEventId].facingDirection;
+    }
+
     objectEvent->invisible = FALSE;
+
     if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH))
     {
         // If player is dashing, the Pokémon must come out faster

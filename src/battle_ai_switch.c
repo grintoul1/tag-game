@@ -1619,7 +1619,7 @@ bool32 ShouldSwitch(enum BattlerId battler)
     // The rest can prompt a switch to party member returned by GetMostSuitableMonToSwitchInto
     if (PartnerFindMonThatAbsorbsOpponentsMove(switchContext.battler))
         return TRUE;
-    if((gBattleMons[switchContext.battler].hp * 2) <= gBattleMons[switchContext.battler].maxHP)
+    if ((gBattleMons[switchContext.battler].hp * 2) <= gBattleMons[switchContext.battler].maxHP)
         return FALSE;
     if (ShouldSwitchIfWonderGuard(&switchContext))
         return TRUE;

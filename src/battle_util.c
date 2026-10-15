@@ -2669,6 +2669,7 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
         }
         else if (gStartingStatuses.tailwindPlayer || gStartingStatuses.tailwindPlayerTemporary)
         {
+            gCurrentMove = MOVE_TAILWIND;
             effect = SetStartingSideStatus(
                         SIDE_STATUS_TAILWIND,
                         B_SIDE_PLAYER,
@@ -2680,6 +2681,7 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
         }
         else if (gStartingStatuses.tailwindOpponent || gStartingStatuses.tailwindOpponentTemporary)
         {
+            gCurrentMove = MOVE_TAILWIND;
             effect = SetStartingSideStatus(
                         SIDE_STATUS_TAILWIND,
                         B_SIDE_OPPONENT,
@@ -2687,6 +2689,17 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
                         B_ANIM_TAILWIND,
                         &gSideTimers[B_SIDE_OPPONENT].tailwindTimer, gStartingStatuses.tailwindOpponent ? 0 : (B_TAILWIND_TURNS >= GEN_5 ? 4 : 3));
             gStartingStatuses.tailwindOpponentTemporary = gStartingStatuses.tailwindOpponent = FALSE;
+            return effect;
+        }
+        else if (gStartingStatuses.auroraVeilOpponent)
+        {
+            effect = SetStartingSideStatus(
+                        SIDE_STATUS_AURORA_VEIL,
+                        B_SIDE_OPPONENT,
+                        B_MSG_SET_AURORA_VEIL_OPPONENT,
+                        B_ANIM_AURORA_VEIL,
+                        &gSideTimers[B_SIDE_OPPONENT].auroraVeilTimer, 0);
+            gStartingStatuses.auroraVeilOpponent = FALSE;
             return effect;
         }
         else if (gStartingStatuses.rainbowPlayer || gStartingStatuses.rainbowPlayerTemporary)
@@ -11486,3 +11499,72 @@ bool32 IsWholeSideAlive(enum BattlerId sideBattler)
     }
     return TRUE;
 }
+
+static enum BattleWeather GetNextBattleWeatherGimmick(enum BattleWeather currentWeather)
+{
+    switch (currentWeather)
+    {
+    case BATTLE_WEATHER_SUN:
+        return BATTLE_WEATHER_HAIL;
+    case BATTLE_WEATHER_HAIL:
+        return BATTLE_WEATHER_RAIN;
+    case BATTLE_WEATHER_RAIN:
+        return BATTLE_WEATHER_SANDSTORM;
+    case BATTLE_WEATHER_SANDSTORM:
+        return BATTLE_WEATHER_SUN;
+    default:
+        return BATTLE_WEATHER_NONE;
+    }
+}
+
+enum WeatherFailure TryChangeBattleWeatherGimmick(void)
+{
+    enum BattleWeather currBattleWeather = GetBattleWeather(gBattleWeather);
+    enum BattleWeather nextBattleWeather = GetNextBattleWeatherGimmick(currBattleWeather);
+
+    gBattleWeather = gBattleWeatherInfo[nextBattleWeather].flag;
+    DebugPrintf("currBattleWeather %d, nextBattleWeather %d", currBattleWeather, nextBattleWeather);
+
+    gBattleStruct->weatherDuration = 5;
+    gBattleScripting.animArg1 = gBattleWeatherInfo[nextBattleWeather].animation;
+    gBattleCommunication[MULTISTRING_CHOOSER] = gBattleWeatherInfo[nextBattleWeather].moveStartMessage;
+    for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
+    {
+        gBattleMons[battler].volatiles.weatherAbilityDone = FALSE;
+        ResetParadoxWeatherStat(battler);
+    }
+    BattleScriptPushCursorAndCallback(BattleScript_OverworldSSWeatherStarts);
+    
+    return WEATHER_FAILURE_SUCCESS;
+}
+
+/*bool32 EndOrContinueWeather(void)
+{
+    enum BattleWeather currBattleWeather = GetBattleWeather(gBattleWeather);
+
+    if (currBattleWeather == BATTLE_WEATHER_NONE)
+        return FALSE;
+
+    if (gBattleStruct->weatherDuration > 0 && --gBattleStruct->weatherDuration == 0)
+    {
+        gBattleWeather = B_WEATHER_NONE;
+        for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
+        {
+            gBattleMons[battler].volatiles.weatherAbilityDone = FALSE;
+            ResetParadoxWeatherStat(battler);
+        }
+        gBattleCommunication[MULTISTRING_CHOOSER] = gBattleWeatherInfo[currBattleWeather].endMessage;
+        BattleScriptCall(BattleScript_WeatherFaded);
+        return TRUE;
+    }
+    else
+    {
+        gBattleCommunication[MULTISTRING_CHOOSER] = gBattleWeatherInfo[currBattleWeather].continuesMessage;
+        gBattleScripting.animArg1 = gBattleWeatherInfo[currBattleWeather].animation;
+        BattleScriptCall(BattleScript_WeatherContinues);
+        return TRUE;
+    }
+
+    return FALSE;
+}*/
+
