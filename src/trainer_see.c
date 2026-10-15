@@ -583,7 +583,7 @@ static enum ScriptType GetActiveObjectScriptType(struct ApproachingTrainer *appr
     }
 
     TrainerBattleParameter *temp = (TrainerBattleParameter *)(approachingObject->trainerScriptPtr + 1);
-    if (GetTrainerBattleType(temp->params.opponentA) == TRAINER_BATTLE_TYPE_DOUBLES)
+    /*if (GetTrainerBattleType(temp->params.opponentA) == TRAINER_BATTLE_TYPE_DOUBLES)
     {
         // player can't start double battle
         if (GetMonsStateToDoubles_2() != PLAYER_HAS_TWO_USABLE_MONS)
@@ -594,7 +594,7 @@ static enum ScriptType GetActiveObjectScriptType(struct ApproachingTrainer *appr
     else if (gObjectEvents[approachingObject->objectEventId].trainerType == TRAINER_TYPE_SINGLE_TRAINER)
     {
         return SINGLE_TRAINER_BATTLE_SCRIPT;
-    }
+    }*/
 
     return SINGLES_BATTLE_SCRIPT;
 }
