@@ -2124,7 +2124,7 @@ static void ResetForPokeStorage(void)
 static void InitStartingPosData(void)
 {
     ClearSavedCursorPos();
-    sInPartyMenu = (sStorage->boxOption == OPTION_DEPOSIT);
+    sInPartyMenu = (sStorage->boxOption == OPTION_DEPOSIT || sStorage->boxOption == OPTION_SELECT_MON);
     sDepositBoxId = 0;
 }
 
@@ -3015,7 +3015,7 @@ static void Task_ReleaseMon(u8 taskId)
         PrintMessage(MSG_RELEASE_POKE);
         ShowYesNoWindow(1);
         sStorage->state++;
-        // fallthrough
+        [[fallthrough]];
     case 1:
         switch (Menu_ProcessInputNoWrapClearOnChoose())
         {
@@ -3487,6 +3487,7 @@ static void Task_HandleBoxOptions(u8 taskId)
         if (IsMenuLoading())
             return;
         sStorage->state++;
+        [[fallthrough]];
     case 2:
         switch (HandleMenuInput())
         {
@@ -3768,6 +3769,8 @@ static void Task_OnCloseBoxPressed(u8 taskId)
                 }
                 sStorage->screenChangeType = SCREEN_CHANGE_EXIT_ELITE_FOUR;
                 SetPokeStorageTask(Task_ChangeScreen);
+                gSpecialVar_0x8004  = PARTY_MON_CANCEL;
+                gSpecialVar_Result  = FALSE;
             }
             break;
         }
@@ -3828,7 +3831,7 @@ static void Task_OnCloseBoxPressed(u8 taskId)
                 gPartiesCount[B_TRAINER_PLAYER] = CalculatePlayerPartyCount();
                 if (sStorage->boxOption == OPTION_SELECT_MON)
                 {
-                    gSpecialVar_0x8004 = PARTY_NOTHING_CHOSEN;
+                    gSpecialVar_0x8004 = PARTY_MON_CANCEL;
                     gSpecialVar_Result = FALSE;
                 }
                 sStorage->screenChangeType = SCREEN_CHANGE_EXIT_BOX;
@@ -5458,7 +5461,7 @@ static u16 TryLoadMonIconTiles(enum Species species, enum SpeciesIconType iconTy
     sStorage->numIconsPerSpecies[i]++;
     offset = 16 * i;
     species &= SPECIES_MASK;
-    CpuCopy32(GetMonIconTilesByIconType(species, iconType), (void *)(OBJ_VRAM0) + offset * TILE_SIZE_4BPP, 0x200);
+    RlFastUncomp(GetMonIconTilesByIconType(species, iconType), (void *)(OBJ_VRAM0) + offset * TILE_SIZE_4BPP, 0, 0x200);
 
     return offset;
 }
@@ -5626,6 +5629,7 @@ static bool8 ScrollToBox(void)
     case 0:
         LoadWallpaperGfx(sStorage->scrollToBoxId, sStorage->scrollDirection);
         sStorage->scrollState++;
+        [[fallthrough]];
     case 1:
         if (!WaitForWallpaperGfxLoad())
             return TRUE;
@@ -6146,10 +6150,10 @@ static struct Sprite *CreateChooseBoxArrows(u16 x, u16 y, u8 animId, u8 priority
 
 static void InitCursor(void)
 {
-    if (sStorage->boxOption != OPTION_DEPOSIT)
-        sCursorArea = CURSOR_AREA_IN_BOX;
-    else
+    if (sStorage->boxOption == OPTION_DEPOSIT || sStorage->boxOption == OPTION_SELECT_MON)
         sCursorArea = CURSOR_AREA_IN_PARTY;
+    else
+        sCursorArea = CURSOR_AREA_IN_BOX;
 
     sCursorPosition = 0;
     sIsMonBeingMoved = FALSE;
@@ -7239,7 +7243,7 @@ static void TryRefreshDisplayMon(void)
                 SetDisplayMonData(&gParties[B_TRAINER_PLAYER][sCursorPosition], MODE_PARTY);
                 break;
             }
-            // fallthrough
+            [[fallthrough]];
         case CURSOR_AREA_BUTTONS:
         case CURSOR_AREA_BOX_TITLE:
             SetDisplayMonData(NULL, MODE_MOVE);
@@ -8871,8 +8875,10 @@ static void MultiMove_SetIconToBg(u8 x, u8 y)
         const u8 *iconGfx = GetMonIconPtrIsEgg(species, personality, isEgg);
         u8 index = GetValidMonIconPalIndex(species) + 8;
 
+        RlFastUncomp(iconGfx, sStorage->itemIconBuffer, 0, 0x200);
+
         BlitBitmapRectToWindow4BitTo8Bit(sStorage->multiMoveWindowId,
-                                         iconGfx,
+                                         sStorage->itemIconBuffer,
                                          0,
                                          0,
                                          32,
@@ -9699,6 +9705,7 @@ static void SpriteCB_ItemIcon_ToHand(struct Sprite *sprite)
         sprite->data[4] = 21;
         sprite->data[5] = 0;
         sprite->sState++;
+        [[fallthrough]];
     case 1:
         sprite->data[1] -= sprite->data[3];
         sprite->data[2] -= sprite->data[4];
@@ -9728,6 +9735,7 @@ static void SpriteCB_ItemIcon_ToMon(struct Sprite *sprite)
         sprite->data[4] = 21;
         sprite->data[5] = 0;
         sprite->sState++;
+        [[fallthrough]];
     case 1:
         sprite->data[1] += sprite->data[3];
         sprite->data[2] += sprite->data[4];
@@ -9753,6 +9761,7 @@ static void SpriteCB_ItemIcon_SwapToHand(struct Sprite *sprite)
         sprite->data[4] = 21;
         sprite->data[5] = 0;
         sprite->sState++;
+        [[fallthrough]];
     case 1:
         sprite->data[1] -= sprite->data[3];
         sprite->data[2] -= sprite->data[4];
@@ -9780,6 +9789,7 @@ static void SpriteCB_ItemIcon_SwapToMon(struct Sprite *sprite)
         sprite->data[4] = 21;
         sprite->data[5] = 0;
         sprite->sState++;
+        [[fallthrough]];
     case 1:
         sprite->data[1] += sprite->data[3];
         sprite->data[2] += sprite->data[4];

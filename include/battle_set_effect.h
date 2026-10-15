@@ -13,12 +13,18 @@ struct SetEffect
 
     u16 primary:1;
     u16 certain:1;
-    u16 onSide:1;
     u16 bypassSheerForce:1;
+    u16 effectFailed:1;
+    u16 silentFailure:1;
+    u16 padding:1;
 };
 
 void SetMoveEffect(struct BattleCalcValues *cv, struct SetEffect *se);
 void SetMoveEffectHelper(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum MoveEffect moveEffect, const u8 *battleScript, enum SetMoveEffectFlags effectFlags);
+bool32 CanTransformBattler(enum BattlerId battlerAtk, enum BattlerId battlerDef);
+void TryTransformBattler(enum BattlerId battlerAtk, enum BattlerId battlerDef);
 u32 NumAffectedSpreadMoveTargets(void);
+bool32 IsAnyStatChanged(enum BattlerId battler, enum Ability ability);
+void BattleScriptPushAndSet(const u8 *currentScript, const u8 *effectScript);
 
 #endif // GUARD_BATTLE_SET_EFFECT_H

@@ -418,6 +418,8 @@ $(RAYQUAZAGFXDIR)/scene_4/rayquaza.4bpp: %.4bpp: %.png
 
 graphics/picture_frame/lobby.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 86 -Wnum_tiles
+$(TYPESGFXDIR)/tera/move_types.4bpp: $(types:%=$(TYPESGFXDIR)/tera/%.4bpp)
+	@cat $^ >$@
 
 $(ROULETTEGFXDIR)/roulette_tilt.4bpp: $(ROULETTEGFXDIR)/shroomish.4bpp \
                                       $(ROULETTEGFXDIR)/tailow.4bpp

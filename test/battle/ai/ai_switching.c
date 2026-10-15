@@ -572,7 +572,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Switchin move data is reset be
 
         gAiLogicData->resistBerryAffected[battlerAtk][battlerDef][moveIndex] = TRUE;
         gAiLogicData->moveLimitations[battlerAtk] |= 1u << moveIndex;
-        CalcBattlerAiMovesData(gAiLogicData, battlerAtk, battlerDef, AI_GetWeather(), gFieldStatuses);
+        CalcBattlerAiMovesData(gAiLogicData, battlerAtk, battlerDef, AI_GetWeather(), gFieldTimers.terrain);
 
         EXPECT_EQ(gAiLogicData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median, 0);
         EXPECT_EQ(gAiLogicData->effectiveness[battlerAtk][battlerDef][moveIndex], 0);
@@ -974,13 +974,13 @@ AI_SINGLE_BATTLE_TEST("Switch AI: AI will switch out if it can't deal damage to 
     GIVEN {
         ASSUME(GetSpeciesType(SPECIES_SHEDINJA, 0) == TYPE_BUG);
         ASSUME(GetSpeciesType(SPECIES_SHEDINJA, 1) == TYPE_GHOST);
-        ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 0) == ABILITY_WONDER_GUARD);
-        ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 1) == ABILITY_NONE);
-        //ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 2) == ABILITY_NONE);
+        ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 0) == ABILITY_WONDER_GUARD \
+                || GetSpeciesAbility(SPECIES_SHEDINJA, 1) == ABILITY_WONDER_GUARD \
+                || GetSpeciesAbility(SPECIES_SHEDINJA, 2) == ABILITY_WONDER_GUARD);
         ASSUME(GetMoveType(MOVE_SCRATCH) == TYPE_NORMAL);
         ASSUME(GetMoveType(MOVE_SHADOW_BALL) == TYPE_GHOST);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
-        PLAYER(SPECIES_SHEDINJA) { Moves(MOVE_SCRATCH); }
+        PLAYER(SPECIES_SHEDINJA) { Moves(MOVE_SCRATCH); Ability(ABILITY_WONDER_GUARD); }
         OPPONENT(SPECIES_ZIGZAGOON) { Moves(MOVE_SCRATCH); }
         OPPONENT(SPECIES_ZIGZAGOON) { Moves(MOVE_SHADOW_BALL); }
     } WHEN {
@@ -994,13 +994,13 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will switch out if it can't d
     GIVEN {
         ASSUME(GetSpeciesType(SPECIES_SHEDINJA, 0) == TYPE_BUG);
         ASSUME(GetSpeciesType(SPECIES_SHEDINJA, 1) == TYPE_GHOST);
-        ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 0) == ABILITY_WONDER_GUARD);
-        ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 1) == ABILITY_NONE);
-        //ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 2) == ABILITY_NONE);
+        ASSUME(GetSpeciesAbility(SPECIES_SHEDINJA, 0) == ABILITY_WONDER_GUARD \
+                || GetSpeciesAbility(SPECIES_SHEDINJA, 1) == ABILITY_WONDER_GUARD \
+                || GetSpeciesAbility(SPECIES_SHEDINJA, 2) == ABILITY_WONDER_GUARD);
         ASSUME(GetMoveType(MOVE_SCRATCH) == TYPE_NORMAL);
         ASSUME(GetMoveType(MOVE_SHADOW_BALL) == TYPE_GHOST);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING);
-        PLAYER(SPECIES_SHEDINJA) { Moves(MOVE_SCRATCH); }
+        PLAYER(SPECIES_SHEDINJA) { Moves(MOVE_SCRATCH); Ability(ABILITY_WONDER_GUARD); }
         OPPONENT(SPECIES_ZIGZAGOON) { Moves(MOVE_SCRATCH); }
         OPPONENT(SPECIES_ZIGZAGOON) { Moves(MOVE_SHADOW_BALL); }
     } WHEN {

@@ -2,6 +2,7 @@
 #include "battle.h"
 #include "battle_ai_util.h"
 #include "battle_hold_effects.h"
+#include "battle_set_effect.h"
 #include "battle_setup.h"
 #include "battle_util.h"
 #include "battle_controllers.h"
@@ -979,7 +980,7 @@ static bool32 HandleEndTurnYawn(enum BattlerId battler)
                 gLastUsedAbility = ABILITY_SWEET_VEIL;
                 gBattlerAbility = gBattleScripting.battler;
                 RecordAbilityBattle(gBattleScripting.battler, ABILITY_SWEET_VEIL);
-                BattleScriptCall(BattleScript_ImmunityProtectedRet);
+                BattleScriptCall(BattleScript_AbilityProtectedTarget);
             }
             else
             {
@@ -1468,8 +1469,8 @@ static bool32 TryEndTurnTrainerSlide(enum BattlerId battler)
          || (ShouldDoTrainerSlide(battler, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_SUPER_EFFECTIVE_HIT) != TRAINER_SLIDE_TARGET_NONE)
          || (ShouldDoTrainerSlide(battler, TRAINER_SLIDE_DEFENDER_TAKES_FIRST_STAB_MOVE) != TRAINER_SLIDE_TARGET_NONE)
          || (ShouldDoTrainerSlide(battler, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_STAB_MOVE) != TRAINER_SLIDE_TARGET_NONE)
-         || (ShouldDoTrainerSlide(battler, TRAINER_SLIDE_OPPONENT_MON_UNAFFECTED) != TRAINER_SLIDE_TARGET_NONE)
-         || (ShouldDoTrainerSlide(battler, TRAINER_SLIDE_SELF_MON_UNAFFECTED) != TRAINER_SLIDE_TARGET_NONE));
+         || (ShouldDoTrainerSlide(battler, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_INEFFECTIVE) != TRAINER_SLIDE_TARGET_NONE)
+         || (ShouldDoTrainerSlide(battler, TRAINER_SLIDE_DEFENDER_TAKES_FIRST_INEFFECTIVE) != TRAINER_SLIDE_TARGET_NONE));
 }
 
 static bool32 HandleEndTurnTrainerASlides(enum BattlerId battler)
@@ -1835,6 +1836,17 @@ static bool32 HandleEndTurnTopsyTurvyGimmick(enum BattlerId battler)
     
     gCurrentMove = MOVE_TOPSY_TURVY;
     gBattlerTarget = battler;
-    BattleScriptPushCursorAndCallback(BattleScript_EffectTopsyTurvyGimmick);
+    if (IsAnyStatChanged(battler, gBattleMons[battler].ability))
+
+    for (enum Stat stat = 0; stat < NUM_BATTLE_STATS; stat++)
+    {
+        if (gBattleMons[battler].statStages[stat] == DEFAULT_STAT_STAGE)
+            continue;
+        gBattleMons[battler].statStages[stat] = MAX_STAT_STAGE - gBattleMons[battler].statStages[stat] + MIN_STAT_STAGE;
+    }
+
+    PrepareStringBattle(STRINGID_TOPSYTURVYSWITCHEDSTATS, battler);
+    BattleScriptPushAndSet(gBattlescriptCurrInstr, BattleScript_WaitMessage);
+
     return TRUE;
 }

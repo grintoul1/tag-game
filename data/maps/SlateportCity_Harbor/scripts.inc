@@ -81,8 +81,7 @@ SlateportCity_Harbor_EventScript_AquaEscapeScene::
 	setflag FLAG_HIDE_ROUTE_110_TEAM_AQUA
 	call_if_eq VAR_0x8008, 0, SlateportCity_Harbor_EventScript_SternApproachPlayer0
 	call_if_eq VAR_0x8008, 1, SlateportCity_Harbor_EventScript_SternApproachPlayer1
-	call_if_eq VAR_0x8008, 2, SlateportCity_Harbor_EventScript_SternApproachPlayer
-	call_if_eq VAR_0x8008, 3, SlateportCity_Harbor_EventScript_SternApproachPlayer
+	call_if_between VAR_0x8008, 2, 3, SlateportCity_Harbor_EventScript_SternApproachPlayer
 	msgbox SlateportCity_Harbor_Text_CaptSternWhyStealMySubmarine, MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_PARTNER_EMMIE_STATE, 20

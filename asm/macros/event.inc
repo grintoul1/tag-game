@@ -2041,10 +2041,15 @@
 	trycompare goto_if, NOT_EQUAL, \a, \b, \c
 	.endm
 
-	.macro goto_if_between a:req, b:req, h:req, c @ BETWEEN
+	.macro goto_if_between a:req, l:req, h:req, c @ BETWEEN low (l) and high (h), inclusive
 	goto_if_gt \a, \h, 1f
-	trycompare goto_if, 4, \a, \b, \c
+	trycompare goto_if, 4, \a, \l, \c
 	1:
+	.endm
+
+	.macro goto_if_notbetween a:req, l:req, h:req, c @ NOT BETWEEN low (l) and high (h), inclusive
+	trycompare goto_if, 0, \a, \l, \c
+	trycompare goto_if, 2, \a, \h, \c
 	.endm
 
 	.macro call_if_unset flag:req, dest:req
@@ -2081,10 +2086,15 @@
 	trycompare call_if, NOT_EQUAL, \a, \b, \c
 	.endm
 
-	.macro call_if_between a:req, b:req, h:req, c @ BETWEEN
+	.macro call_if_between a:req, l:req, h:req, c @ BETWEEN low (l) and high (h), inclusive
 	goto_if_gt \a, \h, 1f
-	trycompare call_if, 4, \a, \b, \c
+	trycompare call_if, 4, \a, \l, \c
 	1:
+	.endm
+
+	.macro call_if_notbetween a:req, l:req, h:req, c @ NOT BETWEEN low (l) and high (h), inclusive
+	trycompare call_if, 0, \a, \l, \c
+	trycompare call_if, 2, \a, \h, \c
 	.endm
 
 	.macro vgoto_if_eq a:req, b, c
@@ -2720,7 +2730,7 @@
 	goto_if_eq VAR_RESULT, NO, \declineTradeJump
 	chooseboxmon SELECT_PC_MON_TRADE
 	waitstate
-	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, \declineTradeJump
+	goto_if_eq VAR_0x8004, PARTY_MON_CANCEL, \declineTradeJump
 	specialvar VAR_0x800B, GetTradeSpecies
 	goto_if_ne VAR_0x800B, VAR_0x8009, \wrongMonJump
 	special CreateInGameTradePokemon

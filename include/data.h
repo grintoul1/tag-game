@@ -224,6 +224,8 @@ extern const struct Trainer gBattlePartners[DIFFICULTY_COUNT][PARTNER_COUNT];
 
 extern const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT];
 
+extern const u16 gTrainerApproachMusicStyles[TRAINER_ENCOUNTER_MUSIC_COUNT];
+
 extern const struct EggData gEggDatas[EGG_ID_COUNT];
 
 // Follower text messages

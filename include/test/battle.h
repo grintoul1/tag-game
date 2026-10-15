@@ -1341,6 +1341,7 @@ struct StatChangeAssumption
     s8 accuracy;
     s8 evasion;
     bool8 self;
+    bool8 onSide;
 };
 
 void AssumeStatChange_(u32 sourceLine, u32 moveId, struct StatChangeAssumption asc);
