@@ -1313,7 +1313,7 @@ Common_Text_StevenSpeech:
 
 Common_EventScript_ResetEmmie::
 	destroyfollowernpc
-	setfollowernpc 7, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie
+	setfollowernpc 7, FNPC_ALL_NO_WHITEOUT, Common_EventScript_Emmie, PARTNER_EMMIE
 	delay 16
 	clearflag FLAG_HIDE_EMMIE_RESET
 	end

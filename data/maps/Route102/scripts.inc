@@ -69,17 +69,13 @@ msgbox Route102_Text_RickPostBattle, MSGBOX_AUTOCLOSE
 addvar VAR_ROUTE102_STATE, 1
 end
 
-Route102_Movement_CalvinRick_NotReady:
-	walk_right
-	step_end
-
 Route102_EventScript_Calvin::
-	faceplayer
+	trainerbattle_single TRAINER_CALVIN_1, Route102_Text_CalvinIntro, Route102_Text_CalvinDefeated
 	msgbox Route102_Text_CalvinPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route102_EventScript_Rick::
-	faceplayer
+	trainerbattle_single TRAINER_RICK, Route102_Text_RickIntro, Route102_Text_RickDefeated
 	msgbox Route102_Text_RickPostBattle, MSGBOX_AUTOCLOSE
 	end
 
