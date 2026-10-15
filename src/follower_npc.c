@@ -1166,6 +1166,14 @@ void SetFollowerNPCSprite(u32 spriteIndex)
     }
 }
 
+static void GetFirstThreeMonsForEmmieBattle(void)
+{
+    u32 i;
+    u32 firstEligible;
+
+    ClearSelectedPartyOrder();
+}
+
 static void ChooseFirstThreeEligibleMons(void)
 {
     u32 i;
@@ -1664,7 +1672,7 @@ void FollowerNPCFaceAfterLeaveMap(void)
 
 bool32 FollowerNPCIsBattlePartner(void)
 {
-    if (PlayerHasFollowerNPC() && (GetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER) == gPartnerTrainerId))
+    if (PlayerHasFollowerNPC() && GetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER))
         return TRUE;
 
     return FALSE;
@@ -1684,6 +1692,8 @@ void PrepareForFollowerNPCBattle(void)
     // Load the partner party if the NPC follower should participate.
     if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && FollowerNPCIsBattlePartner())
     {
+        gPartnerTrainerId = TRAINER_PARTNER(GetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER));
+        FillPartnerParty(gPartnerTrainerId);
         if (!AreMultiPartiesFullTeams())
         {
             SavePlayerParty();
@@ -1693,9 +1703,6 @@ void PrepareForFollowerNPCBattle(void)
             VarSet(VAR_0x8005, FRONTIER_DATA_SELECTED_MON_ORDER);
             CallFrontierUtilFunc();
         }
-        gPartnerTrainerId = TRAINER_PARTNER(GetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER));
-        DebugPrintf("Check2");
-        FillPartnerParty(gPartnerTrainerId);
     }
 }
 
