@@ -96,26 +96,8 @@ MauvilleCity_Gym_EventScript_WattsonPostBattle::
 	end
 
 MauvilleCity_Gym_EventScript_Wattson::
-	applymovement LOCALID_WATTSON, Common_Movement_FacePlayer
-	waitmovement 0
 	goto_if_set FLAG_BADGE03_GET, MauvilleCity_Gym_EventScript_WattsonPostBattle
-	lockall
-	@playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
-	msgbox MauvilleCity_Gym_Text_WattsonIntro, MSGBOX_AUTOCLOSE
-	goto MauvilleCity_Gym_EventScript_WattsonDoMultiBattle
-	playbgm MUS_RB_GYM, TRUE
-	releaseall
-	end
-
-MauvilleCity_Gym_EventScript_WattsonDoMultiBattle::
-	multi_2_vs_1 TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonDefeated, PARTNER_EMMIE
-	switch VAR_RESULT
-	case 1, MauvilleCity_Gym_EventScript_WattsonVictory
-	fadescreen FADE_TO_BLACK
-	special SetCB2WhiteOut
-	waitstate
-
-MauvilleCity_Gym_EventScript_WattsonVictory::
+	trainerbattle_single TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonIntro, MauvilleCity_Gym_Text_WattsonDefeat, MauvilleCity_Gym_EventScript_WattsonDefeated, NO_MUSIC
 	setvar VAR_LEVEL_CAP, 35
 	setvar VAR_PARTNER_EMMIE_STATE, 4
 	setrespawn HEAL_LOCATION_MAUVILLE_CITY
@@ -150,7 +132,6 @@ MauvilleCity_Gym_EventScript_WattsonDefeated::
 	closemessage
 	delay 30
 	setflag FLAG_ENABLE_WATTSON_MATCH_CALL
-	release
 	end
 
 MauvilleCity_Gym_EventScript_GiveShockWave2::
@@ -473,7 +454,7 @@ MauvilleCity_Gym_Text_WattsonIntro:
 	.string "Then, I, WATTSON, the LEADER of\n"
 	.string "MAUVILLE GYM, shall electrify you!$"
 
-MauvilleCity_Gym_Text_WattsonDefeated:
+MauvilleCity_Gym_Text_WattsonDefeat:
 	.string "Wahahahah!\n"
 	.string "Fine, I lost!\p"
 	.string "You ended up giving me a thrill!\n"
