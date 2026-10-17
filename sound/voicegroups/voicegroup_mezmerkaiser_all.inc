@@ -1,6 +1,5 @@
-@ Combined group: slot 0 is the SF2 drum kit; slots 1..127 are melodic programs 0..126.
-voice_group mezmerkaiser
-	voice_keysplit_all voicegroup_mezmerkaiser_drumset
+@ Combined group: slot 127 is the SF2 drum kit; slots 0..126 are melodic programs 0..126.
+voice_group mezmerkaiser_all
 	voice_keysplit voicegroup_mezmerkaiser_000_keysplit, keysplit_mezmerkaiser_000
 	voice_keysplit voicegroup_mezmerkaiser_001_keysplit, keysplit_mezmerkaiser_001
 	voice_keysplit voicegroup_mezmerkaiser_002_keysplit, keysplit_mezmerkaiser_002
@@ -128,3 +127,4 @@ voice_group mezmerkaiser
 	voice_keysplit voicegroup_mezmerkaiser_124_keysplit, keysplit_mezmerkaiser_124
 	voice_keysplit voicegroup_mezmerkaiser_125_keysplit, keysplit_mezmerkaiser_125
 	voice_keysplit voicegroup_mezmerkaiser_126_keysplit, keysplit_mezmerkaiser_126
+	voice_keysplit_all voicegroup_mezmerkaiser_drumset

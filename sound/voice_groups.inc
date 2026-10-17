@@ -383,5 +383,5 @@
 .include "sound/voicegroups/voicegroup371.inc"
 .include "sound/voicegroups/voicegroup372.inc"
 .include "sound/voicegroups/voicegroup373.inc"
-.include "sound/voicegroups/voicegroup_mezmerkaiser.inc"
+.include "sound/voicegroups/voicegroup_mezmerkaiser_all.inc"
 .include "sound/voicegroups/voicegroup_mezmerkaiser_melodic.inc"
