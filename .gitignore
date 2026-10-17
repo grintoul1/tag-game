@@ -70,3 +70,4 @@ tools/mgba/mgba-rom-test
 src/data/trainers.h
 .map_version
 midicon*
+.porydaw/
