@@ -28,46 +28,48 @@ Route102_EventScript_Boy::
 	msgbox Route102_Text_CatchWholeBunchOfPokemon, MSGBOX_NPC
 	end
 
+/*
 Route102_EventScript_CalvinRick::
-lockall
-setvar VAR_0x8008, LOCALID_CALVIN
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_MALE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route102_Text_CalvinIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_RICK
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_MALE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route102_Text_RickIntro, MSGBOX_AUTOCLOSE
-goto Route102_EventScript_CalvinRickDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_CALVIN
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MALE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route102_Text_CalvinIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_RICK
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MALE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route102_Text_RickIntro, MSGBOX_AUTOCLOSE
+	goto Route102_EventScript_CalvinRickDoMultiBattle
+	releaseall
+	end
 
 Route102_EventScript_CalvinRickDoMultiBattle::
-playbgm MUS_ROUTE101, TRUE
-multi_2p_vs_2 TRAINER_CALVIN_1, Route102_Text_CalvinDefeated, TRAINER_RICK, Route102_Text_RickDefeated, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route102_EventScript_CalvinRickVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE101, TRUE
+	multi_2p_vs_2 TRAINER_CALVIN_1, Route102_Text_CalvinDefeated, TRAINER_RICK, Route102_Text_RickDefeated, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route102_EventScript_CalvinRickVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route102_EventScript_CalvinRickVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route102_Text_CalvinPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route102_Text_RickPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE102_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route102_Text_CalvinPostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route102_Text_RickPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE102_STATE, 1
+	end
+*/
 
 Route102_EventScript_Calvin::
 	trainerbattle_single TRAINER_CALVIN_1, Route102_Text_CalvinIntro, Route102_Text_CalvinDefeated
@@ -79,54 +81,56 @@ Route102_EventScript_Rick::
 	msgbox Route102_Text_RickPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+/*
 Route102_EventScript_AllenTiana::
-lockall
-setvar VAR_0x8008, LOCALID_ALLEN
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_MALE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route102_Text_AllenIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_TIANA
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_GIRL, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route102_Text_TianaIntro, MSGBOX_AUTOCLOSE
-goto Route102_EventScript_AllenTianaDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_ALLEN
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MALE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route102_Text_AllenIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_TIANA
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_GIRL, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route102_Text_TianaIntro, MSGBOX_AUTOCLOSE
+	goto Route102_EventScript_AllenTianaDoMultiBattle
+	releaseall
+	end
 
 Route102_EventScript_AllenTianaDoMultiBattle::
-playbgm MUS_ROUTE101, TRUE
-multi_2p_vs_2 TRAINER_ALLEN, Route102_Text_AllenDefeated, TRAINER_TIANA, Route102_Text_TianaDefeated, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route102_EventScript_AllenTianaVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE101, TRUE
+	multi_2p_vs_2 TRAINER_ALLEN, Route102_Text_AllenDefeated, TRAINER_TIANA, Route102_Text_TianaDefeated, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route102_EventScript_AllenTianaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route102_EventScript_AllenTianaVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route102_Text_AllenPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route102_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE102_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route102_Text_AllenPostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route102_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE102_STATE, 1
+	end
+*/
 
 Route102_EventScript_Tiana::
-	faceplayer
+	trainerbattle_single TRAINER_TIANA, Route102_Text_TianaIntro, Route102_Text_TianaDefeated
 	msgbox Route102_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route102_EventScript_Allen::
-	faceplayer
+	trainerbattle_single TRAINER_ALLEN, Route102_Text_AllenIntro, Route102_Text_AllenDefeated
 	msgbox Route102_Text_AllenPostBattle, MSGBOX_AUTOCLOSE
 	end
 
