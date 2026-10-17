@@ -214,38 +214,40 @@ Route103_EventScript_Daisy::
 	msgbox Route103_Text_DaisyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+/*
 Route103_EventScript_AmyLiv::
-lockall
-setvar VAR_0x8008, LOCALID_AMY
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_TWINS, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route103_Text_AmyIntro, MSGBOX_AUTOCLOSE
-goto Route103_EventScript_AmyLivDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_AMY
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_TWINS, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route103_Text_AmyIntro, MSGBOX_AUTOCLOSE
+	goto Route103_EventScript_AmyLivDoMultiBattle
+	releaseall
+	end
 
 Route103_EventScript_AmyLivDoMultiBattle::
-playbgm MUS_ROUTE101, TRUE
-multi_2p_vs_1 TRAINER_AMY_AND_LIV_1, Route103_Text_AmyDefeated, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route103_EventScript_AmyLivVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE101, TRUE
+	multi_2p_vs_1 TRAINER_AMY_AND_LIV_1, Route103_Text_AmyDefeated, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route103_EventScript_AmyLivVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route103_EventScript_AmyLivVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route103_Text_AmyPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE103_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route103_Text_AmyPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE103_STATE, 1
+	end
+*/
 
 Route103_EventScript_Amy::
-	faceplayer
+	trainerbattle_double TRAINER_AMY_AND_LIV_1, Route103_Text_AmyIntro, Route103_Text_AmyDefeated, Route103_Text_AmyNotEnoughPokemon
 	msgbox Route103_Text_AmyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -261,7 +263,7 @@ Route103_EventScript_AmyRematch::
 	end
 
 Route103_EventScript_Liv::
-	faceplayer
+	trainerbattle_double TRAINER_AMY_AND_LIV_1, Route103_Text_LivIntro, Route103_Text_LivDefeated, Route103_Text_LivNotEnoughPokemon
 	msgbox Route103_Text_LivPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -276,56 +278,57 @@ Route103_EventScript_LivRematch::
 	msgbox Route103_Text_LivRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+/*
 Route103_EventScript_AndrewMiguel::
-lockall
-setvar VAR_0x8008, LOCALID_ANDREW
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_HIKER, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route103_Text_AndrewIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_MIGUEL
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_COOL, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route103_Text_MiguelIntro, MSGBOX_AUTOCLOSE
-goto Route103_EventScript_AndrewMiguelDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_ANDREW
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_HIKER, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route103_Text_AndrewIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_MIGUEL
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_COOL, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route103_Text_MiguelIntro, MSGBOX_AUTOCLOSE
+	goto Route103_EventScript_AndrewMiguelDoMultiBattle
+	releaseall
+	end
 
 Route103_EventScript_AndrewMiguelDoMultiBattle::
-playbgm MUS_ROUTE101, TRUE
-multi_2p_vs_2 TRAINER_ANDREW, Route103_Text_AndrewDefeated, TRAINER_MIGUEL_1, Route103_Text_MiguelDefeated, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route103_EventScript_AndrewMiguelVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE101, TRUE
+	multi_2p_vs_2 TRAINER_ANDREW, Route103_Text_AndrewDefeated, TRAINER_MIGUEL_1, Route103_Text_MiguelDefeated, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route103_EventScript_AndrewMiguelVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route103_EventScript_AndrewMiguelVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route103_Text_AndrewPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route103_Text_MiguelPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE103_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route103_Text_AndrewPostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route103_Text_MiguelPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE103_STATE, 1
+	end
+*/
 
 Route103_EventScript_Andrew::
-	faceplayer
+	trainerbattle_single TRAINER_ANDREW, Route103_Text_AndrewIntro, Route103_Text_AndrewDefeated
 	msgbox Route103_Text_AndrewPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route103_EventScript_Miguel::
-	faceplayer
+	trainerbattle_single TRAINER_MIGUEL_1, Route103_Text_MiguelIntro, Route103_Text_MiguelDefeated
 	msgbox Route103_Text_MiguelPostBattle, MSGBOX_DEFAULT
-	release
 	end
 
 Route103_EventScript_MiguelRegisterMatchCallAfterBattle::
@@ -341,54 +344,56 @@ Route103_EventScript_MiguelRematch::
 	msgbox Route103_Text_MiguelRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+/*
 Route103_EventScript_MarcosRhett::
-lockall
-setvar VAR_0x8008, LOCALID_MARCOS
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route103_Text_MarcosIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_RHETT
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route103_Text_RhettIntro, MSGBOX_AUTOCLOSE
-goto Route103_EventScript_MarcosRhettDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_MARCOS
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route103_Text_MarcosIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_RHETT
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route103_Text_RhettIntro, MSGBOX_AUTOCLOSE
+	goto Route103_EventScript_MarcosRhettDoMultiBattle
+	releaseall
+	end
 
 Route103_EventScript_MarcosRhettDoMultiBattle::
-playbgm MUS_ROUTE101, TRUE
-multi_2p_vs_2 TRAINER_MARCOS, Route103_Text_MarcosDefeated, TRAINER_RHETT, Route103_Text_RhettDefeated, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route103_EventScript_MarcosRhettVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE101, TRUE
+	multi_2p_vs_2 TRAINER_MARCOS, Route103_Text_MarcosDefeated, TRAINER_RHETT, Route103_Text_RhettDefeated, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route103_EventScript_MarcosRhettVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route103_EventScript_MarcosRhettVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route103_Text_MarcosPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route103_Text_RhettPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE103_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route103_Text_MarcosPostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route103_Text_RhettPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE103_STATE, 1
+	end
+*/
 
 Route103_EventScript_Marcos::
-	faceplayer
+	trainerbattle_single TRAINER_MARCOS, Route103_Text_MarcosIntro, Route103_Text_MarcosDefeated
 	msgbox Route103_Text_MarcosPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route103_EventScript_Rhett::
-	faceplayer
+	trainerbattle_single TRAINER_RHETT, Route103_Text_RhettIntro, Route103_Text_RhettDefeated
 	msgbox Route103_Text_RhettPostBattle, MSGBOX_AUTOCLOSE
 	end
 
