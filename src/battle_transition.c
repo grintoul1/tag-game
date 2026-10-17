@@ -8,6 +8,7 @@
 #include "field_camera.h"
 #include "field_effect.h"
 #include "field_weather.h"
+#include "follower_npc.h"
 #include "gpu_regs.h"
 #include "main.h"
 #include "malloc.h"
@@ -2864,7 +2865,12 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
     enum TrainerPicID trainerBPicId = TRAINER_PIC_NONE;
     if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && TRAINER_BATTLE_PARAM.opponentB != 0xFFFF)
         trainerBPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB);
+
+    if (FollowerNPCIsBattlePartner())
+        gPartnerTrainerId = TRAINER_PARTNER(GetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER));
+
     enum TrainerPicID partnerPicId = GetTrainerPicFromId(gPartnerTrainerId);
+    DebugPrintf("partner %d", gPartnerTrainerId);
     struct Coords16 mugshotCoordsA = GetTrainerFrontPicMugshotCoords(trainerAPicId);
     s16 opponentARotationScales = 0;
     s16 opponentBRotationScales = 0;
