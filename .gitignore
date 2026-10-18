@@ -71,3 +71,4 @@ src/data/trainers.h
 .map_version
 midicon*
 .porydaw/
+*.bak

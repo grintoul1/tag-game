@@ -1,48 +1,48 @@
 	.align 2
 voicegroup329:: @ HGSS main
-	voice_keysplit voicegroup_hg_piano_1, KeySplitTable35    @ piano
-	voice_keysplit voicegroup334, KeySplitTable36    @ piano 2
-	voice_keysplit voicegroup_hg_piano_3, KeySplitTable37    @ piano octave
-	voice_keysplit voicegroup336, KeySplitTable9     @ rhodes 1
-	voice_keysplit voicegroup337, KeySplitTable9     @ rhodes 2
-	voice_keysplit voicegroup338, KeySplitTable36    @ vibraphone
-	voice_keysplit voicegroup339, KeySplitTable38    @ marimba
-	voice_keysplit voicegroup340, KeySplitTable39    @ xylophone
-	voice_keysplit voicegroup341, KeySplitTable25    @ tubular bell
-	voice_keysplit voicegroup342, KeySplitTable36    @ glockenspiel
-	voice_keysplit voicegroup343, KeySplitTable38    @ music box
-	voice_keysplit voicegroup344, KeySplitTable40    @ drawbar organ
-	voice_keysplit voicegroup345, KeySplitTable40    @ jazz organ
-	voice_keysplit voicegroup346, KeySplitTable40    @ accordion
-	voice_keysplit voicegroup347, KeySplitTable41    @ nylon guitar
-	voice_keysplit voicegroup348, KeySplitTable41    @ martin guitar
-	voice_keysplit voicegroup349, KeySplitTable32    @ distortion guitar 1
-	voice_keysplit voicegroup350, KeySplitTable32    @ distortion guitar 2
-	voice_keysplit voicegroup351, KeySplitTable41    @ clean guitar
-	voice_keysplit voicegroup352, KeySplitTable42    @ upright bass
-	voice_keysplit voicegroup353, KeySplitTable43    @ fingered bass
+	voice_keysplit voicegroup_hg_piano_1, keysplit_hg_piano_1    @ piano
+	voice_keysplit voicegroup_hg_piano_2, keysplit_hg_piano_2    @ piano 2
+	voice_keysplit voicegroup_hg_piano_3, keysplit_hg_piano_3    @ piano octave
+	voice_keysplit voicegroup336, keysplit_hg_rhodes     @ rhodes 1
+	voice_keysplit voicegroup337, keysplit_hg_rhodes     @ rhodes 2
+	voice_keysplit voicegroup338, keysplit_hg_piano_2    @ vibraphone
+	voice_keysplit voicegroup339, keysplit_hg_marimba    @ marimba
+	voice_keysplit voicegroup340, keysplit_hg_trumpet    @ xylophone
+	voice_keysplit voicegroup341, keysplit_hg_tubular_bell    @ tubular bell
+	voice_keysplit voicegroup342, keysplit_hg_piano_2    @ glockenspiel
+	voice_keysplit voicegroup343, keysplit_hg_marimba    @ music box
+	voice_keysplit voicegroup344, keysplit_hg_organ    @ drawbar organ
+	voice_keysplit voicegroup345, keysplit_hg_organ    @ jazz organ
+	voice_keysplit voicegroup346, keysplit_hg_organ    @ accordion
+	voice_keysplit voicegroup347, keysplit_hg_nylon_guitar    @ nylon guitar
+	voice_keysplit voicegroup348, keysplit_hg_nylon_guitar    @ martin guitar
+	voice_keysplit voicegroup349, keysplit_hg_distortion_guitar    @ distortion guitar 1
+	voice_keysplit voicegroup350, keysplit_hg_distortion_guitar    @ distortion guitar 2
+	voice_keysplit voicegroup351, keysplit_hg_nylon_guitar    @ clean guitar
+	voice_keysplit voicegroup352, keysplit_hg_upright_bass    @ upright bass
+	voice_keysplit voicegroup353, keysplit_hg_fingered_bass    @ fingered bass
 	voice_directsound 60, 0, DirectSoundWaveData_dp_slapbass_c1_16, 255, 0, 255, 192
-	voice_keysplit voicegroup354, KeySplitTable44    @ synth bass
-	voice_keysplit voicegroup355, KeySplitTable45    @ strings
-	voice_keysplit voicegroup356, KeySplitTable46    @ violin
-	voice_keysplit voicegroup357, KeySplitTable47    @ cello
-	voice_keysplit voicegroup358, KeySplitTable48    @ pizzicato
-	voice_keysplit voicegroup359, KeySplitTable40    @ harp
-	voice_keysplit voicegroup360, KeySplitTable40    @ timpani
-	voice_keysplit voicegroup361, KeySplitTable39    @ trumpets
-	voice_keysplit voicegroup362, KeySplitTable47    @ trombones
-	voice_keysplit voicegroup363, KeySplitTable49    @ french horn solo
-	voice_keysplit voicegroup364, KeySplitTable50    @ french horns
-	voice_keysplit voicegroup365, KeySplitTable51    @ oboe
-	voice_keysplit voicegroup366, KeySplitTable52    @ clarinet
-	voice_keysplit voicegroup367, KeySplitTable53    @ flute
-	voice_keysplit voicegroup368, KeySplitTable54    @ bassoon
-	voice_keysplit voicegroup369, KeySplitTable55    @ orchestra hit
-	voice_keysplit voicegroup370, KeySplitTable38    @ square wave
+	voice_keysplit voicegroup354, keysplit_hg_synth_bass    @ synth bass
+	voice_keysplit voicegroup355, keysplit_hg_strings    @ strings
+	voice_keysplit voicegroup356, keysplit_hg_violin    @ violin
+	voice_keysplit voicegroup357, keysplit_hg_trombone    @ cello
+	voice_keysplit voicegroup358, keysplit_hg_pizzicato    @ pizzicato
+	voice_keysplit voicegroup359, keysplit_hg_organ    @ harp
+	voice_keysplit voicegroup360, keysplit_hg_organ    @ timpani
+	voice_keysplit voicegroup361, keysplit_hg_trumpet    @ trumpets
+	voice_keysplit voicegroup362, keysplit_hg_trombone    @ trombones
+	voice_keysplit voicegroup363, keysplit_hg_french_horn_solo    @ french horn solo
+	voice_keysplit voicegroup364, keysplit_hg_french_horns    @ french horns
+	voice_keysplit voicegroup365, keysplit_hg_oboe    @ oboe
+	voice_keysplit voicegroup366, keysplit_hg_clarinet    @ clarinet
+	voice_keysplit voicegroup367, keysplit_hg_flute    @ flute
+	voice_keysplit voicegroup368, keysplit_hg_bassoon    @ bassoon
+	voice_keysplit voicegroup369, keysplit_hg_orchestra_hit    @ orchestra hit
+	voice_keysplit voicegroup370, keysplit_hg_marimba    @ square wave
 	voice_keysplit_all voicegroup330				 @ drums
 	voice_keysplit_all voicegroup331				 @ taiko drums
 	voice_directsound 60, 0, DirectSoundWaveData_dp_woodbass_d3_16, 255, 251, 0, 171
-	voice_keysplit voicegroup371, KeySplitTable56    @ koto
+	voice_keysplit voicegroup371, keysplit_hg_koto    @ koto
 	voice_directsound 60, 0, DirectSoundWaveData_puresquare_50, 255, 242, 40, 211
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_wind, 67, 243, 155, 224
 	voice_directsound 60, 0, DirectSoundWaveData_dp_explosion, 67, 255, 0, 245
@@ -63,11 +63,11 @@ voicegroup329:: @ HGSS main
 @	voice_directsound 60, 0, DirectSoundWaveData_dp_orchhitmajor60, 255, 197, 255, 171						@ 60
 @	voice_directsound 60, 0, DirectSoundWaveData_dp_orchhitminor60, 255, 197, 255, 171						@ 61
 @	voice_keysplit_all voicegroup332				 @ synth kick+snare										@ 62
-@	voice_keysplit voicegroup316, KeySplitTable27    @ DPPt timpani											@ 63
+@	voice_keysplit voicegroup316, keysplit_dppt_timpani    @ DPPt timpani											@ 63
 @	voice_directsound 60, 0, DirectSoundWaveData_dp_synbass1_c2_16, 255, 42, 255, 192						@ 64
 @	voice_directsound 60, 0, DirectSoundWaveData_dp_synbass2_c1_16, 255, 0, 255, 220						@ 65
 @	voice_directsound 60, 0, DirectSoundWaveData_dp_sawtoothlead60, 255, 197, 255, 171						@ 66
-@	voice_keysplit voicegroup372, KeySplitTable57    @ shamisen												@ 67
+@	voice_keysplit voicegroup372, keysplit_hg_shamisen    @ shamisen												@ 67
 @	voice_directsound 60, 0, DirectSoundWaveData_hg_hyoshigi, 255, 0, 255, 171								@ 68
 @	voice_directsound 60, 0, DirectSoundWaveData_hg_kodaiko, 255, 0, 255, 171								@ 69
 @	voice_directsound 60, 0, DirectSoundWaveData_hg_tsuzumi, 255, 0, 255, 171								@ 70
@@ -80,7 +80,7 @@ voicegroup329:: @ HGSS main
 @	voice_directsound 60, 0, DirectSoundWaveData_dp_spearpillarwind60, 255, 0, 255, 32						@ 77
 @	voice_directsound 60, 0, DirectSoundWaveData_dp_altosax_c3_16, 255, 216, 252, 192						@ 78
 @	voice_directsound 60, 0, DirectSoundWaveData_dp_synthsnare, 255, 0, 255, 171							@ 79
-@	voice_keysplit voicegroup373, KeySplitTable58    @ piano (national park)								@ 80
+@	voice_keysplit voicegroup373, keysplit_hg_piano_national_park    @ piano (national park)								@ 80
 @	voice_directsound 60, 0, DirectSoundWaveData_dp_tom1_16, 255, 0, 255, 32								@ 81
-@	voice_keysplit voicegroup319, KeySplitTable29    @ dp trumpets (arceus)									@ 82
-@	voice_keysplit voicegroup320, KeySplitTable30    @ dp trombone (arceus)									@ 83
+@	voice_keysplit voicegroup319, keysplit_dp_trumpet    @ dp trumpets (arceus)									@ 82
+@	voice_keysplit voicegroup320, keysplit_dp_trombone    @ dp trombone (arceus)									@ 83

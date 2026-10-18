@@ -8,11 +8,11 @@ voicegroup330:: @
 	voice_directsound 60, 0, DirectSoundWaveData_dp_orchhitmajor60, 255, 197, 255, 171
 	voice_directsound 60, 0, DirectSoundWaveData_dp_orchhitminor60, 255, 197, 255, 171
 	voice_keysplit_all voicegroup332				 @ synth kick+snare
-	voice_keysplit voicegroup316, KeySplitTable27    @ DPPt timpani
+	voice_keysplit voicegroup316, keysplit_dppt_timpani    @ DPPt timpani
 	voice_directsound 60, 0, DirectSoundWaveData_dp_synbass1_c2_16, 255, 42, 255, 192
 	voice_directsound 60, 0, DirectSoundWaveData_dp_synbass2_c1_16, 255, 0, 255, 220
 	voice_directsound 60, 0, DirectSoundWaveData_dp_sawtoothlead60, 255, 197, 255, 171
-	voice_keysplit voicegroup372, KeySplitTable57    @ shamisen
+	voice_keysplit voicegroup372, keysplit_hg_shamisen    @ shamisen
 	voice_directsound 60, 0, DirectSoundWaveData_hg_hyoshigi, 255, 0, 255, 171
 	voice_directsound 60, 0, DirectSoundWaveData_hg_kodaiko, 255, 0, 255, 171
 	voice_directsound 60, 0, DirectSoundWaveData_hg_tsuzumi, 255, 0, 255, 171
@@ -25,10 +25,10 @@ voicegroup330:: @
 	voice_directsound 60, 0, DirectSoundWaveData_dp_spearpillarwind60, 255, 0, 255, 32
 	voice_directsound 60, 0, DirectSoundWaveData_dp_altosax_c3_16, 255, 216, 252, 192
 	voice_directsound 60, 0, DirectSoundWaveData_dp_synthsnare, 255, 0, 255, 171
-	voice_keysplit voicegroup373, KeySplitTable58    @ piano (national park)
+	voice_keysplit voicegroup373, keysplit_hg_piano_national_park    @ piano (national park)
 	voice_directsound 60, 0, DirectSoundWaveData_dp_tom1_16, 255, 0, 255, 32
-	voice_keysplit voicegroup319, KeySplitTable29    @ dp trumpets (arceus)
-	voice_keysplit voicegroup320, KeySplitTable30    @ dp trombone (arceus)
+	voice_keysplit voicegroup319, keysplit_dp_trumpet    @ dp trumpets (arceus)
+	voice_keysplit voicegroup320, keysplit_dp_trombone    @ dp trombone (arceus)
 	voice_directsound 60, 64, DirectSoundWaveData_dp_handclup1, 255, 0, 227, 171
 	voice_directsound 60, 64, DirectSoundWaveData_dp_sne2_loop, 255, 255, 191, 171
 	voice_directsound 48, 64, DirectSoundWaveData_dp_reverscyn_16, 2, 0, 227, 171

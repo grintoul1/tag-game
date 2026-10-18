@@ -10692,3 +10692,43 @@ DirectSoundWaveData_puresquare_37::
 .align 2
 DirectSoundWaveData_puresquare_50::
 	.incbin "sound/direct_sound_samples/puresquare_50.bin"
+
+@ Sabrina music
+@ Saw
+	.align 2
+DirectSoundWaveData_10e1984::
+	.incbin "sound/direct_sound_samples/10e1984.bin"
+
+	.align 2
+DirectSoundWaveData_10e5520::
+	.incbin "sound/direct_sound_samples/10e5520.bin"
+
+	.align 2
+DirectSoundWaveData_10e7d78::
+	.incbin "sound/direct_sound_samples/10e7d78.bin"
+
+	.align 2
+DirectSoundWaveData_109c55c::
+	.incbin "sound/direct_sound_samples/109c55c.bin"
+
+	.align 2
+DirectSoundWaveData_10a3f94::
+	.incbin "sound/direct_sound_samples/10a3f94.bin"
+
+@ Choir
+	.align 2
+DirectSoundWaveData_109eae4::
+	.incbin "sound/direct_sound_samples/109eae4.bin"
+
+@ Marimba
+	.align 2
+DirectSoundWaveData_1039410::
+	.incbin "sound/direct_sound_samples/1039410.bin"
+
+	.align 2
+DirectSoundWaveData_1038e48::
+	.incbin "sound/direct_sound_samples/1038e48.bin"
+
+	.align 2
+DirectSoundWaveData_1038ee8::
+	.incbin "sound/direct_sound_samples/1038ee8.bin"
