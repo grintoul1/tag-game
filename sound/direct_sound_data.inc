@@ -10732,3 +10732,42 @@ DirectSoundWaveData_1038e48::
 	.align 2
 DirectSoundWaveData_1038ee8::
 	.incbin "sound/direct_sound_samples/1038ee8.bin"
+
+@ Square wave
+	.align 2
+DirectSoundWaveData_10d6ea4::
+	.incbin "sound/direct_sound_samples/10d6ea4.bin"
+
+	.align 2
+DirectSoundWaveData_10d7aec::
+	.incbin "sound/direct_sound_samples/10d7aec.bin"
+
+	.align 2
+DirectSoundWaveData_10cda0c::
+	.incbin "sound/direct_sound_samples/10cda0c.bin"
+
+@ Sawtooth wave
+	.align 2
+DirectSoundWaveData_10d8528::
+	.incbin "sound/direct_sound_samples/10d8528.bin"
+
+	.align 2
+DirectSoundWaveData_10d9cc0::
+	.incbin "sound/direct_sound_samples/10d9cc0.bin"
+
+	.align 2
+DirectSoundWaveData_10dbba8::
+	.incbin "sound/direct_sound_samples/10dbba8.bin"
+
+	.align 2
+DirectSoundWaveData_10dd938::
+	.incbin "sound/direct_sound_samples/10dd938.bin"
+
+	.align 2
+DirectSoundWaveData_10df474::
+	.incbin "sound/direct_sound_samples/10df474.bin"
+
+	.align 2
+DirectSoundWaveData_10e0f2c::
+	.incbin "sound/direct_sound_samples/10e0f2c.bin"
+

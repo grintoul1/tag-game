@@ -1,85 +1,85 @@
 @ Combined group: slot 127 is the SF2 drum kit; slots 0..126 are melodic programs 0..126.
 voice_group mezmerkaiser_all
-	voice_keysplit voicegroup_mezmerkaiser_000_keysplit, keysplit_mezmerkaiser_000
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_190_piano_2_0, 255, 0, 255, 127
 	voice_keysplit voicegroup_mezmerkaiser_001_keysplit, keysplit_mezmerkaiser_001
-	voice_keysplit voicegroup_mezmerkaiser_002_keysplit, keysplit_mezmerkaiser_002
-	voice_keysplit voicegroup_mezmerkaiser_003_keysplit, keysplit_mezmerkaiser_003
-	voice_keysplit voicegroup_mezmerkaiser_004_keysplit, keysplit_mezmerkaiser_004
-	voice_keysplit voicegroup_mezmerkaiser_005_keysplit, keysplit_mezmerkaiser_005
-	voice_keysplit voicegroup_mezmerkaiser_006_keysplit, keysplit_mezmerkaiser_006
+	voice_directsound 84, 0, DirectSoundWaveData_mezmerkaiser_173_e_piano, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_261_pb_honky_tonk_piano, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_075_e_piano_2, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_221_e_piano_3, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 6
 	voice_keysplit voicegroup_mezmerkaiser_007_keysplit, keysplit_mezmerkaiser_007
-	voice_keysplit voicegroup_mezmerkaiser_008_keysplit, keysplit_mezmerkaiser_008
-	voice_keysplit voicegroup_mezmerkaiser_009_keysplit, keysplit_mezmerkaiser_009
-	voice_keysplit voicegroup_mezmerkaiser_010_keysplit, keysplit_mezmerkaiser_010
-	voice_keysplit voicegroup_mezmerkaiser_011_keysplit, keysplit_mezmerkaiser_011
-	voice_keysplit voicegroup_mezmerkaiser_012_keysplit, keysplit_mezmerkaiser_012
-	voice_keysplit voicegroup_mezmerkaiser_013_keysplit, keysplit_mezmerkaiser_013
-	voice_keysplit voicegroup_mezmerkaiser_014_keysplit, keysplit_mezmerkaiser_014
-	voice_keysplit voicegroup_mezmerkaiser_015_keysplit, keysplit_mezmerkaiser_015
-	voice_keysplit voicegroup_mezmerkaiser_016_keysplit, keysplit_mezmerkaiser_016
-	voice_keysplit voicegroup_mezmerkaiser_017_keysplit, keysplit_mezmerkaiser_017
-	voice_keysplit voicegroup_mezmerkaiser_018_keysplit, keysplit_mezmerkaiser_018
-	voice_keysplit voicegroup_mezmerkaiser_019_keysplit, keysplit_mezmerkaiser_019
-	voice_keysplit voicegroup_mezmerkaiser_020_keysplit, keysplit_mezmerkaiser_020
-	voice_keysplit voicegroup_mezmerkaiser_021_keysplit, keysplit_mezmerkaiser_021
-	voice_keysplit voicegroup_mezmerkaiser_022_keysplit, keysplit_mezmerkaiser_022
-	voice_keysplit voicegroup_mezmerkaiser_023_keysplit, keysplit_mezmerkaiser_023
-	voice_keysplit voicegroup_mezmerkaiser_024_keysplit, keysplit_mezmerkaiser_024
-	voice_keysplit voicegroup_mezmerkaiser_025_keysplit, keysplit_mezmerkaiser_025
-	voice_keysplit voicegroup_mezmerkaiser_026_keysplit, keysplit_mezmerkaiser_026
-	voice_keysplit voicegroup_mezmerkaiser_027_keysplit, keysplit_mezmerkaiser_027
-	voice_keysplit voicegroup_mezmerkaiser_028_keysplit, keysplit_mezmerkaiser_028
-	voice_keysplit voicegroup_mezmerkaiser_029_keysplit, keysplit_mezmerkaiser_029
-	voice_keysplit voicegroup_mezmerkaiser_030_keysplit, keysplit_mezmerkaiser_030
-	voice_keysplit voicegroup_mezmerkaiser_031_keysplit, keysplit_mezmerkaiser_031
-	voice_keysplit voicegroup_mezmerkaiser_032_keysplit, keysplit_mezmerkaiser_032
-	voice_keysplit voicegroup_mezmerkaiser_033_keysplit, keysplit_mezmerkaiser_033
-	voice_keysplit voicegroup_mezmerkaiser_034_keysplit, keysplit_mezmerkaiser_034
-	voice_keysplit voicegroup_mezmerkaiser_035_keysplit, keysplit_mezmerkaiser_035
-	voice_keysplit voicegroup_mezmerkaiser_036_keysplit, keysplit_mezmerkaiser_036
-	voice_keysplit voicegroup_mezmerkaiser_037_keysplit, keysplit_mezmerkaiser_037
-	voice_keysplit voicegroup_mezmerkaiser_038_keysplit, keysplit_mezmerkaiser_038
-	voice_keysplit voicegroup_mezmerkaiser_039_keysplit, keysplit_mezmerkaiser_039
-	voice_keysplit voicegroup_mezmerkaiser_040_keysplit, keysplit_mezmerkaiser_040
-	voice_keysplit voicegroup_mezmerkaiser_041_keysplit, keysplit_mezmerkaiser_041
-	voice_keysplit voicegroup_mezmerkaiser_042_keysplit, keysplit_mezmerkaiser_042
-	voice_keysplit voicegroup_mezmerkaiser_043_keysplit, keysplit_mezmerkaiser_043
-	voice_keysplit voicegroup_mezmerkaiser_044_keysplit, keysplit_mezmerkaiser_044
-	voice_keysplit voicegroup_mezmerkaiser_045_keysplit, keysplit_mezmerkaiser_045
-	voice_keysplit voicegroup_mezmerkaiser_046_keysplit, keysplit_mezmerkaiser_046
-	voice_keysplit voicegroup_mezmerkaiser_047_keysplit, keysplit_mezmerkaiser_047
-	voice_keysplit voicegroup_mezmerkaiser_048_keysplit, keysplit_mezmerkaiser_048
+	voice_directsound 84, 0, DirectSoundWaveData_mezmerkaiser_225_pb_celesta, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 9
+	voice_directsound 84, 0, DirectSoundWaveData_mezmerkaiser_022_glockenspiel, 255, 0, 255, 127
+	voice_directsound 73, 0, DirectSoundWaveData_mezmerkaiser_232_pb_vibraphone, 255, 0, 255, 127
+	voice_directsound 84, 0, DirectSoundWaveData_mezmerkaiser_023_marimba, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 13
+	voice_directsound 72, 0, DirectSoundWaveData_mezmerkaiser_024_tubular_bell, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 15
+	voice_directsound 58, 0, DirectSoundWaveData_mezmerkaiser_272_pb_drawbar_organ, 255, 0, 255, 127
+	voice_directsound 72, 0, DirectSoundWaveData_mezmerkaiser_095_percussive_organ, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 18
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_071_pipe_organ, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 20
+	voice_directsound 72, 0, DirectSoundWaveData_mezmerkaiser_074_accordion, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 22
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 23
+	voice_directsound 72, 0, DirectSoundWaveData_mezmerkaiser_068_nylon_guitar, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 25
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 26
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 27
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 28
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_066_overdriven_guitar, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_076_distortion_guitar, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_183_guitar_harmonics, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 32
+	voice_directsound 36, 0, DirectSoundWaveData_mezmerkaiser_080_e_finger_bass, 255, 0, 255, 127
+	voice_directsound 70, 0, DirectSoundWaveData_mezmerkaiser_230_pb_picked_bass, 255, 0, 255, 127
+	voice_directsound 36, 0, DirectSoundWaveData_mezmerkaiser_073_fretless_bass, 255, 0, 255, 127
+	voice_directsound 39, 0, DirectSoundWaveData_mezmerkaiser_067_slap_bass, 255, 0, 255, 127
+	voice_directsound 48, 0, DirectSoundWaveData_mezmerkaiser_247_pb_slap_bass, 255, 0, 255, 127
+	voice_directsound 51, 0, DirectSoundWaveData_mezmerkaiser_087_synth_bass, 255, 0, 255, 127
+	voice_directsound 51, 0, DirectSoundWaveData_mezmerkaiser_081_synth_bass_2, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 40
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 41
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 42
+	voice_directsound 55, 0, DirectSoundWaveData_mezmerkaiser_271_pb_contrabass, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 44
+	voice_directsound 72, 0, DirectSoundWaveData_mezmerkaiser_094_pizzicato_strings, 255, 0, 255, 127
+	voice_directsound 84, 0, DirectSoundWaveData_mezmerkaiser_025_harp, 255, 0, 255, 127
+	voice_directsound 48, 0, DirectSoundWaveData_mezmerkaiser_242_timpani, 255, 0, 255, 127
+	voice_keysplit voicegroup_strings_keysplit, keysplit_strings
 	voice_keysplit voicegroup_mezmerkaiser_049_keysplit, keysplit_mezmerkaiser_049
-	voice_keysplit voicegroup_mezmerkaiser_050_keysplit, keysplit_mezmerkaiser_050
-	voice_keysplit voicegroup_mezmerkaiser_051_keysplit, keysplit_mezmerkaiser_051
-	voice_keysplit voicegroup_mezmerkaiser_052_keysplit, keysplit_mezmerkaiser_052
-	voice_keysplit voicegroup_mezmerkaiser_053_keysplit, keysplit_mezmerkaiser_053
-	voice_keysplit voicegroup_mezmerkaiser_054_keysplit, keysplit_mezmerkaiser_054
-	voice_keysplit voicegroup_mezmerkaiser_055_keysplit, keysplit_mezmerkaiser_055
-	voice_keysplit voicegroup_mezmerkaiser_056_keysplit, keysplit_mezmerkaiser_056
-	voice_keysplit voicegroup_mezmerkaiser_057_keysplit, keysplit_mezmerkaiser_057
-	voice_keysplit voicegroup_mezmerkaiser_058_keysplit, keysplit_mezmerkaiser_058
-	voice_keysplit voicegroup_mezmerkaiser_059_keysplit, keysplit_mezmerkaiser_059
-	voice_keysplit voicegroup_mezmerkaiser_060_keysplit, keysplit_mezmerkaiser_060
-	voice_keysplit voicegroup_mezmerkaiser_061_keysplit, keysplit_mezmerkaiser_061
-	voice_keysplit voicegroup_mezmerkaiser_062_keysplit, keysplit_mezmerkaiser_062
-	voice_keysplit voicegroup_mezmerkaiser_063_keysplit, keysplit_mezmerkaiser_063
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 50
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 51
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_077_voice_aahs, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_082_voice_oohs, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 54
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_437_orchestra_hitl, 255, 0, 255, 127
+	voice_keysplit voicegroup_trumpet_keysplit, keysplit_trumpet
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 57
+	voice_keysplit voicegroup_tuba_keysplit, keysplit_tuba
+	voice_directsound 72, 0, DirectSoundWaveData_mezmerkaiser_226_pb_muted_trumpet, 255, 0, 255, 127
+	voice_keysplit voicegroup_french_horn_keysplit, keysplit_french_horn
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 61
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 62
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 63
 	voice_keysplit voicegroup_mezmerkaiser_064_keysplit, keysplit_mezmerkaiser_064
-	voice_keysplit voicegroup_mezmerkaiser_065_keysplit, keysplit_mezmerkaiser_065
-	voice_keysplit voicegroup_mezmerkaiser_066_keysplit, keysplit_mezmerkaiser_066
-	voice_keysplit voicegroup_mezmerkaiser_067_keysplit, keysplit_mezmerkaiser_067
-	voice_keysplit voicegroup_mezmerkaiser_068_keysplit, keysplit_mezmerkaiser_068
-	voice_keysplit voicegroup_mezmerkaiser_069_keysplit, keysplit_mezmerkaiser_069
-	voice_keysplit voicegroup_mezmerkaiser_070_keysplit, keysplit_mezmerkaiser_070
-	voice_keysplit voicegroup_mezmerkaiser_071_keysplit, keysplit_mezmerkaiser_071
-	voice_keysplit voicegroup_mezmerkaiser_072_keysplit, keysplit_mezmerkaiser_072
-	voice_keysplit voicegroup_mezmerkaiser_073_keysplit, keysplit_mezmerkaiser_073
-	voice_keysplit voicegroup_mezmerkaiser_074_keysplit, keysplit_mezmerkaiser_074
-	voice_keysplit voicegroup_mezmerkaiser_075_keysplit, keysplit_mezmerkaiser_075
-	voice_keysplit voicegroup_mezmerkaiser_076_keysplit, keysplit_mezmerkaiser_076
-	voice_keysplit voicegroup_mezmerkaiser_077_keysplit, keysplit_mezmerkaiser_077
-	voice_keysplit voicegroup_mezmerkaiser_078_keysplit, keysplit_mezmerkaiser_078
-	voice_keysplit voicegroup_mezmerkaiser_079_keysplit, keysplit_mezmerkaiser_079
+	voice_directsound 65, 0, DirectSoundWaveData_mezmerkaiser_268_pb_saxophone, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 66
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 67
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_035_oboe, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 69
+	voice_keysplit voicegroup368, keysplit_hg_bassoon    @ bassoon
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_036_clarinet_2, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 72
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_037_flute, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 74
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 75
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 76
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_184_shakuhachi, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_079_whistle, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_874_oriental_flute, 255, 0, 255, 127
 	voice_keysplit voicegroup_mezmerkaiser_080_keysplit, keysplit_mezmerkaiser_080
 	voice_keysplit voicegroup_mezmerkaiser_081_keysplit, keysplit_mezmerkaiser_081
 	voice_keysplit voicegroup_mezmerkaiser_082_keysplit, keysplit_mezmerkaiser_082

@@ -813,3 +813,13 @@ keysplit uvg_marimba, 0
     split 3, 99
     split 4, 103
     split 5, 128
+
+keysplit square_wave, 0
+    split 0, 49
+    split 1, 62
+    split 2, 79
+    split 3, 82
+    split 4, 91
+    split 5, 96
+    split 6, 103
+    split 7, 128
