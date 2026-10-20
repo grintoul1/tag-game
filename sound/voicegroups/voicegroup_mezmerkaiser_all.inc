@@ -71,7 +71,7 @@ voice_group mezmerkaiser_all
 	voice_directsound 60, 0, DirectSoundWaveData_sd90_classical_oboe, 255, 165, 154, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 69
 	voice_keysplit voicegroup368, keysplit_hg_bassoon    @ bassoon
-	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_036_clarinet_2, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_dp_sy_clarinet_c3_16, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 72
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_flute, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 74

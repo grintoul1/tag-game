@@ -10816,3 +10816,7 @@ DirectSoundWaveData_104cb60::
 	.align 2
 DirectSoundWaveData_104cfb4::
 	.incbin "sound/direct_sound_samples/104cfb4.bin"
+
+	.align 2
+DirectSoundWaveData_dp_sy_clarinet_c3_16::
+	.incbin "sound/direct_sound_samples/dp_sy_clarinet_c3_16.bin"
