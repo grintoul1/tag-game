@@ -12,7 +12,7 @@ voicegroup_gs_vs_kantonian_sabrina::
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_keysplit voicegroup_gs_vs_kantonian_sabrina_marimba, keysplit_uvg_marimba
+	voice_directsound 73, 0, DirectSoundWaveData_mezmerkaiser_232_pb_vibraphone, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0

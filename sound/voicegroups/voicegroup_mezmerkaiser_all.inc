@@ -1,7 +1,7 @@
 @ Combined group: slot 127 is the SF2 drum kit; slots 0..126 are melodic programs 0..126.
 voice_group mezmerkaiser_all
+	voice_keysplit voicegroup_piano_keysplit, keysplit_piano
 	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_190_piano_2_0, 255, 0, 255, 127
-	voice_keysplit voicegroup_mezmerkaiser_001_keysplit, keysplit_mezmerkaiser_001
 	voice_directsound 84, 0, DirectSoundWaveData_mezmerkaiser_173_e_piano, 255, 0, 255, 127
 	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_261_pb_honky_tonk_piano, 255, 0, 255, 127
 	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_075_e_piano_2, 255, 0, 255, 127
@@ -10,13 +10,13 @@ voice_group mezmerkaiser_all
 	voice_keysplit voicegroup_mezmerkaiser_007_keysplit, keysplit_mezmerkaiser_007
 	voice_directsound 84, 0, DirectSoundWaveData_mezmerkaiser_225_pb_celesta, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 9
-	voice_directsound 84, 0, DirectSoundWaveData_mezmerkaiser_022_glockenspiel, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_glockenspiel, 255, 165, 51, 235
 	voice_directsound 73, 0, DirectSoundWaveData_mezmerkaiser_232_pb_vibraphone, 255, 0, 255, 127
 	voice_directsound 84, 0, DirectSoundWaveData_mezmerkaiser_023_marimba, 255, 0, 255, 127
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 13
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_xylophone, 255, 235, 0, 204
 	voice_directsound 72, 0, DirectSoundWaveData_mezmerkaiser_024_tubular_bell, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 15
-	voice_directsound 58, 0, DirectSoundWaveData_mezmerkaiser_272_pb_drawbar_organ, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_organ2, 255, 0, 255, 127
 	voice_directsound 72, 0, DirectSoundWaveData_mezmerkaiser_095_percussive_organ, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 18
 	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_071_pipe_organ, 255, 0, 255, 127
@@ -24,21 +24,21 @@ voice_group mezmerkaiser_all
 	voice_directsound 72, 0, DirectSoundWaveData_mezmerkaiser_074_accordion, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 22
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 23
-	voice_keysplit voicegroup_nylon_guitar, KeySplitTableNylonGuitar
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_nylon_str_guitar, 255, 249, 25, 76
 	voice_keysplit voicegroup_steel_guitar, KeySplitTableSteelGuitar
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 26
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 27
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 28
 	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_066_overdriven_guitar, 255, 0, 255, 127
 	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_076_distortion_guitar, 255, 0, 255, 127
-	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_183_guitar_harmonics, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_fretless_bass, 255, 253, 0, 149
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 32
 	voice_directsound 36, 0, DirectSoundWaveData_mezmerkaiser_080_e_finger_bass, 255, 0, 255, 127
 	voice_directsound 70, 0, DirectSoundWaveData_mezmerkaiser_230_pb_picked_bass, 255, 0, 255, 127
 	voice_directsound 36, 0, DirectSoundWaveData_mezmerkaiser_073_fretless_bass, 255, 0, 255, 127
-	voice_directsound 39, 0, DirectSoundWaveData_mezmerkaiser_067_slap_bass, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_slap_bass, 255, 235, 128, 115
 	voice_directsound 48, 0, DirectSoundWaveData_mezmerkaiser_247_pb_slap_bass, 255, 0, 255, 127
-	voice_directsound 51, 0, DirectSoundWaveData_mezmerkaiser_087_synth_bass, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_synth_bass, 255, 252, 0, 115
 	voice_directsound 51, 0, DirectSoundWaveData_mezmerkaiser_081_synth_bass_2, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 40
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 41
@@ -47,12 +47,12 @@ voice_group mezmerkaiser_all
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 44
 	voice_directsound 72, 0, DirectSoundWaveData_mezmerkaiser_094_pizzicato_strings, 255, 0, 255, 127
 	voice_directsound 84, 0, DirectSoundWaveData_mezmerkaiser_025_harp, 255, 0, 255, 127
-	voice_directsound 48, 0, DirectSoundWaveData_mezmerkaiser_242_timpani, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_timpani, 255, 204, 193, 239
 	voice_keysplit voicegroup_strings_keysplit, keysplit_strings
 	voice_keysplit voicegroup_mezmerkaiser_049_keysplit, keysplit_mezmerkaiser_049
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 50
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 51
-	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_077_voice_aahs, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_classical_choir_voice_ahhs, 255, 0, 255, 0
 	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_082_voice_oohs, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 54
 	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_437_orchestra_hitl, 255, 0, 255, 127
@@ -68,12 +68,12 @@ voice_group mezmerkaiser_all
 	voice_directsound 65, 0, DirectSoundWaveData_mezmerkaiser_268_pb_saxophone, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 66
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 67
-	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_035_oboe, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_sd90_classical_oboe, 255, 165, 154, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 69
 	voice_keysplit voicegroup368, keysplit_hg_bassoon    @ bassoon
 	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_036_clarinet_2, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 72
-	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_037_flute, 255, 0, 255, 127
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_flute, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 74
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 75
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 76
@@ -81,7 +81,7 @@ voice_group mezmerkaiser_all
 	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_079_whistle, 255, 0, 255, 127
 	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_874_oriental_flute, 255, 0, 255, 127
 	voice_keysplit voicegroup_mezmerkaiser_080_keysplit, keysplit_mezmerkaiser_080
-	voice_keysplit voicegroup_mezmerkaiser_081_keysplit, keysplit_mezmerkaiser_081
+	voice_keysplit voicegroup_gs_vs_kantonian_sabrina_square, keysplit_hg_saw @ Saw
 	voice_keysplit voicegroup_mezmerkaiser_082_keysplit, keysplit_mezmerkaiser_082
 	voice_keysplit voicegroup_mezmerkaiser_083_keysplit, keysplit_mezmerkaiser_083
 	voice_keysplit voicegroup_mezmerkaiser_084_keysplit, keysplit_mezmerkaiser_084
