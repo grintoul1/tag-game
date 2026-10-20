@@ -24,8 +24,8 @@ voice_group mezmerkaiser_all
 	voice_directsound 72, 0, DirectSoundWaveData_mezmerkaiser_074_accordion, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 22
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 23
-	voice_directsound 72, 0, DirectSoundWaveData_mezmerkaiser_068_nylon_guitar, 255, 0, 255, 127
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 25
+	voice_keysplit voicegroup_nylon_guitar, KeySplitTableNylonGuitar
+	voice_keysplit voicegroup_steel_guitar, KeySplitTableSteelGuitar
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 26
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 27
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 28

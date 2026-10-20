@@ -10771,3 +10771,48 @@ DirectSoundWaveData_10df474::
 DirectSoundWaveData_10e0f2c::
 	.incbin "sound/direct_sound_samples/10e0f2c.bin"
 
+@ Nylon guitar
+	.align 2
+DirectSoundWaveData_104844c::
+	.incbin "sound/direct_sound_samples/104844c.bin"
+
+	.align 2
+DirectSoundWaveData_1048774::
+	.incbin "sound/direct_sound_samples/1048774.bin"
+
+	.align 2
+DirectSoundWaveData_10468cc::
+	.incbin "sound/direct_sound_samples/10468cc.bin"
+
+	.align 2
+DirectSoundWaveData_1046914::
+	.incbin "sound/direct_sound_samples/1046914.bin"
+
+@ Steel guitar
+	.align 2
+DirectSoundWaveData_10489d4::
+	.incbin "sound/direct_sound_samples/10489d4.bin"
+
+	.align 2
+DirectSoundWaveData_1049b5c::
+	.incbin "sound/direct_sound_samples/1049b5c.bin"
+
+	.align 2
+DirectSoundWaveData_104abb4::
+	.incbin "sound/direct_sound_samples/104abb4.bin"
+
+	.align 2
+DirectSoundWaveData_104b8d4::
+	.incbin "sound/direct_sound_samples/104b8d4.bin"
+
+	.align 2
+DirectSoundWaveData_104c43c::
+	.incbin "sound/direct_sound_samples/104c43c.bin"
+
+	.align 2
+DirectSoundWaveData_104cb60::
+	.incbin "sound/direct_sound_samples/104cb60.bin"
+
+	.align 2
+DirectSoundWaveData_104cfb4::
+	.incbin "sound/direct_sound_samples/104cfb4.bin"
