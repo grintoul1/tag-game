@@ -913,6 +913,15 @@ enum __attribute__((packed)) SongId
     MUS_RG_VS_GYM_LEADER_MINUS_2 = 1033,
     MUS_RG_VS_GYM_LEADER_MINUS_3 = 1034,
     MUS_HG_ENCOUNTER_ROCKET = 1035,
+    MUS_HG_VICTORY_WILD = 1036,
+    MUS_HG_VICTORY_TRAINER = 1037,
+    MUS_HG_VICTORY_GYM_LEADER = 1038,
+    MUS_HG_SS_AQUA = 1039,
+    MUS_HG_PEWTER = 1040,
+    MUS_HG_OBTAIN_BADGE = 1041,
+    MUS_HG_LAVENDER = 1042,
+    MUS_HG_HALL_OF_FAME = 1043,
+    MUS_HG_GAME_CORNER = 1044,
 
 // These PH_* constants are phoneme sounds used by the "bard" NPC (see src/bard_music.c and src/mauville_old_man.c).
 // Each comes in a triplet of PH_*_BLEND, PH_*_HELD, and PH_*_SOLO, and the name of each triplet incorporates the English phonetic sound it represents.

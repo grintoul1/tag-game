@@ -1042,6 +1042,15 @@ gSongTable::
 	song mus_rg_vs_gym_leader_minus_2, MUSIC_PLAYER_BGM, 0
 	song mus_rg_vs_gym_leader_minus_3, MUSIC_PLAYER_BGM, 0
 	song mus_hg_encounter_rocket, MUSIC_PLAYER_BGM, 0
+	song mus_hg_victory_wild, MUSIC_PLAYER_BGM, 0
+	song mus_hg_victory_trainer, MUSIC_PLAYER_BGM, 0
+	song mus_hg_victory_gym_leader, MUSIC_PLAYER_BGM, 0
+	song mus_hg_ss_aqua, MUSIC_PLAYER_BGM, 0
+	song mus_hg_pewter, MUSIC_PLAYER_BGM, 0
+	song mus_hg_obtain_badge, MUSIC_PLAYER_BGM, 0
+	song mus_hg_lavender, MUSIC_PLAYER_BGM, 0
+	song mus_hg_hall_of_fame, MUSIC_PLAYER_BGM, 0
+	song mus_hg_game_corner, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:
