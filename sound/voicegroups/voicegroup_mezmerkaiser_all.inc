@@ -64,8 +64,8 @@ voice_group mezmerkaiser_all
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 61
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 62
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 63
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 64
 	voice_directsound 60, 0, DirectSoundWaveData_dp_altosax_c3_16, 255, 216, 252, 192
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 65
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 66
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 67
 	voice_directsound 60, 0, DirectSoundWaveData_sd90_classical_oboe, 255, 165, 154, 127
