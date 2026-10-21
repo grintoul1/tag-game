@@ -10214,3 +10214,111 @@ DirectSoundWaveData_dp_sy_clarinet_c3_16::
 	.align 2
 DirectSoundWaveData_dp_woodblock_16::
 	.incbin "sound/direct_sound_samples/dp_woodblock_16.bin"
+
+@ Viola
+	.align 2
+DirectSoundWaveData_108887c::
+	.incbin "sound/direct_sound_samples/108887c.bin"
+
+	.align 2
+DirectSoundWaveData_1088e34::
+	.incbin "sound/direct_sound_samples/1088e34.bin"
+
+	.align 2
+DirectSoundWaveData_1089470::
+	.incbin "sound/direct_sound_samples/1089470.bin"
+
+	.align 2
+DirectSoundWaveData_10899f8::
+	.incbin "sound/direct_sound_samples/10899f8.bin"
+
+	.align 2
+DirectSoundWaveData_1089f50::
+	.incbin "sound/direct_sound_samples/1089f50.bin"
+
+	.align 2
+DirectSoundWaveData_108a3e4::
+	.incbin "sound/direct_sound_samples/108a3e4.bin"
+
+@ Soprano sax
+	.align 2
+DirectSoundWaveData_10c002c::
+	.incbin "sound/direct_sound_samples/10c002c.bin"
+
+	.align 2
+DirectSoundWaveData_10c16b8::
+	.incbin "sound/direct_sound_samples/10c16b8.bin"
+
+	.align 2
+DirectSoundWaveData_10bdaf4::
+	.incbin "sound/direct_sound_samples/10bdaf4.bin"
+
+@ Tenor sax
+	.align 2
+DirectSoundWaveData_10c5824::
+	.incbin "sound/direct_sound_samples/10c5824.bin"
+
+	.align 2
+DirectSoundWaveData_10c6268::
+	.incbin "sound/direct_sound_samples/10c6268.bin"
+
+	.align 2
+DirectSoundWaveData_10c676c::
+	.incbin "sound/direct_sound_samples/10c676c.bin"
+
+	.align 2
+DirectSoundWaveData_10c6c64::
+	.incbin "sound/direct_sound_samples/10c6c64.bin"
+
+	.align 2
+DirectSoundWaveData_10c7124::
+	.incbin "sound/direct_sound_samples/10c7124.bin"
+
+	.align 2
+DirectSoundWaveData_10c7420::
+	.incbin "sound/direct_sound_samples/10c7420.bin"
+
+	.align 2
+DirectSoundWaveData_10c78d4::
+	.incbin "sound/direct_sound_samples/10c78d4.bin"
+
+	.align 2
+DirectSoundWaveData_10c7bb8::
+	.incbin "sound/direct_sound_samples/10c7bb8.bin"
+
+@ Baritone sax
+	.align 2
+DirectSoundWaveData_10c7d2c::
+	.incbin "sound/direct_sound_samples/10c7d2c.bin"
+
+	.align 2
+DirectSoundWaveData_10c836c::
+	.incbin "sound/direct_sound_samples/10c836c.bin"
+
+	.align 2
+DirectSoundWaveData_10c883c::
+	.incbin "sound/direct_sound_samples/10c883c.bin"
+
+	.align 2
+DirectSoundWaveData_10c8c34::
+	.incbin "sound/direct_sound_samples/10c8c34.bin"
+
+	.align 2
+DirectSoundWaveData_10c8f88::
+	.incbin "sound/direct_sound_samples/10c8f88.bin"
+
+	.align 2
+DirectSoundWaveData_10c9390::
+	.incbin "sound/direct_sound_samples/10c9390.bin"
+
+	.align 2
+DirectSoundWaveData_10c963c::
+	.incbin "sound/direct_sound_samples/10c963c.bin"
+
+	.align 2
+DirectSoundWaveData_10c9890::
+	.incbin "sound/direct_sound_samples/10c9890.bin"
+
+	.align 2
+DirectSoundWaveData_10480d0::
+	.incbin "sound/direct_sound_samples/10480d0.bin"

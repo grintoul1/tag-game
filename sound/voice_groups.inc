@@ -147,6 +147,10 @@
 .include "sound/voicegroups/unused_2.inc" @ used by unused GSC radio tower takeover test track in RS
 .include "sound/voicegroups/voicegroup_nylon_guitar.inc"
 .include "sound/voicegroups/voicegroup_steel_guitar.inc"
+.include "sound/voicegroups/voicegroup_viola.inc"
+.include "sound/voicegroups/voicegroup_soprano_sax.inc"
+.include "sound/voicegroups/voicegroup_tenor_sax.inc"
+.include "sound/voicegroups/voicegroup_baritone_sax.inc"
 
 @ FRLG
 .include "sound/voicegroups/rg_follow_me.inc"

@@ -41,7 +41,7 @@ voice_group mezmerkaiser_all
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_synth_bass, 255, 252, 0, 115
 	voice_directsound 51, 0, DirectSoundWaveData_mezmerkaiser_081_synth_bass_2, 255, 0, 255, 127
 	voice_keysplit voicegroup356, keysplit_hg_violin    @ violin
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 41
+	voice_keysplit voicegroup_viola, KeySplitTableViola
 	voice_keysplit voicegroup357, keysplit_hg_trombone    @ cello
 	voice_directsound 55, 0, DirectSoundWaveData_mezmerkaiser_271_pb_contrabass, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 44
@@ -64,10 +64,10 @@ voice_group mezmerkaiser_all
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 61
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 62
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 63
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 64
+	voice_keysplit voicegroup_soprano_sax, keysplit_dp_trumpet
 	voice_directsound 60, 0, DirectSoundWaveData_dp_altosax_c3_16, 255, 216, 252, 192
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 66
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 67
+	voice_keysplit voicegroup_tenor_sax, keysplit_hg_tubular_bell
+	voice_keysplit voicegroup_baritone_sax, KeySplitTableBaritoneSax
 	voice_directsound 60, 0, DirectSoundWaveData_sd90_classical_oboe, 255, 165, 154, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 69
 	voice_keysplit voicegroup368, keysplit_hg_bassoon    @ bassoon
