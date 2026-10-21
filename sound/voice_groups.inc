@@ -20,7 +20,6 @@
 .include "sound/voicegroups/unused.inc"
 .include "sound/voicegroups/keysplits/tuba.inc"
 .include "sound/voicegroups/keysplits/french_horn.inc"
-.include "sound/voicegroups/keysplits/voicegroup_square_wave.inc"
 
 .include "sound/voicegroups/route110.inc"
 .include "sound/voicegroups/route101.inc"
@@ -145,8 +144,6 @@
 .include "sound/voicegroups/frlg_sfx.inc"
 .include "sound/voicegroups/bard.inc"
 .include "sound/voicegroups/unused_2.inc" @ used by unused GSC radio tower takeover test track in RS
-.include "sound/voicegroups/voicegroup_nylon_guitar.inc"
-.include "sound/voicegroups/voicegroup_steel_guitar.inc"
 .include "sound/voicegroups/voicegroup_viola.inc"
 .include "sound/voicegroups/voicegroup_soprano_sax.inc"
 .include "sound/voicegroups/voicegroup_tenor_sax.inc"

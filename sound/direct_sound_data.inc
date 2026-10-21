@@ -9027,10 +9027,6 @@ DirectSoundWaveData_Phoneme_51::
 .endif @ PHONEMES_SHARED
 
 	.align 2
-DirectSoundWaveData_sc88pro_accordion_duplicate::
-	.incbin "sound/direct_sound_samples/sc88pro_accordion_duplicate.bin"
-
-	.align 2
 DirectSoundWaveData_steinway_b_piano::
 	.incbin "sound/direct_sound_samples/steinway_b_piano.bin"
 
@@ -9043,66 +9039,7 @@ DirectSoundWaveData_sd90_enhanced_delay_shaku::
 	.incbin "sound/direct_sound_samples/sd90_enhanced_delay_shaku.bin"
 
 
-@ --- Mezmerkaiser SF2 sample declarations ---
-@ Generated from the supplied Pokémon Emerald SF2 extraction.
-@ Include from sound/direct_sound_data.inc after checking sample paths.
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_000_bass_drum::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/000_bass_drum.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_001_orch_snare::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/001_orch_snare.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_002_synth_snare::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/002_synth_snare.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_003_crash_cymbal::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/003_crash_cymbal.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_004_tambourine::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/004_tambourine.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_005_splash_cymbal::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/005_splash_cymbal.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_006_cowbell::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/006_cowbell.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_007_conga_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/007_conga_2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_008_mute_conga::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/008_mute_conga.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_009_conga::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/009_conga.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_010_tringle::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/010_tringle.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_012_sample_0x6dd11c::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/012_sample_0x6dd11c.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_015_rock_tom::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/015_rock_tom.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_016_sample_0x6dfca4::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/016_sample_0x6dfca4.bin"
-
+@ Mezmerkaiser
 .align 2
 DirectSoundWaveData_mezmerkaiser_017_square_50_a::
     .incbin "sound/direct_sound_samples/mezmerkaiser/017_square_50_a.bin"
@@ -9176,10 +9113,6 @@ DirectSoundWaveData_mezmerkaiser_075_e_piano_2::
     .incbin "sound/direct_sound_samples/mezmerkaiser/075_e_piano_2.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_076_distortion_guitar::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/076_distortion_guitar.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_079_whistle::
     .incbin "sound/direct_sound_samples/mezmerkaiser/079_whistle.bin"
 
@@ -9236,10 +9169,6 @@ DirectSoundWaveData_mezmerkaiser_182_gb3_0x6b4830d_1::
     .incbin "sound/direct_sound_samples/mezmerkaiser/182_gb3_0x6b4830d-1.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_185_percussive_organ_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/185_percussive_organ_2.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_186_000116::
     .incbin "sound/direct_sound_samples/mezmerkaiser/186_000116.bin"
 
@@ -9294,10 +9223,6 @@ DirectSoundWaveData_mezmerkaiser_261_pb_honky_tonk_piano::
 .align 2
 DirectSoundWaveData_mezmerkaiser_271_pb_contrabass::
     .incbin "sound/direct_sound_samples/mezmerkaiser/271_pb_contrabass.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_301_sample_0x55f22c::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/301_sample_0x55f22c.bin"
 
 .align 2
 DirectSoundWaveData_mezmerkaiser_874_oriental_flute::
@@ -10122,61 +10047,6 @@ DirectSoundWaveData_1038e48::
 	.align 2
 DirectSoundWaveData_1038ee8::
 	.incbin "sound/direct_sound_samples/1038ee8.bin"
-
-@ Square wave
-	.align 2
-DirectSoundWaveData_10d6ea4::
-	.incbin "sound/direct_sound_samples/10d6ea4.bin"
-
-	.align 2
-DirectSoundWaveData_10d7aec::
-	.incbin "sound/direct_sound_samples/10d7aec.bin"
-
-	.align 2
-DirectSoundWaveData_10cda0c::
-	.incbin "sound/direct_sound_samples/10cda0c.bin"
-
-@ Sawtooth wave
-	.align 2
-DirectSoundWaveData_10d8528::
-	.incbin "sound/direct_sound_samples/10d8528.bin"
-
-	.align 2
-DirectSoundWaveData_10d9cc0::
-	.incbin "sound/direct_sound_samples/10d9cc0.bin"
-
-	.align 2
-DirectSoundWaveData_10dbba8::
-	.incbin "sound/direct_sound_samples/10dbba8.bin"
-
-	.align 2
-DirectSoundWaveData_10dd938::
-	.incbin "sound/direct_sound_samples/10dd938.bin"
-
-	.align 2
-DirectSoundWaveData_10df474::
-	.incbin "sound/direct_sound_samples/10df474.bin"
-
-	.align 2
-DirectSoundWaveData_10e0f2c::
-	.incbin "sound/direct_sound_samples/10e0f2c.bin"
-
-@ Nylon guitar
-	.align 2
-DirectSoundWaveData_104844c::
-	.incbin "sound/direct_sound_samples/104844c.bin"
-
-	.align 2
-DirectSoundWaveData_1048774::
-	.incbin "sound/direct_sound_samples/1048774.bin"
-
-	.align 2
-DirectSoundWaveData_10468cc::
-	.incbin "sound/direct_sound_samples/10468cc.bin"
-
-	.align 2
-DirectSoundWaveData_1046914::
-	.incbin "sound/direct_sound_samples/1046914.bin"
 
 @ Steel guitar
 	.align 2
