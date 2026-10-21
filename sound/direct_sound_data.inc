@@ -9092,20 +9092,8 @@ DirectSoundWaveData_mezmerkaiser_010_tringle::
     .incbin "sound/direct_sound_samples/mezmerkaiser/010_tringle.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_011_jingle_bells::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/011_jingle_bells.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_012_sample_0x6dd11c::
     .incbin "sound/direct_sound_samples/mezmerkaiser/012_sample_0x6dd11c.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_013_taiko_drum::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/013_taiko_drum.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_014_trumpet_low::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/014_trumpet_low.bin"
 
 .align 2
 DirectSoundWaveData_mezmerkaiser_015_rock_tom::
@@ -9136,68 +9124,8 @@ DirectSoundWaveData_mezmerkaiser_021_square_50_e::
     .incbin "sound/direct_sound_samples/mezmerkaiser/021_square_50_e.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_022_glockenspiel::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/022_glockenspiel.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_023_marimba::
     .incbin "sound/direct_sound_samples/mezmerkaiser/023_marimba.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_024_tubular_bell::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/024_tubular_bell.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_025_harp::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/025_harp.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_026_strings_high::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/026_strings_high.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_027_trumpet_low_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/027_trumpet_low_2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_028_strings_low::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/028_strings_low.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_029_strings_mid::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/029_strings_mid.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_030_trumpet_high::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/030_trumpet_high.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_031_french_horn_low::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/031_french_horn_low.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_032_tuba_low::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/032_tuba_low.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_033_tuba_high::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/033_tuba_high.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_034_french_horn_high::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/034_french_horn_high.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_035_oboe::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/035_oboe.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_036_clarinet_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/036_clarinet_2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_037_flute::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/037_flute.bin"
 
 .align 2
 DirectSoundWaveData_mezmerkaiser_038_square_25_a::
@@ -9220,26 +9148,6 @@ DirectSoundWaveData_mezmerkaiser_042_square_25_e::
     .incbin "sound/direct_sound_samples/mezmerkaiser/042_square_25_e.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_043_square_12_5_a::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/043_square_12_5_a.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_044_square_12_5_b::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/044_square_12_5_b.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_045_square_12_5_c::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/045_square_12_5_c.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_046_square_12_5_d::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/046_square_12_5_d.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_047_square_12_5_e::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/047_square_12_5_e.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_048_gb3_0x6b4870a::
     .incbin "sound/direct_sound_samples/mezmerkaiser/048_gb3_0x6b4870a.bin"
 
@@ -9256,96 +9164,12 @@ DirectSoundWaveData_mezmerkaiser_051_gb3_0x6b4870d::
     .incbin "sound/direct_sound_samples/mezmerkaiser/051_gb3_0x6b4870d.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_052_rock_guitar::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/052_rock_guitar.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_053_chorus_slap_bass::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/053_chorus_slap_bass.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_054_sample_0x6c2590::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/054_sample_0x6c2590.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_055_jap_percussion_5::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/055_jap_percussion_5.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_056_sample_0x6c4344::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/056_sample_0x6c4344.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_057_soft_bass_drum::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/057_soft_bass_drum.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_058_hand_clap::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/058_hand_clap.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_059_tom::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/059_tom.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_060_closed_hi_hat::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/060_closed_hi-hat.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_061_sample_0x6c875c::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/061_sample_0x6c875c.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_062_sample_0x6c958c::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/062_sample_0x6c958c.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_063_acoustic_snare::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/063_acoustic_snare.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_064_ride_bell::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/064_ride_bell.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_065_banjo::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/065_banjo.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_066_overdriven_guitar::
     .incbin "sound/direct_sound_samples/mezmerkaiser/066_overdriven_guitar.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_067_slap_bass::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/067_slap_bass.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_068_nylon_guitar::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/068_nylon_guitar.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_069_gamelan::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/069_gamelan.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_070_koto::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/070_koto.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_071_pipe_organ::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/071_pipe_organ.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_072_pipe_organ_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/072_pipe_organ_2.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_073_fretless_bass::
     .incbin "sound/direct_sound_samples/mezmerkaiser/073_fretless_bass.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_074_accordion::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/074_accordion.bin"
 
 .align 2
 DirectSoundWaveData_mezmerkaiser_075_e_piano_2::
@@ -9356,20 +9180,8 @@ DirectSoundWaveData_mezmerkaiser_076_distortion_guitar::
     .incbin "sound/direct_sound_samples/mezmerkaiser/076_distortion_guitar.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_077_voice_aahs::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/077_voice_aahs.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_078_heavy_guitar::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/078_heavy_guitar.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_079_whistle::
     .incbin "sound/direct_sound_samples/mezmerkaiser/079_whistle.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_080_e_finger_bass::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/080_e_finger_bass.bin"
 
 .align 2
 DirectSoundWaveData_mezmerkaiser_081_synth_bass_2::
@@ -9380,60 +9192,12 @@ DirectSoundWaveData_mezmerkaiser_082_voice_oohs::
     .incbin "sound/direct_sound_samples/mezmerkaiser/082_voice_oohs.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_083_gb3_0x6b4850a::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/083_gb3_0x6b4850a.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_084_gb3_0x6b4850b::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/084_gb3_0x6b4850b.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_085_gb3_0x6b4850c::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/085_gb3_0x6b4850c.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_086_gb3_0x6b4850d::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/086_gb3_0x6b4850d.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_087_synth_bass::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/087_synth_bass.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_088_sample_0x73a594::
     .incbin "sound/direct_sound_samples/mezmerkaiser/088_sample_0x73a594.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_089_square_12_5_a_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/089_square_12_5_a-2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_090_square_12_5_b_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/090_square_12_5_b-2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_091_square_12_5_c_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/091_square_12_5_c-2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_092_square_12_5_d_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/092_square_12_5_d-2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_093_square_12_5_e_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/093_square_12_5_e-2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_094_pizzicato_strings::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/094_pizzicato_strings.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_095_percussive_organ::
     .incbin "sound/direct_sound_samples/mezmerkaiser/095_percussive_organ.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_122_noise_normal_68::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/122_noise_normal_68.bin"
 
 .align 2
 DirectSoundWaveData_mezmerkaiser_168_blackbeltsynth_0_52::
@@ -9452,32 +9216,8 @@ DirectSoundWaveData_mezmerkaiser_171_blackbeltsynth77_127::
     .incbin "sound/direct_sound_samples/mezmerkaiser/171_blackbeltsynth77-127.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_172_89::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/172_89.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_173_e_piano::
     .incbin "sound/direct_sound_samples/mezmerkaiser/173_e_piano.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_174_square_25_a_1::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/174_square_25_a-1.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_175_square_25_b_1::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/175_square_25_b-1.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_176_square_25_c_1::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/176_square_25_c-1.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_177_square_25_d_1::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/177_square_25_d-1.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_178_square_25_e_1::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/178_square_25_e-1.bin"
 
 .align 2
 DirectSoundWaveData_mezmerkaiser_179_gb3_0x6b4830a_1::
@@ -9494,14 +9234,6 @@ DirectSoundWaveData_mezmerkaiser_181_gb3_0x6b4830c_1::
 .align 2
 DirectSoundWaveData_mezmerkaiser_182_gb3_0x6b4830d_1::
     .incbin "sound/direct_sound_samples/mezmerkaiser/182_gb3_0x6b4830d-1.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_183_guitar_harmonics::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/183_guitar_harmonics.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_184_shakuhachi::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/184_shakuhachi.bin"
 
 .align 2
 DirectSoundWaveData_mezmerkaiser_185_percussive_organ_2::
@@ -9528,156 +9260,16 @@ DirectSoundWaveData_mezmerkaiser_190_piano_2_0::
     .incbin "sound/direct_sound_samples/mezmerkaiser/190_piano_2_0.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_191_bright_piano::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/191_bright_piano.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_192_bright_piano_3::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/192_bright_piano_3.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_193_trumpet_mid::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/193_trumpet_mid.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_194_bright_piano_high::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/194_bright_piano_high.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_195_dcymclosed_l::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/195_dcymclosed_l.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_196_dcymopen_l::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/196_dcymopen_l.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_197_dcymclosed_l__1::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/197_dcymclosed_l_-1.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_198_zztrianglemuted::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/198_zztrianglemuted.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_199_zztriangle::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/199_zztriangle.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_200_closed_hi_hat::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/200_closed_hi-hat.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_201_sine_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/201_sine-2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_202_bongo::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/202_bongo.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_203_bongo::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/203_bongo.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_204_jap_perc_3::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/204_jap_perc_3.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_205_jap_perc_4::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/205_jap_perc_4.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_206_jap_perc_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/206_jap_perc_2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_207_jap_perc_1::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/207_jap_perc_1.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_208_synth_square::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/208_synth_square.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_209_gb3_0x6b48a0a::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/209_gb3_0x6b48a0a.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_210_gb3_0x6b48a0b::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/210_gb3_0x6b48a0b.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_211_gb3_0x6b48a0c::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/211_gb3_0x6b48a0c.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_212_gb3_0x6b48a0d::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/212_gb3_0x6b48a0d.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_213_gb3_0x6b4890a::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/213_gb3_0x6b4890a.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_214_gb3_0x6b4890b::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/214_gb3_0x6b4890b.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_215_gb3_0x6b4890c::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/215_gb3_0x6b4890c.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_216_gb3_0x6b4890d::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/216_gb3_0x6b4890d.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_217_gb3_0x6b4840a::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/217_gb3_0x6b4840a.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_218_gb3_0x6b4840b::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/218_gb3_0x6b4840b.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_219_gb3_0x6b4840c::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/219_gb3_0x6b4840c.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_220_gb3_0x6b4840d::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/220_gb3_0x6b4840d.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_221_e_piano_3::
     .incbin "sound/direct_sound_samples/mezmerkaiser/221_e_piano_3.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_224_pb_clarinet::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/224_pb_clarinet.bin"
 
 .align 2
 DirectSoundWaveData_mezmerkaiser_225_pb_celesta::
     .incbin "sound/direct_sound_samples/mezmerkaiser/225_pb_celesta.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_226_pb_muted_trumpet::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/226_pb_muted_trumpet.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_227_pb_nylon_guitar::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/227_pb_nylon_guitar.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_228_pb_staccato_trumpet::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/228_pb_staccato_trumpet.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_230_pb_picked_bass::
     .incbin "sound/direct_sound_samples/mezmerkaiser/230_pb_picked_bass.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_231_pb_rock_organ::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/231_pb_rock_organ.bin"
 
 .align 2
 DirectSoundWaveData_mezmerkaiser_232_pb_vibraphone::
@@ -9688,230 +9280,28 @@ DirectSoundWaveData_mezmerkaiser_234_sample_0x57b0c8::
     .incbin "sound/direct_sound_samples/mezmerkaiser/234_sample_0x57b0c8.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_235_french_horn_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/235_french_horn_2.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_236_reverse_cymbal::
     .incbin "sound/direct_sound_samples/mezmerkaiser/236_reverse_cymbal.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_237_tubular_bell_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/237_tubular_bell_2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_238_tubular_bell_3::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/238_tubular_bell_3.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_239_synth_bass_4::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/239_synth_bass_4.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_240_glockenspiel_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/240_glockenspiel_2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_241_glockenspiel_3::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/241_glockenspiel_3.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_242_timpani::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/242_timpani.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_244_harp::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/244_harp.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_245_square_wave::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/245_square_wave.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_246_pb_shamisen::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/246_pb_shamisen.bin"
 
 .align 2
 DirectSoundWaveData_mezmerkaiser_247_pb_slap_bass::
     .incbin "sound/direct_sound_samples/mezmerkaiser/247_pb_slap_bass.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_248_square_25_a_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/248_square_25_a-2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_249_square_25_b_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/249_square_25_b-2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_250_square_25_c_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/250_square_25_c-2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_251_square_25_d_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/251_square_25_d-2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_252_square_25_e_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/252_square_25_e-2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_253_noise_normal_77_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/253_noise_normal_77-2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_254_sample_0x53d2c8::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/254_sample_0x53d2c8.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_255_square_12_5_e_3::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/255_square_12_5_e-3.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_256_sample_0x53e228::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/256_sample_0x53e228.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_257_sample_0x53f888::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/257_sample_0x53f888.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_258_sample_0x540de4::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/258_sample_0x540de4.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_259_zzsnare10::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/259_zzsnare10.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_260_zzjapanese_perc_bell::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/260_zzjapanese_perc_bell.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_261_pb_honky_tonk_piano::
     .incbin "sound/direct_sound_samples/mezmerkaiser/261_pb_honky-tonk_piano.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_262_square_50_a_4::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/262_square_50_a-4.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_263_square_50_b_4::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/263_square_50_b-4.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_264_square_50_c_4::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/264_square_50_c-4.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_265_square_50_d_4::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/265_square_50_d-4.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_266_square_50_e_4::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/266_square_50_e-4.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_267_pb_xylophone::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/267_pb_xylophone.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_268_pb_saxophone::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/268_pb_saxophone.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_269_slap_bass_3::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/269_slap_bass_3.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_270_pb_deep_piano::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/270_pb_deep_piano.bin"
 
 .align 2
 DirectSoundWaveData_mezmerkaiser_271_pb_contrabass::
     .incbin "sound/direct_sound_samples/mezmerkaiser/271_pb_contrabass.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_272_pb_drawbar_organ::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/272_pb_drawbar_organ.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_274_gb3_0x4a325ca::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/274_gb3_0x4a325ca.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_275_gb3_0x4a325cb::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/275_gb3_0x4a325cb.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_276_gb3_0x4a325cc::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/276_gb3_0x4a325cc.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_277_gb3_0x4a325cd::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/277_gb3_0x4a325cd.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_280_rse_burn_damagel::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/280_rse_burn_damagel.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_300_e_finger_bass::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/300_e_finger_bass.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_301_sample_0x55f22c::
     .incbin "sound/direct_sound_samples/mezmerkaiser/301_sample_0x55f22c.bin"
 
 .align 2
-DirectSoundWaveData_mezmerkaiser_437_orchestra_hitl::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/437_orchestra_hitl.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_443_synth_bass_5::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/443_synth_bass_5.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_444_bass_drum_2::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/444_bass_drum_2.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_445_drum_loopl::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/445_drum_loopl.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_452_driftveil_drum_loopl::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/452_driftveil_drum_loopl.bin"
-
-.align 2
 DirectSoundWaveData_mezmerkaiser_874_oriental_flute::
     .incbin "sound/direct_sound_samples/mezmerkaiser/874_oriental_flute.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_875_sample_0x6bd1dc::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/875_sample_0x6bd1dc.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_876_oboe::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/876_oboe.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_877_sample_0x6ba7e8_1_1::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/877_sample_0x6ba7e8-1-1.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_878_d_guitar_relooped::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/878_d_guitar_relooped.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_879_gamelan_relooped::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/879_gamelan_relooped.bin"
-
-.align 2
-DirectSoundWaveData_mezmerkaiser_880_e_piano_relooped::
-    .incbin "sound/direct_sound_samples/mezmerkaiser/880_e_piano_relooped.bin"
-
-
 
 .align 2
 DirectSoundWaveData_dp_016bongo::
@@ -10820,3 +10210,7 @@ DirectSoundWaveData_104cfb4::
 	.align 2
 DirectSoundWaveData_dp_sy_clarinet_c3_16::
 	.incbin "sound/direct_sound_samples/dp_sy_clarinet_c3_16.bin"
+
+	.align 2
+DirectSoundWaveData_dp_woodblock_16::
+	.incbin "sound/direct_sound_samples/dp_woodblock_16.bin"
