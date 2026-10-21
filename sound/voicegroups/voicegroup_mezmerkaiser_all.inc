@@ -106,7 +106,7 @@ voice_group mezmerkaiser_all
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 103
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 104
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 105
-@	voice_keysplit voicegroup372, keysplit_hg_shamisen    @ shamisen
+	voice_keysplit voicegroup372, keysplit_hg_shamisen    @ shamisen
 	voice_keysplit voicegroup371, keysplit_hg_koto    @ koto
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 108
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 109
