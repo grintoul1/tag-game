@@ -4137,7 +4137,7 @@ static void Task_OvwldCredits_WaitFade(u8 taskId)
 #define LOCATION_MUSIC_NO_OVERRIDE MUS_DUMMY
 
 
-// Tracks re-checked up to and including HG
+// Tracks re-checked up to and including BW
 static const u16 sLocMusicOverrides_Petalburg[MUSIC_MODE_COUNT - 1] =
 {
     MUS_RB_CERULEAN, // DONE
@@ -4147,7 +4147,7 @@ static const u16 sLocMusicOverrides_Petalburg[MUSIC_MODE_COUNT - 1] =
     MUS_OREBURGH_CITY, // DONE
     MUS_HG_GOLDENROD, // DONE
     MUS_UNOVA_ANVILLE_TOWN, // DONE
-    MUS_PMD_WIGGLYTUFFS_GUILD, // TODO
+    MUS_PMD_WIGGLYTUFFS_GUILD, // DONE
     MUS_AGATE_VILLAGE, // TODO
 };
 
@@ -4160,7 +4160,7 @@ static const u16 sLocMusicOverrides_Oldale[MUSIC_MODE_COUNT - 1] =
     MUS_DP_SANDGEM_NIGHT, // DONE
     MUS_HG_CHERRYGROVE, // DONE
     MUS_UNOVA_LACONUSA_TOWN, // DONE
-    MUS_PMD_AT_THE_END_OF_THE_DAY, // TODO
+    MUS_PMD_AT_THE_END_OF_THE_DAY, // DONE
     LOCATION_MUSIC_NO_OVERRIDE,
 };
 
