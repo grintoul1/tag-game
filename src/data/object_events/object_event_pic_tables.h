@@ -1642,6 +1642,22 @@ static const struct SpriteFrameImage sPicTable_Bruno[] = {
     overworld_frame(gObjectEventPic_Bruno, 2, 4, 2),
 };*/
 
+static const struct SpriteFrameImage sPicTable_SuspiciousAquaM[] = {
+    overworld_ascending_frames(gObjectEventPic_SuspiciousAquaM, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_SuspiciousAquaF[] = {
+    overworld_ascending_frames(gObjectEventPic_SuspiciousAquaF, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_SuspiciousMagmaM[] = {
+    overworld_ascending_frames(gObjectEventPic_SuspiciousMagmaM, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_SuspiciousMagmaF[] = {
+    overworld_ascending_frames(gObjectEventPic_SuspiciousMagmaF, 4, 2),
+};
+
 #if IS_FRLG
 
 static const struct SpriteFrameImage sPicTable_RedNormal[] = {

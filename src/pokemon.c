@@ -5382,7 +5382,7 @@ u16 GetBattleBGM(void)
                 default:
                     return MUS_RG_VS_GYM_LEADER;
             }
-        case TRAINER_CLASS_SUSPICIOUS_GRUNTS:
+        case TRAINER_CLASS_SUSPICIOUS_GRUNT_AQUA_M...TRAINER_CLASS_SUSPICIOUS_GRUNTS_MAGMA:
             switch (trainerId)
             {
                 case TRAINER_ROCKETS_ROUTE109_2:

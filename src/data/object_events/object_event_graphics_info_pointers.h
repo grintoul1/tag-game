@@ -402,6 +402,10 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysA;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysN;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SSAnne;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Janine;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SuspiciousAquaM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SuspiciousAquaF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SuspiciousMagmaM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SuspiciousMagmaF;
 // Begin Pokémon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Follower;
@@ -688,6 +692,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LANCE]                    = &gObjectEventGraphicsInfo_Lance,
     [OBJ_EVENT_GFX_AGATHA]                   = &gObjectEventGraphicsInfo_Agatha,
     [OBJ_EVENT_GFX_JANINE]                   = &gObjectEventGraphicsInfo_Janine,
+    [OBJ_EVENT_GFX_SUSPICIOUS_AQUA_MEMBER_M] = &gObjectEventGraphicsInfo_SuspiciousAquaM,
+    [OBJ_EVENT_GFX_SUSPICIOUS_AQUA_MEMBER_F] = &gObjectEventGraphicsInfo_SuspiciousAquaF,
+    [OBJ_EVENT_GFX_SUSPICIOUS_MAGMA_MEMBER_M] = &gObjectEventGraphicsInfo_SuspiciousMagmaM,
+    [OBJ_EVENT_GFX_SUSPICIOUS_MAGMA_MEMBER_F] = &gObjectEventGraphicsInfo_SuspiciousMagmaF,
 #if IS_FRLG
     [OBJ_EVENT_GFX_RED_NORMAL] =               &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE] =                 &gObjectEventGraphicsInfo_RedBike,

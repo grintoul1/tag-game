@@ -484,14 +484,23 @@ const u16 gTrainerPalette_LadyFrlg[] = INCGFX_U16("graphics/trainers/palettes/la
 const u32 gTrainerFrontPic_PainterFrlg[] = INCGFX_U32("graphics/trainers/front_pics/painter_frlg.png", ".4bpp.smol");
 const u16 gTrainerPalette_PainterFrlg[] = INCGFX_U16("graphics/trainers/palettes/painter_frlg.pal", ".gbapal");
 
-const u32 gTrainerFrontPic_SuspiciousGruntM[] = INCGFX_U32("graphics/trainers/front_pics/suspicious_grunt_m.png", ".4bpp.smol");
-const u16 gTrainerPalette_SuspiciousGruntM[] = INCGFX_U16("graphics/trainers/palettes/suspicious_grunt_m.pal", ".gbapal");
+const u32 gTrainerFrontPic_SuspiciousGruntAquaM[] = INCGFX_U32("graphics/trainers/front_pics/suspicious_grunt_aqua_m.png", ".4bpp.smol");
+const u16 gTrainerPalette_SuspiciousGruntAquaM[] = INCGFX_U16("graphics/trainers/palettes/suspicious_grunt_aqua_m.pal", ".gbapal");
 
-const u32 gTrainerFrontPic_SuspiciousGruntF[] = INCGFX_U32("graphics/trainers/front_pics/suspicious_grunt_f.png", ".4bpp.smol");
-const u16 gTrainerPalette_SuspiciousGruntF[] = INCGFX_U16("graphics/trainers/palettes/suspicious_grunt_f.pal", ".gbapal");
+const u32 gTrainerFrontPic_SuspiciousGruntAquaF[] = INCGFX_U32("graphics/trainers/front_pics/suspicious_grunt_aqua_f.png", ".4bpp.smol");
+const u16 gTrainerPalette_SuspiciousGruntAquaF[] = INCGFX_U16("graphics/trainers/palettes/suspicious_grunt_aqua_f.pal", ".gbapal");
 
-const u32 gTrainerFrontPic_SuspiciousGrunts[] = INCGFX_U32("graphics/trainers/front_pics/suspicious_grunts.png", ".4bpp.smol");
-const u16 gTrainerPalette_SuspiciousGrunts[] = INCGFX_U16("graphics/trainers/palettes/suspicious_grunts.pal", ".gbapal");
+const u32 gTrainerFrontPic_SuspiciousGruntsAqua[] = INCGFX_U32("graphics/trainers/front_pics/suspicious_grunts_aqua.png", ".4bpp.smol");
+const u16 gTrainerPalette_SuspiciousGruntsAqua[] = INCGFX_U16("graphics/trainers/palettes/suspicious_grunts_aqua.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_SuspiciousGruntMagmaM[] = INCGFX_U32("graphics/trainers/front_pics/suspicious_grunt_magma_m.png", ".4bpp.smol");
+const u16 gTrainerPalette_SuspiciousGruntMagmaM[] = INCGFX_U16("graphics/trainers/palettes/suspicious_grunt_magma_m.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_SuspiciousGruntMagmaF[] = INCGFX_U32("graphics/trainers/front_pics/suspicious_grunt_magma_f.png", ".4bpp.smol");
+const u16 gTrainerPalette_SuspiciousGruntMagmaF[] = INCGFX_U16("graphics/trainers/palettes/suspicious_grunt_magma_f.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_SuspiciousGruntsMagma[] = INCGFX_U32("graphics/trainers/front_pics/suspicious_grunts_magma.png", ".4bpp.smol");
+const u16 gTrainerPalette_SuspiciousGruntsMagma[] = INCGFX_U16("graphics/trainers/palettes/suspicious_grunts_magma.pal", ".gbapal");
 
 static const u8 gTrainerBackPic_None[] = INCGFX_U8("graphics/trainers/back_pics/none.png", ".4bpp");
 const u8 gTrainerBackPic_Brendan[] = INCGFX_U8("graphics/trainers/back_pics/brendan.png", ".4bpp");
@@ -1322,17 +1331,29 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Vito, gTrainerPalette_Vito),
     },
-    [TRAINER_PIC_SUSPICIOUS_GRUNT_M] =
+    [TRAINER_PIC_SUSPICIOUS_GRUNT_AQUA_M] =
     {
-        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SuspiciousGruntM, gTrainerPalette_SuspiciousGruntM),
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SuspiciousGruntAquaM, gTrainerPalette_SuspiciousGruntAquaM),
     },
-    [TRAINER_PIC_SUSPICIOUS_GRUNT_F] =
+    [TRAINER_PIC_SUSPICIOUS_GRUNT_AQUA_F] =
     {
-        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SuspiciousGruntF, gTrainerPalette_SuspiciousGruntF),
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SuspiciousGruntAquaF, gTrainerPalette_SuspiciousGruntAquaF),
     },
-    [TRAINER_PIC_SUSPICIOUS_GRUNTS] =
+    [TRAINER_PIC_SUSPICIOUS_GRUNTS_AQUA] =
     {
-        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SuspiciousGrunts, gTrainerPalette_SuspiciousGrunts),
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SuspiciousGruntsAqua, gTrainerPalette_SuspiciousGruntsAqua),
+    },
+    [TRAINER_PIC_SUSPICIOUS_GRUNT_MAGMA_M] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SuspiciousGruntMagmaM, gTrainerPalette_SuspiciousGruntMagmaM),
+    },
+    [TRAINER_PIC_SUSPICIOUS_GRUNT_MAGMA_F] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SuspiciousGruntMagmaF, gTrainerPalette_SuspiciousGruntMagmaF),
+    },
+    [TRAINER_PIC_SUSPICIOUS_GRUNTS_MAGMA] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SuspiciousGruntsMagma, gTrainerPalette_SuspiciousGruntsMagma),
     },
     [TRAINER_PIC_ROCKET_M] =
     {

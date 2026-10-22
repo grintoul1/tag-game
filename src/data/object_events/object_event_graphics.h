@@ -499,6 +499,10 @@ const u16 gObjectEventPic_Lance[] = INCGFX_U16("graphics/object_events/pics/peop
 const u16 gObjectEventPic_Blue[] = INCGFX_U16("graphics/object_events/pics/people/blue.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Giovanni[] = INCGFX_U16("graphics/object_events/pics/people/giovanni.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Janine[] = INCGFX_U16("graphics/object_events/pics/people/janine.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPic_SuspiciousAquaM[] = INCGFX_U16("graphics/object_events/pics/people/suspicious_grunt_aqua_m.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPic_SuspiciousAquaF[] = INCGFX_U16("graphics/object_events/pics/people/suspicious_grunt_aqua_f.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPic_SuspiciousMagmaM[] = INCGFX_U16("graphics/object_events/pics/people/suspicious_grunt_magma_m.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPic_SuspiciousMagmaF[] = INCGFX_U16("graphics/object_events/pics/people/suspicious_grunt_magma_f.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPal_PlayerFrlg[] = INCGFX_U16("graphics/object_events/palettes/player_frlg.pal", ".gbapal");
 const u16 gObjectEventPal_PlayerReflectionFrlg[] = INCGFX_U16("graphics/object_events/palettes/player_reflection_frlg.pal", ".gbapal");
 const u16 gObjectEventPal_NpcBlue[] = INCGFX_U16("graphics/object_events/palettes/npc_blue.pal", ".gbapal");
@@ -521,6 +525,10 @@ const u16 gObjectEventPal_Bruno[] = INCGFX_U16("graphics/object_events/palettes/
 const u16 gObjectEventPal_Agatha[] = INCGFX_U16("graphics/object_events/palettes/agatha.pal", ".gbapal");
 const u16 gObjectEventPal_Lance[] = INCGFX_U16("graphics/object_events/palettes/lance.pal", ".gbapal");
 const u16 gObjectEventPal_Giovanni[] = INCGFX_U16("graphics/object_events/palettes/giovanni.pal", ".gbapal");
+const u16 gObjectEventPal_SuspiciousAquaM[] = INCGFX_U16("graphics/object_events/palettes/suspicious_grunt_aqua_m.pal", ".gbapal");
+const u16 gObjectEventPal_SuspiciousAquaF[] = INCGFX_U16("graphics/object_events/palettes/suspicious_grunt_aqua_f.pal", ".gbapal");
+const u16 gObjectEventPal_SuspiciousMagmaM[] = INCGFX_U16("graphics/object_events/palettes/suspicious_grunt_magma_m.pal", ".gbapal");
+const u16 gObjectEventPal_SuspiciousMagmaF[] = INCGFX_U16("graphics/object_events/palettes/suspicious_grunt_magma_f.pal", ".gbapal");
 
 #if IS_FRLG
 

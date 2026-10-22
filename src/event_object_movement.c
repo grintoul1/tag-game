@@ -554,6 +554,10 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Agatha,                OBJ_EVENT_PAL_TAG_AGATHA},
     {gObjectEventPal_Bruno,                 OBJ_EVENT_PAL_TAG_BRUNO},
     {gObjectEventPal_Lance,                 OBJ_EVENT_PAL_TAG_LANCE},
+    {gObjectEventPal_SuspiciousAquaM,       OBJ_EVENT_PAL_TAG_SUSPICIOUS_AQUA_M},
+    {gObjectEventPal_SuspiciousAquaF,       OBJ_EVENT_PAL_TAG_SUSPICIOUS_AQUA_F},
+    {gObjectEventPal_SuspiciousMagmaM,      OBJ_EVENT_PAL_TAG_SUSPICIOUS_MAGMA_M},
+    {gObjectEventPal_SuspiciousMagmaF,      OBJ_EVENT_PAL_TAG_SUSPICIOUS_MAGMA_F},
 #if IS_FRLG
     {gObjectEventPal_PlayerFrlg,            OBJ_EVENT_PAL_TAG_PLAYER_RED},
     {gObjectEventPal_PlayerReflectionFrlg,  OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION},

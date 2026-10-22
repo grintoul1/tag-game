@@ -3301,8 +3301,8 @@ Hasty Nature
 
 === TRAINER_ROCKETS_ROUTE109_1 ===
 Name: ???? & ???? /* Route 109 #1*/
-Class: Suspicious Grunts
-Pic: Suspicious Grunts
+Class: Suspicious Grunts Aqua
+Pic: Suspicious Grunts Aqua
 Gender: Female
 Music: Girl
 Battle Type: Singles
@@ -3348,8 +3348,8 @@ Adamant Nature
 
 === TRAINER_ROCKETS_ROUTE109_2 ===
 Name: ???? & ???? /* Route 109 #2*/
-Class: Suspicious Grunts
-Pic: Suspicious Grunts
+Class: Suspicious Grunts Aqua
+Pic: Suspicious Grunts Aqua
 Gender: Female
 Music: Girl
 Battle Type: Singles
@@ -3395,8 +3395,8 @@ Jolly Nature
 
 === TRAINER_ROCKETS_ROUTE109_3 ===
 Name: ???? & ???? /* Route 109 #3*/
-Class: Suspicious Grunts
-Pic: Suspicious Grunts
+Class: Suspicious Grunts Aqua
+Pic: Suspicious Grunts Aqua
 Gender: Female
 Music: Girl
 Battle Type: Singles
@@ -6176,8 +6176,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_MT_PYRE_3 ===
 Name: Grunt /* Mt Pyre #6*/
-Class: Team Aqua Mixed
-Pic: Aqua Grunt F
+Class: Suspicious Grunt Aqua F
+Pic: Suspicious Grunt Aqua F
 Gender: Male
 Music: Aqua
 Battle Type: Doubles
@@ -6194,8 +6194,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_MT_PYRE_4 ===
 Name: Grunt /* Mt Pyre #8*/
-Class: Team Magma Mixed
-Pic: Magma Grunt M
+Class: Suspicious Grunt Magma M
+Pic: Suspicious Grunt Magma M
 Gender: Male
 Music: Aqua
 Battle Type: Doubles
