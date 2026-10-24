@@ -271,3 +271,5 @@
 .include "sound/voicegroups/voicegroup_gs_vs_kantonian_sabrina_square.inc"
 .include "sound/voicegroups/voicegroup_gs_vs_kantonian_sabrina_marimba.inc"
 .include "sound/voicegroups/voicegroup_rby_gsc.inc"
+.include "sound/voicegroups/voicegroup_pmd.inc"
+.include "sound/voicegroups/voicegroup_pmd_celesta.inc"

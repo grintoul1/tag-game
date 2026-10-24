@@ -10192,3 +10192,8 @@ DirectSoundWaveData_10c9890::
 	.align 2
 DirectSoundWaveData_10480d0::
 	.incbin "sound/direct_sound_samples/10480d0.bin"
+
+@ PMD Celesta
+	.align 2
+DirectSoundWaveData_1038c14::
+	.incbin "sound/direct_sound_samples/1038c14.bin"

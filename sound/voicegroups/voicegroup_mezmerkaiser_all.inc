@@ -1,4 +1,4 @@
-@ Combined group: slot 127 is the SF2 drum kit; slots 0..126 are melodic programs 0..126.
+
 voice_group mezmerkaiser_all
 	voice_keysplit voicegroup_piano_keysplit, keysplit_piano
 	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_190_piano_2_0, 255, 0, 255, 127
@@ -8,7 +8,7 @@ voice_group mezmerkaiser_all
 	voice_directsound 60, 0, DirectSoundWaveData_mezmerkaiser_221_e_piano_3, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0 @ 6
 	voice_keysplit voicegroup_mezmerkaiser_007_keysplit, keysplit_mezmerkaiser_007
-	voice_directsound 84, 0, DirectSoundWaveData_mezmerkaiser_225_pb_celesta, 255, 0, 255, 127
+	voice_keysplit voicegroup_pmd_celesta, KeySplitTableCelesta
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_glockenspiel, 255, 165, 51, 235
 	voice_keysplit voicegroup343, keysplit_hg_marimba    @ music box
 	voice_directsound 73, 0, DirectSoundWaveData_mezmerkaiser_232_pb_vibraphone, 255, 0, 255, 127
