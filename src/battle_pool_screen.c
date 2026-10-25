@@ -25,6 +25,7 @@
 #include "pokedex.h"
 #include "util.h"
 #include "trainer_pokemon_sprites.h"
+#include "trainer_util.h"
 #include "starter_choose.h"
 #include "strings.h"
 #include "graphics.h"
@@ -1034,6 +1035,96 @@ static const struct SwapScreenAction sSwap_EnemyScreenActions[] =
     {.id = SWAPACTION_CANCEL, .func = Swap_ActionCancel},
 };
 
+static void CreatePoolMon(const struct TrainerMon *fmon, u16 level, u8 fixedIV, u32 otID, u32 flags, struct Pokemon *dst)
+{
+    enum PokeBall ball = (fmon->ball == 0xFF) ? Random() % POKEBALL_COUNT : fmon->ball;
+    enum Move move;
+    u32 personality = 0, friendship, j;
+    u32 genderValue = Random32();
+    enum Ability ability;
+
+    if (fmon->gender == TRAINER_MON_MALE)
+    {
+        personality = GeneratePersonalityForGender(MON_MALE, fmon->species, genderValue) + 0x1000;
+    }
+    else if (fmon->gender == TRAINER_MON_FEMALE)
+    {
+        personality = GeneratePersonalityForGender(MON_FEMALE, fmon->species, genderValue) + 0x1000;
+    }
+
+    ModifyPersonalityForNature(&personality, fmon->nature);
+    CreateMonWithIVs(dst, fmon->species, level, personality, OTID_STRUCT_PRESET(otID), fixedIV, FALSE);
+
+    friendship = MAX_FRIENDSHIP;
+    // Give the chosen Pokémon its specified moves.
+    for (j = 0; j < MAX_MON_MOVES; j++)
+    {
+        move = fmon->moves[j];
+        if (flags & FLAG_FRONTIER_MON_FACTORY && move == MOVE_RETURN)
+            move = MOVE_FRUSTRATION;
+
+        SetMonMoveSlot(dst, move, j);
+        if (GetMoveEffect(move) == EFFECT_FRUSTRATION)
+            friendship = 0;  // Frustration is more powerful the lower the Pokémon's friendship is.
+    }
+
+    SetMonData(dst, MON_DATA_FRIENDSHIP, &friendship);
+    SetMonData(dst, MON_DATA_HELD_ITEM, &fmon->heldItem);
+
+    // try to set ability. Otherwise, random of non-hidden as per vanilla
+    if (fmon->ability != ABILITY_NONE)
+    {
+        const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[fmon->species];
+        u32 maxAbilities = ARRAY_COUNT(speciesInfo->abilities);
+        for (ability = 0; ability < maxAbilities; ++ability)
+        {
+            if (speciesInfo->abilities[ability] == fmon->ability)
+                break;
+        }
+        if (ability >= maxAbilities)
+            ability = 0;
+        SetMonData(dst, MON_DATA_ABILITY_NUM, &ability);
+    }
+
+    if (fmon->ev != NULL)
+    {
+        SetMonData(dst, MON_DATA_HP_EV, &(fmon->ev[0]));
+        SetMonData(dst, MON_DATA_ATK_EV, &(fmon->ev[1]));
+        SetMonData(dst, MON_DATA_DEF_EV, &(fmon->ev[2]));
+        SetMonData(dst, MON_DATA_SPATK_EV, &(fmon->ev[3]));
+        SetMonData(dst, MON_DATA_SPDEF_EV, &(fmon->ev[4]));
+        SetMonData(dst, MON_DATA_SPEED_EV, &(fmon->ev[5]));
+    }
+
+    if (fmon->iv)
+        SetMonData(dst, MON_DATA_IVS, &(fmon->iv));
+
+    if (fmon->isShiny)
+    {
+        u32 data = TRUE;
+        SetMonData(dst, MON_DATA_IS_SHINY, &data);
+    }
+    if (fmon->dynamaxLevel > 0)
+    {
+        u32 data = fmon->dynamaxLevel;
+        SetMonData(dst, MON_DATA_DYNAMAX_LEVEL, &data);
+    }
+    if (fmon->gigantamaxFactor)
+    {
+        u32 data = fmon->gigantamaxFactor;
+        SetMonData(dst, MON_DATA_GIGANTAMAX_FACTOR, &data);
+    }
+    if (fmon->teraType)
+    {
+        u32 data = fmon->teraType;
+        SetMonData(dst, MON_DATA_TERA_TYPE, &data);
+    }
+
+
+    SetMonData(dst, MON_DATA_POKEBALL, &ball);
+    CalculateMonStats(dst);
+}
+
 static void SpriteCB_Pokeball(struct Sprite *sprite)
 {
     if (sprite->oam.paletteNum == IndexOfSpritePaletteTag(PALTAG_BALL_SELECTED))
@@ -1789,7 +1880,7 @@ static void CreateFrontierPoolSelectableMons(u8 firstMonId)
         else
             ivs = 0; //GetFactoryMonFixedIV(challengeNum, FALSE);
 
-        CreateFacilityMon(&gFacilityTrainerMons[monId],
+        CreatePoolMon(&gFacilityTrainerMons[monId],
                 level, ivs, otId, FLAG_FRONTIER_MON_FACTORY,
                 &sPoolSelectScreen->mons[i + firstMonId].monData);
     }
@@ -1809,7 +1900,7 @@ static void CreateSlateportTentSelectableMons(u8 firstMonId)
     {
         u16 monId = gSaveBlock2Ptr->frontier.rentalMons[i].monId;
         sPoolSelectScreen->mons[i + firstMonId].monId = monId;
-        CreateFacilityMon(&gFacilityTrainerMons[monId], level, ivs, otId, 0, &sPoolSelectScreen->mons[i + firstMonId].monData);
+        CreatePoolMon(&gFacilityTrainerMons[monId], level, ivs, otId, 0, &sPoolSelectScreen->mons[i + firstMonId].monData);
     }
 }
 

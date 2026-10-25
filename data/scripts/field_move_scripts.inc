@@ -72,9 +72,26 @@ EventScript_SmashRock:: @ fallthrough
 	removeobject VAR_LAST_TALKED
 	specialvar VAR_RESULT, TryUpdateRusturfTunnelState
 	goto_if_eq VAR_RESULT, TRUE, EventScript_EndSmash
+	callnative rockSmashRNG
+	goto_if_eq VAR_RESULT, ROCK_SMASH_ENCOUNTER, EventScript_RockSmashWildEncounter
+	goto_if_eq VAR_RESULT, ROCK_SMASH_ITEM, EventScript_RockSmashItem
+EventScript_EndSmash::
+	releaseall
+	end
+
+EventScript_RockSmashWildEncounter::
 	special RockSmashWildEncounter
 	goto_if_eq VAR_RESULT, FALSE, EventScript_EndSmash
 	waitstate
+	releaseall
+	end
+
+EventScript_RockSmashItem::
+	callnative Scrcmd_rockSmashGenerateItem
+	goto_if_eq VAR_0x8005, ITEM_NONE, EventScript_EndSmash
+	checkitemspace VAR_0x8005
+	goto_if_eq VAR_RESULT, FALSE, EventScript_EndSmash
+	giveitem VAR_0x8005
 	releaseall
 	end
 
@@ -149,9 +166,6 @@ EventScript_FollowerJumpWest:
 	waitmovement 0
 	return
 
-EventScript_EndSmash::
-	releaseall
-	end
 
 Movement_WalkUp:
 	walk_up

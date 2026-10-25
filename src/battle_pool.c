@@ -8,6 +8,7 @@
 #include "frontier_util.h"
 #include "battle_tower.h"
 #include "random.h"
+#include "trainer_util.h"
 #include "constants/battle_ai.h"
 #include "constants/battle_pool.h"
 #include "constants/battle_frontier.h"
@@ -121,6 +122,96 @@ static const u16 sInitialRentalMonRanges[][2] =
     {FRONTIER_MON_DUGTRIO_1, NUM_FRONTIER_MONS - 1},  // 372 - 881
     {FRONTIER_MON_DUGTRIO_1, NUM_FRONTIER_MONS - 1},  // 372 - 881
 };
+
+static void CreatePoolMon(const struct TrainerMon *fmon, u16 level, u8 fixedIV, u32 otID, u32 flags, struct Pokemon *dst)
+{
+    enum PokeBall ball = (fmon->ball == 0xFF) ? Random() % POKEBALL_COUNT : fmon->ball;
+    enum Move move;
+    u32 personality = 0, friendship, j;
+    u32 genderValue = Random32();
+    enum Ability ability;
+
+    if (fmon->gender == TRAINER_MON_MALE)
+    {
+        personality = GeneratePersonalityForGender(MON_MALE, fmon->species, genderValue) + 0x1000;
+    }
+    else if (fmon->gender == TRAINER_MON_FEMALE)
+    {
+        personality = GeneratePersonalityForGender(MON_FEMALE, fmon->species, genderValue) + 0x1000;
+    }
+
+    ModifyPersonalityForNature(&personality, fmon->nature);
+    CreateMonWithIVs(dst, fmon->species, level, personality, OTID_STRUCT_PRESET(otID), fixedIV, FALSE);
+
+    friendship = MAX_FRIENDSHIP;
+    // Give the chosen Pokémon its specified moves.
+    for (j = 0; j < MAX_MON_MOVES; j++)
+    {
+        move = fmon->moves[j];
+        if (flags & FLAG_FRONTIER_MON_FACTORY && move == MOVE_RETURN)
+            move = MOVE_FRUSTRATION;
+
+        SetMonMoveSlot(dst, move, j);
+        if (GetMoveEffect(move) == EFFECT_FRUSTRATION)
+            friendship = 0;  // Frustration is more powerful the lower the Pokémon's friendship is.
+    }
+
+    SetMonData(dst, MON_DATA_FRIENDSHIP, &friendship);
+    SetMonData(dst, MON_DATA_HELD_ITEM, &fmon->heldItem);
+
+    // try to set ability. Otherwise, random of non-hidden as per vanilla
+    if (fmon->ability != ABILITY_NONE)
+    {
+        const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[fmon->species];
+        u32 maxAbilities = ARRAY_COUNT(speciesInfo->abilities);
+        for (ability = 0; ability < maxAbilities; ++ability)
+        {
+            if (speciesInfo->abilities[ability] == fmon->ability)
+                break;
+        }
+        if (ability >= maxAbilities)
+            ability = 0;
+        SetMonData(dst, MON_DATA_ABILITY_NUM, &ability);
+    }
+
+    if (fmon->ev != NULL)
+    {
+        SetMonData(dst, MON_DATA_HP_EV, &(fmon->ev[0]));
+        SetMonData(dst, MON_DATA_ATK_EV, &(fmon->ev[1]));
+        SetMonData(dst, MON_DATA_DEF_EV, &(fmon->ev[2]));
+        SetMonData(dst, MON_DATA_SPATK_EV, &(fmon->ev[3]));
+        SetMonData(dst, MON_DATA_SPDEF_EV, &(fmon->ev[4]));
+        SetMonData(dst, MON_DATA_SPEED_EV, &(fmon->ev[5]));
+    }
+
+    if (fmon->iv)
+        SetMonData(dst, MON_DATA_IVS, &(fmon->iv));
+
+    if (fmon->isShiny)
+    {
+        u32 data = TRUE;
+        SetMonData(dst, MON_DATA_IS_SHINY, &data);
+    }
+    if (fmon->dynamaxLevel > 0)
+    {
+        u32 data = fmon->dynamaxLevel;
+        SetMonData(dst, MON_DATA_DYNAMAX_LEVEL, &data);
+    }
+    if (fmon->gigantamaxFactor)
+    {
+        u32 data = fmon->gigantamaxFactor;
+        SetMonData(dst, MON_DATA_GIGANTAMAX_FACTOR, &data);
+    }
+    if (fmon->teraType)
+    {
+        u32 data = fmon->teraType;
+        SetMonData(dst, MON_DATA_TERA_TYPE, &data);
+    }
+
+
+    SetMonData(dst, MON_DATA_POKEBALL, &ball);
+    CalculateMonStats(dst);
+}
 
 // code
 void CallBattlePoolFunction(void)
@@ -363,7 +454,7 @@ static void SetPlayerAndOpponentParties(void)
             monId = gSaveBlock2Ptr->frontier.rentalMons[i].monId;
             ivs = gSaveBlock2Ptr->frontier.rentalMons[i].ivs;
 
-            CreateFacilityMon(&gFacilityTrainerMons[monId], monLevel, ivs, OT_ID_PLAYER_ID, FLAG_FRONTIER_MON_FACTORY, &gParties[B_TRAINER_PLAYER][i]);
+            CreatePoolMon(&gFacilityTrainerMons[monId], monLevel, ivs, OT_ID_PLAYER_ID, FLAG_FRONTIER_MON_FACTORY, &gParties[B_TRAINER_PLAYER][i]);
         }
     }
 
@@ -375,7 +466,7 @@ static void SetPlayerAndOpponentParties(void)
         {
             monId = gSaveBlock2Ptr->frontier.rentalMons[i + FRONTIER_PARTY_SIZE].monId;
             ivs = gSaveBlock2Ptr->frontier.rentalMons[i + FRONTIER_PARTY_SIZE].ivs;
-            CreateFacilityMon(&gFacilityTrainerMons[monId], monLevel, ivs, OT_ID_PLAYER_ID, FLAG_FRONTIER_MON_FACTORY, &gParties[B_TRAINER_OPPONENT_A][i]);
+            CreatePoolMon(&gFacilityTrainerMons[monId], monLevel, ivs, OT_ID_PLAYER_ID, FLAG_FRONTIER_MON_FACTORY, &gParties[B_TRAINER_OPPONENT_A][i]);
         }
         break;
     }
@@ -726,7 +817,7 @@ void FillPoolBrainParty(void)
 
         species[i] = gFacilityTrainerMons[monId].species;
         heldItems[i] = gFacilityTrainerMons[monId].heldItem;
-        CreateFacilityMon(&gFacilityTrainerMons[monId],
+        CreatePoolMon(&gFacilityTrainerMons[monId],
                 monLevel, fixedIV, otId, FLAG_FRONTIER_MON_FACTORY,
                 &gParties[B_TRAINER_OPPONENT_A][i]);
         i++;
@@ -843,7 +934,7 @@ static void FillPoolFrontierTrainerParty(u16 trainerId, u8 firstMonId)
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
         u16 monId = gFrontierTempParty[i];
-        CreateFacilityMon(&gFacilityTrainerMons[monId],
+        CreatePoolMon(&gFacilityTrainerMons[monId],
                 level, fixedIV, otID, FLAG_FRONTIER_MON_FACTORY,
                 &gParties[B_TRAINER_OPPONENT_A][firstMonId + i]);
     }
@@ -859,7 +950,7 @@ static void FillPoolTentTrainerParty(u16 trainerId, u8 firstMonId)
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
         u16 monId = gFrontierTempParty[i];
-        CreateFacilityMon(&gFacilityTrainerMons[monId],
+        CreatePoolMon(&gFacilityTrainerMons[monId],
                 level, fixedIV, otID, 0,
                 &gParties[B_TRAINER_OPPONENT_A][firstMonId + i]);
     }

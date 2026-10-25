@@ -3769,7 +3769,7 @@ static void Task_OnCloseBoxPressed(u8 taskId)
                 }
                 sStorage->screenChangeType = SCREEN_CHANGE_EXIT_ELITE_FOUR;
                 SetPokeStorageTask(Task_ChangeScreen);
-                gSpecialVar_0x8004  = PARTY_MON_CANCEL;
+                gSpecialVar_0x8004  = PARTY_SLOT_CANCEL;
                 gSpecialVar_Result  = FALSE;
             }
             break;
@@ -3814,10 +3814,10 @@ static void Task_OnCloseBoxPressed(u8 taskId)
                 SetPokeStorageTask(Task_PokeStorageMain);
                 break;
             case 0:
-                PlaySE(SE_PC_OFF);
-                ClearBottomWindow();
-                sStorage->state++;
-                break;
+            PlaySE(SE_PC_OFF);
+            ClearBottomWindow();
+            sStorage->state++;
+            break;
             }
             break;
         case 3:
@@ -3831,7 +3831,7 @@ static void Task_OnCloseBoxPressed(u8 taskId)
                 gPartiesCount[B_TRAINER_PLAYER] = CalculatePlayerPartyCount();
                 if (sStorage->boxOption == OPTION_SELECT_MON)
                 {
-                    gSpecialVar_0x8004 = PARTY_MON_CANCEL;
+                    gSpecialVar_0x8004 = PARTY_SLOT_CANCEL;
                     gSpecialVar_Result = FALSE;
                 }
                 sStorage->screenChangeType = SCREEN_CHANGE_EXIT_BOX;
