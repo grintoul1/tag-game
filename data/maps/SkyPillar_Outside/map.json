@@ -2,7 +2,7 @@
   "id": "MAP_SKY_PILLAR_OUTSIDE",
   "name": "SkyPillar_Outside",
   "layout": "LAYOUT_SKY_PILLAR_OUTSIDE",
-  "music": "MUS_PMD_VAST_ICE_MOUNTAIN_PEAK",
+  "music": "MUS_PMD_TEMPORAL_SPIRE",
   "region_map_section": "MAPSEC_SKY_PILLAR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
