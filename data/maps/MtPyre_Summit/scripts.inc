@@ -1366,7 +1366,7 @@ MtPyre_Summit_Text_Grunt3Intro:
 	.string "ahead too!$"
 
 MtPyre_Summit_Text_Grunt3Defeat:
-	.string "Urgh… I should'nt have taken on\n"
+	.string "Urgh… I shouldn't have taken on\n"
 	.string "Team Magma first…$"
 
 MtPyre_Summit_Text_Grunt3PostBattle:
