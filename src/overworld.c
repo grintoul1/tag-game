@@ -4645,7 +4645,7 @@ static const u16 sLocMusicOverrides_Sootopolis[MUSIC_MODE_COUNT - 1] =
     MUS_HG_ROUTE47, // DONE
     MUS_BW_SKYARROW_BRIDGE, // DONE
     MUS_PMD_GOODNIGHT, // DONE
-    LOCATION_MUSIC_NO_OVERRIDE,
+    MUS_PMD_GOODNIGHT, // DONE
 };
 
 static const u16 sLocMusicOverrides_EverGrande[MUSIC_MODE_COUNT - 1] =
