@@ -444,6 +444,7 @@ static void Task_DisplayGaveMailFromBagMessage(u8);
 static void Task_HandleSwitchItemsFromBagYesNoInput(u8);
 static void Task_ValidateChosenHalfParty(u8);
 static void Task_ValidateChosenHalfPartyEliteFour(u8);
+static void Task_ValidateChosenPartyOrder(u8);
 static void Task_ValidateChosenStoryParty(u8);
 static bool8 GetBattleEntryEligibility(struct Pokemon *);
 static bool8 HasPartySlotAlreadyBeenSelected(u8);
@@ -1867,6 +1868,14 @@ static void HandleChooseMonCancel(u8 taskId, s8 *slotPtr)
         gSelectedMonPartyId = PARTY_SLOT_CANCEL;
         Task_ClosePartyMenu(taskId);
         break;
+    case PARTY_ACTION_CHOOSE_MON:
+        if (gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD
+         && gPartyMenu.task == Task_ValidateChosenPartyOrder)
+        {
+            gPartyMenu.task(taskId);
+            break;
+        }
+        [[fallthrough]];
     default:
         PlaySE(SE_SELECT);
         if (DisplayCancelChooseMonYesNo(taskId) != TRUE)
@@ -7780,7 +7789,10 @@ static void TryTutorSelectedMon(u8 taskId)
 
 void CB2_PartyMenuFromStartMenu(void)
 {
-    InitPartyMenu(PARTY_MENU_TYPE_FIELD, (FlagGet(FLAG_SHARE_PARTY) == TRUE ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_ReturnToFieldWithOpenMenu);
+    bool32 shared = FlagGet(FLAG_SHARE_PARTY);
+    InitPartyMenu(PARTY_MENU_TYPE_FIELD, (shared ? PARTY_LAYOUT_OVERWORLD_SHARED : PARTY_LAYOUT_OVERWORLD), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_ReturnToFieldWithOpenMenu);
+    DebugPrintf("%s %d",__func__, shared);
+    gPartyMenu.task = Task_ValidateChosenPartyOrder;
 }
 
 // Giving an item by selecting Give from the bag menu
@@ -8152,6 +8164,53 @@ static void Task_ValidateChosenHalfPartyEliteFour(u8 taskId)
         PlaySE(SE_FAILURE);
         DisplayPartyMenuStdMessage(msgId);
         gTasks[taskId].func = Task_ContinueChoosingHalfParty;
+    }
+    else
+    {
+        PlaySE(SE_SELECT);
+        Task_ClosePartyMenu(taskId);
+    }
+}
+
+static bool32 IsMonValidSpecies(struct Pokemon *pokemon)
+{
+    enum Species species = GetMonData(pokemon, MON_DATA_SPECIES_OR_EGG);
+    if (species == SPECIES_NONE || species == SPECIES_EGG)
+        return FALSE;
+
+    return TRUE;
+}
+
+static void Task_ValidateChosenPartyOrder(u8 taskId)
+{
+    DebugPrintf("%s",__func__);
+    u32 playerCount = 0, partnerCount = 0;
+    struct Pokemon *party = GetTrainerParty(B_TRAINER_PLAYER);
+
+    for (enum PartySlot slot = PARTY_SLOT_0; slot < MULTI_PARTY_SIZE; slot++)
+    {
+        if (IsMonValidSpecies(&party[slot]) && GetMonData(&party[slot], MON_DATA_HP) > 0)
+            playerCount++;
+    }
+
+    for (enum PartySlot slot = MULTI_PARTY_SIZE; slot < PARTY_SIZE; slot++)
+    {
+        if (IsMonValidSpecies(&party[slot]) && GetMonData(&party[slot], MON_DATA_HP) > 0)
+            partnerCount++;
+    }
+
+    if (!playerCount)
+    {
+        PlaySE(SE_FAILURE);
+        DisplayPartyMenuStdMessage(PARTY_MSG_PLAYER_NO_MONS);
+        gTasks[taskId].func = Task_HandleChooseMonInput;
+        return;
+    }
+    else if (!partnerCount)
+    {
+        PlaySE(SE_FAILURE);
+        DisplayPartyMenuStdMessage(PARTY_MSG_PARTNER_NO_MONS);
+        gTasks[taskId].func = Task_HandleChooseMonInput;
     }
     else
     {

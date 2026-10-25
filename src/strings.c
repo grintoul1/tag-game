@@ -1157,3 +1157,5 @@ const u8 gText_Tate[] = _("Tate");
 const u8 gText_Liza[] = _("Liza");
 const u8 gText_Sabrina[] = _("Sabrina");
 const u8 gText_Back[] = _("Back");
+const u8 gText_PlayerHasNoMons[] = _("You have no Pokémon!");
+const u8 gText_PartnerHasNoMons[] = _("Emmie has no Pokémon!");

@@ -1037,6 +1037,8 @@ static const u8 *const sActionStringTable[] =
     [PARTY_MSG_WHICH_STATUS]           = gText_WhichStatus,
     [PARTY_MSG_SET_HP]                 = gText_SetHP,
     [PARTY_MSG_CANNOT_SELECT]          = gText_CannotSelectPkmn,
+    [PARTY_MSG_PLAYER_NO_MONS]         = gText_PlayerHasNoMons,
+    [PARTY_MSG_PARTNER_NO_MONS]        = gText_PartnerHasNoMons,
 };
 
 static const u8 *const sDescriptionStringTable[] =

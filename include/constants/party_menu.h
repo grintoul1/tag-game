@@ -64,6 +64,8 @@
 #define PARTY_MSG_WHICH_STATUS              32
 #define PARTY_MSG_SET_HP                    33 
 #define PARTY_MSG_CANNOT_SELECT             34
+#define PARTY_MSG_PLAYER_NO_MONS            35
+#define PARTY_MSG_PARTNER_NO_MONS           36
 
 #define PARTY_MSG_NONE                      127
 
