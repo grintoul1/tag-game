@@ -1730,7 +1730,7 @@ bool32 IsNPCFollowerWildBattle(void)
 
 void PrepareForFollowerNPCBattle(void)
 {
-    DebugPrintf("%s, %d", __func__, __LINE__);
+    if (gBattleTypeFlags & BATTLE_TYPE_RAYQUAZA) return;
     // Load the partner party if the NPC follower should participate.
     if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && FollowerNPCIsBattlePartner())
     {
