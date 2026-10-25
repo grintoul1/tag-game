@@ -41,7 +41,7 @@ enum BXPYTeamPreviewSpeciesModes
 
 #define VAR_BXPY_PICK_SIZE                         VAR_0x8008
 #define VAR_BXPY_BRING_SIZE                        VAR_0x800B
-#define VAR_BXPY_PARTNER                           VAR_0x800A
+#define VAR_BXPY_PARTNER                           VAR_0x8009
 #define VAR_BXPY_MON_INDEX                         VAR_BXPY_PARTNER
 
 #define SUMMARY_SCREEN_SPRITE_ID_TYPE_1            SPRITE_ARR_ID_TYPE
