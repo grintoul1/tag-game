@@ -1051,6 +1051,7 @@ gSongTable::
 	song mus_hg_lavender, MUSIC_PLAYER_BGM, 0
 	song mus_hg_hall_of_fame, MUSIC_PLAYER_BGM, 0
 	song mus_hg_game_corner, MUSIC_PLAYER_BGM, 0
+	song mus_vs_pokemon_sinnoh, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:

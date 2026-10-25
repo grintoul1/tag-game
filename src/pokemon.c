@@ -5145,6 +5145,7 @@ static u16 gRandomWildMusic[8] = // Add more
     MUS_GS_BATTLE7,
     MUS_VS_WILD,
     MUS_RG_VS_WILD,
+    MUS_VS_POKEMON_SINNOH,
     MUS_VS_POKEMON_JOHTO,
     MUS_VS_POKEMON_KANTO,
     MUS_VS_POKEMON_UNOVA,
@@ -5241,13 +5242,14 @@ u16 GetBattleBGM(void)
         {
         case TRAINER_CLASS_AQUA_LEADER:
         case TRAINER_CLASS_MAGMA_LEADER:
-        switch (TRAINER_BATTLE_PARAM.opponentA)
-        {
-            case TRAINER_MAXIE_MOSSDEEP:
-                return MUS_VS_UNOVA_ELITE_FOUR;
-            default:
-                return MUS_VS_AQUA_MAGMA_LEADER;
-        }
+            switch (TRAINER_BATTLE_PARAM.opponentA)
+            {
+                case TRAINER_ARCHIE_MOSSDEEP:
+                case TRAINER_MAXIE_MOSSDEEP:
+                    return MUS_VS_UNOVA_ELITE_FOUR;
+                default:
+                    return MUS_VS_AQUA_MAGMA_LEADER;
+            }
         case TRAINER_CLASS_ROCKET:
             return MUS_HG_VS_ROCKET;
         case TRAINER_CLASS_TEAM_AQUA:
@@ -5321,6 +5323,16 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_CHAMPION:
             //return MUS_VS_CHAMPION;
             return MUS_VS_SINNOH_BRAIN;
+        case TRAINER_CLASS_WINSTRATE:
+            switch (trainerId)
+            {
+                case TRAINER_VITO:
+                case TRAINER_VITO_ROUTE111:
+                    break;
+                default:
+                    return MUS_RG_VS_GYM_LEADER;
+            }
+            [[fallthrough]]
         case TRAINER_CLASS_RIVAL:
             if (VarGet(VAR_MUSIC_MODE) == MUSIC_MODE_DEFAULT)
                 switchVal = GetCurrentBadgeCount() + 1;
@@ -5373,15 +5385,6 @@ u16 GetBattleBGM(void)
                     return MUS_VS_SINNOH_BRAIN;
             }
             return MUS_VS_FRONTIER_BRAIN;
-        case TRAINER_CLASS_WINSTRATE:
-            switch (trainerId)
-            {
-                case TRAINER_VITO:
-                case TRAINER_VITO_ROUTE111:
-                    return MUS_RG_VS_CHAMPION;
-                default:
-                    return MUS_RG_VS_GYM_LEADER;
-            }
         case TRAINER_CLASS_SUSPICIOUS_GRUNT_AQUA_M...TRAINER_CLASS_SUSPICIOUS_GRUNTS_MAGMA:
             switch (trainerId)
             {

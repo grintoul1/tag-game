@@ -4694,6 +4694,16 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_RG_VS_GYM_LEADER_MINUS_2)         \
     X(MUS_RG_VS_GYM_LEADER_MINUS_3)         \
     X(MUS_HG_ENCOUNTER_ROCKET)         \
+    X(MUS_HG_VICTORY_WILD)         \
+    X(MUS_HG_VICTORY_TRAINER)         \
+    X(MUS_HG_VICTORY_GYM_LEADER)         \
+    X(MUS_HG_SS_AQUA)         \
+    X(MUS_HG_PEWTER)         \
+    X(MUS_HG_OBTAIN_BADGE)         \
+    X(MUS_HG_LAVENDER)         \
+    X(MUS_HG_HALL_OF_FAME)         \
+    X(MUS_HG_GAME_CORNER)         \
+    X(MUS_VS_POKEMON_SINNOH)         \
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \
