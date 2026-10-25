@@ -318,7 +318,7 @@ SootopolisCity_EventScript_NoMusic::
 	return
 
 SootopolisCity_EventScript_ShowEmmie::
-	setobjectxyperm LOCALID_SOOTOPOLIS_WALLACE, 30, 33
+	@setobjectxyperm LOCALID_SOOTOPOLIS_WALLACE, 30, 33
 	addobject LOCALID_SOOTOPOLIS_WALLACE
 	setobjectxy OBJ_EVENT_ID_NPC_FOLLOWER 29, 35
 	showobjectat OBJ_EVENT_ID_NPC_FOLLOWER, MAP_SOOTOPOLIS_CITY
