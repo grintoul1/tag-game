@@ -548,8 +548,8 @@ SootopolisCity_Movement_PanBackToPokeCenter:
 
 SootopolisCity_Movement_PanBackToPokeCenterRayquaza:
 	walk_slow_right
-	walk_slow_diag_northeast
-	walk_slow_diag_northeast
+	walk_slow_right
+	walk_slow_right
 	walk_slow_diag_northeast
 	walk_slow_diag_northeast
 	walk_slow_diag_northeast
@@ -1094,9 +1094,13 @@ SootopolisCity_Movement_RayquazaFlyOff:
 SootopolisCity_Movement_PanUp:
 	walk_slow_up
 	walk_slow_up
+	walk_slow_up
+	walk_slow_up
 	step_end
 
 SootopolisCity_Movement_PanDown:
+	walk_slow_down
+	walk_slow_down
 	walk_slow_down
 	walk_slow_down
 	step_end
@@ -2029,10 +2033,11 @@ SootopolisCity_EventScript_LegendariesBattleReady::
 	removeobject LOCALID_SOOTOPOLIS_RAYQUAZA
 	addvar VAR_SKY_PILLAR_STATE, 1
 	addvar VAR_SOOTOPOLIS_CITY_STATE, 1
-	fadenewbgm MUS_SOOTOPOLIS
 	delay 120
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
 	warpwhitefade MAP_SOOTOPOLIS_CITY, 29, 36
+	delay 30
+	fadenewbgm MUS_SOOTOPOLIS
 	waitstate
 	release
 	end
