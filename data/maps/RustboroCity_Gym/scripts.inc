@@ -19,36 +19,31 @@ RustboroCity_Gym_EventScript_ProgressEmmieState::
 
 
 RustboroCity_Gym_EventScript_Roxanne::
-goto_if_set FLAG_BADGE01_GET, RustboroCity_Gym_EventScript_RoxannePostBattle
-lockall
-playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox RustboroCity_Gym_Text_RoxanneIntro, MSGBOX_AUTOCLOSE
-goto RustboroCity_Gym_EventScript_RoxanneDoMultiBattle
-playbgm MUS_GYM, TRUE
-releaseall
-end
+	goto_if_set FLAG_BADGE01_GET, RustboroCity_Gym_EventScript_RoxannePostBattle
+	lockall
+	playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox RustboroCity_Gym_Text_RoxanneIntro, MSGBOX_AUTOCLOSE
+	goto RustboroCity_Gym_EventScript_RoxanneDoMultiBattle
+	playbgm MUS_GYM, TRUE
+	releaseall
+	end
 
 RustboroCity_Gym_EventScript_RoxanneDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, RustboroCity_Gym_EventScript_RoxanneVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_1 TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, RustboroCity_Gym_EventScript_RoxanneVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 RustboroCity_Gym_EventScript_RoxanneVictory::
-addvar VAR_RUSTBOROCITY_GYM_STATE, 1
-setvar VAR_PARTNER_EMMIE_STATE, 7
-setvar VAR_LEVEL_CAP, 38
-goto RustboroCity_Gym_EventScript_RoxanneDefeated
-end
-
-RustboroCity_Gym_Movement_Roxanne_NotReady:
-walk_down
-step_end
+	setvar VAR_PARTNER_EMMIE_STATE, 7
+	setvar VAR_LEVEL_CAP, 38
+	goto RustboroCity_Gym_EventScript_RoxanneDefeated
+	end
 
 RustboroCity_Gym_EventScript_Roxanne2::
 	goto_if_unset FLAG_RECEIVED_TM_ROCK_TOMB, RustboroCity_Gym_EventScript_GiveRockTomb
@@ -92,54 +87,58 @@ RustboroCity_Gym_EventScript_RoxanneRematch::
 	msgbox RustboroCity_Gym_Text_RoxannePostRematch, MSGBOX_AUTOCLOSE
 	end
 
+/*
 RustboroCity_Gym_EventScript_JoshTommy::
-lockall
-setvar VAR_0x8008, LOCALID_JOSH
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_MALE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox RustboroCity_Gym_Text_JoshIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_TOMMY
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_MALE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-waitmovement 0
-msgbox RustboroCity_Gym_Text_TommyIntro, MSGBOX_AUTOCLOSE
-goto RustboroCity_Gym_EventScript_JoshTommyDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_JOSH
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MALE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox RustboroCity_Gym_Text_JoshIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_TOMMY
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MALE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox RustboroCity_Gym_Text_TommyIntro, MSGBOX_AUTOCLOSE
+	goto RustboroCity_Gym_EventScript_JoshTommyDoMultiBattle
+	releaseall
+	end
 
 RustboroCity_Gym_EventScript_JoshTommyDoMultiBattle::
-playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_JOSH, RustboroCity_Gym_Text_JoshDefeat, TRAINER_TOMMY, RustboroCity_Gym_Text_TommyDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, RustboroCity_Gym_EventScript_JoshTommyVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_GYM, TRUE
+	multi_2p_vs_2 TRAINER_JOSH, RustboroCity_Gym_Text_JoshDefeat, TRAINER_TOMMY, RustboroCity_Gym_Text_TommyDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, RustboroCity_Gym_EventScript_JoshTommyVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 RustboroCity_Gym_EventScript_JoshTommyVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox RustboroCity_Gym_Text_JoshPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-waitmovement 0
-msgbox RustboroCity_Gym_Text_TommyPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_RUSTBOROCITY_GYM_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox RustboroCity_Gym_Text_JoshPostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox RustboroCity_Gym_Text_TommyPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_RUSTBOROCITY_GYM_STATE, 1
+	end
+*/
 
 RustboroCity_Gym_EventScript_Josh::
 	faceplayer
+	trainerbattle_single TRAINER_JOSH, RustboroCity_Gym_Text_JoshIntro, RustboroCity_Gym_Text_JoshDefeat
 	msgbox RustboroCity_Gym_Text_JoshPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 RustboroCity_Gym_EventScript_Tommy::
 	faceplayer
+	trainerbattle_single TRAINER_TOMMY, RustboroCity_Gym_Text_TommyIntro, RustboroCity_Gym_Text_TommyDefeat
 	msgbox RustboroCity_Gym_Text_TommyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
