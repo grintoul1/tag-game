@@ -4705,6 +4705,7 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_HG_GAME_CORNER)         \
     X(MUS_VS_POKEMON_SINNOH)         \
     X(MUS_GS_VS_FRONTIER_BRAIN)     \
+    X(MUS_GS_VS_SINNOH_FRONTIER_BRAIN)     \
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \

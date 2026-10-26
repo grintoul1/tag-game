@@ -924,6 +924,7 @@ enum __attribute__((packed)) SongId
     MUS_HG_GAME_CORNER = 1044,
     MUS_VS_POKEMON_SINNOH = 1045,
     MUS_GS_VS_FRONTIER_BRAIN = 1046,
+    MUS_GS_VS_SINNOH_FRONTIER_BRAIN = 1047,
 
 // These PH_* constants are phoneme sounds used by the "bard" NPC (see src/bard_music.c and src/mauville_old_man.c).
 // Each comes in a triplet of PH_*_BLEND, PH_*_HELD, and PH_*_SOLO, and the name of each triplet incorporates the English phonetic sound it represents.

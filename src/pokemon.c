@@ -5341,7 +5341,13 @@ u16 GetBattleBGM(void)
             switch (switchVal)
             {
             case MUSIC_MODE_SPLIT_1:
-                return MUS_GS_VS_FRONTIER_BRAIN;
+                switch (TRAINER_BATTLE_PARAM.opponentA)
+                {
+                case TRAINER_WALLY_MAUVILLE:
+                    return MUS_GS_VS_SINNOH_FRONTIER_BRAIN;
+                default:
+                    return MUS_GS_VS_FRONTIER_BRAIN;
+                }
             case MUSIC_MODE_SPLIT_2:
                 return MUS_GS_BATTLE2;
             case MUSIC_MODE_SPLIT_3:
