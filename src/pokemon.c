@@ -5341,7 +5341,7 @@ u16 GetBattleBGM(void)
             switch (switchVal)
             {
             case MUSIC_MODE_SPLIT_1:
-                return MUS_RB_BATTLE4;
+                return MUS_GS_VS_FRONTIER_BRAIN;
             case MUSIC_MODE_SPLIT_2:
                 return MUS_GS_BATTLE2;
             case MUSIC_MODE_SPLIT_3:
