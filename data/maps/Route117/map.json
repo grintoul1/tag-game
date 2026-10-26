@@ -294,20 +294,6 @@
       "flag": "0"
     },
     {
-      "local_id": "LOCALID_BRANDI",
-      "graphics_id": "OBJ_EVENT_GFX_LASS",
-      "x": 15,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "1",
-      "script": "Route117_EventScript_Brandi",
-      "flag": "0"
-    },
-    {
       "local_id": "LOCALID_AISHA",
       "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
       "x": 17,
@@ -319,6 +305,20 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "Route117_EventScript_Aisha",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_BRANDI",
+      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "x": 15,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "Route117_EventScript_Brandi",
       "flag": "0"
     },
     {
