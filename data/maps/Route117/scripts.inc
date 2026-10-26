@@ -93,46 +93,48 @@ Route117_EventScript_RematchIsaac::
 	msgbox Route117_Text_IsaacPostRematch, MSGBOX_AUTOCLOSE
 	end
 
+/*
 Route117_EventScript_LydiaIsaac::
-lockall
-setvar VAR_0x8008, LOCALID_LYDIA
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_TWINS, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route117_Text_LydiaIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_ISAAC
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_MALE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route117_Text_IsaacIntro, MSGBOX_AUTOCLOSE
-goto Route117_EventScript_LydiaIsaacDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_LYDIA
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_TWINS, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route117_Text_LydiaIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_ISAAC
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MALE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route117_Text_IsaacIntro, MSGBOX_AUTOCLOSE
+	goto Route117_EventScript_LydiaIsaacDoMultiBattle
+	releaseall
+	end
 
 Route117_EventScript_LydiaIsaacDoMultiBattle::
-playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_LYDIA_1, Route117_Text_LydiaDefeat, TRAINER_ISAAC_1, Route117_Text_IsaacDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route117_EventScript_LydiaIsaacVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE110, TRUE
+	multi_2p_vs_2 TRAINER_LYDIA_1, Route117_Text_LydiaDefeat, TRAINER_ISAAC_1, Route117_Text_IsaacDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route117_EventScript_LydiaIsaacVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route117_EventScript_LydiaIsaacVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route117_Text_LydiaPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route117_Text_IsaacPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE117_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route117_Text_LydiaPostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route117_Text_IsaacPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE117_STATE, 1
+	end
+*/
 
 Route117_EventScript_Lydia::
 	faceplayer
@@ -153,49 +155,52 @@ Route117_EventScript_RematchLydia::
 	msgbox Route117_Text_LydiaPostRematch, MSGBOX_AUTOCLOSE
 	end
 
+/*
 Route117_EventScript_DylanMaria::
-lockall
-setvar VAR_0x8008, LOCALID_DYLAN
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_MALE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route117_Text_DylanIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_MARIA
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_GIRL, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route117_Text_MariaIntro, MSGBOX_AUTOCLOSE
-goto Route117_EventScript_DylanMariaDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_DYLAN
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MALE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route117_Text_DylanIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_MARIA
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_GIRL, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route117_Text_MariaIntro, MSGBOX_AUTOCLOSE
+	goto Route117_EventScript_DylanMariaDoMultiBattle
+	releaseall
+	end
 
 Route117_EventScript_DylanMariaDoMultiBattle::
-playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_DYLAN_1, Route117_Text_DylanDefeat, TRAINER_MARIA_1, Route117_Text_MariaDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route117_EventScript_DylanMariaVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE110, TRUE
+	multi_2p_vs_2 TRAINER_DYLAN_1, Route117_Text_DylanDefeat, TRAINER_MARIA_1, Route117_Text_MariaDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route117_EventScript_DylanMariaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route117_EventScript_DylanMariaVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route117_Text_DylanPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route117_Text_MariaPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE117_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route117_Text_DylanPostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route117_Text_MariaPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE117_STATE, 1
+	end
+*/
 
 Route117_EventScript_Dylan::
 	faceplayer
+	trainerbattle_single TRAINER_DYLAN_1, Route117_Text_DylanIntro, Route117_Text_DylanDefeat
 	msgbox Route117_Text_DylanPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -208,46 +213,48 @@ Route117_EventScript_RegisterDylan::
 	release
 	end
 
+/*
 Route117_EventScript_MelinaDerek::
-lockall
-setvar VAR_0x8008, LOCALID_MELINA
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route117_Text_MelinaIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_DEREK
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route117_Text_DerekIntro, MSGBOX_AUTOCLOSE
-goto Route117_EventScript_MelinaDerekDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_MELINA
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route117_Text_MelinaIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_DEREK
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route117_Text_DerekIntro, MSGBOX_AUTOCLOSE
+	goto Route117_EventScript_MelinaDerekDoMultiBattle
+	releaseall
+	end
 
 Route117_EventScript_MelinaDerekDoMultiBattle::
-playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_MELINA, Route117_Text_MelinaDefeat, TRAINER_DEREK, Route117_Text_DerekDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route117_EventScript_MelinaDerekVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE110, TRUE
+	multi_2p_vs_2 TRAINER_MELINA, Route117_Text_MelinaDefeat, TRAINER_DEREK, Route117_Text_DerekDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route117_EventScript_MelinaDerekVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route117_EventScript_MelinaDerekVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route117_Text_MelinaPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route117_Text_DerekPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE117_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route117_Text_MelinaPostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route117_Text_DerekPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE117_STATE, 1
+	end
+*/
 
 Route117_EventScript_RematchDylan::
 	trainerbattle_rematch TRAINER_DYLAN_1, Route117_Text_DylanRematchIntro, Route117_Text_DylanRematchDefeat
@@ -256,6 +263,7 @@ Route117_EventScript_RematchDylan::
 
 Route117_EventScript_Maria::
 	faceplayer
+	trainerbattle_single TRAINER_MARIA_1, Route117_Text_MariaIntro, Route117_Text_MariaDefeat
 	msgbox Route117_Text_MariaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -278,39 +286,42 @@ Route117_EventScript_Derek::
 	msgbox Route117_Text_DerekPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+/*
 Route117_EventScript_AnnaMeg::
-lockall
-setvar VAR_0x8008, LOCALID_MEG
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-applymovement LOCALID_ANNA, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_TWINS, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route117_Text_AnnaIntro, MSGBOX_AUTOCLOSE
-goto Route117_EventScript_AnnaMegDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_MEG
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	applymovement LOCALID_ANNA, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_TWINS, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route117_Text_AnnaIntro, MSGBOX_AUTOCLOSE
+	goto Route117_EventScript_AnnaMegDoMultiBattle
+	releaseall
+	end
 
 Route117_EventScript_AnnaMegDoMultiBattle::
-playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_1 TRAINER_ANNA_AND_MEG_1, Route117_Text_AnnaDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route117_EventScript_AnnaMegVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE110, TRUE
+	multi_2p_vs_1 TRAINER_ANNA_AND_MEG_1, Route117_Text_AnnaDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route117_EventScript_AnnaMegVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route117_EventScript_AnnaMegVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route117_Text_AnnaPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE117_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route117_Text_AnnaPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE117_STATE, 1
+	end
+*/
 
 Route117_EventScript_Anna::
 	faceplayer
+	trainerbattle_double TRAINER_ANNA_AND_MEG_1, Route117_Text_AnnaIntro, Route117_Text_AnnaDefeat, Route117_Text_AnnaNotEnoughMons
 	msgbox Route117_Text_AnnaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -328,6 +339,7 @@ Route117_EventScript_RematchAnna::
 
 Route117_EventScript_Meg::
 	faceplayer
+	trainerbattle_double TRAINER_ANNA_AND_MEG_1, Route117_Text_MegIntro, Route117_Text_MegDefeat, Route117_Text_MegNotEnoughMons
 	msgbox Route117_Text_MegPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -348,54 +360,58 @@ Route117_EventScript_Melina::
 	msgbox Route117_Text_MelinaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+/*
 Route117_EventScript_BrandiAisha::
-lockall
-setvar VAR_0x8008, LOCALID_BRANDI
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-waitmovement 0
-msgbox Route117_Text_BrandiIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_AISHA
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_INTENSE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-waitmovement 0
-msgbox Route117_Text_AishaIntro, MSGBOX_AUTOCLOSE
-goto Route117_EventScript_BrandiAishaDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_BRANDI
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox Route117_Text_BrandiIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_AISHA
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_INTENSE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox Route117_Text_AishaIntro, MSGBOX_AUTOCLOSE
+	goto Route117_EventScript_BrandiAishaDoMultiBattle
+	releaseall
+	end
 
 Route117_EventScript_BrandiAishaDoMultiBattle::
-playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_BRANDI, Route117_Text_BrandiDefeat, TRAINER_AISHA, Route117_Text_AishaDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route117_EventScript_BrandiAishaVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE110, TRUE
+	multi_2p_vs_2 TRAINER_BRANDI, Route117_Text_BrandiDefeat, TRAINER_AISHA, Route117_Text_AishaDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route117_EventScript_BrandiAishaVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route117_EventScript_BrandiAishaVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-waitmovement 0
-msgbox Route117_Text_BrandiPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-waitmovement 0
-msgbox Route117_Text_AishaPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE117_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox Route117_Text_BrandiPostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox Route117_Text_AishaPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE117_STATE, 1
+	end
+*/
 
 Route117_EventScript_Brandi::
 	faceplayer
+	trainerbattle_single TRAINER_BRANDI, Route117_Text_BrandiIntro, Route117_Text_BrandiDefeat
 	msgbox Route117_Text_BrandiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route117_EventScript_Aisha::
 	faceplayer
+	trainerbattle_single TRAINER_AISHA, Route117_Text_AishaIntro, Route117_Text_AishaDefeat
 	msgbox Route117_Text_AishaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
