@@ -245,98 +245,105 @@ Route116_Movement_GlassesManExitEast:
 	step_end
 
 Route116_EventScript_Joey::
+	faceplayer
+	trainerbattle_single TRAINER_JOEY, Route116_Text_JoeyIntro, Route116_Text_JoeyDefeat
 	msgbox Route116_Text_JoeyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+/*
 Route116_EventScript_JoseJoey::
-lockall
-setvar VAR_0x8008, LOCALID_JOSE
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_MALE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route116_Text_JoseIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_JOEY
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_MALE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route116_Text_JoeyIntro, MSGBOX_AUTOCLOSE
-goto Route116_EventScript_JoseJoeyDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_JOSE
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MALE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route116_Text_JoseIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_JOEY
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MALE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route116_Text_JoeyIntro, MSGBOX_AUTOCLOSE
+	goto Route116_EventScript_JoseJoeyDoMultiBattle
+	releaseall
+	end
 
 Route116_EventScript_JoseJoeyDoMultiBattle::
-playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_JOSE, Route116_Text_JoseDefeat, TRAINER_JOEY, Route116_Text_JoeyDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route116_EventScript_JoseJoeyVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE110, TRUE
+	multi_2p_vs_2 TRAINER_JOSE, Route116_Text_JoseDefeat, TRAINER_JOEY, Route116_Text_JoeyDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route116_EventScript_JoseJoeyVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route116_EventScript_JoseJoeyVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route116_Text_JosePostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route116_Text_JoeyPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE116_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route116_Text_JosePostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route116_Text_JoeyPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE116_STATE, 1
+	end
+*/
 
 Route116_EventScript_Jose::
 	faceplayer
 	msgbox Route116_Text_JosePostBattle, MSGBOX_AUTOCLOSE
 	end
 
+/*
 Route116_EventScript_JerryJanice::
-lockall
-setvar VAR_0x8008, LOCALID_JERRY
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_MALE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route116_Text_JerryIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_JANICE
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_GIRL, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-waitmovement 0
-msgbox Route116_Text_JaniceIntro, MSGBOX_AUTOCLOSE
-goto Route116_EventScript_JerryJaniceDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_JERRY
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MALE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route116_Text_JerryIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_JANICE
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_GIRL, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox Route116_Text_JaniceIntro, MSGBOX_AUTOCLOSE
+	goto Route116_EventScript_JerryJaniceDoMultiBattle
+	releaseall
+	end
 
 Route116_EventScript_JerryJaniceDoMultiBattle::
-playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_JERRY_1, Route116_Text_JerryDefeat, TRAINER_JANICE, Route116_Text_JaniceDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route116_EventScript_JerryJaniceVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE110, TRUE
+	multi_2p_vs_2 TRAINER_JERRY_1, Route116_Text_JerryDefeat, TRAINER_JANICE, Route116_Text_JaniceDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route116_EventScript_JerryJaniceVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route116_EventScript_JerryJaniceVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route116_Text_JerryPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-waitmovement 0
-msgbox Route116_Text_JanicePostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE116_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route116_Text_JerryPostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox Route116_Text_JanicePostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE116_STATE, 1
+	end
+*/
 
 Route116_EventScript_Jerry::
 	faceplayer
+	trainerbattle_single TRAINER_JERRY_1, Route116_Text_JerryIntro, Route116_Text_JerryDefeat
 	msgbox Route116_Text_JerryPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -373,16 +380,19 @@ Route116_EventScript_RematchJerry::
 
 Route116_EventScript_Clark::
 	faceplayer
+	trainerbattle_single TRAINER_CLARK, Route116_Text_ClarkIntro, Route116_Text_ClarkDefeat
 	msgbox Route116_Text_ClarkPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route116_EventScript_Janice::
 	faceplayer
+	trainerbattle_single TRAINER_JANICE, Route116_Text_JaniceIntro, Route116_Text_JaniceDefeat
 	msgbox Route116_Text_JanicePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route116_EventScript_Karen::
 	faceplayer
+	trainerbattle_single TRAINER_KAREN_1, Route116_Text_KarenIntro, Route116_Text_KarenDefeat
 	msgbox Route116_Text_KarenPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -419,144 +429,154 @@ Route116_EventScript_RematchKaren::
 
 Route116_EventScript_Sarah::
 	faceplayer
+	trainerbattle_single TRAINER_SARAH, Route116_Text_SarahIntro, Route116_Text_SarahDefeat
 	msgbox Route116_Text_SarahPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+/*
 Route116_EventScript_DawsonSarah::
-lockall
-setvar VAR_0x8008, LOCALID_DAWSON
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_MALE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route116_Text_DawsonIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_SARAH
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_TWINS, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route116_Text_SarahIntro, MSGBOX_AUTOCLOSE
-goto Route116_EventScript_DawsonSarahDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_DAWSON
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MALE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route116_Text_DawsonIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_SARAH
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_TWINS, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route116_Text_SarahIntro, MSGBOX_AUTOCLOSE
+	goto Route116_EventScript_DawsonSarahDoMultiBattle
+	releaseall
+	end
 
 Route116_EventScript_DawsonSarahDoMultiBattle::
-playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_DAWSON, Route116_Text_DawsonDefeat, TRAINER_SARAH, Route116_Text_SarahDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route116_EventScript_DawsonSarahVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE110, TRUE
+	multi_2p_vs_2 TRAINER_DAWSON, Route116_Text_DawsonDefeat, TRAINER_SARAH, Route116_Text_SarahDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route116_EventScript_DawsonSarahVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route116_EventScript_DawsonSarahVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route116_Text_DawsonPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route116_Text_SarahPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE116_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route116_Text_DawsonPostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route116_Text_SarahPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE116_STATE, 1
+	end
+*/
 
 Route116_EventScript_Dawson::
 	faceplayer
+	trainerbattle_single TRAINER_DAWSON, Route116_Text_DawsonIntro, Route116_Text_DawsonDefeat
 	msgbox Route116_Text_DawsonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+/*
 Route116_EventScript_DevanClark::
-lockall
-setvar VAR_0x8008, LOCALID_DEVAN
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_HIKER, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route116_Text_DevanIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_CLARK
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_HIKER, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route116_Text_ClarkIntro, MSGBOX_AUTOCLOSE
-goto Route116_EventScript_DevanClarkDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_DEVAN
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_HIKER, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route116_Text_DevanIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_CLARK
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_HIKER, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route116_Text_ClarkIntro, MSGBOX_AUTOCLOSE
+	goto Route116_EventScript_DevanClarkDoMultiBattle
+	releaseall
+	end
 
 Route116_EventScript_DevanClarkDoMultiBattle::
-playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_DEVAN, Route116_Text_DevanDefeat, TRAINER_CLARK, Route116_Text_ClarkDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route116_EventScript_DevanClarkVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE110, TRUE
+	multi_2p_vs_2 TRAINER_DEVAN, Route116_Text_DevanDefeat, TRAINER_CLARK, Route116_Text_ClarkDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route116_EventScript_DevanClarkVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route116_EventScript_DevanClarkVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route116_Text_DevanPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route116_Text_ClarkPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE116_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route116_Text_DevanPostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route116_Text_ClarkPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE116_STATE, 1
+	end
+*/
 
 Route116_EventScript_Devan::
 	faceplayer
+	trainerbattle_single TRAINER_DEVAN, Route116_Text_DevanIntro, Route116_Text_DevanDefeat
 	msgbox Route116_Text_DevanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+/*
 Route116_EventScript_JohnsonKaren::
-lockall
-setvar VAR_0x8008, LOCALID_JOHNSON
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_MALE, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route116_Text_JohnsonIntro MSGBOX_AUTOCLOSE
-setvar VAR_0x8008, LOCALID_KAREN
-playse SE_PIN
-applymovement VAR_0x8008, Common_Movement_ExclamationMark
-waitmovement 0
-playbgm MUS_ENCOUNTER_GIRL, TRUE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route116_Text_KarenIntro, MSGBOX_AUTOCLOSE
-goto Route116_EventScript_JohnsonKarenDoMultiBattle
-releaseall
-end
+	lockall
+	setvar VAR_0x8008, LOCALID_JOHNSON
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MALE, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route116_Text_JohnsonIntro MSGBOX_AUTOCLOSE
+	setvar VAR_0x8008, LOCALID_KAREN
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_GIRL, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route116_Text_KarenIntro, MSGBOX_AUTOCLOSE
+	goto Route116_EventScript_JohnsonKarenDoMultiBattle
+	releaseall
+	end
 
 Route116_EventScript_JohnsonKarenDoMultiBattle::
-playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_JOHNSON, Route116_Text_JohnsonDefeat, TRAINER_KAREN_1, Route116_Text_KarenDefeat, PARTNER_EMMIE
-switch VAR_RESULT
-case 1, Route116_EventScript_JohnsonKarenVictory
-fadescreen FADE_TO_BLACK
-special SetCB2WhiteOut
-waitstate
+	playbgm MUS_ROUTE110, TRUE
+	multi_2p_vs_2 TRAINER_JOHNSON, Route116_Text_JohnsonDefeat, TRAINER_KAREN_1, Route116_Text_KarenDefeat, PARTNER_EMMIE
+	switch VAR_RESULT
+	case 1, Route116_EventScript_JohnsonKarenVictory
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
 
 Route116_EventScript_JohnsonKarenVictory::
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-waitmovement 0
-msgbox Route116_Text_JohnsonPostBattle, MSGBOX_AUTOCLOSE
-applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-waitmovement 0
-msgbox Route116_Text_KarenPostBattle, MSGBOX_AUTOCLOSE
-addvar VAR_ROUTE116_STATE, 1
-end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox Route116_Text_JohnsonPostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route116_Text_KarenPostBattle, MSGBOX_AUTOCLOSE
+	addvar VAR_ROUTE116_STATE, 1
+	end
+*/
 
 Route116_EventScript_Johnson::
 	faceplayer
+	trainerbattle_single TRAINER_JOHNSON, Route116_Text_JohnsonIntro, Route116_Text_JohnsonDefeat
 	msgbox Route116_Text_JohnsonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
