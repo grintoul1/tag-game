@@ -582,7 +582,7 @@ static enum ScriptType GetActiveObjectScriptType(struct ApproachingTrainer *appr
         }
     }
 
-    TrainerBattleParameter *temp = (TrainerBattleParameter *)(approachingObject->trainerScriptPtr + 1);
+    /*TrainerBattleParameter *temp = (TrainerBattleParameter *)(approachingObject->trainerScriptPtr + 1);
     if (GetTrainerBattleType(temp->params.opponentA) == TRAINER_BATTLE_TYPE_DOUBLES)
     {
         // player can't start double battle
@@ -591,7 +591,7 @@ static enum ScriptType GetActiveObjectScriptType(struct ApproachingTrainer *appr
 
         return DOUBLES_BATTLE_SCRIPT;
     }
-    /*else if (gObjectEvents[approachingObject->objectEventId].trainerType == TRAINER_TYPE_SINGLE_TRAINER)
+    else if (gObjectEvents[approachingObject->objectEventId].trainerType == TRAINER_TYPE_SINGLE_TRAINER)
     {
         return SINGLE_TRAINER_BATTLE_SCRIPT;
     }*/
