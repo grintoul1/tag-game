@@ -293,7 +293,7 @@ Route116_EventScript_JoseJoeyVictory::
 */
 
 Route116_EventScript_Jose::
-	faceplayer
+	trainerbattle_single TRAINER_JOSE, Route116_Text_JoseIntro, Route116_Text_JoseDefeat
 	msgbox Route116_Text_JosePostBattle, MSGBOX_AUTOCLOSE
 	end
 
