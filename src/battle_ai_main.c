@@ -11947,7 +11947,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
     enum BattlerId battlerAtkPartner = GetPartnerBattler(battlerAtk);
     enum Move UNUSED *moves = GetMovesArray(battlerAtk);
     enum Move UNUSED *atkPartnerMove = GetMovesArray(battlerAtkPartner);
-    u32 partnerEffect = GetMoveEffect(aiData->partnerMove);
+    u32 UNUSED partnerEffect = GetMoveEffect(aiData->partnerMove);
     u32 atkPartnerAbility = aiData->abilities[battlerAtkPartner];
     u32 atkPartnerHoldEffect = aiData->holdEffects[battlerAtkPartner];
     bool32 partnerProtecting = IsAllyProtectingFromMove(battlerAtk, move, aiData->partnerMove) && !MoveIgnoresProtect(move);
@@ -14056,7 +14056,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
     // AI_DoubleBattle
     {
         // check what effect partner is using
-        if (aiData->partnerMove != 0 && hasPartner)
+        /*if (aiData->partnerMove != 0 && hasPartner) TODO
         {
             // This catches weather, terrain, screens, etc
             //if (AreMovesEquivalent(battlerAtk, battlerAtkPartner, move, aiData->partnerMove))
@@ -14081,6 +14081,7 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                 break;
             }
         } // check partner move effect
+         */
 
         // Adjust for always crit moves
         if (MoveAlwaysCrits(aiData->partnerMove) && aiData->abilities[battlerAtk] == ABILITY_ANGER_POINT)
