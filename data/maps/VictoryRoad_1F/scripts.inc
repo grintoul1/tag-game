@@ -54,7 +54,7 @@ VictoryRoad_1F_EventScript_WallyEntranceBattle::
 
 VictoryRoad_B1F_EventScript_WallyDoMultiBattle::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	multi_2p_vs_1 TRAINER_WALLY_VR_1, VictoryRoad_1F_Text_WallyEntranceDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_WALLY_VR_1, VictoryRoad_1F_Text_WallyEntranceDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, VictoryRoad_B1F_EventScript_WallyVictory
 	fadescreen FADE_TO_BLACK
@@ -141,7 +141,7 @@ end
 
 VictoryRoad_1F_EventScript_AlbertHopeDoMultiBattle::
 playbgm MUS_VICTORY_ROAD, TRUE
-multi_2p_vs_2 TRAINER_ALBERT, VictoryRoad_1F_Text_AlbertDefeat, TRAINER_HOPE, VictoryRoad_1F_Text_HopeDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_ALBERT, VictoryRoad_1F_Text_AlbertDefeat, TRAINER_HOPE, VictoryRoad_1F_Text_HopeDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, VictoryRoad_1F_EventScript_AlbertHopeVictory
 fadescreen FADE_TO_BLACK
@@ -180,7 +180,7 @@ end
 
 VictoryRoad_1F_EventScript_KatelynnQuincyDoMultiBattle::
 playbgm MUS_VICTORY_ROAD, TRUE
-multi_2p_vs_2 TRAINER_KATELYNN, VictoryRoad_1F_Text_KatelynnDefeat, TRAINER_QUINCY, VictoryRoad_1F_Text_QuincyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_KATELYNN, VictoryRoad_1F_Text_KatelynnDefeat, TRAINER_QUINCY, VictoryRoad_1F_Text_QuincyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, VictoryRoad_1F_EventScript_KatelynnQuincyVictory
 fadescreen FADE_TO_BLACK

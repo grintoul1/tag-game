@@ -68,7 +68,7 @@ end
 
 Route115_EventScript_TimothyKyraDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_TIMOTHY_1, Route115_Text_TimothyDefeat, TRAINER_KYRA, Route115_Text_KyraDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_TIMOTHY_1, Route115_Text_TimothyDefeat, TRAINER_KYRA, Route115_Text_KyraDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route115_EventScript_TimothyKyraVictory
 fadescreen FADE_TO_BLACK
@@ -119,7 +119,7 @@ end
 
 Route115_EventScript_KoichiDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_1 TRAINER_KOICHI, Route115_Text_KoichiDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_KOICHI, Route115_Text_KoichiDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route115_EventScript_KoichiVictory
 fadescreen FADE_TO_BLACK
@@ -179,7 +179,7 @@ end
 
 Route115_EventScript_CyndyHeleneDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_CYNDY_1, Route115_Text_CyndyDefeat, TRAINER_HELENE, Route115_Text_HeleneDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CYNDY_1, Route115_Text_CyndyDefeat, TRAINER_HELENE, Route115_Text_HeleneDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route115_EventScript_CyndyHeleneVictory
 fadescreen FADE_TO_BLACK
@@ -239,7 +239,7 @@ end
 
 Route115_EventScript_HectorMarleneDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_HECTOR, Route115_Text_HectorDefeat, TRAINER_MARLENE, Route115_Text_MarleneDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_HECTOR, Route115_Text_HectorDefeat, TRAINER_MARLENE, Route115_Text_MarleneDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route115_EventScript_HectorMarleneVictory
 fadescreen FADE_TO_BLACK
@@ -295,7 +295,7 @@ end
 
 Route115_EventScript_AlixNobDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_ALIX, Route115_Text_AlixDefeat, TRAINER_NOB_1, Route115_Text_NobDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_ALIX, Route115_Text_AlixDefeat, TRAINER_NOB_1, Route115_Text_NobDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route115_EventScript_AlixNobVictory
 fadescreen FADE_TO_BLACK

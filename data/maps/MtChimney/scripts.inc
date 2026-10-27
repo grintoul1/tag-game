@@ -169,7 +169,7 @@ MtChimney_EventScript_Maxie::
 
 MtChimney_EventScript_MaxieDoMultiBattle::
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
-	multi_2p_vs_1 TRAINER_MAXIE_MT_CHIMNEY, MtChimney_Text_MaxieDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_MAXIE_MT_CHIMNEY, MtChimney_Text_MaxieDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MtChimney_EventScript_MaxieVictory
 	fadescreen FADE_TO_BLACK
@@ -620,7 +620,7 @@ end
 
 MtChimney_EventScript_TabithaDoMultiBattle::
 	playbgm MUS_MT_CHIMNEY, TRUE
-	multi_2p_vs_1 TRAINER_TABITHA_MT_CHIMNEY, MtChimney_Text_TabithaDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_TABITHA_MT_CHIMNEY, MtChimney_Text_TabithaDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MtChimney_EventScript_TabithaVictory
 	fadescreen FADE_TO_BLACK
@@ -663,7 +663,7 @@ end
 
 MtChimney_EventScript_Grunt1Grunt2DoMultiBattle::
 playbgm MUS_MT_CHIMNEY, TRUE
-multi_2p_vs_2 TRAINER_GRUNT_MT_CHIMNEY_1, MtChimney_Text_Grunt1Defeat,TRAINER_GRUNT_MT_CHIMNEY_2, MtChimney_Text_Grunt2Defeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_GRUNT_MT_CHIMNEY_1, MtChimney_Text_Grunt1Defeat,TRAINER_GRUNT_MT_CHIMNEY_2, MtChimney_Text_Grunt2Defeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MtChimney_EventScript_Grunt1Grunt2Victory
 fadescreen FADE_TO_BLACK

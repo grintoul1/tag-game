@@ -189,7 +189,7 @@ end
 
 MagmaHideout_1F_EventScript_Grunt1Grunt2DoMultiBattle::
 	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-	multi_2p_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_1, MagmaHideout_1F_Text_Grunt1Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_2, MagmaHideout_1F_Text_Grunt2Defeat, PARTNER_SHELLY_MHO
+	multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_1, MagmaHideout_1F_Text_Grunt1Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_2, MagmaHideout_1F_Text_Grunt2Defeat, PARTNER_SHELLY_MHO
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, MagmaHideout_1F_EventScript_Grunt1Grunt2Victory

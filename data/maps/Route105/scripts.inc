@@ -51,7 +51,7 @@ end
 
 Route105_EventScript_FosterLuisDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_FOSTER, Route105_Text_FosterDefeated, TRAINER_LUIS, Route105_Text_LuisDefeated, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_FOSTER, Route105_Text_FosterDefeated, TRAINER_LUIS, Route105_Text_LuisDefeated, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route105_EventScript_FosterLuisVictory
 fadescreen FADE_TO_BLACK
@@ -90,7 +90,7 @@ end
 
 Route105_EventScript_JosueAndresDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_JOSUE, Route105_Text_JosueDefeated, TRAINER_ANDRES_1, Route105_Text_AndresDefeated, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_JOSUE, Route105_Text_JosueDefeated, TRAINER_ANDRES_1, Route105_Text_AndresDefeated, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route105_EventScript_JosueAndresVictory
 fadescreen FADE_TO_BLACK
@@ -129,7 +129,7 @@ end
 
 Route105_EventScript_BeverlyDominikDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_BEVERLY, Route105_Text_BeverlyDefeated, TRAINER_DOMINIK, Route105_Text_DominikDefeated, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_BEVERLY, Route105_Text_BeverlyDefeated, TRAINER_DOMINIK, Route105_Text_DominikDefeated, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route105_EventScript_BeverlyDominikVictory
 fadescreen FADE_TO_BLACK

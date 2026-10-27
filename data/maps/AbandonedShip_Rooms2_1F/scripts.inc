@@ -17,7 +17,7 @@ end
 
 AbandonedShip_Rooms2_1F_EventScript_KiraDanDoMultiBattle::
 playbgm MUS_ABANDONED_SHIP, TRUE
-multi_2p_vs_1 TRAINER_KIRA_AND_DAN_1, AbandonedShip_Rooms2_1F_Text_KiraDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_KIRA_AND_DAN_1, AbandonedShip_Rooms2_1F_Text_KiraDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, AbandonedShip_Rooms2_1F_EventScript_KiraDanVictory
 fadescreen FADE_TO_BLACK
@@ -87,7 +87,7 @@ end
 
 AbandonedShip_Rooms2_1F_EventScript_GarrisonJaniDoMultiBattle::
 playbgm MUS_ABANDONED_SHIP, TRUE
-multi_2p_vs_2 TRAINER_GARRISON, AbandonedShip_Rooms2_1F_Text_GarrisonDefeat, TRAINER_JANI, AbandonedShip_Rooms2_1F_Text_JaniDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_GARRISON, AbandonedShip_Rooms2_1F_Text_GarrisonDefeat, TRAINER_JANI, AbandonedShip_Rooms2_1F_Text_JaniDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, AbandonedShip_Rooms2_1F_EventScript_GarrisonJaniVictory
 fadescreen FADE_TO_BLACK

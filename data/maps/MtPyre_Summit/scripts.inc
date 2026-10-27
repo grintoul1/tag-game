@@ -980,7 +980,7 @@ MtPyre_Summit_EventScript_Grunt_Mt_Pyre_1Grunt_Mt_Pyre_2::
 
 MtPyre_Summit_EventScript_Grunt_Mt_Pyre_1Grunt_Mt_Pyre_2DoMultiBattle::
 	playbgm MUS_MT_PYRE_EXTERIOR, TRUE
-	multi_2p_vs_2 TRAINER_GRUNT_MT_PYRE_1, MtPyre_Summit_Text_Grunt1Defeat, TRAINER_GRUNT_MT_PYRE_2, MtPyre_Summit_Text_Grunt2Defeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_GRUNT_MT_PYRE_1, MtPyre_Summit_Text_Grunt1Defeat, TRAINER_GRUNT_MT_PYRE_2, MtPyre_Summit_Text_Grunt2Defeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MtPyre_Summit_EventScript_Grunt_Mt_Pyre_1Grunt_Mt_Pyre_2Victory
 	fadescreen FADE_TO_BLACK
@@ -1031,7 +1031,7 @@ MtPyre_Summit_EventScript_Grunt_Mt_Pyre_3Grunt_Mt_Pyre_4::
 
 MtPyre_Summit_EventScript_Grunt_Mt_Pyre_3Grunt_Mt_Pyre_4DoMultiBattle::
 	playbgm MUS_MT_PYRE_EXTERIOR, TRUE
-	multi_2p_vs_2 TRAINER_GRUNT_MT_PYRE_3, MtPyre_Summit_Text_Grunt3Defeat, TRAINER_GRUNT_MT_PYRE_4, MtPyre_Summit_Text_Grunt4Defeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_GRUNT_MT_PYRE_3, MtPyre_Summit_Text_Grunt3Defeat, TRAINER_GRUNT_MT_PYRE_4, MtPyre_Summit_Text_Grunt4Defeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MtPyre_Summit_EventScript_Grunt_Mt_Pyre_3Grunt_Mt_Pyre_4Victory
 	fadescreen FADE_TO_BLACK
@@ -1112,7 +1112,7 @@ MtPyre_Summit_EventScript_MattTabithaFight_A::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	waitmovement LOCALID_MATT
 	playbgm MUS_MT_PYRE_EXTERIOR, TRUE
-	multi_2p_vs_2 TRAINER_TABITHA_MT_PYRE, MtPyre_Summit_Text_Tabitha_Mt_PyreDefeat, TRAINER_MATT_MT_PYRE, MtPyre_Summit_Text_Matt_Mt_PyreDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_TABITHA_MT_PYRE, MtPyre_Summit_Text_Tabitha_Mt_PyreDefeat, TRAINER_MATT_MT_PYRE, MtPyre_Summit_Text_Matt_Mt_PyreDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MtPyre_Summit_EventScript_Matt_Mt_PyreTabitha_Mt_PyreVictory_A
 	fadescreen FADE_TO_BLACK
@@ -1191,7 +1191,7 @@ MtPyre_Summit_EventScript_MattTabithaFight_B::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	waitmovement LOCALID_MATT
 	playbgm MUS_MT_PYRE_EXTERIOR, TRUE
-	multi_2p_vs_2 TRAINER_TABITHA_MT_PYRE, MtPyre_Summit_Text_Tabitha_Mt_PyreDefeat, TRAINER_MATT_MT_PYRE, MtPyre_Summit_Text_Matt_Mt_PyreDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_TABITHA_MT_PYRE, MtPyre_Summit_Text_Tabitha_Mt_PyreDefeat, TRAINER_MATT_MT_PYRE, MtPyre_Summit_Text_Matt_Mt_PyreDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MtPyre_Summit_EventScript_Matt_Mt_PyreTabitha_Mt_PyreVictory_B
 	fadescreen FADE_TO_BLACK
@@ -1233,7 +1233,7 @@ MtPyre_Summit_EventScript_MattTabithaFight_C::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	waitmovement LOCALID_TABITHA
 	playbgm MUS_MT_PYRE_EXTERIOR, TRUE
-	multi_2p_vs_2 TRAINER_TABITHA_MT_PYRE, MtPyre_Summit_Text_Tabitha_Mt_PyreDefeat, TRAINER_MATT_MT_PYRE, MtPyre_Summit_Text_Matt_Mt_PyreDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_TABITHA_MT_PYRE, MtPyre_Summit_Text_Tabitha_Mt_PyreDefeat, TRAINER_MATT_MT_PYRE, MtPyre_Summit_Text_Matt_Mt_PyreDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MtPyre_Summit_EventScript_Matt_Mt_PyreTabitha_Mt_PyreVictory_C
 	fadescreen FADE_TO_BLACK

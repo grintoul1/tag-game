@@ -244,7 +244,7 @@ MauvilleCity_Gym_EventScript_KirkVivian::
 
 MauvilleCity_Gym_EventScript_KirkVivianDoMultiBattle::
 	playbgm MUS_GYM, TRUE
-	multi_2p_vs_2 TRAINER_KIRK, MauvilleCity_Gym_Text_KirkDefeated, TRAINER_VIVIAN, MauvilleCity_Gym_Text_VivianDefeated, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_KIRK, MauvilleCity_Gym_Text_KirkDefeated, TRAINER_VIVIAN, MauvilleCity_Gym_Text_VivianDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MauvilleCity_Gym_EventScript_KirkVivianVictory
 	fadescreen FADE_TO_BLACK
@@ -292,7 +292,7 @@ MauvilleCity_Gym_EventScript_ShawnAngelo::
 
 MauvilleCity_Gym_EventScript_ShawnAngeloDoMultiBattle::
 	playbgm MUS_GYM, TRUE
-	multi_2p_vs_2 TRAINER_SHAWN, MauvilleCity_Gym_Text_ShawnDefeated, TRAINER_ANGELO, MauvilleCity_Gym_Text_AngeloDefeated, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_SHAWN, MauvilleCity_Gym_Text_ShawnDefeated, TRAINER_ANGELO, MauvilleCity_Gym_Text_AngeloDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MauvilleCity_Gym_EventScript_ShawnAngeloVictory
 	fadescreen FADE_TO_BLACK

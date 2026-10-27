@@ -24,7 +24,7 @@ end
 
 VictoryRoad_B2F_EventScript_DianneJulieDoMultiBattle::
 playbgm MUS_VICTORY_ROAD, TRUE
-multi_2p_vs_2 TRAINER_DIANNE, VictoryRoad_B2F_Text_DianneDefeat, TRAINER_JULIE, VictoryRoad_B2F_Text_JulieDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_DIANNE, VictoryRoad_B2F_Text_DianneDefeat, TRAINER_JULIE, VictoryRoad_B2F_Text_JulieDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, VictoryRoad_B2F_EventScript_DianneJulieVictory
 fadescreen FADE_TO_BLACK
@@ -63,7 +63,7 @@ end
 
 VictoryRoad_B2F_EventScript_CarolineOwenDoMultiBattle::
 playbgm MUS_VICTORY_ROAD, TRUE
-multi_2p_vs_2 TRAINER_CAROLINE, VictoryRoad_B2F_Text_CarolineDefeat, TRAINER_OWEN, VictoryRoad_B2F_Text_OwenDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CAROLINE, VictoryRoad_B2F_Text_CarolineDefeat, TRAINER_OWEN, VictoryRoad_B2F_Text_OwenDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, VictoryRoad_B2F_EventScript_CarolineOwenVictory
 fadescreen FADE_TO_BLACK
@@ -91,7 +91,7 @@ VictoryRoad_B2F_EventScript_Vito::
 
 VictoryRoad_B2F_EventScript_VitoDoMultiBattle::
 	playbgm MUS_VICTORY_ROAD, TRUE
-	multi_2p_vs_1 TRAINER_VITO, VictoryRoad_B2F_Text_VitoDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_VITO, VictoryRoad_B2F_Text_VitoDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, VictoryRoad_B2F_EventScript_VitoVictory
 	fadescreen FADE_TO_BLACK

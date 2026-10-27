@@ -48,7 +48,7 @@ end
 
 FortreeCity_Gym_EventScript_WinonaDoMultiBattle::
 playbgm MUS_PMD_TEMPORAL_TOWER, TRUE
-multi_2p_vs_1 TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, FortreeCity_Gym_EventScript_WinonaVictory
 fadescreen FADE_TO_BLACK
@@ -130,7 +130,7 @@ end
 
 FortreeCity_Gym_EventScript_JaredAshleyDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_JARED, FortreeCity_Gym_Text_JaredDefeat, TRAINER_ASHLEY, FortreeCity_Gym_Text_AshleyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_JARED, FortreeCity_Gym_Text_JaredDefeat, TRAINER_ASHLEY, FortreeCity_Gym_Text_AshleyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, FortreeCity_Gym_EventScript_JaredAshleyVictory
 fadescreen FADE_TO_BLACK
@@ -176,7 +176,7 @@ end
 
 FortreeCity_Gym_EventScript_EdwardoFlintDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_EDWARDO, FortreeCity_Gym_Text_EdwardoDefeat, TRAINER_FLINT, FortreeCity_Gym_Text_FlintDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_EDWARDO, FortreeCity_Gym_Text_EdwardoDefeat, TRAINER_FLINT, FortreeCity_Gym_Text_FlintDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, FortreeCity_Gym_EventScript_EdwardoFlintVictory
 fadescreen FADE_TO_BLACK
@@ -232,7 +232,7 @@ end
 
 FortreeCity_Gym_EventScript_DariusHumbertoDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_DARIUS, FortreeCity_Gym_Text_DariusDefeat, TRAINER_HUMBERTO, FortreeCity_Gym_Text_HumbertoDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_DARIUS, FortreeCity_Gym_Text_DariusDefeat, TRAINER_HUMBERTO, FortreeCity_Gym_Text_HumbertoDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, FortreeCity_Gym_EventScript_DariusHumbertoVictory
 fadescreen FADE_TO_BLACK

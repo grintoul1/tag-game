@@ -303,7 +303,7 @@ end
 
 Route120_EventScript_ColinAngelicaDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_COLIN, Route120_Text_ColinDefeat, TRAINER_ANGELICA, Route120_Text_AngelicaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_COLIN, Route120_Text_ColinDefeat, TRAINER_ANGELICA, Route120_Text_AngelicaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route120_EventScript_ColinAngelicaVictory
 fadescreen FADE_TO_BLACK
@@ -349,7 +349,7 @@ end
 
 Route120_EventScript_ClarissaRobertDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_CLARISSA, Route120_Text_ClarissaDefeat, TRAINER_ROBERT_1, Route120_Text_RobertDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CLARISSA, Route120_Text_ClarissaDefeat, TRAINER_ROBERT_1, Route120_Text_RobertDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route120_EventScript_ClarissaRobertVictory
 fadescreen FADE_TO_BLACK
@@ -409,7 +409,7 @@ end
 
 Route120_EventScript_JennaLorenzoDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_JENNA, Route120_Text_JennaDefeat, TRAINER_LORENZO, Route120_Text_LorenzoDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_JENNA, Route120_Text_JennaDefeat, TRAINER_LORENZO, Route120_Text_LorenzoDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route120_EventScript_JennaLorenzoVictory
 fadescreen FADE_TO_BLACK
@@ -460,7 +460,7 @@ end
 
 Route120_EventScript_ChipJeffreyDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_CHIP, Route120_Text_ChipDefeat, TRAINER_JEFFREY_1, Route120_Text_JeffreyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CHIP, Route120_Text_ChipDefeat, TRAINER_JEFFREY_1, Route120_Text_JeffreyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route120_EventScript_ChipJeffreyVictory
 fadescreen FADE_TO_BLACK
@@ -540,7 +540,7 @@ end
 
 Route120_EventScript_KeigoRileyDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_KEIGO, Route120_Text_KeigoDefeat, TRAINER_RILEY, Route120_Text_RileyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_KEIGO, Route120_Text_KeigoDefeat, TRAINER_RILEY, Route120_Text_RileyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route120_EventScript_KeigoRileyVictory
 fadescreen FADE_TO_BLACK
@@ -596,7 +596,7 @@ end
 
 Route120_EventScript_JenniferCallieDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_JENNIFER, Route120_Text_JenniferDefeat, TRAINER_CALLIE, Route120_Text_CallieDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_JENNIFER, Route120_Text_JenniferDefeat, TRAINER_CALLIE, Route120_Text_CallieDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route120_EventScript_JenniferCallieVictory
 fadescreen FADE_TO_BLACK

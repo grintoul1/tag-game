@@ -382,7 +382,7 @@ end
 
 Route119_EventScript_JacksonCatherineDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_JACKSON_1, Route119_Text_JacksonDefeat, TRAINER_CATHERINE_1, Route119_Text_CatherineDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_JACKSON_1, Route119_Text_JacksonDefeat, TRAINER_CATHERINE_1, Route119_Text_CatherineDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route119_EventScript_JacksonCatherineVictory
 fadescreen FADE_TO_BLACK
@@ -477,7 +477,7 @@ end
 
 Route119_EventScript_ChrisDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_1 TRAINER_CHRIS, Route119_Text_ChrisDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_CHRIS, Route119_Text_ChrisDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route119_EventScript_ChrisVictory
 fadescreen FADE_TO_BLACK
@@ -523,7 +523,7 @@ end
 
 Route119_EventScript_DaytonHughDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_DAYTON, Route119_Text_DaytonDefeat, TRAINER_HUGH, Route119_Text_HughDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_DAYTON, Route119_Text_DaytonDefeat, TRAINER_HUGH, Route119_Text_HughDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route119_EventScript_DaytonHughVictory
 fadescreen FADE_TO_BLACK

@@ -37,7 +37,7 @@ BattleFrontier_BattleFactoryBattleRoom_EventScript_NolandBattle::
 
 BattleFrontier_BattleFactoryBattleRoom_EventScript_NolandDoMultiBattle::
 	playbgm MUS_B_FACTORY, TRUE
-	multi_2p_vs_1 TRAINER_NOLAND, BattleFrontier_BattleFactoryBattleRoom_Text_NolandDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_NOLAND, BattleFrontier_BattleFactoryBattleRoom_Text_NolandDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, BattleFrontier_BattleFactoryBattleRoom_EventScript_NolandVictory
 	fadescreen FADE_TO_BLACK

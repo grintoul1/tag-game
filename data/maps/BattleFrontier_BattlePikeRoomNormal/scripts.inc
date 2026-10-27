@@ -33,7 +33,7 @@ BattleFrontier_BattlePikeRoomNormal_EventScript_LucyBattle::
 
 BattleFrontier_BattlePikeRoomNormal_EventScript_LucyDoMultiBattle::
 	playbgm MUS_B_PIKE, TRUE
-	multi_2p_vs_1 TRAINER_LUCY, BattleFrontier_BattlePikeRoomNormal_Text_LucyDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_LUCY, BattleFrontier_BattlePikeRoomNormal_Text_LucyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, BattleFrontier_BattlePikeRoomNormal_EventScript_LucyVictory
 	fadescreen FADE_TO_BLACK

@@ -47,7 +47,7 @@ end
 
 MtPyre_2F_EventScript_Pyre_AquaGrunt1Pyre_AquaGrunt2DoMultiBattle::
 playbgm MUS_MT_PYRE, TRUE
-multi_2p_vs_2 TRAINER_PYRE_AQUAGRUNT1, MtPyre_2F_Text_Pyre_AquaGrunt1Defeat, TRAINER_PYRE_AQUAGRUNT2, MtPyre_2F_Text_Pyre_AquaGrunt2Defeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_PYRE_AQUAGRUNT1, MtPyre_2F_Text_Pyre_AquaGrunt1Defeat, TRAINER_PYRE_AQUAGRUNT2, MtPyre_2F_Text_Pyre_AquaGrunt2Defeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MtPyre_2F_EventScript_Pyre_AquaGrunt1Pyre_AquaGrunt2Victory
 fadescreen FADE_TO_BLACK
@@ -88,7 +88,7 @@ end
 
 MtPyre_2F_EventScript_Pyre_MagmaGrunt4Pyre_MagmaGrunt5DoMultiBattle::
 playbgm MUS_MT_PYRE, TRUE
-multi_2p_vs_2 TRAINER_PYRE_MAGMAGRUNT4, MtPyre_2F_Text_Pyre_MagmaGrunt4Defeat, TRAINER_PYRE_MAGMAGRUNT5, MtPyre_2F_Text_Pyre_MagmaGrunt5Defeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_PYRE_MAGMAGRUNT4, MtPyre_2F_Text_Pyre_MagmaGrunt4Defeat, TRAINER_PYRE_MAGMAGRUNT5, MtPyre_2F_Text_Pyre_MagmaGrunt5Defeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MtPyre_2F_EventScript_Pyre_MagmaGrunt4Pyre_MagmaGrunt5Victory
 fadescreen FADE_TO_BLACK

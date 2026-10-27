@@ -73,7 +73,7 @@ MauvilleCity_EventScript_BlueContinue::
 
 MauvilleCity_EventScript_BlueDoMultiBattle::
 	playbgm MUS_RUSTBORO, FALSE
-	multi_2p_vs_1 TRAINER_BLUE_MAUVILLE, MauvilleCity_Text_BlueMauvilleDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_BLUE_MAUVILLE, MauvilleCity_Text_BlueMauvilleDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MauvilleCity_EventScript_BlueVictory
 	fadescreen FADE_TO_BLACK
@@ -418,7 +418,7 @@ MauvilleCity_EventScript_BattleWally::
 	applymovement LOCALID_WALLYS_UNCLE, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox MauvilleCity_Text_UncleHereWeCome, MSGBOX_DEFAULT
-	multi_2p_vs_2 TRAINER_WALLY_MAUVILLE, MauvilleCity_Text_WallyDefeat, TRAINER_UNCLE_MAUVILLE, MauvilleCity_Text_UncleDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_WALLY_MAUVILLE, MauvilleCity_Text_WallyDefeat, TRAINER_UNCLE_MAUVILLE, MauvilleCity_Text_UncleDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MauvilleCity_EventScript_WallyVictory
 	fadescreen FADE_TO_BLACK

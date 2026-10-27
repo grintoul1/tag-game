@@ -31,7 +31,7 @@ end
 
 MtPyre_6F_EventScript_Pyre_AquaGrunt3Pyre_MagmaGrunt3DoMultiBattle::
 playbgm MUS_MT_PYRE, TRUE
-multi_2p_vs_2 TRAINER_PYRE_AQUAGRUNT3, MtPyre_6F_Text_Pyre_AquaGrunt3Defeat, TRAINER_PYRE_MAGMAGRUNT3, MtPyre_6F_Text_Pyre_MagmaGrunt3Defeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_PYRE_AQUAGRUNT3, MtPyre_6F_Text_Pyre_AquaGrunt3Defeat, TRAINER_PYRE_MAGMAGRUNT3, MtPyre_6F_Text_Pyre_MagmaGrunt3Defeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MtPyre_6F_EventScript_Pyre_AquaGrunt3Pyre_MagmaGrunt3Victory
 fadescreen FADE_TO_BLACK

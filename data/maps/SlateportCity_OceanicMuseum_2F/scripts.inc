@@ -68,7 +68,7 @@ SlateportCity_OceanicMuseum_2F_EventScript_EmmieApproachStern::
 
 SlateportCity_OceanicMuseum_2F_EventScript_ArchieDoMultiBattle::
 	playbgm MUS_ENCOUNTER_AQUA, TRUE
-	multi_2p_vs_1 TRAINER_ARCHIE_SLATEPORT_CITY, SlateportCity_OceanicMuseum_2F_Text_ArchieDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_ARCHIE_SLATEPORT_CITY, SlateportCity_OceanicMuseum_2F_Text_ArchieDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, SlateportCity_OceanicMuseum_2F_EventScript_ArchieVictory
 	fadescreen FADE_TO_BLACK

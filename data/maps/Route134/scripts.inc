@@ -35,7 +35,7 @@ end
 
 Route134_EventScript_LaurelJackDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_LAUREL, Route134_Text_LaurelDefeat, TRAINER_JACK, Route134_Text_JackDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_LAUREL, Route134_Text_LaurelDefeat, TRAINER_JACK, Route134_Text_JackDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route134_EventScript_LaurelJackVictory
 fadescreen FADE_TO_BLACK
@@ -74,7 +74,7 @@ end
 
 Route134_EventScript_AaronMarleyDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_AARON, Route134_Text_AaronDefeat, TRAINER_MARLEY, Route134_Text_MarleyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_AARON, Route134_Text_AaronDefeat, TRAINER_MARLEY, Route134_Text_MarleyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route134_EventScript_AaronMarleyVictory
 fadescreen FADE_TO_BLACK
@@ -113,7 +113,7 @@ end
 
 Route134_EventScript_AlexKelvinDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_ALEX, Route134_Text_AlexDefeat, TRAINER_KELVIN, Route134_Text_KelvinDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_ALEX, Route134_Text_AlexDefeat, TRAINER_KELVIN, Route134_Text_KelvinDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route134_EventScript_AlexKelvinVictory
 fadescreen FADE_TO_BLACK
@@ -152,7 +152,7 @@ end
 
 Route134_EventScript_HudsonLindaDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_HUDSON, Route134_Text_HudsonDefeat, TRAINER_LINDA, Route133_Text_LindaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_HUDSON, Route134_Text_HudsonDefeat, TRAINER_LINDA, Route133_Text_LindaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route134_EventScript_HudsonLindaVictory
 fadescreen FADE_TO_BLACK
@@ -191,7 +191,7 @@ end
 
 Route134_EventScript_ReynaHitoshiDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_REYNA, Route134_Text_ReynaDefeat, TRAINER_HITOSHI, Route134_Text_HitoshiDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_REYNA, Route134_Text_ReynaDefeat, TRAINER_HITOSHI, Route134_Text_HitoshiDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route134_EventScript_ReynaHitoshiVictory
 fadescreen FADE_TO_BLACK

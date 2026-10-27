@@ -53,7 +53,7 @@ Route102_EventScript_CalvinRick::
 
 Route102_EventScript_CalvinRickDoMultiBattle::
 	playbgm MUS_ROUTE101, TRUE
-	multi_2p_vs_2 TRAINER_CALVIN_1, Route102_Text_CalvinDefeated, TRAINER_RICK, Route102_Text_RickDefeated, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_CALVIN_1, Route102_Text_CalvinDefeated, TRAINER_RICK, Route102_Text_RickDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route102_EventScript_CalvinRickVictory
 	fadescreen FADE_TO_BLACK
@@ -106,7 +106,7 @@ Route102_EventScript_AllenTiana::
 
 Route102_EventScript_AllenTianaDoMultiBattle::
 	playbgm MUS_ROUTE101, TRUE
-	multi_2p_vs_2 TRAINER_ALLEN, Route102_Text_AllenDefeated, TRAINER_TIANA, Route102_Text_TianaDefeated, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_ALLEN, Route102_Text_AllenDefeated, TRAINER_TIANA, Route102_Text_TianaDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route102_EventScript_AllenTianaVictory
 	fadescreen FADE_TO_BLACK

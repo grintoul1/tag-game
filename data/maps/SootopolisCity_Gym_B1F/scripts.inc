@@ -52,7 +52,7 @@ end
 
 SootopolisCity_Gym_B1F_EventScript_AndreaConnieDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_ANDREA, SootopolisCity_Gym_B1F_Text_AndreaDefeat, TRAINER_CONNIE, SootopolisCity_Gym_B1F_Text_ConnieDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_ANDREA, SootopolisCity_Gym_B1F_Text_AndreaDefeat, TRAINER_CONNIE, SootopolisCity_Gym_B1F_Text_ConnieDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, SootopolisCity_Gym_B1F_EventScript_AndreaConnieVictory
 fadescreen FADE_TO_BLACK
@@ -96,7 +96,7 @@ end
 
 SootopolisCity_Gym_B1F_EventScript_DaphneAnnikaDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_DAPHNE, SootopolisCity_Gym_B1F_Text_DaphneDefeat, TRAINER_ANNIKA, SootopolisCity_Gym_B1F_Text_AnnikaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_DAPHNE, SootopolisCity_Gym_B1F_Text_DaphneDefeat, TRAINER_ANNIKA, SootopolisCity_Gym_B1F_Text_AnnikaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, SootopolisCity_Gym_B1F_EventScript_DaphneAnnikaVictory
 fadescreen FADE_TO_BLACK
@@ -135,7 +135,7 @@ end
 
 SootopolisCity_Gym_B1F_EventScript_OliviaBriannaDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_OLIVIA, SootopolisCity_Gym_B1F_Text_OliviaDefeat, TRAINER_BRIANNA, SootopolisCity_Gym_B1F_Text_BriannaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_OLIVIA, SootopolisCity_Gym_B1F_Text_OliviaDefeat, TRAINER_BRIANNA, SootopolisCity_Gym_B1F_Text_BriannaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, SootopolisCity_Gym_B1F_EventScript_OliviaBriannaVictory
 fadescreen FADE_TO_BLACK
@@ -179,7 +179,7 @@ end
 
 SootopolisCity_Gym_B1F_EventScript_CrissyBethanyDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_CRISSY, SootopolisCity_Gym_B1F_Text_CrissyDefeat, TRAINER_BETHANY, SootopolisCity_Gym_B1F_Text_BethanyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CRISSY, SootopolisCity_Gym_B1F_Text_CrissyDefeat, TRAINER_BETHANY, SootopolisCity_Gym_B1F_Text_BethanyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, SootopolisCity_Gym_B1F_EventScript_CrissyBethanyVictory
 fadescreen FADE_TO_BLACK
@@ -223,7 +223,7 @@ end
 
 SootopolisCity_Gym_B1F_EventScript_TiffanyBridgetDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_TIFFANY, SootopolisCity_Gym_B1F_Text_TiffanyDefeat, TRAINER_BRIDGET, SootopolisCity_Gym_B1F_Text_BridgetDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_TIFFANY, SootopolisCity_Gym_B1F_Text_TiffanyDefeat, TRAINER_BRIDGET, SootopolisCity_Gym_B1F_Text_BridgetDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, SootopolisCity_Gym_B1F_EventScript_TiffanyBridgetVictory
 fadescreen FADE_TO_BLACK

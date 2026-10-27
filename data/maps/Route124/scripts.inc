@@ -72,7 +72,7 @@ end
 
 Route124_EventScript_GraceDeclanDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_GRACE, Route124_Text_GraceDefeat, TRAINER_DECLAN, Route124_Text_DeclanDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_GRACE, Route124_Text_GraceDefeat, TRAINER_DECLAN, Route124_Text_DeclanDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route124_EventScript_GraceDeclanVictory
 fadescreen FADE_TO_BLACK
@@ -121,7 +121,7 @@ end
 
 Route124_EventScript_ChadJennyDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_CHAD, Route124_Text_ChadDefeat, TRAINER_JENNY_1, Route124_Text_JennyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CHAD, Route124_Text_ChadDefeat, TRAINER_JENNY_1, Route124_Text_JennyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route124_EventScript_ChadJennyVictory
 fadescreen FADE_TO_BLACK
@@ -153,7 +153,7 @@ end
 
 Route124_EventScript_LilaRoyDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_1 TRAINER_LILA_AND_ROY_1, Route124_Text_LilaDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_LILA_AND_ROY_1, Route124_Text_LilaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route124_EventScript_LilaRoyVictory
 fadescreen FADE_TO_BLACK
@@ -228,7 +228,7 @@ end
 
 Route124_EventScript_IsabellaRolandDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_ISABELLA, Route124_Text_IsabellaDefeat, TRAINER_ROLAND, Route124_Text_RolandDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_ISABELLA, Route124_Text_IsabellaDefeat, TRAINER_ROLAND, Route124_Text_RolandDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route124_EventScript_IsabellaRolandVictory
 fadescreen FADE_TO_BLACK

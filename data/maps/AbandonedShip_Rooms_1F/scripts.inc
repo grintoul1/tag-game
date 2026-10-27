@@ -28,7 +28,7 @@ end
 
 AbandonedShip_Rooms_1F_EventScript_DemetriusThaliaDoMultiBattle::
 playbgm MUS_ABANDONED_SHIP, TRUE
-multi_2p_vs_2 TRAINER_DEMETRIUS, AbandonedShip_Rooms_1F_Text_DemetriusDefeat, TRAINER_THALIA_1, AbandonedShip_Rooms_1F_Text_ThaliaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_DEMETRIUS, AbandonedShip_Rooms_1F_Text_DemetriusDefeat, TRAINER_THALIA_1, AbandonedShip_Rooms_1F_Text_ThaliaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, AbandonedShip_Rooms_1F_EventScript_DemetriusThaliaVictory
 fadescreen FADE_TO_BLACK

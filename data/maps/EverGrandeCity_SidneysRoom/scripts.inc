@@ -144,7 +144,7 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney::
 
 EverGrandeCity_SidneysRoom_EventScript_SidneyDoMultiBattle::
 	playbgm MUS_VICTORY_ROAD, TRUE
-	multi_2p_vs_1 TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, EverGrandeCity_SidneysRoom_EventScript_SidneyVictory
 	fadescreen FADE_TO_BLACK

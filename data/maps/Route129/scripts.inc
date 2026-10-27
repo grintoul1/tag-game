@@ -107,7 +107,7 @@ end
 
 Route129_EventScript_ChaseReedDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_CHASE, Route129_Text_ChaseDefeat, TRAINER_REED, Route129_Text_ReedDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CHASE, Route129_Text_ChaseDefeat, TRAINER_REED, Route129_Text_ReedDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route129_EventScript_ChaseReedVictory
 fadescreen FADE_TO_BLACK
@@ -146,7 +146,7 @@ end
 
 Route129_EventScript_TishaClarenceDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_TISHA, Route129_Text_TishaDefeat, TRAINER_CLARENCE, Route129_Text_ClarenceDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_TISHA, Route129_Text_TishaDefeat, TRAINER_CLARENCE, Route129_Text_ClarenceDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route129_EventScript_TishaClarenceVictory
 fadescreen FADE_TO_BLACK
@@ -178,7 +178,7 @@ end
 
 Route129_EventScript_AllisonDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_1 TRAINER_ALLISON, Route129_Text_AllisonDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_ALLISON, Route129_Text_AllisonDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route129_EventScript_AllisonVictory
 fadescreen FADE_TO_BLACK

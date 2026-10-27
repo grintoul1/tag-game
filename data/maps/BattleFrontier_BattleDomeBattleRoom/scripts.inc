@@ -68,7 +68,7 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_TuckerBattle::
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_TuckerDoMultiBattle::
 	playbgm MUS_B_DOME, TRUE
-	multi_2p_vs_1 TRAINER_TUCKER, BattleFrontier_BattleDomeBattleRoom_Text_TuckerDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_TUCKER, BattleFrontier_BattleDomeBattleRoom_Text_TuckerDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, BattleFrontier_BattleDomeBattleRoom_EventScript_TuckerVictory
 	fadescreen FADE_TO_BLACK

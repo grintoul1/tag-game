@@ -30,7 +30,7 @@ end
 
 MagmaHideout_2F_1R_EventScript_Grunt14Grunt3DoMultiBattle::
 	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-	multi_2p_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_3, MagmaHideout_2F_1R_Text_Grunt14Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_4, MagmaHideout_2F_1R_Text_Grunt3Defeat, PARTNER_SHELLY_MHO
+	multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_3, MagmaHideout_2F_1R_Text_Grunt14Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_4, MagmaHideout_2F_1R_Text_Grunt3Defeat, PARTNER_SHELLY_MHO
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, MagmaHideout_2F_1R_EventScript_Grunt14Grunt3Victory
@@ -88,7 +88,7 @@ end
 
 MagmaHideout_2F_1R_EventScript_Grunt5Grunt4DoMultiBattle::
 	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-	multi_2p_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_5, MagmaHideout_2F_1R_Text_Grunt5Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_6, MagmaHideout_2F_1R_Text_Grunt4Defeat, PARTNER_SHELLY_MHO
+	multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_5, MagmaHideout_2F_1R_Text_Grunt5Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_6, MagmaHideout_2F_1R_Text_Grunt4Defeat, PARTNER_SHELLY_MHO
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, MagmaHideout_2F_1R_EventScript_Grunt5Grunt4Victory

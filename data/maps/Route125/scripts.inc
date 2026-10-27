@@ -56,7 +56,7 @@ end
 
 Route125_EventScript_SharonNolenDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_SHARON, Route125_Text_SharonDefeat, TRAINER_NOLEN, Route125_Text_NolenDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_SHARON, Route125_Text_SharonDefeat, TRAINER_NOLEN, Route125_Text_NolenDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route125_EventScript_SharonNolenVictory
 fadescreen FADE_TO_BLACK
@@ -100,7 +100,7 @@ end
 
 Route125_EventScript_TanyaStanDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_TANYA, Route125_Text_TanyaDefeat, TRAINER_STAN, Route125_Text_StanDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_TANYA, Route125_Text_TanyaDefeat, TRAINER_STAN, Route125_Text_StanDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route125_EventScript_TanyaStanVictory
 fadescreen FADE_TO_BLACK
@@ -147,7 +147,7 @@ end
 
 Route125_EventScript_ErnestDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_1 TRAINER_ERNEST_1, Route125_Text_ErnestDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_ERNEST_1, Route125_Text_ErnestDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route125_EventScript_ErnestVictory
 fadescreen FADE_TO_BLACK
@@ -196,7 +196,7 @@ end
 
 Route125_EventScript_KimIrisDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_1 TRAINER_KIM_AND_IRIS, Route125_Text_KimDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_KIM_AND_IRIS, Route125_Text_KimDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route125_EventScript_KimIrisVictory
 fadescreen FADE_TO_BLACK
@@ -242,7 +242,7 @@ end
 
 Route125_EventScript_PresleyAuronDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_PRESLEY, Route125_Text_PresleyDefeat, TRAINER_AURON, Route125_Text_AuronDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_PRESLEY, Route125_Text_PresleyDefeat, TRAINER_AURON, Route125_Text_AuronDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route125_EventScript_PresleyAuronVictory
 fadescreen FADE_TO_BLACK

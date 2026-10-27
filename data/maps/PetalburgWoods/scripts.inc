@@ -32,7 +32,7 @@ end
 
 PetalburgWoods_EventScript_MattShellyDoMultiBattle::
 playbgm MUS_PETALBURG_WOODS, TRUE
-multi_2p_vs_2 TRAINER_MATT_PETALBURG_WOODS, PetalburgWoods_Text_MattDefeat, TRAINER_SHELLY_PETALBURG_WOODS, PetalburgWoods_Text_ShellyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_MATT_PETALBURG_WOODS, PetalburgWoods_Text_MattDefeat, TRAINER_SHELLY_PETALBURG_WOODS, PetalburgWoods_Text_ShellyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, PetalburgWoods_EventScript_MattShellyVictory
 fadescreen FADE_TO_BLACK
@@ -343,7 +343,7 @@ end
 
 PetalburgWoods_EventScript_JamesLyleDoMultiBattle::
 playbgm MUS_PETALBURG_WOODS, TRUE
-multi_2p_vs_2 TRAINER_JAMES_1, PetalburgWoods_Text_JamesDefeat, TRAINER_LYLE, PetalburgWoods_Text_LyleDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_JAMES_1, PetalburgWoods_Text_JamesDefeat, TRAINER_LYLE, PetalburgWoods_Text_LyleDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, PetalburgWoods_EventScript_JamesLyleVictory
 fadescreen FADE_TO_BLACK

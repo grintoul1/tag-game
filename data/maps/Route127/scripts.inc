@@ -55,7 +55,7 @@ end
 
 Route127_EventScript_DonnyCamdenDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_DONNY, Route127_Text_DonnyDefeat, TRAINER_CAMDEN, Route127_Text_CamdenDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_DONNY, Route127_Text_DonnyDefeat, TRAINER_CAMDEN, Route127_Text_CamdenDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route127_EventScript_DonnyCamdenVictory
 fadescreen FADE_TO_BLACK
@@ -94,7 +94,7 @@ end
 
 Route127_EventScript_AidanAthenaDoMultiBattle::
 playbgm MUS_ROUTE122, TRUE
-multi_2p_vs_2 TRAINER_AIDAN, Route127_Text_AidanDefeat, TRAINER_ATHENA, Route127_Text_AthenaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_AIDAN, Route127_Text_AidanDefeat, TRAINER_ATHENA, Route127_Text_AthenaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route127_EventScript_AidanAthenaVictory
 fadescreen FADE_TO_BLACK
@@ -133,7 +133,7 @@ end
 
 Route127_EventScript_RogerJonahDoMultiBattle::
 playbgm MUS_ROUTE122, TRUE
-multi_2p_vs_2 TRAINER_ROGER, Route127_Text_RogerDefeat, TRAINER_JONAH, Route127_Text_JonahDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_ROGER, Route127_Text_RogerDefeat, TRAINER_JONAH, Route127_Text_JonahDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route127_EventScript_RogerJonahVictory
 fadescreen FADE_TO_BLACK
@@ -172,7 +172,7 @@ end
 
 Route127_EventScript_KojiHenryDoMultiBattle::
 playbgm MUS_ROUTE122, TRUE
-multi_2p_vs_2 TRAINER_KOJI_1, Route127_Text_KojiDefeat, TRAINER_HENRY, Route127_Text_HenryDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_KOJI_1, Route127_Text_KojiDefeat, TRAINER_HENRY, Route127_Text_HenryDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route127_EventScript_KojiHenryVictory
 fadescreen FADE_TO_BLACK

@@ -613,7 +613,7 @@ end
 
 MossdeepCity_Gym_EventScript_PrestonMauraDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_PRESTON, MossdeepCity_Gym_Text_PrestonDefeat, TRAINER_MAURA, MossdeepCity_Gym_Text_MauraDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_PRESTON, MossdeepCity_Gym_Text_PrestonDefeat, TRAINER_MAURA, MossdeepCity_Gym_Text_MauraDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MossdeepCity_Gym_EventScript_PrestonMauraVictory
 fadescreen FADE_TO_BLACK
@@ -652,7 +652,7 @@ end
 
 MossdeepCity_Gym_EventScript_BlakeSamanthaDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_BLAKE, MossdeepCity_Gym_Text_BlakeDefeat, TRAINER_SAMANTHA, MossdeepCity_Gym_Text_SamanthaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_BLAKE, MossdeepCity_Gym_Text_BlakeDefeat, TRAINER_SAMANTHA, MossdeepCity_Gym_Text_SamanthaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MossdeepCity_Gym_EventScript_BlakeSamanthaVictory
 fadescreen FADE_TO_BLACK
@@ -692,7 +692,7 @@ end
 
 MossdeepCity_Gym_EventScript_VirgilNateDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_VIRGIL, MossdeepCity_Gym_Text_VirgilDefeat, TRAINER_NATE, MossdeepCity_Gym_Text_NateDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_VIRGIL, MossdeepCity_Gym_Text_VirgilDefeat, TRAINER_NATE, MossdeepCity_Gym_Text_NateDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MossdeepCity_Gym_EventScript_VirgilNateVictory
 fadescreen FADE_TO_BLACK
@@ -732,7 +732,7 @@ end
 
 MossdeepCity_Gym_EventScript_HannahSylviaDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_HANNAH, MossdeepCity_Gym_Text_HannahDefeat, TRAINER_SYLVIA, MossdeepCity_Gym_Text_SylviaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_HANNAH, MossdeepCity_Gym_Text_HannahDefeat, TRAINER_SYLVIA, MossdeepCity_Gym_Text_SylviaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MossdeepCity_Gym_EventScript_HannahSylviaVictory
 fadescreen FADE_TO_BLACK
@@ -772,7 +772,7 @@ end
 
 MossdeepCity_Gym_EventScript_KathleenNicholasDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_KATHLEEN, MossdeepCity_Gym_Text_KathleenDefeat, TRAINER_NICHOLAS, MossdeepCity_Gym_Text_NicholasDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_KATHLEEN, MossdeepCity_Gym_Text_KathleenDefeat, TRAINER_NICHOLAS, MossdeepCity_Gym_Text_NicholasDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MossdeepCity_Gym_EventScript_KathleenNicholasVictory
 fadescreen FADE_TO_BLACK
@@ -811,7 +811,7 @@ end
 
 MossdeepCity_Gym_EventScript_CliffordMaceyDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_CLIFFORD, MossdeepCity_Gym_Text_CliffordDefeat, TRAINER_MACEY, MossdeepCity_Gym_Text_MaceyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CLIFFORD, MossdeepCity_Gym_Text_CliffordDefeat, TRAINER_MACEY, MossdeepCity_Gym_Text_MaceyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MossdeepCity_Gym_EventScript_CliffordMaceyVictory
 fadescreen FADE_TO_BLACK

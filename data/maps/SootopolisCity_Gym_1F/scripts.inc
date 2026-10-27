@@ -30,7 +30,7 @@ end
 
 SootopolisCity_Gym_1F_EventScript_JuanDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_JUAN_1, SootopolisCity_Gym_1F_Text_JuanDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_JUAN_1, SootopolisCity_Gym_1F_Text_JuanDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, SootopolisCity_Gym_1F_EventScript_JuanDefeated
 fadescreen FADE_TO_BLACK

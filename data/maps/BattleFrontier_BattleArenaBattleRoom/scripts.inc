@@ -38,7 +38,7 @@ BattleFrontier_BattleArenaBattleRoom_EventScript_GretaBattle::
 
 BattleFrontier_BattleArenaBattleRoom_EventScript_GretaDoMultiBattle::
 	playbgm MUS_B_ARENA, TRUE
-	multi_2p_vs_1 TRAINER_GRETA, BattleFrontier_BattleArenaBattleRoom_Text_GretaDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_GRETA, BattleFrontier_BattleArenaBattleRoom_Text_GretaDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, BattleFrontier_BattleArenaBattleRoom_EventScript_GretaVictory
 	fadescreen FADE_TO_BLACK

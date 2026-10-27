@@ -108,7 +108,7 @@ end
 
 Route113_EventScript_LaoLungDoMultiBattle::
 playbgm MUS_ROUTE113, TRUE
-multi_2p_vs_2 TRAINER_LAO_1, Route113_Text_LaoDefeat, TRAINER_LUNG, Route113_Text_LungDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_LAO_1, Route113_Text_LaoDefeat, TRAINER_LUNG, Route113_Text_LungDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route113_EventScript_LaoLungVictory
 fadescreen FADE_TO_BLACK
@@ -165,7 +165,7 @@ end
 
 Route113_EventScript_ToriTiaDoMultiBattle::
 playbgm MUS_ROUTE113, TRUE
-multi_2p_vs_1 TRAINER_TORI_AND_TIA, Route113_Text_ToriDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_TORI_AND_TIA, Route113_Text_ToriDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route113_EventScript_ToriTiaVictory
 fadescreen FADE_TO_BLACK
@@ -218,7 +218,7 @@ end
 
 Route113_EventScript_CobySophieDoMultiBattle::
 playbgm MUS_ROUTE113, TRUE
-multi_2p_vs_2 TRAINER_COBY, Route113_Text_CobyDefeat, TRAINER_SOPHIE, Route113_Text_SophieDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_COBY, Route113_Text_CobyDefeat, TRAINER_SOPHIE, Route113_Text_SophieDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route113_EventScript_CobySophieVictory
 fadescreen FADE_TO_BLACK

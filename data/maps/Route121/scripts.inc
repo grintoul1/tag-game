@@ -160,7 +160,7 @@ end
 
 Route121_EventScript_VanessaWalterDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_VANESSA, Route121_Text_VanessaDefeat, TRAINER_WALTER_1, Route121_Text_WalterDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_VANESSA, Route121_Text_VanessaDefeat, TRAINER_WALTER_1, Route121_Text_WalterDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route121_EventScript_VanessaWalterVictory
 fadescreen FADE_TO_BLACK
@@ -218,7 +218,7 @@ end
 
 Route121_EventScript_KateJoyDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_1 TRAINER_KATE_AND_JOY, Route121_Text_KateDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_KATE_AND_JOY, Route121_Text_KateDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route121_EventScript_KateJoyVictory
 fadescreen FADE_TO_BLACK
@@ -292,7 +292,7 @@ end
 
 Route121_EventScript_CaleTammyDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_CALE, Route121_Text_CaleDefeat, TRAINER_TAMMY, Route121_Text_TammyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CALE, Route121_Text_CaleDefeat, TRAINER_TAMMY, Route121_Text_TammyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route121_EventScript_CaleTammyVictory
 fadescreen FADE_TO_BLACK
@@ -333,7 +333,7 @@ end
 
 Route121_EventScript_PatMylesDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_PAT, Route121_Text_PatDefeat, TRAINER_MYLES, Route121_Text_MylesDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_PAT, Route121_Text_PatDefeat, TRAINER_MYLES, Route121_Text_MylesDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route121_EventScript_PatMylesVictory
 fadescreen FADE_TO_BLACK
@@ -389,7 +389,7 @@ end
 
 Route121_EventScript_MarcelCristinDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_MARCEL, Route121_Text_MarcelDefeat, TRAINER_CRISTIN_1, Route121_Text_CristinDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_MARCEL, Route121_Text_MarcelDefeat, TRAINER_CRISTIN_1, Route121_Text_CristinDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route121_EventScript_MarcelCristinVictory
 fadescreen FADE_TO_BLACK

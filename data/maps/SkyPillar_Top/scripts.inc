@@ -886,7 +886,7 @@ SkyPillar_Top_EventScript_MattTabitha::
 
 SkyPillar_Top_EventScript_MattTabithaDoMultiBattle::
 	playbgm MUS_MT_CHIMNEY, TRUE
-	multi_2p_vs_2 TRAINER_TABITHA_SKY_PILLAR, SkyPillar_Top_Text_TabithaDefeat, TRAINER_MATT_SKY_PILLAR, SkyPillar_Top_Text_MattDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_TABITHA_SKY_PILLAR, SkyPillar_Top_Text_TabithaDefeat, TRAINER_MATT_SKY_PILLAR, SkyPillar_Top_Text_MattDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, SkyPillar_Top_EventScript_MattTabithaVictory
 	fadescreen FADE_TO_BLACK
@@ -1006,7 +1006,7 @@ SkyPillar_Top_EventScript_CourtneyShellyDoMultiBattle::
 	playbgm MUS_MT_CHIMNEY, TRUE
 	setobjectmovementtype LOCALID_SKYPILLAR_COURTNEY, MOVEMENT_TYPE_FACE_DOWN
 	setobjectmovementtype LOCALID_SKYPILLAR_SHELLY, MOVEMENT_TYPE_FACE_DOWN
-	multi_2p_vs_2 TRAINER_SHELLY_SKY_PILLAR, SkyPillar_Top_Text_ShellyDefeat, TRAINER_COURTNEY_SKY_PILLAR, SkyPillar_Top_Text_CourtneyDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_SHELLY_SKY_PILLAR, SkyPillar_Top_Text_ShellyDefeat, TRAINER_COURTNEY_SKY_PILLAR, SkyPillar_Top_Text_CourtneyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, SkyPillar_Top_EventScript_CourtneyShellyVictory
 	fadescreen FADE_TO_BLACK

@@ -32,7 +32,7 @@ RustboroCity_Gym_EventScript_Roxanne::
 
 RustboroCity_Gym_EventScript_RoxanneDoMultiBattle::
 	playbgm MUS_GYM, TRUE
-	multi_2p_vs_1 TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, RustboroCity_Gym_EventScript_RoxanneVictory
 	fadescreen FADE_TO_BLACK
@@ -112,7 +112,7 @@ RustboroCity_Gym_EventScript_JoshTommy::
 
 RustboroCity_Gym_EventScript_JoshTommyDoMultiBattle::
 	playbgm MUS_GYM, TRUE
-	multi_2p_vs_2 TRAINER_JOSH, RustboroCity_Gym_Text_JoshDefeat, TRAINER_TOMMY, RustboroCity_Gym_Text_TommyDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_JOSH, RustboroCity_Gym_Text_JoshDefeat, TRAINER_TOMMY, RustboroCity_Gym_Text_TommyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, RustboroCity_Gym_EventScript_JoshTommyVictory
 	fadescreen FADE_TO_BLACK

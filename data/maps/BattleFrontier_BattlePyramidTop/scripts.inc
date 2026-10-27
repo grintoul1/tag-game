@@ -43,7 +43,7 @@ BattleFrontier_BattlePyramidTop_Text_BrandonBeautifulView:
 
 BattleFrontier_BattlePyramidTop_EventScript_BrandonDoMultiBattle::
 	playbgm MUS_B_PYRAMID, TRUE
-	multi_2p_vs_1 TRAINER_BRANDON, BattleFrontier_BattlePyramidTop_Text_BrandonDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_BRANDON, BattleFrontier_BattlePyramidTop_Text_BrandonDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, BattleFrontier_BattlePyramidTop_EventScript_BrandonVictory
 	fadescreen FADE_TO_BLACK

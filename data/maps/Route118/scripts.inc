@@ -237,7 +237,7 @@ end
 
 Route118_EventScript_BarnyWadeDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_BARNY, Route118_Text_BarnyDefeat, TRAINER_WADE, Route118_Text_WadeDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_BARNY, Route118_Text_BarnyDefeat, TRAINER_WADE, Route118_Text_WadeDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route118_EventScript_BarnyWadeVictory
 fadescreen FADE_TO_BLACK
@@ -278,7 +278,7 @@ end
 
 Route118_EventScript_ChesterDaltonDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_CHESTER, Route118_Text_ChesterDefeat, TRAINER_DALTON_1, Route118_Text_DaltonDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CHESTER, Route118_Text_ChesterDefeat, TRAINER_DALTON_1, Route118_Text_DaltonDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route118_EventScript_ChesterDaltonVictory
 fadescreen FADE_TO_BLACK
@@ -348,7 +348,7 @@ end
 
 Route118_EventScript_DeandreRoseDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_DEANDRE, Route118_Text_DeandreDefeat, TRAINER_ROSE_1, Route118_Text_RoseDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_DEANDRE, Route118_Text_DeandreDefeat, TRAINER_ROSE_1, Route118_Text_RoseDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route118_EventScript_DeandreRoseVictory
 fadescreen FADE_TO_BLACK

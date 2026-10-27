@@ -30,7 +30,7 @@ end
 
 Route133_EventScript_MollieConorDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_MOLLIE, Route133_Text_MollieDefeat, TRAINER_CONOR, Route133_Text_ConorDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_MOLLIE, Route133_Text_MollieDefeat, TRAINER_CONOR, Route133_Text_ConorDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route133_EventScript_MollieConorVictory
 fadescreen FADE_TO_BLACK
@@ -69,7 +69,7 @@ end
 
 Route133_EventScript_BeckWarrenDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_BECK, Route133_Text_BeckDefeat, TRAINER_WARREN, Route133_Text_WarrenDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_BECK, Route133_Text_BeckDefeat, TRAINER_WARREN, Route133_Text_WarrenDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route133_EventScript_BeckWarrenVictory
 fadescreen FADE_TO_BLACK
@@ -108,7 +108,7 @@ end
 
 Route133_EventScript_FranklinDebraDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_FRANKLIN, Route133_Text_FranklinDefeat, TRAINER_DEBRA, Route133_Text_DebraDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_FRANKLIN, Route133_Text_FranklinDefeat, TRAINER_DEBRA, Route133_Text_DebraDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route133_EventScript_FranklinDebraVictory
 fadescreen FADE_TO_BLACK

@@ -393,7 +393,7 @@ JaggedPass_EventScript_MagmaHideoutGuard::
 	waitmovement 0
 	msgbox JaggedPass_Text_GruntIntro, MSGBOX_DEFAULT
 	closemessage
-	multi_2p_vs_1 TRAINER_GRUNT_JAGGED_PASS, JaggedPass_Text_GruntDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_GRUNT_JAGGED_PASS, JaggedPass_Text_GruntDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, JaggedPass_EventScript_MagmaGruntVictory
 	fadescreen FADE_TO_BLACK
@@ -441,7 +441,7 @@ end
 
 JaggedPass_EventScript_EricDianaDoMultiBattle::
 playbgm MUS_PETALBURG_WOODS, TRUE
-multi_2p_vs_2 TRAINER_ERIC, JaggedPass_Text_EricDefeat, TRAINER_DIANA_1, JaggedPass_Text_DianaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_ERIC, JaggedPass_Text_EricDefeat, TRAINER_DIANA_1, JaggedPass_Text_DianaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, JaggedPass_EventScript_EricDianaVictory
 fadescreen FADE_TO_BLACK
@@ -530,7 +530,7 @@ end
 
 JaggedPass_EventScript_AutumnJulioDoMultiBattle::
 playbgm MUS_PETALBURG_WOODS, TRUE
-multi_2p_vs_2 TRAINER_AUTUMN, JaggedPass_Text_AutumnDefeat, TRAINER_JULIO, JaggedPass_Text_JulioDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_AUTUMN, JaggedPass_Text_AutumnDefeat, TRAINER_JULIO, JaggedPass_Text_JulioDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, JaggedPass_EventScript_AutumnJulioVictory
 fadescreen FADE_TO_BLACK

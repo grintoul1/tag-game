@@ -274,7 +274,7 @@ Route116_EventScript_JoseJoey::
 
 Route116_EventScript_JoseJoeyDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_JOSE, Route116_Text_JoseDefeat, TRAINER_JOEY, Route116_Text_JoeyDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_JOSE, Route116_Text_JoseDefeat, TRAINER_JOEY, Route116_Text_JoeyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route116_EventScript_JoseJoeyVictory
 	fadescreen FADE_TO_BLACK
@@ -322,7 +322,7 @@ Route116_EventScript_JerryJanice::
 
 Route116_EventScript_JerryJaniceDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_JERRY_1, Route116_Text_JerryDefeat, TRAINER_JANICE, Route116_Text_JaniceDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_JERRY_1, Route116_Text_JerryDefeat, TRAINER_JANICE, Route116_Text_JaniceDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route116_EventScript_JerryJaniceVictory
 	fadescreen FADE_TO_BLACK
@@ -452,7 +452,7 @@ Route116_EventScript_DawsonSarah::
 
 Route116_EventScript_DawsonSarahDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_DAWSON, Route116_Text_DawsonDefeat, TRAINER_SARAH, Route116_Text_SarahDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_DAWSON, Route116_Text_DawsonDefeat, TRAINER_SARAH, Route116_Text_SarahDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route116_EventScript_DawsonSarahVictory
 	fadescreen FADE_TO_BLACK
@@ -500,7 +500,7 @@ Route116_EventScript_DevanClark::
 
 Route116_EventScript_DevanClarkDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_DEVAN, Route116_Text_DevanDefeat, TRAINER_CLARK, Route116_Text_ClarkDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_DEVAN, Route116_Text_DevanDefeat, TRAINER_CLARK, Route116_Text_ClarkDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route116_EventScript_DevanClarkVictory
 	fadescreen FADE_TO_BLACK
@@ -548,7 +548,7 @@ Route116_EventScript_JohnsonKaren::
 
 Route116_EventScript_JohnsonKarenDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_JOHNSON, Route116_Text_JohnsonDefeat, TRAINER_KAREN_1, Route116_Text_KarenDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_JOHNSON, Route116_Text_JohnsonDefeat, TRAINER_KAREN_1, Route116_Text_KarenDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route116_EventScript_JohnsonKarenVictory
 	fadescreen FADE_TO_BLACK

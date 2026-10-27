@@ -53,7 +53,7 @@ EverGrandeCity_PhoebesRoom_EventScript_Phoebe::
 
 EverGrandeCity_PhoebesRoom_EventScript_PhoebeDoMultiBattle::
 	playbgm MUS_VICTORY_ROAD, TRUE
-	multi_2p_vs_1 TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, EverGrandeCity_PhoebesRoom_EventScript_PhoebeVictory
 	fadescreen FADE_TO_BLACK

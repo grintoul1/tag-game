@@ -60,7 +60,7 @@ end
 
 Route130_EventScript_KatieSantiagoDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_KATIE, Route130_Text_KatieDefeat, TRAINER_SANTIAGO, Route130_Text_SantiagoDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_KATIE, Route130_Text_KatieDefeat, TRAINER_SANTIAGO, Route130_Text_SantiagoDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route130_EventScript_KatieSantiagoVictory
 fadescreen FADE_TO_BLACK
@@ -92,7 +92,7 @@ end
 
 Route130_EventScript_RodneyDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_1 TRAINER_RODNEY, Route130_Text_RodneyDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_RODNEY, Route130_Text_RodneyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route130_EventScript_RodneyVictory
 fadescreen FADE_TO_BLACK

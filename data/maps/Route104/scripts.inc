@@ -917,7 +917,7 @@ end
 
 Route104_EventScript_IvanDarianDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_IVAN, Route104_Text_IvanDefeat, TRAINER_DARIAN, Route104_Text_DarianDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_IVAN, Route104_Text_IvanDefeat, TRAINER_DARIAN, Route104_Text_DarianDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route104_EventScript_IvanDarianVictory
 fadescreen FADE_TO_BLACK
@@ -963,7 +963,7 @@ end
 
 Route104_EventScript_HaleyBillyDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_HALEY_1, Route104_Text_HaleyDefeat, TRAINER_BILLY, Route104_Text_BillyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_HALEY_1, Route104_Text_HaleyDefeat, TRAINER_BILLY, Route104_Text_BillyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route104_EventScript_HaleyBillyVictory
 fadescreen FADE_TO_BLACK
@@ -1081,7 +1081,7 @@ end
 
 Route104_EventScript_CindyWinstonDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_CINDY_1, Route104_Text_CindyDefeat, TRAINER_WINSTON_1, Route104_Text_WinstonDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CINDY_1, Route104_Text_CindyDefeat, TRAINER_WINSTON_1, Route104_Text_WinstonDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route104_EventScript_CindyWinstonVictory
 fadescreen FADE_TO_BLACK
@@ -1150,7 +1150,7 @@ end
 
 Route104_EventScript_GinaMiaDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_1 TRAINER_GINA_AND_MIA_1, Route104_Text_GinaDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_GINA_AND_MIA_1, Route104_Text_GinaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route104_EventScript_GinaMiaVictory
 fadescreen FADE_TO_BLACK

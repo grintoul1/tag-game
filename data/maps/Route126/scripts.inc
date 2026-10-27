@@ -39,7 +39,7 @@ end
 
 Route126_EventScript_NikkiBrendaDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_NIKKI, Route126_Text_NikkiDefeat, TRAINER_BRENDA, Route126_Text_BrendaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_NIKKI, Route126_Text_NikkiDefeat, TRAINER_BRENDA, Route126_Text_BrendaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route126_EventScript_NikkiBrendaVictory
 fadescreen FADE_TO_BLACK
@@ -78,7 +78,7 @@ end
 
 Route126_EventScript_DeanBarryDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_DEAN, Route126_Text_DeanDefeat, TRAINER_BARRY, Route126_Text_BarryDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_DEAN, Route126_Text_DeanDefeat, TRAINER_BARRY, Route126_Text_BarryDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route126_EventScript_DeanBarryVictory
 fadescreen FADE_TO_BLACK
@@ -117,7 +117,7 @@ end
 
 Route126_EventScript_LeonardoIsobelDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_LEONARDO, Route126_Text_LeonardoDefeat, TRAINER_ISOBEL, Route126_Text_IsobelDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_LEONARDO, Route126_Text_LeonardoDefeat, TRAINER_ISOBEL, Route126_Text_IsobelDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route126_EventScript_LeonardoIsobelVictory
 fadescreen FADE_TO_BLACK
@@ -156,7 +156,7 @@ end
 
 Route126_EventScript_PabloSiennaDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_PABLO_1, Route126_Text_PabloDefeat, TRAINER_SIENNA, Route126_Text_SiennaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_PABLO_1, Route126_Text_PabloDefeat, TRAINER_SIENNA, Route126_Text_SiennaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route126_EventScript_PabloSiennaVictory
 fadescreen FADE_TO_BLACK

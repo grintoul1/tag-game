@@ -43,7 +43,7 @@ end
 
 Route131_EventScript_KevinTaliaDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_KEVIN, Route131_Text_KevinDefeat, TRAINER_TALIA, Route131_Text_TaliaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_KEVIN, Route131_Text_KevinDefeat, TRAINER_TALIA, Route131_Text_TaliaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route131_EventScript_KevinTaliaVictory
 fadescreen FADE_TO_BLACK
@@ -82,7 +82,7 @@ end
 
 Route131_EventScript_KaraRichardDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_KARA, Route131_Text_KaraDefeat, TRAINER_RICHARD, Route131_Text_RichardDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_KARA, Route131_Text_KaraDefeat, TRAINER_RICHARD, Route131_Text_RichardDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route131_EventScript_KaraRichardVictory
 fadescreen FADE_TO_BLACK
@@ -114,7 +114,7 @@ end
 
 Route131_EventScript_ReliIanDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_1 TRAINER_RELI_AND_IAN, Route131_Text_ReliDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_RELI_AND_IAN, Route131_Text_ReliDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route131_EventScript_ReliIanVictory
 fadescreen FADE_TO_BLACK
@@ -150,7 +150,7 @@ end
 
 Route131_EventScript_HermanSusieDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_HERMAN, Route131_Text_HermanDefeat, TRAINER_SUSIE, Route131_Text_SusieDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_HERMAN, Route131_Text_HermanDefeat, TRAINER_SUSIE, Route131_Text_SusieDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route131_EventScript_HermanSusieVictory
 fadescreen FADE_TO_BLACK

@@ -30,7 +30,7 @@ end
 
 Route132_EventScript_GilbertDanaDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_GILBERT, Route132_Text_GilbertDefeat, TRAINER_DANA, Route132_Text_DanaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_GILBERT, Route132_Text_GilbertDefeat, TRAINER_DANA, Route132_Text_DanaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route132_EventScript_GilbertDanaVictory
 fadescreen FADE_TO_BLACK
@@ -69,7 +69,7 @@ end
 
 Route132_EventScript_PaxtonMakaylaDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_PAXTON, Route132_Text_PaxtonDefeat, TRAINER_MAKAYLA, Route132_Text_MakaylaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_PAXTON, Route132_Text_PaxtonDefeat, TRAINER_MAKAYLA, Route132_Text_MakaylaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route132_EventScript_PaxtonMakaylaVictory
 fadescreen FADE_TO_BLACK
@@ -108,7 +108,7 @@ end
 
 Route132_EventScript_RonaldKiyoDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_RONALD, Route132_Text_RonaldDefeat, TRAINER_KIYO, Route132_Text_KiyoDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_RONALD, Route132_Text_RonaldDefeat, TRAINER_KIYO, Route132_Text_KiyoDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route132_EventScript_RonaldKiyoVictory
 fadescreen FADE_TO_BLACK
@@ -147,7 +147,7 @@ end
 
 Route132_EventScript_JonathanDarcyDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_JONATHAN, Route132_Text_JonathanDefeat, TRAINER_DARCY, Route132_Text_DarcyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_JONATHAN, Route132_Text_JonathanDefeat, TRAINER_DARCY, Route132_Text_DarcyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route132_EventScript_JonathanDarcyVictory
 fadescreen FADE_TO_BLACK

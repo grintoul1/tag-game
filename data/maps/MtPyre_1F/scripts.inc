@@ -69,7 +69,7 @@ MtPyre1F_EventScript_Grunts_Fight_A::
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_1F_Movement_EmmieStepBack
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtPyre_1F_Movement_MoveForEmmie
 	waitmovement LOCALID_PYRE_MAGMAGRUNT6
-	multi_2p_vs_2 TRAINER_PYRE_MAGMAGRUNT6, MtPyre_1F_Text_Pyre_MagmaGrunt6Defeat, TRAINER_PYRE_AQUAGRUNT4, MtPyre_1F_Text_Pyre_AquaGrunt4Defeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_PYRE_MAGMAGRUNT6, MtPyre_1F_Text_Pyre_MagmaGrunt6Defeat, TRAINER_PYRE_AQUAGRUNT4, MtPyre_1F_Text_Pyre_AquaGrunt4Defeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MtPyre_1F_EventScript_Pyre_AquaGrunt4Pyre_MagmaGrunt6Victory
 	fadescreen FADE_TO_BLACK
@@ -82,7 +82,7 @@ MtPyre1F_EventScript_Grunts_Fight_B::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement LOCALID_PYRE_MAGMAGRUNT6
-	multi_2p_vs_2 TRAINER_PYRE_AQUAGRUNT4, MtPyre_1F_Text_Pyre_AquaGrunt4Defeat, TRAINER_PYRE_MAGMAGRUNT6, MtPyre_1F_Text_Pyre_MagmaGrunt6Defeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_PYRE_AQUAGRUNT4, MtPyre_1F_Text_Pyre_AquaGrunt4Defeat, TRAINER_PYRE_MAGMAGRUNT6, MtPyre_1F_Text_Pyre_MagmaGrunt6Defeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MtPyre_1F_EventScript_Pyre_AquaGrunt4Pyre_MagmaGrunt6Victory
 	fadescreen FADE_TO_BLACK
@@ -95,7 +95,7 @@ MtPyre1F_EventScript_Grunts_Fight_C::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, MtPyre_1F_Movement_EmmieStepBack
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_1F_Movement_MoveForEmmie
 	waitmovement LOCALID_PYRE_MAGMAGRUNT6
-	multi_2p_vs_2 TRAINER_PYRE_AQUAGRUNT4, MtPyre_1F_Text_Pyre_AquaGrunt4Defeat, TRAINER_PYRE_MAGMAGRUNT6, MtPyre_1F_Text_Pyre_MagmaGrunt6Defeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_PYRE_AQUAGRUNT4, MtPyre_1F_Text_Pyre_AquaGrunt4Defeat, TRAINER_PYRE_MAGMAGRUNT6, MtPyre_1F_Text_Pyre_MagmaGrunt6Defeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MtPyre_1F_EventScript_Pyre_AquaGrunt4Pyre_MagmaGrunt6Victory
 	fadescreen FADE_TO_BLACK

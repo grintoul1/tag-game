@@ -231,7 +231,7 @@ Route103_EventScript_AmyLiv::
 
 Route103_EventScript_AmyLivDoMultiBattle::
 	playbgm MUS_ROUTE101, TRUE
-	multi_2p_vs_1 TRAINER_AMY_AND_LIV_1, Route103_Text_AmyDefeated, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_AMY_AND_LIV_1, Route103_Text_AmyDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route103_EventScript_AmyLivVictory
 	fadescreen FADE_TO_BLACK
@@ -303,7 +303,7 @@ Route103_EventScript_AndrewMiguel::
 
 Route103_EventScript_AndrewMiguelDoMultiBattle::
 	playbgm MUS_ROUTE101, TRUE
-	multi_2p_vs_2 TRAINER_ANDREW, Route103_Text_AndrewDefeated, TRAINER_MIGUEL_1, Route103_Text_MiguelDefeated, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_ANDREW, Route103_Text_AndrewDefeated, TRAINER_MIGUEL_1, Route103_Text_MiguelDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route103_EventScript_AndrewMiguelVictory
 	fadescreen FADE_TO_BLACK
@@ -369,7 +369,7 @@ Route103_EventScript_MarcosRhett::
 
 Route103_EventScript_MarcosRhettDoMultiBattle::
 	playbgm MUS_ROUTE101, TRUE
-	multi_2p_vs_2 TRAINER_MARCOS, Route103_Text_MarcosDefeated, TRAINER_RHETT, Route103_Text_RhettDefeated, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_MARCOS, Route103_Text_MarcosDefeated, TRAINER_RHETT, Route103_Text_RhettDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route103_EventScript_MarcosRhettVictory
 	fadescreen FADE_TO_BLACK

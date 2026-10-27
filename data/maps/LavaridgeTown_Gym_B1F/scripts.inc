@@ -72,7 +72,7 @@ end
 
 LavaridgeTown_Gym_B1F_EventScript_JeffKeeganDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_JEFF, LavaridgeTown_Gym_B1F_Text_JeffDefeat, TRAINER_KEEGAN, LavaridgeTown_Gym_B1F_Text_KeeganDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_JEFF, LavaridgeTown_Gym_B1F_Text_JeffDefeat, TRAINER_KEEGAN, LavaridgeTown_Gym_B1F_Text_KeeganDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, LavaridgeTown_Gym_B1F_EventScript_JeffKeeganVictory
 goto Common_EventScript_MultibattleWipe

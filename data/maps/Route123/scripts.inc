@@ -86,7 +86,7 @@ end
 
 Route123_EventScript_BraxtonWendyDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_BRAXTON, Route123_Text_BraxtonDefeat, TRAINER_WENDY, Route123_Text_WendyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_BRAXTON, Route123_Text_BraxtonDefeat, TRAINER_WENDY, Route123_Text_WendyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route123_EventScript_BraxtonWendyVictory
 fadescreen FADE_TO_BLACK
@@ -142,7 +142,7 @@ end
 
 Route123_EventScript_CameronVioletDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_CAMERON_1, Route123_Text_CameronDefeat, TRAINER_VIOLET, Route123_Text_VioletDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CAMERON_1, Route123_Text_CameronDefeat, TRAINER_VIOLET, Route123_Text_VioletDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route123_EventScript_CameronVioletVictory
 fadescreen FADE_TO_BLACK
@@ -213,7 +213,7 @@ end
 
 Route123_EventScript_YukiMiuDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_1 TRAINER_MIU_AND_YUKI, Route123_Text_YukiDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_MIU_AND_YUKI, Route123_Text_YukiDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route123_EventScript_YukiMiuVictory
 fadescreen FADE_TO_BLACK
@@ -261,7 +261,7 @@ end
 
 Route123_EventScript_KindraEdDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_KINDRA, Route123_Text_KindraDefeat, TRAINER_ED, Route123_Text_EdDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_KINDRA, Route123_Text_KindraDefeat, TRAINER_ED, Route123_Text_EdDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route123_EventScript_KindraEdVictory
 fadescreen FADE_TO_BLACK
@@ -307,7 +307,7 @@ end
 
 Route123_EventScript_JackiFrederickDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_JACKI_1, Route123_Text_JackiDefeat, TRAINER_FREDRICK, Route123_Text_FrederickDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_JACKI_1, Route123_Text_JackiDefeat, TRAINER_FREDRICK, Route123_Text_FrederickDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route123_EventScript_JackiFrederickVictory
 fadescreen FADE_TO_BLACK
@@ -353,7 +353,7 @@ end
 
 Route123_EventScript_FernandoAlbertoDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_FERNANDO_1, Route123_Text_FernandoDefeat, TRAINER_ALBERTO, Route123_Text_AlbertoDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_FERNANDO_1, Route123_Text_FernandoDefeat, TRAINER_ALBERTO, Route123_Text_AlbertoDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route123_EventScript_FernandoAlbertoVictory
 fadescreen FADE_TO_BLACK
@@ -404,7 +404,7 @@ end
 
 Route123_EventScript_JonasKayleyDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_JONAS, Route123_Text_JonasDefeat, TRAINER_KAYLEY, Route123_Text_KayleyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_JONAS, Route123_Text_JonasDefeat, TRAINER_KAYLEY, Route123_Text_KayleyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route123_EventScript_JonasKayleyVictory
 fadescreen FADE_TO_BLACK
@@ -460,7 +460,7 @@ end
 
 Route123_EventScript_DavisJazmynDoMultiBattle::
 playbgm MUS_ROUTE120, TRUE
-multi_2p_vs_2 TRAINER_DAVIS, Route123_Text_DavisDefeat, TRAINER_JAZMYN, Route123_Text_JazmynDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_DAVIS, Route123_Text_DavisDefeat, TRAINER_JAZMYN, Route123_Text_JazmynDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route123_EventScript_DavisJazmynVictory
 fadescreen FADE_TO_BLACK

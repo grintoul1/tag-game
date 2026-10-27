@@ -449,7 +449,7 @@ end
 
 Route109_EventScript_EdmondHueyDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_EDMOND, Route109_Text_EdmondDefeated, TRAINER_HUEY, Route109_Text_HueyDefeated, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_EDMOND, Route109_Text_EdmondDefeated, TRAINER_HUEY, Route109_Text_HueyDefeated, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route109_EventScript_EdmondHueyVictory
 fadescreen FADE_TO_BLACK
@@ -522,7 +522,7 @@ Route109_EventScript_Rockets3::
 
 Route109_EventScript_Rockets3DoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_1 TRAINER_ROCKETS_ROUTE109_3, Route109_Text_JessieJames3Defeated, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_ROCKETS_ROUTE109_3, Route109_Text_JessieJames3Defeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route109_EventScript_Rockets3Victory
 	fadescreen FADE_TO_BLACK
@@ -621,7 +621,7 @@ Route109_EventScript_Rockets2::
 
 Route109_EventScript_Rockets2DoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_1 TRAINER_ROCKETS_ROUTE109_2, Route109_Text_JessieJames2Defeated, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_ROCKETS_ROUTE109_2, Route109_Text_JessieJames2Defeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route109_EventScript_Rockets2Victory
 	fadescreen FADE_TO_BLACK
@@ -744,7 +744,7 @@ Route109_EventScript_Rockets1::
 
 Route109_EventScript_Rockets1DoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_1 TRAINER_ROCKETS_ROUTE109_1, Route109_Text_JessieJames1Defeated, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_ROCKETS_ROUTE109_1, Route109_Text_JessieJames1Defeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route109_EventScript_Rockets1Victory
 	fadescreen FADE_TO_BLACK

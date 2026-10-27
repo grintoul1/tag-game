@@ -205,7 +205,7 @@ Route110_EventScript_TimmyEdward::
 
 Route110_EventScript_TimmyEdwardDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_TIMMY, Route110_Text_TimmyDefeated, TRAINER_EDWARD, Route110_Text_EdwardDefeated, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_TIMMY, Route110_Text_TimmyDefeated, TRAINER_EDWARD, Route110_Text_EdwardDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route110_EventScript_TimmyEdwardVictory
 	fadescreen FADE_TO_BLACK
@@ -289,7 +289,7 @@ Route110_EventScript_AnthonyAbigail::
 
 Route110_EventScript_AnthonyAbigailDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_ANTHONY, Route110_Text_AnthonyDefeated, TRAINER_ABIGAIL_1, Route110_Text_AbigailDefeated, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_ANTHONY, Route110_Text_AnthonyDefeated, TRAINER_ABIGAIL_1, Route110_Text_AbigailDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route110_EventScript_AnthonyAbigailVictory
 	fadescreen FADE_TO_BLACK
@@ -358,7 +358,7 @@ Route110_EventScript_JasmineJacob::
 
 Route110_EventScript_JasmineJacobDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_JASMINE, Route110_Text_JasmineDefeated, TRAINER_JACOB, Route110_Text_JacobDefeated, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_JASMINE, Route110_Text_JasmineDefeated, TRAINER_JACOB, Route110_Text_JacobDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route110_EventScript_JasmineJacobVictory
 	fadescreen FADE_TO_BLACK
@@ -428,7 +428,7 @@ Route110_EventScript_IsabelKaleb::
 
 Route110_EventScript_IsabelKalebDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_ISABEL_1, Route110_Text_IsabelDefeated, TRAINER_KALEB, Route110_Text_KalebDefeated, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_ISABEL_1, Route110_Text_IsabelDefeated, TRAINER_KALEB, Route110_Text_KalebDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route110_EventScript_IsabelKalebVictory
 	fadescreen FADE_TO_BLACK
@@ -505,7 +505,7 @@ Route110_EventScript_JosephEdwin::
 
 Route110_EventScript_JosephEdwinDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_JOSEPH, Route110_Text_JosephDefeated, TRAINER_EDWIN_1, Route110_Text_EdwinDefeated, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_JOSEPH, Route110_Text_JosephDefeated, TRAINER_EDWIN_1, Route110_Text_EdwinDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route110_EventScript_JosephEdwinVictory
 	fadescreen FADE_TO_BLACK
@@ -553,7 +553,7 @@ Route110_EventScript_AlyssaBenjamin::
 
 Route110_EventScript_AlyssaBenjaminDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_ALYSSA, Route110_Text_AlyssaDefeated, TRAINER_BENJAMIN_1, Route110_Text_BenjaminDefeated, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_ALYSSA, Route110_Text_AlyssaDefeated, TRAINER_BENJAMIN_1, Route110_Text_BenjaminDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route110_EventScript_AlyssaBenjaminVictory
 	fadescreen FADE_TO_BLACK
@@ -715,7 +715,7 @@ Route110_EventScript_MayBattle::
 	end
 
 Route110_EventScript_MayBattleTreecko::
-	multi_2p_vs_1 TRAINER_MAY_ROUTE_110_TREECKO, Route110_Text_MayDefeated, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_MAY_ROUTE_110_TREECKO, Route110_Text_MayDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route110_EventScript_MayDefeated
 	fadescreen FADE_TO_BLACK
@@ -723,7 +723,7 @@ Route110_EventScript_MayBattleTreecko::
 	waitstate
 
 Route110_EventScript_MayBattleTorchic::
-	multi_2p_vs_1 TRAINER_MAY_ROUTE_110_TORCHIC, Route110_Text_MayDefeated, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_MAY_ROUTE_110_TORCHIC, Route110_Text_MayDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route110_EventScript_MayDefeated
 	fadescreen FADE_TO_BLACK
@@ -731,7 +731,7 @@ Route110_EventScript_MayBattleTorchic::
 	waitstate
 
 Route110_EventScript_MayBattleMudkip::
-	multi_2p_vs_1 TRAINER_MAY_ROUTE_110_MUDKIP, Route110_Text_MayDefeated, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_MAY_ROUTE_110_MUDKIP, Route110_Text_MayDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route110_EventScript_MayDefeated
 	fadescreen FADE_TO_BLACK
@@ -754,7 +754,7 @@ Route110_EventScript_BrendanBattle::
 	end
 
 Route110_EventScript_BrendanBattleTreecko::
-	multi_2p_vs_1 TRAINER_BRENDAN_ROUTE_110_TREECKO, Route110_Text_BrendanDefeated, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_BRENDAN_ROUTE_110_TREECKO, Route110_Text_BrendanDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route110_EventScript_BrendanDefeated
 	fadescreen FADE_TO_BLACK
@@ -762,7 +762,7 @@ Route110_EventScript_BrendanBattleTreecko::
 	waitstate
 
 Route110_EventScript_BrendanBattleTorchic::
-	multi_2p_vs_1 TRAINER_BRENDAN_ROUTE_110_TORCHIC, Route110_Text_BrendanDefeated, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_BRENDAN_ROUTE_110_TORCHIC, Route110_Text_BrendanDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route110_EventScript_BrendanDefeated
 	fadescreen FADE_TO_BLACK
@@ -770,7 +770,7 @@ Route110_EventScript_BrendanBattleTorchic::
 	waitstate
 
 Route110_EventScript_BrendanBattleMudkip::
-	multi_2p_vs_1 TRAINER_BRENDAN_ROUTE_110_MUDKIP, Route110_Text_BrendanDefeated, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_BRENDAN_ROUTE_110_MUDKIP, Route110_Text_BrendanDefeated, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route110_EventScript_BrendanDefeated
 	fadescreen FADE_TO_BLACK

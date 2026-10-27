@@ -89,7 +89,7 @@ end
 
 MagmaHideout_4F_EventScript_Grunt11Grunt12DoMultiBattle::
 	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-	multi_2p_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_13, MagmaHideout_4F_Text_Grunt11Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_14, MagmaHideout_4F_Text_Grunt12Defeat, PARTNER_SHELLY_MHO
+	multi_2_vs_2 TRAINER_GRUNT_MAGMA_HIDEOUT_13, MagmaHideout_4F_Text_Grunt11Defeat, TRAINER_GRUNT_MAGMA_HIDEOUT_14, MagmaHideout_4F_Text_Grunt12Defeat, PARTNER_SHELLY_MHO
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, MagmaHideout_4F_EventScript_Grunt11Grunt12Victory
@@ -550,7 +550,7 @@ MagmaHideout_4F_EventScript_Maxie::
 
 MagmaHideout_4F_EventScript_MaxieDoMultiBattle::
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
-	multi_2p_vs_1 TRAINER_MAXIE_MAGMA_HIDEOUT, MagmaHideout_4F_Text_MaxieDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_MAXIE_MAGMA_HIDEOUT, MagmaHideout_4F_Text_MaxieDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, MagmaHideout_4F_EventScript_MaxieVictory
 	fadescreen FADE_TO_BLACK

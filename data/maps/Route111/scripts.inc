@@ -319,7 +319,7 @@ Route111_EventScript_BattleWinstrates::
 	applymovement LOCALID_VICTORIA, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox Route111_Text_VictoriaIntro, MSGBOX_DEFAULT
-	multi_2p_vs_2 TRAINER_VICTOR, Route111_Text_VictorDefeat, TRAINER_VICTORIA, Route111_Text_VictoriaDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_VICTOR, Route111_Text_VictorDefeat, TRAINER_VICTORIA, Route111_Text_VictoriaDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route111_EventScript_VictorVictoriaVictory
 	fadescreen FADE_TO_BLACK
@@ -381,7 +381,7 @@ Route111_EventScript_VictorVictoriaVictory::
 	applymovement LOCALID_VICKY, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox Route111_Text_VickyIntro, MSGBOX_DEFAULT
-	multi_2p_vs_2 TRAINER_VIVI, Route111_Text_ViviDefeat, TRAINER_VICKY, Route111_Text_VickyDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_VIVI, Route111_Text_ViviDefeat, TRAINER_VICKY, Route111_Text_VickyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route111_EventScript_ViviVickyVictory
 	fadescreen FADE_TO_BLACK
@@ -415,7 +415,7 @@ Route111_EventScript_VictorVictoriaVictory::
 	waitmovement 0
 	msgbox Route111_Text_VitoIntro, MSGBOX_DEFAULT
 	playbgm MUS_ROUTE110, FALSE
-	multi_2p_vs_1 TRAINER_VITO_ROUTE111, Route111_Text_VitoDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_VITO_ROUTE111, Route111_Text_VitoDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route111_EventScript_VitoVictory
 	fadescreen FADE_TO_BLACK
@@ -631,7 +631,7 @@ end
 
 Route111_EventScript_BeauHeidiDoMultiBattle::
 playbgm MUS_DESERT, TRUE
-multi_2p_vs_2 TRAINER_BEAU, Route111_Text_BeauDefeat, TRAINER_HEIDI, Route111_Text_HeidiDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_BEAU, Route111_Text_BeauDefeat, TRAINER_HEIDI, Route111_Text_HeidiDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route111_EventScript_BeauHeidiVictory
 fadescreen FADE_TO_BLACK
@@ -677,7 +677,7 @@ end
 
 Route111_EventScript_BeckyDrewDoMultiBattle::
 playbgm MUS_DESERT, TRUE
-multi_2p_vs_2 TRAINER_BECKY, Route111_Text_BeckyDefeat, TRAINER_DREW, Route111_Text_DrewDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_BECKY, Route111_Text_BeckyDefeat, TRAINER_DREW, Route111_Text_DrewDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route111_EventScript_BeckyDrewVictory
 fadescreen FADE_TO_BLACK
@@ -742,7 +742,7 @@ end
 
 Route111_EventScript_TravisIreneDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_TRAVIS, Route111_Text_TravisDefeat, TRAINER_IRENE, Route111_Text_IreneDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_TRAVIS, Route111_Text_TravisDefeat, TRAINER_IRENE, Route111_Text_IreneDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route111_EventScript_TravisIreneVictory
 fadescreen FADE_TO_BLACK
@@ -798,7 +798,7 @@ end
 
 Route111_EventScript_WiltonBrookeDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_WILTON_1, Route111_Text_WiltonDefeat, TRAINER_BROOKE_1, Route111_Text_BrookeDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_WILTON_1, Route111_Text_WiltonDefeat, TRAINER_BROOKE_1, Route111_Text_BrookeDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route111_EventScript_WiltonBrookeVictory
 fadescreen FADE_TO_BLACK
@@ -877,7 +877,7 @@ end
 
 Route111_EventScript_HaydenBiancaDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_HAYDEN, Route111_Text_HaydenDefeat, TRAINER_BIANCA, Route111_Text_BiancaDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_HAYDEN, Route111_Text_HaydenDefeat, TRAINER_BIANCA, Route111_Text_BiancaDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route111_EventScript_HaydenBiancaVictory
 fadescreen FADE_TO_BLACK
@@ -931,7 +931,7 @@ end
 
 Route111_EventScript_CelinaTyronDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_CELINA, Route111_Text_CelinaDefeat, TRAINER_TYRON, Route111_Text_TyronDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CELINA, Route111_Text_CelinaDefeat, TRAINER_TYRON, Route111_Text_TyronDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route111_EventScript_CelinaTyronVictory
 fadescreen FADE_TO_BLACK
@@ -982,7 +982,7 @@ end
 
 Route111_EventScript_BryanDustyDoMultiBattle::
 playbgm MUS_DESERT, TRUE
-multi_2p_vs_2 TRAINER_BRYAN, Route111_Text_BryanDefeat, TRAINER_DUSTY_1, Route111_Text_DustyDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_BRYAN, Route111_Text_BryanDefeat, TRAINER_DUSTY_1, Route111_Text_DustyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route111_EventScript_BryanDustyVictory
 fadescreen FADE_TO_BLACK
@@ -1028,7 +1028,7 @@ end
 
 Route111_EventScript_CeliaBrandenDoMultiBattle::
 playbgm MUS_DESERT, TRUE
-multi_2p_vs_2 TRAINER_CELIA, Route111_Text_CeliaDefeat, TRAINER_BRANDEN, Route111_Text_BrandenDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CELIA, Route111_Text_CeliaDefeat, TRAINER_BRANDEN, Route111_Text_BrandenDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route111_EventScript_CeliaBrandenVictory
 fadescreen FADE_TO_BLACK

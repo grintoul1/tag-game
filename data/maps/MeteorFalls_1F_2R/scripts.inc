@@ -20,7 +20,7 @@ end
 
 MeteorFalls_1F_2R_EventScript_NicolasDoMultiBattle::
 playbgm MUS_CAVE_OF_ORIGIN, TRUE
-multi_2p_vs_1 TRAINER_NICOLAS_1, MeteorFalls_1F_2R_Text_NicolasDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_NICOLAS_1, MeteorFalls_1F_2R_Text_NicolasDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MeteorFalls_1F_2R_EventScript_NicolasVictory
 fadescreen FADE_TO_BLACK
@@ -68,7 +68,7 @@ end
 
 MeteorFalls_1F_2R_EventScript_JohnJayDoMultiBattle::
 playbgm MUS_CAVE_OF_ORIGIN, TRUE
-multi_2p_vs_1 TRAINER_JOHN_AND_JAY_1, MeteorFalls_1F_2R_Text_JohnDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_JOHN_AND_JAY_1, MeteorFalls_1F_2R_Text_JohnDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, MeteorFalls_1F_2R_EventScript_JohnJayVictory
 fadescreen FADE_TO_BLACK

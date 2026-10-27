@@ -104,7 +104,7 @@ end
 
 AquaHideout_B1F_EventScript_Grunt7Grunt2DoMultiBattle::
 	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-	multi_2p_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_7, AquaHideout_B1F_Text_Grunt7Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_2, AquaHideout_B1F_Text_Grunt2Defeat, PARTNER_TABITHA
+	multi_2_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_7, AquaHideout_B1F_Text_Grunt7Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_2, AquaHideout_B1F_Text_Grunt2Defeat, PARTNER_TABITHA
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, AquaHideout_B1F_EventScript_Grunt7Grunt2Victory
@@ -165,7 +165,7 @@ end
 
 AquaHideout_B1F_EventScript_Grunt5Grunt3DoMultiBattle::
 	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
-	multi_2p_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_5, AquaHideout_B1F_Text_Grunt5Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_3, AquaHideout_B1F_Text_Grunt3Defeat, PARTNER_TABITHA
+	multi_2_vs_2 TRAINER_GRUNT_AQUA_HIDEOUT_5, AquaHideout_B1F_Text_Grunt5Defeat, TRAINER_GRUNT_AQUA_HIDEOUT_3, AquaHideout_B1F_Text_Grunt3Defeat, PARTNER_TABITHA
 	special LoadPlayerParty
 	switch VAR_RESULT
 	case 1, AquaHideout_B1F_EventScript_Grunt5Grunt3Victory

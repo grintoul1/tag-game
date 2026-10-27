@@ -66,7 +66,7 @@ end
 
 LavaridgeTown_Gym_1F_EventScript_FlanneryDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, LavaridgeTown_Gym_1F_EventScript_FlanneryVictory
 fadescreen FADE_TO_BLACK
@@ -154,7 +154,7 @@ end
 
 LavaridgeTown_Gym_1F_EventScript_GeraldColeDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_GERALD, LavaridgeTown_Gym_1F_Text_GeraldDefeat, TRAINER_COLE, LavaridgeTown_Gym_1F_Text_ColeDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_GERALD, LavaridgeTown_Gym_1F_Text_GeraldDefeat, TRAINER_COLE, LavaridgeTown_Gym_1F_Text_ColeDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, LavaridgeTown_Gym_1F_EventScript_GeraldColeVictory
 fadescreen FADE_TO_BLACK
@@ -221,7 +221,7 @@ end
 
 LavaridgeTown_Gym_1F_EventScript_DanielleAxleDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_DANIELLE, LavaridgeTown_Gym_1F_Text_DanielleDefeat, TRAINER_AXLE, LavaridgeTown_Gym_1F_Text_AxleDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_DANIELLE, LavaridgeTown_Gym_1F_Text_DanielleDefeat, TRAINER_AXLE, LavaridgeTown_Gym_1F_Text_AxleDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, LavaridgeTown_Gym_1F_EventScript_DanielleAxleVictory
 fadescreen FADE_TO_BLACK

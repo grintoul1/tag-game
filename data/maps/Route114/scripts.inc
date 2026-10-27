@@ -119,7 +119,7 @@ Route114_EventScript_BrendanWallySetupBattle::
 
 Route114_EventScript_MayBattleTreecko::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	multi_2p_vs_2 TRAINER_MAY_ROUTE_114_TREECKO, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_MAY_ROUTE_114_TREECKO, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route114_EventScript_RivalWallyVictory
 	fadescreen FADE_TO_BLACK
@@ -128,7 +128,7 @@ Route114_EventScript_MayBattleTreecko::
 
 Route114_EventScript_MayBattleTorchic::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	multi_2p_vs_2 TRAINER_MAY_ROUTE_114_TORCHIC, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_MAY_ROUTE_114_TORCHIC, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route114_EventScript_RivalWallyVictory
 	fadescreen FADE_TO_BLACK
@@ -137,7 +137,7 @@ Route114_EventScript_MayBattleTorchic::
 
 Route114_EventScript_MayBattleMudkip::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	multi_2p_vs_2 TRAINER_MAY_ROUTE_114_MUDKIP, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_MAY_ROUTE_114_MUDKIP, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route114_EventScript_RivalWallyVictory
 	fadescreen FADE_TO_BLACK
@@ -146,7 +146,7 @@ Route114_EventScript_MayBattleMudkip::
 
 Route114_EventScript_BrendanBattleTreecko::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	multi_2p_vs_2 TRAINER_BRENDAN_ROUTE_114_TREECKO, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_BRENDAN_ROUTE_114_TREECKO, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route114_EventScript_RivalWallyVictory
 	fadescreen FADE_TO_BLACK
@@ -155,7 +155,7 @@ Route114_EventScript_BrendanBattleTreecko::
 
 Route114_EventScript_BrendanBattleTorchic::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	multi_2p_vs_2 TRAINER_BRENDAN_ROUTE_114_TORCHIC, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_BRENDAN_ROUTE_114_TORCHIC, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route114_EventScript_RivalWallyVictory
 	fadescreen FADE_TO_BLACK
@@ -164,7 +164,7 @@ Route114_EventScript_BrendanBattleTorchic::
 
 Route114_EventScript_BrendanBattleMudkip::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	multi_2p_vs_2 TRAINER_BRENDAN_ROUTE_114_MUDKIP, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_BRENDAN_ROUTE_114_MUDKIP, Route114_Text_RivalDefeat, TRAINER_WALLY_ROUTE_114_M_MUDKIP, Route114_Text_WallyDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route114_EventScript_RivalWallyVictory
 	fadescreen FADE_TO_BLACK
@@ -546,7 +546,7 @@ end
 
 Route114_EventScript_Grunt_Route_114_3Grunt_Route_114_4DoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_GRUNT_ROUTE_114_3, Route114_Text_Grunt_Route_114_3Defeat, TRAINER_GRUNT_ROUTE_114_4, Route114_Text_Grunt_Route_114_4Defeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_GRUNT_ROUTE_114_3, Route114_Text_Grunt_Route_114_3Defeat, TRAINER_GRUNT_ROUTE_114_4, Route114_Text_Grunt_Route_114_4Defeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route114_EventScript_Grunt_Route_114_3Grunt_Route_114_4Victory
 fadescreen FADE_TO_BLACK
@@ -602,7 +602,7 @@ end
 
 Route114_EventScript_Grunt_Route_114_5Grunt_Route_114_6DoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_GRUNT_ROUTE_114_5, Route114_Text_Grunt_Route_114_5Defeat, TRAINER_GRUNT_ROUTE_114_6, Route114_Text_Grunt_Route_114_6Defeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_GRUNT_ROUTE_114_5, Route114_Text_Grunt_Route_114_5Defeat, TRAINER_GRUNT_ROUTE_114_6, Route114_Text_Grunt_Route_114_6Defeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route114_EventScript_Grunt_Route_114_5Grunt_Route_114_6Victory
 fadescreen FADE_TO_BLACK
@@ -648,7 +648,7 @@ end
 
 Route114_EventScript_SteveCharlotteDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_STEVE_1, Route114_Text_SteveDefeat, TRAINER_CHARLOTTE, Route114_Text_CharlotteDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_STEVE_1, Route114_Text_SteveDefeat, TRAINER_CHARLOTTE, Route114_Text_CharlotteDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route114_EventScript_SteveCharlotteVictory
 fadescreen FADE_TO_BLACK
@@ -708,7 +708,7 @@ end
 
 Route114_EventScript_Grunt_Route_114_1Grunt_Route_114_2DoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_GRUNT_ROUTE_114_1, Route114_Text_Grunt_Route_114_1Defeat, TRAINER_GRUNT_ROUTE_114_2, Route114_Text_Grunt_Route_114_2Defeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_GRUNT_ROUTE_114_1, Route114_Text_Grunt_Route_114_1Defeat, TRAINER_GRUNT_ROUTE_114_2, Route114_Text_Grunt_Route_114_2Defeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route114_EventScript_Grunt_Route_114_1Grunt_Route_114_2Victory
 fadescreen FADE_TO_BLACK
@@ -771,7 +771,7 @@ end
 
 Route114_EventScript_IvyTyraDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_1 TRAINER_TYRA_AND_IVY, Route114_Text_IvyDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_TYRA_AND_IVY, Route114_Text_IvyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route114_EventScript_IvyTyraVictory
 fadescreen FADE_TO_BLACK
@@ -829,7 +829,7 @@ end
 
 Route114_EventScript_KaiClaudeDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_KAI, Route114_Text_KaiDefeat, TRAINER_CLAUDE, Route114_Text_ClaudeDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_KAI, Route114_Text_KaiDefeat, TRAINER_CLAUDE, Route114_Text_ClaudeDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route114_EventScript_KaiClaudeVictory
 fadescreen FADE_TO_BLACK

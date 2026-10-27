@@ -30,7 +30,7 @@ end
 
 Route108_EventScript_MissyMatthewDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_MISSY, Route108_Text_MissyDefeated, TRAINER_MATTHEW, Route108_Text_MatthewDefeated, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_MISSY, Route108_Text_MissyDefeated, TRAINER_MATTHEW, Route108_Text_MatthewDefeated, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route108_EventScript_MissyMatthewVictory
 fadescreen FADE_TO_BLACK
@@ -69,7 +69,7 @@ end
 
 Route108_EventScript_TaraJeromeDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_TARA, Route108_Text_TaraDefeated, TRAINER_JEROME, Route108_Text_JeromeDefeated, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_TARA, Route108_Text_TaraDefeated, TRAINER_JEROME, Route108_Text_JeromeDefeated, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route108_EventScript_TaraJeromeVictory
 fadescreen FADE_TO_BLACK
@@ -108,7 +108,7 @@ end
 
 Route108_EventScript_CarolinaCoryDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_CAROLINA, Route108_Text_CarolinaDefeated, TRAINER_CORY_1, Route108_Text_CoryDefeated, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CAROLINA, Route108_Text_CarolinaDefeated, TRAINER_CORY_1, Route108_Text_CoryDefeated, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route108_EventScript_CarolinaCoryVictory
 fadescreen FADE_TO_BLACK

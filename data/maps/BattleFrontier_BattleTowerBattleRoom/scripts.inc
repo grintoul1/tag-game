@@ -38,7 +38,7 @@ BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelBattle::
 
 BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelDoMultiBattle::
 	playbgm MUS_B_TOWER, TRUE
-	multi_2p_vs_1 TRAINER_ANABEL, BattleFrontier_BattleTowerBattleRoom_Text_AnabelDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_ANABEL, BattleFrontier_BattleTowerBattleRoom_Text_AnabelDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, BattleFrontier_BattleTowerBattleRoom_EventScript_AnabelVictory
 	fadescreen FADE_TO_BLACK

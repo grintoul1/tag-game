@@ -24,7 +24,7 @@ end
 
 VictoryRoad_B1F_EventScript_ShannonSamuelDoMultiBattle::
 playbgm MUS_VICTORY_ROAD, TRUE
-multi_2p_vs_2 TRAINER_SHANNON, VictoryRoad_B1F_Text_ShannonDefeat, TRAINER_SAMUEL, VictoryRoad_B1F_Text_SamuelDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_SHANNON, VictoryRoad_B1F_Text_ShannonDefeat, TRAINER_SAMUEL, VictoryRoad_B1F_Text_SamuelDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, VictoryRoad_B1F_EventScript_ShannonSamuelVictory
 fadescreen FADE_TO_BLACK
@@ -73,7 +73,7 @@ end
 
 VictoryRoad_B1F_EventScript_MitchellMichelleDoMultiBattle::
 playbgm MUS_VICTORY_ROAD, TRUE
-multi_2p_vs_2 TRAINER_MITCHELL, VictoryRoad_B1F_Text_MitchellDefeat, TRAINER_MICHELLE, VictoryRoad_B1F_Text_MichelleDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_MITCHELL, VictoryRoad_B1F_Text_MitchellDefeat, TRAINER_MICHELLE, VictoryRoad_B1F_Text_MichelleDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, VictoryRoad_B1F_EventScript_MitchellMichelleVictory
 fadescreen FADE_TO_BLACK
@@ -112,7 +112,7 @@ end
 
 VictoryRoad_B1F_EventScript_FelixHalleDoMultiBattle::
 playbgm MUS_VICTORY_ROAD, TRUE
-multi_2p_vs_2 TRAINER_FELIX, VictoryRoad_B2F_Text_FelixDefeat, TRAINER_HALLE, VictoryRoad_B1F_Text_HalleDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_FELIX, VictoryRoad_B2F_Text_FelixDefeat, TRAINER_HALLE, VictoryRoad_B1F_Text_HalleDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, VictoryRoad_B1F_EventScript_FelixHalleVictory
 fadescreen FADE_TO_BLACK

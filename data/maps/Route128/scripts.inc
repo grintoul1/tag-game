@@ -222,7 +222,7 @@ end
 
 Route128_EventScript_KatelynIsaiahDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_KATELYN_1, Route128_Text_KatelynDefeat, TRAINER_ISAIAH_1, Route128_Text_IsaiahDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_KATELYN_1, Route128_Text_KatelynDefeat, TRAINER_ISAIAH_1, Route128_Text_IsaiahDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route128_EventScript_KatelynIsaiahVictory
 fadescreen FADE_TO_BLACK
@@ -314,7 +314,7 @@ end
 
 Route128_EventScript_HarrisonCarleeDoMultiBattle::
 playbgm MUS_SURF, TRUE
-multi_2p_vs_2 TRAINER_HARRISON, Route128_Text_HarrisonDefeat, TRAINER_CARLEE, Route128_Text_CarleeDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_HARRISON, Route128_Text_HarrisonDefeat, TRAINER_CARLEE, Route128_Text_CarleeDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route128_EventScript_HarrisonCarleeVictory
 fadescreen FADE_TO_BLACK

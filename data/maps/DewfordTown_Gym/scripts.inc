@@ -154,7 +154,7 @@ end
 
 DewfordTown_Gym_EventScript_BrawlyDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_1 TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyDefeat, PARTNER_EMMIE
+multi_2_vs_1 TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, DewfordTown_Gym_EventScript_BrawlyVictory
 fadescreen FADE_TO_BLACK
@@ -258,7 +258,7 @@ end
 
 DewfordTown_Gym_EventScript_LauraBrendenDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_LAURA, DewfordTown_Gym_Text_LauraDefeat, TRAINER_BRENDEN, DewfordTown_Gym_Text_BrendenDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_LAURA, DewfordTown_Gym_Text_LauraDefeat, TRAINER_BRENDEN, DewfordTown_Gym_Text_BrendenDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, DewfordTown_Gym_EventScript_LauraBrendenVictory
 fadescreen FADE_TO_BLACK
@@ -319,7 +319,7 @@ end
 
 DewfordTown_Gym_EventScript_CristianTakaoDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_CRISTIAN, DewfordTown_Gym_Text_CristianDefeat, TRAINER_NAKOLAI, DewfordTown_Gym_Text_TakaoDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CRISTIAN, DewfordTown_Gym_Text_CristianDefeat, TRAINER_NAKOLAI, DewfordTown_Gym_Text_TakaoDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, DewfordTown_Gym_EventScript_CristianTakaoVictory
 fadescreen FADE_TO_BLACK
@@ -370,7 +370,7 @@ end
 
 DewfordTown_Gym_EventScript_LilithJocelynDoMultiBattle::
 playbgm MUS_GYM, TRUE
-multi_2p_vs_2 TRAINER_LILITH, DewfordTown_Gym_Text_LilithDefeat, TRAINER_JOCELYN, DewfordTown_Gym_Text_JocelynDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_LILITH, DewfordTown_Gym_Text_LilithDefeat, TRAINER_JOCELYN, DewfordTown_Gym_Text_JocelynDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, DewfordTown_Gym_EventScript_LilithJocelynVictory
 fadescreen FADE_TO_BLACK

@@ -49,7 +49,7 @@ end
 
 Route106_EventScript_NedElliotDoMultiBattle::
 playbgm MUS_ROUTE110, TRUE
-multi_2p_vs_2 TRAINER_NED, Route106_Text_NedDefeated, TRAINER_ELLIOT_1, Route106_Text_ElliotDefeated, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_NED, Route106_Text_NedDefeated, TRAINER_ELLIOT_1, Route106_Text_ElliotDefeated, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, Route106_EventScript_NedElliotVictory
 fadescreen FADE_TO_BLACK

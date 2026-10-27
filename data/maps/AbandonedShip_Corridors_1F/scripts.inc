@@ -28,7 +28,7 @@ end
 
 AbandonedShip_Corridors_1F_EventScript_CharlieDuncanDoMultiBattle::
 playbgm MUS_ABANDONED_SHIP, TRUE
-multi_2p_vs_2 TRAINER_CHARLIE, AbandonedShip_Corridors_1F_Text_CharlieDefeat, TRAINER_DUNCAN, AbandonedShip_Corridors_B1F_Text_DuncanDefeat, PARTNER_EMMIE
+multi_2_vs_2 TRAINER_CHARLIE, AbandonedShip_Corridors_1F_Text_CharlieDefeat, TRAINER_DUNCAN, AbandonedShip_Corridors_B1F_Text_DuncanDefeat, PARTNER_EMMIE
 switch VAR_RESULT
 case 1, AbandonedShip_Corridors_1F_EventScript_CharlieDuncanVictory
 fadescreen FADE_TO_BLACK

@@ -60,7 +60,7 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_SpenserBattle::
 
 BattleFrontier_BattlePalaceBattleRoom_EventScript_SpenserDoMultiBattle::
 	playbgm MUS_B_PALACE, TRUE
-	multi_2p_vs_1 TRAINER_SPENSER, BattleFrontier_BattlePalaceBattleRoom_Text_SpenserDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_SPENSER, BattleFrontier_BattlePalaceBattleRoom_Text_SpenserDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, BattleFrontier_BattlePalaceBattleRoom_EventScript_SpenserVictory
 	fadescreen FADE_TO_BLACK

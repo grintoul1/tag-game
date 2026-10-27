@@ -118,7 +118,7 @@ Route117_EventScript_LydiaIsaac::
 
 Route117_EventScript_LydiaIsaacDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_LYDIA_1, Route117_Text_LydiaDefeat, TRAINER_ISAAC_1, Route117_Text_IsaacDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_LYDIA_1, Route117_Text_LydiaDefeat, TRAINER_ISAAC_1, Route117_Text_IsaacDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route117_EventScript_LydiaIsaacVictory
 	fadescreen FADE_TO_BLACK
@@ -180,7 +180,7 @@ Route117_EventScript_DylanMaria::
 
 Route117_EventScript_DylanMariaDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_DYLAN_1, Route117_Text_DylanDefeat, TRAINER_MARIA_1, Route117_Text_MariaDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_DYLAN_1, Route117_Text_DylanDefeat, TRAINER_MARIA_1, Route117_Text_MariaDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route117_EventScript_DylanMariaVictory
 	fadescreen FADE_TO_BLACK
@@ -237,7 +237,7 @@ Route117_EventScript_MelinaDerek::
 
 Route117_EventScript_MelinaDerekDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_MELINA, Route117_Text_MelinaDefeat, TRAINER_DEREK, Route117_Text_DerekDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_MELINA, Route117_Text_MelinaDefeat, TRAINER_DEREK, Route117_Text_DerekDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route117_EventScript_MelinaDerekVictory
 	fadescreen FADE_TO_BLACK
@@ -302,7 +302,7 @@ Route117_EventScript_AnnaMeg::
 
 Route117_EventScript_AnnaMegDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_1 TRAINER_ANNA_AND_MEG_1, Route117_Text_AnnaDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_ANNA_AND_MEG_1, Route117_Text_AnnaDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route117_EventScript_AnnaMegVictory
 	fadescreen FADE_TO_BLACK
@@ -381,7 +381,7 @@ Route117_EventScript_BrandiAisha::
 
 Route117_EventScript_BrandiAishaDoMultiBattle::
 	playbgm MUS_ROUTE110, TRUE
-	multi_2p_vs_2 TRAINER_BRANDI, Route117_Text_BrandiDefeat, TRAINER_AISHA, Route117_Text_AishaDefeat, PARTNER_EMMIE
+	multi_2_vs_2 TRAINER_BRANDI, Route117_Text_BrandiDefeat, TRAINER_AISHA, Route117_Text_AishaDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, Route117_EventScript_BrandiAishaVictory
 	fadescreen FADE_TO_BLACK
