@@ -55,7 +55,7 @@ RustboroCity_EventScript_ErikaWouldLikeToBattle::
 	end
 
 RustboroCity_EventScript_DoErikaBattle::
-	multi_2p_vs_1 TRAINER_ERIKA_RUSTBORO, RustboroCity_Text_ErikaDefeat, PARTNER_EMMIE
+	multi_2_vs_1 TRAINER_ERIKA_RUSTBORO, RustboroCity_Text_ErikaDefeat, PARTNER_EMMIE
 	switch VAR_RESULT
 	case 1, RustboroCity_EventScript_ErikaVictory
 	fadescreen FADE_TO_BLACK
@@ -67,6 +67,7 @@ RustboroCity_EventScript_ErikaVictory::
 	waitmessage
 	goto_if_set FLAG_DEFEATED_RUSTBORO_ERIKA, RustboroCity_EventScript_ErikaEnd
 	giveitem ITEM_MIRACLE_SEED
+	setflag FLAG_DEFEATED_RUSTBORO_ERIKA
 RustboroCity_EventScript_ErikaEnd::
 	releaseall
 	end
