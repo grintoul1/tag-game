@@ -271,7 +271,9 @@ static void InitBtlControllersInternal(void)
             gBattlerPositions[B_BATTLER_1] = B_POSITION_PLAYER_LEFT;
             if (isDouble)
             {
+                //if (!IsBattlerAbsent(B_BATTLER_2))
                 gBattlerPositions[B_BATTLER_2] = B_POSITION_OPPONENT_RIGHT;
+                //if (!IsBattlerAbsent(B_BATTLER_3))
                 gBattlerPositions[B_BATTLER_3] = B_POSITION_PLAYER_RIGHT;
             }
         }
@@ -3471,5 +3473,24 @@ void SetFinalChosenTarget(enum BattlerId battler, bool32 checkPartner)
     {
         SetAIUsingGimmick(battler, NO_GIMMICK);
         BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_EXEC_SCRIPT, (chosenMoveIndex) | (chosenTarget << 8));
+    }
+}
+
+bool32 IsBattlerAbsent(enum BattlerId battler)
+{
+    if (!IsDoubleBattle() && battler > B_BATTLER_1)
+        return TRUE;
+    if (GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT && gPartiesCount[B_TRAINER_PLAYER] == 1 && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
+        return BATTLE_COORDS_SINGLES;
+    else if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT && gPartiesCount[B_TRAINER_OPPONENT_A] == 1 && !(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
+        return BATTLE_COORDS_SINGLES;
+    switch (battler)
+    {
+    case B_BATTLER_2:
+        return (gPartiesCount[B_TRAINER_PLAYER] == 1 && !(gBattleTypeFlags & BATTLE_TYPE_MULTI));
+    case B_BATTLER_3:
+        return (gPartiesCount[B_TRAINER_OPPONENT_A] == 1 && !(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS));
+    default:
+        return FALSE;
     }
 }

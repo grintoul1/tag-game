@@ -508,6 +508,7 @@ bool32 BattleSideHasTwoTrainers(enum BattleSide side);
 bool32 BattlersShareParty(enum BattlerId battler1, enum BattlerId battler2);
 bool32 TrainerHasParty(enum BattleTrainer trainer);
 void SetFinalChosenTarget(enum BattlerId battler, bool32 checkPartner);
+bool32 IsBattlerAbsent(enum BattlerId battler);
 
 static void (*const sBattleControllerFuncs[BATTLE_CONTROLLERS_COUNT])(enum BattlerId battler) =
 {
