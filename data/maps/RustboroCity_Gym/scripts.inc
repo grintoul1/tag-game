@@ -42,6 +42,7 @@ RustboroCity_Gym_EventScript_RoxanneDoMultiBattle::
 RustboroCity_Gym_EventScript_RoxanneVictory::
 	setvar VAR_PARTNER_EMMIE_STATE, 7
 	setvar VAR_LEVEL_CAP, 38
+	addvar VAR_ROUTE110_STATE, 1
 	goto RustboroCity_Gym_EventScript_RoxanneDefeated
 	end
 
