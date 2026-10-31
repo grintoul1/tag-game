@@ -1,11 +1,11 @@
-# How to make an Expansion version
+# How to make an Expansion Patch version
 
 *If you need instructions on how to release a new Expansion version, check out the enclosed instruction book. - AsparagusEduardo*
 
 ## 1.- Autogenerating a changelog for the `master` branch.
  *Requires Write access to the repo.*
 
-If the changelog you're making is for a minor version (Eg. 1.3.0), make sure to sync the `upcoming` branch with `master` before starting. Keep in mind that if there are unreleased changes in `master`, they should be made into a patch version released alongside minor version.
+If the changelog you're making is for a minor version (Eg. 1.3.0), then you want to be reading `docs/team_procedures/expansion_versions_minor.md` instead. Keep in mind that if there are unreleased changes in `master`, they should be made into a patch version released alongside the minor version.
 - Go to https://github.com/rh-hideout/pokeemerald-expansion/releases.
 - Press the option "Draft a new release".
 - Fill the following fields:
@@ -15,15 +15,6 @@ If the changelog you're making is for a minor version (Eg. 1.3.0), make sure to 
     - In "Previous tag", select the latest version released.
 - Press "Generate release notes". This will fill the description with a list of PRs made to the `master` branch since the lastest release.
 - You may copy the contents to your editor of choice for step 2.
-- If the changelog you're making is for a minor version (Eg. 1.3.0), proceed to step 1B, without closing the current window.
-
-## 1B.- Autogenerating a changelog for the `upcoming` branch.
-- Delete the text and title generated in the site.
-- Change "Target" to `upcoming`.
-- Press "Generate release notes". This will autogenerate the description with changes from both branches, as they've been merged.
-- Use a comparison tool to remove any shared PRs from `master`. (I use [WinMerge](https://winmerge.org/) for this).
-    - Also remove any shared "New Contributor" entries.
-- You should now have a text that only contains PRs made to `upcoming`.
 
 ## 2.- Sorting PRs in the changelog
 - Copy the `docs/changelogs/template.md` file into a new file with the corresponding version for file and folder. Eg, for 1.2.3, you copy the file into `docs/changelogs/1.2.x/1.2.3.md`.
@@ -80,57 +71,25 @@ If the changelog you're making is for a minor version (Eg. 1.3.0), make sure to 
         +- Once you have your remote set up, run the command `git pull RHH expansion/X.Y.Z`, replacing X, Y and Z with the digits of the respective version you want to update to (eg, to update to 1.2.3, use `git pull RHH expansion/1.2.3`).
         ```
     - `.github/ISSUE_TEMPLATE/*.yaml`
-        - Patch version:
-            ```diff
-            options:
-            -   1.2.2 (Latest release)
-            +   1.2.3 (Latest release)
-                master (default, unreleased bugfixes)
-                upcoming (Edge)
-            +   1.2.2
-                1.2.1
-                1.2.0
-            ```
-        - Minor Version:
-            ```diff
-            options:
-            -   1.2.2 (Latest release)
-            +   1.2.3 (Latest release)
-                master (default, unreleased bugfixes)
-                upcoming (Edge)
-            +   1.2.2
-                1.2.1
-                1.2.0
-            -   1.1.6
-            -   1.1.5
-            -   1.1.4
-            -   1.1.3
-            -   1.1.2
-            -   1.1.1
-            -   1.1.0
-            -   pre-1.1.0
-            +   pre-1.2.0
-            ```
+        ```diff
+        options:
+        -   1.2.2 (Latest release)
+        +   1.2.3 (Latest release)
+            master (default, unreleased bugfixes)
+            upcoming (Edge)
+        +   1.2.2
+            1.2.1
+            1.2.0
+        ```
     - `docs/SUMMARY.md`:
-        - Patch version:
-            ```diff
-            [Changelog](./CHANGELOG.md)
-                - [1.2.x]()
-            +       - [Version 1.2.3](changelogs/1.2.x/1.2.3.md)
-                    - [Version 1.2.2](changelogs/1.2.x/1.2.2.md)
-                    - [Version 1.2.1](changelogs/1.2.x/1.2.1.md)
-                    - [Version 1.2.0](changelogs/1.2.x/1.2.0.md)
-            ```
-        - Minor version:
-            ```diff
-            [Changelog](./CHANGELOG.md)
-            +   - [1.3.x]()
-            +       - [Version 1.3.0](changelogs/1.3.x/1.3.0.md)
-                - [1.2.x]()
-                    - [Version 1.2.2](changelogs/1.2.x/1.2.2.md)
-                    - [Version 1.2.1](changelogs/1.2.x/1.2.1.md)
-                    - [Version 1.2.0](changelogs/1.2.x/1.2.0.md)
-            ```
+        ```diff
+        [Changelog](./CHANGELOG.md)
+            - [1.2.x]()
+        +       - [Version 1.2.3](changelogs/1.2.x/1.2.3.md)
+                - [Version 1.2.2](changelogs/1.2.x/1.2.2.md)
+                - [Version 1.2.1](changelogs/1.2.x/1.2.1.md)
+                - [Version 1.2.0](changelogs/1.2.x/1.2.0.md)
+        ```
     - `include/constants/expansion.h`:
         - The defines should already have the version we're targetting as part of the previous changelog process.
             ```diff
@@ -145,32 +104,43 @@ If the changelog you're making is for a minor version (Eg. 1.3.0), make sure to 
             -#define EXPANSION_TAGGED_RELEASE FALSE
             +#define EXPANSION_TAGGED_RELEASE TRUE
             ```
-# 4.- Make a PR with the changes listed in Steps 2/3.
+
+# 4.- Commit the changes listed in Steps 2/3 with commit message "{{version}} Release", eg. "1.2.3 Release".
 - Also post the changelog for feedback from contributors and maintainers.
-- Once all feedback has been addresses, you may merge.
-# 5.- Create the release on GitHub
+
+# 5.- Beginning the new cycle
+- ***DON'T ACCEPT ANY NEW PRs YET.*** We have to prepare for the next cycle first.
+- Go to `include/constants/expansion.h` and make the below changes. 
+- Make a second commit to the same branch with commit message "Start of {{next version}} cycle", eg. "Start of 1.2.4 cycle":
+    ```diff
+        // Last version: 1.2.3
+        #define EXPANSION_VERSION_MAJOR 1
+        #define EXPANSION_VERSION_MINOR 2
+    -   #define EXPANSION_VERSION_PATCH 3
+    +   #define EXPANSION_VERSION_PATCH 4
+
+        // FALSE if this this version of Expansion is not a tagged commit, i.e.
+        // it contains unreleased changes.
+    -#define EXPANSION_TAGGED_RELEASE TRUE
+    +#define EXPANSION_TAGGED_RELEASE FALSE
+    ```
+
+# 6.- PR the commits from steps 4 & 5, ensuring they are merged via a merge commit and not squashed.
+- Once all changelog feedback has been addressed, you may merge.
+- With this, the repo is ready again to receive new PRs.
+
+# 7.- Create the release on GitHub
+- Back out of the draft release created in step 1, and then create the release again from scratch:
+- Fill the following fields:
+    - In "Choose a tag", write the name of the tag for the desired release number.
+        - Eg. for version 1.2.3, write `expansion/1.2.3`. ***It cannot be an existing tag.***
+    - In "Target" choose `Recent Commits` and then select your commit created in step 4 above titled "{{version}} Release", eg. "1.2.3 Release".
+    - In "Previous tag", select the latest version released.
 - Copy the contents of your manual changelog into the description of your release.
 - Modify the title to "Version {{version}}", eg. "Version 1.2.3"
 - Be sure to have the "Set as the latest release" option set,
 - Press "Publish Release".
 - This will create a new tag in the repo that users can pull from like they can with branches.
-# 6.- Post-release handling
-- ***DON'T ACCEPT ANY NEW PRs YET.*** We have to prepare for the next cycle first.
-- Go to `include/constants/expansion.h` and merge the following changes to the repo (PR or direct commit, doesn't matter much):
-    - Patch version:
-        ```diff
-         // Last version: 1.2.3
-            #define EXPANSION_VERSION_MAJOR 1
-            #define EXPANSION_VERSION_MINOR 2
-        -   #define EXPANSION_VERSION_PATCH 3
-        +   #define EXPANSION_VERSION_PATCH 4
-
-            // FALSE if this this version of Expansion is not a tagged commit, i.e.
-            // it contains unreleased changes.
-        -#define EXPANSION_TAGGED_RELEASE TRUE
-        +#define EXPANSION_TAGGED_RELEASE FALSE
-        ```
-With this, the repo is ready again to receive new PRs.
 
 # Now you're ready to make the announcements!
 - We tend to post on the following Discord Servers:
