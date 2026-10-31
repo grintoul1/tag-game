@@ -63,7 +63,10 @@ SINGLE_BATTLE_TEST("Electromorphosis displays its message before fainting when t
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player);
-        ABILITY_POPUP(player, ABILITY_ELECTROMORPHOSIS);
+        // Chose to undo this bizarre decision from GF
+        EXPECT_FAIL {
+            ABILITY_POPUP(player, ABILITY_ELECTROMORPHOSIS);
+        }
         MESSAGE("Being hit by Scratch charged Bellibolt with power!");
         MESSAGE("Bellibolt fainted!");
     }

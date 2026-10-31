@@ -4185,7 +4185,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 break;
             [[fallthrough]];
         case ABILITY_ELECTROMORPHOSIS:
-            if (!gBattleStruct->unableToUseMove && IsBattlerTurnDamaged(battler, EXCLUDING_SUBSTITUTES))
+            if (!gBattleStruct->unableToUseMove && IsBattlerTurnDamaged(battler, EXCLUDING_SUBSTITUTES) && IsBattlerAlive(battler))
             {
                 gBattlerAbility = battler;
                 BattleScriptCall(BattleScript_WindPowerActivates);

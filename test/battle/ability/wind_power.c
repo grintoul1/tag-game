@@ -270,7 +270,10 @@ SINGLE_BATTLE_TEST("Wind Power displays its message before fainting when trigger
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AIR_CUTTER, opponent);
         HP_BAR(player);
-        ABILITY_POPUP(player, ABILITY_WIND_POWER);
+        // Chose to undo this bizarre decision from GF
+        EXPECT_FAIL {
+            ABILITY_POPUP(player, ABILITY_WIND_POWER);
+        }
         MESSAGE("Being hit by Air Cutter charged Wattrel with power!");
         MESSAGE("Wattrel fainted!");
     }
@@ -295,6 +298,23 @@ DOUBLE_BATTLE_TEST("Tailwind does not trigger Wind Power on an absent ally battl
         NONE_OF {
             ABILITY_POPUP(playerRight, ABILITY_WIND_POWER);
             MESSAGE("Being hit by Tailwind charged Wattrel with power!");
+        }
+    }
+}
+
+SINGLE_BATTLE_TEST("Wind Power does not trigger when the move faints the battler")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Speed(10); }
+        OPPONENT(SPECIES_WATTREL) { Ability(ABILITY_WIND_POWER); HP(1); Speed(1); }
+        OPPONENT(SPECIES_WOBBUFFET) { Speed(5); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_AIR_CUTTER); SEND_OUT(opponent, 1); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_AIR_CUTTER, player);
+        NONE_OF {
+            ABILITY_POPUP(opponent, ABILITY_WIND_POWER);
+            MESSAGE("Being hit by Air Cutter charged the opposing Wattrel with power!");
         }
     }
 }
