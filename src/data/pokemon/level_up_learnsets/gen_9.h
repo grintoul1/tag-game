@@ -23319,8 +23319,7 @@ static const struct LevelUpMove sDecidueyeHisuiLevelUpLearnset[] = {
 
 #if P_FAMILY_LITTEN
 static const struct LevelUpMove sLittenLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 5, MOVE_FOLLOW_ME),
-    LEVEL_UP_MOVE( 6, MOVE_FAKE_OUT),
+    LEVEL_UP_MOVE( 5, MOVE_FAKE_OUT),
     LEVEL_UP_MOVE( 6, MOVE_GROWL),
     LEVEL_UP_MOVE( 6, MOVE_EMBER),
     LEVEL_UP_MOVE(12, MOVE_ASSURANCE),
@@ -23368,8 +23367,7 @@ static const struct LevelUpMove sLittenLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sTorracatLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 5, MOVE_FOLLOW_ME),
-    LEVEL_UP_MOVE( 6, MOVE_FAKE_OUT),
+    LEVEL_UP_MOVE( 5, MOVE_FAKE_OUT),
     LEVEL_UP_MOVE( 6, MOVE_GROWL),
     LEVEL_UP_MOVE( 6, MOVE_EMBER),
     LEVEL_UP_MOVE(12, MOVE_ASSURANCE),
@@ -23417,8 +23415,7 @@ static const struct LevelUpMove sTorracatLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sIncineroarLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 5, MOVE_FOLLOW_ME),
-    LEVEL_UP_MOVE( 6, MOVE_FAKE_OUT),
+    LEVEL_UP_MOVE( 5, MOVE_FAKE_OUT),
     LEVEL_UP_MOVE( 6, MOVE_GROWL),
     LEVEL_UP_MOVE( 6, MOVE_EMBER),
     LEVEL_UP_MOVE(12, MOVE_ASSURANCE),

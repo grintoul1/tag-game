@@ -8062,6 +8062,10 @@ s32 CalcCritChanceStage(struct DamageContext *ctx)
     {
         critChance = CRITICAL_HIT_ALWAYS;
     }
+    else if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
+    {
+        critChance = CRITICAL_HIT_BLOCKED;
+    }
     else
     {
         critChance  = gBattleMons[ctx->battlerAtk].volatiles.criticalHitBoost
