@@ -1592,7 +1592,7 @@ Battle Type: Doubles
 AI: Tag Trainer
 Multi Party: Half
 
-Spinda @ Adrenaline Orb
+Spinda @ Black Belt
 Ability: Contrary
 Level: 36
 Jolly Nature
@@ -1753,8 +1753,8 @@ Ability: Tangled Feet
 Level: 37
 Jolly Nature
 - Thrash
+- Drill Peck
 - Stomping Tantrum
-- Quick Attack
 - Swords Dance
 
 === TRAINER_BRENDAN_ROUTE_110_TREECKO ===
