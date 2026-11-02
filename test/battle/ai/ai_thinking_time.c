@@ -2,19 +2,19 @@
 #include "test/battle.h"
 
 #define AI_FRAME_CEILING_SINGLES_NO_FLAGS                       2
-#define AI_FRAME_CEILING_SINGLES_SMART_TRAINER                  7
-#define AI_FRAME_CEILING_DOUBLES_NO_FLAGS                       14
-#define AI_FRAME_CEILING_DOUBLES_SMART_TRAINER                  32
-#define AI_FRAME_CEILING_STEVEN_MULTI                           21
-#define AI_FRAME_CEILING_STEVEN_MULTI_SMART_TRAINER             25
+#define AI_FRAME_CEILING_SINGLES_SMART_TRAINER                  5
+#define AI_FRAME_CEILING_DOUBLES_NO_FLAGS                       6
+#define AI_FRAME_CEILING_DOUBLES_SMART_TRAINER                  20
+#define AI_FRAME_CEILING_STEVEN_MULTI                           14
+#define AI_FRAME_CEILING_STEVEN_MULTI_SMART_TRAINER             19
 #define AI_FRAME_CEILING_CHECK                                  FALSE // If TRUE, forces all thinking time tests to fail. Useful for printing all actual frame times to console by running the tests
 
-#define AI_FRAME_CEILING_DOUBLES_TAG_TRAINER                    42
-#define AI_FRAME_CEILING_DOUBLES_PARTNER_TRAINER                43
-#define AI_FRAME_CEILING_STEVEN_MULTI_TAG_TRAINER               38
-#define AI_FRAME_CEILING_STEVEN_MULTI_PARTNER_TRAINER           40
-#define AI_FRAME_CEILING_STEVEN_2VS1_TAG_TRAINER                54
-#define AI_FRAME_CEILING_STEVEN_2VS1_PARTNER_TRAINER            56
+#define AI_FRAME_CEILING_DOUBLES_TAG_TRAINER                    14
+#define AI_FRAME_CEILING_DOUBLES_PARTNER_TRAINER                16
+#define AI_FRAME_CEILING_STEVEN_MULTI_TAG_TRAINER               16
+#define AI_FRAME_CEILING_STEVEN_MULTI_PARTNER_TRAINER           19
+#define AI_FRAME_CEILING_STEVEN_2VS1_TAG_TRAINER                19
+#define AI_FRAME_CEILING_STEVEN_2VS1_PARTNER_TRAINER            21
 
 AI_SINGLE_BATTLE_TEST("AI thinking time doesn't explode (singles, no flags)")
 {
@@ -106,7 +106,7 @@ AI_DOUBLE_BATTLE_TEST("AI thinking time doesn't explode (doubles, smart)")
     }
 }
 
-AI_DOUBLE_BATTLE_TEST("AI thinking time doesn't explode (doubles, Tag Trainer)")
+AI_DOUBLE_BATTLE_TEST("AI thinking time tag doesn't explode (doubles, Tag Trainer)")
 {
     GIVEN {
         AI_FLAGS(AI_FLAG_TAG_TRAINER);
@@ -129,7 +129,7 @@ AI_DOUBLE_BATTLE_TEST("AI thinking time doesn't explode (doubles, Tag Trainer)")
     }
 }
 
-AI_DOUBLE_BATTLE_TEST("AI thinking time doesn't explode (doubles, Partner Trainer)")
+AI_DOUBLE_BATTLE_TEST("AI thinking time tag doesn't explode (doubles, Partner Trainer)")
 {
     GIVEN {
         AI_FLAGS(AI_FLAG_PARTNER_TRAINER);
@@ -200,7 +200,7 @@ AI_MULTI_BATTLE_TEST("AI thinking time doesn't explode (Steven multi, smart)")
     }
 }
 
-AI_MULTI_BATTLE_TEST("AI thinking time doesn't explode (Steven multi, Tag Trainer)")
+AI_MULTI_BATTLE_TEST("AI thinking time tag doesn't explode (Steven multi, Tag Trainer)")
 {
     GIVEN {
         BATTLER_AI_FLAGS(playerRight, AI_FLAG_TAG_TRAINER);
@@ -224,7 +224,7 @@ AI_MULTI_BATTLE_TEST("AI thinking time doesn't explode (Steven multi, Tag Traine
     }
 }
 
-AI_MULTI_BATTLE_TEST("AI thinking time doesn't explode (Steven multi, Partner Trainer)")
+AI_MULTI_BATTLE_TEST("AI thinking time tag doesn't explode (Steven multi, Partner Trainer)")
 {
     GIVEN {
         BATTLER_AI_FLAGS(playerRight, AI_FLAG_PARTNER_TRAINER);
@@ -248,7 +248,7 @@ AI_MULTI_BATTLE_TEST("AI thinking time doesn't explode (Steven multi, Partner Tr
     }
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("AI thinking time doesn't explode (Steven 2v1, Tag Trainer)")
+AI_TWO_VS_ONE_BATTLE_TEST("AI thinking time tag doesn't explode (Steven 2v1, Tag Trainer)")
 {
     GIVEN {
         BATTLER_AI_FLAGS(playerRight, AI_FLAG_TAG_TRAINER);
@@ -272,7 +272,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("AI thinking time doesn't explode (Steven 2v1, Tag Tra
     }
 }
 
-AI_TWO_VS_ONE_BATTLE_TEST("AI thinking time doesn't explode (Steven 2v1, Partner Trainer)")
+AI_TWO_VS_ONE_BATTLE_TEST("AI thinking time tag doesn't explode (Steven 2v1, Partner Trainer)")
 {
     GIVEN {
         BATTLER_AI_FLAGS(playerRight, AI_FLAG_PARTNER_TRAINER);

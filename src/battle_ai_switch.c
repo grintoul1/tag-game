@@ -92,7 +92,7 @@ static void InitializeSwitchinCandidate(enum BattlerId switchinBattler, enum Par
 
     for (enum BattlerId battlerIndex = 0; battlerIndex < gBattlersCount; battlerIndex++)
     {
-        if (switchinBattler == battlerIndex || !IsBattlerAlive(battlerIndex))
+        if (switchinBattler == battlerIndex || IsBattlerAlly(switchinBattler, battlerIndex) || !IsBattlerAlive(battlerIndex))
             continue;
         SetBattlerStatStagesForSwitchin(switchinBattler, battlerIndex, switchinTerrain);
         SetBattlerHPChangeForSwitch(switchinBattler, battlerIndex);
@@ -2865,7 +2865,7 @@ enum PartySlot GetMostSuitableMonToSwitchInto(enum BattlerId battler, enum Switc
     enum BattlerId battlerIn1 = 0, battlerIn2 = 0;
     s32 lastId = GetAILastPartyIndex(battler); // + 1
     struct Pokemon *party = NULL;
-    s32 bestScore;
+    s32 bestScore = 0;
 
     if (gBattleStruct->monToSwitchIntoId[battler] != PARTY_SLOT_NONE)
         return gBattleStruct->monToSwitchIntoId[battler];
@@ -3217,7 +3217,6 @@ static void CustomGetBestMonIntegrated(struct SwitchAiContext *ctx, enum SwitchT
         u32 percentageDealtStored[PARTY_SIZE]={0};
         u32 percentageReceivedStored[PARTY_SIZE]={0};*/
 
-    u32 switchInScores[PARTY_SIZE]={0};
     bool32 isFreeSwitch = IsFreeSwitch(switchType, ctx->battler, ctx->opposingBattler);
     bool32 isPartner = gAiThinkingStruct->aiFlags[ctx->battler] & AI_FLAG_PARTNER_SWITCHING;
 
@@ -3230,15 +3229,11 @@ static void CustomGetBestMonIntegrated(struct SwitchAiContext *ctx, enum SwitchT
         const u8 *lookingAt;
         lookingAt = GetSpeciesName(gBattleMons[ctx->opposingBattler].species);*/
 
-    u32 lastId = ctx->lastId;
-    u32 opponentA = TRAINER_BATTLE_PARAM.opponentA;
-    u64 flags = gBattleTypeFlags;
+    enum PartySlot lastId = ctx->lastId;
 
-    if ((opponentA == TRAINER_EMMIE_1) || (opponentA == TRAINER_EMMIE_3) || ((!(flags & BATTLE_TYPE_MULTI)) && (!(flags & BATTLE_TYPE_INGAME_PARTNER))))
-        lastId=6;
-
-    for (u32 monId = 0; monId < lastId; monId++)
+    for (enum PartySlot monId = 0; monId < lastId; monId++)
     {
+        u32 candidateScore = 0;
         u32 maxDamageDealtToAI = 0, maxDamagePartnerDealtToAI = 0, percentageReceived = 0, damageDealt = 0, percentageDealt = 0, maxDamageDealt = 0; 
         enum Species aiMonSpecies = 0;
         enum Move aiMove = MOVE_NONE;
@@ -3248,22 +3243,17 @@ static void CustomGetBestMonIntegrated(struct SwitchAiContext *ctx, enum SwitchT
             /*partyMon=SPECIES_NONE;
             aiBestMove[monId]=0;*/
 
-        struct Pokemon mon = ctx->party[monId];
-
-        if (!IsValidForBattle(&mon))
+        if (!IsValidForBattle(&ctx->party[monId]))
             continue;
         if (IsPartyMonOnFieldOrChosenToSwitch(ctx->battler, monId, ctx->battlerIn1, ctx->battlerIn2))
             continue;
         if (IsPartyMonPlannedToBeSwitchedInByPartner(monId, ctx->battler))
             continue;
 
-        switchInScores[monId] = 0;
-
             /*partyMon=GetSpeciesName(GetMonData(&mon,MON_DATA_SPECIES,NULL));
             partyMonStored[monId]=partyMon;*/
 
-        InitializeSwitchinCandidate(ctx->battler, monId, &mon);
-        aiMonSpecies = GetMonData(&mon, MON_DATA_SPECIES, NULL);
+        InitializeSwitchinCandidate(ctx->battler, monId, &ctx->party[monId]);
         bool32 aiMonFaster = AI_IsFaster(ctx->battler, ctx->opposingBattler, MOVE_SCRATCH, MOVE_SCRATCH, DONT_CONSIDER_PRIORITY);
 
         if (isPartner)
@@ -3272,7 +3262,9 @@ static void CustomGetBestMonIntegrated(struct SwitchAiContext *ctx, enum SwitchT
         struct BattlePokemon battleMon = gBattleMons[ctx->battler];
         struct BattlePokemon opposingBattleMon = gBattleMons[ctx->opposingBattler];
 
-        for (u32 i = 0; i < MAX_MON_MOVES; i++)
+        aiMonSpecies = battleMon.species;
+
+        for (enum MoveSlot i = 0; i < MAX_MON_MOVES; i++)
         {
             aiMove = battleMon.moves[i];
             if (aiMove == MOVE_NONE)
@@ -3297,41 +3289,48 @@ static void CustomGetBestMonIntegrated(struct SwitchAiContext *ctx, enum SwitchT
 
         maxDamageDealtToAI = GetMaxDamagePlayerCouldDealToSwitchin(ctx->battler, ctx->opposingBattler, &bestTargetMove);
         maxDamagePartnerDealtToAI = GetMaxDamagePlayerCouldDealToSwitchin(ctx->battler, ctx->opposingPartner, &bestTargetPartnerMove);
-        percentageReceived = ((maxDamageDealtToAI*1000) / GetMonData(&mon,MON_DATA_HP,NULL));
+        percentageReceived = ((maxDamageDealtToAI*1000) / battleMon.hp);
         bool32 targetKills = (maxDamageDealtToAI >= battleMon.hp && !CanEndureHit(ctx->opposingBattler, ctx->battler, bestTargetMove));
-        bool32 targetPartnerKills = (maxDamagePartnerDealtToAI >= battleMon.hp && !CanEndureHit(ctx->opposingBattler, ctx->battler, bestTargetPartnerMove));
+        bool32 targetPartnerKills = (maxDamagePartnerDealtToAI >= battleMon.hp && !CanEndureHit(ctx->opposingPartner, ctx->battler, bestTargetPartnerMove));
         bool32 aiKills = maxDamageDealt >= opposingBattleMon.hp;
 
             /*percentageReceivedStored[monId] = percentageReceived;
             maxDamageDealtToAIStored[monId] = maxDamageDealtToAI;*/
 
+        if(aiMonFaster)
+           candidateScore = 1;
+
+        if(aiMonSpecies == SPECIES_DITTO)
+           candidateScore += 4;
+        else if (!aiMonFaster && targetKills)
+           candidateScore = 1;
+        else if (isPartner && !aiMonFasterPartner && targetPartnerKills)
+           candidateScore = 1;
+        else if(aiMonSpecies == SPECIES_WOBBUFFET && !TESTING)
+           candidateScore += 4;
+        else if(aiKills)
+           candidateScore += 6;
+        else if((percentageDealt >= percentageReceived))
+           candidateScore += 4;
+        else 
+           candidateScore += 2;
+        
         if (switchType != SWITCH_AFTER_KO && !isFreeSwitch)
         {
-            if((maxDamageDealtToAI*2 >= battleMon.hp && !aiMonFaster) || (targetKills))
+            if((percentageReceived >= 50 && !aiMonFaster) || (targetKills))
             {
-                switchInScores[monId] = 1;
-                continue;
+                candidateScore = 1;
             }
         }
 
-        if(aiMonFaster)
-            switchInScores[monId] = 1;
+        if (candidateScore > *bestScore)
+        {
+            *bestScore = candidateScore;
+            *bestMonId = monId;
 
-        if(aiMonSpecies == SPECIES_DITTO)
-            switchInScores[monId] += 4;
-        else if (!aiMonFaster && targetKills)
-            switchInScores[monId] = 1;
-        else if (isPartner && !aiMonFasterPartner && targetPartnerKills)
-            switchInScores[monId] = 1;
-        else if(aiMonSpecies == SPECIES_WOBBUFFET && !TESTING)
-            switchInScores[monId] += 4;
-        else if(aiKills)
-            switchInScores[monId] += 6;
-        else if((percentageDealt >= percentageReceived))
-            switchInScores[monId] += 4;
-        else 
-            switchInScores[monId] += 2;
-        
+            if (*bestScore == 7)
+                break;
+        }
         
         /*if(switchInScores[monId]!=0)
         {
@@ -3345,20 +3344,6 @@ static void CustomGetBestMonIntegrated(struct SwitchAiContext *ctx, enum SwitchT
             DebugPrintf("party slot takes %d", maxDamageDealtToAIStored[monId]);
             DebugPrintf("percentage slot takes %d", percentageReceivedStored[monId]);
         }*/
-    }
-
-
-    *bestScore = 0;
-    for (u32 monId = 0; monId < lastId; monId++)
-    {
-        if (switchInScores[monId] == 0)
-            continue;
-
-        if (switchInScores[monId] > *bestScore)
-        {
-            *bestScore = switchInScores[monId];
-            *bestMonId = monId;
-        }
     }
 
     gAiLogicData->aiCalcInProgress = FALSE;

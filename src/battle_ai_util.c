@@ -1449,7 +1449,7 @@ s32 AI_WhoStrikesFirst(enum BattlerId battlerAI, enum BattlerId battler, enum Mo
         else
             return AI_IS_FASTER;
     }
-    else if (speedBattlerAI == speedBattler)
+    else if (speedBattlerAI == speedBattler && !(gAiThinkingStruct->aiFlags[battlerAI] & AI_FLAG_PARTNER_SWITCHING))
     {
         return AI_IS_FASTER;
     }
