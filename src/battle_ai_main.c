@@ -10685,7 +10685,7 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
             else if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PARTNER) // Partner trainers only
             {
                 // If target has Fake out, it's target first turn but user is faster
-                if (HasMove(battlerDef, MOVE_FAKE_OUT) && gBattleStruct->battlerState[battlerDef].isFirstTurn
+                if ((HasMove(battlerDef, MOVE_FAKE_OUT) || HasMove(battlerDef, MOVE_ASTONISH)) && gBattleStruct->battlerState[battlerDef].isFirstTurn
                  && AI_WhoStrikesFirst(battlerAtk, battlerDef, MOVE_NONE, MOVE_NONE, DONT_CONSIDER_PRIORITY) == AI_IS_FASTER)
                 {
                     ADJUST_SCORE(BEST_DAMAGE_MOVE + FAST_KILL + 3); // +21; 1 above fast KO for partner
@@ -10700,9 +10700,10 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
                     ADJUST_SCORE(BEST_DAMAGE_MOVE + FAST_KILL + 3); // +21; 1 above fast KO for partner
                     break;
                 }
-                else
+                else if ((AI_GetDamage(battlerAtk, battlerDef, gAiThinkingStruct->movesetIndex, AI_ATTACKING, gAiLogicData)*1000)/(gBattleMons[battlerDef].hp)
+                        > (AI_GetDamage(battlerAtk, GetPartnerBattler(battlerDef), gAiThinkingStruct->movesetIndex, AI_ATTACKING, gAiLogicData)*1000)/(gBattleMons[GetPartnerBattler(battlerDef)].hp))
                 {
-                    ADJUST_SCORE(BEST_DAMAGE_MOVE + SLOW_KILL + 1); // +13; 1 below slow KO for partner
+                    ADJUST_SCORE(BEST_DAMAGE_MOVE + SLOW_KILL + 1); // +13; 1 below slow KO for partner for highest dmg fake out target
                     break;
                 }
             }
