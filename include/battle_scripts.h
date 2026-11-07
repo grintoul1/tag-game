@@ -154,6 +154,8 @@ extern const u8 BattleScript_MoveEffectSleep[];
 extern const u8 BattleScript_YawnMakesAsleep[];
 extern const u8 BattleScript_MoveEffectPoison[];
 extern const u8 BattleScript_FlameOrbActivates[];
+extern const u8 BattleScript_FrostOrbActivates[];
+extern const u8 BattleScript_IcyOrbActivates[];
 extern const u8 BattleScript_MoveEffectBurn[];
 extern const u8 BattleScript_MoveEffectFrostbite[];
 extern const u8 BattleScript_MoveEffectFreeze[];

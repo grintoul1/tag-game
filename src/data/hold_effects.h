@@ -315,6 +315,18 @@ const struct HoldEffectInfo gHoldEffectsInfo[HOLD_EFFECT_COUNT] =
         .orbsWhiteHerbActivation = TRUE,
     },
 
+    [HOLD_EFFECT_FROST_ORB] =
+    {
+        .orbs = TRUE,
+        .orbsWhiteHerbActivation = TRUE,
+    },
+
+    [HOLD_EFFECT_ICY_ORB] =
+    {
+        .orbs = TRUE,
+        .orbsWhiteHerbActivation = TRUE,
+    },
+
     [HOLD_EFFECT_STICKY_BARB] =
     {
         .onTargetAfterHit = TRUE,

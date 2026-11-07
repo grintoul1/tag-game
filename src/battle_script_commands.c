@@ -1312,6 +1312,7 @@ void TrySynchronizeActivation(enum BattlerId battlerAtk, enum BattlerId effectBa
     if (effect == MOVE_EFFECT_POISON
      || effect == MOVE_EFFECT_TOXIC
      || effect == MOVE_EFFECT_PARALYSIS
+     || effect == MOVE_EFFECT_FROSTBITE
      || effect == MOVE_EFFECT_BURN)
     {
         gSpecialStatuses[effectBattler].synchronize = TRUE;
@@ -8420,6 +8421,7 @@ void BS_TryPsychoShift(void)
           && CanSetNonVolatileStatus(gBattlerAttacker, gBattlerTarget, attackerAbility, targetAbility, MOVE_EFFECT_FREEZE_OR_FROSTBITE, CHECK_TRIGGER))
     {
         gBattleCommunication[MULTISTRING_CHOOSER] = 5;
+        synchronizeEffect = MOVE_EFFECT_FROSTBITE;
     }
     else if (IsSleepClauseActiveForSide(GetBattlerSide(gBattlerTarget)))
     {

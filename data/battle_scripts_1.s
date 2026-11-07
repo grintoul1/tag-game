@@ -3126,12 +3126,16 @@ BattleScript_MoveEffectBurn::
 	destroyitempopup
 	goto BattleScript_UpdateEffectStatusIconRet
 
+BattleScript_FrostOrbActivates::
+	call BattleScript_ItemPopUpScripting
 BattleScript_MoveEffectFrostbite::
 	statusanimation BS_EFFECT_BATTLER
 	printfromtable gGotFrostbiteStringIds
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_UpdateEffectStatusIconRet
 
+BattleScript_IcyOrbActivates::
+	call BattleScript_ItemPopUpScripting
 BattleScript_MoveEffectFreeze::
 	statusanimation BS_EFFECT_BATTLER
 	printfromtable gGotFrozenStringIds

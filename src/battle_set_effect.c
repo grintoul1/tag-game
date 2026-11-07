@@ -1108,6 +1108,14 @@ static void HandleSetEffectFling(struct BattleCalcValues *cv, struct SetEffect *
             flingEffect.moveEffect = MOVE_EFFECT_TOXIC;
             SetMoveEffect(cv, &flingEffect);
             break;
+        case HOLD_EFFECT_FROST_ORB:
+            flingEffect.moveEffect = MOVE_EFFECT_FROSTBITE;
+            SetMoveEffect(cv, &flingEffect);
+            break;
+        case HOLD_EFFECT_ICY_ORB:
+            flingEffect.moveEffect = MOVE_EFFECT_FREEZE;
+            SetMoveEffect(cv, &flingEffect);
+            break;
         case HOLD_EFFECT_LIGHT_BALL:
             flingEffect.moveEffect = MOVE_EFFECT_PARALYSIS;
             SetMoveEffect(cv, &flingEffect);
@@ -4547,7 +4555,7 @@ static inline enum MoveEffect GetSynchronizeEffect(u32 status)
     if (status & STATUS1_BURN)         return MOVE_EFFECT_BURN;
     if (status & STATUS1_PARALYSIS)    return MOVE_EFFECT_PARALYSIS;
     if (status & STATUS1_SLEEP)        return MOVE_EFFECT_SLEEP;
-    if (status & STATUS1_FROSTBITE)    return MOVE_EFFECT_FREEZE_OR_FROSTBITE;
+    if (status & STATUS1_FROSTBITE)    return MOVE_EFFECT_FROSTBITE;
 
     return MOVE_EFFECT_NONE;
 }

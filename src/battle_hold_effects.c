@@ -640,6 +640,40 @@ static enum ItemEffect TryFlameOrb(enum BattlerId battler)
     return effect;
 }
 
+static enum ItemEffect TryFrostOrb(enum BattlerId battler)
+{
+    enum ItemEffect effect = ITEM_NO_EFFECT;
+    enum Ability ability = GetBattlerAbility(battler);
+
+    if (CanBeFrozen(battler, battler, ability))
+    {
+        gBattleMons[battler].status1 = STATUS1_FROSTBITE;
+        gEffectBattler = battler;
+        gBattleCommunication[MULTISTRING_CHOOSER] = 0;
+        BattleScriptCall(BattleScript_FrostOrbActivates);
+        effect = ITEM_STATUS_CHANGE;
+    }
+
+    return effect;
+}
+
+static enum ItemEffect TryIcyOrb(enum BattlerId battler)
+{
+    enum ItemEffect effect = ITEM_NO_EFFECT;
+    enum Ability ability = GetBattlerAbility(battler);
+
+    if (CanBeFrozen(battler, battler, ability))
+    {
+        gBattleMons[battler].status1 = STATUS1_FREEZE;
+        gEffectBattler = battler;
+        gBattleCommunication[MULTISTRING_CHOOSER] = 0;
+        BattleScriptCall(BattleScript_IcyOrbActivates);
+        effect = ITEM_STATUS_CHANGE;
+    }
+
+    return effect;
+}
+
 static enum ItemEffect TryLeftovers(enum BattlerId battler, enum HoldEffect holdEffect)
 {
     enum ItemEffect effect = ITEM_NO_EFFECT;
@@ -1155,6 +1189,12 @@ enum ItemEffect ItemBattleEffects(enum BattlerId itemBattler, enum BattlerId bat
         break;
     case HOLD_EFFECT_FLAME_ORB:
         effect = TryFlameOrb(itemBattler);
+        break;
+    case HOLD_EFFECT_FROST_ORB:
+        effect = TryFrostOrb(itemBattler);
+        break;
+    case HOLD_EFFECT_ICY_ORB:
+        effect = TryIcyOrb(itemBattler);
         break;
     case HOLD_EFFECT_LEFTOVERS:
         effect = TryLeftovers(itemBattler, holdEffect);

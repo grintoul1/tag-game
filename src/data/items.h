@@ -9448,6 +9448,54 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_ToxicOrb,
     },
 
+    [ITEM_FROST_ORB] =
+    {
+        .name = ITEM_NAME("Frost Orb"),
+    #if I_PRICE >= GEN_9
+        .price = 15000,
+    #elif I_PRICE >= GEN_7
+        .price = 4000,
+    #else
+        .price = 200,
+    #endif
+        .holdEffect = HOLD_EFFECT_FROST_ORB,
+        .description = COMPOUND_STRING(
+            "A bizarre orb that\n"
+            "frostbites the\n"
+            "holder in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 30,
+        .iconPic = gItemIcon_FlameOrb,
+        .iconPalette = gItemIconPalette_FlameOrb,
+    },
+
+    [ITEM_ICY_ORB] =
+    {
+        .name = ITEM_NAME("Icy Orb"),
+    #if I_PRICE >= GEN_9
+        .price = 15000,
+    #elif I_PRICE >= GEN_7
+        .price = 4000,
+    #else
+        .price = 200,
+    #endif
+        .holdEffect = HOLD_EFFECT_ICY_ORB,
+        .description = COMPOUND_STRING(
+            "A bizarre orb that\n"
+            "freezes the\n"
+            "holder in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 30,
+        .iconPic = gItemIcon_FlameOrb,
+        .iconPalette = gItemIconPalette_FlameOrb,
+    },
+
 // Weather Rocks
 
     [ITEM_DAMP_ROCK] =

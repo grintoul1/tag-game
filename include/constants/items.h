@@ -1059,6 +1059,8 @@ enum __attribute__((packed)) Item
     ITEM_INVERSION_POLICY = 879,
     ITEM_DISTRACTION_POLICY = 880,
     ITEM_SPOTLIGHT_POLICY = 881,
+    ITEM_FROST_ORB = 882,
+    ITEM_ICY_ORB = 883,
 
 
     ITEMS_COUNT,

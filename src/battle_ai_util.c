@@ -4157,6 +4157,18 @@ static bool32 ShouldCureStatusInternal(enum BattlerId battlerAtk, enum BattlerId
         }
     }
 
+    if (status & STATUS1_FROSTBITE)
+    {
+        if (aiData->holdEffects[battlerDef] == HOLD_EFFECT_FROST_ORB)
+            return FALSE;
+    }
+
+    if (status & STATUS1_FREEZE)
+    {
+        if (aiData->holdEffects[battlerDef] == HOLD_EFFECT_ICY_ORB)
+            return FALSE;
+    }
+
 /*
     if (status & STATUS1_PARALYSIS)
     if (status & STATUS1_FROSTBITE)
