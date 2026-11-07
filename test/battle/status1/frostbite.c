@@ -101,3 +101,47 @@ SINGLE_BATTLE_TEST("Frostbite is healed when the user uses a thawing move")
         }
    }
 }
+
+SINGLE_BATTLE_TEST("Chill-O-Wisp frostbites target")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_CHILL_O_WISP); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_CHILL_O_WISP, player);
+        MESSAGE("The opposing Wobbuffet got frostbite!");
+        STATUS_ICON(opponent, frostbite: TRUE);
+        MESSAGE("The opposing Wobbuffet was hurt by its frostbite!");
+    }
+}
+
+SINGLE_BATTLE_TEST("Chill-O-Wisp frostbites fire types")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_VULPIX);
+    } WHEN {
+        TURN { MOVE(player, MOVE_CHILL_O_WISP); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_CHILL_O_WISP, player);
+        MESSAGE("The opposing Vulpix got frostbite!");
+        STATUS_ICON(opponent, frostbite: TRUE);
+        MESSAGE("The opposing Vulpix was hurt by its frostbite!");
+    }
+}
+
+SINGLE_BATTLE_TEST("Chill-O-Wisp does not frostbite ice types")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_VULPIX_ALOLA);
+    } WHEN {
+        TURN { MOVE(player, MOVE_CHILL_O_WISP); }
+    } SCENE {
+        NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_CHILL_O_WISP, player);
+        MESSAGE("It doesn't affect the opposing Vulpix…");
+        NOT STATUS_ICON(opponent, frostbite: TRUE);
+    }
+}
