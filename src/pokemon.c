@@ -95,6 +95,7 @@ static void EncryptBoxMon(struct BoxPokemon *boxMon);
 static void DecryptBoxMon(struct BoxPokemon *boxMon);
 static void Task_PlayMapChosenOrBattleBGM(u8 taskId);
 void TrySpecialOverworldEvo();
+static bool32 IsLevelUpEvoMethod(enum EvolutionMethods method);
 
 EWRAM_DATA static u8 sLearningMoveTableID = 0;
 EWRAM_DATA u8 gPartiesCount[MAX_BATTLE_TRAINERS] = {0};
@@ -3534,7 +3535,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, enum Item item, enum PartySlot 
                 {
                     dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES)].growthRate][GetMonData(mon, MON_DATA_LEVEL) + 1];
                 }
-                                else if (param == LEVEL_CAP)
+                else if (param == LEVEL_CAP)
                 {
                     u32 levelUpThreshold = GetCurrentLevelCap();
                     u32 blockLevelUp = FALSE;
@@ -3543,6 +3544,12 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, enum Item item, enum PartySlot 
 
                     for (u32 evo = 0; evolutions[evo].method != EVOLUTIONS_END; evo++)
                     {
+                        if (evolutions == NULL)
+                            break;
+
+                        if (!IsLevelUpEvoMethod(evolutions[evo].method))
+                            continue;
+
                         u32 evoLevelUp = evolutions[evo].param;
 
                         if (evoLevelUp <= monLevel && evoLevelUp != 0)
@@ -3552,12 +3559,9 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, enum Item item, enum PartySlot 
                             break;
                         }
 
-                        // Prevents looping if no evo method was found
-                        if (SanitizeSpeciesId(evolutions[evo].targetSpecies) == SPECIES_NONE)
-                            break;
-
                         if (evoLevelUp < levelUpThreshold && monLevel < levelUpThreshold)
                             levelUpThreshold = evoLevelUp;
+
                     }
 
                     if (!blockLevelUp)
@@ -7303,4 +7307,15 @@ void CreateMonFromTemplate(struct Pokemon *mon, const struct PokemonTemplate *mo
 
     CalculateMonStats(mon);
     TryFormChange(mon, FORM_CHANGE_ITEM_HOLD, B_TRAINER_PLAYER);
+}
+
+static bool32 IsLevelUpEvoMethod(enum EvolutionMethods method)
+{
+    switch (method)
+    {
+    case EVO_LEVEL:
+        return TRUE;
+    default:
+        return FALSE;
+    }
 }
