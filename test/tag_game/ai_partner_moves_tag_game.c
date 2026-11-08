@@ -490,7 +490,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner will not
             SCORE_EQ_VAL(playerRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + SLOW_KO_PARTNER, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT, target:opponentRight);
             SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
-            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT, target:opponentRight); 
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AURA_SPHERE, playerRight);
@@ -513,7 +513,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner will
             SCORE_EQ_VAL(playerRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT + SLOW_KO_PARTNER, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_AURA_SPHERE, AI_SCORE_DEFAULT, target:opponentRight);
             SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
-            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT, target:opponentRight); 
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AURA_SPHERE, playerRight);
@@ -535,7 +535,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner Fake Out
         TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentRight);
             SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentRight);
-            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER + SLOW_KO_PARTNER - 1, target:opponentRight); 
         }
     } SCENE {
@@ -558,7 +558,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner Fake
         TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentRight);
             SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentRight);
-            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER + SLOW_KO_PARTNER - 1, target:opponentRight); 
         }
     } SCENE {
@@ -627,7 +627,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner Fake Out
         TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentRight);
             SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentRight);
-            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + LAST_CHANCE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + LAST_CHANCE_PARTNER, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + BEST_DAMAGE_MOVE_PARTNER + LAST_CHANCE_PARTNER, target:opponentRight); 
         }
     } SCENE {
@@ -650,7 +650,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner Fake
         TURN { EXPECT_MOVE(playerRight, MOVE_FAKE_OUT, target:opponentRight);
             SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_CONSTRICT, AI_SCORE_DEFAULT + NO_DAMAGE_OR_FAILS, target:opponentRight);
-            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + LAST_CHANCE_PARTNER, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + LAST_CHANCE_PARTNER, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1 + BEST_DAMAGE_MOVE_PARTNER + LAST_CHANCE_PARTNER, target:opponentRight); 
         }
     } SCENE {
@@ -812,7 +812,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner will Fak
             SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT, target:opponentRight);
             SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + FAST_KO_PARTNER + 1, target:opponentLeft);
-            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT, target:opponentRight); 
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
@@ -835,7 +835,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner will
             SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + BEST_DAMAGE_MOVE_PARTNER, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT, target:opponentRight);
             SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + FAST_KO_PARTNER + 1, target:opponentLeft);
-            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT, target:opponentRight); 
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerRight);
@@ -857,7 +857,7 @@ AI_MULTI_BATTLE_TEST("TAG TEST: MULTI: AI: PARTNER: SCORING: AI partner will not
         TURN { EXPECT_MOVE(playerRight, MOVE_SEISMIC_TOSS, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + FAST_KO_PARTNER, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT, target:opponentRight);
-            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
         }
     } SCENE {
@@ -880,7 +880,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("TAG TEST: 2VS1: AI: PARTNER: SCORING: AI partner will
         TURN { EXPECT_MOVE(playerRight, MOVE_SEISMIC_TOSS, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT + FAST_KO_PARTNER, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_SEISMIC_TOSS, AI_SCORE_DEFAULT, target:opponentRight);
-            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentLeft);
+            SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT, target:opponentLeft);
             SCORE_EQ_VAL(playerRight, MOVE_FAKE_OUT, AI_SCORE_DEFAULT + SLOW_KO_PARTNER - 1, target:opponentRight); 
         }
     } SCENE {

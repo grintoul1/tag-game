@@ -10735,8 +10735,13 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
                     ADJUST_SCORE(BEST_DAMAGE_MOVE + FAST_KILL + 3); // +21; 1 above fast KO for partner
                     break;
                 }
+                else if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, gAiThinkingStruct->movesetIndex, AI_ATTACKING))
+                {
+                    ADJUST_SCORE(BEST_DAMAGE_MOVE + SLOW_KILL + 1); // +13; 1 below slow KO for partner for highest dmg fake out target
+                    break;
+                }
                 else if ((AI_GetDamage(battlerAtk, battlerDef, gAiThinkingStruct->movesetIndex, AI_ATTACKING, gAiLogicData)*1000)/(gBattleMons[battlerDef].hp)
-                        > (AI_GetDamage(battlerAtk, GetPartnerBattler(battlerDef), gAiThinkingStruct->movesetIndex, AI_ATTACKING, gAiLogicData)*1000)/(gBattleMons[GetPartnerBattler(battlerDef)].hp))
+                        >= (AI_GetDamage(battlerAtk, GetPartnerBattler(battlerDef), gAiThinkingStruct->movesetIndex, AI_ATTACKING, gAiLogicData)*1000)/(gBattleMons[GetPartnerBattler(battlerDef)].hp))
                 {
                     ADJUST_SCORE(BEST_DAMAGE_MOVE + SLOW_KILL + 1); // +13; 1 below slow KO for partner for highest dmg fake out target
                     break;
