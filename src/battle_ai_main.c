@@ -8555,8 +8555,11 @@ static s32 AI_PartnerTrainer(enum BattlerId battlerAtk, enum BattlerId battlerDe
                 break;
             case EFFECT_TAILWIND:
                 if (gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND
-                || PartnerMoveEffectIs(battlerAtkPartner, aiData->partnerMove, EFFECT_TAILWIND)
-                || (gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer == 1))
+                 || PartnerMoveEffectIs(battlerAtkPartner, aiData->partnerMove, EFFECT_TAILWIND)
+                 || (gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer > 1)
+                 || ((CanTargetFaintAi(battlerDef, battlerAtk)
+                 || CanTargetFaintAi(battlerDefPartner, battlerAtk))
+                 && !HasPartner(battlerAtk) && (CountUsablePartyMons(battlerAtk) == 0)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_LUCKY_CHANT:
@@ -13887,8 +13890,11 @@ static s32 AI_TagOpponent(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
                 break;
             case EFFECT_TAILWIND:
                 if (gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND
-                || PartnerMoveEffectIs(battlerAtkPartner, aiData->partnerMove, EFFECT_TAILWIND)
-                || (gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer == 1))
+                 || PartnerMoveEffectIs(battlerAtkPartner, aiData->partnerMove, EFFECT_TAILWIND)
+                 || (gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer == 1)
+                 || ((CanTargetFaintAi(battlerDef, battlerAtk)
+                 || CanTargetFaintAi(battlerDefPartner, battlerAtk))
+                 && !HasPartner(battlerAtk) && (CountUsablePartyMons(battlerAtk) == 0)))
                     ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
                 break;
             case EFFECT_LUCKY_CHANT:
