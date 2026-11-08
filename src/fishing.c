@@ -220,7 +220,7 @@ static bool32 Fishing_ShowDots(struct Task *task)
 
     AlignFishingAnimationFrames();
     task->tFrameCounter++;
-    if (JOY_NEW(A_BUTTON))
+    if (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON))
     {
         if (!DoesFishingMinigameAllowCancel())
             return FALSE;
@@ -474,11 +474,12 @@ static bool32 DoesFishingMinigameAllowCancel(void)
     switch (I_FISHING_MINIGAME)
     {
     case GEN_1:
+        return TRUE;
     case GEN_2:
         return FALSE;
     case GEN_3:
     default:
-            return TRUE;
+        return TRUE;
     }
 }
 
