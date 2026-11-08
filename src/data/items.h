@@ -9468,8 +9468,8 @@ const struct ItemInfo gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 30,
-        .iconPic = gItemIcon_FlameOrb,
-        .iconPalette = gItemIconPalette_FlameOrb,
+        .iconPic = gItemIcon_FrostOrb,
+        .iconPalette = gItemIconPalette_FrostOrb,
     },
 
     [ITEM_ICY_ORB] =
@@ -9492,8 +9492,8 @@ const struct ItemInfo gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 30,
-        .iconPic = gItemIcon_FlameOrb,
-        .iconPalette = gItemIconPalette_FlameOrb,
+        .iconPic = gItemIcon_IcyOrb,
+        .iconPalette = gItemIconPalette_IcyOrb,
     },
 
 // Weather Rocks
