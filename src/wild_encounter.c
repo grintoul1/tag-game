@@ -560,6 +560,8 @@ bool32 ShouldSanitizeEncounterAbility(enum Species species)
     case SPECIES_IGGLYBUFF:
     case SPECIES_JIGGLYPUFF:
     case SPECIES_WIGGLYTUFF:
+    case SPECIES_GOLDEEN:
+    case SPECIES_SEAKING:
         return TRUE;
     default:
         return FALSE;
