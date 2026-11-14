@@ -97,6 +97,7 @@ DOUBLE_BATTLE_TEST("Court Change swaps entry hazards used by the player")
 DOUBLE_BATTLE_TEST("Court Change used by the player swaps Mist, Safeguard, Aurora Veil, Reflect, Light Screen, Tailwind")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         WITH_CONFIG(B_TAILWIND_TURNS, GEN_5);
         PLAYER(SPECIES_WYNAUT);
         PLAYER(SPECIES_WYNAUT);

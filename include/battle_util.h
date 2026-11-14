@@ -332,6 +332,7 @@ enum BattleTerrain GetBattleTerrainFromOverworldWeather(u32 owWeather);
 bool32 IsCommanderActive(enum BattlerId battler);
 bool32 IsWholeSideAlive(enum BattlerId sideBattler);
 enum WeatherFailure TryChangeBattleWeatherGimmick(void);
+enum WeatherFailure TryChangeBattleWeatherPlayer(enum BattlerId battler, u32 battleWeatherId, enum Ability ability);
 bool32 IsBattlerJawLocked(enum BattlerId battler);
 
 // Damage calc modifiers

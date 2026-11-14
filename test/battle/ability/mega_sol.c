@@ -182,6 +182,7 @@ SINGLE_BATTLE_TEST("Mega Sol doesn't trigger the foe's Leaf Guard", s16 damage)
     PARAMETRIZE { move = MOVE_SUNNY_DAY;}
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         ASSUME(GetMoveEffect(MOVE_WILL_O_WISP) == EFFECT_NON_VOLATILE_STATUS);
         ASSUME(GetMoveNonVolatileStatus(MOVE_WILL_O_WISP) == MOVE_EFFECT_BURN);
         PLAYER(SPECIES_MEGANIUM) { Ability(ABILITY_SYMBIOSIS); Item(ITEM_MEGANIUMITE); }

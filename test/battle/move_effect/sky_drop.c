@@ -212,6 +212,7 @@ DOUBLE_BATTLE_TEST("Sky Drop does not trigger Volt Absorb on it's charge turn")
 SINGLE_BATTLE_TEST("Sky Drop: If target was locked into a move that would confuse, the target will be freed and confusion occurs immediately")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_TORKOAL) { Ability(ABILITY_DROUGHT); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {

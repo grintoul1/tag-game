@@ -8,6 +8,7 @@ SINGLE_BATTLE_TEST("Growth increases Attack and Sp. Atk by 1 stage or 2 stages u
     PARAMETRIZE { move = MOVE_SUNNY_DAY;}
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         WITH_CONFIG(B_GROWTH_STAT_RAISE, GEN_5);
         ASSUME(GetMoveEffect(MOVE_GROWTH) == EFFECT_GROWTH);
         PLAYER(SPECIES_WOBBUFFET);

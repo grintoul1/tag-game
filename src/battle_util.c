@@ -364,6 +364,23 @@ bool32 EndOrContinueWeather(void)
     if (currBattleWeather == BATTLE_WEATHER_NONE)
         return FALSE;
 
+    if (gBattleStruct->weatherDurationStored)
+    {
+        gBattleStruct->weatherDuration = gBattleStruct->weatherDurationStored;
+        gBattleStruct->weatherDurationStored = 0;
+
+        gBattleStruct->weatherDurationTotal = gBattleStruct->weatherDurationTotalStored;
+        gBattleStruct->weatherDurationTotalStored = 0;
+    
+        gBattleStruct->weatherSide = gBattleStruct->weatherSideStored;
+        gBattleWeather = gBattleWeatherStored;
+
+        gBattleCommunication[MULTISTRING_CHOOSER] = gBattleWeatherInfo[currBattleWeather].continuesMessage;
+        gBattleScripting.animArg1 = gBattleWeatherInfo[currBattleWeather].animation;
+        BattleScriptCall(BattleScript_WeatherContinues);
+        return TRUE;
+    }
+
     if (gBattleStruct->weatherDuration > 0 && --gBattleStruct->weatherDuration == 0)
     {
         gBattleWeather = B_WEATHER_NONE;
@@ -1906,6 +1923,9 @@ static bool32 TryChangeWeatherWithAbility(enum BattlerId battler, u32 battleWeat
 
 enum WeatherFailure TryChangeBattleWeather(enum BattlerId battler, u32 battleWeatherId, enum Ability ability)
 {
+    if (GetConfig(B_ABILITY_WEATHER_PLAYER) && GetBattlerSide(battler) == B_SIDE_PLAYER)
+        return TryChangeBattleWeatherPlayer(battler, battleWeatherId, ability);
+
     if (gBattleWeather & gBattleWeatherInfo[battleWeatherId].flag)
         return WEATHER_FAILURE_SAME_WEATHER;
 
@@ -11557,4 +11577,79 @@ bool32 IsBattlerJawLocked(enum BattlerId battler)
     }
 
     return FALSE;
+}
+
+enum WeatherFailure TryChangeBattleWeatherPlayer(enum BattlerId battler, u32 battleWeatherId, enum Ability ability)
+{
+    assertf(GetBattlerSide(battler) == B_SIDE_PLAYER, "TryChangeBattleWeatherPlayer reached with battler %d", battler)
+    {
+        return WEATHER_FAILURE_SAME_WEATHER;
+    }
+
+    if (gBattleWeather & gBattleWeatherInfo[battleWeatherId].flag)
+        return WEATHER_FAILURE_SAME_WEATHER;
+
+    if (gBattleStruct->overworldWeatherPresent)
+        return WEATHER_FAILURE_OVERWORLD;
+
+    if (gBattleWeather & B_WEATHER_PRIMAL_ANY
+          && ability != ABILITY_DESOLATE_LAND
+          && ability != ABILITY_PRIMORDIAL_SEA
+          && ability != ABILITY_DELTA_STREAM)
+    {
+        return WEATHER_FAILURE_PRIMAL;
+    }
+
+    if (GetConfig(B_ABILITY_WEATHER) < GEN_6 && ability != ABILITY_NONE)
+    {
+        gBattleWeatherStored = gBattleWeather;
+        gBattleWeather = gBattleWeatherInfo[battleWeatherId].flag;
+        gBattleStruct->weatherDuration = 1;
+        gBattleStruct->weatherDurationTotal = 1;
+    }
+    else
+    {
+        u32 rock = gBattleWeatherInfo[battleWeatherId].rock;
+        gBattleWeatherStored = gBattleWeather;
+        gBattleWeather = gBattleWeatherInfo[battleWeatherId].flag;
+
+        if (rock != 0 && GetBattlerHoldEffect(battler) == rock)
+        {
+            if (gBattleStruct->weatherDuration > 1)
+                gBattleStruct->weatherDurationStored = gBattleStruct->weatherDuration - 2;
+            else
+                gBattleStruct->weatherDurationStored = 0;
+            gBattleStruct->weatherDuration = 2;
+        }
+        else
+        {
+            if (gBattleStruct->weatherDuration)
+                gBattleStruct->weatherDurationStored = gBattleStruct->weatherDuration - 1;
+            else
+                gBattleStruct->weatherDurationStored = 0;
+            gBattleStruct->weatherDuration = 1;
+        }
+        gBattleStruct->weatherDurationTotalStored = gBattleStruct->weatherDurationStored;
+        gBattleStruct->weatherDurationTotal = gBattleStruct->weatherDuration;
+    }
+    gBattleStruct->weatherSideStored = gBattleStruct->weatherSide;
+    gBattleStruct->weatherSide = GetBattlerSide(battler);
+
+    if (ability != ABILITY_NONE) // Weather started by Ability
+    {
+        gBattleCommunication[MULTISTRING_CHOOSER] = gBattleWeatherInfo[battleWeatherId].abilityStartMessage;
+        gBattleScripting.animArg1 = gBattleWeatherInfo[battleWeatherId].animation;
+    }
+    else // Weather started by Move
+    {
+        gBattleCommunication[MULTISTRING_CHOOSER] = gBattleWeatherInfo[battleWeatherId].moveStartMessage;
+    }
+
+    for (enum BattlerId i = 0; i < gBattlersCount; i++)
+    {
+        gBattleMons[i].volatiles.weatherAbilityDone = FALSE;
+        ResetParadoxWeatherStat(i);
+    }
+
+    return WEATHER_FAILURE_SUCCESS;
 }

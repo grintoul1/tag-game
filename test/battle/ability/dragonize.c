@@ -55,6 +55,7 @@ SINGLE_BATTLE_TEST("Dragonize doesn't affect Weather Ball's type", s16 damage)
     PARAMETRIZE { move = MOVE_CELEBRATE; ability = ABILITY_DRAGONIZE; }
     PARAMETRIZE { move = MOVE_SUNNY_DAY; ability = ABILITY_DRAGONIZE; }
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         ASSUME(GetMoveEffect(MOVE_WEATHER_BALL) == EFFECT_WEATHER_BALL);
         ASSUME(GetSpeciesType(SPECIES_PINSIR, 0) == TYPE_BUG);
         PLAYER(SPECIES_DRUDDIGON) { Ability(ability); }

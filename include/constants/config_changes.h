@@ -228,6 +228,7 @@
     F(B_QUEUED_SWITCH_TIMINGS,     queuedSwitchTimings,     (u32, GEN_COUNT - 1)) \
     /* Weather settings */ \
     F(B_ABILITY_WEATHER,           abilityWeather,          (u32, GEN_COUNT - 1)) \
+    F(B_ABILITY_WEATHER_PLAYER,    abilityWeatherPlayer,    (u32, TRUE))          \
     F(B_SANDSTORM_SPDEF_BOOST,     sandstormSpDefBoost,     (u32, GEN_COUNT - 1)) \
     F(B_OVERWORLD_FOG,             overworldFog,            (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
     F(B_OVERWORLD_SNOW,            overworldSnow,           (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \

@@ -611,6 +611,9 @@ struct BattleStruct
     u8 weatherDuration;
     u8 weatherDurationTotal;
     u8 weatherSide;
+    u8 weatherDurationStored;
+    u8 weatherDurationTotalStored;
+    u8 weatherSideStored;
     enum PartySlot expGettersOrder[PARTY_SIZE]; // First battlers which were sent out, then via exp-share
     enum PartySlot expGetterMonId;
     u8 expOrderId:3;
@@ -1083,6 +1086,7 @@ extern u8 gBattleOutcome;
 extern struct ProtectStruct gProtectStructs[MAX_BATTLERS_COUNT];
 extern struct SpecialStatus gSpecialStatuses[MAX_BATTLERS_COUNT];
 extern u16 gBattleWeather;
+extern u16 gBattleWeatherStored;
 extern u16 gIntroSlideFlags;
 extern u8 gSentPokesToOpponent[2];
 extern struct BattleEnigmaBerry gEnigmaBerries[MAX_BATTLERS_COUNT];

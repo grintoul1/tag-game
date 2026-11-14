@@ -31,6 +31,7 @@ SINGLE_BATTLE_TEST("Overcoat blocks powder and spore moves (Gen6+)")
 DOUBLE_BATTLE_TEST("Overcoat blocks damage from sandstorm")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_WYNAUT)    { Speed(50); }
         PLAYER(SPECIES_HELIOLISK) { Speed(40); Ability(ABILITY_SAND_VEIL); }
         OPPONENT(SPECIES_PINECO)  { Speed(30); Ability(ABILITY_OVERCOAT); }
@@ -52,6 +53,7 @@ DOUBLE_BATTLE_TEST("Overcoat blocks damage from sandstorm")
 DOUBLE_BATTLE_TEST("Overcoat blocks damage from hail")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         ASSUME(GetMoveEffect(MOVE_HAIL) == EFFECT_WEATHER);
         ASSUME(GetMoveWeatherType(MOVE_HAIL) == BATTLE_WEATHER_HAIL);
         PLAYER(SPECIES_WYNAUT)    { Speed(50); Ability(ABILITY_SNOW_CLOAK); }

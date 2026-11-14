@@ -133,6 +133,7 @@ SINGLE_BATTLE_TEST("Emergency Exit activates when healing from under 50% max-hp 
 SINGLE_BATTLE_TEST("Emergency Exit activates when taking residual damage and falling under 50% max-hp - Weather")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         ASSUME(GetMoveEffect(MOVE_SANDSTORM) == EFFECT_WEATHER);
         ASSUME(GetMoveWeatherType(MOVE_SANDSTORM) == BATTLE_WEATHER_SANDSTORM);
         PLAYER(SPECIES_WOBBUFFET);
@@ -149,6 +150,7 @@ SINGLE_BATTLE_TEST("Emergency Exit activates when taking residual damage and fal
 SINGLE_BATTLE_TEST("Emergency Exit doesn't activate when taking residual damage to under 50% max-hp then healing above 50% max-hp - Weather")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         ASSUME(GetMoveEffect(MOVE_SANDSTORM) == EFFECT_WEATHER);
         ASSUME(GetMoveWeatherType(MOVE_SANDSTORM) == BATTLE_WEATHER_SANDSTORM);
         ASSUME(gItemsInfo[ITEM_SITRUS_BERRY].holdEffect == HOLD_EFFECT_RESTORE_PCT_HP);

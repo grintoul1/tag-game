@@ -93,6 +93,7 @@ SINGLE_BATTLE_TEST("Brick Break, Psychic Fangs, and Raging Bull remove Light Scr
     PARAMETRIZE { move = MOVE_AURORA_VEIL;  breakingMove = MOVE_RAGING_BULL; }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -134,6 +135,7 @@ SINGLE_BATTLE_TEST("Brick Break, Psychic Fangs, and Raging Bull don't remove Lig
     PARAMETRIZE { move = MOVE_AURORA_VEIL;  breakingMove = MOVE_RAGING_BULL; }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_SABLEYE);
     } WHEN {

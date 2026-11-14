@@ -2826,6 +2826,7 @@ DOUBLE_BATTLE_TEST("Move Animations work Gen7")
         }
     }
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         DISABLE_SELECTABLE_PARAMETERS;
         PLAYER(species) {
             Level(GetParametrizedLevel(move, variation));

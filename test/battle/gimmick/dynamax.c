@@ -778,6 +778,7 @@ DOUBLE_BATTLE_TEST("Dynamax: Max Knuckle raises both allies' attack")
 SINGLE_BATTLE_TEST("Dynamax: Max Flare sets up sunlight")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         ASSUME(MoveHasAdditionalEffect(MOVE_MAX_FLARE, MOVE_EFFECT_SUN));
         OPPONENT(SPECIES_WOBBUFFET);
         PLAYER(SPECIES_WOBBUFFET);
@@ -794,6 +795,7 @@ SINGLE_BATTLE_TEST("Dynamax: Max Flare sets up sunlight")
 SINGLE_BATTLE_TEST("Dynamax: Max Geyser sets up heavy rain")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         ASSUME(MoveHasAdditionalEffect(MOVE_MAX_GEYSER, MOVE_EFFECT_RAIN));
         OPPONENT(SPECIES_WOBBUFFET);
         PLAYER(SPECIES_WOBBUFFET);
@@ -814,6 +816,7 @@ SINGLE_BATTLE_TEST("Dynamax: Max Hailstorm sets up hail")
 #endif
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         ASSUME(MoveHasAdditionalEffect(MOVE_MAX_HAILSTORM, MOVE_EFFECT_HAIL));
         OPPONENT(SPECIES_WOBBUFFET);
         PLAYER(SPECIES_WOBBUFFET);
@@ -836,6 +839,7 @@ SINGLE_BATTLE_TEST("Dynamax: Max Hailstorm sets up hail")
 SINGLE_BATTLE_TEST("Dynamax: Max Rockfall sets up a sandstorm")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         ASSUME(MoveHasAdditionalEffect(MOVE_MAX_ROCKFALL, MOVE_EFFECT_SANDSTORM));
         OPPONENT(SPECIES_WOBBUFFET);
         PLAYER(SPECIES_WOBBUFFET);

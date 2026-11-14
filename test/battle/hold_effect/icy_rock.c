@@ -21,6 +21,7 @@ SINGLE_BATTLE_TEST("Icy Rock extends hail created by compatible moves to 8 turns
     }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_GLACEON) { Item(ITEM_ICY_ROCK); }
         PLAYER(SPECIES_WYNAUT);
         OPPONENT(SPECIES_GLACEON);
@@ -63,6 +64,7 @@ SINGLE_BATTLE_TEST("Icy Rock extends snow created by compatible moves to 8 turns
     PARAMETRIZE { move = MOVE_CHILLY_RECEPTION; }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_GLACEON) { Item(ITEM_ICY_ROCK); }
         PLAYER(SPECIES_WYNAUT);
         OPPONENT(SPECIES_GLACEON);

@@ -4,6 +4,7 @@
 SINGLE_BATTLE_TEST("Swift Swim doubles speed if it's raining")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_LUDICOLO) { Ability(ABILITY_SWIFT_SWIM); Speed(100); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(199); }
     } WHEN {

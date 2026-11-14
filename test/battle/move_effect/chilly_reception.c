@@ -12,6 +12,7 @@ SINGLE_BATTLE_TEST("Chilly Reception sets up snow and switches the user out")
 #endif
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_SLOWKING_GALAR);
         PLAYER(SPECIES_SLOWPOKE_GALAR);
         OPPONENT(SPECIES_WOBBUFFET);

@@ -520,6 +520,7 @@ SINGLE_BATTLE_TEST("Knock Off does knock off a Booster Energy from a non Paradox
 SINGLE_BATTLE_TEST("Knock Off doesn't knock off a Paradox mon's Booster Energy")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_TORKOAL) { Ability(ABILITY_DROUGHT); }
         OPPONENT(SPECIES_GREAT_TUSK) { Item(ITEM_BOOSTER_ENERGY); }
     } WHEN {

@@ -65,6 +65,7 @@ SINGLE_BATTLE_TEST("Sand Spit sets up sandstorm for 8 turns when hit with Smooth
 SINGLE_BATTLE_TEST("Sand Spit triggers even if the user is knocked out by the hit")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_SANDACONDA) { Ability(ABILITY_SAND_SPIT); HP(1); }
         PLAYER(SPECIES_LANDORUS);
         OPPONENT(SPECIES_LANDORUS);

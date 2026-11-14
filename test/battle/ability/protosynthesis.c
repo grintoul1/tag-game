@@ -241,6 +241,7 @@ SINGLE_BATTLE_TEST("Protosynthesis activates after weather was reset")
 SINGLE_BATTLE_TEST("Protosynthesis accounts for Sticky Web when determining the boosted stat")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
         PLAYER(SPECIES_FLUTTER_MANE) { Ability(ABILITY_PROTOSYNTHESIS); Attack(50); Defense(50); SpAttack(150); SpDefense(140); Speed(180); }
         OPPONENT(SPECIES_GALVANTULA) { Speed(60); }
@@ -283,6 +284,7 @@ SINGLE_BATTLE_TEST("Protosynthesis keeps its initial boosted stat after Speed is
 SINGLE_BATTLE_TEST("Protosynthesis recalculates the boosted stat after Neutralizing Gas leaves the field")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_FLUTTER_MANE) { Ability(ABILITY_PROTOSYNTHESIS); Attack(10); Defense(10); SpAttack(150); SpDefense(120); Speed(180); }
         OPPONENT(SPECIES_WEEZING) { Ability(ABILITY_NEUTRALIZING_GAS); Moves(MOVE_ICY_WIND); Speed(70); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(1); }

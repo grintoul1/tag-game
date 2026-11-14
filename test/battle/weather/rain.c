@@ -14,6 +14,7 @@ SINGLE_BATTLE_TEST("Rain multiplies the power of Fire-type moves by 0.5x", s16 d
     PARAMETRIZE { setupMove = MOVE_CELEBRATE; }
     PARAMETRIZE { setupMove = MOVE_RAIN_DANCE; }
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -33,6 +34,7 @@ SINGLE_BATTLE_TEST("Rain multiplies the power of Water-type moves by 1.5x", s16 
     PARAMETRIZE { setupMove = MOVE_CELEBRATE; }
     PARAMETRIZE { setupMove = MOVE_RAIN_DANCE; }
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {

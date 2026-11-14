@@ -14,6 +14,7 @@ SINGLE_BATTLE_TEST("Hydration cures non-volatile Status conditions if it is rain
     PARAMETRIZE { status = STATUS1_FROSTBITE; }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_VAPOREON) { Ability(ABILITY_HYDRATION); Status1(status); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {

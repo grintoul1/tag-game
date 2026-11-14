@@ -4,6 +4,7 @@
 SINGLE_BATTLE_TEST("Chlorophyll doubles speed if it's sunny")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_VENUSAUR) { Ability(ABILITY_CHLOROPHYLL); Speed(100); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(199); }
     } WHEN {

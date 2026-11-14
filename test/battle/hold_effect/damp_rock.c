@@ -11,6 +11,7 @@ ASSUMPTIONS
 SINGLE_BATTLE_TEST("Damp Rock extends rain created by Rain Dance to 8 turns")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_DAMP_ROCK); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {

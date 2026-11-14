@@ -4,6 +4,7 @@
 SINGLE_BATTLE_TEST("Dry Skin causes 1/8th Max HP damage in Sun")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_PARASECT) { Ability(ABILITY_DRY_SKIN); HP(100); MaxHP(200); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -39,6 +40,7 @@ SINGLE_BATTLE_TEST("Dry Skin doesn't get damaged in Sun if Cloud Nine/Air Lock i
 SINGLE_BATTLE_TEST("Dry Skin heals 1/8th Max HP in Rain")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_PARASECT) { Ability(ABILITY_DRY_SKIN); HP(100); MaxHP(200); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {

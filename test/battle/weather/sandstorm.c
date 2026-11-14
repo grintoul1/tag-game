@@ -7,6 +7,7 @@ SINGLE_BATTLE_TEST("Sandstorm deals 1/16 damage per turn")
     s16 sandstormDamage;
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_SANDSLASH);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -73,6 +74,7 @@ SINGLE_BATTLE_TEST("Sandstorm damage does not hurt Ground, Rock, and Steel-type 
 DOUBLE_BATTLE_TEST("Sandstorm deals damage based on turn order")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_PHANPY) { Speed(4); }
         PLAYER(SPECIES_WYNAUT) { Speed(1); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(2); }

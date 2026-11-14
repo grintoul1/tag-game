@@ -17,6 +17,7 @@ DOUBLE_BATTLE_TEST("Strong winds remove Flying-type weaknesses of all battlers")
     PARAMETRIZE { move = MOVE_ROCK_THROW; }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_RAYQUAZA) { Moves(MOVE_DRAGON_ASCENT, MOVE_CELEBRATE, move); }
         PLAYER(SPECIES_PIDGEY);
         OPPONENT(SPECIES_PIDGEY);
@@ -47,6 +48,7 @@ DOUBLE_BATTLE_TEST("Strong winds remove Flying-type weaknesses of all battlers -
     PARAMETRIZE { move = MOVE_MUD_SLAP; }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         FLAG_SET(B_FLAG_INVERSE_BATTLE);
         ASSUME(GetMoveType(MOVE_BUG_BITE) == TYPE_BUG);
         ASSUME(GetMoveType(MOVE_KARATE_CHOP) == TYPE_FIGHTING);
@@ -156,6 +158,7 @@ SINGLE_BATTLE_TEST("Strong winds block weather-setting moves")
     PARAMETRIZE { move = MOVE_SNOWSCAPE; }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         ASSUME(GetMoveEffect(move) == EFFECT_WEATHER);
         ASSUME(GetMoveWeatherType(MOVE_SUNNY_DAY) == BATTLE_WEATHER_SUN);
         ASSUME(GetMoveWeatherType(MOVE_RAIN_DANCE) == BATTLE_WEATHER_RAIN);
@@ -185,6 +188,7 @@ SINGLE_BATTLE_TEST("Strong winds prevent other weather abilities")
     PARAMETRIZE { ability = ABILITY_SNOW_WARNING; species = SPECIES_ABOMASNOW; }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_RAYQUAZA) { Moves(MOVE_DRAGON_ASCENT, MOVE_CELEBRATE); }
         OPPONENT(SPECIES_WOBBUFFET);
         OPPONENT(species) { Ability(ability); }

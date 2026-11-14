@@ -11,6 +11,7 @@ ASSUMPTIONS
 SINGLE_BATTLE_TEST("Heat Rock extends sun created by Sunny Day to 8 turns")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_HEAT_ROCK); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {

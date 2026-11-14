@@ -9,6 +9,7 @@ DOUBLE_BATTLE_TEST("Primordial Sea ending reverts Castform before the replacemen
     PARAMETRIZE { move = MOVE_DOODLE; }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_KYOGRE) { Item(ITEM_BLUE_ORB); Speed(100); }
         PLAYER(SPECIES_WOBBUFFET) { Speed(90); }
         OPPONENT(SPECIES_PELIPPER) { Ability(ABILITY_DRIZZLE); Speed(80); }
@@ -49,6 +50,7 @@ DOUBLE_BATTLE_TEST("Primordial Sea persists when another holder sustains it duri
     PARAMETRIZE { move = MOVE_DOODLE; }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         ASSUME(GetMoveCategory(MOVE_EMBER) != DAMAGE_CATEGORY_STATUS);
         ASSUME(GetMoveType(MOVE_EMBER) == TYPE_FIRE);
         PLAYER(SPECIES_KYOGRE) { Item(ITEM_BLUE_ORB); Speed(100); }
@@ -96,6 +98,7 @@ ASSUMPTIONS
 SINGLE_BATTLE_TEST("Primordial Sea blocks damaging Fire-type moves")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_KYOGRE) { Item(ITEM_BLUE_ORB); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -161,6 +164,7 @@ SINGLE_BATTLE_TEST("Primordial Sea blocks weather-setting moves")
     PARAMETRIZE { move = MOVE_SNOWSCAPE; }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         ASSUME(GetMoveEffect(move) == EFFECT_WEATHER);
         ASSUME(GetMoveWeatherType(MOVE_SUNNY_DAY) == BATTLE_WEATHER_SUN);
         ASSUME(GetMoveWeatherType(MOVE_RAIN_DANCE) == BATTLE_WEATHER_RAIN);
@@ -188,6 +192,7 @@ SINGLE_BATTLE_TEST("Primordial Sea prevents other weather abilities")
     PARAMETRIZE { ability = ABILITY_SNOW_WARNING; species = SPECIES_ABOMASNOW; }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_KYOGRE) { Item(ITEM_BLUE_ORB); }
         OPPONENT(SPECIES_WOBBUFFET);
         OPPONENT(species) { Ability(ability); }

@@ -4,6 +4,7 @@
 SINGLE_BATTLE_TEST("Slush Rush doubles speed from hail")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_CETITAN) { Ability(ABILITY_SLUSH_RUSH); Speed(100); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(199); }
     } WHEN {
@@ -20,6 +21,7 @@ SINGLE_BATTLE_TEST("Slush Rush doubles speed from hail")
 SINGLE_BATTLE_TEST("Slush Rush doubles speed from snow")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_CETITAN) { Ability(ABILITY_SLUSH_RUSH); Speed(100); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(199); }
     } WHEN {
@@ -52,6 +54,7 @@ SINGLE_BATTLE_TEST("Slush Rush doesn't double speed if Cloud Nine/Air Lock is on
 SINGLE_BATTLE_TEST("Slush Rush doesn't prevent non-Ice types from taking damage in Hail")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         ASSUME(GetSpeciesType(SPECIES_WOBBUFFET, 0) != TYPE_ICE);
         ASSUME(GetSpeciesType(SPECIES_WOBBUFFET, 1) != TYPE_ICE);
         ASSUME(GetMoveEffect(MOVE_HAIL) == EFFECT_WEATHER);

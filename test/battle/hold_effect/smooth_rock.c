@@ -11,6 +11,7 @@ ASSUMPTIONS
 SINGLE_BATTLE_TEST("Smooth Rock extends sandstorm created by Sandstorm to 8 turns")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_SANDSLASH) { Item(ITEM_SMOOTH_ROCK); }
         OPPONENT(SPECIES_SANDSLASH);
     } WHEN {

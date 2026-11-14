@@ -4,6 +4,7 @@
 SINGLE_BATTLE_TEST("Hail Warning sets up hail for 5 turns (Gen6-8)")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         WITH_CONFIG(B_SNOW_WARNING, GEN_8);
         WITH_CONFIG(B_ABILITY_WEATHER, GEN_6);
         PLAYER(SPECIES_ABOMASNOW) { Ability(ABILITY_HAIL_WARNING); }
@@ -27,6 +28,7 @@ SINGLE_BATTLE_TEST("Hail Warning sets up hail for 5 turns (Gen6-8)")
 SINGLE_BATTLE_TEST("Hail Warning sets up hail for 8 turns with Icy Rock (Gen6-8)")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         WITH_CONFIG(B_SNOW_WARNING, GEN_8);
         WITH_CONFIG(B_ABILITY_WEATHER, GEN_6);
         ASSUME(gItemsInfo[ITEM_ICY_ROCK].holdEffect == HOLD_EFFECT_ICY_ROCK);
@@ -57,6 +59,7 @@ SINGLE_BATTLE_TEST("Hail Warning sets up hail for 8 turns with Icy Rock (Gen6-8)
 SINGLE_BATTLE_TEST("Hail Warning sets up permanent hail (Gen4-5)")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         WITH_CONFIG(B_SNOW_WARNING, GEN_8);
         WITH_CONFIG(B_ABILITY_WEATHER, GEN_5);
         PLAYER(SPECIES_ABOMASNOW) { Ability(ABILITY_HAIL_WARNING); }
@@ -89,6 +92,7 @@ SINGLE_BATTLE_TEST("Hail Warning sets up permanent hail (Gen4-5)")
 SINGLE_BATTLE_TEST("Snow Warning sets up snow for 5 turns (Gen9+)")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         WITH_CONFIG(B_SNOW_WARNING, GEN_9);
         WITH_CONFIG(B_ABILITY_WEATHER, GEN_9);
         PLAYER(SPECIES_ABOMASNOW) { Ability(ABILITY_SNOW_WARNING); }
@@ -112,6 +116,7 @@ SINGLE_BATTLE_TEST("Snow Warning sets up snow for 5 turns (Gen9+)")
 SINGLE_BATTLE_TEST("Snow Warning sets up snow for 8 turns with Icy Rock (Gen9+)")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         WITH_CONFIG(B_SNOW_WARNING, GEN_9);
         WITH_CONFIG(B_ABILITY_WEATHER, GEN_9);
         ASSUME(gItemsInfo[ITEM_ICY_ROCK].holdEffect == HOLD_EFFECT_ICY_ROCK);

@@ -47,6 +47,7 @@ SINGLE_BATTLE_TEST("Electro Ball considers Speed stat stages, status, held items
     PARAMETRIZE { species = SPECIES_VENUSAUR;  ability = ABILITY_CHLOROPHYLL; item = ITEM_NONE;      status = STATUS1_NONE;      setupMove = MOVE_SUNNY_DAY; }
 
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         WITH_CONFIG(B_PARALYSIS_SPEED, GEN_7);
         ASSUME_STAT_CHANGE(MOVE_AGILITY, speed: +2);
         ASSUME(GetItemHoldEffect(ITEM_IRON_BALL) == HOLD_EFFECT_IRON_BALL);

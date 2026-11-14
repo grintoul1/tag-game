@@ -21,6 +21,7 @@ SINGLE_BATTLE_TEST("Sand Rush prevents damage from sandstorm")
 SINGLE_BATTLE_TEST("Sand Rush doubles speed from sandstorm")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER_PLAYER, FALSE);
         PLAYER(SPECIES_SANDSLASH) { Ability(ABILITY_SAND_RUSH); Speed(100); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(199); }
     } WHEN {
