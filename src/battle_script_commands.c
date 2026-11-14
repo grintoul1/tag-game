@@ -4388,6 +4388,9 @@ static void RemoveAllWeather(void)
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_END_COUNT;  // failsafe
 
     gBattleWeather = 0;    // remove the weather
+    gBattleWeatherStored = 0;
+    gBattleWeatherBattler = MAX_BATTLERS_COUNT;
+    gBattleWeatherBattlerStored = MAX_BATTLERS_COUNT;
 }
 
 static void RemoveAllTerrains(void)

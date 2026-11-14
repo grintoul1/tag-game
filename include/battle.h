@@ -1087,6 +1087,8 @@ extern struct ProtectStruct gProtectStructs[MAX_BATTLERS_COUNT];
 extern struct SpecialStatus gSpecialStatuses[MAX_BATTLERS_COUNT];
 extern u16 gBattleWeather;
 extern u16 gBattleWeatherStored;
+extern enum BattlerId gBattleWeatherBattler;
+extern enum BattlerId gBattleWeatherBattlerStored;
 extern u16 gIntroSlideFlags;
 extern u8 gSentPokesToOpponent[2];
 extern struct BattleEnigmaBerry gEnigmaBerries[MAX_BATTLERS_COUNT];

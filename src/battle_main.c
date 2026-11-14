@@ -203,6 +203,8 @@ EWRAM_DATA struct ProtectStruct gProtectStructs[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA struct SpecialStatus gSpecialStatuses[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA u16 gBattleWeather = 0;
 EWRAM_DATA u16 gBattleWeatherStored = 0;
+EWRAM_DATA enum BattlerId gBattleWeatherBattler = 0;
+EWRAM_DATA enum BattlerId gBattleWeatherBattlerStored = 0;
 EWRAM_DATA u16 gIntroSlideFlags = 0;
 EWRAM_DATA u8 gSentPokesToOpponent[2] = {0};
 EWRAM_DATA struct BattleEnigmaBerry gEnigmaBerries[MAX_BATTLERS_COUNT] = {0};
@@ -2827,6 +2829,8 @@ static void BattleStartClearSetData(void)
     gBattlerAbility = 0;
     gBattleWeather = 0;
     gBattleWeatherStored = 0;
+    gBattleWeatherBattler = MAX_BATTLERS_COUNT;
+    gBattleWeatherBattlerStored = MAX_BATTLERS_COUNT;
     gHitMarker = 0;
 
     if (!(gBattleTypeFlags & BATTLE_TYPE_RECORDED))

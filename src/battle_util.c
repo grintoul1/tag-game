@@ -77,6 +77,8 @@ const u8 *AbsorbedByStatIncreaseAbility(struct DamageContext *ctx, enum Stat sta
 const u8 *AbsorbedByFlashFire(struct DamageContext *ctx);
 static bool32 IsCriticalHit(struct DamageContext *ctx);
 static bool32 IsAbilityOnFieldWithArr(enum Ability ability, enum Ability abilities[], enum BattlerId *battler);
+static bool32 BattlerHasAbilityForWeather(enum BattlerId battler, enum Ability ability, u32 weather);
+static enum OverworldWeather GetOverworldWeatherFromBattleWeather(enum BattleWeather weather);
 
 ARM_FUNC NOINLINE static uq4_12_t PercentToUQ4_12(u32 percent);
 ARM_FUNC NOINLINE static uq4_12_t PercentToUQ4_12_Floored(u32 percent);
@@ -364,35 +366,90 @@ bool32 EndOrContinueWeather(void)
     if (currBattleWeather == BATTLE_WEATHER_NONE)
         return FALSE;
 
-    if (gBattleStruct->weatherDurationStored)
-    {
-        gBattleStruct->weatherDuration = gBattleStruct->weatherDurationStored;
-        gBattleStruct->weatherDurationStored = 0;
-
-        gBattleStruct->weatherDurationTotal = gBattleStruct->weatherDurationTotalStored;
-        gBattleStruct->weatherDurationTotalStored = 0;
-    
-        gBattleStruct->weatherSide = gBattleStruct->weatherSideStored;
-        gBattleWeather = gBattleWeatherStored;
-
-        gBattleCommunication[MULTISTRING_CHOOSER] = gBattleWeatherInfo[currBattleWeather].continuesMessage;
-        gBattleScripting.animArg1 = gBattleWeatherInfo[currBattleWeather].animation;
-        BattleScriptCall(BattleScript_WeatherContinues);
-        return TRUE;
-    }
+    //DebugPrintf("%s weather %d weatherStored %d", __func__, GetBattleWeather(gBattleWeather), GetBattleWeather(gBattleWeatherStored));
+    //DebugPrintf("%s weatherBattler %d weatherBattlerStored %d", __func__, gBattleWeatherBattler, gBattleWeatherBattlerStored);
+    //DebugPrintf("%s weatherDuration %d weatherDurationStored %d", __func__, gBattleStruct->weatherDuration, gBattleStruct->weatherDurationStored);
 
     if (gBattleStruct->weatherDuration > 0 && --gBattleStruct->weatherDuration == 0)
     {
-        gBattleWeather = B_WEATHER_NONE;
-        gBattleStruct->weatherDurationTotal = 0;
-        for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
+        //DebugPrintf("%s %d", __func__, __LINE__);
+        if (gBattleWeatherStored != B_WEATHER_NONE)
         {
-            gBattleMons[battler].volatiles.weatherAbilityDone = FALSE;
-            ResetParadoxWeatherStat(battler);
+            enum BattleWeather newBattleWeather = GetBattleWeather(gBattleWeatherStored);
+            //DebugPrintf("%s %d gBattleWeatherBattlerStored %d isAlive %d ability %d drought %d GetBattleWeather(gBattleWeatherStored) %d BattlerHasAbilityForWeather %d", __func__, __LINE__, gBattleWeatherBattlerStored, IsBattlerAlive(gBattleWeatherBattlerStored), GetBattlerAbility(gBattleWeatherBattlerStored), ABILITY_DRIZZLE, GetBattleWeather(gBattleWeatherStored), BattlerHasAbilityForWeather(gBattleWeatherBattlerStored, GetBattlerAbility(gBattleWeatherBattlerStored), GetBattleWeather(gBattleWeatherStored)));
+            if (gBattleWeatherBattler == MAX_BATTLERS_COUNT)
+            {
+                //DebugPrintf("%s %d gBattleWeatherBattlerStored %d isAlive %d ability %d drought %d GetBattleWeather(gBattleWeatherStored) %d BattlerHasAbilityForWeather %d", __func__, __LINE__, gBattleWeatherBattlerStored, IsBattlerAlive(gBattleWeatherBattlerStored), GetBattlerAbility(gBattleWeatherBattlerStored), ABILITY_DRIZZLE, GetBattleWeather(gBattleWeatherStored), BattlerHasAbilityForWeather(gBattleWeatherBattlerStored, GetBattlerAbility(gBattleWeatherBattlerStored), GetBattleWeather(gBattleWeatherStored)));
+                gBattleStruct->weatherDuration = gBattleStruct->weatherDurationStored;
+                gBattleStruct->weatherDurationStored = 0;
+
+                gBattleStruct->weatherDurationTotal = gBattleStruct->weatherDurationTotalStored;
+                gBattleStruct->weatherDurationTotalStored = 0;
+
+                gBattleStruct->weatherSide = gBattleStruct->weatherSideStored;
+                gBattleWeather = gBattleWeatherInfo[newBattleWeather].flag;
+                gBattleWeatherBattler = gBattlerAbility = gBattleWeatherBattlerStored;
+                gBattleWeatherStored = B_WEATHER_NONE;
+                gBattleWeatherBattlerStored = MAX_BATTLERS_COUNT;
+
+                gBattleCommunication[MULTISTRING_CHOOSER] = GetCurrentWeather();
+                BattleScriptPushCursorAndCallback(BattleScript_OverworldWeatherStarts);
+                return TRUE;
+            }
+            else if (IsBattlerAlive(gBattleWeatherBattlerStored)
+             && BattlerHasAbilityForWeather(gBattleWeatherBattlerStored, GetBattlerAbility(gBattleWeatherBattlerStored), GetBattleWeather(gBattleWeatherStored)))
+            {
+                //DebugPrintf("%s %d gBattleWeatherBattlerStored %d isAlive %d ability %d drought %d GetBattleWeather(gBattleWeatherStored) %d BattlerHasAbilityForWeather %d", __func__, __LINE__, gBattleWeatherBattlerStored, IsBattlerAlive(gBattleWeatherBattlerStored), GetBattlerAbility(gBattleWeatherBattlerStored), ABILITY_DRIZZLE, GetBattleWeather(gBattleWeatherStored), BattlerHasAbilityForWeather(gBattleWeatherBattlerStored, GetBattlerAbility(gBattleWeatherBattlerStored), GetBattleWeather(gBattleWeatherStored)));
+                gBattleStruct->weatherDuration = gBattleStruct->weatherDurationStored;
+                gBattleStruct->weatherDurationStored = 0;
+
+                gBattleStruct->weatherDurationTotal = gBattleStruct->weatherDurationTotalStored;
+                gBattleStruct->weatherDurationTotalStored = 0;
+            
+                gBattleStruct->weatherSide = gBattleStruct->weatherSideStored;
+                gBattleWeather = gBattleWeatherInfo[newBattleWeather].flag;
+                gBattleWeatherBattler = gBattlerAbility = gBattleWeatherBattlerStored;
+                gBattleWeatherStored = B_WEATHER_NONE;
+                gBattleWeatherBattlerStored = MAX_BATTLERS_COUNT;
+
+                gBattleScripting.animArg1 = gBattleWeatherInfo[newBattleWeather].animation;
+                gBattleScripting.battler = gBattleWeatherBattler;
+                gBattleCommunication[MULTISTRING_CHOOSER] = gBattleWeatherInfo[newBattleWeather].abilityStartMessage;
+                BattleScriptCall(BattleScript_WeatherAbilityActivates);
+                //DebugPrintf("%s %d gBattleWeatherBattlerStored %d isAlive %d ability %d drought %d GetBattleWeather(gBattleWeatherStored) %d BattlerHasAbilityForWeather %d", __func__, __LINE__, gBattleWeatherBattlerStored, IsBattlerAlive(gBattleWeatherBattlerStored), GetBattlerAbility(gBattleWeatherBattlerStored), ABILITY_DRIZZLE, GetBattleWeather(gBattleWeatherStored), BattlerHasAbilityForWeather(gBattleWeatherBattlerStored, GetBattlerAbility(gBattleWeatherBattlerStored), GetBattleWeather(gBattleWeatherStored)));
+                return TRUE;
+            }
+            else
+            {
+                //DebugPrintf("%s %d gBattleWeatherBattlerStored %d isAlive %d ability %d drought %d GetBattleWeather(gBattleWeatherStored) %d BattlerHasAbilityForWeather %d", __func__, __LINE__, gBattleWeatherBattlerStored, IsBattlerAlive(gBattleWeatherBattlerStored), GetBattlerAbility(gBattleWeatherBattlerStored), ABILITY_DRIZZLE, GetBattleWeather(gBattleWeatherStored), BattlerHasAbilityForWeather(gBattleWeatherBattlerStored, GetBattlerAbility(gBattleWeatherBattlerStored), GetBattleWeather(gBattleWeatherStored)));
+                gBattleWeather = gBattleWeatherInfo[newBattleWeather].flag;
+                gBattleWeatherStored = B_WEATHER_NONE;
+                gBattleWeatherBattler = MAX_BATTLERS_COUNT;
+                gBattleWeatherBattlerStored = MAX_BATTLERS_COUNT;
+                gBattleStruct->weatherDurationTotal = gBattleStruct->weatherDurationTotalStored;
+                gBattleStruct->weatherDurationTotalStored = 0;
+                gBattleStruct->weatherSide = gBattleStruct->weatherSideStored;
+                gBattleScripting.animArg1 = gBattleWeatherInfo[newBattleWeather].animation;
+                gBattleCommunication[MULTISTRING_CHOOSER] = GetOverworldWeatherFromBattleWeather(newBattleWeather);
+                BattleScriptCall(BattleScript_OverworldWeatherStarts);
+                return TRUE;
+            }
         }
-        gBattleCommunication[MULTISTRING_CHOOSER] = gBattleWeatherInfo[currBattleWeather].endMessage;
-        BattleScriptCall(BattleScript_WeatherFaded);
-        return TRUE;
+        else
+        {
+            //DebugPrintf("%s %d gBattleWeatherBattlerStored %d isAlive %d ability %d drought %d GetBattleWeather(gBattleWeatherStored) %d BattlerHasAbilityForWeather %d", __func__, __LINE__, gBattleWeatherBattlerStored, IsBattlerAlive(gBattleWeatherBattlerStored), GetBattlerAbility(gBattleWeatherBattlerStored), ABILITY_DRIZZLE, GetBattleWeather(gBattleWeatherStored), BattlerHasAbilityForWeather(gBattleWeatherBattlerStored, GetBattlerAbility(gBattleWeatherBattlerStored), GetBattleWeather(gBattleWeatherStored)));
+            gBattleWeather = B_WEATHER_NONE;
+            gBattleWeatherBattler = MAX_BATTLERS_COUNT;
+            gBattleStruct->weatherDurationTotal = 0;
+            for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
+            {
+                gBattleMons[battler].volatiles.weatherAbilityDone = FALSE;
+                ResetParadoxWeatherStat(battler);
+            }
+            gBattleCommunication[MULTISTRING_CHOOSER] = gBattleWeatherInfo[currBattleWeather].endMessage;
+            BattleScriptCall(BattleScript_WeatherFaded);
+            return TRUE;
+        }
     }
     else
     {
@@ -1923,7 +1980,8 @@ static bool32 TryChangeWeatherWithAbility(enum BattlerId battler, u32 battleWeat
 
 enum WeatherFailure TryChangeBattleWeather(enum BattlerId battler, u32 battleWeatherId, enum Ability ability)
 {
-    if (GetConfig(B_ABILITY_WEATHER_PLAYER) && GetBattlerSide(battler) == B_SIDE_PLAYER)
+    //DebugPrintf("%s battler %d, battleWeatherId %d ability %d", __func__, battler, battleWeatherId, ability);
+    if (GetConfig(B_ABILITY_WEATHER_PLAYER) && GetBattlerSide(battler) == B_SIDE_PLAYER && ability != ABILITY_NONE)
         return TryChangeBattleWeatherPlayer(battler, battleWeatherId, ability);
 
     if (gBattleWeather & gBattleWeatherInfo[battleWeatherId].flag)
@@ -1943,6 +2001,7 @@ enum WeatherFailure TryChangeBattleWeather(enum BattlerId battler, u32 battleWea
     if (GetConfig(B_ABILITY_WEATHER) < GEN_6 && ability != ABILITY_NONE)
     {
         gBattleWeather = gBattleWeatherInfo[battleWeatherId].flag;
+        gBattleWeatherBattler = battler;
         gBattleStruct->weatherDuration = 0;
         gBattleStruct->weatherDurationTotal = 0;
     }
@@ -1950,6 +2009,7 @@ enum WeatherFailure TryChangeBattleWeather(enum BattlerId battler, u32 battleWea
     {
         u32 rock = gBattleWeatherInfo[battleWeatherId].rock;
         gBattleWeather = gBattleWeatherInfo[battleWeatherId].flag;
+        gBattleWeatherBattler = battler;
 
         if (gBattleWeather & B_WEATHER_PRIMAL_ANY)
             gBattleStruct->weatherDuration = 0;
@@ -11600,39 +11660,37 @@ enum WeatherFailure TryChangeBattleWeatherPlayer(enum BattlerId battler, u32 bat
         return WEATHER_FAILURE_PRIMAL;
     }
 
-    if (GetConfig(B_ABILITY_WEATHER) < GEN_6 && ability != ABILITY_NONE)
+    u32 rock = gBattleWeatherInfo[battleWeatherId].rock;
+    //DebugPrintf("%s turn %d battler %d", __func__, gBattleTurnCounter, battler);
+    //DebugPrintf("%s gBattleWeather %d gBattleWeatherStored %d", __func__, gBattleWeather, gBattleWeatherStored);
+    //DebugPrintf("%s gBattleWeatherBattler %d gBattleWeatherBattlerStored %d", __func__, gBattleWeatherBattler, gBattleWeatherBattlerStored);
+    //DebugPrintf("%s weatherDuration %d weatherDurationStored %d", __func__, gBattleStruct->weatherDuration, gBattleStruct->weatherDurationStored);
+    bool32 storeWeather = (gBattleWeatherBattlerStored == MAX_BATTLERS_COUNT);
+    //DebugPrintf("%s storeWeather %d", __func__, storeWeather);
+
+    // Prevent player weather being restored as permanent
+    if (storeWeather)
     {
         gBattleWeatherStored = gBattleWeather;
-        gBattleWeather = gBattleWeatherInfo[battleWeatherId].flag;
-        gBattleStruct->weatherDuration = 1;
-        gBattleStruct->weatherDurationTotal = 1;
+        gBattleWeatherBattlerStored = gBattleWeatherBattler;
+        gBattleStruct->weatherDurationStored = gBattleStruct->weatherDuration;
+        gBattleStruct->weatherDurationTotalStored = gBattleStruct->weatherDurationStored;
+        gBattleStruct->weatherSideStored = gBattleStruct->weatherSide;
+    }
+
+    gBattleWeather = gBattleWeatherInfo[battleWeatherId].flag;
+    gBattleWeatherBattler = battler;
+
+    if (rock != 0 && GetBattlerHoldEffect(battler) == rock)
+    {
+        gBattleStruct->weatherDuration = 2;
     }
     else
     {
-        u32 rock = gBattleWeatherInfo[battleWeatherId].rock;
-        gBattleWeatherStored = gBattleWeather;
-        gBattleWeather = gBattleWeatherInfo[battleWeatherId].flag;
-
-        if (rock != 0 && GetBattlerHoldEffect(battler) == rock)
-        {
-            if (gBattleStruct->weatherDuration > 1)
-                gBattleStruct->weatherDurationStored = gBattleStruct->weatherDuration - 2;
-            else
-                gBattleStruct->weatherDurationStored = 0;
-            gBattleStruct->weatherDuration = 2;
-        }
-        else
-        {
-            if (gBattleStruct->weatherDuration)
-                gBattleStruct->weatherDurationStored = gBattleStruct->weatherDuration - 1;
-            else
-                gBattleStruct->weatherDurationStored = 0;
-            gBattleStruct->weatherDuration = 1;
-        }
-        gBattleStruct->weatherDurationTotalStored = gBattleStruct->weatherDurationStored;
-        gBattleStruct->weatherDurationTotal = gBattleStruct->weatherDuration;
+        gBattleStruct->weatherDuration = 1;
     }
-    gBattleStruct->weatherSideStored = gBattleStruct->weatherSide;
+
+    gBattleStruct->weatherDurationTotal = gBattleStruct->weatherDuration;
     gBattleStruct->weatherSide = GetBattlerSide(battler);
 
     if (ability != ABILITY_NONE) // Weather started by Ability
@@ -11652,4 +11710,54 @@ enum WeatherFailure TryChangeBattleWeatherPlayer(enum BattlerId battler, u32 bat
     }
 
     return WEATHER_FAILURE_SUCCESS;
+}
+
+static bool32 BattlerHasAbilityForWeather(enum BattlerId battler, enum Ability ability, u32 weather)
+{
+    switch (weather)
+    {
+    case BATTLE_WEATHER_RAIN:
+        return ability == ABILITY_DRIZZLE;
+    case BATTLE_WEATHER_RAIN_PRIMAL:
+        return ability == ABILITY_PRIMORDIAL_SEA;
+    case BATTLE_WEATHER_SUN:
+        return (ability == ABILITY_DROUGHT || ability == ABILITY_ORICHALCUM_PULSE);
+    case BATTLE_WEATHER_SUN_PRIMAL:
+        return ability == ABILITY_DESOLATE_LAND;
+    case BATTLE_WEATHER_SANDSTORM:
+        return (ability == ABILITY_SAND_STREAM || ability == ABILITY_SAND_SPIT);
+    case BATTLE_WEATHER_HAIL:
+        return ability == ABILITY_HAIL_WARNING;
+    case BATTLE_WEATHER_SNOW:
+        return ability == ABILITY_SNOW_WARNING;
+    case BATTLE_WEATHER_STRONG_WINDS:
+        return ability == ABILITY_DELTA_STREAM;
+    default:
+        return FALSE;
+    }
+}
+
+static enum OverworldWeather GetOverworldWeatherFromBattleWeather(enum BattleWeather weather)
+{
+    switch (weather)
+    {
+    case BATTLE_WEATHER_RAIN:
+        return WEATHER_RAIN;
+    case BATTLE_WEATHER_RAIN_PRIMAL: // should never come up
+        return WEATHER_RAIN;
+    case BATTLE_WEATHER_SUN:
+        return WEATHER_DROUGHT;
+    case BATTLE_WEATHER_SUN_PRIMAL: // should never come up
+        return WEATHER_DROUGHT;
+    case BATTLE_WEATHER_SANDSTORM:
+        return WEATHER_SANDSTORM;
+    case BATTLE_WEATHER_HAIL:
+        return WEATHER_HAIL;
+    case BATTLE_WEATHER_SNOW:
+        return WEATHER_SNOW;
+    case BATTLE_WEATHER_STRONG_WINDS: // should never come up
+        return WEATHER_RAIN;
+    default:
+        return WEATHER_RAIN;
+    }
 }
