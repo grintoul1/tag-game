@@ -1447,7 +1447,18 @@ static bool32 HandleEndTurnFormChange(struct BattleCalcValues *cv, enum BattlerI
             BattleScriptCall(BattleScript_ZenMode);
             break;
         default:
-            BattleScriptCall(BattleScript_BattlerFormChange); // Generic animation
+            switch (gBattleMons[battler].species)
+            {
+            case SPECIES_DEOXYS_NORMAL:
+            case SPECIES_DEOXYS_ATTACK:
+            case SPECIES_DEOXYS_DEFENSE:
+            case SPECIES_DEOXYS_SPEED:
+                BattleScriptCall(BattleScript_BattlerFormChangeNoPopup);
+                break;
+            default:
+                BattleScriptCall(BattleScript_BattlerFormChange); // Generic animation
+                break;
+            }
             break;
         }
         effect = TRUE;

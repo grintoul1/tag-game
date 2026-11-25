@@ -6203,7 +6203,7 @@ enum Species GetFormChangeTargetSpecies_Internal(struct FormChangeContext ctx)
 
     for (i = 0; formChanges[i].method != FORM_CHANGE_TERMINATOR; i++)
     {
-        if (!(ctx.method == formChanges[i].method && ctx.currentSpecies != formChanges[i].targetSpecies))
+        if (!(ctx.method == formChanges[i].method /*&& ctx.currentSpecies != formChanges[i].targetSpecies*/))
             continue;
 
         switch (ctx.method)
@@ -6418,6 +6418,9 @@ enum Species GetFormChangeTargetSpecies_Internal(struct FormChangeContext ctx)
         case FORM_CHANGE_TERMINATOR:
             break;
         }
+
+        if (targetSpecies != ctx.currentSpecies)
+            break;
     }
 
     return targetSpecies;
